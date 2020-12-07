@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: f9a7623fd27178e8b9c213a1759bb09863d16c72
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7063452d23d2975cf0c26a89e7a08a422de54942
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030705"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751946"
 ---
 # <a name="train-model-module"></a>Model modülünü eğitme
 
@@ -63,7 +63,9 @@ Azure Machine Learning, makine öğrenimi modelinin oluşturulması ve kullanıl
 1.  İşlem hattını gönderme. Çok fazla veriniz varsa bu işlem biraz zaman alabilir.
 
     > [!IMPORTANT] 
-    > Her bir satırın KIMLIĞI olan bir KIMLIK sütununuzu varsa **eğitme modeli** , "sütunda benzersiz değerler sayısı:" {column_name} "izin verilenden daha büyük olabilir." Bunun nedeni, KIMLIK sütununun benzersiz değerler eşiğine isabet ettiğinden ve belleğin yetersiz olmasına neden olabilir. Genellikle KIMLIK sütunu eğitim sırasında anlamlı değildir. Bu sütunu **Açık özellik** olarak Işaretlemek Için [meta verileri Düzenle](edit-metadata.md) ' de kullanabilirsiniz ve eğitim bölümünde kullanılmaz. Daha fazla hata ayrıntısı için [Tasarımcı hata koduna](././designer-error-codes.md) bakın.
+    > Her satırın KIMLIĞI olan bir KIMLIK sütununuzu veya çok fazla benzersiz değer içeren bir metin sütununu varsa **eğitme modeli** , "sütunda benzersiz değerler sayısı:" {column_name} "izin verilenden daha büyük olabilir.
+    >
+    > Bunun nedeni, sütunun benzersiz değerler eşiğine isabet ettiğinden ve belleğin yetersiz olmasına neden olabilir. Bu sütunu **açık bir özellik** olarak Işaretlemek Için [meta verileri Düzenle](edit-metadata.md) ' yi kullanabilir ve eğitiminde kullanılmaz veya [metin modülünden N-gram özelliklerini](extract-n-gram-features-from-text.md) Önişle metin sütununa ayıklayın. Daha fazla hata ayrıntısı için [Tasarımcı hata koduna](././designer-error-codes.md) bakın.
 
 ## <a name="results"></a>Sonuçlar
 

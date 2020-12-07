@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992684"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750705"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 
@@ -225,7 +225,7 @@ Bu örnekte, iki Özellik (bir salt okunurdur ve bir yazılabilir), telemetri t�
 
 - `@type` özelliğin türünü belirtmek için: `Telemetry` , `Property` , veya `Command` .  Bazı durumlarda tür, değerin nasıl işleneceği hakkında bazı varsayımlar yapmak IoT Central sağlamak için bir anlamsal tür içerir.
 - `name` Telemetri değeri için.
-- `schema` Telemetri veya özelliğin veri türünü belirtmek için. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri, diziler ve eşlemeler de desteklenir.
+- `schema` Telemetri veya özelliğin veri türünü belirtmek için. Bu değer, Double, Integer, Boolean veya String gibi bir temel tür olabilir. Karmaşık nesne türleri ve eşlemeler de desteklenir.
 
 Görünen ad ve açıklama gibi isteğe bağlı alanlar, arabirime ve yeteneklere daha fazla ayrıntı eklemenizi sağlar.
 

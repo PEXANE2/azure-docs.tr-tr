@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: bbe4d43fde3746e6c992b7f03927f081d3814597
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745752"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751403"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -43,9 +43,7 @@ Azure, bir gecelik zamanlamaya göre kümenizdeki Linux düğümlerine otomatik 
 
 - Azure portal veya Azure CLı aracılığıyla el ile.
 - AKS kümenizi yükselterek. Küme yükseltmeleri, [düğümleri][cordon-drain] otomatik olarak kaldırır ve yeni bir düğümü en son Ubuntu görüntüsü ve yeni bir yama sürümü ya da bir Ikincil Kubernetes sürümü ile çevrimiçi duruma getirir. Daha fazla bilgi için bkz. [AKS kümesini yükseltme][aks-upgrade].
-- Kubernetes için açık kaynaklı bir yeniden başlatma cini olan [Kured](https://github.com/weaveworks/kured)'yi kullanarak. Kured bir [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) olarak çalışır ve her düğümü, bir yeniden başlatmanın gerekli olduğunu belirten bir dosyanın varlığına izler. Küme genelinde, işletim sistemi yeniden başlatmaları aynı [Cordon ve boşaltma işlemi][cordon-drain] tarafından bir küme yükseltmesi olarak yönetilir.
-
-Kured kullanma hakkında daha fazla bilgi için bkz. [AKS içindeki düğümlere güvenlik ve çekirdek güncelleştirmeleri uygulama][node-updates-kured].
+- [Node Image Upgrade](node-image-upgrade.md)kullanılarak.
 
 ### <a name="windows-server-nodes"></a>Windows Server düğümleri
 
@@ -57,19 +55,19 @@ AKS, sanal makine ölçek kümeleri, sanal ağlar ve yönetilen diskler dahil ol
 
 Bu mimariyi etkinleştirmek için, her bir AKS dağıtımı iki kaynak grubuna yaymıştır:
 
-1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus* . Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
+1. İlk kaynak grubunu oluşturursunuz. Bu grup yalnızca Kubernetes hizmet kaynağını içerir. AKS kaynak sağlayıcısı, dağıtım sırasında ikinci kaynak grubunu otomatik olarak oluşturur. İkinci kaynak grubuna bir örnek *MC_myResourceGroup_myAKSCluster_eastus*. Bu ikinci kaynak grubunun adını belirtme hakkında daha fazla bilgi için sonraki bölüme bakın.
 1. *Düğüm kaynak grubu* olarak bilinen ikinci kaynak grubu, kümeyle ilişkili tüm altyapı kaynaklarını içerir. Bu kaynaklar, Kubernetes düğümü VM 'Leri, sanal ağ ve depolamayı içerir. Varsayılan olarak, düğüm kaynak grubunun *MC_myResourceGroup_myAKSCluster_eastus* gibi bir adı vardır. AKS, küme her silindiğinde düğüm kaynağını otomatik olarak siler, bu nedenle yalnızca kümenin yaşam döngüsünü paylaşan kaynaklar için kullanılmalıdır.
 
 ## <a name="can-i-provide-my-own-name-for-the-aks-node-resource-group"></a>AKS düğümü kaynak grubu için kendi adını verebilir miyim?
 
 Evet. Varsayılan olarak, AKS, düğüm kaynak grubunu *MC_resourcegroupname_clustername_location* olarak adlandırın, ancak kendi adınızı de sağlayabilirsiniz.
 
-Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, *--node-Resource-Group* parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
+Kendi kaynak grubu adınızı belirtmek için, [aks-Preview][aks-preview-cli] Azure CLI uzantısı sürüm *0.3.2* veya üstünü yüklemelisiniz. [Az aks Create][az-aks-create] komutunu kullanarak bir aks kümesi oluşturduğunuzda, `--node-resource-group` parametresini kullanın ve kaynak grubu için bir ad belirtin. AKS kümesi dağıtmak için [bir Azure Resource Manager şablonu kullanırsanız][aks-rm-template] , *Noderesourcegroup* özelliğini kullanarak kaynak grubu adını tanımlayabilirsiniz.
 
 * İkincil kaynak grubu, kendi aboneliğinizde Azure Kaynak sağlayıcısı tarafından otomatik olarak oluşturulur.
 * Yalnızca kümeyi oluştururken özel bir kaynak grubu adı belirtebilirsiniz.
 
-Düğüm kaynak grubuyla çalışırken şunları yapmanız gerektiğini aklınızda bulundurun:
+Düğüm kaynak grubuyla çalışırken şunları yapamazsınız:
 
 * Düğüm kaynak grubu için mevcut bir kaynak grubu belirtin.
 * Düğüm kaynak grubu için farklı bir abonelik belirtin.
@@ -112,7 +110,7 @@ namespaceSelector:
       operator: DoesNotExist
 ```
 
-API sunucusu çıkışı ile güvenlik duvarları, bu sayede giriş denetleyici Web kancaları küme içinden erişilebilmesi gerekir.
+Erişim Denetleyicisi Web kancalarınızın küme içinden erişilebilir olması için, API sunucusu çıkışı ile güvenlik duvarlarını AKS.
 
 ## <a name="can-admission-controller-webhooks-impact-kube-system-and-internal-aks-namespaces"></a>Erişim Denetleyicisi Web kancaları, kuin sistemi ve iç AKS ad alanlarını etkileyebilir mi?
 
@@ -134,7 +132,7 @@ Düğüm havuzu için Windows Server desteği, Kubernetes projesinde yukarı ak�
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>AKS bir hizmet düzeyi sözleşmesi sunuyor mu?
 
-AKS, [çalışma süresi SLA 'sı][uptime-sla]ile isteğe bağlı ekleme ÖZELLIĞI olarak SLA garantisi sağlar.
+AKS, [çalışma süresi SLA 'sı][uptime-sla]ile isteğe bağlı bir eklenti ÖZELLIĞI olarak SLA garantisi sağlar.
 
 ## <a name="can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes"></a>AKS aracı düğümlerine Azure rezervasyon indirimleri uygulayabilir miyim?
 
@@ -158,47 +156,47 @@ AKS kümenizi ve ilişkili kaynaklarını taşıma veya yeniden adlandırma dest
 
 ## <a name="why-is-my-cluster-delete-taking-so-long"></a>Kümemin neden bu kadar uzun sürüyor? 
 
-Çoğu küme Kullanıcı isteğiyle silinir; Bazı durumlarda, özellikle de müşteriler kendi kaynak grubunu getiriyor ya da faaliyetsiz görevler silme işlemleri ek zaman alabilir veya başarısız olabilir. Silme işlemiyle ilgili bir sorununuz varsa, RG üzerinde kilit olmadığından emin olun, RG 'nin dışındaki tüm kaynakların RG, vb. ile ilişkisi olduğunu kontrol edin.
+Çoğu küme Kullanıcı isteğiyle silinir; Bazı durumlarda, özellikle de müşteriler kendi kaynak grubunu getiriyor ya da faaliyetsiz görevler silme işlemleri ek zaman alabilir veya başarısız olabilir. Silme işlemiyle ilgili bir sorununuz varsa, RG üzerinde kilit olmadığından, RG 'nin her türlü kaynağın bir RG ile ilişkisi olduğunu ve bu şekilde devam edip etmez.
 
 ## <a name="if-i-have-pod--deployments-in-state-nodelost-or-unknown-can-i-still-upgrade-my-cluster"></a>' Nodekaybedildi ' veya ' bilinmiyor ' durumunda Pod/dağıtımlar varsa, kümemi yükseltebilirim?
 
-, Ancak AKS bunun için önerilmez. Yükseltme, kümenin durumu bilindiğinde ve sağlıklı olduğunda gerçekleştirilmesi ideal olmalıdır.
+Ancak, bu, AKS bunun için önerilmez. Kümenin durumu bilindiğinde ve sağlıklı olduğunda yükseltmeler gerçekleştirilmelidir.
 
 ## <a name="if-i-have-a-cluster-with-one-or-more-nodes-in-an-unhealthy-state-or-shut-down-can-i-perform-an-upgrade"></a>Sağlıksız bir durumda bir veya daha fazla düğümü olan bir kümeniz varsa veya bilgisayarı kapatırsanız, bir yükseltme gerçekleştirebilir miyim?
 
-Hayır, yükseltmeden önce lütfen başarısız durumundaki düğümleri silin/kaldırın veya kümeden kaldırın.
+Hayır, başarısız durumundaki düğümleri silin veya yükseltmeden önce kümeden kaldırın.
 
 ## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Bir küme silme çalıştırdım, ancak hataya bakın `[Errno 11001] getaddrinfo failed` 
 
-En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Lütfen bunları kaldırın ve silmeyi yeniden deneyin.
+En yaygın olarak, bunun nedeni bir veya daha fazla ağ güvenlik grubu (NSG) hala kullanımda ve kümeyle ilişkili olan kullanıcılardır.  Bunları kaldırın ve silmeyi yeniden deneyin.
 
 ## <a name="i-ran-an-upgrade-but-now-my-pods-are-in-crash-loops-and-readiness-probes-fail"></a>Bir yükseltme çalıştırdım, ancak şu anda My Pod çökme döngülerinde ve hazırlık araştırmaları başarısız oldu mu?
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
+Hizmet sorumlunun süresinin dolmadığından emin olun.  Bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md) ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cannot-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Kümem çalışıyor, ancak aniden LoadBalancers, bağlama PVC 'leri vb. sağlayamaz. 
 
-Lütfen hizmet sorumlunun süresi dolmadığından emin olun.  Lütfen bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md)  ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
+Hizmet sorumlunun süresinin dolmadığından emin olun.  Bkz: [aks hizmet sorumlusu](./kubernetes-service-principal.md)  ve [aks güncelleştirme kimlik bilgileri](./update-credentials.md).
 
 ## <a name="can-i-scale-my-aks-cluster-to-zero"></a>AKS kümemi sıfıra ölçeklendirebiliyor miyim?
-[Çalışan BIR AKS kümesini tümüyle durdurabilir](start-stop-cluster.md)ve ilgili işlem maliyetlerine kaydedebilirsiniz. Ayrıca, yalnızca gerekli küme yapılandırmasını korumak üzere [tüm veya belirli `User` düğüm havuzlarını ölçeklendirmeye veya Otomatik ölçeklendirmeye](scale-cluster.md#scale-user-node-pools-to-0) de seçebilirsiniz.
-[Sistem düğüm havuzlarını](use-system-pools.md) doğrudan 0 olarak ölçeklendirebilirsiniz.
+[Çalışan BIR AKS kümesini tümüyle durdurabilir](start-stop-cluster.md)ve ilgili işlem maliyetlerine kaydedebilirsiniz. Ayrıca, yalnızca gerekli küme yapılandırmasını korumak üzere [tüm veya belirli `User` düğüm havuzlarını ölçeklendirebilir veya otomatik ölçeklendirme](scale-cluster.md#scale-user-node-pools-to-0) seçeneğini de belirleyebilirsiniz.
+[Sistem düğüm havuzlarını](use-system-pools.md) doğrudan sıfıra ölçeklendirebilirsiniz.
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Sanal makine ölçek kümesi API 'Lerini el ile ölçeklendirmek için kullanabilir miyim?
 
 Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'Lerini ( `az aks scale` ) kullanın.
 
-## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Sanal makine ölçek kümelerini, 0 düğüme el ile ölçeklendirmek için kullanabilir miyim?
+## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-zero-nodes"></a>Sanal makine ölçek kümelerini, sıfır düğümlere el ile ölçeklendirmek için kullanabilir miyim?
 
-Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez.
+Hayır, sanal makine ölçek kümesi API 'Lerini kullanarak ölçeklendirme işlemleri desteklenmez. AKS API 'sini kullanarak, sistem dışı düğüm havuzlarını sıfıra ölçeklendirebilir veya bunun yerine [kümenizi durdurabilirsiniz](start-stop-cluster.md) .
 
 ## <a name="can-i-stop-or-de-allocate-all-my-vms"></a>Tüm VM 'lerimi durdurabilir veya serbest bırakabilirsiniz miyim?
 
-AKS, bu tür bir yapılandırmaya ve kurtarmaya yönelik esnekliği mekanizmalarına sahip olsa da önerilen bir yapılandırma değildir.
+AKS, bu tür bir yapılandırmaya ve kurtarmaya yönelik esnekliği mekanizmalarına sahip olsa da, bu desteklenen bir yapılandırma değildir. Bunun yerine [kümenizi durdurun](start-stop-cluster.md) .
 
 ## <a name="can-i-use-custom-vm-extensions"></a>Özel VM uzantılarını kullanabilir miyim?
 
-Log Analytics Aracısı Microsoft tarafından yönetilen bir uzantı olduğundan desteklenir. Aksi takdirde, AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri, vb. yüklemek için Kubernetes API 'Lerini ve mekanizmalarını kullanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets kullanın.
+Log Analytics Aracısı Microsoft tarafından yönetilen bir uzantı olduğundan desteklenir. Aksi takdirde, AKS yönetilen bir hizmettir ve IaaS kaynaklarını düzenleme desteklenmez. Özel bileşenleri yüklemek için Kubernetes API 'Lerini ve mekanizmalarını kullanın. Örneğin, gerekli bileşenleri yüklemek için DaemonSets kullanın.
 
 ## <a name="does-aks-store-any-customer-data-outside-of-the-clusters-region"></a>AKS, tüm müşteri verilerini kümenin bölgesi dışında depolıyor mu?
 
@@ -210,6 +208,52 @@ Aşağıdaki iki görüntü dışında, AKS görüntülerinin kök olarak çalı
 
 - *mcr.microsoft.com/oss/kubernetes/coredns*
 - *mcr.microsoft.com/azuremonitor/containerinsights/ciprod*
+
+## <a name="what-is-azure-cni-transparent-mode-vs-bridge-mode"></a>Azure CNı saydam modu ile Köprü modu nedir?
+
+V 1.2.0 Azure CNı 'den, tek kiracılı Linux CNı dağıtımları için varsayılan olarak saydam modu olacaktır. Saydam mod Köprü modunu değiştiriyor. Bu bölümde, her iki mod hakkındaki farklar ve Azure CNı 'de saydam modu kullanmanın avantajları/sınırlamaları hakkında daha fazla bilgi vereceğiz.
+
+### <a name="bridge-mode"></a>Köprü modu
+
+Adından da anlaşılacağı gibi, "tam zamanında" bir şekilde köprü modu Azure CNı, "azure0" adlı bir L2 köprü oluşturacak. Tüm konak tarafı Pod `veth` çifti arabirimleri bu köprüye bağlanacak. Bu nedenle, VM içi iletişim Pod-Pod bu köprü üzerinden yapılır. Söz konusu köprü, bir veya daha fazla gerçek cihazı bir veya daha fazla gerçek cihaz bağlamadığınız takdirde hiçbir şey alamıyor veya iletemediği bir katman 2 sanal aygıtıdır. Bu nedenle, Linux VM 'nin eth0 "azure0" köprüsüne bir alt öğesine dönüştürülmesi gerekir. Bu, Linux sanal makinesi içinde karmaşık bir ağ topolojisi oluşturur ve bir belirti olarak, DNS sunucusu güncelleştirmesi gibi diğer ağ işlevlerinin ilgilenmek zorunda kalmaktadır.
+
+:::image type="content" source="media/faq/bridge-mode.png" alt-text="Köprü modu topolojisi":::
+
+Aşağıda, IP yolu kurulumunun köprü modundaki gibi nasıl göründüğü hakkında bir örnek verilmiştir. Düğümde kaç tane düğüm olduğuna bakılmaksızın, yalnızca iki yol olur. İlk olarak, azure0 üzerinde yerel olan tüm trafik, IP 'si "src 10.240.0.4" (düğüm birincil IP) olan arabirim aracılığıyla alt ağın varsayılan ağ geçidine gider ve ikinci bir "10,20. x. x" Pod alanını çekirdek için çekirdek için çekirdekine söyler.
+
+```bash
+default via 10.240.0.1 dev azure0 proto dhcp src 10.240.0.4 metric 100
+10.240.0.0/12 dev azure0 proto kernel scope link src 10.240.0.4
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+root@k8s-agentpool1-20465682-1:/#
+```
+
+### <a name="transparent-mode"></a>Saydam mod
+Saydam modu, Linux ağını ayarlamaya yönelik düz bir yaklaşımlar alır. Bu modda, Azure CNı, Linux sanal makinesinde eth0 arabirimi özelliklerinin hiçbirini değiştirmez. Linux ağ özelliklerinin değiştirilmesine yönelik bu en az yaklaşım, kümelerin köprü moduyla karşılaştığı karmaşık köşe örnek sorunlarını azaltmaya yardımcı olur. Saydam modda Azure CNı, ana bilgisayar ağına eklenecek konak tarafı Pod çifti arabirimlerini oluşturur ve ekler `veth` . VM 'nin Pod-Pod arası iletişimi, CNı 'nin ekleneceği IP yollardır. Temelde Pod-Pod içi VM, alt katman 3 ağ trafiğidir.
+
+:::image type="content" source="media/faq/transparent-mode.png" alt-text="Saydam mod topolojisi":::
+
+Aşağıda, saydam moddan oluşan örnek bir IP yolu kurulumu verilmiştir. her Pod 'ın arabirimi, Pod olarak hedef IP 'si olan trafik doğrudan Pod 'ın ana bilgisayar tarafı çiftinin arabirimine gönderilmek üzere bir statik rota iliştirilir `veth` .
+
+### <a name="benefits-of-transparent-mode"></a>Saydam modunun avantajları
+
+- `conntrack`, Düğüm yerel DNS 'yi ayarlama gereksinimi olmadan DNS paralel yarış durumu ve 5 San DNS gecikme sorunlarının engelleme için risk azaltma sağlar (performans nedenleriyle düğüm yerel DNS 'i kullanmaya devam edebilirsiniz).
+- İlk 5 sn DNS gecikme süresi CNı köprü modunun, "tam zamanında" köprü kurulumu nedeniyle bugün tanıtılmakta olduğunu ortadan kaldırır.
+- Köprü modundaki köşe çalışmalarından biri, Azure CNı 'nin kullanıcıların VNET veya NIC 'ye ekleyen özel DNS sunucusu listelerini güncellemesidir. Bu, CNı 'nin yalnızca DNS sunucusu listesinin yalnızca ilk örneğini çekilmesine neden olur. CNı, eth0 özelliklerini değiştirmediğinden saydam modda çözüldü. [Daha fazla](https://github.com/Azure/azure-container-networking/issues/713)görünüyor.
+- ARP zaman aşımına uğrarsa UDP trafiğinin daha iyi işlenmesini ve UDP taşma süresini hafifletme sağlar. Köprü oluşturma modunda, köprü, VM 'de Pod-Pod arası iletişimde bir MAC adresi bilmez, tasarıma göre, bu, paketin tüm bağlantı noktalarına fırtınası ile sonuçlanır. Yolda L2 cihaz olmadığından, saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/704)bakın.
+- Saydam modu, köprü oluşturma modu ile karşılaştırıldığında aktarım hızı ve gecikme süresi bakımından sanal makine Pod-Pod iletişimi için daha iyi performans sağlar.
+
+```bash
+10.240.0.216 dev azv79d05038592 proto static
+10.240.0.218 dev azv8184320e2bf proto static
+10.240.0.219 dev azvc0339d223b9 proto static
+10.240.0.222 dev azv722a6b28449 proto static
+10.240.0.223 dev azve7f326f1507 proto static
+10.240.0.224 dev azvb3bfccdd75a proto static
+168.63.129.16 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
+169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
+172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
+```
 
 <!-- LINKS - internal -->
 

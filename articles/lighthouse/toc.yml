@@ -54,12 +54,18 @@
     - name: İş ortağı kimliğinizi bağlama
       displayName: 'partner earned credit, pec, mpn'
       href: ./how-to/partner-earned-credit.md
+    - name: Temsilciyi güncelleştirme
+      displayName: upgrade
+      href: ./how-to/update-delegation.md
     - name: Temsilci erişimini kaldırma
       displayName: 'delete, undelegate'
       href: ./how-to/remove-delegation.md
     - name: Azure Arc tümleştirmesi
       displayName: 'server, kubernetes, hybrid, infrastructure'
       href: ./how-to/manage-hybrid-infrastructure-arc.md
+    - name: Azure Geçişi tümleştirmesi
+      displayName: 'migration, project, on-prem'
+      href: ./how-to/migration-at-scale.md
     - name: Azure İzleyici tümleştirmesi
       items:
         - name: Büyük ölçekte Azure İzleyici Günlükleri’ni kullanma
@@ -88,7 +94,7 @@
           href: ./how-to/view-service-provider-activity.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services

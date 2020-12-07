@@ -167,6 +167,12 @@
           href: iot-hub-devguide-sdks.md
         - name: MQTT desteği
           href: iot-hub-mqtt-support.md
+        - name: MQTT 5 desteği (önizleme)
+          items:
+            - name: MQTT 5’e genel bakış
+              href: iot-hub-mqtt-5.md
+            - name: MQTT 5 API başvurusu
+              href: iot-hub-mqtt-5-reference.md
         - name: AMQP desteği
           href: iot-hub-amqp-support.md
         - name: Sözlük
@@ -426,7 +432,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub

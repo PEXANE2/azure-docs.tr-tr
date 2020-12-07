@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436768"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750994"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender 'a giriş
 
@@ -39,6 +39,8 @@ Azure Defender 'ı Azure Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** al
 - [Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)
 - [Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)
 - [Key Vault için Azure Defender](defender-for-key-vault-introduction.md)
+- [Kaynak Yöneticisi için Azure Defender](defender-for-resource-manager-introduction.md)
+- [DNS için Azure Defender](defender-for-dns-introduction.md)
 
 Bu planların her biri, güvenlik merkezi belgelerinde ayrı olarak açıklanmıştır.
 
@@ -61,9 +63,9 @@ Korumayı, diğer bulutlarda veya şirket içinde bulunan sanal makinelere ve SQ
 
 
 
-## <a name="security-alerts"></a>Güvenlik uyarıları 
+## <a name="azure-defender-security-alerts"></a>Azure Defender güvenlik uyarıları 
 
-Azure Defender, ortamınızın herhangi bir alanında bir tehdit algıladığında bir uyarı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.
+Azure Defender, ortamınızın herhangi bir alanında bir tehdit algıladığında, bir güvenlik uyarısı oluşturur. Bu uyarılar, etkilenen kaynakların ayrıntılarını, önerilen düzeltme adımlarını ve bazı durumlarda bir mantıksal uygulamayı yanıt olarak tetiklemeye yönelik bir seçenek anlatmaktadır.
 
 Bir uyarının Güvenlik Merkezi tarafından oluşturulup oluşturulmayacağını veya Güvenlik Merkezi tarafından bir tümleşik güvenlik ürününden alınıp alınmayacağını, dışarı aktarabilirsiniz. Uyarılarınızı Azure Sentinel 'e, herhangi bir üçüncü taraf SıEM 'e veya herhangi bir harici araca aktarmak için, [BIR SıEM, SOAR veya BT hizmet yönetimi çözümüne akış uyarıları](export-to-siem.md)içindeki yönergeleri izleyin.
 

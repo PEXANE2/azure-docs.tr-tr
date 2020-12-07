@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/14/2019
 ms.author: sharrai
-ms.openlocfilehash: 721e09c2bc0562ba833115361cf33c3daaef380b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c804e13029dcec42a43885cbf0d9b227b3d0338f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364040"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750811"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Hyper-V’den Azure’a çoğaltma ve yük devretmeye ilişkin sorunları giderme
 
@@ -34,7 +34,21 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
 6. Konuk VM 'de Integration Services 'ın en son sürümünün çalıştığından emin olun.
     - En son sürüme sahip [olup olmadığınızı denetleyin](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) .
     - [Sakla](/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) Tümleştirme Hizmetleri güncel.
-    
+
+### <a name="cannot-enable-protection-as-the-virtual-machine-is-not-highly-available-error-code-70094"></a>Sanal makine yüksek oranda kullanılabilir olmadığından koruma etkinleştirilemiyor (hata kodu 70094)
+
+Bir makine için çoğaltmayı etkinleştirirken ve makinenin yüksek oranda kullanılabilir olmadığı için çoğaltmanın etkinleştirilemeyeceğini belirten bir hata ile karşılaşırsanız, bu sorunu düzelttikten sonra aşağıdaki adımları deneyin:
+
+- VMM sunucusunda VMM hizmetini yeniden başlatın.
+- Sanal makineyi kümeden kaldırın ve yeniden ekleyin.
+
+### <a name="the-vss-writer-ntds-failed-with-status-11-and-writer-specific-failure-code-0x800423f4"></a>VSS Yazıcı NTDS, durum 11 ve yazıcı özel hata kodu ile başarısız oldu 0x800423F4
+
+Çoğaltmayı etkinleştirmeye çalışırken, çoğaltmayı etkinleştirme başarısız olan AST NTDS başarısız olduğunu bildiren bir hata olabilir. Bu sorunun olası nedenlerinden biri, sanal makinenin Windows Server 2012 ' deki işletim sisteminin Windows Server 2012 R2 değil. Bu sorunu onarmak için aşağıdaki adımları deneyin:
+
+- 4072650 ile Windows Server R2 'ye yükseltme.
+- Hyper-V konağının de Windows 2016 veya üzeri olduğundan emin olun.
+
 ## <a name="replication-issues"></a>Çoğaltma sorunları
 
 İlk ve sürekli çoğaltma sorunlarını aşağıda gösterildiği gibi giderin:
@@ -53,8 +67,8 @@ Hyper-V VM 'Leri için korumayı etkinleştirdiğinizde sorunlarla karşılaşı
     - Ortamda VMM ile çoğaltma yapıyorsanız, bu hizmetlerin çalıştığından emin olun:
         - Hyper-V konağında, sanal makine yönetimi hizmeti, Microsoft Azure Kurtarma Hizmetleri Aracısı ve WMI sağlayıcısı ana bilgisayar hizmetinin çalıştığından emin olun.
         - VMM sunucusunda, System Center Virtual Machine Manager hizmetinin çalıştığından emin olun.
-4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. **Ağ sekmesinde >** **ağ etkinliği ile işlem**cbengine.exe, büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
-5. Hyper-V konaklarının Azure Depolama Blobu URL 'sine bağlanıp bağlanamadığını denetleyin. Ana bilgisayarların bağlanıp bağlanamadığını denetlemek için **cbengine.exe**seçin ve işaretleyin. Ana bilgisayardan Azure Storage blob 'una bağlantıyı doğrulamak için **TCP bağlantılarını** görüntüleyin.
+4. Hyper-V sunucusuyla Azure arasındaki bağlantıyı denetleyin. Bağlantıyı denetlemek için, Hyper V konağında Görev Yöneticisi 'ni açın. **Performans** sekmesinde **Kaynak İzleyicisi aç**' a tıklayın. **Ağ sekmesinde >** **ağ etkinliği ile işlem** cbengine.exe, büyük birimleri (MB) etkin bir şekilde gönderip göndermediğini denetleyin.
+5. Hyper-V konaklarının Azure Depolama Blobu URL 'sine bağlanıp bağlanamadığını denetleyin. Ana bilgisayarların bağlanıp bağlanamadığını denetlemek için **cbengine.exe** seçin ve işaretleyin. Ana bilgisayardan Azure Storage blob 'una bağlantıyı doğrulamak için **TCP bağlantılarını** görüntüleyin.
 6. Aşağıda açıklandığı gibi performans sorunlarını kontrol edin.
     
 ### <a name="performance-issues"></a>Performans sorunları
@@ -146,12 +160,12 @@ Uygulamayla tutarlı bir anlık görüntü, VM içindeki uygulama verilerinin za
 
 Tüm Hyper-V çoğaltma olayları, **uygulama ve hizmet günlükleri**  >  **Microsoft**  >  **Windows**'ta bulunan Hyper-V-VMMS\Admin günlüğüne kaydedilir. Ayrıca, Hyper-V sanal makine yönetimi hizmeti için bir analitik günlüğü aşağıdaki şekilde etkinleştirebilirsiniz:
 
-1. Analitik ve hata ayıklama günlüklerini Olay Görüntüleyicisi görüntülenebilir yapın. Günlükleri kullanılabilir hale getirmek için, Olay Görüntüleyicisi **Görünüm**  >  **analitik ve hata ayıklama günlüklerini göster**' e tıklayın. Analitik günlük, **Hyper-V-VMMS**altında görünür.
+1. Analitik ve hata ayıklama günlüklerini Olay Görüntüleyicisi görüntülenebilir yapın. Günlükleri kullanılabilir hale getirmek için, Olay Görüntüleyicisi **Görünüm**  >  **analitik ve hata ayıklama günlüklerini göster**' e tıklayın. Analitik günlük, **Hyper-V-VMMS** altında görünür.
 2. **Eylemler** bölmesinde **günlüğü etkinleştir**' e tıklayın. 
 
     ![Günlüğü etkinleştir](media/hyper-v-azure-troubleshoot/enable-log.png)
     
-3. Etkinleştirildikten sonra, **veri toplayıcı kümeleri**altında **olay Izleme oturumu** olarak **performans izleyicisinde**görüntülenir. 
+3. Etkinleştirildikten sonra, **veri toplayıcı kümeleri** altında **olay Izleme oturumu** olarak **performans izleyicisinde** görüntülenir. 
 4. Toplanan bilgileri görüntülemek için, günlüğü devre dışı bırakarak izleme oturumunu durdurun. Ardından, günlüğü kaydedin ve Olay Görüntüleyicisi ' de yeniden açın veya diğer araçları kullanarak gerekli şekilde dönüştürün.
 
 

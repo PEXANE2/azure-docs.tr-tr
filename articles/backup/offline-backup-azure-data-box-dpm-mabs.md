@@ -3,12 +3,12 @@ title: DPM ve MABS için Azure Data Box çevrimdışı yedekleme
 description: DPM 'den ve MABS 'den çevrimdışı olarak ilk yedekleme verilerini temel almak için Azure Data Box kullanabilirsiniz.
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 80b3977a9fb886b90c3d48d54f4cda1abfd77df9
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 1cfd9131099ad6a8ccd3d43e93f3d97641514f03
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172220"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752558"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>DPM ve MABS için Azure Data Box kullanarak çevrimdışı dengeli dağıtım (Önizleme)
 
@@ -67,7 +67,7 @@ Aşağıdakilerden emin olun:
 Çevrimdışı yedeklemeyi tetiklemeden önce gerekli Data Box cihazların *teslim edilmiş* durumda olduğundan emin olun. Gereksiniminize uygun SKU 'YU sıralamak için bkz. [yedekleme verileri boyutu ve desteklenen Data Box SKU 'ları](#backup-data-size-and-supported-data-box-skus) . Data Box cihazlarınızı sıralamak ve almak için [Bu makaledeki](../databox/data-box-disk-deploy-ordered.md) adımları izleyin.
 
 > [!IMPORTANT]
-> **Hesap türü**Için *blobstorage* ' ı seçmeyin. DPM/MABS sunucusu, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluştururken, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
+> **Hesap türü** Için *blobstorage* ' ı seçmeyin. DPM/MABS sunucusu, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluştururken, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
 
 ![Azure veri kutusunu kurma](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -110,7 +110,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
 ## <a name="transfer-initial-backup-data-to-azure-data-box-devices"></a>İlk yedekleme verilerini Azure Data Box cihazlara aktarma
 
-1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](/system-center/dpm/create-dpm-protection-groups)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan**başlayın.
+1. DPM/MABS sunucunuzda, [Yeni bir koruma grubu oluşturmak](/system-center/dpm/create-dpm-protection-groups)için aşağıdaki adımları izleyin. Var olan koruma grubuna bir çevrimiçi koruma ekliyorsanız, mevcut koruma grubuna sağ tıklayın ve **çevrimiçi koruma ekle** ' yi seçin ve **8. adımdan** başlayın.
 2. **Grup üyelerini seçin** sayfasında, yedeklemek istediğiniz bilgisayarları ve kaynakları belirtin.
 3. **Veri koruma yöntemini seçin** sayfasında, kısa ve uzun süreli yedeklemeyi nasıl işlemek istediğinizi belirtin. **Çevrimiçi koruma** istiyorum ' u seçtiğinizden emin olun.
 
@@ -126,7 +126,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
 9. **Çevrimiçi yedekleme zamanlamasını belirtin** sayfasında, Azure 'a artımlı yedeklemelerin ne sıklıkta gerçekleşeceğini belirtin.
 10. **Çevrimiçi saklama Ilkesini belirtin** sayfasında günlük/haftalık/aylık/yıllık yedeklerden oluşturulan kurtarma noktalarının Azure 'da nasıl korunacağını belirtin.
-11. Sihirbazın **çevrimiçi çoğaltma ekranını seçin** ekranında, **Microsoft 'un sahip olduğu diskleri kullanarak aktar** seçeneğini belirleyin ve **İleri ' yi**seçin.
+11. Sihirbazın **çevrimiçi çoğaltma ekranını seçin** ekranında, **Microsoft 'un sahip olduğu diskleri kullanarak aktar** seçeneğini belirleyin ve **İleri ' yi** seçin.
 
     ![İlk çevrimiçi çoğaltma seçin](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
@@ -147,7 +147,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
           -Azurerd. Resources   *6.7.3*<br>
           -Azurerd. Storage     *5.2.0*<br>
           -Azure. Storage       *4.6.1*<br>
-     >  - Azure AD uygulaması *AzureOfflineBackup_ \<object GUID of the user> *olarak kaydedilir.
+     >  - Azure AD uygulaması *AzureOfflineBackup_ \<object GUID of the user>* olarak kaydedilir.
 
 13. Data Box diskinizin açılacağı, bağlandığı ve kilidinin açılacağı doğru veri kutusu sırasını seçin. **İleri**’yi seçin.
 
@@ -162,7 +162,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
     >
     > ![USB sürücü](./media/offline-backup-azure-data-box-dpm-mabs/usb-drive.png)
     >
-    > Örneğin, diskin yolu `\\mydomain\myserver\disk1\` ve *Disk1* , *pageblob*ADLı bir dizin içeriyorsa, DPM/mabs sunucu Sihirbazı 'nda sağlanacak yol olur `\\mydomain\myserver\disk1\` .
+    > Örneğin, diskin yolu `\\mydomain\myserver\disk1\` ve *Disk1* , *pageblob* ADLı bir dizin içeriyorsa, DPM/mabs sunucu Sihirbazı 'nda sağlanacak yol olur `\\mydomain\myserver\disk1\` .
     > [Azure Data Box 100 TB 'lik bir cihaz](./offline-backup-azure-data-box.md#set-up-azure-data-box)ayarlarsanız, cihazın ağ yolu olarak aşağıdakileri sağlayın `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` .
 
 15. **İleri**’yi seçin. **Özet** sayfasında, ayarlarınızı gözden geçirin ve **Grup Oluştur**' u seçin.
@@ -177,7 +177,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 
     Bununla birlikte, verilerin ilk çoğaltması DPM/MABS diskinde oluşur. Koruma tamamlandığında, Grup durumu **koruma sayfasında koruma** durumunu **Tamam** olarak gösterir.
 
-17. Azure Data Box cihazınıza çevrimdışı yedekleme kopyasını başlatmak için **koruma grubuna**sağ tıklayın ve ardından **Kurtarma noktası oluştur** seçeneğini belirleyin. Sonra **çevrimiçi koruma** seçeneğini belirleyin.
+17. Azure Data Box cihazınıza çevrimdışı yedekleme kopyasını başlatmak için **koruma grubuna** sağ tıklayın ve ardından **Kurtarma noktası oluştur** seçeneğini belirleyin. Sonra **çevrimiçi koruma** seçeneğini belirleyin.
 
     ![Kurtarma noktası oluştur](./media/offline-backup-azure-data-box-dpm-mabs/create-recovery-point.png)
 
@@ -194,7 +194,7 @@ Alternatif kaynak belirtin: *WIM: D: \Sources\ınstall.exe: 4*
 Azure Data Box Disk veri yedeklemesi başarılı olduktan sonra bu adımları izleyin.
 
 - Azure Data Box diskini Azure 'a göndermek için [Bu makaledeki](../databox/data-box-disk-deploy-picked-up.md) adımları izleyin. Azure Data Box 100-TB bir cihaz kullandıysanız, Azure Data Box Azure 'a göndermek için [aşağıdaki adımları](../databox/data-box-deploy-picked-up.md) izleyin.
-- Azure portal [Data Box Işini izleyin](../databox/data-box-disk-deploy-upload-verify.md) . Azure Data Box işi *tamamlandıktan*sonra DPM/mabs sunucusu, bir sonraki zamanlanmış yedekleme sırasında verileri depolama hesabından kurtarma hizmetleri kasasına otomatik olarak taşıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
+- Azure portal [Data Box Işini izleyin](../databox/data-box-disk-deploy-upload-verify.md) . Azure Data Box işi *tamamlandıktan* sonra DPM/mabs sunucusu, bir sonraki zamanlanmış yedekleme sırasında verileri depolama hesabından kurtarma hizmetleri kasasına otomatik olarak taşıdır. Ardından, bir kurtarma noktası başarıyla oluşturulduysa yedekleme işini *Iş tamamlandı* olarak işaretler.
 
   > [!NOTE]
   > DPM/MABS sunucusu, koruma grubu oluşturma sırasında zamanlandığı zamanlarda yedeklemeleri tetikler. Ancak, bu işler, iş tamamlanana kadar *Azure Data Box işin tamamlanmasını beklemek* için bayrak uygulanır.
@@ -230,8 +230,8 @@ Hatanın Yukarıdaki [sorundan](#issue) dolayı olduğundan emin olmak için aş
 
 Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve ilke yapılandırmasını yeniden deneyin.
 
-1. İçeri aktarma verme işinin oluşturulduğu abonelikte yönetici erişimi olan farklı bir hesap kullanarak DPM/MABS Server Kullanıcı arabiriminde görüntülenen Azure oturum açma sayfasında oturum açın.
-2. Başka bir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı **Azure portal > Azure Active Directory > uygulama kayıtları**silin.
+1. Data Box işi oluşturulan abonelikte yönetici erişimine sahip farklı bir hesap kullanarak DPM/MABS Server Kullanıcı arabiriminde görüntülenen Azure oturum açma sayfasında oturum açın.
+2. Başka bir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı **Azure portal > Azure Active Directory > uygulama kayıtları** silin.
 
    > [!NOTE]
    > Uygulamanın `AzureOfflineBackup_<Azure User Id>` başka bir çevrimdışı dengeli dağıtım olup olmadığını ve aynı zamanda bu uygulamaya bağımlı başka bir sunucu olmadığını denetleyin. Ortak anahtarlar bölümü altındaki **ayarlar > anahtarlar** ' a gidin. Başka hiçbir **ortak anahtar** eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın:
@@ -244,18 +244,18 @@ Bu sorunu çözmek için, aşağıdaki adımları uygulayın ve ilke yapılandı
 
 1. **Bilgisayar sertifikası uygulaması**  >  **Kişisel** sekmesini açın ve adına sahip sertifikayı arayın `CB_AzureADCertforOfflineSeeding_<ResourceId>` .
 2. Yukarıdaki sertifikayı seçin, **Tüm görevler** ' e sağ tıklayın ve özel anahtar olmadan. cer biçiminde **dışarı aktarın** .
-3. **2. noktada**belirtilen Azure çevrimdışı yedekleme uygulamasına gidin. **Ayarlar**  >  **anahtarlar**  >  **ortak anahtarı karşıya yükle** bölümünde, yukarıdaki adımda dışarıya aktarılmış sertifikayı karşıya yükleyin.
+3. **2. noktada** belirtilen Azure çevrimdışı yedekleme uygulamasına gidin. **Ayarlar**  >  **anahtarlar**  >  **ortak anahtarı karşıya yükle** bölümünde, yukarıdaki adımda dışarıya aktarılmış sertifikayı karşıya yükleyin.
 
    ![Ortak anahtarları karşıya yükle](./media/offline-backup-azure-data-box-dpm-mabs/upload-public-keys.png)
 
 4. Sunucusunda, **Çalıştır** penceresine **Regedit** yazarak kayıt defterini açın.
-5. *Bilgisayar \ HKEY \_ Local \_ Machıne\software\microsoft\windows Azure Backup\Config\CloudBackupProvider*kayıt defterine gidin. **CloudBackupProvider** öğesine sağ tıklayın ve adında yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
+5. *Bilgisayar \ HKEY \_ Local \_ Machıne\software\microsoft\windows Azure Backup\Config\CloudBackupProvider* kayıt defterine gidin. **CloudBackupProvider** öğesine sağ tıklayın ve adında yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Azure kullanıcı KIMLIĞINI almak için şu eylemlerden birini gerçekleştirin:
     >
     >- Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` komutunu çalıştırın.
-    > - `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *Currentuserıd*adlı kayıt defteri yoluna gidin.
+    > - `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *Currentuserıd* adlı kayıt defteri yoluna gidin.
 
 6. Yukarıdaki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, **2. noktada** verdiğiniz sertifikanın parmak Izini girip **Tamam**' ı seçin.
 7. Parmak izi değerini almak için, sertifikaya çift tıklayın, ardından **Ayrıntılar**  ' ı seçin ve ardından parmak izi alanını görene kadar aşağı kaydırın. **Parmak izi** ' ni seçin ve değeri kopyalayın.

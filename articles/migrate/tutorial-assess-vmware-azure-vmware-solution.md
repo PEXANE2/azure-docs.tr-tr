@@ -1,15 +1,18 @@
 ---
 title: Azure geçişi ile Azure VMware çözümüne (AVS) geçiş için VMware VM 'lerini değerlendirin
 description: Azure geçişi sunucu değerlendirmesi ile AVS 'ye geçiş için VMware VM 'lerini değerlendirme hakkında bilgi edinin.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 29f7f824d96aedd80e490ba84c390be4d9493683
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604249"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753085"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Öğretici: AVS 'ye geçiş için VMware VM 'lerini değerlendirin
 
@@ -57,7 +60,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
 2. **Azure geçişi: Sunucu değerlendirmesi**' nde **değerlendir**' e tıklayın.
 
-3. **Sunucu**  >  **değerlendirmesi türünü**değerlendir bölümünde **Azure VMware çözümü (AVS) (Önizleme)** seçeneğini belirleyin.
+3. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VMware çözümü (AVS) (Önizleme)** seçeneğini belirleyin.
 4. **Bulma kaynağında**:
 
     - Gereci kullanarak makineler keşfetiyorsanız, **Azure geçişi gereci ' ndan bulunan makineler**' i seçin.
@@ -103,7 +106,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme özellikleri](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
 
-12. **Sunucuları değerlendir**bölümünde **İleri**' ye tıklayın.
+12. **Sunucuları değerlendir** bölümünde **İleri**' ye tıklayın.
 13. **Sunucuları değerlendir**' de  >  **değerlendirmek üzere makineleri seçin**, değerlendirme için yeni bir sunucu grubu oluşturun, **Yeni oluştur**' u seçin ve bir grup adı belirtin. 
 14. Gereç ' ı seçin ve gruba eklemek istediğiniz VM 'Leri seçin. Ardından **İleri**'ye tıklayın.
 15. **İnceleme ve değerlendirme oluştur**' da, değerlendirme ayrıntılarını gözden geçirin ve grubu oluşturmak ve değerlendirmeyi çalıştırmak Için değerlendirme **Oluştur** ' a tıklayın.

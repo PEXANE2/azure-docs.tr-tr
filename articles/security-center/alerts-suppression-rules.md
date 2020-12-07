@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4f5049d1589b741e60db69c782107cab1f047b77
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 1ca2ded69b0279a60d8ed83cf310a58dadf1a337
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436802"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751997"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender 'dan uyarıları gösterme
 
@@ -23,7 +23,7 @@ Bu sayfada, Azure Defender 'daki hatalı pozitif durumları veya diğer istenmey
 
 |Görünüş|Ayrıntılar|
 |----|:----|
-|Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Yayın durumu:| Genel kullanıma sunuldu |
 |Fiyat|Ücretsiz<br>(Çoğu güvenlik uyarısı yalnızca Azure Defender ile kullanılabilir)|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** ve **sahibi** kuralları oluşturabilir/silebilir.<br>**Güvenlik okuyucu** ve **okuyucu** , kuralları görüntüleyebilir.|
 |Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|

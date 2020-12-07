@@ -8,12 +8,12 @@ ms.date: 10/23/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 448707ab84ccca03dc0572d2ebed1b4bd1b6325f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a1732f42ea95c16cdec7a1d7569c954667e52cb4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505300"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750909"
 ---
 # <a name="quickstart-deploy-your-first-azure-spring-cloud-application"></a>Hızlı başlangıç: ilk Azure Spring Cloud uygulamanızı dağıtın
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıcı izleyerek şunları nasıl yapacağınızı öğrenecek
 
 Bu hızlı başlangıçta kullanılan uygulama kodu, .NET Core Web API 'SI proje şablonuyla oluşturulmuş basit bir uygulamadır. Bu örneği tamamladığınızda, uygulama çevrimiçi olarak erişilebilir olur ve Azure portal ve Azure CLı aracılığıyla yönetilebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1). Azure yay bulut hizmeti, .NET Core 3,1 ve sonraki sürümlerini destekler.
@@ -112,7 +112,7 @@ Visual Studio 'da, API proje şablonuyla "Hello-World" adlı bir ASP.NET Core We
    }
    ```
 
-1. Ayrıca *appsettings.jsüzerinde* , kategori için günlük düzeyini ' dan ' a değiştirin `Microsoft` `Warning` `Information` . Bu değişiklik, akış günlüklerini sonraki bir adımda görüntülediğinizde günlüklerin üretileceği bir işlem sağlar.
+1. Ayrıca *appsettings.jsüzerinde*, kategori için günlük düzeyini ' dan ' a değiştirin `Microsoft` `Warning` `Information` . Bu değişiklik, akış günlüklerini sonraki bir adımda görüntülediğinizde günlüklerin üretileceği bir işlem sağlar.
 
    Dosyadaki *appsettings.js* artık aşağıdaki örneğe benzer şekilde görünür:
 
@@ -206,22 +206,22 @@ Aşağıdaki yordam Azure portal kullanarak bir Azure Spring Cloud örneği olu�
 
 1. [Azure portalını](https://ms.portal.azure.com/) açın. 
 
-1. Üst arama kutusundan *Azure yay bulutu* ' nı arayın.
+1. Üst arama kutusundan *Azure yay bulutu*' nı arayın.
 
 1. Sonuçlardan *Azure yay bulutu* ' nı seçin.
 
    ![ASC simgesi başlangıç](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-1. Azure yay bulutu sayfasında **+ Ekle** ' yi seçin.
+1. Azure yay bulutu sayfasında **+ Ekle**' yi seçin.
 
    ![ASC simgesi ekle](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 1. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
 
-   * **Abonelik** : Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
-   * **Kaynak grubu** : yeni bir kaynak grubu oluşturun. Buraya girdiğiniz ad sonraki adımlarda olduğu gibi kullanılacaktır **\<resource group name\>** .
-   * **Hizmet Ayrıntıları/adı** : öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
-   * **Bölge** : hizmet örneğiniz için bölgeyi seçin.
+   * **Abonelik**: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
+   * **Kaynak grubu**: yeni bir kaynak grubu oluşturun. Buraya girdiğiniz ad sonraki adımlarda olduğu gibi kullanılacaktır **\<resource group name\>** .
+   * **Hizmet Ayrıntıları/adı**: öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
+   * **Bölge**: hizmet örneğiniz için bölgeyi seçin.
 
    ![ASC portalı başlangıcı](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
@@ -334,7 +334,7 @@ Bu hızlı başlangıçta nasıl yapılacağı açıklanmaktadır:
 > * Uygulamayı ortak bir uç nokta ile derleyin ve dağıtın
 > * Gerçek zamanlı akış günlükleri
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -351,6 +351,9 @@ https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.3.4
 ```
 
   ![Initialkr sayfası](media/spring-cloud-quickstart-java/initializr-page.png)
+
+> [!NOTE]
+> Spring Boot 2,4 ile uygulamalarınız ve Eureka arasındaki TLS kimlik doğrulamasında bir sorun tespit ettik ve bu sorunu çözmek için şu anda Spring Community ile çalışıyor. Geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
 
 1. Tüm bağımlılıklar ayarlandığında **Oluştur** ' a tıklayın. Paketi indirip paketini açın ve aşağıdaki şekilde ekleyerek basit bir Web uygulaması için bir Web denetleyicisi oluşturun `src/main/java/com/example/hellospring/HelloController.java` :
 
@@ -376,25 +379,25 @@ Aşağıdaki yordam Azure portal kullanarak bir Azure Spring Cloud örneği olu�
 
 1. Yeni bir sekmede [Azure Portal](https://ms.portal.azure.com/)açın. 
 
-2. Üst arama kutusundan *Azure yay bulutu* ' nı arayın.
+2. Üst arama kutusundan *Azure yay bulutu*' nı arayın.
 
 3. Sonuçlardan *Azure yay bulutu* ' nı seçin.
 
     ![ASC simgesi başlangıç](media/spring-cloud-quickstart-launch-app-portal/find-spring-cloud-start.png)
 
-4. Azure yay bulutu sayfasında **+ Ekle** ' ye tıklayın.
+4. Azure yay bulutu sayfasında **+ Ekle**' ye tıklayın.
 
     ![ASC simgesi ekle](media/spring-cloud-quickstart-launch-app-portal/spring-cloud-add.png)
 
 5. Azure yay bulutu **Oluştur** sayfasında formu doldurun.  Aşağıdaki yönergeleri göz önünde bulundurun:
-    - **Abonelik** : Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
-    - **Kaynak grubu** : yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır. Bu, sonraki adımlarda olduğu gibi kullanılacaktır **\<resource group name\>** .
-    - **Hizmet Ayrıntıları/adı** : öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
-    - **Konum** : hizmet örneğiniz için bölgeyi seçin.
+    - **Abonelik**: Bu kaynak için faturalandırılması istediğiniz aboneliği seçin.
+    - **Kaynak grubu**: yeni kaynaklar için yeni kaynak grupları oluşturmak en iyi uygulamadır. Bu, sonraki adımlarda olduğu gibi kullanılacaktır **\<resource group name\>** .
+    - **Hizmet Ayrıntıları/adı**: öğesini belirtin **\<service instance name\>** .  Ad 4 ila 32 karakter uzunluğunda olmalı ve yalnızca küçük harf, sayı ve kısa çizgi içermelidir.  Hizmet adının ilk karakteri bir harf olmalıdır ve son karakter bir harf ya da sayı olmalıdır.
+    - **Konum**: hizmet örneğiniz için bölgeyi seçin.
 
     ![ASC portalı başlangıcı](media/spring-cloud-quickstart-launch-app-portal/portal-start.png)
 
-6. **Gözden geçir ve oluştur** ’a tıklayın.
+6. **Gözden geçir ve oluştur**’a tıklayın.
 
 ## <a name="build-and-deploy-the-app"></a>Uygulama derleme ve dağıtma
     
@@ -441,7 +444,7 @@ Aşağıdaki yordam, IntelliJ FIKRINDEN örnek uygulamayı dağıtmak üzere Azu
 ### <a name="deploy-the-app"></a>Uygulamayı dağıtma
 Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi seçmeniz gerekir.  Oturum açma ayrıntıları için bkz. [yükleme ve oturum açma](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı** ' nı seçin.
+1. IntelliJ Proje Gezgini ' nde projenize sağ tıklayın ve **Azure**  ->  **yay bulutu 'na Azure dağıtımı**' nı seçin.
 
     [![Azure 'a dağıtma 1 ](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png)](media/spring-cloud-quickstart-java/intellij-deploy-azure-1.png#lightbox)
 
@@ -451,7 +454,7 @@ Azure 'a dağıtmak için Azure hesabınızla oturum açmanız ve aboneliğinizi
 1. **Yay bulutu** metin kutusunda, [Azure Spring Cloud Instance sağlama](./spring-cloud-quickstart-provision-service-instance.md)bölümünde oluşturduğunuz Azure Spring Cloud örneğini seçin.
 1. **Genel uç noktayı** *Etkinleştir* olarak ayarlayın.
 1. **Uygulama:** metin kutusunda **uygulama oluştur...** seçeneğini belirleyin.
-1. *Merhaba yay* girin ve ardından **Tamam** ' a tıklayın.
+1. *Merhaba yay* girin ve ardından **Tamam**' a tıklayın.
 
     [![Azure 'a dağıtma Tamam ](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png)](media/spring-cloud-quickstart-java/intellij-deploy-to-azure.png#lightbox)
 
@@ -481,7 +484,7 @@ Günlükler sonuçlarda görüntülenir:
 
 #### <a name="intellij"></a>[IntelliJ](#tab/IntelliJ)
 
-1. **Azure Gezgini** ' ni ve ardından **yay bulutu** ' nı seçin.
+1. **Azure Gezgini**' ni ve ardından **yay bulutu**' nı seçin.
 1. Çalışan uygulamaya sağ tıklayın.
 1. Açılan listeden **akış günlükleri** ' ni seçin.
 1. Örnek seçin.

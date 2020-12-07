@@ -3,12 +3,12 @@ title: Azure Data Box kullanarak çevrimdışı yedekleme
 description: MARS aracısından bir kurtarma hizmetleri kasasına çevrimdışı olan büyük ilk yedekleme verilerini temel alarak Azure Data Box nasıl kullanabileceğinizi öğrenin.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: 5a4aeebeddcca4adcac511c7c225c8809dd29c93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e789b6c9f4ff2e8cd168e6b5c138d423911d4743
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89180941"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752592"
 ---
 # <a name="azure-backup-offline-backup-by-using-azure-data-box"></a>Azure Data Box kullanarak çevrimdışı yedekleme Azure Backup
 
@@ -56,7 +56,7 @@ Azure Data Box kullanarak MARS aracısından verileri temel alan işlem, aşağ�
 >[!IMPORTANT]
 >Tek bir sunucudan ilk yedekleme verileri tek bir Azure Data Box örneği veya Azure Data Box disk içinde bulunmalıdır ve aynı veya farklı SKU 'ların birden çok cihazı arasında paylaşılamaz. Ancak bir Azure Data Box cihaz, birden çok sunucudan ilk yedeklemeleri içerebilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="azure-subscription-and-required-permissions"></a>Azure aboneliği ve gerekli izinler
 
@@ -116,7 +116,7 @@ Azure PowerShell, MSI dosyası kullanılarak da yüklenmiş olabilir. Kaldırmak
 MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MARS ve Azure Data Box kullanan çevrimdışı yedekleme işlemi, Data Box cihazların teslim edilmiş durumda olmasını gerektirir. Gereksiniminize yönelik en uygun SKU 'YU sıralamak için bkz. [yedekleme veri boyutu ve desteklenen Data Box SKU 'lar](#backup-data-size-and-supported-data-box-skus). Öğreticideki adımları izleyin: Data Box cihazlarınızı sıralamak ve almak için [Azure Data Box diski sıralama](../databox/data-box-disk-deploy-ordered.md) .
 
 > [!IMPORTANT]
-> **Hesap türü**Için *blobstorage* ' ı seçmeyin. MARS Aracısı, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluşturduğunuzda, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
+> **Hesap türü** Için *blobstorage* ' ı seçmeyin. MARS Aracısı, *Blobstorage* seçildiğinde desteklenmeyen sayfa bloblarını destekleyen bir hesap gerektirir. Azure Data Box işiniz için hedef depolama hesabı oluşturduğunuzda, **Hesap türü** olarak **Storage v2 'yi (genel amaçlı v2)** seçin.
 
 ![Örnek ayrıntılarında hesap türünü seçin](./media/offline-backup-azure-data-box/instance-details.png)
 
@@ -124,7 +124,7 @@ MARS Aracısı 'nı kullanarak çevrimdışı yedeklemeyi tetiklemeniz için, MA
 
 1. MARS aracısının önceki tüm yüklemelerini kaldırdığınızdan emin olun.
 1. [Bu Web sitesinden](https://aka.ms/azurebackup_agent)en son Mars aracısını indirin.
-1. *MARSAgentInstaller.exe*çalıştırın ve yalnızca yedeklemelerin depolanmasını Istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](./install-mars-agent.md#install-and-register-the-agent) için *yalnızca* adımları uygulayın.
+1. *MARSAgentInstaller.exe* çalıştırın ve yalnızca yedeklemelerin depolanmasını Istediğiniz kurtarma hizmetleri kasasında [aracıyı yüklemek ve kaydetmek](./install-mars-agent.md#install-and-register-the-agent) için *yalnızca* adımları uygulayın.
 
    > [!NOTE]
    > Kurtarma Hizmetleri Kasası, Azure Data Box işle aynı abonelikte olmalıdır.
@@ -182,8 +182,8 @@ NFS protokolünü kullanarak Data Box cihazınızı yerel bir sistem olarak bağ
 
     ![Yedeklenecek öğeleri ekle](./media/offline-backup-azure-data-box/add-items.png)
 
-1. **Dosyalar ve klasörler** ve **sistem durumu**için uygun yedekleme zamanlamasını ve bekletme ilkesini seçin. Sistem durumu, Windows istemcileri için değil yalnızca Windows Server 'Lar için geçerlidir.
-1. Sihirbazın **Ilk yedekleme türünü (dosyalar ve klasörler) seçin** sayfasında, **Microsoft Azure Data Box disklerini kullanarak aktar** seçeneğini belirleyin ve **İleri ' yi**seçin.
+1. **Dosyalar ve klasörler** ve **sistem durumu** için uygun yedekleme zamanlamasını ve bekletme ilkesini seçin. Sistem durumu, Windows istemcileri için değil yalnızca Windows Server 'Lar için geçerlidir.
+1. Sihirbazın **Ilk yedekleme türünü (dosyalar ve klasörler) seçin** sayfasında, **Microsoft Azure Data Box disklerini kullanarak aktar** seçeneğini belirleyin ve **İleri ' yi** seçin.
 
     ![İlk yedekleme türünü seçin](./media/offline-backup-azure-data-box/initial-backup-type.png)
 
@@ -208,11 +208,11 @@ NFS protokolünü kullanarak Data Box cihazınızı yerel bir sistem olarak bağ
     ![Ağ yolunu girin](./media/offline-backup-azure-data-box/enter-network-path.png)
 
     >[!IMPORTANT]
-    > Azure Data Box diskinin kök dizinine ağ yolunu sağlayın. Bu dizin, *Pageblob*adlı bir dizin içermelidir.
+    > Azure Data Box diskinin kök dizinine ağ yolunu sağlayın. Bu dizin, *Pageblob* adlı bir dizin içermelidir.
     >
     >![Azure Data Box diskin kök dizini](./media/offline-backup-azure-data-box/root-directory.png)
     >
-    >Örneğin, diskin yolu `\\mydomain\myserver\disk1\` ve *Disk1* , *pageblob*ADLı bir dizin içeriyorsa, Mars Aracısı sihirbaz sayfasında girdiğiniz yol olur `\\mydomain\myserver\disk1\` .
+    >Örneğin, diskin yolu `\\mydomain\myserver\disk1\` ve *Disk1* , *pageblob* ADLı bir dizin içeriyorsa, Mars Aracısı sihirbaz sayfasında girdiğiniz yol olur `\\mydomain\myserver\disk1\` .
     >
     >[Azure Data Box 100-TB bir cihaz ayarlarsanız](#set-up-azure-data-box-devices), `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` cihaza ağ yolu olarak girin.
 
@@ -267,7 +267,7 @@ Sorununuzun daha önce açıklananla aynı olup olmadığını görmek için aş
 
 #### <a name="step-2-of-verification"></a>Doğrulama adım 2
 
-1. Yükleme yolundaki **geçici** klasörü açın. Varsayılan Temp klasörü yolu, *C:\Program Files\Microsoft Azure Recovery Services*SSIS \ temp ' dir. *Cbuicurr* dosyasını bulun ve dosyayı açın.
+1. Yükleme yolundaki **geçici** klasörü açın. Varsayılan Temp klasörü yolu, *C:\Program Files\Microsoft Azure Recovery Services* SSIS \ temp ' dir. *Cbuicurr* dosyasını bulun ve dosyayı açın.
 
 1. *Cbuicurr* dosyasında son satıra ilerleyin ve sorunun bu hata iletisiyle aynı olup olmadığını denetleyin: `Unable to create an Azure AD application credential in customer's account. Exception: Update to existing credential with KeyId <some guid> is not allowed` .
 
@@ -277,14 +277,14 @@ Bu sorunu çözmeye yönelik bir geçici çözüm olarak, aşağıdaki adımlar�
 
 #### <a name="step-1-of-workaround"></a>Geçici çözüm 1. adım
 
-İçeri veya dışarı aktarma işi oluşturulan abonelikte yönetici erişimine sahip farklı bir hesap kullanarak MAB Kullanıcı arabiriminde görünen PowerShell 'de oturum açın.
+Data Box işi oluşturulan abonelikte yönetici erişimine sahip farklı bir hesap kullanarak MAB Kullanıcı arabiriminde görünen PowerShell 'de oturum açın.
 
 #### <a name="step-2-of-workaround"></a>Adım 2/çözüm
 
 Başka hiçbir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamışsa ve uygulamaya bağımlı başka bir sunucu yoksa `AzureOfflineBackup_<Azure User Id>` , bu uygulamayı silin. **Azure Portal**  >  **Azure Active Directory**  >  **uygulama kayıtları**' yı seçin.
 
 >[!NOTE]
-> `AzureOfflineBackup_<Azure User Id>`Uygulamanın başka bir çevrimdışı dengeli dağıtım olup olmadığını ve bu uygulamaya bağlı başka bir sunucu yoksa da denetleyin. **Settings**  >  **Ortak anahtarlar** bölümü altında ayarlar**anahtarlar** ' a gidin. Başka hiçbir ortak anahtar eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın.
+> `AzureOfflineBackup_<Azure User Id>`Uygulamanın başka bir çevrimdışı dengeli dağıtım olup olmadığını ve bu uygulamaya bağlı başka bir sunucu yoksa da denetleyin. **Settings**  >  **Ortak anahtarlar** bölümü altında ayarlar **anahtarlar** ' a gidin. Başka hiçbir ortak anahtar eklenmelidir. Başvuru için aşağıdaki ekran görüntüsüne bakın.
 >
 >![Ortak anahtarlar](./media/offline-backup-azure-data-box/public-keys.png)
 
@@ -296,19 +296,19 @@ Başka hiçbir sunucuda, çevrimdışı dengeli dağıtım yapılandırılmamı�
 
 2. Sertifikayı seçin, **Tüm görevler**' e sağ tıklayın ve. cer biçiminde özel anahtar olmadan **dışarı aktar** ' ı seçin.
 
-3. 2. adımda bahsedilen Azure çevrimdışı yedekleme uygulamasına gidin. **Ayarlar**  >  **anahtarlar**  >  **ortak anahtarı karşıya yükle ' yi**seçin. Önceki adımda verdiğiniz sertifikayı karşıya yükleyin.
+3. 2. adımda bahsedilen Azure çevrimdışı yedekleme uygulamasına gidin. **Ayarlar**  >  **anahtarlar**  >  **ortak anahtarı karşıya yükle ' yi** seçin. Önceki adımda verdiğiniz sertifikayı karşıya yükleyin.
 
     ![Ortak anahtarı karşıya yükle](./media/offline-backup-azure-data-box/upload-public-key.png)
 
 4. Sunucusunda, Çalıştır penceresine **Regedit** ' i girerek kayıt defterini açın.
 
-5. Kayıt defteriComputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider gidin * .* **CloudBackupProvider**' a sağ tıklayın ve adıyla yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
+5. Kayıt defteriComputer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider gidin *.* **CloudBackupProvider**' a sağ tıklayın ve adıyla yeni bir dize değeri ekleyin `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
     > Azure kullanıcı KIMLIĞINI almak için şu eylemlerden birini gerçekleştirin:
     >
     >- Azure bağlı PowerShell 'den `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as defined in the portal"` komutunu çalıştırın.
-    > - `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *Currentuserıd*adlı kayıt defteri yoluna gidin.
+    > - `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup` *Currentuserıd* adlı kayıt defteri yoluna gidin.
 
 6. Önceki adımda eklenen dizeye sağ tıklayın ve **Değiştir**' i seçin. Değerde, adım 2 ' de verdiğiniz sertifikanın parmak izini girin. **Tamam**’ı seçin.
 

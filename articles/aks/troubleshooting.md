@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684177"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751487"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -24,41 +24,36 @@ Ayrıca, pods, düğümler, kümeler ve diğer özelliklerle ilgili sorunları g
 
  [Daha fazla çekirdek isteyin](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>AKS için düğüm başına en fazla düğüm sayısı ayarı nedir?
-
-Azure portal bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm sayısı ayarı varsayılan olarak 30 ' dur.
-Azure CLı 'de bir AKS kümesi dağıtırsanız, düğüm başına en fazla düğüm ayarı varsayılan olarak 110 ' dir. (Azure CLı 'nın en son sürümünü kullandığınızdan emin olun). Bu ayar `–-max-pods` , komutundaki bayrağı kullanılarak değiştirilebilir `az aks create` .
-
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Gelişmiş ağlarla AKS kümesi dağıtma sırasında insufficientSubnetSize hatası alıyorum. Ne yapmalıyım?
 
 Bu hata, bir küme için kullanımda olan bir alt ağın, başarılı bir kaynak ataması için CıDR içindeki IP 'Leri artık kullanmadığını gösterir. Kubenet kümeleri için, gereksinim kümedeki her düğüm için yeterli bir IP alanıdır. Azure CNı kümeleri için, gereksinim her düğüm ve kümedeki pod için yeterli IP alanı olur.
 [Azure CNI tasarımı](configure-azure-cni.md#plan-ip-addressing-for-your-cluster)hakkında daha fazla bilgi edinmek için IP 'lere IP atama.
 
-Bu hatalar, yetersiz alt ağ boyutu gibi sorunları proaktif olarak sunan [aks tanılamasında](./concepts-diagnostics.md) de ortaya çıkmış olur.
+Bu hatalar Ayrıca, yetersiz alt ağ boyutu gibi sorunları proaktif olarak sunan [aks tanılamasında](concepts-diagnostics.md)de ortaya çıkmış olur.
 
 Aşağıdaki üç (3) durum, yetersiz alt ağ boyutu hatasına neden olur:
 
-1. AKS ölçeği veya AKS Nodepool ölçeği
-   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of new nodes requested` .
-   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of nodes requested times (*) the node pool's --max-pod value` .
+1. AKS ölçeği veya AKS düğüm havuzu ölçeği
+   1. Kubenet kullanılıyorsa, ' `number of free IPs in the subnet` **den küçük** olduğunda `number of new nodes requested` .
+   1. Azure CNı kullanıyorsanız, ' `number of free IPs in the subnet` **den az** olduğunda `number of nodes requested times (*) the node pool's --max-pod value` .
 
-1. AKS Upgrade veya AKS Nodepool yükseltmesi
-   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade` .
-   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
+1. AKS yükseltme veya AKS düğüm havuzu yükseltmesi
+   1. Kubenet kullanılıyorsa, ' `number of free IPs in the subnet` **den küçük** olduğunda `number of buffer nodes needed to upgrade` .
+   1. Azure CNı kullanıyorsanız, ' `number of free IPs in the subnet` **den az** olduğunda `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value` .
    
-   Varsayılan olarak AKS kümeleri, bir (1) bir en fazla dalgalanma (yükseltme arabelleği) değeri ayarladı, ancak bu yükseltme davranışı bir [düğüm havuzunun en fazla dalgalanma değeri](upgrade-cluster.md#customize-node-surge-upgrade) ayarlanarak özelleştirilebilir ve bu da bir yükseltmeyi tamamlaması gereken IP sayısını artırır.
+   Varsayılan olarak AKS kümeleri bir (1) bir en fazla dalgalanma (yükseltme arabelleği) değeri ayarladı, ancak bu yükseltme davranışı bir düğüm havuzunun [en fazla aşırı gerilim değeri ayarlanarak özelleştirilebilir, bu da bir yükseltmeyi tamamlaması gereken kullanılabilir IP sayısını artırır.
 
-1. AKS Nodepool Add veya AKS oluştur
-   1. Kubenet kullanılıyorsa, bu, ' `number of free IPs in the subnet` den **küçük** olduğunda gerçekleşir `number of nodes requested for the node pool` .
-   1. Azure CNı kullanıyorsanız, bu, ' `number of free IPs in the subnet` **den küçük** olduğunda gerçekleşir `number of nodes requested times (*) the node pool's --max-pod value` .
+1. AKS düğüm havuzu ekleme veya AKS düğümü oluşturma
+   1. Kubenet kullanılıyorsa, ' `number of free IPs in the subnet` **den küçük** olduğunda `number of nodes requested for the node pool` .
+   1. Azure CNı kullanıyorsanız, ' `number of free IPs in the subnet` **den az** olduğunda `number of nodes requested times (*) the node pool's --max-pod value` .
 
 Yeni alt ağlar oluşturularak aşağıdaki hafifletme uygulanabilir. Var olan bir alt ağın CıDR aralığını güncelleştirememesi nedeniyle, risk azaltma için yeni bir alt ağ oluşturma izni gerekir.
 
 1. İşlem hedefleri için yeterince daha büyük bir CıDR aralığıyla yeni bir alt ağ oluşturun:
    1. Yeni bir istenen çakışmayan aralığa sahip yeni bir alt ağ oluşturun.
-   1. Yeni alt ağda yeni bir nodepool oluşturun.
-   1. Eskisinin değiştirilmesini sağlamak için eski alt ağda bulunan eski nodepool boşallar.
-   1. Eski alt ağı ve eski nodepool silin.
+   1. Yeni alt ağda yeni bir düğüm havuzu oluşturun.
+   1. Yenisiyle değiştirilmesini sağlamak için eski alt ağda bulunan eski düğüm havuzundan Pod 'yi boşaltın.
+   1. Eski alt ağı ve eski düğüm havuzunu silin.
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Pod My CrashLoopBackOff modunda takılmış. Ne yapmalıyım?
 
@@ -89,10 +84,6 @@ Bu zaman aşımları, engellenen düğümler arasındaki iç trafikle ilgili ola
 ## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Var olan bir kümede Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) etkinleştirmeye çalışıyorum. Bunu nasıl yapabilirim?
 
 Mevcut kümeler üzerinde Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) etkinleştirmek Şu anda desteklenmiyor, yeni kümeler oluşturulurken ayarlanmalıdır. Kubernetes RBAC, CLı, portal veya daha sonraki bir API sürümü kullanılırken varsayılan olarak etkindir `2020-03-01` .
-
-## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Kubernetes RBAC etkinleştirilmiş bir küme oluşturdum ve şimdi Kubernetes panosunda çok sayıda uyarı görüyorum. Herhangi bir uyarı olmadan çalışmak için kullanılan Pano. Ne yapmalıyım?
-
-Uyarıların nedeni kümede Kubernetes RBAC 'nin etkin ve panoya erişimi artık varsayılan olarak kısıtlıdır. Genel olarak bu yaklaşım iyi bir uygulamadır çünkü panonun tüm kullanıcıları için varsayılan olarak pozlaması güvenlik tehditlerine neden olabilir. Panoyu hala etkinleştirmek istiyorsanız, [Bu blog gönderisine](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/)ilişkin adımları izleyin.
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Kubectl günlüklerini kullanarak günlükleri alamıyor veya API sunucusuna bağlanamıyorum. "Sunucudan hata: arka uç ararken hata: TCP ara..." hatasını alıyorum. Ne yapmalıyım?
 
@@ -182,11 +173,11 @@ Bu sorun için aşağıdaki geçici çözümleri kullanın:
 
 ## <a name="im-getting-aadsts7000215-invalid-client-secret-is-provided-when-using-aks-api-what-should-i-do"></a>`"AADSTS7000215: Invalid client secret is provided."`AKS API 'sini kullanırken alıyorum. Ne yapmalıyım?
 
-Bu, genellikle hizmet sorumlusu kimlik bilgilerinin süresi dolduğundan oluşur. [AKS kümesinin kimlik bilgilerini güncelleştirin.](update-credentials.md)
+Bu sorun, hizmet sorumlusu kimlik bilgilerinin süresinin dolması nedeniyle oluşur. [AKS kümesinin kimlik bilgilerini güncelleştirin.](update-credentials.md)
 
 ## <a name="i-cant-access-my-cluster-api-from-my-automationdev-machinetooling-when-using-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API sunucusu yetkilendirilmiş IP aralıklarını kullanırken Automation/dev makinem/araçları 'ndan küme API 'me erişemiyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
-Bu `--api-server-authorized-ip-ranges` , kullanılan Otomasyon/geliştirme/araç sistemi SISTEMLERININ IP (lar) veya IP aralıklarını içermelidir. [Yetkılı IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim](api-server-authorized-ip-ranges.md)bölümünde ' IP 'yi bulma ' bölümüne bakın.
+Bu sorunu çözmek için, `--api-server-authorized-ip-ranges` kullanılan Otomasyon/geliştirme/araç sistemi SISTEMLERININ IP (lar) ya da IP aralıklarını içerdiğinden emin olun. [Yetkılı IP adresi aralıklarını kullanarak API sunucusuna güvenli erişim](api-server-authorized-ip-ranges.md)bölümünde ' IP 'yi bulma ' bölümüne bakın.
 
 ## <a name="im-unable-to-view-resources-in-kubernetes-resource-viewer-in-azure-portal-for-my-cluster-configured-with-api-server-authorized-ip-ranges-how-do-i-fix-this-problem"></a>API sunucusu yetkilendirilmiş IP aralıkları ile yapılandırılmış Kümem için Azure portal, Kubernetes kaynak görüntüleyicisinde kaynakları görüntüleyemiyorum. Nasıl yaparım? bu sorun düzeltilsin mi?
 
@@ -208,11 +199,11 @@ Service returned an error. Status=429 Code=\"OperationNotAllowed\" Message=\"The
 
 Bu azaltma hataları [burada](../azure-resource-manager/management/request-limits-and-throttling.md) ve [burada](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md) ayrıntılı olarak açıklanmaktadır
 
-AKS mühendislik ekibinin retıoni, en az 1.18. x sürümünü çalıştırıyor olduğunuzdan emin olmak için birçok geliştirme içerir. Bu geliştirmelerin [burada](https://github.com/Azure/AKS/issues/1413) ve [burada](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)daha fazla ayrıntıya ulaşabilirsiniz.
+AKS mühendislik ekibinin önerisi, çok sayıda geliştirme içeren en az 1.18. x sürümünü çalıştırıyor olmanızı sağlamaktır. Bu geliştirmelerin [burada](https://github.com/Azure/AKS/issues/1413) ve [burada](https://github.com/kubernetes-sigs/cloud-provider-azure/issues/247)daha fazla ayrıntıya ulaşabilirsiniz.
 
 Bu azaltma hataları, abonelik düzeyinde ölçülerek, şu durumlarda yine de gerçekleşmeyebilirsiniz:
-- GET istekleri oluşturan üçüncü taraf uygulamalar vardır (örn. izleme uygulamaları, vs...). Öneri, bu çağrıların sıklığını azaltmaktır.
-- VMSS 'de çok sayıda AKS kümesi/nodepools vardır. Olağan önerisi, belirli bir abonelikte 20-30 ' den az kümeniz olmalıdır.
+- GET istekleri oluşturan üçüncü taraf uygulamalar vardır (örneğin, uygulamaları izleme vb.). Öneri, bu çağrıların sıklığını azaltmaktır.
+- Sanal makine ölçek kümelerini kullanan çok sayıda AKS kümesi/düğüm havuzu vardır. Küme sayısını farklı aboneliklere bölmek için, özellikle de çok etkin (örneğin, etkin bir küme otomatik Scaler) veya birden çok istemcisi (örneğin, Ranma, terraform vb.) olmasını beklemeniz gerekir.
 
 ## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>Kümenizin sağlama durumu, bir işlem gerçekleştirmeme veya bir işlem gerçekleştirmeksizin başarısız olarak değiştirildi. Ne yapmalıyım?
 
@@ -220,46 +211,13 @@ Kümenizin sağlama durumu, herhangi bir işlem gerçekleştirmeksizin veya ile 
 
 Kümenizin sağlama durumu *başarısız* olarak kalırsa veya kümenizdeki uygulamalar çalışmayı durdurduktan sonra [bir destek isteği gönderebilirsiniz](https://azure.microsoft.com/support/options/#submit).
 
+## <a name="my-watch-is-stale-or-azure-ad-pod-identity-nmi-is-returning-status-500"></a>My Watch eski veya Azure AD Pod Identity NMI, durum 500 döndürüyor
+
+Bu [örnekte](limit-egress-traffic.md#restrict-egress-traffic-using-azure-firewall)olduğu gibi Azure Güvenlik Duvarı 'nı kullanıyorsanız, uygulama kurallarını kullanan güvenlik duvarı aracılığıyla uzun süreli TCP bağlantılarında, güvenlik duvarında go 'nun sonlandırmasına neden olan bir hata (Q1CY21 ' de çözümlenebileceği) vardır `keepalives` . Bu sorun çözülene kadar, AKS API Server IP 'sine bir ağ kuralı (uygulama kuralı yerine) ekleyerek azaltabilirsiniz.
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Azure depolama ve AKS sorunlarını giderme
 
-### <a name="what-are-the-recommended-stable-versions-of-kubernetes-for-azure-disk"></a>Azure disk için, Kubernetes 'in önerilen kararlı sürümleri nelerdir? 
-
-| Kubernetes sürümü | Önerilen sürüm |
-|--|:--:|
-| 1.12 | 1.12.9 veya üzeri |
-| 1.13 | 1.13.6 veya üzeri |
-| 1,14 | 1.14.2 veya üzeri |
-
-
-### <a name="waitforattach-failed-for-azure-disk-parsing-devdiskazurescsi1lun1-invalid-syntax"></a>Azure disk için WaitForAttach başarısız oldu: "/dev/disk/Azure/scsi1/lun1" Ayrıştırılıyor: geçersiz sözdizimi
-
-Kubernetes sürüm 1,10 ' de, Bağlamabirimi. WaitForAttach bir Azure disk uzaktan bağlantısı ile başarısız olabilir.
-
-Linux 'ta yanlış bir DevicePath biçim hatası görebilirsiniz. Örnek:
-
-```console
-MountVolume.WaitForAttach failed for volume "pvc-f1562ecb-3e5f-11e8-ab6b-000d3af9f967" : azureDisk - Wait for attach expect device path as a lun number, instead got: /dev/disk/azure/scsi1/lun1 (strconv.Atoi: parsing "/dev/disk/azure/scsi1/lun1": invalid syntax)
-  Warning  FailedMount             1m (x10 over 21m)   kubelet, k8s-agentpool-66825246-0  Unable to mount volumes for pod
-```
-
-Windows 'ta yanlış bir DevicePath (LUN) numarası hatası görebilirsiniz. Örnek:
-
-```console
-Warning  FailedMount             1m    kubelet, 15282k8s9010    MountVolume.WaitForAttach failed for volume "disk01" : azureDisk - WaitForAttach failed within timeout node (15282k8s9010) diskId:(andy-mghyb
-1102-dynamic-pvc-6c526c51-4a18-11e8-ab5c-000d3af7b38e) lun:(4)
-```
-
-Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
-
-| Kubernetes sürümü | Sabit sürüm |
-|--|:--:|
-| 1.10 | 1.10.2 veya üzeri |
-| 1,11 | 1.11.0 veya üzeri |
-| 1,12 ve üzeri | YOK |
-
-
-### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Azure diski için mountOptions 'da uid ve GID ayarlanırken hata oluştu
+### <a name="failure-when-setting-uid-and-gid-in-mountoptions-for-azure-disk"></a>Uid ayarlanırken ve `GID` Azure disk Için mountOptions 'da hata oluştu
 
 Azure disk, varsayılan olarak Ext4, XFS FileSystem ve UID = x, GID = x gibi bir bağlama zamanında ayarlanamaz. Örneğin, mountOptions uid = 999, GID = 999 ' u ayarlamaya çalıştıysanız, şöyle bir hata görür:
 
@@ -290,7 +248,7 @@ spec:
   >[!NOTE]
   > GID ve uid, varsayılan olarak kök veya 0 olarak bağlandığından. GID veya Uid, kök olmayan olarak ayarlandıysa, örneğin 1000, Kubernetes `chown` Bu disk altındaki tüm dizinleri ve dosyaları değiştirmek için kullanılır. Bu işlem zaman alabilir ve diski bağlama işlemi çok yavaş olabilir.
 
-* `chown`GID ve uid ayarlamak Için ınitcontainers içinde kullanın. Örnek:
+* `chown`Ve ayarlamak Için initContainers içinde `GID` kullanın `UID` . Örnek:
 
 ```yaml
 initContainers:
@@ -313,7 +271,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.9 veya üzeri |
 | 1.13 | 1.13.6 veya üzeri |
 | 1,14 | 1.14.2 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz eski bir disk listesine sahipse, mevcut olmayan tüm diskleri VM 'den toplu bir işlem olarak ayırarak azaltabilirsiniz. **Mevcut olmayan diskleri tek tek ayırmak başarısız olabilir.**
 
@@ -332,7 +290,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 | 1.12 | 1.12.10 veya üzeri |
 | 1.13 | 1.13.8 veya üzeri |
 | 1,14 | 1.14.4 veya üzeri |
-| 1,15 ve üzeri | YOK |
+| 1,15 ve üzeri | Yok |
 
 Bu sorun için düzeltilmesi olmayan bir Kubernetes sürümü kullanıyorsanız ve düğümünüz hatalı durumdaysa, aşağıdakilerden birini kullanarak VM durumunu el ile güncelleştirerek azaltabilirsiniz:
 
@@ -387,8 +345,8 @@ parameters:
 
 Bazı ek kullanışlı *Mountoptions* ayarları:
 
-* *mfsymlinks* , Azure dosyaları bağlama (CIFS) sembolik bağlantıları destekliyor
-* *nobrl* , bayt aralığı kilit isteklerinin sunucuya gönderilmesini engelleyecek. Bu ayar, CIFS stili zorunlu bayt aralığı kilitleriyle kesen belirli uygulamalar için gereklidir. Çoğu CIFS sunucusu henüz danışmanlık bayt aralığı kilitlerini istemeyi desteklemez. *Nobrl* kullanmıyorsanız, CIFS stili zorunlu bayt aralığı kilitleri ile kesen uygulamalar aşağıdakine benzer hata iletilerine neden olabilir:
+* `mfsymlinks` Azure dosyaları bağlama (CIFS) sembolik bağlantıları destekliyor olur
+* `nobrl` , bayt aralığı kilit isteklerinin sunucuya gönderilmesini engeller. Bu ayar, CIFS stili zorunlu bayt aralığı kilitleriyle kesen belirli uygulamalar için gereklidir. Çoğu CIFS sunucusu henüz danışmanlık bayt aralığı kilitlerini istemeyi desteklemez. *Nobrl* kullanmıyorsanız, CIFS stili zorunlu bayt aralığı kilitleri ile kesen uygulamalar aşağıdakine benzer hata iletilerine neden olabilir:
     ```console
     Error: SQLITE_BUSY: database is locked
     ```
@@ -404,7 +362,7 @@ fixing permissions on existing directory /var/lib/postgresql/data
 
 Bu hata, CIFS/SMB protokolü kullanılarak Azure dosyaları eklentisi nedeniyle oluşur. CIFS/SMB protokolünü kullanırken, dosya ve dizin izinleri bağlama işleminden sonra değiştirilemez.
 
-Bu sorunu çözmek için, Azure disk eklentisi ile birlikte alt *yol* kullanın. 
+Bu sorunu çözmek için `subPath` Azure disk eklentisi ile birlikte kullanın. 
 
 > [!NOTE] 
 > Ext3/4 disk türü için disk biçimlendirildikten sonra kayıp + bulunan bir dizin bulunur.
@@ -441,7 +399,7 @@ Bu sorun aşağıdaki Kubernetes sürümlerinde düzeltildi:
 |--|:--:|
 | 1.12 | 1.12.6 veya üzeri |
 | 1.13 | 1.13.4 veya üzeri |
-| 1,14 ve üzeri | YOK |
+| 1,14 ve üzeri | Yok |
 
 ### <a name="azure-files-mount-fails-because-of-storage-account-key-changed"></a>Azure dosyaları bağlama, depolama hesabı anahtarı değiştiği için başarısız oluyor
 
@@ -474,7 +432,7 @@ E1114 09:58:55.367731 1 static_autoscaler.go:239] Failed to fix node group sizes
 
 Bu hata, bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle oluşur. Böyle bir durumda, Cluster otomatik Scaler, aslında kümede olandan farklı bir değerle sona erer. Bu durumdan yararlanmak için [küme otomatik Scaler][cluster-autoscaler]'ı devre dışı bırakıp yeniden etkinleştirin.
 
-### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Yavaş disk eki, GetAzureDiskLun 10 ila 15 dakika sürer ve bir hata alırsınız
+### <a name="slow-disk-attachment-getazuredisklun-takes-10-to-15-minutes-and-you-receive-an-error"></a>Yavaş disk eki, `GetAzureDiskLun` 10 ila 15 dakika sürer ve bir hata alırsınız
 
 **1.15.0 ' den eski** Kubernetes sürümlerinde, **hata waitforattach for disk için LUN bulunamıyor** gibi bir hata alabilirsiniz.  Bu sorunun geçici çözümü yaklaşık 15 dakika bekleyip yeniden denenecektir.
 
@@ -483,13 +441,13 @@ Bu hata, bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle olu
 
 Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) itibariyle, [Kubernetes.io ön ekine sahip etiketlerin yalnızca tanımlı bir alt kümesi](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) , kubelet 'in düğümlere uygulanabilir. AKS, etkilenen iş yükleri için kapalı kalma süresine neden olabileceğinden, sizin adınıza etkin etiketleri kaldıramaz.
 
-Sonuç olarak, bunu azaltmak için şunları yapabilirsiniz:
+Sonuç olarak, bu sorunu azaltmak için şunları yapabilirsiniz:
 
 1. Küme denetim düzlemi 'ni 1,16 veya üzeri bir sürüme yükseltin
 2. Desteklenmeyen kubernetes.io etiketleri olmadan 1,16 veya üzeri yeni bir nodepoool ekleyin
-3. Eski nodepool Sil
+3. Eski düğüm havuzunu Sil
 
-AKS, bu hafifletme kalitesini artırmak için bir nodepool üzerindeki etkin etiketlere muyalara yönelik bir özellik araştırmaktadır.
+AKS, bu hafifletme kalitesini artırmak için düğüm havuzundaki etkin etiketlerin muyalarını araştırmaktadır.
 
 
 

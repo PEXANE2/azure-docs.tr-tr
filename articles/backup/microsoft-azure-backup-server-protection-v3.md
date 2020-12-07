@@ -3,12 +3,12 @@ title: V3 RTM 'nin yedekleyebilecekleri Azure Backup Sunucusu
 description: Bu makalede, v3 RTM korumalarına Azure Backup tüm iş yükleri, veri türleri ve yüklemelerin listelendiği bir koruma matrisi sunulmaktadır.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88763618"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752388"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Sunucusu v3 RTM koruma matrisi
 
@@ -78,7 +78,7 @@ Aşağıdaki matris, Azure Backup Sunucusu v3 RTM ve önceki sürümleriyle nele
 |Hyper-V konağı-MABS koruma Aracısı, Hyper-V konak sunucusu, küme veya VM üzerinde|Windows Server 2008 SP2|Fiziksel sunucu<br /><br />Şirket içi Hyper-V sanal makinesi|Desteklenmez|Koruma: Hyper-V bilgisayarları, küme paylaşılan birimleri (CSV)<br /><br />Kurtarma: Sanal makine, dosya ve klasörleri öğe düzeyinde kurtarma, birimler, sanal sabit sürücüler|
 |VMware Sanal Makineleri|VMware vCenter/vSphere ESX/ESXi lisanslı sürüm 5.5/6.0/6.5 |Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMware 'de Windows VM|V3, V2|Küme Paylaşılan birimlerinde (CSV), NFS ve SAN depolamada VMware VM 'Leri<br /> Dosya ve klasörlerin öğe düzeyinde kurtarılması yalnızca Windows VM 'Leri için kullanılabilir, VMware vApps desteklenmez.|
 |VMware Sanal Makineleri|[VMware vSphere lisanslı sürüm 6,7](backup-azure-backup-server-vmware.md#vmware-vsphere-67) |Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMware 'de Windows VM|Yüklemesinde|Küme Paylaşılan birimlerinde (CSV), NFS ve SAN depolamada VMware VM 'Leri<br /> Dosya ve klasörlerin öğe düzeyinde kurtarılması yalnızca Windows VM 'Leri için kullanılabilir, VMware vApps desteklenmez.|
-|Linux|Hyper-V veya VMware konuğu olarak çalışan Linux|Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMware 'de Windows VM|V3, V2|Hyper-V Windows Server 2012 R2 veya Windows Server 2016 üzerinde çalışıyor olmalıdır. Koruma: Tüm sanal makine<br /><br />Kurtarma: Tüm sanal makine <br/><br/> Yalnızca dosya tutarlı anlık görüntüler desteklenir. <br/><br/> Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](../virtual-machines/linux/endorsed-distros.md)makalesi.|
+|Linux|[Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) veya [VMware](backup-azure-backup-server-vmware.md) konuğu olarak çalışan Linux|Fiziksel sunucu, <br/>Şirket içi Hyper-V VM 'si, <br/> VMware 'de Windows VM|V3, V2|Hyper-V Windows Server 2012 R2 veya Windows Server 2016 üzerinde çalışıyor olmalıdır. Koruma: Tüm sanal makine<br /><br />Kurtarma: Tüm sanal makine <br/><br/> Yalnızca dosya tutarlı anlık görüntüler desteklenir. <br/><br/> Desteklenen Linux dağıtımları ve sürümlerinin tüm listesi için bkz. [Azure tarafından onaylanan dağıtımların Linux](../virtual-machines/linux/endorsed-distros.md)makalesi.|
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute desteği
 

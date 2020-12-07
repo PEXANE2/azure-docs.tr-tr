@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8df24b44d648343c46532eed443717f444bd0058
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95975658"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751725"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -466,12 +466,9 @@ Ayrıca, Application Gateway erişim günlükleri için popüler [Goaccess](http
 
 Genellikle, arka uca erişim bir ağ güvenlik grubu (NSG), özel DNS veya uygulama ağ geçidi alt ağında Kullanıcı tanımlı yönlendirme (UDR) tarafından engellendiğinde bilinmeyen bir durum görürsünüz. Daha fazla bilgi için bkz. [Application Gateway Için arka uç sistem durumu, tanılama günlüğü ve ölçümler](application-gateway-diagnostics.md).
 
-### <a name="is-there-any-case-where-nsg-flow-logs-wont-show-allowed-traffic"></a>NSG akış günlüklerinin izin verilen trafiği göstermeyeceği bir durum var mı?
+### <a name="are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet"></a>Application Gateway v2 alt ağıyla ilişkili NSG 'ler için desteklenen NSG akış günlükleri var mı?
 
-Evet. Yapılandırmanız aşağıdaki senaryoda eşleşiyorsa NSG akış günlüklerinizin izin verilen trafiğini görmezsiniz:
-- Application Gateway v2 'yi dağıttıysanız
-- Application Gateway alt ağında bir NSG var
-- NSG akış günlüklerini bu NSG 'de etkinleştirdiniz
+Geçerli platform sınırlamaları nedeniyle, Application Gateway v2 (Standard_v2, WAF_v2) alt ağı üzerinde bir NSG varsa ve NSG akış günlüklerini etkinleştirdiyseniz, belirleyici olmayan bir davranış görürsünüz ve bu senaryo şu anda desteklenmemektedir.
 
 ### <a name="does-application-gateway-store-customer-data"></a>Application Gateway müşteri verilerini mi depolumidir?
 

@@ -1,14 +1,17 @@
 ---
 title: Azure geçişi sunucu değerlendirmesi ile içeri aktarılan bir CSV dosyası kullanarak şirket içi sunucuları değerlendirme
 description: Azure geçişi sunucu değerlendirmesi ' nde içeri aktarılan CSV dosyası kullanarak Azure 'a geçiş için şirket içi sunucuların nasıl keşfedileceğini açıklar
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
-ms.openlocfilehash: 30f17bb6b22d4d19cf225aa52d8284f5306a44ee
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dfa7ee941e2c373b02fe5fb2f2a648a60a677670
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308382"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753119"
 ---
 # <a name="tutorial-assess-servers-using-an-imported-csv-file"></a>Öğretici: içeri aktarılan bir CSV dosyası kullanarak sunucuları değerlendirme
 
@@ -39,7 +42,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/pricing/free-trial/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Tek bir CSV dosyasında ve bir Azure geçişi projesinde en fazla 20.000 sunucu ekleyebilirsiniz. 
 - CSV dosyasında belirtilen işletim sistemi adları, [desteklenen adları](#supported-operating-system-names)içermelidir ve bu adlara uymalıdır.
@@ -53,7 +56,7 @@ Bir Azure geçişi projesi oluşturmak için şunları içeren bir hesap gerekir
 
 Ücretsiz Azure hesabı oluşturduysanız aboneliğinizin sahibi siz olursunuz. Abonelik sahibi değilseniz, izinleri aşağıdaki şekilde atamak için sahibiyle birlikte çalışın:
 
-1. Azure portal, "abonelikler" araması yapın ve **Hizmetler**altında **abonelikler**' i seçin.
+1. Azure portal, "abonelikler" araması yapın ve **Hizmetler** altında **abonelikler**' i seçin.
 
     ![Azure aboneliğini aramak için arama kutusu](./media/tutorial-discover-import/search-subscription.png)
 
@@ -68,7 +71,7 @@ Bir Azure geçişi projesi oluşturmak için şunları içeren bir hesap gerekir
 
     ![Hesaba rol atamak için rol ataması Ekle sayfasını açar](./media/tutorial-discover-import/assign-role.png)
 
-7. Portalda, kullanıcılar için arama yapın ve **Hizmetler**altında **Kullanıcılar**' ı seçin.
+7. Portalda, kullanıcılar için arama yapın ve **Hizmetler** altında **Kullanıcılar**' ı seçin.
 8. **Kullanıcı ayarları**' nda, Azure AD kullanıcılarının uygulamaları kaydedebildiğini doğrulayın (varsayılan olarak **Evet** ' e ayarlanır).
 
     ![Kullanıcıların Active Directory uygulamalar kaydedebildiğini Kullanıcı ayarlarında doğrula](./media/tutorial-discover-import/register-apps.png)
@@ -81,7 +84,7 @@ Yoksa yeni bir Azure geçişi projesi ayarlayın.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.
-3. **Genel bakış**bölümünde **proje oluştur**' u seçin.
+3. **Genel bakış** bölümünde **proje oluştur**' u seçin.
 5. **Proje oluştur**' da Azure aboneliğinizi ve kaynak grubunuzu seçin. Yoksa, bir kaynak grubu oluşturun.
 6. **Proje ayrıntıları**' nda projeyi oluşturmak istediğiniz proje adını ve coğrafi konumu belirtin. [Kamu](migrate-support-matrix.md#supported-geographies-public-cloud) ve [kamu bulutları](migrate-support-matrix.md#supported-geographies-azure-government)için desteklenen coğrafi lıkları gözden geçirin.
 

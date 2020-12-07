@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337619"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750722"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud 'da bir uygulamayı dağıtıma hazırlama
 
@@ -29,7 +29,7 @@ Bu makalede, Azure yay bulutu 'nda .NET Core Steeltoe uygulaması çalıştırma
 
 Azure yay bulutu şunları destekler:
 
-* .NET Core 3,1
+* .NET Core 3.1
 * Steeltoe 2,4 ve 3,0
 
 ## <a name="dependencies"></a>Bağımlılıklar
@@ -149,6 +149,9 @@ Spring Boot sürümü | Yay bulutu sürümü
 2.1 | Greenwich. RELEASE
 2.2 | Hoxton. SR8
 2.3 | Hoxton. SR8
+
+> [!NOTE]
+> Spring Boot 2,4 ile uygulamalarınız ve Eureka arasındaki TLS kimlik doğrulamasında bir sorun tespit ettik ve bu sorunu çözmek için şu anda Spring Community ile çalışıyor. Geçici çözüm için lütfen [SSS bölümüne](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development) bakın.
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Spring Boot sürüm 2,1 için bağımlılıklar
 

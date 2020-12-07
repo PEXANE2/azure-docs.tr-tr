@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: 0dbd208cea64a3b2dc22f7603f654127e5b46294
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511772"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751878"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -37,6 +37,7 @@ Aralık ayında güncelleştirmeler şunlardır:
 
 - [Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Azure SYNAPSE Analytics adanmış SQL havuzu için SQL için Azure Defender desteği genel kullanıma sunuldu](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu
 
@@ -68,6 +69,24 @@ SQL için Azure Defender, adanmış SQL havuzlarınızı ile korur:
 SQL için Azure Defender 'ın Azure SYNAPSE Analytics SQL havuzları desteği, Azure Güvenlik Merkezi 'nde Azure SQL veritabanlarına otomatik olarak eklenir. Azure portal SYNAPSE çalışma alanı sayfanızda yeni bir "SQL için Azure Defender" sekmesi bulacaksınız.
 
 [SQL Için Azure Defender](defender-for-sql-introduction.md)hakkında daha fazla bilgi edinin.
+
+
+### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)
+
+Azure ortamınız için iki yeni bulut Yerel enine koruma özelliği ekledik.
+
+Bu yeni korumalar tehdit aktörlerini saldırılara karşı dayanıklılığını büyük ölçüde geliştirir ve Azure Defender tarafından korunan Azure kaynakları sayısını önemli ölçüde artırır.
+
+- **Kaynak Yöneticisi Için Azure Defender** -kuruluşunuzda gerçekleştirilen tüm kaynak yönetimi işlemlerini otomatik olarak izler. Daha fazla bilgi için bkz:
+    - [Kaynak Yöneticisi için Azure Defender 'a giriş](defender-for-resource-manager-introduction.md)
+    - [Kaynak Yöneticisi uyarılar için Azure Defender 'a yanıt verme](defender-for-resource-manager-usage.md)
+    - [Kaynak Yöneticisi için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-resourcemanager)
+
+- **DNS Için Azure Defender** -Azure kaynaklarınızdaki tüm DNS sorgularını sürekli izler. Daha fazla bilgi için bkz:
+    - [DNS için Azure Defender 'a giriş](defender-for-dns-introduction.md)
+    - [DNS uyarıları için Azure Defender 'a yanıt verme](defender-for-dns-usage.md)
+    - [DNS için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-dns)
+
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -124,7 +143,7 @@ Bu uyumluluk standardı hakkında daha fazla bilgi için bkz. [NıST SP 800-171 
 
 Artık güvenlik önerileri listesini bir dizi ölçüte göre filtreleyebilirsiniz. Aşağıdaki örnekte, öneriler listesi şu önerileri gösterecek şekilde filtrelenmiştir:
 
-- **genel kullanıma sunulmuştur** (örn. Önizleme)
+- **genel kullanıma sunulmuştur** (yani Önizleme)
 - **depolama hesapları** içindir
 - **hızlı düzeltme** düzeltmesini destekleme
 
@@ -148,7 +167,7 @@ Artık otomatik sağlamayı yapılandırabilirsiniz:
 
 ### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>Güvenli puan, sürekli dışarı aktarma (Önizleme) ile kullanılabilir
 
-Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analytics çalışma alanına gerçek zamanlı olarak yaptığınız değişiklikleri yazabilirsiniz. Bu özelliği şu şekilde kullanın:
+Güvenli puanı sürekli dışa aktarma ile Azure Event Hubs veya bir Log Analytics çalışma alanına gerçek zamanlı olarak yaptığınız değişiklikleri gerçek zamanlı olarak akışla aktarabilirsiniz. Bu özelliği şu şekilde kullanın:
 
 - Dinamik raporlarla zaman içindeki güvenli puanınızı izleyin
 - güvenli Puanlama verilerini Azure Sentinel 'e (veya başka bir SıEM) aktarma
@@ -226,7 +245,7 @@ Bu öneri, **sanal ağların Azure Güvenlik Duvarı tarafından korunması gere
 
 Öneri **yetkılı IP aralıklarının artık, Kubernetes hizmetlerinde tanımlanması gerekir** . Şimdi hızlı bir çözüm seçeneği vardır.
 
-Bu öneriye ve diğer tüm güvenlik merkezi önerilerine ilişkin daha fazla bilgi için bkz. [güvenlik önerileri-bir başvuru kılavuzu](recommendations-reference.md).
+Bu öneri ve diğer tüm güvenlik merkezi önerileri hakkında daha fazla bilgi için bkz. [güvenlik önerileri-bir başvuru kılavuzu](recommendations-reference.md).
 
 :::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="Yetkili IP aralıkları hızlı düzelme seçeneği ile Kubernetes Hizmetleri önerisi üzerinde tanımlanmalıdır":::
 

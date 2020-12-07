@@ -4,12 +4,12 @@ description: En son özellikleri ve güvenlik güncelleştirmelerini almak için
 services: container-service
 ms.topic: article
 ms.date: 11/17/2020
-ms.openlocfilehash: 30ad80727c238ae7e415039adf3e4eb75dbbc1b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531352"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751504"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
@@ -93,7 +93,7 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS kümesini yükseltme
 
-AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir arabellek düğümü (veya [en fazla aşırı gerilim](#customize-node-surge-upgrade)olarak yapılandırılan sayıda düğüm) ekler. Böylece, çalışan uygulamaların kesintiye uğramasını en aza indirmek için eski [düğümlerden birini eşit][kubernetes-drain] hale gelir (en fazla gerilim kullanıyorsanız, belirtilen arabellek düğümlerinin sayısıyla aynı anda çok sayıda düğüm [olarak çalışır)][kubernetes-drain] . Eski düğüm tamamen boşaltılırsa, yeni sürümü alacak şekilde yeniden görüntülenir ve aşağıdaki düğümün yükseltilmesi için arabellek düğümü olur. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir. İşlemin sonunda, son drenaj düğümü silinecek ve var olan aracı düğüm sayısı korunacaktır.
+AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir arabellek düğümü (veya [en fazla aşırı gerilim](#customize-node-surge-upgrade)olarak yapılandırılan sayıda düğüm) ekler. Böylece, çalışan uygulamaların kesintiye uğramasını en aza indirmek için eski [düğümlerden birini eşit][kubernetes-drain] hale gelir (en fazla gerilim kullanıyorsanız, belirtilen arabellek düğümlerinin sayısıyla aynı anda çok sayıda düğüm [olarak çalışır)][kubernetes-drain] . Eski düğüm tamamen boşaltılırsa, yeni sürümü alacak şekilde yeniden görüntülenir ve aşağıdaki düğümün yükseltilmesi için arabellek düğümü olur. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir. İşlemin sonunda, son arabellek düğümü silinecek, mevcut Aracı düğüm sayısı ve bölge bakiyesi korunacaktır.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -104,8 +104,9 @@ az aks upgrade \
 
 Kaç tane düğüme sahip olduğunuza bağlı olarak, kümeyi yükseltmek birkaç dakika sürer.
 
-> [!NOTE]
-> Bir küme yükseltmesinin tamamlanabilmesi için bir toplam izin verilen süre vardır. Bu süre, ürünü alınarak hesaplanır `10 minutes * total number of nodes in the cluster` . Örneğin, 20 düğümlü bir kümede, yükseltme işlemleri 200 dakika içinde başarılı olmalıdır veya AKS kurtarılamayan bir küme durumundan kaçınmak için işlemi başarısız olur. Yükseltme hatasını kurtarmak için, zaman aşımı isabet alındıktan sonra yükseltme işlemini yeniden deneyin.
+> [!IMPORTANT]
+> Herhangi `PodDisruptionBudgets` bir (pdb 'leri), en az 1 Pod çoğaltmasının tek seferde taşınmasına izin verildiğinden emin olun, aksi takdirde boşalt/çıkar işlemi başarısız olur.
+> Boşaltma işlemi başarısız olursa, uygulamaların çökmemesini sağlamak için yükseltme işlemi tasarım tarafından başarısız olur. Lütfen işlemin durmasının ne olduğunu (yanlış pdb 'leri, kotanın olmaması vb.) düzeltin ve işlemi yeniden deneyin.
 
 Yükseltmenin başarılı olduğunu doğrulamak için [az aks Show][az-aks-show] komutunu kullanın:
 

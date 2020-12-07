@@ -1,15 +1,18 @@
 ---
 title: Azure geçişi ile makineleri fiziksel sunucu olarak Azure 'a geçirin.
 description: Bu makalede, Azure geçişi ile fiziksel makinelerin Azure 'a nasıl geçirileceği açıklanır.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302893"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752881"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -22,7 +25,7 @@ Bu makalede, Azure geçişi: sunucu geçiş aracını kullanarak makineleri fizi
 - Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri geçirin.
 
 
-Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi ile Azure 'u kullanmaya hazırlanma: sunucu geçişi.

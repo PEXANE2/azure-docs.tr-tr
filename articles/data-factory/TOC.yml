@@ -145,6 +145,10 @@
           href: tutorial-deploy-ssis-packages-azure-powershell.md
         - name: Sanal ağa katılma
           href: tutorial-deploy-ssis-virtual-network.md
+    - name: Köken
+      items:
+        - name: Data Factory köken verilerini Azure Purview’a iletme
+          href: turorial-push-lineage-to-purview.md
     - name: Uçtan uca laboratuvarlar
       items:
         - name: Veri fabrikası ve veri paylaşımı kullanarak veri tümleştirme
@@ -688,6 +692,10 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Atlayan pencere tetikleyici bağımlılığı oluşturma
           href: tumbling-window-trigger-dependency.md
+    - name: Köken
+      items:
+        - name: Azure Purview’a bir Data Factory bağlama
+          href: connect-data-factory-to-azure-purview.md
     - name: Senaryolar
       items:
         - name: Veri gölü ve EDW için veri geçişi

@@ -2,15 +2,15 @@
 title: Azure Otomasyonu Güncelleştirme Yönetimi sorunlarını giderme
 description: Bu makalede, Azure Otomasyonu Güncelleştirme Yönetimi sorunları nasıl giderebileceğiniz ve giderebileceğiniz açıklanır.
 services: automation
-ms.date: 10/14/2020
+ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 8818047dd4fef9c495c46b353e68841f83e9677c
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217227"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751266"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -18,6 +18,40 @@ Bu makalede, makinelerinizde Güncelleştirme Yönetimi özelliğini dağıttı�
 
 >[!NOTE]
 >Bir Windows makinesinde Güncelleştirme Yönetimi dağıttığınızda sorunlarla karşılaşırsanız, Windows Olay Görüntüleyicisi açın ve yerel makinedeki **uygulama ve hizmet günlükleri** altında **Operations Manager** olay günlüğünü kontrol edin. Olay KIMLIĞI 4502 ve olay ayrıntıları içeren olayları arayın `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
+
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Senaryo: bekleyen ve yüklü olarak gösterilen Linux güncelleştirmeleri
+
+### <a name="issue"></a>Sorun
+
+Linux makineniz için Güncelleştirme Yönetimi sınıflandırma **güvenliği** ve **diğerleri** altında bulunan belirli güncelleştirmeleri gösterir. Ancak makinede bir güncelleştirme zamanlaması çalıştırıldığında, örneğin yalnızca **güvenlik** sınıflandırmasıyla eşleşen güncelleştirmeleri yüklemek için, yüklenen güncelleştirmeler veya daha önce sınıflandırmayla eşleşen güncelleştirmelerin bir alt kümesinden farklıdır.
+
+### <a name="cause"></a>Nedeni
+
+Linux makineniz için bekleyen bir işletim sistemi güncelleştirmeleri değerlendirmesi tamamlandığında, Linux 'Taki satıcı tarafından sunulan [açık güvenlik açığı ve değerlendirme dili](https://oval.mitre.org/) (oval) dosyaları sınıflandırma için güncelleştirme yönetimi tarafından kullanılır. Sınıflandırma, güvenlik sorunları veya güvenlik açıklarını gideren OVAL dosyalarına bağlı olarak, Linux güncelleştirmeleri için **güvenlik** veya **diğerleri** olarak yapılır. Ancak güncelleştirme zamanlaması çalıştırıldığında, bu, yüklemek için tum, APT veya ZYPPER gibi uygun paket yöneticisini kullanarak Linux makinesinde yürütülür. Linux 'un Paket Yöneticisi, güncelleştirmeleri sınıflandırmak için farklı bir mekanizmaya sahip olabilir. burada sonuçlar, Güncelleştirme Yönetimi, OVAL dosyalarından alındıklarından farklı olabilir.
+
+### <a name="resolution"></a>Çözüm
+
+Linux makinesini, ilgili güncelleştirmeleri ve sınıflandırıldıkları Paket Yöneticisi başına sınıflandırmasını el ile denetleyebilirsiniz. Paket yöneticiniz tarafından hangi güncelleştirmelerin **güvenlik** olarak sınıflandırıldığını anlamak için aşağıdaki komutları çalıştırın.
+
+YıUM için aşağıdaki komut Red Hat tarafından **güvenlik** olarak kategorilere ayrılmamış bir güncelleştirme listesi döndürür. CentOS durumunda her zaman boş bir liste döndürdüğünü ve güvenlik sınıflandırması gerçekleşmediğini unutmayın.
+
+```bash
+sudo yum -q --security check-update
+```
+
+ZYPPER için aşağıdaki komut, SUSE tarafından **güvenlik** olarak sınıflandırılan, sıfır olmayan bir güncelleştirme listesini döndürür.
+
+```bash
+sudo LANG=en_US.UTF8 zypper --non-interactive patch --category security --dry-run
+```
+
+APT için aşağıdaki komut, Ubuntu Linux distros için kurallı olarak **güvenlik** halinde kategorilere ayrılmamış bir güncelleştirme listesi döndürür.
+
+```bash
+sudo grep security /etc/apt/sources.list > /tmp/oms-update-security.list LANG=en_US.UTF8 sudo apt-get -s dist-upgrade -oDir::Etc::Sourcelist=/tmp/oms-update-security.list
+```
+
+Bu listeden, `grep ^Inst` bekleyen tüm güvenlik güncelleştirmelerini almak için komutunu çalıştırın.
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a><a name="failed-to-enable-error"></a>Senaryo: "güncelleştirme çözümü etkinleştirilemedi" hatasını alıyorsunuz
 
@@ -101,7 +135,7 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
 
 1. İşletim sistemine bağlı olarak [Windows](update-agent-issues.md#troubleshoot-offline) veya [Linux](update-agent-issues-linux.md#troubleshoot-offline)için sorun gidericiyi çalıştırın.
 
-2. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bu yönü doğrulamaya ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar**altında **bağlantılı çalışma alanı** ' nı seçin.
+2. Makinenizin doğru çalışma alanına bildirimde bulunduğundan emin olun. Bu yönü doğrulamaya ilişkin yönergeler için bkz. [Azure izleyici ile aracı bağlantısını doğrulama](../../azure-monitor/platform/agent-windows.md#verify-agent-connectivity-to-azure-monitor). Ayrıca, bu çalışma alanının Azure Otomasyonu hesabınıza bağlı olduğundan emin olun. Onaylamak için Otomasyon hesabınıza gidin ve **Ilgili kaynaklar** altında **bağlantılı çalışma alanı** ' nı seçin.
 
 3. Makinelerin Otomasyon hesabınıza bağlı Log Analytics çalışma alanında göründüğünden emin olun. Log Analytics çalışma alanında aşağıdaki sorguyu çalıştırın.
 
@@ -124,7 +158,7 @@ Bu soruna yerel yapılandırma sorunları veya yanlış yapılandırılmış kap
    | sort by TimeGenerated desc
    ```
 
-8. Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesini durdurdu. Çalışma alanınızda, **kullanım ve tahmini maliyetler**altında **veri hacmi yönetimi** ' ne gidin ve kotayı değiştirin veya kaldırın.
+8. Bir `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` sonuç alırsanız, çalışma alanınızda tanımlanan kotaya ulaşıldı ve bu da verilerin kaydedilmesini durdurdu. Çalışma alanınızda, **kullanım ve tahmini maliyetler** altında **veri hacmi yönetimi** ' ne gidin ve kotayı değiştirin veya kaldırın.
 
 9. Sorununuz hala çözülmedi ise, Windows için karma çalışanı yeniden yüklemek üzere [Windows karma Runbook Worker dağıtma](../automation-windows-hrw-install.md) bölümündeki adımları izleyin. Linux için, [Linux karma runbook çalışanı dağıtma](../automation-linux-hrw-install.md)' daki adımları izleyin.
 
@@ -150,7 +184,7 @@ Otomasyon kaynak sağlayıcısını kaydetmek için Azure portal aşağıdaki ad
 
 2. Aboneliğinizi seçin.
 
-3. **Ayarlar**altında **kaynak sağlayıcıları**' nı seçin.
+3. **Ayarlar** altında **kaynak sağlayıcıları**' nı seçin.
 
 4. Kaynak sağlayıcıları listesinden, Microsoft. Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
@@ -182,7 +216,7 @@ Aboneliğiniz Otomasyon kaynak sağlayıcısı için yapılandırılmamışsa, B
 
 3. Dağıtımınızın kapsamında tanımlanan aboneliği bulun.
 
-4. **Ayarlar**altında **kaynak sağlayıcıları**' nı seçin.
+4. **Ayarlar** altında **kaynak sağlayıcıları**' nı seçin.
 
 5. Microsoft. Automation kaynak sağlayıcısının kayıtlı olduğunu doğrulayın.
 
@@ -259,7 +293,7 @@ Makineler, bağımsız değişken sorgu sonuçlarında görünür, ancak yine de
 
 1. Azure portal, doğru şekilde görünmeyen bir makine için Otomasyon hesabına gidin.
 
-2. **Işlem Otomasyonu**altında **karma çalışan grupları** ' nı seçin.
+2. **Işlem Otomasyonu** altında **karma çalışan grupları** ' nı seçin.
 
 3. **Sistem karma çalışanı grupları** sekmesini seçin.
 
@@ -357,7 +391,7 @@ New-AzAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationA
 
 ### <a name="issue"></a>Sorun
 
-**Yeniden başlatma denetimi** seçeneğini **hiçbir şekilde yeniden başlatmaya**ayarlamış olsanız bile, güncelleştirmeler yüklendikten sonra makineler yeniden başlatılıyor.
+**Yeniden başlatma denetimi** seçeneğini **hiçbir şekilde yeniden başlatmaya** ayarlamış olsanız bile, güncelleştirmeler yüklendikten sonra makineler yeniden başlatılıyor.
 
 ### <a name="cause"></a>Nedeni
 
@@ -497,7 +531,7 @@ Bakım pencereleri hakkında daha fazla bilgi için bkz. [Install Updates](../up
 
 ### <a name="issue"></a>Sorun
 
-* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır **Compliance**ve bunların altında bir özel durum iletisi görürsünüz.
+* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır **Compliance** ve bunların altında bir özel durum iletisi görürsünüz.
 * Portalda bir HRESULT hata kodu görürsünüz.
 
 ### <a name="cause"></a>Nedeni

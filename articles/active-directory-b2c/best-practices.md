@@ -11,30 +11,30 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949726"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750229"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için öneriler ve en iyi uygulamalar
 
 Aşağıdaki en iyi yöntemler ve öneriler, Azure Active Directory (Azure AD) B2C 'yi mevcut veya yeni uygulama ortamlarında tümleştirmesinin bazı birincil yönlerini kapsar.
 
-## <a name="fundamentals"></a>Temel Bilgiler
+## <a name="fundamentals"></a>Temeller
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | Çoğu senaryo için Kullanıcı akışları seçin | Azure AD B2C kimlik deneyimi çerçevesi, hizmetin temel kuvvetidir. İlkeler kaydolma, oturum açma veya profil düzenlemesi gibi kimlik deneyimlerini tamamen anlatmaktadır. En yaygın kimlik görevlerini ayarlamanıza yardımcı olması için Azure AD B2C portalı, Kullanıcı akışları adlı önceden tanımlanmış ve yapılandırılabilir ilkeler içerir. Kullanıcı akışları ile yalnızca birkaç tıklamayla, dakikalar içinde harika kullanıcı deneyimleri oluşturabilirsiniz. [Kullanıcı akışları ile özel ilkelerin ne zaman kullanılacağını öğrenin](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | Uygulama kayıtları | Güvenliği sağlanmakta olan her uygulama (Web, yerel) ve API Azure AD B2C kayıtlı olmalıdır. Bir uygulamada iOS ve Android 'in hem Web hem de yerel sürümü varsa, bunları aynı istemci KIMLIĞINE sahip Azure AD B2C bir uygulama olarak kaydedebilirsiniz. [OıDC, SAML, Web ve yerel uygulamaları nasıl kaydedeceğinizi](./tutorial-register-applications.md?tabs=applications)öğrenin. [Azure AD B2C için kullanılabilecek uygulama türleri](./application-types.md)hakkında daha fazla bilgi edinin. |
-| Aylık etkin kullanıcıların faturalandırmasını taşıma | Azure AD B2C, aylık etkin kimlik doğrulamalarından aylık etkin kullanıcılar (MAU) faturalandırmaya taşınmıştır. Çoğu müşteri bu modeli uygun maliyetli olarak bulur. [Aylık etkin kullanıcıların faturalandırılması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/updates/mau-billing/). |
+| Aylık etkin kullanıcıların faturalandırmasını taşıma | Azure AD B2C, aylık etkin kimlik doğrulamalarından aylık etkin kullanıcılar (MAU) faturalandırmaya taşınmıştır. Çoğu müşteri bu modeli uygun maliyetli olarak bulur. [Aylık etkin kullanıcıların faturalandırılması hakkında daha fazla bilgi edinin](https://azure.microsoft.com/updates/mau-billing/). [Bu bağlantıyı kaydet](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>Planlama ve tasarlama
 
 Uygulamanızı ve hizmet mimarinizi tanımlayın, geçerli sistemleri envanter yapın ve Azure AD B2C için geçişinizi planlayın.
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | Uçtan uca bir çözümü mimarın | Azure AD B2C tümleştirme planlarken tüm uygulamalarınızın bağımlılıklarını dahil edin. Şu anda ortamınızdaki veya çözüme eklenmesi gerekebilecek tüm hizmet ve ürünleri (örneğin, Azure Işlevleri, müşteri ilişkileri yönetimi (CRM) sistemleri, Azure API Management ağ geçidi ve depolama hizmetleri) göz önünde bulundurun. Tüm hizmetler için güvenliği ve ölçeklenebilirliği hesaba alın. |
 | Kullanıcılarınızın deneyimlerini belgeleyin | Müşterilerinizin uygulamanızda yaşayabileceğiniz tüm kullanıcı hakkındaki ayrıntılarını bulabilirsiniz. Uygulamanızın kimliği ve profil yönleri ile etkileşim kurarken karşılaşabileceğiniz tüm ekranı ve dallanma akışlarını dahil edin. Planlamasına kullanılabilirlik, erişilebilirlik ve yerelleştirme dahil edin. |
@@ -50,17 +50,17 @@ Uygulamanızı ve hizmet mimarinizi tanımlayın, geçerli sistemleri envanter y
 
 Uygulama aşamasında aşağıdaki önerileri göz önünde bulundurun.
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | Visual Studio Code için Azure AD B2C uzantısıyla özel ilkeleri Düzenle | Visual Studio Code ve topluluk tarafından oluşturulan bu [uzantıyı Visual Studio Code marketi 'nden](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)indirin. Resmi bir Microsoft ürünü olmasa da, Visual Studio Code Azure AD B2C uzantısı özel ilkelerle çalışmayı kolaylaştırmak için çeşitli özellikler içerir. |
 | Sorun gidermeyi öğrenin Azure AD B2C | Geliştirme sırasında [özel ilkelerle ilgili sorunları nasıl giderebileceğinizi](./troubleshoot-custom-policies.md?tabs=applications) öğrenin. Normal bir kimlik doğrulama akışının nasıl göründüğünü öğrenin ve bozukluklar ve hatalar bulmak için araçları kullanın. Örneğin, Kullanıcı günlüğünün çıktı günlüklerini gözden geçirmek için [Application Insights](troubleshoot-with-application-insights.md) kullanın. |
 | Kendini kanıtlamış özel ilke desenleri ile yararlanın | Çeşitli gelişmiş Azure AD B2C Müşteri Kimliği ve erişim yönetimi (CıHAR) Kullanıcı ile ilgili [örnekleri](https://github.com/azure-ad-b2c/samples) bulun. |
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
 Azure AD B2C uygulamanızı test edin ve otomatikleştirin.
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | Genel trafik hesabı | Performans ve yerelleştirme gereksinimlerini test etmek için farklı genel adresten gelen trafik kaynaklarını kullanın. Tüm HTMLs, CSS ve bağımlılıkların performans ihtiyaçlarınızı karşıladığından emin olun. |
 | İşlevsel ve UI testi | Kullanıcı akışlarını uçtan uca test edin. Selenium, VS Web test vb. kullanarak, birkaç dakikada her bir yapay test ekleyin. |
@@ -74,7 +74,7 @@ Azure AD B2C uygulamanızı test edin ve otomatikleştirin.
 
 Azure AD B2C ortamınızı yönetin.
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | Birden çok ortam oluşturma | Daha kolay işlemler ve dağıtım toplaması için geliştirme, test, ön üretim ve üretim için ayrı ortamlar oluşturun. Her biri için Azure AD B2C kiracılar oluşturun. |
 | Özel ilkeleriniz için sürüm denetimini kullanma | Azure AD B2C özel ilkeleriniz için GitHub, Azure Repos veya başka bir bulut tabanlı sürüm denetim sistemi kullanmayı düşünün. |
@@ -84,11 +84,11 @@ Azure AD B2C ortamınızı yönetin.
 | Etkin uyarı ve izleme kurulumu | Application Insights kullanarak Azure AD B2C [Kullanıcı davranışını izleyin](./analytics-with-application-insights.md) . |
 
 ## <a name="support-and-status-updates"></a>Destek ve durum güncelleştirmeleri
-
+## <a name="todays-support-and-status-updates"></a>Todays destek ve durum güncelleştirmeleri
 Hizmetin durumuyla ilgili güncel kalın ve destek seçeneklerini bulun.
 
-| En iyi yöntem | Description |
+| En iyi yöntem | Açıklama |
 |--|--|
 | [Hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Azure AD B2C ürün güncelleştirmeleri ve duyuruları ile güncel kalın. |
-| [Microsoft Desteği](support-options.md) | Azure AD B2C teknik sorunları için bir destek isteği dosyası. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır. |
+| [Microsoft Destek](support-options.md) | Azure AD B2C teknik sorunları için bir destek isteği dosyası. Faturalandırma ve abonelik yönetim desteği ücretsiz olarak sunulmaktadır. |
 | [Azure durumu](https://status.azure.com/status) | Tüm Azure hizmetlerinin geçerli sistem durumunu görüntüleyin. |

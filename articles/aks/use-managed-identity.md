@@ -3,14 +3,13 @@ title: Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 07/17/2020
-ms.author: thomasge
-ms.openlocfilehash: 96a1eebbdcbf269b06d2ece77987ce7813f1d5f5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/06/2020
+ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571071"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751283"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -22,14 +21,13 @@ ms.locfileid: "96571071"
 
 Aşağıdaki kaynağın yüklü olması gerekir:
 
-- Azure CLı, sürüm 2.8.0 veya üzeri
+- Azure CLı, sürüm 2.15.1 veya üzeri
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* Yönetilen kimlikleri olan AKS kümeleri yalnızca kümenin oluşturulması sırasında etkinleştirilebilir.
 * Küme **yükseltme** işlemleri sırasında, yönetilen kimlik geçici olarak kullanılamaz.
 * Yönetilen kimlik etkin kümelerin kiracılarının taşınması/geçirilmesi desteklenmez.
-* Küme `aad-pod-identity` etkinleştirilmişse, düğüm tarafından yönetilen kimlik (NMI) Pod, Azure örnek meta veri uç noktasına yapılan çağrıları ele almak için düğümlerin Iptables 'larını değiştirir. Bu yapılandırma, Pod kullanılmasa bile meta veri uç noktasına yapılan her türlü isteğin NMI tarafından yakalanmasıdır `aad-pod-identity` . AzurePodIdentityException CRD, `aad-pod-identity` CRD 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktasına yapılan tüm isteklerin NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir. `kubernetes.azure.com/managedby: aks` _Kuto-System_ ad alanındaki etiketli sistem KÖKLERI `aad-pod-identity` , AzurePodIdentityException CRD 'yi yapılandırarak içinde dışlanmalıdır. Daha fazla bilgi için bkz. [belirli bir pod veya uygulama için AAD-Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+* Küme `aad-pod-identity` etkinleştirilmişse Node-Managed Identity (NMI) Pod, Azure örnek meta veri uç noktasına yapılan çağrıları ele almak için düğümleri ' Iptables ' ı değiştirir. Bu yapılandırma, Pod kullanılmasa bile meta veri uç noktasına yapılan her türlü isteğin NMI tarafından yakalanmasıdır `aad-pod-identity` . AzurePodIdentityException CRD, `aad-pod-identity` CRD 'de tanımlanan etiketlerle eşleşen bir pod 'dan kaynaklanan meta veri uç noktasına yapılan tüm isteklerin NMI içinde herhangi bir işlem yapılmadan proxy olması gerektiğini bildirmek üzere yapılandırılabilir. `kubernetes.azure.com/managedby: aks` _Kuto-System_ ad alanındaki etiketli sistem KÖKLERI `aad-pod-identity` , AzurePodIdentityException CRD 'yi yapılandırarak içinde dışlanmalıdır. Daha fazla bilgi için bkz. [belirli bir pod veya uygulama için AAD-Pod kimliğini devre dışı bırakma](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
   Bir özel durum yapılandırmak için, [MIC özel durum YAML](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)'yi yükler.
 
 ## <a name="summary-of-managed-identities"></a>Yönetilen kimliklerin Özeti
@@ -38,12 +36,12 @@ AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır
 
 | Kimlik                       | Ad    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
-| Kontrol düzlemi | görünür değil | Inks yük dengeleyiciler ve AKS yönetilen genel IP 'Ler dahil olmak üzere yönetilen ağ kaynakları için AKS tarafından kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
+| Kontrol düzlemi | görünür değil | AKS denetim düzlemi bileşenleri tarafından, giriş yük dengeleyiciler ve AKS yönetilen ortak IP 'Ler ve küme otomatik Scaler işlemleri dahil olmak üzere küme kaynaklarını yönetmek için kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | NA (Kubernetes v 1.15 + için) | Şu anda desteklenmiyor
 | Eklenti | AzureNPM | Kimlik gerekli değil | NA | Hayır
 | Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | Hayır
-| Eklenti | azurepolicy (Gatekeeper) | Kimlik gerekli değil | NA | Hayır
-| Eklenti | azurepolicy | Kimlik gerekli değil | NA | Hayır
+| Eklenti | Azure-Policy (Gatekeeper) | Kimlik gerekli değil | NA | Hayır
+| Eklenti | Azure-ilke | Kimlik gerekli değil | NA | Hayır
 | Eklenti | Calıco | Kimlik gerekli değil | NA | Hayır
 | Eklenti | Pano | Kimlik gerekli değil | NA | Hayır
 | Eklenti | HTTPApplicationRouting | Gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için okuyucu rolü, DNS bölgesi için katkıda bulunan rolü | Hayır
@@ -135,44 +133,14 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 > [!NOTE]
 > Sistem tarafından atanan veya Kullanıcı tarafından atanan kimlikler yönetilen kimliğe güncelleştirildikten sonra, `az nodepool upgrade --node-image-only` yönetilen kimlik güncelleştirmesini tamamlamak için düğümlerinizde bir oluşturma işlemi gerçekleştirin.
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>Kendi denetim düzlemi 'ni getir MI (Önizleme)
-Özel denetim düzlemi kimliği, küme oluşturma işleminden önce mevcut kimliğe erişim izni verilmesini sağlar. Bu, yönetilen bir kimlikle özel VNET veya outboundType of UDR kullanma gibi senaryolara izin vermez.
+## <a name="bring-your-own-control-plane-mi"></a>Kendi denetim düzlemi 'ni getir MI?
+Özel denetim düzlemi kimliği, küme oluşturma işleminden önce mevcut kimliğe erişim izni verilmesini sağlar. Bu özellik, önceden oluşturulmuş yönetilen kimlik ile özel VNET veya outboundType of UDR kullanma gibi senaryolara izin vermez.
 
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
+Azure CLı, sürüm 2.15.1 veya daha yeni bir sürümün yüklü olması gerekir.
 
-Aşağıdaki kaynakların yüklü olması gerekir:
-- Azure CLı, sürüm 2.9.0 veya üzeri
-- Aks-Preview 0.4.57 uzantısı
-
-Kendi denetim düzlemi (Önizleme) getirme sınırlamaları:
+### <a name="limitations"></a>Sınırlamalar
 * Azure Kamu Şu anda desteklenmiyor.
 * Azure Çin 21Vianet Şu anda desteklenmemektedir.
-
-```azurecli-interactive
-az extension add --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az extension update --name aks-preview
-az extension list
-```
-
-```azurecli-interactive
-az feature register --name UserAssignedIdentityPreview --namespace Microsoft.ContainerService
-```
-
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UserAssignedIdentityPreview')].{Name:name,State:properties.state}"
-```
-
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
 
 Henüz yönetilen bir kimliğiniz yoksa, [az ıDENTITY CLI][az-identity-create]kullanarak bir örnek oluşturmalısınız.
 

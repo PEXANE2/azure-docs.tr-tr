@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182810"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751300"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>VM'leri çalışma saatleri dışında başlat/durdur Yapılandır
 
@@ -48,7 +48,7 @@ Eylemi bir abonelik ve kaynak grubuna karşı hedefleyerek veya VM 'lerin belirl
 
 2. **Vmlist** parametre alanına VM 'lerin virgülle ayrılmış bir listesini (boşluk olmadan) ekleyin. Örnek bir liste `vm1,vm2,vm3` .
 
-3. **WhatIf** parametre alanını true olarak ayarlayın.
+3. Değişikliklerinizin önizlemesine bakmak için **whatIf** parametre alanını true olarak ayarlayın.
 
 4. Değişkeni, virgülle `External_ExcludeVMNames` ayrılmış değerler arasında boşluk olmadan, virgülle ayrılmış VM 'lerin (VM1, VM2, VM3) bir listesiyle yapılandırın.
 
@@ -79,7 +79,7 @@ Dağıtılmış bir iş yükünü destekleyen birden çok VM üzerinde iki veya 
 
 3. **Vmlist** parametre alanına VM 'lerin virgülle ayrılmış bir listesini (boşluk olmadan) ekleyin. Örnek bir liste `vm1,vm2,vm3` .
 
-4. **WhatIf** değerini true olarak ayarlayın. 
+4. Değişikliklerinizi önizlemek için **whatIf** değerini true olarak ayarlayın. 
 
 5. `External_ExcludeVMNames`Değişkeni, virgülle ayrılmış değerler arasında boşluk olmadan, virgülle ayrılmış VM 'ler listesiyle yapılandırın.
 

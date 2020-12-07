@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/08/2020
+ms.date: 11/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5aca04a649dfa5228d12737b21ef2ee2b14013b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88041536"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750469"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde, yeniden teknik bir teknik profil tanımlama
 
@@ -39,7 +39,7 @@ Aşağıdaki örnek, bir Restsize teknik profil göstermektedir:
 
 ## <a name="input-claims"></a>Giriş talepleri
 
-**Inputclaim** öğesi REST API göndermek için talepler listesi içerir. Ayrıca, talebin adını REST API tanımlanan adla eşleyebilirsiniz. Aşağıdaki örnekte, ilkeniz ve REST API arasındaki eşleme gösterilmektedir. REST API **,** **Soyadı** , **Soyadı olarak gönderilirken** **adı**olarak gönderilir. **E-posta** talebi olduğu gibi ayarlanır.
+**Inputclaim** öğesi REST API göndermek için talepler listesi içerir. Ayrıca, talebin adını REST API tanımlanan adla eşleyebilirsiniz. Aşağıdaki örnekte, ilkeniz ve REST API arasındaki eşleme gösterilmektedir. REST API **,** **Soyadı** , **Soyadı olarak gönderilirken** **adı** olarak gönderilir. **E-posta** talebi olduğu gibi ayarlanır.
 
 ```xml
 <InputClaims>
@@ -110,18 +110,18 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepler de d
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | ServiceUrl | Evet | REST API uç noktasının URL 'SI. |
-| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` veya `ClientCertificate` . `None`Değer REST API adsız olduğunu gösterir. `Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. `ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. `Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. |
+| AuthenticationType | Evet | Yeniden izlenen talep sağlayıcısı tarafından gerçekleştirilen kimlik doğrulaması türü. Olası değerler: `None` , `Basic` , `Bearer` ,  `ClientCertificate` veya `ApiKeyHeader` . <br /><ul><li>`None`Değer REST API adsız olduğunu gösterir. </li><li>`Basic`Değer, REST API http temel kimlik doğrulamasıyla güvenli hale getirildiğini gösterir. Yalnızca doğrulanmış kullanıcılar, Azure AD B2C dahil, API 'nize erişebilir. </li><li>`ClientCertificate`(Önerilen) değeri, REST API istemci sertifikası kimlik doğrulaması kullanarak erişimi kısıtladığını gösterir. Yalnızca uygun sertifikalara sahip hizmetler, örneğin Azure AD B2C, API 'nize erişebilir. </li><li>`Bearer`Değer, REST API Istemci OAuth2 taşıyıcı belirtecini kullanarak erişimi kısıtladığını gösterir. </li><li>`ApiKeyHeader`Değer, REST API, *x-Functions-Key* gıbı API anahtarı http üstbilgisiyle güvenlik altına alındığını gösterir. </li></ul> |
 | Allowınsecureauthınproduction| Hayır| `AuthenticationType` `none` Uygulamasının üretim ortamında ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) olarak ayarlanmış veya belirtilmemiş) olarak ayarlanamayacağını gösterir `Production` . Olası değerler: true veya false (varsayılan). |
 | SendClaimsIn | Hayır | Giriş taleplerinin, Restity talep sağlayıcısına nasıl gönderileceğini belirtir. Olası değerler: `Body` (varsayılan), `Form` , `Header` , `Url` veya `QueryString` . `Body`Değer, JSON biçiminde istek gövdesinde gönderilen giriş talebinde bulunur. `Form`Değer, istek gövdesinde ve ' & ' ayrılmış anahtar değeri biçiminde gönderilen giriş talebinde bulunur. `Header`Değer, istek üstbilgisinde gönderilen giriş talebinde bulunur. `Url`Değer, URL 'de gönderilen giriş talebinin değeridir, örneğin, https://{claim1}. example. com/{claim2}/{claim3}? { claim4} = {claim5}. `QueryString`Değer, istek sorgu dizesinde gönderilen giriş talebinde bulunur. Her biri tarafından çağrılan HTTP fiilleri aşağıdaki gibidir:<br /><ul><li>`Body`: GÖNDERI</li><li>`Form`: GÖNDERI</li><li>`Header`: Al</li><li>`Url`: Al</li><li>`QueryString`: Al</li></ul> |
 | ClaimsFormat | Hayır | Şu anda kullanılmıyor olabilir. |
 | ClaimUsedForRequestPayload| Hayır | REST API gönderilecek yükü içeren bir dize talebinin adı. |
 | DebugMode | Hayır | Teknik profili hata ayıklama modunda çalıştırır. Olası değerler: `true` , veya `false` (varsayılan). Hata ayıklama modunda REST API daha fazla bilgi döndürebilir. [Hata Iletisi döndüren](#returning-validation-error-message) bölümüne bakın. |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 | ResolveJsonPathsInJsonTokens  | Hayır | Teknik profilin JSON yollarını çözümleyip çözmeyeceğini gösterir. Olası değerler: `true` , veya `false` (varsayılan). İç içe geçmiş bir JSON öğesinden veri okumak için bu meta verileri kullanın. Bir [Outputclaim](technicalprofiles.md#outputclaims)'de, öğesini `PartnerClaimType` ÇıKTıSıNı almak istediğiniz JSON yolu öğesine ayarlayın. Örneğin: `firstName.localized` , veya `data.0.to.0.email` .|
 | Useclaimasyatatoken| Hayır| Taşıyıcı belirtecini içeren talebin adı.|
 
@@ -215,6 +215,27 @@ Kimlik doğrulaması türü olarak ayarlandıysa `Bearer` , **Cryptographickeys*
   </Metadata>
   <CryptographicKeys>
     <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_B2cRestClientAccessToken" />
+  </CryptographicKeys>
+</TechnicalProfile>
+```
+
+Kimlik doğrulaması türü olarak ayarlandıysa `ApiKeyHeader` , **Cryptographickeys** öğesi aşağıdaki özniteliği içerir:
+
+| Öznitelik | Gerekli | Açıklama |
+| --------- | -------- | ----------- |
+| HTTP üstbilgisinin adı, örneğin `x-functions-key` veya `x-api-key` . | Evet | Kimlik doğrulamak için kullanılan anahtar. |
+
+```xml
+<TechnicalProfile Id="REST-API-SignUp">
+  <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
+  <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+  <Metadata>
+    <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
+    <Item Key="AuthenticationType">ApiKeyHeader</Item>
+    <Item Key="SendClaimsIn">Body</Item>
+  </Metadata>
+  <CryptographicKeys>
+    <Key Id="x-functions-key" StorageReferenceId="B2C_1A_RestApiKey" />
   </CryptographicKeys>
 </TechnicalProfile>
 ```

@@ -1,14 +1,17 @@
 ---
 title: Azure sanal makine değerlendirmelerinde Azure geçişi sunucu değerlendirmesi
 description: Azure geçişi sunucu değerlendirmesinde değerlendirmeler hakkında bilgi edinin
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: d08e3c1c0035ee2bb56ee54f1ffb7ffb439d61b6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319326"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752235"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Sunucu değerlendirmesi genel bakış (Azure VM 'lerine geçiş)
 
@@ -52,7 +55,7 @@ Bir değerlendirme çalıştırmak için birkaç yol vardır.
 1. İlk değerlendirmenizi için bir Azure projesi oluşturun ve sunucu değerlendirmesi aracını buna ekleyin.
 1. Hafif bir Azure geçişi gereci dağıtın. Gereç, şirket içi makineleri sürekli bulur ve Azure geçişi 'ne makine meta verilerini ve performans verilerini gönderir. Gereci bir VM veya fiziksel makine olarak dağıtın. Değerlendirmek istediğiniz makinelere herhangi bir şey yüklemeniz gerekmez.
 
-Gereç makine bulmayı başlattıktan sonra, değerlendirmek istediğiniz makineleri bir gruba toplayıp değerlendirme türü **Azure VM**olan grup için bir değerlendirme çalıştırabilirsiniz.
+Gereç makine bulmayı başlattıktan sonra, değerlendirmek istediğiniz makineleri bir gruba toplayıp değerlendirme türü **Azure VM** olan grup için bir değerlendirme çalıştırabilirsiniz.
 
 Bu adımları denemek için [VMware](./tutorial-discover-vmware.md), [Hyper-V](./tutorial-discover-hyper-v.md)veya [fiziksel sunucular](./tutorial-discover-physical.md) için öğreticilerimizi izleyin.
 
@@ -64,7 +67,7 @@ Sunucuları bir CSV dosyası kullanarak değerlendiriyorsanız, bir gereç olmas
 1. İlk değerlendirmenizi için bir Azure projesi oluşturun ve sunucu değerlendirmesi aracını buna ekleyin.
 1. Bir CSV şablonu indirin ve buna sunucu verileri ekleyin.
 1. Şablonu sunucu değerlendirmesi içine aktarın.
-1. İçeri aktarma ile eklenen sunucuları bulun, bir gruba toplayın ve değerlendirme türü **Azure VM**olan grup için bir değerlendirme çalıştırın.
+1. İçeri aktarma ile eklenen sunucuları bulun, bir gruba toplayın ve değerlendirme türü **Azure VM** olan grup için bir değerlendirme çalıştırın.
 
 ## <a name="what-data-does-the-appliance-collect"></a>Gereç hangi verileri toplar?
 
@@ -82,7 +85,7 @@ Bu gereci bulma işlemi için kullanıyorsanız, aşağıdaki adımlarla işlem 
 
 1. Gereç, VMware ve Hyper-V sunucuları için her 10 dakikada bir ve fiziksel sunucular için 5 dakikada bir tek bir veri noktası oluşturmak için örnek noktaları birleştirir. Veri noktasını oluşturmak için gereç tüm örneklerden tepe değerlerini seçer. Daha sonra veri noktasını Azure 'a gönderir.
 1. Sunucu değerlendirmesi, geçen ay için 10 dakikalık tüm veri noktalarını depolar.
-1. Bir değerlendirme oluşturduğunuzda sunucu değerlendirmesi, doğru bir şekilde kullanmak için kullanılacak uygun veri noktasını tanımlar. Kimlik, *performans geçmişi* ve *yüzdebirlik kullanımı*için yüzdebirlik değerlerini temel alır.
+1. Bir değerlendirme oluşturduğunuzda sunucu değerlendirmesi, doğru bir şekilde kullanmak için kullanılacak uygun veri noktasını tanımlar. Kimlik, *performans geçmişi* ve *yüzdebirlik kullanımı* için yüzdebirlik değerlerini temel alır.
 
     - Örneğin, performans geçmişi bir hafta ise ve yüzdebirlik kullanımı 95. yüzdebirlik ise, sunucu değerlendirmesi geçen hafta için 10 dakikalık örnek noktaları sıralar. Bunları artan düzende sıralar ve doğru bir şekilde yapmak için 95. yüzdebirlik değerini seçer.
     - 95. yüzdebirlik değeri, 99. yüzdebirlik değerini seçtiğiniz takdirde dahil olabilen tüm aykırı değerleri yok saydığınızdan emin olmanızı sağlar.

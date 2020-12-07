@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0004c874a2011a78bb5cfe67ff0a840224d47bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e02323df3a12c4a74de1fb62b36762fc739e9e5
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91258974"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750452"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C oturumu
 
@@ -96,8 +96,12 @@ Bir oturum kapatma isteği sonrasında Azure AD B2C:
 1. Azure AD B2C tanımlama bilgisine dayalı oturumu geçersiz kılar.
 1. Federal Kimlik sağlayıcılarından oturum açmaya çalışır:
    - OpenID Connect-kimlik sağlayıcısı iyi bilinen yapılandırma uç noktası bir `end_session_endpoint` konum belirtiyorsa.
-   - SAML-kimlik sağlayıcısı meta verileri `SingleLogoutService` konumu içeriyorsa.
+   - OAuth2- [kimlik sağlayıcısı meta verileri](oauth2-technical-profile.md#metadata) `end_session_endpoint` konumu içeriyorsa.
+   - SAML- [kimlik sağlayıcısı meta verileri](saml-identity-provider-technical-profile.md#metadata) `SingleLogoutService` konumu içeriyorsa.
 1. İsteğe bağlı olarak, diğer uygulamalardan oturum kapatır. Daha fazla bilgi için bkz. [Çoklu oturum kapatma](#single-sign-out) bölümü.
+
+> [!NOTE]
+> [Özel ilkeleri](custom-policy-overview.md)kullanarak, kimlik sağlayıcısının teknik profil meta verilerini olarak ayarlayarak federal kimlik sağlayıcılarından oturumu devre dışı bırakabilirsiniz `SingleLogoutEnabled` `false` .
 
 Oturum açma, kullanıcının çoklu oturum açma durumunu Azure AD B2C temizler, ancak kullanıcıyı sosyal kimlik sağlayıcısı oturumunun dışında imzalayamayabilir. Kullanıcı sonraki oturum açma sırasında aynı kimlik sağlayıcısını seçerse, kimlik bilgilerini girmeden yeniden kimlik doğrulaması sağlayabilir. Kullanıcı uygulamanın oturumunu kapatmak isterse, Facebook hesabında oturumu kapatmak istedikleri anlamına gelmez. Ancak, yerel hesaplar kullanılıyorsa, kullanıcının oturumu doğru şekilde sona erer.
 
