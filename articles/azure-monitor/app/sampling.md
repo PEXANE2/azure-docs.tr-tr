@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024424"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749054"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -34,10 +34,10 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -54,7 +54,7 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 * Alma **örnekleme** , Application Insights hizmeti uç noktasında gerçekleşir. Sizin ayarladığınız örnekleme ücretine göre uygulamanızdan gelen telemetrinin bir kısmını atar. Uygulamanızdan gönderilen telemetri trafiğini azaltmaz, ancak aylık kotasında tutmanıza yardımcı olur. Alım örnekleme 'nın başlıca avantajı, örnekleme hızını uygulamanızı yeniden dağıtmaya gerek kalmadan ayarlayabilmektir. Alım örneklemesi tüm sunucular ve istemciler için tek bir işlem yapar, ancak başka herhangi bir örnekleme türü işlem sırasında uygulanmaz.
 
 > [!IMPORTANT]
-> Uyarlamalı veya sabit oran örnekleme yöntemleri kullanılıyorsa, alma örnekleme devre dışı bırakılır.
+> Bir telemetri türü için uyarlamalı veya sabit oran örnekleme yöntemleri etkinleştirilmişse, bu telemetri için alma örnekleme devre dışı bırakılır. Bununla birlikte, SDK düzeyinde örnekleme dışında bırakılan telemetri türleri, portalda ayarlanan ücret örneklemeye tabi olmaya devam edecektir.
 
 ## <a name="adaptive-sampling"></a>Uyarlamalı örnekleme
 

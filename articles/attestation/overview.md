@@ -8,16 +8,16 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 2ee906b406f5fd09fc870626f1905541a4270c66
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670530"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748782"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Doğrulama (önizleme)
 
-Microsoft Azure kanıtlama (Önizleme), [ıntel® Software Guard uzantıları](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) şifreleme ve [sanallaştırma tabanlı güvenlik](/windows-hardware/design/device-experiences/oem-vbs) (VBS) şifrelemesi gibi güvenilir yürütme ortamlarının (TEEs) atlaması için bir çözümdür. Şifreleme kanıtlama, bir kuşın güvenli ve güvenilir olduğunu doğrulamaya yönelik bir işlemdir.
+Microsoft Azure kanıtlama (Önizleme), içinde çalışan ikililerin bir platformun ve bütünlüğünün güvenilirliğini uzaktan doğrulamaya yönelik Birleşik bir çözümdür. Hizmet, güvenilir platform modülleri (TPMs) tarafından desteklenen, [ıntel® Software Guard uzantıları](https://www.intel.com/content/www/us/en/architecture-and-technology/software-guard-extensions.html) (SGX) şifreleme ve [sanallaştırma tabanlı güvenlik](/windows-hardware/design/device-experiences/oem-vbs) (VBS) kuşları gibi güvenilir yürütme ortamlarının (TEEs) durumunu kanıtlamayı sağlama yeteneğinin yanı sıra, Güvenilen Platform modülleri tarafından desteklenen platformların kanıtlamasını destekler. 
 
 Kanıtlama, yazılım ikililerinin güvenilir bir platformda düzgün bir şekilde örneğinin oluşturulmasını gösteren bir işlemdir. Uzak bağlı olan taraflar daha sonra yalnızca, güvenilen donanımlarda yalnızca ilgili yazılımın çalıştığını güvenle elde edebilir. Azure kanıtlama, kanıtlama için birleştirilmiş bir müşteriye yönelik hizmet ve çerçevedir.
 
@@ -25,7 +25,7 @@ Azure kanıtlama, [Azure gizli bilgi işlem](../confidential-computing/overview.
 
 Azure kanıtlama, işlem varlıklarından gelen kanıtları alır, bunları bir dizi talebe dönüştürür, yapılandırılabilir ilkelere göre doğrular ve talep tabanlı uygulamalar için şifreleme provaları üretir (örneğin, bağlı olan taraflar ve denetim yetkilileri).
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Azure kanıtlama, birden çok ortam ve farklı kullanım durumları için kapsamlı kanıtlama hizmetleri sağlar.
 
@@ -34,12 +34,6 @@ Azure kanıtlama, birden çok ortam ve farklı kullanım durumları için kapsam
 SGX, belirli Intel CPU modellerinde desteklenen donanım sınıfı yalıtımına başvurur. SGX, kodun, SGX enclaven olarak bilinen ayıklanmış bölmeleri çalışmasına olanak sağlar. Daha sonra, erişim ve bellek izinleri, doğru yalıtımıyla minimum saldırı yüzeyi sağlamak için donanımla yönetilir.
 
 İstemci uygulamaları, bu kuşkuların içinde gerçekleşmesi için güvenlik duyarlı görevlerin temsilci olarak oluşturulması ile SGX 'in avantajlarından faydalanmak için tasarlanabilir. Bu tür uygulamalar daha sonra, kuşve duyarlı verilere erişme özelliği için düzenli olarak güven sağlamak üzere Azure kanıtlama özelliğini kullanabilir.
-
-### <a name="vbs-attestation"></a>VBS kanıtlama
-
-VBS, Hyper-V tabanlı bir şifreleme bellek koruması için yazılım tabanlı bir mimaridir. Konak yönetici kodunun yanı sıra yerel ve bulut hizmeti yöneticilerinin bir VBS enckor içindeki verilere erişmesini veya yürütmesini etkilemelerini önler.
-
-Azure kanıtlama, SGX teknolojisine benzer şekilde, yapılandırılmış ilkelere karşı ve bir sertifika bildiriminin geçerlilik kanıtı olarak verilmesine olanak sağlar.
 
 ### <a name="open-enclave"></a>Açık şifreleme
 [Açık Enclave](https://openenclave.io/sdk/) (OE), geliştiricilerin t tabanlı uygulamalar oluşturmalarına yönelik tek bir Birleşik kuşatma soyutlaması oluşturmaya hedeflenmiş bir kitaplıklar koleksiyonudur. Platform karmaşıklığını en aza indiren bir evrensel güvenli uygulama modeli sunar. Microsoft, democratizing donanım tabanlı kuşatma teknolojilerine ve Azure 'da upal 'ın artması gibi önemli bir atlama pulu olarak görüntüler.
@@ -65,19 +59,15 @@ Azure kanıtlama müşterileri, Microsoft 'un güvenilir bilgi işlem tabanı (T
 
 Azure kanıtlama, TEEs, aşağıdaki avantajları sağladığından, kanıtlamaktan için tercih edilen seçenektir: 
 
-- SGX ve vbs enclaven gibi birden çok TEEs kanıtlamaktan için Birleşik çerçeve
+- TPMs, SGX enclaves ve VBS enclaven gibi birden çok ortamı attest etmek için Birleşik çerçeve 
 - Belirteç oluşturmayı kısıtlamak için özel kanıtlama sağlayıcılarının ve ilkelerinin yapılandırılmasına izin veren çok kiracılı hizmet
 - Kullanıcılardan yapılandırma olmadan test olabilen varsayılan sağlayıcıları sunar
 - , Bir SGX encde uygulamasıyla birlikte kullanımda olan verilerini korur
-- Hizmet Düzeyi Sözleşmesi (SLA) sunan yüksek oranda kullanılabilir hizmet
+- Yüksek oranda kullanılabilir hizmet 
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr-support"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR) desteği
 
 Azure kanıtlama için [Iş sürekliliği ve olağanüstü durum kurtarma](../best-practices-availability-paired-regions.md) (BCDR), bir bölgedeki önemli kullanılabilirlik sorunlarından veya olağanüstü durum olaylarından kaynaklanan hizmet kesintilerini azaltmanıza olanak sağlar.
-
-Aşağıda şu anda BCDR tarafından desteklenen bölgeler verilmiştir
-- Doğu ABD 2 => Orta ABD eşleştirilmiş.
-- Orta ABD => Doğu ABD 2 eşleştirilmiş.
 
 İki bölgede dağıtılan kümeler, normal koşullarda bağımsız olarak çalışır. Bir bölgenin hatası veya kesilmesi durumunda aşağıdakiler gerçekleşir:
 

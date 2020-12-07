@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 86ee81f3802b7ec7f8189123192c20143a08cf3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1758cca902eb77ffc66824cb56b8add9446fabf9
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090255"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96749156"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Visual Studio 'da Azure Logic Apps ve Azure Işlevleri 'ni kullanarak ilk sunucusuz uygulamanızı derleme
 
@@ -32,7 +32,7 @@ Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
     > Visual Studio 2019 veya 2017 yüklediğinizde, **Azure geliştirme** iş yükünü seçtiğinizden emin olun.
 
   * [.NET için Microsoft Azure SDK (sürüm 2.9.1 veya üzeri)](https://azure.microsoft.com/downloads/). 
-  [Azure SDK for .NET](/dotnet/azure/dotnet-tools?view=azure-dotnet) hakkında daha fazla bilgi edinin.
+  [Azure SDK for .NET](/dotnet/azure/intro) hakkında daha fazla bilgi edinin.
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation).
 
@@ -56,7 +56,7 @@ Visual Studio 'da sunucusuz bir uygulama oluşturmak için şunlar gerekir:
 
 ## <a name="create-a-resource-group-project"></a>Kaynak grubu projesi oluşturma
 
-Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) oluşturun. Azure 'da, tek bir varlık olarak bir uygulamanın tamamına yönelik kaynakları organize etmek, yönetmek ve dağıtmak için kullandığınız mantıksal bir koleksiyon olan *kaynak grubu*içinde kaynaklar oluşturursunuz. Azure 'da sunucusuz bir uygulama için kaynak grubunuz hem Azure Logic Apps hem de Azure Işlevleri için kaynaklar içerir. [Azure kaynak grupları ve kaynakları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.
+Başlamak için sunucusuz uygulamanız için bir [Azure Kaynak grubu projesi](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) oluşturun. Azure 'da, tek bir varlık olarak bir uygulamanın tamamına yönelik kaynakları organize etmek, yönetmek ve dağıtmak için kullandığınız mantıksal bir koleksiyon olan *kaynak grubu* içinde kaynaklar oluşturursunuz. Azure 'da sunucusuz bir uygulama için kaynak grubunuz hem Azure Logic Apps hem de Azure Işlevleri için kaynaklar içerir. [Azure kaynak grupları ve kaynakları](../azure-resource-manager/management/overview.md) hakkında daha fazla bilgi edinin.
 
 1. Visual Studio 'Yu başlatın ve Azure hesabınızı kullanarak oturum açın.
 
@@ -126,7 +126,7 @@ Mantıksal uygulamanızı dağıtımdan sonra düzenlemek için, mantıksal uygu
    > [!TIP]
    > Visual Studio 2019 ' de bu komuta sahip değilseniz, Visual Studio için en son güncelleştirmelere sahip olup olmadığınızı kontrol edin.
 
-1. **Mantıksal uygulama özellikleri** kutusu görüntülendikten sonra, **abonelik**' ın altında, henüz seçili değilse Azure aboneliğinizi seçin. **Kaynak grubu**altında, çözümünüzü dağıttığınız kaynak grubunu ve konumu seçin ve ardından **Tamam**' ı seçin.
+1. **Mantıksal uygulama özellikleri** kutusu görüntülendikten sonra, **abonelik**' ın altında, henüz seçili değilse Azure aboneliğinizi seçin. **Kaynak grubu** altında, çözümünüzü dağıttığınız kaynak grubunu ve konumu seçin ve ardından **Tamam**' ı seçin.
 
    ![Mantıksal uygulama özellikleri](./media/logic-apps-serverless-get-started-vs/logic-app-properties.png)
 
@@ -150,7 +150,7 @@ Azure 'da zaten dağıtılmış olan Logic Apps için, bu uygulamaları Visual S
 
 1. **Tüm abonelikler**' in altında, yönetmek istediğiniz Logic Apps Ile ilişkili Azure aboneliğini seçin ve ardından **Uygula**' yı seçin.
 
-1. **Logic Apps**altında mantıksal uygulamanızı seçin. Bu uygulamanın kısayol menüsünde, **mantıksal uygulama Düzenleyicisi Ile aç**' ı seçin.
+1. **Logic Apps** altında mantıksal uygulamanızı seçin. Bu uygulamanın kısayol menüsünde, **mantıksal uygulama Düzenleyicisi Ile aç**' ı seçin.
 
    > [!TIP]
    > Visual Studio 2019 ' de bu komuta sahip değilseniz, Visual Studio için en son güncelleştirmelere sahip olup olmadığınızı kontrol edin.

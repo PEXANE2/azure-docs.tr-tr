@@ -3,12 +3,12 @@ title: Application Insights ve Log Analytics tarafından kullanılan IP adresler
 description: Application Insights için gereken sunucu güvenlik duvarı özel durumları
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: c1ccb40a9b8d8080da416aeb920ed016a231f697
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 10328efa9b8b9cdbe1e57e1e982653aea7e39574
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547942"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748884"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights ve Log Analytics tarafından kullanılan IP Adresleri
 [Azure Application Insights](./app-insights-overview.md) hizmeti, birkaç IP adresi kullanır. İzlemekte olduğunuz uygulama bir güvenlik duvarının arkasında barındırılıyorsa, bu adresleri bilmeniz gerekebilir.
@@ -46,6 +46,10 @@ Durum İzleyicisi yapılandırma-yalnızca değişiklik yapıldığında gerekli
 
 ## <a name="availability-tests"></a>Kullanılabilirlik testleri
 Bu, [kullanılabilirlik Web testlerinin](./monitor-web-app-availability.md) çalıştırıldığı adreslerin listesidir. Uygulamanızda Web testleri çalıştırmak istiyorsanız, ancak Web sunucunuz belirli istemcilere hizmet vermeye karşı kısıtlanmışsa, kullanılabilirlik testi sunucularımızdan gelen trafiğe izin vermeniz gerekir.
+
+
+> [!NOTE]
+> Genel Azure 'daki kullanılabilirlik testi aracılarıyla doğrudan gelen iletişime izin veren özel sanal ağlarda bulunan kaynaklar için tek seçenek, [kendi özel kullanılabilirlik testlerinizi oluşturmak ve barındırmak](availability-azure-functions.md)olur.
 
 ### <a name="service-tag"></a>Hizmet etiketi
 

@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 66401e048413163af0d96da80a0415ee8f9cbb19
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601535"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748697"
 ---
 # <a name="basic-concepts"></a>Temel Kavramlar
 
@@ -99,6 +99,15 @@ Bir SGX Enclave için oluşturulan JWT örneği:
 }.[Signature]
 ```
 "Exp", "iat", "iss", "NBF" gibi talepler, [JWT RFC](https://tools.ietf.org/html/rfc7517) tarafından tanımlanır ve geri kalan Azure kanıtlama tarafından oluşturulur. Daha fazla bilgi için bkz. [Azure kanıtlama tarafından verilen talepler](claim-sets.md) .
+
+## <a name="encryption-of-data-at-rest"></a>Bekleyen verilerin şifrelenmesi
+
+Müşteri verilerini korumak için Azure kanıtlama, Azure depolama 'daki verilerini sürdürür. Azure depolama, veri merkezlerine yazıldığı sırada verilerin şifrelenmesini sağlar ve müşterilerin bu verilere erişmesi için şifresini çözer. Bu şifreleme, Microsoft tarafından yönetilen bir şifreleme anahtarı kullanılarak oluşur. 
+
+Azure 'da, Azure depolama 'daki verileri korumanın yanı sıra hizmet VM 'lerini şifrelemek için Azure disk şifrelemesi (ADE) de yararlanır. Azure gizli bilgi işlem ortamlarında çalışan bir kuşve Azure kanıtlama için, ADE uzantısı Şu anda desteklenmiyor. Bu tür senaryolarda, verilerin bellek içinde depolanmasını engellemek için, sayfa dosyası devre dışı bırakılır. 
+
+Azure kanıtlama örneği yerel sabit disk sürücülerinde hiçbir müşteri verisi kalıcı hale getirilir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

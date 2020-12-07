@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 240b27f897d8e7a34026701cf7fdc844eb9d4086
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 09d793f3d8ed544a386a362677f24be6d18673d7
+ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89237379"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96748745"
 ---
 # <a name="workflow"></a>İş akışı
 
-Microsoft Azure kanıtlama, kuşkudan gelen kanıtları alır ve Azure Güvenlik temeli ve yapılandırılabilir ilkelerle karşı kanıtları değerlendirir. Başarılı bir şekilde, Azure kanıtlama, kuşlığının güvenilirliğini onaylamak için bir kanıtlama belirteci oluşturur.
+Microsoft Azure kanıtlama, kuşkulardan gelen kanıtları alır ve Azure Güvenlik temeli ve yapılandırılabilir ilkelerle karşı kanıtları değerlendirir. Doğrulama başarıyla tamamlandığında, Azure kanıtlama, kuşlığının güvenilirliğini onaylamak için bir kanıtlama belirteci oluşturur.
 
 Aşağıdaki aktörler bir Azure kanıtlama iş akışına dahil değildir:
 
@@ -25,18 +25,19 @@ Aşağıdaki aktörler bir Azure kanıtlama iş akışına dahil değildir:
 - **Azure kanıtlama**: istemciden şifreleme kanıtlamayı kabul eden bileşen bunu doğrular ve istemciye kanıtlama belirteci döndürür
 
 
-## <a name="enclave-validation-work-flow"></a>Şifreleme doğrulama iş akışı
+## <a name="intel-software-guard-extensions-sgx-enclave-validation-work-flow"></a>Intel® Software Guard uzantıları (SGX) şifreleme doğrulama iş akışı
 
 Tipik bir SGX şifreleme iş akışındaki (Azure kanıtlama kullanarak) genel adımlar aşağıda verilmiştir:
 
 1. İstemci bir kuşdan kanıt toplar. Kanıt, kuşatma ortamı ve kuşın içinde çalışan istemci kitaplığı hakkında bilgi.
-1. İstemcinin bir Azure kanıtlama örneğine başvuran bir URI 'SI vardır. İstemci Azure AD kimliğini doğrular ve bir erişim belirteci alır.
-1. İstemci, erişim belirteciyle birlikte Azure kanıtlama için kanıt gönderir. Sağlayıcıya gönderilen tam bilgiler, şifreleme türüne bağlıdır.
+1. İstemcinin bir Azure kanıtlama örneğine başvuran bir URI 'SI vardır. İstemci Azure kanıtlama için kanıt gönderir. Sağlayıcıya gönderilen tam bilgiler, şifreleme türüne bağlıdır.
 1. Azure kanıtlama gönderilen bilgileri doğrular ve yapılandırılan bir ilkeye göre değerlendirir. Doğrulama başarılı olursa, Azure kanıtlama bir kanıtlama belirteci yayınlar ve istemciye döndürür. Bu adım başarısız olursa, Azure kanıtlama istemciye bir hata bildirir. 
 1. İstemci, kanıtlama belirtecini bağlı olan tarafa gönderir. Bağlı olan taraf, imzalama sertifikalarını almak için Azure kanıtlama 'nın ortak anahtar meta veri uç noktasını çağırır. Bağlı olan taraf daha sonra kanıtlama belirtecinin imzasını doğrular ve şifreleme güvenilirliğini sağlar. 
 
-![Şifreleme doğrulama akışı](./media/validation-flow.png)
+![SGX şifreleme doğrulama akışı](./media/sgx-validation-flow.png)
 
+> [!Note]
+> [2018-09-01-Preview](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/attestation/data-plane/Microsoft.Attestation/stable/2018-09-01-preview) API sürümünde kanıtlama istekleri gönderdiğinizde, ISTEMCININ Azure AD erişim belirteciyle birlikte Azure kanıtlama 'na kanıt gönderebilmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Kanıtlama ilkesi yazma ve imzalama](author-sign-policy.md)
