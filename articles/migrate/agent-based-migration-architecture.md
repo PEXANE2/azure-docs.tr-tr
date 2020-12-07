@@ -1,17 +1,17 @@
 ---
 title: Azure geçişi sunucu geçişine aracı tabanlı geçiş
 description: Azure geçişi 'nde aracı tabanlı VMware VM geçişine genel bir bakış sağlar.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.author: raynew
-ms.openlocfilehash: 90e499b436a3ae44fa29cec1138d939a106a4db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357174"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753901"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
 
@@ -120,7 +120,7 @@ Azure 'a çoğaltılan VMware trafiği belirli bir işlem sunucusundan geçer. �
 
     1. İşlem sunucusu makinesinde, Azure Backup MMC ek bileşenini açın. Masaüstünde veya C:\Program Files\Microsoft Azure kurtarma hizmetleri servisleri \ bin klasöründe bir kısayol bulunur. 
     2. Ek bileşende **Özellikleri Değiştir**' i seçin.
-    3. **Daraltma**bölümünde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin. Çalışma ve çalışılmayan saatlerin sınırlarını ayarlayın. Geçerli aralıklar 512 kbps ile 1.023 Mbps arasındadır.
+    3. **Daraltma** bölümünde, **yedekleme işlemleri için internet bant genişliği kullanımını azaltmayı etkinleştir**' i seçin. Çalışma ve çalışılmayan saatlerin sınırlarını ayarlayın. Geçerli aralıklar 512 kbps ile 1.023 Mbps arasındadır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

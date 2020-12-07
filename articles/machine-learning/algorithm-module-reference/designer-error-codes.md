@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 11/25/2020
-ms.openlocfilehash: af7ac49fd6c1a31a8363c4ba0bf925787613ecc2
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030416"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753918"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Tasarımcı için özel durumlar ve hata kodları
 
@@ -279,7 +279,7 @@ Model, özelleştirilmiş eğitim modüllerinden herhangi birini kullanarak eği
 ## <a name="error-0014"></a>Hata 0014  
  Sütun benzersiz değerlerinin sayısı izin verilenden fazlaysa özel durum oluşur.  
 
- Bu hata, bir sütun çok sayıda benzersiz değer içerdiğinde oluşur.  Örneğin, bir sütunun kategorik veriler olarak işleneceğini belirtirseniz, ancak sütunda işlemin tamamlanmasına izin vermek için çok sayıda benzersiz değer varsa, bu hatayı görebilirsiniz. Ayrıca, iki girişte benzersiz değer sayısı arasında uyuşmazlık varsa bu hatayı görebilirsiniz.   
+ Bir sütun, KIMLIK sütunu veya metin sütunu gibi çok sayıda benzersiz değer içerdiğinde bu hata oluşur. Bir sütunun kategorik veriler olarak işleneceğini belirtirseniz ancak işlemin tamamlanmasına izin vermek için sütunda çok sayıda benzersiz değer varsa, bu hatayı görebilirsiniz. Ayrıca, iki girişte benzersiz değer sayısı arasında uyuşmazlık varsa bu hatayı görebilirsiniz.   
 
 Aşağıdaki koşulların **her ikisi de** varsa, benzersiz değerlerin hatası izin verilenden fazla olur:
 
@@ -292,7 +292,9 @@ Hatayı oluşturan modülü açın ve giriş olarak kullanılan sütunları tesp
 
 Gruplandırma veya kategorilere ayırma için kullanmayı düşündüğünüz sütunlarda, sütunlardaki benzersiz değerlerin sayısını azaltmak için gerekli adımları uygulayın. Sütunun veri türüne bağlı olarak farklı şekillerde azaltabilirsiniz. 
 
-Genellikle bu senaryoda, hataya vurarak sütun, modelleri eğitme özelliği olarak daha az anlamlı olur. Bu nedenle, bu sütunu **Temizle özelliği** olarak Işaretlemek Için [meta verileri Düzenle](../algorithm-module-reference/edit-metadata.md) ' yi kullanabilir ve model eğitimi sırasında kullanılmaz. 
+Model eğitimi sırasında anlamlı Özellikler bulunmayan KIMLIK sütunları için, bu sütunu **Temizle özelliği** olarak Işaretlemek üzere [meta verileri Düzenle](../algorithm-module-reference/edit-metadata.md) ' yi kullanabilirsiniz ve model eğitimi sırasında kullanılmaz. 
+
+Metin sütunlarında, metin sütunlarını önceden işlemek için [özellik karma özelliğini](../algorithm-module-reference/feature-hashing.md) kullanabilir veya [metin modülünden N-gram özelliklerini ayıklayabilirsiniz](../algorithm-module-reference/extract-n-gram-features-from-text.md) .
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  

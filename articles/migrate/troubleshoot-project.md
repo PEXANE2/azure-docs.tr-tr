@@ -1,17 +1,17 @@
 ---
 title: Azure Geçişi projeleri sorunlarını giderme
 description: Azure geçişi projelerini oluşturma ve yönetme ile ilgili sorunları gidermenize yardımcı olur.
-ms.topic: troubleshooting
-author: musa-57
+author: ms-psharma
+ms.author: panshar
 ms.manager: abhemraj
-ms.author: hamusa
+ms.topic: troubleshooting
 ms.date: 01/01/2020
-ms.openlocfilehash: af9254bc536dedc425aac53199665ae399e60a5a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f68a57d3780f388488d48835f322ff04ab7c7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494418"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753391"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Geçişi projeleri sorunlarını giderme
 

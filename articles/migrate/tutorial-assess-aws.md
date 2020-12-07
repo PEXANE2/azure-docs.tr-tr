@@ -1,15 +1,18 @@
 ---
 title: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için AWS örneklerini değerlendirme
-description: Azure geçişi sunucu değerlendirmesi kullanılarak Azure 'a geçiş için AWS örneklerinin nasıl değerlendirileneceğini açıklar.
+description: Azure geçişi sunucu değerlendirmesi ile Azure 'a geçiş için AWS örneklerine erişmeyi öğrenin.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 14928c8a3249cca172ad088f290b54a22a125ae7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7d64d239eeb3be5bf94830a425c6e097a69a64b
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90109026"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753360"
 ---
 # <a name="tutorial-assess-aws-instances-for-migration-to-azure"></a>Öğretici: Azure 'a geçiş için AWS örneklerini değerlendirme
 
@@ -56,7 +59,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme düğmesinin konumu](./media/tutorial-assess-aws/assess-servers.png)
 
-3. **Sunucu**  >  **değerlendirmesi türünü**değerlendir bölümünde **Azure VM**' yi seçin.
+3. **Sunucu**  >  **değerlendirmesi türünü** değerlendir bölümünde **Azure VM**' yi seçin.
 4. **Bulma kaynağında**:
 
     - Gereci kullanarak makineler keşfetiyorsanız, **Azure geçişi gereci ' ndan bulunan makineler**' i seçin.
@@ -74,11 +77,11 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
         - Değerlendirmede performans tabanlı verileri kullanmak istiyorsanız, disk ıOPS ve aktarım hızı temelinde depolama türü önermek için Azure geçişi için **Otomatik** ' i seçin.
         - Alternatif olarak, geçiş yaparken VM için kullanmak istediğiniz depolama türünü seçin.
     - **Ayrılmış örnekler**' de, GEÇIŞ yaparken VM için ayrılmış örnekler kullanmak isteyip istemediğinizi belirtin.
-        - Ayrılmış bir örnek kullanmayı seçerseniz, '**indirim (%)** veya **VM çalışma süresi**belirtemezsiniz. 
+        - Ayrılmış bir örnek kullanmayı seçerseniz, '**indirim (%)** veya **VM çalışma süresi** belirtemezsiniz. 
         - [Daha fazla bilgi edinin](https://aka.ms/azurereservedinstances).
 8. **VM boyutu**:
  
-    - **Boyutlandırma ölçütündeki**değerlendirmeyi makine yapılandırma verileri/meta verileri veya performans tabanlı veriler üzerinde temel almak istiyorsanız seçin. Performans verileri kullanıyorsanız:
+    - **Boyutlandırma ölçütündeki** değerlendirmeyi makine yapılandırma verileri/meta verileri veya performans tabanlı veriler üzerinde temel almak istiyorsanız seçin. Performans verileri kullanıyorsanız:
         - **Performans geçmişi**' nde, değerlendirmeye dayandırmak istediğiniz veri süresini belirtin
         - **Yüzdelik kullanım**' de, performans örneği için kullanmak istediğiniz yüzdebirlik değerini belirtin. 
     - **VM Serisi**' nde, göz önünde bulundurmanız ISTEDIĞINIZ Azure VM serisini belirtin.
@@ -87,7 +90,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
     - **Rahatlık faktörüyle**, değerlendirme sırasında kullanmak istediğiniz arabelleği belirtin. Bu hesaplar, dönemsel kullanım, kısa performans geçmişi ve gelecekteki kullanımlarda olası artışlar gibi sorunlara yöneliktir. Örneğin, iki bir rakip faktörü kullanıyorsanız: **Ayrıntılar**  |  **kullanım**  |  **rahatlığını Ekle (2,0)** IOPS 'yi oku | 100 | 200 Yazma IOPS | 100 | 200 okuma üretilen işi | 100 Mbps | 200 MB/sn yazma işleme | 100 Mbps | 200 Mbps
    
 9. **Fiyatlandırma**:
-    - **Teklif**bölümünde, kaydolduysanız [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) belirtin. Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
+    - **Teklif** bölümünde, kaydolduysanız [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) belirtin. Sunucu değerlendirmesi, bu teklifin maliyetini tahmin eder.
     - **Para birimi**' nde, hesabınız için faturalandırma para birimini seçin.
     - **İndirim (%)** bölümünde, Azure teklifinin üzerine aldığınız aboneliğe özgü indirimleri ekleyin. Varsayılan ayar, %0’dır.
     - **VM çalışma süresi**' nde, VM 'lerin çalışacağı süreyi (gün başına aylık gün/saat) belirtin.
@@ -102,7 +105,7 @@ Bir değerlendirmeyi aşağıdaki gibi çalıştırın:
 
     ![Değerlendirme özellikleri](./media/tutorial-assess-aws/assessment-properties.png)
 
-11. **Sunucuları değerlendir**bölümünde **İleri**' ye tıklayın.
+11. **Sunucuları değerlendir** bölümünde **İleri**' ye tıklayın.
 12. **Değerlendirmek için makineleri seçin**' de, **Yeni oluştur**' u seçin ve bir grup adı belirtin. 
 13. Gereç ' ı seçin ve gruba eklemek istediğiniz VM 'Leri seçin. Ardından **İleri**'ye tıklayın.
 14. * * Gözden geçir + değerlendirme oluştur ' da, değerlendirme ayrıntılarını gözden geçirin ve grubu oluşturmak ve değerlendirmeyi çalıştırmak için **değerlendirme oluştur** ' a tıklayın.
@@ -132,7 +135,7 @@ Bir değerlendirmeyi görüntülemek için:
 ### <a name="review-readiness"></a>İnceleme hazırlığı
 
 1. **Azure hazırlığı**' ne tıklayın.
-2. **Azure hazırlık**bölümünde VM durumunu gözden geçirin:
+2. **Azure hazırlık** bölümünde VM durumunu gözden geçirin:
     - **Azure Için hazırlanma**: Azure geçişi, değerlendirmede VM 'ler IÇIN bir VM boyutu ve maliyet tahminleri önermesinde kullanılır.
     - **Koşullara hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.
     - **Azure için hazırlanma**: sorunları ve önerilen düzeltmeyi gösterir.

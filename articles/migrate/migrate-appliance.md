@@ -1,14 +1,17 @@
 ---
 title: Azure Geçişi gereci
 description: Azure geçişi gereci desteğinin bir özetini sağlar.
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ac3c90f1c09d290d5112a0e0d7abc5218788caf7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3357fcc070ca4ca2212cf0424e4baf8208a3ca1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008710"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754139"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -180,7 +183,7 @@ IPv6 adresleri | vm.Guest.Net
 Aktarım hızını oku (MB/saniye) | net. alınan. Ortalama
 Yazma üretilen işi (MB/saniye) | net. iletilmiş. Average
 **Envanter yolu ayrıntıları** | 
-Name | kapsayıcı. GetType (). Ada
+Ad | kapsayıcı. GetType (). Ada
 Alt nesnenin türü | kapsayıcı. ChildType
 Başvuru ayrıntıları | kapsayıcı. MoRef
 Üst Ayrıntılar | Container. Parent
@@ -227,7 +230,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 **Veriler**  | **PowerShell cmdlet 'i** | **Özellik**
 --- | --- | ---
-Name  | Get-WindowsFeature  | Name
+Ad  | Get-WindowsFeature  | Ad
 Özellik türü | Get-WindowsFeature  | FeatureType
 Üst  | Get-WindowsFeature  | Üst
 
@@ -237,7 +240,7 @@ Uygulamanın, uygulama bulma için etkinleştirilmiş Microsoft SQL Server çal�
 
 **Veriler**  | **Kayıt Defteri Konumu**  | **Key**
 --- | --- | ---
-Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
+Ad  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\ınstance Names\SQL  | ınstalınstalstance
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
 Hizmet Paketi  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP2
 Sürüm  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Sürüm 
@@ -248,7 +251,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 Veriler  | WMI sınıfı  | WMI sınıfı özelliği
 --- | --- | ---
-Name  | Win32_operatingsystem  | Başlık
+Ad  | Win32_operatingsystem  | Başlık
 Sürüm  | Win32_operatingsystem  | Sürüm
 Mimari  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +261,7 @@ Uygulamanın, uygulama bulma için etkinleştirilen her bir VM 'den topladığı
 
 Veriler  | Komut
 --- | --- 
-Name | RPM, dpkg-Query, Snap
+Ad | RPM, dpkg-Query, Snap
 Sürüm | RPM, dpkg-Query, Snap
 Sağlayıcı | RPM, dpkg-Query, Snap
 
@@ -268,7 +271,7 @@ Bu, gerecin uygulama bulma için etkin her VM 'yi topladığı işletim sistemi 
 
 **Veriler**  | **Komut** 
 --- | --- | ---
-Name <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
+Ad <br/> sürüm | Aşağıdaki dosyalardan bir veya daha fazlası toplanmıştır:<br/> <br/>/etc/OS-Release  <br> /usr/lib/OS-Release  <br> /etc/Enterprise-Release  <br> /etc/redhat-release  <br> /etc/Oracle-Release  <br> /etc/SuSE-release  <br> /etc/LSB-Release  <br> /etc/debian_version 
 Mimari | uname
 
 

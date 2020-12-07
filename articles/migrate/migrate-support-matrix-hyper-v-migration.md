@@ -1,14 +1,17 @@
 ---
 title: Azure geçişi için Hyper-V geçişi desteği
 description: Azure geçişi ile Hyper-V geçişi desteği hakkında bilgi edinin.
+author: bsiva
+ms.author: bsiva
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 4ba8b8cea784167ad045c5635ce512a68b48d897
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 90da16789344754c02d46022160db71ee261a056
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014202"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754071"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V geçişi için destek matrisi
 

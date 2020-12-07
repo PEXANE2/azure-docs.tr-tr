@@ -1,14 +1,17 @@
 ---
 title: Azure Geçişi çoğaltma gereci
 description: Aracı tabanlı VMWare geçişi için Azure geçişi çoğaltma gereci hakkında bilgi edinin.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532129"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754105"
 ---
 # <a name="replication-appliance"></a>Çoğaltma gereci
 
@@ -19,7 +22,7 @@ Bu makalede, [Azure geçişi](migrate-services-overview.md#azure-migrate-server-
 
 VMware VM 'Leri veya fiziksel sunucuları için aracı tabanlı geçiş ayarladığınızda, çoğaltma gereci dağıtılır. VMware VM ya da fiziksel sunucu olarak tek bir şirket içi makine olarak dağıtılır. Çalışır:
 
-- **Çoğaltma**gereci: çoğaltma gereci iletişimleri koordine eder ve Azure 'a çoğaltılan şirket Içi VMware VM 'leri ve fiziksel sunucular için veri çoğaltmasını yönetir.
+- **Çoğaltma** gereci: çoğaltma gereci iletişimleri koordine eder ve Azure 'a çoğaltılan şirket Içi VMware VM 'leri ve fiziksel sunucular için veri çoğaltmasını yönetir.
 - **İşlem sunucusu**: çoğaltma gereci üzerinde varsayılan olarak yüklenen işlem sunucusu ve şunları yapar:
     - **Çoğaltma ağ geçidi**: çoğaltma ağ geçidi olarak davranır. Çoğaltma için etkinleştirilen makinelerden çoğaltma verilerini alır. Önbelleğe alma, sıkıştırma ve şifreleme ile çoğaltma verilerini iyileştirir ve Azure 'a gönderir.
     - **Aracı yükleyicisi**: Mobility hizmetinin anında yüklenmesini gerçekleştirir. Bu hizmet, geçiş için çoğaltmak istediğiniz her şirket içi makinede yüklü ve çalışır olmalıdır.

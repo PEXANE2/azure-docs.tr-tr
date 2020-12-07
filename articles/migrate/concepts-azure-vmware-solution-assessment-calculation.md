@@ -2,16 +2,16 @@
 title: Azure geçişi 'nde AVS değerlendirmesi hesaplamaları | Microsoft Docs
 description: Azure geçişi hizmetindeki AVS değerlendirmesi hesaplamalarına genel bir bakış sağlar.
 author: rashi-ms
-ms.service: azure-migrate
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.author: mahain
-ms.openlocfilehash: 400c2d91383b5f21fcd40fdbbe279bd83fcef51a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576549"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753816"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Sunucu değerlendirmesi genel bakış (Azure VMware çözümüne geçiş)
 
@@ -81,7 +81,7 @@ Bu gereci bulma işlemi için kullanıyorsanız, aşağıdaki adımlarla işlem 
 
 2. Gereç, her 10 dakikada bir tek bir veri noktası oluşturmak için örnek noktaları birleştirir. Veri noktasını oluşturmak için gereç tüm örneklerden tepe değerlerini seçer. Daha sonra veri noktasını Azure 'a gönderir.
 3. Sunucu değerlendirmesi, geçen ay için 10 dakikalık tüm veri noktalarını depolar.
-4. Bir değerlendirme oluşturduğunuzda sunucu değerlendirmesi, doğru bir şekilde kullanmak için kullanılacak uygun veri noktasını tanımlar. Kimlik, *performans geçmişi* ve *yüzdebirlik kullanımı*için yüzdebirlik değerlerini temel alır.
+4. Bir değerlendirme oluşturduğunuzda sunucu değerlendirmesi, doğru bir şekilde kullanmak için kullanılacak uygun veri noktasını tanımlar. Kimlik, *performans geçmişi* ve *yüzdebirlik kullanımı* için yüzdebirlik değerlerini temel alır.
 
     - Örneğin, performans geçmişi bir hafta ise ve yüzdebirlik kullanımı 95. yüzdebirlik ise, sunucu değerlendirmesi geçen hafta için 10 dakikalık örnek noktaları sıralar. Bunları artan düzende sıralar ve doğru bir şekilde yapmak için 95. yüzdebirlik değerini seçer.
     - 95. yüzdebirlik değeri, 99. yüzdebirlik değerini seçtiğiniz takdirde dahil olabilen tüm aykırı değerleri yok saydığınızdan emin olmanızı sağlar.
@@ -124,7 +124,7 @@ Sunucu değerlendirmesinde bir AVS değerlendirmesi aşağıda verilmiştir:
 **Düğüm türü** | Şirket içi VM 'Leri eşlemek için kullanılan [AVS düğüm türünü](../azure-vmware/concepts-private-clouds-clusters.md) belirtir. Varsayılan düğüm türü AV36 ' dir. <br/><br/> Azure geçişi, sanal makinelerin AVS 'ye geçirilmesi için gerekli sayıda düğüm önermenizi önerir. 
 **FTT ayarı, RAID düzeyi** | Tolerans ve RAID birleşimlerine yönelik geçerli hatayı belirtir. Şirket içi VM disk gereksinimiyle birlikte bulunan seçili FTT seçeneği, AVS 'de gereken toplam vSAN depolama alanını tespit eder. 
 **Boyutlandırma ölçütü** | AVS için sanal makineleri *doğru olarak boyutlandıralmak* üzere kullanılacak ölçütleri ayarlar. Performans geçmişini dikkate almadan *performans tabanlı* boyutlandırmayı veya *Şirket içi olarak* tercih edebilirsiniz. 
-**Performans geçmişi** | Makinelerin performans verilerini değerlendirmek için göz önünde bulundurulması gereken süreyi ayarlar. Bu özellik yalnızca boyutlandırma ölçütü *performans tabanlı*olduğunda geçerlidir. 
+**Performans geçmişi** | Makinelerin performans verilerini değerlendirmek için göz önünde bulundurulması gereken süreyi ayarlar. Bu özellik yalnızca boyutlandırma ölçütü *performans tabanlı* olduğunda geçerlidir. 
 **Yüzdebirlik kullanımı** | Sağ boyutlandırmanın kabul edileceği performans örneği kümesinin yüzdebirlik değerini belirtir. Bu özellik yalnızca boyutlandırma performans tabanlı olduğunda geçerlidir.
 **Konfor katsayısı** | Azure geçişi sunucu değerlendirmesi, değerlendirme sırasında bir arabellek (rahatetken) kabul eder. Bu tampon, VM’lerin makine kullanım verilerinin (CPU, bellek, disk ve ağ) üzerine uygulanır. Konfor katsayısı; sezona özgü kullanım, kısa performans geçmişi ve gelecek kullanımlarda oluşabilecek artışlar gibi konuları hesaba katar.<br/><br/> Örneğin, %20 kullanıma sahip 10 çekirdekli bir VM normalde 2 çekirdekli VM ile sonuçlanır. Ancak, 2.0x konfor katsayısı ile sonuç 4 çekirdekli VM olur. 
 **Teklif** | Kayıtlı olduğunuz [Azure teklifini](https://azure.microsoft.com/support/legal/offer-details/) görüntüler. Azure Geçişi, buna göre bir maliyet tahmini oluşturur.
@@ -166,8 +166,8 @@ Sunucu değerlendirmesi, VM özellikleriyle birlikte makinelerin Konuk işletim 
 
 Bir makine AVS için uygun olarak işaretlendikten sonra, sunucu değerlendirmesi içindeki AVS değerlendirmesi, uygun şirket içi VM gereksinimlerini tanımlamayı ve gereken AVS düğümlerinin toplam sayısını bulmayı içeren düğüm boyutlandırma önerilerini oluşturur. Bu öneriler, belirtilen değerlendirme özelliklerine bağlı olarak farklılık gösterir.
 
-- Değerlendirme *performans tabanlı boyutlandırma*kullanıyorsa, Azure GEÇIŞI, AVS 'nin uygun boyutlandırma önerilerini sağlamak için makinenin performans geçmişini dikkate alır. Bu yöntem, şirket içi VM 'yi aşırı ayırdıysanız ancak kullanım düşükse ve maliyetleri kazanmak için AVS 'de sanal makineyi doğru boyuta eklemek istiyorsanız özellikle yararlıdır. Bu yöntem, geçiş sırasında boyutları iyileştirmenize yardımcı olur.
-- VM boyutlandırma için performans verilerini göz önünde bulundurmayın ve şirket içi makineleri, AVS 'ye olduğu gibi almak istiyorsanız, boyutlandırma ölçütünü *Şirket içi olarak*olarak ayarlayabilirsiniz. Daha sonra, sunucu değerlendirmesi, kullanım verilerini dikkate almadan VM 'Leri şirket içi yapılandırmaya göre boyut olarak kullanacaktır. 
+- Değerlendirme *performans tabanlı boyutlandırma* kullanıyorsa, Azure GEÇIŞI, AVS 'nin uygun boyutlandırma önerilerini sağlamak için makinenin performans geçmişini dikkate alır. Bu yöntem, şirket içi VM 'yi aşırı ayırdıysanız ancak kullanım düşükse ve maliyetleri kazanmak için AVS 'de sanal makineyi doğru boyuta eklemek istiyorsanız özellikle yararlıdır. Bu yöntem, geçiş sırasında boyutları iyileştirmenize yardımcı olur.
+- VM boyutlandırma için performans verilerini göz önünde bulundurmayın ve şirket içi makineleri, AVS 'ye olduğu gibi almak istiyorsanız, boyutlandırma ölçütünü *Şirket içi olarak* olarak ayarlayabilirsiniz. Daha sonra, sunucu değerlendirmesi, kullanım verilerini dikkate almadan VM 'Leri şirket içi yapılandırmaya göre boyut olarak kullanacaktır. 
 
 
 ### <a name="ftt-sizing-parameters"></a>FTT boyutlandırma parametreleri
@@ -190,7 +190,7 @@ Performans tabanlı boyutlandırma için sunucu değerlendirmesi, VM 'ye bağlı
 
 1. VMware VM 'Leri için Azure geçişi gereci, her 20 saniyelik aralığa göre gerçek zamanlı bir örnek noktası toplar. 
 2. Gereç, 10 dakikada bir toplanan örnek noktaların dökümünü yapar ve en son 10 dakikalık değeri sunucu değerlendirmesine gönderir.
-3. Sunucu değerlendirmesi son bir ay için 10 dakikalık tüm örnek noktalarını depolar. Daha sonra, *performans geçmişi* ve *yüzdebirlik kullanımı*için belirtilen değerlendirme özelliklerine bağlı olarak, doğru boyutlandırma için kullanılacak uygun veri noktasını tanımlar. Örneğin, performans geçmişi 1 güne ayarlanmışsa ve yüzdebirlik kullanımı 95. yüzdebirlik ise, sunucu değerlendirmesi son bir gün için 10 dakikalık örnek noktalarını kullanır, bunları artan düzende sıralar ve sağ boyutlandırma için 95. yüzdebirlik değerini seçer.
+3. Sunucu değerlendirmesi son bir ay için 10 dakikalık tüm örnek noktalarını depolar. Daha sonra, *performans geçmişi* ve *yüzdebirlik kullanımı* için belirtilen değerlendirme özelliklerine bağlı olarak, doğru boyutlandırma için kullanılacak uygun veri noktasını tanımlar. Örneğin, performans geçmişi 1 güne ayarlanmışsa ve yüzdebirlik kullanımı 95. yüzdebirlik ise, sunucu değerlendirmesi son bir gün için 10 dakikalık örnek noktalarını kullanır, bunları artan düzende sıralar ve sağ boyutlandırma için 95. yüzdebirlik değerini seçer.
 4. Bu değer, her ölçüm için etkili performans kullanım verilerini (CPU kullanımı, bellek kullanımı, disk ıOPS (okuma ve yazma), disk aktarım hızı (okuma ve yazma) ve gerecin topladığı ağ aktarım hızını (ın ve out) almak için rahatlık faktörüyle çarpılır.
 
 Etkin kullanım değeri saptandıktan sonra, depolama, ağ ve bilgi işlem boyutu aşağıdaki şekilde işlenir.
@@ -205,7 +205,7 @@ Etkin kullanım değeri saptandıktan sonra, depolama, ağ ve bilgi işlem boyut
 
 ### <a name="as-on-premises-sizing"></a>Şirket içi boyutlandırma olarak
 
-*Şirket içi boyutlandırma olarak*kullanıyorsanız, sunucu değerlendirmesi VM 'lerin ve disklerin performans geçmişini dikkate almaz. Bunun yerine, şirket içinde ayrılan boyuta göre AVS düğümlerini ayırır. Varsayılan depolama türü, AVS 'deki vSAN ' dır.
+*Şirket içi boyutlandırma olarak* kullanıyorsanız, sunucu değerlendirmesi VM 'lerin ve disklerin performans geçmişini dikkate almaz. Bunun yerine, şirket içinde ayrılan boyuta göre AVS düğümlerini ayırır. Varsayılan depolama türü, AVS 'deki vSAN ' dır.
 
 ## <a name="confidence-ratings"></a>Güven derecelendirmeleri
 

@@ -1,17 +1,17 @@
 ---
 title: Azure geçişi sunucu değerlendirmesi için en iyi değerlendirme uygulamaları
 description: Azure geçişi sunucu değerlendirmesi ile değerlendirmeler oluşturmaya yönelik ipuçları.
-author: rayne-wiselman
-ms.service: azure-migrate
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: e007f0272a693f5117b0182dad82de2f4a6e252a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c1fff5b5b7f6450ad8d1977e55a1f6b255f3d668
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576889"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754326"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Değerlendirme oluşturmak için en iyi uygulamalar
 
@@ -102,11 +102,11 @@ Değerlendirmeleri etkileyen bazı yaygın ortam sorunlarının nasıl ele alın
 
 ###  <a name="out-of-sync-assessments"></a>Eşitleme dışı değerlendirmeler
 
-Bir değerlendirme oluşturduktan sonra bir gruba makine ekler veya kaldırırsanız, oluşturduğunuz değerlendirme **eşitlenmemiş**olarak işaretlenir. Grup değişikliklerini yansıtmak için değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**).
+Bir değerlendirme oluşturduktan sonra bir gruba makine ekler veya kaldırırsanız, oluşturduğunuz değerlendirme **eşitlenmemiş** olarak işaretlenir. Grup değişikliklerini yansıtmak için değerlendirmeyi yeniden çalıştırın (**yeniden hesapla**).
 
 ### <a name="outdated-assessments"></a>Güncel olmayan değerlendirmeler
 
-Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş**olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
+Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değerlendirme **güncelliğini yitirmiş** olarak işaretlenir. Aşağıdaki özelliklerde bir veya daha fazla değişiklik olduğundan, bir değerlendirme "güncel değil" olarak işaretlenebilir:
 
 - İşlemci çekirdekleri sayısı
 - Ayrılan bellek
@@ -117,7 +117,7 @@ Değerlendirilen bir gruptaki VM 'lerde şirket içi değişiklikler varsa, değ
 - Disk boyutu değişikliği (GB ayrılmış)
 - NIC özellikleri güncelleştirmesi. Örnek: MAC adresi değişiklikleri, IP adresi ekleme vb.
 
-Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden**Hesapla**).
+Değişiklikleri yansıtmak için değerlendirmeyi yeniden çalıştırın (yeniden **Hesapla**).
 
 ### <a name="low-confidence-rating"></a>Düşük güvenilirlikli derecelendirme
 

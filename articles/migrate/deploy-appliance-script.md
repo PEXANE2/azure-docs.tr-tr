@@ -1,14 +1,17 @@
 ---
 title: Bir komut dosyası ile Azure geçişi gereci ayarlama
 description: Bir komut dosyası ile Azure geçişi gereci ayarlamayı öğrenin
-ms.topic: article
+ms.topic: how-to
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.date: 04/16/2020
-ms.openlocfilehash: c4f92d787ea2a72dd534e514e27fa1a5defef39c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 38db1e68adde21d0e566256e9393f6fa4fc58824
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317326"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753799"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Komut dosyası ile gereç ayarlama
 
@@ -20,7 +23,7 @@ VMware ve Hyper-V VM 'Leri için bir betik kullanarak veya Azure portal indirti�
 - Fiziksel sunucular için bir gereç ayarlamak üzere yalnızca bir komut dosyası kullanabilirsiniz. [Bu makaleyi](how-to-set-up-appliance-physical.md)izleyin.
 - Azure Kamu bulutunda bir gereç ayarlamak için [Bu makaleyi](deploy-appliance-script-government.md)izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Betik, mevcut bir fiziksel makineye veya VM 'ye Azure geçişi gereci ayarlar.
 
@@ -72,7 +75,7 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın:
+4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın:
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario VMware ```
    
@@ -119,7 +122,7 @@ Betiği çalıştırmak için:
 1. Sıkıştırılmış dosyayı, gereci barındıracak makinedeki bir klasöre ayıklayın. Betiği mevcut bir Azure geçişi gereci üzerinde bir makinede çalıştırmayın emin olun.
 2. Makinede, yönetici (yükseltilmiş) ayrıcalıklarla PowerShell 'i başlatın.
 3. PowerShell dizinini, indirilen sıkıştırılmış dosyadan ayıklanan içerikleri içeren klasör olarak değiştirin.
-4. Komut dosyası **AzureMigrateInstaller.ps1**aşağıdaki gibi çalıştırın: 
+4. Komut dosyası **AzureMigrateInstaller.ps1** aşağıdaki gibi çalıştırın: 
 
     ``` PS C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-Public> .\AzureMigrateInstaller.ps1 -scenario Hyperv ```
    

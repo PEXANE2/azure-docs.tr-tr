@@ -1,14 +1,17 @@
 ---
 title: Windows Server 2003 sunucularını Azure geçişi ile geçiş için hazırlama
 description: Windows Server 2003 sunucularının Azure geçişi ile geçiş için nasıl hazırlanacağını öğrenin.
+author: rahulg1190
+ms.author: rahugup
+ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 350eab98a2b40d5ca1382bbfc24245e7cb47b48e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f8d3dea970d07d951467a44661e12000ba413f72
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146850"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753765"
 ---
 # <a name="prepare-windows-server-2003-machines-for-migration"></a>Windows Server 2003 makinelerini geçiş için hazırlama
 

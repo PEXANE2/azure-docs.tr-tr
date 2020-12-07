@@ -1,14 +1,17 @@
 ---
 title: Azure geçişi sunucu geçişi hakkında sık sorulan sorular
 description: Makineleri geçirmek için Azure geçişi sunucu geçişini kullanma hakkında sık sorulan sorulara yanıtlar alın.
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: b62110e6b2ce97cdd80ed91ee4b1e75d119c7c7d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1f32e9788b2255be373a4db8c159ef2a6b6ccf04
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180702"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753850"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure geçişi sunucu geçişi: sık sorulan sorular
 
@@ -34,8 +37,8 @@ Azure geçişi: sunucu geçiş aracı, UEFı tabanlı makineleri Azure 2. nesil 
 | SUSE Linux Enterprise Server 15 SP1                     | E                                                                                                                                         | E                              | E                                                          |
 | SUSE Linux Enterprise Server 12 SP4                     | E                                                                                                                                         | E                              | E                                                          |
 | Ubuntu Server 16,04, 18,04, 19,04, 19,10                | E                                                                                                                                         | E                              | E                                                          |
-| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | Y<br>                 _RHEL 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektiriyor_   | E                              | E                                                          |
-| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | Y<br>_Sent OS 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektirir_ | E                              | E                                                          |
+| RHEL 8,1, 8,0, 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x        | E<br>                 _RHEL 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektiriyor_   | E                              | E                                                          |
+| Sent OS 8,1, 8,0, 7,7, 7,6, 7,5, 7,4, 6. x               | E<br>_Sent OS 8. x [el ile hazırlık](./prepare-for-migration.md#linux-machines) gerektirir_ | E                              | E                                                          |
 | Oracle Linux 7,7, 7,7-CI                                |  E                                                                                                                                        | E                              | E                                                          |
 
 ## <a name="can-i-use-the-recovery-services-vault-created-by-azure-migrate-for-disaster-recovery-scenarios"></a>Olağanüstü durum kurtarma senaryoları için Azure geçişi tarafından oluşturulan Kurtarma Hizmetleri kasasını kullanabilir miyim?
@@ -131,7 +134,7 @@ Aracı tabanlı bir çoğaltma yöntemi için, dağıtım planlayıcısı ortam�
 
 ## <a name="how-do-i-throttle-replication-in-using-azure-migrate-appliance-for-agentless-vmware-replication"></a>Aracısız VMware çoğaltması için Azure geçişi aracı 'nı kullanarak çoğaltma Nasıl yaparım? kısıtlaması yapılsın mı?  
 
-NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örneğin:
+NetQosPolicy kullanarak kısıtlama yapabilirsiniz. Örnek:
 
 NetQosPolicy içinde kullanılacak AppNamePrefix "GatewayWindowsService.exe" dir. Bunun gibi bir ilke oluşturarak gerecden gelen çoğaltma trafiğini kısıtlamak için Azure geçişi gereci üzerinde bir ilke oluşturabilirsiniz:
 

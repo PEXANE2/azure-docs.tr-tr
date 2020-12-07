@@ -1,15 +1,17 @@
 ---
 title: Azure geçişi destek matrisi
 description: Azure geçişi hizmeti için destek ayarlarının ve sınırlamaların özetini sağlar.
+author: ms-psharma
+ms.author: panshar
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.author: raynew
-ms.openlocfilehash: 2aab8e9caeaf61c2c8dd1bf29894b13a887e44de
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: d9a18173403cd95e0abf6b9e495f3d948ac6ac61
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424803"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753969"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure geçişi destek matrisi
 
@@ -94,7 +96,7 @@ Japonya |  Japonya Doğu veya Japonya Batı
 Güney Kore | Kore Orta veya Kore Güney
 İsviçre | İsviçre Kuzey
 Birleşik Krallık | UK Güney veya UK Batı
-Birleşik Devletler | Orta ABD veya Batı ABD 2
+Amerika Birleşik Devletleri | Orta ABD veya Batı ABD 2
 
 > [!NOTE]
 > Isviçre coğrafya için İsviçre Batı yalnızca REST API kullanıcılar için kullanılabilir ve onaylanmış bir aboneliğe gerek duyar.
@@ -103,9 +105,9 @@ Birleşik Devletler | Orta ABD veya Batı ABD 2
 
 **Görev** | **Coğrafya** | **Ayrıntılar**
 --- | --- | ---
-Proje oluşturma | Birleşik Devletler | Meta veriler US Gov Arizona depolanır, US Gov Virginia
-Hedef değerlendirme | Birleşik Devletler | Hedef bölgeler: US Gov Arizona, US Gov Virginia, US Gov Teksas
-Hedef çoğaltma | Birleşik Devletler | Hedef bölgeler: US DoD Orta, US DoD Doğu, US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia
+Proje oluşturma | Amerika Birleşik Devletleri | Meta veriler US Gov Arizona depolanır, US Gov Virginia
+Hedef değerlendirme | Amerika Birleşik Devletleri | Hedef bölgeler: US Gov Arizona, US Gov Virginia, US Gov Teksas
+Hedef çoğaltma | Amerika Birleşik Devletleri | Hedef bölgeler: US DoD Orta, US DoD Doğu, US Gov Arizona, US Gov Iowa, US Gov Teksas, US Gov Virginia
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware değerlendirmesi ve geçişi

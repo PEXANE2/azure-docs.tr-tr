@@ -1,14 +1,17 @@
 ---
 title: Azure geçişi gereç hakkında SSS
 description: Azure geçişi gereci hakkında sık sorulan soruların yanıtlarını alın.
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 09/15/2020
-ms.openlocfilehash: 7be6260a7d3eb25ce2854f6949554e2c66019980
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9badbfe6cfe12d67e07f0889d175ed32bc455321
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337600"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753884"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure geçişi gereci: genel sorular
 
@@ -66,9 +69,9 @@ Gerecin Azure URL 'Lerine erişmesi gerekiyor. URL listesini [gözden geçirin](
 
 Azure geçişi gerecinin VM 'lerde topladığı veriler hakkında bilgi edinmek için aşağıdaki makalelere bakın:
 
-- **VMware VM** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
-- **Hyper-V VM** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
-- **Fiziksel veya sanal sunucular** : toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---physical) .
+- **VMware VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---vmware) .
+- **Hyper-V VM**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---hyper-v) .
+- **Fiziksel veya sanal sunucular**: toplanan verileri [gözden geçirin](migrate-appliance.md#collected-data---physical) .
 
 ## <a name="how-is-data-stored"></a>Veriler nasıl depolanır?
 

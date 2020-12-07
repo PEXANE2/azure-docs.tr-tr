@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345406"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754173"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Konuşma Hizmet Kotaları ve Sınırları
 
@@ -104,7 +104,7 @@ Eşzamanlı Istek limitini **artırmak, maliyetlerinizi doğrudan etkilemez** . 
 Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-Line araçları veya API istekleri aracılığıyla görünür **değil** . Mevcut değeri doğrulamak için bir Azure destek Isteği oluşturun.
 
 >[!NOTE]
->Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez.
+>Kapsayıcılar yalnızca barındırıldığı donanımın CPU 'Ları ile sınırlandırıldığından, [konuşma kapsayıcıları](speech-container-howto.md) eşzamanlı istek sınırı artışı gerektirmez. Ancak, konuşma kapsayıcılarının hesaba alınması gereken kendi kapasite sınırlamaları vardır. *"Şirket Içi konuşmadan metin kapsayıcıları için kapasite planlaması ve maliyet tahmini konusunda yardımcı olabilir* " sorusuna bakın. [konuşma kapsayıcıları hakkında SSS bölümüne bakın](speech-container-faq.md).
 
 #### <a name="have-the-required-information-ready"></a>Gerekli bilgileri hazırlayın:
 - **Taban model** için:
@@ -114,15 +114,15 @@ Eşzamanlı Istek sınırı parametresinin mevcut değeri Azure portal, Command-
   - Region
   - Özel uç nokta KIMLIĞI
 
-- **Bilgi alma (temel model)** :  
+- **Bilgi alma (temel model)**:  
   - [Azure Portal](https://portal.azure.com/) git
   - Eşzamanlılık Istek sınırını artırmak istediğiniz konuşma kaynağını seçin
-  - *Özellikleri* seçin ( *kaynak yönetim* grubu) 
+  - *Özellikleri* seçin (*kaynak yönetim* grubu) 
   - Aşağıdaki alanların değerlerini kopyalayın ve kaydedin:
     - **Kaynak kimliği**
     - **Konum** (uç nokta bölgeniz)
 
-- **Bilgi alma (özel model)** :
+- **Bilgi alma (özel model)**:
   - [Konuşma Studio](https://speech.microsoft.com/) portalına git
   - Gerekirse oturum açın
   - Özel Konuşma Tanıma Git
@@ -139,7 +139,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
 - [Gerekli bilgilere](#have-the-required-information-ready) sahip olduğunuzdan emin olun
 - [Azure Portal](https://portal.azure.com/) git
 - Eşzamanlılık Isteği sınırını artırmak (veya denetlemek için) istediğiniz konuşma kaynağını seçin
-- *Yeni destek isteği* seçin ( *destek + sorun giderme* grubu) 
+- *Yeni destek isteği* seçin (*destek + sorun giderme* grubu) 
 - Azure aboneliğiniz ve Azure kaynağınız hakkında otomatik doldurulmuş bilgilerle yeni bir pencere görüntülenir
 - *Özet* girin ("STT eşzamanlılık Istek sınırını Artır" gibi)
 - *Sorun türü* "kota veya abonelik sorunları" seçeneğini belirleyin
@@ -191,7 +191,7 @@ Kaynağınız için eşzamanlı Istek sınırının artışını başlatın veya
 - [Gerekli bilgilere](#prepare-the-required-information) sahip olduğunuzdan emin olun
 - [Azure Portal](https://portal.azure.com/) git
 - Eşzamanlılık Isteği sınırını artırmak (veya denetlemek için) istediğiniz konuşma kaynağını seçin
-- *Yeni destek isteği* seçin ( *destek + sorun giderme* grubu) 
+- *Yeni destek isteği* seçin (*destek + sorun giderme* grubu) 
 - Azure aboneliğiniz ve Azure kaynağınız hakkında otomatik doldurulmuş bilgilerle yeni bir pencere görüntülenir
 - *Özet* girin ("TTS özel uç nokta eşzamanlılık Istek sınırını Artır" gibi)
 - *Sorun türü* "kota veya abonelik sorunları" seçeneğini belirleyin

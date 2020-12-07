@@ -3,12 +3,12 @@ title: Azure Site Recovery ile Hyper-V olağanüstü durum kurtarma için sık s
 description: Bu makalede, şirket içi Hyper-V sanal makineleri için Azure Site Recovery sitesini kullanarak Azure 'a olağanüstü durum kurtarma ayarlama hakkında sık sorulan sorular özetlenmektedir.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87799897"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754360"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Sık sorulan sorular - Hyper-V'den Azure'a olağanüstü durum kurtarma
 
@@ -164,6 +164,10 @@ Azure 'a çoğalttığınızda, çoğaltma trafiği bir Azure depolama hesabın�
 ### <a name="how-often-can-i-replicate-to-azure"></a>Azure 'a ne sıklıkta çoğaltma yapabilirim?
 
 Hyper-V VM 'Leri, her 30 saniyede bir çoğaltılır (Premium Depolama hariç) veya 5 dakika olabilir.
+
+### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Azure Site Recovery ve Hyper-v çoğaltma, Hyper-V makinesinde birlikte yapılandırılabilir mi?
+
+Evet, hem Azure Site Recovery hem de Hyper-V çoğaltma, bir makine için birlikte yapılandırılabilir. Ancak makinenin bir fiziksel makine olarak korunması ve bir yapılandırma/Işlem sunucusu kullanılarak Azure 'a çoğaltılması gerekir. Fiziksel [makineleri koruma](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture)hakkında daha fazla bilgi edinin.
 
 ### <a name="can-i-extend-replication"></a>Çoğaltmayı genişletebilir miyim?
 Genişletilmiş veya zincir çoğaltma desteklenmez. Bu özelliği [geri bildirim forumuna](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)iste.

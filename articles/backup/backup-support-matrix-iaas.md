@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: cd73c07b139aec3b7079c2b042581e26560ed1bc
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 0dd0979b4dcc7c3828d88c594c02addaf00813c4
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309622"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754207"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -50,7 +50,6 @@ Aylık/yıllık yedekleme| Azure VM Uzantısı ile yedeklenirken desteklenmez. Y
 Otomatik saat ayarlaması | Desteklenmez.<br/><br/> Azure Backup, bir VM yedeklenirken gün ışığından yararlanma saati değişikliklerini otomatik olarak ayarlamaz.<br/><br/>  İlkeyi gerektiği şekilde el ile değiştirin.
 [Karma yedekleme için güvenlik özellikleri](./backup-azure-security-feature.md) |Güvenlik özelliklerini devre dışı bırakma desteklenmiyor.
 Makine süresi değişmiş olan VM 'yi yedekleme | Desteklenmez.<br/><br/> Makine saati, bu VM için yedeklemeyi etkinleştirdikten sonra gelecek bir tarih-saat olarak değiştirilirse, zaman değişikliği geri döndürülse bile, başarılı yedekleme garantisi garanti edilmez.
-[Sanal makine ölçek kümelerinde](../virtual-machine-scale-sets/overview.md) Azure VM 'leri |Kullanılabilirlik kümeleri desteklenmez.
 
 ## <a name="operating-system-support-windows"></a>İşletim sistemi desteği (Windows)
 
@@ -140,7 +139,6 @@ Farklı sanal ağdaki VM 'yi geri yükleme |Destekleniyor.<br/><br/> Sanal ağı
 VM boyutu |En az 2 CPU çekirdeği ve 1 GB RAM içeren herhangi bir Azure VM boyutu.<br/><br/> [Daha fazla bilgi edinin.](../virtual-machines/sizes.md)
 [Kullanılabilirlik kümelerinde](../virtual-machines/availability.md#availability-sets) VM 'leri yedekleme | Destekleniyor.<br/><br/> Hızlı bir şekilde VM oluşturma seçeneğini kullanarak kullanılabilir bir küme içindeki bir VM 'yi geri alamazsınız. Bunun yerine, VM 'yi geri yükledikten sonra diski geri yükler ve bir VM dağıtmak ya da bir diski geri yüklemek için kullanın ve var olan bir diski değiştirmek için kullanın.
 [Karma kullanım avantajı (hub)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) Ile dağıtılan VM 'leri yedekleme | Destekleniyor.
-[Ölçek kümesine](../virtual-machine-scale-sets/overview.md) dağıtılan VM 'leri yedekleme |Destekleniyor. Kullanılabilirlik kümesi desteklenmiyor.
 [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) 'Nden dağıtılan VM 'leri yedekleme<br/><br/> (Microsoft, üçüncü taraf tarafından yayımlandı) |Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz. VM olarak desteklenen Azure Market VM 'lerini, satın alma bilgileri gerekli olduğundan geri yüklemeyin. Bunlar yalnızca disk olarak geri yüklenir.
 Özel görüntüden dağıtılan VM 'Leri yedekleme (üçüncü taraf) |Destekleniyor.<br/><br/> VM desteklenen bir işletim sistemi çalıştırıyor olmalıdır.<br/><br/> SANAL makinede dosyaları kurtarırken, yalnızca uyumlu bir işletim sistemine (önceki veya sonraki bir işletim sistemini değil) geri yükleyebilirsiniz.
 Azure 'a geçirilen VM 'Leri yedekleme| Destekleniyor.<br/><br/> VM 'yi yedeklemek için, geçirilen makinede VM aracısının yüklü olması gerekir.
@@ -208,10 +206,10 @@ Veri güvenliği:
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
-Azure VM’leri | ![Yes][green] | ![Yes][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
+Azure VM’leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -224,8 +222,8 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

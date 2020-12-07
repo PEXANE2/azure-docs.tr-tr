@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d59c0e751054522f4c54fe059f19aa0a941464e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 5b9e9f5cc5184a083f45999eaeb031eb83b17c58
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490016"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754343"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde ek tehdit korumaları
 Azure Güvenlik Merkezi, yerleşik [Azure Defender korumalarının](azure-defender.md)yanı sıra aşağıdaki tehdit koruması yeteneklerini de sunmaktadır.
@@ -41,7 +41,7 @@ Güvenlik Merkezi 'nin Azure Resource Manager tabanlı koruma katmanı Şu anda 
 
 Güvenlik Merkezi, Azure için denetim düzlemi olarak kabul edilen Azure Resource Manager olaylarını kullanarak ek bir koruma katmanı sunar. Güvenlik Merkezi, Azure Resource Manager kayıtlarını analiz ederek Azure abonelik ortamında olağandışı veya potansiyel olarak zararlı işlemleri algılar.
 
-Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-azureresourceman)bakın.
+Azure Defender Kaynak Yöneticisi uyarıları listesi için, [Uyarı tablosuna](alerts-reference.md#alerts-resourcemanager)bakın.
 
 
 >[!NOTE]
@@ -65,7 +65,7 @@ Azure Resource Manager (Önizleme) uyarılarının listesi için, [Uyarı tablos
 
 Azure Cosmos DB uyarıları, Azure Cosmos DB hesaplarına erişmek veya bu hesaplara yararlanmaya yönelik olağan dışı ve potansiyel olarak zararlı denemelere göre oluşturulur.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure Cosmos DB için Gelişmiş tehdit koruması (Önizleme)](../cosmos-db/cosmos-db-advanced-threat-protection.md)
 * [Azure Cosmos DB için tehdit koruması uyarıları listesi (Önizleme)](alerts-reference.md#alerts-azurecosmos)

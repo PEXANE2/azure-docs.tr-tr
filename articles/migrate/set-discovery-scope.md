@@ -1,14 +1,17 @@
 ---
 title: Azure geçişi ile VMware VM keşfi kapsamını ayarlama
 description: Azure geçişi ile VMware VM değerlendirmesi ve geçişi için bulma kapsamının nasıl ayarlanacağını açıklar.
+author: vineetvikram
+ms.author: vivikram
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: 8c61f544e3222dba83123aa1be5e53a19e671035
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: dc5bd178c837deea7a22fb3be5ba438085c0e748
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314038"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753561"
 ---
 # <a name="set-discovery-scope-for-vmware-vms"></a>VMware VM 'Leri için bulma kapsamını ayarlama
 
@@ -52,7 +55,7 @@ Azure geçişi 'nin bulma için kullandığı bir vCenter Kullanıcı hesabı ay
 
 1. Bulma ve değerlendirme için kapsama eklemek istediğiniz VM klasörlerinde bulunan tüm VM 'lerde salt okunurdur izinleri atayın.
 2. VM 'Leri ana bilgisayar, küme, konaklar klasörü, kümeler klasörünü, veri merkezine kadar olan tüm üst nesnelere salt okunurdur erişimi verin. İzinleri tüm alt nesnelere yaymaya gerek yoktur.
-3. Bulma için kimlik bilgilerini kullanmak için, veri merkezini **koleksiyon kapsamı**olarak seçin.
+3. Bulma için kimlik bilgilerini kullanmak için, veri merkezini **koleksiyon kapsamı** olarak seçin.
 
 
 Rol tabanlı erişim denetimi kurulumu, karşılık gelen vCenter Kullanıcı hesabının yalnızca kiracıya özgü VM 'lere erişimi olmasını sağlar.

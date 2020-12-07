@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/24/2020
+ms.date: 12/06/2020
 ms.author: memildin
-ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487958"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754391"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -37,7 +37,9 @@ Güvenlik Merkezi iki modda sunulur:
     - **Karma güvenlik** : tüm şirket içi ve bulut iş yüklerinizde güvenliğin birleştirilmiş bir görünümünü alın. Güvenlik standartları ile uyumluluğu sağlamak için güvenlik ilkelerini uygulayın ve hibrit bulut iş yüklerinizin güvenliğini sürekli değerlendirin. Güvenlik duvarları ve diğer iş ortağı çözümleri dahil olmak üzere birden çok kaynaktan güvenlik verilerini toplayın, arayın ve çözümleyin.
     - **Tehdit koruması uyarıları** -gelişmiş davranış analizi ve Microsoft Intelligent Security Graph, gelişen Cyber saldırıları üzerinde bir uç sağlar. Yerleşik davranış analizi ve makine öğrenimi, saldırıları ve sıfır günlük güvenlik açıklarını tanımlayabilir. Gelen saldırılar ve ihlal sonrası etkinlik için ağları, makineleri ve bulut hizmetlerini izleyin. Etkileşimli araçlar ve bağlamsal tehdit zekasıyla araştırmayı kolaylaştırın.
     - **Erişim ve uygulama denetimleri** (AAC)-belirli iş yüklerinize, izin verme ve reddetme listeleri oluşturmak üzere makine öğrenimi destekli öneriler uygulayarak kötü amaçlı yazılımları ve diğer Istenmeyen uygulamaları engelleyin. Azure VM 'lerinde yönetim bağlantı noktalarına tam zamanında, denetimli erişimle ağ saldırısı yüzeyini küçültün. AAC, deneme yanılma ve diğer ağ saldırılarına maruz kalmayı büyük ölçüde azaltır.
-    - **Kapsayıcı güvenlik özellikleri** -Kapsayıcılı ortamlarınızda güvenlik açığı yönetimi ve gerçek zamanlı tehdit korumasından yararlanın. **Azure Defender 'ı kapsayıcı kayıt defterleri için** etkinleştirirken, tüm özellikler etkinleştirilene kadar 12 saat kadar sürebilir. Ücretler, bağlı kayıt defterinize gönderilen benzersiz kapsayıcı görüntülerinin sayısını temel alır. Bir görüntü bir kez tarandıktan sonra, bir kez değiştirilmediği ve bir kez itilemediği takdirde, bu yeniden ücretlendirilmezsiniz. 
+    - **Kapsayıcı güvenlik özellikleri** -Kapsayıcılı ortamlarınızda güvenlik açığı yönetimi ve gerçek zamanlı tehdit korumasından yararlanın. **Azure Defender 'ı kapsayıcı kayıt defterleri için** etkinleştirirken, tüm özellikler etkinleştirilene kadar 12 saat kadar sürebilir. Ücretler, bağlı kayıt defterinize gönderilen benzersiz kapsayıcı görüntülerinin sayısını temel alır. Bir görüntü bir kez tarandıktan sonra, bir kez değiştirilmediği ve bir kez itilemediği takdirde, bu yeniden ücretlendirilmezsiniz.
+    - **Azure ortamına bağlı kaynaklar için kapsamlı tehdit koruması** -Azure Defender, tüm kaynaklarınız için ortak olan Azure hizmetleri için Azure-Native ve tehdit koruması içerir: Azure Resource Manager, Azure DNS, Azure ağ katmanı ve Azure Key Vault. Azure Defender, Azure Yönetim katmanı ve Azure DNS katmanının benzersiz görünürlüğüne sahiptir ve bu nedenle, bu katmanlara bağlı bulut kaynaklarını koruyabilir.
+
 
 ## <a name="try-azure-defender-free-for-30-days"></a>Azure Defender’ı 30 gün boyunca ücretsiz deneme
 Azure Defender, ilk 30 gün boyunca ücretsizdir. 30 günün sonunda hizmeti kullanmaya devam etmeyi seçmeniz gerekir, kullanım için otomatik olarak ücretlendirmeye başlayacağız.

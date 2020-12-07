@@ -1,15 +1,17 @@
 ---
 title: Azure geçişi ile makineleri geçişe hazırlama
 description: Azure geçişi ile geçiş için şirket içi makineleri nasıl hazırlayacağınızı öğrenin.
-ms.topic: tutorial
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 06/08/2020
-ms.custom: MVC
-ms.openlocfilehash: ed5a1b6dc47c91815cc88200ddd1b1246603f806
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91275413"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753935"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure 'a geçiş için şirket içi makineleri hazırlama
 
@@ -94,14 +96,14 @@ Varsayılan olarak, Azure VM 'Leri, geçici depolama olarak kullanılmak üzere 
 
 - Bu sürücü ataması, diğer tüm bağlı depolama sürücüsü atamalarının bir harfle artımına neden olur.
 - Örneğin, şirket içi yüklemeniz uygulama yüklemeleri için D sürücüsüne atanan bir veri diski kullanıyorsa, VM 'yi Azure 'a geçirdikten sonra, bu sürücüye yönelik atama E sürücüsüne kadar artar. 
-- Bu otomatik atamayı engellemek ve Azure 'un bir sonraki boş sürücü harfini geçici birimine atamasını sağlamak için, depolama alanı ağı (SAN) ilkesini **OnlineAll**olarak ayarlayın:
+- Bu otomatik atamayı engellemek ve Azure 'un bir sonraki boş sürücü harfini geçici birimine atamasını sağlamak için, depolama alanı ağı (SAN) ilkesini **OnlineAll** olarak ayarlayın:
 
 Bu ayarı aşağıdaki şekilde el ile yapılandırın:
 
 1. Şirket içi makinede (ana sunucu değil), yükseltilmiş bir komut istemi açın.
-2. **DiskPart**girin.
-3. **San**girin. Konuk işletim sisteminin sürücü harfi tutulmazsa, **çevrimdışı** olarak veya **çevrimdışı paylaşılan** bir şekilde yüklenir.
-4. **DISKPART** Isteminde **San Ilkesi = OnlineAll**yazın. Bu ayar, disklerin çevrimiçi hale gelmesini sağlar ve her iki diski de okuyup yazabilmenizi sağlar.
+2. **DiskPart** girin.
+3. **San** girin. Konuk işletim sisteminin sürücü harfi tutulmazsa, **çevrimdışı** olarak veya **çevrimdışı paylaşılan** bir şekilde yüklenir.
+4. **DISKPART** Isteminde **San Ilkesi = OnlineAll** yazın. Bu ayar, disklerin çevrimiçi hale gelmesini sağlar ve her iki diski de okuyup yazabilmenizi sağlar.
 5. Test geçişi sırasında, sürücü harflerinin korunacağını doğrulayabilirsiniz.
 
 
