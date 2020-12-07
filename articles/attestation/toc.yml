@@ -39,6 +39,8 @@
       href: audit-logs.md
 - name: Başvurular
   items:
+    - name: Bölgesel kullanılabilirlik
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'
     - name: SSS
       href: faq.md
     - name: REST

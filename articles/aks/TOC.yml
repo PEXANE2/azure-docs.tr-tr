@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: AKS kümesini yapılandırma
           href: cluster-configuration.md
+        - name: Özel düğüm yapılandırması (önizleme)
+          href: custom-node-configuration.md
         - name: AKS kümesi ile ACR'yi tümleştirme
           href: cluster-container-registry-integration.md
         - name: Sanal düğümler oluşturma

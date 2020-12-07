@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: Gerçek zamanlı ve tahmini hava durumu verileri isteme
           href: how-to-request-weather-data.md
+        - name: Yükseltme verilerini isteme
+          href: how-to-request-elevation-data.md
     - name: Web SDK ile geliştirme
       items:
         - name: Harita denetimi

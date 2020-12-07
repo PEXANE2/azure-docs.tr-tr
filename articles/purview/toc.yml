@@ -1,0 +1,153 @@
+items:
+  - name: Azure Purview belgeleri
+    href: index.yml
+  - name: Genel Bakış
+    items:
+      - name: Azure Purview nedir?
+        href: overview.md
+  - name: Hızlı Başlangıçlar
+    expanded: true
+    items:
+      - name: Purview hesabı oluşturma - Azure portal
+        href: create-catalog-portal.md
+      - name: Purview hesabı oluşturma - Azure PowerShell
+        href: create-catalog-powershell.md
+  - name: Öğreticiler
+    items:
+      - name: Başlangıç seti
+        items:
+          - name: Verileri tarama
+            href: tutorial-scan-data.md
+          - name: Giriş sayfasında gezinme ve arama
+            href: tutorial-asset-search.md
+          - name: Varlıklara göz atma ve kökeni görüntüleme
+            href: tutorial-browse-and-view-lineage.md
+          - name: 'Kaynak kümelerini, varlıkları, şemaları, sınıflandırmaları keşfetme'
+            href: tutorial-schemas-and-classifications.md
+          - name: Sözlük terimleri oluşturma
+            href: tutorial-import-create-glossary-terms.md
+      - name: Şirket içi SQL Server'ı kaydetme ve tarama
+        href: register-scan-on-premises-sql-server.md
+  - name: Kavramlar
+    items:
+      - name: Purview Studio'yu kullanma
+        href: use-purview-studio.md
+      - name: Dağıtım en iyi uygulamaları
+        href: deployment-best-practices.md
+      - name: Azure Purview'un sınırları
+        href: how-to-manage-quotas.md
+      - name: Taramalar silinen varlıkları nasıl algılar?
+        href: concept-detect-deleted-assets.md
+      - name: Kaynak kümelerini anlama
+        href: concept-resource-sets.md
+      - name: Veri kökeni
+        href: concept-data-lineage.md
+      - name: Desteklenen veri kaynakları ve dosya türleri
+        href: sources-and-scans.md
+      - name: Katalog izinleri
+        href: catalog-permissions.md
+      - name: Katalog araması
+        href: concept-search.md
+      - name: İş sözlüğü
+        href: concept-business-glossary.md
+      - name: Veri içgörüleri
+        href: concept-insights.md
+      - name: Sık sorulan sorular
+        href: frequently-asked-questions.md
+  - name: Nasıl yapılır kılavuzları
+    items:
+      - name: Kaydetme ve tarama
+        items:
+          - name: Kimlik Bilgilerini Yönetme
+            href: manage-credentials.md
+            displayName: Create and manage Credentials
+          - name: Tarama kuralı kümesi oluşturma
+            href: create-a-scan-rule-set.md
+          - name: Tümleştirme çalışma zamanlarını yönetme
+            href: manage-integration-runtimes.md
+          - name: Bağlantı sorunlarını giderme
+            href: troubleshoot-connections.md
+          - name: Kaynaklar
+            items:
+              - name: Veri kaynaklarını yönetme
+                href: manage-data-sources.md
+              - name: Purview bağlayıcılarına genel bakış
+                href: purview-connector-overview.md
+              - name: Azure Blob Depolama
+                href: register-scan-azure-blob-storage-source.md
+                displayName: Register and scan azure blob storage
+              - name: Azure Cosmos DB
+                href: register-scan-azure-cosmos-database.md
+                displayName: Register and scan Azure Cosmos DB
+              - name: Azure Veri Gezgini
+                href: register-scan-azure-data-explorer.md
+                displayName: Register and scan Azure Data Explorer Kusto
+              - name: Azure Data Lake Storage 1. Nesil
+                href: register-scan-adls-gen1.md
+                displayName: Register and scan Azure Data Lake Storage Gen 1 ADLS
+              - name: Azure Data Lake Storage 2. Nesil
+                href: register-scan-adls-gen2.md
+                displayName: Register and scan Azure Data Lake Storage Gen 2 ADLS
+              - name: Azure SQL Veritabanı
+                href: register-scan-azure-sql-database.md
+                displayName: Register and scan Azure SQL DB
+              - name: Güvenlik duvarı ile Azure SQL DB
+                href: scan-sqlresource-firewall.md
+                displayName: Register and scan Azure SQL DB with a firewall
+              - name: Azure SQL Veritabanı Yönetilen Örneği
+                href: register-scan-azure-sql-database-managed-instance.md
+                displayName: Register and scan Azure SQL DB Managed Instance
+              - name: Azure Synapse Analytics
+                href: register-scan-azure-synapse-analytics.md
+              - name: Power BI kiracısı - Portal
+                href: register-scan-power-bi-tenant.md
+              - name: Power BI kiracısı - PowerShell
+                href: powershell-register-scan-power-bi.md
+              - name: Şirket içinde SQL Server
+                href: register-scan-on-premises-sql-server.md
+      - name: İş sözlüğü
+        items:
+          - name: Sözlük terimlerini oluşturma ve dışarı aktarma
+            href: how-to-create-import-export-glossary.md
+          - name: Terim şablonlarını yönetme
+            href: how-to-manage-term-templates.md
+      - name: Sınıflandırma
+        items:
+          - name: Özel sınıflandırma ve sınıflandırma kuralı oluşturma
+            href: create-a-custom-classification-and-classification-rule.md
+          - name: Sınıflandırmaları uygulama
+            href: apply-classifications.md
+          - name: İçeriğinizi otomatik olarak etiketleme
+            href: create-sensitivity-label.md
+      - name: Arama ve göz atma
+        items:
+          - name: Veri Kataloğuna Göz Atma
+            href: how-to-browse-catalog.md
+          - name: Veri Kataloğunda Arama Yapma
+            href: how-to-search-catalog.md
+      - name: Köken
+        items:
+          - name: Köken kullanıcı kılavuzu
+            href: catalog-lineage-user-guide.md
+          - name: Azure Data Factory kökeni
+            href: how-to-link-azure-data-factory.md
+          - name: Azure Veri Paylaşımı kökeni
+            href: how-to-link-azure-data-share.md
+      - name: Insights
+        items:
+          - name: Varlık içgörülerini görüntüleme
+            href: asset-insights.md
+          - name: Sözlük içgörülerini görüntüleme
+            href: glossary-insights.md
+          - name: Tarama içgörülerini görüntüleme
+            href: scan-insights.md
+          - name: Sınıflandırma içgörülerini görüntüleme
+            href: classification-insights.md
+          - name: Duyarlılık etiketi içgörülerini görüntüleme
+            href: sensitivity-insights.md
+          - name: Dosya uzantısı içgörülerini görüntüleme
+            href: file-extension-insights.md
+  - name: Başvuru
+    items:
+      - name: Desteklenen sınıflandırmalar
+        href: supported-classifications.md

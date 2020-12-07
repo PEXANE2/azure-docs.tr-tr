@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: Uygulama veri kaynaklarını birleştirme
                   href: log-query/unify-app-resource-data.md
+                - name: Azure İzleyici'den Azure Veri Gezgini'ni sorgulama
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: Veri dışarı aktarma
           items:
             - name: Çalışma alanı verilerini dışarı aktarma
@@ -550,7 +552,7 @@
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Service Manager web uygulaması oluşturma
               href: platform/itsmc-service-manager-script.md
-            - name: ServiceNow ITSM eşitleme sorunlarını düzeltme
+            - name: ITSM Bağlayıcısındaki sorunları giderme
               href: platform/itsmc-resync-servicenow.md
         - name: Klasik uyarı kurallarını geçirme
           items:

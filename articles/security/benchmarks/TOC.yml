@@ -189,6 +189,10 @@
       href: ../../key-vault/general/security-baseline.md
     - name: Logic Apps güvenlik temeli
       href: ../../logic-apps/security-baseline.md
+    - name: Microsoft Cloud App Security temeli
+      href: /cloud-app-security/security-baseline.md
+    - name: Kimlik için Microsoft Defender güvenlik temeli
+      href: /defender-for-identity/security-baseline.md
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
     - name: Power BI güvenlik temeli

@@ -1,0 +1,75 @@
+### YamlMime:Landing
+title: Azure Data Box Gateway belgeleri - Çevrimiçi aktarım
+summary: Bulut arşivleme amaçlarıyla, olağanüstü durum kurtarma veya verileri bulut ölçeğinde işleme için ağ üzerinden veri aktarımlarında Azure Data Box Gateway cihazlarını kullanın.
+metadata:
+  title: Azure Data Box Gateway belgeleri - Çevrimiçi aktarım
+  description: Azure’a ağ üzerinden yüksek performanslı veri aktarımı için Data Box Gateway Belgeleri.
+  services: databox
+  ms.service: databox
+  ms.subservice: gateway
+  ms.topic: landing-page
+  ms.collection: collection
+  author: v-dalc
+  ms.author: alkohli
+  ms.date: 10/29/2020
+  ms.openlocfilehash: 811d0555e6fd39f372b4742501a3114bbc9a25b4
+  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96579964"
+landingContent:
+- title: Data Box Gateway Hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Data Box Gateway nedir?
+      url: data-box-gateway-overview.md
+  - linkListType: architecture
+    links:
+    - text: Veri aktarımı seçeneklerini belirtme
+      url: /azure/storage/common/storage-choose-data-transfer-solution
+    - text: Ağ aktarımını veya çevrimdışı aktarımı kullanma
+      url: /azure/storage/common/storage-solution-large-dataset-low-network#offline-transfer-or-network-transfer
+  - linkListType: whats-new
+    links:
+    - text: 2007 sürüm notları - Güncel
+      url: data-box-gateway-2007-release-notes.md
+- title: Gereksinimler ve sınırlar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gereksinimler
+      url: data-box-gateway-system-requirements.md
+    - text: Sınırlar
+      url: data-box-gateway-limits.md
+- title: Dağıtma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Dağıtmaya hazırlanma
+      url: data-box-gateway-deploy-prep.md
+    - text: Hyper-V’de sağlama
+      url: data-box-gateway-deploy-provision-hyperv.md
+    - text: Bağlanma, kurma, etkinleştirme
+      url: data-box-gateway-deploy-connect-setup-activate.md
+    - text: Veri aktarma
+      url: data-box-gateway-deploy-add-shares.md
+- title: Yönetme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Paylaşımları yönetme
+      url: data-box-gateway-manage-shares.md
+    - text: PowerShell aracılığıyla yönetme
+      url: data-box-gateway-connect-powershell-interface.md
+- title: Sorun giderme
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Sorun giderme
+      url: data-box-gateway-troubleshoot.md
+    - text: İzleme
+      url: data-box-gateway-monitor.md
+    - text: Destek bileti açma
+      url: ../databox-online/azure-stack-edge-contact-microsoft-support.md

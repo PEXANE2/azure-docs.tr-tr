@@ -1,0 +1,116 @@
+### YamlMime:Landing
+title: Azure Purview belgeleri
+summary: Kuruluşunuzun veri kaynaklarını bulması, anlaması ve tüketmesi için Azure Purview kullanma hakkında bilgi edinin.
+metadata:
+  title: Azure Purview belgeleri
+  description: Kuruluşunuzun veri kaynaklarını bulabileceği, anlayabileceği ve tüketebileceği Azure Purview'u kullanma hakkında bilgi edinin. Öğreticiler, REST API başvurusu ve diğer belgeler, veri tüketicilerinin kullanılabilir veri kaynaklarını bulabileceği ve konunun uzmanları tarafından sağlanan bilgileri edinebileceği veri deponuzu nasıl planlayıp yapılandırabileceğinize ilişkin bilgiler içerir.
+  ms.service: purview
+  ms.topic: landing-page
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 11/29/2020
+  ms.openlocfilehash: 378a335653acf31275c312bcf4fa53b36bfa614e
+  ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 12/03/2020
+  ms.locfileid: "96549471"
+landingContent:
+- title: Azure Purview hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Purview nedir?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Dağıtım en iyi uygulamaları
+      url: deployment-best-practices.md
+    - text: Veri Kataloğu İzinleri
+      url: catalog-permissions.md
+    - text: Desteklenen veri kaynakları ve dosya türleri
+      url: sources-and-scans.md
+- title: Kullanmaya başlayın
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Purview hesabı oluşturma - Portal
+      url: create-catalog-portal.md
+    - text: Purview hesabı oluşturma - PowerShell/CLI
+      url: create-catalog-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: Başlangıç setini indirme
+      url: https://download.microsoft.com/download/9/7/9/979db3b1-0916-4997-a7fb-24e3d8f83174/PurviewStarterKitV4.zip
+    - text: Başlangıç setini çalıştırma ve verileri tarama
+      url: tutorial-scan-data.md
+    - text: Purview giriş sayfasına gitme ve arama yapma
+      url: tutorial-asset-search.md
+    - text: Varlıklara göz atma ve kökeni görüntüleme
+      url: tutorial-browse-and-view-lineage.md
+    - text: Kaynak kümelerini, varlıkları, şemaları, sınıflandırmaları keşfetme
+      url: tutorial-schemas-and-classifications.md
+    - text: Sözlük terimleri oluşturma
+      url: tutorial-import-create-glossary-terms.md
+- title: Azure veri kaynaklarını tarama
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Başlangıç setini çalıştırma ve verileri tarama
+      url: tutorial-scan-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure SQL Veritabanı'nı tarama
+      url: register-scan-azure-sql-database.md
+    - text: Azure Data Lake Storage 2. Nesil'i tarama
+      url: register-scan-adls-gen2.md
+    - text: Azure Cosmos DB’yi tarama
+      url: register-scan-azure-cosmos-database.md
+    - text: Power BI Kiracısı
+      url: register-scan-power-bi-tenant.md
+    - text: Azure Blob Depolamayı kaydetme ve tarama
+      url: register-scan-azure-blob-storage-source.md
+- title: Azure olmayan veri kaynaklarını tarama
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Şirket içinde SQL Server'ı tarama
+      url: register-scan-on-premises-sql-server.md
+- title: Veri varlığınızı anlama
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Varlık içgörülerini görüntüleme
+      url: asset-insights.md
+    - text: Sözlük içgörülerini görüntüleme
+      url: glossary-insights.md
+    - text: Tarama içgörülerini görüntüleme
+      url: scan-insights.md
+    - text: Sınıflandırma içgörülerini görüntüleme
+      url: classification-insights.md
+- title: Verileri seçki olarak sunma
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Kaynak kümeleri, varlıklar, şemalar, sınıflandırmalar
+      url: tutorial-schemas-and-classifications.md
+    - text: Sözlük terimleri
+      url: tutorial-import-create-glossary-terms.md
+  - linkListType: how-to-guide
+    links:
+    - text: Özel sınıflandırmaları ve kuralları oluşturma, düzenleme ve silme
+      url: create-a-custom-classification-and-classification-rule.md
+    - text: Sözlük oluşturma, içeri aktarma ve dışarı aktarma
+      url: how-to-create-import-export-glossary.md
+- title: Verileri keşfetme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Göz atma ve köken
+      url: tutorial-browse-and-view-lineage.md
+  - linkListType: how-to-guide
+    links:
+    - text: Varlık türüne göre göz atma
+      url: how-to-browse-catalog.md
+    - text: Varlıkları, terimleri, ek açıklamaları ve kişileri arama
+      url: how-to-search-catalog.md

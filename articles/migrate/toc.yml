@@ -74,7 +74,9 @@
       items:
         - name: Azure Geçişi desteği
           href: migrate-support-matrix.md
-        - name: Azure Geçişi için güvenlik temeli
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
           href: security-baseline.md
     - name: Bulma
       items:

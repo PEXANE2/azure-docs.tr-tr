@@ -13,7 +13,7 @@
           href: quick-setup-auto-provision.md
         - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
-        - name: Azure RM şablonu
+        - name: ARM şablonu
           href: quick-setup-auto-provision-rm.md
     - name: Simetrik anahtar cihazı sağlama
       items:

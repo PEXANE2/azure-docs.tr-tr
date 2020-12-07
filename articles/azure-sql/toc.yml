@@ -1055,6 +1055,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Depolamayı UltraSSD'ye geçirme
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: SQL Güvenlik Açığı Değerlendirmesi'ni etkinleştirme
+                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
                 - name: SQL Server IaaS Aracısı uzantısını yükleme
                   displayName: 'resource provider, registration, sql vm rp'
                   items:

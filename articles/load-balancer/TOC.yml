@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: Standard Load Balancer ölçümleri ve tanılamaları
           href: load-balancer-standard-diagnostics.md
-        - name: Temel Yük Dengeleyici için Azure İzleyici günlükleri
+        - name: Load Balancer için Azure İzleyici günlükleri
           href: load-balancer-monitor-log.md
         - name: REST ile Load Balancer ölçümleri alma
           href: load-balancer-query-metrics-rest-api.md
