@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132134"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344343"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portalındaki faturalama hesapları ve kapsamlar
 
@@ -33,6 +33,12 @@ Azure portal aşağıdaki ödeme hesapları türünü destekler:
 
 ## <a name="scopes-for-billing-accounts"></a>Ödeme hesapları için kapsamlar
 Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödeme hesabı içindeki bir düğümdür. Bu kapsam dahilinde faturalama verilerini, ödemeleri, faturaları yönetir ve genel hesap yönetimi gerçekleştirirsiniz.
+
+Fatura hesaplarını görüntüleme veya yönetme erişiminiz yoksa, büyük olasılıkla erişim izniniz yoktur. Fatura hesabı yöneticinizden erişim izni vermesini isteyebilirsiniz. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
+
+- [Microsoft Online Services Programı erişimi](manage-billing-access.md)
+- [Microsoft Müşteri Sözleşmesi erişimi](understand-mca-roles.md)
+- [Kurumsal Anlaşma erişimi](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services Programı
 
@@ -72,7 +78,7 @@ Kapsam, faturalamayı görüntülemek ve yönetmek için kullandığınız ödem
 |Fatura hesabı     |   Müşterilerin Microsoft ürünlerini ve hizmetlerini yeni ticaret deneyiminde yönetmesine olanak tanıyan bir iş ortağı anlaşmasını temsil eder. Bir veya daha fazla faturalama profilini ve müşteriyi içerir.   |
 |Faturalama profili     |   Bir para birimi için faturayı temsil eder.     |
 |Müşteri    |   Bir Bulut Çözümü Sağlayıcısı (CSP) iş ortağının müşterisini temsil eder.  Azure abonelikleri ve Azure Market ve Uygulama kaynağı ürünleri gibi diğer satın alma işlemleri bu kapsamla ilişkilendirilir.  |
-|Kurumsal bayi    |   Müşteriye hizmet sağlayan kurumsal bayi. Bu, abonelik için isteğe bağlı bir alandır ve yalnızca CSP iki katmanlı modeldeki Dolaylı sağlayıcılar için geçerlidir.     |
+|Kurumsal bayi    |   Müşteriye hizmet sağlayan kurumsal bayi. Bu, abonelik için isteğe bağlı bir alandır ve yalnızca CSP iki katmanlı modelindeki Dolaylı sağlayıcılar için geçerlidir.     |
 
 ## <a name="switch-billing-scope-in-the-azure-portal"></a>Azure portalında faturalama kapsamını değiştirme
 
