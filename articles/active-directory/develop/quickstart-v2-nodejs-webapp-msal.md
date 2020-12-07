@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: ac400efe66ab740f5fb87977ac531cbe465e3f91
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e860a33ba44743dcc5a96d7656f22fd952a1d0b8
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995173"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762576"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Hızlı başlangıç: kimlik doğrulama kod akışını kullanarak Kullanıcı oturumu açma ve düğüm Web uygulamasında erişim belirteci edinme
 
@@ -41,16 +41,15 @@ Bu hızlı başlangıçta yetkilendirme kodu akışıyla Node.js (MSAL node) iç
 >
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
-> 1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst kısımdaki hesabınızı seçin ve ardından Portal oturumunuzu kullanmak istediğiniz Azure AD kiracısı olarak ayarlayın.
-> 1. [Uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908)’nı seçin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Uygulamayı kaydet** sayfası görüntülendiğinde, uygulamanız için ad girin.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Yönet** altında **App registrations**  >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
 > 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
 > 1. **Yeniden YÖNLENDIRME URI** değerini olarak ayarlayın `http://localhost:3000/redirect` .
 > 1. **Kaydet**’i seçin. 
 > 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
-> 1. **Sertifikalar & parolalar** altında **yeni istemci parolası**' nı seçin.  Açıklamayı boş bırakın ve varsayılan süre sonu ' nu ve ardından **Ekle**' yi tıklatın.
+> 1. **Yönet**' in altında **Sertifikalar & gizli**  >  **anahtar istemci parolası**' nı seçin.  Açıklamayı boş bırakın ve varsayılan süre sonu ' nu ve ardından **Ekle**' yi seçin.
 > 1. Daha sonra kullanmak üzere **Istemci parolasının** **değerini** aklınızda yapın.
 
 #### <a name="step-2-download-the-project"></a>2. Adım: Projeyi indirme

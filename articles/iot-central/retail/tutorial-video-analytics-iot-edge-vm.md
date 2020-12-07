@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 23173432db9364f25901e6e9b285d390c6a63a34
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f798e65b1517430bc67af793ebb517c586d5d58f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426554"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763885"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-linux-vm"></a>Öğretici: video analizi için IoT Edge örneği oluşturma (Linux VM)
 
@@ -51,24 +51,24 @@ En son IoT Edge çalışma zamanı ve canlı video analizi modülleri yüklü bi
 | Abonelik | Azure aboneliğinizi seçin. |
 | Kaynak grubu | *LVA-RG* -önceki öğreticide oluşturduğunuz kaynak grubu. |
 | Region       | *Doğu ABD* |
-| DNS etiketi öneki | VM için benzersiz bir DNS ön eki seçin. |
+| DNS etiketi öneki | VM için benzersiz bir DNS ön eki seçin. Tüm alfabetik karakterler, basamaklar veya özel karakterler olmalıdır. |
 | Yönetici Kullanıcı adı | *AzureUser* |
 | Yönetici Parolası | Bir parola girin. *scratchpad.txt* dosyadaki parolayı bir yere göz önünde, daha sonra kullanacaksınız. |
 | Kapsam Kimliği | **Kapsam kimliği** , ağ geçidi cihazını eklediğinizde önceki öğreticideki *scratchpad.txt* dosyasında bir Note yaptık. |
 | Cihaz Kimliği | *ağ geçidi-001* -önceki öğreticide oluşturduğunuz ağ geçidi cihazı. |
-| Cihaz anahtarı | Cihaz birincil anahtarı, ağ geçidi cihazını eklediğinizde önceki öğreticideki *scratchpad.txt* dosyasında bir Note. |
+| Cihaz anahtarı | **Cihaz birincil anahtarı** , ağ geçidi cihazını eklediğinizde önceki öğreticideki *scratchpad.txt* dosyasında bir Note. |
 | IoT Merkezi uygulama konağı | Önceki öğreticideki *scratchpad.txt* dosyasında bir Note oluşturduğunuz **Uygulama URL 'si** . Örneğin, *Traders.azureiotcentral.com*. |
-| IoT Merkezi uygulaması API belirteci | Önceki öğreticide bir örneği yaptığınız operatör API belirteci. |
-| IoT merkezi cihaz sağlama anahtarı | Birincil grup paylaşılan erişim imza belirteci, bir önceki öğreticideki *scratchpad.txt* dosyasında bir Note yaptınız. |
+| IoT Merkezi uygulaması API belirteci | **IŞLEÇ API belirteci** , önceki öğreticideki *scratchpad.txt* dosyasında bir Note yaptınız. |
+| IoT merkezi cihaz sağlama anahtarı | **SAS-IoT-Devices grubu birincil anahtarı** , önceki öğreticideki *scratchpad.txt* dosyasında bir Note yaptık. |
 | VM Boyutu | *Standard_DS1_v2* |
 | Ubuntu işletim sistemi sürümü | *18,04-LTS* |
 | Konum | *[resourceGroup (). Location]* |
 
-**Gözden geçir + oluştur** ’u seçin. Doğrulama tamamlandığında **Oluştur** ' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
+**Gözden geçir ve oluştur**’u seçin. Doğrulama tamamlandığında **Oluştur**' u seçin. Dağıtımın tamamlanabilmesi için genellikle üç dakika sürer. Dağıtım tamamlandığında, Azure portal **LVA-RG** kaynak grubuna gidin.
 
 ## <a name="ensure-the-iot-edge-runtime-loads-the-modules"></a>IoT Edge çalışma zamanının modülleri yüklediğini emin olun
 
-Azure portal, **LVA-RG** kaynak grubuna gidin ve sanal makineyi seçin. Ardından, **destek + sorun giderme** bölümünde **seri konsol** ' yi seçin.
+Azure portal, **LVA-RG** kaynak grubuna gidin ve sanal makineyi seçin. Ardından, **destek + sorun giderme** bölümünde **seri konsol**' yi seçin.
 
 Bir istem almak için **ENTER** tuşuna basın `login:` . Sanal makineyi oluştururken seçtiğiniz Kullanıcı adı ve parola olarak *AzureUser* kullanın.
 

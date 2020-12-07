@@ -1,17 +1,17 @@
 ---
 title: Akıllı sözleşmeleri oluşturma, derleme, & dağıtma öğreticisi-Azure blok zinciri hizmeti
 description: Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme seti 'ni kullanma hakkında öğretici.
-ms.date: 04/22/2020
+ms.date: 11/30/2020
 ms.topic: tutorial
 ms.reviewer: caleteet
-ms.openlocfilehash: dc23c680dfb2ed33cae2a251af16e1b1f25c6ac7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7605a0c118a40e52210582d2411569795fb25ee
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82086666"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763698"
 ---
-# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
+# <a name="tutorial-create-build-and-deploy-smart-contracts-on-azure-blockchain-service"></a>Öğretici: Azure blok zinciri hizmetinde akıllı sözleşmeler oluşturma, derleme ve dağıtma
 
 Bu öğreticide, Azure blok zinciri hizmetinde akıllı bir sözleşme oluşturmak, derlemek ve dağıtmak için Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanın. Ayrıca, bir işlem aracılığıyla akıllı sözleşme işlevini yürütmek için geliştirme setini da kullanırsınız.
 
@@ -24,14 +24,13 @@ Ethereum için Azure blok zinciri geliştirme setini şu şekilde kullanabilirsi
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma](connect-vscode.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15. x veya üzeri](https://nodejs.org/download)
 * [Git 2.10. x veya üzeri](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza python.exe ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürüm 2.7.15 gereklidir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -47,8 +46,8 @@ Node-cayp hakkında daha fazla bilgi için [GitHub 'daki node-cayp deposuna](htt
 
 Ethereum için Azure blok zinciri geliştirme seti, sözleşmeleri dolandırmaya, oluşturmaya ve dağıtmanıza yardımcı olmak için proje şablonları ve truffle araçlarını kullanır. Başlamadan önce önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, Ethereum için Azure blok zinciri geliştirme setini yükleme ve yapılandırma sürecinde size rehberlik eder.
 
-1. VS Code komut paletinden **Azure blok Zinciri: New Solidity Project**' i seçin.
-1. **Temel proje oluştur**seçeneğini belirleyin.
+1. VS Code komut paletinde, **blok Zinciri: New Solidity Project**' i seçin.
+1. **Temel proje oluştur** seçeneğini belirleyin.
 1. Adlı yeni bir klasör oluşturun `HelloBlockchain` ve **Yeni proje yolu**' nu seçin.
 
 Azure blok zinciri geliştirme seti sizin için yeni bir Solidity projesi oluşturur ve başlatır. Temel proje, örnek bir **Helloblockzincirine** akıllı sözleşme ve Azure blok zinciri hizmeti 'nde Consortium üyelemenize dağıtmak için gereken tüm dosyaları içerir. Projenin oluşturulması birkaç dakika sürebilir. Azure blok zinciri için çıktıyı seçerek VS Code 'ın Terminal panelinde ilerleme durumunu izleyebilirsiniz.
@@ -102,7 +101,7 @@ Azure blok zinciri geliştirme seti, sözleşmeleri blok zincirine dağıtmak ü
 
 ![Sözleşme durumu değişiklikleri](./media/send-transaction/contract-state.png)
 
-SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine**geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek**olarak kalmaya devam eder.
+SendRequest işlevi **RequestMessage** ve **State** alanlarını ayarlar. **RequestMessage** için geçerli durum, **Hello, blockzincirine** geçirilen bağımsız değişkendir. **Durum** alanı değeri **istek** olarak kalmaya devam eder.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

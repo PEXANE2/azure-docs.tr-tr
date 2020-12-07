@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: 3994b05f613cbebcf6daa05cf8db3ef429b52407
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: ecc32908aea2fb474d2ebe5bd94f556527eda814
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428071"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763455"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-yolo-v3"></a>Öğretici: Azure IoT Central bir video Analytics-nesne ve hareket algılama uygulaması oluşturma (YOLO v3)
 
@@ -24,10 +24,10 @@ Bir çözüm Oluşturucusu olarak, IoT Central *video analizi-nesne ve hareket a
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) -bu dosya, bu öğreticilerde çalışırken ihtiyacınız olan çeşitli yapılandırma seçeneklerini kaydetmenize yardımcı olur.
 - [ Üzerindedeployment.amd64.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.amd64.json)
 - [ ÜzerindeLvaEdgeGatewayDcm.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [ Üzerindestate.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) , ikinci öğreticide yalnızca Intel nuc cihazını kullanmayı planlıyorsanız bu dosyayı indirmeniz gerekir.
 
 > [!NOTE]
 > GitHub deposu, **Lvaedgegatewaymodule** ve **lvaYolov3** IoT Edge modüllerinin kaynak kodunu da içerir. Kaynak kodla çalışma hakkında daha fazla bilgi için bkz. [LVA Gateway modüllerini oluşturma](tutorial-video-analytics-build-module.md).
@@ -42,7 +42,7 @@ Dağıtım bildirimini hazırlamak için:
 
 1. Bir metin düzenleyicisi kullanarak *LVA-yapılandırma* klasörüne kaydettiğiniz *deployment.amd64.jsdosya üzerinde* açın.
 
-1. `LvaEdgeGatewayModule`Aşağıdaki kod parçacığında gösterildiği gibi ayarları bulun ve görüntü adını değiştirin:
+1. Ayarları bulun `LvaEdgeGatewayModule` ve görüntü adının aşağıdaki kod parçacığında gösterildiği gibi olduğundan emin olun:
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -50,7 +50,7 @@ Dağıtım bildirimini hazırlamak için:
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. Bölümündeki düğümüne Media Services hesabınızın adını ekleyin `env` `LvaEdgeGatewayModule` . *scratchpad.txt* dosyasında bu hesap adının bir örneğini yaptınız:
+1. Bölümündeki düğümüne Media Services hesabınızın adını ekleyin `env` `LvaEdgeGatewayModule` . *scratchpad.txt* dosyasında Media Services hesap adı ' nı bir yere yaptınız:
 
     ```json
     "env": {
@@ -58,7 +58,7 @@ Dağıtım bildirimini hazırlamak için:
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -67,7 +67,16 @@ Dağıtım bildirimini hazırlamak için:
 
     , `azureMediaServicesArmId` Media Services hesabını oluştururken *scratchpad.txt* dosyasında bir Note oluşturdunuz **kaynak kimliğidir** .
 
-    `aadTenantId` `aadServicePrincipalAppId` `aadServicePrincipalSecret` Media Services hesabınız için hizmet sorumlusu oluştururken *scratchpad.txt* dosyasında,, ve ' yi bir yere görürsünüz:
+    Aşağıdaki tabloda, dağıtım bildiriminde kullanmanız gereken *scratchpad.txt* dosyasında **Media Services API 'sine (JSON) Bağlan** değeri gösterilmektedir:
+
+    | Dağıtım bildirimi       | Karalama çubuğu  |
+    | ------------------------- | ----------- |
+    | Aadtenantıd               | Aadtenantıd |
+    | Aadserviceprincıpalappıd  | Aadclientıd |
+    | Aadservicesprincipalsecret | AadSecret   |
+
+    > [!CAUTION]
+    > Dağıtım bildiriminde doğru değerleri eklediğinizden emin olmak için önceki tabloyu kullanın, aksi takdirde cihaz çalışmaz.
 
     ```json
     {
@@ -111,10 +120,10 @@ Bu öğretici, çözümünüzü nesne ve hareket algılama için YOLO v3 modül�
 
 ### <a name="replace-the-manifest"></a>Bildirimi değiştirme
 
-**LVA Edge Gateway v2** sayfasında **+ bildirimi Değiştir** ' i seçin.
+**LVA Edge Gateway v2** sayfasında **+ bildirimi Değiştir**' i seçin.
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-yolo-v3/replace-manifest.png" alt-text="Bildirimi Değiştir":::
 
-*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.amd64.js* seçin. **Karşıya Yükle** ’yi seçin. Doğrulama tamamlandığında **Değiştir** ' i seçin.
+*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.amd64.js* seçin. **Karşıya Yükle**’yi seçin. Doğrulama tamamlandığında **Değiştir**' i seçin.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]

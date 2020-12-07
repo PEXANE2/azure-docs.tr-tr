@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 1ab6f5e9c7b602ce124116c02584c5a48a3f597f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7c1b9ad033ade3b577dc4a06e84801dab3b7eb70
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999986"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763970"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
@@ -29,7 +29,7 @@ Uygulamanın sol menüsünde **yapılandırma**  >  **uygulama ayarları**' nı 
 
 ![Uygulama Ayarları](./media/configure-common/open-ui.png)
 
-ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını `<appSettings>` *Web.config* veya *üzerindeappsettings.js* olarak ayarlama gibidir, ancak App Service içindeki değerler *Web.config* veya *appsettings.jsüzerinde* olanları geçersiz kılar. *Web.config* veya *appsettings.js*' de (örneğin, Azure MySQL veritabanı parolası) geliştirme ayarlarını (örneğin, yerel mysql parolası), App Service güvenli bir şekilde koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
+ASP.NET ve ASP.NET Core geliştiricileri için App Service uygulama ayarlarını `<appSettings>` *Web.config* veya *üzerindeappsettings.js* olarak ayarlama gibidir, ancak App Service içindeki değerler *Web.config* veya *appsettings.jsüzerinde* olanları geçersiz kılar. *Web.config* veya *appsettings.js* (örneğin, Azure MySQL veritabanı parolası) ' nda geliştirme ayarlarını (örneğin, yerel MySQL parolası) App Service güvenli bir şekilde koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
 Benzer şekilde, diğer dil yığınları, çalışma zamanında ortam değişkenleri olarak uygulama ayarlarını alır. Dil yığınına özgü adımlar için bkz.:
 

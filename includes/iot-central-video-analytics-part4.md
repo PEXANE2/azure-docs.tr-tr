@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: iot-central
 author: dominicbetts
 ms.service: iot-central
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426791"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763458"
 ---
 ### <a name="publish-the-device-template"></a>Cihaz şablonunu yayımlama
 
 Uygulamaya bir cihaz ekleyebilmeniz için önce cihaz şablonunu yayımlamanız gerekir:
 
-1. **LVA Edge Gateway v2** cihaz şablonunda **Yayımla** ' yı seçin.
+1. **LVA Edge Gateway v2** cihaz şablonunda **Yayımla**' yı seçin.
 
-1. **Bu cihaz şablonunu uygulama üzerinde Yayımla** sayfasında **Yayımla** ' yı seçin.
+1. **Bu cihaz şablonunu uygulama üzerinde Yayımla** sayfasında **Yayımla**' yı seçin.
 
 **LVA Edge Gateway v2** , artık uygulamanın **cihazlar** sayfasında kullanılacak cihaz türü olarak kullanılabilir.
 
@@ -37,9 +37,15 @@ Mevcut **ağ geçidi-001** cihazı, **LVA Edge Gateway** cihaz şablonunu kullan
 
     :::image type="content" source="media/iot-central-video-analytics-part4/migrate-device.png" alt-text="Ağ Geçidi cihazını yeni bir sürüme geçirme":::
 
-1. **Geçir** iletişim kutusundaki listede, **LVA Edge Gateway v2** ' yi seçin ve ardından **geçir** ' i seçin.
+1. **Geçir** iletişim kutusundaki listede, **LVA Edge Gateway v2**' yi seçin ve ardından **geçir**' i seçin.
 
 Birkaç saniye sonra geçiş tamamlanır. Cihazınız artık, özelleştirilmiş dağıtım bildiriminiz ile **LVA Edge Gateway v2** cihaz şablonunu kullanıyor.
+
+Artık özgün **LVA Edge Gateway** cihaz şablonunu kullanan hiçbir cihaz yok. Bu cihaz şablonunu Sil:
+
+1. **Cihaz şablonları** sayfasına gidin ve **LVA Edge Gateway** cihaz şablonunu seçin.
+
+1. Cihaz şablonunu silmek için **Sil** ' i seçin.
 
 ### <a name="get-the-device-credentials"></a>Cihaz kimlik bilgilerini al
 
@@ -47,13 +53,13 @@ Cihazın IoT Central uygulamanıza bağlanmasına izin veren kimlik bilgileri ge
 
 1. **Cihazlar** sayfasında, **ağ geçidi-001** cihazını seçin.
 
-1. **Bağlan** ’ı seçin.
+1. **Bağlan**’ı seçin.
 
-1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı** , **cihaz kimliği** ve cihaz **birincil anahtarı** *scratchpad.txt* dosyasında bir Note olun. Bu değerleri daha sonra kullanırsınız.
+1. **Cihaz bağlantısı** sayfasında, **kimlik KAPSAMı**, **cihaz kimliği** ve cihaz **birincil anahtarı** *scratchpad.txt* dosyasında bir Note olun. Bu değerleri daha sonra kullanırsınız.
 
 1. Bağlantı yönteminin, **paylaşılan erişim imzası** olarak ayarlandığından emin olun.
 
-1. **Kapat** ’ı seçin.
+1. **Kapat**’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

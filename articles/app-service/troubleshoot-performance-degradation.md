@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 82373dcd9e1d55e0c4a5867ddaff6875ee57da5a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147516"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763817"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service 'de yavaş uygulama performansı sorunlarını giderme
 Bu makale, [Azure App Service](./overview.md)' deki yavaş uygulama performansı sorunlarını gidermenize yardımcı olur.
@@ -58,7 +58,7 @@ Uygulamanız için izlemek isteyebileceğiniz bazı ölçümler şunlardır
 
 ![uygulama performansını izleme](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure App Service uygulamaları izleme](web-sites-monitor.md)
 * [Uyarı bildirimleri alma](../azure-monitor/platform/alerts-overview.md)
@@ -75,14 +75,14 @@ Ayarlamak için, bkz. [Azure App Service uygulamaları izleme](web-sites-monitor
 Ayrıca bkz. Azure Web sitelerini ve uç nokta Izlemeyi, uç nokta izlemeye yönelik bir video için [Stefan Schackow Ile koruma](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) .
 
 #### <a name="application-performance-monitoring-using-extensions"></a>Uzantıları kullanarak uygulama performansı izleme
-Ayrıca, bir *site uzantısı*kullanarak uygulama performansınızı izleyebilirsiniz.
+Ayrıca, bir *site uzantısı* kullanarak uygulama performansınızı izleyebilirsiniz.
 
 Her App Service uygulaması, site uzantıları olarak dağıtılan güçlü bir araç kümesini kullanmanıza olanak sağlayan genişletilebilir bir yönetim uç noktası sağlar. Uzantılar şunları içerir: 
 
 - [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx)gibi kaynak kodu düzenleyicileri. 
 - Bir uygulamaya bağlı MySQL veritabanı gibi bağlı kaynaklar için yönetim araçları.
 
-[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) , aynı zamanda kullanılabilen bir performans izleme site uzantısıdır. Application Insights kullanmak için, kodunuzu bir SDK ile yeniden derleyin. Ek verilere erişim sağlayan bir uzantı da yükleyebilirsiniz. SDK, uygulamanızın kullanımını ve performansını daha ayrıntılı olarak izlemek için kod yazmanıza olanak tanır. Daha fazla bilgi için bkz. [Web uygulamalarında performansı izleme](../azure-monitor/app/web-monitor-performance.md).
+[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) , aynı zamanda kullanılabilen bir performans izleme site uzantısıdır. Application Insights kullanmak için, kodunuzu bir SDK ile yeniden derleyin. Ek verilere erişim sağlayan bir uzantı da yükleyebilirsiniz. SDK, uygulamanızın kullanımını ve performansını daha ayrıntılı olarak izlemek için kod yazmanıza olanak tanır. Daha fazla bilgi için bkz. [Web uygulamalarında performansı izleme](../azure-monitor/app/app-insights-overview.md).
 
 <a name="collect"></a>
 
@@ -126,7 +126,7 @@ App Service tanılama 'ya erişmek için App Service uygulamanıza veya [Azure p
 #### <a name="use-the-kudu-debug-console"></a>Kudu hata ayıklama konsolunu kullanma
 App Service, hata ayıklama, keşfetme, yükleme dosyaları ve ortamınız hakkında bilgi almak için JSON uç noktaları için kullanabileceğiniz bir hata ayıklama konsoluyla birlikte gelir. Bu konsola *kudu konsolu* veya uygulamanız Için *SCM panosu* adı verilir.
 
-Bu panoya, ** &lt; uygulamanızın adını>. scm.azurewebsites.net/olan https://** bağlantısına giderek erişebilirsiniz.
+Bu panoya, **&lt; uygulamanızın adını>. scm.azurewebsites.net/olan https://** bağlantısına giderek erişebilirsiniz.
 
 Kudu 'nin sağladığı işlemlerden bazıları şunlardır:
 
@@ -161,4 +161,4 @@ Yeniden başlatma, genellikle tek seferlik sorunlardan kurtulmanın en kolay yol
 
  ![performans sorunlarını çözmek için uygulamayı yeniden başlatın](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
-Uygulamanızı Azure PowerShell kullanarak da yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure PowerShell'i Azure Resource Manager ile kullanma](../azure-resource-manager/management/manage-resources-powershell.md).
+Uygulamanızı, Azure PowerShell kullanarak da yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure PowerShell'i Azure Resource Manager ile kullanma](../azure-resource-manager/management/manage-resources-powershell.md).

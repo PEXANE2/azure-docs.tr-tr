@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833818"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763953"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows 'da düğüm uygulamaları için en iyi uygulamalar ve sorun giderme kılavuzu
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Düğüm uygulamamın çok fazla CPU kullanıyor
 
-Portalınızdaki Azure App Service, yüksek CPU tüketimi hakkında bir öneri alabilirsiniz. Ayrıca, belirli [ölçümleri](web-sites-monitor.md)izlemek için izleyicileri de ayarlayabilirsiniz. [Azure Portal PANOSUNDA](../azure-monitor/app/web-monitor-performance.md)CPU kullanımını denetlerken, en yüksek değerleri kaçırmamak için CPU 'nun en yüksek değerlerini denetleyin.
+Portalınızdaki Azure App Service, yüksek CPU tüketimi hakkında bir öneri alabilirsiniz. Ayrıca, belirli [ölçümleri](web-sites-monitor.md)izlemek için izleyicileri de ayarlayabilirsiniz. [Azure Portal PANOSUNDA](../azure-monitor/platform/metrics-charts.md)CPU kullanımını denetlerken, en yüksek değerleri kaçırmamak için CPU 'nun en yüksek değerlerini denetleyin.
 Uygulamanızın çok fazla CPU kullandığını düşünüyorsanız ve nedenini açıklayadıysanız, öğrenmek için düğüm uygulamanızın profilini oluşturabilirsiniz.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>V8-Profiler ile Azure App Service düğüm uygulamanızın profilini oluşturma
@@ -213,7 +213,7 @@ Zamanın %95 ' nin WriteConsoleLog işlevi tarafından tüketildiğini görebili
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Düğüm uygulamamın çok fazla bellek kullanıyor
 
-Uygulamanız çok fazla bellek kullanıyorsa, portalınızdaki Azure App Service yüksek bellek tüketimi hakkında bir bildirim görürsünüz. Belirli [ölçümleri](web-sites-monitor.md)izlemek için izleyicileri ayarlayabilirsiniz. [Azure Portal panosunda](../azure-monitor/app/web-monitor-performance.md)bellek kullanımını denetlerken, en yüksek değerleri kaçırmamak için bellek için maksimum değerleri denetlediğinizden emin olun.
+Uygulamanız çok fazla bellek kullanıyorsa, portalınızdaki Azure App Service yüksek bellek tüketimi hakkında bir bildirim görürsünüz. Belirli [ölçümleri](web-sites-monitor.md)izlemek için izleyicileri ayarlayabilirsiniz. [Azure Portal panosunda](../azure-monitor/platform/metrics-charts.md)bellek kullanımı denetlenirken, en yüksek değerleri kaçırmamak için bellek için maksimum değerleri denetlediğinizden emin olun.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>node.js için sızıntı algılama ve yığın farkı
 

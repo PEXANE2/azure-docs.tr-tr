@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 12/07/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaa8b586b7d1ae073d0746569d61de837eec3b7d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 620b696be0b9a06cf0d68145b06e3cacf2bedff2
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743879"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762559"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Nasıl çalışır? Azure AD self servis parola sıfırlama
 
@@ -69,11 +69,8 @@ SSPR 'yi kullanmaya başlamak için aşağıdaki öğreticiyi izleyin:
 > [!div class="nextstepaction"]
 > [Öğretici: Self servis parola sıfırlamayı etkinleştirme (SSPR)](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>Kayıt seçenekleri
 
-Kullanıcılar SSPR kullanarak parolalarını sıfırlayamaz veya değiştirebilmeleri için kendilerini ve kullanılacak kimlik doğrulama yöntemlerini kaydetmeleri gerekir. Önceki bölümde belirtildiği gibi, bir kullanıcının SSPR için kayıtlı olması ve uygun bir lisansın uygulanmış olması gerekir.
-
-### <a name="require-users-to-register-when-they-sign-in"></a>Kullanıcıların oturum açtıklarında kaydolmaları iste
+## <a name="require-users-to-register-when-they-sign-in"></a>Kullanıcıların oturum açtıklarında kaydolmaları iste
 
 Azure AD kullanarak herhangi bir uygulamada oturum açtıklarında, kullanıcının SSPR kaydını tamamlamasını gerektirme seçeneğini etkinleştirebilirsiniz. Bu iş akışı aşağıdaki uygulamaları içerir:
 
@@ -92,7 +89,7 @@ Kayıt gerekmiyorsa, kullanıcılar oturum açma sırasında istenmez, ancak bun
 >
 > SSPR 'ye kaydolmak için bu kesme, kullanıcının zaten oturum açmış olmaları durumunda bağlantısını kesmez.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısını ayarlayın
+## <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Kullanıcılardan kimlik doğrulama bilgilerini yeniden onaylamasını istemeden önce geçen gün sayısını ayarlayın
 
 Kimlik doğrulama yöntemlerinin parolasını sıfırlama veya değiştirme gereksinimlerinde doğru olduğundan emin olmak için, belirli bir süre sonra kullanıcıların bilgileri kayıtlı bilgilerini onaylamasını zorunlu kılabilirsiniz. Bu seçenek yalnızca **kullanıcıların oturum açarken kaydolmasını gerektir** seçeneğini etkinleştirdiğinizde kullanılabilir.
 
@@ -152,7 +149,7 @@ Kullanıcılar, self servis parola sıfırlama için kaydolurken mobil uygulamal
 
 Sıfırlama veya kilit açma için yalnızca bir gerekli kimlik doğrulama yöntemine sahip bir ilkeyle başlatırsanız ve bu, iki yönteme göre değişiklik yaparsanız, ne olur?
 
-| Kayıtlı yöntemlerin sayısı | Gereken Yöntem sayısı | Result |
+| Kayıtlı yöntemlerin sayısı | Gereken Yöntem sayısı | Sonuç |
 | :---: | :---: | :---: |
 | 1 veya daha fazla | 1 | **Sıfırlayabiliyor** veya kilit açıldı |
 | 1 | 2 | Sıfırlanamıyor veya kilit **açılamıyor** |

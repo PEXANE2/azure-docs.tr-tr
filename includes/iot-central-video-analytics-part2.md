@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 383cd286f89bde13f5e557792e980f0455e00917
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 472c1770e2793d8da4e8fc76fafbf3b9073b746d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91877255"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763435"
 ---
 ## <a name="deploy-and-configure-azure-media-services"></a>Azure Media Services dağıtma ve yapılandırma
 
@@ -34,9 +34,17 @@ Media Services hesabı oluşturduğunuzda:
 
 *scratchpad.txt* dosyasında **Media Services** hesabınızın adını bir yere göz önüne alın.
 
-Dağıtım tamamlandığında **Media Services** hesabınızın **Özellikler** sayfasına gidin. *scratchpad.txt* DOSYASıNDAKI **kaynak kimliğini** bir yere getirin, bu değeri daha sonra IoT Edge modülünü yapılandırdığınızda kullanırsınız.
+Dağıtım tamamlandığında, bir Cloud Shell açın ve medya hizmeti hesabınızın **kaynak kimliğini** almak için aşağıdaki komutu çalıştırın:
 
-Sonra, Media Services kaynağınız için bir Azure Active Directory hizmet sorumlusu yapılandırın. **API erişimi** ' ni ve ardından **hizmet sorumlusu kimlik doğrulamasını**seçin. Media Services kaynağınız ile aynı ada sahip yeni bir Azure Active Directory uygulaması oluşturun ve bir açıklama *IoT Edge erişime*sahip bir gizli dizi oluşturun.
+```azurecli
+az resource list --resource-group lva-rg --resource-type microsoft.media/mediaservices --output table --query "[].{ResourceID:id}"
+```
+
+:::image type="content" source="media/iot-central-video-analytics-part2/get-resource-id.png" alt-text="Kaynak KIMLIĞINI almak için Cloud Shell kullanın":::
+
+*scratchpad.txt* DOSYASıNDAKI **kaynak kimliğini** bir yere getirin, bu değeri daha sonra IoT Edge modülünü yapılandırdığınızda kullanırsınız.
+
+Sonra, Media Services kaynağınız için bir Azure Active Directory hizmet sorumlusu yapılandırın. **API erişimi** ' ni ve ardından **hizmet sorumlusu kimlik doğrulamasını** seçin. Media Services kaynağınız ile aynı ada sahip yeni bir Azure Active Directory uygulaması oluşturun ve bir açıklama *IoT Edge erişime* sahip bir gizli dizi oluşturun.
 
 :::image type="content" source="./media/iot-central-video-analytics-part2/media-service-authentication.png" alt-text="Azure A D uygulamasını Azure Media Services için yapılandırma":::
 
@@ -63,18 +71,18 @@ Yeni bir video analizi uygulaması oluşturmak için:
 
 1. **Video analizi-nesne ve hareket algılama** uygulama şablonunu seçin. Bu şablon, öğreticide kullanılan cihazların cihaz şablonlarını içerir. Şablon, operatörlerin, kameraları izleme ve yönetme gibi görevleri gerçekleştirmek için kullanabileceği örnek panolar içerir.
 
-1. İsteğe bağlı olarak, kolay bir **uygulama adı**seçin. Bu uygulama, Northwind Traders adlı kurgusal bir perakende mağazayı temel alır. Öğretici, *Northwind Traders video analizi* **uygulama adını** kullanır.
+1. İsteğe bağlı olarak, kolay bir **uygulama adı** seçin. Bu uygulama, Northwind Traders adlı kurgusal bir perakende mağazayı temel alır. Öğretici, *Northwind Traders video analizi* **uygulama adını** kullanır.
 
     > [!NOTE]
-    > Kolay bir **uygulama adı**kullanırsanız, uygulama **URL 'si**için yine de benzersiz bir değer kullanmanız gerekir.
+    > Kolay bir **uygulama adı** kullanırsanız, uygulama **URL 'si** için yine de benzersiz bir değer kullanmanız gerekir.
 
-1. Azure aboneliğiniz varsa, **konum**olarak **Dizin**, **Azure aboneliğiniz**ve **Birleşik Devletler** seçin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz. Bu öğretici üç cihaz (iki kamera ve bir IoT Edge cihaz kullanır. bu nedenle, ücretsiz deneme sürümünü kullanmıyorsanız kullanım için faturalandırılırsınız.
+1. Azure aboneliğiniz varsa, **konum** olarak **Dizin**, **Azure aboneliğiniz** ve **Birleşik Devletler** seçin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz. Bu öğretici üç cihaz (iki kamera ve bir IoT Edge cihaz kullanır. bu nedenle, ücretsiz deneme sürümünü kullanmıyorsanız kullanım için faturalandırılırsınız.
 
     Dizinler, abonelikler ve konumlar hakkında daha fazla bilgi için bkz. [uygulama oluşturma hızlı](../articles/iot-central/core/quick-deploy-iot-central.md)başlangıcı.
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure A D uygulamasını Azure Media Services için yapılandırma":::
+    :::image type="content" source="./media/iot-central-video-analytics-part2/new-application.png" alt-text="Azure IoT Central Uygulama Oluştur sayfası":::
 
 ### <a name="retrieve-the-configuration-data"></a>Yapılandırma verilerini alma
 
@@ -82,11 +90,11 @@ Bu öğreticinin ilerleyen kısımlarında IoT Edge ağ geçidini yapılandırd�
 
 **Yönetim** bölümünde, **uygulamanızı** seçin ve *scratchpad.txt* DOSYADAKI uygulama **URL** 'sini ve **uygulama kimliğini** bir yere göz önünde oluşturun:
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Azure A D uygulamasını Azure Media Services için yapılandırma":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/administration.png" alt-text="Ekran görüntüsü, Application U R L ve Application g vurgulanarak bir video analizi sayfasının yönetim bölmesini gösterir.":::
 
 **API belirteçlerini** seçin ve **Işleç** rolü Için **lvaedgetoken** adlı yeni bir belirteç oluşturun:
 
-:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Azure A D uygulamasını Azure Media Services için yapılandırma":::
+:::image type="content" source="./media/iot-central-video-analytics-part2/token.png" alt-text="Belirteç oluştur":::
 
 *scratchpad.txt* dosyasındaki belirteci daha sonra bir yere unutmayın. İletişim kutusu kapatıldıktan sonra belirteci yeniden görüntüleyemezsiniz.
 

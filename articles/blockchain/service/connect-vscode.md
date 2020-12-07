@@ -1,15 +1,15 @@
 ---
 title: Azure blok zinciri hizmetine bağlanmak için Visual Studio Code kullanma
 description: Visual Studio Code 'de Ethereum uzantısı için Azure blok zinciri geliştirme setini kullanarak bir Azure blok zinciri hizmeti Konsorsiyumu ağı 'na bağlanma
-ms.date: 04/22/2020
+ms.date: 12/04/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
-ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6e94d93d91f25c15743c4c467e31de49fd9da41d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82084847"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763341"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Hızlı başlangıç: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanma
 
@@ -24,7 +24,6 @@ Bu hızlı başlangıçta, Azure blok zinciri hizmetinde bir konsorsiyunuza ekle
 * [Ethereum uzantısı için Azure blok zinciri geliştirme seti](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15. x veya üzeri](https://nodejs.org)
 * [Git 2.10. x veya üzeri](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/) Yolunuza python.exe ekleyin. Azure blok zinciri geliştirme seti için yolunuzda Python sürümü 2.7.15 olması gerekir.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLı 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
@@ -40,7 +39,7 @@ Node-cayp hakkında daha fazla bilgi için [GitHub 'daki node-cayp deposuna](htt
 
 Azure blok zinciri geliştirme seti, geliştirme ortamı önkoşullarının karşılandığını doğrular. Geliştirme ortamınızı doğrulamak için:
 
-VS Code komut paletinde **Azure blok Zinciri: karşılama sayfasını göster**' i seçin.
+VS Code komut paletinde, **blok Zinciri: karşılama sayfasını göster**' i seçin.
 
 Azure blok zinciri geliştirme seti, tamamlanmasının yaklaşık bir dakika süren bir doğrulama betiği çalıştırır. Bu çıktıyı, **terminal > yeni Terminal**' i seçerek görüntüleyebilirsiniz. Terminal menü çubuğunda, açılan menüde **Çıkış** sekmesini ve **Azure blok zincirini** seçin. Başarılı doğrulama aşağıdaki görüntüde olduğu gibi görünür:
 

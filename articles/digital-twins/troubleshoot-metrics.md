@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616697"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763257"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -26,19 +26,19 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
 
 2. [Azure Portal](https://portal.azure.com) Azure dijital TWINS örneğinizi bulun (adını Portal arama çubuğuna yazarak bu sayfayı açabilirsiniz). 
 
-    Örneğin menüsünden **ölçümler** ' i seçin.
+    Örneğin menüsünden **ölçümler**' i seçin.
    
     :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="Azure dijital TWINS için ölçüm sayfasını gösteren ekran görüntüsü":::
 
     Bu sayfa, Azure dijital TWINS örneğiniz için ölçümleri görüntüler. Ayrıca, listeden görmek istediklerinizi seçerek ölçümlerinizin özel görünümlerini de oluşturabilirsiniz.
     
-3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle** ' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
+3. Menüdeki **Tanılama ayarları** ' nı ve ardından **Tanılama ayarı Ekle**' yi seçerek ölçüm verilerinizi bir Event Hubs uç noktasına veya bir Azure depolama hesabına gönderebilirsiniz.
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Tanılama Ayarları sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: tanılamayı ayarlama*](troubleshoot-diagnostics.md).
 
-4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı** ' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
+4. Menüden **Uyarılar** ' ı ve sonra **+ Yeni uyarı kuralı**' nı seçerek ölçüm verilerinize yönelik uyarıları ayarlamayı tercih edebilirsiniz.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Uyarı sayfasını ve eklenecek düğmeyi gösteren ekran görüntüsü":::
 
     Bu işlem hakkında daha fazla bilgi için bkz. [*sorun giderme: uyarıları ayarlama*](troubleshoot-alerts.md).
@@ -63,14 +63,13 @@ API istekleriyle yapılacak ölçümler:
 
 Faturalandırma ile yapılacak ölçümler:
 
->[!NOTE]
->Bu ölçümler hala seçilebilir listesinde gösterilirken, hizmette yeni fiyatlandırma kullanılabilir hale gelene kadar bunlar sıfır olarak kalır. Daha fazla bilgi için bkz. [*Azure dijital TWINS fiyatlandırması*](https://azure.microsoft.com/pricing/details/digital-twins/).
-
 | Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Faturalandırma API 'SI Işlemleri | Count | Toplam | Azure Digital TWINS hizmetinde yapılan tüm API isteklerinin sayısı için faturalandırma ölçümü. | Ölçüm kimliği |
 | Billingiletide Işlendi | Işlenen faturalandırma Iletileri | Count | Toplam | Azure dijital TWINS 'den dış uç noktalara gönderilen ileti sayısı için faturalandırma ölçümü.<br><br>Faturalama amacıyla tek bir ileti olarak kabul edilebilmesi için yükün 1 KB 'den büyük olmaması gerekir. Bundan büyük yük, 1 KB 'lık artışlarla ek iletiler olarak sayılır (Bu nedenle 1 ile 2 KB arasında bir ileti 2 ileti olarak sayılır, 2 ile 3 KB arasında bir ileti 3 ileti olur ve bu şekilde devam eder).<br>Bu kısıtlama, yanıtlar için de geçerlidir. bu nedenle yanıt gövdesinde 1,5 KB döndüren bir çağrı, örneğin, 2 işlem olarak faturalandırılacaktır. | Ölçüm kimliği |
 | BillingQueryUnits | Faturalama sorgu birimleri | Count | Toplam | Sorgu birimlerinin sayısı, sorgu yürütmek için tüketilen, hizmet kaynağı kullanımının dahili olarak hesaplanan bir ölçümüdür. Sorgu birimlerini ölçmek için bir yardımcı API de mevcuttur: [Querychargehelper sınıfı](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | Ölçüm kimliği |
+
+Azure dijital TWINS 'nin faturalandırılmasıyla ilgili daha fazla ayrıntı için bkz. [*Azure dijital TWINS fiyatlandırması*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 #### <a name="ingress-metrics"></a>Giriş ölçümleri
 

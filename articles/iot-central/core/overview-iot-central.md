@@ -7,13 +7,13 @@ ms.date: 11/23/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
-ms.openlocfilehash: 55f187781a0f11417b0c918034dcfe3362be4468
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: mvc, contperfq2
+ms.openlocfilehash: 847fc5345708dc313f706fcb0d370b0d1761aa41
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457663"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763715"
 ---
 # <a name="what-is-azure-iot-central"></a>Azure IoT Central nedir?
 
@@ -34,7 +34,7 @@ Bu makalede IoT Central için özetlenmektedir:
 
 IoT Central belgeler, IoT Central bir uygulamayla etkileşime geçen dört kişilik anlamına gelir:
 
-- _Çözüm Oluşturucu_ , uygulamaya bağlanan ve uygulamayı operatör için özelleştiren [cihazların türlerini tanımlamaktan](howto-set-up-template.md) sorumludur.
+- Bir _çözüm Oluşturucusu_ , [uygulama oluşturmaktan](quick-deploy-iot-central.md), [kuralları ve eylemleri yapılandırmadan](quick-configure-rules.md), [diğer hizmetlerle tümleştirmelere tanımlamayı](howto-export-data.md)ve işleçler ve cihaz geliştiricileri için uygulamayı daha fazla özelleştirmeyi sağlamaktan sorumludur.
 - Bir _işleç_ , uygulamaya bağlı [aygıtları yönetir](howto-manage-devices.md) .
 - _Yönetici_ , uygulama içindeki [Kullanıcı rollerini ve izinleri](howto-administer.md) yönetme gibi yönetim görevlerinden sorumludur.
 - Bir _cihaz geliştiricisi_ , uygulamanıza bağlı bir cihazda veya [IoT Edge modülde](concepts-iot-edge.md) [çalışan kodu oluşturur](concepts-telemetry-properties-commands.md) .

@@ -4,12 +4,12 @@ description: Application Insights, uygulama telemetrinizin akıllı analizini ya
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ead71a5ac6e2cfa0df6654c7ba9aa7b5b9238d04
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186244"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763783"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Akıllı algılama-performans bozuklukları
 
@@ -99,7 +99,7 @@ Sorun nerede? Sunucu yanıt vermeyi yavaşlatır, sayfa çok uzun mi veya taray�
 
 Tarayıcılar ölçüm dikey penceresini açın. Tarayıcı sayfası yükleme süresinin kesimli görünümü saatin nerede gittiğini gösterir. 
 
-* **Gönderme Isteği süresi** yüksekse, sunucu yavaş yanıt verir veya istek çok fazla veri içeren bir gönderiyle yapılır. Yanıt sürelerini araştırmak için [performans ölçümlerine](./web-monitor-performance.md#metrics) bakın.
+* **Gönderme Isteği süresi** yüksekse, sunucu yavaş yanıt verir veya istek çok fazla veri içeren bir gönderiyle yapılır. Yanıt sürelerini araştırmak için [performans ölçümlerine](./performance-counters.md) bakın.
 * Yavaşlığın dış hizmetler veya veritabanınız olup olmadığını görmek için [bağımlılık izlemeyi](./asp-net-dependencies.md) ayarlayın.
 * **Yanıt alma** özelliği önceden baskın ise sayfanız ve bağımlı parçaları-JAVASCRIPT, CSS, görüntüler vb. (ancak zaman uyumsuz olarak yüklenen veriler) çok uzun olur. Bir [Kullanılabilirlik testi](./monitor-web-app-availability.md)ayarlayın ve bağımlı bölümleri yükleme seçeneğini ayarladığınızdan emin olun. Bazı sonuçlar aldığınızda, sonucun ayrıntılarını açın ve farklı dosyaların yükleme zamanlarını görmek için genişletin.
 * Yüksek **Istemci işlem süresi** , betikleri yavaş çalışıyor olarak önerir. Neden belirgin değilse, bazı zamanlama kodu eklemeyi ve saati trackMetric çağrılarında göndermenizi göz önünde bulundurun.

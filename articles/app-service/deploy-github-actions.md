@@ -7,18 +7,18 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e2432ca4cecb3c36d2fae19907c1ad17d9ef2505
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 16a21acabfd199ba16068e507919b564f01a76d5
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833512"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763919"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service dağıtma
 
 İş akışınızı otomatik hale getirmek ve GitHub 'dan [Azure App Service](overview.md) dağıtmak Için [GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) ile çalışmaya başlayın. 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
@@ -55,7 +55,7 @@ App Service dağıtım merkezini kullanarak GitHub eylemlerini hızlıca kullanm
 
 Bu işlem, iş akışı dosyasını depoya teslim eder. Uygulamanızı derlemek ve dağıtmak için iş akışı hemen başlayacaktır.
 
-## <a name="set-up-a-work-manually"></a>Bir işi el ile ayarlama
+## <a name="set-up-a-workflow-manually"></a>Bir iş akışını el ile ayarlama
 
 Ayrıca, dağıtım merkezini kullanmadan bir iş akışı dağıtabilirsiniz. Bunu yapmak için öncelikle dağıtım kimlik bilgileri oluşturmanız gerekir. 
 
@@ -279,7 +279,7 @@ Kodunuzu bir App Service uygulamasına dağıtmak için `azure/webapps-deploy@v2
 |---------|---------|
 | **uygulama adı** | Istenir App Service uygulamasının adı | 
 | **Yayımlama profili** | Seçim Web Dağıtımı gizli dizileri ile profil dosyası içeriğini yayımlama |
-| **leyebilir** | Seçim Paket veya klasörün yolu. Yol, *. zip, *. war, *. jar veya dağıtılacak bir klasör içerebilir |
+| **package** | Seçim Paket veya klasörün yolu. Yol, *. zip, *. war, *. jar veya dağıtılacak bir klasör içerebilir |
 | **yuva adı** | Seçim Üretim [yuvası](deploy-staging-slots.md) dışında mevcut bir yuva girin |
 
 

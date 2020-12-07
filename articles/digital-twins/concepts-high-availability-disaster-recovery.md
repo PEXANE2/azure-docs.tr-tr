@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 85fd5a4246e891ef6640438b07e12a9c32ad12fa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094557"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763181"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure dijital TWINS yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -28,7 +28,7 @@ HA/DR için tasarlama hakkında genel Azure Kılavuzu için [*en iyi uygulamalar
 
 ## <a name="intra-region-ha"></a>Bölge içi HA
  
-Azure dijital TWINS, hizmet içinde artıklıkları uygulayarak bölge içi HA sağlar. **Bu HA özelliklerinden faydalanmak için bir Azure dijital TWINS çözümünün geliştiricilerine ek bir iş gerekmez.** Azure dijital TWINS, makul bir çalışma süresi garantisi sunmakla birlikte, herhangi bir dağıtılmış bilgi işlem platformunda olduğu gibi geçici sorunlar da beklenmeye devam edebilir. Uygun yeniden deneme ilkeleri, geçici hatalarla başa çıkmak için bir bulut uygulamasıyla etkileşime geçen bileşenlere yerleşik olmalıdır.
+Azure dijital TWINS, hizmet içinde artıklıkları uygulayarak bölge içi HA sağlar. Bu, çalışma süresi için [SERVICE SLA](https://azure.microsoft.com/support/legal/sla/digital-twins) 'da yansıtılır. **Bu HA özelliklerinden faydalanmak için bir Azure dijital TWINS çözümünün geliştiricilerine ek bir iş gerekmez.** Azure dijital TWINS, makul bir çalışma süresi garantisi sunmakla birlikte, herhangi bir dağıtılmış bilgi işlem platformunda olduğu gibi geçici sorunlar da beklenmeye devam edebilir. Uygun yeniden deneme ilkeleri, geçici hatalarla başa çıkmak için bir bulut uygulamasıyla etkileşime geçen bileşenlere yerleşik olmalıdır.
 
 ## <a name="cross-region-dr"></a>Çapraz bölge DR
 
@@ -37,7 +37,7 @@ Veri Merkezi, bölgedeki güç arızalarına veya diğer olaylara karşı geniş
 **Microsoft tarafından başlatılan yük devretme** , Microsoft 'un, etkilenen bir bölgeden gelen tüm Azure dijital TWINS örneklerinin, ilgili coğrafi eşleştirilmiş bölgeye yük devretmesine olanak sağlar. Bu işlem, varsayılan bir seçenektir (kullanıcıların herhangi bir şekilde kabul etmesidir) ve kullanıcıdan müdahale gerektirmez. Microsoft bu seçeneğin ne zaman belirlendiğini belirleme hakkını saklı tutar. Bu mekanizma, kullanıcının örneğinin yük devretme öncesinde Kullanıcı onayı içermez.
 
 >[!NOTE]
-> Bazı Azure Hizmetleri, **müşteri tarafından başlatılan yük devretme**adlı ek bir seçenek de sağlar. Bu, müşterilerin yalnızca kendi örnekleri için bir yük devretme başlatmasına olanak sağlar. ÖRNEĞIN, Dr detaylarını çalıştırmak gibi. Bu mekanizma Şu anda Azure dijital TWINS tarafından **desteklenmiyor** . 
+> Bazı Azure Hizmetleri, **müşteri tarafından başlatılan yük devretme** adlı ek bir seçenek de sağlar. Bu, müşterilerin yalnızca kendi örnekleri için bir yük devretme başlatmasına olanak sağlar. ÖRNEĞIN, Dr detaylarını çalıştırmak gibi. Bu mekanizma Şu anda Azure dijital TWINS tarafından **desteklenmiyor** . 
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

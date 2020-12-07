@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 404e820168c64bd47b6e94598ad5bb13faf32a86
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 8505e67e3db7460308d208ce4f83d29a1fb4d862
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751351"
+ms.locfileid: "96763205"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -142,7 +142,7 @@ Bağımlılık koleksiyonu varsayılan olarak etkindir. [Bu](asp-net-dependencie
 
 ### <a name="performance-counters"></a>Performans sayaçları
 
-ASP.NET Core [performans sayaçları](./web-monitor-performance.md) için destek sınırlıdır:
+ASP.NET Core [performans sayaçları](./performance-counters.md) için destek sınırlıdır:
 
 * SDK sürümleri 2.4.1 ve üzeri, uygulama Azure Web Apps (Windows) üzerinde çalışıyorsa performans sayaçlarını toplar.
 * SDK sürümleri 2.7.1 ve üzeri, uygulama Windows ve hedefler veya sonraki sürümlerde çalışıyorsa performans sayaçlarını toplar `NETSTANDARD2.0` .

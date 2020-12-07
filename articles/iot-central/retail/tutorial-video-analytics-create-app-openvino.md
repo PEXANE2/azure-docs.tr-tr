@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426785"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763629"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Öğretici: Azure IoT Central (OpenVINO) üzerinde bir video analizi oluşturma-nesne ve hareket algılama uygulaması &trade;
 
@@ -24,10 +24,10 @@ Bir çözüm Oluşturucusu olarak, IoT Central *video analizi-nesne ve hareket a
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt) -bu dosya, bu öğreticilerde çalışırken ihtiyacınız olan çeşitli yapılandırma seçeneklerini kaydetmenize yardımcı olur.
 - [ Üzerindedeployment.openvino.amd64.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.openvino.amd64.json)
 - [ ÜzerindeLvaEdgeGatewayDcm.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [ Üzerindestate.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.js](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json) , ikinci öğreticide yalnızca Intel nuc cihazını kullanmayı planlıyorsanız bu dosyayı indirmeniz gerekir.
 
 [!INCLUDE [iot-central-video-analytics-part2](../../../includes/iot-central-video-analytics-part2.md)]
 
@@ -39,7 +39,7 @@ Dağıtım bildirimini hazırlamak için:
 
 1. Bir metin düzenleyicisi kullanarak *LVA-yapılandırma* klasörüne kaydettiğiniz *deployment.openvino.amd64.jsdosya üzerinde* açın.
 
-1. `LvaEdgeGatewayModule`Aşağıdaki kod parçacığında gösterildiği gibi ayarları bulun ve görüntü adını değiştirin:
+1. Ayarları bulun `LvaEdgeGatewayModule` ve görüntü adının aşağıdaki kod parçacığında gösterildiği gibi olduğundan emin olun:
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -47,7 +47,7 @@ Dağıtım bildirimini hazırlamak için:
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. Bölümündeki düğümüne Media Services hesabınızın adını ekleyin `env` `LvaEdgeGatewayModule` . *scratchpad.txt* dosyasında bu hesap adının bir örneğini yaptınız:
+1. Bölümündeki düğümüne Media Services hesabınızın adını ekleyin `env` `LvaEdgeGatewayModule` . *scratchpad.txt* dosyasında Media Services hesap adı ' nı bir yere yaptınız:
 
     ```json
     "env": {
@@ -55,7 +55,7 @@ Dağıtım bildirimini hazırlamak için:
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -64,7 +64,16 @@ Dağıtım bildirimini hazırlamak için:
 
     , `azureMediaServicesArmId` Media Services hesabını oluştururken *scratchpad.txt* dosyasında bir Note oluşturdunuz **kaynak kimliğidir** .
 
-    `aadTenantId` `aadServicePrincipalAppId` `aadServicePrincipalSecret` Media Services hesabınız için hizmet sorumlusu oluştururken *scratchpad.txt* dosyasında,, ve ' yi bir yere görürsünüz:
+    Aşağıdaki tabloda, dağıtım bildiriminde kullanmanız gereken *scratchpad.txt* dosyasında **Media Services API 'sine (JSON) Bağlan** değeri gösterilmektedir:
+
+    | Dağıtım bildirimi       | Karalama çubuğu  |
+    | ------------------------- | ----------- |
+    | Aadtenantıd               | Aadtenantıd |
+    | Aadserviceprincıpalappıd  | Aadclientıd |
+    | Aadservicesprincipalsecret | AadSecret   |
+
+    > [!CAUTION]
+    > Dağıtım bildiriminde doğru değerleri eklediğinizden emin olmak için önceki tabloyu kullanın, aksi takdirde cihaz çalışmaz.
 
     ```json
     {
@@ -109,10 +118,10 @@ Bu öğretici, çözümünüzü &trade; nesne ve hareket algılama Için OpenVIN
 
 ### <a name="replace-the-manifest"></a>Bildirimi değiştirme
 
-**LVA Edge Gateway v2** sayfasında **+ bildirimi Değiştir** ' i seçin.
+**LVA Edge Gateway v2** sayfasında **+ bildirimi Değiştir**' i seçin.
 
 :::image type="content" source="./media/tutorial-video-analytics-create-app-openvino/replace-manifest.png" alt-text="Bildirimi Değiştir":::
 
-*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.openvino.amd64.js* seçin. **Karşıya Yükle** ’yi seçin. Doğrulama tamamlandığında **Değiştir** ' i seçin.
+*LVA-yapılandırma* klasörüne gidin ve daha önce düzenlediğiniz bildirim dosyasında *deployment.openvino.amd64.js* seçin. **Karşıya Yükle**’yi seçin. Doğrulama tamamlandığında **Değiştir**' i seçin.
 
 [!INCLUDE [iot-central-video-analytics-part4](../../../includes/iot-central-video-analytics-part4.md)]

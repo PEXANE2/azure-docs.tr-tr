@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 87e7f959dd932c874604df43fa61112d181ac581
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531709"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763936"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure ön kapısı için Azure Güvenlik temeli
 
@@ -206,7 +206,7 @@ Müşterinin özniteliği ve ağ yapılandırması değişikliklerini yakalamak,
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Azure ağ etkinlikleri için günlüğe kaydetmeyi etkinleştirin
 
-**Kılavuz**: Azure sınır kapısının sanal ağlara dağıtılması amaçlanmamaktadır; Bu müşteriler, ağ güvenlik grubu akış günlüğünü etkinleştiremediği için trafiği bir güvenlik duvarı üzerinden yönlendirin veya paket yakalamalarını gerçekleştiremez.
+**Rehberlik**: Azure ön kapısının sanal ağlara dağıtılması amaçlanmamaktadır; Bu müşteriler, ağ güvenlik grubu akış günlüğünü etkinleştiremediği için trafiği bir güvenlik duvarı üzerinden yönlendirin veya paket yakalamalarını gerçekleştiremez.
 
 Azure ön kapısının müşteri erişimi için işlediği tüm ağ trafiği günlüğe kaydedilir. Ağ akışı günlükleri özelliğini etkinleştirin ve uzun süreli saklama ve denetim için bu günlükleri bir depolama hesabına gönderilecek şekilde yapılandırın.
 

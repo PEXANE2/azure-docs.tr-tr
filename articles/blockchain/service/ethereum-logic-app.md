@@ -4,18 +4,18 @@ description: Akıllı sözleşme işlevlerini tetiklemek ve akıllı sözleşme 
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
-ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 411337908553e58c252a0ed1a42d17f76195c720
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230543"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763800"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>Azure Logic Apps ile Ethereum blok zinciri bağlayıcısını kullanın
 
 Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olaylarına yanıt vermek için [Azure Logic Apps](../../logic-apps/index.yml) Ile [Ethereum blok zinciri bağlayıcısını](/connectors/blockchainethereum/) kullanın. Bu makalede, farklı bir hizmete blok zinciri bilgilerini göndermek veya bir blok zinciri işlevini çağırmak için Ethereum blok zinciri bağlayıcısını nasıl kullanabileceğiniz açıklanır. Örneğin, bir blok zinciri muhasebenden bilgi döndüren bir REST tabanlı mikro hizmet oluşturmak istediğinizi varsayalım. Bir mantıksal uygulama kullanarak, blok zinciri defterinde depolanan bilgileri sorgulayan HTTP isteklerini kabul edebilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - İsteğe bağlı önkoşul hızlı başlangıcını doldurun [: Azure blok zinciri hizmeti Consortium ağına bağlanmak için Visual Studio Code kullanın](connect-vscode.md). Hızlı başlangıç, [Ethereum Için Azure blok zinciri geliştirme seti 'ni](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain) yükleyip blok zinciri geliştirme ortamınızı ayarlamayı gösterir.
 - Azure Logic Apps yeni bir deyişle, bir [özel bağlayıcı kullanarak Logic Apps iş akışından bir API çağrısı](/learn/modules/logic-apps-and-custom-connectors/) [Azure Logic Apps](/learn/modules/intro-to-logic-apps/) ve bir API çağırma Microsoft Learn modüllerinin gözden geçirilmesini göz önünde bulundurun.
@@ -25,12 +25,12 @@ Akıllı sözleşme eylemleri gerçekleştirmek ve akıllı sözleşme olayları
 Azure Logic Apps, sistemleri ve Hizmetleri tümleştirmeniz gerektiğinde iş süreçlerini ve iş akışlarını zamanlamanıza ve otomatikleştirmenize yardımcı olur. İlk olarak, Ethereum blok zinciri bağlayıcısını kullanan bir mantık oluşturursunuz.
 
 1. [Azure portalında](https://portal.azure.com)**Kaynak oluştur** > **Tümleştirme** > **Mantıksal Uygulama**’yı seçin.
-1. **Mantıksal uygulama oluştur**altında, mantıksal uygulamanızı nerede oluşturacağınız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
+1. **Mantıksal uygulama oluştur** altında, mantıksal uygulamanızı nerede oluşturacağınız hakkında ayrıntılı bilgi sağlayın. İşiniz bittiğinde **Oluştur**' u seçin.
 
     Mantıksal uygulamalar oluşturma hakkında daha fazla bilgi için bkz. [Azure Logic Apps otomatik iş akışları oluşturma](../../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 1. Azure uygulamanızı dağıtduktan sonra mantıksal uygulama kaynağınızı seçin.
-1. Logic Apps tasarımcısında **Şablonlar**altında **boş mantıksal uygulama**' yı seçin.
+1. Logic Apps tasarımcısında **Şablonlar** altında **boş mantıksal uygulama**' yı seçin.
 
 Her mantıksal uygulama, belirli bir olay gerçekleştiğinde ya da belirli bir koşul karşılandığında tetiklenen bir tetikleyiciyle başlamalıdır. Tetikleyici her etkinleştirildiğinde Logic Apps altyapısı iş akışınızı başlatan ve çalıştıran bir mantıksal uygulama örneği oluşturur.
 
@@ -47,7 +47,7 @@ Ethereum blok zinciri bağlayıcısının bir tetikleyicisi ve birkaç eylemi va
 Akıllı bir anlaşma olayı oluştuktan sonra bir mantıksal uygulamanın çalışmasını istediğinizde Ethereum blok zinciri olay tetikleyicilerini kullanın. Örneğin, bir akıllı anlaşma işlevi çağrıldığında bir e-posta göndermek istersiniz.
 
 1. Logic Apps tasarımcısında, Ethereum blok zinciri bağlayıcısını seçin.
-1. **Tetikleyiciler** sekmesinden **bir akıllı anlaşma olayının ne zaman gerçekleşeceğini**seçin.
+1. **Tetikleyiciler** sekmesinden **bir akıllı anlaşma olayının ne zaman gerçekleşeceğini** seçin.
 1. Azure blok zinciri hizmeti ile [BIR API bağlantısı](#create-an-api-connection) değiştirin veya oluşturun.
 1. Olayları denetlemek istediğiniz akıllı sözleşmeyle ilgili ayrıntıları girin.
 
@@ -109,7 +109,7 @@ Ethereum Visual Studio Code uzantısı için Azure blok zinciri geliştirme seti
     ![Akıllı sözleşmeler için mikro hizmetler oluşturma seçimine sahip Visual Studio Code bölmesi](./media/ethereum-logic-app/generate-logic-app.png)
 
 1. Komut paletinde **Logic App**' i seçin.
-1. **Sözleşme adresini**girin. Daha fazla bilgi için bkz. [sözleşme adresini alın](#get-the-contract-address).
+1. **Sözleşme adresini** girin. Daha fazla bilgi için bkz. [sözleşme adresini alın](#get-the-contract-address).
 1. Mantıksal uygulama için Azure aboneliğini ve kaynak grubunu seçin.
 
     Mantıksal uygulama yapılandırması ve kod dosyaları **generatedLogicApp** dizininde oluşturulur.
@@ -177,12 +177,12 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktas�
 
 **Azure portal kullanmak için:**
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Azure blok zinciri hizmeti üyesine gidin. **İşlem düğümleri** ve varsayılan işlem düğümü bağlantısı ' nı seçin.
 
     ![İşlem düğümleri sayfası (varsayılan düğüm) seçimi](./media/ethereum-logic-app/transaction-nodes.png)
 
-1. **Bağlantı dizeleri**  >  **erişim anahtarlarını**seçin.
+1. **Bağlantı dizeleri**  >  **erişim anahtarlarını** seçin.
 1. Endpoint adresini **https (erişim anahtarı 1)** veya **https (erişim anahtarı 2)** konumundan kopyalayın.
 
     ![Bağlantı dizesi erişim anahtarlarıyla Azure portal](./media/ethereum-logic-app/connection-string.png)
@@ -194,7 +194,7 @@ Blok zinciri ağına bağlanmak için Azure blok zinciri hizmeti RPC uç noktas�
 Blok zincirine bir işlem gönderirken kimlik doğrulaması yapmak için Ethereum hesabının özel anahtarını kullanabilirsiniz. Ethereum hesabınızın ortak ve özel anahtarları 12 sözcüklü bir anımsatıcı tarafından oluşturulmuştur. Ethereum için Azure blok zinciri geliştirme seti, bir Azure blok zinciri hizmeti Consortium üyesine bağlandığınızda bir anımsatıcı oluşturur. Endpoint adresini geliştirme seti uzantısını kullanarak alabilirsiniz.
 
 1. Visual Studio Code ' de, komut paleti ' ni (F1) açın.
-1. **Azure blok zincirini seçin: özel anahtar al**.
+1. **Blok zinciri seçin: özel anahtar al**.
 1. Consortium üyesine bağlanırken kaydettiğiniz anımsatıcı ' u seçin.
 
     ![Anımsatıcı seçme seçeneği içeren komut paleti](./media/ethereum-logic-app/private-key.png)

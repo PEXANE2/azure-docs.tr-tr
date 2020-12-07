@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 5dbe161af172b65919328fca0b272f3b658f1b32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600498"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763732"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Azure dijital TWINS API 'Lerine istek göndermek için Postman kullanma
 
@@ -130,7 +130,7 @@ Azure dijital TWINS API 'Lerinden birine bir Postman isteği yapmak için API 'n
 
 Örnek sorgu ile devam etmek için bu makalede sorgu API 'SI (ve [başvuru belgeleri](/rest/api/digital-twins/dataplane/query/querytwins)) kullanılarak bir örnekteki tüm dijital TWINS 'leri sorgulama yapılır.
 
-1. Başvuru belgelerinden istek URL 'sini ve türünü alın. Sorgu API 'SI için bu *gönderi `https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31`* olur.
+1. Başvuru belgelerinden istek URL 'sini ve türünü alın. Sorgu API 'SI için bu şu anda *göndermekte `https://digitaltwins-hostname/query?api-version=2020-10-31`*.
 1. Postman 'da, istek için türü ayarlayın ve URL 'de yer tutucuları gerektiği şekilde doldurarak istek URL 'sini girin. Bunun nedeni, [*Önkoşul*](#prerequisites) bölümünde örneğinizin **ana bilgisayar adını** kullanacaksınız.
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Yeni isteğin ayrıntılarında, başvuru belgelerindeki sorgu URL 'SI istek URL 'si kutusuna doldurulmuştur." lightbox="media/how-to-use-postman/postman-request-url.png":::
