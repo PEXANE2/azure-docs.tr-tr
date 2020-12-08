@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: Uygulama veri kaynaklarını birleştirme
                   href: log-query/unify-app-resource-data.md
+                - name: Azure İzleyici ve Azure Veri Gezgini arasında hizmetler arası sorgulamaya genel bakış
+                  href: platform/azure-data-explorer-monitor-cross-service-query.md
                 - name: Azure İzleyici'den Azure Veri Gezgini'ni sorgulama
                   href: platform/azure-monitor-data-explorer-proxy.md
         - name: Veri dışarı aktarma

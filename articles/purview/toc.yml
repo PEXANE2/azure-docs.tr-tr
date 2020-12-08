@@ -28,6 +28,8 @@ items:
             href: tutorial-import-create-glossary-terms.md
       - name: Şirket içi SQL Server'ı kaydetme ve tarama
         href: register-scan-on-premises-sql-server.md
+      - name: Katalog için REST API’lerine çağrı yapma
+        href: tutorial-using-rest-apis.md
   - name: Kavramlar
     items:
       - name: Purview Studio'yu kullanma
@@ -133,6 +135,10 @@ items:
             href: how-to-link-azure-data-factory.md
           - name: Azure Veri Paylaşımı kökeni
             href: how-to-link-azure-data-share.md
+      - name: İzleme
+        items:
+          - name: Azure İzleyici ile izleme
+            href: how-to-monitor-with-azure-monitor.md
       - name: Insights
         items:
           - name: Varlık içgörülerini görüntüleme

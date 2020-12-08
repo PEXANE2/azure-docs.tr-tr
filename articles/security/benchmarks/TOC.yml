@@ -133,7 +133,7 @@
       href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Azure İzleyici güvenlik temeli
       href: ../../azure-monitor/security-baseline.md
-    - name: Azure Geçişi Öğrenme güvenlik temeli
+    - name: Azure Geçişi güvenlik temeli
       href: ../../migrate/security-baseline.md
     - name: Azure İlkesi güvenlik temeli
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md

@@ -8,11 +8,9 @@
   expanded: true
   items:
     - name: VPN ağ geçidi oluşturma ve yönetme
-      items:
-        - name: Azure portalı
-          href: tutorial-create-gateway-portal.md
-        - name: Azure PowerShell
-          href: vpn-gateway-tutorial-create-gateway-powershell.md
+      href: tutorial-create-gateway-portal.md
+    - name: Siteden siteye bağlantı yapılandırma
+      href: tutorial-site-to-site-portal.md
 - name: Örnekler
   items:
     - name: Azure PowerShell
@@ -65,7 +63,7 @@
       items:
         - name: Rota temelli VPN ağ geçidi oluşturma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: tutorial-create-gateway-portal.md
             - name: Azure PowerShell
               href: create-routebased-vpn-gateway-powershell.md
@@ -77,7 +75,7 @@
           href: reset-gateway.md
         - name: VPN ağ geçidi silme
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: vpn-gateway-delete-vnet-gateway-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-delete-vnet-gateway-powershell.md
@@ -87,8 +85,8 @@
       items:
         - name: S2S bağlantılarını yapılandırma
           items:
-            - name: Azure portalı
-              href: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+            - name: Azure portal
+              href: tutorial-site-to-site-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-create-site-to-site-rm-powershell.md
             - name: Azure CLI
@@ -107,7 +105,7 @@
       items:
         - name: VNet-VNet bağlantıları yapılandırma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: vpn-gateway-howto-vnet-vnet-resource-manager-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-vnet-vnet-rm-ps.md
@@ -115,7 +113,7 @@
               href: vpn-gateway-howto-vnet-vnet-cli.md
         - name: Dağıtım modelleri arasında sanal ağdan sanal ağa bağlantı yapılandırma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: vpn-gateway-connect-different-deployment-models-portal.md
             - name: Azure PowerShell
               href: vpn-gateway-connect-different-deployment-models-powershell.md
@@ -125,7 +123,7 @@
           items:
             - name: P2S VPN yapılandırma
               items:
-                - name: Azure portalı
+                - name: Azure portal
                   href: vpn-gateway-howto-point-to-site-resource-manager-portal.md
                 - name: Azure PowerShell
                   href: vpn-gateway-howto-point-to-site-rm-ps.md

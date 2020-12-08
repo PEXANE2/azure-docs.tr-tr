@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: Yakınlaştırma düzeyleri ve kutucuk kılavuzu
       href: zoom-levels-and-tile-grid.md
-    - name: Ulaşım Hizmeti veri yapısı
+    - name: Ulaşım hizmetleri
       href: mobility-service-data-structure.md
-    - name: Hava Durumu Hizmeti kavramları
+    - name: Hava durumu hizmetleriyle ilgili kavramlar
       href: weather-services-concepts.md
+    - name: Hava durumu hizmetleri hakkında SSS
+      href: weather-services-faq.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Haritalar hesaplarını yönetme
