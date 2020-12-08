@@ -464,6 +464,9 @@
         - name: Data Box çevrimiçi aktarım
           tocHref: /azure/databox-online/
           topicHref: /azure/databox-online/
+        - name: Data Box Gateway
+          tocHref: /azure/databox-gateway/
+          topicHref: /azure/databox-gateway/
     - name: Veri Kataloğu
       tocHref: /azure/data-catalog/
       topicHref: /azure/data-catalog/
@@ -908,3 +911,6 @@
         - name: Rezervasyonlar
           tocHref: /azure/cost-management-billing/reservations/
           topicHref: /azure/cost-management-billing/reservations/
+    - name: Kapsam
+      tocHref: /azure/purview/
+      topicHref: /azure/purview/

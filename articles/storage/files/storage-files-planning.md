@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492123"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842722"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -114,23 +114,6 @@ Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](.
 
 ## <a name="storage-tiers"></a>Depolama katmanları
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-Genel olarak, Azure dosyaları özellikleri ve diğer hizmetlerle birlikte çalışabilirlik, Premium dosya paylaşımları ve standart dosya paylaşımları (işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli dosya paylaşımları dahil) arasında aynıdır, ancak bazı önemli farklılıklar vardır:
-- **Faturalama modeli**
-    - Premium dosya paylaşımları, sağlanan bir faturalandırma modeli kullanılarak faturalandırılır. Bu, ne kadar depolama alanı kullanacağınızı değil, ne kadar depolama alanı sağlayacağınız için sabit fiyat ödemenizi gösterir. Bekleyen işlemler ve meta veriler için ek maliyet yoktur.
-    - Standart dosya paylaşımları, bir Kullandıkça Öde modeli kullanılarak faturalandırılır. Bu, gerçekten ne kadar depolama alanı tükettiğini belirten temel bir depolama maliyeti ve daha sonra paylaşımı nasıl kullandığınızı temel alarak ek bir işlem maliyeti içerir. Standart dosya paylaşımlarında, Azure dosya paylaşımını daha fazla kullandığınızda (okuma/yazma/bağlama) faturanız artar.
-- **Artıklık seçenekleri**
-    - Premium dosya paylaşımları yalnızca yerel olarak yedekli (LRS) ve bölge yedekli (ZRS) depolama alanı için kullanılabilir.
-    - Standart dosya paylaşımları yerel olarak yedekli, bölgesel olarak yedekli, coğrafi olarak yedekli (GRS) ve coğrafi bölge yedekli (GZRS) depolama için kullanılabilir.
-- **Dosya paylaşımının en büyük boyutu**
-    - Premium dosya paylaşımları, ek bir iş olmadan 100 TiB 'ye kadar sağlanabilir.
-    - Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB 'ye yayılabilir, ancak paylaşım sınırı *büyük dosya paylaşımı* depolama hesabı özelliği bayrağına göre 100 TİB 'ye artırılabilir. Standart dosya paylaşımları, yerel olarak yedekli veya bölgesel olarak yedekli depolama hesapları için 100 TiB 'ye kadar yayılabilir. Dosya paylaşımı boyutlarını artırma hakkında daha fazla bilgi için bkz. [etkinleştirme ve büyük dosya paylaşımlarını oluşturma](./storage-files-how-to-create-large-file-share.md).
-- **Bölgesel kullanılabilirlik**
-    - Premium dosya paylaşımları, birkaç bölgenin özel durumuyla Azure bölgelerinin çoğunda kullanılabilir. Bölge yedekli desteği, bölgelerin bir alt kümesinde kullanılabilir. Premium dosya paylaşımlarının bölgede şu anda kullanılabilir olup olmadığını öğrenmek için bkz. Azure için [bölgeye göre kullanılabilir ürünler](https://azure.microsoft.com/global-infrastructure/services/?products=storage) sayfası. ZRS 'nin desteklediği bölgeleri öğrenmek için bkz. bölgesel olarak [yedekli depolama](../common/storage-redundancy.md#zone-redundant-storage). Yeni bölgelerin ve Premium katman özelliklerinin önceliklendirmemize yardımcı olmak için lütfen bu [anketi](https://aka.ms/pfsfeedback)doldurun.
-    - Standart dosya paylaşımları her Azure bölgesinde kullanılabilir.
-- Azure Kubernetes hizmeti (AKS), sürüm 1,13 ve üzeri sürümlerde Premium dosya paylaşımlarını destekler.
-
-Bir dosya paylaşımının Premium veya standart dosya paylaşımında oluşturulması durumunda, otomatik olarak diğer katmana dönüştüremezsiniz. Başka katmana geçmek istiyorsanız, o katmanda yeni bir dosya paylaşma oluşturmanız ve verileri özgün paylaşımınızdan oluşturduğunuz yeni paylaşıma el ile kopyalamanız gerekir. `robocopy` `rsync` Bu kopyayı gerçekleştirmek için Windows veya MacOS ve Linux için kullanmanızı öneririz.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Premium dosya paylaşımları için sağlamayı anlama
 Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Tüm paylaşım boyutları en düşük taban/aktarım hızı olarak sunulur ve patlama için izin verilir. Sağlanan her GiB için, paylaşıma en düşük ıOPS/aktarım hızı ve bir ıOPS ve 0,1 MIB/sn aktarım hızı, her bir paylaşıma göre en fazla sınırlara çıkarılır. İzin verilen minimum sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir. 
