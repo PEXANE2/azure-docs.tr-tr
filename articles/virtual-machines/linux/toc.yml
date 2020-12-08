@@ -4,7 +4,7 @@
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: VM Oluşturma - Azure CLI
       href: quick-create-cli.md
@@ -71,9 +71,9 @@
         - name: Sağlama
           href: provisioning.md
         - name: Paylaşılan görüntü galerileri
-          href: shared-image-galleries.md
+          href: ../shared-image-galleries.md
         - name: Görüntü Oluşturucu
-          href: image-builder-overview.md
+          href: ../image-builder-overview.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Bölgeler
@@ -686,7 +686,7 @@
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure Tanılama uzantısı
               items:
-                - name: Genel bakış
+                - name: Genel Bakış
                   href: ../../azure-monitor/platform/diagnostics-extension-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: Linux tanılama uzantısı
                   items:
@@ -879,7 +879,7 @@
           items:
             - name: Azure CLI
               href: add-disk.md
-            - name: Azure portalı
+            - name: Azure portal
               href: attach-disk-portal.md
         - name: Disk katmanını değiştirme - PowerShell/CLI
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json

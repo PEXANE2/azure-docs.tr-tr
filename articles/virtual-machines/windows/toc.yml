@@ -1,10 +1,10 @@
 - name: Windows VM’leri ile İlgili Belgeler
   href: index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Sanal Makineler hakkında
       href: overview.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: VM Oluşturma - Portal
       href: quick-create-portal.md
@@ -54,7 +54,7 @@
 - name: Kavramlar
   items:
     - name: Görüntüler
-      href: shared-image-galleries.md
+      href: ../shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
       items:
@@ -419,7 +419,7 @@
         - name: Görüntü oluşturucu (önizleme)
           items:
             - name: Genel Bakış
-              href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+              href: ../image-builder-overview.md
             - name: Görüntü Oluşturucu’yu kullanma
               items:
                 - name: CLI
@@ -867,7 +867,7 @@
           href: ../../virtual-network/quick-create-portal.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json
         - name: Bağlantı noktalarını VM’ye açma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: nsg-quickstart-portal.md
             - name: Azure PowerShell
               href: nsg-quickstart-powershell.md
