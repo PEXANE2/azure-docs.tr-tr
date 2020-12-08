@@ -890,8 +890,6 @@
               items:
                 - name: Web uygulamalarını ve hizmetleri ayrıntılı tanılama
                   href: app/devops.md
-                - name: Web uygulamalarının performansını izleme
-                  href: app/web-monitor-performance.md
                 - name: 'Geliştirme, test ve üretimi ayırma'
                   href: app/separate-resources.md
                 - name: Application Insights’ta nasıl ... yapabilirim?
