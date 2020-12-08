@@ -9,18 +9,82 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444534"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779422"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
 
 Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
+
+## <a name="2020-12-07"></a>2020-12-07
+
+### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Python v 1.19.0 için SDK Azure Machine Learning
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + **azureml-automl-core**
+    + Testmlstep 'e test verileri için deneysel destek eklendi.
+    + Test kümesi alma özelliğinin başlangıçtaki çekirdek uygulamasına eklendi.
+    + Başvurular, doğrudan joblib 'e bağlı olmak için sköğren. dışlar. joblib 'e taşındı.
+    + Yeni bir oto ml görev türü olan "Image-instance-segment oluşturma".
+  + **azureml-automl-runtime**
+    + Test kümesi alma özelliğinin başlangıçtaki çekirdek uygulamasına eklendi.
+    + Bir metin sütunundaki tüm dizelerin tam olarak 1 karakterli bir uzunluğu olduğunda, belirteç ayırıcı 2 karakterden kısa olan dizeleri yoksaydığı için tfidf sözcük-gram featurizer çalışmaz. Geçerli kod değişikliği, oto ml 'nin bu kullanım örneğini işlemesini sağlayacaktır.
+    + Yeni bir oto ml görev türü olan "Image-instance-segment oluşturma".
+  + **azureml-contrib-oto ml-DNN-NLP**
+    + Yeni DNN-NLP paketi için ilk PR
+  + **azureml-contrib-oto ml-DNN-Vision**
+    + Yeni bir oto ml görev türü olan "Image-instance-segment oluşturma".
+  + **azureml-contrib-oto ml-işlem hattı-adımlar**
+    + Bu yeni paket, birçok model eğitimi/çıkarım senaryosu için gerekli adımları oluşturmaktan sorumludur. -Ayrıca, sonraki düzeltmelerin otomatik olarak seçkin ortam yayınları aracılığıyla kullanılabilmesi için eğitme/çıkarma kodunu azureml. eğitme. otomatik ml. Runtime paketine taşıdı.
+  + **azureml-contrib-dataset**
+    + Yeni bir oto ml görev türü olan "Image-instance-segment oluşturma".
+  + **azureml-core**
+    + Test kümesi alma özelliğinin başlangıçtaki çekirdek uygulamasına eklendi.
+    + Azureml-Core paketindeki belgeler için XREF uyarılarını Düzeltme
+    + SDK 'daki komut desteği özelliği için belge dize düzeltmeleri
+    + RunConfiguration 'a komut özelliği ekleniyor. Özelliği, kullanıcıların, işlem üzerinde AzureML SDK aracılığıyla gerçek bir komutu veya yürütülebilir dosyaları çalıştırmasını sağlar.
+    + Kullanıcılar, bu denemenin kimliği verilen boş bir denemeyi silebilir.
+  + **azureml-dataprep**
+    + Scala 2,12 ile derlenmiş Spark için veri kümesi desteği eklendi. Bu, var olan 2,11 desteğine ekler.
+  + **azureml-mlflow**
+    + AzureML-MLflow, gönderilen çalışmaların erken sonlandırılmasını önlemek için uzak betiklerdeki güvenli koruyucuları ekler.
+  + **azureml-pipeline-core**
+    + UI aracılığıyla oluşturulan ardışık düzen uç noktası için varsayılan işlem hattını ayarlama sırasında hata düzeltildi
+  + **azureml-pipeline-steps**
+    + Testmlstep 'e test verileri için deneysel destek eklendi.
+  + **azureml-tensorboard**
+    + Azureml-Core paketindeki belgeler için XREF uyarılarını Düzeltme
+  + **azureml-train-automl-client**
+    + Testmlstep 'e test verileri için deneysel destek eklendi.
+    + Test kümesi alma özelliğinin başlangıçtaki çekirdek uygulamasına eklendi.
+    + Yeni bir oto ml görev türü olan "Image-instance-segment oluşturma".
+  + **azureml-train-automl-runtime**
+    + Test kümesi alma özelliğinin başlangıçtaki çekirdek uygulamasına eklendi.
+    + Validation_size ayar kullanılarak, oto ml modellerinin eğitilse, en iyi oto modeli için ham açıklamaları hesaplamayı onarın.
+    + Başvurular, doğrudan joblib 'e bağlı olmak için sköğren. dışlar. joblib 'e taşındı.
+  + **azureml-train-core**
+    + HyperDriveRun.get_children_sorted_by_primary_metric () Şu anda daha hızlı tamamlanır
+    + Hiper sürücü SDK 'sında geliştirilmiş hata işleme.
+    +  Deneme çalıştırmalarını yapılandırmak için ScriptRunConfig kullanma yerine tüm tahmin aracı sınıfları kullanım dışı bırakıldı. Kullanım dışı bırakılan sınıflar şunları içerir:
+        + MMLBaseEstimator
+        + Tahmin Aracı
+        + PyTorch 
+        + TensorFlow 
+        + Chainer 
+        + SKLearn
+    + ScriptRunConfig ile PyTorchConfiguration kullanmak yerine, Estimator sınıfları için geçerli giriş türleri olarak Nccl ve gloo kullanımını kullanımdan kaldırılmıştır.
+    + ScriptRunConfig ile Mpiconation kullanımı için, Estimator sınıfları için geçerli bir giriş türü olarak MPI kullanımı kullanım dışı bırakıldı.
+    + RunConfiguration 'a komut özelliği ekleniyor. Özelliği, kullanıcıların, işlem üzerinde AzureML SDK aracılığıyla gerçek bir komutu veya yürütülebilir dosyaları çalıştırmasını sağlar.
+
+    +  Deneme çalıştırmalarını yapılandırmak için ScriptRunConfig kullanma yerine tüm tahmin aracı sınıfları kullanım dışı bırakıldı. Kullanım dışı bırakılan sınıflar şunlardır: + MMLBaseEstimator + Estimator + PyTorch + TensorFlow + Chainer + Sköğren
+    + ScriptRunConfig ile PyTorchConfiguration kullanmak yerine, Estimator sınıfları için geçerli bir giriş türü olarak Nccl ve gloo 'un kullanımını kullanımdan kaldırılmıştır. 
+    + ScriptRunConfig ile Mpiconation kullanımı için, Estimator sınıfları için geçerli bir giriş türü olarak MPI kullanımı kullanım dışı bırakıldı.
+
 
 
 ## <a name="2020-11-09"></a>2020-11-09
@@ -47,12 +111,6 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak kimliği sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
     + Müşterilerin belirteç bozulması sorunlarını kendi kendine çözümlemesine olanak tanımak için, çalışma alanı belirteci eşitlemesini ortak bir yöntem olacak şekilde etkinleştirin.
     + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
-  + **azureml-pipeline-core**
-    + SynapseCompute Type ve SynapseSparkStep desteklemek için SDK. Müşteriler, SYNAPSE Spark havuzunda deneme ve işlem hattı çalıştırma çalıştırabilir.
-  + **azureml-pipeline-steps**
-    + SynapseCompute Type ve SynapseSparkStep desteklemek için SDK. Müşteriler, SYNAPSE Spark havuzunda deneme ve işlem hattı çalıştırma çalıştırabilir.
-  + **azureml-SYNAPSE**
-    + Kullanıcı gönderme Syanpse işini etkinleştirmek ve not defterinde iş ilerlemesini görüntülemek için SYNAPSE Magic ve mini Izleme ekleyin.
   + **azureml-train-automl-client**
     +  Kısa süreli serinin, Gauss gürültüsü ile doldurmaya izin vererek geliştirilmiş işlemesi.
   + **azureml-train-automl-runtime**
@@ -90,7 +148,6 @@ Veri etiketlemesi içindeki görüntü örneği segmentleme (Çokgen ek açıkla
     + Yeniden modelleme sonrasında Votinggerileme tahminlerinin yanlış olabileceği bir sorun düzeltildi.
   + **azureml-core**
     + AKS dağıtım yapılandırması ile Azure Kubernetes hizmet kavramları arasındaki ilişki hakkında ek ayrıntı eklendi.
-    + Müşteri, SYNAPSE çalışma alanını AML çalışma alanına bağlamak için bağlı hizmet SDK 'sını kullanabilir. CRUD desteklenir.
     + Ortam istemci etiketleri desteği. Kullanıcı ortamları etiketleyebilir ve etikete göre başvurabilir.
   + **azureml-dataprep**
     + Şu anda Scala 2,12 ile desteklenmeyen Spark kullanılırken daha iyi hata iletisi.
@@ -1836,7 +1893,7 @@ Bu sürümün sırasında, aşağıdaki tarayıcılar desteklenir: Chrome, Firef
   + , `read_parquet` Spark 'ta çalışırken performansı geliştirilmiştir.
   + `column_type_builder`Belirsiz tarih biçimleri içeren tek bir sütun olması durumunda başarısız olan bir sorun düzeltildi.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 + **Önizleme özelliği**
   + Günlük ve çıkış dosyası akışı artık çalışma ayrıntıları sayfaları için kullanılabilir. Dosyalar, önizleme geçişi açık olduğunda güncelleştirmeleri gerçek zamanlı olarak akışa alır.
   + Çalışma alanı düzeyinde kota ayarlama özelliği önizleme aşamasında serbest bırakılır. AmlCompute kotaları abonelik düzeyinde ayrılır, ancak artık bu kotayı çalışma alanları arasında dağıtmanıza ve bunları dengeli paylaşım ve idare için ayırmaya izin veririz. Çalışma alanınızın sol gezinti çubuğunda **kullanımlar + kotalar** dikey penceresine ve **kotaları Yapılandır** sekmesini seçmeniz yeterlidir. Bu bir çoklu çalışma alanı işlemi olduğundan, çalışma alanı düzeyinde kotalar ayarlayabilmek için bir abonelik yöneticisi olmanız gerekir.
@@ -2115,7 +2172,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
   + Artık var olan bir uzak işlem kümesinde çalışan bir betiği yeniden gönderebilirsiniz.
   + Artık, işlem hatları sekmesinde yeni parametrelerle yayınlanmış bir işlem hattı çalıştırabilirsiniz.
   + Çalışma ayrıntıları artık yeni bir Snapshot dosya görüntüleyicisini destekliyor. Belirli bir çalıştırma gönderdiğinizde dizinin anlık görüntüsünü görüntüleyebilirsiniz. Çalıştırmaya başlamak için gönderilen Not defterini de indirebilirsiniz.
@@ -2173,7 +2230,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 + **Hata düzeltmeleri ve geliştirmeleri**
   + Source_directory_data_store özelliğini, [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py)Için sağlanan [runconfigurations](/python/api/azureml-core/azureml.core.runconfig.runconfiguration?preserve-view=true&view=azure-ml-py) 'lar üzerinde istenen veri deposuna (BLOB depolama gibi) ayarlamaya yönelik Azure Machine Learning işlem hatlarında destek ekledik. Varsayılan olarak, çok sayıda adım eşzamanlı olarak yürütüldüğünde sorunları azaltma sorunlarını ortadan kaldırarak Azure dosya deposunu, yedekleme veri deposu olarak kullanır.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 + **Yeni özellikler**
   + Raporlar için yeni Sürükle ve bırak tablosu Düzenleyicisi deneyimi. Kullanıcılar bir sütunu, tablonun önizlemesinin görüntüleneceği tablo alanına kadar iyi sürükleyebilirsiniz. Sütunlar yeniden düzenlenebilir.

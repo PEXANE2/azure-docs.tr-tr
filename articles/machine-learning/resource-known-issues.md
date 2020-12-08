@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 11/09/2020
-ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55ac11b7888a8e351b52554f76fb44af35633c16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445413"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780986"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning'deki bilinen sorunlar ve sorun giderme
 
@@ -34,7 +34,7 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 1. Sol tarafta **denemeler** ' i seçin. 
 1. Bir deneme seçin.
 1. Bir çalıştırma seçin.
-1. Üstteki **çıktılar + Günlükler** ' i seçin.
+1. Üstteki **çıktılar + Günlükler**' i seçin.
 
 > [!NOTE]
 > Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
@@ -149,7 +149,7 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
     %sh /databricks/python/bin/pip install pandas==0.23.4
     ```
 
-* **Databricks içeri aktarma hatası: ' Pandas. Core. Indexes ' adlı bir modül yok** : otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz:
+* **Databricks içeri aktarma hatası: ' Pandas. Core. Indexes ' adlı bir modül yok**: otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz:
 
     1. Azure Databricks kümenize iki paket yüklemek için şu komutu çalıştırın:
     
@@ -162,7 +162,7 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
     
     Bu adımlar sorunu çözmezse, kümeyi yeniden başlatmayı deneyin.
 
-* **Databricks Failtosendtıı** : `FailToSendFeather` Azure Databricks kümesindeki verileri okurken bir hata görürseniz, aşağıdaki çözümlere başvurun:
+* **Databricks Failtosendtıı**: `FailToSendFeather` Azure Databricks kümesindeki verileri okurken bir hata görürseniz, aşağıdaki çözümlere başvurun:
     
     * `azureml-sdk[automl]`Paketi en son sürüme yükseltin.
     * `azureml-dataprep`Sürüm 1.1.8 veya üstünü ekleyin.
@@ -173,11 +173,11 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 > [!WARNING]
 > Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
 
-* **Azure Portal** : 
+* **Azure Portal**: 
   * SDK 'dan veya Azure portal bir Share bağlantısından çalışma alanınıza doğrudan giderseniz, içindeki abonelik bilgilerine sahip standart **genel bakış** sayfasını görüntüleyemezsiniz. Bu senaryoda, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemek için doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidin ve çalışma alanı adını arayın.
   * Tüm varlıklar (veri kümeleri, denemeleri, hesaplar vb.) yalnızca [Azure Machine Learning Studio](https://ml.azure.com)'da kullanılabilir. Azure portal mevcut *değildir* .
 
-* **Azure Machine Learning Studio Web portalındaki desteklenen tarayıcılar** : işletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
+* **Azure Machine Learning Studio Web portalındaki desteklenen tarayıcılar**: işletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
   * Microsoft Edge (yeni Microsoft Edge, en son sürüm. Microsoft Edge eski değil)
   * Safari (en so sürüm, yalnızca Mac)
   * Chrome (en son sürüm)
@@ -185,9 +185,9 @@ Bazen yardım isterken tanılama bilgilerini sağlayabilmeniz faydalı olabilir.
 
 ## <a name="set-up-your-environment"></a>Ortamınızı ayarlama
 
-* **Amlcompute oluşturma sorunu** : Azure Machine Learning çalışma ALANıNı, GA sürümünden önce Azure Portal oluşturan bazı kullanıcıların, bu çalışma alanında AmlCompute oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
+* **Amlcompute oluşturma sorunu**: Azure Machine Learning çalışma ALANıNı, GA sürümünden önce Azure Portal oluşturan bazı kullanıcıların, bu çalışma alanında AmlCompute oluşturamayacak nadir bir şansınız vardır. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
 
-* **Azure Container Registry Şu anda kaynak grubu adlarında Unicode karakterleri desteklememektedir** : kaynak grubu adı Unicode karakterler içerdiğinden ACR istekleri başarısız olabilir. Bu sorunu gidermek için, farklı adlandırılmış kaynak grubunda bir ACR oluşturmanız önerilir.
+* **Azure Container Registry Şu anda kaynak grubu adlarında Unicode karakterleri desteklememektedir**: kaynak grubu adı Unicode karakterler içerdiğinden ACR istekleri başarısız olabilir. Bu sorunu gidermek için, farklı adlandırılmış kaynak grubunda bir ACR oluşturmanız önerilir.
 
 ## <a name="work-with-data"></a>Verilerle çalışma
 
@@ -199,7 +199,7 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
 
 ### <a name="passing-data-as-input"></a>Verileri giriş olarak geçirme
 
-*  **TypeError: Fılenotfound: böyle bir dosya veya dizin yok** : sağladığınız dosya yolu dosyanın bulunduğu yere değilse bu hata oluşur. Dosyaya başvurduğunuzdan emin olmanız gerekir. bu şekilde, veri kümenizi işlem Hedefinizdeki bağladığınız konum ile tutarlıdır. Belirleyici bir durum sağlamak için, bir veri kümesini bir işlem hedefine bağlamak için soyut yolun kullanılmasını öneririz. Örneğin, aşağıdaki kodda, veri kümesini işlem hedefinin FileSystem kökünün altına bağlamamız gerekir `/tmp` . 
+*  **TypeError: Fılenotfound: böyle bir dosya veya dizin yok**: sağladığınız dosya yolu dosyanın bulunduğu yere değilse bu hata oluşur. Dosyaya başvurduğunuzdan emin olmanız gerekir. bu şekilde, veri kümenizi işlem Hedefinizdeki bağladığınız konum ile tutarlıdır. Belirleyici bir durum sağlamak için, bir veri kümesini bir işlem hedefine bağlamak için soyut yolun kullanılmasını öneririz. Örneğin, aşağıdaki kodda, veri kümesini işlem hedefinin FileSystem kökünün altına bağlamamız gerekir `/tmp` . 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -211,7 +211,10 @@ Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyors
     Önde gelen eğik çizgi '/' dahil değilseniz, `/mnt/batch/.../tmp/dataset` veri kümesinin bağlanmasını istediğiniz yeri belirtmek için işlem hedefi üzerinde çalışma dizinini (.) ön eki uygulamanız gerekir.
 
 ### <a name="mount-dataset"></a>Veri kümesini bağla
-* **Veri kümesi başlatması başarısız oldu: bağlama noktasının hazır olması bekleniyor zaman aşımına uğradı** : sorunu azaltmak için ' de yeniden deneme mantığı eklenmiştir `azureml-sdk >=1.12.0` . Önceki azureml-SDK sürümleriniz varsa lütfen en son sürüme yükseltin. Zaten açık ise `azureml-sdk>=1.12.0` , düzeltmenin en son düzeltme ekine sahip olması için lütfen ortamınızı yeniden oluşturun.
+* **DataSet başlatılamadı: bağlama noktasının hazır olması beklenirken zaman aşımı oluştu**: 
+  * Herhangi bir giden [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) kuralı yoksa ve kullanıyorsanız `azureml-sdk>=1.12.0` , lütfen `azureml-dataset-runtime` ilgili alt sürüm için en son için bu bağımlılıkları güncelleştirin, ya da bir çalıştırmada kullanıyorsanız, bu düzeltmenin en son düzeltme ekine sahip olması için lütfen ortamınızı yeniden oluşturun. 
+  * Kullanıyorsanız `azureml-sdk<1.12.0` lütfen en son sürüme yükseltin.
+  * Giden NSG kurallarınız varsa, lütfen hizmet etiketi için tüm trafiğe izin veren bir giden kuralı olduğundan emin olun `AzureResourceMonitor` .
 
 ### <a name="data-labeling-projects"></a>Veri etiketleme projeleri
 
@@ -305,7 +308,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="train-models"></a>Modelleri eğitme
 
-* **Moduleerrors (modül adı yok)** : Azure ML 'de denemeleri gönderirken moduleerrors içinde çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı ' nı sağladığınızda, Azure ML paketi eğitim çalıştırınızdan kullanılan ortama yüklenir. 
+* **Moduleerrors (modül adı yok)**: Azure ML 'de denemeleri gönderirken moduleerrors içinde çalıştırıyorsanız, eğitim betiğinin bir paketin yüklenmesini beklediği ancak eklenmediği anlamına gelir. Paket adı ' nı sağladığınızda, Azure ML paketi eğitim çalıştırınızdan kullanılan ortama yüklenir. 
 
     Denemeleri göndermek için estimators kullanıyorsanız, paketi `pip_packages` `conda_packages` yüklemek istediğiniz kaynağı temel alarak tahmin aracı 'da veya parametresi aracılığıyla bir paket adı belirtebilirsiniz. Ayrıca, tüm bağımlılıklarınızı kullanarak bir de bir de belirtebilirsiniz `conda_dependencies_file` veya parametresini kullanarak bir txt dosyasındaki tüm PIP gereksinimlerinizi listeleyin `pip_requirements_file` . Tahmin aracı tarafından kullanılan varsayılan görüntüyü geçersiz kılmak istediğiniz bir Azure ML ortamı nesneniz varsa, bu ortamı `environment` tahmin aracı oluşturucusunun parametresi aracılığıyla belirtebilirsiniz.
 
@@ -317,15 +320,15 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     > [!Note]
     > Belirli bir paketin Azure ML tarafından korunan görüntülere ve ortamlara eklenmek için yeterince yaygın olduğunu düşünüyorsanız, lütfen [AzureML kapsayıcılarında](https://github.com/Azure/AzureML-Containers)GitHub sorununu yükseltin. 
  
-* **NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)** : Bu özel durum eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, `run.get_details()` hata iletisine bakmak için ' i kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın ve çalıştırmayı yeniden göndermeden önce hatayı düzeltemedi. 
+* **NameError (ad tanımlı değil), AttributeError (nesne bir özniteliğe sahip değil)**: Bu özel durum eğitim betiklerinden gelmelidir. Tanımlı bir ad veya öznitelik hatası hakkında daha fazla bilgi edinmek için, Azure portal günlük dosyalarına bakabilirsiniz. SDK 'dan, `run.get_details()` hata iletisine bakmak için ' i kullanabilirsiniz. Bu, çalıştırma için oluşturulan tüm günlük dosyalarını da listeler. Lütfen eğitim betiğe göz atın ve çalıştırmayı yeniden göndermeden önce hatayı düzeltemedi. 
 
-* **Horovod kapatıldı** : "AbortedError: Horovod" ile karşılaşırsanız çoğu durumda, bu özel durum Horovod 'nin kapatılmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPI işindeki her derecelendirmeye Azure ML'de özel bir günlük dosyası ayrılır. Bu günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adlarında `_rank` soneki kullanılır. Horovod 'nin kapatılmasına neden olan hatayı tam olarak bulmak için, tüm günlük dosyalarını `Traceback` inceleyin ve driver_log dosyalarının sonundaki bölümüne bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
+* **Horovod kapatıldı**: "AbortedError: Horovod" ile karşılaşırsanız çoğu durumda, bu özel durum Horovod 'nin kapatılmasına neden olan işlemlerden birinde temeldeki özel durum olduğu anlamına gelir. MPI işindeki her derecelendirmeye Azure ML'de özel bir günlük dosyası ayrılır. Bu günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adlarında `_rank` soneki kullanılır. Horovod 'nin kapatılmasına neden olan hatayı tam olarak bulmak için, tüm günlük dosyalarını `Traceback` inceleyin ve driver_log dosyalarının sonundaki bölümüne bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
 
-* **Çalıştırma veya deneme silme** : denemeleri, [deneme. Arşiv](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
+* **Çalıştırma veya deneme silme**: denemeleri, [deneme. Arşiv](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) yöntemi kullanılarak veya Azure Machine Learning Studio istemcisindeki deneme sekmesi görünümünden "Arşiv denemesi" düğmesi aracılığıyla arşivlenebilir. Bu eylem, sorgu ve görünümleri listeleme denemesini gizler, ancak silmez.
 
     Tek tek denemelerin veya çalıştırmaların kalıcı olarak silinmesi şu anda desteklenmiyor. Çalışma alanı varlıklarını silme hakkında daha fazla bilgi için bkz. [Machine Learning hizmeti çalışma alanı verilerinizi dışarı veya silme](how-to-export-delete-data.md).
 
-* **Ölçüm belgesi çok büyük** : Azure Machine Learning bir eğitim çalıştırmasında bir kez günlüğe kaydedilebilir ölçüm nesnelerinin boyutunda iç sınırlara sahiptir. Liste değerli bir ölçümü günlüğe kaydederken "ölçüm belgesi fazla büyük" hatasıyla karşılaşıyorsanız listeyi daha küçük parçalara ayırmayı deneyin, örneğin:
+* **Ölçüm belgesi çok büyük**: Azure Machine Learning bir eğitim çalıştırmasında bir kez günlüğe kaydedilebilir ölçüm nesnelerinin boyutunda iç sınırlara sahiptir. Liste değerli bir ölçümü günlüğe kaydederken "ölçüm belgesi fazla büyük" hatasıyla karşılaşıyorsanız listeyi daha küçük parçalara ayırmayı deneyin, örneğin:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -336,7 +339,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Otomatik makine öğrenimi
 
-* **Yeni sürümlere yönelik yeni sürümlere yönelik son yükseltme** , önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda, modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
+* **Yeni sürümlere yönelik yeni sürümlere yönelik son yükseltme**, önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda, modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
   * Modül bulunamadı: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
   * İçeri aktarma hataları: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
   * Öznitelik hataları: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -356,9 +359,9 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade scikit-learn==0.20.3
   ```
  
-* **Tahmin R2 puanı her zaman sıfırdır** : belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş kök ortalama kare hatasına geçiş yapabilirsiniz.
+* **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş kök ortalama kare hatasına geçiş yapabilirsiniz.
  
-* **TensorFlow** : SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
+* **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -366,18 +369,18 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **Deneme grafikleri** : otomatik ml denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-HATıRLA, Roc, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
+* **Deneme grafikleri**: otomatik ml denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-HATıRLA, Roc, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
 
-* **Databricks otomatik makine öğrenimi çalıştırmayı iptal et** : Azure Databricks ' de otomatik makine öğrenimi özellikleri kullandığınızda, çalıştırmayı iptal etmek ve yeni bir deneme çalıştırması başlatmak için Azure Databricks kümenizi yeniden başlatın.
+* **Databricks otomatik makine öğrenimi çalıştırmayı iptal et**: Azure Databricks ' de otomatik makine öğrenimi özellikleri kullandığınızda, çalıştırmayı iptal etmek ve yeni bir deneme çalıştırması başlatmak için Azure Databricks kümenizi yeniden başlatın.
 
-* **Databricks otomatik makine öğrenimi için 10 yineleme >** : otomatik makine öğrenimi ayarları 'nda 10 ' dan fazla yineleme sahipseniz, `show_output` `False` çalıştırmayı gönderdiğinizde olarak ayarlayın.
+* **Databricks otomatik makine öğrenimi için 10 yineleme >**: otomatik makine öğrenimi ayarları 'nda 10 ' dan fazla yineleme sahipseniz, `show_output` `False` çalıştırmayı gönderdiğinizde olarak ayarlayın.
 
-* **Azure MACHINE LEARNING SDK ve otomatik makine öğrenimi Için Databricks pencere öğesi** : Not defterleri HTML pencere öğelerini ayrıştıramadığından, bir databricks not DEFTERINDE Azure Machine Learning SDK pencere öğesi desteklenmez. Azure Databricks Not defteri hücresinizdeki bu python kodunu kullanarak portalda pencere öğesini görüntüleyebilirsiniz:
+* **Azure MACHINE LEARNING SDK ve otomatik makine öğrenimi Için Databricks pencere öğesi**: Not defterleri HTML pencere öğelerini ayrıştıramadığından, bir databricks not DEFTERINDE Azure Machine Learning SDK pencere öğesi desteklenmez. Azure Databricks Not defteri hücresinizdeki bu python kodunu kullanarak portalda pencere öğesini görüntüleyebilirsiniz:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
-* **automl_setup başarısız olur** : 
+* **automl_setup başarısız olur**: 
     * Windows üzerinde automl_setup bir Anaconda Isteminden çalıştırın. [Miniconda 'ı yüklemek](https://docs.conda.io/en/latest/miniconda.html)için bu bağlantıyı kullanın.
     * Komutunu çalıştırarak Conda 64 bit 'ın, 32 bit yerine, yüklü olduğundan emin olun `conda info` . `platform` `win-64` Windows veya Mac için olmalıdır `osx-64` .
     * Conda 4.4.10 veya üzeri sürümünün yüklü olduğundan emin olun. Komutu ile sürümü kontrol edebilirsiniz `conda -V` . Önceki bir sürümü yüklüyse, şu komutu kullanarak güncelleştirebilirsiniz: `conda update conda` .
@@ -385,36 +388,36 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
       *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
       * Yeni bir Conda ortamı oluşturmak için automl_setup ilk parametre olarak yeni bir ad geçirin. Kullanarak mevcut Conda ortamlarını görüntüleyin `conda env list` ve ile kaldırın `conda env remove -n <environmentname>` .
       
-* **automl_setup_linux. sh başarısız** : automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur: `unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur: `unable to execute 'gcc': No such file or directory`-
   1. 53 ve 80 giden bağlantı noktalarının etkinleştirildiğinden emin olun. Azure VM 'de bunu, VM 'yi seçip Ağ ' a tıklayarak Azure portal yapabilirsiniz.
   2. Şu komutu çalıştırın: `sudo apt-get update`
   3. Şu komutu çalıştırın: `sudo apt-get install build-essential --fix-missing`
   4. `automl_setup_linux.sh`Yeniden çalıştır
 
-* **Configuration. ipynb başarısız olur** :
+* **Configuration. ipynb başarısız olur**:
   * Yerel Conda 'nın automl_setup başarıyla çalıştığından emin olun.
   * Subscription_id doğru olduğundan emin olun. Tüm hizmet ve abonelikler ' i seçerek Azure portal subscription_id bulun. "<" ve ">" karakterlerinin subscription_id değere dahil edilmemelidir. Örneğin, `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` geçerli biçimi vardır.
   * Aboneliğe katkıda bulunan veya sahip erişiminin olduğundan emin olun.
   * Bölgenin desteklenen bölgelerden biri olup olmadığını denetleyin: `eastus2` , `eastus` ,, `westcentralus` `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
   * Azure portal kullanarak bölgeye erişim sağlayın.
   
-* **Otomatik Mlconfig içeri aktarma işlemi başarısız oldu** : otomatik makine öğrenimi sürüm 1.0.76 ' de, yeni sürüme güncelleştirmeden önce önceki sürümün kaldırılmasını gerektiren paket değişiklikleri vardı. `ImportError: cannot import name AutoMLConfig`V 1.0.76 'den v 1.0.76 veya üzeri BIR SDK sürümünden yükseltmeden sonra bu hatayla karşılaşırsanız, şunu çalıştırarak hatayı çözün: `pip uninstall azureml-train automl` ve sonra `pip install azureml-train-auotml` . Automl_setup. cmd betiği bunu otomatik olarak yapar. 
+* **Otomatik Mlconfig içeri aktarma işlemi başarısız oldu**: otomatik makine öğrenimi sürüm 1.0.76 ' de, yeni sürüme güncelleştirmeden önce önceki sürümün kaldırılmasını gerektiren paket değişiklikleri vardı. `ImportError: cannot import name AutoMLConfig`V 1.0.76 'den v 1.0.76 veya üzeri BIR SDK sürümünden yükseltmeden sonra bu hatayla karşılaşırsanız, şunu çalıştırarak hatayı çözün: `pip uninstall azureml-train automl` ve sonra `pip install azureml-train-auotml` . Automl_setup. cmd betiği bunu otomatik olarak yapar. 
 
-* **Workspace.from_config başarısız** : ws = Workspace.from_config () ' çağrıları başarısız olursa-
+* **Workspace.from_config başarısız**: ws = Workspace.from_config () ' çağrıları başarısız olursa-
   1. Configuration. ipynb Not defterinin başarıyla çalıştığından emin olun.
   2. Not defteri, çalıştığı klasör altında olmayan bir klasörden çalıştırıldıysa `configuration.ipynb` , aml_config klasörü ve dosyanın içerdiği config.jsdosyayı yeni klasöre kopyalayın. Workspace.from_config, Not defteri klasörü veya onun üst klasörü için config.jsokur.
   3. Yeni bir abonelik, kaynak grubu, çalışma alanı veya bölge kullanılıyorsa, `configuration.ipynb` Not defterini yeniden çalıştırdığınızdan emin olun. config.jsdoğrudan üzerinde değiştirmek, yalnızca belirtilen abonelik altındaki belirtilen kaynak grubunda çalışma alanı zaten mevcutsa çalışır.
   4. Bölgeyi değiştirmek istiyorsanız, lütfen çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create` , belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
   
-* **Örnek Not defteri başarısız oldu** : örnek bir not defteri, özelliğin, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız oluyor:
+* **Örnek Not defteri başarısız oldu**: örnek bir not defteri, özelliğin, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız oluyor:
   * Jupyter not defterinde doğru çekirdeğin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdeğin Not defterinin bir parçası olarak kaydedildiğini unutmayın. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
       * Azure Notebooks, Python 3,6 olmalıdır. 
       * Yerel Conda ortamları için, automl_setup ' de belirttiğiniz Conda ortam adı olmalıdır.
   * Not defterinin kullandığınız SDK sürümü için olduğundan emin olun. `azureml.core.VERSION`Jupyter Not defteri hücresinde ÇALıŞTıRARAK SDK sürümünü denetleyebilirsiniz. `Branch`Düğmeye tıklayarak `Tags` ve ardından sürümü seçerek örnek Not defterlerinin önceki sürümünü GitHub 'dan indirebilirsiniz.
 
-* **Windows 'da bir sayısal tuş alma işlemi başarısız oluyor** : bazı Windows ortamları, en son Python sürümü 3.6.8 ile bir sayısal tuş, yükleme hatası görür. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
+* **Windows 'da bir sayısal tuş alma işlemi başarısız oluyor**: bazı Windows ortamları, en son Python sürümü 3.6.8 ile bir sayısal tuş, yükleme hatası görür. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
 
-* **Sayısal tuş takımı içeri aktarma başarısız** : otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 olduğunda TensorFlow 'un ortamdan kaldırılması, TensorFlow sürümünü kontrol edebilir ve aşağıdaki gibi kaldırabilirsiniz.
+* **Sayısal tuş takımı içeri aktarma başarısız**: otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 olduğunda TensorFlow 'un ortamdan kaldırılması, TensorFlow sürümünü kontrol edebilir ve aşağıdaki gibi kaldırabilirsiniz.
   1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
   2. `pip freeze` `tensorflow` Bulunursa, listelenen sürüm < 1,13 olmalıdır.
   3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall tensorflow` komut kabuğu 'nda, onay için y girin.

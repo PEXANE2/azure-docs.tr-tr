@@ -10,16 +10,18 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656607"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780187"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama
 
 Azure Active Directory (Azure AD) kiracınıza eklediğiniz bir uygulama için çoklu oturum açma (SSO) ayarlayarak Basitleştirilmiş kullanıcı oturum açmaları ile çalışmaya başlayın. SSO 'yu ayarladıktan sonra kullanıcılarınız Azure AD kimlik bilgilerini kullanarak bir uygulamada oturum açabilir. SSO, ücretsiz Azure AD sürümüne dahildir.
+
+OıDC tabanlı SSO hakkında daha fazla bilgi edinmek için bkz. [OıDC tabanlı çoklu oturum açmayı anlama](configure-oidc-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -52,7 +54,7 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
    > [!IMPORTANT]
     > Zaten uygulamaya bir aboneliğiniz varsa, Kullanıcı ayrıntılarının doğrulanması ve kiracı/dizin bilgilerinin gerçekleşmesi gerekir. Uygulama kullanıcıyı doğrulayamezse uygulama hizmetine veya hata sayfasına kaydolmak için sizi yönlendirecektir.
 
-3. Başarılı kimlik doğrulamasından sonra, yönetici onayı isteyen bir iletişim kutusu görüntülenir. **Kuruluşunuz adına izin** ' ı seçin ve ardından **kabul et**' i seçin. 
+3. Başarılı kimlik doğrulamasından sonra, yönetici onayı isteyen bir iletişim kutusu görüntülenir. **Kuruluşunuz adına izin** ' ı seçin ve ardından **kabul et**' i seçin. Kullanıcı ve yönetici onayı hakkında daha fazla bilgi edinmek için bkz. [Kullanıcı ve yönetici onayını anlama](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent).
 
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Ekran görüntüsü, bir uygulamanın onay ekranını gösterir." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
@@ -62,6 +64,11 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
 > [!TIP]
 > Graph API kullanarak uygulama yönetimini otomatik hale getirebilirsiniz, bkz. [MICROSOFT Graph API ile uygulama yönetimini otomatikleştirme](/graph/application-saml-sso-configure-api).
 
+Azure AD 'ye OıDC tabanlı bir uygulama ekleme hakkında ayrıntılı bilgi almak için aşağıdaki bir video aşağıda verilmiştir.
+
+Azure Active Directory bir OıDC tabanlı uygulama ekleme
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4HoNI]
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

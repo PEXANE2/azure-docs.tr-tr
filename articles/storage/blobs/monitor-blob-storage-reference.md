@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: d33c368c271c4d1809834e2eeac8c4b5c0ba0441
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16ae2f9e74202aff47e58a22dbe21a28d8280a7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011148"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780731"
 ---
 # <a name="azure-blob-storage-monitoring-data-reference"></a>Azure Blob depolama izleme verileri başvurusu
 
@@ -38,7 +38,7 @@ Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
 Bu tabloda [BLOB depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsblobservices)gösterilmektedir.
 
-| Metric | Açıklama |
+| Ölçüm | Açıklama |
 | ------------------- | ----------------- |
 | BlobCapacity | Depolama hesabında kullanılan BLOB depolama alanı toplamı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ([tanım](#metrics-dimensions)) |
 | BlobCount    | Depolama hesabında depolanan BLOB nesnelerinin sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 <br/> Boyutlar: **Blobtype** ve **blobtier** ([tanım](#metrics-dimensions)) |
@@ -64,7 +64,7 @@ Azure depolama, Azure Izleyici 'de ölçümler için aşağıdaki boyutları des
 
 ### <a name="dimensions-specific-to-blob-storage"></a>Blob depolamaya özgü Boyutlar
 
-| Boyut adı | Description |
+| Boyut adı | Açıklama |
 | ------------------- | ----------------- |
 | **BlobType** | Yalnızca blob ölçümleri için blob türü. Desteklenen değerler **Blockblob**, **pageblob** ve **Azure Data Lake Storage**. Ekleme Blobları **Blockblob**'a dahildir. |
 | **BlobTier** | Azure depolama, blob nesne verilerini en düşük maliyetli biçimde depolamanıza olanak sağlayan farklı erişim katmanları sunar. Bkz. [Azure Storage blob katmanında](../blobs/storage-blob-storage-tiers.md)daha fazla bilgi. Desteklenen değerler şunlardır: <br/> <li>**Sık** erişimli: etkin katman</li> <li>**Cool**: Cool Tier</li> <li>**Arşiv**: Arşiv katmanı</li> <li>**Premium**: Blok Blobu için Premium katman</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Premium Sayfa Blobu için katman türleri</li> <li>**Standart**: standart sayfa blobu için katman türü</li> <li>**Katmanlanmadan**: genel amaçlı v1 depolama hesabı için katman türü</li> |
@@ -74,7 +74,7 @@ Boyutları destekleyen ölçümler için, karşılık gelen ölçüm değerlerin
 ## <a name="resource-logs-preview"></a>Kaynak günlükleri (Önizleme)
 
 > [!NOTE]
-> Azure Izleyici 'de Azure depolama günlükleri genel önizlemede bulunur ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Önizlemeye kaydolmak için [Bu sayfaya](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u)bakın.  Bu önizleme, genel amaçlı v1 ve genel amaçlı v2 depolama hesaplarında blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, Premium Depolama hesapları için Günlükler sunar. Klasik depolama hesapları desteklenmez.
+> Azure Izleyici 'de Azure depolama günlükleri genel önizlemede bulunur ve tüm genel bulut bölgelerinde önizleme testi için kullanılabilir. Bu önizleme, genel amaçlı v1 ve genel amaçlı v2 depolama hesaplarında blob 'lar (Azure Data Lake Storage 2.), dosyalar, kuyruklar, tablolar, Premium Depolama hesapları için Günlükler sunar. Klasik depolama hesapları desteklenmez.
 
 Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da toplandıklarında Azure depolama kaynak günlüklerinin özellikleri listelenmektedir. Özellikler işlemi, hizmeti ve işlemi gerçekleştirmek için kullanılan yetkilendirme türünü anlatmaktadır.
 

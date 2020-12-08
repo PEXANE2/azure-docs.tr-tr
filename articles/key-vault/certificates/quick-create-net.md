@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b40a13b84a0191b5c454d7edac2226f8f06fadcd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317087"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780170"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault sertifika istemci kitaplığı (SDK v4)
 
@@ -54,6 +54,13 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 2. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
 
+#### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
+
+Anahtar kasanız için Kullanıcı hesabınıza sertifika izinleri veren bir erişim ilkesi oluşturun
+
+```console
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+```
 
 ### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturma
 
@@ -89,14 +96,6 @@ Bu hızlı başlangıçta Azure Identity için Azure SDK istemci kitaplığı 'n
 
 ```dotnetcli
 dotnet add package Azure.Identity
-```
-
-#### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
-
-Anahtar kasanız için Kullanıcı hesabınıza Sertifika izni veren bir erişim ilkesi oluşturun
-
-```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
@@ -137,7 +136,7 @@ using Azure.Security.KeyVault.Certificates;
 
 Bu hızlı başlangıçta oturum açan kullanıcı, yerel geliştirme için tercih edilen yöntem olan Anahtar Kasası kimlik doğrulaması için kullanılır. Azure 'a dağıtılan uygulamalar için, yönetilen kimlik App Service veya sanal makineye atanmalıdır, daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, kimlik sağlamak için farklı seçeneklere sahip farklı ortamlarda aynı kodun kullanılmasına izin veren  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) sınıfını kullanıyor. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, [Azure Identity Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) sınıfını kullanarak kimlik sağlamak için farklı seçeneklerle aynı kodu farklı ortamlarda kullanmanıza olanak tanır. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -228,61 +227,20 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
     ```
 ### <a name="test-and-verify"></a>Test ve doğrulama
 
-1.  Projeyi derlemek için aşağıdaki komutu yürütün
+Projeyi derlemek için aşağıdaki komutu yürütün
 
-    ```dotnetcli
-    dotnet build
-    ```
-
-1. Uygulamayı çalıştırmak için aşağıdaki komutu yürütün.
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
-
-    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
-
-    ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
-    ```
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
-
-### <a name="delete-a-key-vault"></a>Key Vault silme
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
+```dotnetcli
+dotnet build
 ```
 
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
+Aşağıdaki çıkışın bir varyasyonu görüntülenir:
 
-### <a name="purge-a-key-vault"></a>Key Vault Temizleme
-
-```azurecli
-az keyvault purge --location eastus --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
-```
-
-### <a name="delete-a-resource-group"></a>Kaynak grubunu silme
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
+```console
+Creating a certificate in mykeyvault called 'myCertificate' ... done.
+Retrieving your certificate from mykeyvault.
+Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your certificate from mykeyvault ... done
+Purging your certificate from mykeyvault ... done
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

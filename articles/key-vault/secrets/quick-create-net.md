@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ecd5fd4f5af883d26f904181796a78f61669b37a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dcf7c8db955b2e85ad7d1c047c714eb2c5968455
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187366"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780816"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault gizli istemci kitaplığı (SDK v4)
 
@@ -27,12 +27,12 @@ Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
 - [Gizli dizi genel bakış](about-secrets.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core 3,1 SDK veya üzeri](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/azure/install-azure-cli)
-* Key Vault- [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)veya [Azure PowerShell](../general/quick-create-powershell.md)kullanarak bir tane oluşturabilirsiniz.
+* Key Vault- [Azure clı](../general/quick-create-cli.md) [Azure Portal](../general/quick-create-portal.md) veya [Azure PowerShell](../general/quick-create-powershell.md) kullanarak bir tane oluşturabilirsiniz.
 
 Bu hızlı başlangıç, `dotnet` Azure CLI 'yi kullanıyor
 
@@ -54,6 +54,13 @@ Bu hızlı başlangıç, Azure 'da kullanıcının kimliğini doğrulamak için 
 
 2. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
 
+### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
+
+Anahtar kasanız için Kullanıcı hesabınıza gizli izinler veren bir erişim ilkesi oluşturun
+
+```console
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+```
 
 ### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturma
 
@@ -90,15 +97,6 @@ Bu hızlı başlangıçta Azure Identity için Azure SDK istemci kitaplığı 'n
 ```dotnetcli
 dotnet add package Azure.Identity
 ```
-
-#### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
-
-Anahtar kasanız için Kullanıcı hesabınıza gizli izin veren bir erişim ilkesi oluşturun
-
-```console
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
-```
-
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
 Bu uygulama, Anahtar Kasası adını adında bir ortam değişkeni olarak kullanıyor `KEY_VAULT_NAME` .
@@ -133,7 +131,7 @@ Aşağıdaki yönergeleri *program.cs*' nin en üstüne ekleyin:
 
 Bu hızlı başlangıçta oturum açan kullanıcı, yerel geliştirme için tercih edilen yöntem olan Anahtar Kasası kimlik doğrulaması için kullanılır. Azure 'a dağıtılan uygulamalar için, yönetilen kimlik App Service veya sanal makineye atanmalıdır, daha fazla bilgi için bkz. [yönetilen kimliğe genel bakış](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, kimlik sağlamak için farklı seçeneklere sahip farklı ortamlarda aynı kodun kullanılmasına izin veren  [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) sınıfını kullanıyor. Daha fazla bilgi için bkz. [varsayılan Azure kimlik bilgisi kimlik doğrulaması](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?#defaultazurecredential). 
+Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" biçiminde Anahtar Kasası URI 'sine genişletilir \<your-key-vault-name\> . Bu örnek, [Azure Identity Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) [' DefaultAzureCredential () '](/dotnet/api/azure.identity.defaultazurecredential) sınıfını kullanarak kimlik sağlamak için farklı seçeneklerle aynı kodu farklı ortamlarda kullanmanıza olanak tanır. Anahtar Kasası kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Geliştirici Kılavuzu](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 [!code-csharp[](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
@@ -155,16 +153,20 @@ Artık [Getsecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient
 
 ```csharp
 var secret = await client.GetSecretAsync(secretName);
-``````
+```
 
 Gizli anahtar artık olarak kaydedilir `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) yöntemiyle anahtar kasanızdan parolayı silelim.
+Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) ve [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedsecretasync) yöntemleriyle anahtar kasanızdan parolayı silelim.
 
 ```csharp
-await client.StartDeleteSecretAsync(secretName);
+var operation = await client.StartDeleteSecretAsync("mySecret");
+// You only need to wait for completion if you want to purge or recover the key.
+await operation.WaitForCompletionAsync();
+
+await client.PurgeDeletedKeyAsync("mySecret");
 ```
 
 ## <a name="sample-code"></a>Örnek kod
@@ -229,52 +231,18 @@ Aşağıdaki adımları tamamlayarak, .NET Core konsol uygulamasını Key Vault 
 
 1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
 
-    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
+Aşağıdaki çıkışın bir varyasyonu görüntülenir:
 
-    ```console
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.    
-    ```
-
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-Artık gerekli değilse, anahtar Kasanızı ve ilgili kaynak grubunu kaldırmak için Azure CLı veya Azure PowerShell kullanabilirsiniz.
-
-### <a name="delete-a-key-vault"></a>Key Vault silme
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
+```console
+Input the value of your secret > mySecretPassword
+Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
+Forgetting your secret.
+Your secret is ''.
+Retrieving your secret from <your-unique-keyvault-name>.
+Your secret is 'mySecretPassword'.
+Deleting your secret from <your-unique-keyvault-name> ... done.    
+Purging your secret from <your-unique-keyvault-name> ... done.
 ```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
-
-### <a name="purge-a-key-vault"></a>Key Vault Temizleme
-
-```azurecli
-az keyvault purge --location eastus --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
-```
-
-### <a name="delete-a-resource-group"></a>Kaynak grubunu silme
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

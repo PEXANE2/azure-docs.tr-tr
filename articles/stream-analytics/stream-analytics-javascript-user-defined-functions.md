@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124790"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780850"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri
  
-Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String** , **RegExp** , **Math** , **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
+Azure Stream Analytics, JavaScript dilinde yazılmış kullanıcı tanımlı işlevleri destekler. JavaScript’in sağladığı **String**, **RegExp**, **Math**, **Array** ve **Date** yöntemlerinden oluşan zengin küme sayesinde Stream Analytics işleriyle karmaşık veri dönüşümlerini oluşturmak daha kolay hale gelir.
 
 ## <a name="overview"></a>Genel Bakış
 
@@ -45,7 +45,7 @@ Stream Analytics işte JavaScript Kullanıcı tanımlı bir işlev oluşturmak i
 
 ![JavaScript UDF ekleme](./media/javascript/stream-analytics-jsudf-add.png)
 
-Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet** ' i seçmeniz gerekir.
+Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet**' i seçmeniz gerekir.
 
 |Özellik|Açıklama|
 |--------|-----------|
@@ -57,7 +57,7 @@ Ardından aşağıdaki özellikleri sağlamanız ve **Kaydet** ' i seçmeniz ger
 
 JavaScript UDF mantığınızı herhangi bir tarayıcıda test edebilir ve hatalarını ayıklayabilirsiniz. Kullanıcı tanımlı bu işlevlerin mantığını hata ayıklama ve test etme işlemi şu anda Stream Analytics portalında desteklenmiyor. İşlev beklenen şekilde çalışırsa, yukarıda bahsedilen Stream Analytics işe ekleyebilirsiniz ve ardından doğrudan Sorgunuzla çağırabilirsiniz. [Visual Studio için Stream Analytics araçları](./stream-analytics-tools-for-visual-studio-install.md)'nı kullanarak sorgu mantığınızı JavaScript UDF ile test edebilirsiniz.
 
-JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü** ’nü seçin.
+JavaScript çalışma zamanı hataları önemli kabul edilir ve Etkinlik günlüğünde öne çıkarılır. Günlüğü almak için Azure portalında işinize gidin ve **Etkinlik günlüğü**’nü seçin.
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Bir sorguda JavaScript kullanıcı tanımlı işlevi çağırma
 
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString ()
+JavaScript 'teki **toLocaleString** yöntemi, bu yöntemin çağrıldığı tarih saat verilerini temsil eden dile duyarlı bir dize döndürmek için kullanılabilir.
+Azure Stream Analtycs yalnızca UTC Tarih saatini sistem zaman damgası olarak kabul etse de, bu yöntem sistem zaman damgasını başka bir yerel ayara ve saat dilimine birlikte almak için kullanılabilir.
+Bu yöntem, Internet Explorer 'da bulunan ile aynı uygulama davranışını izler.
+
+**JavaScript kullanıcı tanımlı işlev tanımı:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**Örnek sorgu: tarih/saati giriş değeri olarak geçirme**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+Bu sorgunun çıktısı, belirtilen seçeneklerle birlikte de giriş tarih/saat **olarak da kullanılır** .
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

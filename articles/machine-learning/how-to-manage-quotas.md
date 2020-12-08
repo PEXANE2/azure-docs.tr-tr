@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 18eb952d06d83b4604625a795be3c8512c3f90d7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 30859593e240c4143dc298cff446ce8bc116a993
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576596"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780595"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -67,10 +67,10 @@ Varlıklar için aşağıdaki sınırlar her çalışma alanı temelinde geçerl
 
 Ayrıca, maksimum **çalışma süresi** 30 gündür ve **her çalıştırma için günlüğe kaydedilen** en fazla ölçüm sayısı 1.000.000 ' dir.
 
-#### <a name="azure-machine-learning-compute"></a>Azure Machine Learning işlem
-[Azure Machine Learning işlem](concept-compute-target.md#azure-machine-learning-compute-managed) , hem çekirdek sayısı hem de bir abonelikte bölge başına izin verilen benzersiz işlem kaynakları sayısı üzerinde varsayılan bir kota sınırına sahiptir. Bu kota, önceki bölümden VM çekirdek kotasından ayrıdır.
+### <a name="azure-machine-learning-compute"></a>Azure Machine Learning İşlemi
+[Azure Machine Learning işlem](concept-compute-target.md#azure-machine-learning-compute-managed) , hem çekirdek sayısı hem de bir abonelikte bölge başına izin verilen benzersiz işlem kaynakları sayısı üzerinde varsayılan bir kota sınırına sahiptir. Bu kota, yalnızca Azure Machine Learning yönetilen işlem kaynakları için geçerli olduğundan, önceki bölümde listelenen VM Core kotasından ayrıdır.
 
-Bu bölümdeki sınırları tabloda gösterilen en fazla sınıra kadar yükseltmek için [bir kota artışı isteyin](#request-quota-increases) .
+Bu bölümdeki çeşitli VM ailesi çekirdek kotaları, toplam abonelik çekirdek kotaları ve kaynakları için sınırları artırmak üzere [bir kota artışı isteyin](#request-quota-increases) .
 
 Kullanılabilir kaynaklar:
 + Abonelik teklif türüne bağlı olarak, **bölge başına adanmış çekirdekler** varsayılan değer olan 24 ile 300 arasında olmalıdır. Her VM ailesi için abonelik başına adanmış çekirdek sayısını artırabilirsiniz. NCv2, NCv3 veya ND serisi gibi özelleştirilmiş sanal makine aileleri, varsayılan sıfır çekirdeklerle başlar.
@@ -79,12 +79,19 @@ Kullanılabilir kaynaklar:
 
 + **Bölge başına kümelerin** varsayılan 200 limiti vardır. Bunlar, bir eğitim kümesi ve bir işlem örneği arasında paylaşılır. (Bir işlem örneği, kota amaçları için tek düğümlü bir küme olarak kabul edilir.)
 
-Aşağıdaki tabloda, aşamazsınız ek sınırlar gösterilmektedir.
+> [!TIP]
+> Kota artışı için gereken VM ailesi hakkında daha fazla bilgi edinmek için [Azure 'da sanal makine boyutlarını](https://docs.microsoft.com/azure/virtual-machines/sizes)inceleyin. Örneğin GPU VM aileleri, Aile adında bir "N" ile başlar (örn. NCv3 serisi)
 
-| **Kaynak** | **Üst sınır** |
+Aşağıdaki tabloda, platformda ek sınırlamalar gösterilmektedir. Lütfen bir özel durum istemek için bir **Teknik** destek bileti aracılığıyla AzureML ürün ekibine ulaşın.
+
+| **Kaynak veya eylem** | **Üst sınır** |
 | --- | --- |
 | Her kaynak grubu için çalışma alanı | 800 |
-| Tek bir Azure Machine Learning işlem (AmlCompute) kaynağındaki düğümler | 100 düğümleri |
+| Tek bir Azure Machine Learning COMPUTE (AmlCompute) **kümesi** kurulumunda, iletişim etkin olmayan bir havuz olarak (MPI işleri çalıştırılamaz) düğümler | 100 düğüm, ancak 65000 ' e kadar düğüm yapılandırılabilir |
+| Tek bir paralel çalıştırma adımındaki düğümler Azure Machine Learning Işlem (AmlCompute) kümesi üzerinde **çalıştırılır** | 100 düğüm, ancak kümeniz yukarıya ölçeklendirmeye ayarlandığında, 65000 ' e kadar düğüm yapılandırılabilir |
+| Tek bir Azure Machine Learning Işlem (AmlCompute) **kümesi** içindeki düğümler iletişim etkin bir havuz olarak ayarlandı | 300 düğüm, ancak 4000 ' e kadar düğüm yapılandırılabilir |
+| Tek bir Azure Machine Learning Işlem (AmlCompute) **kümesi** içindeki DÜĞÜMLER, RDMA özellıklı bir VM ailesinde iletişim etkin bir havuz olarak ayarlandı | 100 düğümleri |
+| Tek bir MPı içindeki düğümler Azure Machine Learning Işlem (AmlCompute) kümesi üzerinde **çalışır** | 100 düğüm, ancak 300 düğümlere artırılabilir |
 | Düğüm başına GPU MPı işlemi | 1-4 |
 | Düğüm başına GPU çalışanları | 1-4 |
 | İş ömrü | 21 gün<sup>1</sup> |

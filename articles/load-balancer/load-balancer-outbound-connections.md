@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483598"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780119"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Giden bağlantılar için SNAT kullanma
 
@@ -109,7 +109,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
 
  | İçermektedir | Yöntem | IP protokolleri |
  | ------------ | ------ | ------------ |
- |Yok </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
+ |Hiçbiri </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
 
  #### <a name="description"></a>Açıklama
 

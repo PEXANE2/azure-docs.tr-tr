@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: ef54c40715c874364beb188d8850a9ce953aa112
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 382c79cf77cb22d3cad1af41d6daa662fb00df4c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554619"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781173"
 ---
 # <a name="manage-data-sources-in-azure-purview-preview"></a>Azure purview 'da veri kaynaklarını yönetme (Önizleme)
 
@@ -28,6 +28,7 @@ Bu makalede, yeni veri kaynaklarını kaydetme, veri kaynakları koleksiyonları
 * Azure Synapse Analytics (eski adı SQL DW)
 * Azure Cosmos DB
 * Power BI
+* Teradata (Önizleme)
 
 ## <a name="register-a-new-source"></a>Yeni bir kaynak Kaydet
 
@@ -80,5 +81,5 @@ Bir koleksiyon hiyerarşisi oluşturmak için, daha üst düzey koleksiyonlar al
 Çeşitli veri kaynaklarını nasıl kaydedeceğinizi ve tarayacağını öğrenin:
 
 * [Azure Data Lake Storage 2. Nesil](register-scan-adls-gen2.md)
-* [Power BI kiracısı](register-scan-power-bi-tenant.md)
+* [Power BI kiracı](register-scan-power-bi-tenant.md)
 * [Azure SQL Veritabanı](register-scan-azure-sql-database.md)

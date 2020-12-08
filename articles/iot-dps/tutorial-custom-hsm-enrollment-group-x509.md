@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355211"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780102"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Öğretici: kayıt grupları kullanarak birden çok X. 509.440 cihazı sağlama
 
@@ -26,7 +26,7 @@ Azure IoT Cihaz Sağlama Hizmeti iki tür kaydı destekler:
 
 Bu öğretici, kayıt gruplarının cihaz kümelerini sağlamak için nasıl kullanılacağını gösteren önceki öğreticilere benzer. Ancak, X. 509.440 sertifikaları simetrik anahtarlar yerine bu öğreticide kullanılacaktır. [Simetrik anahtarlar](./concepts-symmetric-key-attestation.md)kullanarak basit bir yaklaşım için bu bölümdeki önceki öğreticileri gözden geçirin.
 
-Bu öğreticide, donanım tabanlı güvenli depolama ile arabirim oluşturma için bir saplama uygulama sağlayan [özel HSM örneği](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) gösterilmektedir. [Donanım güvenlik modülü (HSM)](./concepts-service.md#hardware-security-module) , cihaz gizliliklerin güvenli, donanım tabanlı depolaması için kullanılır. Gizli dizileri için güvenli depolama sağlamak üzere simetrik anahtar, X. 509.440 sertifikası veya TPM kanıtlama ile HSM kullanılabilir. Cihaz gizliliklerin donanım tabanlı depolaması kesinlikle önerilir.
+Bu öğreticide, donanım tabanlı güvenli depolama ile arabirim oluşturma için bir saplama uygulama sağlayan [özel HSM örneği](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) gösterilmektedir. [Donanım güvenlik modülü (HSM)](./concepts-service.md#hardware-security-module) , cihaz gizliliklerin güvenli, donanım tabanlı depolaması için kullanılır. Gizli dizileri için güvenli depolama sağlamak üzere simetrik anahtar, X. 509.440 sertifikası veya TPM kanıtlama ile HSM kullanılabilir. Cihaz gizliliklerine yönelik donanım tabanlı depolama alanı gerekli değildir, ancak cihaz sertifikanızın özel anahtarı gibi hassas bilgilerin korunmasına yardımcı olmak için önemle önerilir.
 
 Oto sağlama işlemini bilmiyorsanız, [sağlamaya](about-iot-dps.md#provisioning-process) genel bakış konusunu gözden geçirin. Ayrıca, Bu öğreticiye devam etmeden önce [Azure portal IoT Hub cihaz sağlama hizmetini ayarlama](quick-setup-auto-provision.md) bölümündeki adımları tamamladığınızdan emin olun. 
 
@@ -225,7 +225,9 @@ Sertifika zincirini oluşturmak için:
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>Özel HSM saplama kodunu yapılandırma
 
-Gerçek güvenli donanım tabanlı depolamayla etkileşim kurma özellikleri, donanıma bağlı olarak değişiklik gösterir. Sonuç olarak, bu öğreticide cihaz tarafından kullanılan sertifika zinciri özel HSM saplama kodunda sabit olarak kodlanır. Gerçek dünyada bir senaryoda, önemli bilgiler için daha iyi güvenlik sağlamak üzere sertifika zinciri gerçek HSM donanımında depolanır. Bu örnekte gösterilen saplama yöntemlerine benzer yöntemler, donanım tabanlı depolama alanındaki gizli dizileri okumak için de uygulanır.
+Gerçek güvenli donanım tabanlı depolamayla etkileşim kurma özellikleri, donanıma bağlı olarak değişiklik gösterir. Sonuç olarak, bu öğreticide cihaz tarafından kullanılan sertifika zinciri özel HSM saplama kodunda sabit olarak kodlanır. Gerçek dünyada bir senaryoda, önemli bilgiler için daha iyi güvenlik sağlamak üzere sertifika zinciri gerçek HSM donanımında depolanır. Bu örnekte gösterilen saplama yöntemlerine benzer yöntemler, donanım tabanlı depolama alanındaki gizli dizileri okumak için de uygulanır. 
+
+HSM donanımı gerekli olmasa da, sertifikanın özel anahtarı gibi, kaynak koda denetlenen gizli bilgilerin olması önerilmez. Bu, kodu görüntüleyebilen herkese anahtarı gösterir. Bu yalnızca öğreniminde yardımcı olmak için bu makalede yapılır.
 
 Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
 
@@ -287,7 +289,7 @@ Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Kök sertifikanın sahipliğini doğrulama
 
-1. [Bir X. 509.952 sertifikasının ortak bölümünü kaydetme ve doğrulama kodu edinme](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)yönergelerini kullanarak kök sertifikayı karşıya YÜKLEYIN ve DPS 'dan bir doğrulama kodu alın.
+1. [Bir X. 509.440 sertifikasının ortak bölümünü kaydetme ve doğrulama kodu edinme](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code)yönergelerini kullanarak, kök sertifikayı yükleyin ( `./certs/azure-iot-test-only.root.ca.cert.pem` ) ve DPS 'dan bir doğrulama kodu alın.
 
 2. Kök sertifika için DPS 'ten bir doğrulama kodu aldıktan sonra, bir doğrulama sertifikası oluşturmak için sertifika betiği çalışma dizininden aşağıdaki komutu çalıştırın.
  
@@ -297,7 +299,7 @@ Bu öğreticinin özel HSM saplama kodunu güncelleştirmek için:
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    Bu betik, kimlik adı, kimlik doğrulama kodu olarak ayarlanan kök sertifika tarafından imzalanan bir sertifika oluşturur. Bu sertifika, DPS 'nin kök sertifikanın özel anahtarına erişiminizin olduğunu doğrulamasına izin verir. Komut dosyasının çıkışında doğrulama sertifikasının konumuna dikkat edin.
+    Bu betik, kimlik adı, kimlik doğrulama kodu olarak ayarlanan kök sertifika tarafından imzalanan bir sertifika oluşturur. Bu sertifika, DPS 'nin kök sertifikanın özel anahtarına erişiminizin olduğunu doğrulamasına izin verir. Komut dosyasının çıkışında doğrulama sertifikasının konumuna dikkat edin. Bu sertifika `.pfx` biçiminde oluşturulur.
 
     ```output
     Leaf Device PFX Certificate Generated At:

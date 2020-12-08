@@ -1,31 +1,31 @@
 ---
-title: Hızlı başlangıç-JavaScript için gizli istemci kitaplığı Azure Key Vault (sürüm 4)
-description: JavaScript istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
+title: Hızlı başlangıç-JavaScript için Azure Key Vault anahtar istemci kitaplığı (sürüm 4)
+description: JavaScript istemci kitaplığını kullanarak Azure Anahtar Kasası 'ndan anahtar oluşturmayı, almayı ve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8e04fcea53869fe15ebbeb3c7709cff842893931
+ms.openlocfilehash: 1d842a4eaf0ff4afbc61ca58847747c3da57b1da
 ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780799"
+ms.locfileid: "96841943"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault gizli istemci kitaplığı (sürüm 4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault anahtar istemci kitaplığı (sürüm 4)
 
-JavaScript için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , gizli dizileri için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, JavaScript istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğreneceksiniz.
+JavaScript için Azure Key Vault anahtar istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , şifreleme anahtarları için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, JavaScript anahtar istemci kitaplığını kullanarak Azure Anahtar Kasası 'ndan anahtar oluşturmayı, almayı ve silmeyi öğreneceksiniz
 
 Key Vault istemci kitaplığı kaynakları:
 
-[API başvuru belgeleri](/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API başvuru belgeleri](/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-keys)
 
-Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
+Key Vault ve anahtarları hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
-- [Gizli dizi genel bakış](about-secrets.md).
+- [Anahtarlara genel bakış](about-keys.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -69,10 +69,10 @@ npm init -y
 
 ## <a name="install-key-vault-packages"></a>Key Vault paketlerini yükler
 
-Konsol penceresinde, Node.js için Azure Key Vault gizli dizi [kitaplığı](https://www.npmjs.com/package/@azure/keyvault-secrets) ' nı yükler.
+Konsol penceresinde, Node.js için Azure Key Vault [anahtarları kitaplığını](https://www.npmjs.com/package/@azure/keyvault-keys) yükler.
 
 ```azurecli
-npm install @azure/keyvault-secrets
+npm install @azure/keyvault-keys
 ```
 
 Key Vault kimlik doğrulaması yapmak için [Azure. Identity](https://www.npmjs.com/package/@azure/identity) paketini yükler
@@ -101,15 +101,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Anahtar kasanız için Kullanıcı hesabınıza gizli izinler veren bir erişim ilkesi oluşturun
+Anahtar kasanız için Kullanıcı hesabınıza anahtar izinleri veren bir erişim ilkesi oluşturun
 
 ```azurecli
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --key-permissions delete get list create purge
 ```
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir. 
+Aşağıdaki kod örnekleri, bir istemci oluşturma, anahtar ayarlama, anahtar alma ve bir anahtarı silme işlemlerinin nasıl yapılacağını gösterecektir. 
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
@@ -147,7 +147,7 @@ Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
@@ -163,42 +163,40 @@ const keyVaultName = process.env["KEY_VAULT_NAME"];
 const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 const credential = new DefaultAzureCredential();
-const client = new SecretClient(KVUri, credential);
+const client = new KeyClient(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Gizli dizi Kaydet
+### <a name="save-a-key"></a>Anahtar kaydetme
 
-Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
+Uygulamanızın kimliği doğrulandığına göre, [CreateKey metodunu](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) kullanarak anahtar kasanıza bir anahtar koyabilirsiniz yöntemin parametreleri bir anahtar adı ve [anahtar türü](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype) kabul eder
 
 ```javascript
-await client.setSecret(secretName, secretValue);
+await client.createKey(keyName, keyType);
 ```
 
-### <a name="retrieve-a-secret"></a>Gizli dizi alma
+### <a name="retrieve-a-key"></a>Anahtar alma
 
-Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)önceden ayarlanan değeri alabilirsiniz.
+Artık, [GetKey yöntemiyle](/javascript/api/@azure/keyvault-keys/keyclient?#getKey_string__GetKeyOptions_)önceden ayarlanan değeri alabilirsiniz.
 
 ```javascript
-const retrievedSecret = await client.getSecret(secretName);
+const retrievedKey = await client.getKey(keyName);
  ```
 
-Gizli anahtar artık olarak kaydedilir `retrievedSecret.value` .
+### <a name="delete-a-key"></a>Bir anahtarı silme
 
-### <a name="delete-a-secret"></a>Gizli anahtarı silme
-
-Son olarak, [Begindeletesecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) ve [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) yöntemleriyle anahtar kasaınızdan parolayı silip temizlim.
+Son olarak, [Begindeletekey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_) ve [purgeDeletedKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_) yöntemleriyle anahtar kasaınızdan anahtarı silip temizlim.
 
 ```javascript
-const deletePoller = await client.beginDeleteSecret(secretName);
+const deletePoller = await client.beginDeleteKey(keyName);
 await deletePoller.pollUntilDone();
-await client.purgeDeletedSecret(secretName);
+await client.purgeDeletedKey(keyName);
 ```
 
 ## <a name="sample-code"></a>Örnek kod
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { KeyClient } = require("@azure/keyvault-keys");
 
 const readline = require('readline');
 
@@ -220,33 +218,28 @@ async function main() {
   const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
   const credential = new DefaultAzureCredential();
-  const client = new SecretClient(KVUri, credential);
+  const client = new KeyClient(KVUri, credential);
 
-  const secretName = "mySecret";
-  var secretValue = await askQuestion("Input the value of your secret > ");
-
-  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
-  await client.setSecret(secretName, secretValue);
+  const keyName = "myKey";
+  
+  console.log("Creating a key in " + keyVaultName + " called '" + keyName + "` ...");
+  await client.createKey(keyName, "RSA");
 
   console.log("Done.");
 
-  console.log("Forgetting your secret.");
-  secretValue = "";
-  console.log("Your secret is '" + secretValue + "'.");
+  console.log("Retrieving your key from " + keyVaultName + ".");
 
-  console.log("Retrieving your secret from " + keyVaultName + ".");
+  const retrievedKey = await client.getKey(keyName);
 
-  const retrievedSecret = await client.getSecret(secretName);
+  console.log("Your key version is '" + retrievedKey.properties.version + "'.");
 
-  console.log("Your secret is '" + retrievedSecret.value + "'.");
-
-  console.log("Deleting your secret from " + keyVaultName + " ...");
-  const deletePoller = await client.beginDeleteSecret(secretName);
+  console.log("Deleting your key from " + keyVaultName + " ...");
+  const deletePoller = await client.beginDeleteKey(keyName);
   await deletePoller.pollUntilDone();
   console.log("Done.");
   
-  console.log("Purging your secret from {keyVaultName} ...");
-  await client.purgeDeletedSecret(secretName);
+  console.log("Purging your key from {keyVaultName} ...");
+  await client.purgeDeletedKey(keyName);
   
 }
 
@@ -256,35 +249,29 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ## <a name="test-and-verify"></a>Test ve doğrulama
 
-1. Uygulamayı çalıştırmak için aşağıdaki komutları yürütün.
+Uygulamayı çalıştırmak için aşağıdaki komutları yürütün.
 
-    ```azurecli
-    npm install
-    npm index.js
-    ```
+```azurecli
+npm install
+npm index.js
+```
 
-1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
+Aşağıdaki çıkışın bir varyasyonu görüntülenir:
 
-    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
-
-    ```azurecli
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.  
-    Purging your secret from <your-unique-keyvault-name> ... done.   
-    ```
-
+```azurecli
+Creating a key in <your-unique-keyvault-name> called 'myKey' ... done.
+Retrieving your key from mykeyvault.
+Your key version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your key from <your-unique-keyvault-name> ... done.  
+Purging your key from <your-unique-keyvault-name> ... done.   
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir anahtar depo, ve bu anahtarı almıştır. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
-- [Azure Key Vault gizliliklerin genel bakışını](about-secrets.md) okuyun
+- [Azure Key Vault anahtarlarına genel bir bakış](about-keys.md) okuyun
 - [Anahtar kasasına erişimi güvenli hale getirme](../general/secure-your-key-vault.md)
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
 - [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault

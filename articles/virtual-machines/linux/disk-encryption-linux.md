@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d2c9d810fb3bd86d68518e1ad20088a57d538bbe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 70ebe8ede75935bcc8d8db8729fef165a5616fe7
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500589"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779813"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM’lerde Azure Disk Şifrelemesi senaryoları
 
@@ -416,6 +416,7 @@ Azure disk şifrelemesi, aşağıdaki Linux senaryoları, özellikleri ve teknol
 - Müşteri tarafından yönetilen anahtarlarla (SSE + CMK) [sunucu tarafı şifrelemesiyle](../disk-encryption.md) şifrelenmiş diskler IÇEREN bir VM 'ye Ade uygulama. ADE ile şifrelenen bir VM üzerindeki bir veri diskine SSE + CMK uygulamak, desteklenmeyen bir senaryodur.
 - ADE ile şifrelenen veya **herhangi** bır zaman Ade ile ŞIFRELENEN bir VM 'yi, [müşteri tarafından yönetilen anahtarlarla sunucu tarafı şifrelemeye](../disk-encryption.md)geçirme.
 - [Yerel geçici disk Içermeyen Azure VM boyutları](../azure-vms-no-temp-disk.md); Özellikle, dv4, Dsv4, Ev4 ve Esv4.
+- Yük devretme kümelerinde VM 'Leri şifreleme.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

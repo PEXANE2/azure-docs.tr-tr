@@ -8,12 +8,12 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/19/2020
-ms.openlocfilehash: 043020abd44bc1f8e671cf386149d6a818136de9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6ee72a25fc8435159ae75ac3296742eda58617b6
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014372"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779949"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Azure Bilişsel Arama güvenli bağlantısı için özel uç nokta oluşturma
 
@@ -22,7 +22,7 @@ Bu makalede, Internet üzerinden erişilemeyen yeni bir Azure Bilişsel Arama hi
 Özel uç noktalar [Azure özel bağlantısı](../private-link/private-link-overview.md)tarafından ayrı bir hizmet olarak sağlanır. Maliyetler hakkında daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
-> Azure Bilişsel Arama için özel uç nokta desteği, Azure portal veya [yönetim REST API 2020-03-13 sürümü](/rest/api/searchmanagement/)kullanılarak yapılandırılabilir. Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır.
+> Azure Bilişsel Arama için özel uç nokta desteği, Azure portal veya [yönetim REST API 2020-03-13 sürümü](/rest/api/searchmanagement/)kullanılarak yapılandırılabilir. Hizmet uç noktası özel olduğunda, bazı Portal özellikleri devre dışı bırakılır. Hizmet düzeyi bilgilerini görüntüleyebilir ve yönetebileceksiniz, ancak dizin verilerine ve hizmette Dizin, Dizin Oluşturucu ve beceri tanımları gibi çeşitli bileşenlere erişim sağlamak için Portal erişimi güvenlik nedenleriyle kısıtlıdır. Portala alternatif olarak, hizmet içindeki çeşitli bileşenlerle etkileşim kurmak için [vs Code uzantısını](https://aka.ms/vscode-search) kullanabilirsiniz.
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Güvenli erişim için neden özel bir uç nokta kullanılmalıdır?
 

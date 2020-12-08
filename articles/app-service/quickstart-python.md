@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506201"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780782"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
@@ -74,23 +74,11 @@ Aşağıdaki komutu kullanarak örnek depoyu kopyalayın ve örnek klasöre gidi
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-Ardından bu klasöre gidin:
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-Ardından bu klasöre gidin:
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 ## <a name="run-the-sample"></a>Örneği çalıştırma
 
 ::: zone pivot="python-framework-flask"
-1. *Python-docs-Hello-World* klasöründe olduğunuzdan emin olun. 
+1. *Python-docs-Hello-World* klasöründe içine gidin:
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. Sanal ortam oluşturma ve bağımlılıkları yüklemesi:
 
@@ -115,7 +107,11 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
     flask run
     ```
     
-    Varsayılan olarak sunucu, uygulamanın giriş modülünün örnekte kullanılan *app.py* içinde olduğunu varsayar. (Farklı bir modül adı kullanırsanız, `FLASK_APP` ortam değişkenini bu ad olarak ayarlayın.)
+    Varsayılan olarak sunucu, uygulamanın giriş modülünün örnekte kullanılan *app.py* içinde olduğunu varsayar.
+
+    Farklı bir modül adı kullanırsanız, `FLASK_APP` ortam değişkenini bu ad olarak ayarlayın.
+
+    "Hatayla karşılaşırsanız," bir Flask uygulaması bulunamadı. ' FLASK_APP ' ortam değişkenini sağlamadınız ve geçerli dizinde bir ' wsgi.py ' veya ' app.py ' modülü bulunamadı. ", `python-docs-hello-world` örneği içeren klasörde olduğunuzdan emin olun.
 
 1. Bir Web tarayıcısı açın ve konumundaki örnek uygulamaya gidin `http://localhost:5000/` . Uygulama **Merhaba, dünya!** iletisini görüntüler.
 
@@ -125,7 +121,11 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. *Python-docs-Hello-docgo* klasöründe olduğunuzdan emin olun. 
+1. *Python-docs-Hello-docgo* klasörüne gidin:
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. Sanal ortam oluşturma ve bağımlılıkları yüklemesi:
 
@@ -150,7 +150,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 
 ## <a name="deploy-the-sample"></a>Örneği dağıtma
 
-Şu komutu kullanarak kodu yerel klasörünüzde ( *Python-docs-Hello-World* ) dağıtın `az webapp up` :
+Şu komutu kullanarak kodu yerel klasörünüzde (*Python-docs-Hello-World*) dağıtın `az webapp up` :
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -158,7 +158,7 @@ az webapp up --sku F1 --name <app-name>
 
 - `az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 - `webapp`Azure CLI sürümünüz 2.0.80 veya üzeri olduğundan, komut tanınmazsa. Aksi takdirde, [en son sürümü yükler](/cli/azure/install-azure-cli).
-- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin ( *geçerli karakterler `a-z` , `0-9` ve `-`* ). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- `<app_name>`Tüm Azure genelinde benzersiz olan bir adla değiştirin (*geçerli karakterler `a-z` , `0-9` ve `-`*). İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 - `--sku F1`Bağımsız değişkeni, ücretsiz fiyatlandırma katmanında Web uygulaması oluşturur. Saatlik maliyet içeren daha hızlı bir Premium katmanı kullanmak için bu bağımsız değişkeni atlayın.
 - İsteğe bağlı olarak `--location <location-name>` `<location_name>` , kullanılabilir bir Azure bölgesi olan bağımsız değişkeni ekleyebilirsiniz. Komutunu çalıştırarak, Azure hesabınız için izin verilen bölgelerin bir listesini alabilirsiniz [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) .
 - "Uygulamanızın çalışma zamanı yığınını otomatik olarak algılamamız" hatasını görürseniz, bu komutu *requirements.txt* dosyasını içeren *Python-docs-Hello-World* klasöründe (Flask) veya *Python-docs-Hello-Docgo* klasöründe (docgo) çalıştırdığınızdan emin olun. (Bkz. [az WebApp up (GitHub) ile otomatik algılama sorunlarını giderme](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) .)
@@ -245,7 +245,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 
 ## <a name="manage-the-azure-app"></a>Azure uygulamasını yönetme
 
-Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri** ' ni arayıp seçin.
+Oluşturduğunuz uygulamayı yönetmek için <a href="https://portal.azure.com" target="_blank">Azure Portal</a> gidin. **Uygulama hizmetleri**' ni arayıp seçin.
 
 ![Azure portal uygulama hizmetleri 'ne gidin](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

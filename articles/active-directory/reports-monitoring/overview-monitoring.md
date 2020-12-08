@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa4b625afb641209d3920c8663ed810ee27e1ad
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 427cf2614f81a086dcb174db06cd636df4876c7e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89228656"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778504"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>Azure Active Directory izleme nedir?
 
@@ -39,6 +39,22 @@ Günlükleri şu an için şu hedeflere yönlendirebilirsiniz:
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="licensing-and-prerequisites-for-azure-ad-reporting-and-monitoring"></a>Azure AD raporlama ve izleme için lisanslama ve Önkoşullar
+
+Azure AD oturum açma günlüklerine erişmek için bir Azure AD Premium lisansına sahip olmanız gerekir.
+
+[Azure Active Directory fiyatlandırma kılavuzunda](https://azure.microsoft.com/pricing/details/active-directory/)ayrıntılı özellik ve lisanslama bilgileri için.
+
+Azure AD izleme ve raporlama dağıtmak için, Azure AD kiracısı için genel yönetici veya güvenlik yöneticisi olan bir kullanıcıya ihtiyacınız vardır.
+
+Günlük verilerinizin son hedefine bağlı olarak, aşağıdakilerden birine sahip olmanız gerekir:
+
+* ListKeys izinlerine sahip olduğunuz bir Azure depolama hesabı. Blob depolama hesabı değil genel bir depolama hesabı kullanmanızı öneririz. Depolamayla fiyatlandırma bilgileri için bkz. [Azure Depolama fiyatlandırma hesaplayıcısı](https://azure.microsoft.com/pricing/calculator/?service=storage).
+
+* Üçüncü taraf SıEM çözümleriyle tümleştirilecek Azure Event Hubs ad alanı.
+
+* Azure Izleyici günlüklerine Günlükler göndermek için bir Azure Log Analytics çalışma alanı.
 
 ## <a name="diagnostic-settings-configuration"></a>Tanılama ayarlarını yapılandırma
 

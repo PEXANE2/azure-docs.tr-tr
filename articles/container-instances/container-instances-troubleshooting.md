@@ -4,12 +4,12 @@ description: Dağıtım, çalıştırma veya yönetme Azure Container Instances 
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ac75fff3b088a7d595de2b27c92126ce592aff47
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d8e7fb85e369f5f278436370944eafeb1fb6a50e
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746923"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779524"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances'taki sık karşılaşılan sorunları giderme
 
@@ -187,7 +187,7 @@ Kapsayıcının başlangıç saatine görüntü çekmenin etkilerini azaltmanın
 
 #### <a name="cached-images"></a>Önbelleğe alınmış görüntüler
 
-Azure Container Instances, ve dahil olmak üzere ortak [Windows temel görüntülerinde](container-instances-faq.md#what-windows-base-os-images-are-supported)oluşturulan görüntüler için kapsayıcı başlangıç süresini hızlandırmaya yardımcı olmak için bir önbelleğe alma mekanizması kullanır `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` . Ve gibi yaygın olarak kullanılan Linux `ubuntu:1604` görüntüleri `alpine:3.6` de önbelleğe alınır. Önbelleğe alınmış görüntülerin ve etiketlerin güncel listesi için [önbelleğe alınmış görüntüleri Listele][list-cached-images] API 'sini kullanın.
+Azure Container Instances, ve dahil olmak üzere ortak [Windows temel görüntülerinde](container-instances-faq.md#what-windows-base-os-images-are-supported)oluşturulan görüntüler için kapsayıcı başlangıç süresini hızlandırmaya yardımcı olmak için bir önbelleğe alma mekanizması kullanır `nanoserver:1809` `servercore:ltsc2019` `servercore:1809` . Ve gibi yaygın olarak kullanılan Linux `ubuntu:1604` görüntüleri `alpine:3.6` de önbelleğe alınır. Hem Windows hem de Linux görüntüleri için etiketi kullanmaktan kaçının `latest` . Rehberlik için Container Registry [resim etiketi en iyi uygulamalarını](../container-registry/container-registry-image-tag-version.md) inceleyin. Önbelleğe alınmış görüntülerin ve etiketlerin güncel listesi için [önbelleğe alınmış görüntüleri Listele][list-cached-images] API 'sini kullanın.
 
 > [!NOTE]
 > Azure Container Instances 'da Windows Server 2019 tabanlı görüntülerin kullanımı önizlemededir.

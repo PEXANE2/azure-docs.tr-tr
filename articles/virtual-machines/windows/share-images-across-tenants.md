@@ -1,22 +1,22 @@
 ---
 title: Azure 'daki kiracılar genelinde Galeri görüntülerini paylaşma
-description: Windows örneklerini kullanarak paylaşılan görüntü galerileri kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
+description: Paylaşılan görüntü galerileri ve PowerShell kullanarak Azure kiracılarının tamamında VM görüntülerini paylaşmayı öğrenin.
 author: axayjo
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 89987ccc975f5d473a493c48be61094de1177c1b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832424"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781054"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
+# <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>PowerShell kullanarak Azure kiracılar genelinde Galeri VM görüntülerini paylaşma
 
 Paylaşılan görüntü galerileri, Azure RBAC kullanarak görüntü paylaşmanıza olanak sağlar. Azure RBAC kullanarak kiracınızdaki görüntüleri paylaşabilir ve hatta kiracınızın dışındaki bireyler ekleyebilirsiniz. Bu basit paylaşım seçeneği hakkında daha fazla bilgi için [Galeriyi paylaşma](./shared-images-portal.md#share-the-gallery)bölümüne bakın.
 

@@ -9,14 +9,14 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/01/2020
+ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 86b465d0b3c28c50a8aa85247a14e189d4586a47
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 84b973dfa016b069b18fda47a4336fe952f73b3c
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016284"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780867"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Bir ortama veri erişimi verme
 
@@ -24,7 +24,7 @@ Bu makalede iki tür Azure Time Series Insights erişim ilkesi açıklanmaktadı
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>Azure Time Series Insights oturum açın
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 1. Arama kutusuna girerek Azure Time Series Insights ortamınızı bulun `Time Series Insights environments` . **Search** `Time Series Insights environments`Arama sonuçlarında öğesini seçin.
 1. Listeden Azure Time Series Insights ortamınızı seçin.
 

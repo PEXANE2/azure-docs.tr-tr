@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452122"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780714"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmeti teklifi planlaması
 
@@ -27,10 +27,24 @@ Danışmanlık hizmeti teklifleri **kişi benimle ilgili** dökümler olarak yay
 
 ## <a name="primary-products-and-online-stores"></a>Birincil ürünler ve çevrimiçi depolar
 
-Her danışmanlık hizmeti teklifi, **birincil ürün** olarak adlandırılan bir Microsoft ürününe odaklanmalıdır. Iş Ortağı Merkezi 'nde seçtiğiniz birincil ürün, teklifinizin Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanamayacağını belirler.
+Her danışmanlık hizmeti, teklifin **birincil ürünü** olarak adlandırılan bu Microsoft ürünlerinden birine odaklanmalıdır:
+
+|Birincil ürün                               |                   |
+|-------------------------------|-------------------|
+|Azure                          |Dynamics 365 proje hizmeti Otomasyonu |
+|Dynamics 365 Business Central  |Dynamics 365 Sales |
+|Dynamics 365 ticari          |Dynamics 365 tedarik zinciri yönetimi |
+|Dynamics 365 Customer Insights |Microsoft 365 |
+|Dynamics 365 müşteri hizmeti  |Power Apps |
+|Dynamics 365 alan hizmeti     |Power Automate |
+|Dynamics 365 finans           |Power BI |
+|Dynamics 365 pazarlama         |Power Virtual Agents |
+|    |    |
+
+Iş Ortağı Merkezi 'nde seçtiğiniz birincil ürün, teklifinizin Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanamayacağını belirler.
 
 * Danışmanlık hizmetinizin birincil ürünü Azure ise, teklif Azure Marketi ' nde listelenecektir.
-* Birincil ürün Azure değilse, teklif AppSource bölümünde listelenecektir.
+* Birincil ürün Azure değilse, teklif AppSource üzerinde listelenecektir.
 
 AppSource ve Azure Marketi arasındaki farklar hakkında daha fazla bilgi edinmek için bkz. [ticari Market çevrimiçi mağazaları](./overview.md#commercial-marketplace-online-stores).
 
@@ -91,6 +105,7 @@ Teklifinizi daha kolay bir şekilde oluşturmaya yardımcı olmak için bu öğe
 |Üretimde Azure IoT ile çalışmaya başlama |Üretim IoT: 2 günlük değerlendirme |
 |Akıllı tuvalet 'ler üzerinde Workshop |Akıllı tuvalet: 1 haftalık Workshop |
 |Contoso 'ya göre SQL Server geçiş PoC |SQL geçişi: 3-WK kavram kanıtı |
+| | |
 
 **Arama sonuçları Özeti**: teklifinizin 200 karakter veya daha az olması için amacını veya hedefini tanıtın. Bu Özet, ticari Market 'te arama sonuçlarını listelemek için kullanılır. Bu, başlıkla aynı olmamalıdır. En iyi SEO anahtar sözcüklerinizi dahil etmeyi göz önünde bulundurun.
 
@@ -105,6 +120,7 @@ Açıklamayı yazarken, hizmet türüne göre aşağıdaki ölçütleri izleyin:
 |Uygulama |Bir günden daha uzun bir üreticiye yönelik uygulamalar için ayrıntılı bir gündem ekleyin ve müşterilerin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları betimleyebiliriz. |
 |Kavram kanıtı |Bir müşterinin katılım sonuçları olarak beklediği mühendislik değişikliklerini, teknik yapıtları veya diğer yapıtları açıklama olarak tanımlayabilirsiniz. |
 |Sev |Teklifinizin süresine bağlı olarak günlük, haftalık veya aylık bir ajanda ekleyin. Eğitim hedeflerini veya atöly'nizin diğer Teslim edilebilirlerinizi ifade edin. |
+| | |
 
 Tanımlarınızı yazmak için bazı ipuçları aşağıda verilmiştir:
 
@@ -142,6 +158,11 @@ Logolarınız için şu yönergeleri izleyin:
 **Market medyası – ekran görüntüleri**: teklifinizi gösteren en az bir ve en fazla beş görüntü ekleyin. Tüm görüntüler 1280 x 720 piksel boyutunda ve içinde olmalıdır. PNG biçimi.
 
 **Market medyası – videolar** (isteğe bağlı): teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Videoların YouTube veya Vimeo 'da barındırılması ve küçük bir resme (1280 x 720 PNG dosyası) sahip olması gerekir.
+
+## <a name="pricing-and-availability"></a>Fiyatlandırma ve kullanılabilirlik
+
+Danışmanlık hizmeti teklifiniz bir veya daha fazla ülkede veya bölgede kullanılabilir hale getirilebilir. Iş Ortağı Merkezi 'nde seçtiğiniz her Pazar için fiyata karar verebilirsiniz. Desteklenen pazarlar ve para birimlerinin tüm listesi için bkz. [ticari Market Için coğrafi kullanılabilirlik ve para birimi desteği](./marketplace-geo-availability-currencies.md).
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

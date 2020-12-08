@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/16/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 19262441df87b96bbb43a010ca47861ec2b236d3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 852375cc7948fc7f6bd106380b3194f2dc84b8ca
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488767"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778929"
 ---
 # <a name="use-powershell-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere PowerShell 'i kullanma
 
@@ -60,6 +60,9 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 Bir güvenlik sorumlusuna Azure rolü atamak için [New-Azroleatama](/powershell/module/az.resources/new-azroleassignment) komutunu kullanın. Komutun biçimi atamanın kapsamına göre farklılık gösterebilir. Komutu çalıştırmak için, ilgili kapsamda sahip veya katkıda bulunan rolü atanmış olması gerekir. Aşağıdaki örneklerde, bir kullanıcıya çeşitli kapsamlardaki bir rol atama gösterilmektedir, ancak herhangi bir güvenlik sorumlusuna rol atamak için aynı komutu kullanabilirsiniz.
 
+> [!NOTE]
+> Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
+
 ### <a name="container-scope"></a>Kapsayıcı kapsamı
 
 Bir kapsayıcıya kapsamlı bir rol atamak için, parametre için kapsayıcının kapsamını içeren bir dize belirtin `--scope` . Kapsayıcının kapsamı şu biçimdedir:
@@ -68,7 +71,7 @@ Bir kapsayıcıya kapsamlı bir rol atamak için, parametre için kapsayıcını
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Aşağıdaki örnek, **Depolama Blobu veri katılımcısı** rolünü, *örnek kapsayıcı*adlı bir kapsayıcıya kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
+Aşağıdaki örnek, **Depolama Blobu veri katılımcısı** rolünü, *örnek kapsayıcı* adlı bir kapsayıcıya kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -84,7 +87,7 @@ Bir sıraya kapsamlı bir rol atamak için, parametre için kuyruğun kapsamın�
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Aşağıdaki örnek, **depolama kuyruğu veri katılımcısı** rolünü, *örnek kuyruğu*adlı bir kuyruğa kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
+Aşağıdaki örnek, **depolama kuyruğu veri katılımcısı** rolünü, *örnek kuyruğu* adlı bir kuyruğa kapsamındaki bir kullanıcıya atar. Parantez içinde örnek değerleri ve yer tutucu değerlerini kendi değerlerinizle değiştirdiğinizden emin olun: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

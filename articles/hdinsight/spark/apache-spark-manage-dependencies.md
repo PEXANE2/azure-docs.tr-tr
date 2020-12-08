@@ -8,27 +8,27 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: dafb4485ae9b10d89fa36bd790dcf3a799054de3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2cd50b1b35b87b1a11301ddc36ac355bef20dc4
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90064182"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780625"
 ---
 # <a name="manage-spark-application-dependencies"></a>Spark uygulama bağımlılıklarını yönetme
 
 Bu makalede, HDInsight üzerinde çalışan Spark uygulamalarınızın bağımlılıklarını yönetmeyi öğreneceksiniz. Spark uygulaması ve küme kapsamında hem Scala hem de PySpark ele alınmaktadır.
 
 Kullanıcı çalışmanıza göre bölüme geçmek için hızlı bağlantıları kullanın:
-* [Jupyter Not defteri kullanarak Spark iş jar bağımlılıklarını ayarlama](#use-jupyter-notebook)
+* [Jupyter Notebook kullanarak Spark iş jar bağımlılıklarını ayarlama](#use-jupyter-notebook)
 * [Use Azure Toolkit for IntelliJ kullanarak Spark iş jar bağımlılıklarını ayarlama](#use-azure-toolkit-for-intellij)
 * [Spark kümesi için jar bağımlılıklarını yapılandırma](#jar-libs-for-cluster)
 * [Jar bağımlılıklarını güvenli şekilde yönetme](#safely-manage-jar-dependencies)
-* [Jupyter Not defteri kullanarak Spark işi Python paketleri ayarlama](#use-jupyter-notebook-1)
+* [Jupyter Notebook kullanarak Spark işi Python paketlerini ayarlama](#use-jupyter-notebook-1)
 * [Spark kümesi için Python paketlerini güvenle yönetin](#python-packages-for-cluster)
 
 ## <a name="jar-libs-for-one-spark-job"></a>Bir Spark işi için jar LIBS
-### <a name="use-jupyter-notebook"></a>Jupyter Not defterini kullanma
+### <a name="use-jupyter-notebook"></a>Jupyter Notebook kullan
 Bir Spark oturumu, Scala için Spark çekirdekte Jupyter Notebook başlatıldığında paketleri şu şekilde yapılandırabilirsiniz:
 
 * [Spark paketlerinde](https://spark-packages.org/) [Maven deposu](https://search.maven.org/)veya topluluk tarafından katkıda bulunulan paketler.
@@ -42,7 +42,7 @@ Bir Spark oturumu, Scala için Spark çekirdekte Jupyter Notebook başlatıldı�
 
 **Maven deposundan veya Spark paketlerindeki paketler için örnek**
 
-Maven deposundan paketi bulduktan sonra **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
+Maven deposundan paketi bulduktan sonra **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
    ![Paket şemasını Birleştir](./media/apache-spark-manage-dependencies/spark-package-schema.png "Paket şemasını Birleştir")
 
@@ -102,8 +102,8 @@ Bazı durumlarda, her uygulamanın varsayılan olarak aynı bağımlılıklarla 
 HDInsight kümesinde yerleşik jar bağımlılıkları bulunur ve bu jar sürümleri için güncelleştirmeler zaman zaman gerçekleşir. Başvuru için yaptığınız yerleşik jliler ve jliler arasında sürüm çakışmasını önlemek için [uygulama bağımlılıklarınızı gölgelendirmeyi](./safely-manage-jar-dependency.md)göz önünde bulundurun.
 
 ## <a name="python-packages-for-one-spark-job"></a>Bir Spark işi için Python paketleri
-### <a name="use-jupyter-notebook"></a>Jupyter Not defterini kullanma
-HDInsight Jupyter Not defteri PySpark çekirdeği, PyPi veya Anaconda paket deposundan doğrudan Python paketlerinin yüklenmesini desteklemez. `.zip`, `.egg` Veya `.py` bağımlılıklarınız varsa ve bir Spark oturumunda bunlara başvurmak isterseniz, aşağıdaki adımları izleyin:
+### <a name="use-jupyter-notebook"></a>Jupyter Notebook kullan
+HDInsight Jupyter Notebook PySpark çekirdeği, PyPi veya Anaconda paket deposundan doğrudan Python paketlerinin yüklenmesini desteklemez. `.zip`, `.egg` Veya `.py` bağımlılıklarınız varsa ve bir Spark oturumunda bunlara başvurmak isterseniz, aşağıdaki adımları izleyin:
 
 1. Aşağıdaki örnek betik eylemlerini `.zip` `.egg` veya `.py` birincil depolamadan `wasb://mycontainer@mystorageaccount.blob.core.windows.net/libs/*` küme yerel dosya sistemine dosya `/usr/libs/pylibs` kopyalamak için çalıştırın. Bu adım, `:` arama yolu listesini ayırmak için Linux kullanır, ancak HDInsight yalnızca benzer şemayla depolama yollarını destekler `wasb://` . Uzak depolama yolu kullandığınızda doğru çalışmaz `sys.path.insert` .
 

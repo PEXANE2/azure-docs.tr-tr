@@ -4,15 +4,15 @@ description: Ortak satış çözümlerini Microsoft AppSource) için Iş Ortağ�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-author: keferna
-ms.author: keferna
-ms.date: 12/04/2020
-ms.openlocfilehash: 6af7095dbb57c5ceb17989b2d6106a42e1d23fb9
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+author: vamahtan
+ms.author: vamahtan
+ms.date: 12/07/2020
+ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96772087"
+ms.locfileid: "96781140"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM 'den ticari Market 'e ortak satış çözümlerini geçirme
 
@@ -79,7 +79,8 @@ Ticari Market 'e kaydolduktan sonra, çözümlerinizi OCP GTM 'den geçirmeye ha
 1. Mevcut teklifi belirler.
     1. **Bu çözümü ticari Market 'teki benzer bir teklifle birleştirmek istiyorum ' u** seçin ( [Yukarıdaki](#beginmigration) **eylem gerekli** görüntüsüne bakın).
     1. **1. eylem** SEKMESI, OCP GTM çözümünüzün ilişkilendirilebilen canlı ticari Market tekliflerini gösterir. Bir tane varsa, listeden canlı teklifi seçin. Aralarından seçim yapabileceğiniz Teklifler listesi yoksa, Microsoft AppSource veya Azure Marketi 'nden müşteriye yönelik adresi (URL) girin.
-        [![Birleştirme işleminin işlem 1 sekmesi.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)    1. **Devam**’ı seçin.
+        [![Birleştirme işleminin işlem 1 sekmesi.](media/co-sell-migrate/action-1-merge.png)](media/co-sell-migrate/action-1-merge.png#lightbox)
+    1. **Devam**’ı seçin.
 1. Birleştirme isteyin.
     1. **2. eylem** sekmesi, BIR OCP GTM çözümünüzün tanımladığınız bir ile birleştirilmesini isteme yönlerini gösterir. Birleştirme istemek için, Kaydet & ' yi seçin ve bir tarayıcıda iş ortağı destek sayfasını açan **Destek hizmetlerine başvurun**.
     1. **Sorun ayrıntıları sağla** ' yı seçin ve aşağıdakileri girin: [ ![ birleştirme işleminin eylem 2 sekmesi.](media/co-sell-migrate/action-2-merge.png)](media/co-sell-migrate/action-2-merge.png#lightbox)
@@ -93,7 +94,7 @@ Ticari Market 'te henüz sunulan bir teklifi olmayan bir OCP GTM çözümünüz 
 1. **Bu çözümü OCP GTM 'den ticari Market 'e geçirmek istiyorum** ' u seçin ( [Yukarıdaki](#beginmigration) **eylem gereklidir** görüntüsüne bakın) ve sonra **devam edin**.
 1. 1. **eylem** sekmesinde [teklif türünü](publisher-guide-by-offer-type.md)seçin ve ardından **devam edin**.
 
-    [![Geçiş işleminin işlem 1 sekmesi.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)    1. **Devam**’ı seçin.
+    [![Geçiş işleminin işlem 1 sekmesi.](media/co-sell-migrate/action-1-migrate.png)](media/co-sell-migrate/action-1-migrate.png#lightbox)
 
 1. **Eylem 2** sekmesinde, belirtilen listeden [Yayımcı profilini](partner-center-portal/create-account.md) seçin. Yayımcı hesabınız yoksa, [Iş Ortağı Merkezi](https://partner.microsoft.com/solutions/migration)' nde bir tane oluşturun ve buradan seçin.
 

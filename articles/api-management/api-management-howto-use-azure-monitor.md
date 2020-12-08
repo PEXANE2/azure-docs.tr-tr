@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183201"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779252"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Öğretici: yayımlanan API 'Leri Izleme
 
 Azure Izleyici ile Azure API Management hizmetinizden gelen ölçümleri veya günlükleri görselleştirin, sorgulayabilir, yönlendirebilir, arşivleyebilir ve bunlar üzerinde işlem yapabilirsiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * API'nizin ölçümlerini görüntüleme 
@@ -27,7 +27,9 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > * Etkinlik günlüklerini görüntüleme
 > * Kaynak günlüklerini etkinleştirme ve görüntüleme
 
-## <a name="prerequisites"></a>Ön koşullar
+Ayrıca, API 'nizin kullanımını ve performansını izlemek için API Management yerleşik [analizlerini](howto-use-analytics.md) de kullanabilirsiniz.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -90,7 +92,7 @@ Bir istek ölçüsüne göre örnek bir uyarı kuralı yapılandırmak için:
 
 1. Uyarı kuralının adını ve açıklamasını girip önem derecesini seçin. 
 1. **Uyarı kuralı oluşturma**’yı seçin.
-1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örneğin:
+1. Şimdi, bir API anahtarı olmadan konferans API 'sini çağırarak uyarı kuralını test edin. Örnek:
 
     ```bash
     curl GET https://apim-hello-world.azure-api.net/conference/speakers HTTP/1.1 

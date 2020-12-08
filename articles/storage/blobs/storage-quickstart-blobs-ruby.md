@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 7c09105312bc648c95d24de7582b95baf61bdc10
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ec3fc490466f5fce36b67b2f3744e4ee5cc0ae79
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744814"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781105"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-for-ruby"></a>Hızlı başlangıç: Ruby için Azure Blob depolama istemci kitaplığı
 
@@ -56,7 +56,7 @@ Uygulamanız için bir [Blobservice](https://www.rubydoc.info/gems/azure-storage
 account_name = "accountname"
 account_key = "accountkey"
 
-    blob_client = Azure::Storage::Blob::BlobService.create(
+blob_client = Azure::Storage::Blob::BlobService.create(
     storage_account_name: account_name,
     storage_access_key: account_key
 )
@@ -192,6 +192,7 @@ Ruby geliştirmesi için şu ek kaynaklara bakın:
 
 - GitHub’da Azure Depolama için [Ruby istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-ruby) görüntüleyin ve indirin.
 - Ruby istemci kitaplığı kullanılarak yazılmış [Azure örneklerini](/samples/browse/?products=azure&languages=ruby) gezin.
+- [Örnek: Ruby 'de Azure depolama ile çalışmaya başlama](https://github.com/Azure-Samples/storage-blob-ruby-getting-started)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

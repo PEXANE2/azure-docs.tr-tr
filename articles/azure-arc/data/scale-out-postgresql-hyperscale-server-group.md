@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: df0620308fab2e813fe3802dc7effb9dc1ce226c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17bdae658c7095c44a7ae9f30fd85a6c45bf1546
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285392"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780000"
 ---
 # <a name="scale-out-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Daha fazla çalışan düğümü ekleyerek Azure Arc etkin PostgreSQL hiper ölçek sunucu grubunu ölçeklendirin
 Bu belgede, Azure Arc etkin bir PostgreSQL hiper ölçek sunucu grubunun ölçeğini daraltma açıklanmaktadır. Bunu bir senaryoya göre gerçekleştirerek yapar. **Senaryo aracılığıyla çalıştırmak istemiyor ve nasıl ölçeklendirilen hakkında yalnızca okumak istiyorsanız, paragraf [ölçeği dışına](#scale-out)atlayın**.
@@ -31,7 +31,7 @@ Azure Arc 'ın ölçeklendirme modeli olan PostgreSQL hiper ölçeğini veya Pos
 - [Çok kiracılı bir veritabanı tasarlama](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
 - [Gerçek zamanlı analiz panosu tasarlama](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
-> \* Yukarıdaki belgelerde, **Azure Portal oturum açma**bölümünü atlayın, & **PostgreSQL Için Azure veritabanı oluşturun-hiper ölçek (Citus)**. Azure Arc dağıtımınızda kalan adımları uygulayın. Bu bölümler, Azure bulutunda PaaS hizmeti olarak sunulan PostgreSQL için Azure veritabanı 'na (Citus) özgüdür, ancak belgelerin diğer kısımları doğrudan Azure Arc etkin PostgreSQL hiper ölçeklendirmenize uygulanabilir.
+> \* Yukarıdaki belgelerde, **Azure Portal oturum açma** bölümünü atlayın, & **PostgreSQL Için Azure veritabanı oluşturun-hiper ölçek (Citus)**. Azure Arc dağıtımınızda kalan adımları uygulayın. Bu bölümler, Azure bulutunda PaaS hizmeti olarak sunulan PostgreSQL için Azure veritabanı 'na (Citus) özgüdür, ancak belgelerin diğer kısımları doğrudan Azure Arc etkin PostgreSQL hiper ölçeklendirmenize uygulanabilir.
 
 ## <a name="scenario"></a>Senaryo
 Bu senaryo, [Azure Arc etkin PostgreSQL hiper ölçek sunucu grubu oluşturma](create-postgresql-hyperscale-server-group.md) belgelerinde örnek olarak oluşturulan PostgreSQL hiper ölçek sunucu grubuna başvurur.
@@ -46,7 +46,7 @@ Senaryo, [Citus Data Web sitesinden](https://www.citusdata.com/) (Citus verileri
 ```console
 azdata arc postgres endpoint list -n <server name>
 ```
-Örneğin:
+Örnek:
 ```console
 azdata arc postgres endpoint list -n postgres01
 ```
@@ -160,7 +160,7 @@ Bu örnekte, aşağıdaki komutu çalıştırarak çalışan düğümü sayısı
 azdata arc postgres server edit -n postgres01 -w 4
 ```
 
-Düğüm ekleme üzerine, sunucu grubu için bekleyen bir durum görürsünüz. Örneğin:
+Düğüm ekleme üzerine, sunucu grubu için bekleyen bir durum görürsünüz. Örnek:
 ```console
 azdata arc postgres server list
 ```
@@ -182,7 +182,7 @@ Sunucu grubunun artık eklediğiniz ek çalışan düğümlerini kullandığın�
 azdata arc postgres server list
 ```
 
-Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örneğin:
+Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örnek:
 ```console
 Name        State    Workers
 ----------  -------  ---------
@@ -195,7 +195,7 @@ postgres01  Ready    4
 kubectl get postgresql-12
 ```
 
-Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örneğin:
+Ad alanınız içinde oluşturulan sunucu gruplarının listesini döndürür ve bunların çalışan düğüm sayısını belirtir. Örnek:
 ```console
 NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
 postgres01   Ready   4/4          10.0.0.4:31066      4d20h
@@ -249,8 +249,7 @@ Yürütme süresini aklınızda edin.
     * [Çok kiracılı bir veritabanı tasarlama](../../postgresql/tutorial-design-database-hyperscale-multi-tenant.md)*
     * [Gerçek zamanlı analiz panosu tasarlama](../../postgresql/tutorial-design-database-hyperscale-realtime.md)*
 
- > \* Yukarıdaki belgelerde, **Azure Portal oturum açma**bölümünü atlayın, & **PostgreSQL Için Azure veritabanı oluşturun-hiper ölçek (Citus)**. Azure Arc dağıtımınızda kalan adımları uygulayın. Bu bölümler, Azure bulutunda PaaS hizmeti olarak sunulan PostgreSQL için Azure veritabanı 'na (Citus) özgüdür, ancak belgelerin diğer kısımları doğrudan Azure Arc etkin PostgreSQL hiper ölçeklendirmenize uygulanabilir.
+ > \* Yukarıdaki belgelerde, **Azure Portal oturum açma** bölümünü atlayın, & **PostgreSQL Için Azure veritabanı oluşturun-hiper ölçek (Citus)**. Azure Arc dağıtımınızda kalan adımları uygulayın. Bu bölümler, Azure bulutunda PaaS hizmeti olarak sunulan PostgreSQL için Azure veritabanı 'na (Citus) özgüdür, ancak belgelerin diğer kısımları doğrudan Azure Arc etkin PostgreSQL hiper ölçeklendirmenize uygulanabilir.
 
 - [Depolama yapılandırması ve Kubernetes depolama kavramları](storage-configuration.md)
-- [Kalıcı birim taleplerini genişletme](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#expanding-persistent-volumes-claims)
 - [Kubernetes kaynak modeli](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)

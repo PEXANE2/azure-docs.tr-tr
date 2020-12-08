@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: a6b72c9e6cc366d04937598f653f8ba887ce1b85
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
-ms.translationtype: HT
+ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952191"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778725"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Öğretici: Azure Stack Edge Pro için ağı GPU ile yapılandırma
 
@@ -26,13 +26,13 @@ Bu öğreticide şunları öğrenirsiniz:
 
 > [!div class="checklist"]
 >
-> * Ön koşullar
+> * Önkoşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure Stack Edge Pro cihazınızı GPU ile yapılandırmadan ve ayarlamadan önce şunları yaptığınızdan emin olun:
 
@@ -102,20 +102,20 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
 
 1. **Ağ ayarları** Iletişim kutusunda **Etkinleştir**' i seçin. İşlem ' ı etkinleştirdiğinizde, cihazınızda bu ağ arabirimindeki bir sanal anahtar oluşturulur. Sanal anahtar, cihazdaki işlem altyapısı için kullanılır. 
     
-1. **Kubernetes düğüm IP 'leri**atayın. Bu statik IP adresleri, işlem sanal makinesi içindir.  
+1. **Kubernetes düğüm IP 'leri** atayın. Bu statik IP adresleri, işlem sanal makinesi içindir.  
 
-    *N*düğümlü bir cihaz için, başlangıç ve bitiş IP adreslerini kullanan işlem VM 'si için en az *n + 1* IPv4 adresi (veya daha fazla) bulunur. Verilen Azure Stack Edge 1 düğümlü bir cihazdır, en az 2 bitişik IPv4 adresi sağlanır.
+    *N* düğümlü bir cihaz için, başlangıç ve bitiş IP adreslerini kullanan işlem VM 'si için en az *n + 1* IPv4 adresi (veya daha fazla) bulunur. Verilen Azure Stack Edge 1 düğümlü bir cihazdır, en az 2 bitişik IPv4 adresi sağlanır.
 
     > [!IMPORTANT]
     > Azure Stack Edge üzerinde Kubernetes, pod için 172.27.0.0/16 alt ağını ve hizmet için 172.28.0.0/16 alt ağını kullanır. Bunların ağınızda kullanımda olmadığından emin olun. Bu alt ağlar ağınızda zaten kullanılıyorsa, bu alt ağları, `Set-HcsKubeClusterNetworkInfo` cihazın PowerShell arabiriminden cmdlet 'ini çalıştırarak değiştirebilirsiniz. Daha fazla bilgi için bkz. [Kubernetes Pod ve hizmet alt ağlarını değiştirme](azure-stack-edge-gpu-connect-powershell-interface.md#change-kubernetes-pod-and-service-subnets).
 
 
-1. **Kubernetes dış hizmet IP 'leri**atayın. Bunlar ayrıca Yük Dengeleme IP adresleridir. Bu bitişik IP adresleri, Kubernetes kümesi dışında kullanıma sunmak istediğiniz hizmetlere yöneliktir ve sunulan hizmet sayısına bağlı olarak statik IP aralığını belirlersiniz. 
+1. **Kubernetes dış hizmet IP 'leri** atayın. Bunlar ayrıca Yük Dengeleme IP adresleridir. Bu bitişik IP adresleri, Kubernetes kümesi dışında kullanıma sunmak istediğiniz hizmetlere yöneliktir ve sunulan hizmet sayısına bağlı olarak statik IP aralığını belirlersiniz. 
     
     > [!IMPORTANT]
     > İşlem modüllerine erişmek için Azure Stack Edge Pro hub hizmeti için en az 1 IP adresi belirtmenizi önemle tavsiye ederiz. Daha sonra isteğe bağlı olarak, küme dışından erişilmesi gereken diğer hizmetler/IoT Edge modülleri (hizmet/modül başına 1) için ek IP adresleri belirtebilirsiniz. Hizmet IP adresleri daha sonra güncelleştirilebilen olabilir. 
     
-1. **Apply** (Uygula) seçeneğini belirleyin.
+1. **Uygula**’yı seçin.
 
     ![Yerel Kullanıcı arabirimi 3 ' te işlem sayfası](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-3.png)
 
@@ -131,7 +131,7 @@ Cihazınızın ağını yapılandırmak için bu adımları izleyin.
 Bu, isteğe bağlı bir yapılandırmadır.
 
 > [!IMPORTANT]
-> * İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **hiçbiri**olarak ayarlamanızı öneririz. NTLM desteklenmez.
+> * İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **hiçbiri** olarak ayarlamanızı öneririz. NTLM desteklenmez.
 >* Proxy-otomatik yapılandırma (PAC) dosyaları desteklenmez. PAC dosyası, Web tarayıcılarının ve diğer Kullanıcı aracılarının belirli bir URL 'YI getirmek için uygun proxy sunucusunu (erişim yöntemi) otomatik olarak nasıl seçebileceğini tanımlar. Ara sunucunun sertifikası güvenilir olmadığından, tüm trafiği kesmeye ve okumaya çalışır (sonra her şeyi kendi sertifikalarıyla yeniden imzala) uyumlu değildir. Genellikle saydam proxy 'ler Azure Stack Edge Pro ile iyi çalışır. Saydam olmayan Web proxy 'leri desteklenmez.
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
@@ -143,7 +143,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 
     1. **Web proxy URL 'si** kutusuna URL 'yi şu biçimde girin: `http://host-IP address or FQDN:Port number` . HTTPS URL'leri desteklenmez.
 
-    2. **Kimlik doğrulaması**altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none**olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
+    2. **Kimlik doğrulaması** altında **hiçbiri** veya **NTLM**' yi seçin. İşlem ve Azure Stack Edge Pro cihazınızda IoT Edge modülü kullanıyorsanız, Web proxy kimlik doğrulamasını **none** olarak ayarlamanızı öneririz. **NTLM** desteklenmiyor.
 
     3. Kimlik doğrulaması kullanıyorsanız, bir Kullanıcı adı ve parola girin.
 
@@ -159,7 +159,7 @@ Bu, isteğe bağlı bir yapılandırmadır.
 Bu öğreticide hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Ön koşullar
+> * Önkoşullar
 > * Ağı yapılandırma
 > * İşlem ağını etkinleştir
 > * Web proxy yapılandırma

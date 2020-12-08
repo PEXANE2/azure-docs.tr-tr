@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: e2d577261a1cea0bad9aab549b3669f8fdef5751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 96f316b1ca6a7684630c1ab14d722651c1f3ffbc
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715845"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778913"
 ---
 # <a name="use-the-azure-portal-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>Blob ve kuyruk verilerine erişim için bir Azure rolü atamak üzere Azure portal kullanın
 
@@ -39,12 +39,14 @@ Bir rol ataması için uygun kapsamı belirledikten sonra, Azure portal bu kayna
 
 1. Azure AD güvenlik sorumlusuna erişim vermek için uygun Azure depolama Azure rolünü atayın.
 
-1. Azure Resource Manager [okuyucusu](../../role-based-access-control/built-in-roles.md#reader) rolünü, Azure AD kimlik bilgilerini kullanarak Azure Portal kapsayıcı veya kuyruklara erişmesi gereken kullanıcılara atayın. 
+1. Azure Resource Manager [okuyucusu](../../role-based-access-control/built-in-roles.md#reader) rolünü, Azure AD kimlik bilgilerini kullanarak Azure Portal kapsayıcı veya kuyruklara erişmesi gereken kullanıcılara atayın.
 
 Aşağıdaki bölümlerde bu adımların her biri daha ayrıntılı olarak açıklanır.
 
 > [!NOTE]
-> Azure depolama hesabınızın sahibi olarak, verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğinizi aboneliğiniz, kaynak grubunuz, depolama hesabınız veya bir kapsayıcı veya kuyruk düzeyinde atayabilirsiniz.
+> Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
+>
+> Veri erişimi için kendinize bir rol atamadan önce, Azure portal Azure portal aracılığıyla Depolama hesabınızdaki verilere erişebilirsiniz. bu nedenle, veri erişimi için hesap anahtarını da kullanabilir. Daha fazla bilgi için bkz. [Azure Portal blob verilerine erişimi yetkilendirmeyi seçme](../blobs/authorize-data-operations-portal.md).
 >
 > Depolama hesabınızda hiyerarşik bir ad alanı etkinse bir kapsayıcıya veya kuyruğa kapsamlı bir rol atayamazsınız.
 
@@ -64,18 +66,18 @@ Burada gösterilen yordam, bir kapsayıcıya kapsamlı bir rol atar, ancak bir s
 1. Yeni bir rol eklemek için **rol ataması Ekle** düğmesine tıklayın.
 1. **Rol ataması Ekle** penceresinde, atamak Istediğiniz Azure depolama rolünü seçin. Ardından, bu rolü atamak istediğiniz güvenlik sorumlusunu bulmak için arama yapın.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/add-rbac-role.png" alt-text="Azure rolü atamayı gösteren ekran görüntüsü":::
 
-1. **Kaydet**’e tıklayın. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Kullanıcı tarafından eklenen kullanıcının, *örnek kapsayıcı*adlı kapsayıcıda bulunan veriler için okuma izinleri olduğunu gösterir.
+1. **Kaydet**’e tıklayın. Rolü atadığınız kimlik söz konusu rol altında listelenir. Örneğin, aşağıdaki görüntüde Kullanıcı tarafından eklenen kullanıcının, *örnek kapsayıcı* adlı kapsayıcıda bulunan veriler için okuma izinleri olduğunu gösterir.
 
-    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Kapsayıcı erişim denetimi ayarlarını gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-rbac-portal/container-scoped-role.png" alt-text="Bir role atanan kullanıcı listesini gösteren ekran görüntüsü":::
 
 Depolama hesabı, kaynak grubu veya aboneliğe kapsamlı bir rol atamak için benzer adımları izleyebilirsiniz.
 
 ### <a name="assign-the-reader-role-for-portal-access"></a>Portal erişimi için okuyucu rolünü atama
 
 Azure depolama için bir güvenlik sorumlusuna yerleşik veya özel bir rol atadığınızda, Depolama hesabınızdaki veriler üzerinde işlem gerçekleştirmek üzere bu güvenlik sorumlusuna izinler vermiş olursunuz. Yerleşik **veri okuyucu** rolleri bir kapsayıcı veya kuyruktaki veriler için okuma izinleri sağlar, ancak yerleşik **veri katılımcısı** rolleri bir kapsayıcı veya sıraya yönelik okuma, yazma ve silme izinleri sağlar. İzinler belirtilen kaynak kapsamına alınır.  
-Örneğin, **Depolama Blobu veri katılımcısı** rolünü **örnek kapsayıcısı**adlı bir kapsayıcı düzeyinde Kullanıcı Mary 'ye atarsanız, Mary, bu kapsayıcıdaki tüm bloblara okuma, yazma ve silme erişimi verilir.
+Örneğin, **Depolama Blobu veri katılımcısı** rolünü **örnek kapsayıcısı** adlı bir kapsayıcı düzeyinde Kullanıcı Mary 'ye atarsanız, Mary, bu kapsayıcıdaki tüm bloblara okuma, yazma ve silme erişimi verilir.
 
 Ancak, Mary Azure portal bir blobu görüntülemek isterse, **Depolama Blobu veri katılımcısı** rolü kendisini görüntülemek için, portalda blob 'a gezinmek için yeterli izinleri sağlamaz. Portalda gezinmek ve görünen diğer kaynakları görüntülemek için ek Azure AD izinleri gereklidir.
 
@@ -93,7 +95,7 @@ Kullanıcının Azure portal bloblara erişebilmeleri için **okuyucu** rolünü
 **Okuyucu** rolünü atamak yalnızca Azure Portal kullanarak blob 'lara veya kuyruklara erişmesi gereken kullanıcılar için gereklidir.
 
 > [!IMPORTANT]
-> Azure portal Depolama Gezgini önizleme sürümü, blob veya kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action**içeren bir rol atanmalıdır.
+> Azure portal Depolama Gezgini önizleme sürümü, blob veya kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action** içeren bir rol atanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

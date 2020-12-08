@@ -3,12 +3,12 @@ title: Azure Kubernetes hizmeti (AKS) için sık sorulan sorular
 description: Azure Kubernetes hizmeti (AKS) ile ilgili bazı yaygın soruların yanıtlarını bulun.
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 1ca342c1ea4134f4d9d8f1dbcae4e61bf2a75eaf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751403"
+ms.locfileid: "96780357"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) hakkında sık sorulan sorular
 
@@ -215,7 +215,7 @@ V 1.2.0 Azure CNı 'den, tek kiracılı Linux CNı dağıtımları için varsay�
 
 ### <a name="bridge-mode"></a>Köprü modu
 
-Adından da anlaşılacağı gibi, "tam zamanında" bir şekilde köprü modu Azure CNı, "azure0" adlı bir L2 köprü oluşturacak. Tüm konak tarafı Pod `veth` çifti arabirimleri bu köprüye bağlanacak. Bu nedenle, VM içi iletişim Pod-Pod bu köprü üzerinden yapılır. Söz konusu köprü, bir veya daha fazla gerçek cihazı bir veya daha fazla gerçek cihaz bağlamadığınız takdirde hiçbir şey alamıyor veya iletemediği bir katman 2 sanal aygıtıdır. Bu nedenle, Linux VM 'nin eth0 "azure0" köprüsüne bir alt öğesine dönüştürülmesi gerekir. Bu, Linux sanal makinesi içinde karmaşık bir ağ topolojisi oluşturur ve bir belirti olarak, DNS sunucusu güncelleştirmesi gibi diğer ağ işlevlerinin ilgilenmek zorunda kalmaktadır.
+Adından da anlaşılacağı gibi, "tam zamanında" bir şekilde köprü modu Azure CNı, "azure0" adlı bir L2 köprü oluşturacak. Tüm konak tarafı Pod `veth` çifti arabirimleri bu köprüye bağlanacak. Bu nedenle VM içi iletişim Pod-Pod ve kalan trafik bu köprüden geçer. Söz konusu köprü, bir veya daha fazla gerçek cihazı bir veya daha fazla gerçek cihaz bağlamadığınız takdirde hiçbir şey alamıyor veya iletemediği bir katman 2 sanal aygıtıdır. Bu nedenle, Linux VM 'nin eth0 "azure0" köprüsüne bir alt öğesine dönüştürülmesi gerekir. Bu, Linux sanal makinesi içinde karmaşık bir ağ topolojisi oluşturur ve bir belirti olarak, DNS sunucusu güncelleştirmesi gibi diğer ağ işlevlerinin ilgilenmek zorunda kalmaktadır.
 
 :::image type="content" source="media/faq/bridge-mode.png" alt-text="Köprü modu topolojisi":::
 
@@ -229,19 +229,11 @@ root@k8s-agentpool1-20465682-1:/#
 ```
 
 ### <a name="transparent-mode"></a>Saydam mod
-Saydam modu, Linux ağını ayarlamaya yönelik düz bir yaklaşımlar alır. Bu modda, Azure CNı, Linux sanal makinesinde eth0 arabirimi özelliklerinin hiçbirini değiştirmez. Linux ağ özelliklerinin değiştirilmesine yönelik bu en az yaklaşım, kümelerin köprü moduyla karşılaştığı karmaşık köşe örnek sorunlarını azaltmaya yardımcı olur. Saydam modda Azure CNı, ana bilgisayar ağına eklenecek konak tarafı Pod çifti arabirimlerini oluşturur ve ekler `veth` . VM 'nin Pod-Pod arası iletişimi, CNı 'nin ekleneceği IP yollardır. Temelde Pod-Pod içi VM, alt katman 3 ağ trafiğidir.
+Saydam modu, Linux ağını ayarlamaya yönelik düz bir yaklaşımlar alır. Bu modda, Azure CNı, Linux sanal makinesinde eth0 arabirimi özelliklerinin hiçbirini değiştirmez. Linux ağ özelliklerinin değiştirilmesine yönelik bu en az yaklaşım, kümelerin köprü moduyla karşılaştığı karmaşık köşe örnek sorunlarını azaltmaya yardımcı olur. Saydam modda Azure CNı, ana bilgisayar ağına eklenecek konak tarafı Pod çifti arabirimlerini oluşturur ve ekler `veth` . VM 'nin Pod-Pod arası iletişimi, CNı 'nin ekleneceği IP yollardır. Temelde Pod-Pod iletişimi katman 3 ' ten ve pod trafiğinden, L3 yönlendirme kuralları tarafından yönlendirilir.
 
 :::image type="content" source="media/faq/transparent-mode.png" alt-text="Saydam mod topolojisi":::
 
 Aşağıda, saydam moddan oluşan örnek bir IP yolu kurulumu verilmiştir. her Pod 'ın arabirimi, Pod olarak hedef IP 'si olan trafik doğrudan Pod 'ın ana bilgisayar tarafı çiftinin arabirimine gönderilmek üzere bir statik rota iliştirilir `veth` .
-
-### <a name="benefits-of-transparent-mode"></a>Saydam modunun avantajları
-
-- `conntrack`, Düğüm yerel DNS 'yi ayarlama gereksinimi olmadan DNS paralel yarış durumu ve 5 San DNS gecikme sorunlarının engelleme için risk azaltma sağlar (performans nedenleriyle düğüm yerel DNS 'i kullanmaya devam edebilirsiniz).
-- İlk 5 sn DNS gecikme süresi CNı köprü modunun, "tam zamanında" köprü kurulumu nedeniyle bugün tanıtılmakta olduğunu ortadan kaldırır.
-- Köprü modundaki köşe çalışmalarından biri, Azure CNı 'nin kullanıcıların VNET veya NIC 'ye ekleyen özel DNS sunucusu listelerini güncellemesidir. Bu, CNı 'nin yalnızca DNS sunucusu listesinin yalnızca ilk örneğini çekilmesine neden olur. CNı, eth0 özelliklerini değiştirmediğinden saydam modda çözüldü. [Daha fazla](https://github.com/Azure/azure-container-networking/issues/713)görünüyor.
-- ARP zaman aşımına uğrarsa UDP trafiğinin daha iyi işlenmesini ve UDP taşma süresini hafifletme sağlar. Köprü oluşturma modunda, köprü, VM 'de Pod-Pod arası iletişimde bir MAC adresi bilmez, tasarıma göre, bu, paketin tüm bağlantı noktalarına fırtınası ile sonuçlanır. Yolda L2 cihaz olmadığından, saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/704)bakın.
-- Saydam modu, köprü oluşturma modu ile karşılaştırıldığında aktarım hızı ve gecikme süresi bakımından sanal makine Pod-Pod iletişimi için daha iyi performans sağlar.
 
 ```bash
 10.240.0.216 dev azv79d05038592 proto static
@@ -254,6 +246,15 @@ Aşağıda, saydam moddan oluşan örnek bir IP yolu kurulumu verilmiştir. her 
 169.254.169.254 via 10.240.0.1 dev eth0 proto dhcp src 10.240.0.4 metric 100
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 ```
+
+### <a name="benefits-of-transparent-mode"></a>Saydam modunun avantajları
+
+- `conntrack`, Düğüm yerel DNS 'yi ayarlama gereksinimi olmadan DNS paralel yarış durumu ve 5 San DNS gecikme sorunlarının engelleme için risk azaltma sağlar (performans nedenleriyle düğüm yerel DNS 'i kullanmaya devam edebilirsiniz).
+- İlk 5 sn DNS gecikme süresi CNı köprü modunun, "tam zamanında" köprü kurulumu nedeniyle bugün tanıtılmakta olduğunu ortadan kaldırır.
+- Köprü modundaki köşe çalışmalarından biri, Azure CNı 'nin kullanıcıların VNET veya NIC 'ye ekleyen özel DNS sunucusu listelerini güncellemesidir. Bu, CNı 'nin yalnızca DNS sunucusu listesinin yalnızca ilk örneğini çekilmesine neden olur. CNı, eth0 özelliklerini değiştirmediğinden saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/713)bakın.
+- ARP zaman aşımına uğrarsa UDP trafiğinin daha iyi işlenmesini ve UDP taşma süresini hafifletme sağlar. Köprü oluşturma modunda, köprü, VM 'de Pod-Pod arası iletişimde bir MAC adresi bilmez, tasarıma göre, bu, paketin tüm bağlantı noktalarına fırtınası ile sonuçlanır. Yolda L2 cihaz olmadığından, saydam modda çözüldü. Daha fazla bilgi için [buraya](https://github.com/Azure/azure-container-networking/issues/704)bakın.
+- Saydam modu, köprü oluşturma modu ile karşılaştırıldığında aktarım hızı ve gecikme süresi bakımından sanal makine Pod-Pod iletişimi için daha iyi performans sağlar.
+
 
 <!-- LINKS - internal -->
 

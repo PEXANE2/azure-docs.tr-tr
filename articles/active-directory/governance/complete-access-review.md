@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/07/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23266043d5efd65a4e6e79dd515a54a2c321b077
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6491de18e65c5071ac0972e7ff49d1253cbd402
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87798843"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779559"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleri içindeki gruplar ve uygulamalar için bir erişim incelemesi tamamlamayı doldurun
 
@@ -29,7 +29,7 @@ Yönetici olarak, [gruplar veya uygulamalar için erişim gözden geçirmesi olu
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure AD Premium P2
 - Genel yönetici, Kullanıcı Yöneticisi, güvenlik yöneticisi veya güvenlik okuyucusu
@@ -46,11 +46,19 @@ Gözden geçirenler incelemelerini tamamlamalarını gözlemlediği için ilerle
 
 1. Listede, bir erişim gözden geçirmesi ' na tıklayın.
 
-    Bir dizi erişim incelemesi görüntülemek için, erişim gözden geçirmelerine gidin ve yaklaşan örnekleri zamanlanan incelemelerde bulabilirsiniz.
+    Bir erişim incelemesinin gelecekteki örneklerini görüntülemek için erişim gözden geçirmesi ' na gidin ve zamanlanan İncelemeler ' ı seçin.
 
     **Genel bakış** sayfasında ilerlemeyi görebilirsiniz. İnceleme tamamlanana kadar dizinde erişim hakkı değiştirilmez.
 
     ![Erişim gözden geçirmeleri ilerleme durumu](./media/complete-access-review/overview-progress.png)
+    
+    Microsoft 365 Gruplar (Önizleme) genelinde konuk erişimini gözden geçiren bir erişim incelemesi görüntülüyorsanız, genel bakış dikey penceresinde her grup incelenmekte.  
+
+   ![Microsoft 365 Gruplar genelinde konuk erişimini gözden geçirme](./media/complete-access-review/review-guest-access-across-365-groups.png)
+
+    Bu grupta gözden geçirmeyi ilerleme durumunu görmek için bir gruba tıklayın.
+
+   ![Microsoft 365 Gruplar genelinde konuk erişimini ayrıntılı olarak gözden geçirin](./media/complete-access-review/progress-group-review.png)
 
 1. Zamanlanan bitiş tarihine ulaşılmadan önce bir erişim incelemesini durdurmak istiyorsanız **Durdur** düğmesine tıklayın.
 
@@ -60,13 +68,13 @@ Gözden geçirenler incelemelerini tamamlamalarını gözlemlediği için ilerle
 
 ## <a name="apply-the-changes"></a>Değişiklikleri Uygula
 
-**Sonuçları kaynağa otomatik olarak Uygula** özelliği etkinleştirildiyse ve **tamamlanma ayarlarına**bağlı olarak seçimlerinizi temel alıyorsa otomatik uygulama, gözden geçirme işleminin bitiş tarihinden sonra veya gözden geçirmeyi el ile durdurduğunuzda yürütülür.
+**Sonuçları kaynağa otomatik olarak Uygula** özelliği etkinleştirildiyse ve **tamamlanma ayarlarına** bağlı olarak seçimlerinizi temel alıyorsa otomatik uygulama, gözden geçirme işleminin bitiş tarihinden sonra veya gözden geçirmeyi el ile durdurduğunuzda yürütülür.
 
 Gözden geçirme için **sonuçların otomatik olarak uygulanması** etkinleştirilmemişse, değişiklikleri el ile uygulamak için **Uygula** ' ya tıklayın. Gözden geçirme sırasında bir kullanıcının erişimi reddedildiyse, **Uygula**' ya TıKLADıĞıNıZDA Azure AD, üyeliklerini veya uygulama atamasını kaldırır.
 
 ![Erişim gözden geçirme değişikliklerini Uygula](./media/complete-access-review/apply-changes.png)
 
-İnceleme durumu, **uygulama** ve son olarak durum **sonucu uygulanan**gibi ara durumlar aracılığıyla **tamamlandı** olarak değişir. Grup üyeliğinden veya uygulama atamasından birkaç dakika içinde kaldırılan reddedilen kullanıcıları görmeyi beklemelisiniz.
+İnceleme durumu, **uygulama** ve son olarak durum **sonucu uygulanan** gibi ara durumlar aracılığıyla **tamamlandı** olarak değişir. Grup üyeliğinden veya uygulama atamasından birkaç dakika içinde kaldırılan reddedilen kullanıcıları görmeyi beklemelisiniz.
 
 Yapılandırılmış bir otomatik uygulama incelemesi veya **Uygula** seçeneğinin belirlenmesi, şirket içi dizinde veya dinamik grupta bulunan bir grup üzerinde bir etkiye sahip değildir. Şirket içinde kaynak olan bir grubu değiştirmek istiyorsanız, sonuçları indirin ve bu değişiklikleri bu dizindeki grubun gösterimine uygulayın.
 
@@ -74,7 +82,7 @@ Yapılandırılmış bir otomatik uygulama incelemesi veya **Uygula** seçeneği
 
 Bir kerelik erişim incelemesinin sonuçlarını görüntülemek için **sonuçlar** sayfasına tıklayın. Yalnızca bir kullanıcının erişimini görüntülemek için, arama kutusuna, erişimi gözden geçirilmiş bir kullanıcının görünen adını veya Kullanıcı asıl adını yazın.
 
-![Erişim gözden geçirmesi için sonuçları alma](./media/complete-access-review/retrieve-results.png)
+![Erişim gözden geçirmesi için sonuçları alma](./media/complete-access-review/retrieve-results.png) 
 
 Yinelenen etkin bir erişim incelemesinin ilerlemesini görüntülemek için **sonuçlar** sayfasına tıklayın.
 

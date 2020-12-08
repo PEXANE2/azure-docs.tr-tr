@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dacb1cd910c6569d94f365b34a15494dde70a4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d6a152096ce4e16849542c26d1c7a675a972b89
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787695"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779082"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>İstemci uygulamasından gelen istekleri yetkilendirmek için Azure AD 'den bir belirteç alın
 
@@ -46,7 +46,7 @@ Aşağıdaki görüntüde bir Web uygulamasını kaydetmeye yönelik genel ayarl
 
 Uygulamanızı kaydettikten sonra **Ayarlar** altında uygulama kimliğini (veya istemci kimliğini) görürsünüz:
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="İstemci KIMLIĞINI gösteren ekran görüntüsü":::
 
 Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uygulamaları Azure Active Directory tümleştirme](../../active-directory/develop/quickstart-register-app.md).
 
@@ -54,18 +54,18 @@ Bir uygulamayı Azure AD 'ye kaydetme hakkında daha fazla bilgi için bkz. [uyg
 
 Daha sonra, uygulamanıza Azure depolama API 'Lerini çağırma izni verin. Bu adım, uygulamanızın Azure AD ile Azure depolama 'ya istekleri yetkilendirebilmesini sağlar.
 
-1. Kayıtlı uygulamanızın **API izinleri** sayfasında **izin Ekle** ' yi seçin.
-1. **Microsoft API 'leri** sekmesinde **Azure Storage** ' ı seçin.
-1. **İstek API 'si izinleri** bölmesinde, **uygulamanız gereken izin türü altında mı?** , kullanılabilir izin türünün **temsilci izinleri** olduğunu gözlemleyin. Bu seçenek varsayılan olarak sizin için seçilidir.
-1. **İzinler** altında, **user_impersonation** ' nin yanındaki onay kutusunu seçin ve ardından **izin Ekle** düğmesini seçin.
+1. Kayıtlı uygulamanızın **API izinleri** sayfasında **izin Ekle**' yi seçin.
+1. **Microsoft API 'leri** sekmesinde **Azure Storage**' ı seçin.
+1. **İstek API 'si izinleri** bölmesinde, **uygulamanız gereken izin türü altında mı?**, kullanılabilir izin türünün **temsilci izinleri** olduğunu gözlemleyin. Bu seçenek varsayılan olarak sizin için seçilidir.
+1. **İzinler** altında, **user_impersonation**' nin yanındaki onay kutusunu seçin ve ardından **izin Ekle** düğmesini seçin.
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Depolama API 'SI için izinleri gösteren ekran görüntüsü":::
 
-1. Ardından, **varsayılan dizin için yönetici Izni ver** ' i tıklayarak bu izinler için yönetici onayı verin.
+1. Ardından, **varsayılan dizin için yönetici Izni ver**' i tıklayarak bu izinler için yönetici onayı verin.
 
 **API izinleri** bölmesi artık KAYıTLı Azure AD uygulamanızın hem Microsoft Graph hem de Azure Storage API 'lerine erişimi olduğunu ve bu izin varsayılan dizin için verildiğini gösterir. Uygulamanızı Azure AD 'ye ilk kez kaydettiğinizde izinler otomatik olarak Microsoft Graph verilir.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Kayıtlı uygulama için API izinlerini gösteren ekran görüntüsü":::
 
 ### <a name="create-a-client-secret"></a>İstemci parolası oluşturma
 
@@ -81,13 +81,13 @@ Uygulamanın bir belirteç istenirken kimliğini kanıtlamak için bir istemci p
 
 ### <a name="enable-implicit-grant-flow"></a>Örtük verme akışını etkinleştir
 
-Ardından, uygulamanız için örtük verme akışını yapılandırın. Şu adımları uygulayın:
+Ardından, uygulamanız için örtük verme akışını yapılandırın. Şu adımları izleyin:
 
 1. Azure portal uygulama kaydınız ' ne gidin.
 1. **Yönet** bölümünde **kimlik doğrulama** ayarını seçin.
 1. **Örtük izin** bölümünde, aşağıdaki görüntüde gösterildiği gıbı, kimlik belirteçlerini etkinleştirmek için onay kutusunu seçin:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Depolama uygulamanızın Azure AD 'ye nasıl kaydedileceği gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Örtük izin akışı için ayarların nasıl etkinleştirileceğini gösteren ekran görüntüsü":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Belirteç alımı için istemci kitaplıkları
 
@@ -131,6 +131,8 @@ Ardından, **Depolama Blobu veri katılımcısı** rolünü, örnek kodu çalı�
 
 > [!NOTE]
 > Bir Azure depolama hesabı oluşturduğunuzda, Azure AD aracılığıyla verilere erişim için otomatik olarak izinler atanmamıştır. Azure depolama için kendinize açık bir Azure rolü atamanız gerekir. Aboneliğiniz, kaynak grubunuz, depolama hesabınız veya Kapsayıcınız ya da kuyruğunuzun düzeyinde atayabilirsiniz.
+>
+> Veri erişimi için kendinize bir rol atamadan önce, Azure portal Azure portal aracılığıyla Depolama hesabınızdaki verilere erişebilirsiniz. bu nedenle, veri erişimi için hesap anahtarını da kullanabilir. Daha fazla bilgi için bkz. [Azure Portal blob verilerine erişimi yetkilendirmeyi seçme](../blobs/authorize-data-operations-portal.md).
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Azure AD ile blob depolamaya erişim yetkisi veren bir Web uygulaması oluşturma
 
@@ -140,7 +142,7 @@ Belirteç içeren ve Azure Storage 'da blob oluşturmak için onu kullanan tamam
 
 #### <a name="add-references-and-using-statements"></a>Başvuruları ve using deyimlerini ekleyin  
 
-Visual Studio 'dan Azure Storage istemci kitaplığı 'nı yükler. **Araçlar** menüsünden **NuGet Paket Yöneticisi** ’ni ve ardından **Paket Yöneticisi Konsolu** ’nu seçin. Gerekli paketleri .NET için Azure Storage istemci kitaplığından yüklemek üzere konsol penceresine aşağıdaki komutları yazın:
+Visual Studio 'dan Azure Storage istemci kitaplığı 'nı yükler. **Araçlar** menüsünden **NuGet Paket Yöneticisi**’ni ve ardından **Paket Yöneticisi Konsolu**’nu seçin. Gerekli paketleri .NET için Azure Storage istemci kitaplığından yüklemek üzere konsol penceresine aşağıdaki komutları yazın:
 
 # <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
 

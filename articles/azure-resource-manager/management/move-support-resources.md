@@ -2,13 +2,13 @@
 title: Kaynak türüne göre işlem desteğini taşıma
 description: Yeni bir kaynak grubuna veya aboneliğe taşınabilecek Azure Kaynak türlerini listeler.
 ms.topic: conceptual
-ms.date: 11/06/2020
-ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.date: 12/07/2020
+ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364238"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781003"
 ---
 # <a name="move-operation-support-for-resources"></a>Kaynaklar için taşıma işlemi desteği
 
@@ -647,7 +647,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | rezervationönerilere | Hayır | Hayır |
 > | rezervlerin Özeti | Hayır | Hayır |
 > | rezervlik işlemleri | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |
 > | larındaki | Hayır | Hayır |
 > | UsageDetails | Hayır | Hayır |
@@ -1026,7 +1026,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Kaynak grubu | Abonelik |
 > | ------------- | ----------- | ---------- |
 > | hanaınstances | Hayır | Hayır |
-> | sapizleyicileri | Yes | Yes |
+> | sapizleyicileri | Hayır | Hayır |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
@@ -1636,7 +1636,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | ResourceGroups | Hayır | Hayır |
 > | kaynaklar | Hayır | Hayır |
 > | Aboneliklerin | Hayır | Hayır |
-> | tags | Hayır | Hayır |
+> | etiketler | Hayır | Hayır |
 > | templatespec | Hayır | Hayır |
 > | templatespec/sürümler | Hayır | Hayır |
 > | Kira | Hayır | Hayır |

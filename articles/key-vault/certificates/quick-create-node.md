@@ -1,31 +1,31 @@
 ---
-title: Hızlı başlangıç-JavaScript için gizli istemci kitaplığı Azure Key Vault (sürüm 4)
-description: JavaScript istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğrenin
+title: Hızlı başlangıç-Azure Key Vault JavaScript için sertifika istemci kitaplığı (sürüm 4)
+description: JavaScript istemci kitaplığını kullanarak bir Azure anahtar kasasından sertifika oluşturmayı, almayı ve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 8e04fcea53869fe15ebbeb3c7709cff842893931
+ms.openlocfilehash: 3854b7491bf068bf7130180f483905531f053f7c
 ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780799"
+ms.locfileid: "96841939"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault gizli istemci kitaplığı (sürüm 4)
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Hızlı başlangıç: JavaScript için Azure Key Vault sertifika istemci kitaplığı (sürüm 4)
 
-JavaScript için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , gizli dizileri için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, JavaScript istemci kitaplığını kullanarak bir Azure Anahtar Kasası 'nda gizli dizileri oluşturmayı, almayı ve silmeyi öğreneceksiniz.
+JavaScript için Azure Key Vault sertifika istemci kitaplığı ile çalışmaya başlayın. [Azure Key Vault](../general/overview.md) , sertifikalar için güvenli bir mağaza sağlayan bir bulut hizmetidir. Anahtarları, parolaları, sertifikaları ve diğer gizli dizileri güvenli bir şekilde depolayabilirsiniz. Azure anahtar kasaları Azure portalı aracılığıyla oluşturulup yönetilebilir. Bu hızlı başlangıçta, JavaScript istemci kitaplığını kullanarak bir Azure anahtar kasasından sertifika oluşturmayı, almayı ve silmeyi öğreneceksiniz
 
 Key Vault istemci kitaplığı kaynakları:
 
-[API başvuru belgeleri](/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
+[API başvuru belgeleri](/javascript/api/overview/azure/key-vault-index)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-certificates)
 
-Key Vault ve gizli dizileri hakkında daha fazla bilgi için bkz.:
+Key Vault ve sertifikaları hakkında daha fazla bilgi için bkz.:
 - [Key Vault genel bakış](../general/overview.md)
-- [Gizli dizi genel bakış](about-secrets.md).
+- [Sertifikalara genel bakış](about-certificates.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -69,10 +69,10 @@ npm init -y
 
 ## <a name="install-key-vault-packages"></a>Key Vault paketlerini yükler
 
-Konsol penceresinde, Node.js için Azure Key Vault gizli dizi [kitaplığı](https://www.npmjs.com/package/@azure/keyvault-secrets) ' nı yükler.
+Konsol penceresinde, Node.js için Azure Key Vault [sertifikaları kitaplığını](https://www.npmjs.com/package/@azure/keyvault-certificates) yükler.
 
 ```azurecli
-npm install @azure/keyvault-secrets
+npm install @azure/keyvault-certificates
 ```
 
 Key Vault kimlik doğrulaması yapmak için [Azure. Identity](https://www.npmjs.com/package/@azure/identity) paketini yükler
@@ -101,15 +101,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
 
-Anahtar kasanız için Kullanıcı hesabınıza gizli izinler veren bir erişim ilkesi oluşturun
+Anahtar kasanız için Kullanıcı hesabınıza sertifika izinleri veren bir erişim ilkesi oluşturun
 
 ```azurecli
-az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Aşağıdaki kod örnekleri, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağını gösterir. 
+Aşağıdaki kod örnekleri, bir istemci oluşturma, sertifika ayarlama, sertifika alma ve sertifikayı silme işlemlerinin nasıl yapılacağını gösterir. 
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
@@ -147,7 +147,7 @@ Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { CertificateClient } = require("@azure/keyvault-certificates");
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
@@ -163,42 +163,47 @@ const keyVaultName = process.env["KEY_VAULT_NAME"];
 const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 const credential = new DefaultAzureCredential();
-const client = new SecretClient(KVUri, credential);
+const client = new Certificate(KVUri, credential);
 ```
 
-### <a name="save-a-secret"></a>Gizli dizi Kaydet
+### <a name="save-a-certificate"></a>Sertifika kaydetme
 
-Uygulamanızın kimliği doğrulandığına göre, [setsecret metodunu](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-) kullanarak keykasanıza gizli anahtar koyabilirsiniz. Bu örnekte, gizli anahtar için bir ad gerekir. Bu örnekteki "MySecret" kullandık.  
+Uygulamanızın kimliği doğrulandığına göre, [begıntraıncertificate metodunu](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) kullanarak anahtar kasanıza bir sertifika koyabilirsiniz. Bu, sertifika için bir ad ve sertifika ilkesi [özelliklerine](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties) sahip sertifika ilkesi[sertifika](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy) ilkesi gerektirir
 
 ```javascript
-await client.setSecret(secretName, secretValue);
+const certificatePolicy = {
+  issuerName: "Self",
+  subject: "cn=MyCert"
+};
+const createPoller = await client.beginCreateCertificate(certificateName, certificatePolicy);
+const certificate = await poller.pollUntilDone();
 ```
 
-### <a name="retrieve-a-secret"></a>Gizli dizi alma
+> [!NOTE]
+> Sertifika adı varsa, yukarıdaki kod bu sertifikanın yeni bir sürümünü oluşturur.
+### <a name="retrieve-a-certificate"></a>Sertifika alma
 
-Artık [Getsecret yöntemiyle](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)önceden ayarlanan değeri alabilirsiniz.
+Artık [GetCertificate yöntemiyle](/javascript/api/@azure/keyvault-certificates/certificateclient?#getCertificate_string__GetCertificateOption)önceden ayarlanan değeri alabilirsiniz.
 
 ```javascript
-const retrievedSecret = await client.getSecret(secretName);
+const retrievedCertificate = await client.getCertificate(certificateName);
  ```
 
-Gizli anahtar artık olarak kaydedilir `retrievedSecret.value` .
+### <a name="delete-a-certificate"></a>Sertifikayı silme
 
-### <a name="delete-a-secret"></a>Gizli anahtarı silme
-
-Son olarak, [Begindeletesecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#beginDeleteSecret_string__BeginDeleteSecretOptions_) ve [purgeDeletedSecret](https://docs.microsoft.com/javascript/api/@azure/keyvault-secrets/secretclient?#purgeDeletedSecret_string__PurgeDeletedSecretOptions_) yöntemleriyle anahtar kasaınızdan parolayı silip temizlim.
+Son olarak, [beginDeleteCertificate] https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) ve [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) yöntemleriyle anahtar kasaınızdan sertifikayı silip temizlim.
 
 ```javascript
-const deletePoller = await client.beginDeleteSecret(secretName);
+const deletePoller = await client.beginDeleteCertificate(certificateName);
 await deletePoller.pollUntilDone();
-await client.purgeDeletedSecret(secretName);
+await client.purgeDeletedCertificate(certificateName);
 ```
 
 ## <a name="sample-code"></a>Örnek kod
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { CertificateClient } = require("@azure/keyvault-certificates");
 
 const readline = require('readline');
 
@@ -216,37 +221,36 @@ function askQuestion(query) {
 
 async function main() {
 
+  const string certificateName = "myCertificate";
   const keyVaultName = process.env["KEY_VAULT_NAME"];
   const KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
   const credential = new DefaultAzureCredential();
-  const client = new SecretClient(KVUri, credential);
+  const client = new CertificateClient(KVUri, credential);
 
-  const secretName = "mySecret";
-  var secretValue = await askQuestion("Input the value of your secret > ");
-
-  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
-  await client.setSecret(secretName, secretValue);
+  console.log("Creating a certificate in " + keyVaultName + " called '" + certificateName +  "` ...");
+  const certificatePolicy = {
+  issuerName: "Self",
+  subject: "cn=MyCert"
+  };
+  const createPoller = await client.beginCreateCertificate(certificateName, certificatePolicy);
+  const certificate = await poller.pollUntilDone();
 
   console.log("Done.");
 
-  console.log("Forgetting your secret.");
-  secretValue = "";
-  console.log("Your secret is '" + secretValue + "'.");
+  console.log("Retrieving your certificate from " + keyVaultName + ".");
 
-  console.log("Retrieving your secret from " + keyVaultName + ".");
+  const retrievedCertificate = await client.getCertificate(certificateName);
 
-  const retrievedSecret = await client.getSecret(secretName);
+  console.log("Your certificate version is '" + retrievedCertificate.properties.version + "'.");
 
-  console.log("Your secret is '" + retrievedSecret.value + "'.");
-
-  console.log("Deleting your secret from " + keyVaultName + " ...");
-  const deletePoller = await client.beginDeleteSecret(secretName);
+  console.log("Deleting your certificate from " + keyVaultName + " ...");
+  const deletePoller = await client.beginDeleteCertificate(certificateName);
   await deletePoller.pollUntilDone();
   console.log("Done.");
   
-  console.log("Purging your secret from {keyVaultName} ...");
-  await client.purgeDeletedSecret(secretName);
+  console.log("Purging your certificate from {keyVaultName} ...");
+  await client.purgeDeletedCertificate(certificateName);
   
 }
 
@@ -256,35 +260,30 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ## <a name="test-and-verify"></a>Test ve doğrulama
 
-1. Uygulamayı çalıştırmak için aşağıdaki komutları yürütün.
+Uygulamayı çalıştırmak için aşağıdaki komutları yürütün.
 
-    ```azurecli
-    npm install
-    npm index.js
-    ```
+```azurecli
+npm install
+npm index.js
+```
 
-1. İstendiğinde, gizli bir değer girin. Örneğin, mySecretPassword.
+Aşağıdaki çıkışın bir varyasyonu görüntülenir:
 
-    Aşağıdaki çıkışın bir varyasyonu görüntülenir:
-
-    ```azurecli
-    Input the value of your secret > mySecretPassword
-    Creating a secret in <your-unique-keyvault-name> called 'mySecret' with the value 'mySecretPassword' ... done.
-    Forgetting your secret.
-    Your secret is ''.
-    Retrieving your secret from <your-unique-keyvault-name>.
-    Your secret is 'mySecretPassword'.
-    Deleting your secret from <your-unique-keyvault-name> ... done.  
-    Purging your secret from <your-unique-keyvault-name> ... done.   
-    ```
-
+```azurecli
+Creating a certificate in mykeyvault called 'myCertificate' ... done.
+Retrieving your certificate from mykeyvault.
+Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your certificate from mykeyvault ... done
+Purging your certificate from mykeyvault ... done 
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, gizli dizi depolandı ve bu gizli dizi alındı. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Bu hızlı başlangıçta, bir Anahtar Kasası oluşturdunuz, bir sertifikayı depolı, ve bu sertifikayı almıştır. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
-- [Azure Key Vault gizliliklerin genel bakışını](about-secrets.md) okuyun
-- [Anahtar kasasına erişimi güvenli hale getirme](../general/secure-your-key-vault.md)
+- [Sertifikalara genel bakış](about-certificates.md) konusunu okuyun
+- [App Service uygulama öğreticisindeki bir erişim Key Vault](../general/tutorial-net-create-vault-azure-web-app.md) görün
+- [Sanal makine öğreticiden bir erişim Key Vault](../general/tutorial-net-virtual-machine.md) görün
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın
 - [En iyi uygulamaları](../general/best-practices.md) gözden geçirin Azure Key Vault
