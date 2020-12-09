@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572584"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928792"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -46,13 +46,13 @@ az extension list
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -125,14 +125,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -194,13 +194,13 @@ Ayrıca, AKS Gen2 VM 'lerinde Gen2 desteği olan tüm VM görüntüleri, yeni [a
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
+Durumun **kayıtlı** olarak gösterilmesi birkaç dakika sürebilir. [Az Feature List](/cli/azure/feature#az-feature-list) komutunu kullanarak kayıt durumunu kontrol edebilirsiniz:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
+Durum kayıtlı olarak görünüyorsa, `Microsoft.ContainerService` [az Provider Register](/cli/azure/provider#az-provider-register) komutunu kullanarak kaynak sağlayıcının kaydını yenileyin:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService

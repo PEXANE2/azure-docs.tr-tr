@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 9371feb527bbb2d94d43072bb8a44a6705b45055
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e73ca9e485e6926c30a73ba56b24bcd4dc9a836
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87280231"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929744"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 'e (AKS) geçiş
 
@@ -132,7 +132,7 @@ Uygulamanız aynı dosya paylaşımının işaret eden birden çok kopyayı bar�
 * Canlı trafiğinizi yeni AKS kümenize getirin.
 * Eski kümenin bağlantısını kesin.
 
-Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, bu [`az storage file copy`](/cli/azure/storage/file/copy?view=azure-cli-latest) komutları kullanarak verilerinizi geçirebilirsiniz.
+Boş bir paylaşımdan başlamak ve kaynak verilerin bir kopyasını oluşturmak istiyorsanız, bu [`az storage file copy`](/cli/azure/storage/file/copy) komutları kullanarak verilerinizi geçirebilirsiniz.
 
 
 #### <a name="migrating-persistent-volumes"></a>Kalıcı birimleri geçirme
@@ -159,7 +159,7 @@ Bazı açık kaynaklı araçlar, yönetilen diskler oluşturmanıza ve birimleri
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Küme yapılandırmanızın dağıtımı
 
-AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` Yeni AKS kümesine işaret edin.
+AKS 'e bilinen iyi bir yapılandırma dağıtmak için mevcut sürekli tümleştirme (CI) ve sürekli teslim (CD) işlem hattınızı kullanmanızı öneririz. [Uygulamalarınızı derlemek ve AKS 'e dağıtmak](/azure/devops/pipelines/ecosystems/kubernetes/aks-template)için Azure Pipelines kullanabilirsiniz. Mevcut dağıtım görevlerinizi kopyalayın ve `kubeconfig` Yeni AKS kümesine işaret edin.
 
 Bu mümkün değilse, mevcut Kubernetes kümenizdeki kaynak tanımlarını dışarı aktarın ve ardından bunları AKS 'e uygulayın. `kubectl`Nesneleri dışarı aktarmak için ' i kullanabilirsiniz.
 

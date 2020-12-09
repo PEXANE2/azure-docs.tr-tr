@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/01/2020
+ms.date: 12/09/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512214"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928333"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulaması hakkında sık sorulan sorular (SSS)
 
@@ -116,7 +116,7 @@ Y **: iş** veya okul hesabınız için ya da kişisel Microsoft hesabı için b
 
 **S**: bildirimler Microsoft olmayan hesaplar için çalışıyor mu?
 
-Y **: Hayır**, bildirimler yalnızca Microsoft hesaplarıyla ve Azure Active Directory hesaplarıyla çalışır. İş veya okul 'niz Azure AD hesapları kullanıyorsa, bu özelliği kapatabilir.
+Y **: Hayır**, bildirimler yalnızca Microsoft hesaplarıyla ve Azure Active Directory hesaplarıyla çalışır. İş veya okul 'niz Azure AD hesapları kullanıyorsa, bu özelliği devre dışı bırakabilirsiniz.
 
 ### <a name="backup-and-recovery"></a>Yedekleme ve kurtarma
 
@@ -207,6 +207,74 @@ Y **: uygulama**, Watch üzerinde görünmüyorsa aşağıdaki eylemleri deneyin
 **S**: Apple Watch Yardımcısı Uygulamam kilitlendi. Araştırma yapabilmeniz için kilitlenme Günlüklerimi gönderebilirim miyim?
 
 **A**: öncelikle analizlerinizi bizimle paylaşmayı seçtiğinizden emin olmanız gerekir. Bir Testuçuş kullanıcısı kullanıyorsanız, zaten kaydolduysanız. Aksi takdirde, **ayarlar > gizlilik > Analytics** ' e gidebilir ve hem **iPhone & izleme analizi** hem de **uygulama geliştiricileri ile paylaşma** seçeneklerini belirleyebilirsiniz.<br>Kaydolduktan sonra, kilitlenme günlüklerinizin araştırma için otomatik olarak bize gönderilmesi için kilitlenmeyi yeniden oluşturmaya çalışırsınız. Ancak, çökmeyi yeniden oluşturamıyorsanız, günlük dosyalarınızı el ile kopyalayabilir ve bize gönderebilirsiniz.<ol><li>Telefonunuzda gözcü uygulamasını açın, **ayarlar > genel**' e gidin ve ardından **izleme analizini Kopyala**' ya tıklayın.</li><li>Ayarlar ' ın altında, **gizlilik > analytics > Analytics verileri**' ni > ve ardından metnin tamamını el ile kopyalayarak ilgili kilitlenmeyi bulun.</li><li>Telefonunuzdaki kimlik doğrulamasını açın ve kopyalanmış metni, **günlükleri Gönder** sayfasındaki **uygulama geliştiricileri ile paylaşma** metin kutusuna yapıştırın.</li></ol>
+
+## <a name="autofill-for-consumers"></a>Tüketiciler için otomatik doldurma
+
+**S**: Authenticator Içinde otomatik doldurma nedir?
+
+Y **: Authenticator** uygulaması artık telefonunuzda ziyaret ettiğiniz uygulamalar ve web sitelerinde parolaları güvenli bir şekilde depolar ve yeniden doldurur. İOS ve Android cihazlarınızda parolalarınızı eşitlemek ve otomatik olarak açmak için Otomatik Doldur ' a de yararlanabilirsiniz. Kimlik doğrulayıcı uygulamasını telefonunuzdaki bir otomatik doldurma sağlayıcısı olarak ayarladıktan sonra, bunları bir site veya uygulama oturum açma sayfasına girerken parolalarınızı kaydetmenizi sağlar. Parolalar, [Microsoft hesabı](https://account.microsoft.com/account) bir parçası olarak kaydedilir ve Microsoft hesabı Microsoft Edge 'de oturum açtığınızda da kullanılabilir.
+
+**S**: hangi bilgileri bana otomatik doldurma Için kimlik doğrulayıcı yapabilir?
+
+Y **: Authenticator**, telefonunuzdaki ziyaret ettiğiniz sitelerde ve uygulamalarda Kullanıcı adlarını ve parolaları otomatik olarak açabilir.
+
+**S**: Telefonumdaki kimlik doğrulayıcısında parola Otomatik doldurmayı aç nasıl yaparım? misiniz?
+
+Y **: şu adımları izleyin:**
+
+1. Doğrulayıcı uygulamasını açın.
+1. **Beta** altındaki **Ayarlar** ' da, **Otomatik Doldur**' u açın.
+1. Doğrulayıcı 'daki **parolalar** sekmesinde **Microsoft hesabıyla oturum açın** seçin ve [Microsoft hesabı](https://account.microsoft.com/account)kullanarak oturum açın. Bu özellik şu anda yalnızca Microsoft hesaplarını destekliyor ve henüz iş veya okul hesaplarını desteklemiyor.
+
+**S**: nasıl yaparım? Authenticator, Telefonumdaki varsayılan otomatik doldurma sağlayıcısına mi yapılsın?
+
+Y **: şu adımları izleyin:**
+
+1. Kimlik doğrulayıcı **ayarlarını** açın ve **Beta** altında **Otomatik Doldur**' u açın.
+1. Uygulamanın içindeki **parolalar** sekmesinde [Microsoft hesabı](https://account.microsoft.com/account)kullanarak oturum açın.
+1. Aşağıdakilerden birini yapın:
+
+   - İOS 'ta **Ayarlar** altında, varsayılan otomatik doldurma sağlayıcısı olarak kimlik doğrulamasını nasıl ayarlayacağınızı öğrenmek Için otomatik doldurma ayarları bölümünde **otomatik doldurma özelliğini açma** ' yı seçin.
+   - Android 'de **Ayarlar** altında, varsayılan otomatik doldurma sağlayıcısı olarak Authenticator ayarlamak Için otomatik doldurma ayarları bölümünde **otomatik doldurma sağlayıcısı olarak ayarla** ' yı seçin.
+
+**S**: ayarlar 'da benim Için **otomatik doldurma** anahtarı gri renkte olduğunda ne olur?
+
+Y **: otomatik** doldurma Şu anda beta aşamasındadır ve tüm kuruluşlar veya hesap türleri için henüz etkinleştirilmemiş. **Ayarlar** Içindeki **otomatik doldurma** anahtarı sizin için griyse, muhtemelen iş hesabınızla Authenticator uygulaması kullanıyor olabilirsiniz. Bu özelliği, iş hesabınızın eklendiği bir cihazda kullanabilirsiniz. Kuruluşunuz Microsoft ile çalışıyorsa, kimlik doğrulayıcısına bir iş hesabı eklendiğinde bile **otomatik doldurma** anahtarı etkinleştirilir.
+
+**S**: nasıl yaparım? parola eşitlemeyi durdur?
+
+Y **: kimlik** Doğrulayıcı uygulamasında parolaları eşitlemeyi durdurmak için **Ayarlar**  >  **otomatik doldurma ayarları**  >  **eşitleme hesabı**' nı açın. Sonraki ekranda, **Eşitlemeyi Durdur ' u ve tüm otomatik doldurma verilerini kaldır**' ı seçebilirsiniz. Bu, parolaları ve diğer otomatik doldurma verilerini cihazdan kaldırır. Otomatik doldurma verilerinin kaldırılması Multi-Factor Authentication 'ı etkilemez.
+
+**S**: parolalarım kimlik doğrulayıcı uygulaması tarafından nasıl korunur?
+
+Y **: Authenticator** uygulaması zaten Multi-Factor Authentication ve hesap yönetimi için yüksek düzeyde güvenlik sağlar ve aynı yüksek güvenlik çubuğu da parolalarınızı yönetmeye yönelik olarak genişletilir.
+
+- Kimlik doğrulayıcı **uygulaması Için güçlü kimlik doğrulaması gerekiyor: kimlik doğrulayıcıda** oturum açma işlemi ikinci bir faktör gerektirir. Bu, kimlik doğrulayıcı uygulamasındaki parolalara, birisi Microsoft hesabı parolansa bile erişilemeyeceği anlamına gelir.
+- **Verileri otomatik doldur Biyometri ve geçiş kodu**: bir uygulama veya sitede parolayı otomatik olarak doldurmaya başlamadan önce, Authenticator biyometrik veya cihaz geçiş kodu gerektirir. Bu, başka birinin cihazınıza erişimi olsa bile, Biyometri veya cihaz PIN 'ini sağlamadıkları için parolanızı dolduramamaları veya görmemesini sağlar. Ayrıca, uygulama ayarlarında uygulama kilidi kapatsalar bile, bir Kullanıcı, Biyometri veya PIN sağlamadıkça parolalar sayfasını açamaz.
+- **Cihazdaki şifreli parolalar**: cihazdaki parolalar şifrelenir ve şifreleme/şifre çözme anahtarları hiçbir zaman depolanmaz ve her zaman anında oluşturulur. Parolalar yalnızca Kullanıcı istediğinde, otomatik doldurma sırasında veya Kullanıcı, her ikisi de Biyometri veya PIN gerektiren parolayı görmek istediğinde çözülür.
+- **Bulut ve ağ güvenliği**: buluttaki parolalarınız şifrelenir ve yalnızca cihazınıza ulaştığında şifresi çözülür. Parolalar, eşitleme sırasında gizli verilerin dinlenmesini sağlayan SSL korumalı bir HTTPS bağlantısı üzerinden eşitlenir. Ayrıca, şifreleme karma işlevleri (özellikle karma tabanlı ileti kimlik doğrulama kodu) kullanarak ağ üzerinden eşitlenen verilerin tasdikliğini denetliyoruz.
+
+## <a name="autofill-for-it-admins"></a>BT yöneticileri için otomatik doldurma
+
+**S**: çalışanlar veya öğrenciler kimlik doğrulayıcı uygulamasında parola otomatik doldurma özelliğini kullanacak mı?
+
+Y **: Hayır**. Otomatik doldurma özelliği şu anda beta aşamasındadır ve tüm kuruluşlar veya hesap türleri için henüz etkinleştirilmemiş. Çalışan veya öğrenci, iş veya okul hesabını Microsoft Authenticator uygulamasına ekleiyorsa, parola otomatik doldurma bu kişilerin erişimine açık olmayacaktır. Bu kısıtlamadaki tek istisna, çalışanınızın veya öğrencinin iş veya okul hesabını bir [dış veya üçüncü taraf hesabı](user-help-auth-app-add-non-ms-account.md)olarak Microsoft bulut tabanlı Multi-Factor Authentication 'a ekleme durumdur.
+
+**S**: otomatik doldurma özelliğini çalışanlarınız (veya öğrenciler) için kullanılabilir hale getirebilirsiniz miyim?
+
+Y **: Evet**. Çalışanlarınızı veya öğrencileri etkinleştirmek için, kuruluşunuz veya okulunuz bir izin verilenler listesine eklenebilir. İzin verilenler listesine eklemek için destek veya Microsoft kişinizdeki bağlantıya ulaşın. Buna ek olarak, kuruluşunuz için bir BT yöneticisiyseniz, [kimlik doğrulayıcısında otomatik doldurma için, Izin verilenler için kurumsal](https://aka.ms/RequestAutofillInAuthenticator)olarak bulunan bir liste oluşturmak üzere bir form da doldurabilirsiniz.
+
+**S**: kullanıcılarınızın iş veya okul hesabı parolası otomatik olarak eşitlenir mi?
+
+Y **: Hayır**. Parola otomatik doldurma, kullanıcılarınız için iş veya okul hesabı parolasını eşitleyemez. Kullanıcılar bir siteyi veya uygulamayı ziyaret ettiğinde, kimlik doğrulayıcı bu site veya uygulamanın parolasını kaydetmenizi sağlar ve parola yalnızca Kullanıcı tarafından seçildiğinde kaydedilir.
+  
+**S**: yalnızca otomatik doldurma için Kuruluşumun yalnızca belirli kullanıcılarını listelemek için izin verebilir miyim?
+
+Y **: Hayır**. Kuruluşlar, bu anda çalışanlarının tümü veya hiçbiri için otomatik doldurma sağlar. Bu denetimleri aşamalı olarak genişleteceğiz.
+
+**S**: çalışanım veya öğrencimin birden çok iş veya okul hesabı varsa ne olacak? Örneğin, çalışanım Microsoft Authenticator birden çok kurumdan veya okullardan hesaplar içeriyor.
+
+Y **: kimlik** Doğrulayıcı uygulamasına eklenen tüm kuruluşlar veya okulların, uygulama sahibinin kullanabilmesi Için kimlik doğrulayıcıda otomatik doldurma için listelenmesi gerekir. Bu kısıtlamadaki tek istisna, çalışanınızın veya öğrencinin iş veya okul hesabını bir [dış veya üçüncü taraf hesabı](user-help-auth-app-add-non-ms-account.md)olarak Microsoft bulut tabanlı Multi-Factor Authentication 'a ekleme durumdur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

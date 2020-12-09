@@ -2,18 +2,18 @@
 title: Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 titleSuffix: Azure App Configuration
 description: Yönetilen kimlikleri kullanarak Azure Uygulama yapılandırmasında kimlik doğrulama
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671601"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929761"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Uygulama Yapılandırması’na erişmek için yönetilen kimlikleri kullanma
 
@@ -22,6 +22,9 @@ Azure Active Directory [Yönetilen kimlikler](../active-directory/managed-identi
 Azure Uygulama yapılandırması ve .NET Core, .NET Framework ve Java Spring istemci kitaplıklarında yerleşik olarak bulunan yönetilen kimlik desteği vardır. Bunu kullanmanız gerekmese de, yönetilen kimlik gizli dizileri içeren bir erişim belirteci gereksinimini ortadan kaldırır. Kodunuz, yalnızca hizmet uç noktasını kullanarak uygulama yapılandırma deposuna erişebilir. Bu URL 'YI, herhangi bir gizli dizi olmadan doğrudan kodunuza katıştırabilirsiniz.
 
 Bu makalede, uygulama yapılandırmasına erişmek için yönetilen kimliğin nasıl avantajlarından faydalanabilirsiniz. Hızlı başlangıçlarda tanıtılan web uygulamasında oluşturulur. Devam etmeden önce  [uygulama yapılandırmasına sahip bir ASP.NET Core uygulaması oluşturun](./quickstart-aspnet-core-app.md) .
+
+> [!NOTE]
+> Bu makale bir örnek olarak Azure App Service kullanır, ancak aynı kavram yönetilen kimliği destekleyen diğer tüm Azure hizmetleri için de geçerlidir. Örneğin, [Azure Kubernetes hizmeti](../aks/use-azure-ad-pod-identity.md), [Azure sanal makinesi](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)ve [Azure Container Instances](../container-instances/container-instances-managed-identity.md). İş yükünüz bu hizmetlerden birinde barındırılıyorsa, hizmetin yönetilen kimlik desteğinden de yararlanabilirsiniz.
 
 Bu makalede ayrıca yönetilen kimliği, uygulama yapılandırmasının Key Vault başvurularıyla birlikte nasıl kullanabileceğiniz gösterilmektedir. Tek bir yönetilen kimlik ile, uygulama yapılandırmasından Key Vault ve yapılandırma değerlerinden her iki sırda sorunsuzca erişebilirsiniz. Bu özelliği araştırmak isterseniz, önce [ASP.NET Core Key Vault başvuruları kullanın](./use-key-vault-references-dotnet-core.md) .
 
@@ -34,7 +37,7 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulamanızı, uygulama yapılandırmasına bağlandığınızda yönetilen bir kimlik kullanacak şekilde yapılandırın.
 > * İsteğe bağlı olarak, uygulama yapılandırma Key Vault başvurusu aracılığıyla Key Vault bağlandığınızda Uygulamanızı yönetilen bir kimlik kullanacak şekilde yapılandırın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gereklidir:
 
@@ -49,9 +52,9 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. [Azure Portal](https://portal.azure.com) , normalde yaptığınız gibi bir App Services örneği oluşturun. Portalda buna gidin.
 
-1. Sol bölmedeki **Ayarlar** grubuna aşağı kaydırın ve **kimlik** ' i seçin.
+1. Sol bölmedeki **Ayarlar** grubuna aşağı kaydırın ve **kimlik**' i seçin.
 
-1. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin ve **Kaydet** ' i seçin.
+1. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin ve **Kaydet**' i seçin.
 
 1. Sistem tarafından atanan yönetilen kimliği etkinleştirmek isteyip istemediğiniz sorulduğunda **Evet** yanıtını verin.
 
@@ -65,11 +68,11 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
 
 1. **Erişim denetimi** sekmesinde, **rol atama** kartı Kullanıcı arabiriminde **Ekle** ' yi seçin.
 
-1. **Rol** altında **uygulama yapılandırma veri okuyucusu** ' nu seçin. **Erişim ata** ' nın altında, **sistem tarafından atanan yönetilen kimlik** altında **App Service** ' yi seçin.
+1. **Rol** altında **uygulama yapılandırma veri okuyucusu**' nu seçin. **Erişim ata**' nın altında, **sistem tarafından atanan yönetilen kimlik** altında **App Service** ' yi seçin.
 
 1. **Abonelik** altında Azure aboneliğinizi seçin. Uygulamanız için App Service kaynağını seçin.
 
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
     ![Yönetilen kimlik ekleme](./media/add-managed-identity.png)
 
@@ -93,7 +96,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     }
     ```
 
-1. *Program.cs* 'i açın ve `Azure.Identity` ve ad alanlarına bir başvuru ekleyin `Microsoft.Azure.Services.AppAuthentication` :
+1. *Program.cs*'i açın ve `Azure.Identity` ve ad alanlarına bir başvuru ekleyin `Microsoft.Azure.Services.AppAuthentication` :
 
     ```csharp-interactive
     using Azure.Identity;
@@ -136,7 +139,7 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     ```
     ---
 
-1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod `KeyVaultClient` , bir kullanarak yeni bir oluşturur `AzureServiceTokenProvider` ve bu başvuruyu yöntemine yapılan çağrıya geçirir `UseAzureKeyVault` .
+1. Hem uygulama yapılandırma değerlerini hem de Key Vault başvurularını kullanmak için, aşağıda gösterildiği gibi *program.cs* güncelleştirin. Bu kod `SetCredential` `ConfigureKeyVault` , yapılandırma sağlayıcısına Key Vault kimlik doğrulaması yapılırken hangi kimlik bilgilerinin kullanılacağını bildirmek için bir parçası olarak çağırır.
 
     ### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Portalda yönetilen bir kimlik ayarlamak için, önce bir uygulama oluşturun ve
     ```
     ---
 
-    Artık diğer uygulama yapılandırma anahtarı gibi Key Vault başvurularına erişebilirsiniz. Yapılandırma sağlayıcısı, `KeyVaultClient` Key Vault kimlik doğrulaması yapmak için yapılandırdığınız ve değeri alacak olan ' i kullanacaktır.
+    Artık diğer uygulama yapılandırma anahtarı gibi Key Vault başvurularına erişebilirsiniz. Yapılandırma sağlayıcısı, `ManagedIdentityCredential` Key Vault kimlik doğrulaması yapmak ve değeri almak için öğesini kullanır.
 
-> [!NOTE]
-> `ManagedIdentityCredential` yalnızca yönetilen kimlik kimlik doğrulamasını destekler. Yerel ortamlarda çalışmaz. Kodu yerel olarak çalıştırmak istiyorsanız `DefaultAzureCredential` , hizmet sorumlusu kimlik doğrulamasını da destekleyen kullanmayı göz önünde bulundurun. Ayrıntılar için [bağlantıyı](/dotnet/api/azure.identity.defaultazurecredential) denetleyin.
+    > [!NOTE]
+    > `ManagedIdentityCredential`Yalnızca, yönetilen kimlik kimlik doğrulamasını destekleyen hizmetlerin Azure ortamlarında kullanılabilir. Yerel ortamda çalışmaz. [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential)Yönetilen kimlik gibi birkaç kimlik doğrulama seçeneklerine geri dönecektir, kodun hem yerel hem de Azure ortamlarında çalışması için kullanın.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -235,7 +238,7 @@ git remote add azure <url>
 Aşağıdaki komutla uygulamanızı dağıtmak için Azure uzak deposuna gönderin. Bir parola istendiğinde, [dağıtım kullanıcısı yapılandırma](#configure-a-deployment-user)bölümünde oluşturduğunuz parolayı girin. Azure portal oturum açmak için kullandığınız parolayı kullanmayın.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Çıkışta çalışma zamanına özgü otomasyon (örneğin, ASP.NET için MSBuild, `npm install` Node.js için ve `pip install` Python için) görebilirsiniz.

@@ -1,23 +1,23 @@
 ---
 title: Şablonları bulutlar genelinde yeniden kullanma
-description: Farklı bulut ortamları için tutarlı şekilde çalışan Azure Resource Manager şablonları geliştirin. Azure Stack için yeni bir şablon oluşturun veya var olan şablonları güncelleştirin.
+description: Farklı bulut ortamları için tutarlı şekilde çalışan Azure Resource Manager şablonları (ARM şablonları) geliştirin. Azure Stack için yeni bir şablon oluşturun veya var olan şablonları güncelleştirin.
 author: marcvaneijk
 ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ea010a625c3e3cd6228513299d878733bf3775ce
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 806556a8da97ec84fe8141b95198b4a7da95c062
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744756"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928367"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Bulut tutarlılığı için ARM şablonları geliştirme
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Azure 'un önemli bir avantajı tutarlılığa sahiptir. Bir konum için geliştirme yatırımları başka bir konuma yeniden kullanılabilir. Azure Resource Manager (ARM) şablonu, dağıtımlarınızın Genel Azure, Azure sogeign bulutları ve Azure Stack dahil olmak üzere ortamlar arasında tutarlı ve yinelenebilir olmasını sağlar. Ancak, şablonları bulutlarda yeniden kullanmak için bu kılavuzda açıklandığı şekilde buluta özgü bağımlılıkları göz önünde bulundurmanız gerekir.
+Azure 'un önemli bir avantajı tutarlılığa sahiptir. Bir konum için geliştirme yatırımları başka bir konuma yeniden kullanılabilir. Azure Resource Manager şablonu (ARM şablonu), dağıtımlarınızın Genel Azure, Azure sogeign bulutları ve Azure Stack dahil olmak üzere ortamlar arasında tutarlı ve yinelenebilir olmasını sağlar. Ancak, şablonları bulutlarda yeniden kullanmak için bu kılavuzda açıklandığı şekilde buluta özgü bağımlılıkları göz önünde bulundurmanız gerekir.
 
 Microsoft birçok konumda akıllı ve kurumsal özellikli bulut hizmetleri sunar:
 
@@ -443,8 +443,8 @@ Uç nokta ad alanları, dağıtım tamamlandığında Kullanıcı için bilgi ol
 
 Genel olarak, bir şablonda sabit kodlanmış uç noktalar kullanmaktan kaçının. En iyi yöntem, uç noktaları dinamik olarak almak için başvuru şablonu işlevini kullanmaktır. Örneğin, en yaygın olarak kodlanmış uç nokta, depolama hesapları için uç nokta ad alanıdır. Her depolama hesabının, uç nokta ad alanı ile depolama hesabının adını birleştirerek oluşturulan benzersiz bir FQDN vardır. Mystorageaccount1 adlı bir BLOB depolama hesabı, buluta bağlı olarak farklı FQDN 'Ler ile sonuçlanır:
 
-* **mystorageaccount1.blob.Core.Windows.net** Genel Azure bulutu üzerinde oluşturulduğunda.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** , Azure Çin 21Vianet bulutu 'nda oluşturulduğunda.
+* `mystorageaccount1.blob.core.windows.net` Genel Azure bulutu 'nda oluşturulduğunda.
+* `mystorageaccount1.blob.core.chinacloudapi.cn` Azure Çin 21Vianet bulutu 'nda oluşturulduğunda.
 
 Aşağıdaki başvuru şablonu işlevi, depolama kaynak sağlayıcısından Endpoint ad alanını alır:
 
@@ -487,7 +487,7 @@ Bir konumdaki kullanılabilir VM görüntülerinin listesini almak için şu Azu
 az vm image list -all
 ```
 
-[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve parametresiyle istediğiniz konumu belirtebilirsiniz `-Location` . Örneğin:
+[Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) Azure PowerShell cmdlet 'i ile aynı listeyi alabilir ve parametresiyle istediğiniz konumu belirtebilirsiniz `-Location` . Örnek:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -590,7 +590,7 @@ Belirli bir bölge için kullanılabilen VM uzantılarının listesini almak iç
 az vm extension image list --location myLocation
 ```
 
-Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve `-Location` sanal makine görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örneğin:
+Ayrıca Azure PowerShell, [Get-Azurermvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher) cmdlet 'ini yürütebilir ve `-Location` sanal makine görüntüsünün konumunu belirtmek için öğesini kullanabilirsiniz. Örnek:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -641,7 +641,7 @@ Her belirli uzantı da sürümlüdür. Bu sürüm, `typeHandlerVersion` VM uzant
         ...
 ```
 
-Belirli bir VM uzantısı için kullanılabilir sürümlerin bir listesini almak için [Get-Azurermvmextensionımage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet 'ini kullanın. Aşağıdaki örnek, PowerShell DSC (Istenen durum yapılandırması) VM uzantısının mevcut sürümlerini **MyLocation** 'dan alır:
+Belirli bir VM uzantısı için kullanılabilir sürümlerin bir listesini almak için [Get-Azurermvmextensionımage](/powershell/module/az.compute/get-azvmextensionimage) cmdlet 'ini kullanın. Aşağıdaki örnek, PowerShell DSC (Istenen durum yapılandırması) VM uzantısının mevcut sürümlerini **MyLocation**'dan alır:
 
 ```azurepowershell-interactive
 Get-AzureRmVMExtensionImage -Location myLocation -PublisherName Microsoft.PowerShell -Type DSC | FT

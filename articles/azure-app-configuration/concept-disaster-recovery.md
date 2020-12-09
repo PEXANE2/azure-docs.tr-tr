@@ -1,17 +1,17 @@
 ---
 title: Azure uygulama yapılandırma dayanıklılığı ve olağanüstü durum kurtarma
 description: Azure Uygulama yapılandırması ile dayanıklılık ve olağanüstü durum kurtarmayı nasıl uygulayacağınızı yalın yapın.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 5c62f10d67345d68cde27af7d0a7663b22d978a0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 07/09/2020
+ms.openlocfilehash: 7910e2092259081aade799fc662052e5a1375e25
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002434"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930492"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Dayanıklılık ve olağanüstü durum kurtarma
 
@@ -72,11 +72,11 @@ Birincil depodan verileri isteğe bağlı olarak kopyalamak için uygulama yapı
 
 Azure portal, aşağıdaki adımları izleyerek başka bir yapılandırma deposuna bir değişikliği gönderebilirsiniz.
 
-1. **İçeri/dışarı aktarma** sekmesine gidin ve uygulama yapılandırma hedefini **dışarı aktar**' ı seçin ve  >  **App Configuration**  >  **Target**  >  **kaynak seçin**.
+1. **İçeri/dışarı aktarma** sekmesine gidin ve uygulama yapılandırma hedefini **dışarı aktar**' ı seçin ve  >    >    >  **kaynak seçin**.
 
 1. Açılan yeni dikey pencerede abonelik, kaynak grubu ve ikincil deponuzu kaynak adını belirtip **Uygula**' yı seçin.
 
-1. İkincil deponuza dışarı aktarmak istediğiniz yapılandırma verilerini seçebilmeniz için Kullanıcı arabirimi güncellenir. Varsayılan saat değerini olduğu gibi bırakabilir ve hem **etiketi** hem de **etiketi** aynı değere ayarlayabilirsiniz. **Apply** (Uygula) seçeneğini belirleyin. Bunu birincil Deponuzdaki tüm etiketler için tekrarlayın.
+1. İkincil deponuza dışarı aktarmak istediğiniz yapılandırma verilerini seçebilmeniz için Kullanıcı arabirimi güncellenir. Varsayılan saat değerini olduğu gibi bırakabilir ve hem **etiketi** hem de **etiketi** aynı değere ayarlayabilirsiniz. **Uygula**’yı seçin. Bunu birincil Deponuzdaki tüm etiketler için tekrarlayın.
 
 1. Yapılandırmanız her değiştiğinde önceki adımları yineleyin.
 

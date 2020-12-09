@@ -1,17 +1,17 @@
 ---
 title: Yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 description: Müşteri tarafından yönetilen anahtarları kullanarak yapılandırma verilerinizi şifreleyin
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/18/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 8942c93b7346613b8cfdc97d9afe09f1c473fb10
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46a1e99a7bc75efa85fcb5eff649c14af5abd17b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87384880"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930509"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Uygulama yapılandırma verilerinizi şifrelemek için müşteri tarafından yönetilen anahtarları kullanın
 Azure Uygulama yapılandırması, [bekleyen gizli bilgileri şifreler](../security/fundamentals/encryption-atrest.md). Müşteri tarafından yönetilen anahtarların kullanımı, şifreleme anahtarlarınızı yönetmenize olanak tanıyarak gelişmiş veri koruması sağlar.  Yönetilen anahtar şifrelemesi kullanıldığında, uygulama yapılandırmasındaki tüm hassas bilgiler Kullanıcı tarafından sağlanmış bir Azure Key Vault anahtarıyla şifrelenir.  Bu, şifreleme anahtarını isteğe bağlı olarak döndürme olanağı sağlar.  Ayrıca, uygulama yapılandırma örneğinin anahtara erişimini iptal ederek Azure uygulama yapılandırmasının hassas bilgilere erişimini iptal etme olanağı da sağlar.

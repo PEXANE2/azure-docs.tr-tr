@@ -5,12 +5,12 @@ services: automation
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: e8fc2a840ce019282625f286a6d54b132a1806c8
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751266"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929285"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Güncelleştirme Yönetimi sorunlarını giderme
 
@@ -19,7 +19,7 @@ Bu makalede, makinelerinizde Güncelleştirme Yönetimi özelliğini dağıttı�
 >[!NOTE]
 >Bir Windows makinesinde Güncelleştirme Yönetimi dağıttığınızda sorunlarla karşılaşırsanız, Windows Olay Görüntüleyicisi açın ve yerel makinedeki **uygulama ve hizmet günlükleri** altında **Operations Manager** olay günlüğünü kontrol edin. Olay KIMLIĞI 4502 ve olay ayrıntıları içeren olayları arayın `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
-## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a>Senaryo: bekleyen ve yüklü olarak gösterilen Linux güncelleştirmeleri
+## <a name="scenario-linux-updates-shown-as-pending-and-those-installed-vary"></a><a name="updates-linux-installed-different"></a>Senaryo: bekleyen ve yüklü olarak gösterilen Linux güncelleştirmeleri
 
 ### <a name="issue"></a>Sorun
 
@@ -71,7 +71,7 @@ Bu hata, aşağıdaki nedenlerden dolayı oluşabilir:
 
 * Güncelleştirme Yönetimi hedefleme yanlış yapılandırılmış ve makine, güncelleştirmeleri beklendiği gibi almıyor.
 
-* Ayrıca, makinenin uyumluluk altında durumunun olduğunu da fark edebilirsiniz `Non-compliant` . **Compliance** Aynı zamanda, **aracı masaüstü Analizi** aracıyı olarak bildirir `Disconnected` .
+* Ayrıca, makinenin uyumluluk altında durumunun olduğunu da fark edebilirsiniz `Non-compliant` .  Aynı zamanda, **aracı masaüstü Analizi** aracıyı olarak bildirir `Disconnected` .
 
 ### <a name="resolution"></a>Çözüm
 
@@ -121,7 +121,7 @@ Makineleriniz aşağıdaki belirtilerle sahiptir:
 
 * Azure Otomasyonu hesabınızın Güncelleştirme Yönetimi görünümünde makineleriniz eksik.
 
-* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır **Compliance**. Ancak, karma Runbook Worker için Azure Izleyici günlüklerinde sinyal verilerini görürsünüz, ancak Güncelleştirme Yönetimi için değildir.
+* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır . Ancak, karma Runbook Worker için Azure Izleyici günlüklerinde sinyal verilerini görürsünüz, ancak Güncelleştirme Yönetimi için değildir.
 
 ### <a name="cause"></a>Nedeni
 
@@ -531,7 +531,7 @@ Bakım pencereleri hakkında daha fazla bilgi için bkz. [Install Updates](../up
 
 ### <a name="issue"></a>Sorun
 
-* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır **Compliance** ve bunların altında bir özel durum iletisi görürsünüz.
+* Uyumluluk altında olarak görünen makineleriniz `Not assessed` vardır ve bunların altında bir özel durum iletisi görürsünüz.
 * Portalda bir HRESULT hata kodu görürsünüz.
 
 ### <a name="cause"></a>Nedeni

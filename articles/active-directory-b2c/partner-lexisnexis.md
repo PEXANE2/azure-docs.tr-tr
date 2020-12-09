@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953702"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928656"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Lexisnexto yapılandırma öğreticisi Azure Active Directory B2C
 
-Bu örnek öğreticide, Azure AD B2C [Lexisnexwith](https://risk.lexisnexis.com/products/threatmetrix/?utm_source=bingads&utm_medium=ppc&utm_campaign=SEM%7CLNRS%7CUS%7CEN%7CTMX%7CBR%7CBing&utm_term=threat%20metrix&utm_network=o&utm_device=c&msclkid=1e85e32ec18c1ae9bbc1bc2998e026bd)ile tümleştirme hakkında rehberlik sağlıyoruz. Lexisnex, çeşitli çözümler sağlar ve [burada](https://risk.lexisnexis.com/products/threatmetrix/?utm_source=bingads&utm_medium=ppc&utm_campaign=SEM%7CLNRS%7CUS%7CEN%7CTMX%7CBR%7CBing&utm_term=threat%20metrix&utm_network=o&utm_device=c&msclkid=1e85e32ec18c1ae9bbc1bc2998e026bd)bulunabilir. Bu örnek öğreticide, LexisnexThreatMetrix **ThreatMetrix** çözümünü ele alacağız. ThreatMetrix, profil oluşturma ve kimlik doğrulama hizmetidir. Kullanıcı kimliğini doğrulamak ve kullanıcının cihazına göre kapsamlı risk değerlendirmeleri sağlamak için kullanılır.
+Bu örnek öğreticide, Azure AD B2C [Lexisnexwith](https://risk.lexisnexis.com/products/threatmetrix/?utm_source=bingads&utm_medium=ppc&utm_campaign=SEM%7CLNRS%7CUS%7CEN%7CTMX%7CBR%7CBing&utm_term=threat%20metrix&utm_network=o&utm_device=c&msclkid=1e85e32ec18c1ae9bbc1bc2998e026bd)ile tümleştirme hakkında rehberlik sağlıyoruz. Lexisnex, çeşitli çözümler sağlar ve [burada](https://risk.lexisnexis.com/products/threatmetrix/?utm_source=bingads&utm_medium=ppc&utm_campaign=SEM%7CLNRS%7CUS%7CEN%7CTMX%7CBR%7CBing&utm_term=threat%20metrix&utm_network=o&utm_device=c&msclkid=1e85e32ec18c1ae9bbc1bc2998e026bd)bulunabilir. Bu örnek öğreticide, LexisnexThreatMetrix  çözümünü ele alacağız. ThreatMetrix, profil oluşturma ve kimlik doğrulama hizmetidir. Kullanıcı kimliğini doğrulamak ve kullanıcının cihazına göre kapsamlı risk değerlendirmeleri sağlamak için kullanılır.
 
 Bu tümleştirme, oturum açma akışı sırasında Kullanıcı tarafından belirtilen birkaç Kullanıcı bilgisi parçasını temel alan profil oluşturmayı yapar. ThreatMetrix, kullanıcının oturum açmaya devam etmesine izin verilip verilmeyeceğini belirler. ThreatMetrix 'in Risk analizinde aşağıdaki öznitelikler dikkate alınır:
 
@@ -27,7 +27,7 @@ Bu tümleştirme, oturum açma akışı sırasında Kullanıcı tarafından beli
 - Telefon Numarası
 - Kullanıcının makinesinden toplanan profil oluşturma bilgileri
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -49,7 +49,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![LexisNexis-mimari-diyagram ekran görüntüsü](media/partner-lexisnexis/lexisnexis-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:--------------|:-------------|
 |1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak ve sayfaya bilgi girmek için kaydolma ' yı seçer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -73,7 +73,7 @@ Bir hesap oluşturulduktan sonra, API yapılandırması için gereken bilgileri 
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.

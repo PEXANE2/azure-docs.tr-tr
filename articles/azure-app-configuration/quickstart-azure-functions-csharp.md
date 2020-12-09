@@ -2,18 +2,18 @@
 title: Azure Işlevleri ile Azure Uygulama yapılandırması için hızlı başlangıç | Microsoft Docs
 description: Bu hızlı başlangıçta Azure Uygulama yapılandırması ve C# ile bir Azure Işlevleri uygulaması oluşturun. Uygulama yapılandırma deposu oluşturun ve bu depolama alanına bağlanın. İşlevi yerel olarak test edin.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 24620351cdd831ec5079e1f37726b2aa65339205
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075867"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930815"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırması ile Azure Işlevleri uygulaması oluşturma
 
@@ -29,7 +29,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. **Configuration Explorer**  >  **+ Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
+7.   >    >  Aşağıdaki anahtar-değer çiftlerini eklemek için yapılandırma Gezgini +**anahtar-değer** oluştur ' u seçin:
 
     | Anahtar | Değer |
     |---|---|
@@ -37,7 +37,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
     **Etiket** ve **içerik türü** şimdilik boş bırakın.
 
-8. **Apply** (Uygula) seçeneğini belirleyin.
+8. **Uygula**’yı seçin.
 
 ## <a name="create-a-functions-app"></a>Işlevler uygulaması oluşturma
 
@@ -86,7 +86,7 @@ Bu hızlı başlangıçta, Azure App Configuration hizmetini bir Azure Işlevler
 
 ## <a name="test-the-function-locally"></a>İşlevi yerel olarak test etme
 
-1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
+1. **ConnectionString** adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```cmd
         setx ConnectionString "connection-string-of-your-app-configuration-store"

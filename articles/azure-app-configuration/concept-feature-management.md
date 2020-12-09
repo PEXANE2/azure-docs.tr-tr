@@ -1,28 +1,28 @@
 ---
 title: Azure Uygulama yapılandırması 'nı kullanarak özellik yönetimini anlama
 description: Azure Uygulama yapılandırması 'nı kullanarak özellikleri açma ve kapatma
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfd676092bcaede58909a3ec1eefeabb4c80f86b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88212651"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930237"
 ---
 # <a name="feature-management-overview"></a>Özellik yönetimine genel bakış
 
 Geleneksel olarak, yeni bir uygulama özelliği teslim etmek, uygulamanın kendisi için tamamen yeniden dağıtımı gerektirir. Bir özelliğin test edilmesi genellikle uygulamanın birden çok dağıtımını gerektirir.  Her dağıtım, özelliği değiştirebilir veya test için özelliği farklı müşterilere sunabilir.  
 
-Özellik Yönetimi, özellik yayınını kod dağıtımından ayrışar ve isteğe bağlı olarak özellik kullanılabilirliğine hızlı değişiklikler sağlayan modern bir yazılım geliştirme uygulamasıdır. Özelliğin yaşam döngüsünü dinamik olarak yönetmek için *özellik bayrakları* ( *özellik* *geçişleri, özellik anahtarları*vb. olarak da bilinir) adlı bir teknik kullanır.
+Özellik Yönetimi, özellik yayınını kod dağıtımından ayrışar ve isteğe bağlı olarak özellik kullanılabilirliğine hızlı değişiklikler sağlayan modern bir yazılım geliştirme uygulamasıdır. Özelliğin yaşam döngüsünü dinamik olarak yönetmek için *özellik bayrakları* ( *özellik* *geçişleri, özellik anahtarları* vb. olarak da bilinir) adlı bir teknik kullanır.
 
 Özellik Yönetimi, geliştiricilerin aşağıdaki sorunları ele almanıza yardımcı olur:
 
-* **Kod dalı yönetimi**: Geliştirme kapsamında olan yeni uygulama işlevselliğini kaydırmak için özellik bayraklarını kullanın. Bu işlevsellik varsayılan olarak "gizlidir". Tamamlanmamış olsa bile özelliği güvenle gönderebilirsiniz ve üretimde devre dışı kalır. *Koyu dağıtım*olarak adlandırılan bu yaklaşımı kullanarak her bir geliştirme döngüsünün sonunda tüm kodunuzu serbest bırakabilirsiniz. Belirli bir özellik için birden fazla döngü gerektiğinden, artık birden çok geliştirme döngüsünde kod dallarını korumanız gerekmez.
+* **Kod dalı yönetimi**: Geliştirme kapsamında olan yeni uygulama işlevselliğini kaydırmak için özellik bayraklarını kullanın. Bu işlevsellik varsayılan olarak "gizlidir". Tamamlanmamış olsa bile özelliği güvenle gönderebilirsiniz ve üretimde devre dışı kalır. *Koyu dağıtım* olarak adlandırılan bu yaklaşımı kullanarak her bir geliştirme döngüsünün sonunda tüm kodunuzu serbest bırakabilirsiniz. Belirli bir özellik için birden fazla döngü gerektiğinden, artık birden çok geliştirme döngüsünde kod dallarını korumanız gerekmez.
 * **Üretimde test**: üretimde yeni işlevlere erken erişim sağlamak için özellik bayraklarını kullanın. Örneğin, erişimi takım üyelerine veya iç beta sınayıcılarına sınırlayabilirsiniz. Bu kullanıcılar bir test ortamında benzetimli veya kısmi bir deneyim yerine tam uygunlukta üretim deneyimine sahip olur.
 * **Fışıklandırma**: son kullanıcılara artımlı olarak yeni işlevsellik aktarmak için özellik bayraklarını kullanın. Önce Kullanıcı popülasyonunun küçük bir yüzdesini hedefleyebilir ve zaman içinde kademeli olarak bu yüzdeyi artırabilirsiniz.
 * **Anında sonlandırma anahtarı**: özellik bayrakları, yeni işlevselliği serbest bırakmak için devralınmış bir güvenlik ağı sağlar. Herhangi bir kodu yeniden dağıtmaya gerek kalmadan uygulama özelliklerini etkinleştirebilir ve devre dışı bırakabilirsiniz. Gerekirse, uygulamanızı yeniden derlemek ve yeniden dağıtmak zorunda kalmadan bir özelliği hızlıca devre dışı bırakabilirsiniz.
@@ -32,7 +32,7 @@ Geleneksel olarak, yeni bir uygulama özelliği teslim etmek, uygulamanın kendi
 
 Özellik yönetimiyle ilgili birkaç yeni terim aşağıda verilmiştir:
 
-* **Özellik bayrağı**: Özellik bayrağı, ikili durumu *Açık* veya *kapalı*olan bir değişkendir. Özellik bayrağının ayrıca ilişkili bir kod bloğu vardır. Özellik bayrağının durumu kod bloğunun çalıştırılıp çalıştırılmadığını tetikler.
+* **Özellik bayrağı**: Özellik bayrağı, ikili durumu *Açık* veya *kapalı* olan bir değişkendir. Özellik bayrağının ayrıca ilişkili bir kod bloğu vardır. Özellik bayrağının durumu kod bloğunun çalıştırılıp çalıştırılmadığını tetikler.
 * **Özellik Yöneticisi**: bir özellik Yöneticisi, bir uygulamadaki tüm özellik bayraklarının yaşam döngüsünü işleyen bir uygulama paketidir. Özellik Yöneticisi ayrıca Özellik bayraklarını önbelleğe alma ve durumlarını güncelleştirme gibi ek işlevler de sağlar.
 * **Filtre**: filtre, bir özellik bayrağının durumunu değerlendirmek için bir kuraldır. Olası filtreler Kullanıcı gruplarını, cihaz veya tarayıcı türlerini, coğrafi konumları ve zaman pencerelerini içerir.
 

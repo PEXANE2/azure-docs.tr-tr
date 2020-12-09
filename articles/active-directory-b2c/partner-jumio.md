@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: f3a8881b9fe44727caf07b3cc0d5ee19f0444e98
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 66ec0d4b09dc983eb898d63d45b3dd7cab291c4c
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953670"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928673"
 ---
 # <a name="tutorial-for-configuring-jumio-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Jumio yapılandırma öğreticisi
 
 Bu örnek öğreticide, Azure Active Directory B2C (Azure AD B2C) [Jumio](https://www.jumio.com/)ile tümleştirme hakkında rehberlik sağlıyoruz. Jumio, müşteri verilerinin korunmasına yardımcı olmak için gerçek zamanlı otomatik KIMLIK doğrulamaya olanak sağlayan bir KIMLIK doğrulama hizmetidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -46,7 +46,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Jumio ile Azure AD B2C tümleştirme mimarisinin diyagramı.](./media/partner-jumio/jumio-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı oturum açmak veya hesap oluşturmak için kaydolmak üzere bir sayfaya ulaşır. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C, orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -65,7 +65,7 @@ Bir Jumıo hesabı oluşturduktan sonra, Azure AD B2C yapılandırmak için hesa
 
 ### <a name="deploy-the-api"></a>API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) bir Azure hizmetine dağıtın. [Bu yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek kodu Visual Studio 'dan yayımlayabilirsiniz.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Jumio/API/Jumio.Api) bir Azure hizmetine dağıtın. [Bu yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure)Izleyerek kodu Visual Studio 'dan yayımlayabilirsiniz.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.

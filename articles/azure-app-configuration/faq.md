@@ -2,17 +2,17 @@
 title: Azure uygulama yapılandırma hakkında SSS
 description: Azure Uygulama yapılandırması hakkında sık sorulan sorular (SSS) hakkında bilgi edinmek için Azure Key Vault farklıdır.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.author: alkemper
+ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242118"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929574"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure uygulama yapılandırma hakkında SSS
 
@@ -86,16 +86,16 @@ Her iki uygulama yapılandırma katmanı da yapılandırma ayarları, özellik b
 
 Katman seçme konusunda dikkate alınması gereken noktalar aşağıda verilmiştir.
 
-- **Abonelik başına kaynaklar** : bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
-- **Kaynak başına depolama** : Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
-- **Düzeltme geçmişi** : uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
-- **İstek kotası** : ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC 'ye kadar tüm istekler için 429 HTTP durum kodunu döndürür.
+- **Abonelik başına kaynaklar**: bir kaynak tek bir yapılandırma deposundan oluşur. Her abonelik, ücretsiz katmandaki bir yapılandırma deposuyla sınırlıdır. Abonelikler Standart katmanda sınırsız sayıda yapılandırma deposu olabilir.
+- **Kaynak başına depolama**: Ücretsiz katmanda, her yapılandırma deposu 10 MB depolama alanı ile sınırlıdır. Standart katmanda, her yapılandırma deposu en fazla 1 GB depolama kullanabilir.
+- **Düzeltme geçmişi**: uygulama yapılandırması anahtarlar üzerinde yapılan tüm değişikliklerin geçmişini depolar. Ücretsiz katmanda bu geçmiş yedi gün boyunca depolanır. Standart katmanda bu geçmiş 30 gün boyunca depolanır.
+- **İstek kotası**: ücretsiz katman depoları, günde 1.000 istek ile sınırlıdır. Bir mağaza 1.000 istek ulaştığında, gece yarısı UTC 'ye kadar tüm istekler için 429 HTTP durum kodunu döndürür.
 
     Standart katman depoları, saat başına 20.000 istek ile sınırlıdır. Kota tükendiğinde, saatin sonuna kadar tüm istekler için HTTP durum kodu 429 döndürülür.
 
-- **Hizmet düzeyi sözleşmesi** : Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
-- **Güvenlik özellikleri** : her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure Active Directory, Azure RBAC desteği, yönetilen kimlik ve hizmet etiketleri aracılığıyla kimlik doğrulaması dahil olmak üzere temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
-- **Maliyet** : Standart katman mağazalarında günlük kullanım ücreti vardır. Her gün ilk 200.000 istek günlük ücretlerine dahil edilir. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
+- **Hizmet düzeyi sözleşmesi**: Standart katmanda% 99,9 kullanılabilirlik SLA 'sı vardır. Ücretsiz katmanda bir SLA yoktur.
+- **Güvenlik özellikleri**: her iki katmanda da Microsoft tarafından yönetilen anahtarlarla ŞIFRELEME, HMAC veya Azure Active Directory, Azure RBAC desteği, yönetilen kimlik ve hizmet etiketleri aracılığıyla kimlik doğrulaması dahil olmak üzere temel güvenlik işlevleri bulunur. Standart katmanda özel bağlantı desteği ve müşteri tarafından yönetilen Anahtarlarla Şifreleme dahil daha gelişmiş güvenlik işlevleri sunulmaktadır.
+- **Maliyet**: Standart katman mağazalarında günlük kullanım ücreti vardır. Her gün ilk 200.000 istek günlük ücretlerine dahil edilir. Günlük ayırmanın ötesinde istekler için de fazla kullanım ücreti de vardır. Ücretsiz katman deposu kullanma maliyeti yoktur.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Bir mağazayı ücretsiz katmandan Standart katmana yükseltebilir miyim? Standart katmandaki bir deponun ücretsiz katmana indirgenmesini sağlayabilir miyim?
 

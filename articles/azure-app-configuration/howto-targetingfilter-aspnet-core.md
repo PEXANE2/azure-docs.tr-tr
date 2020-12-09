@@ -3,16 +3,16 @@ title: Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etki
 titleSuffix: Azure App Configuration
 description: Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını nasıl etkinleştireceğinizi öğrenin
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558034"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929693"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Hedeflenen izleyiciler için özelliklerin aşamalı dağıtımını etkinleştir
 
@@ -91,7 +91,7 @@ Bu noktada, `Beta` tüm kullanıcılar için özelliği etkinleştirmek veya dev
     }
     ```
 
-1. *Startup.cs* ' de, *Microsoft. Featuremanagement. featurefilters* ad alanına bir başvuru ekleyin:
+1. *Startup.cs*' de, *Microsoft. Featuremanagement. featurefilters* ad alanına bir başvuru ekleyin:
 
     ```csharp
     using Microsoft.FeatureManagement.FeatureFilters;
@@ -131,9 +131,9 @@ Tüm *ConfigureServices* yöntemi şöyle görünür:
 
 ## <a name="update-the-feature-flag-to-use-targetingfilter"></a>Özellik bayrağını TargetingFilter kullanacak şekilde Güncelleştir
 
-1. Azure portal, uygulama yapılandırma deponuza gidin ve **Feature Manager** ' ı seçin.
+1. Azure portal, uygulama yapılandırma deponuza gidin ve **Feature Manager**' ı seçin.
 
-1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsünü seçin. **Düzenle** ’yi seçin.
+1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsünü seçin. **Düzenle**’yi seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)
@@ -142,11 +142,11 @@ Tüm *ConfigureServices* yöntemi şöyle görünür:
 
 1. **Hedef** radyo düğmesini seçin.
 
-1. Aşağıdaki seçenekleri belirleyin:
+1. Aşağıdaki seçenekleri belirtin:
 
-    - **Varsayılan yüzde** : 0
-    - **Gruplar** : bir contoso.com **adı** ve _contoso.com_ _50_ **yüzdesi** girin
-    - **Kullanıcılar** : `test@contoso.com`
+    - **Varsayılan yüzde**: 0
+    - **Gruplar**: bir contoso.com **adı** ve  _50_ **yüzdesi** girin
+    - **Kullanıcılar**: `test@contoso.com`
 
     Özellik filtresi ekranı şöyle görünür:
 

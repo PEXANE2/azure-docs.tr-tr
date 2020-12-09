@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/04/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 55d40719fe2d51f03f3b969438678edde2972b05
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607934"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928481"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
@@ -191,7 +191,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 1. [Azure Portal](https://portal.azure.com/)yönetici olarak oturum açın.
 2. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
 3. **Kurumsal uygulamalar**' ı seçin ve ardından **Yeni uygulama**' yı seçin.
-4. Şirket **içi uygulamalar** bölümünde Şirket **içi uygulama ekle**' yi seçin.
+4. **Kendi uygulamanızı oluşturma** bölümünde, Şirket **içi bir uygulamaya güvenli uzaktan erişim Için uygulama ara sunucusunu yapılandır**' ı seçin.
 5. **Kendi şirket içi uygulamanızı ekleyin** bölümünde, uygulamanız hakkında aşağıdaki bilgileri sağlayın:
 
     | Alan | Açıklama |

@@ -4,12 +4,12 @@ description: Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şem
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6a76d642863a0baac8021a3da196ad5a2db48126
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184510"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931172"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure Kaynak günlükleri için ortak ve hizmete özgü şema
 
@@ -23,7 +23,7 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 
 ## <a name="top-level-common-schema"></a>Üst düzey ortak şema
 
-| Adı | Gerekli/İsteğe Bağlı | Açıklama |
+| Ad | Gerekli/İsteğe Bağlı | Açıklama |
 |---|---|---|
 | time | Gerekli | Olayın zaman damgası (UTC). |
 | resourceId | Gerekli | Olayı veren kaynağın kaynak KIMLIĞI. Kiracı Hizmetleri için bu,/Tenants/Tenant-id/Providers/Provider-nameformundadır. |
@@ -38,7 +38,7 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 | callerIpAddress | İsteğe Bağlı | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
 | correlationId | İsteğe Bağlı | Bir dizi ilgili olayı gruplamak için kullanılan GUID. Genellikle, iki olay aynı operationName öğesine, ancak iki farklı durum (örneğin, "başlatılmış" ve "başarılı") varsa, aynı bağıntı KIMLIĞINI paylaşır. Bu, olaylar arasındaki diğer ilişkileri de temsil edebilir. |
 | identity | İsteğe Bağlı | İşlemi gerçekleştiren kullanıcının veya uygulamanın kimliğini açıklayan bir JSON blobu. Bu alan genellikle Active Directory 'den yetkilendirme ve talepler/JWT belirtecini içerir. |
-| Düzey | İsteğe Bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
+| Level | İsteğe Bağlı | Etkinliğin önem düzeyi. Bilgilendirici, uyarı, hata veya kritik bir olmalıdır. |
 | location | İsteğe Bağlı | Olayı yayan kaynak bölgesi, örneğin "Doğu ABD" veya "Fransa Güney" |
 | properties | İsteğe Bağlı | Bu belirli olay kategorisiyle ilgili genişletilmiş özellikler. Tüm özel/benzersiz özellikler şemanın "Bölüm B" içinde yerleştirilmelidir. |
 
@@ -51,6 +51,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | Azure Active Directory | [Genel bakış](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [Denetim günlüğü şeması](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) ve [oturum açma şeması](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | [Azure Analysis Services-tanılama günlüğü kurulumu](../../analysis-services/analysis-services-logging.md) |
 | API Management | [Kaynak günlüklerini API Management](../../api-management/api-management-howto-use-azure-monitor.md#resource-logs) |
+| App Service | [App Service günlükleri](../../app-service/troubleshoot-diagnostic-logs.md)
 | Uygulama Ağ Geçitleri |[Application Gateway için günlüğe kaydetme](../../application-gateway/application-gateway-diagnostics.md) |
 | Azure Otomasyonu |[Azure Otomasyonu için Log Analytics](../../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Günlüğe kaydetme Azure Batch](../../batch/batch-diagnostics.md) |
@@ -79,7 +80,7 @@ Kaynak günlükleri şeması, kaynak ve günlük kategorisine göre değişir. B
 | DDOS Koruması | [Azure DDoS koruması standardını yönetme](../../ddos-protection/manage-ddos-protection.md) |
 | Power BI Ayrılmış | [Azure 'da Power BI Embedded için günlüğe kaydetme](/power-bi/developer/azure-pbie-diag-logs) |
 | Kurtarma Hizmetleri | [Azure Backup için veri modeli](../../backup/backup-azure-reports-data-model.md)|
-| Arayın |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
+| Arama |[Arama Trafik Analizi etkinleştirme ve kullanma](../../search/search-traffic-analytics.md) |
 | Service Bus |[Azure Service Bus günlükleri](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Veritabanı | [Azure SQL veritabanı günlüğü](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[İş günlükleri](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |

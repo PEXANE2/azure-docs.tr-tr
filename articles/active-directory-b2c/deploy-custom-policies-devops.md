@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2652bd8ed33eb68e228f059fba9daa3c6e7c22da
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170166"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928741"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines ile özel ilkeler dağıtma
 
@@ -31,7 +31,7 @@ Azure AD B2C içindeki özel ilkeleri yönetmek için Azure Pipelines etkinleşt
 > [!IMPORTANT]
 > Azure işlem hattı ile Azure AD B2C özel ilkeleri yönetmek Şu anda Microsoft Graph API uç noktasında kullanılabilen **Önizleme** işlemlerini kullanıyor `/beta` . Üretim uygulamalarında bu API 'lerin kullanılması desteklenmez. Daha fazla bilgi için [Microsoft Graph REST API Beta uç nokta başvurusuna](/graph/api/overview?toc=.%2fref%2ftoc.json&view=graph-rest-beta)bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [B2C ıEF Ilke Yöneticisi](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
@@ -46,7 +46,7 @@ Burada açıklanan senaryo, OAuth 2,0 [istemci kimlik bilgileri verme akışın�
 
 [Önkoşullardan](#prerequisites)bahsedildiği gibi, PowerShell betiklerinizin (Azure Pipelines tarafından yürütülen), kiracınızdaki kaynaklara erişmek için kullanabileceği bir uygulama kaydına ihtiyacınız vardır.
 
-Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa, **Microsoft Graph**  >  **Policy**  >  uygulama kaydının **API izinleri** içinde Microsoft Graph Policy **Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
+Otomasyon görevleri için kullandığınız bir uygulama kaydınız zaten varsa,   >    >  uygulama kaydının **API izinleri** içinde Microsoft Graph Policy **Policy. ReadWrite. TrustFramework** izninin verildiğinden emin olun.
 
 Bir yönetim uygulamasını kaydetme hakkında yönergeler için bkz. [Microsoft Graph Azure AD B2C yönetme](microsoft-graph-get-started.md).
 
@@ -114,7 +114,7 @@ Deponuz başlatılmış ve özel ilke dosyalarınıza doldurulduktan sonra yayı
 ### <a name="create-pipeline"></a>İşlem hattı oluşturma
 
 1. Azure DevOps Services kuruluşunuzda oturum açın ve projenize gidin.
-1. Projenizde işlem **hatları**  >  **Releases**  >  **Yeni işlem hattı**' nı seçin.
+1. Projenizde işlem **hatları**  >    >  **Yeni işlem hattı**' nı seçin.
 1. **Şablon seç** altında **boş iş**' ı seçin.
 1. Bir **aşama adı** girin, örneğin *DeployCustomPolicies*, sonra bölmeyi kapatın.
 1. **Yapıt Ekle**' yi seçin ve **kaynak türü** altında **Azure deposu**' nu seçin.
@@ -212,9 +212,9 @@ Bir yayının sıraya alınmış olduğunu belirten bir bildirim başlığı gö
 Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 * [İstemci kimlik bilgilerini kullanan hizmetten hizmete çağrılar](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md)
-* [Azure DevOps Services](/azure/devops/user-guide/?view=azure-devops)
+* [Azure DevOps Services](/azure/devops/user-guide/)
 
 <!-- LINKS - External -->
-[devops]: /azure/devops/?view=azure-devops
-[devops-create-project]:  /azure/devops/organizations/projects/create-project?view=azure-devops
+[devops]: /azure/devops/
+[devops-create-project]:  /azure/devops/organizations/projects/create-project
 [devops-pipelines]: /azure/devops/pipelines

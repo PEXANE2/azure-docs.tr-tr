@@ -3,17 +3,17 @@ title: Anahtar-değer çiftlerini bir noktadan zaman al
 titleSuffix: Azure App Configuration
 description: Azure Uygulama yapılandırmasında, anahtar değerlerinde yapılan değişikliklerin kaydını tutan zaman içindeki noktadan noktaya görüntüleri kullanarak eski anahtar-değer çiftlerini alın.
 services: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/20/2020
-ms.openlocfilehash: 23f613584638026a2b371849c7d1014b3bb1f136
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 08/05/2020
+ms.openlocfilehash: fa2dbb11b3b8b9afd90c7f6fe3ffe77e2e57c4e6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073079"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929906"
 ---
 # <a name="point-in-time-snapshot"></a>Belirli bir noktanın anlık görüntüsü
 

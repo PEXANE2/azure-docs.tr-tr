@@ -1,21 +1,21 @@
 ---
 title: Öğretici-şablondaki kaynaklara etiketler ekleme
-description: Azure Resource Manager şablonunuzda dağıttığınız kaynaklara Etiketler ekleyin. Etiketler, kaynakları mantıksal olarak düzenlemenizi sağlar.
+description: Azure Resource Manager şablonunuzda dağıttığınız kaynaklara Etiketler ekleyin (ARM şablonu). Etiketler, kaynakları mantıksal olarak düzenlemenizi sağlar.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613212"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930951"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Öğretici: ARM şablonunuza etiketler ekleme
 
-Bu öğreticide, Azure Resource Manager (ARM) şablonunuzda kaynaklara nasıl etiket ekleneceğini öğreneceksiniz. [Etiketler](../management/tag-resources.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir. Bu öğreticinin tamamlandığı **8 dakika** sürer.
+Bu öğreticide, Azure Resource Manager şablonunuzda (ARM şablonu) kaynaklara etiket eklemeyi öğreneceksiniz. [Etiketler](../management/tag-resources.md) , kaynaklarınızı mantıksal olarak düzenlemenize yardımcı olur. Etiket değerleri, maliyet raporlarında gösterilir. Bu öğreticinin tamamlandığı **8 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -78,7 +78,7 @@ az deployment group create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Depolama hesabı kaynağı gibi kaynaklardan birini seçin. Artık etiketlere sahip olduğunu görürsünüz.

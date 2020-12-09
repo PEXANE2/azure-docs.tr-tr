@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29db2214ddabeb6df2aa937c4ccd1f9938143969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949454"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928724"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell ile Azure AD B2C özel ilkeleri yönetme
 
@@ -27,11 +27,11 @@ Azure PowerShell, Azure AD B2C kiracınızda komut satırı ve betik tabanlı ö
 * Azure AD B2C kiracınıza yeni bir ilke yükleme
 * Bir kiracıdan özel bir ilke silme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [B2C ıEF Ilke Yöneticisi](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator) rolüyle dizindeki bir kullanıcı için [Azure AD B2C kiracı](tutorial-create-tenant.md)ve kimlik bilgileri
 * Kiracınıza yüklenen [özel ilkeler](custom-policy-get-started.md)
-* [Grafik **Önizleme modülü** IÇIN Azure AD PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)
+* [Grafik **Önizleme modülü** IÇIN Azure AD PowerShell](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell oturumunu B2C kiracısına bağlama
 

@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4a71740c487896208a3da7bf35bb39899c56937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b17706f908613336714bb7daf08fdf3bfd5eaf64
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952072"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928401"
 ---
 # <a name="identity-protection-and-conditional-access-for-azure-ad-b2c"></a>Azure AD B2C için kimlik koruması ve koşullu erişim
 
@@ -60,7 +60,7 @@ Azure AD B2C, yerleşik Kullanıcı akışlarından koşullu erişim koşulları
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
-Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph başvurusu](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md).
+Koşullu erişim ilkelerini, Microsoft Graph API ile Azure AD B2C de yönetebilirsiniz. Ayrıntılar için bkz. [koşullu erişim belgeleri](../active-directory/conditional-access/overview.md) ve [Microsoft Graph başvurusu](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

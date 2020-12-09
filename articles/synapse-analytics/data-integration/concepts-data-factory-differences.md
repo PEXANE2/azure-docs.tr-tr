@@ -2,18 +2,18 @@
 title: Azure Data Factory ile arasındaki farklar
 description: Azure SYNAPSE Analytics 'in veri tümleştirme yetilerinin Azure Data Factory birbirinden farklı olduğunu öğrenin
 services: synapse-analytics
-author: djpmsft
+author: shirleywangmsft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.author: daperlov
+ms.author: shwang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 10f5336dd4c8a02acf623b1b14226ca676006953
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: db5d05e1a211ce14926ee4031054669fff5110d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357659"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930220"
 ---
 # <a name="data-integration-in-azure-synapse-analytics-versus-azure-data-factory"></a>Azure SYNAPSE Analytics 'te veri tümleştirmesi ve Azure Data Factory karşılaştırması
 
@@ -42,7 +42,6 @@ Aşağıdaki özellikler farklı şekilde davranır veya Azure SYNAPSE 'de Şu a
 
 * **Wrangling veri akışları:** Denetimi veri akışı etkinliği şu anda yalnızca Azure Data Factory kullanılabilir.
 * **Çözüm şablonu Galerisi:** Azure Data Factory, kullanıcılar, çözüm şablonu galerisinde işlem hattı şablonlarını bulabilir. SYNAPSE çalışma alanlarında, bilgi merkezi, ek veri kümeleri ve SQL betikleriyle birlikte farklı bir şablon kümesi içerir. 
-* **Git tümleştirmesi ve yerel BIR CI/CD çözümü:** Şu anda bir Synapse çalışma alanı bir git deposuna bağlanamaz veya Azure Data Factory aynı sürekli tümleştirme ve teslim sürecini takip etmez.
 * **Azure izleyici Ile tümleştirme:** SYNAPSE çalışma alanları Azure Data Factory olduğu gibi Azure Izleyici ile tümleştirilemez.
 * **Karma tümleştirme çalışma zamanı yapılandırması:** Bir Synapse çalışma alanı içinde, bir kullanıcının hem yönetilen VNet IR hem de bir Azure IR olamaz. Bu özellik Azure Data Factory desteklenir.
 * **Tümleştirme çalışma zamanı paylaşımı:** Şirket içinde barındırılan tümleştirme çalışma zamanları SYNAPSE çalışma alanları arasında paylaştırılamaz. Bu özellik Azure Data Factory desteklenir.

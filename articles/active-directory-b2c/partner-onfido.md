@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 48fc8533ee1fd206e69e16d4c03e4b4acf047135
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c6eac80ddbff73d99e05c070e66aa1700da174
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953704"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928639"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Onfido yapılandırma öğreticisi
 
@@ -24,7 +24,7 @@ Bu örnek öğreticide, Azure AD B2C [Onfido](https://onfido.com/)ile tümleşti
 
 Bu örnekte, kimlik doğrulaması yapmak için kaydolma veya oturum açma akışındaki Onfido 'ın hizmetini bağlayacağız. Kullanıcının hangi ürün ve hizmete erişebileceği hakkında bilinçli kararlar, Onfido 'ın sonuçlarına göre yapılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -50,7 +50,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![onfido mimarisi için ekran görüntüsü-diyagram](media/partner-onfido/onfido-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolun ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar. Azure AD B2C barındırılan onfido istemci uygulaması, Kullanıcı bilgilerini kontrol eder.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -74,7 +74,7 @@ Onfido hakkında daha fazla bilgi için bkz. [ONFIDO API belgeleri](https://docu
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-- Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+- Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure)Izleyerek Visual Studio 'dan yayımlanabilir.
 - Kurulum CORS, **Izin verilen kaynağı** https://{your_tenant_name}. b2clogin. com olarak ekleyin
 
 >[!NOTE]

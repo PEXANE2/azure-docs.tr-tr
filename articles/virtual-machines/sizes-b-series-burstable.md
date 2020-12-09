@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500317"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928826"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -59,7 +59,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Saat | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Zaman | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |
@@ -132,7 +132,7 @@ Y **: Evet**, tüm B serisi boyutlar Premium depolama veri disklerini destekler.
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>S: yeniden dağıtma veya durdurma/başlatma sonrasında neden kalan kredim 0 olarak ayarlandı?
 
-Y **: BIR** VM "REDPLOYED" olduğunda ve sanal makine başka bir düğüme taşınırsa birikmiş kredi kaybedilir. VM durdurulur/başlatılır, ancak aynı düğümde kalırsa, VM birikmiş krediyi korur. Sanal makine bir düğümde yeni bir kez başlatıldığında, 240 Standard_B8ms için bir başlangıç kredisi alır.
+Y **: BIR** VM yeniden DAĞıTıLDıĞıNDA ve VM başka bir düğüme taşınırsa birikmiş kredi kaybedilir. VM durdurulur/başlatılır, ancak aynı düğümde kalırsa, VM birikmiş krediyi korur. Sanal makine bir düğümde yeni bir kez başlatıldığında, 240 Standard_B8ms için bir başlangıç kredisi alır.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>S: B1ls üzerinde desteklenmeyen bir işletim sistemi görüntüsü dağıttım ne olur?
 

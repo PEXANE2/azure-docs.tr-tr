@@ -1,17 +1,17 @@
 ---
 title: Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme
 description: Azure RBAC 'yi etkinleştirerek Azure uygulama yapılandırma örneğinize erişim yetkisi verin
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/13/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/26/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 4768dbe292b7c71770ded1e8ad27025bc9944608
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862148"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930271"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory kullanarak Azure Uygulama yapılandırmasına erişim yetkisi verme
 Karma tabanlı İleti Kimlik Doğrulama Kodu (HMAC) kullanmanın yanı sıra Azure Uygulama yapılandırması, istekleri uygulama yapılandırma örneklerine yetkilendirmek için Azure Active Directory (Azure AD) kullanımını destekler.  Azure AD, bir güvenlik sorumlusu için izin vermek üzere Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmanıza olanak tanır.  Bir güvenlik sorumlusu, bir Kullanıcı, yönetilen bir [kimlik](../active-directory/managed-identities-azure-resources/overview.md) veya [uygulama hizmeti sorumlusu](../active-directory/develop/app-objects-and-service-principals.md)olabilir.  Roller ve rol atamaları hakkında daha fazla bilgi edinmek için bkz. [farklı rolleri anlama](../role-based-access-control/overview.md).

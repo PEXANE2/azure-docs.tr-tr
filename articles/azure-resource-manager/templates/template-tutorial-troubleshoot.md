@@ -1,20 +1,20 @@
 ---
 title: Dağıtımlarla ilgili sorunları giderme
-description: Azure Resource Manager şablonu dağıtımlarını izlemeyi ve sorun gidermeyi öğrenin. Etkinlik günlüklerini ve dağıtım geçmişini gösterir.
+description: Azure Resource Manager şablonu (ARM şablonu) dağıtımlarını izlemeyi ve sorunlarını gidermeyi öğrenin. Etkinlik günlüklerini ve dağıtım geçmişini gösterir.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891814"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928537"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Öğretici: ARM şablon dağıtımlarının sorunlarını giderme
 
-Azure Resource Manager (ARM) şablonu dağıtım hatalarını giderme hakkında bilgi edinin. Bu öğreticide, bir şablonda iki hata ayarlarsınız ve sorunları çözmek için etkinlik günlüklerinin ve dağıtım geçmişinin nasıl kullanılacağını öğreneceksiniz.
+Azure Resource Manager şablonu (ARM şablonu) dağıtım hatalarıyla ilgili sorunları nasıl giderebileceğinizi öğrenin. Bu öğreticide, bir şablonda iki hata ayarlarsınız ve sorunları çözmek için etkinlik günlüklerinin ve dağıtım geçmişinin nasıl kullanılacağını öğreneceksiniz.
 
 Şablon dağıtımıyla ilgili iki tür hata vardır:
 
@@ -37,20 +37,20 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu makaleyi tamamlamak için gerekenler:
 
-- Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+- Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Sorunlu şablon oluşturma
 
 [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/) [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) adlı bir şablon açın ve iki şablon sorunu kurun.
 
-1. Visual Studio Code **Dosya** > **Aç dosya** ' yı seçin.
-2. **Dosya adı** ’na şu URL’yi yapıştırın:
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
 
-3. Dosyayı açmak için **Aç** ’ı seçin.
+3. Dosyayı açmak için **Aç**’ı seçin.
 4. **Apiversion** satırını şu satıra değiştirin:
 
     ```json
@@ -60,7 +60,7 @@ Bu makaleyi tamamlamak için gerekenler:
     - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
     - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
 
-5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
+5. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
 
 ## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
 
@@ -108,7 +108,7 @@ Dağıtım hatası, aşağıdaki yordam kullanılarak Azure portal bulunabilir:
 Ayrıca, etkinlik günlüklerinden hatayı bulabilirsiniz:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. **İzleme**  >  **etkinlik günlüğü** ' nü seçin.
+2. **İzleme**  >  **etkinlik günlüğü**' nü seçin.
 3. Günlüğü bulmak için filtreleri kullanın.
 
     ![Kaynak Yöneticisi öğretici sorunlarını giderme](./media/template-tutorial-troubleshoot/resource-manager-template-deployment-activity-log.png)

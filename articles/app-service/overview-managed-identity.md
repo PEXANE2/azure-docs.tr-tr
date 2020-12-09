@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c734c0ceb9c4d5418edc51a2c3ad3c052637ad31
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696991"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929336"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -308,7 +308,7 @@ Bir uygulama, Azure Key Vault gibi Azure AD tarafından korunan diğer kaynaklar
 Uygulamanızdaki erişime izin vermek için hedef kaynağı yapılandırmanız gerekebilir. Örneğin, Key Vault erişmek için bir belirteç istemeniz durumunda uygulamanızın kimliğini içeren bir erişim ilkesi eklediğinizden emin olmanız gerekir. Aksi takdirde, belirteci içerse bile Key Vault çağrılarınız reddedilir. Azure Active Directory belirteçlerini destekleyen kaynaklar hakkında daha fazla bilgi edinmek için bkz. [Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 > [!IMPORTANT]
-> Yönetilen kimlikler için arka uç Hizmetleri, yaklaşık 8 saat boyunca kaynak URI başına bir önbellek tutar. Belirli bir hedef kaynağın erişim ilkesini güncelleştirir ve bu kaynak için hemen bir belirteç alırsanız, belirtecin süresi dolana kadar eski izinlerle önbelleğe alınmış bir belirteç almaya devam edebilirsiniz. Şu anda belirteç yenilemeyi zorlamaya yönelik bir yol yoktur.
+> Yönetilen kimlikler için arka uç Hizmetleri, yaklaşık 24 saat boyunca kaynak URI başına bir önbellek tutar. Belirli bir hedef kaynağın erişim ilkesini güncelleştirir ve bu kaynak için hemen bir belirteç alırsanız, belirtecin süresi dolana kadar eski izinlerle önbelleğe alınmış bir belirteç almaya devam edebilirsiniz. Şu anda belirteç yenilemeyi zorlamaya yönelik bir yol yoktur.
 
 App Service ve Azure Işlevlerinde belirteç almak için basit bir REST Protokolü vardır. Bu, tüm uygulamalar ve diller için kullanılabilir. .NET ve Java için Azure SDK, bu protokol üzerinden bir soyutlama sağlar ve yerel bir geliştirme deneyimini kolaylaştırır.
 
@@ -324,7 +324,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçinde     | Description                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın (Şu anda yalnızca "2017-09-01" sağlayan Linux tüketimini kullanmadıkça, Yukarıdaki nota bakın).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
-> | Özellik adı | Description                                                                                                                                                                                                                                        |
+> | Özellik adı | Açıklama                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |

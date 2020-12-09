@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 07a8f785cf2b9a64f3acb9f44c4fca5023c4fcf3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2b6001932b6f53a60eda76b6136611a10011391a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953755"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928690"
 ---
 # <a name="tutorial-for-configuring-idology-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile IDology yapılandırma öğreticisi 
 
 Bu örnek öğreticide, [IDology](https://www.idology.com/solutions/)ile Azure AD B2C tümleştirme hakkında rehberlik sağlıyoruz. IDology, birden çok çözüm içeren bir kimlik doğrulama ve sağlama sağlayıcıdır. Bu örnekte, ExpectID çözümünü IDology tarafından ele alınacaktır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -67,7 +67,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/IDology/Api) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.
 

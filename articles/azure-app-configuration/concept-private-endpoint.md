@@ -2,17 +2,17 @@
 title: Azure Uygulama yapılandırması için özel uç noktaları kullanma
 description: Özel uç noktaları kullanarak uygulama yapılandırma deponuzda güvenli hale getirin
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 3/12/2020
-ms.author: lcozzens
-ms.openlocfilehash: a29c8c02093f47807ec71ffcc01e26514976ce79
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 07/15/2020
+ms.openlocfilehash: 6cadadfb3623d05dd3ae3851acd5eaca13860023
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071719"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929852"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Azure Uygulama yapılandırması için özel uç noktaları kullanma
 
@@ -27,7 +27,7 @@ Uygulama yapılandırma deponuzda özel uç noktalar kullanmak şunları yapman�
 
 Özel uç nokta, [sanal ağınızdaki](../virtual-network/virtual-networks-overview.md) (VNet) bir Azure hizmeti için özel bir ağ arabirimidir. Uygulama yapılandırma depniz için özel bir uç nokta oluşturduğunuzda, VNet 'iniz ve yapılandırma deponuzda istemciler arasında güvenli bağlantı sağlar. Özel uç noktaya sanal Ağınızın IP adresi aralığından bir IP adresi atanır. Özel uç nokta ve yapılandırma deposu arasındaki bağlantı güvenli bir özel bağlantı kullanır.
 
-VNet 'teki uygulamalar, **aynı bağlantı dizelerini ve diğer kimlik doğrulama mekanizmalarını kullanarak**özel uç nokta üzerinden yapılandırma deposuna bağlanabilir. Özel uç noktalar, uygulama yapılandırma deposu tarafından desteklenen tüm protokollerle kullanılabilir.
+VNet 'teki uygulamalar, **aynı bağlantı dizelerini ve diğer kimlik doğrulama mekanizmalarını kullanarak** özel uç nokta üzerinden yapılandırma deposuna bağlanabilir. Özel uç noktalar, uygulama yapılandırma deposu tarafından desteklenen tüm protokollerle kullanılabilir.
 
 Uygulama yapılandırması hizmet uç noktalarını desteklemediğinden, [hizmet uç](../virtual-network/virtual-network-service-endpoints-overview.md)noktaları kullanan alt ağlarda özel uç noktalar oluşturulabilir. Bir alt ağdaki istemciler, diğer kullanıcılara erişmek için hizmet uç noktalarını kullanırken özel uç nokta kullanarak bir uygulama yapılandırma deposuna güvenli bir şekilde bağlanabilir.  
 

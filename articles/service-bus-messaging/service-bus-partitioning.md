@@ -4,12 +4,12 @@ description: Birden çok ileti aracıları kullanarak Service Bus kuyrukların v
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 380f18e16d09dc9f641a7a6b6cf9c1cb3f05e075
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8fd845ba24fd96ad6de566a7f55b25bd7129074d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356289"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930441"
 ---
 # <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
@@ -46,7 +46,7 @@ Premium katman ad alanında bölümlendirme varlıkları desteklenmez. Ancak, yi
 
 ### <a name="create-a-partitioned-entity"></a>Bölümlenmiş varlık oluşturma
 
-Bölümlenmiş bir kuyruğu veya konuyu oluşturmanın birkaç yolu vardır. Uygulamanızdan kuyruğu veya konuyu oluşturduğunuzda, kuyruk [açıklaması. Enablebölümlendirme][QueueDescription.EnablePartitioning] veya [Topicdescription. enablebölümlendirme][TopicDescription.EnablePartitioning] özelliğini **true** olarak ayarlayarak sıra veya konu için bölümlemeyi etkinleştirebilirsiniz. Bu özellikler Queue veya topic oluşturulduğu sırada ayarlanmalıdır ve yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. Daha önce belirtildiği gibi, var olan bir kuyruk veya konu üzerinde bu özellikleri değiştirmek mümkün değildir. Örneğin:
+Bölümlenmiş bir kuyruğu veya konuyu oluşturmanın birkaç yolu vardır. Uygulamanızdan kuyruğu veya konuyu oluşturduğunuzda, kuyruk [açıklaması. Enablebölümlendirme][QueueDescription.EnablePartitioning] veya [Topicdescription. enablebölümlendirme][TopicDescription.EnablePartitioning] özelliğini **true** olarak ayarlayarak sıra veya konu için bölümlemeyi etkinleştirebilirsiniz. Bu özellikler Queue veya topic oluşturulduğu sırada ayarlanmalıdır ve yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. Daha önce belirtildiği gibi, var olan bir kuyruk veya konu üzerinde bu özellikleri değiştirmek mümkün değildir. Örnek:
 
 ```csharp
 // Create partitioned topic
@@ -68,11 +68,11 @@ Oturumlar veya işlemler gibi bazı senaryolar, iletilerin belirli bir bölümde
 
 Senaryoya bağlı olarak, farklı ileti özellikleri bölüm anahtarı olarak kullanılır:
 
-**SessionID** : bir iletide [sessionıd](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlandıysa Service Bus, bölüm anahtarı olarak **SessionID** 'yi kullanır. Bu şekilde, aynı oturuma ait olan tüm iletiler aynı ileti Aracısı tarafından işlenir. Oturumlar, ileti sıralamasını ve oturum durumlarının tutarlılığını sağlamak için Service Bus etkinleştirir.
+**SessionID**: bir iletide [sessionıd](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlandıysa Service Bus, bölüm anahtarı olarak **SessionID** 'yi kullanır. Bu şekilde, aynı oturuma ait olan tüm iletiler aynı ileti Aracısı tarafından işlenir. Oturumlar, ileti sıralamasını ve oturum durumlarının tutarlılığını sağlamak için Service Bus etkinleştirir.
 
-**Partitionkey** : bir Ileti [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliğine sahipse ancak [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlanmamışsa Service Bus, bölüm anahtarı olarak [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellik değerini kullanır. İletide hem [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) hem de [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellikleri ayarlandıysa, her iki özellik de özdeş olmalıdır. [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliğinden farklı bir değere ayarlanmışsa Service Bus geçersiz bir işlem özel durumu döndürür. Bir gönderici oturum kullanmayan işlem iletileri gönderiyorsa [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği kullanılmalıdır. Bölüm anahtarı, bir işlem içinde gönderilen tüm iletilerin aynı mesajlaşma Aracısı tarafından işlenmesini sağlar.
+**Partitionkey**: bir Ileti [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliğine sahipse ancak [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlanmamışsa Service Bus, bölüm anahtarı olarak [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellik değerini kullanır. İletide hem [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) hem de [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellikleri ayarlandıysa, her iki özellik de özdeş olmalıdır. [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliğinden farklı bir değere ayarlanmışsa Service Bus geçersiz bir işlem özel durumu döndürür. Bir gönderici oturum kullanmayan işlem iletileri gönderiyorsa [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği kullanılmalıdır. Bölüm anahtarı, bir işlem içinde gönderilen tüm iletilerin aynı mesajlaşma Aracısı tarafından işlenmesini sağlar.
 
-**MessageID** : Queue veya topic, [Requiresduplicatedetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) özelliği **true** olarak ayarlanmışsa ve [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) ya da [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellikleri ayarlanmamışsa, [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) özelliğinin değeri bölüm anahtarı olarak görev yapar. (Microsoft .NET ve AMQP kitaplıkları, gönderen uygulama yoksa otomatik olarak bir ileti KIMLIĞI atar.) Bu durumda, aynı iletinin tüm kopyaları aynı ileti Aracısı tarafından işlenir. Bu KIMLIK, yinelenen iletileri algılayıp ortadan kaldırmak Service Bus sağlar. [Requiresduplicatedetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) özelliği **true** olarak ayarlanmamışsa, Service Bus [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) özelliğini bir bölüm anahtarı olarak kabul etmez.
+**MessageID**: Queue veya topic, [Requiresduplicatedetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) özelliği **true** olarak ayarlanmışsa ve [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) ya da [partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özellikleri ayarlanmamışsa, [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) özelliğinin değeri bölüm anahtarı olarak görev yapar. (Microsoft .NET ve AMQP kitaplıkları, gönderen uygulama yoksa otomatik olarak bir ileti KIMLIĞI atar.) Bu durumda, aynı iletinin tüm kopyaları aynı ileti Aracısı tarafından işlenir. Bu KIMLIK, yinelenen iletileri algılayıp ortadan kaldırmak Service Bus sağlar. [Requiresduplicatedetection](/dotnet/api/microsoft.azure.management.servicebus.models.sbqueue.requiresduplicatedetection) özelliği **true** olarak ayarlanmamışsa, Service Bus [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid) özelliğini bir bölüm anahtarı olarak kabul etmez.
 
 ### <a name="not-using-a-partition-key"></a>Bölüm anahtarı kullanmıyor
 
@@ -86,7 +86,7 @@ Bölüm anahtarı "PIN" i belirli bir bölüme bir ileti. Bu bölümü tutan mes
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Gelişmiş Konular: bölümlenmiş varlıklarla işlem kullanma
 
-Bir işlem kapsamında gönderilen iletilerin bölüm anahtarını belirtmesi gerekir. Anahtar Şu özelliklerden biri olabilir: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)veya [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Aynı işlemin bir parçası olarak gönderilen tüm iletiler aynı bölüm anahtarını belirtmelidir. Bir işlem içinde bölüm anahtarı olmadan bir ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Farklı bölüm anahtarlarına sahip aynı işlem içinde birden çok ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Örneğin:
+Bir işlem kapsamında gönderilen iletilerin bölüm anahtarını belirtmesi gerekir. Anahtar Şu özelliklerden biri olabilir: [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)veya [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid). Aynı işlemin bir parçası olarak gönderilen tüm iletiler aynı bölüm anahtarını belirtmelidir. Bir işlem içinde bölüm anahtarı olmadan bir ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Farklı bölüm anahtarlarına sahip aynı işlem içinde birden çok ileti göndermeye çalışırsanız, Service Bus geçersiz bir işlem özel durumu döndürür. Örnek:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -94,8 +94,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.PartitionKey = "myPartitionKey";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -106,7 +106,7 @@ Bölüm anahtarı olarak görev yapan özelliklerden herhangi biri ayarlanırsa 
 
 Oturum kullanan bir konuya veya kuyruğa işlem iletisi göndermek için, iletide [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ayarlanmış olmalıdır. [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey) özelliği de belirtilmişse, [SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid) özelliği ile aynı olmalıdır. Farklıysa, Service Bus geçersiz bir işlem özel durumu döndürür.
 
-Normal (bölümlenmemiş) kuyrukların veya konuların aksine, farklı oturumlara birden çok ileti göndermek için tek bir işlem kullanılması mümkün değildir. Denendiğinde Service Bus geçersiz bir işlem özel durumu döndürür. Örneğin:
+Normal (bölümlenmemiş) kuyrukların veya konuların aksine, farklı oturumlara birden çok ileti göndermek için tek bir işlem kullanılması mümkün değildir. Denendiğinde Service Bus geçersiz bir işlem özel durumu döndürür. Örnek:
 
 ```csharp
 CommittableTransaction committableTransaction = new CommittableTransaction();
@@ -114,8 +114,8 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 {
     Message msg = new Message("This is a message");
     msg.SessionId = "mySession";
-    messageSender.SendAsync(msg); 
-    ts.CompleteAsync();
+    await messageSender.SendAsync(msg); 
+    await ts.CompleteAsync();
 }
 committableTransaction.Commit();
 ```
@@ -125,10 +125,10 @@ committableTransaction.Commit();
 Service Bus bölümlenmiş varlıkların içinden, öğesinden veya arasında otomatik ileti iletmeyi destekler. Otomatik ileti iletmeyi etkinleştirmek için, kaynak kuyrukta veya abonelikte [Queuedescription. ForwardTo][QueueDescription.ForwardTo] özelliğini ayarlayın. İleti bir bölüm anahtarı ([SessionID](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [Partitionkey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey)veya [MessageID](/dotnet/api/microsoft.azure.servicebus.message.messageid)) belirtiyorsa, bu bölüm anahtarı hedef varlık için kullanılır.
 
 ## <a name="considerations-and-guidelines"></a>Konular ve yönergeler
-* **Yüksek tutarlılık özellikleri** : bir varlık, bölümleme anahtarı için oturumlar, yinelenen algılama veya açık denetim gibi özellikler kullanıyorsa, Mesajlaşma işlemleri her zaman belirli bir bölüme yönlendirilir. Bölümlerden herhangi biri yüksek trafikle veya temel alınan mağaza sağlıksız ise, bu işlemler başarısız olur ve kullanılabilirlik azalır. Genel olarak tutarlılık, bölümlenmemiş varlıklardan hala çok daha yüksektir; trafiğin yalnızca bir alt kümesi, tüm trafiğin aksine sorunlarla karşılaşıyor. Daha fazla bilgi için bu [kullanılabilirlik ve tutarlılık tartışması](../event-hubs/event-hubs-availability-and-consistency.md)bölümüne bakın.
-* **Yönetim** : varlığın tüm bölümlerinde oluşturma, güncelleştirme ve silme gibi işlemler yapılmalıdır. Herhangi bir bölüm sağlıksız ise, bu işlemler için hatalara neden olabilir. Get işlemi için, her bölümden ileti sayısı gibi bilgiler toplanmalıdır. Herhangi bir bölüm sağlıksız ise, varlık kullanılabilirlik durumu sınırlı olarak bildirilir.
-* **Düşük hacimli ileti senaryoları** : Bu tür senaryolarda, özellikle http protokolünü kullanırken, tüm iletileri almak için birden çok alma işlemi gerçekleştirmeniz gerekebilir. Alma isteklerinde, ön uç tüm bölümlerde bir alma gerçekleştirir ve alınan tüm yanıtları önbelleğe alır. Aynı bağlantı üzerindeki bir sonraki alma isteği bu önbelleğe alma özelliğinden faydalanır ve alma gecikmeleri daha düşük olacaktır. Ancak, birden çok bağlantınız varsa veya HTTP kullanıyorsanız, her istek için yeni bir bağlantı kurar. Bu nedenle, aynı düğüm üzerinde aratacağının garantisi yoktur. Var olan tüm iletiler kilitliyse ve başka bir ön uçta önbelleğe alınmışsa alma işlemi **null** değerini döndürür. İletilerin sonunda zaman sona erer ve bunları tekrar alabilirsiniz. HTTP etkin tutma önerilir. Düşük hacimli senaryolarda bölümlendirme kullanılırken alma işlemleri beklenenden uzun sürebilir. Bu nedenle, bu senaryolarda bölümleme kullanmanıza gerek kalmaz. Mevcut bölümlenmiş varlıkları silin ve performansı artırmak için bölümleme devre dışı olarak yeniden oluşturun.
-* **Iletilere göz atma/göz atma** : yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) , [messagecount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) özelliğinde belirtilen ileti sayısını her zaman döndürmez. Bu davranışın iki yaygın nedeni vardır. Bunlardan biri, ileti koleksiyonunun toplanmış boyutunun 256 KB olan boyut üst sınırını aşmasının bir nedenidir. Başka bir nedenden dolayı, kuyruğun veya konunun [Enablebölümlendirme özelliği](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) **true** olarak ayarlandıysa, bir bölümün istenen ileti sayısını tamamlamaya yetecek sayıda iletisi bulunmayabilir. Genel olarak, bir uygulama belirli sayıda ileti almak isterse, bu sayıda ileti alınana veya göz atabilmek için daha fazla ileti kalmayana kadar [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) öğesini tekrar çağırmalıdır. Kod örnekleri dahil daha fazla bilgi için bkz. [Queueclient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) veya [Subscriptionclient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API belgeleri.
+* **Yüksek tutarlılık özellikleri**: bir varlık, bölümleme anahtarı için oturumlar, yinelenen algılama veya açık denetim gibi özellikler kullanıyorsa, Mesajlaşma işlemleri her zaman belirli bir bölüme yönlendirilir. Bölümlerden herhangi biri yüksek trafikle veya temel alınan mağaza sağlıksız ise, bu işlemler başarısız olur ve kullanılabilirlik azalır. Genel olarak tutarlılık, bölümlenmemiş varlıklardan hala çok daha yüksektir; trafiğin yalnızca bir alt kümesi, tüm trafiğin aksine sorunlarla karşılaşıyor. Daha fazla bilgi için bu [kullanılabilirlik ve tutarlılık tartışması](../event-hubs/event-hubs-availability-and-consistency.md)bölümüne bakın.
+* **Yönetim**: varlığın tüm bölümlerinde oluşturma, güncelleştirme ve silme gibi işlemler yapılmalıdır. Herhangi bir bölüm sağlıksız ise, bu işlemler için hatalara neden olabilir. Get işlemi için, her bölümden ileti sayısı gibi bilgiler toplanmalıdır. Herhangi bir bölüm sağlıksız ise, varlık kullanılabilirlik durumu sınırlı olarak bildirilir.
+* **Düşük hacimli ileti senaryoları**: Bu tür senaryolarda, özellikle http protokolünü kullanırken, tüm iletileri almak için birden çok alma işlemi gerçekleştirmeniz gerekebilir. Alma isteklerinde, ön uç tüm bölümlerde bir alma gerçekleştirir ve alınan tüm yanıtları önbelleğe alır. Aynı bağlantı üzerindeki bir sonraki alma isteği bu önbelleğe alma özelliğinden faydalanır ve alma gecikmeleri daha düşük olacaktır. Ancak, birden çok bağlantınız varsa veya HTTP kullanıyorsanız, her istek için yeni bir bağlantı kurar. Bu nedenle, aynı düğüm üzerinde aratacağının garantisi yoktur. Var olan tüm iletiler kilitliyse ve başka bir ön uçta önbelleğe alınmışsa alma işlemi **null** değerini döndürür. İletilerin sonunda zaman sona erer ve bunları tekrar alabilirsiniz. HTTP etkin tutma önerilir. Düşük hacimli senaryolarda bölümlendirme kullanılırken alma işlemleri beklenenden uzun sürebilir. Bu nedenle, bu senaryolarda bölümleme kullanmanıza gerek kalmaz. Mevcut bölümlenmiş varlıkları silin ve performansı artırmak için bölümleme devre dışı olarak yeniden oluşturun.
+* **Iletilere göz atma/göz atma**: yalnızca eski [windowsazure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) kitaplığında kullanılabilir. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) , [messagecount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) özelliğinde belirtilen ileti sayısını her zaman döndürmez. Bu davranışın iki yaygın nedeni vardır. Bunlardan biri, ileti koleksiyonunun toplanmış boyutunun 256 KB olan boyut üst sınırını aşmasının bir nedenidir. Başka bir nedenden dolayı, kuyruğun veya konunun [Enablebölümlendirme özelliği](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) **true** olarak ayarlandıysa, bir bölümün istenen ileti sayısını tamamlamaya yetecek sayıda iletisi bulunmayabilir. Genel olarak, bir uygulama belirli sayıda ileti almak isterse, bu sayıda ileti alınana veya göz atabilmek için daha fazla ileti kalmayana kadar [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) öğesini tekrar çağırmalıdır. Kod örnekleri dahil daha fazla bilgi için bkz. [Queueclient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) veya [Subscriptionclient. PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API belgeleri.
 
 ## <a name="latest-added-features"></a>Eklenen en son özellikler
 

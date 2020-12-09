@@ -1,18 +1,18 @@
 ---
 title: Azure Uygulama yapılandırması ile yay önyüklemesine özellik bayrakları eklemeye yönelik hızlı başlangıç
 description: Spring Boot uygulamalarına özellik bayrakları ekleyin ve Azure Uygulama yapılandırması 'nı kullanarak bunları yönetin
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 04/18/2020
-ms.author: lcozzens
+ms.date: 08/06/2020
+ms.author: alkemper
 ms.custom: devx-track-java
-ms.openlocfilehash: 64ccc9c91d9ead567035b1f7f35e0a0088b6200b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e931b974fc48d07237b2698e7782c48be20745d9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001499"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930755"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Hızlı başlangıç: Spring Boot uygulamasına özellik bayrakları ekleme
 

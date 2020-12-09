@@ -3,12 +3,12 @@ title: Azure Depolama kuyruklarıyla Service Bus kuyruklarını karşılaştırm
 description: Azure tarafından sunulan iki kuyruk türü arasındaki farkları ve benzerlikleri analiz eder.
 ms.topic: article
 ms.date: 11/04/2020
-ms.openlocfilehash: 5c65cf5ef2d572417ea70d0e0259cf2c03ab590e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 31992aa2012009c51cbeae78010ae8ced65fc872
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379579"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928316"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Depolama kuyrukları ve Service Bus kuyrukları-karşılaştırılan ve değişken maliyetli
 Bu makalede, Microsoft Azure tarafından sunulan iki kuyruk türü arasındaki farklar ve benzerlikler analiz edilir: depolama kuyrukları ve Service Bus kuyrukları. Bu bilgileri kullanarak, gereksinimlerinizi en iyi şekilde karşılayan çözüm hakkında daha bilinçli bir karar elde edebilirsiniz.
@@ -42,7 +42,7 @@ Hangi kuyruğa alma teknolojisinin belirli bir çözümün amacına uygun olduğ
 * Uygulamanızın iletileri paralel uzun süreli akışlar olarak işlemesini istiyorsunuz (ileti, iletideki [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) özelliği kullanılarak bir akışla ilişkilendirilir). Bu modelde, tüketim uygulamasındaki her düğüm, iletiler yerine akışlar için bir kullanıcı tarafından kabul edilebilir. Bir akış tüketen bir düğüme verildiğinde, düğüm işlemleri kullanarak uygulama akış durumunun durumunu inceleyebilir.
 * Çözümünüz, bir kuyruktan birden çok ileti gönderirken veya alırken işlemsel davranış ve kararlılık gerektirir.
 * Uygulamanız 64 KB 'ı aşan iletileri işler, ancak büyük olasılıkla 256 KB 'lik sınıra yaklaşımlar.
-* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makalelere bakın:
+* Sıralara rol tabanlı erişim modeli sağlamak ve Gönderenler ve alıcılar için farklı haklar/izinler sağlamak üzere bir gereksinimle uğraşmanız gerekir. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
     - [Yönetilen kimliklerle kimlik doğrulaması](service-bus-managed-service-identity.md)
     - [Uygulamadan kimlik doğrulaması yapma](authenticate-application.md)
 * Sıra boyutunuz 80 GB 'tan büyük büyümez.
@@ -131,7 +131,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları, uygulayabilen [Ka
 | En büyük ileti boyutu |**64 KB**<br/><br/>( **Base64** kodlaması KULLANıLıRKEN 48 KB)<br/><br/>Azure, kuyrukları ve Blobları birleştirerek büyük iletileri destekler – bu noktada tek bir öğe için 200 GB 'a kadar sıraya alabilirsiniz. |**256 KB** veya **1 MB**<br/><br/>(başlık ve gövde dahil, en büyük üst bilgi boyutu: 64 KB).<br/><br/>[Hizmet katmanına](service-bus-premium-messaging.md)bağlıdır. |
 | En fazla ileti TTL |**Sonsuz** (API-sürüm 2017-07-27 veya üzeri) |**TimeSpan. Max** |
 | En fazla sıra sayısı |**Sınırsız** |**10.000**<br/><br/>(hizmet ad alanı başına) |
-| En fazla eş zamanlı istemci sayısı |**Sınırsız** |**Sınırsız**<br/><br/>(100 eşzamanlı bağlantı sınırı yalnızca TCP protokolü tabanlı iletişim için geçerlidir) |
+| En fazla eş zamanlı istemci sayısı |**Sınırsız** |**5.000** |
 
 ### <a name="additional-information"></a>Ek bilgiler
 * Service Bus kuyruk boyutu sınırlarını zorlar. Kuyruk oluşturulurken en büyük sıra boyutu belirtilir. 1 GB ile 80 GB arasında olabilir. Kuyruğun boyutu bu sınıra ulaşırsa, ek gelen iletiler reddedilir ve çağıran bir özel durum alır. Service Bus kotaları hakkında daha fazla bilgi için bkz. [Service Bus kotalar](service-bus-quotas.md).
@@ -165,7 +165,7 @@ Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından sunula
 * Depolama sıralarının adları 3-63 karakter uzunluğunda olabilir, küçük harf, sayı ve kısa çizgi içerebilir. Daha fazla bilgi için bkz. [ad kuyrukları ve meta verileri](/rest/api/storageservices/fileservices/Naming-Queues-and-Metadata).
 * Service Bus kuyruk adları en fazla 260 karakter uzunluğunda olabilir ve daha az kısıtlayıcı adlandırma kuralına sahip olabilir. Service Bus kuyruk adları harf, sayı, nokta, kısa çizgi ve alt çizgi içerebilir.
 
-## <a name="authentication-and-authorization"></a>Kimlik doğrulama ve yetkilendirme
+## <a name="authentication-and-authorization"></a>Kimlik doğrulaması ve yetkilendirme
 Bu bölümde, depolama kuyrukları ve Service Bus kuyrukları tarafından desteklenen kimlik doğrulama ve yetkilendirme özellikleri açıklanmaktadır.
 
 | Karşılaştırma ölçütleri | Depolama kuyrukları | Service Bus kuyrukları |

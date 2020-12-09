@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: zarhoads
-ms.openlocfilehash: 0ca2d7ccc863e2208db1212ef3d3f10fa709d069
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c4e39ae664c89e4f6d49f2941115e5a7d44cf7b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006653"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929183"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-helm"></a>Hızlı başlangıç: Held ile Azure Kubernetes hizmeti (AKS) üzerinde geliştirme
 
@@ -22,7 +22,7 @@ Bu makalede, AKS üzerinde bir uygulamayı paketlemek ve çalıştırmak için h
 ## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
-* [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Yüklü Azure CLI](/cli/azure/install-azure-cli).
 * [Held v3 yüklendi][helm-install].
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry oluşturma

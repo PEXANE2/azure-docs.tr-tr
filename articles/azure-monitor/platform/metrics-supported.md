@@ -4,26 +4,26 @@ description: Azure Izleyici ile her kaynak türü için kullanılabilen ölçüm
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 10/01/2020
+ms.date: 12/09/2020
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 3e5dd5c83468e867c746393642a1e40ff07763c4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 04f6cdae8a7601f94251516cf5c3c1fab07994a6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921496"
+ms.locfileid: "96929115"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Izleyici ile desteklenen ölçümler
 
 > [!NOTE]
-> Bu liste, büyük ölçüde Azure Izleyici ölçümlerinden REST API otomatik olarak oluşturulur. Bu listede GitHub aracılığıyla yapılan herhangi bir değişiklik, uyarı olmadan üzerine yazılabilir. Kalıcı güncelleştirmeler yapma hakkında daha fazla bilgi için bu makalenin yazarına başvurun.
+> Bu liste büyük ölçüde otomatik olarak oluşturulmuştur. Bu listede GitHub aracılığıyla yapılan herhangi bir değişiklik, uyarı olmadan üzerine yazılabilir. Kalıcı güncelleştirmeler yapma hakkında daha fazla bilgi için bu makalenin yazarına başvurun.
 
 Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluşturma, REST API aracılığıyla erişme veya PowerShell veya CLı kullanarak sorgulama gibi çeşitli yollar sağlar. 
 
-Bu makale, Azure Izleyicisinin birleştirilmiş ölçüm işlem hattı ile Şu anda kullanılabilir olan tüm platform (yani otomatik olarak toplanan) ölçümlerinin tümüyle bir listesidir. Listenin en son 6 Mart, 2020. Bu tarihten sonra değiştirilen veya eklenen ölçümler aşağıda görünmeyebilir. Program aracılığıyla ölçüm listesini sorgulamak ve erişmek için lütfen [2018-01-01 api sürümünü](/rest/api/monitor/metricdefinitions)kullanın. Bu listede bulunmayan diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir olabilir.
+Bu makale, Azure Izleyicisinin birleştirilmiş ölçüm işlem hattı ile Şu anda kullanılabilir olan tüm platform (yani otomatik olarak toplanan) ölçümlerinin tümüyle bir listesidir. Bu makalenin en üstündeki tarihten sonra değiştirilen veya eklenen ölçümler henüz aşağıda görünmeyebilir. Program aracılığıyla ölçüm listesini sorgulamak ve erişmek için lütfen [2018-01-01 api sürümünü](/rest/api/monitor/metricdefinitions)kullanın. Bu listede bulunmayan diğer ölçümler portalda veya eski API 'Ler kullanılarak kullanılabilir olabilir.
 
-Ölçümler, kaynak sağlayıcılarına ve kaynak türüne göre düzenlenir. Hizmetlerin ve bunlara ait kaynak sağlayıcılarının listesi için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](../../azure-resource-manager/management/azure-services-resource-providers.md). 
+Ölçümler, kaynak sağlayıcılarına ve kaynak türüne göre düzenlenir. Hizmetlerin ve kaynak sağlayıcılarının ve bunlara ait türlerin listesi için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](../../azure-resource-manager/management/azure-services-resource-providers.md).  
 
 ## <a name="exporting-platform-metrics-to-other-locations"></a>Platform ölçümlerini diğer konumlara dışarı aktarma
 

@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15debb69172dba00163950fdd301826c903e5307
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b9bc7d94cff46b54b81615cf064ed63927b3ec60
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548347"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929302"
 ---
-# <a name="email-one-time-passcode-authentication"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması
+# <a name="email-one-time-passcode-authentication-preview"></a>E-posta bir kerelik geçiş kodu kimlik doğrulaması (Önizleme)
 
 Bu makalede, B2B Konuk kullanıcıları için bir kerelik geçiş kodu kimlik doğrulamasının nasıl etkinleştirileceği açıklanır. E-posta bir kerelik geçiş kodu özelliği, Azure AD, Microsoft hesabı (MSA) veya Google Federasyonu gibi diğer yollarla kimlik doğrulamasından geçiyorlarsa B2B Konuk kullanıcılarının kimliğini doğrular. Tek seferlik geçiş kodu kimlik doğrulamasıyla Microsoft hesabı oluşturmanız gerekmez. Konuk Kullanıcı bir davetiyeyi bir davet edebilir veya paylaşılan bir kaynağa eriştiğinde, kendi e-posta adreslerine gönderilen geçici bir kod isteyebilir. Sonra oturum açmaya devam etmek için bu kodu girer.
 

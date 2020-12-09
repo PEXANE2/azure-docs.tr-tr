@@ -3,16 +3,16 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi Genel Bakış
 description: Bu makalede, Windows ve Linux makineleriniz için güncelleştirmeleri uygulayan Güncelleştirme Yönetimi özelliğine bir genel bakış sunulmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 37ab05ce7e963ab7fdc4d2b02e254adaa205446c
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327500"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928435"
 ---
-# <a name="update-management-overview"></a>Güncelleştirme Yönetimine genel bakış
+# <a name="update-management-overview"></a>Güncelleştirme Yönetimi’ne genel bakış
 
 Azure Otomasyonu 'ndaki Güncelleştirme Yönetimi kullanarak Azure 'daki Windows ve Linux sanal makineleriniz için işletim sistemi güncelleştirmelerini, şirket içi ortamları ve diğer bulut ortamlarında yönetebilirsiniz. Tüm aracı makinelerde kullanılabilir güncelleştirmelerin durumunu hızlı bir şekilde değerlendirebilir ve sunucular için gerekli güncelleştirmeleri yükleme işlemini yönetebilirsiniz.
 
@@ -160,9 +160,9 @@ Aşağıdaki tabloda Güncelleştirme Yönetimi tarafından desteklenen bağlı 
 
 | Bağlı kaynak | Desteklenir | Açıklama |
 | --- | --- | --- |
-| Windows aracıları |Yes |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Linux aracıları |Yes |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
-| Operations Manager yönetim grubu |Yes |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
+| Windows aracıları |Evet |Güncelleştirme Yönetimi, Windows aracılarından sistem güncelleştirmeleri hakkında bilgi toplar ve gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Linux aracıları |Evet |Güncelleştirme Yönetimi, Linux aracılarından sistem güncelleştirmeleriyle ilgili bilgileri toplar ve ardından desteklenen dağıtımlarda gerekli güncelleştirmelerin yüklemesini başlatır. |
+| Operations Manager yönetim grubu |Evet |Güncelleştirme Yönetimi bağlı bir yönetim grubundaki aracılardan sistem güncelleştirmeleri hakkında bilgi toplar.<br/><br/>Operations Manager aracısından Azure Izleyici günlüklerine doğrudan bağlantı gerekli değildir. Veriler, yönetim grubundan Log Analytics çalışma alanına iletilir. |
 
 ### <a name="collection-frequency"></a>Toplama sıklığı
 
@@ -224,7 +224,7 @@ Sonraki tabloda, Linux güncelleştirmeleri için desteklenen sınıflandırmala
 >
 > Linux güncelleştirmelerinin sınıflandırması yoktur ve bunlar **diğer güncelleştirmeler** kategorisi altında raporlanır. Güncelleştirme Yönetimi, desteklenen dağıtımlar tarafından yayınlanan verileri, özellikle de yayınlanan [oval](https://oval.mitre.org/) (açık güvenlik açığı ve değerlendirme dili) dosyalarını kullanır. Internet erişimi bu ulusal bulutlardan kısıtlandığı için Güncelleştirme Yönetimi bu dosyalara erişemez ve bu dosyaları tüketmez.
 
-Linux için Güncelleştirme Yönetimi, bulutta veri zenginleştirme nedeniyle değerlendirme verilerini görüntülerken buluttaki kritik güncelleştirmeler ve güvenlik güncelleştirmeleri arasında ayrım yapabilir. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri RTM sürümünde kullanılamaz. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
+Linux için Güncelleştirme Yönetimi, bulutta bulunan önemli güncelleştirmeler **ve güvenlik güncelleştirmelerinin** **yanı sıra, bulutta** veri zenginleştirmesi nedeniyle değerlendirme verilerinin görüntülenmesini sağlar. Düzeltme eki uygulama Güncelleştirme Yönetimi makinede bulunan sınıflandırma verilerine bağımlıdır. Diğer dağıtımlardan farklı olarak, CentOS bu bilgileri RTM sürümünde kullanılamaz. Aşağıdaki komut için güvenlik verilerini döndürecek şekilde yapılandırılmış CentOS makineleriniz varsa, Güncelleştirme Yönetimi sınıflandırmalara göre düzeltme eki uygulanabilir.
 
 ```bash
 sudo yum -q --security check-update
@@ -233,6 +233,10 @@ sudo yum -q --security check-update
 Şu anda yerel sınıflandırmanın etkinleştirilmesi için desteklenen bir yöntem yok-CentOS üzerinde veri kullanılabilirliği. Şu anda, bu özelliği kendi kendine etkinleştirmiş olabilecek müşterilere sınırlı destek verilir.
 
 Red Hat Enterprise sürüm 6 ' da güncelleştirmeleri sınıflandırmak için, yıum-güvenlik eklentisini yüklemeniz gerekir. Red Hat Enterprise Linux 7 ' de, eklenti zaten bir de en fazla bir parçasıdır ve herhangi bir şey yüklemeniz gerekmez. Daha fazla bilgi için aşağıdaki Red hat [Bilgi Bankası makalesine](https://access.redhat.com/solutions/10021)bakın.
+
+Bir Linux makinesinde çalışacak şekilde bir güncelleştirme zamanladığınızda, örneğin yalnızca **güvenlik** sınıflandırmasıyla eşleşen güncelleştirmeleri yükleyecek şekilde yapılandırılmışsa, yüklenen güncelleştirmeler öğesinden farklı olabilir veya bu sınıflandırmayla eşleşen güncelleştirmelerin bir alt kümesidir. Linux makineniz için bekleyen bir işletim sistemi güncelleştirmeleri değerlendirmesi gerçekleştirildiğinde, sınıflandırma için Güncelleştirme Yönetimi tarafından sunulan Linux dışı satıcının sunduğu [açık güvenlik açığı ve değerlendirme dili](https://oval.mitre.org/) (oval) dosyaları kullanılır.
+
+Sınıflandırma, güvenlik sorunları veya güvenlik açıklarını gideren güncelleştirmeler de dahil olmak üzere, Linux güncelleştirmeleri için OVAL dosyalarını temel alan **güvenlik** veya **diğerleri** için yapılır. Ancak güncelleştirme zamanlaması çalıştırıldığında, bu, yüklemek için tum, APT veya ZYPPER gibi uygun paket yöneticisini kullanarak Linux makinesinde yürütülür. Linux 'un Paket Yöneticisi, güncelleştirmeleri sınıflandırmak için farklı bir mekanizmaya sahip olabilir. burada sonuçlar, Güncelleştirme Yönetimi, OVAL dosyalarından alındıklarından farklı olabilir. Makineyi el ile denetlemek ve paket yöneticiniz ile ilgili hangi güncelleştirmelerin güvenlik olduğunu anlamak için bkz. [Linux güncelleştirme dağıtımı sorunlarını giderme](../troubleshoot/update-management.md#updates-linux-installed-different).
 
 ## <a name="integrate-update-management-with-configuration-manager"></a>Güncelleştirme Yönetimi Configuration Manager ile tümleştirin
 

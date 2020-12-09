@@ -1,23 +1,23 @@
 ---
 title: Azure Active Directory REST API-kimlik doğrulaması
 description: Azure Uygulama yapılandırmasında kimlik doğrulamak için Azure Active Directory kullanın REST API
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 73d951b3e85c170cf068693bb9b374349516ca8f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cbf05245768a663e324e9bb6e1ad422eeee3ab1a
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183490"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930526"
 ---
 # <a name="azure-active-directory-authentication"></a>Azure Active Directory kimlik doğrulaması
 
 `Bearer`Azure Active Directory (Azure AD) tarafından alınan bir belirteçle kimlik doğrulama şemasını kullanarak http isteklerinin kimliğini doğrulayabilirsiniz. Bu istekleri Aktarım Katmanı Güvenliği (TLS) üzerinden iletmelidir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD belirteci istemek için kullanılan sorumluyu, ilgili [Azure uygulama yapılandırma rollerinden](./rest-api-authorization-azure-ad.md)birine atamanız gerekir.
 

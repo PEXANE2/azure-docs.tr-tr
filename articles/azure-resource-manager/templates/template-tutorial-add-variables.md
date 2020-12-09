@@ -1,21 +1,21 @@
 ---
 title: Öğretici-şablona değişken ekleme
-description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza değişken ekleyin.
+description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza değişkenler ekleyin (ARM şablonu).
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 482608172ac9e6e2b9765f236a4b6d655e2455fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613161"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930737"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Öğretici: ARM şablonunuza değişkenler ekleme
 
-Bu öğreticide, Azure Resource Manager (ARM) şablonunuza nasıl değişken ekleneceğini öğreneceksiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
+Bu öğreticide, Azure Resource Manager şablonunuz (ARM şablonu) için nasıl değişken ekleneceğini öğreneceksiniz. Değişkenler, bir ifadeyi bir kez yazmanızı ve şablon boyunca yeniden kullanılmasını sağlayarak şablonlarınızı basitleştirir. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -37,7 +37,7 @@ Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-**Unisorgtoraygename**adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
+**Unisorgtoraygename** adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
 
 [Parameters](template-functions-deployment.md#parameters) işlevini zaten öğreniyoruz, bu yüzden bunu inceleyeceğiz.
 
@@ -89,7 +89,7 @@ az deployment group create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını görürsünüz. Depolama hesabının adı, **Depo** ve rastgele karakterlerden oluşan bir dizedir.

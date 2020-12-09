@@ -1,21 +1,21 @@
 ---
 title: Öğretici-şablon işlevleri ekleme
-description: Değerler oluşturmak için Azure Resource Manager şablonunuza şablon işlevleri ekleyin.
+description: Değer oluşturmak için Azure Resource Manager şablonunuza (ARM şablonu) şablon işlevleri ekleyin.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: c6ced832cad6809e7cd016eee132713c6b266480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67c88e98d966a21163aafefcad8363086d5b3bf4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613858"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931053"
 ---
 # <a name="tutorial-add-template-functions-to-your-arm-template"></a>Öğretici: ARM şablonunuza şablon işlevleri ekleme
 
-Bu öğreticide, Azure Resource Manager (ARM) şablonunuza [Şablon işlevleri](template-functions.md) eklemeyi öğreneceksiniz. Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
+Bu öğreticide, Azure Resource Manager şablonunuza [Şablon işlevleri](template-functions.md) eklemeyi ÖĞRENECEKSINIZ (ARM şablonu). Değerleri dinamik olarak oluşturmak için işlevlerini kullanırsınız. Sistem tarafından sağlanmış bu şablon işlevlerine ek olarak, [Kullanıcı tanımlı işlevler](./template-user-defined-functions.md)de oluşturabilirsiniz. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -29,15 +29,15 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell ya da Azure CLı il
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
-Depolama hesabının konumu **Doğu ABD**için sabit olarak kodlanmıştır. Ancak, depolama hesabını diğer bölgelere dağıtmanız gerekebilir. Daha fazla esneklik olmayan şablonunuzda bir sorunla karşılaşıyoruz. Konum için bir parametre ekleyebilirsiniz, ancak varsayılan değeri yalnızca sabit kodlanmış bir değerden daha anlamlı olursa harika olur.
+Depolama hesabının konumu **Doğu ABD** için sabit olarak kodlanmıştır. Ancak, depolama hesabını diğer bölgelere dağıtmanız gerekebilir. Daha fazla esneklik olmayan şablonunuzda bir sorunla karşılaşıyoruz. Konum için bir parametre ekleyebilirsiniz, ancak varsayılan değeri yalnızca sabit kodlanmış bir değerden daha anlamlı olursa harika olur.
 
 ## <a name="use-function"></a>Use işlevi
 
-Bu serinin önceki öğreticisini tamamladıysanız, zaten bir işlev kullandınız. **"[Parameters (' storageName ')]"** eklediğinizde [Parameters](template-functions-deployment.md#parameters) işlevini kullandınız. Köşeli ayraçlar, köşeli ayracın içindeki sözdiziminin bir [şablon ifadesi](template-expressions.md)olduğunu gösterir. Kaynak Yöneticisi, sözdizimini değişmez değer olarak kabul etmek yerine, sözdizimini çözer.
+Bu serinin önceki öğreticisini tamamladıysanız, zaten bir işlev kullandınız. Eklediğinizde `"[parameters('storageName')]"` , [Parameters](template-functions-deployment.md#parameters) işlevini kullandınız. Köşeli ayraçlar, köşeli ayracın içindeki sözdiziminin bir [şablon ifadesi](template-expressions.md)olduğunu gösterir. Kaynak Yöneticisi, sözdizimini değişmez değer olarak kabul etmek yerine, sözdizimini çözer.
 
 İşlevler, dağıtım sırasında değerleri dinamik olarak alarak şablonunuz için esneklik ekler. Bu öğreticide, dağıtım için kullanmakta olduğunuz kaynak grubunun konumunu almak üzere bir işlev kullanırsınız.
 
-Aşağıdaki örnek, **konum**adlı bir parametre ekleme değişikliklerini vurgular.  Parametre varsayılan değeri [resourceGroup](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
+Aşağıdaki örnek, **konum** adlı bir parametre ekleme değişikliklerini vurgular.  Parametre varsayılan değeri [resourceGroup](template-functions-resource.md#resourcegroup) işlevini çağırır. Bu işlev, dağıtım için kullanılan kaynak grubuyla ilgili bilgileri içeren bir nesne döndürür. Nesnedeki özelliklerden biri bir konum özelliğidir. Varsayılan değeri kullandığınızda, depolama hesabı konumu kaynak grubuyla aynı konuma sahiptir. Kaynak grubu içindeki kaynakların aynı konumu paylaşması gerekmez. Gerektiğinde farklı bir konum da sağlayabilirsiniz.
 
 Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
@@ -45,7 +45,7 @@ Tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Önceki öğreticilerde, Doğu ABD bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD oluşturulmuş. Bu öğreticide, depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, bu nedenle bu parametre değerini belirtmeniz gerekmez. Farklı bir konumda depolama hesabı oluşturmakta olduğunuz için depolama hesabı için yeni bir ad sağlamalısınız. Örneğin, **store1**yerine ön ek olarak **store2** kullanın.
+Önceki öğreticilerde, Doğu ABD bir depolama hesabı oluşturdunuz, ancak kaynak grubunuz Orta ABD oluşturulmuş. Bu öğreticide, depolama hesabınız kaynak grubuyla aynı bölgede oluşturulur. Konum için varsayılan değeri kullanın, bu nedenle bu parametre değerini belirtmeniz gerekmez. Farklı bir konumda depolama hesabı oluşturmakta olduğunuz için depolama hesabı için yeni bir ad sağlamalısınız. Örneğin, **store1** yerine ön ek olarak **store2** kullanın.
 
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
@@ -80,7 +80,7 @@ az deployment group create \
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Bir depolama hesabı kaynağının dağıtıldığını ve kaynak grubuyla aynı konuma sahip olduğunu görürsünüz.

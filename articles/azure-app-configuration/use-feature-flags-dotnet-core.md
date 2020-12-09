@@ -3,8 +3,7 @@ title: .NET Core uygulamasında Özellik bayraklarını kullanma öğreticisi | 
 description: Bu öğreticide, .NET Core uygulamalarında Özellik bayraklarını nasıl uygulayacağınızı öğreneceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,14 +11,14 @@ ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 09/17/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 6da2aa645549920cce2f5c0cfe8a32c98dc04708
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746129"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929200"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında Özellik bayraklarını kullanma
 
@@ -132,7 +131,7 @@ config.AddAzureAppConfiguration(options => {
 
 Her özellik bayrağının iki bölümü vardır: bir özelliğin durumunun *Açık* olup olmadığını değerlendirmek için kullanılan bir veya daha fazla filtrenin adı ve listesi (yani, değeri olduğunda `True` ). Bir filtre, bir özelliğin açılması gerektiğinde kullanım durumunu tanımlar.
 
-Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık* ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır* .
+Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olması gerektiğini belirlerken filtre listesine bir düzen eklenir. Bu noktada, özellik bayrağı *Açık* ve kalan filtre sonuçları atlanır. Filtre yoksa, özelliğin etkinleştirilmesi gerektiğini gösteriyorsa, özellik bayrağı *kapalıdır*.
 
 Özellik Yöneticisi özellik bayrakları için yapılandırma kaynağı olarak *appsettings.js* destekler. Aşağıdaki örnekte, bir JSON dosyasında özellik bayraklarının nasıl ayarlanacağı gösterilmektedir:
 
@@ -155,8 +154,8 @@ Bir özellik bayrağının birden çok filtresi olduğunda, filtrenin etkin olma
 
 Kurala göre, `FeatureManagement` Bu JSON belgesinin bölümü Özellik bayrağı ayarları için kullanılır. Önceki örnekte, içinde kendi filtreleri tanımlanmış olan üç özellik bayrakları gösterilmektedir `EnabledFor` :
 
-* `FeatureA`*Açık* .
-* `FeatureB`*kapalıdır* .
+* `FeatureA`*Açık*.
+* `FeatureB`*kapalıdır*.
 * `FeatureC` özelliği olan adlı bir filtre belirtir `Percentage` `Parameters` . `Percentage` , yapılandırılabilir bir filtredir. Bu örnekte, `Percentage` `FeatureC` bayrağın *Açık* olması için yüzde 50 olasılık değerini belirtir.
 
 ## <a name="feature-flag-references"></a>Özellik bayrağı başvuruları
@@ -174,7 +173,7 @@ public enum MyFeatureFlags
 
 ## <a name="feature-flag-checks"></a>Özellik bayrağı denetimleri
 
-Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örneğin:
+Özellik yönetiminin temel stili, ilk olarak bir özellik bayrağının *Açık* olarak ayarlanmış olup olmadığını denetme. Bu durumda, Özellik Yöneticisi özelliğin içerdiği eylemleri çalıştırır. Örnek:
 
 ```csharp
 IFeatureManager featureManager;

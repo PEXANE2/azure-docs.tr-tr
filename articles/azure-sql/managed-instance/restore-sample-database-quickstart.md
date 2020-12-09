@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 413786cf8946c1ffbb76bd0e18eae7c7ba16a9c1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9b2333e38415a2c0ad50ce36c213ead711c70ab4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790755"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928809"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Hızlı başlangıç: SSMS ile bir veritabanını Azure SQL yönetilen örneği 'ne geri yükleme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Bu hızlı başlangıçta, Azure Blob depolama 'dan [Azure SQL yönetilen örne�
 > Azure veritabanı geçiş hizmeti 'ni kullanarak geçiş hakkında daha fazla bilgi için bkz. [veritabanı geçiş hizmeti kullanılarak SQL yönetilen örnek geçişi](../../dms/tutorial-sql-server-to-managed-instance.md).
 > Çeşitli geçiş yöntemleri hakkında daha fazla bilgi için bkz. [Azure SQL yönetilen örneğine SQL Server geçişi](migrate-to-instance-from-sql-server.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıç:
 
@@ -49,8 +49,11 @@ Bu hızlı başlangıç:
 SQL Server Management Studio, geniş dünya Importers veritabanını SQL yönetilen örneğine geri yüklemek için aşağıdaki adımları izleyin. Veritabanı yedekleme dosyası önceden yapılandırılmış bir Azure Blob depolama hesabında depolanır.
 
 1. SSMS 'yi açın ve yönetilen örneğinize bağlanın.
-2. **Nesne Gezgini** , yönetilen örneğinize sağ tıklayıp yeni **sorgu** ' yı seçerek yeni bir sorgu penceresi açın.
+2. **Nesne Gezgini**, yönetilen örneğinize sağ tıklayıp yeni **sorgu** ' yı seçerek yeni bir sorgu penceresi açın.
 3. Yönetilen örnekte [bir kimlik bilgisi oluşturmak](/sql/t-sql/statements/create-credential-transact-sql) için önceden yapılandırılmış bir depolama HESABı ve SAS anahtarı kullanan aşağıdaki SQL betiğini çalıştırın.
+ 
+   > [!IMPORTANT]
+   > `CREDENTIAL` kapsayıcı yoluyla eşleşmelidir, ile başlar `https` ve sondaki eğik çizgi içeremez. `IDENTITY` olmalıdır `SHARED ACCESS SIGNATURE` . `SECRET` Paylaşılan erişim Imza belirteci olmalıdır ve önünde bir satır bulunamaz `?` .
 
    ```sql
    CREATE CREDENTIAL [https://mitutorials.blob.core.windows.net/databases]

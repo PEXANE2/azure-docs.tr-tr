@@ -1,17 +1,17 @@
 ---
 title: Azure uygulama yapılandırma anahtar-değer deposunu anlama
 description: Yapılandırma verilerini anahtar-değer olarak depolayan Azure Uygulama yapılandırması 'nda anahtar-değer depolama alanını anlayın. Anahtar değerleri, uygulama ayarlarının bir gösterimidir.
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 08/04/2020
+ms.openlocfilehash: ad9e96433a7ee72476ae2251c684d17ec7a6d1ce
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88586401"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930254"
 ---
 # <a name="keys-and-values"></a>Anahtarlar ve değerler
 
@@ -28,7 +28,7 @@ Bileşen hizmetlerine dayalı bir hiyerarşiye yapılandırılmış anahtar adla
     AppName:Service2:ApiEndpoint
 ```
 
-Uygulama çerçeveleri içindeki yapılandırma verilerinin kullanımı, anahtar değerleri için belirli adlandırma düzenlerini dikte edebilir. Örneğin, Java 'nın Spring Cloud Framework, `Environment` bir Spring uygulamasına ayarlar sağlayan kaynakları tanımlar.  Bunlar, *uygulama adı* ve *profili*içeren değişkenlere göre parametrelenir. Bulutta ilgili yapılandırma verileri için anahtarlar genellikle sınırlayıcıyla ayrılmış bu iki öğe ile başlar.
+Uygulama çerçeveleri içindeki yapılandırma verilerinin kullanımı, anahtar değerleri için belirli adlandırma düzenlerini dikte edebilir. Örneğin, Java 'nın Spring Cloud Framework, `Environment` bir Spring uygulamasına ayarlar sağlayan kaynakları tanımlar.  Bunlar, *uygulama adı* ve *profili* içeren değişkenlere göre parametrelenir. Bulutta ilgili yapılandırma verileri için anahtarlar genellikle sınırlayıcıyla ayrılmış bu iki öğe ile başlar.
 
 Uygulama yapılandırmasında depolanan anahtarlar büyük/küçük harfe duyarlıdır ve Unicode tabanlı dizelerdir. *APP1* ve *APP1* anahtarları bir uygulama yapılandırma deposunda farklıdır. Bir uygulama içinde yapılandırma ayarlarını kullandığınızda bu durumu aklınızda tutun çünkü bazı çerçeveler yapılandırma anahtarlarını işle-insensitively. Anahtarları ayırt etmek için büyük/küçük harf kullanılması önerilmez.
 
@@ -72,7 +72,7 @@ Her anahtar değeri, anahtarı ve olabilecek bir etiket tarafından benzersiz ş
 | `key` atlanır veya `key=*` | Tüm anahtarlarla eşleşir |
 | `key=abc` | **ABC** anahtar adı tam olarak eşleşir |
 | `key=abc*` | **ABC** ile başlayan anahtar adlarını eşleştirir |
-| `key=abc,xyz` | **ABC** veya **xyz**anahtar adlarını eşleştirir. Beş CSV Ile sınırlıdır |
+| `key=abc,xyz` | **ABC** veya **xyz** anahtar adlarını eşleştirir. Beş CSV Ile sınırlıdır |
 
 Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 
@@ -82,7 +82,7 @@ Ayrıca aşağıdaki etiket düzenlerini de dahil edebilirsiniz:
 | `label=%00` | Eşleşir `\0` etiketi |
 | `label=1.0.0` | Label **1.0.0** ile tam olarak eşleşir |
 | `label=1.0.*` | 1,0 ile başlayan etiketlerle eşleşir **.** |
-| `label=%00,1.0.0` | `\0`, Beş CSV ile sınırlı olan Etiketler veya **1.0.0**eşleşir |
+| `label=%00,1.0.0` | `\0`, Beş CSV ile sınırlı olan Etiketler veya **1.0.0** eşleşir |
 
 > [!NOTE]
 > `*`, `,` ve, `\` sorgularda ayrılmış karakterlerdir. Anahtar adlarınızda veya etiketlerinizde ayrılmış bir karakter kullanılıyorsa, sorgularda kullanarak bunu atlamanız gerekir `\{Reserved Character}` .

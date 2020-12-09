@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL için Azure veritabanı 'na veri kopyalama
-description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak PostgreSQL için Azure veritabanı 'na ve veri kopyalama hakkında bilgi edinin.
+title: PostgreSQL için Azure veritabanı 'nda verileri kopyalama ve dönüştürme
+description: Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na verileri kopyalamayı ve dönüştürmeyi öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,19 +10,19 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/26/2020
-ms.openlocfilehash: 11e0d3336f085ccae9a7fb83ed050d69a15ce42b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.date: 12/08/2020
+ms.openlocfilehash: 2537167783f3e68c52c665dafa9378193852acb4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296514"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930424"
 ---
-# <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'na veri kopyalama
+# <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Azure Data Factory kullanarak PostgreSQL için Azure veritabanı 'nda verileri kopyalama ve dönüştürme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Bu makalede, PostgreSQL için Azure veritabanı 'ndan veri kopyalamak için Azure Data Factory etkinlik kopyalama özelliğinin nasıl kullanılacağı açıklanır. Kopyalama etkinliğine genel bir bakış sunan [Azure Data Factory makalesinde kopyalama etkinliği](copy-activity-overview.md) oluşturur.
+Bu makalede, PostgreSQL için Azure veritabanı 'na veri kopyalamak için Azure Data Factory kopyalama etkinliğini kullanma ve PostgreSQL için Azure veritabanı 'ndaki verileri dönüştürmek üzere veri akışı kullanma açıklanmaktadır. Azure Data Factory hakkında bilgi edinmek için [tanıtım makalesini](introduction.md)okuyun.
 
 Bu bağlayıcı [PostgreSQL Için Azure veritabanı hizmeti](../postgresql/overview.md)için özelleştirilmiştir. Şirket içinde veya bulutta bulunan genel bir PostgreSQL veritabanından veri kopyalamak için [PostgreSQL bağlayıcısını](connector-postgresql.md)kullanın.
 
@@ -31,11 +31,8 @@ Bu bağlayıcı [PostgreSQL Için Azure veritabanı hizmeti](../postgresql/overv
 PostgreSQL için Azure Veritabanı Bağlayıcısı, aşağıdaki etkinlikler için desteklenir:
 
 - [Etkinliği](copy-activity-overview.md) [desteklenen bir kaynak/havuz matrisi](copy-activity-overview.md) ile kopyalama
+- [Veri akışını eşleme](concepts-data-flow-overview.md)
 - [Arama etkinliği](control-flow-lookup-activity.md)
-
-PostgreSQL için Azure veritabanı 'ndan desteklenen herhangi bir havuz veri deposuna veri kopyalayabilirsiniz. Ya da desteklenen herhangi bir kaynak veri deposundan verileri PostgreSQL için Azure veritabanı 'na kopyalayabilirsiniz. Kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
-
-Azure Data Factory, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar. Bu nedenle, bu bağlayıcıyı kullanmak için herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
 ## <a name="getting-started"></a>Başlarken
 
@@ -212,6 +209,63 @@ PostgreSQL için Azure veritabanı 'na veri kopyalamak için, etkinlik **havuzun
         }
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
+
+Eşleme veri akışındaki verileri dönüştürürken, PostgreSQL için Azure veritabanı 'ndan tabloları okuyabilir ve yazabilirsiniz. Daha fazla bilgi için bkz. veri akışlarını eşleme içindeki [kaynak dönüştürme](data-flow-source.md) ve [Havuz dönüşümü](data-flow-sink.md) . PostgreSQL için Azure veritabanı veri kümesini veya kaynak ve havuz türü olarak [satır içi veri kümesini](data-flow-source.md#inline-datasets) kullanmayı seçebilirsiniz.
+
+### <a name="source-transformation"></a>Kaynak dönüştürme
+
+Aşağıdaki tabloda PostgreSQL için Azure veritabanı kaynağı tarafından desteklenen özellikler listelenmiştir. Bu özellikleri **kaynak seçenekleri** sekmesinde düzenleyebilirsiniz.
+
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tablo | Giriş olarak tablo ' yı seçerseniz veri akışı, veri kümesinde belirtilen tablodaki tüm verileri getirir. | Hayır | - |*(yalnızca satır içi veri kümesi için)*<br>tableName |
+| Sorgu | Giriş olarak Sorgula ' yı seçerseniz, kaynaktan veri getirmek için bir SQL sorgusu belirtin. Bu, veri kümesinde belirttiğiniz tüm tabloları geçersiz kılar. Sorguları kullanmak, test veya arama için satırları azaltmanın harika bir yoludur.<br><br>**Order by** yan tümcesi desteklenmez, ancak BIR tam select from deyimi ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , veri akışında kullanabileceğiniz bir tablo döndüren SQL 'de bir UDF 'dir.<br>Sorgu örneği: `select * from mytable where customerId > 1000 and customerId < 2000` veya `select * from "MyTable"` . Not PostgreSQL öğesinde, tırnak işareti yoksa, varlık adının büyük/küçük harf duyarlı olduğunu kabul ediyor.| Hayır | Dize | sorgu |
+| Toplu iş boyutu | Büyük verileri toplu işlemlere Bölmek için bir toplu iş boyutu belirtin. | Hayır | Tamsayı | batchSize |
+| Yalıtım düzeyi | Aşağıdaki yalıtım düzeylerinden birini seçin:<br>-Kaydedilen okuma<br>-Read UNCOMMITTED (varsayılan)<br>-Yinelenebilir okuma<br>-Serileştirilebilir<br>-None (yalıtım düzeyini yoksay) | Hayır | <small>READ_COMMITTED<br/>READ_UNCOMMITTED<br/>REPEATABLE_READ<br/>SERI hale GETIRILEBILIR<br/>SEÇIM</small> |'Sinden |
+
+#### <a name="azure-database-for-postgresql-source-script-example"></a>PostgreSQL için Azure veritabanı kaynak betiği örneği
+
+Kaynak türü olarak PostgreSQL için Azure veritabanı 'nı kullandığınızda, ilişkili veri akışı betiği şu şekilde olur:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    isolationLevel: 'READ_UNCOMMITTED',
+    query: 'select * from mytable',
+    format: 'query') ~> AzurePostgreSQLSource
+```
+
+### <a name="sink-transformation"></a>Havuz dönüştürme
+
+Aşağıdaki tabloda PostgreSQL için Azure veritabanı havuzu tarafından desteklenen özellikler listelenmiştir. Bu özellikleri, **havuz seçenekleri** sekmesinde düzenleyebilirsiniz.
+
+| Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Yöntemi Güncelleştir | Veritabanı Hedefinizdeki işlemlere izin verileceğini belirtin. Varsayılan değer yalnızca eklemeleri izin verir.<br>Satırları güncelleştirmek, kaldırmak veya silmek için, bu eylemler için satırları etiketlemek üzere bir [alter Row dönüşümü](data-flow-alter-row.md) gereklidir. | Evet | `true` veya `false` | siler <br/>eklenebilir <br/>güncellenebilir <br/>upsertable |
+| Anahtar sütunlar | Güncelleştirmeler, üst üste ve siler için, hangi satırın ekleneceğini belirleyen anahtar sütunlar ayarlanmalıdır.<br>Anahtar olarak seçtiğiniz sütun adı, sonraki güncelleştirme, upsert, DELETE 'in bir parçası olarak kullanılacaktır. Bu nedenle, havuz eşlemesinde var olan bir sütun seçmeniz gerekir. | Hayır | Dizi | keys |
+| Anahtar sütunları yazmayı atla | Değeri anahtar sütununa yazmak istiyorsanız "anahtar sütunlarını yazmayı atla" seçeneğini belirleyin. | Hayır | `true` veya `false` | Skipkeyyazmaları |
+| Tablo eylemi |Yazmadan önce hedef tablodaki tüm satırların yeniden oluşturulup kaldırılacağını belirler.<br>- **Hiçbiri**: tabloya hiçbir eylem yapılmaz.<br>- **Yeniden oluştur**: tablo bırakılır ve yeniden oluşturulur. Dinamik olarak yeni bir tablo oluşturuluyoruz gereklidir.<br>- **Kes**: hedef tablodaki tüm satırlar kaldırılacak. | Hayır | `true` veya `false` | Oluştur<br/>kesilemedi |
+| Toplu iş boyutu | Her bir toplu işte kaç satır yazıldığını belirtin. Daha büyük toplu işlem boyutları sıkıştırma ve bellek iyileştirmeyi iyileştirir, ancak verileri önbelleğe alırken bellek dışında özel durumlar riskini ortadan kaldıracak. | Hayır | Tamsayı | batchSize |
+| SQL betikleri öncesi ve sonrası | (Ön işleme) ve sonra (işlem sonrası) verileri havuz veritabanınıza yazıldıktan önce yürütülecek çok satırlı SQL betikleri belirtin. | Hayır | Dize | preSQLs<br>postSQLs |
+
+#### <a name="azure-database-for-postgresql-sink-script-example"></a>PostgreSQL için Azure veritabanı havuz betiği örneği
+
+PostgreSQL için Azure veritabanı 'nı havuz türü olarak kullandığınızda, ilişkili veri akışı betiği şu şekilde olur:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    deletable:false,
+    insertable:true,
+    updateable:true,
+    upsertable:true,
+    keys:['keyColumn'],
+    format: 'table',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzurePostgreSQLSink
 ```
 
 ## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri

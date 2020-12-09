@@ -2,18 +2,18 @@
 title: Sürekli tümleştirme ve teslim işlem hattı kullanarak Azure uygulama yapılandırmasını tümleştirme
 description: Azure Uygulama yapılandırması 'nı kullanarak sürekli tümleştirme ve teslimi uygulamayı öğrenin
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.date: 01/30/2020
-ms.author: lcozzens
-ms.openlocfilehash: b8756db881448edcaac1fda44b60229975350676
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 04/19/2020
+ms.author: alkemper
+ms.openlocfilehash: d076bdf09626ec9ed08fcf43b95fc63d2f4a7dd7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928458"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>CI/CD işlem hattıyla tümleştirme
 
@@ -67,7 +67,7 @@ Azure DevOps ile bir bulut derlemesi yapmak için, [Azure CLI](/cli/azure/instal
 
 ### <a name="build-and-run-the-app-locally"></a>Uygulamayı yerel olarak derleyin ve çalıştırın
 
-1. **ConnectionString**adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. 
+1. **ConnectionString** adlı bir ortam değişkeni ayarlayın ve uygulama yapılandırma deponuzu için erişim anahtarı olarak ayarlayın. 
     Windows komut istemi 'ni kullanırsanız, aşağıdaki komutu çalıştırın ve değişikliğin etkili olması için komut istemi ' ni yeniden başlatın:
 
     ```console

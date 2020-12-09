@@ -1,17 +1,17 @@
 ---
 title: GitHub deponuzu uygulama yapılandırmasıyla eşitleyin
 description: GitHub deponuzu güncelleştirdiğinizde uygulama yapılandırma örneğinizi otomatik olarak güncelleştirmek için GitHub eylemlerini kullanın.
-author: lisaguthrie
-ms.author: lcozzens
-ms.date: 02/20/2020
+author: AlexandraKemperMS
+ms.author: alkemper
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b2b5f4bcbcc5af07a763ee4dff2d42413750fb7
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87371830"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930288"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>GitHub deponuzu uygulama yapılandırmasıyla eşitleyin
 
@@ -35,7 +35,7 @@ Bu GitHub eylemini kullanmaya başlamak için deponuza gidin ve **Eylemler** sek
 ## <a name="sync-configuration-files-after-a-push"></a>Bir gönderim sonrasında yapılandırma dosyalarını eşitleme
 Bu eylem, bir değişikliğin gönderildiği Azure uygulama yapılandırma dosyalarını eşitler `appsettings.json` . Bir geliştirici bir değişikliği uygulamasına ilettiğinde `appsettings.json` , uygulama yapılandırma eşitleme eylemi, uygulama yapılandırma örneğini yeni değerlerle güncelleştirir.
 
-Bu iş akışının ilk bölümü, eylemin *on* *push* `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [GitHub 'ın](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında daha fazla bilgi
+Bu iş akışının ilk bölümü, eylemin   `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, eylem tetiklendiğinde çalıştırılan işleri listeler. Eylem ilgili dosyaları denetler ve depoda gizli dizi olarak depolanan bağlantı dizesini kullanarak uygulama yapılandırma örneğini güncelleştirir.  GitHub 'da gizli dizileri kullanma hakkında daha fazla bilgi için bkz. [GitHub 'ın](https://help.github.com/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets) şifrelenmiş gizli dizileri oluşturma ve kullanma hakkında daha fazla bilgi
 
 ```json
 on: 
@@ -177,7 +177,7 @@ jobs:
 ## <a name="use-a-dynamic-label-on-sync"></a>Eşitleme sırasında dinamik etiket kullan
 Aşağıdaki eylem her eşitlemede dinamik bir etiket ekler ve böylece her bir eşitleme benzersiz şekilde tanımlanabilir ve kod değişikliklerinin yapılandırma değişikliklerine eşlenmesine izin verebilir.
 
-Bu iş akışının ilk bölümü, eylemin *on* *push* `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, işleme karmasını temel alan yapılandırma güncelleştirmesi için benzersiz bir etiket oluşturan bir işi çalıştırır. Ardından iş, bu güncelleştirme için yeni değerlerle ve benzersiz etiketle birlikte uygulama yapılandırma örneğini güncelleştirir.
+Bu iş akışının ilk bölümü, eylemin   `appsettings.json` *ana* dala sahip bir gönderim üzerinde tetikleyeceğini belirtir. İkinci bölüm, işleme karmasını temel alan yapılandırma güncelleştirmesi için benzersiz bir etiket oluşturan bir işi çalıştırır. Ardından iş, bu güncelleştirme için yeni değerlerle ve benzersiz etiketle birlikte uygulama yapılandırma örneğini güncelleştirir.
 
 ```json
 on: 

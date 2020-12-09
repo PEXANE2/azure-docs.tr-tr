@@ -1,20 +1,20 @@
 ---
 title: ARM şablonu test araç seti
-description: Şablonunuzda ARM şablonu test araç setinin nasıl çalıştırılacağını açıklar. Araç seti, önerilen uygulamalar uyguladıysanız görmenizi sağlar.
+description: Şablonunuzda Azure Resource Manager şablonu (ARM şablonu) test araç setinin nasıl çalıştırılacağını açıklar. Araç seti, önerilen uygulamalar uyguladıysanız görmenizi sağlar.
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439569"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928197"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM şablonu test araç setini kullanma
 
-[Azure Resource Manager (ARM) şablonu test araç seti](https://aka.ms/arm-ttk) , şablonunuzun önerilen uygulamalar kullanıp kullanmadığını denetler. Şablonunuz Önerilen uygulamalarla uyumlu olmadığında, önerilen değişikliklerle ilgili uyarıların bir listesini döndürür. Test araç setini kullanarak, şablon geliştirmede yaygın sorunların nasıl önleneceğini öğrenebilirsiniz.
+[Azure Resource Manager şablonu (ARM şablonu) test araç seti](https://aka.ms/arm-ttk) , şablonunuzun önerilen uygulamalar kullanıp kullanmadığını denetler. Şablonunuz Önerilen uygulamalarla uyumlu olmadığında, önerilen değişikliklerle ilgili uyarıların bir listesini döndürür. Test araç setini kullanarak, şablon geliştirmede yaygın sorunların nasıl önleneceğini öğrenebilirsiniz.
 
 Test araç seti, [varsayılan testlerin bir kümesini](test-cases.md)sağlar. Bu sınamalar önerilerdir ancak gereksinimlerdir. Hangi testlerin hedeflerinizle ilgili olduğuna karar verebilir ve hangi testlerin çalıştırılacağını özelleştirebilirsiniz.
 
@@ -162,9 +162,9 @@ Test-AzTemplate -TemplatePath $TemplateFolder -Test "Resources Should Have Locat
 
 ## <a name="customize-tests"></a>Testleri özelleştirme
 
-ARM şablonları için araç seti, **\arm-ttk\testcases\deploymentTemplate**klasöründeki tüm testleri çalıştırır. Bir testi kalıcı olarak kaldırmak istiyorsanız, bu dosyayı klasöründen silin.
+ARM şablonları için araç seti, **\arm-ttk\testcases\deploymentTemplate** klasöründeki tüm testleri çalıştırır. Bir testi kalıcı olarak kaldırmak istiyorsanız, bu dosyayı klasöründen silin.
 
-[Createuıdefinition](../managed-applications/create-uidefinition-overview.md) dosyaları için, **\arm-ttk\testcases\CreateUiDefinition**klasöründeki tüm testleri çalıştırır.
+[Createuıdefinition](../managed-applications/create-uidefinition-overview.md) dosyaları için, **\arm-ttk\testcases\CreateUiDefinition** klasöründeki tüm testleri çalıştırır.
 
 Kendi testinizi eklemek için, adlandırma kuralına sahip bir dosya oluşturun: **Your-Custom-Test-Name.test.ps1**.
 
@@ -282,4 +282,4 @@ Sonraki örnek, testlerin nasıl çalıştırılacağını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Varsayılan testler hakkında bilgi edinmek için bkz. [araç seti Için test çalışmaları](test-cases.md).
+Varsayılan testler hakkında bilgi edinmek için bkz. [ARM şablonu test araç seti Için varsayılan test çalışmaları](test-cases.md).

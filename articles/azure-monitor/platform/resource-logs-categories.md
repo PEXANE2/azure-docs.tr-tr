@@ -3,13 +3,13 @@ title: Azure Izleyici kaynak günlüğü desteklenen Hizmetleri ve kategorileri
 description: Azure Izleyici başvurusu, Azure Kaynak günlükleri için desteklenen Hizmetleri ve olay şemasını anlayın.
 ms.subservice: logs
 ms.topic: reference
-ms.date: 06/03/2020
-ms.openlocfilehash: 463b1d9d9c3ed1d94728874ba814554deb4f97c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/09/2020
+ms.openlocfilehash: c7b2d48b40843930bba78f54d2294769d952daf6
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920841"
+ms.locfileid: "96931240"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure Kaynak günlükleri için desteklenen Kategoriler
 
@@ -23,7 +23,7 @@ Kaynak türünün bir birleşimi ( `resourceId` özellikte mevcuttur) ve `catego
 
 ## <a name="costs"></a>Maliyetler
 
- Verileri Log Analytics ve/veya Olay Hub 'ına gönderme ve depolama ile ilişkili maliyetler vardır. Kaynak günlükleri, bu konumlara gönderebilmeniz için bir veri türüdür. [Bazı kaynak günlüğü kategorilerini dışarı aktarmak için](https://azure.microsoft.com/pricing/details/monitor/)ek bir maliyet vardır. Diğerleri dışa aktarma maliyetlerinden ücretsizdir. Ayrıntılar aşağıdaki tabloda listelenmiştir.
+Verileri Log Analytics, Azure depolama ve/veya Olay Hub 'ına gönderme ve depolama ile ilişkili maliyetler vardır. Bu konumlara verileri almak ve bu konumlara ulaşmak için ücret ödeyebilirsiniz.  Kaynak günlükleri, bu konumlara gönderebilmeniz için bir veri türüdür. [Bazı kaynak günlüğü kategorilerini bu konumlara dışarı aktarmak için](https://azure.microsoft.com/pricing/details/monitor/) ek bir ücret mevcuttur, diğerleri dışa aktarma maliyetlerinden ücretsizdir. Dışarı aktarma maliyeti özellikleri aşağıdaki tabloda listelenmiştir.
 
 ## <a name="supported-log-categories-per-resource-type"></a>Kaynak türü başına desteklenen günlük kategorileri
 
@@ -458,8 +458,8 @@ Maliyet: ücretsiz
 |AppAvailabilityResults|Kullanılabilirlik sonuçları|
 |Appbrowserzamanlamalar|Tarayıcı zamanlamaları|
 |AppDependencies|Bağımlılıklar|
-|AppEvents|Ekinlikler|
-|AppExceptions|Özel durumlar|
+|AppEvents|Olaylar|
+|AppExceptions|Özel Durumlar|
 |Appölçümler|Ölçümler|
 |AppPageViews|Sayfa görünümleri|
 |AppPerformanceCounters|Performans sayaçları|

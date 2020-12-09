@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/17/2020
-ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: 242249e3ab7fbedf9f19f3cb9a49fc4a8359f4ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621119"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929353"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Eşleme veri akışında havuz dönüştürme
 
@@ -41,13 +41,14 @@ Veri akışı eşleme, ayıklama, yükleme ve dönüştürme (ELT) yaklaşımın
 
 | Bağlayıcı | Biçimlendir | Veri kümesi/satır içi |
 | --------- | ------ | -------------- |
-| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (Önizleme)](format-delta.md) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br>✓/✓<br> ✓/- |
-| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br/> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br>✓/✓<br> ✓/- |
-| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br> [Delta (Önizleme)](format-delta.md) <br> [ORC](format-orc.md#mapping-data-flow-properties)<br/> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Ortak veri modeli (Önizleme)](format-common-data-model.md#sink-properties) | ✓/- <br> ✓/- <br> ✓/- <br> -/✓ <br>✓/✓<br> ✓/- <br> -/✓ |
-| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Blob Depolama](connector-azure-blob-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br>[Tamamlanması](format-delta.md) <br>[JSON](format-json.md#mapping-data-flow-properties) <br/>[ORC](format-orc.md#mapping-data-flow-properties)<br>[Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br>✓/- <br>-/✓ <br>✓/- <br>✓/✓<br>✓/- |
+| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br>[JSON](format-json.md#mapping-data-flow-properties) <br/>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br>✓/- <br>✓/- <br>✓/✓<br>✓/- |
+| [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [Avro](format-avro.md#mapping-data-flow-properties) <br/>[Ortak Veri Modeli](format-common-data-model.md#sink-properties)<br>[Sınırlandırılmış metin](format-delimited-text.md#mapping-data-flow-properties) <br>[Tamamlanması](format-delta.md) <br>[JSON](format-json.md#mapping-data-flow-properties) <br/>[ORC](format-orc.md#mapping-data-flow-properties)<br/>[Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br>-/✓ <br>✓/- <br>-/✓ <br>✓/-<br>✓/✓ <br>✓/- |
+| [PostgreSQL için Azure Veritabanı](connector-azure-database-for-postgresql.md) |  | ✓/✓ |
 | [Azure SQL Veritabanı](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
 | [Azure SQL yönetilen örneği (Önizleme)](connector-azure-sql-managed-instance.md#mapping-data-flow-properties) | | ✓/- |
-| [Azure Cosmos DB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
 | [Snowflake](connector-snowflake.md) | | ✓/✓ |
 
 Bu bağlayıcılara özgü ayarlar **Ayarlar** sekmesinde bulunur. Bu ayarlara ilişkin bilgi ve veri akışı betiği örnekleri bağlayıcı belgelerinde bulunur.
@@ -71,7 +72,7 @@ Aşağıdaki videoda, metin ile ayrılmış dosya türleri için birçok farklı
 ## <a name="cache-sink"></a>Önbellek havuzu
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4HKt1]
- 
+
 *Önbellek havuzu* , veri akışı veri deposu yerine Spark önbelleğine yazar. Veri akışlarını eşleme bölümünde, bir *önbellek araması* kullanarak bu veriye birçok kez aynı Flow dahilinde başvuru yapabilirsiniz. Bu, bir ifadenin parçası olarak verilere başvurmak istediğinizde ancak sütunlara açıkça dahil etmek istemediğinizde yararlıdır. Bir önbellek havuzunun, bir veri deposunda en yüksek değer ve bir hata iletisi veritabanına eşleşen hata kodları arayan yaygın örnekleri. 
 
 Önbellek havuzuna yazmak için bir havuz dönüştürmesi ekleyin ve havuz türü olarak **önbellek** ' yi seçin. Diğer havuz türlerinden farklı olarak, bir dış depoya yazmamak istemediğiniz için bir veri kümesi veya bağlı hizmet seçmeniz gerekmez. 

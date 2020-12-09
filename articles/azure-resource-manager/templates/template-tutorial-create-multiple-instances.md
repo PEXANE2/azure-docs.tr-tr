@@ -1,21 +1,21 @@
 ---
 title: Birden çok kaynak örneği oluşturma
-description: Birden çok Azure kaynağı örneği oluşturmak için bir Azure Resource Manager şablonu oluşturmayı öğrenin.
+description: Birden çok Azure Kaynak örneği oluşturmak için Azure Resource Manager şablonu (ARM şablonu) oluşturmayı öğrenin.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: dac1e9429965607aea1490f0ec3b540d7b441d09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91614402"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930809"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma
 
-Azure kaynağının birden çok örneğini oluşturmak için Azure Resource Manager (ARM) şablonunuzda yineleme yapmayı öğrenin. Bu öğreticide, bir şablonu değiştirerek üç depolama hesabı örneği oluşturacaksınız.
+Azure kaynağının birden çok örneğini oluşturmak için Azure Resource Manager şablonunuzda (ARM şablonu) yineleme yapmayı öğrenin. Bu öğreticide, bir şablonu değiştirerek üç depolama hesabı örneği oluşturacaksınız.
 
 ![Azure Resource Manager birden çok örnek diyagramı oluşturuyor](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
@@ -32,7 +32,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
@@ -46,7 +46,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 3. Dosyayı açmak için **Aç**’ı seçin.
 4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
+5. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

@@ -3,14 +3,14 @@ title: Azure Otomasyonu Güncelleştirme Yönetimi için güncelleştirme dağı
 description: Bu makalede, güncelleştirme dağıtımlarının nasıl planlanmakta ve bunların durumlarını incelemesinin nasıl yapılacağı açıklanır.
 services: automation
 ms.subservice: update-management
-ms.date: 10/27/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 41ccecfb844f11a0d234271bcddc1851d3c02fda
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ec0d6d618edad87b76861ea834adb2f29531e6f5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742299"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929676"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>Güncelleştirmeler nasıl dağıtılır ve sonuçlar incelenmek
 
@@ -43,9 +43,9 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
 
 2. Güncelleştirme Yönetimi gitmek için, seçtiğiniz kaynağa bağlı olarak:
 
-   * Otomasyon hesabınızı **seçtiyseniz güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ne gidin ve **güncelleştirme dağıtımını zamanla** ' yı seçin.
-   * Bir Azure VM 'si seçtiyseniz, **Konuk + ana bilgisayar güncelleştirmeleri** ' ne gidin ve ardından **güncelleştirme yönetimi git** ' i seçin.
-   * Bir yay etkin sunucu seçtiyseniz, **güncelleştirme yönetimi** ' a gidin ve **güncelleştirme dağıtımını zamanla** ' yı seçin.
+   * Otomasyon hesabınızı **seçtiyseniz güncelleştirme yönetimi altında** **güncelleştirme yönetimi** ' ne gidin ve **güncelleştirme dağıtımını zamanla**' yı seçin.
+   * Bir Azure VM 'si seçtiyseniz, **Konuk + ana bilgisayar güncelleştirmeleri**' ne gidin ve ardından **güncelleştirme yönetimi git**' i seçin.
+   * Bir yay etkin sunucu seçtiyseniz, **güncelleştirme yönetimi**' a gidin ve **güncelleştirme dağıtımını zamanla**' yı seçin.
 
 3. **Yeni güncelleştirme dağıtımı** altında, **ad** alanına dağıtımınız için benzersiz bir ad girin.
 
@@ -76,12 +76,12 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
    > [!NOTE]
    > Güncelleştirme dağıtımına dahil etmek için yenisiyle değiştirilen güncelleştirmeleri belirtemezsiniz.
 
-9. **Zamanlama ayarları** ' nı seçin. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
+9. **Zamanlama ayarları**' nı seçin. Varsayılan başlangıç zamanı, geçerli zamandan 30 dakika sonradır. Başlangıç zamanını en düşük 10 dakika olmak üzere istediğiniz değere ayarlayabilirsiniz.
 
     > [!NOTE]
     > Bu seçenek, bir yay etkin sunucu seçtiyseniz farklılık fark edilir. **Şimdi Güncelleştir** ' i veya gelecek başlangıç saatini 20 dakika olarak seçebilirsiniz.
 
-10. Dağıtımın bir kez mi gerçekleşeceğini, yoksa yinelenen bir zamanlamayı mı kullandığını belirtmek için **yinelemeyi** kullanın, sonra **Tamam** ' ı seçin.
+10. Dağıtımın bir kez mi gerçekleşeceğini, yoksa yinelenen bir zamanlamayı mı kullandığını belirtmek için **yinelemeyi** kullanın, sonra **Tamam**' ı seçin.
 
 11. **Ön betikler + betikleri sonrası** bölgesinde, dağıtımdan önce ve sonra çalıştırılacak betikleri seçin. Daha fazla bilgi için bkz. [betikleri ve son betikleri yönetme](pre-post-scripts.md).
 
@@ -104,12 +104,12 @@ Yeni bir güncelleştirme dağıtımı zamanlamak için aşağıdaki adımları 
     > [!NOTE]
     > [Yeniden başlatmayı yönetmek için kullanılan kayıt](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart) defteri anahtarları altında listelenen kayıt defteri anahtarları, **yeniden başlatma seçenekleri** hiçbir şekilde **yeniden başlatma** olarak ayarlandıysa yeniden başlatma olayına neden olabilir.
 
-14. Dağıtım zamanlamasını yapılandırmayı bitirdiğinizde **Oluştur** ' u seçin.
+14. Dağıtım zamanlamasını yapılandırmayı bitirdiğinizde **Oluştur**' u seçin.
 
     ![Güncelleştirme Zamanlama Ayarları bölmesi](./media/deploy-updates/manageupdates-schedule-win.png)
 
     > [!NOTE]
-    > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur** ' u seçin.
+    > Seçili bir yay etkin sunucu için dağıtım zamanlamasını yapılandırmayı bitirdiğinizde, **gözden geçir + oluştur**' u seçin.
 
 15. Durum panosu açılır. Oluşturduğunuz dağıtım zamanlamasını göstermek için **dağıtım zamanlamaları** ' nı seçin. En fazla 500 zamanlama listelenir. 500 ' den fazla zamanlama varsa ve tam listeyi gözden geçirmek istiyorsanız, [yazılım güncelleştirme yapılandırması-liste](/rest/api/automation/softwareupdateconfigurations/list) REST API yöntemine bakın. API sürüm 2019-06-01 veya üstünü belirtin.
 
@@ -142,7 +142,7 @@ Dağıtımın oluşturduğu tüm günlük girişlerini görmek için **Tüm Gün
 
 Hedef VM 'lerde güncelleştirme dağıtımını yönetmekten sorumlu runbook 'un iş akışını görmek için **Çıkış ' ı** seçin.
 
-Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgiler için **Hatalar** ’ı seçin.
+Dağıtımla ilgili her türlü hata hakkında ayrıntılı bilgiler için **Hatalar**’ı seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

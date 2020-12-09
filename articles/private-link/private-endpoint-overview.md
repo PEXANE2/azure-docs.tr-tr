@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: 8021d659c144bfb68c2714f1680b6ad27a51b56a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: ac4763a2d79059eb2608595b616c945af274627e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522354"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928520"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Uç Nokta nedir?
 
@@ -28,7 +28,7 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |Alt ağ    |  Sanal bir ağdan özel IP adresleri dağıtmak ve ayırmak için alt ağ. Alt ağ gereksinimleri için, bu makaledeki sınırlamalar bölümüne bakın.         |
 |Özel bağlantı kaynağı    |   Kullanılabilir türler listesinden kaynak KIMLIĞI veya diğer ad kullanarak bağlanacak özel bağlantı kaynağı. Bu kaynağa gönderilen tüm trafik için benzersiz bir ağ tanımlayıcısı oluşturulacak.       |
 |Hedef alt kaynak   |      Bağlanılacak alt kaynak. Her özel bağlantı kaynağı türü, tercihe göre seçim yapmak için farklı seçeneklere sahiptir.    |
-|Bağlantı onay yöntemi    |  Otomatik veya el ile. Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerine bağlı olarak, Özel uç noktanız otomatik olarak onaylanabilir. Bir özel bağlantı kaynağına Aure olmadan bağlanmaya çalışırsanız, kaynağın sahibinin bağlantıyı onaylamasını sağlamak için el ile yöntemini kullanın.        |
+|Bağlantı onay yöntemi    |  Otomatik veya el ile. Azure rol tabanlı erişim denetimi (Azure RBAC) izinlerine bağlı olarak, Özel uç noktanız otomatik olarak onaylanabilir. Azure RBAC olmadan bir özel bağlantı kaynağına bağlanmaya çalışırsanız, kaynağın sahibinin bağlantıyı onaylamasını sağlamak için el ile yöntemini kullanın.        |
 |İstek Iletisi     |  İstenen bağlantıların el ile onaylanabilmesi için bir ileti belirtebilirsiniz. Bu ileti, belirli bir isteği tanımlamak için kullanılabilir.        |
 |Bağlantı durumu   |   Özel uç noktanın etkin olup olmadığını belirten bir salt okunurdur özelliği. Trafiği göndermek için yalnızca onaylanan durumdaki özel uç noktalar kullanılabilir. Kullanılabilir ek durumlar: <br>-**Onaylandı**: bağlantı otomatik olarak veya el ile onaylandı ve kullanılabilir hale gelmiştir.</br><br>-**Bekliyor**: bağlantı el ile oluşturuldu ve özel bağlantı kaynağı sahibi tarafından onay bekliyor.</br><br>-**Reddedildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından reddedildi.</br><br>-Bağlantı **kesildi**: bağlantı, özel bağlantı kaynağı sahibi tarafından kaldırıldı. Özel uç nokta bilgilendirici hale gelir ve temizlik için silinmelidir. </br>|
 

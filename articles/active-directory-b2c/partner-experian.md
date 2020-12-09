@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 29116d880a51444eb45a351e2118a07d13873043
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2058e5362a65b6cd5f3e5b7cb9c20ce32d020d30
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953857"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928707"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Experian yapılandırma öğreticisi
 
@@ -36,7 +36,7 @@ Bu örnekte, Experian 'in tümleşik dijital kimliği ve sahtekarlık risk platf
 - Ülke/Bölge
 - Telefon Numarası
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -58,7 +58,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ![Experian mimarisi için ekran görüntüsü-diyagram](media/partner-experian/experian-architecture-diagram.png)
 
-|Adım | Description |
+|Adım | Açıklama |
 |:-----| :-----------|
 | 1. | Kullanıcı bir oturum açma sayfasına ulaştı. Kullanıcı, yeni bir hesap oluşturmak için kaydolma seçer ve sayfaya bilgi girer. Azure AD B2C Kullanıcı özniteliklerini toplar.
 | 2. | Azure AD B2C orta katman API 'sini çağırır ve Kullanıcı özniteliklerine geçirir.
@@ -77,7 +77,7 @@ Aşağıdaki mimari diyagram uygulamayı gösterir.
 
 ### <a name="part-1---deploy-the-api"></a>1. Bölüm-API 'YI dağıtma
 
-Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)Izleyerek Visual Studio 'dan yayımlanabilir.
+Belirtilen [API kodunu](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/Experian/CrossCoreIntegrationApi/CrossCoreIntegrationApi.sln) bir Azure hizmetine dağıtın. Kod, bu [yönergeleri](/visualstudio/deployment/quickstart-deploy-to-azure)Izleyerek Visual Studio 'dan yayımlanabilir.
 
 >[!NOTE]
 >Azure AD 'yi gerekli ayarlarla yapılandırmak için dağıtılan hizmetin URL 'sine ihtiyacınız vardır.

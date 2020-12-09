@@ -3,21 +3,20 @@ title: Azure Uygulama yapılandırması en iyi uygulamalar | Microsoft Docs
 description: Azure Uygulama yapılandırması kullanırken en iyi yöntemleri öğrenin. Kapsanan konular arasında anahtar gruplandırmaları, anahtar-değer kompozisyonları, uygulama yapılandırması önyüklemesi ve daha fazlası bulunur.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: c45d1668ad39e9584a89921f46218ba243978a05
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078060"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929098"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure Uygulama yapılandırması en iyi uygulamaları
 
@@ -42,7 +41,7 @@ Dikkat edilmesi gereken önemli bir şey, anahtarların ilgili ayarların değer
 
 Uygulama yapılandırması, onunla depolanan tüm anahtarları bağımsız varlıklar olarak değerlendirir. Uygulama yapılandırması, anahtarlar arasında herhangi bir ilişki çıkarması veya hiyerarşiye göre anahtar değerleri devralması denenmez. Ancak uygulama kodunuzda uygun yapılandırma yığınlayarak bağlanmış Etiketler kullanarak birden çok anahtar kümesini toplayabilirsiniz.
 
-Bir örneğe göz atalım. Değeri geliştirme ortamına göre değişebilen **Asset1**adlı bir ayarınız olduğunu varsayalım. Boş bir etiketi ve "geliştirme" adlı bir etiketi içeren "Asset1" adlı bir anahtar oluşturun. İlk etikette, **Asset1**için varsayılan değeri yerleştirmelisiniz ve "geliştirme" için belirli bir değeri ikinciden yerleştirebilirsiniz.
+Bir örneğe göz atalım. Değeri geliştirme ortamına göre değişebilen **Asset1** adlı bir ayarınız olduğunu varsayalım. Boş bir etiketi ve "geliştirme" adlı bir etiketi içeren "Asset1" adlı bir anahtar oluşturun. İlk etikette, **Asset1** için varsayılan değeri yerleştirmelisiniz ve "geliştirme" için belirli bir değeri ikinciden yerleştirebilirsiniz.
 
 Kodunuzda, önce herhangi bir etiket olmadan anahtar değerlerini alır ve ardından "geliştirme" etiketiyle ikinci kez aynı anahtar değerleri kümesini alırsınız. İkinci seferinde değerleri aldığınızda, anahtarların önceki değerlerinin üzerine yazılır. .NET Core yapılandırma sistemi, her birinin üzerine birden çok yapılandırma verisi kümesini "yığmanızı" sağlar. Birden çok küme içinde bir anahtar varsa, onu içeren son küme kullanılır. .NET Core gibi modern programlama çerçevesiyle, uygulama yapılandırmasına erişmek için yerel bir yapılandırma sağlayıcısı kullanıyorsanız bu yığınlama özelliğini ücretsiz olarak alırsınız. Aşağıdaki kod parçacığı, .NET Core uygulamasında nasıl yığın uygulayabileceğinizi göstermektedir:
 
@@ -79,7 +78,7 @@ Uygulama yapılandırmasına yönelik aşırı istek, azaltma veya fazla kullan�
 
 * Özellikle yapılandırma değerlerinizin sık değişmeme durumunda yenileme zaman aşımını artırın. [ `SetCacheExpiration` Yöntemini](/dotnet/api/microsoft.extensions.configuration.azureappconfiguration.azureappconfigurationrefreshoptions.setcacheexpiration)kullanarak yeni bir yenileme zaman aşımı belirtin.
 
-* Tek tek tuşları izlemek yerine tek bir *Sentinel anahtarı*izleyin. Yalnızca Sentinel anahtarı değişirse tüm yapılandırmaları yenileyin. Bir örnek için bkz. [ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma](enable-dynamic-configuration-aspnet-core.md) .
+* Tek tek tuşları izlemek yerine tek bir *Sentinel anahtarı* izleyin. Yalnızca Sentinel anahtarı değişirse tüm yapılandırmaları yenileyin. Bir örnek için bkz. [ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma](enable-dynamic-configuration-aspnet-core.md) .
 
 * Değişikliklerin sürekli olarak yoklanması yerine, yapılandırma değiştiğinde bildirim almak için Azure Event Grid kullanın. Daha fazla bilgi için bkz. [Azure uygulama yapılandırma olaylarını bir Web uç noktasına yönlendirme](./howto-app-configuration-event.md)
 

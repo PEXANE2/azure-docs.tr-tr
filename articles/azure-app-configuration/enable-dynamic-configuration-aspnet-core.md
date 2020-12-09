@@ -4,23 +4,22 @@ titleSuffix: Azure App Configuration
 description: Bu öğreticide ASP.NET Core uygulamalar için yapılandırma verilerini dinamik olarak güncelleştirme hakkında bilgi edineceksiniz.
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
-manager: maiye
+author: AlexandraKemperMS
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 02/24/2019
-ms.author: lcozzens
+ms.date: 09/1/2020
+ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f98ec384876da1d30952d1c4edc1d00049e44682
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd495083f5f9be367dd0f125883b181e3bed27b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077006"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930560"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Öğretici: ASP.NET Core uygulamasında dinamik yapılandırmayı kullanma
 
@@ -34,7 +33,7 @@ Bu öğreticide, kodunuzda dinamik yapılandırma güncelleştirmelerini nasıl 
 
 Bu öğreticideki adımları uygulamak için herhangi bir kod düzenleyicisi kullanabilirsiniz. [Visual Studio Code](https://code.visualstudio.com/) , Windows, MacOS ve Linux platformlarında kullanılabilen harika bir seçenektir.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Uygulama yapılandırma deposundaki değişikliklere yanıt olarak yapılandırmasını güncelleştirmek için uygulamanızı ayarlayın.
@@ -53,11 +52,11 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 *Sentinel anahtarı* , yapılandırma değiştirildiğinde sinyal almak için kullanılan özel bir anahtardır. Uygulamanız, değişiklikler için Sentinel anahtarını izler. Bir değişiklik algılandığında, tüm yapılandırma değerlerini yenileyebilirsiniz. Bu yaklaşım, uygulamanız tarafından uygulama yapılandırması için yapılan isteklerin genel sayısını azaltarak tüm anahtarların değişiklikler için izlenmesiyle karşılaştırılır.
 
 1. Azure portal, **yapılandırma gezgini > oluştur > anahtar-değer**' i seçin.
-1. **Anahtar**için *TestApp: Settings: Sentinel*yazın. **Değer**için 1 girin. **Etiketi** ve **içerik türünü** boş bırakın.
-1. **Apply** (Uygula) seçeneğini belirleyin.
+1. **Anahtar** için *TestApp: Settings: Sentinel* yazın. **Değer** için 1 girin. **Etiketi** ve **içerik türünü** boş bırakın.
+1. **Uygula**’yı seçin.
 
 > [!NOTE]
-> Sentinel anahtarı kullanmıyorsanız, izlemek istediğiniz her anahtarı el ile kaydetmeniz gerekir.
+> Sentinel anahtarı kullanmıyorsanız, izlemek istediğiniz her anahtarı el ile kaydetmeniz gerekir.
 
 ## <a name="reload-data-from-app-configuration"></a>Uygulama yapılandırmasından verileri yeniden yükleme
 
@@ -161,7 +160,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ```
     ---
     > [!Tip]
-    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
+    > Yapılandırma değerlerini okurken seçenekler deseni hakkında daha fazla bilgi için, [ASP.NET Core Içindeki seçenekler desenlerine](/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)bakın.
 
 4. `Configure` `UseAzureAppConfiguration` ASP.NET Core Web uygulaması istekleri almaya devam ederken, yenilemenin güncelleştirilmesi için kaydedilen yapılandırma ayarlarının güncelleştirilmesine izin vermek üzere ara yazılımı ekleyerek yöntemini güncelleştirin.
 
@@ -221,6 +220,9 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
     ---
     
     Ara yazılım, `AddAzureAppConfiguration` `Program.cs` ASP.NET Core Web uygulaması tarafından alınan her istek için yenileme tetiklemesi için içindeki yönteminde belirtilen yenileme yapılandırmasını kullanır. Her istek için bir yenileme işlemi tetiklenir ve istemci kitaplığı, kayıtlı yapılandırma ayarı için önbelleğe alınan değerin dolup dolmadığını denetler. Bu süre dolmuşsa, yenilenir.
+
+    > [!NOTE]
+    > Yapılandırmanın yenilenmesini sağlamak için, ara yazılımı istek ardışık düzenine uygun olarak erken bir şekilde ekleyin, böylece uygulamanızdaki başka bir ara yazılım tarafından kısa devre dışı olmayacaktır.
 
 ## <a name="use-the-latest-configuration-data"></a>En son yapılandırma verilerini kullan
 
@@ -327,7 +329,7 @@ Devam etmeden önce, önce [uygulama yapılandırması ile bir ASP.NET Core uygu
 
     ![Hızlı başlangıç uygulamasını yerel olarak başlatma](./media/quickstarts/aspnet-core-app-launch-local-before.png)
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Yapılandırma Gezgini**' ni seçin ve aşağıdaki anahtarların değerlerini güncelleştirin:
 

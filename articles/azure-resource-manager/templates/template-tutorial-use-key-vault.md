@@ -1,21 +1,21 @@
 ---
 title: Şablonlarda Azure Key Vault kullanma
-description: Resource Manager şablonu dağıtımı sırasında parametre değerlerini güvenli bir şekilde geçirme amacıyla Azure Key Vault'u kullanmayı öğrenin
+description: Azure Resource Manager şablonu (ARM şablonu) dağıtımı sırasında güvenli parametre değerlerini geçirmek için Azure Key Vault nasıl kullanacağınızı öğrenin.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 73a50c282eee023bff525bc737bd2170938de1dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86119285"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929326"
 ---
-# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: ARM şablon dağıtımınızdaki Azure Key Vault tümleştirin
+# <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: Azure Key Vault'u ARM şablonunuzun dağıtımıyla tümleştirme
 
-Bir Azure anahtar kasasından gizli dizileri alma ve bir Azure Resource Manager (ARM) şablonu dağıtırken gizli dizileri parametre olarak geçirme hakkında bilgi edinin. Yalnızca kendi Anahtar Kasası KIMLIĞINE başvurduğundan parametre değeri hiçbir şekilde gösterilmez. Anahtar Kasası gizliliğine statik bir KIMLIK veya dinamik KIMLIK kullanarak başvurabilirsiniz. Bu öğretici statik bir KIMLIK kullanır. Statik KIMLIK yaklaşımıyla, şablon dosyasında değil, şablon parametre dosyasındaki anahtar kasasına başvurun. Her iki yaklaşım hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](./key-vault-parameter.md).
+Bir Azure anahtar kasasından gizli dizileri alma ve bir Azure Resource Manager şablonu dağıtırken (ARM şablonu) gizli dizileri parametre olarak geçirme hakkında bilgi edinin. Yalnızca kendi Anahtar Kasası KIMLIĞINE başvurduğundan parametre değeri hiçbir şekilde gösterilmez. Anahtar Kasası gizliliğine statik bir KIMLIK veya dinamik KIMLIK kullanarak başvurabilirsiniz. Bu öğretici statik bir KIMLIK kullanır. Statik KIMLIK yaklaşımıyla, şablon dosyasında değil, şablon parametre dosyasındaki anahtar kasasına başvurun. Her iki yaklaşım hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](./key-vault-parameter.md).
 
 [Kaynak dağıtım sırasını ayarla](./template-tutorial-create-templates-with-dependent-resources.md) öğreticisinde, bir sanal makıne (VM) oluşturursunuz. VM Yönetici Kullanıcı adı ve parolasını sağlamanız gerekir. Parolayı sağlamak yerine, parolayı bir Azure Anahtar Kasası 'nda ön depoya alabilir ve ardından, dağıtım sırasında bu parolayı anahtar kasasından almak için şablonu özelleştirebilirsiniz.
 
@@ -33,11 +33,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak için, VM yönetici hesabı için oluşturulan bir parola kullanın. Parola oluşturmak için bir örnek aşağıda verilmiştir:
 
     ```console
@@ -79,7 +79,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Gizli dizi için varsayılan ad **Vmadminpassword**' dır. Şablonda sabit kodlanmış.
 > * Şablonu parolayı almak üzere etkinleştirmek için, Anahtar Kasası için **şablon dağıtımı Azure Resource Manager erişimi etkinleştir** adlı bir erişim ilkesi etkinleştirmeniz gerekir. Bu ilke şablonda etkinleştirilmiştir. Erişim ilkesi hakkında daha fazla bilgi için bkz. [Anahtar Kasası ve gizli dizileri dağıtma](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Şablonda *Keyvaultıd*adlı bir çıkış değeri bulunur. Bu KIMLIĞI, daha sonra öğreticideki gizli değeri almak için gizli adıyla birlikte kullanacaksınız. Kaynak KIMLIĞI biçimi:
+Şablonda *Keyvaultıd* adlı bir çıkış değeri bulunur. Bu KIMLIĞI, daha sonra öğreticideki gizli değeri almak için gizli adıyla birlikte kullanacaksınız. Kaynak KIMLIĞI biçimi:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +87,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 KIMLIĞI kopyalayıp yapıştırdığınızda, birden çok satıra ayrılabilir. Satırları birleştirin ve ek boşlukları kırpın.
 
-Dağıtımı doğrulamak için, parolayı şifresiz metin olarak almak için aynı kabuk bölmesinde aşağıdaki PowerShell komutunu çalıştırın. Komutu, önceki PowerShell betiğinden tanımlanan *$keyVaultName*değişkenini kullandığından, yalnızca aynı kabuk oturumunda çalışacaktır.
+Dağıtımı doğrulamak için, parolayı şifresiz metin olarak almak için aynı kabuk bölmesinde aşağıdaki PowerShell komutunu çalıştırın. Komutu, önceki PowerShell betiğinden tanımlanan *$keyVaultName* değişkenini kullandığından, yalnızca aynı kabuk oturumunda çalışacaktır.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -119,9 +119,9 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
    Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri bilmeniz yararlı olur.
 
-1. **Dosya**  >  **farklı kaydet**' i seçin ve sonra dosyanın bir kopyasını *azuredeploy.js*adı ile yerel bilgisayarınıza kaydedin.
+1. **Dosya**  >  **farklı kaydet**' i seçin ve sonra dosyanın bir kopyasını *azuredeploy.js* adı ile yerel bilgisayarınıza kaydedin.
 
-1. Aşağıdaki URL 'yi açmak için 1-3 adımlarını yineleyin ve sonra dosyayı *azuredeploy.parameters.js*olarak kaydedin.
+1. Aşağıdaki URL 'yi açmak için 1-3 adımlarını yineleyin ve sonra dosyayı *azuredeploy.parameters.js* olarak kaydedin.
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.parameters.json
@@ -146,7 +146,7 @@ Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişikl
     ```
 
     > [!IMPORTANT]
-    > **ID** değerini, önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliği ile değiştirin. SecretName, **Vmadminpassword**olarak kodlanmış.  Bkz. [Anahtar Kasası hazırlama](#prepare-a-key-vault).
+    > **ID** değerini, önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliği ile değiştirin. SecretName, **Vmadminpassword** olarak kodlanmış.  Bkz. [Anahtar Kasası hazırlama](#prepare-a-key-vault).
 
     ![Anahtar Kasası ve Kaynak Yöneticisi şablonu sanal makine dağıtım parametreleri dosyasını tümleştirin](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
