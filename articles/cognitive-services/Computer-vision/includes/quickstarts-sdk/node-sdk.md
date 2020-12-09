@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 32970846a4ab102522531b1a46fb38693da7a0e0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e0767e50ac6d88922281b10389b77c5cf0c481be
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533325"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912163"
 ---
 <a name="HOLTop"></a>
 
@@ -76,6 +76,9 @@ Kaynağınızın Azure uç noktası ve anahtarı için değişkenler oluşturun.
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=set-up-client) [istemciyi ayarladım](?success=set-up-client#object-model)
+
 ## <a name="object-model"></a>Nesne modeli
 
 Aşağıdaki sınıflar ve arabirimler, Görüntü İşleme Node.js SDK 'nın bazı önemli özelliklerini işler.
@@ -105,6 +108,9 @@ Ardından, bir işlev tanımlayın `computerVision` ve birincil işlev ve geri �
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=authenticate-client) [istemciyi doğrulıyorum](?success=authenticate-client#analyze-an-image)
 
 ## <a name="analyze-an-image"></a>Resim çözümleme
 
@@ -219,6 +225,9 @@ Yardımcı işlevi tanımlayın `describeType` :
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=analyze-image) [bir görüntüyü çözümleytim](?success=analyze-image#read-printed-and-handwritten-text)
+
 ## <a name="read-printed-and-handwritten-text"></a>Yazdırılmış ve el yazısı metin oku
 
 Görüntü İşleme, görüntüdeki görünür metni ayıklayabilir ve bir karakter akışına dönüştürebilir. Bu örnek, okuma işlemlerini kullanır.
@@ -238,7 +247,6 @@ Okuma çağrısı durum değerlerini göstermek için işlevinizde aşağıdaki 
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
-
 Aşağıdaki kodu ekleyerek `readTextFromURL` verilen görüntüler için işlevini çağırır.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
@@ -251,6 +259,9 @@ Ardından, `printRecText` okuma işlemlerinin sonuçlarını konsola yazdıran y
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text) [metni okudum](?success=read-printed-handwritten-text#run-the-application)
+
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
@@ -259,6 +270,9 @@ Uygulamayı `node` hızlı başlangıç dosyanızdaki komutla çalıştırın.
 node index.js
 ```
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=run-the-application) [uygulamayı çalıştırdım](?success=run-the-application#clean-up-resources)
+
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağı veya kaynak grubunu silebilirsiniz. Kaynak grubunun silinmesi, onunla ilişkili diğer tüm kaynakları da siler.
@@ -266,10 +280,14 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) [kaynakları temizm](?success=clean-up-resources#next-steps)
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
 >[Görüntü İşleme API'si Başvurusu (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+
 
 * [Görüntü İşleme nedir?](../../overview.md)
 * Bu örneğe ilişkin kaynak kodu [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js)' da bulunabilir.

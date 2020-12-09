@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425487"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912265"
 ---
 Konuşma hizmetinin temel özelliklerinden biri de insan konuşmanızı tanıyabilme ve (genellikle konuşma-metin olarak adlandırılır). Bu hızlı başlangıçta, uygulama ve ürünlerinize yönelik konuşma SDK 'sını kullanarak yüksek kaliteli bir konuşmayı metne dönüştürme işlemini nasıl gerçekleştireceğinizi öğreneceksiniz.
 
@@ -30,6 +30,8 @@ Herhangi bir şey yapabilmeniz [için önce go Için konuşma SDK 'sını](../..
 Konuşma tanımayı varsayılan cihaz mikrofonunuzdan çalıştırmak için aşağıdaki kod örneğini kullanın. Değişkenleri `subscription` ve `region` abonelik ve bölge anahtarlarınız ile değiştirin. Betiği çalıştırmak, varsayılan mikrofonunuzun ve çıkış metninde bir tanıma oturumu başlatır.
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ Ve sınıfları hakkında ayrıntılı bilgi için başvuru belgelerine bakın [
 Konuşma tanımayı bir ses dosyasından çalıştırmak için aşağıdaki örneği kullanın. Değişkenleri `subscription` ve `region` abonelik ve bölge anahtarlarınız ile değiştirin. Ayrıca, değişkenini bir `file` . wav dosyası yoluyla değiştirin. Betiği çalıştırmak dosyadaki konuşmayı algılar ve metin sonucunu çıktı olarak görür.
 
 ```go
+package main
+
 import (
     "fmt"
     "time"
