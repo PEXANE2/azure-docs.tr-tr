@@ -1,24 +1,29 @@
 ---
-title: Gerçek zamanlı genel geçiş verileri iste | Microsoft Azure haritaları
-description: Bir geçiş durgde gibi gerçek zamanlı genel aktarım verileri isteme hakkında bilgi edinin. Bu amaçla Azure Maps Mobility hizmetini nasıl kullanacağınızı öğrenin.
+title: Microsoft Azure Maps Mobility Services ile gerçek zamanlı genel aktarım verileri isteme (Önizleme)
+description: Bir geçiş durgde gibi gerçek zamanlı genel aktarım verileri isteme hakkında bilgi edinin. Bu amaçla Azure Maps Mobility hizmetlerini (Önizleme) nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 09/06/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: e6f6d0738cb1673b752e35761a112f2ca22a409e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d3e3dc4b0e3bc64a38856da8344583b744ea62b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895724"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906055"
 ---
-# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure haritalar Mobility hizmetini kullanarak gerçek zamanlı genel aktarım verileri isteyin
+# <a name="request-real-time-public-transit-data-using-the-azure-maps-mobility-services-preview"></a>Azure haritalar Mobility hizmetlerini (Önizleme) kullanarak gerçek zamanlı genel aktarım verileri isteyin 
 
-Bu makalede, Azure Maps [Mobility hizmetini](/rest/api/maps/mobility) kullanarak gerçek zamanlı genel aktarım verileri isteme hakkında yönergeler verilmektedir.
+> [!IMPORTANT]
+> Azure haritalar Mobility Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+Bu makalede, Azure Maps [Mobility hizmetlerinin](/rest/api/maps/mobility) gerçek zamanlı genel aktarım verileri istemek için nasıl kullanılacağı gösterilmektedir.
 
 Bu makalede, belirli bir dura ulaşan tüm satırlar için sonraki gerçek zamanlı varışları isteme hakkında bilgi edineceksiniz.
 
@@ -30,13 +35,13 @@ Bu makale, REST çağrıları oluşturmak için [Postman uygulamasını](https:/
 
 ## <a name="request-real-time-arrivals-for-a-stop"></a>Durdurma için gerçek zamanlı varış süresi iste
 
-Belirli bir genel yoldaki gerçek zamanlı varış verileri istemek için, Azure Maps [Mobility hizmetinin](/rest/api/maps/mobility) [gerçek zamanlı varış API](/rest/api/maps/mobility/getrealtimearrivalspreview) 'sine istek yapmanız gerekir. İsteği tamamlayabilmeniz için **metroID** ve **stopid** gerekir. Bu parametreleri isteme hakkında daha fazla bilgi edinmek için bkz. [genel geçiş rotaları isteme](./how-to-request-transit-data.md)Kılavuzu.
+Belirli bir genel yoldaki gerçek zamanlı varış verileri istemek için, Azure Maps [Mobility hizmeti 'nin (Önizleme)](/rest/api/maps/mobility) [gerçek zamanlı varış API](/rest/api/maps/mobility/getrealtimearrivalspreview) 'sine istek yapmanız gerekir. İsteği tamamlayabilmeniz için **metroID** ve **stopid** gerekir. Bu parametreleri isteme hakkında daha fazla bilgi edinmek için bkz. [genel geçiş rotaları isteme](./how-to-request-transit-data.md)Kılavuzu.
 
 "Seattle – Tacoma – Bellevue, WA" alanı için Metro kimliği olan "522" öğesini Metro KIMLIĞINIZLE kullanalım. Durma KIMLIĞI olarak "522---2060603" kullanın, bu veri yolu durağı "ne 24 th St & 162. Ave, Bellevue WA" olur. Sonraki beş gerçek zamanlı varış verilerini istemek için, bu durdurmakta olan tüm sonraki canlı varış için aşağıdaki adımları izleyin:
 
-1. Postman uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postman uygulamasının üst kısmında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
+1. Postman uygulamasını açın ve istekleri depolamak için bir koleksiyon oluşturalım. Postman uygulamasının üst kısmında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin.  Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin.
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet** ' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. İstek için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet**' i seçin.
 
     ![Postman 'da istek oluşturma](./media/how-to-request-transit-data/postman-new.png)
 
@@ -113,12 +118,12 @@ Belirli bir genel yoldaki gerçek zamanlı varış verileri istemek için, Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mobility hizmetini kullanarak geçiş verileri isteme hakkında bilgi edinin:
+Mobility hizmetlerini (Önizleme) kullanarak geçiş verileri isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Geçiş verileri isteme](how-to-request-transit-data.md)
 
-Azure Maps Mobility hizmeti API 'SI belgelerini inceleyin:
+Azure haritalar Mobility Hizmetleri (Önizleme) API belgelerini inceleyin:
 
 > [!div class="nextstepaction"]
-> [Mobility hizmeti API 'SI belgeleri](/rest/api/maps/mobility)
+> [Mobility Hizmetleri API 'SI belgeleri](/rest/api/maps/mobility)

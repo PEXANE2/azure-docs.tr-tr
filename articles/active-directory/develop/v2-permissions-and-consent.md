@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
-ms.openlocfilehash: 9c8a911bef5fb92f5bf9aa447e9e810a85317208
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b8b7b16a354fba482fcefe8f306f949f9a952ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974162"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902655"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -304,7 +304,7 @@ Bu, tüm kayıtlı izinler için bir onay ekranı üretir (yukarıdaki izin ve b
 
 ### <a name="client-credentials-grant-flow-and-default"></a>İstemci kimlik bilgileri verme akışı ve/.exe varsayılan
 
-Uygulamasının başka bir kullanımı `./default` , bir Web API 'sini çağırmak için [istemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) verme akışını kullanan bir Daemon uygulaması gibi etkileşimli olmayan bir uygulamada uygulama izinleri (veya *rolleri*) isteğinde bulunmasından oluşur.
+Uygulamasının başka bir kullanımı `/.default` , bir Web API 'sini çağırmak için [istemci kimlik bilgileri](v2-oauth2-client-creds-grant-flow.md) verme akışını kullanan bir Daemon uygulaması gibi etkileşimli olmayan bir uygulamada uygulama izinleri (veya *rolleri*) isteğinde bulunmasından oluşur.
 
 Bir Web API 'SI için uygulama izinleri (roller) oluşturmak için, bkz. [nasıl yapılır: uygulamanıza uygulama rolleri ekleme](howto-add-app-roles-in-azure-ad-apps.md).
 

@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: e941938fce09e8729856322a5b6572b46a3714be
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075493"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906259"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -62,7 +62,7 @@ Konuk yapılandırma ilkesi tanımları yeni sürümlere dahildir. Konuk yapıla
 
 |Publisher|Name|Sürümler|
 |-|-|-|
-|Canonical|Ubuntu Server|14,04 ve üzeri|
+|Canonical|Ubuntu Server|14,04-18,04|
 |Credavtiv|Debian|8 ve üzeri|
 |Microsoft|Windows Server|2012 ve üzeri|
 |Microsoft|Windows İstemcisi|Windows 10|
@@ -92,7 +92,7 @@ Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal olu�
 
 Azure Arc tarafından bağlanan Azure dışında bulunan düğümlerin Konuk yapılandırma hizmetine bağlantısı olması gerekir. [Azure Arc belgelerinde](../../../azure-arc/servers/overview.md)sunulan ağ ve ara sunucu gereksinimleriyle ilgili ayrıntılar.
 
-Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443**numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
+Azure 'daki Konuk yapılandırma kaynak sağlayıcısıyla iletişim kurmak için makineler **443** numaralı bağlantı noktasında Azure veri merkezlerine giden erişim gerektirir. Azure 'daki bir ağ giden trafiğe izin vermezse, [ağ güvenlik grubu](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) kuralları ile özel durumlar yapılandırın. "Guestandhybridmanagement" [hizmet etiketi](../../../virtual-network/service-tags-overview.md) , Konuk yapılandırma hizmetine başvurmak için kullanılabilir.
 
 Özel veri merkezlerinde yay bağlantılı sunucular için aşağıdaki desenleri kullanarak trafiğe izin verin:
 
@@ -120,7 +120,7 @@ Azure Ilkesi, **Uyumluluk** düğümündeki uyumluluğu raporlamak Için Konuk y
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Sektör temellerini izleyen işletim sistemi ayarlarını denetleme
 
-Azure Ilkesindeki bir girişim, "taban çizgisi" ile işletim sistemi ayarlarını denetleme olanağı sağlar. Tanım, _ \[ Önizleme \] : Azure Güvenlik taban çizgisi ayarlarıyla eşleşmeyen Windows sanal makinelerini denetleme_ , Active Directory Grup İlkesi dayalı bir kurallar kümesi içerir.
+Azure Ilkesindeki bir girişim, "taban çizgisi" ile işletim sistemi ayarlarını denetleme olanağı sağlar. Tanım, _\[ Önizleme \] : Azure Güvenlik taban çizgisi ayarlarıyla eşleşmeyen Windows sanal makinelerini denetleme_ , Active Directory Grup İlkesi dayalı bir kurallar kümesi içerir.
 
 Ayarların çoğu parametre olarak kullanılabilir. Parametreler, denetlendiğini özelleştirmenizi sağlar.
 İlkeyi gereksinimlerinize göre hizalayın veya ilkeyi sektör mevzuatı standartları gibi üçüncü taraf bilgilerle eşleyin.
@@ -133,7 +133,7 @@ Bazı parametreler bir tamsayı değer aralığını destekler. Örneğin, en fa
 
 Yalnızca _Windows makinelerinde saat dilimini yapılandıran_ tanım, saat dilimini yapılandırarak makinede değişiklik yapar. Makinelerin içinde ayarları yapılandırmak için özel ilke tanımları desteklenmez.
 
-_Yapılandırma_ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını_da atamanız gerekir. Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
+_Yapılandırma_ ile başlayan tanımları atarken, _Windows VM 'Lerde Konuk yapılandırma ilkesini etkinleştirmek için tanım dağıtma ön koşullarını_ da atamanız gerekir. Seçeneğini belirlerseniz bu tanımları bir girişim içinde birleştirebilirsiniz.
 
 > [!NOTE]
 > Yerleşik saat dilimi ilkesi, makineler içindeki ayarları yapılandırmayı destekleyen tek tanımdır ve makineler içindeki ayarları yapılandıran özel ilke tanımları desteklenmez.

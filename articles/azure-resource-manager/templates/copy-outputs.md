@@ -1,22 +1,22 @@
 ---
 title: Bir çıkış değerinin birden çok örneğini tanımlama
-description: Bir dağıtımdan değer döndürürken birden çok kez yinelemek için Azure Resource Manager şablonunda kopyalama işlemini kullanın.
+description: Bir dağıtımdan değer döndürürken birden çok kez yinelemek için bir Azure Resource Manager şablonunda kopyalama işlemi kullanın (ARM şablonu).
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5ae20ed9ec3fdb3b76adbd370f5ba22f9386d613
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82583416"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905953"
 ---
 # <a name="output-iteration-in-arm-templates"></a>ARM şablonlarındaki çıkış yinelemesi
 
-Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir çıktı için birden fazla değer oluşturma gösterilmektedir. Şablonunuzun çıktılar bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir dizi öğeyi dinamik olarak döndürebilirsiniz.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) bir çıktı için birden fazla değer oluşturma gösterilmektedir. `copy`Şablonunuzun çıktılar bölümüne öğesini ekleyerek dağıtım sırasında bir dizi öğeyi dinamik olarak döndürebilirsiniz.
 
 Ayrıca, [kaynak, bir kaynaktaki Özellikler](copy-properties.md)ve [değişkenler](copy-variables.md) [ile kopyalama](copy-resources.md)özelliğini de kullanabilirsiniz.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -27,9 +27,9 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 }
 ```
 
-**Count** özelliği, çıkış değeri için istediğiniz yineleme sayısını belirtir.
+`count`Özelliği, çıkış değeri için istediğiniz yineleme sayısını belirtir.
 
-**Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun. Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
+`input`Özelliği yinelemek istediğiniz özellikleri belirtir. Özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz `input` . Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
 
 ## <a name="copy-limits"></a>Sınırları Kopyala
 
@@ -166,11 +166,10 @@ Yukarıdaki örnek aşağıdaki değerlere sahip bir dizi döndürür:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: ARM şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Öğreticiye gitmek için bkz. [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
 * Copy öğesinin diğer kullanımları için bkz.:
   * [ARM şablonlarındaki kaynak yinelemesi](copy-resources.md)
   * [ARM şablonlarındaki Özellik yinelemesi](copy-properties.md)
   * [ARM şablonlarında değişken yineleme](copy-variables.md)
-* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [ARM şablonları yazma](template-syntax.md).
-* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonuyla uygulama dağıtma](deploy-powershell.md).
-
+* Bir şablonun bölümleri hakkında bilgi edinmek istiyorsanız, bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).

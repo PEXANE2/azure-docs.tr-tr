@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 0be77dc1ac249c37f9b59078451d8fbe35f17458
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb2a2d2762b60a12bb9a24b92e2edae4b846cd1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72754249"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904151"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Denetleme iş akışlarını tanımlama ve kullanma
 
@@ -41,7 +41,7 @@ Sonraki ekranda, **Iş akışı Ekle**' yi seçin.
 
 Sonraki ekranda, **IF** bölümüne gidin. Üstteki açılan menüden **koşul**' ı seçin. Bu, iş akışının işlem yapması için gereken koşulu yapılandırmanıza olanak tanır. Birden çok koşul kullanmak istiyorsanız bunun yerine **bileşim** ' ı seçin. 
 
-Sonra bir bağlayıcı seçin. Bu örnek **Content moderator**kullanır. Seçtiğiniz bağlayıcıya bağlı olarak, veri çıktısı için farklı seçenekler alacaksınız. Diğer bağlayıcıları ayarlamayı öğrenmek için araç ayarlarını Inceleyin kılavuzunun [Bağlayıcılar](./configure.md#connectors) bölümüne bakın.
+Sonra bir bağlayıcı seçin. Bu örnek **Content moderator** kullanır. Seçtiğiniz bağlayıcıya bağlı olarak, veri çıktısı için farklı seçenekler alacaksınız. Diğer bağlayıcıları ayarlamayı öğrenmek için araç ayarlarını Inceleyin kılavuzunun [Bağlayıcılar](./configure.md#connectors) bölümüne bakın.
 
 ![İş akışı bağlayıcısını seçin](images/image-workflow-connect-to.PNG)
 
@@ -83,4 +83,4 @@ Bir sonraki açılan pencerede iş akışının ilerleme durumunu görüntüleye
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu kılavuzda, Content Moderator [Gözden geçirme aracından](https://contentmoderator.cognitive.microsoft.com)denetleme iş akışlarını ayarlamayı ve kullanmayı öğrendiniz. Ardından, programlama yoluyla iş akışları oluşturmayı öğrenmek için [REST API kılavuzuna](../try-review-api-workflow.md) bakın.
+Bu kılavuzda, Content Moderator [Gözden geçirme aracından](https://contentmoderator.cognitive.microsoft.com)denetleme iş akışlarını ayarlamayı ve kullanmayı öğrendiniz. Ardından, programlama yoluyla iş akışları oluşturmayı öğrenmek için [API konsolu kılavuzuna](../try-review-api-workflow.md) bakın.

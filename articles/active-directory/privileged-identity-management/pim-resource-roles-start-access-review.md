@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 12/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b67761b3c765e202505d442647b3ba034ef15a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372506"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905834"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma
 
@@ -28,7 +28,7 @@ ms.locfileid: "92372506"
 
 Bu makalede, ayrıcalıklı Azure Kaynak rolleri için bir veya daha fazla erişim incelemesi oluşturma açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [Ayrıcalıklı rol yöneticisi](../roles/permissions-reference.md#privileged-role-administrator)
 
@@ -36,11 +36,11 @@ Bu makalede, ayrıcalıklı Azure Kaynak rolleri için bir veya daha fazla eriş
 
 1. Ayrıcalıklı rol yöneticisi rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Privileged Identity Management** açın.
 
 1. Sol taraftaki menüden **Azure kaynakları**' nı seçin.
 
-1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
+1. Yönetmek istediğiniz kaynağı bir abonelik gibi seçin.
 
 1. Yönet altında **erişim gözden geçirmeleri**' nı seçin.
 
@@ -66,7 +66,7 @@ Bu bir kerelik bir gözden geçirime sahip olursa, erişim gözden geçirme sür
 
 Bir dizi erişim incelemesini yönetmek için, erişim gözden geçirmelerine gidin ve zamanlanan incelemelerde yaklaşan örnekleri bulacaksınız ve son tarihi düzenleyin ya da gözden geçirenleri buna uygun olarak ekleyin/kaldırın.
 
-**Tamamlanma ayarları sırasında**yaptığınız seçimlere bağlı olarak, otomatik uygulama İnceleme bitiş tarihinden sonra veya gözden geçirmeyi el ile durdurduğunuzda yürütülür. İncelemesinin durumu, **uygulama** ve son durum **uygulandı**gibi ara durumlar aracılığıyla **tamamlandı** olarak değişir. Birkaç dakika içinde rollerden kaldırılan reddedilen kullanıcıları görmeyi beklemelisiniz.
+**Tamamlanma ayarları sırasında** yaptığınız seçimlere bağlı olarak, otomatik uygulama İnceleme bitiş tarihinden sonra veya gözden geçirmeyi el ile durdurduğunuzda yürütülür. İncelemesinin durumu, **uygulama** ve son durum **uygulandı** gibi ara durumlar aracılığıyla **tamamlandı** olarak değişir. Birkaç dakika içinde rollerden kaldırılan reddedilen kullanıcıları görmeyi beklemelisiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

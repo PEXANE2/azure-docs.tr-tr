@@ -3,18 +3,18 @@ title: "Öğretici: Bing Haritalar 'dan Web hizmetlerini geçirme | Microsoft Az
 description: Web hizmetlerini Bing Haritalar 'dan Microsoft Azure Maps 'a geçirmeye yönelik öğretici.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897033"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904967"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan Web hizmeti geçirme
 
@@ -37,21 +37,21 @@ Aşağıdaki tabloda, listelenen Bing Haritalar hizmeti API 'Lerinde benzer işl
 | Uzamsal veri Hizmetleri (SDS)           | [Arama](/rest/api/maps/search)  +  [Route](/rest/api/maps/route) + diğer Azure hizmetleri |
 | Saat Dilimi                             | [Saat dilimi](/rest/api/maps/timezone)  |
 | Trafik olayları                     | [Trafik olayı ayrıntıları](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Nedeniyle                             | [Yükseltme (Önizleme)](/rest/api/maps/elevation)
 
 Aşağıdaki hizmet API 'Leri Şu anda Azure haritalar 'da kullanılabilir değil:
 
--   Yükseltme-planlanmış
 -   İyileştirilmiş gezi rotaları-planlanmış. Azure haritalar yönlendirme API 'SI, tek bir araç için seyahat satış ve iyileştirmesini destekler.
 -   Imagery meta verileri – öncelikle Bing Haritalar 'da kutucuk URL 'Leri almak için kullanılır. Azure haritalar 'ın harita kutucuklarına doğrudan erişmek için tek başına bir hizmeti vardır.
 
 Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir;
 
--   [Azure haritalar Oluşturucusu](./creator-indoor-maps.md) – binaların ve boşlukların özel bir özel dijital ikizi oluşturun.
+-   [Azure haritalar Oluşturucu (Önizleme) ](./creator-indoor-maps.md) – binaların ve boşlukların özel bir özel dijital ikizi oluşturun.
 -   [Uzamsal işlemler](/rest/api/maps/spatial) – bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler yük boşaltma.
 -   Azure haritalarından tarama ve vektör kutucukları olarak erişim ve [görüntü döşeme kutucukları](/rest/api/maps/render/getmaptile) .
 -   [Batch yönlendirme](/rest/api/maps/route/postroutedirectionsbatchpreview) – bir süre içinde tek bir toplu işte 1.000 adede kadar rota isteğine izin verir. Yollar daha hızlı işlenmek üzere sunucuda paralel olarak hesaplanır.
 -   [Trafik](/rest/api/maps/traffic) Flow: gerçek zamanlı trafik akışı verilerine hem raster hem de vektör kutucukları olarak erişin.
--   [Coğrafi konum API 'si](/rest/api/maps/geolocation/getiptolocationpreview) – bir IP adresinin konumunu alın.
+-   [Coğrafi konum API 'si (Önizleme)](/rest/api/maps/geolocation/getiptolocationpreview) – bir IP adresinin konumunu alın.
 -   [Hava durumu Hizmetleri](/rest/api/maps/weather) – gerçek zamanlı erişim elde edin ve hava durumu verilerini tahmin edin.
 
 Aşağıdaki en iyi yöntemler kılavuzlarını da gözden geçirdiğinizden emin olun:
@@ -150,16 +150,16 @@ Azure haritalar ters coğrafi kodlama API 'SI, uygulamanızı geçirirken tümle
 
 Aşağıdaki tabloda, Bing Haritalar varlık türü değerleri, Azure haritalar 'daki eşdeğer özellik adlarına başvuruyordur.
 
-| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Açıklama                                |
+| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Description                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adres*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Larım*                             |
-| `PopulatedPlace`      | `Municipality` veya `MunicipalitySubdivision`     | *Şehir* , *kasaya veya alt* veya *süper şehir*     |
+| `PopulatedPlace`      | `Municipality` veya `MunicipalitySubdivision`     | *Şehir*, *kasaya veya alt* veya *süper şehir*     |
 | `Postcode1`           | `PostalCodeArea`                                | *Posta kodu* veya *posta kodu*                |
 | `AdminDivision1`      | `CountrySubdivision`                            | *Eyalet* veya *İl*                      |
 | `AdminDivision2`      | `CountrySecondarySubdivison`                    | *İlçe veya bölge* *'lar*                    |
 | `CountryRegion`       | `Country`                                       | *Ülke adı*                             |
-|                       | `CountryTertiarySubdivision`                    | *Boroughs* , *Canton* , *communes*          |
+|                       | `CountryTertiarySubdivision`                    | *Boroughs*, *Canton*, *communes*          |
 
 ## <a name="get-location-suggestions-autosuggest"></a>Konum önerilerini alma (otomatik öneri)
 
@@ -186,7 +186,7 @@ Azure haritalar yönlendirme hizmeti, yolları hesaplamak için aşağıdaki API
 
 -   [Rotayı hesapla](/rest/api/maps/route/getroutedirections): bir rotayı hesaplayın ve isteğin hemen işlenmesini sağlayabilirsiniz. Bu API hem GET hem POST isteklerini destekler. Çok sayıda waypoints belirtildiğinde veya URL isteğinin çok uzun olmadığından ve sorunlara yol açmamasına yetecek kadar fazla yol seçeneği kullanılırken POST istekleri önerilir.
 -   [Batch rotası](/rest/api/maps/route/postroutedirectionsbatchpreview): en fazla 1.000 yol isteği içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini isteyin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilecektir.
--   [Mobility Hizmetleri](/rest/api/maps/mobility): genel aktarım kullanarak rotaları ve yönergeleri hesaplayın.
+-   [Mobility Hizmetleri (Önizleme) ](/rest/api/maps/mobility): genel aktarım kullanarak yolları ve yönergeleri hesaplayın.
 
 Aşağıdaki tabloda, Bing Haritalar API parametreleri Azure haritalar 'daki karşılaştırılabilir API parametreleriyle birlikte çapraz başvuru yapılır.
 
@@ -528,7 +528,7 @@ Aşağıdaki tabloda, Bing Haritalar API parametreleri Azure haritalar 'daki kar
 Aşağıdaki API 'Ler kullanılarak Bing Haritalar 'da ilgi çekici veri arama yapılabilir:
 
 -   **Yerel arama:** Yakın (radyal arama), ada göre veya varlık türüne (kategori) göre ilgi çekici noktaları arar. Azure haritalar [POI araması](/rest/api/maps/search/getsearchpoi) ve [POI kategorisi arama](/rest/api/maps/search/getsearchpoicategory) API 'leri bu API 'nin en çok gibidir.
--   **Konum tanıma** : bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar. Azure haritalar [yakın arama](/rest/api/maps/search/getsearchnearby) API 'si, bu API 'ye benzer.
+-   **Konum tanıma**: bir konumun belirli bir uzaklıkta yer alan ilgi alanlarını arar. Azure haritalar [yakın arama](/rest/api/maps/search/getsearchnearby) API 'si, bu API 'ye benzer.
 -   **Yerel Öngörüler:** Belirli bir koordinat süresi boyunca belirtilen en uzun süre içinde olan ilgi alanlarını arar. Bu, önce bir ısovaone hesaplanarak ve ardından [geometri API içinde aramaya](/rest/api/maps/search/postsearchinsidegeometry) geçirilerek Azure Maps ile ulaşılabilir.
 
 Azure Maps, ilgi noktaları için çeşitli arama API 'Leri sağlar:
@@ -614,7 +614,7 @@ Bing Haritalar, tek bir toplu iş coğrafi kod isteğinde 200.000 ' e kadar adre
 
 Azure haritalar toplu bir coğrafi kodlama hizmetine sahiptir, ancak tek bir istekte 10.000 ' e kadar adrese geçirilir ve veri kümesinin boyutuna ve hizmetin yüküne bağlı olarak birkaç dakika sonra Saniyeler içinde işlenir. İstekteki her adres bir işlem oluşturdu. Azure haritalar 'da toplu iş coğrafi kodlama hizmeti yalnızca S1 katmanını kullanabilir.
 
-Azure Maps ile büyük bir sayı adresi olan geokodlamaya yönelik başka bir seçenek de standart arama API 'Lerine paralel istekler yapmına yöneliktir. Bu hizmetler istek başına yalnızca tek bir adres kabul eder, ancak aynı zamanda boş kullanım sınırları sağlayan S0 katmanıyla birlikte kullanılabilir. S0 katmanı, saniyede en fazla 50 istek ve Azure Maps Platformu için tek bir hesaptan izin verir. Bu nedenle, limiti bu sınırın içinde kalmak üzere işetmeniz durumunda, 180.000 adresini bir saat yukarı doğru coğrafi koda alabilir. S1 katmanı, bir hesaptan gerçekleştirilen sorgu sayısı üzerinde belgelenmiş bir sınıra sahip değildir, bu nedenle bu fiyatlandırma katmanı kullanılırken çok daha fazla veri işlenebilir. ancak Batch coğrafi kodlama hizmetini kullanmak, aktarılan toplam veri miktarını azaltmaya yardımcı olur ve ağ trafiğini büyük ölçüde azaltır.
+Azure Maps ile büyük bir sayı adresi olan geokodlamaya yönelik başka bir seçenek de standart arama API 'Lerine paralel istekler yapmına yöneliktir. Bu hizmetler istek başına yalnızca tek bir adres kabul eder, ancak aynı zamanda boş kullanım sınırları sağlayan S0 katmanıyla birlikte kullanılabilir. S0 katmanı, saniyede en fazla 50 istek ve Azure Maps Platformu için tek bir hesaptan izin verir. Bu nedenle 180.000, bu sınırı aşmaya devam etmek için bunları sınırlayın S1 katmanı, bir hesaptan gerçekleştirilen sorgu sayısı üzerinde belgelenmiş bir sınıra sahip değildir, bu nedenle bu fiyatlandırma katmanı kullanılırken çok daha fazla veri işlenebilir. ancak Batch coğrafi kodlama hizmetini kullanmak, aktarılan toplam veri miktarını azaltmaya yardımcı olur ve ağ trafiğini büyük ölçüde azaltır.
 
 -   [Serbest biçimli adres coğrafi kodlama](/rest/api/maps/search/getsearchaddress): tek bir adres dizesi (gibi) belirtip `"1 Microsoft way, Redmond, WA"` isteği hemen işleyin. Bu hizmet, tek tek adreslere hızla coğrafi olarak kod eklemeniz gerekiyorsa önerilir.
 -   [Yapılandırılmış adres coğrafi kodlama](/rest/api/maps/search/getsearchaddressstructured): sokak adı, şehir, ülke ve posta kodu gibi tek bir adresin parçalarını belirtin ve isteği hemen işleyin. Bu hizmet, tek tek adreslerin hızlı bir şekilde coğrafi olarak kodılabilmesi ve verilerin zaten ayrı adres bölümlerine ayrıştırılabilmeniz durumunda önerilir.

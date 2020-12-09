@@ -4,18 +4,18 @@ description: Şirket içinde veya Azure 'da barındırılan ASP.NET Web siteniz 
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838951"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904185"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web siteniz için Application Insights yapılandırma
 
 Bu yordam ASP.NET web uygulamanızı [Azure Application Insights](./app-insights-overview.md) hizmetine telemetri gönderecek şekilde yapılandırır. Şirket içinde veya bulutta kendi IIS sunucularınızda barındırılan ASP.NET uygulamaları için geçerlidir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Application Insights’ı ASP.NET web sitenize eklemek için şunu yapmanız gerekir:
 
 - Aşağıdaki iş yükleriyle [Windows Için Visual Studio 2019](https://www.visualstudio.com/downloads/) ' nin en son sürümünü yükler:
@@ -26,12 +26,16 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 - [Application Insights çalışma alanı tabanlı bir kaynak](create-workspace-resource.md)oluşturun.
 
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
+
+
 ## <a name="create-a-basic-aspnet-web-app"></a>Temel bir ASP.NET Web uygulaması oluşturma
 
 1. Visual Studio 2019 ' i başlatın.
 2. **Dosya**  >  **Yeni**  >  **Proje**' yi seçin.
 3. **ASP.NET Web uygulaması (. NET Framework) C#**' ı seçin.
-4. > oluştur ' u **seçerek**bir proje adı girin.
+4. > oluştur ' u **seçerek** bir proje adı girin.
 5. **MVC**  >  **Oluştur**' u seçin. 
 
 ## <a name="add-application-insights-automatically"></a>Otomatik olarak Application Insights Ekle
@@ -46,7 +50,7 @@ Bu bölüm, şablon tabanlı bir ASP.NET Web uygulamasına Application Insights 
     <InstrumentationKey>your-instrumentation-key-goes-here</InstrumentationKey>
     ```
 4. **Proje**  >  **NuGet Paketlerini Yönet**  >  **güncelleştirmeler** ' i seçin `Microsoft.ApplicationInsights` , her NuGet paketini en son kararlı sürüme güncelleştirin >.   
-5. **IIS Express**seçerek uygulamanızı çalıştırın. Temel bir ASP.NET uygulaması başlatılır. Site telemetrisi üzerindeki sayfalarda gezindiğinizde, Application Insights adresine gönderilecektir.
+5. **IIS Express** seçerek uygulamanızı çalıştırın. Temel bir ASP.NET uygulaması başlatılır. Site telemetrisi üzerindeki sayfalarda gezindiğinizde, Application Insights adresine gönderilecektir.
 
 ## <a name="add-application-insights-manually"></a>Application Insights el ile Ekle
 
@@ -342,7 +346,7 @@ Sunucu tarafı uygulama izlemeyi başarıyla yapılandırdınız. Web uygulaman�
 
 Önceki bölümler, sunucu tarafı izlemeyi otomatik olarak ve el ile yapılandırmak için yöntemler hakkında rehberlik sağlamaktadır. İstemci tarafı izleme eklemek için [istemci tarafı JavaScript SDK 'sını](javascript.md)kullanmanız gerekir. Sayfanın HTML kapatma etiketinden önce bir [JavaScript kod parçacığı](javascript.md#snippet-based-setup) ekleyerek herhangi bir Web sayfasının istemci tarafı işlemlerini izleyebilirsiniz `</head>` . 
 
-Parçacığı her HTML sayfasının üstbilgisine el ile eklemek mümkün olsa da, kod parçacığını bir sitenin tüm sayfalarına ekleyecek bir birincil sayfaya eklemeniz önerilir. Bu makaledeki şablon tabanlı ASP.NET MVC uygulaması için, düzenlemeniz gereken dosya çağrılır `_Layout.cshtml` ve paylaşılan **Görünümler**altında bulunur  >  **Shared**.
+Parçacığı her HTML sayfasının üstbilgisine el ile eklemek mümkün olsa da, kod parçacığını bir sitenin tüm sayfalarına ekleyecek bir birincil sayfaya eklemeniz önerilir. Bu makaledeki şablon tabanlı ASP.NET MVC uygulaması için, düzenlemeniz gereken dosya çağrılır `_Layout.cshtml` ve paylaşılan **Görünümler** altında bulunur  >  **Shared**.
 
 İstemci tarafı izleme eklemek için, `_Layout.cshtml` dosyayı açın ve istemci tarafı JAVASCRIPT SDK yapılandırma makalesindeki [kod parçacığı tabanlı kurulum yönergelerini](javascript.md#snippet-based-setup) izleyin.
 

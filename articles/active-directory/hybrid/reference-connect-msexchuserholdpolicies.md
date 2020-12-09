@@ -14,18 +14,18 @@ ms.date: 09/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24820949eb6762caf808c4420ede6f0f59184281
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0fbda588d99de44c77118586519055a8fc474104
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412604"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861774"
 ---
 # <a name="azure-ad-connect---msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>Azure AD Connect-msExchUserHoldPolicies ve cloudMsExchUserHoldPolicies
 Aşağıdaki başvuru belgesi, Exchange tarafından kullanılan bu öznitelikleri ve varsayılan eşitleme kurallarını düzenlemenin doğru yolunu açıklar.
 
 ## <a name="what-are-msexchuserholdpolicies-and-cloudmsexchuserholdpolicies"></a>MsExchUserHoldPolicies ve cloudMsExchUserHoldPolicies nedir?
-Bir Exchange sunucusu için kullanılabilecek iki tür [saklama](/Exchange/policy-and-compliance/holds/holds?view=exchserver-2019) vardır: dava tutma ve bekletme In-Place. Dava bekletme etkin olduğunda tüm posta kutusu tüm öğeler beklemeye yerleştirilir.  In-Place bir bekletme, yalnızca In-Place eBulma aracını kullanarak tanımladığınız bir arama sorgusunun ölçütlerine uyan öğeleri korumak için kullanılır.
+Bir Exchange sunucusu için kullanılabilecek iki tür [saklama](/Exchange/policy-and-compliance/holds/holds) vardır: dava tutma ve bekletme In-Place. Dava bekletme etkin olduğunda tüm posta kutusu tüm öğeler beklemeye yerleştirilir.  In-Place bir bekletme, yalnızca In-Place eBulma aracını kullanarak tanımladığınız bir arama sorgusunun ölçütlerine uyan öğeleri korumak için kullanılır.
 
 Msexchuserholdpolleve cloudMsExchUserHoldPolicies öznitelikleri şirket içi AD ve Azure AD 'ye, şirket içi Exchange veya Exchange 'in çevrimiçi mi olduğunu bağlı olarak hangi kullanıcıların bir bekletme kapsamında olduğunu belirlemesini sağlar.
 

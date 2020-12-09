@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579037"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862097"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Azure Active Directory kullanarak özel rol atamalarını görüntüleme
 
@@ -32,14 +32,14 @@ Bu makalede, Azure Active Directory (Azure AD) ' de atadığınız özel rolleri
 Bu yordam, bir rolün kurumsal çapta kapsama sahip atamalarını görüntülemeyi açıklar.
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Azure Active Directory** seçin, **Roller ve yöneticiler** ' i seçin ve ardından bu rolü açmak ve özelliklerini görüntülemek için bir rol seçin.
+1. **Azure Active Directory** seçin, **Roller ve yöneticiler**' i seçin ve ardından bu rolü açmak ve özelliklerini görüntülemek için bir rol seçin.
 1. Rolün atamalarını görüntülemek için **atamalar** ' ı seçin.
 
     ![Listeden bir rol açtığınızda rol atamalarını ve izinleri görüntüleme](./media/view-assignments/role-assignments.png)
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak rol atamalarını görüntüleme
 
-Bu bölümde, bir rolün kurumsal çapta kapsama sahip atamalarını görüntüleme açıklanmaktadır. Bu makale, [Azure Active Directory PowerShell sürüm 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülünü kullanır. PowerShell kullanarak tek uygulama kapsamı atamalarını görüntülemek için, [PowerShell ile özel roller atama](custom-assign-powershell.md)içindeki cmdlet 'leri kullanabilirsiniz.
+Bu bölümde, bir rolün kurumsal çapta kapsama sahip atamalarını görüntüleme açıklanmaktadır. Bu makale, [Azure Active Directory PowerShell sürüm 2](/powershell/module/azuread/#directory_roles) modülünü kullanır. PowerShell kullanarak tek uygulama kapsamı atamalarını görüntülemek için, [PowerShell ile özel roller atama](custom-assign-powershell.md)içindeki cmdlet 'leri kullanabilirsiniz.
 
 ### <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 
@@ -105,11 +105,11 @@ HTTP/1.1 200 OK
 Bu bölümde, tek uygulama kapsamıyla bir rolün atamalarının görüntülenmesi açıklanmaktadır. Bu özellik şu anda genel önizleme aşamasındadır.
 
 1. Azure AD kuruluşunda ayrıcalıklı rol yöneticisi veya genel yönetici izinleriyle [Azure AD Yönetim merkezinde](https://aad.portal.azure.com) oturum açın.
-1. **Uygulama kayıtları** ' yi seçin ve ardından özelliklerini görüntülemek için uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
+1. **Uygulama kayıtları**' yi seçin ve ardından özelliklerini görüntülemek için uygulama kaydını seçin. Azure AD kuruluşunuzda uygulama kayıtlarının tüm listesini görmek için **tüm uygulamalar** ' ı seçmeniz gerekebilir.
 
     ![Uygulama kayıtları sayfasından uygulama kayıtları oluşturma veya düzenleme](./media/view-assignments/app-reg-all-apps.png)
 
-1. Uygulama kaydında **Roller ve yöneticiler** ' i seçin ve ardından özelliklerini görüntülemek için bir rol seçin.
+1. Uygulama kaydında **Roller ve yöneticiler**' i seçin ve ardından özelliklerini görüntülemek için bir rol seçin.
 
     ![Uygulama kayıtları sayfasından uygulama kaydı rol atamalarını görüntüleme](./media/view-assignments/app-reg-assignments.png)
 

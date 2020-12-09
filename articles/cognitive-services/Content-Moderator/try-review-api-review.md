@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
-ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "72757133"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905177"
 ---
-# <a name="create-human-reviews-rest"></a>İnsan incelemeleri oluşturma (REST)
+# <a name="create-human-reviews-api-console"></a>İnsan incelemeleri oluşturma (API konsolu)
 
 , İnsan moderatör 'nin değerlendirilmesine yönelik depolamayı ve görüntüleme içeriğini [gözden geçirir](./review-api.md#reviews) . Bir Kullanıcı bir gözden geçirmeyi tamamladığında, sonuçlar belirtilen geri çağırma uç noktasına gönderilir. Bu kılavuzda, API konsolundan REST API 'Lerini gözden geçirme ' yi kullanarak İncelemeleri ayarlamayı öğreneceksiniz. API 'lerin yapısını anladıktan sonra, bu çağrıları REST ile uyumlu herhangi bir platforma kolayca bağlayabilirsiniz.
 
@@ -33,7 +33,7 @@ Bir gözden geçirme oluşturmak için, **[Gözden geçirme-](https://westus2.de
 
 ### <a name="enter-rest-call-parameters"></a>REST çağrı parametrelerini girin
 
-**TeamName**ve **OCP-apim-Subscription-Key**değerlerini girin:
+**TeamName** ve **OCP-apim-Subscription-Key** değerlerini girin:
 
 - **TeamName**: [İnceleme aracı](https://contentmoderator.cognitive.microsoft.com/) hesabınızı ayarlarken oluşturduğunuz takım kimliği (gözden geçirme aracınızın **kimlik bilgileri ekranındaki kimlik alanında bulunur** ).
 - **OCP-apim-Subscription-Key**: Content moderator anahtarınız. Bunu [İnceleme aracının](https://contentmoderator.cognitive.microsoft.com) **Ayarlar** sekmesinde bulabilirsiniz.

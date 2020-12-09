@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782510"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861553"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Azure SQL yönetilen örnek yönetimi işlemlerini iptal etme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,14 +38,14 @@ Aşağıdaki tabloda yönetim işlemleri özetlenir, bunlar iptal edilip edilmey
 
 Kategori  |İşlem  |İptal edilebilir  |Tahmini iptal süresi  |
 |---------|---------|---------|---------|
-|Dağıtım |Örnek oluşturma |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |Hayır |  |
-|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Evet |İşlem %90, 5 dakika içinde tamamlanır. |
-|Sil |Örnek silme |Hayır |  |
-|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |Hayır |  |
+|Dağıtım |Örnek oluşturma |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (Genel Amaçlı) |No |  |
+|Güncelleştir |Örnek depolama ölçeği artırma/azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (Genel Amaçlı) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek işlem (Vçekirdekler) ölçeği artırma ve azaltma (İş Açısından Kritik) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Güncelleştir |Örnek hizmeti katmanı değişikliği (İş Açısından Kritik Genel Amaçlı ve tam tersi) |Yes |İşlem %90, 5 dakika içinde tamamlanır. |
+|Sil |Örnek silme |No |  |
+|Sil |Sanal küme silme (Kullanıcı tarafından başlatılan işlem olarak) |No |  |
 
 ## <a name="cancel-management-operation"></a>Yönetim işlemini iptal et
 
@@ -61,7 +61,7 @@ Azure portal kullanarak yönetim işlemlerini iptal etmek için şu adımları i
 
 1. Sayfanın alt kısmındaki **Işlemi Iptal et** ' i seçin. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Devam eden işlem sayfasını açmak için devam eden işlem kutusunu seçin.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="İşlemi iptal etmek için iptal 'i seçin.":::
 
 1. İşlemi iptal etmek istediğinizi onaylayın. 
 
@@ -116,13 +116,12 @@ Ayrıntılı komutların açıklaması için bkz. [az SQL mı op](/cli/azure/sql
 
 ## <a name="canceled-deployment-request"></a>Dağıtım isteği iptal edildi
 
-API sürüm 2020-02-02 ile örnek oluşturma isteği kabul edildiğinde örnek, dağıtım işleminin ilerlemesi (yönetilen örnek durumu **sağlama** ) ne olduğuna bakılmaksızın, kaynak olarak mevcut olmaya başlar. Örnek dağıtım isteğini iptal ederseniz (yeni örnek oluşturma), yönetilen örnek **sağlama** durumundan **failedtocreate** durumuna geçer.
+API sürüm 2020-02-02 ile örnek oluşturma isteği kabul edildiğinde örnek, dağıtım işleminin ilerlemesi (yönetilen örnek durumu **sağlama**) ne olduğuna bakılmaksızın, kaynak olarak mevcut olmaya başlar. Örnek dağıtım isteğini iptal ederseniz (yeni örnek oluşturma), yönetilen örnek **sağlama** durumundan **failedtocreate** durumuna geçer.
 
 Oluşturmakta olan örnekler yine de kaynak olarak mevcuttur: 
 
 - Ücretlendirilmiyor
 - Kaynak limitlerini (alt ağ veya vCore kotası) doğru sayma
-- Örnek adını ayrılmış tut-aynı ada sahip bir örneği dağıtmak Için, adı bırakmak üzere başarısız olan örneği silin
 
 
 > [!NOTE]

@@ -1,20 +1,20 @@
 ---
 title: Şablon dağıtma-IntelliJ fıkır
-description: IntelliJ FIKRINI kullanarak ilk Azure Resource Manager şablonunuzu oluşturmayı ve bunu dağıtmayı öğrenin.
+description: IntelliJ FIKRINI kullanarak ilk Azure Resource Manager şablonunuzu (ARM şablonu) oluşturmayı ve nasıl dağıtılacağını öğrenin.
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: devx-track-java
-ms.openlocfilehash: 6a596eff70bfc20b5a6752ef47398bd14d527c97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0e007fe8930b30cee1c95159d7e964e3792449f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973325"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905970"
 ---
 # <a name="create-and-deploy-arm-templates-by-using-the-intellij-idea"></a>IntelliJ FIKRINI kullanarak ARM şablonları oluşturma ve dağıtma
 
-IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager (ARM) şablonu dağıtmayı ve şablonu doğrudan IDE 'den güncelleştirme ve güncelleştirme işlemini öğrenin. ARM şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetme ile ilgili kavramları anlamak için bkz. [şablon dağıtımına genel bakış](overview.md).
+IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager şablonu (ARM şablonu) dağıtmayı ve şablonu doğrudan IDE 'den güncelleştirme ve güncelleştirme işlemini öğrenin. ARM şablonları, çözümünüz için dağıtmanız gereken kaynakları tanımlayan JSON dosyalarıdır. Azure çözümlerinizi dağıtma ve yönetme ile ilgili kavramları anlamak için bkz. [şablon dağıtımına genel bakış](overview.md).
 
 ![Kaynak Yöneticisi Şablon portalı diyagramı](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-export-deploy-template-portal.png)
 
@@ -22,7 +22,7 @@ IntelliJ FIKRINI kullanarak Azure 'a bir Azure Resource Manager (ARM) şablonu d
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -40,7 +40,7 @@ Sıfırdan şablon oluşturmak yerine, [Azure Hızlı Başlangıç Şablonları]
 
     ![Kaynak Yöneticisi şablonu dağıtım oluşturmak için sağ tıklayın](./media/create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. **Dağıtım adınızı**, **aboneliğinizi**, **kaynak grubunuzu**ve **bölgenizi**yapılandırma. Burada, şablonu yeni bir kaynak grubuna dağıttık `testRG` . Ardından, indirdiğiniz **kaynak şablonu** `azuredeploy.json` ve **kaynak parametreleri** için yol ' ı seçin `azuredeploy.parameters.json` .
+1. **Dağıtım adınızı**, **aboneliğinizi**, **kaynak grubunuzu** ve **bölgenizi** yapılandırma. Burada, şablonu yeni bir kaynak grubuna dağıttık `testRG` . Ardından, indirdiğiniz **kaynak şablonu** `azuredeploy.json` ve **kaynak parametreleri** için yol ' ı seçin `azuredeploy.parameters.json` .
 
     ![Kaynak Yöneticisi şablonu dağıtım oluşturmak için dosyaları seçin](./media/create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

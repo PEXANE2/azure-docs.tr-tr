@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 9e62d6c475a4aeb366d034af1c80fc728f1a9211
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93335832"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903046"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de dizin oluşturma ilkeleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -28,8 +28,8 @@ Bazı durumlarda bu otomatik davranışı kendi gereksinimlerinize daha iyi uyac
 
 Azure Cosmos DB iki dizin oluşturma modunu destekler:
 
-- **Tutarlı** : öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
-- **Hiçbiri** : Dizin oluşturma kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#dotnet-sdk) kullanılarak izlenebilir.
+- **Tutarlı**: öğe oluşturma, güncelleştirme veya silme işlemi sırasında dizin zaman uyumlu olarak güncelleştirilir. Bu, okuma sorgularınızın tutarlılığı, [hesap için yapılandırılmış tutarlılığa](consistency-levels.md)sahip olacağı anlamına gelir.
+- **Hiçbiri**: Dizin oluşturma kapsayıcıda devre dışı bırakıldı. Bu genellikle bir kapsayıcı, ikincil dizinlere gerek olmadan saf anahtar-değer deposu olarak kullanıldığında kullanılır. Toplu işlemlerin performansını artırmak için de kullanılabilir. Toplu işlemler tamamlandıktan sonra, dizin modu tutarlı olarak ayarlanabilir ve sonra, Işlem tamamlanana kadar [ındexdönüşümle ilerlemesi](how-to-manage-indexing-policy.md#dotnet-sdk) kullanılarak izlenebilir.
 
 > [!NOTE]
 > Azure Cosmos DB, yavaş dizin oluşturma modunu da destekler. Gecikmeli dizinde, dizin güncelleştirmeleri altyapıda hiçbir çalışma yapılmadığı sırada çok daha düşük öncelik düzeyinde gerçekleştirilir. Bu **tutarsız veya eksik** sorgu sonuçlarına yol açabilir. Cosmos kapsayıcısını sorgulamayı planlıyorsanız gecikmeli dizini seçmemelisiniz. Yeni kapsayıcılar geç dizin oluşturmayı seçemezsiniz. [Azure desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile iletişim kurarak (yavaş Dizin oluşturmayı desteklemeyen [sunucusuz](serverless.md) modda bir Azure Cosmos hesabı kullanıyor olmanız dışında) bir istisna isteyebilirsiniz.
@@ -103,11 +103,11 @@ Yolların dahil edilmesi ve dışlanması için ilke örneklerinin dizinini olu�
 
 Dahil edilen yollarınızın ve dışlanan yolların bir çakışması varsa, daha kesin yol daha önceliklidir.
 
-İşte bir örnek:
+Aşağıda bir örnek verilmiştir:
 
-**Dahil edilen yol** : `/food/ingredients/nutrition/*`
+**Dahil edilen yol**: `/food/ingredients/nutrition/*`
 
-**Dışlanan yol** : `/food/ingredients/*`
+**Dışlanan yol**: `/food/ingredients/*`
 
 Bu durumda, dahil edilen yol daha kesin olduğundan, dışlanan yol üzerinden önceliklidir. Bu yollara bağlı olarak, `food/ingredients` yoldaki veya iç içe yerleştirilmiş tüm veriler dizinden dışlanıyor. Özel durum, dahil edilen yol içindeki veriler olabilir: `/food/ingredients/nutrition/*` , Dizin oluşturulacak.
 
@@ -201,6 +201,7 @@ Birden çok özelliklerde filtre içeren sorgular için Bileşik dizinler oluşt
 - Birden çok filtre içeren sorguları iyileştirmek için bir bileşik dizin oluştururken, `ORDER` bileşik dizinin sonuçları üzerinde hiçbir etkisi olmayacaktır. Bu özellik isteğe bağlıdır.
 - Birden çok özelliklerde filtre içeren bir sorgu için bileşik dizin tanımlamadıysanız sorgu yine de başarılı olur. Ancak, sorgunun RU maliyeti bir bileşik dizinle azaltılabilir.
 - Toplamaların her ikisi de (örneğin, sayı veya toplam) ve filtreler bileşik dizinlerden de faydalanır.
+- Filtre ifadeleri birden çok bileşik dizin kullanabilir.
 
 Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandığı aşağıdaki örnekleri göz önünde bulundurun:
 
@@ -213,6 +214,7 @@ Bir bileşik dizinin özellikler adı, yaşı ve zaman damgasında tanımlandı�
 | ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
 | ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+| ```(name ASC, age ASC) and (name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp > 123049923``` | ```Yes```            |
 
 ### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>Filtresi ve ORDER BY yan tümcesi olan sorgular
 

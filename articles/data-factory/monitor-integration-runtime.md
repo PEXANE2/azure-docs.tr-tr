@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497954"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862454"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory'deki tümleştirme çalışma zamanını izleme
 
@@ -52,7 +52,7 @@ Aşağıdaki tabloda, bir Azure tümleştirme çalışma zamanı için cmdlet ta
 | Konum | Azure tümleştirme çalışma zamanının konumu. Bir Azure tümleştirme çalışma zamanının konumu hakkındaki ayrıntılar için bkz. [Integration Runtime 'A giriş](concepts-integration-runtime.md). |
 | DataFactoryName | Azure tümleştirme çalışma zamanının ait olduğu veri fabrikasının adı. | 
 | ResourceGroupName | Data Factory 'nin ait olduğu kaynak grubunun adı.  |
-| Açıklama | Tümleştirme çalışma zamanının açıklaması.  |
+| Description | Tümleştirme çalışma zamanının açıklaması.  |
 
 ### <a name="status"></a>Durum
 
@@ -83,7 +83,7 @@ Aşağıdaki tabloda **her düğüm** Için izleme özelliklerinin açıklamalar
 | CPU kullanımı | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün CPU kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. |
 | Ağ (ın/out) | Şirket içinde barındırılan tümleştirme çalışma zamanı düğümünün ağ kullanımı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. | 
 | Eşzamanlı Işler (çalışıyor/limit) | **Çalışıyor**. Her düğümde çalışan iş veya görev sayısı. Bu değer, neredeyse gerçek zamanlı bir anlık görüntüdür. <br/><br/>**Sınır**. Limit her düğüm için en fazla eş zamanlı işi belirtir. Bu değer makine boyutuna göre tanımlanır. CPU, bellek veya ağ kullanımda olsa bile etkinlikler zaman aşımına uğradıkça, Gelişmiş senaryolarda eşzamanlı iş yürütülmesini ölçeklendirmeye yönelik sınırı artırabilirsiniz. Bu yetenek, tek düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı ile de kullanılabilir. |
-| Role | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
+| Rol | Çok düğümlü bir şirket içinde barındırılan tümleştirme çalışma zamanı – dağıtıcı ve çalışan içinde iki tür rol vardır. Tüm düğümler çalışanlardır, yani işleri yürütmek için hepsi kullanılabilirler. Bulut hizmetlerinden görevleri/işleri çekmek ve bunları farklı çalışan düğümlerine göndermek için kullanılan yalnızca bir dağıtıcı düğümü vardır. Dağıtıcı düğümü de bir çalışan düğümüdür. |
 
 Özelliklerin bazı ayarları, şirket içinde barındırılan tümleştirme çalışma zamanı 'nda (yani, bir genişleme senaryosunda) iki veya daha fazla düğüm olduğunda daha anlamlı hale getirir.
 
@@ -104,7 +104,7 @@ Aşağıdaki tabloda, şirket içinde barındırılan tümleştirme çalışma z
 | Çevrimiçi | Düğüm Data Factory hizmetine bağlandı. |
 | Çevrimdışı | Düğüm çevrimdışı. |
 | Yükseltmenin | Düğüm otomatik olarak güncelleştiriliyor. |
-| Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8050 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
+| Sınırlı | Bir bağlantı sorunu nedeniyle. HTTP bağlantı noktası 8060 sorunu, Service Bus bağlantı sorunu veya bir kimlik bilgisi eşitleme sorunuyla kaynaklanıyor olabilir. |
 | Etkin değil | Düğüm, diğer çoğunluk düğümlerin yapılandırmasından farklı bir yapılandırmadır. |
 
 Düğüm, diğer düğümlere bağlanamıyorsa devre dışı olabilir.
@@ -175,7 +175,7 @@ Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $A
 
 Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından döndürülen özelliklerin açıklamaları verilmiştir.
 
-| Özellik/durum              | Açıklama                  |
+| Özellik/durum              | Description                  |
 | ---------------------------- | ---------------------------- |
 | CreateTime                   | Azure-SSIS IR oluşturulduğu UTC saati. |
 | Düğümler                        | Azure-SSIS IR düğüme özgü durumlar (başlangıç/kullanılabilir/geri dönüştürme/kullanılamaz) ve eyleme dönüştürülebilir hatalar içeren ayrılmış/kullanılabilir düğümler. |
@@ -196,14 +196,14 @@ Aşağıdaki tabloda, bir Azure-SSIS IR için yukarıdaki cmdlet tarafından dö
 | Tür                         | Azure-SSIS IR IR türü (yönetilen/kendiliğinden konak). |
 | ResourceGroupName            | ADF ve Azure-SSIS IR oluşturulduğu Azure Kaynak grubunuzun adı. |
 | DataFactoryName              | ADF 'nizin adı. |
-| Ad                         | Azure-SSIS IR adı. |
-| Açıklama                  | Azure-SSIS IR açıklaması. |
+| Name                         | Azure-SSIS IR adı. |
+| Description                  | Azure-SSIS IR açıklaması. |
   
 #### <a name="status-per-azure-ssis-ir-node"></a>Durum (Azure-SSIS IR düğüm başına)
 
 Aşağıdaki tabloda bir Azure-SSIS IR düğümünün olası durumları verilmiştir:
 
-| Düğüme özgü durum | Açıklama |
+| Düğüme özgü durum | Description |
 | -------------------- | ----------- | 
 | Başlatılıyor             | Bu düğüm hazırlanıyor. |
 | Kullanılabilir            | Bu düğüm, SSIS paketlerini dağıtmanız/yürütmeniz için hazırlayın. |
@@ -214,7 +214,7 @@ Aşağıdaki tabloda bir Azure-SSIS IR düğümünün olası durumları verilmi�
 
 Aşağıdaki tabloda Azure-SSIS IR genel durumları verilmiştir. İçindeki genel durum, Azure-SSIS IR ait olan tüm düğümlerin Birleşik durumlarına bağlıdır. 
 
-| Genel durum | Açıklama | 
+| Genel durum | Description | 
 | -------------- | ----------- | 
 | Başlangıç        | Azure-SSIS IR düğümleri ayrılmadı/hazırlandı. | 
 | Başlatılıyor       | Azure-SSIS IR düğümleri ayrılmakta/hazırlanmakta ve faturalandırma başladı. |

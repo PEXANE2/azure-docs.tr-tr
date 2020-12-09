@@ -3,17 +3,17 @@ title: Azure haritalar çizim dönüştürme hataları ve uyarıları
 description: Azure haritalar dönüştürme hizmetini kullanırken karşılaşabileceğiniz dönüştürme hataları ve uyarıları hakkında bilgi edinin. Bazı örneklerle hataları ve uyarıları çözme önerilerini okuyun.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895945"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906225"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Çizim dönüştürme hataları ve uyarıları
 
@@ -159,7 +159,7 @@ Bildirim gereksiz veya çakışan nesne özellikleri içerdiğinde **redundantAt
 
 #### <a name="how-to-fix-redundantattribution"></a>*RedundantAttribution nasıl düzeltileceğini*
 
-Bir * *redundantAttribution* uyarısını onarmak için, gereksiz veya çakışan nesne özelliklerini kaldırın.
+Bir **redundantAttribution* uyarısını onarmak için, gereksiz veya çakışan nesne özelliklerini kaldırın.
 
 ### <a name="manifestwarning"></a>**manifestWarning uyarısı**
 
@@ -175,7 +175,7 @@ Bildirim, dönüştürme sırasında kullanılmamış unitProperties veya zonePr
 
 #### <a name="how-to-fix-manifestwarning"></a>*ManifestWarning 'ı çözme*
 
-Bir **Manifestwarning** 'ı onarmak için, kullanılmayan `unitProperties` veya `zoneProperties` nesneyi bildirimden kaldırın veya bir birim/bölge etiketini, dönüştürme sırasında Özellikler nesnesinin kullanılması için çizime ekleyin.
+Bir **Manifestwarning**'ı onarmak için, kullanılmayan `unitProperties` veya `zoneProperties` nesneyi bildirimden kaldırın veya bir birim/bölge etiketini, dönüştürme sırasında Özellikler nesnesinin kullanılması için çizime ekleyin.
 
 ## <a name="wall-warnings"></a>Duvar uyarıları
 
@@ -291,7 +291,7 @@ Aşağıdaki görüntüde, iki bölgenin içindeki bir etiket gösterilmektedir.
 
 #### <a name="how-to-fix-labelwarning"></a>*LabelWarning 'ı çözme*
 
-Bir **Labelwarning** 'ı onarmak için şunları doğrulayın:
+Bir **Labelwarning**'ı onarmak için şunları doğrulayın:
 
 * Tüm birim etiketleri birim içindedir.
 * Tüm bölge etiketleri bölgeler içindedir.
@@ -311,7 +311,7 @@ ZIP arşivi boşsa bir **invalidArchiveFormat** hatası da oluşur.
 
 Bir **invalidArchiveFormat** hatasını onarmak için şunları doğrulayın:
 
-* Arşiv dosyanızın adı _. zip_ ' de sona erer.
+* Arşiv dosyanızın adı _. zip_' de sona erer.
 * ZIP arşiv verileri içeriyor.
 * ZIP arşivinizi açabilirsiniz.
 
@@ -330,7 +330,7 @@ Hatalı bir parametre içeren bir çizim paketini karşıya yüklemeye çalışt
 Bir **ınvaliduserdata** hatasını onarmak için şunları doğrulayın:
 
 * Karşıya yüklenen paket için doğru bir şekilde sağladınız `udid` .
-* Azure haritalar Creator, çizim paketini karşıya yüklemek için kullandığınız Azure Maps hesabı için etkinleştirildi.
+* Azure haritalar Oluşturucu (Önizleme), çizim paketini karşıya yüklemek için kullandığınız Azure Maps hesabı için etkinleştirildi.
 * Dönüştürme hizmetine yönelik API isteği, çizim paketini karşıya yüklemek için kullandığınız Azure Maps hesabına abonelik anahtarını içerir.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -347,7 +347,7 @@ Bir **ınvaliduserdata** hatasını onarmak için şunları doğrulayın:
 
 #### <a name="how-to-fix-dwgerror"></a>*DwgError 'ı çözme*
 
-Bir **Dwgerror** 'ı onarmak için, dosyadaki _manifest.js_ inceleyin ve şunları doğrulayın:
+Bir **Dwgerror**'ı onarmak için, dosyadaki _manifest.js_ inceleyin ve şunları doğrulayın:
 
 * ZIP arşivinizdeki tüm DWG dosyaları geçerli AutoCAD DWG biçim çizimlerinin her birini AutoCAD 'de açar. Tüm geçersiz çizimleri kaldırın veya onarın.
 * _manifest.jsÜZERINDEKI_ DWG dosyalarının LISTESI, ZIP ARŞIVI içindeki DWG dosyalarıyla eşleşir.
@@ -506,4 +506,4 @@ Bir **Verticalpenetiz hata** hatasını onarmak Için, [Çizim paketi gereksinim
 > [Azure haritalar çizim hatası Görselleştiricisini Kullanma](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [Inkapıeşleme için Oluşturucu](creator-indoor-maps.md)
+> [Inkapıeşleme için Oluşturucu (Önizleme)](creator-indoor-maps.md)

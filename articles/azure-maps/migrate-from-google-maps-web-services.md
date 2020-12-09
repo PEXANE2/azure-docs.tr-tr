@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 813cb567ab3edddd6fb37cee050dc5e38ee4289f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187043"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904899"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Öğretici-Google Maps 'tan Web hizmeti geçirme
 
@@ -40,19 +40,19 @@ Tablo, listelenen Google Maps hizmeti API 'Lerinde benzer işlevlere sahip Azure
 
 | Google Maps hizmeti API 'SI | Azure haritalar hizmeti API 'SI                                                                      |
 |-------------------------|---------------------------------------------------------------------------------------------|
-| Yönergeler              | [Yolu](/rest/api/maps/route)                                     |
-| Uzaklık matrisi         | [Yol matrisi](/rest/api/maps/route/postroutematrixpreview)       |
-| Coğrafi Kodlama               | [Ara](/rest/api/maps/search)                                   |
-| Konum arama           | [Ara](/rest/api/maps/search)                                   |
-| Otomatik tamamlamayı yerleştir      | [Ara](/rest/api/maps/search)                                   |
-| Yola yasla            | Bkz. [rotaları ve yönleri hesaplama](#calculate-routes-and-directions) bölümü.            |
-| Hız sınırları            | Bkz. [bir koordinat Için ters coğrafi kod](#reverse-geocode-a-coordinate) bölümü.                  |
-| Statik eşleme              | [İşleme](/rest/api/maps/render/getmapimage)                       |
-| Saat Dilimi               | [Saat dilimi](/rest/api/maps/timezone)                              |
+| Yönergeler              | [Yolu](/rest/api/maps/route)                                     |                         
+| Uzaklık matrisi         | [Yol matrisi](/rest/api/maps/route/postroutematrixpreview)       |                         
+| Coğrafi Kodlama               | [Ara](/rest/api/maps/search)                                   |                         
+| Konum arama           | [Ara](/rest/api/maps/search)                                   |                         
+| Otomatik tamamlamayı yerleştir      | [Ara](/rest/api/maps/search)                                   |                         
+| Yola yasla            | Bkz. [rotaları ve yönleri hesaplama](#calculate-routes-and-directions) bölümü.            
+| Hız sınırları            | Bkz. [bir koordinat Için ters coğrafi kod](#reverse-geocode-a-coordinate) bölümü.                  
+| Statik eşleme              | [İşleme](/rest/api/maps/render/getmapimage)                       |                         
+| Saat Dilimi               | [Saat dilimi](/rest/api/maps/timezone)                              |                         
+| Nedeniyle               | [Yükseltme (Önizleme)](/rest/api/maps/elevation)                   |                         |
 
 Aşağıdaki hizmet API 'Leri Şu anda Azure haritalar 'da kullanılabilir değildir:
 
-- Nedeniyle
 - Coğrafi Konum
 - Ayrıntılar ve fotoğraflar-telefon numaralarını ve Web sitesi URL 'sini Azure haritalar arama API 'sinde bulabilirsiniz.
 - Harita URL 'Leri
@@ -65,7 +65,7 @@ Azure haritalar, ilgi çekici olabilecek birkaç ek REST Web hizmetine sahiptir:
 - [Uzamsal işlemler](/rest/api/maps/spatial): bir hizmete bölge sınırlaması gibi karmaşık uzamsal hesaplamalar ve işlemler için yük boşaltma.
 - [Trafik](/rest/api/maps/traffic): gerçek zamanlı trafik akışına ve olay verilerine erişin.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
@@ -203,7 +203,7 @@ Azure haritalar yönlendirme hizmeti, yolları hesaplamak için aşağıdaki API
 
 - [**Rotayı hesapla**](/rest/api/maps/route/getroutedirections): bir rotayı hesaplayın ve isteğin hemen işlenmesini sağlayabilirsiniz. Bu API hem GET hem POST isteklerini destekler. Çok sayıda waypoints belirtildiğinde veya URL isteğinin çok uzun olmadığından ve sorunlara yol açmamasına yetecek kadar fazla yol seçeneği kullanılırken POST istekleri önerilir. Azure haritalar 'daki POST rotası yönü, binlerce [destekleyici noktası](/rest/api/maps/route/postroutedirections#supportingpoints) olan bir seçeneğe sahiptir ve bunları aralarında bir mantıksal yol yolu (yola yasla) yeniden oluşturmak için kullanır. 
 - [**Batch rotası**](/rest/api/maps/route/postroutedirectionsbatchpreview): en fazla 1.000 yol isteği içeren bir istek oluşturun ve bunların bir süre içinde işlenmesini isteyin. Tüm veriler sunucuda paralel olarak işlenir ve tamamlandığında tam sonuç kümesi indirilecektir.
-- [**Mobility Hizmetleri**](/rest/api/maps/mobility): genel aktarım kullanarak rotaları ve yönergeleri hesaplayın.
+- [* * Mobility Hizmetleri (Önizleme) * *](/rest/api/maps/mobility): genel aktarım kullanarak rotaları ve yönergeleri hesaplayın.
 
 Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar 'daki karşılaştırılabilir API parametrelerini içeren çapraz başvurular.
 
@@ -221,8 +221,8 @@ Tablo çapraz başvuruları, Google Maps API parametreleri ile Azure haritalar '
 | `origin`                       | `query`                            |
 | `region`                       | *Yok* : Bu özellik, coğrafi kodlama ile ilgilidir. Azure Haritalar Coğrafi Kodlama API 'sini kullanırken *Countryset* parametresini kullanın.  |
 | `traffic_model`               | *Yok* – *trafik parametresi yalnızca trafik parametresiyle* birlikte kullanılması gerekiyorsa belirtilebilir. |
-| `transit_mode`                | [Mobility Hizmetleri belgelerine](/rest/api/maps/mobility) bakın |
-| `transit_routing_preference` | [Mobility Hizmetleri belgelerine](/rest/api/maps/mobility) bakın |
+| `transit_mode`                | Bkz. [Mobility Hizmetleri (Önizleme) belgeleri](/rest/api/maps/mobility) |
+| `transit_routing_preference` | Bkz. [Mobility Hizmetleri (Önizleme) belgeleri](/rest/api/maps/mobility) |
 | `units`                        | *Yok* – Azure Maps yalnızca ölçüm sistemini kullanır.  |
 | `waypoints`                    | `query`                            |
 

@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici ile Kubernetes izleme | Microsoft Doc
 description: Bu makalede, bir Kubernetes kümesinin, kapsayıcılar için Azure Izleyici ile performansını nasıl görüntüleyebileceğinizi ve analiz edeceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011090"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905715"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici ile Kubernetes küme performansınızı izleyin
 
@@ -24,7 +24,7 @@ Bir Windows Server kümesini bir Linux kümesiyle karşılaştırılan kapsayıc
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure Portal](https://portal.azure.com) oturum açın.
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Azure Izleyici 'den çok küme görünümü
 
@@ -75,7 +75,7 @@ Aşağıdaki tabloda, çok küme görünümünde izlenen bir kümenin sistem dur
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Sistem Pod**| | |
 | |Sağlam |%100 |
-| |Uyarı |YOK |
+| |Uyarı |Yok |
 | |Kritik |<% 100 |
 | |Bilinmiyor |Son 30 dakika içinde bildirilmezse |
 |**Node** | | |
@@ -117,7 +117,7 @@ Kapsayıcılar için Azure Izleyici Ayrıca, kendi çizim grafiklerinizi oluştu
 
 Ölçüm Gezgini ' nde, kapsayıcılar için Azure Izleyici 'den toplanmış düğüm ve pod kullanım ölçümlerini görüntüleyebilirsiniz. Aşağıdaki tabloda, kapsayıcı ölçümlerini görselleştirmek için ölçüm grafiklerini nasıl kullanacağınızı anlamanıza yardımcı olacak Ayrıntılar özetlenmektedir.
 
-|Ad Alanı | Metric | Açıklama |
+|Ad Alanı | Ölçüm | Açıklama |
 |----------|--------|-------------|
 | Öngörüler. kapsayıcı/düğümler | |
 | | Cpuusagemiliçekirdekler | Küme genelinde CPU kullanımının toplu ölçümü. Bu, 1000 birimlerine bölünen bir CPU çekirdeğleridir (Milli = 1000). Birçok uygulamanın bir çekirdek kullandığı bir kapsayıcıda çekirdekler kullanımını belirlemede kullanılır.|
@@ -228,7 +228,7 @@ Satır hiyerarşisi bir denetleyici ile başlar. Bir denetleyiciyi genişlettiğ
 
 Belirli bir denetleyicinin **düğüm** sütununun altındaki değeri seçin.
 
-![Performans görünümünde düğümden denetleyiciye kadar örnek detaya gitme](./media/container-insights-analyze/drill-down-controller-node.png)
+![Performans görünümünde denetleyiciden düğüme örnek detaya gitme](./media/container-insights-analyze/drill-down-controller-node.png)
 
 Denetleyicileri görüntülerken görüntülenen bilgiler aşağıdaki tabloda açıklanmıştır.
 
@@ -295,33 +295,10 @@ Durum alanındaki simgeler, aşağıdaki tabloda açıklandığı gibi, pods 'ni
 Azure ağ Ilkesi Yöneticisi, ağ yapılandırmalarınızı izlemenize ve daha iyi anlamanıza imkan tanıyan bilgilendirici Prometheus ölçümlerini içerir. Azure portal veya Grafana laboratuvarlarında yerleşik görselleştirmeler sağlar. Ayrıntılar için bkz. [Azure NPM Ile ağ yapılandırmasını izleme ve görselleştirme](../../virtual-network/kubernetes-network-policies.md#monitor-and-visualize-network-configurations-with-azure-npm).
 
 
-## <a name="workbooks"></a>Çalışma kitapları
+## <a name="workbooks"></a>Çalışma Kitapları
 
-Çalışma kitapları metin, [günlük sorgularını](/azure/data-explorer/kusto/query/), [ölçümleri](../platform/data-platform-metrics.md)ve parametreleri zengin etkileşimli raporlara birleştirir. Çalışma kitapları aynı Azure kaynaklarına erişimi olan diğer takım üyeleri tarafından düzenlenebilir.
+Çalışma kitapları, metni, günlük sorgularını, ölçümleri ve parametreleri, küme performansını çözümlemenize olanak sağlayan zengin etkileşimli raporlara birleştirir. Kapsayıcılar için Azure Izleyici 'de kullanılabilen çalışma kitaplarının bir açıklaması için bkz. [kapsayıcılar Için Azure izleyici 'Deki çalışma kitapları](container-insights-reports.md) .
 
-Kapsayıcılar için Azure Izleyici, başlamanıza olanak sağlamak için dört çalışma kitabı içerir:
-
-- **Disk kapasitesi**: aşağıdaki perspektiflere göre bir kapsayıcı içindeki düğüme sunulan her bir disk için etkileşimli disk kullanımı grafikleri sunar:
-
-    - Tüm diskler için disk yüzdesi kullanımı.
-    - Tüm diskler için boş disk alanı.
-    - Her bir düğümün diskini, kullanılan alan yüzdesini, kullanılan alan yüzdesi, boş disk alanı (GiB) ve boş disk alanı eğilimi (GiB) gösteren bir kılavuz. Tabloda bir satır seçildiğinde, kullanılan alanın yüzdesi ve boş disk alanı (GiB), satırın altında gösterilir.
-
-- **DISK GÇ**: aşağıdaki perspektiflere göre bir kapsayıcı içindeki düğüme sunulan her bir disk için etkileşimli disk kullanımı grafikleri sunar:
-
-    - Disk g/ç, okunan bayt/sn, bayt/sn yazma ve okuma ve yazma bayt/sn eğilimlerini ile tüm diskler arasında özetlenir.
-    - Sekiz performans grafiği disk g/ç performans sorunlarını ölçmenize ve belirlemesine yardımcı olacak ana performans göstergelerini gösterir.
-
-- **Kubelet**: anahtar düğüm işletim istatistiklerini gösteren iki kılavuz içerir:
-
-    - Node Grid 'e göre genel bakış, her düğüm için yüzde ve eğilim bazında toplam işlem, toplam hata ve başarılı işlemleri özetler.
-    - İşlem türüne göre genel bakış toplam işlem, toplam hata ve yüzde ve eğilim bazında başarılı işlemler için her bir işlem için özetler.
-
-- **Ağ**: her bir düğümün ağ bağdaştırıcısı için etkileşimli ağ kullanım grafikleri sunar ve bir ızgara, ağ bağdaştırıcılarınızın performansını ölçmenize yardımcı olmak için ana performans göstergelerini sunar.
-
-**Çalışma kitaplarını görüntüle** açılır listesinden her birini seçerek bu çalışma kitaplarına erişirsiniz.
-
-![Çalışma kitaplarını görüntüle açılan listesi](./media/container-insights-analyze/view-workbooks-dropdown-list.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

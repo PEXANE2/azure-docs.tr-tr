@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/21/2020
-ms.openlocfilehash: 949992418cb19c5c69ed8da92e9c2f0fc5f2f791
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445421"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862386"
 ---
 # <a name="creating-a-synapse-workspace"></a>SYNAPSE çalışma alanı oluşturma
 
@@ -45,7 +45,7 @@ Bu öğreticinin adımlarını tamamlayabilmeniz için, **sahip** rolü atadığ
 
 Azure SYNAPSE çalışma alanınız oluşturulduktan sonra, SYNAPSE Studio 'Yu açmak için iki yol vardır:
 
-* [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün üst kısmında, **SYNAPSE Studio 'yu Başlat**' ı seçin.
+* [Azure Portal](https://portal.azure.com)SYNAPSE çalışma alanınızı açın. **Genel bakış** bölümünün en üstünde **SYNAPSE Studio 'yu aç**' ı seçin.
 * Adresine gidin `https://web.azuresynapse.net` ve çalışma alanınızda oturum açın.
 
 ## <a name="create-a-dedicated-sql-pool"></a>Adanmış bir SQL havuzu oluşturma

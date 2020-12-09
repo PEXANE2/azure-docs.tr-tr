@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 11/24/2020
+ms.date: 12/08/2020
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 904456de527e8d0acb1319059c18f9a3c6b0a1a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95992950"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906412"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Hızlı Başlangıç: Azure Application Gateway ile web trafiğini yönlendirme - Azure portalı
 
@@ -38,7 +38,7 @@ Azure hesabınızla [Azure portalında](https://portal.azure.com) oturum açın.
 
 Uygulama ağ geçidini, **uygulama ağ geçidi oluşturma** sayfasında bulunan sekmeleri kullanarak oluşturacaksınız.
 
-1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 
 2. **Ağ** ' ı seçin ve ardından **öne çıkan** listede **Application Gateway** ' yi seçin.
 
@@ -146,15 +146,16 @@ Bunu yapmak için şunları yapmanız gerekir:
 
 ### <a name="create-a-virtual-machine"></a>Sanal makine oluşturma
 
-1. Azure portal menüsünde veya **Giriş** sayfasında, **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
+1. Azure portalı menüsünde veya **Giriş** sayfasında **Kaynak oluştur**’u seçin. **Yeni** pencere görüntülenir.
 2. **Popüler** listede **Windows Server 2016 Datacenter** ' ı seçin. **Sanal makine oluştur** sayfası görüntülenir.<br>Application Gateway, arka uç havuzunda kullanılan herhangi bir sanal makine türüne trafiği yönlendirebilir. Bu örnekte, bir Windows Server 2016 Datacenter kullanırsınız.
 3. Aşağıdaki sanal makine ayarları için **temel bilgiler** sekmesine bu değerleri girin:
 
     - **Kaynak grubu**: kaynak grubu adı için **myResourceGroupAG** öğesini seçin.
     - **Sanal makine adı**: sanal makinenin adı Için *myvm* girin.
     - **Bölge**: Application Gateway 'i oluşturduğunuz bölgeyi seçin.
-    - **Kullanıcı** adı: Yönetici Kullanıcı adı için *azureuser* yazın.
+    - **Kullanıcı** adı: Yönetici Kullanıcı adı için bir ad yazın.
     - **Parola**: bir parola yazın.
+    - **Ortak gelen bağlantı noktaları**: yok.
 4. Diğer varsayılanları kabul edin ve ardından **İleri: diskler**' i seçin.  
 5. **Diskler** sekmesi varsayılan değerlerini kabul edin ve ardından İleri ' yi seçin **: ağ**.
 6. **Ağ** sekmesinde, **sanal ağ** için **Myvnet** öğesinin seçildiğini ve **alt ağın** **mybackendsubnet** olarak ayarlandığını doğrulayın. Diğer varsayılanları kabul edin ve ardından **İleri: yönetim**' i seçin.<br>Application Gateway, içinde bulunduğu sanal ağ dışındaki örneklerle iletişim kurabilir, ancak IP bağlantısı olduğundan emin olmanız gerekir.
@@ -201,7 +202,7 @@ Bu örnekte, yalnızca Azure 'un Application Gateway 'i başarıyla oluşturduğ
    > [!div class="mx-imgBorder"]
    > ![Arka uç sunucuları ekleme](./media/application-gateway-create-gateway-portal/application-gateway-backend.png)
 
-6. **Kaydet**'i seçin.
+6. **Kaydet**’i seçin.
 
 7. Sonraki adıma geçmeden önce dağıtımın tamamlanmasını bekleyin.
 

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 3de79e5cb3db2d0c52d13826900ec7160271edf9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86225289"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903760"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Görüntü oluştururken Azure Marketi satın alma planı bilgilerini sağlama
 
@@ -24,15 +24,13 @@ Market görüntülerini bulma ve kullanma hakkında daha fazla bilgi için bkz. 
 
 
 ## <a name="get-the-source-vm-information"></a>Kaynak VM bilgilerini al
-Hala orijinal VM 'seniz, Get-AzVM kullanarak planı, yayımcıyı ve SKU bilgilerini buradan edinebilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'yi alır ve ardından satın alma planı bilgilerini görüntüler.
+Hala orijinal VM varsa, Get-AzVM ' yi kullanarak plan adı, yayımcı ve ürün bilgilerini buradan edinebilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'YI alır ve ardından VM için satın alma planı bilgilerini görüntüler.
 
 ```azurepowershell-interactive
 $vm = Get-azvm `
    -ResourceGroupName myResourceGroup `
    -Name myVM
-$vm.Plan.Publisher
-$vm.Plan.Name
-$vm.Plan.Product
+$vm.Plan
 ```
 
 ## <a name="create-the-image-definition"></a>Görüntü tanımını oluşturma

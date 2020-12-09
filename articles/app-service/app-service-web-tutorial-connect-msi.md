@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 7b6f762dd04244f430f08894cc06991796a11229
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: e5587c4826fea780c1e379ee1599440b2865dd50
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004934"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862233"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Öğretici: Yönetilen kimlik kullanarak App Service’tan Azure SQL Veritabanı bağlantısını güvenli hale getirme
 
@@ -47,7 +47,9 @@ Bu makale, öğreticide kaldığınız yerden devam eder [: SQL veritabanı Ile 
 
 Arka uç olarak SQL veritabanı 'nı kullanarak uygulamanızda hata ayıklamak için, bilgisayarınızdan istemci bağlantısına izin verildiğinden emin olun. Aksi takdirde, [Azure Portal kullanarak sunucu DÜZEYI IP güvenlik duvarı kurallarını yönetme](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)konumundaki adımları IZLEYEREK istemci IP 'sini ekleyin.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Ortamınızı Azure CLı için hazırlayın.
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="grant-database-access-to-azure-ad-user"></a>Azure AD kullanıcısına veritabanı erişimi verme
 
@@ -87,7 +89,7 @@ Mac için Visual Studio Azure AD kimlik doğrulamasıyla tümleştirilmiştir. A
 
 Azure CLı yerel makinenize yüklendikten sonra Azure AD kullanıcısını kullanarak aşağıdaki komutla Azure CLı 'da oturum açın:
 
-```bash
+```azurecli
 az login --allow-no-subscriptions
 ```
 Artık Azure AD kimlik doğrulaması ile SQL veritabanıyla arka uç olarak uygulamanızı geliştirmeye ve hata ayıklamaya hazırsınız.
@@ -206,7 +208,7 @@ az webapp identity assign --resource-group myResourceGroup --name <app-name>
 
 Cloud Shell’de SQLCMD komutunu kullanarak SQL Veritabanı oturumunu açın. _\<server-name>_ _\<db-name>_ Uygulamanızın kullandığı veritabanı adı Ile ve _\<aad-user-name>_ _\<aad-password>_ Azure AD Kullanıcı kimlik bilgilerinizle birlikte sunucu adınızla değiştirin.
 
-```azurecli-interactive
+```bash
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
 ```
 
@@ -249,7 +251,7 @@ Yayımlama sayfasında **Yayımla**'ya tıklayın.
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Yeni web sayfası yapılacaklar listenizi gösterdiğinde uygulamanızın yönetilen kimliğini kullanarak veritabanına bağlanmakta olduğu anlamına gelir.

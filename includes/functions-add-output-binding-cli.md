@@ -4,17 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: 121f6ffa5c1a7c903e59be8a5bc3e1e1db0834fc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7ef3bd0f401ba54d56ed42df34cd2e761681dbc7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80673327"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904082"
 ---
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-an-output-binding-definition-to-the-function"></a>İşleve çıkış bağlama tanımı ekleme
 
 Bir işlev yalnızca bir tetikleyicisine sahip olsa da, özel tümleştirme kodu yazmadan diğer Azure hizmetlerine ve kaynaklarına bağlanmanızı sağlayan birden çok giriş ve çıkış bağlaması olabilir. 
-
+::: zone-end
 ::: zone pivot="programming-language-python,programming-language-javascript,programming-language-powershell,programming-language-typescript"  
 Bu bağlamaları, işlev klasörünüzdeki dosyasında *function.js* bildirirsiniz. Önceki hızlı başlangıçta, *Httpexample* klasöründeki dosya *function.js* koleksiyonda iki bağlama içerir `bindings` :  
 ::: zone-end

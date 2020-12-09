@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836385"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861825"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Azure Active Directory için Federasyondan Parola karması eşitlemesine geçiş
 
@@ -115,7 +115,7 @@ Federasyon tasarımınız ve dağıtım belgeleriniz için özelleştirilmiş ol
 Daha fazla bilgi için şu makalelere bakın:
 
 * [AD FS Prompt = oturum açma parametresi desteği](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > **Supportsmfa** **değeri true** olarak ayarlanırsa, Kullanıcı kimlik doğrulama akışına ikinci öğeli bir sınama eklemek için bir şirket içi Multi-Factor Authentication çözümü kullanıyorsunuz. Bu kurulum, bu etki alanını federe bilgisayardan yönetilen kimlik doğrulamasına dönüştürdükten sonra artık Azure AD kimlik doğrulama senaryolarında çalışmaz. Federasyonu devre dışı bıraktıktan sonra şirket içi Federasyonla ilişkiyi ve bu şirket içi MFA bağdaştırıcılarını içerir. 
@@ -442,7 +442,7 @@ Tüm kullanıcıların ve istemcilerin Azure AD aracılığıyla başarıyla kim
 
 Başka amaçlar için AD FS kullanmıyorsanız (diğer bir deyişle, diğer bağlı olan taraf güvenleri için), bu noktada AD FS yetkisini almak güvenlidir.
 
-### <a name="rollback"></a>Etkin
+### <a name="rollback"></a>Geri alma
 
 Büyük bir sorun keşfettiğiniz ve bunu hızlı çözümleyemezse, çözümü federasyona geri almayı seçebilirsiniz.
 

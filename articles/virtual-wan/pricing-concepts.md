@@ -6,15 +6,15 @@ services: virtual-wan
 author: reyandap
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/08/2020
 ms.author: reyandap
 ms.custom: references_pricing
-ms.openlocfilehash: b4025990a1a62351d3971d788558dea8ecb390ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ced9bb33be341d35904967092414676a6ffe3ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91327966"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905545"
 ---
 # <a name="about-virtual-wan-pricing"></a>Sanal WAN fiyatlandırması hakkında
 
@@ -30,7 +30,7 @@ Sanal WAN 'daki her hizmet fiyatlandırılır. Bu nedenle, tek bir fiyat önerme
 
 ### <a name="what-is-a-scale-unit"></a><a name="scale-unit"></a>Ölçek birimi nedir?
 
-**Ölçek birimi** , bir sanal hub 'daki siteden sıteye (S2S), noktadan sıteye (P2S) ve EXPRESSROUTE (er) için toplam kapasiteye yönelik birimi sağlar. Örneğin:
+**Ölçek birimi** , bir sanal hub 'daki siteden sıteye (S2S), noktadan sıteye (P2S) ve EXPRESSROUTE (er) için toplam kapasiteye yönelik birimi sağlar. Örnek:
 
 * **1 S2S VPN ölçek birimi** , bir sanal hub maliyetlendirme $0.361/saat içinde toplam 500 Mbps VPN Gateway (çift örnek esneklik için dağıtılır) kapasitesini belirtir.
 * **1 er ölçek birimi** , sanal hub maliyetlendirme $0.42/HR içinde toplam 2 Gbps er ağ geçidi gerektirir.
@@ -38,7 +38,7 @@ Sanal WAN 'daki her hizmet fiyatlandırılır. Bu nedenle, tek bir fiyat önerme
 
 ### <a name="what-is-a-connection-unit"></a><a name="connection-unit"></a>Bağlantı birimi nedir?
 
-Bir **bağlantı birimi** , Azure ağ geçitlerine bağlanan şirket Içi/Microsoft dışı uç nokta için geçerlidir. Siteden siteye VPN için bu, dallar anlamına gelir. Kullanıcı VPN (Noktadan siteye) için, uzak kullanıcılar anlamına gelir. ExpressRoute için bu ExpressRoute bağlantı hattı bağlantılarını gösterir.<br>Örneğin:
+Bir **bağlantı birimi** , Azure ağ geçitlerine bağlanan şirket Içi/Microsoft dışı uç nokta için geçerlidir. Siteden siteye VPN için bu değer dallar anlamına gelir. Kullanıcı VPN (Noktadan siteye) için bu değer uzak kullanıcıları belirtir. ExpressRoute için bu değer ExpressRoute bağlantı hattı bağlantıları anlamına gelir.<br>Örnek:
 
 * Bir şube bağlantısı sanal hub maliyetlerinde Azure VPN 'ye bağlanıyor $0,05/hr. Bu nedenle 100 şube bağlantısı, Azure sanal hub 'a bağlanan şube bağlantıları maliyetlidir * 100/hr.
 
@@ -50,32 +50,7 @@ Bir **bağlantı birimi** , Azure ağ geçitlerine bağlanan şirket Içi/Micros
 
 * Azure 'a giren tüm trafik ücretlendirilmez. Azure 'dan gelen trafik (VPN, ExpressRoute veya Noktadan siteye kullanıcı VPN bağlantıları aracılığıyla), standart [Azure veri aktarımı ücretlerine](https://azure.microsoft.com/pricing/details/bandwidth/)tabidir.
 
-* Bir sanal WAN hub 'ı ile uzak bir sanal WAN hub 'ı veya VNet arasında kaynak hub 'ından farklı bir bölgedeki veri aktarımı ücretleri için veri aktarımı ücretleri bir hub 'dan çıkmadan trafik için geçerlidir. Örnek: bir Doğu ABD hub 'ı terk eden trafik, bir Batı ABD hub 'ına giderek $0,02/GB üzerinden ücretlendirilir. Batı ABD hub 'ına giren trafik için ücret alınmaz. Aşağıdaki tablolarda ücretler gösterilmektedir.
-
-Aşağıdaki tablolar Şu kısaltmaları kullanır: {NAM: Kuzey Amerika}, {AB: Avrupa}, {MEA: Orta Doğu Afrika}, {OC: Okyanusya (Avustralya Orta ve Avustralya Orta 2)}, {LATAM: Latin Amerika} 
-
-**Kıtik fiyatlandırma (*)**
-
-| Intra-Continent| Fiyat ($/GB)|
-|---|---|
-| Nam|$0,02 |
-| AB-AB |$0,02 |
-| Asya-Asya (Çin hariç)|$0,10 |
-| MEA ile MEA|$0,16 |
-| LATAM-LATAM |$0,16 |
-| OC-OC|$0,12 |
-
-**Anaktal fiyatlandırması (*)**
-
-| Inter-Continental| Fiyat ($/GB)|
-|---|---|
-| NAM-AB veya AB 'den NAM 'e |$0,07 |
-| LATAM 'DAN her yere |$0,17 |
-| MEA 'DAN her yere |$0,17 |
-| Okyanusya 'DAN herhangi bir yere |$0,12 |
-| Asya 'DAN (çın dışında) her yere |$0,12 |
-
-(*) Bazı ücretler 1 Ağustos 2020 tarihinden itibaren uygulanabilir.
+* Bir sanal WAN hub 'ı ile uzak bir sanal WAN hub 'ı veya VNet arasında kaynak hub 'ından farklı bir bölgedeki veri aktarımı ücretleri için veri aktarımı ücretleri bir hub 'dan çıkmadan trafik için geçerlidir. Örnek: bir Doğu ABD hub 'ı terk eden trafik, bir Batı ABD hub 'ına giderek $0,02/GB üzerinden ücretlendirilir. Batı ABD hub 'ına giren trafik için ücret alınmaz. Hub 'a giden tüm trafik Inter-Region, [Azure veri aktarımı ücretlerine](https://azure.microsoft.com/pricing/details/bandwidth/)göre ücretlendirmelere tabidir. 
 
 ### <a name="what-is-the-difference-between-a-standard-hub-fee-and-a-standard-hub-processing-fee"></a><a name="fee"></a>Standart bir hub ücreti ve standart Merkez işleme ücreti arasındaki fark nedir?
 

@@ -1,27 +1,33 @@
 ---
-title: Azure haritalar 'da Mobility hizmeti veri yapıları | Microsoft Azure haritaları
-description: Azure haritalar Mobility hizmetlerinde verilerin Metro alanlarında nasıl düzenlendiğini anlayın. Bkz. genel transit hakkında bilgileri depolayan alanları ve çizgileri.
+title: Microsoft Azure haritalardaki Mobility Hizmetleri (Önizleme) veri yapıları
+description: Azure haritalar Mobility hizmetlerindeki (Önizleme) verilerin Metro alanlarında nasıl düzenlendiğini anlayın. Bkz. genel transit hakkında bilgileri depolayan alanları ve çizgileri.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/05/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896319"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904729"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility hizmetindeki veri yapıları
+# <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Azure haritalar Mobility hizmetlerindeki veri yapıları (Önizleme) 
 
-Bu makalede, [Azure Maps Mobility hizmeti](/rest/api/maps/mobility)'Nde Metro alanı kavramı tanıtılmaktadır. Bu hizmet, genel aktarım duraklarına ve çizgilere yönelik olarak sorgulandığında döndürülen bazı yaygın alanları tartıştık. Mobility hizmeti API 'Leri ile geliştirmeye başlamadan önce bu makaleyi okumanızı öneririz.
+> [!IMPORTANT]
+> Azure haritalar Mobility Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+
+Bu makalede, [Azure Maps Mobility hizmetlerinde](/rest/api/maps/mobility)Metro alanı kavramı tanıtılmaktadır. Bu hizmet, genel aktarım duraklarına ve çizgilere yönelik olarak sorgulandığında döndürülen bazı yaygın alanları tartıştık. Mobility Hizmetleri API 'Leri ile geliştirmeye başlamadan önce bu makaleyi okumanızı öneririz.
 
 ## <a name="metro-area"></a>Metro alanı
 
-Mobility hizmeti verileri, desteklenen Metro alanlarıyla gruplandırılır. Metro alanlarında şehir sınırları izdeğildir. Bir metro alanı birden çok şehir, daha seyrek doldurulmuş şehir ve çevreleyen şehirler içerebilir. Aslında bir ülke/bölge bir metro alanı olabilir. 
+Mobility Services (Önizleme) verileri, desteklenen Metro alanlarıyla gruplandırılır. Metro alanlarında şehir sınırları izdeğildir. Bir metro alanı birden çok şehir, daha seyrek doldurulmuş şehir ve çevreleyen şehirler içerebilir. Aslında bir ülke/bölge bir metro alanı olabilir. 
 
 , `metroID` [Metro alanı BILGILERINI al API](/rest/api/maps/mobility/getmetroareainfopreview)'sini çağırmak için kullanılabilen BIR Metro alanı kimliğidir. Aktarım türlerini, transit kuruluşlarını, etkin uyarıları ve seçilen Metro için ek ayrıntıları istemek üzere Azure Maps ' "Metro 'yı al" API 'sini kullanın. Ayrıca, desteklenen Metro alanını ve metroIDs isteyebilirsiniz. Metro alanı kimlikleri değişikliğe tabidir.
 
@@ -37,7 +43,7 @@ Başlamak için yakında ulaşım [API 'Sini al](/rest/api/maps/mobility/getnear
 
 ## <a name="line-groups-and-lines"></a>Satır grupları ve satırlar
 
-Mobility hizmeti, satırlar ve satır grupları için bir paralel veri modeli kullanır. Bu model, [Gtfs](http://gtfs.org/) rotalarından ve gezme verilerinden devralınan değişikliklerle daha iyi uğraşmak için kullanılır.
+Mobility Hizmetleri (Önizleme) çizgiler ve satır grupları için bir paralel veri modeli kullanır. Bu model, [Gtfs](http://gtfs.org/) rotalarından ve gezme verilerinden devralınan değişikliklerle daha iyi uğraşmak için kullanılır.
 
 
 ### <a name="line-groups"></a>Satır grupları
@@ -54,17 +60,17 @@ Başlamak için, [geçiş satırı al API](/rest/api/maps/mobility/gettransitlin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mobility hizmetini kullanarak geçiş verileri isteme hakkında bilgi edinin:
+Mobility hizmetlerini (Önizleme) kullanarak geçiş verileri isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Geçiş verileri isteme](how-to-request-transit-data.md)
 
-Mobility hizmetini kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
+Mobility hizmetlerini (Önizleme) kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Gerçek zamanlı veriler isteme](how-to-request-real-time-data.md)
 
-Azure haritalar Mobility hizmeti API 'SI belgelerini inceleyin
+Azure haritalar Mobility Hizmetleri (Önizleme) API belgelerini inceleyin
 
 > [!div class="nextstepaction"]
-> [Mobility hizmeti API 'SI belgeleri](/rest/api/maps/mobility)
+> [Mobility Hizmetleri API 'SI belgeleri](/rest/api/maps/mobility)

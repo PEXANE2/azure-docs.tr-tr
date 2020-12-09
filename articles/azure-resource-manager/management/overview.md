@@ -4,18 +4,18 @@ description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim deneti
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperfq1
-ms.openlocfilehash: f78b6015846253d79020752522c10af96839a854
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 317d7cae9c0febcc99831b20525b9d9d2cc96651
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91372281"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903199"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
 Azure Resource Manager, Azure için dağıtım ve yönetim hizmetidir. Azure hesabınızda kaynak oluşturma, güncelleştirme ve silme işlemlerini gerçekleştirmenizi sağlayan bir yönetim katmanı sunar. Dağıtım sonrasında kaynaklarınızın güvenliğini sağlamak ve onları düzenlemek için erişim denetimleri, kilitler ve etiketler gibi yönetim özelliklerini kullanabilirsiniz.
 
-Azure Resource Manager şablonları hakkında bilgi edinmek için bkz. [şablon dağıtımı genel bakış](../templates/overview.md).
+Azure Resource Manager şablonları (ARM şablonları) hakkında bilgi edinmek için bkz. [şablon dağıtımına genel bakış](../templates/overview.md).
 
 ## <a name="consistent-management-layer"></a>Tutarlı yönetim katmanı
 
@@ -39,7 +39,7 @@ Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabilece�
 
 ## <a name="the-benefits-of-using-resource-manager"></a>Resource Manager’ı kullanmanın avantajları
 
-Kaynak Yöneticisi, şunları yapabilirsiniz:
+Resource Manager ile şunları yapabilirsiniz:
 
 * Altyapınızı yönetmek için betikler yerine bildirim temelli şablonlar kullanın.
 
@@ -95,7 +95,7 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 
 * Bazı kaynaklar bir kaynak grubunun dışında bulunabilir. Bu kaynaklar [aboneliğe](../templates/deploy-to-subscription.md), [yönetim grubuna](../templates/deploy-to-management-group.md)veya [kiracıya](../templates/deploy-to-tenant.md)dağıtılır. Bu kapsamlarda yalnızca belirli kaynak türleri desteklenir.
 
-* Bir kaynak grubu oluşturmak için [Portal](manage-resource-groups-portal.md#create-resource-groups), [POWERSHELL](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)veya [Azure Resource Manager (ARM) şablonunu](../templates/deploy-to-subscription.md#resource-groups)kullanabilirsiniz.
+* Bir kaynak grubu oluşturmak için [Portal](manage-resource-groups-portal.md#create-resource-groups), [POWERSHELL](manage-resource-groups-powershell.md#create-resource-groups), [Azure CLI](manage-resource-groups-cli.md#create-resource-groups)veya [ARM şablonunu](../templates/deploy-to-subscription.md#resource-groups)kullanabilirsiniz.
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager esnekliği
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Pipelines ile sürekli tümleştirme
-description: Azure Resource Manager şablonlarını sürekli olarak derlemeyi, test etmek ve dağıtmak hakkında bilgi edinin.
+description: Azure Resource Manager şablonlarını sürekli oluşturma, test etme ve dağıtma hakkında bilgi edinin (ARM şablonları).
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d7688a4e4838cb591bcd3ac0045a5ed22180c063
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333246"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906361"
 ---
-# <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines Azure Resource Manager şablonlarının sürekli tümleştirilmesi
+# <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines ile ARM şablonlarının sürekli tümleştirilmesi
 
-[Önceki öğreticide](./deployment-tutorial-linked-template.md), bağlantılı bir şablon dağıtırsınız.  Bu öğreticide, Azure Resource Manager şablon projelerini sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanmayı öğreneceksiniz.
+[Önceki öğreticide](./deployment-tutorial-linked-template.md), bağlantılı bir şablon dağıtırsınız.  Bu öğreticide, Azure Resource Manager şablonu (ARM şablonu) projelerini sürekli olarak derlemek ve dağıtmak için Azure Pipelines kullanmayı öğreneceksiniz.
 
 Azure DevOps, işleri planlamak, kod geliştirmeyle işbirliği yapmak ve uygulama derlemek ve dağıtmak için ekipleri desteklemek üzere Geliştirici Hizmetleri sağlar. Geliştiriciler Azure DevOps Services kullanarak bulutta çalışabilir. Azure DevOps, Web tarayıcınız veya IDE istemciniz aracılığıyla erişebileceğiniz tümleşik bir özellikler kümesi sağlar. Azure işlem hattı bu özelliklerden biridir. Azure Pipelines, tam özellikli bir sürekli tümleştirme (CI) ve sürekli teslim (CD) hizmetidir. Tercih ettiğiniz git sağlayıcınız ile birlikte çalışarak, en büyük bulut hizmetlerine dağıtabilirsiniz. Daha sonra Microsoft Azure, Google Cloud Platform veya Amazon Web Services için kodunuzun derleme, test etme ve dağıtımını otomatik hale getirebilirsiniz.
 
@@ -38,9 +38,9 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 Bu makaleyi tamamlamak için gerekenler:
 
 * Şablonunuz için bir depo oluşturmak üzere kullandığınız **bir GitHub hesabı**. Microsoft hesabınız yoksa [ücretsiz olarak oluşturabilirsiniz](https://github.com). GitHub depoları kullanma hakkında daha fazla bilgi için bkz. [GitHub depoları oluşturma](/azure/devops/pipelines/repos/github).
-* **Git 'ı yükler**. Bu öğretici yönergesi, *Git Bash* veya *Git kabuğu*kullanır. Yönergeler için bkz. [Git 'ı Install]( https://www.atlassian.com/git/tutorials/install-git).
+* **Git 'ı yükler**. Bu öğretici yönergesi, *Git Bash* veya *Git kabuğu* kullanır. Yönergeler için bkz. [Git 'ı Install]( https://www.atlassian.com/git/tutorials/install-git).
 * **Azure DevOps organizasyonu**. Microsoft hesabınız yoksa ücretsiz olarak oluşturabilirsiniz. Bkz. [kuruluş veya proje koleksiyonu oluşturma](/azure/devops/organizations/accounts/create-organization?view=azure-devops).
-* seçim **Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code**. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* seçim **Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code**. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>GitHub deposu hazırlama
 
@@ -51,20 +51,20 @@ GitHub, Kaynak Yöneticisi şablonları dahil olmak üzere proje kaynak kodunuzu
 GitHub hesabınız yoksa bkz. [Önkoşullar](#prerequisites).
 
 1. [GitHub](https://github.com)'da oturum açın.
-1. Sağ üst köşedeki hesap görüntünüzü seçin ve ardından **depolarınızı**seçin.
+1. Sağ üst köşedeki hesap görüntünüzü seçin ve ardından **depolarınızı** seçin.
 
     ![Azure Resource Manager Azure DevOps Azure Pipelines GitHub deposu oluşturma](./media/deployment-tutorial-pipeline/azure-resource-manager-devops-pipelines-github-repository.png)
 
 1. Yeşil düğme olan **Yeni**' yi seçin.
-1. **Depo adı**alanına bir depo adı girin.  Örneğin, **Azurermpipeline-depo**. Herhangi bir **Azurermpipeline** öğesini proje adınızla değiştirmeyi unutmayın. Bu öğreticiden gezinmek için **genel** veya **özel** ' i seçebilirsiniz. Sonra **Depo oluştur**' u seçin.
+1. **Depo adı** alanına bir depo adı girin.  Örneğin, **Azurermpipeline-depo**. Herhangi bir **Azurermpipeline** öğesini proje adınızla değiştirmeyi unutmayın. Bu öğreticiden gezinmek için **genel** veya **özel** ' i seçebilirsiniz. Sonra **Depo oluştur**' u seçin.
 1. URL 'YI yazın. Depo URL 'SI şu biçimdedir- **`https://github.com/[YourAccountName]/[YourRepositoryName]`** .
 
-Bu depo, *uzak depo*olarak adlandırılır. Aynı projenin geliştiricilerin her biri kendi *yerel deposunu*kopyalayabilir ve değişiklikleri uzak depoda birleştirebilirler.
+Bu depo, *uzak depo* olarak adlandırılır. Aynı projenin geliştiricilerin her biri kendi *yerel deposunu* kopyalayabilir ve değişiklikleri uzak depoda birleştirebilirler.
 
 ### <a name="clone-the-remote-repository"></a>Uzak depoyu Kopyala
 
 1. Git kabuğu veya git Bash 'i açın.  [Ön koşullara](#prerequisites) bakın.
-1. Geçerli klasörünüzün **GitHub**olduğunu doğrulayın.
+1. Geçerli klasörünüzün **GitHub** olduğunu doğrulayın.
 1. Şu komutu çalıştırın:
 
     ```bash
@@ -106,7 +106,7 @@ azuredeploy.js, yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersiniz.
     LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **ana** dal ana daldır.  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
 1. Bir tarayıcıdan GitHub deponuza gidin.  URL **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** . **Createwebapp** klasörünü ve klasör içinde üç dosyayı görürsünüz.
 1. Şablonu açmak için **linkedStorageAccount.jsaçık '** ı seçin.
-1. **Ham** düğmesini seçin. URL, **RAW.githubusercontent.com**ile başlatılır.
+1. **Ham** düğmesini seçin. URL, **RAW.githubusercontent.com** ile başlatılır.
 1. URL’nin kopyasını oluşturun.  İşlem hattını öğreticide daha sonra yapılandırırken bu değeri sağlamanız gerekir.
 
 Şimdiye kadar, bir GitHub deposu oluşturdunuz ve şablonları depoya yüklediniz.
@@ -124,7 +124,7 @@ Sonraki yordama geçebilmeniz için bir DevOps organizasyonu gerekir.  Bir tane 
 1. Aşağıdaki değerleri girin:
 
     * **Proje adı**: bir proje adı girin. Öğreticinin en başından itibaren seçtiğiniz proje adını kullanabilirsiniz.
-    * **Sürüm denetimi**: **Git**' i seçin. **Sürüm denetimini**görmek için **Gelişmiş** ' i genişletmeniz gerekebilir.
+    * **Sürüm denetimi**: **Git**' i seçin. **Sürüm denetimini** görmek için **Gelişmiş** ' i genişletmeniz gerekebilir.
 
     Diğer özellikler için varsayılan değeri kullanın.
 1. **Oluştur**’u seçin.
@@ -132,8 +132,8 @@ Sonraki yordama geçebilmeniz için bir DevOps organizasyonu gerekir.  Bir tane 
 Azure 'a projeler dağıtmak için kullanılan bir hizmet bağlantısı oluşturun.
 
 1. Sol menünün altından **proje ayarları** ' nı seçin.
-1. İşlem **hatları**altında **hizmet bağlantıları** ' nı seçin.
-1. **Yeni hizmet bağlantısı**' nı seçin, **Azure Resource Manager**öğesini seçin ve ardından **İleri**' yi seçin.
+1. İşlem **hatları** altında **hizmet bağlantıları** ' nı seçin.
+1. **Yeni hizmet bağlantısı**' nı seçin, **Azure Resource Manager** öğesini seçin ve ardından **İleri**' yi seçin.
 1. **Hizmet sorumlusu**' nı seçin ve ardından **İleri**' yi seçin.
 1. Aşağıdaki değerleri girin:
 
@@ -167,18 +167,18 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 1. **ARM şablon dağıtımı**' nı seçin.
 1. Aşağıdaki değerleri girin:
 
-    * **Deploymentscope**: **kaynak grubunu**seçin.. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
+    * **Deploymentscope**: **kaynak grubunu** seçin.. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
     * **Azure Resource Manager bağlantısı**: daha önce oluşturduğunuz hizmet bağlantı adını seçin.
     * **Abonelik**: hedef abonelik kimliğini belirtin.
     * **Eylem**: **kaynak grubunu oluştur veya Güncelleştir** eylemini seçin 2 eylem-1. Yeni bir kaynak grubu adı sağlanmışsa, bir kaynak grubu oluşturun; iki. belirtilen şablonu dağıtın.
     * **Kaynak grubu**: yeni bir kaynak grubu adı girin. Örneğin, **Azurermpipeline-RG**.
     * **Konum**: kaynak grubu için bir konum seçin, örneğin **Orta ABD**.
     * **Şablon konumu**: **bağlı yapıt**' yi seçin, bu, görevin şablon dosyasını doğrudan bağlı depodan aramasını gösterir.
-    * **Şablon**: **createwebapp/azuredeploy.js**girin. Klasör adını ve dosya adını değiştirdiyseniz, bu değeri değiştirmeniz gerekir.
-    * **Şablon parametreleri**: bu alanı boş bırakın. Parametre değerlerini **geçersiz kılma şablonu parametrelerinde**belirtirsiniz.
+    * **Şablon**: **createwebapp/azuredeploy.js** girin. Klasör adını ve dosya adını değiştirdiyseniz, bu değeri değiştirmeniz gerekir.
+    * **Şablon parametreleri**: bu alanı boş bırakın. Parametre değerlerini **geçersiz kılma şablonu parametrelerinde** belirtirsiniz.
     * **Geçersiz kılma şablonu parametreleri**: ENTER **-ProjectName [enteraprojectname]-linkedtemplateuri [EnterTheLinkedTemplateURL]**. Proje adını ve bağlantılı şablon URL 'sini değiştirin. Bağlı şablon URL 'SI, [GitHub deposu oluşturma](#create-a-github-repository)sonunda yazdığınız şeydir. İle başlar **https://raw.githubusercontent.com** .
     * **Dağıtım modu**: **artımlı**' i seçin.
-    * **Dağıtım adı**: **Deploypipelinetemplate**girin. **Dağıtım adını**görebilmeniz için **Gelişmiş** ' i seçin.
+    * **Dağıtım adı**: **Deploypipelinetemplate** girin. **Dağıtım adını** görebilmeniz için **Gelişmiş** ' i seçin.
 
     ![Ekran görüntüsü, gerekli değerler girilen ARM şablonu dağıtım sayfasını gösterir.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
@@ -198,8 +198,8 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
 ## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Kaynak grubunu açın. Bu ad, ardışık düzen YAML dosyasında belirttiğiniz şeydir.  Oluşturulmuş bir depolama hesabı görürsünüz.  Depolama hesabı adı **Mağaza**ile başlar.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Kaynak grubunu açın. Bu ad, ardışık düzen YAML dosyasında belirttiğiniz şeydir.  Oluşturulmuş bir depolama hesabı görürsünüz.  Depolama hesabı adı **Mağaza** ile başlar.
 1. Açmak için depolama hesabı adını seçin.
 1. **Özellikler**’i seçin. **Çoğaltmanın** **yerel olarak yedekli depolama (LRS)** olduğuna dikkat edin.
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325341"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905205"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>İçerik denetleme incelemeleri, iş akışları ve işler
 
@@ -42,7 +42,7 @@ Gözden geçirme durumu, Etiketler, içerik türü, alt takımlar, atanan kullan
 > [!div class="mx-imgBorder"]
 > ![Arama araç çubuğu görüntülenir. Inceleme durumu ve etiketleri gibi arama ölçütlerini girmeye yönelik çeşitli Birleşik giriş kutularına sahiptir.](./Review-Tool-user-Guide/images/review-search.png)
 
-İncelemeleri oluşturmaya başlamak için [İnceleme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-review.md) bakın.
+İncelemeleri oluşturmaya başlamak için [Gözden geçirme aracı kılavuzuna](./review-tool-user-guide/review-moderated-images.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [API konsolu kılavuzuna](./try-review-api-review.md) bakın.
 
 ## <a name="workflows"></a>İş Akışları
 
@@ -80,13 +80,13 @@ Mevcut iş akışlarınızı görüntülemek için [İnceleme aracına](https://
 }
 ```
 
-İş akışlarını oluşturmaya ve kullanmaya başlamak için [Gözden geçirme aracı kılavuzuna](./review-tool-user-guide/workflows.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [REST API kılavuzuna](./try-review-api-workflow.md) bakın.
+İş akışlarını oluşturmaya ve kullanmaya başlamak için [Gözden geçirme aracı kılavuzuna](./review-tool-user-guide/workflows.md) bakın veya bunu programlı olarak nasıl yapacağınızı öğrenmek için [API konsol kılavuzuna](./try-review-api-workflow.md) bakın.
 
 ## <a name="jobs"></a>İşler
 
 Bir denetleme işi, içerik denetleme, iş akışı ve gözden geçirme işlevleri için bir sarmalayıcı türü görevi görür. İş, Content Moderator görüntü denetleme API 'SI veya metin denetleme API 'sini kullanarak içeriğinizi tarar ve ardından belirlenen iş akışına karşı denetler. İş akışı sonuçlarına bağlı olarak, [Gözden geçirme aracında](./review-tool-user-guide/human-in-the-loop.md)içerik için bir gözden geçirme oluşturmayabilir veya olmayabilir. Her iki İnceleme ve iş akışı kendi API 'Leriyle oluşturulup yapılandırılabileceği sürece, iş API 'SI işlemin tamamına (belirtilen geri çağırma uç noktasına gönderilebilir) ilişkin ayrıntılı bir rapor elde etmenizi sağlar.
 
-İşleri kullanmaya başlamak için [REST API kılavuzuna](./try-review-api-job.md) bakın.
+İşleri kullanmaya başlamak için [API konsolu kılavuzuna](./try-review-api-job.md) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377743"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861944"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Bulut gruplarına atanan rollerle ilgili sorunları giderme
 
@@ -32,16 +32,16 @@ Y **:** Yalnızca ayrıcalıklı rol yöneticileri veya genel Yöneticiler, rol 
 
 Y **:** Varsayılan olarak, yalnızca ayrıcalıklı rol yöneticisi ve genel yönetici, rol atanabilir bir grubun üyeliğini yönetir, ancak Grup sahipleri ekleyerek rol atanabilir grupların yönetimine temsilci atayabilirsiniz.
 
-**S** : kuruluşumdaki bir yardım masası yöneticim, ancak bir dizin okuyucusu olan kullanıcının parolasını güncelleştiremiyorum. Neden meydana gelir?
+**S**: kuruluşumdaki bir yardım masası yöneticim, ancak bir dizin okuyucusu olan kullanıcının parolasını güncelleştiremiyorum. Neden meydana gelir?
 
-Y **: Kullanıcı** , rol atanabilir bir grup yoluyla Dizin okuyucuyu alabilir. Rol atanabilir grupların tüm üyeleri ve sahipleri korunur. Yalnızca ayrıcalıklı kimlik doğrulama Yöneticisi veya genel yönetici rollerindeki kullanıcılar, korumalı bir kullanıcının kimlik bilgilerini sıfırlayabilir.
+Y **: Kullanıcı**, rol atanabilir bir grup yoluyla Dizin okuyucuyu alabilir. Rol atanabilir grupların tüm üyeleri ve sahipleri korunur. Yalnızca ayrıcalıklı kimlik doğrulama Yöneticisi veya genel yönetici rollerindeki kullanıcılar, korumalı bir kullanıcının kimlik bilgilerini sıfırlayabilir.
 
 **S:** Bir kullanıcının parolasını güncelleştiremiyorum. Bunlara daha fazla ayrıcalıklı rol atanmaz. Neden gerçekleşiyor?
 
 Y **:** Kullanıcı, rol atanabilir bir grubun sahibi olabilir. Ayrıcalık yükselmesine engel olmak için rol atanabilir grupların sahiplerini koruyoruz. Bir grup Contoso_Security_Admins güvenlik yöneticisi rolüne atanırsa, Bob 'un Grup sahibi ve Gamze 'nin kuruluşta parola Yöneticisi olduğu durumlarda bu örnek olabilir. Bu koruma yoksa, Gamze Bob 'un kimlik bilgilerini sıfırlayabilir ve kimliğini alabilir. Bundan sonra, Çiğdem, kuruluştaki bir güvenlik yöneticisi olmak üzere Grup Contoso_Security_Admins grubuna belirtmemiş veya herkes ekleyebilir. Bir kullanıcının grup sahibi olup olmadığını öğrenmek için, kullanıcının sahip olduğu nesnelerin listesini alın ve herhangi bir grubun ıastifbletorole değerini doğru olarak ayarlayıp görmediğinden emin olmanız gerekir. Yanıt Evet ise, bu kullanıcı korunur ve davranış tasarıma göre yapılır. Sahip olunan nesneleri almak için şu belgeleri inceleyin:
 
-- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [OwnedObjects listesini Listele](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  
+- [OwnedObjects listesini Listele](/graph/api/user-list-ownedobjects?tabs=http)
 
 **S:** Azure AD rollerine atanabilecek gruplar üzerinde bir erişim incelemesi oluşturabilir miyim (özellikle, ısastifbletorole özelliği true olarak ayarlanan gruplar)?  
 
@@ -71,7 +71,7 @@ Y **:** Bu yanıt yalnızca Azure AD Premium P1 kuruluşlarda geçerlidir.
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
 1. Kullanıcıları seçin ve bir kullanıcı profili açın.
-1. **Atanan roller** ' i seçin.
+1. **Atanan roller**' i seçin.
 1. Dişli simgesini seçin. Bu bilgileri veren bir bölme açılır. Doğrudan atamalar ' ın yanındaki bir "Kaldır" düğmesi vardır. Dolaylı rol atamasını kaldırmak için, rolü atanmış olan gruptan kullanıcıyı kaldırın.
 
 **S:** Nasıl yaparım? rol atanabilir olan tüm grupları görün mi?
@@ -79,8 +79,8 @@ Y **:** Bu yanıt yalnızca Azure AD Premium P1 kuruluşlarda geçerlidir.
 Y **:** Şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
-1. **Gruplar**  >  **tüm gruplar** ' ı seçin.
-1. **Filtre Ekle** ' yi seçin.
+1. **Gruplar**  >  **tüm gruplar**' ı seçin.
+1. **Filtre Ekle**' yi seçin.
 1. **Rol atanabilir** olarak filtreleyin.
 
 **S:** Nasıl yaparım? hangi rolün bir sorumlu 'e doğrudan ve dolaylı olarak atandığını öğrensin mi?
@@ -89,7 +89,7 @@ Y **:** Şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com) oturum açın ve **Azure Active Directory** açın.
 1. Kullanıcıları seçin ve bir kullanıcı profili açın.
-1. **Atanan roller** ' i seçin ve ardından:
+1. **Atanan roller**' i seçin ve ardından:
 
     - Azure AD Premium P1 lisanslı kuruluşlar: dişli simgesini seçin. Bu bilgileri veren bir bölme açılır.
     - Azure AD Premium P2 lisanslı kuruluşlar: **Üyelik** sütununda doğrudan ve devralınan lisans bilgilerini bulacaksınız.

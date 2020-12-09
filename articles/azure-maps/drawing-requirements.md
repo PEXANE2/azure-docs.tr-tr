@@ -1,21 +1,26 @@
 ---
-title: Azure haritalar Creator 'da paket gereksinimlerini çizme
+title: Microsoft Azure haritaları Oluşturucu 'da paket gereksinimlerini çizme (Önizleme)
 description: Tesis tasarım dosyalarınızı eşleme verilerine dönüştürmek için çizim paketi gereksinimleri hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013131"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903471"
 ---
 # <a name="drawing-package-requirements"></a>Çizim paketi gereksinimleri
+
+
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Karşıya yüklenen çizim paketlerini [Azure Maps dönüştürme hizmetini](/rest/api/maps/conversion)kullanarak harita verilerine dönüştürebilirsiniz. Bu makalede, dönüştürme API 'SI için çizim paketi gereksinimleri açıklanmaktadır. Örnek bir paket görüntülemek için örnek [Çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirebilirsiniz.
 
@@ -31,10 +36,10 @@ Karşıya yüklenen çizim paketlerini [Azure Maps dönüştürme hizmetini](/re
 
 Kolay başvuru için, bu makaleyi okurken önemli olan bazı hüküm ve tanımlar aşağıda verilmiştir.
 
-| Terim  | Tanım |
+| Süre  | Tanım |
 |:-------|:------------|
 | Katman | Bir AutoCAD DWG katmanı.|
-| Düzey | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
+| Level | Bir küme yükseltmesinde bina alanı. Örneğin, bir bina tabanı. |
 | XREF  |AutoCAD DWG dosya biçimindeki (. dwg), dış başvuru olarak birincil Çizime eklenen bir dosya.  |
 | Özellik | Ek meta veri bilgileriyle geometriyi birleştiren bir nesne. |
 | Özellik sınıfları | Özellikler için ortak bir şema. Örneğin, bir *birim* bir özellik sınıfıdır ve *Office* bir özelliktir. |
@@ -407,10 +412,10 @@ Sonraki bölümlerde her bir nesne için gereksinimler ayrıntılandırır.
 Çizim paketiniz gereksinimleri karşıladığında, paketi bir harita veri kümesine dönüştürmek için [Azure Maps dönüştürme hizmetini](/rest/api/maps/conversion) kullanabilirsiniz. Daha sonra, ınkapımaps modülünü kullanarak bir ınkapısı eşlemesi oluşturmak için veri kümesini kullanabilirsiniz.
 
 > [!div class="nextstepaction"]
->[Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)
+>[Inkapı haritaları için Oluşturucu (Önizleme)](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir Oluşturucu iç eşleme oluşturma](tutorial-creator-indoor-maps.md)
+> [Öğretici: Oluşturucu (Önizleme) ınkapılı eşleme oluşturma](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Inkapı haritaları dinamik stil oluşturma](indoor-map-dynamic-styling.md)

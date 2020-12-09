@@ -10,18 +10,19 @@ ms.workload: identity
 ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 64421dba5578b478a5fdf0c657614770baf9d735
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: bf03fe9d920298d49e79a9a0febf7e09e94eb6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025370"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905528"
 ---
 # <a name="tutorial-clean-up-resources"></a>Öğretici: Kaynakları Temizleme
 
 Bu çok parçalı öğreticideki tüm adımları tamamladıysanız, bir kaynak grubunda bir App Service, App Service barındırma planı ve bir depolama hesabı oluşturdunuz. Ayrıca, Azure Active Directory bir uygulama kaydı da oluşturdunuz. Artık gerekli değilse, ücretleri tahakkuk ettirmek için bu kaynakları ve uygulama kaydını silin.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >

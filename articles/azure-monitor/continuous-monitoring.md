@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: e41fa9f9918f4f17bd89e80610ae608e83eb3402
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 1892afde42ccbcf1c28b7d6a757875772ee3ac5d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996391"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905613"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Izleyici ile sürekli izleme
 
@@ -28,7 +28,7 @@ Tüm ortamınız genelinde Observability kazanmak için tüm Web uygulamaların�
 - [Azure DevOps Projeleri](../devops-project/overview.md) , mevcut kodunuz ve git deponuzla ilgili Basitleştirilmiş bir deneyim sağlar veya Azure 'A sürekli TÜMLEŞTIRME (CI) ve sürekli teslım (CD) işlem hattı oluşturmak için örnek uygulamalardan birini tercih edebilirsiniz.
 - [DevOps yayın işlem hattınızda sürekli izleme](./app/continuous-monitoring.md) , izleme verilerine bağlı olarak dağıtımınızı geçit veya geri alma olanağı sağlar.
 - [Durum İzleyicisi](./app/monitor-performance-live-website-now.md)  , kodunuzu değiştirmeye veya yeniden dağıtmaya gerek kalmadan Windows 'da canlı bir .NET uygulamasını Azure Application Insights ile denetlemenizi sağlar.
-- Uygulamanıza yönelik koda erişiminiz varsa, [.net](./learn/quick-monitor-portal.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)veya [diğer programlama dillerinde](./app/platforms.md)Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](./app/app-insights-overview.md) ile tam izlemeyi etkinleştirin. Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
+- Uygulamanızın koduna erişiminiz varsa, [.net](./app/asp-net.md), [.NET Core](./app/asp-net-core.md), [Java](./app/java-get-started.md), [Node.js](./learn/nodejs-quick-start.md)veya [diğer programlama dillerinde](./app/platforms.md)Azure izleyici Application Insights SDK 'sını yükleyerek [Application Insights](./app/app-insights-overview.md) ile tam izlemeyi etkinleştirin. Bu, uygulamanız ve işletmeniz için uygun olan özel olayları, ölçümleri veya sayfa görünümlerini belirtmenize olanak tanır.
 
 
 

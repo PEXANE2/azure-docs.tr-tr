@@ -4,16 +4,16 @@ description: AzCopy, depolama hesaplarına veri kopyalamak için kullanabileceğ
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/09/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: contperfq2
-ms.openlocfilehash: ad9b40b448b48500cd6882ac614611f91370ec9e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9379417fcb96dce8a59f7d81335cec44e1bb5e6a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410281"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901781"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy’yi kullanmaya başlama
 
@@ -95,19 +95,20 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 SAS belirteçleri ve nasıl elde edileceği hakkında daha fazla bilgi edinmek için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](./storage-sas-overview.md).
 
+<a id="transfer-data"></a>
+
 ## <a name="transfer-data"></a>Veri aktarma
 
 Kimliğinizi yetkilendirdikten veya bir SAS belirteci elde ettikten sonra, veri aktarmaya başlayabilirsiniz.
 
 Örnek komutları bulmak için Bu makalelerden birine bakın.
 
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-
-- [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
-
-- [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
-
-- [AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)
+| Hizmet | Makale |
+|--------|-----------|
+|Azure Blob depolama |[Azure Blob depolama alanına dosya yükleme](storage-use-azcopy-blobs-upload.md)<br><br>[Blob 'ları Azure Blob depolamadan indirin](storage-use-azcopy-blobs-download.md)<br><br>[Blob 'ları Azure depolama hesapları arasında kopyalama](storage-use-azcopy-blobs-download.md)<br><br>[Azure Blob depolama ile eşitlemeyi](storage-use-azcopy-blobs-download.md)|
+|Azure Dosyaları |[AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)|
+|Amazon S3|[AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)|
+|Azure Stack depolama|[AzCopy ve Azure Stack Storage ile veri aktarımı](/azure-stack/user/azure-stack-storage-transfer#azcopy)|
 
 ## <a name="use-in-a-script"></a>Betikte kullanma
 

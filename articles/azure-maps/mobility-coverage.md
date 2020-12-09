@@ -1,27 +1,32 @@
 ---
-title: Mobility (Transit) kapsamı
-description: Yönlendirme ve hizmet uyarıları gibi genel aktarım özellikleri için hangi bölgelerde Azure Maps Mobility hizmeti 'nin sağladığı kapsama düzeyini öğrenin.
+title: Microsoft Azure Maps Mobility hizmetlerinde Mobility (Transit) kapsamı (Önizleme)
+description: Azure Maps Mobility hizmetlerinin (Önizleme), Yönlendirme ve hizmet uyarıları gibi genel aktarım özellikleri için hangi bölgelerde sağladığı kapsama düzeyini öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/23/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 10a0f9b1b21b060d7c33aeb52fb72f950cedf0e6
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e902f313edf22d75f6b183575c3dc8d0dd94bc1f
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779159"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904763"
 ---
-# <a name="azure-maps-mobility-coverage"></a>Azure haritalar Mobility kapsamı
+# <a name="azure-maps-mobility-services-preview-coverage"></a>Azure Maps Mobility Hizmetleri (Önizleme) kapsamı
 
-Azure haritalar [Mobility hizmeti](/rest/api/maps/mobility) , aktarım yönlendirme ve yakın ortak aktarım için arama gibi genel aktarım özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Kullanıcılar, aktarım duraklarının, satırların ve zamanlamalarla ilgili ayrıntılı bilgi alabilir. Mobility hizmeti ayrıca kullanıcıların durdurma ve çizgi geometrileri, duruyor, satırlar ve hizmet alanlarıyla ilgili uyarıları ve gerçek zamanlı genel transit ve hizmet uyarılarını almasına olanak tanır. Ayrıca, Mobility hizmeti çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek seyahat halinde yürüyen, Bicycling ve genel aktarım seçeneklerini içerir. Kullanıcılar, ayrıntılı çok kalıcı adım adım yolculuk de erişebilir. 
+> [!IMPORTANT]
+> Azure haritalar Mobility Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+Azure haritalar [Mobility Hizmetleri](/rest/api/maps/mobility) , aktarım yönlendirme ve yakın ortak aktarım için arama gibi genel aktarım özelliklerine sahip uygulamalar için geliştirme süresini geliştirir. Kullanıcılar, aktarım duraklarının, satırların ve zamanlamalarla ilgili ayrıntılı bilgi alabilir. Mobility Hizmetleri ayrıca kullanıcıların durdurma ve çizgi geometrileri, duruyor, satırlar ve hizmet alanlarıyla ilgili uyarılar ve gerçek zamanlı genel transit ve hizmet uyarıları almasına izin verir. Ayrıca, Mobility Hizmetleri, çok kalıcı seyahat planlama seçenekleriyle yönlendirme özellikleri sağlar. Çoklu kalıcı seyahat planlaması, tek seyahat halinde yürüyen, Bicycling ve genel aktarım seçeneklerini içerir. Kullanıcılar, ayrıntılı çok kalıcı adım adım yolculuk de erişebilir.
 
 Azure haritalar tüm şehirlerin ve ülkelerin/bölgelerin aynı düzeyde bilgileri ve doğruluğu sağlamamıştır. Ortak aktarım verilerini çağırma özelliği, Metro alanına bağlıdır. Ayrıca, harita verileri, Metro alanına sunan tüm genel aktarım seçeneklerini ve kuruluşlarını içermeyebilir.
 
-Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanmaktadır.
+Aşağıdaki tabloda Azure Maps Mobility Hizmetleri için kapsam bilgileri sağlanmaktadır.
 
 | Sembol | Anlamı |
 |--------|---------|
@@ -149,17 +154,17 @@ Aşağıdaki tabloda Azure Maps Mobility hizmeti için kapsam bilgileri sağlanm
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Mobility hizmetini kullanarak geçiş verileri isteme hakkında bilgi edinin:
+Mobility hizmetlerini (Önizleme) kullanarak geçiş verileri isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Geçiş verileri isteme](how-to-request-transit-data.md)
 
-Mobility hizmetini kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
+Mobility hizmetlerini (Önizleme) kullanarak gerçek zamanlı veriler isteme hakkında bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Gerçek zamanlı veriler isteme](how-to-request-real-time-data.md)
 
-Azure haritalar Mobility hizmeti API 'SI belgelerini inceleyin
+Azure haritalar Mobility Hizmetleri (Önizleme) API belgelerini inceleyin
 
 > [!div class="nextstepaction"]
-> [Mobility hizmeti API 'SI belgeleri](/rest/api/maps/mobility)
+> [Mobility Hizmetleri API 'SI belgeleri](/rest/api/maps/mobility)

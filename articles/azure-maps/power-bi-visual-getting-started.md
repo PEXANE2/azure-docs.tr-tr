@@ -3,22 +3,22 @@ title: Visual Power BI Azure Maps ile çalışmaya başlama | Microsoft Azure ha
 description: Bu makalede, Power BI için Microsoft Azure eşlemelerini nasıl kullanacağınızı öğreneceksiniz.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 06/26/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 5c89922aef1ba802ee694aaed9bae2ac2dd273ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: a563a7776e84289e38743057778e8fe10fd17503
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896251"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904712"
 ---
 # <a name="getting-started-with-the-azure-maps-power-bi-visual"></a>Azure Maps Power BI Visual ile çalışmaya başlama
 
-<Token>**Uygulama hedefi:** ![ Yeşil onay işareti. ](media/power-bi-visual/yes.png) * *_Tüketiciler_* _ ![ yeşil onay işareti için Power BI hizmeti. ](media/power-bi-visual/yes.png) Tasarımcı & geliştiricilerin ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, Hayır öğesini gösterir. ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
+<Token>**Uygulama hedefi:** ![ Yeşil onay işareti. ](media/power-bi-visual/yes.png) **_Tüketiciler_* _ ![ yeşil onay işareti için Power BI hizmeti. ](media/power-bi-visual/yes.png) Tasarımcı & geliştiricilerin ![ yeşil onay işareti Power BI hizmeti. ](media/power-bi-visual/yes.png) Power BI Desktop ![ X, Hayır öğesini gösterir. ](media/power-bi-visual/no.png) Pro veya Premium lisansı gerektirir</Token>
 
 Bu makalede, Power BI için Microsoft Azure harita görsellerinin nasıl kullanılacağı gösterilmektedir.
 
@@ -45,15 +45,15 @@ Siz veya yöneticiniz, aşağıdaki URL 'YI kullanan Azure haritalar platformuna
 
 Daha fazla bilgi edinmek için Azure Maps ile ilgili gizlilik ve kullanım koşulları hakkında [Microsoft Azure yasal bilgiler](https://azure.microsoft.com/support/legal/)bölümüne bakın.
 
-## <a name="preview-behavior-and-requirements"></a>Önizleme davranışı ve gereksinimleri
+## <a name="azure-maps-visual-preview-behavior-and-requirements"></a>Azure haritalar görsel (Önizleme) davranışı ve gereksinimleri
 
-Bu önizleme sürümü _ * Azure Maps * * için bazı önemli noktalar ve gereksinimler vardır:
+_ *Azure Maps** Visual için bazı önemli noktalar ve gereksinimler vardır. :
 
--   **Azure haritalar** görseli önizleme aşamasındadır ve Power BI Desktop ' de etkinleştirilmesi gerekir. **Azure haritalar** 'ı etkinleştirmek için **Dosya** &gt; **seçenekleri ve ayarlar** &gt; **Seçenekler** &gt; **Önizleme özellikleri** ' ni seçin ve ardından **Azure haritalar görsel** onay kutusunu seçin. Bunu yaptıktan sonra Azure Maps görseli yoksa, yönetim portalındaki bir kiracı yönetici anahtarının etkinleştirilmesi olasıdır.
+-   **Azure haritalar** görsellerinin (önizleme) Power BI Desktop içinde etkinleştirilmesi gerekir. **Azure haritalar** görselini etkinleştirmek için **Dosya** &gt; **seçenekleri ve ayarlar** &gt; **Seçenekler** &gt; **Önizleme özellikleri**' ni seçin ve ardından **Azure haritalar görsel** onay kutusunu seçin. Bunu yaptıktan sonra Azure Maps görseli yoksa, yönetim portalındaki bir kiracı yönetici anahtarının etkinleştirilmesi olasıdır.
 -   Veri kümesi, **Enlem** ve **boylam** bilgilerini içeren alanlara sahip olmalıdır. Konum alanlarının coğrafi kodlama gelecekteki bir güncelleştirmeye eklenecektir.
 -   Power BI için yerleşik gösterge denetimi şu anda bu önizlemede görünmüyor. Bu, gelecekteki bir güncelleştirmeye eklenecektir.
 
-## <a name="use-the-azure-maps-visual"></a>Azure haritalar görselini kullanma
+## <a name="use-the-azure-maps-visual-preview"></a>Azure haritalar görselini kullanma (Önizleme)
 
 **Azure haritalar** görseli etkinleştirildikten sonra **görsel öğeler** bölmesinden **Azure haritalar** simgesini seçin.
 
@@ -135,7 +135,7 @@ Azure haritalar görseli aşağıdaki hizmet ve uygulamalarda kullanılabilir:
 | Power BI mobil uygulamaları             | Evet          |
 | Power BI - web'de yayımlama                  | Hayır           |
 | Power BI Embedded                        | Hayır           |
-| Power BI hizmeti - ekleme (PowerBI.com) | Evet          |
+| Power BI hizmeti - ekleme (PowerBI.com) | Yes          |
 
 Ek Power BI Hizmetleri/uygulamaları için destek, gelecekteki güncelleştirmelere eklenecektir.
 
@@ -173,7 +173,7 @@ Azure haritalar Power BI görsel hakkında daha fazla bilgi edinin:
 Görseli özelleştirin:
 
 > [!div class="nextstepaction"]
-> [Power BI'da renk biçimlendirmesiyle ilgili ipuçları ve püf noktaları](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
+> [Power BI'da renk biçimlendirmeye ilişkin ipuçları ve püf noktaları](/power-bi/visuals/service-tips-and-tricks-for-color-formatting)
 
 > [!div class="nextstepaction"]
 > [Görselleştirme başlıklarını, arka planlarını ve göstergelerini özelleştirme](/power-bi/visuals/power-bi-visualization-customize-title-background-and-legend)

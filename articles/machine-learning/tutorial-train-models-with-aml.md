@@ -1,7 +1,7 @@
 ---
 title: 'Görüntü sınıflandırma öğreticisi: modelleri eğitme'
 titleSuffix: Azure Machine Learning
-description: Bir resim sınıflandırması modelini scikit ile eğiten Azure Machine Learning kullanın-Python Jupyter not defterinde öğrenin. Bu öğretici iki bölümden biridir.
+description: Azure Machine Learning kullanarak bir görüntü sınıflandırma modelini scikit ile eğitme-bir Python Jupyter Notebook öğrenin. Bu öğretici iki bölümden biridir.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321286"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862437"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Öğretici: veri ve scikit ile görüntü sınıflandırma modellerini eğitme-öğrenme 
 
 
-Bu öğreticide, bir makine öğrenimi modelini uzaktan işlem kaynaklarında eğitebilirsiniz. Bir Python Jupyter not defterinde Azure Machine Learning için eğitim ve dağıtım iş akışını kullanacaksınız.  Ardından not defterini şablon olarak kullanıp kendi verilerinizle kendi makine öğrenmesi modelinizi eğitebilirsiniz. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin birinci bölümüdür**.  
+Bu öğreticide, bir makine öğrenimi modelini uzaktan işlem kaynaklarında eğitebilirsiniz. Azure Machine Learning için eğitim ve dağıtım iş akışını bir Python Jupyter Notebook kullanacaksınız.  Ardından not defterini şablon olarak kullanıp kendi verilerinizle kendi makine öğrenmesi modelinizi eğitebilirsiniz. Bu öğretici, **iki bölümden oluşan bir öğretici serisinin birinci bölümüdür**.  
 
 Bu öğreticide, [Mnist](http://yann.lecun.com/exdb/mnist/) veri kümesini ve scikit 'i kullanarak basit bir Lojistik gerileme yapılır. Azure Machine Learning [hakkında bilgi edinin](https://scikit-learn.org) . MNIST, 70.000 gri tonlamalı resimden oluşan popüler bir veri kümesidir. Her görüntü, sıfır ile dokuz arasında bir sayıyı temsil eden 28 x 28 piksellik bir sayının el ile yazılmış bir rakamdır. Amaç, belirli bir resim temsil ettiği rakamı tanımlamak için çok sınıflı bir sınıflandırıcı oluşturmaktır.
 
@@ -54,7 +54,7 @@ Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azu
 > [!Important]
 > Bu makalenin geri kalanında not defterinde gördüğünüz içerikle aynı içerik yer almaktadır.  
 >
-> Kodu çalıştırırken okumak istiyorsanız, Jupyter not defterine şimdi geçin. 
+> Kodu çalıştırırken okumak istiyorsanız şimdi Jupyter Notebook geçin. 
 > Bir not defterinde tek bir kod hücresini çalıştırmak için, kod hücresine tıklayın ve **SHIFT + enter** tuşuna basın. Ya da tüm not defteri ' ni üstteki araç çubuğundan **Çalıştır** ' ı seçerek çalıştırın.
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>Geliştirme ortamınızı ayarlama
@@ -368,15 +368,15 @@ Toplam olarak, ilk çalıştırma **yaklaşık 10 dakika** sürer. Ancak, komut 
 
 Beklerken ne olur:
 
-- **Görüntü oluşturma** : Azure ML ortamı tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika** sürer.
+- **Görüntü oluşturma**: Azure ML ortamı tarafından belirtilen Python ortamıyla eşleşen bir Docker görüntüsü oluşturulur. Görüntü, çalışma alanına yüklenir. Resim oluşturma ve karşıya yükleme **yaklaşık beş dakika** sürer.
 
   Kapsayıcı sonraki çalıştırmalar için önbelleğe alındığından, bu aşama her Python ortamı için bir kez gerçekleşir. Görüntü oluşturma sırasında, günlükler çalıştırma geçmişine aktarılır. Bu günlükleri kullanarak görüntü oluşturma ilerlemesini izleyebilirsiniz.
 
-- **Ölçeklendirme** : uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
+- **Ölçeklendirme**: uzak küme, çalışmayı Şu anda kullanılabilir olandan daha fazla düğüm gerektiriyorsa, ek düğümler otomatik olarak eklenir. Ölçeklendirme genellikle **yaklaşık beş dakika sürer.**
 
-- **Çalışıyor** : Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
+- **Çalışıyor**: Bu aşamada, gerekli betikler ve dosyalar işlem hedefine gönderilir. Ardından veri depoları bağlanır veya kopyalanır. Sonra **entry_script** çalıştırılır. İş çalışırken **stdout** ve **./logs** dizini çalıştırma geçmişine akışla kaydedilir. Bu günlükleri kullanarak çalıştırmanın ilerlemesini izleyebilirsiniz.
 
-- **Işlem sonrası** : Bu sonuçlara erişebilmek için çalıştırmanın **./çıktılar** dizini çalışma alanınızdaki çalışma geçmişine kopyalanır.
+- **Işlem sonrası**: Bu sonuçlara erişebilmek için çalıştırmanın **./çıktılar** dizini çalışma alanınızdaki çalışma geçmişine kopyalanır.
 
 Çalışan bir işin ilerlemesini birkaç şekilde denetleyebilirsiniz. Bu öğreticide bir jupi pencere öğesi ve bir `wait_for_completion` yöntemi kullanılmaktadır.
 

@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 4280932787cfb2220dab1da84dca41ca0c40e302
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: cf7c5fa8563544add55a7fad5075848eb5116fe1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485265"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901941"
 ---
 # <a name="networking-overview---azure-database-for-postgresql---flexible-server"></a>Ağa genel bakış-PostgreSQL için Azure veritabanı-esnek sunucu
 
@@ -33,7 +33,7 @@ PostgreSQL için Azure veritabanı-esnek sunucu için iki ağ seçeneğiniz vard
    * Azure olmayan kaynaklardan esnek sunucunuza bağlanmak için VPN veya ExpressRoute kullanın
    * Esnek sunucuda genel uç nokta yok
 
-* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuza ortak bir uç nokta üzerinden erişilir. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları**olarak adlandırılır. 
+* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuza ortak bir uç nokta üzerinden erişilir. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları** olarak adlandırılır. 
 
    Aşağıdaki özellikleri istiyorsanız ortak erişim yöntemini seçin:
    * Sanal ağları desteklemeyen Azure kaynaklarından Bağlan
@@ -107,6 +107,7 @@ PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranm�
    * PostgreSQL için Azure veritabanı sunucusuna erişen istemci bilgisayarlarınıza atanan IP adresi aralığı için Internet servis sağlayıcınıza (ISS) sorun ve IP adresi aralığını bir güvenlik duvarı kuralı olarak ekleyin.
    * İstemci bilgisayarlarınız yerine statik IP adresleme alın ve statik IP adresini bir güvenlik duvarı kuralı olarak ekleyin.
 
+* **Güvenlik duvarı kuralı IPv6 biçimi için kullanılamaz:** Güvenlik duvarı kuralları IPv4 biçiminde olmalıdır. Güvenlik duvarı kurallarını IPv6 biçiminde belirtirseniz, doğrulama hatası gösterilir.
 
 ## <a name="hostname"></a>Konak adı
 Seçtiğiniz ağ seçeneğinden bağımsız olarak, esnek sunucunuza bağlanırken her zaman konak adı olarak tam etki alanı adı (FQDN) kullanmanızı öneririz. Sunucunun IP adresinin statik kalması garanti edilmez. FQDN 'nin kullanılması, bağlantı dizeniz üzerinde değişiklik yapmaktan kaçınmanıza yardımcı olur. 

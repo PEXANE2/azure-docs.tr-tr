@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896858"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905783"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak bir mağaza Bulucu oluşturma
 
-Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğretici, Azure haritalar 'ı kullanarak basit bir depolama Konumlandırıcı oluşturma sürecinde size rehberlik eder. Mağaza bulleyicileri ortaktır. Bu tür uygulamalarda kullanılan kavramların birçoğu, diğer birçok uygulama türü için geçerlidir. Müşterilere bir mağaza bulucunun teklif etmek, doğrudan tüketicilere satış yapan işletmelerin bir sunudur. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure Harita Denetimi API 'sini kullanarak yeni bir Web sayfası oluşturun.
@@ -76,18 +76,18 @@ Bir mağaza Bulucu uygulaması geliştirmeden önce, haritada göstermek istedi�
 
 Verilerin ekran görüntüsüne bakarak aşağıdaki gözlemleri yapabiliriz:
 
-* Konum bilgileri **Adressatırı** , **şehir** , **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
+* Konum bilgileri **Adressatırı**, **şehir**, **municipsellik** (ilçe), **Adminbölüm** (Eyalet/bölge), **Postcode** (posta kodu) ve **ülke** sütunları kullanılarak depolanır.  
 * **Enlem** ve **boylam** sütunları, her contoso Coffee kahve dükkanı mağaza konumunun koordinatlarını içerir. Koordinat bilgilerine sahip değilseniz, Konum koordinatlarını öğrenmek için Azure haritalar 'daki arama hizmetleri ' ni kullanabilirsiniz.
 * Bazı ek sütunlar, kafeterlerle ilgili meta verileri içerir: telefon numarası, Boole sütunları ve açılış ve kapanış zamanlarını 24 saat biçiminde depolar. Boolean sütunları Wi-Fi ve wheelsandalye erişilebilirliği içindir. Konum verilerinize daha uygun olan meta verileri içeren kendi sütunlarınızı oluşturabilirsiniz.
 
 > [!NOTE]
-> Azure Maps, verileri küresel Mercator projeksiyonu "EPSG: 3857" olarak işler, ancak WGS84 Datum kullanan "EPSG: 4325" içindeki verileri okur.
+> Azure Maps, verileri küresel Mercator projeksiyonu "EPSG: 3857" olarak işler, ancak WGS84 Datum kullanan "EPSG: 4326" içindeki verileri okur.
 
 Veri kümesini uygulamada açığa çıkarmak için birçok yol vardır. Bir yaklaşım, verileri bir veritabanına yüklemek ve verileri sorgulayan bir Web hizmetini kullanıma sunmasıdır. Ardından sonuçları kullanıcının tarayıcısına gönderebilirsiniz. Bu seçenek, büyük veri kümeleri veya sık güncellenen veri kümeleri için idealdir. Ancak, bu seçenek daha fazla geliştirme çalışması gerektirir ve maliyeti daha yüksektir.
 
 Başka bir yaklaşım, bu veri kümesini tarayıcının kolayca ayrıştırabileceği düz bir metin dosyasına dönüştürmesidir. Dosyanın kendisi, uygulamanın geri kalanı ile barındırılabilir. Bu seçenek, şeyleri basit tutar, ancak kullanıcı tüm verileri indirdiğinden daha küçük veri kümeleri için iyi bir seçenektir. Veri dosyasının boyutu 1 MB 'tan küçük olduğundan bu veri kümesi için düz metin dosyası kullanıyoruz.  
 
-Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet** ' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee.txt* olarak adlandırın.
+Çalışma kitabını düz metin dosyasına dönüştürmek için çalışma kitabını sekmeyle ayrılmış bir dosya olarak kaydedin. Her sütun bir sekme karakteriyle sınırlandırılır, bu da sütunları kodlarımızda ayrıştırmayı kolaylaştırır. Virgülle ayrılmış değer (CSV) biçimi kullanabilirsiniz, ancak bu seçenek daha fazla ayrıştırma mantığı gerektirir. İçinde virgül olan herhangi bir alan, tırnak işaretleriyle kaydırılır. Bu verileri Excel 'de sekmeyle ayrılmış bir dosya olarak dışarı aktarmak için **farklı kaydet**' i seçin. **Farklı kaydet türü** aşağı açılan listesinde **metin (sekmeyle sınırlandırılmış) (*. txt)** seçeneğini belirleyin. Dosyayı *ContosoCoffee.txt* olarak adlandırın.
 
 ![Farklı Kaydet tür iletişim kutusunun ekran görüntüsü](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,13 +97,13 @@ Metin dosyasını Not defteri 'nde açarsanız, aşağıdaki şekle benzer şeki
 
 ## <a name="set-up-the-project"></a>Projeyi ayarlama
 
-Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html* , *index. css* ve *index.js* . Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Veri* adlı bir klasör oluşturun ve klasöre *ContosoCoffee.txt* ekleyin. *Görüntüler* adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
+Projeyi oluşturmak için, [Visual Studio 'yu](https://visualstudio.microsoft.com) veya seçtiğiniz kod düzenleyicisini kullanabilirsiniz. Proje klasörünüzde üç dosya oluşturun: *index.html*, *index. css* ve *index.js*. Bu dosyalar, uygulamanın yerleşimini, stilini ve mantığını tanımlar. *Veri* adlı bir klasör oluşturun ve klasöre *ContosoCoffee.txt* ekleyin. *Görüntüler* adlı başka bir klasör oluşturun. Haritada simgeler, düğmeler ve işaretçiler için bu uygulamada 10 resim kullanıyoruz. [Bu görüntüleri indirebilirsiniz](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Proje klasörünüz artık aşağıdaki şekilde görünmelidir:
 
 ![Basit depo Konumlandırıcı proje klasörünün ekran görüntüsü](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>Kullanıcı arabirimini oluşturma
 
-Kullanıcı arabirimini oluşturmak için *index.html* 'ye kod ekleyin:
+Kullanıcı arabirimini oluşturmak için *index.html*'ye kod ekleyin:
 
 1. Aşağıdaki `meta` etiketleri `head` *index.html* öğesine ekleyin. `charset`Etiket, (UTF-8) karakter kümesini tanımlar. `http-equiv`Internet Explorer ve Microsoft Edge 'in değeri en son tarayıcı sürümlerini kullanmasını söyler. Son etiket ise, `meta` yanıt veren düzenler için iyi bir görünüm penceresi belirtir.
 
@@ -432,7 +432,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ Her şey artık Kullanıcı arabiriminde ayarlanır. Yine de verileri yüklemek 
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

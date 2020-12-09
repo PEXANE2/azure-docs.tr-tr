@@ -1,19 +1,19 @@
 ---
-title: Yerelleştirme desteği | Microsoft Azure haritaları
+title: Microsoft Azure haritaları ile yerelleştirme desteği
 description: Haritalar, arama, yönlendirme, hava durumu ve trafik olayları gibi hizmetlerle Azure haritalarının desteklediği bölgeleri görün. Görünüm parametresini ayarlamayı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/20/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 50e5d0721eb14d1fcdfad26aaf081bfa370e954e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88037703"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904525"
 ---
 # <a name="localization-support-in-azure-maps"></a>Azure haritalar 'da yerelleştirme desteği
 
@@ -22,10 +22,10 @@ Azure haritalar, ülkeye/bölgeye göre çeşitli dilleri ve görünümleri dest
 
 ## <a name="azure-maps-supported-languages"></a>Azure haritalar desteklenen diller
 
-Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
+Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. Aşağıdaki tabloda her hizmet için desteklenen dil kodları sağlanmaktadır.  
   
 
-| ID         | Adı                   |  Haritalar | Search | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
+| ID         | Name                   |  Haritalar | Arama | Yönlendirme | Hava Durumu | Trafik olayları | JS eşleme denetimi |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | Afrikaner              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arapça                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure haritalar, hizmetleri genelinde çeşitli dillerde yerelleştirilmiştir. 
 | En-AU      | İngilizce (Avustralya)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | En-NZ      | İngilizce (Yeni Zelanda)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | İngilizce (Büyük Britanya) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| tr-TR      | İngilizce (ABD)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| en-US      | İngilizce (ABD)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estonya Dili               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fıfıph     | Filipino               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fince                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -129,25 +129,25 @@ Etkilenen Azure haritalar REST Hizmetleri:
  * Arama adresini tersine al
  * Arama adresini al çapraz cadde
  * Geometri Içinde arama sonrası
- * Arama sonrası adres Batch önizlemesi
- * Arama sonrası adres geri Batch önizlemesi
+ * Arama adresi sonrası Batch
+ * Arama sonrası adres ters Batch
  * Rota üzerinde arama sonrası
- * Arama sonrası benzer toplu Iş önizlemesi
+ * Arama sonrası benzer toplu Işlem
 
  
-### <a name="sdks"></a>SDK’lar
+### <a name="sdks"></a>SDK
 
 **Görünüm** parametresini gereken şekilde ayarlamış olduğunuzdan ve Web SDK 'sının en son sürümüne sahip olduğunuzdan emin olun ve Android SDK. Etkilenen SDK 'lar:
 
  * Azure Haritalar Web SDK 'Sı
  * Azure Haritalar Android SDK
 
-Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified**olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin ve Azure Maps aracılığıyla erişim yetkisine sahip olduğunuz üçüncü taraf içeriklerin eşlenmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
+Varsayılan olarak, istek içinde tanımlamadığınız halde görünüm parametresi **Unified** olarak ayarlanır. Kullanıcılarınızın konumunu saptayın. Ardından, bu konum için **Görünüm** parametresini doğru olarak ayarlayın. Alternatif olarak, isteğin IP adresine göre harita verilerini döndürecek olan ' View = Auto ' seçeneğini belirleyebilirsiniz.  Azure haritalar 'daki **Görünüm** parametresi, Haritalar, görüntüler ve diğer verilerin ve Azure Maps aracılığıyla erişim yetkisine sahip olduğunuz üçüncü taraf içeriklerin eşlenmesiyle ilgili yasalar dahil olmak üzere, geçerli yasaları ile uyumlu olmalıdır.
 
 
 Aşağıdaki tabloda desteklenen görünümler sağlanmaktadır.
 
-| Görüntüle         | Açıklama                            |  Haritalar | Search | JS Harita Denetimi |
+| Görüntüle         | Description                            |  Haritalar | Arama | JS Harita Denetimi |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Birleşik Arap Emirlikleri (Arapça görünüm)    |   ✓   |        |     ✓          |
 | AR           | Arjantin (argentinian görünümü)           |   ✓   |    ✓   |     ✓          |

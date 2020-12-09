@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980210"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905562"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -125,10 +125,6 @@ Fiyatlandırma ayrıntıları için bkz. [Azure özel bağlantı fiyatlandırmas
 ## <a name="known-issues"></a>Bilinen Sorunlar
 
 Azure depolama için özel uç noktalar hakkında aşağıdaki bilinen sorunları göz önünde bulundurun.
-
-### <a name="copy-blob-support"></a>Blob 'U kopyalama desteği
-
-Depolama hesabı bir güvenlik duvarı tarafından korunuyorsa ve hesaba özel uç noktalar üzerinden erişiliyorsa, bu hesap bir [BLOB kopyalama](/rest/api/storageservices/copy-blob) işleminin kaynağı olarak görev kullanamaz.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Özel uç noktalarla VNET 'lerdeki istemciler için depolama erişimi kısıtlamaları
 

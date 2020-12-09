@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: karler
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: aa9e7612a5b3b9655b0c1981fbba87645526b3a2
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 20792d58ab259f93d7725fbafda1507f9eddc740
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327211"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862165"
 ---
 # <a name="tutorial-create-a-function-in-java-with-an-event-hub-trigger-and-an-azure-cosmos-db-output-binding"></a>Öğretici: bir olay hub 'ı tetikleyicisi ve bir Azure Cosmos DB çıktı bağlaması ile Java 'da işlev oluşturma
 
@@ -30,17 +30,14 @@ Bu öğreticide şunları yapmanız gerekir:
 
 Bu öğreticiyi tamamlayabilmeniz için aşağıdakilerin yüklü olması gerekir:
 
-* [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8
-* [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
-* Kullanmayı tercih ederseniz [Azure clı](/cli/azure/install-azure-cli) Cloud Shell
-* [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) sürüm 2.6.666 veya üzeri
+- [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), sürüm 8
+- [Apache Maven](https://maven.apache.org), sürüm 3.0 veya üzeri
+- [Azure Functions Core Tools](https://www.npmjs.com/package/azure-functions-core-tools) sürüm 2.6.666 veya üzeri [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 > [!IMPORTANT]
 > `JAVA_HOME`Bu öğreticiyi tamamlayabilmeniz için ortam değişkeninin JDK 'nin Install konumuna ayarlanması gerekir.
 
 Bu öğreticide doğrudan kodu kullanmayı tercih ediyorsanız, bkz. [Java-Functions-eventhub-cosmosdb](https://github.com/Azure-Samples/java-functions-eventhub-cosmosdb) örnek deposu.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-azure-resources"></a>Azure kaynakları oluşturma
 
@@ -53,17 +50,13 @@ Bu öğreticide, şu kaynaklara ihtiyacınız olacaktır:
 
 Aşağıdaki bölümlerde, Azure CLı kullanarak bu kaynakları nasıl oluşturacağınız gösterilmektedir.
 
-### <a name="log-in-to-azure"></a>Azure'da oturum açma
-
-Cloud Shell kullanmıyorsanız, hesabınıza erişmek için Azure CLı 'yi yerel olarak kullanmanız gerekir. `az login`Tarayıcı tabanlı oturum açma deneyimini başlatmak Için Bash isteminde komutunu kullanın. Birden fazla Azure aboneliğine erişiminiz varsa, varsayılan değer olarak abonelik KIMLIĞI ' ni ayarlayın `az account set --subscription` .
-
 ### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
 
 Sonra, oluşturacağınız kaynakların adları ve konumu için bazı ortam değişkenleri oluşturun. Yer tutucuları seçtiğiniz değerlerle değiştirerek aşağıdaki komutları kullanın `<value>` . Değerler, [Azure kaynakları için adlandırma kurallarına ve kısıtlamalarına](/azure/architecture/best-practices/resource-naming)uymalıdır. Değişkeni için `LOCATION` , komutu tarafından üretilen değerlerden birini kullanın `az functionapp list-consumption-locations` .
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 EVENT_HUB_NAMESPACE=<value>
 EVENT_HUB_NAME=<value>
@@ -350,7 +343,7 @@ Kaynaklarınızın oluşturulması için Cloud Shell kullandıysanız, Azure 'a 
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 RESOURCE_GROUP=<value>
 FUNCTION_APP=<value>
 ```
@@ -370,7 +363,7 @@ Bir işlevler projesi oluşturmak ve gerekli bağımlılıkları eklemek için a
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn archetype:generate --batch-mode \
     -DarchetypeGroupId=com.microsoft.azure \
     -DarchetypeArtifactId=azure-functions-archetype \
@@ -406,7 +399,7 @@ Derleme hatalarını önlemek için, test dosyalarını silmeniz gerekir. Yeni p
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 cd telemetry-functions
 rm -r src/test
 ```
@@ -426,7 +419,7 @@ Yerel test için, işlev projenizin Bu öğreticide daha önce Azure 'daki işle
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 func azure functionapp fetch-app-settings $FUNCTION_APP
 ```
 
@@ -584,7 +577,7 @@ Artık işlevleri yerel olarak oluşturup çalıştırabilir ve Azure Cosmos DB 
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn clean package
 mvn azure-functions:run
 ```
@@ -623,7 +616,7 @@ Aşağıdaki komutu kullanarak projenizi Azure 'a dağıtın:
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
-```bash
+```Bash
 mvn azure-functions:deploy
 ```
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994290"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861298"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory ile dayanıklı bir erişim denetimi yönetim stratejisi oluşturma
 
@@ -266,7 +266,7 @@ Hizmet geri yüklendikten sonra, kesintiye uğramasından sonra, etkinleştirile
 3. Yaptığınız diğer değişiklikleri geri alın ve kesinti sırasında belgelenir.
 4. Acil durum erişim hesabı kullandıysanız, kimlik bilgilerini yeniden oluşturmayı ve acil durum erişim hesabı yordamlarınızın bir parçası olarak yeni kimlik bilgileri ayrıntılarını fiziksel olarak güvenli hale getirmeyi unutmayın.
 5. Şüpheli etkinlik kesintiye uğradıktan sonra [raporlanan tüm risk algılamalarını önceliklendirmeye](../reports-monitoring/concept-sign-ins.md) devam edin.
-6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
+6. Bir kullanıcı kümesini hedeflemek için [PowerShell kullanılarak](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) verilen tüm yenileme belirteçlerini iptal edin. Tüm yenileme belirteçleri iptal edildiğinde, kesinti sırasında kullanılan ayrıcalıklı hesaplar için önemlidir ve bunun yapılması, geri yüklenen ilkelerin denetimini yeniden kimlik doğrulaması ve karşılamaları için zorlayacaktır.
 
 ## <a name="emergency-options"></a>Acil durum seçenekleri
 
@@ -287,7 +287,7 @@ Kuruluşunuz Kullanıcı başına MFA eski ilkelerini kullanıyorsa, aşağıdak
 * [Azure AD Kimlik Doğrulaması Belgeleri](./howto-mfaserver-iis.md)
 * [Azure AD 'de acil erişimli yönetim hesaplarını yönetme](../roles/security-emergency-access.md)
 * [Azure Active Directory adlandırılmış konumları yapılandırma](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [Karma Azure Active Directory katılmış cihazları yapılandırma](../devices/hybrid-azuread-join-plan.md)
 * [İş İçin Windows Hello Dağıtım Kılavuzu](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Parola Kılavuzu-Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

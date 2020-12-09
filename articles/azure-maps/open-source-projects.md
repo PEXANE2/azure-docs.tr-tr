@@ -3,18 +3,18 @@ title: Azure haritalar topluluk açık kaynaklı projeler | Microsoft Azure hari
 description: Microsoft Azure Maps Platformu için açık kaynak projeler koordine edilir.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/17/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: ebe633bbfa8ec950e7726c127e38adecf0d1872f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896268"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904559"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -24,7 +24,7 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 **Botlar**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası, Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcı ile ilgili çok sayıda özellik sağlar. |
 | [BotBuilder konumu](https://github.com/Microsoft/BotBuilder-Location) | Bing Haritalar REST Hizmetleri tarafından desteklenen Microsoft bot Framework için açık kaynaklı konum seçici denetimi. |
@@ -35,7 +35,7 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynaklı projelerin bir listesi verilmiştir.
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations) | Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
 | [Azure Maps coğrafi konum denetim modülü](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Kullanıcının haritada konumunu bulmak için tarayıcının coğrafi konum API 'sini kullanan bir denetim sağlayan bir Azure Maps web SDK modülü. |
@@ -48,7 +48,7 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 
 **Örnekler**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar kod örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web tabanlı uygulamalarda Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
 | [Azure Maps gov bulut kodu örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Kamu Bulutu aracılığıyla Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
@@ -59,10 +59,10 @@ Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynakl
 
 **Araçlar ve kaynaklar**
 
-| Proje Adı | Açıklama |
+| Proje Adı | Description |
 |-|-|
 | [Azure haritalar belgeleri](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Tüm Azure konum tabanlı hizmetler belgelerinin kaynağı. |
-| [Azure haritalar Oluşturucu araçları](https://github.com/Azure-Samples/AzureMapsCreator) | Azure Maps Oluşturucu araçları için Python araçları. |
+| [Azure haritalar Oluşturucu (Önizleme) araçları](https://github.com/Azure-Samples/AzureMapsCreator) | Azure haritalar Oluşturucu (Önizleme) araçları için Python araçları. |
 
 Topluluk tarafından oluşturulan projeleri içeren Azure Maps için daha uzun bir açık kaynaklı projeler listesi [burada](https://github.com/microsoft/Maps/blob/master/AzureMaps.md) bulunabilir
 

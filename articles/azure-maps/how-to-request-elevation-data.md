@@ -1,26 +1,30 @@
 ---
-title: Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme
-description: Azure haritalar yükseltme hizmetini kullanarak yükseltme verilerini isteme hakkında bilgi edinin.
+title: Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme (Önizleme)
+description: Azure haritalar yükseltme hizmeti 'ni (Önizleme) kullanarak yükseltme verileri isteme hakkında bilgi edinin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/02/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 9937d72b44eb33df8027eddb9a9f500a372c9037
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554268"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906072"
 ---
-# <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme
+# <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme (Önizleme)
 
-Azure haritalar [yükseltme hizmeti](https://docs.microsoft.com/rest/api/maps/elevation) , dünya üzerindeki konumlara yönelik yükseltme verilerini sorgulamak Için API 'ler sağlar. Tanımlanmış bir sınırlama kutusu içinde veya belirli koordinatlarda, bir veya daha fazla şekilde örneklenmiş yükseltme verileri isteyebilirsiniz. Ayrıca, yükseltme verilerini kutucuk biçiminde almak için [Işleme v2-harita kutucuğu API](https://docs.microsoft.com/rest/api/maps/renderv2) 'sini kullanabilirsiniz. Kutucuklar GeoTIFF raster biçiminde teslim edilir. Bu makalede, yükseltme verilerini istemek için Azure haritalar yükseltme hizmeti ve harita alma kutucuğu API 'sinin nasıl kullanılacağı gösterilir. Yükseltme verileri hem GeoJSON hem de GeoTiff biçimlerinde istenebilir.
+> [!IMPORTANT]
+> Azure haritalar yükseltme hizmeti şu anda genel önizleme aşamasındadır.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="prerequisites"></a>Ön koşullar
+Azure haritalar [yükseltme hizmeti](https://docs.microsoft.com/rest/api/maps/elevation) , dünyanın her yerindeki yükseltme verilerini sorgulamak Için API 'ler sağlar. Tanımlanmış bir sınırlama kutusu içinde veya belirli koordinatlarda, bir veya daha fazla şekilde örneklenmiş yükseltme verileri isteyebilirsiniz. Ayrıca, yükseltme verilerini kutucuk biçiminde almak için [Işleme v2-harita kutucuğu API](https://docs.microsoft.com/rest/api/maps/renderv2) 'sini kullanabilirsiniz. Kutucuklar GeoTIFF raster biçiminde teslim edilir. Bu makalede, yükseltme verilerini istemek için Azure haritalar yükseltme hizmeti ve harita alma kutucuğu API 'sinin nasıl kullanılacağı gösterilir. Yükseltme verileri hem GeoJSON hem de GeoTiff biçimlerinde istenebilir.
+
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [S1 fiyatlandırma katmanında bir Azure Maps hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
@@ -50,7 +54,7 @@ Raster kutucuk biçiminde yükseltme verileri istemek için, [oluşturma v2-Get 
 
 ## <a name="request-elevation-data-in-geojson-format"></a>GeoJSON biçiminde istek yükseltme verileri
 
-GeoJSON biçiminde yükseltme verileri istemek için yükseltme hizmeti API 'Lerini kullanın. Bu bölümde, üç API 'den her biri gösterilir:
+GeoJSON biçiminde yükseltme verileri istemek için yükseltme hizmeti (Önizleme) API 'Lerini kullanın. Bu bölümde, üç API 'den her biri gösterilir:
 
 * [Noktalara yönelik verileri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 * [Noktaları için veri Gönder](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
@@ -443,7 +447,7 @@ Bu örnekte, satırları = 3 ve sütun = 6 olarak belirteceğiz. yanıtta 18 yü
     }
     ```
 
-## <a name="samples-use-elevation-service-apis-in-azure-maps-control"></a>Örnekler: Azure Maps denetimindeki yükseltme hizmeti API 'Lerini kullanma
+## <a name="samples-use-elevation-service-preview-apis-in-azure-maps-control"></a>Örnekler: Azure Maps denetimindeki yükseltme hizmeti (Önizleme) API 'Lerini kullanma
 
 ### <a name="get-elevation-data-by-coordinate-position"></a>Koordinat konumuna göre yükseltme verileri al
 
@@ -478,16 +482,16 @@ Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar yükseltme API 'Lerini daha ayrıntılı incelemek için bkz.:
+Azure haritalar yükseltme (Önizleme) API 'Lerini daha ayrıntılı incelemek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Yükseltme-Enlem uzun koordinatları için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Yükseltme (Önizleme)-enlem uzun koordinatları için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
 
 > [!div class="nextstepaction"]
-> [Yükselme-sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Yükseltme (Önizleme)-sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Yükseltme-çoklu çizgi için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Yükseltme (Önizleme)-çoklu çizgi için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
 > [Render v2: harita kutucuğunu al](https://docs.microsoft.com/rest/api/maps/renderv2)

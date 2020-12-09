@@ -4,12 +4,12 @@ description: Azure Application Insights verileri görmüyor musunuz? Buradan den
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: c3f0350152ece32829291012d583be87a90227cf
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 26ba586715c7b76ff8972c6574c3c29b837713a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748949"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904474"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>.NET/.NET Core için veri Application Insights sorunlarını giderme
 
@@ -39,6 +39,10 @@ ms.locfileid: "96748949"
 
 * Bkz. [sorun giderme durum İzleyicisi](./monitor-performance-live-website-now.md#troubleshoot).
 
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
+
+
 ## <a name="filenotfoundexception-could-not-load-file-or-assembly-microsoftaspnet-telemetrycorrelation"></a>FileNotFoundException: ' Microsoft. AspNet TelemetryCorrelation dosyası veya derlemesi yüklenemedi
 
 Bu hata hakkında daha fazla bilgi için bkz. [GitHub sorunu 1610] ( https://github.com/microsoft/ApplicationInsights-dotnet/issues/1610) .
@@ -64,7 +68,7 @@ Bu hata hakkında daha fazla bilgi için bkz. [GitHub sorunu 1610] ( https://git
     </TelemetryModules>
     ```
 
-***Düzgün bir şekilde yükseltilemeyen için beklenmeyen özel durumlar veya telemetri toplanmıyor olabilir.** _
+**_Düzgün bir şekilde yükseltilemeyen için beklenmeyen özel durumlar veya telemetri toplanmıyor olabilir._* _
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio 'da ' Add Application Insights ' seçeneği yok

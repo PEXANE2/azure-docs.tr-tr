@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ce068f1b43fcd6611d4abf65029cbcc5de3b7d30
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311596"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862352"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -47,7 +47,7 @@ Aşağıdaki örnekte, Azure hizmetleriyle iletişim kurmadan kişisel makineniz
     pip install azureml-interpret
     ```
 
-2. Yerel bir Jupyter not defterinde örnek modeli eğitme.
+2. Yerel bir Jupyter Notebook örnek modeli eğitme.
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -242,7 +242,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
     ```bash
     pip install azureml-interpret
     ```
-1. Yerel bir Jupyter not defterinde eğitim betiği oluşturun. Örneğin, `train_explain.py`.
+1. Yerel bir Jupyter Notebook eğitim betiği oluşturun. Örneğin, `train_explain.py`.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -275,7 +275,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
 
 1. İşlem hedefi olarak bir Azure Machine Learning Işlem kurun ve eğitim çalıştırmanıza iletin. Yönergeler için [Azure Machine Learning işlem kümeleri oluşturma ve yönetme](how-to-create-attach-compute-cluster.md) konusuna bakın. [Örnek Not defterlerinin](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation) yararlı olduğunu da görebilirsiniz.
 
-1. Yerel Jupyter Not defterinize açıklamayı indirin.
+1. Açıklamayı yerel Jupyter Notebook indirin.
 
     ```python
     from azureml.interpret import ExplanationClient
@@ -296,13 +296,13 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
 
 ## <a name="visualizations"></a>Görsel öğeler
 
-Yerel Jupyter Not defterinize açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz.
+Yerel Jupyter Notebook açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz.
 
 ### <a name="understand-entire-model-behavior-global-explanation"></a>Tüm model davranışını anlama (genel açıklama) 
 
 Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
 |Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
@@ -316,7 +316,7 @@ Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla b
 
 Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
 
-|ZF|Açıklama|
+|ZF|Description|
 |----|-----------|
 |Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
 |Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|

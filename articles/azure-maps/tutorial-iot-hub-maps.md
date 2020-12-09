@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: cdbc972d230988420a066c4b927388b885f99a17
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896754"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905358"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal analizler uygulama
 
@@ -24,7 +24,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 > [!div class="checklist"]
 > * Araba izleme verilerini günlüğe kaydetmek için bir Azure depolama hesabı oluşturun.
-> * Veri yükleme API 'sini kullanarak Azure Maps veri hizmetine bir bölge bölge yükleyin.
+> * Veri yükleme API 'sini kullanarak Azure Maps veri hizmeti 'ne (Önizleme) bir bölge bölge yükleyin.
 > * Azure IoT Hub bir hub oluşturun ve bir cihazı kaydedin.
 > * Azure Maps uzamsal analizler temelinde iş mantığı uygulayan Azure Işlevlerinde bir işlev oluşturun.
 > * Azure işlevindeki IoT cihaz telemetri olaylarına Azure Event Grid aracılığıyla abone olun.
@@ -32,7 +32,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 2. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -91,7 +91,7 @@ Aşağıdaki diyagramda, sistem için üst düzey bir genel bakış gösterilmek
 
 Aşağıdaki şekilde, bölge sınırı alanını mavi olarak vurgular. Kiralık Araba rotası yeşil bir çizgi ile belirtilir.
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Sisteme genel bakış Diyagramı.":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="Bölge sınırı yolunu gösteren şekil.":::
 
 ## <a name="create-an-azure-storage-account"></a>Azure depolama hesabı oluşturma
 
@@ -103,13 +103,15 @@ Depolama hesabınızı başarıyla oluşturduğunuzda, günlük verilerini depol
 
 1. Yeni oluşturulan depolama hesabınıza gidin. **Temel** bileşenler bölümünde **kapsayıcılar** bağlantısını seçin.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Sisteme genel bakış Diyagramı.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="BLOB depolama için kapsayıcıların ekran görüntüsü.":::
 
-2. Sol üst köşede **+ kapsayıcı** ' yı seçin. Tarayıcının sağ tarafında bir panel görüntülenir. Kapsayıcınızı *contoso-Kiralık günlüklerinizi* olarak adlandırın ve **Oluştur** ' u seçin.
+2. Sol üst köşede **+ kapsayıcı**' yı seçin. Tarayıcının sağ tarafında bir panel görüntülenir. Kapsayıcınızı *contoso-Kiralık günlüklerinizi* olarak adlandırın ve **Oluştur**' u seçin.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Sisteme genel bakış Diyagramı." bölümünde gereklidir.
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Blob kapsayıcısı oluşturma ekranının ekran görüntüsü.":::
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Sisteme genel bakış Diyagramı.":::
+3. Depolama hesabınızdaki **erişim tuşları** bölmesine gidin ve **KEY1** bölümüne **depolama hesabı adını** ve **anahtar** değerini kopyalayın. Bu değerlerin her ikisi de "Azure Işlevi oluşturma ve Event Grid aboneliği ekleme" bölümünde gereklidir.
+
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Depolama hesabı adını ve anahtarını kopyalama ekran görüntüsü.":::
 
 ## <a name="upload-a-geofence"></a>Bölge listesini karşıya yükle
 
@@ -117,9 +119,9 @@ Ardından, Azure Maps 'a [bölge bölge 'sini yüklemek](./geofence-geojson.md) 
 
 Azure haritalar verilerini karşıya yükleme API 'sini kullanarak bölge bölge 'yi karşıya yüklemek için şu adımları izleyin: 
 
-1. Postman uygulamasını açın ve **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin. Koleksiyonu adlandırın ve **Oluştur** ' u seçin.
+1. Postman uygulamasını açın ve **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur**' u seçin.
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin ve istek için bir istek adı girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet** ' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin ve istek için bir istek adı girin. Önceki adımda oluşturduğunuz koleksiyonu seçin ve ardından **Kaydet**' i seçin.
 
 3. Oluşturucu sekmesinde http **Post** yöntemini seçin ve VERI yükleme API 'sine bölge bölge adresini yüklemek için aşağıdaki URL 'yi girin. `{subscription-key}`Birincil abonelik anahtarınızla değiştirdiğinizden emin olun.
 
@@ -129,7 +131,7 @@ Azure haritalar verilerini karşıya yükleme API 'sini kullanarak bölge bölge
 
     URL yolunda, `geojson` parametresindeki değer, `dataFormat` karşıya yüklenen verilerin biçimini temsil eder.
 
-4. **Body**  >  Giriş biçimi için gövde **RAW** ' yı seçin ve açılan listeden **JSON** ' ı seçin. [JSON veri dosyasını açın](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)ve JSON 'ı Body bölümüne kopyalayın. **Gönder** ’i seçin.
+4. **Body**  >  Giriş biçimi için gövde **RAW** ' yı seçin ve açılan listeden **JSON** ' ı seçin. [JSON veri dosyasını açın](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)ve JSON 'ı Body bölümüne kopyalayın. **Gönder**’i seçin.
 
 5. **Gönder** ' i seçin ve isteği işleme için bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
 
@@ -174,55 +176,59 @@ Bir işlev belirli bir olay tarafından tetiklenir. Burada, bir Event Grid tetik
 
 Şimdi Azure işlevinizi ayarlayın.
 
-1. Azure portal panosunda **kaynak oluştur** ' u seçin. Arama metin kutusuna **işlev uygulaması** yazın. **İşlev uygulaması**  >  **Oluştur** ' u seçin.
+1. Azure portal panosunda **kaynak oluştur**' u seçin. Arama metin kutusuna **işlev uygulaması** yazın. **İşlev uygulaması**  >  **Oluştur**' u seçin.
 
-1. **İşlev uygulaması** oluşturma sayfasında, işlev uygulamanızı adlandırın. **Kaynak grubu** altında, açılan listeden **ContosoRental** öğesini seçin. **Çalışma zamanı yığını** olarak **.NET Core** ' u seçin. Sayfanın en altında, Ileri ' yi seçin **: barındırma >** .
+1. **İşlev uygulaması** oluşturma sayfasında, işlev uygulamanızı adlandırın. **Kaynak grubu** altında, açılan listeden **ContosoRental** öğesini seçin. **Çalışma zamanı yığını** olarak **.NET Core** ' u seçin. Sayfanın en altında, Ileri ' yi seçin **: barındırma >**.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Sisteme genel bakış Diyagramı.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="İşlev uygulaması oluşturma ekranının ekran görüntüsü.":::
 
-1. **Depolama hesabı** Için, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde oluşturduğunuz depolama hesabını seçin. **Gözden geçir ve oluştur** ’u seçin.
+1. **Depolama hesabı** Için, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde oluşturduğunuz depolama hesabını seçin. **Gözden geçir ve oluştur**’u seçin.
 
-1. İşlev uygulaması ayrıntıları ' nı gözden geçirin ve **Oluştur** ' u seçin.
+1. İşlev uygulaması ayrıntıları ' nı gözden geçirin ve **Oluştur**' u seçin.
 
-1. Uygulama oluşturulduktan sonra ona bir işlev eklersiniz. İşlev uygulamasına gidin. **İşlevler** bölmesini seçin. Sayfanın üst kısmında **+ Ekle** ' yi seçin. İşlev şablonu paneli görüntülenir. Paneli aşağı kaydırın ve **Azure Event Grid tetikleyicisi** ' ni seçin.
+1. Uygulama oluşturulduktan sonra ona bir işlev eklersiniz. İşlev uygulamasına gidin. **İşlevler** bölmesini seçin. Sayfanın üst kısmında **+ Ekle**' yi seçin. İşlev şablonu paneli görüntülenir. Paneli aşağı kaydırın ve **Azure Event Grid tetikleyicisi**' ni seçin.
 
      >[!IMPORTANT]
     > **Azure Olay Hub 'ı tetikleyicisi** ve **Azure Event Grid tetikleyici** şablonlarının benzer adları vardır. **Azure Event Grid tetikleyici** şablonunu seçtiğinizden emin olun.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Sisteme genel bakış Diyagramı.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="İşlev oluşturma ekranının ekran görüntüsü.":::
 
-1. İşleve bir ad verin. Bu öğreticide, *GetGeoFunction* adını kullanacaksınız, ancak genel olarak dilediğiniz adı kullanabilirsiniz. **Işlev oluştur** ' u seçin.
+1. İşleve bir ad verin. Bu öğreticide, *GetGeoFunction* adını kullanacaksınız, ancak genel olarak dilediğiniz adı kullanabilirsiniz. **Işlev oluştur**' u seçin.
 
 1. Sol menüde, **kod + test** Bölmesi ' ni seçin. [C# betiğini](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) kopyalayıp kod penceresine yapıştırın.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Sisteme genel bakış Diyagramı.":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Kodu işlev penceresine Yapıştır ' ın kopyası/ekran görüntüsü.":::
 
 1. C# kodunda, aşağıdaki parametreleri değiştirin:
     * **SUBSCRIPTION_KEY** Azure Maps hesabı birincil abonelik anahtarınızla değiştirin.
     * **UDID** `udid` değerini, [bölge yükleme](#upload-a-geofence)sırasında karşıya yüklediğiniz bölge alanı ile değiştirin.
-    * `CreateBlobAsync`Betikteki işlev veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY** , **account_name** ve **STORAGE_CONTAINER_NAME** değerini depolama hesabınızın erişim anahtarı, hesap adı ve veri depolama kapsayıcınızla değiştirin. Bu değerler, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde depolama hesabınızı oluşturduğunuzda oluşturulmuştur.
+    * `CreateBlobAsync`Betikteki işlev veri depolama hesabında olay başına bir blob oluşturur. **ACCESS_KEY**, **account_name** ve **STORAGE_CONTAINER_NAME** değerini depolama hesabınızın erişim anahtarı, hesap adı ve veri depolama kapsayıcınızla değiştirin. Bu değerler, [Azure depolama hesabı oluşturma](#create-an-azure-storage-account)bölümünde depolama hesabınızı oluşturduğunuzda oluşturulmuştur.
 
-1. Sol taraftaki menüden **tümleştirme** bölmesini seçin. Diyagramda **Event Grid tetikleyiciyi** seçin. Tetikleyici için bir ad yazın, *Eventgridevent* ve **Event Grid aboneliği oluştur** ' u seçin.
+1. Sol taraftaki menüden **tümleştirme** bölmesini seçin. Diyagramda **Event Grid tetikleyiciyi** seçin. Tetikleyici için bir ad yazın, *Eventgridevent* ve **Event Grid aboneliği oluştur**' u seçin.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Sisteme genel bakış Diyagramı." bölümünde oluşturduğunuz IoT Hub 'ını seçin. **Olay türlerine filtre** Için **cihaz telemetrisi** ' ni seçin.
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Olay aboneliği Ekle ekran görüntüsü.":::
 
-   Bu seçenekleri belirledikten sonra **IoT Hub** , **konu türü** değişikliğini görürsünüz. **Sistem konu adı** için, kaynağınız ile aynı adı kullanabilirsiniz. Son olarak, **uç nokta ayrıntıları** bölümünde **uç nokta seç** ' i seçin. Tüm ayarları kabul edin ve **Seçimi Onayla** ' yı seçin.
+1. Abonelik ayrıntılarını doldurun. Olay aboneliğini adlandırın. **Olay şeması** Için **Event Grid şeması**' nı seçin. **Konu türleri** için **Azure IoT Hub hesapları**' nı seçin. **Kaynak grubu** için, Bu öğreticinin başlangıcında oluşturduğunuz kaynak grubunu seçin. **Kaynak** için, "Azure IoT Hub 'ı oluşturma" bölümünde oluşturduğunuz IoT Hub 'ını seçin. **Olay türlerine filtre** Için **cihaz telemetrisi**' ni seçin.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Sisteme genel bakış Diyagramı.":::
+   Bu seçenekleri belirledikten sonra **IoT Hub**, **konu türü** değişikliğini görürsünüz. **Sistem konu adı** için, kaynağınız ile aynı adı kullanabilirsiniz. Son olarak, **uç nokta ayrıntıları** bölümünde **uç nokta seç**' i seçin. Tüm ayarları kabul edin ve **Seçimi Onayla**' yı seçin.
 
-1. Ayarlarınızı gözden geçirin. Uç noktanın, bu bölümün başlangıcında oluşturduğunuz işlevi belirttiğinden emin olun. **Oluştur** ’u seçin.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Olay aboneliği oluşturma ekranının ekran görüntüsü.":::
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Sisteme genel bakış Diyagramı.":::
+1. Ayarlarınızı gözden geçirin. Uç noktanın, bu bölümün başlangıcında oluşturduğunuz işlevi belirttiğinden emin olun. **Oluştur**’u seçin.
 
-1. Şimdi **düzenleme tetikleyicisi** paneline geri dönersiniz. **Kaydet** ’i seçin.
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Olay aboneliği oluşturma onayı ekran görüntüsü.":::
+
+1. Şimdi **düzenleme tetikleyicisi** paneline geri dönersiniz. **Kaydet**’i seçin.
 
 ## <a name="filter-events-by-using-iot-hub-message-routing"></a>IoT Hub ileti yönlendirme kullanarak olayları filtreleme
 
 Azure işlevine Event Grid aboneliği eklediğinizde, belirtilen IoT Hub 'ında otomatik olarak bir mesajlaşma yolu oluşturulur. İleti yönlendirme, farklı veri türlerini çeşitli uç noktalara yönlendirmenize olanak tanır. Örneğin, cihaz telemetri iletilerini, cihaz yaşam döngüsü olaylarını ve cihaz ikizi değişiklik olaylarını yönlendirebilirsiniz. Daha fazla bilgi için bkz. [IoT Hub ileti yönlendirmeyi kullanma](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Sisteme genel bakış Diyagramı." Engine = '** ile değiştirin. Sonra **Kaydet** 'i seçin. Artık IoT Hub 'ı yalnızca altyapının açık olduğu cihaz telemetrisini yayımlar.
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="IoT Hub 'da ileti yönlendirmenin ekran görüntüsü.":::
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Sisteme genel bakış Diyagramı.":::
+Örnek senaryonuz, yalnızca Kiralama arabasının hareket ettirilmesi durumunda ileti almak istersiniz. `Engine`Özelliğin **"on"** değerine eşit olduğu olayları filtrelemek için bir yönlendirme sorgusu oluşturun. Yönlendirme sorgusu oluşturmak için **Routetoeventgrid** yolunu seçin ve **yönlendirme SORGUSUNU** **' "üzerinde" Engine = '** ile değiştirin. Sonra **Kaydet**'i seçin. Artık IoT Hub 'ı yalnızca altyapının açık olduğu cihaz telemetrisini yayımlar.
+
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Filtre yönlendirme iletilerinin ekran görüntüsü.":::
 
 >[!TIP]
 >IoT cihazdan buluta iletileri sorgulamak için çeşitli yollar vardır. İleti yönlendirme sözdizimi hakkında daha fazla bilgi için bkz. [IoT Hub Message Routing](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
@@ -250,15 +256,15 @@ Azure işleviniz çalışırken, artık IoT Hub 'ına telemetri verileri gönder
 
   Yerel terminalinizde aşağıdaki gibi görünmelidir.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Sisteme genel bakış Diyagramı.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Terminal çıktısının ekran görüntüsü.":::
 
 Blob Storage kapsayıcısını şimdi açarsanız, aracın bölge alanının dışında olduğu konumlar için dört blob görebilirsiniz.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Sisteme genel bakış Diyagramı.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Kapsayıcı içindeki blob 'ları görüntüleme ekran görüntüsü.":::
 
 Aşağıdaki haritada bölge bölge dışında dört araç konum noktası gösterilmektedir. Her konum düzenli zaman aralıklarıyla günlüğe kaydedilir.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Sisteme genel bakış Diyagramı.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="İhlal eşlemesinin ekran görüntüsü.":::
 
 ## <a name="explore-azure-maps-and-iot"></a>Azure haritalar ve IoT 'yi keşfet
 

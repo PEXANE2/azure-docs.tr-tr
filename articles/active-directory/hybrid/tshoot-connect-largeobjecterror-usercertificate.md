@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eb656e46ce5e26fca5ae5c094f9b8bb85819caa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d33b419e0f24201d661ad0f5f1373022ea6e9e9f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89275785"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861757"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect Sync: Kullanıcısertifikası özniteliği nedeniyle LargeObject hatalarını Işleme
 
@@ -44,17 +44,17 @@ LargeObject hatası çözümlenene kadar, aynı nesneye yapılan diğer öznitel
 
  * Azure AD Connect 1.1.524.0 veya sonraki bir sürüme yükseltin. Azure AD Connect Build 1.1.524.0 içinde, kullanıma hazır eşitleme kuralları, özniteliklerin 15 ' ten fazla değeri varsa userCertificate ve Usersmmecertificate özniteliklerini dışarı aktarmaya yönelik olarak güncelleştirilmiştir. Azure AD Connect yükseltme hakkında daha fazla bilgi için, [önceki bir sürümden en son sürüme yükseltme Azure AD Connect](./how-to-upgrade-previous-version.md)makalesine başvurun.
 
- * **15 ' ten fazla sertifika değeri olan nesnelerin gerçek değerleri yerine null değer**veren Azure AD Connect bir **giden eşitleme kuralı** uygulayın. Bu seçenek, 15 ' ten fazla değere sahip nesneler için Azure AD 'ye aktarılmasını istemediğiniz sertifika değerlerinden herhangi birinin gerekli olmadığı durumlarda uygundur. Bu eşitleme kuralının nasıl uygulanacağı hakkında daha fazla bilgi için, [userCertificate özniteliğinin dışarı aktarılmasını sınırlamak üzere eşitleme kuralını uygulama](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)başlıklı sonraki bölüme bakın.
+ * **15 ' ten fazla sertifika değeri olan nesnelerin gerçek değerleri yerine null değer** veren Azure AD Connect bir **giden eşitleme kuralı** uygulayın. Bu seçenek, 15 ' ten fazla değere sahip nesneler için Azure AD 'ye aktarılmasını istemediğiniz sertifika değerlerinden herhangi birinin gerekli olmadığı durumlarda uygundur. Bu eşitleme kuralının nasıl uygulanacağı hakkında daha fazla bilgi için, [userCertificate özniteliğinin dışarı aktarılmasını sınırlamak üzere eşitleme kuralını uygulama](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute)başlıklı sonraki bölüme bakın.
 
  * Kuruluşunuz tarafından artık kullanılmayan değerleri kaldırarak şirket içi AD nesnesindeki (15 veya daha az) sertifika değerlerinin sayısını azaltın. Bu öznitelik, blok özniteliği, zaman aşımına uğramamış veya kullanılmayan sertifikalardan kaynaklanmamışsa uygundur. Şirket içi AD 'niz içinde, süre sonu sertifikaları bulma, yedekleme ve silmeye yardımcı olması için [burada kullanılabilen PowerShell betiğini](https://gallery.technet.microsoft.com/Remove-Expired-Certificates-0517e34f) kullanabilirsiniz. Sertifikaları silmeden önce, kuruluşunuzdaki ortak anahtar altyapısı yöneticileriyle doğrulamanız önerilir.
 
  * UserCertificate özniteliğinin Azure AD 'ye aktarılmasını hariç tutmak için Azure AD Connect yapılandırın. Genel olarak, öznitelik Microsoft Online Services tarafından belirli senaryoları etkinleştirmek için kullanılabilir olduğundan bu seçeneği önermiyoruz. Özellikle:
-    * Kullanıcı nesnesindeki userCertificate özniteliği, Exchange Online ve Outlook istemcileri tarafından ileti imzalama ve şifreleme için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için [ileti imzalama ve şifreleme için makale/MIME](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption?view=o365-worldwide)makalesine başvurun.
+    * Kullanıcı nesnesindeki userCertificate özniteliği, Exchange Online ve Outlook istemcileri tarafından ileti imzalama ve şifreleme için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için [ileti imzalama ve şifreleme için makale/MIME](/microsoft-365/security/office-365-security/s-mime-for-message-signing-and-encryption)makalesine başvurun.
 
     * Bilgisayar nesnesindeki userCertificate özniteliği, Azure AD tarafından Windows 10 Şirket içi etki alanına katılmış cihazların Azure AD 'ye bağlanmasına izin vermek için kullanılır. Bu özellik hakkında daha fazla bilgi edinmek için lütfen [Windows 10 için etki alanına katılmış cihazları Azure AD 'ye bağlama](../devices/hybrid-azuread-join-plan.md)makalesine başvurun.
 
 ## <a name="implementing-sync-rule-to-limit-export-of-usercertificate-attribute"></a>UserCertificate özniteliğinin dışarı aktarılmasını sınırlamak için eşitleme kuralı uygulama
-UserCertificate özniteliğinden kaynaklanan LargeObject hatasını çözümlemek için, **15 ' ten fazla sertifika değerine sahip nesneler için gerçek değerler yerine null değer**veren Azure AD Connect bir giden eşitleme kuralı uygulayabilirsiniz. Bu bölümde, **Kullanıcı** nesneleri için eşitleme kuralını uygulamak için gereken adımlar açıklanmaktadır. Bu adımlar, **iletişim** ve **bilgisayar** nesneleri için uyarlanmıştır.
+UserCertificate özniteliğinden kaynaklanan LargeObject hatasını çözümlemek için, **15 ' ten fazla sertifika değerine sahip nesneler için gerçek değerler yerine null değer** veren Azure AD Connect bir giden eşitleme kuralı uygulayabilirsiniz. Bu bölümde, **Kullanıcı** nesneleri için eşitleme kuralını uygulamak için gereken adımlar açıklanmaktadır. Bu adımlar, **iletişim** ve **bilgisayar** nesneleri için uyarlanmıştır.
 
 > [!IMPORTANT]
 > Null değeri dışarı aktarmak, daha önce Azure AD 'ye başarıyla dışarı aktarılan sertifika değerlerini kaldırır.
@@ -103,7 +103,7 @@ Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak
 5. Eşitleme kuralını seçin ve **Düzenle**' ye tıklayın.
 6. *"Ayrılmış kural onayını Düzenle"* açılır Iletişim kutusunda **Hayır**' a tıklayın. (Endişelenmeyin, bu eşitleme kuralında hiçbir değişiklik yapmayız).
 7. Düzenleme ekranında **kapsam filtresi** sekmesini seçin.
-8. Kapsam filtresi yapılandırması ' nı aklınızda edin. OOB eşitleme kuralını kullanıyorsanız, aşağıdakiler de dahil olmak üzere **iki yan tümce içeren bir kapsam filtresi grubu**olmalıdır:
+8. Kapsam filtresi yapılandırması ' nı aklınızda edin. OOB eşitleme kuralını kullanıyorsanız, aşağıdakiler de dahil olmak üzere **iki yan tümce içeren bir kapsam filtresi grubu** olmalıdır:
 
     | Öznitelik | İşleç | Değer |
     | --- | --- | --- |
@@ -113,12 +113,12 @@ Kullanıcı nesneleri için userCertificate özniteliğini Azure AD 'ye aktarmak
 ### <a name="step-3-create-the-outbound-sync-rule-required"></a>3. Adım Gerekli giden eşitleme kuralını oluşturun
 Yeni eşitleme kuralı, mevcut eşitleme kuralına göre aynı **kapsam filtresine** ve **daha yüksek önceliğe** sahip olmalıdır. Bu, yeni eşitleme kuralının varolan eşitleme kuralıyla aynı nesne kümesine uygulanmasını sağlar ve userCertificate özniteliği için mevcut eşitleme kuralını geçersiz kılar. Eşitleme kuralını oluşturmak için:
 1. Eşitleme kuralları Düzenleyicisi 'nde **Yeni kural ekle** düğmesine tıklayın.
-2. **Açıklama sekmesinde**aşağıdaki yapılandırmayı sağlayın:
+2. **Açıklama sekmesinde** aşağıdaki yapılandırmayı sağlayın:
 
     | Öznitelik | Değer | Ayrıntılar |
     | --- | --- | --- |
-    | Adı | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
-    | Açıklama | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
+    | Name | *Bir ad belirtin* | Örneğin, *"AAD 'Den dışarı-userCertificate Için özel geçersiz kılma"* |
+    | Description | *Bir açıklama girin* | Örneğin, *"userCertificate özniteliğinde 15 ' ten fazla değer varsa, verileri dışarı aktarın."* |
     | Bağlı sistem | *Azure AD bağlayıcısını seçin* |
     | Bağlı sistem nesne türü | **kullanıcısını** | |
     | Meta veri deposu nesne türü | **kişiler** | |
@@ -161,8 +161,8 @@ Eşitleme kuralı eklendikten sonra, AD Bağlayıcısı üzerinde tam eşitleme 
 1. Synchronization Service Manager **Bağlayıcılar** sekmesine gidin.
 2. **Azure AD** Bağlayıcısı ' na sağ tıklayın ve **bağlayıcı alanı ara**' yı seçin.
 3. Arama bağlayıcı alanı açılır penceresinde:
-    1. Kapsamı **bekleyen dışarı aktarma**olarak ayarlayın.
-    2. **Ekle**, **Değiştir** ve **Sil**dahil olmak üzere tüm 3 onay kutularını işaretleyin.
+    1. Kapsamı **bekleyen dışarı aktarma** olarak ayarlayın.
+    2. **Ekle**, **Değiştir** ve **Sil** dahil olmak üzere tüm 3 onay kutularını işaretleyin.
     3. Azure AD 'ye Aktarılmayı bekleyen değişikliklerle tüm nesneleri döndürmek için **Ara** düğmesine tıklayın.
     4. Beklenmeyen bir değişiklik olmadığını doğrulayın. Belirli bir nesne için değişiklikleri incelemek üzere nesnesine çift tıklayın.
 

@@ -1,21 +1,25 @@
 ---
-title: Azure haritalar Creator ıntıl haritaları için dinamik stil uygulama
-description: Creator ınkapıharitaları için dinamik stil uygulamayı nasıl uygulayacağınızı öğrenin
+title: Azure haritalar Oluşturucu (Önizleme) ıntıl haritaları için dinamik stil uygulama
+description: Oluşturucu (Önizleme) ınkapılı haritalar için dinamik stil uygulamayı nasıl uygulayacağınızı öğrenin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895384"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903454"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Creator ınkapımaps için dinamik stil uygulama
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Oluşturucu (Önizleme) ınkapılı haritalar için dinamik stil uygulama
+
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure haritalar Creator [özelliği durum hizmeti](/rest/api/maps/featurestate) , ınkapımap veri özelliklerinin dinamik özelliklerine göre stiller uygulamanıza olanak tanır.  Örneğin, hizmet toplantısı odalarını, doluluk durumunu yansıtmak için belirli bir renkle işleyebilirsiniz. Bu makalede, iç hat eşleme özelliklerinin [özellik durum hizmeti](/rest/api/maps/featurestate) ve [ınkapılı web modülü](how-to-use-indoor-module.md)ile dinamik olarak nasıl işleneceğini göstereceğiz.
 
@@ -23,7 +27,7 @@ Azure haritalar Creator [özelliği durum hizmeti](/rest/api/maps/featurestate) 
 
 1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
-3. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
+3. [Oluşturucu (Önizleme) kaynağı oluşturma](how-to-manage-creator.md)
 4. [Örnek çizim paketini](https://github.com/Azure-Samples/am-creator-indoor-data-examples)indirin.
 5. Ve almak için bir [ınkapısı haritası oluşturun](tutorial-creator-indoor-maps.md) `tilesetId` `statesetId` .
 6. [Inkapımap modülünü kullanma](how-to-use-indoor-module.md)bölümündeki adımları izleyerek bir Web uygulaması oluşturun.
@@ -66,7 +70,7 @@ Sonraki bölümde, Office 'in doluluk *durumunu* olarak ayarlayacağız `UNIT26`
 
  Şimdi iki ofisin durumunu güncelleştireceğiz `UNIT26` ve `UNIT27` :
 
-1. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet** ’e tıklayın
+1. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Bir **istek adı** girin ve bir koleksiyon seçin. **Kaydet**’e tıklayın
 
 2. Durumu güncelleştirmek için [özellik güncelleştirme DURUMLARı API](/rest/api/maps/featurestate/updatestatespreview) 'sini kullanın. Stateset KIMLIĞINI ve `UNIT26` iki birimden birini geçirin. Azure Maps abonelik anahtarınızı ekleyin. Durumu güncelleştirmek için bir **Post** isteğinin URL 'si aşağıda verilmiştir:
 
@@ -113,7 +117,7 @@ Daha önce bir tarayıcıda açtığınız web uygulaması, artık eşleme özel
 Okumaya göre daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Inkapıeşleme için Oluşturucu](creator-indoor-maps.md)
+> [Inkapıeşleme için Oluşturucu (Önizleme)](creator-indoor-maps.md)
 
 Bu makalede bahsedilen API 'Lerin başvurularına bakın:
 

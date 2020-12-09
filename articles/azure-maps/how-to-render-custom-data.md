@@ -3,18 +3,18 @@ title: Bir raster eşlemesinde özel verileri işleme | Microsoft Azure haritala
 description: Bir raster eşlemesine Pushpin, etiket ve geometrik şekillerin nasıl ekleneceğini öğrenin. Bu amaçla Azure Maps 'ta statik görüntü hizmetini nasıl kullanacağınızı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/23/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 88afb380f1aabf0c91e9d5abb0430972743eb6c2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 5c70835c11bafb3fd06645ba51099b33d1eb6149
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895758"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906089"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Bir raster eşlemesinde özel verileri işleme
 
@@ -41,9 +41,9 @@ Azure haritalar hesabı S0 katmanı, parametrenin yalnızca tek bir örneğini d
 
 Pushpın 'leri etiketlerle ve özel bir görüntüyle işlemek için şu adımları izleyin:
 
-1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **koleksiyon** ' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
+1. İsteklerin depolayabileceği bir koleksiyon oluşturun. Postman uygulamasında **Yeni**' yi seçin. **Yeni oluştur** penceresinde **koleksiyon**' ı seçin. Koleksiyonu adlandırın ve **Oluştur** düğmesini seçin. 
 
-2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek** ' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet** ' i seçin.
+2. İsteği oluşturmak için **Yeni** ' yi seçin. **Yeni oluştur** penceresinde **istek**' ı seçin. Pushpin 'ler için bir **istek adı** girin. Önceki adımda oluşturduğunuz koleksiyonu, isteğin kaydedileceği konum olarak seçin. Sonra **Kaydet**' i seçin.
     
     ![Postman 'da istek oluşturma](./media/how-to-render-custom-data/postman-new.png)
 
@@ -223,4 +223,4 @@ Benzer şekilde, diğer stil değiştiricilerini değiştirebilir, ekleyebilir v
 
 
 * [Azure haritalar harita görüntüsünü Al API](/rest/api/maps/render/getmapimage) belgelerini inceleyin.
-* Azure haritalar veri hizmeti hakkında daha fazla bilgi edinmek için bkz. [hizmet belgeleri](/rest/api/maps/data).
+* Azure haritalar veri hizmeti (Önizleme) hakkında daha fazla bilgi için bkz. [hizmet belgeleri](/rest/api/maps/data).

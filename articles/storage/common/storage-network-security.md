@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 9638d4f8a44b044bb02d3f77d259860128d2e9db
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462240"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905375"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -60,7 +60,7 @@ Varsayılan olarak, depolama hesapları herhangi bir ağ üzerindeki istemcilerd
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için varsayılan ağ erişim kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -144,7 +144,7 @@ Depolama hesabı ve erişim verilen sanal ağlar, farklı bir Azure AD kiracıs�
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için sanal ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -268,7 +268,7 @@ Her depolama hesabı en fazla 200 IP ağ kuralını destekler.
 
 Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için IP ağ kurallarını yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
@@ -390,6 +390,7 @@ Bazı Microsoft Hizmetleri, ağ kurallarınıza dahil olmayan ağlardan çalış
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | İlkeler kullanılarak güvenlik duvarının arkasındaki depolama hesaplarına API Yönetimi hizmeti erişimi sağlar. [Daha fazla bilgi edinin](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy). |
 | Azure Bilişsel Arama         | Microsoft. Search/searchServices        | Bilişsel Arama hizmetlerinin dizin oluşturma, işleme ve sorgulama için depolama hesaplarına erişmesine olanak sağlar. |
+| Azure Bilişsel Hizmetler       | Microsoft. Biliveservıce             | Bilişsel hizmetler 'in depolama hesaplarına erişmesine olanak sağlar. |
 | Azure Container Registry Görevleri | Microsoft. ContainerRegistry/kayıt defterleri | ACR görevleri, kapsayıcı görüntüleri oluştururken depolama hesaplarına erişebilir. |
 | Azure Data Factory             | Microsoft. DataFactory/Factory        | ADF çalışma zamanı aracılığıyla depolama hesaplarına erişime izin verir. |
 | Azure Veri Paylaşımı               | Microsoft. DataShare/hesapları           | Veri paylaşımından depolama hesaplarına erişime izin verir. |
@@ -410,7 +411,7 @@ Bazı durumlarda, ağ sınırının dışında kaynak günlüklerine ve ölçüm
 
 Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLı v2 aracılığıyla yönetebilirsiniz.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460813"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904270"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault Geliştirici Kılavuzu
 
@@ -22,7 +22,7 @@ Key Vault, uygulamalarınızın içinden hassas bilgilere güvenli bir şekilde 
 - Anahtarlar, gizli diziler ve sertifikalar kodu kendiniz yazmak zorunda kalmadan korunur ve bunları uygulamalarınızdan kolayca kullanabilirsiniz.
 - Müşterilerin, temel yazılım özellikleri sağlamaya odaklanabilmeniz için kendi anahtarlarını, sırlarını ve sertifikalarını yönetmesine ve yönetmesine izin verebilirsiniz. Bu şekilde, uygulamalarınız müşterilerinizin kiracı anahtarları, gizli dizileri ve sertifikaları için sorumluluğa ya da potansiyel sorumluluğa sahip olmayacaktır.
 - Uygulamanız imzalama ve şifreleme için anahtarlar kullanabilir, ancak önemli yönetimi uygulamanız dışında tutar. Anahtarlar hakkında daha fazla bilgi için bkz. [anahtarlar hakkında](../keys/about-keys.md)
-- Parolalar, erişim anahtarları ve bunları gizli dizi olarak Key Vault depolayan SAS belirteçleri gibi kimlik bilgilerini yönetebilirsiniz, bkz. [gizlilikler hakkında](../secrets/about-secrets.md)
+- Parolalar, erişim tuşları ve SAS belirteçleri gibi kimlik bilgilerini Key Vault gizli dizi olarak depolayarak yönetebilirsiniz, bkz. [gizlilikler hakkında](../secrets/about-secrets.md)
 - Sertifikaları yönetin. Daha fazla bilgi için bkz. [Sertifikalar hakkında](../certificates/about-certificates.md)
 
 Azure Key Vault hakkında daha fazla genel bilgi için bkz. [Key Vault nedir](overview.md).

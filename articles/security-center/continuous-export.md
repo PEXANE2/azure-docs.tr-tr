@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 12/08/2020
 ms.author: memildin
-ms.openlocfilehash: 43b66a59062a230aa2fba6909172deb5f1740b28
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122318"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862471"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -41,7 +41,7 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|<ul><li>Kaynak grubundaki **Güvenlik Yöneticisi** veya **sahibi**</li><li>Hedef kaynak için yazma izinleri</li><li>Aşağıda açıklanan Azure Ilkesi ' DeployIfNotExist ' ilkelerini kullanıyorsanız, ilke atama izinlerine de ihtiyacınız olacaktır</li></ul>|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov, diğer gov<br>![Evet](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, diğer gov<br>![Yes](./media/icons/yes-icon.png) Çin gov (Olay Hub 'ına)|
 |||
 
 
@@ -52,7 +52,7 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 
 Azure portal, güvenlik merkezi REST API aracılığıyla veya sağlanan Azure Ilke şablonlarını kullanarak ölçekteki Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırabilirsiniz. Her birinin ayrıntıları için aşağıdaki uygun sekmeyi seçin.
 
-### <a name="use-the-azure-portal"></a>[**Azure portalı kullanma**](#tab/azure-portal)
+### <a name="use-the-azure-portal"></a>[**Azure portalını kullanma**](#tab/azure-portal)
 
 ### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Azure portal 'de Güvenlik Merkezi sayfalarından sürekli dışarı aktarmayı yapılandırma
 
@@ -72,6 +72,7 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
     - Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.
     - Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir)
     - Sanal makinelerinizdeki güvenlik açıkları düzeltilmelidir
+    - Makinelerinize sistem güncelleştirmeleri yüklenmelidir
 
     Bu önerilerin bulgularını dahil etmek için **güvenlik bulgularını dahil et** seçeneğini etkinleştirin.
 

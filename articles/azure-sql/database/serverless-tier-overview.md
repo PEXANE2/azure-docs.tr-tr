@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743153"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902519"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL veritabanı sunucusuz
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -130,7 +130,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 
 |Özellik|Oto özgeçmişi tetikleyicisi|
 |---|---|
-|Kimlik doğrulaması ve yetkilendirme|Oturum açma|
+|Kimlik doğrulama ve yetkilendirme|Oturum aç|
 |Tehdit algılama|Veritabanı veya sunucu düzeyinde tehdit algılama ayarlarını etkinleştirme/devre dışı bırakma.<br>Tehdit algılama ayarlarını veritabanı veya sunucu düzeyinde değiştirme.|
 |Veri bulma ve sınıflandırma|Duyarlılık etiketlerini ekleme, değiştirme, silme veya görüntüleme|
 |Denetim|Denetim kayıtlarını görüntüleme.<br>Denetim ilkesini güncelleştirme veya görüntüleme.|
@@ -138,6 +138,7 @@ Aşağıdaki koşullardan herhangi biri herhangi bir zamanda doğruysa, oto yeni
 |Saydam veri şifrelemesi|Saydam veri şifrelemesinin durumunu veya durumunu görüntüleme|
 |Güvenlik açığı değerlendirmesi|Etkinse geçici taramalar ve düzenli taramalar|
 |Sorgu (performans) veri deposu|Sorgu deposu ayarlarını değiştirme veya görüntüleme|
+|Performans önerileri|Performans önerilerini görüntüleme veya uygulama|
 |Oto ayarlama|Otomatik Dizin oluşturma gibi otomatik ayarlama önerilerini uygulama ve doğrulama|
 |Veritabanı kopyalama|Kopya olarak veritabanı oluşturun.<br>BACPAC dosyasına dışarı aktarın.|
 |SQL Data Sync|Yapılandırılabilir bir zamanlamaya göre çalışan ya da el ile gerçekleştirilen merkez ve üye veritabanları arasında eşitleme|
@@ -314,17 +315,17 @@ Kaynak sınırları için bkz. [sunucusuz işlem katmanı](resource-limits-vcore
 
 Faturalandırılan işlem miktarı, her saniye kullanılan en yüksek CPU ve bellek sayısıdır. Kullanılan CPU miktarı ve kullanılan bellek miktarı her biri için sağlanan minimum tutardan azsa, sağlanan miktar faturalandırılır. İşlemci amacıyla CPU 'yu bellek ile karşılaştırmak için, bellek miktarı GB cinsinden vCore başına 5 GB olarak yeniden ayarlayarak sanal çekirdek birimlerine normalleştirilmelidir.
 
-- **Faturalandırılan kaynak** : CPU ve bellek
-- **Faturalandırılan miktar** : Vcore birim fiyatı * Max (en az sanal çekirdek, sanal çekirdek, en az bellek gb * 1/3, bellek GB kullanıldı * 1/3) 
-- **Faturalama sıklığı** : saniye başına
+- **Faturalandırılan kaynak**: CPU ve bellek
+- **Faturalandırılan miktar**: Vcore birim fiyatı * Max (en az sanal çekirdek, sanal çekirdek, en az bellek gb * 1/3, bellek GB kullanıldı * 1/3) 
+- **Faturalama sıklığı**: saniye başına
 
 VCore birim fiyatı, saniye başına sanal çekirdek başına maliyettir. Belirli bir bölgedeki belirli birim fiyatları için [Azure SQL Veritabanı fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/sql-database/single/) bakın.
 
 Faturalandırılan işlem miktarı aşağıdaki ölçüm tarafından sunulur:
 
-- **Ölçüm** : App_cpu_billed (sanal çekirdek saniye)
-- **Tanım** : Max (min sanal çekirdekler, sanal çekirdekler, en az bellek gb * 1/3, bellek GB kullanılan * 1/3)
-- **Raporlama sıklığı** : dakika başına
+- **Ölçüm**: App_cpu_billed (sanal çekirdek saniye)
+- **Tanım**: Max (min sanal çekirdekler, sanal çekirdekler, en az bellek gb * 1/3, bellek GB kullanılan * 1/3)
+- **Raporlama sıklığı**: dakika başına
 
 Bu miktar saniyede hesaplanır ve 1 dakikadan fazla toplanır.
 

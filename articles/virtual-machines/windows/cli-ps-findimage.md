@@ -1,48 +1,86 @@
 ---
-title: Azure Marketi görüntülerini bulma ve kullanma
-description: Market VM görüntüleri için yayımcı, teklif, SKU ve sürümü öğrenmek için Azure PowerShell kullanın.
+title: Azure Marketi görüntülerini ve planlarını bulun ve kullanın
+description: Market VM görüntüleri için yayımcı, teklif, SKU, sürüm ve plan bilgilerini bulmak ve kullanmak üzere Azure PowerShell kullanın.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 01/25/2019
+ms.date: 12/07/2020
 ms.author: cynthn
-ms.openlocfilehash: 96b5e3770a3f5e08237d61eab05cfeafbc72a5db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45e6b157dba5ef7410d8a5c0223fd3ecb52f39d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87288341"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906276"
 ---
-# <a name="find-and-use-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Azure PowerShell ile Azure Marketi 'nde VM görüntülerini bulma ve kullanma
+# <a name="find-and-use-azure-marketplace-vm-images-with-azure-powershell"></a>Azure PowerShell ile Azure Market VM görüntülerini bulma ve kullanma     
 
-Bu makalede, Azure Marketi 'nde VM görüntülerini bulmak için Azure PowerShell nasıl kullanılacağı açıklanır. Ardından, bir VM oluştururken Market görüntüsü belirtebilirsiniz.
+Bu makalede, Azure Marketi 'nde VM görüntülerini bulmak için Azure PowerShell nasıl kullanılacağı açıklanır. Daha sonra bir sanal makine oluştururken Market görüntüsü ve plan bilgileri belirtebilirsiniz.
 
 Ayrıca, [Azure Marketi](https://azuremarketplace.microsoft.com/) storefront, [Azure Portal](https://portal.azure.com)veya [Azure CLI](../linux/cli-ps-findimage.md)kullanarak kullanılabilir görüntülere ve tekliflere de gidebilirsiniz. 
 
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>Yaygın olarak kullanılan Windows görüntülerinin tablosu
 
-Bu tablo, belirtilen Yayımcılar ve teklifler için kullanılabilir SKU 'ların bir alt kümesini gösterir.
+## <a name="create-a-vm-from-vhd-with-plan-information"></a>Plan bilgileriyle VHD 'den VM oluşturma
 
-| Publisher | Sunduğu | Sku |
-|:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-veri merkezi |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019-veri merkezi-kapsayıcılar |
-| MicrosoftWindowsServer |WindowsServer |2016-veri merkezi |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016-veri merkezi-kapsayıcılar |
-| MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
-| MicrosoftSharePoint |MicrosoftSharePointServer |sp2019 |
-| MicrosoftSQLServer |SQL2019-WS2016 |Kurumsal |
-| MicrosoftRServer |RServer-WS2016 |Kurumsal |
+Azure Marketi görüntüsü kullanılarak oluşturulmuş bir VHD varsa, bu VHD 'den yeni bir VM oluşturduğunuzda satın alma planı bilgilerini sağlamanız gerekebilir.
 
-## <a name="navigate-the-images"></a>Görüntülerde gezin
+Hala orijinal VM veya aynı görüntüden oluşturulmuş başka bir VM varsa, Get-AzVM kullanarak bu bilgisayardan plan adı, yayımcı ve ürün bilgilerini alabilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'yi alır ve ardından satın alma planı bilgilerini görüntüler.
+
+```azurepowershell-interactive
+$vm = Get-azvm `
+   -ResourceGroupName myResourceGroup `
+   -Name myVM
+$vm.Plan
+```
+
+Özgün VM silinmeden önce plan bilgilerini almadıysanız, bir [destek isteği](https://ms.portal.azure.com/#create/Microsoft.Support)dosyası gönderebilirsiniz. Bu, VM adı, abonelik kimliği ve silme işleminin zaman damgasına ihtiyaç duyar.
+
+Bir VHD kullanarak bir VM oluşturmak için, [Özel BIR VHD 'den VM oluşturma](create-vm-specialized.md) ve bir satıra ekleme ' yi, [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) ' i kullanarak VM yapılandırmasına plan bilgilerini eklemek için aşağıdaki makaleye bakın:
+
+```azurepowershell-interactive
+$vmConfig = Set-AzVMPlan `
+   -VM $vmConfig `
+   -Publisher "publisherName" `
+   -Product "productName" `
+   -Name "planName"
+```
+
+## <a name="create-a-new-vm-from-a-marketplace-image"></a>Market görüntüsünden yeni bir VM oluşturma
+
+Kullanmak istediğiniz görüntü hakkında daha fazla bilgi zaten varsa, VM yapılandırmasına görüntü bilgilerini eklemek için bu bilgileri [set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage) cmdlet 'ine geçirebilirsiniz. Market 'te bulunan görüntüleri aramak ve listelemek için bir sonraki bölüme bakın.
+
+Ayrıca, bazı ücretli görüntüler, [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan)kullanarak satın alma planı bilgilerini sağlamanızı gerektirir. 
+
+```powershell
+...
+
+$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
+
+# Set the Marketplace image
+$offerName = "windows-data-science-vm"
+$skuName = "windows2016"
+$version = "19.01.14"
+$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
+
+# Set the Marketplace plan information, if needed
+$publisherName = "microsoft-ads"
+$productName = "windows-data-science-vm"
+$planName = "windows2016"
+$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
+
+...
+```
+
+Daha sonra VM yapılandırmasını diğer yapılandırma nesneleriyle birlikte cmdlet 'e geçireceğiz `New-AzVM` . PowerShell ile VM yapılandırması kullanmayla ilgili ayrıntılı bir örnek için, bu [komut dosyasına](https://github.com/Azure/azure-docs-powershell-samples/blob/master/virtual-machine/create-vm-detailed/create-windows-vm-detailed.ps1)bakın.
+
+Görüntü koşullarını kabul etme hakkında bir ileti alırsanız, bu makalenin ilerleyen kısımlarında yer alarak [Koşulları kabul](#accept-the-terms) edin bölümüne bakın.
+
+## <a name="list-images"></a>Resimleri Listele
 
 Bir konumda görüntü bulmanın bir yolu [Get-Azvmımagepublisher](/powershell/module/az.compute/get-azvmimagepublisher), [Get-Azvmımageteklifinin](/powershell/module/az.compute/get-azvmimageoffer)ve [Get-Azvmımagesku](/powershell/module/az.compute/get-azvmimagesku) cmdlet 'lerini sırasıyla çalıştırmak olur:
 
@@ -276,41 +314,7 @@ Accepted          : True
 Signdate          : 2/23/2018 7:49:31 PM
 ```
 
-### <a name="deploy-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak dağıtın
 
-Bir görüntü için koşulları kabul ettikten sonra bu abonelikte bir VM dağıtabilirsiniz. Aşağıdaki kod parçacığında gösterildiği gibi, VM nesnesinin Market planı bilgilerini ayarlamak için [set-AzVMPlan](/powershell/module/az.compute/set-azvmplan) cmdlet 'ini kullanın. VM için ağ ayarları oluşturmaya ve dağıtımı tamamlamaya yönelik bir komut dosyası için, [PowerShell betiği örneklerine](powershell-samples.md)bakın.
-
-```powershell
-...
-
-$vmConfig = New-AzVMConfig -VMName "myVM" -VMSize Standard_D1
-
-# Set the Marketplace plan information
-
-$publisherName = "microsoft-ads"
-
-$productName = "windows-data-science-vm"
-
-$planName = "windows2016"
-
-$vmConfig = Set-AzVMPlan -VM $vmConfig -Publisher $publisherName -Product $productName -Name $planName
-
-$cred=Get-Credential
-
-$vmConfig = Set-AzVMOperatingSystem -Windows -VM $vmConfig -ComputerName "myVM" -Credential $cred
-
-# Set the Marketplace image
-
-$offerName = "windows-data-science-vm"
-
-$skuName = "windows2016"
-
-$version = "19.01.14"
-
-$vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
-...
-```
-Daha sonra VM yapılandırmasını ağ yapılandırma nesneleriyle birlikte `New-AzVM` cmdlet 'ine geçireceğiz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

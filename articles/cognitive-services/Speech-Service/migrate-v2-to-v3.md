@@ -1,7 +1,7 @@
 ---
 title: V2 'den v3 REST API-konuşma hizmetine geçiş
 titleSuffix: Azure Cognitive Services
-description: V2 'ye kıyasla yeni API sürümü V3, daha küçük bir son değişiklik kümesi içerir. Bu belge, yeni ana sürüme zaman içinde geçiş yapmanıza yardımcı olur.
+description: Bu belge, geliştiricilerin, konuşma Hizmetleri konuşmadan metne REST API, kod v2 'den v3 'e geçiş yapılmasına yardımcı olur.
 services: cognitive-services
 author: bexxx
 manager: nitinme
@@ -11,40 +11,36 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd1dae963781cc0caacc25938e700a4c70a1f51a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738029"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862216"
 ---
-# <a name="migration-from-v20-to-v30-of-speech-to-text-rest-api"></a>V 2.0 'dan v 3.0'a konuşmadan metne geçiş REST API
+# <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Kodu v 2.0 'dan v 3.0 'a geçirin REST API
 
-Konuşma REST API 'nin v3 sürümü, güvenilirlik ve kullanım kolaylığı açısından önceki API sürümünü geliştirir. API düzeni diğer Azure veya Bilişsel Hizmetler API'si daha yakından hizalanır. Bu, konuşma API 'imizi kullanırken mevcut becerilerinizi uygulamanıza yardımcı olur.
-
-API 'ye genel bakış, [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)olarak kullanılabilir. Bu, size API 'ye genel bakış sağlamak ve yeni API 'yi test etmek için idealdir.
-
-C# ve Python için örnekler sağlıyoruz. Toplu iş dökümü için, alt dizinin içindeki [GitHub örnek deposundaki](https://aka.ms/csspeech/samples) örnekleri bulacaksınız `samples/batch` .
+V2 ile karşılaştırıldığında, konuşma hizmetlerinin, konuşmadan metne REST API v3 sürümü daha güvenilirdir, kullanımı daha kolaydır ve benzer hizmetler için API 'lerle daha tutarlıdır. Çoğu takım, günde bir veya iki adımda v2 'den v3 'e geçiş yapabilir.
 
 ## <a name="forward-compatibility"></a>İleriye dönük uyumluluk
 
-V3 'e kesintisiz geçiş sağlamak için, v2 'deki tüm varlıkların aynı kimliğin altındaki v3 API 'sinde de bulunabilir. Bir sonuç şeması değişikliği varsa (örneğin, döküm), API 'nin v3 sürümünde GET yanıtları v3 şemasında olur. API 'nin v2 sürümünde Al işlemini gerçekleştirirseniz, sonuç şeması v2 biçiminde olur. V3 üzerinde yeni oluşturulan varlıklar v2 **'de kullanılamaz.**
+V2 'nin tüm varlıkları aynı kimliğin altındaki v3 API 'sinde de bulunabilir. Bir sonucun şemasının değiştiği (örneğin, döküm), API 'nin v3 sürümündeki bir GET 'in sonucu v3 şemasını kullanır. API 'nin v2 sürümündeki bir GET 'in sonucu aynı v2 şemasını kullanır. V3 üzerinde yeni oluşturulan varlıklar v2 API 'Lerinin **sonuçlarında kullanılamaz.**
 
 ## <a name="breaking-changes"></a>Yeni değişiklikler
 
-Son değişikliklerin listesi, uyarlanabilmesi için gereken değişikliklerin büyüklüğüne göre sıralanmıştır. Çağıran kodda önemsiz olmayan bir değişiklik gerektiren birkaç değişiklik vardır. Çoğu değişiklik basit yeniden adlandırma gerektirir. Ekiplerin v2 'den birkaç saat arasında birkaç güne kadar bir saat arasında geçiş yapmak için geçen süre. Ancak, daha fazla kararlılık, daha basit kod ve daha hızlı yanıtların sürekliliği, yatırımın hızla kaymasını sağlar. 
+Son değişikliklerin listesi, uyarlanabilmesi için gereken değişikliklerin büyüklüğüne göre sıralanmıştır. Yalnızca birkaç değişiklik, çağıran kodda önemsiz olmayan değişiklikler gerektirir. Çoğu değişiklik yalnızca öğe adlarında değişiklik yapılmasını gerektirir.
 
 ### <a name="host-name-changes"></a>Ana bilgisayar adı değişiklikleri
 
-Ana bilgisayar adları {Region}. crsıs. AI, {Region}. api. bilişsel. Microsoft. com ' a değişti. Bu değişiklik içinde, ana bilgisayar adının parçası olduğundan, yollar artık "api/" içermez. Bölgelerin ve yolların tam açıklaması için [Swagger belgesine](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) bakın.
+Uç nokta ana bilgisayar adları iken `{region}.cris.ai` olarak değiştirildi `{region}.api.cognitive.microsoft.com` . Yeni uç noktalara yönelik yollar artık `api/` ana bilgisayar adının bir parçası olduğundan içermez. [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) geçerli bölgeleri ve yolları listeler.
 
 ### <a name="identity-of-an-entity"></a>Bir varlığın kimliği
 
-Özelliği `id` ile değiştirilmiştir `self` . V2 sürümünde bir API kullanıcısının, API 'deki yollarımızı nasıl oluşturduğumuzu öğrenmiş olması gerekiyordu. Bu, Genişletilebilir olmayan ve Kullanıcı tarafından gerekli olan gereksiz çalışmamıştı. Özelliği ( `id` UUID), `self` VARLıĞıN (URL) konumu olan (dize) ile değiştirilmiştir. Değer, tüm varlıklarınız arasında hala benzersizdir. `id`Kodunuzda bir dize olarak depolanıyorsa, yeni şemayı desteklemek için basit bir yeniden adlandırma yeterlidir. Artık, `self` varlığınız IÇIN Rest çağrılarınızın (Get, Patch, Delete) URL olarak içeriğini kullanabilirsiniz.
+Özelliği `id` artık `self` . V2 sürümünde bir API kullanıcısının, API 'deki yollarımızı nasıl oluşturduğumuzu öğrenmiş olması gerekiyordu. Bu, Genişletilebilir olmayan ve Kullanıcı tarafından gerekli olan gereksiz çalışmamıştı. Özelliği ( `id` UUID), `self` VARLıĞıN (URL) konumu olan (dize) ile değiştirilmiştir. Değer, tüm varlıklarınız arasında hala benzersizdir. `id`Kodunuzda bir dize olarak depolanıyorsa, yeni şemayı desteklemek için yeniden adlandırma yeterlidir. Artık `self` içeriği `GET` , `PATCH` varlığınızın,, ve REST çağrılarının URL 'si olarak kullanabilirsiniz `DELETE` .
 
-Varlığın diğer yollar altında kullanılabilir ek işlevleri varsa, bunlar altında listelenir `links` . İyi bir örnek, döküm içeriğine ayrı bir yönteme sahip olan bir dökümdir `GET` .
+Varlığın diğer yollarla kullanılabilir ek işlevleri varsa, bunlar altında listelenir `links` . Aşağıdaki örnek, döküm içeriğine ayrı bir yöntemi gösterir `GET` :
 
-v2 dökümü:
+**v2 dökümü:**
 
 ```json
 {
@@ -57,7 +53,7 @@ v2 dökümü:
 }
 ```
 
-v3 dökümü:
+**v3 dökümü:**
 
 ```json
 {
@@ -73,11 +69,11 @@ v3 dökümü:
 }
 ```
 
-İstemci uygulamanıza bağlı olarak, özelliğin yeniden adlandırılması yeterli olmayabilir. Döndürülen değerlerini `self` ve `links` rest aramalarınızın hedef URL 'lerini kullanarak, istemcinizdeki yolları oluşturmamanızı öneririz. Döndürülen URL 'Leri kullanarak, yollardaki gelecekteki değişikliklerin istemci kodunuzu bozmadığından emin olabilirsiniz.
+Kodunuzun uygulamasına bağlı olarak, özelliğin yeniden adlandırılması yeterli olmayabilir. Döndürülen `self` ve `links` değerlerin, istemcinizdeki yolları oluşturmak yerine Rest aramalarınızın hedef URL 'leri olarak kullanılması önerilir. Döndürülen URL 'Leri kullanarak, yollardaki gelecekteki değişikliklerin istemci kodunuzu bozmadığından emin olabilirsiniz.
 
 ### <a name="working-with-collections-of-entities"></a>Varlık koleksiyonlarıyla çalışma
 
-Daha önce v2 API 'SI, bir yanıttaki tüm kullanılabilir varlıkları döndürdü. Beklenen yanıt boyutu üzerinde daha ayrıntılı bir denetime izin vermek için, tüm koleksiyonların yanıtlarının sayfalandırılmış olması gerekir. Döndürülen varlıkların sayısı ve sayfanın kayması üzerinde denetiminiz vardır. Bu davranış, yanıt işlemcisinin çalışma zamanının tahmin edilmesine ve diğer Azure API 'Leriyle tutarlı hale gelmesini kolaylaştırır.
+Daha önce v2 API 'SI, bir sonuç içinde tüm kullanılabilir varlıkları döndürdü. V3 'de beklenen yanıt boyutu üzerinde daha ayrıntılı bir denetime izin vermek için tüm koleksiyon sonuçlarının sayfalandırılmış olması gerekir. Döndürülen varlıkların sayısı ve sayfanın başlangıç kayması üzerinde denetiminiz vardır. Bu davranış, yanıt işlemcisinin çalışma zamanının önlanmasını kolaylaştırır.
 
 Yanıtın temel şekli tüm koleksiyonlar için aynıdır:
 
@@ -91,20 +87,20 @@ Yanıtın temel şekli tüm koleksiyonlar için aynıdır:
 }
 ```
 
-Özelliği, `values` kullanılabilir koleksiyon varlıklarının bir alt kümesini içerir. Sayı ve konum sorgu parametreleri ve kullanılarak denetlenebilir `skip` `top` . `@nextLink`Null olmadığında, daha fazla veri mevcuttur ve bir sonraki veri grubu BIR get işlemi yaparak alınabilir `$.@nextLink` .
+`values`Özelliği, kullanılabilir koleksiyon varlıklarının bir alt kümesini içerir. Sayı ve konum, `skip` ve `top` sorgu parametreleri kullanılarak denetlenebilir. Ne zaman yoksa `@nextLink` `null` , daha fazla veri mevcuttur ve bir sonraki veri grubu bir get işlemi yaparak alınabilir `$.@nextLink` .
 
 Bu değişiklik, `GET` tüm öğeler döndürülünceye kadar bir döngüde koleksiyon için çağrılmasını gerektirir.
 
 ### <a name="creating-transcriptions"></a>Döküm oluşturma
 
-Kayıt oluşturma hakkında ayrıntılı bir açıklama, [toplu iş dökümü nasıl yapılır](./batch-transcription.md)bölümünde bulunabilir.
+[Toplu iş dökümlerinin nasıl yapılacağı](./batch-transcription.md)hakkında ayrıntılı bir açıklama, toplu olarak nasıl yapılır? bölümünde bulunabilir.
 
-Belirli bir döküm seçeneklerini açıkça ayarlamayı etkinleştirmek için, v3 'de döküm oluşturma değiştirilmiştir. Tüm (isteğe bağlı) yapılandırma özellikleri artık `properties` özellikte ayarlanabilir.
-Ayrıca, v3 sürümü artık birden çok giriş dosyasını destekler ve bu nedenle v2 'nin gerektirdiği şekilde tek bir URL 'YI değil, URL 'lerin bir listesini gerektirir. Özellik adı iken olarak yeniden adlandırıldı `recordingsUrl` `contentUrls` . Analbetiklerde yaklaşım çözümleme işlevselliği v3 üzerinde kaldırılmıştır. Bunun yerine Microsoft bilişsel hizmet [metin analizini](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) kullanmanızı öneririz.
+V3 dökümü API 'SI, belirli döküm seçeneklerini açıkça ayarlamanıza olanak sağlar. Tüm (isteğe bağlı) yapılandırma özellikleri artık `properties` özellikte ayarlanabilir.
+V3 sürümü birden çok giriş dosyasını da destekler, bu nedenle v2 'nin bulunduğu tek URL yerine URL 'lerin bir listesini gerektirir. V2 Özellik adı `recordingsUrl` artık v3 'dir `contentUrls` . Analbetiklerde yaklaşım çözümleme işlevselliği v3 'de kaldırılmıştır. Yaklaşım Analizi seçenekleri için bkz. Microsoft bilişsel hizmet [metin analizi](https://azure.microsoft.com/en-us/services/cognitive-services/text-analytics/) .
 
-Altındaki yeni özelliği `timeToLive` , `properties` mevcut tamamlanmış varlıkların ayıklalamaya yardımcı olabilir. , `timeToLive` Tamamlanan bir varlığın otomatik olarak silineceği süreyi belirtir. `PT12H`Varlıkların sürekli olarak izlendiği, tüketildiği ve silindiği ve bu nedenle genellikle 12 saat geçmeden önce uzun süre işlendiği bir yüksek değere ayarlayın (örneğin).
+Altındaki yeni özellik `timeToLive` , `properties` var olan tamamlanmış varlıkların ayıklayıp sağlanmasına yardımcı olabilir. , `timeToLive` Tamamlanan bir varlığın otomatik olarak silineceği süreyi belirtir. `PT12H`Varlıkların sürekli olarak izlendiği, tüketildiği ve silindiği ve bu nedenle genellikle 12 saat geçtikten sonra uzun süre işlendiği zaman, yüksek bir değere ayarlayın (örneğin).
 
-v2 istek SONRASı isteği gövdesi:
+**v2 istek SONRASı isteği gövdesi:**
 
 ```json
 {
@@ -120,7 +116,7 @@ v2 istek SONRASı isteği gövdesi:
 }
 ```
 
-v3 döküm istek gövdesi:
+**v3 döküm istek gövdesi:**
 
 ```json
 {
@@ -141,9 +137,9 @@ v3 döküm istek gövdesi:
 
 ### <a name="format-of-v3-transcription-results"></a>V3 dökümü sonuçlarının biçimi
 
-Döküm sonuçlarının şeması, gerçek zamanlı uç noktalar tarafından oluşturulan dökümlerle hizalanacak şekilde biraz değiştirilmiştir. Yeni biçimin ayrıntılı bir açıklaması [toplu iş dökümü Ile nasıl yapılır?](./batch-transcription.md)bölümünde bulunabilir. Sonucun şeması, altında [GitHub örnek depomızda](https://aka.ms/csspeech/samples) yayımlanır `samples/batch/transcriptionresult_v3.schema.json` .
+Döküm sonuçlarının şeması, gerçek zamanlı uç noktalar tarafından oluşturulan dökümlerle hizalı olarak değiştirilmiştir. [Toplu iş dökümünü nasıl yapılır](./batch-transcription.md)bölümünde yeni biçimin derinlemesine bir açıklamasını bulun. Sonucun şeması, altında [GitHub örnek depomızda](https://aka.ms/csspeech/samples) yayımlanır `samples/batch/transcriptionresult_v3.schema.json` .
 
-Özellik adları artık Camel-cased ve kanal ve konuşmacı değerleri tamsayı türlerini kullanıyor. Diğer Azure API 'Leriyle süreler biçimini hizalamak için, artık ISO 8601 ' de açıklandığı gibi biçimlendirilir.
+Özellik adları artık Camel-cased ve için değerleri ve `channel` `speaker` artık tamsayı türlerini kullanır. Süreler için biçimlendirme artık ISO 8601 ' de açıklanan yapıyı kullanarak, diğer Azure API 'Lerinde kullanılan süre biçimlendirmesiyle eşleşir.
 
 Bir v3 dökümü sonucunun örneği. Farklar açıklamalarda açıklanmıştır.
 
@@ -208,11 +204,11 @@ Bir v3 dökümü sonucunun örneği. Farklar açıklamalarda açıklanmıştır.
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Varlıkların içeriğini ve sonuçlarını alma
 
-V2 'de, giriş veya sonuç dosyalarının bağlantıları, varlık meta verileri geri kalanı ile birlikte satır içine alındı. V3 'de bir geliştirme olarak, varlık meta verileri arasında bir GET on ile döndürülen `$.self` ve sonuç dosyalarına erişmek için Ayrıntılar ve kimlik bilgileri arasında net bir ayrım vardır. Bu ayrım, müşteri verilerinin korunmasına yardımcı olur ve kimlik bilgilerinin geçerlilik süresi boyunca ince denetim sağlar.
+V2 'de, giriş veya sonuç dosyalarının bağlantıları, varlık meta verileri geri kalanı ile birlikte satır içine alındı. V3 'de bir geliştirme olarak, varlık meta verileri (bir GET ile döndürülen `$.self` ) ve sonuç dosyalarına erişmek için Ayrıntılar ve kimlik bilgileri arasında net bir ayrım vardır. Bu ayrım, müşteri verilerinin korunmasına yardımcı olur ve kimlik bilgilerinin geçerlilik süresi boyunca ince denetim sağlar.
 
-V3 'de, `files` varlık verileri (veri kümeleri, döküm, uç noktalar, değerlendirmeler) kullanıma sunabilmeniz durumunda bağlantılar altında çağrılan bir özellik vardır. Bir GET on, `$.links.files` her dosyanın içeriğine erişmek için dosya ve SAS URL 'sinin bir listesini döndürür. SAS URL 'Lerinin geçerlilik süresini denetlemek için sorgu parametresi, `sasValidityInSeconds` yaşam süresini belirtmek için kullanılabilir.
+V3 'de, `links` `files` varlığın verileri (veri kümeleri, döküm, uç noktaları, uç noktalar veya değerlendirmeler) açığa çıkardığı durumlarda adlı bir alt özellik ekleyin. Bir GET on, `$.links.files` her dosyanın içeriğine erişmek için bir dosya listesi ve SAS URL 'si döndürür. SAS URL 'Lerinin geçerlilik süresini denetlemek için sorgu parametresi, `sasValidityInSeconds` yaşam süresini belirtmek için kullanılabilir.
 
-v2 dökümü:
+**v2 dökümü:**
 
 ```json
 {
@@ -226,7 +222,7 @@ v2 dökümü:
 }
 ```
 
-v3 dökümü:
+**v3 dökümü:**
 
 ```json
 {
@@ -237,7 +233,7 @@ v3 dökümü:
 }
 ```
 
-Bundan sonra bir GET ile `$.links.files` sonuçlanır:
+**Bir GET `$.links.files` , ile sonuçlanır:**
 
 ```json
 {
@@ -271,27 +267,27 @@ Bundan sonra bir GET ile `$.links.files` sonuçlanır:
 }
 ```
 
-, `kind` Dosyanın içerik biçimini gösterir. Döküm için, tür dosyaları `TranscriptionReport` işin özetidir ve tür dosyaları `Transcription` işin kendisinin sonucudur.
+`kind`Özelliği, dosyanın içerik biçimini gösterir. Döküm için, tür dosyaları `TranscriptionReport` işin özetidir ve tür dosyaları `Transcription` işin kendisinin sonucudur.
 
 ### <a name="customizing-models"></a>Modelleri özelleştirme
 
-V3 'den önce, bir model eğitilirken "akustik model" ve "dil modeli" arasında bir ayrım vardı. Bu ayrım, uç noktalar veya döküm oluştururken birden çok model belirtme gereksiniminden sonuçlandı. Bu işlemi bir arayan için basitleştirmek amacıyla, farkları kaldırdık ve model eğitimi için kullanılmakta olan veri kümelerinin içeriğine bağımlı hale getirildik. Bu değişiklik ile model oluşturma artık karışık veri kümelerini (dil verileri ve akustik veriler) desteklemektedir. Uç noktalar ve döküm artık yalnızca bir model gerektirir.
+V3 'den önce, bir model eğitilirken bir _akustik model_ ve _dil modeli_ arasında bir ayrım vardı. Bu ayrım, uç noktalar veya döküm oluştururken birden çok model belirtme gereksiniminden sonuçlandı. Bu işlemi bir arayan için basitleştirmek amacıyla, farkları kaldırdık ve her şeyi, model eğitimi için kullanılan veri kümelerinin içeriğine bağlı olarak yaptık. Bu değişiklik ile model oluşturma artık karışık veri kümelerini (dil verileri ve akustik veriler) desteklemektedir. Uç noktalar ve döküm artık yalnızca bir model gerektirir.
 
-Bu değişiklik ile, GÖNDERIYLE ilgili bir a gereksinimi `kind` kaldırılmıştır ve `datasets[]` artık aynı veya karışık türde birden çok veri kümesi içerebilir.
+Bu değişiklik ile, işlem içindeki bir için ihtiyacı `kind` `POST` kaldırılmıştır ve `datasets[]` dizi artık aynı veya karışık türde birden çok veri kümesi içerebilir.
 
-Eğitilen bir modelin sonuçlarını geliştirmek için, akustik veriler otomatik olarak dil eğitimi için kullanılır. Genel olarak, v3 API 'SI ile oluşturulan modeller v2 API 'siyle oluşturulan modellerden daha doğru sonuçlar sunar.
+Eğitilen bir modelin sonuçlarını geliştirmek için, akustik veriler otomatik olarak dil eğitimi sırasında kullanılır. Genel olarak, v3 API 'SI ile oluşturulan modeller v2 API 'siyle oluşturulan modellerden daha doğru sonuçlar sunar.
 
 ### <a name="retrieving-base-and-custom-models"></a>Temel ve özel modelleri alma
 
-V3, kullanılabilir modellerin alınmasını kolaylaştırmak için "temel modeller" koleksiyonlarını müşterinin "özelleştirilmiş modeller" sahipliğinde ayırmıştır. İki yol artık `GET /speechtotext/v3.0/models/base` ve ' dir `GET /speechtotext/v3.0/models/` .
+V3, kullanılabilir modelleri almayı basitleştirmek için "temel modeller" koleksiyonlarını müşterinin "özelleştirilmiş modeller" sahipliğinde ayırmıştır. İki yol artık `GET /speechtotext/v3.0/models/base` ve ' dir `GET /speechtotext/v3.0/models/` .
 
-Daha önce tüm modeller tek bir yanıtta birlikte döndürülür.
+V2 'de, tüm modeller tek bir yanıtta birlikte döndürülür.
 
 ### <a name="name-of-an-entity"></a>Bir varlığın adı
 
-Özelliğin adı `name` olarak yeniden adlandırılır `displayName` . Bu, kimlik özelliklerini belirtmemelidir diğer Azure API 'Lerine hizalanır. Bu özelliğin değeri benzersiz olmamalı ve, ile varlık oluşturulduktan sonra değiştirilebilir `PATCH` .
+`name`Özelliği artık `displayName` . Bu, kimlik özelliklerini belirtmemelidir diğer Azure API 'lerle tutarlıdır. Bu özelliğin değeri benzersiz olmamalı ve bir işlemle varlık oluşturulduktan sonra değiştirilebilir `PATCH` .
 
-v2 dökümü:
+**v2 dökümü:**
 
 ```json
 {
@@ -299,7 +295,7 @@ v2 dökümü:
 }
 ```
 
-v3 dökümü:
+**v3 dökümü:**
 
 ```json
 {
@@ -309,9 +305,9 @@ v3 dökümü:
 
 ### <a name="accessing-referenced-entities"></a>Başvurulan varlıklara erişme
 
-V2 'ye Başvurulmuş varlıklar, örneğin bir uç noktanın kullanılan modelleri gibi her zaman satır içine alınmış olmalıdır. Varlıkların iç içe geçirilmesi büyük yanıtlar ve tüketiciler tarafından nadiren iç içe geçmiş içeriğe neden olarak tüketildi. Yanıt boyutunu küçültmek ve tüm API kullanıcıları için performansı artırmak üzere, başvurulan varlıklar yanıtta artık satır içine alınmaz. Bunun yerine, doğrudan kullanılabilecek olan diğer varlığa yönelik bir başvuru kullanılır. Bu başvuru, `GET` bağlantı ile aynı kalıbı takip eden bir sonraki (URL de BIR URL) için kullanılabilir `self` .
+V2 'de, başvurulan Varlıklar her zaman satır içine alındı, örneğin bir uç noktanın kullanılan modelleri. Varlıkların iç içe geçirilmesi büyük yanıtlar ve tüketiciler tarafından nadiren iç içe geçmiş içeriğe neden olarak tüketildi. Yanıt boyutunu küçültmek ve performansı artırmak için başvurulan varlıklar yanıtta artık satır içine alınmaz. Bunun yerine, diğer varlığa yönelik bir başvuru görüntülenir ve bağlantı ile aynı kalıbı takip eden bir sonraki `GET` (BIR URL de) için doğrudan kullanılabilir `self` .
 
-v2 dökümü:
+**v2 dökümü:**
 
 ```json
 {
@@ -335,7 +331,6 @@ v2 dökümü:
           "createdDateTime": "2019-01-07T11:34:12Z",
           "locale": "en-US",
           "name": "Language dataset",
-          
         }
       ]
     },
@@ -343,7 +338,7 @@ v2 dökümü:
 }
 ```
 
-v3 dökümü:
+**v3 dökümü:**
 
 ```json
 {
@@ -354,13 +349,13 @@ v3 dökümü:
 }
 ```
 
-Yukarıdaki örnekte gösterildiği gibi, başvurulan bir modelin ayrıntılarını kullanmanız gerekirse, GET on ile ilgili konuyu kolaylaştırın `$.model.self` .
+Yukarıdaki örnekte gösterildiği gibi başvurulan bir modelin ayrıntılarını kullanmanız gerekiyorsa, yalnızca bir GET ile sorun verirsiniz `$.model.self` .
 
 ### <a name="retrieving-endpoint-logs"></a>Uç nokta günlüklerini alma
 
-Hizmetin sürüm v2, uç noktaların yanıtlarının günlüğe kaydedilmesini destekliyordu. Bir uç noktanın sonuçlarını v2 ile almak için, birinin bir zaman aralığı tarafından tanımlanan sonuçların anlık görüntüsünü temsil eden bir "veri dışarı aktarma" oluşturması gerekiyordu. Veri yığınlarının dışarı aktarılması işlemi, esnek hale getirilir. V3 API her bir dosyaya erişim sağlar ve bunlara yineleme sağlar.
+Hizmet sürüm v2 günlük bitiş noktası sonuçlarını destekler. Bir uç noktanın sonuçlarını v2 ile almak için, bir zaman aralığı tarafından tanımlanan sonuçların anlık görüntüsünü temsil eden bir "veri dışarı aktarma" oluşturursunuz. Veri toplu işleri dışarı aktarma işlemi, esnek olarak kullanılabilir. V3 API her bir dosyaya erişim sağlar ve bunlara yineleme sağlar.
 
-V3 uç noktası başarıyla çalıştırılıyor:
+**V3 uç noktası başarıyla çalıştırılıyor:**
 
 ```json
 {
@@ -371,7 +366,7 @@ V3 uç noktası başarıyla çalıştırılıyor:
 }
 ```
 
-GET yanıtı `$.links.logs` :
+**GET yanıtı `$.links.logs` :**
 
 ```json
 {
@@ -393,15 +388,15 @@ GET yanıtı `$.links.logs` :
 }
 ```
 
-Uç nokta günlükleri için sayfalandırma, hiçbir uzaklığa izin belirtilmedikçe diğer tüm koleksiyonlara benzer şekilde işler. Büyük miktarda kullanılabilir veri nedeniyle, sunucu odaklı sayfalandırma uygulanmalıdır.
+Uç nokta günlükleri için sayfalandırma, hiçbir uzaklığa izin belirtilmedikçe diğer tüm koleksiyonlara benzer şekilde işler. Büyük miktarda kullanılabilir veri nedeniyle, sayfalama sunucu tarafından belirlenir.
 
-V3 'de, her bir uç nokta günlüğü, bir dosyanın üzerinde bir SILME göndererek `self` veya silme açık kullanılarak tek tek silinebilir `$.links.logs` . Son verileri belirtmek için, isteğe sorgu parametresi `endDate` eklenebilir.
+V3 'de her bir uç nokta günlüğü, `DELETE` bir dosyanın üzerinde bir işlem göndererek `self` veya üzerinde kullanılarak tek tek silinebilir `DELETE` `$.links.logs` . Bir bitiş tarihi belirtmek için, isteğe sorgu parametresi `endDate` eklenebilir.
 
-### <a name="using-custom-properties"></a>"Özel" özellikleri kullanma
+### <a name="using-custom-properties"></a>Özel özellikleri kullanma
 
-İsteğe bağlı yapılandırma özelliklerinden özel özellikleri ayırmak için, açıkça adlandırılmış tüm özellikler artık `properties` özellikte bulunur ve çağıranlar tanımlanmış tüm özellikler artık `customProperties` özellikte bulunur.
+İsteğe bağlı yapılandırma özelliklerinden özel özellikleri ayırmak için, açıkça adlandırılmış tüm özellikler artık `properties` özellikte bulunur ve çağıranlar tarafından tanımlanan tüm özellikler artık `customProperties` özellikte bulunur.
 
-v2 dökümü varlığı
+**v2 dökümü varlığı:**
 
 ```json
 {
@@ -413,7 +408,7 @@ v2 dökümü varlığı
 }
 ```
 
-v3 dökümü varlığı
+**v3 dökümü varlığı:**
 
 ```json
 {
@@ -427,14 +422,22 @@ v3 dökümü varlığı
 }
 ```
 
-Bu değişiklik Ayrıca `properties` (dize yerine bool gibi) tüm açıkça adlandırılmış özellikler üzerinde doğru türlerin kullanımını da etkinleştirdi.
+Bu değişiklik Ayrıca `properties` (örneğin, dize yerine Boolean gibi) tüm açıkça adlandırılmış özellikler üzerinde doğru türleri kullanmanıza imkan tanır.
 
 ### <a name="response-headers"></a>Yanıt üst bilgileri
 
-V3, `Operation-Location` POST istekleri üzerine üstbilgiye ek olarak artık üstbilgiyi döndürmez `Location` . Her iki üst bilgilerin de tam olarak aynı olması için kullanılan değer. Şimdi yalnızca `Location` döndürülüyor.
+V3, `Operation-Location` isteklerle ilgili üstbilgiye ek olarak artık üstbilgiyi döndürmez `Location` `POST` . V2 içindeki her iki üst bilgilerin değeri de aynıdır. Şimdi yalnızca `Location` döndürüldü.
 
 Yeni API sürümü artık Azure API Management (APıM) tarafından yönetildiğinden, ilgili üst bilgiler üzerinde kısıtlama, `X-RateLimit-Limit` `X-RateLimit-Remaining` ve `X-RateLimit-Reset` yanıt üst bilgilerinde yer almayan bir.
 
 ### <a name="accuracy-tests"></a>Doğruluk testleri
 
-Yeni ad, ne kadar iyi temsil ettiğini açıkladığı için doğruluk testleri değerlendirmelere yeniden adlandırıldı. Haber yolları "https://{Region}. api. bilişsel. Microsoft. com/speechtotext/v 3.0/değerlendirmeleri" gibi bir örnektir.
+Yeni ad, ne kadar iyi temsil ettiğini açıkladığı için doğruluk testleri değerlendirmelere yeniden adlandırıldı. Yeni yollar şunlardır: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Konuşma Hizmetleri tarafından sunulan bu yaygın olarak kullanılan REST API 'lerinin tüm özelliklerini inceleyin:
+
+* [Konuşmayı metne dönüştürme REST API'si](rest-speech-to-text.md)
+* REST API v3 için [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)
+* Toplu iş dökümlerini gerçekleştirmeye yönelik örnek kod için alt dizinde [GitHub örnek deposunu](https://aka.ms/csspeech/samples) görüntüleyin `samples/batch` .

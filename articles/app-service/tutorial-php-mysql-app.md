@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b321985bf7920934193723b60abb7bfb28482e6d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998073"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862250"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Öğretici: Azure App Service bir PHP ve MySQL uygulaması derleme
 
@@ -30,7 +30,7 @@ ms.locfileid: "95998073"
 
 :::image type="content" source="./media/tutorial-php-mysql-app/complete-checkbox-published.png" alt-text="Görev Listesi başlıklı bir PHP uygulaması örneğini ekran görüntüsü.":::
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da MySQL veritabanı oluşturma
@@ -46,11 +46,12 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için:
 
-* [Git'i yükleyin](https://git-scm.com/)
-* [PHP 5.6.4 veya sonraki sürümü yükleme](https://php.net/downloads.php)
-* [Oluşturucu Yükleme](https://getcomposer.org/doc/00-intro.md)
-* Laravel için gereken şu PHP uzantılarını etkinleştirin: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
-* [MySQL'i yükleyin ve başlatın](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
+- [Git'i yükleyin](https://git-scm.com/)
+- [PHP 5.6.4 veya sonraki sürümü yükleme](https://php.net/downloads.php)
+- [Oluşturucu Yükleme](https://getcomposer.org/doc/00-intro.md)
+- Laravel için gereken şu PHP uzantılarını etkinleştirin: OpenSSL, PDO-MySQL, Mbstring, Tokenizer, XML
+- [MySQL 'i yükleyip başlatın](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)] 
 
 ## <a name="prepare-local-mysql"></a>Yerel MySQL hazırlama
 
@@ -148,8 +149,6 @@ Bir tarayıcıda `http://localhost:8000` sayfasına gidin. Sayfaya birkaç göre
 ![PHP başarıyla MySQL’e bağlanır](./media/tutorial-php-mysql-app/mysql-connect-success.png)
 
 PHP’yi durdurmak için terminale `Ctrl + C` yazın.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-mysql-in-azure"></a>Azure’da MySQL oluşturma
 
@@ -452,7 +451,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -483,7 +482,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -635,7 +634,7 @@ Tüm değişiklikleri Git’e kaydedin ve ardından kod değişikliklerini Azure
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 Tamamlandıktan sonra `git push` Azure uygulamasına gidin ve yeni işlevleri test edin.

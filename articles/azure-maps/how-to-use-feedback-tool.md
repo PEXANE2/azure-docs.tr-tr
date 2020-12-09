@@ -3,24 +3,24 @@ title: Azure haritalar 'a veri geri bildirimi sağlama | Microsoft Azure harital
 description: Microsoft Azure Maps geri bildirim aracını kullanarak veri geri bildirimi sağlayın.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895520"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905341"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Azure haritalar 'a veri geri bildirimi sağlama
 
 Azure haritalar 2018 Mayıs 'tan itibaren kullanılabilir. Azure haritalar, yeni harita verileri, kullanımı kolay REST API 'Leri ve kurumsal müşterilerimizi farklı türde iş kullanım örnekleri ile desteklemeye yönelik güçlü SDK 'Lar sağlıyor. Gerçek dünya her saniye değiştiriliyor ve müşterilerimiz için dijital bir gösterim sağlamamız önemlidir. Açık veya kapalı tesisler için planlama yapan müşterilerimiz, haritalarımıza hemen güncelleştirmek için gerekli olmalıdır. Bu nedenle, doğru tesislerde teslim, bakım veya müşteri hizmetini verimli bir şekilde planlayabilirler. Müşterilerin doğrudan veri geri bildirimi sağlaması için Azure haritalar veri geri bildirim sitesini oluşturduk. Müşterilerin veri geri bildirimi doğrudan veri sağlayıcılarımıza ve harita düzenleyicilerimize gider. Bunlar, eşleme ürünlerimize hızlı bir şekilde değerlendirme yapabilir ve geri bildirim ekleyebilir.  
 
-[Azure haritalar veri geri bildirim sitesi](https://feedback.azuremaps.com) , müşterilerinizin özellikle ilgi çekici ve mesken adreslerdeki harita verilerine geri bildirim sağlaması için kolay bir yol sunar. Bu makalede, Azure Maps geri bildirim sitesini kullanarak farklı türlerde geri bildirimde bulunmak için size kılavuzluk eder.
+[Azure haritalar verileri (Önizleme) geri bildirim sitesi](https://feedback.azuremaps.com) , müşterilerin, özellikle ilgi çekici ve yöresel adresler halinde harita verileri geri bildirimi sağlaması için kolay bir yol sunar. Bu makalede, Azure Maps geri bildirim sitesini kullanarak farklı türlerde geri bildirimde bulunmak için size kılavuzluk eder.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Bir iş yeri veya mesken adresi ekleyin 
 

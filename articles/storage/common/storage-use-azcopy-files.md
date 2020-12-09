@@ -4,15 +4,15 @@ description: AzCopy ve dosya depolama ile veri aktarma. AzCopy, bir depolama hes
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: a19cca515bafa1d06f93d71b4868011a7c922354
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 087af322240322e44e70a9b5279eb7d251e735be
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792846"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901873"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy ve dosya depolama ile verileri aktarma 
 
@@ -72,7 +72,7 @@ Dosya yolu veya dosya adında herhangi bir yerde joker karakter sembolünü (*) 
 
 ### <a name="upload-a-directory"></a>Bir dizini karşıya yükle
 
-Bu örnekte bir dizin (ve bu dizindeki tüm dosyalar) bir dosya paylaşımında kopyalanır. Sonuç, dosya paylaşımındaki aynı ada sahip bir dizindir.
+Bu örnekte bir dizin (ve dizinin içindeki tüm dosyalar) bir dosya paylaşımına kopyalanmıştır. Sonuçta dosya paylaşımında aynı ada sahip bir dizin oluşturulur.
 
 |    |     |
 |--------|-----------|
@@ -184,7 +184,7 @@ Bu örnek `C:\myDirectory\myFileShareDirectory` , indirilen tüm dosyaları içe
 
 ### <a name="download-the-contents-of-a-directory"></a>Bir dizinin içeriğini indirin
 
-Joker karakter sembolünü (*) kullanarak, bir dizinin içeriğini içeren dizini kopyalamadan indirebilirsiniz.
+Joker karakter simgesini (*) kullanarak dizinin kendisini kopyalamadan içeriğini indirebilirsiniz.
 
 |    |     |
 |--------|-----------|
@@ -207,7 +207,7 @@ Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın 
 | **Syntax** | `azcopy copy 'https://<storage-account-name>.file.core.windows.net/<file-share-or-directory-name><SAS-token>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 
-Bu örnekte, AzCopy `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` dizini ve `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` dosyayı aktarır. `--recursive`Dizindeki tüm dosyaları aktarma seçeneğini dahil etmeniz gerekir `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` .
+Bu örnekte, AzCopy `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` dizini ve `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/documents/myFile.txt` dosyayı aktarır. `--recursive`Dizindeki tüm dosyaları aktarma seçeneğini ekleyin `https://mystorageaccount.file.core.windows.net/myFileShare/myDirectory/photos` .
 
 Ayrıca, seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz `--exclude-path` . Daha fazla bilgi edinmek için bkz. [AzCopy kopyalama](storage-ref-azcopy-copy.md) başvuru belgeleri.
 
@@ -248,7 +248,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 > * Dosyayı başka bir depolama hesabına Kopyala
 > * Bir dizini başka bir depolama hesabına kopyalama
 > * Dosya paylaşımından başka bir depolama hesabına kopyalama
-> * Tüm dosya paylaşımlarını, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
+> * Tüm dosya paylaşımlarını, dizinlerini ve dosyaları başka bir depolama hesabına kopyalama
 
 > [!TIP]
 > İsteğe bağlı bayraklar kullanarak kopyalama işleminizi ince ayar yapabilirsiniz. İşte birkaç örnek.
@@ -283,7 +283,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 | **Syntax** | `azcopy copy 'https://<source-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' 'https://<destination-storage-account-name>.file.core.windows.net/<file-share-name><SAS-token>' --recursive` |
 | **Örnek** | `azcopy copy 'https://mysourceaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' 'https://mydestinationaccount.file.core.windows.net/mycontainer?sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-07-04T05:30:08Z&st=2019-07-03T21:30:08Z&spr=https&sig=CAfhgnc9gdGktvB=ska7bAiqIddM845yiyFwdMH481QA8%3D' --recursive` |
 
-### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Tüm dosya paylaşımlarını, dizinleri ve dosyaları başka bir depolama hesabına Kopyala
+### <a name="copy-all-file-shares-directories-and-files-to-another-storage-account"></a>Tüm dosya paylaşımlarını, dizinlerini ve dosyaları başka bir depolama hesabına kopyalama
 
 |    |     |
 |--------|-----------|
@@ -292,14 +292,14 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 ## <a name="synchronize-files"></a>Dosyaları eşitler
 
-Bir dosya paylaşımının içeriğini başka bir dosya paylaşımıyla eşzamanlı hale getirebilirsiniz. Ayrıca, bir dosya paylaşımındaki dizinin içeriğini başka bir dosya paylaşımında bulunan bir dizinin içeriğiyle de eşzamanlı hale getirebilirsiniz. Eşitleme tek yönlü. Diğer bir deyişle, bu iki uç noktanın hangisinin kaynak olduğunu ve hedefin nerede olduğunu seçersiniz. Eşitleme, sunucuyu sunucu API 'Leri için de kullanır.
+Bir dosya paylaşımının içeriğini başka bir dosya paylaşımıyla eşzamanlı hale getirebilirsiniz. Ayrıca, bir dosya paylaşımındaki dizinin içeriğini başka bir dosya paylaşımında bulunan bir dizinin içeriğiyle de eşzamanlı hale getirebilirsiniz. Eşitleme bir yoldur. Diğer bir deyişle, bu iki uç noktanın hangisinin kaynak olduğunu ve hedefin nerede olduğunu seçersiniz. Eşitleme, sunucuyu sunucu API 'Leri için de kullanır.
 
 > [!NOTE]
 > Şu anda, bu senaryo yalnızca hiyerarşik bir ad alanına sahip olmayan hesaplar için desteklenir. AzCopy 'in geçerli sürümü, Azure dosyaları ile BLOB depolama arasında eşitlenmez.
 
 [Eşitleme](storage-ref-azcopy-sync.md) komutu dosya adlarını ve son değiştirilme zaman damgalarını karşılaştırır. `--delete-destination` `true` `prompt` Bu dosyalar artık kaynak dizinde yoksa, hedef dizindeki dosyaları silmek için veya değerine isteğe bağlı bayrağını ayarlayın.
 
-`--delete-destination` `true` AzCopy bayrağını, bir istem sağlamadan dosyaları siler olarak ayarlarsanız. AzCopy bir dosyayı silmesinden önce bir istem görünmesini istiyorsanız, `--delete-destination` bayrağını olarak ayarlayın `prompt` .
+`--delete-destination`Bayrağını olarak ayarlarsanız `true` AzCopy bir istem sağlamadan dosyaları siler. AzCopy bir dosyayı silmesinden önce bir istem görünmesini istiyorsanız, `--delete-destination` bayrağını olarak ayarlayın `prompt` .
 
 > [!TIP]
 > İsteğe bağlı bayraklar kullanarak eşitleme işleminizi ince ayar yapabilirsiniz. İşte birkaç örnek.
@@ -348,8 +348,6 @@ Bu makalelerden herhangi birinde daha fazla örnek bulabilirsiniz:
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-
-- [AzCopy ve Amazon S3 demetleri ile veri aktarma](storage-use-azcopy-s3.md)
+- [Veri aktarma](storage-use-azcopy-v10.md#transfer-data)
 
 - [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)

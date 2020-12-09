@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994001"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861400"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Kapsam filtreleri ile öznitelik tabanlı uygulama sağlama
 Bu makalenin amacı, bir uygulamaya hangi kullanıcıların sağlandığını belirleyen öznitelik tabanlı kurallar tanımlamak için kapsam filtrelerinin nasıl kullanılacağını açıklamaktır.
@@ -94,7 +94,7 @@ Kapsam filtreleri, her bir Azure AD Kullanıcı sağlama bağlayıcısının öz
    
    j. **Greater_Than_OR_EQUALS.** Değerlendirilen öznitelik değerden büyük veya bu değere eşitse, yan tümce "true" döndürür. Kapsam filtresinde belirtilen değer bir tamsayı olmalı ve kullanıcının özniteliği tamsayı olmalıdır [0, 1, 2,...]. 
    
-   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](/dotnet/api/system.string.contains?view=netframework-4.8)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
+   k. **İçermektedir.** Değerlendirilen öznitelik, [burada](/dotnet/api/system.string.contains)açıklanan dize değerini (büyük/küçük harfe duyarlı) içeriyorsa "true" döndürür. 
 
 
 >[!IMPORTANT] 

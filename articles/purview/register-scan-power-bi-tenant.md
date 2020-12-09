@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: af394b68a943f4c89358a719c155606c264b9dc4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554511"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905001"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -49,16 +49,12 @@ Kimlik doğrulaması ayarlamak için bir güvenlik grubu oluşturun ve kataloğu
 
 ## <a name="associate-the-security-group-with-the-tenant"></a>Güvenlik grubunu kiracı ile ilişkilendir
 
-1. [Power BI yönetici portalında](https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1)oturum açın. Bu özellik bayrağını URI: ' a ekleyin  `allowServicePrincipalsUseReadAdminAPIsUI=1` . Bu bayrak güvenlik grubunuzu ilişkilendirebilmenizi sağlayan özelliği sağlar. Örneğin,
-
-    ```http
-    https://app.powerbi.com/admin-portal/tenantSettings?allowServicePrincipalsUseReadAdminAPIsUI=1
-    ```
+1. [Power BI yönetici portalında](https://app.powerbi.com/admin-portal/tenantSettings)oturum açın.
 
     > [!Important]
     > Kiracı ayarları sayfasını görmek için bir Power BI yöneticisi olmanız gerekir.
 
-1. **Geliştirici ayarlarını**,  >  **hizmet sorumluların salt okunurdur Power BI API 'leri (Önizleme) kullanmasına izin ver**' i seçin.
+1. **Geliştirici ayarlarını**,  >  **hizmet sorumluların salt okuma Power BI yönetici API 'lerini (Önizleme) kullanmasına izin ver**' i seçin.
 1. **Belirli güvenlik gruplarını** seçin.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Hizmet sorumluların salt okunurdur Power BI yönetici API izinleri alma ile nasıl izin verileceğini gösteren resim":::
