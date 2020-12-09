@@ -7,20 +7,19 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0678b2c36d341b2bc2bd9be755b9a6213acdd462
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206093"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852821"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT çözümleri oluşturmak için hangi Azure teknolojilerini ve hizmetlerini kullanabilirsiniz?
 
 Azure IoT teknolojileri ve Hizmetleri, kuruluşunuz için dijital dönüştürmeyi etkinleştiren çok çeşitli IoT çözümleri oluşturma seçeneklerini sunar. Örneğin, şunları yapabilirsiniz:
 
-- Güvenli, kurumsal düzeyde bir IoT çözümü oluşturup dağıtmak için, yönetilen bir IoT uygulama platformu olan [Azure IoT Central](https://apps.azureiotcentral.com)kullanın. IoT Central, çözüm geliştirme sürecinizi hızlandırmak için perakende ve sağlık gibi sektöre özgü uygulama şablonlarının bir koleksiyonuna sahiptir.
-- Uzaktan izleme veya tahmine dayalı bakım gibi yaygın bir IoT senaryosunu uygulamak için Azure IoT [çözüm hızlandırıcısının](https://www.azureiotsolutions.com) açık kaynaklı kod tabanını genişletin.
-- Sıfırdan özel bir IoT çözümü oluşturmak için Azure [IoT Hub](../iot-hub/about-iot-hub.md) ve [Azure IoT cihaz SDK 'Ları](../iot-hub/iot-hub-devguide-sdks.md) gibi Azure IoT Platformu hizmetlerini kullanın.
+* Güvenli, kurumsal düzeyde bir IoT çözümü oluşturup dağıtmak için, yönetilen bir IoT uygulama platformu olan [Azure IoT Central](https://apps.azureiotcentral.com)kullanın. IoT Central, çözüm geliştirme sürecinizi hızlandırmak için perakende ve sağlık gibi sektöre özgü uygulama şablonlarının bir koleksiyonuna sahiptir.
+* Sıfırdan özel bir IoT çözümü oluşturmak için Azure [IoT Hub](../iot-hub/about-iot-hub.md) ve [Azure IoT cihaz SDK 'Ları](../iot-hub/iot-hub-devguide-sdks.md) gibi Azure IoT Platformu hizmetlerini kullanın.
 
 ![Azure IoT teknolojileri, hizmetleri ve çözümleri](./media/iot-services-and-technologies/iot-technologies-services.png)
 
@@ -40,10 +39,8 @@ Tam olarak yönetilen bir uygulama platformu olarak, IoT Central basit ve öngö
 
 Azure IoT Çözüm Hızlandırıcıları, IoT çözümünüz üzerinde yüksek düzeyde denetim sağlar. Çözüm Hızlandırıcıları, Azure aboneliğinize dakikalar içinde dağıtabileceğiniz yaygın IoT senaryolarına yönelik önceden oluşturulmuş çözümler içerir. Senaryolar şunlardır:
 
-  - Uzaktan izleme
-  - Bağlı fabrika
-  - Tahmine dayalı bakım
-  - Cihaz benzetimi
+* Bağlı fabrika
+* Cihaz benzetimi
 
 Tüm çözüm hızlandırıcılarına yönelik açık kaynaklı kod tabanı GitHub ' da kullanılabilir. Belirli IoT gereksinimlerinizi karşılayacak çözüm hızlandırıcıyı özelleştirmek için kodu indirin.
 
@@ -92,4 +89,3 @@ Uygulamalı bir deneyim için hızlı başlangıçlardan birini deneyin:
 
 - [Azure IoT Central uygulaması oluşturma](../iot-central/core/quick-deploy-iot-central.md)
 - [Bir cihazdan IoT Hub 'ına telemetri gönderme](../iot-hub/quickstart-send-telemetry-cli.md)
-- [Bulut tabanlı uzaktan izleme çözümünü deneyin](../iot-accelerators/quickstart-remote-monitoring-deploy.md)
