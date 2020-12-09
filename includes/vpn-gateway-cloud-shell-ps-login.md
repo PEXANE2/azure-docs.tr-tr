@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -17,7 +17,7 @@ ms.locfileid: "93061668"
 ---
 PowerShell 'i yerel olarak çalıştırıyorsanız, PowerShell konsolunu yükseltilmiş ayrıcalıklarla açın ve Azure hesabınıza bağlanın. *Connect-AzAccount* cmdlet 'i sizden kimlik bilgilerini ister. Kimlik doğrulamasından sonra, Azure PowerShell için kullanılabilir olmaları için hesap ayarlarınızı indirir.
 
-PowerShell 'i yerel olarak çalıştırmak yerine Azure Cloud Shell kullanıyorsanız, *Connect-AzAccount* komutunu çalıştırmanız gerekmediğini fark edeceksiniz. Azure Cloud Shell, **yeniden dene** ' yi seçtikten sonra Azure hesabınıza otomatik olarak bağlanır.
+PowerShell 'i yerel olarak çalıştırmak yerine Azure Cloud Shell kullanıyorsanız, *Connect-AzAccount* komutunu çalıştırmanız gerekmediğini fark edeceksiniz. Azure Cloud Shell, **yeniden dene**' yi seçtikten sonra Azure hesabınıza otomatik olarak bağlanır.
 
 1. PowerShell 'i yerel olarak çalıştırıyorsanız oturum açın.
 
