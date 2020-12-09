@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: 642a382f2ec5da7821c9d709bd27d592ced31c8d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3383b4a3c2eab1f62d180c31e278f07b92c649c5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90974023"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853524"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: dağıtılmış uygulamaları önceliklendirme
 
@@ -165,10 +165,8 @@ ASP.NET Web Apps için alternatif bir yöntem, örneğin Global.aspx.cs içindek
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "roleName": "my cloud role name"
-    }
+  "role": {
+    "name": "my cloud role name"
   }
 }
 ```
@@ -229,7 +227,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Uygulama Haritası bağlamı içinde bulut rolü adını anlama
 
-**Bulut rolü adı**hakkında ne kadar düşünürken, birden fazla bulut rolü adına sahip bir uygulama eşlemesine bakmak yararlı olabilir:
+**Bulut rolü adı** hakkında ne kadar düşünürken, birden fazla bulut rolü adına sahip bir uygulama eşlemesine bakmak yararlı olabilir:
 
 ![Uygulama Haritası ekran görüntüsü](media/app-map/cloud-rolename.png)
 

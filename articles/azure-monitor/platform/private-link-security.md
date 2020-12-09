@@ -1,17 +1,17 @@
 ---
 title: Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 description: Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
-author: nkiest
-ms.author: nikiest
+author: noakup
+ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 8633aba2f7cda5dec4a48e9f7132283f8235f746
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317529"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853939"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -43,7 +43,7 @@ Azure Izleyici özel bağlantı kapsamı bir veya daha fazla özel bitiş noktas
 AMPLS kaynaklarınızı ayarlamadan önce ağ yalıtımı gereksinimlerinizi göz önünde bulundurun. Sanal ağlarınızın genel İnternet 'e erişimini ve Azure Izleyici kaynaklarınızın (yani Application Insights bileşenleri ve Log Analytics çalışma alanlarının) erişim kısıtlamalarını değerlendirin.
 
 > [!NOTE]
-> Hub ve bağlı ağ ağları ya da eşlenmiş ağların herhangi bir topolojisi, hub (ana) VNet ve her VNet üzerinde özel bir bağlantı kurmak yerine, ilgili Azure Izleyici kaynakları arasında özel bir bağlantı kurmak için kullanılabilir. Bu, özellikle bu ağlar tarafından kullanılan Azure Izleyici kaynakları paylaşılmışsa bu şekilde anlamlıdır. Ancak, her VNet 'in ayrı bir izleme kaynakları kümesine erişmesine izin vermek istiyorsanız, her ağ için adanmış bir AMPLS 'e özel bir bağlantı oluşturun.
+> Hub-kol ağları veya eşlenmiş ağların herhangi bir topolojisi, hub (ana) VNet ve ilgili Azure Izleyici kaynakları arasında özel bir bağlantı ayarlayarak her VNet üzerinde özel bir bağlantı kurmak yerine bir özel bağlantı ayarlayabilir. Bu, özellikle bu ağlar tarafından kullanılan Azure Izleyici kaynakları paylaşılmışsa bu şekilde anlamlıdır. Ancak, her VNet 'in ayrı bir izleme kaynakları kümesine erişmesine izin vermek istiyorsanız, her ağ için adanmış bir AMPLS 'e özel bir bağlantı oluşturun.
 
 ### <a name="evaluate-which-virtual-networks-should-connect-to-a-private-link"></a>Hangi sanal ağların özel bir bağlantıya bağlanması gerektiğini değerlendirin
 
@@ -85,6 +85,11 @@ Aşağıdaki topolojide:
 * Workspace2, 2/5 (40%) kullanarak AMPLS A ve AMPLS B 'ye bağlanır , olası AMPLS bağlantılarında.
 
 ![AMPLS limitlerinin diyagramı](./media/private-link-security/ampls-limits.png)
+
+> [!NOTE]
+> Bazı ağ topolojilerinde (genellikle hub-bağlı) tek bir AMPLS için 10 VNET sınırına hızlıca ulaşabilirsiniz. Bu gibi durumlarda, ayrı ayrı yerine paylaşılan bir özel bağlantı bağlantısı kullanılması önerilir. Hub ağında tek bir özel uç nokta oluşturun, AMPLS 'nize bağlayın ve ilgili ağları hub ağıyla eşler.
+
+![Hub-ve-bağlı-tek-PE](./media/private-link-security/hub-and-spoke-with-single-private-endpoint.png)
 
 ## <a name="example-connection"></a>Örnek bağlantı
 
@@ -150,7 +155,7 @@ Azure Izleyici kaynaklarını (Log Analytics çalışma alanları ve Application
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**'a tıklayın. 
+   e.    **Oluştur**’a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -183,9 +188,9 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 
 | Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
 |:--|:--|:--|:--|
-|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
-|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
+|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound
+|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 

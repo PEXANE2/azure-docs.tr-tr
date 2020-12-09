@@ -7,23 +7,27 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 11/30/2020
-ms.openlocfilehash: e7ad561cf9ce9983f41fa166eb744c90f126e01e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 9ead9a564c11901775ac7c471cd53fe65b3fdef9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555978"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855116"
 ---
-# <a name="what-is-azure-purview"></a>Azure purview nedir?
+# <a name="what-is-azure-purview"></a>Azure Purview nedir?
 
 > [!IMPORTANT]
 > Azure takip görünümü şu anda ÖNIZLEME aşamasındadır. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) , Beta, önizleme veya başka bir şekilde genel kullanıma sunulmayan Azure özelliklerine uygulanan ek yasal koşulları içerir.
 
-Azure purview, veri kullanıcıları tarafından kullanılmak üzere yeni bir bulut hizmetidir. Hem bulut hem de şirket içi ortamları kapsayan veri idare genelinde veri yönetimini merkezi olarak yönetmek için Azure purview kullanın. Bu hizmet, iş analistlerinin anlamlı iş terimlerini kullanarak ilgili verileri aramasına olanak sağlar.
+Azure purview, şirket içi, çok bulut ve hizmet olarak yazılım (SaaS) verilerinizi yönetmenize ve yönetmenize yardımcı olan Birleşik bir veri idare hizmetidir. Otomatik veri bulma, hassas veri sınıflandırması ve uçtan uca veri kökenini ile verilerinizin yatay olarak bir bütünsel, güncel haritasını kolayca oluşturun. Değerli ve güvenilir verileri bulmak için veri tüketicilerini güçlendirin.
 
-Purview Kullanıcı arabirimi veya Apache Atlas API 'SI ile teknik kullanıcılar, bir merkezi katalogda veri varlıklarının meta verilerini ve kökenini görüntüleyebilir.
+Azure purview veri eşlemesi, veri bulma ve etkili veri yönetimi için temel sağlar. Purview veri eşlemi, şirket içinde ve bulutta bulunan analiz ve işletim sistemlerinde bulunan kurumsal verilerle ilgili meta verileri yakalayan bir bulut Yerel PaaS hizmetidir. Yerleşik otomatik tarama ve sınıflandırma sistemi sayesinde purview veri eşlemesi otomatik olarak güncel tutulur. İş kullanıcıları, bir sezgisel kullanıcı arabirimi aracılığıyla purview veri eşlemini yapılandırabilir ve kullanabilir ve geliştiriciler açık kaynaklı Apache Atlas 2,0 API 'Lerini kullanarak veri eşlemesiyle programlı bir şekilde etkileşim kurabilir.
 
-Konu uzmanları, veri sahipleri ve güvenlik yöneticileri, kendi iletişim bilgilerini paylaşmak için veri varlıklarına ek açıklama ekleyebilir. Bu, meta veri ve içerik denetimine göre otomatik sınıflandırma ve otomatik etiketleme ilkeleri aracılığıyla Kullanıcı arabirimi veya ölçek aracılığıyla yapılır.
+Azure purview veri haritası, purview veri kataloğunu güçlendirir ve Data Insights 'ı purview Studio 'daki birleştirilmiş deneyimler olarak takip edin.
+ 
+Purview Veri Kataloğu ile, iş ve teknik kullanıcılar, Sözlük terimleri, sınıflandırmalar, duyarlılık etiketleri ve daha fazlası gibi çeşitli mercekler temelinde, bir arama deneyimi kullanarak ilgili verileri kolayca bulabilir &. Konu uzmanları, veri uzmanları ve officekullanıcıları için, takip görünümü veri kataloğu, iş sözlüğü yönetimi ve veri varlıklarının sözlük koşullarına göre etiketlemesini otomatik hale getirme yeteneği gibi veri kullanımı özellikleri sağlar. Veri tüketicileri ve üreticileri, aynı zamanda şirket içindeki işletimsel sistemlerden başlayarak Şirket içindeki çalışma sistemlerinden, taşıma, dönüştürme & zenginleştirme aracılığıyla, bulutta bulunan ve Power BI gibi bir analiz sisteminde tüketim sağlamak için çeşitli veri depolama & işleme sistemlerini de görsel olarak izleyebilir.
+
+Veri ofisleri ve güvenlik ofislerinin Izlenmesi sayesinde, veri ofislerinin ve güvenlik ofislerinin bir kuşbakışı görünümü alabilir ve gizli verilerin ne olduğu ve nasıl taşındığı, hangi verilerin etkin şekilde tarandığı hakkında bir bakışta göz atalım.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Veri tüketicileri için bulma zorlukları
 

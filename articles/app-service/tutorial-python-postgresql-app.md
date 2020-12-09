@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506116"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852974"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -35,7 +35,7 @@ Bu öğreticide, Azure CLı kullanarak aşağıdaki görevleri tamamlayabilirsin
 [Bu öğreticinin Azure Portal sürümünü](/azure/developer/python/tutorial-python-postgresql-app-portal)de kullanabilirsiniz.
 
 
-## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
+## <a name="1-set-up-your-initial-environment"></a>1. başlangıç ortamınızı ayarlama
 
 1. Etkin aboneliği olan bir Azure hesabına sahip olmanız gerekir. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. <a href="https://www.python.org/downloads/" target="_blank">Python 3,6 veya üstünü</a>yükler.
@@ -81,7 +81,7 @@ Oturum açtıktan sonra, aboneliğinizdeki kaynaklarla çalışmak için Azure C
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="clone-or-download-the-sample-app"></a>Örnek uygulamayı kopyalayın veya indirin
+## <a name="2-clone-or-download-the-sample-app"></a>2. örnek uygulamayı kopyalayın veya indirin
 
 # <a name="git-clone"></a>[Git kopyası](#tab/clone)
 
@@ -111,14 +111,14 @@ Docgoapp örneği, Docgo belgelerine [Ilk Docgo uygulamanızı yazmayı](https:/
 
 Örnek ayrıca App Service gibi bir üretim ortamında çalışacak şekilde değiştirilmiştir:
 
-- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayarları *azuresite/Settings. Kopyala* ' da bulunur.
+- Üretim ayarları *azuresite/Production. Kopyala* dosyasında bulunur. Geliştirme ayarları *azuresite/Settings. Kopyala*' da bulunur.
 - Uygulama, `WEBSITE_HOSTNAME` ortam değişkeni ayarlandığında üretim ayarlarını kullanır. Azure App Service, bu değişkeni, gibi Web uygulamasının URL 'sine otomatik olarak ayarlar `msdocs-django.azurewebsites.net` .
 
 Üretim ayarları, Docgo 'nın herhangi bir üretim ortamında çalıştırılmasını ve App Service özel olmadığını yapılandırmaya özgüdür. Daha fazla bilgi için bkz. [Docgo dağıtım denetim listesi](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ayrıca, bazı değişiklikler hakkında ayrıntılı bilgi için bkz. [Azure 'Da Docgo Için üretim ayarları](configure-language-python.md#production-settings-for-django-apps) .
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="create-postgres-database-in-azure"></a>Azure 'da Postgres veritabanı oluşturma
+## <a name="3-create-postgres-database-in-azure"></a>3. Azure 'da Postgres veritabanı oluşturma
 
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. -->
@@ -129,7 +129,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp
 az extension add --name db-up
 ```
 
-`az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
+`az`Komut tanınmazsa, [Ilk ortamınızı ayarlama](#1-set-up-your-initial-environment)bölümünde AÇıKLANDıĞı gibi Azure CLI 'nin yüklü olduğundan emin olun.
 
 Ardından şu komutla Azure 'da Postgres veritabanını oluşturun [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) :
 
@@ -137,8 +137,9 @@ Ardından şu komutla Azure 'da Postgres veritabanını oluşturun [`az postgres
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
-- *\<postgres-server-name>* Tüm Azure genelinde benzersiz olan bir adla değiştirin (sunucu uç noktası olur `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
-- *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin. `$`Kullanıcı adı veya parola içinde karakteri kullanmayın. Daha sonra bu değerlerle ortam değişkenleri oluşturursunuz; bu, `$` karakterin Python uygulamalarını çalıştırmak için kullanılan Linux kapsayıcısı içinde özel anlamı vardır.
+- **Değiştir** *\<postgres-server-name>* **tüm Azure genelinde benzersiz** bir ad ile (sunucu uç noktası olur `https://<postgres-server-name>.postgres.database.azure.com` ). İyi bir model, şirketinizin adı ve başka bir benzersiz değer birleşimini kullanmaktır.
+- *\<admin-username>* Ve için *\<admin-password>* , bu Postgres sunucusu için bir yönetici kullanıcı oluşturmak üzere kimlik bilgilerini belirtin. Yönetici Kullanıcı adı *azure_superuser*, *azure_pg_admin*, *yönetici*, *yönetici*, *kök*, *Konuk* veya *ortak* olamaz. *PG_* ile başlayamaz. Parola şu kategorilerden üçünden **8 ila 128 karakter** Içermelidir: İngilizce büyük harfler, İngilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (örneğin,!, #,%). Parola Kullanıcı adı içeremez.
+- `$`Kullanıcı adı veya parola içinde karakteri kullanmayın. Daha sonra bu değerlerle ortam değişkenleri oluşturursunuz; bu, `$` karakterin Python uygulamalarını çalıştırmak için kullanılan Linux kapsayıcısı içinde özel anlamı vardır.
 - Burada kullanılan B_Gen5_1 (Basic, 5. nesil, 1 çekirdek) [fiyatlandırma katmanı](../postgresql/concepts-pricing-tiers.md) en düşük maliyetli bir işlemdir. Üretim veritabanları için, `--sku-name` bunun yerine GP_Gen5_2 (genel amaçlı, Gen 5, 2 çekirdek) katmanını kullanmak için bağımsız değişkenini atlayın.
 
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
@@ -153,7 +154,7 @@ Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
 Tüm adımları diğer ve komutlarla ayrı olarak yapabilirsiniz `az postgres` `psql` , ancak `az postgres up` tüm adımları bir araya getirebilirsiniz.
 
-Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren bir JSON nesnesi (sunucu URL 'SI, oluşturulan bir Kullanıcı adı (" joyfulKoala@msdocs-djangodb-12345 ") ve bır GUID parolası) verir. Bu öğreticide daha sonra gereksinim duyduğunuz kısa Kullanıcı adını (@ öğesinden önce) ve parolayı geçici bir metin dosyasına kopyalayın.
+Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren bir JSON nesnesi (sunucu URL 'SI, oluşturulan bir Kullanıcı adı (" joyfulKoala@msdocs-djangodb-12345 ") ve bır GUID parolası) verir. **Kullanıcı adını ve parolayı,** Bu öğreticide daha sonra ihtiyacınız olan geçici bir metin dosyasına kopyalayın.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
@@ -161,11 +162,11 @@ Komut tamamlandığında, veritabanı için farklı bağlantı dizeleri içeren 
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="deploy-the-code-to-azure-app-service"></a>Kodu Azure App Service dağıtma
+## <a name="4-deploy-the-code-to-azure-app-service"></a>4. kodu Azure App Service dağıtın
 
 Bu bölümde App Service uygulamasında uygulama konağı oluşturur, bu uygulamayı Postgres veritabanına bağlayın ve ardından kodunuzu bu konağa dağıtın.
 
-### <a name="create-the-app-service-app"></a>App Service uygulamasını oluşturma
+### <a name="41-create-the-app-service-app"></a>4,1 App Service uygulaması oluşturma
 
 Terminalde, uygulama kodunu içeren *docgoapp* depo klasöründe olduğunuzdan emin olun.
 
@@ -177,7 +178,7 @@ az webapp up --resource-group DjangoPostgres-tutorial-rg --location westus2 --pl
 <!-- without --sku creates PremiumV2 plan -->
 
 - `--location`Bağımsız değişkeni için, önceki bölümde veritabanıyla aynı konumu kullanın.
-- *\<app-name>* Tüm Azure genelinde benzersiz bir adla değiştirin (sunucu uç noktası `https://<app-name>.azurewebsites.net` ). *\<app-name>* `A` - `Z` , `0` - `9` Ve `-` için izin verilen karakterler. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
+- **Değiştir** *\<app-name>* Tüm Azure genelinde benzersiz bir adla (sunucu uç noktası `https://<app-name>.azurewebsites.net` ). *\<app-name>* `A` - `Z` , `0` - `9` Ve `-` için izin verilen karakterler. İyi bir model, şirketinizin adının ve uygulama tanımlayıcısının bir birleşimini kullanmaktır.
 
 Bu komut, birkaç dakika sürebilen aşağıdaki eylemleri gerçekleştirir:
 
@@ -196,7 +197,7 @@ Dağıtım başarılı olduğunda, komut aşağıdaki örnekte olduğu gibi JSON
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="configure-environment-variables-to-connect-the-database"></a>Veritabanını bağlamak için ortam değişkenlerini yapılandırma
+### <a name="42-configure-environment-variables-to-connect-the-database"></a>4,2 ortam değişkenlerini veritabanına bağlanacak şekilde yapılandırma
 
 Kod artık App Service dağıtılır ve sonraki adım, uygulamayı Azure 'daki Postgres veritabanına bağlayabilmektedir.
 
@@ -216,11 +217,11 @@ Python kodunuzda bu ayarlara, gibi deyimlerle ortam değişkenleri olarak erişi
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="run-django-database-migrations"></a>Docgo veritabanı geçişlerini Çalıştır
+### <a name="43-run-django-database-migrations"></a>4,3 Docgo veritabanı geçişlerini Çalıştır
 
 Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şemanın kodunuzda açıklananlarla eşleştiğinden emin olun.
 
-1. Aşağıdaki URL 'ye gidip Azure hesabı kimlik bilgilerinizle (veritabanı sunucusu kimlik bilgileri değil) oturum açarak tarayıcıda bir SSH oturumu açın.
+1. Aşağıdaki URL 'ye gidip Azure hesabı kimlik bilgilerinizle (veritabanı sunucusu kimlik bilgileri değil) oturum açarak **tarayıcıda** bir SSH oturumu açın.
 
     ```
     https://<app-name>.scm.azurewebsites.net/webssh/host
@@ -230,7 +231,7 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
     MacOS ve Linux 'ta, komutuyla bir SSH oturumuna alternatif olarak bağlanabilirsiniz [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) .
 
-    SSH oturumuna bağlanamıyorsanız, uygulamanın kendisi başlatılamadı. Ayrıntılar için [Tanılama günlüklerine bakın](#stream-diagnostic-logs) . Örneğin, önceki bölümde gerekli uygulama ayarlarını oluşturmadıysanız Günlükler gösterilir `KeyError: 'DBNAME'` .
+    SSH oturumuna bağlanamıyorsanız, uygulamanın kendisi başlatılamadı. Ayrıntılar için [Tanılama günlüklerine bakın](#6-stream-diagnostic-logs) . Örneğin, önceki bölümde gerekli uygulama ayarlarını oluşturmadıysanız Günlükler gösterilir `KeyError: 'DBNAME'` .
 
 1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V** kullanarak komutları yapıştırabilirsiniz):
 
@@ -257,11 +258,11 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
     
-### <a name="create-a-poll-question-in-the-app"></a>Uygulamada bir yoklama sorusu oluşturma
+### <a name="44-create-a-poll-question-in-the-app"></a>4,4 uygulamada bir yoklama sorusu oluşturma
 
 1. Bir tarayıcıda URL 'YI açın `http://<app-name>.azurewebsites.net` . Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
-    "Uygulama hatası" görürseniz, önceki adımda gerekli ayarları oluşturmadınız, [veritabanı bağlamak için ortam değişkenlerini yapılandırmadan](#configure-environment-variables-to-connect-the-database)veya bu değerde hata içereceksinizdir olabilir. `az webapp config appsettings list`Ayarları denetlemek için komutunu çalıştırın. Uygulama başlatma sırasında belirli hataları görmek için [tanılama günlüklerini de denetleyebilirsiniz](#stream-diagnostic-logs) . Örneğin, ayarları oluşturmadıysanız günlüklerde hata gösterilir `KeyError: 'DBNAME'` .
+    "Uygulama hatası" görürseniz, önceki adımda gerekli ayarları oluşturmadınız, [veritabanı bağlamak için ortam değişkenlerini yapılandırmadan](#42-configure-environment-variables-to-connect-the-database)veya bu değerde hata içereceksinizdir olabilir. `az webapp config appsettings list`Ayarları denetlemek için komutunu çalıştırın. Uygulama başlatma sırasında belirli hataları görmek için [tanılama günlüklerini de denetleyebilirsiniz](#6-stream-diagnostic-logs) . Örneğin, ayarları oluşturmadıysanız günlüklerde hata gösterilir `KeyError: 'DBNAME'` .
 
     Hataları düzeltmek için ayarları güncelleştirdikten sonra, uygulamayı yeniden başlatmak için bir dakika verin ve ardından Tarayıcıyı yenileyin.
 
@@ -276,11 +277,11 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp
 > [!NOTE]
 > App Service, varsayılan olarak oluşturulan her alt klasörde bir *wsgi.py* dosyası arayarak bir Docgo projesi algılar `manage.py startproject` . App Service bu dosyayı bulduğunda, Docgo Web uygulamasını yükler. Daha fazla bilgi için bkz. [yerleşik Python görüntüsünü yapılandırma](configure-language-python.md).
 
-## <a name="make-code-changes-and-redeploy"></a>Kod değişiklikleri yap ve yeniden Dağıt
+## <a name="5-make-code-changes-and-redeploy"></a>5. kod değişiklikleri yapın ve yeniden dağıtın
 
 Bu bölümde, uygulamada yerel değişiklikler yapar ve kodu App Service yeniden dağıtabilirsiniz. İşleminde, devam eden işleri destekleyen bir Python sanal ortamı ayarlarsınız.
 
-### <a name="run-the-app-locally"></a>Uygulamayı yerel olarak çalıştırma
+### <a name="51-run-the-app-locally"></a>5,1 uygulamayı yerel olarak çalıştırma
 
 Bir terminal penceresinde aşağıdaki komutları çalıştırın. Süper Kullanıcı oluştururken istemleri izlediğinizden emin olun:
 
@@ -345,7 +346,7 @@ Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
 1. `http://localhost:8000`"Hiçbir yoklama yok" iletisini görüntülemesi gereken bir tarayıcıda adresine gidin. 
 
-1. `http:///localhost:8000/admin`Daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak adresine gidin ve oturum açın. **Yoklamalar** ' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
+1. `http:///localhost:8000/admin`Daha önce oluşturduğunuz yönetici kullanıcıyı kullanarak adresine gidin ve oturum açın. **Yoklamalar**' ın altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun. 
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın. 
 
@@ -355,7 +356,7 @@ Yerel olarak çalıştırılırken, uygulama yerel bir SQLite3 veritabanı kulla
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="update-the-app"></a>Uygulamayı güncelleştirme
+### <a name="52-update-the-app"></a>5,2 uygulamayı güncelleştirme
 
 İçinde `polls/models.py` , ile başlayan satırı bulun `choice_text` ve `max_length` parametreyi 100 olarak değiştirin:
 
@@ -377,7 +378,7 @@ Docgo Web sunucusunu **CTRL** + **C** ile yeniden durdurun.
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="redeploy-the-code-to-azure"></a>Kodu Azure 'a yeniden dağıtın
+### <a name="53-redeploy-the-code-to-azure"></a>5,3 kodu Azure 'a yeniden dağıtın
 
 Depo kökünde aşağıdaki komutu çalıştırın:
 
@@ -389,7 +390,7 @@ Bu komut *. Azure/config* dosyasında önbelleğe alınan parametreleri kullanı
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="rerun-migrations-in-azure"></a>Azure 'da geçişleri yeniden çalıştırma
+### <a name="54-rerun-migrations-in-azure"></a>5,4 Azure 'da geçişleri yeniden çalıştırın
 
 Veri modelinde değişiklikler yaptığınız için, App Service veritabanı geçişlerini yeniden çalıştırmanız gerekir.
 
@@ -406,13 +407,13 @@ python manage.py migrate
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-### <a name="review-app-in-production"></a>Üretimde uygulamayı gözden geçirin
+### <a name="55-review-app-in-production"></a>5,5 üretim ortamında uygulamayı gözden geçirin
 
 Üretim ortamında `http://<app-name>.azurewebsites.net` uygulamayı yeniden inceleyin ve test edin. (Yalnızca bir veritabanı alanının uzunluğunu değiştirdiğiniz için, değişiklik yalnızca bir soru oluştururken daha uzun bir yanıt girmeyi denerseniz fark edilir.)
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
+## <a name="6-stream-diagnostic-logs"></a>6. akış tanılama günlükleri
 
 Azure 'da uygulamayı barındıran kapsayıcının içinden oluşturulan konsol günlüklerine erişebilirsiniz.
 
@@ -437,7 +438,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp
 > az webapp log config --docker-container-logging filesystem
 > ```
 
-## <a name="manage-your-app-in-the-azure-portal"></a>Uygulamanızı Azure portal yönetme
+## <a name="7-manage-your-app-in-the-azure-portal"></a>7. Azure portal uygulamanızı yönetin
 
 [Azure Portal](https://portal.azure.com), uygulama adını arayın ve sonuçlarda uygulamayı seçin.
 
@@ -449,7 +450,7 @@ Varsayılan olarak, portal genel bir performans görünümü sağlayan uygulaman
 
 Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-language-python.md#troubleshooting)başvurun, aksi takdirde [bize bilgi verin](https://aka.ms/DjangoCLITutorialHelp).
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
+## <a name="8-clean-up-resources"></a>8. Kaynakları Temizleme
 
 Uygulamayı sürdürmek veya ek öğreticilere devam etmek isterseniz, [sonraki adımlara](#next-steps)atlayın. Aksi takdirde, devam eden ücretleri önlemek için bu öğreticide kaynak grubu oluştur ' u silebilirsiniz:
 

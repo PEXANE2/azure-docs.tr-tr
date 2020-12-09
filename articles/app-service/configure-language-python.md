@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f12ed42755af64f024fdcb0452173134f7b58482
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183745"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855065"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service için bir Linux Python uygulaması yapılandırma
 
@@ -68,7 +68,7 @@ Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir 
 App Service, Oryx olarak adlandırılan yapı sistemi, git veya ZIP paketleri kullanarak uygulamanızı dağıtırken aşağıdaki adımları gerçekleştirir:
 
 1. Bu ayar tarafından belirtilmişse özel bir ön derleme betiği çalıştırın `PRE_BUILD_COMMAND` .
-1. `pip install -r requirements.txt` öğesini çalıştırın. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
+1. Şu komutu çalıştırın: `pip install -r requirements.txt`. *requirements.txt* dosya projenin kök klasöründe bulunmalıdır. Aksi takdirde, yapı işlemi şu hatayı raporlar: "setup.py bulunamadı veya requirements.txt; Pınstall çalışmıyor. "
 1. Depo kökünde *Manage.py* bulunursa (bir Docgo uygulaması olduğunu), *Manage.py collectstatic* komutunu çalıştırın. Ancak, `DISABLE_COLLECTSTATIC` ayar ise, `true` Bu adım atlanır.
 1. Ayar tarafından belirtilmişse özel derleme sonrası betiği çalıştırın `POST_BUILD_COMMAND` .
 
@@ -101,19 +101,19 @@ Mevcut Web uygulamaları Azure 'a aşağıdaki şekilde yeniden dağıtılabilir
 1. **Kaynak deposu**: kaynak kodunuzu GitHub gibi uygun bir depoda saklayın ve bu işlemin ilerleyen kısımlarında sürekli dağıtım ayarlamanıza olanak sağlar.
     1. Gerekli paketleri otomatik olarak yüklemek için *requirements.txt* dosyanız, App Service deponuzın kökünde olmalıdır.    
 
-1. **Veritabanı**: uygulama bir veritabanına bağımlıysa, Azure 'da gerekli kaynakları da sağlayın. Bkz. [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-örnek için veritabanı oluşturma](tutorial-python-postgresql-app.md#create-postgres-database-in-azure) .
+1. **Veritabanı**: uygulama bir veritabanına bağımlıysa, Azure 'da gerekli kaynakları da sağlayın. Bkz. [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-örnek için veritabanı oluşturma](tutorial-python-postgresql-app.md#3-create-postgres-database-in-azure) .
 
-1. **App Service kaynakları**: uygulamanızı barındırmak için bir kaynak grubu, App Service planı ve App Service Web uygulaması oluşturun. Öğreticide gösterildiği gibi Azure CLı komutu aracılığıyla kodunuzun ilk dağıtımını yaparak bu işlemi kolayca yapabilirsiniz `az webapp up` [: PostgreSQL Ile Docgo Web uygulaması dağıtma-kodu dağıtma](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service). Uygulamanız için daha uygun olacak kaynak grubu, App Service planı ve Web uygulaması adlarını değiştirin.
+1. **App Service kaynakları**: uygulamanızı barındırmak için bir kaynak grubu, App Service planı ve App Service Web uygulaması oluşturun. Öğreticide gösterildiği gibi Azure CLı komutu aracılığıyla kodunuzun ilk dağıtımını yaparak bu işlemi kolayca yapabilirsiniz `az webapp up` [: PostgreSQL Ile Docgo Web uygulaması dağıtma-kodu dağıtma](tutorial-python-postgresql-app.md#4-deploy-the-code-to-azure-app-service). Uygulamanız için daha uygun olacak kaynak grubu, App Service planı ve Web uygulaması adlarını değiştirin.
 
 1. **Ortam değişkenleri**: uygulamanız herhangi bir ortam değişkeni gerektiriyorsa, eşdeğer [App Service uygulama ayarları](configure-common.md#configure-app-settings)oluşturun. Bu App Service ayarları, [erişim ortamı değişkenlerinde](#access-app-settings-as-environment-variables)açıklandığı şekilde kodunuzda ortam değişkenleri olarak görünür.
-    - Örneğin, veritabanı bağlantıları genellikle [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-veritabanını bağlamak için değişkenleri Yapılandırma](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database).
+    - Örneğin, veritabanı bağlantıları genellikle [öğretici: PostgreSQL Ile Docgo Web uygulaması dağıtma-veritabanını bağlamak için değişkenleri Yapılandırma](tutorial-python-postgresql-app.md#42-configure-environment-variables-to-connect-the-database).
     - Tipik Docgo uygulamalarına yönelik belirli ayarlar için bkz. [Docgo uygulamaları Için üretim ayarları](#production-settings-for-django-apps) .
 
 1. **Uygulama başlatma**: App Service uygulamanızı nasıl çalıştırmayı denediğinize anlamak için bu makalenin ilerleyen kısımlarında yer alarak [kapsayıcı başlangıç sürecini](#container-startup-process) inceleyin. App Service, varsayılan olarak, uygulama nesneniz veya *wsgi.py* klasörünüzü bulabilmeleri gereken gunicbir Web sunucusunu kullanır. Gerekirse, [Başlangıç komutunu özelleştirebilirsiniz](#customize-startup-command).
 
 1. **Sürekli dağıtım**: Azure Pipelines veya kudu dağıtımı kullanılıyorsa [Azure App Service için sürekli dağıtımda](deploy-continuous-deployment.md) açıklandığı gibi sürekli dağıtım ayarlayın veya GitHub eylemleri kullanılıyorsa [GitHub eylemlerini kullanarak App Service 'e dağıtın](deploy-github-actions.md) .
 
-1. **Özel eylemler**: uygulamanızı barındıran App Service kapsayıcısı Içinde, Docgo veritabanı geçişleri gibi eylemler gerçekleştirmek IÇIN [kapsayıcıya SSH aracılığıyla bağlanabilirsiniz](configure-linux-open-ssh-session.md). Docgo veritabanı geçişlerini çalıştırmaya ilişkin bir örnek için bkz. [öğretici: PostgreSQL Ile docgo Web uygulaması dağıtma-veritabanı geçişlerini çalıştırma](tutorial-python-postgresql-app.md#run-django-database-migrations).
+1. **Özel eylemler**: uygulamanızı barındıran App Service kapsayıcısı Içinde, Docgo veritabanı geçişleri gibi eylemler gerçekleştirmek IÇIN [kapsayıcıya SSH aracılığıyla bağlanabilirsiniz](configure-linux-open-ssh-session.md). Docgo veritabanı geçişlerini çalıştırmaya ilişkin bir örnek için bkz. [öğretici: PostgreSQL Ile docgo Web uygulaması dağıtma-veritabanı geçişlerini çalıştırma](tutorial-python-postgresql-app.md#43-run-django-database-migrations).
     - Sürekli dağıtım kullanırken, [derleme Otomasyonu 'Nu özelleştirme](#customize-build-automation)altında açıklandığı gibi oluşturma sonrası komutları kullanarak bu eylemleri gerçekleştirebilirsiniz.
 
 Bu adımlar tamamlandığında, değişiklikleri kaynak deponuza kaydedebilir ve bu güncelleştirmelerin App Service otomatik olarak dağıtılmasını sağlayabilirsiniz.

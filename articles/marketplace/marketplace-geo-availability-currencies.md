@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 07/29/2020
-ms.openlocfilehash: bdb746c75a175d906301bcfca0b1472383fceff9
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.date: 12/07/2020
+ms.openlocfilehash: 118fe70abf52a6c96f4f2dc47e3ad23a388f3598
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778079"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853756"
 ---
 # <a name="geographic-availability-and-currency-support-for-the-commercial-marketplace"></a>Ticari Market için coğrafi kullanılabilirlik ve para birimi desteği
 
@@ -46,22 +46,22 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Brunei                              | BN        | USD          | BND, EUR, SGD, USD |
 | Bulgaristan                            | BG        | EUR          | BGN, EUR, USD |
 | Cabo Verde                          | CV        | USD          | CVE, EUR, USD |
-| Kamerun                            | CM        | USD          | XAF, EUR, USD |
-| Kanada                              | CA        | CAD          | CAD, EUR, USD  |
-| Cayman Adaları                      | KY        | USD          | KYD, EUR, USD |
+| Kamerun                            | CM        | USD          | EUR, USD, XAF |
+| Kanada                              | CA        | CAD          | CAD, EUR, USD |
+| Cayman Adaları                      | KY        | USD          | EUR, KYD, USD |
 | Şili                               | CL        | USD          | CLP, EUR, USD |
 | Arasında\**                            | CN        | Yok          | Yok |
 | Kolombiya                            | CO        | USD          | COP, EUR, USD |
 | Kosta Rika                          | CR        | USD          | CRC, EUR, USD |
-| Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          | XOF, EUR, USD |
-| Hırvatistan                             | HR        | EUR          | HRK, EUR, USD |
+| Fildişi Sahili (Côte d'Ivoire)                       | CI        | USD          | EUR, USD, XOF |
+| Hırvatistan                             | HR        | EUR          | EUR, HRK, USD |
 | Curaçao                             | FIILI        | USD          | ANG, EUR, USD |
 | Kıbrıs                              | CY        | EUR          | EUR, USD  |
-| Czechia                             | CZ        | EUR          | EUR, USD, CZK |
+| Czechia                             | CZ        | EUR          | CZK, EUR, USD |
 | Danimarka                             | DK        | DKK          | DKK, EUR, USD |
 | Dominik Cumhuriyeti                  | DO        | USD          | DOP, EUR, USD |
 | Ekvador                             | EC        | USD          | EUR, USD |
-| Mısır                               | EG        | USD          | EUR, USD EGP |
+| Mısır                               | EG        | USD          | EGP, EUR, USD |
 | El Salvador                         | SV        | USD          | EUR, USD |
 | Estonya                             | EE        | EUR          | EUR, USD |
 | Etiyopya                            | ET        | USD          | ETB, EUR, USD |
@@ -91,7 +91,7 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Kenya                               | KE        | USD          | EUR, KES, USD |
 | Kore dili (Güney)                       | KR        | KRW          | EUR, KRONW, USD |
 | Kuveyt                              | KW        | USD          | EUR, KWD, USD |
-| Kırgızistan                          | KG        | USD          | USD, EUR, KGS |
+| Kırgızistan                          | KG        | USD          | EUR, KGS, USD |
 | Letonya                              | LV        | EUR          | EUR, USD |
 | Lübnan                             | LB        | USD          | EUR, LBP, USD |
 | Libya                               | LY        | USD          | EUR, LYD, USD |
@@ -139,8 +139,8 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Slovenya                            | SI        | EUR          | EUR, USD |
 | Güney Afrika                        | ZA        | USD          | EUR, USD, ZAR |
 | İspanya                               | ES        | EUR          | EUR, USD |
-| Sri Lanka                           | LK        | USD          | EUR, USD, LKR |
-| İsveç                              | SE        | SEK          | EUR, USD, SEK |
+| Sri Lanka                           | LK        | USD          | EUR, LKR, USD |
+| İsveç                              | SE        | SEK          | EUR, SEK, USD  |
 | İsviçre                         | CH        | CHF          | CHF, EUR, USD |
 | Tayvan                              | TW        | TWD          | EUR, TWD, USD |
 | Tacikistan                          | TJ        | USD          | EUR, TJS, USD |
@@ -151,10 +151,10 @@ Ticari Market teklifleri, müşterinin fatura adresi tarafından tanımlanan 141
 | Türkiye                              | TR        | USD          | EUR, DENEYIN, USD |
 | Türkmenistan                        | TM        | USD          | EUR, TMT, USD |
 | Uganda                              | UG        | USD          | EUR, UGX, USD |
-| Ukrayna                             | UA        | USD          | EUR, UAH, RUB, USD |
+| Ukrayna                             | UA        | USD          | EUR, RUB, UAH, USD |
 | Birleşik Arap Emirlikleri                | AE        | USD          | AED, EUR, USD |
 | Birleşik Krallık                      | GB        | GBP          | EUR, GBP, USD |
-| Amerika Birleşik Devletleri                       | ABD        | USD          | EUR, USD |
+| Birleşik Devletler                       | ABD        | USD          | EUR, USD |
 | ABD Virgin Adaları                 | VI        | USD          | EUR, USD|
 | Uruguay                             | UY        | USD          | EUR, USD, UYU |
 | Özbekistan                          | UZ        | USD          | EUR, USD, UZS |

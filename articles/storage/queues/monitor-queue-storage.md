@@ -9,12 +9,12 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: be340ffd2df53124f516e370359df688d887ab6c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 15bc943052218761327fa57ce8ff6f5d32bfb116
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780969"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855099"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Azure kuyruk depolamayı izleme
 
@@ -99,6 +99,8 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
 
+Günlüklerinizi bir depolama hesabına arşivlemeyi seçerseniz, depolama hesabına gönderilen günlük hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
+
 1. **Bir depolama hesabı Arşivi** onay kutusunu seçin ve ardından **Yapılandır** düğmesini seçin.
 
    > [!div class="mx-imgBorder"]
@@ -110,6 +112,8 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
    > Verme hedefi olarak bir depolama hesabı seçmeden önce, depolama hesabındaki önkoşulları anlamak için bkz. [Azure Kaynak günlüklerini arşivleme](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) .
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Günlükleri Azure Event Hubs akış
+
+Günlüklerinizi bir olay hub 'ına akışı yapmayı seçerseniz, Olay Hub 'ına gönderilen günlüklerin hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
 
 1. **Bir olay hub 'ı Için akış** onay kutusunu seçin ve ardından **Yapılandır** düğmesini seçin.
 
@@ -143,6 +147,8 @@ Genel rehberlik için bkz. [Azure 'da platform günlüklerini ve ölçümlerini 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
 
+Günlüklerinizi bir depolama hesabına arşivlemeyi seçerseniz, depolama hesabına gönderilen günlük hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
+
 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle birlikte kullanarak günlükleri etkinleştirin `StorageAccountId` .
 
 ```powershell
@@ -160,6 +166,8 @@ Aşağıda bir örnek verilmiştir:
 Her parametrenin açıklaması için bkz. [Azure PowerShell aracılığıyla Azure Kaynak günlüklerini arşivleme](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
+
+Günlüklerinizi bir olay hub 'ına akışı yapmayı seçerseniz, Olay Hub 'ına gönderilen günlüklerin hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
 
 [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) PowerShell cmdlet 'ini parametresiyle kullanarak günlükleri etkinleştirin `EventHubAuthorizationRuleId` .
 
@@ -201,6 +209,8 @@ Daha fazla bilgi için bkz. Azure [izleyici 'de Log Analytics çalışma alanın
 
 #### <a name="archive-logs-to-a-storage-account"></a>Günlükleri bir depolama hesabına Arşivle
 
+Günlüklerinizi bir depolama hesabına arşivlemeyi seçerseniz, depolama hesabına gönderilen günlük hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
+
 [Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
 
 ```azurecli-interactive
@@ -218,6 +228,8 @@ Aşağıda bir örnek verilmiştir:
 Her parametrenin açıklaması için bkz. [Azure CLI aracılığıyla arşiv kaynak günlükleri](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
+
+Günlüklerinizi bir olay hub 'ına akışı yapmayı seçerseniz, Olay Hub 'ına gönderilen günlüklerin hacmi için ödeme yaparsınız. Belirli fiyatlandırma için, [Azure izleyici fiyatlandırma](https://azure.microsoft.com/pricing/details/monitor/#platform-logs) sayfasının **Platform günlükleri** bölümüne bakın.
 
 [Az Monitor Diagnostic-Settings Create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) komutunu kullanarak günlükleri etkinleştirin.
 

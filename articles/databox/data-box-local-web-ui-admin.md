@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/03/2020
+ms.date: 12/07/2020
 ms.author: alkohli
-ms.openlocfilehash: 90869af032a381cecd3e65f5d5b367156dd047c5
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576887"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855014"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
@@ -29,15 +29,15 @@ Cihaz sorunları yaşarsanız, sistem günlüklerinden bir Destek paketi oluştu
 
 Bir destek paketi oluşturmak için aşağıdaki adımları uygulayın:
 
-1. Yerel Web Kullanıcı arabiriminde **desteğe başvurun** sayfasına gidin. İsteğe bağlı olarak **bellek dökümünü dahil et**' i seçin. Ardından **destek paketi oluştur**' u seçin.
+1. Yerel Web Kullanıcı arabiriminde **desteğe başvurun** sayfasına gidin. İsteğe bağlı olarak, **bellek dökümlerini içer**' i seçin Ardından **destek paketi oluştur**' u seçin.
 
     Bellek dökümü, cihazınızın belleğinin, sistem hatasından sonra kaydedilen içeriğidir.
 
-    Destek bir tane istemediği müddetçe **bellek dökümünü dahil et** seçeneğini seçemezsiniz. Bellek dökümü içeren bir destek paketinin toplanması uzun zaman alır ve hassas veriler dahil edilir.
+    Destek bir tane istemediği müddetçe **bellek dökümleri dahil etme** seçeneğini seçemezsiniz. Bellek dökümleri içeren bir destek paketinin toplanması uzun zaman alır ve hassas veriler dahil edilir.
 
     ![Destek paketi oluşturma 1](media/data-box-local-web-ui-admin/create-support-package-1.png)
 
-    Bir Destek paketi toplanır. Yalnızca sistem günlüklerini eklerseniz, bu işlem birkaç dakika sürer. Bellek dökümü eklerseniz çok daha uzun sürer.
+    Bir Destek paketi toplanır. Yalnızca sistem günlüklerini eklerseniz, bu işlem birkaç dakika sürer. Bellek dökümlerini eklerseniz çok daha uzun sürer.
 
     ![Destek paketi oluşturma 2](media/data-box-local-web-ui-admin/create-support-package-2.png)
 

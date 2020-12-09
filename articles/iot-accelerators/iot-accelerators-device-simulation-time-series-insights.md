@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: db9ba3efe60af830c0e15310b6127c18130f00b9
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e1409b43f0ce1fc0d8c622dda79e857ac6abdd33
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076258"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854572"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Cihaz simülasyonu çözüm hızlandırıcısında gönderilen Telemetriyi görselleştirmek için Time Series Insights kullanın
 
@@ -23,9 +23,9 @@ Cihaz benzetimi Çözüm Hızlandırıcısı, IoT çözümlerinizi test etmek i�
 
 Bu nasıl yapılır kılavuzundaki adımları izleyerek etkin bir Azure aboneliğine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-Bu nasıl yapılır kılavuzundaki adımlarda, cihaz benzetimi çözüm Hızlandırıcısını Azure aboneliğinize dağıttığınız varsayılmaktadır. Çözüm hızlandırıcıyı dağıtmadıysanız, [bulut tabanlı cihaz benzetimi çözüm](quickstart-device-simulation-deploy.md) hızlı başlangıcı ' nda bulunan adımları izleyin ve çalıştırın.
+Bu nasıl yapılır kılavuzundaki adımlarda, cihaz benzetimi çözüm Hızlandırıcısını Azure aboneliğinize dağıttığınız varsayılmaktadır. Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) ' na bakın.
 
-Bu makalede, çözüm hızlandırıcının adının **contoso simülasyonu**olduğu varsayılır. Aşağıdaki adımları tamamladıktan sonra **contoso simülasyonu** çözüm hızlandırıcısının adıyla değiştirin.
+Bu makalede, çözüm hızlandırıcının adının **contoso simülasyonu** olduğu varsayılır. Aşağıdaki adımları tamamladıktan sonra **contoso simülasyonu** çözüm hızlandırıcısının adıyla değiştirin.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -41,7 +41,7 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
     az resource list --resource-group contoso-simulation -o table
     ```
 
-    IoT Hub, **Microsoft. Devices/IotHubs**türünde kaynaktır.
+    IoT Hub, **Microsoft. Devices/IotHubs** türünde kaynaktır.
 
 1. **Devicesimulationtsi** adlı bir tüketici grubunu hub 'a ekleyin. Aşağıdaki komutta, hub 'ınızın adını ve çözüm hızlandırıcıyı kullanın:
 
@@ -55,7 +55,7 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
 
 [Azure Time Series Insights](../../articles/time-series-insights/time-series-insights-overview.md) , bulutta IoT ölçekli zaman serisi verilerinin yönetilmesi için tam olarak yönetilen bir analiz, depolama ve görselleştirme hizmetidir. Yeni bir Time Series Insights ortamı oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Time Series Insights **nesnelerin interneti kaynak oluştur**' u seçin  >  **Internet of Things**  >  **Time Series Insights**:
 
@@ -65,10 +65,10 @@ Aşağıdaki adımlar, tüketici grubunu oluşturmak için Azure Cloud Shell Azu
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ortam Adı | Aşağıdaki ekran görüntüsünde **contoso-TSI**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
+    | Ortam Adı | Aşağıdaki ekran görüntüsünde **contoso-TSI** adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı seçin. |
     | Abonelik | Açılan listeden Azure aboneliğinizi seçin. |
     | Kaynak grubu | **contoso-simülasyon**. Çözüm hızlandırıcısının adını kullanın. |
-    | Konum | Bu örnek **Doğu ABD**kullanır. Ortamınızı cihazınızın benzetim hızlandırıcısında aynı bölgede oluşturun. |
+    | Konum | Bu örnek **Doğu ABD** kullanır. Ortamınızı cihazınızın benzetim hızlandırıcısında aynı bölgede oluşturun. |
     | Sku |**S1** |
     | Kapasite | **1** |
 
@@ -97,7 +97,7 @@ IoT Hub 'ınıza bağlanmak için yeni bir olay kaynağı oluşturun. Önceki ad
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Olay kaynağı adı | Aşağıdaki ekran görüntüsünde **contoso-IoT-Hub**adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı kullanın. |
+    | Olay kaynağı adı | Aşağıdaki ekran görüntüsünde **contoso-IoT-Hub** adı kullanılmaktadır. Bu adımı tamamladığınızda kendi benzersiz adınızı kullanın. |
     | Kaynak | **IoT Hub’ı** |
     | İçeri aktarma seçeneği | **Kullanılabilir aboneliklerden IoT Hub kullanma** |
     | Abonelik Kimliği | Açılan listeden Azure aboneliğinizi seçin. |
@@ -155,7 +155,7 @@ Time Series Insights Gezgini, telemetrinizi görselleştirmek için kullanabilec
 
     ![Time Series Insights Gezgini sorgu Ekle](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-new-query.png)
 
-1. Zaman aralığı olarak **son 30 dakika** , **Ölçü**olarak **nem** ve **ıothub-Connection-Device-ID** değerini değere **göre bölme** olarak seçin:
+1. Zaman aralığı olarak **son 30 dakika** , **Ölçü** olarak **nem** ve **ıothub-Connection-Device-ID** değerini değere **göre bölme** olarak seçin:
 
     ![Gezgin sorgusunu Time Series Insights](./media/iot-accelerators-device-simulation-time-series-insights/time-series-insights-query2.png)
 

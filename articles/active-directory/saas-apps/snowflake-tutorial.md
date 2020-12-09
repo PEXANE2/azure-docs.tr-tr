@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 26ca1fffb3932493dc7182de1b520f8c0a17d59c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 3beb4e7831ce17a46f6daaa1258f284a0caefe8e
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514852"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855145"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Öğretici: kar tanesi ile Azure Active Directory tümleştirme
 
@@ -27,7 +27,7 @@ Kar ke 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 * Kullanıcılarınızın Azure AD hesaplarıyla kar eden (çoklu oturum açma) için otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
+Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -41,14 +41,14 @@ Azure AD tümleştirmesini kar tanesi ile yapılandırmak için aşağıdaki ö�
 
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
-* Kar tanesi **SP ve ıDP** tarafından başlatılan SSO 'yu destekliyor
-* Kar tanesi [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](snowflake-provisioning-tutorial.md) destekler (önerilir)
+- Kar tanesi **SP ve ıDP** tarafından başlatılan SSO 'yu destekliyor
+- Kar tanesi [Otomatik Kullanıcı sağlamayı ve sağlamayı kaldırmayı](snowflake-provisioning-tutorial.md) destekler (önerilir)
 
 ## <a name="adding-snowflake-from-the-gallery"></a>Galeriden kar ekleme
 
 Azure AD 'de kar 'nin tümleştirilmesini yapılandırmak için, Galeriden, yönetilen SaaS uygulamaları listenize alınan kar ' ı eklemeniz gerekir.
 
-**Galeriden kar eklemek için aşağıdaki adımları uygulayın:**
+**Galeriden kar ekleyin:**
 
 1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
@@ -62,13 +62,13 @@ Azure AD 'de kar 'nin tümleştirilmesini yapılandırmak için, Galeriden, yön
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **kar tanesi**yazın, sonuç panelinden **kar** tanesi ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **kar tanesi** yazın, sonuç panelinden **kar** tanesi ' ni seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde kar tanesi](common/search-new-app.png)
+     ![Sonuçlar listesinde kar tanesi](common/search-new-app-snowflake.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre kar tanesi ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre kar oluşturacak şekilde yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve kar tanesi içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı kar ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -98,7 +98,7 @@ Azure AD 'de kar özellikli çoklu oturum açmayı yapılandırmak için aşağ�
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
+4. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki adımları gerçekleştirin:
 
     ![Ekran görüntüsü; tanımlayıcı girebileceğiniz, yanıt U R L ve Kaydet ' i seçebileceğiniz temel SAML yapılandırmasını gösterir.](common/idp-intiated.png)
 
@@ -173,9 +173,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

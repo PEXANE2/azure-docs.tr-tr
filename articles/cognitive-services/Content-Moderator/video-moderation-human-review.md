@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327228"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853507"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Inceleme aracı ile video denetleme
 
@@ -103,4 +103,3 @@ Videoların limbo 'dan sona erdiğinde, İncelemeleri Tamam olarak işaretlenir.
 - [Video denetleme hızlı](video-moderation-api.md)başlangıcı ile çalışmaya başlayın.
 - Aracılı çıkışınızdan insan gözden geçirenler için [video İncelemeleri](video-reviews-quickstart-dotnet.md) oluşturmayı öğrenin.
 - Video incelemelerinizi [video dökümü](video-transcript-reviews-quickstart-dotnet.md) ekleme hakkında inceleme.
-- [Tüm video denetleme çözümünü](video-transcript-moderation-review-tutorial-dotnet.md)geliştirme hakkında ayrıntılı öğreticiye göz atın.

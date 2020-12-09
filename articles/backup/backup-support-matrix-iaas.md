@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerini yedeklerken destek ayarla
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 0dd0979b4dcc7c3828d88c594c02addaf00813c4
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 8cd943a76113fb1680406253a46b8a4f9d32190b
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754207"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853212"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM yedekleme için destek matrisi
 
@@ -101,7 +101,7 @@ DPM/MABS diskindeki kurtarma noktaları | dosya sunucuları için 64 ve uygulama
 --- | ---
 **Yeni VM oluştur** | Geri yükleme noktasından hızlıca temel bir VM oluşturur ve çalıştırmaya başlar.<br/><br/> VM için bir ad belirtebilir, yerleştirileceği kaynak grubunu ve sanal ağı (VNet) seçin ve geri yüklenen VM için bir depolama hesabı belirtin. Yeni VM'nin kaynak VM ile aynı bölgede oluşturulması gerekir.
 **Diski geri yükle** | Yeni bir VM oluşturmak üzere kullanılabilecek bir VM diskini geri yükler.<br/><br/> Azure Backup, VM oluşturmanıza ve özelleştirmenize yardımcı olacak bir şablon sağlar. <br/><br> Geri yükleme işi, özel VM ayarlarını belirtmek ve bir VM oluşturmak için indirebileceğiniz ve kullanabileceğiniz bir şablon oluşturur.<br/><br/> Diskler belirttiğiniz kaynak grubuna kopyalanır.<br/><br/> Alternatif olarak, diski mevcut bir sanal makineye iliştirebilir veya PowerShell kullanarak yeni bir VM oluşturabilirsiniz.<br/><br/> Bu seçenek VM'yi özelleştirmek, yedekleme sırasında mevcut olmayan yapılandırma ayarlarını eklemek veya şablon veya PowerShell kullanılarak yapılandırılması gereken ayarlar eklemek istediğinizde faydalı olur.
-**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>Mevcut olanı Değiştir, şifrelenmemiş yönetilen sanal makineler ve [özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler için desteklenir. Yönetilmeyen diskler ve [Genelleştirilmiş VM 'ler](../virtual-machines/windows/capture-image-resource.md)için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> Aynı zamanda, [Kullanıcı tarafından atanan yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) ve [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklarla sanal makineler için de desteklenir.
+**Mevcut olanı değiştir** | Bir diski geri yükleyebilir ve mevcut VM 'deki bir diski değiştirmek için kullanabilirsiniz.<br/><br/> Geçerli VM'nin mevcut olması gerekir. Silinmesi durumunda bu seçenek kullanılamaz.<br/><br/> Azure Backup, diski değiştirmeden önce var olan sanal makinenin anlık görüntüsünü alır ve bunu belirttiğiniz hazırlama konumunda depolar. VM'ye bağlı olan mevcut diskler seçilen geri yükleme noktasıyla değiştirilir.<br/><br/> Anlık görüntü kasaya kopyalanır ve bekletme ilkesine göre saklanır. <br/><br/> Disk değiştirme işleminden sonra, özgün disk kaynak grubunda tutulur. Gerekli değilse, özgün diskleri el ile silmeyi tercih edebilirsiniz. <br/><br/>Mevcut olanı Değiştir, şifrelenmemiş yönetilen sanal makineler ve [özel görüntüler kullanılarak oluşturulan](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/)VM 'ler için desteklenir. Yönetilmeyen diskler ve [Genelleştirilmiş VM 'ler](../virtual-machines/windows/capture-image-resource.md)için desteklenmez.<br/><br/> Geri yükleme noktası geçerli VM 'den daha fazla veya daha az disk içeriyorsa, geri yükleme noktasındaki disk sayısı yalnızca VM yapılandırmasını yansıtacaktır.<br><br> [Kullanıcı tarafından atanan yönetilen kimliği](../active-directory/managed-identities-azure-resources/overview.md) ve [Key Vault](../key-vault/general/overview.md)gibi bağlantılı kaynaklara sahip VM 'ler için Varolanı değiştir desteklenmez.
 **Bölgeler Arası (ikincil bölge)** | Çapraz bölge geri yükleme, Azure [eşlenmiş bölgesi](../best-practices-availability-paired-regions.md#what-are-paired-regions)olan Ikincil bölgedeki Azure VM 'lerini geri yüklemek için kullanılabilir.<br><br> Yedekleme ikincil bölgede yapıldığında, seçilen kurtarma noktası için tüm Azure VM 'lerini geri yükleyebilirsiniz.<br><br> Bu özellik aşağıdaki seçenekler için kullanılabilir:<br> <li> [VM oluştur](./backup-azure-arm-restore-vms.md#create-a-vm) <br> <li> [Diskleri geri yükle](./backup-azure-arm-restore-vms.md#restore-disks) <br><br> [Mevcut diskleri Değiştir](./backup-azure-arm-restore-vms.md#replace-existing-disks) seçeneğini şu anda desteklemiyoruz.<br><br> İzinler<br> İkincil bölgedeki geri yükleme işlemi, Backup Admins ve App Admins tarafından gerçekleştirilebilir.
 
 ## <a name="support-for-file-level-restore"></a>Dosya düzeyinde geri yükleme desteği
@@ -206,10 +206,10 @@ Veri güvenliği:
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-DPM/MABS olmayan şirket içi Windows makineleri | ![Evet][green] | ![Evet][green]
-Azure VM’leri | ![Evet][green] | ![Evet][green]
-DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+DPM/MABS olmayan şirket içi Windows makineleri | ![Yes][green] | ![Yes][green]
+Azure VM’leri | ![Yes][green] | ![Yes][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
 
 ## <a name="vm-compression-support"></a>VM sıkıştırma desteği
 
@@ -222,8 +222,8 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 DPM/MABS olmayan şirket içi Windows makineleri | NA | ![Yes][green]
 Azure VM’leri | NA | NA
-DPM ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
-MABS ile şirket içi/Azure VM 'Leri | ![Evet][green] | ![Evet][green]
+DPM ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Yes][green]
+MABS ile şirket içi/Azure VM 'Leri | ![Yes][green] | ![Evet][green]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

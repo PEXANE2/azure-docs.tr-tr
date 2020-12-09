@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: 6585718a549c0e0a6eac1ab50788798e1021fef9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446824"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853241"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcıyı dağıtmak için azureiotsolutions.com sitesini kullanın
 
@@ -22,7 +22,7 @@ Azure IoT çözüm hızlandırıcılarına [AzureIoTSolutions.com](https://www.a
 ![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
 
 > [!TIP]
-> Dağıtım işlemi üzerinde daha fazla denetime ihtiyacınız varsa, [bir çözüm Hızlandırıcısı dağıtmak Için CLI](iot-accelerators-remote-monitoring-deploy-cli.md)'yi kullanabilirsiniz.
+> Dağıtım işlemi üzerinde daha fazla denetime ihtiyacınız varsa, bir çözüm Hızlandırıcısı dağıtmak için CLı 'yi kullanabilirsiniz.
 
 Çözüm hızlandırıcılarını aşağıdaki yapılandırmalarda dağıtabilirsiniz:
 
@@ -64,9 +64,4 @@ Donanım üreticiniz kullanıyorsanız, IoT için sertifikalı bir programda Mic
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT çözüm hızlandırıcılarından birini denemek için hızlı başlangıçları inceleyin:
-
-* [Uzaktan izleme çözümü deneyin](quickstart-remote-monitoring-deploy.md)
-* [Bağlı fabrika çözümünü deneyin](quickstart-connected-factory-deploy.md)
-* [Tahmine dayalı bakım çözümünü deneyin](quickstart-predictive-maintenance-deploy.md)
-* [Cihaz benzetimi çözümünü deneyin](quickstart-device-simulation-deploy.md)
+IoT çözüm hızlandırıcılardan birini denemek için hızlı başlangıç: [bağlı bir fabrika çözümünü deneyin](quickstart-connected-factory-deploy.md).

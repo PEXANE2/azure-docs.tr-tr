@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015180"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854017"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Azure Data Factory ortak veri modeli biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015180"
 Common Data Model (CDM) meta veri sistemi, verilerin ve anlamının uygulamalar ve iş süreçlerinde kolayca paylaşılmasını olanaklı kılar. Daha fazla bilgi için bkz. [ortak veri modeline](/common-data-model/) genel bakış.
 
 Azure Data Factory, kullanıcılar, CDM varlıklarındaki verileri, veri akışlarını eşleme kullanarak [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) (ADLS 2.) içinde depolanan hem model.jshem de bildirim formunda dönüştürebilir. Ayrıca, verilerinizi CSV veya Parquet biçiminde bölümlenmiş klasörlerde barındıracak CDM varlık başvurularını kullanarak CDM biçiminde veri havuzu oluşturabilirsiniz. 
-
-> [!NOTE]
-> ADF veri akışları için ortak veri modeli (CDM) biçim Bağlayıcısı Şu anda genel önizleme olarak kullanılabilir.
 
 ## <a name="mapping-data-flow-properties"></a>Veri akışı özelliklerini eşleme
 
@@ -37,10 +34,10 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır `cdm` | yes | `cdm` | biçim |
+| Biçimlendir | Biçim olmalıdır `cdm` | evet | `cdm` | biçim |
 | Meta veri biçimi | Verilerin Varlık başvurusunun bulunduğu yer. CDM sürüm 1,0 kullanıyorsanız, bildirim ' ı seçin. 1,0 öncesi bir CDM sürümü kullanıyorsanız, üzerinde model.js' yi seçin. | Yes | `'manifest'` veya `'model'` | manifestType |
-| Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | yes | Dize | Biçimlendiri |
-| Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | yes | Dize | folderPath |
+| Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
+| Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
 | Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir  | Hayır | Dize | manifestName |
 | Son değiştirme ölçütü | En son değiştirildiklerinde dosyaları filtrelemek için seçin | hayır | Zaman damgası | Modıfıedafter <br> modifiedBefore | 
@@ -49,7 +46,7 @@ Aşağıdaki tabloda bir CDM kaynağı tarafından desteklenen özellikler liste
 | Varlık başvuru deposu | GitHub deposu adı | Evet, GitHub 'da bildirim ve yapı kullanılıyorsa | Dize | github_repository |
 | Varlık başvuru dalı | GitHub depo dalı | Evet, GitHub 'da bildirim ve yapı kullanılıyorsa | Dize |  github_branch |
 | Corpus klasörü | Yapı 'nin kök konumu | Evet, bildirim kullanılıyorsa | Dize | corpusPath |
-| Corpus varlığı | Varlık başvurusunun yolu | yes | Dize | varlık |
+| Corpus varlığı | Varlık başvurusunun yolu | evet | Dize | varlık |
 | Dosya bulunamamış izin ver | True ise bir dosya bulunmazsa bir hata oluşturulmaz | hayır | `true` veya `false` | ıgnorenofilesfound |
 
 Kaynak ve havuz dönüşümlerindeki "varlık başvurusu" nı seçerken, varlık başvurunuz konumu için bu üç seçenekten birini seçebilirsiniz:
@@ -88,7 +85,6 @@ Havuz dönüşümünde veri akışı sütunlarını varlık özellikleriyle eşl
 2. Bölümleri bulun. Location özelliği 
 3. "Blob.core.windows.net" öğesini "dfs.core.windows.net" olarak değiştir
 4. URL 'deki "% 2F" kodlamasını "/" olarak düzeltin
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>CDM kaynak veri akışı betiği örneği
 
@@ -120,17 +116,17 @@ Aşağıdaki tabloda bir CDM havuzu tarafından desteklenen özellikler listelen
 
 | Ad | Açıklama | Gerekli | İzin verilen değerler | Veri akışı betiği özelliği |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Biçimlendir | Biçim olmalıdır `cdm` | yes | `cdm` | biçim |
-| Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | yes | Dize | Biçimlendiri |
-| Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | yes | Dize | folderPath |
+| Biçimlendir | Biçim olmalıdır `cdm` | evet | `cdm` | biçim |
+| Kök konumu: kapsayıcı | CDM klasörünün kapsayıcı adı | evet | Dize | Biçimlendiri |
+| Kök konumu: klasör yolu | CDM klasörünün kök klasör konumu | evet | Dize | folderPath |
 | Bildirim dosyası: varlık yolu | Kök klasör içindeki varlığın klasör yolu | hayır | Dize | entityPath |
 | Bildirim dosyası: bildirim adı | Bildirim dosyasının adı. Varsayılan değer ' default ' değeridir | Hayır | Dize | manifestName |
-| Şemaya bağlı hizmet | Yapı 'nin bulunduğu bağlı hizmet | yes | `'adlsgen2'` veya `'github'` | corpusStore | 
+| Şemaya bağlı hizmet | Yapı 'nin bulunduğu bağlı hizmet | evet | `'adlsgen2'` veya `'github'` | corpusStore | 
 | Varlık başvurusu kapsayıcısı | Kapsayıcı yapı | Evet, yapı ADLS 2. | Dize | adlsgen2_fileSystem |
 | Varlık başvuru deposu | GitHub deposu adı | Evet, GitHub 'da yapı | Dize | github_repository |
 | Varlık başvuru dalı | GitHub depo dalı | Evet, GitHub 'da yapı | Dize |  github_branch |
-| Corpus klasörü | Yapı 'nin kök konumu | yes | Dize | corpusPath |
-| Corpus varlığı | Varlık başvurusunun yolu | yes | Dize | varlık |
+| Corpus klasörü | Yapı 'nin kök konumu | evet | Dize | corpusPath |
+| Corpus varlığı | Varlık başvurusunun yolu | evet | Dize | varlık |
 | Bölüm yolu | Bölümün yazılacağı konum | hayır | Dize | partitionPath |
 | Klasörü temizle | Hedef klasör, yazma işleminden önce silinirse | hayır | `true` veya `false` | kesilemedi |
 | Biçim türü | Parquet biçimini belirtmeyi seçin | hayır | `parquet` belirtilmişse | alt biçim |

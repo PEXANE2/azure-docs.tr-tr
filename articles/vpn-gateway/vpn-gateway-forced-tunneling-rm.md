@@ -1,49 +1,39 @@
 ---
 title: Siteden siteye bağlantılar için zorlamalı tüneli yapılandırma
-description: Internet 'e bağlı tüm trafiği şirket içi konumunuza geri yönlendirme veya ' zorlama '.
+description: Internet 'e bağlı tüm trafiği şirket içi konumunuza geri yönlendirme (zorlama).
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/02/2020
+ms.date: 12/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 00f98a5086b9a9bf21054138cf01d26a550338da
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673847"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855048"
 ---
-# <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager dağıtım modelini kullanarak zorlamalı tünel yapılandırma
+# <a name="configure-forced-tunneling"></a>Zorlamalı tünel yapılandırma
 
-Zorlamalı tünel oluşturma, İnternet’e yönelik tüm trafiğin inceleme ve denetim amacıyla Siteden Siteye VPN tüneli aracılığıyla şirket içi konumunuza geri yönlendirilmesini veya “zorlanmasını” sağlamanızı mümkün kılar. Bu, çoğu kurumsal BT İlkesi için kritik bir güvenlik gereksinimidir. Zorlamalı tünel olmadan, Azure 'daki sanal makinelerinizden Internet 'e yönelik trafik, trafiği incelemenize veya denetlemenizi sağlayan seçenek olmadan Azure ağ altyapısından doğrudan Internet 'e geçer. Yetkisiz Internet erişimi, bilgilerin açığa çıkmasına veya diğer güvenlik ihlallerine neden olabilir.
+Zorlamalı tünel oluşturma, İnternet’e yönelik tüm trafiğin inceleme ve denetim amacıyla Siteden Siteye VPN tüneli aracılığıyla şirket içi konumunuza geri yönlendirilmesini veya “zorlanmasını” sağlamanızı mümkün kılar. Bu, çoğu kurumsal BT İlkesi için kritik bir güvenlik gereksinimidir. Zorlamalı tünel yapılandırmadıysanız, Azure 'daki sanal makinelerinizden Internet 'e yönelik trafik, trafiği incelemenize veya denetlemenizi sağlayacak seçeneği olmadan Azure ağ altyapısından doğrudan Internet 'e geçer. Yetkisiz Internet erişimi, bilgilerin açığa çıkmasına veya diğer güvenlik ihlallerine neden olabilir.
 
-
-
-[!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
-
-Bu makalede, Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan sanal ağlar için Zorlamalı tünel oluşturma işlemi adım adım açıklanmaktadır. Zorlamalı tünel, Portal üzerinden değil, PowerShell kullanılarak yapılandırılabilir. Klasik dağıtım modeli için Zorlamalı tünel yapılandırmak istiyorsanız, aşağıdaki açılan listeden klasik makale ' i seçin:
-
-> [!div class="op_single_selector"]
-> * [PowerShell - Klasik](vpn-gateway-about-forced-tunneling.md)
-> * [PowerShell - Resource Manager](vpn-gateway-forced-tunneling-rm.md)
-> 
-> 
+Zorlamalı tünel, Azure PowerShell kullanılarak yapılandırılabilir. Azure portal kullanılarak yapılandırılamaz. Bu makale, Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan sanal ağlar için zorlamalı tüneli yapılandırmanıza yardımcı olur. Klasik dağıtım modeli için Zorlamalı tünel yapılandırmak istiyorsanız bkz. [Zorlamalı tünel-klasik](vpn-gateway-about-forced-tunneling.md).
 
 ## <a name="about-forced-tunneling"></a>Zorlamalı tünel hakkında
 
-Aşağıdaki diyagramda zorlamalı tünelin nasıl çalıştığı gösterilmektedir. 
+Aşağıdaki diyagramda zorlamalı tünelin nasıl çalıştığı gösterilmektedir.
 
-![Zorlamalı tünel](./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png)
+:::image type="content" source="./media/vpn-gateway-forced-tunneling-rm/forced-tunnel.png" alt-text="Diyagramda Zorlamalı tünel gösterilmektedir.":::
 
-Yukarıdaki örnekte, ön uç alt ağı zorlamalı tünellenmiş değildir. Ön uç alt ağındaki iş yükleri doğrudan Internet 'ten gelen müşteri isteklerini kabul etmeye ve bunlara yanıt vermeye devam edebilir. Orta katman ve arka uç alt ağları Zorlamalı tünel. Bu iki alt ağın Internet 'e giden tüm bağlantıları, S2S VPN tünellerinden biri aracılığıyla şirket içi bir siteye yeniden yönlendirilir veya yeniden yönlendirilir.
+Bu örnekte, ön uç alt ağı Zorlamalı tünel değildir. Ön uç alt ağındaki iş yükleri doğrudan Internet 'ten gelen müşteri isteklerini kabul etmeye ve bunlara yanıt vermeye devam edebilir. Orta katman ve arka uç alt ağları Zorlamalı tünel. Bu iki alt ağın Internet 'e giden tüm bağlantıları, siteden siteye (S2S) VPN tünellerinden biri aracılığıyla şirket içi bir siteye yeniden yönlendirilir veya yeniden yönlendirilir.
 
 Bu sayede, Azure 'daki sanal makinelerinizden veya bulut hizmetinizden Internet erişimini kısıtlayıp incelemenize olanak sağlarken çok katmanlı hizmet mimarinizi etkinleştirmeye devam edersiniz. Sanal ağlarınızda Internet 'e yönelik bir iş yükü yoksa, sanal ağların tamamına Zorlamalı tünel de uygulayabilirsiniz.
 
 ## <a name="requirements-and-considerations"></a>Gereksinimler ve önemli noktalar
 
-Azure 'da Zorlamalı tünel, sanal ağ kullanıcı tanımlı rotalar aracılığıyla yapılandırılır. Trafiği şirket içi siteye yeniden yönlendirmek, Azure VPN ağ geçidi için varsayılan rota olarak ifade edilir. Kullanıcı tanımlı yönlendirme ve sanal ağlar hakkında daha fazla bilgi için bkz. [Kullanıcı tanımlı yollar ve IP iletimi](../virtual-network/virtual-networks-udr-overview.md).
+Azure 'da Zorlamalı tünel, sanal ağ özel kullanıcı tanımlı rotalar kullanılarak yapılandırılır. Trafiği şirket içi siteye yeniden yönlendirmek, Azure VPN ağ geçidi için varsayılan rota olarak ifade edilir. Kullanıcı tanımlı yönlendirme ve sanal ağlar hakkında daha fazla bilgi için bkz. [Özel Kullanıcı tanımlı rotalar](../virtual-network/virtual-networks-udr-overview.md#user-defined).
 
 * Her sanal ağ alt ağı yerleşik, sistem yönlendirme tablosuna sahiptir. Sistem yönlendirme tablosu aşağıdaki üç yol grubuna sahiptir:
   
@@ -70,9 +60,9 @@ Azure Resource Manager PowerShell cmdlet'lerinin en son sürümünü yükleyin. 
 >
 >
 
-### <a name="to-log-in"></a>Oturum açmak için
+### <a name="to-sign-in"></a>Oturum açmak için
 
-[!INCLUDE [To log in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+[!INCLUDE [Sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
 
 ## <a name="configure-forced-tunneling"></a>Zorlamalı tünel yapılandırma
 

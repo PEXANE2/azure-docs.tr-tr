@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888785"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854062"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
-Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol kullanarak birim oluşturmayı destekler. Bu makalede, LDAP kullanıcı eşlemesi desteğiyle NFSv3 ve SMB 'nin ikili protokolünü kullanan bir birimin nasıl oluşturulacağı gösterilmektedir.  
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak birim oluşturmayı destekler. Bu makalede, LDAP kullanıcı eşlemesi desteğiyle NFSv3 ve SMB 'nin ikili protokolünü kullanan bir birimin nasıl oluşturulacağı gösterilmektedir.  
 
 
 ## <a name="before-you-begin"></a>Başlamadan önce 

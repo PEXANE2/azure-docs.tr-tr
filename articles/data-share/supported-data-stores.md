@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/7/2020
+ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592439"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853160"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure Veri Paylaşımı'nda desteklenen veri depoları
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, Azure veri paylaşımında desteklenen veri kaynaklarını
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL Veritabanı |✓ | | |
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) |✓ | | |
-| Azure SYNAPSE Analytics (çalışma alanı) SQL havuzu | Genel Önizleme | | |
+| Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzu |✓ | | |
 | Azure Veri Gezgini | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Veri deposu destek matrisi
@@ -39,14 +39,14 @@ Azure veri paylaşımında, ' deki verileri kabul etmek için bir veri deposunda
 
 Aşağıdaki tabloda veri tüketicilerinin veri payını kabul edip yapılandırırken kullandığı farklı birleşimler ve seçimler ayrıntılı olarak verilmiştir. Veri kümesi eşlemelerini yapılandırma hakkında daha fazla bilgi için bkz. [veri kümesi eşlemelerini yapılandırma](how-to-configure-mapping.md).
 
-| Veri deposu | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | Azure SYNAPSE Analytics (çalışma alanı) SQL havuzu | Azure Veri Gezgini
+| Veri deposu | Azure Blob Depolama | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Veritabanı | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzu | Azure Veri Gezgini
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Azure Blob depolama | ✓ || ✓ |||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
 | Azure SQL Veritabanı | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure SYNAPSE Analytics (eski adıyla Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure SYNAPSE Analytics (çalışma alanı) SQL havuzu | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Azure SYNAPSE Analytics (çalışma alanı) adanmış SQL havuzu | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Veri Gezgini ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Depolama hesabından paylaşma

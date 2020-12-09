@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3ec9718d313e7e8d757eb41c230225bdcf9ebd49
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749054"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855082"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights’ta örnekleme
 
@@ -33,11 +33,11 @@ Aşağıdaki tabloda her SDK ve uygulama türü için kullanılabilir örnekleme
 | Application Insights SDK | Uyarlamalı örnekleme destekleniyor | Sabit hızlı örnekleme destekleniyor | Alım örnekleme destekleniyor |
 |-|-|-|-|
 | ASP.NET | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| ASP.NET Core | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | Hayır | Yalnızca başka bir örnekleme geçerli değilse |
-| Java | Hayır | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
-| Node.JS | Hayır | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
-| Python | Hayır | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| ASP.NET Çekirdeği | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-aspnet-core-applications) | [Evet](#configuring-fixed-rate-sampling-for-aspnet-core-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Azure İşlevleri | [Evet (varsayılan olarak açık)](#configuring-adaptive-sampling-for-azure-functions) | No | Yalnızca başka bir örnekleme geçerli değilse |
+| Java | No | [Evet](#configuring-fixed-rate-sampling-for-java-applications) | Yalnızca başka bir örnekleme geçerli değilse |
+| Node.JS | No | [Evet](./nodejs.md#sampling) | Yalnızca başka bir örnekleme geçerli değilse
+| Python | No | [Evet](#configuring-fixed-rate-sampling-for-opencensus-python-applications) | Yalnızca başka bir örnekleme geçerli değilse |
 | Tüm diğerleri | Hayır | Hayır | [Evet](#ingestion-sampling) |
 
 > [!NOTE]
@@ -315,18 +315,12 @@ Varsayılan olarak, Java Aracısı ve SDK 'da hiçbir örnekleme etkinleştirilm
 
 1. [Applicationinsights-Agent-3.0.0-PREVIEW. 5. jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar) dosyasını indirin
 
-1. Örneklemeyi etkinleştirmek için dosyanıza aşağıdakini ekleyin `ApplicationInsights.json` :
+1. Örneklemeyi etkinleştirmek için dosyanıza aşağıdakini ekleyin `applicationinsights.json` :
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -559,7 +553,7 @@ Yaklaşık büyük ölçüde doğruluk, yapılandırılan örnekleme yüzdesine 
 
 * SDK örnekleme gerçekleştirmediğinden, belirli bir birimin üzerindeki herhangi bir telemetri için alma örneklemesi otomatik olarak gerçekleşebilir. Bu yapılandırma, örneğin, ASP.NET SDK veya Java SDK 'sının eski bir sürümünü kullanıyorsanız çalışır.
 * Geçerli ASP.NET veya ASP.NET Core SDK 'larını kullanıyorsanız (Azure 'da veya kendi sunucunuzda barındırılan), varsayılan olarak Uyarlamalı örnekleme alırsınız, ancak yukarıda açıklanan şekilde sabit ücret ile geçiş yapabilirsiniz. Sabit hızlı örnekleme ile, tarayıcı SDK 'Sı, örnek ilgili olaylarla otomatik olarak eşitlenir. 
-* Geçerli Java aracısını kullanıyorsanız, `ApplicationInsights.json` `ApplicationInsights.xml` sabit fiyat örneklemeyi açmak Için (Java SDK 'sı için, yapılandırma) yapılandırabilirsiniz. Örnekleme varsayılan olarak kapalıdır. Sabit fiyat örneklemeyle, tarayıcı SDK 'Sı ve sunucu, örnek ilgili olaylarla otomatik olarak eşitlenir.
+* Geçerli Java aracısını kullanıyorsanız, `applicationinsights.json` `ApplicationInsights.xml` sabit fiyat örneklemeyi açmak Için (Java SDK 'sı için, yapılandırma) yapılandırabilirsiniz. Örnekleme varsayılan olarak kapalıdır. Sabit fiyat örneklemeyle, tarayıcı SDK 'Sı ve sunucu, örnek ilgili olaylarla otomatik olarak eşitlenir.
 
 *Her zaman görmek istediğim bazı nadir olaylar vardır. Örnekleme modülünü nasıl geçmiş bir şekilde alabilirim?*
 

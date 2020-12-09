@@ -5,23 +5,20 @@ author: djpmsft
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/07/2020
 ms.author: daperlov
-ms.openlocfilehash: 3e1c5f3b360960779dd58c8c05b25885df81d2e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 794c9a0768a7b649ce4fb123c85f6cc0120764c8
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91276535"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854980"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory Delta biçimi
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, Delta biçimini kullanarak [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md) veya [Azure Blob depolama](connector-azure-blob-storage.md) alanında depolanan bir Delta Gölü veya buradan veri kopyalama konuları gösterilmektedir. Bu bağlayıcı, veri akışlarını hem kaynak hem de havuz olarak eşlemek için bir [satır içi veri kümesi](data-flow-source.md#inline-datasets) olarak kullanılabilir.
-
-> [!NOTE]
-> Veri akışlarını eşlemek için Delta biçimi Bağlayıcısı Şu anda genel önizleme olarak kullanılabilir.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4ALTs]
 
@@ -78,7 +75,7 @@ Aşağıdaki tabloda bir Delta havuzu tarafından desteklenen özellikler listel
 | Sıkıştırma türü | Delta tablosunun sıkıştırma türü | hayır | `bzip2`<br>`gzip`<br>`deflate`<br>`ZipDeflate`<br>`snappy`<br>`lz4` | compressionType |
 | Sıkıştırma düzeyi | Sıkıştırmanın olabildiğince çabuk veya elde edilen dosyanın en iyi şekilde sıkıştırılıp tamamlanmayacağını seçin. | belirtilmişse gereklidir `compressedType` . | `Optimal` veya `Fastest` | compressionLevel |
 | Vakum | Eski tablo sürümleri için bekletme eşiğini saat cinsinden belirtin. 0 veya daha az varsayılan değer 30 gündür | evet | Tamsayı | Vakum |
-| Yöntemi Güncelleştir | Delta Gölü üzerinde hangi güncelleştirme işlemlerine izin verileceğini belirtin. INSERT olmayan yöntemler için, satırları işaretlemek için önceki bir alter Row dönüşümü gerekir. | evet | `true` veya `false` | siler <br> eklenebilir <br> güncellenebilir <br> upsertable |
+| Yöntemi Güncelleştir | Delta Gölü üzerinde hangi güncelleştirme işlemlerine izin verileceğini belirtin. INSERT olmayan yöntemler için, satırları işaretlemek için önceki bir alter Row dönüşümü gerekir. | evet | `true` veya `false` | siler <br> eklenebilir <br> güncellenebilir <br> birleþtirmek |
 
 ### <a name="delta-sink-script-example"></a>Delta havuz betiği örneği
 

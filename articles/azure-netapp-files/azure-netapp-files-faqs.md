@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: b-juche
-ms.openlocfilehash: 5409f9177116add1fd794ec1e72f276daf34e029
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1537a87999f9a8eecf83a2431b2f53d3ceaedacb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659157"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854708"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files hakkında SSS
 
@@ -60,7 +60,7 @@ Hayır, Azure NetApp Files Şu anda çift yığın (IPv4 ve IPv6) VNet 'i destek
 
 NFSv 4.1 istemcileri ve Azure NetApp Files birimleri arasındaki veri trafiği, AES-256 şifrelemesi ile Kerberos kullanılarak şifrelenir. Ayrıntılar için bkz. [NFSv 4.1 Kerberos şifrelemeyi yapılandırma Azure NetApp Files](configure-kerberos-encryption.md) .   
 
-Azure NetApp Files birimler için NFSv3 veya SMBv3 istemcileri arasındaki veri trafiği şifrelenmemiştir. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
+Azure NetApp Files birimler için NFSv3 veya SMB3 istemcileri arasındaki veri trafiği şifrelenmemiştir. Bununla birlikte, bir Azure VM 'den (NFS veya SMB istemcisi çalıştıran) Azure NetApp Files, diğer tüm Azure-VM-VM trafiği kadar güvenlidir. Bu trafik Azure veri merkezi ağı için yereldir. 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>Depolama alanı bekleyen olarak şifrelenebilir mi?
 

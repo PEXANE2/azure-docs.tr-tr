@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files için bir SMB birimi oluşturun | Microsoft Docs
-description: Bu makalede, Azure NetApp Files içinde nasıl SMBv3 birimi oluşturacağınız gösterilmektedir. Active Directory bağlantıları ve etki alanı Hizmetleri için gereksinimler hakkında bilgi edinin.
+description: Bu makalede, Azure NetApp Files içinde nasıl SMB3 birimi oluşturacağınız gösterilmektedir. Active Directory bağlantıları ve etki alanı Hizmetleri için gereksinimler hakkında bilgi edinin.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 682a97738e94c2a8188b4976a229d6a850a5b6ac
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512010"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854834"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
-Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMBv3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMBv3 birimi oluşturma konusu gösterilmektedir.
+Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol (NFSv3 ve SMB) kullanarak birim oluşturmayı destekler. Birimin kapasite kullanımı, havuzunun sağlanan kapasitesinden sayılır. Bu makalede, SMB3 birimi oluşturma konusu gösterilmektedir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 Zaten bir kapasite havuzu ayarlamış olmalısınız.   
