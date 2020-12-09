@@ -1,26 +1,26 @@
 ---
 title: GitHub eylemlerini kullanarak Kaynak Yöneticisi şablonları dağıtma
-description: GitHub eylemleri kullanılarak Azure Resource Manager şablonlarının nasıl dağıtılacağını açıklar.
+description: GitHub eylemleri kullanılarak Azure Resource Manager şablonlarının (ARM şablonları) nasıl dağıtılacağını açıklar.
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: cf705f68544c4c4e0db55d4a375e1e50530c8957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4cda8307d417880469e6043b84c3ac55ed30071c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185717"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905851"
 ---
-# <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak Azure Resource Manager şablonları dağıtma
+# <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak ARM şablonları dağıtma
 
 [GitHub eylemleri](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
-Kaynak Yöneticisi şablonunu Azure 'a dağıtmayı otomatikleştirmek için [Azure Resource Manager şablonu dağıt eylemini](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) kullanın. 
+Azure 'a bir Azure Resource Manager şablonu (ARM şablonu) dağıtmayı otomatikleştirmek için [Azure Resource Manager şablonu dağıt eylemini](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.  
+- GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.
     - Kaynak Yöneticisi şablonlarınızı ve iş akışı dosyalarınızı depolamak için bir GitHub deposu. Bir tane oluşturmak için bkz. [Yeni bir depo oluşturma](https://help.github.com/en/enterprise/2.14/user/articles/creating-a-new-repository).
 
 
@@ -40,21 +40,21 @@ Dosya iki bölümden oluşur:
 
 [Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
 
-Henüz bir tane yoksa bir kaynak grubu oluşturun. 
+Henüz bir tane yoksa bir kaynak grubu oluşturun.
 
 ```azurecli-interactive
     az group create -n {MyResourceGroup}
 ```
 
-Yer tutucusunu `myApp` uygulamanızın adıyla değiştirin. 
+Yer tutucusunu `myApp` uygulamanızın adıyla değiştirin.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {myApp} --role contributor --scopes /subscriptions/{subscription-id}/resourceGroups/{MyResourceGroup} --sdk-auth
 ```
 
-Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın. Yalnızca `clientId` ,, `clientSecret` `subscriptionId` ve değerlerine sahip bölümlere ihtiyacınız olacaktır `tenantId` . 
+Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyla değiştirin. Çıktı, aşağıda gösterilene benzer App Service uygulamanıza erişim sağlayan rol atama kimlik bilgileri içeren bir JSON nesnesidir. Bu JSON nesnesini daha sonra kopyalayın. Yalnızca `clientId` ,, `clientSecret` `subscriptionId` ve değerlerine sahip bölümlere ihtiyacınız olacaktır `tenantId` .
 
-```output 
+```output
   {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -71,7 +71,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubu adıyl
 
 ## <a name="configure-the-github-secrets"></a>GitHub gizli dizilerini yapılandırma
 
-Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli diziler oluşturmanız gerekir. 
+Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli diziler oluşturmanız gerekir.
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
@@ -79,9 +79,9 @@ Azure kimlik bilgileriniz, kaynak grubunuz ve abonelikleriniz için gizli dizile
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-1. Adlı başka bir gizli dizi oluşturun `AZURE_RG` . Kaynak grubunuzun adını gizli dizi değeri alanına ekleyin (örnek: `myResourceGroup` ). 
+1. Adlı başka bir gizli dizi oluşturun `AZURE_RG` . Kaynak grubunuzun adını gizli dizi değeri alanına ekleyin (örnek: `myResourceGroup` ).
 
-1. Adlı ek bir gizli dizi oluşturun `AZURE_SUBSCRIPTION` . Abonelik KIMLIĞINIZI gizli dizi değeri alanına ekleyin (örnek: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ). 
+1. Adlı ek bir gizli dizi oluşturun `AZURE_SUBSCRIPTION` . Abonelik KIMLIĞINIZI gizli dizi değeri alanına ekleyin (örnek: `90fd3f9d-4c61-432d-99ba-1273f236afa2` ).
 
 ## <a name="add-resource-manager-template"></a>Kaynak Yöneticisi şablonu Ekle
 
@@ -118,7 +118,7 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
         - uses: azure/login@v1
           with:
             creds: ${{ secrets.AZURE_CREDENTIALS }}
-     
+
           # Deploy ARM template
         - name: Run ARM deploy
           uses: azure/arm-deploy@v1
@@ -126,13 +126,13 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
             subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
             resourceGroupName: ${{ secrets.AZURE_RG }}
             template: ./azuredeploy.json
-            parameters: storageAccountType=Standard_LRS 
-        
+            parameters: storageAccountType=Standard_LRS
+
           # output containerName variable from template
         - run: echo ${{ steps.deploy.outputs.containerName }}
     ```
     > [!NOTE]
-    > ARM dağıtımı eyleminde bunun yerine bir JSON biçim parametreleri dosyası belirtebilirsiniz (örnek: `.azuredeploy.parameters.json` ).  
+    > ARM dağıtımı eyleminde bunun yerine bir JSON biçim parametreleri dosyası belirtebilirsiniz (örnek: `.azuredeploy.parameters.json` ).
 
     İş akışı dosyasının ilk bölümü şunları içerir:
 
@@ -152,7 +152,7 @@ Dosyayı depodaki herhangi bir yere koyabilirsiniz. Sonraki bölümde yer alan i
 1. Dağıtımı doğrulamak için menüden **ARM dağıtımını Çalıştır** ' ı seçin.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin. 
+Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuzu silerek dağıttığınız kaynakları temizleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

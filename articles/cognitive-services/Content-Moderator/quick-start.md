@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: İçerik Aracı, içerik denetleme
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143739"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905222"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Hızlı başlangıç: Web üzerinde Content Moderator deneyin
 
@@ -49,7 +49,7 @@ Verileri müşteri tarafından yönetilen bir anahtarla (CMK) şifrelemeyi seçe
 
 ## <a name="upload-sample-content"></a>Örnek içeriği karşıya yükle
 
-Şimdi örnek içerik yüklemeye hazırsınız. **> görüntüsünü dene** ' yi seçin, **metni > deneyin** veya **> video kullanmayı deneyin** .
+Şimdi örnek içerik yüklemeye hazırsınız. **> görüntüsünü dene**' yi seçin, **metni > deneyin** veya **> video kullanmayı deneyin**.
 
 > [!div class="mx-imgBorder"]
 > ![Görüntüyü veya metin yönetimini deneyin](images/tryimagesortext.png)
@@ -88,6 +88,6 @@ Veya kodunuzda denetleme API 'Lerini kullanmaya başlamak için sonraki adımlar
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kendi uygulamanızda denetleme API 'Lerinin nasıl kullanılacağını öğrenin.
-- Görüntü denetlemeyi uygulayın. Resimleri taramak [API console](try-image-api.md) ve Etiketler, güven puanları ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkinlere yönelik içeriği algılamak için [istemci kitaplığı hızlı](client-libraries.md) başlangıcını izleyin.
-- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya [istemci kitaplığı hızlı](client-libraries.md) başlangıcını kullanın.
+- Görüntü denetlemeyi uygulayın. Resimleri taramak ve Etiketler, güvenirlik puanları ve diğer ayıklanan bilgileri kullanarak görüntüleri taramak ve olası yetişkin ve akıllı içerikleri algılamak için [API konsolunu](try-image-api.md) veya bir [istemci kitaplığını veya REST API hızlı](client-libraries.md) başlangıcı izleyin.
+- Metin denetlemeyi uygulayın. Olası küfür, makine destekli istenmeyen metin sınıflandırması (Önizleme) ve kişisel veriler için metin içeriğini taramak üzere [API konsolunu](try-text-api.md) veya bir [istemci kitaplığını veya REST API hızlı](client-libraries.md) başlangıcı ' nı kullanın.
 - Video denetlemeyi uygulayın. Videoları taramak ve olası yetişkinlere ve kcy içeriğini algılamak için [C# için video denetleme nasıl yapılır kılavuzunu](video-moderation-api.md) izleyin. 

@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4146f11804dd11f7dd0f5536bc040cb30e25b03
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908821"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902740"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob depolamada ağ dosya sistemi (NFS) 3,0 protokol desteği (Önizleme)
 
 Blob Storage artık ağ dosya sistemi (NFS) 3,0 protokolünü desteklemektedir. Bu destek, Windows veya Linux istemcilerinin bir Azure sanal makinesi (VM) veya şirket içi bir bilgisayardan BLOB depolama alanına bir kapsayıcı takmalarını sağlar. 
 
 > [!NOTE]
-> Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta, ABD Orta Batı, Avustralya Güneydoğu, Kuzey Avrupa, UK Batı, Kore Orta, Kore Güney ve Kanada Orta.
+> Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu. Şu bölgelerde Standart katman performansına sahip GPV2 Storage hesaplarını destekler: Avustralya Doğu, Kore Orta ve Orta Güney ABD. Önizleme Ayrıca tüm genel bölgelerde Premium performans katmanıyla birlikte bağlantı noktası Blok Blobu de vardır.
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Genel iş akışı: depolama hesabı kapsayıcısı bağlama
 

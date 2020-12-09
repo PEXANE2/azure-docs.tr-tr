@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperfq1
-ms.openlocfilehash: ae0c4c69cf500fb352cc889e068888084d1d8f8b
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: c39ce2bed63b6efb6224e0e27fdb1104ef7a5ec8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045967"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862403"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge cihazını ara sunucu üzerinden iletişim kuracak şekilde yapılandırma
 
@@ -169,7 +169,7 @@ IoT Edge Aracısı, herhangi bir IoT Edge cihazında başlatılacak ilk modüld�
 
 Bu adım ilk cihaz kurulumu sırasında IoT Edge cihaza bir kez gerçekleşir.
 
-1. IoT Edge cihazınızda config. YAML dosyasını açın. Linux sistemlerinde, bu dosya **/etc/iotedge/config.exe**yolunda bulunur. Windows sistemlerinde bu dosya **C:\programdata\iotedge\config.exe**yolunda bulunur. Yapılandırma dosyası korunuyor, bu nedenle ona erişmek için yönetim ayrıcalıklarına sahip olmanız gerekir. Linux sistemlerinde, `sudo` dosyayı tercih ettiğiniz metin düzenleyicisinde açmadan önce komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın.
+1. IoT Edge cihazınızda config. YAML dosyasını açın. Linux sistemlerinde, bu dosya **/etc/iotedge/config.exe** yolunda bulunur. Windows sistemlerinde bu dosya **C:\programdata\iotedge\config.exe** yolunda bulunur. Yapılandırma dosyası korunuyor, bu nedenle ona erişmek için yönetim ayrıcalıklarına sahip olmanız gerekir. Linux sistemlerinde, `sudo` dosyayı tercih ettiğiniz metin düzenleyicisinde açmadan önce komutunu kullanın. Windows 'ta, Not Defteri gibi bir metin düzenleyicisini yönetici olarak açın ve dosyayı açın.
 
 2. Config. YAML dosyasında **Edge Aracısı modülü belirtimi** bölümünü bulun. IoT Edge Aracısı tanımı, ortam değişkenleri ekleyebileceğiniz bir **env** parametresi içerir.
 
@@ -270,6 +270,12 @@ IoT Edge cihazınızdaki confige. YAML dosyasına **Upstreamprotocol** ortam de�
     }
 }
 ```
+
+## <a name="working-with-traffic-inspecting-proxies"></a>Trafikle çalışma-ara sunucu inceleniyor
+
+Kullanmaya çalıştığınız ara sunucu, TLS ile güvenli bağlantılarda trafik incelemesi gerçekleştiriyorsa, X. 509.440 sertifikalarıyla kimlik doğrulamanın çalışmadığına dikkat etmeniz önemlidir. IoT Edge, belirtilen sertifikayla ve anahtarla sona erdirmek üzere şifrelenmiş bir TLS kanalı oluşturur. Bu kanal trafik incelemesi için bozulur, proxy, kanalı uygun kimlik bilgileriyle yeniden oluşturamıyor ve IoT Hub ve IoT Hub cihaz sağlama hizmeti bir `Unauthorized` hata döndürüyor.
+
+Trafik incelemesi gerçekleştiren bir proxy kullanmak için, denetimi önlemek için, paylaşılan erişim imzası kimlik doğrulamasını kullanmanız veya IoT Hub ve IoT Hub cihaz sağlama hizmeti 'nin bir izin öğesine eklenmesi gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

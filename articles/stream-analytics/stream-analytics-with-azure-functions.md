@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 01/27/2020
-ms.openlocfilehash: 291586bc2e34784a7bbf29016ea1da35d51e844b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: bb2eb36e4116c17efb20946b0da4586678838f3b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489956"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862012"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Öğretici: Azure Stream Analytics işlerden Azure Işlevleri çalıştırma 
 
@@ -47,7 +47,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 1. [Önbellek oluşturma](../azure-cache-for-redis/cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache)bölümünde açıklanan adımları kullanarak Reda Için Azure önbelleğinde önbellek oluşturun.  
 
-2. Önbelleği oluşturduktan sonra **Ayarlar** altında **Erişim Anahtarları** ’nı seçin. **Birincil bağlantı dizesi** ’ni not edin.
+2. Önbelleği oluşturduktan sonra **Ayarlar** altında **Erişim Anahtarları**’nı seçin. **Birincil bağlantı dizesi**’ni not edin.
 
    ![Redsıs bağlantı dizesi için Azure önbelleğinin ekran görüntüsü](./media/stream-analytics-with-azure-functions/image2.png)
 
@@ -131,7 +131,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
    ```
  
-4. Azure portalına geri dönün. **Platform özellikleri** sekmesinden işlevinize göz atın. **Geliştirme Araçları** altında **App Service Düzenleyicisi** ’ni seçin. 
+4. Azure portalına geri dönün. **Platform özellikleri** sekmesinden işlevinize göz atın. **Geliştirme Araçları** altında **App Service Düzenleyicisi**’ni seçin. 
  
    ![Ekran görüntüsü, App Service Düzenleyicisi seçili olan platform özellikleri sekmesini gösterir.](./media/stream-analytics-with-azure-functions/image3.png)
 
@@ -143,7 +143,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 1. Stream Analytics işinizi Azure portalında açın.  
 
-2. İşlevinize göz atın ve **genel bakış**  >  **çıkışları**  >  **Ekle** ' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi** ’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
+2. İşlevinize göz atın ve **genel bakış**  >  **çıkışları**  >  **Ekle**' yi seçin. Yeni bir çıktı eklemek için havuz seçeneği olarak **Azure İşlevi**’ni seçin. Işlevler çıkış bağdaştırıcısı aşağıdaki özelliklere sahiptir:  
 
    |**Özellik adı**|**Açıklama**|
    |---|---|
@@ -180,7 +180,7 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 
 ## <a name="check-azure-cache-for-redis-for-results"></a>For Redfor sonuçları için Azure önbelleğini denetle
 
-1. Azure portal gidin ve Redsıs için Azure önbelleğinizi bulun. **Konsol** ’u seçin.  
+1. Azure portal gidin ve Redsıs için Azure önbelleğinizi bulun. **Konsol**’u seçin.  
 
 2. Verilerinizi Redsıs için Azure önbelleğinde olduğunu doğrulamak üzere [redsıs komutları Için Azure önbelleğini](https://redis.io/commands) kullanın. (Komut Get {Key} biçimini alır.) Örneğin:
 
@@ -195,7 +195,9 @@ Bir olay hub’ı oluşturmak, olay oluşturucu uygulamasını başlamak ve bir 
 Olayları Azure Işlevlerine gönderirken bir hata oluşursa, en fazla işlem Stream Analytics. Http hatası 413 (varlık çok büyük) dışında tüm http özel durumları başarılı olana kadar yeniden denenir. Bir varlık çok büyük hatası, [yeniden deneme veya bırakma ilkesine](stream-analytics-output-error-policy.md)tabi veri hatası olarak değerlendirilir.
 
 > [!NOTE]
-> Stream Analytics Azure Işlevlerine yönelik HTTP isteklerinin zaman aşımı 100 saniyeye ayarlanır. Azure Işlevleri uygulamanız bir toplu iş işlemek için 100 saniyeden daha fazla sürerse, hata Stream Analytics.
+> Stream Analytics Azure Işlevlerine yönelik HTTP isteklerinin zaman aşımı 100 saniyeye ayarlanır. Azure Işlevleri uygulamanız bir toplu işi işlemek için 100 saniyeden daha fazla sürerse, hata Stream Analytics ve Batch için rety.
+
+Zaman aşımları için yeniden deneme, çıkış havuzuna yazılan yinelenen olayların oluşmasına neden olabilir. Başarısız bir toplu iş için yeniden deneme Stream Analytics, toplu işlemdeki tüm olayları yeniden dener. Örneğin, Stream Analytics Azure Işlevlerine gönderilen 20 olaydan oluşan toplu işi göz önünde bulundurun. Azure Işlevlerinin bu toplu işlemdeki ilk 10 olayı işlemesi için 100 saniye aldığını varsayalım. 100 saniye geçtikten sonra, Azure Işlevlerinden olumlu bir yanıt almadığından ve aynı toplu iş için başka bir istek gönderildiğinden, Stream Analytics isteği askıya alır. Toplu işlemdeki ilk 10 olay, Azure Işlevleri tarafından yeniden işlenir ve bu da yinelenen bir işlem oluşmasına neden olur. 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
@@ -209,8 +211,8 @@ Bir sanal ağda barındırılan Azure Işlevlerine bağlanma desteği etkin değ
 
 Artık gerekli olmadığında kaynak grubunu, akış işini ve tüm ilgili kaynakları silin. İşin silinmesi, iş tarafından kullanılan akış birimlerinin faturalanmasını önler. İşi gelecekte kullanmayı planlıyorsanız, durdurup daha sonra gerektiğinde yeniden başlatabilirsiniz. Bu işi kullanmaya devam etmeyecekseniz aşağıdaki adımları kullanarak bu hızlı başlangıçla oluşturulan tüm kaynakları silin:
 
-1. Azure portalında sol taraftaki menüden, **Kaynak grupları** 'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
-2. Kaynak grubu sayfanızda, **Sil** 'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil** 'e tıklayın.
+1. Azure portalında sol taraftaki menüden, **Kaynak grupları**'na ve ardından oluşturduğunuz kaynağın adına tıklayın.  
+2. Kaynak grubu sayfanızda, **Sil**'e tıklayın, metin kutusuna silinecek kaynağın adını yazın ve ardından **Sil**'e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

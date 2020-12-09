@@ -4,12 +4,12 @@ description: Bölümler kullanılarak Azure Event Hubs maksimum kullanılabilirl
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 774332b8f2d5c336f1a22d717516ae35a62b341f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89000643"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902910"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 
@@ -40,7 +40,9 @@ Yeni bir **[Eventhubclient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient
 En uzun süre gerektiren kullanım örnekleri için bu model tercih edilir.
 
 ## <a name="consistency"></a>Tutarlılık
-Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu örnekte, bir olayda bölüm anahtarını ayarlayabilir veya `PartitionSender` yalnızca belirli bir bölüme olayları göndermek için bir nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız ve daha fazla bilgi için bkz. [olayları bir bölüme yayımlamak için Partitionsender 'Dan EventHubProducerClient 'ye geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
+Bazı senaryolarda, olayların sıralaması önemli olabilir. Örneğin, arka uç sisteminizin silme komutundan önce bir update komutunu işlemesini isteyebilirsiniz. Bu örnekte, bir olayda bölüm anahtarını ayarlayabilir veya `PartitionSender` yalnızca belirli bir bölüme olayları göndermek için bir nesne (eski Microsoft. Azure. Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunun yapılması, bu olaylar bölümden okunduklarında, bunların sırayla okunmasını sağlar. 
+
+Daha yeni **Azure. Messaging. EventHubs** kitaplığını kullanıyorsanız, [bir bölüme olay yayımlamak Için bkz. partitionsender 'dan kodu EventHubProducerClient 'a geçirme](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure. Messaging. EventHubs (5.0.0 veya üzeri)](#tab/latest)
 
@@ -143,4 +145,4 @@ Bu örnek, olaylarınızı Olay Hub 'ınızdaki kullanılabilir bölümlerden bi
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Event Hubs hizmete genel bakış](./event-hubs-about.md)
-* [Olay hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub 'ı oluşturma](event-hubs-create.md)

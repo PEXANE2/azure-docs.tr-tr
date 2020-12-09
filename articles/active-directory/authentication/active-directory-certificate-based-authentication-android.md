@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd9f59dd75620f3a7b5c9142a4b8f73f75c5ee7b
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 1001d5524fe99783cda4d5b77bdaceacc6791848
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744491"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861383"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android 'de sertifika tabanlı kimlik doğrulamayı Azure Active Directory
 
@@ -67,7 +67,7 @@ En iyi uygulama olarak, kuruluşunuzun ADFS hata sayfalarını aşağıdaki bilg
 Daha fazla bilgi için bkz. [AD FS oturum açma sayfalarını özelleştirme](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn280950(v=ws.11)).
 
 Bazı Office uygulamaları (modern kimlik doğrulaması etkinleştirilmiş), istekleri için Azure AD 'ye '*Prompt = Login*' gönderin. Varsayılan olarak, Azure AD '*wauth = usernamepassworduri*' olarak ADFS 'e istekte bulunan '*Prompt = Login*' değerini çevirir (ADFS 'Nin U/P kimlik doğrulamasını yapması ister) ve '*wyeni = 0*' (ADFS 'in SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması yapması istenir). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirmeniz gerekir. Federal etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını '*Disabled*' olarak ayarlayın.
-Bu görevi gerçekleştirmek için [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
+Bu görevi gerçekleştirmek için [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings) cmdlet 'ini kullanabilirsiniz:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 

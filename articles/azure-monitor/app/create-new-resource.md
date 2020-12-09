@@ -3,16 +3,16 @@ title: Yeni bir Azure Application Insights kaynağı oluşturma | Microsoft Docs
 description: Yeni bir canlı uygulama için Application Insights izlemeyi el ile ayarlayın.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: d2e367e84aed7abac70d803f28d26070f7b0a85e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fd05e6bd68be89b964fe1ad32029bf44f3352ea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87323137"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906378"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights kaynağı oluşturma
 
-Azure Application Insights, uygulamanız hakkındaki verileri bir Microsoft Azure *kaynağında*görüntüler. Bu nedenle yeni bir kaynak oluşturmak, [Yeni bir uygulamayı izlemek için Application Insights ayarlamanın][start]bir parçasıdır. Yeni kaynağınızı oluşturduktan sonra, izleme anahtarını alabilir ve Application Insights SDK 'sını yapılandırmak için kullanabilirsiniz. İzleme anahtarı, telemetrinizi kaynağa bağlar.
+Azure Application Insights, uygulamanız hakkındaki verileri bir Microsoft Azure *kaynağında* görüntüler. Bu nedenle yeni bir kaynak oluşturmak, [Yeni bir uygulamayı izlemek için Application Insights ayarlamanın][start]bir parçasıdır. Yeni kaynağınızı oluşturduktan sonra, izleme anahtarını alabilir ve Application Insights SDK 'sını yapılandırmak için kullanabilirsiniz. İzleme anahtarı, telemetrinizi kaynağa bağlar.
 
 ## <a name="sign-in-to-microsoft-azure"></a>Microsoft Azure oturum açın
 
@@ -44,7 +44,8 @@ Uygulamanız oluşturulduğunda yeni bir bölme açılır. Bu bölme, izlenen uy
 
 İzleme anahtarı, telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. İzleme anahtarını kopyalamanız ve uygulamanızın koduna eklemeniz gerekir.
 
-![İzleme anahtarını tıklayın ve kopyalayın](./media/create-new-resource/instrumentation-key.png)
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 ## <a name="install-the-sdk-in-your-app"></a>Uygulamanıza SDK 'Yı yükler
 

@@ -6,27 +6,31 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 12/04/2020
-ms.openlocfilehash: 7b335c3db5fb52c4323b797556d48e3ed9ae410a
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.date: 12/08/2020
+ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621629"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904917"
 ---
-# <a name="co-sell-option-in-the-commercial-marketplace"></a>Ticari Market 'teki ortak satış seçeneği
+# <a name="co-sell-option-in-the-commercial-marketplace"></a>Ticari markette ortak satış yapmayı kabul etme
 
 **Microsoft Ile ortak satış** hakkında bilgi sağlamak tamamen isteğe bağlıdır. [Ortak satış Için hazırlık ve IP ortak satışı Incentivized durumu](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)elde etmek gerekir. Sağladığınız bilgiler, Microsoft Sales ekipleri tarafından müşteri gereksinimlerine uygun olarak değerlendirme yaparken teklifiniz hakkında daha fazla bilgi edinmek için kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için bkz. [Microsoft Ile ortak satış](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
-Iş Ortağı Merkezi 'ndeki ortak satış seçeneği şu anda aşağıdaki teklif türlerini kullanabilir.
+Iş Ortağı Merkezi 'ndeki ortak satış seçeneği aşağıdaki teklif türleri için kullanılabilir.
 
 - Azure Uygulaması
+- Azure kapsayıcısı
+- Azure Sanal Makinesi
+- Danışmanlık hizmeti
 - PowerApps & müşteri katılımı için Dynamics 365
-- Dynamics 365 for Operations
-- Dynamics 365 Business Central
+- İşlemler için Dynamics 365
+- Dynamics 365 İş Merkezi
+- IoT Edge modülü
+- Yönetilen hizmet
+- Power BI App
 - Hizmet Olarak Yazılım (SaaS)
-
-Ek teklif türleri için destek, zaman içinde kullanılabilir hale getirilir.
 
 ## <a name="listing"></a>Liste
 

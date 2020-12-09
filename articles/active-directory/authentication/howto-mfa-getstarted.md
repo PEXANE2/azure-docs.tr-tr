@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 978f404aa9b99819460e46ea89df19d27431b8b8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743148"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861315"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Azure AD Multi-Factor Authentication dağıtımını planlayın
 
@@ -165,7 +165,7 @@ Aşağıdaki adımları kullanarak, koşullu erişim ilkesi kullanıcıları Mul
 2. Koşullu erişimi kullanarak, tüm kaynaklara erişmek için bu grup için Multi-Factor Authentication 'ı zorlayın.
 3. Düzenli aralıklarla, Grup üyeliğini yeniden değerlendirin ve gruptan kaydolan kullanıcıları kaldırın.
 
-Kayıtlı ve kayıtlı olmayan Azure AD MFA kullanıcılarını [MSOnline PowerShell modülünü](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)kullanan PowerShell komutlarıyla belirleyebilirsiniz.
+Kayıtlı ve kayıtlı olmayan Azure AD MFA kullanıcılarını [MSOnline PowerShell modülünü](/powershell/azure/active-directory/install-msonlinev1)kullanan PowerShell komutlarıyla belirleyebilirsiniz.
 
 #### <a name="identify-registered-users"></a>Kayıtlı kullanıcıları tanımla
 
@@ -357,7 +357,7 @@ Azure AD MFA raporları
 
 Azure AD Multi-Factor Authentication Azure portal aracılığıyla rapor sağlar:
 
-| Rapor | Konum | Açıklama |
+| Rapor | Konum | Description |
 | --- | --- | --- |
 | Kullanım ve sahtekarlık uyarıları | Azure AD > oturum açma işlemleri | Genel kullanım, Kullanıcı Özeti ve kullanıcı ayrıntıları hakkında bilgi sağlar; Ayrıca, belirtilen tarih aralığı boyunca gönderilen sahtekarlık uyarılarının geçmişi. |
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: d7b198790b1ecc884321ad42c97eb5cf0c239b7e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: ee4dc945f63180fd06f13287b22949d0ac1e3873
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95241990"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862029"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark ile Çözümle
 
@@ -23,7 +23,7 @@ ms.locfileid: "95241990"
 
 Bu öğreticide, Azure SYNAPSE için Apache Spark verileri yüklemek ve analiz etmek için temel adımları öğreneceksiniz.
 
-1. **Veri** hub 'ında **Yeni Kaynak Ekle**' ye tıklayın (Ayrıca, **bağlı** düğme)  >> **örneklere gözatamazsınız**. 
+1. **Veri** hub 'ında **Yeni Kaynak Ekle**' ye tıklayın (Ayrıca, **bağlı** düğme)  >> **Galeriye** tıklayın. 
 1. **NYC taxı & Limousine Komisyonu bulun-sarı TAXI seyahat kayıtları** bulun ve üzerine tıklayın. 
 1. Sayfanın alt kısmındaki **devam** ' a ve ardından **veri kümesi Ekle**' ye basın. 
 1. Artık **veri** hub 'ında **bağlı** sağ ' ye tıklayın **>> örnek veri kümeleri >> nyc_tlc_yellow** ve **Yeni Not defteri** ' ni seçin.

@@ -10,12 +10,13 @@ ms.workload: identity
 ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 297db67b80f9e5ae04e3c10f370ece9b5fdedee3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: a8bd2ef1348692bf57f7e5cb7b6606cfcfd324fe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020458"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905579"
 ---
 # <a name="tutorial-add-authentication-to-your-web-app-running-on-azure-app-service"></a>Öğretici: Azure App Service üzerinde çalışan Web uygulamanıza kimlik doğrulaması ekleme
 
@@ -27,7 +28,7 @@ App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. bu s
 
 Kimlik doğrulama/yetkilendirme modülü etkinleştirilir ve Azure portal ve uygulama ayarları aracılığıyla yapılandırılır. SDK, belirli dil veya uygulama kodundaki değişiklikler gerekli değildir. Azure AD, Microsoft hesabı, Facebook, Google ve Twitter da dahil olmak üzere çeşitli kimlik sağlayıcıları desteklenir. Kimlik doğrulama/yetkilendirme modülü etkinleştirildiğinde, gelen tüm HTTP istekleri uygulama kodu tarafından işlenmeden önce üzerinden geçirilir. Daha fazla bilgi için bkz. [Azure App Service kimlik doğrulaması ve yetkilendirme](overview-authentication-authorization.md).
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 >

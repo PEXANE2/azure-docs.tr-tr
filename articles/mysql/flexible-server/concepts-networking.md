@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484534"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906157"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>MySQL için Azure veritabanı 'nın bağlantı ve ağ kavramları-esnek sunucu (Önizleme)
 
@@ -33,7 +33,7 @@ MySQL için Azure veritabanı esnek sunucusu için iki ağ seçeneğiniz vardır
    * Azure olmayan kaynaklardan esnek sunucunuza bağlanmak için VPN veya ExpressRoute kullanın
    * Esnek sunucuda genel uç nokta yok
 
-* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuza ortak bir uç nokta üzerinden erişilir. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları**olarak adlandırılır. 
+* **Genel erişim (izin VERILEN IP adresleri)** – esnek sunucunuza ortak bir uç nokta üzerinden erişilir. Genel uç nokta, genel olarak çözümlenebilen bir DNS adresidir. "İzin verilen IP adresleri" ifadesi sunucunuza erişim izni vermek için seçtiğiniz bir IP aralığı anlamına gelir. Bu izinler, **güvenlik duvarı kuralları** olarak adlandırılır. 
 
    Aşağıdaki özellikleri istiyorsanız ortak erişim yöntemini seçin:
    * Sanal ağları desteklemeyen Azure kaynaklarından Bağlan
@@ -107,6 +107,8 @@ MySQL Server hizmetine yönelik Microsoft Azure veritabanına erişim beklendiğ
 
    * MySQL için Azure veritabanı sunucusuna erişen istemci bilgisayarlarınıza atanan IP adresi aralığı için Internet servis sağlayıcınıza (ISS) sorun ve IP adresi aralığını bir güvenlik duvarı kuralı olarak ekleyin.
    * İstemci bilgisayarlarınız yerine statik IP adresleme alın ve statik IP adresini bir güvenlik duvarı kuralı olarak ekleyin.
+  
+* **Güvenlik duvarı kuralı IPv6 biçimi için kullanılamaz:** Güvenlik duvarı kuralları IPv4 biçiminde olmalıdır. Güvenlik duvarı kurallarını IPv6 biçiminde belirtirseniz, doğrulama hatası gösterilir.
 
 
 ## <a name="hostname"></a>Konak adı

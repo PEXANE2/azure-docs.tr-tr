@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 022b6eb6595f25af4189d783a6a91031f95c7216
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 07a8d2b394e8ca690925c677af676643064a9ba8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479366"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901839"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>AzCopy kullanarak Amazon S3 'ten Azure depolama 'ya veri kopyalama
 
@@ -44,7 +44,7 @@ AWS erişim anahtarınızı ve gizli erişim anahtarınızı toplayın ve ardın
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
-| **MacOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
+| **macOS** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>`|
 
 ## <a name="copy-objects-directories-and-buckets"></a>Nesneleri, dizinleri ve demetleri kopyalama
 
@@ -139,7 +139,7 @@ AWS S3 ve Azure, nesne anahtarlarının adlarındaki farklı karakter kümelerin
 
 AzCopy komutunun bir parçası olarak `copy` , `s2s-handle-invalid-metadata` dosyanın meta verilerinin uyumsuz anahtar adlarını içerdiği dosyaları nasıl işlemek istediğinizi belirten isteğe bağlı bayrak için bir değer sağlayabilirsiniz. Aşağıdaki tabloda her bayrak değeri açıklanmaktadır.
 
-| Bayrak değeri | Açıklama  |
+| Bayrak değeri | Description  |
 |--------|-----------|
 | **Excludeifgeçersiz** | (Varsayılan seçenek) Meta veriler aktarılan nesneye dahil değildir. AzCopy bir uyarı kaydeder. |
 | **Failifgeçersiz** | Nesneler kopyalanmaz. AzCopy bir hatayı günlüğe kaydeder ve aktarım özetinde görüntülenen başarısız olan sayıma bu hatayı ekler.  |
@@ -155,11 +155,11 @@ AzCopy şu adımları gerçekleştirir:
 
 2. Dizeyi `rename_` Yeni bir geçerli anahtarın başlangıcına ekler.
 
-   Bu anahtar, özgün meta veri **değerini**kaydetmek için kullanılacaktır.
+   Bu anahtar, özgün meta veri **değerini** kaydetmek için kullanılacaktır.
 
 3. Dizeyi `rename_key_` Yeni bir geçerli anahtarın başlangıcına ekler.
-   Bu anahtar, özgün meta veriler geçersiz **anahtarını**kaydetmek için kullanılacaktır.
-   Meta veri anahtarı BLOB depolama hizmetindeki bir değer olarak korunduğu için Azure tarafında meta verileri denemek ve kurtarmak üzere bu anahtarı kullanabilirsiniz.
+   Bu anahtar, özgün meta veriler geçersiz **anahtarını** kaydetmek için kullanılacaktır.
+   Meta veri anahtarı BLOB depolama hizmetindeki bir değer olarak korunduğu için Azure tarafında meta verileri kurtarmayı denemek üzere bu anahtarı kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -167,7 +167,7 @@ Bu makalelerden herhangi birinde daha fazla örnek bulabilirsiniz:
 
 - [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
 
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
+- [Veri aktarma](storage-use-azcopy-v10.md#transfer-data)
 
 - [AzCopy ve dosya depolama ile verileri aktarma](storage-use-azcopy-files.md)
 

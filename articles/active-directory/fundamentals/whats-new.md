@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed7123d916c1dc0facab3bd22e6b3f03d39684f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 710e31c18338243f9405a071b8fa544fe44044be
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858969"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903165"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -57,6 +57,8 @@ Etkilenen ortamlar:
 - Office 365 GCC ve WW
 
 İlgili duyuru tüm istemci-sunucu ve tarayıcı-sunucu birleşimleri, Azure, Office 365 ve Microsoft 365 hizmetleri için Azure Active Directory güvenli bir bağlantı sağlamak üzere TLS 1,2 ve modern şifre paketleri kullanmalıdır. Bu değişiklik [Azure ACTIVE DIRECTORY TLS 1,0 & 1,1 ve 3Des şifre paketi US gov bulutuna kullanımdan kalkmasıyla](whats-new.md#azure-active-directory-tls-10-tls-11-and-3des-deprecation-in-us-gov-cloud)ilgilidir.
+
+---
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---november-2020"></a>Azure AD uygulama galerisinde yeni Federasyon uygulamaları kullanılabilir-Kasım 2020
 

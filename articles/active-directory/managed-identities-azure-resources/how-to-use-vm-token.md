@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0769366ad56e1b7431dbfa7c95f1256c509d24fa
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: bed64df921326ad4d219f934f7a7bc6860bfc7d8
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358176"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861910"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Erişim belirteci almak için bir Azure VM 'de Azure kaynakları için Yönetilen kimlikler kullanma 
 
@@ -47,7 +47,7 @@ Bu makaledeki Azure PowerShell örnekleri kullanmayı planlıyorsanız, [Azure P
 
 Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kaynakları için Yönetilen kimlikler, [yalnızca uygulama erişim belirteci](../develop/developer-glossary.md#access-token) isteyebilir. Belirteç, [Azure kaynakları hizmet sorumlusu için yönetilen kimliklere dayalıdır](overview.md#managed-identity-types). Bu nedenle, istemcinin kendi hizmet sorumlusu altında erişim belirteci almak için kendisini kaydetmesi gerekmez. Belirteç, [istemci kimlik bilgileri gerektiren hizmetten hizmete çağrılar](../develop/v2-oauth2-client-creds-grant-flow.md)için bir taşıyıcı belirteci olarak kullanım için uygundur.
 
-| Bağlantı | Açıklama |
+| Bağlantı | Description |
 | -------------- | -------------------- |
 | [HTTP kullanarak belirteç al](#get-a-token-using-http) | Azure kaynakları belirteç uç noktası için Yönetilen kimlikler protokol ayrıntıları |
 | [.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | .NET istemcisinden Microsoft. Azure. Services. AppAuthentication kitaplığını kullanma örneği
@@ -64,7 +64,7 @@ Bir istemci uygulaması, belirli bir kaynağa erişmek için yalnızca Azure kay
 
 Erişim belirteci almak için temel arabirim, geri kalanı temel alarak, VM üzerinde çalışan ve HTTP REST çağrısı yapan tüm istemci uygulamaları için erişilebilir hale getirir. Bu, istemci sanal makinede bir uç nokta (Azure AD uç noktası) kullandığından Azure AD programlama modeline benzer.
 
-Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)* :
+Azure Instance Metadata Service (ıMDS) uç noktasını kullanan örnek istek *(önerilir)*:
 
 ```
 GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/' HTTP/1.1 Metadata: true
@@ -81,7 +81,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `client_id` | Seçim Belirteci istediğiniz yönetilen kimliğin client_id belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir.|
 | `mi_res_id` | Seçim Belirteci istediğiniz yönetilen kimliğin mi_res_id (Azure Kaynak KIMLIĞI) belirten bir sorgu dizesi parametresi. SANAL makinenizde birden çok kullanıcı tarafından atanan yönetilen kimlik varsa, gereklidir. |
 
-Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)* :
+Azure kaynakları için yönetilen kimlikleri kullanan örnek istek VM Uzantısı uç noktası *(2019 Ocak 'ta kullanımdan kaldırma için planlanmış)*:
 
 ```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -125,7 +125,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>.NET için Microsoft. Azure. Services. AppAuthentication kitaplığını kullanarak bir belirteç alın
 
-.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure?view=azure-cli-latest)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](../../key-vault/general/service-to-service-authentication.md)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
+.NET uygulamaları ve işlevleri için, Azure kaynakları için Yönetilen kimlikler ile çalışmanın en kolay yolu Microsoft. Azure. Services. AppAuthentication paketidir. Bu kitaplık Ayrıca, Visual Studio, [Azure CLI](/cli/azure)veya Active Directory tümleşik kimlik doğrulaması için kullanıcı hesabınızı kullanarak kodunuzu geliştirme makinenizde yerel olarak sınamanızı sağlar. Bu kitaplıkla ilgili yerel geliştirme seçenekleri hakkında daha fazla bilgi için [Microsoft. Azure. Services. AppAuthentication başvurusuna](../../key-vault/general/service-to-service-authentication.md)bakın. Bu bölümde, kodunuzda kitaplığı kullanmaya nasıl başlacağınız gösterilmektedir.
 
 1. Uygulamanıza [Microsoft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ve [Microsoft. Azure. keykasa](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet paketlerine başvurular ekleyin.
 

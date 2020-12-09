@@ -1,24 +1,28 @@
 ---
-title: 'Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme | Microsoft Azure haritaları'
-description: Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetinden gelen hava durumu tahmin verileriyle algılayıcı verilerine nasıl katılabilmek için öğretici.
+title: 'Öğretici: Microsoft Azure eşlemeleriyle Azure Notebooks (Python) kullanarak sensör tahmin verileriyle sensörlü verileri birleştirin'
+description: Azure Notebooks (Python) kullanarak Microsoft Azure Maps Hava durumu hizmetlerinden gelen hava durumu tahmin verileriyle algılayıcı verilerine nasıl katılabilmek için öğretici.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/29/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f020f3d9e23b9f834fd203f6d030656581fb4416
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6d2ede8ab49b22a22d8959ce296182a2210640d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896608"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905477"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks kullanarak (Python) Hava durumu tahmin verileriyle algılayıcı verileri ekleme
 
-Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim değişikliğine karşı mücadele sağlar. Rüzgar doğası gereği uyumlu olmadığından, Rüzgar güç işleçlerini, Rüzgar güç kapasitesini tahmin etmek için makine öğrenimi (ML) modellerini derlemeniz gerekir. Bu tahmin, elektrik talebini karşılamak ve ızgara kararlılığını sağlamak için gereklidir. Bu öğreticide, Azure Maps Hava durumu tahmin verilerinin, hava durumu okumaları için tanıtım verileriyle nasıl birleştirildiğine yol göstereceğiz. Hava durumu tahmin verileri, Azure Maps Hava durumu hizmeti çağırarak istenir.
+> [!IMPORTANT]
+> Azure haritalar Hava durumu Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Rüzgar gücü, fossıl için bir alternatif enerji kaynağıdır ve bu da iklim değişikliğine karşı mücadele sağlar. Rüzgar doğası gereği uyumlu olmadığından, Rüzgar güç işleçlerini, Rüzgar güç kapasitesini tahmin etmek için makine öğrenimi (ML) modellerini derlemeniz gerekir. Bu tahmin, elektrik talebini karşılamak ve ızgara kararlılığını sağlamak için gereklidir. Bu öğreticide, Azure Maps Hava durumu tahmin verilerinin, hava durumu okumaları için tanıtım verileriyle nasıl birleştirildiğine yol göstereceğiz. Hava durumu tahmin verileri, Azure Maps Hava durumu Hizmetleri (Önizleme) çağrılırken istenir.
 
 Bu öğreticide şunları yapacaksınız:
 
@@ -68,7 +72,7 @@ df = pd.read_csv("./data/weather_dataset_demo.csv")
 
 ## <a name="request-daily-forecast-data"></a>Günlük tahmin verileri iste
 
-Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, Azure Maps Hava durumu hizmetinin [günlük tahmın API](/rest/api/maps/weather/getdailyforecastpreview) 'sini çağırır. Bu API, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için hava durumu tahminini döndürür.
+Senaryolarımızda her bir algılayıcı konumu için günlük tahmin istemek istiyoruz. Aşağıdaki betik, Azure Maps Hava durumu hizmetlerinin (Önizleme) [günlük tahmın API](/rest/api/maps/weather/getdailyforecastpreview) 'sini çağırır. Bu API, geçerli tarihten sonraki 15 gün boyunca her bir rüzgar Turbin için hava durumu tahminini döndürür.
 
 
 ```python
@@ -82,7 +86,7 @@ years,months,days = [],[],[]
 dates_check=set()
 wind_speeds, wind_direction = [], []
 
-# Call azure maps weather service to get daily forecast data for 15 days from current date
+# Call azure maps Weather services (Preview) to get daily forecast data for 15 days from current date
 session = aiohttp.ClientSession()
 j=-1
 for i in range(0, len(coords), 2):

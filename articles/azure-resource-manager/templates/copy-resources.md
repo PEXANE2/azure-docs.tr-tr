@@ -1,26 +1,26 @@
 ---
 title: Birden çok kaynak örneğini dağıtma
-description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemini ve dizileri kullanın.
+description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemi ve dizileri (ARM şablonu) kullanın.
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 411c92061826a6e8bc59380d0440fb69816557a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91293977"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905919"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
-Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir kaynağın birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. Şablonunuzun kaynaklar bölümüne **Copy** öğesini ekleyerek, dağıtılacak kaynak sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+Bu makalede Azure Resource Manager şablonunuzda (ARM şablonu) bir kaynağın birden fazla örneğini nasıl oluşturacağınız gösterilmektedir. `copy`Şablonunuzun kaynaklar bölümüne öğesini ekleyerek dağıtılacak kaynak sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
 
-Ayrıca, [özellikleri](copy-properties.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)içeren Kopyala özelliğini de kullanabilirsiniz.
+`copy` [Özellikleri](copy-properties.md), [değişkenleri](copy-variables.md)ve [çıkışları](copy-outputs.md)ile de kullanabilirsiniz.
 
 Bir kaynağın hiç dağıtılıp dağıtılmadığını belirtmeniz gerekiyorsa bkz. [koşul öğesi](conditional-resource-deployment.md).
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
-Copy öğesi aşağıdaki genel biçime sahiptir:
+`copy`Öğesi aşağıdaki genel biçime sahiptir:
 
 ```json
 "copy": {
@@ -31,9 +31,9 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 }
 ```
 
-**Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, kaynak türü için istediğiniz yineleme sayısını belirtir.
+`name`Özelliği, döngüsünü tanımlayan herhangi bir değerdir. `count`Özelliği, kaynak türü için istediğiniz yineleme sayısını belirtir.
 
-Kaynakların paralel veya sıralı olarak dağıtılıp dağıtılmadığını belirtmek için **Mode** ve **BatchSize** özelliklerini kullanın. Bu özellikler [seri veya paralel](#serial-or-parallel)olarak açıklanmaktadır.
+`mode` `batchSize` Kaynakların paralel veya sıralı olarak dağıtılıp dağıtılmadığını belirtmek için ve özelliklerini kullanın. Bu özellikler [seri veya paralel](#serial-or-parallel)olarak açıklanmaktadır.
 
 ## <a name="copy-limits"></a>Sınırları Kopyala
 
@@ -52,7 +52,7 @@ Kopya ile [tamamlanmış mod dağıtımını](deployment-modes.md) kullanırken 
 
 ## <a name="resource-iteration"></a>Kaynak yinelemesi
 
-Aşağıdaki örnek, **Storagecount** parametresinde belirtilen depolama hesabı sayısını oluşturur.
+Aşağıdaki örnek, parametresinde belirtilen depolama hesabı sayısını oluşturur `storageCount` .
 
 ```json
 {
@@ -97,7 +97,7 @@ Her bir kaynağın adı, `copyIndex()` döngüsünde geçerli yinelemeyi döndü
 * storage1
 * storage2.
 
-Dizin değerini kaydırmak için copyIndex () işlevine bir değer geçirebilirsiniz. Yineleme sayısı kopyalama öğesinde hala belirtilir, ancak Copyındex değeri belirtilen değere göre denkleştirilir. Bu nedenle, aşağıdaki örnek:
+Dizin değerini kaydırmak için, işlevinde bir değer geçirebilirsiniz `copyIndex()` . Yineleme sayısı kopyalama öğesinde hala belirtilir, ancak değeri `copyIndex` belirtilen değere göre denkleştirilir. Bu nedenle, aşağıdaki örnek:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -187,7 +187,7 @@ Değeri, `batchSize` `count` Copy öğesindeki değerini aşamaz.
 }
 ```
 
-Mode özelliği, varsayılan değer olan **Parallel**öğesini de kabul eder.
+`mode`Özelliği, varsayılan değer olan **paralel** olarak da kabul eder.
 
 ## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
 
@@ -281,7 +281,7 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
 
 Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini oluşturmak için yaygın senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Depolama alanını Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Adında Dizin numarası olan birden fazla depolama hesabı dağıtır. |
 |[Seri kopyalama depolaması](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Birden çok depolama hesabını zamanında dağıtır. Ad, Dizin numarasını içerir. |
@@ -291,12 +291,11 @@ Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini olu
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: ARM şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Öğreticiye gitmek için bkz. [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
 * Copy öğesinin diğer kullanımları için bkz.:
   * [ARM şablonlarındaki Özellik yinelemesi](copy-properties.md)
   * [ARM şablonlarında değişken yineleme](copy-variables.md)
   * [ARM şablonlarındaki çıkış yinelemesi](copy-outputs.md)
 * İç içe şablonlar ile kopyalama kullanma hakkında daha fazla bilgi için, bkz. [kopyalamayı kullanma](linked-templates.md#using-copy).
-* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [ARM şablonları yazma](template-syntax.md).
-* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonuyla uygulama dağıtma](deploy-powershell.md).
-
+* Bir şablonun bölümleri hakkında bilgi edinmek istiyorsanız, bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).

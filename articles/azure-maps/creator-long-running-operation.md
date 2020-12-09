@@ -3,22 +3,26 @@ title: Azure Maps Long-Running Işlem API 'SI
 description: Azure haritalar 'da uzun süre çalışan zaman uyumsuz arka plan işleme hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 69c5b9d15c0ba3c7c8b6b01643beac1905c404ad
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f5fb7c8059c8b98e8ec514a4159e96f48db7b1ad
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895877"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906208"
 ---
-# <a name="creator-long-running-operation-api"></a>Oluşturucu Long-Running Işlem API 'SI
+# <a name="creator-preview-long-running-operation-api"></a>Oluşturucu (Önizleme) Long-Running Işlem API 'SI
 
-Azure Maps 'taki bazı API 'leri [zaman uyumsuz Request-Reply bir model](/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure haritalar 'daki bazı API 'Ler [zaman uyumsuz Request-Reply bir model](/azure/architecture/patterns/async-request-reply)kullanır. Bu model, Azure haritalar 'ın yüksek oranda kullanılabilir ve hızlı yanıt veren hizmetler sağlamasına olanak sağlar Bu makalede, Azure Map 'in uzun süreli zaman uyumsuz arka plan işlemenin belirli bir uygulanması açıklanmaktadır.
 
 ## <a name="submitting-a-request"></a>İstek gönderiliyor
 

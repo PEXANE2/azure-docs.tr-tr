@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 9cb3d8f39d83e27755b1e8982dfe3b807c431413
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d4c6c5b51e00f7f2ed7e29c27aa8e8bb88a2ea94
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069730"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861381"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Çok kiracılı uygulamanız için otomatik Kullanıcı sağlamayı etkinleştirme
 
@@ -89,7 +89,7 @@ Azure AD sağlama hizmeti kullanıcılarının SCıM hakkında daha fazla bilgi 
 
 ## <a name="microsoft-graph-for-provisioning"></a>Sağlama için Microsoft Graph
 
-Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
+Sağlama için Microsoft Graph kullandığınızda, grafikte kullanılabilen tüm zengin Kullanıcı verilerine erişebilirsiniz. Kullanıcı ve grupların ayrıntılarına ek olarak, kullanıcının rolleri, Yöneticisi ve doğrudan raporları, sahip olunan cihazlar ve [Microsoft Graph](/graph/api/overview)bulunan yüzlerce diğer veri parçası gibi ek bilgiler de getirebilirsiniz. 
 
 Microsoft 365, Microsoft Azure veya Enterprise Mobility Suite gibi Microsoft bulut hizmetlerine abone olurken, 15.000.000 ' den fazla kuruluş ve Fortune 500 şirketinin 90 ' i Azure AD 'yi kullanır. Uygulamanızı, çalışan ekleme (ve sonlandırma), profil bakımı ve daha fazlası gibi yönetim iş akışlarıyla tümleştirmek için Microsoft Graph kullanabilirsiniz. 
 

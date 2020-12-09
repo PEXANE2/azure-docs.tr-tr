@@ -1,21 +1,27 @@
 ---
-title: Azure haritalar Creator 'da ınkapılı haritalar ile çalışma
-description: Bu makalede, Azure Maps Creator Hizmetleri için uygulanan kavramlar tanıtılmaktadır
+title: Azure haritalar Creator 'da ınkapılı haritalar ile çalışma (Önizleme)
+description: Bu makalede, Azure Maps Creator Hizmetleri (Önizleme) için uygulanan kavramlar tanıtılmaktadır
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 558903ead572363c5545a4a3121f7cf61f549df6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4ab00317e71f832bb677c4c7587e2356a37cb7a1
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895911"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903573"
 ---
-# <a name="creator-for-indoor-maps"></a>Inkapı haritaları için Oluşturucu
+# <a name="creator-preview-for-indoor-maps"></a>Inkapı haritaları için Oluşturucu (Önizleme)
+
+
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Bu makalede, Azure haritalar Oluşturucusu için uygulanan kavramlar ve araçlar açıklanır. Azure haritalar Oluşturucu API 'SI ve SDK 'Yı kullanmaya başlamadan önce bu makaleyi okumanızı öneririz.
 
@@ -23,15 +29,15 @@ Inkapımap verilerine dayalı harita özellikleriyle uygulama geliştirmek için
 
 ![Oluşturucu eşleme verileri iş akışı](./media/creator-indoor-maps/workflow.png)
 
-## <a name="create-azure-maps-creator"></a>Azure haritalar Oluşturucu oluşturma
+## <a name="create-azure-maps-creator-preview"></a>Azure haritalar Oluşturucu oluşturma (Önizleme) 
 
-Creator hizmetlerini kullanmak için Azure haritalar Oluşturucu bir Azure Maps hesabında oluşturulmalıdır. Azure haritalar 'da Azure Maps Creator oluşturma hakkında bilgi için bkz. [Azure Maps Creator 'U yönetme](how-to-manage-creator.md).
+Oluşturucu Hizmetleri 'ni (Önizleme) kullanmak için Azure haritalar Oluşturucu bir Azure Maps hesabında oluşturulmalıdır. Azure haritalar 'da Azure Maps Creator oluşturma hakkında bilgi için bkz. [Azure Maps Creator 'U yönetme](how-to-manage-creator.md).
 
 ## <a name="upload-a-drawing-package"></a>Bir çizim paketini karşıya yükle
 
-Oluşturucu, karşıya yüklenen bir çizim paketini dönüştürerek ınkapısı eşleme verilerini toplar. Çizim paketi oluşturulmuş veya uzaktan kaldırma özelliğini temsil eder. Paket gereksinimlerini çizme hakkında daha fazla bilgi için bkz. [Çizim paketi gereksinimleri](drawing-requirements.md).
+Oluşturucu (Önizleme) karşıya yüklenen bir çizim paketini dönüştürerek ınkapısı eşleme verilerini toplar. Çizim paketi oluşturulmuş veya uzaktan kaldırma özelliğini temsil eder. Paket gereksinimlerini çizme hakkında daha fazla bilgi için bkz. [Çizim paketi gereksinimleri](drawing-requirements.md).
 
-Bir çizim paketini karşıya yüklemek için [Azure Maps verilerini karşıya yükleme API](/rest/api/maps/data/uploadpreview) 'sini kullanın.  Karşıya yükleme başarılı olduğunda, veri yükleme API 'SI bir kullanıcı veri tanımlayıcısı () döndürür `udid` . Bir `udid` sonraki adımda, karşıya yüklenen paketi ınkapımap verilerine dönüştürmek için kullanılacaktır.
+Bir çizim paketini karşıya yüklemek için [Azure haritalar verileri (Önizleme) karşıya yükleme API](/rest/api/maps/data/uploadpreview) 'sini kullanın.  Karşıya yükleme başarılı olduğunda, veri yükleme API 'SI bir kullanıcı veri tanımlayıcısı () döndürür `udid` . Bir `udid` sonraki adımda, karşıya yüklenen paketi ınkapımap verilerine dönüştürmek için kullanılacaktır.
 
 ## <a name="convert-a-drawing-package"></a>Bir çizim paketini dönüştürme
 
@@ -41,7 +47,7 @@ Bir hata oluştuğunda, dönüştürme hizmeti [Azure Maps çizim hatası görse
 
 ## <a name="create-indoor-map-data"></a>Inkapılı harita verileri oluşturma
 
-Azure haritalar Oluşturucu üç hizmet sağlar:
+Azure haritalar Oluşturucu (Önizleme) üç hizmet sağlar:
 
 * [Veri kümesi hizmeti](/rest/api/maps/dataset/createpreview).
 Dönüştürülmüş bir çizim paketi verilerinden bir veri kümesi oluşturmak için veri kümesi hizmetini kullanın.
@@ -72,7 +78,7 @@ Bir tileset tarihi geçmiş hale gelirse ve artık yararlı değilse, tileset 'i
 
 ### <a name="feature-statesets"></a>Özellik statesets 'ler
 
-Özellik statesets 'ler, odalar veya ekipman gibi veri kümesi özelliklerine atanan dinamik Özellikler ( *eyaletler* ) koleksiyonlarıdır. Bir *durum* örneği sıcaklık veya doluluk olabilir. Her *durum* , özelliğin adını, değerini ve son güncelleştirmenin zaman damgasını içeren bir anahtar/değer çiftidir.
+Özellik statesets 'ler, odalar veya ekipman gibi veri kümesi özelliklerine atanan dinamik Özellikler (*eyaletler*) koleksiyonlarıdır. Bir *durum* örneği sıcaklık veya doluluk olabilir. Her *durum* , özelliğin adını, değerini ve son güncelleştirmenin zaman damgasını içeren bir anahtar/değer çiftidir.
 
 [Özellik durumu hizmeti](/rest/api/maps/featurestate/createstatesetpreview) , bir veri kümesi için bir özellik stateset oluşturmanıza ve yönetmenize olanak sağlar. Stateset bir veya daha fazla *durum* tarafından tanımlanır. Oda gibi her bir özelliğin, kendisine bağlı bir *durum* olabilir.
 
@@ -87,9 +93,9 @@ Bir uygulama, bir tesis içindeki özellikleri geçerli durumlarına ve ilgili h
 
 ### <a name="render-v2-service"></a>Oluşturma v2 hizmeti
 
-Azure haritalar [Işleme v2 hizmeti-Get Map kutucuğu API 'si](/rest/api/maps/renderv2/getmaptilepreview) , Oluşturucu tilesets 'leri destekleyecek şekilde genişletildi.
+Azure haritalar [Işleme v2 hizmeti-Get harita kutucuğu API 'si (Önizleme)](/rest/api/maps/renderv2/getmaptilepreview) , Oluşturucu (Önizleme) tilesets 'leri destekleyecek şekilde genişletildi.
 
-[Oluşturma v2 hizmeti-harita durum kutucuğu API 'si](/rest/api/maps/renderv2/getmaptilepreview) , uygulamaların tilesets istemesine izin verir. Daha sonra, tilesets 'ler bir harita denetimiyle veya SDK ile tümleştirilebilirler. Oluşturma v2 hizmetini kullanan bir harita denetimi örneği için bkz. [ınkapıeşlem modülü](#indoor-maps-module).
+Oluşturma v2 hizmeti-harita durum kutucuğu API 'SI, uygulamaların tilesets istemesine izin verir. Daha sonra, tilesets 'ler bir harita denetimiyle veya SDK ile tümleştirilebilirler. Oluşturma v2 hizmetini kullanan bir harita denetimi örneği için bkz. [ınkapıeşlem modülü](#indoor-maps-module).
 
 ### <a name="web-feature-service-api"></a>Web özelliği hizmet API 'SI
 
@@ -97,7 +103,7 @@ Veri kümeleri, [Web özelliği hizmeti (WFS) API 'si](/rest/api/maps/wfs)kullan
 
 ### <a name="indoor-maps-module"></a>İç Mekan Haritaları modülü
 
-[Azure Haritalar Web SDK 'sı](./index.yml) , ınkapıharitaları modülünü içerir. Bu modül, Azure Maps *harita denetimi* kitaplığı 'na genişletilmiş işlevler sunar. Inkapıeşlem modülü Oluşturucu 'da oluşturulan ınkapılı haritaları işler. , Kullanıcıların farklı katları görselleştirmesine yardımcı olan *zemin Seçicisi* gibi pencere öğelerini tümleştirir.
+[Azure Haritalar Web SDK 'sı](./index.yml) , ınkapıharitaları modülünü içerir. Bu modül, Azure Maps *harita denetimi* kitaplığı 'na genişletilmiş işlevler sunar. Inkapıeşlem modülü Oluşturucu (Önizleme) içinde oluşturulan ınkapısı haritalarını işler. , Kullanıcıların farklı katları görselleştirmesine yardımcı olan *zemin Seçicisi* gibi pencere öğelerini tümleştirir.
 
 Inkapıharitaları modülü, ınkapısı eşleme verilerini diğer [Azure haritalar hizmetleriyle](./index.yml)tümleştiren Web uygulamaları oluşturmanıza olanak tanır. En yaygın uygulama kurulumları, yol, Imagery, hava durumu ve aktarım gibi diğer haritalardan gelen kapılara bilgi eklemeyi içerebilir.
 
@@ -109,7 +115,7 @@ Inkapıeşlemler için çözümler geliştirmeye başladığınızda, mevcut Azu
 
 ### <a name="data-maintenance"></a>Veri Bakımı
 
- Azure haritalar Oluşturucu listesi, güncelleştirme ve silme API 'SI, veri kümelerini, tilekümelerinizi ve özellik statekümelerinizi listeledikten, güncelleştirmenize ve silmenizi sağlar.
+ Azure haritalar Oluşturucu (Önizleme) listesi, Update ve DELETE API, veri kümelerini, tilekümelerinizi ve özellik statekümelerinizi listelemenizi, güncelleştirmenizi ve silmenizi sağlar.
 
 >[!NOTE]
 >Öğelerin bir listesini gözden geçirdikten ve bunları silmeye karar verirken, bu silmenin tüm bağımlı API veya uygulamalar üzerinde etkisini göz önünde bulundurmanız gerekir. Örneğin, [oluşturma v2-Get harita kutucuğu API 'si](/rest/api/maps/renderv2/getmaptilepreview)aracılığıyla bir uygulama tarafından kullanılmakta olan bir kutucuk kümesini silmeniz gerekiyorsa, bu tileset 'in silinmesi, bir uygulama başarısızlığının bu kutucuk kümesini işlemesine neden olur.
@@ -129,4 +135,4 @@ Aşağıdaki örnek, bir veri kümesini güncelleştirme, yeni bir tileset oluş
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: bir Oluşturucu iç eşleme oluşturma](tutorial-creator-indoor-maps.md)
+> [Öğretici: Oluşturucu (Önizleme) ınkapılı eşleme oluşturma](tutorial-creator-indoor-maps.md)

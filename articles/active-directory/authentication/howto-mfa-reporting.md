@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e2a02ae7bd89e99dc2eee013394a1f85139c1c00
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5f78b70599d6d0ae8825accf4cc55cdc1c01d9ce
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742785"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861247"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-ad-multi-factor-authentication-events"></a>Azure AD Multi-Factor Authentication olaylarını gözden geçirmek için oturum açma işlemleri raporunu kullanın
 
@@ -91,7 +91,7 @@ Aşağıdaki ayrıntılar, MFA isteğinin karşılanıp reddedildiğini göstere
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>MFA için kaydedilen kullanıcılarda PowerShell raporlaması
 
-İlk olarak, [MSOnline v1 PowerShell modülünün](/powershell/azure/active-directory/overview?view=azureadps-1.0) yüklü olduğundan emin olun.
+İlk olarak, [MSOnline v1 PowerShell modülünün](/powershell/azure/active-directory/overview) yüklü olduğundan emin olun.
 
 Aşağıdaki PowerShell 'i kullanarak MFA için kaydolan kullanıcıları belirler. Bu hesaplar Azure AD 'de kimlik doğrulaması yapadıklarından, bu komut kümesi devre dışı kullanıcıları dışlar:
 
@@ -119,7 +119,7 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 
 Aşağıdaki tablo, önceki Portal adımlarında veya PowerShell komutlarından etkinlik raporunun indirilen sürümünü kullanarak olayların sorunlarını gidermenize yardımcı olabilir. Bu sonuç kodları Azure portal doğrudan görünmez.
 
-| Çağrı sonucu | Açıklama | Geniş açıklama |
+| Çağrı sonucu | Description | Geniş açıklama |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN girildi | Kullanıcı bir PIN girdi.  Kimlik doğrulaması başarılı olursa, doğru PIN 'ı girirler.  Kimlik doğrulaması reddedilirse, yanlış bir PIN girirler veya Kullanıcı standart moda ayarlanır. |
 | SUCCESS_NO_PIN | Yalnızca # girildi | Kullanıcı PIN moduna ayarlanmışsa ve kimlik doğrulaması reddedilirse, bu, kullanıcının PIN 'ini girmediği ve yalnızca # olarak girdiği anlamına gelir.  Kullanıcı standart moda ayarlanmışsa ve kimlik doğrulaması başarılı olursa, Kullanıcı yalnızca standart modda yapılacak doğru şey olan # değeri olarak girilen bu anlamına gelir. |
@@ -171,7 +171,7 @@ Aşağıdaki tablo, önceki Portal adımlarında veya PowerShell komutlarından 
 
 MFA olayları da dahil olmak üzere, aşağıdaki ek bilgi ve raporlar MFA olayları için kullanılabilir:
 
-| Rapor | Konum | Açıklama |
+| Rapor | Konum | Description |
 |:--- |:--- |:--- |
 | Engellenen Kullanıcı Geçmişi | Azure AD > güvenliği > MFA > kullanıcıları engelle/engellemesini kaldır | Kullanıcıları engellemek veya engelini kaldırmak için isteklerin geçmişini gösterir. |
 | Şirket içi bileşenler için kullanım | Azure AD > güvenliği > MFA > etkinlik raporu | NPS uzantısı, ADFS ve MFA sunucusu aracılığıyla MFA sunucusu için genel kullanım hakkında bilgi sağlar. |

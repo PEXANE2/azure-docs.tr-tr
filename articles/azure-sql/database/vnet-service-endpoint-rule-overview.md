@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450240"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905885"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -95,7 +95,7 @@ Azure SQL veritabanı için hizmet uç noktaları kullanırken aşağıdaki nokt
 ### <a name="expressroute"></a>ExpressRoute
 
 Şirket içinde genel eşleme veya Microsoft eşlemesi için [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) kullanıyorsanız, kullanılan NAT IP adreslerini belirlemeniz gerekir. Ortak eşleme için, her bir ExpressRoute varsayılan olarak bağlantı hattında trafik Microsoft Azure omurga ağına girdiğinde Azure hizmet trafiğine uygulanan iki NAT IP adresi kullanılır. Microsoft eşlemesi için, kullanılan NAT IP adresleri müşteri tarafından sağlanır veya hizmet sağlayıcısı tarafından sağlanır. Hizmet kaynaklarınıza erişime izin vermek için, bu genel IP adreslerine kaynak IP güvenlik duvarı ayarında izin vermeniz gerekir. Ortak eşleme ExpressRoute bağlantı hattı IP adreslerinizi bulmak için Azure portalında [ExpressRoute ile bir destek bileti açın](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). [ExpressRoute genel ve Microsoft eşlemesi için NAT](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering) hakkında daha fazla bilgi edinin.
-  
+
 Bağlantı hattınızdan Azure SQL veritabanı 'na yönelik iletişime izin vermek için NAT 'nizin genel IP adresleri için IP ağ kuralları oluşturmanız gerekir.
 
 <!--
@@ -122,7 +122,7 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
 
 #### <a name="steps"></a>Adımlar
 
-1. PowerShell 'de, **sunucunuzu** Azure SYNAPSE barındırarak Azure ACTIVE DIRECTORY (AAD) ile kaydedin:
+1. Tek başına adanmış bir SQL havuzunuz varsa, PowerShell kullanarak SQL Server 'ı Azure Active Directory (AAD) ile kaydedin: 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Bu adım, bir Synapse çalışma alanı içindeki adanmış SQL havuzları için gerekli değildir.
+
+1. Bir Synapse çalışma alanınız varsa, çalışma alanınızın sistem tarafından yönetilen kimliğini kaydedin:
+
+   1. Azure portal SYNAPSE çalışma alanınıza gidin
+   2. Yönetilen kimlikler dikey penceresine git 
+   3. "İşlem hatları Izin ver" seçeneğinin etkinleştirildiğinden emin olun
+   
 1. Bu [Kılavuzu](../../storage/common/storage-account-create.md)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
 
    > [!NOTE]
@@ -137,7 +145,7 @@ PolyBase ve COPY deyimleri, yüksek aktarım hızı verileri alımı için Azure
    > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md)kullanarak **v2 'ye yükseltmeniz** gerekir.
    > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](../../storage/blobs/data-lake-storage-known-issues.md)bakın.
 
-1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. #1 adım Azure Active Directory (AAD) ile kaydettiğiniz Azure SYNAPSE analizlerinizi barındıran sunucuya **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Azure Active Directory (AAD) ile kaydettiğiniz adanmış SQL havuzunuzu barındıran sunucuya veya çalışma alanına **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca depolama hesabında sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md)bakın.
@@ -239,7 +247,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
 
 2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 

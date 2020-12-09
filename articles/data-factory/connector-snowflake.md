@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003675"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902094"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Azure Data Factory kullanarak kar tanesi içindeki verileri kopyalama ve dönüştürme
 
@@ -159,7 +159,7 @@ Verileri kar 'lerden kopyalamak için, etkinlik **kaynağını** kopyalama böl�
 
 Havuz veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyorsa, kar/ç 'den havuza doğrudan kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Data Factory ayarları denetler ve aşağıdaki kriterler karşılanmazsa kopyalama etkinliğinin çalıştırılmasına başarısız olur:
 
-- **Havuz bağlantılı hizmeti** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob depolama**](connector-azure-blob-storage.md) .
+- **Havuz bağlantılı hizmeti** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob depolama**](connector-azure-blob-storage.md) . Verileri aşağıdaki desteklenen biçimde Azure Data Lake Storage 2. doğrudan kopyalamak istiyorsanız, kar \ ' [dan hazırlanan kopyayı](#staged-copy-from-snowflake)kullanmaktan kaçınmak için, ADLS 2. hesabınızda SAS kimlik doğrulamasıyla bir Azure Blob bağlı hizmeti oluşturabilirsiniz.
 
 - **Havuz veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet**, **ayrılmış metin** veya **JSON** 'dir:
 
@@ -173,7 +173,6 @@ Havuz veri deprenizin ve formatı bu bölümde açıklanan ölçütlere uyuyorsa
         - `compression`**sıkıştırma**, **gzip**, **bzip2** veya **söndür** olamaz.
         - `encodingName` Varsayılan olarak bırakılır veya **UTF-8** olarak ayarlanır.
         - `filePattern` kopyalama etkinliği havuzu varsayılan olarak bırakılır veya **Setofobjects** olarak ayarlanır.
-
 - Kopyalama etkinliği kaynağı ' nda `additionalColumns` belirtilmedi.
 - Sütun eşleme belirtilmedi.
 
@@ -290,7 +289,7 @@ Verileri kar 'a kopyalamak için, etkinlik **havuzunu** Kopyala bölümünde aş
 
 Kaynak veri deprenizin ve biçimlendirmeniz bu bölümde açıklanan ölçütlere uyuyorsa, kaynaktan kar/veya daha doğrudan kopyalamak için kopyalama etkinliğini kullanabilirsiniz. Azure Data Factory ayarları denetler ve aşağıdaki kriterler karşılanmazsa kopyalama etkinliğinin çalıştırılmasına başarısız olur:
 
-- **Kaynak bağlı hizmet** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob deposıdır**](connector-azure-blob-storage.md) .
+- **Kaynak bağlı hizmet** , **paylaşılan erişim imzası** kimlik doğrulaması ile [**Azure Blob deposıdır**](connector-azure-blob-storage.md) . Aşağıdaki desteklenen biçimdeki Azure Data Lake Storage 2. verileri doğrudan kopyalamak istiyorsanız, kar/Azure 'da  [hazırlanan kopyayı](#staged-copy-to-snowflake)kullanmaktan kaçınmak için, ADLS 2. hesabınızda SAS kimlik doğrulamasıyla bir Azure Blob bağlı hizmeti oluşturabilirsiniz.
 
 - **Kaynak veri biçimi** , aşağıdaki yapılandırmalara sahip **Parquet**, **sınırlandırılmış metin** veya **JSON** ' dır:
 

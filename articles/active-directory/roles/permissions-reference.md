@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bf91c9e081bff9860153b342648fedc0990b68b9
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963649"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862066"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -142,7 +142,7 @@ Bu role sahip olan kullanıcılar Microsoft 365 Uyumluluk Merkezi 'nde uyumluluk
 
 ### <a name="compliance-data-administrator"></a>[Uyumluluk verileri Yöneticisi](#compliance-data-administrator-permissions)
 
-Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 365 Yönetim Merkezi ve Azure 'da verileri izleme iznine sahiptir. Kullanıcılar ayrıca Exchange Yönetim Merkezi, uyumluluk Yöneticisi ve takımlar & Skype Kurumsal Yönetim Merkezi 'nde uyumluluk verilerini izleyebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Bu belgede](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center?view=o365-worldwide#permissions-needed-to-use-features-in-the-security--compliance-center) , uyumluluk Yöneticisi ve uyumluluk veri Yöneticisi arasındaki farklara ilişkin ayrıntılar bulunur.
+Bu role sahip olan kullanıcılar, Microsoft 365 Uyumluluk Merkezi, Microsoft 365 Yönetim Merkezi ve Azure 'da verileri izleme iznine sahiptir. Kullanıcılar ayrıca Exchange Yönetim Merkezi, uyumluluk Yöneticisi ve takımlar & Skype Kurumsal Yönetim Merkezi 'nde uyumluluk verilerini izleyebilir ve Azure ve Microsoft 365 için destek biletleri oluşturabilir. [Bu belgede](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) , uyumluluk Yöneticisi ve uyumluluk veri Yöneticisi arasındaki farklara ilişkin ayrıntılar bulunur.
 
 İçinde | Yapılabilir
 ----- | ----------
@@ -317,7 +317,7 @@ Modern ticaret Kullanıcı rolüne sahip kullanıcılar genellikle diğer Micros
 
 **Modern ticaret Kullanıcı rolü ne zaman atanır?**
 
-* **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bunları Yönetim Merkezi 'nde satın almaları için modern ticaret Kullanıcı rolü atanır. Yöneticiler, [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [Self servis satın alma hakkında SSS](/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Microsoft 365 Yönetim Merkezi 'Nde self servis satın alma** – self servis satın alma, kullanıcılara kendi kendilerine satın alarak veya kendi kendilerine kaydolup yeni ürünleri denemenize olanak tanır. Bu ürünler Yönetim merkezinde yönetilir. Self servis satın alma yapan kullanıcılara, Commerce sisteminde bir rol atanır ve bunları Yönetim Merkezi 'nde satın almaları için modern ticaret Kullanıcı rolü atanır. Yöneticiler, [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell)aracılığıyla self servis satın alımları (Power BI, Power Apps, Power otomatikleştirmek) engelleyebilir. Daha fazla bilgi için bkz. [Self servis satın alma hakkında SSS](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
 * **Microsoft Commercial Market 'Ten satın**  alma – self servis satın almaya benzer şekilde, bir Kullanıcı Microsoft AppSource veya Azure Marketi 'nden bir ürün veya hizmet satın aldığında, modern ticaret Kullanıcı rolü, genel yönetici veya faturalandırma Yöneticisi rolüne sahip olmadıkları takdirde atanır. Bazı durumlarda, kullanıcıların bu satınalmaları yapmasını engellemiş olabilir. Daha fazla bilgi için bkz. [Microsoft ticari Market](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
 * Microsoft **'un teklifleri** : teklif, Microsoft 'un Microsoft ürün ve hizmetlerini satın alması için Microsoft 'un sunduğu resmi bir tekliftir. Teklifi kabul eden kişinin Azure AD 'de Genel yönetici veya faturalama yöneticisi rolü yoksa, teklif ve yönetim merkezine erişmek için modern ticaret Kullanıcı rolü olmak üzere hem ticari özel bir rol atanır. Yönetim merkezine erişirken yalnızca, ticari olarak verilen rolleri karşılayan özellikleri kullanabilir.
 * **Ticarete özgü roller** – bazı kullanıcılara ticari özel roller atanır. Bir Kullanıcı genel veya faturalama yöneticisi değilse, yönetim merkezine erişebilmeleri için modern ticaret Kullanıcı rolü alırlar.  

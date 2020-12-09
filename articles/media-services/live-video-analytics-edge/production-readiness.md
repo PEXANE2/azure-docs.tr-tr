@@ -3,12 +3,12 @@ title: Üretim hazırlığı ve en iyi uygulamalar-Azure
 description: Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde nasıl yapılandırılacağı ve dağıtılacağı hakkında rehberlik sunulmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87071936"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906344"
 ---
 # <a name="production-readiness-and-best-practices"></a>Üretim hazırlığı ve en iyi uygulamalar
 
@@ -62,7 +62,7 @@ Ardından, dağıtım bildiriminde LOCAL_USER_ID ve LOCAL_GROUP_ID ortam değiş
 
 IoT Edge modüldeki canlı video analizi, şu durumlarda yerel dosya sistemine dosya yazabilmesini gerektirir:
 
-* Yapılandırma verilerini depolamak için yerel dosya sisteminde bir dizin belirtmeniz gereken modül ikizi özelliği [[ApplicationDataDirectory](module-twin-configuration-schema.md#module-twin-properties)] kullanılıyor.
+* [`applicationDataDirectory`](module-twin-configuration-schema.md#module-twin-properties)Yapılandırma verilerini depolamak için yerel dosya sisteminde bir dizin belirtmeniz gereken modül ikizi özelliğini kullanma.
 * Videoyu buluta kaydetmek için bir medya grafiği kullanarak, modül uç cihazında bir dizin kullanılmasını gerektirir (daha fazla bilgi için bkz. [sürekli video kaydı](continuous-video-recording-concept.md) makalesi).
 * Kayıtlı video için bir dosya yolu belirtmeniz gereken [yerel bir dosyaya kaydetme](event-based-video-recording-concept.md#video-recording-based-on-events-from-other-sources).
 
@@ -124,7 +124,7 @@ Olay tabanlı video kaydı tarafından oluşturulan varlıklar için önerilen a
 Aynı grafiğin birden çok örneğini çalıştırıyorsanız, ayırt etmek için Graf topolojisi adını ve örnek adını kullanabilirsiniz. Örnek olarak, varlık havuzunda assetNamePattern öğesini şu şekilde ayarlayabilirsiniz:
 
 ```
-"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName} -${System.DateTime}"
+"assetNamePattern": "sampleAssetFromEVR-${System.GraphTopologyName}-${System.GraphInstanceName}-${System.DateTime}"
 ```
 
 Kenarda olay tabanlı video kaydı tarafından oluşturulan MP4 video klipleri için, önerilen adlandırma deseninin tarih saat içermesi ve aynı grafiğin birden çok örneği için Graphtopologyıname ve Graphınstancename sistem değişkenlerinin kullanılması önerilir. Örnek olarak, dosya havuzunda Filepathmodel ' i aşağıdaki gibi ayarlayabilirsiniz: 

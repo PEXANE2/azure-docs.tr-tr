@@ -1,20 +1,24 @@
 ---
 title: Linux üzerinde özel görüntü kullanarak Azure Işlevleri oluşturma
 description: Özel bir Linux görüntüsü üzerinde çalışan Azure İşlevleri oluşturmayı öğrenin.
-ms.date: 03/30/2020
+ms.date: 12/2/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: af63eb68ec82a0725befed723298c079e82bdfdb
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+zone_pivot_groups: programming-languages-set-functions-full
+ms.openlocfilehash: 2ee26bdc713cb2b5b2a158797e3ae7ace31c97b8
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327109"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904100"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Linux üzerinde özel kapsayıcı kullanarak bir işlev oluşturma
 
 Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Azure Işlevlerine özel bir Docker kapsayıcısı olarak dağıtırsınız. İşlevleriniz belirli bir dil sürümü gerektirdiğinde veya yerleşik görüntü tarafından sağlanmayan belirli bir bağımlılığı ya da yapılandırmaya sahip olduğunda genellikle özel bir görüntü kullanırsınız.
+
+::: zone pivot="programming-language-other"
+Azure Işlevleri, [özel işleyiciler](functions-custom-handlers.md)kullanarak tüm dilleri veya çalışma zamanını destekler. Bu öğreticide kullanılan R programlama dili gibi bazı dillerde, çalışma zamanını veya ek kitaplıkları özel bir kapsayıcının kullanılmasını gerektiren bağımlılıklar olarak yüklemeniz gerekir.
+::: zone-end
 
 İşlev kodunuzu özel bir Linux kapsayıcısında dağıtmak [Premium plan](functions-premium-plan.md#features) veya [adanmış (App Service) bir plan](functions-scale.md#app-service-plan) barındırmayı gerektirir. Bu öğreticiyi tamamlamak, Azure hesabınızda birkaç ABD Doları ücretlerinden oluşur ve bu işlem tamamlandığında [kaynakları temizleyerek](#clean-up-resources) en aza indirmenize neden olur.
 
@@ -22,6 +26,7 @@ Bu öğreticide, bir Linux temel görüntüsü kullanarak kodunuzu oluşturup Az
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 > [!div class="checklist"]
 > * Azure Functions Core Tools kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
 > * Docker kullanarak özel bir görüntü oluşturun.
@@ -32,6 +37,18 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Sürekli dağıtımı etkinleştirin.
 > * Kapsayıcıya SSH bağlantılarını etkinleştirin.
 > * Kuyruk depolama çıkış bağlaması ekleyin. 
+::: zone-end
+::: zone pivot="programming-language-other"
+> [!div class="checklist"]
+> * Azure Functions Core Tools kullanarak bir işlev uygulaması ve Dockerfile oluşturun.
+> * Docker kullanarak özel bir görüntü oluşturun.
+> * Özel görüntüyü bir kapsayıcı kayıt defterinde yayımlayın.
+> * İşlev uygulaması için Azure 'da destekleyici kaynaklar oluşturma
+> * Docker Hub’dan bir işlev uygulaması dağıtın.
+> * Uygulama ayarlarını işlevi uygulamasına ekleyin.
+> * Sürekli dağıtımı etkinleştirin.
+> * Kapsayıcıya SSH bağlantılarını etkinleştirin.
+::: zone-end
 
 Bu öğreticiyi Windows, macOS veya Linux çalıştıran herhangi bir bilgisayarda takip edebilirsiniz. 
 
@@ -114,10 +131,17 @@ Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değe
 
 Maven, proje dosyalarını, bu örnekte olduğu gibi, _ArtifactId_ adında yeni bir klasörde oluşturur `fabrikam-functions` . 
 ::: zone-end
+
+::: zone pivot="programming-language-other"  
+```console
+func init LocalFunctionsProject --worker-runtime custom --docker
+```
+::: zone-end
+
 `--docker`Seçeneği, `Dockerfile` Azure işlevleri ve seçilen çalışma zamanı ile kullanılmak üzere uygun bir özel kapsayıcıyı tanımlayan proje için bir oluşturur.
 
 Proje klasörüne gidin:
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 ```console
 cd LocalFunctionsProject
 ```
@@ -128,12 +152,95 @@ cd fabrikam-functions
 ```
 ::: zone-end  
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
-Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturun.
+Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new` Projenin seçtiği dile uygun bir kod dosyası ve *üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturur.
 
 ```console
 func new --name HttpExample --template "HTTP trigger"
 ```
-::: zone-end  
+::: zone-end
+
+::: zone pivot="programming-language-other" 
+Aşağıdaki komutu kullanarak projenize bir işlev ekleyin; burada `--name` bağımsız değişken işlevinizin benzersiz adıdır ve `--template` bağımsız değişken işlevin tetikleyicisini belirtir. `func new`*üzerindefunction.js* adlı bir yapılandırma dosyası içeren işlev adıyla eşleşen bir alt klasör oluşturur.
+
+```console
+func new --name HttpExample --template "HTTP trigger"
+```
+
+Bir metin düzenleyicisinde, Handler adlı proje klasöründe bir dosya oluşturun *. R*. İçeriği olarak aşağıdakileri ekleyin.
+
+```r
+library(httpuv)
+
+PORTEnv <- Sys.getenv("FUNCTIONS_CUSTOMHANDLER_PORT")
+PORT = strtoi(PORTEnv , base = 0L)
+
+http_not_found <- list(
+  status=404,
+  body='404 Not Found'
+)
+http_method_not_allowed <- list(
+  status=405,
+  body='405 Method Not Allowed'
+)
+
+hello_handler <- list(
+  GET = function (request) list(body="Hello world")
+)
+
+routes <- list(
+  '/api/HttpExample' = hello_handler
+)
+
+router <- function (routes, request) {
+  if (!request$PATH_INFO %in% names(routes)) {
+    return(http_not_found)
+  }
+  path_handler <- routes[[request$PATH_INFO]]
+
+  if (!request$REQUEST_METHOD %in% names(path_handler)) {
+    return(http_method_not_allowed)
+  }
+  method_handler <- path_handler[[request$REQUEST_METHOD]]
+
+  return(method_handler(request))
+}
+
+app <- list(
+  call = function (request) {
+    response <- router(routes, request)
+    if (!'status' %in% names(response)) {
+      response$status <- 200
+    }
+    if (!'headers' %in% names(response)) {
+      response$headers <- list()
+    }
+    if (!'Content-Type' %in% names(response$headers)) {
+      response$headers[['Content-Type']] <- 'text/plain'
+    }
+
+    return(response)
+  }
+)
+
+cat(paste0("Server listening on :", PORT, "...\n"))
+runServer("0.0.0.0", PORT, app)
+```
+
+*host.jsüzerinde*, `customHandler` özel işleyicinin başlangıç komutunu yapılandırmak için bölümünü değiştirin.
+
+```json
+"customHandler": {
+  "description": {
+      "defaultExecutablePath": "Rscript",
+      "arguments": [
+      "handler.R"
+    ]
+  },
+  "enableForwardingHttpRequest": true
+}
+```
+::: zone-end
+
 İşlevi yerel olarak test etmek için, proje klasörünün kökündeki yerel Azure Işlevleri çalışma zamanı konağını başlatın: 
 ::: zone pivot="programming-language-csharp"  
 ```console
@@ -157,14 +264,44 @@ mvn clean package
 mvn azure-functions:run
 ```
 ::: zone-end
+::: zone pivot="programming-language-other"
+```console
+R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+func start
+```
+::: zone-end 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 `HttpExample`Uç noktanın çıktıda göründüğünü gördüğünüzde öğesine gidin `http://localhost:7071/api/HttpExample?name=Functions` . Tarayıcı `Functions` , sorgu parametresine sağlanan değeri gösteren bir "Merhaba" iletisi görüntülemelidir `name` .
-
+::: zone-end
+::: zone pivot="programming-language-other"
+`HttpExample`Uç noktanın çıktıda göründüğünü gördüğünüzde öğesine gidin `http://localhost:7071/api/HttpExample` . Tarayıcıda bir "Hello World" iletisi görüntülenmelidir.
+::: zone-end
 **Ctrl** - Konağı durdurmak için CTRL **C** 'yi kullanın.
 
 ## <a name="build-the-container-image-and-test-locally"></a>Kapsayıcı görüntüsünü oluşturma ve yerel olarak test etme
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-powershell,programming-language-python,programming-language-java,programming-language-typescript"
 Seçim Proje klasörünün kökündeki *Dockerfile dosyasını* inceleyin. Dockerfile, Linux üzerinde işlev uygulamasını çalıştırmak için gerekli ortamı açıklar.  Azure Işlevleri için desteklenen temel görüntülerin tüm listesi, [Azure işlevleri temel görüntü sayfasında](https://hub.docker.com/_/microsoft-azure-functions-base)bulunabilir.
-    
+::: zone-end
+
+::: zone pivot="programming-language-other"
+Proje klasörünün kökündeki *Dockerfile dosyasını* inceleyin. Dockerfile, Linux üzerinde işlev uygulamasını çalıştırmak için gerekli ortamı açıklar. Özel işleyici uygulamaları, `mcr.microsoft.com/azure-functions/dotnet:3.0-appservice` görüntüsünü temel olarak kullanır.
+
+*Dockerfile* 'ı R 'yi yükleyecek şekilde değiştirin. *dockerfile* içeriğini aşağıdakiler ile değiştirin.
+
+```dockerfile
+FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice 
+ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+    AzureFunctionsJobHost__Logging__Console__IsEnabled=true
+
+RUN apt update && \
+    apt install -y r-base && \
+    R -e "install.packages('httpuv', repos='http://cran.rstudio.com/')"
+
+COPY . /home/site/wwwroot
+```
+::: zone-end
+
 Kök proje klasöründe [Docker Build](https://docs.docker.com/engine/reference/commandline/build/) komutunu çalıştırın ve bir ad, `azurefunctionsimage` , ve etiketi belirtin `v1.0.0` . `<DOCKER_ID>` değerini Docker Hub hesabınızın kimliğiyle değiştirin. Bu komut, kapsayıcı için Docker görüntüsünü derler.
 
 ```console
@@ -179,7 +316,7 @@ Derlemeyi test etmek için [Docker Run](https://docs.docker.com/engine/reference
 docker run -p 8080:80 -it <docker_id>/azurefunctionsimage:v1.0.0
 ```
 
-::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-other"  
 Görüntü yerel kapsayıcıda çalışmaya başladıktan sonra, bir tarayıcı açın `http://localhost:8080` ve aşağıda gösterilen yer tutucu görüntüsünü görüntülemesi gerekir. Bu noktada, işleviniz Azure 'da olduğu gibi yerel kapsayıcıda çalıştığı ve bu, özelliği ile birlikte *function.js* tanımlı bir erişim anahtarı tarafından korunduğu için görüntü bu noktada görünür `"authLevel": "function"` . Kapsayıcı henüz Azure 'da bir işlev uygulamasına yayımlanmadı, bu nedenle anahtar henüz kullanılamıyor. Yerel kapsayıcıya karşı test etmek istiyorsanız Docker 'ı durdurun, yetkilendirme özelliğini olarak değiştirin `"authLevel": "anonymous"` , görüntüyü yeniden derleyin ve Docker 'ı yeniden başlatın. Sonra `"authLevel": "function"` *function.jsüzerinde* sıfırlayın. Daha fazla bilgi için bkz. [Yetkilendirme anahtarları](functions-bindings-http-webhook-trigger.md#authorization-keys).
 
 ![Kapsayıcının yerel olarak çalıştığını gösteren yer tutucu resim](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
@@ -258,13 +395,20 @@ Azure 'daki bir işlev uygulaması, barındırma planınızdaki işlevlerinizin 
 
 1. [Az functionapp Create](/cli/azure/functionapp#az-functionapp-create) komutunu kullanarak işlevler uygulamasını oluşturun. Aşağıdaki örnekte, değerini `<storage_name>` depolama hesabı için önceki bölümde kullandığınız adla değiştirin. Ayrıca `<app_name>` , sizin için uygun bir genel benzersiz adla ve `<docker_id>` DOCKER Kimliğiniz ile değiştirin.
 
+    ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
     ```azurecli
     az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime <functions runtime stack> --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
     ```
+    ::: zone-end
+    ::: zone pivot="programming-language-other"
+    ```azurecli
+    az functionapp create --name <app_name> --storage-account <storage_name> --resource-group AzureFunctionsContainers-rg --plan myPremiumPlan --runtime custom --deployment-container-image-name <docker_id>/azurefunctionsimage:v1.0.0
+    ```
+    ::: zone-end
     
     *Dağıtım-kapsayıcı-görüntü-adı* parametresi, işlev uygulaması için kullanılacak resmi belirtir. Dağıtım için kullanılan görüntü hakkındaki bilgileri görüntülemek için [az functionapp config Container Show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) komutunu kullanabilirsiniz. Farklı bir görüntüden dağıtmak için [az functionapp config Container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) komutunu da kullanabilirsiniz.
 
-1. [Az Storage Account Show-Connection-String](/cli/azure/storage/account) komutunu kullanarak oluşturduğunuz depolama hesabı için bağlantı dizesini bir Shell değişkenine atayarak alın `storageConnectionString` :
+1. [Az Storage Account Show-Connection-String](/cli/azure/storage/account) komutunu kullanarak oluşturduğunuz depolama hesabı için bağlantı dizesini görüntüleyin. `<storage-name>`Yukarıda oluşturduğunuz depolama hesabının adıyla değiştirin:
 
     ```azurecli
     az storage account show-connection-string --resource-group AzureFunctionsContainers-rg --name <storage_name> --query connectionString --output tsv
@@ -275,8 +419,6 @@ Azure 'daki bir işlev uygulaması, barındırma planınızdaki işlevlerinizin 
     ```azurecli
     az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=<connection_string>
     ```
-
-1. Bu işlev artık depolama hesabına erişmek için bu bağlantı dizesini kullanabilir.
 
     > [!TIP]
     > Bash 'de, pano kullanmak yerine bağlantı dizesini yakalamak için bir Shell değişkeni kullanabilirsiniz. İlk olarak, bağlantı dizesiyle bir değişken oluşturmak için aşağıdaki komutu kullanın:
@@ -290,6 +432,8 @@ Azure 'daki bir işlev uygulaması, barındırma planınızdaki işlevlerinizin 
     > ```azurecli
     > az functionapp config appsettings set --name <app_name> --resource-group AzureFunctionsContainers-rg --settings AzureWebJobsStorage=$storageConnectionString
     > ```
+
+1. Bu işlev artık depolama hesabına erişmek için bu bağlantı dizesini kullanabilir.
 
 > [!NOTE]    
 > Özel görüntünüzü özel bir kapsayıcı hesabına yayımlarsanız, bunun yerine bağlantı dizesinin Dockerfile içindeki ortam değişkenlerini kullanmanız gerekir. Daha fazla bilgi için bkz. [env yönergesi](https://docs.docker.com/engine/reference/builder/#env). Ayrıca, ve değişkenlerini de ayarlamanız `DOCKER_REGISTRY_SERVER_USERNAME` gerekir `DOCKER_REGISTRY_SERVER_PASSWORD` . Değerleri kullanmak için, görüntüyü yeniden oluşturmanız, görüntüyü kayıt defterine göndermeniz ve sonra işlev uygulamasını Azure 'da yeniden başlatmanız gerekir.
@@ -439,6 +583,8 @@ SSH, kapsayıcı ile istemci arasında güvenli iletişime olanak tanır. SSH et
 
     ![SSH oturumunda çalışan Linux üst komutu](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="write-to-an-azure-storage-queue"></a>Azure depolama kuyruğuna yazma
 
 Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevlerinizi diğer Azure hizmetleri ve kaynaklarına bağlamanıza olanak tanır. Hem giriş hem de çıktıyı temsil eden bu *bağlamalar*, işlev tanımı içinde bildirilmiştir. Bağlamalardan alınan veriler işleve parametre olarak sağlanır. *Tetikleyici* özel bir giriş bağlama türüdür. Bir işlevde yalnızca bir tetikleyici olsa da, birden çok giriş ve çıkış bağlaması olabilir. Daha fazla bilgi için bkz. [Azure işlevleri Tetikleyicileri ve bağlamaları kavramları](functions-triggers-bindings.md).
@@ -446,6 +592,7 @@ Azure Işlevleri, kendi tümleştirme kodunuzu yazmak zorunda kalmadan işlevler
 Bu bölümde, işlevinizi bir Azure depolama kuyruğu ile tümleştirme işlemi gösterilmektedir. Bu işleve eklediğiniz çıkış bağlaması, verileri bir HTTP isteğinden kuyruktaki bir iletiye yazar.
 
 [!INCLUDE [functions-cli-get-storage-connection](../../includes/functions-cli-get-storage-connection.md)]
+::: zone-end
 
 [!INCLUDE [functions-register-storage-binding-extension-csharp](../../includes/functions-register-storage-binding-extension-csharp.md)]
 
@@ -458,9 +605,12 @@ Bu bölümde, işlevinizi bir Azure depolama kuyruğu ile tümleştirme işlemi 
 [!INCLUDE [functions-add-output-binding-java-cli](../../includes/functions-add-output-binding-java-cli.md)]
 ::: zone-end  
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
+
 ## <a name="add-code-to-use-the-output-binding"></a>Çıkış bağlamayı kullanmak için kod ekleme
 
 Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` Çıkış parametresini alacak ve kuyruğa ileti yazacak şekilde güncelleştirebilirsiniz.
+::: zone-end
 
 ::: zone pivot="programming-language-python"     
 [!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
@@ -488,6 +638,7 @@ Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` Çıkış parametresi
 [!INCLUDE [functions-add-output-binding-java-test-cli](../../includes/functions-add-output-binding-java-test-cli.md)]
 ::: zone-end
 
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python,programming-language-java"
 ### <a name="update-the-image-in-the-registry"></a>Kayıt defterindeki görüntüyü güncelleştirme
 
 1. Kök klasörde, `docker build` yeniden çalıştırın ve bu kez etiketteki sürümü olarak güncelleştirin `v1.0.1` . Daha önce olduğu gibi, `<docker_id>` Docker Hub HESABı Kimliğinizle değiştirin:
@@ -509,6 +660,8 @@ Sıra bağlaması tanımlı ile, artık işlevinizi, `msg` Çıkış parametresi
 Bir tarayıcıda, işlevinizi çağırmak için aynı URL 'YI kullanın. İşlev kodunun bu bölümünü değiştirmediğiniz için tarayıcı, önceki ile aynı yanıtı görüntülemelidir. Ancak eklenen kod, `name` depolama kuyruğuna URL parametresi kullanılarak bir ileti yazdı `outqueue` .
 
 [!INCLUDE [functions-add-output-binding-view-queue-cli](../../includes/functions-add-output-binding-view-queue-cli.md)]
+
+::: zone-end
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

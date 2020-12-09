@@ -1,21 +1,26 @@
 ---
 title: Azure haritalar çizim hatası Görselleştiricisini Kullanma
-description: Bu makalede, oluşturan dönüştürme API 'SI tarafından döndürülen uyarıları ve hataları görselleştirmeyi öğreneceksiniz.
+description: Bu makalede, Oluşturucu (Önizleme) dönüştürme API 'SI tarafından döndürülen uyarıları ve hataları görselleştirmeyi öğreneceksiniz.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 99821e51364eb9ffd75cda291c526c3c0b8c8f0e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895860"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903590"
 ---
-# <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure haritalar çizim hatası Görselleştiricisini Kullanma
+# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>Azure haritalar 'ı Oluşturucu (Önizleme) ile çizim hatası Görselleştiricisini Kullanma
+
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 Çizim hatası görselleştiricisi çizim [paketi uyarılarını ve](drawing-conversion-error-codes.md) dönüştürme işlemi sırasında algılanan hataları görüntüleyen tek başına bir Web uygulamasıdır. Hata görselleştiricisi Web uygulaması, internet 'e bağlanmadan kullanabileceğiniz bir statik sayfadan oluşur.  Hata Görselleştiriciyi, [Çizim paketi gereksinimlerine](drawing-requirements.md)uygun olarak hataları ve uyarıları onarmak için kullanabilirsiniz. [Azure haritalar dönüştürme API 'si](/rest/api/maps/conversion) yalnızca bir hata algılandığında yalnızca hata görselleştiricisi bağlantısı olan bir yanıt döndürür.
 
@@ -25,13 +30,13 @@ ms.locfileid: "92895860"
 
 1. [Azure Haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
-3. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
+3. [Oluşturucu (Önizleme) kaynağı oluşturma](how-to-manage-creator.md)
 
 Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, ancak farklı bir API geliştirme ortamı seçebilirsiniz.
 
 ## <a name="download"></a>İndir
 
-1. Karşıya yüklenen paket için, çizim paketinizi Azure Maps Oluşturucu hizmetine yükleyin `udid` . Bir paketi karşıya yükleme adımları için bkz. [bir çizim paketini karşıya yükleme](tutorial-creator-indoor-maps.md#upload-a-drawing-package).
+1. Karşıya yüklenen paket için, çizim paketinizi Azure Maps Oluşturucu hizmeti 'ne (Önizleme) yükleyin `udid` . Bir paketi karşıya yükleme adımları için bkz. [bir çizim paketini karşıya yükleme](tutorial-creator-indoor-maps.md#upload-a-drawing-package).
 
 2. Artık çizim paketi karşıya yüklendikten sonra, `udid` paketi harita verilerine dönüştürmek için karşıya yüklenen paket için kullanacağız. Bir paketi dönüştürme adımları için bkz. [bir çizim paketini dönüştürme](tutorial-creator-indoor-maps.md#convert-a-drawing-package).
 
@@ -58,8 +63,8 @@ Bu öğretici [Postman](https://www.postman.com/) uygulamasını kullanır, anca
 
 Bağlantıdan indirilen sıkıştırılmış paketin içinde `diagnosticPackageLocation` iki dosya bulacaksınız.
 
-* _VisualizationTool.zip_ : çizim hatası görselleştiricisi için kaynak kodunu, medyayı ve Web sayfasını içerir.
-* _ConversionWarningsAndErrors.js_ :: çizim hatası görselleştiricisi tarafından kullanılan, uyarı, hata ve ek ayrıntıların bir listesini içerir.
+* _VisualizationTool.zip_: çizim hatası görselleştiricisi için kaynak kodunu, medyayı ve Web sayfasını içerir.
+* _ConversionWarningsAndErrors.js_:: çizim hatası görselleştiricisi tarafından kullanılan, uyarı, hata ve ek ayrıntıların bir listesini içerir.
 
 _VisualizationTool.zip_ klasörünü açın. Aşağıdaki öğeleri içerir:
 
@@ -82,11 +87,11 @@ _index.html_ dosyasını, ilgili sürüm numarasıyla aşağıdaki tarayıcılar
 
 Dosyadaki  _ConversionWarningsAndErrors.js_ indirilen dizinin köküne yerleştirildi. _ConversionWarningsAndErrors.js_ yüklemek için dosyayı sürükleyerek & sürükleyip kutuya bırakabilir veya kutuya tıklayabilir, dosya Gezgini iletişim kutusunda dosyayı bulabilir ve sonra dosyayı karşıya yükleyebilirsiniz.
 
-:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Hata görselleştiricisi uygulaması çizme-başlangıç sayfası":::
+:::image type="content" source="./media/drawing-errors-visualizer/loading-data.gif" alt-text="Hata görselleştiricisi uygulaması çizme-verileri yüklemek için sürükle ve bırak":::
 
 Dosya _ConversionWarningsAndErrors.js_ yüklendikten sonra, çizim paketinizin hatalarının ve uyarılarının bir listesini görürsünüz. Her hata veya uyarı katman, düzey ve ayrıntılı bir ileti tarafından belirtilir. Bir hata veya uyarı hakkındaki ayrıntılı bilgileri görüntülemek için **Ayrıntılar** bağlantısına tıklayın. Daha sonra listenin altında bir ıntractable bölümü görüntülenir. Artık hatanın nasıl çözüleceği hakkında daha fazla bilgi edinmek için her bir hataya gidebilirsiniz.
 
-:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Hata görselleştiricisi uygulaması çizme-başlangıç sayfası":::
+:::image type="content" source="./media/drawing-errors-visualizer/errors.png" alt-text="Hata görselleştiricisi uygulaması çizme-hatalar ve uyarılar":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -96,7 +101,7 @@ Dosya _ConversionWarningsAndErrors.js_ yüklendikten sonra, çizim paketinizin h
 > [Çizim dönüştürme hata kodları](drawing-conversion-error-codes.md)
 
 > [!div class="nextstepaction"]
-> [Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)
+> [Inkapı haritaları için Oluşturucu (Önizleme)](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Inkapıharitaları modülünü kullanma](how-to-use-indoor-module.md)

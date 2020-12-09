@@ -8,39 +8,48 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 40c1fb314a2dea653740e7f87b5caa14c759fffb
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078230"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903998"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT çözüm hızlandırıcıları için sık sorulan sorular
 
-Ayrıca bkz. [bağlı fabrikada özgü SSS](iot-accelerators-faq-cf.md) ve [uzaktan izlemeye özgü SSS](iot-accelerators-faq-rm-v2.md) .
+Ayrıca bkz. [bağlı fabrikada özgü SSS](iot-accelerators-faq-cf.md).
 
 ### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Çözüm hızlandırıcılarına ait kaynak kodunu nerede bulabilirim?
 
 Kaynak kodu aşağıdaki GitHub depolarında depolanır:
 
-* [Uzaktan Izleme Çözüm Hızlandırıcısı (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
-* [Uzaktan Izleme Çözüm Hızlandırıcısı (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
-* [Tahmine dayalı bakım Çözüm Hızlandırıcısı](https://github.com/Azure/azure-iot-predictive-maintenance)
 * [Bağlı fabrika çözümü Hızlandırıcısı](https://github.com/Azure/azure-iot-connected-factory)
+* [Cihaz benzetimi Çözüm Hızlandırıcısı](https://github.com/Azure/device-simulation-dotnet)
+
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Uzaktan izleme ve tahmine dayalı bakım çözüm hızlandırıcılarını nerede bulabilirim?
+
+10 Aralık 2020 itibariyle, uzaktan izleme ve tahmine dayalı bakım Hızlandırıcılar, [Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) sitesinden kaldırılmıştır ve artık Yeni dağıtımlar için kullanılamaz. Her iki hızlandırıcı için GitHub depoları arşivlenir. Kod, herkesin erişimine açık olmaya devam eder, ancak depolar yeni bir katkı almaz.
+
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>Var olan uzaktan izleme ve tahmine dayalı bakım dağıtımlarıma ne olur?
+
+Mevcut dağıtımlar, uzaktan izleme ve tahmine dayalı bakım çözümü hızlandırıcılarını kaldırmasından etkilenmez ve çalışmaya devam edecektir. Tüm depolar de etkilenmez. GitHub 'daki ana depolar arşivlendi.
+
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Cihaz benzetimi çözüm hızlandırıcıyı Nasıl yaparım?.
+
+Cihaz benzetimi çözüm Hızlandırıcısını dağıtmak için [cihaz benzetimi](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) GitHub deposuna bakın.
+
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Kaldırılmış çözüm hızlandırıcılarına ilişkin bilgileri nerede bulabilirim?
+
+Önceki sürümler sitesinde aşağıdaki sayfalara bakın:
+
+* [Uzaktan izleme](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
+* [Tahmine dayalı bakım](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
 ### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Çözüm hızlandırıcılarına yönelik cihaz istemcileri geliştirmek için hangi SDK 'Ları kullanabilirim?
 
 Farklı dilin (C, .NET, Java, Node.js, Python) IoT cihaz SDK 'larının bağlantılarını [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) 'lar GitHub depolarında bulabilirsiniz.
 
 DevKit cihazını kullanıyorsanız, [IoT DEVKIT SDK](https://github.com/Microsoft/devkit-sdk) GitHub deposunda kaynakları ve örnekleri bulabilirsiniz.
-
-### <a name="is-the-new-microservices-architecture-available-for-all-the-three-solution-accelerators"></a>Yeni mikro hizmet mimarisi, üç Çözüm Hızlandırıcısı için de kullanılabilir mi?
-
-Şu anda, en geniş senaryoyu kapsadığından yalnızca uzaktan Izleme çözümü mikro hizmet mimarisini kullanır.
-
-### <a name="what-advantages-does-the-new-open-sourced-microservices-based-architecture-provide-in-the-new-update"></a>Yeni bir açık kaynak mikro hizmet tabanlı mimarinin yeni güncelleştirmede sağladığı avantajlar nelerdir?
-
-Son iki yılda, bulut mimarisi büyük ölçüde gelişmiştir. Mikro hizmetler, geliştirme hızından ödün vermeden ölçek ve esneklik elde etmek için harika bir model olarak ortaya çıktı. Bu mimari model, çok sayıda Microsoft hizmetine şirket içinde harika güvenilirlik ve ölçeklenebilirlik sonuçlarıyla birlikte kullanılır. Microsoft bu dersleri ' i çözüm hızlandırıcılarına yerleştirilerek müşterilerin bundan faydalanır.
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Bir hizmet yöneticiyim ve aboneliğim ile belirli bir Azure AD kiracısı arasındaki dizin eşlemesini değiştirmek istiyorum. Nasıl yaparım? bu görevi tamamlayacak mı?
 
@@ -63,14 +72,6 @@ Rehberlik için aşağıdaki diyagrama bakın:
 
 Azure aboneliğiniz olduğundan emin değilseniz, aboneliğinizin kiracı eşlemesini doğrulayın ve açılan menüde doğru kiracının seçili olduğunu kontrol edin. Kiracının doğru olduğunu doğruladığınız takdirde, önceki diyagramı izleyin ve aboneliğinizin ve bu Azure AD kiracısının eşlemesini doğrulayın.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Uzaktan Izleme çözümünün önceki sürümüyle ilgili bilgileri nereden bulabilirim?
-
-Uzaktan Izleme çözüm hızlandırıcısının önceki sürümü IoT Suite uzaktan Izleme çözümü olarak bilinir. Arşivlenmiş belgeleri adresinde bulabilirsiniz [https://docs.microsoft.com/previous-versions/azure/iot-suite/](/previous-versions/azure/iot-suite/) .
-
-### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Yeni Çözüm Hızlandırıcısı var olan çözümle aynı coğrafi bölgede kullanılabilir mi?
-
-Evet, yeni uzaktan Izleme aynı coğrafi bölgede kullanılabilir.
-
 ### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Azure portal bir kaynak grubunu silme ve azureiotsolutions.com içinde çözüm hızlandırıcısında Sil ' i tıklatma arasındaki fark nedir?
 
 * Çözüm hızlandırıcıyı [azureiotsolutions.com](https://www.azureiotsolutions.com/)' de silerseniz, çözüm hızlandırıcıyı oluştururken dağıtılan tüm kaynakları silersiniz. Kaynak grubuna ek kaynaklar eklediyseniz, bu kaynaklar da silinir.
@@ -88,10 +89,6 @@ Varsayılan olarak, [abonelik başına 10 IoT Hub](../azure-resource-manager/man
 
 Elli. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oluşturabilirsiniz, ancak varsayılan olarak abonelik başına yalnızca 50 Cosmos DB örnekleri sağlayabilirsiniz.
 
-### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>Bir abonelikte kaç tane Ücretsiz Bing Haritaları API'si sağlayabilirim?
-
-İki. Bir Azure aboneliğinde Enterprise planları için yalnızca iki adet İç İşlemler Düzey 1 Bing Haritası oluşturabilirsiniz. Uzaktan Izleme çözümü, dahili Işlem düzeyi 1 planıyla birlikte varsayılan olarak sağlanır. Sonuç olarak, bir abonelikte yalnızca değişiklik yapmadan en fazla iki uzaktan Izleme çözümü sağlayabilirsiniz.
-
 ### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>DreamSpark için Microsoft Azure varsa çözüm hızlandırıcıyı oluşturabilir miyim?
 
 > [!NOTE]
@@ -107,7 +104,5 @@ Elli. Bu sınırı yükseltmek için bir [Azure destek bileti](https://portal.az
 
 IoT çözüm hızlandırıcılarının diğer özellik ve yeteneklerinden bazılarını da keşfedebilirsiniz:
 
-* [Uzaktan Izleme çözüm hızlandırıcısının yeteneklerini keşfet](quickstart-remote-monitoring-deploy.md)
-* [Tahmine Dayalı Bakım çözüm hızlandırıcısına genel bakış](./iot-accelerators-predictive-walkthrough.md)
 * [Bağlı fabrika çözüm Hızlandırıcısını dağıtma](quickstart-connected-factory-deploy.md)
 * [Baştan sona IoT güvenliği](../iot-fundamentals/iot-security-ground-up.md)

@@ -3,14 +3,14 @@ title: Kapsayıcılar için Azure Izleyici izleme maliyeti | Microsoft Docs
 description: Bu makalede, müşterilerin kullanımını ve ilişkili maliyetlerini yönetmesine yardımcı olmak üzere kapsayıcılar için Azure Izleyici tarafından toplanan ölçüm verileri & ölçümleri için izleme maliyeti açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81a20f564af68c3da6d63394e4cffe7caed91b46
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84204659"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903232"
 ---
-# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'nin izleme maliyetlerini anlama
+# <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Kapsayıcılar için Azure İzleyici'de izleme maliyetlerini anlama
 
 Bu makale, aşağıdakileri anlamanıza yardımcı olmak üzere kapsayıcılar için Azure Izleyici için fiyatlandırma kılavuzu sağlar:
 
@@ -37,7 +37,7 @@ Aşağıda, bir Kubernetes kümesinden, maliyeti etkileyen kapsayıcılar için 
 
 - Prometheus ölçümlerinin etkin koruması
 
-- AKS kümenizdeki Kubernetes ana düğüm günlüklerinin, *kuas-apiserver* ve *kuin-Controller-Manager*gibi ana bileşenler tarafından oluşturulan günlük verilerini analiz etmek için [tanılama günlüğü](../../aks/view-master-logs.md) .
+- AKS kümenizdeki Kubernetes ana düğüm günlüklerinin, *kuas-apiserver* ve *kuin-Controller-Manager* gibi ana bileşenler tarafından oluşturulan günlük verilerini analiz etmek için [tanılama günlüğü](../../aks/view-master-logs.md) .
 
 ## <a name="what-is-collected-from-kubernetes-clusters"></a>Kubernetes kümelerinden toplanan özellikler
 
@@ -127,19 +127,21 @@ Kullandıkça Öde modeli olan Log Analytics için varsayılan [fiyatlandırmay�
 
 ## <a name="controlling-ingestion-to-reduce-cost"></a>Maliyeti azaltmak için alımı denetleme
 
-Kuruluşunuzun farklı iş biriminin Kubernetes altyapısını ve bir Log Analytics çalışma alanını paylaştığı bir senaryo düşünün. Her bir iş birimiyle bir Kubernetes ad alanıyla ayrılır. Son yayınlanan çalışma kitabını kullanarak her çalışma alanında ne kadar veri alınacağını görselleştirebilirsiniz. [Çalışma kitapları galerisinde](../platform/workbooks-overview.md#getting-started)bulunan **kapsayıcı öngörüleri kullanım** çalışma kitabı, belgelerimizde paylaşdığımız bir sorgu kitaplığını oluşturmaya gerek kalmadan verilerinizin kaynağını görselleştirmenize yardımcı olur. Bu çalışma kitabında, bu tür perspektiflerden faturalanabilir verileri şu şekilde görüntüleyebilmeniz gereken grafikler vardır:
+Kuruluşunuzun farklı iş biriminin Kubernetes altyapısını ve bir Log Analytics çalışma alanını paylaştığı bir senaryo düşünün. Her bir iş birimiyle bir Kubernetes ad alanıyla ayrılır. **Çalışma kitaplarını görüntüle** açılan menüsünde kullanılabilir olan **veri kullanımı** runbook 'unu kullanarak her çalışma alanında ne kadar veri alınacağını görselleştirebilirsiniz.
+
+[![Çalışma kitaplarını göster açılan kutusu](media/container-insights-cost/workbooks-dropdown.png)](media/container-insights-cost/workbooks-dropdown.png#lightbox)
+
+
+Bu çalışma kitabı, belgelerimizde paylaşdığımız bir sorgu kitaplığı oluşturmanıza gerek kalmadan verilerinizin kaynağını görselleştirmenize yardımcı olur. Bu çalışma kitabında, bu tür perspektiflerden faturalanabilir verileri şu şekilde görüntüleyebilmeniz gereken grafikler vardır:
 
 - Çözüme göre GB cinsinden alınan toplam faturalanabilir veri
-
 - Kapsayıcı günlükleri tarafından alınan faturalanabilir veriler (uygulama günlükleri)
-
 - Faturalanabilir kapsayıcı verileri Kubernetes ad alanı başına alınır
-
 - Faturalanabilir kapsayıcı, küme adına göre ayrılmış verileri günlüğe kaydeder
-
 - Günlük kaynak girişi tarafından alınan faturalanabilir kapsayıcı günlük verileri
-
 - Tanılama ana düğüm günlükleri tarafından alınan faturalandırılabilir Tanılama verileri
+
+[![Veri kullanımı çalışma kitabı](media/container-insights-cost/data-usage-workbook.png)](media/container-insights-cost/data-usage-workbook.png#lightbox)
 
 Çalışma kitabı için hakları ve izinleri yönetme hakkında bilgi edinmek için [erişim denetimi](../platform/workbooks-access-control.md)' ni inceleyin.
 

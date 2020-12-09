@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 1a52fc28d99e0f072323e5042257baec9bf98ecb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a693b22c609829f3bf6e76637eac5793d73703e6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518391"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862318"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Öğretici: SharePoint şirket içi ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -52,17 +52,17 @@ Galeriden SharePoint şirket içi eklemek için:
 
 1. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** ' yı seçin.
 
-1. Arama kutusuna **SharePoint şirket içi**yazın. Sonuç bölmesinden **SharePoint şirket içi** seçeneğini belirleyin.
+1. Arama kutusuna **SharePoint şirket içi** yazın. Sonuç bölmesinden **SharePoint şirket içi** seçeneğini belirleyin.
 
     <kbd>![Sonuç listesinde SharePoint şirket içi](./media/sharepoint-on-premises-tutorial/search-new-app.png)</kbd>
 
 1. SharePoint şirket içi örneğiniz için bir ad belirtin ve uygulamayı eklemek için **Ekle** ' yi seçin.
 
-1. Yeni kurumsal uygulamada **Özellikler**' i seçin ve **gerekli Kullanıcı atamasının**değerini denetleyin.
+1. Yeni kurumsal uygulamada **Özellikler**' i seçin ve **gerekli Kullanıcı atamasının** değerini denetleyin.
 
    <kbd>![Kullanıcı Ataması gerekli mi? den](./media/sharepoint-on-premises-tutorial/user-assignment-required.png)</kbd>
 
-   Bu senaryoda değer **Hayır**olarak ayarlanır.
+   Bu senaryoda değer **Hayır** olarak ayarlanır.
 
 ## <a name="configure-and-test-azure-ad"></a>Azure AD 'yi yapılandırma ve test etme
 
@@ -85,7 +85,7 @@ Bu bölümde, Azure portal Azure AD SSO 'yu etkinleştirirsiniz.
 
 Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
 
-1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
+1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
 1. **Çoklu oturum açma yöntemi seç** iletişim kutusunda, SSO 'yu etkinleştirmek için **SAML** modunu seçin.
  
@@ -119,7 +119,7 @@ Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
     - **Oturum kapatma URL 'SI**
 
     > [!NOTE]
-    > Bu URL, SharePoint 'te olduğu gibi kullanılamaz. **/SAML2** öğesini **/wsbesle**değiştirmelisiniz. SharePoint şirket içi uygulaması, bir SAML 1,1 belirteci kullanır, bu nedenle Azure AD, SharePoint sunucusundan bir WS Bestalebi bekliyor. Kimlik doğrulamasından sonra SAML 1,1 belirtecini yayınlar.
+    > Bu URL, SharePoint 'te olduğu gibi kullanılamaz. **/SAML2** öğesini **/wsbesle** değiştirmelisiniz. SharePoint şirket içi uygulaması, bir SAML 1,1 belirteci kullanır, bu nedenle Azure AD, SharePoint sunucusundan bir WS Bestalebi bekliyor. Kimlik doğrulamasından sonra SAML 1,1 belirtecini yayınlar.
 
 ### <a name="configure-sharepoint-on-premises"></a>SharePoint 'i şirket içinde yapılandırma
 
@@ -133,7 +133,7 @@ Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
     Yeni bir güvenilen kimlik sağlayıcısı yapılandırmak için aşağıdaki komutları çalıştırın.
 
     > [!TIP]
-    > PowerShell 'i kullanmaya yeni başladıysanız veya PowerShell 'in nasıl çalıştığı hakkında daha fazla bilgi edinmek istiyorsanız bkz. [SharePoint PowerShell](/powershell/sharepoint/overview?view=sharepoint-ps).
+    > PowerShell 'i kullanmaya yeni başladıysanız veya PowerShell 'in nasıl çalıştığı hakkında daha fazla bilgi edinmek istiyorsanız bkz. [SharePoint PowerShell](/powershell/sharepoint/overview).
 
 
     ```
@@ -152,7 +152,7 @@ Azure AD SSO 'yu SharePoint şirket içi ile yapılandırmak için:
 
     1. Şeritte, **kimlik doğrulama sağlayıcıları** ' nı seçin ve kullanmak istediğiniz bölgeyi seçin.
 
-    1. **Güvenilen kimlik sağlayıcısı**' nı seçin ve ardından *azuread*adlı yeni kaydettiğiniz sağlayıcıyı tanımla ' yı seçin.
+    1. **Güvenilen kimlik sağlayıcısı**' nı seçin ve ardından *azuread* adlı yeni kaydettiğiniz sağlayıcıyı tanımla ' yı seçin.
 
     1. **Tamam**’ı seçin.
 
@@ -186,7 +186,7 @@ Bu bölümün amacı, Azure portal bir test kullanıcısı oluşturmaktır.
 
 1. **Yeni Grup**' u seçin.
 
-1. **Grup türü**, **Grup adı**, **Grup açıklaması**ve **üyelik türü** kutularını girin. Üyeler ' i seçmek için okları seçin ve ardından gruba eklemek istediğiniz üyeleri arayın veya seçin. Seçili üyeleri eklemek için **Seç** ' i seçin ve ardından **Oluştur**' u seçin.
+1. **Grup türü**, **Grup adı**, **Grup açıklaması** ve **üyelik türü** kutularını girin. Üyeler ' i seçmek için okları seçin ve ardından gruba eklemek istediğiniz üyeleri arayın veya seçin. Seçili üyeleri eklemek için **Seç** ' i seçin ve ardından **Oluştur**' u seçin.
 
 ![Azure AD güvenlik grubu oluşturma](./media/sharepoint-on-premises-tutorial/new-group.png)
 
@@ -214,7 +214,7 @@ Bu senaryoyu kişiler seçiciyle düzeltmek için, [Azurecp](https://yvand.githu
 
 1. AzureCP 'yi SharePoint şirket içi grubunda veya alternatif bir özel talep sağlayıcı çözümünde yapılandırın. AzureCP 'yi yapılandırmak için bu [azurecp](https://yvand.github.io/AzureCP/Register-App-In-AAD.html) Web sitesine bakın.
 
-1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
+1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
 
@@ -224,7 +224,7 @@ Bu senaryoyu kişiler seçiciyle düzeltmek için, [Azurecp](https://yvand.githu
 
 SharePoint şirket içinde Azure AD güvenlik grubuna erişim izni vermek için site koleksiyonunu paylaşma veya Azure AD güvenlik grubunu site koleksiyonunun gruplarından birine ekleme.
 
-1. **SharePoint site koleksiyonuna**gidin. Site koleksiyonu için **site ayarları** ' nın altında, **kişiler ve gruplar**' ı seçin. 
+1. **SharePoint site koleksiyonuna** gidin. Site koleksiyonu için **site ayarları** ' nın altında, **kişiler ve gruplar**' ı seçin. 
 
 1. SharePoint grubunu seçin ve ardından **Yeni**  >  **kullanıcıları bu gruba ekle**' yi seçin. Grubunuzun adını yazdığınızda, kişiler Seçicisi Azure AD güvenlik grubunu görüntüler.
 
@@ -234,13 +234,13 @@ SharePoint şirket içinde Azure AD güvenlik grubuna erişim izni vermek için 
 
 UPN şimdi değiştirildiğinden, SharePoint sitenize bir Konuk hesabına erişimi tutarlı bir şekilde verebilirsiniz. Örneğin, Kullanıcı `jdoe@outlook.com` olarak temsil edilir `jdoe_outlook.com#ext#@TENANT.onmicrosoft.com` . Sitenizi dış kullanıcılarla paylaşmak için, Azure portal **Kullanıcı özniteliklerine & talepler** bölümüne bazı değişiklikler eklemeniz gerekir.
 
-1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
+1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **Kullanıcı öznitelikleri & talepler** bölümünü düzenleyin.
 
 1. **Gerekli talep** bölgesinde **benzersiz kullanıcı tanımlayıcısı (ad kimliği)** öğesini seçin.
 
-1. **Kaynak özniteliği** özelliğini **User. localuserprincipalname**değeri olarak değiştirin ve **Kaydet**' i seçin.
+1. **Kaynak özniteliği** özelliğini **User. localuserprincipalname** değeri olarak değiştirin ve **Kaydet**' i seçin.
 
     ![Kullanıcı öznitelikleri & talepler ilk kaynak özniteliği](./media/sharepoint-on-premises-tutorial/manage-claim.png)
 
@@ -265,9 +265,9 @@ UPN şimdi değiştirildiğinden, SharePoint sitenize bir Konuk hesabına erişi
 
 Yapılandırma tek bir Web uygulaması için çalışıyor, ancak birden çok Web uygulaması için aynı güvenilir kimlik sağlayıcısını kullanmayı düşünüyorsanız ek yapılandırma gerekir. Örneğin, URL 'YI kullanmak için bir Web uygulaması genişleteceğini `https://sales.contoso.com` ve artık kullanıcıların kimliğini doğrulamak istediğinizi varsayalım `https://marketing.contoso.com` . Bunu yapmak için, kimlik sağlayıcısını WReply parametresini kabul etmek üzere güncelleştirin ve bir yanıt URL 'SI eklemek için Azure AD 'de uygulama kaydını güncelleştirin.
 
-1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar**Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
+1. Azure Portal **Azure Active Directory**  >  **Kurumsal uygulamalar** Azure Active Directory ' i seçin. Önceden oluşturulan kurumsal uygulama adını seçin ve **Çoklu oturum açma**' yı seçin.
 
-1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasını**düzenleyin.
+1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırmasını** düzenleyin.
 
     ![Temel SAML yapılandırması](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 

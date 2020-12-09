@@ -1,5 +1,5 @@
 ---
-title: Azure Maps ınkapısı haritaları modülünü kullanma
+title: Azure Maps ınkapısı haritaları modülünü Microsoft Creator Hizmetleri (Önizleme) ile kullanma
 description: Modülün JavaScript kitaplıklarını gömerek haritaları işlemek için Microsoft Azure Maps ınkapısı haritaları modülünü kullanmayı öğrenin.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,21 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895469"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905290"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Azure Maps ınkapısı haritaları modülünü kullanma
 
-Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure haritalar Oluşturucu 'da oluşturulan ınkapıların işlemesini sağlar.
+> [!IMPORTANT]
+> Azure haritalar Creator Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Haritalar Web SDK 'Sı, *Azure Maps ınkapısı* modülünü içerir. *Azure Maps ınkapısı* modülü, Azure Maps Oluşturucu hizmetlerinde (Önizleme) oluşturulan ınkapıharitaları oluşturmanıza olanak sağlar 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Oluşturucu kaynağı oluşturma](how-to-manage-creator.md)
+2. [Oluşturucu (Önizleme) kaynağı oluşturma](how-to-manage-creator.md)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
 4. `tilesetId` `statesetId` [Inkapılı haritalar oluşturma öğreticisini](tutorial-creator-indoor-maps.md)tamamlayarak bir ve, alın.
  Bu tanımlayıcıları Azure Maps ınkapısı haritaları modülü ile birlikte iç eşlemeleri işlemek için kullanmanız gerekir.
@@ -89,7 +93,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların* durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği ( *durum* ) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
+Sağladığınız durum verilerinin yoklanmasını etkinleştirmek için `statesetId` ve çağrısını sağlamanız gerekir `indoorManager.setDynamicStyling(true)` . Yoklama durumu verileri dinamik özelliklerin veya *durumların* durumunu dinamik olarak güncelleştirmenize olanak tanır. Örneğin, oda gibi bir özelliğin adlı dinamik bir özelliği (*durum*) olabilir `occupancy` . Uygulamanız, görsel harita içindeki değişikliği yansıtacak şekilde herhangi bir *durum* değişikliğini yoklamak isteyebilir. Aşağıdaki kod, durum yoklamasını nasıl etkinleştireceğinizi göstermektedir:
 
 ```javascript
 const tilesetId = "";
@@ -249,7 +253,7 @@ Inkapısı eşlemenizi görmek için bir Web tarayıcısına yükleyin. Aşağı
 > [Çizim paketi gereksinimleri](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [Inkapı haritaları için Oluşturucu](creator-indoor-maps.md)
+> [Inkapı haritaları için Oluşturucu (Önizleme)](creator-indoor-maps.md)
 
 Haritalarınız için daha fazla veri ekleme hakkında daha fazla bilgi edinin:
 

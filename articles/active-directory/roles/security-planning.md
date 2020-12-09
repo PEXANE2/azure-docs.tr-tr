@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834464"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861995"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama
 
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management açtıktan sonra, aşağıdaki Azure AD 
 * Exchange yöneticisi
 * SharePoint yöneticisi
 
-Kuruluşunuzda Azure AD Privileged Identity Management yoksa [POWERSHELL API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)'sini kullanabilirsiniz. Genel yönetici rolüyle başlayın çünkü genel yönetici, kuruluşunuzun abone olduğu tüm bulut hizmetlerinde aynı izinlere sahiptir. Bu izinlere nerede atandıklarından bağımsız olarak izin verilir: Microsoft 365 Yönetim Merkezi, Azure portal veya Microsoft PowerShell için Azure AD modülü.
+Kuruluşunuzda Azure AD Privileged Identity Management yoksa [POWERSHELL API](/powershell/module/azuread/get-azureaddirectoryrolemember)'sini kullanabilirsiniz. Genel yönetici rolüyle başlayın çünkü genel yönetici, kuruluşunuzun abone olduğu tüm bulut hizmetlerinde aynı izinlere sahiptir. Bu izinlere nerede atandıklarından bağımsız olarak izin verilir: Microsoft 365 Yönetim Merkezi, Azure portal veya Microsoft PowerShell için Azure AD modülü.
 
 Bu rollerde artık gerekmeyen hesapları kaldırın. Ardından, yönetici rollerine atanan kalan hesapları kategorilere ayırın:
 

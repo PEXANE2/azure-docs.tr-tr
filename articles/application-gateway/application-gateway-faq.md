@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: dc262e133f6e91271d7e9848bdca9d3a6062fc66
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d46c1d8efb5234d47c80ca4256c2f56d56ccf805
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751725"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862182"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway hakkında sık sorulan sorular
 
@@ -133,7 +133,7 @@ Evet. Application Gateway v1 SKU 'SU desteklenmeye devam edecektir. Ancak, bu SK
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Application Gateway v2, NTLM kimlik doğrulamasıyla proxy isteklerini destekler mi?
 
-Hayır. Application Gateway v2, kimlik doğrulama isteklerini henüz NTLM kimlik doğrulamasıyla desteklemez.
+Hayır. Application Gateway v2, NTLM kimlik doğrulamasıyla proxy isteklerini desteklemiyor.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Application Gateway benzeşim tanımlama bilgisi SameSite özniteliğini destekliyor mu?
 Evet, [Kmıum Browser](https://www.chromium.org/Home) [V80 Update](https://chromiumdash.appspot.com/schedule) , SameSite = LAX olarak değerlendirilmeyeceği bir SAMESITE özniteliği olmadan http tanımlama bilgilerinde bir mantarih getirdi. Bu, Application Gateway benzeşim tanımlama bilgisinin tarayıcı tarafından üçüncü taraf bir bağlamda gönderilemeyeceği anlamına gelir. 

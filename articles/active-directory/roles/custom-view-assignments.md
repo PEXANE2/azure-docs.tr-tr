@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c1e46fd55cd7beda931db2e24cc2210753ee26f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: dd887862a2571f4ffaeab9cf1ae42801df779ed0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180413"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862114"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory özel rol atamalarını görüntüleme
 
@@ -39,7 +39,7 @@ Bu yordam, bir rolün kurumsal çapta kapsama sahip atamalarını görüntüleme
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell kullanarak rol atamalarını görüntüleme
 
-Bu bölümde, bir rolün kurumsal çapta kapsama sahip atamalarını görüntüleme açıklanmaktadır. Bu makale, [Azure Active Directory PowerShell sürüm 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) modülünü kullanır. PowerShell kullanarak tek uygulama kapsamı atamalarını görüntülemek için, [PowerShell ile özel roller atama](./custom-assign-powershell.md)içindeki cmdlet 'leri kullanabilirsiniz.
+Bu bölümde, bir rolün kurumsal çapta kapsama sahip atamalarını görüntüleme açıklanmaktadır. Bu makale, [Azure Active Directory PowerShell sürüm 2](/powershell/module/azuread/#directory_roles) modülünü kullanır. PowerShell kullanarak tek uygulama kapsamı atamalarını görüntülemek için, [PowerShell ile özel roller atama](./custom-assign-powershell.md)içindeki cmdlet 'leri kullanabilirsiniz.
 
 ### <a name="prepare-powershell"></a>PowerShell 'i hazırlama
 

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: içerik moderatör, Azure İçerik Aracı, çevrimiçi Aracı, içerik filtreleme yazılımı, içerik denetleme hizmeti, içerik denetleme
-ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7c996ae49bdf7aa72873322f11af754843fd835
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596849"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905256"
 ---
 # <a name="what-is-azure-content-moderator"></a>Azure Content Moderator nedir?
 
@@ -52,7 +52,7 @@ Content Moderator hizmeti, uygunsuz veya sakıncalı olabilecek malzemelere yön
 
 Aşağıdaki tabloda farklı denetleme API 'Leri açıklanmaktadır.
 
-| API grubu | Açıklama |
+| API grubu | Description |
 | ------ | ----------- |
 |[**Metin denetimi**](text-moderation-api.md)| Saldırgan içeriği, cinsel açık veya müstehcen içerik, küfür ve kişisel veriler için metin tarar.|
 |[**Özel terim listeleri**](try-terms-list-api.md)| Metni, yerleşik koşullarla birlikte özel bir terim listesine karşı tarar. İçerik ilkelerinize göre içerik engellemek veya izin vermek için özel listeler kullanabilirsiniz.|  
@@ -81,4 +81,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, Content Moderator hizmetini kullanan ge
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web portalında Content Moderator kullanmaya başlamak için [Web üzerinde Content moderator deneyin](quick-start.md)' i izleyin. Ya da, kodda temel senaryoları uygulamak için bir [istemci kitaplığı hızlı](client-libraries.md) başlangıcını tamamlayabilirsiniz.
+Web portalında Content Moderator kullanmaya başlamak için [Web üzerinde Content moderator deneyin](quick-start.md)' i izleyin. Ya da, kodda temel senaryoları uygulamak için bir [istemci kitaplığını veya REST API hızlı](client-libraries.md) başlangıcı ' nı tamamlayabilirsiniz.

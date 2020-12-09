@@ -4,12 +4,12 @@ description: Kullanılabilirlik, performans ve kullanım için ASP.NET Core Web 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 8505e67e3db7460308d208ce4f83d29a1fb4d862
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 2921c6379b34e002013b5f0087cefd502ab0ab84
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763205"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904542"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>ASP.NET Core uygulamalar için Application Insights
 
@@ -35,6 +35,10 @@ Burada kullanacağınız örnek, ' i hedefleyen bir [MVC uygulamasıdır](/aspne
 
 - Çalışan bir ASP.NET Core uygulaması. Bir ASP.NET Core uygulaması oluşturmanız gerekiyorsa, bu [ASP.NET Core öğreticisini](/aspnet/core/getting-started/)izleyin.
 - Geçerli bir Application Insights izleme anahtarı. Bu anahtar, Application Insights telemetri göndermek için gereklidir. Bir izleme anahtarı almak için yeni bir Application Insights kaynağı oluşturmanız gerekiyorsa, bkz. [Application Insights kaynağı oluşturma](./create-new-resource.md).
+
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=net) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
+
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Sunucu tarafı telemetrisini Application Insights etkinleştirme (Visual Studio)
 

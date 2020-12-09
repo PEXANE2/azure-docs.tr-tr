@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 42f01b140a44d7aa6d75dece9a4398fd7b41bf5a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411363"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905120"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken karşılaşılan sorgu sorunlarını giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -196,9 +196,7 @@ Herhangi bir zamanda, yazma veya okuma kullanılabilirliği üzerinde hiçbir et
 
 ### <a name="understand-which-system-functions-use-the-index"></a>Hangi sistem işlevlerinin Dizin kullandığını anlayın
 
-Bir ifade bir dize değerleri aralığına çevrilebilen dizin kullanabilir. Aksi takdirde, bu, olamaz.
-
-Dizin kullanan bazı yaygın dize işlevlerinin listesi aşağıdadır:
+Çoğu sistem işlevi dizinleri kullanır. Dizinler kullanan bazı yaygın dize işlevlerinin listesi aşağıda verilmiştir:
 
 - STARTSWITH (str_expr1, str_expr2, bool_expr)  
 - IÇERIR (str_expr, str_expr, bool_expr)
@@ -214,7 +212,26 @@ Aşağıda, dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı yayg�
 
 ------
 
-Sorgunun diğer kısımları, sistem işlevleri olmasa da dizini yine de kullanabilir.
+Bir sistem işlevi dizinler kullanıyorsa ve yine de yüksek RU ücretine sahipse, sorguya eklemeyi deneyebilirsiniz `ORDER BY` . Bazı durumlarda ekleme, `ORDER BY` özellikle sorgu uzun süre çalışıyorsa veya birden çok sayfaya yayıldığında, sistem işlev dizini kullanımını iyileştirebilir.
+
+Örneğin, aşağıdaki sorguyu ile değerlendirin `CONTAINS` . `CONTAINS` bir dizin kullanmalıdır, ancak ilgili dizin eklendikten sonra, aşağıdaki sorguyu çalıştırırken hala çok yüksek RU ücretine gözlemleyeceksiniz:
+
+Özgün sorgu:
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+```
+
+Sorgu şu ile güncelleştirildi `ORDER BY` :
+
+```sql
+SELECT *
+FROM c
+WHERE CONTAINS(c.town, "Sea")
+ORDER BY c.town
+```
 
 ### <a name="understand-which-aggregate-queries-use-the-index"></a>Hangi toplu sorguların Dizin kullandığını anlayın
 

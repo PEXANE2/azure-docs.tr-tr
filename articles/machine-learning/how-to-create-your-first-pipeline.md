@@ -11,16 +11,14 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 57806ecaf4b0e295457c78faaff6033126ddb2c8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2b534f82aeda438b1d2bd5d60eeb4871acffc54a
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463023"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902026"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK ile makine öğrenimi işlem hatları oluşturma ve çalıştırma
-
-
 
 Bu makalede, [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)kullanarak [makine öğrenimi ardışık düzeni](concept-ml-pipelines.md) oluşturmayı ve çalıştırmayı öğreneceksiniz. Çeşitli ML aşamalarını biraraya uygulayan bir iş akışı oluşturmak için **ml işlem hatlarını** kullanın. Ardından, daha sonra erişmek veya başkalarıyla paylaşmak için bu işlem hattını yayımlayın. Modelinizin gerçek dünyada nasıl çalıştığını görmek ve veri kayması 'nı algılamak için ML işlem hatlarını izleyin. ML işlem hatları, çeşitli hesaplar kullanılarak, yeniden çalıştırmak yerine adımları yeniden kullanarak ve diğer kişilerle ML iş akışlarını paylaşarak Batch Puanlama senaryolarında idealdir.
 
@@ -106,6 +104,9 @@ output_data1 = PipelineData(
 
 > [!TIP]
 > Genel Önizleme sınıfı ile ardışık düzen adımları arasında kalıcı ara verileri de mümkündür [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) . Sınıfını kullanan bir kod örneği için `OutputFileDatasetConfig` bkz. [ıkı adımlı ml işlem hattı oluşturma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/pipeline-with-datasets/pipeline-for-image-classification.ipynb).
+
+> [!TIP]
+> Yalnızca işle ilgili olan dosyaları karşıya yükleyin. Veri dizinindeki dosyalardaki herhangi bir değişiklik, yeniden kullanım sırasında işlem hattının bir sonraki çalıştırılışında bu adımı yeniden çalıştırma nedeni olarak görülür. 
 
 ## <a name="set-up-a-compute-target"></a>İşlem hedefi ayarlama
 

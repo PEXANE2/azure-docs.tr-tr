@@ -1,7 +1,7 @@
 ---
-title: Bağlantı Izleyicisi oluşturma-PowerShell
+title: Bağlantı İzleyicisi oluşturma-PowerShell
 titleSuffix: Azure Network Watcher
-description: PowerShell kullanarak bağlantı Izleyicisi oluşturmayı öğrenin.
+description: PowerShell kullanarak bir bağlantı İzleyicisi oluşturmayı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1d5f879ead35ef6d47b993ff833dc0b0595e3c6c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545542"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861927"
 ---
-# <a name="create-a-connection-monitor-using-powershell"></a>PowerShell kullanarak bağlantı Izleyicisi oluşturma
+# <a name="create-a-connection-monitor-by-using-powershell"></a>PowerShell kullanarak bağlantı İzleyicisi oluşturma
 
-PowerShell kullanarak kaynaklarınız arasındaki iletişimi izlemek için bağlantı Izleyicisi oluşturmayı öğrenin.
+Kaynaklarınız arasındaki iletişimi izlemek için Azure ağ Izleyicisi 'nin bağlantı Izleyicisi özelliğini nasıl kullanacağınızı öğrenin.
 
 
-## <a name="before-you-begin"></a>Başlamadan önce 
+## <a name="before-you-begin"></a>Başlamadan önce
 
-Bağlantı Izleyicisinde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
+Bağlantı Izleyicisi ile oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure sanal makinelerini (VM 'Ler) kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
 
-Bağlantı Izleyicisi aşağıdaki varlıkları içerir:
+Bir bağlantı İzleyicisi aşağıdaki varlıkları içerir:
 
-* **Bağlantı İzleyicisi kaynağı** : bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların hepsi bir bağlantı İzleyicisi kaynağının özellikleridir.
-* **Uç nokta** : bağlantı denetimlerine katılan kaynak veya hedef. Uç noktalara örnek olarak Azure VM 'Leri, şirket içi aracılar, URL 'Ler ve IP 'Ler verilebilir.
-* **Test yapılandırması** – bir test için protokole özgü bir yapılandırma. Seçtiğiniz protokole bağlı olarak, bağlantı noktası, eşikler, sınama sıklığı ve diğer parametreleri tanımlayabilirsiniz.
-* **Test grubu** : kaynak uç noktaları, hedef uç noktaları ve test yapılandırmalarının bulunduğu grup. Bir bağlantı İzleyicisi birden fazla test grubu içerebilir.
-* **Test** : kaynak uç noktası, hedef uç noktası ve test yapılandırmasının birleşimi. Test, izleme verilerinin kullanılabildiği en ayrıntılı düzeydir. İzleme verileri, başarısız olan denetim yüzdesini ve gidiş dönüş süresini (RTT) içerir.
+* **Bağlantı İzleyicisi kaynağı**: bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların hepsi Bağlantı İzleyicisi kaynağının özellikleridir.
+* **Uç nokta**: bağlantı denetimlerine katılan kaynak veya hedef. Uç noktalara örnek olarak Azure VM 'Leri, şirket içi aracılar, URL 'Ler ve IP 'Ler verilebilir.
+* **Test yapılandırması**: bir test için protokole özgü bir yapılandırma. Seçtiğiniz protokole bağlı olarak, bağlantı noktası, eşikler, sınama sıklığı ve diğer parametreleri tanımlayabilirsiniz.
+* **Test grubu**: kaynak uç noktaları, hedef uç noktaları ve test yapılandırmalarının bulunduğu grup. Bir bağlantı İzleyicisi birden fazla test grubu içerebilir.
+* **Test**: kaynak uç noktası, hedef uç noktası ve test yapılandırmasının birleşimi. Test, izleme verilerinin kullanılabildiği en ayrıntılı düzeydir. İzleme verileri, başarısız olan denetim yüzdesini ve gidiş dönüş süresini (RTT) içerir.
 
-    ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
+    ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram.](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-## <a name="steps-to-create-with-powershell"></a>PowerShell ile oluşturma adımları
+## <a name="steps-to-create-a-connection-monitor"></a>Bağlantı İzleyicisi oluşturma adımları
 
 PowerShell kullanarak bir bağlantı İzleyicisi oluşturmak için aşağıdaki komutları kullanın.
 
@@ -71,43 +71,42 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 ## <a name="description-of-properties"></a>Özelliklerin açıklaması
 
-* connectionMonitorName-Bağlantı İzleyicisi kaynağının adı
+* **Connectionmonitorname**: Bağlantı İzleyicisi kaynağının adı.
 
-* Bağlantı İzleyicisi oluşturmak istediğiniz aboneliğin alt abonelik KIMLIĞI
+* **Sub**: Bağlantı İzleyicisi oluşturmak istediğiniz ABONELIĞIN abonelik kimliği.
 
-* NW-ağ Izleyicisi kaynak KIMLIĞI, CM 'nin oluşturulacağı 
+* **NW**: bir bağlantı izleyicisinin oluşturulduğu ağ IZLEYICISI kaynak kimliği.
 
-* Bağlantı İzleyicisi 'nin oluşturulacağı konum bölgesi
+* **Konum**: bağlantı izleyicisinin oluşturulduğu bölge.
 
-* Uç Noktalar
-    * ad – her uç nokta için benzersiz ad
-    * RESOURCEID – Azure uç noktaları Için kaynak KIMLIĞI, sanal makineler için Azure Resource Manager kaynak KIMLIĞINE başvurur. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure olmayan aracılara bağlı Log Analytics çalışma alanının Azure Resource Manager kaynak KIMLIĞINE başvurur.
-    * Adres: yalnızca kaynak KIMLIĞI belirtilmediğinde veya kaynak KIMLIĞI Log Analytics çalışma alanı ise geçerlidir. Log Analytics kaynak KIMLIĞIYLE birlikte kullanılırsa, bu, izleme için kullanılabilen aracının FQDN 'sine başvurur. Kaynak KIMLIĞI olmadan kullanılırsa bu, herhangi bir genel bitiş noktasının URL veya IP 'SI olabilir.
-    * Filtre: Azure dışı uç noktalar Için, Bağlantı İzleyicisi kaynağında izlemek üzere kullanılacak Log Analytics çalışma alanından aracıları seçmek için filtre kullanın. Filtreler ayarlanmamışsa, Log Analytics çalışma alanına ait olan tüm aracılar izleme için kullanılabilir
-        * tür – türü "aracı adresi" olarak ayarla
-        * Adres: adresi şirket içi aracınızın FQDN 'SI olarak ayarlayın
+* **Uç Noktalar**
+    * **Ad**: her bir uç nokta için benzersiz ad.
+    * **Kaynak kimliği**: Azure uç noktaları IÇIN kaynak kimliği, VM 'ler için Azure Resource Manager kaynak kimliğine başvurur. Azure dışı uç noktalar için kaynak KIMLIĞI, Azure olmayan aracılara bağlı Log Analytics çalışma alanının Azure Resource Manager kaynak KIMLIĞINE başvurur.
+    * **Adres**: yalnızca kaynak kimliği belirtilmediğinde veya kaynak kimliği Log Analytics çalışma alanında ise geçerlidir. Kaynak KIMLIĞI olmadan kullanılırsa bu, herhangi bir genel bitiş noktasının URL veya IP 'SI olabilir. Bir Log Analytics kaynak KIMLIĞIYLE birlikte kullanılırsa, bu, izleme aracısının FQDN 'sine başvurur.
+    * **Filtre**: Azure dışı uç noktalar için, bağlantı izleyicisi kaynağında Log Analytics çalışma alanından izleme aracıları ' nı seçmek için filtreleri kullanın. Filtreler ayarlanmamışsa, Log Analytics çalışma alanına ait olan tüm aracılar izleme için kullanılabilir.
+        * **Tür**: **Aracı adresi** olarak ayarlayın.
+        * **Adres**: şirket içi ARACıNıZıN FQDN 'si olarak ayarlayın.
 
-* Test grupları
-    * ad-test grubunuzu adlandırın.
-    * testConfigurations-kaynak uç noktaların hedef uç noktalara bağlandığı test yapılandırması
-    * kaynaklar-yukarıda oluşturulan uç noktalardan seçin. Azure tabanlı kaynak uç noktalarında Azure ağ Izleyicisi uzantısının yüklü olması ve Azure tabanlı kaynak uç noktalarında Azure Log Analytics aracısının yüklü olması gerekir. Kaynağınıza yönelik bir aracı yüklemek için bkz. [izleme aracılarını yüklemek](./connection-monitor-overview.md#install-monitoring-agents).
-    * hedefler-yukarıda oluşturulan uç noktalardan seçin. Azure VM 'lerine veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı, bunları hedefler olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
-    * devre dışı bırak-bu alanı, test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak için kullanın.
+* **Test grupları**
+    * **Ad**: test grubunuzu adlandırın.
+    * **Kaynaklar**: daha önce oluşturduğunuz uç noktalardan seçin. Azure tabanlı kaynak uç noktalarında Azure ağ Izleyicisi uzantısının yüklü olması gerekir; Azure tabanlı olmayan kaynak uç noktalarında bir Azure Log Analytics aracısının yüklü olması gerekir. Kaynağınıza yönelik bir aracı yüklemek için bkz. [izleme aracılarını yüklemek](./connection-monitor-overview.md#install-monitoring-agents).
+    * **Hedefler**: daha önce oluşturduğunuz uç noktalardan seçin. Azure VM 'lerine veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı, bunları hedefler olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
+    * **Devre dışı bırak**: test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakın.
 
-* Test yapılandırması
-    * ad-test yapılandırmasının adı.
-    * testFrequencySec-kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping olarak alınacağını belirtin. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir. Örneğin, 30 saniye seçerseniz, kaynaklar en az 30 saniyelik bir dönemde hedefe bağlantıyı kontrol eder.
-    * protokol-TCP, ıCMP, HTTP veya HTTPS seçeneklerini belirleyebilirsiniz. Protokolüne bağlı olarak, bazı protokole özgü yapılandırmaları yapabilirsiniz
-        * preferHTTPS-HTTP üzerinden HTTPS kullanıp kullanmayacağınızı belirtin
-        * bağlantı noktası-tercih ettiğiniz hedef bağlantı noktasını belirtin.
-        * Disableizleme Oute-bu, protokolü TCP veya ıCMP olan test grupları için geçerlidir. Topoloji ve atlama-atlama RTT bulma kaynaklarını durdurur.
-        * Yöntem-bu, Protokolü HTTP olan test yapılandırmalarına yöneliktir. HTTP istek yöntemini seçin--Al veya postala
-        * yol-URL 'ye eklenecek yol parametrelerini belirtin
-        * validStatusCodes-geçerli durum kodlarını seçin. Yanıt kodu bu listeyle eşleşmiyorsa, bir tanılama iletisi alacaksınız
-        * requestHeaders-hedefe geçirilecek özel istek üst bilgisi dizelerini belirtin
-    * Başarılı eşik-aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
-        * checksFailedPercent-belirttiğiniz ölçütlere göre kaynaklar hedeflere bağlantı denetlediğinde başarısız olan denetim yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi, paket kaybı yüzdesine eşit hale getirilmiş olabilir. HTTP protokolü için, bu alan yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
-        * Roundroundtimems-kaynakların test yapılandırması üzerinden hedefe bağlanması için geçen süreyi milisaniye olarak ayarlayın.
+* **Test yapılandırması**
+    * **Ad**: test yapılandırmasını adlandırın.
+    * **TestFrequencySec**: hangi kaynakların hangi sıklıkla, belirttiğiniz protokolde ve bağlantı noktasında ne sıklıkta ping alınacağını belirtin. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere göre hedeflere yönelik bağlantıyı test edin. Örneğin, 30 saniye seçerseniz, kaynaklar en az 30 saniyelik bir dönemde hedefe bağlantıyı kontrol edin.
+    * **Protokol**: TCP, ıCMP, http veya https seçin. Protokolüne bağlı olarak, aşağıdaki protokole özgü yapılandırmalara de seçim yapabilirsiniz:
+        * **preferhttps**: http üzerinden https kullanıp kullanmayacağınızı belirtin.
+        * **bağlantı noktası**: tercih ettiğiniz hedef bağlantı noktasını belirtin.
+        * **Disableizleme Oute**: topoloji ve atlama-atlama RTT bulma kaynaklarını durdurun. Bu, TCP veya ıCMP ile test grupları için geçerlidir.
+        * **Yöntem**: http istek YÖNTEMINI (Get veya post) seçin. Bu, HTTP ile test yapılandırmalarına yöneliktir.
+        * **yol**: URL 'ye eklenecek yol parametrelerini belirtin.
+        * **Validstatuscodes**: geçerli durum kodlarını seçin. Yanıt kodu eşleşmezse, bir tanılama iletisi görüntülenir.
+        * **RequestHeaders**: hedefe geçirilecek özel istek üst bilgisi dizelerini belirtin.
+    * **Başarı eşiği**: aşağıdaki ağ parametrelerinde eşikleri ayarlayın:
+        * **Checksfailedpercent**: kaynaklar, belirttiğiniz ölçütleri kullanarak hedeflere bağlantı denetlediğinde başarısız olan denetimlerin yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi, paket kaybı yüzdesine eşit olabilir. HTTP protokolü için, bu alan yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
+        * **Roundroundtimems**: milisaniye cinsinden test yapılandırması üzerinden hedefe bağlanmak için kaynakların ne kadar süreceğini belirleyin.
 
 ## <a name="scale-limits"></a>Ölçek sınırları
 
@@ -120,5 +119,5 @@ Bağlantı izleyicileri aşağıdaki ölçek sınırlarına sahiptir:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts) öğrenin
-* [Ağınızdaki sorunları tanılamayı](./connection-monitor-overview.md#diagnose-issues-in-your-network) öğrenin
+* [İzleme verilerini çözümlemeyi ve uyarıları ayarlamayı](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts)öğrenin.
+* [Ağınızdaki sorunları tanılamayı](./connection-monitor-overview.md#diagnose-issues-in-your-network)öğrenin.

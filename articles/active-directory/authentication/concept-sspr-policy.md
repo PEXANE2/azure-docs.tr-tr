@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 344fee9482cd935375d25fab80b1f365d72586f8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a53b193d16a2cefbde7877fd930e5fa73b0c6a36
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743675"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861281"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Azure Active Directory 'deki parola ilkeleri ve hesap kısıtlamaları
 
@@ -95,9 +95,9 @@ Varsayılan olarak, yönetici hesapları self servis parola sıfırlama için et
 * Azure AD kiracınız için *contoso.com* gibi özel bir etki alanı yapılandırılmıştır. veya
 * Azure AD Connect, şirket içi dizininizdeki kimlikler eşitleniyor
 
-[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) PowerShell cmdlet 'ini kullanarak yönetici hesaplarının SSPR kullanımını devre dışı bırakabilirsiniz. `-SelfServePasswordResetEnabled $False`Parametresi, Yöneticiler IÇIN SSPR 'yi devre dışı bırakır.
+[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) PowerShell cmdlet 'ini kullanarak yönetici hesaplarının SSPR kullanımını devre dışı bırakabilirsiniz. `-SelfServePasswordResetEnabled $False`Parametresi, Yöneticiler IÇIN SSPR 'yi devre dışı bırakır.
 
-### <a name="exceptions"></a>Özel Durumlar
+### <a name="exceptions"></a>Özel durumlar
 
 Tek bir geçit ilkesi, bir e-posta adresi veya telefon numarası gibi bir dizi kimlik doğrulama verisi gerektirir. Tek bir geçit ilkesi aşağıdaki koşullarda geçerlidir:
 
@@ -107,7 +107,7 @@ Tek bir geçit ilkesi, bir e-posta adresi veya telefon numarası gibi bir dizi k
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Parola süre sonu ilkeleri
 
-*Genel yönetici* veya *Kullanıcı Yöneticisi* , kullanıcı parolalarının kullanım süresini sona ermeyecek şekilde ayarlamak için [Windows PowerShell için Microsoft Azure ad modülü](/powershell/module/Azuread/?view=azureadps-2.0) kullanabilir.
+*Genel yönetici* veya *Kullanıcı Yöneticisi* , kullanıcı parolalarının kullanım süresini sona ermeyecek şekilde ayarlamak için [Windows PowerShell için Microsoft Azure ad modülü](/powershell/module/Azuread/) kullanabilir.
 
 Ayrıca, herhangi bir zaman aşımı yapılandırmasını kaldırmak veya hangi kullanıcı parolalarının süresinin dolmamasını görmek için PowerShell cmdlet 'lerini kullanabilirsiniz.
 
@@ -118,13 +118,13 @@ Bu kılavuz, Intune ve Microsoft 365 gibi diğer sağlayıcılar için geçerlid
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>PowerShell kullanarak parola ilkelerini ayarlama ve denetleme
 
-Başlamak için [Azure AD PowerShell modülünü indirip yükleyin](/powershell/module/Azuread/?view=azureadps-2.0) ve [Azure AD kiracınıza bağlayın](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+Başlamak için [Azure AD PowerShell modülünü indirip yükleyin](/powershell/module/Azuread/) ve [Azure AD kiracınıza bağlayın](/powershell/module/azuread/connect-azuread#examples).
 
 Modül yüklendikten sonra, gerektiğinde her bir görevi gerçekleştirmek için aşağıdaki adımları kullanın.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Parola için süre sonu ilkesini denetleme
 
-1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) .
+1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread#examples) .
 1. Tek bir kullanıcı veya tüm kullanıcılar için aşağıdaki komutlardan birini çalıştırın:
 
    * Tek bir kullanıcının parolasının süresiz olarak ayarlanmış olup olmadığını görmek için aşağıdaki cmdlet 'i çalıştırın. `<user ID>`Denetlemek istediğiniz kullanıcının kullanıcı kimliğiyle değiştirin, örneğin *drley \@ contoso.onmicrosoft.com* gibi:
@@ -141,7 +141,7 @@ Modül yüklendikten sonra, gerektiğinde her bir görevi gerçekleştirmek içi
 
 ### <a name="set-a-password-to-expire"></a>Bir parolayı sona ermek üzere ayarla
 
-1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) .
+1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread#examples) .
 1. Tek bir kullanıcı veya tüm kullanıcılar için aşağıdaki komutlardan birini çalıştırın:
 
    * Parolanın süresi dolmadan bir kullanıcının parolasını ayarlamak için aşağıdaki cmdlet 'i çalıştırın. `<user ID>`Denetlemek istediğiniz kullanıcının kullanıcı kimliğiyle değiştirin ( *drley \@ contoso.onmicrosoft.com* gibi)
@@ -158,7 +158,7 @@ Modül yüklendikten sonra, gerektiğinde her bir görevi gerçekleştirmek içi
 
 ### <a name="set-a-password-to-never-expire"></a>Süresiz olarak bir parola ayarlayın
 
-1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) .
+1. Bir PowerShell istemi açın ve *genel yönetici* veya *Kullanıcı Yöneticisi* hesabı kullanarak [Azure AD kiracınıza bağlanın](/powershell/module/azuread/connect-azuread#examples) .
 1. Tek bir kullanıcı veya tüm kullanıcılar için aşağıdaki komutlardan birini çalıştırın:
 
    * Bir kullanıcının parolasını hiçbir zaman dolmayacak şekilde ayarlamak için aşağıdaki cmdlet 'i çalıştırın. `<user ID>`Denetlemek istediğiniz kullanıcının kullanıcı kimliğiyle değiştirin ( *drley \@ contoso.onmicrosoft.com* gibi)

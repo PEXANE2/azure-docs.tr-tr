@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c208da657d30d4a0f5b6f171693c5c6abc2b358b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0671d3dec963c0b475133881b00224cfe11e8370
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649201"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861653"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>Azure Active Directory ' de bir kurumsal uygulama için Kullanıcı oturum açma işlemlerini devre dışı bırakma
 
@@ -39,7 +39,7 @@ Bir kurumsal uygulamayı devre dışı bırakmak kolaydır, böylece hiçbir Kul
 
 ## <a name="use-azure-ad-powershell-to-disable-an-unlisted-app"></a>Listelenmemiş bir uygulamayı devre dışı bırakmak için Azure AD PowerShell kullanma
 
-Kurumsal uygulamalar listesinde görünmeyen bir uygulamanın uygulama kimliği ' ni biliyorsanız (örneğin, uygulamayı sildiğiniz veya hizmet sorumlusu Microsoft tarafından önceden yetkilendirildiği için henüz oluşturulmadığından), uygulama için hizmet sorumlusunu el ile oluşturabilir ve sonra [Azuread PowerShell cmdlet 'ini](/powershell/module/azuread/New-AzureADServicePrincipal?view=azureadps-2.0)kullanarak devre dışı bırakabilirsiniz.
+Kurumsal uygulamalar listesinde görünmeyen bir uygulamanın uygulama kimliği ' ni biliyorsanız (örneğin, uygulamayı sildiğiniz veya hizmet sorumlusu Microsoft tarafından önceden yetkilendirildiği için henüz oluşturulmadığından), uygulama için hizmet sorumlusunu el ile oluşturabilir ve sonra [Azuread PowerShell cmdlet 'ini](/powershell/module/azuread/New-AzureADServicePrincipal)kullanarak devre dışı bırakabilirsiniz.
 
 ```PowerShell
 # The AppId of the app to be disabled

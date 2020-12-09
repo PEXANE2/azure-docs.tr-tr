@@ -1,20 +1,20 @@
 ---
-title: 'Öğretici: Azure Notebooks (Python) kullanarak elektrik taşıtlar yönlendirme | Microsoft Azure haritaları'
+title: 'Öğretici: Microsoft Azure eşlemelerle Azure Notebooks (Python) kullanarak elektrik taşıtlar'
 description: Microsoft Azure haritaları yönlendirme API 'Leri ve Azure Notebooks kullanarak elektrik taşıtlarının nasıl yönlendirileceği hakkında öğretici
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 11/12/2019
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 6dde7abef1769b9441c037f3727e7fd9d83ab172
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f30b99a1d9c8303d5b2ed4b02819d0ca837946d2
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896827"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905749"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Öğretici: Azure Notebooks (Python) kullanarak elektrik ve yönlendirme
 
@@ -50,11 +50,11 @@ Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [
 Bu öğreticiyle birlikte izlemek için bir Azure Notebooks projesi oluşturmanız ve Jupyter Notebook dosyasını indirip çalıştırmanız gerekir. Jupyter Notebook dosyası, bu öğreticide senaryoyu uygulayan Python kodunu içerir. Bir Azure Notebooks projesi oluşturmak ve Jupyter Notebook belgeyi bu klasöre yüklemek için aşağıdaki adımları uygulayın:
 
 1. [Azure Notebooks](https://notebooks.azure.com) gidin ve oturum açın. Daha fazla bilgi için bkz. [hızlı başlangıç: oturum açın ve bir kullanıcı kimliği ayarlayın](../notebooks/quickstart-sign-in-azure-notebooks.md).
-1. Ortak profil sayfanızın en üstünde **Projelerim** ' nı seçin.
+1. Ortak profil sayfanızın en üstünde **Projelerim**' nı seçin.
 
     ![Projelerim düğmesi](./media/tutorial-ev-routing/myproject.png)
 
-1. **Projelerim** sayfasında **Yeni proje** ' yi seçin.
+1. **Projelerim** sayfasında **Yeni proje**' yi seçin.
  
    ![Yeni proje düğmesi](./media/tutorial-ev-routing/create-project.png)
 
@@ -62,7 +62,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Notebooks projesi oluşturman�
  
     ![Yeni proje oluştur bölmesi](./media/tutorial-ev-routing/create-project-window.png)
 
-1. **Oluştur** ’u seçin.
+1. **Oluştur**’u seçin.
 
 1. Projeniz oluşturulduktan sonra bu [Jupyter Notebook belge dosyasını](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) [Azure Maps Jupyter Notebook deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook)indirin.
 
@@ -70,7 +70,7 @@ Bu öğreticiyle birlikte izlemek için bir Azure Notebooks projesi oluşturman�
 
     ![karşıya yükleme Jupyter Notebook](./media/tutorial-ev-routing/upload-notebook.png)
 
-1. Dosyayı bilgisayarınızdan karşıya yükleyin ve ardından **bitti** ' yi seçin.
+1. Dosyayı bilgisayarınızdan karşıya yükleyin ve ardından **bitti**' yi seçin.
 
 1. Karşıya yükleme başarıyla tamamlandıktan sonra, dosyanız proje sayfanızda görüntülenir. Dosyayı Jupyter Notebook olarak açmak için dosyaya çift tıklayın.
 
@@ -83,13 +83,13 @@ Jupyter Notebook dosyasında uygulanan işlevselliği anlamaya çalışın. Kodu
 Kodu Jupyter Notebook çalıştırmak için, aşağıdaki adımları uygulayarak paketleri proje düzeyine yüklersiniz:
 
 1. [Azure haritalar Jupyter Notebook deposundan](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) [*requirements.txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) dosyasını indirin ve ardından projenize yükleyin.
-1. Proje panosunda **proje ayarları** ' nı seçin. 
-1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle** ' yi seçin.
+1. Proje panosunda **proje ayarları**' nı seçin. 
+1. **Proje ayarları** bölmesinde **ortam** sekmesini seçin ve ardından **Ekle**' yi seçin.
 1. **Ortam kurulum adımları** altında aşağıdakileri yapın:   
-    a. İlk açılan listede **Requirements.txt** ' yi seçin.  
+    a. İlk açılan listede **Requirements.txt**' yi seçin.  
     b. İkinci aşağı açılan listede *requirements.txt* dosyanızı seçin.  
     c. Üçüncü açılan listede sürüm olarak **Python sürüm 3,6** ' ı seçin.
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
     ![Paketleri yükler](./media/tutorial-ev-routing/install-packages.png)
 
@@ -108,7 +108,7 @@ from IPython.display import Image, display
 
 Bir paket teslim şirketi, Fleet ortamında bazı elektrik taşıtlar içerir. Gün boyunca, elektrik taşıtlarının ambara geri dönmek zorunda kalmadan yeniden ücretlendirilmelidir. Kalan tüm ücretler bir saatten daha az düşdüğünde, erişilebilir bir aralıktaki bir dizi ücretlendirme istasyonu arayın. Esas olarak, pil düşük bir ücret karşılığında bir ücretlendirme İstasyonu arar. Ve, bu ücretlendirme istasyonlarıyla ilgili sınır bilgilerini alırsınız. 
 
-Şirket ekonomisi ve hız dengelemesi gerektiren rotaları kullanmayı tercih ettiğinden, istenen routeType *ekdir* . Aşağıdaki betik, Azure Maps yönlendirme hizmeti 'nin [Rota aralığı al API](/rest/api/maps/route/getrouterange) 'sini çağırır. Bu, aracın tüketim modeli için parametreler kullanır. Daha sonra betiği, arabasının en fazla erişilebilir aralığını temsil eden geojson biçimindeki bir çokgen nesnesi oluşturma yanıtını ayrıştırır.
+Şirket ekonomisi ve hız dengelemesi gerektiren rotaları kullanmayı tercih ettiğinden, istenen routeType *ekdir*. Aşağıdaki betik, Azure Maps yönlendirme hizmeti 'nin [Rota aralığı al API](/rest/api/maps/route/getrouterange) 'sini çağırır. Bu, aracın tüketim modeli için parametreler kullanır. Daha sonra betiği, arabasının en fazla erişilebilir aralığını temsil eden geojson biçimindeki bir çokgen nesnesi oluşturma yanıtını ayrıştırır.
 
 Elektrik Aracı 'nın erişilebilir aralığının sınırlarını öğrenmek için betiği aşağıdaki hücrede çalıştırın:
 
@@ -171,9 +171,9 @@ for loc in range(len(searchPolyResponse["results"])):
                 reachableLocations.append(location)
 ```
 
-## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>Erişilebilir Aralık ve doldurma noktalarını Azure Maps veri hizmetine yükleme
+## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service-preview"></a>Erişilebilir Aralık ve doldurma noktalarını Azure Maps veri hizmeti 'ne yükleme (Önizleme)
 
-Bir haritada, elektrik taşısının maksimum erişilebilir aralığının miktarını ve sınırını görselleştirmek isteyeceksiniz. Bunu yapmak için, sınır verilerini karşıya yükleyin ve istasyon verilerini Azure Maps Data Service 'e coğrafi JSON nesneleri olarak ücretlendirme yapın. [Karşıya veri yükleme API](/rest/api/maps/data/uploadpreview)'sini kullanın. 
+Bir haritada, elektrik taşısının maksimum erişilebilir aralığının miktarını ve sınırını görselleştirmek isteyeceksiniz. Bunu yapmak için, sınır verilerini karşıya yükleyin ve istasyon verilerini Azure Maps veri hizmeti 'ne (Önizleme) coğrafi JSON nesneleri olarak ücretlendirme yapın. [Karşıya veri yükleme API](/rest/api/maps/data/uploadpreview)'sini kullanın. 
 
 Azure Maps Data Service 'e sınır ve ücretlendirme noktası verilerini yüklemek için aşağıdaki iki hücreyi çalıştırın:
 
@@ -194,7 +194,7 @@ rangeData = {
   ]
 }
 
-# Upload the range data to Azure Maps Data Service.
+# Upload the range data to Azure Maps Data service (Preview).
 uploadRangeResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = rangeData)
 
 rangeUdidRequest = uploadRangeResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -223,7 +223,7 @@ poiData = {
   ]
 }
 
-# Upload the electric vehicle charging station data to Azure Maps Data Service.
+# Upload the electric vehicle charging station data to Azure Maps Data service (Preview).
 uploadPOIsResponse = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = poiData)
 
 poiUdidRequest = uploadPOIsResponse.headers["Location"]+"&subscription-key={}".format(subscriptionKey)
@@ -336,12 +336,12 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Rotayı görselleştirin
 
-Yolun görselleştirilmesine yardımcı olmak için, önce Azure Maps veri hizmetine bir coğrafi JSON nesnesi olarak rota verilerini karşıya yüklersiniz. Bunu yapmak için Azure Maps [verilerini karşıya yükleme API](/rest/api/maps/data/uploadpreview)'sini kullanın. Ardından, işleme hizmetini çağırın, [harita görüntüsü API 'Sini alın](/rest/api/maps/render/getmapimage), rotayı haritada oluşturup görselleştirin.
+Yolun görselleştirilmesine yardımcı olmak için önce Azure Maps veri hizmeti 'ne (Önizleme) bir coğrafi JSON nesnesi olarak yol verilerini karşıya yüklersiniz. Bunu yapmak için Azure Maps [verilerini karşıya yükleme API](/rest/api/maps/data/uploadpreview)'sini kullanın. Ardından, işleme hizmetini çağırın, [harita görüntüsü API 'Sini alın](/rest/api/maps/render/getmapimage), rotayı haritada oluşturup görselleştirin.
 
 Haritada işlenen yolun bir görüntüsünü almak için aşağıdaki betiği çalıştırın:
 
 ```python
-# Upload the route data to Azure Maps Data Service.
+# Upload the route data to Azure Maps Data service (Preview).
 routeUploadRequest = await session.post("https://atlas.microsoft.com/mapData/upload?subscription-key={}&api-version=1.0&dataFormat=geojson".format(subscriptionKey), json = routeData)
 
 udidRequestURI = routeUploadRequest.headers["Location"]+"&subscription-key={}".format(subscriptionKey)

@@ -1,18 +1,18 @@
 ---
 title: Şablonlarla koşullu dağıtım
-description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar.
+description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar (ARM şablonu).
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84259329"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906004"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM şablonlarında koşullu dağıtım
 
-Bazen Azure Resource Manager (ARM) şablonunda bir kaynağı dağıtmanız gerekebilir. `condition`Kaynağın dağıtılıp dağıtılmayacağını belirtmek için öğesini kullanın. Bu öğenin değeri true veya false olarak çözümlenmektedir. Değer true olduğunda kaynak oluşturulur. Değer false olduğunda kaynak oluşturulmaz. Değer yalnızca kaynağın tamamına uygulanabilir.
+Bazen bir Azure Resource Manager şablonunda (ARM şablonu) bir kaynağı dağıtmanız gerekebilir. `condition`Kaynağın dağıtılıp dağıtılmayacağını belirtmek için öğesini kullanın. Bu öğenin değeri true veya false olarak çözümlenmektedir. Değer true olduğunda kaynak oluşturulur. Değer false olduğunda kaynak oluşturulmaz. Değer yalnızca kaynağın tamamına uygulanabilir.
 
 > [!NOTE]
 > Koşullu dağıtım, [alt kaynaklara](child-resource-name-type.md)basamaklandırmaz. Bir kaynağı ve alt kaynaklarını koşullu olarak dağıtmak istiyorsanız, her kaynak türüne aynı koşulu uygulamanız gerekir.
@@ -36,7 +36,7 @@ Koşullu dağıtımı, yeni bir kaynak oluşturmak veya var olan bir kaynağı k
 }
 ```
 
-**Neworexıting** parametresi **New**olarak ayarlandığında, koşul true olarak değerlendirilir. Depolama hesabı dağıtılır. Ancak, **Neworexıting** özelliği **var**olarak ayarlandığında, koşul yanlış olarak değerlendirilir ve depolama hesabı dağıtılmaz.
+**Neworexıting** parametresi **New** olarak ayarlandığında, koşul true olarak değerlendirilir. Depolama hesabı dağıtılır. Ancak, **Neworexıting** özelliği **var** olarak ayarlandığında, koşul yanlış olarak değerlendirilir ve depolama hesabı dağıtılmaz.
 
 Öğesini kullanan bir örnek şablon için `condition` , bkz. [Yeni veya var olan sanal ağ, depolama ve genel IP ile VM](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
 

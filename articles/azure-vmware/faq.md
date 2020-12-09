@@ -4,12 +4,12 @@ description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtla
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967355"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861417"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -188,7 +188,7 @@ Azure portal bir özel bulut için internet bağlantısını etkinleştirin. NSX
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>İnternet 'ten özel bir buluttaki mantıksal ağlardaki VM 'lere erişimi kısıtlayacağım mi?
 
-Hayır. İnternet 'ten özel bulutlara doğrudan gelen ağ trafiğine izin verilmez.
+Hayır. Internet 'ten doğrudan özel bulutlara gelen ağ trafiğine varsayılan olarak izin verilmez.  Ancak, Azure VMware çözümü özel bulutu için Azure portal Azure VMware Çözüm VM 'lerini [genel IP](public-ip-usage.md) seçeneği aracılığıyla Internet 'te kullanıma sunabileceksiniz.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Mantıksal ağlardaki VM 'lerden internet 'e erişimi kısıtlam gerekir mi?
 

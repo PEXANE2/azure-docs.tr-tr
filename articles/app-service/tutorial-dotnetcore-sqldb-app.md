@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 06/20/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 305137cf371d7a9e3d336d8142ef9a03eb38421f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 890f9c3d5c3a250bc13270ac685b93349f18fcff
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743706"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862281"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Öğretici: Azure App Service ASP.NET Core ve Azure SQL veritabanı uygulaması oluşturma
 
@@ -29,7 +29,7 @@ ms.locfileid: "92743706"
 
 ![App Service’te çalışan uygulama](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da SQL Veritabanı oluşturma
@@ -41,12 +41,14 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
-* <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
-* <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
+- <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
+- <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'sını yükler</a>
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-local-net-core-app"></a>Yerel .NET Core uygulaması oluşturma
 
@@ -80,8 +82,6 @@ Bir tarayıcıda `http://localhost:5000` sayfasına gidin. **Yeni Oluştur** ba�
 ![SQL Veritabanı’na başarıyla bağlanır](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
 .NET Core’u dilediğiniz zaman durdurmak için, terminalde `Ctrl+C` tuşlarına basın.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-production-sql-database"></a>Üretim SQL Veritabanı oluşturma
 
@@ -286,7 +286,7 @@ Compressing objects: 100% (171/171), done.
 Writing objects: 100% (268/268), 1.18 MiB | 1.55 MiB/s, done.
 Total 268 (delta 95), reused 251 (delta 87), pack-reused 0
 remote: Resolving deltas: 100% (95/95), done.
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id '64821c3558'.
 remote: Generating deployment script.
@@ -303,7 +303,7 @@ remote: Running post deployment command(s)...
 remote: Triggering recycle (preview mode disabled).
 remote: App container will begin restart within 10 seconds.
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -321,7 +321,7 @@ Writing objects: 100% (273/273), 1.19 MiB | 1.85 MiB/s, done.
 Total 273 (delta 96), reused 259 (delta 88)
 remote: Resolving deltas: 100% (96/96), done.
 remote: Deploy Async
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'cccecf86c5'.
 remote: Repository path is /home/site/repository
@@ -337,7 +337,7 @@ remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
 remote: Deployment Logs : 'https://&lt;app-name&gt;.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/cccecf86c56493ffa594e76ea1deb3abb3702d89/log'
 To https://&lt;app-name&gt;.scm.azurewebsites.net/&lt;app-name&gt;.git
- * [new branch]      master -> master
+ * [new branch]      main -> main
 </pre>
 
 ::: zone-end
@@ -446,10 +446,10 @@ Tarayıcınızda `http://localhost:5000/` adresine gidin. Artık yapılacak bir 
 ```bash
 git add .
 git commit -m "added done field"
-git push azure master
+git push azure main
 ```
 
-Tamamlandıktan sonra `git push` App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve **Tamam** ' ı işaretleyin.
+Tamamlandıktan sonra `git push` App Service uygulamanıza gidin ve Yapılacaklar öğesi eklemeyi deneyin ve **Tamam**' ı işaretleyin.
 
 ![Code First geçişten sonra Azure uygulaması](./media/tutorial-dotnetcore-sqldb-app/this-one-is-done.png)
 
@@ -467,12 +467,11 @@ ASP.NET Core uygulama Azure App Service çalışırken konsol günlüklerini Clo
 App Service ASP.NET Core [günlük düzeyini](/aspnet/core/fundamentals/logging#log-level) varsayılan düzeyden olarak ayarlamak için `Information` `Error` , [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) Cloud Shell komutunu kullanın.
 
 ```azurecli-interactive
-az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging true --level information
+az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
 ```
 
 > [!NOTE]
 > Projenin günlük düzeyi zaten `Information` *appsettings.js* öğesinde olarak ayarlanmıştır.
-> 
 
 Günlük akışını başlatmak için [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) Cloud Shell komutunu kullanın.
 
@@ -488,7 +487,7 @@ ASP.NET Core günlüklerini özelleştirme hakkında daha fazla bilgi için bkz.
 
 ## <a name="manage-your-azure-app"></a>Azure uygulamanızı yönetme
 
-Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri** ' ni arayıp seçin.
+Oluşturduğunuz uygulamayı görmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin.
 
 ![Azure portal 'de uygulama hizmetleri 'ni seçin](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
 

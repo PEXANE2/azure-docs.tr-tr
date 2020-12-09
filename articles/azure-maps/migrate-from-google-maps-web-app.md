@@ -1,20 +1,20 @@
 ---
-title: Öğretici-Google Maps 'tan bir Web uygulaması geçirme | Microsoft Azure haritaları
+title: Öğretici-Google Maps 'tan Microsoft Azure Maps 'a bir Web uygulaması geçirme
 description: Bir Web uygulamasını Google Maps 'tan Microsoft Azure Maps 'a geçirme öğreticisi
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/18/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: b95800bea4bceffabad56aa29b68a57b310c5518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4dee8de8f42b78ecdab9d9e15bb277d58fa8ba70
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896455"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905069"
 ---
 # <a name="tutorial---migrate-a-web-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Web uygulaması geçirme
 
@@ -53,7 +53,7 @@ Bir JavaScript çerçevesi kullanılarak geliştirilirken, aşağıdaki açık k
 
 ## <a name="prerequisites"></a>Önkoşullar 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
@@ -75,7 +75,7 @@ Tabloda, Google Maps v3 JavaScript SDK 'sindeki temel API özellikleri ve Azure 
 | Geocoder hizmeti        | ✓                          |
 | Yönergeler hizmeti      | ✓                          |
 | Uzaklık matrisi hizmeti | ✓                          |
-| Yükseltme hizmeti       | Planlandı                     |
+| Yükseltme hizmeti       | ✓                          |
 
 ## <a name="notable-differences-in-the-web-sdks"></a>Web SDK 'lerinde önemli farklılıklar
 
@@ -1032,7 +1032,7 @@ Veri kaynağındaki verileri ekleyin ve yönetin. Veri kaynaklarını ve katmanl
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası aşağıdaki özelliklere sahiptir:
 
-| Özellik adı             | Tür    | Açıklama   |
+| Özellik adı             | Tür    | Description   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir. |
 | `cluster_id`              | string  | Küme için, veri kaynağı `getClusterExpansionZoom` , ve yöntemleriyle kullanılabilecek benzersiz BIR kimlik `getClusterChildren` `getClusterLeaves` . |
@@ -1041,7 +1041,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| Yöntem | Dönüş türü | Açıklama |
+| Yöntem | Dönüş türü | Description |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | Promise &lt; dizi &lt; özelliği &lt; geometrisi, herhangi bir &gt; \| Şekil&gt;&gt; | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler şekil ve alt kümelerin bir birleşimi olabilir. Alt kümeler, ClusteredProperties ile eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)` | Promise &lt; numarası&gt; | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar. |

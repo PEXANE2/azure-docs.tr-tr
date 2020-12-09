@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6db7037cbcad335db77784ecfa624f08e88b1e83
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744440"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861349"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory’de sertifika tabanlı kimlik doğrulamayı kullanmaya başlama
 
@@ -93,7 +93,7 @@ Bir sertifika yetkilisinin şeması şu şekilde görünür:
     }
 ```
 
-Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)' yi kullanabilirsiniz:
+Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2)' yi kullanabilirsiniz:
 
 1. Windows PowerShell 'i yönetici ayrıcalıklarıyla başlatın.
 2. Azure AD modülü sürüm [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) veya üstünü yükler.
@@ -106,7 +106,7 @@ Yapılandırma için [Azure Active Directory PowerShell sürüm 2](/powershell/a
 
 ### <a name="connect"></a>Bağlanma
 
-Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet 'ini kullanın:
+Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/azuread/connect-azuread) cmdlet 'ini kullanın:
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ Kiracınızla bir bağlantı kurmak için [Connect-AzureAD](/powershell/module/a
 
 ### <a name="retrieve"></a>Almanın
 
-Dizininizde tanımlı güvenilen sertifika yetkililerini almak için [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın.
+Dizininizde tanımlı güvenilen sertifika yetkililerini almak için [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) cmdlet 'ini kullanın.
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ Dizininizde tanımlı güvenilen sertifika yetkililerini almak için [Get-AzureA
 
 ### <a name="add"></a>Ekle
 
-Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
+Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) cmdlet 'ini kullanın ve **CRLDistributionPoint** özniteliğini doğru bir değere ayarlayın:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Güvenilen bir sertifika yetkilisi oluşturmak için [New-AzureADTrustedCertific
 
 ### <a name="remove"></a>Kaldır
 
-Güvenilen bir sertifika yetkilisini kaldırmak için [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın:
+Güvenilen bir sertifika yetkilisini kaldırmak için [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) cmdlet 'ini kullanın:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ Güvenilen bir sertifika yetkilisini kaldırmak için [Remove-AzureADTrustedCert
 
 ### <a name="modify"></a>Değiştir
 
-Güvenilen bir sertifika yetkilisini değiştirmek için [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet 'ini kullanın:
+Güvenilen bir sertifika yetkilisini değiştirmek için [set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) cmdlet 'ini kullanın:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority

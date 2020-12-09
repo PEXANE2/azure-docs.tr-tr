@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: b1f95cf0a62aa68fe86f37cea137251553458a1d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 8f19ccc90c44ef90cee7bb1ae881086321e863b6
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348896"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902051"
 ---
 # <a name="excel-format-in-azure-data-factory"></a>Azure Data Factory Excel biçimi
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -33,13 +33,14 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
 | ---------------- | ------------------------------------------------------------ | -------- |
 | tür             | Veri kümesinin Type özelliği **Excel** olarak ayarlanmalıdır.   | Yes      |
 | location         | Dosya (ler) in konum ayarları. Her dosya tabanlı bağlayıcının, altında kendi konum türü ve desteklenen özellikleri vardır `location` . | Yes      |
-| sheetname ayar çağırın        | Verilerin okunacağı Excel çalışma sayfası adı.                       | Yes      |
-| aralık            | Seçmeli verileri bulmak için verilen çalışma sayfasındaki hücre aralığı, ör.:<br>-Belirtilmemiş: tüm çalışma sayfasını boş olmayan ilk satır ve sütundan tablo olarak okur<br>- `A3`: verilen hücreden başlayarak bir tabloyu okur, aşağıdaki tüm satırları ve tüm sütunları sağa dinamik olarak algılar<br>- `A3:H5`: Bu sabit aralığı tablo olarak okur<br>- `A3:A3`: Bu tek hücreyi okur | Hayır       |
-| firstRowAsHeader | Belirtilen çalışma sayfasındaki/aralıktaki ilk satırın, sütun adlarıyla üst bilgi satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır       |
-| nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | Hayır       |
-| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | Hayır |
+| sheetname ayar çağırın        | Verilerin okunacağı Excel çalışma sayfası adı.                       | `sheetName`Veya belirtin`sheetIndex` |
+| Sheetındex | 0 ' dan başlayarak, verileri okumak için Excel çalışma sayfası dizini. | `sheetName`Veya belirtin`sheetIndex` |
+| aralık            | Seçmeli verileri bulmak için verilen çalışma sayfasındaki hücre aralığı, ör.:<br>-Belirtilmemiş: tüm çalışma sayfasını boş olmayan ilk satır ve sütundan tablo olarak okur<br>- `A3`: verilen hücreden başlayarak bir tabloyu okur, aşağıdaki tüm satırları ve tüm sütunları sağa dinamik olarak algılar<br>- `A3:H5`: Bu sabit aralığı tablo olarak okur<br>- `A3:A3`: Bu tek hücreyi okur | No       |
+| firstRowAsHeader | Belirtilen çalışma sayfasındaki/aralıktaki ilk satırın, sütun adlarıyla üst bilgi satırı olarak değerlendirilip değerlendirilmeyeceğini belirtir.<br>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | No       |
+| nullValue        | Null değerin dize gösterimini belirtir. <br>Varsayılan değer boş bir **dizedir**. | No       |
+| sıkıştırma | Dosya sıkıştırmayı yapılandırmak için özellik grubu. Etkinlik yürütmesi sırasında sıkıştırma/açma işlemi yapmak istediğinizde bu bölümü yapılandırın. | No |
 | tür<br/>(*altında `compression`*) | JSON dosyalarını okumak/yazmak için kullanılan sıkıştırma codec bileşeni. <br>İzin verilen değerler **şunlardır bzip2**, **gzip**, **söndür**, **zipsöndür**, **targzip**, **tar**, **Snappy** veya **lz4**. Varsayılan değer sıkıştırılmaz.<br>**Şu anda** kopyalama etkinliği "Snappy" & "lz4" desteklemez ve eşleme veri akışı "zipsöndür", "targzip" ve "tar" değerlerini desteklemez.<br>Bu **dosyaları açmak ve dosya tabanlı** havuz veri deposuna yazmak için kopyalama **etkinliğini kullanırken dosyalar** klasörüne ayıklanır: `<path specified in dataset>/<folder named as source zip file>/` . | Hayır.  |
-| düzey<br/>(*altında `compression`*) | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | Hayır       |
+| düzey<br/>(*altında `compression`*) | Sıkıştırma oranı. <br>İzin verilen değerler **en iyi** veya **en hızlardır**.<br>- **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.<br>- **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır. Daha fazla bilgi için bkz. [sıkıştırma düzeyi](/dotnet/api/system.io.compression.compressionlevel) konusu. | No       |
 
 Azure Blob depolamada Excel veri kümesinin bir örneği aşağıda verilmiştir:
 
@@ -78,7 +79,7 @@ Aşağıdaki özellikler kopyalama etkinliği **_ \_ kaynağı \**** bölümünd
 | Özellik      | Açıklama                                                  | Gerekli |
 | ------------- | ------------------------------------------------------------ | -------- |
 | tür          | Kopyalama etkinliği kaynağının Type özelliği **ExcelSource** olarak ayarlanmalıdır. | Yes      |
-| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . | Hayır       |
+| storeSettings | Veri deposundan veri okuma hakkında bir özellik grubu. Her dosya tabanlı bağlayıcının, altında kendi desteklenen okuma ayarları vardır `storeSettings` . | No       |
 
 ```json
 "activities": [

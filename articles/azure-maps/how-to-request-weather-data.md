@@ -1,24 +1,28 @@
 ---
-title: Azure haritalar Hava Hizmetleri 'ni kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin
-description: Microsoft Azure haritaları Hava durumu hizmetlerini kullanarak gerçek zamanlı (geçerli) ve tahmin edilen (dakika, saatlik, günlük) Hava durumu verilerini isteme hakkında bilgi edinin
+title: Azure haritalar Hava durumu Hizmetleri 'ni (Önizleme) kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin
+description: Microsoft Azure Maps Hava durumu Hizmetleri 'ni (Önizleme) kullanarak gerçek zamanlı (geçerli) ve tahmin edilen (dakika, saatlik, günlük) Hava durumu verilerini isteme hakkında bilgi edinin
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186346"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906021"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Azure haritalar Hava Hizmetleri 'ni kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Azure haritalar Hava durumu Hizmetleri 'ni (Önizleme) kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin 
 
-Azure haritalar [Hava durumu hizmeti](/rest/api/maps/weather) , geliştiricilerin yüksek düzeyde dinamik geçmiş, gerçek zamanlı ve tahmini hava durumu verilerini ve görselleştirmelerini çözümlerle tümleştirmelerine olanak tanıyan bir dizi yeniden API 'dir. Bu makalede, hem gerçek zamanlı hem de tahmin edilen hava durumu verilerini nasıl isteyeceğini göstereceğiz.
+> [!IMPORTANT]
+> Azure haritalar Hava durumu Hizmetleri şu anda genel önizlemededir.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure haritalar [Hava durumu Hizmetleri](/rest/api/maps/weather) , geliştiricilerin yüksek düzeyde dinamik geçmiş, gerçek zamanlı ve tahmini hava durumu verilerini ve görselleştirmelerini çözümlerle tümleştirmelerine olanak tanıyan bir dizi yeniden API 'dedir. Bu makalede, hem gerçek zamanlı hem de tahmin edilen hava durumu verilerini nasıl isteyeceğini göstereceğiz.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -28,13 +32,13 @@ Bu makalede şunları öğreneceksiniz:
 * [Saatlik tahmin al API](/rest/api/maps/weather/gethourlyforecastpreview)'sini kullanarak saatlik tahminleri isteyin.
 * Dakika [Tahmini al API](/rest/api/maps/weather/getminuteforecastpreview)'sini kullanarak dakikalık tahminlere göre dakika isteyin.
 
-Bu videoda, REST çağrı örnekleriyle Azure Maps 'ta Hava durumu hizmetlerine genel bir bakış sunulmaktadır.
+Bu videoda, Azure Maps Hava durumu hizmetlerine REST çağrıları yapmak için örnekler sağlanmaktadır.
 
 <br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Geliştiriciler için Azure Maps Hava durumu Hizmetleri-Microsoft Channel 9 videosu"></iframe>
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).
@@ -751,8 +755,7 @@ Bu örnekte, Seattle, WA 'da bulunan koordinatlara göre dakika başına Hava du
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure haritalar Hava durumu hizmeti kavramları](./weather-services-concepts.md)
+> [Azure haritalar Hava durumu Hizmetleri (Önizleme) kavramları](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure haritalar Hava durumu hizmeti REST API](/rest/api/maps/weather
-)
+> [Azure haritalar Hava durumu Hizmetleri (Önizleme) REST API](/rest/api/maps/weather)

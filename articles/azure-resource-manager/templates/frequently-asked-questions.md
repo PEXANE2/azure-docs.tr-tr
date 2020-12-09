@@ -1,39 +1,39 @@
 ---
 title: ARM şablonu sık sorulan sorular
-description: Azure Resource Manager şablonlar hakkında sık sorulan sorular (SSS).
+description: Azure Resource Manager şablonları (ARM şablonları) hakkında sık sorulan sorular (SSS).
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: af6a46e16cd888e3ff6a382be2b1a4264fcc2941
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184017"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903012"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
-Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan soruları yanıtlar.
+Bu makale Azure Resource Manager şablonları (ARM şablonları) hakkında sık sorulan soruları yanıtlar.
 
 ## <a name="getting-started"></a>Başlarken
 
 * **ARM şablonları nedir ve neden kullanmalıyım?**
 
   ARM şablonları, Azure 'a dağıtmak istediğiniz şeyi tanımladığınız JSON dosyalarıdır. Şablonlar, Azure için bir kod olarak altyapı çözümü uygulamanıza yardımcı olur. Kuruluşunuz gerekli altyapıyı farklı ortamlara sürekli ve güvenilir bir şekilde dağıtabilir.
-  
+
   ARM şablonlarının Azure altyapınızı yönetmenize nasıl yardımcı olduğu hakkında daha fazla bilgi edinmek için bkz. [ARM şablonları nelerdir?](overview.md)
 
 * **Nasıl yaparım? şablonlarla çalışmaya başlama**
 
-  ARM şablonlarını yazmayı basitleştirmek için doğru araçlara ihtiyacınız vardır. [Visual Studio Code](https://code.visualstudio.com/) ve [Azure Resource Manager araçları uzantısını](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)yüklemenizi öneririz. Bu araçlara hızlı bir giriş için bkz. [hızlı başlangıç: Visual Studio Code ile Azure Resource Manager şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+  ARM şablonlarını yazmayı basitleştirmek için doğru araçlara ihtiyacınız vardır. [Visual Studio Code](https://code.visualstudio.com/) ve [Azure Resource Manager araçları uzantısını](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)yüklemenizi öneririz. Bu araçlara hızlı bir giriş için bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
   ARM şablonları oluşturma hakkında daha fazla bilgi edinmek için, [ARM şablonlarında Başlangıç Öğreticisi serisini](template-tutorial-create-first-template.md)başlatın. Bu öğreticiler, bir ARM şablonu oluşturma sürecinde adım adım sizi ele alır. Şablonun farklı bölümleri ve bunların birlikte nasıl çalıştıkları hakkında bilgi edinirsiniz. Bu içerik [Microsoft Learn modülü](/learn/modules/authoring-arm-templates/)olarak da kullanılabilir.
 
 * **Azure 'a dağıtmak için ARM şablonlarını mı yoksa Terkform mı kullanmalıyım?**
 
   En iyi şekilde istediğiniz seçeneği kullanın. Her iki hizmet de Azure 'a yönelik dağıtımları otomatikleştirmede size yardımcı olur.
-  
+
   ARM şablonlarını diğer kod olarak altyapı hizmetleri üzerinde kullanmanın avantajları olduğuna inandık. Bu avantajlar hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarını neden seçmeliyim?](overview.md#why-choose-arm-templates)
 
 ## <a name="build-2020"></a>Derleme 2020
@@ -59,7 +59,7 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 * **Aygıtımı Portal üzerinden ayarladım. Şablonu var olan bir kaynak grubundan almanın bir yolu var mı?**
 
   Evet, şablonu bir kaynak grubundan [dışarı aktarabilirsiniz](export-template-portal.md) . İçe aktarılmış şablon, şablonlar hakkında bilgi edinmek için iyi bir başlangıç noktasıdır, ancak büyük olasılıkla bunu bir üretim ortamında kullanmadan önce gözden geçirmek isteyeceksiniz.
-  
+
   Şablonu dışarı aktarırken, şablona eklemek istediğiniz kaynakları seçebilirsiniz.
 
 * **ARM şablonunda bir kaynak grubu oluşturabilir ve kaynakları buna dağıtabilir miyim?**
@@ -182,11 +182,11 @@ Bu makale Azure Resource Manager (ARM) şablonları hakkında sık sorulan sorul
 
 * **ARM şablonlarını Azure Pipelines ile tümleştirebilir miyim?**
 
-  Evet. Şablon ve işlem hatlarının nasıl kullanılacağına ilişkin bir açıklama için bkz. [öğretici: Azure Resource Manager şablonlarının Azure Pipelines Ile sürekli tümleştirilmesi](deployment-tutorial-pipeline.md) ve [ARM şablonlarını Azure Pipelines ile tümleştirme](add-template-to-azure-pipelines.md).
+  Evet. Şablon ve işlem hatlarını kullanma hakkında bir açıklama için bkz. [öğretici: ARM şablonlarının Azure Pipelines Ile sürekli tümleştirilmesi](deployment-tutorial-pipeline.md) ve [Azure Pipelines ARM şablonlarını tümleştirme](add-template-to-azure-pipelines.md).
 
 * **Şablon dağıtmak için GitHub eylemlerini kullanabilir miyim?**
 
-  Evet, bkz. [GitHub eylemlerini kullanarak Azure Resource Manager şablonlarını dağıtma](deploy-github-actions.md).
+  Evet, bkz. [GitHub eylemlerini kullanarak ARM şablonları dağıtma](deploy-github-actions.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Maps
 description: "Azure haritalar 'da isteklerin kimlik doğrulamasının iki yolu hakkında bilgi edinin: paylaşılan anahtar kimlik doğrulaması ve Azure Active Directory (Azure AD) kimlik doğrulaması."
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: dc3792b5eff1b0ba51f5d7938e52e6914660109a
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d47e98273e696a4b6e827d8ebbc71a297f2861cb
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889893"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905324"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Haritalar ile kimlik doğrulaması
 
@@ -90,7 +90,7 @@ Azure RBAC 'yi yapılandırırken bir güvenlik sorumlusu seçer ve bir rol atam
 
 Uygulama senaryolarını desteklemek için aşağıdaki rol tanımı türleri mevcuttur.
 
-| Azure rol tanımı       | Açıklama                                                                                              |
+| Azure rol tanımı       | Description                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure haritalar veri okuyucu      | Sabit Azure haritaları REST API 'Lerine erişim sağlar.                                                       |
 | Azure haritalar veri Katılımcısı | Kesilebilir Azure Maps REST API 'Lerine erişim sağlar. Değiştirici, eylemler tarafından tanımlanır: yazma ve silme. |

@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997966"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862301"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service Ruby ve Postgres uygulaması oluşturma
 
@@ -18,7 +18,7 @@ ms.locfileid: "95997966"
 
 :::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Ruby on rayın ekran görüntüsü görevler başlıklı uygulama örneği.":::
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure’da PostgreSQL veritabanı oluşturma
@@ -34,10 +34,11 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için:
 
-* [Git'i yükleyin](https://git-scm.com/)
-* [Ruby 2,6 'yi yükler](https://www.ruby-lang.org/en/documentation/installation/)
-* [Ruby on Rails 5.1'i yükleyin](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [PostgreSQL’i yükleme ve çalıştırma](https://www.postgresql.org/download/)
+- [Git'i yükleyin](https://git-scm.com/)
+- [Ruby 2,6 'yi yükler](https://www.ruby-lang.org/en/documentation/installation/)
+- [Ruby on Rails 5.1'i yükleyin](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [PostgreSQL yükleme ve çalıştırma](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>Yerel Postgres sunucusunu hazırlama
 
@@ -103,8 +104,6 @@ Bir tarayıcıda `http://localhost:3000` sayfasına gidin. Sayfaya birkaç göre
 ![Ruby on Rails başarıyla Postgres'e bağlanır](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 Rails sunucusunu durdurmak için terminale `Ctrl + C` yazın.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-postgres-in-azure"></a>Azure'da Postgres oluşturma
 
@@ -292,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 Ruby on Rails uygulamasını dağıtmak için Azure uzak deposuna gönderin. Daha önce dağıtım kullanıcısı oluştururken belirttiğiniz parola istenir.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Dağıtım sırasında Azure App Service, ilerleme durumunu Git'e iletir.
@@ -303,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -422,7 +421,7 @@ Tüm değişiklikleri Git’e kaydedin ve ardından kod değişikliklerini Azure
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 Tamamlandıktan sonra `git push` Azure uygulamasına gidin ve yeni işlevleri test edin.

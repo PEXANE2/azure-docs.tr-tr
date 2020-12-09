@@ -1,27 +1,27 @@
 ---
-title: Harita için veri kaynağı oluşturma | Microsoft Azure haritaları
+title: Microsoft Azure Maps 'ta eşleme için bir veri kaynağı oluşturma
 description: "Bir harita için veri kaynağı oluşturmayı öğrenin. Azure Maps web SDK 'sının kullandığı veri kaynakları hakkında bilgi edinin: GeoJSON kaynakları ve vektör kutucukları."
 author: rbrundritt
 ms.author: richbrun
-ms.date: 08/08/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9c82b74ffdc8672dc3d84a98a036c6083bc6c309
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895928"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903624"
 ---
 # <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 Azure Haritalar Web SDK 'Sı verileri veri kaynaklarında depolar. Veri kaynaklarını kullanmak, sorgulamak ve işlemek için veri işlemlerini iyileştirir. Şu anda iki tür veri kaynağı vardır:
 
-- **Geojson kaynağı** : coğrafi konum verilerini yerel olarak geojson biçiminde yönetir. Küçük ve orta ölçekli veri kümeleri için iyi (yüzlerce yüz binlerce şekil).
-- **Vektör kutucuk kaynağı** : haritalar döşeme sistemine bağlı olarak, geçerli harita görünümü için vektör kutucukları olarak biçimlendirilen verileri yükler. Büyük ve çok büyük veri kümeleri (milyonlarca veya milyarlarca şekil) için idealdir.
+- **Geojson kaynağı**: coğrafi konum verilerini yerel olarak geojson biçiminde yönetir. Küçük ve orta ölçekli veri kümeleri için iyi (yüzlerce yüz binlerce şekil).
+- **Vektör kutucuk kaynağı**: haritalar döşeme sistemine bağlı olarak, geçerli harita görünümü için vektör kutucukları olarak biçimlendirilen verileri yükler. Büyük ve çok büyük veri kümeleri (milyonlarca veya milyarlarca şekil) için idealdir.
 
 ## <a name="geojson-data-source"></a>GeoJSON veri kaynağı
 
@@ -86,7 +86,7 @@ Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](h
 - Yol kutucukları [belge](/rest/api/maps/renderv2/getmaptilepreview)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
 - Trafik olayları [belge](/rest/api/maps/traffic/gettrafficincidenttile)  |  [verileri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
 - Trafik akışı [belgeleri](/rest/api/maps/traffic/gettrafficflowtile)  |  [veri biçimi ayrıntıları](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- Azure haritalar Oluşturucusu Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilebilir olmasını sağlar
+- Azure haritalar Oluşturucu (Önizleme) Ayrıca özel vektör kutucuklarının oluşturma ve [kutucuk oluşturma v2](/rest/api/maps/renderv2/getmaptilepreview) aracılığıyla erişilmesine izin verir
 
 > [!TIP]
 > Azure haritalar işleme hizmeti 'nden Web SDK 'Sı ile vektör veya raster görüntü kutucukları kullanırken, `atlas.microsoft.com` yer tutucu ile değiştirebilirsiniz `{azMapsDomain}` . Bu yer tutucu, eşleme tarafından kullanılan aynı etki alanıyla değiştirilmelidir ve aynı kimlik doğrulama ayrıntılarını da otomatik olarak ekler. Bu, Azure Active Directory kimlik doğrulaması kullanırken işleme hizmeti ile kimlik doğrulamasını büyük ölçüde basitleştirir.

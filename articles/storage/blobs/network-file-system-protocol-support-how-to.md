@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901562"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906123"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Ağ dosya sistemi (NFS) 3,0 protokolünü (Önizleme) kullanarak blob depolamayı bağlama
 
 BLOB depolama alanına bir kapsayıcıyı Windows veya Linux tabanlı bir Azure sanal makinesi (VM) veya NFS 3,0 protokolünü kullanarak şirket içinde çalışan bir Windows veya Linux sisteminden bağlayabilirsiniz. Bu makalede adım adım yönergeler sunulmaktadır. Blob depolamada NFS 3,0 protokol desteği hakkında daha fazla bilgi edinmek için bkz. [Azure Blob Storage 'da (Önizleme) ağ dosya sistemi (NFS) 3,0 protokol desteği](network-file-system-protocol-support.md).
-
-> [!NOTE]
-> Azure Blob depolamada NFS 3,0 protokol desteği genel önizlemeye sunuldu ve şu bölgelerde kullanılabilir: ABD Doğu, ABD Orta, ABD Orta Batı, Avustralya Güneydoğu, Kuzey Avrupa, UK Batı, Kore Orta, Kore Güney ve Kanada Orta.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>1. Adım: NFS 3,0 protokol özelliğini aboneliğiniz ile kaydetme
 
@@ -48,13 +45,7 @@ BLOB depolama alanına bir kapsayıcıyı Windows veya Linux tabanlı bir Azure 
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. `PremiumHns`Aşağıdaki komutu kullanarak özelliği de kaydettirin.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. Aşağıdaki komutu kullanarak kaynak sağlayıcısını kaydedin.
+5. Aşağıdaki komutu kullanarak kaynak sağlayıcısını kaydedin.
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ Kayıt onayı bir saate kadar sürebilir. Kaydın tamamlandığını doğrulamak
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>3. Adım: Azure sanal ağı oluşturma (VNet)
@@ -86,20 +76,20 @@ Hesabınızdaki verilerin güvenliğini sağlamak için şu önerilere bakın: [
 
 NFS 3,0 kullanarak bir kapsayıcı bağlamak için, özelliği aboneliğiniz ile **kaydettikten sonra** bir depolama hesabı oluşturmanız gerekir. Özelliği kaydetmeden önce var olan hesapları etkinleştiremezsiniz. 
 
-Bu özelliğin önizleme sürümünde, NFS 3,0 protokolü yalnızca [Blockblobstorage](../blobs/storage-blob-create-account-block-blob.md) hesaplarında desteklenir.
+Bu özelliğin önizleme sürümünde, NFS 3,0 protokolü [Blockblobstorage](../blobs/storage-blob-create-account-block-blob.md) ve [genel amaçlı v2](../common/storage-account-overview.md#general-purpose-v2-accounts) hesaplarında desteklenir.
 
 Hesabı yapılandırırken şu değerleri seçin:
 
-|Ayar | Değer|
-|----|---|
-|Konum|Şu bölgelerden biri: ABD Doğu, ABD Orta, ABD Orta Batı, Avustralya Güneydoğu, Kuzey Avrupa, UK Batı, Kore Orta, Kore Güney ve Kanada Orta |
-|Performans|Premium|
-|Hesap türü|BlockBlobStorage|
-|Çoğaltma|Yerel olarak yedekli depolama (LRS)|
-|Bağlantı yöntemi|Ortak uç nokta (seçili ağlar) veya özel uç nokta|
-|Güvenli aktarım gerekir|Devre dışı|
-|Hiyerarşik ad alanı|Etkin|
-|NFS V3|Etkin|
+|Ayar | Premium performans | Standart performans  
+|----|---|---|
+|Konum|Tüm kullanılabilir bölgeler |Şu bölgelerden biri: Avustralya Doğu, Kore Orta ve Orta Güney ABD   
+|Performans|Premium| Standart
+|Hesap türü|BlockBlobStorage| Genel amaçlı v2
+|Çoğaltma|Yerel olarak yedekli depolama (LRS)| Yerel olarak yedekli depolama (LRS)
+|Bağlantı yöntemi|Ortak uç nokta (seçili ağlar) veya özel uç nokta |Ortak uç nokta (seçili ağlar) veya özel uç nokta
+|Güvenli aktarım gerekir|Devre dışı|Devre dışı
+|Hiyerarşik ad alanı|Etkin|Etkin
+|NFS V3|Etkin |Etkin 
 
 Tüm diğer ayarlar için varsayılan değerleri kabul edebilirsiniz. 
 

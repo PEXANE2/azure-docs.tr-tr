@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9ed3a4b0827e81b3f779d95a6eab1dc341e69bb1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de446209104c113b10346645f79b461239c3efab
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019387"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901288"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>SYNAPSE SQL kullanarak güvenli bir şekilde veri yükleme
 
@@ -23,11 +23,14 @@ Bu makalede, [Copy ifadesiyle](https://docs.microsoft.com/sql/t-sql/statements/c
 
 Aşağıdaki matris, her dosya türü ve depolama hesabı için desteklenen kimlik doğrulama yöntemlerini açıklar. Bu, kaynak depolama konumu ve hata dosyası konumu için geçerlidir.
 
-|                          |                CSV                |              Parquet               |                ORC                 |
-| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
-|  **Azure blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |              SAS/ANAHTAR               |              SAS/ANAHTAR               |
-| **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD | SAS (blob uç noktası)/MSI (DFS uç noktası)/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |                      Parquet                       |                        ORC                         |
+| :----------------------: | :-------------------------------: | :------------------------------------------------: | :------------------------------------------------: |
+|  **Azure Blob depolama**  | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD |                      SAS/ANAHTAR                       |                      SAS/ANAHTAR                       |
+| **Azure Data Lake Gen2** | SAS/MSı/HIZMET SORUMLUSU/ANAHTARı/AAD | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/SERVICE PRINCIPAL/Key/AAD | SAS (blob<sup>1</sup>)/MSI (DFS<sup>2</sup>)/SERVICE PRINCIPAL/Key/AAD |
 
+1: Bu kimlik doğrulama yöntemi için dış konum yolunuzda. blob uç noktası (**. blob**. Core.Windows.net) gereklidir.
+
+2: Bu kimlik doğrulama yöntemi için dış konum yolunuzda. DFS uç noktası (**. DFS**. Core.Windows.net) gereklidir.
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. Satır Sonlandırıcı olarak LF ile depolama hesabı anahtarı (UNIX stili yeni satır)
 
@@ -74,22 +77,35 @@ Depolama Hesabınız VNet 'e eklendiğinde yönetilen kimlik kimlik doğrulamas�
 1. Bu [kılavuzu](/powershell/azure/install-az-ps?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) kullanarak Azure PowerShell'i yükleyin.
 2. Genel amaçlı v1 veya blob depolama hesabınız varsa öncelikle bu [kılavuzda](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yer alan adımları izleyerek genel amaçlı v2 sürümüne yükseltmeniz gerekir.
 3. Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsünde **Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin vermeniz** gerekir. Daha fazla bilgi için bu [kılavuza](../../storage/common/storage-network-security.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#exceptions) bakın.
+
 #### <a name="steps"></a>Adımlar
 
-1. PowerShell 'de **SQL Server** 'ı Azure Active Directory kaydettirin:
+1. Tek başına adanmış bir SQL havuzunuz varsa, PowerShell kullanarak SQL Server 'ı Azure Active Directory (AAD) ile kaydedin: 
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Select-AzSubscription -SubscriptionId <subscriptionId>
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
-2. Bu [Kılavuzu](../../storage/common/storage-account-create.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
+   Bu adım, bir Synapse çalışma alanı içindeki adanmış SQL havuzları için gerekli değildir.
+
+1. Bir Synapse çalışma alanınız varsa, çalışma alanınızın sistem tarafından yönetilen kimliğini kaydedin:
+
+   1. Azure portal SYNAPSE çalışma alanınıza gidin
+   2. Yönetilen kimlikler dikey penceresine git 
+   3. "İşlem hatları Izin ver" seçeneğinin etkinleştirildiğinden emin olun
+   
+   ![Çalışma alanı sistem MSI 'yi Kaydet](./media/quickstart-bulk-load-copy-tsql-examples/msi-register-example.png)
+
+1. Bu [Kılavuzu](../../storage/common/storage-account-create.md)kullanarak **genel amaçlı v2 depolama hesabı** oluşturun.
 
    > [!NOTE]
-   > Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)kullanarak **v2 'ye yükseltmeniz** gerekir.
+   >
+   > - Genel amaçlı bir v1 veya blob depolama hesabınız varsa, önce bu [Kılavuzu](../../storage/common/storage-account-upgrade.md)kullanarak **v2 'ye yükseltmeniz** gerekir.
+   > - Azure Data Lake Storage 2. ile ilgili bilinen sorunlar için lütfen bu [kılavuza](../../storage/blobs/data-lake-storage-known-issues.md)bakın.
 
-3. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. SQL Server 'a **Depolama Blobu veri sahibi, katkıda bulunan veya okuyucu** Azure rolü atayın.
+1. Depolama hesabınız altında **Access Control (IAM)** bölümüne gidin ve **rol ataması Ekle**' yi seçin. Azure Active Directory (AAD) ile kaydettiğiniz adanmış SQL havuzunuzu barındıran sunucuya veya çalışma alanına **Depolama Blobu verileri katkıda bulunan** Azure rolü atayın.
 
    > [!NOTE]
    > Yalnızca sahibi ayrıcalığına sahip Üyeler bu adımı gerçekleştirebilir. Çeşitli Azure yerleşik rolleri için bu [kılavuza](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)bakın.

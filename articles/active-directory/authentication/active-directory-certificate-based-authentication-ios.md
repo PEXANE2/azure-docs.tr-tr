@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffddac13009b84aa8253955d265f11aefe2ce5dd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: a5f9b96fe9ee0781803bbbd86316e8783b60a6f1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744423"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861332"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>İOS 'ta sertifika tabanlı kimlik doğrulamasını Azure Active Directory
 
@@ -75,7 +75,7 @@ Daha fazla bilgi için bkz. [AD FS oturum açma sayfasını özelleştirme](/pre
 
 Modern kimlik doğrulaması etkinleştirilmiş bazı Office uygulamaları `prompt=login` , istekleri Içinde Azure AD 'ye gönderilir. Varsayılan olarak, Azure AD `prompt=login` , ISTEğI ADFS 'ye dönüştürür `wauth=usernamepassworduri` (ADFS 'nin U/P auth 'yi yapması istenir) ve `wfresh=0` (ADFS 'nin SSO durumunu yok saymasını ve yeni bir kimlik doğrulaması aramasını ister). Bu uygulamalar için sertifika tabanlı kimlik doğrulamasını etkinleştirmek istiyorsanız, varsayılan Azure AD davranışını değiştirin.
 
-Varsayılan davranışı güncelleştirmek için, Federasyon etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını *devre dışı* olarak ayarlayın. Bu görevi gerçekleştirmek için aşağıdaki örnekte gösterildiği gibi [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet 'ini kullanabilirsiniz:
+Varsayılan davranışı güncelleştirmek için, Federasyon etki alanı ayarlarınızda '*Promptloginbehavior*' ayarını *devre dışı* olarak ayarlayın. Bu görevi gerçekleştirmek için aşağıdaki örnekte gösterildiği gibi [Msoldomainfederationsettings](/powershell/module/msonline/set-msoldomainfederationsettings) cmdlet 'ini kullanabilirsiniz:
 
 ```powershell
 Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled

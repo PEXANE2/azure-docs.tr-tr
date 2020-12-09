@@ -8,12 +8,12 @@ author: sabbour
 ms.author: asabbour
 keywords: Aro, OpenShift, az Aro, Red hat, CLI
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 03ecd0e11df5fa20f134b6fd87baf788078a2203
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 0d69fa10408618fb188b42e1dd8f7b9d02820cc3
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748038"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862420"
 ---
 # <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>Azure Red Hat OpenShift 4 kümesi için Azure Active Directory kimlik doğrulamasını yapılandırma (CLı)
 
@@ -21,47 +21,67 @@ CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CL
 
 Azure Active Directory uygulamasını yapılandırmak için kullanılacak olan kümenize özel URL 'Leri alın.
 
-Kümenin OAuth geri çağırma URL 'sini oluşturun ve **Oauthcallbackurl** değişkenine depolayın. Kaynak grubunuzun adı ve **Aro-Cluster** ' i kümenizin **adıyla değiştirdiğinizden emin** olun.
+Kaynak grubu ve küme adı için değişkenleri ayarlayın.
+
+**\<resource_group>** Kaynak grubunuzun adıyla ve **\<aro_cluster>** kümenizin adıyla değiştirin.
+
+```azurecli-interactive
+resource_group=<resource_group>
+aro_cluster=<aro_cluster>
+```
+
+Kümenin OAuth geri çağırma URL 'sini oluşturun ve **Oauthcallbackurl** değişkenine depolayın. 
 
 > [!NOTE]
 > `AAD`OAuth geri çağırma URL 'sindeki bölüm, daha sonra kurulumunu yaptığınız OAuth kimlik sağlayıcısı adıyla eşleşmelidir.
 
+
 ```azurecli-interactive
-domain=$(az aro show -g aro-rg -n aro-cluster --query clusterProfile.domain -o tsv)
-location=$(az aro show -g aro-rg -n aro-cluster --query location -o tsv)
-apiServer=$(az aro show -g aro-rg -n aro-cluster --query apiserverProfile.url -o tsv)
-webConsole=$(az aro show -g aro-rg -n aro-cluster --query consoleProfile.url -o tsv)
-oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+domain=$(az aro show -g $resource_group -n $aro_cluster --query clusterProfile.domain -o tsv)
+location=$(az aro show -g $resource_group -n $aro_cluster --query location -o tsv)
+apiServer=$(az aro show -g $resource_group -n $aro_cluster --query apiserverProfile.url -o tsv)
+webConsole=$(az aro show -g $resource_group -n $aro_cluster --query consoleProfile.url -o tsv)
 ```
+
+OauthCallbackURL 'nin biçimi özel etki alanlarıyla biraz farklıdır:
+
+* Özel bir etki alanı kullanıyorsanız, örneğin `contoso.com` . 
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain/oauth2callback/AAD
+    ```
+
+* Özel bir etki alanı kullanmıyorsanız, `$domain` sekiz karakter alnum dizesi olur ve tarafından genişletilir `$location.aroapp.io` .
+
+    ```azurecli-interactive
+    oauthCallbackURL=https://oauth-openshift.apps.$domain.$location.aroapp.io/oauth2callback/AAD
+    ```
+
+> [!NOTE]
+> `AAD`OAuth geri çağırma URL 'sindeki bölüm, daha sonra kurulumunu yaptığınız OAuth kimlik sağlayıcısı adıyla eşleşmelidir.
 
 ## <a name="create-an-azure-active-directory-application-for-authentication"></a>Kimlik doğrulaması için Azure Active Directory uygulaması oluşturma
 
-Azure Active Directory uygulaması oluşturun ve oluşturulan uygulama tanımlayıcısını alın. **\<ClientSecret>** Güvenli bir parolayla değiştirin.
+**\<client_secret>** Uygulamanın güvenli parolasıyla değiştirin.
 
 ```azurecli-interactive
-az ad app create \
+client_secret=<client_secret>
+```
+
+Azure Active Directory uygulaması oluşturun ve oluşturulan uygulama tanımlayıcısını alın.
+
+```azurecli-interactive
+app_id=$(az ad app create \
   --query appId -o tsv \
   --display-name aro-auth \
   --reply-urls $oauthCallbackURL \
-  --password '<ClientSecret>'
-```
-
-Buna benzer bir şey geri almalısınız. Daha sonraki adımlarda ihtiyacınız olan **AppID** olduğundan bunu unutmayın.
-
-```output
-6a4cb4b2-f102-4125-b5f5-9ad6689f7224
+  --password $client_secret)
 ```
 
 Uygulamanın sahibi olan aboneliğin kiracı KIMLIĞINI alın.
 
 ```azure
-az account show --query tenantId -o tsv
-```
-
-Buna benzer bir şey geri almalısınız. Daha sonraki adımlarda ihtiyacınız olan **Tenantıd** olduğundan bunu unutmayın.
-
-```output
-72f999sx-8sk1-8snc-js82-2d7cj902db47
+tenant_id=$(az account show --query tenantId -o tsv)
 ```
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>KIMLIK belirtecine eklenecek isteğe bağlı talepleri tanımlamak için bir bildirim dosyası oluşturma
@@ -97,19 +117,15 @@ EOF
 
 ## <a name="update-the-azure-active-directory-applications-optionalclaims-with-a-manifest"></a>Azure Active Directory uygulamasının Optionaltaleplerini bir bildirimle güncelleştirme
 
-**\<AppID>** Daha önce ALDıĞıNıZ kimlikle değiştirin.
-
 ```azurecli-interactive
 az ad app update \
   --set optionalClaims.idToken=@manifest.json \
-  --id <AppId>
+  --id $app_id
 ```
 
 ## <a name="update-the-azure-active-directory-application-scope-permissions"></a>Uygulama kapsamı izinlerini Azure Active Directory güncelleştirme
 
 Azure Active Directory Kullanıcı bilgilerini okuyabilmeniz için, uygun kapsamları tanımlamanız gerekir.
-
-**\<AppID>** Daha önce ALDıĞıNıZ kimlikle değiştirin.
 
 Oturum açmayı etkinleştirmek ve kullanıcı profilini okumak için **Azure Active Directory Graph. User. Read** kapsamı için izin ekleyin.
 
@@ -117,11 +133,11 @@ Oturum açmayı etkinleştirmek ve kullanıcı profilini okumak için **Azure Ac
 az ad app permission add \
  --api 00000002-0000-0000-c000-000000000000 \
  --api-permissions 311a71cc-e848-46a1-bdf8-97ff7156d8e6=Scope \
- --id <AppId>
+ --id $app_id
 ```
 
 > [!NOTE]
-> Bu Azure Active Directory için genel yönetici olarak kimlik doğrulaması yapmadığınız sürece, kendi hesabınızda oturum açtıktan sonra bunu yapmanız istenecek olduğundan, izin vermek için iletiyi yoksayabilirsiniz.
+> Bu Azure Active Directory için genel yönetici olarak kimlik doğrulaması yapmadığınız sürece onay vermek üzere iletiyi güvenle yoksayabilirsiniz. Standart etki alanı kullanıcılarına, AAD kimlik bilgilerini kullanarak kümede ilk kez oturum açtıklarında izin vermesi istenir.
 
 ## <a name="assign-users-and-groups-to-the-cluster-optional"></a>Kümeye Kullanıcı ve Grup atama (isteğe bağlı)
 
@@ -134,35 +150,27 @@ Bir Azure Active Directory (Azure AD) kiracısında kayıtlı uygulamalar, varsa
 `kubeadmin`Kimlik bilgilerini alın. Kullanıcı parolasını bulmak için aşağıdaki komutu çalıştırın `kubeadmin` .
 
 ```azurecli-interactive
-az aro list-credentials \
-  --name aro-cluster \
-  --resource-group aro-rg
+kubeadmin_password=$(az aro list-credentials \
+  --name $aro_cluster \
+  --resource-group $resource_group \
+  --query kubeadminPassword --output tsv)
 ```
 
-Aşağıdaki örnek çıktı, parolasının içinde olacağını gösterir `kubeadminPassword` .
-
-```json
-{
-  "kubeadminPassword": "<generated password>",
-  "kubeadminUsername": "kubeadmin"
-}
-```
-
-Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. `$apiServer`Değişken [daha önce]()ayarlandı. Aldığınız **\<kubeadmin password>** parolayla değiştirin.
+Aşağıdaki komutu kullanarak OpenShift kümesinin API sunucusunda oturum açın. 
 
 ```azurecli-interactive
-oc login $apiServer -u kubeadmin -p <kubeadmin password>
+oc login $apiServer -u kubeadmin -p $kubeadmin_password
 ```
 
-**\<ClientSecret>** Daha önce aldığınız gizli anahtar ile değiştirerek, Azure Active Directory uygulama gizli anahtarını depolamak için bir OpenShift gizli dizisi oluşturun.
+Azure Active Directory uygulama gizli anahtarını depolamak için bir OpenShift gizli dizisi oluşturun.
 
 ```azurecli-interactive
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
-  --from-literal=clientSecret=<ClientSecret>
+  --from-literal=clientSecret=$client_secret
 ```
 
-Azure Active Directory karşı OpenShift OpenID kimlik doğrulamasını yapılandırmak için bir **OIDC. YAML** dosyası oluşturun. **\<AppID>** Ve **\<TenantId>** değerlerini daha önce aldığınız değerlerle değiştirin.
+Azure Active Directory karşı OpenShift OpenID kimlik doğrulamasını yapılandırmak için bir **OIDC. YAML** dosyası oluşturun. 
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -176,7 +184,7 @@ spec:
     mappingMethod: claim
     type: OpenID
     openID:
-      clientID: <AppId>
+      clientID: $app_id
       clientSecret:
         name: openid-client-secret-azuread
       extraScopes:
@@ -192,7 +200,7 @@ spec:
         - name
         email:
         - email
-      issuer: https://login.microsoftonline.com/<TenantId>
+      issuer: https://login.microsoftonline.com/$tenant_id
 EOF
 ```
 

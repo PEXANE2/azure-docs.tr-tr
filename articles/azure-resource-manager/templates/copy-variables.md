@@ -1,22 +1,22 @@
 ---
 title: Bir değişkenin birden çok örneğini tanımlama
-description: Bir değişken oluştururken birden çok kez yinelemek için Azure Resource Manager şablonda kopyalama işlemini kullanın.
+description: Bir değişken oluştururken birden çok kez yinelemek için bir Azure Resource Manager şablonunda kopyalama işlemi kullanın (ARM şablonu).
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8acd85659b843cb482e1ccc61e28da03431db1b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84678452"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905902"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>ARM şablonlarında değişken yineleme
 
-Bu makalede, Azure Resource Manager (ARM) şablonunuzda bir değişken için birden fazla değer oluşturma gösterilmektedir. Şablonunuzun değişkenler bölümüne **Copy** öğesini ekleyerek, dağıtım sırasında bir değişken için öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
+Bu makalede, Azure Resource Manager şablonunuzda (ARM şablonu) bir değişken için birden fazla değer oluşturma gösterilmektedir. `copy`Şablonunuzun değişkenler bölümüne öğesini ekleyerek, dağıtım sırasında bir değişken için öğe sayısını dinamik olarak ayarlayabilirsiniz. Ayrıca, şablon söz dizimini yinelemek zorunda kalmaktan kaçının.
 
 Ayrıca, [kaynak, bir kaynaktaki Özellikler](copy-properties.md)ve [çıktılar](copy-outputs.md) [ile kopyalama](copy-resources.md)özelliğini de kullanabilirsiniz.
 
-## <a name="syntax"></a>Sözdizimi
+## <a name="syntax"></a>Syntax
 
 Copy öğesi aşağıdaki genel biçime sahiptir:
 
@@ -30,9 +30,9 @@ Copy öğesi aşağıdaki genel biçime sahiptir:
 ]
 ```
 
-**Name** özelliği, döngüsünü tanımlayan herhangi bir değerdir. **Count** özelliği, değişken için istediğiniz yineleme sayısını belirtir.
+`name`Özelliği, döngüsünü tanımlayan herhangi bir değerdir. `count`Özelliği, değişken için istediğiniz yineleme sayısını belirtir.
 
-**Input** özelliği, yinelemek istediğiniz özellikleri belirtir. **Giriş** özelliğindeki değerden oluşturulan bir dizi öğe oluşturun. Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
+`input`Özelliği yinelemek istediğiniz özellikleri belirtir. Özelliğindeki değerden oluşturulan bir dizi öğe oluşturursunuz `input` . Tek bir Özellik (bir dize gibi) veya birkaç özelliği olan bir nesnesi olabilir.
 
 ## <a name="copy-limits"></a>Sınırları Kopyala
 
@@ -92,7 +92,7 @@ Aşağıdaki örnek dize değerleri dizisinin nasıl oluşturulacağını göste
 ]
 ```
 
-Sonraki örnekte, üç özelliklere (Name, diskSizeGB ve DiskIndex) sahip bir nesne dizisinin nasıl oluşturulacağı gösterilmektedir.
+Sonraki örnekte,, ve olmak üzere üç özellik içeren bir nesne dizisinin nasıl oluşturulacağı `name` gösterilmektedir `diskSizeGB` `diskIndex` .
 
 ```json
 {
@@ -160,10 +160,10 @@ Yukarıdaki örnek aşağıdaki değerlere sahip bir dizi döndürür:
 ```
 
 > [!NOTE]
-> Değişken yineleme, bir fark bağımsız değişkenini destekler. Konum, Copyındex (' diskNames ', 1) gibi yinelemenin adından sonra gelmelidir. Bir fark değeri sağlamazsanız, ilk örnek için varsayılan değer 0 ' dır.
+> Değişken yineleme, bir fark bağımsız değişkenini destekler. Fark, yineleme adından sonra gelmelidir, örneğin `copyIndex('diskNames', 1)` . Bir fark değeri sağlamazsanız, ilk örnek için varsayılan değer 0 ' dır.
 >
 
-Ayrıca, bir değişken içinde Copy öğesini de kullanabilirsiniz. Aşağıdaki örnek, değerlerinden biri olarak bir dizi içeren bir nesnesi oluşturur.
+Ayrıca, `copy` öğesini bir değişken içinde de kullanabilirsiniz. Aşağıdaki örnek, değerlerinden biri olarak bir dizi içeren bir nesnesi oluşturur.
 
 ```json
 {
@@ -236,7 +236,7 @@ Yukarıdaki örnek, aşağıdaki değerlere sahip bir nesne döndürür:
 }
 ```
 
-Sonraki örnekte, değişkenleri ile kopyalama kullanmanın farklı yolları gösterilmektedir.
+Sonraki örnekte, değişkenleriyle kullanabileceğiniz farklı yollar gösterilmektedir `copy` .
 
 ```json
 {
@@ -314,18 +314,17 @@ Sonraki örnekte, değişkenleri ile kopyalama kullanmanın farklı yolları gö
 
 Aşağıdaki örneklerde, bir değişken için birden fazla değer oluşturmak için yaygın senaryolar gösterilmektedir.
 
-|Şablon  |Açıklama  |
+|Şablon  |Description  |
 |---------|---------|
 |[Değişkenleri Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Değişkenlerde yinelemenin farklı yollarını gösterir. |
 |[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: ARM şablonları kullanarak birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Öğreticiye gitmek için bkz. [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
 * Copy öğesinin diğer kullanımları için bkz.:
   * [ARM şablonlarındaki kaynak yinelemesi](copy-resources.md)
   * [ARM şablonlarındaki Özellik yinelemesi](copy-properties.md)
   * [ARM şablonlarındaki çıkış yinelemesi](copy-outputs.md)
-* Bir şablonun bölümleri hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [ARM şablonları yazma](template-syntax.md).
-* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonuyla uygulama dağıtma](deploy-powershell.md).
-
+* Bir şablonun bölümleri hakkında bilgi edinmek istiyorsanız, bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).

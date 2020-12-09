@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory sürekli tümleştirme ve teslim
+title: Azure Data Factory’de sürekli tümleştirme ve teslim
 description: Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşımak için sürekli tümleştirme ve teslimi nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500164"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902332"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory’de sürekli tümleştirme ve teslim
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -235,7 +235,7 @@ Aşağıda, **arm-template-parameters-definition.js** özel parametre dosyasın�
       * `-` parametresi için varsayılan değeri saklama anlamına gelir.
       * `|` , bağlantı dizeleri veya anahtarlar için Azure Key Vault parolalar için özel bir durumdur.
    * `<name>` parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakterle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` olarak kısaltılacak `AzureStorage1_connectionString` .
-   * `<stype>` parametrenin türüdür. `<stype>`Boşsa, varsayılan tür olur `string` . Desteklenen değerler: `string` , `bool` , `number` , `object` ve `securestring` .
+   * `<stype>` parametrenin türüdür. `<stype>`Boşsa, varsayılan tür olur `string` . Desteklenen değerler: `string` , `securestring` , `int` , `bool` , `object` `secureobject` ve `array` .
 * Tanım dosyasında bir dizi belirtilmesi, şablondaki eşleşen özelliğin bir dizi olduğunu gösterir. Data Factory, dizinin tümleştirme çalışma zamanı nesnesinde belirtilen tanımı kullanarak dizideki tüm nesneler arasında yinelenir. İkinci nesne, bir dize, her yineleme için parametresinin adı olarak kullanılan özelliğin adı olur.
 * Bir tanım, kaynak örneğine özgü olamaz. Herhangi bir tanım, bu türdeki tüm kaynaklar için geçerlidir.
 * Varsayılan olarak, Key Vault gizli dizileri ve bağlantı dizeleri, anahtarlar ve belirteçler gibi güvenli dizeler gibi tüm güvenli dizeler parametrelenir.
@@ -250,7 +250,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
         "properties": {
             "activities": [{
                 "typeProperties": {
-                    "waitTimeInSeconds": "-::number",
+                    "waitTimeInSeconds": "-::int",
                     "headers": "=::object"
                 }
             }]
@@ -268,7 +268,7 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
             "typeProperties": {
                 "recurrence": {
                     "*": "=",
-                    "interval": "=:triggerSuffix:number",
+                    "interval": "=:triggerSuffix:int",
                     "frequency": "=:-freq"
                 },
                 "maxConcurrency": "="
@@ -317,7 +317,7 @@ Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bö
 #### <a name="triggers"></a>Tetikleyiciler
 
 * Altında `typeProperties` iki özellik parametrelenir. Birincisi, `maxConcurrency` varsayılan bir değere sahip ve türünde olan bir ' dır `string` . Varsayılan parametre adı vardır `<entityName>_properties_typeProperties_maxConcurrency` .
-* `recurrence`Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , tür olarak parametreleştirilen özelliktir `number` . Parametre adı ile sondüzeltildi `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
+* `recurrence`Özelliği de parametrelenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum `interval` , tür olarak parametreleştirilen özelliktir `int` . Parametre adı ile sondüzeltildi `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Benzer şekilde, `freq` özelliği bir dizedir ve dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
@@ -668,7 +668,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
     - Data Factory varlıkları birbirlerine bağlıdır. Örneğin, tetikler, işlem hatlarına ve işlem hatları, veri kümelerine ve diğer işlem hattına bağlıdır. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden olabilir.
     - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim ortamı](#hotfix-production-environment).
 
-- Azure Data Factory ekibi, bir veri fabrikasında tek tek varlıklara (ardışık düzen, veri kümeleri vb.) Azure RBAC denetimleri atamayı önermez. Örneğin, bir geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmeleri gerekir. Bir veri fabrikası içinde birçok Azure rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
+- Azure Data Factory ekibi, bir veri fabrikasında tek tek varlıklara (ardışık düzen, veri kümeleri vb.) Azure RBAC denetimleri atamayı önermez. Örneğin geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmelidir. Bir veri fabrikası içinde birçok Azure rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
 
 -   Özel dallardan yayımlayamazsınız.
 

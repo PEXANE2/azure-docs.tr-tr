@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374091"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906395"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI ile Azure Market'te Linux VM görüntülerini bulma
 
@@ -23,6 +23,45 @@ En son [Azure CLI](/cli/azure/install-azure-cli) 'yi yüklediğinizden ve bir Az
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
+
+## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak bir VHD 'den dağıtma
+
+Ücretli bir Azure Marketi görüntüsü kullanılarak oluşturulmuş bir VHD varsa, bu VHD 'den yeni bir sanal makine oluştururken satın alma planı bilgilerini sağlamanız gerekebilir. 
+
+Hala orijinal VM veya aynı Market görüntüsü kullanılarak oluşturulmuş başka bir VM varsa, [az VM Get-instance-View](/cli/azure/vm#az_vm_get_instance_view)kullanarak bu bilgisayardan plan adı, yayımcı ve ürün bilgilerini alabilirsiniz. Bu örnek *Myresourcegroup* kaynak grubundaki *myvm* adlı bir VM 'yi alır ve ardından satın alma planı bilgilerini görüntüler.
+
+```azurepowershell-interactive
+az vm get-instance-view -g myResourceGroup -n myVM --query plan
+```
+
+Özgün VM silinmeden önce plan bilgilerini almadıysanız, bir [destek isteği](https://ms.portal.azure.com/#create/Microsoft.Support)dosyası gönderebilirsiniz. Bu, VM adı, abonelik kimliği ve silme işleminin zaman damgasına ihtiyaç duyar.
+
+Plan bilgilerine sahip olduktan sonra, `--attach-os-disk` VHD 'yi belirtmek için parametresini kullanarak yenı VM 'yi oluşturabilirsiniz.
+
+```azurecli-interactive
+az vm create \
+   --resource-group myResourceGroup \
+  --name myNewVM \
+  --nics myNic \
+  --size Standard_DS1_v2 --os-type Linux \
+  --attach-os-disk myVHD \
+  --plan-name planName \
+  --plan-publisher planPublisher \
+  --plan-product planProduct 
+```
+
+## <a name="deploy-a-new-vm-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak yeni bir VM dağıtma
+
+Görüntüyle ilgili bilgilere zaten sahipseniz komutunu kullanarak dağıtabilirsiniz `az vm create` . Bu örnekte, Bıbbitmq sertifikalı bir sanal makineyi BitNami görüntüsüne dağıdık:
+
+```azurecli
+az group create --name myResourceGroupVM --location westus
+
+az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
+```
+
+Görüntü koşullarını kabul etme hakkında bir ileti alırsanız, bu makalenin ilerleyen kısımlarında yer alarak [Koşulları kabul](#accept-the-terms) edin bölümüne bakın.
+
 ## <a name="list-popular-images"></a>Popüler görüntüleri listeleme
 
 Azure Marketi 'nde popüler VM görüntülerinin listesini görmek için, seçeneği olmadan [az VM image List](/cli/azure/vm/image) komutunu çalıştırın `--all` . Örneğin, popüler görüntülerin önbelleğe alınmış bir listesini tablo biçiminde göstermek için aşağıdaki komutu çalıştırın:
@@ -31,7 +70,7 @@ Azure Marketi 'nde popüler VM görüntülerinin listesini görmek için, seçen
 az vm image list --output table
 ```
 
-Çıktı URN ( *urn* sütunundaki değer) resmini içerir. Bu popüler Market görüntülerinden birine sahip bir VM oluştururken alternatif olarak, *Ubuntults*gibi kısaltılmış bir form olan *urnalias*'i de belirtebilirsiniz.
+Çıktı URN ( *urn* sütunundaki değer) resmini içerir. Bu popüler Market görüntülerinden birine sahip bir VM oluştururken alternatif olarak, *Ubuntults* gibi kısaltılmış bir form olan *urnalias*'i de belirtebilirsiniz.
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -325,9 +364,9 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 }
 ```
 
-### <a name="accept-the-terms"></a>Koşulları kabul edin
+## <a name="accept-the-terms"></a>Koşulları kabul edin
 
-Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image?) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örneğin:
+Lisans koşullarını görüntülemek ve kabul etmek için [az VM Image Accept-terms](/cli/azure/vm/image?) komutunu kullanın. Koşulları kabul ettiğinizde, aboneliğinizde programlı dağıtımı etkinleştirirsiniz. Her görüntü için abonelik başına koşulları kabul etmeniz yeterlidir. Örnek:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
@@ -350,16 +389,6 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
   "signature": "XXXXXXLAZIK7ZL2YRV5JYQXONPV76NQJW3FKMKDZYCRGXZYVDGX6BVY45JO3BXVMNA2COBOEYG2NO76ONORU7ITTRHGZDYNJNXXXXXX",
   "type": "Microsoft.MarketplaceOrdering/offertypes"
 }
-```
-
-### <a name="deploy-using-purchase-plan-parameters"></a>Satın alma planı parametrelerini kullanarak dağıtın
-
-Görüntü koşullarını kabul ettikten sonra, abonelikte bir VM dağıtabilirsiniz. Komutunu kullanarak görüntüyü dağıtmak için `az vm create` , görüntü için BIR urn 'ye ek olarak satın alma planına yönelik parametreler sağlayın. Örneğin, Bıbbitmq sertifikalı bir sanal makineyi BitNami görüntüsü ile dağıtmak için:
-
-```azurecli
-az group create --name myResourceGroupVM --location westus
-
-az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
