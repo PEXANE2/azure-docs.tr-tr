@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: acde6f401404596212b713f248bb6d11c25b4671
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 005830575ba7f45d30fed71a73e7a419e4d98220
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461418"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922595"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Azure IoT Edge yayımlayın ve abone olun
 
@@ -177,7 +177,6 @@ IoT Hub konuları için yetkilendirmeler, Kullanıcı tanımlı konulardan biraz
 
 - Azure IoT cihazlarının veya modüllerinin IoT Edge hub MQTT aracısına bağlanmak için açık bir yetkilendirme kuralı gerekir. Varsayılan bir bağlantı yetkilendirme ilkesi aşağıda verilmiştir.
 - Azure IoT cihazları veya modülleri, herhangi bir açık yetkilendirme kuralı olmadan kendi IoT Hub konularına varsayılan olarak erişebilir. Ancak, bu durumda üst/alt ilişkilerden oluşan yetkilendirmeler ve bu ilişkilerin ayarlanması gerekir. IoT Edge modüller otomatik olarak IoT Edge cihazlarının alt öğeleri olarak ayarlanır ancak cihazların IoT Edge ağ geçitlerinde açıkça bir alt öğe olarak ayarlanması gerekir.
-- Azure IoT cihazları veya modülleri, uygun açık yetkilendirme kurallarının tanımlanmasını sağlayan diğer cihazların veya modüllerin IoT Hub konuları dahil olmak üzere konulara erişebilir.
 
 Bu, tüm Azure IoT cihazlarının veya modüllerinin aracısına **bağlanmasını** sağlamak için kullanılabilecek varsayılan bir yetkilendirme ilkesidir:
 
@@ -275,7 +274,7 @@ Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Vis
                },
                {
                   "identities": [
-                     "sub_client"
+                     "<iot_hub_name>.azure-devices.net/sub_client"
                   ],
                   "allow":[
                      {
@@ -284,13 +283,13 @@ Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Vis
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
                   ],
                },
                {
                   "identities": [
-                     "pub_client"
+                     "<iot_hub_name>.azure-devices.net/pub_client"
                   ],
                   "allow":[
                      {
@@ -299,9 +298,9 @@ Yayımcıyı ve aboneyi yetkilendirmek için, Azure CLı, Visual Studio veya Vis
                         ],
                         "resources":[
                            "test_topic"
-                        ],
+                        ]
                      }
-                  ],
+                  ]
                }
             ]
          }

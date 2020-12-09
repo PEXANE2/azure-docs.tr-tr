@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 083d820c989870b2a73217eeebf192f0d540ba36
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602555"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922571"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Öğretici: Azure purview ile verileri tarama (Önizleme)
 
@@ -149,7 +149,7 @@ Katalog yapılandırması tamamlandıktan sonra, varlıkları oluşturmak için 
 1. Başlangıç paketini çalıştırmak için aşağıdaki komutu kullanın. ,, `CatalogName` , `TenantID` `SubscriptionID` `newresourcegroupname` Ve `CatalogResourceGroupName` yer tutucularını değiştirin. İçin `newresourcegroupname` , kaynak grubu için verileri barındıran benzersiz bir ad kullanın.
 
 > [!IMPORTANT]
-> **Newresourcegroupname** yalnızca alfasayısal veya sayı olabilir. **Büyük harfli harflerden oluşan sonuçlara ve özel karakterlere izin verilmez.**
+> **Newresourcegroupname** yalnızca sayı ve küçük harf kullanır ve 17 karakterden az olmalıdır. **Büyük harfli harflerden oluşan sonuçlara ve özel karakterlere izin verilmez.** Bu kısıtlama, depolama hesabı adlandırma kurallarından gelir.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

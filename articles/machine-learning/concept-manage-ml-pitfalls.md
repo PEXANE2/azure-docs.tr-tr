@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba85bda1e322d3efd467527b48bd4cd90eb7ce8c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87012731"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922615"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Otomatik makine öğrenimi ile fazla sığdırma ve ıdengeli verileri önleme
 
@@ -35,7 +35,7 @@ Aşağıdaki eğitilen modelleri ve bunlara karşılık gelen tren ve test accur
 
 Model **A**'yı düşünürken, görülmeyen veriler üzerinde test doğruluğu eğitim doğruluğunun altındaysa, modelin daha fazla uydurulur. Ancak, test doğruluğu her zaman eğitim doğruluğunu azaltır ve fazla sığdırma ile *uygun şekilde ayrım, daha az doğru* olacaktır. 
 
-**A** ve **B**modellerini karşılaştırırken, **bir** model, daha yüksek test doğruluğu içerdiğinden daha iyi bir modeldir ve test doğruluğu %95 ' de biraz daha düşük olsa da, çok fazla sığdırma öneren önemli bir fark değildir. Tren ve test accuracies birlikte daha yakından olduğu için model **B** 'yi seçemezsiniz.
+**A** ve **B** modellerini karşılaştırırken, **bir** model, daha yüksek test doğruluğu içerdiğinden daha iyi bir modeldir ve test doğruluğu %95 ' de biraz daha düşük olsa da, çok fazla sığdırma öneren önemli bir fark değildir. Tren ve test accuracies birlikte daha yakından olduğu için model **B** 'yi seçemezsiniz.
 
 Model **C** , aşırı sığdırma durumunu açık bir şekilde temsil eder; Eğitim doğruluğu çok yüksektir, ancak test doğruluğu yüksek olan her yerde değildir. Bu ayrım öznel, ancak sorununuz ve verileriniz hakkında bilgi sahibi olur ve hata magnitudes ne olduğunu kabul edilebilir.
 
@@ -56,7 +56,7 @@ Otomatikleştirilmiş ML bağlamında, yukarıdaki ilk üç öğe **en iyi uygul
 
 ### <a name="best-practices-you-implement"></a>Uyguladığınız en iyi uygulamalar
 
-**Daha fazla veri** kullanmak, aşırı sığdırmayı önlemenin en basit ve en iyi yoludur ve ek bir prim genellikle doğruluğu arttırır. Daha fazla veri kullandığınızda, modelin tam desenleri daha zor hale getirmek daha zordur ve daha fazla koşullara uyum sağlamak için daha esnek çözümlere ulaşmaya zorlanır. Eğitim verilerinizin canlı tahmin verilerinde mevcut olmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel farkı**tanımak de önemlidir. Eğeceğiniz ve test kümleriniz arasında aşırı yerleştirme bulunmayabilir, ancak canlı test verileriyle karşılaştırıldığında çok fazla sığdırma söz konusu olabileceğinden, bu senaryoya çözüm daha zor olabilir.
+**Daha fazla veri** kullanmak, aşırı sığdırmayı önlemenin en basit ve en iyi yoludur ve ek bir prim genellikle doğruluğu arttırır. Daha fazla veri kullandığınızda, modelin tam desenleri daha zor hale getirmek daha zordur ve daha fazla koşullara uyum sağlamak için daha esnek çözümlere ulaşmaya zorlanır. Eğitim verilerinizin canlı tahmin verilerinde mevcut olmayan yalıtılmış desenler içermediğinden emin olmak için **istatistiksel farkı** tanımak de önemlidir. Eğeceğiniz ve test kümleriniz arasında aşırı yerleştirme bulunmayabilir, ancak canlı test verileriyle karşılaştırıldığında çok fazla sığdırma söz konusu olabileceğinden, bu senaryoya çözüm daha zor olabilir.
 
 **Hedef sızıntısı** , eğitim/test kümeleri arasında fazla sığdırmayı görmeyebilirsiniz, ancak bunun yerine tahmin sırasında görünmesini mümkün bir sorundur. Hedef sızıntısı, modelinize "Cheats", normalde tahmin zamanında sahip olmadığı verilere erişim izni vererek oluşur. Örneğin, sorununuz Pazartesi günü ücretlendiriyor, ancak özelliklerden biri yanlışlıkla Perşembe ' dan veri içeriyordu, ancak bu veri, bu durum, gelecekte göremeyeceği için bir tahmin süresi değildir. Hedef sızıntısı, kaçırılması kolay bir hata, ancak genellikle sorununuz için anormal ölçüde yüksek doğruluk ile ayırdedilir. Hisse senedi fiyatını tahmin etmeye ve %95 doğruluk oranında bir model eğitimeye çalışıyorsanız, özelliklerinizin bir yerinde hedef sızıntısı olabilir.
 
@@ -84,8 +84,8 @@ Ayrıca, otomatik ML çalıştırmaları aşağıdaki grafikleri otomatik olarak
 Grafik| Açıklama
 ---|---
 [Karışıklık matrisi](how-to-understand-automated-ml.md#confusion-matrix)| Doğru sınıflandırılan etiketleri verilerin gerçek etiketlerine göre değerlendirir. 
-[Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-chart)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 
-[ROC eğrileri](how-to-understand-automated-ml.md#roc)| Doğru etiketlerin oranını, yanlış pozitif etiketlerin oranına göre değerlendirir.
+[Precision-geri çek](how-to-understand-automated-ml.md#precision-recall-curve)| Doğru etiketlerin oranını, verilerin bulunan etiket örneklerinin oranına göre değerlendirir 
+[ROC eğrileri](how-to-understand-automated-ml.md#roc-curve)| Doğru etiketlerin oranını, yanlış pozitif etiketlerin oranına göre değerlendirir.
 
 ## <a name="handle-imbalanced-data"></a>İmdengeli verileri işle 
 
@@ -97,7 +97,7 @@ Machine Learning iş akışını basitleştirmenin bir parçası olarak, otomati
 
 - İmdengeli verilerle daha iyi anlaşmalar sağlayan bir performans ölçümü kullanın. Örneğin AUC_weighted, bu sınıfı temsil eden örneklerin göreli sayısına göre her sınıfın katkısını hesaplayan birincil bir ölçümdür, bu nedenle dengesizine karşı daha sağlamdır.
 
-Aşağıdaki teknikler, **OTOMATIK ml dışında**imdengeli verileri işlemek için ek seçeneklerdir. 
+Aşağıdaki teknikler, **OTOMATIK ml dışında** imdengeli verileri işlemek için ek seçeneklerdir. 
 
 - Daha küçük sınıfları örnekleyerek veya daha büyük sınıfları aşağı örnekleyerek sınıf dengesizliği olarak yeniden örnekleme yapın. Bu yöntemler, işlemek ve analiz etmek için uzmanlık gerektirir.
 

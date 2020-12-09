@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099198"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922893"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
@@ -54,27 +54,27 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 ## <a name="access-azure-from-visual-studio"></a>Visual Studio 'dan Azure 'a erişme
 
-1. Visual Studio Code'u açın. Visual Studio Code araç çubuğunda Azure simgesini seçin.
+1. Visual Studio Code’u açın. Visual Studio Code araç çubuğunda Azure simgesini seçin.
 
    ![Visual Studio Code araç çubuğunda Azure simgesini seçin](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Azure penceresinde, **Logic Apps** altında **Azure 'da oturum aç** ' ı seçin. Microsoft oturum açma sayfası sizi isterse, Azure hesabınızla oturum açın.
+1. Azure penceresinde, **Logic Apps** altında **Azure 'da oturum aç**' ı seçin. Microsoft oturum açma sayfası sizi isterse, Azure hesabınızla oturum açın.
 
    !["Azure 'da oturum aç" ı seçin](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   1. Oturum açma normalden uzun sürerse Visual Studio Code, size bir cihaz kodu sağlayarak bir Microsoft kimlik doğrulama Web sitesinde oturum açmanızı ister. Bunun yerine kodla oturum açmak için **Cihaz kodunu kullan** ' ı seçin.
+   1. Oturum açma normalden uzun sürerse Visual Studio Code, size bir cihaz kodu sağlayarak bir Microsoft kimlik doğrulama Web sitesinde oturum açmanızı ister. Bunun yerine kodla oturum açmak için **Cihaz kodunu kullan**' ı seçin.
 
       ![Bunun yerine cihaz koduyla devam et](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   1. Kodu kopyalamak için **kopyala & aç** ' ı seçin.
+   1. Kodu kopyalamak için **kopyala & aç**' ı seçin.
 
       ![Azure oturum açma için kodu kopyalayın](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. Yeni bir tarayıcı penceresi açmak ve kimlik doğrulama Web sitesine devam etmek için **bağlantıyı aç** ' ı seçin.
+   1. Yeni bir tarayıcı penceresi açmak ve kimlik doğrulama Web sitesine devam etmek için **bağlantıyı aç**' ı seçin.
 
       ![Bir tarayıcı açmayı ve kimlik doğrulama Web sitesine giderek onaylayın](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. **Hesabınızda oturum açın** sayfasında, kimlik doğrulama kodunuzu girin ve **İleri** ' yi seçin.
+   1. **Hesabınızda oturum açın** sayfasında, kimlik doğrulama kodunuzu girin ve **İleri**' yi seçin.
 
       ![Azure oturum açma için kimlik doğrulama kodunu girin](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
@@ -101,7 +101,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#access-azure).
 
-1. Visual Studio Code ' un altında, **Logic Apps** altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur** ' u seçin.
+1. Visual Studio Code ' un altında, **Logic Apps** altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur**' u seçin.
 
    ![Abonelik menüsünden "mantıksal uygulama oluştur" u seçin](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
@@ -194,7 +194,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 1. İşiniz bittiğinde, mantıksal uygulamanızın iş akışı tanımını kaydedin. (Dosya menüsü > Kaydet veya CTRL + S tuşlarına basın)
 
-1. Mantıksal uygulamanızı Azure aboneliğinize yüklemeniz istendiğinde **karşıya yükle** ' yi seçin.
+1. Mantıksal uygulamanızı Azure aboneliğinize yüklemeniz istendiğinde **karşıya yükle**' yi seçin.
 
    Bu adım, mantıksal uygulamanızı [Azure Portal](https://portal.azure.com)yayımlar, bu, mantığınızı Azure 'da canlı ve çalışır hale getirir.
 
@@ -204,7 +204,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 Visual Studio Code, mantıksal uygulamanızı salt okuma Tasarım görünümünde açabilirsiniz. Mantıksal uygulamanızı tasarımcıda düzenleyemeseniz de, tasarımcı görünümünü kullanarak mantıksal uygulamanızın iş akışını görsel olarak kontrol edebilirsiniz.
 
-Azure penceresinde, **Logic Apps** altında, mantıksal uygulamanızın kısayol menüsünü açın ve **tasarımcıda aç** ' ı seçin.
+Azure penceresinde, **Logic Apps** altında, mantıksal uygulamanızın kısayol menüsünü açın ve **tasarımcıda aç**' ı seçin.
 
 Salt okuma Tasarımcısı ayrı bir pencerede açılır ve mantıksal uygulamanızın iş akışını gösterir, örneğin:
 
@@ -230,11 +230,11 @@ Visual Studio Code, yayımlanmış bir mantıksal uygulamayı düzenlerseniz ve 
 
 1. Azure penceresinde, **Logic Apps** altında, Bu abonelikteki tüm mantıksal uygulamaları görüntüleyebilmeniz için Azure aboneliğinizi genişletin.
 
-   1. İstediğiniz mantıksal uygulamayı devre dışı bırakmak için mantıksal uygulamanın menüsünü açın ve **devre dışı bırak** ' ı seçin.
+   1. İstediğiniz mantıksal uygulamayı devre dışı bırakmak için mantıksal uygulamanın menüsünü açın ve **devre dışı bırak**' ı seçin.
 
       ![Mantıksal uygulamanızı devre dışı bırakma](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. Mantıksal uygulamanızı yeniden etkinleştirmeye hazırsanız, mantıksal uygulamanın menüsünü açın ve **Etkinleştir** ' i seçin.
+   1. Mantıksal uygulamanızı yeniden etkinleştirmeye hazırsanız, mantıksal uygulamanın menüsünü açın ve **Etkinleştir**' i seçin.
 
       ![Mantıksal uygulamanızı etkinleştirme](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
@@ -251,7 +251,7 @@ Visual Studio Code, Azure 'da zaten dağıtılmış bir mantıksal uygulama içi
 
 1. Azure penceresinde, **Logic Apps** altında Azure aboneliğinizi genişletin ve istediğiniz mantıksal uygulamayı seçin.
 
-1. Mantıksal uygulamanızın menüsünü açın ve **düzenleyicide aç** ' ı seçin. Ya da mantıksal uygulamanızın adının yanında Düzenle simgesini seçin.
+1. Mantıksal uygulamanızın menüsünü açın ve **düzenleyicide aç**' ı seçin. Ya da mantıksal uygulamanızın adının yanında Düzenle simgesini seçin.
 
    ![Mevcut mantıksal uygulama için düzenleyiciyi aç](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -263,7 +263,7 @@ Visual Studio Code, Azure 'da zaten dağıtılmış bir mantıksal uygulama içi
 
 1. İşiniz bittiğinde yaptığınız değişiklikleri kaydedin. (Dosya menüsü > Kaydet veya CTRL + S tuşlarına basın)
 
-1. Değişikliklerinizi karşıya yüklemeniz ve Azure portal mevcut mantıksal uygulamanızın *üzerine yazmak* isteyip Istemediğiniz sorulduğunda **karşıya yükle** ' yi seçin.
+1. Değişikliklerinizi karşıya yüklemeniz ve Azure portal mevcut mantıksal uygulamanızın *üzerine yazmak* isteyip Istemediğiniz sorulduğunda **karşıya yükle**' yi seçin.
 
    Bu adım, güncelleştirmelerinizi [Azure Portal](https://portal.azure.com)mantıksal uygulamanıza yayımlar.
 
@@ -278,7 +278,7 @@ Visual Studio Code, mantıksal uygulamanız için önceki sürümleri açabilir 
 
 1. Azure penceresinde, **Logic Apps** altında, Bu abonelikteki tüm mantıksal uygulamaları görüntüleyebilmeniz için Azure aboneliğinizi genişletin.
 
-1. Aboneliğiniz altında mantıksal uygulamanızı genişletin ve **sürümler** ' i genişletin.
+1. Aboneliğiniz altında mantıksal uygulamanızı genişletin ve **sürümler**' i genişletin.
 
    **Sürümler** listesi, varsa mantıksal uygulamanızın önceki sürümlerini gösterir.
 
@@ -286,19 +286,19 @@ Visual Studio Code, mantıksal uygulamanız için önceki sürümleri açabilir 
 
 1. Önceki bir sürümü görüntülemek için, iki adımdan birini seçin:
 
-   * JSON tanımını görüntülemek için, **sürümler** altında, bu tanım için sürüm numarasını seçin. Ya da, söz konusu sürümün kısayol menüsünü açın ve **düzenleyicide aç** ' ı seçin.
+   * JSON tanımını görüntülemek için, **sürümler** altında, bu tanım için sürüm numarasını seçin. Ya da, söz konusu sürümün kısayol menüsünü açın ve **düzenleyicide aç**' ı seçin.
 
      Yerel bilgisayarınızda yeni bir dosya açılır ve bu sürümün JSON tanımını gösterir.
 
-   * Sürümü salt okuma tasarımcı görünümünde görüntülemek için, bu sürümün kısayol menüsünü açın ve **tasarımcıda aç** ' ı seçin.
+   * Sürümü salt okuma tasarımcı görünümünde görüntülemek için, bu sürümün kısayol menüsünü açın ve **tasarımcıda aç**' ı seçin.
 
 1. Önceki bir sürümü güncel sürüme yükseltmek için aşağıdaki adımları izleyin:
 
-   1. **Sürümler** altında, önceki sürümün kısayol menüsünü açın ve **Yükselt** ' i seçin.
+   1. **Sürümler** altında, önceki sürümün kısayol menüsünü açın ve **Yükselt**' i seçin.
 
       ![Önceki sürümü yükselt](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 
-   1. Visual Studio Code onay istemini tamamladıktan sonra devam etmek için **Evet** ' i seçin.
+   1. Visual Studio Code onay istemini tamamladıktan sonra devam etmek için **Evet**' i seçin.
 
       ![Önceki sürümü yükseltme Onayla](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 
@@ -307,4 +307,4 @@ Visual Studio Code, mantıksal uygulamanız için önceki sürümleri açabilir 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Visual Studio Code (Önizleme) içinde durum bilgisiz veya durumsuz Logic Apps oluşturma](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Visual Studio Code (Önizleme) içinde durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar oluşturun](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

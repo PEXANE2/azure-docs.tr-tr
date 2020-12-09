@@ -1,116 +1,53 @@
 ---
-title: Visual Studio Code Otomasyon iş akışları (Önizleme) oluşturma
-description: Uygulamaları, verileri, bulut hizmetlerini ve şirket içi sistemleri bütünleştirmek için Visual Studio Code Azure Logic Apps (Önizleme) uzantısıyla durum bilgisiz veya durum bilgisi içeren Otomasyon iş akışları oluşturun
+title: Visual Studio Code içinde Logic Apps önizlemesi iş akışları oluşturma
+description: Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code ' de Otomasyon ve tümleştirme senaryoları için iş akışları oluşturun ve çalıştırın.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
+ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 11/17/2020
-ms.openlocfilehash: 14809cb28870e88cfa584c4f02360d50beabf901
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.date: 12/07/2020
+ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981051"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923148"
 ---
-# <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code'da durum bilgisi olan veya olmayan iş akışları oluşturma
+# <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
 > [!IMPORTANT]
 > Bu özellik genel önizleme aşamasındadır, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Uygulamalar, veriler, bulut hizmetleri ve sistemler arasında tümleşen mantıksal uygulama iş akışları oluşturmak için, geliştirme ortamınızda [ *durum* *bilgisiz ve durum bilgisi olmayan* mantıksal uygulama iş akışlarını](#stateful-stateless) derlemek ve yerel olarak çalıştırmak üzere Visual Studio Code ve Azure Logic Apps (Önizleme) uzantısını kullanabilirsiniz.
+[Azure Logic Apps önizleme](logic-apps-overview-preview.md)sayesinde uygulamalar, veriler, bulut hizmetleri ve sistemler arasında, Azure Logic Apps (Önizleme) uzantısı kullanılarak Visual Studio Code [ *durum bilgisi* olan ve *olmayan* iş akışları](logic-apps-overview-preview.md#stateful-stateless) içeren mantıksal uygulamalar oluşturup çalıştırarak Otomasyon ve tümleştirme çözümleri oluşturabilirsiniz. Bu yeni mantıksal uygulama türünü kullanarak, yalnızca Azure, ancak Docker Kapsayıcıları değil çeşitli barındırma ortamlarında dağıtım ve çalıştırma için taşınabilirlik, daha iyi performans ve esneklik sağlayan, yeniden tasarlanan Azure Logic Apps Önizleme çalışma zamanı tarafından desteklenen birden çok iş akışı oluşturabilirsiniz. Yeni mantıksal uygulama türü hakkında daha fazla bilgi edinmek için bkz. [Azure Logic Apps önizlemesi Için genel bakış](logic-apps-overview-preview.md).
 
-![Visual Studio Code ve Logic App iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
+![Visual Studio Code, Logic App projesini ve iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-Genel Önizleme uzantısıyla oluşturduğunuz Logic Apps, yeni **mantıksal uygulama (Önizleme)** kaynak türünü kullanır ve yerel ortamınızda [Azure işlevleri](../azure-functions/functions-overview.md) çalışma zamanı tarafından desteklenir. Bu yeni kaynak türü birden çok iş akışı içerebilir ve birden çok işlev içerebilen **işlev uygulaması** kaynak türüne bazı yollarla benzerdir.
+Visual Studio Code, Azure Logic Apps (Önizleme) uzantısını kullanarak mantıksal uygulamanızın iş akışlarını geliştirme *ortamınızda oluşturup çalıştıran* bir proje oluşturarak başlayabilirsiniz. [Azure Portal yeni bir **mantıksal uygulama (Önizleme)** kaynağı oluşturarak](create-stateful-stateless-workflows-azure-portal.md)da başlatabileceğiniz gibi, her iki yaklaşım da mantıksal uygulamanızı aynı türde barındırma ortamlarında dağıtmanıza ve çalıştırmanıza olanak sağlar.
 
-Bu arada, Visual Studio Code ve Azure portal oluşturmak ve kullanmak için özgün **Logic Apps** kaynak türü hala vardır. Ancak, özgün kaynak türüne yönelik deneyimler yeni kaynak türünden ayrıdır. Şu anda, hem **Logic Apps** hem de **Logic App (Önizleme)** kaynak türleri Visual Studio Code ve Azure Portal aynı zamanda bulunabilir. Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilir ve bunlara erişebilirsiniz, ancak bunlar görünür ve kendi kategorileriyle ve bölümlerinde ayrı tutulur.
+Bu arada, özgün mantıksal uygulama türünü yine de oluşturabilirsiniz. Visual Studio Code ' deki geliştirme deneyimleri, orijinal ve yeni mantıksal uygulama türleri arasında farklılık gösterebilse de Azure aboneliğiniz her iki türü de içerebilir. Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilir ve bunlara erişebilirsiniz, ancak uygulamalar kendi kategorilerine ve bölümlerine göre düzenlenir.
 
-Bu makale, [Bu genel önizleme hakkında](#whats-new)üst düzey bir genel bakış sağlar, **mantıksal uygulama (Önizleme)** kaynak türü hakkında çeşitli yönleri açıklar ve Visual Studio Code kullanarak bu kaynağı nasıl oluşturacağınız aşağıda açıklanmıştır:
+Bu makalede, Azure Logic Apps (Önizleme) uzantısını kullanarak ve bu üst düzey görevleri gerçekleştirerek Visual Studio Code mantıksal uygulamanızı ve bir iş akışını nasıl oluşturacağınız gösterilmektedir:
 
-* [Durum bilgisiz ve durum bilgisi olmayan](#stateful-stateless) mantıksal uygulamalar birbirinden farklı.
+* Mantıksal uygulamanız ve iş akışınız için bir proje oluşturun.
 
-* [Kurulum gereksinimlerini](#prerequisites) karşılayın ve genel önizleme uzantısı için [Visual Studio Code ayarlayın](#set-up) .
+* Tetikleyici ve eylem ekleyin.
 
-* [Bir proje oluşturup bir iş akışı şablonu seçerek](#create-project)yeni **mantıksal uygulama (Önizleme)** iş akışları oluşturma.
+* Çalıştırma geçmişini yerel olarak çalıştırın, test edin, hata ayıklayın ve inceleyin.
 
-* Visual Studio Code ' de yeni mantıksal uygulamalarınızın yerel olarak çalıştırılması ve hata ayıklaması.
+* İsteğe bağlı olarak Application Insights etkinleştirmeyi içeren Azure 'a dağıtın.
 
-* Bu yeni mantıksal uygulamaları doğrudan Visual Studio Code 'dan [Azure 'a](#publish-azure) veya her yerde çalıştırabileceğiniz [bir Docker kapsayıcısına](#deploy-docker) yayınlama. Docker hakkında daha fazla bilgi için bkz. [Docker](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)nedir?
+* Visual Studio Code ve Azure portal dağıtılan mantıksal uygulamanızı yönetin.
 
-<a name="whats-new"></a>
+* Durum bilgisiz iş akışları için çalıştırma geçmişini etkinleştirin.
 
-## <a name="whats-in-this-public-preview"></a>Bu genel önizlemede neler var?
+* Dağıtımdan sonra Application Insights etkinleştirin veya açın.
 
-Azure Logic Apps (Önizleme) uzantısı, Visual Studio Code yerel geliştirme deneyiminize birçok geçerli ve ek Logic Apps özelliği getirir, örneğin:
-
-* Hizmet olarak yazılım (SaaS) ve hizmet olarak platform (PaaS) uygulamaları ve hizmetleri ve şirket içi sistemler için bağlayıcılar için, [390 + bağlayıcılarından](/connectors/connector-reference/connector-reference-logicapps-connectors) tümleştirme ve Otomasyon iş akışları için mantıksal uygulamalar oluşturun.
-
-  * Azure Service Bus, Azure Event Hubs ve SQL Server gibi bazı yönetilen bağlayıcılar, yerleşik yerel tetikleyicilere ve HTTP eylemi gibi eylemlere benzer şekilde çalışır.
-
-  * Azure Logic Apps hizmeti bu mantıksal uygulamaların bulut bağlantısı çalışma zamanı uç noktasına istek göndermek için kullanabileceği paylaşılan erişim Imzası (SAS) bağlantı dizeleri oluşturduğundan, her yerde çalışabilen Logic Apps oluşturun ve dağıtın. Logic Apps hizmeti, bu bağlantı dizelerini diğer uygulama ayarlarıyla kaydederek Azure 'a dağıtırken bu değerleri Azure Key Vault kolayca depolayabilirler.
-
-    > [!NOTE]
-    > Varsayılan olarak, **mantıksal uygulama (Önizleme)** kaynağında, çalışma zamanında bağlantıların kimliğini doğrulamak için [sistem tarafından atanan yönetilen kimlik](../logic-apps/create-managed-service-identity.md) otomatik olarak etkinleştirilir. Bu kimlik, bağlantı oluştururken kullandığınız kimlik doğrulama kimlik bilgilerinden veya bağlantı dizesinden farklıdır. Bu kimliği devre dışı bırakırsanız, bağlantılar çalışma zamanında çalışmaz.
-
-* Yalnızca bellekte çalışan ve eylemler arasında çalışma geçmişi ve verileri dış depolamada kalıcı hale getirilemediği için daha hızlı bir şekilde çalışacak durum bilgisiz Logic Apps oluşturun. İsteğe bağlı olarak, daha kolay hata ayıklama için çalıştırma geçmişini etkinleştirebilirsiniz. Daha fazla bilgi için bkz. [durum bilgisi içermeyen mantıksal uygulamalar](#stateful-stateless).
-
-* Visual Studio Code geliştirme ortamında mantıksal uygulamalarınızı yerel olarak çalıştırın ve hata ayıklayın.
-
-* Mantıksal uygulamalarınızı, [Azure App Service](../app-service/environment/intro.md) ve [Docker Kapsayıcıları](/dotnet/core/docker/introduction)gibi çeşitli barındırma ortamlarına doğrudan Visual Studio Code yayımlayın ve dağıtın.
+* Dilediğiniz yerde çalıştırabileceğiniz bir Docker kapsayıcısına dağıtın.
 
 > [!NOTE]
-> Bilinen güncel sorunlar hakkında daha fazla bilgi için, önizleme uzantısının [bilinen sorunlar GitHub sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
+> Bilinen güncel sorunlar hakkında daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
 
-<a name="stateful-stateless"></a>
-
-## <a name="stateful-versus-stateless-logic-apps"></a>Durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar
-
-* *Durum Bilgisi Olan*
-
-  Önceki olaylardaki verileri tutmanız, gözden geçirmeniz veya başvuru yapmanız gerektiğinde durum bilgisi içeren Logic Apps oluşturun. Bu Logic Apps, her bir eylem için giriş ve çıktıyı ve bunların iş akışı durumlarını dış depolamada tutar; bu da her çalıştırma tamamlandıktan sonra çalışma ayrıntılarını ve geçmişini gözden geçirmeyi sağlar. Durum bilgisi olan Logic Apps, kesintiler gerçekleştiğinde yüksek dayanıklılık sağlar. Hizmetler ve sistemler geri yüklendikten sonra, kesintiye uğramış mantıksal uygulama çalıştırmalarını kaydedilmiş durumdan yeniden oluşturabilir ve Logic Apps 'i tamamlamak için yeniden çalıştırabilirsiniz. Durum bilgisi olan iş akışları bir yıla kadar çalışmaya devam edebilir.
-
-* *Durum bilgisi olmayan*
-
-  Daha sonra gözden geçirmek üzere dış depolamada bulunan önceki olaylara ait verileri kaydetmeniz, gözden geçirmeniz veya başvuru yapmanız gerekmiyorsa durum bilgisiz Logic Apps oluşturun. Bu Logic Apps, bu bilgileri dış depolamaya aktarmak yerine her eylem için giriş ve çıktıyı ve bunların iş akışı durumlarını saklar. Sonuç olarak, durum bilgisiz Logic Apps genellikle 5 dakikadan daha kısa bir süre, daha hızlı yanıt süreleriyle daha hızlı performans, daha yüksek aktarım hızı ve çalışma maliyetleri azaldığından daha hızlı çalışır. Ancak, kesintiler meydana geliyorsa, kesintiye uğramayan çalıştırmalar otomatik olarak geri yüklenmez, bu sayede çağıranın kesintiye uğratılmaları el ile yeniden göndermelidir. Bu Logic Apps yalnızca zaman uyumlu çalışabilir ve daha kolay hata ayıklama için performans üzerinde bir etkisi olan [çalıştırma geçmişini etkinleştirebilirsiniz](#run-history).
-
-  Durum bilgisiz iş akışları Şu anda yalnızca Azure 'da dağıtılan ve tetikleyici olmayan [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için *eylemleri* desteklemektedir. İş akışınızı başlatmak için, Logic Apps çalışma zamanına göre yerel olarak çalışan [yerleşik isteği, Event Hubs veya Service Bus tetikleyiciyi](../connectors/apis-list.md#built-ins)seçin. Desteklenmeyen Tetikleyiciler, Eylemler ve bağlayıcılar hakkında daha fazla bilgi için bkz. [desteklenmeyen veya kullanılamayan yetenekler](#unsupported).
-
-İç içe geçmiş mantık uygulamalarının durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar arasında farklı davrandığı hakkında bilgi için bkz. [durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar](#nested-behavior)
-
-<a name="pricing-model"></a>
-
-## <a name="pricing-model"></a>Fiyatlandırma modeli
-
-Yeni **mantıksal uygulama (Önizleme)** kaynak türünü dağıttığınızda, bir barındırma planı, özellikle de fiyatlandırma modeli olarak kullanılacak [App Service planı veya Premium planını](../azure-functions/functions-scale.md) seçmeniz istenir. App Service planını seçerseniz, ayrıca bir [fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)da seçmeniz istenir. Genel Önizleme sırasında App Service Logic apps çalıştırmak, seçili planın en üstünde *ek* ücret vermez.
-
-Durum bilgisi olan Logic Apps, [dış depolama](../azure-functions/functions-scale.md#storage-account-requirements)kullanır, bu nedenle Azure Storage fiyatlandırma modeli Azure Logic Apps çalışma zamanının gerçekleştirdiği depolama işlemleri için geçerlidir. Örneğin, kuyruklar zamanlama için kullanılır, ancak tablolar ve Bloblar iş akışı durumlarını depolamak için kullanılır.
-
-Bu yeni kaynak türüne uygulanan fiyatlandırma modelleri hakkında daha fazla bilgi için şu konuları gözden geçirin:
-
-* [Azure İşlevleri’ni ölçeklendirme ve barındırma](../azure-functions/functions-scale.md)
-* [Azure App Service ölçeği büyütme](../app-service/manage-scale-up.md)
-* [Azure Işlevleri fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/functions/)
-* [App Service fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/app-service/windows/)
-* [Azure depolama fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/storage/)
-
-<a name="unsupported"></a>
-
-## <a name="unavailable-or-unsupported-capabilities"></a>Kullanılamayan veya desteklenmeyen yetenekler
-
-Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
-
-* Yeni **mantıksal uygulama (Önizleme)** kaynağının oluşturulması MacOS 'ta Şu anda kullanılamıyor.
-
-* Azure bölgelerinin hepsi henüz desteklenmiyor. Şu anda kullanılabilir bölgeler için [bölgeler listesini](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)kontrol edin.
-
-* İş akışınızı başlatmak için, Logic Apps çalışma zamanına göre yerel olarak çalışan [yerleşik istek, http, Event Hubs veya Service Bus tetikleyicisini](../connectors/apis-list.md)kullanın. Şu anda, [Kurumsal bağlayıcılar](../connectors/apis-list.md#enterprise-connectors), Şirket [içi veri ağ geçidi Tetikleyicileri](../connectors/apis-list.md#on-premises-connectors), Web kancası tabanlı tetikleyiciler, kayan pencere tetikleyicisi, [özel bağlayıcılar](../connectors/apis-list.md#custom-apis-and-connectors), tümleştirme hesapları, yapıtları ve [bağlayıcıları](../connectors/apis-list.md#integration-account-connectors) Bu önizlemede desteklenmez. "Azure işlevi çağrısı" özelliği kullanılamıyor, bu nedenle şimdilik Azure işlevi için istek URL 'sini çağırmak üzere HTTP *eylemini* kullanın.
-
-  Daha önce belirtilen Tetikleyiciler hariç, *durum bilgisi olan* Iş akışları Azure 'da dağıtılan ve Logic Apps çalışma zamanına göre yerel olarak çalışan yerleşik Tetikleyiciler ve eylemler ile birlikte [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için hem Tetikleyicileri hem de eylemleri kullanabilir. Ancak *durum bilgisiz* iş akışları Şu anda yalnızca yönetilen bağlayıcılar için eylemleri destekler, *tetiklerdir* . Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirebilseniz de tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
-
-* Yeni **mantıksal uygulama (Önizleme)** kaynak türünü yalnızca [Azure 'daki bir Premium veya App Service barındırma planına](#publish-azure) veya [tümleştirme hizmeti ortamları (sesleri)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)değil bir [Docker kapsayıcısına](#deploy-docker)dağıtabilirsiniz. **Tüketim** barındırma planları bu kaynak türünü dağıtmak için desteklenmez ve kullanılabilir değildir.
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="access-and-connectivity"></a>Erişim ve bağlantı
 
@@ -122,16 +59,34 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
   Outlook.com veya [Gmail](../connectors/connectors-google-data-security-privacy-policy.md)gibi [Azure Logic Apps tarafından desteklenen farklı bir e-posta Bağlayıcısı](/connectors/)kullanmayı tercih ediyorsanız, örneği yine de izleyebilirsiniz ve genel adımlar aynıdır, ancak Kullanıcı arabiriminiz ve seçenekleriniz bazı yollarla farklılık gösterebilir. Örneğin, Outlook.com bağlayıcısını kullanıyorsanız, oturum açmak için kişisel Microsoft hesabı kullanın.
 
+<a name="storage-requirements"></a>
+
 ### <a name="storage-requirements"></a>Depolama gereksinimleri
+
+#### <a name="windows-and-linux"></a>Windows ve Linux
 
 1. [Azure Storage öykünücüsü 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179)'yi indirip yükleyin.
 
 1. Öykünücüyü çalıştırmak için, ücretsiz [SQL Server 2019 Express sürümü](https://go.microsoft.com/fwlink/p/?linkid=866658)gibi BIR yerel SQL DB yüklemeniz gerekir. Daha fazla bilgi için bkz. [geliştirme ve test Için Azure depolama öykünücüsünü kullanma](../storage/common/storage-use-emulator.md).
 
    > [!IMPORTANT]
-   > Mantıksal uygulama iş akışınızı oluşturmak için mantıksal uygulama Tasarımcısı 'nı açmadan önce öykünücüyü başlattığınızdan emin olun. Aksi takdirde, ' a bir ileti alırsınız `Workflow design time could not be started` .
+   > İş akışınızı derlemek için tasarımcıyı açmadan önce öykünücüyü başlattığınızdan emin olun. Aksi takdirde, ' a bir ileti alırsınız `Workflow design time could not be started` .
    >
    > ![Çalışan Azure Storage öykünücüsü 'nü gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+
+#### <a name="macos"></a>macOS
+
+1. [Azure Portal](https://portal.azure.com)oturum açın ve [Azure işlevleri için bir önkoşul](../azure-functions/storage-considerations.md)olan [bir Azure depolama hesabı oluşturun](../storage/common/storage-account-create.md?tabs=azure-portal).
+
+1. [Depolama hesabının bağlantı dizesini bulun ve kopyalayın](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys), örneğin:
+
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
+
+   ![Depolama hesabı erişim anahtarları ve bağlantı dizesinin kopyalandığı Azure portal gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+
+1. Dizeyi daha sonra Visual Studio Code ' de mantıksal uygulamanızı oluşturmak için kullandığınız projedeki dosyalardaki **local.settings.js** ekleyebilmeniz için dizeyi güvenli bir yere kaydedin.
+
+Daha sonra mantıksal uygulamanızda bir iş akışı için tasarımcıyı açmaya çalıştığınızda, ' a bir ileti alırsınız `Workflow design time could not be started` . Bu ileti görüntülendikten sonra, depolama hesabının bağlantı dizesini projedeki dosyalardaki iki **local.settings.js** eklemeniz ve tasarımcıyı yeniden açmayı yeniden denemeniz gerekir.
 
 ### <a name="tools"></a>Araçlar
 
@@ -141,31 +96,19 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
   * [Visual Studio Code uzantısı Için C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), mantıksal uygulamanızı çalıştırmak için F5 işlevinin kullanılmasına olanak sağlar.
 
-  * [Azure Functions Core Tools](../azure-functions/functions-run-local.md), Microsoft ıNSTALLER (MSI) aracılığıyla sürüm [3.0.2931](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) veya [2.7.2936](https://github.com/Azure/azure-functions-core-tools/releases/tag/2.7.2936). Bu araçlar, Visual Studio Code ' de çalışan Azure Işlevleri çalışma zamanını destekleyen aynı çalışma zamanının bir sürümünü içerir.
+  * Microsoft yükleyicisi 'ni (MSI) kullanarak [3.0.2931 veya üzeri Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.2931) .
+
+    Bu araçlar, önizleme uzantısının Visual Studio Code içinde kullandığı Azure Işlevleri çalışma zamanı 'nı destekleyen aynı çalışma zamanının bir sürümünü içerir.
 
     > [!IMPORTANT]
     > Bu sürümlerden daha önceki bir yüklemeniz varsa, önce bu sürümü kaldırın ya da PATH ortam değişkeninin indirip yüklediğiniz sürümü işaret ettiğini doğrulayın.
-    >
-    > JavaScript kodunu çalıştırmak için [ **satır içi kod** eylemini](../logic-apps/logic-apps-add-run-inline-code.md) kullanmak istiyorsanız, eylem 2x sürümünü desteklemediğinden Azure işlevleri çalışma zamanı sürümü 3x ' nı kullanmanız gerekir. Ayrıca, bu eylem şu anda Linux işletim sistemlerinde desteklenmemektedir.
 
-  * [Visual Studio Code için Azure Logic Apps (Önizleme) uzantısı](https://go.microsoft.com/fwlink/p/?linkid=2143167). Bu genel önizleme uzantısı, durum bilgisiz ve durum bilgisi olmayan mantıksal uygulamalar oluşturmanıza ve bunları Visual Studio Code yerel olarak çalıştırmanıza olanak sağlar.
+  * [Visual Studio Code için Azure Logic Apps (Önizleme) uzantısı](https://go.microsoft.com/fwlink/p/?linkid=2143167). Bu uzantı, Visual Studio Code yerel olarak çalışan ve bu Logic Apps 'i doğrudan Azure 'a veya Docker kapsayıcılarına dağıtabileceğiniz, durum bilgisiz ve durum bilgisi olmayan iş akışlarını oluşturabileceğiniz Mantıksal uygulamalar oluşturmanıza olanak sağlar.
 
-    Şu anda, hem özgün **Azure Logic Apps** uzantısının hem de yeni **Azure Logic Apps (önizleme)** uzantısının Visual Studio Code aynı anda yüklü olmasını sağlayabilirsiniz. Visual Studio Code araç çubuğunda Azure simgesini seçerek Azure 'da dağıtılan tüm mantıksal uygulamaları görüntüleyebilirsiniz, ancak her kaynak türü kendi uzantı bölümlerinde, **Logic Apps** ve **Azure Logic Apps (Önizleme)** görünür.
+    Şu anda, hem özgün Azure Logic Apps uzantısının hem de genel önizleme uzantısının Visual Studio Code ' de yüklü olmasını sağlayabilirsiniz. Geliştirme deneyimleri, uzantılar arasında bazı yollarla farklılık gösterebilse de Azure aboneliğiniz, uzantılarla oluşturduğunuz her iki mantıksal uygulama türünü de içerebilir. Visual Studio Code, Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları gösterir, ancak onları uzantı adlarına, **Logic Apps** ve **Azure Logic Apps (Önizleme)** göre farklı bölümlere düzenler.
 
     > [!IMPORTANT]
-    > **Azure Logic Apps (özel Önizleme)** uzantısını kullanarak Logic Apps oluşturduysanız, bu Logic Apps genel önizleme uzantısıyla çalışmaz. Ancak, özel önizleme uzantısını kaldırarak, gerekli temizleme işlemini gerçekleştirerek ve genel önizleme uzantısını yükleyerek bu mantıksal uygulamaları geçirebilirsiniz. Daha sonra yeni projenizi Visual Studio Code oluşturup daha önce oluşturduğunuz mantıksal uygulamanın **Workflow. Definition** dosyasını yeni projenize kopyalayabilirsiniz.
-    >
-    > Bu nedenle, genel önizleme uzantısını yüklemeden önce, önceki sürümleri kaldırdığınızdan ve bu yapıtları sildikten emin olun:
-    >
-    > * Önceki uzantı paketlerini içeren ve burada yol üzerinde yer alan **Microsoft. Azure. Functions. Extensiondemeti. Iş akışları** klasörü:
-    >
-    >   * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
-    >
-    >   * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
-    >
-    > * Özel Önizleme uzantısı için [NuGet](/nuget/what-is-nuget) önbelleği olan ve bu yolda bulunan **Microsoft. Azure. iş akışları. WebJobs. Extension** klasörü:
-    >
-    >   `C:\Users\{userName}\.nuget\packages`
+    > Daha önceki özel önizleme uzantısıyla Logic Apps oluşturduysanız, bu mantıksal uygulamalar genel önizleme uzantısıyla çalışmaz. Ancak, özel önizleme uzantısını kaldırdıktan sonra, ilişkili dosyaları sildikten ve genel önizleme uzantısını yükledikten sonra bu mantıksal uygulamaları geçirebilirsiniz. Ardından Visual Studio Code yeni bir proje oluşturun ve daha önce oluşturduğunuz mantıksal uygulamanın **Workflow. Definition** dosyasını yeni projenize kopyalayın. Daha fazla bilgi için bkz. [özel önizleme uzantısından geçiş](#migrate-private-preview).
 
     **Azure Logic Apps (Önizleme)** uzantısını yüklemek için şu adımları izleyin:
 
@@ -173,13 +116,41 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
     1. Uzantılar arama kutusuna girin `azure logic apps preview` . Sonuçlar listesinden **Azure Logic Apps (Önizleme)** **>** **yüklemesi**' ni seçin.
 
-       Yükleme tamamlandıktan sonra, genel önizleme uzantısı **Uzantılar: yüklü** listesinde görünür.
+       Yükleme tamamlandıktan sonra, önizleme uzantısı **Uzantılar: yüklü** listesinde görünür.
 
        ![Visual Studio Code yüklü uzantılar listesini "Azure Logic Apps (Önizleme)" uzantısıyla altı çizili olarak gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
 
+* [YERLEŞIK http Web kancası tetikleyicisi](../connectors/connectors-native-webhook.md)gibi Web kancası tabanlı Tetikleyicileri ve eylemleri yerel olarak çalıştırmak için, Visual Studio Code, [geri çağırma URL 'si için iletmeyi ayarlamanız](#webhook-setup)gerekir.
+
 * Bu makalede oluşturduğunuz örnek mantıksal uygulamayı test etmek için, örnek Logic App 'teki ilk adım olan Istek tetikleyicisine çağrılar gönderebilen bir araca ihtiyacınız vardır. Böyle bir aracınız yoksa [Postman](https://www.postman.com/downloads/)'ı indirebilir, yükleyebilir ve kullanabilirsiniz.
 
-* Daha kolay tanılama günlüğü ve izleme özelliği için bir [Application Insights](../azure-monitor/app/app-insights-overview.md) kaynağı ekleyebilir ve kullanabilirsiniz. Mantıksal uygulama dağıtımı sırasında veya mantıksal Uygulamanızı dağıttıktan sonra Azure portal bu kaynağı oluşturabilirsiniz.
+* Mantıksal uygulamanızı oluşturup [Application Insights](../azure-monitor/app/app-insights-overview.md)kullanmayı destekleyen ayarlarla dağıtıyorsanız, isteğe bağlı olarak, mantıksal uygulamanız için tanılama günlüğü ve izlemeyi etkinleştirebilirsiniz. Mantıksal uygulamanızı Visual Studio Code veya dağıtımdan sonra dağıtırken bunu yapabilirsiniz. Bir Application Insights örneğiniz olması gerekir, ancak mantıksal uygulamanızı dağıtırken ya da dağıtımdan sonra bu kaynağı [önceden](../azure-monitor/app/create-workspace-resource.md)oluşturabilirsiniz.
+
+<a name="migrate-private-preview"></a>
+
+## <a name="migrate-from-private-preview-extension"></a>Özel Önizleme uzantısından geçir
+
+**Azure Logic Apps (özel Önizleme)** uzantısıyla oluşturduğunuz mantıksal uygulamalar, publicpreview uzantısıyla birlikte çalışmaz. Ancak, aşağıdaki adımları izleyerek bu mantıksal uygulamaları yeni bir Visual Studio Code projesine geçirebilirsiniz:
+
+1. Özel Önizleme uzantısını kaldırın.
+
+1. Bu konumlarda ilişkili Uzantı paketi ve NuGet paket klasörlerini silin:
+
+   * Önceki uzantı paketlerini içeren ve burada yol üzerinde yer alan **Microsoft. Azure. Functions. Extensiondemeti. Iş akışları** klasörü:
+
+     * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
+
+     * `C:\Users\{userName}.azure-functions-core-tools\Functions\ExtensionBundles`
+
+   * Özel Önizleme uzantısı için [NuGet](/nuget/what-is-nuget) önbelleği olan ve bu yolda bulunan **Microsoft. Azure. iş akışları. WebJobs. Extension** klasörü:
+
+     `C:\Users\{userName}\.nuget\packages`
+
+1. **Azure Logic Apps (Önizleme)** uzantısını yükler.
+
+1. Visual Studio Code yeni bir proje oluşturun.
+
+1. Daha önce oluşturduğunuz mantıksal uygulamanın **Workflow. Definition** dosyasını yeni projenize kopyalayın.
 
 <a name="set-up"></a>
 
@@ -187,7 +158,7 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
 1. Tüm uzantıların doğru yüklendiğinden emin olmak için Visual Studio Code yeniden yükleyin veya yeniden başlatın.
 
-1. Visual Studio Code, genel önizleme uzantınızın en son güncelleştirmeleri almasını sağlamak için uzantı güncelleştirmelerini otomatik olarak bulup yükleyip yüklemediğine göz atın.
+1. Visual Studio Code, genel önizleme uzantınızın en son güncelleştirmeleri almasını sağlamak için uzantı güncelleştirmelerini otomatik olarak bulmasını ve yüklemesini doğrulayın. Aksi takdirde, eski sürümü el ile kaldırmanız ve en son sürümü kurmanız gerekir.
 
    Bu ayarı denetlemek için şu adımları izleyin:
 
@@ -197,7 +168,7 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
    1. **Otomatik denetim güncelleştirmeleri** ve **Otomatik güncelleştirme** 'nin seçili olduğunu onaylayın.
 
-1. Visual Studio Code ' de bu **Azure Logic Apps (Önizleme)** uzantı ayarlarının ayarlandığını etkinleştirin veya denetleyin:
+1. Bu uzantı ayarlarının doğru seçimlere sahip olduğunu etkinleştirin veya onaylayın:
 
    * **Azure Logic Apps v2: Panel modu**
    * **Azure Logic Apps v2: proje çalışma zamanı**
@@ -206,10 +177,14 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
    1. **Kullanıcı** sekmesinde **>** **Uzantılar** **>** **Azure Logic Apps (Önizleme)** bölümüne gidin.
 
-   1. **Azure Logic Apps v2: Panel modu** altında, **panel modunu etkinleştir** ' in seçili olduğunu onaylayın. **Azure Logic Apps v2: proje çalışma zamanı** altında, daha önce yüklediğiniz [Azure Functions Core Tools sürümüne](#prerequisites) göre sürümü **~ 3** veya **~ 2** olarak ayarlayın.
+   1. Bu uzantı ayarlarını onaylayın:
 
-      > [!IMPORTANT]
-      > JavaScript kodunu çalıştırmak için [ **satır içi kod** eylemini](../logic-apps/logic-apps-add-run-inline-code.md) kullanmak istiyorsanız, eylem sürüm 2 ' yi desteklemediğinden, Project Runtime sürüm 3 ' ü kullandığınızdan emin olun. Ayrıca, bu eylem şu anda Linux işletim sistemlerinde desteklenmemektedir.
+      * **Azure Logic Apps v2: Panel modu** altında, **panel modunu etkinleştir** ' in seçili olduğunu onaylayın.
+
+      * **Azure Logic Apps v2: proje çalışma zamanı** altında, sürümün **~ 3** olarak ayarlandığını onaylayın.
+
+        > [!IMPORTANT]
+        > Şu anda macOS ve Linux için kullanılamayan [satır Içi kod işlemleri eylemlerini](../logic-apps/logic-apps-add-run-inline-code.md)kullanmak Için, **Proje çalışma zamanı** ayarı sürüm 3 gerektirir.
 
       !["Azure Logic Apps (Önizleme)" uzantısının Visual Studio Code ayarlarını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
 
@@ -217,15 +192,15 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
 ## <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
-1. Visual Studio Code araç çubuğunda Azure simgesini seçin.
+1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin.
 
-   ![Visual Studio Code araç çubuğunu ve seçili Azure simgesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
+   ![Etkinlik çubuğunu ve seçili Azure simgesini gösteren Visual Studio Code ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
 1. Azure bölmesinde Azure **: Logic Apps (Önizleme)** altında **Azure 'da oturum aç**' ı seçin. Visual Studio Code kimlik doğrulama sayfası göründüğünde Azure hesabınızla oturum açın.
 
    ![Azure bölmesi ve Azure oturum açma için Seçili bağlantıyı gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   Oturum açtıktan sonra Azure bölmesinde Azure hesabınızdaki abonelikler gösterilir. Genel olarak Logic Apps uzantıya sahipseniz, özgün uzantıyı kullanarak oluşturduğunuz özgün Logic Apps kaynaklarını, önizleme uzantısının **Logic Apps (Önizleme)** bölümünde değil, yayımlanan uzantının **Logic Apps** bölümünde bulabilirsiniz.
+   Oturum açtıktan sonra Azure bölmesinde Azure hesabınızdaki abonelikler gösterilir. Ayrıca, genel olarak yayımlanmış uzantıya sahipseniz, bu uzantıyla oluşturduğunuz mantıksal uygulamaları **Logic Apps (Önizleme)** bölümünde değil **Logic Apps** bölümünde bulabilirsiniz.
    
    Beklenen abonelikler görünmezse veya bölmenin yalnızca belirli abonelikleri göstermesini istiyorsanız aşağıdaki adımları izleyin:
 
@@ -241,7 +216,7 @@ Bu genel önizleme için, bu yetenekler kullanılamaz veya desteklenmez:
 
 ## <a name="create-a-local-project"></a>Yerel proje oluşturma
 
-Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uygulamanızı yönetebilmeniz ve dağıtabilmeniz için yerel bir proje oluşturun. Temel alınan proje, işlev uygulaması projesi olarak da bilinen bir Azure Işlevleri projesine benzerdir. Ancak, bu proje türleri birbirinden ayrıdır, bu nedenle mantıksal uygulama iş akışları ve işlevleri aynı projede olamaz.
+Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uygulamanızı yönetebilmeniz ve dağıtabilmeniz için yerel bir proje oluşturun. Temel alınan proje, işlev uygulaması projesi olarak da bilinen bir Azure Işlevleri projesine benzerdir. Ancak, bu proje türleri birbirinden ayrıdır, bu nedenle Logic Apps ve işlev uygulamaları aynı projede bulunamaz.
 
 1. Bilgisayarınızda, daha sonra Visual Studio Code oluşturacağınız proje için kullanmak üzere *boş* bir yerel klasör oluşturun.
 
@@ -261,27 +236,27 @@ Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uyg
 
    !["Durum bilgisi olan Iş akışı" seçiliyken iş akışı şablonları listesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
 
-1. Mantıksal uygulama iş akışınız için bir ad girin ve ENTER tuşuna basın. Bu örnek `example-workflow` , ad olarak kullanır.
+1. İş akışınız için bir ad girin ve ENTER tuşuna basın. Bu örnek `Fabrikam-Stateful-Workflow` , ad olarak kullanır.
 
-   !["Yeni bir durum bilgisi olan Iş akışı (3/4)" kutusu ve "örnek-iş akışı" iş akışı adı olarak gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
+   !["Yeni durum bilgisi olan Iş akışı (3/3)" kutusu ve "Fabrikam-Stateful-Workflow" öğesini iş akışı adı olarak gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-1. Görüntülenen sonraki listeden **geçerli pencerede aç**' ı seçin.
+   Visual Studio Code projenizin oluşturulmasını tamamlar ve iş akışınız için **workflow.js** dosyasını açar.
 
-   !["Geçerli pencerede aç" listesinin seçili olduğunu gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-location.png)
+1. Henüz açık değilse, Visual Studio araç çubuğundan Gezgin bölmesini açın.
 
-   Yeniden yükler Visual Studio Code, Gezgin bölmesini açar ve artık otomatik olarak oluşturulan proje dosyalarını içeren projenizi gösterir. Örneğin, projenin mantıksal uygulama iş akışınızın adını gösteren bir klasörü vardır. Bu klasörün içindeworkflow.jsdosyadaki **workflow.json** , mantıksal uygulama iş akışınızın temel alınan JSON tanımını içerir.
+   Gezgin bölmesinde, projenizi, artık otomatik olarak oluşturulan proje dosyalarını içeren bir şekilde gösterir. Örneğin, projenin iş akışınızın adını gösteren bir klasörü vardır. Bu klasörün içinde **workflow.js** dosya, iş akışınızın temel alınan JSON tanımını içerir.
 
-   ![Proje klasörü, iş akışı klasörü ve "workflow.json" dosyası ile gezgin penceresini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
+   ![Proje klasörü, iş akışı klasörü ve "workflow.json" dosyası ile Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
 
 <a name="open-workflow-definition-designer"></a>
 
-## <a name="open-the-workflow-definition-file-in-logic-app-designer"></a>Logic App Designer 'da iş akışı Tanım dosyasını açın
+## <a name="open-the-workflow-definition-file-in-the-designer"></a>Tasarımcıda iş akışı Tanım dosyasını açın
 
 1. Şu komutu çalıştırarak bilgisayarınızda yüklü olan sürümleri kontrol edin:
 
    `..\Users\{yourUserName}\dotnet --list-sdks`
 
-   .NET Core SDK 5. x varsa, bu sürüm, tasarımcıda mantıksal uygulamanın temel alınan iş akışı tanımını açmanızı önleyebilir. Bu sürümü kaldırmak yerine, projenizin kök konumunda, 3.1.201 ' den daha yeni olan .NET Core Runtime 3. x sürümüne başvuran bir **global.js** oluşturun, örneğin:
+   .NET Core SDK 5. x varsa, bu sürüm, tasarımcıda mantıksal uygulamanın temel alınan iş akışı tanımını açmanızı önleyebilir. Bu sürümü kaldırmak yerine, projenizin kök düzeyinde, 3.1.201 ' den daha yeni olan .NET Core Runtime 3. x sürümüne başvuran bir **global.js** oluşturun, örneğin:
 
    ```json
    {
@@ -292,39 +267,49 @@ Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uyg
    }
    ```
 
-   Bu **global.js** dosyayı Visual Studio Code içindeki kök konumdaki projenize açıkça eklediğinizden emin olun. Aksi halde tasarımcı açılmaz.
+   Dosyadaki **global.js** , Visual Studio Code içindeki projenizin kök düzeyine açıkça eklediğinizden emin olun. Aksi halde tasarımcı açılmaz.
 
-1. Visual Studio Code Windows veya Linux üzerinde çalışıyorsa Azure Storage öykünücüsü ' nin çalıştığından emin olun. Daha fazla bilgi için [önkoşulları](#prerequisites)gözden geçirin.
+1. Windows veya Linux üzerinde Visual Studio Code çalıştırıyorsanız Azure Storage öykünücüsü ' nin çalıştığından emin olun. Daha fazla bilgi için [önkoşulları](#prerequisites)gözden geçirin. MacOS üzerinde Visual Studio Code çalıştırıyorsanız, bir sonraki adımla devam edin.
 
 1. İş akışınız için proje klasörünü genişletin. Dosyanın kısayol menüsünde **workflow.js** açın ve **tasarımcıda aç**' ı seçin.
 
    !["Tasarımcıda aç" seçiliyken dosyada workflow.jsiçin Gezgin bölmesini ve kısayol penceresini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
 
-   ' In hata iletisini alırsanız `Workflow design time could not be started` , Azure Storage öykünücüsü ' nin çalıştığından emin olun. Aksi takdirde, diğer sorun giderme önerilerini deneyin:
+   Hata iletisini alırsanız, `Workflow design time could not be started` aşağıdaki koşulları kontrol edin:
 
-   Visual Studio Code, önizleme uzantısının çıktısını denetleyin.
+   * **Windows veya Linux**: Azure Storage öykünücüsü ' nin çalıştığından emin olun. Aksi takdirde bkz. sorun [giderme sorunları ve hataları](#troubleshooting).
 
-   1. **Görünüm** menüsünde **Çıkış**' ı seçin.
+   * **MacOS**: aşağıdaki çözümü deneyin ve başarısız olursa bkz. sorun [giderme sorunları ve hataları](#troubleshooting).
 
-   1. **Çıktı** başlığı çubuğundaki listeden, önizleme uzantısı için çıktıyı görüntüleyebilmeniz için **Azure Logic Apps** ' ı seçin, örneğin:
+     1. Projenizde, proje kök klasöründe ve **iş akışı-tasarımsaati** klasöründe bulabileceğiniz dosya **local.settings.js** açın.
 
-      !["Azure Logic Apps" seçiliyken Visual Studio Code çıkış penceresini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+        ![Gezgin bölmesini ve projenizdeki ' local.settings.js' dosyalarını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
 
-   1. Çıktıyı gözden geçirin ve bu hata iletisinin görüntülenip görüntülenmeyeceğini denetleyin:
+     1. Her dosyada, `AzureWebJobsStorage` özelliği bulun, örneğin:
 
-      ```text
-      A host error has occurred during startup operation '{operationID}'.
-      System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
-      ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
-      DurableTask.AzureStorage.dll' already exists.
-      Value cannot be null. (Parameter 'provider')
-      Application is shutting down...
-      Initialization cancellation requested by runtime.
-      Stopping host...
-      Host shutdown completed.
-      ```
+        ```json
+        {
+           "IsEncrypted": false,
+           "Values": {
+              "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+              "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+        }
+        ```
 
-      Daha önce tasarımcıyı açmaya çalıştıysanız ve ardından projeyi sonlandırdıysanız veya sildiyseniz bu hata oluşabilir. Bu hatayı çözmek için, bu konumdaki **extensiondemeti** klasörünü silin **. ..\Users \\ {UserName} \Appdata\local\temp\functions\extensiondemeti** ve tasarımcıda **workflow.js** dosyayı açmayı yeniden deneyin.
+      1. `AzureWebJobsStorage`Özellik değerini depolama hesabınızdan daha önce kaydettiğiniz bağlantı dizesiyle değiştirin, örneğin:
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet"
+            }
+         }
+         ```
+
+      1. Değişikliklerinizi kaydedin ve tasarımcıdaki dosyadaki **workflow.js** yeniden açmayı deneyin.
 
 1. Azure **'da bağlayıcıları etkinleştir** listesinde Azure 'da bulunan ve yalnızca Azure hizmetleri için bağlayıcılar değil, Azure 'da bulunan ve dağıtılan tüm yönetilen bağlayıcılar için geçerli olan **Azure 'da bağlayıcılar kullanın**' ı seçin.
 
@@ -333,29 +318,30 @@ Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uyg
    > [!NOTE]
    > Durum bilgisiz iş akışları Şu anda yalnızca Azure 'da dağıtılan ve tetikleyici olmayan [yönetilen bağlayıcılar](../connectors/apis-list.md#managed-api-connectors)için *eylemleri* desteklemektedir. Azure 'da bağlayıcıları durum bilgisiz iş akışınız için etkinleştirme seçeneğine sahip olsanız da tasarımcı, seçtiğiniz herhangi bir yönetilen bağlayıcı tetikleyicisi göstermez.
 
+1. **Abonelik Seç** listesinde, mantıksal uygulama projeniz Için kullanılacak Azure aboneliğini seçin.
+
+   !["Abonelik Seç" kutusu ve aboneliğiniz seçili Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-subscription.png)
+
 1. Kaynak grupları listesinden **Yeni kaynak grubu oluştur**' u seçin.
 
-   ![Kaynak grupları listesi ve "yeni kaynak grubu oluştur" seçiliyken Gezgin bölmesini gösteren ekran görüntüsü](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
+   ![Kaynak grupları listesi ve "yeni kaynak grubu oluştur" seçiliyken Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
 
-1. Kaynak grubu için bir ad girin ve ENTER tuşuna basın. Bu örnekte, kullanılır `example-logic-app-preview-rg` .
+1. Kaynak grubu için bir ad girin ve ENTER tuşuna basın. Bu örnekte `Fabrikam-Workflows-RG` kullanılmıştır.
 
    ![Gezgin bölmesi ve kaynak grubu adı kutusunu gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
 
-1. Konumlar listesinden, kaynak grubunuzu ve kaynaklarınızı oluşturmak için kullanmak üzere [desteklenen bir Azure bölgesi](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions) bulun ve seçin. Bu örnek **Orta Batı ABD** kullanır.
-
-   > [!IMPORTANT]
-   > Tüm bölgeler Şu anda desteklenmemektedir, ancak daha fazla bölge ekleme güncelleştirmeleri devam etmez. Desteklenmeyen bir bölgenin seçilmesi, bağlantı oluşturma gibi sorunlara yol açabilir. Şu anda desteklenen bölgeler için Önizleme uzantısının [bilinen sorunlar GitHub sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)gözden geçirin.
+1. Konumlar listesinden, kaynak grubunuz ve kaynaklarınızı oluştururken kullanılacak Azure bölgesini bulun ve seçin. Bu örnek **Orta Batı ABD** kullanır.
 
    ![Konum listesi ve "Orta Batı ABD" seçili Gezgin bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
 
-   Bu adımı gerçekleştirdikten sonra, Visual Studio Code mantıksal uygulama Tasarımcısı ' nı açar.
+   Bu adımı gerçekleştirdikten sonra Visual Studio Code iş akışı tasarımcısını açar.
 
    > [!NOTE]
    > Visual Studio Code iş akışı tasarım zamanı API 'sini başlattığında, başlatmanın birkaç saniye sürebileceğini belirten bir ileti görüntülenir. Bu iletiyi yoksayabilir veya Tamam ' **ı** seçebilirsiniz.
 
-   Mantıksal uygulama Tasarımcısı görüntülendikten sonra, tasarımcı üzerinde **bir Işlem seçme** istemi görüntülenir ve varsayılan olarak seçilidir ve **Eylem Ekle** bölmesini gösterir.
+   Tasarımcı görüntülendikten sonra, tasarımcı üzerinde **bir Işlem seçme** istemi görüntülenir ve varsayılan olarak seçilidir ve **Eylem Ekle** bölmesini gösterir.
 
-   ![Mantıksal uygulama Tasarımcısı 'Nı gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
+   ![İş akışı tasarımcısını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
 
 1. Sonra, iş akışınıza [bir tetikleyici ve eylem ekleyin](#add-trigger-actions) .
 
@@ -363,9 +349,9 @@ Mantıksal uygulamanızı oluşturmadan önce, Visual Studio Code mantıksal uyg
 
 ## <a name="add-a-trigger-and-actions"></a>Tetikleyici ve eylem ekleme
 
-Mantıksal uygulama Tasarımcısı 'nı dosyanın kısayol menüsündeki **workflow.js** açtıktan sonra, tasarımcı üzerinde **bir işlem seçme** istemi görüntülenir ve varsayılan olarak seçilidir. Artık, bir tetikleyici ve eylemler ekleyerek iş akışınızı oluşturmaya başlayabilirsiniz.
+Tasarımcıyı açtıktan sonra, tasarımcı üzerinde **bir Işlem seçme** istemi görüntülenir ve varsayılan olarak seçilidir. Artık, bir tetikleyici ve eylemler ekleyerek iş akışınızı oluşturmaya başlayabilirsiniz.
 
-Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
+Bu örnekteki iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
 * Gelen çağrıları veya istekleri alan ve diğer hizmetlerin veya mantıksal uygulamaların çağırabileceği bir uç nokta oluşturan **BIR http isteği alındığında** yerleşik [istek tetikleyicisi](../connectors/connectors-native-reqres.md).
 
@@ -379,43 +365,32 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
 1. **Bir işlem araması seçin** kutusunda `when a http request` , gırın ve **bir http Isteği alındığında** adlandırılan yerleşik istek tetikleyicisini seçin.
 
-   ![Logic App Designer ve * * "bir HTTP isteği alındığında" tetikleyicisi seçiliyken "bir tetikleyici Ekle" bölmesinin gösterildiği ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
+   ![İş akışı tasarımcısını gösteren ekran görüntüsü ve * * "HTTP isteği alındığında bir tetikleyici Ekle" tetikleyicisi seçili.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
 
    Tetikleyici tasarımcıda göründüğünde, tetikleyicinin özellikler, ayarlar ve diğer eylemleri göstermek için tetikleyicinin Ayrıntılar bölmesi açılır.
 
-   ![Mantıksal uygulama tasarımcısını "HTTP isteği alındığında" tetikleyicisi seçiliyken ve tetikleme ayrıntıları bölmesini açık olarak gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
+   !["HTTP isteği alındığında" tetikleyicisi seçiliyken ve tetikleyici ayrıntıları bölmesini açık olan iş akışı tasarımcısını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
 
    > [!TIP]
    > Ayrıntılar bölmesi görünmezse, tetikleyicinin tasarımcıda seçili olduğundan emin olur.
 
-1. Tasarımcıda bir öğeyi silmeniz gerekiyorsa, şu adımları izleyin:
-
-   1. Tasarımcıda öğenin Ayrıntılar bölmesini sağ tarafa açan öğeyi seçin.
-
-   1. Visual Studio Code penceresini tetikleyici veya eylem adı ' nın yanında, sağ üst köşede üç nokta (**...**) düğmesi görünecek şekilde genişletin. 
-
-   1. Üç nokta (**...**) menüsünü açın ve **Sil**' i seçin. Silmeyi onaylamak için **Tamam**' ı seçin.
-
-      ![Açık ayrıntı bölmesi ve seçili üç nokta düğmesi ve "Sil" seçeneği ile tasarımcıda seçili öğeyi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
+1. Tasarımcıdan bir öğe silmeniz gerekiyorsa, [öğeleri tasarımcıdan silmek için aşağıdaki adımları izleyin](#delete-from-designer).
 
 ### <a name="add-the-office-365-outlook-action"></a>Office 365 Outlook eylemini ekleme
 
 1. Tasarımcıda, eklediğiniz tetikleyicinin altında **yeni adım**' ı seçin.
 
-   **Bir Işlem seçme** istemi tasarımcıda görünür ve bir sonraki eylemi seçebilmeniz Için **Eylem Ekle bölmesi** yeniden açılır.
+   **Bir Işlem seçme** istemi tasarımcıda görünür ve bir sonraki eylemi seçebilmeniz Için **Eylem Ekle** bölmesi yeniden açılır.
 
 1. **Eylem Ekle** bölmesinde, **bir işlem seçin** arama kutusunun **altında Azure ' u seçerek Azure** 'da dağıtılan bir yönetilen bağlayıcı için bir eylem bulabilir ve seçebilmeniz gerekir.
 
    Bu örnek, Office 365 Outlook eylemini seçer ve kullanır, **e-posta gönder (v2)**.
 
-   ![Logic App Designer 'ı ve * * Office 365 Outlook "e-posta gönder" eylemini içeren bir eylem Ekle * * bölmesi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
+   ![İş akışı tasarımcısını gösteren ekran görüntüsü ve * * Office 365 Outlook "e-posta gönder" eylemi seçiliyken * * bir eylem Ekle * * bölmesi.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
 
 1. Eylem ayrıntıları bölmesinde, e-posta hesabınıza bir bağlantı oluşturabilmek için **oturum aç** ' ı seçin.
 
-   ![Logic App Designer ve * * "oturum aç" seçiliyken bir e-posta gönder (v2) * * bölmesi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
-
-   > [!NOTE]
-   > Hata alırsanız, `Failed to create connection...` mantıksal uygulamanız için şu anda desteklenmeyen bir bölge seçmiş olabilirsiniz. Daha fazla bölge eklemek için güncelleştirmeler. Bu sırada, desteklenen bölgeler için Önizleme uzantısının [bilinen sorunlar GitHub sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md#available-regions)gözden geçirin.
+   !["Oturum aç" seçiliyken, iş akışı tasarımcısını ve * * e-posta gönder (v2) * * bölmesini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
 
 1. Visual Studio Code, e-posta hesabınıza erişmek için onay isteminde bulunduğunda **Aç**' ı seçin.
 
@@ -429,44 +404,144 @@ Bu örnekteki Logic App iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
    > [!NOTE]
    > İstekleri tamamlamadan önce çok fazla zaman geçerse, kimlik doğrulama işlemi zaman aşımına uğrar ve başarısız olur. Bu durumda, tasarımcıya geri dönüp bağlantıyı oluşturmak için oturum açmayı yeniden deneyin.
 
-1. Azure Logic Apps Preview uzantısı, e-posta hesabınıza erişmek için onay sorar, **Aç**' ı seçin. Erişime izin vermek için sonraki istemi izleyin.
+1. Azure Logic Apps (Önizleme) uzantısı, e-posta hesabınıza erişmek için onay girmenizi isterse, **Aç**' ı seçin. Erişime izin vermek için sonraki istemi izleyin.
 
    ![Erişime izin vermek için Önizleme uzantısı isteminin gösterildiği ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
 
    > [!TIP]
    > Gelecekteki istemlerin oluşmasını engellemek için, **Bu uzantı için bir daha sorma** seçeneğini belirleyin.
 
-   Visual Studio Code bağlantınız oluşturulduktan sonra bazı bağlayıcılar `The connection will be valid for {n} days only.` Bu zaman sınırının yalnızca mantıksal uygulamanızı Visual Studio Code yazarken yalnızca süreye uygulanacağını belirten iletiyi gösterir. Dağıtımdan sonra, mantıksal uygulamanız otomatik olarak etkinleştirilmiş [sistem tarafından atanan yönetilen kimliği](../logic-apps/create-managed-service-identity.md)kullanarak çalışma zamanında kimlik doğrulayabildiğinden, bu sınır artık geçerli olmaz. Bu yönetilen kimlik, bağlantı oluştururken kullandığınız kimlik doğrulama kimlik bilgilerinden veya bağlantı dizesinden farklıdır. Bu sistem tarafından atanan yönetilen kimliği devre dışı bırakırsanız, bağlantılar çalışma zamanında çalışmaz.
+   Visual Studio Code bağlantınız oluşturulduktan sonra bazı bağlayıcılar bu iletiyi gösterir `The connection will be valid for {n} days only` . Bu zaman sınırı, Visual Studio Code ' de mantıksal uygulamanızı yazarken yalnızca süre için geçerlidir. Dağıtımdan sonra, mantıksal uygulamanız otomatik olarak etkinleştirilmiş [sistem tarafından atanan yönetilen kimliği](../logic-apps/create-managed-service-identity.md)kullanarak çalışma zamanında kimlik doğrulayabildiğinden, bu sınır artık geçerli olmaz. Bu yönetilen kimlik, bağlantı oluştururken kullandığınız kimlik doğrulama kimlik bilgilerinden veya bağlantı dizesinden farklıdır. Bu sistem tarafından atanan yönetilen kimliği devre dışı bırakırsanız, bağlantılar çalışma zamanında çalışmaz.
 
 1. Tasarımcıda **e-posta gönder** eylemi seçili görünmüyorsa, bu eylemi seçin.
 
 1. Eylemin Ayrıntılar bölmesindeki **Parametreler** sekmesinde, eylem için gerekli bilgileri sağlayın, örneğin:
 
-   ![Logic App Designer 'ı Office 365 Outlook "e-posta gönderme" eylemi için ayrıntılarıyla gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
+   ![İş akışı Tasarımcısı 'nı Office 365 Outlook "e-posta gönder" eylemi hakkında ayrıntılarla gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
-   | **Konu** | Yes | `An email from your example workflow` | E-posta konusu |
-   | **Gövde** | Yes | `Hello from your example workflow!` | E-posta gövdesi içeriği |
+   | **Hedef** | Evet | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
+   | **Konu** | Evet | `An email from your example workflow` | E-posta konusu |
+   | **Gövde** | Evet | `Hello from your example workflow!` | E-posta gövdesi içeriği |
    ||||
 
    > [!NOTE]
-   > Ayrıntılar bölmesinde **Ayarlar**, **sonra Çalıştır** veya **statik sonuç** sekmesinde herhangi bir değişiklik yapmak istiyorsanız, sekmeleri değiştirmeden veya odağı tasarımcıya değiştirmeden önce bu değişiklikleri kaydetmek için **bitti** ' yi seçtiğinizden emin olun. Aksi takdirde, Visual Studio Code değişikliklerinizi tutamayacaktır. Daha fazla bilgi için, önizleme uzantısının [bilinen sorunlar GitHub sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
+   > Ayrıntılar bölmesinde **Ayarlar**, **statik sonuç** veya **sonra Çalıştır** sekmesinden herhangi bir değişiklik yapmak istiyorsanız, sekmelere geçiş yapmadan veya odağı tasarımcıya değiştirmeden önce bu değişiklikleri kaydetmek için **bitti** ' yi seçtiğinizden emin olun. Aksi takdirde, Visual Studio Code değişikliklerinizi tutamayacaktır. Daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
 
 1. Tasarımcıda **Kaydet**' i seçin.
 
-Sonra, Visual Studio Code iş akışınızı yerel olarak çalıştırın ve hata ayıklayın.
+> [!IMPORTANT]
+> [YERLEŞIK http Web kancası tetikleyicisi veya eylemi](../connectors/connectors-native-webhook.md)gibi Web kancası tabanlı tetikleyici veya eylemler kullanan bir iş akışını yerel olarak çalıştırmak için, [Web kancasının geri arama URL 'si için iletme ayarlayarak](#webhook-setup)bu yeteneği etkinleştirmeniz gerekir.
 
-<a name="debug-test-locally"></a>
+<a name="webhook-setup"></a>
 
-## <a name="run-and-debug-locally"></a>Yerel olarak çalıştır ve hata ayıkla
+## <a name="enable-locally-running-webhooks"></a>Yerel olarak çalışan Web kancalarını etkinleştir
+
+Azure 'da çalışan bir mantıksal uygulama ile **http Web kancası** gibi bir Web kancası tabanlı tetikleyici veya eylem kullandığınızda Logic Apps çalışma zamanı, bu uç nokta ile bir geri çağırma URL 'si oluşturup kaydederek hizmet uç noktasına abone olur. Tetikleyici veya eylem, hizmet uç noktasının URL 'YI aramasını bekler. Ancak, Visual Studio Code çalışırken, oluşturulan geri çağırma URL 'SI ile başlar `http://localhost:7071/...` . Bu URL, hizmet uç noktasının bu URL 'YI çağıramaması için özel olan localhost sunucunuz içindir.
+
+Web kancası tabanlı Tetikleyicileri ve eylemleri Visual Studio Code yerel olarak çalıştırmak için, localhost sunucunuzu kullanıma sunan ve çağrıları hizmet uç noktasından Web kancası geri çağırma URL 'sine güvenli bir şekilde ileten genel bir URL ayarlamanız gerekir. Localhost bağlantı noktasına bir HTTP tüneli açan ve kendi aracınızı kullanabileceğiniz [**ngrok**](https://ngrok.com/)gibi bir iletme hizmeti ve aracı kullanabilirsiniz.
+
+#### <a name="set-up-call-forwarding-using-ngrok"></a>**Ngrok** kullanarak çağrı iletmeyi ayarlama
+
+1. [Hesabınız yoksa bir **ngrok** hesabına kaydolun](https://dashboard.ngrok.com/signup) . Aksi takdirde [hesabınızda oturum açın](https://dashboard.ngrok.com/login).
+
+1. Kişisel kimlik doğrulama belirtecinizi alın ve bu, **ngrok** istemcinizin hesabınıza erişim ve kimlik doğrulaması için gereken kimlik doğrulamasını gerektirir.
+
+   1. [Kimlik doğrulama belirtecinizi](https://dashboard.ngrok.com/auth/your-authtoken)bulmak için, hesap panosu menüsünde **kimlik doğrulama**' yı genişletin ve **authToken**' ı seçin.
+
+   1. **AuthToken** kutudan, belirteci güvenli bir konuma kopyalayın.
+
+1. [ **Ngrok** indirme sayfasından](https://ngrok.com/download) veya [Hesap panonuzdan](https://dashboard.ngrok.com/get-started/setup)istediğiniz **ngrok** sürümünü indirin ve. zip dosyasını ayıklayın. Daha fazla bilgi için bkz. [1. Adım: sıkıştırmayı açmak için](https://ngrok.com/download).
+
+1. Bilgisayarınızda komut istemi aracınızı açın. **ngrok.exe** dosyanın bulunduğu konuma gidin.
+
+1. Aşağıdaki komutu çalıştırarak **ngrok** istemcisini **ngrok** hesabınıza bağlayın. Daha fazla bilgi için bkz. [2. Adım: hesabınızı bağlama](https://ngrok.com/download).
+
+   `ngrok authtoken <your_auth_token>`
+
+1. Aşağıdaki komutu çalıştırarak localhost bağlantı noktası 7071 için HTTP tüneli açın. Daha fazla bilgi için bkz. [3. Adım: Yangın](https://ngrok.com/download).
+
+   `ngrok http 7071`
+
+1. Çıktıdan aşağıdaki satırı bulun:
+
+   `http://<domain>.ngrok.io -> http://localhost:7071`
+
+1. Şu biçimdeki URL 'YI kopyalayın ve kaydedin: `http://<domain>.ngrok.io`
+
+#### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>Uygulama ayarlarınızda iletme URL 'sini ayarlama
+
+1. Visual Studio Code, projenizin kök düzeyinde **local.settings.jsdosya üzerinde** açın.
+
+1. `Values`Nesnesinde adlı bir özellik ekleyin `Workflows.WebhookRedirectHostUri` ve değeri, daha önce oluşturduğunuz iletme URL 'sine ayarlayın, örneğin:
+
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "FUNCTIONS_V2_COMPATIBILITY_MODE": "true",
+         "Workflows.WebhookRedirectHostUri": "http://xxxXXXXxxxXXX.ngrok.io",
+         <...>
+      }
+   }
+   ```
+
+Bir yerel hata ayıklama oturumu başlattığınızda veya iş akışını hata ayıklamadan çalıştırdığınızda, Logic Apps çalışma zamanı iş akışını hizmet uç noktasıyla kaydeder ve Web kancası işlemlerine bildirimde bulunmak için bu uç noktaya abone olur. İş akışınız bir sonraki sefer çalıştığında, abonelik kaydı yerel depolamada zaten mevcut olduğundan çalışma zamanı kayıt veya yeniden iade edilmeyecek.
+
+Yerel olarak çalışan Web kancası tabanlı tetikleyiciler veya eylemler kullanan bir iş akışı çalıştırması için hata ayıklama oturumunu durdurduğunuzda, mevcut abonelik kayıtları silinmez. Kaydı silmek için abonelik kayıtlarını el ile kaldırmanız veya silmeniz gerekir.
+
+> [!NOTE]
+> İş akışınız çalışmaya başladıktan sonra, Terminal penceresinde şu örnekte olduğu gibi hatalar gösterilebilir:
+>
+> `message='Http request failed with unhandled exception of type 'InvalidOperationException' and message: 'System.InvalidOperationException: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.`
+>
+> Bu durumda, projenizdeki **local.settings.js** dosyanın kök düzeyinde açın ve özelliğinin şu şekilde ayarlandığından emin olun `true` :
+>
+> `"FUNCTIONS_V2_COMPATIBILITY_MODE": "true"`
+
+<a name="manage-breakpoints"></a>
+
+## <a name="manage-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktalarını yönetme
+
+Mantıksal uygulama iş akışınızı bir hata ayıklama oturumu başlatarak çalıştırmadan ve test etmeden önce, her bir iş akışı için dosyadaki **workflow.js** [kesme noktaları](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) ayarlayabilirsiniz. Başka kurulum gerekmez. 
+
+Şu anda, kesme noktaları yalnızca eylemler için desteklenir, Tetikleyiciler için desteklenmez. Her eylem tanımında bu kesme noktası konumları vardır:
+
+* Eylemin adını gösteren satırdaki başlangıç kesme noktasını ayarlayın. Hata ayıklama oturumu sırasında bu kesme noktası isabet edildiğinde, eylemin değerlendirilmeden önce giriş girdilerini gözden geçirebilirsiniz.
+
+* Eylemin kapanış küme ayracı (**}**) gösteren satırdaki bitiş kesme noktasını ayarlayın. Hata ayıklama oturumu sırasında bu kesme noktası isabet edildiğinde, eylem tamamlanmadan önce eylemin sonuçlarını gözden geçirebilirsiniz.
+
+Kesme noktası eklemek için aşağıdaki adımları izleyin:
+
+1. Hata ayıklamak istediğiniz iş akışı için dosyada **workflow.js** açın.
+
+1. Kesme noktasını ayarlamak istediğiniz satırda, sol sütunda bu sütunun içinde öğesini seçin. Kesme noktasını kaldırmak için bu kesme noktasını seçin.
+
+   Hata ayıklama oturumunuzu başlattığınızda, kod penceresinin sol tarafında çalıştırma görünümü görünür, ancak hata ayıklama araç çubuğu üst kısımdaki yakınında görünür.
+
+   > [!NOTE]
+   > Çalıştırma görünümü otomatik olarak görünmezse, CTRL + SHIFT + D tuşlarına basın.
+
+1. Kesme noktası isabet edildiğinde kullanılabilir bilgileri gözden geçirmek için, Çalıştır görünümünde, **değişkenler** bölmesini inceleyin.
+
+1. İş akışı yürütmeye devam etmek için, hata ayıklama araç çubuğunda **devam** ' ı (Play Button) seçin. 
+
+İş akışı çalıştırması sırasında istediğiniz zaman kesme noktaları ekleyebilir ve kaldırabilirsiniz. Ancak, çalıştırma başladıktan sonra dosya **workflow.js** güncelleştirirseniz, kesme noktaları otomatik olarak güncelleştirmez. Kesme noktalarını güncelleştirmek için mantıksal uygulamayı yeniden başlatın.
+
+Genel bilgi için bkz. [kesme noktaları-Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging#_breakpoints).
+
+<a name="run-test-debug-locally"></a>
+
+## <a name="run-test-and-debug-locally"></a>Yerel olarak çalıştırın, test edin ve hata ayıklayın
 
 Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir hata ayıklama oturumu başlatın ve Istek tetikleyicisi tarafından oluşturulan uç noktanın URL 'sini bulun. Daha sonra bu uç noktaya bir istek gönderebilmeniz için bu URL 'ye ihtiyacınız vardır.
 
-1. Durum bilgisiz mantıksal uygulama iş akışında daha kolay hata ayıklamanıza yardımcı olmak için [Bu iş akışı için çalıştırma geçmişini etkinleştirebilirsiniz](#run-history).
+1. Durum bilgisi olmayan bir iş akışında daha kolay hata ayıklamak için [Bu iş akışı için çalıştırma geçmişini etkinleştirebilirsiniz](#enable-run-history-stateless).
 
-1. Visual Studio Code araç çubuğunda, **Çalıştır** menüsünü açın ve **hata ayıklamayı Başlat** (F5) seçeneğini belirleyin.
+1. Visual Studio Code etkinlik çubuğunda, **Çalıştır** menüsünü açın ve **hata ayıklamayı Başlat** (F5) seçeneğini belirleyin.
 
    Hata ayıklama oturumunu gözden geçirebilmeniz için **Terminal** penceresi açılır.
 
@@ -523,12 +598,12 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    ![Çalışma durumu ve geçmişi olan iş akışının genel bakış sayfasını gösteren ekran görüntüsü](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Çalışma durumu | Description |
+   | Çalışma durumu | Açıklama |
    |------------|-------------|
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
    | **Başarısız** | Çalıştırmada en az bir eylem başarısız oldu. Hata işlemek için iş akışında sonraki hiçbir eylem ayarlanmadı. |
-   | **Çalışıyor** | Çalıştırma tetiklendi ve devam ediyor, ancak bu durum [eylem sınırları](logic-apps-limits-and-config.md) veya [geçerli fiyatlandırma planı](https://azure.microsoft.com/pricing/details/logic-apps/)nedeniyle kısıtlanan bir çalıştırma için de görünebilir. <p><p>**İpucu**: [tanılama günlüğü](monitor-logic-apps-log-analytics.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi edinebilirsiniz. |
+   | **Çalışma** | Çalıştırma tetiklendi ve devam ediyor, ancak bu durum [eylem sınırları](logic-apps-limits-and-config.md) veya [geçerli fiyatlandırma planı](https://azure.microsoft.com/pricing/details/logic-apps/)nedeniyle kısıtlanan bir çalıştırma için de görünebilir. <p><p>**İpucu**: [tanılama günlüğü](monitor-logic-apps-log-analytics.md)ayarlarsanız, gerçekleşen tüm kısıtlama olayları hakkında bilgi edinebilirsiniz. |
    | **Başarılı** | Çalıştırma başarılı oldu. Herhangi bir eylem başarısız olursa, iş akışındaki sonraki bir eylem bu hatayı işledi. |
    | **Zaman aşımına uğradı** | Geçerli süre, [ **gün cinsinden çalışma geçmişi tutma** ayarı](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından denetlenen çalışma süresi sınırını aştığından çalıştırma zaman aşımına uğradı. Bir çalıştırmanın süresi, çalışma başlangıç zamanı ve çalıştırma süresi sınırı kullanılarak bu başlangıç saatinde hesaplanır. <p><p>**Note**: çalıştırmanın süresi Ayrıca, [ **gün cinsinden çalıştırma geçmişi tutma**](logic-apps-limits-and-config.md#run-duration-retention-limits)tarafından da denetlenen geçerli *çalışma geçmişi saklama sınırını* aşarsa, çalıştırma, günlük temizleme işi tarafından temizlenir. Çalışma zamanının zaman aşımına uğrayıp tamamlanmayacağı, saklama dönemi her zaman çalıştırmanın başlangıç zamanı ve *geçerli* saklama limiti kullanılarak hesaplanır. Bu nedenle, bir uçuş çalışmasının süre sınırını azaltmanız durumunda çalıştırma zaman aşımına uğrar. Ancak çalıştırma, çalıştırma geçmişinden, çalışma süresinin bekletme sınırını aşıp aşılmadığını temel alarak, çalışır durumda kalır veya temizlenir. |
    | **Bekleme** | Çalışan, hala çalışmakta olan önceki bir iş akışı örneği nedeniyle başlatılmış veya duraklatılmış. |
@@ -547,12 +622,12 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    İşte iş akışındaki her adımın sahip olduğu olası durumlar şunlardır:
 
-   | Eylem durumu | Simge | Description |
+   | Eylem durumu | Simge | Açıklama |
    |---------------|------|-------------|
    | İptal edildi | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | İptal Edildi | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal isteği alındı. |
    | Başarısız | !["Başarısız" eylem durumu simgesi][failed-icon] | Eylem başarısız oldu. |
-   | Çalışıyor | !["Çalışıyor" eylem durumu simgesi][running-icon] | Eylem şu anda çalışıyor. |
+   | Çalışma | !["Çalışıyor" eylem durumu simgesi][running-icon] | Eylem şu anda çalışıyor. |
    | Atlandı | !["Atlanan" eylem durumu simgesi][skipped-icon] | Eylem, hemen önceki eylem başarısız olduğu için atlandı. Bir eylem, `runAfter` Geçerli eylemin çalıştırılabilmesi için önceki eylemin başarıyla çalışmasını gerektiren bir koşula sahiptir. |
    | Başarılı | !["Başarılı" eylem durumu simgesi][succeeded-icon] | Eylem başarılı oldu. |
    | Yeniden denemeler ile başarılı oldu | !["Yeniden denemeler tamamlandı" eylem durumu simgesi][succeeded-with-retries-icon] | Eylem, yalnızca bir veya daha fazla yeniden denemeden sonra başarılı oldu. Yeniden deneme geçmişini gözden geçirmek için, çalışma geçmişi Ayrıntıları görünümünde, giriş ve çıkışları görüntüleyebilmeniz için bu eylemi seçin. |
@@ -580,21 +655,21 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
 <a name="return-response"></a>
 
-## <a name="return-a-response-to-the-caller"></a>Çağırana bir yanıt döndürün
+## <a name="return-a-response"></a>Yanıt döndürün
 
-Mantıksal uygulamanıza bir istek gönderen çağırana geri yanıt döndürmek için, Istek tetikleyicisiyle başlayan bir iş akışı için yerleşik [Yanıt eylemini](../connectors/connectors-native-reqres.md) kullanabilirsiniz.
+Mantıksal uygulamanıza bir istek gönderen arayana bir yanıt döndürmek için, Istek tetikleyicisiyle başlayan bir iş akışı için yerleşik [Yanıt eylemini](../connectors/connectors-native-reqres.md) kullanabilirsiniz.
 
-1. Mantıksal uygulama Tasarımcısı ' nda, **e-posta gönder** eyleminin altında **yeni adım**' ı seçin.
+1. İş akışı tasarımcısında, **e-posta gönder** eyleminin altında **yeni adım**' ı seçin.
 
    **Bir Işlem seçme** istemi tasarımcıda görünür ve bir sonraki eylemi seçebilmeniz Için **Eylem Ekle bölmesi** yeniden açılır.
 
 1. **Eylem Ekle** bölmesinde, **eylem** Ekle arama kutusunda, **yerleşik** ' ın seçili olduğundan emin olun. Arama kutusuna girin `response` ve **Yanıt** eylemini seçin.
 
-   ![Mantıksal uygulama Tasarımcısı 'nın seçili yanıt eylemiyle birlikte gösterdiği ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
+   ![Yanıt eylemi seçili olan iş akışı tasarımcısını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
 
    Tasarımcı üzerinde **Yanıt** eylemi göründüğünde, eylemin Ayrıntılar bölmesi otomatik olarak açılır.
 
-   ![Mantıksal uygulama Tasarımcısı 'nı "yanıt" eyleminin Ayrıntılar bölmesiyle açık olan "gövde" özelliği "e-posta gönder" eyleminin "Body" özellik değeri olarak ayarlanan ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
+   !["Yanıt" eyleminin Ayrıntılar bölmesine sahip iş akışı tasarımcısını ve "e-posta gönder" eyleminin "Body" özellik değerini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
 
 1. **Parametreler** sekmesinde çağırmak istediğiniz işlev için gerekli bilgileri sağlayın.
 
@@ -618,9 +693,9 @@ Mantıksal uygulamanıza bir istek gönderen çağırana geri yanıt döndürmek
 
 ## <a name="retest-your-logic-app"></a>Mantıksal uygulamanızı yeniden test etme
 
-Mantıksal uygulamanızda güncelleştirme yaptıktan sonra, Visual Studio 'da hata ayıklayıcıyı yeniden çalıştırarak ve güncelleştirilmiş mantıksal uygulamanızı tetiklemek için başka bir istek göndererek, [hata ayıklama ve mantıksal uygulamanızı test](#debug-test-locally)etme bölümündeki adımlara benzer bir test çalıştırabilirsiniz.
+Mantıksal uygulamanızda güncelleştirme yaptıktan sonra, hata ayıklayıcıyı Visual Studio 'da yeniden çalıştırarak ve güncelleştirilmiş mantıksal uygulamanızı tetiklemek için başka bir istek göndererek, [yerel olarak çalıştırma, test etme ve hata ayıklama](#run-test-debug-locally)içindeki adımlara benzer bir test çalıştırabilirsiniz.
 
-1. Visual Studio Code araç çubuğunda, **Çalıştır** menüsünü açın ve **hata ayıklamayı Başlat** (F5) seçeneğini belirleyin.
+1. Visual Studio Code etkinlik çubuğunda, **Çalıştır** menüsünü açın ve **hata ayıklamayı Başlat** (F5) seçeneğini belirleyin.
 
 1. İstek oluşturmaya ve göndermeye yönelik Postman veya aracınız içinde, iş akışınızı tetiklemek için başka bir istek gönderin.
 
@@ -632,20 +707,20 @@ Mantıksal uygulamanızda güncelleştirme yaptıktan sonra, Visual Studio 'da h
 
 1. Hata ayıklama oturumunu durdurmak için, **Çalıştır** menüsünde, **hata ayıklamayı Durdur** (SHIFT + F5) öğesini seçin.
 
-<a name="publish-azure"></a>
+<a name="deploy-azure"></a>
 
-## <a name="publish-to-azure"></a>Azure’da Yayımlama
+## <a name="deploy-to-azure"></a>Azure’a dağıtın
 
-Visual Studio Code, projenizi doğrudan Azure 'a dağıtabilirsiniz. Bu, yeni **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak mantıksal uygulamanızı yayımlar. Azure Işlevlerinde işlev uygulaması kaynağına benzer şekilde, bu yeni kaynak türüne yönelik dağıtım, dağıtım sırasında ayarlayabileceğiniz bir [barındırma planı ve fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)seçmenizi gerektirir. Barındırma planları ve fiyatlandırma hakkında daha fazla bilgi için şu konuları gözden geçirin:
+Visual Studio Code, projenizi doğrudan Azure 'da yayımlayabilirsiniz. Bu, yeni **mantıksal uygulama (Önizleme)** kaynak türünü kullanarak mantıksal uygulamanızı dağıtır. Azure Işlevlerinde işlev uygulaması kaynağına benzer şekilde, bu yeni kaynak türüne yönelik dağıtım, dağıtım sırasında ayarlayabileceğiniz bir [barındırma planı ve fiyatlandırma katmanı](../app-service/overview-hosting-plans.md)seçmenizi gerektirir. Barındırma planları ve fiyatlandırma hakkında daha fazla bilgi için şu konuları gözden geçirin:
 
 * [Azure App Service ölçeği büyütme](../app-service/manage-scale-up.md)
 * [Azure İşlevleri’ni ölçeklendirme ve barındırma](../azure-functions/functions-scale.md)
 
 Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde, Azure depolama hesabı](../azure-functions/storage-considerations.md)gibi ek gerekli kaynakları otomatik olarak oluşturan yeni bir kaynak olarak yayımlayabilirsiniz. Ya da mantıksal uygulamanızı daha önce dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağına yayımlayabilirsiniz ve bu mantıksal uygulamanın üzerine yazar.
 
-### <a name="publish-as-a-new-logic-app-preview-resource"></a>Yeni bir mantıksal uygulama (Önizleme) kaynağı olarak Yayımla
+### <a name="publish-to-a-new-logic-app-preview-resource"></a>Yeni bir mantıksal uygulama (Önizleme) kaynağına Yayımla
 
-1. Visual Studio Code araç çubuğunda Azure simgesini seçin.
+1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin.
 
 1. **Azure: Logic Apps (Önizleme)** bölmesi araç çubuğunda, **mantıksal uygulamaya dağıt**' ı seçin.
 
@@ -663,7 +738,7 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
 
 1. Yeni **mantıksal uygulama (Önizleme)** kaynağını oluşturmak için aşağıdaki adımları izleyin:
 
-   1. **Mantıksal uygulama (Önizleme)** kaynağı için kullanılacak ad olan yeni mantıksal uygulamanız için genel olarak benzersiz bir ad sağlayın. Bu örnekte, kullanılır `example-logic-app-preview` .
+   1. **Mantıksal uygulama (Önizleme)** kaynağı için kullanılacak ad olan yeni mantıksal uygulamanız için genel olarak benzersiz bir ad sağlayın. Bu örnekte `Fabrikam-Workflows-App` kullanılmıştır.
 
       !["Azure: Logic Apps (Önizleme)" bölmesinin ve oluşturulacak yeni mantıksal uygulama için bir ad sağlamak üzere bir istem gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
@@ -688,42 +763,108 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
 
       !["Azure: Logic Apps (Önizleme)" bölmesini gösteren ekran görüntüsü ve bir depolama hesabı oluşturmak veya seçmek için bir istem.](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
 
-   1. Daha kolay tanılama günlüğü ve izleme özelliği için mevcut bir Application Insights kaynağı seçebilirsiniz. Aksi halde, uygulamanızı dağıttıktan sonra **yeni Application Insights kaynak oluştur**' u veya Azure Portal Application Insights ayarlayabilirsiniz ' ı seçebilirsiniz.
+   1. Mantıksal uygulamanızın oluşturma ve dağıtım ayarları [Application Insights](../azure-monitor/app/app-insights-overview.md)kullanmayı destekliyorsa, mantıksal uygulamanız için isteğe bağlı olarak tanılama günlüğünü ve izlemeyi etkinleştirebilirsiniz. Mantıksal uygulamanızı Visual Studio Code veya dağıtımdan sonra dağıtırken bunu yapabilirsiniz. Bir Application Insights örneğiniz olması gerekir, ancak mantıksal uygulamanızı dağıtırken ya da dağıtımdan sonra bu kaynağı [önceden](../azure-monitor/app/create-workspace-resource.md)oluşturabilirsiniz.
 
-      Dağıtmadan önce, `logLevel` nesnesini `logging` projenizin kök düzeyinde var olan **host.js** nesnesine eklediğinizden emin olun ve `Host.Triggers.Workflow` `Information` ' ı ' e ayarlayın, örneğin:
+      Günlüğe kaydetmeyi ve izlemeyi şimdi etkinleştirmek için şu adımları izleyin:
 
-      ```json
-      "logLevel": {
-         "Host.Triggers.Workflow": "Information"
-      },
-      ```
+      1. Mevcut bir Application Insights kaynağı seçin ya da **yeni Application Insights kaynağı oluşturun**.
 
-      Dosyadaki **host.js** şöyle görünebilir:
+      1. [Azure portal](htpps://portal.azure.com)Application Insights kaynağına gidin.
 
-      ```json
-      {
-         "version": "2.0",
-         "logging": {
-            "applicationInsights": {
-               "samplingExcludedTypes": "Request",
-               "samplingSettings": {
-                  "isEnabled": true
-               }
-            },
-            "logLevel": {
-               "Host.Triggers.Workflow": "Information"
+      1. Kaynak menüsünde **genel bakış**' ı seçin. **Izleme anahtarı** değerini bulup kopyalayın.
+
+      1. Visual Studio Code, projenizin kök düzeyinde **local.settings.jsdosya üzerinde** açın.
+
+      1. Nesnesinde, `Values` `APPINSIGHTS_INSTRUMENTATIONKEY` özelliğini ekleyin ve değeri izleme anahtarına ayarlayın, örneğin:
+
+         ```json
+         {
+            "IsEncrypted": false,
+            "Values": {
+               "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+               "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+               "APPINSIGHTS_INSTRUMENTATIONKEY": <instrumentation-key>
             }
          }
-      }
-      ``` 
+         ```
 
-   İşiniz bittiğinde Visual Studio Code mantıksal uygulamanızı yayımlamak için gerekli kaynakları oluşturmaya ve dağıtmaya başlar.
+         > [!TIP]
+         > Tetikleyici ve Eylem adlarının Application Insights Örneğinizde doğru şekilde görünüp görünmediğini kontrol edebilirsiniz.
+         >
+         > 1. Azure portal Application Insights kaynağına gidin.
+         >
+         > 2. Kaynak kaynağı menüsündeki **Araştır** altında **uygulama Haritası**' nı seçin.
+         >
+         > 3. Haritada görüntülenen işlem adlarını gözden geçirin.
+         >
+         > Yerleşik tetikleyicilerden gelen bazı gelen istekler, uygulama haritasında yinelenen olarak görünebilir. 
+         > Biçimini kullanmak yerine `WorkflowName.ActionName` , bu yinelemeler iş akışı adını işlem adı olarak kullanır ve Azure işlevleri ana bilgisayarında yapılır.
+
+      1. Daha sonra, mantıksal uygulamanızın topladığı ve Application Insights örneğine gönderdiği izleme verileri için isteğe bağlı olarak önem derecesini ayarlayabilirsiniz.
+
+         İş akışı ile ilgili bir olay olduğunda (örneğin, bir iş akışı tetiklendiğinde veya bir eylem çalıştırıldığında), çalışma zamanı çeşitli izlemeleri yayar. Bu izlemeler iş akışının ömrünü kapsar ve aşağıdaki olay türlerini içerir, ancak bunlarla sınırlı değildir:
+
+         * Başlatma, durdurma ve hatalar gibi hizmet etkinliği.
+         * İşler ve dağıtıcı etkinliği.
+         * Tetikleyici, eylem ve çalıştırma gibi iş akışı etkinliği.
+         * Başarılı veya başarısız gibi depolama isteği etkinliği.
+         * Gelen, giden, başarı ve başarısızlık gibi HTTP isteği etkinliği.
+         * Hata ayıklama iletileri gibi geçici geliştirme izlemeleri.
+
+         Her olay türü bir önem düzeyine atanır. Örneğin, düzey `Trace` en ayrıntılı iletileri yakalar, ancak `Information` mantıksal uygulamanız, iş akışınız, Tetikleyiciniz ve eylemler başlatıldığında ve durdurulduğunda olduğu gibi, düzey iş akışınızda genel etkinlik yakalar. Bu tablo önem düzeylerini ve izleme türlerini açıklar:
+
+         | Önem derecesi | İzleme türü |
+         |----------------|------------|
+         | Kritik | Mantıksal uygulamanızda kurtarılamaz bir hatayı tanımlayan Günlükler. |
+         | Hata ayıklama | Geliştirme sırasında, örneğin gelen ve giden HTTP çağrılarında İnceleme için kullanabileceğiniz Günlükler. |
+         | Hata | İş akışı yürütmesindeki bir hata olduğunu gösteren Günlükler, ancak mantıksal uygulamanızda genel bir hata değildir. |
+         | Bilgi | Mantıksal uygulamanızda veya iş akışınızda genel etkinliği izleyen Günlükler, örneğin: <p><p>-Bir tetikleyici, eylem veya çalıştırma başladığında ve sona erdiğinde. <br>-Mantıksal uygulamanız başlatıldığında veya sona erdiğinde. |
+         | İzleme | En ayrıntılı iletileri (örneğin, depolama istekleri veya dağıtıcı etkinliği) ve iş akışı yürütme etkinliğiyle ilgili tüm iletileri içeren Günlükler. |
+         | Uyarı | Mantıksal uygulamanızda olağan dışı bir durumu vurgulayan ancak çalışmasını engellemez olan Günlükler. |
+         |||
+
+         Önem düzeyini ayarlamak için, projenizin kök düzeyinde **host.jsdosya üzerinde** açın ve `logging` nesneyi bulun. Bu nesne, mantıksal uygulamanızdaki tüm iş akışlarının günlük filtrelemesini denetler ve [günlük türü filtrelemesi için ASP.NET Core düzeni](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)izler.
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               }
+            }
+         }
+         ```
+
+         Nesne, `logging` özelliği içeren bir `logLevel` nesne içermiyorsa `Host.Triggers.Workflow` , bu öğeleri ekleyin. Özelliğini istediğiniz izleme türünün önem derecesi düzeyine ayarlayın, örneğin:
+
+         ```json
+         {
+            "version": "2.0",
+            "logging": {
+               "applicationInsights": {
+                  "samplingExcludedTypes": "Request",
+                  "samplingSettings": {
+                     "isEnabled": true
+                  }
+               },
+               "logLevel": {
+                  "Host.Triggers.Workflow": "Information"
+               }
+            }
+         }
+         ```
+
+   Dağıtım adımlarıyla işiniz bittiğinde, Visual Studio Code mantıksal uygulamanızı yayımlamak için gerekli kaynakları oluşturmaya ve dağıtmaya başlar.
 
 1. Dağıtım sürecini gözden geçirmek ve izlemek için, **Görünüm** menüsünde **Çıkış**' ı seçin. Çıkış penceresi araç çubuğu listesinden **Azure Logic Apps**' yi seçin.
 
    ![Dağıtım ilerleme durumu ve durumları ile birlikte araç çubuğu listesinde seçili olan "Azure Logic Apps" ile çıkış penceresini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
 
-   Visual Studio Code mantıksal uygulama iş akışınızı Azure 'a dağıtmaya tamamlandığında bu ileti görüntülenir:
+   Visual Studio Code mantıksal uygulamanızı Azure 'a dağıtma işlemi tamamlandığında aşağıdaki ileti görüntülenir:
 
    ![Azure 'a dağıtımın başarıyla tamamlandığını belirten bir ileti gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/deployment-to-azure-completed.png)
 
@@ -731,15 +872,33 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
 
 Daha sonra, bu görevleri nasıl gerçekleştireceğinizi öğrenebilirsiniz:
 
-* Azure portal veya [Visual Studio Code](#find-manage-deployed-workflows-vs-code) [dağıtılan mantıksal uygulamanızı bulun](#find-manage-deployed-workflows-portal) .
+* [Projenize boş bir iş akışı ekleyin](#add-workflow-existing-project).
 
-* [Durum bilgisiz mantıksal uygulama iş akışlarında çalıştırma geçmişini etkinleştirin](#run-history).
+* [Dağıtılan mantıksal uygulamaları Visual Studio Code](#manage-deployed-apps-vs-code) veya [Azure Portal](#manage-deployed-apps-portal)kullanarak yönetin.
 
-* [Dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağında izlemeyi etkinleştirin](#enable-monitoring).
+* [Durum bilgisiz iş akışlarında çalıştırma geçmişini etkinleştirin](#enable-run-history-stateless).
 
-<a name="find-manage-deployed-workflows-vs-code"></a>
+* [Dağıtılan bir mantıksal uygulama için Azure Portal izleme görünümünü etkinleştirin](#enable-monitoring).
 
-## <a name="find-and-manage-deployed-logic-apps-in-visual-studio-code"></a>Visual Studio Code dağıtılan mantıksal uygulamaları bulun ve yönetin
+<a name="add-workflow-existing-project"></a>
+
+## <a name="add-blank-workflow-to-project"></a>Projeye boş iş akışı Ekle
+
+Mantıksal uygulama projenizde birden çok iş akışı olabilir. Projenize boş bir iş akışı eklemek için şu adımları izleyin:
+
+1. Visual Studio Code etkinlik çubuğunda Azure simgesini seçin.
+
+1. Azure bölmesinde **Azure: Logic Apps (Önizleme)** yanındaki **iş akışı oluştur** ' u (Azure Logic Apps için simge) seçin.
+
+1. Eklemek istediğiniz iş akışı türünü seçin, **durum** **bilgisiz veya durumsuz**.
+
+1. İş akışınız için bir ad sağlayın.
+
+İşiniz bittiğinde, projenizde yeni bir iş akışı klasörü, iş akışı tanımı için bir **workflow.js** dosyası ile birlikte görüntülenir.
+
+<a name="manage-deployed-apps-vs-code"></a>
+
+## <a name="manage-deployed-logic-apps-in-visual-studio-code"></a>Visual Studio Code dağıtılan mantıksal uygulamaları yönetme
 
 Visual Studio Code, özgün **Logic Apps** veya **mantıksal uygulama (Önizleme)** kaynak türü olup olmadıkları ve bu mantıksal uygulamaları yönetmenize yardımcı olan görevleri seçmek üzere Azure aboneliğinizde dağıtılan tüm mantıksal uygulamaları görüntüleyebilirsiniz. Ancak, her iki kaynak türüne de erişmek için, Visual Studio Code için hem **Azure Logic Apps** hem de **Azure Logic Apps (Önizleme)** uzantılarına sahip olmanız gerekir.
 
@@ -757,9 +916,9 @@ Visual Studio Code, özgün **Logic Apps** veya **mantıksal uygulama (Önizleme
 
    İş akışını düzenlemek için şu seçeneklere sahipsiniz:
 
-   * Visual Studio Code ' de, mantıksal uygulama tasarımcısında dosya **üzerinde projenizinworkflow.js** açın, düzenlemelerinizi yapın ve mantıksal uygulamanızı Azure 'a yeniden dağıtın.
+   * Visual Studio Code, projenizin iş akışı tasarımcısında dosya **workflow.js** açın, düzenlemelerinizi yapın ve mantıksal uygulamanızı Azure 'a yeniden dağıtın.
 
-   * Azure portal, [mantıksal uygulamanızı bulun ve açın](#find-manage-deployed-workflows-portal). İş akışını bulun, düzenleyin ve kaydedin.
+   * Azure portal, [mantıksal uygulamanızı bulun ve açın](#manage-deployed-apps-portal). İş akışını bulun, düzenleyin ve kaydedin.
 
 1. Azure portal dağıtılan mantıksal uygulamayı açmak için mantıksal uygulamanın kısayol menüsünü açın ve **portalda aç**' ı seçin.
 
@@ -771,9 +930,9 @@ Visual Studio Code, özgün **Logic Apps** veya **mantıksal uygulama (Önizleme
 
    ![Azure portal ve arama çubuğunu, dağıtılan mantıksal uygulama için arama sonuçlarıyla gösteren ve seçili görüntülenen ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
-<a name="find-manage-deployed-workflows-portal"></a>
+<a name="manage-deployed-apps-portal"></a>
 
-## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Portalda dağıtılan Logic Apps bulma ve yönetme
+## <a name="manage-deployed-logic-apps-in-the-portal"></a>Portalda dağıtılan mantıksal uygulamaları yönetme
 
 Azure portal, Azure aboneliğinizdeki tüm dağıtılan mantıksal uygulamaları, özgün **Logic Apps** kaynak türü veya **mantıksal uygulama (Önizleme)** kaynak türü olup olmadıkları gibi görüntüleyebilirsiniz. Şu anda her kaynak türü Azure 'da ayrı kategoriler olarak düzenlenir ve yönetilir. **Mantıksal uygulama (Önizleme)** kaynak türüne sahip mantıksal uygulamaları bulmak için şu adımları izleyin:
 
@@ -803,45 +962,43 @@ Azure portal, Azure aboneliğinizdeki tüm dağıtılan mantıksal uygulamaları
 
    ![Seçilen iş akışının "genel bakış" bölmesini gösteren ekran görüntüsü, iş akışı menüsü seçili "tasarımcı" komutunu gösterir.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
 
-   Mantıksal uygulama Tasarımcısı açılır ve Visual Studio Code içinde derlediniz iş akışını gösterir. Artık Azure portal bu iş akışında değişiklik yapabilirsiniz.
+   İş akışı Tasarımcısı açılır ve Visual Studio Code içinde derlediniz iş akışını gösterir. Artık Azure portal bu iş akışında değişiklik yapabilirsiniz.
 
-   ![Visual Studio Code 'ten dağıtılan mantıksal uygulama tasarımcısını ve iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
+   ![İş akışı tasarımcısını ve Visual Studio Code dağıtılan iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
 
-<a name="add-workflows"></a>
+<a name="add-workflow-portal"></a>
 
-## <a name="add-a-workflow-to-deployed-logic-apps"></a>Dağıtılan Logic Apps 'e iş akışı ekleme
+## <a name="add-another-workflow-in-the-portal"></a>Portalda başka bir iş akışı ekleme
 
 Azure portal aracılığıyla, Visual Studio Code dağıttığınız bir **mantıksal uygulama (Önizleme)** kaynağına boş iş akışları ekleyebilir ve bu iş akışlarını Azure Portal oluşturabilirsiniz.
 
 1. [Azure Portal](https://portal.azure.com), dağıtılan **mantıksal uygulama (Önizleme)** kaynağını bulup seçin.
 
-1. Mantıksal uygulamanın menüsünde, **Iş akışları**' nı seçin. **Iş akışları** bölmesinde **Ekle**' yi seçin.
+1. Mantıksal uygulama menüsünde **Iş akışları**' nı seçin. **Iş akışları** bölmesinde **Ekle**' yi seçin.
 
    ![Seçilen mantıksal uygulamanın "Iş akışları" bölmesini ve araç çubuğunu "Ekle" komutu seçiliyken gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/add-new-workflow.png)
 
 1. **Yeni iş akışı** bölmesinde iş akışı için ad belirtin. **Durum bilgisi olan** veya **durum bilgisiz** **>** **Oluştur** seçeneğini belirleyin.
 
-   Azure, **Iş akışları** bölmesinde görüntülenen yeni iş akışınızı dağıttığından, yönetim ve mantıksal uygulama Tasarımcısı veya kod görünümü açma gibi diğer görevleri gerçekleştirmek için bu iş akışını seçin.
+   Azure yeni iş akışınızı dağıtduktan sonra, iş **akışları** bölmesinde görünen iş akışını, tasarımcı veya kod görünümünü açma gibi diğer görevleri yönetebilmeniz ve gerçekleştirebilmek için seçin.
 
    ![Seçili iş akışını yönetim ve gözden geçirme seçenekleriyle gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/view-new-workflow.png)
 
    Örneğin, yeni bir iş akışı için tasarımcıyı açmak boş bir tuval gösterir. Artık Azure portal bu iş akışını oluşturabilirsiniz.
 
-   ![Mantıksal uygulama tasarımcısını ve boş bir iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
+   ![İş akışı tasarımcısını ve boş bir iş akışını gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
 
-<a name="run-history"></a>
+<a name="enable-run-history-stateless"></a>
 
-## <a name="run-history-for-stateless-logic-app-workflows"></a>Durum bilgisiz mantıksal uygulama iş akışları için çalışma geçmişi
+## <a name="enable-run-history-for-stateless-workflows"></a>Durum bilgisiz iş akışları için çalıştırma geçmişini etkinleştir
 
-Durum bilgisi olmayan bir mantıksal uygulama iş akışında daha kolay hata ayıklamak için, bu iş akışı için Visual Studio Code veya Azure portal bir çalıştırma geçmişi etkinleştirebilir ve sonra işiniz bittiğinde çalıştırma geçmişini devre dışı bırakabilirsiniz.
+Durum bilgisi olmayan bir iş akışında daha kolay hata ayıklamak için bu iş akışı için çalıştırma geçmişini etkinleştirebilir ve sonra işiniz bittiğinde çalıştırma geçmişini devre dışı bırakabilirsiniz. Visual Studio Code için bu adımları izleyin veya Azure portal çalışıyorsanız, bkz. [Azure Portal durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma](create-stateful-stateless-workflows-azure-portal.md#enable-run-history-stateless).
 
-### <a name="for-a-stateless-logic-app-workflow-in-visual-studio-code"></a>Visual Studio Code durum bilgisiz mantıksal uygulama iş akışı için
-
-Üzerinde çalışıyorsanız ve durum bilgisiz Logic App iş akışını Visual Studio Code yerel olarak çalıştırıyorsanız, aşağıdaki adımları izleyin:
-
-1. Projenizde **iş akışı-tasarımsaati** klasörünü bulun ve genişletin. Dosyasında **local.settings.js** bulun ve açın.
+1. Visual Studio Code projenizde, **iş akışı-tasarımsaati** klasörünü genişletin ve **local.settings.jsdosya üzerinde** açın.
 
 1. Özelliği ekleyin `Workflows.{yourWorkflowName}.operationOptions` ve değeri olarak ayarlayın `WithStatelessRunHistory` , örneğin:
+
+   **Windows veya Linux**
 
    ```json
    {
@@ -854,37 +1011,27 @@ Durum bilgisi olmayan bir mantıksal uygulama iş akışında daha kolay hata ay
    }
    ```
 
-1. İşiniz bittiğinde çalıştırma geçmişini devre dışı bırakmak için, `Workflows.{yourWorkflowName}.OperationOptions` özelliği ve değerini silin ya da özelliğini olarak ayarlayın `None` .
+   **macOS**
 
-### <a name="for-a-stateless-logic-app-workflow-in-the-azure-portal"></a>Azure portal durum bilgisiz mantıksal uygulama iş akışı için
+   ```json
+   {
+      "IsEncrypted": false,
+      "Values": {
+         "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct; \
+             AccountKey=<access-key>;EndpointSuffix=core.windows.net",
+         "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+         "Workflows.{yourWorkflowName}.OperationOptions": "WithStatelessRunHistory"
+      }
+   }
+   ```
 
-Projenizi zaten Azure portal dağıttıysanız, şu adımları izleyin:
-
-1. [Azure Portal](https://portal.azure.com), **mantıksal uygulama (Önizleme)** kaynağını bulup açın.
-
-1. Mantıksal uygulamanın menüsünde, **Ayarlar**' ın altında **yapılandırma**' yı seçin.
-
-1. **Uygulama ayarları** sekmesinde **Yeni uygulama ayarı**' nı seçin.
-
-1. **Uygulama ayarı Ekle/Düzenle** bölmesinde, **ad** kutusuna bu işlem seçeneği adını girin: 
-
-   `Workflows.{yourWorkflowName}.OperationOptions`
-
-1. **Değer** kutusuna aşağıdaki değeri girin:`WithStatelessRunHistory`
-
-   Örnek:
-
-   ![Azure portal ve mantıksal uygulama (Önizleme) kaynağını "yapılandırma" > "yeni uygulama ayarı" < "uygulama ayarı Ekle/Düzenle" bölmesi açık ve "Iş akışları" olarak gösteren ekran görüntüsü. {yourWorkflowName}. OperationOptions "seçeneği" WithStatelessRunHistory "olarak ayarlandı.](./media/create-stateful-stateless-workflows-visual-studio-code/stateless-operation-options-run-history.png)
-
-1. İşiniz bittiğinde **Tamam**’ı seçin. **Yapılandırma** bölmesinde **Kaydet**' i seçin.
-
-Dağıtılan mantıksal uygulama (Önizleme) kaynağında izlemeyi etkinleştirmek için sonraki bölüme geçin.
+1. İşiniz bittiğinde çalıştırma geçmişini devre dışı bırakmak için `Workflows.{yourWorkflowName}.OperationOptions` özelliğini olarak ayarlayın `None` ya da özelliği ve değerini silin.
 
 <a name="enable-monitoring"></a>
 
-## <a name="enable-monitoring-for-deployed-logic-app-preview-resources"></a>Dağıtılan mantıksal uygulama (Önizleme) kaynakları için izlemeyi etkinleştir
+## <a name="enable-monitoring-view-in-the-azure-portal"></a>Azure portal izleme görünümünü etkinleştir
 
-Dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağında izlemeyi etkinleştirmek için şu adımları izleyin:
+Visual Studio Code bir **mantıksal uygulama (Önizleme)** kaynağını Azure 'a dağıttıktan sonra, söz konusu iş akışı için Azure Portal ve **izleme** deneyimini kullanarak bu kaynaktaki bir iş akışının tüm kullanılabilir çalışma geçmişini ve ayrıntılarını gözden geçirebilirsiniz. Ancak, önce bu mantıksal uygulama kaynağında **izleyici** görünümü özelliğini etkinleştirmeniz gerekir.
 
 1. [Azure Portal](https://portal.azure.com)dağıtılan **mantıksal uygulama (Önizleme)** kaynağını bulup seçin.
 
@@ -894,57 +1041,104 @@ Dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağında izlemeyi etkin
 
 1. İşiniz bittiğinde, **CORS** araç çubuğundan **Kaydet**' i seçin.
 
-   ![Dağıtılan bir Logic Apps (Önizleme) kaynağıyla Azure portal gösteren ekran görüntüsü. "CORS" kaynak menüsünde "Izin verilen kaynaklar" joker karakter "*" karakterine ayarlanmış yeni bir girdiyle birlikte seçilir.](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+   ![Dağıtılan bir mantıksal uygulama (Önizleme) kaynağıyla Azure portal gösteren ekran görüntüsü. "CORS" kaynak menüsünde "Izin verilen kaynaklar" joker karakter "*" karakterine ayarlanmış yeni bir girdiyle birlikte seçilir.](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+
+<a name="enable-open-application-insights"></a>
+
+## <a name="enable-or-open-application-insights-after-deployment"></a>Dağıtımdan sonra Application Insights etkinleştir veya aç
+
+İş akışı yürütülürken, mantıksal uygulamanız telemetri ve diğer olaylarla birlikte yayar. İş akışınızın ne kadar iyi görünebileceği ve Logic Apps çalışma zamanının çeşitli yollarla nasıl çalıştığı hakkında daha iyi görünürlük almak için bu Telemetriyi kullanabilirsiniz. İş akışınızı, neredeyse gerçek zamanlı telemetri (canlı ölçümler) sağlayan [Application Insights](../azure-monitor/app/app-insights-overview.md)kullanarak izleyebilirsiniz. Bu özellik sorunları tanılamak, uyarıları ayarlamak ve grafikler oluşturmak için bu verileri kullandığınızda hataları ve performans sorunlarını daha kolay bir şekilde araştırmanıza yardımcı olabilir.
+
+Mantıksal uygulamanızın oluşturma ve dağıtım ayarları [Application Insights](../azure-monitor/app/app-insights-overview.md)kullanmayı destekliyorsa, mantıksal uygulamanız için isteğe bağlı olarak tanılama günlüğünü ve izlemeyi etkinleştirebilirsiniz. Mantıksal uygulamanızı Visual Studio Code veya dağıtımdan sonra dağıtırken bunu yapabilirsiniz. Bir Application Insights örneğiniz olması gerekir, ancak mantıksal uygulamanızı dağıtırken ya da dağıtımdan sonra bu kaynağı [önceden](../azure-monitor/app/create-workspace-resource.md)oluşturabilirsiniz.
+
+Dağıtılan bir mantıksal uygulamada Application Insights etkinleştirmek veya zaten etkinleştirildiğinde Application Insights verileri gözden geçirmek için şu adımları izleyin:
+
+1. Azure portal, dağıtılan mantıksal uygulamanızı bulun.
+
+1. Mantıksal uygulama menüsünde, **Ayarlar** altında **Application Insights**' ı seçin.
+
+1. Application Insights etkinleştirilmemişse, **Application Insights** bölmesinde **Application Insights aç**' ı seçin. Bölmedeki güncelleştirmelerden sonra, alt kısımdaki **Uygula**' yı seçin.
+
+   Application Insights etkinse, **Application Insights** bölmesinde **Application Insights verileri görüntüle**' yi seçin.
+
+Application Insights açıldıktan sonra mantıksal uygulamanız için çeşitli ölçümleri gözden geçirebilirsiniz. Daha fazla bilgi için, bkz. [Application Insights ile Azure Logic Apps her yerde bir Izleme çalıştırma-Bölüm 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849).
 
 <a name="deploy-docker"></a>
 
-## <a name="deploy-to-docker-container"></a>Docker kapsayıcısına dağıt
+## <a name="deploy-to-docker"></a>Docker 'a dağıt
 
-[.NET Core komut satırı arabirimi (CLI) aracını](/dotnet/core/tools/)kullanarak projenizi derleyebilir ve sonra yapınızı yayımlayabilirsiniz. Daha sonra, mantıksal uygulama iş akışınızı dağıtmak için hedef olarak bir [Docker kapsayıcısı](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) oluşturup kullanabilirsiniz. Daha fazla bilgi için şu konuları gözden geçirin:
+[.Net CLI](/dotnet/core/tools/)kullanarak mantıksal uygulamanızı barındırma ortamı olarak bir [Docker kapsayıcısına](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) dağıtabilirsiniz. Bu komutlarla mantıksal uygulamanızın projesini derleyebilir ve yayımlayabilirsiniz. Daha sonra, mantıksal uygulamanızı dağıtmak için hedef olarak Docker kapsayıcınızı derleyip çalıştırabilirsiniz.
 
+Docker hakkında bilgi sahibi değilseniz şu konuları gözden geçirin:
+
+* [Docker nedir?](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)
 * [Kapsayıcılar ve Docker’a Giriş](/dotnet/architecture/microservices/container-docker-introduction/)
 * [.NET ve Docker’a Giriş](/dotnet/core/docker/introduction)
-* [Docker terimleri](/dotnet/architecture/microservices/container-docker-introduction/docker-terminology)
-* [Öğretici: Docker 'ı kullanmaya başlama](/visualstudio/docker/tutorials/docker-tutorial)
+* [Docker kapsayıcıları, görüntüleri ve kayıt defterleri](/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries)
+* [Öğretici: Docker ile çalışmaya başlama (Visual Studio Code)](/visualstudio/docker/tutorials/docker-tutorial)
 
-1. Projenizi derlemek için bir komut satırı istemi açın ve şu komutu çalıştırın:
+### <a name="requirements"></a>Gereksinimler
+
+* Mantıksal uygulamanızın dağıtım için kullandığı Azure depolama hesabı
+
+* Docker kapsayıcınızı oluştururken kullandığınız .NET iş akışı için bir Docker dosyası
+
+   Örneğin, bu örnek Docker dosyası, durum bilgisi olan bir iş akışıyla bir mantıksal uygulama dağıtır. Dosya, mantıksal uygulamayı Azure portal yayımlamak için kullanılan Azure depolama hesabı için bağlantı dizesini ve erişim anahtarını belirtir.
+
+   ```text
+   FROM mcr.microsoft.com/dotnet/core/sdk3.1 AS installer-env
+
+   COPY . /src/dotnet-function-app
+   RUN cd /src/dotnet-function-app && \
+       mkdir -p /home/site/wwwroot && \
+       dotnet publish *.csproj --output /home/site/wwwroot
+
+   FROM mcr.microsoft.com/azure-functions/dotnet:3.0
+   ENV AzureWebJobsStorage <storage-account-connection-string>
+   ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+       AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+       FUNCTIONS_V2_COMPATIBILITY_MODE=true
+
+   COPY --from=installer-env ["/home/site/wwwroot", "/home/site/wwwroot"]
+   ```
+
+   Daha fazla bilgi için bkz. [Docker dosyalarını yazma Için en iyi uygulamalar](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+### <a name="build-and-publish-your-app"></a>Uygulamanızı derleyin ve yayımlayın
+
+1. Mantıksal uygulamanızın projesini yerel olarak derlemek için bir komut satırı istemi açın ve şu komutu çalıştırın:
 
    `dotnet build -c release`
 
    Daha fazla bilgi için [DotNet derleme](/dotnet/core/tools/dotnet-build/) başvurusu sayfasına bakın.
 
-1. Şu komutu çalıştırarak derlemenizi yayımlayın:
+1. Aşağıdaki komutu çalıştırarak, projenizin derlemesini barındırma ortamına dağıtım için kullanmak üzere bir klasöre yayımlayın:
 
    `dotnet publish -c release`
 
    Daha fazla bilgi için [DotNet Publish](/dotnet/core/tools/dotnet-publish/) başvuru sayfasına bakın.
 
-1. Bir .NET iş akışı için Docker dosyası kullanarak bir Docker kapsayıcısı oluşturun ve şu komutu çalıştırın:
+### <a name="access-to-your-storage-account"></a>Depolama hesabınıza erişim
 
-   `docker build --tag local/workflowcontainer .`
+Docker kapsayıcınızı derleyip çalıştırmadan önce, depolama hesabınıza erişim anahtarlarını içeren bağlantı dizesini almanız gerekir.
 
-   Örneğin, bir durum bilgisi olan mantıksal uygulama dağıtan ve mantıksal uygulamayı Azure portal yayımlamak için kullanılan Azure depolama hesabı için bağlantı dizesini belirten örnek bir Docker dosyası aşağıda verilmiştir. Azure portal depolama hesabının bağlantı dizesini bulmak ve kopyalamak için, [depolama hesabı anahtarlarını Yönet](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)' i gözden geçirin.
+1. Azure portal, depolama hesabı menüsündeki **Ayarlar** altında **erişim anahtarları**' nı seçin. 
 
    ![Depolama hesabı erişim anahtarları ve bağlantı dizesinin kopyalandığı Azure portal gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-   Bağlantı dizesi şu örneğe benzer şekilde görünür:
+1. **Bağlantı dizesi** altında, depolama hesabınızın bağlantı dizesini kopyalayın. Bağlantı dizesi şu örneğe benzer şekilde görünür:
 
-   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageaccount;AccountKey={access-key};EndpointSuffix=core.windows.net`
+   `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey={access-key};EndpointSuffix=core.windows.net`
 
-   Docker dosyasının biçimi aşağıdadır:
+   Daha fazla bilgi için [depolama hesabı anahtarlarını yönetme](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)konusunu gözden geçirin.
 
+1. Bağlantı dizesini güvenli bir yere kaydedin. Mantıksal uygulama projenizde, bu dizeyi dosyalara **local.settings.js** her ikisine de eklemeniz gerekir. Ayrıca, bu dizeyi Docker dosyanıza eklemeniz gerekir.
 
-   ```text
-   FROM mcr.microsoft.com/azure-functions/dotnet:3.0.14492-appservice
+### <a name="build-and-run-your-docker-container-image"></a>Docker kapsayıcı görüntünüzü derleyin ve çalıştırın
 
-   ENV AzureWebJobsStorage <storage-account-connection-string>
-   ENV AZURE_FUNCTIONS_ENVIRONMENT Development
-   ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-   ENV AzureFunctionsJobHost__Logging__Console__IsEnabled=true
-   ENV FUNCTIONS_V2_COMPATIBILITY_MODE=true
+1. Docker dosyanızı kullanarak Docker kapsayıcı görüntünüzü oluşturun ve şu komutu çalıştırın:
 
-   COPY ./bin/Release/netcoreapp3.1/publish/ /home/site/wwwroot
-   ```
+   `docker build --tag local/workflowcontainer .`
 
    Daha fazla bilgi için bkz. [Docker Build](https://docs.docker.com/engine/reference/commandline/build/).
 
@@ -956,75 +1150,107 @@ Dağıtılan bir **mantıksal uygulama (Önizleme)** kaynağında izlemeyi etkin
 
    Daha fazla bilgi için bkz. [Docker Run](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. Istek tetikleyicisinin geri çağırma URL 'sini almak için şu isteği gönderin:
+### <a name="get-callback-url-for-request-trigger"></a>Istek tetikleyicisi için geri çağırma URL 'SI al
 
-   `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2019-10-01-edge-preview&code={master-key}`
+Istek tetikleyicisinin geri çağırma URL 'sini almak için şu isteği gönderin:
 
-   <*ana anahtar*> değeri `AzureWebJobsStorage` , bu bölümdeki değeri bulabileceğiniz Azure **-WebJobs-gizlilikler/{Deployment-Name}/host.js** dosyasında için ayarladığınız Azure depolama hesabında tanımlanmıştır:
+`POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-   ```json
-   {
-     <...>
-     "masterKey": {
-        "name": "master",
-        "value": "<master-key>",
-        "encrypted": false
-     },
-     <...>
+<*ana anahtar*> değeri `AzureWebJobsStorage` , bu bölümdeki değeri bulabileceğiniz Azure **-WebJobs-gizlilikler/{Deployment-Name}/host.js** dosyasında için ayarladığınız Azure depolama hesabında tanımlanmıştır:
+
+```json
+{
+   <...>
+   "masterKey": {
+      "name": "master",
+      "value": "<master-key>",
+      "encrypted": false
+   },
+   <...>
    }
-   ```
+```
 
-<a name="nested-behavior"></a>
+<a name="delete-from-designer"></a>
 
-## <a name="nested-behavior-differences-between-stateful-and-stateless-logic-apps"></a>Durum bilgisiz ve durum bilgisi içermeyen mantıksal uygulamalar arasındaki iç
+## <a name="delete-items-from-the-designer"></a>Tasarımcıdan öğeleri silme
 
-[Bir mantıksal uygulama iş akışını](../logic-apps/logic-apps-http-endpoint.md) , [Istek](../connectors/connectors-native-reqres.md) tetikleyicisi, [http Web kancası](../connectors/connectors-native-webhook.md) tetikleyicisi veya [apiconnectionwehook türüne](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) sahip yönetilen bağlayıcı Tetikleyicileri kullanarak aynı **Logic App (Önizleme)** kaynağında bulunan DIĞER mantıksal uygulama iş akışlarından çağrılabilir hale getirebilirsiniz ve https isteklerini alabilir.
+Tasarımcıdaki iş akışınızda bir öğeyi silmek için şu adımlardan herhangi birini izleyin:
 
-Ana iş akışı alt iş akışını çağırdığında, iç içe mantıksal uygulama iş akışlarının izleyebildiğiniz davranış desenleri aşağıda verilmiştir:
+* Öğeyi seçin, öğenin kısayol menüsünü açın (SHIFT + F10) ve **Sil**' i seçin. Onaylamak için **Tamam**’ı seçin.
 
-* Zaman uyumsuz yoklama kriteri
+* Öğeyi seçin ve DELETE tuşuna basın. Onaylamak için **Tamam**’ı seçin.
 
-  Üst öğe, ilk çağrısına yanıt beklemez, ancak alt çalışmayı bitirene kadar alt öğenin çalışma geçmişini sürekli olarak denetler. Varsayılan olarak, durum bilgisi olan iş akışları, [istek zaman aşımı sınırlarını](../logic-apps/logic-apps-limits-and-config.md)aşabileceğinden uzun süre çalışan alt iş akışları için ideal olan bu kalıbı izler.
+* Öğeyi, ayrıntılar bölmesinin bu öğe için açılmasını sağlayacak şekilde seçin. Bölmenin sağ üst köşesinde üç nokta (**...**) menüsünü açın ve **Sil**' i seçin. Onaylamak için **Tamam**’ı seçin.
 
-* Zaman uyumlu model ("ateş ve unut")
+  ![Açık Ayrıntılar bölmesiyle ve seçilen üç nokta düğmesi ve "Sil" komutu ile tasarımcıda seçili bir öğeyi gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
-  Alt öğe, hemen bir yanıt döndürerek çağrıyı onaylar `202 ACCEPTED` ve üst öğe, alt öğeden gelen sonuçları beklemeden bir sonraki eyleme devam eder. Bunun yerine, alt öğe çalışmayı bitirdiğinde sonuçları alır. Yanıt eylemi içermeyen, durum bilgisi olan alt iş akışları her zaman zaman uyumlu düzende takip eder. Alt durum bilgisi olan iş akışlarında, çalışma geçmişi gözden geçirmeniz için kullanılabilir.
-
-  Bu davranışı etkinleştirmek için iş akışının JSON tanımında `operationOptions` özelliğini olarak ayarlayın `DisableAsyncPattern` . Daha fazla bilgi için bkz. [tetikleyici ve eylem türleri-işlem seçenekleri](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
-
-* Tetikleme ve bekleme
-
-  Alt durum bilgisi olmayan bir iş akışı için üst öğe, alt öğeden sonuçları döndüren bir yanıt bekler. Bu model, bir alt iş akışını çağırmak için yerleşik [http tetikleyicisi veya eylemini](../connectors/connectors-native-http.md) kullanmayla benzerdir. Yanıt eylemi içermeyen alt durum bilgisiz iş akışları hemen bir `202 ACCEPTED` yanıt döndürür, ancak üst öğe sonraki eyleme geçmeden önce alt öğenin bitmesini bekler. Bu davranışlar yalnızca alt durum bilgisiz iş akışları için geçerlidir.
-
-Bu tablo, üst ve alt öğenin durum bilgisiz, durumsuz veya karışık iş akışı türleri olup olmadığına bağlı olarak alt iş akışının davranışını belirtir:
-
-| Üst iş akışı | Alt iş akışı | Alt davranış |
-|-----------------|----------------|----------------|
-| Durum Bilgisi Olan | Durum Bilgisi Olan | Ayar ile zaman uyumsuz veya zaman uyumlu `"operationOptions": "DisableAsyncPattern"` |
-| Durum Bilgisi Olan | Durum bilgisi olmayan | Tetikleme ve bekleme |
-| Durum bilgisi olmayan | Durum Bilgisi Olan | Zaman Uyumlu |
-| Durum bilgisi olmayan | Durum bilgisi olmayan | Tetikleme ve bekleme |
-||||
-
-## <a name="limits"></a>Sınırlar
-
-[Azure Logic Apps için mevcut limitlerin](../logic-apps/logic-apps-limits-and-config.md) çoğu bu kaynak türü için aynı olsa da, bu genel önizleme uzantısındaki farklılıklar aşağıda verilmiştir:
-
-* Yönetilen bağlayıcılar: bağlantı başına dakika başına 50 istek
-
-* JavaScript eylemi [Için satır Içi kod eylemi](../logic-apps/logic-apps-add-run-inline-code.md) için bu sınırlar değiştirilmiştir:
-
-  * Kod karakterlerinin sınırı 1.024 karakterden 100.000 karaktere kadar artar.
-
-  * Kodun çalıştırılacağı zaman, beş saniyeden 15 saniyeye kadar artar.
+  > [!TIP]
+  > Üç nokta menüsü görünmüyorsa, ayrıntılar bölmesinin sağ üst köşedeki üç nokta (**...**) düğmesini gösterdiği şekilde, Visual Studio Code pencere genelinde ' ı genişletin.
 
 <a name="troubleshooting"></a>
 
 ## <a name="troubleshoot-errors-and-problems"></a>Hata ve sorunları giderme
 
+<a name="designer-fails-to-open"></a>
+
+### <a name="opening-designer-fails-with-error-workflow-design-time-could-not-be-started"></a>Tasarımcı açma işlemi şu hatayla başarısız oldu: "Iş akışı tasarım zamanı başlatılamadı"
+
+1. Visual Studio Code, çıkış penceresini açın. **Görünüm** menüsünde **Çıkış**' ı seçin.
+
+1. Uzantı içindeki çıktıyı gözden geçirebilmeniz için çıkış penceresinin başlık çubuğundaki listeden **Azure Logic Apps (Önizleme)** öğesini seçin. Örneğin:
+
+   !["Azure Logic Apps" seçiliyken çıkış penceresini gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+
+1. Çıktıyı gözden geçirin ve bu hata iletisinin görüntülenip görüntülenmeyeceğini denetleyin:
+
+   ```text
+   A host error has occurred during startup operation '{operationID}'.
+   System.Private.CoreLib: The file 'C:\Users\{userName}\AppData\Local\Temp\Functions\
+   ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows\1.1.1\bin\
+   DurableTask.AzureStorage.dll' already exists.
+   Value cannot be null. (Parameter 'provider')
+   Application is shutting down...
+   Initialization cancellation requested by runtime.
+   Stopping host...
+   Host shutdown completed.
+   ```
+
+   Daha önce tasarımcıyı açmaya çalıştıysanız ve ardından projeyi sonlandırdıysanız veya sildiyseniz bu hata oluşabilir. Bu hatayı çözmek için, bu konumdaki **extensiondemeti** klasörünü silin **. ..\Users \\ {UserName} \Appdata\local\temp\functions\extensiondemeti** ve tasarımcıda **workflow.js** dosyayı açmayı yeniden deneyin.
+
+<a name="missing-triggers-actions"></a>
+
+### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>Yeni Tetikleyiciler ve eylemler daha önce oluşturulan iş akışlarının tasarımcı seçicisinde yok
+
+Azure Logic Apps önizlemesi, Azure Işlev Işlemleri, sıvı Işlemleri ve XML **doğrulaması** ve **dönüştürme XML** gibi XML işlemlerine yönelik yerleşik eylemleri destekler. Ancak, daha önce oluşturulmuş Logic Apps için, Visual Studio Code uzantı paketinin güncel olmayan bir sürümünü kullandığını belirlemek için bu eylemler tasarımcı seçicisinde görünmeyebilir `Microsoft.Azure.Functions.ExtensionBundle.Workflows` .
+
+Ayrıca, mantıksal uygulamanızı oluştururken **Azure 'dan bağlayıcılar kullan** ' ı etkinleştirmediğiniz veya seçmediyseniz, **Azure işlev işlemleri** Bağlayıcısı ve eylemleri tasarımcı seçicisinde görünmez. Azure tarafından dağıtılan bağlayıcıları uygulama oluşturma zamanında etkinleştirmediyseniz, Visual Studio Code projenizden etkinleştirebilirsiniz. Kısayol menüsünde **workflow.js** açın ve **Azure 'dan bağlayıcıları kullan**' ı seçin.
+
+Güncel olmayan paketi onarmak için, uzantı paketini otomatik olarak en son sürüme güncellemek Visual Studio Code süresi geçmiş paketi silmek için aşağıdaki adımları izleyin.
+
+> [!NOTE]
+> Bu çözüm, Azure portal kullanarak oluşturduğunuz mantıksal uygulamalardan değil, Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code kullanarak oluşturup dağıttığınız Logic Apps için geçerlidir. [Azure Portal tasarımcıda desteklenen Tetikleyiciler ve eylemler eksik](create-stateful-stateless-workflows-azure-portal.md#missing-triggers-actions).
+
+1. Kaybetmek istemediğiniz işleri kaydedin ve Visual Studio 'Yu kapatın.
+
+1. Bilgisayarınızda, mevcut paket için sürümlenmiş klasörleri içeren aşağıdaki klasöre gidin:
+
+   `...\Users\{your-username}\.azure-functions-core-tools\Functions\ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows`
+
+1. Önceki paket için sürüm klasörünü silme Örneğin, sürüm 1.1.3 için bir klasörünüz varsa, bu klasörü silin.
+
+1. Şimdi, gerekli NuGet paketi için sürümlenmiş klasörleri içeren aşağıdaki klasöre gidin:
+
+   `...\Users\{your-username}\.nuget\packages\microsoft.azure.workflows.webjobs.extension`
+
+1. Önceki paketin sürüm klasörünü silin, örneğin, sürüm 1.0.0.8-Önizleme için bir klasörünüz varsa, bu klasörü silin.
+
+1. Visual Studio Code, projenizi ve **workflow.jsüzerindeki** dosyayı tasarımcıda yeniden açın.
+
+Eksik Tetikleyiciler ve eylemler artık tasarımcıda görüntülenir.
+
 <a name="400-bad-request"></a>
 
-### <a name="400-bad-request"></a>"400 Hatalı Istek"
+### <a name="400-bad-request-appears-on-a-trigger-or-action"></a>tetikleyici veya eylemde "400 Hatalı Istek" görüntülenir
 
 Bir çalıştırma başarısız olduğunda ve çalışmayı izleme görünümünde inceleyecekseniz, bu hata daha uzun bir ada sahip bir tetikleyici veya eylemde görünebilir ve bu, temel alınan Tekdüzen Kaynak tanımlayıcısı 'nın (URI) varsayılan karakter sınırını aşmasına neden olur.
 
@@ -1061,7 +1287,7 @@ Bu sorunu gidermek ve daha uzun URI 'yi ayarlamak için `UrlSegmentMaxCount` `Ur
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu genel önizleme uzantısıyla ilgili deneyimleriniz hakkında görüşlerinizi öğrenmek istiyoruz!
+Azure Logic Apps (Önizleme) uzantısıyla deneyimleriniz hakkında duymak istiyoruz!
 
 * Hatalar veya sorunlar için [sorunlarınızı GitHub ' da oluşturun](https://github.com/Azure/logicapps/issues).
 * Sorular, istekler, açıklamalar ve diğer geri bildirimler için [Bu geri bildirim formunu kullanın](https://aka.ms/lafeedback).
