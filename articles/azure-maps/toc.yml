@@ -290,7 +290,7 @@
           href: /rest/api/maps/data
         - name: Coğrafi Konum hizmeti
           href: /rest/api/maps/geolocation
-        - name: Mobility hizmeti
+        - name: Ulaşım hizmetleri
           href: /rest/api/maps/mobility
         - name: İşleme hizmeti
           href: /rest/api/maps/render
@@ -306,7 +306,7 @@
           href: /rest/api/maps/timezone
         - name: Trafik hizmeti
           href: /rest/api/maps/traffic
-        - name: Hava durumu hizmeti
+        - name: Hava durumu hizmetleri
           href: /rest/api/maps/weather
         - name: Haritalar Oluşturucu hizmeti
           items:

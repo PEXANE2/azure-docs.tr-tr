@@ -73,7 +73,7 @@
     - name: İçerik modellerini özelleştirme
       items:
         - name: Animasyonlu karakterler
-          href: animated-characters-recognition.md
+          href: animated-characters-recognition-how-to.md
         - name: Kişi
           items:
             - name: Video Indexer web sitesini kullanma

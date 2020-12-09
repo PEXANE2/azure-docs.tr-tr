@@ -6,10 +6,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.openlocfilehash: ef32372cbaa70f7bca609c2ed1db118f33237e2b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 12/09/2020
 ms.locfileid: "92216207"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL çalıştırma ve Visual Studio Code yerel olarak hata ayıklama
@@ -32,7 +32,7 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 
     ![BuildTools 'ı yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallBuildTools.png)
 
-   2,2 **Win10SDK 10240**yüklemek Için LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup.exe ' a ve ardından sihirbaz yönergelerini izleyin.  
+   2,2 **Win10SDK 10240** yüklemek Için LocalRunDependency/Win10SDK_10.0.10240 _2 klasöründe sdksetup.exe ' a ve ardından sihirbaz yönergelerini izleyin.  
 
     ![Win10SDK 10240 'yi yükler](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/InstallWin10SDK.png)
 
@@ -41,16 +41,16 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Yerel çalıştırma hizmetini başlatın ve U-SQL işini bir yerel hesaba gönder 
-İlk kez Kullanıcı için, [U-SQL yerel çalıştırma ortamı ayarlanmamışsa](#set-up-the-u-sql-local-run-environment)yerel çalıştırma paketlerini Indirmek Için **adl: Yerel çalıştırma paketini** İndir ' i kullanın.
+İlk kez Kullanıcı için, [U-SQL yerel çalıştırma ortamı ayarlanmamışsa](#set-up-the-u-sql-local-run-environment)yerel çalıştırma paketlerini Indirmek Için **adl: Yerel çalıştırma paketini** İndir ' i kullanın.
 
 1. Komut paletini açmak için CTRL + SHIFT + P ' yi seçin ve ardından **adl: Yerel çalıştırma hizmetini Başlat**' ı girin.   
 2. Microsoft yazılımı lisans koşulları 'nı ilk kez kabul etmek için **kabul et** ' i seçin. 
 
    ![Microsoft yazılımı lisans koşulları 'nı kabul edin](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
-3. Cmd konsolu açılır. İlk kullanıcılar için, **3**girmeniz ve ardından veri giriş ve çıkış için yerel klasör yolunu bulmanız gerekir. Yol ters eğik çizgi ile tanımlama başarısız olduysa, eğik çizgileri yeniden deneyin. Diğer seçenekler için varsayılan değerleri kullanabilirsiniz.
+3. Cmd konsolu açılır. İlk kullanıcılar için, **3** girmeniz ve ardından veri giriş ve çıkış için yerel klasör yolunu bulmanız gerekir. Yol ters eğik çizgi ile tanımlama başarısız olduysa, eğik çizgileri yeniden deneyin. Diğer seçenekler için varsayılan değerleri kullanabilirsiniz.
 
    ![Visual Studio Code yerel çalıştırma cmd için Data Lake araçları](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. CTRL + SHIFT + P ' yi seçerek komut paletini açın, **adl: gönder işini**girin ve ardından **Yerel** ' i seçerek işi yerel hesabınıza gönderebilirsiniz.
+4. CTRL + SHIFT + P ' yi seçerek komut paletini açın, **adl: gönder işini** girin ve ardından **Yerel** ' i seçerek işi yerel hesabınıza gönderebilirsiniz.
 
    ![Visual Studio Code Data Lake Araçlar yerel seçin](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. İşi gönderdikten sonra, gönderim ayrıntılarını görüntüleyebilirsiniz. Gönderim ayrıntılarını görüntülemek için **Çıkış** penceresinde **joburl** ' yi seçin. İş gönderme durumunu cmd konsolundan da görüntüleyebilirsiniz. Daha fazla iş ayrıntısı hakkında bilgi edinmek istiyorsanız cmd konsoluna **7** girin.
@@ -62,11 +62,11 @@ Yalnızca Visual Studio için Azure Data Lake Araçları Windows yüklemeleri U-
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>U-SQL işi için yerel bir hata ayıklama başlatma  
 İlk kez Kullanıcı için:
 
-1.  [U-SQL yerel çalıştırma ortamı ayarlanmamışsa](#set-up-the-u-sql-local-run-environment)yerel çalıştırma paketlerini Indirmek Için **adl: Yerel çalıştırma paketini indir** ' i kullanın.
+1. [U-SQL yerel çalıştırma ortamı ayarlanmamışsa](#set-up-the-u-sql-local-run-environment)yerel çalıştırma paketlerini Indirmek Için **adl: Yerel çalıştırma paketini indir** ' i kullanın.
 2. Yüklü değilse, ileti kutusuna önerildiği gibi .NET Core SDK 2,0 ' i yükleme.
- 
+ 
   ![Anımsatıcı, DotNet yükleme](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Yüklü değilse, ileti kutusunda gösterildiği gibi Visual Studio Code Için C# ' i yükleme.Devam etmek için **yüklensin** ' e tıklayın ve ardından vscode 'u yeniden başlatın.
+3. Yüklü değilse, ileti kutusunda gösterildiği gibi Visual Studio Code Için C# ' i yükleme. Devam etmek için **yüklensin** ' e tıklayın ve ardından vscode 'u yeniden başlatın.
 
     ![C 'yi yüklemek için anımsatıcı #](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 

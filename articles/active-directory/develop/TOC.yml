@@ -280,7 +280,7 @@
     - name: Microsoft Authentication Library ile çalışma
       displayName: MSAL
       items:
-        - Name: Tüm platformlar
+        - name: Tüm platformlar
           items:
             - name: Desteklenen kimlik doğrulama akışları
               href: msal-authentication-flows.md

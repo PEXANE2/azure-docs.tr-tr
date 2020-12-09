@@ -28,6 +28,10 @@
           href: resource-network-topologies.md
         - name: Özel roller
           href: resource-custom-roles-sql-db-managed-instance.md
+    - name: Güvenlik
+      items:
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Öğreticiler
   expanded: true
   items:
