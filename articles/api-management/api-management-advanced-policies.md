@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 46bcdac41497eea91b5af0c512a7118e33d5d7c3
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 3a37cde79cef59eaf9c3ef130bfbae9cff958bd7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638912"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919442"
 ---
 # <a name="api-management-advanced-policies"></a>API Management gelişmiş ilkeleri
 
@@ -78,7 +78,7 @@ Değişken ayarla ilkesi gelen bölümdür ve `isMobile` [context](api-managemen
 ```xml
 <policies>
     <inbound>
-        <set-variable name="isMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+        <set-variable name="isMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
         <base />
         <choose>
             <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">
@@ -252,7 +252,7 @@ Bu işlem düzeyi ilke, istekleri arka uç hizmetine iletmiyor.
 
 | Öznitelik                                     | Açıklama                                                                                                                                                                                                                                                                                                    | Gerekli | Varsayılan |
 | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Hiçbiri    |
+| timeout = "Integer"                             | Bir zaman aşımı hatası oluşturulmadan önce, arka uç hizmeti tarafından HTTP yanıt üst bilgilerinin döndürülmesi için beklenecek saniye cinsinden süre. Minimum değer 0 saniyedir. Temeldeki ağ altyapısı bu süreden sonra boştaki bağlantıları düşürüebileceğinden, 240 saniyeden büyük değerler gerçekleştirilemez. | Hayır       | Yok    |
 | iz-yönlendirmeler = "false &#124; true"          | Arka uç hizmetinden gelen yönlendirmelerin, ağ geçidi tarafından izlenen veya çağırana döndürülmeyeceğini belirtir.                                                                                                                                                                                                    | Hayır       | yanlış   |
 | buffer-Request-Body = "false &#124; true"       | "True" olarak ayarlandığında istek arabelleğe alınır ve [yeniden denenmek](api-management-advanced-policies.md#Retry)üzere tekrar kullanılır.                                                                                                                                                                                               | Hayır       | yanlış   |
 | buffer-Response = "false &#124; true" | Öbekli yanıtların işlenmesini etkiler. "False" olarak ayarlandığında, arka uçtan alınan her bir öbek hemen çağırana döndürülür. "True" olarak ayarlandığında parçalar arabelleğe alınır (akış sonu algılanmamışsa 8 KB) ve yalnızca çağırana geri döndürülürsünüz. | Hayır | true |
@@ -305,8 +305,8 @@ Aşağıdaki örnek, bir arka uca iletilen isteklerin sayısının bir bağlam d
 
 | Öznitelik | Açıklama                                                                                        | Gerekli | Varsayılan |
 | --------- | -------------------------------------------------------------------------------------------------- | -------- | ------- |
-| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | YOK     |
-| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | YOK     |
+| anahtar       | Bir dize. İzin verilen ifade. Eşzamanlılık kapsamını belirtir. Birden çok ilke tarafından paylaşılabilir. | Evet      | Yok     |
+| en yüksek sayı | Bir tamsayı. İlkeye girmesine izin verilen en fazla istek sayısını belirtir.           | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -404,7 +404,7 @@ status code and media type. If no example or schema found, the content is empty.
 | Öznitelik    | Açıklama                                                                                           | Gerekli | Varsayılan |
 | ------------ | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | durum kodu  | Yanıt durum kodunu belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır.                 | Hayır       | 200     |
-| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Hiçbiri    |
+| içerik türü | `Content-Type`Yanıt üst bilgisi değerini belirtir ve karşılık gelen örneği veya şemayı seçmek için kullanılır. | Hayır       | Yok    |
 
 ### <a name="usage"></a>Kullanım
 
@@ -462,11 +462,11 @@ Aşağıdaki örnekte, istek iletimi bir üstel yeniden deneme algoritması kull
 
 | Öznitelik        | Açıklama                                                                                                                                           | Gerekli | Varsayılan |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Evet      | YOK     |
-| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | YOK     |
-| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | YOK     |
-| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | YOK     |
-| delta            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | YOK     |
+| koşul        | Yeniden denemelerin durdurulup durdurulmadığını belirten bir Boole sabit değeri veya [ifadesi](api-management-policy-expressions.md) `false` () `true` .      | Evet      | Yok     |
+| count            | Denemek için en fazla yeniden deneme sayısını belirten pozitif bir sayı.                                                                                | Evet      | Yok     |
+| interval         | Yeniden deneme girişimleri arasındaki bekleme aralığını belirten saniye cinsinden pozitif bir sayı.                                                                 | Evet      | Yok     |
+| Maksimum Aralık     | Yeniden deneme girişimleri arasındaki en fazla bekleme aralığını belirten saniye cinsinden pozitif bir sayı. Üstel yeniden deneme algoritması uygulamak için kullanılır. | Hayır       | Yok     |
+| delta            | Bekleme aralığı artışını belirten saniye cinsinden pozitif bir sayı. Doğrusal ve üstel yeniden deneme algoritmalarının uygulanması için kullanılır.             | Hayır       | Yok     |
 | ilk hızlı yeniden deneme | Olarak ayarlanırsa `true` , ilk yeniden deneme denemesi hemen gerçekleştirilir.                                                                                  | Hayır       | `false` |
 
 > [!NOTE]
@@ -595,7 +595,7 @@ Bu örnek ilke, `send-one-way-request` http yanıt kodu 500 değerinden büyük 
 | Öznitelik     | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String" | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | YOK      |
+| name          | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
 | var-eylem | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
 
 ### <a name="usage"></a>Kullanım
@@ -679,10 +679,10 @@ Bu örnekte, bir yetkilendirme sunucusuyla bir başvuru belirtecini doğrulamak 
 | Öznitelik                       | Açıklama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Gerekli | Varsayılan  |
 | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- |
 | Mode = "String"                   | Bunun yeni bir istek mi yoksa geçerli isteğin bir kopyası mı olduğunu belirler. Giden modda Mode = Copy, istek gövdesini başlatmaz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Hayır       | Yeni      |
-| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Evet      | YOK      |
+| Response-variable-name = "String" | Bir yanıt nesnesi alacak bağlam değişkeninin adı. Değişken yoksa, ilke başarıyla yürütüldüğünde oluşturulur ve koleksiyon aracılığıyla erişilebilir hale gelir [`context.Variable`](api-management-policy-expressions.md#ContextVariables) .                                                                                                                                                                                                                                                                                                                          | Evet      | Yok      |
 | timeout = "Integer"               | URL çağrısının başarısız olması için geçmesi gereken saniye cinsinden zaman aşımı aralığı.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | Hayır       | 60       |
 | yoksayma-hata                    | True ise ve istek bir hatayla sonuçlanır:<br /><br /> -Response-değişken adı belirtilmişse null değer içerecektir.<br />-Response değişkeni adı belirtilmemişse, bağlam. İstek güncelleştirilmeyecek.                                                                                                                                                                                                                                                                                                                                                                                   | Hayır       | yanlış    |
-| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | YOK      |
+| name                            | Ayarlanacak üst bilginin adını belirtir.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | Evet      | Yok      |
 | var-eylem                   | Üstbilgi zaten belirtildiğinde gerçekleştirilecek eylemi belirtir. Bu öznitelik aşağıdaki değerlerden birine sahip olmalıdır.<br /><br /> -override-mevcut üstbilginin değerini değiştirir.<br />-Skip-mevcut üst bilgi değerini değiştirmez.<br />-Append-değeri varolan üst bilgi değerine ekler.<br />-Delete-üstbilgiyi istekten kaldırır.<br /><br /> `override`Aynı ada sahip birden çok girdiyi listelemek üzere ayarlandığında, üstbilgi tüm girişlere göre ayarlanmakta (birden çok kez listelenecektir), ancak sonuçlarda listelenen değerler ayarlanır. | Hayır       | override |
 
 ### <a name="usage"></a>Kullanım
@@ -723,9 +723,9 @@ Gizli bilgilerin ilke belgesinde depolanmasını önlemek için, [özelliklerin]
 
 | Öznitelik         | Açıklama                                            | Gerekli | Varsayılan |
 | ----------------- | ------------------------------------------------------ | -------- | ------- |
-| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Evet      | YOK     |
-| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | YOK     |
-| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | YOK     |
+| URL = "String"      | Biçiminde proxy URL 'SI http://host:port .             | Evet      | Yok     |
+| username = "String" | Proxy ile kimlik doğrulaması için kullanılacak Kullanıcı adı. | Hayır       | Yok     |
+| Password = "String" | Proxy ile kimlik doğrulaması için kullanılacak parola. | Hayır       | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -829,8 +829,8 @@ Bu örnekte, yetkilendirme belirtecinin geçersiz olması durumunda 401 yanıtı
 
 | Öznitelik       | Açıklama                                                | Gerekli | Varsayılan |
 | --------------- | ---------------------------------------------------------- | -------- | ------- |
-| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | YOK     |
-| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | YOK     |
+| Code = "integer"  | Döndürülecek HTTP durum kodu.                            | Evet      | Yok     |
+| Reason = "String" | Durum kodunu döndürme nedeninin açıklaması. | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 
@@ -854,7 +854,7 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 Aşağıdaki örnek, gelen bölümündeki bir değişken kümesi ilkesini gösterir. Bu set değişken ilkesi `isMobile` [context](api-management-policy-expressions.md#ContextVariables) , `User-Agent` istek üst bilgisi metin içeriyorsa true olarak ayarlanmış bir Boole bağlam değişkeni oluşturur `iPad` `iPhone` .
 
 ```xml
-<set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />
+<set-variable name="IsMobile" value="@(context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPad") || context.Request.Headers.GetValueOrDefault("User-Agent","").Contains("iPhone"))" />
 ```
 
 ### <a name="elements"></a>Öğeler
@@ -953,10 +953,10 @@ Bu ilke, aşağıdaki ilke [bölümlerinde](./api-management-howto-policies.md#s
 
 | Öznitelik | Açıklama                                                                                                               | Gerekli | Varsayılan |
 | --------- | ------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Evet      | YOK     |
+| kaynak    | Dize sabit değeri, izleme görüntüleyicisine anlamlı ve iletinin kaynağını belirtmektir.                                   | Evet      | Yok     |
 | önem derecesi  | İzlemenin önem derecesini belirtir. İzin verilen değerler `verbose` , `information` , `error` (en küçükten en büyüğe). | Hayır       | Ayrıntılı |
-| name      | Özelliğin adı.                                                                                                     | Evet      | YOK     |
-| değer     | Özelliğin değeri.                                                                                                    | Evet      | YOK     |
+| name      | Özelliğin adı.                                                                                                     | Evet      | Yok     |
+| değer     | Özelliğin değeri.                                                                                                    | Evet      | Yok     |
 
 ### <a name="usage"></a>Kullanım
 

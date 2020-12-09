@@ -4,12 +4,12 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186288"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920579"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
@@ -25,7 +25,7 @@ TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özellikl
 
 Bir uygulama veya hizmet için izlemeyi ayarlamak üzere aşağıdaki görevleri tamamlayın.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ücretsiz olarak yeni bir tane edinin][azure-free-offer]. Kuruluşunuzun bir Azure aboneliğini zaten varsa, yöneticiniz [bu yönergeleri][add-aad-user] izleyerek sizi aboneliğe ekleyebilir.
 
@@ -34,12 +34,15 @@ Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ü
 
 ### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a> Application Insights kaynağı ayarlama
 
-1. [Azure Portal][portal] oturum açın.
+1. [Azure portalında][portal] oturum açın.
 2. [Application Insights kaynağı oluşturma](create-new-resource.md)
 
 ### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK'sını ayarlama
 
 Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin.
+
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=nodejs) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 1. Yeni oluşturulan kaynağından kaynağınızın izleme anahtarını ( *Ikey* olarak da bilinir) kopyalayın. Application Insights, verileri Azure kaynağınızla eşlemek için ikey değerini kullanır. SDK'nın ikey değerini kullanabilmesi için ikey değerini bir ortam değişkeninde veya kodunuzda belirtmeniz gerekir.  
 
@@ -374,7 +377,7 @@ appInsights.defaultClient.addTelemetryProcessor(removeStackTraces);
 
 Birden çok Application Insights kaynağı oluşturabilir ve bunların her birine, ilgili izleme anahtarlarını ("Ikey") kullanarak farklı veriler gönderebilirsiniz.
 
- Örneğin:
+ Örnek:
 
 ```javascript
 let appInsights = require("applicationinsights");

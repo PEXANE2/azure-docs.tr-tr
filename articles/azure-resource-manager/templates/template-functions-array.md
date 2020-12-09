@@ -1,18 +1,18 @@
 ---
 title: Şablon işlevleri-diziler
-description: Diziler ile çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+description: Diziler ile çalışmak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 85f910f6143fd16f996a200172d0efd852897d8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 40a6815bb10ce9725405d68498b9a554706f3af8
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004628"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920551"
 ---
 # <a name="array-functions-for-arm-templates"></a>ARM şablonları için dizi işlevleri
 
-Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda diziler ile çalışmak için çeşitli işlevler sağlar.
+Kaynak Yöneticisi, Azure Resource Manager şablonunuzda dizilerle çalışmak için çeşitli işlevler sağlar (ARM şablonu):
 
 * [array](#array)
 * [Concat](#concat)
@@ -24,7 +24,7 @@ Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzda diziler ile çal�
 * [soyadına](#last)
 * [length](#length)
 * [Biçimlendir](#max)
-* [dk](#min)
+* [Min](#min)
 * [aralığı](#range)
 * [Şimdilik](#skip)
 * [take](#take)
@@ -42,9 +42,9 @@ Değeri bir diziye dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Yes |int, String, array veya Object |Bir diziye dönüştürülecek değer. |
+| convertToArray |Evet |int, String, array veya Object |Bir diziye dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -129,10 +129,10 @@ Birden çok diziyi birleştirir ve birleştirilmiş diziyi döndürür ya da bir
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |Birleştirme için ilk dizi veya dize. |
-| ek bağımsız değişkenler |No |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
+| arg1 |Evet |dizi veya dize |Birleştirme için ilk dizi veya dize. |
+| ek bağımsız değişkenler |Hayır |dizi veya dize |Birleştirme için sıralı sırada ek diziler veya dizeler. |
 
 Bu işlev herhangi bir sayıda bağımsız değişken alabilir ve parametreler için dizeleri ya da dizileri kabul edebilir. Ancak, parametreleri için hem diziler hem de dizeler sağlayamıyoruz. Diziler yalnızca diğer dizilerle birleştirilir.
 
@@ -252,10 +252,10 @@ Bir dizinin bir değer içerip içermediğini denetler, bir nesne anahtar içeri
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| kapsayıcı |Yes |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
-| ıtemtofind |Yes |dize veya tamsayı |Bulunacak değer. |
+| kapsayıcı |Evet |dizi, nesne veya dize |Bulunacak değeri içeren değer. |
+| ıtemtofind |Evet |dize veya tamsayı |Bulunacak değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -364,9 +364,9 @@ Parametrelerden bir dizi oluşturur. `createArray`Işlev Bıcep tarafından dest
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| args |No |String, Integer, array veya Object |Dizideki değerler. |
+| args |Hayır |String, Integer, array veya Object |Dizideki değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -448,9 +448,9 @@ Bir dizi, nesne veya dize boş olup olmadığını belirler.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| ıtemtotest |Yes |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
+| ıtemtotest |Evet |dizi, nesne veya dize |Boş olup olmadığını denetlemek için değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -529,9 +529,9 @@ Dizinin ilk öğesini veya dizenin ilk karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |İlk öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |İlk öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -598,11 +598,11 @@ Parametrelerden ortak öğelerle tek bir dizi veya nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
-| arg2 |Yes |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |No |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
+| arg1 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ilk değer. |
+| arg2 |Evet |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |Hayır |dizi veya nesne |Ortak öğeleri bulmak için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -706,9 +706,9 @@ Dizinin son öğesini veya dizenin son karakterini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya dize |Son öğe veya karakteri alma değeri. |
+| arg1 |Evet |dizi veya dize |Son öğe veya karakteri alma değeri. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -775,9 +775,9 @@ Bir dizideki öğelerin sayısını, bir dizedeki karakterleri veya bir nesnedek
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
+| arg1 |Evet |dizi, dize veya nesne |Öğe sayısının alınması için kullanılacak dizi, karakter sayısını almak için kullanılacak dize veya kök düzeyi özelliklerinin sayısını almak için kullanılacak nesne. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -889,7 +889,7 @@ Bu işlevi, kaynak oluştururken yineleme sayısını belirtmek için bir dizi i
 
 ---
 
-Bu işlevi bir dizi ile kullanma hakkında daha fazla bilgi için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
+Bu işlevi bir dizi ile kullanma hakkında daha fazla bilgi için bkz. [ARM şablonlarındaki kaynak yinelemesi](copy-resources.md).
 
 ## <a name="max"></a>max
 
@@ -899,9 +899,9 @@ Tamsayılar dizisinden en büyük değeri veya virgülle ayrılmış tamsayılar
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
+| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En büyük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -969,9 +969,9 @@ Tamsayılar dizisinden en küçük değeri veya virgülle ayrılmış tamsayıla
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
+| arg1 |Evet |tamsayılar dizisi veya virgülle ayrılmış tamsayılar listesi |En küçük değeri almak için koleksiyon. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1039,10 +1039,10 @@ Bir başlangıç tamnoktasından tamsayılar dizisi oluşturur ve bir dizi öğe
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| startIndex |Yes |int |Dizideki ilk tamsayı. StartIndex ve Count toplamı 2147483647 değerinden büyük olmamalıdır. |
-| count |Yes |int |Dizideki tamsayıların sayısı. 10000 kadar negatif olmayan bir tamsayı olmalıdır. |
+| startIndex |Evet |int |Dizideki ilk tamsayı. StartIndex ve Count toplamı 2147483647 değerinden büyük olmamalıdır. |
+| count |Evet |int |Dizideki tamsayıların sayısı. 10000 kadar negatif olmayan bir tamsayı olmalıdır. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1103,10 +1103,10 @@ Dizide belirtilen sayıdan sonraki tüm öğeleri içeren bir dizi döndürür v
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
-| numberToSkip |Yes |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
+| originalValue |Evet |dizi veya dize |Atlama için kullanılacak dizi veya dize. |
+| numberToSkip |Evet |int |Atlanacak öğe veya karakter sayısı. Bu değer 0 veya daha azsa, değer içindeki tüm öğeler veya karakterler döndürülür. Dizi veya dizenin uzunluğundan daha büyükse boş bir dizi veya dize döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1191,10 +1191,10 @@ Dizinin başından itibaren belirtilen sayıda öğe içeren bir dizi veya dizen
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| originalValue |Yes |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
-| numberToTake |Yes |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
+| originalValue |Evet |dizi veya dize |Öğelerin ele aldığı dizi veya dize. |
+| numberToTake |Evet |int |Gerçekleştirilecek öğe veya karakter sayısı. Bu değer 0 veya daha azsa, boş bir dizi veya dize döndürülür. Belirtilen dizi veya dizenin uzunluğundan daha büyükse, dizideki veya dizedeki tüm öğeler döndürülür. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1279,11 +1279,11 @@ Parametrelerden tüm öğeleri içeren tek bir dizi veya nesne döndürür. Yine
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
-| arg2 |Yes |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
-| ek bağımsız değişkenler |No |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
+| arg1 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ilk değer. |
+| arg2 |Evet |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ikinci değer. |
+| ek bağımsız değişkenler |Hayır |dizi veya nesne |Öğeleri birleştirmek için kullanılacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -1381,4 +1381,4 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

@@ -1,17 +1,17 @@
 ---
-title: Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
+title: Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
 description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makineyi veya sanal makine ölçek kümesini ölçeklendirmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 364309301b403234936da1bac6e1b74af24c2fdb
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 95f94bd1e80c05658d9033047950d4b49fca4643
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573315"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920668"
 ---
-# <a name="get-started-with-autoscale-in-azure"></a>Azure 'da otomatik ölçeklendirme ile çalışmaya başlama
+# <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
 
 Azure Izleyici otomatik ölçeklendirme yalnızca [Sanal Makine Ölçek Kümeleri](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)ve [API Management Hizmetleri](../../api-management/api-management-key-concepts.md)için geçerlidir.
@@ -121,7 +121,7 @@ Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı 
 
 ### <a name="health-check-path"></a>Sistem durumu denetim yolu
 
-Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 302 yeniden yönlendirmeleri izlemez. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleşir, bu özellik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
+Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 302 yeniden yönlendirmeleri izlemez. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleştirilir, bu güvenlik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
 
 Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
 

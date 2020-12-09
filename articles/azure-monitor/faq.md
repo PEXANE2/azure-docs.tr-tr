@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: b770e4488b6edb1c2d3749066315b552c0b5b40a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7336078d1f04b9dcb6c2f229654f1c36d9b3114b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186176"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919966"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Izleyici sık sorulan sorular
 
@@ -268,6 +268,10 @@ Uygulama türüne uygun SDK için [sürüm notlarına](app/release-notes.md) bak
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Projem hangi Azure kaynağını veri gönderdiğini nasıl değiştirebilirim?
 Çözüm Gezgini ' de sağ tıklayın `ApplicationInsights.config` ve **Application Insights Güncelleştir**' i seçin. Verileri Azure 'da var olan veya yeni bir kaynağa gönderebilirsiniz. Güncelleştirme Sihirbazı, sunucu SDK 'sının verilerinizi nereye göndereceğini belirleyen ApplicationInsights.config izleme anahtarını değiştirir. "Tümünü Güncelleştir" seçeneğinin işaretini kaldırmadığınız takdirde, Web sayfalarınızda göründüğü anahtarı da değiştirecek.
+
+### <a name="do-new-azure-regions-require-the-use-of-connection-strings"></a>Yeni Azure bölgeleri bağlantı dizelerinin kullanılmasını gerektiriyor mu?
+
+Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./app/sdk-connection-string.md) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>`providers('Microsoft.Insights', 'components').apiVersions[0]`Azure Resource Manager dağıtımlarım içinde kullanabilir miyim?
 

@@ -4,19 +4,19 @@ description: Application Insights ile web ve çalışan rollerinizi etkili bir �
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 29482403358936b95fc5e814b68238cc8c25f7a8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ccd863db55ef0ff9f4051947321321c8b01430c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186363"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920683"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services için Application Insights
 [Application Insights][start] , bulut hizmetinizdeki [Azure tanılama](../platform/diagnostics-extension-overview.md) verilerle Application Insights SDK 'lardan verileri birleştirerek kullanılabilirlik, performans, başarısızlık ve kullanım için [Azure bulut hizmeti uygulamalarını](https://azure.microsoft.com/services/cloud-services/) izleyebilir. Uygulamanızın gerçek hayattaki performansı ve etkinliğine ilişkin aldığınız geri bildirimlerden yararlanarak her geliştirme yaşam döngüsünde tasarımın yönü konusunda bilinçli kararlar alabilirsiniz.
 
 ![Genel Bakış Panosu](./media/cloudservices/overview-graphs.png)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Başlamadan önce şunları yapmanız gerekir:
 
 * Bir [Azure](https://azure.com) aboneliği. Windows, Xbox Live veya diğer Microsoft bulut hizmetleri için Microsoft hesabı oturum açın. 
@@ -110,15 +110,14 @@ Visual Studio’da her bulut uygulaması projesi için Application Insights SDK�
 
     b. [Windows Sunucuları için Application Insights](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/)’ı ekleyin.
 
-    !["Application Insights" araması yapın](./media/cloudservices/04-ai-nuget.png)
-
 1. SDK 'Yı Application Insights kaynağına veri gönderecek şekilde yapılandırmak için:
 
     a. Uygun bir başlangıç işlevinde, *. cscfg* dosyasındaki yapılandırma ayarından izleme anahtarını ayarlayın:
  
     ```csharp
-   
-     TelemetryConfiguration.Active.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = RoleEnvironment.GetConfigurationSettingValue("APPINSIGHTS_INSTRUMENTATIONKEY");
+        var telemetryClient = new TelemetryClient(configuration);
     ```
    
     b. Uygulamanızdaki her bir rol için "adım a" tekrarlayın. Örneklere bakın:

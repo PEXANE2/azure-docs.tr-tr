@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492293"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920792"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Bekleyen Azure veri şifrelemesi
 
@@ -33,7 +33,7 @@ Bekleyen şifreleme ortak bir güvenlik gereksinimidir. Azure 'da kuruluşlar, b
 
 ## <a name="what-is-encryption-at-rest"></a>Bekleyen şifreleme nedir?
 
-Bekleyen şifreleme, kalıcı olduğunda verilerin kodlanması (şifreleme). Azure 'daki Rest tasarımlarındaki şifreleme, basit bir kavramsal modele göre büyük miktarlarda verileri şifrelemek ve şifrelerini çözmek için simetrik şifrelemeyi kullanır:
+Şifreleme, verilerin gizliliğini korumak için kullanılan verilerin güvenli kodlamasıdır. Azure 'daki Rest tasarımlarındaki şifreleme, basit bir kavramsal modele göre büyük miktarlarda verileri şifrelemek ve şifrelerini çözmek için simetrik şifrelemeyi kullanır:
 
 - Verileri depolamaya yazıldığı şekilde şifrelemek için bir simetrik şifreleme anahtarı kullanılır.
 - Aynı şifreleme anahtarı, bellekte kullanım için yeniden kullanıma hazır olduğundan bu verilerin şifresini çözmek için kullanılır.

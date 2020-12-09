@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489063"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921034"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -34,7 +34,7 @@ Bu laboratuvarda kullanılan veriler New York City TAXI verileri. SQL veritaban�
 
 * **Azure Data Lake Storage 2. depolama hesabı**: ADLS 2. depolama hesabınız yoksa [ADLS 2. depolama hesabı oluşturmayı](../storage/common/storage-account-create.md)öğrenin.
 
-* **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)**: bir Azure SYNAPSE analizinizde (eskı ADıYLA SQL DW) yoksa, [Azure SYNAPSE Analytics örneği oluşturmayı](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)öğrenin.
+* **Azure SYNAPSE Analytics**: Azure SYNAPSE analizinizde yoksa [Azure SYNAPSE Analytics örneği oluşturmayı](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md)öğrenin.
 
 * **Azure Data Factory**: bir veri fabrikası oluşturmadıysanız, bkz. [Veri Fabrikası oluşturma](./quickstart-create-data-factory-portal.md).
 
@@ -79,7 +79,7 @@ Azure Data Factory bağlı hizmetler, dış kaynaklara yönelik bağlantı bilgi
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Azure SYNAPSE Analytics bağlı hizmeti oluşturma
 
-1. Azure SYNAPSE Analytics bağlantılı hizmetini eklemek için aynı işlemi tekrarlayın. Bağlantılar sekmesinde **Yeni**' ye tıklayın. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** kutucuğunu seçin ve devam ' a tıklayın.
+1. Azure SYNAPSE Analytics bağlantılı hizmetini eklemek için aynı işlemi tekrarlayın. Bağlantılar sekmesinde **Yeni**' ye tıklayın. **Azure SYNAPSE Analytics** kutucuğunu seçin ve devam ' a tıklayın.
 
     ![Portal yapılandırma 6](media/lab-data-flow-data-share/configure6.png)
 1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adınız olarak ' SQLDW ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
@@ -155,7 +155,7 @@ Kaynak veri kümenizi başarıyla oluşturdunuz. Kaynak ayarlarında, varsayıla
 1. Kopyalama etkinliğinizi doğru şekilde çalıştığını doğrulamak için, bir hata ayıklama çalıştırması yürütmek üzere işlem hattı tuvalinin en üstündeki **Hata Ayıkla** ' ya tıklayın. Bir hata ayıklama çalıştırması, Veri Fabrikası hizmetine yayımlamadan önce işlem hattınızı uçtan uca veya bir kesme noktasına kadar test etmenize olanak sağlar.
 
     ![Portal kopyası 11](media/lab-data-flow-data-share/copy11.png)
-1. Hata ayıklama çalıştırmanızı izlemek için işlem hattı tuvalinin **Çıkış** sekmesine gidin. İzleme ekranı, her 20 saniyede bir yenilenir veya Yenile düğmesine el ile tıkladığınızda yenilenir. Kopyalama etkinliği, **Eylemler** sütunundaki göz gözlük simgesine tıklayarak erişebilen özel bir izleme görünümüne sahiptir.
+1. Hata ayıklama çalıştırmanızı izlemek için işlem hattı tuvalinin **Çıkış** sekmesine gidin. İzleme ekranı, her 20 saniyede bir yenilenir veya Yenile düğmesine el ile tıkladığınızda yenilenir. Kopyalama etkinliği, **Eylemler** sütunundaki göz gözlük simgesine tıklanarak erişebilen özel bir izleme görünümüne sahiptir.
 
     ![Portal kopyası 12](media/lab-data-flow-data-share/copy12.png)
 1. Kopyalama izleme görünümü etkinliğin yürütme ayrıntılarını ve performans özelliklerini sağlar. Veri okuma/yazma, satır okuma/yazma, dosya okuma/yazma ve aktarım hızı gibi bilgileri görebilirsiniz. Her şeyi doğru şekilde yapılandırdıysanız, ADLS havuzinizdeki bir dosyada 49.999 satır yazıldığını görmeniz gerekir.
@@ -176,7 +176,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 1. İşlem hattı tuvalinin Etkinlikler bölmesinde **taşıma ve dönüştürme** Accordion ' ı açın ve **veri akışı** etkinliğini tuvale sürükleyin.
 
     ![Portal veri akışı 1](media/lab-data-flow-data-share/dataflow1.png)
-1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam**'a tıklayın.
+1. Açılan yan bölmede **Yeni veri akışı oluştur** ' u seçin ve **veri akışını eşleme**' yi seçin. **Tamam** düğmesine tıklayın.
 
     ![Portal veri akışı 2](media/lab-data-flow-data-share/dataflow2.png)
 1. Dönüştürme mantığınızı oluşturacağınız veri akışı tuvaline yönlendirilirsiniz. Genel sekmesinde, veri akışınızı ' Joinandadggregatedata ' olarak adlandırın.
@@ -261,7 +261,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
     Toplam seyahat mesafesini almak için `sum()` toplama işlevini kullanarak `trip_distance` sütun için bir tamsayıya dönüştürme toplamını toplayın `toInteger()` . Veri akışı ifade dilinde, bu olarak tanımlanmıştır `sum(toInteger(trip_distance))` . İşiniz bittiğinde Kaydet ' e tıklayın **ve son** ' a tıklayın.
 
     ![Portal AGG 6](media/lab-data-flow-data-share/agg6.png)
-1. **Veri önizleme** sekmesinde dönüştürme mantığınızı test edin. Gördüğünüz gibi, daha önce çok daha az sayıda satır ve sütun vardır. Bu dönüşümde tanımlanan üç gruplama ölçütü ve toplama sütunları aşağı yönde devam eder. Örnekte yalnızca beş ödeme türü grubu olduğundan, yalnızca beş satır silinir.
+1. **Veri önizleme** sekmesinde dönüştürme mantığınızı test edin. Gördüğünüz gibi, daha önce çok daha az sayıda satır ve sütun vardır. Yalnızca bu dönüşümde tanımlanan üç grup ve toplama sütunu, aşağı yönde devam eder. Örnekte yalnızca beş ödeme türü grubu olduğundan, yalnızca beş satır silinir.
 
     ![Portal AGG 7](media/lab-data-flow-data-share/agg7.png)
 
@@ -274,7 +274,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 
     ![Portal Havuzu 2](media/lab-data-flow-data-share/sink2.png)
 
-1. **Azure SYNAPSE Analytics (eski ADıYLA SQL DW)** kutucuğunu seçin ve devam ' a tıklayın.
+1. **Azure SYNAPSE Analytics** kutucuğunu seçin ve devam ' a tıklayın.
 
     ![Portal havuzu 3](media/lab-data-flow-data-share/sink3.png)
 1. ' Aggregary Taxıdata ' veri kümenizi çağırın. Bağlı hizmetiniz olarak ' SQLDW ' seçeneğini belirleyin. **Yeni tablo oluştur** ' u seçin ve yeni tabloyu dbo olarak adlandırın. AggregateTaxiData. Bittiğinde Tamam 'a tıklayın
@@ -306,7 +306,7 @@ Veri akışınızı başarıyla oluşturdunuz. Şimdi bunu bir işlem hattı etk
 
 Artık bu laboratuvarın Data Factory bölümünü tamamladınız. Bunları tetikleyicilerle birlikte kullanmak istiyorsanız kaynaklarınızı yayımlayın. Azure SQL veritabanı 'ndan veri alan bir işlem hattını kopyalama etkinliğini kullanarak Azure Data Lake Storage ve ardından bu verileri bir Azure SYNAPSE Analytics 'e toplanmış şekilde başarıyla çalıştırdınız. Verilerin kendine SQL Server bakarak başarıyla yazıldığını doğrulayabilirsiniz.
 
-## <a name="share-data-using-azure-data-share"></a>Azure veri paylaşma kullanarak veri paylaşma
+## <a name="share-data-using-azure-data-share"></a>Azure Veri Paylaşımı ile veri paylaşma
 
 Bu bölümde, Azure portal kullanarak yeni bir veri paylaşımının nasıl ayarlanacağını öğreneceksiniz. Bu, Azure Data Lake Store Gen2 ve Azure SYNAPSE Analytics 'te veri kümeleri içerecek yeni bir veri paylaşımının oluşturulmasını kapsar. Böylece, veri tüketicilerine kendileriyle paylaşılan verileri otomatik olarak yenileme seçeneği veren bir anlık görüntü zamanlaması yapılandıracaksınız. Ardından, alıcıları veri paylaşımınıza davet edeceksiniz. 
 

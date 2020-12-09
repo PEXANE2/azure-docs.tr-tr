@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 95f59b73682e461a350410b38e3a021226cd7db6
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748697"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921626"
 ---
 # <a name="basic-concepts"></a>Temel Kavramlar
 
@@ -30,13 +30,13 @@ Microsoft Azure kanıtlama ile ilgili bazı temel kavramlar aşağıda verilmiş
 
 Kanıtlama sağlayıcısı, Microsoft. kanıtlama adlı Azure kaynak sağlayıcısına aittir. Kaynak sağlayıcı, Azure kanıtlama REST sözleşmesi sağlayan ve [Azure Resource Manager](../azure-resource-manager/management/overview.md)kullanılarak dağıtılan bir hizmet uç noktasıdır. Her kanıtlama sağlayıcısı, belirli, keşfedilebilir bir ilkeyi kabul eder. 
 
-Kanıtlama sağlayıcıları her t türü için varsayılan ilkeyle oluşturulur (VBS kuşatma 'un varsayılan ilkesi olmadığını unutmayın). SGX için varsayılan ilke hakkında daha fazla bilgi için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md) .
+Kanıtlama sağlayıcıları her bir kanıtlama türü için varsayılan ilkeyle oluşturulur (VBS kuşatma 'un varsayılan ilkesi olmadığını unutmayın). SGX için varsayılan ilke hakkında daha fazla bilgi için bkz. [kanıtlama ilkesi örnekleri](policy-examples.md) .
 
 ### <a name="regional-default-provider"></a>Bölgesel varsayılan sağlayıcı
 
 Azure kanıtlama, her bölgede varsayılan bir sağlayıcı sağlar. Müşteriler, kanıtlama için varsayılan sağlayıcıyı kullanmayı veya özel ilkelerle kendi sağlayıcılarını oluşturmayı tercih edebilir. Varsayılan sağlayıcılara herhangi bir Azure AD kullanıcısı tarafından erişilebilir ve varsayılan bir sağlayıcıyla ilişkili ilke değiştirilemez.
 
-| Region | Attest Uri 'Si | 
+| Bölge | Attest Uri 'Si | 
 |--|--|
 | Güney Birleşik Krallık | `https://shareduks.uks.attest.azure.net` | 
 | ABD Doğu 2 | `https://sharedeus2.eus2.attest.azure.net` | 
@@ -50,13 +50,13 @@ Kanıtlama isteği, istemci uygulaması tarafından kanıtlama sağlayıcısına
 - "QUOTE": "QUOTE" özelliğinin değeri, kanıtlama teklifinin Base64URL kodlamalı bir gösterimini içeren bir dizedir
 - "EnclaveHeldData": "EnclaveHeldData" özelliğinin değeri, Kuşve tutulan verilerin Base64URL kodlamalı bir gösterimini içeren bir dizedir.
 
-Azure kanıtlama, belirtilen "QUOTE" değerini t 'den doğrular ve ardından, verilen Kuşve tutulan verilerin SHA256 karmasının, teklifteki reportData alanının ilk 32 baytından ifade edilmesi gerekir. 
+Azure kanıtlama, belirtilen "QUOTE" değerini doğrular ve ardından, belirtilen Kuşve tutulan verilerin SHA256 karmasının, teklifteki reportData alanının ilk 32 baytından ifade edilmesi gerekir. 
 
 ## <a name="attestation-policy"></a>Kanıtlama ilkesi
 
 Kanıtlama ilkesi, kanıtlama kanıtını işlemek için kullanılır ve müşteriler tarafından yapılandırılabilir. Azure kanıtlama 'nın temel tarafında, kanıt constituting taleplerini işleyen bir ilke altyapısıdır. İlkeler, Azure kanıtlama 'nın kanıt (veya değil) tabanlı bir kanıtlama belirteci verip etmediğini ve bu nedenle Attester 'ı (veya değil) kanıtlamasını tespit etmek için kullanılır. Buna uygun olarak, tüm ilkeleri geçememesi, hiçbir JWT belirtecinin verilmemesi sonucunu vermez.
 
-Kanıtlama sağlayıcıdaki varsayılan t ilkesi ihtiyaçları karşılamıyorsa, müşteriler Azure kanıtlama tarafından desteklenen bölgelerde özel ilkeler oluşturabilir. İlke yönetimi, Azure kanıtlama tarafından müşterilere sunulan bir temel özelliktir. İlkeler, t 'ye özgüdür ve şifreleme tanımlamak veya çıkış belirtecine talepler eklemek ya da bir çıkış belirtecindeki talepleri değiştirmek için kullanılabilir. 
+Kanıtlama sağlayıcıdaki varsayılan ilke ihtiyaçları karşılamıyorsa, müşteriler Azure kanıtlama tarafından desteklenen bölgelerde özel ilkeler oluşturabilir. İlke yönetimi, Azure kanıtlama tarafından müşterilere sunulan bir temel özelliktir. İlkeler, kanıtlama türüne özgüdür ve şifreleme tanımlamak veya çıkış belirtecine talepler eklemek ya da bir çıkış belirtecindeki talepleri değiştirmek için kullanılabilir. 
 
 Varsayılan ilke içeriği ve örnekleri için [bir kanıtlama ilkesi örneklerine](policy-examples.md) bakın.
 

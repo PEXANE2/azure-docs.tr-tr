@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: SYNAPSE SQL havuzu için ölçek işlem (Azure PowerShell)'
-description: Azure PowerShell kullanarak SYNAPSE SQL havuzunun (veri ambarı) işlem ölçeğini ölçeklendirebilirsiniz.
+title: 'Hızlı başlangıç: adanmış SQL Havuzu (eski adıyla SQL DW) için ölçek işlem (Azure PowerShell)'
+description: Azure PowerShell kullanarak adanmış SQL havuzunun (eski adıyla SQL DW) işlem ölçeğini ölçeklendirebilirsiniz.
 services: synapse-analytics
 author: Antvgski
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 87e10740e6081431bad96daa930f61238ca495bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91566151"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921899"
 ---
-# <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile SYNAPSE SQL havuzu için işlem ölçekleme
+# <a name="quickstart-scale-compute-for-dedicated-sql-pool-formerly-sql-dw-with-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell ile adanmış SQL Havuzu (eski adıyla SQL DW) için işlem ölçekleme
 
-Azure PowerShell kullanarak SYNAPSE SQL havuzunun (veri ambarı) işlem ölçeğini ölçeklendirebilirsiniz. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
+Azure PowerShell kullanarak adanmış SQL havuzunun (eski adıyla SQL DW) işlem ölçeğini ölçeklendirebilirsiniz. Daha iyi performans için [işlemin ölçeğini genişletin](sql-data-warehouse-manage-compute-overview.md) veya maliyet tasarrufu sağlamak için işlemin ölçeğini geri daraltın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -28,7 +28,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu hızlı başlangıçta ölçeklendirebildiğiniz bir SQL havuzu zaten var. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse**ADLı bir SQL havuzu oluşturmak için [Create and Connect-Portal](create-data-warehouse-portal.md) ' ı kullanın.
+Bu hızlı başlangıçta ölçeklendirebildiğiniz ayrılmış bir SQL havuzuna (eski adıyla SQL DW) sahip olduğunuz varsayılır. Bir tane oluşturmanız gerekiyorsa, **Mysampledatawarehouse** adlı özel bir SQL Havuzu (eskı ADıYLA SQL DW) oluşturmak için [Oluştur ve Bağlan-Portal](create-data-warehouse-portal.md) ' ı kullanın.
 
 ## <a name="log-in-to-azure"></a>Azure'da oturum açma
 
@@ -67,9 +67,9 @@ Veri ambarınız için konum bilgilerini bulmak amacıyla aşağıdaki adımlar�
 
 ## <a name="scale-compute"></a>Hesaplamayı ölçeklendirme
 
-SQL havuzunda, veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
+Adanmış SQL havuzunda (eski adıyla SQL DW), veri ambarı birimlerini ayarlayarak işlem kaynaklarını artırabilir veya azaltabilirsiniz. [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünde **mySampleDataWarehouse** oluşturuldu ve 400 DWU ile başlatıldı. Aşağıdaki adımlar, **mySampleDataWarehouse** için DWU’ları ayarlar.
 
-Veri ambarı birimlerini değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername**sunucusunda **resourcegroupname** kaynak grubunda barındırılan, **mysampledatawarehouse**veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
+Veri ambarı birimlerini değiştirmek için [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, **sqlpoolservername** sunucusunda **resourcegroupname** kaynak grubunda barındırılan, **mysampledatawarehouse** veritabanı için veri ambarı birimlerini DW300c olarak ayarlar.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySampleDataWarehouse" -ServerName "sqlpoolservername" -RequestedServiceObjectiveName "DW300c"
@@ -77,7 +77,7 @@ Set-AzSqlDatabase -ResourceGroupName "resourcegroupname" -DatabaseName "mySample
 
 ## <a name="check-data-warehouse-state"></a>Veri ambarı durumunu denetleme
 
-Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın. Bu cmdlet, ResourceGroup **resourcegroupname** ve Server **Sqlpoolservername.Database.Windows.net**içindeki **mysampledatawarehouse** veritabanının durumunu gösterir.
+Veri ambarının geçerli durumunu görmek için [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) PowerShell cmdlet 'ini kullanın. Bu cmdlet, ResourceGroup **resourcegroupname** ve Server **Sqlpoolservername.Database.Windows.net** içindeki **mysampledatawarehouse** veritabanının durumunu gösterir.
 
 ```powershell
 $database = Get-AzSqlDatabase -ResourceGroupName resourcegroupname -ServerName sqlpoolservername -DatabaseName mySampleDataWarehouse
@@ -121,7 +121,7 @@ $database | Select-Object DatabaseName,Status
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık SQL havuzu için işlem ölçeklendirmeyi öğrendiniz. SQL havuzu hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
+Artık adanmış SQL Havuzu (eski adıyla SQL DW) için işlem ölçeklendirmeyi öğrendiniz. Adanmış SQL Havuzu (eski adıyla SQL DW) hakkında daha fazla bilgi edinmek için veri yükleme öğreticisine geçin.
 
 > [!div class="nextstepaction"]
->[Verileri bir SQL havuzuna yükleme](load-data-from-azure-blob-storage-using-polybase.md)
+>[Özel bir SQL havuzuna veri yükleme](load-data-from-azure-blob-storage-using-copy.md)

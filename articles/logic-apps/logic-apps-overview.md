@@ -1,20 +1,20 @@
 ---
-title: Kurumsal tümleştirme görevlerini otomatikleştirme
-description: Azure Logic Apps kullanarak, uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren kurumsal tümleştirme için en az kodla tümleştiren iş akışlarını otomatikleştirme hakkında bilgi edinin.
+title: Azure Logic Apps için genel bakış
+description: Azure Logic Apps, kurumsal düzeyde senaryolar için en az kod ile uygulamaları, verileri, hizmetleri ve sistemleri tümleştiren otomatik iş akışları oluşturmak ve düzenlemek için kullanılan bulut çözümüdür.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 3496dfd7813818ced8963175d73ec0f8ef6892d4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4c4e8c8f809452286fee493e20dbef2cc538c8bd
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86536241"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921527"
 ---
-# <a name="overview---what-is-azure-logic-apps"></a>Genel Bakış-Azure Logic Apps nedir?
+# <a name="what-is-azure-logic-apps"></a>Azure Logic Apps nedir?
 
 [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps) , uygulamaları, verileri, sistemleri ve Hizmetleri kuruluşlar veya kuruluşlar genelinde tümleştirmeniz gerektiğinde görevleri, iş süreçlerini ve [iş akışlarını](#logic-app-concepts) zamanlamanıza, otomatikleştirmenize ve yönetmenize yardımcı olan bir bulut hizmetidir. Logic Apps, bulutta, şirket içinde veya her ikisinde de olmak üzere uygulama [tümleştirme](https://azure.microsoft.com/product-categories/integration/), veri tümleştirmesi, sistem tümleştirmesi, kurumsal uygulama TÜMLEŞTIRME (EAI) ve işletmeler arası (B2B) iletişim için ölçeklenebilir çözümler tasarlama ve oluşturma işlemlerini basitleştirir.
 
@@ -144,7 +144,7 @@ Bu hizmetlerin tümü, bir "yapıştırıcı" ile bağımsız sistemleri birleş
 
 * **Enterprise Integration Pack**: Logic Apps, daha gelişmiş tümleştirme senaryoları için BizTalk Server özelliklerini içerir. Enterprise Integration Pack, mantıksal uygulamaların doğrulama ve dönüştürme gibi işlemleri kolayca gerçekleştirmesine yardımcı olan bağlayıcılar sağlar.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Logic Apps, Microsoft Azure’da barındırılan birçok hizmetten biridir. Bu nedenle, başlamak için önce bir Azure aboneliğine sahip olmanız gerekir. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 

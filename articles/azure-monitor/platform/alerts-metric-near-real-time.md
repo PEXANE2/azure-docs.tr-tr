@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 12/3/2020
 ms.subservice: alerts
-ms.openlocfilehash: dfcc1f15ebec1337cfa7d484319c7b942ff052b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0e4674c9e0513a0b8dae29f5868b1da79da8ab84
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548248"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920564"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları için desteklenen kaynaklar
 
@@ -60,7 +60,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. DBforPostgreSQL/Flexibtaservers | Evet | Hayır | |
 |Microsoft. DBforPostgreSQL/sunucuları | Hayır | Hayır | [PostgreSQL için DB](./metrics-supported.md#microsoftdbforpostgresqlservers)|
 |Microsoft. DBforPostgreSQL/serversv2 | Hayır | Hayır | [PostgreSQL için DB v2](./metrics-supported.md#microsoftdbforpostgresqlserversv2)|
-|Microsoft. DBforPostgreSQL/singleservers | Hayır | Hayır | [PostgreSQL için DB (tek sunucular)](./metrics-supported.md#microsoftdbforpostgresqlsingleservers)|
+|Microsoft. DBforPostgreSQL/esnek | Hayır | Hayır | [PostgreSQL için DB (flexiable sunucuları)](./metrics-supported.md#microsoftdbforpostgresqlflexibleservers)|
 |Microsoft. Devices/IotHubs | Evet | Hayır |[IoT Hub’ı](./metrics-supported.md#microsoftdevicesiothubs) |
 |Microsoft. Devices/provisioningServices| Evet | Hayır | [Cihaz sağlama hizmetleri](./metrics-supported.md#microsoftdevicesprovisioningservices) |
 |Microsoft. DigitalTwins/Digitaltwınsınstances | Evet | Hayır | |
@@ -115,7 +115,7 @@ Daha yeni uyarılar tarafından desteklenen Azure Izleyici ölçüm kaynakların
 |Microsoft. Web/hostingEnvironments/multiRolePools | Evet | Hayır | [Çok rollü havuzlar App Service Ortamı](./metrics-supported.md#microsoftwebhostingenvironmentsmultirolepools)|
 |Microsoft. Web/hostingEnvironments/workerPools | Evet | Hayır | [App Service Ortamı çalışan havuzları](./metrics-supported.md#microsoftwebhostingenvironmentsworkerpools)|
 |Microsoft. Web/sunucugrupları | Evet | Hayır | [App Service planları](./metrics-supported.md#microsoftwebserverfarms)|
-|Microsoft. Web/siteler | Evet | Hayır | [Uygulama hizmetleri](./metrics-supported.md#microsoftwebsites-excluding-functions) ve [işlevleri](./metrics-supported.md#microsoftwebsites-functions)|
+|Microsoft. Web/siteler | Evet | Hayır | [Uygulama hizmetleri ve Işlevleri](./metrics-supported.md#microsoftwebsites)|
 |Microsoft. Web/Sites/Yuvaları | Evet | Hayır | [App Service Yuvaları](./metrics-supported.md#microsoftwebsitesslots)|
 
 <sup>1</sup> sanal makine ağ ölçümleri (Toplam ağ, ağ üzerinden toplam, gelen akış, giden akış, gelen akış sayısı üst sınırı, çıkış akışı en yüksek oluşturma oranı) ve özel ölçümler için desteklenmez.

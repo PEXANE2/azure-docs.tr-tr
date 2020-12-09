@@ -4,12 +4,12 @@ description: Trace, NLog veya Log4Net tarafından oluşturulan arama günlükler
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: ab3b12bf0401c4060823c6ed1d20dd6385cc397f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90973839"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920340"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Application Insights 'de .NET/.NET Core ve Python izleme günlüklerini keşfet
 
@@ -37,7 +37,7 @@ Seçtiğiniz günlük çerçevesini projenize yükleyerek app.config veya web.co
 ## <a name="configure-application-insights-to-collect-logs"></a>Günlükleri toplamak için Application Insights yapılandırma
 Henüz yapmadıysanız [projenize Application Insights ekleyin](./asp-net.md) . Günlük toplayıcıyı dahil etmek için bir seçenek göreceksiniz.
 
-Veya **Application Insights yapılandırmak**için Çözüm Gezgini ' de projenize sağ tıklayın. **İzleme koleksiyonunu Yapılandır** seçeneğini belirleyin.
+Veya **Application Insights yapılandırmak** için Çözüm Gezgini ' de projenize sağ tıklayın. **İzleme koleksiyonunu Yapılandır** seçeneğini belirleyin.
 
 > [!NOTE]
 > Application Insights menü veya günlük Toplayıcı seçeneği yok mu? [Sorun gidermeyi](#troubleshooting)deneyin.
@@ -97,7 +97,7 @@ Log4net veya NLog tercih ediyorsanız şunu kullanın:
 
 Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
  * **Name** toplanacak EventSource öğesinin adını belirtir.
- * **Düzey** toplanacak günlüğe kaydetme düzeyini belirtir: *Critical*, *Error*, *bilgilendirici*, *LogAlways*, *verbose*veya *Warning*.
+ * **Düzey** toplanacak günlüğe kaydetme düzeyini belirtir: *Critical*, *Error*, *bilgilendirici*, *LogAlways*, *verbose* veya *Warning*.
  * **Anahtar sözcükler** (isteğe bağlı) kullanılacak anahtar sözcük birleşimlerinin tamsayı değerini belirtir.
 
 ## <a name="use-diagnosticsource-events"></a>DiagnosticSource olaylarını kullanma
@@ -130,28 +130,30 @@ Windows için olay Izleme (ETW) olaylarını, izleme olarak Application Insights
 Her kaynak için aşağıdaki parametreleri ayarlayabilirsiniz:
  * **ProviderName** toplanacak ETW sağlayıcısının adıdır.
  * **ProviderGuid** toplanacak ETW sağlayıcısının GUID değerini belirtir. Yerine kullanılabilir `ProviderName` .
- * **Düzey** , toplanacak günlüğe kaydetme düzeyini ayarlar. *Kritik*, *hata*, *bilgilendirici*, *LogAlways*, *verbose*veya *Uyarı*olabilir.
+ * **Düzey** , toplanacak günlüğe kaydetme düzeyini ayarlar. *Kritik*, *hata*, *bilgilendirici*, *LogAlways*, *verbose* veya *Uyarı* olabilir.
  * **Anahtar sözcükler** (isteğe bağlı) kullanılacak anahtar sözcük birleşimlerinin tamsayı değerini ayarlayın.
 
 ## <a name="use-the-trace-api-directly"></a>Trace API 'sini doğrudan kullanma
 Application Insights Trace API 'sine doğrudan çağrı yapabilirsiniz. Günlüğe kaydetme bağdaştırıcıları bu API 'YI kullanır.
 
-Örneğin:
+Örnek:
 
 ```csharp
-var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
+TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+var telemetryClient = new TelemetryClient(configuration);
 telemetry.TrackTrace("Slow response - database01");
 ```
 
 TrackTrace 'in avantajı, oldukça uzun verileri iletiye koyacağınızdır. Örneğin, veri Gönder ' i burada bulabilirsiniz.
 
-İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örneğin:
+İletinize önem düzeyi de ekleyebilirsiniz. Diğer telemetri gibi, farklı izleme kümelerini filtrelemek veya aramak için özellik değerleri ekleyebilirsiniz. Örnek:
 
   ```csharp
-  var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
-  telemetry.TrackTrace("Slow database response",
-                 SeverityLevel.Warning,
-                 new Dictionary<string,string> { {"database", db.ID} });
+  TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+  var telemetryClient = new TelemetryClient(configuration);
+  telemetryClient.TrackTrace("Slow database response",
+                              SeverityLevel.Warning,
+                              new Dictionary<string, string> { { "database", "db.ID" } });
   ```
 
 Bu, belirli bir veritabanıyla ilgili belirli bir önem derecesindeki tüm iletileri [aramanızı][diagnostic] kolayca filtrelemenizi sağlar.
@@ -196,12 +198,12 @@ Java kodsuz kullanacaksınız araçları 'nda (önerilir) Günlükler kutudan al
 Java SDK 'sını kullanıyorsanız, [Java günlük bağdaştırıcılarını](./java-trace-logs.md)kullanın.
 
 ### <a name="theres-no-application-insights-option-on-the-project-context-menu"></a>Proje bağlam menüsünde Application Insights seçeneği yoktur
-* Developer Analytics Tools geliştirme makinesinde yüklü olduğundan emin olun. Visual Studio **araçları**  >  **uzantıları ve güncelleştirmelerinde**, **Developer Analytics Tools**bakın. **Yüklü** sekmesinde yoksa, **çevrimiçi** sekmesini açın ve yükleme.
+* Developer Analytics Tools geliştirme makinesinde yüklü olduğundan emin olun. Visual Studio **araçları**  >  **uzantıları ve güncelleştirmelerinde**, **Developer Analytics Tools** bakın. **Yüklü** sekmesinde yoksa, **çevrimiçi** sekmesini açın ve yükleme.
 * Bu, Developer Analytics Tools desteklemediği bir proje türü olabilir. [El ile yükleme](#manual-installation)kullanın.
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Yapılandırma aracında günlük bağdaştırıcısı seçeneği yok
 * Önce günlüğe kaydetme çerçevesini yükler.
-* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan ](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)emin olun.
+* System. Diagnostics. Trace kullanıyorsanız, [ *web.config*' de yapılandırdığınızdan](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1)emin olun.
 * Application Insights en son sürümüne sahip olduğunuzdan emin olun. Visual Studio 'da **Araçlar**  >  **Uzantılar ve güncelleştirmeler**' e gidin ve **güncelleştirmeler** sekmesini açın. **Developer Analytics Tools** , güncelleştirmek için seçin.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>"Izleme anahtarı boş olamaz" hata iletisini alıyorum

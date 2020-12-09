@@ -1,23 +1,21 @@
 ---
-title: Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
+title: Azure portal Kubernetes kaynaklarına erişin
 description: Azure portal Azure Kubernetes hizmeti (AKS) kümesini yönetmek için Kubernetes kaynaklarıyla nasıl etkileşim kuracağınızı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571632"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921588"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Azure portal (Önizleme) ile Kubernetes kaynaklarına erişin
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Azure portal Kubernetes kaynaklarına erişin
 
-Azure portal, Azure Kubernetes Service (AKS) kümenizdeki Kubernetes kaynaklarına kolay erişim için bir Kubernetes kaynak Görüntüleyici (Önizleme) içerir. Azure portal Kubernetes kaynaklarını görüntüleme, Azure portal ve komut satırı aracı arasındaki bağlam geçişini azaltır ve `kubectl` Kubernetes kaynaklarınızı görüntüleme ve düzenlemeyle ilgili deneyimi kolaylaştırır. Kaynak Görüntüleyicisi Şu anda dağıtımlar, pods ve çoğaltma kümeleri gibi birden çok kaynak türü içerir.
+Azure portal, Azure Kubernetes Service (AKS) kümenizdeki Kubernetes kaynaklarına kolay erişim sağlayan bir Kubernetes kaynak görünümü içerir. Azure portal Kubernetes kaynaklarını görüntüleme, Azure portal ve komut satırı aracı arasındaki bağlam geçişini azaltır ve `kubectl` Kubernetes kaynaklarınızı görüntüleme ve düzenlemeyle ilgili deneyimi kolaylaştırır. Kaynak Görüntüleyicisi Şu anda dağıtımlar, pods ve çoğaltma kümeleri gibi birden çok kaynak türü içerir.
 
 Azure portal Kubernetes kaynak görünümü, kullanım dışı bırakılmış olan [aks Pano eklentisinin][kubernetes-dashboard]yerini almıştır.
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

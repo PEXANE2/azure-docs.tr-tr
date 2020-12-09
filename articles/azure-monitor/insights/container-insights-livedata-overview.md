@@ -2,14 +2,14 @@
 title: Kapsayıcılar için Azure Izleyici ile canlı verileri (Önizleme) görüntüleme | Microsoft Docs
 description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullanmadan Kubernetes günlüklerinin, olaylarının ve pod ölçümlerinin gerçek zamanlı görünümü açıklanmaktadır.
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9c431cebddb210add496dcca20a0334cc5b12bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337966"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920719"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
@@ -22,40 +22,35 @@ Bu makale ayrıntılı bir genel bakış sağlar ve bu özelliğin nasıl kullan
 
 Canlı veri (Önizleme) özelliğini ayarlama veya sorunlarını gidermeyle ilgili yardım için [Kurulum kılavuzumuzu](container-insights-livedata-setup.md)gözden geçirin. Bu özellik, Kubernetes API 'sine doğrudan erişir ve kimlik doğrulama modeliyle ilgili ek bilgilere [buradan](https://kubernetes.io/docs/concepts/overview/kubernetes-api/)ulaşabilirsiniz.
 
-## <a name="live-data-preview-functionality-overview"></a>Canlı veri (Önizleme) işlevlerine genel bakış
+## <a name="view-deployment-live-logs-preview"></a>Dağıtım canlı günlüklerini görüntüleme (Önizleme)
+Kapsayıcılar için Azure Izleyici tarafından izlenmeyen AKS kümelerinin bir parçası olan dağıtımlara yönelik canlı günlükleri görüntülemek için aşağıdaki yordamı kullanın. Kümeniz kapsayıcılar için Azure Izleyici kullanıyorsa düğümler, denetleyiciler, kapsayıcılar ve dağıtımlar için canlı verileri görüntülemek üzere aşağıdaki işlemi kullanın.
 
-### <a name="search"></a>Search
+1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 
-![Canlı veri konsol bölmesi filtre örneği](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+2. Menüdeki **Kubernetes kaynakları** bölümünde **iş yükleri** ' ni seçin.
 
-Canlı veriler (Önizleme) özelliği, arama işlevlerini içerir. **Arama** alanında, önemli bir sözcük veya terim yazarak sonuçları filtreleyebilirsiniz ve tüm eşleşen sonuçlar hızlı incelemeye izin verecek şekilde vurgulanır. Olayları görüntülerken, arama çubuğunun sağında bulunan **filtre** hap 'i kullanarak sonuçları da sınırlayabilirsiniz. Seçtiğiniz kaynağa bağlı olarak, hap, arasından seçim yapmak için bir pod, Namespace veya Cluster listeler.
+3. **Dağıtımlar** sekmesinden bir dağıtım seçin.
 
-### <a name="scroll-lock-and-pause"></a>Scroll Lock ve Duraklat
+4. Dağıtım menüsünden **canlı Günlükler (Önizleme)** seçeneğini belirleyin.
 
-Otomatik kaydırmayı askıya almak ve bölmenin davranışını denetlemek için, yeni verileri okuma bölümünde el ile kaydırabilmenizi sağlayan **kaydırma** seçeneğini kullanabilirsiniz. Otomatik kaydırmayı yeniden etkinleştirmek için **kaydırma** seçeneğini tekrar seçmeniz yeterlidir. Ayrıca, **Duraklat** seçeneğini belirleyerek günlük veya olay verilerinin alınmasını da duraklatabilirsiniz ve devam etmek Için hazırsanız **oynat**' ı seçmeniz yeterlidir.
+5. Canlı verilerin toplanmasını başlatmak için bir pod seçin.
 
-![Canlı veri konsol bölmesi canlı görünümü Duraklat](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
-
->[!IMPORTANT]
->Bir sorunu giderirken kısa bir süre boyunca yalnızca otomatik kaydırma askıya alıp duraklamasını öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir.
-
->[!IMPORTANT]
->Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Tarayıcınızı kapattığınızda veya uygulamadan çıktığınızda, oturum sırasında yakalanan tüm bilgiler silinir. Veriler yalnızca ölçüm özelliğinin beş dakikalık penceresinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de silinir. Canlı veriler (Önizleme) arabellek sorguları, makul bellek kullanım sınırları içinde.
+    ![Canlı dağıtım günlükleri](./media/container-insights-livedata-overview/live-data-deployment.png)
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
-Gerçek zamanlı günlük verilerini **düğümler**, **denetleyiciler**ve **kapsayıcılar** görünümünden kapsayıcı altyapısı tarafından oluşturulan şekilde görüntüleyebilirsiniz. Günlük verilerini görüntülemek için aşağıdaki adımları gerçekleştirin.
+Gerçek zamanlı günlük verilerini **düğümler**, **denetleyiciler** ve **kapsayıcılar** görünümünden kapsayıcı altyapısı tarafından oluşturulan şekilde görüntüleyebilirsiniz. Günlük verilerini görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 
 2. AKS kümesi panosunda, sol taraftaki **izleme** altında **Öngörüler**' i seçin.
 
-3. **Düğümler**, **denetleyiciler**veya **kapsayıcılar** sekmesinden birini seçin.
+3. **Düğümler**, **denetleyiciler** veya **kapsayıcılar** sekmesinden birini seçin.
 
 4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods** ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi, günlük verilerini sürekli bir akışta görüntüleyebileceğiniz performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir.
 
@@ -65,18 +60,18 @@ Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını göst
 
 ## <a name="view-events"></a>Etkinlikleri görüntüleme
 
-Bir kapsayıcı, Pod, Node, ReplicaSet, DaemonSet, Job, CronJob veya Deployment seçildiğinde, kapsayıcı motoru tarafından **düğümler**, **denetleyiciler**, **kapsayıcılar**ve **dağıtımlar (Önizleme)** görünümünden oluşturulan gerçek zamanlı olay verilerini görüntüleyebilirsiniz. Olayları görüntülemek için aşağıdaki adımları gerçekleştirin.
+Bir kapsayıcı, Pod, Node, ReplicaSet, DaemonSet, Job, CronJob veya Deployment seçildiğinde, kapsayıcı motoru tarafından **düğümler**, **denetleyiciler**, **kapsayıcılar** ve **dağıtımlar (Önizleme)** görünümünden oluşturulan gerçek zamanlı olay verilerini görüntüleyebilirsiniz. Olayları görüntülemek için aşağıdaki adımları gerçekleştirin.
 
 1. Azure portal, AKS kümesi kaynak grubuna gidin ve AKS kaynağınızı seçin.
 
 2. AKS kümesi panosunda, sol taraftaki **izleme** altında **Öngörüler**' i seçin.
 
-3. **Düğümler**, **denetleyiciler**, **kapsayıcılar**ya da **dağıtımlar (Önizleme)** sekmesini seçin.
+3. **Düğümler**, **denetleyiciler**, **kapsayıcılar** ya da **dağıtımlar (Önizleme)** sekmesini seçin.
 
 4. Performans kılavuzundan bir nesne seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods** ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Getirme durumu göstergesi, bölmenin en sağında yer alan yeşil bir onay işareti gösteriyorsa, verilerin alınabilmesi ve konsolunuza akışa başlaması anlamına gelir.
 
@@ -103,11 +98,31 @@ Gerçek zamanlı ölçüm verilerini, **düğüm** veya **denetleyiciler** gör�
 4. Performans kılavuzundan bir **Pod** nesnesi seçin ve sağ tarafta bulunan Özellikler bölmesinde **canlı verileri görüntüle (Önizleme)** seçeneğini belirleyin. AKS kümesi, Azure AD kullanarak çoklu oturum açma ile yapılandırıldıysa, bu tarayıcı oturumu sırasında ilk kullanımda kimlik doğrulaması yapmanız istenir. Hesabınızı seçin ve Azure ile kimlik doğrulamayı doldurun.
 
     >[!NOTE]
-    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods**ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
+    >Özellikler bölmesinde **Analytics 'Te görünüm** seçeneğini belirleyerek Log Analytics çalışma alanınızdaki verileri görüntülerken, günlük araması sonuçları potansiyel olarak mevcut olmayan **düğümleri**, **Daemon kümelerini**, **çoğaltma kümelerini**, **Işleri**, **cron işleri**, **pods** ve **kapsayıcıları** gösterir. İçinde kullanılamayan bir kapsayıcı için günlüklere arama girişimi `kubectl` de burada başarısız olur. Geçmiş günlükleri, olayları ve ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Analytics özelliğindeki görünümü](container-insights-log-search.md#search-logs-to-analyze-data) gözden geçirin.
 
 Başarıyla kimlik doğrulamasından geçtikten sonra, canlı veriler (Önizleme) konsol bölmesi performans verileri kılavuzunun altında görüntülenir. Ölçüm verileri alınır ve iki grafikte sunum için konsolunuza akışa başlar. Bölme başlığı, kapsayıcının gruplandırıldığı Pod 'ın adını gösterir.
 
 ![Pod ölçümleri örneğini görüntüle](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
+
+## <a name="using-live-data-views"></a>Canlı Veri Görünümlerini kullanma
+Aşağıdaki bölümlerde, farklı canlı veri görünümlerinde kullanabileceğiniz işlevler açıklanır.
+
+### <a name="search"></a>Arama
+Canlı veriler (Önizleme) özelliği, arama işlevlerini içerir. **Arama** alanında, önemli bir sözcük veya terim yazarak sonuçları filtreleyebilirsiniz ve tüm eşleşen sonuçlar hızlı incelemeye izin verecek şekilde vurgulanır. Olayları görüntülerken, arama çubuğunun sağında bulunan **filtre** hap 'i kullanarak sonuçları da sınırlayabilirsiniz. Seçtiğiniz kaynağa bağlı olarak, hap, arasından seçim yapmak için bir pod, Namespace veya Cluster listeler.
+
+![Canlı veri konsol bölmesi filtre örneği](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+### <a name="scroll-lock-and-pause"></a>Scroll Lock ve Duraklat
+
+Otomatik kaydırmayı askıya almak ve bölmenin davranışını denetlemek için, yeni verileri okuma bölümünde el ile kaydırabilmenizi sağlayan **kaydırma** seçeneğini kullanabilirsiniz. Otomatik kaydırmayı yeniden etkinleştirmek için **kaydırma** seçeneğini tekrar seçmeniz yeterlidir. Ayrıca, **Duraklat** seçeneğini belirleyerek günlük veya olay verilerinin alınmasını da duraklatabilirsiniz ve devam etmek Için hazırsanız **oynat**' ı seçmeniz yeterlidir.
+
+![Canlı veri konsol bölmesi canlı görünümü Duraklat](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+>[!IMPORTANT]
+>Bir sorunu giderirken kısa bir süre boyunca yalnızca otomatik kaydırma askıya alıp duraklamasını öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir.
+
+>[!IMPORTANT]
+>Bu özelliğin çalışması sırasında hiçbir veri kalıcı olarak depolanmaz. Tarayıcınızı kapattığınızda veya uygulamadan çıktığınızda, oturum sırasında yakalanan tüm bilgiler silinir. Veriler yalnızca ölçüm özelliğinin beş dakikalık penceresinde görselleştirme için mevcut olmaya devam eder; beş dakikadan daha eski olan ölçümler de silinir. Canlı veriler (Önizleme) arabellek sorguları, makul bellek kullanım sınırları içinde.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

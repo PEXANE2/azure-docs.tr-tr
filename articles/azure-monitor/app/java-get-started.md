@@ -6,14 +6,14 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 25d0d409c8112292afd20f052e82494dd8e656ea
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601314"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919423"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı başlangıç: Java Web projesinde Application Insights ile çalışmaya başlama
+# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Hızlı Başlangıç: Java web projesinde Application Insights'ı kullanmaya başlama
 
 
 > [!CAUTION]
@@ -30,6 +30,8 @@ Application Insights, web geliştiricileri için canlı uygulamanızın performa
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Application Insights izleme anahtarı edinme
 
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=java) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Azure portalındabir Application Insights kaynağı oluşturun. Uygulama türünü Java web uygulaması olarak ayarlayın.
 

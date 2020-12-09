@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 96bdfc513023cafb2d94a68c06f1065cf20c3ba8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f20405add698c64ecedfd7375063ba934a98e158
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130179"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922428"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Dynamics 365 for Customer Engagement ve PowerApps teklifi oluşturma
 
@@ -23,8 +23,8 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
-3. Genel Bakış sayfasında, **+ New offer**  >  **PowerApps & müşteri katılımı için** + yeni teklif Dynamics 365 ' i seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında, **+ New offer**  >  **PowerApps & müşteri katılımı için**+ yeni teklif Dynamics 365 ' i seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
@@ -38,12 +38,12 @@ Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bi
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yayımcı KIMLIĞIYLE birleştirilmiş teklif KIMLIĞI, 40 karakter uzunluğunda olmalıdır.
 - Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir ancak boşluk içeremez. Örneğin, yayımcı KIMLIĞINIZ testpublisherıd ise ve **Test-teklif-1** girerseniz, teklif Web adresi olur `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
-- Bu, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Bu, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
@@ -95,7 +95,7 @@ Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destek
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
 
 [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
@@ -229,7 +229,7 @@ Bu sayfa, teklifinizin nerede ve nasıl kullanılabileceğini tanımlamanıza ol
 
 ### <a name="markets"></a>Pazar
 
-Teklifinizin kullanılabilir olması gereken pazarları belirtin. Bunu yapmak için **Pazar seçimi** açılır penceresini görüntüleyen **pazarları Düzenle** ' yi seçin.
+Teklifinizin kullanılabilir olması gereken pazarları belirtin. Bunu yapmak için **Pazar seçimi** açılır penceresini görüntüleyen **pazarları Düzenle**' yi seçin.
 
 Varsayılan olarak, bir pazar seçili değildir, ancak teklifinizi yayımlamak için en az bir pazar seçmeniz gerekir. Teklifinizin her olası pazarda kullanılabilmesini sağlamak için  **Tümünü Seç** ' i seçin veya eklemek istediğiniz belirli pazarları seçin.
 
@@ -260,7 +260,7 @@ CRM güvenli depolama veya sunucudan sunucuya (S2S) giden erişim yapılandırma
 
 ### <a name="application-configuration-url"></a>Uygulama yapılandırma URL 'SI
 
-Müşterinin uygulamanızı yapılandırmasını sağlayan yapılandırma Web sayfasının URL 'sini sağlayın.
+Bu alanın boş kaldığından emin olun. Bu, gelecekte kullanılmak üzere kullanılacaktır. 
 
 ### <a name="crm-package"></a>CRM paketi
 
@@ -312,7 +312,7 @@ Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
     - **Tamamlanmamış** -bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölüm (ler) e geri dönün ve güncelleştirin.
     - **Tamamlandı** -bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın.
-- **Gönder** ' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve genel kullanıma yayımlamak üzere teklif için **Go-Live** ' ı seçin.
+- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve genel kullanıma yayımlamak üzere teklif için **Go-Live** ' ı seçin.
 
 ## <a name="next-step"></a>Sonraki adım
 

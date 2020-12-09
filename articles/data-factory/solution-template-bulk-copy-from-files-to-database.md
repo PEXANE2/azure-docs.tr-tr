@@ -7,13 +7,13 @@ ms.author: jingwang
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
-ms.openlocfilehash: ecf3c3954bd77962e56ee289b623806efb352410
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: e1bd5852ca12ca03e7202cf9cfb89372d076bad9
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461259"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920431"
 ---
 # <a name="bulk-copy-from-files-to-database"></a>Dosyalardan veritabanına toplu kopyalama
 
@@ -55,7 +55,7 @@ Bu şablon dosyaları Azure Data Lake Storage 2. kaynağından alır. Sonra kayn
     ![İşlem hattını gözden geçirme](media/solution-template-bulk-copy-from-files-to-database/new-pipeline.png)
 
     > [!NOTE]
-    > Yukarıda belirtilen **Adım 2** ' deki veri hedefi olarak **Azure SYNAPSE Analytics (eskı adıyla SQL DW)** ' nu seçtiyseniz, Azure SYNAPSE Analytics PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Aşağıdaki ekran görüntüsünde gösterildiği gibi, şablon otomatik olarak BLOB depolama alanı için bir *depolama yolu* oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
+    > Yukarıda belirtilen **2. adımdaki** veri hedefi olarak **Azure SYNAPSE Analytics** 'ı seçtiyseniz, Azure SYNAPSE Analytics PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Aşağıdaki ekran görüntüsünde gösterildiği gibi, şablon otomatik olarak BLOB depolama alanı için bir *depolama yolu* oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
         
     ![PolyBase ayarı](media/solution-template-bulk-copy-from-files-to-database/staging-account.png)
 

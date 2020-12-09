@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: b32fb0aa94e0fcc23edd6aae802cfd4162fa39f1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b352bd92ecc69ca68a6870d3a59ef5e0cdd1daba
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572227"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920859"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Öğretici: Linux cihazları için IoT Edge modülleri geliştirme
 
@@ -32,9 +32,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni bir proje oluşturmak için Visual Studio Code IoT Edge araçları kullanın.
 > * Projenizi kapsayıcı olarak derleyin ve Azure Container Registry 'de saklayın.
 > * Kodunuzu bir IoT Edge cihazına dağıtın.
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -55,6 +52,8 @@ Linux üzerinde Azure IoT Edge bir cihaz:
 Bulut kaynakları:
 
 * Azure 'da ücretsiz veya Standart katmanlı [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="key-concepts"></a>Önemli kavramlar
 

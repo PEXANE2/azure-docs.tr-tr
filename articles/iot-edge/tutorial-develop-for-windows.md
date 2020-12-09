@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5fa303b9f4a67078d4748332c187f53b8e7addcf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e46105f5889f4925be9873fd8613021fe5e8ac2d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572176"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920776"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>Öğretici: Windows cihazları için IoT Edge modülleri geliştirme
 
@@ -33,8 +33,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Projenizi kapsayıcı olarak derleyin ve Azure Container Registry 'de saklayın.
 > * Kodunuzu bir IoT Edge cihazına dağıtın.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="prerequisites"></a>Önkoşullar
 
 Geliştirme makinesi:
@@ -52,6 +50,8 @@ Windows 'da Azure IoT Edge cihaz:
 Bulut kaynakları:
 
 * Azure 'da ücretsiz veya Standart katmanlı [IoT Hub 'ı](../iot-hub/iot-hub-create-through-portal.md) .
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="key-concepts"></a>Önemli kavramlar
 

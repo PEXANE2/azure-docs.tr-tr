@@ -4,12 +4,12 @@ description: Bu öğreticide, Azure sanal makineleri için Site Recovery hizmeti
 ms.topic: tutorial
 ms.date: 11/03/2020
 ms.custom: mvc
-ms.openlocfilehash: 90527ad39055e438e4970ad4686f204f72d20cd2
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 6d07082b4a9c18461d5cc74de8844be803da7168
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394182"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922477"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-azure-vms"></a>Öğretici: Azure VM 'Leri için olağanüstü durum kurtarmayı ayarlama
 
@@ -28,7 +28,7 @@ VM 'nin olağanüstü durum kurtarma ayarlaması için çoğaltma etkinleştirdi
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -47,16 +47,16 @@ Azure hesabınızın, bir kurtarma hizmetleri Kasası oluşturmak ve hedef bölg
 
 - Henüz ücretsiz bir Azure aboneliği oluşturduysanız, hesap yöneticisi olursunuz ve başka bir işlem yapmanız gerekmez.
 - Yönetici değilseniz, ihtiyacınız olan izinleri almak için yönetici ile çalışın.
-    - **Bir kasa oluşturun** : abonelikte yönetici veya sahip izinleri. 
-    - **Kasadaki Site Recovery Işlemlerini yönetme** : *Site Recovery katılımcısı* yerleşik Azure rolü.
-    - **Hedef bölgede Azure VM 'Leri oluşturun** : yerleşik *sanal makine katılımcısı* rolü ya da şunları yapmak için özel izinler:
+    - **Bir kasa oluşturun**: abonelikte yönetici veya sahip izinleri. 
+    - **Kasadaki Site Recovery Işlemlerini yönetme**: *Site Recovery katılımcısı* yerleşik Azure rolü.
+    - **Hedef bölgede Azure VM 'Leri oluşturun**: yerleşik *sanal makine katılımcısı* rolü ya da şunları yapmak için özel izinler:
         - Seçilen sanal ağda sanal makine oluşturma.
         - Bir Azure depolama hesabına yazın.
         - Azure tarafından yönetilen bir diske yazma.
 
 ### <a name="verify-target-settings"></a>Hedef ayarlarını doğrulama
 
-Bulma kurtarması sırasında, kaynak bölgeden yük devretmek için VM 'Ler hedef bölgede oluşturulur. 
+Olağanüstü durum kurtarma sırasında kaynak bölgeden yük devretmek için VM 'Ler hedef bölgede oluşturulur. 
 
 Aboneliğinizin hedef bölgede yeterli kaynak olup olmadığını denetleyin. Kaynak bölgedeki VM 'Lerle eşleşen boyutlarda VM 'Ler oluşturabilmeniz gerekir. Olağanüstü durum kurtarma ayarladığınızda Site Recovery hedef VM için aynı boyutu (veya mümkün olan en yakın boyutu) seçer.
 
@@ -102,28 +102,28 @@ Gerekli Etiketler ve etiketleme örnekleri hakkında [daha fazla bilgi edinin](a
 
 VM 'Lerin en son kök sertifikalara sahip olup olmadığını denetleyin. Aksi takdirde, güvenlik kısıtlamaları nedeniyle VM Site Recovery kaydedilemez.
 
-- **Windows VM 'leri** : tüm güvenilen kök sertifikaların makinede olması için, tüm en son WINDOWS güncelleştirmelerini VM 'ye yükler. Bağlantısı kesilmiş bir ortamda, Windows Update ve sertifika güncelleştirmeleri için standart işlemlerinizi izleyin.
-- **Linux sanal makineleri** : en son güvenilen kök sertifikaları ve sertifika iptal LISTESINI (CRL) almak için Linux dağıtıcısında sunulan yönergeleri izleyin.
+- **Windows VM 'leri**: tüm güvenilen kök sertifikaların makinede olması için, tüm en son WINDOWS güncelleştirmelerini VM 'ye yükler. Bağlantısı kesilmiş bir ortamda, Windows Update ve sertifika güncelleştirmeleri için standart işlemlerinizi izleyin.
+- **Linux sanal makineleri**: en son güvenilen kök sertifikaları ve sertifika iptal LISTESINI (CRL) almak için Linux dağıtıcısında sunulan yönergeleri izleyin.
 
 ## <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
 VM 'Leri çoğaltmak istediğiniz kaynak bölgesi dışında herhangi bir bölgede bir kurtarma hizmetleri Kasası oluşturun.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-2. Arama kutusuna *Kurtarma* yazın. **Hizmetler** ' in altında, **Kurtarma Hizmetleri kasaları** ' nı seçin.
+2. Arama kutusuna *Kurtarma* yazın. **Hizmetler**' in altında, **Kurtarma Hizmetleri kasaları**' nı seçin.
 
     ![Kurtarma Hizmetleri kasalarını ara](./media/azure-to-azure-tutorial-enable-replication/search.png)
 
-3. **Kurtarma Hizmetleri kasaları** ' nda **Ekle** ' yi seçin.
-4. **Kurtarma Hizmetleri Kasası oluşturma**  >  **temelleri** ' nde, kasanın oluşturulacağı aboneliği seçin.
-5. **Kaynak grubu** ' nda, kasa için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
-6. **Kasa adı** ' nda, kasayı tanımlamak için bir kolay ad belirtin.
-7. **Bölge** ' de, kasanın yerleştirileceği Azure bölgesini seçin. [Desteklenen bölgeleri denetleyin](https://azure.microsoft.com/pricing/details/site-recovery/).
-8. **Gözden geçir + oluştur** ’u seçin.
+3. **Kurtarma Hizmetleri kasaları**' nda **Ekle**' yi seçin.
+4. **Kurtarma Hizmetleri Kasası oluşturma**  >  **temelleri**' nde, kasanın oluşturulacağı aboneliği seçin.
+5. **Kaynak grubu**' nda, kasa için var olan bir kaynak grubunu seçin veya yeni bir tane oluşturun.
+6. **Kasa adı**' nda, kasayı tanımlamak için bir kolay ad belirtin.
+7. **Bölge**' de, kasanın yerleştirileceği Azure bölgesini seçin. [Desteklenen bölgeleri denetleyin](https://azure.microsoft.com/pricing/details/site-recovery/).
+8. **Gözden geçir ve oluştur**’u seçin.
 
    ![Yeni kasa oluşturmak için sayfadaki kasa ayarları](./media/azure-to-azure-tutorial-enable-replication/vault-basics.png)
 
-9. **Gözden geçir + oluştur** bölümünde **Oluştur** ' u seçin.
+9. **Gözden geçir + oluştur** bölümünde **Oluştur**' u seçin.
 
 10. Kasa dağıtımı başlar. Bildirimlerin ilerlemesini izleyin.
 11. Kasa dağıtıldıktan sonra, hızlı başvuru için kaydetmek üzere **panoya sabitle** ' yi seçin. Yeni kasayı açmak için **Kaynağa Git** ' i seçin. 
@@ -132,7 +132,7 @@ VM 'Leri çoğaltmak istediğiniz kaynak bölgesi dışında herhangi bir bölge
 
 ### <a name="enable-site-recovery"></a>Site Recovery etkinleştir
 
-Kasa ayarları ' nda **Site Recovery etkinleştir** ' i seçin.
+Kasa ayarları ' nda **Site Recovery etkinleştir**' i seçin.
 
 ![Kasada Site Recovery etkinleştiren seçim](./media/azure-to-azure-tutorial-enable-replication/enable-site-recovery.png)
 
@@ -142,33 +142,33 @@ Kaynak ayarlarını seçin ve VM çoğaltmasını etkinleştirin.
 
 ### <a name="select-source-settings"></a>Kaynak ayarlarını seçin
 
-1. Kasa > **Site Recovery** sayfasında, **Azure sanal makineler** altında **çoğaltmayı etkinleştir** ' i seçin.
+1. Kasa > **Site Recovery** sayfasında, **Azure sanal makineler** altında **çoğaltmayı etkinleştir**' i seçin.
 
     ![Azure VM 'Leri için çoğaltmayı etkinleştirme seçimi](./media/azure-to-azure-tutorial-enable-replication/enable-replication.png)
 
-2. **Kaynak** >  **kaynak konumu** ' nda, VM 'lerin çalışmakta olduğu kaynak Azure bölgesini seçin.
-3. **Azure sanal makine dağıtım modeli** ' nde varsayılan **Kaynak Yöneticisi** ayarını bırakın.
-4. **Kaynak aboneliği** ' nde, VM 'lerin çalıştığı aboneliği seçin. Kasadaki aynı Azure Active Directory (AD) kiracısındaki herhangi bir aboneliği seçebilirsiniz.
-5. **Kaynak kaynak grubu** ' nda, VM 'leri içeren kaynak grubunu seçin.
+2. **Kaynak** >  **kaynak konumu**' nda, VM 'lerin çalışmakta olduğu kaynak Azure bölgesini seçin.
+3. **Azure sanal makine dağıtım modeli**' nde varsayılan **Kaynak Yöneticisi** ayarını bırakın.
+4. **Kaynak aboneliği**' nde, VM 'lerin çalıştığı aboneliği seçin. Kasadaki aynı Azure Active Directory (AD) kiracısındaki herhangi bir aboneliği seçebilirsiniz.
+5. **Kaynak kaynak grubu**' nda, VM 'leri içeren kaynak grubunu seçin.
 6. **Kullanılabilirlik alanları arasında olağanüstü durum kurtarma** bölümünde varsayılan ayarı **yok** ' u bırakın.
 
      ![Kaynağı ayarlama](./media/azure-to-azure-tutorial-enable-replication/source.png)
 
-7. **İleri** ’yi seçin.
+7. **İleri**’yi seçin.
 
 ### <a name="select-the-vms"></a>VM’leri seçme
 
 Site Recovery seçili abonelik/kaynak grubuyla ilişkili VM 'Leri alır.
 
-1. **Sanal makinelerde** , olağanüstü durum kurtarma için etkinleştirmek Istediğiniz VM 'leri seçin.
+1. **Sanal makinelerde**, olağanüstü durum kurtarma için etkinleştirmek Istediğiniz VM 'leri seçin.
 
      ![Çoğaltma için VM 'Leri seçmek için sayfa](./media/azure-to-azure-tutorial-enable-replication/select-vm.png)
 
-2. **İleri** ’yi seçin.
+2. **İleri**’yi seçin.
 
 ### <a name="review-replication-settings"></a>Çoğaltma ayarlarını gözden geçirme
 
-1. **Çoğaltma ayarları** ' nda ayarları gözden geçirin. Site Recovery, hedef bölge için varsayılan ayarları/ilkeleri oluşturur. Bu öğreticinin amaçları doğrultusunda varsayılan ayarları kullanırız.
+1. **Çoğaltma ayarları**' nda ayarları gözden geçirin. Site Recovery, hedef bölge için varsayılan ayarları/ilkeleri oluşturur. Bu öğreticinin amaçları doğrultusunda varsayılan ayarları kullanırız.
 2. **Çoğaltmayı etkinleştir** seçeneğini belirleyin.
 
     ![Ayarları özelleştirmek ve çoğaltmayı etkinleştirmek için sayfa](./media/azure-to-azure-tutorial-enable-replication/enable-vm-replication.png)   

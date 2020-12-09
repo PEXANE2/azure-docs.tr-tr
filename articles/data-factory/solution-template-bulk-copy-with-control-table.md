@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/14/2018
-ms.openlocfilehash: 8d1ff372009c6158f2148847dd77126bcb4d189f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/09/2020
+ms.openlocfilehash: d89fd8b4102333603fa71b2cc28a49b732b91b08
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461227"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920883"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>Denetim tablosu ile bir veritabanından toplu kopyalama
 
@@ -44,7 +44,7 @@ Bu şablon, bir dış denetim tablosundan Kopyalanacak kaynak veritabanı bölü
 - *Data_Destination_Container* , verilerin hedef deponuzda kopyalandığı kök klasör yoludur. 
 - *Data_Destination_Directory* , verilerin hedef deponuza kopyalandığı kök altındaki Dizin yoludur. 
 
-Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlerseniz, bu parametreler gerekli değildir. Ancak Azure SYNAPSE Analytics 'teki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
+Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef dosya tabanlı depolama ise görünür. Hedef depo olarak "Azure SYNAPSE Analytics" i seçerseniz bu parametreler gerekli değildir. Ancak Azure SYNAPSE Analytics 'teki tablo adları ve şema, kaynak veritabanındaki olanlarla aynı olmalıdır.
 
 ## <a name="how-to-use-this-solution-template"></a>Bu çözüm şablonunu kullanma
 
@@ -94,7 +94,7 @@ Hedef deponuzda yolu tanımlayan son üç parametre yalnızca seçtiğiniz hedef
 
     ![Sonucu gözden geçirin](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable8.png)
 
-9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics (eski adıyla SQL DW)" seçeneğini belirlediyseniz Azure SYNAPSE Analytics PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
+9. Seçim Veri hedefi olarak "Azure SYNAPSE Analytics" seçeneğini belirlediyseniz Azure SYNAPSE Analytics PolyBase 'in gerektirdiği şekilde hazırlama için Azure Blob depolama alanına bir bağlantı girmeniz gerekir. Şablon, BLOB depolama alanınızı otomatik olarak bir kapsayıcı yolu oluşturacaktır. İşlem hattı çalıştırıldıktan sonra kapsayıcının oluşturulup oluşturulmadıysa emin olun.
     
     ![PolyBase ayarı](media/solution-template-bulk-copy-with-control-table/BulkCopyfromDB_with_ControlTable9.png)
        

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/19/2020
-ms.openlocfilehash: ee9bcedea15b039982e73304a25073c85b496635
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 56c3475ae6a03600723e7a12b3f3809f003ce7c4
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780062"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922262"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -67,11 +67,11 @@ Hyperscale hizmet katmanı, saf OLTP 'dan saf Analize kadar çok sayıda SQL Ser
 
 Hiper ölçek hizmeti katmanı yalnızca [Vcore modelinde](service-tiers-vcore.md)kullanılabilir. Yeni mimariye uyum sağlamak için, fiyatlandırma modeli Genel Amaçlı veya İş Açısından Kritik hizmet katmanlarından biraz farklıdır:
 
-- **İşlem** :
+- **İşlem**:
 
   Hiper ölçek işlem birimi fiyatı çoğaltma başına. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/) fiyatı, otomatik olarak okuma ölçeği çoğaltmalarına uygulanır. Varsayılan olarak hiper ölçekli veritabanı başına bir birincil çoğaltma ve bir salt okuma çoğaltması oluşturacağız.  Kullanıcılar, 1-5 'den birincil dahil olmak üzere toplam çoğaltma sayısını ayarlayabilir.
 
-- **Depolama alanı** :
+- **Depolama alanı**:
 
   Hiper ölçekli bir veritabanını yapılandırırken en büyük veri boyutunu belirtmeniz gerekmez. Hiper ölçek katmanında, gerçek ayırmayı temel alarak veritabanınızın depolama alanı için ücretlendirilirsiniz. Depolama, 10 GB 'lik artışlarla otomatik olarak 40 GB ve 100 TB arasında ayrılır. Gerekirse, birden çok veri dosyası aynı anda büyüyebilir. Bir hiper ölçek veritabanı, 10 GB başlangıç boyutuyla oluşturulur ve 40 GB boyutuna ulaşana kadar 10 dakikada bir artmaya başlar.
 
@@ -231,7 +231,6 @@ Bunlar, GA ile aynı hiper ölçek hizmet katmanına yönelik geçerli sınırla
 | In-Memory OLTP nesneleriyle veritabanlarının geçirilmesi | Hiper ölçek, bellek için iyileştirilmiş tablo türleri, tablo değişkenleri ve yerel koda derlenmiş modüller dahil In-Memory OLTP nesnelerinin bir alt kümesini destekler. Ancak, geçirilmekte olan veritabanında herhangi bir In-Memory OLTP nesneleri varsa, Premium ve İş Açısından Kritik hizmet katmanlarından hiper ölçeğe geçiş desteklenmez. Bu tür bir veritabanını hiper ölçeğe geçirmek için, tüm In-Memory OLTP nesnelerinin ve bağımlılıklarının bırakılması gerekir. Veritabanı geçirildikten sonra, bu nesneler yeniden oluşturulabilir. Dayanıklı ve dayanıklı olmayan bellek için iyileştirilmiş tablolar, şu anda hiper ölçekte desteklenmez ve disk tabloları olarak yeniden oluşturulmalıdır.|
 | Coğrafi Çoğaltma  | Azure SQL veritabanı hiper ölçek için Coğrafi çoğaltmayı henüz yapılandıramazsınız. |
 | Veritabanı kopyalama | Hiperscale üzerinde veritabanı kopyalama işlemi artık genel önizlemeye sunuldu. |
-| TDE/AKV tümleştirmesi | Azure Key Vault kullanılarak Saydam veritabanı şifrelemesi (genellikle kendi anahtarını getir veya BYOK olarak adlandırılır) Şu anda genel önizlemededir. |
 | Akıllı veritabanı özellikleri | "Plan zorla" seçeneğinin dışında, diğer tüm otomatik ayarlama seçenekleri henüz hiper ölçekte desteklenmez: seçenekler etkin gibi görünebilir, ancak hiçbir öneri veya eylem yapılmaz. |
 | Sorgu Performansı İçgörüleri | Sorgu performansı öngörüleri Şu anda hiper ölçekli veritabanları için desteklenmiyor. |
 | Veritabanını Küçült | DBCC SHRINKDATABASE veya DBCC SHRINKFILE Şu anda hiper ölçekli veritabanları için desteklenmiyor. |

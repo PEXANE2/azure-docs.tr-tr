@@ -1,18 +1,18 @@
 ---
 title: Şablon işlevleri-Tarih
-description: Tarihlerle çalışmak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+description: Tarihlerle çalışmak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 83e601adb649098f7a4e19cb71170b96a3287d9b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 58d865f109ecca2629b89eeb55e554743824c195
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004594"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920489"
 ---
 # <a name="date-functions-for-arm-templates"></a>ARM şablonları için tarih işlevleri
 
-Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınızın tarihleri ile çalışmak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, Azure Resource Manager şablonunuzda (ARM şablonu) tarihlerle çalışmak için aşağıdaki işlevleri sağlar:
 
 * [dateTimeAdd](#datetimeadd)
 * [utcNow](#utcnow)
@@ -27,11 +27,11 @@ Temel değere bir zaman süresi ekler. ISO 8601 biçimi bekleniyor.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| base | Yes | string | Ekleme için başlangıç tarih saat değeri. [Iso 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
-| süre | Yes | string | Temele eklenecek zaman değeri. Negatif bir değer olabilir. [Iso 8601 Duration biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
-| biçim | No | string | Tarih saat sonucu için çıkış biçimi. Sağlanmazsa, temel değerin biçimi kullanılır. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| base | Evet | string | Ekleme için başlangıç tarih saat değeri. [Iso 8601 zaman damgası biçimini](https://en.wikipedia.org/wiki/ISO_8601)kullanın. |
+| süre | Evet | string | Temele eklenecek zaman değeri. Negatif bir değer olabilir. [Iso 8601 Duration biçimini](https://en.wikipedia.org/wiki/ISO_8601#Durations)kullanın. |
+| biçim | Hayır | string | Tarih saat sonucu için çıkış biçimi. Sağlanmazsa, temel değerin biçimi kullanılır. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -182,13 +182,13 @@ resource scheduler 'Microsoft.Automation/automationAccounts/schedules@2015-10-31
 
 `utcNow(format)`
 
-Belirtilen biçimdeki geçerli (UTC) Tarih/saat değerini döndürür. Biçim sağlanmazsa ISO 8601 (yyyyMMddTHHmmssZ) biçimi kullanılır. **Bu işlev, yalnızca bir parametre için varsayılan değerde kullanılabilir.**
+Belirtilen biçimdeki geçerli (UTC) Tarih/saat değerini döndürür. Biçim sağlanmazsa ISO 8601 ( `yyyyMMddTHHmmssZ` ) biçimi kullanılır. **Bu işlev, yalnızca bir parametre için varsayılan değerde kullanılabilir.**
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| biçim |No |string |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
+| biçim |Hayır |string |Dizeye dönüştürülecek URI kodlamalı değer. [Standart biçim dizelerini](/dotnet/standard/base-types/standard-date-and-time-format-strings) veya [özel biçim dizelerini](/dotnet/standard/base-types/custom-date-and-time-format-strings)kullanın. |
 
 ### <a name="remarks"></a>Açıklamalar
 
@@ -326,4 +326,4 @@ output utcShortOutput string = utcShort
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

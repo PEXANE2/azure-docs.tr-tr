@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b109aaea1ae5e751f40b55a3c703f0739661e10d
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876218"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921881"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -19,8 +19,11 @@ Application Insights tüm web sayfalarıyla kullanılabilir; kısa bir JavaScrip
 
 ## <a name="adding-the-javascript-sdk"></a>JavaScript SDK 'Sı ekleme
 
+> [!IMPORTANT]
+> Yeni Azure bölgeleri, izleme anahtarları yerine bağlantı dizelerinin kullanılmasını **gerektirir** . [Bağlantı dizesi](./sdk-connection-string.md?tabs=js) , telemetri verilerinizi ilişkilendirmek istediğiniz kaynağı tanımlar. Ayrıca, kaynağınızın telemetri için hedef olarak kullanacağı uç noktaları değiştirmenize de olanak tanır. Bağlantı dizesini kopyalamanız ve uygulamanızın koduna veya bir ortam değişkenine eklemeniz gerekir.
+
 1. Önce bir Application Insights kaynağına ihtiyacınız vardır. Henüz bir kaynak ve izleme anahtarınız yoksa [Yeni kaynak oluştur yönergelerini](create-new-resource.md)izleyin.
-2. JavaScript telemetrinizin gönderilmesini istediğiniz kaynak için ("Ikey" olarak da bilinir) _izleme anahtarını_ (adım 1 ' den) kopyalayın. Bunu, `instrumentationKey` Application Insights JavaScript SDK 'sı ayarına ekleyeceksiniz.
+2. JavaScript telemetrinizin gönderilmesini istediğiniz kaynak için ("Ikey" olarak da bilinir) _izleme anahtarını_ veya [bağlantı dizesini](#connection-string-setup) (adım 1 ' den) kopyalayın. Bunu, `instrumentationKey` `connectionString` Application Insights JavaScript SDK 'sının veya ayarına ekleyeceksiniz.
 3. Aşağıdaki iki seçenekten birini kullanarak Web sayfanıza veya uygulamanıza Application Insights JavaScript SDK 'sını ekleyin:
     * [NPM kurulumu](#npm-based-setup)
     * [JavaScript kod parçacığı](#snippet-based-setup)
@@ -40,7 +43,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **Bu pakete dahil**edilmiştir, bu nedenle ayrı bir typler paketi **yüklemeniz gerekmez.**
+> **Bu pakete dahil** edilmiştir, bu nedenle ayrı bir typler paketi **yüklemeniz gerekmez.**
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -102,7 +105,7 @@ Tüm yapılandırma seçenekleri, yanlışlıkla SDK 'nın yüklenmesine neden o
 
 Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [isteğe bağlı] olarak listelenen bir öğenin varsayılan değerini geçersiz kılmak istemiyorsanız, döndürülen sayfanızın elde edilen boyutunu en aza indirmek için bu satırı kaldırabilirsiniz.
 
-Kullanılabilir yapılandırma seçenekleri şunlardır 
+Kullanılabilir yapılandırma seçenekleri şunlardır
 
 | Ad | Tür | Açıklama
 |------|------|----------------
@@ -113,9 +116,23 @@ Kullanılabilir yapılandırma seçenekleri şunlardır
 | Çapraz Sorigin | dize *[isteğe bağlı]* | Bu ayarı ekleyerek, SDK 'Yı indirmek için eklenen komut dosyası etiketi, bu dize değerine sahip çapraz Sorigin özniteliğini içerecektir. Tanımlanmadığında (varsayılan), hiçbir çapraz ekleme özniteliği eklenmez. Önerilen değerler tanımlı değil (varsayılan); ""; veya "Anonymous" (tüm geçerli değerler Için bkz [. html özniteliği `crossorigin` :](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) belgeler)
 | satırında | nesne **[gerekli]** | Yapılandırma, başlatma sırasında Application Insights SDK 'ya geçirildi.
 
+### <a name="connection-string-setup"></a>Bağlantı dizesi kurulumu
+
+NPM veya kod parçacığı kurulumu için, Application Insights örneğinizi bir bağlantı dizesi kullanarak da yapılandırabilirsiniz. Alanı yalnızca `instrumentationKey` `connectionString` alanla değiştirin.
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+  connectionString: 'YOUR_CONNECTION_STRING_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+appInsights.trackPageView();
+```
+
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Azure portal telemetri gönderme
 
-Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bu modüller şunlardır:
+Varsayılan olarak Application Insights JavaScript SDK 'Sı, uygulamanızın sistem durumunu ve temel alınan kullanıcı deneyimini belirlemede yardımcı olan bir dizi telemetri öğesini oto toplar. Bunlar:
 
 - Uygulamanızdaki bilgiler dahil **yakalanamayan özel durumlar**
     - Yığın izleme
@@ -153,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Adı | Varsayılan | Açıklama |
+| Ad | Varsayılan | Açıklama |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -163,8 +180,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
 | disableExceptionTracking | yanlış | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false’tur. |
 | Disabletelemetri | yanlış | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
-| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>***Note:*** Bu ayarın etkinleştirilmesi, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . |
-| loggingLevelConsole | 0 | **İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
+| enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>**_Note:_* _ Bu ayarı etkinleştirmek, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . |
+| loggingLevelConsole | 0 | _ *İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
 | Loggingleveltelemetri | 1 | **İç** Application Insights hatalarını telemetri olarak gönderir. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
 | Diagnosticlogınterval | 10000 | iç İç günlük kuyruğu için yoklama aralığı (MS cinsinden) |
 | samplingPercentage | 100 | Gönderilecek olayların yüzdesi. Varsayılan değer 100 ' dir, yani tüm olaylar gönderilir. Büyük ölçekli uygulamalar için veri ucunu korumak isterseniz bunu ayarlayın. |

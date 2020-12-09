@@ -1,18 +1,18 @@
 ---
 title: Şablon işlevleri-dağıtım
-description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+description: Dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda (ARM şablonu) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9d6a1783bcd6d84c181edae84063ed7c0964c3d8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e63caef669a2c28d29cd0bbd649b0997cea14ee1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004577"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920511"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>ARM şablonları için dağıtım işlevleri
 
-Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonunuzun geçerli dağıtımıyla ilgili değerleri almak için aşağıdaki işlevleri sağlar:
+Kaynak Yöneticisi, Azure Resource Manager şablonunuzun geçerli dağıtımıyla ilgili değerleri almak için aşağıdaki işlevleri sağlar (ARM şablonu):
 
 * [dağıtmak](#deployment)
 * [environment (ortam)](#environment)
@@ -295,9 +295,9 @@ Bir parametre değeri döndürür. Belirtilen parametre adı, şablonun parametr
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |string |Döndürülecek parametrenin adı. |
+| parameterName |Evet |string |Döndürülecek parametrenin adı. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -434,7 +434,7 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | arrayOutput | Dizi | [1, 2, 3] |
 | Çapraz Soutput | Dize | seçenek 1 |
 
-Parametreleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki parametreler](template-parameters.md).
+Parametreleri kullanma hakkında daha fazla bilgi için bkz. [ARM şablonlarındaki parametreler](template-parameters.md).
 
 ## <a name="variables"></a>değişkenlerinin
 
@@ -444,7 +444,7 @@ Değişkenin değerini döndürür. Belirtilen değişken adının şablonun de�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
 | variableName |Evet |Dize |Döndürülecek değişkenin adı. |
 
@@ -571,8 +571,8 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 | exampleOutput3 | Dize | myVariable & lt |
 | exampleOutput4 |  Nesne | {"Property1": "değer1", "Property2": "değer2"} |
 
-Değişkenleri kullanma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonundaki değişkenler](template-variables.md).
+Değişkenleri kullanma hakkında daha fazla bilgi için bkz. [ARM şablonundaki değişkenler](template-variables.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

@@ -1,21 +1,21 @@
 ---
 title: Şablon işlevleri-karşılaştırma
-description: Değerleri karşılaştırmak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
+description: Değerleri karşılaştırmak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: c5ffcfe7688935da6ea5602cdb2c66a8b86a8d88
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1b7192db361f510e0246a737de47930534a1cb9d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004611"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920530"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM şablonları için karşılaştırma işlevleri
 
-Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
+Kaynak Yöneticisi, Azure Resource Manager şablonunuzda (ARM şablonunda) karşılaştırmalar yapmak için çeşitli işlevler sağlar:
 
 * [Coalesce](#coalesce)
-* [equals](#equals)
+* [eşittir](#equals)
 * [büyüktür](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [büyüktür](#less)
@@ -31,10 +31,10 @@ Parametrelerden null olmayan ilk değeri döndürür. Boş dizeler, boş diziler
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, String, array veya Object |Null için sınanacak ilk değer. |
-| ek bağımsız değişkenler |No |int, String, array veya Object |Null için sınanacak ek değerler. |
+| arg1 |Evet |int, String, array veya Object |Null için sınanacak ilk değer. |
+| ek bağımsız değişkenler |Hayır |int, String, array veya Object |Null için sınanacak ek değerler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -133,10 +133,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
-| arg2 |Yes |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
+| arg1 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ilk değer. |
+| arg2 |Evet |int, String, array veya Object |Eşitlik için denetlenecek ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -317,10 +317,10 @@ Yukarıdaki örnekteki çıktı:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha büyük karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha büyük karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha büyük karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha büyük karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -398,10 +398,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha büyük veya eşit karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -479,10 +479,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Daha az karşılaştırma için ilk değer. |
-| arg2 |Yes |int veya String |Daha az karşılaştırma için ikinci değer. |
+| arg1 |Evet |int veya String |Daha az karşılaştırma için ilk değer. |
+| arg2 |Evet |int veya String |Daha az karşılaştırma için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -560,10 +560,10 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
-| arg2 |Yes |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
+| arg1 |Evet |int veya String |Less veya eşittir karşılaştırması için ilk değer. |
+| arg2 |Evet |int veya String |Less veya eşittir karşılaştırması için ikinci değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -635,4 +635,4 @@ Yukarıdaki örnekten alınan çıkış varsayılan değerleri:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

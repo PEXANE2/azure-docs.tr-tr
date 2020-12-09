@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/19/2020
 tags: connectors
-ms.openlocfilehash: b8f95e7e173dd6d1ad43301aab8ff3ec7cf78018
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 4997853fea97d14491bd9e9101f79f324807a6a1
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94981009"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920812"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps gelen HTTPS isteklerini alın ve bunlara yanıt verin
 
@@ -30,7 +30,7 @@ Bu makalede, mantıksal uygulamanızın gelen çağrıları alabilmesi ve yanıt
 
 Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkında daha fazla bilgi için, [Aktarım Katmanı Güvenliği (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security), daha önce GÜVENLI yuva KATMANı (SSL), [Azure Active Directory açma kimlik doğrulaması (Azure AD OAuth)](../active-directory/develop/index.yml), mantıksal uygulamanızı Azure API Management ile gösterme veya gelen çağrıları yapan IP adreslerini kısıtlama gibi) hakkında daha fazla bilgi için bkz. [İstek tabanlı tetikleyicilere gelen çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-inbound-requests).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure hesabı ve aboneliği Aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolabilirsiniz](https://azure.microsoft.com/free/).
 
@@ -42,7 +42,7 @@ Mantıksal uygulamanıza yönelik güvenlik, yetkilendirme ve şifreleme hakkın
 
 Bu yerleşik tetikleyici, HTTPS üzerinden *yalnızca* gelen istekleri işleyebilen el ile çağrılabilir bir uç nokta oluşturur. Bir çağıran bu uç noktaya bir istek gönderdiğinde, [istek tetikleyicisi](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) ateşlenir ve mantıksal uygulamayı çalıştırır. Bu tetikleyiciyi çağırma hakkında daha fazla bilgi için, bkz. [Azure Logic Apps ' de HTTPS uç noktalarına çağrı, tetikleyici veya iç içe geçme iş akışları](../logic-apps/logic-apps-http-endpoint.md).
 
-Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulamanız bir [yanıt eylemi](#add-response)içerdiğinde, mantıksal uygulamanız bu süre geçtikten sonra arayana geri yanıt göndermezse, mantıksal uygulamanız `504 GATEWAY TIMEOUT` çağırana bir durum döndürür. Mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir durum döndürür.
+Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#http-limits)için açık tutar. Mantıksal uygulamanız bir [yanıt eylemi](#add-response)içerdiğinde, mantıksal uygulamanız bu süre geçtikten sonra arayana geri yanıt göndermezse, mantıksal uygulamanız `504 GATEWAY TIMEOUT` çağırana bir durum döndürür. Mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir durum döndürür.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın. Boş bir mantıksal uygulama oluşturma.
 
@@ -56,8 +56,8 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **HTTP POST URL 'SI** | seçim | Yes | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
-   | **İstek gövdesi JSON şeması** | `schema` | No | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
+   | **HTTP POST URL 'SI** | seçim | Evet | Mantıksal uygulamayı kaydettikten sonra oluşturulan ve mantıksal uygulamanızı çağırmak için kullanılan uç nokta URL 'SI |
+   | **İstek gövdesi JSON şeması** | `schema` | Hayır | Gelen istek gövdesindeki özellikleri ve değerleri açıklayan JSON şeması |
    |||||
 
 1. **Istek GÖVDESI JSON şeması** kutusunda, isteğe bağlı olarak, gelen istekteki gövdeyi açıklayan bir JSON şeması girin, örneğin:
@@ -163,8 +163,8 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Yöntem** | `method` | No | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
-   | **Göreli yol** | `relativePath` | No | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
+   | **Yöntem** | `method` | Hayır | Gelen isteğin mantıksal uygulamayı çağırmak için kullanması gereken Yöntem |
+   | **Göreli yol** | `relativePath` | Hayır | Mantıksal uygulamanın uç nokta URL 'sinin kabul edebileceği parametrenin göreli yolu |
    |||||
 
    Bu örnek, **Yöntem** özelliğini ekler:
@@ -179,7 +179,7 @@ Mantıksal uygulamanız bir gelen isteği yalnızca [sınırlı bir süre](../lo
 
    Örneğin, özel bir yanıt döndürmek için kullanabileceğiniz ve bu konunun ilerleyen kısımlarında açıklanan [bir yanıt eylemi ekleyerek](#add-response)isteğe yanıt verebilirsiniz.
 
-   Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#request-limits)için açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir yanıt döndürür.
+   Mantıksal uygulamanız gelen isteği yalnızca [sınırlı bir süre](../logic-apps/logic-apps-limits-and-config.md#http-limits)için açık tutar. Mantıksal uygulama iş akışınızın bir yanıt eylemi içerdiğini varsayarsak, mantıksal uygulama bu süre geçtikten sonra bir yanıt döndürmezse, mantıksal uygulamanız bir `504 GATEWAY TIMEOUT` arayana döndürür. Aksi takdirde, mantıksal uygulamanız bir yanıt eylemi içermiyorsa, mantıksal uygulamanız hemen `202 ACCEPTED` çağırana bir yanıt döndürür.
 
 1. İşiniz bittiğinde mantıksal uygulamanızı kaydedin. Tasarımcı araç çubuğunda **Kaydet**' i seçin.
 
@@ -255,9 +255,9 @@ Gelen istekleri işlemek için Istek tetikleyicisi kullandığınızda, yanıtı
 
    | Özellik adı | JSON Özellik adı | Gerekli | Açıklama |
    |---------------|--------------------|----------|-------------|
-   | **Durum kodu** | `statusCode` | Yes | Yanıtta döndürülecek durum kodu |
-   | **Üst Bilgiler** | `headers` | No | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
-   | **Gövde** | `body` | No | Yanıt gövdesi |
+   | **Durum kodu** | `statusCode` | Evet | Yanıtta döndürülecek durum kodu |
+   | **Üst Bilgiler** | `headers` | Hayır | Yanıta eklenecek bir veya daha fazla üstbilgiyi açıklayan bir JSON nesnesi |
+   | **Gövde** | `body` | Hayır | Yanıt gövdesi |
    |||||
 
 1. Yanıt gövdesi için JSON şeması gibi ek özellikler belirtmek için **yeni parametre Ekle** listesini açın ve eklemek istediğiniz parametreleri seçin.

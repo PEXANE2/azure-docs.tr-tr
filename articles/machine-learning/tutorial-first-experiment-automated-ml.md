@@ -11,12 +11,12 @@ ms.author: sacartac
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.custom: automl
-ms.openlocfilehash: 866be6a2449f3b10d200968782b90653e1363906
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359808"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921898"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -68,7 +68,7 @@ Aşağıdaki deneme kurulumunu tamamlayıp, https://ml.azure.com tüm beceri sev
 
    ![Başlarken sayfası](./media/tutorial-first-experiment-automated-ml/get-started.png)
 
-1. **+ Yeni OTOMATIK ml Çalıştır** ' ı seçin. 
+1. **+ Yeni OTOMATIK ml Çalıştır**' ı seçin. 
 
 ## <a name="create-and-load-dataset"></a>Veri kümesi oluşturma ve yükleme
 
@@ -82,7 +82,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
     1. **Veri deposu ve dosya seçimi** formunda, çalışma alanı oluşturma, çalışma alanı **BlobStore (Azure Blob depolama)** sırasında otomatik olarak ayarlanan varsayılan veri deposunu seçin. Bu, çalışma alanınız için kullanılabilir hale getirmek üzere veri dosyanızı karşıya yükleyeceksiniz.
 
-    1. **Gözat** 'ı seçin.
+    1. **Gözat**'ı seçin.
     
     1. Yerel bilgisayarınızda **bankmarketing_train.csv** dosyasını seçin. Bu, bir [Önkoşul](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv)olarak indirdiğiniz dosyadır.
 
@@ -102,7 +102,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
         Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
 
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri** ’yi seçin.
+    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
 
         ![Önizleme sekmesi yapılandırması](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
 
@@ -112,7 +112,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
     
     1. Listede göründükten sonra veri kümenizi seçin.
     
-    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam** ' ı seçin.
+    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam**' ı seçin.
 
     1. **İleri ' yi** seçin.
 
@@ -141,7 +141,7 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
 
         1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin.
 
-    1. **İleri** ’yi seçin.
+    1. **İleri**’yi seçin.
 
 1. **Görev türü ve ayarlar** formunda, Machine Learning görev türünü ve yapılandırma ayarlarını BELIRTEREK otomatikleştirilmiş ml denemenizin kurulumunu doldurun.
     
@@ -152,13 +152,13 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
         Ek &nbsp; yapılandırma|Açıklama|&nbsp;Öğretici için &nbsp; değer
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
-        En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştirme
+        En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
         Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 1 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 5
         
-        **Kaydet** ’i seçin.
+        **Kaydet**’i seçin.
 
 1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır.
 
@@ -207,7 +207,7 @@ Bu modeli dağıyoruz ancak yapmanız önerilir, dağıtımın tamamlaması yakl
     
     Bu örnekte, *Gelişmiş* menüsünde belirtilen Varsayılanları kullanırız. 
 
-1. **Dağıt** 'ı seçin.  
+1. **Dağıt**'ı seçin.  
 
     **Çalıştır** ekranının üst kısmında yeşil başarı iletisi görünür ve **model Özeti** bölmesinde **dağıtım durumu** altında bir durum iletisi görüntülenir. Dağıtım durumunu denetlemek için düzenli aralıklarla **Yenile** ' yi seçin.
     
@@ -223,11 +223,11 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 
 \/Diğer öğreticiler ve araştırmayla ilgili kaynak grubunu ve çalışma alanını tutmak istiyorsanız, yalnızca https:/ml.Azure.com/konumundaki Azure Machine Learning dağıtım örneğini silin. 
 
-1. [Azure Machine Learning](https://ml.azure.com/)gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar** ' ı seçin. 
+1. [Azure Machine Learning](https://ml.azure.com/)gidin. Çalışma alanınıza gidin ve **varlıklar** bölmesinin sol tarafında **uç noktalar**' ı seçin. 
 
-1. Silmek istediğiniz dağıtımı seçin ve **Sil** ' i seçin. 
+1. Silmek istediğiniz dağıtımı seçin ve **Sil**' i seçin. 
 
-1. **Devam** ' ı seçin.
+1. **Devam**' ı seçin.
 
 ### <a name="delete-the-resource-group"></a>Kaynak grubunu silme
 
@@ -241,7 +241,7 @@ Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluş
 > [Bir web hizmetini kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
-+ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md#classification) makalesi.
++ Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md) makalesi.
 + [Korleştirme](how-to-configure-auto-features.md#featurization)hakkında daha fazla bilgi edinin.
 + [Veri profili oluşturma](how-to-connect-data-ui.md#profile)hakkında daha fazla bilgi edinin.
 

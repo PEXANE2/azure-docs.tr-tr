@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf91c9e081bff9860153b342648fedc0990b68b9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862066"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919749"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory'deki yönetici rolü izinleri
 
@@ -1016,6 +1016,7 @@ Temel dizin bilgilerini okuyabilir & yazabilir. Uygulamalara erişim vermek içi
 | Microsoft. Directory/Users/Approtaatamalar/güncelleştirme | Azure Active Directory Users. Approtaatamalar özelliğini güncelleştirin. |
 | Microsoft. Directory/Users/Atamalisansı | Azure Active Directory kullanıcılar üzerinde lisansları yönetin. |
 | Microsoft. Directory/Users/Basic/Update | Azure Active Directory kullanıcıların temel özelliklerini güncelleştirin. |
+| Microsoft. Directory/kullanıcılar/oluştur | Azure Active Directory’de kullanıcılar oluşturun. |
 | Microsoft. Directory/kullanıcılar/devre dışı bırak | Azure Active Directory bir kullanıcı hesabını devre dışı bırakın. |
 | Microsoft. Directory/kullanıcılar/etkinleştir | Azure Active Directory Kullanıcı hesabını etkinleştirme |
 | Microsoft. Directory/Users/ınvalidateallrefreshtokens | Kullanıcıların bir sonraki oturum açma sırasında yeniden kimlik doğrulaması yapmasını gerektiren Azure Active Directory tüm Kullanıcı yenileme belirteçlerini geçersiz kılar |

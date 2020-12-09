@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 55fa106f0515405dcad969f05d28e0bc7b975b40
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531148"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922300"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure için SQL Data Sync nedir?
 
@@ -26,7 +26,7 @@ SQL Data Sync, hem şirket içinde hem de bulutta birden çok veritabanı üzeri
 > Azure SQL Data Sync Şu anda Azure SQL yönetilen örneğini desteklemez.
 
 
-## <a name="overview"></a>Genel bakış 
+## <a name="overview"></a>Genel Bakış 
 
 Veri eşitleme, bir eşitleme grubu kavramını temel alarak. Eşitleme grubu, eşitlemek istediğiniz veritabanlarının bir grubudur.
 
@@ -81,7 +81,15 @@ Veri eşitleme, aşağıdaki senaryolar için tercih edilen çözüm değildir:
 | **Avantajlar** | -Etkin-etkin destek<br/>-Şirket içi ve Azure SQL veritabanı arasında çift yönlü | -Düşük gecikme süresi<br/>-İşlemsel tutarlılık<br/>-Geçişten sonra var olan topolojiyi yeniden kullan <br/>-Azure SQL yönetilen örnek desteği |
 | **Dezavantajlar** | -İşlem tutarlılığı yok<br/>-Daha yüksek performans etkisi | -Azure SQL veritabanından yayımlanamıyor <br/>-Yüksek bakım maliyeti |
 
-## <a name="get-started"></a>Kullanmaya başlayın 
+## <a name="private-link-for-data-sync-preview"></a>Veri eşitleme için özel bağlantı (Önizleme)
+Yeni özel bağlantı (Önizleme) özelliği, veri eşitleme işlemi sırasında eşitleme hizmeti ile üye/Merkez veritabanları arasında güvenli bir bağlantı kurmak için hizmet tarafından yönetilen özel uç nokta seçmenize olanak sağlar. Hizmet tarafından yönetilen özel uç nokta, belirli bir sanal ağ ve alt ağ içindeki özel bir IP adresidir. Veri eşitleme içinde, hizmet tarafından yönetilen özel uç nokta Microsoft tarafından oluşturulur ve yalnızca belirli bir eşitleme işlemi için veri eşitleme hizmeti tarafından kullanılır. Özel bağlantıyı ayarlamadan önce, özelliğin [genel gereksinimlerini](sql-data-sync-data-sql-server-sql-database.md#general-requirements) okuyun. 
+
+![Veri eşitleme için özel bağlantı](./media/sql-data-sync-data-sql-server-sql-database/sync-private-link-overview.png)
+
+> [!NOTE]
+> Eşitleme grubu dağıtımı sırasında veya PowerShell kullanarak, Azure portal **Özel uç nokta bağlantıları** sayfasında, hizmet tarafından yönetilen özel uç noktasını el ile onaylamanız gerekir.
+
+## <a name="get-started"></a>başlarken 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Azure portal veri eşitlemesini ayarlama
 
@@ -126,6 +134,8 @@ Eşitleme grubu oluşturma, güncelleştirme ve silme sırasında sağlama ve sa
 
 - Hem eşitleme üyeleri hem de Hub için anlık görüntü yalıtımının etkinleştirilmesi gerekir. Daha fazla bilgi için bkz. [SQL Server'da Anlık Görüntü Yalıtımı](/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
+- Özel bağlantıyı veri eşitleme ile birlikte kullanmak için, hem üye hem de Merkez veritabanlarının aynı bulut türünde (örneğin, hem genel bulutta hem de kamu bulutu 'nda) Azure 'da (aynı veya farklı bölgelerde) barındırılması gerekir. Ayrıca, özel bağlantıyı kullanmak için Microsoft. Network kaynak sağlayıcılarının hub ve üye sunucuları barındıran abonelikler için kayıtlı olması gerekir. Son olarak, eşitleme yapılandırması sırasında, Azure portal veya PowerShell aracılığıyla "özel uç nokta bağlantıları" bölümünde bulunan veri eşitleme için özel bağlantıyı el ile onaylamanız gerekir. Özel bağlantıyı onaylama hakkında daha fazla bilgi için bkz. [set up SQL Data Sync](./sql-data-sync-sql-server-configure.md). Hizmet tarafından yönetilen özel uç noktasını onayladıktan sonra, eşitleme hizmeti ile üye/Merkez veritabanları arasındaki tüm iletişimler özel bağlantı üzerinden gerçekleşir. Mevcut eşitleme grupları bu özelliğin etkinleştirilmesini sağlamak için güncelleştirilebilirler.
+
 ### <a name="general-limitations"></a>Genel sınırlamalar
 
 - Tablo, birincil anahtar olmayan bir kimlik sütununa sahip olamaz.
@@ -169,6 +179,9 @@ Veri eşitleme, salt okuma veya sistem tarafından oluşturulmuş sütunları e�
 > Yalnızca bir eşitleme grubu varsa, tek bir eşitleme grubunda 30 ' a kadar uç nokta olabilir. Birden fazla eşitleme grubu varsa, tüm eşitleme gruplarındaki bitiş noktalarının toplam sayısı 30 ' u aşamaz. Bir veritabanı birden çok eşitleme grubuna aitse, birden fazla uç nokta olarak sayılır.
 
 ### <a name="network-requirements"></a>Ağ gereksinimleri
+
+> [!NOTE]
+> Özel bağlantı kullanıyorsanız, bu ağ gereksinimleri uygulanmaz. 
 
 Eşitleme grubu oluşturulduğunda, veri eşitleme hizmetinin hub veritabanına bağlanması gerekir. Eşitleme grubunu oluşturduğunuzda, Azure SQL Server 'ın ayarlarında aşağıdaki yapılandırma olmalıdır `Firewalls and virtual networks` :
 

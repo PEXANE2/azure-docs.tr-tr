@@ -1,18 +1,18 @@
 ---
 title: Şablon işlevleri-mantıksal
-description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Manager şablonunda kullanılacak işlevleri açıklar.
+description: Mantıksal değerleri belirleyebilmek için bir Azure Resource Manager şablonunda (ARM şablonu) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: b54c104c8af5bb742b2c82d8a075515b8696501b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 27d94f10374daf0b9a351469579a5eb659cf5445
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004560"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920487"
 ---
 # <a name="logical-functions-for-arm-templates"></a>ARM şablonları için mantıksal işlevler
 
-Kaynak Yöneticisi, Azure Resource Manager (ARM) şablonlarınıza karşılaştırmalar yapmak için çeşitli işlevler sağlar.
+Kaynak Yöneticisi, Azure Resource Manager şablonunuzda (ARM şablonunda) karşılaştırmalar yapmak için çeşitli işlevler sağlar:
 
 * [and](#and)
 * [bool](#bool)
@@ -32,11 +32,11 @@ Tüm parametre değerlerinin doğru olup olmadığını denetler. `and`Işlev B�
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |No |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -96,9 +96,9 @@ Parametreyi Boole değerine dönüştürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
+| arg1 |Evet |dize veya tamsayı |Boole değerine dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -215,11 +215,11 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| koşul |Yes |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
-| trueValue |Yes | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
-| Yanlışdeğer |Yes | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
+| koşul |Evet |boolean |Doğru veya yanlış olduğunu denetlemek için değer. |
+| trueValue |Evet | dize, int, nesne veya dizi |Koşul doğru olduğunda döndürülecek değer. |
+| Yanlışdeğer |Evet | dize, int, nesne veya dizi |Koşul false olduğunda döndürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -227,7 +227,7 @@ Bir koşulun doğru veya yanlış olduğunu temel alarak bir değer döndürür.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Koşul **doğru** olduğunda, yalnızca true değeri değerlendirilir. Koşul **false** olduğunda, yalnızca false değeri değerlendirilir. **IF** işleviyle, yalnızca koşullu olarak geçerli olan ifadeleri ekleyebilirsiniz. Örneğin, bir koşul altında bulunan ancak diğer koşulun altında olmayan bir kaynağa başvurabilirsiniz. Aşağıdaki bölümde, ifadeleri koşullu olarak değerlendirmek için bir örnek gösterilmiştir.
+Koşul **doğru** olduğunda, yalnızca true değeri değerlendirilir. Koşul **false** olduğunda, yalnızca false değeri değerlendirilir. `if`İşleviyle, yalnızca koşullu olarak geçerli olan ifadeleri ekleyebilirsiniz. Örneğin, bir koşul altında bulunan ancak diğer koşulun altında olmayan bir kaynağa başvurabilirsiniz. Aşağıdaki bölümde, ifadeleri koşullu olarak değerlendirmek için bir örnek gösterilmiştir.
 
 ### <a name="examples"></a>Örnekler
 
@@ -272,7 +272,7 @@ Yukarıdaki örnekteki çıktı:
 
 | Ad | Tür | Değer |
 | ---- | ---- | ----- |
-| yesOutput | Dize | yes |
+| yesOutput | Dize | evet |
 | noOutput | Dize | hayır |
 | objectOutput | Nesne | {"test": "değer1"} |
 
@@ -341,9 +341,9 @@ Boole değerini ters değerine dönüştürür. `not`Işlev Bıcep içinde deste
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Dönüştürülecek değer. |
+| arg1 |Evet |boolean |Dönüştürülecek değer. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -436,11 +436,11 @@ Herhangi bir parametre değerinin doğru olup olmadığını denetler. `or`Işle
 
 ### <a name="parameters"></a>Parametreler
 
-| Parametre | Gerekli | Tür | Description |
+| Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
-| arg2 |Yes |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
-| ek bağımsız değişkenler |No |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
+| arg1 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ilk değer. |
+| arg2 |Evet |boolean |Doğru olup olmadığını kontrol etmek için ikinci değer. |
+| ek bağımsız değişkenler |Hayır |boolean |Doğru olup olmadığını denetlemek için ek bağımsız değişkenler. |
 
 ### <a name="return-value"></a>Döndürülen değer
 
@@ -542,4 +542,4 @@ Yukarıdaki örnekteki çıktı:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

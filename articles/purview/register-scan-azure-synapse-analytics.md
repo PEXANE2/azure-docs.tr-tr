@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554576"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920255"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'i kaydetme ve tarama
 
@@ -22,7 +22,11 @@ Bu makalede, Azure SYNAPSE Analytics 'in (eski adıyla SQL DW) bir örneğinin n
 
 Azure SYNAPSE Analytics (eski adıyla SQL DW), meta verileri ve şemayı yakalamak için tam ve artımlı taramaları destekler. Taramalar Ayrıca verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+### <a name="known-limitations"></a>Bilinen sınırlamalar
+
+Azure purview, Azure SYNAPSE Analytics 'te [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) taranmasını desteklemez
+
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Azure purview veri kaynağı Yöneticisi olmanız gerekir

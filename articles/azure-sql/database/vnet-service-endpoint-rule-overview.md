@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 96030f0e74c29848f675ae2e0867eefa2e79a8a7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905885"
+ms.locfileid: "96920411"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL veritabanı 'ndaki sunucular için sanal ağ hizmet uç noktalarını ve kurallarını kullanma
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -52,8 +52,8 @@ Her bir sanal ağ kuralı yalnızca sunucudaki belirli bir veritabanına değil,
 
 Sanal ağ hizmet uç noktalarının yönetiminde güvenlik rollerinin bir ayrımı vardır. Aşağıdaki rollerden her biri için eylem gereklidir:
 
-- **Ağ Yöneticisi:** &nbsp; Uç noktasını açın.
-- **Veritabanı Yöneticisi:** &nbsp; Verilen alt ağı sunucuya eklemek için erişim denetim listesini (ACL) güncelleştirin.
+- **Ağ Yöneticisi ([ağ katılımcısı](../../role-based-access-control/built-in-roles.md#network-contributor) rolü):** &nbsp; Uç noktasını açın.
+- **Veritabanı Yöneticisi ([SQL Server katkıda bulunan](../../role-based-access-control/built-in-roles.md#sql-server-contributor) rolü):** &nbsp; Verilen alt ağı sunucuya eklemek için erişim denetim listesini (ACL) güncelleştirin.
 
 *Azure RBAC alternatifi:*
 
@@ -247,7 +247,7 @@ Azure SQL veritabanı ile ilgili belirli bir sanal ağ hizmet uç noktası *tür
 
 ## <a name="azure-portal-steps"></a>Azure portal adımları
 
-1. [Azure Portal][http-azure-portal-link-ref-477t] oturum açın.
+1. [Azure portalında][http-azure-portal-link-ref-477t] oturum açın.
 
 2. **SQL Server 'lar** için arama yapın ve ardından sunucunuzu seçin. **Güvenlik altında güvenlik** **duvarları ve sanal ağlar**' ı seçin.
 

@@ -1,19 +1,19 @@
 ---
-title: Azure portal eylem grupları oluşturma ve yönetme
+title: Azure portalında eylem gruplarını oluşturma ve yönetme
 description: Azure portal eylem grupları oluşturmayı ve yönetmeyi öğrenin.
 author: dkamstra
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a2144827cd27c0af6610dabdf5ad205359f550cc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435493"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920656"
 ---
-# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portal eylem grupları oluşturma ve yönetme
+# <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
 
 Bu makalede Azure portal eylem gruplarının nasıl oluşturulacağı ve yönetileceği gösterilmektedir.
@@ -128,7 +128,7 @@ E-postalar aşağıdaki e-posta adreslerinden gönderilir. E-posta filtrelemesin
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 
-### <a name="email-azure-resource-manager-role"></a>E-posta Azure Resource Manager Rolü
+### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager Rolüne E-posta Gönder
 Abonelik rolü üyelerine e-posta gönderin. E-posta yalnızca rolün **Azure AD Kullanıcı** üyelerine gönderilir. Azure AD gruplarına veya hizmet sorumlularına e-posta gönderilmez.
 
 Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
@@ -250,7 +250,9 @@ Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.
 > Azure portal eylem grubu Kullanıcı arabirimi ülke/bölge kodunuzu seçmenizi vermezse, ülkeniz/bölgeniz için SMS desteklenmez.  Ülke/Bölge kodunuz yoksa, ülkeniz/bölgenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini sağlayabilirsiniz. Bu sırada, geçici bir çözüm, eylem grubunuzun bir üçüncü taraf SMS sağlayıcısına ait bir Web kancasını ülkeniz/bölgeniz desteğiyle çağırmasını sağlar.  
 
 Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
-  
+
+**SMS bildiriminin desteklendiği** 
+| ülkelerin listesi **Ülke kodu**  |  **Ülke adı** | | 61 | Avustralya | | 43 | Avusturya | | 32 | Belçika | | 55 | Brezilya | | 1 | Kanada | | 56 | Şili | | 86 | Çin | | 420 | Çek Cumhuriyeti | | 45 | Danimarka | | 372 | Estonya | | 358 | Finlandiya | | 33 | Fransa | | 49 | Almanya | | 852 | Hong Kong | | 91 | Hindistan | | 353 | İrlanda | | 972 | İsrail | | 39 | İtalya | | 81 | Japonya | | 352 | Lüksemburg | | 60 | Malezya | | 52 | Meksika | | 31 | Hollanda | | 64 | Yeni Zelanda | | 47 | Norveç | | 351 | Portekiz | | 1 | Porto Riko | | 40 | Romanya | | 65 | Singapur | | 27 | Güney Afrika | | 82 | Güney Kore | | 34 | İspanya | | 41 | İsviçre | | 886 | Tayvan | | 44 |  Birleşik Krallık | | 1 | Birleşik Devletler |
 
 ### <a name="voice"></a>Ses
 Daha önemli davranış için bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
@@ -259,6 +261,7 @@ Bir eylem grubunda sınırlı sayıda ses eylemi olabilir.
 
 > [!NOTE]
 > Azure portal eylem grubu Kullanıcı arabirimi ülke/bölge kodunuzu seçmenizi desteklemiyorsa, ülkeniz/bölgeniz için sesli çağrılar desteklenmez. Ülke/Bölge kodunuz yoksa, ülkeniz/bölgenizin [Kullanıcı sesine](https://feedback.azure.com/forums/913690-azure-monitor/suggestions/36663181-add-more-country-codes-for-sms-alerting-and-voice)eklenmesini sağlayabilirsiniz.  Bu sırada, geçici bir çözüm, eylem grubunuzun bir üçüncü taraf sesli çağrı sağlayıcısına ait bir Web kancasını ülke/bölgenizde destekleyecek şekilde çağırmasını sağlar.  
+> Yalnızca ses bildirimi için Azure portal eylem grubunda bugün desteklenen ülke kodu + 1 ' dir (Birleşik Devletler). 
 
 Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
 

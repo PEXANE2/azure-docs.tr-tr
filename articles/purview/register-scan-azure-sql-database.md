@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 50a256796ee26c03f21353e8fe268c4300b21ebe
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575864"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920276"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -25,6 +25,10 @@ Azure SQL veritabanı veri kaynağı aşağıdaki işlevleri destekler:
 - Azure SQL veritabanı 'nda meta verileri ve sınıflandırmayı yakalamak için **tam ve artımlı taramalar** .
 
 - ADF Copy ve veri akışı etkinlikleri için veri varlıkları arasında **kökenini** .
+
+### <a name="known-limitations"></a>Bilinen sınırlamalar
+
+Azure purview, Azure SQL veritabanı 'nda [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) taranmasını desteklemez. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 

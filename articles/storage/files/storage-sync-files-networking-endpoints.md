@@ -8,12 +8,12 @@ ms.date: 5/11/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 02d9e65f5422b7b12900d051f01c1d6f55e8685b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 61ff5d05eb74804af69b90d839115a8468619275
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844685"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921723"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Azure Dosya Eşitleme ağının uç noktalarını yapılandırma
 Azure dosyaları ve Azure Dosya Eşitleme, Azure dosya paylaşımlarına erişmek için iki ana uç nokta türü sağlar: 
@@ -26,7 +26,7 @@ Bu makalede, her iki Azure dosyası ve Azure Dosya Eşitleme için ağ uç nokta
 
 Bu nasıl yapılır Kılavuzu ' nu okumadan önce [Azure dosya eşitleme ağ konularını](storage-sync-files-networking-overview.md) okumanızı öneririz.
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 Bu makalede şu şekilde varsayılmaktadır:
 - Azure aboneliğiniz var. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 - Şirket içinden bağlamak istediğiniz bir depolama hesabında zaten bir Azure dosya paylaşma oluşturmuş olabilirsiniz. Azure dosya paylaşımının nasıl oluşturulacağını öğrenmek için bkz. [Azure dosya paylaşma oluşturma](storage-how-to-create-file-share.md).
@@ -34,7 +34,7 @@ Bu makalede şu şekilde varsayılmaktadır:
 
 Ek olarak:
 - Azure PowerShell kullanmayı düşünüyorsanız, [en son sürümü yükleyebilirsiniz](/powershell/azure/install-az-ps).
-- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Azure CLı 'yı kullanmayı planlıyorsanız [en son sürümü yükleyebilirsiniz](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
 
 ## <a name="create-the-private-endpoints"></a>Özel uç noktaları oluşturma
 Bir Azure kaynağı için özel bir uç nokta oluştururken aşağıdaki kaynaklar dağıtılır:
@@ -588,7 +588,7 @@ Depolama hesabını belirli sanal ağlarla kısıtladığınızda, belirtilen sa
 Azure Dosya Eşitleme, yalnızca özel uç noktalar aracılığıyla belirli sanal ağlara erişimi kısıtlamanıza olanak sağlar; Azure Dosya Eşitleme, genel uç noktaya erişimi belirli sanal ağlara kısıtlamak için hizmet uç noktalarını desteklemez. Bu, depolama eşitleme hizmeti 'nin Genel uç noktası için iki durumun etkinleştirildiği ve devre dışı bırakıldığı anlamına gelir.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Azure portal aracılığıyla bu mümkün değildir. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell veya Azure CLı Tab yönergelerini seçin. 
+Azure portal aracılığıyla bu mümkün değildir. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell sekmesini seçin. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Depolama eşitleme hizmeti 'nin Genel uç noktasına erişimi devre dışı bırakmak için `incomingTrafficPolicy` depolama eşitleme hizmeti ' nde özelliğini olarak ayarlayacağız `AllowVirtualNetworksOnly` . Depolama eşitleme hizmeti 'nin Genel uç noktasına erişimi etkinleştirmek istiyorsanız, `incomingTrafficPolicy` `AllowAllTraffic` bunun yerine olarak ayarlayın. Ve ' nin değiştirilmesini unutmayın `<storage-sync-service-resource-group>` `<storage-sync-service>` .
@@ -603,23 +603,11 @@ $storageSyncService = Get-AzResource `
         -ResourceType "Microsoft.StorageSync/storageSyncServices"
 
 $storageSyncService.Properties.incomingTrafficPolicy = "AllowVirtualNetworksOnly"
-$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force
+$storageSyncService = $storageSyncService | Set-AzResource -Confirm:$false -Force -UsePatchSemantics
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Depolama eşitleme hizmeti 'nin Genel uç noktasına erişimi devre dışı bırakmak için `incomingTrafficPolicy` depolama eşitleme hizmeti ' nde özelliğini olarak ayarlayacağız `AllowVirtualNetworksOnly` . Depolama eşitleme hizmeti 'nin Genel uç noktasına erişimi etkinleştirmek istiyorsanız, `incomingTrafficPolicy` `AllowAllTraffic` bunun yerine olarak ayarlayın. Ve ' nin değiştirilmesini unutmayın `<storage-sync-service-resource-group>` `<storage-sync-service>` .
-
-```bash
-storageSyncServiceResourceGroupName="<storage-sync-service-resource-group>"
-storageSyncServiceName="<storage-sync-service>"
-
-az resource update \
-        --resource-group $storageSyncServiceResourceGroupName \
-        --name $storageSyncServiceName \
-        --resource-type "Microsoft.StorageSync/storageSyncServices" \
-        --set "properties.incomingTrafficPolicy=AllowVirtualNetworksOnly" \
-        --output none
-```
+<a name="azure-cli-does-not-support-setting-the-incomingtrafficpolicy-property-on-the-storage-sync-service-please-select-the-azure-powershell-tab-to-get-instructions-on-how-to-disable-the-storage-sync-service-public-endpoint"></a>Azure CLı, `incomingTrafficPolicy` depolama eşitleme hizmeti 'nde özelliğinin ayarlanmasını desteklemez. Depolama eşitleme hizmeti genel uç noktasını devre dışı bırakma hakkında yönergeler almak için lütfen Azure PowerShell sekmesini seçin.
 ---
 
 ## <a name="see-also"></a>Ayrıca bkz.
