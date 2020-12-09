@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d8b690201ea4349f9577377ff24c91bd75ecd58b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751878"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922930"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -37,6 +37,7 @@ Aralık ayında güncelleştirmeler şunlardır:
 
 - [Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu](#azure-defender-for-sql-servers-on-machines-is-generally-available)
 - [Azure SYNAPSE Analytics adanmış SQL havuzu için SQL için Azure Defender desteği genel kullanıma sunuldu](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [Genel Yöneticiler, artık kendi kiracı düzeyinde izinler verebilir](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu
@@ -71,6 +72,13 @@ SQL için Azure Defender 'ın Azure SYNAPSE Analytics SQL havuzları desteği, A
 [SQL Için Azure Defender](defender-for-sql-introduction.md)hakkında daha fazla bilgi edinin.
 
 
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>Genel Yöneticiler, artık kendi kiracı düzeyinde izinler verebilir
+
+**Genel yönetici** Azure Active Directory rolüne sahip bir kullanıcının kiracı genelinde sorumlulukları olabilir, ancak Azure Güvenlik Merkezi 'nde kuruluş genelinde bilgileri görüntülemek için Azure izinlerinin olmaması gerekir. 
+
+Kendi kiracı düzeyi izinlerini atamak için, [kiracı genelindeki izinleri kendinize verme](security-center-management-groups.md#grant-tenant-wide-permissions-to-yourself)bölümündeki yönergeleri izleyin.
+
+
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)
 
 Azure ortamınız için iki yeni bulut Yerel enine koruma özelliği ekledik.
@@ -79,12 +87,12 @@ Bu yeni korumalar tehdit aktörlerini saldırılara karşı dayanıklılığın�
 
 - **Kaynak Yöneticisi Için Azure Defender** -kuruluşunuzda gerçekleştirilen tüm kaynak yönetimi işlemlerini otomatik olarak izler. Daha fazla bilgi için bkz:
     - [Kaynak Yöneticisi için Azure Defender 'a giriş](defender-for-resource-manager-introduction.md)
-    - [Kaynak Yöneticisi uyarılar için Azure Defender 'a yanıt verme](defender-for-resource-manager-usage.md)
+    - [Resource Manager için Azure Defender uyarılarına yanıt verme](defender-for-resource-manager-usage.md)
     - [Kaynak Yöneticisi için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-resourcemanager)
 
 - **DNS Için Azure Defender** -Azure kaynaklarınızdaki tüm DNS sorgularını sürekli izler. Daha fazla bilgi için bkz:
     - [DNS için Azure Defender 'a giriş](defender-for-dns-introduction.md)
-    - [DNS uyarıları için Azure Defender 'a yanıt verme](defender-for-dns-usage.md)
+    - [DNS için Azure Defender uyarılarına yanıt verme](defender-for-dns-usage.md)
     - [DNS için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-dns)
 
 

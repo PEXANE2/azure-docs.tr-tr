@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 29f5b549bd5f5dbc421487739bb1eb8c7f120bb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441032"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922960"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>VPN Gateway (sanal ağ geçidi) sanal WAN 'a bağlama
 
@@ -45,7 +45,7 @@ Sanal ağ geçidi **yapılandırması** sayfasında etkin-etkin modunu etkinleş
 
 ### <a name="bgp-setting"></a><a name="BGP"></a>BGP ayarı
 
-Sanal ağ geçidi **yapılandırması** SAYFASıNDA **BGP ASN**'yi yapılandırabilirsiniz. BGP ASN 'yi değiştirin. BGP ASN 65515 olamaz. 66515, Azure sanal WAN tarafından kullanılacak.
+Sanal ağ geçidi **yapılandırması** SAYFASıNDA **BGP ASN**'yi yapılandırabilirsiniz. BGP ASN 'yi değiştirin. BGP ASN 65515 olamaz. 65515, Azure sanal WAN tarafından kullanılacak.
 
 ![Ekran görüntüsü BGP ASN 'yi Yapılandır seçiliyken bir sanal ağ geçidi yapılandırma sayfasını gösterir.](./media/connect-virtual-network-gateway-vwan/bgp.png "b")
 
@@ -57,7 +57,7 @@ Ağ Geçidi oluşturulduğunda, **Özellikler** sayfasına gidin. Özellikler ve
 
 ## <a name="2-create-virtual-wan-vpn-sites"></a><a name="vwansite"></a>2. sanal WAN VPN siteleri oluşturma
 
-Sanal WAN VPN siteleri oluşturmak için sanal WAN 'ınızla gezinmek ve **bağlantı**altında **VPN siteleri**' ni seçin. Bu bölümde, önceki bölümde oluşturduğunuz sanal ağ geçitlerine karşılık gelen iki sanal WAN VPN sitesi oluşturacaksınız.
+Sanal WAN VPN siteleri oluşturmak için sanal WAN 'ınızla gezinmek ve **bağlantı** altında **VPN siteleri**' ni seçin. Bu bölümde, önceki bölümde oluşturduğunuz sanal ağ geçitlerine karşılık gelen iki sanal WAN VPN sitesi oluşturacaksınız.
 
 1. **+ Site oluştur**' u seçin.
 2. **VPN siteleri oluştur** sayfasında, aşağıdaki değerleri yazın:
@@ -81,7 +81,7 @@ Sanal WAN VPN siteleri oluşturmak için sanal WAN 'ınızla gezinmek ve **bağl
 
 Bu bölümde, önceki bölümde oluşturduğunuz her bir sitenin VPN yapılandırma dosyasını indirirler.
 
-1. Sanal WAN **VPN siteleri** sayfasının en üstünde, **siteyi**SEÇIN ve **siteden siteye VPN yapılandırmasını indir**' i seçin. Azure, ayarlarla bir yapılandırma dosyası oluşturur.
+1. Sanal WAN **VPN siteleri** sayfasının en üstünde, **siteyi** SEÇIN ve **siteden siteye VPN yapılandırmasını indir**' i seçin. Azure, ayarlarla bir yapılandırma dosyası oluşturur.
 
    !["Siteden siteye VPN yapılandırmasını Indir" eyleminin seçildiği "VPN siteleri" sayfasını gösteren ekran görüntüsü.](./media/connect-virtual-network-gateway-vwan/download.png "indirin")
 2. Yapılandırma dosyasını indirip açın.
@@ -121,7 +121,7 @@ Bu bölümde, VPN Gateway yerel ağ geçitleri ve sanal ağ geçidi arasında bi
 
    ![Bağlantı](./media/connect-virtual-network-gateway-vwan/connect.png "bağlantı")
 5. İkinci bir bağlantı oluşturmak için önceki adımları tekrarlayın. İkinci bağlantı için, oluşturduğunuz diğer yerel ağ geçidini seçin.
-6. Bağlantılar BGP üzerinden olursa, bağlantılarınızı oluşturduktan sonra bir bağlantıya gidip **yapılandırma**' yı seçin. **Yapılandırma** sayfasında **BGP**için **etkin**' i seçin. Ardından **Kaydet**' e tıklayın. İkinci bağlantı için tekrarlayın.
+6. Bağlantılar BGP üzerinden olursa, bağlantılarınızı oluşturduktan sonra bir bağlantıya gidip **yapılandırma**' yı seçin. **Yapılandırma** sayfasında **BGP** için **etkin**' i seçin. Ardından **Kaydet**' e tıklayın. İkinci bağlantı için tekrarlayın.
 
 ## <a name="6-test-connections"></a><a name="test"></a>6. test bağlantıları
 

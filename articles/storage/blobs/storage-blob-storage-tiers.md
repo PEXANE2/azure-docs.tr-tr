@@ -3,17 +3,17 @@ title: Azure Blob depolama için erişim katmanları-sık erişimli, seyrek eri�
 description: Azure Blob depolama için sık erişimli, seyrek erişimli ve arşiv erişim katmanları hakkında bilgi edinin. Katmanlamayı destekleyen depolama hesaplarını gözden geçirin. Blok Blobu depolama seçeneklerini karşılaştırın.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007333"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923981"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Azure Blob depolama için erişim katmanları-sık erişimli, seyrek erişimli ve arşiv
 
@@ -112,6 +112,11 @@ Bir blob bir çarpıtma katmanına taşındığında (Arşiv->seyrek erişimli, 
 
 Seyrek Erişimli katmana taşınan herhangi bir blob (yalnızca GPv2 hesapları), sık erişimli 30 günlük bir erken silme süresine tabidir. Arşiv katmanına taşınan herhangi bir blob, arşiv erken silme dönemi olan 180 gün ile tabidir. Bu ücret eşit olarak bölünür. Örneğin, bir blob arşive taşınır ve 45 gün sonra sık erişimli katmana taşınırsa veya taşınmışsa, bu Blobun arşiv 'de depolanması için bir erken silme ücreti, 135 (180 eksi 45) güne denk ücretlendirilirsiniz.
 
+Seyrek erişimli ve arşiv katmanları arasında hareket eden bazı ayrıntılar:
+
+1. Blob, depolama hesabının varsayılan erişim katmanına göre seyrek erişimli olarak çıkarılırsa ve BLOB arşive taşınırsa, erken silme ücreti yoktur.
+1. Bir blob açık olarak seyrek erişimli katmana taşınırsa ve sonra arşive taşınırsa, erken silme ücreti uygulanır.
+
 Bir erişim katmanı değişikliği yoksa, **son değiştirilme** olan blob özelliğini kullanarak erken silme işlemini hesaplayabilirsiniz. Aksi takdirde, erişim katmanının en son seyrek erişimli veya arşiv olarak değiştirildiği zaman, blob özelliğini görüntüleyerek kullanabilirsiniz: **erişim katmanı değiştirme zamanı**. Blob özellikleri hakkında daha fazla bilgi için bkz. [BLOB özelliklerini al](/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparing-block-blob-storage-options"></a>Blok Blobu depolama seçeneklerini karşılaştırma
@@ -121,7 +126,7 @@ Aşağıdaki tabloda, Premium performans bloğu blob depolaması ve sık erişim
 |                                           | **Premium performans**   | **Etkin katman** | **Cool katmanı**       | **Arşiv katmanı**  |
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Kullanılabilirlik**                          | %99,9                     | %99,9        | %99                 | Çevrimdışı           |
-| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | YOK                       | %99,99       | %99,9               | Çevrimdışı           |
+| **Kullanılabilirlik** <br> **(RA-GRS okumaları)**  | Yok                       | %99,99       | %99,9               | Çevrimdışı           |
 | **Kullanım ücretleri**                         | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyeti | Daha yüksek depolama maliyetleri, daha düşük erişim ve işlem maliyetleri | Daha düşük depolama maliyetleri, daha yüksek erişim ve işlem maliyetleri | En düşük depolama maliyetleri, en yüksek erişim ve işlem maliyetleri |
 | **En düşük nesne boyutu**                   | Yok                       | Yok          | Yok                 | Yok               |
 | **En az depolama süresi**              | Yok                       | Yok          | 30 gün<sup>1</sup> | 180 gün

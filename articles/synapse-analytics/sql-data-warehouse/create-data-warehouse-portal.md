@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: adanmış bir SQL havuzu oluşturma ve sorgulama (Azure portal)'
-description: Azure portal kullanarak adanmış bir SQL havuzu oluşturma ve sorgulama
+title: 'Hızlı başlangıç: adanmış bir SQL havuzu oluşturma ve sorgulama (eski adıyla SQL DW) (Azure portal)'
+description: Azure portal kullanarak adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun ve sorgulayın
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,23 +11,23 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 78a0982081b8e34461fb2910cc7ce21be622cb6a
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922882"
 ---
-# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL havuzu oluşturma ve sorgulama
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak Azure SYNAPSE Analytics 'te adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturun ve sorgulayın
 
-Azure portal kullanarak Azure SYNAPSE Analytics 'te hızlı bir şekilde bir Synapse SQL Havuzu (veri ambarı) oluşturun ve sorgulayın.
+Azure portal kullanarak, Azure SYNAPSE Analytics 'te adanmış bir SQL havuzunu (eski adıyla SQL DW) hızlıca oluşturun ve sorgulayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
    > [!NOTE]
-   > Azure SYNAPSE 'de bir SQL havuzu oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/synapse-analytics/).
+   > Azure SYNAPSE 'de adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturmak, yeni bir faturalanabilir hizmetle sonuçlanabilir. Daha fazla bilgi için bkz. [Azure SYNAPSE Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
 2. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
 
@@ -37,25 +37,25 @@ Azure portal kullanarak Azure SYNAPSE Analytics 'te hızlı bir şekilde bir Syn
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
-Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturulur. Bir SQL havuzu tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) içinde ve [mantıksal SQL Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)'da oluşturulur.
+Veri ambarları, Azure SYNAPSE Analytics 'te adanmış SQL Havuzu (eski adıyla SQL DW) kullanılarak oluşturulur. Adanmış bir SQL Havuzu (eski adıyla SQL DW) tanımlanmış bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle oluşturulur. Veritabanı bir [Azure Kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) içinde ve [mantıksal SQL Server](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)'da oluşturulur.
 
-**AdventureWorksDW** örnek verilerini IÇEREN bir SQL havuzu oluşturmak için bu adımları izleyin.
+**AdventureWorksDW** örnek verilerini içeren ADANMıŞ bir SQL Havuzu (eskı ADıYLA SQL DW) oluşturmak için bu adımları izleyin.
 
-1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
+1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin.
 
    ![Azure portal bir kaynak oluşturun](./media/create-data-warehouse-portal/create-a-resource.png)
 
-2. **Yeni** sayfada **veritabanları** ' nı seçin ve **öne çıkan** listede **Azure SYNAPSE Analytics (eski adıyla SQL DW)** öğesini seçin.
+2. "Adanmış SQL havuzu" arama çubuğunda adanmış SQL Havuzu (eski adıyla SQL DW) seçin. Açılan sayfada **Oluştur** ' u seçin.
 
    ![boş veri ambarı oluşturma](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. **Temel bilgiler** için aboneliğinizi, kaynak grubunuzu, SQL havuzu adınızı ve sunucu adını sağlayın:
+3. **Temel bilgiler** için aboneliğinizi, kaynak grubunuzu, adanmış SQL havuzunu (eskı ADıYLA SQL DW) adınızı ve sunucu adını sağlayın:
 
    | Ayar | Önerilen değer | Açıklama |
    | :------ | :-------------- | :---------- |
    | **Abonelik** | Aboneliğiniz | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
    | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
-   | **SQL havuzu adı** | Herhangi bir genel benzersiz ad (örneğin, *Mysampledatawarehouse*) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). SQL havuzu tek bir veritabanı türüdür. |
+   | **SQL havuzu adı** | Herhangi bir genel benzersiz ad (örneğin, *Mysampledatawarehouse*) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  |
    | **Sunucu** | Genel olarak benzersiz bir ad | Var olan sunucuyu seçin veya yeni bir sunucu adı oluşturun, **Yeni oluştur**' u seçin. Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
    ![veri ambarı temel ayrıntıları oluşturma](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -68,7 +68,7 @@ Veri ambarları, Azure SYNAPSE Analytics 'te SQL havuzu kullanılarak oluşturul
 
 5. **Ek ayarlar**' ı seçin, **var olan verileri kullan** bölümünde örnek veritabanı olarak AdventureWorksDW oluşturulacak şekilde **Sample** ' ı seçin.
 
-    ![mevcut verileri kullan seçeneğini belirleyin](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+    ![mevcut verileri kullan seçeneğini belirleyin](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png)
 
 6. Azure SYNAPSE Analytics formunun temel bilgiler sekmesini tamamladığınıza göre, SQL havuzunu oluşturmak için **gözden geçir + oluştur** ' u ve ardından **Oluştur** ' u seçin. Sağlama işlemi birkaç dakika sürer.
 
@@ -124,7 +124,7 @@ Azure portal sunucunuzun tam sunucu adını alın. Daha sonra sunucuya bağlanı
 
 3. Veritabanınızın Azure portal sayfasındaki **Temel Bilgiler** bölmesinde, **Sunucu adını** bulup kopyalayın. Bu örnekte, tam adı sqlpoolservername.database.windows.net ' dir.
 
-    ![bağlantı bilgileri](./media/create-data-warehouse-portal/find-server-name-copy.png)
+    ![bağlantı bilgileri](./media/create-data-warehouse-portal/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Sunucu yöneticisi olarak sunucuya bağlanma
 
@@ -180,21 +180,21 @@ Azure SYNAPSE Analytics, sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Veri ambarı birimleri ve SQL havuzunuzu depolanan veriler için ücret ödersiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
+Veri ambarı birimleri ve özel SQL havuzunuzu (eski adıyla SQL DW) depolanan veriler için ücretlendirilirsiniz. Bu işlem ve depolama alanı kaynakları ayrı ayrı faturalandırılır.
 
-- Verileri depolama alanında tutmak istiyorsanız, SQL havuzunu kullanmadığınız sırada işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya her seferinde işlem yapabilirsiniz.
+- Verileri depolama alanında tutmak istiyorsanız, adanmış SQL havuzunu (eski adıyla SQL DW) kullanmadığınız zaman işlem duraklatabilirsiniz. İşlem duraklatıldığında yalnızca veri depolama alanı için ücret ödersiniz. Verilerle çalışmaya her seferinde işlem yapabilirsiniz.
 
-- Gelecekteki ücretleri kaldırmak istiyorsanız, SQL havuzunu silebilirsiniz.
+- Gelecekteki ücretleri kaldırmak istiyorsanız adanmış SQL havuzunu (eski adıyla SQL DW) silebilirsiniz.
 
 Artık ihtiyacınız olmayan kaynakları temizlemek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın, SQL havuzunuzu seçin.
+1. [Azure Portal](https://portal.azure.com)oturum açın, adanmış SQL havuzunuzu (eskı ADıYLA SQL DW) seçin.
 
    ![Kaynakları temizleme](./media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. İşlem duraklatmak için **Duraklat** düğmesini seçin. SQL havuzu duraklatıldığında **, bir geri** düğmesi görürsünüz. İşlemi sürdürmesini sağlamak için, yeniden gerçekleştir ' **i seçin.**
+2. İşlem duraklatmak için **Duraklat** düğmesini seçin. Adanmış SQL Havuzu (eski adıyla SQL DW) duraklatıldığında, bir **özgeçmişi** düğmesi görürsünüz. İşlemi sürdürmesini sağlamak için, yeniden gerçekleştir ' **i seçin.**
 
-3. İşlem veya depolama için ücretlendirilmemek üzere SQL havuzunu kaldırmak için **Sil**' i seçin.
+3. Adanmış SQL havuzunu (eski adıyla SQL DW) kaldırmak için, işlem veya depolama için ücretlendirilmemek için **Sil**' i seçin.
 
 4. Oluşturduğunuz sunucuyu kaldırmak için önceki görüntüde **sqlpoolservername.Database.Windows.net** ' ı seçin ve **Sil**' i seçin. Sunucuyu silmek sunucuyla ilişkili tüm veritabanlarını da sileceğinden bu silme işlemini gerçekleştirirken dikkatli olun.
 
@@ -206,4 +206,4 @@ Bulut harcamalarınızı iyileştirmek ve kaydetmek istiyor musunuz?
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzunuza veri yükleme hakkında daha fazla bilgi edinmek için [VERILERI SQL havuzu 'Na yükleme](load-data-from-azure-blob-storage-using-polybase.md) makalesine ilerleyin.
+Adanmış SQL havuzunuza (eski adıyla SQL DW) veri yükleme hakkında daha fazla bilgi edinmek için, [verileri adanmış BIR SQL havuzunda yükleme](load-data-from-azure-blob-storage-using-copy.md) makalesine geçin.
