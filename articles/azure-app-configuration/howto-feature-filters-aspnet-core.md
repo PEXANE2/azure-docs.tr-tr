@@ -4,16 +4,16 @@ titleSuffix: Azure App Configuration
 description: Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini nasıl kullanacağınızı öğrenin
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: af8df66e02dc9316311f36dec60374a7c4e649b8
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554765"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931886"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Koşullu Özellik bayraklarını etkinleştirmek için özellik filtrelerini kullanın
 
@@ -49,9 +49,9 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
 
 1. Bir özellik bayrağıyla Web uygulaması oluşturmak için [hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme](./quickstart-feature-flag-aspnet-core.md) ' deki yönergeleri izleyin.
 
-1. Azure portal, yapılandırma deponuza gidin ve **Feature Manager** ' a tıklayın.
+1. Azure portal, yapılandırma deponuza gidin ve **Feature Manager**' a tıklayın.
 
-1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsüne tıklayın. **Düzenle** ’ye tıklayın.
+1. Hızlı başlangıçta oluşturduğunuz *Beta* özelliği bayrağının bağlam menüsüne tıklayın. **Düzenle**’ye tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Beta Özellik bayrağını Düzenle](./media/edit-beta-feature-flag.png)
@@ -63,12 +63,12 @@ Bu ayarları, Azure Uygulama yapılandırmasında tanımlanan özellik bayraklar
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi ekle](./media/feature-flag-add-filter.png)
 
-1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Parametreleri Düzenle** ' ye tıklayın.
+1. Özellik filtresi anahtarının yanındaki bağlam menüsüne tıklayın. **Parametreleri Düzenle**' ye tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi parametrelerini Düzenle](./media/feature-flag-edit-filter-parameters.png)
 
-1. Metin kutularının kılavuzda görünmesi için **ad** üstbilgisinin altına gelin. Bir değer **adı** ve *Value* 50 **değeri** girin. **Değer** alanı, özellik filtresi etkinleştirilecek isteklerin yüzdesini gösterir.
+1. Metin kutularının kılavuzda görünmesi için **ad** üstbilgisinin altına gelin. Bir değer **adı** ve  50 **değeri** girin. **Değer** alanı, özellik filtresi etkinleştirilecek isteklerin yüzdesini gösterir.
 
     > [!div class="mx-imgBorder"]
     > ![Özellik filtresi parametrelerini ayarla](./media/feature-flag-set-filter-parameters.png)

@@ -1,21 +1,21 @@
 ---
 title: Şablon başvurusu kullanma
-description: Şablon oluşturmak için Azure Resource Manager şablonu başvurusunu kullanın.
+description: Şablon oluşturmak için Azure Resource Manager şablonu (ARM şablonu) başvurusunu kullanın.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 3709511fa8da0a40f4faf4ab2dac9505d69003ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86118520"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931427"
 ---
-# <a name="tutorial-utilize-the-resource-manager-template-reference"></a>Öğretici: Kaynak Yöneticisi şablonu başvurusunu kullanma
+# <a name="tutorial-utilize-the-arm-template-reference"></a>Öğretici: ARM şablon başvurusunu kullanma
 
-Şablon Şeması bilgilerini bulmayı ve bilgileri kullanarak Azure Resource Manager (ARM) şablonları oluşturmayı öğrenin.
+Şablon Şeması bilgilerini bulmayı ve bu bilgileri kullanarak Azure Resource Manager şablonları (ARM şablonları) oluşturmayı öğrenin.
 
 Bu öğreticide Azure Hızlı Başlangıç şablonları arasından temel bir şablon kullanırsınız. Şablon başvuru belgelerini kullanarak şablonu özelleştirirsiniz.
 
@@ -32,11 +32,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Hızlı başlangıç şablonunu açma
 
@@ -50,7 +50,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 
 1. Dosyayı açmak için **Aç**’ı seçin.
-1. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
+1. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
 
 ## <a name="understand-the-schema"></a>Şemayı anlama
 
@@ -65,7 +65,7 @@ Bu makaleyi tamamlamak için gerekenler:
     * **resources**: Kaynak grubunda dağıtılan veya güncelleştirilen kaynak türlerini belirtin.
     * **outputs**: Dağıtım sonrasında döndürülen değerleri belirtin.
 
-1. **resources** bölümünü genişletin. Tanımlı bir `Microsoft.Storage/storageAccounts` kaynağı olduğunu göreceksiniz. SKU adı bir parametre değeri kullanır.  Parametreye **Storageaccounttype**adı verilir.
+1. **resources** bölümünü genişletin. Tanımlı bir `Microsoft.Storage/storageAccounts` kaynağı olduğunu göreceksiniz. SKU adı bir parametre değeri kullanır.  Parametreye **Storageaccounttype** adı verilir.
 
     ![Resource Manager şablonu depolama hesabı tanımı](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
@@ -76,7 +76,7 @@ Bu makaleyi tamamlamak için gerekenler:
 ## <a name="find-the-template-reference"></a>Şablon başvurusunu bulma
 
 1. [Azure şablon başvurusuna](/azure/templates/)gidin.
-1. **Başlığa göre filtrele** kutusuna **depolama hesapları**' nı girin ve **başvuru > depolama**alanındaki ilk **depolama hesaplarını** seçin.
+1. **Başlığa göre filtrele** kutusuna **depolama hesapları**' nı girin ve **başvuru > depolama** alanındaki ilk **depolama hesaplarını** seçin.
 
     ![Resource Manager şablon başvurusu depolama hesabı](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts.png)
 

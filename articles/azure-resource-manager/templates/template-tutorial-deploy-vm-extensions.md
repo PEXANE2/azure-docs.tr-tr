@@ -1,21 +1,21 @@
 ---
 title: Şablon ile VM uzantıları dağıtma
-description: Azure Resource Manager şablonlarıyla sanal makine uzantılarını dağıtmayı öğrenin
+description: Azure Resource Manager şablonları (ARM şablonları) ile sanal makine uzantılarını dağıtmayı öğrenin.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f82e0eb45f4bc7c3260554b1b1120025029336bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89073651"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931461"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma
 
-Azure VM'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri gerçekleştirme amacıyla [Azure sanal makine uzantılarını](../../virtual-machines/extensions/features-windows.md) kullanmayı öğrenin. Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Bu öğreticide, bir Windows sanal makinesinde PowerShell betiğini çalıştırmak için bir Azure Resource Manager (ARM) şablonundan özel bir betik uzantısı dağıtırsınız.  Bu betik, VM'ye Web Sunucusu yükler.
+Azure VM'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri gerçekleştirme amacıyla [Azure sanal makine uzantılarını](../../virtual-machines/extensions/features-windows.md) kullanmayı öğrenin. Azure VM'leri ile kullanabileceğiniz birçok farklı VM uzantısı vardır. Bu öğreticide, bir Windows sanal makinesinde PowerShell betiğini çalıştırmak için bir Azure Resource Manager şablonundan (ARM şablonu) özel bir betik uzantısı dağıtırsınız. Bu betik, VM'ye Web Sunucusu yükler.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
@@ -31,14 +31,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```console
     openssl rand -base64 32
     ```
 
-    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [öğretici: ARM şablon dağıtımında Azure Key Vault tümleştirme](./template-tutorial-use-key-vault.md). Parolanızı her üç ayda bir de güncelleştirmenizi öneririz.
+    Azure Key Vault şifreleme anahtarları ve diğer gizli dizileri korumak üzere tasarlanmıştır. Daha fazla bilgi için bkz. [öğretici: ARM şablon dağıtımınızdaki Azure Key Vault tümleştirme](./template-tutorial-use-key-vault.md). Parolanızı her üç ayda bir de güncelleştirmenizi öneririz.
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell betiğini hazırlama
 
@@ -73,7 +73,7 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
      Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
 
-1. Dosya farklı Kaydet ' **i seçerek dosyanın**bir kopyasını *azuredeploy.js* adı ile yerel bilgisayarınıza kaydedin  >  **Save As**.
+1. Dosya farklı Kaydet ' **i seçerek dosyanın** bir kopyasını *azuredeploy.js* adı ile yerel bilgisayarınıza kaydedin  >  .
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

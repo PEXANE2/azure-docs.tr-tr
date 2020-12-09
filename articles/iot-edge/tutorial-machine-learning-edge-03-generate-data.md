@@ -8,12 +8,12 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4ac7f300fa88d57efe65c6d79645d4e75ca7edd9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: eef5e60b06eedb1fb07c57aa2e369dd3830fcad5
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575491"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932413"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Öğretici: sanal cihaz verileri oluşturma
 
@@ -42,6 +42,14 @@ Devicebir projesi, dört sınıftan oluşan C# dilinde yazılmış bir .NET Core
 Bu makalede açıklanan görevlerin tamamlanması yaklaşık 20 dakika sürer.
 
 Bu adımdaki işe yönelik gerçek hayatta büyük olasılıkla cihaz geliştiricileri ve bulut geliştiricileri tarafından gerçekleştirilmesi olasıdır.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Geliştirme ortamınıza dış bir proje ekleyin.
+> * Sanal IoT cihaz verileri oluşturmak için örnek Devicebir Project kullanın.
+> * IoT Hub oluşturulan verileri görüntüleyin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

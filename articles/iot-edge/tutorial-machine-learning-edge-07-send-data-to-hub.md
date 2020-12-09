@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1927ec00df67522563fb063f2cb127fee4c0bcbf
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621051"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932328"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Öğretici: saydam ağ geçidi aracılığıyla veri gönderme
 
@@ -23,6 +23,14 @@ Bu makalede, bir kez sanal cihaz olarak geliştirme sanal makinesi olarak kullan
 Sanal cihaz veri gönderirken IoT Edge cihazının işlemini izliyoruz. Cihazın çalışması tamamlandığında, her şeyin beklendiği gibi çalıştığını doğrulamak için depolama hesabımızda bulunan verilere baktık.
 
 Bu adım genellikle bir bulut veya cihaz geliştiricisi tarafından gerçekleştirilir.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Bir yaprak cihaz oluşturup çalıştırın.
+> * Oluşturulan verilerin Azure Blob depolama alanında depolandığından emin olun.
+> * Machine Learning modelinin cihaz verilerini sınıflandırdığını doğrulayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -39,7 +47,7 @@ Bu iki öğenin nasıl uygulandığını görmek için koda bakın.
 
 1. Geliştirme makinenizde Visual Studio Code açın.
 
-1. **File**  >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya **klasörü aç...** öğesini kullanın \\ \\ \\ .
+1.   >  C: kaynak ıotedgeandmlsample Device, dosyasını açmak için dosya **klasörü aç...** öğesini kullanın \\ \\ \\ .
 
 1. Program.cs ' de InstallCertificate () yöntemine bakın.
 

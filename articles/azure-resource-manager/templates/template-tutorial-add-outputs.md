@@ -1,21 +1,21 @@
 ---
 title: Öğretici-şablona çıktılar ekleme
-description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza çıktılar ekleyin.
+description: Sözdizimini basitleştirmek için Azure Resource Manager şablonunuza çıktılar ekleyin (ARM şablonu).
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613875"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931750"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Öğretici: ARM şablonunuza çıktılar ekleme
 
-Bu öğreticide, Azure Resource Manager (ARM) şablonınızdan bir değer döndürmeyi öğrenirsiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
+Bu öğreticide, Azure Resource Manager şablonınızdan (ARM şablonu) bir değer döndürmeyi öğreneceksiniz. Dağıtılan bir kaynaktan bir değere ihtiyacınız olduğunda çıktıları kullanırsınız. Bu öğreticinin tamamlana **7 dakika** sürer.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -41,7 +41,7 @@ Aşağıdaki örnek, bir çıkış değeri eklemek için şablonunuzda yapılan 
 
 Eklediğiniz çıktı değeri hakkında dikkat etmeniz için bazı önemli öğeler vardır.
 
-Döndürülen değerin türü **Object**olarak ayarlanır, yanı bir JSON nesnesi döndürür.
+Döndürülen değerin türü **Object** olarak ayarlanır, yanı bir JSON nesnesi döndürür.
 
 Depolama hesabının çalışma zamanı durumunu almak için [başvuru](template-functions-resource.md#reference) işlevini kullanır. Bir kaynağın çalışma zamanı durumunu almak için bir kaynağın adını veya KIMLIĞINI geçirin. Bu durumda, depolama hesabının adını oluşturmak için kullandığınız değişkeni kullanırsınız.
 
@@ -100,7 +100,7 @@ Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden ge�
 
 Şimdi, kaynak grubuna ve dağıtım geçmişine bakalım.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Dağıttığınız kaynak grubunu seçin.
 1. Yaptığınız adımlara bağlı olarak, kaynak grubunda en az bir ve belki birkaç depolama hesabınız olmalıdır.
@@ -108,7 +108,7 @@ Son altı öğreticilerde bir çok şey yaptınız. Ne yaptığını gözden ge�
 
    ![Dağıtımları seçin](./media/template-tutorial-add-outputs/select-deployments.png)
 
-1. Tüm dağıtımlarınızın geçmişini görürsünüz. **Addoutputs**adlı dağıtımı seçin.
+1. Tüm dağıtımlarınızın geçmişini görürsünüz. **Addoutputs** adlı dağıtımı seçin.
 
    ![Dağıtım geçmişini göster](./media/template-tutorial-add-outputs/show-history.png)
 

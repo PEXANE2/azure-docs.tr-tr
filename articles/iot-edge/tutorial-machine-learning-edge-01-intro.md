@@ -8,18 +8,29 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d603e5d03480b99eb3d6adb72a3440198fda2e47
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: b23324a7226d4b3de4908bd78a8f19c799e59f06
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575474"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932192"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Öğretici: Azure Machine Learning ve IoT Edge kullanarak uçtan uca bir çözüm
 
 IoT uygulamaları, genellikle akıllı buluttan ve akıllı kenarından faydalanmak istiyor. Bu öğreticide, bulutta IoT cihazlarından toplanan verilerle bir makine öğrenimi modeline eğitim vererek, bu modeli IoT Edge için dağıtmakta ve modeli düzenli aralıklarla koruyup iyileştirirken size kılavuzluk ederiz.
 
 Bu öğreticinin birincil amacı, özellikle de kenarda, Machine Learning ile IoT verilerinin işlenmesini tanıtmaktadır. Genel makine öğrenimi iş akışının pek çok yönüyle iletişime geçtiğimiz için, bu öğretici Machine Learning 'e derinlemesine bir giriş olarak tasarlanmamıştır. Bu noktada, kullanım örneği için yüksek düzeyde iyileştirilmiş bir model oluşturmaya çalışıyoruz; IoT veri işleme için uygun bir model oluşturma ve kullanma sürecini göstermek için yeterlidir.
+
+Öğreticinin bu bölümünde şunları ele alınmaktadır:
+
+> [!div class="checklist"]
+>
+> * Öğreticinin sonraki kısımlarını tamamlamaya yönelik önkoşullar.
+> * Öğreticinin hedef kitlesi.
+> * Öğreticinin benzetimini yapmak için kullanım örneği.
+> * Genel süreç, kullanım durumunu karşılamak için öğreticiden izler.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Önkoşullar
 

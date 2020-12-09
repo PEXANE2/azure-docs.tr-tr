@@ -9,18 +9,26 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 754b1544f112fb63fae91a52c7e48f25b9790ed2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575100"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932362"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Öğretici: IoT Edge cihaz yapılandırma
 
 Bu makalede, Linux çalıştıran bir Azure sanal makinesini, saydam bir ağ geçidi olarak davranan IoT Edge bir cihaz olacak şekilde yapılandıracağız. Saydam bir ağ geçidi yapılandırması, cihazların ağ geçidinin var olduğunu bilmeksizin ağ geçidi üzerinden Azure IoT Hub bağlanmasına olanak sağlar. Aynı zamanda, Azure IoT Hub cihazlarıyla etkileşim kuran bir kullanıcı ara ağ geçidi cihazının farkında değildir. Sonuç olarak, saydam ağ geçidine IoT Edge modüller ekleyerek sistemimize Edge Analizi ekleyeceğiz.
 
 Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Ağ Geçidi cihazınızın aşağı akış cihazlarınıza güvenli bir şekilde bağlanmasına izin vermek için sertifika oluşturun.
+> * IoT Edge bir cihaz oluşturun.
+> * IoT Edge cihazınızın benzetimini yapmak için bir Azure sanal makinesi oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

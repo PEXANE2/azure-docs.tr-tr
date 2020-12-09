@@ -2,17 +2,17 @@
 title: Azure Uygulama yapılandırması ile verileri içeri aktarma veya dışarı aktarma
 description: Yapılandırma verilerini içeri veya Azure Uygulama yapılandırmasına aktarma hakkında bilgi edinin. Uygulama yapılandırma depem ve kod projeniz arasında veri alışverişi yapın.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 0e127a11f3821325602a78d46c69b2330bfb8293
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: 5e4eeb37bb5efa11a656600072e4aa364fc71500
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074626"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931801"
 ---
 # <a name="import-or-export-configuration-data"></a>Yapılandırma verilerini içeri veya dışarı aktarma
 
@@ -36,9 +36,9 @@ Bu makale, uygulama yapılandırmasıyla veri içeri ve dışarı aktarmaya yön
 
     ![Dosyayı içeri aktar](./media/import-file.png)
 
-1. Bir **ayırıcı**seçin ve isteğe bağlı olarak içeri aktarılan anahtar adları için kullanılacak bir **ön ek** girin.
+1. Bir **ayırıcı** seçin ve isteğe bağlı olarak içeri aktarılan anahtar adları için kullanılacak bir **ön ek** girin.
 
-1. İsteğe bağlı olarak bir **etiket**seçin.
+1. İsteğe bağlı olarak bir **etiket** seçin.
 
 1. İçeri aktarma işleminin bitmesini sağlamak için **Uygula** ' yı seçin.
 
@@ -56,7 +56,7 @@ Uygulama yapılandırmasında depolanan yazma yapılandırması verilerini başk
 
 1. İsteğe bağlı olarak bir **ön ek** girin ve anahtarlar Için bir **etiket** ve zaman içinde bir nokta seçin.
 
-1. Bir **dosya türü**  >  **ayırıcısı**seçin.
+1. Bir **dosya türü**  >  **ayırıcısı** seçin.
 
 1. Dışarı aktarmayı sona bırakmak için **Uygula** ' yı seçin.
 

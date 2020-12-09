@@ -1,6 +1,6 @@
 ---
 title: Şablon dağıtım betikleri kullanma | Microsoft Docs
-description: Azure Resource Manager şablonlarda Dağıtım betiklerini nasıl kullanacağınızı öğrenin.
+description: Azure Resource Manager şablonlarda (ARM şablonları) dağıtım betikleri kullanmayı öğrenin.
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 08/25/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e1094befcc6b3a6e9d56ba3b603dc45fcb91ba13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88825503"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931444"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
 
-Azure Kaynak Yönetimi (ARM) şablonlarında dağıtım betikleri kullanmayı öğrenin. Dağıtım betikleri, ARM şablonları tarafından yapılamadığını özel adımlar gerçekleştirmek için kullanılabilir. Örneğin, otomatik olarak imzalanan bir sertifika oluşturma.  Bu öğreticide, bir Azure Anahtar Kasası dağıtmak için bir şablon oluşturup, bir `Microsoft.Resources/deploymentScripts` sertifika oluşturmak ve ardından sertifikayı anahtar kasasına eklemek için aynı şablonda bir kaynak kullanırsınız. Dağıtım betiği hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarındaki Dağıtım betiklerini kullanma](./deployment-script-template.md).
+Azure Resource Manager şablonlarda (ARM şablonları) dağıtım betikleri kullanmayı öğrenin. Dağıtım betikleri, ARM şablonları tarafından yapılamadığını özel adımlar gerçekleştirmek için kullanılabilir. Örneğin, otomatik olarak imzalanan bir sertifika oluşturma.  Bu öğreticide, bir Azure Anahtar Kasası dağıtmak için bir şablon oluşturup, bir `Microsoft.Resources/deploymentScripts` sertifika oluşturmak ve ardından sertifikayı anahtar kasasına eklemek için aynı şablonda bir kaynak kullanırsınız. Dağıtım betiği hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarındaki Dağıtım betiklerini kullanma](./deployment-script-template.md).
 
 > [!IMPORTANT]
 > Bir depolama hesabı ve bir kapsayıcı örneği olmak üzere iki dağıtım betiği kaynağı, betik yürütme ve sorun giderme için aynı kaynak grubunda oluşturulur. Bu kaynaklar genellikle betik yürütme bir terminal durumunda olduğunda betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](./deployment-script-template.md#clean-up-deployment-script-resources).
@@ -40,7 +40,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* **Kaynak Yöneticisi Araçları uzantısıyla [Visual Studio Code](https://code.visualstudio.com/) **. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
+* **Kaynak Yöneticisi Araçları uzantısıyla [Visual Studio Code](https://code.visualstudio.com/)**. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
 
 * **Abonelik düzeyinde katkıda bulunan rolü ile Kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. Bir tane oluşturmak için bkz. [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
@@ -70,7 +70,7 @@ Bu hızlı başlangıçta kullanılan şablona [Azure Key Vault oluştur ve gizl
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyayı **File** > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya**farklı kaydet** **'** i seçin.
+4. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -263,8 +263,8 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     * **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
     * **scriptcontent**: betik içeriğini belirtin. Dış betiği çalıştırmak için bunun yerine **Primaryscripturi** kullanın. Daha fazla bilgi için bkz. [dış betik kullanma](./deployment-script-template.md#use-external-scripts).
         **$DeploymentScriptOutputs** bildirme yalnızca betiği yerel bir makinede test edilirken gereklidir. Değişkeni bildirmek, betiğin bir yerel makinede ve bir deploymentScript kaynağında değişiklik yapmak zorunda kalmadan çalıştırılmasını sağlar. $DeploymentScriptOutputs atanan değer, dağıtımlarda çıkış olarak kullanılabilir. Daha fazla bilgi için bkz. [PowerShell dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-powershell-script) veya [CLI dağıtım betiklerinden çıkışlarla çalışma](./deployment-script-template.md#work-with-outputs-from-cli-script).
-    * **cleanuppreference**: dağıtım betiği kaynaklarının ne zaman silineceği üzerinde tercihi belirtin.  Varsayılan değer **her zaman**ve dağıtım betiği kaynaklarının, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen silindiği anlamına gelir. Bu öğreticide, komut dosyası yürütme sonuçlarını görüntülemenin bir şansı elde etmeniz için **onSuccess** kullanılır.
-    * **retentionInterval**: bir Terminal durumuna ulaştıktan sonra hizmetin betik kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde kaynaklar silinir. Süre, ISO 8601 düzenine göre belirlenir. Bu öğretici, bir gün anlamına gelen P1D kullanır.  **Cleanuppreference** **onexpiration**olarak ayarlandığında bu özellik kullanılır. Bu özellik şu anda etkin değil.
+    * **cleanuppreference**: dağıtım betiği kaynaklarının ne zaman silineceği üzerinde tercihi belirtin.  Varsayılan değer **her zaman** ve dağıtım betiği kaynaklarının, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen silindiği anlamına gelir. Bu öğreticide, komut dosyası yürütme sonuçlarını görüntülemenin bir şansı elde etmeniz için **onSuccess** kullanılır.
+    * **retentionInterval**: bir Terminal durumuna ulaştıktan sonra hizmetin betik kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde kaynaklar silinir. Süre, ISO 8601 düzenine göre belirlenir. Bu öğretici, bir gün anlamına gelen P1D kullanır.  **Cleanuppreference** **onexpiration** olarak ayarlandığında bu özellik kullanılır. Bu özellik şu anda etkin değil.
 
     Dağıtım betiği üç parametre alır: Anahtar Kasası adı, sertifika adı ve konu adı.  Bir sertifika oluşturur ve ardından sertifikayı anahtar kasasına ekler.
 
@@ -278,9 +278,9 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     Write-Output1 $keyVaultName
     ```
 
-    Doğru komut **Write-Output1**yerine **Write-output** ' dır.
+    Doğru komut **Write-Output1** yerine **Write-output** ' dır.
 
-1. Dosyayı **File** > kaydetmek için dosya**Kaydet** ' i seçin.
+1. Dosyayı  > kaydetmek için dosya **Kaydet** ' i seçin.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -324,8 +324,8 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 ## <a name="debug-the-failed-script"></a>Başarısız komut dosyasında hata ayıkla
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. Kaynak grubunu açın. **RG** eklenmiş proje adıdır. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları*denir.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Kaynak grubunu açın. **RG** eklenmiş proje adıdır. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları* denir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
@@ -335,11 +335,11 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 1. **Azscripts** sonekine sahip depolama hesabını seçin.
 1. **Dosya paylaşımları** kutucuğunu seçin. **Azscripts** klasörünü görürsünüz.  Klasör, dağıtım betiği yürütme dosyalarını içerir.
-1. **Azscripts**seçin. İki foldersL **azscriptınput** ve **azscriptoutput**görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Hata iletisini ** üzerindeexecutionresult.js**görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
+1. **Azscripts** seçin. İki foldersL **azscriptınput** ve **azscriptoutput** görürsünüz.  Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Hata iletisini **üzerindeexecutionresult.js** görebilirsiniz. Yürütme başarısız olduğundan çıkış dosyası yok.
 
 **Write-Output1** satırını kaldırın ve şablonu yeniden dağıtın.
 
-İkinci Dağıtım başarıyla çalıştırıldığında, **Cleanuppreference** özelliği **onSuccess**olarak ayarlandığından dağıtım betiği kaynakları betik hizmeti tarafından kaldırılır.
+İkinci Dağıtım başarıyla çalıştırıldığında, **Cleanuppreference** özelliği **onSuccess** olarak ayarlandığından dağıtım betiği kaynakları betik hizmeti tarafından kaldırılır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

@@ -5,16 +5,16 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 64767f83dfad2b0c2909e8a89b55c849d5c5a9a9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896999"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931376"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarındaki koşulu kullanma
 
-Azure kaynaklarını bir Azure Resource Manager (ARM) şablonundaki koşullara göre dağıtmayı öğrenin.
+Azure Resource Manager şablonundaki koşullara göre Azure kaynaklarını dağıtmayı öğrenin (ARM şablonu).
 
 [Kaynak dağıtım sırasını ayarlama](./template-tutorial-create-templates-with-dependent-resources.md) öğreticisinde bir sanal makine, bir sanal ağ ve bir depolama hesabı dahil olmak üzere ek birkaç bağımlı kaynak oluşturmuştunuz. Her defasında yeni depolama hesabı oluşturmak yerine kullanıcıların yeni depolama hesabı oluşturma veya var olan depolama hesabını kullanma arasında seçim yapmasını sağlayacaksınız. Bu hedefe ulaşmak için ek bir parametre tanımlamanız gerekir. Parametrenin değeri "new" olduğunda yeni bir depolama hesabı oluşturulur. Aksi halde, belirtilen ada sahip mevcut bir depolama hesabı kullanılır.
 
@@ -28,7 +28,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * Şablonu dağıtma
 > * Kaynakları temizleme
 
-Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele alır. Daha fazla bilgi için bkz.
+Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele alır. Daha fazla bilgi için bkz:
 
 * [Şablon dosyası yapısı: koşul](conditional-resource-deployment.md).
 * [BIR ARM şablonunda bir kaynağı koşullu olarak dağıtın](/azure/architecture/building-blocks/extending-templates/conditional-deploy).
@@ -41,7 +41,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```console
@@ -54,14 +54,14 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code **Dosya** > **Aç dosya** ' yı seçin.
-1. **Dosya adı** ’na şu URL’yi yapıştırın:
+1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 
-1. Dosyayı açmak için **Aç** ’ı seçin.
+1. Dosyayı açmak için **Aç**’ı seçin.
 1. Şablon tarafından tanımlanan altı kaynak vardır:
 
    * [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts).
@@ -73,7 +73,7 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
     Şablonu özelleştirmeden önce şablon başvurusunu gözden geçirmeniz faydalı olur.
 
-1. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
+1. Dosyanın  > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="modify-the-template"></a>Şablonu değiştirme
 
@@ -140,7 +140,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir** 'i seçin ve sonra da **Karşıya Yükle** 'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 
@@ -178,7 +178,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için **dene** ' yi seçerek Cloud Shell açın. PowerShell betiğini yapıştırmak için kabuk bölmesine sağ tıklayın ve ardından **Yapıştır** ' ı seçin.
+Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin. Kaynak grubunu silmek için **dene** ' yi seçerek Cloud Shell açın. PowerShell betiğini yapıştırmak için kabuk bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter the same project name you used in the last procedure"

@@ -2,23 +2,23 @@
 title: Azure Uygulama yapılandırması için ASP.NET Core ile hızlı başlangıç | Microsoft Docs
 description: Bir ASP.NET Core uygulamasının uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama yapılandırması ile bir ASP.NET Core uygulaması oluşturun.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.custom: devx-track-csharp, contperfq1
 ms.topic: quickstart
 ms.date: 09/25/2020
-ms.author: lcozzens
-ms.openlocfilehash: 13283a9531804502b8a8d72e615be955b413658c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.author: alkemper
+ms.openlocfilehash: fc2b218621fcf91a7d82b0554da79a8b4582c3a2
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075850"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932175"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Hızlı başlangıç: Azure Uygulama yapılandırmasıyla ASP.NET Core uygulaması oluşturma
 
-Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama yapılandırması 'nı kullanacaksınız. ASP.NET Core, bir uygulama tarafından belirtilen bir veya daha fazla veri kaynağından ayarları kullanarak tek, anahtar-değer tabanlı bir yapılandırma nesnesi oluşturur. Bu veri kaynakları *yapılandırma sağlayıcıları*olarak bilinir. Uygulama yapılandırmasının .NET Core istemcisi bir yapılandırma sağlayıcısı olarak uygulandığından, hizmet başka bir veri kaynağı gibi görünür.
+Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarlarının depolanmasını ve yönetimini merkezileştirmek için Azure Uygulama yapılandırması 'nı kullanacaksınız. ASP.NET Core, bir uygulama tarafından belirtilen bir veya daha fazla veri kaynağından ayarları kullanarak tek, anahtar-değer tabanlı bir yapılandırma nesnesi oluşturur. Bu veri kaynakları *yapılandırma sağlayıcıları* olarak bilinir. Uygulama yapılandırmasının .NET Core istemcisi bir yapılandırma sağlayıcısı olarak uygulandığından, hizmet başka bir veri kaynağı gibi görünür.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -32,7 +32,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarların�
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. **Operations**  >  **Configuration explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için Operations Configuration Explorer**anahtar değeri** oluştur ' u seçin:
+7. **Operations**  >  **Configuration explorer**  >  **Create**  >  Aşağıdaki anahtar-değer çiftlerini eklemek için Operations Configuration Explorer **anahtar değeri** oluştur ' u seçin:
 
     | Anahtar                                | Değer                               |
     |------------------------------------|-------------------------------------|
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core uygulamasının uygulama ayarların�
     | `TestApp:Settings:FontSize`        | *24*                                |
     | `TestApp:Settings:Message`         | *Azure Uygulama yapılandırmasından veriler* |
 
-    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Apply** (Uygula) seçeneğini belirleyin.
+    **Etiket** ve **içerik türü** şimdilik boş bırakın. **Uygula**’yı seçin.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core web uygulaması oluşturma
 
@@ -123,7 +123,7 @@ dotnet new mvc --no-https --output TestAppConfig
 
 Uygulama yapılandırma deposunda depolanan değerleri okumak ve göstermek için aşağıdaki adımları izleyin. .NET Core Configuration API 'SI mağazaya erişmek için kullanılacaktır. Razor söz dizimi, anahtarların değerlerini göstermek için kullanılacaktır.
 
-* \<app root> /Views/Home/Index.cshtml*dosyasını açın ve içeriğini şu kodla değiştirin:
+*\<app root> /Views/Home/Index.cshtml* dosyasını açın ve içeriğini şu kodla değiştirin:
 
 ```cshtml
 @using Microsoft.Extensions.Configuration

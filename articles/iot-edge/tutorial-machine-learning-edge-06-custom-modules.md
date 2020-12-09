@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2c7503cf51ab74dc486f83de8033bfe4850a8c68
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575066"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932345"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Öğretici: özel IoT Edge modüller oluşturma ve dağıtma
 
@@ -51,6 +51,15 @@ Aşağıdaki diyagramda, tam çözüm için modüller, girişler, çıktılar ve
 ![IoT Edge üç modül mimarisi diyagramı](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Bu makaledeki adımlar genellikle bir bulut geliştiricisi tarafından gerçekleştirilir.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Özel koddan bir IoT Edge modülü oluşturun.
+> * Özel modülünüzü bir Docker görüntüsü oluşturun.
+> * Özel modüllerinizi desteklemek için IoT Hub yönlendirmeyi yeniden yapılandırın.
+> * Özel modüllerinizi oluşturun, yayımlayın ve dağıtın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

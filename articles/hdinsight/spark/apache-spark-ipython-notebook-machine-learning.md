@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Spark Machine Learning uygulaması oluşturma-Azure HDInsight'
-description: Öğretici-Jupyter Not defteri 'ni kullanarak HDInsight Spark kümelerinde Apache Spark Machine Learning uygulamasının nasıl oluşturulacağı hakkında adım adım yönergeler.
+description: Öğretici-Jupyter Notebook kullanarak HDInsight Spark kümelerinde Apache Spark Machine Learning uygulamasının nasıl oluşturulacağı hakkında adım adım yönergeler.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc, devx-track-python
 ms.date: 04/07/2020
-ms.openlocfilehash: 753f45257f820f87f2e4bfb1893f581bee167a4a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6af50bae075e88ac3bbba39cba9c9042eee2000e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230934"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932254"
 ---
 # <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta Apache Spark Machine Learning uygulaması oluşturma
 
@@ -41,7 +41,7 @@ Uygulama varsayılan olarak tüm kümelerdeki kullanılabilir örnek **HVAC.csv*
 
 Bu uygulama bir belge sınıflandırması yapmak için Spark [ml işlem hattı](https://spark.apache.org/docs/2.2.0/ml-pipeline.html) kullanır. ML işlem hatları, veri çerçevelerinin üzerine inşa olan tek düzeyli bir üst düzey API kümesi sağlar. Veri çerçeveleri, kullanıcıların pratik makine öğrenimi işlem hatlarını oluşturmasına ve ayarlamaya yardımcı olur. İşlem hattında, belgeyi sözcüklere böler, sözcükleri sayısal bir özellik vektörüne dönüştürür ve son olarak özellik vektörleri ile etiketleri kullanarak bir tahmin modeli oluşturursunuz. Uygulamayı oluşturmak için aşağıdaki adımları uygulayın.
 
-1. PySpark çekirdeği kullanarak bir Jupyter not defteri oluşturun. Yönergeler için bkz. [Jupyter Not defteri dosyası oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. PySpark çekirdeğini kullanarak bir Jupyter Notebook oluşturun. Yönergeler için bkz. [Jupyter Notebook dosyası oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
 1. Bu senaryo için gereken türleri içeri aktarın. Aşağıdaki kod parçacığını boş bir hücreye yapıştırın ve sonra **SHIFT + ENTER** tuşlarına basın.
 
@@ -186,17 +186,17 @@ Bu uygulama bir belge sınıflandırması yapmak için Spark [ml işlem hattı](
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark makine öğrenimi için Anaconda scikit-learn kitaplığını kullanma
 
-HDInsight’ta Apache Spark kümeleri, Anaconda kitaplıklarını içerir. Ayrıca, makine öğrenimi **scikit-learn** kitaplığını içerir. Kitaplık aynı zamanda, aynı uygulamaları bir Jupyter not defterinden doğrudan derlemek için kullanabileceğiniz çeşitli veri kümeleri içerir. Scikit-öğrenme kitaplığını kullanma örnekleri için bkz [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) ..
+HDInsight’ta Apache Spark kümeleri, Anaconda kitaplıklarını içerir. Ayrıca, makine öğrenimi **scikit-learn** kitaplığını içerir. Kitaplık Ayrıca, doğrudan bir Jupyter Notebook örnek uygulamalar oluşturmak için kullanabileceğiniz çeşitli veri kümelerini içerir. Scikit-öğrenme kitaplığını kullanma örnekleri için bkz [https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html) ..
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
-1. Üstteki **arama** kutusuna **HDInsight**yazın.
+1. Üstteki **arama** kutusuna **HDInsight** yazın.
 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
+1. **Hizmetler** altında **HDInsight kümeleri** ' ni seçin.
 
 1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** seçeneğini belirleyin.
 

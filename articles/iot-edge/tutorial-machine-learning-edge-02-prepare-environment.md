@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b62790fd8f01b7ffb2df4d242b97e8464c11399b
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621136"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932379"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Öğretici: IoT Edge makine öğrenimi için bir ortam ayarlama
 
 Bu makalede, ortamınız geliştirme ve dağıtım için hazırlanmanıza yardımcı olur. İlk olarak, ihtiyacınız olan tüm araçlarla bir geliştirme makinesi ayarlayın. Daha sonra, Azure 'da gerekli bulut kaynaklarını oluşturun.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Geliştirme için bir sanal makine ayarlayın.
+> * Geliştirme ortamınız için kullanmak üzere bir IoT Hub ve bulut depolaması ayarlayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

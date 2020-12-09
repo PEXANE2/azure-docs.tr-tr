@@ -8,12 +8,12 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8efc0301296f64abfe9b827e943882e930929086
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575338"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932396"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Öğretici: Azure Machine Learning modeli eğitme ve dağıtma
 
@@ -26,6 +26,14 @@ Bu makalede, aşağıdaki görevleri yaptık:
 Azure Notebooks, makine öğrenimi modellerini denemek, eğmek ve dağıtmak için kullanılan temel bir blok olan Azure Machine Learning çalışma alanından faydalanır.
 
 Bu makaledeki adımlar genellikle veri bilimcileri tarafından gerçekleştirilmiş olabilir.
+
+Öğreticinin bu bölümünde şunları yapmayı öğreneceksiniz:
+
+> [!div class="checklist"]
+>
+> * Machine Learning modelini eğitmek için Azure Notebooks projesi oluşturun.
+> * Eğitilen makine öğrenme modelini kapsayıcıya geçirin.
+> * Kapsayıcılı makine öğrenimi modelinden bir Azure IoT Edge modülü oluşturun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -169,7 +177,7 @@ Not defterlerinin başarıyla tamamlandığını doğrulamak için, birkaç öğ
     | Azure kaynağı | Ad |
     | --- | --- |
     | Machine Learning çalışma alanı | turborfanDemo |
-    | Container Kayıt Defteri | turbofandemoxxxxxxxx |
+    | Container Registry | turbofandemoxxxxxxxx |
     | Uygulama öngörüleri | turbofanınsilerxxxxxxxx |
     | Key Vault | turbofankeyvaultbxxxxxxxx |
     | Depolama | turbofanstoragexxxxxxxxx |

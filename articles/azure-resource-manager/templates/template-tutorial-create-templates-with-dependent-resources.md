@@ -1,20 +1,20 @@
 ---
 title: Bağımlı kaynaklarla şablon
-description: Birden fazla kaynakla bir Azure Resource Manager şablonu oluşturmayı ve Azure portalı kullanarak dağıtmayı öğrenin
+description: Birden çok kaynakla Azure Resource Manager şablonu (ARM şablonu) oluşturmayı ve Azure portal kullanarak nasıl dağıtılacağını öğrenin.
 author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3ed653c511dbd775d124e1abd6f4bb02923edb25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86102081"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931597"
 ---
 # <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Öğretici: bağımlı kaynaklarla ARM şablonları oluşturma
 
-Birden çok kaynak dağıtmak ve dağıtım sırasını yapılandırmak için bir Azure Resource Manager (ARM) şablonu oluşturmayı öğrenin. Şablonu oluşturduktan sonra, Azure portal Cloud Shell kullanarak şablonu dağıtabilirsiniz.
+Birden çok kaynak dağıtmak ve dağıtım sırasını yapılandırmak için bir Azure Resource Manager şablonu (ARM şablonu) oluşturmayı öğrenin. Şablonu oluşturduktan sonra, Azure portal Cloud Shell kullanarak şablonu dağıtabilirsiniz.
 
 Bu öğreticide bir depolama hesabı, bir sanal makine, bir sanal ağ ve ek birkaç bağımlı kaynak oluşturacaksınız. Kaynakların bazıları başka bir kaynak var olana kadar dağıtılamaz. Örneğin depolama hesabı ve ağ arabirimi oluşturulmadan sanal makineyi oluşturamazsınız. Bu ilişkiyi, kaynakların birini diğer kaynaklara bağımlı hale getirerek tanımlarsınız. Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Daha fazla bilgi için bkz. [ARM şablonlarındaki kaynakları dağıtma sırasını tanımlama](./define-resource-dependency.md).
 
@@ -29,11 +29,11 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak istiyorsanız sanal makine yönetici hesabı için oluşturulmuş bir parola kullanın. Parola oluşturma örneği aşağıda verilmiştir:
 
     ```console
@@ -54,7 +54,7 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js**adı ile kaydetmek için dosya**farklı kaydet** ' i seçin.
+4. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="explore-the-template"></a>Şablonu keşfetme
 
@@ -67,7 +67,7 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
 1. Visual Studio Code'da birinci düzeydeki öğeleri ve **resources** içindeki ikinci düzey öğeleri görene kadar öğeleri daraltın:
 
-    ![Visual Studio Code Azure Resource Manager şablonları](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
+    ![ARM şablonları Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Şablon tarafından tanımlanan altı kaynak vardır:
 
@@ -82,19 +82,19 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
 1. İlk kaynağı genişletin. Bir depolama hesabıdır. Kaynak tanımını [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın.
 
-    ![Visual Studio Code Azure Resource Manager şablonları depolama hesabı tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+    ![Visual Studio Code ARM şablonları depolama hesabı tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
 1. İkinci kaynağı genişletin. Kaynak türü `Microsoft.Network/publicIPAddresses` şeklindedir. Kaynak tanımını [şablon başvurusu](/azure/templates/microsoft.network/publicipaddresses) ile karşılaştırın.
 
-    ![Visual Studio Code Azure Resource Manager şablonları genel IP adresi tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+    ![Visual Studio Code ARM şablonları genel IP adresi tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
 
 1. Üçüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/networkSecurityGroups` şeklindedir. Kaynak tanımını [şablon başvurusu](/azure/templates/microsoft.network/networksecuritygroups) ile karşılaştırın.
 
-    ![Visual Studio Code Azure Resource Manager şablonları ağ güvenlik grubu tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
+    ![Visual Studio Code ARM şablonları ağ güvenlik grubu tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-network-security-group-definition.png)
 
 1. Dördüncü kaynağı genişletin. Kaynak türü `Microsoft.Network/virtualNetworks` şeklindedir:
 
-    ![Visual Studio Code Azure Resource Manager şablonları sanal ağ Bağımlıdson](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
+    ![Visual Studio Code ARM şablonları sanal ağ Bağımlıdson](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
     dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. Bu kaynak başka bir kaynağa bağlıdır:
 
@@ -112,7 +112,7 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
 Aşağıdaki diyagramda bu şablondaki kaynaklar ve bağımlılık bilgileri gösterilmiştir:
 
-![Visual Studio Code Azure Resource Manager şablonları bağımlılık diyagramı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
+![Visual Studio Code ARM şablonları bağımlılık diyagramı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependency-diagram.png)
 
 Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir şekilde dağıtmasını sağlar. Depolama hesabı, genel IP adresi ve sanal ağ herhangi bir bağımlılığa sahip olmadığından paralel olarak dağıtılır. Genel IP adresi ve sanal ağ dağıtıldıktan sonra ağ arabirimi oluşturulur. Resource Manager, diğer tüm kaynaklar dağıtıldıktan sonra sanal makineyi dağıtır.
 

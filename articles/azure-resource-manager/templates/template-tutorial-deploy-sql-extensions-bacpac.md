@@ -1,20 +1,20 @@
 ---
 title: SQL BACPAC dosyalarını şablonlarla içeri aktarma
-description: Azure Resource Manager şablonlarıyla SQL BACPAC dosyalarını içeri aktarmak için Azure SQL veritabanı uzantıları 'nı nasıl kullanacağınızı öğrenin.
+description: Azure Resource Manager şablonlarıyla SQL BACPAC dosyalarını içeri aktarmak için Azure SQL veritabanı uzantıları 'nı kullanmayı öğrenin (ARM şablonları).
 author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101894"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931410"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonlarıyla SQL BACPAC dosyalarını Içeri aktarma
 
-Azure Resource Manager (ARM) şablonlarıyla BACPAC dosyasını içeri aktarmak için Azure SQL veritabanı uzantıları 'nı nasıl kullanacağınızı öğrenin. Dağıtım yapıtları, bir dağıtımı tamamlaması gereken ana şablon dosyalarına ek olarak herhangi bir dosya. BACPAC dosyası bir yapıdır.
+Azure SQL veritabanı uzantıları 'nı kullanarak BACPAC dosyasını Azure Resource Manager şablonları (ARM şablonları) ile içeri aktarma hakkında bilgi edinin. Dağıtım yapıtları, bir dağıtımı tamamlaması gereken ana şablon dosyalarına ek olarak herhangi bir dosya. BACPAC dosyası bir yapıdır.
 
 Bu öğreticide, bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) ve tek bir veritabanı DAĞıTMAK ve bacpac dosyasını içeri aktarmak için bir şablon oluşturacaksınız. ARM şablonları kullanarak Azure sanal makine uzantıları dağıtma hakkında daha fazla bilgi için bkz. [öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma](./template-tutorial-deploy-vm-extensions.md).
 
@@ -25,16 +25,16 @@ Bu öğretici aşağıdaki görevleri kapsar:
 > * BACPAC dosyası hazırlayın.
 > * Hızlı başlangıç şablonu açın.
 > * Şablonu düzenleyin.
-> * Şablonu dağıtın.
+> * Şablonu dağıtma.
 > * Dağıtımı doğrulayın.
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
-* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: Visual Studio Code Azure Resource Manager şablonlar oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
+* Visual Studio Code ve Resource Manager Araçları uzantısı. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
 * Güvenliği artırmak için, sunucu yöneticisi hesabı için oluşturulan bir parola kullanın. Aşağıda, bir parola oluşturmak için kullanabileceğiniz bir örnek verilmiştir:
 
     ```console
@@ -116,7 +116,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
    * `Microsoft.SQL.servers/databases`. Bkz. [şablon başvurusu](/azure/templates/microsoft.sql/servers/databases).
 
         Özelleştirebilmeniz için önce şablon hakkında bazı temel bilgileri almanız yararlı olur.
-1. Dosyanın **File**  >  bir kopyasını yerel bilgisayarınıza *azuredeploy.js*adı ile kaydetmek için dosya**farklı kaydet** ' i seçin.
+1. Dosyanın   >  bir kopyasını yerel bilgisayarınıza *azuredeploy.js* adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 

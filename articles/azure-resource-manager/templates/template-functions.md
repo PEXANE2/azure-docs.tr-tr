@@ -1,18 +1,18 @@
 ---
 title: Şablon işlevleri
-description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için Azure Resource Manager şablonda kullanılacak işlevleri açıklar.
+description: Değerleri almak, dizeler ve sayı ile çalışmak ve dağıtım bilgilerini almak için bir Azure Resource Manager şablonunda (ARM şablonunda) kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 10/12/2020
-ms.openlocfilehash: a479b81d0f0bc378f77885cbd644e70d7be1d857
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2d124893cbe1694671231fd206f8e44cc20f6204
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961179"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931716"
 ---
 # <a name="arm-template-functions"></a>ARM şablon işlevleri
 
-Bu makalede, bir Azure Resource Manager (ARM) şablonunda kullanabileceğiniz tüm işlevler açıklanmaktadır. Şablonunuzda işlevleri kullanma hakkında daha fazla bilgi için bkz. [şablon sözdizimi](template-expressions.md).
+Bu makalede bir Azure Resource Manager şablonunda kullanabileceğiniz tüm işlevler açıklanmaktadır (ARM şablonu). Şablonunuzda işlevleri kullanma hakkında daha fazla bilgi için bkz. [şablon sözdizimi](template-expressions.md).
 
 Kendi işlevlerinizi oluşturmak için, bkz. [Kullanıcı tanımlı işlevler](template-syntax.md#functions).
 
@@ -47,7 +47,7 @@ Kaynak Yöneticisi diziler ile çalışmak için çeşitli işlevler sağlar.
 * [imin](template-functions-array.md#intersection)
 * [soyadına](template-functions-array.md#last)
 * [length](template-functions-array.md#length)
-* [dk](template-functions-array.md#min)
+* [Min](template-functions-array.md#min)
 * [Biçimlendir](template-functions-array.md#max)
 * [aralığı](template-functions-array.md#range)
 * [Şimdilik](template-functions-array.md#skip)
@@ -130,7 +130,7 @@ Kaynak Yöneticisi, tamsayılarla çalışmak için aşağıdaki işlevleri sağ
 * [div](template-functions-numeric.md#div)
 * [float](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
-* [dk](template-functions-numeric.md#min)
+* [Min](template-functions-numeric.md#min)
 * [Biçimlendir](template-functions-numeric.md#max)
 * [alma](template-functions-numeric.md#mod)
 * [MUL](template-functions-numeric.md#mul)
@@ -237,7 +237,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 * [Şimdilik](template-functions-string.md#skip)
 * [ayırmayı](template-functions-string.md#split)
 * [startsWith](template-functions-string.md#startswith)
-* [dize](template-functions-string.md#string)
+* [string](template-functions-string.md#string)
 * [dizeden](template-functions-string.md#substring)
 * [take](template-functions-string.md#take)
 * [toLower](template-functions-string.md#tolower)
@@ -250,7 +250,7 @@ Kaynak Yöneticisi dizelerle çalışmak için aşağıdaki işlevleri sağlar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonları yazma](template-syntax.md)
-* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlantılı şablonları kullanma](linked-templates.md)
-* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [ARM şablonlarıyla uygulama dağıtma](deploy-powershell.md)
+* ARM şablonundaki bölümlerin açıklaması için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Birden çok şablonu birleştirmek için bkz. [Azure kaynaklarını dağıttığınızda bağlı ve iç içe şablonları kullanma](linked-templates.md).
+* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, [ARM şablonlarında kaynak yinelemesi](copy-resources.md)bölümüne bakın.
+* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).

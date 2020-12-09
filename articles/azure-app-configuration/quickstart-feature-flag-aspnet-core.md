@@ -1,18 +1,18 @@
 ---
 title: ASP.NET Core özellik bayrakları eklemeye yönelik hızlı başlangıç
 description: ASP.NET Core uygulamalarına özellik bayrakları ekleyin ve Azure Uygulama yapılandırması 'nı kullanarak bunları yönetin
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: alkemper
+ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182725"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932154"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Hızlı başlangıç: ASP.NET Core uygulamasına özellik bayrakları ekleme
 
@@ -20,7 +20,7 @@ Bu hızlı başlangıçta, Azure Uygulama yapılandırması 'nı kullanarak bir 
 
 .NET Core Özellik Yönetimi kitaplıkları Framework 'ü kapsamlı özellik bayrağı desteğiyle genişletir. Bu kitaplıklar, .NET Core yapılandırma sisteminin üzerine kurulmuştur. Bunlar, .NET Core yapılandırma sağlayıcısı aracılığıyla uygulama yapılandırmasıyla sorunsuz bir şekilde tümleşir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -181,7 +181,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     Yukarıdaki kod, `<feature>` etiket Yardımcısı 'nın projenin *. cshtml* dosyalarında kullanılmasına izin verir.
 
-1. *Görünümler* paylaşılan dizininde *_Layout. cshtml* dosyasını açın \\ *Shared* . `<nav>`Altındaki barkodu bulun `<body>`  >  `<header>` . `<feature>`Aşağıdaki Vurgulanan satırlarda gösterildiği gibi, *giriş* ve *Gizlilik* gezinti çubuğu öğeleri arasına yeni bir etiket ekleyin.
+1. *Görünümler* paylaşılan dizininde *_Layout. cshtml* dosyasını açın \\  . `<nav>`Altındaki barkodu bulun `<body>`  >  `<header>` . `<feature>`Aşağıdaki Vurgulanan satırlarda gösterildiği gibi, *giriş* ve *Gizlilik* gezinti çubuğu öğeleri arasına yeni bir etiket ekleyin.
 
     :::code language="html" source="../../includes/azure-app-configuration-navbar.md" range="15-38" highlight="13-17":::
 
@@ -217,7 +217,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     :::image type="content" source="media/quickstarts/aspnet-core-feature-flag-local-before.png" alt-text="Değişiklikten önce yerel hızlı başlangıç uygulaması" border="true":::
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Tüm kaynaklar**' ı seçin ve hızlı başlangıçta oluşturduğunuz uygulama yapılandırma deposu örneğini seçin.
 
 1. **Özellik Yöneticisi**' ni seçin. 
 
