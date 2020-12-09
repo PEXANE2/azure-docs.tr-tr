@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7ddd1aa9865cb4061212ce77b31efc82ad339283
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165579"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852396"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Öğretici: Özel simülasyon cihazı oluşturma
 
@@ -34,15 +34,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu öğreticiyi izlemek için Azure aboneliğinizde Cihaz Simülasyonu'nun dağıtılmış örneğine sahip olmanız gerekir.
 
-Cihaz Simülasyonu'nu henüz dağıtmadıysanız, [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıç kılavuzunu tamamlamalısınız.
-
-## <a name="open-device-simulation"></a>Cihaz Benzetimini açma
-
-Tarayıcınızda Cihaz Simülasyonu'nu çalıştırmak için, önce [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com)'na gidin.
-
-Azure aboneliği kimlik bilgilerinizi kullanarak oturum açmanız istenebilir.
-
-Ardından [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıcında dağıttığınız Cihaz Simülasyonu'nun kutucuğunda **Başlat**'a tıklayın.
+Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) ' na bakın.
 
 ## <a name="view-your-device-models"></a>Cihaz modellerinizi görüntüleme
 
@@ -64,7 +56,7 @@ Formu aşağıdaki bilgilerle doldurun:
 | ------------------- | ---------------------------------------------------- |
 | Cihaz modeli adı   | Buzdolabı                                         |
 | Model açıklaması   | Sıcaklık ve nem algılayıcıları olan bir buzdolabı |
-| Sürüm             | 1.0                                                  |
+| Sürüm             | 1,0                                                  |
 
 > [!NOTE]
 > Cihaz modeli adı benzersiz olmalıdır.

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: f58eb05ed582cf18157a76f4d637d72a228f4e96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7be0278fd8870395b8495168eb9723780eba4b26
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "65464890"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852379"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Cihaz Simülasyonu çözüm hızlandırıcısına genel bakış
 
@@ -36,7 +36,7 @@ Cihaz benzetimi ücretsizdir. Ancak, cihaz benzetimi Bulutta Azure aboneliğiniz
 
 ## <a name="sample-simulations"></a>Örnek benzetimler
 
-Cihaz simülasyonu dağıtırken, bazı örnek benzetimleri ve örnek cihazları alırsınız. Bu örnekleri, cihaz benzetimi kullanımını öğrenmek için kullanabilirsiniz. Başlamak için [10 structuralks benzetimi yapan bir örnek simülasyonu](quickstart-device-simulation-deploy.md)çalıştırın. Ayrıca, [belirtilen birçok örnek cihazdan birini kullanarak kendi simülasyoninizi oluşturabilirsiniz](iot-accelerators-device-simulation-create-simulation.md).
+Cihaz simülasyonu dağıtırken, bazı örnek benzetimleri ve örnek cihazları alırsınız. Bu örnekleri, cihaz benzetimi kullanımını öğrenmek için kullanabilirsiniz. Başlamak için [örnek simülasyonu](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)çalıştırın. Ayrıca, [belirtilen birçok örnek cihazdan birini kullanarak kendi simülasyoninizi oluşturabilirsiniz](iot-accelerators-device-simulation-create-simulation.md).
 
 ![Benzetim yapılandırması](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
@@ -60,7 +60,7 @@ Gelişmiş cihaz modelleri şunları yapmanızı sağlar:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede cihaz benzetimi Çözüm Hızlandırıcısı ve özellikleri hakkında bilgi edindiniz. Çözüm hızlandırıcıyı kullanmaya başlamak için hızlı başlangıç ile devam edin:
+Bu makalede cihaz benzetimi Çözüm Hızlandırıcısı ve özellikleri hakkında bilgi edindiniz. Çözüm hızlandırıcıyı dağıtmak için GitHub deposunu ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [Azure 'da IoT cihaz benzetimi dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md)
+> [Azure 'da IoT cihaz benzetimi dağıtma ve çalıştırma](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: cb74a799efb6099b55c9da9650d9cca7358ecbed
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554327"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852141"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Azure Data Factory ve Azure purview 'a bağlanma
 
@@ -34,8 +34,8 @@ Birden çok Azure Veri Fabrikası, kökenini bilgilerini göndermek için tek bi
     - **Bağlantı kesildi**: Data Factory 'nin kataloğa erişimi vardır, ancak başka bir kataloğa bağlıdır. Sonuç olarak, veri kökenini otomatik olarak kataloğa bildirilmez.
     - **CannotAccess**: geçerli kullanıcının veri fabrikasına erişimi yok, bu nedenle bağlantı durumu bilinmiyor.
  >[!Note]
- >Data Factory bağlantılarını görüntüleyebilmek için, Azure derleme rollerinin herhangi birine atanmalıdır:
- >- Katkıda Bulunan
+ >Data Factory bağlantılarını görüntülemek için, purview rollerinden herhangi biri atanmalıdır:
+ >- Katılımcı
  >- Sahip
  >- Okuyucu
  >- Kullanıcı Erişimi Yöneticisi
@@ -72,9 +72,9 @@ Bir Data Factory bağlantısını kaldırmak için aşağıdakileri yapın:
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Bağlantıyı kaldırmak için veri fabrikalarının nasıl seçileceğini gösteren ekran görüntüsü." lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
 
 >[!Note]
->Data Factory bağlantılarını eklemek veya kaldırmak için, Azure derleme rollerinin herhangi birine atanmalıdır:
+>Data Factory bağlantılarını eklemek veya kaldırmak için, purview rollerinden herhangi biri atanmalıdır:
 >- Sahip
->- Kullanıcı Erişimi Yöneticisi
+>- Kullanıcı erişimi Yöneticisi, kullanıcıların Data Factory 'nin "Owner" veya "katkıda bulunan" veya "Data Factory katılımcısı" olmasını gerektirir. 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Şirket içi SQL 'den kökenini toplamak için kendinden konak IR yapılandırma
 
@@ -97,27 +97,27 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 
 | Veri depolama sistemi | Kaynak olarak desteklenir | Havuz olarak destekleniyor |
 | ------------------- | ------------------- | ----------------- |
-| ADLS 1. (JSON desteği yok) | Evet | Evet (yalnızca ikili olmayan kopya) |
-| ADLS 2. (JSON desteği yok) | Evet | Evet |
-| Azure Blob (JSON desteği yok) | Evet | Evet |
-| Azure Cosmos DB (SQL API) | Evet | Evet |
-| Azure Cosmos DB (Mongo API) | Evet | Evet |
-| Azure Bilişsel Arama | Evet | Evet |
-| Azure Veri Gezgini | Evet | Evet |
-| Maria DB için Azure veritabanı \* | Evet | Evet |
-| MYSQL için Azure veritabanı \* | Evet | Evet |
-| PostgreSQL için Azure veritabanı \* | Evet | Evet |
-| Azure Dosya Depolama | Evet | Evet |
-| Azure Tablo Depolama | Evet | Evet |
-| Azure SQL veritabanı \* | Evet | Evet |
-| Azure SQL MI \* | Evet | Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet | Evet |
-| Şirket içi SQL Server (KııR gerekir) \* | Evet | Evet |
-| Amazon S3 | Evet | Evet |
-| Teradata | Evet | Evet |
-| SAP S4 Hana | Evet | Evet |
-| SAP ECC | Evet | Evet |
-| Hive | Evet | Evet |
+| ADLS 1. (JSON desteği yok) | Yes | Evet (yalnızca ikili olmayan kopya) |
+| ADLS 2. (JSON desteği yok) | Yes | Yes |
+| Azure Blob (JSON desteği yok) | Yes | Yes |
+| Azure Cosmos DB (SQL API) | Yes | Yes |
+| Azure Cosmos DB (Mongo API) | Yes | Yes |
+| Azure Bilişsel Arama | Yes | Yes |
+| Azure Veri Gezgini | Yes | Yes |
+| Maria DB için Azure veritabanı \* | Yes | Yes |
+| MYSQL için Azure veritabanı \* | Yes | Yes |
+| PostgreSQL için Azure veritabanı \* | Yes | Yes |
+| Azure Dosya Depolama | Yes | Evet |
+| Azure Tablo Depolama | Evet | Yes |
+| Azure SQL veritabanı \* | Yes | Yes |
+| Azure SQL MI \* | Yes | Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes | Yes |
+| Şirket içi SQL Server (KııR gerekir) \* | Yes | Yes |
+| Amazon S3 | Yes | Evet |
+| Teradata | Evet | Yes |
+| SAP S4 Hana | Yes | Yes |
+| SAP ECC | Yes | Yes |
+| Hive | Yes | Yes |
 
 > [!Note]
 > Kökenini özelliği Data Factory kopyalama etkinliğinde belirli performans ek yüküne sahiptir. Veri Fabrikası bağlantıları kuran kullanıcılar için, purview 'da daha uzun süren belirli kopyalama işlerinin gözlemleyebilirsiniz. Genellikle etki, yok edilebilir değildir. Kopyalama işlerinin her zamanki gibi daha uzun sürmesi durumunda lütfen zaman karşılaştırmayla desteğe başvurun.
@@ -126,24 +126,24 @@ Data Factory ile takip görünümü arasındaki tümleştirme, aşağıdaki böl
 
 | Veri depolama sistemi | Desteklenir |
 | ------------------- | ------------------- | ----------------- |
-| ADLS 1. Nesil | Evet |
-| ADLS 2. Nesil | Evet |
-| Azure Blob | Evet |
-| Azure SQL veritabanı \* | Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet |
+| ADLS 1. Nesil | Yes |
+| ADLS 2. Nesil | Yes |
+| Azure Blob | Yes |
+| Azure SQL veritabanı \* | Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
 
 ### <a name="data-factory-execute-ssis-package-support"></a>SSIS paketi desteğini Data Factory Yürüt
 
 | Veri depolama sistemi | Desteklenir |
 | ------------------- | ------------------- | ----------------- |
-| Azure Blob | Evet |
-| ADLS 1. Nesil | Evet |
-| ADLS 2. Nesil | Evet |
-| Azure SQL veritabanı \* | Evet |
-| Azure SQL MI \*| Evet |
-| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Evet |
-| Şirket içi SQL Server \* | Evet |
-| Azure Dosya Depolama | Evet |
+| Azure Blob | Yes |
+| ADLS 1. Nesil | Yes |
+| ADLS 2. Nesil | Yes |
+| Azure SQL veritabanı \* | Yes |
+| Azure SQL MI \*| Yes |
+| Azure SYNAPSE Analytics (eski adıyla SQL DW) \* | Yes |
+| Şirket içi SQL Server \* | Yes |
+| Azure Dosya Depolama | Yes |
 
 *\* SQL (Azure ve şirket içi) senaryolarında Azure purview, kökenini veya tarama için saklı yordamları veya betikleri desteklemez. Kökenini yalnızca tablo ve görünüm kaynaklarıyla sınırlandırılmıştır.*
 

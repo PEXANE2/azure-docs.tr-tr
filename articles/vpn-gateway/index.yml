@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 4e01ee4a4dc065e88bf69bc8347867cdea9108cf
-  ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+  ms.openlocfilehash: 8619e0948cc08d06d27a09864bbff13ad6ad3791
+  ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 11/17/2020
-  ms.locfileid: "94660568"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96780340"
 landingContent:
 - title: VPN Gateway hakkında
   linkLists:
@@ -33,17 +33,17 @@ landingContent:
       url: about-zone-redundant-vnet-gateways.md
     - text: VPN Gateway SSS
       url: vpn-gateway-vpn-faq.md
-- title: Kullanmaya başlayın
+- title: başlarken
   linkLists:
   - linkListType: tutorial
     links:
     - text: VPN ağ geçidi oluşturma ve yönetme
-      url: vpn-gateway-tutorial-create-gateway-powershell.md
+      url: tutorial-create-gateway-portal.md
+    - text: Siteler arası VPN bağlantısı oluşturma
+      url: tutorial-site-to-site-portal.md
   - linkListType: how-to-guide
     links:
-    - text: Siteden siteye bağlantı oluşturma
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: Noktadan siteye bağlantı oluşturma
+    - text: Noktadan siteye VPN bağlantısı oluşturma
       url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: VPN cihazları
   linkLists:
@@ -63,10 +63,10 @@ landingContent:
     links:
     - text: Ağ geçidi yapılandırma ayarları
       url: vpn-gateway-about-vpn-gateway-settings.md
-    - text: Noktadan siteye yönlendirme
-      url: vpn-gateway-about-point-to-site-routing.md
     - text: Ağ Geçidi SKU’ları
       url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+    - text: Noktadan siteye yönlendirme
+      url: vpn-gateway-about-point-to-site-routing.md
   - linkListType: how-to-guide
     links:
     - text: VPN ağ geçidini doğrulama
@@ -89,7 +89,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure CLI’si
+    - text: Azure CLI
       url: /cli/azure/network/vnet-gateway
     - text: Azure PowerShell
       url: /powershell/module/az.network#vpn

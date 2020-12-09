@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Yeni Azure Service Fabric kümesini yönetilen kimlikle yapılandırma
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: Yönetilen bir Service Fabric kümesini yönetilen kimlikle yapılandırma
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Uygulama kurulumu
           items:
             - name: Yönetilen kimlikle uygulama dağıtma

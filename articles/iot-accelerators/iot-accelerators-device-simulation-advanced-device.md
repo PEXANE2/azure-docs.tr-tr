@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 3295815be035544d27da52926e5271c2c5551f28
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076054"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852566"
 ---
 # <a name="create-an-advanced-device-model"></a>Gelişmiş bir cihaz modeli oluşturma
 
@@ -30,15 +30,11 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 Bu nasıl yapılır kılavuzundaki adımları izlemek için, Azure aboneliğinizde bir cihaz benzetiminin dağıtılmış örneğine ihtiyacınız vardır.
 
-Cihaz Simülasyonu'nu henüz dağıtmadıysanız, [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıç kılavuzunu tamamlamalısınız.
+Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) ' na bakın.
 
 ### <a name="open-device-simulation"></a>Cihaz Benzetimini açma
 
-Tarayıcınızda Cihaz Simülasyonu'nu çalıştırmak için, önce [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com)'na gidin.
-
-Azure aboneliği kimlik bilgilerinizi kullanarak oturum açmanız istenebilir.
-
-Ardından Azure Hızlı Başlangıç ['ta bir IoT cihaz simülasyonu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) bölümünde dağıttığınız cihaz simülasyonu kutucuğunda **Başlat** ' a tıklayın.
+Henüz cihaz benzetimi dağıtmadıysanız, GitHub 'da [cihaz benzetimi dağıtımı](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) ' na bakın.
 
 ## <a name="device-models"></a>Cihaz modelleri
 
@@ -89,7 +85,7 @@ Aşağıdaki özellikler cihaz modelini anlatmaktadır. Her tür benzersiz bir t
 
 ### <a name="iot-protocol"></a>IoT Protokolü
 
-IoT cihazları, farklı protokoller kullanarak bağlanabilir. Benzetim, **AMQP**, **MQTT**veya **http**kullanarak şunları yapmanızı sağlar:
+IoT cihazları, farklı protokoller kullanarak bağlanabilir. Benzetim, **AMQP**, **MQTT** veya **http** kullanarak şunları yapmanızı sağlar:
 
 ```json
 "Protocol": "AMQP"
@@ -188,7 +184,7 @@ Sanal cihazlar ayrıca yöntem çağrılarına yanıt verebilir, bu durumda baz�
 
 Bu nasıl yapılır kılavuzunda, bir drone için cihaz modeli oluşturma hakkında bilgi alabilirsiniz. Drone, konum ve yüksekliği değiştiren bir ilk koordinat kümesini rastgele bir şekilde hareket edecektir.
 
-Aşağıdaki JSON 'ı bir metin düzenleyicisine kopyalayın ve **drone.js**olarak kaydedin.
+Aşağıdaki JSON 'ı bir metin düzenleyicisine kopyalayın ve **drone.js** olarak kaydedin.
 
 ### <a name="device-definition-json-example"></a>Cihaz tanımı JSON örneği
 
@@ -258,7 +254,7 @@ Davranış betik dosyasındaki kod DRA 'yi taşıtir. Betik, cihazın bellek dur
 JavaScript dosyalarının iki parametreyi kabul eden bir **ana** işlevi olması gerekir:
 
 * Üç özellik içeren bir **bağlam** nesnesi:
-    * **geçerli saat** , **yyyy-aa-gg't'hh: mm: sszzz**biçiminde bir dize olarak.
+    * **geçerli saat** , **yyyy-aa-gg't'hh: mm: sszzz** biçiminde bir dize olarak.
     * **DeviceID**. Örneğin, **benzetimli. Asansör. 123**.
     * **Devicemodel**. Örneğin, **Asansör**.
 * Önceki çağrıda işlevin döndürdüğü değer olan bir **durum** nesnesi. Bu cihaz durumu Simülasyon hizmeti tarafından tutulur ve telemetri iletileri oluşturmak için kullanılır.
@@ -278,7 +274,7 @@ function main(context, state) {
 
 ## <a name="create-a-behavior-script-file"></a>Davranış betik dosyası oluşturma
 
-Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **drone-state.js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **drone-state.js** olarak kaydedin.
 
 ### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 
@@ -407,7 +403,7 @@ Yöntem betikleri davranış betiklerine benzer. Belirli bir buluta cihaz yönte
 
 Drone geri çekme betiği, DRA 'nın, ana giriş döndüren kurutanın benzetimini yapmak için, kurutun koordinatlarını sabit bir noktaya ayarlar.
 
-Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **droneRecall-method.js**olarak kaydedin.
+Aşağıdaki JavaScript 'ı bir metin düzenleyicisine kopyalayın ve **droneRecall-method.js** olarak kaydedin.
 
 ### <a name="device-model-javascript-simulation-example"></a>Cihaz modeli JavaScript benzetim örneği
 

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 543e6115be30963600d867bb9c2a03dfbb54e9f1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576562"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852532"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -37,11 +37,11 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 * [Azure portalını kullanma](#azure-portal)
 * [Azure CLI'yı kullanma](#azure-cli)
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalda](https://portal.azure.com/signin/index/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Ardından **Web uygulaması**' nı seçin. 
 
@@ -99,6 +99,9 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
 
 > [!NOTE]
 > Web uygulamanızı oluştururken yetkilendirmeyi/kimlik doğrulamasını da yapılandırabilirsiniz. Başlamak için bu gerekli değildir. 
+
+> [!IMPORTANT]
+> Adresinde görüntülemek için Web uygulamanız için TLS 'i etkinleştirmeniz gerekebilir `https` . Web uygulamanız için TLS/SSL 'yi etkinleştirenden bir sepet kapsayıcısı ayarlamak için [TLS uç noktası etkinleştirme](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl) ' deki yönergeleri izleyin.
 
 ### <a name="azure-cli"></a>Azure CLI
 

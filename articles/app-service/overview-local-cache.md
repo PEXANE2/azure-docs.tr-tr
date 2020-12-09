@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286834"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852261"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service yerel önbelleğe genel bakış
 
@@ -87,7 +87,7 @@ Yerel önbelleği bu uygulama ayarını kullanarak Web uygulaması başına teme
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>Yerel önbellekteki boyut ayarını değiştir
-Varsayılan olarak, yerel önbellek boyutu **1 GB** 'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını kullanın `WEBSITE_LOCAL_CACHE_SIZEINMB` . Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz. Boyut arttıkça yerel önbelleğin yüklenmesi daha uzun sürer.
+Varsayılan olarak, yerel önbellek boyutu **1 GB**'tır. Bu, içerik deposundan kopyalanmış olan/site ve/siteextensions klasörlerinin yanı sıra yerel olarak oluşturulan tüm Günlükler ve veri klasörlerini içerir. Bu sınırı artırmak için uygulama ayarını kullanın `WEBSITE_LOCAL_CACHE_SIZEINMB` . Uygulama başına en fazla **2 GB** (2000 MB) boyutunu artırabilirsiniz. Boyut arttıkça yerel önbelleğin yüklenmesi daha uzun sürer.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>App Service yerel önbellek kullanmaya yönelik en iyi uygulamalar
 Yerel önbelleği, [hazırlama ortamları](../app-service/deploy-staging-slots.md) özelliğiyle birlikte kullanmanızı öneririz.
@@ -120,3 +120,6 @@ Yerel önbellek, depolamayla ilgili uygulama yeniden başlatmalarının engellen
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Yerel önbellek, tüm dizinlerin daha hızlı yerel sürücüye kopyalanmasını mi dışlıyor?
 Depolama içeriğini kopyalayan adımın bir parçası olarak, depo adlı herhangi bir klasör hariç tutulur. Bu, site içeriğiniz uygulamanın gün için günlük işlem için gerekli olmayan bir kaynak denetimi deposu içerebilen senaryolara yardımcı olur. 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Bir site yönetimi işleminden sonra yerel önbellek günlüklerini Temizleme
+Yerel önbellek günlüklerini temizlemek için uygulamayı durdurup yeniden başlatın. Bu eylem eski önbelleği temizler. 

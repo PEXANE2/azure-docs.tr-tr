@@ -125,10 +125,12 @@
       items:
         - name: Akış oluşturun
           items:
-            - name: Kaydolma veya oturum açma
-              href: tutorial-create-user-flows.md
+            - name: Kullanıcı akışları oluşturma
+              href: create-user-flow.md
             - name: Kaynak sahibinin parola kimlik bilgileri
               href: configure-ropc.md
+            - name: Telefonla kimlik doğrulamasını ayarlama
+              href: phone-authentication-user-flows.md
             - name: Self servis parola sıfırlamayı ayarlama
               href: user-flow-self-service-password-reset.md
         - name: Koşullu Erişim ekleme
