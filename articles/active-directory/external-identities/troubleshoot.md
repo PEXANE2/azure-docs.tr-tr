@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 681f5a6cecd43eb69adf24544c774cbd22da8a49
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168772"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860550"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>B2B işbirliği Azure Active Directory sorunlarını giderme
 
@@ -52,7 +52,7 @@ Yaygın hatalar şunlardır:
 
 ### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Davetli kullanıcının yöneticisinin kiracısında, Emaildoğrulanan kullanıcıların oluşturulmasını izin vermemiş
 
-Kuruluş, Azure Active Directory kullanan kullanıcıları davet ederken, ancak belirli kullanıcı hesabının bulunmadığı (örneğin, Kullanıcı Azure AD contoso.com 'de yok). Contoso.com yöneticisinin, kullanıcıların oluşturulmasını önlemek için bir ilke olabilir. Kullanıcının dış kullanıcılara izin verilip verilmeyeceğini öğrenmek için yönetici ile denetlemesi gerekir. Dış kullanıcının yöneticisinin etki alanında e-posta doğrulanmış kullanıcılara izin verilmesi gerekebilir (e-posta doğrulanan kullanıcılara izin verme konusunda bu [makaleye](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) bakın).
+Kuruluş, Azure Active Directory kullanan kullanıcıları davet ederken, ancak belirli kullanıcı hesabının bulunmadığı (örneğin, Kullanıcı Azure AD contoso.com 'de yok). Contoso.com yöneticisinin, kullanıcıların oluşturulmasını önlemek için bir ilke olabilir. Kullanıcının dış kullanıcılara izin verilip verilmeyeceğini öğrenmek için yönetici ile denetlemesi gerekir. Dış kullanıcının yöneticisinin etki alanında e-posta doğrulanmış kullanıcılara izin verilmesi gerekebilir (e-posta doğrulanan kullanıcılara izin verme konusunda bu [makaleye](/powershell/module/msonline/set-msolcompanysettings) bakın).
 
 ![Kiracıyı bildiren hata, e-posta tarafından doğrulanan kullanıcılara izin vermiyor](media/troubleshoot/allow-email-verified-users.png)
 

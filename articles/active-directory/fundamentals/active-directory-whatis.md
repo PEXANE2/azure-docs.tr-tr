@@ -11,12 +11,12 @@ ms.date: 06/05/2020
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1709bd42fb77bd4f18b8a5e9d1af6e07be67b6c4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 101a2071d4f7c78d1a8df392172dc83c4028af1e
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043076"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859224"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory nedir?
 
@@ -26,7 +26,7 @@ Azure Active Directory (Azure AD), Microsoft 'un bulut tabanlı kimlik ve erişi
 
 - Şirket ağınızdaki ve intranetinizdeki uygulamalar gibi iç kaynaklar, kendi kuruluşunuz tarafından geliştirilen tüm bulut uygulamalarıyla birlikte. Kuruluşunuz için kiracı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Active Directory yeni kiracı oluşturma](active-directory-access-create-new-tenant.md).
 
-Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Microsoft 365 temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](/microsoft-365/solutions/cloud-architecture-models?view=o365-worldwide) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
+Azure AD ve Active Directory Domain Services arasındaki farkı öğrenmek için bkz. [Azure Active Directory Active Directory karşılaştırma](active-directory-compare-azure-ad-to-ad.md). Ayrıca, Azure, Azure AD ve Microsoft 365 temel kimlik hizmetlerini daha iyi anlamak için [kuruluş mimarları serisi](/microsoft-365/solutions/cloud-architecture-models) posterleri için çeşitli Microsoft bulut de kullanabilirsiniz.
 
 ## <a name="who-uses-azure-ad"></a>Azure AD'yi kimler kullanır?
 

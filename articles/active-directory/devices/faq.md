@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837116"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860958"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory cihaz yönetimi SSS
 
@@ -25,7 +25,7 @@ ms.locfileid: "94837116"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>S: cihazı yakın zamanda kaydettiniz. Azure portal cihazı neden Kullanıcı Bilgilerim altında göremiyorum? Ya da cihaz sahibi, karma Azure Active Directory (Azure AD) ile birleştirilmiş cihazlar için N/A olarak işaretlendi mi?
 
 Y **:** Karma Azure AD 'ye katılmış Windows 10 cihazları **Kullanıcı cihazları** altında gösterilmez.
-Azure portal **tüm cihazlar** görünümünü kullanın. PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet 'ini de kullanabilirsiniz.
+Azure portal **tüm cihazlar** görünümünü kullanın. PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) cmdlet 'ini de kullanabilirsiniz.
 
 Yalnızca aşağıdaki cihazlar **Kullanıcı cihazları** altında listelenir:
 

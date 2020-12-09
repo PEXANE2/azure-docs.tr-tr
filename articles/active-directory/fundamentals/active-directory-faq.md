@@ -13,12 +13,12 @@ ms.date: 11/12/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: db8774d6868d55c7d040b1894c4a14d989cb2702
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4a8fcb14ac397791822c3a9065275dbfb2b3b7dd
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371877"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860431"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>Azure Active Directory hakkında sık sorulan sorular
 Azure Active Directory (Azure AD), kimlik, erişim yönetimi ve güvenliği tüm yönleriyle kapsayan bir hizmet olarak kimlik (IDaaS) çözümüdür.
@@ -32,7 +32,7 @@ Daha fazla bilgi için bkz. [Azure Active Directory nedir?](active-directory-wha
 **Y:** Azure portalına erişmek için her kullanıcının bir Azure aboneliğiyle birlikte izinleri olmalıdır. Ücretli Microsoft 365 veya Azure AD aboneliğiniz yoksa ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/
 ) veya ücretli bir abonelik etkinleştirmeniz gerekir.
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure aboneliklerinin Azure Active Directory ile ilişkisi](active-directory-how-subscriptions-associated-directory.md)
 
@@ -130,7 +130,7 @@ Microsoft 365 kullanıcılar için yöneticiniz, [Kullanıcı parolalarını sı
 Azure AD hesapları için yöneticiler aşağıdakilerden birini kullanarak parolaları sıfırlayabilir:
 
 - [Azure portalda hesapları sıfırlama](active-directory-users-reset-password-azure-portal.md)
-- [PowerShell'i kullanma](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
+- [PowerShell'i kullanma](/powershell/module/msonline/set-msoluserpassword)
 
 
 ---
@@ -160,7 +160,7 @@ Bu, "Password" ve "123456" öğesinin herhangi bir çeşitleri gibi genel olarak
 
 **Y:** Azure AD Premium ile istediğiniz uygulamayı ekleyip yapılandırabilirsiniz. Uygulamanızın özelliklerine ve tercihlerinize bağlı olarak SSO ve otomatik sağlamayı yapılandırabilirsiniz.  
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure Active Directory uygulama galerisinde bulunmayan uygulamalar için çoklu oturum açmayı yapılandırma](../manage-apps/configure-saml-single-sign-on.md)
 * [Kullanıcıların ve grupların Azure Active Directory'den uygulamalara otomatik olarak hazırlanmasını etkinleştirmek için SCIM'yi kullanma](../app-provisioning/use-scim-to-provision-users-and-groups.md)
@@ -182,7 +182,7 @@ Daha fazla bilgi için bkz. [uygulamalar Için son kullanıcı deneyimleri](../m
 
 **Y:** Azure AD; SAML 2.0, OpenID Connect, OAuth 2.0 ve WS-Federasyon gibi birçok standartlaştırılmış kimlik doğrulaması ve yetkilendirme protokolünü destekler. Azure AD aynı zamanda, yalnızca form tabanlı kimlik doğrulamasını destekleyen uygulamalar için parola kasası oluşturma ve otomatik oturum açma işlevlerini de destekler.  
 
-Daha fazla bilgi için bkz.
+Daha fazla bilgi için bkz:
 
 * [Azure AD için Kimlik Doğrulama Senaryoları](../develop/authentication-vs-authorization.md)
 * [Active Directory kimlik doğrulama protokolleri](/previous-versions/azure/dn151124(v=azure.100))
@@ -212,4 +212,4 @@ Daha fazla bilgi için bkz. [Azure Active Directory ile SaaS uygulamalarına kul
 ---
 **S:  Azure AD ile güvenli bir LDAP bağlantısı oluşturabilir miyim?**
 
-**Y:** Hayır. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya doğrudan Güvenli LDAP desteklemez. Ancak, Azure AD kiracınızda LDAP bağlantısı elde etmek için Azure ağ üzerinden düzgün şekilde yapılandırılmış ağ güvenlik grupları ile Azure AD Domain Services (Azure AD DS) örneğinin etkinleştirilmesi mümkündür. Daha fazla bilgi için bkz. [Azure Active Directory Domain Services yönetilen bir etki alanı için GÜVENLI LDAP yapılandırma](../../active-directory-domain-services/tutorial-configure-ldaps.md)
+Y **:**  Eşleşen. Azure AD, Hafif Dizin Erişim Protokolü (LDAP) protokolünü veya doğrudan Güvenli LDAP desteklemez. Ancak, Azure AD kiracınızda LDAP bağlantısı elde etmek için Azure ağ üzerinden düzgün şekilde yapılandırılmış ağ güvenlik grupları ile Azure AD Domain Services (Azure AD DS) örneğinin etkinleştirilmesi mümkündür. Daha fazla bilgi için bkz. [Azure Active Directory Domain Services yönetilen bir etki alanı için GÜVENLI LDAP yapılandırma](../../active-directory-domain-services/tutorial-configure-ldaps.md)

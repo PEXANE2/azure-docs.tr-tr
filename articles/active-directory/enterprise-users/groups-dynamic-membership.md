@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd9d1dd62d5f1a5910bfc7db58dfa8e60cb254c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c60d54a905f460eb5c26c2f183cd22b175a5b3c4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547551"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860822"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory gruplar için dinamik üyelik kuralları
 
@@ -107,7 +107,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | posta |Herhangi bir dize değeri veya *null* (kullanıcının SMTP adresi) |(User. Mail-EQ "değer") |
 | mailNickName |Herhangi bir dize değeri (kullanıcının posta diğer adı) |(User. Mailtakma ad-EQ "değer") |
 | mobil |Herhangi bir dize değeri veya *null* |(User. Mobile-EQ "değer") |
-| Uzantının |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
+| objectId |Kullanıcı nesnesinin GUID 'SI |(User. ObjectID-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Şirket içinden buluta eşitlenen kullanıcılar için şirket içi güvenlik tanımlayıcısı (SID). |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |None DisableStrongPassword Disablepasswordexpiasyon Disablepasswordexpima, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
 | physicalDeliveryOfficeName |Herhangi bir dize değeri veya *null* |(User. Physicaldeliveryofficeename-EQ "Value") |
@@ -117,7 +117,7 @@ Aşağıda, tek bir ifade oluşturmak için kullanabileceğiniz Kullanıcı öze
 | state |Herhangi bir dize değeri veya *null* |(User. State-EQ "değer") |
 | streetAddress |Herhangi bir dize değeri veya *null* |(User. streetAddress-EQ "değer") |
 | surname |Herhangi bir dize değeri veya *null* |(User. soyad-EQ "Value") |
-| telephoneNumber 'dır |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
+| telephoneNumber |Herhangi bir dize değeri veya *null* |(User. telephoneNumber-EQ "değer") |
 | usageLocation |İki veya daha fazla ülke/bölge kodu |(User. usageLocation-EQ "US") |
 | userPrincipalName |Herhangi bir dize değeri |(User. userPrincipalName-EQ " alias@domain ") |
 | userType |üye Konuk *null* |(User. userType-EQ "üye") |
@@ -341,7 +341,7 @@ device.objectId -ne null
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Uzantı özellikleri ve özel uzantı özellikleri
 
-Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. [Uzantı öznitelikleri](/graph/api/resources/onpremisesextensionattributes?view=graph-rest-1.0) şirket Içi WINDOWS Server ad 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
+Uzantı öznitelikleri ve özel uzantı özellikleri, dinamik üyelik kurallarında dize özellikleri olarak desteklenir. [Uzantı öznitelikleri](/graph/api/resources/onpremisesextensionattributes) şirket Içi WINDOWS Server ad 'den eşitlenir ve "ExtensionAttributeX" biçimini alır, burada X eşittir 1-15. Bir özellik olarak uzantı özniteliği kullanan bir kurala örnek aşağıda verilmiştir:
 
 ```
 (user.extensionAttribute15 -eq "Marketing")
@@ -388,7 +388,7 @@ Aşağıdaki cihaz öznitelikleri kullanılabilir.
  IBir kökü belirtilmiş | doğru yanlış | (Device. ısınroot-EQ true)
  managementType | MDM (mobil cihazlar için)<br>BILGISAYAR (Intune bılgısayar Aracısı tarafından yönetilen bilgisayarlar için) | (Device. managementType-EQ "MDM")
  deviceId | geçerli bir Azure AD cihaz KIMLIĞI | (Device. DeviceID-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- Uzantının | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ objectId | geçerli bir Azure AD nesne KIMLIĞI |  (Device. ObjectID-EQ "76ad43c9-32c5-45e8-a272-7b58b58f596d")
  Devicephysicilar | Tüm Autopilot cihazları, OrderID veya PurchaseOrderID gibi Autopilot tarafından kullanılan herhangi bir dize değeri  | (Device. Devicephysicids-any _-Contains "[Ztdıd]") (Device. Devicephysicids-any _-EQ "[OrderID]: 179887111881") (Device. Devicephysicids-any _-EQ "[PurchaseOrderId]: 76222342342")
  systemLabels | Modern çalışma alanı cihazlarını etiketlemek için Intune cihaz özelliği ile eşleşen tüm dizeler | (device.sysTıtemlabels-"M365Managed" içerir)
 

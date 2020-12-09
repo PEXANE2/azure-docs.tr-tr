@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e21bac5dd78cb9c9f40e6b91ff80fedabb9bc75
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602266"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860312"
 ---
 # <a name="continuous-access-evaluation"></a>Sürekli erişim değerlendirmesi
 
@@ -105,7 +105,7 @@ CAE özellikli istemciler kullanmıyorsanız, erişim belirteci yaşam süresini
 
 1. CAE özellikli bir istemci, bir kaynak için erişim belirteci isteyen Azure AD 'ye kimlik bilgileri veya yenileme belirteci sunar.
 1. İstemciye diğer yapıtlar ile birlikte bir erişim belirteci döndürülür.
-1. Yönetici [, Kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Azure AD 'den kaynak sağlayıcısına bir iptal olayı gönderilir.
+1. Yönetici [, Kullanıcı için tüm yenileme belirteçlerini açıkça iptal eder](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). Azure AD 'den kaynak sağlayıcısına bir iptal olayı gönderilir.
 1. Kaynak sağlayıcısına bir erişim belirteci sunulur. Kaynak sağlayıcısı belirtecin geçerliliğini değerlendirir ve Kullanıcı için herhangi bir iptal olayı olup olmadığını denetler. Kaynak sağlayıcı, kaynağa erişim izni vermeye karar vermek için bu bilgileri kullanır.
 1. Bu durumda, kaynak sağlayıcısı erişimi reddeder ve istemciye bir 401 + talep sınaması gönderir.
 1. CAE özellikli istemci, 401 + talep sınamasını anlamıştır. Önbellekler atlar ve adım 1 ' e döner ve yenileme belirtecini Azure AD 'ye geri talebi ile birlikte gönderir. Daha sonra Azure AD tüm koşulları yeniden değerlendirmenize ve kullanıcıdan bu durumda yeniden kimlik doğrulaması sorması istenir.

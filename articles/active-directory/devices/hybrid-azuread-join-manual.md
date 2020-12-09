@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe19a1fadd54b7146ccb074d82a68ec259100f2
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5316a1647c96076696b14de157e74e2155a6b368
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093268"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860023"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Öğretici: Hibrit Azure Active Directory'ye katılmış cihazları elle yapılandırma
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) ' de cihaz yönetimiyle, Kullanıcıların kay
 > [!TIP]
 > Azure AD Connect kullanmak sizin için bir seçenek ise, [yönetilen](hybrid-azuread-join-managed-domains.md) veya [Federasyon](hybrid-azuread-join-federated-domains.md) etki alanları için ilgili öğreticilere bakın. Azure AD Connect kullanarak, karma Azure AD JOIN 'in yapılandırmasını önemli ölçüde kolaylaştırabilirsiniz.
 
-Şirket içi Active Directory ortamınız varsa ve etki alanınıza katılmış cihazları Azure AD'ye katmak istiyorsanız hibrit Azure AD'ye katılmış cihazları yapılandırarak bunu gerçekleştirebilirsiniz. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Şirket içi Active Directory ortamınız varsa ve etki alanınıza katılmış cihazları Azure AD'ye katmak istiyorsanız hibrit Azure AD'ye katılmış cihazları yapılandırarak bunu gerçekleştirebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Karma Azure AD katılımı el ile yapılandırın
@@ -115,7 +115,7 @@ Aşağıdaki Windows PowerShell betiğini kullanarak nesnenin varlığını doğ
    $scp.Keywords;
    ```
 
-**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. İşte bir örnek:
+**$SCP. Anahtar sözcük** çıkışları, Azure AD kiracı bilgilerini gösterir. Aşağıda bir örnek verilmiştir:
 
    ```
    azureADName:microsoft.com
@@ -144,7 +144,7 @@ Aşağıdaki betikte, cmdlet kullanımına ilişkin bir örnek gösterilmektedir
 
 * Active Directory PowerShell modülünü ve Azure Active Directory Domain Services (Azure AD DS) araçlarını kullanır. Bu araçlar, bir etki alanı denetleyicisinde çalışan Active Directory Web hizmetlerini kullanır. Active Directory Web Hizmetleri Windows Server 2008 R2 ve sonraki sürümleri çalıştıran etki alanı denetleyicilerinde desteklenir.
 * Yalnızca MSOnline PowerShell modülü sürüm 1.1.166.0 ile desteklenir. Bu modülü indirmek için [Bu bağlantıyı](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)kullanın.
-* AD DS Araçları yüklü değilse `Initialize-ADSyncDomainJoinedComputerSync` başarısız olur. AD DS araçlarını, **Özellikler**  >  **uzak sunucu yönetim araçları**  >  **rol yönetim araçları**altında Sunucu Yöneticisi aracılığıyla yükleyebilirsiniz.
+* AD DS Araçları yüklü değilse `Initialize-ADSyncDomainJoinedComputerSync` başarısız olur. AD DS araçlarını, **Özellikler**  >  **uzak sunucu yönetim araçları**  >  **rol yönetim araçları** altında Sunucu Yöneticisi aracılığıyla yükleyebilirsiniz.
 
 Windows Server 2008 veya önceki sürümlerini çalıştıran etki alanı denetleyicileri için, hizmet bağlantı noktasını oluşturmak üzere aşağıdaki betiği kullanın. Çok ormanlı bir yapılandırmada, bilgisayarların mevcut olduğu her ormanda hizmet bağlantı noktasını oluşturmak için aşağıdaki betiği kullanın.
 
@@ -169,7 +169,7 @@ Windows Server 2008 veya önceki sürümlerini çalıştıran etki alanı denetl
 
 Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)bölümüne bakın.
 
-Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain?view=azureadps-2.0) cmdlet öğesini kullanabilirsiniz.
+Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-AzureADDomain](/powershell/module/Azuread/Get-AzureADDomain) cmdlet öğesini kullanabilirsiniz.
 
 ![Şirket etki alanlarının listesi](./media/hybrid-azuread-join-manual/01.png)
 
@@ -188,7 +188,7 @@ AD FS kullanırken, aşağıdaki WS-Trust uç noktaları etkinleştirmeniz gerek
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> **ADFS/Service/Trust/2005/windowstransport** ve **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için bkz. [proxy üzerinde WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet**  >  **uç noktaları**altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
+> **ADFS/Service/Trust/2005/windowstransport** ve **ADFS/Services/Trust/13/windowstransport** , yalnızca intranet 'e yönelik uç noktalar olarak etkinleştirilmelidir ve Web uygulaması ara sunucusu aracılığıyla extranet 'e yönelik uç noktalar olarak gösterilmemelidir. WS-Trust Windows uç noktalarını devre dışı bırakma hakkında daha fazla bilgi için bkz. [proxy üzerinde WS-Trust Windows uç noktalarını devre dışı bırakma](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). **Hizmet**  >  **uç noktaları** altında AD FS Yönetim Konsolu aracılığıyla hangi uç noktaların etkinleştirildiğini görebilirsiniz.
 
 > [!NOTE]
 >Şirket içi Federasyon hizmetiniz olarak AD FS yoksa, WS-Trust 1,3 veya 2005 uç noktalarını desteklediklerinden ve bunların meta veri değişim dosyası (MEX) üzerinden yayımlandıklarından emin olmak için satıcınızdan yönergeleri izleyin.
@@ -219,7 +219,7 @@ Tanım, değerlerin mevcut olup olmadığını veya bunları oluşturmanızın g
 
 ### <a name="issue-account-type-claim"></a>Hesap türü talep verme
 
-`http://schemas.microsoft.com/ws/2012/01/accounttype`Talep, cihazı etki alanına katılmış bir bilgisayar olarak tanımlayan bir **DJ**değeri içermelidir. AD FS'de, aşağıdaki gibi görünen bir verme aktarım kuralı ekleyebilirsiniz:
+`http://schemas.microsoft.com/ws/2012/01/accounttype`Talep, cihazı etki alanına katılmış bir bilgisayar olarak tanımlayan bir **DJ** değeri içermelidir. AD FS'de, aşağıdaki gibi görünen bir verme aktarım kuralı ekleyebilirsiniz:
 
    ```
    @RuleName = "Issue account type for domain-joined computers"
@@ -328,7 +328,7 @@ Talebin, Şirket `http://schemas.microsoft.com/ws/2008/06/identity/claims/primar
 
 Doğrulanmış etki alanı adları hakkında daha fazla bilgi için, [Azure Active Directory için özel etki alanı adı ekleme](../fundamentals/add-custom-domain.md)bölümüne bakın.  
 
-Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-MsolDomain](/powershell/module/msonline/get-msoldomain?view=azureadps-1.0) cmdlet öğesini kullanabilirsiniz.
+Doğrulanmış şirket etki alanlarınızın bir listesini edinmek için [Get-MsolDomain](/powershell/module/msonline/get-msoldomain) cmdlet öğesini kullanabilirsiniz.
 
 ![Şirket etki alanlarının listesi](./media/hybrid-azuread-join-manual/01.png)
 
@@ -484,7 +484,7 @@ Aşağıdaki betik, daha önce açıklanan verme dönüştürme kurallarının o
 #### <a name="remarks"></a>Açıklamalar
 
 * Bu betik, kuralları mevcut kurallara ekler. Kural kümesi iki kez eklenebildiğinden, betiği iki kez çalıştırmayın. Betiği yeniden çalıştırmadan önce bu talepler için hiçbir karşılık gelen kural olmadığından emin olun (karşılık gelen koşullar bölümünde).
-* Birden çok doğrulanmış etki alanı adı (Azure AD portalında veya **Get-MsolDomain** cmdlet 'i aracılığıyla gösterildiği gibi) varsa, betikteki **$multipleVerifiedDomainNames** değerini **$true**olarak ayarlayın. Ayrıca, Azure AD Connect veya başka yollarla oluşturulmuş olabilecek mevcut **ıssuerıd** talebini kaldırdığınızdan emin olun. Bu kural için bir örnek aşağıda verilmiştir:
+* Birden çok doğrulanmış etki alanı adı (Azure AD portalında veya **Get-MsolDomain** cmdlet 'i aracılığıyla gösterildiği gibi) varsa, betikteki **$multipleVerifiedDomainNames** değerini **$true** olarak ayarlayın. Ayrıca, Azure AD Connect veya başka yollarla oluşturulmuş olabilecek mevcut **ıssuerıd** talebini kaldırdığınızdan emin olun. Bu kural için bir örnek aşağıda verilmiştir:
 
    ```
    c:[Type == "http://schemas.xmlsoap.org/claims/UPN"]
@@ -504,9 +504,9 @@ Bazı etki alanına katılmış cihazlar Windows alt düzey cihazlarıysa şunla
 
 ### <a name="set-a-policy-in-azure-ad-to-enable-users-to-register-devices"></a>Kullanıcıların cihaz kaydetmesini sağlamak için Azure AD 'de bir ilke ayarlama
 
-Windows alt düzey cihazlarını kaydetmek için kullanıcıların Azure AD 'ye cihaz kaydetmesine izin ver ayarının etkinleştirildiğinden emin olun. Azure Portal, bu ayarı **Azure Active Directory**  >  **Kullanıcılar ve gruplar**  >  **cihaz ayarları**altında bulabilirsiniz.
+Windows alt düzey cihazlarını kaydetmek için kullanıcıların Azure AD 'ye cihaz kaydetmesine izin ver ayarının etkinleştirildiğinden emin olun. Azure Portal, bu ayarı **Azure Active Directory**  >  **Kullanıcılar ve gruplar**  >  **cihaz ayarları** altında bulabilirsiniz.
 
-Aşağıdaki ilke **tümüne**ayarlanmış olmalıdır: **KULLANıCıLAR cihazlarını Azure AD 'ye kaydedebilir**.
+Aşağıdaki ilke **tümüne** ayarlanmış olmalıdır: **KULLANıCıLAR cihazlarını Azure AD 'ye kaydedebilir**.
 
 ![Kullanıcıların cihaz kaydetmesini sağlayan tümü düğmesi](./media/hybrid-azuread-join-manual/23.png)
 
@@ -558,19 +558,19 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 
 1. Windows PowerShell'i açın.
 2. `dsregcmd /status` yazın.
-3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
+3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet** olarak ayarlandığını doğrulayın.
 4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
 2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](./device-management-azure-portal.md#manage-devices)bölümünde bulunabilir.
-3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
-4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
+3. **Kayıtlı** sütun **bekliyor** Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz. Federasyon ortamlarında, bu durum yalnızca kayıt başarısız olduysa ve AAD Connect cihazları eşitlemek üzere yapılandırılmışsa gerçekleşebilir.
+4. **Kayıtlı** sütun bir **Tarih/saat** IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
-**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1).
 
 Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kullandığınızda:
 

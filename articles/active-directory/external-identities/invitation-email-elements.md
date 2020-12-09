@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e1bbdfe1cb83f9b479861840081cd0bb138957
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: bb134a2fb784e02f5e00c9e88ab0df1794489e0c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441887"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860601"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B işbirliği davetiyesi e-postası öğeleri-Azure Active Directory
 
@@ -69,7 +69,7 @@ Alt bilgi, gönderilmekte olan davet hakkında daha fazla bilgi içerir. Davetli
 
 ### <a name="blocking-an-organization-unsubscribing"></a>Bir kuruluşu engelleme (aboneliği kaldırma)
 
-Bir kuruluştan gelen davetinde, alt bilgi **gelecekteki davetleri engellemeye**yönelik bir seçenek içerir. Konuk Kullanıcı, bundan sonraki davetleri kuruluştan engellemek için bu bağlantıyı seçebilir. Bu eylem, Ayrıca, kuruluştaki kullanıcının aboneliği kaldırma listesine de ekler [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
+Bir kuruluştan gelen davetinde, alt bilgi **gelecekteki davetleri engellemeye** yönelik bir seçenek içerir. Konuk Kullanıcı, bundan sonraki davetleri kuruluştan engellemek için bu bağlantıyı seçebilir. Bu eylem, Ayrıca, kuruluştaki kullanıcının aboneliği kaldırma listesine de ekler [https://invitations.microsoft.com/unsubscribe/manage](https://invitations.microsoft.com/unsubscribe/manage) .
 
 ### <a name="viewing-organizations-youve-blocked"></a>Engellediğiniz kuruluşları görüntüleme
 
@@ -85,8 +85,8 @@ Konuk Kullanıcı, engellediği kuruluşları görüntülemek veya dışarı akt
 
 Davet e-postasında Konuk kullanıcıya sunulan dil aşağıdaki ayarlara göre belirlenir. Bu ayarlar öncelik sırasına göre listelenir. Bir ayar yapılandırılmamışsa, listedeki bir sonraki ayar dili belirler.
 
-- Davet oluşturma API 'SI kullanılıyorsa, [Davettedusermessageınfo](/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) nesnesinin **MessageLanguage** özelliği
--   Konuğun [Kullanıcı nesnesinde](/graph/api/resources/user?view=graph-rest-1.0) belirtilen **PreferredLanguage** özelliği
+- Davet oluşturma API 'SI kullanılıyorsa, [Davettedusermessageınfo](/graph/api/resources/invitedusermessageinfo) nesnesinin **MessageLanguage** özelliği
+-   Konuğun [Kullanıcı nesnesinde](/graph/api/resources/user) belirtilen **PreferredLanguage** özelliği
 -   Konuk kullanıcının ana kiracının özelliklerinde ayarlanan **bildirim dili** (yalnızca Azure AD kiracılar için)
 -   Kaynak kiracının özelliklerinde ayarlanan **bildirim dili**
 

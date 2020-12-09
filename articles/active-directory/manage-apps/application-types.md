@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648183"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858238"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Kimlik yönetimi için Azure AD kiracınızı kullanarak uygulamaları görüntüleme
 [Uygulama yönetiminde hızlı başlangıç serisi](view-applications-portal.md) size temel bilgileri gösterir. Bu durumda, kimlik yönetimi için Azure AD kiracınızı kullanarak tüm uygulamaları görüntülemeyi öğreneceksiniz. Bu makale, bulacağınız uygulama türlerinin biraz daha ayrıntılı bir şekilde bir bölümünü ele alır.
@@ -31,7 +31,7 @@ ms.locfileid: "94648183"
 - [Uygulama kayıt defteri](../develop/quickstart-register-app.md) 'ni kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 - [V 2.0 uygulama kayıt portalını](../develop/quickstart-register-app.md) kullanarak özel olarak geliştirilmiş bir uygulama oluşturarak yeni bir uygulama kaydı eklediğinizde
 - Bir uygulama eklediğinizde, Visual Studio 'nun [ASP.NET kimlik doğrulama yöntemlerini](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) veya [bağlı hizmetleri](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) kullanarak geliştirdiğinizi
-- [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda
+- [Azure AD PowerShell modülünü](/powershell/azure/active-directory/install-adv2) kullanarak bir hizmet sorumlusu nesnesi oluşturduğunuzda
 - [Bir uygulamayı](../develop/howto-convert-app-to-be-multi-tenant.md) kiracınızdaki verileri kullanmak üzere yönetici olarak kabul ettiğinizde
 - Bir Kullanıcı kiracınızdaki verileri kullanmak üzere [bir uygulamaya onay verirse](../develop/howto-convert-app-to-be-multi-tenant.md)
 - Kiracınızda veri depolayan belirli hizmetleri etkinleştirdiğinizde. Parola sıfırlama ilkenizi güvenli bir şekilde depolamak için bir hizmet sorumlusu olarak modellenen parola sıfırlama bir örnektir.

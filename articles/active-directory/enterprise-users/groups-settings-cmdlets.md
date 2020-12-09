@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da8fe904f71fdf6f01c926bf6fa3f050ba825309
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 70387717c15dade349a323e663ac0fd31935a15f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548146"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859887"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Grup ayarlarını yapılandırmak için Azure Active Directory cmdlet'leri
 
@@ -28,7 +28,7 @@ Bu makale, grupları oluşturmak ve güncelleştirmek için Azure Active Directo
 > [!IMPORTANT]
 > Bazı ayarlarda Azure Active Directory Premium P1 lisansı gerekir. Daha fazla bilgi için [şablon ayarları](#template-settings) tablosuna bakın.
 
-Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleme hakkında daha fazla bilgi için, `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)bölümünde açıklandığı gibi ayarlayın.
+Yönetici olmayan kullanıcıların güvenlik grupları oluşturmasını engelleme hakkında daha fazla bilgi için, `Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False` [set-MSOLCompanySettings](/powershell/module/msonline/set-msolcompanysettings)bölümünde açıklandığı gibi ayarlayın.
 
 Microsoft 365 Gruplar ayarları, bir Settings nesnesi ve bir SettingsTemplate nesnesi kullanılarak yapılandırılır. İlk olarak, dizininiz varsayılan ayarlarla yapılandırıldığından, dizininizde herhangi bir ayar nesnesi görmezsiniz. Varsayılan ayarları değiştirmek için, bir ayarlar şablonu kullanarak yeni bir ayar nesnesi oluşturmanız gerekir. Ayarlar şablonları Microsoft tarafından tanımlanır. Birçok farklı ayar şablonu vardır. Dizininiz için Microsoft 365 grup ayarlarını yapılandırmak için, "Group. Unified" adlı şablonu kullanın. Tek bir grupta Microsoft 365 grup ayarlarını yapılandırmak için, "Group. Unified. Guest" adlı şablonu kullanın. Bu şablon bir Microsoft 365 grubuna konuk erişimini yönetmek için kullanılır. 
 
@@ -319,7 +319,7 @@ Bu adım dizin düzeyindeki ayarları kaldırır ve dizindeki tüm Office grupla
    ```
 
 ## <a name="cmdlet-syntax-reference"></a>Cmdlet söz dizimi başvurusu
-[Azure Active Directory cmdlet 'lerinde](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
+[Azure Active Directory cmdlet 'lerinde](/powershell/azure/active-directory/install-adv2)daha fazla Azure Active Directory PowerShell belgesi bulabilirsiniz.
 
 ## <a name="additional-reading"></a>Ek okuma
 

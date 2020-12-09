@@ -13,12 +13,12 @@ ms.reviewer: krbain
 ms.date: 12/02/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d808b920ddc6ff6f1d44252c27d67edd9c0dc353
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 826ca9fc20d8bbcf9a5f90ccc895b9f9867a6be1
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575525"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860584"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Azure Active Directory Kullanıcı erişimini iptal etme
 
@@ -60,13 +60,13 @@ Tarayıcı tabanlı çoğu uygulama, erişim ve yenileme belirteçleri yerine ot
 
 Active Directory yönetici olarak şirket içi ağınıza bağlanın, PowerShell 'i açın ve aşağıdaki işlemleri gerçekleştirin:
 
-1. Active Directory kullanıcıyı devre dışı bırakın. [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount?view=win10-ps)öğesine bakın.
+1. Active Directory kullanıcıyı devre dışı bırakın. [Disable-ADAccount](/powershell/module/addsadministration/disable-adaccount)öğesine bakın.
 
     ```PowerShell
     Disable-ADAccount -Identity johndoe  
     ```
 
-1. Active Directory kullanıcının parolasını iki kez sıfırlayın. [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword?view=win10-ps)bölümüne bakın.
+1. Active Directory kullanıcının parolasını iki kez sıfırlayın. [Set-ADAccountPassword](/powershell/module/addsadministration/set-adaccountpassword)bölümüne bakın.
 
     > [!NOTE]
     > Bir kullanıcının parolasını iki kez değiştirme nedeni, özellikle de şirket içi parola çoğaltmasında gecikme olması durumunda karma geçişi riskini hafifletmektir. Bu hesabı güvenli bir şekilde kabul ediyorsanız, parolayı yalnızca bir kez sıfırlayabilirsiniz.
@@ -83,18 +83,18 @@ Active Directory yönetici olarak şirket içi ağınıza bağlanın, PowerShell
 
 Azure Active Directory yönetici olarak PowerShell ' i açın, çalıştırın ``Connect-AzureAD`` ve aşağıdaki işlemleri gerçekleştirin:
 
-1. Azure AD 'de kullanıcıyı devre dışı bırakın. [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser?view=azureadps-2.0)öğesine bakın.
+1. Azure AD 'de kullanıcıyı devre dışı bırakın. [Set-AzureADUser](/powershell/module/azuread/Set-AzureADUser)öğesine bakın.
 
     ```PowerShell
     Set-AzureADUser -ObjectId johndoe@contoso.com -AccountEnabled $false
     ```
-1. Kullanıcının Azure AD yenileme belirteçlerini iptal edin. [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)öğesine başvurun.
+1. Kullanıcının Azure AD yenileme belirteçlerini iptal edin. [Revoke-AzureADUserAllRefreshToken](/powershell/module/azuread/revoke-azureaduserallrefreshtoken)öğesine başvurun.
 
     ```PowerShell
     Revoke-AzureADUserAllRefreshToken -ObjectId johndoe@contoso.com
     ```
 
-1. Kullanıcının cihazlarını devre dışı bırakın. [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice?view=azureadps-2.0)öğesine başvurun.
+1. Kullanıcının cihazlarını devre dışı bırakın. [Get-AzureADUserRegisteredDevice](/powershell/module/azuread/get-azureaduserregistereddevice)öğesine başvurun.
 
     ```PowerShell
     Get-AzureADUserRegisteredDevice -ObjectId johndoe@contoso.com | Set-AzureADDevice -AccountEnabled $false

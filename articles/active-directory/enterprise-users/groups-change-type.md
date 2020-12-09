@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9298c5762e54faa7721973136408e14bd8d17d81
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1a46cc3f4a0f2fb25fc693103a64a319dcec0324
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547670"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860890"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Azure Active Directory statik grup üyeliğini dinamik olarak değiştirme
 
@@ -57,7 +57,7 @@ Aşağıdaki adımlar, bir grup Kullanıcı grubu için statik ve dinamik üyeli
 ## <a name="change-membership-type-for-a-group-powershell"></a>Grubun üyelik türünü değiştirme (PowerShell)
 
 > [!NOTE]
-> Dinamik Grup özelliklerini değiştirmek için, [Azure AD PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)' **nin önizleme sürümündeki** cmdlet 'leri kullanmanız gerekir. Önizlemeyi [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview)yükleyebilirsiniz.
+> Dinamik Grup özelliklerini değiştirmek için, [Azure AD PowerShell sürüm 2](/powershell/azure/active-directory/install-adv2)' **nin önizleme sürümündeki** cmdlet 'leri kullanmanız gerekir. Önizlemeyi [PowerShell Galerisi](https://www.powershellgallery.com/packages/AzureADPreview)yükleyebilirsiniz.
 
 Mevcut bir grupta üyelik yönetimini değiştirme işlevlerine bir örnek aşağıda verilmiştir. Bu örnekte, GroupTypes özelliğini doğru şekilde işlemek ve dinamik üyelikle ilgisi olmayan değerleri korumak için dikkatli olunmalıdır.
 

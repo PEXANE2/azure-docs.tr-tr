@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b304505c29f424d85d5b1e16dc83c060ac2ac1
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 19e40d135316c1c7cd270d2804fff1f487937685
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744607"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858544"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Azure Active Directory Kullanıcı asıl adı değişikliklerini planlayın ve sorun giderin
 
@@ -135,7 +135,7 @@ Kullanıcılar, kimlik doğrulaması için Azure AD 'ye bağlı olan uygulamalar
 Bu bölümde bahsedilen sorunlar Windows 10 Mayıs 2020 Güncelleştirmesi (2004) üzerinde düzeltildi.
 
 **Geçici çözüm** <br>
-UPN değişikliğinin Azure AD ile eşitlenmesi için yeterli zaman bekleyin. Yeni UPN 'nin Azure AD portalında yansıtıldığını doğruladıktan sonra, kullanıcıdan yeni UPN 'si ile oturum açmak için "diğer Kullanıcı" kutucuğunu seçmesini isteyin. [PowerShell](/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)aracılığıyla da doğrulayabilirsiniz. Yeni UPN 'si ile oturum açtıktan sonra eski UPN başvuruları "iş veya okul erişimi" Windows ayarında görünmeye devam edebilir.
+UPN değişikliğinin Azure AD ile eşitlenmesi için yeterli zaman bekleyin. Yeni UPN 'nin Azure AD portalında yansıtıldığını doğruladıktan sonra, kullanıcıdan yeni UPN 'si ile oturum açmak için "diğer Kullanıcı" kutucuğunu seçmesini isteyin. [PowerShell](/powershell/module/azuread/get-azureaduser)aracılığıyla da doğrulayabilirsiniz. Yeni UPN 'si ile oturum açtıktan sonra eski UPN başvuruları "iş veya okul erişimi" Windows ayarında görünmeye devam edebilir.
 
 ![Doğrulanan etki alanlarının ekran görüntüsü](./media/howto-troubleshoot-upn-changes/other-user.png)
 

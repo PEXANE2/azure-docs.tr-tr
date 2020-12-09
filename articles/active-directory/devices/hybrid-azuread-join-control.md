@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66b216e5e511d2d80378ee7e2d124dccbc7abcb7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38754b9e349e27afcff58dac27a616e3e4fb5319
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85252721"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860941"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Hibrit Azure AD’ye katılıma yönelik denetimli doğrulama
 
@@ -63,7 +63,7 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
       1. Anahtar yolu: **Software\microsoft\windows\currentversion\cdj\aad**
       1. Değer adı: **Tenantıd**
       1. Değer türü: **REG_SZ**
-      1. Değer verileri: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal**  >  **Azure Active Directory**  >  **Özellikler**  >  **Dizin kimliğinde**bulunabilir)
+      1. Değer verileri: Azure AD örneğinizin GUID veya **dizin kimliği** (Bu değer **Azure Portal**  >  **Azure Active Directory**  >  **Özellikler**  >  **Dizin kimliğinde** bulunabilir)
    1. **Tamam 'a** tıklayın
 1. Kayıt defterine sağ tıklayıp **Yeni**  >  **kayıt defteri öğesi** ' ni seçin
    1. **Genel** sekmesinde, aşağıdakileri yapılandırın
@@ -82,7 +82,7 @@ Cihazlarınızın kayıt defterinde bir SCP girişi yapılandırmak için bir ka
 AD FS kullanıyorsanız, önce GPO 'YU AD FS sunucularınıza bağlayarak, yukarıda bahsedilen yönergeleri kullanarak istemci tarafı SCP 'yi yapılandırmanız gerekir. SCP nesnesi, cihaz nesneleri için yetki kaynağını tanımlar. Şirket içi veya Azure AD olabilir. İstemci tarafı SCP AD FS için yapılandırıldığında, cihaz nesneleri kaynağı Azure AD olarak oluşturulur.
 
 > [!NOTE]
-> AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps)kullanılarak bulunabilir.
+> AD FS sunucularınızda istemci tarafı SCP 'YI yapılandıradıysanız, cihaz kimliklerinin kaynağı şirket içi olarak kabul edilir. ADFS daha sonra, ADFS cihaz kaydının "Maximumınactivedays" özniteliğinde tanımlanan bir süre sonra şirket içi dizinden cihaz nesnelerini silmeye başlayacaktır. ADFS cihaz kayıt nesneleri [Get-AdfsDeviceRegistration cmdlet 'i](/powershell/module/adfs/get-adfsdeviceregistration)kullanılarak bulunabilir.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Windows alt düzey cihazlarda karma Azure AD JOIN 'in denetimli doğrulaması
 

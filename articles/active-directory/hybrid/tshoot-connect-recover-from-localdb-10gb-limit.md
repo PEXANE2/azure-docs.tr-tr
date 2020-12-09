@@ -16,12 +16,12 @@ ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ca5361d8500ecd4ea22a577d0a4dc7ced606eab
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4b45decd2f2cf9c99cffb0e08d4d6a5c5cfafc67
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997656"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858408"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB 10 GB sınırından kurtarma
 Azure AD Connect’e kimlik verilerini depolamak için bir SQL Server veritabanı gerekiyor. Azure AD Connect ile yüklenen varsayılan SQL Server 2012 Express LocalDB’yi kullanabileceğiniz gibi, kendi tam SQL’nizi de kullanabilirsiniz. SQL Server Express 10 GB boyut sınırını uygular. LocalDB’yi kullanırken bu sınıra ulaşıldığında, Azure AD Connect Eşitleme Hizmeti artık düzgün başlatılamaz veya eşitleme yapamaz. Bu makalede kurtarma adımları sağlanmaktadır.
@@ -55,7 +55,7 @@ Bu bölümde, Azure AD Connect eşitleme hizmeti 'nin işlemi sürdürmesini sa�
 5. Çalışmıyorsa, hizmeti başlatmayı deneyin. Hizmet başarıyla başlatılırsa [veritabanı adımını daraltın](#shrink-the-database) ve [çalışma geçmişi verilerini sil](#delete-run-history-data) adımını atlayın. Aksi takdirde, [veritabanı adımını küçültmeye](#shrink-the-database) devam edin.
 
 ### <a name="shrink-the-database"></a>Veritabanını Küçült
-Eşitleme hizmetini başlatmak için yeterli VERITABANı alanı boşaltmak üzere küçültme işlemini kullanın. Veritabanındaki boşluklar kaldırılarak DB alanını boşaltır. Alanı her zaman kurtarabileceğiniz garanti edilmediği için bu adım en iyi çabadır. Küçültme işlemi hakkında daha fazla bilgi edinmek için [bir veritabanını küçülttüğünüzde](/sql/relational-databases/databases/shrink-a-database?view=sql-server-ver15)bu makaleyi okuyun.
+Eşitleme hizmetini başlatmak için yeterli VERITABANı alanı boşaltmak üzere küçültme işlemini kullanın. Veritabanındaki boşluklar kaldırılarak DB alanını boşaltır. Alanı her zaman kurtarabileceğiniz garanti edilmediği için bu adım en iyi çabadır. Küçültme işlemi hakkında daha fazla bilgi edinmek için [bir veritabanını küçülttüğünüzde](/sql/relational-databases/databases/shrink-a-database)bu makaleyi okuyun.
 
 > [!IMPORTANT]
 > Eşitleme hizmetini çalıştırmak için bu adımı atlayın. Daha fazla parçalanma nedeniyle zayıf performansa yol açacağından, SQL DB 'nin küçültülmesi önerilmez.

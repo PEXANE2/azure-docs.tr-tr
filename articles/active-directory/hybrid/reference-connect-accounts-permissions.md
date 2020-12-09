@@ -17,12 +17,12 @@ ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91273609"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858425"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -175,7 +175,7 @@ Hızlı ayarları kullanıyorsanız, Active Directory eşitleme için kullanıla
 ### <a name="adsync-service-account"></a>AD Eşitleme hizmeti hesabı
 Eşitleme hizmeti farklı hesaplar altında çalıştırılabilir. Bir **sanal hizmet hesabı** (VSA), **Grup tarafından yönetilen hizmet hesabı** (gMSA/sMSA) veya normal bir kullanıcı hesabı altında çalışabilir. Yeni bir yükleme yaptığınızda desteklenen seçenekler, Connect 'in 2017 Nisan sürümü ile değiştirilmiştir. Azure AD Connect önceki bir sürümünden yükseltiyorsanız, bu ek seçenekler kullanılamaz.
 
-| Hesap türü | Yükleme seçeneği | Açıklama |
+| Hesap türü | Yükleme seçeneği | Description |
 | --- | --- | --- |
 | [Sanal hizmet hesabı](#virtual-service-account) | Express ve Custom, 2017 Nisan ve üzeri | Bu, etki alanı denetleyicisindeki yüklemeler hariç tüm Express yüklemeleri için kullanılan seçenektir. Özel için, başka bir seçenek kullanılmadığı takdirde varsayılan seçenektir. |
 | [Grup Yönetilen Hizmet Hesabı](#group-managed-service-account) | Özel, 2017 Nisan ve üzeri | Uzak bir SQL Server kullanıyorsanız, grup tarafından yönetilen bir hizmet hesabı kullanmanızı öneririz. |
@@ -215,7 +215,7 @@ VSA, eşitleme altyapısının ve SQL 'in aynı sunucuda olduğu senaryolarla bi
 Bu özellik Windows Server 2008 R2 veya üstünü gerektirir. Azure AD Connect Windows Server 2008 ' ye yüklerseniz, yükleme bunun yerine bir [Kullanıcı hesabı](#user-account) kullanmaya geri döner.
 
 #### <a name="group-managed-service-account"></a>Grup tarafından yönetilen hizmet hesabı
-Uzak bir SQL Server kullanıyorsanız, **Grup tarafından yönetilen bir hizmet hesabı**kullanmanızı öneririz. Grup tarafından yönetilen hizmet hesabı için Active Directory hazırlama hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesaplarına genel bakış](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
+Uzak bir SQL Server kullanıyorsanız, **Grup tarafından yönetilen bir hizmet hesabı** kullanmanızı öneririz. Grup tarafından yönetilen hizmet hesabı için Active Directory hazırlama hakkında daha fazla bilgi için bkz. [Grup yönetilen hizmet hesaplarına genel bakış](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)).
 
 Bu seçeneği kullanmak için, [gerekli bileşenleri yüklensin](how-to-connect-install-custom.md#install-required-components) sayfasında, **var olan bir hizmet hesabını kullan**' ı seçin ve **yönetilen hizmet hesabı**' nı seçin.  
 !['NıN](./media/reference-connect-accounts-permissions/serviceaccount.png)  
@@ -245,14 +245,14 @@ Eşitleme hizmeti kullanımı için Azure AD 'de bir hesap oluşturulur. Bu hesa
 
 Hesabın kullanıldığı sunucunun adı, Kullanıcı adının ikinci bölümünde belirlenebilir. Resimde sunucu adı DC1 ' dir. Hazırlama sunucularınız varsa, her sunucunun kendi hesabı vardır.
 
-Hesap, sona ermeyecek uzun bir karmaşık parolayla oluşturulur. Yalnızca dizin eşitleme görevlerini gerçekleştirmek için izinlere sahip özel bir rol **dizini eşitleme hesabı** verilir. Bu özel yerleşik rol Azure AD Connect Sihirbazı dışında verilemez. Azure portal bu hesabı rol **kullanıcısına**gösterir.
+Hesap, sona ermeyecek uzun bir karmaşık parolayla oluşturulur. Yalnızca dizin eşitleme görevlerini gerçekleştirmek için izinlere sahip özel bir rol **dizini eşitleme hesabı** verilir. Bu özel yerleşik rol Azure AD Connect Sihirbazı dışında verilemez. Azure portal bu hesabı rol **kullanıcısına** gösterir.
 
 Azure AD 'de 20 Sync Service hesabı sınırı vardır. Azure AD 'de mevcut Azure AD hizmet hesaplarının listesini almak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın: `Get-AzureADDirectoryRole | where {$_.DisplayName -eq "Directory Synchronization Accounts"} | Get-AzureADDirectoryRoleMember`
 
 Kullanılmayan Azure AD hizmet hesaplarını kaldırmak için aşağıdaki Azure AD PowerShell cmdlet 'ini çalıştırın: `Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
 >[!NOTE]
->Yukarıdaki PowerShell komutlarını kullanabilmeniz [için, Graph modülünün Azure Active Directory PowerShell](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0#installing-the-azure-ad-module) 'i yüklemeniz ve [Connect-Azuread](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) kullanarak Azure AD örneğinize bağlanmanız gerekir
+>Yukarıdaki PowerShell komutlarını kullanabilmeniz [için, Graph modülünün Azure Active Directory PowerShell](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module) 'i yüklemeniz ve [Connect-Azuread](/powershell/module/azuread/connect-azuread) kullanarak Azure AD örneğinize bağlanmanız gerekir
 
 Azure AD Bağlayıcısı hesabının parolasını yönetme veya sıfırlama hakkında daha fazla bilgi için bkz [. Azure AD Connect hesabını yönetme](how-to-connect-azureadaccount.md)
 

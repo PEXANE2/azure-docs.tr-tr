@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56b0685dee518399ae8328ddac18f03e82918a38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 303f02e0c6b72b7061a996b3ce8e70799954b435
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89268426"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861060"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Öğretici: Yönetilen etki alanları için hibrit Azure Active Directory'ye katılımı yapılandırma
 
@@ -108,23 +108,23 @@ Azure AD Connect kullanarak hibrit bir Azure AD katılımı yapılandırmak içi
 
    ![Cihaz seçenekleri](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-options.png)
 
-1. **SCP yapılandırmasında**Azure AD Connect SCP 'yi yapılandırmak istediğiniz her orman için aşağıdaki adımları tamamlayıp **İleri**' yi seçin.
+1. **SCP yapılandırmasında** Azure AD Connect SCP 'yi yapılandırmak istediğiniz her orman için aşağıdaki adımları tamamlayıp **İleri**' yi seçin.
 
-   1. **Ormanı**seçin.
-   1. Bir **kimlik doğrulama hizmeti**seçin.
+   1. **Ormanı** seçin.
+   1. Bir **kimlik doğrulama hizmeti** seçin.
    1. Kuruluş Yöneticisi kimlik bilgilerini girmek için **Ekle** ' yi seçin.
 
    ![SCP](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-scp-configuration.png)
 
-1. **Cihaz işletim sistemlerinde**Active Directory ortamınızdaki cihazların kullandığı işletim sistemlerini seçin ve ardından **İleri**' yi seçin.
+1. **Cihaz işletim sistemlerinde** Active Directory ortamınızdaki cihazların kullandığı işletim sistemlerini seçin ve ardından **İleri**' yi seçin.
 
    ![Cihaz işletim sistemi](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-device-operating-systems.png)
 
-1. **Yapılandırmaya hazırlanma**bölümünde **Yapılandır**' ı seçin.
+1. **Yapılandırmaya hazırlanma** bölümünde **Yapılandır**' ı seçin.
 
    ![Yapılandırma için hazır](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-ready-to-configure.png)
 
-1. **Yapılandırma Tamam**bölümünde **Çıkış**' ı seçin.
+1. **Yapılandırma Tamam** bölümünde **Çıkış**' ı seçin.
 
    ![Yapılandırma tamamlandı](./media/hybrid-azuread-join-managed-domains/azure-ad-connect-configuration-complete.png)
 
@@ -168,19 +168,19 @@ Cihaz durumunu bulup doğrulamak için 3 yol aşağıda verilmiştir:
 
 1. Windows PowerShell'i açın.
 2. `dsregcmd /status` yazın.
-3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet**olarak ayarlandığını doğrulayın.
+3. Hem **Azureadkatılmış** hem de **Domainkatılmış** öğelerinin **Evet** olarak ayarlandığını doğrulayın.
 4. **DeviceID** 'yi kullanabilir ve Azure Portal veya PowerShell kullanarak hizmet durumunu karşılaştırabilirsiniz.
 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
 1. [Doğrudan bağlantı](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices)kullanarak cihazlar sayfasına gidin.
 2. Cihazı bulma hakkında bilgi [, Azure Portal kullanarak cihaz kimliklerini yönetme](./device-management-azure-portal.md)bölümünde bulunabilir.
-3. **Kayıtlı** sütun **bekliyor**Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz.
-4. **Kayıtlı** sütun bir **Tarih/saat**IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
+3. **Kayıtlı** sütun **bekliyor** Ifadesini IÇERIYORSA, karma Azure AD katılımı tamamlanmaz.
+4. **Kayıtlı** sütun bir **Tarih/saat** IÇERIYORSA, karma Azure AD katılımı tamamlanmıştır.
 
 ### <a name="using-powershell"></a>PowerShell’i kullanma
 
-**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-2.0).
+**[Get-MsolDevice](/powershell/module/msonline/get-msoldevice)** kullanarak Azure kiracınızdaki cihaz kayıt durumunu doğrulayın. Bu cmdlet [Azure Active Directory PowerShell modülüdür](/powershell/azure/active-directory/install-msonlinev1).
 
 Hizmet ayrıntılarını denetlemek için **Get-MSolDevice** cmdlet 'ini kullandığınızda:
 

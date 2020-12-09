@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4931006ba690ff7e059da5de8b0bc816271af30c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547908"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859972"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
@@ -68,7 +68,7 @@ Yayınlanmış etiketleri gruplara uygulamak için, önce özelliği etkinleşti
     Set-AzureADDirectorySetting -Id $Setting.Id -DirectorySetting $Setting
     ```
 
-Ayrıca, duyarlılık etiketlerinizi Azure AD ile eşitlemeniz gerekir. Yönergeler için bkz. [kapsayıcılar için duyarlılık etiketlerini etkinleştirme ve etiketleri senkronize etme](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
+Ayrıca, duyarlılık etiketlerinizi Azure AD ile eşitlemeniz gerekir. Yönergeler için bkz. [kapsayıcılar için duyarlılık etiketlerini etkinleştirme ve etiketleri senkronize etme](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#how-to-enable-sensitivity-labels-for-containers-and-synchronize-labels).
 
 ## <a name="assign-a-label-to-a-new-group-in-azure-portal"></a>Azure portal yeni bir gruba etiket atama
 

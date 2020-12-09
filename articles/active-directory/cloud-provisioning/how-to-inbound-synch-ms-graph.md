@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797bf5c7e69990a29f0d14c31586d0e85b42426
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96738019"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860364"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>MS Graph API kullanarak bulut sağlama için gelen eşitleme
 
@@ -30,7 +30,7 @@ Bunun nasıl yapılacağını gösteren yapı aşağıdaki adımlardan oluşur. 
 - [Eşitleme işini Başlat](#start-sync-job)
 - [İnceleme durumu](#review-status)
 
-Bu [Windows PowerShell için Microsoft Azure Active Directory modülü](https://docs.microsoft.com/powershell/module/msonline/?view=azureadps-1.0) komutlarını, bu kiracı Için Yönetim Web hizmetini çağırabilmek üzere bir üretim kiracısı için eşitlemeyi etkinleştirmek üzere kullanın.
+Bu [Windows PowerShell için Microsoft Azure Active Directory modülü](https://docs.microsoft.com/powershell/module/msonline/) komutlarını, bu kiracı Için Yönetim Web hizmetini çağırabilmek üzere bir üretim kiracısı için eşitlemeyi etkinleştirmek üzere kullanın.
 
 ## <a name="basic-setup"></a>Temel kurulum
 

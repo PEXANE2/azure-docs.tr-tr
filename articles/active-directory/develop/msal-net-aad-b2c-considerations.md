@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173405"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860975"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
@@ -78,7 +78,7 @@ AuthenticationResult ar = await application.AcquireTokenInteractive(scopes)
 
 - `policy` , Azure AD B2C Kullanıcı akışınız veya özel ilkenizin adını (örneğin,) içeren bir dizedir `PolicySignUpSignIn` .
 - `ParentActivityOrWindow` Android (etkinlik) için gereklidir ve iOS 'ta Microsoft Windows ve UIViewController üzerinde Windows gibi üst Kullanıcı arabirimini destekleyen diğer platformlar için isteğe bağlıdır. UI iletişim kutusu hakkında daha fazla bilgi için bkz. [WithParentActivityOrWindow](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively#withparentactivityorwindow) on msal wiki.
-- `GetAccountByPolicy(IEnumerable<IAccount>, string)` , belirli bir ilke için bir hesap bulan bir yöntemdir. Örneğin:
+- `GetAccountByPolicy(IEnumerable<IAccount>, string)` , belirli bir ilke için bir hesap bulan bir yöntemdir. Örnek:
 
   ```csharp
   private IAccount GetAccountByPolicy(IEnumerable<IAccount> accounts, string policy)
@@ -165,7 +165,7 @@ Değişiklik olursa bu [soruna](https://github.com/AzureAD/microsoft-authenticat
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Azure AD B2C ile ilgili bilinen sorun
 
-MSAL.NET, [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet)destekler. Belirteç önbelleğe alma anahtarı, kimlik sağlayıcısı (IDP) tarafından döndürülen talepleri temel alır.
+MSAL.NET, [belirteç önbelleğini](/dotnet/api/microsoft.identity.client.tokencache)destekler. Belirteç önbelleğe alma anahtarı, kimlik sağlayıcısı (IDP) tarafından döndürülen talepleri temel alır.
 
 Şu anda MSAL.NET bir belirteç önbellek anahtarı oluşturmak için iki talebe ihtiyaç duyuyor:
 
@@ -194,6 +194,6 @@ Kullanıcı akışlarınız tarafından hangi taleplerin döndürüleceğini bel
 
 Azure AD B2C uygulamaları için MSAL.NET ile etkileşimli olarak belirteçleri alma hakkında daha fazla ayrıntı aşağıdaki örnekte verilmiştir.
 
-| Örnek | Platform | Açıklama|
+| Örnek | Platform | Description|
 |------ | -------- | -----------|
 |[Active-Directory-B2C-Xamarin-Native](https://github.com/Azure-Samples/active-directory-b2c-xamarin-native) | Xamarin iOS, Xamarin Android, UWP | Azure AD B2C aracılığıyla kullanıcıların kimliğini doğrulamak ve ardından döndürülen belirteçlerle bir Web API 'sine erişmek için MSAL.NET kullanan bir Xamarin Forms uygulaması.|

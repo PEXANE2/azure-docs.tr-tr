@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489531"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860329"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Nasıl yapılır: koşullu erişimle Azure AD 'de eski kimlik doğrulamasını engelleme   
 
@@ -81,7 +81,7 @@ Bu kimlik doğrulama protokolleri ve hizmetleri hakkında daha fazla bilgi için
 Dizininizde eski kimlik doğrulamasını engelleyebilmeniz için önce, kullanıcılarınızın eski kimlik doğrulaması kullanan uygulamalar olup olmadığını ve bunun genel dizininizi nasıl etkileyeceğini anlamanız gerekir. Azure AD oturum açma günlükleri, eski kimlik doğrulaması kullanıp kullandığınızı anlamak için kullanılabilir.
 
 1. **Azure Portal**  >  **Azure Active Directory**  >  **oturum açma** işlemleri ' ne gidin.
-1. **Sütunlar**  >  **istemci uygulaması** ' na tıklanarak gösterilmezse, istemci uygulaması sütununu ekleyin.
+1. **Sütunlar**  >  **istemci uygulaması**' na tıklanarak gösterilmezse, istemci uygulaması sütununu ekleyin.
 1. **Filtre Ekle**  >  **Istemci uygulaması** > eski tüm kimlik doğrulama protokollerini seçin. Seçimlerinizi uygulamak ve iletişim kutusunu kapatmak için filtreleme iletişim kutusunun dışında ' yı seçin.
 
 Filtreleme yalnızca eski kimlik doğrulama protokolleri tarafından yapılan oturum açma girişimlerini gösterir. Her bir bireysel oturum açma girişimine tıkladığınızda ek ayrıntılar gösterilecektir. **Temel bilgi** sekmesindeki **istemci uygulaması** alanı, hangi eski kimlik doğrulama protokolünün kullanıldığını gösterir.
@@ -97,7 +97,7 @@ Eski kimlik doğrulamasını engellemek için koşullu erişim ilkelerini kullan
  
 ### <a name="directly-blocking-legacy-authentication"></a>Eski kimlik doğrulamasını doğrudan engelleme
 
-Tüm kuruluşunuz genelinde eski kimlik doğrulamasını engellemenin en kolay yolu, eski kimlik doğrulama istemcilerine özel olarak uygulanan bir koşullu erişim ilkesi yapılandırarak erişimi engeller. İlkeye Kullanıcı ve uygulama atarken, eski kimlik doğrulaması kullanarak oturum açması gereken kullanıcıları ve hizmet hesaplarını dışlayıp hariç tutdığınızdan emin olun. **Exchange ActiveSync istemcileri** ve **diğer istemciler** ' i seçerek istemci uygulamaları koşulunu yapılandırın. Bu istemci uygulamalarına erişimi engellemek için erişim denetimlerini erişimi engelleyecek şekilde yapılandırın.
+Tüm kuruluşunuz genelinde eski kimlik doğrulamasını engellemenin en kolay yolu, eski kimlik doğrulama istemcilerine özel olarak uygulanan bir koşullu erişim ilkesi yapılandırarak erişimi engeller. İlkeye Kullanıcı ve uygulama atarken, eski kimlik doğrulaması kullanarak oturum açması gereken kullanıcıları ve hizmet hesaplarını dışlayıp hariç tutdığınızdan emin olun. **Exchange ActiveSync istemcileri** ve **diğer istemciler**' i seçerek istemci uygulamaları koşulunu yapılandırın. Bu istemci uygulamalarına erişimi engellemek için erişim denetimlerini erişimi engelleyecek şekilde yapılandırın.
 
 ![Eski kimlik doğrulamasını engellemek için yapılandırılmış istemci uygulamaları koşulu](./media/block-legacy-authentication/client-apps-condition-configured-yes.png)
 
@@ -119,7 +119,7 @@ Kuruluşunuz tüm kuruluş genelinde eski kimlik doğrulamasını engellemeye uy
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online ve B2B Konuk kullanıcıları
 
-SharePoint Online 'a eski kimlik doğrulama aracılığıyla B2B Kullanıcı erişimini engellemek için, kuruluşların PowerShell komutunu kullanarak SharePoint 'te eski kimlik doğrulamasını devre dışı bırakmasına `Set-SPOTenant` ve `-LegacyAuthProtocolsEnabled` parametresini olarak ayarına izin vermelidir `$false` . Bu parametreyi ayarlama hakkında daha fazla bilgi, [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps) Ile Ilgili SharePoint PowerShell başvuru belgesinde bulunabilir
+SharePoint Online 'a eski kimlik doğrulama aracılığıyla B2B Kullanıcı erişimini engellemek için, kuruluşların PowerShell komutunu kullanarak SharePoint 'te eski kimlik doğrulamasını devre dışı bırakmasına `Set-SPOTenant` ve `-LegacyAuthProtocolsEnabled` parametresini olarak ayarına izin vermelidir `$false` . Bu parametreyi ayarlama hakkında daha fazla bilgi, [set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant) Ile Ilgili SharePoint PowerShell başvuru belgesinde bulunabilir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
