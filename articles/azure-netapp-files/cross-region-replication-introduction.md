@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.author: b-juche
-ms.openlocfilehash: db1e8ce2e4fe9ae81bc2299ae70e9ff83941b5b4
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7c78d5fa89d6d4f3c73bdd1fe9b6d2fdae97c011
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95245883"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937483"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files birimlerinin çapraz bölge çoğaltması
 
@@ -38,14 +38,15 @@ Azure NetApp Files birim çoğaltması Şu anda aşağıdaki sabit bölge çiftl
 * ABD Orta Güney ve ABD Doğu
 * ABD Orta Güney ve ABD Doğu 2 
 * ABD Doğu 2 ve ABD Orta 
-* Kuzey Avrupa ve Batı Avrupa
-* UK Güney ve UK Batı
 * Avustralya Doğu ve Avustralya Güneydoğu
 * Kanada Orta ve Kanada Doğu
-* Japonya Doğu ve Japonya Batı
-* UK Güney ve Almanya Orta Batı
-* Güneydoğu Asya ve Avustralya Doğu
 * Orta Hindistan ve Güney Hindistan
+* Almanya Orta Batı ve Almanya Kuzey
+* Japonya Doğu ve Japonya Batı
+* Kuzey Avrupa ve Batı Avrupa
+* Güneydoğu Asya ve Avustralya Doğu
+* UK Güney ve Almanya Orta Batı
+* UK Güney ve UK Batı
 
 ## <a name="service-level-objectives"></a>Hizmet düzeyi hedefleri
 
@@ -111,11 +112,11 @@ Aylık 2 için düzenli Azure NetApp Files depolama kapasitesi ücreti hedef bir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Bölgeler arası çoğaltmayı kullanma gereksinimleri ve konuları](cross-region-replication-requirements-considerations.md)
-* [Birim çoğaltması oluştur](cross-region-replication-create-peering.md)
+* [Birim çoğaltması oluşturma](cross-region-replication-create-peering.md)
 * [Çoğaltma ilişkisinin uygunluk durumunu görüntüleme](cross-region-replication-display-health-status.md)
 * [Olağanüstü durum kurtarmayı yönetme](cross-region-replication-manage-disaster-recovery.md)
 * [Birim çoğaltma ölçümleri](azure-netapp-files-metrics.md#replication)
-* [Birim çoğaltmaları veya birimleri silme](cross-region-replication-delete.md)
+* [Birim çoğaltmalarını veya birimleri silme](cross-region-replication-delete.md)
 * [Bölgeler arası çoğaltma sorunlarını giderme](troubleshoot-cross-region-replication.md)
 
 

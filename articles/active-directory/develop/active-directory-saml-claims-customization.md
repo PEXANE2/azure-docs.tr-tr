@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 12/09/2020
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: f462a78790e73f3e0f67f55b6417589c7826a75d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1c88b9f77513021609b99c81ea572c2b5b3d365b
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173677"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936803"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Nasıl yapılır: kurumsal uygulamalar için SAML belirtecinde verilen talepleri özelleştirme
 
@@ -56,11 +56,10 @@ SAML isteği Nameıdpolicy için bir öğe içermiyorsa, Microsoft Identity plat
 
 | NameID biçimi | Açıklama |
 |---------------|-------------|
-| **Varsayılanını** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
+| **Varsayılan** | Microsoft Identity platform varsayılan kaynak biçimini kullanır. |
 | **Kalıcı** | Microsoft Identity platform, NameID biçimi olarak persistent kullanacaktır. |
 | **EmailAddress** | Microsoft Identity platformu, NameID biçimi olarak Emapostaadı kullanacaktır. |
 | **Belirtilmemiş** | Microsoft Identity platform, NameID biçimi olarak belirtilmemiş olarak kullanılacak. |
-| **Windows etki alanı nitelikli adı** | Microsoft Identity platformu, NameID biçimi olarak WindowsDomainQualifiedName kullanır. |
 
 Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tarafında yapılandırılamaz. Nameıdpolicy özniteliği hakkında daha fazla bilgi için bkz. [tek Sign-On SAML Protokolü](single-sign-on-saml-protocol.md).
 
@@ -68,7 +67,7 @@ Geçici NameID de desteklenir, ancak açılan listede kullanılamaz ve Azure tar
 
 `NameIdentifier`(Veya NameID) talebi için istenen kaynağı seçin. Aşağıdaki seçeneklerden seçim yapabilirsiniz.
 
-| Adı | Açıklama |
+| Ad | Açıklama |
 |------|-------------|
 | E-posta | Kullanıcının e-posta adresi |
 | userprincipalName | Kullanıcının Kullanıcı asıl adı (UPN) |

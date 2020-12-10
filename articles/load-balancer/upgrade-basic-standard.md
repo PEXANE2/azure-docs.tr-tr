@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: f97facd8d184be05cbfd79af92dbcaab3a022ebd
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d54994a7c64718835e70381f92abed83ef693018
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746310"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938520"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure genel Load Balancer yükseltme
 [Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](./skus.md#skus).
@@ -26,7 +26,7 @@ Bir yükseltmede iki aşama vardır:
 
 Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
-* Kaynak grubunda ve belirttiğiniz konumda bir standart SKU Load Balancer oluşturur.
+* Temel Standart Load Balancer aynı kaynak grubunda belirttiğiniz konum ile standart bir SKU Load Balancer oluşturur.
 * Temel SKU 'dan ortak IP adreslerini yerinde standart SKU 'ya yükseltir.
 * Temel SKU 'nun yapılandırmalarının Load Balancer yeni oluştur Standart Load Balancer sorunsuzca kopyasını oluşturur.
 * Giden bağlantıyı sağlayan varsayılan bir giden kuralı oluşturur.
@@ -58,7 +58,7 @@ Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
 
 ## <a name="download-the-script"></a>Betiği indir
 
-[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/2.0)geçiş betiğini indirin.
+[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/4.0)geçiş betiğini indirin.
 ## <a name="use-the-script"></a>Betiği kullan
 
 Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
@@ -92,14 +92,13 @@ Betiği çalıştırmak için:
 
    * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure portal gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
    * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
-   * **Newrgname: [dize]: gereklidir** – bu, standart Load Balancer oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya var olan bir grup olabilir. Var olan bir kaynak grubunu seçerseniz, Load Balancer adının kaynak grubu içinde benzersiz olması gerektiğini unutmayın. 
    * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
 1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
 
     **Örnek**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma

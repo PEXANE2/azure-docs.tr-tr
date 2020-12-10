@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346147"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937738"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -48,7 +48,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
-    |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ URL Ekle**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Günlük konuşma**|**Profesyonel** seçin|
 
 7. **5. adımda**, **KB 'nizi oluştur**' u seçin.
@@ -83,7 +83,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
-    |**+ URL Ekle**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
+    |**+ URL Ekle**|`https://azure.microsoft.com/en-us/support/faq/`|
     |**Günlük konuşma**|**Profesyonel** seçin|
 
 8. **5. adımda**, **KB 'nizi oluştur**' u seçin.
@@ -173,7 +173,7 @@ Bilgi bankasında değişiklikler yaptığınızda ve yeniden yayımladığını
 
 1. Azure bot hizmetinin oluşturma sayfası ile Azure portal için yeni bir tarayıcı sekmesi açılır. Azure bot hizmetini yapılandırın. Bot ve Soru-Cevap Oluşturma Web App Service planını paylaşabilir, ancak Web uygulamasını paylaşamaz. Bu, bot 'ın **uygulama adının** soru-cevap oluşturma hizmeti için uygulama adından farklı olması anlamına gelir.
 
-    * **Gösterme**
+    * **Yapın**
         * Bot tanıtıcısını Değiştir-benzersiz değilse.
         * SDK dilini seçin. Bot oluşturulduktan sonra, kodu yerel geliştirme ortamınıza indirebilir ve geliştirme sürecine devam edebilirsiniz.
     * **Yapmayın**

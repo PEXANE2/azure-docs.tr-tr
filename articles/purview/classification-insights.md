@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745035"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938894"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Azure purview 'daki verilerinize ilişkin öngörüleri sınıflandırma
 
@@ -44,7 +44,7 @@ Azure purview ' de, sınıflandırmalar konu etiketlerine benzerdir ve tarama s�
 Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut güvenlik ilkelerinizi ve korumanızı tüm veri yayılmanız genelinde uzatmanızı sağlar.
 
 > [!NOTE]
-> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **Sınıflandırma etiketleme** öngörülerini birkaç saat daha verin.
+> Kaynak türlerinizi taradıktan sonra, yeni varlıkları yansıtmak için **Sınıflandırma** öngörülerini birkaç saat boyunca sunun.
 
 **Sınıflandırma öngörülerini görüntülemek için:**
 
@@ -52,7 +52,7 @@ Purview, Microsoft 365 ile aynı hassas bilgi türlerini kullanır ve bu, mevcut
 
 1. **Genel bakış** sayfasında, **Başlarken** bölümünde, **purview hesabını Başlat** kutucuğunu seçin.
 
-1. Takip görünümü ' nde, **Insights** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
+1. Takip görünümü ' nde,  :::image type="icon" source="media/insights/ico-insights.png" border="false"::: **Öngörüler** alanına erişmek için soldaki Öngörüler menü öğesini seçin.
 
 1. **Öngörüler** :::image type="icon" source="media/insights/ico-insights.png" border="false"::: alanında, purview **Sınıflandırma öngörüleri** raporunu görüntülemek için **Sınıflandırma** ' yı seçin.
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b54cff85da02415bbc9dfa9ead037ced48cb58f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a2cbca8c02dcbfc0e59d31040d1fca7a790cd35
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259450"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936667"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir OAuth1 teknik profili tanımlama
 
@@ -66,7 +66,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 </OutputClaims>
 ```
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -92,4 +92,4 @@ Kimlik sağlayıcınızın yeniden yönlendirme URI 'sini yapılandırdığını
 
 Örnekler:
 
-- [Özel ilkeler kullanarak Twitter 'ı OAuth1 Identity sağlayıcısı olarak ekleme](identity-provider-twitter-custom.md)
+- [Özel ilkeler kullanarak Twitter 'ı OAuth1 Identity sağlayıcısı olarak ekleme](identity-provider-twitter.md)

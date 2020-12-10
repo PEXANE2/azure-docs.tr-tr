@@ -5,18 +5,15 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/09/2020
+ms.openlocfilehash: 0ea58050c5dc952392df56b4fb556a0998eef165
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591538"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938911"
 ---
 # <a name="logical-decoding"></a>Mantıksal kod çözme
- 
-> [!NOTE]
-> Mantıksal kod çözme, PostgreSQL için Azure veritabanı-tek sunucu genel önizlemede.
 
 [PostgreSQL Içindeki mantıksal kod çözme](https://www.postgresql.org/docs/current/logicaldecoding.html) , dış tüketicilerle veri değişiklikleri akışına olanak sağlar. Mantıksal kod çözme, olay akışı ve değişiklik verilerini yakalama senaryoları için popudöngüsel olarak kullanılır.
 
@@ -53,15 +50,15 @@ Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parame
 
 ### <a name="using-azure-portal"></a>Azure portalını kullanma
 
-1. Azure çoğaltma desteğini **mantıksal** olarak ayarlayın. **Kaydet** ’i seçin.
+1. Azure çoğaltma desteğini **mantıksal** olarak ayarlayın. **Kaydet**’i seçin.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-Azure çoğaltma desteği":::
 
-2. **Evet** ' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
+2. **Evet**' i seçerek değişikliği uygulamak için sunucuyu yeniden başlatın.
 
    :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-yeniden başlatmayı Onayla":::
 
-3. Postgres 9,5 veya 9,6 çalıştırıyorsanız ve ortak ağ erişimi kullanıyorsanız, mantıksal çoğaltmayı çalıştıracağınız istemcinin genel IP adresini dahil etmek için güvenlik duvarı kuralını ekleyin. Güvenlik duvarı kuralı adı **_replrule** içermelidir. Örneğin, *test_replrule*. Daha sonra **Kaydet** 'e tıklayın.
+3. Postgres 9,5 veya 9,6 çalıştırıyorsanız ve ortak ağ erişimi kullanıyorsanız, mantıksal çoğaltmayı çalıştıracağınız istemcinin genel IP adresini dahil etmek için güvenlik duvarı kuralını ekleyin. Güvenlik duvarı kuralı adı **_replrule** içermelidir. Örneğin, *test_replrule*. Daha sonra **Kaydet**'e tıklayın.
 
    :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="PostgreSQL için Azure veritabanı-çoğaltma-güvenlik duvarı kuralı ekle":::
 

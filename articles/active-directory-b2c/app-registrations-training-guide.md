@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 16b5814835ec5cad6b66087fee37676155196339
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952089"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936480"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -63,7 +63,7 @@ Eski deneyimde uygulamalar her zaman müşteriye yönelik uygulamalar olarak olu
 > [!NOTE]
 > Bu uygulama için kullanıcıların kimliğini doğrulamak üzere Kullanıcı akışlarını Azure AD B2C çalıştırabilmek için bu seçenek gereklidir. [Kullanıcı akışlarla kullanım için bir uygulamayı kaydetmeyi öğrenin.](tutorial-register-applications.md)
 
-Bu seçeneği, SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmak için de kullanabilirsiniz. [Daha fazla bilgi edinin](identity-provider-adfs2016-custom.md).
+Bu seçeneği, SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmak için de kullanabilirsiniz. [Daha fazla bilgi edinin](identity-provider-adfs.md).
 
 ## <a name="applications-for-devops-scenarios"></a>DevOps senaryolarına yönelik uygulamalar
 Diğer hesap türlerini, kimlik deneyimi çerçevesi ilkelerini karşıya yüklemek veya kullanıcıları sağlamak için Microsoft Graph kullanma gibi DevOps senaryolarınızı yönetmek üzere bir uygulama oluşturmak için kullanabilirsiniz. [Azure AD B2C kaynaklarını yönetmek için Microsoft Graph uygulamasını nasıl kaydedeceğinizi](microsoft-graph-get-started.md)öğrenin.
@@ -116,5 +116,5 @@ Yeni uygulama kayıt deneyimini kullanmaya başlamak için:
 * [Bir Web API 'sini kaydetmeyi](add-web-api-application.md)öğrenin.
 * [Yerel istemci uygulamasını nasıl kaydedeceğinizi](add-native-application.md)öğrenin.
 * [Azure AD B2C kaynaklarını yönetmek için Microsoft Graph uygulamasını nasıl kaydedeceğinizi](microsoft-graph-get-started.md)öğrenin.
-* [SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmayı öğrenin.](identity-provider-adfs2016-custom.md)
+* [SAML hizmet sağlayıcısı olarak Azure AD B2C kullanmayı öğrenin.](identity-provider-adfs.md)
 * [Uygulama türleri](application-types.md)hakkında bilgi edinin.

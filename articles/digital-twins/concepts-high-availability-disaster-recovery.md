@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763181"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938555"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Azure dijital TWINS yüksek kullanılabilirlik ve olağanüstü durum kurtarma
 
@@ -38,6 +38,29 @@ Veri Merkezi, bölgedeki güç arızalarına veya diğer olaylara karşı geniş
 
 >[!NOTE]
 > Bazı Azure Hizmetleri, **müşteri tarafından başlatılan yük devretme** adlı ek bir seçenek de sağlar. Bu, müşterilerin yalnızca kendi örnekleri için bir yük devretme başlatmasına olanak sağlar. ÖRNEĞIN, Dr detaylarını çalıştırmak gibi. Bu mekanizma Şu anda Azure dijital TWINS tarafından **desteklenmiyor** . 
+
+## <a name="monitor-service-health"></a>Hizmet durumunu izleme
+
+Azure dijital TWINS örnekleri yük devretdiği ve kurtarıldığı için, [Azure hizmet durumu](https://docs.microsoft.com/azure/service-health/service-health-overview) aracını kullanarak işlemi izleyebilirsiniz. Hizmet durumu, farklı bölgelerde ve aboneliklerde Azure hizmetlerinizin sistem durumunu izler ve kesintiler ve kaymalar hakkında hizmet tarafından etkileyen iletişimleri paylaşır.
+
+Bir yük devretme olayı sırasında hizmet durumu, hizmetinizin ne zaman ve ne zaman yedekleneceği hakkında bir gösterge sağlayabilir.
+
+Hizmet durumu olaylarını görüntülemek için...
+1. Azure portal [hizmet durumu](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) ' na gidin (Bu bağlantıyı kullanabilir veya Portal arama çubuğunu kullanarak arama yapabilirsiniz).
+1. *Sistem durumu geçmişi* sayfasına geçmek için sol menüyü kullanın.
+1. **Azure dijital TWINS** ile başlayan bir *sorun adı* olup olmadığına bakın ve seçin.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Sistem durumu geçmişi sayfasını gösteren Azure portal ekran görüntüsü. Son birkaç gündeki birkaç sorun listesi bulunur ve ' Azure Digital TWINS-Batı Avrupa-azaltıldı ' adlı bir sorun vurgulanır." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. Kesinti hakkında genel bilgi için *Özet* sekmesini görüntüleyin.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Durum geçmişi sayfasında, Özet sekmesi vurgulanır. Sekme, etkilenen kaynak, bölgesi ve aboneliği gibi genel bilgileri görüntüler." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. Zamana göre sorun hakkında daha fazla bilgi ve güncelleştirme için, *sorun güncelleştirmeleri* sekmesini görüntüleyin.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Durum geçmişi sayfasında, sorun güncelleştirmeleri sekmesi vurgulanır. Bu sekmede, geçerli durumu bir günden önce gösteren çeşitli girişler görüntülenir." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+Bu araçta görüntülenen bilgilerin bir Azure dijital örneğine özgü olmadığını unutmayın. Belirli bir bölgede veya abonelikte Azure dijital TWINS hizmeti ile neler olduğunu anlamak için hizmet durumunu kullandıktan sonra, belirli örneklerde ayrıntıya gitmek ve etkilenip etkilenmediğini görmek için [kaynak sistem durumu aracını](troubleshoot-resource-health.md) kullanarak bir adım daha fazla işlem yapabilirsiniz.
 
 ## <a name="best-practices"></a>En iyi uygulamalar
 

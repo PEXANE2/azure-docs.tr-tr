@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: fc15176318dcfae99434f50a0b4370f371cec05a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317478"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938248"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Geliştirdiğiniz istemci uygulamalarında kimlik doğrulama ve yetkilendirme esnekliği artırma
 
@@ -30,7 +30,9 @@ MSAL önbellek belirteçleri ve sessiz belirteç alma modelini kullanır. Ayrıc
 
 ![Microsoft kimliği 'ni çağırmak için MSAL kullanan ve uygulamanın bulunduğu cihaz görüntüsü](media/resilience-client-app/resilience-with-microsoft-authentication-library.png)
 
-MSAL kullanırken, aşağıdaki kalıbı kullanarak belirteç önbelleğe alma, yenileme ve sessiz belirteç alma işlemleri alırsınız.
+MSAL kullanıldığında, belirteç önbelleğe alma, yenileme ve sessiz alma otomatik olarak desteklenir. Modern kimlik doğrulaması için gereken belirteçleri elde etmek için basit desenleri kullanabilirsiniz. Birçok dili destekliyoruz ve [örnekler](https://docs.microsoft.com/azure/active-directory/develop/sample-v2-code) sayfamızda diliniz ve senaryonuz ile eşleşen bir örnek bulabilirsiniz.
+
+## <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 try
@@ -42,6 +44,28 @@ catch(MsalUiRequiredException ex)
     result = await app.AcquireToken(scopes).WithClaims(ex.Claims).ExecuteAsync()
 }
 ```
+
+## <a name="javascript"></a>[Javascript](#tab/javascript)
+
+```javascript
+return myMSALObj.acquireTokenSilent(request).catch(error => {
+    console.warn("silent token acquisition fails. acquiring token using redirect");
+    if (error instanceof msal.InteractionRequiredAuthError) {
+        // fallback to interaction when silent call fails
+        return myMSALObj.acquireTokenPopup(request).then(tokenResponse => {
+            console.log(tokenResponse);
+
+            return tokenResponse;
+        }).catch(error => {
+            console.error(error);
+        });
+    } else {
+        console.warn(error);
+    }
+});
+```
+
+---
 
 MSAL bazı durumlarda belirteçleri önceden yenilemeyi sağlayabilir. Microsoft kimliği uzun süreli bir belirteç aldığında, belirteci yenilemek için en iyi süre için istemciye bilgi gönderebilir (" \_ içinde Yenile"). MSAL, belirteci bu bilgilere göre proaktif olarak yeniler. Uygulama, eski belirteç geçerli olduğu sürece çalışmaya devam eder, ancak başka bir başarılı belirteç alımı yapmak için daha uzun bir zaman çerçevesi olacaktır.
 
@@ -65,7 +89,9 @@ Geliştiricilerin en son MSAL sürümüne güncelleştirme için bir işlemi olm
 
 [En son Microsoft. Identity. Web sürümünü ve sürüm notlarını denetleyin](https://github.com/AzureAD/microsoft-identity-web/releases)
 
-## <a name="if-not-using-msal-use-these-resilient-patterns-for-token-handling"></a>MSAL kullanmıyorsanız, belirteç işleme için bu esnek desenleri kullanın
+## <a name="use-resilient-patterns-for-token-handling"></a>Belirteç işleme için esnek desenler kullanma
+
+MSAL kullanmıyorsanız, bu esnek desenleri belirteç işleme için kullanabilirsiniz. Bu en iyi uygulamalar MSAL kitaplığı tarafından otomatik olarak uygulanır. 
 
 Genel olarak, modern kimlik doğrulaması kullanan bir uygulama, kullanıcının kimliğini doğrulayan veya uygulamayı korunan API 'Leri çağırmak üzere yetkilendirecek belirteçleri almak için bir uç nokta çağırır. MSAL, kimlik doğrulamanın ayrıntılarını işleyecek ve bu işlemin esnekliği ' i geliştirmek için çeşitli desenler uygulayan bir işlemdir. MSAL dışında bir kitaplık kullanmayı seçerseniz en iyi yöntemleri uygulamak için bu bölümdeki kılavuzu kullanın. MSAL kullanıyorsanız, MSAL bunları otomatik olarak uyguladığından bu en iyi uygulamaları ücretsiz olarak alırsınız.
 

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30f110c3955315f560eef9972b1e3e4a956bdd8a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 572d6964384c711a7d2b98b0fa27852a7d28951f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750535"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936718"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir SAML kimlik sağlayıcısı teknik profili tanımlama
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) SAML 2,0 kimlik sağlayıcısı için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır. SAML teknik profiliyle, [ADFS](identity-provider-adfs2016-custom.md) ve [Salesforce](identity-provider-salesforce-custom.md)gibi SAML tabanlı bir kimlik sağlayıcısıyla federasyona bağlayabilirsiniz. Bu Federasyon, kullanıcılarınızın mevcut sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
+Azure Active Directory B2C (Azure AD B2C) SAML 2,0 kimlik sağlayıcısı için destek sağlar. Bu makalede, bu standartlaştırılmış protokolü destekleyen bir talep sağlayıcısıyla etkileşim kurmaya yönelik teknik bir profilin ayrıntıları açıklanmaktadır. SAML teknik profiliyle, [ADFS](identity-provider-adfs2016-custom.md) ve [Salesforce](identity-provider-salesforce.md)gibi SAML tabanlı bir kimlik sağlayıcısıyla federasyona bağlayabilirsiniz. Bu Federasyon, kullanıcılarınızın mevcut sosyal veya kurumsal kimliklerinde oturum açmasına olanak tanır.
 
 ## <a name="metadata-exchange"></a>Meta veri değişimi
 
@@ -68,7 +68,7 @@ SAML yanıtı onayını şifrelemek için:
 1. Azure AD B2C ilkesi anahtar deposuna özel anahtara (. pfx dosyası) sahip geçerli bir x509 sertifikası yükleyin.
 2. Bir tanımlayıcılı bir **Cryptographickey** öğesini `SamlAssertionDecryption` Technical profile **cryptographickeys** koleksiyonuna ekleyin. **Storagereferenceıd** 'yi, 1. adımda oluşturduğunuz ilke anahtarının adı olarak ayarlayın.
 3. Teknik profil meta verilerini **WantsEncryptedAssertions** olarak ayarlayın `true` .
-4. Kimlik sağlayıcısını yeni Azure AD B2C teknik profil meta verileri ile güncelleştirin. **Anahtar tanımlayıcısını** , **use** `encryption` sertifikanızın ortak anahtarını içerecek şekilde Use özelliği ayarlanmış olarak görmeniz gerekir.
+4. Kimlik sağlayıcısını yeni Azure AD B2C teknik profil meta verileri ile güncelleştirin. **Anahtar tanımlayıcısını** ,  `encryption` sertifikanızın ortak anahtarını içerecek şekilde Use özelliği ayarlanmış olarak görmeniz gerekir.
 
 Aşağıdaki örnek, şifreleme için kullanılan SAML meta verilerinin anahtar tanımlayıcı bölümünü göstermektedir:
 
@@ -216,5 +216,5 @@ Farklı EntityId değerlerine bağımlı birden çok SAML uygulamanız varsa, `i
 
 Azure AD B2C 'de SAML kimlik sağlayıcılarıyla çalışma örnekleri için aşağıdaki makalelere bakın:
 
-- [Özel ilkeler kullanarak bir SAML kimlik sağlayıcısı olarak ADFS ekleme](identity-provider-adfs2016-custom.md)
-- [SAML aracılığıyla Salesforce hesaplarını kullanarak oturum açın](identity-provider-salesforce-custom.md)
+- [Özel ilkeler kullanarak bir SAML kimlik sağlayıcısı olarak ADFS ekleme](identity-provider-adfs.md)
+- [SAML aracılığıyla Salesforce hesaplarını kullanarak oturum açın](identity-provider-salesforce.md)

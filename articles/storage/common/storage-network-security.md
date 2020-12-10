@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905375"
+ms.locfileid: "96938418"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma
 
@@ -64,7 +64,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için v
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
+1. **Ağ iletişimi** adlı ayarlar menüsüne tıklayın.
 
 1. Erişimi varsayılan olarak reddetmek için, **Seçili ağlardan** erişime izin ver ' i seçin. Tüm ağlardan gelen trafiğe izin vermek için **Tüm ağlardan** erişime izin vermeyi seçin.
 
@@ -148,7 +148,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için s
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
+1. **Ağ iletişimi** adlı ayarlar menüsüne tıklayın.
 
 1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
@@ -272,7 +272,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
+1. **Ağ iletişimi** adlı ayarlar menüsüne tıklayın.
 
 1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 
@@ -356,7 +356,7 @@ Azure portal, PowerShell veya CLIv2 aracılığıyla depolama hesapları için I
 > [!IMPORTANT]
 > [Varsayılan kuralı](#change-the-default-network-access-rule) **Reddet** olarak ayarladığınızdan emin olun veya ağ kurallarının hiçbir etkisi yoktur.
 
-## <a name="exceptions"></a>Özel durumlar
+## <a name="exceptions"></a>Özel Durumlar
 
 Ağ kuralları, çoğu senaryo için Uygulamalarınız ve verileriniz arasındaki bağlantılar için güvenli bir ortam oluşturmaya yardımcı olur. Ancak bazı uygulamalar, sanal ağ veya IP adresi kuralları aracılığıyla benzersiz olarak yalıtılmamış Azure hizmetlerine bağımlıdır. Ancak, tam uygulama işlevselliğini etkinleştirmek için bu hizmetler depolama alanına verilmelidir. Bu gibi durumlarda, **_güvenilir Microsoft hizmetlerine Izin ver..._* seçeneğini kullanabilirsiniz. _ Bu tür hizmetlerin verilerinize, günlüklerine veya analizlerinize erişmesini sağlamak için ayarı.
 
@@ -415,7 +415,7 @@ Ağ kuralı özel durumlarını Azure portal, PowerShell veya Azure CLı v2 arac
 
 1. Güvenli hale getirmek istediğiniz depolama hesabına gidin.
 
-1. **Güvenlik duvarları ve sanal ağlar** adlı ayarlar menüsüne tıklayın.
+1. **Ağ iletişimi** adlı ayarlar menüsüne tıklayın.
 
 1. **Seçili ağlardan** erişime izin vermeyi seçtiğinizden emin olun.
 

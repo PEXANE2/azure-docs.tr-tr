@@ -8,22 +8,22 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553707"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938843"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Azure purview ile kaynaklar için kotaları yönetme ve artırma
  
 Azure purview, veri kullanıcıları tarafından kullanılmak üzere bir bulut hizmetidir. Hem bulut hem de şirket içi ortamları kapsayan veri idare genelinde veri yönetimini merkezi olarak yönetmek için Azure purview kullanın. Hizmet, iş analistlerinin anlamlı iş terimlerini kullanarak ilgili verileri aramasını sağlar. Sınırlandırmaları aboneliğinizin en büyük sınırına yükseltmek için desteğe başvurun.
  
-## <a name="azure-purview-limits"></a>Azure takip görünümü sınırları
+## <a name="azure-purview-limits"></a>Azure Purview'un sınırları
  
 |**Kaynak**|  **Varsayılan sınır**  |**Maksimum sınır**|
 |---|---|---|
-|Her kiracı için hesap (tüm abonelikler birleştirilmiş)|3|Destek birimine başvurma|
+|Her kiracı için (tüm abonelikler Birleşik) her bölge için hesap görüntüleme|3|Destek birimine başvurma|
 |tarama için kullanılabilir sanal çekirdekler, hesap başına *|160|160|
 |Verilen bir noktada hesap başına eşzamanlı taramalar. Sınır, taranan veri kaynaklarının türüne göre belirlenir *|5 | 10 |
 |Taramanın çalışacağı en uzun süre|7 gün|7 gün|

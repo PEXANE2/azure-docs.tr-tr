@@ -7,18 +7,18 @@ documentationcenter: na
 author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 46b3a782d93a55ed7f6eee6c76886f27c2652572
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89469652"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937058"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure sanal ağlarındaki kaynaklar için ad çözümlemesi
 
@@ -47,8 +47,8 @@ Kullandığınız ad çözümlemesi türü, kaynaklarınızın birbirleriyle nas
 | Bir sanal ağdaki App Service Web Apps farklı bir sanal ağdaki VM 'lere ad çözümleme. |Müşteri tarafından yönetilen DNS sunucuları, Azure tarafından çözümlenmek üzere sanal ağlar arasında sorguları ileten (DNS proxy). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayar ve hizmet adları, VM 'lerden veya Azure 'daki rol örneklerinden çözümlenmektedir. |Müşteri tarafından yönetilen DNS sunucuları (Şirket içi etki alanı denetleyicisi, yerel salt okuma etki alanı denetleyicisi veya bölge aktarımları kullanılarak eşitlenmiş bir DNS ikincil sunucu). Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
 | Şirket içi bilgisayarlardan Azure ana bilgisayar adları çözümlemesi. |Sorguları karşılık gelen sanal ağdaki müşteri tarafından yönetilen bir DNS proxy sunucusuna ilet, proxy sunucusu sorguları çözümlenmek üzere Azure 'a iletir. Bkz. [kendı DNS sunucunuzu kullanarak ad çözümlemesi](#name-resolution-that-uses-your-own-dns-server). |Yalnızca FQDN |
-| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Uygulanamaz |
-| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Uygulanamaz|
+| İç IP 'Ler için ters DNS. |[Kendı DNS sunucunuzu kullanarak](#name-resolution-that-uses-your-own-dns-server) [özel bölgeler](../dns/private-dns-overview.md) veya [Azure tarafından sağlanmış ad çözümlemesi](#azure-provided-name-resolution) veya ad çözümlemesi Azure DNS. |Geçerli değil |
+| Sanal bir ağda değil, farklı bulut hizmetlerinde bulunan VM 'Ler veya rol örnekleri arasında ad çözümlemesi. |Geçerli değildir. Farklı bulut hizmetlerindeki VM 'Ler ve rol örnekleri arasında bağlantı, sanal ağ dışında desteklenmez. |Geçerli değil|
 
 ## <a name="azure-provided-name-resolution"></a>Azure tarafından sağlanmış ad çözümlemesi
 
@@ -113,7 +113,7 @@ Kullanılabilir farklı DNS önbelleğe alma paketleri vardır (dnsmasq gibi). A
   * Dnsmasq paketini ile birlikte yükler `sudo zypper install dnsmasq` .
   * Dnsmasq hizmetini ile etkinleştirin `systemctl enable dnsmasq.service` . 
   * Dnsmasq hizmetini ile başlatın `systemctl start dnsmasq.service` . 
-  * **/Etc/sysconfig/Network/config**' i düzenleyin ve *NETCONFIG_DNS_FORWARDER = ""* değerini *dnsmasq*olarak değiştirin.
+  * **/Etc/sysconfig/Network/config**' i düzenleyin ve *NETCONFIG_DNS_FORWARDER = ""* değerini *dnsmasq* olarak değiştirin.
   * `netconfig update`Önbelleği yerel DNS Çözümleyicisi olarak ayarlamak için resolv. conf ile güncelleştirin.
 * **CentOS (NetworkManager kullanır)**:
   * Dnsmasq paketini ile birlikte yükler `sudo yum install dnsmasq` .
@@ -145,10 +145,10 @@ Resolv. conf dosyası genellikle otomatik olarak oluşturulur ve düzenlenmemeli
   1. *Options* satırını **/etc/resolvconf/resolv.exe**' ye ekleyin.
   2. `resolvconf -u`Güncelleştirmek için çalıştırın.
 * **SUSE** (netconf kullanır):
-  1. *Zaman aşımı: 1 deneme: 5* ' e, **/Etc/sysconfig/Network/config**içindeki **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametresine ekleyin.
+  1. *Zaman aşımı: 1 deneme: 5* ' e, **/Etc/sysconfig/Network/config** içindeki **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametresine ekleyin.
   2. `netconfig update`Güncelleştirmek için çalıştırın.
 * **CentOS** (NetworkManager kullanır):
-  1. **/Etc/NetworkManager/Dispatcher,d/11-dhclient**için *echo "Options timeout: 1 deneme: 5"* ekleyin.
+  1. **/Etc/NetworkManager/Dispatcher,d/11-dhclient** için *echo "Options timeout: 1 deneme: 5"* ekleyin.
   2. İle güncelleştirin `service network restart` .
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Kendi DNS sunucunuzu kullanan ad çözümlemesi
@@ -192,7 +192,7 @@ Sorguların Azure 'a iletilmesi gereksinimlerinize uygun değilse, kendi DNS ç�
 ### <a name="web-apps"></a>Web uygulamaları
 Sanal bir ağa bağlı App Service, aynı sanal ağdaki VM 'lere kullanarak oluşturulan Web uygulamanızdan ad çözümlemesi gerçekleştirmeniz gerektiğini varsayalım. Sorguları Azure 'a (sanal IP 168.63.129.16) ileten bir DNS ileticisi olan özel bir DNS sunucusu ayarlamaya ek olarak, aşağıdaki adımları uygulayın:
 1. [Uygulamanızı bir sanal ağla tümleştirin](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)bölümünde açıklandığı gibi, henüz yapılmazsa, Web uygulamanız için sanal ağ tümleştirmesini etkinleştirin.
-2. Azure portal, Web uygulamasını barındıran App Service planı **için ağ,** **sanal ağ tümleştirmesi**altında **ağı Eşitle** ' yi seçin.
+2. Azure portal, Web uygulamasını barındıran App Service planı **için ağ,** **sanal ağ tümleştirmesi** altında **ağı Eşitle** ' yi seçin.
 
     ![Sanal ağ adı çözümlemenin ekran görüntüsü](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
@@ -202,7 +202,7 @@ Bir sanal ağa bağlı App Service, farklı bir sanal ağdaki VM 'lere, farklı 
 * Bir VM 'deki kaynak sanal ağda bir DNS ileticisi ayarlayın. Sorguları hedef sanal ağınızdaki DNS sunucusuna iletmek için bu DNS ileticisini yapılandırın.
 * Kaynak DNS sunucunuzu kaynak sanal ağınızın ayarlarında yapılandırın.
 * [Uygulamanızı sanal ağ Ile tümleştirme](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)bölümündeki yönergeleri izleyerek, Web uygulamanız için sanal ağ tümleştirmesini kaynak sanal ağa bağlamak için etkinleştirin.
-* Azure portal, Web uygulamasını barındıran App Service planı **için ağ,** **sanal ağ tümleştirmesi**altında **ağı Eşitle** ' yi seçin.
+* Azure portal, Web uygulamasını barındıran App Service planı **için ağ,** **sanal ağ tümleştirmesi** altında **ağı Eşitle** ' yi seçin.
 
 ## <a name="specify-dns-servers"></a>DNS sunucularını belirtme
 Kendi DNS sunucularınızı kullanırken Azure, sanal ağ başına birden çok DNS sunucusu belirtme olanağı sağlar. Ayrıca ağ arabirimi başına (Azure Resource Manager için) veya bulut hizmeti başına (klasik dağıtım modeli için) birden çok DNS sunucusu da belirtebilirsiniz. Bir ağ arabirimi veya bulut hizmeti için belirtilen DNS sunucuları, sanal ağ için belirtilen DNS sunucularının önceliği alır.

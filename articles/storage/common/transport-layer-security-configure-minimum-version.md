@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498141"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937500"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
@@ -339,6 +339,23 @@ TLS 1,2 ' den daha az bir TLS sürümüne yönelik reddetme etkisi olan bir ilke
 Aşağıdaki görüntüde, bir reddetme etkisi olan bir ilke en düşük TLS sürümünün TLS 1,2 olarak ayarlanmasını gerektirdiğinde, en düşük TLS sürümü TLS 1,0 (yeni bir hesap için varsayılan) olarak ayarlanmış bir depolama hesabı oluşturmaya çalıştığınızda oluşan hata gösterilmektedir.
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="İlke ihlalinden bir depolama hesabı oluşturulurken oluşan hatayı gösteren ekran görüntüsü":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>En düşük TLS sürümünü gerektirmek için gereken izinler
+
+Depolama hesabı için **Minimumtlsversion** özelliğini ayarlamak için, bir kullanıcının depolama hesapları oluşturma ve yönetme izinleri olması gerekir. Bu izinleri sağlayan Azure rol tabanlı erişim denetimi (Azure RBAC) rolleri, **Microsoft. Storage/storageAccounts/Write** veya **Microsoft. Storage/storageaccounts/ \** _ eylemini içerir. Bu eylemle birlikte yerleşik roller şunlardır:
+
+- Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
+- Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
+- [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) rolü
+
+Bu roller, Azure Active Directory (Azure AD) aracılığıyla bir depolama hesabındaki verilere erişim sağlamaz. Ancak, hesap erişim anahtarlarına erişim izni veren _ * Microsoft. Storage/storageAccounts/ListKeys/Action * * içerirler. Bu izinle, bir Kullanıcı, bir depolama hesabındaki tüm verilere erişmek için hesap erişim anahtarlarını kullanabilir.
+
+Rol atamaları, bir kullanıcının depolama hesabı için en düşük TLS sürümünü gerektirmesine izin vermek için depolama hesabının veya daha yüksek düzeyde kapsam içermelidir. Rol kapsamı hakkında daha fazla bilgi için bkz. [Azure RBAC kapsamını anlama](../../role-based-access-control/scope-overview.md).
+
+Bu rollerin atamasını yalnızca bir depolama hesabı oluşturma veya özelliklerini güncelleştirme yeteneğine ihtiyaç duyan kullanıcılarla sınırlandırmamaya dikkat edin. Kullanıcıların görevlerini gerçekleştirmek için ihtiyacı olan en az izinlere sahip olduğundan emin olmak için en az ayrıcalık ilkesini kullanın. Azure RBAC ile erişimi yönetme hakkında daha fazla bilgi için bkz. [Azure RBAC Için en iyi uygulamalar](../../role-based-access-control/best-practices.md).
+
+> [!NOTE]
+> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve Co-Administrator Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü tüm eylemleri içerir, bu nedenle bu yönetici rollerinden birine sahip bir kullanıcı da depolama hesapları oluşturabilir ve yönetebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ## <a name="network-considerations"></a>Ağ konuları
 

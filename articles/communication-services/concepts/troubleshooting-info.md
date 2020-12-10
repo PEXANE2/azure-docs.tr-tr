@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 88ad060c1ba28285051a91bd928a2a7116dff1ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886796"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937551"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Azure Iletişim hizmetlerinde sorun giderme
 
@@ -165,6 +165,25 @@ Android Studio, hem Benzetici hem de cihazdan cihaz dosya Gezgini > > araç penc
    
 
 ---
+
+
+## <a name="calling-client-library-error-codes"></a>İstemci kitaplığı hata kodlarını çağırma
+
+İstemci kitaplığını çağıran Azure Iletişim Hizmetleri, sorunları gidermeye yardımcı olması için aşağıdaki hata kodlarını kullanır. Bu hata kodları, `call.callEndReason` bir çağrı bittikten sonra özelliği aracılığıyla gösterilir.
+
+| Hata kodu | Açıklama | Gerçekleştirilecek eylem |
+| -------- | ---------------| ---------------|
+| 403 | Yasak/kimlik doğrulama hatası. | Iletişim Hizmetleri belirtecinizin geçerli olduğundan ve geçerliliği dolmadığından emin olun. |
+| 404 | Çağrı bulunamadı. | Çağırdığınız numaranın (veya katılmakta olduğunuz çağrı) bulunduğundan emin olun. |
+| 408 | Çağrı denetleyicisi zaman aşımına uğradı. | Arama denetleyicisi, Kullanıcı uç noktalarından protokol iletilerini beklerken zaman aşımına uğradı. İstemcilerin bağlı ve kullanılabilir olduğundan emin olun. |
+| 410 | Yerel Medya yığını veya medya altyapısı hatası. | Desteklenen bir ortamda en son istemci kitaplığını kullandığınızdan emin olun. |
+| 430 | İleti istemci uygulamasına teslim edilemiyor. | İstemci uygulamasının çalıştığından ve kullanılabilir olduğundan emin olun. |
+| 480 | Uzak istemci uç noktası kayıtlı değil. | Uzak uç noktanın kullanılabilir olduğundan emin olun. |
+| 481 | Gelen çağrı işlenemedi. | Azure portal aracılığıyla bir destek isteği dosyası oluşturma. |
+| 487 | Çağrı iptal edildi, yerel olarak reddedildi, bir uç nokta uyuşmazlığı sorunu nedeniyle sonlandırıldı veya medya teklifi oluşturulamadı. | Beklenen davranış. |
+| 490, 491, 496, 487, 498 | Yerel uç nokta ağı sorunları. | Ağınızı kontrol edin. |
+| 500, 503, 504 | İletişim Hizmetleri altyapı hatası. | Azure portal aracılığıyla bir destek isteği dosyası oluşturma. |
+| 603 | Uzaktan Iletişim Hizmetleri katılımcısı tarafından genel olarak reddedilen çağrı | Beklenen davranış. |
 
 
 ## <a name="related-information"></a>İlgili bilgiler

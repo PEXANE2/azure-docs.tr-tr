@@ -8,17 +8,17 @@ author: KumudD
 manager: twooley
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3ee9e165ce9c24968b072d19367e0285f5438259
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015978"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938809"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Sanal Ağ hakkında sık sorulan sorular (SSS)
 
@@ -95,7 +95,7 @@ Evet. Bir yol tablosu oluşturup bir alt ağla ilişkilendirebilirsiniz. Azure '
 Hayır. Çok noktaya yayın ve yayın desteklenmez.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>VNET 'ler içinde hangi protokolleri kullanabilirim?
-Sanal ağlar içindeki TCP, UDP ve ıCMP TCP/IP protokollerini kullanabilirsiniz. Tek noktaya yayın, sanal ağlar içinde dinamik ana bilgisayar Yapılandırma Protokolü (DHCP) dışında, tek noktaya yayın (kaynak bağlantı noktası UDP/68/hedef bağlantı noktası UDP/67) ve ana bilgisayar için ayrılmış UDP kaynak bağlantı noktası 65330 ile desteklenir. Çok noktaya yayın, yayın, IP-IP kapsüllenmiş paketleri ve Genel Yönlendirme Kapsüllemesi (GRE) paketleri VNET 'ler içinde engellenir. 
+Sanal ağların içinde TCP, UDP ve ICMP TCP/IP protokollerini kullanabilirsiniz. Sanal ağların içinde Tek Noktaya Yayın desteklenir ama Tek Noktaya Yayın üzerinden Dinamik Ana Bilgisayar Yapılandırma Protokolü (DHCP) (kaynak bağlantı noktası UDP/68 / hedef bağlantı noktası UDP/67) ve konak için ayrılmış olan UDP kaynak bağlantı noktası 65330 desteklenmez. Sanal ağların içinde çok noktaya yayın, yanı, IP içinde IP kapsüllenmiş paketleri ve Genel Yol Kapsülleme (GRE) paketleri engellenir. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>VNet içindeki varsayılan yönlendiricileriyle ping yapabilir miyim?
 Hayır.

@@ -3,12 +3,12 @@ title: Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal ma
 description: Azure Güvenlik Merkezi 'nde tek bir panodan Azure VMware Çözüm sanal makinelerinizi Azure 'un yerel güvenlik araçlarıyla nasıl koruyacağınızı öğrenin.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 53669f2988a7ff7ab1150b155a65c7a187c6f1c8
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94370533"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937347"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Azure Güvenlik Merkezi tümleştirmesiyle Azure VMware Çözüm sanal makinelerinizi koruyun
 
@@ -51,11 +51,11 @@ Uyarı algılama, tehdit görünürlüğü, proaktif arama ve tehdit yanıtı i�
 
 Azure Güvenlik Merkezi önceden yapılandırılmış bir araçtır ve dağıtım gerektirmez. Azure portal, **Güvenlik Merkezi** ' ni arayıp seçin.
 
-### <a name="enable-azure-defender"></a>Azure Defender 'ı etkinleştir
+### <a name="enable-azure-defender"></a>Azure Defender’ı etkinleştirme
 
 Azure Defender, Azure Güvenlik Merkezi 'nin Gelişmiş tehdit korumasını hem şirket içinde hem de bulutta karma iş yükleriniz genelinde genişletir. Bu nedenle Azure VMware Çözüm sanal makinelerinizi korumak için Azure Defender 'ı etkinleştirmeniz gerekir. 
 
-1. Güvenlik Merkezi 'nde **Başlarken** ' i seçin.
+1. Güvenlik Merkezi 'nde **Başlarken**' i seçin.
 
 2. **Yükselt** sekmesini seçin ve ardından aboneliğinizi veya çalışma alanınızı seçin. 
 
@@ -65,28 +65,28 @@ Azure Defender, Azure Güvenlik Merkezi 'nin Gelişmiş tehdit korumasını hem 
 
 1. Azure portal **Azure yay** üzerinde arama yapın ve bunu seçin.
 
-2. Kaynaklar altında **sunucular** ' ı ve ardından **+ Ekle** ' yi seçin.
+2. Kaynaklar altında **sunucular** ' ı ve ardından **+ Ekle**' yi seçin.
 
     :::image type="content" source="media/azure-security-integration/add-server-to-azure-arc.png" alt-text="Azure 'a bir Azure VMware Çözüm VM 'si eklemek için Azure Arc sunucuları sayfasını gösteren ekran görüntüsü.":::
 
-3. **Betik oluştur** ' u seçin.
+3. **Betik oluştur**' u seçin.
  
     :::image type="content" source="media/azure-security-integration/add-server-using-script.png" alt-text="Etkileşimli betik kullanarak sunucu ekleme seçeneğini gösteren Azure yay sayfası ekran görüntüsü."::: 
  
-4. **Önkoşullar** sekmesinde **İleri** ' yi seçin.
+4. **Önkoşullar** sekmesinde **İleri**' yi seçin.
 
 5. **Kaynak ayrıntıları** sekmesinde, aşağıdaki ayrıntıları girin: 
     - Abonelik
     - Kaynak grubu
-    - Region 
+    - Bölge 
     - İşletim sistemi
     - Proxy sunucusu ayrıntıları
     
-    Ardından **İleri: Etiketler** ' i seçin.
+    Ardından **İleri: Etiketler**' i seçin.
 
-6. **Etiketler** sekmesinde **İleri** ' yi seçin.
+6. **Etiketler** sekmesinde **İleri**' yi seçin.
 
-7. **Betiği indir ve Çalıştır** sekmesinde **İndir** ' i seçin.
+7. **Betiği indir ve Çalıştır** sekmesinde **İndir**' i seçin.
 
 8. İşletim sisteminizi belirtin ve betiği Azure VMware Çözüm VM 'niz üzerinde çalıştırın.
 
@@ -94,13 +94,13 @@ Azure Defender, Azure Güvenlik Merkezi 'nin Gelişmiş tehdit korumasını hem 
 
 1. Azure Güvenlik Merkezi 'nde sol bölmeden **Envanter** ' ı seçin.
 
-2. Kaynak türü için **sunucular-Azure Arc** ' ı seçin.
+2. Kaynak türü için **sunucular-Azure Arc**' ı seçin.
  
      :::image type="content" source="media/azure-security-integration/select-resource-in-security-center.png" alt-text="Kaynak türü altında seçili olan sunucuları gösteren Azure Güvenlik Merkezi envanter sayfasının ekran görüntüsü.":::
 
 3. Kaynağınızın adını seçin. Kaynağınızın güvenlik durumu ayrıntılarını gösteren bir sayfa açılır.
 
-4. **Öneri listesi** altında bu ayrıntıları görüntülemek **için öneriler** , **geçilen değerlendirmeler** ve **kullanım dışı değerlendirmeler** sekmelerini seçin.
+4. **Öneri listesi** altında bu ayrıntıları görüntülemek **için öneriler**, **geçilen değerlendirmeler** ve **kullanım dışı değerlendirmeler** sekmelerini seçin.
 
     :::image type="content" source="media/azure-security-integration/view-recommendations-assessments.png" alt-text="Güvenlik önerilerini ve değerlendirmeleri gösteren Azure Güvenlik Merkezi 'nin ekran görüntüsü.":::
 
@@ -108,11 +108,11 @@ Azure Defender, Azure Güvenlik Merkezi 'nin Gelişmiş tehdit korumasını hem 
 
 Azure Sentinel, Log Analytics çalışma alanının üzerine kurulmuştur. Azure Sentinel 'i ekleme bölümündeki ilk adımınız, bu amaçla kullanmak istediğiniz Log Analytics çalışma alanını seçmenizdir.
 
-1. Azure portal **Azure Sentinel** ' i arayın ve seçin.
+1. Azure portal **Azure Sentinel**' i arayın ve seçin.
 
-2. Azure Sentinel çalışma alanları sayfasında **+ Ekle** ' yi seçin.
+2. Azure Sentinel çalışma alanları sayfasında **+ Ekle**' yi seçin.
 
-3. Log Analytics çalışma alanını seçin ve **Ekle** ' yi seçin.
+3. Log Analytics çalışma alanını seçin ve **Ekle**' yi seçin.
 
 ## <a name="enable-data-collector-for-security-events-on-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'lerinde güvenlik olayları için veri toplayıcıyı etkinleştirme
 
@@ -120,11 +120,11 @@ Artık Azure Sentinel 'i veri kaynaklarınızla (Bu durumda güvenlik olayları)
 
 1. Azure Sentinel çalışma alanları sayfasında, yapılandırılan çalışma alanını seçin.
 
-2. Yapılandırma altında **veri bağlayıcıları** ' nı seçin.
+2. Yapılandırma altında **veri bağlayıcıları**' nı seçin.
 
-3. Bağlayıcı adı sütununun altında, listeden **güvenlik olayları** ' nı seçin ve ardından **bağlayıcı sayfasını aç** ' ı seçin.
+3. Bağlayıcı adı sütununun altında, listeden **güvenlik olayları** ' nı seçin ve ardından **bağlayıcı sayfasını aç**' ı seçin.
 
-4. Bağlayıcı sayfasında, akışa almak istediğiniz olayları seçin ve sonra **Değişiklikleri Uygula** ' yı seçin.
+4. Bağlayıcı sayfasında, akışa almak istediğiniz olayları seçin ve sonra **Değişiklikleri Uygula**' yı seçin.
 
     :::image type="content" source="media/azure-security-integration/select-events-you-want-to-stream.png" alt-text="Azure Sentinel 'de, hangi olayların akışa alınacağı seçebileceğiniz güvenlik olayları sayfasının ekran görüntüsü.":::
 
@@ -132,9 +132,9 @@ Artık Azure Sentinel 'i veri kaynaklarınızla (Bu durumda güvenlik olayları)
 
 1. Azure Sentinel çalışma alanı sayfasında, yapılandırılan çalışma alanını seçin.
 
-2. Yapılandırma altında **veri bağlayıcıları** ' nı seçin.
+2. Yapılandırma altında **veri bağlayıcıları**' nı seçin.
 
-3. Listeden **Azure Güvenlik Merkezi** ' ni seçin ve ardından **bağlayıcı sayfasını aç** ' ı seçin.
+3. Listeden **Azure Güvenlik Merkezi** ' ni seçin ve ardından **bağlayıcı sayfasını aç**' ı seçin.
 
     :::image type="content" source="media/azure-security-integration/connect-security-center-with-azure-sentinel.png" alt-text="Azure Sentinel 'de Azure Güvenlik Merkezi 'ne bağlanmak için seçimi gösteren Azure Sentinel 'deki veri bağlayıcıları sayfasının ekran görüntüsü.":::
 
@@ -146,11 +146,11 @@ Artık Azure Sentinel 'i veri kaynaklarınızla (Bu durumda güvenlik olayları)
 
 Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere dayalı olarak uyarılar oluşturmak için kurallar oluşturabilirsiniz. Aşağıdaki örnekte, yanlış parolayla Windows Server 'da oturum açma girişimlerini belirlemek için bir kural oluşturacağız.
 
-1. Azure Sentinel Genel Bakış sayfasında, Konfigürasyonlar ' ın altında **analiz** ' ı seçin.
+1. Azure Sentinel Genel Bakış sayfasında, Konfigürasyonlar ' ın altında **analiz**' ı seçin.
 
-2. Konfigürasyonlar ' ın altında **analiz** ' ı seçin.
+2. Konfigürasyonlar ' ın altında **analiz**' ı seçin.
 
-3. **+ Oluştur** ' u seçin ve açılan kutuda **zamanlanan sorgu kuralı** ' nı seçin.
+3. **+ Oluştur** ' u seçin ve açılan kutuda **zamanlanan sorgu kuralı**' nı seçin.
 
 4. **Genel** sekmesinde, gerekli bilgileri girin.
 
@@ -173,13 +173,13 @@ Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere
         |where count_ > 3
         ```
         
-    - Eşleme varlığı
+    - Varlıkları eşle
     - Sorgu zamanlaması
     - Uyarı eşiği
     - Olay gruplama
     - Gizleme
 
-    **İleri** ’yi seçin.
+    **İleri**’yi seçin.
 
 6. **Olay ayarları** sekmesinde, **Bu analiz kuralı tarafından tetiklenen uyarılardan olay oluştur** ' u etkinleştirin ve **Ileri ' yi seçin: otomatik yanıt >**.
  
@@ -187,7 +187,7 @@ Veri kaynaklarını Azure Sentinel 'e bağladıktan sonra, algılanan tehditlere
 
 7. **İleri ' yi seçin: >gözden geçirin**.
 
-8. **İnceleme ve oluşturma** sekmesinde, bilgileri gözden geçirin ve **Oluştur** ' u seçin.
+8. **İnceleme ve oluşturma** sekmesinde, bilgileri gözden geçirin ve **Oluştur**' u seçin.
 
 Windows Server 'da başarısız olan üçüncü oturum açma denemesinden sonra oluşturulan kural, her başarısız girişim için bir olay tetikler.
 
@@ -197,7 +197,7 @@ Oluşturulan olayları Azure Sentinel ile görüntüleyebilirsiniz. Ayrıca, ola
 
 1. Azure Sentinel genel bakış sayfasına gidin.
 
-2. Tehdit yönetimi altında **Olaylar** ' ı seçin.
+2. Tehdit yönetimi altında **Olaylar**' ı seçin.
 
 3. Bir olay seçin. Daha sonra bir çözüm için olayı bir ekibe atayabilirsiniz.
 
@@ -211,9 +211,9 @@ Ortamınızdaki tehditleri belirlemek için sorgular oluşturabilir veya Azure S
 
 1. Azure Sentinel genel bakış sayfasına gidin.
 
-2. Tehdit yönetimi altında, **Arayıcı** ' ı seçin. Önceden tanımlanmış sorguların listesi görüntülenir.
+2. Tehdit yönetimi altında, **Arayıcı**' ı seçin. Önceden tanımlanmış sorguların listesi görüntülenir.
 
-3. Bir sorgu seçin ve ardından **Sorguyu Çalıştır** ' ı seçin.
+3. Bir sorgu seçin ve ardından **Sorguyu Çalıştır**' ı seçin.
 
 4. Sonuçları denetlemek için **sonuçları görüntüle** ' yi seçin.
 
@@ -231,7 +231,7 @@ Ortamınızdaki tehditleri belirlemek için sorgular oluşturabilir veya Azure S
     - Eşleme girin
     - Taktiklerini
     
-3. **Oluştur** ’u seçin. Sonra oluşturulan sorguyu seçebilir, **sorgu çalıştırabilir** ve **sonuçları görüntüleyebilirsiniz**.
+3. **Oluştur**’u seçin. Sonra oluşturulan sorguyu seçebilir, **sorgu çalıştırabilir** ve **sonuçları görüntüleyebilirsiniz**.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

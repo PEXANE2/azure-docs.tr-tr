@@ -6,17 +6,17 @@ documentationcenter: na
 author: yitoh
 ms.service: ddos-protection
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: b3f903b69cebd22e870f7ccd5923e6f08455dff3
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992395"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937330"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Koruması Standart'ın özellikleri
 
@@ -52,7 +52,7 @@ DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../azure-m
 
 ### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
-Azure Portal ölçümleri **İzle**' yi seçin  >  **Metrics**. **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
+Azure Portal ölçümleri **İzle**' yi seçin  >  . **Ölçümler** bölmesinde, kaynak grubunu seçin, **ortak IP adresi** kaynak türünü SEÇIN ve Azure genel IP adresinizi seçin. DDoS ölçümleri **kullanılabilir ölçümler** bölmesinde görünür.
 
 DDoS koruması standardı, korumalı kaynağın her genel IP 'si için, DDoS özellikli olan sanal ağdaki üç etkin Azaltma ilkesi (TCP SYN, TCP ve UDP) uygular. **DDoS risk azaltma tetiklenecek ölçüm gelen paketleri** seçerek ilke eşiklerini görüntüleyebilirsiniz.
 

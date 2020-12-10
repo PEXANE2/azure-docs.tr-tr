@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 3fb4085ba275bda1fe784f368eb5d92ac0c668f0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 059aad8b45aa449f5cd28c97f4ba55e2204c04ce
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448518"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937075"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-gpu"></a>GPU ile Azure Stack Edge Pro nedir?
 
@@ -21,7 +21,7 @@ GPU ile Azure Stack Edge Pro, ağ veri aktarımı özelliklerine sahip bir AI ö
 
 GPU ile Azure Stack Edge Pro, bir hizmet olarak donanım çözümüdür. Microsoft, ağ depolama ağ geçidi olarak davranan ve hızlandırılmış AI sağlayan yerleşik bir grafik Işleme birimi (GPU) olan, bulut tarafından yönetilen bir cihaz sunar. 
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Azure Stack Edge Pro 'nun, en uçta hızlı Machine Learning (ML) için kullanılabileceği ve verileri Azure 'a göndermeden önce ön işlemesi için kullanabileceğiniz çeşitli senaryolar aşağıda verilmiştir.
 
@@ -51,7 +51,7 @@ Azure Stack Edge Pro aşağıdaki yeteneklere sahiptir:
 |Veri yenileme     | Yerel dosyaları buluttaki en son sürümle yenileme olanağı.|
 |Şifreleme    | Verileri yerel olarak şifrelemek ve *https* üzerinden buluta veri aktarımını güvenli hale getirmek için BitLocker desteği.|
 |Bant genişliği azaltma| Yoğun saatlerde bant genişliği kullanımını sınırlandırmaya kısıtlama.|
-<!--|ExpressRoute | ExpressRoute aracılığıyla güvenlik eklendi. Yerel cihazlardan gelen trafiğin, ExpressRoute üzerinden dolaşmasına neden olan eşleme yapılandırmasını kullanın. Daha fazla bilgi için bkz. [ExpressRoute 'a genel bakış](../expressroute/expressroute-introduction.md).-->
+<!--|ExpressRoute | ExpressRoute aracılığıyla güvenlik eklendi. Yerel cihazlardan gelen trafiğin, ExpressRoute üzerinden dolaşmasına neden olan eşleme yapılandırmasını kullanın. Daha fazla bilgi için bkz. [ExpressRoute'a genel bakış](../expressroute/expressroute-introduction.md).|-->
 
 ## <a name="components"></a>Bileşenler
 

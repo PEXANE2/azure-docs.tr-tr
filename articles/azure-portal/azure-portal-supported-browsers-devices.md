@@ -5,12 +5,12 @@ ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: accessibility
-ms.openlocfilehash: 8009d0d4ac971d81e25b276b19605bc6a70cff02
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 81c4ccef688622ec20d111383359053b82045996
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745681"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938095"
 ---
 # <a name="supported-devices"></a>Desteklenen cihazlar
 
@@ -23,7 +23,7 @@ Azure kaynaklarını bir mobil cihazdan yönetmeniz gerekiyorsa  [Azure mobil uy
 İşletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
 
 * Microsoft Edge (en son sürüm)
-* Internet Explorer 11
+* Internet Explorer 11 (31 Mart 2021 tarihine kadar desteklenir)
 * Safari (en so sürüm, yalnızca Mac)
 * Chrome (en son sürüm)
 * Firefox (en son sürüm)

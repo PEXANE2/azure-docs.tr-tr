@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: bf7d911c6f9d90e400e589828c093877875e7d97
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 7aeadaf7b52440504abf541fe6c29a537a92bc08
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015698"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937279"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Hızlı başlangıç: Azure 'da ASP.NET Core Web uygulaması oluşturma
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
   Visual Studio 2019 zaten yüklüyse:
 
-  - **Help**  >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler. En son güncelleştirmeler .NET 5,0 SDK 'sını içerir.
+  -   >  **Güncelleştirmeler için yardım denetimi**' ni seçerek en son güncelleştirmeleri Visual Studio 'ya yükler. En son güncelleştirmeler .NET 5,0 SDK 'sını içerir.
   - **Araçlar**  >  **Al araçlar ve Özellikler '** i seçerek iş yükünü ekleyin.
 
 
@@ -36,7 +36,7 @@ Bu hızlı başlangıçta, [Azure App Service](overview.md)için ilk ASP.NET Cor
 
 Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulaması oluşturun:
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
 
@@ -50,11 +50,11 @@ Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulam
 
    ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/quickstart-dotnetcore/create-aspnet-core-web-app.png) 
    
-1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
+1.   >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
 
    ![Yerel olarak çalışan Web uygulaması](./media/quickstart-dotnetcore/web-app-running-locally.png)
 
-# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 1. Visual Studio 'Yu açın ve **Yeni proje oluştur**' u seçin.
 
@@ -70,7 +70,7 @@ Aşağıdaki adımları izleyerek Visual Studio 'da bir ASP.NET Core Web uygulam
 
    ![Yeni bir ASP.NET Core Web uygulaması oluşturma](./media/quickstart-dotnetcore/create-aspnet-core-web-app-5.png) 
    
-1. **Debug**  >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
+1.   >  Web uygulamanızı yerel olarak çalıştırmak için Visual Studio menüsünden hata ayıklama **olmadan Başlat** ' ı seçin.
 
    ![Yerel olarak çalışan Web uygulaması](./media/quickstart-dotnetcore/web-app-running-locally.png)
 
@@ -107,7 +107,7 @@ App Service oluşturup Web uygulamanızı yayımlamak için aşağıdaki adımla
 
 1. **Barındırma planı: Yeni oluştur** iletişim kutusunda, aşağıdaki tabloda belirtilen değerleri girin:
 
-   | Ayar  | Önerilen Değer | Description |
+   | Ayar  | Önerilen Değer | Açıklama |
    | -------- | --------------- | ----------- |
    | **Barındırma Planı**  | *myFirstAzureWebAppPlan* | App Service planının adı. |
    | **Konum**      | *West Europe* | Web uygulamasının barındırıldığı veri merkezi. |
@@ -197,14 +197,14 @@ Mac, Windows veya Linux makinesi kullanarak bu makaledeki adımları izleyebilir
 
 ## <a name="set-up-your-initial-environment"></a>İlk ortamınızı ayarlama
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 Bu hızlı başlangıcı tamamlamak için:
 
 * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">En son .NET Core 3,1 SDK 'Sını yükler</a>.
 * <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI’nin son sürümünü yükleyin</a>.
 
-# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 Bu hızlı başlangıcı tamamlamak için:
 
@@ -268,11 +268,11 @@ az webapp up --sku F1 --name <app-name> --os-type linux
 
 Komutun tamamlanması birkaç dakika sürebilir. Çalıştırılırken, kaynak grubu oluşturma, App Service planı ve barındırma uygulaması, günlüğü yapılandırma ve ardından ZIP dağıtımı gerçekleştirme hakkında iletiler sağlar. Daha sonra, "uygulamayı &lt; &gt; Azure 'da uygulamanın URL 'si olan http://app-name. azurewebsites.net konumunda başlatabilirsiniz.
 
-# <a name="net-core-31"></a>[.NET Core 3,1](#tab/netcore31)
+# <a name="net-core-31"></a>[.NET Core 3.1](#tab/netcore31)
 
 ![Az WebApp up komutunun örnek çıktısı](./media/quickstart-dotnetcore/az-webapp-up-output-3.1.png)
 
-# <a name="net-50"></a>[.NET 5,0](#tab/net50)
+# <a name="net-50"></a>[.NET 5.0](#tab/net50)
 
 <!-- Deploy the code in your local folder (*hellodotnetcore*) using the `az webapp up` command:
 
@@ -322,7 +322,7 @@ await context.Response.WriteAsync("Hello Azure!");
 Değişikliklerinizi kaydettikten sonra `az webapp up` komutu tekrar kullanarak uygulamayı yeniden dağıtın:
 
 ```azurecli
-az webapp up
+az webapp up --os-type linux
 ```
 
 Bu komut, uygulama adı, kaynak grubu ve App Service planı dahil olmak üzere *. Azure/config* dosyasında yerel olarak önbelleğe alınan değerleri kullanır.

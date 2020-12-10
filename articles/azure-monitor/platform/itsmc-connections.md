@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 502d5a5c4b3d13d32fece648ce1de6763d012096
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a0ef8d9f28f90db77686c3139c8b45eccfb669aa
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932294"
+ms.locfileid: "96938826"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı ile ITSM ürünlerine/hizmetlerine bağlanma
 Bu makalede, çalışma öğelerinizi merkezi olarak yönetmek için ıTSM ürününüz/hizmetiniz ile Log Analytics BT Hizmet Yönetimi Bağlayıcısı (ITSMC) arasındaki bağlantının nasıl yapılandırılacağı hakkında bilgi sağlanır. ISMC hakkında daha fazla bilgi için bkz. [genel bakış](./itsmc-overview.md).
@@ -309,8 +309,7 @@ Aşağıdaki bölümlerde, Provance ürününüzü Azure 'daki ıSMC 'a bağlama
 
 > [!NOTE]
 > 
-> 1-Ekim-2020 Provance ıSM tümleştirmesi, Azure uyarısı ile artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. 
-> Mevcut ıTSM bağlantıları desteklenecek.
+> Provance müşterilerinin, tümleştirme için başka bir çözüm olarak Cherwell ve Provance uç noktasına [Web kancası eylemi](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) kullanmasını sağlıyoruz.
 
 ### <a name="prerequisites"></a>Önkoşullar
 
@@ -367,8 +366,7 @@ Aşağıdaki bölümlerde, Cherwell ürününüzü Azure 'daki ıSMC 'a bağlama
 
 > [!NOTE]
 > 
-> Azure uyarısı ile 1 Ekim 2020 Cherwell ıSM tümleştirmesi artık yeni müşteriler için etkinleştirilmeyecektir. Yeni ıTSM bağlantıları desteklenecek. 
-> Mevcut ıTSM bağlantıları desteklenecek.
+> Tek iyi müşterilerin [Web kancası eylemini](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups#webhook) , tümleştirmede başka bir çözüm olarak, Cherwell ve Provance uç noktasına kullanmasını sağlıyoruz.
 
 ### <a name="prerequisites"></a>Önkoşullar
 

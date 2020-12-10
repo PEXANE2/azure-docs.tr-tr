@@ -8,15 +8,15 @@ ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: 43ce1c4865b3458ccd9c0ac17589f8ca5d77d92f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922082"
+ms.locfileid: "96937721"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -81,7 +81,7 @@ balanced_accuracy|Dengeli doğruluk, her sınıf için geri çekmenin aritmetik 
 f1_score|F1 puanı duyarlık ve geri çağırma için harmonik bir anlama gelir. Bu, hem hatalı pozitif sonuçlar hem de yanlış negatifler için iyi bir dengeli ölçüdür. Ancak, hesaba doğru bir negatifler almaz. <br> <br>**Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [0, 1]<br> <br>Desteklenen ölçüm adları şunlardır<li>  `f1_score_macro`: her sınıf için F1 puanı aritmetik ortalaması. <li> `f1_score_micro`: toplam doğru pozitif sonuç sayısı, yanlış negatifler ve hatalı pozitif sonuçlar sayımına göre hesaplanır. <li> `f1_score_weighted`: her bir sınıf için, her bir sınıf için bir F1 puanı sınıf sıklığı ağırlıklı ortalama|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|Bu, bir dayalı sınıflandırıcının tahminlerini verilen doğru etiketlerin olumsuz günlük olma olasılığı olarak tanımlanan (ÇOKTERİMLİ) Lojistik gerileme ve sinir Networks gibi uzantılar içinde kullanılan kayıp işlevidir. <br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF)|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| Normalleştirilmiş makro geri çağırma, makronun ortalama ve normalleştirilmiş olduğunu geri çağırır, böylece rastgele performans 0 puanına sahip olur ve mükemmel performans 1 puanına sahiptir. <br> <br>**Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>burada, `R` `recall_score_macro` rastgele tahminler için beklenen değerdir.<br><br>`R = 0.5`&nbsp;&nbsp;ikili &nbsp; sınıflandırma için. <br>`R = (1 / C)` C sınıfı sınıflandırma sorunları için.|
-Matthews bağıntı katsayısı | Matthews bağıntı katsayısı, bir sınıfın diğerinden çok daha fazla örneği olsa bile kullanılabilecek, doğruluk açısından dengeli bir ölçüdür. Katsayı 1, mükemmel tahmin, 0 rastgele tahmin ve-1 ters tahmin anlamına gelir.<br><br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [-1, 1]|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
+matthews_correlation | Matthews bağıntı katsayısı, bir sınıfın diğerinden çok daha fazla örneği olsa bile kullanılabilecek, doğruluk açısından dengeli bir ölçüdür. Katsayı 1, mükemmel tahmin, 0 rastgele tahmin ve-1 ters tahmin anlamına gelir.<br><br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [-1, 1]|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
 duyarlık|Duyarlık negatif örneklerin pozitif olarak etiketlenmesini önlemek için bir modelin özelliğidir. <br><br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [0, 1]<br> <br>Desteklenen ölçüm adları şunlardır <li> `precision_score_macro`, her bir sınıf için duyarlık ortalaması. <li> `precision_score_micro`, toplam doğru pozitif değer ve hatalı pozitif sonuçlar sayarak Global olarak hesaplanır. <li> `precision_score_weighted`, her sınıf için duyarlık ortalaması, her bir sınıftaki doğru örnek sayısına göre ağırlıklı olarak.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_score.html)|
 yakalama| Geri çağırma, bir modelin tüm pozitif örnekleri tespit etme yeteneğidir. <br><br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** [0, 1]<br> <br>Desteklenen ölçüm adları şunlardır <li>`recall_score_macro`: her sınıf için geri çekmenin aritmetik ortalaması. <li> `recall_score_micro`: toplam doğru pozitif sonuç sayısı, yanlış negatifler ve hatalı pozitif sonuçlar sayımarak Global olarak hesaplanır.<li> `recall_score_weighted`: her sınıf için geri çekmenin aritmetik ortalaması, her bir sınıftaki doğru örnek sayısına göre ağırlıklı olarak.|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|Ağırlıklı doğruluk, her bir örneğin aynı sınıfa ait toplam örnek sayısı tarafından ağırlıklı olduğu doğruluk örneğidir. <br><br>**Amaç:** 1 ' e yaklaşarak daha iyi <br>**Aralık:** [0, 1]|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
@@ -182,7 +182,7 @@ Daha duyarlı olmayan bir model, olasılıkların sıfıra yakın olduğunu tahm
 
 ## <a name="regressionforecasting-metrics"></a>Gerileme/tahmin ölçümleri
 
-Otomatik ML, bir gerileme veya tahmin denemesi olmasına bakılmaksızın oluşturulan her bir model için aynı performans ölçümlerini hesaplar. Bu ölçümler, farklı aralıklara sahip veriler üzerinde eğitilen modeller arasında karşılaştırmayı etkinleştirmek üzere normalleştirmeyi de olumsuz hale getirmek Daha fazla bilgi için bkz. [ölçüm normalleştirme](#metric-normalization)  
+Otomatik ML, bir gerileme veya tahmin denemesi olmasına bakılmaksızın oluşturulan her bir model için aynı performans ölçümlerini hesaplar. Bu ölçümler, farklı aralıklara sahip veriler üzerinde eğitilen modeller arasında karşılaştırmayı etkinleştirmek üzere normalleştirmeyi de olumsuz hale getirmek Daha fazla bilgi için bkz. [ölçüm normalleştirmesi](#metric-normalization).  
 
 Aşağıdaki tabloda, regresyon ve tahmin denemeleri için oluşturulan model performans ölçümleri özetlenmektedir. Sınıflandırma ölçümleri gibi, bu ölçümler de scıkıt öğrenme uygulamalarına dayalıdır. Uygun scikit öğreni belgeleri **Hesaplama** alanına göre bağlı olarak bağlanır.
 

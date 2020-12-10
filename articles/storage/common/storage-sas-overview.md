@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498192"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936548"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme
 
@@ -76,6 +76,9 @@ Paylaşılan erişim imzası aşağıdaki iki formdan birini alabilir:
 ## <a name="how-a-shared-access-signature-works"></a>Paylaşılan erişim imzasının nasıl çalıştığı
 
 Paylaşılan erişim imzası, bir veya daha fazla depolama kaynağına işaret eden imzalı bir URI 'dir. URI, özel bir sorgu parametreleri kümesi içeren bir belirteç içerir. Belirteç, kaynaklara istemci tarafından nasıl erişildiğini gösterir. Sorgu parametrelerinden biri olan imza SAS parametrelerinden oluşturulur ve SAS oluşturmak için kullanılan anahtarla imzalanır. Bu imza, depolama kaynağına erişimi yetkilendirmek için Azure depolama tarafından kullanılır.
+
+> [!NOTE]
+> SAS belirteçlerinin oluşturulmasını denetlemek mümkün değildir. Bir SAS belirteci oluşturma ayrıcalıklarına sahip olan herhangi bir Kullanıcı, hesap anahtarını veya bir Azure RBAC rol ataması aracılığıyla bunu, depolama hesabının sahibi hakkında bilgi sahibi olmadan yapabilir. Kullanıcıların SAS belirteçleri oluşturmasına izin veren izinleri kısıtlamak konusunda dikkatli olun. Kullanıcıların, blob ve kuyruk iş yükleri için hesap anahtarıyla imzalanmış bir SAS oluşturmasını önlemek için, depolama hesabına paylaşılan anahtar erişimine izin vermeyebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan anahtarla yetkilendirmeyi önleme](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>SAS imzası ve yetkilendirme
 

@@ -7,20 +7,30 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dee9e7596c0a30301d9e0453ef22a6dfe9541522
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96020951"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937228"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Hızlı başlangıç: Azure CLı ile Azure kanıtlama ayarlama
 
 Kanıtlama ayarlamak için Azure CLı kullanarak Azure kanıtlama ile çalışmaya başlayın.
 
-[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
 ## <a name="get-started"></a>başlarken
+
+1. Aşağıdaki CLı komutunu kullanarak bu uzantıyı yükler
+
+   ```azurecli
+   az extension add --name attestation
+   ```
+   
+1. Sürümü denetleyin
+
+   ```azurecli
+   az extension show --name attestation --query version
+   ```
 
 1. Azure 'da oturum açmak için aşağıdaki komutu kullanın:
 
@@ -55,19 +65,16 @@ Kanıtlama ayarlamak için Azure CLı kullanarak Azure kanıtlama ile çalışma
 
 Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz komutlar şunlardır:
 
-1. Bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) komutunu çalıştırın:
+1. Bir kanıtlama sağlayıcısı oluşturmak için [az kanıtlama Create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) komutunu çalıştırın:
 
    ```azurecli
-   az attestation create --resource-group attestationrg --name attestationProvider --location uksouth \
-      --attestation-policy SgxDisableDebugMode --certs-input-path C:\test\policySignersCertificates.pem
+   az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
-
-   **--CERT-Input-Path** parametresi bir güvenilen İmzalama anahtarları kümesini belirtir. Bu parametre için bir dosya adı belirtirseniz, kanıtlama sağlayıcısının yalnızca imzalı JWT biçimindeki ilkelerle yapılandırılması gerekir. Aksi takdirde, ilke metin veya işaretsiz JWT biçiminde yapılandırılabilir. JWT hakkında daha fazla bilgi için bkz. [temel kavramlar](basic-concepts.md). Sertifika örnekleri için bkz. [bir kanıtlama ilkesi imzalayan sertifikası örnekleri](policy-signer-examples.md).
-
-1. Status ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini almak için [az kanıtlama Show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) komutunu çalıştırın:
+   
+1. Status ve AttestURI gibi kanıtlama sağlayıcısı özelliklerini almak için [az kanıtlama Show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) komutunu çalıştırın:
 
    ```azurecli
-   az attestation show --resource-group attestationrg --name attestationProvider
+   az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
    ```
 
    Bu komut aşağıdaki çıktı gibi değerleri görüntüler:
@@ -84,34 +91,20 @@ Kanıtlama sağlayıcısı oluşturmak ve yönetmek için kullanabileceğiniz ko
    TagsTable:
    ```
 
-[Az kanıtlama Delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) komutunu kullanarak bir kanıtlama sağlayıcısını silebilirsiniz:
+[Az kanıtlama Delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) komutunu kullanarak bir kanıtlama sağlayıcısını silebilirsiniz:
 
 ```azurecli
-az attestation delete --resource-group attestationrg --name attestationProvider
+az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
 ```
 
 ## <a name="policy-management"></a>İlke yönetimi
 
-İlkeleri yönetmek için bir Azure AD kullanıcısı için aşağıdaki izinleri gerektirir `Actions` :
+Bir kanıtlama sağlayıcısı için ilke yönetimi sağlamak için burada açıklanan komutları ve tek seferde bir kanıtlama türünü kullanın.
 
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-- `Microsoft.Attestation/attestationProviders/attestation/write`
-- `Microsoft.Attestation/attestationProviders/attestation/delete`
-
-Bu izinler, `Owner` (joker karakter izinleri), `Contributor` (joker karakter izinleri) veya `Attestation Contributor` (yalnızca Azure kanıtlama için özel izinler) gibi bir rol aracılığıyla bir Azure AD kullanıcısına atanabilir.  
-
-İlkeleri okumak için bir Azure AD kullanıcısı için aşağıdaki izinleri gerektirir `Actions` :
-
-- `Microsoft.Attestation/attestationProviders/attestation/read`
-
-Bu izin, `Reader` (joker karakter izinleri) veya `Attestation Reader` (yalnızca Azure kanıtlama için özel izinler) gibi bir rol aracılığıyla BIR Azure AD kullanıcısına atanabilir.
-
-Bir kanıtlama sağlayıcısına yönelik ilke yönetimi sağlamak için burada açıklanan komutları kullanın, tek seferde bir t.
-
-[Az kanıtlama ilkesi Show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) komutu, belirtilen t için geçerli ilkeyi döndürür:
+[Az kanıtlama ilkesi Show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) komutu, belirtilen t için geçerli ilkeyi döndürür:
 
 ```azurecli
-az attestation policy show --resource-group attestationrg --name attestationProvider --tee SgxEnclave
+az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
 ```
 
 > [!NOTE]
@@ -119,48 +112,24 @@ az attestation policy show --resource-group attestationrg --name attestationProv
 
 Aşağıda desteklenen t türleri verilmiştir:
 
-- `CyResComponent`
-- `OpenEnclave`
-- `SgxEnclave`
-- `VSMEnclave`
+- `SGX-IntelSDK`
+- `SGX-OpenEnclaveSDK`
+- `TPM`
 
-Belirtilen t için yeni bir ilke ayarlamak için [az kanıtlama ilkesi set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) komutunu kullanın.
+Belirtilen kanıtlama türü için yeni bir ilke ayarlamak için [az kanıtlama ilkesi set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) komutunu kullanın.
 
-```azurecli
-az attestation policy set --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --new-attestation-policy newAttestationPolicyname
-```
-
-JWT biçimindeki kanıtlama ilkesinin adlı bir talep içermesi gerekir `AttestationPolicy` . İmzalı bir ilke, mevcut ilke imzalayan sertifikalara karşılık gelen bir anahtarla imzalanmalıdır.
-
-İlke örnekleri için bkz. [kanıtlama Ilkesi örnekleri](policy-examples.md).
-
-[Az kanıtlama ilkesi sıfırlama](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_reset) komutu belirtilen t için yeni bir ilke ayarlar.
+Dosya yolunu kullanarak belirli bir kanıtlama türü türünün metin biçiminde ilke ayarlamak için:
 
 ```azurecli
-az attestation policy reset --resource-group attestationrg --name attestationProvider --tee SgxEnclave \
-   --policy-jws "eyJhbGciOiJub25lIn0.."
+az attestation policy set --name testatt1 --resource-group testrg --attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}"
 ```
 
-## <a name="policy-signer-certificates-management"></a>İlke imzalayan sertifikaları yönetimi
-
-Bir kanıtlama sağlayıcısına yönelik ilke imzalayan sertifikalarını yönetmek için aşağıdaki komutları kullanın:
+Dosya yolunu kullanarak belirli bir kanıtlama türü türünün JWT biçiminde ilke ayarlamak için:
 
 ```azurecli
-az attestation signer list --resource-group attestationrg --name attestationProvider
-
-az attestation signer add --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
-
-az attestation signer remove --resource-group attestationrg --name attestationProvider \
-   --signer "eyAiYWxnIjoiUlMyNTYiLCAie..."
+az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
+--attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
 ```
-
-İlke imzalayan sertifikası, adlı bir talebe sahip imzalı bir JWT `maa-policyCertificate` . Talebin değeri, eklenecek güvenilir imzalama anahtarını içeren bir JWK değeridir. JWT, mevcut ilke imzalayan sertifikalarına karşılık gelen bir özel anahtarla imzalanmalıdır. JWT ve JWK hakkında daha fazla bilgi için bkz. [temel kavramlar](basic-concepts.md).
-
-İlke imzalayan sertifikasının tüm anlam düzenlemesi, Azure CLı dışında yapılmalıdır. Azure CLı ile ilgili olduğu kadar basit bir dizedir.
-
-Sertifika örnekleri için bkz. [bir kanıtlama ilkesi imzalayan sertifikası örnekleri](policy-signer-examples.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

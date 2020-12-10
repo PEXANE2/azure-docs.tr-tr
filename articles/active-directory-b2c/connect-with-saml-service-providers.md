@@ -12,12 +12,12 @@ ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 7c6ba79a82fe3d291008f3317ddce7df4adcda0a
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: ad7fe062d30f6858296ad4a2638b62c190862365
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309656"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936446"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C bir SAML uygulaması kaydetme
 
@@ -39,7 +39,7 @@ SAML ile iki özel olmayan temel senaryoyu özetleme:
 | Senaryo | Azure AD B2C rolü | Nasıl yapılır |
 | -------- | ----------------- | ------- |
 | Uygulamam bir kimlik doğrulamasını tamamlamaya yönelik bir SAML onayı bekliyor. | **Azure AD B2C, kimlik sağlayıcısı (IDP) olarak davranır**<br />Azure AD B2C, uygulamalar için SAML IDP işlevi görür. | Bu makale. |
-| Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs2016-custom.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce-custom.md)</li></ul> |
+| Kullanıcılarım ADFS, Salesforce veya Shibboi gibi SAML uyumlu bir kimlik sağlayıcısıyla çoklu oturum açma gerektirir.  | **Azure AD B2C hizmet sağlayıcısı (SP) olarak davranır**<br />Azure AD B2C, SAML kimlik sağlayıcısına bağlanırken bir hizmet sağlayıcısı olarak davranır. Bu, uygulamanız ile SAML kimlik sağlayıcısı arasında bir Federasyon ara sunucusu.  | <ul><li>[Özel ilkeler kullanarak bir SAML IDP olarak ADFS ile oturum açma ayarlama](identity-provider-adfs.md)</li><li>[Özel ilkeler kullanarak Salesforce SAML sağlayıcısı ile oturum açma ayarlama](identity-provider-salesforce.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -89,8 +89,8 @@ Henüz bir sertifikanız yoksa, bu öğretici için otomatik olarak imzalanan bi
     ```
 
 1. **Kullanıcı sertifikalarını Yönet**  >  **Geçerli Kullanıcı**  >  **Kişisel**  >  **sertifikalarını** aç  >  *YourAppName.yourtenant.onmicrosoft.com*
-1. **Action**  >  **Tüm görevler**  >  **dışarı aktarma** işlemini > sertifikayı seçin
-1. **Evet**  >  **İleri**  >  **Evet ' i seçin, bir sonraki özel anahtarı dışarı aktar**  >  **Next**
+1.   >  **Tüm görevler**  >  **dışarı aktarma** işlemini > sertifikayı seçin
+1. **Evet**  >  **İleri**  >  **Evet ' i seçin, bir sonraki özel anahtarı dışarı aktar**  >  
 1. **Dışarı aktarma dosya biçimi** için varsayılanları kabul et
 1. Sertifika için bir parola girin
 
@@ -393,7 +393,7 @@ Azure AD B2C şifreli onaylar göndermek üzere etkinleştirmek için, **WantsEn
 
 ## <a name="enable-identity-provider-initiated-flow-optional"></a>Kimlik sağlayıcısı tarafından başlatılan akışı etkinleştir (Isteğe bağlı)
 
-Kimlik sağlayıcısı tarafından başlatılan Flow 'da, oturum açma işlemi, hizmet sağlayıcısına (bağlı olan taraf uygulamanız) istenmeyen bir SAML yanıtı gönderen kimlik sağlayıcısı tarafından başlatılır (Azure AD B2C). Başlatma kimlik sağlayıcısı 'nın, [AD-FS](identity-provider-adfs2016-custom.md)veya [Salesforce](identity-provider-salesforce-custom.md)gibi bir dış kimlik sağlayıcısı olduğu senaryoları Şu anda desteklemiyoruz.
+Kimlik sağlayıcısı tarafından başlatılan Flow 'da, oturum açma işlemi, hizmet sağlayıcısına (bağlı olan taraf uygulamanız) istenmeyen bir SAML yanıtı gönderen kimlik sağlayıcısı tarafından başlatılır (Azure AD B2C). Başlatma kimlik sağlayıcısı 'nın, [AD-FS](identity-provider-adfs.md)veya [Salesforce](identity-provider-salesforce.md)gibi bir dış kimlik sağlayıcısı olduğu senaryoları Şu anda desteklemiyoruz.
 
 Kimlik sağlayıcısı (Azure AD B2C) tarafından başlatılan akışı etkinleştirmek için, **ıdpınitiated Profileenabled** meta veri öğesini `true` [bağlı olan taraf teknik profilinde](relyingparty.md#technicalprofile)olarak ayarlayın.
 

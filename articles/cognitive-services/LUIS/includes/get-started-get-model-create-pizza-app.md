@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 081b9288d091e26d0e6d30aa849ced18a3c2ffb6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84466915"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938469"
 ---
 Pizza uygulamasını oluşturun.
 
@@ -31,7 +31,7 @@ Pizza uygulamasını oluşturun.
 
 Uygulama içeri aktarılacak.
 
-**Etkin BIR Luo uygulamasının nasıl oluşturulacağı hakkında**bir iletişim kutusu görürseniz, iletişim kutusunu kapatın.
+**Etkin BIR Luo uygulamasının nasıl oluşturulacağı hakkında** bir iletişim kutusu görürseniz, iletişim kutusunu kapatın.
 
 ## <a name="train-and-publish-the-pizza-app"></a>Pizza uygulamasını eğitme ve yayımlama
 
@@ -48,24 +48,24 @@ Pizza uygulamasındaki amaçları içeren bir liste ile **amaçlar** sayfasını
 1. **Yazma kaynağı**' nı seçin.
 1. **Yazma kaynağını Değiştir**' i seçin.
 
-Bir yazma kaynağınız varsa, yazma kaynağınızın **kiracı adı**, **abonelik adı**ve **Luo kaynak adı** ' nı girin.
+Bir yazma kaynağınız varsa, yazma kaynağınızın **kiracı adı**, **abonelik adı** ve **Luo kaynak adı** ' nı girin.
 
 Bir yazma kaynağınız yoksa:
 
 1. **Yeni kaynak oluştur**' u seçin.
-1. Bir **kiracı adı**, **kaynak adı**, **abonelik adı**ve **Azure Kaynak grubu adı**girin.
+1. Bir **kiracı adı**, **kaynak adı**, **abonelik adı** ve **Azure Kaynak grubu adı** girin.
 
 Pizza uygulamanız artık kullanıma hazırdır.
 
 ## <a name="record-the-access-values-for-your-pizza-app"></a>Pizza uygulamanız için erişim değerlerini kaydetme
 
-Yeni pizza uygulamanızı kullanmak için, pizza uygulamanızın uygulama KIMLIĞI, yazma anahtarı ve yazma uç noktasına ihtiyacınız olacaktır.
+Yeni pizza uygulamanızı kullanmak için, pizza uygulamanızın uygulama KIMLIĞI, yazma anahtarı ve yazma uç noktasına ihtiyacınız olacaktır. Tahminlere ulaşmak için, ayrı tahmin uç noktanız ve tahmin anahtarınız olması gerekir.
 
 Bu değerleri bulmak için:
 
 1. **Amaçlar** sayfasından **Yönet**' i seçin.
-1. **Uygulama ayarları** sayfasında, **uygulama kimliğini**kaydedin.
+1. **Uygulama ayarları** sayfasında, **uygulama kimliğini** kaydedin.
 1. **Azure Kaynakları**’nı seçin.
 1. **Yazma kaynağı**' nı seçin.
-1. **Kaynak yazma** sekmesinde, **birincil anahtarı**kaydedin. Bu değer, yazma anahtarınıza ait.
-1. **Uç nokta URL 'sini**kaydedin. Bu değer, yazma uç noktanıza ait.
+1. **Kaynak** ve **tahmin kaynakları** sekmelerinde, **birincil anahtarı** kaydedin. Bu değer, yazma anahtarınıza ait.
+1. **Uç nokta URL 'sini** kaydedin. Bu değer, yazma uç noktanıza ait.

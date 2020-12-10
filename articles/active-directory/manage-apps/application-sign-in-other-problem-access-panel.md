@@ -12,12 +12,12 @@ ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 8cbc683f06b809ec4d9c63a61d73a0c731a92cd7
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 14b49c531ae11c056f9b6970e1ac00adcd68b296
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651627"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937177"
 ---
 # <a name="troubleshoot-problems-signing-in-to-an-application-from-azure-ad-my-apps"></a>Azure AD uygulamalarımın bir uygulamada oturum açma sorunlarını giderme
 
@@ -61,6 +61,7 @@ Kullanıcı hesabındaki bir sorun nedeniyle uygulamalarıma erişim engelleniyo
 -   [Kullanıcının Multi-Factor Authentication durumunu denetleme](#check-a-users-multi-factor-authentication-status)
 -   [Kullanıcının kimlik doğrulaması iletişim bilgilerini denetleme](#check-a-users-authentication-contact-info)
 -   [Kullanıcının grup üyeliklerini denetleme](#check-a-users-group-memberships)
+-   [Kullanıcının 999 'den fazla uygulama rolü ataması olup olmadığını denetleyin](#check-if-a-user-has-more-than-999-app-role-assignments)
 -   [Kullanıcının atanan lisanslarını denetleme](#check-a-users-assigned-licenses)
 -   [Kullanıcıya lisans atama](#assign-a-user-a-license)
 
@@ -139,6 +140,16 @@ Bir kullanıcının grup üyeliklerini denetlemek için şu adımları izleyin:
 6.  İlgilendiğiniz kullanıcıyı **arayın** ve seçilecek **satırı seçin** .
 7.  Kullanıcının üyesi olduğu grupları görmek için **grupları** seçin.
 
+### <a name="check-if-a-user-has-more-than-999-app-role-assignments"></a>Kullanıcının 999 'den fazla uygulama rolü ataması olup olmadığını denetleyin
+Bir kullanıcıya, kendilerine atanan 999 taneden fazla uygulama rolü ataması varsa uygulamalarım üzerinde tüm uygulamalarını görmeyebilir.
+
+Bunun nedeni uygulamalarımın, kullanıcıların atandığı uygulamaları belirlemede en fazla 999 uygulama rolü atamasını okumasıdır. Bir Kullanıcı 999 ' den fazla uygulamaya atanmışsa, bu uygulamalardan hangisinin uygulama portalında gösterileceğini denetlemek mümkün değildir.
+
+Bir kullanıcıya verilen uygulama rolü atamalarının sayısını denetlemek için şu adımları izleyin:
+1. [**Microsoft. Graph**](https://github.com/microsoftgraph/msgraph-sdk-powershell) PowerShell modülünü yükler.
+2. `Connect-MgGraph -Scopes "Directory.Read.All"`' İ bir **genel yönetici** olarak çalıştırın ve doğrulayın.
+3. `$m = Get-MgUserAppRoleAssignment -UserId "<userId>" | Measure; $m.Count`Kullanıcının şu anda verdiği uygulama rolü atamalarının sayısını öğrenmek için öğesini çalıştırın.
+
 ### <a name="check-a-users-assigned-licenses"></a>Kullanıcının atanan lisanslarını denetleme
 Bir kullanıcının atanmış lisanslarını denetlemek için şu adımları izleyin:
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** olarak oturum açın.
@@ -172,14 +183,14 @@ Doğru derin bağlantısına sahip olup olmadığınızı denetlemek için şu a
 1. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 2. Ana sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçerek **Azure Active Directory uzantısını** açın.
 3. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-4. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
-5. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+4. Azure Active Directory sol gezinti menüsünde **Kurumsal Uygulamalar**’ı seçin.
+5. Tüm uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar**'ı seçin.
    * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 6. [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **ortak yönetici** olarak oturum açın.
 7. Ana sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçerek **Azure Active Directory uzantısını** açın.
 8. Filtre arama kutusuna **"Azure Active Directory**" yazın ve **Azure Active Directory** öğesini seçin.
-9. Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
-10. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+9. Azure Active Directory sol gezinti menüsünde **Kurumsal Uygulamalar**’ı seçin.
+10. Tüm uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar**'ı seçin.
     * Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
 11. Ayrıntılı bağlantısını kontrol etmek istediğiniz uygulamayı seçin.
 12. **Kullanıcı erişim URL 'si** etiketini bulun. Derin bağlantınız Bu URL ile eşleşmelidir.

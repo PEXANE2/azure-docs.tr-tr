@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: bddc4c64feb31f78bed482bbd729ab1c4b8e676e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c7f7f162355b919c395dd0ee6d03b2bc5526e3da
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96171424"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936701"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Strata kullanarak şirket içi uygulamaları korumak için Azure AD B2C genişletme öğreticisi
 
@@ -29,7 +29,7 @@ Maverics Identity Orchestrator, şirket içi uygulamaları korumak için Azure A
 
 - **Kolay yapılandırma**: Azure AD B2C Maverics KIMLIK Orchestrator SAML veya OIDC bağlayıcılarını Azure AD B2C bağlamak için basit bir adım adım kullanıcı arabirimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -83,7 +83,7 @@ Eski şirket içi uygulamanızı Azure AD B2C tümleştirmek için kullanacağı
 
    c. Uygulamanız için bir yeniden yönlendirme URI 'SI ekleyin. Bu URI, `oauthRedirectURL` Orchestrator Azure AD B2C bağlayıcı yapılandırmanızın parametresiyle eşleşir, örneğin, `https://example.com/oidc-endpoint` .
 
-2. **Kullanıcı akışı oluşturma**: bir [oturum açma ve oturum açma Kullanıcı akışı](./tutorial-create-user-flows.md)oluşturun.
+2. **Kullanıcı akışı oluşturma**: [kaydolma ve oturum açma Kullanıcı akışı](./tutorial-create-user-flows.md)oluşturma.
 
 3. **IDP ekleme**: Kullanıcı hesabını yerel bir hesap veya sosyal ya da kurumsal [IDP](./tutorial-add-identity-providers.md)ile oturum açmak için seçin.
 
