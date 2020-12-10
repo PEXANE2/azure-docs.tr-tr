@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 08/20/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b5de81f5eaf76c16c1ea8fc78075c4567c77aeee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447544"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531994"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Öğretici: Microsoft Müşteri Sözleşmesi faturanızı gözden geçirme
 
@@ -54,6 +54,8 @@ Yalnızca bir faturalama kapsamına erişiminiz varsa soldan **Özellikler**’i
 ![Özellikler sayfasında Microsoft Müşteri Sözleşmesi'ni gösteren ekran görüntüsü](./media/review-customer-agreement-bill/billing-mca-property.png)
 
 Birden çok faturalama kapsamına erişiminiz varsa, ödeme hesabı sütunundaki türü denetleyin. Herhangi bir kapsam için ödeme hesabı türü **Microsoft Müşteri Sözleşmesi** olursa, bir Microsoft Müşteri Sözleşmesi için ödeme hesabına erişiminiz olur.
+
+Faturalama kapsamları sayfasında **Faturalama kapsamları**'nı ve ardından aboneliklerin kullanıma ilişkin ücretleri ödemek için kullanılacak fatura hesabını seçin. Ödeme hesabının **Microsoft Müşteri Sözleşmesi** türünde olması gerekir.
 
 ![Ödeme hesabı liste sayfasında Microsoft Müşteri Sözleşmesi'ni gösteren ekran görüntüsü](./media/review-customer-agreement-bill/billing-mca-in-the-list.png)
 
@@ -146,7 +148,7 @@ Kullanıma dayalı ücretlerinizi analiz etmek için Azure kullanımı ve ücret
 
 ### <a name="download-your-invoice-and-usage-details"></a>Faturanızı ve ayrıntılı kullanım verilerinizi indirme
 
-Erişiminize bağlı olarak, Maliyet Yönetimi + Faturalandırma sayfasında bir ödeme hesabı veya faturalama profili seçmeniz gerekebilir. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin. Fatura kılavuzunda, indirmek istediğiniz fatura satırını bulun. İndirme simgesine veya satırın sonundaki üç noktaya (...) tıklayın. **İndir** kutusundan kullanım ayrıntıları dosyasını ve faturayı indirin.
+Erişiminize bağlı olarak, Maliyet Yönetimi + Faturalandırma sayfasında bir ödeme hesabı veya faturalama profili seçmeniz gerekebilir. Soldaki menüde **Faturalama** altındaki **Faturalar**’ı seçin. Fatura kılavuzunda, indirmek istediğiniz fatura satırını bulun. İndirme simgesine veya satırın sonundaki üç noktayı (...) seçin. **İndir** kutusundan kullanım ayrıntıları dosyasını ve faturayı indirin.
 
 ### <a name="view-detailed-usage-by-invoice-section"></a>Fatura bölümüne göre ayrıntılı kullanımı görüntüleme
 

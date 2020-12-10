@@ -95,6 +95,8 @@
       href: ../../mysql/security-baseline.md
     - name: MariaDB için Azure Veritabanı güvenlik temeli
       href: ../../mariadb/security-baseline.md
+    - name: Azure Veritabanı Geçiş Hizmeti güvenlik temeli
+      href: ../../dms/security-baseline.md
     - name: PostgreSQL için Azure Veritabanı - Hiper Ölçek güvenlik temeli
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: PostgreSQL için Azure Veritabanı - Tek Sunucu güvenlik temeli

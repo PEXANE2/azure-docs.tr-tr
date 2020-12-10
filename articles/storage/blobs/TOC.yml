@@ -1,6 +1,6 @@
 - name: Azure Blob depolama belgeleri
   href: ./index.yml
-- name: Genel bakış
+- name: Genel Bakış
   items:
     - name: Azure Blob depolama nedir?
       href: storage-blobs-overview.md
@@ -483,9 +483,15 @@
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: Azure AD ile yetkilendir
                   href: ../common/storage-use-azcopy-authorize-azure-active-directory.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Bloblarla kullanma
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Amazon S3 demetleriyle kullanma
+                - name: 'Örnekler: Karşıya Yükle'
+                  href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Karşıdan Yükle'
+                  href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Eşitle'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Hesaplar arasında kopyala'
+                  href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Amazon S3 demetleri'
                   href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 'Yapılandırma, iyileştirme, sorun giderme'
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -769,9 +775,17 @@
               items:
                 - name: başlarken
                   href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Data Lake Storage ile kullanma
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Yapılandırma, iyileştirme, sorun giderme'
+                - name: 'Örnekler: Karşıya Yükle'
+                  href: ../common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Karşıdan Yükle'
+                  href: ../common/storage-use-azcopy-blobs-download.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Eşitle'
+                  href: ../common/storage-use-azcopy-blobs-synchronize.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Hesaplar arasında kopyala'
+                  href: ../common/storage-use-azcopy-blobs-copy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Örnekler: Amazon S3 demetleri'
+                  href: ../common/storage-use-azcopy-s3.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 'Yapılandırma, iyileştirme ve sorun giderme'
                   href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Azure Data Factory
               href: ../../data-factory/connector-azure-data-lake-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json

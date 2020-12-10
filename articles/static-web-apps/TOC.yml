@@ -66,9 +66,13 @@
   items:
     - name: Microsoft Learn ile becerilerinizi geliştirin
       items:
-        - name: 'Angular, React, Svelte veya Vue JavaScript uygulaması ve API’si yayımlama'
+        - name: 'Angular, React, Svelte veya Vue JavaScript uygulaması yayımlama'
           href: /learn/modules/publish-app-service-static-web-app-api
+        - name: API yayımlama
+          href: /learn/modules/publish-static-web-app-api-preview-url
         - name: Gatsby ile statik web uygulaması oluşturma ve yayımlama
           href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+        - name: Blazor ile statik web uygulaması oluşturma ve yayımlama
+          href: /learn/modules/publish-app-service-static-web-app-api-dotnet
     - name: Kotalar
       href: quotas.md

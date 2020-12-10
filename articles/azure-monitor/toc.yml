@@ -29,10 +29,6 @@
           href: learn/quick-collect-windows-computer.md
     - name: Uygulamaları izleme
       items:
-        - name: .NET uygulaması
-          href: learn/quick-monitor-portal.md
-        - name: .NET Core uygulaması
-          href: learn/dotnetcore-quick-start.md
         - name: Node.js uygulaması
           href: learn/nodejs-quick-start.md
         - name: Mobil uygulama
@@ -680,8 +676,10 @@
                       href: app/java-standalone-telemetry-processors.md
                     - name: JVM bağımsız değişkenleri kurulumu
                       href: app/java-standalone-arguments.md
-                    - name: 2.x sürümünden yükseltme
+                    - name: 2.x SDK sürümünden yükseltme
                       href: app/java-standalone-upgrade-from-2x.md
+                    - name: Sorun giderme
+                      href: app/java-standalone-troubleshoot.md
             - name: Şirket içi sunucular
               items:
                 - name: ASP.NET
@@ -1014,6 +1012,8 @@
           href: insights/container-insights-deployment-hpa-metrics.md
         - name: Kalıcı Birimleri (PV) izleme
           href: insights/container-insights-persistent-volumes.md
+        - name: Raporlar sekmesi
+          href: insights/container-insights-reports.md
         - name: Canlı verileri görüntüleme
           items:
             - name: Canlı Verilere (önizleme) genel bakış

@@ -3,18 +3,18 @@ title: Öğretici - Azure Maliyet Yönetimi'nden dışarı aktarılan verileri o
 description: Bu makalede, dış sistemlerde kullanabilmeniz için dışarı aktarılan Azure Maliyet Yönetimi verilerini nasıl oluşturup yönetebileceğiniz gösterilir.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/20/2020
+ms.date: 12/7/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18
-ms.openlocfilehash: dcf9b925e7f0ce691a5a50850a30f723d48ec50b
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "96007231"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929268"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -58,20 +58,20 @@ Dışarı aktarma oluşturmak veya görüntülemek ya da zamanlamak için Azure 
 > - Dışarı aktarmayı aboneliklerin yanı sıra, kaynak grupları, yönetim grupları, departmanlar ve kayıtlar özelinde de oluşturabilirsiniz. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
 >- Ödeme hesabı kapsamında veya müşteri kiracısında iş ortağı olarak oturum açtığınızda verileri iş ortağı depolama hesabıyla ilişkilendirilmiş olan Azure Depolama hesabına aktarabilirsiniz. Ancak CSP kiracınızda etkin bir aboneliğe sahip olmanız gerekir.
 
-1. **Ekle**’yi seçin ve dışarı aktarma için bir ad yazın. 
+1. **Ekle**’yi seçin ve dışarı aktarma için bir ad yazın.
 1. **Ölçüm** için bir seçim yapın:
     - **Gerçek maliyet (Kullanım ve Satın Almalar)** : Standart kullanımı ve satın almaları dışarı aktarmak için seçin
     - **İtfa edilen maliyet (Kullanım ve Satın Almalar)** : Azure rezervasyonları gibi satın almaların itfa edilen maliyetlerini dışarı aktarmak için seçin
 1. **Dışarı aktarma türü** için bir seçim yapın:
     - **Ay başından bugüne kadarki maliyetlerin günlük dışarı aktarması**: Ay başından bugüne kadarki maliyetleriniz için günlük yeni bir dışarı aktarma dosyası sağlar. En son veriler önceki günlük dışarı aktarmalardan toplanır.
-    - **Son yedi günün maliyetine ilişkin haftalık dışarı aktarma**: Dışarı aktarma işlemi için seçilen başlangıç tarihinden itibaren geçen yedi günlük maliyetlerinizi içeren, haftalık bir dosya oluşturur.  
-    - **Son ayın maliyetlerinin aylık dışarı aktarımı**: Dışarı aktarmayı oluşturduğunuz geçerli ayla karşılaştırılan son aya ilişkin maliyetlerinizin bir dışarı aktarma dosyasını sağlar. Bundan itibaren zamanlama, önceki aylardaki maliyetlerinizle her yeni ayın beşinci gününde bir dışarı aktarma dosyası çalıştırır.  
-    - **Bir kerelik dışarı aktarma**: Azure blob depolamaya dışarı aktarmak üzere geçmiş verilere yönelik bir tarih aralığı seçmenize olanak verir. Seçtiğiniz günden itibaren en fazla 90 günlük geçmiş maliyetleri içeren bir dosyayı dışarı aktarabilirsiniz. Bu dışarı aktarma hemen çalışır ve iki saat içinde depolama hesabınızda kullanıma sunulur.  
+    - **Son yedi günün maliyetine ilişkin haftalık dışarı aktarma**: Dışarı aktarma işlemi için seçilen başlangıç tarihinden itibaren geçen yedi günlük maliyetlerinizi içeren, haftalık bir dosya oluşturur.
+    - **Son ayın maliyetlerinin aylık dışarı aktarımı**: Dışarı aktarmayı oluşturduğunuz geçerli ayla karşılaştırılan son aya ilişkin maliyetlerinizin bir dışarı aktarma dosyasını sağlar. Bundan itibaren zamanlama, önceki aylardaki maliyetlerinizle her yeni ayın beşinci gününde bir dışarı aktarma dosyası çalıştırır.
+    - **Bir kerelik dışarı aktarma**: Azure blob depolamaya dışarı aktarmak üzere geçmiş verilere yönelik bir tarih aralığı seçmenize olanak verir. Seçtiğiniz günden itibaren en fazla 90 günlük geçmiş maliyetleri içeren bir dosyayı dışarı aktarabilirsiniz. Bu dışarı aktarma hemen çalışır ve iki saat içinde depolama hesabınızda kullanıma sunulur.
         Dışarı aktarma türünüze bağlı olarak bir başlangıç tarihi veya **Başlangıç** ve **Bitiş** tarihi seçin.
-1. Azure depolama hesabınıza ait aboneliği belirttikten sonra bir kaynak grubu seçin veya yeni bir tane oluşturun. 
-1. Depolama hesabı adını seçin veya yeni bir tane oluşturun. 
+1. Azure depolama hesabınıza ait aboneliği belirttikten sonra bir kaynak grubu seçin veya yeni bir tane oluşturun.
+1. Depolama hesabı adını seçin veya yeni bir tane oluşturun.
 1. Konumu (Azure bölgesini) seçin.
-1. Dışarı aktarma dosyasının gitmesini istediğiniz depolama kapsayıcısını ve dizin yolunu belirtin. 
+1. Dışarı aktarma dosyasının gitmesini istediğiniz depolama kapsayıcısını ve dizin yolunu belirtin.
     :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="Yeni dışarı aktarma örneği" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
 1. Dışarı aktarma ayrıntılarınızı gözden geçirin ve **Oluştur**'u seçin.
 
@@ -132,7 +132,7 @@ Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 1. Dışarı aktarmayı güncelleştirmek için [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) komutunu kullanın:
 
    ```azurecli
-   az costmanagement export update --name DemoExport 
+   az costmanagement export update --name DemoExport
       --scope "subscriptions/00000000-0000-0000-0000-000000000000" --storage-directory demodirectory02
    ```
 
@@ -145,6 +145,89 @@ Dışarı aktarmayı silmek için [az costmanagement export delete](/cli/azure/e
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Başlangıç olarak ortamınızı Azure PowerShell için hazırlayın:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
+
+* > [!IMPORTANT]
+  > **Az.CostManagement** PowerShell modülü önizleme aşamasındayken `Install-Module` cmdlet'ini kullanarak modülü ayrı olarak yüklemeniz gerekir. Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
+
+  ```azurepowershell-interactive
+  Install-Module -Name Az.CostManagement
+  ```
+
+1. Oturum açtıktan sonra geçerli dışarı aktarmalarınızı görmek için [Get-AzCostManagementExport](/powershell/module/Az.CostManagement/get-azcostmanagementexport) cmdlet'ini kullanın:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+   >[!NOTE]
+   >
+   >* Aboneliklerin yanı sıra kaynak grupları ve yönetim grupları için de dışarı aktarma oluşturabilirsiniz. Kapsamlar hakkında daha fazla bilgi için bkz. [Kapsamları anlama ve birlikte çalışma](understand-work-scopes.md).
+   >* Ödeme hesabı kapsamında veya müşteri kiracısında iş ortağı olarak oturum açtığınızda verileri iş ortağı depolama hesabıyla ilişkilendirilmiş olan Azure Depolama hesabına aktarabilirsiniz. Ancak CSP kiracınızda etkin bir aboneliğe sahip olmanız gerekir.
+
+1. Bir kaynak grubu oluşturun veya mevcut kaynak grubunu kullanın. Kaynak grubu oluşturmak için [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet'ini kullanın:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name TreyNetwork -Location eastus
+   ```
+
+1. Dışarı aktarmaları almak için bir depolama hesabı oluşturun veya mevcut depolama hesabını kullanın. Depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) cmdlet'ini kullanın:
+
+   ```azurepowershell-interactive
+   New-AzStorageAccount -ResourceGroupName TreyNetwork -AccountName cmdemo -SkuName Standard_RAGRS -Location eastus
+   ```
+
+1. [New-AzCostManagementExport](/powershell/module/Az.CostManagement/new-azcostmanagementexport) cmdlet'ini çalıştırarak dışarı aktarmayı oluşturun:
+
+   ```azurepowershell-interactive
+   $Params = @{
+     Name = 'DemoExport'
+     DefinitionType = 'ActualCost'
+     Scope = 'subscriptions/00000000-0000-0000-0000-000000000000'
+     DestinationResourceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/treynetwork/providers/Microsoft.Storage/storageAccounts/cmdemo'
+     DestinationContainer = 'democontainer'
+     DefinitionTimeframe = 'MonthToDate'
+     ScheduleRecurrence = 'Daily'
+     RecurrencePeriodFrom = '2020-06-01T00:00:00Z'
+     RecurrencePeriodTo = '2020-10-31T00:00:00Z'
+     ScheduleStatus = 'Active'
+     DestinationRootFolderPath = 'demodirectory'
+     Format = 'Csv'
+   }
+   New-AzCostManagementExport @Params
+   ```
+
+   **DefinitionType** parametresi için `ActualCost`, `AmortizedCost` veya `Usage` değerini seçebilirsiniz.
+
+   Bu örnekte `MonthToDate` kullanılmıştır. Dışarı aktarma işlemi ay başından bugüne kadarki maliyetler için her gün bir dışarı aktarma dosyası oluşturur. Bu ayın önceki günlük dışarı aktarmalarından alınan en güncel veriler toplanır.
+
+1. Dışarı aktarma işleminizin ayrıntılarını görmek için `Get-AzCostManagementExport` cmdlet'ini kullanın:
+
+   ```azurepowershell-interactive
+   Get-AzCostManagementExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
+   ```
+
+1. [Update-AzCostManagementExport](/powershell/module/Az.CostManagement/update-azcostmanagementexport) cmdlet'ini kullanarak dışarı aktarmayı güncelleştirin:
+
+   ```azurepowershell-interactive
+   Update-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000' -DestinationRootFolderPath demodirectory02
+   ```
+
+   Bu örnek çıkış dizinini değiştirir.
+
+>[!NOTE]
+>Başlangıçta, dışarı aktarmanın çalışmaya başlaması 12 ila 24 saat arası sürebilir. Öte yandan verilerin dışarı aktarılan dosyalarda gösterilmesi daha uzun sürebilir.
+
+[Remove-AzCostManagementExport](/powershell/module/Az.CostManagement/remove-azcostmanagementexport) cmdlet'ini kullanarak dışarı aktarmayı silebilirsiniz:
+
+```azurepowershell-interactive
+Remove-AzCostManagementExport -Name DemoExport -Scope 'subscriptions/00000000-0000-0000-0000-000000000000'
 ```
 
 ---
@@ -162,9 +245,9 @@ Kurumsal Anlaşmanız varsa abonelik maliyeti bilgilerini tek bir kapsayıcıda 
 Diğer abonelik türlerinin yönetim gruplarına yönelik dışarı aktarmalar desteklenmez.
 
 1. Henüz yönetim grubu oluşturmadıysanız bir grup oluşturun ve bu gruba abonelikler atayın.
-1. Maliyet analizinde, kapsamı yönetim grubunuz olarak ayarlayıp **Bu yönetim grubunu seç**’i belirleyin.  
+1. Maliyet analizinde, kapsamı yönetim grubunuz olarak ayarlayıp **Bu yönetim grubunu seç**’i belirleyin.
     :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Bu yönetim grubunu seç tercihini gösteren örnek" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
-1. Yönetim grubundaki aboneliklere yönelik maliyet yönetimi verilerini almak için kapsama uygun bir dışarı aktarma işlemi oluşturun.  
+1. Yönetim grubundaki aboneliklere yönelik maliyet yönetimi verilerini almak için kapsama uygun bir dışarı aktarma işlemi oluşturun.
     :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Yönetim grubu kapsamında yeni dışarı aktarma oluşturma seçeneğini gösteren örnek":::
 
 ## <a name="verify-that-data-is-collected"></a>Verilerin toplandığını doğrulama
@@ -196,7 +279,7 @@ Dışarı aktarılmış CSV dosyasını Azure portalından da indirebilirsiniz. 
 
 [![Örnek dışarı aktarma indirmesi](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
-## <a name="view-export-run-history"></a>Dışarı aktarma çalıştırma geçmişini görüntüleme  
+## <a name="view-export-run-history"></a>Dışarı aktarma çalıştırma geçmişini görüntüleme
 
 Dışarı aktarmalar listesi sayfasındaki tek bir dışarı aktarmayı seçerek, zamanlanmış dışarı aktarmanızın çalıştırma geçmişini görüntüleyebilirsiniz. Dışarı aktarmalar listesi sayfası, önceki dışarı aktarmalarınızın çalıştırma zamanını ve bir dışarı aktarmanın çalıştırılacağı sonraki zamanı görüntülemenize yönelik hızlı erişim olanağı da verir. Çalıştırma geçmişini gösteren bir örnek aşağıda verilmiştir.
 

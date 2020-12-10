@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350900"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545613"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Kurumsal Anlaşma rezervasyon maliyetlerini ve kullanımını alma
 
@@ -139,6 +139,8 @@ Amorti edilmiş maliyet verilerini alın ve verileri ayrılmış örnek için fi
 1. Tahmini kullandıkça öde maliyetlerini elde edin. Kullanıma rezervasyon indirimi uygulanmadıysa, tahmini kullandıkça öde maliyetlerini elde etmek için _UnitPrice_ değerini _Quantity_ değerleriyle çarpın.
 2. Rezervasyon maliyetlerini elde edin. Ayrılmış örneğe yaptığınız ödemenin parasal değerini elde etmek için _Cost_ değerlerini toplayın. Bu değer rezervasyonun kullanılan ve kullanılmayan maliyetlerini içerir.
 3. Tahmini tasarrufları elde etmek için rezervasyon maliyetlerini tahmini kullandıkça öde maliyetlerinden çıkarın.
+
+Az kullanılan bir rezervasyonunuz varsa _ChargeType_ için _UnusedReservation_ girdisinin dikkate alınması gereken bir faktör haline geldiğini unutmayın. Tamamen kullanılan bir rezervasyonunuz varsa, mümkün olan en yüksek tasarrufu elde edersiniz. Her _UnusedReservation_ miktarı tasarrufları azaltır.
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Maliyet analizinde rezervasyon satın almaları ve amortisman
 

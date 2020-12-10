@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657321"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905688"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>İş ortakları için Azure Maliyet Yönetimi’ni kullanmaya başlama
 
@@ -262,7 +262,7 @@ Hizmet kullanım verilerinin Maliyet Yönetimi'ne yansıtılması normalde 8-24 
 
 ## <a name="export-cost-data-to-azure-storage"></a>Maliyet verilerini Azure Depolama'ya aktarma
 
-Bir iş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları, maliyet ve kullanım verilerini bir Azure Depolama blobuna aktarabilir. Blob, iş ortağı kiracısında bulunan bir abonelik olmalıdır ve paylaşılan hizmet aboneliği veya müşteri aboneliği olmamalıdır. Maliyet verilerinin dışarı aktarılmasını etkinleştirmek için dışarı aktarılan maliyet verilerini barındırmak üzere iş ortağı kiracısında bağımsız bir kullandıkça öde aboneliği oluşturmanız önerilir. Dışarı aktarma depolama hesabı, kullandıkça öde aboneliğinde barındırılan Azure Depolama blobunda oluşturulur. İş ortağının dışarı aktarma işini gerçekleştirdiği kapsama bağlı olarak ilgili veriler otomatik olarak ve yinelenen bir şekilde depolama hesabına aktarılır.
+Bir iş ortağı kiracısındaki faturalama kapsamlarına erişim sahibi olan iş ortakları, maliyet ve kullanım verilerini bir Azure Depolama blobuna aktarabilir. Blob, iş ortağı kiracısında bulunan bir abonelik olmalıdır ve [paylaşılan hizmet aboneliği](/partner-center/shared-services) veya müşteri aboneliği olmamalıdır. Maliyet verilerinin dışarı aktarılmasını etkinleştirmek için dışarı aktarılan maliyet verilerini barındırmak üzere iş ortağı kiracısında bağımsız bir kullandıkça öde aboneliği oluşturmanız önerilir. Dışarı aktarma depolama hesabı, kullandıkça öde aboneliğinde barındırılan Azure Depolama blobunda oluşturulur. İş ortağının dışarı aktarma işini gerçekleştirdiği kapsama bağlı olarak ilgili veriler otomatik olarak ve yinelenen bir şekilde depolama hesabına aktarılır.
 
 Abonelikte Azure RBAC erişimine sahip olan kullanıcılar da maliyet verilerini müşteri kiracısındaki herhangi bir abonelikte barındırılan Azure depolama blobuna aktarabilir.
 

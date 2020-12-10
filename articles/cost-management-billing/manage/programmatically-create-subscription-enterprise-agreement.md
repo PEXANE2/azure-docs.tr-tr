@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 34fe909c7fca3c91845c58b41abb0d8885e156e6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0cdd25b2937dd1fb2cc70ef7b1c5a9e9ddaef375
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94850991"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780629"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>En son API’lerle program aracılığıyla Azure Kurumsal Anlaşma abonelikleri oluşturma
 
@@ -89,7 +89,7 @@ API yanıtında erişiminiz olan tüm kayıt hesapları listelenir:
 
 ```
 
-`enrollmentAccounts` hesaplarınızın birindeki `id` bilgisini not alın. Bu, abonelik oluşturma isteğinin başlatıldığı faturalama kapsamıdır. 
+Faturalama kapsamı değeri ile `id` aynı şeydir. Kayıt hesabınızın `id` değeri, abonelik isteğinin başlatıldığı faturalama kapsamıdır. ID değerini bilmek önemlidir çünkü bu değer daha sonra makalede abonelik oluşturmak için kullanacağınız gerekli bir parametredir.
 
 <!-- 
 ### [PowerShell](#tab/azure-powershell-getEnrollments)
@@ -130,6 +130,8 @@ PUT  https://management.azure.com/providers/Microsoft.Subscription/aliases/sampl
   }
 }
 ```
+
+`Workload` için izin verilen değerler `Production` ve `DevTest` değerleridir.
 
 #### <a name="response"></a>Yanıt
 

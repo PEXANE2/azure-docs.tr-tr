@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a9e3297ad055157d552424ecc48db6801f43b220
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344343"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929964"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure portalındaki faturalama hesapları ve kapsamlar
 
@@ -25,7 +25,7 @@ Azure portal aşağıdaki ödeme hesapları türünü destekler:
 
 - **Kurumsal Anlaşma**: Kuruluşunuz Azure’ı kullanmak için bir [Kurumsal Anlaşma (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) imzaladığında Kurumsal Anlaşma için bir ödeme hesabı oluşturulur. Kurumsal Anlaşma kapsamında en fazla 2000 aboneliğiniz olabilir.
 
-- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/) kaydolan belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Microsoft Müşteri Sözleşmesi kapsamında en fazla 20 aboneliğiniz olabilir. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mca-overview.md).
+- **Microsoft Müşteri Sözleşmesi**: Kuruluşunuz bir Microsoft Müşteri Sözleşmesi imzalamak için Microsoft temsilcisiyle çalıştığında Microsoft Müşteri Sözleşmesi için bir ödeme hesabı oluşturulur. Azure web sitesinden [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/) kaydolan belirli bölgelerdeki bazı müşterilerin Microsoft Müşteri Sözleşmesi için ödeme hesabı da olabilir. Microsoft Müşteri Sözleşmesi kapsamında bir kişi için en fazla 20 aboneliğiniz olabilir. Kuruluşlar için Microsoft Müşteri Sözleşmesi'nin abonelik sayısı sınırı yoktur. Daha fazla bilgi için bkz. [Microsoft Müşteri Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mca-overview.md).
 
 - **Microsoft İş Ortağı Sözleşmesi**: Müşterilerini yeni ticaret deneyiminde yönetmelerine olanak tanımak için Bulut Çözümü Sağlayıcısı (CSP) iş ortakları için bir Microsoft İş Ortağı Sözleşmesi’ne yönelik faturalama hesabı oluşturulur. Azure portalındaki faturalama hesabını yönetmek için iş ortaklarının en az bir müşterisi olan bir [Azure planına](/partner-center/purchase-azure-plan) sahip olması gerekir. Daha fazla bilgi için bkz. [Microsoft İş Ortağı Sözleşmesi için ödeme hesabınızı kullanmaya başlama](../understand/mpa-overview.md).
 
