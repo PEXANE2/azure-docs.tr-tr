@@ -4,12 +4,12 @@ description: Çapraz bölge geri yükleme özelliği de dahil olmak üzere Azure
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: baae35c87f306f5773fa8061f27e9793754ccc9c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327194"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008512"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal Azure VM verilerini geri yükleme
 
@@ -213,6 +213,8 @@ VM 'Leri geri yüklemeniz gerekebilecek bazı yaygın senaryolar vardır.
 **Tek bir etki alanında birden çok etki alanı denetleyicisi VM 'yi geri yükleme** | Ağ üzerinden aynı etki alanındaki diğer etki alanı denetleyicilerine ulaşılırsa, etki alanı denetleyicisi herhangi bir VM gibi geri yüklenebilir. Etki alanındaki son kalan etki alanı denetleyicisi ise veya yalıtılmış bir ağda kurtarma gerçekleştirilirse, bir [orman kurtarması](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)kullanın.
 **Birden çok etki alanı yapılandırmasındaki tek bir etki alanı denetleyicisi sanal makinesini geri yükleme** |  [PowerShell kullanarak](backup-azure-vms-automation.md#restore-the-disks) diskleri geri yükleme ve VM oluşturma  
 **Birden çok etki alanını tek bir ormanda geri yükleme** | [Orman kurtarması](/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)önerilir.
+
+Daha fazla bilgi için bkz. [Active Directory etki alanı denetleyicilerini yedekleme ve geri yükleme](active-directory-backup-restore.md).
 
 ## <a name="track-the-restore-operation"></a>Geri yükleme işlemini izleme
 

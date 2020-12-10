@@ -5,22 +5,22 @@ description: Bu hızlı başlangıçta, bir Azure Resource Manager şablonu kull
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
+manager: KumudD
 Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2020
+ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 66d702846bac5825239e891ce47f8cca5bb857f0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90984412"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008444"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -51,12 +51,13 @@ Yük dengeleyici ve genel IP SKU 'Ları eşleşmelidir. Standart yük dengeleyic
 Şablonda birden çok Azure kaynağı tanımlanmış:
 
 - [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses): yük dengeleyici için ve üç sanal makinenin her biri için.
+- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses): yük dengeleyici, savunma Konağı ve üç sanal makinenin her biri için.
+- [**Microsoft. Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3 BT).
+- [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3).
 - [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3).
-- [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3 BT): Internet Information Server (IIS) ve Web sayfalarını yapılandırmak için kullanın.
+- [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): Internet Information Server (IIS) ve Web sayfalarını yapılandırmak için kullanın.
 
 Azure Load Balancer ilgili daha fazla şablon bulmak için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
@@ -87,7 +88,7 @@ Azure Load Balancer ilgili daha fazla şablon bulmak için bkz. [Azure hızlı b
 
 1. Değerleri girin.
 
-   Şablon dağıtımı üç kullanılabilirlik bölgesi oluşturur. Kullanılabilirlik alanları yalnızca [belirli bölgelerde](../availability-zones/az-overview.md)desteklenir. Desteklenen bölgelerden birini kullanın. Emin değilseniz, **merkezileştirme**girin.
+   Şablon dağıtımı üç kullanılabilirlik bölgesi oluşturur. Kullanılabilirlik alanları yalnızca [belirli bölgelerde](../availability-zones/az-overview.md)desteklenir. Desteklenen bölgelerden birini kullanın. Emin değilseniz, **merkezileştirme** girin.
 
    Kaynak grubu adı, **RG** eklenmiş proje adıdır. Sonraki bölümde kaynak grubu adına ihtiyacınız vardır.
 
@@ -99,7 +100,7 @@ Azure PowerShell, şablonu dağıtmak için kullanılır. Azure portal, Azure CL
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -131,6 +132,8 @@ Azure portal gidin, yük dengeleyiciyi içeren kaynak grubunu seçin ve **kaynak
 
 Bu hızlı başlangıçta:
 
+* Yük dengeleyici ve sanal makineler için bir sanal ağ oluşturuldu.
+* Yönetim için bir Azure savunma ana bilgisayarı oluşturuldu.
 * Standart yük dengeleyici ve buna bağlı VM 'Ler oluşturuldu.
 * Yük dengeleyici trafik kuralını ve durum araştırmasını yapılandırdınız.
 * Yük dengeleyici test edildi.

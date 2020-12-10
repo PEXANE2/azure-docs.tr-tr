@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: c35647a46cd252ce045d10e8dfefcf78236ba74b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961729"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008563"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux’ta Azure App Service hakkında SSS
 
@@ -56,7 +56,7 @@ Evet, bunu kaynak denetimi yönetimi (SCM) sitesi aracılığıyla yapabilirsini
 
 **Bir SDK veya Azure Resource Manager şablonuyla bir Linux App Service planı nasıl oluşturabilirim?**
 
-App Service 'in **ayrılmış** alanını *doğru*olarak ayarlayın.
+App Service 'in **ayrılmış** alanını *doğru* olarak ayarlayın.
 
 ## <a name="continuous-integration-and-deployment"></a>Sürekli tümleştirme ve dağıtım
 
@@ -70,7 +70,7 @@ Evet.
 
 **Web uygulamamı dağıtmak için *WebDeploy/MSDeploy* kullanabilir miyim?**
 
-Evet, yanlış olarak çağrılan bir uygulama ayarı ayarlamanız gerekir `WEBSITE_WEBDEPLOY_USE_SCM` . *false*
+Evet, yanlış olarak çağrılan bir uygulama ayarı ayarlamanız gerekir `WEBSITE_WEBDEPLOY_USE_SCM` . 
 
 **Linux Web uygulaması kullanılırken uygulamamın git dağıtımı başarısız oluyor. Sorunu geçici olarak nasıl çözebilirim?**
 
@@ -94,7 +94,7 @@ Evet, `perMessageDeflate` sunucu tarafı Node.js kodunuzda devre dışı bırak�
 
 ```nodejs
 const io = require('socket.io')(server,{
-  perMessageDeflate :false
+  perMessageDeflate :false
 });
 ```
 
@@ -110,7 +110,7 @@ Evet, bir git dağıtımı sırasında kudu, bir PHP uygulaması dağıttığın
 
 **Kendi özel kapsayıcınızı kullanıyorum. Platformun bir SMB `/home/` dizinini dizine bağlamak istiyorum.**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE`Ayar **belirtilmemişse** veya *true*olarak ayarlanırsa, `/home/` Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlandığında bağlama devre dışı bırakılır.
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE`Ayar **belirtilmemişse** veya *true* olarak ayarlanırsa, `/home/` Dizin ölçek örnekleri arasında **paylaşılır** ve yazılan dosyalar yeniden başlatmalar arasında **kalır** . Açıkça `WEBSITES_ENABLE_APP_SERVICE_STORAGE` *false* olarak ayarlandığında bağlama devre dışı bırakılır.
 
 **Özel kapsayıcımın başlaması uzun sürer ve platformun başlaması bitmeden önce kapsayıcıyı yeniden başlatır.**
 
@@ -122,7 +122,7 @@ Veya dahil olmak üzere tam kayıt defteri URL 'sini sağlayın `http://` `https
 
 **Özel kayıt defteri seçeneğinde görüntü adının biçimi nedir?**
 
-Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak için `docker-custom-image-name` [ `az` komut satırı aracını](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set)kullanın.
+Özel kayıt defteri URL 'SI de dahil olmak üzere tam görüntü adını ekleyin (örneğin, myacr.azurecr.io/dotnet:latest). Özel bir bağlantı noktası kullanan görüntü adları [Portal üzerinden girilemez](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ayarlamak için `docker-custom-image-name` [ `az` komut satırı aracını](/cli/azure/webapp/config/container#az-webapp-config-container-set)kullanın.
 
 **Özel kapsayıcı Görüntümdeki birden fazla bağlantı noktasını kullanıma alabilir miyim?**
 

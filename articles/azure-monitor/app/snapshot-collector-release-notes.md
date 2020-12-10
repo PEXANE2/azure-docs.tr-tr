@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548180"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008580"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft. ApplicationInsights. SnapshotCollector için sürüm notları
 
@@ -21,6 +21,11 @@ Bu makale, Application Insights Snapshot Debugger tarafından kullanılan .NET u
 Hata raporları ve geri bildirim için, şurada GitHub 'da bir sorun açın: https://github.com/microsoft/ApplicationInsights-dotnet
 
 ## <a name="release-notes"></a>Sürüm notları
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+1.4.0-pre 'dan bir düzelme bağlantı noktası için bir nokta yayını.
+### <a name="bug-fixes"></a>Hata düzeltmeleri
+- [Kapatmadan ObjectDisposedException](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097)öğesini onarın.
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 Test Azure App Service kodsuz kullanacaksınız iliştirme senaryosunda bulunan bir sorunu gidermek için bir nokta yayını.

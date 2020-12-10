@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421728"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008495"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama arama sonuçlarıyla çalışma
 
-Bu makalede, toplam eşleşen belge sayısı, sayfalandırılmış sonuçlar, sıralanmış sonuçlar ve isabet vurgulu terimler ile geri gelen bir sorgu yanıtının nasıl alınacağı açıklanmaktadır.
+Bu makalede, Azure Bilişsel Arama 'de bir sorgu yanıtının nasıl formülleneceği açıklanır. Bir yanıtın yapısı sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'sında [SearchResults sınıfında](/dotnet/api/azure.search.documents.models.searchresults-1) [Ara](/rest/api/searchservice/Search-Documents) . Sorgudaki parametreler, sonuç kümesini aşağıdaki yollarla yapılandırmak için kullanılabilir:
 
-Bir yanıtın yapısı sorgudaki parametrelere göre belirlenir: REST API veya .NET SDK 'sında [SearchResults sınıfında](/dotnet/api/azure.search.documents.models.searchresults-1) [Ara](/rest/api/searchservice/Search-Documents) .
++ Sonuçlarda belge sayısını sınırlayın veya toplu işlem yapın (varsayılan olarak 50)
++ Sonuçlara dahil edilecek alanları seçin
++ Sıra sonuçları
++ Arama sonuçlarının gövdesinde eşleşen bir tam veya kısmi terimi Vurgula
 
 ## <a name="result-composition"></a>Sonuç oluşturma
 
@@ -38,6 +41,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 > [!NOTE]
 > Görüntü dosyalarını bir ürün fotoğrafı veya logosu gibi bir sonuca eklemek istiyorsanız, bunları Azure Bilişsel Arama dışında depolayın, ancak arama belgesinde görüntü URL 'sine başvurmak için dizininizdeki bir alanı ekleyin. Sonuçlarda görüntüleri destekleyen örnek dizinler, bu [hızlı](search-create-app-portal.md)başlangıçta sunulan **reatastate-Sample-US** tanıtımı ve [New York City işleri tanıtım uygulaması](https://aka.ms/azjobsdemo)' nı içerir.
+
+### <a name="tips-for-unexpected-results"></a>Beklenmeyen sonuçlara yönelik ipuçları
+
+Kimi zaman, sonuçların yapısını değil, her zaman için. Sorgu sonuçları beklenmiyorsa, sonuçların iyileştirilmesine bakmak için bu sorgu değişikliklerini deneyebilirsiniz:
+
++ **`searchMode=any`** **`searchMode=all`** Ölçütlerin herhangi biri yerine tüm ölçütlerde eşleşme gerektirmek için (varsayılan) öğesini olarak değiştirin. Bu, Boolean işleçleri sorguyu dahil edildiğinde özellikle doğrudur.
+
++ Sorgu sonucunu değiştirmenin değişdiğini görmek için farklı sözcük Çözümleyicileri veya özel çözümleyiciler ile denemeler yapın. Varsayılan çözümleyici, hecelere ayrılan kelimeleri keser ve genellikle bir sorgu yanıtının sağlamlık düzeyini artırır. Ancak, kısa çizgileri korumanız gerekiyorsa veya dizeler özel karakterler içeriyorsa, dizinin doğru biçimde belirteçler içerdiğinden emin olmak için özel Çözümleyicileri yapılandırmanız gerekebilir. Daha fazla bilgi için bkz. [kısmi terim arama ve desenleri özel karakterlerle (kısa çizgiler, joker karakter, Regex, desenler)](search-query-partial-matching.md).
 
 ## <a name="paging-results"></a>Disk belleği sonuçları
 
@@ -80,21 +91,21 @@ Belge 2 ' nin iki kez getirildiğine dikkat edin. Bunun nedeni, yeni belge 5 ' i
 
 ## <a name="ordering-results"></a>Sonuçları sıralama
 
-Tam metin arama sorguları için, sonuçlar, bir arama puanı tarafından otomatik olarak derecelendirilir, daha yüksek puanlar bir arama terimi üzerinde daha fazla veya daha fazla eşleşme elde eden belgeler. 
+Tam metin arama sorguları için, sonuçlar, bir arama puanı tarafından otomatik olarak derecelendirilir ve bir belge içinde ( [tf-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)'den türetilmiş), bir belgede daha fazla veya daha fazla eşleşme elde eden belgeler, bir arama terimi üzerinde daha fazla veya daha güçlü eşleşmeler elde edilir. 
 
-Arama puanları, aynı sonuç kümesindeki diğer belgelerle karşılaştırıldığında eşleşme gücünü yansıtan genel ilgi hissi elde ediyor. Puanlar bir sorgudan sonrakine her zaman tutarlı değildir. bu nedenle, sorgularla çalışırken arama belgelerinin nasıl sıralandığına ilişkin küçük tutarsızlıklar fark edebilirsiniz. Bunun neden olabileceği hakkında birkaç açıklamalar vardır.
+Arama puanları, aynı sonuç kümesindeki diğer belgelere göre eşleşme gücünü yansıtan genel ilgi açısından önemli bir fikir elde ediyor. Ancak puanlar bir sorgudan sonrakine her zaman tutarlı değildir, bu nedenle sorgularla çalışırken arama belgelerinin nasıl sıralandığına ilişkin küçük tutarsızlıklar fark edebilirsiniz. Bunun neden olabileceği hakkında birkaç açıklamalar vardır.
 
-| Nedeni | Açıklama |
+| Nedeni | Description |
 |-----------|-------------|
 | Veri Vola | Belge eklerken, değiştirirken veya silerken Dizin içeriği farklılık gösterir. Dizin güncelleştirmeleri zaman içinde işlenirken, eşleşen belgelerin arama puanlarını etkileyen terim frekansları değişir. |
 | Birden çok çoğaltma | Birden çok çoğaltma kullanan hizmetler için sorgular her bir çoğaltmaya paralel olarak verilir. Bir arama Puanını hesaplamak için kullanılan dizin istatistikleri çoğaltma temelinde hesaplanır, sonuçlar birleştirilir ve sorgu yanıtında sıralanır. Çoğaltmalar genellikle birbirleriyle yansıtılıyordur, ancak durum bakımından küçük farklılıklar nedeniyle istatistikler farklılık gösterebilir. Örneğin, bir çoğaltma, diğer çoğaltmalardan birleştirilmiş olan, istatistiklere katkıda bulunan belgeleri silmiş olabilir. Genellikle, çoğaltma başına istatistikteki farklılıklar daha küçük dizinlerde daha belirgin olur. |
 | Özdeş puanlar | Birden çok belgede aynı puan varsa, bunlardan biri önce görünebilir.  |
 
-### <a name="consistent-ordering"></a>Tutarlı sıralama
+### <a name="how-to-get-consistent-ordering"></a>Tutarlı sıralama nasıl alınır?
 
-Sonuç sıralamasına göre esneklik verildiğinde, tutarlılık bir uygulama gereksinimidir, diğer seçenekleri incelemek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralıyor. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, **sıralanabilir** olarak dizini oluşturulmuş herhangi bir alana uygulanabilen bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça tanımlayabilirsiniz.
+Tutarlı sıralama bir uygulama **`$orderby`** gereksinimsiyse, bir alanda [] ifadesini (Query-OData-Filter-OrderBy-Syntax.MD) açık bir şekilde tanımlayabilirsiniz. Sonuçları sıralamak için, yalnızca olarak dizini oluşturulmuş alanlar **`sortable`** kullanılabilir. **`$orderby`** **`orderby`** Alan adlarını ve jeo-uzamsal değerler [**`geo.distance()` işlevine**](query-odata-filter-orderby-syntax.md) çağrıları dahil etmek için parametresinin değerini belirtirseniz, bir ekleme derecelendirmesi, tarih ve konum alanlarında yaygın olarak kullanılan alanlar.
 
-Başka bir seçenek de [özel bir Puanlama profili](index-add-scoring-profiles.md)kullanıyor. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma özelliği sayesinde, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Ek Puanlama mantığı, her belge için arama puanları birbirinden farklı olduğundan çoğaltmalar arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [Derecelendirme algoritmasını](index-ranking-similarity.md) öneririz.
+Tutarlılığı etkileyen başka bir yaklaşım ise özel bir [Puanlama profili](index-add-scoring-profiles.md)kullanmaktır. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma özelliği sayesinde, arama sonuçlarında öğelerin derecelendirmesi üzerinde daha fazla denetim sağlar. Ek Puanlama mantığı, her belge için arama puanları birbirinden farklı olduğundan çoğaltmalar arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [Derecelendirme algoritmasını](index-ranking-similarity.md) öneririz.
 
 ## <a name="hit-highlighting"></a>İsabet vurgulama
 

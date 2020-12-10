@@ -7,13 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.custom: contperfq1
-ms.date: 10/2/2020
-ms.openlocfilehash: 022e2e25c96473f49468f2bd48e5ee997933baea
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/9/2020
+ms.openlocfilehash: 70a2d5fac643c9af6954f154e1c91813bbbfa5bc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348721"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008393"
 ---
 # <a name="outputs-from-azure-stream-analytics"></a>Azure Stream Analytics çıkış çıkışları
 
@@ -25,23 +25,23 @@ Bazı çıkış türleri [bölümleme](#partitioning)destekler ve [Çıkış top
 
 | Çıkış türü | Bölümleme | Güvenlik | 
 |-------------|--------------|----------|
-|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Evet|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure SQL Veritabanı](sql-database-output.md)|Evet, isteğe bağlı.|SQL kullanıcı kimlik doğrulaması </br> MSI (Önizleme)|
-|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Evet|SQL kullanıcı kimlik doğrulaması|
-|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Evet|MSI </br> Erişim anahtarı|
-|[Azure Event Hubs](event-hubs-output.md)|Evet, çıkış yapılandırmasında bölüm anahtarı sütununu ayarlamanız gerekir.|Erişim anahtarı|
-|[Power BI](power-bi-output.md)|No|Azure Active Directory Kullanıcı </br> MSI|
-|[Azure Tablo Depolama](table-storage-output.md)|Evet|Hesap anahtarı|
-|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Evet|Erişim anahtarı|
-|[Azure Service Bus konuları](service-bus-topics-output.md)|Evet|Erişim anahtarı|
-|[Azure Cosmos DB](azure-cosmos-db-output.md)|Evet|Erişim anahtarı|
-|[Azure İşlevleri](azure-functions-output.md)|Evet|Erişim anahtarı|
+|[Azure Data Lake Storage 1. Nesil](azure-data-lake-storage-gen1-output.md)|Yes|Azure Active Directory Kullanıcı </br> , Yönetilen kimlik|
+|[Azure SQL Veritabanı](sql-database-output.md)|Evet, isteğe bağlı.|SQL kullanıcı kimlik doğrulaması, </br> Yönetilen Kimlik (önizleme)|
+|[Azure Synapse Analytics](azure-synapse-analytics-output.md)|Yes|SQL kullanıcı kimlik doğrulaması, </br> Yönetilen Kimlik (önizleme)|
+|[BLOB depolama ve Azure Data Lake Gen 2](blob-storage-azure-data-lake-gen2-output.md)|Yes|Erişim anahtarı, </br> Yönetilen Kimlik (önizleme)|
+|[Azure Event Hubs](event-hubs-output.md)|Evet, çıkış yapılandırmasında bölüm anahtarı sütununu ayarlamanız gerekir.|Erişim anahtarı, </br> Yönetilen Kimlik (önizleme)|
+|[Power BI](power-bi-output.md)|No|Azure Active Directory Kullanıcı, </br> Yönetilen Kimlik|
+|[Azure Tablo Depolama](table-storage-output.md)|Yes|Hesap anahtarı|
+|[Azure Service Bus kuyrukları](service-bus-queues-output.md)|Yes|Erişim anahtarı|
+|[Azure Service Bus konuları](service-bus-topics-output.md)|Yes|Erişim anahtarı|
+|[Azure Cosmos DB](azure-cosmos-db-output.md)|Yes|Erişim anahtarı|
+|[Azure İşlevleri](azure-functions-output.md)|Yes|Erişim anahtarı|
 
 ## <a name="partitioning"></a>Bölümleme
 
 Stream Analytics, Power BI hariç tüm çıkışlara yönelik bölümleri destekler. Bölüm anahtarları ve çıkış yazıcısı sayısı hakkında daha fazla bilgi için ilgilendiğiniz belirli çıktı türü için makaleye bakın. Tüm çıkış makaleleri önceki bölüme bağlanır.  
 
-Ayrıca, bölümlerin daha gelişmiş olarak ayarlanması için, çıktı yazıcılarının sayısı `INTO <partition count>` sorgunuzda bir (bkz.) yan tümcesi kullanılarak denetlenebilir [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınız bölümlendirilmemişse, bir giriş bölümünde verilerin bulunmaması, geç varış süresinin sonuna kadar gecikmeye neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](./stream-analytics-time-handling.md).
+Ayrıca, bölümlerin daha gelişmiş olarak ayarlanması için, çıktı yazıcılarının sayısı `INTO <partition count>` sorgunuzda bir (bkz.) yan tümcesi kullanılarak denetlenebilir [](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)ve bu da istenen iş topolojisini elde etmek için yararlı olabilir. Çıkış bağdaştırıcınız bölümlendirilmemişse, bir giriş bölümünde verilerin bulunmaması, geç varış süresinin sonuna kadar gecikmeye neden olur. Bu gibi durumlarda, çıkış tek bir yazıcı ile birleştirilir ve bu da işlem hattınızda performans sorunlarına neden olabilir. Geç alma ilkesi hakkında daha fazla bilgi için bkz. [Azure Stream Analytics olay sırası konuları](./stream-analytics-time-handling.md).
 
 ## <a name="output-batch-size"></a>Çıkış toplu iş boyutu
 

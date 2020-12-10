@@ -4,14 +4,14 @@ description: Azure CLı kullanarak VM 'Leri ve ölçek kümesi örneklerini adan
 author: cynthn
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 09/25/2020
+ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d99f8c380b486ed818aff64782ca817dab41c916
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975290"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008427"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak adanmış konaklara dağıtma
  
@@ -65,14 +65,6 @@ az vm host group create \
 
 `--automatic-placement true`VM 'leri ve ölçek kümesi örneklerinizin konak grubundaki konaklara otomatik olarak yerleştirilmesini sağlamak için parametresini ekleyin. Daha fazla bilgi için bkz. [el ile ve otomatik yerleştirme ](../dedicated-hosts.md#manual-vs-automatic-placement).
 
-> [!IMPORTANT]
-> Otomatik yerleştirme Şu anda genel önizlemededir.
->
-> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
->
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="other-examples"></a>Diğer örnekler
 
@@ -95,7 +87,7 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ```
  
-## <a name="create-a-host"></a>Konak Oluşturma 
+## <a name="create-a-host"></a>Konak oluşturma 
 
 Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.  
 
@@ -133,16 +125,7 @@ VM 'yi belirli bir konağa yerleştirmek için, `--host` ile konak grubunu belir
 > [!WARNING]
 > Yeterli kaynağı olmayan bir konakta sanal makine oluşturursanız, sanal makine başarısız durumda oluşturulur. 
 
-## <a name="create-a-scale-set-preview"></a>Ölçek kümesi oluşturma (Önizleme)
-
-> [!IMPORTANT]
-> Adanmış konaklardaki sanal makine ölçek kümeleri Şu anda genel önizlemededir.
->
-> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
->
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. 
->
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="create-a-scale-set"></a>Ölçek kümesi oluşturma 
 
 Bir ölçek kümesi dağıttığınızda konak grubunu belirtirsiniz.
 

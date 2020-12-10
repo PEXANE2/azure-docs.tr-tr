@@ -8,16 +8,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/07/2020
+ms.openlocfilehash: a58bcff4e39c4a4a907cd8567b47b074ff299bd5
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019220"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008461"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUSıS) bilişsel hizmetler 'de veri depolama ve kaldırma
-LUO, anahtar tarafından belirtilen bölgeye karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. Bu veriler 30 gün boyunca depolanır. 
+
+LUO, anahtar tarafından belirtilen [bölgeye](luis-reference-regions.md) karşılık gelen bir Azure veri deposunda şifrelenmiş verileri depolar. 
+
+* Model, amaçlar ve söyleyme gibi modeli eğitmek için kullanılan veriler, uygulamanın kullanım ömrü için LUO 'ya kaydedilir. Bir sahip veya katkıda bulunan uygulamayı silerse, bu veriler onunla silinir. Uygulama 90 gün içinde kullanılmıyorsa, silinir. 
+
+* Uygulama yazarları, yayımlanan bir uygulamaya gönderilen söyleyler üzerinde [günlüğe kaydetmeyi etkinleştirmeyi](luis-how-to-review-endpoint-utterances.md#log-user-queries-to-enable-active-learning) seçebilir. Etkinleştirilirse, bu işlem 30 gün boyunca kaydedilir ve uygulama yazarı tarafından görüntülenebilir. Uygulama yayımlandığında günlüğe kaydetme etkinleştirilmemişse, bu veriler depolanmaz.
 
 ## <a name="export-and-delete-app"></a>Uygulamayı dışarı ve silme
 Kullanıcılar, uygulamayı [dışarı](luis-how-to-start-new-app.md#export-app) ve [silmeye](luis-how-to-start-new-app.md#delete-app) yönelik tam denetime sahiptir. 
@@ -33,7 +38,7 @@ Utterslar iki farklı yerde depolanabilir.
 
 ### <a name="delete-example-utterances-from-an-intent"></a>Bir amacınızdan örnek söyleyeni silme
 
-Eðssıs eğitimi için kullanılan örnekleri silin [LUIS](luis-reference-regions.md). LUSıS uygulamanızın bir örneğini silerseniz, bu, LUSıS Web hizmetinden kaldırılır ve dışarı aktarma için kullanılamaz.
+Eðssıs eğitimi için kullanılan örnekleri silin [](luis-reference-regions.md). LUSıS uygulamanızın bir örneğini silerseniz, bu, LUSıS Web hizmetinden kaldırılır ve dışarı aktarma için kullanılamaz.
 
 <a name="utterances-in-review"></a>
 
