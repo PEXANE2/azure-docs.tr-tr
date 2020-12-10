@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: fa99920c8e9d8cd532bb6230d6a337a038ee3e31
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 8e1f7bb2faaf9d2c706e63ae73b9e265eb95d09b
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929336"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007220"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Yönetilen kimlikler kullanma
 
@@ -109,7 +109,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
-2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın:
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/#functions)bakın:
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ Aşağıdaki adımlar, bir uygulama oluşturmak ve Azure PowerShell kullanarak b
 
 1. Gerekirse, [Azure PowerShell kılavuzunda](/powershell/azure/)bulunan yönergeleri kullanarak Azure PowerShell yükleyip `Login-AzAccount` Azure ile bağlantı oluşturmak için öğesini çalıştırın.
 
-2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/?view=azps-4.1.0#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
+2. Azure PowerShell kullanarak bir işlev uygulaması oluşturun. Azure Işlevleri ile Azure PowerShell kullanma hakkında daha fazla örnek için, [az. Functions başvurusuna](/powershell/module/az.functions/#functions)bakın. Aşağıdaki komut dosyası Ayrıca, `New-AzUserAssignedIdentity` [Azure PowerShell kullanarak Kullanıcı tarafından atanan yönetilen kimlik oluşturma, listeleme veya silme](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)ile ayrı olarak yüklenmesi gereken öğesinin kullanımını da sağlar.
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -324,7 +324,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 **IDENTITY_ENDPOINT** , uygulamanızın belirteç isteyebileceği yerel bir URL 'dir. Bir kaynağın belirtecini almak için, bu uç noktaya yönelik bir HTTP GET isteği oluşturun ve aşağıdaki parametreleri de dahil edin:
 
-> | Parametre adı    | İçinde     | Açıklama                                                                                                                                                                                                                                                                                                                                |
+> | Parametre adı    | İçinde     | Description                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | kaynak          | Sorgu  | Belirtecin alınması gereken kaynağın Azure AD Kaynak URI 'SI. Bu, [Azure AD kimlik doğrulamasını](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) veya DIĞER Kaynak URI 'Yi destekleyen Azure hizmetlerinden biridir.    |
 > | api-sürümü       | Sorgu  | Kullanılacak belirteç API 'sinin sürümü. Lütfen "2019-08-01" veya üstünü kullanın (Şu anda yalnızca "2017-09-01" sağlayan Linux tüketimini kullanmadıkça, Yukarıdaki nota bakın).                                                                                                                                                                                                                                                                 |
@@ -338,7 +338,7 @@ Yönetilen kimliğe sahip bir uygulama tanımlı iki ortam değişkenine sahipti
 
 Başarılı bir 200 Tamam yanıtı, aşağıdaki özelliklere sahip bir JSON gövdesi içerir:
 
-> | Özellik adı | Açıklama                                                                                                                                                                                                                                        |
+> | Özellik adı | Description                                                                                                                                                                                                                                        |
 > |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | access_token  | İstenen erişim belirteci. Çağıran Web hizmeti, alıcı Web hizmetinde kimlik doğrulaması yapmak için bu belirteci kullanabilir.                                                                                                                               |
 > | client_id     | Kullanılan kimliğin istemci KIMLIĞI.                                                                                                                                                                                                       |

@@ -8,19 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9777e4f9b2205d2f6cdf6158b035e2a18403d69f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/08/2020
+ms.openlocfilehash: ea2b44d05d25756a16b6b84f0734966b1f579848
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541467"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007611"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Uç nokta utbotları inceleyerek LUO uygulamasını geliştirme
 
 Doğru tahmine yönelik uç nokta dıklarını gözden geçirme işlemi, [etkin öğrenme](luis-concept-review-endpoint-utterances.md)olarak adlandırılır. Etkin öğrenme, uç nokta sorgularını yakalar ve kullanıcının gereken uç nokta utlerini seçer. Bu gerçek zamanlı olarak amacı belirlemek ve varlıkları işaretlemek için bu balonları gözden geçirin. Örnek ifadelerinizde bu değişiklikleri kabul edin, sonra da eğitim ve yayımlayın. LUO daha sonra, bir daha doğru şekilde daha doğru şekilde tanımlanır.
 
-## <a name="enable-active-learning"></a>Etkin öğrenmeyi etkinleştir
+## <a name="log-user-queries-to-enable-active-learning"></a>Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe kaydet
 
 Etkin öğrenmeyi etkinleştirmek için Kullanıcı sorgularını günlüğe yazmanız gerekir. Bu, ENDPOINT parametresi ve değeri ile [Endpoint sorgusu](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) çağırarak yapılır `log=true` .
 
@@ -61,7 +61,7 @@ Söylenişi 'i silmeniz gerekip gerekmediğini bilmiyorsanız, bunu hiçbiri ama
 
 ## <a name="disable-active-learning"></a>Etkin öğrenmeyi devre dışı bırak
 
-Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, [endpoint query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) `log=false` varsayılan değer false olduğundan, QueryString parametresi ve değeri ile Endpoint sorgusu ayarlanarak ve QueryString değeri olmadan gerçekleştirilir.
+Etkin öğrenmeyi devre dışı bırakmak için Kullanıcı sorgularını günlüğe eklemeyin. Bu, [](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) `log=false` varsayılan değer false olduğundan, QueryString parametresi ve değeri ile Endpoint sorgusu ayarlanarak ve QueryString değeri olmadan gerçekleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

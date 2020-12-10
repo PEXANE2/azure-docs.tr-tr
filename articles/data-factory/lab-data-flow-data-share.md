@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921034"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006206"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory ve Azure veri paylaşma kullanarak veri tümleştirme
 
@@ -72,7 +72,7 @@ Azure Data Factory bağlı hizmetler, dış kaynaklara yönelik bağlantı bilgi
     ![Portal yapılandırma 3](media/lab-data-flow-data-share/configure3.png)
 1. Yapılandıracağınız ilk bağlantılı hizmet bir Azure SQL DB 'dir. Veri deposu listesini filtrelemek için arama çubuğunu kullanabilirsiniz. **Azure SQL veritabanı** kutucuğuna tıklayın ve devam ' a tıklayın.
 
-    ![Portal yapılandırma 4](media/lab-data-flow-data-share/configure4.png)
+    ![Portal yapılandırma 4](media/lab-data-flow-data-share/configure-4.png)
 1. SQL DB Yapılandırma bölmesinde, bağlı hizmet adınız olarak ' SQLDB ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
     ![Portal yapılandırma 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ Azure Data Factory bağlı hizmetler, dış kaynaklara yönelik bağlantı bilgi
 
 1. Azure SYNAPSE Analytics bağlantılı hizmetini eklemek için aynı işlemi tekrarlayın. Bağlantılar sekmesinde **Yeni**' ye tıklayın. **Azure SYNAPSE Analytics** kutucuğunu seçin ve devam ' a tıklayın.
 
-    ![Portal yapılandırma 6](media/lab-data-flow-data-share/configure6.png)
+    ![Portal yapılandırma 6](media/lab-data-flow-data-share/configure-6.png)
 1. Bağlı hizmet yapılandırması bölmesinde, bağlı hizmet adınız olarak ' SQLDW ' girin. Data Factory 'nin veritabanınıza bağlanmasına izin vermek için kimlik bilgilerinizi girin. SQL kimlik doğrulaması kullanıyorsanız sunucu adı, veritabanı, Kullanıcı adı ve parolanızı girin. Bağlantıyı **Sına**' ya tıklayarak bağlantı bilgilerinizin doğru olduğunu doğrulayabilirsiniz. İşiniz bittiğinde **Oluştur** ' a tıklayın.
 
-    ![Portal yapılandırma 7](media/lab-data-flow-data-share/configure7.png)
+    ![Portal yapılandırma 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Azure Data Lake Storage 2. bağlı hizmeti oluşturma
 
@@ -128,7 +128,7 @@ Azure Data Factory işlem hattı, birlikte bir görevi gerçekleştiren etkinlik
     ![Portal kopyası 4](media/lab-data-flow-data-share/copy4.png)
 1. **Azure SQL veritabanı** 'nı arayın ve devam ' a tıklayın.
 
-    ![Portal kopyası 5](media/lab-data-flow-data-share/copy5.png)
+    ![Portal kopyası 5](media/lab-data-flow-data-share/copy-5.png)
 1. ' Üçlü Veri kümenizi ' çağırın. Bağlı hizmetiniz olarak ' SQLDB 'yi seçin. ' Dbo ' tablo adını seçin. Tablo adı açılır listesinden gezinme verileri. Şemayı **bağlantı/depodan** içeri aktarın. Bittiğinde Tamam ' a tıklayın.
 
     ![Portal kopyası 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
     ![Portal veri akışı 9](media/lab-data-flow-data-share/dataflow9.png)
 1. **Azure SQL veritabanı** kutucuğunu seçin ve devam ' a tıklayın. *Not: veri fabrikasındaki bağlayıcıların çoğunun eşleme veri akışında desteklenmediğini fark edebilirsiniz. Bu kaynaklardan birindeki verileri, kopyalama etkinliğini kullanarak desteklenen bir kaynağa dönüştürmek için* kullanın.
 
-    ![Portal veri akışı 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![Portal veri akışı 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. ' Üçlü Veri kümenizi çağırın. Bağlı hizmetiniz olarak ' SQLDB 'yi seçin. ' Dbo ' tablo adını seçin. Üçlü aşağı açılan tablo adı. Şemayı **bağlantı/depodan** içeri aktarın. Bittiğinde Tamam ' a tıklayın.
 
     ![Portal veri akışı 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Bu adımda oluşturulan veri akışı, önceki bölümde oluşturulan ' "Üçlü
 
 1. **Azure SYNAPSE Analytics** kutucuğunu seçin ve devam ' a tıklayın.
 
-    ![Portal havuzu 3](media/lab-data-flow-data-share/sink3.png)
+    ![Portal havuzu 3](media/lab-data-flow-data-share/sink-3.png)
 1. ' Aggregary Taxıdata ' veri kümenizi çağırın. Bağlı hizmetiniz olarak ' SQLDW ' seçeneğini belirleyin. **Yeni tablo oluştur** ' u seçin ve yeni tabloyu dbo olarak adlandırın. AggregateTaxiData. Bittiğinde Tamam 'a tıklayın
 
     ![Portal havuzu 4](media/lab-data-flow-data-share/sink4.png)

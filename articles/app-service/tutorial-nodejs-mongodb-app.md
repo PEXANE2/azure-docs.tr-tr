@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 25d5aa3961ad5dabd29ab4501d8f5076362d9df8
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: b3d88c99ab0e9e204eb4d7dd78dc319f889a5e7d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862284"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005537"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Öğretici: Azure 'da Node.js ve MongoDB uygulaması oluşturma
 
@@ -129,7 +129,7 @@ MongoDB için bu öğreticide [Azure Cosmos DB](/azure/documentdb/) kullanılır
 > Bu öğreticideki Azure Cosmos DB veritabanlarını kendi Azure aboneliğinizde oluşturmanız halinde ücret alınır. Azure Cosmos DB hesabını yedi gün boyunca ücretsiz kullanmak için [Azure Cosmos DB'yi ücretsiz deneyin](https://azure.microsoft.com/try/cosmosdb/) deneyimini kullanabilirsiniz. Azure'da ücretsiz bir MongoDB veritabanı oluşturmak için MongoDB kutucuğundaki **Oluştur** düğmesine tıklamanız yeterlidir. Veritabanı oluşturulduktan sonra portalda **Bağlantı Dizesi** sayfasına giderek öğreticinin sonraki bölümlerinde kullanmak üzere Azure Cosmos DB bağlantı dizenizi alın.
 >
 
-Cloud Shell, komutuyla bir Cosmos DB hesabı oluşturun [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create) .
+Cloud Shell, komutuyla bir Cosmos DB hesabı oluşturun [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) .
 
 Aşağıdaki komutta, yer tutucu için benzersiz bir Cosmos DB adı değiştirin *\<cosmosdb-name>* . Bu ad, Cosmos DB uç noktasının bir parçası olan `https://<cosmosdb-name>.documents.azure.com/` olarak kullanıldığından, adın Azure’daki tüm Cosmos DB hesaplarında benzersiz olması gerekir. Ad yalnızca küçük harf, rakam ve tire (-) karakteri içerebilir; 3 ila 50 karakter uzunluğunda olmalıdır.
 
@@ -163,7 +163,7 @@ Bu adımda, MEAN.js örnek uygulamanızı, MongoDB bağlantı dizesi kullanarak 
 
 ### <a name="retrieve-the-database-key"></a>Veritabanı anahtarını alma
 
-Cosmos DB veritabanına bağlanmak için veritabanı anahtarı gerekir. Cloud Shell, [`az cosmosdb list-keys`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-list-keys) birincil anahtarı almak için komutunu kullanın.
+Cosmos DB veritabanına bağlanmak için veritabanı anahtarı gerekir. Cloud Shell, [`az cosmosdb list-keys`](/cli/azure/cosmosdb#az-cosmosdb-list-keys) birincil anahtarı almak için komutunu kullanın.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb-name> --resource-group myResourceGroup
@@ -276,7 +276,7 @@ Bu adımda, MongoDB’ye bağlı Node.js uygulamanızı Azure App Service’e da
 
 Varsayılan olarak, MEAN.js projesi _config/env/local-production.js_ öğesini Git deposu dışında tutar. Bu nedenle, Azure uygulamanız için MongoDB Bağlantı dizenizi tanımlamak üzere uygulama ayarlarını kullanırsınız.
 
-Uygulama ayarlarını ayarlamak için [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) Cloud Shell komutunu kullanın. 
+Uygulama ayarlarını ayarlamak için [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) Cloud Shell komutunu kullanın. 
 
 Aşağıdaki örnek, `MONGODB_URI` Azure uygulamanızda bir uygulama ayarı yapılandırır. *\<app-name>*, *\<cosmosdb-name>* Ve *\<primary-master-key>* yer tutucularını değiştirin.
 
@@ -482,7 +482,7 @@ Tamamlandıktan sonra `git push` Azure uygulamanıza gidin ve yeni işlevleri de
 
 Node.js uygulamanız Azure App Service'te çalışırken, terminalinize yönlendirilen konsol günlüklerini alabilirsiniz. Böylece, uygulama hatalarını ayıklamanıza yardımcı olan tanılama iletilerinin aynısını alabilirsiniz.
 
-Günlük akışını başlatmak için [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) Cloud Shell komutunu kullanın.
+Günlük akışını başlatmak için [`az webapp log tail`](/cli/azure/webapp/log#az-webapp-log-tail) Cloud Shell komutunu kullanın.
 
 ```azurecli-interactive
 az webapp log tail --name <app-name> --resource-group myResourceGroup

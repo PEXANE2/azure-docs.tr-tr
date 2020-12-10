@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8166e2a937b905ae153e6b86cb026ff2be2415a8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 935ae74147219d8dc5f615c80ec36f24b6e32b15
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360556"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007781"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>Resource Manager’a erişmek için Windows VM sistem tarafından atanan yönetilen kimliği kullanma
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Bu hızlı başlangıçta, sistem tarafından atanmış yönetilen kimliğin etkinleştirildiği bir Windows sanal makinesini kullanarak Azure Resource Manager API'sine nasıl erişeceğiniz gösterilmektedir. Azure kaynaklarına yönelik yönetilen kimlikler Azure tarafından otomatik olarak yönetilir ve kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
+Bu öğreticide, sistem tarafından atanan yönetilen kimlik etkin bir Windows sanal makinesi kullanarak Azure Resource Manager API 'sine nasıl erişebileceğiniz gösterilmektedir. Azure kaynaklarına yönelik yönetilen kimlikler Azure tarafından otomatik olarak yönetilir ve kodunuza kimlik bilgileri girmenize gerek kalmadan Azure AD kimlik doğrulamasını destekleyen hizmetlerde kimlik doğrulaması yapmanıza olanak tanır. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"] 
 > * Azure Resource Manager’da Kaynak Grubuna VM'niz için erişim verme 
@@ -34,19 +34,23 @@ Bu hızlı başlangıçta, sistem tarafından atanmış yönetilen kimliğin etk
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+- Yönetilen kimliklerin temel olarak anlaşılmasıdır. Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](overview.md) inceleyin.
+- Azure hesabı, [ücretsiz bir hesap için kaydolun](https://azure.microsoft.com/free/).
+- Gerekli kaynak oluşturma ve rol yönetimi adımlarını gerçekleştirmek için uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
+- Ayrıca, sistem tarafından atanmış Yönetilen kimlikler etkinleştirilmiş bir Windows sanal makinesine de ihtiyacınız vardır.
+  - Bu öğretici için bir sanal makine oluşturmanız gerekiyorsa, [sistem tarafından atanan kimliğin etkin olduğu bir sanal makine oluşturma](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) başlıklı makaleyi izleyebilirsiniz.
 
 ## <a name="grant-your-vm-access-to-a-resource-group-in-resource-manager"></a>Resource Manager’da kaynak grubuna VM'niz için erişim verme
 
 Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure AD kimlik doğrulamasını destekleyen kaynaklarda kimlik doğrulaması yapmak için erişim belirteçleri alabilir.  Azure Resource Manager Azure AD kimlik doğrulamasını destekler.  Öncelikle bu VM’in sistem tarafından atanan yönetilen kimliğine Resource Manager’da bulunan bir kaynak için erişim izni vermemiz gerekir; bu durumda bu kaynak VM’nin içinde yer aldığı Kaynak Grubudur.  
 
 1.  **Kaynak Grupları** sekmesine gidin. 
-2.  **Windows VM** ’niz için oluşturduğunuz **Kaynak Grubu** ’nu seçin. 
+2.  **Windows VM**’niz için oluşturduğunuz **Kaynak Grubu**’nu seçin. 
 3.  Sol paneldeki **Erişim denetimi (IAM)** öğesine gidin. 
-4.  Ardından, **rol atamasını** **Windows VM** 'niz için yeni bir rol ataması ekleyin.  **Rol** olarak **Okuyucu** 'yu seçin. 
+4.  Ardından, **rol atamasını** **Windows VM**'niz için yeni bir rol ataması ekleyin.  **Rol** olarak **Okuyucu**'yu seçin. 
 5.  Sonraki açılan kutuda, kaynak **sanal makinesine** **erişim atayın** . 
-6.  Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları** 'nı seçin. 
-7.  Son olarak **Seç** altındaki açılan listeden Windows VM'nizi seçin ve **Kaydet** ’e tıklayın.
+6.  Ardından, **Abonelik** açılan listesinde uygun aboneliğin listelendiğinden emin olun. **Kaynak Grubu** için de **Tüm kaynak grupları**'nı seçin. 
+7.  Son olarak **Seç** altındaki açılan listeden Windows VM'nizi seçin ve **Kaydet**’e tıklayın.
 
     ![Alternatif resim metni](media/msi-tutorial-windows-vm-access-arm/msi-windows-permissions.png)
 
@@ -54,7 +58,7 @@ Azure kaynakları için yönetilen kimlikler kullanıldığında kodunuz Azure A
 
 Bu bölümde **PowerShell** kullanmanız gerekecektir.  **PowerShell** yüklü değilse [buradan](/powershell/azure/) indirin. 
 
-1.  Portalda, **Sanal Makineler** 'e ve Windows sanal makinenize gidin, ardından **Genel Bakış** 'ta **Bağlan** 'a tıklayın. 
+1.  Portalda, **Sanal Makineler**'e ve Windows sanal makinenize gidin, ardından **Genel Bakış**'ta **Bağlan**'a tıklayın. 
 2.  Windows VM 'yi oluştururken eklediğiniz **Kullanıcı adınızı** ve **parolanızı** girin. 
 3.  Sanal makineyle bir **Uzak Masaüstü bağlantısı** oluşturduğunuza göre, uzak oturumda **PowerShell** ' i açın. 
 4.  Invoke-WebRequest cmdlet 'ini kullanarak, Azure Resource Manager için bir erişim belirteci almak üzere Azure kaynakları uç noktası için yerel yönetilen kimliğe bir istek yapın.

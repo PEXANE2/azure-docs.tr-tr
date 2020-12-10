@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: b6cadbf5c3a33c1a954a47f37b33ad8703f40b69
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350747"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008173"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure SYNAPSE Studio 'da kaynak denetimi
 
@@ -138,6 +138,24 @@ SYNAPSE Studio 'dan ilk kez GitHub 'a bağlanıyorsanız, GitHub kuruluşuna ba�
 
 Bu adımları izledikten sonra, çalışma alanınız kuruluşunuzda hem genel hem de özel depolara bağlanabilir. Bağlanamıyorsanız, tarayıcı önbelleğini temizlemeyi ve yeniden denemeyi deneyin.
 
+#### <a name="already-connected-to-github-using-a-personal-account"></a>Kişisel hesap kullanılarak GitHub 'a zaten bağlanıldı
+
+GitHub 'a zaten bağlandıysanız ve yalnızca kişisel hesaba erişim izni verdiyseniz, bir kuruluşa izin vermek için aşağıdaki adımları izleyin.
+
+1. GitHub ve açık **Ayarlar**' a gidin.
+
+    ![GitHub ayarlarını aç](media/github-settings.png)
+
+1. **Uygulamalar**' ı seçin. **Yetkili OAuth uygulamaları** sekmesinde *Azure SYNAPSE*' i görmeniz gerekir.
+
+    ![OAuth uygulamalarını yetkilendir](media/authorize-app.png)
+
+1. *Azure SYNAPSE* ' ı seçin ve kuruluşunuza erişim izni verin.
+
+    ![Kuruluşa izin ver](media/grant-organization-permission.png)
+
+Bu adımları tamamladıktan sonra, çalışma alanınız kuruluşunuzda hem genel hem de özel depolara bağlanabilir.
+
 ## <a name="version-control"></a>Sürüm denetimi
 
 Sürüm denetimi sistemleri ( _kaynak denetimi_ olarak da bilinir), geliştiricilerin kod üzerinde işbirliği yapmasına ve değişiklikleri izlemesine olanak sağlar. Kaynak denetimi, çoklu geliştirici projelerine yönelik temel bir araçtır.
@@ -163,6 +181,7 @@ Varsayılan olarak, SYNAPSE Studio çalışma alanı şablonları oluşturur ve 
 ```
 
 Azure SYNAPSE Studio tek seferde yalnızca bir yayımlama dalına sahip olabilir. Yeni bir yayımlama dalı belirttiğinizde, önceki yayımlama dalı silinmez. Önceki yayımlama dalını kaldırmak istiyorsanız el ile silin.
+
 
 ### <a name="publish-code-changes"></a>Kod değişikliklerini Yayımla
 
@@ -192,7 +211,7 @@ Geçerli depoyla ilişkilendirmeyi kaldırdıktan sonra, git ayarlarınızı far
 
 ## <a name="best-practices-for-git-integration"></a>Git tümleştirmesi için en iyi uygulamalar
 
--   **İzinler**. Çalışma alanınıza bağlı bir git deposu olduktan sonra, çalışma alanınızdaki herhangi bir rolle git deponuza erişimi olan herkes, git modundaki SQL betiği, Not defteri, Spark iş tanımı, veri kümesi, veri akışı ve işlem hattı gibi yapıtları güncelleştirebilecektir. Genellikle her takım üyesinin çalışma alanını güncelleştirme izinlerine sahip olmasını istemezsiniz. Yalnızca SYNAPSE çalışma alanı yapıt yazarları için Git deposu izni verin. 
+-   **İzinler**. Çalışma alanınıza bağlı bir git deposu olduktan sonra, çalışma alanınızdaki herhangi bir rolle git deponuza erişebilen herkes, git modundaki SQL betiği, Not defteri, Spark iş tanımı, veri kümesi, veri akışı ve işlem hattı gibi yapıtları güncelleştirebilir. Genellikle her takım üyesinin çalışma alanını güncelleştirme izinlerine sahip olmasını istemezsiniz. Yalnızca SYNAPSE çalışma alanı yapıt yazarları için Git deposu izni verin. 
 -   **İşbirliği** yapın. İşbirliği dalında doğrudan iadelere izin vermeniz önerilir. Bu kısıtlama, her iade etme işleminin [özellik dalları oluşturma](source-control.md#creating-feature-branches)bölümünde açıklanan bir çekme isteği gözden geçirme süreci boyunca ilerlemesinin önlenmesi için hataları önlemeye yardımcı olabilir.
 -   **SYNAPSE canlı modu**. Git modunda yayımladıktan sonra tüm değişiklikler SYNAPSE canlı modda yansıtılır. SYNAPSE Live modunda yayımlama devre dışıdır. Ve doğru izin verdiyseniz yapıtları canlı modda görüntüleyebilirsiniz. 
 -   **Studio 'da yapıtları düzenleyin**. SYNAPSE Studio, çalışma alanı kaynak denetimini etkinleştirebileceğiniz ve değişiklikleri otomatik olarak git 'e eşitleyebileceğiniz tek yerdir. SDK, PowerShell ile yapılan herhangi bir değişiklik git ile eşitlenmez. Git etkinleştirildiğinde Studio 'daki yapıtları her zaman düzenlemenizi öneririz.

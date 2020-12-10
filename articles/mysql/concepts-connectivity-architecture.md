@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 5d3842675cf4b36dfaa95ed6041bf8c6f0978a53
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: b23ff9762ef519d66ed55f75f27dcb80e2d18039
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242883"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007254"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -50,12 +50,12 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı G
 | Hindistan Orta | 104.211.96.159     |
 | Hindistan Güney | 104.211.224.146  |
 | Hindistan Batı | 104.211.160.80    |
-| Doğu Japonya | 13.78.61.196, 191.237.240.43  |
+| Doğu Japonya | 13.78.61.196, 191.237.240.43, 40.79.192.23 |
 | Batı Japonya | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Güney Kore - Orta | 52.231.32.42   |
 | Güney Kore - Güney | 52.231.200.86    |
 | Orta Kuzey ABD | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
-| North Europe | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
+| Kuzey Avrupa | 40.113.93.91, 191.235.193.75, 52.138.224.6, 52.138.224.7    |
 | Güney Afrika - Kuzey  | 102.133.152.0    |
 | Güney Afrika - Batı | 102.133.24.0   |
 | Orta Güney ABD |13.66.62.124, 23.98.162.75, 104.214.16.39, 20.45.120.0   |
@@ -76,7 +76,7 @@ MySQL için Azure veritabanı, istemci uygulamaları ve MySQL sunucuları arası
 
 Bu özellik, 5,6, 5,7 ve 8,0 Altyapı sürümleriyle MySQL sunucuları için Azure veritabanı 'nda desteklenir.
 
-Yeniden yönlendirme desteği, Microsoft tarafından geliştirilen PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında mevcuttur ve, [PECL](https://pecl.php.net/package/mysqlnd_azure) Uygulamalarınızda yeniden yönlendirmeyi kullanma hakkında daha fazla bilgi için [yeniden yönlendirmeyi yapılandırma](./howto-redirection.md) makalesine bakın.
+Yeniden yönlendirme desteği, Microsoft tarafından geliştirilen PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında mevcuttur ve, [](https://pecl.php.net/package/mysqlnd_azure) Uygulamalarınızda yeniden yönlendirmeyi kullanma hakkında daha fazla bilgi için [yeniden yönlendirmeyi yapılandırma](./howto-redirection.md) makalesine bakın.
 
 > [!IMPORTANT]
 > PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) uzantısında yeniden yönlendirme desteği şu anda önizleme aşamasındadır.

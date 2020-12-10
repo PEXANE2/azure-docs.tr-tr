@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 84e257111e8da0546cf104e0cc5d3ac95a9294ba
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558683"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007526"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
@@ -45,7 +45,7 @@ Kudu App Service yapı sunucusuyla uygulamanız için yerel git dağıtımını 
 
 ### <a name="get-the-deployment-url"></a>Dağıtım URL 'sini al
 
-Mevcut bir uygulama için yerel git dağıtımını etkinleştirmek üzere URL 'YI almak için Cloud Shell çalıştırın [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) . \<app-name>Ve ' i uygulamanızın \<group-name> adlarıyla ve Azure Kaynak grubuyla değiştirin.
+Mevcut bir uygulama için yerel git dağıtımını etkinleştirmek üzere URL 'YI almak için Cloud Shell çalıştırın [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) . \<app-name>Ve ' i uygulamanızın \<group-name> adlarıyla ve Azure Kaynak grubuyla değiştirin.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app-name> --resource-group <group-name>
@@ -54,7 +54,7 @@ az webapp deployment source config-local-git --name <app-name> --resource-group 
 > Linux App-Service-plan kullanıyorsanız şu parametreyi eklemeniz gerekir:--Runtime Python | 3.7
 
 
-Ya da git özellikli yeni bir uygulama oluşturmak için, [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) Cloud Shell `--deployment-local-git` parametresiyle çalıştırın. , \<app-name> \<group-name> Ve ' yi \<plan-name> Yeni git uygulamanızın adı, Azure kaynak grubu ve Azure App Service planı ile değiştirin.
+Ya da git özellikli yeni bir uygulama oluşturmak için, [`az webapp create`](/cli/azure/webapp#az-webapp-create) Cloud Shell `--deployment-local-git` parametresiyle çalıştırın. , \<app-name> \<group-name> Ve ' yi \<plan-name> Yeni git uygulamanızın adı, Azure kaynak grubu ve Azure App Service planı ile değiştirin.
 
 ```azurecli-interactive
 az webapp create --name <app-name> --resource-group <group-name> --plan <plan-name> --deployment-local-git

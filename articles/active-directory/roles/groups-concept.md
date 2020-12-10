@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d014a901791f16ecdcb9c3d5f0858a8626cc1072
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 54988c8bbc4a9c3d448ac35f31e97e2d20228209
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007577"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>Azure Active Directory 'de rol atamalarını yönetmek için bulut gruplarını kullanma (Önizleme)
 
@@ -52,14 +52,12 @@ Olası ihlalin oluşmasını engellemek için grupların rollere nasıl atandı�
 
 Şu senaryolar Şu anda desteklenmiyor:  
 
-- Azure AD özel rollerine bulut grupları atama
-- Bir yönetim birimi veya uygulama kapsamı üzerinden Azure AD rollerine (yerleşik veya özel) bulut grupları atayın.
 - Azure AD rollerine şirket içi gruplar atama (yerleşik veya özel)
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
 - **Yönetilen Kullanıcı oturum açma özelliği için hazırlanan dağıtımı etkinleştir** ayarı, Grup aracılığıyla atamayı desteklemez.
-- *Yalnızca Azure AD P2 lisanslı müşteriler* : bir gruba hem Azure AD hem de PRIVILEGED IDENTITY Management (PIM) aracılığıyla bir rol için etkin olarak atamayın. Özellikle, oluşturulduktan sonra rol atanabilir bir gruba rol atamayın *ve* PIM 'yi kullanarak gruba bir rol atarsınız. Bu, kullanıcıların, PıM 'de etkin rol atamalarını görmemesi ve bu PıM atamasını kaldıramamasının gerektiği sorunlara yol açacaktır. Uygun atamalar Bu senaryoda etkilenmez. Bu atamayı yapmayı denerseniz, şöyle beklenmeyen davranışlar görebilirsiniz:
+- *Yalnızca Azure AD P2 lisanslı müşteriler*: bir gruba hem Azure AD hem de PRIVILEGED IDENTITY Management (PIM) aracılığıyla bir rol için etkin olarak atamayın. Özellikle, oluşturulduktan sonra rol atanabilir bir gruba rol atamayın *ve* PIM 'yi kullanarak gruba bir rol atarsınız. Bu, kullanıcıların, PıM 'de etkin rol atamalarını görmemesi ve bu PıM atamasını kaldıramamasının gerektiği sorunlara yol açacaktır. Uygun atamalar Bu senaryoda etkilenmez. Bu atamayı yapmayı denerseniz, şöyle beklenmeyen davranışlar görebilirsiniz:
   - Rol atamasının bitiş saati yanlış görüntülenebilir.
   - PıM portalında, (bir veya daha fazla grup ve doğrudan) bir atamaya göre kaç yöntemden bağımsız olarak **rollerim** yalnızca bir rol ataması gösterebilir.
 - *Yalnızca Azure AD P2 lisanslı müşterileri* Grubu sildikten sonra bile, PıM Kullanıcı arabirimindeki rolün uygun bir üyesi gösterilmeye devam eder. İşlevsel bir sorun yoktur; yalnızca Azure portal bir önbellek sorunudur.  

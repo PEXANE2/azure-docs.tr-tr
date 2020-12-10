@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 7def82160547b759c7ab4c40c681052747261920
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567087"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007849"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -41,7 +41,7 @@ Topolojideki parametrelerin değerleri, topolojiye başvuran grafik örnekleri o
 Grafik topolojileri ve grafik örneklerinin yaşam döngüsü aşağıdaki durum diyagramında gösterilmiştir.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Medya grafiği":::
+> :::image type="content" source="./media/media-graph/graph-topology-lifecycle.svg" alt-text="Graph topolojisi ve grafik örneği yaşam döngüsü":::
 
 [Graph topolojisi oluşturmaya](direct-methods.md#graphtopologyset)başlayabilirsiniz. Ardından, Bu topolojiyle işlemek istediğiniz her canlı video akışı için [bir grafik örneği oluşturursunuz](direct-methods.md#graphinstanceset). 
 
@@ -70,7 +70,7 @@ IoT Edge canlı video analizi, bir medya grafiğinde aşağıdaki düğüm türl
 
 #### <a name="rtsp-source"></a>RTSP kaynağı 
 
-Bir RTSP kaynak düğümü, bir [RTSP](https://tools.ietf.org/html/rfc2326 server)'den medya almanıza olanak sağlar. İzleme ve IP tabanlı kameralar, verileri telefon ve video kameralar gibi diğer cihaz türlerinden farklı olarak RTSP (gerçek zamanlı akış-protokol) adlı bir protokolde iletir. Bu protokol, bir sunucu (kamera) ile istemci arasındaki medya oturumlarını oluşturmak ve denetlemek için kullanılır. Bir medya grafiğindeki RTSP kaynak düğümü istemci olarak davranır ve bir RTSP sunucusuyla oturum oluşturabilir. Çoğu [IP kamerada](https://en.wikipedia.org/wiki/IP_camera) gibi birçok cihazın YERLEŞIK bir RTSP sunucusu vardır. [ONVIF](https://www.onvif.org/) MANTARIHLERIN RTSP [, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) uyumlu cihazların tanımına göre desteklenir. RTSP kaynak düğümü, kimliği doğrulanmış bir bağlantıyı etkinleştirmek için kimlik bilgileriyle birlikte bir RTSP URL 'SI belirtmenizi gerektirir.
+Bir RTSP kaynak düğümü, bir [RTSP](https://tools.ietf.org/html/rfc2326) sunucusundan medya almanıza olanak sağlar. İzleme ve IP tabanlı kameralar, verileri telefon ve video kameralar gibi diğer cihaz türlerinden farklı olarak RTSP (gerçek zamanlı akış-protokol) adlı bir protokolde iletir. Bu protokol, bir sunucu (kamera) ile istemci arasındaki medya oturumlarını oluşturmak ve denetlemek için kullanılır. Bir medya grafiğindeki RTSP kaynak düğümü istemci olarak davranır ve bir RTSP sunucusuyla oturum oluşturabilir. Çoğu [IP kamerada](https://en.wikipedia.org/wiki/IP_camera) gibi birçok cihazın YERLEŞIK bir RTSP sunucusu vardır. [ONVIF](https://www.onvif.org/) MANTARIHLERIN RTSP [, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) uyumlu cihazların tanımına göre desteklenir. RTSP kaynak düğümü, kimliği doğrulanmış bir bağlantıyı etkinleştirmek için kimlik bilgileriyle birlikte bir RTSP URL 'SI belirtmenizi gerektirir.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub ileti kaynağı 
 

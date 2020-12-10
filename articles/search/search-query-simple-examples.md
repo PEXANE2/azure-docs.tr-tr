@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/05/2020
-ms.openlocfilehash: 834e4fe8c7b3923f40a07c02c0310200db222308
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/09/2020
+ms.openlocfilehash: 027852216b3f2055a5a381d00aff94526953b898
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697263"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007883"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama basit bir sorgu oluşturma
 
@@ -22,6 +22,14 @@ Azure Bilişsel Arama 'de [basit sorgu söz dizimi](query-simple-syntax.md) , bi
 Bu makalede, `search=` bir [arama belgeleri](/rest/api/searchservice/search-documents) işleminin parametresini doldurarak basit sözdizimini göstermek için örnekleri kullanırız.
 
 Alternatif sorgu söz dizimi, belirsiz ve joker karakter araması gibi daha karmaşık sorgu yapılarını destekleyerek, işlemek için ek süre sürebilen [tam Lucene](query-lucene-syntax.md)' dir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler için bkz. [tam Lucene sözdizimini kullanma](search-query-lucene-examples.md).
+
+Sorgu göndermek için aşağıdaki araçlardan ve API 'lerden seçim yapın.
+
+| Yöntem | Description |
+|-------------|-------------|
+| [Arama Gezgini (portal)](search-explorer.md) | Dizin ve API-sürüm seçimleri için bir arama çubuğu ve seçenekler sağlar. Sonuçlar JSON belgeleri olarak döndürülür. Araştırma, test ve doğrulama için önerilir. <br/>[Daha fazla bilgi edinin.](search-get-started-portal.md#query-index) | 
+| [Postman veya Visual Studio Code](search-get-started-rest.md) | Web test araçları, [arama belgelerinin Rest çağrılarını Formülleyen](/rest/api/searchservice/search-documents) harika bir seçimdir. REST API, Azure Bilişsel Arama tüm programlama işlemlerini destekler, böylece belirli bir görevde araştırmayı odaklamak için istekleri etkileşimli bir şekilde verebilirsiniz.  |
+| [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Azure Bilişsel Arama dizinini sorgulamak için kullanılabilen istemci.  <br/>[Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md)  |
 
 ## <a name="formulate-requests-in-postman"></a>İstekleri Postman 'da formülleştirmek
 

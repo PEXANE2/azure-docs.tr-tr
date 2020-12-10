@@ -1,15 +1,14 @@
 ---
 title: SSS-Azure sanal makinelerini yedekleme
 description: Bu makalede, Azure VM 'Leri Azure Backup hizmetiyle yedekleme hakkında sık sorulan soruların yanıtlarını bulun.
-ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: ba2779305302e91f68cb2664c90f53fdf9a9ca55
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324797"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008359"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Sık sorulan sorular-Azure VM 'lerini yedekleme
 
@@ -163,11 +162,20 @@ Gizli/anahtar alma işlemleri gibi işlemler bu adımı gerektirmez ve geri yük
 
 ### <a name="can-i-access-the-vm-once-restored-due-to-a-vm-having-broken-relationship-with-domain-controller"></a>VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle, geri yüklendikten sonra sanal makineye erişebilir miyim?
 
-Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](./backup-azure-arm-restore-vms.md#post-restore-steps) bakın
+Evet, bir VM 'nin etki alanı denetleyicisiyle ilişkisi kopmuş olması nedeniyle VM 'ye bir kez erişirsiniz. Daha fazla bilgi için bu [makaleye](./backup-azure-arm-restore-vms.md#post-restore-steps)bakın.
+
+### <a name="can-i-cancel-an-in-progress-restore-job"></a>Devam eden bir geri yükleme işini iptal edebilir miyim?
+Hayır, devam eden geri yükleme işini iptal edemezsiniz.
 
 ### <a name="why-restore-operation-is-taking-long-time-to-complete"></a>Geri yükleme işleminin tamamlanması neden uzun sürüyor?
 
 Toplam geri yükleme süresi, saniye başına giriş/çıkış işlemlerine (ıOPS) ve depolama hesabının aktarım hızına bağlıdır. Hedef depolama hesabı diğer uygulama okuma ve yazma işlemleriyle birlikte yüklenirse toplam geri yükleme süresi etkilenebilir. Geri yükleme işlemini geliştirmek için, diğer uygulama verileriyle yüklenmeyen bir depolama hesabı seçin.
+
+### <a name="how-do-we-handle-create-new-virtual-machine-restore-type-conflicts-with-governance-policies"></a>"Yeni sanal makine oluştur" öğesini nasıl işleyeceğiz-geri yükleme türü idare ilkeleriyle çelişiyor mi?
+
+Azure Backup, kurtarma noktalarından "Attach" disklerini kullanır ve görüntü başvurularınıza veya galerilerine bakmaz. Bu nedenle, ilkede "storageProfile. osDisk. createOption öğesini Ekle" seçeneğini denetleyebilir ve betik koşulu şöyle olacaktır:
+
+`if (storageProfile.osDisk.createOption == "Attach") then { exclude <Policy> }`
 
 ## <a name="manage-vm-backups"></a>VM yedeklemelerini yönetme
 

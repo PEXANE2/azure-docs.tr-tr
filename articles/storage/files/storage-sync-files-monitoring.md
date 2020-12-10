@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 59c489fac8bf02263cc51833675af414d5de6a52
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686013"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008308"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -42,14 +42,14 @@ Azure Dosya Eşitleme ölçümleri varsayılan olarak etkindir ve 15 dakikada bi
 
 Azure Dosya Eşitleme için aşağıdaki ölçümler Azure Izleyici 'de bulunabilir:
 
-| Ölçüm adı | Açıklama |
+| Ölçüm adı | Description |
 |-|-|
 | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme).<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
 | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu.<br><br>**Note**: Bu ölçüm gelecekte kaldırılacak. Geri çekilen verilerin boyutunu izlemek için bulut katmanlama geri çekme boyutu ölçümünü kullanın.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: sunucu adı |
-| Bulut katmanlama geri çağırma boyutu | Geri çekilen verilerin boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: sunucu adı, eşitleme grubu adı |
-| Uygulamaya göre bulut katmanlama geri çağırma boyutu | Uygulama tarafından geri çekilen verilerin boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: uygulama adı, sunucu adı, eşitleme grubu adı |
-| Bulut katmanlama geri çekme performansı | Veri geri çağırma üretilen iş boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli boyut: sunucu adı, eşitleme grubu adı |
-| Dosyalar eşitlenmiyor | Eşitleme başarısız olan dosyaların sayısı.<br><br>Birim: sayım<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
+| Bulut katmanlama geri çağırma boyutu | Geri çekilen verilerin boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu adı, eşitleme grubu adı |
+| Uygulamaya göre bulut katmanlama geri çağırma boyutu | Uygulama tarafından geri çekilen verilerin boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: uygulama adı, sunucu adı, eşitleme grubu adı |
+| Bulut katmanlama geri çekme performansı | Veri geri çağırma üretilen iş boyutu.<br><br>Birim: bayt<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu adı, eşitleme grubu adı |
+| Dosyalar eşitlenmiyor | Eşitleme başarısız olan dosyaların sayısı.<br><br>Birim: sayım<br>Toplama türleri: ortalama, toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
 | Eşitlenen dosyalar | Aktarılan dosya sayısı (karşıya yükleme ve indirme).<br><br>Birim: sayım<br>Toplama türü: Toplam<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
 | Sunucu çevrimiçi durumu | Sunucudan alınan sinyal sayısı.<br><br>Birim: sayım<br>Toplama türü: en fazla<br>Geçerli boyut: sunucu adı |
 | Eşitleme oturumu sonucu | Eşitleme oturumu sonucu (1 = başarılı eşitleme oturumu; 0 = başarısız eşitleme oturumu)<br><br>Birim: sayım<br>Toplama türleri: en fazla<br>Geçerli Boyutlar: sunucu uç noktası adı, eşitleme yönü, eşitleme grubu adı |
@@ -118,7 +118,7 @@ Portalda bir **sunucu uç noktasının** durumunu görüntülemek Için, **depol
 
 - Aşağıdaki ölçüm grafikleri, depolama eşitleme hizmeti portalında görüntülenebilir:
 
-  | Ölçüm adı | Açıklama | Dikey pencere adı |
+  | Ölçüm adı | Description | Dikey pencere adı |
   |-|-|-|
   | Eşitlenen baytlar | Aktarılan verilerin boyutu (karşıya yükleme ve indirme) | Eşitleme grubu, sunucu uç noktası |
   | Bulut katmanlama geri çağırma | Geri çekilen verilerin boyutu | Kayıtlı sunucular |
@@ -178,7 +178,7 @@ Sunucuda Azure Dosya Eşitleme performans sayaçlarını görüntülemek için p
 
 Azure Dosya Eşitleme için aşağıdaki performans sayaçları performans Izleyicisinde kullanılabilir:
 
-| Performans Object\sayaç adı | Açıklama |
+| Performans Object\sayaç adı | Description |
 |-|-|
 | AFS bayt Transferred\indirilen bayt/sn | Saniye başına indirilen bayt sayısı. |
 | AFS bayt Transferred\karşıya yüklenen bayt/sn | Saniye başına karşıya yüklenen bayt sayısı. |

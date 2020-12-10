@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: f0aaa82db61b5f40e42d6dad641bc09d5add9d0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 621402975411afb63055a7d6a45d86d9e026e284
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89078342"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007764"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus - Event Grid tümleştirmesine Genel Bakış
 
@@ -39,7 +39,9 @@ Service Bus ad alanına gidin ve ardından **erişim denetimi (IAM)** seçeneği
 Service Bus şu anda iki senaryo için olaylar gönderir:
 
 * [ActiveMessagesWithNoListenersAvailable](#active-messages-available-event)
-* DeadletterMessagesAvailable
+* [DeadletterMessagesAvailable](#deadletter-messages-available-event)
+* [Activemessagesavailabledönembildirimleri](#active-messages-available-periodic-notifications)
+* [DeadletterMessagesAvailablePeriodicNotifications](#deadletter-messages-available-periodic-notifications)
 
 Ayrıca Service Bus, standart Event Grid güvenliğini ve [kimlik doğrulaması mekanizmalarını](../event-grid/security-authentication.md) da kullanır.
 
@@ -71,7 +73,7 @@ Bu olayın şeması:
 }
 ```
 
-#### <a name="dead-letter-messages-available-event"></a>Geçerliliğini Yitirmiş İletiler Kullanılabilir olayı
+#### <a name="deadletter-messages-available-event"></a>Iletileri sahipsiz kullanılabilir olayı
 
 İletiler içeren ve etkin alıcılar içermeyen Geçerliliğini Yitirmiş kuyruk başına en az bir olay alırsınız.
 
@@ -82,6 +84,58 @@ Bu olayın şeması:
   "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
   "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
   "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailableWithNoListener",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="active-messages-available-periodic-notifications"></a>Etkin Iletiler kullanılabilir dönemsel bildirimler
+
+Bu olay, belirli bir kuyrukta veya abonelikte etkin dinleyiciler olsa bile belirli bir kuyrukta veya abonelikte etkin iletileriniz varsa düzenli olarak oluşturulur.
+
+Olay şeması aşağıdaki gibidir.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Iletileri sahipsiz kullanılabilir düzenli bildirimler
+
+Bu olay, belirli bir kuyruğun veya aboneliğin sahipsiz varlığında etkin dinleyiciler olsa bile, belirli bir kuyrukta veya abonelikte iletileri yok saydıysanız düzenli olarak oluşturulur.
+
+Olay şeması aşağıdaki gibidir.
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
   "eventTime": "2018-02-14T05:12:53.4133526Z",
   "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
   "data": {
@@ -120,7 +174,7 @@ Service Bus ad alanları için Event Grid abonelikleri oluşturmanın üç farkl
 Yeni Event Grid aboneliği oluşturmak için aşağıdakileri yapın:
 1. Azure portalında ad alanınıza gidin.
 2. Sol bölmede **Event Grid**’i seçin. 
-3. **Olay aboneliği**seçin.  
+3. **Olay aboneliği** seçin.  
 
    Aşağıdaki resimde, bir Event Grid aboneliği içeren bir ad alanı gösterilmektedir:
 

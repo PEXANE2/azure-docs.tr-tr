@@ -8,23 +8,19 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/08/2020
+ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018914"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007980"
 ---
 # <a name="add-contributors-to-your-app"></a>Uygulamanıza katkıda bulunanlar ekleyin
 
-Uygulama sahibi, uygulamalara katkıda bulunanlar ekleyebilir. Bu ortak çalışanlar, modeli değiştirebilir, eğleyebilir ve uygulamayı yayımlayabilir.
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+Uygulama sahibi, uygulamalara katkıda bulunanlar ekleyebilir. Bu katkıda bulunanlar, modeli değiştirebilir, eğleyebilir ve uygulamayı yayımlayabilir. Hesabınızı [geçirdikten](luis-migration-authoring.md) sonra, _katkıda bulunanlar_ , **Access Control (IAM)** sayfasını kullanarak yazma kaynağı için Azure Portal yönetilir. Ortak çalışan e-posta adresini ve _katkıda_ bulunan rolünü kullanarak bir kullanıcı ekleyin.
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Azure yazma kaynağına katkıda bulunan ekleme
-
-Aşağıdaki yordam, Azure yazma kaynağını kullanmak için **geçirilmiş** tüm kullanıcılar içindir.
 
 LUSıS yazma deneyiminiz, LUıN portalındaki **Manage-> Azure kaynakları** sayfasında bir yazma kaynağına bağlıysa geçirdiniz.
 
@@ -41,26 +37,15 @@ LUSıS yazma deneyiminiz, LUıN portalındaki **Manage-> Azure kaynakları** say
 
     Bu rol atamasıyla ilgili sorun yaşıyorsanız, [Azure rol atamalarını](../../role-based-access-control/role-assignments-portal.md) ve [Azure erişim denetimi sorunlarını giderme](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments)' yi gözden geçirin.
 
-## <a name="add-collaborator-to-luis-app"></a>LUSıS uygulamasına ortak çalışan ekleme
+## <a name="view-the-app-as-a-contributor"></a>Uygulamayı katkıda bulunan olarak görüntüleme
 
-Aşağıdaki yordam, Azure yazma kaynağını kullanmak için **geçirilmeyen** tüm kullanıcılar içindir.
+Katkıda bulunan olarak eklendikten sonra, [Luo portalında oturum açın](sign-in-luis-portal.md).
 
-LUSıS yazma deneyiminizin bir yazma kaynağına bağlı olmaması durumunda, LUSıS portalındaki **Manage-> Azure kaynaklarını yönetme** sayfasında geçirilmemiş olursunuz.
-
-Uygulamanın tek bir yazarı vardır, sahibi, ancak birçok ortak çalışan olabilir. Ortak çalışanların LUSıS uygulamanızı düzenlemesine izin vermek için, kullandıkları e-postayı, güvenilir olmayan bir şekilde, BASIS portalına erişmek için eklemeniz gerekir. Bunlar eklendikten sonra, uygulama LUı portalında görüntülenir.
-
-1. Sağ üst menüden **Yönet** ' i seçin ve ardından sol menüdeki **ortak çalışanlar** ' ı seçin.
-
-1. Araç çubuğundan **ortak çalışan Ekle** ' yi seçin.
-
-1. Ortak çalışanın LUG portalında oturum açmak için kullandığı e-posta adresini girin.
-
-    ![Ortak çalışan e-posta adresini ekle](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>Birden çok e-posta içeren kullanıcılar
 
-Bir LUO uygulamasına katkıda bulunanlar/ortak çalışanlar eklerseniz, tam e-posta adresini belirtirsiniz. Azure Active Directory (Azure AD), tek bir kullanıcının birbirinin yerine birden fazla e-posta hesabına sahip olmasına izin verdiğinden, lug, kullanıcının katkıda bulunan/ortak çalışan eklerken belirtilen e-posta adresiyle oturum açmasını gerektirir.
+Bir LUO uygulamasına katkıda bulunanlar eklerseniz, tam e-posta adresini belirtirsiniz. Azure Active Directory (Azure AD), tek bir kullanıcının birbirinin yerine birden fazla e-posta hesabına sahip olmasına izin verdiğinden, lug, kullanıcının katkıda bulunan ' i eklerken belirtilen e-posta adresiyle oturum açmasını gerektirir.
 
 <a name="owner-and-collaborators"></a>
 

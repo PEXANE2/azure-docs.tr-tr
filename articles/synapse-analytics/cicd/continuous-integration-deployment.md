@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 5dbd49312b58dc656e2239e8a0a4acea614023de
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317193"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008099"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure SYNAPSE çalışma alanı için sürekli tümleştirme ve teslim
 
@@ -107,7 +107,13 @@ SYNAPSE çalışma alanı, SQL betiği, Not defteri, Spark iş tanımı, dataflo
 
      ![Uzantı Ekle](media/add-extension-task.png)
 
-1.  Görevde ilgili git deposu bilgilerini **workspace_publish** sağlayın ve hedef çalışma alanı için kaynak grubu, bölge, ad ve bulut ortamı ' nı seçin. İhtiyacınız varsa parametreleri ve değerleri sağlayın.
+1.  Görevde **..** . seçeneğini belirleyin. şablon dosyasını seçmek için **şablon** kutusunun yanındaki öğesini seçin.
+
+1. Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin.
+
+1. Hedef çalışma alanının bağlantısını, kaynak grubunu ve adını seçin. 
+
+1. Seç **...** **şablon parametrelerini geçersiz kıl** kutusunun yanında, hedef çalışma alanı için istenen parametre değerlerini girin. 
 
     ![SYNAPSE çalışma alanı dağıtma](media/create-release-artifacts-deployment.png)
 

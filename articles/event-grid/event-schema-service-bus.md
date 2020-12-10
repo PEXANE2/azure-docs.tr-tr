@@ -3,16 +3,16 @@ title: Event Grid kaynak olarak Azure Service Bus
 description: Azure Event Grid Service Bus olaylar için belirtilen özellikleri açıklar
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 81293321b3a8fb989023a231c905996b4059bd81
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34c6990c4e6e87304c457a5b2ca6459c404c8d9a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86121143"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008121"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid kaynak olarak Azure Service Bus
 
-Bu makalede Service Bus olayları için özellikler ve şema sağlanmaktadır.Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede Service Bus olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
 
 ## <a name="event-grid-event-schema"></a>Event Grid olay şeması
 
@@ -24,8 +24,12 @@ Service Bus aşağıdaki olay türlerini yayar:
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Bir kuyrukta veya abonelikte etkin iletiler olduğunda ve hiçbir alıcı dinlemeden oluşturulur. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Sahipsiz bir kuyrukta etkin iletiler olduğunda ve etkin dinleyici olmadığında tetiklenir. |
+| Microsoft. ServiceBus. Activemessagesavailabledönemnotifications | Belirli bir kuyrukta veya abonelikte etkin dinleyiciler olsa bile, bir kuyrukta veya abonelikte etkin iletiler varsa, düzenli olarak oluşturulur. |
+| Microsoft. ServiceBus. DeadletterMessagesAvailablePeriodicNotifications | Belirli bir kuyruğun veya aboneliğin sahipsiz varlığında etkin dinleyiciler olsa bile, bir kuyruğun veya aboneliğin sahipsiz varlığında iletiler varsa düzenli olarak oluşturulur. | 
 
 ### <a name="example-event"></a>Örnek olay
+
+#### <a name="active-messages-available-with-no-listeners"></a>Dinleyiciyle kullanılabilen etkin iletiler
 
 Aşağıdaki örnekte, hiçbir dinleyici olayı olmayan etkin iletilerin şeması gösterilmektedir:
 
@@ -49,6 +53,8 @@ Aşağıdaki örnekte, hiçbir dinleyici olayı olmayan etkin iletilerin şemas�
 }]
 ```
 
+#### <a name="deadletter-messages-available-with-no-listener"></a>Dinleyiciye sahip olmayan Iletileri sahipsiz kullanılabilir
+
 Geçerliliği kalmamış bir sıra olayının şeması benzerdir:
 
 ```json
@@ -71,11 +77,55 @@ Geçerliliği kalmamış bir sıra olayının şeması benzerdir:
 }]
 ```
 
+#### <a name="active-messages-available-periodic-notifications"></a>Etkin Iletiler kullanılabilir dönemsel bildirimler
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.ActiveMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
+#### <a name="deadletter-messages-available-periodic-notifications"></a>Iletileri sahipsiz kullanılabilir düzenli bildirimler
+
+```json
+[{
+  "topic": "/subscriptions/<subscription id>/resourcegroups/DemoGroup/providers/Microsoft.ServiceBus/namespaces/<YOUR SERVICE BUS NAMESPACE WILL SHOW HERE>",
+  "subject": "topics/<service bus topic>/subscriptions/<service bus subscription>",
+  "eventType": "Microsoft.ServiceBus.DeadletterMessagesAvailablePeriodicNotifications",
+  "eventTime": "2018-02-14T05:12:53.4133526Z",
+  "id": "dede87b0-3656-419c-acaf-70c95ddc60f5",
+  "data": {
+    "namespaceName": "YOUR SERVICE BUS NAMESPACE WILL SHOW HERE",
+    "requestUri": "https://YOUR-SERVICE-BUS-NAMESPACE-WILL-SHOW-HERE.servicebus.windows.net/TOPIC-NAME/subscriptions/SUBSCRIPTIONNAME/$deadletterqueue/messages/head",
+    "entityType": "subscriber",
+    "queueName": "QUEUE NAME IF QUEUE",
+    "topicName": "TOPIC NAME IF TOPIC",
+    "subscriptionName": "SUBSCRIPTION NAME"
+  },
+  "dataVersion": "1",
+  "metadataVersion": "1"
+}]
+```
+
 ### <a name="event-properties"></a>Olay özellikleri
 
 Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
 | subject | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
@@ -88,7 +138,7 @@ Bir olay aşağıdaki en üst düzey verilere sahiptir:
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
-| Özellik | Tür | Açıklama |
+| Özellik | Tür | Description |
 | -------- | ---- | ----------- |
 | Uz | string | Kaynağın mevcut olduğu ad alanı Service Bus. |
 | requestUri | string | Olayı yayan belirli bir sıranın veya aboneliğin URI 'SI. |

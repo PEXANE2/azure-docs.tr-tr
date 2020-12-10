@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 31ae4605b6cc9e26c89beea692fe61fcbda49c4c
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621510"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007594"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Redin için Azure önbelleği Azure özel bağlantısı (Genel Önizleme)
 Bu makalede, Azure portal kullanarak özel bir uç nokta ile Redsıs örneği için bir sanal ağ ve Azure önbelleği oluşturmayı öğreneceksiniz. Ayrıca, Redsıs örneği için mevcut bir Azure önbelleğine özel bir uç nokta eklemeyi öğreneceksiniz.
@@ -224,7 +224,12 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 ```
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Ağ güvenlik grupları (NSG) özel uç noktalar için etkin mi?
-Hayır, Özel uç noktalar için devre dışı bırakılmıştır. Ancak, alt ağda başka kaynaklar varsa NSG zorlaması bu kaynaklara uygulanır.
+Hayır, Özel uç noktalar için devre dışı bırakılmıştır. Özel uç noktayı içeren alt ağlarda NSG ile ilişkili olabilir, kurallar özel uç nokta tarafından işlenen trafikte geçerli olmayacaktır. Bir alt ağda özel uç noktalar dağıtmak için [ağ ilkeleri zorlamasının devre dışı](../private-link/disable-private-endpoint-network-policy.md) olması gerekir. NSG aynı alt ağda barındırılan diğer iş yükleri üzerinde de zorlanır. Herhangi bir istemci alt ağındaki rotalar bir/32 öneki kullanacaktır, varsayılan yönlendirme davranışının değiştirilmesi benzer bir UDR gerektirir. 
+
+Kaynak istemcilerde giden trafik için NSG kurallarını kullanarak trafiği denetleyin. Özel uç nokta yollarını geçersiz kılmak için/32 ön ekiyle tek tek yolları dağıtın. Giden bağlantılar için NSG akış günlükleri ve izleme bilgileri hala destekleniyor ve kullanılabilir
+
+### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>Güvenlik duvarı kurallarını özel uç noktalarla kullanabilir miyim?
+Hayır, bu özel uç noktaların geçerli bir sınırlamasıdır. Önbellek üzerinde güvenlik duvarı kuralları yapılandırılmışsa, Özel uç nokta düzgün çalışmaz.
 
 ### <a name="how-can-i-connect-to-a-clustered-cache"></a>Kümelenmiş bir önbelleğe nasıl bağlanabilirim?
 `publicNetworkAccess` olarak ayarlanması gerekir `Disabled` ve yalnızca bir özel uç nokta bağlantısı olabilir.

@@ -7,12 +7,12 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 76d82695f0f43638e840589c52d6713ae36c1608
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607815"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008036"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
@@ -56,7 +56,7 @@ Yayımlama profili, uygulama düzeyinde bir kimlik bilgileridir. Yayımlama prof
 
 # <a name="service-principal"></a>[Hizmet sorumlusu](#tab/service-principal)
 
-[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac&preserve-view=true) komutuyla bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
+[Azure CLI](/cli/azure/)'de [az ad SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) komutuyla bir [hizmet sorumlusu](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) veya **deneyin** düğmesini seçerek çalıştırın.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -88,7 +88,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -102,7 +102,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
 
 ```yaml
 - uses: azure/login@v1
@@ -116,7 +116,7 @@ Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure otu
 
 Docker oturum açma eylemiyle kullanılacak gizli dizileri tanımlayın. Bu belgedeki örnek, kapsayıcı kayıt defteri için Azure Container Registry kullanır. 
 
-1. Azure portal veya Docker 'daki kapsayıcınıza gidin ve Kullanıcı adını ve parolayı kopyalayın. Azure Container Registry Kullanıcı adı ve parolayı, **Settings**  >  kayıt defteriniz için ayarlar **erişim tuşları** altında Azure Portal bulabilirsiniz. 
+1. Azure portal veya Docker 'daki kapsayıcınıza gidin ve Kullanıcı adını ve parolayı kopyalayın. Azure Container Registry Kullanıcı adı ve parolayı,   >  kayıt defteriniz için ayarlar **erişim tuşları** altında Azure Portal bulabilirsiniz. 
 
 2. Adlı kayıt defteri Kullanıcı adı için yeni bir gizli dizi tanımlayın `REGISTRY_USERNAME` . 
 
@@ -185,7 +185,7 @@ Görüntünüzü App Service özel bir kapsayıcıya dağıtmak için `azure/web
 | **uygulama adı** | Istenir App Service uygulamasının adı | 
 | **Yayımlama profili** | Seçim Web Apps (Windows ve Linux) ve Web uygulaması kapsayıcıları (Linux) için geçerlidir. Çoklu kapsayıcı senaryosu desteklenmiyor. \*Web dağıtımı gizli dizileri ile profil (. publishsettings) dosya içeriğini yayımlama | 
 | **yuva adı** | Seçim Üretim yuvası dışında mevcut bir yuva girin |
-| **package** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
+| **leyebilir** | Seçim Yalnızca Web uygulaması için geçerlidir: paket veya klasör yolu. \*. zip, \* . war, \* . jar veya dağıtılacak bir klasör |
 | **yansımasını** | Istenir Yalnızca Web uygulaması kapsayıcıları için geçerlidir: tamamen nitelenmiş kapsayıcı görüntüsü adını belirtin. Örneğin, ' myregistry.azurecr.io/nginx:latest ' veya ' Python: 3.7.2-alçam/'. Çok kapsayıcılı bir uygulama için birden çok kapsayıcı görüntüsü adı sağlanmış olabilir (çok satırlı ayrılmış) |
 | **yapılandırma-dosya** | Seçim Yalnızca Web uygulaması kapsayıcıları için geçerlidir: Docker-Compose dosyanın yolu. Tam olarak nitelenmiş bir yol olmalıdır veya varsayılan çalışma dizinine göre değişir. Çok Kapsayıcılı uygulamalar için gereklidir. |
 | **başlangıç-komut** | Seçim Başlangıç komutunu girin. For ex. DotNet Run veya DotNet filename.dll |

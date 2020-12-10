@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e9c49d472f6cf0b9f0e5b3e2f7728417034059b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88961491"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007102"
 ---
 # <a name="app-service-overview"></a>App Service’e genel bakış
 
@@ -36,7 +36,7 @@ App Service temel özelliklerinden bazıları aşağıda verilmiştir:
 * **API ve mobil Özellikler** -App Service, daha fazla API senaryosu Için, YENIDEN anahtar cors desteği sağlar ve kimlik doğrulama, çevrimdışı veri eşitleme, anında iletme bildirimleri ve daha fazlasını etkinleştirerek mobil uygulama senaryolarını basitleştirir.
 * **Sunucusuz kod** - Açıkça altyapı sağlamanıza veya yönetmenize gerek kalmadan isteğe bağlı olarak bir kod parçacığı veya betik çalıştırın ve yalnızca kodunuzun gerçekte kullandığı işlem süresi (bkz. [Azure İşlevleri](../azure-functions/index.yml)) için ücret ödeyin.
 
-App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Azure yay-bulut hizmeti](../spring-cloud/index.yml) veya [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)göz önünde bulundurun.  Kodunuzun çalıştırıldığı VM 'Ler üzerinde daha fazla denetime ihtiyacınız varsa, [Azure sanal makinelerini](https://azure.microsoft.com/documentation/services/virtual-machines/)göz önünde bulundurun. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
+App Service yanı sıra Azure, Web sitelerini ve Web uygulamalarını barındırmak için kullanılabilecek başka hizmetler de sunar. Çoğu senaryo için en iyi seçenektir App Service.  Mikro hizmet mimarisi için [Azure Spring-Cloud hizmetini](../spring-cloud/index.yml) veya [Service Fabric](https://azure.microsoft.com/documentation/services/service-fabric)kullanmayı deneyin.  Kodunuzun çalıştırıldığı VM 'Ler üzerinde daha fazla denetime ihtiyacınız varsa, [Azure sanal makinelerini](https://azure.microsoft.com/documentation/services/virtual-machines/)göz önünde bulundurun. Bu Azure hizmetleri arasında seçim yapma hakkında daha fazla bilgi için bkz. [Azure App Service, Virtual Machines, Service Fabric ve Cloud Services karşılaştırması](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 ## <a name="app-service-on-linux"></a>Linux’ta App Service
 
@@ -44,7 +44,7 @@ App Service, Web uygulamalarını desteklenen uygulama yığınları için yerel
 
 ### <a name="built-in-languages-and-frameworks"></a>Yerleşik diller ve çerçeveler
 
-Linux üzerinde App Service, bir dizi dile özgü yerleşik görüntüyü destekler. Kodunuzu dağıtmanız yeterlidir. Desteklenen diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Uygulamanızın gerektirdiği çalışma zamanı yerleşik resimlerde desteklenmiyorsa, özel bir kapsayıcı ile dağıtabilirsiniz.
+Linux üzerinde App Service, bir dizi dile özgü yerleşik görüntüyü destekler. Kodunuzu dağıtmanız yeterlidir. Desteklenen diller şunlardır: Node.js, Java (JRE 8 & JRE 11), PHP, Python, .NET Core ve Ruby. [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes)En son dilleri ve desteklenen sürümleri görüntülemek için ' i çalıştırın. Uygulamanızın gerektirdiği çalışma zamanı yerleşik resimlerde desteklenmiyorsa, özel bir kapsayıcı ile dağıtabilirsiniz.
 
 ### <a name="limitations"></a>Sınırlamalar
 

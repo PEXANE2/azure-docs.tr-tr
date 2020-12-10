@@ -4,12 +4,12 @@ description: Azure Backup hizmeti için destek ayarlarının ve sınırlamaları
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: be0c576da6e38233423a79f562f767de806d7640
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548520"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008376"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup için destek matrisi
 
@@ -67,7 +67,7 @@ Azure VM 'lerini yedeklemek istiyorsanız bu destek aşağıda verilmiştir:
 
 **Makine** | **Yedeklenen Özellikler** | **Konum** | **Özellikler**
 --- | --- | --- | ---
-**VM uzantısı kullanarak Azure VM yedeklemesi** | Tüm VM | Kasaya yedekleyin. | Bir VM için yedeklemeyi etkinleştirdiğinizde uzantı yüklendi.<br/><br/> Günde bir kez yedekleyin.<br/><br/> Windows VM 'Leri için uygulamayla uyumlu yedekleme; Linux VM 'Ler için dosya tutarlı yedekleme. Linux makineler için uygulama tutarlılığını, Özel betikler kullanarak yapılandırabilirsiniz.<br/><br/> VM 'yi veya diski geri yükleyin.<br/><br/> Bir Azure VM 'yi şirket içi bir konuma yedekleyemiyorum.
+**VM uzantısı kullanarak Azure VM yedeklemesi** | Tüm VM | Kasaya yedekleyin. | Bir VM için yedeklemeyi etkinleştirdiğinizde uzantı yüklendi.<br/><br/> Günde bir kez yedekleyin.<br/><br/> Windows VM 'Leri için uygulamayla uyumlu yedekleme; Linux VM 'Ler için dosya tutarlı yedekleme. Linux makineler için uygulama tutarlılığını, Özel betikler kullanarak yapılandırabilirsiniz.<br/><br/> VM 'yi veya diski geri yükleyin.<br/><br/>[Active Directory etki alanı denetleyicilerinin yedeklenmesi ve geri yüklenmesi](active-directory-backup-restore.md) desteklenir.<br><br> Bir Azure VM 'yi şirket içi bir konuma yedekleyemiyorum.
 **MARS Aracısı kullanarak Azure VM yedeklemesi** | Dosyalar, klasörler, sistem durumu | Kasaya yedekleyin. | Günde üç kez yedekleyin.<br/><br/> Tüm VM yerine belirli dosya veya klasörleri yedeklemek istiyorsanız, MARS Aracısı VM uzantısıyla birlikte çalışabilir.
 **DPM ile Azure VM** | Dosyalar, klasörler, birimler, sistem durumu, uygulama verileri | DPM çalıştıran Azure VM 'nin yerel depolama birimine yedekleme. DPM daha sonra kasaya yedekler. | Uygulama kullanan anlık görüntüler.<br/><br/> Yedekleme ve kurtarma için tam ayrıntı düzeyi.<br/><br/> VM 'Ler için desteklenen Linux (Hyper-V/VMware).<br/><br/> Oracle desteklenmiyor.
 **MABS ile Azure VM** | Dosyalar, klasörler, birimler, sistem durumu, uygulama verileri | MABS çalıştıran Azure VM 'nin yerel depolama birimine yedekleme. MABS daha sonra kasaya yedekler. | Uygulama kullanan anlık görüntüler.<br/><br/> Yedekleme ve kurtarma için tam ayrıntı düzeyi.<br/><br/> VM 'Ler için desteklenen Linux (Hyper-V/VMware).<br/><br/> Oracle desteklenmiyor.
@@ -114,10 +114,10 @@ Azure Backup, geçiş sırasında ve bekleyen veriler için şifrelemeyi destekl
 
 **Makine** | **Yoldaki** | **Bekleyen**
 --- | --- | ---
-**DPM/MABS olmayan şirket içi Windows makineleri** | ![Evet][green] | ![Evet][green]
-**Azure VM’leri** | ![Evet][green] | ![Evet][green]
-**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
-**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Evet][green] | ![Evet][green]
+**DPM/MABS olmayan şirket içi Windows makineleri** | ![Yes][green] | ![Yes][green]
+**Azure VM’leri** | ![Yes][green] | ![Yes][green]
+**DPM ile şirket içi Windows makineleri veya Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
+**Şirket içi Windows makineleri veya MABS ile Azure VM 'Leri** | ![Yes][green] | ![Yes][green]
 
 ## <a name="compression-support"></a>Sıkıştırma desteği
 
@@ -130,7 +130,7 @@ Yedekleme, aşağıdaki tabloda özetlenen yedekleme trafiğinin sıkıştırmas
 --- | --- | ---
 **Şirket içi Windows makinelerini doğrudan yedekleme** | NA | ![Yes][green]
 **VM uzantısı kullanarak Azure VM 'lerini yedekleme** | NA | NA
-**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Evet][green] | ![Evet][green]
+**MABS/DPM kullanarak şirket içi/Azure makinelerinde yedekleme** | ![Yes][green] | ![Yes][green]
 
 ## <a name="retention-limits"></a>Bekletme sınırları
 
@@ -151,7 +151,7 @@ Azure Backup, veri kullanılabilirliğini ve dayanıklılık özelliğini güçl
 | Yedekleme yönetimi türü | Desteklenir                                                    | Desteklenen bölgeler |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Evet.   4 TB 'den az diski olan şifrelenmiş VM 'ler ve VM 'Ler için desteklenir | Tüm Azure ortak bölgeleri.  |
-| SQL/SAP HANA | Evet                                                          | Fransa hariç tüm ortak bölgeler |
+| SQL/SAP HANA | Yes                                                          | Fransa hariç tüm ortak bölgeler |
 | MARS Aracısı/şirket içi  | No                                                           | Yok               |
 | AFS (Azure dosya paylaşımları)                 | No                                                           | Yok               |
 

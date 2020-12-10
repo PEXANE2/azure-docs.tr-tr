@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339600"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007900"
 ---
 # <a name="azure-dedicated-hosts"></a>Azure ayrılmış Konakları
 
@@ -67,11 +67,6 @@ Daha da fazla hata yalıtımı elde etmek için her iki özelliği birlikte kull
 
 ## <a name="manual-vs-automatic-placement"></a>El ile ve otomatik yerleştirme 
 
-> [!IMPORTANT]
-> Otomatik yerleştirme Şu anda genel önizlemededir.
-> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Azure 'da bir VM oluştururken, kullanılacak adanmış ana bilgisayarı seçebilirsiniz. Ayrıca, sanal makinelerinizi bir konak grubu içindeki mevcut konaklara otomatik olarak yerleştirmek için seçeneğini de kullanabilirsiniz. 
 
 Yeni bir konak grubu oluştururken, otomatik VM yerleştirme ayarının seçili olduğundan emin olun. VM 'nizi oluştururken, konak grubunu seçin ve Azure 'un VM 'niz için en iyi Konağı seçmesini sağlayın. 
@@ -91,11 +86,6 @@ Otomatik VM yerleşimi kullanılırken bilinen sorunlar ve sınırlamalar:
 
 Sanal Makine Ölçek Kümeleri, bir grup sanal makineyi tek bir kaynak olarak değerlendirmenize ve kullanılabilirlik, yönetim, ölçeklendirme ve düzenleme ilkelerini bir grup olarak uygulamanıza olanak tanır. Ayrıca, var olan ayrılmış ana makinelerinizin sanal makine ölçek kümeleri için de kullanılabilir. 
 
-> [!IMPORTANT]
-> Adanmış konaklardaki sanal makine ölçek kümeleri Şu anda genel önizlemededir.
-> Önizlemeye katılmak için Önizleme ekleme anketini şurada doldurun [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) .
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Bir sanal makine ölçek kümesi oluştururken, var olan bir konak grubunu özel konaklarda oluşturulan tüm VM örneklerine sahip olacak şekilde belirtebilirsiniz.
 
 Ayrılmış bir konak grubunda bir sanal makine ölçek kümesi oluşturulurken aşağıdaki gereksinimler geçerlidir:
@@ -109,7 +99,7 @@ Ayrılmış bir konak grubunda bir sanal makine ölçek kümesi oluşturulurken 
 - Adanmış konaklarınız için desteklenen VM boyutları, ölçek kümesi için kullanılan bir ile eşleşmelidir.
 
 Tüm ölçek ayarlama düzenleme ve iyileştirmeler ayarları adanmış konaklar tarafından desteklenmez. Ölçek kümesine aşağıdaki ayarları uygulayın: 
-- Fazla sağlamayı devre dışı bırakın.
+- Aşırı sağlama önerilmez ve varsayılan olarak devre dışıdır. Fazla sağlamayı etkinleştirebilirsiniz, ancak konak grubunun fazla sağlanmış örnekler de dahil olmak üzere tüm VM 'Ler için kapasiteye sahip olmaması durumunda ölçek kümesi ayırması başarısız olur. 
 - ScaleSetVM düzenleme modunu kullanma 
 - Ortak konum için yakınlık yerleştirme gruplarını kullanma
 
@@ -173,7 +163,7 @@ Boyutlar ve donanım türleri bölgeye göre farklılık gösterir. Daha fazla b
 
 Azure, konaklarınızın sistem durumunu izler ve yönetir. Ana bilgisayarınızı sorguladığınızda aşağıdaki durumlar döndürülür:
 
-| Sistem Durumu   | Açıklama       |
+| Sistem Durumu   | Description       |
 |----------|----------------|
 | Ana bilgisayar kullanılabilir     | Konağınız ile ilgili bilinen bir sorun yoktur.   |
 | Araştırma altında ana bilgisayar  | Aradığım ana bilgisayarla ilgili bazı sorunlar yaşıyoruz. Bu, Azure 'un, tanımlanan sorunun kapsamını ve kök nedenini belirlemek için gereken geçici bir durumdur. Konakta çalışan sanal makineler etkilenebilir. |

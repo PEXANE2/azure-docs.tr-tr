@@ -6,16 +6,18 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 8e360b1fb25543537f746a31435e8df937414f98
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780782"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007119"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Bir Mac, Linux veya Windows bilgisayarında yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) kullanarak Flask veya Docgo çerçeveleri ile bir örnek dağıtabilirsiniz. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
+
+**Ortak terimlerin tanımları** için bkz. [Azure terimleri kısaca](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Bunun yerine Visual Studio Code kullanmayı tercih ediyorsanız, **[Visual Studio Code App Service hızlı](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** başlangıcı ' nı izleyin.
@@ -117,7 +119,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
+1. Terminal pencerenizde,  + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -143,7 +145,7 @@ Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHel
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
+1. Terminal pencerenizde,  + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 Sorun mu yaşıyorsunuz? [Bize bilgi verin](https://aka.ms/FlaskCLIQuickstartHelp).

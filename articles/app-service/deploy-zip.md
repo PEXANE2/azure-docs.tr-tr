@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: be230a6b3addce3ffc57c40b6af85bc3bdcf4a5a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 150f6b57f1dec0b6d925ef53b4a7001ae9f23607
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743642"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007917"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bir ZIP veya WAR dosyası ile Azure App Service uygulamanızı dağıtma
 
@@ -31,7 +31,7 @@ WAR dosya dağıtımı, Java Web uygulamanızı çalıştırmak için [War](http
 > [!NOTE]
 > Kullanırken `ZipDeploy` , dosyalar yalnızca, zaman damgaları zaten dağıtıldıklarıyla eşleşmezse kopyalanır. Çıkışları önbelleğe alan bir yapı işlemi kullanarak bir ZIP oluşturmak daha hızlı dağıtımlar oluşmasına neden olabilir. Daha fazla bilgi için bkz. [bir zip dosyasından veya URL 'Den dağıtma](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için [bir App Service uygulaması oluşturun](./index.yml)veya başka bir öğretici için oluşturduğunuz uygulamayı kullanın.
 
@@ -44,7 +44,7 @@ Yukarıdaki uç nokta Linux uygulama hizmetleri için şu anda çalışmıyor. B
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLı ile ZIP dosyası dağıtma
 
-[Az WebApp Deployment Source config-ZIP](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) komutunu kullanarak KARŞıYA yüklenen ZIP dosyasını Web uygulamanıza dağıtın.  
+[Az WebApp Deployment Source config-ZIP](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) komutunu kullanarak KARŞıYA yüklenen ZIP dosyasını Web uygulamanıza dağıtın.  
 
 Aşağıdaki örnek, karşıya yüklediğiniz ZIP dosyasını dağıtır. Yerel bir Azure CLı yüklemesi kullanırken, için yerel ZIP dosyanızın yolunu belirtin `--src` .
 

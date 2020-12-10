@@ -4,12 +4,12 @@ description: Application Insights’ta web testleri ayarlayın. Web sitesi kulla
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075152"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007934"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Herhangi bir Web sitesinin kullanılabilirliğini izleme
 
@@ -37,7 +37,7 @@ Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Applicati
 
 "URL ping test" adı, bir hatalı Nomer 'nin bir bitidir. Bu sınama, sayfanın kullanılabilirliğini denetlemek için ıCMP (Internet Denetim Iletisi Protokolü) kullanımını açık hale getirmez. Bunun yerine, bir uç noktanın yanıt verip vermediğini doğrulamak için daha gelişmiş HTTP isteği işlevselliği kullanır. Ayrıca, bu Yanıtla ilişkili performansı ölçer ve bağımlı istekleri ayrıştırma ve yeniden denemeye izin verme gibi daha gelişmiş özelliklerle birlikte özel başarı ölçütlerini ayarlama yeteneğini ekler.
 
-İlk kullanılabilirlik isteğinizi oluşturmak için kullanılabilirlik bölmesini açın ve **Test oluştur** ' u seçin.
+İlk kullanılabilirlik isteğinizi oluşturmak için kullanılabilirlik bölmesini açın ve **Test oluştur**' u seçin.
 
 ![En azından web sitenizin URL'sini doldurma](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -47,11 +47,11 @@ Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Applicati
 |----|----|----|
 |**URL** |  URL, test etmek istediğiniz herhangi bir web sayfası olabilir, ancak ortak İnternet’te görünür olmalıdır. URL bir sorgu dizesi içerebilir. Bu nedenle, örneğin, veritabanınızla biraz alıştırma yapabilirsiniz. URL yeniden yönlendirme adresine çözümlenirse, en fazla 10 yeniden yönlendirmeyi izleriz.|
 |**Bağımlı istekleri Ayrıştır**| Test istekleri görüntüleri, betikleri, stil dosyaları ve test edilen Web sayfasının parçası olan diğer dosyalar. Kayıtlı yanıt süresi, bu dosyaları almak için geçen süreyi içerir. Bu kaynaklardan herhangi biri, tüm test için zaman aşımı süresi içinde başarıyla indirilemezse test başarısız olur. Seçenek işaretlenmezse, test yalnızca belirttiğiniz URL’deki dosyayı ister. Bu seçeneğin etkinleştirilmesi, daha sıkı bir denetim elde ediyor. Test, siteye el ile gözatarken dikkat çekici olmayan durumlar için başarısız olabilir.
-|**Yeniden denemeleri etkinleştir**|test başarısız olduğunda, kısa bir aralıktan sonra yeniden denenir. Art arda üç deneme başarısız olursa bir hata bildirilir. Sonraki testler bundan sonra her zamanki test sıklığında gerçekleştirilir. Bir sonraki başarılı olana kadar yeniden deneme geçici olarak askıya alınır. Bu kural her test konuma bağımsız olarak uygulanır. **Bu seçeneği öneririz** . Ortalama olarak hataların yaklaşık %80’i yeniden deneme sırasında kaybolur.|
+|**Yeniden denemeleri etkinleştir**|test başarısız olduğunda, kısa bir aralıktan sonra yeniden denenir. Art arda üç deneme başarısız olursa bir hata bildirilir. Sonraki testler bundan sonra her zamanki test sıklığında gerçekleştirilir. Bir sonraki başarılı olana kadar yeniden deneme geçici olarak askıya alınır. Bu kural her test konuma bağımsız olarak uygulanır. **Bu seçeneği öneririz**. Ortalama olarak hataların yaklaşık %80’i yeniden deneme sırasında kaybolur.|
 |**Sınama sıklığı**| Testin her test konumundan ne sıklıkla çalıştırılacağını ayarlar. Beş dakikalık varsayılan sıklıkta ve beş test konumuyla, siteniz ortalama olarak dakikada bir test edilir.|
 |**Test konumları**| , Sunucularımızın URL 'nize Web istekleri gönderdiğimiz yerdir. Web sitenizdeki sorunları ağ sorunlarından ayırabilmeniz için **en az önerilen test konumu sayısı beş ' dir** . En fazla 16 konum seçebilirsiniz.
 
-**URL 'niz genel İnternet 'ten görünmüyorsa, yalnızca test işlemlerine izin vermek için güvenlik duvarınızı seçmeli olarak açmayı seçebilirsiniz** . Kullanılabilirlik testi aracılarımız için güvenlik duvarı özel durumları hakkında daha fazla bilgi edinmek için [IP adresi kılavuzuna](./ip-addresses.md#availability-tests)bakın.
+**URL 'niz genel İnternet 'ten görünmüyorsa, yalnızca test işlemlerine izin vermek için güvenlik duvarınızı seçmeli olarak açmayı seçebilirsiniz**. Kullanılabilirlik testi aracılarımız için güvenlik duvarı özel durumları hakkında daha fazla bilgi edinmek için [IP adresi kılavuzuna](./ip-addresses.md#availability-tests)bakın.
 
 > [!NOTE]
 > **En az beş konum** içeren birden çok konumdan test etmenizi önemle öneririz. Bu, belirli bir konum ile geçici sorunlardan kaynaklanan yanlış alarmları önlemektir. Ayrıca en iyi yapılandırmanın, **Test konumları sayısının, uyarı konum eşiğine + 2 ' ye eşit** olduğunu bulduk.
@@ -60,7 +60,7 @@ Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Applicati
 
 |Ayar| Açıklama
 |----|----|----|
-| **Test zaman aşımı** |Yavaş yanıtlar hakkında uyarı almak için bu değeri azaltın. Yanıtlar sitenizden bu süre içinde alınmadıysa test başarısız sayılır. **Bağımlı Istekleri Ayrıştır** ' ı seçtiyseniz tüm görüntüler, stil dosyaları, betikler ve diğer bağımlı kaynaklar bu süre içinde alınmış olmalıdır.|
+| **Test zaman aşımı** |Yavaş yanıtlar hakkında uyarı almak için bu değeri azaltın. Yanıtlar sitenizden bu süre içinde alınmadıysa test başarısız sayılır. **Bağımlı Istekleri Ayrıştır**' ı seçtiyseniz tüm görüntüler, stil dosyaları, betikler ve diğer bağımlı kaynaklar bu süre içinde alınmış olmalıdır.|
 | **HTTP yanıtı** | Başarılı olarak sayılan döndürülen durum kodu. 200, normal web sayfası döndürüldüğünü belirten koddur.|
 | **İçerik eşleşmesi** | "Hoş geldiniz!" gibi bir dize Her yanıtta büyük küçük harfe duyarlı bir tam eşleşme oluştuğunu test edebiliriz. Joker karakter bulunmayan düz bir dize olmalıdır. Sayfanızın içeriği değişirse bunu güncelleştirmeniz gerektiğini unutmayın. **İçerik eşleşmesi ile yalnızca Ingilizce karakterler desteklenir** |
 
@@ -70,7 +70,7 @@ Azure Portal **kaynak oluştur**  >  **Geliştirici Araçları**  >  **Applicati
 |----|----|----|
 |**Neredeyse gerçek zamanlı (Önizleme)** | Neredeyse gerçek zamanlı uyarıların kullanılması önerilir. Bu tür bir uyarının yapılandırılması, kullanılabilirlik testiniz oluşturulduktan sonra yapılır.  |
 |**Klasik** | Artık yeni kullanılabilirlik testleri için klasik uyarıların kullanılması önerilmez.|
-|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki, **alert location threshold**  =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
+|**Uyarı konum eşiği**|En az 3/5 konum önerilir. Uyarı konumu eşiği ve test konumlarının sayısı arasındaki en iyi ilişki,   =  **en az beş test konumu ile test konumlarından oluşan uyarı konum eşiği sayısıdır-2.**|
 
 ### <a name="location-population-tags"></a>Konum popülasyonu etiketleri
 
@@ -86,20 +86,6 @@ Azure Resource Manager kullanarak bir kullanılabilirlik URL 'SI ping testi dağ
 | USDoD Doğu     | usgov-ddeast-azr    |
 | USDoD orta  | usgov-ddorta-azr |
 
-#### <a name="us-sec"></a>ABD sn
-
-| Görünen Ad | Popülasyon adı |
-|--------------|-----------------|
-| USSec Batı   | ussec-Batı-azr  |
-| USSec Doğu   | ussec-Doğu-azr  |
-
-#### <a name="us-nat"></a>ABD NAT
-
-| Görünen Ad | Popülasyon adı |
-|--------------|-----------------|
-| USNat Doğu   | usnat-Doğu-azr  |
-| USNat Batı   | usnat-Batı-azr  |
-
 #### <a name="azure"></a>Azure
 
 | Görünen Ad                           | Popülasyon adı   |
@@ -112,7 +98,7 @@ Azure Resource Manager kullanarak bir kullanılabilirlik URL 'SI ping testi dağ
 | Fransa Güney (eski adıyla Fransa Orta) | EMEA-ch-ZRH-Edge  |
 | Orta Fransa                         | EMEA-fr-PRA-Edge  |
 | Doğu Japonya                             | APAC-JP-KAW-Edge  |
-| North Europe                           | EMEA-GB-DB3-azr   |
+| Kuzey Avrupa                           | EMEA-GB-DB3-azr   |
 | Orta Kuzey ABD                       | US-Il-CH1-azr     |
 | Orta Güney ABD                       | ABD-TX-SN1-azr     |
 | Güneydoğu Asya                         | APAC-SG-sin-azr   |

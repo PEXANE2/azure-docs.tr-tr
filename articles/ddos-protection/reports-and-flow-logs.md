@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5c3bfbdf133777f0bc219d1306f80bd4d38b56ea
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0a59c748dba87765537fc7c9d6382c7d2b726f43
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746276"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008070"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>DDoS saldırı azaltma raporları ve akış günlükleri 
 
@@ -80,7 +80,13 @@ Saldırıya karşı risk azaltma akış günlüklerini Azure Sentinel 'e bağlay
 
 ### <a name="azure-ddos-protection-workbook"></a>Azure DDoS koruması çalışma kitabı
 
-Azure Analytics panosu 'nda akış günlüğü verilerini görüntülemek için, örnek panoyu şuradan içeri aktarabilirsiniz https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20DDoS%20Protection%20Workbook
+Bu Azure Resource Manager (ARM) şablonunu, bir saldırı Analizi çalışma kitabını dağıtmak için kullanabilirsiniz. Bu çalışma kitabı, sürekli olarak neler olduğunu kolayca anlamak için birkaç filtrelenebilir paneldeki saldırı verilerini görselleştirmenizi sağlar. Bu ARM şablonunu dağıttığınızda, şunu doldurmanız gerekir:
+
+* Çalışma Alanı Adı
+* Çalışma alanı ResourceGroup
+* Çalışma alanı abonelik KIMLIĞI
+
+[![Azure’a dağıtın](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Network-Security%2Fmaster%2FAzure%2520DDoS%2520Protection%2FAzure%2520DDoS%2520Protection%2520Workbook%2FAzureDDoSWorkbook_ARM.json)
 
 Akış günlükleri aşağıdaki alanlara sahip olur: 
 - Kaynak IP

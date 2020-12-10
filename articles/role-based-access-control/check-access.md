@@ -1,57 +1,83 @@
 ---
-title: Hızlı başlangıç-bir kullanıcının Azure kaynaklarına erişimi görüntüleme-Azure RBAC
-description: Bu hızlı başlangıçta, Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak bir kullanıcının veya diğer güvenlik sorumlusunun Azure kaynaklarına erişimi nasıl görüntüleyebileceğinizi öğreneceksiniz.
+title: Hızlı başlangıç-Azure kaynakları için bir kullanıcının erişimini denetleme-Azure RBAC
+description: Bu hızlı başlangıçta, Azure portal ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak kendiniz veya başka bir kullanıcı için Azure kaynaklarına erişimi nasıl denetleyeceğinizi öğreneceksiniz.
 services: role-based-access-control
-documentationCenter: ''
 author: rolyon
 manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: quickstart
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 12/09/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperfq2
+ms.openlocfilehash: 8036bd300522000902789db59f8bebae14fedf10
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82734170"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007332"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Hızlı başlangıç: bir kullanıcının Azure kaynaklarına erişimi görüntüleme
+# <a name="quickstart-check-access-for-a-user-to-azure-resources"></a>Hızlı başlangıç: bir kullanıcı için Azure kaynaklarına erişimi denetleme
 
-Bir kullanıcıya veya başka bir güvenlik sorumlusunun Azure kaynaklarına erişimi görüntülemek için [Azure rol tabanlı erişim denetimi 'nde (Azure RBAC)](overview.md) **ERIŞIM denetimi (IAM)** dikey penceresini kullanabilirsiniz. Ancak bazen tek bir kullanıcı veya başka bir güvenlik sorumlusu için erişimi hızlıca görüntülemeniz yeterlidir. Bunu yapmanın en kolay yolu Azure portal **erişimi denetle** özelliğini kullanmaktır.
+Bazen bir kullanıcının Azure kaynakları kümesine hangi erişimi olduğunu denetlemeniz gerekir. Atamalarını listeleyerek erişimini kontrol edersiniz. Tek bir kullanıcıya erişimi denetlemeye yönelik hızlı bir yol, **erişim denetimi (IAM)** sayfasındaki **erişimi denetle** özelliğini kullanmaktır.
 
-## <a name="view-role-assignments"></a>Rol atamalarını görüntüle
+## <a name="step-1-open-the-azure-resources"></a>1. Adım: Azure kaynaklarını açma
 
- Bir kullanıcı için erişimi görüntülemenin yolu, rollerinin atamalarını listeme yöntemidir. Abonelik kapsamında tek bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik için rol atamalarını görüntülemek için bu adımları izleyin.
+Bir kullanıcının erişimini denetlemek için öncelikle erişimi denetlemek istediğiniz Azure kaynaklarını açmanız gerekir. Azure kaynakları, genellikle *kapsam* olarak adlandırılan düzeyler halinde düzenlenir. Azure 'da, geniş ve dar: yönetim grubu, abonelik, kaynak grubu ve kaynak olmak üzere dört düzeyde bir kapsam belirtebilirsiniz.
 
-1. Azure portal, **tüm hizmetler** ve ardından **abonelikler**' e tıklayın.
+![Azure RBAC için kapsam düzeyleri](../../includes/role-based-access-control/media/scope-levels.png)
 
-1. Aboneliğinize tıklayın.
+Erişimini denetlemek istediğiniz Azure kaynakları kümesini açmak için aşağıdaki adımları izleyin.
+
+1. [Azure portalını](https://portal.azure.com) açın.
+
+1. **Yönetim grupları**, **abonelikler**, **kaynak grupları** veya belirli bir kaynak gibi Azure kaynakları kümesini açın.
+
+1. Bu kapsamdaki belirli bir kaynağa tıklayın.
+
+    Aşağıda örnek bir kaynak grubu gösterilmektedir.
+
+    ![Kaynak grubuna genel bakış](./media/check-access/rg-overview.png)
+
+## <a name="step-2-check-access-for-a-user"></a>2. Adım: Kullanıcı için erişimi denetleme
+
+Daha önce seçilen Azure kaynaklarına tek bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik erişimini denetlemek için bu adımları izleyin.
 
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
 
-1. **Erişimi denetle** sekmesine tıklayın.
+    Aşağıda, bir kaynak grubu için erişim denetimi (ıAM) sayfasının bir örneği gösterilmektedir.
 
-    ![Erişim denetimi-erişim sekmesine göz atın](./media/check-access/access-control-check-access.png)
+    ![Kaynak grubu erişim denetimi-erişim sekmesine bakın](./media/check-access/rg-access-control.png)
 
-1. **Bul** listesinde, erişimini denetlemek istediğiniz güvenlik sorumlusu türünü seçin.
+1. **Erişim denetimi** sekmesinde, **bul** listesinde, erişimi denetlemek istediğiniz kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimlik ' i seçin.
 
 1. Arama kutusuna, görünen adlar, e-posta adresleri veya nesne tanımlayıcıları için dizinde arama yapmak üzere bir dize girin.
 
-    ![Erişim denetimi seçim listesi](./media/check-access/check-access-select.png)
+    ![Erişim denetimi seçim listesi](./media/shared/rg-check-access-select.png)
 
 1. **Atamalar** bölmesini açmak için güvenlik sorumlusuna tıklayın.
 
-    ![Atamalar bölmesi](./media/check-access/check-access-assignments.png)
+    Bu bölmede, bu kapsamda seçili güvenlik sorumlusu için erişimi görebilir ve bu kapsama devralınmış olursunuz. Alt kapsamların atamaları listelenmez. Aşağıdaki atamaları görürsünüz:
 
-    Bu bölmede, seçilen güvenlik sorumlusuna ve kapsamına atanan rolleri görebilirsiniz. Bu kapsamda herhangi bir reddetme ataması varsa veya bu kapsama devralınmışsa, bunlar listelenecektir.
+    - Azure RBAC ile rol atamaları eklendi.
+    - Azure şemaları veya Azure yönetilen uygulamaları kullanılarak eklenen atamaları engelleyin.
+    - Klasik dağıtımlar için klasik hizmet yöneticisi veya Co-Administrator atamaları. 
+
+    ![Bir kullanıcı için rol ve reddetme atamaları bölmesi](./media/shared/rg-check-access-assignments-user.png)
+
+## <a name="step-3-check-your-access"></a>3. Adım: erişiminizi denetleyin
+
+Daha önce seçilen Azure kaynaklarına erişiminizi denetlemek için aşağıdaki adımları izleyin.
+
+1. **Erişim denetimi (IAM)** öğesine tıklayın.
+
+1. **Erişim denetimi** sekmesinde, **erişimimi görüntüle** düğmesine tıklayın.
+
+    Bu kapsamdaki erişimi listeleyen ve bu kapsama devralınmış bir atamalar bölmesi görüntülenir. Alt kapsamların atamaları listelenmez.
+
+    ![Rol ve reddetme atamaları bölmesi](./media/check-access/rg-check-access-assignments.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Azure portal kullanarak Azure kaynaklarına Kullanıcı erişimi verme](quickstart-assign-role-user-portal.md)
+> [Azure portal kullanarak Azure rol atamalarını listeleyin](role-assignments-list-portal.md)

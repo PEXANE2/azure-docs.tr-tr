@@ -9,12 +9,12 @@ ms.date: 07/06/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 7246bb3453f6e4863faf15dbcbfdf8534481ddad
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 21f937d95c6cd0dafa27daae50d7a74648af7bdc
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561457"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006115"
 ---
 # <a name="create-an-app-service-app-and-deploy-private-endpoint-using-azure-cli"></a>Azure CLı kullanarak App Service uygulaması oluşturma ve özel uç nokta dağıtma
 
@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location francecentral
 ## <a name="create-an-app-service-plan"></a>App Service Planı oluşturma
 
 Web uygulamanızı barındırmak için bir App Service planı oluşturmanız gerekir.
-[Az appservice plan Create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create)komutuyla bir App Service planı oluşturun.
+[Az appservice plan Create](/cli/azure/appservice/plan#az-appservice-plan-create)komutuyla bir App Service planı oluşturun.
 Bu örnek, *P1V2* SKU 'su ve yalnızca bir Worker ile *francecına al* konumunda *Myappserviceplan* adlı App Service planı oluşturur: 
 
 ```azurecli-interactive
@@ -78,7 +78,7 @@ az network vnet create \
 
 ## <a name="configure-the-subnet"></a>Alt ağı yapılandırma 
 
-Özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
+Özel uç nokta ağ ilkelerini devre dışı bırakmak için alt ağı güncelleştirmeniz gerekir. [Az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update)Ile *mysubnet* adlı bir alt ağ yapılandırmasını güncelleştirin:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -90,7 +90,7 @@ az network vnet subnet update \
 
 ## <a name="create-the-private-endpoint"></a>Özel uç nokta oluşturma
 
-[Az Network Private-Endpoint Create](/cli/azure/network/private-endpoint)komutuyla Web uygulamanız Için özel uç nokta oluşturun. Bu örnek, *Myconnectionname* *adlı alt ağda* *Myprivateendpoint* adlı özel *myVNet* BIR uç noktasını, Web uygulamamın kaynak kimliği olan/Subscriptions/SubscriptionID/resourceGroups/myResourceGroup/Providers/Microsoft.Web/Sites/MyWebApp, Grup parametresi ise Web uygulaması için *siteler* olan bir bağlantı ile birlikte oluşturur. 
+[Az Network Private-Endpoint Create](/cli/azure/network/private-endpoint)komutuyla Web uygulamanız Için özel uç nokta oluşturun. Bu örnek, *Myconnectionname* *adlı alt ağda* *Myprivateendpoint* adlı özel  BIR uç noktasını, Web uygulamamın kaynak kimliği olan/Subscriptions/SubscriptionID/resourceGroups/myResourceGroup/Providers/Microsoft.Web/Sites/MyWebApp, Grup parametresi ise Web uygulaması için *siteler* olan bir bağlantı ile birlikte oluşturur. 
 
 ```azurecli-interactive
 az network private-endpoint create \

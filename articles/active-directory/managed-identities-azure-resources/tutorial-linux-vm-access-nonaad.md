@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/09/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cfcaec38a939291090da7d2229c4a95f984bf28
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360475"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007815"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
@@ -36,7 +36,7 @@ Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
  
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Yönetilen kimliklerin anlaşılmasıdır. Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](overview.md) inceleyin. 
+- Yönetilen kimliklerin temel olarak anlaşılmasıdır. Azure kaynakları için yönetilen kimlikler özelliği hakkında bilgi sahibi değilseniz bu [genel bakışı](overview.md) inceleyin. 
 - Azure hesabı, [ücretsiz bir hesap için kaydolun](https://azure.microsoft.com/free/).
 - Gerekli kaynak oluşturma ve rol yönetimi adımlarını gerçekleştirmek için uygun kapsamda (aboneliğiniz veya kaynak grubunuz) "sahip" izinleri. Rol atamayla ilgili yardıma ihtiyacınız varsa bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için Rol Tabanlı Erişim Denetimi kullanma](../../role-based-access-control/role-assignments-portal.md).
 - Ayrıca, sistem tarafından atanmış Yönetilen kimlikler etkinleştirilmiş bir Linux sanal makinesine ihtiyacınız vardır.
@@ -53,14 +53,14 @@ Bu bölümde, VM 'nizin Key Vault depolanan bir gizli dizi erişimine nasıl izi
 1. Sol gezinti çubuğunun üst kısmında **kaynak oluştur** ' u seçin.  
 1. Market 'te **Ara** kutusuna **Key Vault** yazın ve **ENTER** tuşuna basın.  
 1. Sonuçlardan **Key Vault** seçin.
-1. **Oluştur** ’u seçin
+1. **Oluştur**’u seçin
 1. Yeni Key Vault için bir **Ad** belirtin.
 
     ![Anahtar Kasası ekranı oluşturma](./media/tutorial-linux-vm-access-nonaad/create-key-vault.png)
 
 1. Bu öğretici için kullandığınız sanal makineyi oluşturduğunuz aboneliği ve kaynak grubunu seçtiğinizden emin olarak tüm gerekli bilgileri doldurun.
 1. **Gözden geçir + oluştur** ' u seçin
-1. **Oluştur** ’u seçin
+1. **Oluştur**’u seçin
 
 ## <a name="grant-access"></a>Erişim verme
 
@@ -73,21 +73,21 @@ Sanal makine tarafından kullanılan yönetilen kimliğe, Key Vault depolayabilm
    ![Anahtar Kasası erişim ilkesi oluşturma ekranı](./media/tutorial-linux-vm-access-nonaad/key-vault-access-policy.png)
 
 1. Şablondan Yapılandır altındaki **erişim Ilkesi Ekle** bölümünde **(isteğe bağlı)** aşağı açılan menüden **gizli yönetim** ' i seçin.
-1. **Sorumlu Seç** 'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç** ' i seçin.
-1. **Ekle** ’yi seçin
-1. **Kaydet** ’i seçin.
+1. **Sorumlu Seç**'i seçin ve arama alanına daha önce oluşturduğunuz VM'nin adını girin.  Sonuç listesinde VM 'yi seçin ve **Seç**' i seçin.
+1. **Ekle**’yi seçin
+1. **Kaydet**’i seçin.
 
 ## <a name="create-a-secret"></a>Gizli anahtar oluşturma
 
 Ardından, Key Vault bir gizli dizi ekleyin, böylece daha sonra sanal makinenizde çalışan kodu kullanarak elde edebilirsiniz. Bu öğreticinin amacı doğrultusunda PowerShell kullanıyoruz, ancak aynı kavramlar bu sanal makinede yürütülen tüm kodlar için geçerlidir.
 
 1. Yeni oluşturduğunuz Key Vault gidin.
-1. **Gizli Diziler** 'i seçin ve **Ekle** 'ye tıklayın.
+1. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın.
 1. **Oluştur/Içeri aktar** 'ı seçin
 1. **Karşıya yükleme seçeneklerinden** **gizli bir ekran oluştur** bölümünde **el ile** seçili bırakın.
 1. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
 1. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
-1. Gizli diziyi oluşturmak için **Oluştur** 'a tıklayın.
+1. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın.
 
    ![Gizli anahtar oluşturma](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
  
@@ -95,7 +95,7 @@ Ardından, Key Vault bir gizli dizi ekleyin, böylece daha sonra sanal makineniz
 
 Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).
  
-1. Portalda Linux VM’nize gidin ve **Genel Bakış** ’ta **Bağlan** ’a tıklayın. 
+1. Portalda Linux VM’nize gidin ve **Genel Bakış**’ta **Bağlan**’a tıklayın. 
 2. Tercih ettiğiniz SSH istemciyle VM'ye **bağlanın**. 
 3. Terminal penceresinde, Azure Key Vault erişim belirtecini almak için CURL'yi kullanarak Azure kaynaklarının yerel yönetilen kimliklerine bir istek gönderin.  
  
@@ -121,7 +121,7 @@ Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  Windows kullanıyorsan
     Azure Key Vault’ta kimlik doğrulamak için bu erişim belirtecini kullanabilirsiniz.  Sonraki CURL isteği, CURL ve Key Vault REST API kullanarak Key Vault’tan nasıl gizli dizi okunacağını gösterir.  Key Vault'unuzun URL'sine ihtiyacınız olacaktır. Bu URL, Key Vault'un **Genel Bakış** sayfasındaki **Temel Parçalar** bölümünde yer alır.  Ayrıca önceki çağrıda aldığınız erişim belirtecine de ihtiyacınız olur. 
         
     ```bash
-    curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
+    curl 'https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01' -H "Authorization: Bearer <ACCESS TOKEN>" 
     ```
     
     Yanıt şöyle görünür: 
@@ -134,7 +134,7 @@ Key Vault'tan gizli diziyi aldıktan sonra, bunu kullanarak ad ve parola gerekti
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kaynakları temizlemek istediğinizde, [Azure Portal](https://portal.azure.com)ziyaret edin, **kaynak grupları** ' nı seçin, Bu öğreticinin işleminde oluşturulan kaynak grubunu bulun (gibi `mi-test` ) ve ardından **kaynak grubunu sil** komutunu kullanın.
+Kaynakları temizlemek istediğinizde, [Azure Portal](https://portal.azure.com)ziyaret edin, **kaynak grupları**' nı seçin, Bu öğreticinin işleminde oluşturulan kaynak grubunu bulun (gibi `mi-test` ) ve ardından **kaynak grubunu sil** komutunu kullanın.
 
 Alternatif olarak bunu [PowerShell veya CLI](../../azure-resource-manager/management/delete-resource-group.md) aracılığıyla da yapabilirsiniz
 

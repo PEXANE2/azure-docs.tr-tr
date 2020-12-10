@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/30/2020
-ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/09/2020
+ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000088"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97005478"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'e veri yükleme
 
@@ -47,7 +47,7 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
-1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >  **Data + Analytics**  >  **Data Factory**:
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >    >  **Data Factory**:
 
 2. **Yeni Veri Fabrikası** sayfasında, aşağıdaki öğeler için değerler girin:
 
@@ -102,7 +102,7 @@ Bu makalede, _Azure SQL veritabanından Azure SYNAPSE Analytics 'e veri yükleme
 
     a. Bağlantı eklemek için **+ Yeni bağlantı oluştur** ' a tıklayın
 
-    b. Galeriden **Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı)** seçeneğini belirleyin ve **devam**' ı seçin. Bağlayıcıları filtrelemek için arama kutusuna "SQL" yazabilirsiniz.
+    b. Galeriden **Azure SYNAPSE Analytics** ' i seçin ve **devam**' ı seçin.
 
     ![Azure SYNAPSE Analytics 'i seçme](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
