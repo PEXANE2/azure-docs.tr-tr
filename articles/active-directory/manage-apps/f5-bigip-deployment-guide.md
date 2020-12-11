@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96318400"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095194"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Güvenli karma erişim için Azure IaaS 'de F5 BIG-IP Virtual Edition VM dağıtma öğreticisi
 
@@ -44,7 +44,7 @@ Bu öğretici, Azure IaaS 'de büyük IP Vitürel sürümlerini (VE) dağıtman�
 
 - Web uygulamalarını Güvenli Yuva Katmanı (SSL) üzerinden yayımlamak için bir joker karakter veya konu alternatif adı (SAN) sertifikası. [Şifrelemem](https://letsencrypt.org/) , sınama için ücretsiz 90 günlük sertifika sağlar.
 
-- BIG-IPs yönetim arabirimini güvenli hale getirmek için bir SSL sertifikası. Web uygulamalarını yayımlamak için kullanılan bir sertifika, konusu büyük IP 'nin tam etki alanı adına (FQDN) karşılık geliyorsa kullanılabilir. Örneğin, bir konu *. contoso.com ile tanımlanan bir joker karakter sertifikası için uygun olacaktır https://big-ip-vm.contoso.com:8443
+- BIG-IPs yönetim arabirimini güvenli hale getirmek için bir SSL sertifikası. Web uygulamalarını yayımlamak için kullanılan bir sertifika, konusu büyük IP 'nin tam etki alanı adına (FQDN) karşılık geliyorsa kullanılabilir. Örneğin, bir konu *. contoso.com ile tanımlanan bir joker karakter sertifikası için uygun olacaktır `https://big-ip-vm.contoso.com:8443`
 
 VM dağıtımı ve temel sistem yapılandırmaları yaklaşık 30 dakika sürer. bu noktada büyük IP platformunuzun [burada](f5-aad-integration.md)listelenen SHA senaryolarından herhangi birini uygulamaya hazır olacağı anlamına gelir.
 
@@ -83,7 +83,7 @@ BÜYÜK IP, farklı topolojilerde dağıtılabilir. Bu kılavuz, tek bir ağ ara
  |Kaynak grubu | Mevcut Azure Kaynak grubu büyük IP sanal makinesi içine dağıtılacak veya bir tane oluşturacak. DC ve IIS sanal makinelerinizin aynı kaynak grubu olmalıdır|
  | **Örnek ayrıntıları**|  |
  |VM Adı| Örnek büyük-IP-VM |
- |Region | BÜYÜK IP-VM için hedef Azure coğrafi |
+ |Bölge | BÜYÜK IP-VM için hedef Azure coğrafi |
  |Kullanılabilirlik seçenekleri| Yalnızca üretimde VM kullanılıyorsa etkinleştirin|
  |Görüntü| F5 BIG-IP VE-ALL (KLG, 2 önyükleme konumu)|
  |Azure Spot örneği| Hayır ancak uygunsa etkinleştirmek için ücretsiz |
@@ -107,7 +107,7 @@ BÜYÜK IP, farklı topolojilerde dağıtılabilir. Bu kılavuz, tek bir ağ ara
  |NIC ağ güvenlik grubu| Önceki adımlarda seçtiğiniz Azure alt ağı zaten bir ağ güvenlik grubu (NSG) ile ilişkilendirilmişse hiçbiri ' ni seçin; Aksi takdirde temel seçin|
  |Ağı hızlandırma| Kapalı |
  |**Yük dengeleme**|     |
- |Yük Dengeleme VM 'si| Hayır|
+ |Yük Dengeleme VM 'si| No|
 
 10. **İleri: yönetim** ' i seçin ve bu ayarları doldurun.
 
@@ -366,7 +366,7 @@ Hem Istemci hem de sunucu SSL profillerinin sağlanması, büyük IP 'nin tüm S
 
 8. **Sertifika anahtar zinciri** satırındaki en sağdaki onay kutusunu seçin ve **Ekle** ' yi seçin.
 
-9. Üç açılan listeden, bir parola olmadan içeri aktardığınız joker karakter sertifikasını seçin ve ardından tamamlandı **Ekle**' yi seçin  >  **Finished**.
+9. Üç açılan listeden, bir parola olmadan içeri aktardığınız joker karakter sertifikasını seçin ve ardından tamamlandı **Ekle**' yi seçin  >  .
 
 ![Görüntüde büyük-IP contoso joker karakteri güncelleştirmesi gösterilmektedir](./media/f5ve-deployment-plan/contoso-wildcard.png)
 
@@ -387,7 +387,7 @@ SHA için büyük IP hazırlama konusunda son bir adım, yayımlamanın kaynakla
 
 2. **DNS arama sunucusu listesinde**, ortamların DNS sunucusunun IP adresini girin
 
-3. Güncelleştirme **Ekle**'yi seçin  >  **Update**
+3. Güncelleştirme **Ekle**'yi seçin  >  
 
 Ayrı ve isteğe bağlı bir adım olarak, yerel büyük IP hesaplarını yönetmek yerine ad ile büyük IP olmaktadır kimlik doğrulaması yapmak için bir [LDAP yapılandırması](https://somoit.net/f5-big-ip/authentication-using-active-directory) düşünebilirsiniz.
 
@@ -397,7 +397,7 @@ BÜYÜK IP sanal makinenizin, [senaryo tabanlı](f5-aad-integration.md)kılavuzd
 
 Ana TMO 'lar güncelleştirilemediğinde, bu adımları kullanarak en az destekli yapılandırmayı yükseltmeyi göz önünde bulundurun.
 
-1. Büyük IP Web yapılandırmasındaki ana sekmeden, **Access**  >  **Kılavuzlu yapılandırmaya** erişme sayfasına gidin
+1. Büyük IP Web yapılandırmasındaki ana sekmeden,   >  **Kılavuzlu yapılandırmaya** erişme sayfasına gidin
 
 2. **Kılavuzlu yapılandırma** sayfasında, **Kılavuzlu yapılandırmayı Yükselt** ' i seçin.
 

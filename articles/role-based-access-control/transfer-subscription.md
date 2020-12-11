@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 10/06/2020
+ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 92b27690ab1f2ca8d98eb2231c5a27bc508613f8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648251"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095432"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure aboneliğini farklı bir Azure AD dizinine aktarma
 
@@ -53,7 +53,12 @@ Abonelik aktarmak isteyebileceğiniz bazı nedenler aşağıda verilmiştir:
 - İşletmenizin bir kısmı ayrı bir şirkete bölünür ve kaynaklarınızın bazılarını farklı bir Azure AD dizinine taşımanız gerekir.
 - Güvenlik yalıtımı amacıyla, farklı bir Azure AD dizininde kaynaklarınızın bazılarını yönetmek istiyorsunuz.
 
-Bir aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekir. Senaryonuza bağlı olarak, kaynakları yeniden oluşturmak ve verileri hedef dizine ve aboneliğe kopyalamak daha iyi olabilir.
+### <a name="alternate-approaches"></a>Alternatif yaklaşımlar
+
+Aboneliğin aktarılması işlemi tamamlaması için kapalı kalma süresi gerekir. Senaryonuza bağlı olarak, aşağıdaki alternatif yaklaşımları göz önünde bulundurun:
+
+- Kaynakları yeniden oluşturun ve hedef dizine ve aboneliğe verileri kopyalayın.
+- Çoklu Dizin mimarisini benimseyin ve aboneliği kaynak dizinde bırakın. Hedef dizindeki kullanıcıların kaynak dizindeki aboneliğe erişebilmesi için Azure açık Thouse ' i kullanarak kaynakları devretmek. Daha fazla bilgi için bkz. [Kurumsal senaryolarda Azure açık Thouse](../lighthouse/concepts/enterprise.md).
 
 ### <a name="understand-the-impact-of-transferring-a-subscription"></a>Abonelik aktarma etkisini anlayın
 
@@ -383,3 +388,4 @@ Amaç, hedef dizinde erişimleri olmaması için kaynak dizindeki kullanıcılar
 - [Azure aboneliğinin faturalama sahipliğini başka bir hesaba aktarma](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure aboneliklerini aboneler ile CSP'ler arasında aktarma](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)
 - [Azure Active Directory kiracınıza bir Azure aboneliğini ekleme veya ilişkilendirme](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+- [Kurumsal senaryolarda Azure Lighthouse](../lighthouse/concepts/enterprise.md)

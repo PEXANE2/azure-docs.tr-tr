@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96467155"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095041"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Kubernetes dağıtımı için Azure Stack Edge Pro GPU üzerinde işlem hızlandırma kullanma
 
@@ -28,8 +28,8 @@ Merkezi Işlem birimi (CPU), bir bilgisayarda çalışan çoğu işlem için var
 
 Makale yalnızca aşağıdaki cihazlar için işlem hızlandırmayı yalnızca GPU veya VPU kullanarak tartışacaktır:
 
-- **Azure Stack Edge Pro GPU** -bu cihazlarda 1 veya 2 NVIDIA T4 Tensor Core GPU bulunabilir. Daha fazla bilgi için bkz. [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
-- **Azure Stack Edge Pro R** -bu cihazlarda 1 NVIDIA T4 Tensor Core GPU vardır. Daha fazla bilgi için bkz. [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
+- **Azure Stack Edge Pro GPU** -bu cihazlarda 1 veya 2 NVIDIA T4 Tensor Core GPU bulunabilir. Daha fazla bilgi için bkz. [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
+- **Azure Stack Edge Pro R** -bu cihazlarda 1 NVIDIA T4 Tensor Core GPU vardır. Daha fazla bilgi için bkz. [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 - **Azure Stack Edge Mini R** -bu cihazlarda 1 Intel Movidius Myriad X VPU vardır. Daha fazla bilgi için bkz. [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX).
 
 

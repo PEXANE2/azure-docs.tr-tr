@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88214127"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094685"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Işlevleri için çıkış bağlamasını Azure Event Grid
 
@@ -100,6 +100,10 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid çıktı bağlaması Java için kullanılamaz.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, *function.json* dosyasındaki Event Grid çıktı bağlama verilerini gösterir.
@@ -160,6 +164,70 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, bir Event Grid olay iletisinin çıktısını almak için bir işlevin nasıl yapılandırılacağını gösterir. `type` `eventGrid` Event Grid bir çıkış bağlaması oluşturmak için gereken değerleri yapılandıran olarak ayarlanan bölümü.
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    },
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+İşlevinizde, `Push-OutputBinding` Event Grid çıkış bağlaması aracılığıyla özel bir konuya bir olay göndermek için öğesini kullanın.
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+
+Push-OutputBinding -Name outputEvent -Value  @{
+    id = "1"
+    EventType = "testEvent"
+    Subject = "testapp/testPublish"
+    EventTime = "2020-08-27T21:03:07+00:00"
+    Data = @{
+        Message = $message
+    }
+    DataVersion = "1.0"
+}
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. Daha sonra, tarafından belirtildiği gibi özel konuya bir olay gönderir `topicEndpointUri` .
@@ -194,7 +262,6 @@ import logging
 import azure.functions as func
 import datetime
 
-
 def main(eventGridEvent: func.EventGridEvent, 
          outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
 
@@ -209,10 +276,6 @@ def main(eventGridEvent: func.EventGridEvent,
             event_time=datetime.datetime.utcnow(),
             data_version="1.0"))
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid çıktı bağlaması Java için kullanılamaz.
 
 ---
 
@@ -239,17 +302,21 @@ Tüm örnek için bkz. [örnek](#example).
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid çıktı bağlaması Java için kullanılamaz.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid çıktı bağlaması Python için kullanılamaz.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid çıktı bağlaması Java için kullanılamaz.
 
 ---
 
@@ -257,7 +324,7 @@ Event Grid çıktı bağlaması Java için kullanılamaz.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `EventGrid` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | "EventGrid" olarak ayarlanmalıdır. |
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. Bu parametre, Azure portal bağlamayı oluşturduğunuzda otomatik olarak ayarlanır. |
@@ -278,19 +345,23 @@ Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent para
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<EventGridEvent>` veya yerinde kullanabilirsiniz `IAsyncCollector<EventGridEvent>` `out EventGridEvent` .
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Çıkış olayına, `context.bindings.<name>` `<name>` `name` * üzerindefunction.js*özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Event Grid çıktı bağlaması Python için kullanılamaz.
+Gibi bir yöntem parametresi kullanarak ileti gönderin `out EventGridEvent paramName` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. Birden çok ileti yazmak için, `ICollector<EventGridEvent>` veya yerinde kullanabilirsiniz `IAsyncCollector<EventGridEvent>` `out EventGridEvent` .
 
 # <a name="java"></a>[Java](#tab/java)
 
 Event Grid çıktı bağlaması Java için kullanılamaz.
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Çıkış olayına, `context.bindings.<name>` `<name>` `name` *üzerindefunction.js* özelliğinde belirtilen değerin nerede olduğunu kullanarak erişin.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+`Push-OutputBinding`Event Grid çıkış bağlamasına bir olay göndermek için komutunu kullanarak çıkış olayına erişin.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Event Grid çıktı bağlaması Python için kullanılamaz.
 
 ---
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 0e2e09bc72991330ccdec7a35400460cbeba26fc
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 0e3ba9aa4eac30c3387bdf6c2890a1172ebef544
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327041"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094735"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Event Grid tetikleyicisi
 
@@ -128,78 +128,6 @@ public static void Run(JObject eventGridEvent, TraceWriter log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
-
-Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "eventGridEvent",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-JavaScript kodu aşağıda verilmiştir:
-
-```javascript
-module.exports = function (context, eventGridEvent) {
-    context.log("JavaScript Event Grid function processed a request.");
-    context.log("Subject: " + eventGridEvent.subject);
-    context.log("Time: " + eventGridEvent.eventTime);
-    context.log("Data: " + JSON.stringify(eventGridEvent.data));
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
-
-Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "eventGridTrigger",
-      "name": "event",
-      "direction": "in"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-Python kodu aşağıda verilmiştir:
-
-```python
-import json
-import logging
-
-import azure.functions as func
-
-def main(event: func.EventGridEvent):
-
-    result = json.dumps({
-        'id': event.id,
-        'data': event.get_json(),
-        'topic': event.topic,
-        'subject': event.subject,
-        'event_type': event.event_type,
-    })
-
-    logging.info('Python EventGrid trigger processed an event: %s', result)
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Bu bölüm aşağıdaki örnekleri içerir:
@@ -207,7 +135,7 @@ Bu bölüm aşağıdaki örnekleri içerir:
 * [Event Grid tetikleyicisi, dize parametresi](#event-grid-trigger-string-parameter)
 * [Event Grid tetikleyicisi, POJO parametresi](#event-grid-trigger-pojo-parameter)
 
-Aşağıdaki örneklerde,, ilk olarak olayı [Java](functions-reference-java.md) `String` bir Pojo olarak ve ikinci olarak alarak, bağlamayı kullanan ve bir olayı yazdıran Java 'daki tetikleyici bağlama gösterilmektedir.
+Aşağıdaki örneklerde,, ilk olarak olayı [](functions-reference-java.md) `String` bir Pojo olarak ve ikinci olarak alarak, bağlamayı kullanan ve bir olayı yazdıran Java 'daki tetikleyici bağlama gösterilmektedir.
 
 ### <a name="event-grid-trigger-string-parameter"></a>Event Grid tetikleyicisi, dize parametresi
 
@@ -265,6 +193,103 @@ Varış sonrasında, olayın JSON yükü, ```EventSchema``` işlev tarafından k
 
 [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `EventGridTrigger` değeri eventgrid 'den gelen parametrelerde ek açıklama kullanın. Bu ek açıklamaların bulunduğu parametreler, bir olay geldiğinde işlevin çalışmasına neden olur.  Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
+
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = function (context, eventGridEvent) {
+    context.log("JavaScript Event Grid function processed a request.");
+    context.log("Subject: " + eventGridEvent.subject);
+    context.log("Time: " + eventGridEvent.eventTime);
+    context.log("Data: " + JSON.stringify(eventGridEvent.data));
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, dosyasındaki *function.js* bir Event Grid tetikleyicisi bağlamasının nasıl yapılandırılacağını gösterir.
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "eventGridEvent",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+Event Grid olayı, `eventGridEvent` aşağıdaki PowerShell örneğinde gösterildiği gibi, işlev için adlı bir parametre aracılığıyla kullanılabilir hale getirilir.
+
+```powershell
+param($eventGridEvent, $TriggerMetadata)
+
+# Make sure to pass hashtables to Out-String so they're logged correctly
+$eventGridEvent | Out-String | Write-Host
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Aşağıdaki örnek, bir *function.js* dosyadaki bir tetikleyiciyi ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir.
+
+Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "eventGridTrigger",
+      "name": "event",
+      "direction": "in"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+Python kodu aşağıda verilmiştir:
+
+```python
+import json
+import logging
+
+import azure.functions as func
+
+def main(event: func.EventGridEvent):
+
+    result = json.dumps({
+        'id': event.id,
+        'data': event.get_json(),
+        'topic': event.topic,
+        'subject': event.subject,
+        'event_type': event.event_type,
+    })
+
+    logging.info('Python EventGrid trigger processed an event: %s', result)
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -289,17 +314,21 @@ Tüm örnek için bkz. C# örneği.
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+[Eventgridtrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) ek açıklaması, yapılandırma değerlerini sağlayarak bir Event Grid bağlamasını bildirimli olarak yapılandırmanızı sağlar. Daha ayrıntılı bilgi için bkz. [örnek](#example) ve [yapılandırma](#configuration) bölümleri.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
-
-# <a name="java"></a>[Java](#tab/java)
-
-[Eventgridtrigger](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/EventGridTrigger.java) ek açıklaması, yapılandırma değerlerini sağlayarak bir Event Grid bağlamasını bildirimli olarak yapılandırmanızı sağlar. Daha ayrıntılı bilgi için bkz. [örnek](#example) ve [yapılandırma](#configuration) bölümleri.
 
 ---
 
@@ -307,7 +336,7 @@ Tüm örnek için bkz. C# örneği.
 
 Aşağıdaki tabloda, dosyasında *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır. Öznitelikte ayarlanacak bir oluşturucu parametresi veya özellik yok `EventGridTrigger` .
 
-|function.jsözelliği |Açıklama|
+|function.jsözelliği |Description|
 |---------|---------|
 | **türüyle** | Gerekli-olarak ayarlanmalıdır `eventGridTrigger` . |
 | **Görünüm** | Gerekli-olarak ayarlanmalıdır `in` . |
@@ -343,17 +372,21 @@ Azure Işlevleri 2. x ve üzeri sürümlerde, Event Grid tetikleyicisi için aş
 > [!NOTE]
 > Işlev v1 ' de bağlamaya çalışırsanız `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent` , derleyici "kullanım dışı" iletisini görüntüler ve `Microsoft.Azure.EventGrid.Models.EventGridEvent` bunun yerine kullanmanız önerilir. Daha yeni türü kullanmak için [Microsoft. Azure. EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) NuGet paketine başvurun ve `EventGridEvent` tür adını ile önek olarak niteleyin `Microsoft.Azure.EventGrid.Models` . Bir C# betik işlevindeki NuGet paketlerine başvurma hakkında daha fazla bilgi için bkz. [NuGet paketlerini kullanma](functions-reference-csharp.md#using-nuget-packages)
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid olay örneği, özniteliğiyle ilişkilendirilmiş parametresi aracılığıyla kullanılabilir `EventGridTrigger` , bir `EventSchema` . Daha fazla ayrıntı için [örneğe](#example) bakın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Event Grid örneği, dosyanın özelliğinde *function.js* yapılandırılan parametre aracılığıyla kullanılabilir `name` .
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Event Grid örneği, dosyanın özelliğinde *function.js* yapılandırılan parametre aracılığıyla kullanılabilir `name` .
 
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid örneği, dosyanın özelliğinde *function.js* `name` , olarak yazılmış olarak yapılandırılmış parametre aracılığıyla kullanılabilir `func.EventGridEvent` .
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid olay örneği, özniteliğiyle ilişkilendirilmiş parametresi aracılığıyla kullanılabilir `EventGridTrigger` , bir `EventSchema` . Daha fazla ayrıntı için [örneğe](#example) bakın.
 
 ---
 

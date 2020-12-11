@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Disk kıyaslama
               href: disks-benchmarks.md
-            - name: Performansı iyileştirme
-              href: optimization.md
         - name: Kullanıma açılmamış diskleri bulma - CLI
           href: find-unattached-disks.md
         - name: Kullanıma açılmamış diskleri bulma - Portal

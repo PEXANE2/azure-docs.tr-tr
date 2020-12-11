@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 1dd40756c05370d32b26c0a97ba23d0d7d7f1208
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c13f3e2e4e5ee6fb60f6691abe8164e9e7a03712
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902400"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094667"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamada verileri kopyalama ve dönüştürme
 
@@ -284,7 +284,7 @@ Azure depolama kimlik doğrulaması hakkında genel bilgi için bkz. [Azure Acti
     - **Havuz olarak**, **erişim denetımı 'nde (IAM)**, en azından **Depolama Blobu veri katılımcısı** rolüne izin verin.
 
 >[!IMPORTANT]
->BLOB depolama alanından (kaynak veya hazırlama olarak) Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase veya COPY ifadesini kullanırsanız, blob depolaması için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)kılavuzda 1 ile 3 arasındaki adımları da izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktasıyla yapılandırırsanız, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına** Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsü altında, SYNAPSE Için gereken şekilde erişmesine izin ver ' i de yüklemeniz gerekir.
+>BLOB depolama alanından (kaynak veya hazırlama olarak) Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase veya COPY ifadesini kullanırsanız, blob depolaması için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Bu](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)kılavuzda 1 ile 3 arasındaki adımları da izlediğinizden emin olun. Bu adımlar, sunucunuzu Azure AD 'ye kaydeder ve Depolama Blobu veri katılımcısı rolünü sunucunuza atar. Data Factory Rest 'i işler. Blob depolamayı bir Azure sanal ağ uç noktasıyla yapılandırırsanız, **Güvenilen Microsoft hizmetlerinin bu depolama hesabına** Azure depolama hesabı **güvenlik duvarları ve sanal ağlar** ayarları menüsü altında, SYNAPSE Için gereken şekilde erişmesine izin ver ' i de yüklemeniz gerekir.
 
 Bu özellikler, Azure Blob depolama bağlı hizmeti için desteklenir:
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701458"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094871"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage 1. Nesil'de erişim denetimi
 
@@ -33,8 +33,6 @@ Azure Data Lake Storage 1., bu sırayla, POSIX erişim denetimi modelinden türe
 
 
 Hem Erişim ACL'leri hem de Varsayılan ACL'ler aynı yapıdadır.
-
-
 
 > [!NOTE]
 > Bir üst öğe üzerindeki Varsayılan ACL’nin değiştirilmesi zaten var olan alt öğelerin Erişim ACL’sini veya Varsayılan ACL’sini etkilemez.
@@ -74,7 +72,7 @@ Aşağıda, Data Lake Storage 1. hesapta belirli işlemleri gerçekleştirmek i�
 | İşlem | Nesne              |    /      | Ağına   | Portland   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Okuma      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Sonuna ekle | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Sonuna ekle | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Sil    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Oluştur    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Liste      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |

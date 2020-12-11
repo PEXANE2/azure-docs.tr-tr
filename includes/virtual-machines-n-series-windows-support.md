@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: caad292f06710fca8d6f64476eead5dfcb164e9d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f99aedc21c3b51975649f8944ab53536d365a7d1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96537075"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096336"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Desteklenen işletim sistemleri ve sürücüler
 
@@ -34,7 +34,9 @@ NC, NCv2, NCv3, NCasT4_v3, ND ve NDv2 serisi VM 'Ler için NVıDıA Tesla (CUDA)
 
 Microsoft, sanal iş istasyonları veya sanal uygulamalar olarak kullanılan NV ve NVv3 serisi VM 'Ler için NVıDıA GRID sürücü yükleyicilerini yeniden dağıtır. Yalnızca aşağıdaki tabloda listelenen işletim sistemlerinde Azure NV serisi VM 'lerine yalnızca bu KıLAVUZ sürücülerini yükler. Bu sürücüler Azure 'da GRID sanal GPU yazılımı için lisanslama içerir. NVıDıA vGPU yazılım lisans sunucusu ayarlamanız gerekmez.
 
-Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NC, NCv2, NCv3, ND ve NDv2 serisi VM 'Ler gibi NV serisi olmayan VM 'lerde çalışmaz. Tek istisna, KıLAVUZ sürücülerinin NV serisi ile benzer grafik işlevlerini etkinleştirebileceği NCas_T4_V3 VM Serisi ' dir.
+Azure tarafından yeniden dağıtılan KıLAVUZ sürücüleri, NCv2, NCv3, ND ve NDv2 serisi VM 'ler gibi NV serisi olmayan VM 'lerde çalışmaz. Tek istisna, KıLAVUZ sürücülerinin NV serisi ile benzer grafik işlevlerini etkinleştirebileceği NCas_T4_V3 VM Serisi ' dir.
+
+NVIDIA K80 GPU 'ları ile NC-Series KıLAVUZ/grafik uygulamalarını desteklemez.  
 
 NVIDIA uzantısının en son sürücüyü her zaman yükleyeceğini lütfen unutmayın. Daha eski bir sürüme bağımlılığı olan müşteriler için buradaki önceki sürüme bağlantılar sağlıyoruz.
 

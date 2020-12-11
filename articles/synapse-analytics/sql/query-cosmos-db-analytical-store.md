@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744474"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095109"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Azure SYNAPSE link Preview 'da sunucusuz SQL havuzu ile verileri Azure Cosmos DB sorgulama
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-`OPENROWSET`Performansınızı etkileyebileceğinden, açıkça tanımlanmış şema olmadan kullanmayın. Sütunlarınız için mümkün olan en küçük boyutları (örneğin, VARCHAR (100) varsayılan VARCHAR (8000) yerine) kullandığınızdan emin olun. UTF [-8 dönüştürme sorununu](/troubleshoot/reading-utf8-text)önlemek için, bazı UTF-8 harmanlamasını varsayılan veritabanı harmanlaması olarak veya açık sütun harmanlama olarak ayarlamanız gerekir. Harmanlama `Latin1_General_100_BIN2_UTF8` , bazı dize sütunlarını kullanarak verileri filtreleyerek en iyi performansı sağlar.
+`OPENROWSET`Performansınızı etkileyebileceğinden, açıkça tanımlanmış şema olmadan kullanmayın. Sütunlarınız için mümkün olan en küçük boyutları (örneğin, VARCHAR (100) varsayılan VARCHAR (8000) yerine) kullandığınızdan emin olun. UTF [-8 dönüştürme sorununu](/azure/synapse-analytics/troubleshoot/reading-utf8-text)önlemek için, bazı UTF-8 harmanlamasını varsayılan veritabanı harmanlaması olarak veya açık sütun harmanlama olarak ayarlamanız gerekir. Harmanlama `Latin1_General_100_BIN2_UTF8` , bazı dize sütunlarını kullanarak verileri filtreleyerek en iyi performansı sağlar.
 
 ## <a name="query-nested-objects-and-arrays"></a>İç içe nesneleri ve dizileri sorgulama
 

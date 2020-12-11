@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad3cf33dacffc8bcda9376857206784afedf7139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94362002"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094901"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet eşlemesi ve Azure savunma (Önizleme)
 
@@ -44,7 +44,7 @@ Bu şekilde, bir hub ve bağlı bileşen modelinde bir Azure savunma dağıtım�
 1. Azure savunma, eşlenmiş VNet genelinde sorunsuz bir şekilde algılanır.
 1. Tek bir tıklama ile, RDP/SSH oturumu tarayıcıda açılır. RDP ve SSH eşzamanlı oturum sınırları için bkz. [RDP ve ssh oturumları](bastion-faq.md#limits).
 
-   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Bağlan":::
+  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Bağlan":::
 
    Azure savunma aracılığıyla bir sanal makineye bağlanma hakkında daha fazla bilgi için bkz.:
 

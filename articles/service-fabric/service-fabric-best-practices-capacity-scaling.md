@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 96cd460ddfea863eb27a1087ff59f3b87acf65d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41cfff11e44a3d052614aa3c81a4623f59bbbbf5
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90531313"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095296"
 ---
 # <a name="capacity-planning-and-scaling-for-azure-service-fabric"></a>Azure Service Fabric için kapasite planlama ve ölçeklendirme
 
@@ -50,21 +50,11 @@ Azure Service Fabric bir düğüm türünün [Dikey ölçeklendirilmesi](./virtu
 > [!NOTE]
 > Durum bilgisi olmayan Service Fabric sistem hizmetlerini barındıran birincil düğüm türü gümüş dayanıklılık düzeyi veya daha büyük olmalıdır. Gümüş dayanıklılığı etkinleştirdikten sonra, sistem işlemleri hızlarında veri güvenliğini iyileştirdiği için yükseltme, düğüm ekleme veya kaldırma gibi küme işlemleri daha yavaş olur.
 
-Bir sanal makine ölçek kümesinin dikey ölçeklendirilmesi, bozucu bir işlemdir. Bunun yerine, istediğiniz SKU 'ya sahip yeni bir ölçek kümesi ekleyerek kümenizi yatay olarak ölçeklendirin. Ardından, güvenli bir dikey ölçeklendirme işlemini gerçekleştirmek için hizmetlerinizi istediğiniz SKU 'ya geçirin. Bir sanal makine ölçek kümesi kaynak SKU 'SU, konaklarınızı yeniden görüntüleyerek, yerel olarak kalıcı olan tüm durumu kaldıran bir bozucu işlemdir.
+Bir sanal makine ölçek kümesini yalnızca kaynak SKU 'SU değiştirilerek bir bozucu işlem olduğundan, bir sanal makine ölçek kümesinin dikey ölçeklendirilmesi bir bozucu işlemdir. bu nedenle, konaklarınızı yeniden görüntüleyerek yerel olarak kalıcı Bunun yerine, istediğiniz SKU 'ya sahip yeni bir ölçek kümesi ekleyerek ve ardından güvenli bir dikey ölçeklendirme işlemini gerçekleştirmek için hizmetlerinizi yeni ölçek kümesine geçirerek kümenizi yatay olarak ölçeklendirirsiniz.
 
-Kümeniz, uygulamanızın hizmetlerini barındırmaya karar vermek için Service Fabric [node özelliklerini ve yerleştirme kısıtlamalarını](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) kullanır. Birincil düğüm türünü dikey olarak ölçeklendirirken, için aynı özellik değerlerini bildirin `"nodeTypeRef"` . Bu değerleri, sanal makine ölçek kümeleri için Service Fabric uzantısında bulabilirsiniz. 
-
-Kaynak Yöneticisi şablonun aşağıdaki kod parçacığında, bildirdiğiniz özellikler gösterilmektedir. Ölçeklendirilen yeni sağlanan ölçek kümeleri için aynı değere sahiptir ve yalnızca kümeniz için geçici bir durum bilgisi olan hizmet olarak desteklenir.
-
-```json
-"settings": {
-   "nodeTypeRef": ["[parameters('primaryNodetypeName')]"]
-}
-```
+Kümeniz, uygulamanızın hizmetlerini barındırmaya karar vermek için Service Fabric [node özelliklerini ve yerleştirme kısıtlamalarını](./service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints) kullanır. Birincil düğüm türünü dikey olarak ölçeklendirirken, ikinci bir birincil düğüm türü dağıtırsınız ve sonra `"isPrimary": false` özgün birincil düğüm türünde () öğesini ve ardından düğümlerini devre dışı bırakmayı ve ölçek kümesini ve ilgili kaynaklarını kaldırmayı isteyeceksiniz. Ayrıntılar için bkz. [Service Fabric kümesi ölçeğini ölçekleme birincil düğüm türü](service-fabric-scale-up-primary-node-type.md).
 
 > [!NOTE]
-> `nodeTypeRef`Başarılı bir dikey ölçeklendirme işlemini gerçekleştirmek için gerekenden daha uzun bir özellik değerini kullanan birden fazla ölçek kümesiyle, kümenizin çalışmasını bırakmayın.
->
 > Üretim ortamında değişikliklere kalkışmadan önce test ortamlarındaki işlemleri her zaman doğrulayın. Service Fabric küme sistemi hizmetleri, varsayılan olarak yalnızca hedef birincil düğüm türüne bir yerleştirme kısıtlamasına sahiptir.
 
 Düğüm özellikleri ve yerleştirme kısıtlamaları ile birlikte, aşağıdaki adımları tek seferde bir VM örneği yapın. Bu, başka bir yerde oluşturulan yeni çoğaltmalar olduğundan, sistem hizmetlerinin (ve durum bilgisi olan hizmetlerin) kaldırdığınız sanal makine örneğinde düzgün şekilde kapatılmasını sağlar.
@@ -198,7 +188,7 @@ Güvenilirlik düzeyi, [Microsoft. ServiceFabric/kümeler kaynağının](/azure/
 ## <a name="durability-levels"></a>Dayanıklılık düzeyleri
 
 > [!WARNING]
-> Bronz dayanıklılık ile çalışan düğüm türleri _hiçbir ayrıcalık_alamadı. Durum bilgisiz iş yüklerinizi etkileyen altyapı işleri durdurulmaz veya gecikmez ve bu da iş yüklerinizi etkileyebilir. 
+> Bronz dayanıklılık ile çalışan düğüm türleri _hiçbir ayrıcalık_ alamadı. Durum bilgisiz iş yüklerinizi etkileyen altyapı işleri durdurulmaz veya gecikmez ve bu da iş yüklerinizi etkileyebilir. 
 >
 > Yalnızca durum bilgisi olmayan iş yüklerini çalıştıran düğüm türleri için bronz dayanıklılık kullanın. Üretim iş yükleri için, durum tutarlılığı sağlamak üzere gümüş veya daha yüksek bir sürümü çalıştırın. [Kapasite planlama belgelerindeki](./service-fabric-cluster-capacity.md)kılavuza göre doğru güvenilirliği seçin.
 

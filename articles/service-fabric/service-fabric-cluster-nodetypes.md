@@ -4,16 +4,16 @@ description: Azure Service Fabric düğüm türlerinin sanal makine ölçek küm
 ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
-ms.openlocfilehash: 7df7ed9fa1f872cd9554dcf4c8880b7c9d5e53c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9e30c02de54806006a1881448bcb9f788a57310c
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576409"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095262"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric düğüm türleri ve sanal makine ölçek kümeleri
 
-[Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/index.yml) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve tek bir düğüm türü, birden fazla ölçek kümesi tarafından yedeklenmemelidir (çoğu durumda). Bu durum, bir düğüm türünü [dikey olarak ölçeklendirirken](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations) nadir bir durumdur, `nodeTypeRef` ancak çoğaltmalar orijinalden yükseltilen ölçek kümesine geçirildiğinde aynı değere sahip iki ölçek kümesi olur.
+[Sanal Makine Ölçek Kümeleri](../virtual-machine-scale-sets/index.yml) bir Azure işlem kaynağıdır. Ölçek kümelerini, bir küme olarak bir sanal makine koleksiyonunu dağıtmak ve yönetmek için kullanabilirsiniz. Bir Azure Service Fabric kümesinde tanımladığınız her düğüm türü, tam olarak bir ölçek kümesi ayarlar: birden çok düğüm türü aynı ölçek kümesi tarafından yedeklenmez ve bir düğüm türü birden çok ölçek kümesi tarafından yedeklenmemelidir.
 
 Service Fabric çalışma zamanı, ölçek kümesindeki her bir sanal makineye *Microsoft. Azure. ServiceFabric* sanal makine uzantısı tarafından yüklenir. Her bir düğüm türünü bağımsız olarak yukarı veya aşağı ölçeklendirebilirsiniz, her küme düğümünde çalışan işletim sistemi SKU 'sunu değiştirebilir, farklı bağlantı noktası kümelerine açık olabilir ve farklı kapasite ölçümleri kullanabilirsiniz.
 

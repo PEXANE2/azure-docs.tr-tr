@@ -3,12 +3,12 @@ title: Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
 description: Atanan müşteri kaynakları için Azure geçişi 'ni etkin bir şekilde kullanmayı öğrenin.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621578"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095398"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Azure geçişi ile geçiş projelerini ölçekli olarak yönetme
 
@@ -39,7 +39,7 @@ Bu yaklaşım, birden fazla müşteri genelinde çalışan hizmet sağlayıcıla
 Bu modelin iş akışı aşağıdakine benzer olacaktır:
 
 1. Müşteri, [Azure açık eklendi](onboard-customer.md). Azure geçişi ile kullanılacak kimlik için katkıda bulunan yerleşik rolü gereklidir. Bu rolü kullanan bir örnek için, [temsilci-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) örnek şablonuna bakın.
-1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, uygun Temsilcili müşteri aboneliğini seçerek [bir Azure geçişi projesi oluşturur](/migrate/create-manage-projects.md).
+1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, uygun Temsilcili müşteri aboneliğini seçerek [bir Azure geçişi projesi oluşturur](/azure/migrate/create-manage-projects).
 1. Kullanıcı daha sonra [bulma ve değerlendirme için adımları gerçekleştirir](../../migrate/tutorial-discover-vmware.md).
 
    VMware VM 'Leri için, gereci yapılandırmadan önce, bulmayı vCenter Server veri merkezleri, kümeler, bir küme klasörü, konaklar, konaklar klasörü veya ayrı VM 'Ler için sınırlayabilirsiniz. Kapsamı ayarlamak için, gerecin vCenter Server erişmek için kullandığı hesaba izinler atayın. Hiper yöneticide birden fazla müşterinin VM 'Leri barındırıldığı durumlarda bu faydalıdır. Hyper-V ' d i bulma kapsamını sınırlandıramıyoruz.
@@ -61,7 +61,7 @@ Bu yaklaşım, hizmet sağlayıcılarının geçiş bulma ve değerlendirme proj
 Bu modelin iş akışı aşağıdakine benzer olacaktır:
 
 1. Müşteri, [Azure açık eklendi](onboard-customer.md). Azure geçişi ile kullanılacak kimlik için katkıda bulunan yerleşik rolü gereklidir. Bu rolü kullanan bir örnek için, [temsilci-Resource-Management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) örnek şablonuna bakın.
-1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, yönetim kiracısına ait olan abonelikte bir [Azure geçişi projesi oluşturur](/migrate/create-manage-projects.md) .
+1. Belirlenen Kullanıcı Azure portal yönetim kiracısında oturum açar ve Azure geçişi ' ne gider. Bu Kullanıcı, yönetim kiracısına ait olan abonelikte bir [Azure geçişi projesi oluşturur](/azure/migrate/create-manage-projects) .
 1. Kullanıcı daha sonra [bulma ve değerlendirme için adımları gerçekleştirir](../../migrate/tutorial-discover-vmware.md). Şirket içi VM 'Ler, yönetim kiracısında oluşturulan geçiş projesi içinde keşfedilir ve değerlendirilir ve ardından buradan geçirilir.
 
    Aynı Hyper-V konağında birden çok müşteriyi yönetiyorsanız, tüm iş yüklerini tek seferde bulabilirsiniz. Müşteriye özgü VM 'Ler aynı grupta seçilebilir, daha sonra bir değerlendirme oluşturulabilir ve hedef hedef olarak uygun müşterinin aboneliği seçilerek geçiş gerçekleştirilebilir. Bulma kapsamını sınırlandırmaya gerek yoktur ve tek bir geçiş projesindeki tüm müşteri iş yüklerine tam bir genel bakış sağlayabilirsiniz.

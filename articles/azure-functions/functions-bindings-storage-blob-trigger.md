@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 45393f116149f6cf16763d2d7033f8425df235bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998864"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094854"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -69,7 +69,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki örnek, birfunction.jsdosya ve bağlamayı kullanan kod *üzerindeki* bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Aşağıdaki örnek, birfunction.jsdosya ve bağlamayı kullanan kod *üzerindeki* bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
@@ -150,7 +150,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [Python kodundaki](functions-reference-python.md) bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
+Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [Python kodundaki](functions-reference-python.md) bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` [](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Dosyada *function.js* :
 
@@ -322,6 +322,9 @@ Blob verilerine [InputStream](/python/api/azure-functions/azure.functions.inputs
 ## <a name="blob-name-patterns"></a>Blob adı desenleri
 
 Öğesinde `path` veya öznitelik oluşturucusunda *function.js* özelliğinde bir blob adı stili belirtebilirsiniz `BlobTrigger` . Ad stili bir [filtre veya bağlama ifadesi](./functions-bindings-expressions-patterns.md)olabilir. Aşağıdaki bölümlerde örnekler sağlanmaktadır.
+
+> [!TIP]
+> Kapsayıcı adı, ad düzeninde çözümleyici içeremez.
 
 ### <a name="get-file-name-and-extension"></a>Dosya adı ve uzantısını al
 

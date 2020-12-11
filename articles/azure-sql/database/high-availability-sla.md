@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: sstein, sashan
 ms.date: 10/28/2020
-ms.openlocfilehash: e5e58f8592fcf8627870c3a574335bbe34394064
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 15067a046d8adc0ba38101bbe24cdc48cd433d56
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452462"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095449"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL veritabanı ve SQL yönetilen örneği için yüksek kullanılabilirlik
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,7 +48,7 @@ Veritabanı altyapısı veya işletim sistemi yükseltildiğinde ya da bir hata 
 
 ## <a name="general-purpose-service-tier-zone-redundant-availability-preview"></a>Genel Amaçlı hizmet katmanı bölgesi gereksiz kullanılabilirliği (Önizleme)
 
-Genel amaçlı hizmet katmanının bölge yedekli yapılandırması, [Azure Availability Zones](../../availability-zones/az-overview.md)   veritabanlarını bir Azure bölgesindeki birden çok fiziksel konumda çoğaltmak için Azure kullanılabilirlik alanları kullanır.Bölge artıklığı ' nı seçerek, yeni ve mevcut genel amaçlı tek veritabanlarınızı ve esnek havuzlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesiyle esnek hale getirebilirsiniz.
+Genel amaçlı hizmet katmanının bölge yedekli yapılandırması, [](../../availability-zones/az-overview.md)   veritabanlarını bir Azure bölgesindeki birden çok fiziksel konumda çoğaltmak için Azure kullanılabilirlik alanları kullanır.Bölge artıklığı ' nı seçerek, yeni ve mevcut genel amaçlı tek veritabanlarınızı ve esnek havuzlarınızı, uygulama mantığındaki herhangi bir değişiklik yapmadan çok daha büyük bir veri merkezi kesintileri dahil olmak üzere çok daha büyük bir başarısızlık kümesiyle esnek hale getirebilirsiniz.
 
 Genel amaçlı katmanın bölge yedekli yapılandırması iki katmana sahiptir:  
 
@@ -122,7 +122,7 @@ PowerShell, REST API veya Azure CLı kullanılarak yük devretme başlatılabili
 
 |Dağıtım türü|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|Veritabanı|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases(failover)/failover/)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
+|Veritabanı|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[Veritabanı yük devretmesi](/rest/api/sql/databases/failover)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
 |Elastik havuz|[Invoke-Azsqtalayapışpoolfailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[Elastik havuz yük devretme](/rest/api/sql/elasticpools(failover)/failover/)|[az Rest](/cli/azure/reference-index#az-rest) , Azure CLI 'dan bir REST API çağrısı çağırmak için kullanılabilir|
 |Yönetilen Örnek|[Invoke-Azsqlınstancefailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[Yönetilen örnekler-yük devretme](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az SQL mı yük devretme](/cli/azure/sql/mi/#az-sql-mi-failover)|
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: fd773ade0173fc1c238a5ce44e864e1255ed9044
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920656"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095177"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -251,8 +251,46 @@ Bir eylem grubunda sınırlı sayıda SMS eylemi olabilir.
 
 Desteklenen ülkeler/bölgeler için fiyatlandırma, [Azure izleyici fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/monitor/)listelenmiştir.
 
-**SMS bildiriminin desteklendiği** 
-| ülkelerin listesi **Ülke kodu**  |  **Ülke adı** | | 61 | Avustralya | | 43 | Avusturya | | 32 | Belçika | | 55 | Brezilya | | 1 | Kanada | | 56 | Şili | | 86 | Çin | | 420 | Çek Cumhuriyeti | | 45 | Danimarka | | 372 | Estonya | | 358 | Finlandiya | | 33 | Fransa | | 49 | Almanya | | 852 | Hong Kong | | 91 | Hindistan | | 353 | İrlanda | | 972 | İsrail | | 39 | İtalya | | 81 | Japonya | | 352 | Lüksemburg | | 60 | Malezya | | 52 | Meksika | | 31 | Hollanda | | 64 | Yeni Zelanda | | 47 | Norveç | | 351 | Portekiz | | 1 | Porto Riko | | 40 | Romanya | | 65 | Singapur | | 27 | Güney Afrika | | 82 | Güney Kore | | 34 | İspanya | | 41 | İsviçre | | 886 | Tayvan | | 44 |  Birleşik Krallık | | 1 | Birleşik Devletler |
+**SMS bildiriminin desteklendiği ülkelerin listesi**
+
+| Ülke Kodu | Ülke Adı |
+|:---|:---|
+| 61 | Avustralya |
+| 43 | Avusturya |
+| 32 | Belçika |
+| 55 | Brezilya |
+| 1 |Kanada |
+| 56 | Şili |
+| 86 | Çin |
+| 420 | Çek Cumhuriyeti |
+| 45 | Danimarka |
+| 372 | Estonya |
+| 358 | Finlandiya |
+| 33 | Fransa |
+| 49 | Almanya |
+| 852 | Hong Kong |
+| 91 | Hindistan |
+| 353 | İrlanda |
+| 972 | İsrail |
+| 39 | İtalya |
+| 81 | Japonya |
+| 352 | Lüksemburg |
+| 60 | Malezya |
+| 52 | Meksika |
+| 31 | Hollanda |
+| 64 | Yeni Zelanda |
+| 47 | Norveç |
+| 351 | Portekiz |
+| 1 | Porto Riko |
+| 40 | Romanya |
+| 65 | Singapur |
+| 27 | Güney Afrika |
+| 82 | Güney Kore |
+| 34 | İspanya |
+| 41 | İsviçre |
+| 886 | Tayvan |
+| 44 | Birleşik Krallık |
+| 1 | Birleşik Devletler |
 
 ### <a name="voice"></a>Ses
 Daha önemli davranış için bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.

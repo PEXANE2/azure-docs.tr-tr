@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184102"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095313"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics, Azure Storage 'ı çeşitli senaryolarda kullanır. Bu kullanım 
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Tanılama uzantısı günlüklerini geri yükleme (WAD/LAD)
 Azure Tanılama uzantısı aracıları (sırasıyla, Windows ve Linux aracıları için WAD ve LAD olarak da bilinir), çeşitli işletim sistemi günlükleri toplar ve bunları müşteri tarafından yönetilen bir depolama hesabında depolar. Daha sonra bu günlükleri gözden geçirmek ve analiz etmek için Log Analytics kullanabilirsiniz.
-Depolama hesabınızdan Azure Tanılama uzantısı günlüklerini toplama, depolama hesabını [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate)'sini çağırarak depolama alanı veri kaynağı olarak Log Analytics çalışma alanınıza bağlayın.
+Depolama hesabınızdan Azure Tanılama uzantısı günlüklerini toplama, depolama hesabını [Azure Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) kullanarak veya [Storage Insights API](/rest/api/loganalytics/storage%20insights/createorupdate)'sini çağırarak depolama alanı veri kaynağı olarak Log Analytics çalışma alanınıza bağlayın.
 
 Desteklenen veri türleri:
 * Syslog

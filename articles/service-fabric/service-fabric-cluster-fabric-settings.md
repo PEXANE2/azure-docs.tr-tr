@@ -3,12 +3,12 @@ title: Azure Service Fabric küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz doku ayarları ve doku yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187230"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095279"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Service Fabric kümeniz için özelleştirebileceğiniz çeşitli yapı ayarları açıklanmaktadır. Azure 'da barındırılan kümeler için [Azure Portal](https://portal.azure.com) veya Azure Resource Manager şablonu kullanarak ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz. [Azure kümesinin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-azure.md). Tek başına kümeler için, dosyadaki *ClusterConfig.js* güncelleyerek ve kümenizde bir yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirirsiniz. Daha fazla bilgi için bkz. [tek başına kümenin yapılandırmasını yükseltme](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -857,7 +857,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme Ilkesi** | **Kılavuz veya kısa açıklama** |
 | --- | --- | --- | --- |
-|Düzey |Int, varsayılan değer 4 ' dir | Dinamik |Trace ETW düzeyi 1, 2, 3, 4 değerlerini alabilir. Desteklenecek, izleme düzeyini 4 ' te tutmanız gerekir |
+|Level |Int, varsayılan değer 4 ' dir | Dinamik |Trace ETW düzeyi 1, 2, 3, 4 değerlerini alabilir. Desteklenecek, izleme düzeyini 4 ' te tutmanız gerekir |
 
 ## <a name="transactionalreplicator"></a>TransactionalReplicator
 
@@ -877,7 +877,7 @@ Aşağıda, bölümüne göre organize ettiğiniz doku ayarlarının bir listesi
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (60)|Statik|Zaman aralığı değerini saniye cinsinden belirtin. Hem gelen hem de kabul eden tarafta bağlantı kurulumu için zaman aşımı (güvenli modda güvenlik anlaşması dahil) |
 |FrameHeaderErrorCheckingEnabled|bool, varsayılan değer doğru|Statik|Çerçeve üstbilgisinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
-|MessageErrorCheckingEnabled|bool, varsayılan değer FALSE|Statik|İleti üst bilgisinde ve gövdesinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
+|MessageErrorCheckingEnabled|bool, varsayılan değer doğru|Statik|İleti üst bilgisinde ve gövdesinde güvenli olmayan modda hata denetimi için varsayılan ayar; bileşen ayarı bunu geçersiz kılar. |
 |ResolveOption|dize, varsayılan değer "belirtilmemiş"|Statik|FQDN 'nin nasıl çözümlendiğini belirler.  Geçerli değerler şunlardır "belirtilmemiş/IPv4/IPv6". |
 |Binding üstündeki SendTimeout|TimeSpan, varsayılan:: TimeSpan:: FromSeconds (300)|Dinamik|Zaman aralığı değerini saniye cinsinden belirtin. Takılmış bağlantıyı algılamak için zaman aşımı gönder. TCP hata raporları, bazı ortamlarda güvenilir değildir. Bunun, kullanılabilir ağ bant genişliğine ve giden verilerin boyutuna ( \* MaxMessageSize \/ \* sendqueuesizelimit) göre ayarlanması gerekebilir. |
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 11/24/2020
-ms.openlocfilehash: c436d75384c527ba7666cd2e6e780b9d8a93eae2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003964"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095092"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -61,7 +61,7 @@ veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | 
 ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | No
 compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | No
 compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | No
-hazırlama. linkedService | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabını belirtin.<br/><br/>Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Ayrıca, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) de öğrenin.<br/> | LinkedServiceReference | Yalnızca veri akışı bir Azure SYNAPSE analizlerini okuduğunda veya yazıyorsa
+hazırlama. linkedService | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabını belirtin.<br/><br/>Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Ayrıca, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) de öğrenin.<br/> | LinkedServiceReference | Yalnızca veri akışı bir Azure SYNAPSE analizlerini okuduğunda veya yazıyorsa
 hazırlama. folderPath | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı Azure SYNAPSE Analytics 'i okuduğunda veya yazıyorsa
 traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | No
 
@@ -88,7 +88,7 @@ Veri akışı etkinliği yürütmesinde kullanılacak Integration Runtime seçin
 
 ### <a name="polybase"></a>PolyBase
 
-Bir havuz veya kaynak olarak Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) kullanıyorsanız, PolyBase Batch yüklemeniz için bir hazırlama konumu seçmeniz gerekir. PolyBase, verileri satır satır olarak yüklemek yerine toplu olarak yüklemeye izin verir. PolyBase, yükleme süresini büyük ölçüde Azure SYNAPSE Analytics 'e düşürür.
+Bir Azure SYNAPSE analizinizi havuz veya kaynak olarak kullanıyorsanız, PolyBase Batch yüklemeniz için bir hazırlama konumu seçmeniz gerekir. PolyBase, verileri satır satır olarak yüklemek yerine toplu olarak yüklemeye izin verir. PolyBase, yükleme süresini büyük ölçüde Azure SYNAPSE Analytics 'e düşürür.
 
 ## <a name="logging-level"></a>Günlük kaydı düzeyi
 

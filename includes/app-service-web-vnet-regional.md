@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999473"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97096258"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -96,7 +96,17 @@ Sınır Ağ Geçidi Protokolü (BGP) rotaları de uygulama trafiğinizi etkiler.
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Özel Bölgeleri 
 
-Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. WEBSITE_DNS_SERVER uygulama ayarını istediğiniz DNS sunucunuzun adresiyle yapılandırarak uygulamanızda bu davranışı geçersiz kılabilirsiniz. Sanal ağınız ile yapılandırılmış bir özel DNS sunucunuz varsa ancak uygulamanızın Azure DNS özel bölgeler kullanmasını istiyorsanız 168.63.129.16 değeri ile WEBSITE_DNS_SERVER ayarlamanız gerekir. 
+Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. Varsayılan olarak, uygulamanız Azure DNS Özel Bölgeleri çalışmaz. Azure DNS Özel Bölgeleri çalışmak için aşağıdaki uygulama ayarlarını eklemeniz gerekir:
+
+
+1. 168.63.129.16 1 değeri ile WEBSITE_DNS_SERVER. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER
+1. 1 1 değeriyle WEBSITE_VNET_ROUTE_ALL. Değer 1 ile WEBSITE_VNET_ROUTE_ALL
+
+
+Bu ayarlar, uygulamanızın özel bölgeler Azure DNS kullanmasını olanaklı hale getirecek ek olarak, uygulamanızdaki tüm giden çağrılarınızı sanal ağınıza gönderir.   Bu ayarlar, uygulamanızdaki tüm giden çağrıları sanal ağınıza gönderir. Ayrıca, Özel DNS bölgesini çalışan düzeyinde sorgulayarak uygulamanın Azure DNS kullanmasına olanak sağlar. Bu işlev, çalışan bir uygulama Özel DNS bir bölgeye erişirken kullanılır.
+
+> [!NOTE]
+>Özel DNS bölgeyi kullanarak Web uygulamasına özel bir etki alanı eklemeye çalışmak, Sanal Ağ Tümleştirmesi için mümkün değildir. Özel etki alanı doğrulama işlemi, DNS kayıtlarının görüntülenmesini önleyen çalışan düzeyinde değil, denetleyici düzeyinde yapılır. Bir Özel DNS bölgesinden özel bir etki alanı kullanmak için, doğrulamanın bir Application Gateway veya ıLB App Service Ortamı kullanılarak atlanmak gerekir.
 
 ### <a name="private-endpoints"></a>Özel uç noktalar
 

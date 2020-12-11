@@ -3,5 +3,5 @@
   topicHref: /azure/index
   items:
     - name: Açık Veri Kümeleri
-      tocHref: /azure/machine-learning/service
+      tocHref: /azure/machine-learning
       topicHref: /azure/open-datasets/index

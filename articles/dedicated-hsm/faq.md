@@ -2,7 +2,7 @@
 title: Sık sorulan sorular-Azure ayrılmış HSM | Microsoft Docs
 description: Temel bilgiler, birlikte çalışabilirlik, yüksek kullanılabilirlik ve destek gibi Azure adanmış donanım güvenlik modülü hakkında sık sorulan soruların yanıtlarını bulun.
 services: dedicated-hsm
-author: johncdawson
+author: keithp
 manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc, seodec18
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/05/2020
-ms.author: mbaldwin
-ms.openlocfilehash: 0d3309283279c887c00a475ccedfe1edaf311ae5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/10/2020
+ms.author: keithp
+ms.openlocfilehash: 61a9fcc5490c20383a2ae7d5c57b7fda7567c643
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88189870"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095160"
 ---
 # <a name="frequently-asked-questions-faq"></a>Sık sorulan sorular (SSS)
 
@@ -32,11 +32,11 @@ Donanım güvenlik modülü (HSM), şifreleme anahtarlarını korumak ve yönetm
 
 ### <a name="q-what-is-the-azure-dedicated-hsm-offering"></a>S: Azure adanmış HSM teklifi nedir?
 
-Azure adanmış HSM, bir müşterinin sanal ağına doğrudan bağlı olan Azure veri merkezlerinde barındırılan HSM 'leri sağlayan bulut tabanlı bir hizmettir. Bu HSM 'ler, özel ağ gereçlerine (Gemalto 'ın SafeNet Network HSM 7 model A790) sahiptir. Bunlar doğrudan müşterilerin özel IP adresi alanına dağıtılır ve Microsoft, HSM 'lerin şifreleme işlevlerine erişemez. Bu cihazlar üzerinde yalnızca müşterinin tam yönetim ve şifreleme denetimi vardır. Müşteriler, cihazın yönetiminden sorumludur ve doğrudan cihazlarından tam etkinlik günlükleri alabilirler. Adanmış HSMs müşterileri, FIPS 140-2 düzey 3, HIPAA, PCI-DSS, ve eIDAS ve diğer birçok farklı uyumluluk/yasal gereksinimleri karşılar.
+Azure adanmış HSM, bir müşterinin sanal ağına doğrudan bağlı olan Azure veri merkezlerinde barındırılan HSM 'leri sağlayan bulut tabanlı bir hizmettir. Bu HSM 'ler, adanmış ağ gereçlerine (Thales Network Luna HSM 7) sahiptir. Bunlar doğrudan müşterilerin özel IP adresi alanına dağıtılır ve Microsoft, HSM 'lerin şifreleme işlevlerine erişemez. Bu cihazlar üzerinde yalnızca müşterinin tam yönetim ve şifreleme denetimi vardır. Müşteriler, cihazın yönetiminden sorumludur ve doğrudan cihazlarından tam etkinlik günlükleri alabilirler. Adanmış HSMs müşterileri, FIPS 140-2 düzey 3, HIPAA, PCI-DSS, ve eIDAS ve diğer birçok farklı uyumluluk/yasal gereksinimleri karşılar.
 
 ### <a name="q-what-hardware-is-used-for-dedicated-hsm"></a>S: adanmış HSM için hangi donanım kullanılıyor?
 
-Microsoft, Azure ayrılmış HSM hizmetini sunmak için Gemalto ile işbirliği yaptı. Kullanılan belirli cihaz [SafeNet Luna ağ HSM 7 model A790 '](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/)dir. Bu cihaz yalnızca FIPS 140-2 düzey 3 tarafından doğrulanan bellenim sağlamaz, ancak 10 bölüm aracılığıyla düşük gecikme süresi, yüksek performans ve yüksek kapasite sağlar. 
+Microsoft, Azure ayrılmış HSM hizmetini sunmaya yönelik Thales ile işbirliği yaptı. Kullanılan belirli cihaz [Thales Network Luna HSM 7 '](https://cpl.thalesgroup.com/encryption/hardware-security-modules/network-hsms)dir. Bu cihaz yalnızca FIPS 140-2 düzey 3 tarafından doğrulanan bellenim sağlamaz, ancak 10 bölüm aracılığıyla düşük gecikme süresi, yüksek performans ve yüksek kapasite sağlar. 
 
 ### <a name="q-what-is-an-hsm-used-for"></a>S: için kullanılan HSM nedir?
 
@@ -44,11 +44,18 @@ HSM 'ler, TLS (Aktarım Katmanı Güvenliği), şifreleme verileri, PKI (ortak a
 
 ### <a name="q-how-does-dedicated-hsm-work"></a>S: adanmış HSM nasıl çalışır?
 
-Müşteriler, PowerShell veya komut satırı arabirimini kullanarak belirli bölgelerde HSM 'ler sağlayabilir. Müşteri, HSMs 'nin hangi sanal ağa bağlanacağı ve sağlanan IP adresleri için müşterinin özel IP adresi alanındaki atanmış alt ağda kullanılabilir olacağını belirtir. Ardından müşteriler, Gereç yönetimi ve yönetimi için SSH kullanarak HSM 'lere bağlanabilir, HSM istemci bağlantıları ayarlayabilir, HSM 'ler başlatabilir, bölümler oluşturabilir, Bölüm Müdürü, şifre müdürü ve şifre Kullanıcı gibi roller atayabilir. Daha sonra müşteri, uygulamalarından şifreleme işlemleri gerçekleştirmek için HSM istemci araçları/SDK/yazılımı sağlamak üzere Gemalto 'ı kullanır.
+Müşteriler, PowerShell veya komut satırı arabirimini kullanarak belirli bölgelerde HSM 'ler sağlayabilir. Müşteri, HSMs 'nin hangi sanal ağa bağlanacağı ve sağlanan IP adresleri için müşterinin özel IP adresi alanındaki atanmış alt ağda kullanılabilir olacağını belirtir. Ardından müşteriler, Gereç yönetimi ve yönetimi için SSH kullanarak HSM 'lere bağlanabilir, HSM istemci bağlantıları ayarlayabilir, HSM 'ler başlatabilir, bölümler oluşturabilir, Bölüm Müdürü, şifre müdürü ve şifre Kullanıcı gibi roller atayabilir. Daha sonra müşteri, uygulamalarından şifreleme işlemleri gerçekleştirmek için Thales tarafından sunulan HSM istemci araçları/SDK/Yazılım ' u kullanır.
 
 ### <a name="q-what-software-is-provided-with-the-dedicated-hsm-service"></a>S: adanmış HSM hizmeti ile hangi yazılım sağlanır?
 
-Microsoft tarafından sağlandıktan sonra HSM cihazının tüm yazılımlarını temin etmek için Gemalto. Yazılım, [Gemalto müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Adanmış HSM hizmetini kullanan müşterilerin, Gemalto desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesini sağlayan bir müşteri KIMLIĞI vardır. Desteklenen istemci yazılımı, FIPS 140-2 düzey 3 ile doğrulanan bellenim sürümü 7.0.3 ile uyumlu olan sürüm 7,2 ' dir. 
+Thales, Microsoft tarafından sağlandıktan sonra HSM cihazının tüm yazılımlarını sağlar. Yazılım, [Thales müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır. Desteklenen istemci yazılımı, FIPS 140-2 düzey 3 ile doğrulanan bellenim sürümü 7.0.3 ile uyumlu olan sürüm 7,2 ' dir. 
+
+### <a name="q-what-extra-costs-may-be-incurred-with-dedicated-hsm-service"></a>S: adanmış HSM hizmeti ile hangi ekstra maliyetler tahakkuk edebilir?
+
+Aşağıdaki öğeler, adanmış HSM hizmeti kullanılırken ek maliyet doğuracaktır. 
+* Adanmış şirket içi yedekleme cihazının kullanılması, adanmış HSM hizmeti ile kullanım için uygulanabilir, ancak bu, ek bir maliyet sağlar ve Thales 'ten doğrudan kaynak olmalıdır.
+* Adanmış HSM, 10 bölümlü bir lisansla birlikte sağlanır. Bir müşteri daha fazla bölüm gerektiriyorsa, bu, Thales 'ten doğrudan kaynak olarak verilen ek lisanslar için ek bir ücret doğurur.
+* Adanmış HSM, ağ altyapısı (VNET, VPN Gateway, vb.) ve cihaz yapılandırması için sanal makineler gibi kaynaklar gerektirir. Bu ek kaynaklar ek maliyetler oluşturacak ve adanmış HSM hizmeti fiyatlandırmasına dahil edilmez.
 
 ### <a name="q-does-azure-dedicated-hsm-offer-password-based-and-ped-based-authentication"></a>S: Azure adanmış HSM, parola tabanlı ve uygulanmış tabanlı kimlik doğrulaması sunuyor mu?
 
@@ -56,11 +63,11 @@ Azure ayrılmış HSM, şu anda yalnızca parola tabanlı kimlik doğrulama ile 
 
 ### <a name="q-will-azure-dedicated-hsm-host-my-hsms-for-me"></a>S: Azure adanmış HSM ana bilgisayar, HSMs benim için mi?
 
-Microsoft, özel HSM hizmeti aracılığıyla yalnızca Gemalto SafeNet Luna ağ HSM 'sini sunar ve müşterinin sağladığı cihazları barındıramaz.
+Microsoft, yalnızca özel HSM hizmeti aracılığıyla Thales Network Luna HSM 7 ' yi sunar ve müşterinin sağladığı cihazları barındıramaz.
 
 ### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>S: Azure adanmış HSM destek ödemesi (PIN/EFT) özellikleri mi?
 
-Azure ayrılmış HSM hizmeti, SafeNet Luna ağ HSM 7 (model A790) cihazlarını kullanır. Bu cihazlar, ödeme HSM 'ye özgü işlevselliği (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure ayrılmış HSM hizmeti 'nin gelecekte ödeme HSM 'leri desteklemesini istiyorsanız, Microsoft hesap temsilcinizle ilgili geri bildirimleri geçirin.
+Azure ayrılmış HSM hizmeti Thales Network Luna HSM 7 cihazlarını kullanır. Bu cihazlar, HSM 'ye özgü ödeme işlevlerini (PIN veya EFT gibi) veya sertifikaları desteklemez. Azure ayrılmış HSM hizmeti 'nin gelecekte ödeme HSM 'leri desteklemesini istiyorsanız, Microsoft hesap temsilcinizle ilgili geri bildirimleri geçirin.
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>S: hangi Azure bölgeleri için adanmış HSM kullanılabilir?
 
@@ -94,7 +101,7 @@ En geç 2019 itibarıyla, adanmış HSM aşağıda listelenen 14 bölgede kullan
 
 ### <a name="q-how-does-my-application-connect-to-a-dedicated-hsm"></a>S: Uygulamam adanmış bir HSM 'ye nasıl bağlanır?
 
-Uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için HSM istemci araçları/SDK/yazılım sağlayan Gemalto 'ı kullanırsınız. Yazılım, [Gemalto müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Adanmış HSM hizmetini kullanan müşterilerin, Gemalto desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesini sağlayan bir müşteri KIMLIĞI vardır.
+Uygulamalarınızdan şifreleme işlemleri gerçekleştirmek için Thales tarafından sunulan HSM istemci araçları/SDK/Yazılım ' nu kullanırsınız. Yazılım, [Thales müşteri destek portalında](https://supportportal.gemalto.com/csm/)kullanılabilir. Ayrılmış HSM hizmetini kullanan müşterilerin Thales desteği için kaydedilmesi gerekir ve ilgili yazılımın erişimine ve indirilmesine olanak tanıyan bir müşteri KIMLIĞI vardır.
 
 ### <a name="q-can-an-application-connect-to-dedicated-hsm-from-a-different-vnet-in-or-across-regions"></a>S: bir uygulama, bölgelere veya bölgeler arasında farklı bir VNET 'ten adanmış HSM 'ye bağlanabilir mi?
 
@@ -110,7 +117,7 @@ Hayır. Azure adanmış HSM 'ler yalnızca sanal ağınızın içinden erişileb
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>S: mevcut bir şirket içi HSM 'den adanmış HSM 'ye anahtar aktarabilir miyim?
 
-Evet, şirket içi Gemalsiz SafeNet HSMs varsa. Birden çok yöntem vardır. Gemalto HSM belgelerine bakın.
+Evet, şirket içi Thales Network Luna HSM 7 HSMs varsa. Birden çok yöntem vardır. [Thales HSM belgelerine](https://thalesdocs.com/gphsm/luna/7.2/docs/network/Content/Home_network.htm)bakın.
 
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>S: adanmış HSM istemci yazılımı tarafından hangi işletim sistemleri destekleniyor?
 
@@ -119,7 +126,7 @@ Evet, şirket içi Gemalsiz SafeNet HSMs varsa. Birden çok yöntem vardır. Gem
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>S: birden çok HSM 'den birden çok bölümden oluşan yüksek kullanılabilirliğe sahip bir yapılandırma oluşturmak için istemci uygulamamı yapılandırmak Nasıl yaparım??
 
-Yüksek kullanılabilirlik sağlamak için, HSM istemci uygulaması yapılandırmanızı her bir HSM 'den bölümler kullanacak şekilde ayarlamanız gerekir. Gemalto HSM istemci yazılımı belgelerine bakın.
+Yüksek kullanılabilirlik sağlamak için, HSM istemci uygulaması yapılandırmanızı her bir HSM 'den bölümler kullanacak şekilde ayarlamanız gerekir. Thales HSM istemci yazılımı belgelerine bakın.
 
 ### <a name="q-what-authentication-mechanisms-are-supported-by-dedicated-hsm"></a>S: adanmış HSM tarafından hangi kimlik doğrulama mekanizmaları desteklenir?
 
@@ -131,7 +138,7 @@ PKCS # 11, Java (JCA/JCE), Microsoft CAPı ve CNG, OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>S: Luna 5/6 HSM 'lerden Azure adanmış HSM 'lere anahtar aktarabilir/geçiş yapabilir miyim?
 
-Evet. Gemalto geçiş kılavuzuna bakın. 
+Evet. Uygun Thales geçiş kılavuzu için Thales temsilcinizle iletişim kurun. 
 
 ## <a name="using-your-hsm"></a>HSM 'nizi kullanma
 
@@ -156,7 +163,7 @@ Hayır. Ayrılmış HSM, diğer Azure veya Microsoft Hizmetleri tarafından eri�
 
 ## <a name="administration-access-and-control"></a>Yönetim, erişim ve denetim
 
-### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>S: müşteri, adanmış HSM 'ler ile HSM 'ler üzerinde tam dışlamalı denetim mi edindi?
+### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-"></a>S: müşteri, adanmış ' ile HSM 'ler üzerinde tam dışlamalı denetim mi edindi?
 
 Evet. Her HSM gereci tek bir müşteriye tam olarak ayrılmıştır ve sağlandıktan ve yönetici parolası değiştirildikten sonra hiç kimse yönetim denetimine sahip olmaz.
 
@@ -164,9 +171,9 @@ Evet. Her HSM gereci tek bir müşteriye tam olarak ayrılmıştır ve sağland�
 
 Microsoft, HSM üzerinde herhangi bir yönetim veya şifreleme denetimine sahip değildir. Microsoft 'un, sıcaklık ve bileşen durumu gibi temel telemetri almak için seri bağlantı noktası bağlantısı aracılığıyla izleyici düzeyinde erişimi vardır. Bu, Microsoft 'un sistem durumu sorunlarıyla ilgili öngörülü bildirim sağlamasına olanak tanır. Gerekirse, müşteri bu hesabı devre dışı bırakabilir.
 
-### <a name="q-what-is-the-tenantadmin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-safenet-hsms"></a>S: Microsoft 'un kullandığı "TenantAdmin" hesabı nedir, bu yönetici kullanıcının SafeNet HSMs üzerinde "Yönetici" olması için kullandım mı?
+### <a name="q-what-is-the-tenant-admin-account-microsoft-uses-i-am-used-to-the-admin-user-being-admin-on-thales-luna-hsms"></a>S: Microsoft 'un kullandığı "Kiracı Yöneticisi" hesabı nedir, Thales Luna HSMs üzerinde yönetici kullanıcı "Yönetici" olacak şekilde kullandım mı?
 
-HSM cihazı, normal varsayılan parolasıyla birlikte varsayılan bir yönetici kullanıcıyla birlikte gönderilir. Microsoft, tüm cihazlar müşteriler tarafından sağlanmayı bekleyen bir havuzda olduğu sürece varsayılan parolaların kullanımda olmasını istemedi. Bu, katı güvenlik gereksinimlerimizi karşılamıyor. Bu nedenle, sağlama zamanında atılan güçlü bir parola ayarlayacağız. Ayrıca, sağlama sırasında "TenantAdmin" adlı yönetici rolünde yeni bir Kullanıcı oluşturacağız. Bu Kullanıcı varsayılan parolaya sahiptir ve müşteriler, ilk kez yeni sağlanan cihaza oturum açarken bunu ilk eylem olarak değiştirir. Bu işlem, yüksek derecede güvenlik sağlar ve müşterilerimiz için tek yönetici denetimi taahhüdünü korur. Bir müşteri bu hesabı kullanmayı tercih ediyorsa Yönetici Kullanıcı parolasını sıfırlamak için "TenantAdmin" kullanıcısının kullanılabileceğini not edilmelidir. 
+HSM cihazı, normal varsayılan parolasıyla birlikte varsayılan bir yönetici kullanıcıyla birlikte gönderilir. Microsoft, tüm cihazlar müşteriler tarafından sağlanmayı bekleyen bir havuzda olduğu sürece varsayılan parolaların kullanımda olmasını istemedi. Bu, katı güvenlik gereksinimlerimizi karşılamıyor. Bu nedenle, sağlama zamanında atılan güçlü bir parola ayarlayacağız. Ayrıca, sağlama sırasında "Kiracı Yöneticisi" adlı yönetici rolünde yeni bir Kullanıcı oluşturacağız. Bu Kullanıcı varsayılan parolaya sahiptir ve müşteriler, ilk kez yeni sağlanan cihaza oturum açarken bunu ilk eylem olarak değiştirir. Bu işlem, yüksek derecede güvenlik sağlar ve müşterilerimiz için tek yönetici denetimi taahhüdünü korur. Bir müşteri bu hesabı kullanmayı tercih ediyorsa Yönetici Kullanıcı parolasını sıfırlamak için "Kiracı Yöneticisi" kullanıcısının kullanılabileceğini not edilmelidir. 
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>S: Microsoft 'a veya Microsoft Access anahtarınızdaki herkes adanmış HSM 'mi olabilir mi?
 
@@ -174,7 +181,7 @@ Hayır. Microsoft 'un müşteri tarafından ayrılan adanmış HSM 'de depolanan
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>S: bana ayrılan HSM 'lerde yazılım/bellenim yükseltebilir miyim?
 
-En iyi desteği elde etmek için Microsoft, HSM 'de yazılım/üretici yazılımı yükseltmemenizi önemle tavsiye eder. Ancak, farklı bellenim sürümlerinden belirli özellikler gerekliyse, müşterinin yazılım/bellenim yükseltmesi de dahil olmak üzere tam yönetim denetimi vardır. Değişiklik yapmadan önce, bunun, örneğin FIPS tarafından doğrulanan durumu etkilediği için olası anlaşılması gerekir. 
+Müşteri, farklı bellenim sürümlerinden belirli özellikler gerekliyse yazılım/bellenim yükseltmesi de dahil olmak üzere tam yönetim denetimine sahiptir. Değişiklik yapmadan önce lütfen iletişim kurarak yükseltme hakkında Microsoft 'a danışın HSMRequest@microsoft.com  
 
 ### <a name="q-how-do-i-manage-dedicated-hsm"></a>S: adanmış HSM 'yi yönetmek Nasıl yaparım??
 
@@ -182,7 +189,7 @@ Adanmış HSM 'leri, SSH kullanarak bunlara erişerek yönetebilirsiniz.
 
 ### <a name="q-how-do-i-manage-partitions-on-the-dedicated-hsm"></a>S: adanmış HSM 'de bölümleri yönetmek Nasıl yaparım??
 
-Gemalto HSM istemci yazılımı, HSMs ve bölümleri yönetmek için kullanılır.
+Thales HSM istemci yazılımı, HSMs ve bölümleri yönetmek için kullanılır.
 
 ### <a name="q-how-do-i-monitor-my-hsm"></a>S: HSM 'mi Nasıl yaparım??
 
@@ -196,7 +203,7 @@ Evet. HSM gerecinden bir Syslog sunucusuna Günlükler gönderebilirsiniz
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>S: aynı bölgede veya birden çok bölgede yüksek kullanılabilirlik yapılandırmak mümkün mü?
 
-Evet. Yüksek kullanılabilirlik yapılandırması ve kurulumu, Gemalto tarafından sunulan HSM istemci yazılımında gerçekleştirilir. Aynı VNET 'ten veya aynı bölgedeki veya bölgedeki diğer VNET 'lerden ya da siteler arası veya noktadan noktaya VPN kullanarak bir VNET 'e bağlı olan şirket içi HSM 'ler aynı yüksek kullanılabilirliğe sahip yapılandırmaya eklenebilir. Bunun, yalnızca anahtar malzemesini eşitlediği ve roller gibi belirli yapılandırma öğeleri olmadığı unutulmamalıdır.
+Evet. Yüksek kullanılabilirlik yapılandırması ve kurulumu Thales tarafından sunulan HSM istemci yazılımında gerçekleştirilir. Aynı VNET 'ten veya aynı bölgedeki veya bölgedeki diğer VNET 'lerden ya da siteler arası veya noktadan noktaya VPN kullanarak bir VNET 'e bağlı olan şirket içi HSM 'ler aynı yüksek kullanılabilirliğe sahip yapılandırmaya eklenebilir. Bunun, yalnızca anahtar malzemesini eşitlediği ve roller gibi belirli yapılandırma öğeleri olmadığı unutulmamalıdır.
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>S: şirket içi ağınızdan Azure ayrılmış HSM ile yüksek kullanılabilirlik grubuna HSM 'ler ekleyebilir miyim?
 
@@ -222,7 +229,7 @@ Azure veri merkezlerinde kapsamlı fiziksel ve yordamsal güvenlik denetimleri v
 
 ### <a name="q-what-happens-if-there-is-a-security-breach-or-hardware-tampering-event"></a>S: güvenlik ihlali veya donanım üzerinde değişiklik olayı varsa ne olur?
 
-Adanmış HSM hizmeti SafeNet Network HSM 7 gereçlerini kullanır. Bu gereçler fiziksel ve mantıksal yeniden algılama algılamasını destekler. Bir yetkisiz hale getirilmiş bir olay varsa, HSM 'ler otomatik olarak sıfırlaması yapılır.
+Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini kullanır. Bu gereçler fiziksel ve mantıksal yeniden algılama algılamasını destekler. Bir yetkisiz hale getirilmiş bir olay varsa, HSM 'ler otomatik olarak sıfırlaması yapılır.
 
 ### <a name="q-how-do-i-ensure-that-keys-in-my-dedicated-hsms-are-not-lost-due-to-error-or-a-malicious-insider-attack"></a>S: adanmış HSM 'mdeki anahtarların hata veya kötü amaçlı bir Insider saldırısı nedeniyle kaybolmamasını sağlamak Nasıl yaparım? emin misiniz?
 
@@ -230,13 +237,13 @@ Olağanüstü durum kurtarma için HSM 'lerin düzenli aralıklarla düzenli yed
 
 ### <a name="q-how-do-i-get-support-for-dedicated-hsm"></a>S: adanmış HSM için destek almak Nasıl yaparım??
 
-Destek, hem Microsoft hem de Gemalto tarafından sağlanır.  Donanımla veya ağ erişimiyle ilgili bir sorununuz varsa Microsoft ile bir destek talebi yükseltin ve HSM yapılandırması, yazılım ve uygulama geliştirme ile ilgili bir sorununuz varsa, Gemalto ile bir destek isteği yükseltir. Belirlenmeyen bir sorununuz varsa, Microsoft ile bir destek isteği oluşturup daha sonra Gemalto Için gereken bir sorun olabilir. 
+Destek, hem Microsoft hem de Thales tarafından sağlanır.  Donanımla veya ağ erişimiyle ilgili bir sorununuz varsa, Microsoft ile bir destek talebi yükseltin ve HSM yapılandırması, yazılım ve uygulama geliştirme ile ilgili bir sorununuz varsa Thales ile bir destek isteği yükseltir. Belirlenemeyen bir sorununuz varsa, Microsoft ile bir destek isteği oluşturup Thales, gereken şekilde kullanılabilir. 
 
-### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-safenet-luna-7-hsm"></a>S: Nasıl yaparım? istemci yazılımı, belgeleri ve SafeNet Luna 7 HSM için tümleştirme yönergelerine erişin mi?
+### <a name="q-how-do-i-get-the-client-software-documentation-and-access-to-integration-guidance-for-the-thales-network-luna-hsm-7"></a>S: istemci yazılımını, belgeleri ve Thales ağı Luna HSM 7 için tümleştirme yönergelerine erişimi almak Nasıl yaparım? istiyor musunuz?
 
-Hizmete kaydolduktan sonra, Gemalto müşteri destek portalı 'nda kayda izin veren bir müşteri KIMLIĞI sağlanacaktır. Bu, tüm yazılım ve belgelere erişimi etkinleştirir ve doğrudan Gemalto ile destek isteklerini etkinleştirir.
+Hizmete kaydolduktan sonra Thales müşteri destek portalı 'nda kayda izin veren bir Thales müşteri KIMLIĞI sunulacaktır. Bu, tüm yazılım ve belgelere erişimin yanı sıra doğrudan Thales ile destek istekleri etkinleştirmeyi etkinleştirir.
 
-### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-gemalto-who-is-responsible-for-upgradingpatching-osfirmware"></a>S: bir güvenlik açığı varsa ve Gemalto tarafından bir düzeltme eki yayımlanmışsa, işletim sistemi/üretici yazılımı yükseltmekten/düzeltme ekiyle kimler sorumludur?
+### <a name="q-if-there-is-a-security-vulnerability-found-and-a-patch-is-released-by-thales-who-is-responsible-for-upgradingpatching-osfirmware"></a>S: güvenlik açığı bulundu ve Thales tarafından bir düzeltme eki yayımlanmışsa, işletim sistemi/üretici yazılımı yükseltmekten/düzeltme ekiyle sorumludur mi?
 
 Microsoft, müşterilere ayrılan HSMs 'ye bağlanabilir. Müşterilerin HSM 'leri yükseltmeleri ve düzeltme ekini düzeltmesi gerekir.
 
@@ -248,11 +255,11 @@ HSM 'nin bir komut satırı yeniden başlatma seçeneği vardır, ancak yeniden 
 
 ### <a name="q-is-it-safe-to-store-encryption-keys-for-my-most-important-data-in-dedicated-hsm"></a>S: en önemli veriler için şifreleme anahtarlarını ayrılmış HSM 'de depolamak güvenli mi?
 
-Evet, adanmış HSM, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanan SafeNet ağ HSM 7 gereçlerini sağlar. 
+Evet, adanmış HSM, FIPS 140-2 düzey 3 doğrulanan HSM 'leri kullanan Thales Network Luna HSM 7 gereçlerini sağlar. 
 
 ### <a name="q-what-cryptographic-keys-and-algorithms-are-supported-by-dedicated-hsm"></a>S: adanmış HSM tarafından desteklenen şifreleme anahtarları ve algoritmaları nelerdir?
 
-Adanmış HSM hizmeti SafeNet Network HSM 7 gereçlerini sağlar. Bunlar aşağıdakiler dahil olmak üzere çok çeşitli şifreleme anahtar türlerini ve algoritmaları destekler: tam Suite B desteği
+Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini sağlar. Bunlar aşağıdakiler dahil olmak üzere çok çeşitli şifreleme anahtar türlerini ve algoritmaları destekler: tam Suite B desteği
 
 * Sertifikasında
   * RSA
@@ -276,21 +283,21 @@ Adanmış HSM hizmeti SafeNet Network HSM 7 gereçlerini sağlar. Bunlar aşağ�
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>S: adanmış HSM FIPS 140-2 düzey 3 doğrulanmadı mi?
 
-Evet. Adanmış HSM hizmeti, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanan SafeNet ağ HSM 7 gereçlerini sağlar.
+Evet. Adanmış HSM hizmeti, FIPS 140-2 düzey 3 tarafından doğrulanan HSM 'leri kullanan Thales Network Luna HSM 7 gereçlerini sağlar.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>S: FIPS 140-2 düzey 3 tarafından doğrulanan modda adanmış HSM 'yi işlediğimde emin olmak için ne yapmam gerekir?
 
-Adanmış HSM hizmeti SafeNet Luna ağ HSM 7 gereçlerini sağlar. Bu gereçler FIPS 140-2 düzey 3 doğrulanan HSM 'leri kullanır. Varsayılan olarak dağıtılan yapılandırma, işletim sistemi ve üretici yazılımı da FIPS olarak onaylanır. FIPS 140-2 düzey 3 uyumluluğu için herhangi bir işlem gerçekleştirmeniz gerekmez.
+Adanmış HSM hizmeti Thales Network Luna HSM 7 gereçlerini sağlar. Bu gereçler FIPS 140-2 düzey 3 doğrulanan HSM 'leri kullanır. Varsayılan olarak dağıtılan yapılandırma, işletim sistemi ve üretici yazılımı da FIPS olarak onaylanır. FIPS 140-2 düzey 3 uyumluluğu için herhangi bir işlem gerçekleştirmeniz gerekmez.
 
 ### <a name="q-how-does-a-customer-ensure-that-when-an-hsm-is-deprovisioned-all-the-key-material-is-wiped-out"></a>S: bir HSM, bir HSM 'nin sağlanması ne zaman sağlandıysa, tüm anahtar malzemeler silinir mi?
 
-Sağlamayı kaldırma istenmeden önce, müşterinin HSM istemci araçları 'nı kullanan HSM 'yi sıfırlaması gerekir.
+Sağlamayı kaldırma istenmeden önce, müşterinin Thales, HSM istemci araçları 'nı kullanarak HSM 'yi sıfırlaması gerekir.
 
 ## <a name="performance-and-scale"></a>Performans ve ölçeklendirme
 
 ### <a name="q-how-many-cryptographic-operations-are-supported-per-second-with-dedicated-hsm"></a>S: adanmış HSM ile saniye başına kaç tane şifreleme işlemi destekleniyor?
 
-Adanmış HSM, SafeNet ağ HSM 7 gereçlerini (model A790) sağlar. Bazı işlemler için en yüksek performans özeti aşağıda verilmiştir: 
+Adanmış HSM, Thales Network Luna HSM 7 HSM 'leri sağlar. Bazı işlemler için en yüksek performans özeti aşağıda verilmiştir: 
 
 * RSA-2048:10.000 işlem/saniye
 * ECC P256:20.000 işlem/saniye

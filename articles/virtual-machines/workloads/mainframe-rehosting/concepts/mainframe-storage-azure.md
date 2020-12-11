@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 9a3a7cad8399146834eed0282e0655a551bc083a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8f57210ff6b65ee3a893fb344a48629466e90004
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977281"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095364"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Ana bilgisayar depolama alanını Azure 'a taşıma
 
@@ -51,7 +51,7 @@ Azure Storage, Azure [diskleri](../../../managed-disks-overview.md), [Azure dosy
 
 <table>
 <thead>
-    <tr><th>Tür</th><th>Açıklama</th><th>Şunları yapmak istediğinizde kullanın:</th></tr>
+    <tr><th>Tür</th><th>Description</th><th>Şunları yapmak istediğinizde kullanın:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Dosyaları
@@ -127,4 +127,4 @@ BLOB depolama, Azure 'da en büyük depolama birimini sağlar. Azure, depolama b
 ### <a name="more-migration-resources"></a>Daha fazla geçiş kaynağı
 
 - [Azure sanal veri merkezi yükselt ve kaydırma Kılavuzu](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
-- [GlusterFS Iscsı](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)
+- [GlusterFS Iscsı](https://glusterdocs.readthedocs.io/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

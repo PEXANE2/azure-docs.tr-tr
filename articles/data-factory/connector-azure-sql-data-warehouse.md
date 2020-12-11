@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913560"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095143"
 ---
-# <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te (eski adıyla SQL veri ambarı) veri kopyalama ve dönüştürme
+# <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te veri kopyalama ve dönüştürme
 
 > [!div class="op_single_selector" title1="Kullanmakta olduğunuz Data Factory hizmeti sürümünü seçin:"]
 >
@@ -41,7 +41,7 @@ Bu Azure SYNAPSE Analytics Bağlayıcısı aşağıdaki etkinlikler için destek
 Kopyalama etkinliği için bu Azure SYNAPSE Analytics Bağlayıcısı şu işlevleri destekler:
 
 - Azure kaynakları için hizmet sorumlusu veya yönetilen kimlikler ile SQL kimlik doğrulaması ve Azure Active Directory (Azure AD) uygulama belirteci kimlik doğrulamasını kullanarak verileri kopyalayın.
-- Kaynak olarak, bir SQL sorgusu veya saklı yordam kullanarak verileri alın. Ayrıca, Azure SYNAPSE Analytics kaynağından paralel kopyalama seçeneğini de belirleyebilirsiniz. Ayrıntılar için [SYNAPSE Analytics 'Ten paralel kopyalama](#parallel-copy-from-synapse-analytics) bölümüne bakın.
+- Kaynak olarak, bir SQL sorgusu veya saklı yordam kullanarak verileri alın. Ayrıca, Azure SYNAPSE Analytics kaynağından paralel kopyalama seçeneğini de belirleyebilirsiniz. Ayrıntılar için [Azure SYNAPSE Analytics 'Ten paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın.
 - Havuz olarak, [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics) veya [Copy ifadesini](#use-copy-statement) veya toplu ekleme 'yi kullanarak veri yükleyin. Daha iyi kopyalama performansı için PolyBase veya COPY deyimimizi öneririz. Bağlayıcı, kaynak şemasına bağlı değilse otomatik olarak hedef tablo oluşturmayı da destekler.
 
 > [!IMPORTANT]
@@ -63,13 +63,13 @@ Aşağıdaki özellikler bir Azure SYNAPSE Analytics bağlı hizmeti için deste
 
 | Özellik            | Açıklama                                                  | Gerekli                                                     |
 | :------------------ | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| tür                | Type özelliği **Azuresqldw** olarak ayarlanmalıdır.             | Evet                                                          |
-| Dizisi    | **ConnectionString** özelliği Için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, parola/hizmet sorumlusu anahtarını Azure Key Vault de koyabilirsiniz ve SQL kimlik doğrulaması ise `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki JSON örneğine bakın ve [kimlik bilgilerini Azure Key Vault makalesine saklayın](store-credentials-in-key-vault.md) . | Evet                                                          |
+| tür                | Type özelliği **Azuresqldw** olarak ayarlanmalıdır.             | Yes                                                          |
+| Dizisi    | **ConnectionString** özelliği Için Azure SYNAPSE Analytics örneğine bağlanmak için gereken bilgileri belirtin. <br/>Bu alanı, Data Factory güvenli bir şekilde depolamak için SecureString olarak işaretleyin. Ayrıca, parola/hizmet sorumlusu anahtarını Azure Key Vault de koyabilirsiniz ve SQL kimlik doğrulaması ise `password` yapılandırmayı bağlantı dizesinin dışına çekebilirsiniz. Daha ayrıntılı bilgi için tablonun altındaki JSON örneğine bakın ve [kimlik bilgilerini Azure Key Vault makalesine saklayın](store-credentials-in-key-vault.md) . | Yes                                                          |
 | Serviceprincipalıd  | Uygulamanın istemci KIMLIĞINI belirtin.                         | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Kiracı              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
-| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti** , **AzureChina** , **AzureUsGovernment** ve **AzureGermany** . Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | Hayır |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır                                                           |
+| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment** ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | No |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No                                                           |
 
 Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnekleri hakkında aşağıdaki bölümlere bakın:
 
@@ -224,7 +224,7 @@ Aşağıdaki özellikler Azure SYNAPSE Analytics veri kümesi için desteklenir:
 
 | Özellik  | Açıklama                                                  | Gerekli                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| tür      | Veri kümesinin **Type** özelliği **Azuresqldwtable** olarak ayarlanmalıdır. | Evet                         |
+| tür      | Veri kümesinin **Type** özelliği **Azuresqldwtable** olarak ayarlanmalıdır. | Yes                         |
 | schema | Şemanın adı. |Kaynak için Hayır, havuz için Evet  |
 | table | Tablo/görünüm adı. |Kaynak için Hayır, havuz için Evet  |
 | tableName | Şema ile tablonun/görünümün adı. Bu özellik geriye dönük uyumluluk için desteklenir. Yeni iş yükü için `schema` ve kullanın `table` . | Kaynak için Hayır, havuz için Evet |
@@ -257,23 +257,23 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 ### <a name="azure-synapse-analytics-as-the-source"></a>Kaynak olarak Azure SYNAPSE Analytics
 
 >[!TIP]
->Veri bölümleme kullanarak Azure SYNAPSE Analytics 'ten verileri verimli bir şekilde yüklemek için [SYNAPSE Analytics 'Ten paralel kopyadan](#parallel-copy-from-synapse-analytics)daha fazla bilgi edinin.
+>Veri bölümlemesini kullanarak Azure SYNAPSE Analytics 'ten verileri verimli bir şekilde yüklemek için [Azure SYNAPSE Analytics 'Ten paralel kopyadan](#parallel-copy-from-azure-synapse-analytics)daha fazla bilgi edinin.
 
 Azure SYNAPSE Analytics 'ten veri kopyalamak için kopyalama etkinliği kaynağındaki **Type** özelliğini **sqldwsource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
-| tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource** olarak ayarlanmalıdır. | Evet      |
-| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | Hayır       |
-| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | Hayır       |
-| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır       |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted** , **READUNCOMMITTED** , **RepeatableRead** , **Serializable** , **Snapshot** . Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
-| partitionOptions | Azure SYNAPSE Analytics 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange** .<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None` ), Azure SYNAPSE Analytics 'ten eş zamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | Hayır |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | Hayır |
+| tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource** olarak ayarlanmalıdır. | Yes      |
+| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | No       |
+| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | No       |
+| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No       |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](/dotnet/api/system.data.isolationlevel) başvurun. | No |
+| partitionOptions | Azure SYNAPSE Analytics 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None` ), Azure SYNAPSE Analytics 'ten eş zamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | No |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | No |
 | **_Altında `partitionSettings` :_* _ | | |
-| partitionColumnName | *in integer or  date/datetime type* `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` `datetimeoffset` Paralel kopya için Aralık bölümleme tarafından kullanılacak tamsayı veya tarih/DateTime türünde * (,,,,,,, veya) kaynak sütununun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-synapse-analytics) bölümüne bakın. | Hayır |
-| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-synapse-analytics) bölümüne bakın. | Hayır |
-| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-synapse-analytics) bölümüne bakın. | Hayır |
+| partitionColumnName |  `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` `datetimeoffset` Paralel kopya için Aralık bölümleme tarafından kullanılacak tamsayı veya tarih/DateTime türünde * (,,,,,,, veya) kaynak sütununun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
+| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
+| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
 
 **Örnek: SQL sorgusu kullanma**
 
@@ -378,15 +378,15 @@ Verileri Azure SYNAPSE Analytics 'e kopyalamak için kopyalama etkinliğindeki h
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| tür              | Kopyalama etkinliği havuzunun **Type** özelliği **sqldwsink** olarak ayarlanmalıdır. | Evet                                           |
+| tür              | Kopyalama etkinliği havuzunun **Type** özelliği **sqldwsink** olarak ayarlanmalıdır. | Yes                                           |
 | allowPolyBase     | Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase kullanılıp kullanılmayacağını belirtir. `allowCopyCommand` ve `allowPolyBase` her ikisi de true olamaz. <br/><br/>Kısıtlamalar ve Ayrıntılar için bkz. [Azure SYNAPSE Analytics 'e veri yüklemek Için PolyBase kullanma](#use-polybase-to-load-data-into-azure-synapse-analytics) .<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır.<br/>PolyBase kullanırken uygulayın.     |
 | polyBaseSettings  | `allowPolybase`Özelliği **true** olarak ayarlandığında belirtilenebilir bir özellik grubu. | Hayır.<br/>PolyBase kullanırken uygulayın. |
 | allowCopyCommand | Azure SYNAPSE Analytics 'e veri yüklemek için [kopyalama ifadesinin](/sql/t-sql/statements/copy-into-transact-sql) (Önizleme) kullanılıp kullanılmayacağını gösterir. `allowCopyCommand` ve `allowPolyBase` her ikisi de true olamaz. <br/><br/>Kısıtlamalar ve Ayrıntılar için bkz. [Copy deyimlerini kullanarak Azure SYNAPSE Analytics 'e veri yükleme](#use-copy-statement) bölümüne bakın.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir. | Hayır.<br>KOPYALAMA kullanırken uygulayın. |
 | copyCommandSettings | Özelliği TRUE olarak ayarlandığında belirtilenebilir bir özellik grubu `allowCopyCommand` . | Hayır.<br/>KOPYALAMA kullanırken uygulayın. |
 | writeBatchSize    | **Toplu iş BAŞıNA** SQL tablosuna eklenecek satır sayısı.<br/><br/>İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır.<br/>Toplu ekleme kullanırken uygulayın.     |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/><br/>İzin verilen değer **TimeSpan** değeridir. Örnek: "00:30:00" (30 dakika). | Hayır.<br/>Toplu ekleme kullanırken uygulayın.        |
-| Ön Copyscrıpt     | Her çalıştırmada Azure SYNAPSE Analytics 'e veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |Hayır |
+| Ön Copyscrıpt     | Her çalıştırmada Azure SYNAPSE Analytics 'e veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
 | disableMetricsCollection | Data Factory, performansı en iyi duruma getirme ve öneriler için Azure SYNAPSE Analytics DWUs gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure SYNAPSE Analytics havuz örneği
@@ -405,7 +405,7 @@ Verileri Azure SYNAPSE Analytics 'e kopyalamak için kopyalama etkinliğindeki h
 }
 ```
 
-## <a name="parallel-copy-from-synapse-analytics"></a>SYNAPSE Analytics 'ten paralel kopya
+## <a name="parallel-copy-from-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'ten paralel kopya
 
 Copy etkinliğinde Azure SYNAPSE Analytics Connector, verileri paralel olarak kopyalamak için yerleşik veri bölümlendirme sağlar. Kopyalama etkinliğinin **kaynak** sekmesinde veri bölümleme seçeneklerini bulabilirsiniz.
 
@@ -417,9 +417,9 @@ Azure SYNAPSE Analizinizden büyük miktarda veri yüklerken özellikle veri bö
 
 | Senaryo                                                     | Önerilen ayarlar                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği** : tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. <br><br/>Tablonuzun fiziksel bölümü olup olmadığını denetlemek için [Bu sorguya](#sample-query-to-check-physical-partition)başvurabilirsiniz. |
-| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih saat sütunuyla büyük tablodan tam yük. | **Bölüm seçenekleri** : Dinamik Aralık bölümü.<br>**Bölüm sütunu** (isteğe bağlı): verileri bölümlemek için kullanılan sütunu belirtin. Belirtilmezse, dizin veya birincil anahtar sütunu kullanılır.<br/>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, tablodaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değerleri otomatik olarak algılar.<br><br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
-| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri** : Dinamik Aralık bölümü.<br>**Sorgu** : `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu** : verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve Azure SYNAPSE Analytics 'e gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. <br><br>Farklı senaryolar için daha fazla örnek sorgu aşağıda verilmiştir:<br> 1. tüm tabloyu sorgulayın: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. sütun seçimi ve ek WHERE yan tümcesi filtreleri içeren bir tablodan sorgu: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. sorgular ile sorgu: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. alt sorguda bölüm ile sorgulama: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
+| Fiziksel bölümlerle büyük tablodan tam yük.        | **Bölüm seçeneği**: tablonun fiziksel bölümleri. <br><br/>Yürütme sırasında Data Factory fiziksel bölümleri otomatik olarak algılar ve verileri bölümlere göre kopyalar. <br><br/>Tablonuzun fiziksel bölümü olup olmadığını denetlemek için [Bu sorguya](#sample-query-to-check-physical-partition)başvurabilirsiniz. |
+| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih saat sütunuyla büyük tablodan tam yük. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Bölüm sütunu** (isteğe bağlı): verileri bölümlemek için kullanılan sütunu belirtin. Belirtilmezse, dizin veya birincil anahtar sütunu kullanılır.<br/>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, tablodaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değerleri otomatik olarak algılar.<br><br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. |
+| Fiziksel bölümler olmadan, veri bölümlendirme için bir tamsayı veya tarih/tarih/saat sütunuyla büyük miktarda veri yükleyin. | **Bölüm seçenekleri**: Dinamik Aralık bölümü.<br>**Sorgu**: `SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>` .<br>**Bölüm sütunu**: verileri bölümlemek için kullanılan sütunu belirtin.<br>**Bölüm üst sınırı** ve **bölüm alt sınırı** (isteğe bağlı): Bölüm Ilerlemesiyle mı belirlemek istediğinizi belirtin. Bu, tablodaki satırları filtrelemeye yönelik değildir, sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanır. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br><br>Yürütme sırasında, Data Factory `?AdfRangePartitionColumnName` her bölüm için gerçek sütun adı ve değer aralıklarıyla değiştirilir ve Azure SYNAPSE Analytics 'e gönderir. <br>Örneğin, "ID" adlı bölüm sütununuzu 1 ile 100 arasında değerler varsa ve alt sınırı 20 ve üst sınır olarak 80 olarak ayarlarsanız, paralel kopyalama Data Factory 4 ' e kadar, verileri 4 bölüm kimliği aralığında <= 20, [21, 50], [51, 80] ve >= 81 sırasıyla alır. <br><br>Farklı senaryolar için daha fazla örnek sorgu aşağıda verilmiştir:<br> 1. tüm tabloyu sorgulayın: <br>`SELECT * FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition`<br> 2. sütun seçimi ve ek WHERE yan tümcesi filtreleri içeren bir tablodan sorgu: <br>`SELECT <column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 3. sorgular ile sorgu: <br>`SELECT <column_list> FROM (<your_sub_query>) AS T WHERE ?AdfDynamicRangePartitionCondition AND <your_additional_where_clause>`<br> 4. alt sorguda bölüm ile sorgulama: <br>`SELECT <column_list> FROM (SELECT <your_sub_query_column_list> FROM <TableName> WHERE ?AdfDynamicRangePartitionCondition) AS T`
 |
 
 Bölüm seçeneğiyle verileri yüklemek için en iyi uygulamalar:
@@ -474,7 +474,7 @@ Tabloda fiziksel bölüm varsa, "HasPartition" öğesini "Yes" olarak görürsü
 
 [PolyBase](/sql/relational-databases/polybase/polybase-guide) 'in kullanılması, yüksek aktarım hızı Ile Azure SYNAPSE Analytics 'e büyük miktarda veri yüklemek için etkili bir yoldur. Varsayılan BULKıNSERT mekanizması yerine PolyBase kullanarak üretilen iş için büyük bir kazanç görürsünüz. Kullanım örneği ile ilgili bir anlatım için bkz. [1 TB 'Yi Azure SYNAPSE Analytics 'e yükleme](v1/data-factory-load-sql-data-warehouse.md).
 
-- Kaynak verileriniz Azure Blob 'dayken **, Azure Data Lake Storage 1. veya Azure Data Lake Storage 2.** ve **Biçim PolyBase uyumluysa** , Azure SYNAPSE Analytics 'in verileri kaynaktan çekmesini sağlamak üzere doğrudan PolyBase 'i çağırmak için kopyalama etkinliğini kullanabilirsiniz. Ayrıntılar için bkz. **[PolyBase kullanarak doğrudan kopyalama](#direct-copy-by-using-polybase)** .
+- Kaynak verileriniz Azure Blob 'dayken **, Azure Data Lake Storage 1. veya Azure Data Lake Storage 2.** ve **Biçim PolyBase uyumluysa**, Azure SYNAPSE Analytics 'in verileri kaynaktan çekmesini sağlamak üzere doğrudan PolyBase 'i çağırmak için kopyalama etkinliğini kullanabilirsiniz. Ayrıntılar için bkz. **[PolyBase kullanarak doğrudan kopyalama](#direct-copy-by-using-polybase)**.
 - Kaynak veri depoluü ve biçimlendirmeniz ilk olarak PolyBase tarafından desteklenmiyorsa, bunun yerine **[PolyBase özelliğini kullanarak hazırlanan kopyayı](#staged-copy-by-using-polybase)** kullanın. Hazırlanan kopya özelliği de size daha iyi aktarım hızı sağlar. Verileri otomatik olarak PolyBase uyumlu biçime dönüştürür, verileri Azure Blob depolama alanında depolar ve Azure SYNAPSE Analytics 'e veri yüklemek için PolyBase 'i çağırır.
 
 > [!TIP]
@@ -484,10 +484,10 @@ Kopyalama etkinliğinde aşağıdaki PolyBase ayarları desteklenir `polyBaseSet
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | Hayır                                            |
-| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde** değeridir. | Hayır                                            |
+| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | No                                            |
+| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde** değeridir. | No                                            |
 | rejectSampleValue | PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler.<br/><br/>İzin verilen değerler 1, 2, vb. olabilir. | Evet, **rejectType** **ise.** |
-| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | Hayır                                            |
+| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | No                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>PolyBase kullanarak doğrudan kopyalama
 
@@ -508,17 +508,17 @@ Gereksinimler karşılanmazsa, Azure Data Factory ayarları denetler ve veri ta�
 
     >[!IMPORTANT]
     >- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
-    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-2. **Kaynak veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet** , **orc** veya **sınırlandırılmış bir metindir** :
+2. **Kaynak veri biçimi** , aşağıdaki yapılandırmalara **sahip Parquet**, **orc** veya **sınırlandırılmış bir metindir**:
 
    1. Klasör yolu joker karakter filtresi içermiyor.
    2. Dosya adı boş veya tek bir dosyaya işaret ediyor. Kopyalama etkinliğinde joker karakter dosya adı belirtirseniz, yalnızca `*` veya olabilir `*.*` .
-   3. `rowDelimiter`**varsayılan** , **\n** , **\r\n** veya **\r** 'dir.
+   3. `rowDelimiter`**varsayılan**, **\n**, **\r\n** veya **\r**'dir.
    4. `nullValue` Varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır ve `treatEmptyAsNull` Varsayılan olarak bırakılır ya da true olarak ayarlanır.
    5. `encodingName` Varsayılan olarak bırakılır veya **UTF-8** olarak ayarlanır.
    6. `quoteChar`, `escapeChar` ve `skipLineCount` belirtilmedi. PolyBase desteği, ADF 'de olduğu gibi yapılandırılabilen üst bilgi satırını atlar `firstRowAsHeader` .
-   7. `compression`**sıkıştırma** , **gzip** veya **söndür** olamaz.
+   7. `compression`**sıkıştırma**, **gzip** veya **söndür** olamaz.
 
 3. Kaynağınız bir klasörse, `recursive` Copy etkinliğinin true olarak ayarlanması gerekir.
 
@@ -569,7 +569,7 @@ Bu özelliği kullanmak için, Azure [BLOB depolama bağlı hizmeti](connector-a
 
 >[!IMPORTANT]
 >- Hazırlama bağlantılı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
->- Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
+>- Hazırlama Azure depolama alanı sanal ağ hizmeti uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -638,7 +638,7 @@ Kaynak verileriniz Metin biçimindeyse veya PolyBase ile uyumlu olmayan diğer d
 ErrorCode=FailedDbOperation, ......HadoopSqlException: Error converting data type VARCHAR to DECIMAL.....Detailed Message=Empty string can't be converted to DECIMAL.....
 ```
 
-Çözüm, " **tür Varsayılanı kullan** " seçeneğinin (false olarak) kopyalama etkinliği havuzu-> PolyBase ayarları ' nda seçimini kaldırır. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)", PolyBase metin dosyasından verileri aldığında sınırlandırılmış metin dosyalarında eksik değerlerin nasıl Işleneceğini belirten PolyBase yerel bir yapılandırmadır.
+Çözüm, "**tür Varsayılanı kullan**" seçeneğinin (false olarak) kopyalama etkinliği havuzu-> PolyBase ayarları ' nda seçimini kaldırır. "[USE_TYPE_DEFAULT](/sql/t-sql/statements/create-external-file-format-transact-sql#arguments)", PolyBase metin dosyasından verileri aldığında sınırlandırılmış metin dosyalarında eksik değerlerin nasıl Işleneceğini belirten PolyBase yerel bir yapılandırmadır.
 
 **`tableName` Azure SYNAPSE Analytics 'te**
 
@@ -690,14 +690,14 @@ COPY ifadesinin kullanılması aşağıdaki yapılandırmayı destekler:
 
     >[!IMPORTANT]
     >- Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
-    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+    >- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
 2. Biçim ayarları şunlardır:
 
-   1. **Parquet** : `compression` **Compression** , **Snappy** veya **gzip** olamaz.
-   2. **Orc** için: `compression` **Compression** , **```zlib```** veya **Snappy** olabilir.
+   1. **Parquet**: `compression` **Compression**, **Snappy** veya **gzip** olamaz.
+   2. **Orc** için: `compression` **Compression**, **```zlib```** veya **Snappy** olabilir.
    3. **Sınırlandırılmış metin** için:
-      1. `rowDelimiter` açık olarak **tek karakter** veya " **\r\n** " olarak ayarlanmıştır, varsayılan değer desteklenmez.
+      1. `rowDelimiter` açık olarak **tek karakter** veya "**\r\n**" olarak ayarlanmıştır, varsayılan değer desteklenmez.
       2. `nullValue` Varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır.
       3. `encodingName` Varsayılan olarak bırakılır veya **UTF-8 veya UTF-16** olarak ayarlanır.
       4. `escapeChar` ile aynı olmalı `quoteChar` ve boş olmamalıdır.
@@ -712,8 +712,8 @@ Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCo
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | Azure SYNAPSE Analytics 'te her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | Hayır |
-| additionalOptions | [Copy deyimindeki](/sql/t-sql/statements/copy-into-transact-sql)"with" yan tümcesinde doğrudan bir Azure SYNAPSE Analytics Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | Hayır |
+| defaultValues | Azure SYNAPSE Analytics 'te her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | No |
+| additionalOptions | [Copy deyimindeki](/sql/t-sql/statements/copy-into-transact-sql)"with" yan tümcesinde doğrudan bir Azure SYNAPSE Analytics Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | No |
 
 ```json
 "activities":[
@@ -775,15 +775,15 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, kaynak dönüşümünün **kaynak se�
 **Hazırlamayı etkinleştir** Azure SYNAPSE Analytics kaynaklarıyla üretim iş yükleri için bu seçeneği kullanmanız önemle önerilir. Bir işlem hattından Azure SYNAPSE Analytics kaynaklarıyla bir [veri akışı etkinliği](control-flow-execute-data-flow-activity.md) YÜRÜTTÜĞÜNÜZDE, ADF sizden bir hazırlama konumu depolama hesabı ister ve bunu hazırlanan veri yüklemesi için kullanır. Azure SYNAPSE Analytics 'ten veri yüklemeye en hızlı bir mekanizmadır.
 
 - Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
-- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-**Sorgu** : giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur.
+**Sorgu**: giriş alanında sorgu ' yı seçerseniz, kaynağınız IÇIN bir SQL sorgusu girin. Bu ayar, veri kümesinde seçtiğiniz tüm tabloları geçersiz kılar. **Order by** yan tümceleri burada desteklenmez, ancak BIR tam select from ifadesini ayarlayabilirsiniz. Kullanıcı tanımlı tablo işlevleri de kullanabilirsiniz. **select * from udfGetData ()** , bir tablo döndüren SQL 'de bir UDF 'dir. Bu sorgu, veri akışınızda kullanabileceğiniz bir kaynak tablosu oluşturur. Sorguların kullanılması, test veya aramalar için satırları azaltmanın harika bir yoludur.
 
 SQL örneği: ```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Toplu iş boyutu** : büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin. Veri akışlarında, ADF bu ayarı Spark sütunlu önbelleğe alma ayarlamak için kullanır. Bu bir seçenek alanıdır ve boş bırakılırsa Spark varsayılanlarını kullanır.
+**Toplu iş boyutu**: büyük verileri okuma işleminde öbek için bir toplu iş boyutu girin. Veri akışlarında, ADF bu ayarı Spark sütunlu önbelleğe alma ayarlamak için kullanır. Bu bir seçenek alanıdır ve boş bırakılırsa Spark varsayılanlarını kullanır.
 
-**Yalıtım düzeyi** : eşleme VERI akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
+**Yalıtım düzeyi**: eşleme VERI akışındaki SQL kaynakları için varsayılan değer read UNCOMMITTED ' dır. Yalıtım düzeyini buradaki değerlerden birine değiştirebilirsiniz:
 
 - Okuma Işlendi
 - Kaydedilmeyen oku
@@ -807,11 +807,11 @@ Azure SYNAPSE Analytics 'e özgü ayarlar, havuz dönüşümünün **Ayarlar** s
 **Hazırlamayı etkinleştir:** Azure SYNAPSE Analytics 'e yazılırken [PolyBase](/sql/relational-databases/polybase/polybase-guide) 'in kullanılıp kullanılmayacağını belirler. Hazırlama depolaması [veri akışını Yürüt etkinliğinde](control-flow-execute-data-flow-activity.md)yapılandırılır. 
 
 - Depolama bağlı hizmetiniz için yönetilen kimlik kimlik doğrulaması kullandığınızda, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) sırasıyla öğrenin.
-- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
+- Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
 
-**Toplu iş boyutu** : her bir sepete kaç satır yazıldığını denetler. Daha büyük toplu işlem boyutları sıkıştırma ve bellek iyileştirmeyi iyileştirir, ancak verileri önbelleğe alırken bellek dışında özel durumlar riskini ortadan kaldıracak.
+**Toplu iş boyutu**: her bir sepete kaç satır yazıldığını denetler. Daha büyük toplu işlem boyutları sıkıştırma ve bellek iyileştirmeyi iyileştirir, ancak verileri önbelleğe alırken bellek dışında özel durumlar riskini ortadan kaldıracak.
 
-**SQL betiklerini ön ve sonrası** : (ön işleme) ve sonra (işlem sonrası) verileri havuz veritabanınıza yazıldıktan sonra yürütülecek çok satırlı SQL betikleri girin
+**SQL betiklerini ön ve sonrası**: (ön işleme) ve sonra (işlem sonrası) verileri havuz veritabanınıza yazıldıktan sonra yürütülecek çok satırlı SQL betikleri girin
 
 ![SQL işleme betikleri ön ve sonrası](media/data-flow/prepost1.png "SQL işleme betikleri")
 
