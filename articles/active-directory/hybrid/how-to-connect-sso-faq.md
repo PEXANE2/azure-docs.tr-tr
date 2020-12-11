@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757d8f59c06d573d71099941530dfc28174ac42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420499"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094582"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Kesintisiz çoklu oturum açma Azure Active Directory: sık sorulan sorular
 
@@ -54,7 +54,7 @@ Ayrıca, bir uygulama Azure AD uç noktalarına kiracı olarak ayarlanan bir otu
 | Uygulama adı | Kullanılacak uygulama URL 'SI |
 | -- | -- |
 | SharePoint Online | https: \/ /contoso.SharePoint.com |
-| Azure portalı | https: \/ /Portal.Azure.com/contoso.com |
+| Azure portal | https: \/ /Portal.Azure.com/contoso.com |
 
 Yukarıdaki tablolarda, kiracınızın doğru uygulama URL 'Lerine ulaşmak için "contoso.com" yerine etki alanı adınızı koyun.
 
@@ -66,7 +66,7 @@ Evet. Sorunsuz SSO `Alternate ID` , [burada](how-to-connect-install-custom.md)g�
 
 **S: [Azure AD JOIN](../devices/overview.md) ve sorunsuz SSO tarafından sunulan çoklu oturum açma deneyimi arasındaki fark nedir?**
 
-[Azure AD JOIN](../devices/overview.md) , CIHAZLARı Azure AD 'ye KAYıTLıYSA kullanıcılara SSO sağlar. Bu cihazların etki alanına katılmış olması gerekmez. SSO, *birincil yenileme belirteçleri* veya *prts* 'Ler kullanılarak sağlanır ve Kerberos değildir. Kullanıcı deneyimi Windows 10 cihazlarında en iyi şekilde kullanılır. SSO, Microsoft Edge tarayıcısında otomatik olarak gerçekleşir. Ayrıca, tarayıcı uzantısı kullanılarak Chrome üzerinde de kullanılabilir.
+[Azure AD JOIN](../devices/overview.md) , CIHAZLARı Azure AD 'ye KAYıTLıYSA kullanıcılara SSO sağlar. Bu cihazların etki alanına katılmış olması gerekmez. SSO, *birincil yenileme belirteçleri* veya *prts*'Ler kullanılarak sağlanır ve Kerberos değildir. Kullanıcı deneyimi Windows 10 cihazlarında en iyi şekilde kullanılır. SSO, Microsoft Edge tarayıcısında otomatik olarak gerçekleşir. Ayrıca, tarayıcı uzantısı kullanılarak Chrome üzerinde de kullanılabilir.
 
 Kiracınızda Azure AD JOIN ve sorunsuz SSO kullanabilirsiniz. Bu iki özellik tamamlayıcı bir özelliklerdir. Her iki özellik de açıksa, Azure AD birleştirmelerinin SSO 'SU sorunsuz SSO 'dan önceliklidir.
 
@@ -82,6 +82,9 @@ Evet, bu senaryo, [çalışma alanına katılma istemcisinin](https://www.micros
 >Kerberos şifre çözme anahtarını en az 30 günde bir almanızı önemle tavsiye ederiz.
 
 Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izleyin:
+
+   > [!NOTE]
+   >Aşağıdaki adımlar için hem etki alanı yöneticisi hem de genel yönetici kimlik bilgilerine ihtiyacınız olacaktır.
 
    **1. adım. Sorunsuz SSO 'nun etkinleştirildiği AD ormanları listesini alın**
 
@@ -120,7 +123,7 @@ Azure AD Connect çalıştırdığınız şirket içi sunucuda bu adımları izl
 
    **Seçenek A: Azure AD Connect kullanarak devre dışı bırak**
     
-   1. Azure AD Connect çalıştırın, **Kullanıcı oturum açma sayfasını Değiştir** ' i seçin ve **İleri** ' ye tıklayın.
+   1. Azure AD Connect çalıştırın, **Kullanıcı oturum açma sayfasını Değiştir** ' i seçin ve **İleri**' ye tıklayın.
    2. **Çoklu oturum açmayı etkinleştir** seçeneğinin işaretini kaldırın. Sihirbaza devam edin.
 
    Sihirbazı tamamladıktan sonra, kiracınızda sorunsuz SSO devre dışı bırakılacaktır. Bununla birlikte, ekranda şu şekilde okuyan bir ileti görürsünüz:

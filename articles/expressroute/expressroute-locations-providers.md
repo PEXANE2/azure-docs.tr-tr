@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: f514e158e0914475bfe0b7b7ee2c1bf6a63396fe
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: e24c0aacd1b10615e645c14ceb2b8d31f1f75e40
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008410"
+ms.locfileid: "97093902"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -51,7 +51,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Güney Kore** | Güney Kore - Orta, Güney Kore - Güney |Busan, Seul|
 | **BAE** | BAE Orta, BAE Kuzey | Dubai, Dubai2 |
 | **Güney Afrika** | Güney Afrika Batı, Güney Afrika Kuzey |Cape Town, Johannesburg |
-| **Güney Amerika** | Brezilya Güney |Sao Paulo |
+| **Güney Amerika** | Brezilya Güney |Bogota, Sao Paulo |
 
 ## <a name="azure-regions-and-geopolitical-boundaries-for-national-clouds"></a>Ulusal bulutlar için Azure bölgeleri ve geopolitik sınırlar
 Aşağıdaki tablo ulusal bulutlar için bölgeler ve coğrafi sınırlar hakkında bilgi sağlar.
@@ -83,6 +83,7 @@ Aşağıdaki tabloda bağlantı konumları ve her konum için hizmet sağlayıc�
 | **Auckland** | [Vocus grubu NZ Albümno](https://www.vocus.co.nz/business/cloud-data-centres) | 2 | yok | 'Yi | Devoli, Kordia, Megaport, Spark NZ, Vocus Group NZ |
 | **Bangkok** | [AıS](https://business.ais.co.th/solution/en/azure-expressroute.html) | 2 | yok | 'Yi | A,, UıH |
 | **Berlin** | [NTT GDC](https://www.e-shelter.de/en/location/berlin-1-data-center) | 1 | Almanya Kuzey | 'Yi | Equinx, NTT küresel veri merkezleri EMEA|
+| **Bogota** | [Equinix BG1](https://www.equinix.com/locations/americas-colocation/colombia-colocation/bogota-data-centers/bg1/) | 3 | yok | 'Yi | |
 | **Busan** | [LG CNS](https://www.lgcns.com/En/Service/DataCenter) | 2 | Güney Kore - Güney | yok | LG CNS |
 | **Kanberra** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya | 10G, 100G | CDC |
 | **Kanberra2** | [CDC](https://cdcdatacentres.com.au/content/about-cdc) | 1 | Orta Avustralya 2| 10G, 100G | CDC, Equinix |

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 5109139c7168026c74a475128832fbb0733ce832
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7bc15b369bfa4964384d4f7910d6953bdfeaa664
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447120"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094174"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL veritabanı ve Azure SYNAPSE Analytics için Azure özel bağlantısı
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -177,7 +177,7 @@ Farklı bir bölgedeki veya abonelikteki bir Azure VM 'den SQL veritabanındaki 
 
 ## <a name="connecting-from-azure-synapse-analytics-to-azure-storage-using-polybase-and-the-copy-statement"></a>PolyBase ve COPY deyimlerini kullanarak Azure SYNAPSE Analytics 'ten Azure depolama 'ya bağlanma
 
-PolyBase ve COPY deyimleri, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir sanal ağ alt ağları kümesine sınırlayıp, PolyBase bağlantısı ve COPY deyiminin hesaba göre kesintiye uğramasını sağlar. Azure SYNAPSE Analytics ile hem içeri ve dışarı aktarma senaryolarını hem de bir sanal ağla güvenli hale getirilmiş Azure depolama 'ya bağlanarak etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)verilen adımları izleyin. 
+PolyBase ve COPY deyimleri, Azure depolama hesaplarından Azure SYNAPSE Analytics 'e veri yüklemek için yaygın olarak kullanılır. Verileri yüklediğiniz Azure depolama hesabı, erişimi yalnızca özel uç noktalar, hizmet uç noktaları veya IP tabanlı güvenlik duvarları aracılığıyla yalnızca bir sanal ağ alt ağları kümesine sınırlayıp, PolyBase bağlantısı ve COPY deyiminin hesaba göre kesintiye uğramasını sağlar. Azure SYNAPSE Analytics ile hem içeri ve dışarı aktarma senaryolarını hem de bir sanal ağla güvenli hale getirilmiş Azure depolama 'ya bağlanarak etkinleştirmek için [burada](vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage)verilen adımları izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

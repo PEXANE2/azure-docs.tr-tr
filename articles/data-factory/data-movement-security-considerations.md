@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 9e34ce05d055e6933ecfbacf672bb8b1eba544bd
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512316"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094191"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory veri hareketine yönelik güvenlik konuları
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -39,13 +39,13 @@ Data Factory için sertifikalıdır:
 | **[CSA STAR sertifikası](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |
-| **[ISO 22301:2012](https://www.microsoft.com/trustcenter/compliance/iso-22301)** |
+| **[ISO 22301:2012](/compliance/regulatory/offering-iso-22301)** |
 | **[ISO 27001:2013](https://www.microsoft.com/trustcenter/compliance/iso-iec-27001)** |
 | **[ISO 27017:2015](https://www.microsoft.com/trustcenter/compliance/iso-iec-27017)** |
 | **[ISO 27018:2014](https://www.microsoft.com/trustcenter/compliance/iso-iec-27018)** |
 | **[ISO 9001:2015](https://www.microsoft.com/trustcenter/compliance/iso-9001)** |
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
-| **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
+| **[HIPAA BAA](/compliance/regulatory/offering-hipaa-hitech)** |
 
 Azure uyumluluğu ile ilgileniyorsanız ve Azure 'un kendi altyapısını nasıl güvenlik altına alırsanız, [Microsoft Güven Merkezi](https://microsoft.com/en-us/trustcenter/default.aspx)' ni ziyaret edin. Tüm Azure uyumluluk teklifleri denetiminin en son listesi için  https://aka.ms/AzureCompliance .
 
@@ -173,7 +173,7 @@ Aşağıdaki tabloda, şirket güvenlik duvarları için giden bağlantı noktas
 
 Aşağıdaki tabloda Windows Güvenlik Duvarı için gelen bağlantı noktası gereksinimleri verilmiştir:
 
-| Gelen bağlantı noktaları | Açıklama                              |
+| Gelen bağlantı noktaları | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | [Azure Data Factory içindeki şirket içi veri depoları için kimlik bilgilerini şifreleme](encrypt-credentials-self-hosted-integration-runtime.md)ve kimlik bilgileri Yöneticisi uygulaması tarafından, şirket içinde barındırılan tümleştirme çalışma zamanı üzerinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere PowerShell şifreleme cmdlet 'i gerekir. |
 

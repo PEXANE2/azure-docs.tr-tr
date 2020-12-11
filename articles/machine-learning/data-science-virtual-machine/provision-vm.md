@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: 3b5f96e60e088f94561bf3398469ec913a71bba6
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322453"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094565"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
@@ -36,18 +36,18 @@ DSVM örneği oluşturmak için:
 1. "Sanal makine oluşturma" dikey penceresine yönlendirilmelisiniz.
 
 1. **Temel bilgiler** sekmesini doldur:
-      * **Abonelik** : birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
-      * **Kaynak grubu** : yeni bir grup oluşturun veya var olan bir grubu kullanın.
-      * **Sanal makine adı** : sanal makinenin adını girin. Azure portal bu şekilde görünür.
-      * **Konum** : en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
-      * **Görüntü** : varsayılan değeri bırakın.
-      * **Boyut** : Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
-      * **Kullanıcı adı** : yönetici kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
-      * **Parola** : sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
-1. **Gözden geçir + oluştur** ’u seçin.
+      * **Abonelik**: birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+      * **Kaynak grubu**: yeni bir grup oluşturun veya var olan bir grubu kullanın.
+      * **Sanal makine adı**: sanal makinenin adını girin. Azure portal bu şekilde görünür.
+      * **Konum**: en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
+      * **Görüntü**: varsayılan değeri bırakın.
+      * **Boyut**: Bu, genel iş yükleri için uygun bir boyutla otomatik olarak doldurulur. [Azure 'Da WINDOWS VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
+      * **Kullanıcı adı**: yönetici kullanıcı adını girin. Bu, sanal makinenizde oturum açmak için kullanacağınız Kullanıcı adı ve Azure Kullanıcı adınızla aynı olmaması gerekir.
+      * **Parola**: sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
+1. **Gözden geçir ve oluştur**’u seçin.
 1. **Gözden geçir + oluştur**
    * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
-   * **Oluştur** ’u seçin.
+   * **Oluştur**’u seçin.
 
 
 > [!NOTE]
@@ -60,7 +60,7 @@ VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanma
 
 VM 'de yüklü ve yapılandırılmış araçları kullanmaya başlamaya hazırsınız. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
 
-Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks bir DSVM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Not defteri projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md#manage-and-configure-projects).
+Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks bir DSVM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Not defteri projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

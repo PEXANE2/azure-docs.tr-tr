@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 6c1b19927207e1accb4ae6c47625eed41a6b0b92
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967797"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093919"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA yüklemesi
 ## <a name="introduction"></a>Giriş
@@ -30,7 +30,7 @@ Bu kılavuz, Azure sanal makinelerinde HANA 'yı başarıyla dağıtmak için do
 > [!NOTE]
 > Bu kılavuzda, Azure VM 'lerine SAP HANA dağıtımları açıklanmaktadır. SAP HANA HANA büyük örneklerine dağıtma hakkında daha fazla bilgi için bkz. [Azure 'da SAP HANA (büyük örnekler) nasıl yüklenir ve yapılandırılır](./hana-installation.md).
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu kılavuzda, hakkında bilgi sahibi olduğunuz varsayılır:
 * SAP HANA ve SAP NetWeaver ve bunların Şirket içinde nasıl yükleneceği.
 * Azure 'da SAP HANA ve SAP uygulama örnekleri yüklemek ve çalıştırmak.
@@ -88,7 +88,7 @@ Azure özelliklerinden biri, SAP konak aracısına ilişkin izleme verilerini sa
 -  [SAP NetWeaver için Azure sanal makineler dağıtımı](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA yükleme
-Dağıtılan Azure sanal makineleri ve işletim sistemleri kayıtlı ve yapılandırılmışsa, SAP HANA SAP yüklemesine göre yükleyebilirsiniz. Bu belgeleri kullanmaya başlamak iyi bir başlangıç olarak, bu SAP web sitesi [Hana kaynaklarıyla](https://www.sap.com/products/hana/implementation/resources.html) başlayın
+Dağıtılan Azure sanal makineleri ve işletim sistemleri kayıtlı ve yapılandırılmışsa, SAP HANA SAP yüklemesine göre yükleyebilirsiniz. Bu belgeleri kullanmaya başlamak iyi bir başlangıç olarak, bu SAP web sitesi [Hana kaynaklarıyla](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd) başlayın
 
 Azure Premium Depolama veya ultra disk 'in doğrudan bağlı disklerini kullanan SAP HANA genişleme yapılandırması için, [Azure 'da altyapı yapılandırmalarının ve işlemlerinin SAP HANA](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out) belgedeki özellikleri okuyun
 

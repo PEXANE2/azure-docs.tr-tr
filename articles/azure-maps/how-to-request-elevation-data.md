@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906072"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094208"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Azure haritalar yükseltme hizmetini kullanarak yükseltme verileri isteme (Önizleme)
 
@@ -56,8 +56,8 @@ Raster kutucuk biçiminde yükseltme verileri istemek için, [oluşturma v2-Get 
 
 GeoJSON biçiminde yükseltme verileri istemek için yükseltme hizmeti (Önizleme) API 'Lerini kullanın. Bu bölümde, üç API 'den her biri gösterilir:
 
-* [Noktalara yönelik verileri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Noktaları için veri Gönder](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Noktalara yönelik verileri al](/rest/api/maps/elevation/getdataforpoints)
+* [Noktaları için veri Gönder](/rest/api/maps/elevation/postdataforpoints)
 * [Çoklu çizgi için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Çoklu çizgi için veri Gönder](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [Sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ GeoJSON biçiminde yükseltme verileri istemek için yükseltme hizmeti (Önizle
 
 ### <a name="request-elevation-data-for-points"></a>Noktalara yönelik yükseltme verileri iste
 
-Bu örnekte, MT 'de yükseltme verileri istemek için [noktalara yönelik verileri al API 'sini](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) kullanacağız. Marest ve Chamlang mountaıns. Daha sonra, aynı iki noktayı kullanarak yükseltme verileri istemek için [puntolar API 'si API 'sini](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) kullanacağız. URL 'deki Latitudes ve Longitudes 'in, WGS84 (Dünya coğrafi sistem) ondalık derecesindeki olması beklenir.
+Bu örnekte, MT 'de yükseltme verileri istemek için [noktalara yönelik verileri al API 'sini](/rest/api/maps/elevation/getdataforpoints) kullanacağız. Marest ve Chamlang mountaıns. Daha sonra, aynı iki noktayı kullanarak yükseltme verileri istemek için [puntolar API 'si API 'sini](/rest/api/maps/elevation/postdataforpoints) kullanacağız. URL 'deki Latitudes ve Longitudes 'in, WGS84 (Dünya coğrafi sistem) ondalık derecesindeki olması beklenir.
 
  >[!IMPORTANT]
  >2048 URL karakter uzunluğu sınırı nedeniyle, bir URL GET isteğinde işlem hattı ile ayrılmış bir dize olarak 100 ' den fazla koordinat geçirmek mümkün değildir. İşlem hattı ile ayrılmış bir dize olarak 100 ' den fazla koordinat geçirmek istiyorsanız, noktalara Ilişkin POST verilerini kullanın.
@@ -103,7 +103,7 @@ Bu örnekte, MT 'de yükseltme verileri istemek için [noktalara yönelik verile
     }
     ```
 
-4. Şimdi aynı iki noktaya yönelik yükseltme verileri almak için [Points API 'sine yönelik verileri](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) arayacağız. Oluşturucu sekmesinde http **Post** yöntemini seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
+4. Şimdi aynı iki noktaya yönelik yükseltme verileri almak için [Points API 'sine yönelik verileri](/rest/api/maps/elevation/postdataforpoints) arayacağız. Oluşturucu sekmesinde http **Post** yöntemini seçin ve aşağıdaki URL 'yi girin. Bu istek ve bu makalede bahsedilen diğer istekler için, `{Azure-Maps-Primary-Subscription-key}` birincil abonelik anahtarınızla değiştirin.
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -456,7 +456,7 @@ Aşağıdaki örnek Web sayfası, bir koordinat noktasında yükseltme verilerin
 <br/>
 
 <iframe height="500" style="width:100%;" scrolling="no" title="Konumda yükseltme al" src="https://codepen.io/azuremaps/embed/c840b510e113ba7cb32809591d5f96a2?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/c840b510e113ba7cb32809591d5f96a2'>konum üzerinde yükseltme al</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/c840b510e113ba7cb32809591d5f96a2'>konum üzerinde yükseltme al</a> bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="get-elevation-data-by-bounding-box"></a>Sınırlama kutusuna göre yükseltme verileri al
@@ -466,7 +466,7 @@ Aşağıdaki örnek Web sayfası, bir sınırlayıcı kutu içinde bulunan yüks
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Sınırlayıcı kutu ile yükseltme" src="https://codepen.io/azuremaps/embed/619c888c70089c3350a3e95d499f3e48?height=500&theme-id=default&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () ile bir <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>sınırlayıcı kutu</a> Ile, kalemin yükseltme bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () ile bir <a href='https://codepen.io/azuremaps/pen/619c888c70089c3350a3e95d499f3e48'>sınırlayıcı kutu</a> Ile, kalemin yükseltme bölümüne bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Çoklu çizgi yoluna göre yükseltme verileri al
@@ -476,7 +476,7 @@ Aşağıdaki örnek Web sayfası, bir yol üzerinde yükseltme verilerini göste
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Yükseltme yolu gradyanı" src="https://codepen.io/azuremaps/embed/7bee08e5cb13d05cb0a11636b60f14ca?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>yükseltme yolu degradesini</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/7bee08e5cb13d05cb0a11636b60f14ca'>yükseltme yolu degradesini</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 
@@ -485,7 +485,7 @@ Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/
 Azure haritalar yükseltme (Önizleme) API 'Lerini daha ayrıntılı incelemek için bkz.:
 
 > [!div class="nextstepaction"]
-> [Yükseltme (Önizleme)-enlem uzun koordinatları için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Yükseltme (Önizleme)-enlem uzun koordinatları için veri al](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Yükseltme (Önizleme)-sınırlayıcı kutu için veri al](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

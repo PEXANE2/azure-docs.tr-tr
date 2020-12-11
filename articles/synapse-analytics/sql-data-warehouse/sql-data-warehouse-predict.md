@@ -11,12 +11,12 @@ ms.date: 07/21/2020
 ms.author: anjangsh
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ce77a169e28e21aa37be2a49997a58ee42c93807
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b1a2e802f66132a88060fb74831781055897b077
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510837"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093664"
 ---
 # <a name="score-machine-learning-models-with-predict"></a>TAHMIN eden makine öğrenimi modellerini puan edin
 
@@ -35,7 +35,7 @@ Adanmış SQL havuzu, önceden eğitilen bir model bekliyor. Adanmış SQL havuz
 
 - Adanmış SQL havuzu yalnızca ONNX biçim modellerini destekler. ONNX, birlikte çalışabilirliği etkinleştirmek için çeşitli çerçeveler arasında modeller alışverişi yapmanıza olanak sağlayan açık kaynaklı bir model biçimidir. Mevcut modellerinizi, yerel olarak destekleyen veya kullanılabilir paketleri dönüştüren çerçeveleri kullanarak ONNX biçimine dönüştürebilirsiniz. Örneğin, [sköğren-onnx](https://github.com/onnx/sklearn-onnx) paketi scikit-geçiş modellerini onnx 'e dönüştürün. [Onnx GitHub deposu](https://github.com/onnx/tutorials#converting-to-onnx-format) desteklenen çerçeveler ve örneklerin bir listesini sağlar.
 
-   Eğitim için [OTOMATIK ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) kullanıyorsanız, BIR onnx biçim modeli oluşturmak için *enable_onnx_compatible_models* parametresini true olarak ayarladığınızdan emin olun. [Otomatik Machine Learning Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , onnx biçiminde bir Machine Learning modeli oluşturmak Için otomatik ml 'yi nasıl kullanacağınızı gösteren bir örnek gösterir.
+   Eğitim için [OTOMATIK ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) kullanıyorsanız, BIR onnx biçim modeli oluşturmak için *enable_onnx_compatible_models* parametresini true olarak ayarladığınızdan emin olun. [Otomatik Machine Learning Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) , otomatik ml 'nın onnx biçiminde bir makine öğrenimi modeli oluşturmak için nasıl kullanılacağına ilişkin bir örnek gösterir.
 
 - Giriş verileri için aşağıdaki veri türleri desteklenir:
     - int, bigint, Real, float

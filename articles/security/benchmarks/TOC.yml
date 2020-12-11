@@ -192,9 +192,9 @@
     - name: Logic Apps güvenlik temeli
       href: ../../logic-apps/security-baseline.md
     - name: Microsoft Cloud App Security temeli
-      href: /cloud-app-security/security-baseline.md
+      href: 'https://docs.microsoft.com/cloud-app-security/security-baseline'
     - name: Kimlik için Microsoft Defender güvenlik temeli
-      href: /defender-for-identity/security-baseline.md
+      href: 'https://docs.microsoft.com/defender-for-identity/security-baseline'
     - name: Ağ İzleyicisi güvenlik temeli
       href: ../../network-watcher/security-baseline.md
     - name: Power BI güvenlik temeli

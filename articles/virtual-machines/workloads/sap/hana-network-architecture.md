@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf9fd361dea43b1cfa6ae45710a3a7bbf4e4de03
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b18e1cd20a4b0a886258fd56003cd273d92381fa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006294"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093987"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (büyük örnekler) ağ mimarisi
 
@@ -149,7 +149,7 @@ Varsayılan olarak, geçişli yönlendirme bu senaryolarda çalışmaz:
 Bu senaryolarda geçişli yönlendirmeyi etkinleştirmenin üç yolu vardır:
 
 - Veri yönlendirmek için bir ters proxy Örneğin, F5 BIG-IP, NGıNX, HANA büyük örneklerine ve şirket içi bir sanal güvenlik duvarı/trafik yönlendirme çözümü olarak bağlanan Azure sanal ağında dağıtılan Traffic Manager.
-- Şirket içi konumlar ile HANA büyük örnek birimleri arasında veya farklı bölgelerdeki HANA büyük örnek birimleri arasında yönlendirmeyi etkinleştirmek için bir Linux sanal makinesinde [Iptables kurallarını](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) kullanma. Iptables çalıştıran VM 'nin HANA büyük örneklerine ve şirket içine bağlanan Azure sanal ağı 'nda dağıtılması gerekir. VM 'nin ağ aktarım hızı beklenen ağ trafiği için yeterli olduğundan, sanal makinenin buna uygun olarak boyutlandırılması gerekir. VM ağı bant genişliği hakkında daha fazla bilgi için, [Azure 'Da Linux sanal makinelerinin makale boyutlarını](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)kontrol edin.
+- Şirket içi konumlar ile HANA büyük örnek birimleri arasında veya farklı bölgelerdeki HANA büyük örnek birimleri arasında yönlendirmeyi etkinleştirmek için bir Linux sanal makinesinde Iptables kurallarını kullanma. Iptables çalıştıran VM 'nin HANA büyük örneklerine ve şirket içine bağlanan Azure sanal ağı 'nda dağıtılması gerekir. VM 'nin ağ aktarım hızı beklenen ağ trafiği için yeterli olduğundan, sanal makinenin buna uygun olarak boyutlandırılması gerekir. VM ağı bant genişliği hakkında daha fazla bilgi için, [Azure 'Da Linux sanal makinelerinin makale boyutlarını](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)kontrol edin.
 - [Azure Güvenlik Duvarı](https://azure.microsoft.com/services/azure-firewall/) , şirket ıçı ve Hana büyük örnek birimleri arasında doğrudan trafiği etkinleştirmek için başka bir çözümdür. 
 
 Bu çözümlerin tüm trafiği bir Azure sanal ağı aracılığıyla yönlendirilir ve bu nedenle trafik, Azure ağ güvenlik grupları tarafından kullanılan veya Azure ağ güvenlik grupları tarafından da kısıtlanabilir, böylece şirket içi belirli IP adresleri veya IP adresi aralıklarının HANA büyük örneklere erişimi engellenebilir veya açıkça erişime izin verilir. 

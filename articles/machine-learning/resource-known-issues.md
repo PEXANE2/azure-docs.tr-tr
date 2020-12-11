@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: e383ac260a67c7334b806612325ed0b6a9fbbef9
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030986"
+ms.locfileid: "97094446"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning'deki bilinen sorunlar ve sorun giderme
 
@@ -358,7 +358,14 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
     pip install --upgrade pandas==0.23.4
     pip install --upgrade scikit-learn==0.20.3
   ```
- 
+
+* **Dağıtım başarısız oldu**: SDK 'nın <= 1.18.0 sürümleri için, dağıtım için oluşturulan temel görüntü şu hatayla başarısız olabilir: "ımporterror: adı öğesinden içeri aktarılamıyor `cached_property` `werkzeug` ". 
+
+  Aşağıdaki adımlar soruna geçici bir çözüm olarak çalışabilir:
+  1. Model paketini indirin
+  2. Paketin zip kaydını kaldır
+  3. Daraltılmış varlıkları kullanarak dağıtma
+
 * **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş kök ortalama kare hatasına geçiş yapabilirsiniz.
  
 * **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 

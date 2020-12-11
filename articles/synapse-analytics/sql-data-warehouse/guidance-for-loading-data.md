@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456295"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093970"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzları kullanarak veri yüklemeye yönelik en iyi uygulamalar
 
@@ -71,6 +71,9 @@ Adanmış SQL havuzuna bağlanın ve bir kullanıcı oluşturun. Aşağıdaki ko
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>Bu, SQL havuzunun %100 kaynaklarını tek bir yüklemeye ayırmanın çok büyük bir örneğidir. Bu, size en fazla 1 eşzamanlılık sağlar. Bunun yalnızca kendi iş yüklerinizde kaynakları balanace için kendi yapılandırmalarına sahip ek iş yükü grupları oluşturmanız gerektiği ilk yükleme için kullanılması gerektiğini unutmayın. 
 
 Yükleme iş yükü grubu için kaynaklarla bir yük çalıştırmak için, yükleyici olarak oturum açın ve yükü çalıştırın.
 

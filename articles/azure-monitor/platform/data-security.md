@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 5aa379f6601bc324bd08c53f251b2097141eec69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911643"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094344"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics veri güvenliği
 Bu belge, [Azure Güven Merkezi](https://www.microsoft.com/en-us/trust-center?rtc=1)bilgileri tamamlayacak bir Azure izleyici özelliği olan Log Analytics özgü bilgiler sağlamaya yöneliktir.  
@@ -127,7 +127,7 @@ Azure Log Analytics aşağıdaki gereksinimleri karşılar:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * PCI güvenlik standartları Council tarafından [ödeme kartı sektörü (PCI uyumlu) veri güvenliği standardı (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) .
 * [Hizmet kuruluşu denetimleri (SoC) 1 tür 1 ve SOC 2 tür 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) uyumlu
-* HIPAA Iş ilişkisi sözleşmesi olan şirketler için [HIPAA ve HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa)
+* HIPAA Iş ilişkisi sözleşmesi olan şirketler için [HIPAA ve HITECH](/compliance/regulatory/offering-hipaa-hitech)
 * Windows ortak mühendislik ölçütleri
 * Microsoft güvenilir bilgi Işlem
 * Azure hizmeti olarak, Log Analytics kullandığı bileşenler Azure uyumluluk gereksinimlerine bağlı olarak kullanılır. [Microsoft Güven Merkezi uyumluluğuna](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx)daha fazla bilgi edinebilirsiniz.

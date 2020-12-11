@@ -5,7 +5,7 @@
   items:
     - name: Azure kuyrukları nedir?
       href: storage-queues-introduction.md
-- name: Hızlı başlangıçlar
+- name: Hızlı Başlangıçlar
   items:
     - name: Kod kullanmadan kuyrukları yönetme
       items:
@@ -119,6 +119,8 @@
           href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Depolama hesabını yükseltme
           href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+        - name: Silinmiş bir depolama hesabını kurtarma
+          href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Kuyruk verilerinin güvenliğini sağlama
       items:
         - name: Sorgu verilerine erişimi yetkilendirme

@@ -16,15 +16,18 @@ ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65fc0e84582c005c5796ceac86ee28fc46b2e1d8
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319869"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094225"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Önceki bir sürümden en son sürüme yükseltme
-Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır. Azure AD Connect yayınlarıyla kendinizi güncel tutmanız önerilir. Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
+Bu konuda, Azure Active Directory (Azure AD) Connect yüklemenizi en son sürüme yükseltmek için kullanabileceğiniz farklı yöntemler açıklanmaktadır.  Önemli bir yapılandırma değişikliği yaptığınızda, [esnek geçiş](#swing-migration) bölümündeki adımları da kullanabilirsiniz.
+
+>[!NOTE]
+> Sunucularınızın en son Azure AD Connect sürümleriyle güncel tutmanız önemlidir. AADConnect 'e sürekli olarak yükseltmeler yapıyoruz ve bu yükseltmeler güvenlik sorunları ve hataları ve bakım, performans ve ölçeklenebilirlik iyileştirmeleri için düzeltmeler içerir. En son sürümün ne olduğunu görmek ve sürümler arasında yapılan değişikliklerin ne olduğunu öğrenmek için lütfen [sürüm sürümü geçmişine](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history) başvurun
 
 >[!NOTE]
 > Şu anda herhangi bir Azure AD Connect sürümünün geçerli sürüme yükseltilmesi desteklenmektedir. DirSync veya ADSync 'in yerinde yükseltmeleri desteklenmez ve bir esnek geçiş gereklidir.  DirSync 'ten yükseltmek istiyorsanız, bkz. [Azure AD eşitleme aracından yükseltme aracı (DirSync)](how-to-dirsync-upgrade-get-started.md) veya [esnek geçiş](#swing-migration) bölümü.  </br>Uygulamada, son derece eski sürümlerde bulunan müşteriler, Azure AD Connect doğrudan ilişkili olan sorunlarla karşılaşabilir. Birkaç yıl içinde üretimde olan sunucular, genellikle bu dosyalara uygulanan bazı düzeltme eklerine sahip olur ve bunların hepsi için de hesaba katılmaz.  Genellikle, 12-18 ay içinde yükseltmeyen müşteriler, en klasik ve en az riskli seçenektir. bunun yerine bir esnek yükseltme yapmayı düşünmelidir.
@@ -54,7 +57,7 @@ Kullanıma hazır eşitleme kurallarında değişiklik yaptıysanız, bu kuralla
 
 Yerinde yükseltme sırasında, yükseltme tamamlandıktan sonra yürütülmesi gereken belirli eşitleme etkinliklerini (tam Içeri aktarma adımı ve tam eşitleme adımı dahil) gerektiren değişiklikler olabilir. Bu tür etkinlikleri ertelemek için, [yükseltmeden sonra tam eşitlemeyi erteleme](#how-to-defer-full-synchronization-after-upgrade)bölümüne bakın.
 
-Standart olmayan bağlayıcıyla Azure AD Connect kullanıyorsanız (örneğin, genel LDAP Bağlayıcısı ve genel SQL Bağlayıcısı), yerinde yükseltmeden sonra [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) ilgili bağlayıcı yapılandırmasını yenilemeniz gerekir. Bağlayıcı yapılandırmasını yenileme hakkında daha fazla bilgi için, bkz. makale bölümü [bağlayıcı sürümü yayın geçmişi-sorun giderme](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting). Yapılandırmayı yenilemeyin, içeri ve dışarı aktarma çalıştırma adımları bağlayıcı için doğru çalışmaz. Uygulama olay günlüğünde, *"AAD bağlayıcı yapılandırmasında derleme sürümü (" X.X.xxx) ile aşağıdaki hatayı alırsınız. X ") gerçek sürümden (" X.X.XXX) daha eski. X ")," C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll ".*
+Standart olmayan bağlayıcıyla Azure AD Connect kullanıyorsanız (örneğin, genel LDAP Bağlayıcısı ve genel SQL Bağlayıcısı), yerinde yükseltmeden sonra [Synchronization Service Manager](./how-to-connect-sync-service-manager-ui-connectors.md) ilgili bağlayıcı yapılandırmasını yenilemeniz gerekir. Bağlayıcı yapılandırmasını yenileme hakkında daha fazla bilgi için, bkz. makale bölümü [bağlayıcı sürümü yayın geçmişi-sorun giderme](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-version-history#troubleshooting). Yapılandırmayı yenilemeyin, içeri ve dışarı aktarma çalıştırma adımları bağlayıcı için doğru çalışmaz. Uygulama olay günlüğünde, *"AAD bağlayıcı yapılandırmasındaki derleme sürümü (" x. x. xxx. x ")," C:\Program Files\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll "öğesinin gerçek sürümünden (" x. x. xxx. x ") daha önceki bir* hata iletisiyle karşılaşırsınız.
 
 ## <a name="swing-migration"></a>Swing geçişi
 Karmaşık bir dağıtımınız veya çok sayıda nesneniz varsa, canlı sistemde yerinde yükseltme yapmak pratik olabilir. Bazı müşteriler için, bu işlem birden çok gün alabilir ve bu süre boyunca hiçbir Delta değişikliği işlenmez. Bu yöntemi Ayrıca, yapılandırmanızda önemli değişiklikler yapmayı planladığınızda ve buluta gönderilmeden önce onları denemek istediğinizde de kullanabilirsiniz.
@@ -95,16 +98,16 @@ Aşağıdaki şeyleri her iki sunucuda da aynı şekilde yapılandırmanız gere
 1. Etkin sunucunuzda **eşitleme kuralları düzenleyicisini** açın.
 2. Özel bir kural seçin. **Dışarı aktar**'a tıklayın. Bu, bir not defteri penceresi getirir. Geçici dosyayı bir PS1 uzantısıyla kaydedin. Bu, bir PowerShell betiği oluşturur. PS1 dosyasını hazırlama sunucusuna kopyalayın.  
    ![Eşitleme kuralını dışarı aktarma](./media/how-to-upgrade-previous-version/exportrule.png)
-3. Bağlayıcı GUID 'SI, hazırlama sunucusunda farklı olduğundan, bunu değiştirmeniz gerekir. GUID 'yi almak için, **eşitleme kuralları düzenleyicisini**başlatın, aynı bağlı sistemi temsil eden hazır kuralların birini seçin ve **dışarı aktar**' a tıklayın. PS1 dosyanızdaki GUID 'yi, hazırlama sunucusundan GUID ile değiştirin.
+3. Bağlayıcı GUID 'SI, hazırlama sunucusunda farklı olduğundan, bunu değiştirmeniz gerekir. GUID 'yi almak için, **eşitleme kuralları düzenleyicisini** başlatın, aynı bağlı sistemi temsil eden hazır kuralların birini seçin ve **dışarı aktar**' a tıklayın. PS1 dosyanızdaki GUID 'yi, hazırlama sunucusundan GUID ile değiştirin.
 4. Bir PowerShell isteminde PS1 dosyasını çalıştırın. Bu, hazırlama sunucusunda özel eşitleme kuralını oluşturur.
 5. Tüm özel kurallarınız için bunu tekrarlayın.
 
 ## <a name="how-to-defer-full-synchronization-after-upgrade"></a>Yükseltmeden sonra tam eşitlemeyi erteleme
-Yerinde yükseltme sırasında, belirli eşitleme etkinliklerinin (tam Içeri aktarma adımı ve tam eşitleme adımı dahil) yapılması gereken değişiklikler olabilir. Örneğin, bağlayıcı şeması değişiklikleri **tam içeri aktarma** adımı ve kullanıma hazır eşitleme kuralı değişikliklerinin, etkilenen bağlayıcılarda **tam eşitleme** adımının yürütülmesini gerektirir. Yükseltme sırasında, Azure AD Connect hangi eşitleme etkinliklerinin gerekli olduğunu belirler ve bunları *geçersiz kılma*olarak kaydeder. Aşağıdaki eşitleme çevriminde, eşitleme Zamanlayıcı bu geçersiz kılmaları alır ve yürütür. Bir geçersiz kılma başarıyla yürütüldükten sonra kaldırılır.
+Yerinde yükseltme sırasında, belirli eşitleme etkinliklerinin (tam Içeri aktarma adımı ve tam eşitleme adımı dahil) yapılması gereken değişiklikler olabilir. Örneğin, bağlayıcı şeması değişiklikleri **tam içeri aktarma** adımı ve kullanıma hazır eşitleme kuralı değişikliklerinin, etkilenen bağlayıcılarda **tam eşitleme** adımının yürütülmesini gerektirir. Yükseltme sırasında, Azure AD Connect hangi eşitleme etkinliklerinin gerekli olduğunu belirler ve bunları *geçersiz kılma* olarak kaydeder. Aşağıdaki eşitleme çevriminde, eşitleme Zamanlayıcı bu geçersiz kılmaları alır ve yürütür. Bir geçersiz kılma başarıyla yürütüldükten sonra kaldırılır.
 
 Bu geçersiz kılmaların yükseltmeden hemen sonra gerçekleşmesini istemediğiniz durumlar olabilir. Örneğin, çok sayıda eşitlenmiş nesneniz var ve bu eşitleme adımlarının iş saatlerinden sonra gerçekleşmesini istiyorsunuz. Bu geçersiz kılmaları kaldırmak için:
 
-1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat**seçeneğinin **işaretini kaldırın** . Bu, eşitleme zamanlayıcısını devre dışı bırakır ve geçersiz kılmalar kaldırılmadan önce eşitleme döngüsünün otomatik olarak yapılmasını önler.
+1. Yükseltme sırasında, **yapılandırma tamamlandığında eşitleme Işlemini Başlat** seçeneğinin **işaretini kaldırın** . Bu, eşitleme zamanlayıcısını devre dışı bırakır ve geçersiz kılmalar kaldırılmadan önce eşitleme döngüsünün otomatik olarak yapılmasını önler.
 
    ![Yapılandırma tamamlandığında eşitleme işlemini başlat seçeneğini vurgulayan, temizlemeniz gereken ekran görüntüsü.](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
@@ -159,7 +162,7 @@ At line:1 char:1
 
 ```
 
-PowerShell cmdlet 'ı **BELIRTILEN ma 'nın bulunamadığını**hata bildiriyor.
+PowerShell cmdlet 'ı **BELIRTILEN ma 'nın bulunamadığını** hata bildiriyor.
 
 Bunun oluşma nedeni, geçerli Azure AD Connect yapılandırmasının yükseltme için desteklenmediği nedenidir. 
 
