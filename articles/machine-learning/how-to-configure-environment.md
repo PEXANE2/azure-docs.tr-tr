@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018792"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031768"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning için bir Python geliştirme ortamı ayarlama
 
@@ -174,7 +174,7 @@ Veri Bilimi VM'si bir geliştirme ortamı olarak kullanmak için:
 
     * [Ubuntu](data-science-virtual-machine/dsvm-ubuntu-intro.md) veya [Windows](data-science-virtual-machine/provision-vm.md) dsvm oluşturmak için Azure Portal kullanın.
     * [ARM şablonları kullanarak bir veri bilimi VM'si oluşturun](data-science-virtual-machine/dsvm-tutorial-resource-manager.md).
-    * Azure CLI kullanma
+    * Azure CLI'yi kullanma
 
         Ubuntu Veri Bilimi VM'si oluşturmak için aşağıdaki komutu kullanın:
 

@@ -11,20 +11,28 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 868d99a82009dc8545fc24ad1cfa1da3959da131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88852065"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028113"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
 Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içerecek şekilde düzenli olarak güncelleştirilir. Aşağıdaki değişiklik günlüğü her sürümde tanıtılan değişiklikleri belirtir.
 
-[!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="self-asserted-page-selfasserted"></a>Otomatik olarak onaylanan sayfa (selfasted)
+
+**2.1.1**
+
+- `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.
+- İCloud anahtarlığa parolaların kaydedilmesine yönelik destek eklendi.
+- Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
+- Otomatik olarak onaylanan sayfada bildirimler eklendi.
+- Artık sayfa yüklenirken odak ilk düzenlenebilir alana yerleştirilir.
+- Artık birden çok alanda hata olduğunda odak ilk hata alanına yerleştirilir.
+- Artık odak, e-posta doğrulama kodu doğrulandıktan sonra ' Değiştir ' düğmesine yerleştirilir.
 
 **2.1.0**
 
@@ -38,12 +46,16 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 - Username/email ve Password alanları artık `form` Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
 - Geliştirilmiş kullanıcı deneyimi için yapılandırılabilir bir kullanıcı girişi doğrulama gecikmesi eklendi.
-- Erişilebilirlik düzeltmeleri
+- Hata iletilerinin artık ekran okuyucusu tarafından okunabilmesi için bir erişilebilirlik sorunu düzeltildi. 
+- Artık, e-posta doğrulandıktan sonra parola alanına odak konur.
+- `autofocus`CheckBox denetiminden kaldırılır. 
+- Telefon numarası doğrulaması için bir görüntüleme pencere öğesi desteği eklendi.
 - Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
-- E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
-- Chrome çevirisi desteği
+- E-posta alanı artık `type=email` ve mobil klavyeler doğru önerilere sahip olur.
+- Chrome çevirisi desteği.
+- Kullanıcı akış sayfalarında kiracı markalaması için destek eklendi.
 
 **1.1.0**
 
@@ -58,6 +70,15 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 ## <a name="unified-sign-in-sign-up-page-with-password-reset-link-unifiedssp"></a>Parola sıfırlama bağlantısı ile Birleşik oturum açma sayfası (unifiedssp)
 
+**2.1.1**
+- `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.
+- Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
+- İCloud anahtarlığa parolaların kaydedilmesine yönelik destek eklendi.
+- Artık birden çok alanda hata olduğunda odak ilk hata alanına yerleştirilir.
+- Artık sayfa yüklenirken odak ilk düzenlenebilir alana yerleştirilir.
+- Talep sağlayıcı seçim bağlantısı için yeni bir konum eklendi `bottomUnderFormClaimsProviderSelections` .
+- Artık kullanılmayan UXStrings kaldırıldı.
+
 **2.1.0**
 
 - Birden çok kaydolma bağlantısı için destek eklendi.
@@ -66,12 +87,13 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 **1.2.0**
 
 - Username/email ve Password alanları artık `form` Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
-- Erişilebilirlik düzeltmeleri
+- Erişilebilirlik düzeltmeleri.
 - Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
-- E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
-- Chrome çevirisi desteği
+- E-posta alanı artık `type=email` ve mobil klavyeler doğru önerilere sahip olur.
+- Chrome çevirisi desteği.
+- Kullanıcı akış sayfalarında kiracı markalaması için destek eklendi.
 
 **1.1.0**
 
@@ -82,6 +104,12 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 - İlk yayın
 
 ## <a name="mfa-page-multifactor"></a>MFA sayfası (çok faktörlü)
+
+**1.2.2**
+- İOS kullanılırken doğrulama kodu otomatik olarak doldurulmayla ilgili bir sorun düzeltildi.
+- Android Web görünümünden bağlı olan tarafa belirteç yönlendirilirken bir sorun düzeltildi. 
+- `heading` `intro` Sayfada başlık olarak görüntülenmek için öğesine ek olarak bir uxstring eklendi. Bu, varsayılan olarak gizlidir.  
+- Düzeni seçmek için ilkeyi veya QueryString parametresini kullanma desteği eklendi `pageFlavor` (klasik, oceanBlue veya slateGray).
 
 **1.2.1**
 
@@ -94,7 +122,8 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
-- Chrome çevirisi desteği
+- Chrome çevirisi desteği.
+- Kullanıcı akış sayfalarında kiracı markalaması için destek eklendi.
 
 **1.1.0**
 

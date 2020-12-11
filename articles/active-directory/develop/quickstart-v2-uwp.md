@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: ab8942b473ad980da22d451116bea6a759aeb461
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 0398056c3182ec50a1ec170f64ff079633f70c68
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995123"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030561"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Hızlı Başlangıç: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API'sini çağırma
 
@@ -40,20 +40,19 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. Yeni [Azure Portal-uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/UwpQuickstartPage/sourceType/docs) bölmesine gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet**'e tıklayın.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Yönergeleri izleyerek yeni uygulamanızı tek tıkla indirin ve otomatik olarak yapılandırın.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
 > [!div renderon="docs"]
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze eklemek için şu adımları izleyin:
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** bölümünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `UWP-App-calling-MsGraph` .
->      - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin (örneğin,) `UWP-App-calling-MsGraph` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
 > 1. Uygulamayı oluşturmak için **Kaydet** ' i seçin ve ardından **uygulama (istemci) kimliğini** sonraki bir adımda kullanmak üzere kaydedin.
 > 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
 > 1. **Platform**  >  **mobil ve Masaüstü uygulamaları Ekle '** yi seçin.
@@ -98,7 +97,7 @@ Bu hızlı başlangıçta, bir Evrensel Windows Platformu (UWP) uygulamasının 
 >    private const string ClientId = "Enter_the_Application_Id_here";
 >    ```
 >
->    **Uygulama (istemci) kimliğini** Azure Portal (**Azure Active Directory** **Overview**  >  **uygulama kayıtları**  >  *{uygulamanızın kaydınız}*) uygulamanın genel bakış bölmesinde bulabilirsiniz.
+>    **Uygulama (istemci) kimliğini** Azure Portal (**Azure Active Directory**   >  **uygulama kayıtları**  >  *{uygulamanızın kaydınız}*) uygulamanın genel bakış bölmesinde bulabilirsiniz.
 > 1. Paket için otomatik olarak imzalanan yeni bir test sertifikası oluşturun ve seçin:
 >     1. **Çözüm Gezgini** *Package. appxmanifest* dosyasına çift tıklayın.
 >     1. **Paketleme**  >  **sertifikası seç...**  >  öğesini seçin **Oluştur...**.

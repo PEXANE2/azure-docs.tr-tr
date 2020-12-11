@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: a17e3c80f15bb1e4c5aacba4dc974e363eca285e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 908f047a22491d50337f51c0a6dce7f2db8a2ebc
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319867"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026821"
 ---
 # <a name="optimize-transactions-with-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu ile işlemleri iyileştirme 
 
@@ -44,7 +44,7 @@ Her satır değişikliğini izlemek için işlem günlüğünü kullanan tam ola
 
 Aşağıdaki işlemler en düşük düzeyde günlüğe kaydedilebilir:
 
-* SELECT ([CTAS]) OLARAK CREATE TABLE (.. /SQL-Data-Warehouse/SQL-Data-Warehouse-develop-ctassc MD? TOC =/Azure/SYNAPSE-Analytics/toc.json&BC =/Azure/SYNAPSE-Analytics/breadcrumb/toc.js)
+* SELECT olarak CREATE TABLE ([CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json))
 * Ekle.. SEÇIN
 * CREATE INDEX
 * ALTER ıNDEX REBUıLD
@@ -68,7 +68,7 @@ CTAS ve INSERT... Her iki toplu yükleme işlemi de SEÇIN. Ancak, her ikisi de 
 
 | Birincil dizin | Yükleme senaryosu | Günlüğe kaydetme modu |
 | --- | --- | --- |
-| Yığın |Herhangi biri |**En az** |
+| Yığın |Herhangi bir |**En az** |
 | Kümelenmiş dizin |Boş hedef tablo |**En az** |
 | Kümelenmiş dizin |Yüklenen satırlar, hedefteki mevcut sayfalarla çakışmıyor |**En az** |
 | Kümelenmiş dizin |Yüklü satırlar hedefteki mevcut sayfalarla örtüşüyor |Tam |

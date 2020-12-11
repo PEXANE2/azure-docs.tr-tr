@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 06/21/2019
-ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8d591bb9c4b2ef8100946082f19115b99b30dde1
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124450"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027501"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri için uyarıları ayarlama
 
@@ -30,15 +30,15 @@ Aşağıdaki örnekte, işiniz başarısız durumuna girdiğinde için uyarılar
 
 2. **İş** sayfasında **izleme** bölümüne gidin.  
 
-3. **Ölçümler** ' i ve sonra **Yeni uyarı kuralı** ' nı seçin.
+3. **Ölçümler**' i ve sonra **Yeni uyarı kuralı**' nı seçin.
 
    ![Azure portal Stream Analytics Uyarıları kurulumu](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Stream Analytics iş adınız **kaynak** altında otomatik olarak görünmelidir. **Koşul Ekle** ' ye tıklayın ve **sinyal mantığını Yapılandır** altında **tüm yönetim işlemlerini** seçin.
+4. Stream Analytics iş adınız **kaynak** altında otomatik olarak görünmelidir. **Koşul Ekle**' ye tıklayın ve **sinyal mantığını Yapılandır** altında **tüm yönetim işlemlerini** seçin.
 
    ![Stream Analytics uyarının sinyal adını seçin](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
-5. **Sinyal mantığını Yapılandır** altında **olay düzeyini** **Tümü** olarak değiştirin ve **durumu** **başarısız** olarak değiştirin. **Olayı boş olarak başlattığını** bırakın ve **bitti** ' yi seçin.
+5. **Sinyal mantığını Yapılandır** altında **olay düzeyini** **Tümü** olarak değiştirin ve **durumu** **başarısız** olarak değiştirin. **Olayı boş olarak başlattığını** bırakın ve **bitti**' yi seçin.
 
    ![Stream Analytics uyarısı için sinyal mantığını yapılandırma](./media/stream-analytics-set-up-alerts/stream-analytics-configure-signal-logic.png) 
 
@@ -46,11 +46,11 @@ Aşağıdaki örnekte, işiniz başarısız durumuna girdiğinde için uyarılar
 
    ![Azure Akış Analizi işi için uyarı ayarlama](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **Kaynak** , **koşul** ve **eylem gruplarının** her birinin bir girişi olmalıdır. Uyarıların tetiklenmesi için, tanımlanan koşulların karşılanması gerektiğini unutmayın. Örneğin, son 15 dakika için ölçümün ortalama değerini her 5 dakikada bir ölçebilirsiniz.
+7. **Kaynak**, **koşul** ve **eylem gruplarının** her birinin bir girişi olmalıdır. Uyarıların tetiklenmesi için, tanımlanan koşulların karşılanması gerektiğini unutmayın. Örneğin, son 15 dakika için ölçümün ortalama değerini her 5 dakikada bir ölçebilirsiniz.
 
    ![Ekran görüntüsü kaynak, koşul ve eylem grubuyla kural oluştur iletişim kutusunu gösterir.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   **Uyarı ayrıntılarına** bir **Uyarı kuralı adı** , **açıklaması** ve **kaynak grubunuz** ekleyin ve Stream Analytics işiniz için kural oluşturmak üzere **Uyarı kuralı oluştur** ' a tıklayın.
+   **Uyarı ayrıntılarına** bir **Uyarı kuralı adı**, **açıklaması** ve **kaynak grubunuz** ekleyin ve Stream Analytics işiniz için kural oluşturmak üzere **Uyarı kuralı oluştur** ' a tıklayın.
 
    ![Ekran görüntüsü, uyarı ayrıntıları içeren kural oluştur iletişim kutusunu gösterir.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    

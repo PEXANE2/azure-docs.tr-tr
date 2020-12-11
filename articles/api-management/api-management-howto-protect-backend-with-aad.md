@@ -8,22 +8,22 @@ ms.service: api-management
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: apimpm
-ms.custom: contperfq1
-ms.openlocfilehash: 9892c311651df39b882c3aa38596a905d22a42ec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: face4beab450e92be76b2bb90e45625e025de6ee
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618786"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027926"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-by-using-oauth-20-authorization-with-azure-ad"></a>Azure AD ile OAuth 2,0 yetkilendirmesini kullanarak Azure API Management Web API arka ucunu koruma 
 
 Bu kılavuzda, [Azure Active Directory (Azure AD) Ile OAuth 2,0 protokolünü](../active-directory/develop/active-directory-v2-protocols.md)kullanarak bir API 'yi korumak üzere [Azure API Management](api-management-key-concepts.md) örneğinizi nasıl yapılandırabileceğiniz gösterilmektedir. 
 
 > [!NOTE]
-> Bu özellik, API Management **Geliştirici**, **temel**, **Standart**ve **Premium** katmanlarında kullanılabilir.
+> Bu özellik, API Management **Geliştirici**, **temel**, **Standart** ve **Premium** katmanlarında kullanılabilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları izlemek için, şunları yapmanız gerekir:
 
@@ -45,13 +45,13 @@ Aşağıda, adımlara hızlı bir genel bakış verilmiştir:
 
 Bir API 'yi Azure AD ile korumak için önce Azure AD 'de API 'YI temsil eden bir uygulamayı kaydedin. Aşağıdaki adımlar, uygulamayı kaydetmek için Azure portal kullanır. Uygulama kaydı hakkında daha fazla bilgi için bkz. [hızlı başlangıç: bir uygulamayı bir Web API 'si göstermek Için yapılandırma](../active-directory/develop/quickstart-configure-app-expose-web-apis.md).
 
-1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları**seçin.
+1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları** seçin.
 
-1. **Yeni kayıt**seçeneğini belirleyin. 
+1. **Yeni kayıt** seçeneğini belirleyin. 
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 
-   - **Ad** bölümünde, uygulamanın kullanıcılarına, *arka uç-uygulama*gibi görüntülenecek anlamlı bir uygulama adı girin. 
+   - **Ad** bölümünde, uygulamanın kullanıcılarına, *arka uç-uygulama* gibi görüntülenecek anlamlı bir uygulama adı girin. 
    - **Desteklenen hesap türleri** bölümünde, senaryonuza uygun bir seçenek belirleyin. 
 
 1. **Yeniden yönlendirme URI 'si** bölümünü boş bırakın.
@@ -76,13 +76,13 @@ Geliştirici konsolunu temsil etmek için Azure AD 'de başka bir uygulamayı ka
 
 1. Uygulamanızı kaydetmek için [Azure Portal](https://portal.azure.com) gidin.
 
-1. Arama yapın ve **uygulama kayıtları**seçin.
+1. Arama yapın ve **uygulama kayıtları** seçin.
 
-1. **Yeni kayıt**seçeneğini belirleyin.
+1. **Yeni kayıt** seçeneğini belirleyin.
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
 
-   - **Ad** bölümünde, uygulamanın kullanıcılarına, örneğin *istemci-uygulama*gibi görüntülenecek anlamlı bir uygulama adı girin. 
+   - **Ad** bölümünde, uygulamanın kullanıcılarına, örneğin *istemci-uygulama* gibi görüntülenecek anlamlı bir uygulama adı girin. 
    - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) hesaplar**' ı seçin. 
 
 1. **Yeniden YÖNLENDIRME URI** 'si bölümünde, `Web` URL alanını şu anda boş bırakın ve ' ı seçin.
@@ -95,7 +95,7 @@ Geliştirici konsolunu temsil etmek için Azure AD 'de başka bir uygulamayı ka
 
    1. İstemci uygulamanızın sayfa listesinden **sertifikalar & parolaları**' nı seçin ve **yeni istemci parolası**' nı seçin.
 
-   1. **İstemci parolası Ekle**altına bir **Açıklama**girin. Anahtarın ne zaman sona ereceğini seçin ve **Ekle**' yi seçin.
+   1. **İstemci parolası Ekle** altına bir **Açıklama** girin. Anahtarın ne zaman sona ereceğini seçin ve **Ekle**' yi seçin.
 
 Gizli dizi oluşturulduğunda, sonraki bir adımda kullanılacak anahtar değerini aklınızda bulunur. 
 
@@ -103,7 +103,7 @@ Gizli dizi oluşturulduğunda, sonraki bir adımda kullanılacak anahtar değeri
 
 API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğiniz için, istemci uygulamanın arka uç uygulamasını çağırmasını sağlamak için izin verin.  
 
-1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları**seçin.
+1. İstemci uygulamanıza izinler vermek için [Azure Portal](https://portal.azure.com) gidin. Arama yapın ve **uygulama kayıtları** seçin.
 
 1. İstemci uygulamanızı seçin. Ardından, uygulama için sayfa listesinden **API izinleri**' ni seçin.
 
@@ -111,7 +111,7 @@ API 'yi ve geliştirici konsolunu temsil etmek üzere iki uygulama kaydettirdiğ
 
 1. **BIR API seçin**' in altında, **API 'lerim**' i seçin ve ardından arka uç uygulamanızı bulun ve seçin.
 
-1. **Temsilci izinleri**altında, arka uç uygulamanız için uygun izinleri seçin ve ardından **izin Ekle**' yi seçin.
+1. **Temsilci izinleri** altında, arka uç uygulamanız için uygun izinleri seçin ve ardından **izin Ekle**' yi seçin.
 
 1. İsteğe bağlı olarak, **API izinleri** sayfasında, bu dizindeki tüm kullanıcılar adına izin vermek için **yönetici \<your-tenant-name> izni ver** ' i seçin. 
 
@@ -125,31 +125,31 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. **OAuth 2,0**  >  **Ekle**' yi seçin.
 
-1. Bir **görünen ad** ve **Açıklama**sağlayın.
+1. Bir **görünen ad** ve **Açıklama** sağlayın.
 
-1. **İstemci kayıt sayfası URL 'si**için, gibi bir yer tutucu değeri girin `http://localhost` . **İstemci kayıt sayfası URL 'si** , kullanıcıların bunu destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği bir sayfaya işaret eder. Bu örnekte, kullanıcılar kendi hesaplarını oluşturmaz ve yapılandırmadıkları için bunun yerine bir yer tutucu kullanırsınız.
+1. **İstemci kayıt sayfası URL 'si** için, gibi bir yer tutucu değeri girin `http://localhost` . **İstemci kayıt sayfası URL 'si** , kullanıcıların bunu destekleyen OAuth 2,0 sağlayıcıları için kendi hesaplarını oluşturmak ve yapılandırmak üzere kullanabileceği bir sayfaya işaret eder. Bu örnekte, kullanıcılar kendi hesaplarını oluşturmaz ve yapılandırmadıkları için bunun yerine bir yer tutucu kullanırsınız.
 
-1. **Yetkilendirme verme türleri**için **yetkilendirme kodu**' nu seçin.
+1. **Yetkilendirme verme türleri** için **yetkilendirme kodu**' nu seçin.
 
-1. **Yetkilendirme uç noktası URL 'sini** ve **belirteç uç noktası URL 'sini**belirtin. Azure AD kiracınızdaki **uç noktalar** sayfasından bu değerleri alın. **Uygulama kayıtları** sayfasına tekrar gidin ve **uç noktalar**' ı seçin.
+1. **Yetkilendirme uç noktası URL 'sini** ve **belirteç uç noktası URL 'sini** belirtin. Azure AD kiracınızdaki **uç noktalar** sayfasından bu değerleri alın. **Uygulama kayıtları** sayfasına tekrar gidin ve **uç noktalar**' ı seçin.
 
 
-1. **OAuth 2,0 yetkilendirme uç noktasını**kopyalayın ve **Yetkilendirme uç noktası URL 'si** metin kutusuna yapıştırın. Yetkilendirme isteği yöntemi altında **gönderi** ' ı seçin.
+1. **OAuth 2,0 yetkilendirme uç noktasını** kopyalayın ve **Yetkilendirme uç noktası URL 'si** metin kutusuna yapıştırın. Yetkilendirme isteği yöntemi altında **gönderi** ' ı seçin.
 
-1. **OAuth 2,0 belirteç uç noktasını**kopyalayın ve **token Endpoint URL** metin kutusuna yapıştırın. 
+1. **OAuth 2,0 belirteç uç noktasını** kopyalayın ve **token Endpoint URL** metin kutusuna yapıştırın. 
 
    >[!IMPORTANT]
    > **V1** veya **v2** uç noktalarını kullanın. Ancak, seçtiğiniz sürüme bağlı olarak aşağıdaki adım farklı olacaktır. V2 uç noktaları kullanmanızı öneririz. 
 
-1. **V1** uç noktaları kullanırsanız, **kaynak**adlı bir gövde parametresi ekleyin. Bu parametrenin değeri için arka uç uygulamasının **uygulama kimliği** ' ni kullanın. 
+1. **V1** uç noktaları kullanırsanız, **kaynak** adlı bir gövde parametresi ekleyin. Bu parametrenin değeri için arka uç uygulamasının **uygulama kimliği** ' ni kullanın. 
 
 1. **V2** uç noktaları kullanıyorsanız, **varsayılan kapsam** alanındaki arka uç uygulaması için oluşturduğunuz kapsamı kullanın. Ayrıca, [`accessTokenAcceptedVersion`](../active-directory/develop/reference-app-manifest.md#accesstokenacceptedversion-attribute) `2` [uygulama bildiriminizde](../active-directory/develop/reference-app-manifest.md)özelliğinin değerini olarak ayarladığınızdan emin olun.
 
 1. Ardından, istemci kimlik bilgilerini belirtin. Bunlar, istemci uygulaması için kimlik bilgileridir.
 
-1. **ISTEMCI kimliği**için, Istemci UYGULAMANıN **uygulama kimliğini** kullanın.
+1. **ISTEMCI kimliği** için, Istemci UYGULAMANıN **uygulama kimliğini** kullanın.
 
-1. **İstemci parolası**için, daha önce istemci uygulaması için oluşturduğunuz anahtarı kullanın. 
+1. **İstemci parolası** için, daha önce istemci uygulaması için oluşturduğunuz anahtarı kullanın. 
 
 1. İstemci gizliliğini hemen takip eden, yetkilendirme kodu verme türü için **redirect_url** . Bu URL 'YI bir yere getirin.
 
@@ -157,7 +157,7 @@ Bu örnekte, Geliştirici Konsolu istemci-uygulama ' dır. Aşağıdaki adımlar
 
 1. Azure Active Directory ' de istemci uygulaması kaydına geri dönün ve **kimlik doğrulaması**' nı seçin.
 
-1. **Platform yapılandırması** ' nın altında, **Platform Ekle**' ye tıklayın ve türü **Web**olarak seçin, **yeniden yönlendirme URI 'si**altına **redirect_url** yapıştırın ve ardından Kaydet **Configure** ' e tıklayarak kaydedin.
+1. **Platform yapılandırması** ' nın altında, **Platform Ekle**' ye tıklayın ve türü **Web** olarak seçin, **yeniden yönlendirme URI 'si** altına **redirect_url** yapıştırın ve ardından Kaydet  ' e tıklayarak kaydedin.
 
 Bir OAuth 2,0 yetkilendirme sunucusu yapılandırdığınıza göre, Geliştirici Konsolu Azure AD 'den erişim belirteçleri alabilir. 
 
@@ -169,7 +169,7 @@ Sonraki adım, API 'niz için OAuth 2,0 Kullanıcı yetkilendirmesini etkinleşt
 
 1. **Ayarlar**' a gidin.
 
-1. **Güvenlik**altında **OAuth 2,0**' ı seçin ve daha önce yapılandırdığınız OAuth 2,0 sunucusunu seçin. 
+1. **Güvenlik** altında **OAuth 2,0**' ı seçin ve daha önce yapılandırdığınız OAuth 2,0 sunucusunu seçin. 
 
 1. **Kaydet**’i seçin.
 

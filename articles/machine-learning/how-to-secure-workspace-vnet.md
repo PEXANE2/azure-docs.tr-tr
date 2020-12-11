@@ -10,13 +10,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 8082694b9f08023653d47e1f7fb442219cf8b475
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316700"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029541"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning çalışma alanının güvenliğini sağlama
 
@@ -74,12 +74,12 @@ Bir sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak i
 
    [![Azure Machine Learning çalışma alanına bağlı depolama alanı](./media/how-to-enable-virtual-network/workspace-storage.png)](./media/how-to-enable-virtual-network/workspace-storage.png#lightbox)
 
-1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__ ' ı seçin.
+1. Depolama hizmeti hesabı sayfasında __güvenlik duvarları ve sanal ağlar__' ı seçin.
 
    ![Azure portal Azure Storage sayfasındaki "güvenlik duvarları ve sanal ağlar" alanı](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
 1. __Güvenlik duvarları ve sanal ağlar__ sayfasında, aşağıdaki işlemleri yapın:
-    1. __Seçili ağlar__ 'ı seçin.
+    1. __Seçili ağlar__'ı seçin.
     1. __Sanal ağlar__ altında __var olan sanal ağ ekle__ bağlantısını seçin. Bu eylem, işlemin bulunduğu sanal ağı ekler (bkz. 1. adım).
 
         > [!IMPORTANT]
@@ -175,12 +175,12 @@ Bir sanal ağın arkasındaki Azure Key Vault Azure Machine Learning deneme yete
 
 1. Çalışma alanıyla ilişkili olan Key Vault gidin.
 
-1. __Key Vault__ sayfasında, sol bölmede __ağ iletişimi__ ' ni seçin.
+1. __Key Vault__ sayfasında, sol bölmede __ağ iletişimi__' ni seçin.
 
 1. __Güvenlik duvarları ve sanal ağlar__ sekmesinde, aşağıdaki işlemleri yapın:
-    1. __Erişime Izin ver__ ' ın altında __Özel uç nokta ve seçili ağlar__ ' ı seçin.
+    1. __Erişime Izin ver__' ın altında __Özel uç nokta ve seçili ağlar__' ı seçin.
     1. __Sanal ağlar__ altında, deneme hesapla'nizin bulunduğu sanal ağı eklemek için __var olan sanal ağları Ekle__ ' yi seçin.
-    1. __Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver__ altında __Evet__ ' i seçin.
+    1. __Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver__ altında __Evet__' i seçin.
 
    [![Key Vault bölmesindeki "güvenlik duvarları ve sanal ağlar" bölümü](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks-page.png#lightbox)
 

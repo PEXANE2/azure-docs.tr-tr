@@ -11,13 +11,13 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.custom: contperfq4
-ms.openlocfilehash: 964cd77a24a7a73bf1151ba9e6ab43509e664b9f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.custom: contperf-fy20q4
+ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743080"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027008"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication ayarlarını yapılandırma
 
@@ -229,7 +229,7 @@ Kendi özel iletilerinizi kullanmak için aşağıdaki adımları izleyin:
 
 Uygulama parolaları, güvenilir IP 'Ler, doğrulama seçenekleri ve Azure AD Multi-Factor Authentication için Multi-Factor Authentication 'ı anımsa ayarları hizmet ayarları 'nda bulunabilir. Bu, eski portaldan daha fazlasına sahiptir ve normal Azure AD portalının bir parçası değildir.
 
-Hizmet ayarlarına **Azure Active Directory** güvenlik MFA 'ya giderek Azure Portal erişilebilir ve  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **bulut tabanlı ek MFA ayarlarını** yapılandırma ile çalışmaya başlama. Ek *hizmet ayarları* seçenekleriyle yeni bir pencere veya sekme açılır.
+Hizmet ayarlarına **Azure Active Directory** güvenlik MFA 'ya giderek Azure Portal erişilebilir ve  >    >    >    >    >  **bulut tabanlı ek MFA ayarlarını** yapılandırma ile çalışmaya başlama. Ek *hizmet ayarları* seçenekleriyle yeni bir pencere veya sekme açılır.
 
 ## <a name="trusted-ips"></a>Güvenilen IP'ler
 

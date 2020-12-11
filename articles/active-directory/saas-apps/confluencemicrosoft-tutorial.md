@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 73f5968f02e0f348c82d83b5b82d67748b4c3586
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b0cdfd76ed5e7ae20800b52e6074809de12a8b5f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455349"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031496"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından Confluence SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek
 
 Çoklu oturum açmayı etkinleştirmek için, Atlasme Confluence Server ile Microsoft Azure Active Directory hesabınızı kullanın. Böylece, tüm kuruluşunuz kullanıcıları, Confluence uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Microsoft tarafından Confluence SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,7 +63,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 - Confluence: 5,0-5,10
 - Confluence: 6.0.1 to 6.15.9
-- Confluence: 7.0.1 to 7.7.2
+- Confluence: 7.0.1 to 7.9.3
 
 > [!NOTE]
 > Lütfen Confluence denetimimizin Ubuntu sürüm 16,04 ' de çalışıp çalışmadığını unutmayın.
@@ -87,7 +87,7 @@ Microsoft tarafından Azure AD 'de Confluence SAML SSO 'SU tümleştirmesini yap
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-confluence-saml-sso-by-microsoft"></a>Microsoft tarafından Confluence SAML SSO 'SU için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Microsoft tarafından Confluence SAML SSO 'Su Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Microsoft tarafından Confluence SAML SSO 'SU içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Microsoft tarafından Confluence SAML SSO 'Su Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Microsoft tarafından Confluence SAML SSO 'SU içindeki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Microsoft tarafından Confluence SAML SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -157,7 +157,7 @@ Bu bölümde, Microsoft tarafından Confluence SAML SSO 'SU erişimi vererek Azu
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Confluence örneğiniz için oturum açın.
 
-1. Dişli üzerine gelin ve **eklentilere**tıklayın.
+1. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     !["COG" simgesinin seçili olduğunu ve açılan menüde "Eklentiler" vurgulanmış ekran görüntüsü.](./media/confluencemicrosoft-tutorial/addon1.png)
 
@@ -199,14 +199,14 @@ Bu bölümde, Microsoft tarafından Confluence SAML SSO 'SU erişimi vererek Azu
     
     1. **Oturum aç düğmesi açıklaması** ' nda, kuruluşunuzun oturum açma ekranında görmesini istediği düğmenin açıklaması yazın.
 
-    1. **SAML Kullanıcı kimliği konumlarında**, **Konu ifadesinin NameIdentifier öğesinde kullanıcı kimliği** ' ni veya **Kullanıcı kimliği bir öznitelik öğesinde olduğunu**seçin.  Bu KIMLIK, Confluence Kullanıcı KIMLIĞI olmalıdır. Kullanıcı KIMLIĞI eşleşmiyorsa, sistem kullanıcıların oturum açmalarına izin vermez. 
+    1. **SAML Kullanıcı kimliği konumlarında**, **Konu ifadesinin NameIdentifier öğesinde kullanıcı kimliği** ' ni veya **Kullanıcı kimliği bir öznitelik öğesinde olduğunu** seçin.  Bu KIMLIK, Confluence Kullanıcı KIMLIĞI olmalıdır. Kullanıcı KIMLIĞI eşleşmiyorsa, sistem kullanıcıların oturum açmalarına izin vermez. 
 
        > [!Note]
        > Varsayılan SAML Kullanıcı KIMLIĞI konumu ad tanımlayıcısıdır. Bunu bir öznitelik seçeneği olarak değiştirebilir ve uygun öznitelik adını girebilirsiniz.
 
     1. **Bir öznitelik öğesi seçeneğinde Kullanıcı kimliği** ' ni seçerseniz, **öznitelik adı** metin kutusuna kullanıcı kimliğinin beklenildiği özniteliğin adını yazın. 
 
-    1. Federasyon etki alanını (örneğin, ADFS vb.) Azure AD ile kullanıyorsanız, **giriş bölgesi bulmayı etkinleştir** seçeneğini tıklayın ve **etki alanı adını**yapılandırın.
+    1. Federasyon etki alanını (örneğin, ADFS vb.) Azure AD ile kullanıyorsanız, **giriş bölgesi bulmayı etkinleştir** seçeneğini tıklayın ve **etki alanı adını** yapılandırın.
 
     1. **Etki alanı adı** ' nda, ADFS tabanlı oturum açma durumunda etki alanı adını buraya yazın.
 
@@ -231,7 +231,7 @@ Azure AD kullanıcılarının, bir şirket içi sunucuda oturum açmasını sağ
 
 1. Yönetici olarak, Confon 'un Şirket içi sunucunuzda oturum açın.
 
-1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
+1. Dişli 'ye gelin ve **Kullanıcı yönetimine** tıklayın.
 
     ![Çalışan Ekle](./media/confluencemicrosoft-tutorial/user1.png)
 

@@ -1,20 +1,20 @@
 ---
 title: 'Hızlı başlangıç: Azure portal kullanarak Azure statik Web Apps ile ilk statik Web uygulamanızı oluşturma'
-description: Azure portal ile bir Azure statik Web Apps örneği oluşturmayı öğrenin.
+description: Azure portal ile Azure statik Web Apps statik bir site dağıtmayı öğrenin.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91280580"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030374"
 ---
-# <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik Web uygulamanızı oluşturma
+# <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal ilk statik sitenizi oluşturma
 
 Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, Azure portal kullanarak bir Web uygulamasını Azure statik Web uygulamalarına dağıtırsınız.
 
@@ -51,7 +51,7 @@ _Temel bilgiler_ bölümünde yeni uygulamanızı yapılandırıp bir GitHub dep
 
 GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Temel bilgiler bölümü":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Depo ayrıntıları":::
 
 1. Tercih ettiğiniz _kuruluşu_ seçin
 1. _Depo_ açılır listesinden **My-First-Web-static-App** ' i seçin
@@ -94,18 +94,18 @@ GitHub ile oturum açtıktan sonra depo bilgilerini girin.
 
 1. **Gözden geçir ve oluştur**’u seçin.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Temel bilgiler bölümü":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="İnceleme oluştur düğmesi":::
 
     > [!NOTE]
     > Uygulamayı oluşturduktan sonra bu değerleri değiştirmek için [iş akışı dosyasını](github-actions-workflow.md) düzenleyebilirsiniz.
 
 1. **Oluştur**’u seçin.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Temel bilgiler bölümü":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Oluştur düğmesi":::
 
 1. **Kaynağa git**’i seçin.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Temel bilgiler bölümü":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Kaynağa git düğmesi":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 

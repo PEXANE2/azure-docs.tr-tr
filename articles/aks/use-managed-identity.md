@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl ku
 services: container-service
 ms.topic: article
 ms.date: 12/06/2020
-ms.openlocfilehash: e2a80ea869e17665e8a6d4fbd6960c3ccc8c1042
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751283"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97026838"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -34,20 +34,20 @@ Aşağıdaki kaynağın yüklü olması gerekir:
 
 AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır.
 
-| Kimlik                       | Ad    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
+| Kimlik                       | Name    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
 | Kontrol düzlemi | görünür değil | AKS denetim düzlemi bileşenleri tarafından, giriş yük dengeleyiciler ve AKS yönetilen ortak IP 'Ler ve küme otomatik Scaler işlemleri dahil olmak üzere küme kaynaklarını yönetmek için kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | NA (Kubernetes v 1.15 + için) | Şu anda desteklenmiyor
-| Eklenti | AzureNPM | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azure-Policy (Gatekeeper) | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Azure-ilke | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Calıco | Kimlik gerekli değil | NA | Hayır
-| Eklenti | Pano | Kimlik gerekli değil | NA | Hayır
-| Eklenti | HTTPApplicationRouting | Gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için okuyucu rolü, DNS bölgesi için katkıda bulunan rolü | Hayır
-| Eklenti | Giriş uygulama ağ geçidi | Gerekli ağ kaynaklarını yönetir| Düğüm kaynak grubu için katkıda bulunan rolü | Hayır
-| Eklenti | omsagent | AKS ölçümlerini Azure Izleyicisine göndermek için kullanılır | İzleme ölçümleri Yayımcı rolü | Hayır
-| Eklenti | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) için gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için katkıda bulunan rolü | Hayır
+| Eklenti | AzureNPM | Kimlik gerekli değil | NA | No
+| Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | No
+| Eklenti | Azure-Policy (Gatekeeper) | Kimlik gerekli değil | NA | No
+| Eklenti | Azure-ilke | Kimlik gerekli değil | NA | No
+| Eklenti | Calıco | Kimlik gerekli değil | NA | No
+| Eklenti | Pano | Kimlik gerekli değil | NA | No
+| Eklenti | HTTPApplicationRouting | Gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için okuyucu rolü, DNS bölgesi için katkıda bulunan rolü | No
+| Eklenti | Giriş uygulama ağ geçidi | Gerekli ağ kaynaklarını yönetir| Düğüm kaynak grubu için katkıda bulunan rolü | No
+| Eklenti | omsagent | AKS ölçümlerini Azure Izleyicisine göndermek için kullanılır | İzleme ölçümleri Yayımcı rolü | No
+| Eklenti | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) için gerekli ağ kaynaklarını yönetir | Düğüm kaynak grubu için katkıda bulunan rolü | No
 | OSS projesi | aad-Pod kimliği | Azure Active Directory (AAD) ile uygulamaların bulut kaynaklarına güvenli bir şekilde erişmesini sağlar | NA | İzin verme adımları https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>Yönetilen kimliklerle bir AKS kümesi oluşturma
@@ -119,7 +119,7 @@ Sistem tarafından atanan kimliği güncelleştirin:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Kullanıcı tarafından atanan kimliği güncelleştirin:
+Kullanıcı tarafından atanan kimlik için özellik bayrağını Kaydet:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview

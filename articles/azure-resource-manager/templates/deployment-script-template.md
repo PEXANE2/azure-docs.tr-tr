@@ -5,18 +5,18 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: dcc968353edf0e9cf3d63408d02baf94c6cabd9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95902477"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030459"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
 
-Azure Kaynak şablonlarında Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı yeni bir kaynak türü ile `Microsoft.Resources/deploymentScripts` , kullanıcılar, şablon dağıtımlarında dağıtım betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
+Azure Kaynak şablonlarında Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı yeni bir kaynak türüyle `Microsoft.Resources/deploymentScripts` Kullanıcılar, şablon dağıtımlarında betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
 
 - bir dizine kullanıcı ekleme
 - veri düzlemi işlemlerini gerçekleştirme, örneğin Blobları veya çekirdek veritabanını kopyalama
@@ -29,7 +29,6 @@ Dağıtım betiğinin avantajları:
 
 - Kod, kullanım ve hata ayıklama işlemlerini kolayca yapabilirsiniz. Dağıtım betikleri, en sevdiğiniz geliştirme ortamlarınızda geliştirebilirsiniz. Betikler, şablonlara veya dış betik dosyalarına gömülebilir.
 - Betik dilini ve platformunu belirtebilirsiniz. Şu anda, Linux ortamındaki Azure PowerShell ve Azure CLı dağıtım betikleri desteklenir.
-- Betikleri yürütmek için kullanılan kimlikleri belirtmeye izin verin. Şu anda yalnızca [Azure Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) desteklenir.
 - Komut satırı bağımsız değişkenlerinin betiğe geçirilmesine izin ver.
 - Betik çıkışlarını belirtebilir ve bunları dağıtıma geri geçirebilir.
 
@@ -38,12 +37,13 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 > [!IMPORTANT]
 > Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örneği gereklidir. Mevcut bir depolama hesabını belirtme seçenekleriniz vardır; Aksi takdirde, kapsayıcı örneğiyle birlikte depolama hesabı betik hizmeti tarafından otomatik olarak oluşturulur. Dağıtım betiği yürütmesi bir terminal durumunda olduğunda, otomatik olarak oluşturulan iki kaynak genellikle betik hizmeti tarafından silinir. Kaynaklar silinene kadar kaynaklar için faturalandırılırsınız. Daha fazla bilgi için bkz. [Temizleme dağıtım betiği kaynakları](#clean-up-deployment-script-resources).
 
+> [!IMPORTANT]
+> DeploymentScripts kaynak API sürümü 2020-10-01, [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)destekler. Dağıtım betiği hizmeti, OBO 'yı kullanarak dağıtım betikleri çalıştırmak için Azure Container Instance, Azure depolama hesabı ve yönetilen kimlik için rol atamalarını içeren temel kaynakları oluşturmak üzere dağıtım sorumlusunun belirtecini kullanır. Daha eski API sürümünde, bu kaynakları oluşturmak için yönetilen kimlik kullanılır.
+> Azure oturum açma için yeniden deneme mantığı artık sarmalayıcı betikte yerleşik olarak bulunur. Dağıtım betikleri çalıştırdığınız şablonda izin verirseniz.  Dağıtım betiği hizmeti, yönetilen kimlik rolü ataması çoğaltılana kadar 10 dakikalık aralıklarla oturum açmayı yeniden dener.
+
 ## <a name="prerequisites"></a>Önkoşullar
 
-- **Hedef kaynak grubu için katkıda bulunan rolüne sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın.
-
-  > [!NOTE]
-  > Betik hizmeti bir depolama hesabı (var olan bir depolama hesabı belirtmediğiniz müddetçe) ve arka planda bir kapsayıcı örneği oluşturur.  Abonelik, Azure depolama hesabı (Microsoft. Storage) ve Azure Container Instance (Microsoft. Containerınstance) kaynak sağlayıcıları kaydolmadığında, katkıda bulunan rolüne sahip kullanıcı tarafından atanan yönetilen kimlik gereklidir.
+- **(Isteğe bağlı) komut dosyasındaki işlemleri gerçekleştirmek için gerekli izinlere sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Dağıtım betiği API sürüm 2020-10-01 veya üzeri için, dağıtım sorumlusu temel alınan kaynakları oluşturmak için kullanılır. Betiğin Azure 'da kimlik doğrulaması yapması ve Azure 'a özel eylemler gerçekleştirmesi gerekiyorsa, komut dosyasını Kullanıcı tarafından atanan bir yönetilen kimlikle yapmanızı öneririz. Komut dosyasındaki işlemi tamamlaması için yönetilen kimliğin hedef kaynak grubunda gerekli erişime sahip olması gerekir. Dağıtım betiğine Azure 'da da oturum açabilirsiniz. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın. 
 
   Bir kimlik oluşturmak için, bkz. Azure portal kullanarak veya [Azure CLI kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)ya da [Azure PowerShell kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
@@ -135,7 +135,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 
 Özellik değeri ayrıntıları:
 
-- **Kimlik**: dağıtım betiği hizmeti, komut dosyalarını yürütmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
+- **Kimlik**: DAĞıTıM betiği apı sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure özel eylemi gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
 - **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. NewGuid () veya utcNow () işlevini kullanırsanız, her iki işlev de bir parametre için yalnızca varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
 - **Containersettings**: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  **Containergroupname** kapsayıcı grubu adını belirtmektir.  Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
@@ -147,7 +147,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 
     Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonda bağımsız değişken **\\ "John Dole \\ "** olur.  Kaçan dize **-adı \\ \\ \\ "John Dole \\ \\ \\ "** dir.
 
-    Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra herhangi bir **\\ "** into **\\ \\ \\ "** öğesini değiştirmek için [Replace ()](./template-functions-string.md#replace) işlevini kullanın. Örnek:
+    Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra herhangi bir **\\ "** into **\\ \\ \\ "** öğesini değiştirmek için [Replace ()](./template-functions-string.md#replace) işlevini kullanın. Örneğin:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -169,14 +169,11 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 - [Örnek 2](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-subscription.json): abonelik düzeyinde bir kaynak grubu oluşturun, kaynak grubunda bir Anahtar Kasası oluşturun ve sonra anahtar kasasına bir sertifika atamak için dağıtım betiği kullanın.
 - [Örnek 3](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-keyvault-mi.json): Kullanıcı tarafından atanan bir yönetilen kimlik oluşturun, kaynak grubu düzeyindeki kimliğe katkıda bulunan rolünü atayın, bir Anahtar Kasası oluşturun ve sonra anahtar kasasına bir sertifika atamak için dağıtım betiği kullanın.
 
-> [!NOTE]
-> Kullanıcı tarafından atanan bir kimlik oluşturmanız ve izinlerin önceden verilmesi önerilir. Kimliği oluşturur ve dağıtım betikleri çalıştırdığınız şablonda izin verirseniz, oturum açma ve izinle ilgili hatalar alabilirsiniz. İzinlerin etkin hale gelmesi biraz zaman alır.
-
 ## <a name="use-inline-scripts"></a>Satır içi betikleri kullan
 
 Aşağıdaki şablonda, türüyle tanımlanmış bir kaynak vardır `Microsoft.Resources/deploymentScripts` . Vurgulanan bölüm, satır içi betiğidir.
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-54" highlight="34-40":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
 > Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin bir **&#92;** kullanılarak veya tek tırnak içine alınmış olması gerekir. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz.
@@ -188,11 +185,10 @@ Betiği çalıştırmak için **dene** ' yi seçerek Cloud Shell açın ve ardı
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the name of the resource group to be created"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$id = Read-Host -Prompt "Enter the user-assigned managed identity ID"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json" -identity $id
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.json"
 
 Write-Host "Press [ENTER] to continue ..."
 ```
@@ -203,7 +199,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örneğin:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -239,7 +235,7 @@ Destekleyici dosyalar, çalışma zamanında azscripts/azscriptınput 'a kopyala
 
 Aşağıdaki şablonda, iki deploymentScripts kaynağı arasında değerlerin nasıl geçirileceğini gösterilmektedir:
 
-:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-84" highlight="39-40,66":::
+:::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
 İlk kaynakta, **$DeploymentScriptOutputs** adlı bir değişken tanımlarsınız ve bunu çıkış değerlerini depolamak için kullanabilirsiniz. Şablon içindeki başka bir kaynaktan çıkış değerine erişmek için şunu kullanın:
 
@@ -276,7 +272,7 @@ Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örne
 
     Bu birleşimler dosya payını destekler.  Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
 - Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
-- Dağıtım betiğinin Kullanıcı tarafından atanan yönetilen kimliğinin, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinleri olmalıdır.
+- Dağıtım sorumlusu, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinlerine sahip olmalıdır.
 
 Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğesinin özellik öğesine ekleyin `Microsoft.Resources/deploymentScripts` :
 
@@ -288,7 +284,7 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 ```
 
 - **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
+- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örneğin:
 
     ```json
     "storageAccountSettings": {
@@ -325,7 +321,7 @@ Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabın�
 
 Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini **üzerindeexecutionresult.js** görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalı kullanma
+### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
 Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının genel bakış sayfası gösterilmektedir:
 
@@ -539,6 +535,8 @@ Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetl
 
 > [!NOTE]
 > Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
+
+Sorun giderme için kapsayıcı örneği ve depolama hesabı 'nı sürdürmek için, betiğe bir uyku komutu ekleyebilirsiniz.  Örneğin, [Başlat-uyku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 

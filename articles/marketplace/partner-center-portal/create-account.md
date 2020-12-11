@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
-ms.custom: contperfq2
-ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: d88e2b18d4e4f9df0606832356e383aaaf51cf73
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458118"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028453"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Iş Ortağı Merkezi 'nde ticari Market hesabı oluşturma
 
@@ -67,7 +67,7 @@ Yayımcı profiliniz, şirketinizin adını ve MPN KIMLIĞINI içerir. Henüz ya
 
     Kaydolduktan sonra, ticari Market 'e genel bakış sayfasına yönlendirilirsiniz. Ticari Market hesabı sol bölmede görüntülenir.
 
-1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için sağ üst köşedeki > **Hesap ayarları** programlarında **Ayarlar** (dişli simgesi) seçeneğini belirleyin  >  **Programs**.
+1. Ticari Market hesabının kayıtlı olarak listelendiğini doğrulamak için sağ üst köşedeki > **Hesap ayarları** programlarında **Ayarlar** (dişli simgesi) seçeneğini belirleyin  >  .
 
 Artık Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturdunuz. [Ticari Market 'e yeni yayımcılar eklemeye](#add-new-publishers-to-the-commercial-marketplace-program)devam edin.
 
@@ -145,7 +145,7 @@ Yayımlama sözleşmesi ve şirket profili bilgileri, yeni Iş Ortağı Merkezi 
 Kuruluşun bir ticari Market hesabıyla ilişkilendirilmiş birden çok yayımcısı olabilir. Mevcut bir Kullanıcı, **Ayarlar**  >  **Hesap ayarları**  >  **kuruluş profili**  >  **tanımlayıcıları**  >  **Yayımcı Ekle** seçeneğini belirleyerek iş ortağı merkezi 'nde oturum açtıktan sonra daha fazla yayımcı ekleyebilir.
 
 >[!NOTE]
->Yeni bir yayımcı eklemeden önce, iş ortağı Merkezi ' nde oturum açıp **Hesap ayarları** yayımcıları ' nı seçerek mevcut yayımcıların listesini gözden geçirin  >  **Publishers**.
+>Yeni bir yayımcı eklemeden önce, iş ortağı Merkezi ' nde oturum açıp **Hesap ayarları** yayımcıları ' nı seçerek mevcut yayımcıların listesini gözden geçirin  >  .
 
 Aynı Azure Active Directory kiracısından ek kullanıcılar yeni bir yayımcı eklemek için aşağıdaki adımları kullanabilir.
 

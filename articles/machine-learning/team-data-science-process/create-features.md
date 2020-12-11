@@ -10,20 +10,20 @@ ms.subservice: team-data-science-process
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 44b5baa074b62a072873d8097de184a2813b54ec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperf-fy20q4
+ms.openlocfilehash: 7cf97edcb2f2f7a23d5c899194d497deade1f507
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322022"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031870"
 ---
 # <a name="feature-engineering-in-data-science"></a>Veri bilimi 'nde Özellik Mühendisliği
 
 Bu makalede, Machine Learning 'de verileri geliştirmeyle ilgili özellik Mühendisliği ve rolü hakkında bilgi edineceksiniz. [Azure Machine Learning Studio (klasik)](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio) denemeleri 'den çizilen tanım örneklerden öğrenin. 
 
-* **Özellik Mühendisliği** : öğrenme algoritmasının tahmine dayalı gücünü artırmak için ham verilerden yeni özellikler oluşturma işlemi. Uygulanan özellikler, özgün özellik kümesinde kolayca açık olmayan ek bilgileri yakalemelidir.
-* **Özellik seçimi** : eğitim sorununun boyutlılık düzeyini azaltmak için özelliklerin anahtar alt kümesini seçme işlemi.
+* **Özellik Mühendisliği**: öğrenme algoritmasının tahmine dayalı gücünü artırmak için ham verilerden yeni özellikler oluşturma işlemi. Uygulanan özellikler, özgün özellik kümesinde kolayca açık olmayan ek bilgileri yakalemelidir.
+* **Özellik seçimi**: eğitim sorununun boyutlılık düzeyini azaltmak için özelliklerin anahtar alt kümesini seçme işlemi.
 
 Normalde **özellik Mühendisliği** , ek özellikler oluşturmak için önce uygulanır ve ardından **Özellik seçimi** , ilgisiz, yedekli veya çok bağıntılı özellikleri ortadan kaldıracak şekilde yapılır.
 

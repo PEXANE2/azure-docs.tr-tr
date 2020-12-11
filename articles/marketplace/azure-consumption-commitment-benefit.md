@@ -7,13 +7,13 @@ ms.topic: article
 author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
-ms.custom: contperfq2
-ms.openlocfilehash: c4fdf8e986b9c98588689a57bde8ca9464667abe
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129550"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028555"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Azure tüketim taahhüdü avantajı
 
@@ -45,10 +45,10 @@ Kuruluşunuzun uygun bir anlaşması olup olmadığını bilmiyorsanız, kurulu�
  
 3. Teklifler, bu teklifle ilişkili yazılım/IP maliyetlerinin, kuruluşunuzda faturalandırılan tüm Azure hizmetleri üzerinde kuruluşunuzun Azure tüketim taahhüdüne katkıda bulunduğunu göstermek için **uygun olan Azure avantajına** sahip olacaktır.
 
-    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure avantajı uygun rozet.&quot;:::
+    :::image type="content" source="media/azure-benefit/azure-benefit-eligible-badge.png" alt-text="Azure avantajı uygun rozet.":::
 
    > [!NOTE]
-   > Azure Marketi dağıtımı aracılığıyla kuruluşunuza faturalandırılan Microsoft Azure Hizmetleri, doğal olarak kuruluşunuzun taahhüdüne katkıda bulunur. &quot;Azure avantajı uygun" tekliflerine eklenen avantaj, üçüncü taraf satıcı tarafından geçirilen yazılım/IP maliyetlerinin de Azure Market faturanızda %100 ' de katkıda bulunur.
+   > Azure Marketi dağıtımı aracılığıyla kuruluşunuza faturalandırılan Microsoft Azure Hizmetleri, doğal olarak kuruluşunuzun taahhüdüne katkıda bulunur. "Azure avantajı uygun" tekliflerine eklenen avantaj, üçüncü taraf satıcı tarafından geçirilen yazılım/IP maliyetlerinin de Azure Market faturanızda %100 ' de katkıda bulunur.
 
 4. Teklifi doğrudan Azure Marketi aracılığıyla satın alın/oluşturun. Microsoft, yazılım/IP maliyetleri dahil olmak üzere her fatura döneminde kuruluşunuzun Azure tüketim taahhüdüne doğru satın alma teklifinin %100 ' üne katkıda bulunur.
 

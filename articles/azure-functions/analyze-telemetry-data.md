@@ -3,13 +3,13 @@ title: Application Insights 'de Azure Işlevleri telemetrisini çözümleyin
 description: Tarafından toplanan ve Azure Application Insights 'de depolanan Azure Işlevleri telemetri verilerini görüntülemeyi ve sorgulamayı öğrenin.
 ms.topic: how-to
 ms.date: 10/14/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 9091d59cbc3a4cf841e28505531c89c83e705c46
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 1d8d9cc9a7a4111e98b1d9141957769d6f157d45
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217312"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027739"
 ---
 # <a name="analyze-azure-functions-telemetry-in-application-insights"></a>Application Insights 'de Azure Işlevleri telemetrisini çözümleyin 
 
@@ -60,12 +60,12 @@ Application Insights kullanma hakkında daha fazla bilgi için [Application Insi
 
 Aşağıdaki Application Insights, işlevinizdeki davranış, performans ve hataları değerlendirirken yararlı olabilir:
 
-| Araştır | Açıklama |
+| Araştır | Description |
 | ---- | ----------- |
 | **[Hatalar](../azure-monitor/app/asp-net-exceptions.md)** |  İşlev hatalarıyla ve sunucu özel durumlarına göre grafikler ve uyarılar oluşturun. **Işlem adı** işlev adıdır. Bağımlılıklar için özel telemetri uygulamadığınız takdirde Bağımlılıklardaki arızalar gösterilmez. |
-| **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri**başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
+| **[Performans](../azure-monitor/app/performance-counters.md)** | **Bulut rol örnekleri** başına kaynak kullanımını ve aktarım hızını görüntüleyerek performans sorunlarını analiz edin. Bu performans verileri, işlevlerin temeldeki kaynaklarınızın gerisinde olduğu durumlarda hata ayıklama senaryolarında yararlı olabilir. |
 | **[Ölçümler](../azure-monitor/platform/metrics-charts.md)** | Ölçümleri temel alan grafikler ve uyarılar oluşturun. Ölçümler, işlev etkinleştirmeleri, yürütme süresi ve başarı oranları sayısını içerir. |
-| **[Canlı ölçümler    ](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
+| **[Canlı ölçümler](../azure-monitor/app/live-stream.md)** | Ölçüm verilerini neredeyse gerçek zamanlı olarak oluşturulan şekilde görüntüleyin. |
 
 ## <a name="query-telemetry-data"></a>Telemetri verilerini sorgulama
 
@@ -108,7 +108,7 @@ traces
 
 ## <a name="consumption-plan-specific-metrics"></a>Tüketim planına özgü ölçümler
 
-Bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken, tek bir işlev yürütmenin yürütme *ücreti* *GB saniye*cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme.
+Bir [Tüketim planında](functions-scale.md#consumption-plan)çalışırken, tek bir işlev yürütmenin yürütme *ücreti* *GB saniye* cinsinden ölçülür. Yürütme maliyeti, bellek kullanımını yürütme süresi ile birleştirerek hesaplanır. Daha fazla bilgi edinmek için bkz. [Tüketim planı maliyetlerini tahmin](functions-consumption-costs.md)etme.
 
 Aşağıdaki telemetri sorguları, tüketim planında çalışan işlevlerin maliyetini etkileyen ölçümlere özgüdür.
 

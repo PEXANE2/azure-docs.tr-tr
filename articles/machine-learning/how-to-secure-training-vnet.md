@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
-ms.custom: contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: 2b0a56bac1652881e9d1733bcb52b02610e27e9e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
+ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314167"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029575"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Sanal ağlarla Azure Machine Learning eğitim ortamının güvenliğini sağlama
 
@@ -277,7 +277,7 @@ Bu bölümde, bir sanal makineyi veya Azure HDInsight kümesini çalışma alan�
 
 ### <a name="create-the-vm-or-hdinsight-cluster"></a>VM veya HDInsight kümesi oluşturma
 
-Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun ve kümeyi bir Azure sanal ağına yerleştirin. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 * [Linux VM 'Ler için Azure sanal ağları oluşturma ve yönetme](../virtual-machines/linux/tutorial-virtual-network.md)
 
 * [Azure sanal ağını kullanarak HDInsight 'ı genişletme](../hdinsight/hdinsight-plan-virtual-network-deployment.md)
@@ -286,9 +286,9 @@ Azure portal veya Azure CLı kullanarak bir VM veya HDInsight kümesi oluşturun
 
 Azure Machine Learning VM veya kümedeki SSH bağlantı noktasıyla iletişim kurmasına izin ver, ağ güvenlik grubu için bir kaynak girişi yapılandırın. SSH bağlantı noktası genellikle bağlantı noktası 22 ' dir. Bu kaynaktan gelen trafiğe izin vermek için aşağıdaki işlemleri yapın:
 
-1. __Kaynak__ açılan listesinde __hizmet etiketi__ ' ni seçin.
+1. __Kaynak__ açılan listesinde __hizmet etiketi__' ni seçin.
 
-1. __Kaynak hizmet etiketi__ açılan listesinde __AzureMachineLearning__ ' yi seçin.
+1. __Kaynak hizmet etiketi__ açılan listesinde __AzureMachineLearning__' yi seçin.
 
     ![Bir sanal ağ içindeki bir VM veya HDInsight kümesi üzerinde deneme yapmak için gelen kurallar](./media/how-to-enable-virtual-network/experimentation-virtual-network-inbound.png)
 
@@ -296,11 +296,11 @@ Azure Machine Learning VM veya kümedeki SSH bağlantı noktasıyla iletişim ku
 
 1. __Hedef__ açılan listesinde __herhangi birini__ seçin.
 
-1. __Hedef bağlantı noktası aralıkları__ aşağı açılan listesinde __22__ ' yi seçin.
+1. __Hedef bağlantı noktası aralıkları__ aşağı açılan listesinde __22__' yi seçin.
 
 1. __Protokol__ altında __herhangi bir__ seçin.
 
-1. __Eylem__ altında __izin ver__ ' i seçin.
+1. __Eylem__ altında __izin ver__' i seçin.
 
 Ağ güvenlik grubu için varsayılan giden kuralları saklayın. Daha fazla bilgi için bkz. [güvenlik gruplarında](../virtual-network/network-security-groups-overview.md#default-security-rules)varsayılan güvenlik kuralları.
 

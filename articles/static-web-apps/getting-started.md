@@ -1,20 +1,20 @@
 ---
-title: 'Hızlı başlangıç: Azure statik Web Apps ilk statik Web uygulamanızı oluşturma'
-description: Azure statik Web Apps web sitesi oluşturmayı öğrenin.
+title: 'Hızlı başlangıç: Azure statik Web Apps ilk statik sitenizi oluşturma'
+description: Statik bir siteyi Azure statik Web Apps dağıtmayı öğrenin.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: a78f74b4aadd26af141ed84ca99a092693f56af5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 226e8ca6848fc2e29b73a2586f37965c0a031b19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369571"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030476"
 ---
-# <a name="quickstart-building-your-first-static-web-app"></a>Hızlı başlangıç: ilk statik Web uygulamanızı oluşturma
+# <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Hızlı başlangıç: Azure statik Web Apps ilk statik sitenizi oluşturma
 
 Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, Azure statik Web uygulamalarına Visual Studio Code uzantısını kullanarak bir Web uygulaması dağıtırsınız.
 
@@ -62,7 +62,7 @@ Daha sonra, Visual Studio Code açın ve **dosya > klasöre** giderek, yeni bir 
 
 1. Uzantı, uygulamanızdaki API konumunu arar. Bu makalede API kullanılmaz.
 
-    **Şimdilik atla** 'yı seçip **Enter** tuşuna basın.
+    **Şimdilik atla**'yı seçip **Enter** tuşuna basın.
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API konumu":::
 
@@ -112,7 +112,7 @@ Daha sonra, Visual Studio Code açın ve **dosya > klasöre** giderek, yeni bir 
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, Azure statik Web Apps örneğini uzantı aracılığıyla silebilirsiniz.
 
-Visual Studio Code Gezgin penceresinde _statik Web Apps_ bölümüne dönüp, **ilk-statik-Web-uygulaması** ' na sağ tıklayın ve **Sil** ' i seçin.
+Visual Studio Code Gezgin penceresinde _statik Web Apps_ bölümüne dönüp, **ilk-statik-Web-uygulaması** ' na sağ tıklayın ve **Sil**' i seçin.
 
 :::image type="content" source="media/getting-started/extension-delete.png" alt-text="Uygulamayı Sil":::
 

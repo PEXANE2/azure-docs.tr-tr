@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 3ed4f8d4d8ca0a68a4ccf01a38ae5f8e66cc26df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 3b85f6238bec4ef85d724a2fc48ea5988c3fceb2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757838"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031734"
 ---
 # <a name="data-processing-optimization-for-apache-spark"></a>Apache Spark için veri işleme iyileştirmesi
 
@@ -21,7 +21,7 @@ Bu makalede, Azure HDInsight 'ta en iyi performans için Apache Spark kümenizin
 
 ## <a name="overview"></a>Genel Bakış
 
-Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, nedeni büyük olasılıkla *veri eğriliği*olur. Veri eğriltme iş verilerinizde asymmetry. Örneğin, bir harita işi 20 saniye sürebilir. Ancak verilerin katıldığı veya karıştırılmış bir işi çalıştırmak saat alır. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
+Bir JOIN veya karıştırma üzerinde işleriniz yavaşsa, nedeni büyük olasılıkla *veri eğriliği* olur. Veri eğriltme iş verilerinizde asymmetry. Örneğin, bir harita işi 20 saniye sürebilir. Ancak verilerin katıldığı veya karıştırılmış bir işi çalıştırmak saat alır. Veri eğriliğini onarmak için, anahtarın tamamını tam olarak yapmanız gerekir ya da anahtarların yalnızca bir alt kümesi için *yalıtılmış bir anahtar* kullanırsınız. Yalıtılmış bir güvenlik kullanıyorsanız, eşleme birleştirmelerde sallanan anahtarların alt kümesini yalıtmak için daha fazla filtre uygulamanız gerekir. Diğer bir seçenek de demet sütunu tanıtmak ve öncelikle demetlerde ön toplama işlemi yapmak.
 
 Yavaş birleştirmelere neden olan başka bir faktör birleştirme türü olabilir. Spark, varsayılan olarak, `SortMerge` JOIN türünü kullanır. Bu tür bir JOIN, büyük veri kümeleri için idealdir. Ancak, öncelikle verilerin sol ve sağ taraflarını birleştirmeden önce sıralaması gerektiğinden, bu da hesaplama açısından pahalı değildir.
 

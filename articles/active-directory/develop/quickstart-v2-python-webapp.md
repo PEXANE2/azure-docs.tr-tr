@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 1a8d851d2e70850155950786c6aa67c1d5086eb2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 383f7f37e93b4705419ba1f93f509c86eaab192b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993882"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030646"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Hızlı başlangıç: Microsoft 'a Python web uygulamasına oturum açma ekleme
 
@@ -50,31 +50,25 @@ Bu hızlı başlangıçta, bir Python web uygulamasının kullanıcılara nasıl
 >
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `python-webapp` .
->      - **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
->      - **Kaydet**’i seçin.
->      - Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
-> 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Web** platformu yapılandırmasını ekleyin. `http://localhost:5000/getAToken` **Yeniden yönlendirme URI 'leri** olarak ekleyin.
->    - **Kaydet**'i seçin.
-> 1. Sol taraftaki menüde **sertifikalar & gizlilikler** ' ı seçin ve **istemci** gizli dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
->
->      - Bir anahtar açıklaması (örnek uygulama gizli anahtarı) yazın.
->      - **1 yılda** bir anahtar süresi seçin.
->      - **Ekle**' ye tıkladığınızda, anahtar değeri görüntülenecektir.
->      - Anahtarın değerini kopyalayın. Buna daha sonra ihtiyacınız olacak.
-> 1. **API izinleri** bölümünü seçin
->
->      - **Izin Ekle** düğmesine tıklayın ve ardından
->      - **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun
->      - *Yaygın olarak kullanılan Microsoft API 'leri* bölümünde, **Microsoft Graph** ' ye tıklayın.
->      - **Temsilci izinleri** bölümünde, doğru izinlerin işaretli olduğundan emin olun: **User. Readbasic. All**. Gerekirse arama kutusunu kullanın.
->      - **Izin Ekle** düğmesini seçin
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin (örneğin,) `python-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında hesaplar**' ı seçin.
+> 1. **Kaydet**’i seçin.
+> 1. Uygulamaya **genel bakış** sayfasında, daha sonra kullanılmak üzere **uygulama (istemci) kimliği** değerini aklınızda edin.
+> 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+> 1. **Platform Web ekle**' yi seçin  >  .
+> 1. `http://localhost:5000/getAToken` **Yeniden yönlendirme URI 'leri** olarak ekleyin.
+> 1. **Yapılandır**'ı seçin.
+> 1. **Yönet**' in altında, **Sertifikalar & gizlilikler** ' ı seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
+> 1. Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı), varsayılan süre sonunu bırakın ve **Ekle**' yi seçin.
+> 1. Daha sonra kullanmak üzere **Istemci parolasının** **değerini** aklınızda yapın.
+> 1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin.
+>1.  **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun.
+> 1. *Yaygın olarak kullanılan Microsoft API 'leri* bölümünde **Microsoft Graph**' yi seçin.
+> 1. **Temsilci izinleri** bölümünde, doğru izinlerin işaretli olduğundan emin olun: **User. Readbasic. All**. Gerekirse arama kutusunu kullanın.
+> 1. **Izin Ekle** düğmesini seçin.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 >

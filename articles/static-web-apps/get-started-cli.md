@@ -1,26 +1,26 @@
 ---
-title: 'Hızlı başlangıç: Azure CLı kullanarak Azure statik Web Apps ile ilk statik Web uygulamanızı oluşturma'
-description: Azure statik Web Apps CLı ile Azure statik Web Apps örneği oluşturmayı öğrenin.
+title: 'Hızlı başlangıç: CLı kullanarak ilk statik sitenizi Azure statik Web Apps oluşturma'
+description: Azure CLı ile statik bir siteyi Azure statik Web Apps dağıtmayı öğrenin.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ed49892284b53844c5c578b752a598cdbdd9b946
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ca05194c0d8e63290a9cab8d9f7903daa192069b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320339"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030357"
 ---
-# <a name="quickstart-building-your-first-static-web-app-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk statik Web uygulamanızı oluşturma
+# <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak ilk statik sitenizi oluşturma
 
 Azure statik Web Apps bir GitHub deposundan uygulama oluşturarak bir Web sitesini üretim ortamına yayınlar. Bu hızlı başlangıçta, Azure CLı kullanarak Azure statik Web uygulamalarına bir Web uygulaması dağıtırsınız.
 
 Azure aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [GitHub](https://github.com) hesabı
 - [GitHub kişisel erişim belirteci](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token)
@@ -109,7 +109,7 @@ Artık depo oluşturulduktan sonra, Azure CLı 'den statik bir Web uygulaması o
 
     - `<YOUR_GITHUB_ACCOUNT_NAME>`: Bu değeri GitHub Kullanıcı adınızla değiştirin.
 
-    - `<LOCATION>`: Bu değeri en yakın konum ile değiştirin. Seçenekler şunlardır: _merkezde US_, _eastaya_, _EastUS2_, _westeurope_ve _WestUS2_.
+    - `<LOCATION>`: Bu değeri en yakın konum ile değiştirin. Seçenekler şunlardır: _merkezde US_, _eastaya_, _EastUS2_, _westeurope_ ve _WestUS2_.
 
     - `<YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>`: Bu değeri, daha önce oluşturmuş olduğunuz [GitHub kişisel erişim belirteci](https://docs.github.com/github/authenticating-to-github/creating-a-personal-access-token) ile değiştirin.
 

@@ -1,5 +1,5 @@
 ---
-title: SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları
+title: SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları
 description: Azure Active Directory ile SAML tabanlı federe çoklu oturum açma için yapılandırdığınız bir uygulamada oturum açarken oluşan belirli hatalara yönelik kılavuz
 services: active-directory
 author: kenwith
@@ -11,19 +11,19 @@ ms.topic: troubleshooting
 ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
-ms.custom: contperfq2
-ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651558"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028283"
 ---
-# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma yapılandırılmış uygulamalarda oturum açma sorunları
+# <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:
 
-- Azure portal Test deneyimini kullanırken daha iyi tanılama ve çözümler sağlamak üzere Azure Active Directory (Azure AD) yardımcı olmak için [uygulamalarım güvenli tarayıcı uzantısını](./access-panel-deployment-plan.md) yüklemek.
-- Azure portal, uygulama yapılandırma sayfasında Test deneyimini kullanarak hatayı yeniden oluşturun. [SAML tabanlı çoklu oturum açma uygulamalarında hata ayıklama](./debug-saml-sso-issues.md) hakkında daha fazla bilgi edinin
+- Azure portalda test deneyimi kullanılırken Azure Active Directory’ye (Azure AD) daha iyi tanılama ve çözümler sağlama konusunda yardımcı olmak için [Uygulamalarım Güvenli Tarayıcı Eklentisini](./access-panel-deployment-plan.md) yükleyin.
+- Azure portalın uygulama yapılandırma sayfasında test deneyimini kullanarak hatayı yeniden oluşturun. [SAML tabanlı çoklu oturum açma uygulamalarında hata ayıklama](./debug-saml-sso-issues.md) hakkında daha fazla bilgi edinin
 
 Uygulamalarım güvenli tarayıcı uzantısı ile Azure portal [Test deneyimini](./debug-saml-sso-issues.md) KULLANıYORSANıZ, SAML tabanlı çoklu oturum açma yapılandırması sayfasını açmak için aşağıdaki adımları el ile izlemeniz gerekmez.
 
@@ -31,12 +31,12 @@ SAML tabanlı çoklu oturum açma yapılandırma sayfasını açmak için:
 1.  [**Azure Portal**](https://portal.azure.com/) açın ve **genel yönetici** veya **coadmin** olarak oturum açın.
 1.  Ana sol taraftaki Gezinti menüsünün en üstündeki **tüm hizmetler** ' i seçerek **Azure Active Directory uzantısını** açın.
 1.  Filtre arama kutusuna **"Azure Active Directory"** yazın ve **Azure Active Directory** öğesini seçin.
-1.  Azure Active Directory sol taraftaki gezinti menüsünden **Kurumsal uygulamalar** ' ı seçin.
-1.  Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
-    Burada görünmesini istediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin** en üstündeki **filtre** denetimini kullanın ve **göster** seçeneğini **tüm uygulamalar** olarak ayarlayın.
+1.  Azure Active Directory sol gezinti menüsünde **Kurumsal Uygulamalar**’ı seçin.
+1.  Tüm uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar**'ı seçin.
+    Burada gösterilmesini istediğiniz uygulamayı görmüyorsanız **Tüm Uygulamalar Listesi**’nin üst kısmındaki **Filtre** denetimini kullanarak **Göster** seçeneğini **Tüm Uygulamalar** olarak ayarlayın.
 1.  Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Çoklu oturum açma** seçeneğini belirleyin.
-1. SAML tabanlı SSO 'yu seçin.
+1. SAML tabanlı SSO’yu seçin.
 
 ## <a name="application-not-found-in-directory"></a>Uygulama dizinde bulunamadı
 `Error AADSTS70001: Application with Identifier 'https:\//contoso.com' was not found in the directory.`

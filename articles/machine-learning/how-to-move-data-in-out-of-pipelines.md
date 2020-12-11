@@ -9,13 +9,13 @@ ms.author: laobri
 author: lobrien
 ms.date: 08/20/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq4, devx-track-python, data4ml
-ms.openlocfilehash: bf5bfd8c2047764f9a03889c8fdd5012dc38ab65
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: 8a5663df590e0f617f8049f0201e6e508351c755
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359774"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027586"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
 
@@ -158,7 +158,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>`PipelineData`Ara veriler için kullanın
 
-`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep` _both_ `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
+`Dataset`Nesneler kalıcı verileri temsil ederken, ardışık düzen adımlarından çıktı olan geçici veriler Için [pipelinedata](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) nesneleri kullanılır. Bir nesnenin kullanım ömrü `PipelineData` tek bir işlem hattı adımından daha uzun olduğundan, bunları ardışık düzen tanımı betiğine tanımlarsınız. Bir `PipelineData` nesne oluşturduğunuzda, verilerin bulunacağı bir ad ve veri deposu sağlamanız gerekir. `PipelineData`Nesne (ler) `PythonScriptStep`  `arguments` i ve bağımsız değişkenlerini kullanarak kendi uygulamanıza geçirin `outputs` :
 
 ```python
 

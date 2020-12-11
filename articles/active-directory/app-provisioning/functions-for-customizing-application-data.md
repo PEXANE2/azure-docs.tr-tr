@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
-ms.custom: contperfq2
-ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: fe18513bbfc69fb63f8b1b248b7cf02ad55b467d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344938"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027382"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Azure AD 'de öznitelik eşlemeleri için ifade yazma başvurusu
 
@@ -38,7 +38,7 @@ Sağlamayı bir SaaS uygulamasına yapılandırdığınızda, belirtebileceğini
 
 ## <a name="list-of-functions"></a>Işlevlerin listesi
 
-[Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [ConvertToBase64](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [CStr](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [Guid](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [IIF](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [InStr](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [IsPresent](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [IsString](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [Item](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [Join](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [Left](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) Removeyinelemelerini [desteklemeyen](#not) PARÇAAL, &nbsp; &nbsp; &nbsp; &nbsp; [RemoveDuplicates](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [Replace](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word 'ü](#word) Değiştir
+[Sona](#append) &nbsp; &nbsp; Ekle &nbsp; &nbsp; [](#bitand) &nbsp; &nbsp; Bitand &nbsp; &nbsp; [](#cbool) &nbsp; &nbsp; CBool &nbsp; &nbsp; [](#coalesce) &nbsp; &nbsp; Birleşim &nbsp; &nbsp; [](#converttobase64) &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; [](#converttoutf8hex) &nbsp; &nbsp; ConvertToUTF8Hex &nbsp; &nbsp; [](#count) &nbsp; &nbsp; Sayı &nbsp; &nbsp; [](#cstr) &nbsp; &nbsp; CStr &nbsp; &nbsp; [Tarih Fromnum](#datefromnum) &nbsp; [](#formatdatetime) &nbsp; &nbsp; FormatDateTime &nbsp; &nbsp; [](#guid) &nbsp; &nbsp; GUID &nbsp; &nbsp; [](#iif) &nbsp; &nbsp; IIf &nbsp; &nbsp; [](#instr) &nbsp; &nbsp; InStr &nbsp; &nbsp; [](#isnull) &nbsp; &nbsp; IsNull &nbsp; &nbsp; [](#isnullorempty) &nbsp; &nbsp; IsNullOrEmpty &nbsp; &nbsp; [](#ispresent) &nbsp; &nbsp; İssun &nbsp; &nbsp; [](#isstring) &nbsp; &nbsp; İsstrıng &nbsp; &nbsp; [](#item) &nbsp; &nbsp; Öğe &nbsp; &nbsp; [](#join) &nbsp; &nbsp; Katılırsanız &nbsp; &nbsp; [](#left) &nbsp; &nbsp; Sol &nbsp; &nbsp; [](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#normalizediacritics) Removeyinelemelerini [desteklemeyen](#not) PARÇAAL, &nbsp; &nbsp; &nbsp; &nbsp; [](#removeduplicates) &nbsp; &nbsp; &nbsp; &nbsp; [](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [selectuniquevalue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [singleapprotaatama](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [split](#split) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Switch](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper) &nbsp; &nbsp; &nbsp; &nbsp; [Word 'ü](#word) Değiştir
 
 ---
 ### <a name="append"></a>Ekle
@@ -453,10 +453,10 @@ Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize
 * **Regexmodel** ve **replacementvalue** sağlandığında:
 
   * İşlevi, **Regexmodel** öğesini **kaynak** dizeye uygular ve **replacementvalue** için dizeyi oluşturmak üzere Regex grup adlarını kullanabilirsiniz
-* **Regexgroupname**, **regexGroupName** **replacementvalue** sağlandığında:
+* **Regexgroupname**,  **replacementvalue** sağlandığında:
   
   * İşlev, **kaynak** dizeye **regexmodel** uygular ve **regexgroupname** Ile eşleşen tüm değerleri **replacementvalue** ile değiştirir
-* **Regexgroupname**, **replacementAttributeName** sağlandığında: **regexGroupName**
+* **Regexgroupname**, **replacementAttributeName** sağlandığında: 
   
   * **Kaynakta** değer yoksa, **kaynak** döndürülür
   * **Kaynakta** bir değer varsa, Işlev **regexmodel** öğesini **kaynak** dizeye uygular ve **Regexgroupname** ile eşleşen tüm değerleri **replacementAttributeName** ile ilişkili değerle değiştirir

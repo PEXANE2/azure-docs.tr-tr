@@ -4,19 +4,19 @@ description: Azure portal, PowerShell veya Azure CLı kullanarak Azure SQL verit
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: contperfq1, devx-track-azurecli
+ms.custom: contperf-fy21q1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/03/2020
-ms.openlocfilehash: ab920a05f255e38905f9ff79f08f2bfa0c6540b6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 21ccbc83c80e1b659dd240973a609d624f270835
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791520"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028521"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Hızlı başlangıç: Azure SQL veritabanı tek veritabanı oluşturma
 
@@ -37,24 +37,24 @@ Bu hızlı başlangıç, [sunucusuz işlem katmanında](serverless-tier-overview
 Azure portal tek bir veritabanı oluşturmak için bu hızlı başlangıç Azure SQL sayfasında başlatılır.
 
 1. [SQL dağıtım seçeneği Seç](https://portal.azure.com/#create/Microsoft.AzureSQL) sayfasına gidin.
-1. **SQL veritabanları** ' nın altında **, kaynak türü** ' nü **tek veritabanı** olarak ayarlayın ve **Oluştur** ' u seçin.
+1. **SQL veritabanları**' nın altında **, kaynak türü** ' nü **tek veritabanı** olarak ayarlayın ve **Oluştur**' u seçin.
 
    ![Azure SQL 'e Ekle](./media/single-database-create-quickstart/select-deployment.png)
 
-1. **SQL veritabanı oluştur** formunun **temel bilgiler** sekmesinde, **proje ayrıntıları** ' nın altında, istenen Azure **aboneliğini** seçin.
-1. **Kaynak grubu** Için **Yeni oluştur** ' u seçin, *myresourcegroup* girin ve **Tamam** ' ı seçin.
+1. **SQL veritabanı oluştur** formunun **temel bilgiler** sekmesinde, **proje ayrıntıları**' nın altında, istenen Azure **aboneliğini** seçin.
+1. **Kaynak grubu** Için **Yeni oluştur**' u seçin, *myresourcegroup* girin ve **Tamam**' ı seçin.
 1. **Veritabanı adı** Için *mysampledatabase* yazın.
-1. **Sunucu** Için **Yeni oluştur** ' u seçin ve **Yeni sunucu** formunu aşağıdaki değerlerle doldurun:
-   - **Sunucu adı** : *te yapılandırılmış MySQLServer* yazın ve benzersizlik için bazı karakterler ekleyin. Sunucu adları yalnızca bir abonelik içinde benzersiz değil, Azure 'daki tüm sunucular için genel olarak benzersiz olması gerektiğinden, kullanılacak tam sunucu adını sağlayamıyoruz. Bu nedenle, mysqlserver12345 gibi bir şey girin ve Portal kullanılabilir olup olmadığını bilmenize izin verir.
-   - **Sunucu Yöneticisi oturum açma** : *azureuser* girin.
-   - **Parola** : gereksinimleri karşılayan bir parola girin ve **Parolayı Onayla** alanına yeniden girin.
-   - **Konum** : açılan listeden bir konum seçin.
+1. **Sunucu** Için **Yeni oluştur**' u seçin ve **Yeni sunucu** formunu aşağıdaki değerlerle doldurun:
+   - **Sunucu adı**: *te yapılandırılmış MySQLServer* yazın ve benzersizlik için bazı karakterler ekleyin. Sunucu adları yalnızca bir abonelik içinde benzersiz değil, Azure 'daki tüm sunucular için genel olarak benzersiz olması gerektiğinden, kullanılacak tam sunucu adını sağlayamıyoruz. Bu nedenle, mysqlserver12345 gibi bir şey girin ve Portal kullanılabilir olup olmadığını bilmenize izin verir.
+   - **Sunucu Yöneticisi oturum açma**: *azureuser* girin.
+   - **Parola**: gereksinimleri karşılayan bir parola girin ve **Parolayı Onayla** alanına yeniden girin.
+   - **Konum**: açılan listeden bir konum seçin.
 
-   **Tamam** ’ı seçin.
+   **Tamam**’ı seçin.
 
 1. **SQL elastik havuz** kümesini **Hayır** olarak kullanmak istiyor.
-1. **İşlem + depolama** 'nın altında **Veritabanını yapılandır** 'ı seçin.
-1. Bu hızlı başlangıç sunucusuz bir veritabanını kullanır, bu nedenle **sunucusuz** ' ı seçin ve **Uygula** ' yı seçin. 
+1. **İşlem + depolama**'nın altında **Veritabanını yapılandır**'ı seçin.
+1. Bu hızlı başlangıç sunucusuz bir veritabanını kullanır, bu nedenle **sunucusuz**' ı seçin ve **Uygula**' yı seçin. 
 
       ![Sunucusuz veritabanını Yapılandır](./media/single-database-create-quickstart/configure-database.png)
 
@@ -62,19 +62,19 @@ Azure portal tek bir veritabanı oluşturmak için bu hızlı başlangıç Azure
 
    ![Yeni SQL veritabanı-temel sekmesi](./media/single-database-create-quickstart/new-sql-database-basics.png)
 
-1. **Ağ** sekmesinde, **bağlantı yöntemi** için **ortak uç nokta** ' ı seçin.
+1. **Ağ** sekmesinde, **bağlantı yöntemi** için **ortak uç nokta**' ı seçin.
 1. **Güvenlik duvarı kuralları** için, **geçerli Istemci IP adresini ekle** ' yi **Evet** olarak ayarlayın. **Azure hizmetlerinin ve kaynaklarının bu sunucuya erişmesine Izin ver ' i** **Hayır** olarak bırakın.
 1. Ileri ' yi seçin: sayfanın en altındaki **ek ayarlar** .
 
    ![Ağ sekmesi](./media/single-database-create-quickstart/networking.png)
   
 
-1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan** için **örnek** ' i seçin. Bu, boş bir boş veritabanı aksine, sorgu yapmak ve denemek üzere bazı tablolar ve veriler için bir AdventureWorksLT örnek veritabanı oluşturur.
+1. **Ek ayarlar** sekmesinde, **veri kaynağı** bölümünde **var olan verileri kullan** için **örnek**' i seçin. Bu, boş bir boş veritabanı aksine, sorgu yapmak ve denemek üzere bazı tablolar ve veriler için bir AdventureWorksLT örnek veritabanı oluşturur.
 1. Sayfanın alt kısmındaki **gözden geçir + oluştur** ' u seçin:
 
    ![Ek ayarlar sekmesi](./media/single-database-create-quickstart/additional-settings.png)
 
-1. **Gözden geçir + oluştur** sayfasında, gözden geçirdikten sonra **Oluştur** ' u seçin.
+1. **Gözden geçir + oluştur** sayfasında, gözden geçirdikten sonra **Oluştur**' u seçin.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -82,7 +82,7 @@ Azure portal tek bir veritabanı oluşturmak için bu hızlı başlangıç Azure
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin** 'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com](https://shell.azure.com) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com](https://shell.azure.com) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
 
 ## <a name="set-parameter-values"></a>Parametre değerlerini ayarla
 
@@ -167,7 +167,7 @@ Windows PowerShell kullanarak bir kaynak grubu, sunucu ve tek veritabanı oluşt
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin** 'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com](https://shell.azure.com) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca, ' a giderek ayrı bir tarayıcı sekmesinde Cloud Shell de başlatabilirsiniz [https://shell.azure.com](https://shell.azure.com) . Kod bloklarını kopyalamak için **Kopyala** ' yı seçin, Cloud Shell yapıştırın ve **ENTER** tuşuna basarak çalıştırın.
 
 ## <a name="set-parameter-values"></a>Parametre değerlerini ayarla
 
@@ -256,9 +256,9 @@ Aşağıdaki değerler, sonraki komutlarda veritabanını ve gerekli kaynakları
 
 Veritabanınız oluşturulduktan sonra veritabanına bağlanmak ve verileri sorgulamak için Azure portal **sorgu düzenleyicisini (Önizleme)** kullanabilirsiniz.
 
-1. Portalda **SQL veritabanları** ' nı arayıp seçin ve ardından listeden veritabanınızı seçin.
+1. Portalda **SQL veritabanları**' nı arayıp seçin ve ardından listeden veritabanınızı seçin.
 1. Veritabanınızın sayfasında, sol taraftaki menüden **sorgu Düzenleyicisi 'ni (Önizleme)** seçin.
-1. Sunucu Yöneticisi oturum açma bilgilerinizi girip **Tamam** ' ı seçin.
+1. Sunucu Yöneticisi oturum açma bilgilerinizi girip **Tamam**' ı seçin.
 
    ![Sorgu Düzenleyicisi 'nde oturum açın](./media/single-database-create-quickstart/query-editor-login.png)
 
@@ -271,7 +271,7 @@ Veritabanınız oluşturulduktan sonra veritabanına bağlanmak ve verileri sorg
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-1. **Çalıştır** 'ı seçip **Sonuçlar** bölmesindeki sorgu sonuçlarını inceleyin.
+1. **Çalıştır**'ı seçip **Sonuçlar** bölmesindeki sorgu sonuçlarını inceleyin.
 
    ![Sorgu Düzenleyicisi sonuçları](./media/single-database-create-quickstart/query-editor-results.png)
 
@@ -287,9 +287,9 @@ Bu kaynakları kullanmayı tamamladığınızda, oluşturduğunuz kaynak grubunu
 
 Azure portal kullanarak **Myresourcegroup** ve tüm kaynaklarını silmek için:
 
-1. Portalda **kaynak grupları** ' nı arayıp seçin ve listeden **myresourcegroup** ' ı seçin.
-1. Kaynak grubu sayfasında, **kaynak grubunu sil** ' i seçin.
-1. **Kaynak grubu adını yazın** altında *myresourcegroup* yazın ve ardından **Sil** ' i seçin.
+1. Portalda **kaynak grupları**' nı arayıp seçin ve listeden **myresourcegroup** ' ı seçin.
+1. Kaynak grubu sayfasında, **kaynak grubunu sil**' i seçin.
+1. **Kaynak grubu adını yazın** altında *myresourcegroup* yazın ve ardından **Sil**' i seçin.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

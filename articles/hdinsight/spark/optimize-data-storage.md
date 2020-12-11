@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: ad09cdc2c0054c9d9a58e6bfa00252862f1e8c0f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88757821"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028232"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark için veri depolama iyileştirmesi
 
@@ -23,7 +23,7 @@ Bu makalede, Azure HDInsight 'ta verimli Apache Spark iş yürütmesi için veri
 
 Spark, CSV, JSON, XML, Parquet, Orc ve avro gibi birçok biçimi destekler. Spark, dış veri kaynaklarıyla çok sayıda daha fazla biçim desteklemek için genişletilebilir. daha fazla bilgi için bkz. [Apache Spark paketleri](https://spark-packages.org).
 
-Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snappy sıkıştırması*ile birlikte Parquet 'tir. Parquet, verileri sütunlu biçimde depolar ve Spark 'ta çok iyileştirilir.
+Performans için en iyi biçim, Spark 2. x içinde varsayılan değer olan *Snappy sıkıştırması* ile birlikte Parquet 'tir. Parquet, verileri sütunlu biçimde depolar ve Spark 'ta çok iyileştirilir.
 
 ## <a name="choose-data-abstraction"></a>Veri soyutlama seçin
 
@@ -57,17 +57,17 @@ Yeni bir Spark kümesi oluşturduğunuzda, kümenizin varsayılan depolama alan�
 
 | Mağaza Türü | Dosya Sistemi | Hız | Larsa | Kullanım Örnekleri |
 | --- | --- | --- | --- | --- |
-| Azure Blob Depolama | fazla **b:**// | **Standart** | Evet | Geçici küme |
-| Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Evet | Geçici küme |
-| Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Evet | Geçici küme |
-| Azure Data Lake Storage 1. Nesil| **adl:**// | **Lýdýr** | Evet | Geçici küme |
-| Yerel olarak | Bu **:**// | **En hızlı** | Hayır | Etkileşimli 24/7 kümesi |
+| Azure Blob Depolama | fazla **b:**// | **Standart** | Yes | Geçici küme |
+| Azure Blob depolama (güvenli) | fazla **BS:**// | **Standart** | Yes | Geçici küme |
+| Azure Data Lake Storage 2. Nesil| **ABFS:**// | **Lýdýr** | Yes | Geçici küme |
+| Azure Data Lake Storage 1. Nesil| **adl:**// | **Lýdýr** | Yes | Geçici küme |
+| Yerel olarak | Bu **:**// | **En hızlı** | No | Etkileşimli 24/7 kümesi |
 
 Depolama seçeneklerinin tam açıklaması için bkz. [Azure HDInsight kümeleri ile kullanım için depolama seçeneklerini karşılaştırma](../hdinsight-hadoop-compare-storage-options.md).
 
 ## <a name="use-the-cache"></a>Önbelleği kullanma
 
-Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar `.persist()` `.cache()` `CACHE TABLE` . Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz. Daha genel ve güvenilir önbelleğe alma tekniği, *depolama katmanı önbelleğe alma*tekniğidir.
+Spark,, ve gibi farklı yöntemler aracılığıyla kullanılabilecek kendi yerel önbelleğe alma mekanizmalarını sağlar `.persist()` `.cache()` `CACHE TABLE` . Bu yerel önbelleğe alma, küçük veri kümeleri ve ara sonuçları önbelleğe almanız gereken ETL işlem hatları ile etkilidir. Ancak, bir önbelleğe alınmış tablo bölümleme verilerini tutduğundan Spark Native Caching Şu anda bölümlendirme ile iyi çalışmaz. Daha genel ve güvenilir önbelleğe alma tekniği, *depolama katmanı önbelleğe alma* tekniğidir.
 
 * Yerel Spark önbelleğe alma (önerilmez)
     * Küçük veri kümeleri için iyi.

@@ -11,13 +11,13 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.custom: contperfq2
-ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: c9738d25fdcb1c0ccda70ec116eb369f8b50e980
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530839"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027484"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Öğretici-Azure AD ile bir SCıM uç noktası oluşturun ve Kullanıcı sağlamayı yapılandırın
 
@@ -124,7 +124,7 @@ Daha sonra, uygulamanızın gerektirdiği özniteliklerin Azure AD 'de bir özni
 | posta |emails[type eq "work"].value |
 | mailNickname |displayName |
 | üyeler |üyeler |
-| Uzantının |externalId |
+| objectId |externalId |
 | proxyAddresses |e-postalar [tür EQ "Other"]. Deeri |
 
 SCıM RFC 'de tanımlanmış birkaç uç nokta vardır. /User uç noktası ile çalışmaya başlayabilir ve ardından buradan genişletebilirsiniz. /Schemas uç noktası özel öznitelikler kullanılırken veya şemanızın sıklıkla değiştiği durumlarda faydalıdır. İstemcinin en güncel şemayı otomatik olarak almasına olanak sağlar. /Bulk uç noktası özellikle destekleyici gruplar olduğunda faydalıdır. Aşağıdaki tabloda, SCıM standardında tanımlanan çeşitli uç noktalar açıklanmaktadır.
@@ -1118,7 +1118,7 @@ Bu gereksinimlerle uyumluluk bildirimleri için uygulama sağlayıcınıza veya 
 > [!IMPORTANT]
 > Azure AD SCıM uygulaması, Azure AD Kullanıcı sağlama hizmeti 'nin üzerine kurulmuştur. Bu, kullanıcıların Azure AD ile hedef uygulama arasında sürekli olarak eşitlenmesi için tasarlanan ve çok özel bir standart işlem kümesi uyguladığı şekilde tasarlanmıştır. Azure AD SCıM istemcisinin davranışını anlamak için bu davranışları anlamak önemlidir. Daha fazla bilgi için bkz. sağlama [döngüleri: başlangıç ve artımlı](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) , [sağlama nasıl?](how-provisioning-works.md).
 
-### <a name="getting-started"></a>Kullanmaya başlama
+### <a name="getting-started"></a>Başlarken
 
 Bu makalede açıklanan SCıM profilini destekleyen uygulamalar, Azure AD uygulama galerisinde "Galeri dışı uygulama" özelliği kullanılarak Azure Active Directory bağlanabilir. Bağlantı kurulduktan sonra Azure AD, her 40 dakikada bir eşitleme işlemi çalıştırarak, atanan kullanıcılar ve gruplar için uygulamanın SCıM uç noktasını sorgular ve atama ayrıntılarına göre bunları oluşturur veya değiştirir.
 
