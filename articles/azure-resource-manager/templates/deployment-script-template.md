@@ -7,16 +7,16 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 4ec6796cd0ed91987c1ef52fb5e9494a3142e00e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030459"
+ms.locfileid: "97092763"
 ---
-# <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri kullanma (Önizleme)
+# <a name="use-deployment-scripts-in-arm-templates-preview"></a>ARM şablonlarında dağıtım betikleri kullanma (Önizleme)
 
-Azure Kaynak şablonlarında Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı yeni bir kaynak türüyle `Microsoft.Resources/deploymentScripts` Kullanıcılar, şablon dağıtımlarında betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
+Azure Kaynak şablonlarında (ARM şablonları) Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı yeni bir kaynak türüyle `Microsoft.Resources/deploymentScripts` Kullanıcılar, şablon dağıtımlarında betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
 
 - bir dizine kullanıcı ekleme
 - veri düzlemi işlemlerini gerçekleştirme, örneğin Blobları veya çekirdek veritabanını kopyalama
@@ -39,7 +39,7 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 
 > [!IMPORTANT]
 > DeploymentScripts kaynak API sürümü 2020-10-01, [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)destekler. Dağıtım betiği hizmeti, OBO 'yı kullanarak dağıtım betikleri çalıştırmak için Azure Container Instance, Azure depolama hesabı ve yönetilen kimlik için rol atamalarını içeren temel kaynakları oluşturmak üzere dağıtım sorumlusunun belirtecini kullanır. Daha eski API sürümünde, bu kaynakları oluşturmak için yönetilen kimlik kullanılır.
-> Azure oturum açma için yeniden deneme mantığı artık sarmalayıcı betikte yerleşik olarak bulunur. Dağıtım betikleri çalıştırdığınız şablonda izin verirseniz.  Dağıtım betiği hizmeti, yönetilen kimlik rolü ataması çoğaltılana kadar 10 dakikalık aralıklarla oturum açmayı yeniden dener.
+> Azure oturum açma için yeniden deneme mantığı artık sarmalayıcı betikte yerleşik olarak bulunur. Dağıtım betikleri çalıştırdığınız şablonda izin verirseniz.  Dağıtım betiği hizmeti, yönetilen kimlik rolü ataması çoğaltılana kadar 10 dakikalık bir aralıkla oturum açmayı yeniden dener.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -135,7 +135,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 
 Özellik değeri ayrıntıları:
 
-- **Kimlik**: DAĞıTıM betiği apı sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure özel eylemi gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
+- **Kimlik**: DAĞıTıM betiği apı sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
 - **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
 - **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. NewGuid () veya utcNow () işlevini kullanırsanız, her iki işlev de bir parametre için yalnızca varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
 - **Containersettings**: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  **Containergroupname** kapsayıcı grubu adını belirtmektir.  Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
@@ -143,7 +143,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 - **Azpowershellversion** / **Azcliversion**: kullanılacak modül sürümünü belirtin. Desteklenen PowerShell ve CLı sürümlerinin listesi için bkz. [Önkoşullar](#prerequisites).
 - **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 
-    Dağıtım betikleri, [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) sistem çağrısını çağırarak bağımsız değişkenleri dizeler dizisine böler. Bağımsız değişkenler bir [komut özelliği](/rest/api/container-instances/containergroups/createorupdate#containerexec) olarak Azure Container Instance 'a geçirildiğinden ve komut özelliği bir dize dizisi olduğundan bu gereklidir.
+    Dağıtım betikleri, [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) sistem çağrısını çağırarak bağımsız değişkenleri dizeler dizisine böler. Bağımsız değişkenler bir [komut özelliği](/rest/api/container-instances/containergroups/createorupdate#containerexec) olarak Azure Container Instance 'a geçirildiğinden ve komut özelliği bir dize dizisi olduğundan, bu adım gereklidir.
 
     Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonda bağımsız değişken **\\ "John Dole \\ "** olur.  Kaçan dize **-adı \\ \\ \\ "John Dole \\ \\ \\ "** dir.
 
@@ -229,7 +229,7 @@ Karmaşık günlüklerlerini bir veya daha fazla destekleyici betik dosyasına a
 
 Destekleyici betik dosyaları, hem satır içi betiklerden hem de birincil betik dosyalarından çağrılabilir. Destekleyici betik dosyalarının dosya uzantısında hiçbir kısıtlaması yoktur.
 
-Destekleyici dosyalar, çalışma zamanında azscripts/azscriptınput 'a kopyalanır. Satır içi betiklerden ve birincil betik dosyalarından destekleyici dosyalara başvurmak için göreli yol kullanın.
+Destekleyici dosyalar çalışma zamanında öğesine kopyalanır `azscripts/azscriptinput` . Satır içi betiklerden ve birincil betik dosyalarından destekleyici dosyalara başvurmak için göreli yol kullanın.
 
 ## <a name="work-with-outputs-from-powershell-script"></a>PowerShell betiğinin çıktılarla çalışma
 
@@ -301,7 +301,7 @@ Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada
 
 ### <a name="handle-non-terminating-errors"></a>Sonlandırma olmayan hataları işle
 
-Dağıtım betiğinizdeki **$ErrorActionPreference** değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiğinizdeki değişken ayarlanmamışsa, komut dosyası hizmeti **devam et** varsayılan değerini kullanır.
+Dağıtım betiğinizdeki **$ErrorActionPreference** değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiğimizde değişken ayarlanmamışsa, komut dosyası hizmeti **devam et** varsayılan değerini kullanır.
 
 Betik hizmeti, $ErrorActionPreference ayarına rağmen bir hatayla karşılaştığında, kaynak sağlama durumunu **başarısız** olarak ayarlar.
 
@@ -313,11 +313,11 @@ Ortam değişkenleri için izin verilen en büyük boyut 64 KB 'dir.
 
 ## <a name="monitor-and-troubleshoot-deployment-scripts"></a>Dağıtım betiklerini izleme ve sorunlarını giderme
 
-Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overview.md) (mevcut bir depolama hesabı belirtmediğiniz müddetçe) ve betik yürütme için bir [kapsayıcı örneği](../../container-instances/container-instances-overview.md) oluşturur. Bu kaynaklar betik hizmeti tarafından otomatik olarak oluşturulduysa, her iki kaynak de kaynak adlarında **azscripts** sonekine sahiptir.
+Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overview.md) (mevcut bir depolama hesabı belirtmediğiniz müddetçe) ve betik yürütme için bir [kapsayıcı örneği](../../container-instances/container-instances-overview.md) oluşturur. Bu kaynaklar betik hizmeti tarafından otomatik olarak oluşturulduysa, her iki kaynak de `azscripts` kaynak adlarında sonekine sahiptir.
 
 ![Kaynak Yöneticisi şablonu dağıtım betiği kaynak adları](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
-Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabının dosya paylaşımlarında depolanır. **Azscripts** adında bir klasör vardır. Klasöründe, giriş ve çıkış dosyaları için iki klasör vardır: **azscriptınput** ve **azscriptoutput**.
+Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabının dosya paylaşımlarında depolanır. Adlı bir klasör vardır `azscripts` . Klasöründe, giriş ve çıkış dosyaları için iki klasör daha vardır: `azscriptinput` ve `azscriptoutput` .
 
 Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini **üzerindeexecutionresult.js** görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
 
@@ -536,13 +536,13 @@ Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetl
 > [!NOTE]
 > Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
 
-Sorun giderme için kapsayıcı örneği ve depolama hesabı 'nı sürdürmek için, betiğe bir uyku komutu ekleyebilirsiniz.  Örneğin, [Başlat-uyku](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep).
+Sorun giderme için kapsayıcı örneği ve depolama hesabı 'nı sürdürmek için, betiğe bir uyku komutu ekleyebilirsiniz.  Örneğin, [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)kullanın.
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 
-Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kaynak özelliklerinden hiçbiri (satır içi betik dahil) değiştirilmişse, şablonu yeniden dağıtırken betik yürütülmez. Dağıtım betiği hizmeti şablondaki kaynak adlarını aynı kaynak grubundaki mevcut kaynaklarla karşılaştırır. Aynı dağıtım betiğini birden çok kez yürütmek istiyorsanız iki seçenek vardır:
+Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kaynak özelliklerinden hiçbiri (satır içi betik dahil) değişmezse, şablonu yeniden dağıtırken komut dosyası yürütülmez. Dağıtım betiği hizmeti şablondaki kaynak adlarını aynı kaynak grubundaki mevcut kaynaklarla karşılaştırır. Aynı dağıtım betiğini birden çok kez yürütmek istiyorsanız iki seçenek vardır:
 
-- DeploymentScripts kaynağınızın adını değiştirin. Örneğin, kaynak adı veya kaynak adının bir parçası olarak [UtcNow](./template-functions-date.md#utcnow) şablon işlevini kullanın. Kaynak adını değiştirmek yeni bir deploymentScripts kaynağı oluşturur. Betik yürütme geçmişini tutmak iyi bir seçimdir.
+- DeploymentScripts kaynağınızın adını değiştirin. Örneğin, kaynak adı veya kaynak adının bir parçası olarak [UtcNow](./template-functions-date.md#utcnow) şablon işlevini kullanın. Kaynak adını değiştirmek yeni bir deploymentScripts kaynağı oluşturur. Betik yürütme geçmişini tutmak iyi olur.
 
     > [!NOTE]
     > UtcNow işlevi yalnızca bir parametre için varsayılan değerde kullanılabilir.
@@ -563,20 +563,20 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 | Hata kodu | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
-| DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramazsınız. |
-| Deploymentscriptoperationbaşarısız oldu | Dağıtım betiği işlemi dahili olarak başarısız oldu. Lütfen Microsoft desteğine başvurun. |
+| DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |
+| Deploymentscriptoperationbaşarısız oldu | Dağıtım betiği işlemi dahili olarak başarısız oldu. Microsoft desteği 'ne başvurun. |
 | Deploymentscriptstorageaccountaccesskeynotbelirtti | Mevcut depolama hesabı için erişim anahtarı belirtilmedi.|
 | Deploymentscriptcontainergroupcontainsınvalidcontainers | Dağıtım betiği hizmeti tarafından oluşturulan bir kapsayıcı grubu dışarıdan değiştirildi ve geçersiz kapsayıcılar eklendi. |
 | Deploymentscriptcontainergroupınnonterminalstate | İki veya daha fazla dağıtım betiği kaynağı aynı kaynak grubunda aynı Azure Kapsayıcı örneği adını kullanır ve bunlardan biri henüz yürütmesini tamamlamadı. |
 | Deploymentscriptstorageaccountınvalidkind | BlobBlobStorage veya BlobStorage türünün mevcut depolama hesabı dosya paylaşımlarını desteklemez ve kullanılamaz. |
-| Deploymentscriptstorageaccountınvalidkindandsku | Mevcut depolama hesabı dosya paylaşımlarını desteklemiyor. Desteklenen depolama hesabı türlerinin bir listesi için bkz. [var olan depolama hesabını kullanma](#use-existing-storage-account). |
+| Deploymentscriptstorageaccountınvalidkindandsku | Mevcut depolama hesabı dosya paylaşımlarını desteklemez. Desteklenen depolama hesabı türlerinin bir listesi için bkz. [var olan depolama hesabını kullanma](#use-existing-storage-account). |
 | DeploymentScriptStorageAccountNotFound | Depolama hesabı yok veya bir dış işlem ya da araç tarafından silindi. |
 | DeploymentScriptStorageAccountWithServiceEndpointEnabled | Belirtilen depolama hesabı bir hizmet uç noktası içeriyor. Hizmet uç noktası olan bir depolama hesabı desteklenmiyor. |
 | Deploymentscriptstorageaccounınvalidaccesskey | Mevcut depolama hesabı için geçersiz erişim anahtarı belirtildi. |
 | Deploymentscriptstorageaccounınvalidaccesskeyformat | Geçersiz depolama hesabı anahtar biçimi. Bkz. [depolama hesabı erişim anahtarlarını yönetme](../../storage/common/storage-account-keys-manage.md). |
 | DeploymentScriptExceededMaxAllowedTime | Dağıtım betiği yürütme süresi, dağıtım betiği kaynak tanımında belirtilen zaman aşımı değerini aştı. |
 | DeploymentScriptInvalidOutputs | Dağıtım betiği çıkışı geçerli bir JSON nesnesi değil. |
-| Deploymentscriptcontainerınstancesserviceloginfailure | Kullanıcı tarafından atanan yönetilen kimlik, 1 dakikalık aralığa göre 10 denemeden sonra oturum açamayacak. |
+| Deploymentscriptcontainerınstancesserviceloginfailure | Kullanıcı tarafından atanan yönetilen kimlik, 1 dakikalık aralığa göre 10 denemeden sonra oturum açamadı. |
 | DeploymentScriptContainerGroupNotFound | Dağıtım betiği hizmeti tarafından oluşturulan bir kapsayıcı grubu, dış bir araç veya işlem tarafından silindi. |
 | DeploymentScriptDownloadFailure | Destekleyici bir betik indirilemedi. Bkz. [destekleyici betiği kullanma](#use-supporting-scripts).|
 | DeploymentScriptError | Kullanıcı betiği bir hata oluşturdu. |

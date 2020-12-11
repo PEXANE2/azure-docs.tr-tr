@@ -6,13 +6,13 @@ ms.date: 09/24/2020
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
-- contperfq1
-ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+- contperf-fy21q1
+ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "91277708"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033740"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch uygulama paketleriyle işlem düğümlerine uygulama dağıtma
 
@@ -81,33 +81,33 @@ Batch hesabınızdaki uygulamaları görüntülemek için sol gezinti menüsünd
 
 Bu menü seçeneği belirlendiğinde **uygulamalar** penceresi açılır. Bu pencere, hesabınızdaki her uygulamanın KIMLIĞINI ve aşağıdaki özellikleri görüntüler:
 
-- **Paketler** : Bu uygulamayla ilişkili sürümlerin sayısı.
-- **Varsayılan sürüm** : varsa, uygulamayı dağıttığınızda sürüm belirtilmemişse yüklenecek uygulama sürümü.
-- **Güncelleştirmelere Izin ver** : paket güncelleştirmelerine ve silmelerini izin verilip verilmeyeceğini belirtir.
+- **Paketler**: Bu uygulamayla ilişkili sürümlerin sayısı.
+- **Varsayılan sürüm**: varsa, uygulamayı dağıttığınızda sürüm belirtilmemişse yüklenecek uygulama sürümü.
+- **Güncelleştirmelere Izin ver**: paket güncelleştirmelerine ve silmelerini izin verilip verilmeyeceğini belirtir.
 
-Uygulama paketinin [dosya yapısını](files-and-directories.md) bir işlem düğümünde görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar** ' ı seçin. ardından işlem düğümünü içeren havuzu seçin. Uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
+Uygulama paketinin [dosya yapısını](files-and-directories.md) bir işlem düğümünde görmek Için Azure Portal Batch hesabınıza gidin. **Havuzlar**' ı seçin. ardından işlem düğümünü içeren havuzu seçin. Uygulama paketinin yüklü olduğu işlem düğümünü seçin ve **uygulamalar** klasörünü açın.
 
 ### <a name="view-application-details"></a>Uygulama ayrıntılarını görüntüle
 
 Bir uygulamanın ayrıntılarını görmek için **uygulamalar** penceresinde seçin. Uygulamanız için aşağıdaki ayarları yapılandırabilirsiniz.
 
-- **Güncelleştirmelere Izin ver** : uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet** ’tir. **Hayır** olarak ayarlanırsa, mevcut uygulama paketleri güncelleştirilemiyor veya silinemez, ancak yeni uygulama paketi sürümleri yine de eklenebilir.
-- **Varsayılan sürüm** : sürüm belirtilmemişse, uygulama dağıtıldığında kullanılacak varsayılan uygulama paketi.
-- **Görünen ad** : Batch çözümünüzün uygulama hakkında bilgi görüntülediğinde kullanabileceği kolay bir ad. Örneğin, bu ad Batch aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde kullanılabilir.
+- **Güncelleştirmelere Izin ver**: uygulama paketlerinin [güncelleştirilip güncelleştirilmediğini veya silinemeyeceğini](#update-or-delete-an-application-package)gösterir. Varsayılan değer **Evet**’tir. **Hayır** olarak ayarlanırsa, mevcut uygulama paketleri güncelleştirilemiyor veya silinemez, ancak yeni uygulama paketi sürümleri yine de eklenebilir.
+- **Varsayılan sürüm**: sürüm belirtilmemişse, uygulama dağıtıldığında kullanılacak varsayılan uygulama paketi.
+- **Görünen ad**: Batch çözümünüzün uygulama hakkında bilgi görüntülediğinde kullanabileceği kolay bir ad. Örneğin, bu ad Batch aracılığıyla müşterilerinize sağladığınız bir hizmetin Kullanıcı arabiriminde kullanılabilir.
 
 ### <a name="add-a-new-application"></a>Yeni uygulama ekle
 
 Yeni bir uygulama oluşturmak için, bir uygulama paketi ekleyin ve benzersiz bir uygulama KIMLIĞI belirtin.
 
-Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle** ' yi seçin.
+Batch hesabınızda, **uygulamalar** ' ı seçin ve ardından **Ekle**' yi seçin.
 
 :::image type="content" source="media/batch-application-packages/app_pkg_05.png" alt-text="Azure portal yeni uygulama oluşturma işleminin ekran görüntüsü.":::
 
 Aşağıdaki bilgileri girin:
 
-- **Uygulama kimliği** : yenı uygulamanızın kimliği.
-- **Sürüm** ": karşıya yüklediğiniz uygulama paketinin sürümü.
-- Uygulama **paketi** : uygulamayı yürütmek için gerekli olan uygulama ikililerini ve destekleyici dosyaları içeren. zip dosyası.
+- **Uygulama kimliği**: yenı uygulamanızın kimliği.
+- **Sürüm**": karşıya yüklediğiniz uygulama paketinin sürümü.
+- Uygulama **paketi**: uygulamayı yürütmek için gerekli olan uygulama ikililerini ve destekleyici dosyaları içeren. zip dosyası.
 
 Girdiğiniz **uygulama kimliği** ve **sürümü** şu gereksinimlere uymalıdır:
 
@@ -116,13 +116,13 @@ Girdiğiniz **uygulama kimliği** ve **sürümü** şu gereksinimlere uymalıdı
 - Batch hesabı dahilinde benzersiz olmalıdır.
 - Kimlikler büyük/küçük harf koruma ve büyük/küçük harfe duyarlı değildir.
 
-Hazırsanız **Gönder** ' i seçin. . Zip dosyası Azure depolama hesabınıza yüklendikten sonra, Portal bir bildirim görüntüler. Karşıya yüklediğiniz dosyanın boyutuna ve ağ bağlantınızın hızına bağlı olarak bu işlem biraz zaman alabilir.
+Hazırsanız **Gönder**' i seçin. . Zip dosyası Azure depolama hesabınıza yüklendikten sonra, Portal bir bildirim görüntüler. Karşıya yüklediğiniz dosyanın boyutuna ve ağ bağlantınızın hızına bağlı olarak bu işlem biraz zaman alabilir.
 
 ### <a name="add-a-new-application-package"></a>Yeni bir uygulama paketi Ekle
 
-Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin, sonra **Ekle** ' yi seçin.
+Mevcut bir uygulama için bir uygulama paketi sürümü eklemek istiyorsanız, Batch hesabınızın **uygulamalar** bölümünde uygulamayı seçin, sonra **Ekle**' yi seçin.
 
-Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belirtin,. zip dosyanızı **uygulama paketi** alanına yükleyin ve ardından **Gönder** ' i seçin.
+Yeni uygulama için yaptığınız gibi, yeni paketinizin **sürümünü** belirtin,. zip dosyanızı **uygulama paketi** alanına yükleyin ve ardından **Gönder**' i seçin.
 
 ### <a name="update-or-delete-an-application-package"></a>Uygulama paketini güncelleştirme veya silme
 
@@ -130,9 +130,9 @@ Var olan bir uygulama paketini güncelleştirmek veya silmek için Batch hesabı
 
 :::image type="content" source="media/batch-application-packages/app_pkg_07.png" alt-text="Azure portal uygulama paketleri için güncelleştirme ve silme seçeneklerini gösteren ekran görüntüsü.":::
 
-**Güncelleştir** ' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
+**Güncelleştir**' i seçerseniz, yeni bir. zip dosyasını karşıya yükleyebilirsiniz. Bu, bu sürüm için karşıya yüklediğiniz önceki. zip dosyasının yerini alır.
 
-**Sil** ' i seçerseniz, bu sürümün silinmesini onaylamanız istenir. **Tamam** ' ı seçtiğinizde Batch, Azure depolama hesabınızdan. zip dosyasını silecektir. Bir uygulamanın varsayılan sürümünü silerseniz, bu uygulama için **varsayılan sürüm** ayarı kaldırılır.
+**Sil**' i seçerseniz, bu sürümün silinmesini onaylamanız istenir. **Tamam**' ı seçtiğinizde Batch, Azure depolama hesabınızdan. zip dosyasını silecektir. Bir uygulamanın varsayılan sürümünü silerseniz, bu uygulama için **varsayılan sürüm** ayarı kaldırılır.
 
 ## <a name="install-applications-on-compute-nodes"></a>İşlem düğümlerine uygulama yükler
 
@@ -202,7 +202,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örnek:
+Linux düğümlerinde biçim biraz farklıdır. Nokta (.), tire (-) ve sayı işaretleri (#), ortam değişkeninde alt çizgi olarak düzleştirilir. Ayrıca, uygulama KIMLIĞI durumunun korunmadığını unutmayın. Örneğin:
 
 ```
 Linux:

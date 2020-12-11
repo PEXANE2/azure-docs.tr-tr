@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 4b19ae1b584a2d300e4144e79ef76245c71035cf
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 6a6baa14d7521f4a85350af7b08b5fcbe82ddf6b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127086"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033885"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
@@ -27,7 +27,7 @@ IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetm
 
 `main`Yöntemi:
 
-* Bir `client` nesne oluşturur ve `dtmi:com:example:Thermostat;1` bağlantıyı açmadan önce model kimliğini ayarlar.
+* Bir `client` nesne oluşturur ve `dtmi:com:example:Thermostat;1` bağlantıyı açmadan önce model kimliğini ayarlar. IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Bir komut işleyicisi oluşturur.
 * Her 10 saniyede bir sıcaklık telemetrisi göndermek için bir döngü başlatır.
 * `maxTempSinceLastReboot`Özelliği IoT Central 'e gönderir. IoT Central, `serialNumber` cihaz modelinin parçası olmadığından özelliği yoksayar.
@@ -83,7 +83,7 @@ async function main() {
 }
 ```
 
-`provisionDevice`İşlevi, cihazın IoT Central kaydetmek ve bağlanmak IÇIN DPS nasıl kullandığını gösterir. Yük, model KIMLIĞINI içerir:
+`provisionDevice`İşlevi, cihazın IoT Central kaydetmek ve bağlanmak IÇIN DPS nasıl kullandığını gösterir. Yük, [cihazı cihaz şablonuyla ilişkilendirmek](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)için IoT Central tarafından kullanılan model kimliğini içerir:
 
 ```javascript
 async function provisionDevice(payload) {

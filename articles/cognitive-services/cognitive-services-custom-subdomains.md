@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 12/04/2020
 ms.author: erhopf
-ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 4746aad2d7cd62cb309a1823f8c50487e6f7e87c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368823"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032975"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Bilişsel hizmetler için özel alt etki alanı adları
 
@@ -27,7 +27,7 @@ Azure bilişsel hizmetler, [Azure Portal](https://portal.azure.com), [Azure Clou
 Mevcut bir kaynağı özel alt etki alanı adlarından yararlanmak üzere geçirmek istiyorsanız, Azure AD gibi özellikleri etkinleştirebilmeniz için aşağıdaki yönergeleri izleyin:
 
 1. Azure portal oturum açın ve özel bir alt etki alanı adı eklemek istediğiniz bilişsel hizmetler kaynağını bulun.
-2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur** ' u bulun ve seçin.
+2. **Genel bakış** dikey penceresinde, **özel etki alanı adı oluştur**' u bulun ve seçin.
 3. Bu, kaynağınız için benzersiz bir özel alt etki alanı oluşturmaya yönelik yönergeler içeren bir panel açar.
    > [!WARNING]
    > Özel bir alt etki alanı adı oluşturduktan **sonra bu ad değiştirilemez.**
@@ -39,7 +39,7 @@ Hayır. Bölgesel uç nokta, yeni ve mevcut bilişsel hizmetler için çalışma
 ## <a name="what-if-an-sdk-asks-me-for-the-region-for-a-resource"></a>Bir SDK bana bir kaynak için bölge istediğinde ne olacak?
 
 > [!WARNING]
-> Konuşma **Hizmetleri şu** anda özel alt etki alanlarını desteklemez. Lütfen konuşma hizmetlerini ve ilişkili SDK 'Ları kullanırken bölgesel uç noktaları kullanın.
+> Konuşma Hizmetleri **yalnızca** özel [uç noktalarla](Speech-Service/speech-services-private-link.md) özel alt etki alanları kullanır. Diğer tüm durumlarda, konuşma Hizmetleri ve ilişkili SDK 'lar ile **Bölgesel uç noktaları** kullanır.
 
 Bölgesel uç noktalar ve özel alt etki alanı adları desteklenir ve birbirlerinin yerine kullanılabilir. Ancak tam uç nokta gereklidir.
 
@@ -68,7 +68,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 > [!NOTE]
 > Translator hizmeti ve Bing Arama API'leri genel uç noktaları kullanır.
 
-| Uç nokta türü | Region | Uç Nokta |
+| Uç nokta türü | Bölge | Uç Nokta |
 |---------------|--------|----------|
 | Genel | Genel (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Doğu Avustralya | `https://australiaeast.api.cognitive.microsoft.com` |
@@ -83,7 +83,7 @@ Evet. Bu, Azure bilişsel hizmetler kaynaklarıyla kullanabileceğiniz bölgesel
 | | Doğu Japonya | `https://japaneast.api.cognitive.microsoft.com` |
 | | Güney Kore - Orta | `https://koreacentral.api.cognitive.microsoft.com` |
 | | Orta Kuzey ABD | `https://northcentralus.api.cognitive.microsoft.com` |
-| | North Europe | `https://northeurope.api.cognitive.microsoft.com` |
+| | Kuzey Avrupa | `https://northeurope.api.cognitive.microsoft.com` |
 | | Güney Afrika - Kuzey | `https://southafricanorth.api.cognitive.microsoft.com` |
 | | Orta Güney ABD | `https://southcentralus.api.cognitive.microsoft.com` |
 | | Güneydoğu Asya | `https://southeastasia.api.cognitive.microsoft.com` |

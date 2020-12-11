@@ -4,12 +4,12 @@ description: Portaldan Azure 'da yeni bir işlev uygulaması oluşturun.
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.custom: mvc
-ms.openlocfilehash: 001b4e4f0ea7fbacd232b2a87abfe353f34919bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d19a269903de309bf219c2546fa70c3abe7be10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80985023"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093599"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Azure portalından işlev uygulaması oluşturma
 
@@ -31,10 +31,12 @@ JavaScript işlevlerini adanmış (App Service) bir planda çalıştırmayı pla
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Dahili olarak İşlevler tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Depolama’yı kullanır. Yalnızca blob depolama hesapları, Azure Premium Depolama ve ZRS çoğaltmalı genel amaçlı depolama hesapları gibi bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bir işlev uygulaması oluşturulurken bu hesaplar Depolama Hesabı dikey penceresinden filtrelenir.
+Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Dahili olarak İşlevler tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Depolama’yı kullanır. Yalnızca blob depolama hesapları, Azure Premium Depolama ve ZRS çoğaltmalı genel amaçlı depolama hesapları gibi bazı depolama hesapları kuyrukları ve tabloları desteklemez. 
+
+Azure portal bir işlev uygulaması oluşturduğunuzda, desteklenmeyen bir türün hesapları filtrelenir. Portal Ayrıca, bu hesap yalnızca oluşturmakta olduğunuz işlev uygulamasıyla aynı bölgede olduğunda mevcut bir depolama hesabını kullanmanıza izin verir. Aynı bölgede işlev uygulamanız tarafından kullanılan depolama hesabının en iyi performans uygulamasını ihlal etmek istiyorsanız, işlev uygulamanızı portalın dışında oluşturmanız gerekir. 
 
 >[!NOTE]
->Tüketim barındırma planı kullanılırken işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure Dosya depolama alanında saklanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz.
+>Tüketim barındırma planı kullanılırken işlev kodunuz ve bağlama yapılandırma dosyalarınız ana depolama hesabındaki Azure Dosya depolama alanında saklanır. Ana depolama hesabını sildiğinizde bu içerik silinir ve kurtarılamaz. 
 
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#core-storage-services). 
 

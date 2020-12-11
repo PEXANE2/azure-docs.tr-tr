@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 1a050daa3a4b3ae9be5ef40961c40adaa90dc72b
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96121806"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033192"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central'a bağlanma
 
@@ -178,11 +178,21 @@ Bu yaklaşım, IoT Central veya test cihazlarıyla denemeler yaparken faydalıd�
 
 ## <a name="associate-a-device-with-a-device-template"></a>Cihazı cihaz şablonuyla ilişkilendirme
 
-IoT Central cihaz bağlandığı zaman bir cihazı cihaz şablonuyla otomatik olarak ilişkilendirir. Bir cihaz, bağlandığı zaman bir model KIMLIĞI gönderir. IoT Central, bu belirli cihaz modeline ait cihaz şablonunu tanımlamak için model KIMLIĞINI kullanır. Bulma işlemi aşağıdaki gibi kullanılabilir:
+IoT Central cihaz bağlandığı zaman bir cihazı cihaz şablonuyla otomatik olarak ilişkilendirir. Bir cihaz, bağlandığı zaman bir [model kimliği](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) gönderir. IoT Central, bu belirli cihaz modeline ait cihaz şablonunu tanımlamak için model KIMLIĞINI kullanır. Bulma işlemi aşağıdaki gibi kullanılabilir:
 
 1. Cihaz şablonu IoT Central uygulamada zaten yayımlanıyorsa cihaz, cihaz şablonuyla ilişkilendirilir.
-1. Cihaz şablonu IoT Central uygulamada zaten yayınlanmamışsa, IoT Central ortak model deposundaki cihaz modelini arar. IoT Central modeli bulursa, temel bir cihaz şablonu oluşturmak için onu kullanır.
+1. Cihaz şablonu IoT Central uygulamada zaten yayınlanmamışsa, IoT Central [ortak model deposundaki](https://github.com/Azure/iot-plugandplay-models)cihaz modelini arar. IoT Central modeli bulursa, temel bir cihaz şablonu oluşturmak için onu kullanır.
 1. IoT Central modeli ortak model deposunda bulamazsa, cihaz **ilişkilendirilmemiş** olarak işaretlenir. Operatör, cihaz için bir cihaz şablonu oluşturabilir ve ardından ilişkilendirilmemiş cihazı yeni cihaz şablonuna geçirebilir.
+
+Aşağıdaki ekran görüntüsünde, IoT Central bir cihaz şablonunun model KIMLIĞINI nasıl görüntüleyebileceğiniz gösterilmektedir. Bir cihaz şablonunda bir bileşen seçin ve ardından **kimliği görüntüle**' yi seçin:
+
+:::image type="content" source="media/concepts-get-connected/model-id.png" alt-text="Termostat cihaz şablonundaki model KIMLIĞINI gösteren ekran görüntüsü.":::
+
+Ortak model deposunda [termostat modelini](https://github.com/Azure/iot-plugandplay-models/blob/main/dtmi/com/example/thermostat-1.json) görüntüleyebilirsiniz. Model KIMLIĞI tanımı şöyle görünür:
+
+```json
+"@id": "dtmi:com:example:Thermostat;1"
+```
 
 ## <a name="device-status-values"></a>Cihaz durumu değerleri
 

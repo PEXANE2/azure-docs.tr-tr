@@ -8,19 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/04/2020
+ms.date: 12/10/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 5d0b2df551c73e8c9b24d80280bbc993d9b361b7
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: a15ac2b5632cb881b094ca2c333dfca55a689062
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928481"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092627"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme
 
 Azure Active Directory (Azure AD), kullanıcıların Azure AD hesabıyla oturum açarak şirket içi uygulamalara erişmesini sağlayan bir uygulama proxy hizmeti içerir. Bu öğretici, ortamınızı uygulama proxy 'Si ile kullanılmak üzere hazırlar. Ortamınız hazırlandıktan sonra, Azure AD kiracınıza şirket içi bir uygulama eklemek için Azure portal kullanırsınız.
+
+Bağlayıcılar, uygulama proxy 'sinin önemli bir parçasıdır. Bağlayıcılar hakkında daha fazla bilgi edinmek için bkz. [Azure AD uygulama ara sunucusu bağlayıcıları anlama](application-proxy-connectors.md).
 
 Bu öğreticide:
 
@@ -191,7 +194,7 @@ Ortamınızı hazırladığınıza ve bir bağlayıcı yükleolduğunuza göre, 
 1. [Azure Portal](https://portal.azure.com/)yönetici olarak oturum açın.
 2. Sol gezinti panelinde **Azure Active Directory**' yi seçin.
 3. **Kurumsal uygulamalar**' ı seçin ve ardından **Yeni uygulama**' yı seçin.
-4. **Kendi uygulamanızı oluşturma** bölümünde, Şirket **içi bir uygulamaya güvenli uzaktan erişim Için uygulama ara sunucusunu yapılandır**' ı seçin.
+4. Şirket içi **uygulamalar** bölümünde sayfanın alt yarısında görüntülenen **bir şirket içi uygulama ekle** düğmesini seçin. Alternatif olarak, sayfanın üst kısmında **kendi uygulamanızı oluştur** ' u seçip Şirket **içi uygulamaya güvenli uzaktan erişim Için uygulama ara sunucusunu yapılandır**' ı seçebilirsiniz.
 5. **Kendi şirket içi uygulamanızı ekleyin** bölümünde, uygulamanız hakkında aşağıdaki bilgileri sağlayın:
 
     | Alan | Açıklama |

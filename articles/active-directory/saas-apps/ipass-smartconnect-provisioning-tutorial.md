@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fa9723b466045ebe7b932f837e0fa7c45c898b6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 405a7bc3b653ca7bca026d3318763a4922244e88
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353893"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093715"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için IPASS SmartConnect 'i yapılandırma
 
@@ -82,7 +82,7 @@ Azure AD ile otomatik Kullanıcı sağlaması için IPASS SmartConnect 'i yapıl
 Bu bölümde, Azure AD 'de Kullanıcı ve/veya grup atamalarına göre IPASS SmartConnect içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında size kılavuzluk eder.
 
 > [!TIP]
->  Ayrıca, Bıtabiz için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi tercih edebilirsiniz. Bu, [IPASS SmartConnect çoklu oturum açma öğreticisinde](ipasssmartconnect-tutorial.md)sunulan talimatları takip edebilir. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+>  IPASS SmartConnect [Çoklu oturum açma öğreticisinde](ipasssmartconnect-tutorial.md)belirtilen yönergeleri Izleyerek IPASS SMARTCONNECT için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
 
 ### <a name="to-configure-automatic-user-provisioning-for-ipass-smartconnect-in-azure-ad"></a>Azure AD 'de IPASS SmartConnect için otomatik Kullanıcı sağlamayı yapılandırmak için:
 

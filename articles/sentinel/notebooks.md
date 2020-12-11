@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 43d7a697b3cb013a73a0b14db8ec1758244ae3b9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344202"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092202"
 ---
 # <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Güvenlik tehditleri aramak için Jupyter Notebook kullanın
 
@@ -23,7 +23,7 @@ Azure Sentinel 'in temeli veri deposudur; yüksek performanslı sorgulamayı, di
 
 ![Örnek Not defteri](./media/notebooks/sentinel-notebooks-map.png)
 
-Jupi deneyimini Azure portal ile tümleştirdik, böylece verilerinizi çözümlemek için not defterlerini oluşturup çalıştırabilirsiniz. *Ktomagic* kitaplığı, Azure Sentinel 'ten sorgular almanıza ve bunları doğrudan bir not defteri içinde çalıştırmanıza olanak tanıyan tutkalla 'yi sağlar. Sorgular [kusto sorgu dilini](https://kusto.azurewebsites.net/docs/query/index.html)kullanır. Microsoft 'un Güvenlik analistleri tarafından geliştirilen birkaç not defteri, Azure Sentinel ile paketlenmiştir. Bu not defterlerinden bazıları belirli bir senaryo için oluşturulmuştur ve olduğu gibi kullanılabilir. Diğerleri, kendi Not defterlerinizde kullanmak üzere kopyalayabileceğiniz veya bunları uyarlayabileceğiniz teknikleri ve özellikleri göstermek için örnek olarak tasarlanmıştır. Diğer Not defterleri de Azure Sentinel Community GitHub 'dan içeri aktarılabilir.
+Jupi deneyimini Azure portal ile tümleştirdik, böylece verilerinizi çözümlemek için not defterlerini oluşturup çalıştırabilirsiniz. *Ktomagic* kitaplığı, Azure Sentinel 'ten sorgular almanıza ve bunları doğrudan bir not defteri içinde çalıştırmanıza olanak tanıyan tutkalla 'yi sağlar. Sorgular [kusto sorgu dilini](https://kusto.azurewebsites.net/docs/kusto/query/index.html)kullanır. Microsoft 'un Güvenlik analistleri tarafından geliştirilen birkaç not defteri, Azure Sentinel ile paketlenmiştir. Bu not defterlerinden bazıları belirli bir senaryo için oluşturulmuştur ve olduğu gibi kullanılabilir. Diğerleri, kendi Not defterlerinizde kullanmak üzere kopyalayabileceğiniz veya bunları uyarlayabileceğiniz teknikleri ve özellikleri göstermek için örnek olarak tasarlanmıştır. Diğer Not defterleri de Azure Sentinel Community GitHub 'dan içeri aktarılabilir.
 
 Tümleşik Jupyıter deneyimi, not defterlerini depolamak, paylaşmak ve yürütmek için [Azure Notebooks](https://notebooks.azure.com/) kullanır. Bilgisayarınızda bir Python ortamınız ve jupi varsa veya Azure Databricks gibi diğer JupterHub ortamlarında bu not defterlerini yerel olarak da çalıştırabilirsiniz.
 
@@ -66,7 +66,7 @@ Not defterlerini kullanmak için, önce bir Azure Machine Learning (ML) çalış
     |Abonelik|Kullanmak istediğiniz Azure aboneliğini seçin.|
     |Kaynak grubu|Aboneliğinizde mevcut kaynak gruplarından birini seçin veya bir ad girerek yeni bir kaynak grubu oluşturun. Kaynak grubu, bir Azure çözümü için ilgili kaynakları barındırır. Bu örnekte, **AzureMLRG** kullanacağız.|
     |Çalışma alanı adı|Çalışma alanınızı tanımlayan benzersiz bir ad girin. Bu örnekte, **testworkspace1** kullanacağız. Adlar, kaynak grubu genelinde benzersiz olmalıdır. Başkaları tarafından oluşturulan çalışma alanlarını birbirinden ayırmak ve geri çekmek için kolay bir ad kullanın.|
-    |Region|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
+    |Bölge|Çalışma alanınızı oluşturmak için kullanıcılarınıza en yakın konumu ve veri kaynaklarını seçin.|
     |Çalışma alanı sürümü|Bu örnekte, çalışma alanı türü olarak **temel** ' yı seçin. Çalışma alanı türü (temel & kurumsal), erişim ve fiyatlandırmaya sahip olduğunuz özellikleri belirler.|
 
     > [!div class="mx-imgBorder"]

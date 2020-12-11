@@ -5,24 +5,28 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: Java
 ms.topic: sample
-ms.date: 07/23/2020
-author: sakash279
-ms.author: akshanka
+ms.date: 12/10/2020
+author: ThomasWeiss
+ms.author: thweiss
 ms.custom: devx-track-java
-ms.openlocfilehash: 1f3f5a35beeac6c683aeb6db16a417b897755666
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5da5e1717f897d2236fd73f0fff525e157f7a0e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079776"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093698"
 ---
 # <a name="how-to-use-azure-table-storage-or-azure-cosmos-db-table-api-from-java"></a>Java’dan Azure Tablo depolama veya Azure Cosmos DB Tablo API'sini kullanma
+
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. Örnekler Java dilinde yazılır ve [Java için Azure Depolama SDK’sı][Azure Storage SDK for Java] kullanır. Tablo **oluşturma** , **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme** , **sorgulama** , **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
+Bu makalede, tablolar oluşturma, verilerinizi depolama ve veri üzerinde CRUD işlemleri gerçekleştirme işlemleri gösterilir. Azure Tablo hizmeti 'ni veya Azure Cosmos DB Tablo API'si seçin. Örnekler Java dilinde yazılır ve [Java Için Azure Storage sdk v8][Azure Storage SDK for Java]kullanır. Tablo **oluşturma**, **listeleme** ve **silme** işlemlerinin yanı sıra bir tablodaki varlıkları **ekleme**, **sorgulama**, **değiştirme** ve **silme** işlemleri ele alınmaktadır. Tablolar hakkında daha fazla bilgi için [Sonraki adımlar](#next-steps)’a bakın.
+
+> [!IMPORTANT]
+> Azure Storage SDK 'sının tablo depolamayı destekleyen son sürümü [V8][Azure Storage SDK for Java]. Java için tablo depolama SDK 'sının yeni bir sürümü yakında sunulacaktır.
 
 > [!NOTE]
 > Android cihazlarda Azure Depolama kullanan geliştiriciler için bir SDK mevcuttur. Daha fazla bilgi için bkz. [Android için Azure Depolama SDK’sı][Azure Storage SDK for Android].
@@ -628,7 +632,7 @@ catch (Exception e)
 Daha fazla bilgi için bkz. [Java geliştiricileri için Azure](/java/azure).
 
 [Azure SDK for Java]: https://go.microsoft.com/fwlink/?LinkID=525671
-[Azure Storage SDK for Java]: https://github.com/azure/azure-storage-java
+[Azure Storage SDK for Java]: https://github.com/Azure/azure-storage-java/tree/v8.6.5
 [Azure Storage SDK for Android]: https://github.com/azure/azure-storage-android
 [Azure Depolama İstemcisi SDK Başvurusu]: https://azure.github.io/azure-storage-java/
 [Azure Storage REST API]: /rest/api/storageservices/

@@ -3,14 +3,14 @@ title: Azure Otomasyonu 'nda Değişiklik İzleme ve stoku yönetme
 description: Bu makalede, ortamınızdaki yazılım ve Microsoft hizmet değişikliklerini izlemek için Değişiklik İzleme ve envanterin nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288744"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093630"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Değişiklik İzleme ve Stok yönetimi
 
@@ -37,7 +37,7 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 
-2. Azure portal, **tüm hizmetler** ' i seçin. Kaynak listesinde **Otomasyon** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Automation Hesapları** ’nı seçin.
+2. Azure portal, **tüm hizmetler**' i seçin. Kaynak listesinde **Otomasyon** yazın. Yazmaya başladığınızda liste, giriş listenize göre öneriler uygular. **Automation Hesapları**’nı seçin.
 
 3. Otomasyon hesapları listenizde, Değişiklik İzleme ve envanteri etkinleştirildiğinde seçtiğiniz hesabı seçin.
 
@@ -45,16 +45,16 @@ Windows bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adıml
 
 5. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-6. Çalışma alanı yapılandırması sayfasında **Windows dosyaları** ' nı seçin ve ardından **+ Ekle** ' ye tıklayarak izlenecek yeni bir dosya ekleyin.
+6. Çalışma alanı yapılandırması sayfasında **Windows dosyaları**' nı seçin ve ardından **+ Ekle** ' ye tıklayarak izlenecek yeni bir dosya ekleyin.
 
-7. Değişiklik İzleme için Windows dosyası Ekle bölmesinde, izlenecek dosya veya klasör için bilgileri girin ve **Kaydet** ' e tıklayın. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
+7. Değişiklik İzleme için Windows dosyası Ekle bölmesinde, izlenecek dosya veya klasör için bilgileri girin ve **Kaydet**' e tıklayın. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
 
     |Özellik  |Açıklama  |
     |---------|---------|
     |Etkin     | Ayar uygulanmışsa true, aksi takdirde false.        |
     |Öğe Adı     | İzlenecek dosyanın kolay adı.        |
     |Grup     | Dosyaları mantıksal olarak gruplandırmak için bir grup adı.        |
-    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\Temp \\ \* . txt** ). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*` .       |
+    |Yolu girin     | Dosyanın denetlenecek yol (örneğin, **c:\Temp \\ \* . txt**). Ayrıca, gibi ortam değişkenlerini de kullanabilirsiniz `%winDir%\System32\\\*.*` .       |
     |Yol Türü     | Yolun türü. Olası değerler dosya ve klasördür.        |    
     |Özyineleme     | Bu öğeyi izlenecek öğe ararken, aksi takdirde false ise true.        |    
     |Dosya içeriğini karşıya yükle | İzlenen değişikliklerle dosya içeriğini karşıya yüklemek için true, aksi durumda false.|
@@ -74,9 +74,9 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 
 1. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. Çalışma alanı yapılandırma sayfasında, **Linux dosyaları** ' nı seçin ve ardından **+ Ekle** ' yi seçerek izlenecek yeni bir dosya ekleyin.
+2. Çalışma alanı yapılandırma sayfasında, **Linux dosyaları**' nı seçin ve ardından **+ Ekle** ' yi seçerek izlenecek yeni bir dosya ekleyin.
 
-3. **Değişiklik izleme Için Linux dosyası Ekle** sayfasında, izlenecek dosya veya dizin bilgilerini girin ve ardından **Kaydet** ' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
+3. **Değişiklik izleme Için Linux dosyası Ekle** sayfasında, izlenecek dosya veya dizin bilgilerini girin ve ardından **Kaydet**' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır.
 
     |Özellik  |Açıklama  |
     |---------|---------|
@@ -99,6 +99,7 @@ Linux bilgisayarlarda dosya izlemeyi yapılandırmak için aşağıdaki adımlar
 Dosya içeriği izleme, izlenen bir değişiklikten önceki ve sonraki bir dosyanın içeriğini görüntülemenize izin verir. Özellik, her değişiklik oluştuktan sonra dosya içeriğini bir [depolama hesabına](../../storage/common/storage-account-overview.md) kaydeder. Dosya içeriğini izlemek için izlenecek bazı kurallar aşağıda verilmiştir:
 
 * Dosya içeriğini depolamak için Kaynak Yöneticisi dağıtım modelini kullanan standart bir depolama hesabı gerekir.
+* Varsayılan olarak, depolama hesapları herhangi bir ağ üzerindeki istemcilerden gelen bağlantıları kabul eder. Depolama hesabınızı yalnızca belirli trafiğe izin verecek şekilde güvenli hale getirmeniz durumunda, Otomasyon hesabınızın buna bağlanmasına izin vermek için yapılandırma kurallarınızı değiştirmeniz gerekir. Bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
 * Premium ve klasik dağıtım modeli depolama hesapları kullanmayın. Bkz. [Azure depolama hesapları hakkında](../../storage/common/storage-account-create.md).
 * Depolama hesabını yalnızca bir Otomasyon hesabına bağlayabilirsiniz.
 * Otomasyon hesabınızda Değişiklik İzleme ve envanter etkinleştirilmelidir.
@@ -109,7 +110,7 @@ Dosya içeriklerinde yapılan değişikliklere yönelik izlemeyi etkinleştirmek
 
 1. **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. **Dosya içeriği** ' ni seçin ve ardından **bağlantı** ' yı seçin. Bu seçim, **değişiklik izleme Için Içerik konumu Ekle** sayfasını açar.
+2. **Dosya içeriği** ' ni seçin ve ardından **bağlantı**' yı seçin. Bu seçim, **değişiklik izleme Için Içerik konumu Ekle** sayfasını açar.
 
    ![İçerik konumu Ekle](./media/manage-change-tracking/enable.png)
 
@@ -119,7 +120,7 @@ Dosya içeriklerinde yapılan değişikliklere yönelik izlemeyi etkinleştirmek
 
    ![Depolama hesabı ayarla](./media/manage-change-tracking/storage-account.png)
 
-6. Değişiklik İzleme ve Inventory, dosya içeriği değişiklik izlemeyi etkinleştirdiğinden depolama hesabı ve paylaşılan erişim Imzası (SAS) URI 'Lerini gösterir. İmzaların kullanım süreleri 365 gün sonra doluyor ve yeniden **Oluştur** ' u seçerek yeniden oluşturabilirsiniz.
+6. Değişiklik İzleme ve Inventory, dosya içeriği değişiklik izlemeyi etkinleştirdiğinden depolama hesabı ve paylaşılan erişim Imzası (SAS) URI 'Lerini gösterir. İmzaların kullanım süreleri 365 gün sonra doluyor ve yeniden **Oluştur**' u seçerek yeniden oluşturabilirsiniz.
 
    ![Hesap anahtarlarını listeleme](./media/manage-change-tracking/account-keys.png)
 
@@ -141,11 +142,11 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 1. Otomasyon hesabınızdan **değişiklik izleme** sayfasında **Ayarları Düzenle** (dişli simgesi) seçeneğini belirleyin.
 
-2. Çalışma alanı yapılandırması sayfasında **Windows kayıt defteri** ' ni seçin.
+2. Çalışma alanı yapılandırması sayfasında **Windows kayıt defteri**' ni seçin.
 
 3. İzlemek üzere yeni bir kayıt defteri anahtarı eklemek için **+ Ekle** ' yi seçin.
 
-4. **Değişiklik izleme Için Windows kayıt defteri Ekle** sayfasında, izlenecek anahtarın bilgilerini girin ve ardından **Kaydet** ' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır. Bir kayıt defteri yolu belirtirken, bir değer değil, anahtar olması gerekir.
+4. **Değişiklik izleme Için Windows kayıt defteri Ekle** sayfasında, izlenecek anahtarın bilgilerini girin ve ardından **Kaydet**' i seçin. Aşağıdaki tabloda, bilgiler için kullanabileceğiniz özellikler tanımlanmaktadır. Bir kayıt defteri yolu belirtirken, bir değer değil, anahtar olması gerekir.
 
     |Özellik  |Açıklama  |
     |---------|---------|
@@ -158,7 +159,7 @@ Windows bilgisayarlarda kayıt defteri anahtarı izlemeyi yapılandırmak için 
 
 Değişiklik kayıtları için Azure Izleyici günlüklerinde çeşitli aramalar yapabilirsiniz. Değişiklik izleme sayfası açıkken, Günlükler sayfasını açmak için **Log Analytics** ' a tıklayın. Aşağıdaki tabloda değişiklik kayıtları için örnek günlük aramaları sunulmaktadır.
 
-|Sorgu  |Açıklama  |
+|Sorgu  |Description  |
 |---------|---------|
 |`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Otomatik olarak ayarlanan ancak durdurulma olarak bildirilen Microsoft Hizmetleri için en son envanter kayıtlarını gösterir. Sonuçlar, belirtilen yazılım adı ve bilgisayar için en son kayıtla sınırlıdır.    |
 |`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Kaldırılan yazılım için değişiklik kayıtlarını gösterir.|

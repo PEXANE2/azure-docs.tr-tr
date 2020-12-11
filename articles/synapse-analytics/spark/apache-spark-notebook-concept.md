@@ -9,12 +9,12 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5efdfcea7b6d727038bad124368179b9395bfafd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462005"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093286"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure SYNAPSE Analytics Not defterleri
 
@@ -51,4 +51,4 @@ Not defterleri, veri hazırlama, veri görselleştirme, makine öğrenimi ve di�
   - [Not defteri oluşturma](./spark/../../quickstart-apache-spark-notebook.md)
   - [SYNAPSE Studio not defterlerini kullanarak görselleştirme oluşturma](./spark/../apache-spark-data-visualization-tutorial.md)
   - [Apache Spark MLlib ile makine öğrenimi modelleri oluşturun](./spark/../apache-spark-machine-learning-mllib-notebook.md)
-  - [Azure oto ml ile makine öğrenimi modelleri oluşturma](./spark/../apache-spark-azure-machine-learning-tutorial.md)
+  - [Azure otomatik ML ile makine öğrenimi modelleri oluşturun](./spark/../apache-spark-azure-machine-learning-tutorial.md)

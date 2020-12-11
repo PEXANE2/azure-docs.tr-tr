@@ -1,23 +1,23 @@
 ---
-title: Bir temsilciyi güncelleştirme
+title: Temsilciyi güncelleştirme
 description: Azure 'da daha önce eklendi bir müşteri için bir temsilciyi güncelleştirme hakkında bilgi edinin.
 ms.date: 12/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 90827281ac9b05105700298494af0b60b0fa511f
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e204d1f3546e6e978f91c7e808065a388a4af4b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96610919"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093426"
 ---
-# <a name="update-a-delegation"></a>Bir temsilciyi güncelleştirme
+# <a name="update-a-delegation"></a>Temsilciyi güncelleştirme
 
 Azure 'da bir abonelik (veya kaynak grubu) eklendi yükledikten sonra değişiklik yapmanız gerekebilir. Örneğin, müşteriniz, farklı bir Azure yerleşik rolü gerektiren ek yönetim görevlerini gerçekleştirebilir veya bir müşteri aboneliğinin temsilci olarak bulunduğu kiracıyı değiştirmeniz gerekebilir.
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvuruyoruz, ancak [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , Azure açık thouse 'u ayarlamak ve yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
-[Müşterinizin Azure Resource Manager (ARM) şablonları ile eklendi](onboard-customer.md), bu müşteri için yeni bir dağıtım gerçekleştirilmesi gerekir. Değişdiklerinize bağlı olarak, özgün teklifi güncelleştirmek veya orijinal teklifi kaldırmak ve yeni bir tane oluşturmak isteyebilirsiniz.
+[Azure Resource Manager şablonlar (ARM şablonları) aracılığıyla müşteriniz eklendi](onboard-customer.md), bu müşteri için yeni bir dağıtım gerçekleştirilmesi gerekir. Değişdiklerinize bağlı olarak, özgün teklifi güncelleştirmek veya orijinal teklifi kaldırmak ve yeni bir tane oluşturmak isteyebilirsiniz.
 
 - **Yalnızca yetkilendirmeleri değiştiriyorsanız**: Yalnızca ARM şablonunun **yetkilendirmeler** bölümünü değiştirerek temsilcinizi güncelleştirebilirsiniz.
 - **Yöneten kiracıyı değiştiriyorsanız**: önceki teklifinizin farklı bir **mspoffername** Ile kullanarak yeni bir ARM şablonu oluşturmanız gerekir.

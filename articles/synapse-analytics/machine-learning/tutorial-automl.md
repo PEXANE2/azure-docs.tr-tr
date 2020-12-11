@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: oto ml kullanarak Machine Learning modeli eğitimi'
-description: Azure SYNAPSE 'de bir makine öğrenimi modelini oto ml kullanarak eğitme öğreticisi.
+title: 'Öğretici: otomatik ML kullanarak model eğitme'
+description: Apache Spark ve otomatik ML kullanarak Azure SYNAPSE 'de kod olmadan makine öğrenimi modelini eğitme hakkında öğretici.
 services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: machine-learning
@@ -9,21 +9,21 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 8dd99b60a548e3c392bbe468ddde484081e6eb8b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4967d5305b4b438f3baa6fca078d7b3169612590
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468667"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093409"
 ---
-# <a name="tutorial-code-free-machine-learning-model-training-in-azure-synapse-with-automl-preview"></a>Öğretici: Azure SYNAPSE 'de oto ml ile kod ücretsiz makine öğrenimi modeli eğitimi (Önizleme)
+# <a name="tutorial-train-a-machine-learning-model-code-free-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Öğretici: Apache Spark ve otomatikleştirilmiş ML ile Azure 'da Machine Learning modeli kodu ücretsiz olarak eğitme
 
-[Azure Machine Learning ' de oto ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)kullanarak eğitediğiniz yeni makine öğrenimi modelleriyle verileri Spark tablolarında kolayca zenginleştirme hakkında bilgi edinin.  SYNAPSE ' deki bir Kullanıcı, bir kod ücretsiz deneyimde makine öğrenimi modelleri oluşturmak için eğitim veri kümesi olarak kullanmak üzere Azure SYNAPSE çalışma alanında bir Spark tablosu seçebilir.
+[Azure Machine Learning ' de OTOMATIK ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml)kullanarak eğitediğiniz yeni makine öğrenimi modelleriyle verileri Spark tablolarında kolayca zenginleştirme hakkında bilgi edinin.  SYNAPSE ' deki bir Kullanıcı, bir kod ücretsiz deneyimde makine öğrenimi modelleri oluşturmak için eğitim veri kümesi olarak kullanmak üzere Azure SYNAPSE çalışma alanında bir Spark tablosu seçebilir.
 
 Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
-> - Azure ML 'de otomatik ML kullanan Azure SYNAPSE Studio 'da bir kod ücretsiz deneyimi kullanarak makine öğrenimi modellerini eğitme. Eğeceğiniz modelin türü, çözmeye çalıştığınız soruna bağlıdır.
+> - Azure Machine Learning 'de otomatik ML kullanan Azure SYNAPSE Studio 'da bir kod ücretsiz deneyim kullanarak makine öğrenimi modellerini eğitme. Eğeceğiniz modelin türü, çözmeye çalıştığınız soruna bağlıdır.
 
 Azure aboneliğiniz yoksa [başlamadan önce ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -52,24 +52,24 @@ Bu öğretici için Spark tablosuna ihtiyacınız olacaktır. Aşağıdaki Not d
 1. Not defteri çalıştırıldıktan sonra, varsayılan Spark veritabanı altında yeni bir Spark tablosu oluşturulur. Veri merkezine gidin ve ile adlı tabloyu bulun `nyc_taxi` .
 ![Spark tablosu](media/tutorial-automl-wizard/tutorial-automl-wizard-00c.png)
 
-## <a name="launch-automl-wizard-to-train-a-model"></a>Bir modeli eğitme için oto ml Sihirbazı 'nı başlatın
+## <a name="launch-automated-ml-wizard-to-train-a-model"></a>Bir modeli eğitme için otomatik ML Sihirbazı 'nı başlatın
 
 Önceki adımda oluşturulan Spark tablosuna sağ tıklayın. Sihirbazı açmak için "Machine Learning-> Enrich New model" seçeneğini belirleyin.
-![Oto ml Sihirbazını Başlat](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
+![Otomatik ML 'yi Başlatma Sihirbazı](media/tutorial-automl-wizard/tutorial-automl-wizard-00d.png)
 
-Bir yapılandırma paneli görünür ve Azure Machine Learning ' de bir oto ml denemesi oluşturmak için yapılandırma ayrıntıları sağlamanız istenir. Bu çalıştırma birden çok modeli eğitecektir ve başarılı bir çalıştırmanın en iyi modeli Azure ML modeli kayıt defterine kaydedilecek:
+Bir yapılandırma paneli görünür ve Azure Machine Learning bir otomatik ML denemesi oluşturmak için yapılandırma ayrıntıları sağlamanız istenir. Bu çalıştırma birden çok modeli eğitecektir ve başarılı bir çalıştırmanın en iyi modeli Azure Machine Learning modeli kayıt defterine kaydedilir:
 
 ![Run adım yapılandırma](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00a.png)
 
-- **Azure ML çalışma alanı**: oto ml deneme çalıştırmasının oluşturulması Için BIR Azure ML çalışma alanı gereklidir. Ayrıca, [bağlantılı bir hizmet](quickstart-integrate-azure-machine-learning.md)kullanarak Azure SYNAPSE çalışma ALANıNıZı Azure ML çalışma alanıyla bağlamanız gerekir. Tüm öncesi = gereksinimleri aldıktan sonra, bu otomatik ml çalıştırması için kullanmak istediğiniz Azure ML çalışma alanını belirtebilirsiniz.
+- **Azure Machine Learning çalışma alanı**: otomatik ml denemesi çalıştırmasının oluşturulması için bir Azure Machine Learning çalışma alanı gereklidir. Ayrıca, [bağlantılı bir hizmet](quickstart-integrate-azure-machine-learning.md)kullanarak Azure SYNAPSE çalışma alanınızı Azure Machine Learning çalışma alanıyla bağlamanız gerekir. Ön koşul = koşullar ' a sahip olduktan sonra, bu otomatik ML çalıştırması için kullanmak istediğiniz Azure Machine Learning çalışma alanını belirtebilirsiniz.
 
-- **Deneme adı**: deneme adını belirtin. Bir oto ml çalıştırması gönderdiğinizde, bir deneme adı sağlarsınız. Çalıştırma bilgileri, Azure ML çalışma alanındaki bu deneme altında depolanır. Bu deneyim, varsayılan olarak yeni bir deneme oluşturacak ve önerilen bir ad oluşturuyor, ancak aynı zamanda var olan bir deneyime de bir ad verebilirsiniz.
+- **Deneme adı**: deneme adını belirtin. Otomatikleştirilmiş bir ML çalıştırması gönderdiğinizde, bir deneme adı sağlarsınız. Çalıştırma bilgileri, Azure Machine Learning çalışma alanında bu deneme altında depolanır. Bu deneyim, varsayılan olarak yeni bir deneme oluşturacak ve önerilen bir ad oluşturuyor, ancak aynı zamanda var olan bir deneyime de bir ad verebilirsiniz.
 
-- **En iyi model**: oto ml çalıştırmasının en iyi modelinin adını belirtin. En iyi modele bu ad verilir ve bu çalıştırma sonrasında Azure ML modeli kayıt defterine otomatik olarak kaydedilir. Bir oto ml çalıştırması birçok makine öğrenme modeli oluşturacaktır. Sonraki adımda seçtiğiniz birincil ölçüme bağlı olarak, bu modeller karşılaştırılabilir ve en iyi model seçilebilir.
+- **En iyi model**: otomatik ml çalıştırağından en iyi modelin adını belirtin. En iyi modele bu ad verilir ve bu çalışma sonrasında Azure Machine Learning modeli kayıt defterine otomatik olarak kaydedilir. Otomatik ML çalıştırması birçok makine öğrenimi modeli oluşturacaktır. Sonraki adımda seçtiğiniz birincil ölçüme bağlı olarak, bu modeller karşılaştırılabilir ve en iyi model seçilebilir.
 
 - **Hedef sütun**: modelin tahmin etmek için eğitilme işlemi budur. Tahmin etmek istediğiniz sütunu seçin.
 
-- **Spark havuzu**: oto ml denemesi çalıştırması için kullanmak istediğiniz Spark Havuzu. Hesaplamalar belirttiğiniz havuzda yürütülür.
+- **Spark havuzu**: otomatik ml denemesi çalıştırması için kullanmak istediğiniz Spark Havuzu. Hesaplamalar belirttiğiniz havuzda yürütülür.
 
 - **Spark yapılandırma ayrıntıları**: Spark havuzuna ek olarak, oturum yapılandırma ayrıntılarını sağlama seçeneğiniz de vardır.
 
@@ -89,39 +89,39 @@ Ek ayarları yapılandırma için "devam" ı tıklatın.
 
 *Sınıflandırma* veya *regresyon* türü ' nü seçerseniz, ek konfigürasyonlar şunlardır:
 
-- **Birincil ölçüm**: modelin ne kadar iyi yaptığını ölçmek için kullanılan ölçüm. Bu, oto ml çalıştırmasında oluşturulan farklı modelleri karşılaştırmak için kullanılacak ölçüdür ve hangi modelin en iyi şekilde gerçekleştirileceğini tespit eder.
+- **Birincil ölçüm**: modelin ne kadar iyi yaptığını ölçmek için kullanılan ölçüm. Bu, otomatik ML çalıştırmasında oluşturulan farklı modelleri karşılaştırmak için kullanılacak ölçüdür ve hangi modelin en iyi şekilde gerçekleştirileceğini tespit eder.
 
 - **Eğitim işi süresi (saat)**: modelleri çalıştırma ve eğitme denemesi için en uzun süre (saat cinsinden). 1 ' den küçük değerler de sağlayabileceğinizi unutmayın. Örneğin, `0.5`.
 
 - **Maksimum eşzamanlı yineleme**: paralel olarak yürütülecek en fazla yineleme sayısını temsil eder.
 
-- **Onnx model uyumluluğu**: etkinleştirilirse, oto ml tarafından eğitilen modeller onnx biçimine dönüştürülür. Bu, özellikle Azure SYNAPSE SQL havuzlarında Puanlama için model kullanmak istiyorsanız geçerlidir.
+- **Onnx model uyumluluğu**: etkinleştirilirse, otomatik ml tarafından eğitilen modeller onnx biçimine dönüştürülür. Bu, özellikle Azure SYNAPSE SQL havuzlarında Puanlama için model kullanmak istiyorsanız geçerlidir.
 
 Bu ayarların hepsi, özelleştirebileceğiniz bir varsayılan değere sahiptir.
 ![ek yapılandırma](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00c.png)
 
-> "Zaman serisi tahmini" seçeneğini belirlediğinizde, daha fazla yapılandırma gerektiğini unutmayın. Tahmin Ayrıca ONNX model uyumluluğunu desteklemez.
+> "Zaman serisi tahmini" seçeneğini belirlerseniz, daha fazla yapılandırma gerektiğini unutmayın. Tahmin Ayrıca ONNX model uyumluluğunu desteklemez.
 
-Tüm gerekli yapılandırma yapıldıktan sonra, oto ml çalıştırmayı başlatabilirsiniz.
+Tüm gerekli yapılandırma yapıldıktan sonra otomatik ML çalıştırması ' nı başlatabilirsiniz.
 
-Azure Azure 'da bir oto ml çalıştırması başlatmak için iki yol vardır. Kod ücretsiz bir deneyim için doğrudan **çalıştırma oluşturmayı** seçebilirsiniz. Kodu tercih ediyorsanız, çalıştırma ve Not defterini çalıştırma kodunu görmenizi sağlayan **Not defterinde aç**' ı seçebilirsiniz.
+Azure Azure SYNAPSE 'de otomatik bir ML çalıştırması başlatmak için iki yol vardır. Kod ücretsiz bir deneyim için doğrudan **çalıştırma oluşturmayı** seçebilirsiniz. Kodu tercih ediyorsanız, çalıştırma ve Not defterini çalıştırma kodunu görmenizi sağlayan **Not defterinde aç**' ı seçebilirsiniz.
 
 ### <a name="create-run-directly"></a>Doğrudan çalıştırma oluştur
 
-Doğrudan Çalıştır 'ı başlatmak için "çalıştırmaya başla" ya tıklayın. Otomatik ml çalıştırmasının başladığını gösteren bir bildirim olacaktır.
+Otomatik ML 'yi doğrudan çalıştırmak için "çalıştırmaya başla" ya tıklayın. Otomatik ML çalıştırmasının başladığını gösteren bir bildirim olacaktır.
 
-Oto çalıştırma başarıyla başlatıldıktan sonra, başka bir başarılı bildirim görürsünüz. Ayrıca, çalışma gönderimini durumunu denetlemek için bildirim düğmesine de tıklayabilirsiniz.
-Başarılı bildirimde bulunan bağlantıya tıklayarak Azure ML.
+Otomatik ML çalıştırması başarıyla başlatıldıktan sonra, başka bir başarılı bildirim görürsünüz. Ayrıca, çalışma gönderimini durumunu denetlemek için bildirim düğmesine de tıklayabilirsiniz.
+Başarılı bildirimdeki bağlantıya tıklayarak Azure Machine Learning.
 ![Başarılı bildirim](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00d.png)
 
 ### <a name="create-run-with-notebook"></a>Not defteriyle çalışma oluştur
 
 Not defteri oluşturmak için *Not defterinde aç '* ı seçin. Not defterini yürütmek için *Tümünü Çalıştır* ' a tıklayın.
-Bu Ayrıca, diğer ayarları, sizin de oto ml çalıştırmaya ekleme olanağı sunar.
+Bu Ayrıca, otomatik ML çalıştırmaya ek ayarlar ekleme olanağı sunar.
 
 ![Not defterini aç](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00e.png)
 
-Not defterinden çalıştırma başarıyla gönderildikten sonra, Not defteri çıkışında Azure ML çalışma alanında çalıştırılan denemenin bir bağlantısı olacaktır. Azure ML 'de, oto ml çalıştırmanızı izlemek için bağlantıya tıklayabilirsiniz.
+Not defterinden çalıştırma başarıyla gönderildikten sonra, Not defteri çıkışında Azure Machine Learning çalışma alanında çalışan denemenin bağlantısı olacaktır. Azure Machine Learning ' de otomatik ML çalıştırmanızı izlemek için bağlantıya tıklayabilirsiniz.
 ![Tümünü çalıştıran Not defteri ](media/tutorial-automl-wizard/tutorial-automl-wizard-configure-run-00f.png) )
 
 ## <a name="next-steps"></a>Sonraki adımlar

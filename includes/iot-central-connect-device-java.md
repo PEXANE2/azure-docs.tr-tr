@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 5ad69fb6743676189de409df16c046d5361a5a91
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: ad305202daf09258bbd439e824fc07f1eed1c5af
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127072"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033886"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
@@ -28,7 +28,7 @@ IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetm
 
 `main`Yöntemi:
 
-* `initializeAndProvisionDevice`Model kimliğini ayarlamak için çağrılar `dtmi:com:example:Thermostat;1` yapın, cihaz sağlamak ve kaydetmek için DPS kullanın, bir **deviceclient** örneği oluşturun ve IoT Central uygulamanıza bağlanın.
+* `initializeAndProvisionDevice`Model kimliğini ayarlamak için çağrılar `dtmi:com:example:Thermostat;1` yapın, cihaz sağlamak ve kaydetmek için DPS kullanın, bir **deviceclient** örneği oluşturun ve IoT Central uygulamanıza bağlanın. IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Komut için bir komut işleyicisi oluşturur `getMaxMinReport` .
 * Yazılabilir özellik için bir özellik güncelleştirme işleyicisi oluşturur `targetTemperature` .
 * Sıcaklık telemetrisini göndermek ve beş saniyede bir özelliği güncelleştirmek için bir iş parçacığı başlatır `maxTempSinceLastReboot` .
@@ -90,7 +90,7 @@ public static void main(String[] args) throws URISyntaxException, IOException, P
 }
 ```
 
-`initializeAndProvisionDevice`Yöntemi, cihazın IoT Central kaydetmek ve bağlanmak IÇIN DPS nasıl kullandığını gösterir. Yük, model KIMLIĞINI içerir:
+`initializeAndProvisionDevice`Yöntemi, cihazın IoT Central kaydetmek ve bağlanmak IÇIN DPS nasıl kullandığını gösterir. Yük, IoT Central [cihazı bir cihaz şablonuyla ilişkilendirmek](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)için KULLANDıĞı model kimliğini içerir.:
 
 ```java
 private static void initializeAndProvisionDevice() throws ProvisioningDeviceClientException, IOException, URISyntaxException, InterruptedException {

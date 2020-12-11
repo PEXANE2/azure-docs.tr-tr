@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f308f46fc021a1d08f4065d48558a6dd71786c7c
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 5c6ed106462d7dcac3f31a2ab157e5b634391006
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860364"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093460"
 ---
 # <a name="inbound-synchronization-for-cloud-provisioning-using-ms-graph-api"></a>MS Graph API kullanarak bulut sağlama için gelen eşitleme
 
@@ -43,7 +43,7 @@ Bu [Windows PowerShell için Microsoft Azure Active Directory modülü](https://
 Bu iki komutun ilki Azure Active Directory kimlik bilgilerini gerektirir. Bu commandde kiracıyı örtülü olarak tanımlayıp eşitleme için etkinleştirebilmenizi sağlar.
 
 ## <a name="create-service-principals"></a>Hizmet sorumlusu oluşturma
-Sonra, [AD2AAD uygulaması/hizmet sorumlusunu](https://docs.microsoft.com/graph/apiapplicationtemplate-instantiate?view=graph-rest-beta&tabs=http) oluşturuyoruz
+Sonra, [AD2AAD uygulaması/hizmet sorumlusunu](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http) oluşturuyoruz
 
 Bu uygulama KIMLIĞI 1a4721b3-e57f-4451-ae87-ef078703ec94 kullanmanız gerekir. DisplayName, portalda kullanılıyorsa (örneğin, contoso.com) AD etki alanı URL 'sidir, ancak başka bir şey adlandırılmış olabilir.
 

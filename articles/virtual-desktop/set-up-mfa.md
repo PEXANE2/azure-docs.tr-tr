@@ -3,15 +3,15 @@ title: Windows sanal masaüstü için Azure çok faktörlü kimlik doğrulaması
 description: Windows sanal masaüstü 'nde daha yüksek güvenlik için Azure çok faktörlü kimlik doğrulamasını ayarlama.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/20/2020
+ms.date: 12/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 35af8191cfe237175cbd6669797d1744ac3ecd49
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 00aba5d169a05eab25dcc63ca813955e71d09598
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312660"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092389"
 ---
 # <a name="enable-azure-multifactor-authentication-for-windows-virtual-desktop"></a>Windows sanal masaüstü için Azure çok faktörlü kimlik doğrulamasını etkinleştirme
 
@@ -24,7 +24,7 @@ Windows sanal masaüstü için Windows istemcisi, Windows sanal masaüstünü ye
 
 Kimlik bilgilerini hatırlarken, kurumsal senaryolarda veya kişisel cihazlarda dağıtımları daha az güvenli hale da olabilir. Kullanıcılarınızı korumak için, istemcinin Azure çok faktörlü kimlik doğrulama kimlik bilgilerini daha sık sormayı sürdürdüğünden emin olabilirsiniz. Bu makalede, Windows sanal masaüstü için koşullu erişim ilkesinin bu ayarı etkinleştirmek üzere nasıl yapılandırılacağı gösterilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için yapmanız gerekenler şunlardır:
 
@@ -45,8 +45,8 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
 4. İlkenize bir ad verin. Kuruluşların ilkelerinin adları için anlamlı bir standart oluşturmasını öneririz.
 5. **Atamalar** altında **Kullanıcılar ve gruplar**’ı seçin.
 6. **Ekle**' nin altında, **Kullanıcılar ve gruplar**  >  **Kullanıcılar ve gruplar** ' ı seçin > [Önkoşullar](#prerequisites) aşamasında oluşturduğunuz grubu seçin.
-7. **Bitti** seçeneğini belirleyin.
-8. **Bulut uygulamaları veya eylemler**altında  >  **Include**, **Uygulama Seç**' i seçin.
+7. **Bitti**’yi seçin.
+8. **Bulut uygulamaları veya eylemler** altında  >  , **Uygulama Seç**' i seçin.
 9. Kullanmakta olduğunuz Windows sanal masaüstü sürümüne göre aşağıdaki uygulamalardan birini seçin.
    
    - Windows sanal masaüstü 'Nü (klasik) kullanıyorsanız şu uygulamaları seçin:
@@ -84,10 +84,13 @@ Windows sanal masaüstüne bağlanırken çok faktörlü kimlik doğrulaması ge
     >[!NOTE]
     >Seçmek istediğiniz uygulamanın uygulama KIMLIĞINI bulmak için **Kurumsal uygulamalar** ' a gidin ve uygulama türü açılan menüsünde **Microsoft uygulamaları** ' nı seçin.
 
-12. **Erişim denetimleri**  >  **izni**altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
-13. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri istemler arasında istediğiniz zamana ayarlayın ve ardından **Seç**' i seçin. Örneğin, bir bağlantı en son bir saat sonra başlatıldığında, değeri **1** ' e ve birim- **saat**olarak ayarlamak için çok faktörlü kimlik doğrulaması gerekir.
-14. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık**olarak ayarlayın.
+12. **Erişim denetimleri**  >  **izni** altında **erişim ver**' i seçin, **Multi-Factor Authentication gerektir**' i seçin ve ardından öğesini **seçin**.
+13. **Erişim denetimleri**  >  **oturumu**' nun altında, **oturum açma sıklığı**' nı seçin, değeri istemler arasında istediğiniz zamana ayarlayın ve ardından **Seç**' i seçin. Örneğin, bir bağlantı en son bir saat sonra başlatıldığında, değeri **1** ' e ve birim- **saat** olarak ayarlamak için çok faktörlü kimlik doğrulaması gerekir.
+14. Ayarlarınızı doğrulayın ve **ilke** ayarını **Açık** olarak ayarlayın.
 15. İlkenizi etkinleştirmek için **Oluştur** ' u seçin.
+
+>[!NOTE]
+>Tarayıcınız aracılığıyla Windows sanal masaüstü 'nde oturum açmak için Web istemcisini kullandığınızda günlük, istemci uygulama KIMLIĞINI a85cf173-4192-42f8-81fa-777a763e6e2c (Windows sanal masaüstü istemcisi) olarak listeler. Bunun nedeni, istemci uygulamasının koşullu erişim ilkesinin ayarlandığı sunucu uygulama KIMLIĞINE dahili olarak bağlı olması. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

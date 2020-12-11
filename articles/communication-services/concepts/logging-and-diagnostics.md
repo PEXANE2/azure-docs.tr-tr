@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 10/15/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: d8afa769c90c5cf9450343cda1a65809062468fb
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: c4c9808813de80beea55e083c5bd80667ae2861f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888700"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033128"
 ---
 # <a name="communication-services-logs"></a>İletişim Hizmetleri günlükleri
 
@@ -39,6 +39,7 @@ Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak 
 * **Kullanım günlükleri** -her bir faturalandırılan hizmet teklifiyle ilişkili kullanım verilerini sağlar
 * **Sohbet operasyonel Günlükler** -sohbet hizmeti ile ilgili temel bilgileri sağlar
 * **SMS işletimsel Günlükler** -SMS hizmetiyle ilgili temel bilgileri sağlar
+* **Kimlik doğrulama işlem günlükleri** -kimlik doğrulama hizmetiyle ilgili temel bilgileri sağlar
 
 ### <a name="usage-logs-schema"></a>Kullanım günlükleri şeması
 
@@ -69,7 +70,7 @@ Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak 
 | ResultDescription | Bu işlemin statik metin açıklaması. |
 | DurationMs | İşlem süresi (milisaniye cinsinden). |
 | Callerıpaddress | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
-| Düzey | Etkinliğin önem düzeyi. |
+| Level | Etkinliğin önem düzeyi. |
 | URI | İsteğin URI 'SI. |
 | UserId | İstek gönderenin kullanıcı KIMLIĞI. |
 | ChatThreadId | İstekle ilişkili sohbet iş parçacığı KIMLIĞI. |
@@ -91,7 +92,7 @@ Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak 
 | ResultDescription | Bu işlemin statik metin açıklaması. |
 | DurationMs | İşlem süresi (milisaniye cinsinden). |
 | Callerıpaddress | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
-| Düzey | Etkinliğin önem düzeyi. |
+| Level | Etkinliğin önem düzeyi. |
 | URI | İsteğin URI 'SI. |
 | OutgoingMessageLength | Giden iletideki karakterlerin sayısı. |
 | Incomingmessagelength | Gelen iletideki karakterlerin sayısı. |
@@ -100,3 +101,23 @@ Tanılamayı yapılandırma hakkında daha fazla bilgi için bkz. [Azure Kaynak 
 | SDK türü | İstekte kullanılan SDK türü. |
 | PlatformType | İstekte kullanılan platform türü. |
 | Yöntem | İstekte kullanılan yöntem. |
+
+### <a name="authentication-operational-logs"></a>Kimlik doğrulama işlem günlükleri
+
+| Özellik | Açıklama |
+| -------- | ---------------|
+| TimeGenerated | Günlüğün oluşturulduğu zaman damgası (UTC). |
+| OperationName | Günlük kaydıyla ilişkili işlem. |
+| ID | Bağıntılı olayların KIMLIĞI. Birden çok tablo arasındaki bağıntılı olayları belirlemek için kullanılabilir. |
+| OperationVersion | `api-version` `operationName` Bir API kullanılarak gerçekleştirildiyse, işlemle ilişkili. Bu işleme karşılık gelen bir API yoksa, sürüm, gelecekte işlemle ilişkili özellikler, bu işlemin sürümünü temsil eder. |
+| Kategori | Etkinliğin günlük kategorisi. Kategori, belirli bir kaynaktaki günlükleri etkinleştirebilmeniz veya devre dışı bırakabilmeniz için gereken ayrıntı düzeyi. Bir olayın Özellikler blobu içinde görünen özellikler, belirli bir günlük kategorisi ve kaynak türü içinde aynıdır. |
+| ResultType | İşlemin durumu. |
+| ResultSignature | İşlemin alt durumu. Bu işlem bir REST API çağrısına karşılık geliyorsa, bu alan karşılık gelen REST çağrısının HTTP durum kodudur. |
+| DurationMs | İşlem süresi (milisaniye cinsinden). |
+| Callerıpaddress | İşlem, genel olarak kullanılabilir IP adresine sahip bir varlıktan gelen bir API çağrısına karşılık geliyorsa, çağıran IP adresi. |
+| Level | Etkinliğin önem düzeyi. |
+| URI | İsteğin URI 'SI. |
+| SDK türü | İstekte kullanılan SDK türü. |
+| PlatformType | İstekte kullanılan platform türü. |
+| Kimlik | İşlemle ilgili Iletişim Hizmetleri kimliği. |
+| Kapsamlar | Erişim belirtecinde Iletişim Hizmetleri kapsamları var. |

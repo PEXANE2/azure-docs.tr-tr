@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574131"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093562"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Öğretici: ilk makine öğrenimi modelinizi eğitme (Bölüm 3/4)
 
@@ -133,7 +133,7 @@ Adlı dizinde yeni bir Python dosyası oluşturun `tutorial` `04-run-pytorch.py`
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=control-script) [Denetim betiğini](?success=control-script#submit) oluşturdum
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=control-script) [Denetim betiğini](?success=control-script#submit) oluşturdum
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Çalıştırmayı Azure Machine Learning gönder
@@ -186,7 +186,7 @@ Azure Machine Learning Ayrıca, seçkin ortamların bir koleksiyonunu tutar. Bu 
 Kısacası, kayıtlı ortamların kullanılması zamandan tasarruf edebilir! Daha fazla bilgi için [ortamları nasıl kullanacağınızı](./how-to-use-environments.md) okuyun.
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=test-w-environment) [çalışmayı gönderdim](?success=test-w-environment#log)
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=test-w-environment) [çalışmayı gönderdim](?success=test-w-environment#log)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Günlük eğitimi ölçümleri
 
@@ -221,7 +221,7 @@ Azure Machine Learning ölçümler şunlardır:
 - Ölçeklendirilmesi için tasarlanan, yüzlerce denemeleri çalıştırırken bu avantajları de koruyabilirsiniz.
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaştım](https://www.research.net/r/7CTJQQ?issue=modify-train) [train.py değiştirdim](?success=modify-train#log)
+> [Bir sorunla karşılaştım](https://www.research.net/r/7CTJQQN?issue=modify-train) [train.py değiştirdim](?success=modify-train#log)
 
 ### <a name="update-the-conda-environment-file"></a>Conda ortam dosyasını güncelleştirme
 
@@ -230,7 +230,7 @@ Azure Machine Learning ölçümler şunlardır:
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=update-environment) [ortam dosyasını güncelleştirdim](?success=update-environment#submit-again)
+> [Bir sorunla karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=update-environment) [ortam dosyasını güncelleştirdim](?success=update-environment#submit-again)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Çalıştırmayı Azure Machine Learning gönder
 Bu betiği bir kez daha gönder:
@@ -244,7 +244,7 @@ Bu kez, Studio 'yu ziyaret ettiğinizde, artık model eğitimi kaybından canlı
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Ölçümler sekmesinde eğitim kaybı grafiği.":::
 
 > [!div class="nextstepaction"]
-> [I resubmitted the run](?success=resubmit-with-logging#next-steps) [Bir sorunla Karşılaşdığım](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging) çalışmayı yeniden aldım
+> [](?success=resubmit-with-logging#next-steps) [Bir sorunla Karşılaşdığım](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging) çalışmayı yeniden aldım
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

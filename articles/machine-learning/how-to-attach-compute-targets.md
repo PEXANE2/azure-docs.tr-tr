@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 44f6d700ff25f0c2f2cb8bedc5c2d15ad2adcb83
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, devx-track-python, contperf-fy21q1
+ms.openlocfilehash: c25f3965775c6518629c92ccc371855d9178e648
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320826"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033723"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>Model eğitimi ve dağıtımı için işlem hedefleri ayarlama
 
@@ -70,14 +70,14 @@ Sistemde oluşturulmuş bir Conda ortamı, zaten varolan bir Python ortamı veya
 
 Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi Sanal Makinesi (DSVM) kullanın. Bu VM, Azure 'da önceden yapılandırılmış bir veri bilimi ve AI geliştirme ortamıdır. VM, tam yaşam döngüsü makine öğrenimi geliştirmesi için seçkin bir araç ve çerçeve seçeneği sunar. DSVM 'nin Azure Machine Learning ile nasıl kullanılacağı hakkında daha fazla bilgi için bkz. [bir geliştirme ortamı yapılandırma](./how-to-configure-environment.md#dsvm).
 
-1. **Oluştur** : modelinize eğitebilmeniz için kullanmadan önce dsvm oluşturun. Bu kaynağı oluşturmak için bkz. [Linux için veri bilimi sanal makinesi sağlama (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
+1. **Oluştur**: modelinize eğitebilmeniz için kullanmadan önce dsvm oluşturun. Bu kaynağı oluşturmak için bkz. [Linux için veri bilimi sanal makinesi sağlama (Ubuntu)](./data-science-virtual-machine/dsvm-ubuntu-intro.md).
 
     > [!WARNING]
     > Azure Machine Learning yalnızca **Ubuntu** çalıştıran sanal makineleri destekler. Bir VM oluşturduğunuzda veya var olan bir VM 'yi seçtiğinizde Ubuntu kullanan bir VM seçmeniz gerekir.
     > 
     > Azure Machine Learning Ayrıca, sanal makinenin __Genel BIR IP adresine__ sahip olmasını gerektirir.
 
-1. **Ekle** : var olan bir sanal makineyi bir işlem hedefi olarak eklemek için, sanal makine IÇIN kaynak kimliği, Kullanıcı adı ve parola sağlamanız gerekir. VM 'nin kaynak KIMLIĞI, aşağıdaki dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve VM adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
+1. **Ekle**: var olan bir sanal makineyi bir işlem hedefi olarak eklemek için, sanal makine IÇIN kaynak kimliği, Kullanıcı adı ve parola sağlamanız gerekir. VM 'nin kaynak KIMLIĞI, aşağıdaki dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve VM adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Compute/virtualMachines/<vm_name>`
 
  
    ```python
@@ -102,7 +102,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
     > [!WARNING]
     > Çalışma alanınızdan aynı DSVM 'ye birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
 
-1. **Yapılandır** : dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
+1. **Yapılandır**: dsvm işlem hedefi için bir çalıştırma yapılandırması oluşturun. Docker ve Conda, DSVM 'de Eğitim ortamı oluşturmak ve yapılandırmak için kullanılır.
 
    ```python
    from azureml.core import ScriptRunConfig
@@ -128,7 +128,7 @@ Bu senaryo için tercih edilen Azure sanal makinesi olarak Azure Veri Bilimi San
 
 Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, modelinizi eğitebilmeniz için kullanılabilecek Apache Spark sağlar.
 
-1. **Oluştur** : modelinize eğitebilmeniz Için önce HDInsight kümesini oluşturun. HDInsight kümesinde Spark oluşturmak için bkz. [HDInsight 'Ta Spark kümesi oluşturma](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+1. **Oluştur**: modelinize eğitebilmeniz Için önce HDInsight kümesini oluşturun. HDInsight kümesinde Spark oluşturmak için bkz. [HDInsight 'Ta Spark kümesi oluşturma](../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
     > [!WARNING]
     > Azure Machine Learning, HDInsight kümesinin __Genel BIR IP adresine__ sahip olmasını gerektirir.
@@ -137,7 +137,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
     
     Küme oluşturulduktan sonra, ana bilgisayar adı \<clustername> -SSH.azurehdinsight.NET ile bağlanın, burada \<clustername> küme için verdiğiniz addır. 
 
-1. **İliştirme** : bir HDInsight kümesini işlem hedefi olarak eklemek için HDInsight kümesi IÇIN kaynak kimliği, Kullanıcı adı ve parola sağlamalısınız. HDInsight kümesinin kaynak KIMLIĞI, aşağıdaki dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve HDInsight kümesi adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
+1. **İliştirme**: bir HDInsight kümesini işlem hedefi olarak eklemek için HDInsight kümesi IÇIN kaynak kimliği, Kullanıcı adı ve parola sağlamalısınız. HDInsight kümesinin kaynak KIMLIĞI, aşağıdaki dize biçimi kullanılarak abonelik KIMLIĞI, kaynak grubu adı ve HDInsight kümesi adı kullanılarak oluşturulabilir: `/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
     ```python
    from azureml.core.compute import ComputeTarget, HDInsightCompute
@@ -165,7 +165,7 @@ Azure HDInsight, büyük veri analizi için popüler bir platformdur. Platform, 
     > [!WARNING]
     > Çalışma alanınızdan aynı HDInsight 'a birden çok, eşzamanlı ek oluşturmayın. Her yeni ek önceki mevcut ekleri keser.
 
-1. **Yapılandır** : HDI işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
+1. **Yapılandır**: HDI işlem hedefi için bir çalıştırma yapılandırması oluşturun. 
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
@@ -178,9 +178,9 @@ Azure Batch, büyük ölçekli paralel ve yüksek performanslı bilgi işlem (HP
 
 İşlem hedefi olarak Azure Batch iliştirmek için Azure Machine Learning SDK 'sını kullanmanız ve aşağıdaki bilgileri sağlamanız gerekir:
 
--    **Azure Batch işlem adı** : çalışma alanı içinde işlem için kullanılacak kolay bir ad
--    **Azure Batch hesap adı** : Azure Batch hesabının adı
--    **Kaynak grubu** : Azure Batch hesabını içeren kaynak grubu.
+-    **Azure Batch işlem adı**: çalışma alanı içinde işlem için kullanılacak kolay bir ad
+-    **Azure Batch hesap adı**: Azure Batch hesabının adı
+-    **Kaynak grubu**: Azure Batch hesabını içeren kaynak grubu.
 
 Aşağıdaki kod, Azure Batch işlem hedefi olarak nasıl ekleneceğini göstermektedir:
 
@@ -223,11 +223,11 @@ Kullanmadan önce bir Azure Databricks çalışma alanı oluşturun. Bir çalı�
 
 Azure Databricks bir işlem hedefi olarak eklemek için aşağıdaki bilgileri sağlayın:
 
-* __Databricks işlem adı__ : Bu işlem kaynağına atamak istediğiniz ad.
-* __Databricks çalışma alanı adı__ : Azure Databricks çalışma alanının adı.
-* __Databricks erişim belirteci__ : Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) belgesi.
+* __Databricks işlem adı__: Bu işlem kaynağına atamak istediğiniz ad.
+* __Databricks çalışma alanı adı__: Azure Databricks çalışma alanının adı.
+* __Databricks erişim belirteci__: Azure Databricks için kimlik doğrulaması yapmak için kullanılan erişim belirteci. Erişim belirteci oluşturmak için, bkz. [kimlik doğrulama](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html) belgesi.
 
-Aşağıdaki kod, Azure Machine Learning SDK ile bir işlem hedefi olarak Azure Databricks nasıl ekleneceğini gösterir ( __Databricks çalışma alanı, AML çalışma alanınızın aynı abonelikte bulunması gerekir__ ):
+Aşağıdaki kod, Azure Machine Learning SDK ile bir işlem hedefi olarak Azure Databricks nasıl ekleneceğini gösterir (__Databricks çalışma alanı, AML çalışma alanınızın aynı abonelikte bulunması gerekir__):
 
 ```python
 import os
@@ -279,9 +279,9 @@ Kullanmadan önce bir Azure Data Lake Analytics hesabı oluşturun. Bu kaynağı
 
 İşlem hedefi olarak Data Lake Analytics iliştirmek için Azure Machine Learning SDK 'sını kullanmanız ve aşağıdaki bilgileri sağlamanız gerekir:
 
-* __İşlem adı__ : Bu işlem kaynağına atamak istediğiniz ad.
-* __Kaynak grubu__ : Data Lake Analytics hesabını içeren kaynak grubu.
-* __Hesap adı__ : Data Lake Analytics hesap adı.
+* __İşlem adı__: Bu işlem kaynağına atamak istediğiniz ad.
+* __Kaynak grubu__: Data Lake Analytics hesabını içeren kaynak grubu.
+* __Hesap adı__: Data Lake Analytics hesap adı.
 
 Aşağıdaki kod, Data Lake Analytics işlem hedefi olarak nasıl ekleneceğini göstermektedir:
 

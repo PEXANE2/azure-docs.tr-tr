@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501648"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092151"
 ---
 # <a name="api-management-soft-delete-preview"></a>API Management geçici silme (Önizleme)
 
@@ -27,10 +27,10 @@ Geçici silme özelliği [REST API](/rest/api/apimanagement/2020-06-01-preview/a
 > [!TIP]
 > Azure REST API 'Leri çağırmaya yönelik ipuçları ve araçlar için [azure REST API başvurusu](/rest/api/azure/) ' na bakın.
 
-| İşlem | Açıklama | API Management ad alanı | En düşük API sürümü |
+| İşlem | Description | API Management ad alanı | En düşük API sürümü |
 |--|--|--|--|
 | [Oluştur veya güncelleştir](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Bir API Management hizmeti oluşturur veya güncelleştirir.  | API Management hizmeti | Herhangi bir |
-| [Create or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` Özelliği **true** olarak ayarlanmış şekilde oluştur veya güncelleştir | Daha önce geçici olarak siliniyorsa API Management hizmeti siler. `restore`Belirtilmişse ve `true` diğer tüm özelliklere ayarlanırsa, yok sayılır.  | API Management hizmeti |  2020-06-01-Önizleme |
+| [](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `restore` Özelliği **true** olarak ayarlanmış şekilde oluştur veya güncelleştir | Daha önce geçici olarak siliniyorsa API Management hizmeti siler. `restore`Belirtilmişse ve `true` diğer tüm özelliklere ayarlanırsa, yok sayılır.  | API Management hizmeti |  2020-06-01-Önizleme |
 | [Silme](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Mevcut bir API Management hizmetini siler. | API Management hizmeti | 2020-01-01-Önizleme|
 | [Ada göre al](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) | Adına göre geçici olarak silinen API Yönetimi hizmetini alın. | Silinen hizmetler | 2020-06-01-Önizleme |
 | [Aboneliğe göre Listele](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) | Verilen abonelik için geri alma için kullanılabilen tüm geçici silinen hizmetleri listeler. | Silinen hizmetler | 2020-06-01-Önizleme
@@ -48,11 +48,11 @@ APıM örneğiniz 48 saat içinde kurtarılmıyorsa, bu, (kurtarılamaz) kalıc�
 
 ## <a name="list-deleted-apim-instances"></a>Silinen APıM örneklerini Listele
 
-Silinen Hizmetleri [ada göre Al](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) veya [abonelik işlemlerine göre Listele](/deletedservices/listbysubscription) ' i kullanarak, geçici olarak silinen bir APIM örneğinin geri yükleme (silmeyi geri alma) için kullanılabilir olduğunu doğrulayabilirsiniz.
+Silinen Hizmetleri [ada göre Al](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) veya [abonelik işlemlerine göre Listele](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) ' i kullanarak, geçici olarak silinen bir APIM örneğinin geri yükleme (silmeyi geri alma) için kullanılabilir olduğunu doğrulayabilirsiniz.
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>Ada göre geçici olarak silinen bir örnek alın
 
-[Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) `{subscriptionId}` `{location}` `{serviceName}` Azure aboneliğiniz, kaynak konumunuz ve API Management örnek adınızla birlikte API Management adına göre Al işlemini kullanın:
+[](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) `{subscriptionId}` `{location}` `{serviceName}` Azure aboneliğiniz, kaynak konumunuz ve API Management örnek adınızla birlikte API Management adına göre Al işlemini kullanın:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview
@@ -76,7 +76,7 @@ Geri alma için varsa, Azure APıM örneğinin bir kaydını döndürür `deleti
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Belirli bir abonelik için tüm geçici silinen örnekleri listeleyin
 
-Abonelik KIMLIĞINIZLE yerine API Management [listesini abonelik Işlemine göre](/deletedservices/listbysubscription) kullanın `{subscriptionId}` :
+Abonelik KIMLIĞINIZLE yerine API Management [listesini abonelik Işlemine göre](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) kullanın `{subscriptionId}` :
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview
@@ -86,7 +86,7 @@ Bu işlem, belirli bir abonelik kapsamında, silme için kullanılabilen tüm ge
 
 ## <a name="recover-a-deleted-apim-instance"></a>Silinen bir APıM örneğini kurtarma
 
-[Create Or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `{subscriptionId}` `{resourceGroup}` `{apimServiceName}` Azure aboneliğiniz, kaynak grubu adı ve API Management adı yerine, ve kullanarak oluşturma veya güncelleştirme işlemi API Management kullanın:
+[](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) `{subscriptionId}` `{resourceGroup}` `{apimServiceName}` Azure aboneliğiniz, kaynak grubu adı ve API Management adı yerine, ve kullanarak oluşturma veya güncelleştirme işlemi API Management kullanın:
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2020-06-01-preview
@@ -111,7 +111,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="purge-a-soft-deleted-apim-instance"></a>Geçici olarak silinen bir APıM örneğini Temizleme
 
-[Purge](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) `{subscriptionId}` `{location}` `{serviceName}` Azure aboneliğiniz, kaynak konumunuz ve API Management adıyla birlikte, ve yerine API Management temizleme işlemini kullanın:
+[](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) `{subscriptionId}` `{location}` `{serviceName}` Azure aboneliğiniz, kaynak konumunuz ve API Management adıyla birlikte, ve yerine API Management temizleme işlemini kullanın:
 
 ```rest
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview

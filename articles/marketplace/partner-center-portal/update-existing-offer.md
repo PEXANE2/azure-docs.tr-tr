@@ -7,13 +7,13 @@ ms.topic: how-to
 author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491962"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033366"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Ticari Market 'teki mevcut teklifleri güncelleştirme
 
@@ -23,13 +23,13 @@ Bu makalede, mevcut tekliflerle ve planlarda nasıl güncelleştirme yapılacağ
 
 Önizleme veya canlı duruma başarıyla yayınlanan bir teklifi güncelleştirmek için bu adımları kullanın.
 
-1. Güncelleştirmek istediğiniz teklifin adını seçin. Teklifin durumu **Önizleme** , **canlı** , **Yayımlama sürüyor** , **taslak** , **dikkat edilmesi gereken** ya da **kullanılabilir değil** (daha önce teklifi satmayı durdurmayı seçtiyseniz) olarak listelenebilir. Seçildiğinde, bu teklif için **teklif genel bakış** sayfası açılır.
-1. Güncelleştirmek istediğiniz teklif sayfasını ( **Özellikler** , **teklif listesi** veya **Önizleme** gibi) seçin (veya **teklif genel bakış** sayfasında ilgili kartın **Güncelleştir** ' i seçin).
-1. Değişikliklerinizi yapın ve **Taslağı kaydet** ' i seçin. Tüm değişiklikleriniz tamamlanana kadar bu işlemi tekrarlayın.
+1. Güncelleştirmek istediğiniz teklifin adını seçin. Teklifin durumu **Önizleme**, **canlı**, **Yayımlama sürüyor**, **taslak**, **dikkat edilmesi gereken** ya da **kullanılabilir değil** (daha önce teklifi satmayı durdurmayı seçtiyseniz) olarak listelenebilir. Seçildiğinde, bu teklif için **teklif genel bakış** sayfası açılır.
+1. Güncelleştirmek istediğiniz teklif sayfasını ( **Özellikler**, **teklif listesi** veya **Önizleme** gibi) seçin (veya **teklif genel bakış** sayfasında ilgili kartın **Güncelleştir** ' i seçin).
+1. Değişikliklerinizi yapın ve **Taslağı kaydet**' i seçin. Tüm değişiklikleriniz tamamlanana kadar bu işlemi tekrarlayın.
 1. **[Compare](#compare-changes-to-your-offer)** sayfasında yaptığınız değişiklikleri gözden geçirin.
 1. Güncelleştirilmiş teklifinizi yayımlamaya hazırsanız herhangi bir sayfadan **İncele ve Yayımla** ' yı seçin. **İnceleme ve yayımlama** sayfası açılır. Bu sayfada, sizin güncelleştirdiğiniz teklifin bölümlerinin tamamlanma durumunu görürsünüz: 
-    - **Yayımlanmamış değişiklikler** : Bölüm güncelleştirildi ve tamamlandı. Tüm gerekli veriler sağlandı ve güncelleştirmelerde hiçbir hata alınmadı.
-    - **Tamamlanmamış** : bölümde yapılan güncelleştirmeler düzeltilmekte olan veya daha fazla bilgi sağlanması gereken hatalar getirdi.
+    - **Yayımlanmamış değişiklikler**: Bölüm güncelleştirildi ve tamamlandı. Tüm gerekli veriler sağlandı ve güncelleştirmelerde hiçbir hata alınmadı.
+    - **Tamamlanmamış**: bölümde yapılan güncelleştirmeler düzeltilmekte olan veya daha fazla bilgi sağlanması gereken hatalar getirdi.
 2. Güncelleştirilmiş teklifi yayımlamaya göndermek için **Yayımla** ' yı seçin. Teklifiniz daha sonra standart [doğrulama ve yayımlama adımlarını izleyerek](../review-publish-offer.md#validation-and-publishing-steps)yapılır.
 
 > [!IMPORTANT]
@@ -39,7 +39,7 @@ Bu makalede, mevcut tekliflerle ve planlarda nasıl güncelleştirme yapılacağ
 
 Zaten yayımladığınız bir teklifine yeni bir plan eklemek için bu adımları izleyin.
 
-1. Mevcut teklifiniz için **teklif genel bakış** sayfası ile **plana genel bakış** sayfasına gidin ve ardından **Yeni plan oluştur** ' u seçin.
+1. Mevcut teklifiniz için **teklif genel bakış** sayfası ile **plana genel bakış** sayfasına gidin ve ardından **Yeni plan oluştur**' u seçin.
 1. **Mevcut planlar fiyatlandırma modelini** kullanarak [yönergelere](../plans-pricing.md) göre yeni bir plan oluşturun.
 1. Plan adını değiştirdikten sonra **Taslağı kaydet** ' i seçin.
 1. Güncelleştirmelerinizi yayımlamaya hazırsanız **Yayımla** ' yı seçin. **[İnceleme ve yayımlama](../review-publish-offer.md)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
@@ -48,8 +48,8 @@ Zaten yayımladığınız bir teklifine yeni bir plan eklemek için bu adımlar�
 
 Zaten yayımladığınız bir teklifin planında değişiklik yapmak için bu adımları uygulayın.
 
-1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster** ' i seçin.
-1. Plan **adını** , **fiyatlandırma modelini** veya **kullanılabilirliği** seçin. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
+1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
+1. Plan **adını**, **fiyatlandırma modelini** veya **kullanılabilirliği** seçin. *Şu anda planlar yalnızca İngilizce (Birleşik Devletler) olarak kullanılabilir*.
 1. Plan adı, açıklama veya hedef kitle kullanılabilirliğine herhangi bir değişiklik yaptıktan sonra **Taslağı kaydet** ' i seçin.
 1. Güncelleştirmelerinizi yayımlamaya hazırsanız **gözden geçir ve Yayımla '** yı seçin. **[İnceleme ve yayımlama](../review-publish-offer.md)** sayfası açılır ve güncelleştirmelerinizin tamamlanma durumunu sağlar.
 1. Güncelleştirilmiş planı yayımlamaya göndermek için **Yayımla** ' yı seçin. Gözden geçirmeniz ve onaylamanız için güncelleştirilmiş teklifin önizleme sürümü kullanılabilir olduğunda size e-posta göndereceğiz.
@@ -58,19 +58,19 @@ Zaten yayımladığınız bir teklifin planında değişiklik yapmak için bu ad
 
 Bir sanal makine planı yayımlandıktan sonra, fiyatı değiştirilemez. Aynı planı farklı bir fiyatla sunmak için planı gizlemeniz ve güncelleştirilmiş fiyata yeni bir tane oluşturmanız gerekir. İlk olarak, değiştirmek istediğiniz fiyattan planı gizleyin:
 
-1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster** ' i seçin.
+1. Mevcut teklifiniz için **teklif genel bakış** sayfasında, değiştirmek istediğiniz planı seçin. Plana **genel bakış** listesinden erişilemezse, **tüm planları göster**' i seçin.
 1. **Planı Gizle** onay kutusunu seçin. Devam etmeden önce taslağı kaydedin.
 
 Planı eski fiyatla gizlemiş olduğunuza göre, bu planın güncelleştirilmiş fiyatla bir kopyasını oluşturun:
 
 1. Iş Ortağı Merkezi ' nde **plana genel bakış ' a** geri dönün.
-2. **Yeni plan oluştur** ' u seçin. Bir **plan kimliği** ve bir **Plan adı** girip **Oluştur** ' u seçin.
+2. **Yeni plan oluştur**' u seçin. Bir **plan kimliği** ve bir **Plan adı** girip **Oluştur**' u seçin.
 1. Gizlediğiniz plandaki teknik yapılandırmayı yeniden kullanmak için, **Teknik yapılandırmayı yeniden kullan** onay kutusunu seçin. Daha fazla bilgi edinmek için [BIR VM teklifi için plan oluşturma planı](../azure-vm-create-plans.md) makalesini okuyun.
     > [!IMPORTANT]
-    > **Bu planı başka bir plandan teknik yapılandırmayı yeniden kullanır** ' i seçerseniz, üst planı daha sonra satamazsınız. Ana planı satmaya geçmek istiyorsanız bu seçeneği kullanmayın.
+    > **Bu planı başka bir plandan teknik yapılandırmayı yeniden kullanır**' i seçerseniz, üst planı daha sonra satamazsınız. Ana planı satmaya geçmek istiyorsanız bu seçeneği kullanmayın.
 3. Yeni fiyat dahil olmak üzere yeni plan için gerekli tüm bölümleri doldurun.
-1. **Taslağı kaydet** 'i seçin.
-1. Yeni plan için gerekli tüm bölümleri tamamladıktan sonra **gözden geçir ve Yayımla** ' yı seçin. Bu işlem teklifinizi İnceleme ve yayınlama için gönderir. Daha ayrıntılı bilgi edinmek için [gözden geçirin ve ticari Market 'e bir teklif yayımlayın](../review-publish-offer.md) .
+1. **Taslağı kaydet**'i seçin.
+1. Yeni plan için gerekli tüm bölümleri tamamladıktan sonra **gözden geçir ve Yayımla**' yı seçin. Bu işlem teklifinizi İnceleme ve yayınlama için gönderir. Daha ayrıntılı bilgi edinmek için [gözden geçirin ve ticari Market 'e bir teklif yayımlayın](../review-publish-offer.md) .
 
 ## <a name="sync-private-plan-audiences"></a>Özel plan kitlelerini Eşitle
 
@@ -89,7 +89,7 @@ Canlı veya [Önizleme](#compare-changes-to-a-preview-offer) teklifinizin günce
 
 - Herhangi bir noktada, düzen işlemi sırasında **Compare** kullanabilirsiniz.
 - Değiştirmek istediğiniz değere gitmek için **karşılaştırma** sayfasında bir alan seçin.
-- Tüm alanlar için değerleri, hatta güncelleştirilmemiş alanları görmek için **tüm alanlar** filtresini seçin. **Değiştirilen alanlar** ' ı seçip aşağıdaki filtrelerden birini seçerek bu alanlar içindeki filtreleri değiştirebilirsiniz:
+- Tüm alanlar için değerleri, hatta güncelleştirilmemiş alanları görmek için **tüm alanlar** filtresini seçin. **Değiştirilen alanlar**' ı seçip aşağıdaki filtrelerden birini seçerek bu alanlar içindeki filtreleri değiştirebilirsiniz:
     - **Kaldırılan değerler** filtresi, yayımladığınız alanları görüntüler ve şimdi tamamen kaldırıyorsunuz.
     - **Eklenen değerler** filtresi, ilk olarak yayımlamayan ve şimdi ekleyen alanları görüntüler.
     - **Düzenlenmiş değerler** filtresi yayımlanmış alanları görüntüler, ancak artık içeriği güncelleştirdiniz.

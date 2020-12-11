@@ -9,13 +9,13 @@ ms.topic: overview
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.custom: contperfq1, azuread-video-2020
-ms.openlocfilehash: b61da9710b51ad4802b46cae7625d6ba9a66e86c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1, azuread-video-2020
+ms.openlocfilehash: a39ae904bb1dd36c3d3e19e8f51ff24e8d975f9b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91595753"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033927"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>Azure rol tabanlı erişim denetimi (Azure RBAC) nedir?
 
@@ -48,7 +48,7 @@ Azure RBAC kullanarak kaynaklara erişimi denetleme yönteminiz, rol atamaları 
 
 ### <a name="role-definition"></a>Rol tanımı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Genellikle bir *rol*olarak adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Roller sahip gibi üst düzey veya sanal makine okuyucusu gibi sınırlı olabilir.
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Genellikle bir *rol* olarak adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Roller sahip gibi üst düzey veya sanal makine okuyucusu gibi sınırlı olabilir.
 
 ![Rol ataması için rol tanımı](./media/shared/rbac-role-definition.png)
 
@@ -92,7 +92,7 @@ Birden çok çakışan rol atamalarınız varsa ne olur? Azure RBAC, bir ekleneb
 
 ## <a name="deny-assignments"></a>Reddetme atamaları
 
-Daha önce, Azure RBAC reddetme olmayan bir izin verme modelidir, ancak artık Azure RBAC, atamaları sınırlı bir şekilde reddetme olanağı desteklemektedir. Bir rol atamasına benzer şekilde, *reddetme atama* , erişimi reddetmek amacıyla belirli bir kapsamdaki bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe reddetme eylemleri kümesi iliştirir. Bir rol ataması *izin*verilen bir dizi eylemi tanımlar, ancak reddetme ataması *izin verilmeyen*bir dizi eylemi tanımlar. Başka bir deyişle, reddetme atamaları kullanıcıların belirtilen eylemleri gerçekleştirmesini (rol ataması izin vermiş olsa bile) engeller. Reddetme atamaları rol atamalarından daha önceliklidir.
+Daha önce, Azure RBAC reddetme olmayan bir izin verme modelidir, ancak artık Azure RBAC, atamaları sınırlı bir şekilde reddetme olanağı desteklemektedir. Bir rol atamasına benzer şekilde, *reddetme atama* , erişimi reddetmek amacıyla belirli bir kapsamdaki bir Kullanıcı, Grup, hizmet sorumlusu veya yönetilen kimliğe reddetme eylemleri kümesi iliştirir. Bir rol ataması *izin* verilen bir dizi eylemi tanımlar, ancak reddetme ataması *izin verilmeyen* bir dizi eylemi tanımlar. Başka bir deyişle, reddetme atamaları kullanıcıların belirtilen eylemleri gerçekleştirmesini (rol ataması izin vermiş olsa bile) engeller. Reddetme atamaları rol atamalarından daha önceliklidir.
 
 Daha fazla bilgi için bkz. [Azure reddetme atamalarını anlama](deny-assignments.md).
 

@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 20f095a058434c36373c30ed2a633db12643814d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 906d3d28aabf8f6ecd6e04c38b4519937fa95c2b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448271"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092168"
 ---
 # <a name="machine-learning-capabilities-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'teki Machine Learning özellikleri
 
@@ -62,9 +62,9 @@ Makine öğrenimi modelleri çeşitli algoritmalardan ve kitaplıklardan yardım
 
 MLlib 'in yanı sıra, [Scikit öğreni](https://scikit-learn.org/stable/) gibi popüler kitaplıklar da modeller geliştirmek için de kullanılabilir. SYNAPSE Spark havuzlarında kitaplıkların nasıl yükleneceğine ilişkin ayrıntılar için bkz. [Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme](../spark/apache-spark-azure-portal-add-libraries.md) .
 
-#### <a name="train-models-with-azure-machine-learning-automl"></a>Azure Machine Learning oto ml ile modelleri eğitme
+#### <a name="train-models-with-azure-machine-learning-automated-ml"></a>Azure Machine Learning otomatikleştirilmiş ML ile modelleri eğitme
 
-Makine öğrenimi modellerini eğitmek için bir başka yol da, Machine Learning ile ilgili çok daha fazla bilgi gerektirmeyen, oto ml 'yi kullanmaktır. Otomatik [ml](/azure/machine-learning/concept-automated-ml) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure SYNAPSE not defterlerinden Azure Machine Learning ile sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de doğrudan oto ml 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning oto ml kullanarak modellerin nasıl eğleneceğini açıklayan bir [oto ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
+Makine öğrenimi modellerini eğitmek için başka bir yöntem de, Machine Learning ile ilgili çok daha fazla bilgi gerektirmez. otomatik ML 'yi kullanmaktır. [OTOMATIK ml](/azure/machine-learning/concept-automated-ml) , bir makine öğrenimi modelleri kümesini otomatik olarak gösteren ve kullanıcının belirli ölçümleri temel alarak en iyi modeli seçmesini sağlayan bir özelliktir. Azure Machine Learning Azure SYNAPSE not defterlerinden sorunsuz bir tümleştirme sayesinde, kullanıcılar SYNAPSE 'de otomatik ML 'yi geçiş Azure Active Directory kimlik doğrulamasıyla kolayca kullanabilir.  Bu, yalnızca Azure Machine Learning çalışma alanınızı işaret etmeniz ve herhangi bir kimlik bilgisi girmeniz gerekmediği anlamına gelir. SYNAPSE Spark havuzlarında Azure Machine Learning otomatikleştirilmiş ML kullanarak modellerin nasıl eğleneceğini açıklayan [Otomatikleştirilmiş BIR ml öğreticisi](../spark/apache-spark-azure-machine-learning-tutorial.md) aşağıda verilmiştir.
 
 ### <a name="model-deployment-and-scoring"></a>Model dağıtımı ve Puanlama
 
@@ -76,7 +76,7 @@ Azure SYNAPSE ya da Azure SYNAPSE dışında eğitilen modeller toplu Puanlama i
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure SYNAPSE Analytics 'i kullanmaya başlama](../get-started.md)
+* [Azure Synapse Analytics ile çalışmaya başlama](../get-started.md)
 * [Çalışma alanı oluşturma](../get-started-create-workspace.md)
 * [Hızlı başlangıç: SYNAPSE 'de yeni Azure Machine Learning bağlantılı hizmet oluşturma](quickstart-integrate-azure-machine-learning.md)
 * [Öğretici: Machine Learning model Puanlama Sihirbazı-adanmış SQL havuzu](tutorial-sql-pool-model-scoring-wizard.md)

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: e995cd8f300787a19934e9b9eeae1dea73e8576c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c694cf58f4c6b613cbc183753785a34bc15063bd
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457077"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093613"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory-veri hareketine yönelik güvenlik konuları
 
@@ -33,7 +33,7 @@ Data Factory yalnızca **Batı ABD**, **Doğu ABD** ve **Kuzey Avrupa** bölgele
 Azure Data Factory kendisi, sertifikalar kullanılarak şifrelenen bulut veri depoları için bağlı hizmet kimlik bilgileri dışında hiçbir veri depolamaz. Veri hareketini [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats) arasında, verilerin işlenmesini de başka bölgelerde veya şirket içi bir ortamda [işlem hizmetleri](data-factory-compute-linked-services.md) kullanarak düzenlemek için veri temelinde iş akışları oluşturmanızı sağlar. Hem programlama, hem de kullanıcı arabirimi mekanizmalarını kullanarak [iş akışlarını izlemenizi ve yönetmenizi](data-factory-monitor-manage-pipelines.md) de sağlar.
 
 Azure Data Factory kullanarak veri taşıma için **sertifikalıdır** :
--   [HıPAA/HITECH](https://www.microsoft.com/en-us/trustcenter/Compliance/HIPAA)  
+-   [HıPAA/HITECH](/compliance/regulatory/offering-hipaa-hitech)  
 -   [ISO/ıEC 27001](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27001)  
 -   [ISO/ıEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018) 
 -   [CSA YıLDıZı](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
@@ -149,7 +149,7 @@ Bir kuruluşta kurumsal **güvenlik duvarı** kuruluşun merkezi yönlendiricisi
 
 Aşağıdaki tabloda, **Şirket güvenlik duvarı** için **giden bağlantı noktası** ve etki alanı gereksinimleri verilmiştir.
 
-| Etki alanı adları | Giden bağlantı noktaları | Açıklama |
+| Etki alanı adları | Giden bağlantı noktaları | Description |
 | ------------ | -------------- | ----------- | 
 | `*.servicebus.windows.net` | 443, 80 | Data Factory içindeki veri taşıma hizmetlerine bağlanmak için ağ geçidi için gereklidir |
 | `*.core.windows.net` | 443 | [Hazırlanmış kopya](data-factory-copy-activity-performance.md#staged-copy) özelliğini kullandığınızda, Azure depolama hesabına bağlanmak için ağ geçidi tarafından kullanılır. | 
@@ -162,7 +162,7 @@ Aşağıdaki tabloda, **Şirket güvenlik duvarı** için **giden bağlantı nok
 
 Aşağıdaki tabloda **Windows Güvenlik Duvarı** için **gelen bağlantı noktası** gereksinimleri verilmiştir.
 
-| Gelen bağlantı noktaları | Açıklama | 
+| Gelen bağlantı noktaları | Description | 
 | ------------- | ----------- | 
 | 8050 (TCP) | Ağ geçidinde şirket içi veri depoları için kimlik bilgilerini güvenli bir şekilde ayarlamak üzere kimlik bilgileri Yöneticisi uygulaması gereklidir. | 
 

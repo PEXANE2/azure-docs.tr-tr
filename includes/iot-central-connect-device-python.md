@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: cd7d4d3653dc775a949da229e4005d297f7810aa
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2eff30333362d461f196972fbaedbeac8f2ae7c9
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127079"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033896"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
@@ -27,7 +27,7 @@ IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetm
 
 `main`İşlev:
 
-* , Cihazı sağlamak için DPS kullanır. Sağlama bilgileri, model KIMLIĞINI içerir.
+* , Cihazı sağlamak için DPS kullanır. Sağlama bilgileri, model KIMLIĞINI içerir. IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Bir `Device_client` nesne oluşturur ve `dtmi:com:example:Thermostat;1` bağlantıyı açmadan önce model kimliğini ayarlar.
 * `maxTempSinceLastReboot`Özelliği IoT Central 'e gönderir.
 * Komut için bir dinleyici oluşturur `getMaxMinReport` .
@@ -113,7 +113,7 @@ async def main():
     # ...
 ```
 
-`provision_device`İşlevi, cihazı sağlamak ve IoT Central kaydetmek IÇIN DPS kullanır. İşlevi, sağlama yükünde cihaz modeli KIMLIĞINI içerir:
+`provision_device`İşlevi, cihazı sağlamak ve IoT Central kaydetmek IÇIN DPS kullanır. İşlevi, sağlama yükünde [bir cihazı bir cihaz şablonuyla ilişkilendirmek](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template)için IoT Central kullanılan CIHAZ modeli kimliğini içerir:
 
 ```python
 async def provision_device(provisioning_host, id_scope, registration_id, symmetric_key, model_id):

@@ -4,14 +4,14 @@ description: Azure Notebooks Kullanıcı arabirimi ve doğrudan Terminal erişim
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7674c2151922d26e069b5cd285cb311d7a18fa98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb106132cf0dfb14dc41c1d4b480fd3a1d7fd7fe
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852812"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093545"
 ---
-# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" /> Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede projeleri yönetme ve yapılandırma
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -57,7 +57,7 @@ Proje panosu, projenin klasör sisteminin içeriğini gösterir. Bu dosyaları y
 
 **+ New** komutu (klavye kısayolu: n) yeni dosya veya klasör oluşturur. Komutunu kullanırken öncelikle oluşturulacak öğe türünü seçin:
 
-| Öğe türü | Açıklama | Komut davranışı |
+| Öğe türü | Description | Komut davranışı |
 | --- | --- | --- |
 | **Not defteri** | Jupyter Not defteri | Not defterinin dosya adını ve dilini belirttiğiniz bir açılan pencere görüntüler. |
 | **Klasör** | Bir alt klasör | Projenin dosya listesinde klasör adını girdiğiniz bir düzenleme alanı oluşturur. |
@@ -111,7 +111,7 @@ Tüm proje yapılandırması formları, sanal makine her başlatıldığında uy
 
 ### <a name="one-time-initialization-script"></a>Bir kerelik başlatma betiği
 
-İlk kez Azure Notebooks proje için bir sunucu oluşturduğunda, projede *aznbsetup.sh*adlı bir dosya arar. Bu dosya varsa, Azure Notebooks çalıştırır. Betiğin çıkışı proje klasörünüzde *. aznbsetup. log*olarak depolanır.
+İlk kez Azure Notebooks proje için bir sunucu oluşturduğunda, projede *aznbsetup.sh* adlı bir dosya arar. Bu dosya varsa, Azure Notebooks çalıştırır. Betiğin çıkışı proje klasörünüzde *. aznbsetup. log* olarak depolanır.
 
 ### <a name="environment-setup-steps"></a>Ortam kurulum adımları
 
@@ -145,7 +145,7 @@ Proje panosunda, **Terminal** komutu sunucuya doğrudan erişim sağlayan bir Li
 > [!Note]
 > Projenizin ortamında başlangıç betikleriniz varsa, terminali açmak kurulumun hala devam ettiğini belirten bir ileti görüntüleyebilir.
 
-Terminalde herhangi bir standart Linux komutu verebilirsiniz. Ayrıca, `ls` bir sanal makinede bulunan *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *ifsharp*ve *R*gibi farklı ortamları, projeyi içeren bir *Proje* klasörüyle birlikte görmek için giriş klasöründe de kullanabilirsiniz:
+Terminalde herhangi bir standart Linux komutu verebilirsiniz. Ayrıca, `ls` bir sanal makinede bulunan *anaconda2_501*, *anaconda3_420*, *anaconda3_501*, *ifsharp* ve *R* gibi farklı ortamları, projeyi içeren bir *Proje* klasörüyle birlikte görmek için giriş klasöründe de kullanabilirsiniz:
 
 ![Azure Notebooks 'de Proje terminali](media/project-terminal.png)
 
@@ -171,7 +171,7 @@ Sunucuda yapılan değişiklikler, *Proje* klasöründe oluşturduğunuz dosyala
 
 ## <a name="access-notebook-logs"></a>Not defteri günlüklerine erişin
 
-Bir not defteri çalıştırırken sorunlarla karşılaşırsanız, Jupyter 'dan alınan çıkış *. NB. log*adlı bir klasörde depolanır. Bu günlüklere, **Terminal** komutu veya proje panosu aracılığıyla erişebilirsiniz.
+Bir not defteri çalıştırırken sorunlarla karşılaşırsanız, Jupyter 'dan alınan çıkış *. NB. log* adlı bir klasörde depolanır. Bu günlüklere, **Terminal** komutu veya proje panosu aracılığıyla erişebilirsiniz.
 
 Genellikle, yerel olarak jupi çalıştırdığınızda bir terminal penceresinden başlatılmış olabilirsiniz. Terminal penceresi, çekirdek durumu gibi çıktıyı gösterir.
 

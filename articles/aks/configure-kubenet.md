@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 82745d4f86a440c671e73ac3c74702a4a0c56b2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348211"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034063"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde kendi IP adresi aralıklarınız ile Kubernetes kullanan ağını kullanma
 
@@ -38,7 +38,7 @@ Azure CLı sürüm 2.0.65 veya sonraki bir sürümün yüklü ve yapılandırıl
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Kendi alt ağınızla Kubernetes kullanan ağlarına genel bakış
 
-Birçok ortamda, ayrılmış IP adresi aralıklarına sahip sanal ağları ve alt ağları tanımladınız. Bu sanal ağ kaynakları, birden çok hizmeti ve uygulamayı desteklemek için kullanılır. Aks kümeleri, ağ bağlantısı sağlamak için *Kubernetes kullanan* (temel ağ) veya Azure CNI ( *Gelişmiş ağ* ) kullanabilir.
+Birçok ortamda, ayrılmış IP adresi aralıklarına sahip sanal ağları ve alt ağları tanımladınız. Bu sanal ağ kaynakları, birden çok hizmeti ve uygulamayı desteklemek için kullanılır. Aks kümeleri, ağ bağlantısı sağlamak için *Kubernetes kullanan* (temel ağ) veya Azure CNI (*Gelişmiş ağ*) kullanabilir.
 
 *Kubernetes kullanan* ile yalnızca düğümler sanal ağ alt ağında bir IP adresi alır. Pods birbirleriyle doğrudan iletişim kuramaz. Bunun yerine, düğümler arasında yer alan bağlantı için Kullanıcı tanımlı yönlendirme (UDR) ve IP iletimi kullanılır. Varsayılan olarak, UDRs ve IP iletme yapılandırması AKS hizmeti tarafından oluşturulur ve saklanır, ancak [özel yol yönetimi için kendi yol tablonuzu getirme][byo-subnet-route-table]seçeneğine ihtiyacınız vardır. Ayrıca, atanan IP adresi alan bir hizmetin arkasında yer alan ve uygulama için Yük Dengeleme trafiği dağıtımını yapabilirsiniz. Aşağıdaki diyagramda, AKS düğümlerinin sanal ağ alt ağında IP adresi alma, ancak bunların olmaması gösterilmektedir:
 
@@ -168,7 +168,7 @@ Aşağıdaki IP adresi aralıkları, küme oluşturma işleminin parçası olara
 
 * *--Pod-CIDR* , ağ ortamınızda başka bir yerde kullanımda olmayan büyük bir adres alanı olmalıdır. Bu Aralık, Express Route veya siteden siteye VPN bağlantısı kullanarak Azure sanal ağlarınızı bağladığınızda veya bağlanmayı planlıyorsanız şirket içi ağ aralıklarını içerir.
     * Bu adres aralığı, ölçeğini genişletmek istediğiniz düğüm sayısına uyacak kadar büyük olmalıdır. Ek düğümler için daha fazla adrese ihtiyacınız varsa, küme dağıtıldıktan sonra bu adres aralığını değiştiremezsiniz.
-    * Pod IP adresi aralığı, kümedeki her düğüme */24* adres alanı atamak için kullanılır. Aşağıdaki örnekte, *--Pod-CIDR* *10.244.0.0/16* ilk düğümü *10.244.0.0/24* , ikinci düğüm *10.244.1.0/24* ve üçüncü düğüm *10.244.2.0/24* olarak atar.
+    * Pod IP adresi aralığı, kümedeki her düğüme */24* adres alanı atamak için kullanılır. Aşağıdaki örnekte, *--Pod-CIDR* *10.244.0.0/16* ilk düğümü *10.244.0.0/24*, ikinci düğüm *10.244.1.0/24* ve üçüncü düğüm *10.244.2.0/24* olarak atar.
     * Küme ölçeklenirken veya yükseltirken, Azure platformu her yeni düğüme bir pod IP adres aralığı atamaya devam eder.
     
 * *--Docker-Bridge-Address* , aks düğümlerinin temel alınan yönetim platformuyla iletişim kurmasına olanak tanır. Bu IP adresi, kümenizin sanal ağ IP adresi aralığı içinde olmamalı ve ağınızda kullanılmakta olan diğer adres aralıklarıyla çakışmamalıdır.
@@ -224,7 +224,6 @@ Kubenet Networking, istekleri başarıyla yönlendirmek için düzenlenmiş yol 
 Sınırlamalar:
 
 * Küme oluşturmadan önce izinler atanmalıdır, özel alt ağınız ve özel yol tablonuz için yazma izinlerine sahip bir hizmet sorumlusu kullandığınızdan emin olun.
-* Yönetilen kimlikler Şu anda kubenet içindeki özel yol tabloları ile desteklenmemektedir.
 * AKS kümesini oluşturmadan önce özel bir yol tablosunun alt ağ ile ilişkilendirilmesi gerekir.
 * İlişkili yol tablosu kaynağı, küme oluşturulduktan sonra güncelleştirilemez. Yol tablosu kaynağı güncelleştirilemediğinden, yönlendirme tablosunda özel kurallar değiştirilebilir.
 * Her bir AKS kümesi, kümeyle ilişkili tüm alt ağlar için tek bir benzersiz yol tablosu kullanmalıdır. Çakışan Pod Cıdrs ve çakışan yönlendirme kuralları nedeniyle potansiyel olarak birden çok küme içeren bir yol tablosunu yeniden kullanamazsınız.

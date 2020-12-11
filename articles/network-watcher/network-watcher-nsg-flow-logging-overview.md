@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: b6f66813ea23f6c9d4b47a3733d0c72c683d0676
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 03ef75f43d8c8c854c3803ceb30f31b292d566c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493993"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033434"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -48,7 +48,7 @@ Akış günlükleri, bulut ortamınızdaki tüm ağ etkinlikleri için Truth kay
 **Anahtar Özellikler**
 
 - Akış günlükleri, [Katman 4](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer) ' te çalışır ve bır NSG 'ye giden ve gıden tüm IP akışlarını kaydeder
-- Günlükler Azure platformu aracılığıyla toplanır ve müşteri kaynaklarını veya ağ performansını herhangi bir şekilde etkilemez.
+- Günlükler, Azure platformu aracılığıyla **1 dakikalık aralıklarla** toplanır ve müşteri kaynaklarını veya ağ performansını herhangi bir şekilde etkilemez.
 - Günlükler JSON biçiminde yazılır ve her NSG kural temelinde giden ve gelen akışları gösterir.
 - Her günlük kaydı, akış için geçerli olan ağ arabirimini (NIC), 5 demet bilgisini, trafik kararı & (yalnızca sürüm 2) aktarım hızı bilgilerini içerir. Tam Ayrıntılar için aşağıdaki _günlük biçimine_ bakın.
 - Akış günlükleri, oluşturma işleminden sonra otomatik olarak bir yıla kadar olan günlükleri silmeye izin veren bir bekletme özelliğine sahiptir. 
@@ -361,17 +361,23 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 **Internet IP 'lerinden ortak IP Içermeyen VM 'lere kaydedilen gelen akışlar**: bir genel IP adresi, örnek DÜZEYI genel IP olarak NIC ile ilişkili bir genel IP adresi aracılığıyla atanmamış veya temel bir yük dengeleyici arka uç havuzunun parçası olan VM 'ler, [varsayılan SNAT](../load-balancer/load-balancer-outbound-connections.md) 'yi kullanın ve giden bağlantıyı kolaylaştırmak için Azure tarafından atanmış bir IP adresine sahip olmalıdır. Sonuç olarak, akış, SNAT için atanan bağlantı noktası aralığındaki bir bağlantı noktasına gidiyor ise internet IP adreslerinden akışlar için akış günlüğü girişleri görebilirsiniz. Azure bu akışlara sanal makineye izin vermediğinden, deneme günlüğe kaydedilir ve tasarıma göre ağ Izleyicisi 'nin NSG akış günlüğünde görüntülenir. İstenmeyen gelen internet trafiğinin NSG ile açıkça engellenmesini öneririz.
 
+**Application Gateway v2 alt ağ NSG Ile sorun**: Application Gateway v2 alt ağ NSG 'de akış günlüğü oluşturma şu anda [desteklenmiyor](https://docs.microsoft.com/azure/application-gateway/application-gateway-faq#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet) . Bu sorun Application Gateway v1 'yi etkilemez.
+
 **Uyumsuz hizmetler**: geçerli platform sınırlamaları nedeniyle, NSG akış günlükleri tarafından desteklenmeyen küçük bir Azure Hizmetleri kümesi desteklenmez. Uyumsuz hizmetlerin geçerli listesi
 - [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
 - [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
-## <a name="best-practices"></a>En iyi yöntemler
+## <a name="best-practices"></a>En iyi uygulamalar
 
 **Kritik VNET 'lerde/alt ağlarda etkinleştir**: akış günlüklerinin, aboneliğinizdeki tüm kritik VNET 'lerde/alt ağlarda bir denetlenebilirlik ve Security en iyi uygulaması olarak etkinleştirilmesi gerekir. 
 
 **Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm NSG 'ler için bir kaynağın alt ağını veya ağ arabirimini uygulayarak tüm trafiğin kaydedildiğinden emin olmanızı öneririz. Daha fazla bilgi için bkz. trafiğin ağ güvenlik gruplarında [nasıl değerlendirildiği](../virtual-network/network-security-group-how-it-works.md) .
 
+**Hem NIC hem de alt ağ düzeyinde NSG 'ye sahip olma**: NSG 'nin NIC 'de ve alt ağ düzeyinde yapılandırılması durumunda, akış günlüğü 'nün her ikisinde de her iki durumda da etkin olması gerekir. 
+
 **Depolama sağlama**: depolama alanı beklenen akış günlüğü birimi ile ayarlama sırasında sağlanmalıdır.
+
+**Adlandırma**: NSG adı 80 karakter ve NSG kural adları ile 65 karakter arasında olmalıdır. Adlar karakter sınırlarını aşarsa günlüğe kaydetme sırasında kesilebilir.
 
 ## <a name="troubleshooting-common-issues"></a>Genel sorunları giderme
 

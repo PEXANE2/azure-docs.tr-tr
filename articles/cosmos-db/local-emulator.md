@@ -6,13 +6,13 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 09/22/2020
-ms.custom: devx-track-csharp, contperfq1
-ms.openlocfilehash: bfab099c3b81164e0d9ffaa009ea13f42aefb875
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.custom: devx-track-csharp, contperf-fy21q1
+ms.openlocfilehash: 89e82e210dbf7c404ebd5978d87bf391d8565ee2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608648"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033978"
 ---
 # <a name="install-and-use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos DB öykünücüsü 'nü yükleyip kullanın
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -97,7 +97,7 @@ Azure Cosmos DB Öykünücüsü varsayılan olarak 8081 numaralı bağlantı nok
 
 ## <a name="use-the-emulator-on-docker-for-windows"></a><a id="run-on-windows-docker"></a>Docker for Windows üzerinde öykünücü kullanın
 
-Azure Cosmos DB öykünücüsünü Windows Docker kapsayıcısında çalıştırabilirsiniz. Docker pull komutu için [Docker Hub 'ına](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker) `Dockerfile` ve daha fazla bilgi için GitHub ' a bakın. Şu anda öykünücü Oracle Linux için Docker üzerinde çalışmıyor. Docker for Windows üzerinde öykünücü çalıştırmak için aşağıdaki yönergeleri kullanın:
+Azure Cosmos DB öykünücüsünü Windows Docker kapsayıcısında çalıştırabilirsiniz. Docker pull komutu için [Docker Hub 'ına](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/) [](https://github.com/Azure/azure-cosmos-db-emulator-docker) `Dockerfile` ve daha fazla bilgi için GitHub ' a bakın. Şu anda öykünücü Oracle Linux için Docker üzerinde çalışmıyor. Docker for Windows üzerinde öykünücü çalıştırmak için aşağıdaki yönergeleri kullanın:
 
 1. [Docker for Windows](https://www.docker.com/docker-windows) yükledikten sonra, araç çubuğundaki Docker simgesine sağ tıklayıp **Windows kapsayıcılarına geç**' i seçerek Windows kapsayıcılarına geçiş yapın.
 

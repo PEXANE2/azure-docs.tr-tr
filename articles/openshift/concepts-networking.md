@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512380"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093528"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Azure Red Hat OpenShift (ARO) için ağ kavramları
 
@@ -76,7 +76,7 @@ Aşağıdaki ağ özellikleri Azure Red Hat OpenShift 'e özgüdür:
 * Pod CıDR değeri minimum/18 boyutunda olmalıdır (pod ağı yönlendirilemeyen IP 'Ler ve yalnızca OpenShift SDN içinde kullanılır).
 * Her düğüm, IP 'Leri için ayrılan/23 alt ağı (512 IP). Bu değer değiştirilemez.
 * Birden çok ağa Pod ekleyemezsiniz.
-* Çıkış statik IP 'yi yapılandıramazsınız. (Bu bir OpenShift özelliğidir. Bilgi için bkz. [Çıkış IP 'lerini yapılandırma](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html)).
+* Çıkış statik IP 'yi yapılandıramazsınız. (Bu bir OpenShift özelliğidir. Bilgi için bkz. [Çıkış IP 'lerini yapılandırma](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html)).
 
 ## <a name="network-settings"></a>Ağ ayarları
 

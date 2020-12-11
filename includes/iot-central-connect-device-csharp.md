@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/25/2020
-ms.openlocfilehash: 3668d4e5164ad731058f944feaef66029c2ed2a9
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: f4536beae18a50d3e1d42fc1593cf826c94418f8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127075"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033895"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şunlar gereklidir:
 
@@ -27,7 +27,7 @@ IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetm
 
 *Program.cs* içinde, `main` yöntemi şu şekilde çağırır `SetupDeviceClientAsync` :
 
-* Cihazı DPS ile sağlarken model KIMLIĞINI kullanın `dtmi:com:example:Thermostat;1` .
+* Cihazı DPS ile sağlarken model KIMLIĞINI kullanın `dtmi:com:example:Thermostat;1` . IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * IoT Central bağlanmak için bir **Deviceclient** örneği oluşturun.
 
 ```csharp
@@ -202,7 +202,7 @@ private Task<MethodResponse> HandleMaxMinReportCommand(MethodRequest request, ob
 
 1. Visual Studio 'da, **hata ayıklama > Project > termostat özellikleri**' ne gidin. Ardından projeye aşağıdaki ortam değişkenlerini ekleyin:
 
-    | Ad | Değer |
+    | Name | Değer |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |

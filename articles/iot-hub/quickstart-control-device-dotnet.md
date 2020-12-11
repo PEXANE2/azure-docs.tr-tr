@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub’dan bir cihazı denetleme hızlı başlangıcı (.NET) | Microsoft Docs
-description: Bu hızlı başlangıçta iki örnek C# uygulaması çalıştırırsınız. Bir uygulama, hub’ınıza bağlı cihazları uzaktan denetleyebilen bir arka uç uygulamasıdır. Diğer uygulama, uzaktan denetlenebilen hub’ınıza bağlanan bir cihazın simülasyonunu yapar.
+description: Bu hızlı başlangıçta iki örnek C# uygulaması çalıştırırsınız. Tek bir uygulama, hub 'ınıza bağlı cihazları uzaktan denetleyebileceği bir hizmet uygulamasıdır. Diğer uygulama, uzaktan denetlenebilen hub’ınıza bağlanan bir cihazın simülasyonunu yapar.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: aac03cad9dc6b83e7831b35ac2873ddaae6eda75
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843120"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092899"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Hızlı Başlangıç: IoT hub’a bağlı bir cihazı denetleme (.NET)
 
@@ -29,15 +29,15 @@ IoT Hub, IoT cihazlarınızı buluttan yönetmenizi ve depolama ya da işleme i�
 
 Hızlı başlangıçta, önceden yazılmış iki .NET uygulaması kullanılır:
 
-* Bir arka uç uygulamasından çağrılan doğrudan yöntemlere yanıt veren bir simülasyon cihazı uygulaması. Doğrudan yöntem çağrıları almak için bu uygulama, IoT hub’ınızda aygıta özgü bir uç noktaya bağlanır.
+* Bir hizmet uygulamasından çağrılan doğrudan yöntemlere yanıt veren bir sanal cihaz uygulaması. Doğrudan yöntem çağrıları almak için bu uygulama, IoT hub’ınızda aygıta özgü bir uç noktaya bağlanır.
 
-* Simülasyon cihazında doğrudan yöntemler çağıran bir arka uç uygulaması. Bir cihazda doğrudan yöntem çağırmak için bu uygulama, IoT hub’ınızda sunucu tarafı uç noktasına bağlanır.
+* Sanal cihazdaki doğrudan yöntemleri çağıran bir hizmet uygulaması. Bir cihazda doğrudan yöntem çağırmak için bu uygulama, IoT hub’ınızda sunucu tarafı uç noktasına bağlanır.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, C# kullanılarak yazılır. Geliştirme makinenizde .NET Core SDK 2.1.0 veya üzeri bir sürüm olması gerekir.
+* Bu hızlı başlangıçta çalıştırdığınız iki örnek uygulama, C# kullanılarak yazılır. Geliştirme makinenizde .NET Core SDK 3,1 veya üzeri bir sürümü gerekir.
 
     [.NET](https://www.microsoft.com/net/download/all)’ten birden fazla platform için .NET Core SDK’sını indirebilirsiniz.
 
@@ -96,7 +96,7 @@ Bir cihazın bağlanabilmesi için IoT hub’ınıza kaydedilmesi gerekir. Bu h�
 
 ## <a name="retrieve-the-service-connection-string"></a>Hizmet bağlantı dizesini alma
 
-Arka uç uygulamasının hub’a bağlanmasına ve iletileri almasına olanak sağlamak için IoT hub _hizmet bağlantı dizesi_ de gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
+Ayrıca, hizmet uygulamasının hub 'a bağlanmasını ve iletileri almanızı sağlamak için IoT Hub _hizmeti bağlantı dizeniz_ gerekir. Aşağıdaki komut, IoT hub'ınız için hizmeti bağlantı dizesini alır:
 
 ```azurecli-interactive
 az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
@@ -112,22 +112,18 @@ Bu değeri hızlı başlangıcın ilerleyen bölümlerinde kullanacaksınız. Bu
 
 Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlanır, sanal telemetri gönderir ve hub’ınızdan gelen doğrudan yöntem çağrılarını dinler. Bu hızlı başlangıçta, hub’dan gelen doğrudan yöntem çağrısı, telemetri gönderme aralığını değiştirmesini cihaza bildirir. Sanal cihaz, doğrudan yöntemini yürütmeden sonra hub 'ınıza bir bildirim gönderir.
 
-1. Yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\simulated-device-2** klasörüne gidin.
+1. Yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\SimulatedDeviceWithCommand** klasörüne gidin.
 
-2. **SimulatedDevice.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
-
-    Değişkenin değerini, `s_connectionString` daha önce bir değişiklik yaptığınız cihaz bağlantı dizesiyle değiştirin. Sonra **SimulatedDevice.cs**' ye yaptığınız değişiklikleri kaydedin.
-
-3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
+2. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak simülasyon cihazı uygulaması için gerekli paketleri yükleyin:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Yerel terminal penceresinde, aşağıdaki komutu çalıştırarak simülasyon cihazı uygulamasını derleyip çalıştırın:
+3. Yerel Terminal penceresinde, `{DeviceConnectionString}` daha önce not ettiğiniz cihaz bağlantı dizesiyle değiştirerek, sanal cihaz uygulamasını derlemek ve çalıştırmak için aşağıdaki komutu çalıştırın:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {DeviceConnectionString}
     ```
 
     Aşağıdaki ekran görüntüsünde, simülasyon cihazı uygulaması, IoT hub’ınıza telemetri gönderdiğinde oluşan çıktı gösterilmektedir:
@@ -136,31 +132,27 @@ Simülasyon cihazı, IoT hub’ınızdaki cihaza özgü bir uç noktaya bağlan�
 
 ## <a name="call-the-direct-method"></a>Doğrudan yöntem çağırma
 
-Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına bağlanır. Uygulama, IoT Hub 'ınız aracılığıyla bir cihaza doğrudan Yöntem çağrıları yapar ve bu bildirimleri dinler. IoT Hub arka uç uygulaması genellikle bulutta çalışır.
+Hizmet uygulaması, IoT Hub bir hizmet tarafı uç noktasına bağlanır. Uygulama, IoT Hub 'ınız aracılığıyla bir cihaza doğrudan Yöntem çağrıları yapar ve bu bildirimleri dinler. Bir IoT Hub hizmet uygulaması genellikle bulutta çalışır.
 
-1. Başka bir yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Daha sonra **iot-hub\Quickstarts\back-end-application** klasörüne gidin.
+1. Başka bir yerel terminal penceresinde, örnek C# projesinin kök klasörüne gidin. Ardından **iot-hub\Quickstarts\InvokeDeviceMethod** klasörüne gidin.
 
-2. **BackEndApplication.cs** dosyasını, istediğiniz bir metin düzenleyicide açın.
-
-    Değişkenin değerini, `s_connectionString` daha önce bir değişiklik yaptığınız hizmet bağlantı dizesiyle değiştirin. Sonra **BackEndApplication.cs**' ye yaptığınız değişiklikleri kaydedin.
-
-3. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulaması için gerekli kitaplıkları yükleyin:
+2. Yerel Terminal penceresinde, hizmet uygulaması için gerekli kitaplıkları yüklemek üzere aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. Yerel terminal penceresinde, aşağıdaki komutları çalıştırarak arka uç uygulamasını derleyip çalıştırın:
+3. Yerel Terminal penceresinde, `{ServiceConnectionString}` daha önce not ettiğiniz hizmet bağlantı dizesiyle değiştirerek hizmet uygulamasını derlemek ve çalıştırmak için aşağıdaki komutları çalıştırın:
 
     ```cmd/sh
-    dotnet run
+    dotnet run -- {ServiceConnectionString}
     ```
 
     Aşağıdaki ekran görüntüsünde, uygulamanın cihaza doğrudan yöntem çağrısı yaptığı ve bir bildirim aldığı için çıkış gösterilmektedir:
 
-    ![Arka uç uygulamasını çalıştırma](./media/quickstart-control-device-dotnet/BackEndApplication.png)
+    ![Hizmet uygulamasını çalıştırma](./media/quickstart-control-device-dotnet/BackEndApplication.png)
 
-    Arka uç uygulamasını çalıştırdıktan sonra, simülasyon cihazını çalıştıran konsol penceresinde bir ileti ve ileti değişikliklerini gönderdiği hızı görürsünüz:
+    Hizmet uygulamasını çalıştırdıktan sonra, sanal cihaz çalıştıran konsol penceresinde bir ileti görürsünüz ve ileti değişiklikleri gönderme hızıdır:
 
     ![Sanal istemcide değişiklik](./media/quickstart-control-device-dotnet/SimulatedDevice-2.png)
 
@@ -170,7 +162,7 @@ Arka uç uygulaması, IoT Hub’ınızdaki bir hizmet tarafı uç noktasına ba�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, arka uç uygulamasından bir cihazda doğrudan yöntem çağırılır ve sanal bir cihaz uygulamasındaki doğrudan yöntem çağrısına yanıt vermiş olursunuz.
+Bu hızlı başlangıçta, bir hizmet uygulamasından bir cihazda doğrudan yöntem çağırılır ve sanal cihaz uygulamasındaki doğrudan yöntem çağrısına yanıt vermiş olursunuz.
 
 Cihazdan buluta iletileri, buluttaki farklı hedeflere yönlendirmeyi öğrenmek için sonraki öğreticiyle devam edin.
 

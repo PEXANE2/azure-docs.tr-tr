@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: f5d58f89aa87a39d12b2d6f6a3a91254a653a088
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a1f3b5e80152fb0fb9458aef0d3524dd2d6f5eb
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784669"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092338"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault için HSM korumalı anahtarları içeri aktarma (nCipher)
 
@@ -61,7 +61,7 @@ Azure Key Vault için kendi anahtarınızı getir (BYOK) önkoşulları listesi 
 | --- | --- |
 | Azure aboneliği |Azure Key Vault oluşturmak için bir Azure aboneliğine ihtiyacınız vardır: [ücretsiz deneme Için kaydolun](https://azure.microsoft.com/pricing/free-trial/) |
 | HSM korumalı anahtarları desteklemek için Azure Key Vault Premium hizmet katmanı |Azure Key Vault yönelik hizmet katmanları ve özellikleri hakkında daha fazla bilgi için [Azure Key Vault fiyatlandırma](https://azure.microsoft.com/pricing/details/key-vault/) Web sitesine bakın. |
-| nCipher nShield HSM 'leri, smartcards ve Destek yazılımı |NCipher donanım güvenlik modülüne erişiminizin olması ve nCipher nShield HSM 'lerin temel operasyonel bilgisine sahip olmanız gerekir. Uyumlu modellerin listesi için bkz. [NCipher nShield Hardware Security Module](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/how-to-buy) veya yoksa bir HSM satın alma. |
+| nCipher nShield HSM 'leri, smartcards ve Destek yazılımı |NCipher donanım güvenlik modülüne erişiminizin olması ve nCipher nShield HSM 'lerin temel operasyonel bilgisine sahip olmanız gerekir. Uyumlu modellerin listesi için bkz. [NCipher nShield Hardware Security Module](https://go.ncipher.com/rs/104-QOX-775/images/nCipher_nShield_Family_Brochure.pdf?_ga=2.106120835.1607422418.1590478092-577009923.1587131206) veya yoksa bir HSM satın alma. |
 | Aşağıdaki donanım ve yazılımlar:<ol><li>En az sürüm 11,50 olan Windows 7 ve nCipher nShield yazılımının en düşük Windows işletim sistemine sahip çevrimdışı bir x64 iş istasyonu.<br/><br/>Bu iş istasyonu Windows 7 çalıştırıyorsa, [Microsoft .NET Framework 4.5 sürümünü yüklemeniz](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) gerekir.</li><li>Internet 'e bağlı ve Windows 7 ' nin en düşük Windows işletim sistemine sahip ve **En düşük sürüm 1.1.0** [Azure PowerShell](/powershell/azure/?view=azps-1.2.0) yüklü bir iş istasyonu.</li><li>En az 16 MB boş alana sahip bir USB sürücü veya başka bir taşınabilir depolama cihazı.</li></ol> |Güvenlik nedenleriyle ilk iş istasyonunun bir ağa bağlı olmaması önerilir. Ancak, bu öneri programlı bir şekilde zorlanmaz.<br/><br/>Aşağıdaki yönergelerde, bu iş istasyonu, bağlantısı kesilen iş istasyonu olarak adlandırılır.</p></blockquote><br/>Ayrıca, kiracı anahtarınız bir üretim ağı için ise, araç takımını indirmek için ikinci ve ayrı bir iş istasyonu kullanmanızı ve kiracı anahtarını yüklemenizi öneririz. Ancak test amacıyla, birincisi ile aynı iş istasyonunu kullanabilirsiniz.<br/><br/>Aşağıdaki yönergelerde, bu ikinci iş istasyonu Internet 'e bağlı iş istasyonu olarak adlandırılır.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Anahtarınızı Azure Key Vault HSM 'ye oluşturun ve aktarın
@@ -255,7 +255,7 @@ Bu ikinci adımda, bir ağa (Internet veya iç ağınız) bağlı olmayan iş is
 
 NCipher destek yazılımını bir Windows bilgisayara yükleyip bu bilgisayara bir nCipher nShield HSM ekleyin.
 
-NCipher araçlarının yolunuzda ( **% nfast_home% \ bin** ) olduğundan emin olun. Örneğin, aşağıdakini yazın:
+NCipher araçlarının yolunuzda (**% nfast_home% \ bin**) olduğundan emin olun. Örneğin, aşağıdakini yazın:
 
   ```cmd
   set PATH=%PATH%;"%nfast_home%\bin"
@@ -416,7 +416,7 @@ Bu adım isteğe bağlıdır ancak aşağıdakileri doğrulayabilmeniz adına ö
      >
 2. Başarılı doğrulamayı belirten şunları görmediğinizi onaylayın: **Sonuç: başarılı**
 
-Bu betik, imzalayan zincirini nShield kök anahtarına kadar doğrular. Bu kök anahtarın karması, komut dosyasında tümleşiktir ve değeri **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** olmalıdır. Ayrıca, [nCipher Web sitesini](https://www.ncipher.com/products/key-management/cloud-microsoft-azure/validation)ziyaret ederek bu değeri ayrı olarak da doğrulayabilirsiniz.
+Bu betik, imzalayan zincirini nShield kök anahtarına kadar doğrular. Bu kök anahtarın karması, komut dosyasında tümleşiktir ve değeri **59178a47 de508c3f 291277ee 184f46c4 f1d9c639** olmalıdır. Ayrıca, [nCipher Web sitesini](https://www.ncipher.com)ziyaret ederek bu değeri ayrı olarak da doğrulayabilirsiniz.
 
 Şimdi yeni bir anahtar oluşturmaya hazırsınız.
 
@@ -434,9 +434,9 @@ Bu komutu çalıştırdığınızda, aşağıdaki yönergeleri kullanın:
 
 * *protect* parametresi, gösterildiği gibi **module** değerine ayarlanmalıdır. Bu, modül korumalı bir anahtar oluşturur. BYOK araç takımı, OCS korumalı anahtarları desteklemez.
 * **ident** ve **plainname** için *contosokey* değerini bir dize değeriyle değiştirin. Yönetim üst kafalarını en aza indirmek ve hata riskini azaltmak için, her ikisi için de aynı değeri kullanmanızı öneririz. Ida **değeri** yalnızca rakamlar, tireler ve küçük harf karakterler içermelidir.
-* Bu örnekte pubexp (varsayılan) boş bırakılmıştır, ancak belirli bir değer belirtebilirsiniz. Daha fazla bilgi için [nCipher belgelerine bakın.](https://www.ncipher.com/resources/solution-briefs/protect-sensitive-data-rest-and-use-across-premises-and-azure-based)
+* Bu örnekte pubexp (varsayılan) boş bırakılmıştır, ancak belirli bir değer belirtebilirsiniz. Daha fazla bilgi için [nCipher belgelerine bakın.](https://www.entrust.com/-/media/documentation/brochures/entrust-nshield-general-purpose-hsms-br-a4.pdf)
 
-Bu komut,% NFAST_KMDATA% \ yerel klasörünüzde, **key_simple_** **başlayan ve ardından** komutta belirtilen bir ad olan bir ada sahip bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey** . Bu dosya şifreli bir anahtar içerir.
+Bu komut,% NFAST_KMDATA% \ yerel klasörünüzde, **key_simple_** **başlayan ve ardından** komutta belirtilen bir ad olan bir ada sahip bir simgeleştirilmiş anahtar dosyası oluşturur. Örneğin: **key_simple_contosokey**. Bu dosya şifreli bir anahtar içerir.
 
 Bu Simgeleştirilmiş Anahtar Dosyasını güvenli bir yere yedekleyin.
 
@@ -546,7 +546,7 @@ Yeni bir komut istemi açın ve geçerli dizini, BYOK ZIP dosyasının sıkışt
    KeyTransferRemote.exe -ModifyAcls -KeyAppName simple -KeyIdentifier contosokey -ExchangeKeyPackage BYOK-KEK-pkg-SUI-1 -NewSecurityWorldPackage BYOK-SecurityWorld-pkg-SUI-1
    ```
 
-Bu komutu çalıştırdığınızda, *contosokey* değerini **Adım 3,5: anahtar oluşturma adımından yeni bir anahtar oluşturma** bölümünde belirttiğiniz değerle değiştirin. [Generate your key](#step-3-generate-your-key)
+Bu komutu çalıştırdığınızda, *contosokey* değerini **Adım 3,5: anahtar oluşturma adımından yeni bir anahtar oluşturma** bölümünde belirttiğiniz değerle değiştirin. [](#step-3-generate-your-key)
 
 Güvenlik dünyası yönetici kartlarınızı eklemek isteyip istemediğiniz sorulur.
 
@@ -564,7 +564,7 @@ NCipher nShield yardımcı programlarını kullanarak aşağıdaki komutları ku
    ```cmd
    "%nfast_home%\bin\kmfile-dump.exe" "%NFAST_KMDATA%\local\key_xferacld_contosokey"
    ```
-  Bu komutları çalıştırdığınızda, contosokey değerini **adım 3,5: anahtar oluşturma adımından yeni bir anahtar oluşturma** bölümünde belirttiğiniz değerle değiştirin. [Generate your key](#step-3-generate-your-key)
+  Bu komutları çalıştırdığınızda, contosokey değerini **adım 3,5: anahtar oluşturma adımından yeni bir anahtar oluşturma** bölümünde belirttiğiniz değerle değiştirin. [](#step-3-generate-your-key)
 
 ### <a name="step-42-encrypt-your-key-by-using-microsofts-key-exchange-key"></a>Adım 4,2: Microsoft 'un anahtar değişim anahtarını kullanarak anahtarınızı şifreleyin
 
@@ -668,7 +668,7 @@ Bu komutu çalıştırdığınızda, aşağıdaki yönergeleri kullanın:
 * *SubscriptionID* değerini, anahtar kasanızı içeren Azure aboneliğinin kimliğiyle değiştirin. Bu değeri daha önce elde edersiniz **: adım 1,2:** [Internet 'e bağlı Iş istasyonunuzu hazırlama](#step-1-prepare-your-internet-connected-workstation) ADıMıNDAN Azure abonelik Kimliğinizi alın.
 * *ContosoFirstHSMKey* değerini çıkış dosyası adınız için kullanılan bir etiketle değiştirin.
 
-Bu başarıyla tamamlandığında, **Sonuç: başarılı** ' i görüntüler ve geçerli klasörde şu ada sahip yeni bir dosya vardır: KeyTransferPackage- *ContosoFirstHSMkey* . bYok
+Bu başarıyla tamamlandığında, **Sonuç: başarılı** ' i görüntüler ve geçerli klasörde şu ada sahip yeni bir dosya vardır: KeyTransferPackage-*ContosoFirstHSMkey*. bYok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Adım 4,3: anahtar aktarım paketinizi Internet 'e bağlı iş istasyonuna kopyalama
 

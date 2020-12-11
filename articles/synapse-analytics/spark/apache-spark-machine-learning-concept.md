@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 11/13/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: ced78955c71f37a5a6f5231f61e5327428834f00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ca55186a53b228aa97cc82d33a09aa3ffe455eee
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919805"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092015"
 ---
 # <a name="machine-learning-with-apache-spark"></a>Apache Spark ile makine öğrenimi
 
@@ -43,8 +43,8 @@ Azure SYNAPSE Analytics 'te Azure Spark kullanarak makine öğrenimi modellerini
 ### <a name="sparkml-and-mllib"></a>Mini ml ve MLlib
 Spark 'ın bellek içi dağıtılmış hesaplama özellikleri, makine öğrenimi ve grafik hesaplamaları 'nda kullanılan yinelemeli algoritmalar için iyi bir seçenek yapar. ```spark.ml``` , kullanıcıların makine öğrenimi işlem hatlarını oluşturmasına ve ayarlamaya yardımcı olan Tekdüzen bir üst düzey API kümesi sağlar. Hakkında daha fazla bilgi edinmek için ```spark.ml``` [Apache Spark ml programlama kılavuzunu](https://spark.apache.org/docs/1.2.2/ml-guide.html)ziyaret edebilirsiniz.
 
-### <a name="azure-machine-learning-automl"></a>Azure Machine Learning oto ml
-[Azure Machine Learning Otomatikml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (otomatik makine öğrenimi), makine öğrenimi modelleri geliştirme sürecini otomatikleştirmenize yardımcı olur. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Azure Machine Learning, oto ml SDK 'sını çalıştırmak için bileşenler doğrudan SYNAPSE çalışma zamanına yerleştirilmiştir.
+### <a name="azure-machine-learning-automated-ml"></a>Azure Machine Learning otomatikleştirilen ML
+[Azure Machine Learning OTOMATIKLEŞTIRILEN ml](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml) (otomatik makine öğrenimi), makine öğrenimi modellerini geliştirme sürecini otomatikleştirmenize yardımcı olur. Veri bilimcilerinin, analistlerin ve geliştiricilerin, model kalitesini sürdürüp yüksek ölçekli, verimlilik ve üretkenlik özelliklerine sahip ML modelleri oluşturmalarına olanak tanır. Otomatikleştirilmiş ML SDK Azure Machine Learning çalıştırmak için bileşenler doğrudan SYNAPSE çalışma zamanına yerleştirilmiştir.
 
 ### <a name="open-source-libraries"></a>Açık kaynak kitaplıkları
 Azure SYNAPSE Analytics 'teki tüm Apache Spark havuzları, önceden yüklenmiş ve popüler makine öğrenimi kitaplıkları kümesiyle birlikte gelir.  Varsayılan olarak eklenen ilgili makine öğrenimi kitaplıklarının bazıları şunlardır:
@@ -68,7 +68,7 @@ Bir modeli kaydetmek, çalışma alanınızdaki modeller hakkında meta verileri
 Azure SYNAPSE Analytics 'te Machine Learning 'i kullanmaya başlamak için aşağıdaki öğreticilere göz atın:
 - [Azure SYNAPSE Not defterleri ile verileri analiz etme](../spark/apache-spark-data-visualization-tutorial.md)
 
-- [Bir makine öğrenimi modelini oto ml ile eğitme](../spark/apache-spark-azure-machine-learning-tutorial.md)
+- [Otomatik ML ile makine öğrenimi modelini eğitme](../spark/apache-spark-azure-machine-learning-tutorial.md)
 
 - [Machine Learning modelini Apache Spark MLlib ile eğitme](../spark/apache-spark-machine-learning-mllib-notebook.md)
   

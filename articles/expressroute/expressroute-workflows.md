@@ -7,13 +7,13 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: duau
-ms.custom: contperfq1
-ms.openlocfilehash: bb0d3cebd9382ef2c81b217417cfbcb6198b6ebb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: 2742b03bcacd73e7e602666b898417f295905f19
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565932"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034080"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Devre sağlama ve devre durumları için ExpressRoute iş akışları
 
@@ -108,7 +108,7 @@ Microsoft 365 gibi Microsoft çevrimiçi hizmetler erişmek için bunu etkinleş
 Aşağıdaki bölümde, ExpressRoute iş ortağı bağlantı modeli için farklı ExpressRoute devre durumları özetlenmektedir.
 Her bir ExpressRoute iş ortağı devresi iki duruma sahiptir:
 
-* **Serviceproviderprovisioningstate** , bağlantı sağlayıcısının tarafındaki durumu temsil eder. *Nottemin*edilebilir, *sağlanıyor*ya da *sağlanabilir*. Eşlemeyi yapılandırmak için ExpressRoute bağlantı hattının sağlanan bir durumda olması gerekir. **Bu durum yalnızca ExpressRoute iş ortağı devrelerine aittir ve bir ExpressRoute doğrudan devresinin özelliklerinde gösterilmez**.
+* **Serviceproviderprovisioningstate** , bağlantı sağlayıcısının tarafındaki durumu temsil eder. *Nottemin* edilebilir, *sağlanıyor* ya da *sağlanabilir*. Eşlemeyi yapılandırmak için ExpressRoute bağlantı hattının sağlanan bir durumda olması gerekir. **Bu durum yalnızca ExpressRoute iş ortağı devrelerine aittir ve bir ExpressRoute doğrudan devresinin özelliklerinde gösterilmez**.
 
 * **Durum** Microsoft 'un sağlama durumunu temsil eder. Bu özellik, bir ExpressRoute bağlantı hattı oluşturduğunuzda etkin olarak ayarlanır
 
@@ -162,7 +162,7 @@ Gerekirse yeniden etkinleştirmeyi seçebilir veya devre dışı bırakmak için
 
 BGP sağlama durumu, BGP oturumunun Microsoft Edge üzerinde etkin olup olmadığını bildirir. Özel veya Microsoft eşlemesi kullanmak için durumun etkin olması gerekir.
 
-BGP oturum durumunu özellikle Microsoft eşlemesi için denetlemek önemlidir. BGP sağlama durumuna ek olarak *tanıtılan genel ön ekler durumu*adlı başka bir durum da vardır. Tanıtılan genel ön eklerin durumu, hem BGP oturumunun açık olması hem de yönlendirmenin uçtan uca çalışması için *yapılandırılmış* durumda olmalıdır. 
+BGP oturum durumunu özellikle Microsoft eşlemesi için denetlemek önemlidir. BGP sağlama durumuna ek olarak *tanıtılan genel ön ekler durumu* adlı başka bir durum da vardır. Tanıtılan genel ön eklerin durumu, hem BGP oturumunun açık olması hem de yönlendirmenin uçtan uca çalışması için *yapılandırılmış* durumda olmalıdır. 
 
 Tanıtılan genel ön ek durumu *doğrulama gerekli* durumuna ayarlandıysa, tanıtılan ön ekler yönlendirme kayıt DEFTERLERININ hiçbirinde as NUMARASıYLA eşleşmediğinden BGP oturumu etkinleştirilmez.
 

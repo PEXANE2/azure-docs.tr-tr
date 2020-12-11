@@ -10,13 +10,13 @@ author: lobrien
 ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
-ms.custom: contperfq4, devx-track-python
-ms.openlocfilehash: 8748d6e155eb84cf948966d768dda1a992207f7e
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: contperf-fy20q4, devx-track-python
+ms.openlocfilehash: b0b415cce37e464abcba9fab5ad4c1196b1b2e1b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629640"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033485"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Öğretici: toplu Puanlama için Azure Machine Learning işlem hattı oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide, aşağıdaki görevleri tamamlayacaksınız:
 
 Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Zaten bir Azure Machine Learning çalışma alanınız veya Not defteri sanal makineniz yoksa, [Kurulum öğreticisinin 1. kısmını](tutorial-1st-experiment-sdk-setup.md)doldurun.
 * Kurulum öğreticisini tamamladığınızda, *öğreticiler/Machine-Learning-Pipelines-Advanced/tutorial-Pipeline-Batch-Scoring-Classification. ipynb* Not defterini açmak için aynı not defteri sunucusunu kullanın.
@@ -305,7 +305,7 @@ parallel_run_config = ParallelRunConfig(
 * Giriş ve çıkış verileri ve tüm özel parametreler
 * Adım sırasında çalışacak bir betik veya SDK mantığına başvuru
 
-Birden çok sınıf üst sınıftan devralınır [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) . Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak üzere sınıfları seçebilirsiniz. Bu örnekte, `ParallelRunStep` özel bir Python betiği kullanarak adım mantığınızı tanımlamak için sınıfını kullanırsınız. Betiğinizin bir bağımsız değişkeni, adımın bir girişi ya da adımın bir çıkışı ise, bağımsız değişkenin sırasıyla *hem* dizide hem de ya da parametresinde tanımlanması `arguments` gerekir *and* `input` `output` . 
+Birden çok sınıf üst sınıftan devralınır [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) . Bir adım oluşturmak için belirli çerçeveleri veya yığınları kullanmak üzere sınıfları seçebilirsiniz. Bu örnekte, `ParallelRunStep` özel bir Python betiği kullanarak adım mantığınızı tanımlamak için sınıfını kullanırsınız. Betiğinizin bir bağımsız değişkeni, adımın bir girişi ya da adımın bir çıkışı ise, bağımsız değişkenin sırasıyla *hem* dizide hem de ya da parametresinde tanımlanması `arguments` gerekir  `input` `output` . 
 
 Birden fazla adımın olduğu senaryolarda dizideki bir nesne başvurusu, `outputs` sonraki bir işlem hattı adımı için *giriş* olarak kullanılabilir hale gelir.
 
@@ -438,12 +438,12 @@ Diğer Azure Machine Learning öğreticileri çalıştırmayı planlıyorsanız,
 
 Oluşturduğunuz kaynakları kullanmayı planlamıyorsanız, hiçbir ücret ödemezsiniz:
 
-1. Azure portal, sol taraftaki menüden **kaynak grupları** ' nı seçin.
+1. Azure portal, sol taraftaki menüden **kaynak grupları**' nı seçin.
 1. Kaynak grupları listesinde, oluşturduğunuz kaynak grubunu seçin.
-1. **Kaynak grubunu sil** 'i seçin.
-1. Kaynak grubu adını girin. Ardından **Sil** ' i seçin.
+1. **Kaynak grubunu sil**'i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**' i seçin.
 
-Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve sonra **Sil** ' i seçin.
+Ayrıca, kaynak grubunu koruyabilir ancak tek bir çalışma alanını silebilirsiniz. Çalışma alanı özelliklerini görüntüleyin ve sonra **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

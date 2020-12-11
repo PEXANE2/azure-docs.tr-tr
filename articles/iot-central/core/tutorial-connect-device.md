@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 9eeb8174c900b0f548144231e65643c9559f75e3
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 2757d696f5922263abf87399d6491e46b5e5513c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127071"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033905"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>Öğretici: Azure IoT Central uygulamanıza istemci uygulaması oluşturma ve bağlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "96127071"
 
 Bu öğreticide, bir cihaz geliştiricisi olarak, bir istemci uygulamasını Azure IoT Central uygulamanıza nasıl bağlayabilmeniz gösterilmektedir. Uygulama, bir termostat cihazının davranışının benzetimini yapar. Uygulama IoT Central bağlandığı zaman, termostat cihaz modelinin model KIMLIĞINI gönderir. IoT Central, cihaz modelini almak ve sizin için bir cihaz şablonu oluşturmak üzere model KIMLIĞINI kullanır. Bir işlecin bir cihazla etkileşime geçmesini sağlamak için cihaz şablonuna özelleştirmeler ve görünümler eklersiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cihaz kodunu oluşturup çalıştırın ve IoT Central uygulamanıza bağlanın.
@@ -84,3 +84,4 @@ Bir cihaz geliştiricisi olarak, Java kullanarak bir cihazın nasıl oluşturula
 * Cihaz kodunuzu uygularken cihaz şablonlarının rolü hakkında daha fazla bilgi edinmek için cihaz [şablonu nedir?](./concepts-device-templates.md) makalesini okuyun.
 * Cihazların IoT Central nasıl kaydedileceği ve cihaz bağlantılarının güvenliğini IoT Central sağlama hakkında daha fazla bilgi edinmek için [Azure IoT Central 'ye](./concepts-get-connected.md) bağlanın.
 * IoT Central ile cihaz alışverişi yapılan veriler hakkında daha fazla bilgi edinmek için [telemetri, özellik ve komut yüklerini](concepts-telemetry-properties-commands.md) okuyun.
+* [Iot Tak ve kullan cihaz geliştirici kılavuzunu](../../iot-pnp/concepts-developer-guide-device.md)okuyun.

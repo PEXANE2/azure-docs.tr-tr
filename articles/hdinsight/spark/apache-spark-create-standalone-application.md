@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 02192f3960b8021ee32203620893620c7b96f076
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5be4ce97e6087847f084f9b9ec2a6b8b0df84e14
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024002"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033519"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Öğretici: IntelliJ kullanarak HDInsight 'ta Apache Spark için bir Scala Maven uygulaması oluşturma
 
@@ -25,7 +25,7 @@ Bu öğreticide, IntelliJ ıDEA ile Apache Maven kullanarak Scala 'da yazılan A
 * HDInsight Spark kümelerine gönderilebilen bir jar dosyası oluşturma.
 * Livy kullanarak uygulamayı Spark kümesi üzerinde çalıştırma.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * IntelliJ IDEA için Scala eklentisini yükleme
 > * IntelliJ kullanarak bir Scala Maven uygulaması geliştirme
@@ -84,7 +84,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları uygulayın:
 
     ![Spark SDK 'sını seçen IntelliJ fıkır](./media/apache-spark-create-standalone-application/hdi-scala-new-project.png)
 
-7. **Son**’u seçin.
+7. **Son**'u seçin.
 
 ## <a name="create-a-standalone-scala-project"></a>Tek başına Scala projesi oluşturma
 
@@ -219,7 +219,7 @@ Uygulamayı kümede çalıştırmak için aşağıdaki yaklaşımları kullanabi
 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz kümeyi aşağıdaki adımlarla silin:
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure Portal](https://portal.azure.com/) oturum açın.
 
 1. Üstteki **arama** kutusuna **HDInsight** yazın.
 

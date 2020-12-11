@@ -4,14 +4,14 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/24/2020
-ms.openlocfilehash: 6ad2a405fc8abf2e7df2a896d5c5363b9618dda2
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 16cba46d9c0f6a933965366d82eb8e21c4ab1ca6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96127076"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033906"
 ---
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için, **özel uygulama** şablonu kullanılarak oluşturulmuş bir Azure IoT Central uygulamasına ihtiyacınız vardır. Daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../articles/iot-central/core/quick-deploy-iot-central.md). Uygulamanın 14 Temmuz 2020 tarihinde veya sonrasında oluşturulmuş olması gerekir.
 
@@ -69,7 +69,7 @@ IoT Central bağlanmak için örneği çalıştırdığınızda, cihazı kaydetm
 
 `main`İşlevin ilk çağrısı `CreateAndConfigureDeviceClientHandleForPnP` :
 
-* `dtmi:com:example:Thermostat;1`Model kimliğini ayarlayın.
+* `dtmi:com:example:Thermostat;1`Model kimliğini ayarlayın. IoT Central, bu cihazın cihaz şablonunu tanımlamak veya oluşturmak için model KIMLIĞINI kullanır. Daha fazla bilgi için bkz. cihaz [şablonuyla bir cihazı ilişkilendirme](../articles/iot-central/core/concepts-get-connected.md#associate-a-device-with-a-device-template).
 * Cihaz sağlamak ve kaydetmek için DPS kullanın.
 * Komut için bir komut işleyicisi oluşturur `getMaxMinReport` .
 * Yazılabilir özellik için bir özellik güncelleştirme işleyicisi oluşturur `targetTemperature` .

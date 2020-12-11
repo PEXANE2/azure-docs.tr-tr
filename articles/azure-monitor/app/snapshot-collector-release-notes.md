@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: e4fffe0efa9f6900ef8d83c0a1b150b4249c22b3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008580"
+ms.locfileid: "97093269"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Microsoft. ApplicationInsights. SnapshotCollector için sürüm notları
 
@@ -18,7 +18,7 @@ Bu makale, Application Insights Snapshot Debugger tarafından kullanılan .NET u
 
 .NET uygulamaları için Application Insights Snapshot Debugger hakkında daha fazla [bilgi edinin](./snapshot-debugger.md) .
 
-Hata raporları ve geri bildirim için, şurada GitHub 'da bir sorun açın: https://github.com/microsoft/ApplicationInsights-dotnet
+Hata raporları ve geri bildirim için, şurada GitHub 'da bir sorun açın: https://github.com/microsoft/ApplicationInsights-SnapshotCollector
 
 ## <a name="release-notes"></a>Sürüm notları
 

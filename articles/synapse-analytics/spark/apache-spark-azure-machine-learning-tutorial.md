@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure otomatik ML kullanarak denemeleri çalıştırma'
-description: Apache Spark ve Azure otomatik ML kullanarak Machine Learning denemeleri çalıştırma hakkında bir öğretici
+title: "Öğretici: otomatik ML ile Python 'da model eğitme"
+description: Apache Spark ve otomatikleştirilmiş ML kullanarak Azure SYNAPSE 'te Python 'da makine öğrenimi modelinin nasıl eğilmesi hakkında öğretici.
 services: synapse-analytics
 author: midesa
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: abb7266d90171abc628739aa8f50f1760a32f68d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458836"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093341"
 ---
-# <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Öğretici: Azure otomatik ML ve Apache Spark kullanarak denemeleri çalıştırma
+# <a name="tutorial-train-a-machine-learning-model-in-python-in-azure-synapse-with-apache-spark-and-automated-ml"></a>Öğretici: Apache Spark ve otomatik ML ile Azure SYNAPSE 'de Python 'da makine öğrenimi modeli eğitme
 
 Azure Machine Learning, makine öğrenimi modellerini eğmenize, dağıtmanıza, otomatikleştirmenize, yönetmenize ve izlemenize olanak tanıyan bulut tabanlı bir ortamdır. 
 
@@ -155,11 +155,11 @@ Aşağıdaki kod, mevcut çalışma alanını ve varsayılan Azure Machine Learn
 import pandas 
 from azureml.core import Dataset
 
-# Get the AML Default Datastore
+# Get the Azure Machine Learning Default Datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into AML Tabular Dataset
+# Convert into Azure Machine Learning Tabular Dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -168,7 +168,7 @@ dataset_training = Dataset.Tabular.from_delimited_files(path = [(datastore, 'tra
 ```
 ![Karşıya yüklenen veri kümesinin resmi.](./media/azure-machine-learning-spark-notebook/upload-dataset.png)
 
-## <a name="submit-an-automl-experiment"></a>Bir oto ml denemesi gönder
+## <a name="submit-an-automated-ml-experiment"></a>Otomatik ML denemesi gönder
 
 #### <a name="define-training-settings"></a>Eğitim ayarlarını tanımlama
 1. Bir deneme göndermek için, eğitim için deneme parametresi ve model ayarlarını tanımlamanız gerekecektir. Ayarların tam listesini [burada](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train)görebilirsiniz.
@@ -221,7 +221,7 @@ Deneme tamamlandığında, çıktı tamamlanan yinelemeler hakkındaki ayrıntı
 ![Model çıktısının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
 > [!NOTE]
-> Gönderdikten sonra, oto ml denemesi çeşitli yinelemeler ve model türlerini çalıştırır. Bu çalıştırma genellikle 1 1,5 saat sürer. 
+> Gönderildikten sonra otomatik ML denemesi çeşitli yinelemeler ve model türlerini çalıştırır. Bu çalıştırma genellikle 1 1,5 saat sürer. 
 
 #### <a name="retrieve-the-best-model"></a>En iyi modeli alma
 Yinelemelerinizi kullanarak en iyi modeli seçmek için, ```get_output``` işlevi en iyi çalışan ve monte edilecek modeli döndürecek şekilde kullanacağız. Aşağıdaki kod, herhangi bir günlüğe kaydedilmiş ölçüm veya belirli bir yineleme için en iyi çalıştırma ve sığdırılmış modeli alacaktır.
@@ -325,7 +325,7 @@ plt.show()
 En iyi modelimizi doğrulandıktan sonra, Azure Machine Learning modeli kaydedebiliriz. Modeli kaydettikten sonra, kayıtlı modeli indirebilir veya dağıtabilir ve kaydettiğiniz tüm dosyaları alabilirsiniz.
 
 ```python
-description = 'My AutoML Model'
+description = 'My automated ML model'
 model_path='outputs/model.pkl'
 model = best_run.register_model(model_name = 'NYCGreenTaxiModel', model_path = model_path, description = description)
 print(model.name, model.version)
@@ -336,7 +336,7 @@ NYCGreenTaxiModel 1
 ## <a name="view-results-in-azure-machine-learning"></a>Sonuçları Azure Machine Learning görüntüle
 Son olarak, Azure Machine Learning Çalışma Alanı denemenize giderek, yineleme sonuçlarına de erişebilirsiniz. Burada, çalışma, denek modellerinin ve diğer model ölçümlerinizin durumu hakkında daha fazla ayrıntı bulabilirsiniz. 
 
-![AML çalışma alanının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Azure Machine Learning çalışma alanının ekran görüntüsü.](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
