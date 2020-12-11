@@ -179,7 +179,7 @@
         - name: Terraform ile AKS’yi dağıtma
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Kubernetes kaynak görüntüleyicisini kullanma (Önizleme)
+        - name: Azure Portal Kubernetes kaynak görünümü
           href: kubernetes-portal.md
         - name: Kubernetes panosunu kullanma
           href: kubernetes-dashboard.md

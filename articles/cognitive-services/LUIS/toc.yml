@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Tarayıcıyı kullanma
       href: luis-get-started-get-intent-from-browser.md
-    - name: SDL kullanma
-      href: azure-sdk-quickstart.md
-    - name: REST API'lerini kullanma
-      items:
-        - name: Amaç alma
-          href: luis-get-started-rest-get-intent.md
-        - name: Model değiştirme
-          href: luis-get-started-rest-get-model.md
+    - name: İstemci kitaplıklarını ve REST API’sini kullanma
+      href: client-libraries-rest-api.md
 - name: Öğreticiler
   items:
     - name: Parçalanabilir uygulama oluşturma

@@ -563,10 +563,10 @@
             - name: OAuth 2.0 kaynak sahibi parola kimlik bilgilerini verme
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0 SAML taşıyıcı onaylama akışı
-              href: v2-saml-bearer-assertion.md
             - name: İmzalama anahtarı geçiş işlemi
               href: active-directory-signing-key-rollover.md
+            - name: Belirteç değiştirme senaryoları
+              href: scenario-token-exchange-saml-oauth.md
             - name: Kimlik belirteçleri
               href: id-tokens.md
             - name: Erişim belirteçleri

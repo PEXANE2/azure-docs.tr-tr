@@ -132,6 +132,8 @@
           href: how-to-connect-install-existing-tenant.md
         - name: Yükleme sonrası görevler
           href: how-to-connect-post-installation.md
+        - name: Azure AD Connect'i kaldırma
+          href: how-to-connect-uninstall.md
     - name: Planlama ve tasarım
       items:
         - name: Tasarım kavramları

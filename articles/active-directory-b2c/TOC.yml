@@ -121,16 +121,48 @@
           href: signin-appauth-ios.md
         - name: App Auth kullanarak Android
           href: signin-appauth-android.md
+    - name: Kimlik sağlayıcıları
+      items:
+        - name: Kimlik sağlayıcısı ekleme
+          href: add-identity-provider.md
+        - name: AD FS
+          href: identity-provider-adfs.md
+        - name: Amazon
+          href: identity-provider-amazon.md
+        - name: Azure AD (Tek kiracılı)
+          href: identity-provider-azure-ad-single-tenant.md
+        - name: Azure AD (Çok kiracılı)
+          href: identity-provider-azure-ad-multi-tenant.md
+        - name: Facebook
+          href: identity-provider-facebook.md
+        - name: Genel kimlik sağlayıcısı
+          href: identity-provider-generic-openid-connect.md
+        - name: GitHub
+          href: identity-provider-github.md
+        - name: Google
+          href: identity-provider-google.md
+        - name: LinkedIn
+          href: identity-provider-linkedin.md
+        - name: Microsoft Hesabı
+          href: identity-provider-microsoft-account.md
+        - name: QQ
+          href: identity-provider-qq.md
+        - name: Salesforce
+          href: identity-provider-salesforce.md
+        - name: Twitter
+          href: identity-provider-twitter.md
+        - name: WeChat
+          href: identity-provider-wechat.md
+        - name: Weibo
+          href: identity-provider-weibo.md
     - name: Kullanıcı akışı
       items:
         - name: Akış oluşturun
           items:
-            - name: Kullanıcı akışları oluşturma
-              href: create-user-flow.md
+            - name: Kaydolma veya oturum açma
+              href: tutorial-create-user-flows.md
             - name: Kaynak sahibinin parola kimlik bilgileri
               href: configure-ropc.md
-            - name: Telefonla kimlik doğrulamasını ayarlama
-              href: phone-authentication-user-flows.md
             - name: Self servis parola sıfırlamayı ayarlama
               href: user-flow-self-service-password-reset.md
         - name: Koşullu Erişim ekleme
@@ -150,32 +182,6 @@
             - name: MFA’yı etkinleştirme
               href: custom-policy-multi-factor-authentication.md
               displayName: multi-factor auth
-        - name: Harici kimlik sağlayıcıları
-          items:
-            - name: Amazon
-              href: identity-provider-amazon.md
-            - name: Azure AD (Tek kiracılı)
-              href: identity-provider-azure-ad-single-tenant.md
-            - name: Microsoft Hesabı
-              href: identity-provider-microsoft-account.md
-            - name: Facebook
-              href: identity-provider-facebook.md
-            - name: GitHub
-              href: identity-provider-github.md
-            - name: Google
-              href: identity-provider-google.md
-            - name: LinkedIn
-              href: identity-provider-linkedin.md
-            - name: QQ
-              href: identity-provider-qq.md
-            - name: Twitter
-              href: identity-provider-twitter.md
-            - name: WeChat
-              href: identity-provider-wechat.md
-            - name: Weibo
-              href: identity-provider-weibo.md
-            - name: Genel kimlik sağlayıcısı
-              href: identity-provider-generic-openid-connect.md
         - name: Belirteçler ve oturum yönetimi
           items:
             - name: Belirteçleri yapılandırma
@@ -236,32 +242,6 @@
               href: javascript-samples.md
             - name: Parola karmaşıklığı
               href: custom-policy-password-complexity.md
-        - name: Harici kimlik sağlayıcıları
-          items:
-            - name: OIDC/OAuth sağlayıcıları
-              items:
-                - name: Amazon
-                  href: identity-provider-amazon-custom.md
-                - name: Azure AD (Tek kiracılı)
-                  href: identity-provider-azure-ad-single-tenant-custom.md
-                - name: Azure AD (Çok kiracılı)
-                  href: identity-provider-azure-ad-multi-tenant-custom.md
-                - name: Google
-                  href: identity-provider-google-custom.md
-                - name: LinkedIn
-                  href: identity-provider-linkedin-custom.md
-                - name: Microsoft Hesabı
-                  href: identity-provider-microsoft-account-custom.md
-                - name: Twitter
-                  href: identity-provider-twitter-custom.md
-            - name: SAML sağlayıcıları
-              items:
-                - name: AD FS
-                  href: identity-provider-adfs2016-custom.md
-                  displayName: SAML
-                - name: Salesforce
-                  href: identity-provider-salesforce-custom.md
-                  displayName: SAML
         - name: Belirteçler ve oturum yönetimi
           items:
             - name: Belirteçleri özelleştirme

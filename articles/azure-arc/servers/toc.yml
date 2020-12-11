@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Uzantıları ARM şablonunu kullanarak dağıtma
               href: manage-vm-extensions-template.md
+        - name: Sunucuda yönetilen kimlikleri kullanma
+          href: managed-identity-authentication.md
         - name: Aracıyı yönetme
           href: manage-agent.md
     - name: Senaryolar
