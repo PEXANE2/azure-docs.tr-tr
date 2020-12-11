@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: aa0a001f9c35202939eeb4a7752803b998a3acf7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: e85e433e1b1b31470fc8d7dee24353fd719b64e2
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562024"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031190"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Hızlı başlangıç: ASP.NET Core Web API 'sini Microsoft Identity platformu ile koruma
 
 Bu hızlı başlangıçta, bir ASP.NET Core Web API kodu örneği indirir ve bu kodu, kaynaklara erişimi yalnızca yetkili hesaplara kısıtlayan kod gözden geçirdiniz. Örnek, tüm Azure Active Directory (Azure AD) kuruluşunda kişisel Microsoft hesaplarının ve hesaplarının yetkilendirmesini destekler.
 
 > [!div renderon="docs"]
-> ## <a name="prerequisites"></a>Ön koşullar
+> ## <a name="prerequisites"></a>Önkoşullar
 >
 > - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 > - [Azure Active Directory kiracı](quickstart-create-new-tenant.md)
@@ -35,22 +35,20 @@ Bu hızlı başlangıçta, bir ASP.NET Core Web API kodu örneği indirir ve bu 
 >
 > İlk olarak, Web API 'sini Azure AD kiracınıza kaydedin ve aşağıdaki adımları izleyerek bir kapsam ekleyin:
 >
-> 1. [Azure portalında](https://portal.azure.com) oturum açın.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
 > 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
-> 1. **Azure Active Directory** 'yi bulun ve seçin.
-> 1. **Yönet** altında **uygulama kayıtları** ve ardından **Yeni kayıt** ' ı seçin.
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 > 1. Uygulamanız için bir **ad** girin (örneğin,) `AspNetCoreWebApi-Quickstart` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
-> 1. **Kaydet** ’i seçin.
-> 1. **Yönet** altında **bir API 'yi kullanıma** sunma ' yı seçin.
-> 1. **Kapsam Ekle** ' yi seçin ve **Kaydet '** i SEÇIN ve varsayılan **uygulama kimliği URI** 'sini kabul edin.
-> 1. **Kapsam Ekle** bölmesinde, aşağıdaki değerleri girin:
->    - **Kapsam adı** : `access_as_user`
->    - **Kimler izin verebilir?** : **Yöneticiler ve kullanıcılar**
->    - **Yönetici onayı görünen adı** : `Access AspNetCoreWebApi-Quickstart`
->    - **Yönetici onay açıklaması** : `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
->    - **Kullanıcı izni görünen adı** : `Access AspNetCoreWebApi-Quickstart`
->    - **Kullanıcı onay açıklaması** : `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
->    - **Durum** : **etkin**
+> 1. **Kaydet**’i seçin.
+> 1. **Yönet**' in altında **bir API 'yi kullanıma**  >  **ekleme kapsam Ekle**' yi seçin. **Kaydet ve devam et** ' i seçerek varsayılan **uygulama kimliği URI** 'sini kabul edin ve aşağıdaki ayrıntıları girin:
+>    - **Kapsam adı**: `access_as_user`
+>    - **Kimler izin verebilir?**: **Yöneticiler ve kullanıcılar**
+>    - **Yönetici onayı görünen adı**: `Access AspNetCoreWebApi-Quickstart`
+>    - **Yönetici onay açıklaması**: `Allows the app to access AspNetCoreWebApi-Quickstart as the signed-in user.`
+>    - **Kullanıcı izni görünen adı**: `Access AspNetCoreWebApi-Quickstart`
+>    - **Kullanıcı onay açıklaması**: `Allow the application to access AspNetCoreWebApi-Quickstart on your behalf.`
+>    - **Durum**: **etkin**
 > 1. Kapsam **eklemeyi tamamlayacak kapsam Ekle** ' yi seçin.
 
 ## <a name="step-2-download-the-aspnet-core-project"></a>2. Adım: ASP.NET Core projesini Indirin

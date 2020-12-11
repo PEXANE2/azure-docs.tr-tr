@@ -13,12 +13,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 3ea3c3990a9319a81c841de8a7109850fcab5179
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: d1a3965fef6966f70a829cd66d6ce10a01d7af98
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95993916"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030901"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -55,16 +55,17 @@ Hızlı başlangıç, hem iOS hem de macOS uygulamaları için geçerlidir. Baz�
 > #### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 > Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile eklemek için şu adımları izleyin:
 >
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://aka.ms/MobileAppReg) sayfasına gidin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->      - **Ad** bölümünde, uygulamanızı oturum açtıklarında veya onaylamada uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin.
->      - Bu sayfadaki diğer konfigürasyonları atlayın.
->      - `Register` öğesini seçin.
-> 1. **Yönet** bölümünde, öğesini seçin `Authentication`  >  `Add Platform`  >  `iOS` .
->      - Uygulamanız için **_paket tanımlayıcısı_* _ ' i girin. Paket tanımlayıcısı, örneğin, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir `com.<yourname>.identitysample.MSALMacOS` . Kullandığınız değeri bir yere getirin.
->      - İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
-> 1. `Configure`Bu hızlı başlangıçta daha sonra Için _*_msal yapılandırma_*_ ayrıntılarını seçin ve kaydedin.
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.    
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Kaydet**’i seçin.
+> 1. **Yönet**' in altında **kimlik doğrulama**  >  **platformu Ekle**  >  **iOS**' u seçin.
+> 1. Uygulamanız için **paket kimliğini** girin. Paket tanıtıcısı, uygulamanızı benzersiz bir şekilde tanımlayan benzersiz bir dizedir (örneğin,) `com.<yourname>.identitysample.MSALMacOS` . Kullandığınız değeri bir yere getirin. İOS yapılandırmasının macOS uygulamaları için de geçerli olduğunu unutmayın.
+> 1. Bu hızlı başlangıçta yapılandırma ve **msal yapılandırma** ayrıntılarını Kaydet ' **i seçin.**
+> 1. **Bitti**’yi seçin.
+
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>1. Adım: Uygulamanızı yapılandırma
@@ -101,7 +102,7 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >#### <a name="step-4-configure-your-project"></a>4. Adım: projenizi yapılandırma
 > Yukarıdaki 1. seçeneği belirlediyseniz, bu adımları atlayabilirsiniz.
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.
-> 1. _ *ViewController. Swift** öğesini düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID`Uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
+> 1. **ViewController. Swift** 'u düzenleyin ve ' Let Kclitıd ' ile başlayan satırı aşağıdaki kod parçacığı ile değiştirin. `kClientID`Uygulamanızı bu hızlı başlangıçta daha önce portala kaydettiğinizde kaydettiğiniz ClientID değeriyle güncelleştirmeyi unutmayın:
 >    ```swift
 >    let kClientID = "Enter_the_Application_Id_Here"
 >    ```
@@ -116,7 +117,7 @@ Bir Terminal penceresinde indirilen kod örneğini içeren klasöre gidin ve `po
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Proje ayarlarını açın. **Kimlik** bölümünde, portala girdiğiniz **paket kimliğini** girin.
-> 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç**' ı seçin  >  **Source Code**.
+> 1. **Info. plist** ' e sağ tıklayıp kaynak **kodu olarak aç**' ı seçin  >  .
 > 1. Dict kök düğümünün altında, `Enter_the_bundle_Id_Here` portalda kullandığınız **_paket kimliği_* _ ile değiştirin.
 >
 >    ```xml

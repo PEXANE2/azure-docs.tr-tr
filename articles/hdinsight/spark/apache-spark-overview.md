@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.topic: overview
 ms.date: 09/21/2020
-ms.openlocfilehash: f581f7bc2f67093afc26dd2c2f15916841a106e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176b89c9fc80b198a8a639afdd14185ab0008aed
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854350"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029449"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Azure HDInsight’ta Apache Spark nedir?
 
@@ -23,7 +23,7 @@ Apache Spark, büyük veri analizi uygulamalarının performansını artırmak �
 
 ## <a name="what-is-apache-spark"></a>Apache Spark nedir?
 
-Spark, bellek içi küme hesaplama için temel bileşenleri sunar. Bir Spark işi, verileri belleğe yükleyip önbelleğe alarak tekrar tekrar sorgulayabilir. Bellek içi bilgi işlem, Hadoop gibi disk tabanlı uygulamalardan daha hızlıdır, bu da Hadoop Dağıtılmış dosya sistemi (II) aracılığıyla verileri paylaşır. Spark ayrıca Scala programlama diliyle tümleştirilerek yerel koleksiyonlar gibi dağıtılmış veri kümelerini işlemenizi sağlar. Her şeyi harita olarak yapılandırmaya gerek olmadığı için işlem sayısı azalmış olur.
+Spark, bellek içi küme hesaplama için temel bileşenleri sunar. Bir Spark işi, verileri belleğe yükleyip önbelleğe alarak tekrar tekrar sorgulayabilir. Bellek içi bilgi işlem, Hadoop gibi disk tabanlı uygulamalardan daha hızlıdır, bu da Hadoop Dağıtılmış dosya sistemi (II) aracılığıyla verileri paylaşır. Spark ayrıca Scala programlama diliyle tümleştirilerek yerel koleksiyonlar gibi dağıtılmış veri kümelerini işlemenizi sağlar. Her şeyi harita olarak yapılandırmaya gerek olmadığı için işlem sayısı azalmış olur.
 
 ![Geleneksel MapReduce ile Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 

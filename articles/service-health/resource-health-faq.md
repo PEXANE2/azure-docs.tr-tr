@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu SSS
 description: Azure Kaynak Durumu genel bakış
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: c8089e907f555ac970fea06361a2ab1bbc944778
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a5ad8867b110039e4dcc34b20c8a61fccfd39eaf
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536503"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032873"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Kaynak Durumu SSS
 Azure Kaynak Durumu hakkında sık sorulan soruların yanıtlarını öğrenin.
@@ -52,7 +52,6 @@ Kaynak durumu, etkinlik günlüğü tabanlı uyarıları [destekler](resource-he
 Azure portal oturum açtıktan sonra, Kaynak Durumu erişmek için kullanabileceğiniz birden çok yol vardır:
 - Kaynağına gidin. Sol taraftaki gezinmede **kaynak durumu** ' nu seçin.
 - Azure hizmet durumu dikey penceresine gidin.  Sol taraftaki gezinmede **kaynak durumu**' nu seçin.
-- Portalın sağ üst köşesinde bulunan soru işaretini seçip **Yardım + Destek**' i seçerek **Yardım + Destek** dikey penceresini açın. Dikey pencere açıldıktan sonra **kaynak sistem durumu** ' nu seçin.
 
 Kaynaklarınızın sağlık durumu hakkında bilgi almak için Kaynak Durumu API 'sini de kullanabilirsiniz.
 
@@ -69,8 +68,6 @@ Kaynak sistem durumu tüm Azure geos 'ta kullanılabilir.
 Kaynak Durumu tarafından belirtilen bilgiler, Azure durumu veya hizmet durumu panosu tarafından sağlandıklardan daha özgüdür.
 
 [Azure durumu](https://status.azure.com) ve hizmet durumu panosu, çok sayıda müşteriyi (örneğin bir Azure bölgesini) etkileyen hizmet sorunları hakkında bilgi veren kaynak durumu, yalnızca belirli kaynakla ilgili daha ayrıntılı olaylar sunar. Örneğin, bir ana bilgisayar beklenmedik şekilde yeniden başlatıldığında Kaynak Durumu yalnızca sanal makineleri bu konakta çalışan müşterileri uyarır.
-
-Kaynaklarınızı etkileyen olayların görünürlüğünü, Kaynak Durumu Ayrıca hizmet durumu panosunda yayınlanan olayları da doldurduğuna dikkat etmeniz önemlidir.
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>Her kaynak için Kaynak Durumu etkinleştirmem gerekir mi?
 Hayır, Kaynak Durumu aracılığıyla kullanılabilen tüm kaynak türleri için sistem durumu bilgileri kullanılabilir. 

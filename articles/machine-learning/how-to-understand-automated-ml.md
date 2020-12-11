@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2, automl
-ms.openlocfilehash: a3b3640922daf84357354efc389e20afea78d216
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.custom: how-to, contperf-fy21q2, automl
+ms.openlocfilehash: 747cc88cdea59017483245b59e4b2c56c4b06a40
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937721"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032941"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Otomatik makine öğrenimi sonuçlarını değerlendir
 
@@ -190,6 +190,7 @@ Aşağıdaki tabloda, regresyon ve tahmin denemeleri için oluşturulan model pe
 --|--|--|
 explained_variance|Açıklanamayan Varyans, hedef değişkende varyasyon için model hesaplarının kapsamını ölçer. Bu, başlangıçtaki verilerin farkının, hataların farkının yüzdesidir. Hataların ortalaması 0 olduğunda, bu değer belirlemenin katsayısına eşittir (aşağıdaki r2_score bakın). <br> <br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** (-inf, 1]|[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|
 mean_absolute_error|Mutlak ortalama hatası, hedef ve tahmin arasındaki mutlak fark değerinin beklenen değeridir.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF) <br><br> Türü <br>`mean_absolute_error` <br>  `normalized_mean_absolute_error`mean_absolute_error, verilerin aralığına göre bölünür. | [Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html)|
+mean_absolute_percentage_error|Ortalama mutlak yüzde hatası (MAPE), tahmin edilen bir değer ve gerçek değer arasındaki ortalama farkın bir ölçümüdür.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF) ||
 median_absolute_error|Ortanca mutlak hatası, hedef ve tahmin arasındaki tüm mutlak farklılıkların ortancası. Bu kayıp, aykırı değerler için sağlam.<br><br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF)<br><br>Türü <br> `median_absolute_error`<br> `normalized_median_absolute_error`: median_absolute_error, verilerin aralığına göre bölünür. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.median_absolute_error.html)|
 r2_score|R ^ 2, ortalama değeri veren bir taban çizgisi modeliyle karşılaştırıldığında, kare içinde belirleme veya yüzde azaltma yüzdesi olarak belirlenir. <br> <br> **Amaç:** 1 ' e yaklaşarak daha iyi <br> **Aralık:** (-inf, 1]|[Hesaplama](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|
 root_mean_squared_error |Kök ortalama kare hatası (RMKEN), hedef ve tahmin arasındaki beklenen kare farkının kare köküdür. Taraflı olmayan bir Estimator için, RMSE standart sapmayla eşittir.<br> <br> **Amaç:** 0 ' a yaklaşarak daha iyi <br> **Aralık:** [0, INF)<br><br>Türü<br> `root_mean_squared_error` <br> `normalized_root_mean_squared_error`: root_mean_squared_error, verilerin aralığına göre bölünür. |[Hesaplama](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|

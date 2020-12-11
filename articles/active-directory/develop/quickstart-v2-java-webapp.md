@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java, devx-track-java
-ms.openlocfilehash: e93c0c6bb689980cab1b41e529c491cdf3920260
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e188c00840a4d043e94f94f9db565e2d4e06aaba
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591725"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031071"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Hızlı başlangıç: Microsoft 'a Java Web uygulamasına oturum açma ekleme
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, Java Web uygulamasının kullanıcılara nasıl oturu
 
  Örneğin bir çizim için [nasıl çalıştığını](#how-the-sample-works) görün.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu örneği çalıştırmak için şunlar gerekir:
 
@@ -38,7 +38,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>1. Seçenek: Uygulamanızı otomatik olarak kaydedip yapılandırın ve ardından kod örneğinizi indirin
 >
 > 1. [Azure portal uygulama kayıtları](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavaQuickstartPage/sourceType/docs) hızlı başlangıç deneyimine gidin.
-> 1. Uygulamanız için bir ad girin ve **Kaydet** 'i seçin.
+> 1. Uygulamanız için bir ad girin ve **Kaydet**'i seçin.
 > 1. Otomatik olarak yapılandırılan uygulama kodunu indirmek için portalın hızlı başlangıç deneyimindeki yönergeleri izleyin.
 >
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>2. Seçenek: Uygulamanızı ve kod örneğinizi el ile kaydetme ve yapılandırma
@@ -47,25 +47,22 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >
 > Uygulamanızı kaydetmek ve uygulamanın kayıt bilgilerini uygulamanıza el ile eklemek için şu adımları izleyin:
 >
-> 1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
-> 1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
->
-> 1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-> 1. **Yeni kayıt** seçeneğini belirleyin.
-> 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
->    - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `java-webapp` .
->    - **Kaydet** ’i seçin.
-> 1. **Genel bakış** sayfasında uygulamanın **uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliği** değerlerini bulun. Daha sonra bu değerleri kopyalayın.
-> 1. Menüden **kimlik doğrulamasını** seçin ve ardından aşağıdaki bilgileri ekleyin:
->    - **Web** platformu yapılandırmasını ekleyin.  Bunları `https://localhost:8443/msal4jsample/secure/aad` ve `https://localhost:8443/msal4jsample/graph/me` **yeniden yönlendirme URI 'leri** olarak ekleyin...
->    - **Kaydet** ’i seçin.
-> 1. Menüdeki **gizli dizileri &** seçin ve **istemci gizli** dizileri bölümünde **yeni istemci parolası** ' na tıklayın:
->
->    - Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı).
->    - **1 yılda** bir anahtar süresi seçin.
->    - **Ekle** ' yi seçtiğinizde anahtar değeri görüntülenecektir.
->    - Anahtarın değerini daha sonra kopyalayın. Bu anahtar değeri bir daha görüntülenmez veya başka yollarla alınabilir, bu nedenle Azure portal görünür hale geldiğinde onu kaydedin.
->
+> 1. [Azure Portal](https://portal.azure.com) oturum açın.
+> 1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+> 1. **Azure Active Directory**'yi bulun ve seçin.
+> 1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+> 1. Uygulamanız için bir **ad** girin (örneğin,) `java-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+> 1. **Kaydet**’i seçin.
+> 1. **Genel bakış** sayfasında, daha sonra kullanmak üzere **uygulama (istemci) kimliği** ve **Dizin (kiracı) kimliği** ' ni aklınızda edin.
+> 1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+> 1. **Platform Web ekle**' yi seçin  >  .
+> 1. **Yeniden yönlendirme URI 'leri** bölümünde, ekleyin `https://localhost:8443/msal4jsample/secure/aad` .
+> 1. **Yapılandır**'ı seçin.
+> 1. **Web** bölümünden `https://localhost:8443/msal4jsample/graph/me` Ikinci bir **yeniden yönlendirme URI**'si olarak ekleyin.
+> 1. **Yönet** altında, **sertifikaları & parolaları** seçin. **İstemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin.
+> 1. Bir anahtar açıklaması yazın (örneğin, uygulama gizli anahtarı), varsayılan süre sonunu bırakın ve **Ekle**' yi seçin.
+> 1. Daha sonra kullanmak üzere **Istemci parolasının** **değerini** aklınızda yapın.
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>1. Adım: uygulamanızı Azure portal yapılandırma
 >
@@ -110,7 +107,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 > #### <a name="step-3-configure-the-code-sample"></a>3. Adım: kod örneğini yapılandırma
 > 1. Zip dosyasını yerel bir klasöre çıkarın.
 > 1. Tümleşik bir geliştirme ortamı kullanıyorsanız, örneği en sevdiğiniz IDE (isteğe bağlı) içinde açın.
-> 1. Src/Main/Resources/klasöründe bulunan Application. Properties dosyasını açın ve *AAD. ClientID* , *AAD. Authority* ve *AAD. SecretKey* alanlarını aşağıdaki şekilde **uygulama kimliği** , **Kiracı kimliği** ve **istemci gizli** anahtarı değerleriyle değiştirin:
+> 1. Src/Main/Resources/klasöründe bulunan Application. Properties dosyasını açın ve *AAD. ClientID*, *AAD. Authority* ve *AAD. SecretKey* alanlarını aşağıdaki şekilde **uygulama kimliği**, **Kiracı kimliği** ve **istemci gizli** anahtarı değerleriyle değiştirin:
 >
 >    ```file
 >    aad.clientId=Enter_the_Application_Id_here
@@ -120,7 +117,7 @@ Bu örneği çalıştırmak için şunlar gerekir:
 >    aad.redirectUriGraph=https://localhost:8443/msal4jsample/graph/me
 >    aad.msGraphEndpointHost="https://graph.microsoft.com/"
 >    ```
-> Burada:
+> Konum:
 >
 > - `Enter_the_Application_Id_here` - Kaydettiğiniz uygulamanın Uygulama Kimliği değeridir.
 > - `Enter_the_Client_Secret_Here` -Sertifikalar 'da oluşturduğunuz **Istemci gizli anahtarı** , kaydettiğiniz uygulamanın **gizli dizileri &** .
@@ -150,13 +147,13 @@ Katıştırılmış yay önyükleme sunucusunu kullanarak doğrudan IDE 'nizden 
 
 ##### <a name="running-from-ide"></a>IDE 'den çalıştırma
 
-Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' a tıklayın ve ardından projenin giriş sayfasına gidin. Bu örnek için, standart giriş sayfası URL 'SI https://localhost:8443
+Web uygulamasını bir IDE 'den çalıştırıyorsanız, Çalıştır ' ı seçin ve ardından projenin giriş sayfasına gidin. Bu örnek için, standart giriş sayfası URL 'sidir https://localhost:8443 .
 
 1. Ön sayfada, Azure Active Directory yeniden yönlendirmek için **oturum aç** düğmesini seçin ve kullanıcıdan kimlik bilgilerini girmesini isteyebilirsiniz.
 
 1. Kullanıcının kimliği doğrulandıktan sonra, yeniden yönlendirilir *https://localhost:8443/msal4jsample/secure/aad* . Bunlar artık oturum açırlar ve sayfada oturum açmış hesap hakkında bilgi gösterilir. Örnek kullanıcı arabirimi aşağıdaki düğmelere sahiptir:
     - *Oturumu* kapat: geçerli kullanıcıyı uygulamanın dışına imzalar ve bunları giriş sayfasına yönlendirir.
-    - *Kullanıcı bilgilerini göster* : Microsoft Graph için bir belirteç alır ve Microsoft Graph çağırır, bu belirteç içeren bir istekle birlikte oturum açan kullanıcı hakkında temel bilgileri döndürür.
+    - *Kullanıcı bilgilerini göster*: Microsoft Graph için bir belirteç alır ve Microsoft Graph çağırır, bu belirteç içeren bir istekle birlikte oturum açan kullanıcı hakkında temel bilgileri döndürür.
 
 ##### <a name="running-from-tomcat"></a>Tomcat 'ten çalışıyor
 

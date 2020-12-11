@@ -8,13 +8,13 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 08/27/2020
 ms.author: cherylmc
-ms.custom: contperfq1
-ms.openlocfilehash: 23d8d28a03217b1359462332da736f852cfaf8ea
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c19e1156f897873defaba4cebaabb904d034ead3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89015399"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032754"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN Ağ Geçidi nedir?
 
@@ -22,7 +22,7 @@ VPN ağ geçidi, genel İnternet üzerinden bir Azure sanal ağı ile şirket i�
 
 ## <a name="what-is-a-virtual-network-gateway"></a><a name="whatis"></a>Sanal ağ geçidi nedir?
 
-Sanal ağ geçidi, *ağ geçidi alt ağı*olarak adlandırılan, oluşturduğunuz belirli bir alt ağa dağıtılan iki veya daha fazla VM 'den oluşur. Sanal ağ geçidi VM 'Leri, yönlendirme tabloları içerir ve belirli ağ geçidi hizmetlerini çalıştırır. Bu VM 'Ler, sanal ağ geçidini oluşturduğunuzda oluşturulur. Sanal ağ geçidinin parçası olan VM 'Leri doğrudan yapılandıramazsınız.
+Sanal ağ geçidi, *ağ geçidi alt ağı* olarak adlandırılan, oluşturduğunuz belirli bir alt ağa dağıtılan iki veya daha fazla VM 'den oluşur. Sanal ağ geçidi VM 'Leri, yönlendirme tabloları içerir ve belirli ağ geçidi hizmetlerini çalıştırır. Bu VM 'Ler, sanal ağ geçidini oluşturduğunuzda oluşturulur. Sanal ağ geçidinin parçası olan VM 'Leri doğrudan yapılandıramazsınız.
 
 Bir sanal ağ geçidi yapılandırdığınızda, ağ geçidi türünü belirten bir ayar yapılandırırsınız. Ağ Geçidi türü, sanal ağ geçidinin nasıl kullanılacağını ve ağ geçidinin gerçekleştireceği eylemleri belirler. ' VPN ' ağ geçidi türü, oluşturulan sanal ağ geçidi türünün bir ' VPN Gateway ' olduğunu belirtir. Bu, farklı bir ağ geçidi türü kullanan bir ExpressRoute Gateway 'ten ayırt eder. Bir sanal ağda iki sanal ağ geçidi olabilir; bir VPN Gateway ve bir ExpressRoute ağ geçidi. Daha fazla bilgi için bkz. [ağ geçidi türleri](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 

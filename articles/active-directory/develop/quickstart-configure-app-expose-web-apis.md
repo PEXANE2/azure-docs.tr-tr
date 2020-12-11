@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 72d66bd4c738ed60bbaefc123daae90ecc0db163
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ebae7e97f9128bb9302e9076e71dd3164f0c29e
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442172"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030969"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Hızlı başlangıç: bir uygulamayı bir Web API 'SI göstermek üzere yapılandırma
 
@@ -45,10 +45,10 @@ Bir istemci uygulamasındaki kod, bir erişim belirtecini korunan kaynağa (Web 
 
 İlk olarak, adlı örnek bir kapsam oluşturmak için aşağıdaki adımları izleyin `Employees.Read.All` :
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Birden çok kiracıya erişiminiz varsa, **Directory + subscription** :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
-1. **Azure Active Directory**  >  **uygulama kayıtları**öğesini seçin ve ardından API 'nizin uygulama kaydını seçin.
-1. **API 'yi kullanıma**sunma bir  >  **kapsam ekleyin**' i seçin.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-expose-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. **Azure Active Directory**  >  **uygulama kayıtları** öğesini seçin ve ardından API 'nizin uygulama kaydını seçin.
+1. **API 'yi kullanıma** sunma bir  >  **kapsam ekleyin**' i seçin.
 
     :::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-02-expose-api.png" alt-text="Uygulama kaydı, Azure portal bir API bölmesi sunar":::
 
@@ -67,12 +67,12 @@ Bir istemci uygulamasındaki kod, bir erişim belirtecini korunan kaynağa (Web 
     | **Kullanıcı onayı görünen adı** | Kapsamın amacının kısa bir açıklaması. Kullanıcılara yalnızca **Yöneticiler ve kullanıcılara** **izin verebilir** ayarlarsanız gösterilir. | `Read-only access to your Employee records` |
     | **Kullanıcı onayı açıklaması** | Kapsam tarafından verilen iznin daha ayrıntılı bir açıklaması. Kullanıcılara yalnızca **Yöneticiler ve kullanıcılara** **izin verebilir** ayarlarsanız gösterilir. | `Allow the application to have read-only access to your Employee data.` |
 
-1. **Durumu** **etkin**olarak ayarlayın ve ardından **Kapsam Ekle**' yi seçin.
+1. **Durumu** **etkin** olarak ayarlayın ve ardından **Kapsam Ekle**' yi seçin.
 
 1. Seçim Uygulamanızın kullanıcılarına tanımladığınız kapsamlara izin sorulmasını engellemek için, istemci uygulamasını Web API 'nize erişmek üzere *önceden yetkilendirirsiniz* . Kullanıcılarınızın izin reddetme fırsatı olmadığı için *yalnızca* güvendiğiniz istemci uygulamalarına ön yetki verin.
-    1. **Yetkili istemci uygulamaları**altında, **istemci uygulaması Ekle** ' yi seçin.
+    1. **Yetkili istemci uygulamaları** altında, **istemci uygulaması Ekle** ' yi seçin.
     1. Önceden yetkilendirmek istediğiniz istemci uygulamanın **uygulama (istemci) kimliğini** girin. Örneğin, daha önce kaydetmiş olduğunuz bir Web uygulamasının.
-    1. **Yetkili kapsamlar**altında izin istemini bastırmak istediğiniz kapsamları seçin ve ardından **Uygulama Ekle**' yi seçin.
+    1. **Yetkili kapsamlar** altında izin istemini bastırmak istediğiniz kapsamları seçin ve ardından **Uygulama Ekle**' yi seçin.
 
     İsteğe bağlı bu adımı izlediyseniz, istemci uygulaması artık önceden yetkilendirilmiş bir istemci uygulaması (PCA) ve oturum açarken kullanıcılara onay sorulur.
 
@@ -95,9 +95,9 @@ Daha sonra, `Employees.Write.All` yalnızca yöneticilerin izin veremediği adl�
 
 Önceki bölümlerde açıklanan örnek kapsamları başarıyla eklediyseniz, bu resme benzer şekilde, Web API 'sinin uygulama kaydınızın **BIR API bölmesini kullanıma sunacaksınız** :
 
-:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="Uygulama kaydı, Azure portal bir API bölmesi sunar":::
+:::image type="content" source="media/quickstart-configure-app-expose-web-apis/portal-03-scopes-list.png" alt-text="İki açık kapsamı gösteren bir API bölmesinin sergileme ekran görüntüsü.":::
 
-Görüntüde gösterildiği gibi, bir kapsamın tam dizesi, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin ve kapsamın **Kapsam adının**bitiştirilmesi olur.
+Görüntüde gösterildiği gibi, bir kapsamın tam dizesi, Web API 'nizin **uygulama KIMLIĞI URI** 'sinin ve kapsamın **Kapsam adının** bitiştirilmesi olur.
 
 Örneğin, Web API 'nizin uygulama KIMLIĞI URI 'SI ise `https://contoso.com/api` ve kapsam adı ise `Employees.Read.All` , tam kapsam şu şekilde olur:
 

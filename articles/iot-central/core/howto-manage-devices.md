@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.custom: contperfq2
-ms.openlocfilehash: cbe3bedb188b563bb29ad1aa6e6e53e3039f1d51
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170340"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032533"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central uygulamanızda cihazları yönetme
 
@@ -48,9 +48,9 @@ Azure IoT Central uygulamanıza bir cihaz eklemek için:
 
 1. Cihaz oluşturmak istediğiniz cihaz şablonunu seçin.
 
-1. + **Yeni**seçeneğini belirleyin.
+1. + **Yeni** seçeneğini belirleyin.
 
-1. **Benzetimli** geçişi **Açık** veya **kapalı**olarak açın. Gerçek bir cihaz, Azure IoT Central uygulamanıza bağlandığınız fiziksel bir cihaza yöneliktir. Sanal cihaz, Azure IoT Central tarafından sizin için oluşturulan örnek verilere sahiptir.
+1. **Benzetimli** geçişi **Açık** veya **kapalı** olarak açın. Gerçek bir cihaz, Azure IoT Central uygulamanıza bağlandığınız fiziksel bir cihaza yöneliktir. Sanal cihaz, Azure IoT Central tarafından sizin için oluşturulan örnek verilere sahiptir.
 
 1. **Oluştur**’u seçin.
 
@@ -72,7 +72,7 @@ Uygulamanızdaki cihazları toplu olarak kaydetmek için:
     > [!NOTE]
     > Henüz bir cihaz şablonunuz yoksa, cihazları **tüm cihazlarda** içeri aktarabilir ve şablon olmadan kaydedebilirsiniz. Cihazlar alındıktan sonra bunları bir şablona geçirebilirsiniz.
 
-1. **İçeri aktar**'ı seçin.
+1. **İçeri Aktar**'ı seçin.
 
     ![İçeri aktarma eylemi](./media/howto-manage-devices/bulkimport1a.png)
 
@@ -89,7 +89,7 @@ Cihaz içeri aktarma işlemi başarısız olursa, cihaz Işlemleri panelinde bir
 
 ## <a name="migrate-devices-to-a-template"></a>Cihazları bir şablona geçirme
 
-**Tüm cihazlarda**içeri aktarma işlemi başlatarak cihazları kaydedersiniz, cihazlar herhangi bir cihaz şablonu ilişkilendirmesi olmadan oluşturulur. Cihazların verileri ve cihazla ilgili diğer ayrıntıları araştırmak için bir şablonla ilişkilendirilmesi gerekir. Cihazları bir şablonla ilişkilendirmek için aşağıdaki adımları izleyin:
+**Tüm cihazlarda** içeri aktarma işlemi başlatarak cihazları kaydedersiniz, cihazlar herhangi bir cihaz şablonu ilişkilendirmesi olmadan oluşturulur. Cihazların verileri ve cihazla ilgili diğer ayrıntıları araştırmak için bir şablonla ilişkilendirilmesi gerekir. Cihazları bir şablonla ilişkilendirmek için aşağıdaki adımları izleyin:
 
 1. Sol bölmedeki **cihazlar** ' ı seçin.
 
@@ -101,7 +101,7 @@ Cihaz içeri aktarma işlemi başarısız olursa, cihaz Işlemleri panelinde bir
 
 1. Bir şablonla ilişkilendirmek istediğiniz cihazları seçin:
 
-1. **Geçişi**seçin:
+1. **Geçişi** seçin:
 
     ![Cihazları ilişkilendir](./media/howto-manage-devices/unassociateddevices2a.png)
 
@@ -166,7 +166,7 @@ Bulut özellikleri, cihazla ilişkili, şehir ve seri numarası gibi cihaz meta 
 
 1. Özellikleri, ihtiyacınız olan değerlerle değiştirin. Aynı anda birden çok özelliği değiştirebilir ve tümünü aynı anda güncelleştirebilirsiniz.
 
-1. **Kaydet**'i seçin. Yazılabilir özellikleri kaydettiyseniz, değerler cihazınıza gönderilir. Cihaz yazılabilir özelliğin değişikliğini onayladığında, durum **eşitlenmiş**olarak geri döner. Bir bulut özelliğini kaydettiyseniz, değer güncellenir.
+1. **Kaydet**'i seçin. Yazılabilir özellikleri kaydettiyseniz, değerler cihazınıza gönderilir. Cihaz yazılabilir özelliğin değişikliğini onayladığında, durum **eşitlenmiş** olarak geri döner. Bir bulut özelliğini kaydettiyseniz, değer güncellenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

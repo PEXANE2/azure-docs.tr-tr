@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: bd8fec0ae5b6ece1626049953b1f4afd3a581d97
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 90a425fe64424c946a02f3c113889b62b58fbeb4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280590"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032329"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure dijital TWINS örneği ve kimlik doğrulaması (portal) ayarlama
 
@@ -41,18 +41,18 @@ Arama kutusunda *Azure dijital TWINS* araması yapın ve sonuçlardan **Azure di
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins.png" alt-text="Azure dijital TWINS hizmeti sayfasından ' oluştur ' seçeneğini belirleme":::
 
 Aşağıdaki *kaynak oluştur* sayfasında, aşağıda verilen değerleri girin:
-* **Abonelik** : kullandığınız Azure aboneliği
-  - **Kaynak grubu** : Örneğin dağıtılacağı bir kaynak grubu. Zaten bir kaynak grubunuz yoksa, *Yeni bağlantı oluştur* ' u seçerek ve yeni bir kaynak grubu için bir ad girerek buradan bir tane oluşturabilirsiniz.
-* **Konum** : dağıtım Için bir Azure dijital TWINS özellikli bölgesi. Bölgesel destek hakkında daha fazla bilgi için [*bölgeye göre sunulan Azure ürünlerini ziyaret edin (Azure dijital TWINS)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
-* **Kaynak adı** : Azure dijital TWINS örneğiniz için bir ad. Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
+* **Abonelik**: kullandığınız Azure aboneliği
+  - **Kaynak grubu**: Örneğin dağıtılacağı bir kaynak grubu. Zaten bir kaynak grubunuz yoksa, *Yeni bağlantı oluştur* ' u seçerek ve yeni bir kaynak grubu için bir ad girerek buradan bir tane oluşturabilirsiniz.
+* **Konum**: dağıtım Için bir Azure dijital TWINS özellikli bölgesi. Bölgesel destek hakkında daha fazla bilgi için [*bölgeye göre sunulan Azure ürünlerini ziyaret edin (Azure dijital TWINS)*](https://azure.microsoft.com/global-infrastructure/services/?products=digital-twins).
+* **Kaynak adı**: Azure dijital TWINS örneğiniz için bir ad. Yeni örneğin adı, aboneliğinizin bölgesi içinde benzersiz olmalıdır (yani, aboneliğiniz seçtiğiniz adı kullanan bölgede başka bir Azure dijital TWINS örneğine sahipse, farklı bir ad seçmeniz istenir).
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-azure-digital-twins-2.png" alt-text="Azure dijital TWINS kaynağı oluşturmak için açıklanan değerleri doldurma":::
 
-İşiniz bittiğinde, _gözden geçir + oluştur_ ' u seçin. Bu işlem sizi, girdiğiniz örnek ayrıntılarını gözden geçirebileceğiniz ve _Oluştur_ 'a vurtabileceğiniz bir özet sayfasına götürür. 
+İşiniz bittiğinde, _gözden geçir + oluştur_' u seçin. Bu işlem sizi, girdiğiniz örnek ayrıntılarını gözden geçirebileceğiniz ve _Oluştur_'a vurtabileceğiniz bir özet sayfasına götürür. 
 
 ### <a name="verify-success-and-collect-important-values"></a>Başarıyı doğrulama ve önemli değerleri toplama
 
-*Oluşturma* 'yı gönderdikten sonra, Azure bildirimlerinde, örnek dağıtımının durumunu Portal simgesi çubuğunun yanı da görebilirsiniz. Bildirim dağıtımın başarılı olduğunu gösterir ve oluşturduğunuz örneği görüntülemek için _Kaynağa Git_ düğmesini seçebileceksiniz.
+*Oluşturma*'yı gönderdikten sonra, Azure bildirimlerinde, örnek dağıtımının durumunu Portal simgesi çubuğunun yanı da görebilirsiniz. Bildirim dağıtımın başarılı olduğunu gösterir ve oluşturduğunuz örneği görüntülemek için _Kaynağa Git_ düğmesini seçebileceksiniz.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Başarılı bir dağıtım gösteren ve ' kaynağa git ' düğmesini vurgulayan Azure bildirimlerinin görünümü":::
 
@@ -61,7 +61,7 @@ Alternatif olarak, dağıtım başarısız olursa bildirim neden olduğunu göst
 >[!TIP]
 >Örneğiniz oluşturulduktan sonra, Azure portal arama çubuğunda örneğinizin adını arayarak istediğiniz zaman sayfasına dönebilirsiniz.
 
-Örneğin *genel bakış* sayfasından *adına* , *kaynak grubuna* ve *ana bilgisayar adına* göz atın. Bunlar, Azure dijital TWINS örneğiniz ile çalışmaya devam ederken ihtiyacınız olabilecek tüm önemli değerlerdir. Diğer kullanıcılar örnekle programlama yapacaktır, bu değerleri bunlarla paylaşmanız gerekir.
+Örneğin *genel bakış* sayfasından *adına*, *kaynak grubuna* ve *ana bilgisayar adına* göz atın. Bunlar, Azure dijital TWINS örneğiniz ile çalışmaya devam ederken ihtiyacınız olabilecek tüm önemli değerlerdir. Diğer kullanıcılar örnekle programlama yapacaktır, bu değerleri bunlarla paylaşmanız gerekir.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Örneğin genel bakış sayfasından önemli değerleri vurgulama":::
 
@@ -76,9 +76,9 @@ Artık hazır bir Azure dijital TWINS örneğiniz var. Daha sonra, uygun Azure K
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="' Erişim denetimi (ıAM) ' sayfasından rol ataması eklemeyi seçme":::
 
 Aşağıdaki *rol ataması Ekle* sayfasında, değerleri girin (Azure aboneliğinde [yeterli izinlere](#prerequisites-permission-requirements) sahip bir kullanıcı tarafından tamamlanmalıdır):
-* **Rol** : açılan menüden *Azure dijital TWINS veri sahibini* seçin
-* **Erişim ata** : açılan menüden *Azure AD Kullanıcı, Grup veya hizmet sorumlusu ' nı* seçin
-* **Seç** : atanacak kullanıcının adını veya e-posta adresini arayın. Sonucu seçtiğinizde, Kullanıcı *Seçili Üyeler* bölümünde görünür.
+* **Rol**: açılan menüden *Azure dijital TWINS veri sahibini* seçin
+* **Erişim ata**: açılan menüden *Azure AD Kullanıcı, Grup veya hizmet sorumlusu ' nı* seçin
+* **Seç**: atanacak kullanıcının adını veya e-posta adresini arayın. Sonucu seçtiğinizde, Kullanıcı *Seçili Üyeler* bölümünde görünür.
 
 :::row:::
     :::column:::

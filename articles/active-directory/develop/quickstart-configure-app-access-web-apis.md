@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 09/03/2020
 ms.author: marsma
-ms.custom: aaddev, contperfq1
+ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2630984d54134ca8fca94fdc1960265ba71935a6
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89442312"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031309"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Hızlı başlangıç: bir istemci uygulamasını bir Web API 'sine erişmek için yapılandırma
 
@@ -42,10 +42,10 @@ Bu diyagramda iki uygulama kaydı birbirleriyle nasıl ilişki gösterilmektedir
 
 Hem istemci uygulamanızı hem de Web API 'nizi kaydettikten sonra, kapsamları oluşturarak API 'yi kullanıma aldıktan sonra, aşağıdaki adımları izleyerek istemcinin izinlerini API 'ye yapılandırabilirsiniz:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Birden çok kiracıya erişiminiz varsa, **Directory + subscription** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
-1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı (Web API 'nizi*değil* ) seçin.
-1. **API izinleri**Seç  >  **Add a permission**  >  **API 'lerim**izin Ekle.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı (Web API 'nizi *değil* ) seçin.
+1. **API izinleri** Seç  >    >  **API 'lerim** izin Ekle.
 1. Önkoşulların bir parçası olarak kaydettiğiniz Web API 'sini seçin.
 
     **Temsilci izinleri** varsayılan olarak seçilidir. Temsilci izinleri, oturum açmış kullanıcı olarak bir Web API 'sine erişen istemci uygulamalar için uygundur ve erişimi bir sonraki adımda seçtiğiniz izinlerle sınırlandırılmalıdır. Bu örnek için **temsilci izinleri** seçili bırakın.
@@ -57,9 +57,9 @@ Hem istemci uygulamanızı hem de Web API 'nizi kaydettikten sonra, kapsamları 
     **Çalışanları seç. tümünü** veya önkoşulları tamamlarken oluşturmuş olabileceğiniz başka bir izin seçin.
 1. İşlemi gerçekleştirmek için **Izinleri Ekle** ' yi seçin.
 
-API 'nize izinler eklendikten sonra, **yapılandırılan izinler**altında Seçili izinleri görmeniz gerekir. Aşağıdaki görüntüde *çalışanlar. Read* örnek gösterilmektedir. istemci uygulamanın kaydına eklenen tüm temsilci izinleri.
+API 'nize izinler eklendikten sonra, **yapılandırılan izinler** altında Seçili izinleri görmeniz gerekir. Aşağıdaki görüntüde *çalışanlar. Read* örnek gösterilmektedir. istemci uygulamanın kaydına eklenen tüm temsilci izinleri.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Yeni eklenen izni gösteren Azure portal izinleri bölmesi yapılandırıldı":::
 
 Ayrıca, Microsoft Graph API 'SI için *Kullanıcı. Read* iznine de sahip olabilirsiniz. Bu izin, bir uygulamayı Azure portal kaydettiğinizde otomatik olarak eklenir.
 
@@ -71,14 +71,14 @@ Oturum açmış kullanıcı adına kendi Web API 'nize erişmenin yanı sıra, u
 
 İstemci uygulamanızın oturum açmış kullanıcı adına işlemleri gerçekleştirmesini sağlamak için Microsoft Graph için temsilci izni yapılandırın (örneğin, e-postalarını okumak veya profillerini değiştirmek). Varsayılan olarak, istemci uygulamanızın kullanıcılarına, sizin için yapılandırdığınız Temsilcili izinlere izin vermek üzere oturum açtıklarında sorulur.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Birden çok kiracıya erişiminiz varsa, **Directory + subscription** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı seçin.
-1. **API izinlerini**seçin  >  **izin**  >  **Microsoft Graph** Ekle
-1. **Temsilci izinleri**seçin. Microsoft Graph, listenin en üstünde gösterilen en yaygın olarak kullanılan birçok izni kullanıma sunar.
+1. **API izinlerini** seçin  >  **izin**  >  **Microsoft Graph** Ekle
+1. **Temsilci izinleri** seçin. Microsoft Graph, listenin en üstünde gösterilen en yaygın olarak kullanılan birçok izni kullanıma sunar.
 1. **Izinleri Seç**' in altında aşağıdaki izinleri seçin:
 
-    | İzin       | Açıklama                                         |
+    | İzin       | Description                                         |
     |------------------|-----------------------------------------------------|
     | `email`          | Kullanıcıların e-posta adresini görüntüleme                           |
     | `offline_access` | Erişimi verdiğiniz verilere erişimi koruyun |
@@ -96,11 +96,11 @@ Kullanıcı etkileşimi veya onay olmadan kendisi olarak kimlik doğrulaması ya
 
 Aşağıdaki adımlarda Microsoft Graph dosyalarına izin verirsiniz. bir örnek olarak *. All Iznini okuyun* .
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Birden çok kiracıya erişiminiz varsa, **Directory + subscription** :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. Birden çok kiracıya erişiminiz varsa,  :::image type="icon" source="./media/quickstart-configure-app-access-web-apis/portal-01-directory-subscription-filter.png" border="false"::: istemci uygulamanızın kaydını içeren kiracıyı seçmek Için üst menüdeki Dizin + abonelik filtresini kullanın.
 1. **Azure Active Directory**  >  **uygulama kayıtları**' i seçin ve ardından istemci uygulamanızı seçin.
-1. **API izinlerini**seçin  >  **bir izin**  >  **Microsoft Graph**  >  **Uygulama izinleri**ekleyin.
-1. Microsoft Graph tarafından açığa çıkarılan tüm izinler, **Izinleri Seç**altında gösterilir.
+1. **API izinlerini** seçin  >  **bir izin**  >  **Microsoft Graph**  >  **Uygulama izinleri** ekleyin.
+1. Microsoft Graph tarafından açığa çıkarılan tüm izinler, **Izinleri Seç** altında gösterilir.
 1. Uygulamanıza vermek istediğiniz izin veya izinleri seçin. Örnek olarak, kuruluşunuzdaki dosyaları tarayan, belirli bir dosya türü veya adı üzerinde uyarı veren bir Daemon uygulamanız olabilir.
 
     **Izinleri Seç**' ın altında **dosyalar**' ı genişletin ve ardından *dosyalar. Read. All* iznini seçin.
@@ -136,11 +136,11 @@ Bir API 'nin izinlerinin tam kümesini veya bu tabloyu **yapılandırılmış iz
 
 **{Kiracınız} için yönetici Izni verme** düğmesi bir yöneticinin uygulama için yapılandırılan izinlere yönetici onayı vermesini sağlar. Düğmeyi seçtiğinizde, onay eylemini onaylamanız isteyen bir iletişim kutusu gösterilir.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Azure portal yapılandırılan izinler bölmesinde Yönetici onay düğmesine vurgulanmış olarak izin ver":::
 
 İzin verdikten sonra, gerekli yönetici onayı izni verilen izinler izin verildi olarak gösterilir:
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Sağ tarafta açık kapsamlar olan bir Web API 'SI ve izin olarak seçili kapsamlar seçiliyken sol taraftaki bir istemci uygulaması gösteren çizgi diyagramı":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Dosyalar için verilen yönetici onayını gösteren Azure portal izin tablosunu yapılandırın. All iznini okuyun":::
 
 Yönetici değilseniz veya uygulama için hiçbir izin yapılandırılmamışsa **yönetici onayı verme** düğmesi *devre dışı bırakılır* . Verilmiş ancak henüz yapılandırılmamış izinleriniz varsa, yönetici onay düğmesi bu izinleri idare etmek isteyip istemediğinizi sorar. Bunları, yapılandırılmış izinlere ekleyebilir veya kaldırabilirsiniz.
 

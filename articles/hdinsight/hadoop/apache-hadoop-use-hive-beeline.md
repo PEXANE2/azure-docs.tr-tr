@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145965"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031904"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Beeline istemcisini Apache Hive ile kullanma
 
 Bu makalede, bir SSH bağlantısı üzerinden Apache Hive sorguları oluşturmak ve yürütmek için komut satırı [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) istemcisinin nasıl kullanılacağı açıklanır.
 
-## <a name="background"></a>Arka Plan
+## <a name="background"></a>Arka plan
 
 Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdır. HDInsight kümenize yüklenmiş Beeline istemcisine bağlanmak veya Beeline yerel olarak yüklemek için bkz. [Apache Beeline bağlanma veya yükleme](connect-install-beeline.md). Beeline, HDInsight kümenizde barındırılan bir hizmet olan HiveServer2 'e bağlanmak için JDBC kullanır. Ayrıca, HDInsight 'ta Internet üzerinden uzaktan erişim sağlamak için Beeline da kullanabilirsiniz. Aşağıdaki örneklerde, Beeline 'dan HDInsight 'a bağlanmak için kullanılan en yaygın bağlantı dizeleri sağlanmaktadır.
 
@@ -29,7 +29,7 @@ Beeline, HDInsight kümenizin baş düğümlerine eklenen bir Hive istemcanıdı
 
 * Kümenizin birincil depolama alanı için URI düzenine dikkat edin. Örneğin,  `wasb://` Azure depolama için, `abfs://` Azure Data Lake Storage 2. veya `adl://` Azure Data Lake Storage 1. için. Azure depolama için güvenli aktarım etkinse URI olur `wasbs://` . Daha fazla bilgi için bkz. [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md).
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar. Yerel bir Beeline istemcisini de kullanabilirsiniz, ancak bu adımlar bu makalede ele alınmıştır.
+* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight'a (Apache Hadoop) bağlanma](../hdinsight-hadoop-linux-use-ssh-unix.md). Bu belgedeki adımların çoğu, kümeye bir SSH oturumundan Beeline kullandığınızı varsayar. Yerel bir Beeline istemcisini de kullanabilirsiniz, ancak bu adımlar bu makalede ele alınmıştır.
 
 ## <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
@@ -56,7 +56,7 @@ Bu örnek, bir SSH bağlantısından Beeline istemcisinin kullanılmasına dayal
     show tables;
     ```
 
-    Yeni bir kümede yalnızca bir tablo listelenir: **hivesampletable** .
+    Yeni bir kümede yalnızca bir tablo listelenir: **hivesampletable**.
 
 4. Hivesampletable için şemayı göstermek üzere aşağıdaki komutu kullanın:
 
@@ -181,7 +181,7 @@ Bu örnek, önceki örnekteki devamlılık örneğidir. Bir dosya oluşturmak i�
     > [!NOTE]  
     > Dış tablolardan farklı olarak, iç tablo bırakılırken temel alınan veriler de silinir.
 
-1. Dosyayı kaydetmek için **CTRL** + **X** kullanın, **Y** girin ve son olarak **girin** .
+1. Dosyayı kaydetmek için **CTRL** + **X** kullanın, **Y** girin ve son olarak **girin**.
 
 1. Dosyayı Beeline kullanarak çalıştırmak için aşağıdakileri kullanın:
 

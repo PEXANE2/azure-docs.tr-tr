@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq1
-ms.openlocfilehash: 6cb455880852295d7176e813208a93919a2c14bb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperf-fy21q1
+ms.openlocfilehash: ab7a74166e85f2ba9fd73e7323cf9cd200cf32e4
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318254"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031037"
 ---
 # <a name="create-compute-targets-for-model-training-and-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da model eğitimi ve dağıtımı için işlem hedefleri oluşturma
 
@@ -45,7 +45,7 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 
 1. [Azure Machine Learning Studio](https://ml.azure.com)'ya gidin.
  
-1. __Yönet__ altında __işlem__ ' i seçin.
+1. __Yönet__ altında __işlem__' i seçin.
 
 1. Her bir işlem hedefi türünü göstermek için üstteki sekmeleri seçin.
 
@@ -73,7 +73,7 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
   * [Çıkarım kümeleri](#inference-clusters)
   * [Bağlı işlem](#attached-compute)
 
-1. __Oluştur__ ’u seçin.
+1. __Oluştur__’u seçin.
 
 1. Listeden işlem hedefini seçerek oluşturma işleminin durumunu görüntüleyin:
 
@@ -93,7 +93,7 @@ Azure Machine Learning, modelinizi toplu olarak [__işlem hedefleri__](concept-a
 |Sanal makine türü |  CPU veya GPU seçin. Bu tür, oluşturulduktan sonra değiştirilemez     |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |SSH erişimini etkinleştirme/devre dışı bırakma     |   SSH erişimi varsayılan olarak devre dışıdır.  SSH erişimi olamaz. oluşturulduktan sonra değiştirildi. [Vs Code uzak](how-to-set-up-vs-code-remote.md) ile etkileşimli olarak hata ayıklamayı planlıyorsanız erişimi etkinleştirdiğinizden emin olun   |
-|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu** , **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.  |
+|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.  |
 
 ### <a name="compute-clusters"></a><a name="amlcompute"></a> İşlem kümeleri
 
@@ -108,13 +108,13 @@ Eğitim, toplu iş veya pekiştirmeye dayalı öğrenme iş yükleriniz için te
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Minimum düğüm sayısı | Sağlamak istediğiniz düğüm sayısı alt sınırı. Adanmış sayıda düğüm istiyorsanız, bu sayıyı buraya ayarlayın. En az 0 olarak ayarlanarak tasarruf yaparak, küme boşta kaldığında hiçbir düğüm için ödeme yapmazsınız. |
 |En fazla düğüm sayısı | Sağlamak istediğiniz en fazla düğüm sayısı. Bir iş gönderildiğinde işlem bu düğüm sayısı üst sınırına göre otomatik olarak ayarlanır. |
-|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu** , **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.   Ayrıca kaynaklara erişim izni vermek için [Yönetilen kimlikler](#managed-identity) iliştirme     |
+|Gelişmiş ayarlar     |  İsteğe bağlı. Bir sanal ağ yapılandırın. Bir Azure sanal ağı (VNet) içinde işlem örneği oluşturmak için **kaynak grubu**, **sanal ağ** ve **alt ağ** belirtin. Daha fazla bilgi için, VNET için bu [ağ gereksinimlerine](./how-to-secure-training-vnet.md) bakın.   Ayrıca kaynaklara erişim izni vermek için [Yönetilen kimlikler](#managed-identity) iliştirme     |
 
 #### <a name="set-up-managed-identity"></a><a name="managed-identity"></a> Yönetilen kimliği ayarlama
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-intro.md)]
 
-Küme oluşturma sırasında veya işlem kümesi ayrıntılarını düzenlediğinizde, **Gelişmiş ayarlar** ' da **yönetilen kimlik ata** ' yı açıp sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik belirtin.
+Küme oluşturma sırasında veya işlem kümesi ayrıntılarını düzenlediğinizde, **Gelişmiş ayarlar**' da **yönetilen kimlik ata** ' yı açıp sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik belirtin.
 
 #### <a name="managed-identity-usage"></a>Yönetilen kimlik kullanımı
 
@@ -132,7 +132,7 @@ Büyük ölçekli ikinci kullanım için bir Azure Kubernetes hizmeti (AKS) küm
 |---------|---------|
 |İşlem adı     |  <li>Ad gereklidir. Ad, 2 ila 16 karakter arasında olmalıdır. </li><li>Geçerli karakterler büyük ve küçük harfler, rakamlar ve  **-** karakterdir.</li><li>Ad bir harfle başlamalıdır</li><li>Adın, bir Azure bölgesindeki tüm mevcut hesaplar arasında benzersiz olması gerekir. Seçtiğiniz ad benzersiz değilse bir uyarı görürsünüz</li><li>**-** Karakter kullanılıyorsa, daha sonra adının sonunda en az bir harf gelmelidir</li>     |
 |Kubernetes Hizmeti | **Yeni oluştur** ' u seçin ve formun geri kalanını doldurun.  Veya **var olanı kullan** ' ı seçin ve ardından aboneliğinizden mevcut bir aks kümesi seçin.
-|Region |  Kümenin oluşturulacağı bölgeyi seçin |
+|Bölge |  Kümenin oluşturulacağı bölgeyi seçin |
 |Sanal makine boyutu     |  Desteklenen sanal makine boyutları bölgenizde kısıtlanmış olabilir. [Kullanılabilirlik listesini](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) denetleme     |
 |Küme amacı  | **Üretim** veya **geliştirme testi** seçin |
 |Düğüm sayısı | Sanal makinenin çekirdek sayısıyla (vCPU 'Lar) çarpıldığı düğüm sayısı 12 ' den büyük veya buna eşit olmalıdır. |
@@ -160,7 +160,7 @@ Bir işlem eklemek için [Yukarıdaki adımları](#portal-create) kullanın.  Da
     > * [Linux veya macOS 'ta SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/mac-create-ssh-keys.md)
     > * [Windows 'da SSH anahtarları oluşturma ve kullanma](../virtual-machines/linux/ssh-from-windows.md)
 
-1. __Ekle__ ' yi seçin. 
+1. __Ekle__' yi seçin. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -7,13 +7,13 @@ ms.author: baanders
 ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.custom: contperfq2
-ms.openlocfilehash: 45b177bd35af9748ff80ecc38f2d1c803c10546e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 966b87dfb3111d7a112ea99f37dee730495d491f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452825"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032839"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital TWINS ikizi grafiğini sorgulama
 
@@ -220,7 +220,7 @@ Deyimdeki projeksiyonları kullanarak `SELECT` , bir sorgunun döndüreceği sü
 >[!NOTE]
 >Şu anda karmaşık özellikler desteklenmez. Projeksiyon özelliklerinin geçerli olduğundan emin olmak için projeksiyonu bir denetim ile birleştirin `IS_PRIMITIVE` .
 
-Aşağıda, TWINS ve ilişkiler döndürmek için projeksiyonu kullanan bir sorgu örneği verilmiştir. Aşağıdaki *sorgu, bir* *üretici kimliği* olan *fabrikasının* bir *Factory. Customer* ilişkisi aracılığıyla *tüketiciyle* *ilgili olduğu ve* bu ilişki *kenar* olarak sunulur. *Edge*
+Aşağıda, TWINS ve ilişkiler döndürmek için projeksiyonu kullanan bir sorgu örneği verilmiştir. Aşağıdaki *sorgu, bir* *üretici kimliği* olan *fabrikasının* bir *Factory. Customer* ilişkisi aracılığıyla *tüketiciyle* *ilgili olduğu ve* bu ilişki *kenar* olarak sunulur. 
 
 ```sql
 SELECT Consumer, Factory, Edge
@@ -311,7 +311,7 @@ Bir TWINS dizisi oluşturup işleçle sorgulama yaparak ihtiyacınız olan sorgu
 
 Tek bir sorguda daha fazla ayrıntı dahil etmek için, birleşim işleçlerini kullanarak yukarıdaki sorgu türlerinden herhangi birini **birleştirebilirsiniz** . Aynı anda birden fazla ikizi tanımlayıcısı için sorgu oluşturan bileşik sorguların bazı ek örnekleri aşağıda verilmiştir.
 
-| Açıklama | Sorgu |
+| Description | Sorgu |
 | --- | --- |
 | *Oda 123* ' nin sahip olduğu cihazların dışında, işleç rolüne sunan mxyonga cihazlarını döndürün | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contoso:com:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
 | KIMLIĞI *ID1* olan başka bir Ikizi ile *Contains* adlı bir ilişkiye sahip olan TWINS 'i alma | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |

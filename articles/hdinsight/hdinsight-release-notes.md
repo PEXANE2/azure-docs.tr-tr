@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549013"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032567"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -64,3 +64,18 @@ HDInsight, küme güvenilirliği ve performans iyileştirmeleri yapmaya devam ed
 
 ## <a name="component-version-change"></a>Bileşen sürümü değişikliği
 Bu yayın için bileşen sürümü değişikliği yok. HDInsight 4,0 ve HDInsight 3,6 için geçerli bileşen sürümlerini [Bu belgede](./hdinsight-component-versioning.md)bulabilirsiniz.
+
+## <a name="known-issues"></a>Bilinen sorunlar
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>HDInsight küme VM 'lerinin düzenli aralıklarla yeniden başlatılmasını engelle
+
+2020 Kasım 'dan başlayarak, HDInsight kümesi VM 'lerinin düzenli olarak yeniden başlatılmasını fark etmiş olabilirsiniz. Bunun nedeni şunlar olabilir:
+
+1.  CTIO v, kümenizde etkin. Yeni azsec-cBir v paketi, düğüm yeniden başlatılmasını tetikleyen büyük miktarda bellek tüketir. 
+2.  Azure hizmetleri tarafından kullanılan sertifika yetkilileri (CA) listesinde yapılan değişiklikleri izleyen bir CRON işi günlük olarak zamanlanır. Yeni bir CA sertifikası kullanılabilir olduğunda, betik sertifikayı JDK güven deposuna ekler ve yeniden başlatma zamanlar.
+
+HDInsight, düzeltmeleri dağıtmakta ve her iki sorun için çalışan tüm kümeler için düzeltme eki uyguluyor. Bu işlemi hemen uygulamak ve beklenmeyen VM 'Lerin yeniden başlatılmasını önlemek için, aşağıdaki betik eylemlerini tüm küme düğümlerinde kalıcı betik eylemi olarak çalıştırabilirsiniz. HDInsight düzeltme ve düzeltme eki tamamlandıktan sonra başka bir bildirim gönderecek.
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

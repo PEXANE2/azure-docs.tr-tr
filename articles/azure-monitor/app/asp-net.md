@@ -3,13 +3,13 @@ title: Azure Application Insights ASP.NET için izlemeyi yapılandırma | Micros
 description: Şirket içinde veya Azure 'da barındırılan ASP.NET Web siteniz için performans, kullanılabilirlik ve Kullanıcı davranışı analizi araçlarını yapılandırın.
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.custom: contperfq1
-ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: f9cb5370dcddf783e533664c4c141779402103f0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904185"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028997"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>ASP.NET Web siteniz için Application Insights yapılandırma
 
@@ -346,7 +346,7 @@ Sunucu tarafı uygulama izlemeyi başarıyla yapılandırdınız. Web uygulaman�
 
 Önceki bölümler, sunucu tarafı izlemeyi otomatik olarak ve el ile yapılandırmak için yöntemler hakkında rehberlik sağlamaktadır. İstemci tarafı izleme eklemek için [istemci tarafı JavaScript SDK 'sını](javascript.md)kullanmanız gerekir. Sayfanın HTML kapatma etiketinden önce bir [JavaScript kod parçacığı](javascript.md#snippet-based-setup) ekleyerek herhangi bir Web sayfasının istemci tarafı işlemlerini izleyebilirsiniz `</head>` . 
 
-Parçacığı her HTML sayfasının üstbilgisine el ile eklemek mümkün olsa da, kod parçacığını bir sitenin tüm sayfalarına ekleyecek bir birincil sayfaya eklemeniz önerilir. Bu makaledeki şablon tabanlı ASP.NET MVC uygulaması için, düzenlemeniz gereken dosya çağrılır `_Layout.cshtml` ve paylaşılan **Görünümler** altında bulunur  >  **Shared**.
+Parçacığı her HTML sayfasının üstbilgisine el ile eklemek mümkün olsa da, kod parçacığını bir sitenin tüm sayfalarına ekleyecek bir birincil sayfaya eklemeniz önerilir. Bu makaledeki şablon tabanlı ASP.NET MVC uygulaması için, düzenlemeniz gereken dosya çağrılır `_Layout.cshtml` ve paylaşılan **Görünümler** altında bulunur  >  .
 
 İstemci tarafı izleme eklemek için, `_Layout.cshtml` dosyayı açın ve istemci tarafı JAVASCRIPT SDK yapılandırma makalesindeki [kod parçacığı tabanlı kurulum yönergelerini](javascript.md#snippet-based-setup) izleyin.
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40, contperfq2
-ms.openlocfilehash: 3f18913bb0d05c45ae57152d438b229b8bcc1d48
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: e5a9292097933ff35eb8b77445f07f10def6e5c3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94627923"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97029626"
 ---
 # <a name="what-is-the-microsoft-identity-platform"></a>Microsoft kimlik platformu nedir?
 
@@ -30,10 +30,10 @@ Microsoft Identity platformunu oluşturan birkaç bileşen vardır:
   - Azure AD aracılığıyla sağlanan iş veya okul hesapları
   - Skype, Xbox ve Outlook.com gibi kişisel Microsoft hesabı
   - Azure AD B2C kullanarak sosyal veya yerel hesaplar
-- **Açık kaynak kitaplıkları** : Microsoft kimlik doğrulama KITAPLıKLARı (msal) ve standartlara uyumlu diğer kitaplıklar için destek
-- **Uygulama Yönetimi Portalı** : Azure Portal, diğer Azure yönetim özellikleri ile birlikte bir kayıt ve yapılandırma deneyimi.
-- **Uygulama yapılandırma API 'si ve PowerShell** : DevOps görevlerinizi otomatikleştirebilmeniz IÇIN Microsoft Graph API ve PowerShell aracılığıyla uygulamalarınızın programlı yapılandırması.
-- **Geliştirici içeriği** : hızlı başlangıç, Öğreticiler, nasıl yapılır kılavuzları ve kod örnekleri gibi teknik belgeler.
+- **Açık kaynak kitaplıkları**: Microsoft kimlik doğrulama KITAPLıKLARı (msal) ve standartlara uyumlu diğer kitaplıklar için destek
+- **Uygulama Yönetimi Portalı**: Azure Portal, diğer Azure yönetim özellikleri ile birlikte bir kayıt ve yapılandırma deneyimi.
+- **Uygulama yapılandırma API 'si ve PowerShell**: DevOps görevlerinizi otomatikleştirebilmeniz IÇIN Microsoft Graph API ve PowerShell aracılığıyla uygulamalarınızın programlı yapılandırması.
+- **Geliştirici içeriği**: hızlı başlangıç, Öğreticiler, nasıl yapılır kılavuzları ve kod örnekleri gibi teknik belgeler.
 
 Geliştiriciler için, Microsoft Identity platformu, kimlik ve güvenlik alanında, passwordless kimlik doğrulaması, adım kimlik doğrulama ve koşullu erişim gibi modern yeniliklerin tümleştirilmesini sağlar. Bu tür işlevselliği kendiniz uygulamanız gerekmez: Microsoft Identity platformu ile tümleştirilmiş uygulamalar, bu tür yeniliklerden yararlanır.
 
@@ -44,9 +44,9 @@ Microsoft Identity platformu ile kodu bir kez yazabilir ve herhangi bir kullanı
 Derlemek istediğiniz [uygulama senaryosunu](authentication-flows-app-scenarios.md) seçin. Bu senaryo yollarının her biri, bir genel bakış ile başlar ve hızlı başlangıç bağlantısı ile çalışmaya başlamanıza yardımcı olur:
 
 - [Tek sayfalı uygulama (SPA)](scenario-spa-overview.md)
-- [Kullanıcılar için oturum açan web uygulaması](scenario-web-app-sign-user-overview.md)
-- [Web API’lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
-- [Korumalı web API’si](scenario-protected-web-api-overview.md)
+- [Kullanıcıların oturum açtığı web uygulaması](scenario-web-app-sign-user-overview.md)
+- [Web API'lerini çağıran web uygulaması](scenario-web-app-call-api-overview.md)
+- [Korumalı web API'si](scenario-protected-web-api-overview.md)
 - [Web API'lerini çağıran web API'si](scenario-web-api-call-api-overview.md)
 - [Masaüstü uygulaması](scenario-desktop-overview.md)
 - [Daemon uygulaması](scenario-daemon-overview.md)

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6e2df9168b880e565ea9b70c82c2c0c1b55b4db8
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737252"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032126"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
 
@@ -42,7 +42,7 @@ Azure yay bulut hizmeti örneğinizi dağıttığınız sanal ağın aşağıdak
     * Biri hizmet çalışma zamanı için
     * Bir tane, Spring Boot mikro hizmet uygulamalarınız için. 
     * Bu alt ağlar ve bir Azure yay bulut hizmeti örneği arasında bire bir ilişki vardır. Dağıttığınız her bir hizmet örneği için yeni bir alt ağ kullanmanız gerekir ve her alt ağ yalnızca tek bir hizmet örneği içerebilir.
-* **Adres alanı**: hizmet çalışma zamanı alt ağı için en fazla/28 blok ve diğer CIDR, Spring Boot mikro hizmet uygulamaları alt ağı için/24 ' e kadar bir CIDR bloğu.
+* **Adres alanı**: CIDR, hem Service Runtime alt ağı hem de Spring Boot mikro hizmet uygulamaları alt ağı için **/28** ' i engeller.
 * **Yol tablosu**: alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
 
 Aşağıdaki yordamlarda, sanal ağın Azure Spring Cloud örneğini içerecek şekilde kurulumu açıklanır.
@@ -58,16 +58,16 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Ad             |*Azure-Spring-Cloud-VNET* girin                   |
+    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
     |Konum         |**Doğu ABD** seçin                                |
 
 1. Ileri ' ye tıklayın **: IP adresleri >**. 
  
 1. IPv4 adres alanı için 10.1.0.0/16 girin.
 
-1. Alt ağ **Ekle**' yi seçin ve alt ağ **adı** için 10.1.0.0/24 alt ağ **adres aralığı** için *hizmet-çalışma zamanı-alt ağını* girin. Daha sonra **Ekle**'ye tıklayın.
+1. Alt ağ **Ekle**' yi seçin, sonra alt ağ adı için *hizmet-çalışma zamanı-alt ağ* **adı** ve 10.1.0.0/28 **yazın.** Daha sonra **Ekle**'ye tıklayın.
 
-1. **Alt ağ ekle** ' yi tekrar seçin, sonra **alt ağ adı** ve **alt ağ adres aralığı**(örneğin, *uygulamalar-alt ağ* ve 10.1.1.0/24) girin.  **Ekle**'ye tıklayın.
+1. **Alt ağ ekle** ' yi tekrar seçin, sonra **alt ağ adı** ve **alt ağ adres aralığı** girin, örneğin, *uygulamalar-alt ağ* ve 10.1.1.0/28.  **Ekle**'ye tıklayın.
 
 1. **Gözden geçir ve oluştur**’a tıklayın. Rest 'i varsayılan olarak bırakın ve **Oluştur**' a tıklayın.
 
@@ -107,7 +107,7 @@ az role assignment create \
 
 ## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Sanal ağda Azure yay bulut hizmeti örneğini dağıtma
 
-1. ' İ kullanarak Azure portal açın https://ms.portal.azure.com .
+1. ' İ kullanarak Azure portal açın https://portal.azure.com .
 
 1. Üst arama kutusundan **Azure yay bulutu**' nı arayın ve sonuçtan **Azure yay bulutu** ' nı seçin.
 
@@ -134,6 +134,8 @@ az role assignment create \
 
 1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
 
+    ![Belirtimleri doğrula](./media/spring-cloud-v-net-injection/verify-specifications.png)
+
 Dağıtımdan sonra, Azure yay bulut hizmeti örneği için ağ kaynaklarını barındırmak üzere aboneliğinizde iki ek kaynak grubu oluşturulur.  Aşağıdaki yeni kaynak gruplarını bulmak için **Home** ' a gidip üstteki menü öğelerinden **kaynak grupları** ' nı seçin.
 
 *AP-svc-RT_ {Service Instance Name} _ {Service Instance Region}* olarak adlandırılan kaynak grubu, hizmet örneğinin hizmet çalışma zamanına ait ağ kaynaklarını içerir.
@@ -150,6 +152,18 @@ Bu ağ kaynakları, yukarıda oluşturulan sanal ağınıza bağlanır.
 
    > [!Important]
    > Kaynak grupları Azure Spring Cloud Service tarafından tam olarak yönetilir. Lütfen içindeki bir kaynağı el ile silmeyin veya değiştirmeyin.
+
+## <a name="limitations"></a>Sınırlamalar
+
+Küçük alt ağ aralığı IP adreslerini kaydeder, ancak Azure yay bulutunun tutabilmesine izin verilen en fazla uygulama örneği sayısına yönelik sınırlamalar getirir. 
+
+| CıDR | Toplam IP sayısı | Kullanılabilir IP 'Ler | En fazla uygulama örnekleri                                        |
+| ---- | --------- | ------------- | ------------------------------------------------------------ |
+| /28  | 16        | 8             | <p> 1 çekirdekli uygulama: 96 <br/> 2 çekirdek içeren uygulama: 48<br/>  3 çekirdekle uygulama: 32 <br/> 4 çekirdek içeren uygulama: 24 </p> |
+| /27  | 32        | 24            | <p> 1 çekirdekli uygulama: 228<br/> 2 çekirdek içeren uygulama: 144<br/>  3 çekirdekle uygulama: 96 <br/>  4 çekirdek içeren uygulama: 72</p> |
+| /26  | 64        | 56            | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 336<br/>  3 çekirdekle uygulama: 224<br/>  4 çekirdek içeren uygulama: 168</p> |
+| /25  | 128       | 120           | <p> 1 çekirdekli uygulama: 500<br> 2 çekirdek içeren uygulama: 500<br>  3 çekirdekle uygulama: 480<br>  4 çekirdek içeren uygulama: 360</p> |
+| /24  | 256       | 248           | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 500<br/>  3 çekirdekle uygulama: 500<br/>  4 çekirdek içeren uygulama: 500</p> |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

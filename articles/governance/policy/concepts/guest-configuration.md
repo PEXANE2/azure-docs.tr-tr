@@ -3,12 +3,12 @@ title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
 description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: a956d5e8dcfa82f85020928e1427a08ac8fe7a69
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fd1f17d38b0a58fbf64670849a8d5e13bb00cf8
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906259"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032720"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -84,7 +84,7 @@ Sanal ağları iletişim için kullanan sanal makineler, bağlantı noktasındak
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure 'da özel bağlantı üzerinden iletişim kurma
 
-Sanal makineler, Konuk yapılandırma hizmeti ile iletişim kurmak için [özel bağlantıyı](../../../private-link/private-link-overview.md) kullanabilir. `EnablePrivateNeworkGC`Bu özelliği etkinleştirmek için adı ve değeri ile etiket uygulayın `TRUE` . Bu etiket, Konuk yapılandırma ilkesi tanımlarının makineye uygulanmadan önce veya sonra uygulanabilir.
+Sanal makineler, Konuk yapılandırma hizmeti ile iletişim kurmak için [özel bağlantıyı](../../../private-link/private-link-overview.md) kullanabilir. `EnablePrivateNetworkGC`Bu özelliği etkinleştirmek için adı ve değeri ile etiket uygulayın `TRUE` . Bu etiket, Konuk yapılandırma ilkesi tanımlarının makineye uygulanmadan önce veya sonra uygulanabilir.
 
 Azure platform kaynaklarıyla güvenli ve kimliği doğrulanmış bir kanal oluşturmak için Azure [sanal genel IP adresi](../../../virtual-network/what-is-ip-address-168-63-129-16.md) kullanılarak trafik yönlendirilir.
 

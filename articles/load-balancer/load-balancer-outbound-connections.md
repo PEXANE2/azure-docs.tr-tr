@@ -5,15 +5,15 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: conceptual
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d30998e0d99ba7b1eeb55bdc47cd5cc54690156f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780119"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032924"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Giden bağlantılar için SNAT kullanma
 
@@ -66,7 +66,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
  | Ortak yük dengeleyici veya tek başına | [SNAT (kaynak ağ adresi çevirisi)](#snat) </br> kullanılmıyor. | TCP (Iletim Denetim Protokolü) </br> UDP (Kullanıcı Datagram Protokolü) </br> ICMP (Internet Denetim Iletisi Protokolü) </br> ESP (Kapsüllenen Güvenlik Yükü) |
 
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
 
  Azure, tüm giden akışlar için örneğin NIC 'in IP yapılandırmasına atanan genel IP 'yi kullanır. Örnekte, tüm kısa ömürlü bağlantı noktaları kullanılabilir. VM 'nin yük dengeli olup olmadığı önemi yoktur. Bu senaryo diğerlerine göre önceliklidir. 
@@ -83,7 +83,7 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
  | Genel yük dengeleyici | [SNAT](#snat)için yük dengeleyici ön uç IP 'leri kullanımı.| TCP </br> UDP |
 
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
 
  Yük dengeleyici kaynağı bir giden kuralla veya varsayılan SNAT 'yi sağlayan bir yük dengeleme kuralıyla yapılandırılır. Bu kural, arka uç havuzuyla genel IP ön ucu arasında bağlantı oluşturmak için kullanılır. 
@@ -109,9 +109,9 @@ Aşağıdaki [Senaryo 2](#scenario2) yapılandırıldığında, her arka uç ör
 
  | İçermektedir | Yöntem | IP protokolleri |
  | ------------ | ------ | ------------ |
- |Hiçbiri </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
+ |Yok </br> Temel yük dengeleyici | Örnek düzeyinde dinamik IP adresi ile [SNAT](#snat)| TCP </br> UDP | 
 
- #### <a name="description"></a>Açıklama
+ #### <a name="description"></a>Description
 
 
  VM bir giden akış oluşturduğunda, Azure Kaynak IP adresini dinamik olarak ayrılmış bir ortak kaynak IP adresine dönüştürür. Bu genel IP adresi **yapılandırılamaz** ve ayrılamaz. Bu adres, aboneliğin genel IP kaynak sınırına göre sayılmaz. 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 88b3879a648117329f2485012542b48d6a7a7755
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 56a350f886229cfb5479b5adae52a9c871f5bb65
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752694"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032346"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM 'lerini Azure 'a geçirme (aracısız)
 
@@ -113,7 +113,7 @@ Aşağıda belirtilen şekilde çoğaltmayı etkinleştirin:
 12. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (**Manage**  >  **çoğaltılan makineleri** yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
+> Çoğaltma ayarlarını yineleme başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz (  >  **çoğaltılan makineleri** yönetin). Çoğaltma başladıktan sonra ayarları değiştiremezsiniz.
 
 ### <a name="provisioning-for-the-first-time"></a>İlk kez sağlama
 
@@ -173,7 +173,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     ![Sunucuları çoğaltma](./media/tutorial-migrate-vmware/replicate-servers.png)
 
 2. **Makineleri çoğaltma** bölümünde VM > **Geçir** üzerine sağ tıklayın.
-3. **Migrate**  >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
+3.   >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
     - Azure Geçişi, varsayılan olarak şirket içi VM’yi kapatır ve son çoğaltmadan bu yana gerçekleşen tüm VM değişikliklerini eşitlemek için bir isteğe bağlı çoğaltma çalıştırır. Bu, veri kaybı olmamasını sağlar.
     - VM’yi kapatmak istemiyorsanız, **Hayır** seçeneğini belirleyin
 4. VM için bir geçiş işlemi başlar. Azure bildirimlerinde işlemi izleyin.
@@ -182,7 +182,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
 ## <a name="complete-the-migration"></a>Geçişi tamamlamayı
 
 1. Geçiş yapıldıktan sonra, **çoğaltmayı durdurmak**> VM 'ye sağ tıklayın. Bu, şirket içi makine için çoğaltmayı durduruyor ve VM için çoğaltma durumu bilgilerini temizler.
-2. Geçirilen makinelere Azure VM [Windows](../virtual-machines/extensions/agent-windows.md) veya [Linux](../virtual-machines/extensions/agent-linux.md) Aracısı 'nı yükler.
+2. Makinede Linux OS varsa, geçirilen makinelere Azure VM [Linux](../virtual-machines/extensions/agent-linux.md) Aracısı 'nı yükler. Geçiş sırasında Windows VM 'Leri için VM aracısını otomatik olarak yükledik.
 3. Veritabanı bağlantısı dizelerini ve web sunucusu yapılandırmalarını güncelleştirme gibi herhangi bir geçiş sonrası uygulama ayarı gerçekleştirin.
 4. Geçirilen uygulamada son uygulama ve geçiş kabul testi gerçekleştirme işlemi şimdi Azure’da çalıştırılmaktadır.
 5. Geçirilen Azure VM örneğine giden trafiği kesin.

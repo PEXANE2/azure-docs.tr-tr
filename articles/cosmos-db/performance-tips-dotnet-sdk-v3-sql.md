@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: ab9fc4f08b96fc10a20125c30af2d6b8050c7606
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: f503f132794f6d04b587a78b8f838acba26f9ac3
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341748"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032023"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -41,16 +41,16 @@ ServiceInterop.dll kullanılamadığı Linux ve diğer desteklenmeyen platformla
 
 Burada listelenen dört uygulama türü, varsayılan olarak 32 bitlik ana bilgisayar işlemini kullanır. Uygulama türü için ana bilgisayar işlemesini 64 bitlik işleme değiştirmek için aşağıdakileri yapın:
 
-- **Yürütülebilir uygulamalar için** : **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64** olarak ayarlayın.
+- **Yürütülebilir uygulamalar için**: **Proje özellikleri** penceresinde, **Yapı** bölmesinde, [Platform hedefini](/visualstudio/ide/how-to-configure-projects-to-target-platforms?preserve-view=true&view=vs-2019) **x64** olarak ayarlayın.
 
-- **VSTest tabanlı test projeleri için** : Visual Studio **Test** menüsünde **Test**  >  **Test ayarları** ' nı seçin ve ardından **Varsayılan işlemci mimarisini** **x64** olarak ayarlayın.
+- **VSTest tabanlı test projeleri için**: Visual Studio **Test** menüsünde **Test**  >  **Test ayarları**' nı seçin ve ardından **Varsayılan işlemci mimarisini** **x64** olarak ayarlayın.
 
-- **Yerel olarak dağıtılan ASP.NET Web uygulamaları için** : **Araçlar**  >  **Seçenekler**  >  **Projeler ve çözümler**  >  **Web projeleri** ' ni seçin ve ardından **Web siteleri ve projeler için IIS Express 64 bitlik sürümünü kullan** ' ı seçin.
+- **Yerel olarak dağıtılan ASP.NET Web uygulamaları için**: **Araçlar**  >  **Seçenekler**  >  **Projeler ve çözümler**  >  **Web projeleri**' ni seçin ve ardından **Web siteleri ve projeler için IIS Express 64 bitlik sürümünü kullan**' ı seçin.
 
-- **Azure 'da dağıtılan ASP.NET Web uygulamaları için** : Azure Portal, **uygulama ayarları** ' nda **64 bitlik** platformu seçin.
+- **Azure 'da dağıtılan ASP.NET Web uygulamaları için**: Azure Portal, **uygulama ayarları**' nda **64 bitlik** platformu seçin.
 
 > [!NOTE] 
-> Varsayılan olarak, yeni Visual Studio projeleri **herhangi BIR CPU** 'ya ayarlanır. Projenizi **x86** 'ya geçiş yapmak için **x64** olarak ayarlamanızı öneririz. **Herhangi BIR CPU** 'ya ayarlanmış bir proje yalnızca x86 bağımlılığı eklendiyse, kolayca **x86** 'ya geçiş yapabilir.<br/>
+> Varsayılan olarak, yeni Visual Studio projeleri **herhangi BIR CPU**'ya ayarlanır. Projenizi **x86**'ya geçiş yapmak için **x64** olarak ayarlamanızı öneririz. **Herhangi BIR CPU** 'ya ayarlanmış bir proje yalnızca x86 bağımlılığı eklendiyse, kolayca **x86** 'ya geçiş yapabilir.<br/>
 > ServiceInterop.dll dosyanın, SDK DLL 'sinin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'Leri el ile kopyalarsanız veya özel derleme veya dağıtım sistemlerine sahipseniz sorun olması gerekir.
     
 **Sunucu tarafı atık toplamayı aç**
@@ -156,13 +156,13 @@ SQL .NET SDK Paralel sorguları destekler, bu, bölümlenmiş bir kapsayıcıyı
 
 Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki parametre sağlar: 
 
-- **MaxConcurrency** : paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler.
+- **MaxConcurrency**: paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler.
 
    Paralel sorgu birden çok bölümü paralel olarak sorgulayarak işe yarar. Ancak tek bir bölümden alınan veriler sorguya göre işlem içine alınır. `MaxConcurrency` [SDK V3](https://github.com/Azure/azure-cosmos-dotnet-v3) 'nin bölüm sayısına göre ayarlanması en iyi performansı elde etmek için en iyi performansa sahiptir, diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz. Sistem paralellik derecesi olarak en az (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
 
     Paralel sorgular, verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde en avantaja sahip olur. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğu birkaç bölümde yoğunlaşarak (bir bölüm en kötü durumdur), bu bölümlerin sorgunun performansını performans sorunlarına neden olur.
    
-- **Maxbuffereditemcount** : önceden getirilen sonuçların sayısını denetler.
+- **Maxbuffereditemcount**: önceden getirilen sonuçların sayısını denetler.
 
    Paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Bu önceden getirme, bir sorgunun genel gecikmesinin artırılmasına yardımcı olur. `MaxBufferedItemCount`Parametresi, önceden getirilen sonuçların sayısını sınırlar. `MaxBufferedItemCount`Sorgunun ön getirmeyi en fazla avantaj almasına izin vermek için beklenen sonuç sayısı (veya daha yüksek bir sayı) olarak ayarlayın.
 
