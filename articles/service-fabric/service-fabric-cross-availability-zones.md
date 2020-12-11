@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91803747"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109831"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -332,4 +332,96 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 
 ```
 
+## <a name="preview-enable-multiple-availability-zones-in-single-virtual-machine-scale-set"></a>Önizle Tek bir sanal makine ölçek kümesinde birden çok kullanılabilirlik bölgesini etkinleştir
+
+Daha önce bahsedilen çözüm, AZ bir nodeType kullanır. Aşağıdaki çözüm, kullanıcıların aynı nodeType içindeki 3 AZ ' i dağıtmaları için izin verir.
+
+Tam örnek şablon [burada](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/15-VM-Windows-Multiple-AZ-Secure)bulunur.
+
+![Azure Service Fabric kullanılabilirlik alanı mimarisi][sf-multi-az-arch]
+
+### <a name="configuring-zones-on-a-virtual-machine-scale-set"></a>Bir sanal makine ölçek kümesindeki bölgeleri yapılandırma
+Bir sanal makine ölçek kümesindeki bölgeleri etkinleştirmek için, sanal makine ölçek kümesi kaynağına aşağıdaki üç değeri eklemeniz gerekir.
+
+* İlk değer, sanal makine ölçek kümesinde var olan Kullanılabilirlik Alanları belirten **Zones** özelliğidir.
+* İkinci değer, true olarak ayarlanması gereken "singlePlacementGroup" özelliğidir.
+* Üçüncü değer "bölge bakiyesi" ve isteğe bağlıdır; bu, doğru olarak ayarlandıysa katı bölge dengelemesi sağlar. [Bölge Dengeleme](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)hakkında bilgi edinin.
+* FaultDomain ve UpgradeDomain geçersiz kılmalarını yapılandırmak için gerekli değildir.
+
+```json
+{
+    "apiVersion": "2018-10-01",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+    "name": "[parameters('vmNodeType1Name')]",
+    "location": "[parameters('computeLocation')]",
+    "zones": ["1", "2", "3"],
+    "properties": {
+        "singlePlacementGroup": "true",
+        "zoneBalance": false
+    }
+}
+```
+
+>[!NOTE]
+> * **SF kümelerinin en az bir tane birincil nodeType olmalıdır. Birincil nodeTypes 'ın durda daha yüksek düzeyi veya üzeri olması gerekir.**
+> * AZ yayılmış sanal makine ölçek kümesi, Dureriþitylevel ' dan bağımsız olarak en az 3 kullanılabilirlik bölgesi ile yapılandırılmalıdır.
+> * AZ gümüş dayanıklılık (veya üzeri) ile sanal makine ölçek kümesi, en az 15 VM 'ye sahip olmalıdır.
+> * AZ önce bronz dayanıklılık ile sanal makine ölçek kümesi yayılmalı, en az 6 VM olmalıdır.
+
+### <a name="enabling-the-support-for-multiple-zones-in-the-service-fabric-nodetype"></a>Service Fabric nodeType içinde birden çok bölge desteğini etkinleştirme
+Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeType etkinleştirilmelidir.
+
+* İlk değer, nodeType için true olarak ayarlanması gereken **Çoğulkullanılabilirliği Bilityzones** ' dır.
+* İkinci değer **Sfzonalupgrademode** ' dır ve isteğe bağlıdır. Kümede birden çok AZ olan NodeType zaten varsa, bu özellik değiştirilemez.
+      Özelliği, yükseltme etki alanlarında VM 'lerin mantıksal gruplandırmasını denetler.
+          Değer false (düz mod) olarak ayarlandıysa: düğüm türü altındaki VM 'Ler, 5 UDs 'deki bölge bilgilerini yoksayarak UD 'de gruplandırılır.
+          Değer atlanırsa veya true (hiyerarşik mod) olarak ayarlandıysa: VM 'Ler, en fazla 15 UDs 'ye kadar olan bir dağılımı yansıtacak şekilde gruplandırılır. 3 bölgenin her biri 5 UDs 'ye sahip olacaktır.
+          Bu özellik yalnızca ServiceFabric uygulaması ve kod yükseltmeleri için yükseltme davranışını tanımlar. Temel alınan sanal makine ölçek kümesi yükseltmeleri, tüm AZ olarak paralel olmaya devam edecektir.
+      Bu özelliğin, birden çok bölgesi etkin olmayan düğüm türleri için UD dağıtımı üzerinde hiçbir etkisi olmayacaktır.
+* Üçüncü değer **Vmsszonalupgrademode = Parallel** değeridir. Bu, birden fazla AZs içeren bir nodeType eklenirse kümede yapılandırılacak *zorunlu* bir özelliktir. Bu özellik, tüm az bir kez paralel olarak gerçekleştirilecek sanal makine ölçek kümesi güncelleştirmeleri için yükseltme modunu tanımlar.
+      Şimdi bu özellik yalnızca paralel olarak ayarlanabilir.
+* Service Fabric küme kaynağı apiVersion, "2020-12-01-Preview" veya üzeri olmalıdır.
+* Küme kodu sürümü "7.2.445" veya üzeri olmalıdır.
+
+```json
+{
+    "apiVersion": "2020-12-01-preview",
+    "type": "Microsoft.ServiceFabric/clusters",
+    "name": "[parameters('clusterName')]",
+    "location": "[parameters('clusterLocation')]",
+    "dependsOn": [
+        "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
+    ],
+    "properties": {
+        "SFZonalUpgradeMode": "Hierarchical",
+        "VMSSZonalUpgradeMode": "Parallel",
+        "nodeTypes": [
+          {
+                "name": "[parameters('vmNodeType0Name')]",
+                "multipleAvailabilityZones": true,
+          }
+        ]
+}
+```
+
+>[!NOTE]
+> * Genel IP ve Load Balancer kaynakları, makalenin önceki kısımlarında açıklandığı gibi standart SKU 'YU kullanmalıdır.
+> * nodeType üzerinde "Çoğulkullanılabilirliği Bilityzones" özelliği yalnızca nodeType oluşturma sırasında tanımlanabilir ve daha sonra değiştirilemez. Bu nedenle, mevcut nodeTypes bu özellikle yapılandırılamaz.
+> * "HierarchicalUpgradeDomain" atlandığında veya true olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir.
+> * Kümenin bir bölge alt senaryosunu kullandığından emin olmak için küme güvenilirlik düzeyini Platinum olarak ayarlamanız önerilir.
+
+>[!NOTE]
+> En iyi uygulama için, hierarchicalUpgradeDomain ' nin doğru olarak ayarlanacağını veya atlanacağını öneririz. Dağıtım, daha küçük bir çoğaltmalar ve/veya örneklerin daha güvenli hale getirilmesi için, VM 'lerin ZGen dağılımını takip edecektir.
+> Dağıtım hızı bir öncelik veya yalnızca durum bilgisi olan bir iş yükü yalnızca birden çok AZ olan düğüm türü üzerinde çalışıyorsa yanlış olarak hierarchicalUpgradeDomain ayarını kullanın. Bu, UD 'nin tüm AZ ' de paralel olarak oluşmasına neden olur.
+
+### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Birden çok Kullanılabilirlik Alanları düğüm türüne geçiş
+Tüm geçiş senaryoları için, birden çok kullanılabilirlik bölgesi desteklenmeleri gereken yeni bir nodeType eklenmelidir. Mevcut bir nodeType birden çok bölgeyi destekleyecek şekilde geçirilemez.
+[Buradaki](https://docs.microsoft.com/azure/service-fabric/service-fabric-scale-up-primary-node-type ) makale, yeni bir NodeType ekleme ve IP ve lb kaynakları gibi yeni NodeType için gereken diğer kaynakları ekleme hakkında ayrıntılı adımları yakalar. Aynı makalede, birden fazla kullanılabilirlik bölgesi olan nodeType, kümeye eklendikten sonra var olan nodeType devre dışı bırakılması de açıklanmaktadır.
+
+* Temel LB ve IP kaynaklarını kullanan bir nodeType 'ten geçiş: Bu, AZ önce bir düğüm türü olan çözüm için [burada](https://docs.microsoft.com/azure/service-fabric/service-fabric-cross-availability-zones#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip) açıklanmıştır. 
+    Yeni düğüm türü için tek fark, yalnızca 1 sanal makine ölçek kümesi ve 1 NodeType, AZ başına 1 değil, her biri için 1 NodeType olacaktır.
+* NSG ile standart SKU LB ve IP kaynaklarını kullanan bir nodeType 'dan geçiş: yeni LB, IP ve NSG kaynakları eklemeye gerek olmadığı ve aynı kaynakların yeni nodeType içinde yeniden kullanılabilmesi için yukarıda açıklanan yordamın aynısını Izleyin.
+
+
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png
+[sf-multi-az-arch]: ./media/service-fabric-cross-availability-zones/sf-multi-az-topology.png

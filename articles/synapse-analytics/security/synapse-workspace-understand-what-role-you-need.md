@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: aadc8e817eb2b5de856ac73cfd010b48d0531bfc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523627"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109802"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>SYNAPSE 'de ortak görevleri gerçekleştirmek için gereken rolleri anlayın
 
@@ -58,6 +58,7 @@ Aşağıdaki tabloda, ortak görevler ve her görev, SYNAPSE RBAC veya Azure RBA
 
 >[!Note]
 >- Gerekli izni sağlayan tek rol olmadığı takdirde, SYNAPSE Yöneticisi her bir görev için listelenmez.  SYNAPSE Yöneticisi, diğer SYNAPSE RBAC rolleri tarafından etkinleştirilen tüm görevleri gerçekleştirebilir.</br>
+>- Gerekli en düşük SYNAPSE RBAC rolü gösteriliyor.
 >- Herhangi bir kapsamdaki tüm SYNAPSE RBAC rolleri, çalışma alanında SYNAPSE Kullanıcı izinleri sağlar
 >- Tabloda gösterilen tüm SYNAPSE RBAC izinleri/eylemleri önekli Microsoft/SYNAPSE/Workspaces/... </br>
 
@@ -69,51 +70,50 @@ Görev (istiyorum...) |Rol (yapmam gerekiyor...)|SYNAPSE RBAC izni/eylemi
 |SQL havuzlarını, Apache Spark havuzlarını, tümleştirme çalışma zamanlarını listeleyin ve yapılandırma ayrıntılarına erişin|SYNAPSE kullanıcısı veya|read|
 ||Çalışma alanında Azure sahibi, katkıda bulunan veya okuyucu|yok
 |Bağlı hizmetleri, kimlik bilgilerini, yönetilen özel uç noktaları listeleyin|SYNAPSE kullanıcısı|read
-**SQL havuzları**||
+SQL HAVUZLARı|
 Adanmış bir SQL havuzu veya sunucusuz SQL havuzu oluşturma|Çalışma alanında Azure sahibi veya katkıda bulunan|yok
 Adanmış bir SQL havuzunu yönetme (duraklatma, ölçekleme veya silme)|SQL havuzunda veya çalışma alanında Azure sahibi veya katkıda bulunan|yok
-SQL betiği oluşturma</br>|SYNAPSE kullanıcısı veya </br>Çalışma alanında Azure sahibi veya katkıda bulunan </br>*SQL betiğini çalıştırmak Için ek SQL izinleri gereklidir*.|
+SQL betiği oluşturma</br>|SYNAPSE kullanıcısı veya </br>Çalışma alanında Azure sahibi veya katkıda bulunan </br>*BIR SQL betiği çalıştırmak, yayımlamak veya değişiklikleri yürütmek Için ek SQL izinleri gerekir*.|
 Yayınlanan tüm SQL betiğini listeleyin ve açın| SYNAPSE yapıt kullanıcısı, yapıt yayımcısı, SYNAPSE katkıda bulunan|yapıtlar/okuma
 Sunucusuz SQL havuzunda SQL betiği çalıştırma|Havuzda SQL izinleri (bir Synapse yöneticisine otomatik olarak verilir)|yok
-Adanmış bir SQL havuzunda SQL betiği çalıştırma|Havuzda SQL izinleri gerektirir|yok
+Adanmış bir SQL havuzunda SQL betiği çalıştırma|Havuzda SQL izinleri|yok
 Yeni, güncelleştirilmiş veya silinmiş bir SQL betiği yayımlama|SYNAPSE yapıt yayımcısı, SYNAPSE katkıda bulunan|sqlScripts/Write, Sil
-Bir SQL komut dosyasında değişiklikleri git deposuna işleme|Depoda git izinleri gerekir|
+Değişiklikleri bir SQL betiğine git deposuna Kaydet|Depoda git izinleri gerekir|
 Çalışma alanına yönetici Active Directory atama (Azure portalındaki çalışma alanı özellikleri aracılığıyla)|Çalışma alanında Azure sahibi veya katkıda bulunan |
-**Apache Spark havuzları**||
+APACHE SPARK HAVUZLARı|
 Apache Spark havuzu oluşturma|Çalışma alanında Azure sahibi veya katkıda bulunan|
 Apache Spark uygulamalarını izleme| SYNAPSE kullanıcısı|read
 Not defteri ve iş yürütmeye yönelik günlükleri görüntüleme |SYNAPSE Işlem Işleci|
 Apache Spark havuzunda çalışan herhangi bir not defteri veya Spark işini iptal etme|Apache Spark havuzunda SYNAPSE Işlem Işletmeni.|bigDataPools/useCompute
-Bir not defteri veya iş tanımı oluşturun|Çalışma alanında SYNAPSE Kullanıcı veya Azure sahibi, katkıda bulunan veya okuyucu</br> *Çalıştırmak, yayımlamak veya kaydetmek için ek izinler gerekir*|read
+Bir not defteri veya iş tanımı oluşturun|SYNAPSE kullanıcısı veya </br>Çalışma alanında Azure sahibi, katkıda bulunan veya okuyucu</br> *Değişiklikleri çalıştırmak, yayımlamak veya uygulamak için ek izinler gerekir*|read</br></br></br></br></br> 
 Kaydedilmiş çıktıları gözden geçirme dahil yayımlanmış bir not defteri veya iş tanımı listeleyin ve açın|Çalışma alanında SYNAPSE yapıt kullanıcısı, SYNAPSE yapıt yayımcısı, SYNAPSE katkıda bulunan|yapıtlar/okuma
 Bir not defteri çalıştırın ve çıkışını gözden geçirin|SYNAPSE Apache Spark Administrator, SYNAPSE COMPUTE Işleci seçili Apache Spark havuzunda|bigDataPools/useCompute 
 Hizmete bir not defteri veya iş tanımı (çıktı dahil) yayımlama veya silme|Çalışma alanında yapıt yayımcısı, SYNAPSE Apache Spark Yöneticisi|Not defterleri/yazma, silme
-Değişiklikleri bir not defterine veya iş tanımına git çalışma dalına Kaydet|Git izinleri|yok
-**İşlem hatları, tümleştirme çalışma zamanları, veri akışları, veri kümeleri ve Tetikleyiciler**||
+Değişiklikleri bir not defterine veya iş tanımına git deposuna Kaydet|Git izinleri|yok
+IŞLEM HATLARı, TÜMLEŞTIRME ÇALıŞMA ZAMANLARı, VERI AKıŞLARı, VERI KÜMELERI & TETIKLEYICILERI|
 Tümleştirme çalışma zamanı oluşturma, güncelleştirme veya silme|Çalışma alanında Azure sahibi veya katkıda bulunan|
 Tümleştirme çalışma zamanı durumunu izleme|SYNAPSE kullanıcısı|okuma, işlem hatları/Viewçıktılar
 İşlem hattı çalıştırmalarını gözden geçirme|SYNAPSE yapıt yayımcısı/SYNAPSE katkıda bulunan|okuma, işlem hatları/Viewçıktılar 
-İşlem hattı oluşturma |SYNAPSE kullanıcısı </br>[**_WorkspaceSystemIdentity _ üzerinde değerlendirme + SYNAPSE kimlik bilgisi kullanıcısı_*)</br>Yayımlamak veya kaydetmek için _Additional izinleri gerekir *|okuma, kimlik bilgileri/UseSecret/eylem
-Veri akışı, veri kümesi veya tetikleyici oluşturma |SYNAPSE kullanıcısı</br>*Yayımlamak veya kaydetmek için ek izinler gerekir*|read
+İşlem hattı oluşturma |SYNAPSE kullanıcısı</br>*Hata ayıklamak, Tetikleyiciler eklemek, yayımlamak veya değişiklikleri kaydetmek için ek SYNAPSE izinleri gerekir*|read
+Veri akışı veya veri kümesi oluşturma |SYNAPSE kullanıcısı</br>*Değişiklikleri yayınlamak veya kaydetmek için ek SYNAPSE izinleri gerekir*|read
 Yayımlanmış bir işlem hattını listeleme ve açma |SYNAPSE yapıt kullanıcısı | yapıtlar/okuma
 Veri kümesi verilerini Önizle|SYNAPSE Kullanıcı + SYNAPSE kimlik bilgisi kullanıcısı WorkspaceSystemIdentity| 
 Varsayılan tümleştirme çalışma zamanını kullanarak bir işlem hattının hatalarını ayıklama|WorkspaceSystemIdentity kimlik bilgilerinde Kullanıcı + SYNAPSE kimlik bilgisi kullanıcısı SYNAPSE|okuyamaz </br>kimlik bilgileri/useSecret
-Şimdi Tetikle dahil bir tetikleyici oluşturun|SYNAPSE Kullanıcı + SYNAPSE kimlik bilgisi kullanıcısı WorkspaceSystemIdentity|okuma, kimlik bilgileri/useSecret/eylem
+Şimdi tetikleyici dahil olmak üzere bir tetikleyici oluşturun (işlem hattını yürütmek için izin gerekir)|SYNAPSE Kullanıcı + SYNAPSE kimlik bilgisi kullanıcısı WorkspaceSystemIdentity|okuma, kimlik bilgileri/useSecret/eylem
+İşlem hattını yürütme/çalıştırma|SYNAPSE Kullanıcı + SYNAPSE kimlik bilgisi kullanıcısı WorkspaceSystemIdentity|okuma, kimlik bilgileri/useSecret/eylem
 Veri Kopyalama aracını kullanarak veri kopyalama|SYNAPSE Kullanıcı + SYNAPSE kimlik bilgileri Kullanıcı çalışma alanı sistem kimliği|okuma, kimlik bilgileri/useSecret/eylem
 Veri alma (bir zamanlama kullanarak)|SYNAPSE Author + SYNAPSE, çalışma alanı sistem kimliği üzerinde Kullanıcı kimlik bilgileri|okuma, kimlik bilgileri/useSecret/eylem
-Yeni, güncelleştirilmiş veya silinmiş bir işlem hattını, veri akışını veya tetikleyiciyi hizmete yayımlayın|Çalışma alanında SYNAPSE yapıt yayımcısı|işlem hatları/yazma, silme</br>veri akışları yazma, silme</br>Tetikleyiciler/yazma, silme
-Yeni, güncelleştirilmiş veya silinmiş bir veri akışı, veri kümesi veya tetikleyiciyi hizmete yayımlayın|Çalışma alanında yapıt yayımcısı|Tetikleyiciler/yazma, silme
-İşlem hatlarına, veri akışlarına, veri kümelerine ve değişiklikleri git deposuna Kaydet (Yürüt) |Git izinleri|yok 
-**Bağlı hizmetler**||
-Bağlı hizmet oluşturma (kimlik bilgisi atamayı içerir)|SYNAPSE kullanıcısı</br>*Çalıştırmak, yayımlamak veya kaydetmek için ek izinler gerekir*|read
+Yeni, güncelleştirilmiş veya silinmiş bir işlem hattını, veri akışını veya tetikleyiciyi hizmete yayımlayın|Çalışma alanında SYNAPSE yapıt yayımcısı|işlem hatları/yazma, silme</br>veri akışları/yazma, silme</br>Tetikleyiciler/yazma, silme
+İşlem hatlarına, veri akışlarına, veri kümelerine veya tetikleyicilere değişiklikleri git deposuna Kaydet |Git izinleri|yok 
+BAĞLı HIZMETLER|
+Bağlı hizmet oluşturma (kimlik bilgisi atamayı içerir)|SYNAPSE kullanıcısı</br>*Bağlı bir hizmeti kimlik bilgileriyle kullanmak veya değişiklikleri yayınlamak veya kaydetmek için ek izinler gerekir*|read
 Yayınlanan bağlı hizmeti listeleyin ve açın|SYNAPSE yapıt kullanıcısı|linkedServices/Write, Sil  
-Bir kimlik bilgisi ile korunan bağlı bir hizmette test bağlantısı|SYNAPSE User ve SYNAPSE Credential User|kimlik bilgileri/useSecret/eylem|
-Bağlı hizmet yayımlama|SYNAPSE yapıt yayımcısı|linkedServices/Write, Sil
-Bağlı hizmet tanımlarını git deposuna Kaydet (Yürüt)|Git izinleri|yok
-**Erişim yönetimi**||
+Bir kimlik bilgisi ile korunan bağlı bir hizmette test bağlantısı|SYNAPSE User + SYNAPSE kimlik bilgisi kullanıcısı|kimlik bilgileri/useSecret/eylem|
+Bağlı hizmet yayımlama|SYNAPSE yapıt yayımcısı, SYNAPSE bağlı Veri Yöneticisi|linkedServices/Write, Sil
+Bağlı hizmet tanımlarını git deposuna işleme|Git izinleri|yok
+ERIŞIM YÖNETIMI|
 Herhangi bir kapsamdaki SYNAPSE RBAC rol atamalarını gözden geçirin|SYNAPSE kullanıcısı|read
-Kullanıcılar, gruplar ve hizmet sorumluları için SYNAPSE RBAC rol atamaları atama ve kaldırma| Çalışma alanında veya belirli bir çalışma alanı öğesi kapsamında SYNAPSE Yöneticisi|Roleatamalar/yazma, silme
-Kod yapılarına SYNAPSE RBAC erişimi oluşturma veya kaldırma|SYNAPSE Yöneticisi çalışma alanı kapsamında|Roleatamalar/yazma, silme   
+Kullanıcılar, gruplar ve hizmet sorumluları için SYNAPSE RBAC rol atamaları atama ve kaldırma| Çalışma alanında veya belirli bir çalışma alanı öğesi kapsamında SYNAPSE Yöneticisi|Roleatamalar/yazma, silme 
 
 >[!Note]
 >Başka bir kiracıya ait Konuk kullanıcılar atanan rolden bağımsız olarak rol atamalarını gözden geçiremez, ekleyemez veya değiştiremezler. 

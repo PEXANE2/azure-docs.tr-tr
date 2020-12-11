@@ -4,12 +4,12 @@ description: Bu makalede Azure Site Recovery hakkındaki popüler genel sorular 
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369446"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109564"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery hakkındaki genel sorular
 
@@ -273,6 +273,9 @@ Uygulamayla tutarlı kurtarma noktaları uygulamayla tutarlı anlık görüntül
 
 Ek içerikleri nedeniyle, uygulamayla tutarlı anlık görüntüler en çok söz konusu ve en uzun sürer. Veritabanı işletim sistemleri ve SQL Server gibi uygulamalar için uygulamayla tutarlı kurtarma noktaları öneririz.
 
+>[!Note]
+>Uygulama ile tutarlı kurtarma noktalarının oluşturulması, 64 'den fazla birimi varsa Windows makinesinde başarısız olur.
+
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Uygulamayla tutarlı kurtarma noktalarının uygulama performansı üzerindeki etkisi nedir?
 
 Uygulamayla tutarlı kurtarma noktaları, bellekteki ve işlemdeki tüm verileri yakalar. Kurtarma noktaları bu verileri yakaladığı için, uygulamayı sessiz bir şekilde açmak için Windows üzerinde Birim Gölge Kopyası Hizmeti gibi bir çerçeve gerektirir. Yakalama işlemi sık sık ise, iş yükü zaten meşgul olduğunda performansı etkileyebilir. Veritabanı olmayan iş yükleri için uygulamayla tutarlı kurtarma noktaları için düşük bir sıklık kullanmanızı önermiyoruz. Veritabanı iş yükü için bile 1 saat yeterlidir.
@@ -304,7 +307,7 @@ Hayır, Site Recovery önceki tüm kurtarma noktalarınızı tutacaktır. Kurtar
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM 'de çoğaltma etkinleştirildikten sonra, çoğaltma ilkesini nasıl değiştirebilirim?
 
-**Site Recovery Vault**  >  **Altyapı**  >  **çoğaltma ilkelerine**Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
+  >  **Altyapı**  >  **çoğaltma ilkelerine** Site Recovery kasa Site Recovery gidin. Düzenlemek istediğiniz ilkeyi seçin ve değişiklikleri kaydedin. Tüm değişiklikler, mevcut tüm çoğaltmalar için de geçerli olacaktır.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Tüm kurtarma noktaları VM 'nin ya da bir Farklıdan oluşan tüm bir kopyası mı?
 

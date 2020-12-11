@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure portal aracılığıyla adanmış SQL havuzunda (eski adıyla SQL DW) işlem duraklatma ve devam ettirme'
-description: Maliyetleri kaydetmek üzere SQL havuzu için işlem duraklatmak için Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
+title: 'Hızlı başlangıç: Azure portal aracılığıyla adanmış SQL havuzunda işlemi duraklatma ve devam ettirme'
+description: Maliyetleri kaydetmek için adanmış SQL havuzu için işlem duraklatmak üzere Azure portal kullanın. Veri ambarını kullanmaya hazırsanız işlem işlemine da izin verilmez.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 11/23/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 88f6782a0f81b94977b37bd8f87bf26a0d4c8a72
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7d258243dae06461d21e9b5f0346e419f034eea9
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457697"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109716"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-formerly-sql-dw-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla adanmış SQL havuzunda (eski adıyla SQL DW) işlem duraklatma ve devam ettirme
+# <a name="quickstart-pause-and-resume-compute-in-dedicated-sql-pool-via-the-azure-portal"></a>Hızlı başlangıç: Azure portal aracılığıyla adanmış SQL havuzunda işlemi duraklatma ve devam ettirme
 
-Adanmış SQL Havuzu (eski adıyla SQL DW) işlem kaynaklarını duraklatmak ve devam etmek için Azure portal kullanabilirsiniz. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Adanmış SQL havuzu işlem kaynaklarını duraklatmak ve devam etmek için Azure portal kullanabilirsiniz. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -40,9 +40,8 @@ Maliyetleri azaltmak için, talep üzerine işlem kaynaklarını duraklatabilir 
 Adanmış bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
-2. Azure portal sol gezinti sayfasında **ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)** seçeneğine tıklayın.
-2. SQL havuzunu açmak için **ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)** sayfasından **mysampledatawarehouse** öğesini seçin. 
-3. **Mysampledatawarehouse** sayfasında, **durumu** **çevrimiçi** olarak görürsünüz.
+2. SQL havuzunu açmak için **ADANMıŞ SQL havuzu** sayfasına gidin. 
+3. Uyarı **durumu** **çevrimiçi**.
 
     ![Çevrimiçi işlem](././media/pause-and-resume-compute-portal/compute-online.png)
 
@@ -62,8 +61,7 @@ Adanmış bir SQL havuzunu duraklatmak için aşağıdaki adımları izleyin:
 
 Adanmış bir SQL havuzunu sürdürmeyi sağlamak için aşağıdaki adımları izleyin.
 
-1. Azure portal sol sayfasında **ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW)** seçeneğine tıklayın.
-2. SQL havuzu sayfasını açmak için **ADANMıŞ SQL Havuzu (eski ADıYLA SQL DW))** sayfasından **mysampledatawarehouse** öğesini seçin. 
+1. SQL havuzunu açmak için **ADANMıŞ SQL havuzu** sayfasına gidin.
 3. **Mysampledatawarehouse** sayfasında **durum** **duraklatıldı**' ya dikkat edin.
 
     ![Çevrimdışı işlem](././media/pause-and-resume-compute-portal/compute-offline.png)

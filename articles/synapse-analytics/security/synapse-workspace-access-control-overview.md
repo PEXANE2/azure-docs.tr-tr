@@ -9,18 +9,18 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 36c4ce34d6b0c4df119d5531cda725605cfd0bc1
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523788"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109615"
 ---
 # <a name="synapse-access-control"></a>SYNAPSE Access Control 
 
 Bu makalede SYNAPSE işlem kaynaklarına ve verilerine erişimi denetlemek için kullanılabilen mekanizmalarla genel bir bakış sunulmaktadır.  
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 SYNAPSE, aşağıdakileri tümleştiren kapsamlı ve ayrıntılı bir erişim denetimi sistemi sağlar: 
 - Kaynak yönetimi için **Azure rolleri** ve depolama alanındaki verilere erişim, 
@@ -34,14 +34,14 @@ Erişim denetimi, kişilerin iş rolleriyle hizalanmış güvenlik grupları kul
 
 ## <a name="access-control-elements"></a>Erişim denetimi öğeleri
 
-### <a name="creating-and-managing-synapse-resources"></a>SYNAPSE kaynaklarını oluşturma ve yönetme
+### <a name="creating-and-managing-synapse-compute-resources"></a>SYNAPSE işlem kaynakları oluşturma ve yönetme
 
 Azure rolleri şu yönetimi denetlemek için kullanılır: 
 - Adanmış SQL havuzları, 
 - Apache Spark havuzları ve 
 - Tümleştirme çalışma zamanları. 
 
-Bu kaynakları oluşturmak için kaynak grubunda bir Azure sahibi veya katkıda bulunan olması gerekir.  Bunları yönetmek için kaynak grubunda veya tek tek kaynaklarda bir Azure sahibi veya katkıda bulunan olması gerekir. 
+Bu kaynakları *oluşturmak* için kaynak grubunda bir Azure sahibi veya katkıda bulunan olması gerekir.  Bunları bir kez oluşturduktan sonra *yönetmek* için kaynak grubunda veya tek tek kaynaklarda bir Azure sahibi veya katkıda bulunan olması gerekir. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>SYNAPSE 'de kod geliştirme ve yürütme 
 
@@ -82,7 +82,7 @@ SQL havuzlarında SQL izinleri vermek için SQL komut dosyaları örnekleri içi
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Depolamadaki sistem tarafından yönetilen verilere erişme
 
-Sunucusuz SQL havuzları ve Apache Spark tabloları, verilerini çalışma alanıyla ilişkili bir ADLS 2. kapsayıcısında depolar.  Kullanıcılara ve çalışma alanı MSI bu ADLS 2. depolama kapsayıcısına Depolama Blobu veri katılımcısı erişimine sahip olması gerekir.  
+Sunucusuz SQL havuzları ve Apache Spark tabloları, verilerini, Kullanıcı tarafından yüklenen Apache Spark kitaplıkları aynı depolama hesabında da yönetilen bir ADLS 2. kapsayıcısında depolar.  Bu kullanım örneklerini etkinleştirmek için, kullanıcılara ve bu çalışma alanı MSI **Depolama Blobu veri katılımcısı** , depolama kapsayıcısı ADLS 2. bu çalışma alanına erişimine sahip olmalıdır.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>En iyi uygulama olarak güvenlik gruplarını kullanma
 

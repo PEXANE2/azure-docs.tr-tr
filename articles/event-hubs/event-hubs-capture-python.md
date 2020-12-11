@@ -3,16 +3,16 @@ title: Python uygulamasından Azure Event Hubs yakalanan verileri okuma (en son)
 description: Bu makalede, bir olay hub 'ına gönderilen verileri yakalamak ve bir Azure depolama hesabından yakalanan olay verilerini okumak için Python kodu yazma yöntemi gösterilmektedir.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: cb7165565516136a8425c4c77748c2e13715edb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88927876"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109921"
 ---
-# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub sürüm 5)
+# <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub)
 
-Bir olay hub 'ına bir olay hub 'ına gönderilen verilerin bir Azure depolama hesabında veya Azure Data Lake Storage Gen 1 veya Gen 2 ' ye göre yakalanabilmesi için bir olay hub 'ı yapılandırabilirsiniz. Bu makalede, bir olay hub 'ına olayları göndermek ve **Azure Blob depolamadan**yakalanan verileri okumak için Python kodu yazma yöntemi gösterilmektedir. Bu özellik hakkında daha fazla bilgi için bkz. [Event Hubs Capture özelliğine genel bakış](event-hubs-capture-overview.md).
+Bir olay hub 'ına bir olay hub 'ına gönderilen verilerin bir Azure depolama hesabında veya Azure Data Lake Storage Gen 1 veya Gen 2 ' ye göre yakalanabilmesi için bir olay hub 'ı yapılandırabilirsiniz. Bu makalede, bir olay hub 'ına olayları göndermek ve **Azure Blob depolamadan** yakalanan verileri okumak için Python kodu yazma yöntemi gösterilmektedir. Bu özellik hakkında daha fazla bilgi için bkz. [Event Hubs Capture özelliğine genel bakış](event-hubs-capture-overview.md).
 
 Bu hızlı başlangıç, yakalama özelliğini göstermek için [Azure Python SDK 'sını](https://azure.microsoft.com/develop/python/) kullanır. *Sender.py* UYGULAMASı, JSON biçimindeki Olay Hub 'larına sanal çevresel telemetri gönderir. Olay Hub 'ı, bu verileri toplu halde blob depolamaya yazmak için yakala özelliğini kullanacak şekilde yapılandırılmıştır. *Capturereader.py* uygulaması bu Blobları okur ve her cihaz için bir ekleme dosyası oluşturur. Uygulama daha sonra verileri CSV dosyalarına yazar.
 
@@ -43,7 +43,7 @@ Bu hızlı başlangıçta:
 Bu bölümde, bir olay hub 'ına 200 olayları (10 cihaz * 20 olay) gönderen bir Python betiği oluşturacaksınız. Bu olaylar JSON biçiminde gönderilen örnek bir çevre okumasından oluşan bir örnektir. 
 
 1. [Visual Studio Code][Visual Studio Code]gibi en sevdiğiniz Python düzenleyicisini açın.
-2. *Sender.py*adlı bir komut dosyası oluşturun. 
+2. *Sender.py* adlı bir komut dosyası oluşturun. 
 3. Aşağıdaki kodu *Sender.py*' ye yapıştırın. 
    
     ```python
@@ -87,7 +87,7 @@ Bu bölümde, bir olay hub 'ına 200 olayları (10 cihaz * 20 olay) gönderen bi
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>Yakalama dosyalarınızı okumak için bir Python betiği oluşturun
 Bu örnekte yakalanan veriler Azure Blob depolama alanında depolanır. Bu bölümdeki betik, Azure Depolama hesabınızdaki yakalanan veri dosyalarını okur ve kolayca açıp görüntüleyebilmeniz için CSV dosyaları oluşturur. Uygulamanın geçerli çalışma dizininde 10 dosya görürsünüz. Bu dosyalar 10 cihaz için çevresel ayarları içerir. 
 
-1. Python Düzenleyicinizde *capturereader.py*adlı bir komut dosyası oluşturun. Bu betik yakalanan dosyaları okur ve her bir cihaz için verileri yalnızca o cihaza yazmak üzere bir dosya oluşturur.
+1. Python Düzenleyicinizde *capturereader.py* adlı bir komut dosyası oluşturun. Bu betik yakalanan dosyaları okur ve her bir cihaz için verileri yalnızca o cihaza yazmak üzere bir dosya oluşturur.
 2. Aşağıdaki kodu *capturereader.py*' ye yapıştırın. 
    
     ```python
@@ -155,7 +155,7 @@ Bu örnekte yakalanan veriler Azure Blob depolama alanında depolanır. Bu böl�
    pip install azure-eventhub
    pip install avro-python3
    ```
-2. Dizininizi *Sender.py* ve *capturereader.py*kaydettiğiniz dizinle değiştirin ve şu komutu çalıştırın:
+2. Dizininizi *Sender.py* ve *capturereader.py* kaydettiğiniz dizinle değiştirin ve şu komutu çalıştırın:
    
    ```
    python sender.py

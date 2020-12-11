@@ -8,12 +8,12 @@ author: gvashishtha
 ms.author: gopalv
 ms.topic: quickstart
 ms.date: 12/31/2019
-ms.openlocfilehash: b36e6ce09cd4356a9892a5be9cbe7046cf7fd40e
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: e876ddc9b4df32cad5bbf15215da5ce2f912bba1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094565"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109734"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-windows"></a>Hızlı başlangıç: Windows için Veri Bilimi Sanal Makinesi ayarlama
 
@@ -59,8 +59,6 @@ DSVM örneği oluşturmak için:
 VM oluşturulup sağlandıktan sonra, [Azure tabanlı sanal makinenize bağlanmak](../../marketplace/azure-vm-create-using-approved-base.md)için listelenen adımları izleyin. Bir sanal makine oluşturmanın **temelleri** adımında yapılandırdığınız Yönetici hesabı kimlik bilgilerini kullanın. 
 
 VM 'de yüklü ve yapılandırılmış araçları kullanmaya başlamaya hazırsınız. Araçların çoğuna **Başlangıç** menüsü kutucukları ve Masaüstü simgeleri aracılığıyla erişilebilir.
-
-Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks bir DSVM ekleyebilirsiniz. Daha fazla bilgi için bkz. [Not defteri projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md).
 
 <a name="tools"></a>
 

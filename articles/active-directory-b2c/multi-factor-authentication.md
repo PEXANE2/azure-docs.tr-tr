@@ -1,0 +1,56 @@
+---
+title: Azure Active Directory B2C Multi-Factor Authentication | Microsoft Docs
+description: Azure Active Directory B2C tarafından sağlanan tüketiciye yönelik uygulamalarda Multi-Factor Authentication etkinleştirme.
+services: active-directory-b2c
+author: msmimart
+manager: celestedg
+ms.service: active-directory
+ms.workload: identity
+ms.topic: how-to
+ms.date: 12/10/2020
+ms.custom: project-no-code
+ms.author: mimart
+ms.subservice: B2C
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 5d656a27017f3c7ec97362efc6207917ffcd1a56
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97111405"
+---
+# <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C), uygulamalarınızda kayıt ve oturum açma deneyimlerine ikinci bir güvenlik katmanı ekleyebilmeniz için doğrudan [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) ile tümleşir. Multi-Factor Authentication 'ı tek bir kod satırı yazmadan etkinleştirirsiniz. Zaten kaydolma ve oturum açma Kullanıcı akışları oluşturduysanız, çok faktörlü kimlik doğrulamasını yine de etkinleştirebilirsiniz.
+
+Bu özellik, uygulamaların aşağıdaki gibi senaryoları işlemesine yardımcı olur:
+
+- Bir uygulamaya erişmek için Multi-Factor Authentication gerekmez, ancak başka bir uygulamaya erişmesi gerekir. Örneğin, müşteri, sosyal veya yerel hesapla otomatik bir sigorta uygulamasında oturum açabilir, ancak aynı dizinde kayıtlı olan ev sigortası uygulamasına erişmeden önce telefon numarasını doğrulamalıdır.
+- Genel olarak bir uygulamaya erişmek için Multi-Factor Authentication gerekmez, ancak bunun içindeki hassas bölümlere erişmesi gerekir. Örneğin, müşteri, sosyal veya yerel hesap içeren bir bankacılık uygulamasında oturum açabilir ve hesap bakiyesini denetleyebilir, ancak bir hat aktarımını denemeden önce telefon numarasını doğrulamanız gerekir.
+
+## <a name="set-multi-factor-authentication"></a>Multi-Factor Authentication 'ı ayarlama
+
+::: zone pivot="b2c-user-flow"
+
+1. [Azure portalda](https://portal.azure.com) oturum açma
+1. Azure AD B2C kiracınızı içeren dizini seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
+1. **Kullanıcı akışları ' nı** seçin.
+1. MFA 'yı etkinleştirmek istediğiniz kullanıcı akışını seçin. Örneğin, *B2C_1_signinsignup*.
+1. **Özellikler**’i seçin.
+1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **her zaman açık** veya **[koşullu](conditional-access-user-flow.md) (önerilen)** seçeneğini belirleyin. Koşullu [erişim ilkesi](conditional-access-identity-protection-setup.md) ilkesi oluşturun ve ilkenin uygulanmasını istediğiniz uygulamaları belirtin. 
+1. Kaydet’i seçin. MFA artık bu kullanıcı akışı için etkinleştirilmiştir.
+
+Deneyimi doğrulamak için **Kullanıcı akışını Çalıştır** ' i kullanabilirsiniz. Aşağıdaki senaryoyu onaylayın:
+
+Multi-Factor Authentication adımı gerçekleşmeden önce kiracınızda bir müşteri hesabı oluşturulur. Adım sırasında müşterinin bir telefon numarası sağlaması ve doğrulanması istenir. Doğrulama başarılı olursa telefon numarası daha sonra kullanılmak üzere hesaba iliştirilir. Müşteri iptal ediyor veya devre dışı olsa bile, çok faktörlü kimlik doğrulaması etkin olan bir sonraki oturum açma sırasında müşterinin bir telefon numarasını doğrulaması istenebilir.
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Özel ilke başlangıç paketlerini GitHub 'dan almak Multi-Factor Authentication etkinleştirmek için, **SocialAndLocalAccountsWithMFA** Starter paketindeki XML dosyalarını Azure AD B2C kiracı adınızla güncelleştirin. **SocialAndLocalAccountsWithMFA** , sosyal, yerel ve Multi-Factor Authentication seçeneklerini sunar. Daha fazla bilgi için, bkz. [Active Directory B2C özel ilkelerle çalışmaya başlama](custom-policy-get-started.md). 
+
+::: zone-end

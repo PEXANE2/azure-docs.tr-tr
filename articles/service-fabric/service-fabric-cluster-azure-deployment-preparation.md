@@ -3,12 +3,12 @@ title: Azure Service Fabric küme dağıtımını planlayın
 description: Azure 'da bir üretim Service Fabric küme dağıtımını planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1064e59491b7144aafade24bd50131478fe025eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87281336"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109632"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımını planlayın ve hazırlayın
 
@@ -89,8 +89,6 @@ Kısa ömürlü işletim sistemi diskleri, belirli bir Service Fabric özelliği
 
 > [!NOTE]
 > İşletim sistemi yükseltmesi durumunda işletim sistemi diski kaybolacağından, kullanıcı uygulamalarının IŞLETIM sistemi diskinde hiçbir bağımlılığı/dosya/yapıtı olmaması gerekir.
-> Bu nedenle, geçici disklerle birlikte [Patchorchestrationapplication](https://github.com/microsoft/Service-Fabric-POA) kullanılması önerilmez.
->
 
 > [!NOTE]
 > Mevcut kısa ömürlü VMSS 'ler, kısa ömürlü diskler kullanmak için yerinde yükseltilemez.

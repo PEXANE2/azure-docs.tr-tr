@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4a414b706dffae76eaa9841ee7b1fe6bcc1ac0d3
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349061"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109853"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Hızlı başlangıç: Linux için Veri Bilimi Sanal Makinesi ayarlama (Ubuntu)
 
@@ -33,36 +33,36 @@ Aşağıda Ubuntu 18,04 Veri Bilimi Sanal Makinesi örneğini oluşturma adımla
 1. [Azure portalına](https://portal.azure.com) gidin. Henüz oturum açmadıysanız Azure hesabınızda oturum açmanız istenebilir.
 1. "Veri bilimi sanal makinesi" ni yazarak ve "Veri Bilimi Sanal Makinesi-Ubuntu 18,04" öğesini seçerek sanal makine listesini bulun
 
-1. Sonraki pencerede **Oluştur** ' u seçin.
+1. Sonraki pencerede **Oluştur**' u seçin.
 
 1. "Sanal makine oluşturma" dikey penceresine yönlendirilmelisiniz.
    
 1. Sihirbazın her adımını yapılandırmak için aşağıdaki bilgileri girin:
 
-    1. **Temel bilgiler** :
+    1. **Temel bilgiler**:
     
-       * **Abonelik** : birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
-       * **Kaynak grubu** : yeni bir grup oluşturun veya var olan bir grubu kullanın.
-       * **Sanal makine adı** : sanal makinenin adını girin. Bu ad Azure portal kullanılacaktır.
-       * **Bölge** : en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
-       * **Görüntü** : varsayılan değeri bırakın.
-       * **Boyut** : Bu seçenek, genel iş yükleri için uygun bir boyutla, oto olarak doldurulur. [Azure 'Da LINUX VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
-       * **Kimlik doğrulama türü** : daha hızlı kurulum Için "parola" yı seçin. 
+       * **Abonelik**: birden fazla aboneliğiniz varsa makinenin oluşturulacağı ve faturalandırılabileceği bir tane seçin. Bu abonelikte kaynak oluşturma ayrıcalıklarına sahip olmanız gerekir.
+       * **Kaynak grubu**: yeni bir grup oluşturun veya var olan bir grubu kullanın.
+       * **Sanal makine adı**: sanal makinenin adını girin. Bu ad Azure portal kullanılacaktır.
+       * **Bölge**: en uygun veri merkezini seçin. En hızlı ağ erişimi için bu, verilerinizin çoğunu veya fiziksel konumunuza en yakın olan veri merkezdir. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/)hakkında daha fazla bilgi edinin.
+       * **Görüntü**: varsayılan değeri bırakın.
+       * **Boyut**: Bu seçenek, genel iş yükleri için uygun bir boyutla, oto olarak doldurulur. [Azure 'Da LINUX VM boyutları](../../virtual-machines/sizes.md)hakkında daha fazla bilgi edinin.
+       * **Kimlik doğrulama türü**: daha hızlı kurulum Için "parola" yı seçin. 
          
          > [!NOTE]
          > Jupi Terhub 'ı kullanmayı düşünüyorsanız, jupi Pahub 'ı SSH ortak anahtarlarını kullanacak *şekilde yapılandırılmadığından "* parola" seçeneğini belirlediğinizden emin olun.
 
-       * **Kullanıcı adı** : yönetici kullanıcı adını girin. Bu Kullanıcı adını sanal makinenizde oturum açmak için kullanacaksınız. Bu Kullanıcı adının Azure Kullanıcı adınızla aynı olmaması gerekir. Büyük harfli *harfler kullanmayın.*
+       * **Kullanıcı adı**: yönetici kullanıcı adını girin. Bu Kullanıcı adını sanal makinenizde oturum açmak için kullanacaksınız. Bu Kullanıcı adının Azure Kullanıcı adınızla aynı olmaması gerekir. Büyük harfli *harfler kullanmayın.*
          
          > [!IMPORTANT]
          > Kullanıcı adınızla büyük harfli harfler kullanırsanız, JupyterHub çalışmaz ve 500 iç sunucu hatası ile karşılaşırsınız.
 
-       * **Parola** : sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
+       * **Parola**: sanal makinenizde oturum açmak için kullanacağınız parolayı girin.    
     
-   1. **Gözden geçir + oluştur** ’u seçin.
+   1. **Gözden geçir ve oluştur**’u seçin.
    1. **Gözden geçir + oluştur**
       * Girdiğiniz tüm bilgilerin doğru olduğundan emin olun. 
-      * **Oluştur** ’u seçin.
+      * **Oluştur**’u seçin.
     
     Sağlama 5 dakika sürer. Durum Azure portal görüntülenir.
 
@@ -73,8 +73,6 @@ Ubuntu DSVM 'ye üç şekilde erişebilirsiniz:
   * Terminal oturumları için SSH
   * Grafik oturumları için X2Go
   * Jupyter not defterleri için JupyterHub ve JupyterLab
-
-Ayrıca, sanal makine üzerinde jupi not defterlerini çalıştırmak ve ücretsiz hizmet katmanının sınırlamalarını atlamak için Azure Notebooks Veri Bilimi Sanal Makinesi ekleyebilirsiniz. Daha fazla bilgi için bkz. [Azure Notebooks projelerini yönetme ve yapılandırma](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier).
 
 ### <a name="ssh"></a>SSH
 
@@ -95,19 +93,19 @@ Linux VM, X2Go Server ile zaten sağlanmış ve istemci bağlantılarını kabul
 1. X2Go istemcisini çalıştırın. "Yeni oturum" penceresi otomatik olarak açımazsa, oturum > yeni oturum ' a gidin.
 
 1. Açılan yapılandırma penceresine aşağıdaki yapılandırma parametrelerini girin:
-   * **Session (Oturum) sekmesi** :
-     * **Ana bilgisayar** : Önceden not aldığınız VM'nizin IP adresini girin.
+   * **Session (Oturum) sekmesi**:
+     * **Ana bilgisayar**: Önceden not aldığınız VM'nizin IP adresini girin.
      * **Login** (Oturum Açma Adı): Linux VM'nin kullanıcı adını girin.
      * **SSH Port** (SSH Bağlantı Noktası): Varsayılan değer olan 22'de bırakın.
      * **Session Type** (Oturum Türü): Değeri **XFCE** olarak değiştirin. Linux VM şu an için yalnızca XFCE masaüstünü desteklemektedir.
-   * **Media (Medya) sekmesi** : Ses ve istemcide yazdırma desteğine ihtiyacınız yoksa kapatabilirsiniz.
-   * **Paylaşılan klasörler** : VM 'de bağlamak istediğiniz istemci makine dizinini eklemek için bu sekmeyi kullanın. 
+   * **Media (Medya) sekmesi**: Ses ve istemcide yazdırma desteğine ihtiyacınız yoksa kapatabilirsiniz.
+   * **Paylaşılan klasörler**: VM 'de bağlamak istediğiniz istemci makine dizinini eklemek için bu sekmeyi kullanın. 
 
    ![X2go yapılandırması](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 1. VM 'niz için oturum açma ekranını açmak üzere X2Go penceresinin sağ bölmesindeki kutuya tıklayın.
 1. VM'nizin parolasını girin.
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 1. Bağlantının kurulması için X2Go'ya güvenlik duvarınızı atlama izni vermeniz gerekebilir.
 1. Artık Ubuntu DSVM 'nizin grafik arabirimini görmeniz gerekir. 
 
