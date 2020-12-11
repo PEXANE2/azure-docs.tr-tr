@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfac3b80e772e7b359b1e926d5fb84e447a8fb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89271612"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109088"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışlarına koşullu erişim ekleme
 
@@ -31,7 +31,7 @@ Koşullu erişim, Kullanıcı akışlarının en son sürümlerinde desteklenir.
 
 - **Multi-Factor Authentication (MFA)**: KULLANıCıLAR artık SMS veya Voice aracılığıyla tek seferlik bir kod veya Multi-Factor Authentication için e-posta aracılığıyla bir kerelik parola kullanabilir. MFA ayarları, koşullu erişim ayarlarından bağımsızdır. MFA 'yı **her zaman açık** olarak ayarlayabilirsiniz, bu sayede, koşullu erişim kurulumundan BAĞıMSıZ olarak MFA her zaman gereklidir. Ya da MFA 'yı **koşullu** olarak ayarlayabilirsiniz, böylelikle MFA yalnızca etkin bir koşullu erişim ilkesi gerektirdiğinde gereklidir.
 
-- **Koşullu erişim**: Bu ayar her zaman **Açık**olmalıdır. Genellikle, bu ayarı sorun giderme veya geçiş sırasında veya eski uygulamalar **için kapatabilirsiniz.**
+- **Koşullu erişim**: Bu ayar her zaman **Açık** olmalıdır. Genellikle, bu ayarı sorun giderme veya geçiş sırasında veya eski uygulamalar **için kapatabilirsiniz.**
 
 Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-identity-protection-overview.md) hakkında daha fazla bilgi edinin veya [nasıl ayarlanacağını](conditional-access-identity-protection-setup.md)öğrenin.
 
@@ -39,16 +39,16 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **İlkeler**altında **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
+1. **İlkeler** altında **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 1. **Kullanıcı akışı oluştur** sayfasında, Kullanıcı akış türünü seçin.
-1. **Sürüm seçin**altında **Önerilen**' i seçin ve ardından **Oluştur**' u seçin. (Kullanıcı akışı sürümleri hakkında[daha fazla bilgi edinin](user-flow-versions.md) .)
+1. **Sürüm seçin** altında **Önerilen**' i seçin ve ardından **Oluştur**' u seçin. (Kullanıcı akışı sürümleri hakkında[daha fazla bilgi edinin](user-flow-versions.md) .)
 
     ![Azure portal ' de vurgulanan özelliklerle Kullanıcı akışı oluşturma sayfası](./media/tutorial-create-user-flows/select-version.png)
 
 1. Kullanıcı akışı için bir **ad** girin. Örneğin, *signupsignin1*.
 1. **Kimlik sağlayıcıları** bölümünde, bu kullanıcı akışı için izin vermek istediğiniz kimlik sağlayıcılarını seçin.
-2. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini**seçin ve ardından **MFA zorlaması** altında **koşullu (önerilen)** seçeneğini belirleyin.
+2. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **koşullu (önerilen)** seçeneğini belirleyin.
  
    ![Çok faktörlü kimlik doğrulamasını yapılandırma](media/conditional-access-user-flow/configure-mfa.png)
 
@@ -56,7 +56,7 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 
    ![Koşullu erişim ayarlarını yapılandırma](media/conditional-access-user-flow/configure-conditional-access.png)
 
-1. **Kullanıcı öznitelikleri ve talepler** bölümünde, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge** ve **görünen ad**için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
+1. **Kullanıcı öznitelikleri ve talepler** bölümünde, kayıt sırasında kullanıcıdan toplamak ve göndermek istediğiniz talepleri ve öznitelikleri seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge** ve **görünen ad** için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
 
     ![Üç talep seçili olan öznitelikler ve talepler seçim sayfası](./media/conditional-access-user-flow/configure-user-attributes-claims.png)
 
@@ -71,15 +71,15 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
+1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 
-1. **İlkeler**altında **Kullanıcı akışları**' nı seçin. Ardından Kullanıcı akışını seçin.
+1. **İlkeler** altında **Kullanıcı akışları**' nı seçin. Ardından Kullanıcı akışını seçin.
 
-1. **Özellikler** **' i** seçin ve **koşullu erişim**etiketli ayarı arayarak Kullanıcı akışının koşullu erişimi desteklediğinden emin olun.
+1. **Özellikler** **' i** seçin ve **koşullu erişim** etiketli ayarı arayarak Kullanıcı akışının koşullu erişimi desteklediğinden emin olun.
  
    ![Özelliklerde MFA ve koşullu erişimi yapılandırma](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini**seçin ve ardından **MFA zorlaması** altında **koşullu (önerilen)** seçeneğini belirleyin.
+1. **Çok faktörlü kimlik doğrulaması** bölümünde, istenen **MFA yöntemini** seçin ve ardından **MFA zorlaması** altında **koşullu (önerilen)** seçeneğini belirleyin.
  
 1. **Koşullu erişim** bölümünde **koşullu erişim ilkelerini zorla** onay kutusunu seçin.
 
@@ -92,24 +92,24 @@ Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu eri�
 ### <a name="prerequisites"></a>Önkoşullar
 
 - Riskli oturum açma ilkeleri oluşturmak için Azure AD B2C Premium 2 gereklidir. Premium P1 kiracılar konum, uygulama veya grup tabanlı ilkeler oluşturabilir.
-- Sınama amacıyla, [register the test web application](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 
+- Sınama amacıyla, [](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 
 - Riskli bir oturum açma benzetimi yapmak için TOR tarayıcısını indirin ve Kullanıcı akış uç noktasında oturum açmayı deneyin.
 - Aşağıdaki ayarları kullanarak, [bir koşullu erişim ilkesi oluşturun](conditional-access-identity-protection-setup.md):
    
-   - **Kullanıcılar ve gruplar**için, test kullanıcısını seçin ( **tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz).
-   - **Bulut uygulamaları veya eylemler**Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
-   - Koşullar için **oturum açma riski** ve **yüksek**, **Orta**ve **düşük** riskli Düzeyler ' i seçin.
-   - **Izin ver**Için **erişimi engelle**' yi seçin.
+   - **Kullanıcılar ve gruplar** için, test kullanıcısını seçin ( **tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz).
+   - **Bulut uygulamaları veya eylemler** Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
+   - Koşullar için **oturum açma riski** ve **yüksek**, **Orta** ve **düşük** riskli Düzeyler ' i seçin.
+   - **Izin ver** Için **erişimi engelle**' yi seçin.
 
       ![Risk algılamaları](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Kullanıcı akışını çalıştırma
 
-1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin. **Uygulama**altında *WebApp1*öğesini seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
+1. Genel Bakış sayfasını açmak için oluşturduğunuz kullanıcı akışını seçin ve ardından **Kullanıcı akışını Çalıştır**' ı seçin. **Uygulama** altında *WebApp1* öğesini seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
 
    ![Kullanıcı akışını Çalıştır düğmesi vurgulanmış şekilde portalda Kullanıcı akış sayfasını Çalıştır](./media/tutorial-create-user-flows/signup-signin-run-now.PNG)
 
-1. **Kullanıcı akış uç noktası çalıştırma**altındaki URL 'yi kopyalayın.
+1. **Kullanıcı akış uç noktası çalıştırma** altındaki URL 'yi kopyalayın.
 
 1. Riskli oturum açma benzetimi yapmak için, [Tor tarayıcısını](https://www.torproject.org/download/) açın ve kayıtlı uygulamada oturum açmak için önizleme adımında kopyaladığınız URL 'yi kullanın.
 
@@ -119,4 +119,4 @@ Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu eri�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD B2C Kullanıcı akışında Kullanıcı arabirimini özelleştirme](customize-ui-overview.md)
+[Azure AD B2C Kullanıcı akışında Kullanıcı arabirimini özelleştirme](customize-ui-with-html.md)

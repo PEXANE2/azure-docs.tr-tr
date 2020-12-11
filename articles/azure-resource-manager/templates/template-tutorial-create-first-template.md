@@ -1,17 +1,17 @@
 ---
 title: Öğretici-& dağıtım şablonu oluşturma
-description: İlk Azure Resource Manager şablonunuzu oluşturun. Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
+description: İlk Azure Resource Manager şablonunuzu oluşturun (ARM şablonu). Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
 ms.date: 09/28/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 25ddcc2c3a890b407b2116f64ebab577e30c9457
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613195"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107032"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
@@ -19,7 +19,7 @@ Bu öğreticide, Azure Resource Manager şablonlar (ARM şablonları) sunulmakta
 
 Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bir ARM şablonunun tüm temel parçalarını araştırana kadar başlangıç şablonu adımını adım adım değiştirirsiniz. Bu öğeler çok daha karmaşık şablonlar için yapı taşlarıdır. Kendi şablonlarınızı oluşturduğunuz ve dağıtımlarınızı şablonlarla otomatik hale getirmeye hazırlamış olduğunuz serinin sonunu umuyoruz.
 
-Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [Azure Resource Manager şablonları](overview.md).
+Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [ARM şablonuna genel bakış](overview.md).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -29,13 +29,13 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ### <a name="editor"></a>Düzenleyici
 
-Şablonlar JSON dosyalarıdır. Şablon oluşturmak için, iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: Visual Studio Code ile Azure Resource Manager şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+Şablonlar JSON dosyalarıdır. Şablon oluşturmak için, iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ### <a name="command-line-deployment"></a>Komut satırı dağıtımı
 
 Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Azure CLı kullanıyorsanız, en son sürüme sahip olmanız gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
+- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
@@ -52,7 +52,7 @@ Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
 1. Kaynak Yöneticisi Araçları uzantısı yüklü Visual Studio Code açın.
 1. **Dosya** menüsünde **yeni dosya** ' yı seçerek yeni bir dosya oluşturun.
 1. **Dosya** menüsünde **farklı kaydet**' i seçin.
-1. Dosyayı **azuredeploy** olarak adlandırın ve **JSON** dosya uzantısını seçin. Dosyanın tamamının adı **azuredeploy.js**.
+1. Dosyayı _azuredeploy_ olarak adlandırın ve _JSON_ dosya uzantısını seçin. Dosyanın tamamının adı _azuredeploy.js_.
 1. Dosyayı iş istasyonunuza kaydedin. Daha sonra şablonu dağıttığınızda bu yolu sağlayacağından, anımsanması kolay bir yol seçin.
 1. Aşağıdaki JSON dosyasını kopyalayıp dosyaya yapıştırın:
 
@@ -64,17 +64,17 @@ Tamam, şablonlar hakkında öğrenmeye başlamaya hazırsınız.
     }
     ```
 
-    VS Code ortamınız şöyle görünür:
+    Visual Studio Code ortamınız şöyle görünür:
 
-    ![Kaynak Yöneticisi Template Visual Studio Code ilk şablonu](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
+    ![ARM şablonu Visual Studio Code ilk şablon](./media/template-tutorial-create-first-template/resource-manager-visual-studio-code-first-template.png)
 
     Bu şablon herhangi bir kaynak dağıtmaz. Bir şeyin yanlış olma olasılığını en aza indirirken, bir şablon dağıtma adımlarını tanımanız için boş bir şablonla başlıyoruz.
 
     JSON dosyası şu öğelere sahiptir:
 
-    - **$Schema**: JSON Şema dosyasının konumunu belirtir. Şema dosyası, bir şablon içinde kullanılabilen özellikleri açıklar. Örneğin, şema **kaynakları** bir şablon için geçerli özelliklerden biri olarak tanımlar. Şemanın tarihinin 2019-04-01 olduğunu merak etmeyin. Bu şema sürümü güncel ve en son özelliklerin tümünü içerir. Şema tarihi değiştirilmedi çünkü giriş sonrasında hiç bir değişiklik yok.
-    - **contentversion**: şablonun (1.0.0.0 gibi) sürümünü belirtir. Bu öğe için herhangi bir değer sağlayabilirsiniz. Şablonunuzda önemli değişiklikleri belgelemek için bu değeri kullanın. Şablonu kullanarak kaynakları dağıttığınızda, bu değer doğru şablonun kullanıldığından emin olmak için kullanılabilir.
-    - **kaynaklar**: dağıtmak veya güncelleştirmek istediğiniz kaynakları içerir. Şu anda boştur, ancak kaynakları daha sonra ekleyeceğiz.
+    - `$schema`: JSON Şema dosyasının konumunu belirtir. Şema dosyası, bir şablon içinde kullanılabilen özellikleri açıklar. Örneğin, şema, `resources` bir şablon için geçerli özelliklerden biri olarak tanımlar. Şemanın tarihinin 2019-04-01 olduğunu merak etmeyin. Bu şema sürümü güncel ve en son özelliklerin tümünü içerir. Şema tarihi değiştirilmedi çünkü giriş sonrasında hiç bir değişiklik yok.
+    - `contentVersion`: Şablonun (1.0.0.0 gibi) sürümünü belirtir. Bu öğe için herhangi bir değer sağlayabilirsiniz. Şablonunuzda önemli değişiklikleri belgelemek için bu değeri kullanın. Şablonu kullanarak kaynakları dağıttığınızda, bu değer doğru şablonun kullanıldığından emin olmak için kullanılabilir.
+    - `resources`: Dağıtmak veya güncelleştirmek istediğiniz kaynakları içerir. Şu anda boştur, ancak kaynakları daha sonra ekleyeceğiz.
 
 1. Dosyayı kaydedin.
 
@@ -83,6 +83,8 @@ Tebrikler, ilk şablonunuzu oluşturdunuz.
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 Azure PowerShell/Azure CLı ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
+
+Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümlerindeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -98,7 +100,7 @@ az login
 
 ---
 
-Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
+Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin. `[SubscriptionID/SubscriptionName]`Ve köşeli ayraçları `[]` Abonelik bilgileriniz ile değiştirin:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -114,10 +116,9 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ---
 
-
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, kaynak grubunu Azure CLı veya Azure PowerShell ile oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
+Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce Azure CLI veya Azure PowerShell ile kaynak grubunu oluşturun.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -139,7 +140,7 @@ az group create \
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
-Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Her dağıtım yaptığınızda yolu yeniden yazmanız gerekmediğinden bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır.
+Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlaması için, şablon dosyasının yolunu depolayan bir değişken de oluşturun. Her dağıtım yaptığınızda yolu yeniden yazmanız gerekmediğinden bu değişken, dağıtım komutlarını çalıştırmanızı kolaylaştırır. `{provide-the-path-to-the-template-file}`Ve küme ayraçları, `{}` şablon dosyanızın yoluyla değiştirin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -178,13 +179,13 @@ Dağıtım komutu sonuçları döndürür. `ProvisioningState`Dağıtımın baş
 ---
 
 > [!NOTE]
-> Dağıtım başarısız olursa, oluşturulmakta olan kaynaklarla ilgili bilgi almak için **verbose** anahtarını kullanın. Hata ayıklama hakkında daha fazla bilgi edinmek için **hata ayıklama** anahtarını kullanın.
+> Dağıtım başarısız olursa, `verbose` oluşturulan kaynaklarla ilgili bilgi almak için anahtarını kullanın. `debug`Hata ayıklama hakkında daha fazla bilgi edinmek için anahtarını kullanın.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
 Kaynak grubunu Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol menüden **kaynak grupları**' nı seçin.
 

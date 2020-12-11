@@ -1,17 +1,17 @@
 ---
 title: Öğretici-şablon dağıtmak için parametre dosyası kullanma
-description: Azure Resource Manager şablonunuzu dağıtmak için kullanılacak değerleri içeren parametre dosyalarını kullanın.
+description: Azure Resource Manager şablonunuzu dağıtmak için kullanılacak değerleri içeren parametre dosyalarını kullanın (ARM şablonu).
 author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de72f9f32a3b08ad1742ee2055efce5b93cab899
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90069518"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106776"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -41,23 +41,25 @@ Her parametre için bir değer sağlamanız gerekmez. Belirtilmeyen bir parametr
 
 Parametre dosyanızda, şablondaki bir parametre adıyla eşleşmeyen bir parametre adı belirtemezsiniz. Bilinmeyen parametreler sağlandığında bir hata alırsınız.
 
-VS Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy.parameters.dev.js**adı ile kaydedin.
+Visual Studio Code ' de, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı _azuredeploy.parameters.dev.js_ adı ile kaydedin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
-Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için Standard_LRS kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve **ortam** etiketini **dev**olarak ayarladığına dikkat edin.
+Bu dosya, geliştirme ortamı için parametre dosyasıdır. Depolama hesabı için **Standard_LRS** kullandığına, kaynakları **dev** ön ekine göre isimettiğini ve `Environment` etiketini **dev** olarak ayarladığına dikkat edin.
 
-Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı **azuredeploy.parameters.prod.js**adı ile kaydedin.
+Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı _azuredeploy.parameters.prod.js_ adı ile kaydedin.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için Standard_GRS kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve **ortam** etiketini **Üretim**olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
+Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için **Standard_GRS** kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve _ortam_ etiketini **Üretim** olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
 Şablonu dağıtmak için Azure CLı veya Azure PowerShell kullanın.
 
 Şablonunuzun son testi olarak iki yeni kaynak grubu oluşturalım. Bir geliştirici ortamı ve bir üretim ortamı için bir tane.
+
+Şablon ve parametre değişkenleri için,,, `{path-to-the-template-file}` `{path-to-azuredeploy.parameters.dev.json}` `{path-to-azuredeploy.parameters.prod.json}` ve küme ayraçları, `{}` şablon ve parametre dosyası yollarınız ile değiştirin.
 
 İlk olarak geliştirme ortamına dağıtırsınız.
 
@@ -128,13 +130,13 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Dağıtım başarısız olursa, oluşturulmakta olan kaynaklarla ilgili bilgi almak için **verbose** anahtarını kullanın. Hata ayıklama hakkında daha fazla bilgi edinmek için **hata ayıklama** anahtarını kullanın.
+> Dağıtım başarısız olursa, `verbose` oluşturulan kaynaklarla ilgili bilgi almak için anahtarını kullanın. `debug`Hata ayıklama hakkında daha fazla bilgi edinmek için anahtarını kullanın.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 
 Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol menüden **kaynak grupları**' nı seçin.
 1. Bu öğreticide dağıttığınız iki yeni kaynak grubunu görürsünüz.
 1. Kaynak grubu ' nu seçin ve dağıtılan kaynakları görüntüleyin. Bu ortam için parametre dosyanızda belirttiğiniz değerlerle eşleştiğine dikkat edin.
@@ -142,7 +144,7 @@ Kaynak gruplarını Azure portal inceleyerek dağıtımı doğrulayabilirsiniz.
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
-2. **Ada göre filtrele** alanına kaynak grubu adını girin. Bu seriyi tamamladıysanız, silinecek üç kaynak grubunuz vardır-myResourceGroup, myResourceGroupDev ve myResourceGroupProd.
+2. **Ada göre filtrele** alanına kaynak grubu adını girin. Bu seriyi tamamladıysanız, silinecek üç kaynak grubunuz vardır- **Myresourcegroup**, **myresourcegroupdev** ve **myresourcegroupprod**.
 3. Kaynak grubu adını seçin.
 4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
@@ -153,4 +155,4 @@ Tebrikler, Azure 'a şablon dağıtmaya yönelik bu girişi tamamladınız. Geri
 Sonraki öğretici serisi, şablonları dağıtma hakkında daha fazla ayrıntıya gider.
 
 > [!div class="nextstepaction"]
-> [Yerel şablon dağıtma](./deployment-tutorial-local-template.md)
+> [Yerel şablonu dağıtma](./deployment-tutorial-local-template.md)

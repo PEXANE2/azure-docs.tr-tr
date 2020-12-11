@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 11/09/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4fa0f4d87567bd77faacfd2373dba0d2b8996446
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873378"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108680"
 ---
 # <a name="localization-string-ids"></a>Yerelleştirme dizesi kimlikleri
 
@@ -152,7 +152,7 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **cancel_message** | Kullanıcı kendi kendine onaylanan bilgileri girmeyi iptal etti |
 | **preloader_alt** | Lütfen bekleyin |
 | **ver_but_send** | Doğrulama kodu gönder |
-| **alert_yes** | Yes |
+| **alert_yes** | Evet |
 | **error_fieldIncorrect** | Bir veya daha fazla alan yanlış doldurulmuş. Lütfen girişlerinizi denetleyin ve yeniden deneyin. |
 | **yıl** | Yıl |
 | **verifying_blurb** | Bilgilerinizi işlerken lütfen bekleyin. |
@@ -165,12 +165,12 @@ Aşağıdakiler, `api.localaccountsignup` ve gibi, ile başlayan bir içerik TAN
 | **error_requiredFieldMissing** | Gerekli bir alan eksik. Lütfen tüm gerekli alanları doldurun ve yeniden deneyin. |
 | **initial_intro** | Lütfen aşağıdaki ayrıntıları sağlayın. |
 | **ver_but_resend** | Yeni kod gönder |
-| **button_continue** | Oluşturma |
+| **button_continue** | Oluştur |
 | **error_passwordEntryMismatch** | Parola girişi alanları eşleşmiyor. Lütfen her iki alana da aynı parolayı girip yeniden deneyin. |
 | **ver_incorrect_format** | Hatalı biçim. |
 | **ver_but_edit** | E-postayı değiştir |
 | **ver_but_verify** | Kodu doğrula |
-| **alert_no** | No |
+| **alert_no** | Hayır |
 | **ver_info_msg** | Doğrulama kodu gelen kutunuza gönderildi. Lütfen aşağıdaki giriş kutusuna kopyalayın. |
 | **günündeki** | Gün |
 | **ver_fail_throttled** | Bu e-posta adresini doğrulamak için çok fazla istek vardı. Lütfen bekleyin, sonra yeniden deneyin. |
@@ -442,7 +442,7 @@ Aşağıda, [Restvıservice teknik profili](restful-technical-profile.md) hata i
 
 ## <a name="azure-ad-mfa-error-messages"></a>Azure AD MFA hata iletileri
 
-Aşağıda, bir [Azure AD MFA teknik profili](multi-factor-auth-technical-profile.md) hata iletilerinin kimlikleri verilmiştir:
+Aşağıda, bir [Azure AD MFA teknik profili](multi-factor-auth-technical-profile.md) hata iletisinin kimlikleri verilmiştir:
 
 | ID | Varsayılan değer |
 | -- | ------------- |
@@ -547,5 +547,5 @@ Talep dönüştürmeleri hata iletileri için kimlikler şunlardır:
 
 Yerelleştirme örnekleri için aşağıdaki makalelere bakın:
 
-- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](custom-policy-localization.md)
-- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](user-flow-language-customization.md)
+- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](language-customization.md)
+- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](language-customization.md)

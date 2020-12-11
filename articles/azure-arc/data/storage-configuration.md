@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: uc-msft
 ms.author: umajay
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: c420652a6385be2cade9723c20cff7c32a4a60b0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 7b683029b7fd05078755d4e8cd027f55c805f991
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127242"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107269"
 ---
 # <a name="storage-configuration"></a>Depolama Yapılandırması
 
@@ -24,17 +24,17 @@ ms.locfileid: "92127242"
 
 Kubernetes, temel alınan sanallaştırma teknoloji yığını (isteğe bağlı) ve donanım üzerinde bir altyapı soyutlama katmanı sağlar. Kubernetes 'in, depolama alanı **[sınıfları](https://kubernetes.io/docs/concepts/storage/storage-classes/)** üzerinden soyutlanma şekli. Pod sağlama sırasında, her birim için kullanılmak üzere bir depolama sınıfı belirlenebilir. Pod 'ın sağlandığı zamanda depolama sınıfı **[hazırlayıcı](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)** , depolamayı sağlamak için çağrılır ve ardından bu sağlanan depolamada **[kalıcı bir birim](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)** oluşturulur ve sonra, kalıcı birim **[talebi](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#persistentvolumeclaims)** tarafından kalıcı birime bağlanır.
 
-Kubernetes, depolama altyapısı sağlayıcılarının Kubernetes 'i genişleten sürücüleri ("Eklentiler" olarak da bilinir) takmaları için bir yol sağlar. Depolama eklentileri, **[kapsayıcı depolama arabirimi standardına](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/)** uymalıdır. Bu kesin olmayan bu **[CSI sürücüleri listesinde](https://kubernetes-csi.github.io/docs/drivers.html)** bulunabilir. Kullandığınız CSı sürücüsü, bulutta barındırılan, yönetilen bir Kubernetes hizmetinde ya da donanımınız için kullandığınız OEM sağlayıcısından çalıştırdığınız gibi etkenlere bağlı olacaktır.
+Kubernetes, depolama altyapısı sağlayıcılarının Kubernetes 'i genişleten sürücüleri ("Eklentiler" olarak da bilinir) takmaları için bir yol sağlar. Depolama eklentileri, **[kapsayıcı depolama arabirimi standardına](https://kubernetes.io/blog/2019/01/15/container-storage-interface-ga/)** uygun olmalıdır. Bu kesin olmayan bu **[CSI sürücüleri listesinde](https://kubernetes-csi.github.io/docs/drivers.html)** bulunabilir. Kullandığınız CSı sürücüsü, bulutta barındırılan, yönetilen bir Kubernetes hizmetinde ya da donanımınız için kullandığınız OEM sağlayıcısından çalıştırdığınız gibi etkenlere bağlı olacaktır.
 
 Şu komutu çalıştırarak Kubernetes kümenizde hangi depolama sınıflarının yapılandırıldığını görüntüleyebilirsiniz:
 
-``` terminal
+```console
 kubectl get storageclass
 ```
 
 Azure Kubernetes Service (AKS) kümesinden alınan örnek çıktı:
 
-``` terminal
+```console
 NAME                PROVISIONER                AGE
 azurefile           kubernetes.io/azure-file   15d
 azurefile-premium   kubernetes.io/azure-file   15d
@@ -44,13 +44,13 @@ managed-premium     kubernetes.io/azure-disk   4d3h
 
 Şu komutu çalıştırarak bir depolama sınıfı hakkında ayrıntılı bilgi edinebilirsiniz:
 
-``` terminal
-kubectl describe storageclass\<storage class name>
+```console
+kubectl describe storageclass/<storage class name>
 ```
 
 Örnek:
 
-``` terminal
+```console
 kubectl describe storageclass/azurefile
 
 Name:            azurefile
@@ -69,7 +69,7 @@ Events:                <none>
 
 Aşağıdaki komutları çalıştırarak, şu anda sağlanan kalıcı birimleri ve kalıcı birim taleplerini görebilirsiniz:
 
-``` terminal
+```console
 kubectl get persistentvolumes -n <namespace>
 
 kubectl get persistentvolumeclaims -n <namespace>
@@ -77,7 +77,7 @@ kubectl get persistentvolumeclaims -n <namespace>
 
 Kalıcı birimleri gösterme örneği:
 
-``` terminal
+```console
 
 kubectl get persistentvolumes -n arc
 
@@ -98,7 +98,7 @@ pvc-ecd7d07f-2c2c-421d-98d7-711ec5d4a0cd   15Gi       RWO            Delete     
 
 Kalıcı birim taleplerini gösterme örneği:
 
-``` terminal
+```console
 
 kubectl get persistentvolumeclaims -n arc
 
@@ -120,12 +120,12 @@ sqldemo11-logs-claim   Bound    pvc-41b33bbd-debb-4153-9a41-02ce2bf9c665   10Gi 
 
 ## <a name="factors-to-consider-when-choosing-your-storage-configuration"></a>Depolama yapılandırmanızı seçerken göz önünde bulundurmanız gereken etmenler
 
-Doğru depolama sınıfının seçilmesi veri dayanıklılığı ve performansı açısından çok önemlidir. Yanlış depolama sınıfının seçilmesi, bir donanım arızası durumunda verilerinizi toplam veri kaybı riskiyle elde edebilir veya en iyi performansa neden olabilir.
+Doğru depolama sınıfının seçilmesi veri dayanıklılığı ve performansı açısından önemlidir. Yanlış depolama sınıfının seçilmesi, bir donanım arızası durumunda verilerinizi toplam veri kaybı riskiyle elde edebilir veya en iyi performansa neden olabilir.
 
 Genellikle iki tür depolama vardır:
 
-- Belirli bir düğümdeki yerel sabit sürücülerde sağlanan **yerel depolama** alanı. Bu tür bir depolama, performans açısından ideal olabilir, ancak verileri birden çok düğüm arasında çoğaltarak veri yedekliği için özellikle tasarlanmasını gerektirir.
-- **Uzak, paylaşılan depolama** -bazı uzak depolama cihazında sağlanan depolama alanı (örneğin, bir San, NAS veya EBS veya Azure dosyaları gibi bulut depolama hizmeti). Bu tür bir depolama genellikle otomatik olarak veri artıklığı sağlar, ancak genellikle yerel depolama alanı olabilir.
+- **Yerel depolama** -belirli bir düğümdeki yerel sabit sürücülerde sağlanan depolama alanı. Bu tür bir depolama, performans açısından ideal olabilir, ancak verileri birden çok düğüm arasında çoğaltarak veri yedekliği için özellikle tasarlanmasını gerektirir.
+- **Uzak, paylaşılan depolama** (örneğin, bir uzak depolama cihazında sağlanan depolama alanı; Örneğin, EBS veya Azure dosyaları gıbı bir San, NAS veya bulut depolama hizmeti). Bu tür bir depolama genellikle otomatik olarak veri artıklığı sağlar, ancak yerel depolama alanı olabilir.
 
 > [!NOTE]
 > Şimdilik, NFS kullanıyorsanız, Azure Arc veri denetleyicisi 'ni dağıtılmadan önce, dağıtım profili dosyanızda allowRunAsRoot değerini true olarak ayarlamanız gerekir.
@@ -137,13 +137,13 @@ Veri Hizmetleri için Azure Arc 'daki bazı hizmetler, hizmetlerin verileri ço�
 |**Hizmet**|**Kalıcı birim talepleri**|
 |---|---|
 |**ElasticSearch**|`<namespace>/logs-logsdb-0`, `<namespace>/data-logsdb-0`|
-|**Etkileyen**|`<namespace>/logs-metricsdb-0`, `<namespace>/data-metricsdb-0`|
+|**InfluxDB**|`<namespace>/logs-metricsdb-0`, `<namespace>/data-metricsdb-0`|
 |**Denetleyici SQL örneği**|`<namespace>/logs-controldb`, `<namespace>/data-controldb`|
 |**Denetleyici API hizmeti**|`<namespace>/data-controller`|
 
 Veri denetleyicisinin sağlandığı zamanda, bu kalıcı birimlerin her biri için kullanılacak depolama sınıfı--Storage-Class ' ı geçirerek belirtilir | -SC parametresi, `azdata arc dc create` ve kullanılan dağıtım şablonu dosyasında control.jsdepolama sınıflarını ayarlayarak.
 
-Kutudan çıkan dağıtım şablonlarının, hedef ortam için uygun bir varsayılan depolama sınıfı belirtilmiş, ancak dağıtım zamanında geçersiz kılınabilir. Dağıtım zamanında veri denetleyicisi yığınlarının depolama sınıfı yapılandırmasını değiştirmek için [dağıtım profilini](create-data-controller.md) değiştirme hakkında ayrıntılı adımlara bakın.
+Kutudan çıkan dağıtım şablonlarının, hedef ortam için uygun bir varsayılan depolama sınıfı belirtilmiş, ancak dağıtım sırasında geçersiz kılınabilir. Dağıtım zamanında veri denetleyicisi yığınlarının depolama sınıfı yapılandırmasını değiştirmek için [dağıtım profilini](create-data-controller.md) değiştirme hakkında ayrıntılı adımlara bakın.
 
 Depolama sınıfını--Storage-Class ile ayarlarsanız | -SC parametresi depolama sınıfı hem günlük hem de veri depolama sınıfları için kullanılacaktır. Dağıtım şablonu dosyasında depolama sınıflarını ayarlarsanız, Günlükler ve veriler için farklı depolama sınıfları belirtebilirsiniz.
 
@@ -151,8 +151,8 @@ Veri denetleyicisi için bir depolama sınıfı seçerken göz önünde bulundur
 
 - Veri dayanıklılığı sağlamak için uzak, paylaşılan bir depolama sınıfı kullanmanız **gerekir** ve bu sayede Pod bir pod başlatıldığında bir pod veya düğüm kalıcı birime yeniden bağlanabilir.
 - Denetleyici SQL örneğine, ölçüm VERITABANıNA ve günlük VERITABANıNA yazılan veriler genellikle oldukça düşüktür ve gecikme süresine duyarlı değildir, böylece ultra hızlı performans depolaması kritik değildir. Sık sık Grafana ve kibana arabirimlerini kullanan kullanıcılarınız varsa ve çok sayıda veritabanı örneği varsa, kullanıcılarınız daha hızlı depolama alanı üzerinde avantaj sağlayabilir.
-- Her bir veritabanı örneği için Günlükler ve ölçümler toplandığından, gereken depolama kapasitesi, dağıttığınız veritabanı örneklerinin sayısıyla değişkendir. Veriler, temizlenmeden önce 2 hafta boyunca günlüklerde ve ölçüm VERITABANıNDA tutulur. 
-- Depolama sınıfı dağıtımının değiştirilmesi çok zordur, açıklanmamıştır ve desteklenmez. Dağıtım zamanında depolama sınıfını doğru seçtiğinizden emin olun.
+- Her bir veritabanı örneği için Günlükler ve ölçümler toplandığından, gereken depolama kapasitesi, dağıttığınız veritabanı örneklerinin sayısıyla değişkendir. Veriler, temizlenmeden önce iki (2) hafta boyunca günlüklerde ve ölçüm VERITABANıNDA tutulur. 
+- Depolama sınıfı dağıtımının değiştirilmesi zordur, belgelenmemiştir ve desteklenmez. Dağıtım zamanında depolama sınıfını doğru seçtiğinizden emin olun.
 
 > [!NOTE]
 > Hiçbir depolama sınıfı belirtilmemişse, varsayılan depolama sınıfı kullanılacaktır. Her bir Kubernetes kümesi için yalnızca bir varsayılan depolama sınıfı olabilir. [Varsayılan depolama sınıfını değiştirebilirsiniz](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/).
@@ -161,7 +161,7 @@ Veri denetleyicisi için bir depolama sınıfı seçerken göz önünde bulundur
 
 Her veritabanı örneğinin veri, günlük ve yedek kalıcı birimleri vardır. Bu kalıcı birimler için depolama sınıfları dağıtım zamanında belirlenebilir. Hiçbir depolama sınıfı belirtilmemişse, varsayılan depolama sınıfı kullanılacaktır.
 
-Veya komutlarını kullanarak bir örnek `azdata arc sql mi create` oluştururken `azdata arc postgres server create` , depolama sınıflarını ayarlamak için kullanılabilecek iki parametre vardır:
+Ya da kullanarak bir örnek oluştururken `azdata arc sql mi create` `azdata arc postgres server create` , depolama sınıflarını ayarlamak için kullanılabilecek iki parametre vardır:
 
 > [!NOTE]
 > Bu parametrelerden bazıları geliştirme aşamasındadır ve `azdata arc sql mi create` yaklaşan sürümlerde ve üzerinde kullanılabilir hale gelir `azdata arc postgres server create` .
@@ -199,9 +199,9 @@ Belirli bir veritabanı örneğinde birden çok veritabanı varsa, tüm veritaba
 
 Veritabanı örneği için bir depolama sınıfı seçerken göz önünde bulundurmanız gereken önemli etmenler:
 
-- Veritabanı örnekleri, tek bir pod düzeninde veya birden çok Pod düzeniyle dağıtılabilir. Tek Pod düzenine örnek olarak, Azure SQL yönetilen örneği veya genel amaçlı fiyatlandırma katmanı Azure SQL yönetilen örneği bir geliştirici örneğidir. Çoklu Pod düzenine bir örnek, yüksek oranda kullanılabilir bir iş açısından kritik fiyatlandırma katmanı Azure SQL yönetilen örneğidir. (Not: fiyatlandırma katmanları geliştirme aşamasındadır ve henüz müşteriler tarafından kullanılamaz.)  Tek Pod düzeniyle dağıtılan veritabanı örnekleri, veri dayanıklılığı sağlamak için uzak, paylaşılan bir depolama **sınıfı kullanmalıdır ve** bu sayede Pod, Pod tarafından yedeklenirken bir pod veya düğüm kalıcı birime yeniden bağlanabilir. Buna karşılık, yüksek oranda kullanılabilir bir Azure SQL yönetilen örneği, verileri zaman uyumlu veya zaman uyumsuz olarak bir örnekten diğerine çoğaltmak için Always on kullanılabilirlik grupları kullanır. Özellikle, verilerin zaman uyumlu olarak çoğaltılacağı durumlarda, verilerin genellikle 3 kopyasının birden çok kopyası vardır. Bu nedenle, veri ve günlük dosyaları için yerel depolama veya uzak, paylaşılan depolama sınıflarını kullanmak mümkündür. Yerel depolama alanı kullanıldığında, başarısız bir pod, düğüm veya depolama donanımı durumunda bile veriler hala korunur. Bu esneklik verildiğinde, daha iyi performans için yerel depolamayı kullanmayı tercih edebilirsiniz.
-- Veritabanı performansı büyük ölçüde belirli bir depolama cihazının g/ç verimlilik işlevidir. Veritabanınız ağır okumalar veya ağır yazıyorsa, bu iş yükü türü için tasarlanan altında donanım olan bir depolama sınıfı seçmeniz gerekir. Örneğin, veritabanınız çoğunlukla yazma işlemlerinde kullanılıyorsa, RAID 0 ile yerel depolama seçebilirsiniz. Veritabanınız çoğunlukla az miktarda "etkin veri" okuma için kullanılırsa, ancak çok büyük bir toplam depolama hacmi olan çok sayıda soğuk veri depolama alanı varsa katmanlı depolama özellikli bir SAN cihazı seçebilirsiniz. Doğru depolama sınıfının seçilmesi, herhangi bir veritabanı için kullanacağınız depolama türünü seçmekten çok farklı değildir.
-- Yerel bir depolama birimi hazırlayıcısı kullanıyorsanız, disk g/ç üzerinde çekişmeyi önlemek için veriler, Günlükler ve yedeklemeler için sağlanan Yerel birimlerin her bir arka plandaki depolama cihazlarındaki her bir sahanlık olduğundan emin olmanız gerekir. İşletim sistemi ayrıca ayrı bir diske bağlı bir birimde olmalıdır. Bu, aslında fiziksel donanımda bir veritabanı örneği için de aynı kılavuzdan aynıdır.
+- Veritabanı örnekleri, tek bir pod düzeninde veya birden çok Pod düzeniyle dağıtılabilir. Tek Pod düzenine örnek olarak, Azure SQL yönetilen örneği veya genel amaçlı fiyatlandırma katmanı Azure SQL yönetilen örneği bir geliştirici örneğidir. Çoklu Pod düzenine bir örnek, yüksek oranda kullanılabilir bir iş açısından kritik fiyatlandırma katmanı Azure SQL yönetilen örneğidir. (Not: fiyatlandırma katmanları geliştirme aşamasındadır ve henüz müşteriler tarafından kullanılamaz.)  Tek Pod düzeniyle dağıtılan veritabanı örnekleri, veri dayanıklılığı sağlamak için uzak, paylaşılan bir depolama **sınıfı kullanmalıdır ve** bu sayede Pod, Pod tarafından yedeklenirken bir pod veya düğüm kalıcı birime yeniden bağlanabilir. Buna karşılık, yüksek oranda kullanılabilir bir Azure SQL yönetilen örneği, verileri zaman uyumlu veya zaman uyumsuz olarak bir örnekten diğerine çoğaltmak için Always on kullanılabilirlik grupları kullanır. Özellikle, verilerin zaman uyumlu olarak çoğaltılacağı durumlarda, verilerin her zaman birden çok kopyası vardır-genellikle üç (3) kopya. Bu nedenle, veri ve günlük dosyaları için yerel depolama veya uzak, paylaşılan depolama sınıflarını kullanmak mümkündür. Yerel depolama alanı kullanılıyorsa, veriler hatalı bir pod, düğüm veya depolama donanımı durumunda bile hala korunur. Bu esneklik verildiğinde, daha iyi performans için yerel depolamayı kullanmayı tercih edebilirsiniz.
+- Veritabanı performansı büyük ölçüde belirli bir depolama cihazının g/ç verimlilik işlevidir. Veritabanınız ağır okumalar veya ağır yazmasa, bu iş yükü türü için tasarlanan donanımla bir depolama sınıfı seçmeniz gerekir. Örneğin, veritabanınız çoğunlukla yazma işlemlerinde kullanılıyorsa, RAID 0 ile yerel depolama seçebilirsiniz. Veritabanınız çoğunlukla az miktarda "etkin veri" okuma için kullanılırsa, ancak çok büyük bir toplam depolama hacmi olan çok sayıda soğuk veri depolama alanı varsa katmanlı depolama özellikli bir SAN cihazı seçebilirsiniz. Doğru depolama sınıfının seçilmesi, herhangi bir veritabanı için kullanacağınız depolama türünü seçmekten çok farklı değildir.
+- Yerel bir depolama birimi hazırlayıcısı kullanıyorsanız, disk g/ç üzerinde çekişmeyi önlemek için veriler, Günlükler ve yedeklemeler için sağlanan Yerel birimlerin her bir temel depolama cihazında yer aldığından emin olun. İşletim sistemi ayrıca ayrı bir diske bağlı bir birimde olmalıdır. Bu, aslında fiziksel donanımda bir veritabanı örneği için de aynı kılavuzdan aynıdır.
 - Belirli bir örnekteki tüm veritabanları kalıcı bir birim talebi ve kalıcı birimi paylaştığından, meşgul veritabanı örneklerini aynı veritabanı örneği üzerinde bulundurmayın emin olun. Mümkünse, g/ç çekişmesini önlemek için, mümkün olan yoğun veritabanlarını kendi veritabanı örneklerine ayırın. Ayrıca, genel g/ç trafiğini birden çok düğüme dağıtmak için veritabanı örneklerini ayrı düğümlere yönlendirerek düğüm etiketi hedefleme kullanın. Sanallaştırma kullanıyorsanız, belirli bir fiziksel konaktaki tüm düğüm VM 'lerinde g/ç trafiğini yalnızca düğüm düzeyinde değil, aynı zamanda Birleşik g/ç etkinliğini de göz önünde bulundurduğunuzdan emin olun.
 
 ## <a name="estimating-storage-requirements"></a>Depolama gereksinimlerini tahmin etme
@@ -222,9 +222,9 @@ Aşağıdaki tabloda, örnek dağıtım için gereken toplam kalıcı birim say�
 |Azure SQL Yönetilen Örnek|5|5 * 2 = 10|
 |PostgreSQL için Azure veritabanı örneği|5| 5 * 2 = 10|
 |Azure PostgreSQL hiper ölçek|2 (çalışan sayısı = örnek başına 4)|2 * 2 * (1 + 4) = 20|
-|***Toplam kalıcı birim sayısı***||8 + 10 + 10 + 20 = 48|
+|***Toplam kalıcı birim sayısı** _||8 + 10 + 10 + 20 = 48|
 
-Bu hesaplama, depolama hazırlayıcısı veya ortamına bağlı olarak Kubernetes kümeniz için depolamayı planlamak üzere kullanılabilir. Örneğin, bir Kubernetes kümesi için yerel depolama hazırlayıcı 5 düğümle kullanılıyorsa, her düğümün üzerindeki örnek dağıtım için 10 kalıcı birim için en az depolama alanı gerekir. Benzer şekilde, 5 düğüm içeren bir Azure Kubernetes hizmeti (AKS) kümesi sağlarken, düğüm havuzu için 10 veri diski eklenebilecek uygun bir VM boyutu kullanıma alınırken, önemli bir değer vardır. AKS düğümlerine yönelik depolama ihtiyacı için düğümlerin nasıl boyutlandıralınacağını öğrenmek hakkında daha fazla ayrıntı [burada](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)bulabilirsiniz.
+Bu hesaplama, depolama hazırlayıcısı veya ortamına bağlı olarak Kubernetes kümeniz için depolamayı planlamak üzere kullanılabilir. Örneğin, beş (5) düğüm içeren bir Kubernetes kümesi için yerel depolama hazırlayıcısı kullanılıyorsa her düğümün üzerindeki örnek dağıtım için en az 10 kalıcı birim gerekir. Benzer şekilde, beş (5) düğüm içeren bir Azure Kubernetes hizmeti (AKS) kümesi sağlanırken, düğüm havuzu için 10 veri diski eklenebilecek uygun bir VM boyutu kullanıma alınırken önemlidir. AKS düğümlerine yönelik depolama ihtiyacı için düğümlerin nasıl boyutlandıralınacağını öğrenmek hakkında daha fazla ayrıntı [burada](../../aks/operator-best-practices-storage.md#size-the-nodes-for-storage-needs)bulabilirsiniz.
 
 ## <a name="choosing-the-right-storage-class"></a>Doğru depolama sınıfını seçme
 
@@ -238,6 +238,6 @@ Genel bulut tabanlı, yönetilen Kubernetes Hizmetleri için aşağıdaki öneri
 
 |Genel bulut hizmeti|Öneri|
 |---|---|
-|**Azure Kubernetes Service (AKS)**|Azure Kubernetes hizmeti (AKS), iki tür depolama-Azure dosyası ve Azure yönetilen diski vardır. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
+|_ *Azure Kubernetes hizmeti (AKS)**|Azure Kubernetes hizmeti (AKS), iki tür depolama-Azure dosyası ve Azure yönetilen diski vardır. Her depolama türünde iki fiyatlandırma/performans katmanı (HDD) ve Premium (SSD) vardır. Bu nedenle, AKS içinde sunulan dört depolama sınıfı `azurefile` (Azure dosyaları standart katmanı), (Azure `azurefile-premium` dosyaları Premium katmanı), `default` (Azure diskleri standart katmanı) ve `managed-premium` (Azure diskleri Premium katmanı). Varsayılan depolama sınıfı `default` (Azure diskleri standart katmanı). Kararlarınız için bir araya getirilmeli türler ve katmanlar arasında önemli miktarda **[fiyatlandırma farkı](https://azure.microsoft.com/en-us/pricing/details/storage/)** vardır. Yüksek performanslı gereksinimlere sahip üretim iş yükleri için, `managed-premium` tüm depolama sınıfları için kullanmanızı öneririz. Geliştirme ve test iş yükleri, kavram provaları vb. bir değerlendirme için `azurefile` en az maliyetli bir seçenektir. Tüm dört seçenek, Azure 'da ağa bağlı tüm depolama cihazlarıyla uzak, paylaşılan depolama gerektiren durumlar için kullanılabilir. [Aks depolaması](../../aks/concepts-storage.md)hakkında daha fazla bilgi edinin.|
 |**AWS Elastic Kubernetes Service (EKS)**| Amazon 'ın elastik Kubernetes hizmetinde, [EBS CSI depolama sürücüsüne](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html)göre bir birincil depolama sınıfı vardır. Bu, üretim iş yükleri için önerilir. Yeni bir depolama sürücüsü- [EFS CSI depolama sürücüsü](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html) vardır. Bu, BIR EKS kümesine eklenebilir, ancak şu anda bir beta aşamasıdır ve değiştirilebilir. AWS, bu depolama sürücüsünün üretim için desteklendiğini söyseler de, hala beta sürümünde ve değişikliğe tabi olduğu için kullanılması önerilmez. EBS depolama sınıfı varsayılandır ve çağırılır `gp2` . [EKS depolama](https://docs.aws.amazon.com/eks/latest/userguide/storage-classes.html)hakkında daha fazla bilgi edinin.|
-|**Google Kubernetes Altyapısı (GKE)**|Google Kubernetes altyapısı (GKE), `standard` [GCE kalıcı diskler](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)için kullanılan bir adet depolama sınıfına sahiptir. Tek bir tane olmak üzere varsayılan değer de vardır. GKE için doğrudan bağlı SSD 'Ler ile kullanabileceğiniz [yerel ve statik bir birim hazırlayıcı](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) olsa da, bunun beklendiği veya Google tarafından desteklenmediği için kullanılması önerilmez. [GKE depolama](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)hakkında daha fazla bilgi edinin.
+|**Google Kubernetes Altyapısı (GKE)**|Google Kubernetes altyapısının (GKE) `standard` , [GCE kalıcı diskler](https://kubernetes.io/docs/concepts/storage/volumes/#gcepersistentdisk)için kullanılan yalnızca bir depolama sınıfına sahiptir. Tek bir tane olmak üzere varsayılan değer de vardır. GKE için doğrudan bağlı SSD 'Ler ile kullanabileceğiniz [yerel ve statik bir birim hazırlayıcı](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/local-ssd#run-local-volume-static-provisioner) olsa da, bunun beklendiği veya Google tarafından desteklenmediği için kullanılması önerilmez. [GKE depolama](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes)hakkında daha fazla bilgi edinin.

@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7bb38b382add2a0ea3506c31c5e6e76a985df6a1
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936480"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109105"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Azure Active Directory B2C için yeni Uygulama kayıtları deneyimi
 
@@ -97,7 +97,7 @@ Yeni deneyimde **anahtarlar** yerine, sertifikaları ve gizli dizileri yönetmek
 ## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Azure AD B2C kiracılarda geçerli değil Özellikler
 Aşağıdaki Azure AD uygulama kayıt özellikleri Azure AD B2C kiracılarda geçerli değildir veya kullanılabilir değildir:
 - **Roller ve yöneticiler** -Azure AD B2C için şu anda kullanılamıyor.
-- **Marka** -UI/UX özelleştirmesi, **Şirket markası** deneyiminde veya bir Kullanıcı akışının parçası olarak yapılandırılmıştır. [Azure Active Directory B2C içinde Kullanıcı arabirimini özelleştirmeyi](customize-ui-overview.md)öğrenin.
+- **Marka** -UI/UX özelleştirmesi, **Şirket markası** deneyiminde veya bir Kullanıcı akışının parçası olarak yapılandırılmıştır. [Azure Active Directory B2C içinde Kullanıcı arabirimini özelleştirmeyi](customize-ui-with-html.md)öğrenin.
 - **Yayımcı etki alanı doğrulaması** -uygulamanız, doğrulanmış bir etki alanı olmayan *. onmicrosoft.com* tarihinde kaydedilir. Ayrıca, yayımcı etki alanı birincil olarak Kullanıcı izni vermek için kullanılır ve bu, Kullanıcı kimlik doğrulaması için Azure AD B2C uygulamalar için geçerlidir. [Yayımcı etki alanı hakkında daha fazla bilgi edinin](../active-directory/develop/howto-configure-publisher-domain.md).
 - **Belirteç yapılandırması** -belirteç, bir uygulama yerine Kullanıcı akışının bir parçası olarak yapılandırılır.
 - **Hızlı başlangıç** deneyimi şu anda Azure AD B2C kiracılar için kullanılamaz.

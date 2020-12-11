@@ -13,12 +13,12 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: 327280c193c3c2fb829e468bccfc352f35edfdb5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673507"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107881"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Azure AD B2C ile çalışmak için JavaScript için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
 
@@ -32,7 +32,7 @@ Aşağıdaki bölümlerde aşağıdakilerin nasıl yapılacağı gösterilmekted
 - Tek sayfalı bir uygulamada (SPA) oturum açma desteği *ve korunan Web* API 'sini çağırma
 - Parola sıfırlama desteğini etkinleştir
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Henüz yapmadıysanız, bir [Azure AD B2C kiracı](../../active-directory-b2c/tutorial-create-tenant.md)oluşturun.
 
@@ -207,9 +207,9 @@ Kullanıcı **parolayı unutma** seçeneğini belirlediğinde, uygulamanız kodu
 
     Parolasını sıfırladıktan sonra, Kullanıcı yeniden oturum açmak için uygulamaya geri döndürülür.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C tarafından görünen oturum açma ekranı" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C tarafından gösterilen parola sıfırlama akışı ekranları" border="false":::
 
-    Hata kodları ve özel durumları işleme hakkında daha fazla bilgi için bkz. [msal hata ve özel durum kodları](msal-handling-exceptions.md).
+    Hata kodları ve özel durumları işleme hakkında daha fazla bilgi için bkz. [msal hata ve özel durum kodları](msal-error-handling-js.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -217,4 +217,4 @@ Bu Azure AD B2C kavramları hakkında daha fazla bilgi edinin:
 
 - [Kullanıcı akışları](../../active-directory-b2c/tutorial-create-user-flows.md)
 - [Özel ilkeler](../../active-directory-b2c/custom-policy-get-started.md)
-- [UX özelleştirme](../../active-directory-b2c/custom-policy-configure-user-input.md)
+- [UX özelleştirme](../../active-directory-b2c/configure-user-input.md)

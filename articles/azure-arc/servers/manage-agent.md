@@ -3,12 +3,12 @@ title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130978"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107201"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -160,7 +160,7 @@ Azcmagent Aracı (Azcmagent.exe), yükleme sırasında Azure Arc etkin sunucular
 
 * **-h veya--help** -kullanılabilir komut satırı parametrelerini gösterir
 
-    Örneğin, **reconnect** parametresinin ayrıntılı yardımını görmek için, yazın `azcmagent reconnect -h` . 
+    Örneğin, **Connect** parametresi için ayrıntılı yardımı görmek için, yazın `azcmagent connect -h` . 
 
 * **-v veya--verbose** -ayrıntılı günlüğü etkinleştir
 
@@ -169,7 +169,7 @@ Etkileşimli olarak oturum açtığınızda bir **bağlantı** ve **bağlantı k
 >[!NOTE]
 >**Azcmagent** çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
-### <a name="connect"></a>Bağlan
+### <a name="connect"></a>Bağlanma
 
 Bu parametre, makinenin Azure 'da oluşturulduğunu temsil eden Azure Resource Manager bir kaynak belirtir. Kaynak, belirtilen abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler, bu ayar tarafından belirtilen Azure bölgesinde saklanır `--location` . Varsayılan kaynak adı, belirtilmemişse makinenin ana bilgisayar adıdır.
 
@@ -219,8 +219,8 @@ Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinede *C:\
 1. Windows aracısını makineden kaldırmak için aşağıdakileri yapın:
 
     a. Yönetici izinlerine sahip bir hesapla bilgisayarda oturum açın.  
-    b. **Denetim Masası** 'nda **Programlar ve Özellikler** ' i seçin.  
-    c. **Programlar ve Özellikler** ' de **Azure bağlı makine Aracısı** ' nı seçin, **Kaldır** ' ı seçin ve **Evet** ' i seçin.  
+    b. **Denetim Masası**'nda **Programlar ve Özellikler**' i seçin.  
+    c. **Programlar ve Özellikler**' de **Azure bağlı makine Aracısı**' nı seçin, **Kaldır**' ı seçin ve **Evet**' i seçin.  
 
     >[!NOTE]
     > Aracı Kurulum sihirbazını **AzureConnectedMachineAgent.msi** yükleyicisi paketine çift tıklayarak da çalıştırabilirsiniz.
@@ -281,7 +281,7 @@ Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planl�
 
 1. [Azure Portal](https://aka.ms/hybridmachineportal)giderek Azure Arc etkin sunucularını açın.
 
-2. Listeden makineyi seçin, üç nokta ( **...** ) simgesini seçin ve **Sil** ' i seçin.
+2. Listeden makineyi seçin, üç nokta (**...**) simgesini seçin ve **Sil**' i seçin.
 
 ## <a name="update-or-remove-proxy-settings"></a>Proxy ayarlarını Güncelleştir veya Kaldır
 

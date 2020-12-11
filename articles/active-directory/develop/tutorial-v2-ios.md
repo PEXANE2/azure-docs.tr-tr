@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: aff89d49dec9bafedb3c9a5a76abdeb803740a12
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95746736"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107643"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma
 
@@ -60,7 +60,7 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 - [iOS kod örneği](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/) (GitHub)
 - [MacOS kod örneği](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/) (GitHub)
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 1. Xcode ' u açın ve **Yeni bir Xcode projesi oluştur**' u seçin.
 2. İOS uygulamaları için **iOS**  >  **tek görünüm uygulaması** ' nı seçin ve **İleri ' yi** seçin.
@@ -80,7 +80,7 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 
 7. Yeni uygulama kayıt deneyimini açmak için ekranın üst kısmındaki **Yeni deneyimi deneyin** ' i seçin ve ardından **+ Yeni kayıt**  >  **+ Platform**  >  **iOS/MacOS** Ekle ' yi seçin.
     - Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
-8. `Configure`Uygulamanızı daha sonra yapılandırırken girmeniz Için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** seçin ve kaydedin. **Bitti**'yi seçin.
+8. `Configure`Uygulamanızı daha sonra yapılandırırken girmeniz Için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** seçin ve kaydedin. **Bitti**’yi seçin.
 
 ## <a name="add-msal"></a>MSAL Ekle
 
@@ -520,7 +520,7 @@ Aşağıdaki kod parçacığı bir nesne oluşturup çağırarak bir belirteci i
 
 1. `MSALInteractiveTokenParameters`Kapsamlarla oluşturulur.
 2. `acquireToken()`Oluşturulan parametrelerle çağırır.
-3. Hataları işler. Daha fazla ayrıntı için [msal for iOS ve macOS hata işleme Kılavuzu](msal-handling-exceptions.md)' na bakın.
+3. Hataları işler. Daha fazla ayrıntı için [msal for iOS ve macOS hata işleme Kılavuzu](msal-error-handling-ios.md)' na bakın.
 4. Başarılı durumu işler.
 
 Aşağıdaki kodu `ViewController` sınıfına ekleyin.

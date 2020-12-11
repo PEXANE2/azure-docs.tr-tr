@@ -1,16 +1,16 @@
 ---
-title: .NET API kullanarak paralel iş yükü çalıştırma
+title: Öğretici-.NET API kullanarak paralel iş yükü çalıştırma
 description: Öğretici - Batch .NET istemci kitaplığını kullanarak Azure Batch’te ffmpeg ile paralel medya dosyaları dönüştürme
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 396d0f6a2ef9a8c24fc92b641c889ef9e1a7df49
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578306"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106555"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Öğretici: .NET API’si kullanarak Azure Batch ile paralel iş yükü çalıştırma
 
@@ -29,7 +29,7 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Visual Studio 2017 veya üzeri](https://www.visualstudio.com/vs)ya da Linux, MacOS veya Windows Için [.NET Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) .
 
@@ -45,9 +45,9 @@ Bu öğreticide, [ffmpeg](https://ffmpeg.org/) açık kaynak aracını kullanara
 
 Batch hesabınıza [uygulama paketi](batch-application-packages.md) olarak ffmpeg eklemek için Azure portalını kullanın. Uygulama paketleri, görev uygulamalarını ve havuzunuzdaki işlem düğümlerine dağıtımlarını yönetmenize yardımcı olur. 
 
-1. Azure Portal, **diğer hizmetler**  >  **Batch hesapları** ' na tıklayın ve Batch hesabınızın adına tıklayın.
-3. **Uygulamalar**  >  **Ekle** ' ye tıklayın.
-4. **Uygulama kimliği** için *FFmpeg* ve bir *4.3.1* paket sürümü girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam** ’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
+1. Azure Portal, **diğer hizmetler**  >  **Batch hesapları**' na tıklayın ve Batch hesabınızın adına tıklayın.
+3. **Uygulamalar**  >  **Ekle**' ye tıklayın.
+4. **Uygulama kimliği** için *FFmpeg* ve bir *4.3.1* paket sürümü girin. Daha önce indirdiğiniz ffmpeg zip dosyasını seçip **Tamam**’a tıklayın. ffmpeg uygulama paketi, Batch hesabınıza eklenir.
 
 ![Uygulama paketi ekleme](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -65,7 +65,7 @@ git clone https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial.git
 
 Visual Studio `BatchDotNetFfmpegTutorial.sln` çözüm dosyasını içeren dizine gidin.
 
-Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örnek:
+Çözüm dosyasını Visual Studio'da açın ve `Program.cs` içindeki kimlik bilgisi dizelerini hesaplarınız için edindiğiniz değerlerle güncelleştirin. Örneğin:
 
 ```csharp
 // Batch account credentials
@@ -91,7 +91,7 @@ const string appPackageVersion = "4.3.1";
 
 Uygulamayı Visual Studio'da veya `dotnet build` ve `dotnet run` komutlarıyla komut satırında derleyip çalıştırın. Uygulamayı çalıştırdıktan sonra, uygulamanın her bir parçasının ne işe yaradığını öğrenmek üzere kodu gözden geçirin. Örneğin Visual Studio'da:
 
-* Çözüm Gezgini çözüme sağ tıklayın ve **çözüm oluştur** ' a tıklayın. 
+* Çözüm Gezgini çözüme sağ tıklayın ve **çözüm oluştur**' a tıklayın. 
 
 * İstenirse, herhangi bir NuGet paketinin geri yüklenmesini onaylayın. Eksik paketleri indirmeniz gerekirse, [NuGet Paket Yöneticisi](https://docs.nuget.org/consume/installing-nuget)’nin yüklü olduğundan emin olun.
 
@@ -118,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar**  >  *WinFFmpegPool* ' e tıklayın.
+Havuz, işlem düğümleri, iş ve görevleri izlemek için Azure portalında Batch hesabınıza gidin. Örneğin, havuzunuzdaki işlem düğümlerinin bir ısı haritasını görmek için **havuzlar**  >  *WinFFmpegPool*' e tıklayın.
 
 Görevler çalıştırılırken ısı haritası aşağıdakine benzer:
 
@@ -313,11 +313,11 @@ batchClient.JobOperations.TerminateJob(jobId);
 
 Görevleri çalıştırdıktan sonra, uygulama kendi oluşturduğu giriş depolama kapsayıcısını otomatik olarak siler ve Batch havuzu ve işini silme seçeneğini sunar. BatchClient'ın [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) ve [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) sınıflarının her ikisi de, silmeyi onaylamanız durumunda çağrılan ilgili silme yöntemlerini içerir. İşlerin ve görevlerin kendileri için sizden ücret alınmasa da işlem düğümleri için ücret alınır. Bu nedenle, havuzları yalnızca gerektiğinde ayırmanız önerilir. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. Ancak çıkış dosyaları depolama hesabında kalır.
 
-Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portalında bu işlemi yapmak için Batch hesabına ait kaynak grubunu seçin ve **Kaynak Grubunu Sil** ’e tıklayın.
+Kaynak grubunu, Batch hesabını ve depolama hesabını artık gerekli değilse silin. Azure portalında bu işlemi yapmak için Batch hesabına ait kaynak grubunu seçin ve **Kaynak Grubunu Sil**’e tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, şunlar hakkında bilgi edindiniz:
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 
 > [!div class="checklist"]
 > * Batch hesabınıza bir uygulama paketi ekleme
@@ -332,6 +332,3 @@ Batch iş yüklerini zamanlamak ve işlemek üzere .NET API kullanmaya ilişkin 
 
 > [!div class="nextstepaction"]
 > [Batch C# örnekleri](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)
-
-
-LowPriorityNodeCount = 0 örnek değişkeninin ve ayrılmış nodeCount = 5 değerinin ayarlanması sorunu düzeltti ve işin tamamlanmasını izin vermez.

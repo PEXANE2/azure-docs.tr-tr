@@ -1,15 +1,15 @@
 ---
 title: Azure hızlı başlangıç-Azure portal ilk Batch işinizi çalıştırın
-description: Batch hesabı, bir işlem düğümleri havuzu ve havuzda temel görevleri çalıştıran bir iş oluşturmak için Azure portal nasıl kullanacağınızı öğrenin.
+description: Bu hızlı başlangıçta, bir Batch hesabı, bir işlem düğümleri havuzu ve havuzda temel görevleri çalıştıran bir iş oluşturmak için Azure portal nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d8584ecea8ddd5934771dbe5945a6172a28c801c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88511380"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106487"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Hızlı başlangıç: Azure portalında ilk Batch işinizi çalıştırma
 
@@ -23,15 +23,15 @@ Batch hesabı, bir işlem düğümleri Havuzu (sanal makineler) ve havuzdaki gö
 
 Test amacıyla örnek bir Batch hesabı oluşturmak için bu adımları izleyin. Havuzlar ve işler oluşturmak için bir Batch hesabı gerekir. Burada gösterildiği gibi, bir Azure depolama hesabını Batch hesabına bağlayabilirsiniz. Bu hızlı başlangıç için gerekli olmamasına karşın, depolama hesabı uygulamaları dağıtmak ve çoğu gerçek yaşam iş yükleri için giriş ve çıkış verilerini depolamak üzere yararlıdır.
 
-1. [Azure Portal](https://portal.azure.com), **kaynak**  >  **Hesaplama**  >  **toplu işlem hizmeti**oluştur ' u seçin. 
+1. [Azure Portal](https://portal.azure.com), **kaynak**  >  **Hesaplama**  >  **toplu işlem hizmeti** oluştur ' u seçin. 
 
    :::image type="content" source="media/quick-create-portal/marketplace-batch.png" alt-text="Azure Marketi 'nde Batch hizmetinin ekran görüntüsü.":::
 
 1. **Kaynak grubu** alanında, **Yeni oluştur** ' u seçin ve kaynak grubunuz için bir ad girin.
 
-1. **Hesap adı**için bir değer girin. Bu ad, seçilen Azure **konumu** içinde benzersiz olmalıdır. Bu, yalnızca küçük harf ve rakam içerebilir ve 3-24 karakter arasında olmalıdır.
+1. **Hesap adı** için bir değer girin. Bu ad, seçilen Azure **konumu** içinde benzersiz olmalıdır. Bu, yalnızca küçük harf ve rakam içerebilir ve 3-24 karakter arasında olmalıdır.
 
-1. **Depolama hesabı**altında, var olan bir depolama hesabını seçin veya yeni bir tane oluşturun.
+1. **Depolama hesabı** altında, var olan bir depolama hesabını seçin veya yeni bir tane oluşturun.
 
 1. Diğer ayarları değiştirmeyin. Toplu Iş hesabını oluşturmak için **gözden geçir + oluştur**' u seçin ve **Oluştur** ' u seçin.
 
@@ -65,9 +65,9 @@ Bir Batch hesabı edindikten sonra, test amacıyla örnek bir Windows işlem dü
 
 Batch, havuzu hemen oluşturur ancak işlem düğümlerinin ayrılması ve başlatılması birkaç dakika sürer. Bu süre boyunca, havuzun **Ayırma durumu****Yeniden boyutlandırılıyor** şeklindedir. Havuz yeniden boyutlandırılırken devam ederek iş ve görevler oluşturabilirsiniz.
 
-Birkaç dakika sonra, ayırma durumu **sabit**olarak değişir ve düğümler başlar. Düğümlerin durumunu denetlemek için havuzu seçin ve ardından **düğümler**' i seçin. Bir düğümün durumu **Boşta** olduğunda görevleri çalıştırmaya hazırdır.
+Birkaç dakika sonra, ayırma durumu **sabit** olarak değişir ve düğümler başlar. Düğümlerin durumunu denetlemek için havuzu seçin ve ardından **düğümler**' i seçin. Bir düğümün durumu **Boşta** olduğunda görevleri çalıştırmaya hazırdır.
 
-## <a name="create-a-job"></a>Bir iş oluşturma
+## <a name="create-a-job"></a>İş oluşturma
 
 Bir havuza sahip olduktan sonra üzerinde çalıştıracak bir iş oluşturun. Batch işi bir veya daha fazla görevin mantıksal grubudur. Bir iş, öncelik gibi görevler arasında ortak olan ayarları ve görevlerin çalıştırılacağı havuzu içerir. Başlangıçta iş hiçbir görev içermez.
 
@@ -97,7 +97,7 @@ Bir görev oluşturduktan sonra Batch, görevi havuzda çalışmak üzere kuyru�
 
 Oluşturduğunuz örnek görevler birkaç dakika içinde tamamlanır. Tamamlanan bir görevin çıkışını görüntülemek için, görevi seçin, sonra **düğümdeki dosyalar**' ı seçin. `stdout.txt`Görevin standart çıkışını görüntülemek için dosyayı seçin. İçeriği aşağıdakine benzerdir:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Azure Marketi 'nde Batch hizmetinin ekran görüntüsü.":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Tamamlanan bir görevin çıktısının ekran görüntüsü.":::
 
 İçerik, düğüm üzerinde ayarlanmış Azure Batch ortam değişkenlerini gösterir. Kendi Batch işlerinizi ve görevlerinizi oluşturduğunuzda, görev komut satırlarında bu görev değişkenlerine ve komut satırları tarafından çalıştırılan uygulama ve betiklere başvurabilirsiniz.
 

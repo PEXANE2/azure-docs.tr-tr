@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 04b70e593e8b1bee8beb72ac88bc8441bc38bb9a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963253"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109445"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure sanal makineleri için performans tanılamaları
 
@@ -48,12 +48,12 @@ Performans tanılamayı doğrudan Azure portal, çeşitli günlüklerde, zengin 
 
     | Dağıtım               | Sürüm                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux sunucusu        | 6,10 [ `*` ], 7,3, 7,6, 7,5 |
-    | CentOS                     | 6,5 [ `*` ], 7,6                                    |
-    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ]                               |
+    | Oracle Linux sunucusu        | 6,10 [ `*` ], 7,3, 7,5, 7,6, 7,7, 7,8 |
+    | CentOS                     | 6,5 [ `*` ], 7,6, 7,7, 7,8                                    |
+    | RHEL                       | 7,2, 7,5, 8,0 [ `*` ], 8,1, 8,2                               |
     | Ubuntu                     | 14,04, 16,04, 18,04, 20,04                               |
     | Debian                     | 8, 9, 10 [ `*` ]                                    |
-    | SLES                       | 12 SP4 [ `*` ]                                      |
+    | SLES                       | 12 SP4 [ `*` ], 12 SP5 [ `*` ], 15 [ `*` ], 15 SP1 [] `*` , 15 SP2 [ `*` ]                                      |
     |                            |                                                   |
 
 >[!Note]
@@ -188,10 +188,10 @@ Araç çubuğundaki ayarlar düğmesini kullanarak depolama hesabı bilgilerini 
 Tanılama raporunu Microsoft ile paylaşmanın birden çok yolu vardır.
 
 **Seçenek 1:** En son raporu otomatik olarak paylaşma  
-Microsoft ile bir destek bileti açtığınızda, performans tanılama raporu 'nun paylaşılması önemlidir. Tanılamayı çalıştırırken bu bilgileri Microsoft ile paylaşmayı tercih ediyorsanız ("**Tanılama bilgilerini Microsoft ile paylaşmayı kabul**ediyorum" onay kutusunu seçerek), Microsoft, çıkış ZIP DOSYASıNA yönelik SAS bağlantısını kullanarak, çalışma tarihinden itibaren 30 güne kadar, depolama hesabınızdan rapora erişebilecek. Destek mühendisine yalnızca en son rapor kullanılabilir.
+Microsoft ile bir destek bileti açtığınızda, performans tanılama raporu 'nun paylaşılması önemlidir. Tanılamayı çalıştırırken bu bilgileri Microsoft ile paylaşmayı tercih ediyorsanız ("**Tanılama bilgilerini Microsoft ile paylaşmayı kabul** ediyorum" onay kutusunu seçerek), Microsoft, çıkış ZIP DOSYASıNA yönelik SAS bağlantısını kullanarak, çalışma tarihinden itibaren 30 güne kadar, depolama hesabınızdan rapora erişebilecek. Destek mühendisine yalnızca en son rapor kullanılabilir.
 
 **Seçenek 2:** Tanılama raporu sıkıştırılan dosya için paylaşılan erişim Imzası oluşturma  
-Paylaşılan erişim Imzalarını kullanarak, rapor sıkıştırılan dosya için bir bağlantı paylaşabilirsiniz. Bunu yapmak için şu adımları uygulayın:
+Paylaşılan erişim Imzalarını kullanarak, rapor sıkıştırılan dosya için bir bağlantı paylaşabilirsiniz. Bunu yapmak için şu adımları izleyin:
 
 1. Azure portal, tanılama verilerinin depolandığı depolama hesabına gidin.
 1. **BLOB hizmeti** bölümünde **BLOB 'ları** seçin.
@@ -199,7 +199,7 @@ Paylaşılan erişim Imzalarını kullanarak, rapor sıkıştırılan dosya içi
 1. Paylaşmak istediğiniz performans tanılama çıkışı sıkıştırılmış dosyasını seçin.
 1. **SAS oluştur** sekmesinde, paylaşma ölçütlerini seçin.
 1. **BLOB SAS belirteci oluştur ve URL**'yi tıklatın.
-1. **BLOB SAS URL 'sini**kopyalayın ve destek mühendisiyle paylaşabilirsiniz.
+1. **BLOB SAS URL 'sini** kopyalayın ve destek mühendisiyle paylaşabilirsiniz.
 
 **Seçenek 3:** Raporu depolama hesabından indirin
 

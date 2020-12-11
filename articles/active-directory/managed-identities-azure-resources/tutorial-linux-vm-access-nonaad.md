@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/09/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01da3c186aa5d2f64028a13e08cb892255d81854
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 5151f97386ebb6b06be2320505771dc8f47d59a0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007815"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107541"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Öğretici: Azure Key Vault'a erişmek için Linux VM sistem tarafından atanan yönetilen kimliği kullanma 
 
@@ -62,6 +62,20 @@ Bu bölümde, VM 'nizin Key Vault depolanan bir gizli dizi erişimine nasıl izi
 1. **Gözden geçir + oluştur** ' u seçin
 1. **Oluştur**’u seçin
 
+### <a name="create-a-secret"></a>Gizli anahtar oluşturma
+
+Ardından, Key Vault bir gizli dizi ekleyin, böylece daha sonra sanal makinenizde çalışan kodu kullanarak elde edebilirsiniz. Bu öğreticinin amacı doğrultusunda PowerShell kullanıyoruz, ancak aynı kavramlar bu sanal makinede yürütülen tüm kodlar için geçerlidir.
+
+1. Yeni oluşturduğunuz Key Vault gidin.
+1. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın.
+1. **Oluştur/Içeri aktar** 'ı seçin
+1. **Karşıya yükleme seçeneklerinden** **gizli bir ekran oluştur** bölümünde **el ile** seçili bırakın.
+1. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
+1. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
+1. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın.
+
+   ![Gizli anahtar oluşturma](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Erişim verme
 
 Sanal makine tarafından kullanılan yönetilen kimliğe, Key Vault depolayabilmemiz için gizli dizi okumak üzere erişim verilmesi gerekir.
@@ -77,20 +91,6 @@ Sanal makine tarafından kullanılan yönetilen kimliğe, Key Vault depolayabilm
 1. **Ekle**’yi seçin
 1. **Kaydet**’i seçin.
 
-## <a name="create-a-secret"></a>Gizli anahtar oluşturma
-
-Ardından, Key Vault bir gizli dizi ekleyin, böylece daha sonra sanal makinenizde çalışan kodu kullanarak elde edebilirsiniz. Bu öğreticinin amacı doğrultusunda PowerShell kullanıyoruz, ancak aynı kavramlar bu sanal makinede yürütülen tüm kodlar için geçerlidir.
-
-1. Yeni oluşturduğunuz Key Vault gidin.
-1. **Gizli Diziler**'i seçin ve **Ekle**'ye tıklayın.
-1. **Oluştur/Içeri aktar** 'ı seçin
-1. **Karşıya yükleme seçeneklerinden** **gizli bir ekran oluştur** bölümünde **el ile** seçili bırakın.
-1. Gizli dizi için bir ad ve değer girin.  Değer, istediğiniz herhangi bir şey olabilir. 
-1. Etkinleştirme tarihi ile sona erme tarihini boş bırakın ve **Etkin** seçeneğini **Evet** değerinde bırakın. 
-1. Gizli diziyi oluşturmak için **Oluştur**'a tıklayın.
-
-   ![Gizli anahtar oluşturma](./media/tutorial-linux-vm-access-nonaad/create-secret.png)
- 
 ## <a name="access-data"></a>Verilere erişme
 
 Bu adımları tamamlamak bir SSH istemciniz olmalıdır.  Windows kullanıyorsanız, [Linux için Windows Alt Sistemi](/windows/wsl/about)'ndeki SSH istemcisini kullanabilirsiniz. SSSH istemcinizin anahtarlarını yapılandırmak için yardıma ihtiyacınız olursa, bkz. [Azure'da Windows ile SSH anahtarlarını kullanma](../../virtual-machines/linux/ssh-from-windows.md) veya [Azure’da Linux VM’ler için SSH ortak ve özel anahtar çifti oluşturma](../../virtual-machines/linux/mac-create-ssh-keys.md).

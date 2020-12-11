@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 49d8e83c158cd14357a74b9dde4af1daba26dc36
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85201523"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109122"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde Azure Active Directory teknik profil tanımlama
 
@@ -60,9 +60,9 @@ Aşağıdaki örnekte **AAD ortak** teknik profili gösterilmektedir:
 
 Inputclaim öğesi, dizindeki bir hesabı aramak veya yeni bir hesap oluşturmak için kullanılan bir talep içerir. Tüm Azure AD teknik profillerinin giriş talep koleksiyonunda tam olarak bir ınputclaim öğesi olmalıdır. İlkenizde tanımlanan talebin adını Azure Active Directory tanımlı adla eşlemeniz gerekebilir.
 
-Mevcut bir kullanıcı hesabını okumak, güncelleştirmek veya silmek için, giriş talebi, hesabı Azure AD dizininde benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, **ObjectID**, **userPrincipalName**, **Signınnames. emapostaadı**, **Signınnames. UserName**ya da **alternativesecurityıd**. 
+Mevcut bir kullanıcı hesabını okumak, güncelleştirmek veya silmek için, giriş talebi, hesabı Azure AD dizininde benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, **ObjectID**, **userPrincipalName**, **Signınnames. emapostaadı**, **Signınnames. UserName** ya da **alternativesecurityıd**. 
 
-Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federasyon hesabını benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, yerel hesap: **Signınnames. Emapostaadı**veya **Signınnames. UserName**. Bir Federasyon hesabı için: **Alternativesecurityıd**.
+Yeni bir kullanıcı hesabı oluşturmak için, giriş talebi yerel veya Federasyon hesabını benzersiz bir şekilde tanımlayan bir anahtardır. Örneğin, yerel hesap: **Signınnames. Emapostaadı** veya **Signınnames. UserName**. Bir Federasyon hesabı için: **Alternativesecurityıd**.
 
 [Inputclaimstransformations](technicalprofiles.md#inputclaimstransformations) öğesi, giriş talebini değiştirmek veya yeni bir tane oluşturmak için kullanılan bir giriş talepleri dönüştürme öğeleri koleksiyonu içerebilir.
 
@@ -230,7 +230,7 @@ Azure AD öznitelik adını içeren **Partnerclaimtype** özniteliği belirtilme
 </TechnicalProfile>
 ```
 
-Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecurityıd**kullanarak siler:
+Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecurityıd** kullanarak siler:
 
 ```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
@@ -244,7 +244,7 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
   <IncludeTechnicalProfile ReferenceId="AAD-Common" />
 </TechnicalProfile>
 ```
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
@@ -253,7 +253,7 @@ Aşağıdaki teknik profil, bir sosyal Kullanıcı hesabını **Alternativesecur
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Hayır | Kullanıcı nesnesi zaten mevcutsa bir hata oluştur. Olası değerler: `true` veya `false` .|
 | Applicationobjectıd | Hayır | Uzantı öznitelikleri için uygulama nesne tanımlayıcısı. Değer: bir uygulamanın ObjectID 'si. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md). |
 | ClientId | Hayır | Kiracıya üçüncü taraf olarak erişmek için istemci tanımlayıcısı. Daha fazla bilgi için bkz. özel [bir profil düzenleme ilkesinde özel öznitelikler kullanma](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false`   (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
+| IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
  
@@ -269,7 +269,7 @@ Hata durumunda görüntülenecek hata iletisini yapılandırmak için aşağıda
 
 Azure AD teknik profili kullanımı gibi aşağıdaki makaleye bakın:
 
-- [Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin](custom-policy-configure-user-input.md)
+- [Azure Active Directory B2C özel ilkeler kullanarak talepler ekleyin ve Kullanıcı girişini özelleştirin](configure-user-input.md)
 
 
 

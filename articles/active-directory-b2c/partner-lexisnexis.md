@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 4befcaf6b8c6b6bc4fddacb179883551609f7e19
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928656"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108442"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Lexisnexto yapılandırma öğreticisi Azure Active Directory B2C
 
@@ -95,7 +95,7 @@ Uygulama ayarları [Azure 'Daki App Service 'te yapılandırılabilir](../app-se
 
 Bu çözüm, Azure AD B2C tarafından yüklenen özel kullanıcı arabirimi şablonlarını kullanır. Bu Kullanıcı arabirimi şablonları doğrudan ThreatMetrix hizmetine gönderilen profil oluşturmayı yapılır.
 
-Dahil edilen [Kullanıcı arabirimi dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) bir BLOB depolama hesabına dağıtmak için bu [yönergelere](./custom-policy-ui-customization.md#custom-page-content-walkthrough) bakın. Yönergeler bir BLOB depolama hesabı ayarlamayı, CORS 'yi yapılandırmayı ve genel erişimi etkinleştirmeyi içerir.
+Dahil edilen [Kullanıcı arabirimi dosyalarını](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) bir BLOB depolama hesabına dağıtmak için bu [yönergelere](./customize-ui-with-html.md#custom-page-content-walkthrough) bakın. Yönergeler bir BLOB depolama hesabı ayarlamayı, CORS 'yi yapılandırmayı ve genel erişimi etkinleştirmeyi içerir.
 
 Kullanıcı arabirimi, [okyanus mavi şablonunu](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue)temel alır. Kullanıcı arabirimindeki tüm bağlantıların dağıtılan konuma başvurması için güncelleştirilmeleri gerekir. Kullanıcı arabirimi klasöründe, dağıtılan konumuyla bulun ve değiştirin https://yourblobstorage/blobcontainer .
 

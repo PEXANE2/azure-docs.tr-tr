@@ -3,12 +3,12 @@ title: Azure Işlevleri için depolama konuları
 description: Azure Işlevlerinin depolama gereksinimlerini ve depolanan verileri şifreleme hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318190"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107252"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Azure Işlevleri için depolama konuları
 
@@ -27,15 +27,19 @@ Bir işlev uygulaması örneği oluşturduğunuzda Azure Işlevleri bir Azure de
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerinin günlüğe kaydedilmesini gibi işlemler için Azure Storage 'ı temel aldığından oluşur. Bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bu hesaplar yalnızca BLOB depolama hesapları, Azure Premium Depolama ve ZRS çoğaltması olan genel amaçlı depolama hesapları içerir. Bu desteklenmeyen hesaplar, bir işlev uygulaması oluştururken depolama hesabı dikey penceresinden filtrelenir.
+Bir işlev uygulaması oluştururken blob, kuyruk ve tablo depolamayı destekleyen genel amaçlı bir Azure depolama hesabı oluşturmanız veya bağlamanız gerekir. Bunun nedeni, Işlevlerin Tetikleyicileri yönetme ve işlev yürütmelerinin günlüğe kaydedilmesini gibi işlemler için Azure Storage 'ı temel aldığından oluşur. Bazı depolama hesapları kuyrukları ve tabloları desteklemez. Bu hesaplar yalnızca BLOB depolama hesapları, Azure Premium Depolama ve ZRS çoğaltması olan genel amaçlı depolama hesapları içerir.
 
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için bkz. [Azure Depolama Hizmetlerine Giriş](../storage/common/storage-introduction.md#core-storage-services). 
 
-İşlev uygulamanızla mevcut bir depolama hesabını kullanabilirsiniz, ancak bu gereksinimleri karşıladığından emin olmanız gerekir. Bu depolama hesabı gereksinimlerini karşılamak için, işlev uygulaması oluşturma akışının bir parçası olarak oluşturulan depolama hesapları garanti edilir.  
+İşlev uygulamanızla mevcut bir depolama hesabını kullanabilirsiniz, ancak bu gereksinimleri karşıladığından emin olmanız gerekir. Bu depolama hesabı gereksinimlerini karşılamak için Azure portal, işlev uygulaması oluşturma akışının bir parçası olarak oluşturulan depolama hesapları garanti edilir. Portalda, bir işlev uygulaması oluştururken Mevcut bir depolama hesabı seçerken desteklenmeyen hesaplar filtrelenmez. Bu akışta yalnızca oluşturmakta olduğunuz işlev uygulamasıyla aynı bölgedeki mevcut depolama hesaplarını seçebilirsiniz. Daha fazla bilgi için bkz. [depolama hesabı konumu](#storage-account-location).
 
 ## <a name="storage-account-guidance"></a>Depolama hesabı Kılavuzu
 
 Her işlev uygulamasının çalışması için bir depolama hesabının olması gerekir. Bu hesap silinirse, işlev uygulamanız çalışmaz. Depolama ile ilgili sorunları gidermek için bkz. [depolama ile ilgili sorunları giderme](functions-recover-storage-account.md). Aşağıdaki ek konular, işlev uygulamaları tarafından kullanılan depolama hesabı için geçerlidir.
+
+### <a name="storage-account-location"></a>Depolama hesabı konumu
+
+En iyi performansı elde etmek için, işlev uygulamanız aynı bölgedeki bir depolama hesabını kullanmalıdır, bu da gecikmeyi azaltır. Azure portal, bu en iyi yöntemi zorlar. Bir nedenden dolayı, işlev uygulamanızdan farklı bir bölgede bir depolama hesabı kullanmanız gerekiyorsa, işlev uygulamanızı portalın dışında oluşturmanız gerekir. 
 
 ### <a name="storage-account-connection-setting"></a>Depolama hesabı bağlantı ayarı
 

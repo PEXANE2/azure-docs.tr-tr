@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46f04c55b40d4f1bdbbf5fd55eb648d1d3294056
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203818"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108425"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Koşullar ve Predicatedoğrulamaları
 
@@ -148,7 +148,7 @@ Aşağıdaki örnek, `IsDateRange` `Minimum` `Maximum` ve biçimindeki tarih ara
 
 ## <a name="predicatevalidations"></a>Predicatedoğrulamaları
 
-Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, **Predicatedoğrulamaları** , bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşul kümesi grubu belirler. Her **Predicatevalidation** öğesi, bir **koşula**Işaret eden bir tahmine **Atereference** öğesi kümesi içeren bir **predicategroup** öğeleri kümesi içerir. Doğrulamanın başarılı olması için, talebin değeri, **Predicategroup** 'un tüm koşullarından herhangi bir koşulun tüm **Testlertereference** öğeleri kümesiyle tüm testlerini iletmelidir.
+Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, **Predicatedoğrulamaları** , bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşul kümesi grubu belirler. Her **Predicatevalidation** öğesi, bir **koşula** Işaret eden bir tahmine **Atereference** öğesi kümesi içeren bir **predicategroup** öğeleri kümesi içerir. Doğrulamanın başarılı olması için, talebin değeri, **Predicategroup** 'un tüm koşullarından herhangi bir koşulun tüm **Testlertereference** öğeleri kümesiyle tüm testlerini iletmelidir.
 
 **Predicatedoğrulamaları** öğesi, [buildingblocks](buildingblocks.md) öğesi içindeki **koşulların** öğesinin hemen ardından gelmelidir.
 
@@ -230,12 +230,12 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 
 **Koşullar** ve **Predicatevalidationsinput** sayesinde, bir kullanıcı tarafından bir hesap oluştururken sunulan parolaların karmaşıklık gereksinimlerini kontrol edebilirsiniz. Varsayılan olarak, Azure AD B2C güçlü parolalar kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler. Bu koşul öğelerini kullanarak parola karmaşıklığı tanımlayabilirsiniz:
 
-- **IsLengthBetween8And64** Yöntemi kullanarak IsLengthBetween8And64 `IsLengthRange` , parolanın 8 ila 64 karakter arasında olması gerektiğini doğrular.
+-  Yöntemi kullanarak IsLengthBetween8And64 `IsLengthRange` , parolanın 8 ila 64 karakter arasında olması gerektiğini doğrular.
 - Yöntemi kullanılarak **küçük harfli** `IncludesCharacters` , parolanın küçük harfli bir harf içerdiğini doğrular.
 - **Büyük harfli** `IncludesCharacters` yöntemi kullanarak parolanın büyük harfle içerdiğini doğrular.
-- **Number** `IncludesCharacters` Yöntemi kullanarak, parolanın bir sayı içerdiğini doğrular.
-- **Symbol** Yöntemi kullanılarak sembol `IncludesCharacters` , parolanın çeşitli sembol karakterlerinden birini içerdiğini doğrular.
-- **PIN** Yöntemini kullanarak sabitleme `MatchesRegex` , parolanın yalnızca sayı içerdiğini doğrular.
+-  `IncludesCharacters` Yöntemi kullanarak, parolanın bir sayı içerdiğini doğrular.
+-  Yöntemi kullanılarak sembol `IncludesCharacters` , parolanın çeşitli sembol karakterlerinden birini içerdiğini doğrular.
+-  Yöntemini kullanarak sabitleme `MatchesRegex` , parolanın yalnızca sayı içerdiğini doğrular.
 - **Allowedadadcharacters** yöntemi kullanılarak `MatchesRegex` , parolanın yalnızca geçersiz karakterinin sağlandığını doğrular.
 - Yöntemi kullanarak **Disallowedwhitespace** `MatchesRegex` , parolanın boşluk karakteriyle başlamayacağını veya bitmediğini doğrular.
 
@@ -428,4 +428,4 @@ Talep türünde, **Predicatevalidationreference** öğesini ekleyin ve tanımlay
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure Active Directory B2C koşul doğrulamaları kullanarak [, özel ilkeler kullanarak parola karmaşıklığını yapılandırma](custom-policy-password-complexity.md) hakkında bilgi edinin.
+- Azure Active Directory B2C koşul doğrulamaları kullanarak [, özel ilkeler kullanarak parola karmaşıklığını yapılandırma](password-complexity.md) hakkında bilgi edinin.

@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: d259510d880cbfc60e9ae80b533af6792cc95536
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 46ed1fc55a108bf80089d249abc58bc5d1a6479a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930737"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106963"
 ---
 # <a name="tutorial-add-variables-to-your-arm-template"></a>Öğretici: ARM şablonunuza değişkenler ekleme
 
@@ -37,17 +37,17 @@ Aşağıdaki örnek, şablonunuza benzersiz bir depolama hesabı adı oluşturan
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
-**Unisorgtoraygename** adlı bir değişken içerdiğine dikkat edin. Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
+Adında bir değişken içerdiğine dikkat edin `uniqueStorageName` . Bu değişken bir dize değeri oluşturmak için dört işlevi kullanır.
 
 [Parameters](template-functions-deployment.md#parameters) işlevini zaten öğreniyoruz, bu yüzden bunu inceleyeceğiz.
 
-Ayrıca, [resourceGroup](template-functions-resource.md#resourcegroup) işlevi hakkında bilgi sahibisiniz. Bu durumda, önceki öğreticide gösterildiği gibi **Location** özelliği yerine **ID** özelliğini alırsınız. **ID** özelliği, abonelik kimliği ve kaynak grubu adı dahil olmak üzere kaynak grubunun tam tanımlayıcısını döndürür.
+Ayrıca, [resourceGroup](template-functions-resource.md#resourcegroup) işlevi hakkında bilgi sahibisiniz. Bu durumda, `id` `location` önceki öğreticide gösterildiği gibi özelliği yerine özelliği alırsınız. `id`Özelliği, ABONELIK kimliği ve kaynak grubu adı dahil olmak üzere kaynak grubunun tam tanımlayıcısını döndürür.
 
 [Uniquestring](template-functions-string.md#uniquestring) işlevi bir 13 karakterlik karma değeri oluşturur. Döndürülen değer geçirdiğiniz parametrelere göre belirlenir. Bu öğreticide, karma değer girişi olarak kaynak grubu KIMLIĞINI kullanırsınız. Bu, bu şablonu farklı kaynak gruplarına dağıtabileceğiniz ve farklı bir benzersiz dize değeri alabileceğiniz anlamına gelir. Ancak, aynı kaynak grubuna dağıtırsanız aynı değeri alırsınız.
 
-[Concat](template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, dizeden ve uniqueString işlevindeki dizeden dize alır ve bunları tek bir dize olarak birleştirir.
+[Concat](template-functions-string.md#concat) işlevi değerleri alır ve bunları birleştirir. Bu değişken için, parametresinden dize ve dizeden dize alır `uniqueString` ve bunları tek bir dize olarak birleştirir.
 
-**Storageprefix** parametresi, depolama hesaplarını belirlemenize yardımcı olan bir ön ek geçirmenize olanak sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
+`storagePrefix`Parametresi, depolama hesaplarını belirlemenize yardımcı olan bir ön ek geçirmenize olanak sağlar. Depolama hesaplarının uzun bir kaynak listesinden dağıtımdan sonra tanımlanmasını kolaylaştıran kendi adlandırma kuralınızın oluşturulmasını sağlayabilirsiniz.
 
 Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı olduğuna dikkat edin.
 
@@ -55,7 +55,7 @@ Son olarak, depolama adının bir parametre yerine artık değişkene ayarlı ol
 
 Şablonu dağıtalım. Yalnızca depolama adı için ön ek sağlamanız gerektiğinden, bu şablonu dağıtmak önceki şablonlardan daha kolaydır.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, `templateFile` [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi, değişkeni şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +83,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Dağıtım başarısız olursa, oluşturulmakta olan kaynaklarla ilgili bilgi almak için **verbose** anahtarını kullanın. Hata ayıklama hakkında daha fazla bilgi edinmek için **hata ayıklama** anahtarını kullanın.
+> Dağıtım başarısız olursa, `verbose` oluşturulan kaynaklarla ilgili bilgi almak için anahtarını kullanın. `debug`Hata ayıklama hakkında daha fazla bilgi edinmek için anahtarını kullanın.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 

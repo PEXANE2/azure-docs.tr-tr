@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: jgao
-ms.openlocfilehash: 3a229d1e6752eabd099a5bc60ef93f1d4e85a26b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092763"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107150"
 ---
 # <a name="use-deployment-scripts-in-arm-templates-preview"></a>ARM şablonlarında dağıtım betikleri kullanma (Önizleme)
 
@@ -321,7 +321,7 @@ Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabın�
 
 Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini **üzerindeexecutionresult.js** görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
 
-### <a name="use-the-azure-portal"></a>Azure portalını kullanma
+### <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının genel bakış sayfası gösterilmektedir:
 
@@ -529,14 +529,14 @@ Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetl
 
   - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. Kaynak temizlenmeden sonra deploymentScripts kaynağı yine de mevcut olabileceğinden, komut dosyası yürütme sonuçları, örneğin stdout, çıktılar, dönüş değeri, vb. kaynakları silinmeden önce devam edebilir.
   - **OnSuccess**: otomatik olarak oluşturulan kaynakları yalnızca betik yürütme başarılı olduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti yalnızca betik yürütme başarılı olduğunda dosya paylaşımının kaldırılmasına neden olur. Hata ayıklama bilgilerini bulmak için kaynaklara erişmeye devam edebilirsiniz.
-  - **Onexpiration**: otomatik olarak oluşturulan kaynakları yalnızca **retentionInterval** ayarının süresi dolduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korurlar.
+  - **Onexpiration**: otomatik olarak oluşturulan kaynakları yalnızca **retentionInterval** ayarının süresi dolduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korur.
 
 - **retentionInterval**: bir betik kaynağının saklanacağı zaman aralığını ve sonra süresi dolacak ve silinecek süreyi belirtin.
 
 > [!NOTE]
 > Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
 
-Sorun giderme için kapsayıcı örneği ve depolama hesabı 'nı sürdürmek için, betiğe bir uyku komutu ekleyebilirsiniz.  Örneğin, [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep)kullanın.
+Kapsayıcı örneği ve depolama hesabı **Cleanuppreference** öğesine göre silinir. Ancak, komut dosyası başarısız olursa ve **Cleanuppreference** **her zaman** olarak ayarlanmamışsa, dağıtım işlemi kapsayıcıyı bir saat boyunca otomatik olarak çalışır halde tutar. Komut dosyası sorunlarını gidermek için bu saati kullanabilirsiniz. Başarılı dağıtımlar sonrasında kapsayıcıyı çalıştırmaya devam etmek istiyorsanız, betiğe bir uyku adımı ekleyin. Örneğin, betiğinizin sonuna [Başlangıç Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ekleyin. Uyku adımını eklememeniz durumunda kapsayıcı bir Terminal durumuna ayarlanır ve henüz silinmemiş olsa bile erişilemez.
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 
@@ -560,7 +560,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Description |
+| Hata kodu | Açıklama |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |

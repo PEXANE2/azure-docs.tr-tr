@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 29f5d2960a678204387b2bd1dfd6d4acdc4f9c3d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 30d646ff7d4f97289ff238211418ac57cd8167a4
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442523"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107694"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Kullanıcılarda oturum açan Web uygulaması: uygulama kaydı
 
@@ -41,73 +41,72 @@ Web uygulamanızın oluşturulmasını önyüklemek için bu bağlantıları kul
 > Kullanılacak Portal, uygulamanızın Microsoft Azure genel bulutta mi yoksa ulusal veya bağımsız bulutta mı çalışmasına bağlı olarak farklılık belirtir. Daha fazla bilgi için bkz. [Ulusal bulutlar](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın. Alternatif olarak, Ulusal bulut için [tercih edilen Azure Portal](./authentication-national-cloud.md#app-registration-endpoints) oturum açın.
-2. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşedeki hesabınızı seçin. Ardından, Portal oturumunuzu istenen Azure Active Directory (Azure AD) kiracısına ayarlayın.
-3. Sol bölmede **Azure Active Directory** hizmetini seçin ve sonra **uygulama kayıtları**  >  **Yeni kayıt** ' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
 1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
+   1. Uygulamanız için bir **ad** girin (örneğin,) `AspNetCore-WebApp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
    1. Uygulamanız için desteklenen hesap türlerini seçin. (Bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md).)
-   1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **Aspnetcore-WebApp** yazın.
-   1. **Yeniden yönlendirme URI 'si** için, başarılı kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin, girin **https://localhost:44321** . Sonra **Kaydet** ' i seçin.
-   ![Ekran görüntüsü, Kaydet ' i seçebileceğiniz bir uygulama kaydetme sayfası gösterir.](media/scenario-webapp/scenario-webapp-app-registration-1.png)
-1. **Kimlik doğrulama** menüsünü seçin ve ardından aşağıdaki bilgileri ekleyin:
-   1. **Yanıt URL 'si** için **https://localhost:44321/signin-oidc** **Web** türü ekleyin.
-   1. **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44321/signout-oidc** .
-   1. **Örtük onay** 'ın altında **Kimlik belirteçleri** 'ni seçin.
-   1. **Kaydet** ’i seçin.
-  ![Ekran görüntüsü, açıklanan değişiklikleri yapabileceğiniz kimlik doğrulama seçeneklerini gösterir.](media/scenario-webapp/scenario-webapp-app-registration-2.png)
- 
+   1. **Yeniden yönlendirme URI 'si** için, başarılı kimlik doğrulamasından sonra döndürülen belirteç yanıtlarını kabul edecek olan uygulama türünü ve URI hedefini ekleyin. Örneğin, `https://localhost:44321` girin.
+   1. **Kaydet**’i seçin.
+1. **Yönet** altında **kimlik doğrulaması** ' nı seçin ve ardından aşağıdaki bilgileri ekleyin:
+   1. **Web** bölümünde, `https://localhost:44321/signin-oidc` **yeniden yönlendirme URI 'si** olarak ekleyin.
+   1. `https://localhost:44321/signout-oidc` **Oturum kapatma URL 'si** olarak ekleyin.
+   1. **Örtük onay**'ın altında **Kimlik belirteçleri**'ni seçin.
+   1. **Kaydet**’i seçin.
+   
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
+   1. Uygulamanız için bir **ad** girin (örneğin,) `MailApp-openidconnect-v2` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
    1. Uygulamanız için desteklenen hesap türlerini seçin. (Bkz. [Desteklenen hesap türleri](./v2-supported-account-types.md).)
-   1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **Mailapp-openıdconnect-v2** yazın.
    1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: **https://localhost:44326/** .
-1. Uygulamayı kaydetmek için **Kaydet** 'i seçin.
-1. **Kimlik doğrulama** menüsünü seçin.
-1. **Gelişmiş ayarlar**  |  **örtük verme** bölümünde **Kimlik belirteçleri** ' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet** ’i seçin.
+   1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Örtük izin** bölümünde **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. **Kaydet**’i seçin.
 
 # <a name="java"></a>[Java](#tab/java)
 
-1. **Bir uygulamayı Kaydet sayfası** göründüğünde, uygulama için bir görünen ad girin. Örneğin, **Java-WebApp** yazın.
-1. **Herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplar** ' ı seçin ve ardından **uygulama türü** IÇIN **Web uygulaması/API** ' yi seçin.
-1. Uygulamayı kaydetmek için **Kaydet** ' i seçin.
-1. Sol taraftaki menüden **kimlik doğrulaması** ' nı seçin. **Yeniden yönlendirme URI 'leri** altında **Web** ' i seçin.
-
-1. İki yeniden yönlendirme URI 'si girin: bir oturum açma sayfası ve bir grafik sayfası için bir tane. Her iki için de, oturum açma sayfası ve Kullanıcı bilgileri sayfası için **msal4jsample/Graph/Me** tarafından izlenen aynı ana bilgisayar ve bağlantı noktası numarasını ve ardından **/msal4jsample/Secure/AAD** ' yi kullanın.
-
-   Varsayılan olarak, örnek şunları kullanır:
-
+1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin: 
+    1. Uygulamanız için bir **ad** girin (örneğin,) `java-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz. 
+    1. **Herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplar ' ı** seçin.
+    1. Uygulamayı kaydetmek için **Kaydet** ' i seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
+1. **Web**'i seçin.
+1. **Yeniden yönlendirme URI 'si** için, aynı ana bilgisayar ve bağlantı noktası numarasını girin ve ardından `/msal4jsample/secure/aad` oturum açma sayfasına yazın. 
+1. **Yapılandır**'ı seçin.
+1. **Web** bölümünde, ana bilgisayar ve bağlantı noktası numarasını, ardından **/msal4jsample/Graph/Me** ' yi, Kullanıcı bilgileri sayfası için **yeniden yönlendirme URI 'si** olarak kullanın.
+Varsayılan olarak, örnek şunları kullanır:
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-  Sonra **Kaydet** ' i seçin.
-
-1. Menüden **sertifikalar & parolaları** ' nı seçin.
-1. **İstemci gizli** dizileri bölümünde **yeni istemci parolası** ' nı seçin ve ardından:
+1. **Kaydet**’i seçin.
+1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **İstemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin ve ardından:
 
    1. Bir anahtar açıklaması girin.
    1. **1 yılda** anahtar süresini seçin.
-   1. **Ekle** ’yi seçin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde, daha sonra için kopyalayın. Bu değer, bir daha görüntülenmez veya başka yollarla alınabilir.
 
 # <a name="python"></a>[Python](#tab/python)
 
 1. **Uygulama kaydet** sayfası göründüğünde uygulamanızın kayıt bilgilerini girin:
-   1. **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin, **Python-WebApp** yazın.
+   1. Uygulamanız için bir **ad** girin (örneğin,) `python-webapp` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
    1. **Desteklenen hesap türlerini** **Tüm Kurumsal dizin ve kişisel Microsoft hesaplarında (ör. Skype, Xbox, Outlook.com) hesaplar** olarak değiştirin.
    1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'sini girin: **http://localhost:5000/getAToken** .
-1. Uygulamayı kaydetmek için **Kaydet** 'i seçin.
+   1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
 1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
-1. Sol taraftaki menüden **sertifikalar & gizlilikler** ' ı seçin.
-1. **Istemci gizli** dizileri bölümünde **yeni istemci parolası** ' nı seçin ve ardından:
-
+1. **Yönet** altında **Sertifikalar & gizlilikler**' ı seçin.
+1. **Istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin ve ardından:
    1. Bir anahtar açıklaması girin.
    1. **1 yılda** bir anahtar süresi seçin.
-   1. **Ekle** ’yi seçin.
+   1. **Ekle**’yi seçin.
    1. Anahtar değeri göründüğünde kopyalayın. Buna daha sonra ihtiyacınız olacak.
 ---
 

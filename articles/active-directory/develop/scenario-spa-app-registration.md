@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: c9fde904d6befebfcfd87b55bd7b2bf4e4c825f2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443832"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107796"
 ---
 # <a name="single-page-application-app-registration"></a>Tek sayfalı uygulama: uygulama kaydı
 
@@ -27,10 +27,12 @@ Microsoft Identity platformunda tek sayfalı uygulama (SPA) kaydetmek için aşa
 
 MSAL.js 1,0 ve 2,0 tabanlı uygulamalarda, ilk uygulama kaydını oluşturmak için aşağıdaki adımları tamamlayarak öğesini başlatın.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. Hesabınız birden çok kiracıya erişebilirse, üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından oluşturmak üzere olduğunuz uygulama kaydını içermesi gereken kiracıyı seçin.
-1. **Azure Active Directory** 'yi bulun ve seçin.
-1. **Yönet** 'in altında **Uygulama kayıtları** nı seçin.
-1. **Yeni kayıt** ' ı seçin, uygulama Için bir **ad** girin ve uygulama için **Desteklenen hesap türlerini** seçin. **Yeniden yönlendirme URI 'si** **girmeyin.** Farklı hesap türlerinin açıklaması için, [Azure Portal kullanarak yeni bir uygulama kaydetme](quickstart-register-app.md)konusuna bakın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. Uygulama için **Desteklenen hesap türlerini** seçin. **Yeniden yönlendirme URI 'si** **girmeyin.** Farklı hesap türlerinin bir açıklaması için, bkz. [uygulamayı kaydetme](quickstart-register-app.md).
 1. Uygulama kaydını oluşturmak için **Kaydet** ' i seçin.
 
 Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile birlikte yeniden yönlendirdiğini belirtmek için bir **yeniden yönlendirme URI 'si** ile uygulama kaydını yapılandırın. Uygulamanızda kullanmakta olduğunuz MSAL.js sürümü için uygun olan adımları kullanın:
@@ -43,7 +45,7 @@ Ardından, Microsoft Identity platformunun istemciyi bir güvenlik belirteci ile
 MSAL.js 2,0 veya sonraki bir sürümü kullanan bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 2.0 +, [tarayıcı üçüncü taraf tanımlama bilgisi kısıtlamalarına](reference-third-party-cookies-spas.md)yanıt olarak pkce ve CORS ile yetkilendirme kodu akışını destekler. Örtük izin akışı MSAL.js 2.0 + içinde desteklenmez.
 
 1. Azure portal, [uygulama kaydını oluşturma](#create-the-app-registration)bölümünde daha önce oluşturduğunuz uygulama kaydını seçin.
-1. **Yönet** altında **kimlik doğrulaması** ' nı seçin ve ardından **Platform Ekle** ' yi seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
 1. **Web uygulamaları** altında, **tek sayfalı uygulama** kutucuğunu seçin.
 1. **Yeniden yönlendirme URI 'leri** altında bir [yeniden yönlendirme URI 'si](reply-url.md)girin. **Örtük izin** altında onay **kutusunu seçmeyin.**
 1. Yeniden yönlendirme URI 'sini eklemeyi bitirmeden **Yapılandır** ' ı seçin.
@@ -57,12 +59,12 @@ Daha fazla rehberlik için [öğreticiyi](tutorial-v2-javascript-auth-code.md) i
 MSAL.js 1,3 veya önceki bir sürümü ve örtük izin akışını kullanan tek sayfalı bir uygulama için yeniden yönlendirme URI 'SI eklemek için bu adımları izleyin. MSAL.js 1,3 veya önceki bir sürümü kullanan uygulamalar, kimlik doğrulama kod akışını desteklemez.
 
 1. Azure portal, [uygulama kaydını oluşturma](#create-the-app-registration)bölümünde daha önce oluşturduğunuz uygulama kaydını seçin.
-1. **Yönet** altında **kimlik doğrulaması** ' nı seçin ve ardından **Platform Ekle** ' yi seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
 1. **Web uygulamaları** altında, **tek sayfalı uygulama** Kutucuğu ' nı seçin.
 1. **Yeniden yönlendirme URI 'leri** altında bir [yeniden yönlendirme URI 'si](reply-url.md)girin.
 1. **Örtük akışı** etkinleştirin:
-    - Uygulamanız kullanıcıların oturumunu açarsa, **Kimlik belirteçleri** ' ni seçin.
-    - Uygulamanızın de korumalı bir Web API 'SI çağırması gerekiyorsa, **erişim belirteçleri** ' ni seçin. Bu belirteç türleri hakkında daha fazla bilgi için bkz. [Kimlik belirteçleri](id-tokens.md) ve [erişim belirteçleri](access-tokens.md).
+    - Uygulamanız kullanıcıların oturumunu açarsa, **Kimlik belirteçleri**' ni seçin.
+    - Uygulamanızın de korumalı bir Web API 'SI çağırması gerekiyorsa, **erişim belirteçleri**' ni seçin. Bu belirteç türleri hakkında daha fazla bilgi için bkz. [Kimlik belirteçleri](id-tokens.md) ve [erişim belirteçleri](access-tokens.md).
 1. Yeniden yönlendirme URI 'sini eklemeyi bitirmeden **Yapılandır** ' ı seçin.
 
 Artık tek sayfalı uygulamanızın (SPA) kaydını tamamladınız ve istemcinin yeniden yönlendirileceği ve herhangi bir güvenlik belirtecinin gönderileceği bir yeniden yönlendirme URI 'SI yapılandırdınız. **Kimlik belirteçlerinin** ve **erişim belirteçlerinin** birini veya her ikisini belirleyerek örtük verme akışını etkinleştirdiniz.
@@ -79,4 +81,4 @@ Bir uygulama kaydı tarafından temsil edilen tüm üretim tek sayfalı uygulama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ardından, önceki adımlarda oluşturduğunuz uygulama kaydını kullanmak için uygulamanızın kodunu yapılandırın: [uygulamanın kod yapılandırması](scenario-spa-app-configuration.md).
+Uygulamanızın kodunu önceki adımlarda oluşturduğunuz uygulama kaydını kullanacak şekilde yapılandırın: [uygulamanın kod yapılandırması](scenario-spa-app-configuration.md).

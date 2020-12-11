@@ -3,22 +3,16 @@ title: Özel alanı Azure Event Grid şemasına eşleyin
 description: Bu makalede, olay veriniz Event Grid şemayla eşleşmediği zaman özel şemanızın Azure Event Grid şemasına nasıl dönüştürüleceği açıklanır.
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 836e7b340c5c89100207e2f9409710b8dfa5e3bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86105532"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109207"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Özel alanları Event Grid şemasına eşleme
 
 Olay verileriniz beklenen [Event Grid şemasıyla](event-schema.md)eşleşmiyorsa, etkinliği abonelere yönlendirmek için Event Grid kullanmaya devam edebilirsiniz. Bu makalede, şemanızın Event Grid şemasına nasıl eşleneceğini açıklanmaktadır.
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
-
-## <a name="install-preview-feature"></a>Önizleme özelliğini yükler
-
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="original-event-schema"></a>Özgün olay şeması
 
@@ -40,19 +34,15 @@ Bu biçim gerekli şemayla eşleşmez, ancak Event Grid alanları şemayla eşle
 
 Özel bir konu oluştururken, özgün olayınızdan bulunan alanları Event Grid şemasına nasıl eşleneceğini belirtin. Eşlemeyi özelleştirmek için kullandığınız üç değer vardır:
 
-* **Giriş şeması** değeri şemanın türünü belirtir. Kullanılabilir seçenekler CloudEvents şeması, özel olay şeması veya Event Grid şemadır. Varsayılan değer Event Grid şemadır. Şemanız ve olay Kılavuzu şeması arasında özel eşleme oluştururken özel olay şeması kullanın. Olaylar CloudEvents şemasında olduğunda, Cloudevents şeması ' nı kullanın.
+* **Giriş şeması** değeri şemanın türünü belirtir. Kullanılabilir seçenekler CloudEvents şeması, özel olay şeması veya Event Grid şemadır. Varsayılan değer Event Grid şemadır. Şemanız ve olay Kılavuzu şeması arasında özel eşleme oluştururken özel olay şeması kullanın. Olaylar CloudEvents biçiminde olduğunda, CloudEvents şeması ' nı kullanın.
 
-* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. , Ve için varsayılan değerleri ayarlayabilirsiniz `subject` `eventtype` `dataversion` . Genellikle bu parametreyi, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa kullanırsınız. Örneğin, veri sürümünün her zaman **1,0**olarak ayarlandığını belirtebilirsiniz.
+* **Mapping default Values** özelliği Event Grid şemasındaki alanlar için varsayılan değerleri belirtir. , Ve için varsayılan değerleri ayarlayabilirsiniz `subject` `eventtype` `dataversion` . Genellikle bu parametreyi, özel şemanız bu üç alandan birine karşılık gelen bir alan içermiyorsa kullanırsınız. Örneğin, veri sürümünün her zaman **1,0** olarak ayarlandığını belirtebilirsiniz.
 
 * **Mapping Fields** değeri, şemadaki alanları Event Grid şemasına eşler. Değerleri boşlukla ayrılmış anahtar/değer çiftlerinde belirtirsiniz. Anahtar adı için Event Grid alanının adını kullanın. Değer için, alanın adını kullanın. ,,,, Ve için anahtar adlarını kullanabilirsiniz `id` `topic` `eventtime` `subject` `eventtype` `dataversion` .
 
 Azure CLı ile özel bir konu oluşturmak için şunu kullanın:
 
 ```azurecli-interactive
-# If you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
@@ -65,11 +55,7 @@ az eventgrid topic create \
 PowerShell için şunu kullanın:
 
 ```azurepowershell-interactive
-# If you have not already installed the module, do it now.
-# This module is required for preview features.
-Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery
-
-New-AzureRmEventGridTopic `
+New-AzEventGridTopic `
   -ResourceGroupName myResourceGroup `
   -Name demotopic `
   -Location eastus2 `
@@ -107,9 +93,9 @@ az eventgrid event-subscription create \
 Aşağıdaki örnek bir Event Grid konusuna abone olur ve Event Grid şemasını kullanır. PowerShell için şunu kullanın:
 
 ```azurepowershell-interactive
-$topicid = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
+$topicid = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demoTopic).Id
 
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub1 `
   -EndpointType webhook `
@@ -120,7 +106,7 @@ New-AzureRmEventGridSubscription `
 Sonraki örnek, olayın giriş şemasını kullanır:
 
 ```azurepowershell-interactive
-New-AzureRmEventGridSubscription `
+New-AzEventGridSubscription `
   -ResourceId $topicid `
   -EventSubscriptionName eventsub2 `
   -EndpointType webhook `
@@ -146,8 +132,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 PowerShell için şunu kullanın:
 
 ```azurepowershell-interactive
-$endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
-$keys = Get-AzureRmEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
+$endpoint = (Get-AzEventGridTopic -ResourceGroupName myResourceGroup -Name demotopic).Endpoint
+$keys = Get-AzEventGridTopicKey -ResourceGroupName myResourceGroup -Name demotopic
 
 $htbody = @{
     myEventTypeField="Created"
@@ -184,7 +170,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 }
 ```
 
-Bu alanlar özel konudan eşlemeleri içerir. **Myeventtypefield** , **EventType**ile eşlendi. **Dataversion** ve **Subject** için varsayılan değerler kullanılır. **Veri** nesnesi, özgün olay şeması alanlarını içerir.
+Bu alanlar özel konudan eşlemeleri içerir. **Myeventtypefield** , **EventType** ile eşlendi. **Dataversion** ve **Subject** için varsayılan değerler kullanılır. **Veri** nesnesi, özgün olay şeması alanlarını içerir.
 
 İkinci abonelik, giriş olay şemasını kullandı. Teslim edilen olayın biçimi:
 

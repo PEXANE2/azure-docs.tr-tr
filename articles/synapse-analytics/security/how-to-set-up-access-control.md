@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519187"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109275"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>SYNAPSE çalışma alanınız için erişim denetimi nasıl ayarlanır 
 
@@ -54,7 +54,7 @@ Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları
 ## <a name="step-1-set-up-security-groups"></a>1. Adım: güvenlik gruplarını ayarlama
 
 >[!Note] 
->Önizleme sırasında, SYNAPSE **SYNAPSE SQL Yöneticisi** ve **SYNAPSE Apache Spark yönetici** rollerine eşlenmiş güvenlik grupları oluşturmanız önerilir.  Daha ayrıntılı SYNAPSE RBAC rollerinin ve kapsamlarının tanıtılmasıyla birlikte, çalışma alanınıza erişimi denetlemek için bu yeni özellikleri kullanmanız önerilir.  Bu yeni roller ve kapsamlar, daha fazla yapılandırma esnekliği sağlar ve geliştiricilerin analiz uygulamaları oluştururken genellikle bir SQL ve Spark karışımı kullanmasını ve çalışma alanındaki belirli kaynaklara erişim verilmesi gerekebilir. [Daha fazla bilgi edinin](./synapse-workspace-synapse-rbac.md).
+>Önizleme sırasında, SYNAPSE **SYNAPSE SQL Yöneticisi** ve **SYNAPSE Apache Spark yönetici** rollerine eşlenmiş güvenlik grupları oluşturmanız önerilir.  Daha ayrıntılı SYNAPSE RBAC rollerinin ve kapsamlarının tanıtılmasıyla birlikte, çalışma alanınıza erişimi denetlemek için bu yeni özellikleri kullanmanız önerilir.  Bu yeni roller ve kapsamlar, daha fazla yapılandırma esnekliği sağlar ve geliştiricilerin analiz uygulamaları oluştururken genellikle bir SQL ve Spark karışımı kullanmasını ve tüm çalışma alanı yerine belirli kaynaklara erişim verilmesi gerekebilir. SYNAPSE RBAC hakkında [daha fazla bilgi edinin](./synapse-workspace-synapse-rbac.md) .
 
 Çalışma alanınız için aşağıdaki güvenlik gruplarını oluşturun:
 
@@ -66,9 +66,9 @@ Bu belge yönergeleri basitleştirmek için standart adları kullanır. Bunları
 Bu gruplara kısa süre içinde SYNAPSE rolleri atayacaksınız.  
 
 Ayrıca şu güvenlik grubunu oluştur: 
-- **`workspace1_SQLAdministrators`**, çalışma alanındaki SQL havuzları içinde Active Directory yönetici yetkilisine ihtiyaç duyan kullanıcılar için Grup. 
+- **`workspace1_SQLAdmins`**, çalışma alanındaki SQL havuzları içinde SQL Active Directory yönetici yetkilisi olması gereken kullanıcılar için Grup. 
 
-`workspace1_SynapseSQLAdministrators`Bu grup, SQL HAVUZLARıNDA SQL izinlerini oluşturduğunuz sırada yapılandırdığınızda kullanılacaktır. 
+`workspace1_SQLAdmins`Bu grup, SQL HAVUZLARıNDA SQL izinlerini oluşturduğunuz sırada yapılandırdığınızda kullanılacaktır. 
 
 Temel bir kurulum için, bu beş grup yeterlidir. Daha sonra, daha fazla özel erişim gerektiren kullanıcıları işlemek veya kullanıcılara yalnızca belirli kaynaklara erişim izni vermek için güvenlik grupları ekleyebilirsiniz.
 
@@ -84,6 +84,7 @@ Temel bir kurulum için, bu beş grup yeterlidir. Daha sonra, daha fazla özel e
 Bir Synapse çalışma alanı, için varsayılan bir depolama kapsayıcısı kullanır:
   - Spark tabloları için yedekleme verileri dosyalarını depolama
   - Spark işleri için yürütme günlükleri
+  - Yüklemeyi seçtiğiniz kitaplıkları yönetme
 
 Depolama bilgileriniz hakkında aşağıdaki bilgileri tanımla:
 
@@ -94,7 +95,7 @@ Depolama bilgileriniz hakkında aşağıdaki bilgileri tanımla:
 
   - **Depolama Blobu veri katılımcısı** rolünü öğesine ata`workspace1_SynapseAdmins` 
   - **Depolama Blobu veri katılımcısı** rolünü öğesine ata`workspace1_SynapseContributors`
-  - << doğrulamak için **Depolama Blobu veri katılımcısı** rolünü `workspace1_SynapseComputeOperators` **<< VALIDATE** atama  
+  - **Depolama Blobu veri katılımcısı** rolünü öğesine ata`workspace1_SynapseComputeOperators`
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. Adım: SYNAPSE çalışma alanınızı oluşturma ve yapılandırma
 
@@ -106,14 +107,14 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
 - `storage1`Depolama hesabı için seçin
 - `container1`"FileSystem" olarak kullanılmakta olan kapsayıcı için seçin.
 - WS1 'i SYNAPSE Studio 'da aç
-- **Manage**  >  **Access Control** Yönet ' e gidin ve *çalışma alanı kapsamındaki* aşağıdaki SYNAPSE rollerini güvenlik gruplarına atayın.
+-   >  **Access Control** Yönet ' e gidin ve *çalışma alanı kapsamındaki* SYNAPSE rollerini aşağıdaki gibi güvenlik gruplarına atayın:
   - **SYNAPSE yönetici** rolünü ata`workspace1_SynapseAdministrators` 
   - **SYNAPSE katkıda bulunan** rolünü ata`workspace1_SynapseContributors` 
-  - **SYNAPSE SQL Işlem işletmeni** rolünü atama`workspace1_SynapseComputeOperators`
+  - **SYNAPSE Işlem işletmeni** rolünü ata`workspace1_SynapseComputeOperators`
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>4. Adım: çalışma alanına MSI erişimini varsayılan depolama kapsayıcısına verme
 
-İşlem hatlarını çalıştırmak ve sistem görevlerini gerçekleştirmek için, SYNAPSE, çalışma alanı tarafından yönetilen hizmet kimliğinin (MSI) varsayılan ADLS 2. hesabında erişimine ihtiyacı olmasını gerektirir `container1` .
+İşlem hatlarını çalıştırmak ve sistem görevlerini gerçekleştirmek için, SYNAPSE, çalışma alanı yönetilen hizmet kimliğinin (MSI) `container1` varsayılan ADLS 2. hesapta erişimi olması gerekir.
 
 - Azure portalını açın
 - Depolama hesabını bulun, `storage1` ve ardından `container1`
@@ -121,9 +122,9 @@ Azure portal, bir Synapse çalışma alanı oluşturun:
   - Atanmamıştır, atayın.
   - MSI, çalışma alanıyla aynı ada sahiptir. Bu makalede, olacaktır `workspace1` .
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. Adım: SYNAPSE yöneticilerine Azure katkıda bulunan rolünü çalışma alanında verme 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>5. Adım: SYNAPSE yöneticilerine Azure katkıda bulunan rolünü çalışma alanında verme 
 
-SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları oluşturmak için, kullanıcıların çalışma alanında en az Azure katılımcısı erişimi olması gerekir. Katılımcı rolü de bu kullanıcıların, duraklatma ve ölçekleme dahil olmak üzere kaynakları yönetmesine olanak tanır.
+SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları oluşturmak için, kullanıcıların çalışma alanına en az Azure katılımcısı erişimi olması gerekir. Katılımcı rolü de bu kullanıcıların, duraklatma ve ölçekleme dahil olmak üzere kaynakları yönetmesine olanak tanır.
 
 - Azure portalını açın
 - Çalışma alanını bulun, `workspace1`
@@ -131,44 +132,44 @@ SQL havuzları, Apache Spark havuzları ve tümleştirme çalışma zamanları o
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>6. Adım: SQL Active Directory yönetici rolü atama
 
-İş istasyonu Oluşturucu, çalışma alanı için Active Directory yöneticisi olarak otomatik olarak ayarlanır.  Bu rol yalnızca tek bir kullanıcı veya gruba izin verebilir. Bu adımda, çalışma alanındaki Active Directory Yöneticisini `workspace1_SynapseSQLAdministrators` güvenlik grubuna atarsınız.  Bu rolü atamak, bu gruba tüm SQL havuzlarına yüksek düzeyde ayrıcalıklı yönetici erişimi sağlar.   
+İş istasyonu Oluşturucu, çalışma alanı için otomatik olarak SQL Active Directory yöneticisi olarak ayarlanır.  Bu rol yalnızca tek bir kullanıcı veya gruba izin verebilir. Bu adımda, çalışma alanındaki SQL Active Directory Yöneticisini `workspace1_SQLAdmins` güvenlik grubuna atarsınız.  Bu rolü atamak, bu gruba, çalışma alanındaki tüm SQL havuzlarına ve veritabanlarına yüksek düzeyde ayrıcalıklı yönetici erişimi sağlar.   
 
 - Azure portalını açın
 - `workspace1` sayfasına gidin
 - **Ayarlar** altında, **SQL Active Directory Yöneticisi** ' ni seçin.
-- **Yönetici ayarla** ve Seç ' i seçin **`workspace1_SynapseSQLAdministrators`**
+- **Yönetici ayarla** ve Seç ' i seçin **`workspace1_SQLAdmins`**
 
 >[!Note]
->Bu adım isteğe bağlıdır.  SQL yöneticileri grubuna daha az ayrıcalıklı bir rol vermeyi tercih edebilirsiniz. `db_owner`Veya başka SQL rolleri atamak için, her SQL veritabanında betikleri çalıştırmanız gerekir. 
+>6. adım isteğe bağlıdır.  `workspace1_SQLAdmins`Gruba daha az ayrıcalıklı bir rol vermeyi tercih edebilirsiniz. `db_owner`Veya başka SQL rolleri atamak için, her SQL veritabanında betikleri çalıştırmanız gerekir. 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>7. Adım: SQL havuzlarına erişim Izni verme
 
-Varsayılan olarak, SYNAPSE yönetici rolüne atanan tüm kullanıcılara `db_owner` , sunucusuz SQL havuzunda ' yerleşik ' SQL rolü de atanır.
+Varsayılan olarak, SYNAPSE yönetici rolüne atanan tüm kullanıcılara SQL `db_owner` rolü sunucusuz SQL havuzunda, ' yerleşik ' ve tüm veritabanlarında de atanır.
 
-Diğer kullanıcılar ve MSI çalışma alanı için SQL havuzlarının erişimi, SQL izinleri kullanılarak denetlenir.  SQL izinlerinin atanması, oluşturulduktan sonra SQL komut dosyalarının her SQL havuzunda çalıştırılmasını gerektirir.  Bu komut dosyalarını çalıştırmanızı gerektiren üç durum vardır:
-1. Diğer kullanıcılara sunucusuz SQL havuzuna erişim veriliyor, ' yerleşik '
-2. Adanmış havuzlara Kullanıcı erişimi verme
-3. SQL havuzu erişiminin başarıyla çalışmasını gerektiren işlem hatlarını etkinleştirmek için bir SQL havuzuna çalışma alanı MSI erişimi verme.
+Diğer kullanıcılar ve MSI çalışma alanı için SQL havuzlarının erişimi, SQL izinleri kullanılarak denetlenir.  SQL izinlerinin atanması, her SQL veritabanının oluşturulduktan sonra SQL betikleri 'nin çalıştırılmasını gerektirir.  Bu komut dosyalarını çalıştırmanızı gerektiren üç durum vardır:
+1. Diğer kullanıcılara sunucusuz SQL havuzuna, ' yerleşik ' ve bu veritabanlarına erişim verme
+2. Adanmış havuz veritabanlarına Kullanıcı erişimi verme
+3. SQL havuzu erişiminin başarıyla çalışmasını gerektiren işlem hatlarını etkinleştirmek için bir SQL havuzu veritabanına çalışma alanı MSI erişimi verme.
 
 Örnek SQL betikleri aşağıda verilmiştir.
 
-Adanmış bir SQL havuzuna erişim vermek için betikler, çalışma alanı oluşturan veya grubun herhangi bir üyesi tarafından çalıştırılabilir `workspace1_SynapseSQL Administrators` .  
+Adanmış bir SQL havuzu veritabanına erişim izni vermek için betikler, çalışma alanı oluşturan veya grubun herhangi bir üyesi tarafından çalıştırılabilir `workspace1_SQLAdmins` .  
 
-' Yerleşik ' sunucusuz SQL havuzuna erişim sağlamak için betikler, grubun herhangi bir üyesi tarafından da çalıştırılabilir  `workspace1_SynapseAdministrators` . 
+' Yerleşik ' sunucusuz SQL havuzuna erişim vermek için betikler, grubun veya grubun herhangi bir üyesi tarafından çalıştırılabilir `workspace1_SQLAdmins`  `workspace1_SynapseAdministrators` . 
 
 > [!TIP]
-> Aşağıdaki adımlar, Kullanıcı bir sysadmin rolü atayabileceğiniz bölüm [kapsamlı izin](#workspace-scoped-permission) dışında tüm SQL veritabanlarına Kullanıcı erişimi sağlamak için **her** bir SQL havuzu için çalıştırılmalıdır.
+> Aşağıdaki adımlar, bir kullanıcıyı çalışma alanı düzeyinde bir sysadmin rolü atayabileceğiniz bölüm [kapsamlı izin](#workspace-scoped-permission) dışında **tüm SQL veritabanlarına** Kullanıcı erişimi vermek için çalıştırılmalıdır.
 
-### <a name="step-71-serverless-sql-pools"></a>Adım 7,1: sunucusuz SQL havuzları
+### <a name="step-71-serverless-sql-pool-built-in"></a>Adım 7,1: sunucusuz SQL havuzu, yerleşik
 
-Bu bölümde, kullanıcıya belirli bir veritabanı veya tam sunucu izinleri için bir izin verme hakkında örnekler bulabilirsiniz.
+Bu bölümde, bir kullanıcıya belirli bir veritabanına veya ' yerleşik ' sunucusuz SQL havuzundaki tüm veritabanlarına erişim izni verme işlemlerinin nasıl yapılacağını gösteren komut dosyası örnekleri vardır.
 
 > [!NOTE]
 > Betik örneklerinde, *diğer adı* , erişim izni verilen kullanıcı veya grubun diğer adıyla ve kullandığınız şirket etki alanı ile *etki alanı* ile değiştirin.
 
-#### <a name="pool-scoped-permission"></a>Havuz kapsamlı izin
+#### <a name="database-scoped-permission"></a>Veritabanı kapsamlı izin
 
-Bir kullanıcıya **tek** bir SUNUCUSUZ SQL havuzuna erişim vermek için bu örnekteki adımları izleyin:
+Bir kullanıcıya **tek** bir SUNUCUSUZ SQL veritabanına erişim vermek için bu örnekteki adımları izleyin:
 
 1. OTURUM açma oluştur
 
@@ -182,7 +183,7 @@ Bir kullanıcıya **tek** bir SUNUCUSUZ SQL havuzuna erişim vermek için bu ör
 2. Kullanıcı Oluştur
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Bir kullanıcıya **tek** bir SUNUCUSUZ SQL havuzuna erişim vermek için bu ör
 3. Belirtilen rolün üyelerine Kullanıcı Ekle
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Bir kullanıcıya **tek** bir SUNUCUSUZ SQL havuzuna erişim vermek için bu ör
 Çalışma alanındaki **Tüm** SUNUCUSUZ SQL havuzlarına tam erişim vermek için bu örnekteki betiği kullanın:
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>Adım 7,2: adanmış SQL havuzları
 
-**Tek** BIR adanmış SQL havuzuna erişim vermek Için, SYNAPSE SQL betik Düzenleyicisi ' nde bu adımları izleyin:
+**Tek** BIR adanmış SQL havuzu veritabanına erişim vermek Için, SYNAPSE SQL betik Düzenleyicisi ' nde bu adımları izleyin:
 
 1. Hedef veritabanında aşağıdaki komutu çalıştırarak kullanıcıyı veritabanında oluşturun, açılan listeye *Bağlan* ' ı kullanarak seçilidir:
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. Kullanıcıya veritabanına erişmek için bir rol verin:
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
 > *db_datareader* ve *db_datawriter* , *db_owner* izin verilmesi istenmiyorsa okuma/yazma izinleri için çalışabilir.
 > Spark kullanıcısının doğrudan Spark 'tan veya bir SQL havuzundan okuması ve yazması için *db_owner* izin gerekir.
 
-Kullanıcıları oluşturduktan sonra sunucusuz SQL havuzunun depolama hesabını sorgulayabilecek olduğunu doğrulayın.
+Kullanıcıları oluşturduktan sonra, sunucusuz SQL havuzunun depolama hesabını sorgulayabilecek olduğunu doğrulamak için sorguları çalıştırın.
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>Adım 7,3: çalışma alanı işlem hattı çalıştırmaları için SL Access Control
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>Adım 7,3: SYNAPSE işlem hattı çalıştırmaları için SQL Access Control
 
-### <a name="workspace-managed-identity"></a>Çalışma alanı tarafından yönetilen kimlik
+### <a name="workspace-managed-identity"></a>Çalışma alanı yönetilen kimliği
 
 > [!IMPORTANT]
 > Bir SQL havuzuna başvuran veri kümelerini veya etkinlikleri içeren işlem hatlarını başarıyla çalıştırmak için, çalışma alanı kimliğine SQL havuzuna erişim verilmesi gerekir.
 
-Çalışma alanı tarafından yönetilen kimliğin SQL havuzu veritabanında işlem hatlarını çalıştırmasına izin vermek için her bir SQL havuzunda aşağıdaki komutları çalıştırın:
+Çalışma alanı yönetilen sistem kimliğinin SQL havuzu veritabanında işlem hatlarını çalıştırmasına izin vermek için her bir SQL havuzunda aşağıdaki komutları çalıştırın:  
+
+>[!note]
+>Aşağıdaki betiklerin, adanmış bir SQL havuzu veritabanı için DatabaseName, havuz adıyla aynıdır.  Sunucusuz SQL havuzundaki ' yerleşik ' veritabanı için, DatabaseName veritabanının adıdır.
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 Bu izin, aynı SQL havuzunda aşağıdaki betiği çalıştırılarak kaldırılabilir:
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

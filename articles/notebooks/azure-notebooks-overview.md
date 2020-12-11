@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemeye genel bakış
 description: Kurulum veya yapılandırma gerektirmeyen ücretsiz Azure Notebooks önizleme hizmetini kullanarak bulutta Jupyıter not defterlerini çalıştırın.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: d59faaf85a1fdbad776e954e974bafa300f93d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845144"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109496"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks önizlemeye genel bakış
 
@@ -49,7 +49,7 @@ Kısacası, Azure Notebooks çalışmanızı daha verimli bir şekilde gerçekle
 
 Azure Notebooks ücretsiz bir hizmettir, ancak kötüye kullanımı engellemek için her proje 4 GB bellek ve 1 GB verilerle sınırlandırılmıştır. Bu sınırları aşan meşru kullanıcılar, not defterlerini çalıştırmaya devam etmek için CAPTCHA Challenge bölümüne bakın.
 
-Tüm limitleri serbest bırakmak için Azure Notebooks Azure Active Directory (örneğin, bir şirket hesabı) kullanarak bir hesapla oturum açın. Bu hesap bir Azure aboneliğiyle ilişkiliyse, bu abonelik içindeki tüm Azure Veri Bilimi Sanal Makinesi örneklerine bağlanabilirsiniz. Daha fazla bilgi için bkz. [projeleri yönetme ve yapılandırma-işlem katmanı](configure-manage-azure-notebooks-projects.md#compute-tier).
+Tüm limitleri serbest bırakmak için Azure Notebooks Azure Active Directory (örneğin, bir şirket hesabı) kullanarak bir hesapla oturum açın. Bu hesap bir Azure aboneliğiyle ilişkiliyse, bu abonelik içindeki tüm Azure Veri Bilimi Sanal Makinesi örneklerine bağlanabilirsiniz. 
 
 Not defteri sunucularının en fazla 8 saat içinde var olduğu garanti edilir. Çoğu durumda, Kapsayıcınız bu sınıra tabi değildir ve bu sürenin ötesinde çalışmaya devam eder, ancak uzun süreli oturumlar sistem kararlılığını sağlamak için zaman zaman kapatılabilir.
 
@@ -65,7 +65,7 @@ Her bir not defteri için, herhangi bir kod hücresini çalıştırmak için kul
 
 Azure Notebooks, temel dağıtımların ötesinde ek paketler de içerir. Örneğin, Python kerels, örneğin sayısal tuş takımı, Pandas, scikit-öğren, Matplotlib ve bokeh kitaplıklarını içerir.
 
-Ayrıca, projedeki tüm not defterleri için bir ortam oluşturmak üzere bir projeyi özelleştirebilirsiniz. Daha fazla bilgi için bkz. [hızlı başlangıç: özel bir ortamla proje oluşturma](quickstart-create-jupyter-notebook-project-environment.md).
+Ayrıca, projedeki tüm not defterleri için bir ortam oluşturmak üzere bir projeyi özelleştirebilirsiniz.
 
 Temel dağıtımların yanı sıra, Azure Notebooks veri bilimcileri için yararlı olan çok sayıda ek pakete önceden yüklenmiş olarak gelir. Ayrıca, her dil için tipik işlemi kullanarak kendi paketlerinizi yükleyebilirsiniz.
 
@@ -73,7 +73,7 @@ Temel dağıtımların yanı sıra, Azure Notebooks veri bilimcileri için yarar
 
 Azure Notebooks aşağıdaki Jupyter uzantılarıyla önceden yapılandırılmıştır:
 
-- [RISE](https://github.com/damianavila/RISE): Jupyter slayt gösterisi uzantısı (live_reveal olarak da bilinir). Daha fazla bilgi için bkz. [Not defteri slayt gösterisi çalıştırma](present-jupyter-notebooks-slideshow.md).
+- [RISE](https://github.com/damianavila/RISE): Jupyter slayt gösterisi uzantısı (live_reveal olarak da bilinir).
 - [Jupyterlab](https://github.com/jupyterlab/jupyterlab): Jupyter Not defterleri ile çalışmaya yönelik tam bir hesaplama ortamıdır.
 - [Altair](https://github.com/ellisonbg/altair): Python için bildirime dayalı istatistiksel görselleştirme kitaplığı.
 - [Bqçiz](https://github.com/bloomberg/bqplot): Jupyter Not defterleri için etkileşimli bir çizim çerçevesi.
@@ -89,26 +89,7 @@ Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda]
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
-- [Örnek not defterlerini keşfet](azure-notebooks-samples.md)
-
 - Hızlı Başlangıçlar:
 
-  - [Not defteri oluşturma ve paylaşma](quickstart-create-share-jupyter-notebook.md)
-  - [Not Defterini Kopyala](quickstart-clone-jupyter-notebook.md)
-  - [Yerel bir Jupyter Not defterini geçirme](quickstart-migrate-local-jupyter-notebook.md)
-  - [Özel ortam kullanma](quickstart-create-jupyter-notebook-project-environment.md)
   - [Oturum açma ve kullanıcı kimliği ayarlama](quickstart-sign-in-azure-notebooks.md)
-
-- Öğreticiler:
-
-  - [Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md  )
-
-- Nasıl yapılır makaleleri:
-  
-  - [Projeleri oluşturma ve kopyalama](create-clone-jupyter-notebooks.md)
-  - [Projeleri yapılandırma ve yönetme](configure-manage-azure-notebooks-projects.md)
-  - [Bir not defteri içinden paket yükler](install-packages-jupyter-notebook.md)
-  - [Slayt gösterisi yapma](present-jupyter-notebooks-slideshow.md)
-  - [Veri dosyalarıyla çalışma](work-with-project-data-files.md)
-  - [Veri kaynaklarına erişme](access-data-resources-jupyter-notebooks.md)
-  - [Azure Machine Learning’i kullanma](../machine-learning/samples-notebooks.md)
+  - [Jupyter Not defterini dışarı aktarma](quickstart-export-jupyter-notebook-project.md)

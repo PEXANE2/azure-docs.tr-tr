@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) ile ilgili teknoloji ve tolerans, d�
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: c0c1f587b4e52607e9466300f976a52874c9e5ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993712"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107356"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) gelişmiş zamanlayıcı özellikleri için en iyi yöntemler
 
@@ -131,7 +131,7 @@ Düğüm seçicileri kullanma hakkında daha fazla bilgi için bkz. [düğümler
 
 ### <a name="node-affinity"></a>Düğüm benzeşimi
 
-Düğüm seçici, belirli bir düğüme Pod atamak için temel bir yoldur. *Düğüm benzeşimi* kullanılarak daha fazla esneklik sağlanır. Düğüm benzeşimi ile pod 'un bir düğümle eşleştirilemezse ne olacağını tanımlarsınız. Kubernetes Scheduler 'ın etiketli bir ana bilgisayar ile bir pod ile eşleşmesini *zorunlu* kılabilirsiniz. Ya da bir eşleşme *tercih* edebilir, ancak aynı eşleşme yoksa Pod 'ın farklı bir konakta zamanlanmasını sağlayabilirsiniz.
+Düğüm seçici, belirli bir düğüme Pod atamak için temel bir yoldur. *Düğüm benzeşimi* kullanılarak daha fazla esneklik sağlanır. Düğüm benzeşimi ile pod 'un bir düğümle eşleştirilemezse ne olacağını tanımlarsınız. Kubernetes Scheduler 'ın etiketli bir ana bilgisayar ile bir pod ile eşleşmesini *zorunlu* kılabilirsiniz. Ya da bir eşleşme *tercih* edebilir, ancak kullanılabilir bir eşleşme yoksa Pod 'ın farklı bir konakta zamanlanmasını sağlayabilirsiniz.
 
 Aşağıdaki örnek, Düğüm benzeşimini *requiredDuringSchedulingIgnoredDuringExecution* olarak ayarlar. Bu benzeşim, eşleşen etikete sahip bir düğüm kullanmak için Kubernetes zamanlamasını gerektirir. Kullanılabilir düğüm yoksa Pod 'ın zamanlamanın devam etmesini beklemesi gerekir. Pod 'un farklı bir düğümde zamanlanmasını sağlamak için, bunun yerine değeri *preferredDuringSchedulingIgnoreDuringExecution* olarak ayarlayabilirsiniz:
 

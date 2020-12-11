@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: da79a74121318993f807ec3bde101b652a8b49da
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628144"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107847"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma
 
@@ -122,6 +122,8 @@ Gizli istemci uygulamaları (Web uygulaması, Web API 'SI veya bir Windows hizme
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Java için MSAL kullanıyorsanız, [Java IÇIN msal içindeki özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)hakkında bilgi edinin.
-
-[Hataları ve özel durumları işleme](msal-handling-exceptions.md)hakkında bilgi edinin.
+MSAL tarafından desteklenen platformların birkaçı, bu platformun kitaplığı için belgelerde ek belirteç önbelleğiyle ilgili bilgilere sahiptir. Örneğin:
+- [MSAL.NET kullanarak belirteç önbelleğinden belirteç alma](msal-net-acquire-token-silently.md)
+- [MSAL.js ile çoklu oturum açma](msal-js-sso.md)
+- [Python için MSAL içinde özel belirteç önbelleği serileştirme](msal-python-token-cache-serialization.md)
+- [Java için MSAL içinde özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)

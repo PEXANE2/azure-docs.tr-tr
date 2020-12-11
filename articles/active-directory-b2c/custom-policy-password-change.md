@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a471f510f60eeb6428c5c4e8ec7cccd1e0804d10
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131760"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108867"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırma
 
@@ -153,7 +153,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
     ```
 
 4. *TrustFrameworkExtensions.xml* ilke dosyasını kaydedin.
-5. Yüklediğiniz *ProfileEdit.xml* dosyasını başlangıç paketiyle kopyalayın ve *ProfileEditPasswordChange.xml*adlandırın.
+5. Yüklediğiniz *ProfileEdit.xml* dosyasını başlangıç paketiyle kopyalayın ve *ProfileEditPasswordChange.xml* adlandırın.
 6. Yeni dosyayı açın ve **PolicyId** özniteliğini benzersiz bir değerle güncelleştirin. Bu değer, ilkenizin adıdır. Örneğin, *B2C_1A_profile_edit_password_change*.
 7. ' Deki **Referenceıd** özniteliğini, `<DefaultUserJourney>` oluşturduğunuz yeni Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde değiştirin. Örneğin, *PasswordChange*.
 8. Yaptığınız değişiklikleri kaydedin.
@@ -169,18 +169,18 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki tale
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Kimlik deneyimi çerçevesini**seçin.
+4. **Kimlik deneyimi çerçevesini** seçin.
 5. Özel Ilkeler sayfasında, **Ilkeyi karşıya yükle**' ye tıklayın.
 6. Varsa **Ilkenin üzerine yaz**' ı seçin ve ardından *TrustframeworkExtensions.xml* dosyasını arayıp seçin.
 7. **Karşıya Yükle**'ye tıklayın.
-8. *ProfileEditPasswordChange.xml*gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
+8. *ProfileEditPasswordChange.xml* gibi bağlı olan taraf dosyası için 5 ile 7 arasındaki adımları yineleyin.
 
 ### <a name="run-the-policy"></a>İlkeyi çalıştırma
 
 1. Değiştirdiğiniz ilkeyi açın. Örneğin, *B2C_1A_profile_edit_password_change*.
-2. **Uygulama**için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
+2. **Uygulama** için, daha önce kaydetmiş olduğunuz uygulamanızı seçin. Belirteci görmek için, **yanıt URL 'sinin** gösterilmesi gerekir `https://jwt.ms` .
 3. **Şimdi çalıştır**’a tıklayın. Daha önce oluşturduğunuz hesapla oturum açın. Şimdi parolayı değiştirme fırsatına sahip olmanız gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını nasıl yapılandırabileceğinizi](custom-policy-password-complexity.md)öğrenin.
+- [Azure Active Directory B2C özel ilkeleri kullanarak parola karmaşıklığını nasıl yapılandırabileceğinizi](password-complexity.md)öğrenin.

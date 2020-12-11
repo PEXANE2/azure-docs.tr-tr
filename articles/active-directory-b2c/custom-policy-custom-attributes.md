@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec99558f3a168b770ad19fb4f6c811a31c44f08
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85389335"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108902"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: özel bir profil ilkesinde özel öznitelikleri etkinleştirme
 
-[Özel ilkeler kullanarak talep ekleme ve Kullanıcı girişini özelleştirme](custom-policy-configure-user-input.md) makalesinde yerleşik [Kullanıcı profili özniteliklerini](user-profile-attributes.md)nasıl kullanacağınızı öğreneceksiniz. Bu makalede, Azure Active Directory B2C (Azure AD B2C) dizininizde özel bir özniteliği etkinleştirirsiniz. Daha sonra, yeni özniteliğini [Kullanıcı akışlarında](user-flow-overview.md) veya [özel ilkelerde](custom-policy-get-started.md) aynı anda özel bir talep olarak kullanabilirsiniz.
+[Özel ilkeler kullanarak talep ekleme ve Kullanıcı girişini özelleştirme](configure-user-input.md) makalesinde yerleşik [Kullanıcı profili özniteliklerini](user-profile-attributes.md)nasıl kullanacağınızı öğreneceksiniz. Bu makalede, Azure Active Directory B2C (Azure AD B2C) dizininizde özel bir özniteliği etkinleştirirsiniz. Daha sonra, yeni özniteliğini [Kullanıcı akışlarında](user-flow-overview.md) veya [özel ilkelerde](custom-policy-get-started.md) aynı anda özel bir talep olarak kullanabilirsiniz.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -33,8 +33,8 @@ ms.locfileid: "85389335"
 Azure AD B2C dizininiz [yerleşik bir öznitelikler kümesiyle](user-profile-attributes.md)birlikte gelir. Bununla birlikte, belirli senaryonuzu yönetmek için genellikle kendi öznitelerinizi oluşturmanız gerekir, örneğin:
 
 * Müşteriye yönelik bir uygulamanın **Loyaltyıd** özniteliğini kalıcı hale getirmek gerekir.
-* Bir kimlik sağlayıcısı, kalıcı olması gereken benzersiz bir Kullanıcı tanımlayıcısına sahip olan **Uniqueuserguid**öğesine sahiptir.
-* Özel bir Kullanıcı yolculuğu, diğer mantığın üzerinde çalışması için kullanıcının, **Migrationstatus**durumunu kalıcı hale getirebilmesini gerektirir.
+* Bir kimlik sağlayıcısı, kalıcı olması gereken benzersiz bir Kullanıcı tanımlayıcısına sahip olan **Uniqueuserguid** öğesine sahiptir.
+* Özel bir Kullanıcı yolculuğu, diğer mantığın üzerinde çalışması için kullanıcının, **Migrationstatus** durumunu kalıcı hale getirebilmesini gerektirir.
 
 Azure AD B2C, her kullanıcı hesabında depolanan özniteliklerin kümesini genişletmenizi sağlar. Ayrıca, [MICROSOFT Graph API](manage-user-accounts-graph-api.md)'sini kullanarak bu öznitelikleri okuyabilir ve yazabilirsiniz.
 
@@ -42,13 +42,13 @@ Azure AD B2C, her kullanıcı hesabında depolanan özniteliklerin kümesini gen
 
 Uzantı öznitelikleri, bir kullanıcı için veri içerse de, yalnızca bir uygulama nesnesine kaydedilebilir. Extension özniteliği B2C-Extensions-App adlı uygulamaya iliştirilir. Bu uygulamayı, Kullanıcı verilerini depolamak için Azure AD B2C tarafından kullanıldığından değiştirmeyin. Bu uygulamayı Azure AD B2C, uygulama kayıtları altında bulabilirsiniz.
 
-Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin bağlamıyla aynı şeyi ifade eder. Ad, uygulama, nesne veya ilke gibi içeriğe göre değişir.
+Terimler *uzantı özelliği*, *özel öznitelik* ve *özel talep* , bu makalenin bağlamıyla aynı şeyi ifade eder. Ad, uygulama, nesne veya ilke gibi içeriğe göre değişir.
 
 ## <a name="get-the-application-properties"></a>Uygulama özelliklerini al
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C**seçin.
+1. Sol menüden **Azure AD B2C**' yi seçin. Ya da **tüm hizmetler** ' i seçin ve **Azure AD B2C** seçin.
 1. **Uygulama kayıtları**' yi seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` uygulamasını seçin.
 1. Aşağıdaki tanımlayıcıları panonuza kopyalayın ve kaydedin:
@@ -81,14 +81,14 @@ Terimler *uzantı özelliği*, *özel öznitelik*ve *özel talep* , bu makalenin
 
 ## <a name="upload-your-custom-policy"></a>Özel ilkenizi karşıya yükleyin
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD kiracınızı içeren dizini kullandığınızdan emin olun.
 3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **uygulama kayıtları**' i arayıp seçin.
-4. **Kimlik deneyimi çerçevesini**seçin.
+4. **Kimlik deneyimi çerçevesini** seçin.
 5. **Özel Ilkeyi karşıya yükle**' yi seçin ve ardından değiştirdiğiniz TrustFrameworkExtensions.xml ilke dosyalarını karşıya yükleyin.
 
 > [!NOTE]
-> Azure AD teknik profili, Dizin talebini ilk kez sürdüren, özel özniteliğin mevcut olup olmadığını denetler. Aksi takdirde, özel özniteliğini oluşturur.  
+> Azure AD teknik profili, Dizin talebini ilk kez sürdüren, özel özniteliğin mevcut olup olmadığını denetler. Aksi takdirde, özel özniteliğini oluşturur.  
 
 ## <a name="create-a-custom-attribute-through-azure-portal"></a>Azure portal aracılığıyla özel öznitelik oluşturma
 
@@ -96,7 +96,7 @@ Aynı uzantı öznitelikleri, yerleşik ve özel ilkeler arasında paylaşılır
 
 Bu öznitelikleri, özel ilkeleriniz içinde kullanmadan önce veya sonra Portal Kullanıcı arabirimini kullanarak oluşturabilirsiniz. [Azure Active Directory B2C özel özniteliklerin tanımlanması](user-flow-custom-attributes.md)için yönergeleri izleyin. Portalda **Loyaltyıd** özniteliğini oluşturduğunuzda, aşağıdaki şekilde buna başvurmanız gerekir:
 
-|Name     |Kullanıldığı yer |
+|Ad     |Kullanıldığı yer |
 |---------|---------|
 |`extension_loyaltyId`  | Özel ilke|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
@@ -132,7 +132,7 @@ Aşağıdaki örnek, bir teknik profilde, girişte, çıkışta ve kalıcı tale
 
 ## <a name="use-a-custom-attribute-in-a-policy"></a>İlkede özel bir öznitelik kullanma
 
-[Özel ilkeler kullanarak talepler ekleme ve Kullanıcı girişini özelleştirme](custom-policy-configure-user-input.md)kılavuzunu izleyin. Bu örnek, yerleşik bir ' City ' talebi kullanır. Özel bir öznitelik kullanmak için ' City ' değerini kendi özel nitelikleriyle değiştirin.
+[Özel ilkeler kullanarak talepler ekleme ve Kullanıcı girişini özelleştirme](configure-user-input.md)kılavuzunu izleyin. Bu örnek, yerleşik bir ' City ' talebi kullanır. Özel bir öznitelik kullanmak için ' City ' değerini kendi özel nitelikleriyle değiştirin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 519e2da902e1121220bcbb28c4cb18a68001293b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840566"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108392"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C teknik ve özelliklere genel bakış
 
@@ -115,7 +115,7 @@ Mobil, Web ve tek sayfalı uygulamaların çoğunluğu için en yaygın kimlik s
 
 Özel ilkeler, kimlik deneyimi çerçevesi (ıEF) düzenleme altyapısının tam gücüne erişimi kaldırır. Özel ilkeler sayesinde, Imagine 'yi kullanarak neredeyse tüm kimlik doğrulaması, Kullanıcı kaydı ve profil düzenlemesi deneyimi oluşturabilirsiniz.
 
-Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örnek:
+Kimlik deneyimi çerçevesi, herhangi bir adım birleşimiyle Kullanıcı yolculukları oluşturma olanağı sağlar. Örneğin:
 
 * Diğer kimlik sağlayıcılarıyla federasyona ekleme
 * Birinci ve üçüncü taraf Multi-Factor Authentication (MFA) sorunları
@@ -162,7 +162,7 @@ Azure AD B2C, kullanıcılarınızın kimlik deneyimlerini, gösterilen sayfalar
 
 ![Marka özelleştirilmiş kaydolma oturum açma sayfasının ekran görüntüleri](media/technical-overview/seamless-ux.png)
 
-UI özelleştirmesi hakkında daha fazla bilgi için, [Azure Active Directory B2C içindeki kullanıcı arabirimi özelleştirmesi hakkında](customize-ui-overview.md)bölümüne bakın.
+UI özelleştirmesi hakkında daha fazla bilgi için, [Azure Active Directory B2C içindeki kullanıcı arabirimi özelleştirmesi hakkında](customize-ui-with-html.md)bölümüne bakın.
 
 ## <a name="localization"></a>Yerelleştirme
 
@@ -170,7 +170,7 @@ Azure AD B2C dil özelleştirmesi, müşteri gereksinimlerinize uyacak farklı d
 
 ![Farklı dillerde UI metnini gösteren üç kaydolma oturum açma sayfası](media/technical-overview/localization.png)
 
-[Azure Active Directory B2C içinde, yerelleştirme 'Nin dil özelleştirmelerinde](user-flow-language-customization.md)nasıl çalıştığını görün.
+[Azure Active Directory B2C içinde, yerelleştirme 'Nin dil özelleştirmelerinde](language-customization.md)nasıl çalıştığını görün.
 
 ## <a name="add-your-own-business-logic"></a>Kendi iş mantığınızı ekleme
 
@@ -221,7 +221,7 @@ Azure AD B2C yönetim rolü desteği de dahil olmak üzere Azure AD rolleri hakk
 
 Azure AD B2C Multi-Factor Authentication (MFA), kullanıcılarınız için basitlik sağlarken verilere ve uygulamalara erişimi korumaya yardımcı olur. İkinci bir kimlik doğrulama biçimi gerektirerek ek güvenlik sağlar ve bir dizi kullanımı kolay kimlik doğrulama yöntemi sunarak güçlü kimlik doğrulaması sunar. Kullanıcılarınız, yönetici olarak yapabileceğiniz yapılandırma kararları temelinde MFA 'ya yönelik olarak istenebilir veya olmayabilir.
 
-[Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme](custom-policy-multi-factor-authentication.md)içindeki Kullanıcı akışlarında MFA 'yı Etkinleştirme makalesine bakın.
+[Azure Active Directory B2C 'de Multi-Factor Authentication 'ı etkinleştirme](multi-factor-authentication.md)içindeki Kullanıcı akışlarında MFA 'yı Etkinleştirme makalesine bakın.
 
 ### <a name="smart-account-lockout"></a>Akıllı hesap kilitleme
 
@@ -235,7 +235,7 @@ Parola koruma ayarlarını yönetme hakkında daha fazla bilgi için bkz. [Azure
 
 Kaydolma veya parola sıfırlama sırasında kullanıcılarınızın karmaşıklık kurallarını karşılayan bir parola sağlaması gerekir. Varsayılan olarak, Azure AD B2C güçlü bir parola ilkesi uygular. Azure AD B2C, müşterilerinizin kullanacağı parolaların karmaşıklık gereksinimlerini belirtmek için yapılandırma seçenekleri de sağlar.
 
-Her iki [Kullanıcı akışı](user-flow-password-complexity.md) ve [özel ilke](custom-policy-password-complexity.md)için parola karmaşıklığı gereksinimlerini yapılandırabilirsiniz.
+Her iki [Kullanıcı akışı](password-complexity.md) ve [özel ilke](password-complexity.md)için parola karmaşıklığı gereksinimlerini yapılandırabilirsiniz.
 
 ## <a name="auditing-and-logs"></a>Denetim ve Günlükler
 

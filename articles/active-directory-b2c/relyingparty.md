@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2d00942331b7e6c881803af366d1c08e173462b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 321669457c479f7f59ccbb9b7950457b7f9a1af5
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023797"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108324"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -117,7 +117,7 @@ Aşağıdaki örnek *B2C_1A_signup_signin* ilke dosyasında bir **RelyingParty**
 | Sessionexpirınseconds | 0:1 | Başarılı kimlik doğrulamasından sonra kullanıcının tarayıcısında depolanan bir tamsayı olarak belirtilen Azure AD B2C's oturum tanımlama bilgisinin ömrü. |
 | Bağlantı, Neyelik | 0:1 | Kullanılacak Azure Application Insights izleme anahtarı. |
 | ContentDefinitionParameters | 0:1 | İçerik tanımı yük URI 'sine eklenecek anahtar değer çiftlerinin listesi. |
-|ScriptExecution| 0:1| Desteklenen [JavaScript](javascript-samples.md) yürütme modları. Olası değerler: `Allow` veya `Disallow` (varsayılan).
+|ScriptExecution| 0:1| Desteklenen [JavaScript](javascript-and-page-layout.md) yürütme modları. Olası değerler: `Allow` veya `Disallow` (varsayılan).
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -165,7 +165,7 @@ Aşağıdaki örnek, `campaignId` sorgu dizesinde değeri olan adlı bir paramet
 | --------- | -------- | ----------- |
 | Ad | Evet | Anahtar değer çiftinin adı. |
 
-Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullanıcı arabirimini yapılandırma](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
+Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullanıcı arabirimini yapılandırma](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)
 
 ## <a name="technicalprofile"></a>Teknisyen
 
@@ -182,7 +182,7 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 | DisplayName | 1:1 | Teknik profilin adını içeren dize. |
 | Açıklama | 0:1 | Teknik profilin açıklamasını içeren dize. |
 | Protokol | 1:1 | Federasyon için kullanılan protokol. |
-| Meta veri | 0:1 | Bağlı olan taraf ve diğer topluluk katılımcıları arasında etkileşimi yapılandırmak üzere bir işlem sırasında uç noktayla iletişim için kullanılan anahtar/değer çiftlerinin *öğe* koleksiyonu. |
+| Meta Veriler | 0:1 | Bağlı olan taraf ve diğer topluluk katılımcıları arasında etkileşimi yapılandırmak üzere bir işlem sırasında uç noktayla iletişim için kullanılan anahtar/değer çiftlerinin *öğe* koleksiyonu. |
 | Outputclaim | 1:1 | Teknik profilde çıkış olarak gerçekleştirilen talep türlerinin listesi. Bu öğelerin her biri, **Claimsschema** bölümünde veya bu ilke dosyasının devraldığı bir ilkede zaten tanımlanmış olan bir **ClaimType** başvurusu içerir. |
 | Subjectnamingınfo | 1:1 | Belirteçlerde kullanılan konu adı. |
 
@@ -192,7 +192,7 @@ Daha fazla bilgi için bkz [. özel ilkeler kullanarak dinamik içerikle Kullan�
 | --------- | -------- | ----------- |
 | Ad | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler: `OpenIdConnect` veya `SAML2` . `OpenIdConnect`Değer, OpenID Foundation belirtimine göre OpenID Connect 1,0 Protokol standardını temsil eder. , `SAML2` Oassıs belirtimine göre SAML 2,0 Protokol standardını temsil eder. |
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
 Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir.
 
@@ -231,7 +231,7 @@ Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir.
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| ClaimType | Evet | Çıkış talebinin **Partnerclaimtype**öğesine bir başvuru. Çıkış taleplerinin bağlı olan taraf ilkesi **Outputclaim** koleksiyonunda tanımlanması gerekir. |
+| ClaimType | Evet | Çıkış talebinin **Partnerclaimtype** öğesine bir başvuru. Çıkış taleplerinin bağlı olan taraf ilkesi **Outputclaim** koleksiyonunda tanımlanması gerekir. |
 | Biçimlendir | Hayır | SAML onay kutusunda döndürülen **NameID biçimini** ayarlamak Için SAML bağlı olan taraflar için kullanılır. |
 
 Aşağıdaki örnekte, bir OpenID Connect bağlı olan tarafın nasıl tanımlanacağı gösterilmektedir. Konu adı bilgisi şu şekilde yapılandırılır `objectId` :

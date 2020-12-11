@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fd2f7d46df09085d19b19709c7f45cd3d6566988
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 018d90db06948f3fd6a34b56c65088641a9ca874
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628669"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108986"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -90,7 +90,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
 
 ### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
 
-İle sayfa türü arasına ekleyerek [JavaScript istemci tarafı kodunu](javascript-samples.md) etkinleştirebilirsiniz `contract` `elements` . Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+İle sayfa türü arasına ekleyerek [JavaScript istemci tarafı kodunu](javascript-and-page-layout.md) etkinleştirebilirsiniz `contract` `elements` . Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -111,7 +111,7 @@ Aşağıdaki örnek, sürümünün **Dataurı** 'sini göstermektedir `selfasser
 
 #### <a name="migrating-to-page-layout"></a>Sayfa düzenine geçiriliyor
 
-Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD: B2C: Elements: **anlaşma** :p Age-Name: Version_ . Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
+Değerin biçimi şu kelimeyi içermelidir: `contract` _urn: com: Microsoft: AAD: B2C: Elements:**anlaşma**:p Age-Name: Version_. Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
 
 | Eski DataUri değeri | Yeni DataUri değeri |
 | ----------------- | ----------------- |
@@ -238,4 +238,4 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 
 İçerik tanımlarını kullanarak Kullanıcı arabirimini özelleştirmenin bir örneği için bkz.:
 
-[Özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md)
+[Özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](customize-ui-with-html.md)

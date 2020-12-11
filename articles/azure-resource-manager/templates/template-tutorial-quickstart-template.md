@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 445e7ce2d6e609d75bff38bb3d049a87f184be12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613603"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106912"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Öğretici: Azure hızlı başlangıç şablonlarını kullanma
 
@@ -34,10 +34,10 @@ Bu şablon, depolama hesapları ve App Service planlarını dağıtmak için ge�
 ## <a name="find-template"></a>Şablon bul
 
 1. [Azure hızlı başlangıç şablonlarını](https://azure.microsoft.com/resources/templates/) aç
-1. **Ara**' ya **Linux Web uygulaması dağıtma**yazın.
-1. **Temel bir Linux Web uygulaması dağıtma**başlığı ile birini seçin. Bulmakta sorun yaşıyorsanız, bu [doğrudan bağlantı](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)' ya tıklayın.
+1. **Ara**' ya _Linux Web uygulaması dağıtma_ yazın.
+1. **Temel bir Linux Web uygulaması dağıtan** başlıklı kutucuğu seçin. Bulmakta sorun yaşıyorsanız, bu [doğrudan bağlantı](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)' ya tıklayın.
 1. **GitHub 'Da Araştır '** ı seçin.
-1. **azuredeploy.js**seçin.
+1. _azuredeploy.js_ seçin.
 1. Şablonu gözden geçirin. Özellikle, `Microsoft.Web/sites` kaynağı arayın.
 
     ![Kaynak Yöneticisi şablonu Hızlı Başlangıç Web sitesi](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ Hızlı başlangıç şablonunu mevcut şablonla birleştirin:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Web uygulaması adının Azure genelinde benzersiz olması gerekir. Bir yinelenen ad olmaması için, **webappportalname** değişkeni **"webappportalname": "[Concat (Parameters (' webappname '), '-WebApp ')]"** yerine **"webappportalname": "[Concat (Parametreler (' Webappname '), benzersiz dize (resourceGroup (). ID)]"** olarak güncelleştirilmiştir.
+Web uygulaması adının Azure genelinde benzersiz olması gerekir. Yinelenen adlara sahip olmasını engellemek için, `webAppPortalName` değişkeni ' dan ' a `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` güncelleştirilmiştir `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` .
 
 Tanımın sonuna bir virgül ekleyerek `Microsoft.Web/serverfarms` kaynak tanımını `Microsoft.Web/sites` tanımdan ayırın.
 
 Bu yeni kaynakta dikkat edilmesi için birkaç önemli özellik vardır.
 
-Burada, App Service planına ayarlanmış olan **Bağımlıdson** adlı bir öğe olduğunu fark edeceksiniz. Bu ayar, Web uygulaması oluşturulmadan önce App Service planının mevcut olması gerektiği için gereklidir. **Bağımlıdson** öğesi, kaynakları dağıtım için nasıl sıralacağını Kaynak Yöneticisi söyler.
+App Service planı olarak ayarlanan adlı bir öğe olduğunu fark edeceksiniz `dependsOn` . Bu ayar, Web uygulaması oluşturulmadan önce App Service planının mevcut olması gerektiği için gereklidir. `dependsOn`Öğesi, kaynakları dağıtım için sıralamayı Kaynak Yöneticisi söyler.
 
-**Serverfarmid** özelliği [RESOURCEID](template-functions-resource.md#resourceid) işlevini kullanır. Bu işlev, bir kaynağın benzersiz tanımlayıcısını alır. Bu durumda, App Service planının benzersiz tanımlayıcısını alır. Web uygulaması, belirli bir App Service planıyla ilişkilidir.
+`serverFarmId`Özelliği [RESOURCEID](template-functions-resource.md#resourceid) işlevini kullanır. Bu işlev, bir kaynağın benzersiz tanımlayıcısını alır. Bu durumda, App Service planının benzersiz tanımlayıcısını alır. Web uygulaması, belirli bir App Service planıyla ilişkilidir.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Dağıtım başarısız olursa, oluşturulmakta olan kaynaklarla ilgili bilgi almak için **verbose** anahtarını kullanın. Hata ayıklama hakkında daha fazla bilgi edinmek için **hata ayıklama** anahtarını kullanın.
+> Dağıtım başarısız olursa, `verbose` oluşturulan kaynaklarla ilgili bilgi almak için anahtarını kullanın. `debug`Hata ayıklama hakkında daha fazla bilgi edinmek için anahtarını kullanın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

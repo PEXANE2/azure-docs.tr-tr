@@ -1,16 +1,16 @@
 ---
-title: Azure Batch ve Batch Explorer'ı kullanarak Blender sahnesi işleme
+title: Öğretici-Azure Batch ve Batch Explorer kullanarak bir blender sahneyi Işleme
 description: 'Öğretici: Azure Batch ve Batch Explorer istemci uygulamasını kullanarak bir Blender sahnesinden birden fazla kare işleme'
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 65baff827417cebe2289cc821df94acd38a1ae61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964813"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106486"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Öğretici: Batch Explorer'ı kullanarak Blender sahnesi işleme
 
@@ -23,7 +23,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Birden çok çerçeve işleme
 > * İşlenen kare dosyalarını görüntüleme ve indirme
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.
 
@@ -93,6 +93,7 @@ Havuzun ve VM'lerin durumu 'Pools' (Havuzlar) görünümünde izlenebilir. Aşa�
 ## <a name="create-a-rendering-job"></a>İşleme işi oluşturma
 
 Oluşturulan havuzu kullanarak kare işlemek için bir işleme işi oluşturun:
+
 * Sol taraftaki ana menüden 'Gallery' (Galeri) menü öğesini seçin.
 * Uygulama öğe listesinden 'Blender' öğesini seçin.
 * Windows Server'da kare işlemek için gerekli öğeleri seçin.
@@ -137,6 +138,18 @@ Tüm görevler tamamlandığında iş tamamlanıyor olarak işaretlenir: ![İş 
 * Sağ tıklayıp 'Delete' (Sil) öğesini veya havuzun üzerindeki çöp kutusu simgesini seçin
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* ‘Gallery’ (Galeri) bölümünde Batch Explorer ile kullanılabilir durumdaki işleme uygulamalarını keşfedin.
-* Her uygulama için birkaç şablon vardır ve şablon sayısı zaman içinde artacaktır.  Örneğin bir görüntüyü parçalara ayırarak bu parçaların paralel olarak işlenmesini sağlayan Blender şablonları bulunmaktadır.
-* İşleme özelliklerinin kapsamlı bir açıklaması için [buradaki](./batch-rendering-service.md) makalelere bakın.
+
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+
+> [!div class="checklist"]
+> * Azure depolamasına Blender sahnesi yükleme
+> * İşlemeyi gerçekleştirmek için birden fazla düğüme sahip Batch havuzu oluşturma
+> * Birden çok çerçeve işleme
+> * İşlenen kare dosyalarını görüntüleme ve indirme
+
+**Galeri** bölümündeki Batch Explorer aracılığıyla kullanılabilen işleme uygulamalarını inceleyerek devam edin. Her uygulama için birkaç şablon vardır ve şablon sayısı zaman içinde artacaktır. Örneğin bir görüntüyü parçalara ayırarak bu parçaların paralel olarak işlenmesini sağlayan Blender şablonları bulunmaktadır.
+
+Bulut ölçekli işleme hakkında daha fazla bilgi edinmek için, Batch Rendering hizmetinin seçeneklerine bakın.
+
+> [!div class="nextstepaction"]
+> [Toplu İşleme hizmeti](batch-rendering-service.md)

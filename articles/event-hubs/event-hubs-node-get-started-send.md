@@ -1,18 +1,18 @@
 ---
 title: JavaScript kullanarak Azure Event Hubs olay gönderme veya alma (en son)
-description: Bu makalede, Azure Event Hubs en son Azure/Olay-Hub sürümü 5 paketini kullanarak olayları gönderen/alan bir JavaScript uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
+description: Bu makalede, Azure Event Hubs en son Azure/Olay-Hub 'larını kullanarak olayları gönderen/alan bir JavaScript uygulaması oluşturmaya yönelik bir yol sunulmaktadır.
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 01516f29e727b5be2a81d3d8dd473808b6ea60f7
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 2e5f297d5edb9a271843db060f948209dd076074
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728956"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106096"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs-version-5"></a>JavaScript kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure/Olay-Hub sürüm 5)
-Bu hızlı başlangıçta, **Azure/Event-Hub 5** JavaScript paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-javascript--azureevent-hubs"></a>JavaScript kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure/Olay-Hub 'ları)
+Bu hızlı başlangıçta, **Azure/Event-hub** JavaScript paketini kullanarak Olay Hub 'ından olay gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir. 
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -25,7 +25,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
 - Visual Studio Code (önerilir) veya diğer bir tümleşik geliştirme ortamı (IDE).  
 - Etkin bir Event Hubs ad alanı ve Olay Hub 'ı. Bunları oluşturmak için aşağıdaki adımları uygulayın: 
 
-   1. [Azure Portal](https://portal.azure.com), *Event Hubs*türünde bir ad alanı oluşturun ve ardından uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. 
+   1. [Azure Portal](https://portal.azure.com), *Event Hubs* türünde bir ad alanı oluşturun ve ardından uygulamanızın Olay Hub 'ı ile iletişim kurması için gereken yönetim kimlik bilgilerini edinin. 
    1. Ad alanı ve Olay Hub 'ı oluşturmak için [hızlı başlangıç: Azure Portal kullanarak bir olay hub 'ı oluşturma](event-hubs-create.md)' daki yönergeleri izleyin.
    1. Bu hızlı başlangıçtaki yönergeleri izleyerek devam edin. 
    1. Olay Hub 'ı ad alanınız için bağlantı dizesini almak için [bağlantı dizesi al](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)' daki yönergeleri izleyin. Daha sonra bu hızlı başlangıçta kullanılacak bağlantı dizesini kaydedin.
@@ -55,7 +55,7 @@ npm install @azure/eventhubs-checkpointstore-blob
 Bu bölümde, olayları bir olay hub 'ına gönderen bir JavaScript uygulaması oluşturacaksınız.
 
 1. [Visual Studio Code](https://code.visualstudio.com)gibi en sevdiğiniz düzenleyiciyi açın.
-1. *send.js*adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
+1. *send.js* adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
@@ -122,7 +122,7 @@ Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adın
 ### <a name="write-code-to-receive-events"></a>Olayları almak için kod yazma
 
 1. [Visual Studio Code](https://code.visualstudio.com)gibi en sevdiğiniz düzenleyiciyi açın.
-1. *receive.js*adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
+1. *receive.js* adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın:
 
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");

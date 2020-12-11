@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88119938"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107931"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>İOS ve macOS için uygulamaları MSAL 'e geçirme
 
@@ -59,7 +59,7 @@ MSAL ' de, ana etkileşim, `MSALPublicClientApplication` [OAuth 2,0 genel istemc
 
 ### <a name="scopes-instead-of-resources"></a>Kaynaklar yerine kapsamlar
 
-ADAL 'da, bir uygulamanın *resource* `https://graph.microsoft.com` Azure Active Directory v 1.0 uç noktasından belirteçleri almak için bir kaynak tanımlayıcısı sağlaması gerekiyordu. Bir kaynak, bir dizi kapsam veya uygulama bildiriminde oAuth2Permissions, anladığı şekilde tanımlayabilir. Bu izin verilen istemci uygulamaları, uygulama kaydı sırasında önceden tanımlanmış belirli bir kapsam kümesi için bu kaynaktan belirteç ister.
+ADAL 'da, bir uygulamanın  `https://graph.microsoft.com` Azure Active Directory v 1.0 uç noktasından belirteçleri almak için bir kaynak tanımlayıcısı sağlaması gerekiyordu. Bir kaynak, bir dizi kapsam veya uygulama bildiriminde oAuth2Permissions, anladığı şekilde tanımlayabilir. Bu izin verilen istemci uygulamaları, uygulama kaydı sırasında önceden tanımlanmış belirli bir kapsam kümesi için bu kaynaktan belirteç ister.
 
 MSAL ' de, tek bir kaynak tanımlayıcısı yerine, uygulamalar istek başına bir kapsam kümesi sağlar. Kapsam, kaynak tanımlayıcısı ve ardından kaynak/izin biçiminde bir izin adı gelir. Örneğin, `https://graph.microsoft.com/user.read`
 
@@ -136,7 +136,7 @@ MSAL, uygulamanız tarafından işlenebilen ve Kullanıcı tarafından müdahale
 
 [ `MSALError` Listedeki](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128) diğer tüm hataların yönetilmesi isteğe bağlıdır. Kullanıcı deneyimini geliştirmek için bu hataların bilgilerini kullanabilirsiniz.
 
-MSAL hata işleme hakkında daha fazla bilgi için bkz. [msal kullanarak özel durumları ve hataları işleme](msal-handling-exceptions.md) .
+MSAL hata işleme hakkında daha fazla bilgi için bkz. [msal kullanarak özel durumları ve hataları işleme](msal-error-handling-ios.md) .
 
 ### <a name="broker-support"></a>Aracı desteği
 
@@ -280,7 +280,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 }
 ```
 
-**Xcode 11**kullanıyorsanız, bunun yerine msal geri çağırma işlemini dosyaya yerleştirmeniz gerekir `SceneDelegate` .
+**Xcode 11** kullanıyorsanız, bunun yerine msal geri çağırma işlemini dosyaya yerleştirmeniz gerekir `SceneDelegate` .
 Daha eski iOS ile uyumluluk için hem UISceneDelegate hem de Uıapplicationdelegate 'i destekediyorsanız, MSAL geri çağrısının her iki dosyaya da yerleştirilmesi gerekir.
 
 Amaç-C:

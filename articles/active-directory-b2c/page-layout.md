@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0bbe40a2329143b9abd4554ec715c64e5c26d4eb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028113"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108510"
 ---
 # <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
@@ -46,16 +46,17 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 - Username/email ve Password alanları artık `form` Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
 - Geliştirilmiş kullanıcı deneyimi için yapılandırılabilir bir kullanıcı girişi doğrulama gecikmesi eklendi.
+- Erişilebilirlik düzeltmeleri
 - Hata iletilerinin artık ekran okuyucusu tarafından okunabilmesi için bir erişilebilirlik sorunu düzeltildi. 
 - Artık, e-posta doğrulandıktan sonra parola alanına odak konur.
 - `autofocus`CheckBox denetiminden kaldırılır. 
-- Telefon numarası doğrulaması için bir görüntüleme pencere öğesi desteği eklendi.
-- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+- Telefon numarası doğrulaması için bir görüntü denetimi desteği eklendi.
+- Artık `data-preload="true"` [HTML etiketinizdeki] özniteliği ekleyebilirsiniz (özelleştirme-UI-ile-HTML. MD # yönergeleri-
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerilere sahip olur.
 - Chrome çevirisi desteği.
-- Kullanıcı akış sayfalarında kiracı markalaması için destek eklendi.
+- Kullanıcı akış sayfalarında Şirket markası desteği eklendi.
 
 **1.1.0**
 
@@ -87,8 +88,8 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 **1.2.0**
 
 - Username/email ve Password alanları artık `form` Edge ve Internet Explorer 'ın (IE) bu bilgileri düzgün bir şekilde kaydetmesine izin vermek için HTML öğesini kullanır.
-- Erişilebilirlik düzeltmeleri.
-- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+- Erişilebilirlik düzeltmeleri
+- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](customize-ui-with-html.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerilere sahip olur.
@@ -118,7 +119,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 **1.2.0**
 
 - Erişilebilirlik düzeltmeleri
-- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](customize-ui-with-html.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
@@ -144,7 +145,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 **1.2.0**
 
 - Erişilebilirlik düzeltmeleri
-- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](customize-ui-with-html.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
@@ -165,7 +166,7 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 **1.2.0**
 
 - Erişilebilirlik düzeltmeleri
-- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](custom-policy-ui-customization.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
+- Artık `data-preload="true"` CSS ve JavaScript için yükleme sırasını denetlemek üzere [HTML etiketinizdeki](customize-ui-with-html.md#guidelines-for-using-custom-page-content) özniteliği ekleyebilirsiniz.
   - Bağlı CSS dosyalarını HTML şablonunuz ile aynı anda yükleyin; böylece dosyalar yüklenirken ' titreşimi ' yoktur.
   - `script`Etiketlerin alındığı ve sayfa yüklenmeden önce yürütüldüğü sırayı denetleyin.
 - E-posta alanı artık `type=email` ve mobil klavyeler doğru önerileri sağlayacak
@@ -177,4 +178,4 @@ Sayfa düzeni paketleri, sayfa öğelerinde düzeltmeler ve iyileştirmeler içe
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Özel ilkelerde uygulamalarınızın Kullanıcı arabirimini özelleştirmeye ilişkin ayrıntılar için bkz. [özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md).
+Özel ilkelerde uygulamalarınızın Kullanıcı arabirimini özelleştirmeye ilişkin ayrıntılar için bkz. [özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](customize-ui-with-html.md).

@@ -1,22 +1,24 @@
 ---
 title: Azure geçişi 'ndeki yenilikler
 description: Azure geçişi hizmetindeki yenilikler ve son güncelleştirmeler hakkında bilgi edinin.
-author: bsiva
-ms.author: bsiva
-ms.manager: abhemraj
 ms.topic: overview
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: e39b8f7ee7b76a1955e02a7140524f812be086b5
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752456"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109190"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure geçişi 'ndeki yeni sürümler ve Özellikler özetlenmektedir.
+## <a name="update-december-2020"></a>Güncelleştirme (Aralık 2020)
+- Azure geçişi artık, VMware geçiş 'nin aracısız yöntemini kullanarak Azure VM aracısını VMware VM 'lerine otomatik olarak Azure 'a geçirirken VMware VM 'lerine otomatik olarak yüklenir.
 
 ## <a name="update-september-2020"></a>Güncelleştirme (Eylül 2020)
 - Sunucuların Kullanılabilirlik Alanları geçişi artık desteklenmektedir.
@@ -25,7 +27,7 @@ ms.locfileid: "96752456"
 - Bağımlılık Analizi (aracısız), artık 1000 VM 'lerde eşzamanlı olarak çalıştırılabilir.
 - Bağımlılık Analizi (aracısız) artık PowerShell betikleri kullanılarak uygun ölçekte etkinleştirilebilir veya devre dışı bırakılabilir. [Daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
 - Bağımlılık analizi kullanılarak toplanan verileri kullanarak Power BI ağ bağlantılarını görselleştirin (aracısız) [daha fazla bilgi edinin.](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/dependencies-at-scale)
-- VMware VM 'lerinin 32 TB 'a kadar veri diski ile geçirilmesi artık Azure geçişi: sunucu geçişi aracısız VMware geçiş yöntemi kullanılarak desteklenmektedir. 
+- VMware VM 'lerinin 32 TB 'a kadar veri diski ile geçirilmesi artık Azure geçişi: sunucu geçişi aracısız VMware geçiş yöntemi kullanılarak desteklenmektedir.
 
 ## <a name="update-august-2020"></a>Güncelleştirme (Ağustos 2020)
 

@@ -1,17 +1,17 @@
 ---
 title: Python kullanarak Azure Event Hubs olay gönderme veya alma (en son)
-description: Bu makale, Azure Event Hubs en son Azure-eventhub sürüm 5 paketini kullanarak olayları gönderen/alan bir Python uygulaması oluşturmaya yönelik bir yol sağlar.
+description: Bu makalede, Azure Event Hubs en son Azure-eventhub paketini kullanarak olayları gönderen/alan bir Python uygulaması oluşturmaya yönelik bir anlatım sunulmaktadır.
 ms.topic: quickstart
 ms.date: 02/11/2020
-ms.openlocfilehash: bdcd85786afdf307fdc7043db7ed7651d41820a4
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 4850dc9119f6ef43e687f476f66928f13713f051
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91729092"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97105960"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak Olay Hub 'larına olay gönderme veya olayları alma (Azure-eventhub sürüm 5)
-Bu hızlı başlangıçta, **Azure-eventhub sürüm 5** Python paketini kullanarak Olay Hub 'ından olayları gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilmektedir.
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub"></a>Python (Azure-eventhub) kullanarak Olay Hub 'larına olay gönderme veya olayları alma
+Bu hızlı başlangıçta, **Azure-eventhub** Python paketini kullanarak Olay Hub 'ından olay gönderme ve olayları alma işlemlerinin nasıl yapılacağı gösterilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 Azure Event Hubs yeni başladıysanız, bu hızlı başlangıcı uygulamadan önce [Event Hubs genel bakış](event-hubs-about.md) bölümüne bakın. 
@@ -39,7 +39,7 @@ Bu hızlı başlangıcı tamamlayabilmeniz için aşağıdaki önkoşullara sahi
 Bu bölümde, daha önce oluşturduğunuz Olay Hub 'ına olayları göndermek için bir Python betiği oluşturacaksınız.
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. *Send.py*adlı bir komut dosyası oluşturun. Bu betik, daha önce oluşturduğunuz Olay Hub 'ına bir olay toplu işi gönderir.
+2. *Send.py* adlı bir komut dosyası oluşturun. Bu betik, daha önce oluşturduğunuz Olay Hub 'ına bir olay toplu işi gönderir.
 3. Aşağıdaki kodu *Send.py*' ye yapıştırın:
 
     ```python
@@ -98,7 +98,7 @@ Alma kodunda daha sonra kullanmak için bağlantı dizesini ve kapsayıcı adın
 Bu bölümde, Olay Hub 'ınızdan olayları almak için bir Python betiği oluşturursunuz:
 
 1. [Visual Studio Code](https://code.visualstudio.com/)gibi en sevdiğiniz Python düzenleyicisini açın.
-2. *Recv.py*adlı bir komut dosyası oluşturun.
+2. *Recv.py* adlı bir komut dosyası oluşturun.
 3. Aşağıdaki kodu *recv.py*' ye yapıştırın:
 
     ```python

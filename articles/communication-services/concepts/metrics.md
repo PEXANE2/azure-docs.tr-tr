@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 25c7016f6639df46a9279ef9a9aab2736efd4f95
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888666"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106012"
 ---
 # <a name="metrics-overview"></a>Ölçümlere genel bakış
 
@@ -76,6 +76,17 @@ SMS API istek ölçümlerinde aşağıdaki işlemler mevcuttur:
 
 
 :::image type="content" source="./media/sms-metric.png" alt-text="SMS API Isteği ölçümü.":::
+
+### <a name="authentication-api-requests"></a>Kimlik doğrulama API 'SI istekleri
+
+Kimlik doğrulama API 'SI istek ölçümlerinde aşağıdaki işlemler mevcuttur:
+
+| İşlem/rota    | Açıklama                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------- |
+| CreateIdentity       | Tek bir kullanıcıyı temsil eden bir kimlik oluşturur. |
+| Deleteıdentity       | Bir kimliği siler. |
+| Belirteçoluşturma          | Erişim belirteci oluşturur. |
+| Iptal belirteci          | Kimliği verilen bir süre önce bir kimlik için oluşturulan tüm erişim belirteçlerini iptal eder. |
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 

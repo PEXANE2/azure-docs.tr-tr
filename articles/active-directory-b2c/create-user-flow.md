@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbb55d71c2ed56bac14380960f9a0777be549566
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754887"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109021"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C bir Kullanıcı akışı oluşturma
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde [Kulla
 - Azure AD, Amazon, Facebook, GitHub, LinkedIn, Microsoft veya Twitter gibi sağlayıcılardan Kullanıcı oturum açmasını etkinleştirmek istiyorsanız **dış kimlik sağlayıcıları ekleyin** . Bir örnek için bkz. [öğretici: Azure AD B2C uygulamalarınıza kimlik sağlayıcıları ekleme](tutorial-add-identity-providers.md).
 - Kiracınızdaki yerel hesaplar için desteklemek istediğiniz kimlik türlerini (e-posta, Kullanıcı adı, telefon numarası) belirtmek üzere **yerel hesap kimlik sağlayıcısını yapılandırın** . Ardından, bireysel kullanıcı akışları oluştururken desteklenen bu kimlik türleri arasından seçim yapabilirsiniz. Bir Kullanıcı Kullanıcı akışını tamamladığında, Azure AD B2C dizininizde yerel bir hesap oluşturulur ve **yerel hesap** kimlik sağlayıcınız Kullanıcı bilgilerinin kimliğini doğrular. Kiracının yerel hesap kimliği sağlayıcınızı şu adımlarla yapılandırın:
 
-   1. [Azure Portal](https://portal.azure.com/) oturum açın. 
+   1. [Azure portalında](https://portal.azure.com/) oturum açın. 
    2. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
    3. Azure portal üst kısmındaki arama çubuğunda **Azure AD B2C**' i arayıp seçin.
    4. **Yönet** altında **kimlik sağlayıcıları**' nı seçin.
@@ -43,7 +43,7 @@ Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde [Kulla
 
 ## <a name="create-a-user-flow"></a>Kullanıcı akışı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
     ![B2C kiracısı, dizin ve abonelik bölmesi, Azure portal](./media/create-user-flow/directory-subscription-pane.png)
@@ -91,4 +91,4 @@ Azure Active Directory B2C (Azure AD B2C) kiracınızda farklı türlerde [Kulla
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure AD B2C Kullanıcı akışlarına koşullu erişim ekleme](conditional-access-user-flow.md)
-- [Azure AD B2C Kullanıcı akışında Kullanıcı arabirimini özelleştirme](customize-ui-overview.md)
+- [Azure AD B2C Kullanıcı akışında Kullanıcı arabirimini özelleştirme](customize-ui-with-html.md)

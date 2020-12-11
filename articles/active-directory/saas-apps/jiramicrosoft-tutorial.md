@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2d4c8675d8f03d19a63b7564b05e2de1a809e763
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3a188189b39311734a25a2fc98ea78a62bbe0cff
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459484"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108850"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,16 +28,16 @@ Bu öğreticide, Microsoft tarafından Azure Active Directory (Azure AD) ile Jı
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="description"></a>Description
+## <a name="description"></a>Açıklama
 
 Çoklu oturum açmayı etkinleştirmek için Microsoft Azure Active Directory hesabınızı Atlaseli JIRA sunucusu ile kullanın. Bu sayede, tüm kuruluşunuz kullanıcıları JIRA uygulamasında oturum açmak için Azure AD kimlik bilgilerini kullanabilir. Bu eklenti, Federasyon için SAML 2,0 kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
 - Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-- JIRA Core ve Software 6,4 for 8.11.0 veya JIRA Service Desk 3,0 to 4.11.1 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
+- JIRA Core ve Software 6,4 for 8.14.0 veya JIRA Service Desk 3,0 to 4.11.1 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
 - JıRA sunucusu HTTPS etkin
 - Aşağıdaki bölümde, JIRA eklentisinin desteklenen sürümlerinin bahsedildiğini aklınızda bulabilirsiniz.
 - JıRA sunucusuna, kimlik doğrulaması için özellikle Azure AD oturum açma sayfasında internet 'ten erişilebilir ve bu belirteci Azure AD 'den alabilmelidir
@@ -58,7 +58,7 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 ## <a name="supported-versions-of-jira"></a>Desteklenen JIRA sürümleri
 
-* JIRA Core ve Software: 6,4 ile 8.11.0
+* JIRA Core ve Software: 6,4 ile 8.14.0
 * JIRA Service Desk 3.0.0 to 4.11.1
 * JIRA Ayrıca 5,2 'yi destekler. Daha fazla ayrıntı için [Microsoft Azure Active Directory JIRA 5,2 için çoklu oturum açma](jira52microsoft-tutorial.md) 'yı tıklatın
 
@@ -84,7 +84,7 @@ JıRA SAML SSO 'yu Microsoft tarafından Azure AD 'ye tümleştirmeyi yapıland�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-jira-saml-sso-by-microsoft"></a>Microsoft tarafından JIRA SAML SSO 'SU için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu JIRA SAML SSO 'Su ile Microsoft tarafından yapılandırın ve test edin. SSO 'nun çalışması için, Microsoft tarafından bir Azure AD kullanıcısı ve JIRA SAML SSO 'SU içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu JIRA SAML SSO 'Su ile Microsoft tarafından yapılandırın ve test edin. SSO 'nun çalışması için, Microsoft tarafından bir Azure AD kullanıcısı ve JIRA SAML SSO 'SU içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Microsoft tarafından JIRA SAML SSO 'SU ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -154,7 +154,7 @@ Bu bölümde, Microsoft tarafından JıRA SAML SSO 'SU erişimi vererek Azure ç
 
 1. Farklı bir Web tarayıcısı penceresinde, JIRA örneğiniz için yönetici olarak oturum açın.
 
-2. Dişli üzerine gelin ve **eklentilere**tıklayın.
+2. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     ![Ekran görüntüsü ayarlar menüsünden Seçili eklentileri gösterir.](./media/jiramicrosoft-tutorial/addon1.png)
 
@@ -196,14 +196,14 @@ Bu bölümde, Microsoft tarafından JıRA SAML SSO 'SU erişimi vererek Azure ç
     
     1. **Oturum aç düğmesi açıklaması** ' nda, kuruluşunuzun oturum açma ekranında görmesini istediği düğmenin açıklaması yazın.
 
-    1. **SAML Kullanıcı kimliği konumlarında** , **Konu bildiriminin NameIdentifier öğesinde kullanıcı kimliği '** ni veya **Kullanıcı kimliği ' ni bir öznitelik öğesinde**seçin.  Bu KIMLIK, JIRA Kullanıcı KIMLIĞI olmalıdır. Kullanıcı KIMLIĞI eşleşmiyorsa, sistem kullanıcıların oturum açmalarına izin vermez.
+    1. **SAML Kullanıcı kimliği konumlarında** , **Konu bildiriminin NameIdentifier öğesinde kullanıcı kimliği '** ni veya **Kullanıcı kimliği ' ni bir öznitelik öğesinde** seçin.  Bu KIMLIK, JIRA Kullanıcı KIMLIĞI olmalıdır. Kullanıcı KIMLIĞI eşleşmiyorsa, sistem kullanıcıların oturum açmalarına izin vermez.
 
        > [!Note]
        > Varsayılan SAML Kullanıcı KIMLIĞI konumu ad tanımlayıcısıdır. Bunu bir öznitelik seçeneği olarak değiştirebilir ve uygun öznitelik adını girebilirsiniz.
 
     1. **Bir öznitelik öğesi seçeneğinde Kullanıcı kimliği** ' ni seçerseniz, **öznitelik adı** metin kutusuna kullanıcı kimliğinin beklenildiği özniteliğin adını yazın.
 
-    1. Federasyon etki alanını (örneğin, ADFS vb.) Azure AD ile kullanıyorsanız, **giriş bölgesi bulmayı etkinleştir** seçeneğini tıklayın ve **etki alanı adını**yapılandırın.
+    1. Federasyon etki alanını (örneğin, ADFS vb.) Azure AD ile kullanıyorsanız, **giriş bölgesi bulmayı etkinleştir** seçeneğini tıklayın ve **etki alanı adını** yapılandırın.
 
     1. **Etki alanı adı** ' nda, ADFS tabanlı oturum açma durumunda etki alanı adını buraya yazın.
 
@@ -228,7 +228,7 @@ Azure AD kullanıcılarının JIRA şirket içi sunucusunda oturum açmasını s
 
 1. JIRA şirket içi sunucunuzda yönetici olarak oturum açın.
 
-2. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
+2. Dişli 'ye gelin ve **Kullanıcı yönetimine** tıklayın.
 
     ![Ekran görüntüsü, Ayarlar menüsünden seçilen kullanıcı yönetimini gösterir.](./media/jiramicrosoft-tutorial/user1.png)
 

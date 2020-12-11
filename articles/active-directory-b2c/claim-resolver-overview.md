@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: e55bb9ba49cfcaf07e8d3dc17dc13e30036e100f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040465"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109054"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerde talep çözücüler hakkında
 
@@ -185,9 +185,9 @@ Talep çözümleyicilerine göre, oturum açma adını veya Facebook, LinkedIn v
 
 ### <a name="dynamic-ui-customization"></a>Dinamik UI özelleştirmesi
 
-Azure AD B2C, sayfa içeriğini dinamik olarak oluşturmak için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, bu özellik, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirebilme olanağı sağlar. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
+Azure AD B2C, sayfa içeriğini dinamik olarak oluşturmak için sorgu dizesi parametrelerini HTML içerik tanım uç noktalarınıza geçirmenize olanak sağlar. Örneğin, bu özellik, Web veya mobil uygulamanızdan geçirdiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirebilme olanağı sağlar. Daha fazla bilgi için bkz. [Azure Active Directory B2C içindeki özel ilkeleri kullanarak Kullanıcı arabirimini dinamik olarak yapılandırma](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri). Ayrıca, HTML sayfanızı bir dil parametresine göre yerelleştirebilirsiniz veya içeriği istemci KIMLIĞINE göre değiştirebilirsiniz.
 
-Aşağıdaki örnek, bir değeri **campaignId** `Hawaii` , bir **DIL** kodu `en-US` ve istemci kimliğini temsil eden bir **uygulama** olan kampanya NID adlı sorgu dizesi parametresinde geçirilir:
+Aşağıdaki örnek, bir değeri  `Hawaii` , bir **DIL** kodu `en-US` ve istemci kimliğini temsil eden bir **uygulama** olan kampanya NID adlı sorgu dizesi parametresinde geçirilir:
 
 ```xml
 <UserJourneyBehaviors>

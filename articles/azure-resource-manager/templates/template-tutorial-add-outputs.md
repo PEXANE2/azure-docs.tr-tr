@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931750"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107133"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Öğretici: ARM şablonunuza çıktılar ekleme
 
@@ -41,17 +41,17 @@ Aşağıdaki örnek, bir çıkış değeri eklemek için şablonunuzda yapılan 
 
 Eklediğiniz çıktı değeri hakkında dikkat etmeniz için bazı önemli öğeler vardır.
 
-Döndürülen değerin türü **Object** olarak ayarlanır, yanı bir JSON nesnesi döndürür.
+Döndürülen değerin türü olarak ayarlanır `object` , yani BIR JSON nesnesi döndürür.
 
 Depolama hesabının çalışma zamanı durumunu almak için [başvuru](template-functions-resource.md#reference) işlevini kullanır. Bir kaynağın çalışma zamanı durumunu almak için bir kaynağın adını veya KIMLIĞINI geçirin. Bu durumda, depolama hesabının adını oluşturmak için kullandığınız değişkeni kullanırsınız.
 
-Son olarak, depolama hesabından en son eden **yenyenler** özelliğini döndürür
+Son olarak, `primaryEndpoints` depolama hesabından özelliği döndürür
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 
 Şablonu dağıtmaya ve döndürülen değere bakmaya hazırsınız.
 
-Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, **TemplateFile** değişkenini, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
+Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](template-tutorial-create-first-template.md#create-resource-group). Örnek, `templateFile` [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi, değişkeni şablon dosyası yolu olarak ayarlamış olduğunuzu varsayar.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ Dağıtım komutunun çıktısında, aşağıdaki örneğe benzer bir nesne gör
 ```
 
 > [!NOTE]
-> Dağıtım başarısız olursa, oluşturulmakta olan kaynaklarla ilgili bilgi almak için **verbose** anahtarını kullanın. Hata ayıklama hakkında daha fazla bilgi edinmek için **hata ayıklama** anahtarını kullanın.
+> Dağıtım başarısız olursa, `verbose` oluşturulan kaynaklarla ilgili bilgi almak için anahtarını kullanın. `debug`Hata ayıklama hakkında daha fazla bilgi edinmek için anahtarını kullanın.
 
 ## <a name="review-your-work"></a>Çalışmanızı gözden geçirin
 

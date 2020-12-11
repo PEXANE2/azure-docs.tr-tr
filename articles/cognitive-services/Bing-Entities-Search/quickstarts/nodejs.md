@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8634cb009d801c7edbb14682bf9d83c25ba111a5
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b9311329ea4115d49f36dd7d39782bbd748a356b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351444"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106113"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Hızlı başlangıç: Bing Varlık Arama REST API Node.js kullanarak bir arama isteği gönderme
 
@@ -87,15 +87,15 @@ Bu uygulama JavaScript 'e yazılsa da, API çoğu programlama dili ile uyumlu ol
     let json = JSON.stringify(JSON.parse(body), null, '  ');
     console.log (json);
     });
-        ```
+    ```
 
-## Send a request
+## <a name="send-a-request"></a>İstek gönderme
 
-1. Create a function called `Search()` to send a search request. In it, perform the following steps:
+1. `Search()`Arama isteği göndermek için adlı bir işlev oluşturun. Burada, aşağıdaki adımları gerçekleştirin:
 
-2. Within this function, create a JSON object containing your request parameters. Use `Get` for the method, and add your host and path information. Add your subscription key to the `Ocp-Apim-Subscription-Key` header. 
+2. Bu işlev içinde, istek parametrelerinizi içeren bir JSON nesnesi oluşturun. `Get`Yöntemi için kullanın ve ana bilgisayar ve yol bilgilerinizi ekleyin. Abonelik anahtarınızı `Ocp-Apim-Subscription-Key` üstbilgiye ekleyin. 
 
-3. Use `https.request()` to send the request with the response handler created previously, and your search parameters.
+3. `https.request()`Daha önce oluşturulan yanıt işleyicisine ve arama parametreleriniz ile isteği göndermek için kullanın.
     
    ```javascript
    let Search = function () {

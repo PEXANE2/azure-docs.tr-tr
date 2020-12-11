@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994069"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108561"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
 
@@ -100,7 +100,7 @@ Bir tarayıcıda Azure AD B2C kod, Kullanıcı akışında belirttiğiniz bir UR
 
    ![Arkoo Labs kaydolma ve oturum açma](media/partner-arkose-labs/signup-signin-arkose.png)
 
-7. **Kaydet**'i seçin.
+7. **Kaydet**’i seçin.
 
 ### <a name="part-2--set-up-a-back-end-server"></a>Bölüm 2 – bir arka uç sunucusu ayarlama
 
@@ -147,7 +147,7 @@ Git Bash 'i indirin ve aşağıdaki adımları izleyin:
 
 1. [Buradaki](tutorial-create-user-flows.md)bilgilere göre bir Kullanıcı akışı oluşturun. **Kullanıcı akışını test** etme bölümüne geldiğinizde durun.
 
-2. [Kullanıcı akışındaki](user-flow-javascript-overview.md)JavaScript 'i etkinleştirin.
+2. [Kullanıcı akışındaki](javascript-and-page-layout.md)JavaScript 'i etkinleştirin.
 
 3. Aynı kullanıcı akışı sayfasında özel sayfa URL 'sini etkinleştirin: **Kullanıcı akışına** git  >  **sayfa düzeni**  >  **özel sayfa içeriğini kullan**  =  **Evet**  >  **özel sayfa URL 'si Ekle**.
 Bu özel sayfa URL 'SI, BLOB depolama içindeki index.html dosyasının konumundan alınır  

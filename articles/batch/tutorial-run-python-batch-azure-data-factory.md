@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 7752bc3f768aec7a3e98fb1813c4194f81fb9dfb
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917639"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106283"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Öğretici: Azure Batch kullanarak Azure Data Factory Python betikleri çalıştırma
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Batch ve Depolama hesapları ile kimlik doğrulaması
@@ -30,7 +30,7 @@ Aşağıdaki örnek, bir BLOB depolama kapsayıcısından CSV girişi alan bir P
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yerel test için yüklü bir [Python](https://www.python.org/downloads/) dağıtımı.
 * [Azure-Storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` paketi.
@@ -148,12 +148,23 @@ Uyarıları veya hataları komut dosyanızın yürütülmesi tarafından üretil
 1. Hata çıkış kodu olan göreve tıklayın.
 1. `stdout.txt` `stderr.txt` Sorununuzu inceleyin ve tanılamanıza ve tanılayın.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+İşlerin ve görevlerin kendileri için sizden ücret alınmasa da işlem düğümleri için ücret alınır. Bu nedenle, havuzları yalnızca gerektiğinde ayırmanız önerilir. Havuzu sildiğinizde düğümler üzerindeki tüm görev çıkışları silinir. Ancak, giriş ve çıkış dosyaları depolama hesabında kalır. Artık gerekli değilse, Batch hesabını ve depolama hesabını da silebilirsiniz.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure Batch kullanarak Azure Data Factory bir işlem hattının parçası olarak Python betiklerini nasıl çalıştıracağınızı öğrettin bir örnek incelediniz.
+Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
+
+> [!div class="checklist"]
+> * Batch ve Depolama hesapları ile kimlik doğrulaması
+> * Python 'da betik geliştirme ve çalıştırma
+> * Bir uygulamayı çalıştırmak için işlem düğümleri havuzu oluşturma
+> * Python iş yüklerinizi zamanlama
+> * Analiz işlem hattınızı izleme
+> * Günlük verilerinize erişin
 
 Azure Data Factory hakkında daha fazla bilgi edinmek için bkz.:
 
 > [!div class="nextstepaction"]
 > [Azure Data Factory genel bakış](../data-factory/introduction.md)
-

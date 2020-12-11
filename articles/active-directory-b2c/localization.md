@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 27a00c69a4423e45b46b9c3d0340bb7cd1a35d65
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 88244ec3ba4bbebe7d6096fa3ac49bd4f1b8f661
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095909"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108639"
 ---
 # <a name="localization-element"></a>Yerelleştirme öğesi
 
@@ -45,7 +45,7 @@ ms.locfileid: "92095909"
 
 **Yerelleştirme** Öğesı aşağıdaki XML öğelerini içerir
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1: n | Desteklenen dillerin listesi. |
 | LocalizedResources | 0: n | Yerelleştirilmiş kaynakların listesi. |
@@ -63,7 +63,7 @@ ms.locfileid: "92095909"
 
 **Supportedlanguages** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1: n | Dilleri tanımlamak için RFC 5646-Tags başına bir dil etiketine uyan içeriği görüntüler. |
 
@@ -77,7 +77,7 @@ ms.locfileid: "92095909"
 
 **Localizedresources** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0: n | Çeşitli kültürlerde tüm koleksiyonları tanımlar. Bir koleksiyon çeşitli kültürler için farklı sayıda öğe ve farklı dize içerebilir. Koleksiyon örnekleri, talep türlerinde görünen numaralandırmaları içerir. Örneğin, bir ülke/bölge listesi kullanıcıya bir açılan listede gösterilir. |
 | LocalizedStrings | 0: n | Çeşitli kültürlerde koleksiyonlarda görünen dizeler hariç tüm dizeleri tanımlar. |
@@ -86,7 +86,7 @@ ms.locfileid: "92095909"
 
 **Localizedcollections** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1: n | Desteklenen dillerin listesi. |
 
@@ -102,7 +102,7 @@ ms.locfileid: "92095909"
 
 **Localizedcollection** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | Öğe | 0: n | Kullanıcının, açılan menüdeki bir değer gibi kullanıcı arabirimindeki bir talep için seçim yapmak üzere kullanılabilir bir seçenek tanımlar. |
 
@@ -138,7 +138,7 @@ Aşağıdaki örnek, **Localizedcollections** öğesinin kullanımını gösteri
 
 **Localizedstrings** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Description |
+| Öğe | Öğeleri | Açıklama |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Yerelleştirilmiş bir dize. |
 
@@ -342,7 +342,7 @@ DisplayControl değeri, [görüntüleme denetimi](display-controls.md) Kullanıc
 <LocalizedString ElementType="DisplayControl" ElementId="emailVerificationControl" StringId="but_verify_code">Verify code</LocalizedString>
 ```
 
-Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurulan ContentDefinition 'ın DataUri 'nin [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri olarak ayarlanmış olması gerekir. Örnek:
+Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurulan ContentDefinition 'ın DataUri 'nin [sayfa düzeni sürüm](page-layout.md) 2.1.0 veya üzeri olarak ayarlanmış olması gerekir. Örneğin:
 
 ```xml
 <ContentDefinition Id="api.selfasserted">
@@ -354,5 +354,5 @@ Otomatik olarak onaylanan bir teknik profilin meta veri bölümünde, başvurula
 
 Yerelleştirme örnekleri için aşağıdaki makalelere bakın:
 
-- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](custom-policy-localization.md)
-- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](user-flow-language-customization.md)
+- [Azure Active Directory B2C özel ilkeyle dil özelleştirmesi](language-customization.md)
+- [Azure Active Directory B2C Kullanıcı akışları ile dil özelleştirmesi](language-customization.md)

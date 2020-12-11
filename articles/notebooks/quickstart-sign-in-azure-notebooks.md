@@ -3,12 +3,12 @@ title: Azure Notebooks önizlemede oturum açın
 description: Hızlı bir şekilde oturum açın Azure Notebooks önizleme yapın ve bir kullanıcı kimliği ayarlayın. Bu, size kayıtlı projelere erişme ve not defterlerini başkalarıyla paylaşma olanağı sunan bir kullanıcı kimliği.
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.openlocfilehash: 8a2d9836cd005ab11106c569929a6776d605da50
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 168da5d4d36cd4cfadb4ef120ddfabbd261cafaf
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "85830426"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109462"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id-for-azure-notebooks-preview"></a>Hızlı başlangıç: Azure Notebooks önizlemesi için oturum açma ve Kullanıcı KIMLIĞI ayarlama
 
@@ -22,7 +22,7 @@ Oturum açmadan Azure Notebooks her zaman görüntüleyebilseniz de, not defterl
 
     ![Azure Notebooks oturum açma komutunun konumu](media/accounts/sign-in-command.png)
 
-1. İstendiğinde, bir Microsoft hesabının e-posta adresini veya bir iş veya okul hesabını girip **İleri ' yi**seçin. Hesap türleri [Kullanıcı hesabınızda Azure Notebooks](azure-notebooks-user-account.md)açıklanmaktadır. Bir Microsoft hesabınız yoksa veya Azure Notebooks özel olarak kullanmak istiyorsanız, **birini oluştur**' u seçin:
+1. İstendiğinde, bir Microsoft hesabının e-posta adresini veya bir iş veya okul hesabını girip **İleri ' yi** seçin. Hesap türleri [Kullanıcı hesabınızda Azure Notebooks](azure-notebooks-user-account.md)açıklanmaktadır. Bir Microsoft hesabınız yoksa veya Azure Notebooks özel olarak kullanmak istiyorsanız, **birini oluştur**' u seçin:
 
     ![Oturum açma isteminde yeni Microsoft hesabı komutu oluştur](media/accounts/create-new-microsoft-account.png)
 
@@ -59,4 +59,4 @@ Oturumu kapatmak için sayfanın sağ üst kısmındaki Kullanıcı adınızı s
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Hızlı başlangıç: Not defteri oluşturma ve paylaşma](quickstart-create-share-jupyter-notebook.md)
+> [Hızlı başlangıç: Jupyter Notebook projesi dışarı aktarma](quickstart-export-jupyter-notebook-project.md)

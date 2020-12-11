@@ -3,12 +3,12 @@ title: Azure Notebooks Preview ile kullanım için Kullanıcı profili ve KIMLI�
 description: Azure Notebooks ile Kullanıcı profilinizi ve Kullanıcı KIMLIĞINIZI oluşturma ve yönetme, paylaşılan not defterlerinin URL 'sinin bir parçası haline geliyor.
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 9a1ff7f92faec21f537f068f0a33473700ddfed8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30d70365fcc0c72df01b4dc059b6e0f4cc607bba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85831361"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109513"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks-preview"></a>Azure Notebooks önizlemesi için profiliniz ve Kullanıcı KIMLIĞINIZ
 
@@ -18,7 +18,7 @@ Azure Notebooks güçlü, işbirliğine dayalı alanı içinde Kullanıcı profi
 
 [![Azure Notebooks profili sayfası](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
-Kullanıcı KIMLIĞINIZ, projeleri ve not defterlerini paylaşmak için kullandığınız URL 'lerin bir parçasıdır. Aşağıdaki listede farklı URL desenleri açıklanmaktadır:
+Kullanıcı KIMLIĞINIZ, projeleri ve not defterlerini paylaşmak için kullandığınız URL 'Lerin bir parçasıdır. Aşağıdaki listede farklı URL desenleri açıklanmaktadır:
 
 - `https://notebooks.azure.com/<user_id>`: Profil sayfanız.
 - `https://notebooks.azure.com/<user_id>/projects`: Projeleriniz. Tüm projeleri görürsünüz; diğer kullanıcılar yalnızca genel projelerinizi görür.
@@ -54,11 +54,11 @@ Profilinizi düzenlemek için profil sayfanızdaki **profil bilgilerini düzenle
 | Profil fotoğrafı | Profil sayfanızda gösterilen bir görüntü. |
 | Hesap Bilgileri | Görünen ad, Kullanıcı KIMLIĞI ve genel e-posta hesabı. Buradaki e-posta hesabı, diğer kullanıcılara sizinle iletişim kurmak için bir anlamı sağlar ve Azure Notebooks oturum açmak için kullandığınız [hesaptan](azure-notebooks-user-account.md) farklı olabilir. |
 | Profil bilgileri | Konumunuz, şirketiniz, iş unvanı, Web siteniz ve kendinize ait kısa bir açıklama. |
-| Sosyal profiller | Bunları paylaşmak istiyorsanız GItHub, Twitter ve Facebook kimlikleriniz. |
+| Sosyal profiller | Bunları paylaşmak istiyorsanız GitHub, Twitter ve Facebook kimlikleriniz. |
 | Gizlilik Ayarları | İki komut sağlar:<ul><li>**Profilimi dışarı aktar**: fotoğraflarınızın, profil bilgilerinizin ve güvenlik günlüklerinin dahil Azure Notebooks kaydettiği tüm bilgileri içeren bir *. zip* dosyası oluşturur ve indirir.</li><li>**Hesabımı Sil**: Azure Notebooks depolanan tüm kişisel bilgilerinizi kalıcı olarak siler.</li></ul> |
 | Site özelliklerini etkinleştir | Azure Notebooks davranışının yönlerini denetlemenizi sağlar:<ul><li>**Not defterleri Için Birleşik ön uç**: daha hızlı ve daha iyi kalıcılık sağlar.</li><li>**Varsayılan olarak JupyterLab 'Da Çalıştır**: varsayılan olarak, Azure Notebooks çoğu kullanıcı için uygun olan basit bir kullanıcı arabirimi sağlar. Jupyıterlab, deneyimli kullanıcılar için daha zengin ancak daha karmaşık bir arabirim sağlar.</li><li>**VNext Web sitesi**: Bu belgede gösterilen, modernlanmış Web yerleşimini etkin hale sunar.</li></ul> |
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 > [!div class="nextstepaction"]
-> [Öğretici: doğrusal regresyon yapmak için bir Jupyter Not defteri oluşturma ve çalıştırma](tutorial-create-run-jupyter-notebook.md)
+> [Hızlı başlangıç: Jupyter Notebook projesi dışarı aktarma](quickstart-export-jupyter-notebook-project.md)
