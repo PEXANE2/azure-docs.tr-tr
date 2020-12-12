@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094493"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359090"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Farklı Azure bölgelerinde SQL Server Always on kullanılabilirlik grubu yapılandırma
 
@@ -96,7 +97,7 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
 1. Kümeye bir IP adresi kaynağı ekleyin.
 
-   IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kümenin adını seçin, ardından küme **çekirdek kaynakları** altında küme adına sağ tıklayın ve **Özellikler** ' i seçin: 
+   IP adresi kaynağını Yük Devretme Kümesi Yöneticisi ' de oluşturabilirsiniz. Kümenin adını seçin, ardından küme **çekirdek kaynakları** altında küme adına sağ tıklayın ve **Özellikler**' i seçin: 
 
    !["Yük Devretme Kümesi Yöneticisi" kümesini bir küme adı, "sunucu adı" ve "Özellikler" seçilmiş olarak gösteren ekran görüntüsü.](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
@@ -113,7 +114,7 @@ Uzak bir veri merkezinde çoğaltma oluşturmak için aşağıdaki adımları uy
 
 1. Kümedeki kullanılabilirlik grubu rolüne bir IP adresi kaynağı ekleyin. 
 
-   Yük Devretme Kümesi Yöneticisi ' de kullanılabilirlik grubu rolüne sağ tıklayın, **Kaynak Ekle** , **daha fazla kaynak** ve **IP adresi** Seç ' i seçin.
+   Yük Devretme Kümesi Yöneticisi ' de kullanılabilirlik grubu rolüne sağ tıklayın, **Kaynak Ekle**, **daha fazla kaynak** ve **IP adresi** Seç ' i seçin.
 
    ![IP adresi oluştur](./media/availability-group-manually-configure-multiple-regions/20-add-ip-resource.png)
 
@@ -169,17 +170,17 @@ Bağlantı dizelerini değiştiremeyeceğiniz takdirde ad çözümlemesi önbell
 
 Uzak bölgeye dinleyici bağlantısını test etmek için çoğaltmayı uzak bölgeye devreder. Çoğaltma zaman uyumsuz olsa da, yük devretme olası veri kaybına karşı savunmasız olur. Veri kaybı olmadan yük devretmek için kullanılabilirlik modunu eşzamanlı olarak değiştirin ve yük devretme modunu otomatik olarak ayarlayın. Aşağıdaki adımları kullanın:
 
-1. **Nesne Gezgini** ' de, birincil çoğaltmayı barındıran SQL Server örneğine bağlanın.
-1. **AlwaysOn kullanılabilirlik grupları** , **kullanılabilirlik grupları** ' nın altında, kullanılabilirlik grubunuza sağ tıklayıp **Özellikler** ' i seçin.
+1. **Nesne Gezgini**' de, birincil çoğaltmayı barındıran SQL Server örneğine bağlanın.
+1. **AlwaysOn kullanılabilirlik grupları**, **kullanılabilirlik grupları**' nın altında, kullanılabilirlik grubunuza sağ tıklayıp **Özellikler**' i seçin.
 1. **Genel** sayfasında, **kullanılabilirlik ÇOĞALTMALARı** altında, Dr sitesindeki Ikincil çoğaltmayı, **zaman uyumlu tamamlama** kullanılabilirlik modunu ve **Otomatik** yük devretme modunu kullanacak şekilde ayarlayın.
 1. Yüksek kullanılabilirlik için birincil çoğaltmayla aynı sitede ikincil bir çoğaltmeniz varsa, bu çoğaltmayı **zaman uyumsuz işlemeye** ve **el ile** ayarlayın.
 1. Tamam'ı seçin.
-1. **Nesne Gezgini** , kullanılabilirlik grubuna sağ tıklayın ve **panoyu göster** ' i seçin.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **panoyu göster**' i seçin.
 1. Panoda, DR sitesindeki çoğaltmanın eşitlendiğinden emin olun.
-1. **Nesne Gezgini** , kullanılabilirlik grubuna sağ tıklayın ve **Yük devretme...** seçeneğini belirleyin. SQL Server Management Studios, SQL Server yük devretmek için bir sihirbaz açar.  
-1. **İleri** ' yi SEÇIN ve DR sitesindeki SQL Server örneğini seçin. **İleri ' yi** tekrar seçin.
+1. **Nesne Gezgini**, kullanılabilirlik grubuna sağ tıklayın ve **Yük devretme...** seçeneğini belirleyin. SQL Server Management Studios, SQL Server yük devretmek için bir sihirbaz açar.  
+1. **İleri**' yi SEÇIN ve DR sitesindeki SQL Server örneğini seçin. **İleri ' yi** tekrar seçin.
 1. DR sitesindeki SQL Server örneğine bağlanın ve **İleri ' yi** seçin.
-1. **Özet** sayfasında, ayarları doğrulayın ve **son** ' u seçin.
+1. **Özet** sayfasında, ayarları doğrulayın ve **son**' u seçin.
 
 Bağlantıyı test ettikten sonra birincil çoğaltmayı birincil veri merkezinize geri taşıyın ve kullanılabilirlik modunu normal işletim ayarlarına geri doğru ayarlayın. Aşağıdaki tabloda, bu belgede açıklanan mimarinin normal işletimsel ayarları gösterilmektedir:
 

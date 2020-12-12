@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6dd95fc8fd0ab0099ac7404d4ca4e4b1851f650f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436632"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359617"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB'de verilere erişimin güvenliğini sağlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -95,7 +95,7 @@ Kaynak belirteçlerinin istendiği, üretibildiği ve istemcilere teslim edilece
 
 Kaynak belirteci oluşturma ve yönetimi, yerel Cosmos DB istemci kitaplıkları tarafından işlenir; Ancak REST kullanırsanız istek/kimlik doğrulama üst bilgilerini oluşturmanız gerekir. REST için kimlik doğrulama üstbilgileri oluşturma hakkında daha fazla bilgi için, bkz. [Access Control Cosmos DB kaynakları](/rest/api/cosmos-db/access-control-on-cosmosdb-resources) veya [.net SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos/src/Authorization/AuthorizationHelper.cs) veya [Node.js SDK](https://github.com/Azure/azure-cosmos-js/blob/master/src/auth.ts)'mız için kaynak kodu.
 
-Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
+Kaynak belirteçleri oluşturmak için kullanılan bir orta katman hizmeti örneği için, bkz. [Resourcetokenbroker uygulaması](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/xamarin/UserItems/ResourceTokenBroker/ResourceTokenBroker/Controllers).
 
 ## <a name="users"></a>Kullanıcılar<a id="users"></a>
 
@@ -111,7 +111,7 @@ User user = await database.CreateUserAsync("User 1");
 > [!NOTE]
 > Her Cosmos DB kullanıcının, kullanıcıyla ilişkili [izin](#permissions) listesini almak için kullanılabilecek bir ReadAsync () yöntemi vardır.
 
-## <a name="permissions"></a>İzinleri<a id="permissions"></a>
+## <a name="permissions"></a>İzinler<a id="permissions"></a>
 
 Bir izin kaynağı, bir kullanıcıyla ilişkilendirilir ve bölüm anahtarı düzeyi olarak kapsayıcıda atanır. Her Kullanıcı sıfır veya daha fazla izin içerebilir. Bir izin kaynağı, belirli bir bölüm anahtarındaki belirli bir kapsayıcıya veya verilere erişmeyi denerken kullanıcının ihtiyacı olan bir güvenlik belirtecine erişim sağlar. Bir izin kaynağı tarafından sağlanarak kullanılabilecek iki erişim düzeyi vardır:
 

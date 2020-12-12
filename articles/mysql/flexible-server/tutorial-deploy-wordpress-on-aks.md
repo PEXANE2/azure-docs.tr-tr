@@ -7,16 +7,17 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 31ad9450c775e5e4e7ae543241b48f8c372ad9ee
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 7713b7596b21e02e941a19f64d3658ab0f5f51f5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96749276"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359022"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>Öğretici: MySQL için Azure veritabanı-esnek sunucu ile AKS 'de WordPress uygulaması dağıtma
 
-Bu hızlı başlangıçta, Azure CLı kullanarak MySQL için Azure veritabanı (Önizleme) ile Azure Kubernetes Service (AKS) kümesine bir WordPress uygulaması dağıtırsınız. [Aks](../../aks/intro-kubernetes.md) , kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. [MySQL Için Azure veritabanı-esnek sunucu (Önizleme)](overview.md) , veritabanı yönetim işlevleri ve yapılandırma ayarları üzerinde daha ayrıntılı denetim ve esneklik sağlamak için tasarlanmış, tam olarak yönetilen bir veritabanı hizmetidir. Şu anda esnek sunucu önizlemededir.
+Bu hızlı başlangıçta, Azure CLı kullanarak MySQL için Azure veritabanı (Önizleme) ile Azure Kubernetes Service (AKS) kümesine bir WordPress uygulaması dağıtırsınız. 
+**[Aks](../../aks/intro-kubernetes.md)** , kümeleri hızlı bir şekilde dağıtmanıza ve yönetmenize olanak tanıyan bir yönetilen Kubernetes hizmetidir. **[MySQL Için Azure veritabanı-esnek sunucu (Önizleme)](overview.md)** , veritabanı yönetim işlevleri ve yapılandırma ayarları üzerinde daha ayrıntılı denetim ve esneklik sağlamak için tasarlanmış, tam olarak yönetilen bir veritabanı hizmetidir. Şu anda esnek sunucu önizlemededir.
 
 > [!NOTE]
 > - MySQL için Azure veritabanı esnek sunucu şu anda genel önizlemede
@@ -115,7 +116,7 @@ Oluşturulan sunucu aşağıdaki özniteliklere sahiptir:
 - Komut yerel bağlamı kullandığından, sunucuyu kaynak grubunda ```wordpress-project``` ve bölgesinde oluşturacaktır ```eastus``` .
 
 
-## <a name="build-your-wordpress-docker-image"></a>WordPress Docker görüntünüzü oluşturma
+### <a name="build-your-wordpress-docker-image"></a>WordPress Docker görüntünüzü oluşturma
 
 [En son WordPress](https://wordpress.org/download/) sürümünü indirin. Projeniz için yeni bir dizin oluşturun ```my-wordpress-app``` ve bu basit klasör yapısını kullanın
 
@@ -173,6 +174,7 @@ define('DB_COLLATE', '');
 define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
 ```
 
+### <a name="create-a-dockerfile"></a>Dockerfile oluşturma
 Yeni bir Dockerfile oluşturun ve bu kod parçacığını kopyalayın. Bu Dockerfile, PHP ile Apache Web sunucusunu ayarlama ve mysqli uzantısını etkinleştirme.
 
 ```docker
@@ -182,12 +184,12 @@ RUN docker-php-ext-install mysqli
 RUN docker-php-ext-enable mysqli
 ```
 
-## <a name="build-your-docker-image"></a>Docker görüntünüzü oluşturma
-```my-wordpress-app```Komutunu kullanarak bir terminalde dizinde olduğunuzdan emin olun ```cd``` . Bültenin Pano görüntünüzü derlemek için aşağıdaki komutu çalıştırın:
+### <a name="build-your-docker-image"></a>Docker görüntünüzü oluşturma
+```my-wordpress-app```Komutunu kullanarak bir terminalde dizinde olduğunuzdan emin olun ```cd``` . Görüntüyü derlemek için aşağıdaki komutu çalıştırın:
 
 ``` bash
 
-docker build --tag myblog:latest . 
+docker build --tag myblog:latest .
 
 ```
 
@@ -272,8 +274,6 @@ Aşağıdaki örnek çıktıda başarıyla oluşturulan dağıtımlar ve hizmetl
 
 ```output
 deployment "wordpress-blog" created
-service "php-svc" created
-deployment "azure-vote-front" created
 service "php-svc" created
 ```
 

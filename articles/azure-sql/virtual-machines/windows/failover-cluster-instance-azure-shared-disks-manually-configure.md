@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: df50583e650d3d44e702c0f7d1596f2a733a4445
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556395"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359362"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,12 +28,12 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
 - Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
-- [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). [Kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG 'ler) her ikisi de desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
+- [İki veya daha fazla Windows Azure sanal makinesi](failover-cluster-instance-prepare-vm.md). Premium SSD ve [kullanılabilirlik alanları](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) Için desteklenen [kullanılabilirlik kümeleri](../../../virtual-machines/windows/tutorial-availability-sets.md) ve [yakınlık yerleştirme grupları](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) (PPG 'ler), Ultra diskler için desteklenir. Bir PPG kullanırsanız, tüm düğümlerin aynı grupta mevcut olması gerekir.
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
 - En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
@@ -151,17 +151,17 @@ Kümeyi Kullanıcı arabiriminde veya PowerShell kullanarak doğrulayın.
 
 Kullanıcı arabirimini kullanarak kümeyi doğrulamak için sanal makinelerden birinde şunları yapın:
 
-1. **Sunucu Yöneticisi** altında **Araçlar** ' ı seçin ve **Yük devretme kümesi Yöneticisi** ' i seçin.
-1. **Yük devretme kümesi Yöneticisi** altında **eylem** ' i seçin ve ardından **Yapılandırmayı Doğrula** ' yı seçin.
-1. **İleri** ’yi seçin.
+1. **Sunucu Yöneticisi** altında **Araçlar**' ı seçin ve **Yük devretme kümesi Yöneticisi**' i seçin.
+1. **Yük devretme kümesi Yöneticisi** altında **eylem**' i seçin ve ardından **Yapılandırmayı Doğrula**' yı seçin.
+1. **İleri**’yi seçin.
 1. **Sunucu veya küme Seç** altında, her iki sanal makinenin adını da girin.
-1. **Test seçenekleri** altında **yalnızca Seçdiğim Testleri Çalıştır** ' ı seçin. 
-1. **İleri** ’yi seçin.
+1. **Test seçenekleri** altında **yalnızca Seçdiğim Testleri Çalıştır**' ı seçin. 
+1. **İleri**’yi seçin.
 1. **Test seçimi** altında, **depolama** *hariç* tüm testleri seçin
 
 ## <a name="test-cluster-failover"></a>Test kümesi yük devretmesi
 
-Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi** , kümenize sağ tıklayın, **diğer eylemler** ' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü** seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
+Kümenizin yük devretmesini test edin. **Yük devretme kümesi Yöneticisi**, kümenize sağ tıklayın, **diğer eylemler**' i  >  **taşıyın çekirdek küme kaynağı**  >  **Seç düğümünü** seçin ve ardından kümenin diğer düğümünü seçin. Çekirdek küme kaynağını kümenin her düğümüne taşıyın ve ardından birincil düğüme geri taşıyın. Kümeyi her düğüme başarıyla taşıyabiliyorsanız SQL Server yüklemeye hazırsınız demektir.  
 
 :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/test-cluster-failover.png" alt-text="Çekirdek kaynağı diğer düğümlere taşıyarak küme yük devretmesini test etme":::
 
@@ -171,13 +171,13 @@ Yük devretme kümesini ve depolama dahil tüm küme bileşenlerini yapılandır
 
 1. Uzak Masaüstü Protokolü (RDP) kullanarak ilk sanal makineye bağlanın.
 
-1. **Yük devretme kümesi Yöneticisi** , tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
+1. **Yük devretme kümesi Yöneticisi**, tüm çekirdek küme kaynaklarının ilk sanal makinede olduğundan emin olun. Gerekirse, tüm kaynakları bu sanal makineye taşıyın.
 
 1. Yükleme medyasını bulun. Sanal makine Azure Marketi görüntülerinden birini kullanıyorsa medya konumunda bulunur `C:\SQLServer_<version number>_Full` . 
 
 1. **Kurulum 'u** seçin.
 
-1. **SQL Server Yükleme Merkezi** 'nde **yükleme** ' yi seçin.
+1. **SQL Server Yükleme Merkezi**'nde **yükleme**' yi seçin.
 
 1. **Yeni SQL Server yük devretme kümesi yüklemesi ' ni** seçin. SQL Server FCı 'yi yüklemek için sihirbazdaki yönergeleri izleyin.
 
@@ -187,9 +187,9 @@ FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir.
 
 1. Kurulum, ilk düğümde FCı 'yı yükledikten sonra, RDP kullanarak ikinci düğüme bağlanın.
 
-1. **SQL Server yükleme merkezini** açın ve ardından **yükleme** ' yi seçin.
+1. **SQL Server yükleme merkezini** açın ve ardından **yükleme**' yi seçin.
 
-1. **SQL Server yük devretme kümesine düğüm Ekle** ' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
+1. **SQL Server yük devretme kümesine düğüm Ekle**' yi seçin. SQL Server yüklemek ve sunucuyu FCı 'ye eklemek için sihirbazdaki yönergeleri izleyin.
 
    >[!NOTE]
    >SQL Server içeren bir Azure Marketi Galeri görüntüsü kullandıysanız, görüntüye SQL Server Araçlar eklenmiştir. Bu görüntülerden birini kullanmıyorsanız, SQL Server araçlarını ayrı olarak yükleyebilirsiniz. Daha fazla bilgi için bkz. [Download SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).

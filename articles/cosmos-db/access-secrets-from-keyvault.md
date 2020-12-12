@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341391"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359337"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -34,22 +34,22 @@ Key Vault Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için aşa
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.  
-2. **Kaynak oluştur > güvenlik > Key Vault** ' yı seçin.  
+2. **Kaynak oluştur > güvenlik > Key Vault**' yı seçin.  
 3. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:  
    * **Ad:** Key Vault için benzersiz bir ad sağlayın.  
    * **Abonelik:** Kullanacağınız aboneliği seçin.  
-   * **Kaynak Grubu** altında **Yeni oluştur** ’u seçin ve bir kaynak grubu adı girin.  
+   * **Kaynak Grubu** altında **Yeni oluştur**’u seçin ve bir kaynak grubu adı girin.  
    * Konum aşağı açılan menüsünde bir konum seçin.  
    * Diğer seçenekleri varsayılanlarına bırakın.  
-4. Yukarıdaki bilgileri girdikten sonra **Oluştur** ’u seçin.  
+4. Yukarıdaki bilgileri girdikten sonra **Oluştur**’u seçin.  
 
 ## <a name="add-azure-cosmos-db-access-keys-to-the-key-vault"></a>Key Vault Azure Cosmos DB erişim anahtarları ekleyin.
 1. Önceki adımda oluşturduğunuz Key Vault gidin, **gizlilikler** sekmesini açın.  
-2. **+ Oluştur/Içeri aktar** ' ı seçin. 
+2. **+ Oluştur/Içeri aktar**' ı seçin. 
 
    * **Karşıya yükleme seçenekleri** Için **el ile** ' yi seçin.
    * Gizli dizi için bir **ad** girin
-   * Cosmos DB hesabınızın bağlantı dizesini **değer** alanına girin. Sonra **Oluştur** ' u seçin.
+   * Cosmos DB hesabınızın bağlantı dizesini **değer** alanına girin. Ardından **Oluştur**’u seçin.
 
    :::image type="content" source="./media/access-secrets-from-keyvault/create-a-secret.png" alt-text="Gizli anahtar oluşturma":::
 
@@ -59,14 +59,14 @@ Key Vault Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için aşa
 
 ## <a name="create-an-azure-web-application"></a>Azure Web uygulaması oluşturma
 
-1. Bir Azure Web uygulaması oluşturun veya uygulamayı [GitHub deposundan](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo)indirebilirsiniz. Bu basit bir MVC uygulamasıdır.  
+1. Bir Azure Web uygulaması oluşturun veya uygulamayı [GitHub deposundan](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo)indirebilirsiniz. Bu basit bir MVC uygulamasıdır.  
 
 2. İndirilen uygulamayı sıkıştırmayı açın ve **HomeController.cs** dosyasını açın. Aşağıdaki satırdaki gizli KIMLIĞI güncelleştirin:
 
    `var secret = await keyVaultClient.GetSecretAsync("<Your Key Vault’s secret identifier>")`
 
 3. Dosyayı **kaydedin** , çözümü **derleyin** .  
-4. Ardından uygulamayı Azure 'a dağıtın. Projeye sağ tıklayın ve **Yayımla** ' yı seçin. Yeni bir App Service profili oluşturun (uygulama WebAppKeyVault1 adını verebilir ve **Yayımla** ' yı seçebilirsiniz.   
+4. Ardından uygulamayı Azure 'a dağıtın. Projeye sağ tıklayın ve **Yayımla**' yı seçin. Yeni bir App Service profili oluşturun (uygulama WebAppKeyVault1 adını verebilir ve **Yayımla**' yı seçebilirsiniz.   
 
 5. Uygulama dağıtıldıktan sonra. Azure portal, dağıttığınız Web uygulamasına gidin ve bu uygulamanın **yönetilen hizmet kimliğini** açın.  
 
@@ -82,7 +82,7 @@ Bu bölümde, uygulamayı Azure Active Directory kaydeder ve uygulamanın Key Va
 
 1. Azure portal gidin, önceki bölümde oluşturduğunuz **Key Vault** açın.  
 
-2. **Erişim ilkelerini** açın, **+ Yeni Ekle** ' yi seçin ve dağıttığınız Web uygulamasını bulun, izinler ' i seçin ve **Tamam** ' ı seçin.  
+2. **Erişim ilkelerini** açın, **+ Yeni Ekle** ' yi seçin ve dağıttığınız Web uygulamasını bulun, izinler ' i seçin ve **Tamam**' ı seçin.  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Erişim İlkesi Ekle":::
 

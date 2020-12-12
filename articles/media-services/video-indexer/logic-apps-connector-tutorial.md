@@ -8,18 +8,18 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: f557794265f3bbf48fae97fc04e5e9b068b54f63
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540417"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358580"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Öğretici: mantıksal uygulama ve güç otomatikleştirme ile Video Indexer kullanma
 
 Azure Media Services [video Indexer v2 REST API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Delete-Video?) hem sunucudan sunucuya hem de istemciden sunucuya iletişimi destekler ve video Indexer kullanıcıların video ve ses öngörülerini kolayca uygulama mantığına tümleştirmesini sağlar.
 
-Tümleştirmeyi daha da kolay hale getirmek için, [Logic Apps](https://azure.microsoft.com/services/logic-apps/)   API 'imizde uyumlu olan Logic Apps ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
+Tümleştirmeyi daha da kolay hale getirmek için, [](https://azure.microsoft.com/services/logic-apps/)   API 'imizde uyumlu olan Logic Apps ve [Güç otomatikleştirme](https://preview.flow.microsoft.com/connectors/shared_videoindexer-v2/video-indexer-v2/)   bağlayıcılarını destekliyoruz. Tek bir kod satırı yazmadan büyük miktarda video ve ses dosyasından öngörüleri etkin bir şekilde indekslemek ve ayıklamak üzere özel iş akışları ayarlamak için bağlayıcıları kullanabilirsiniz. Ayrıca, tümleştirmenize yönelik bağlayıcılar kullanılması, iş akışınızın sistem durumu ve hata ayıklamanın kolay bir yolu hakkında daha iyi görünürlük sağlar.  
 
 Video Indexer bağlayıcılarıyla hızlıca çalışmaya başlamanıza yardımcı olması için, kullanabileceğiniz örnek bir mantıksal uygulama ve Power otomatikleştirmede izlenecek yol göstereceğiz. Bu öğreticide, Logic Apps kullanarak akışların nasıl ayarlanacağı gösterilmektedir. Ancak, düzenleyiciler ve yetenekler her iki çözümde da neredeyse aynıdır, bu nedenle diyagramlar ve açıklamalar hem Logic Apps hem de güç otomatikleştirme için geçerlidir.
 
@@ -136,3 +136,5 @@ Bu öğretici yalnızca bir Video Indexer bağlayıcılar örneği olduğunu gö
 
 > [!div class="nextstepaction"]
 > [Video Indexer API'sini kullanma](video-indexer-use-apis.md)
+
+Ek kaynaklar için [video dizin oluşturucuda](https://docs.microsoft.com/connectors/videoindexer-v2/) bu belgeye başvurun.

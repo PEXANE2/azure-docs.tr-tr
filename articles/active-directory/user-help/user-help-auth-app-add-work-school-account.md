@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: e003c45aa1e7d75b709b7fbf99532fb1302fcbb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 04c9bc429d9663f7ac36b6ba8f40abf225eb71c6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88797658"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359124"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına iş veya okul hesabınızı ekleyin
 
@@ -27,30 +27,49 @@ Kuruluşunuz iki öğeli doğrulama kullanıyorsa, iş veya okul hesabınızı d
 
 ## <a name="add-your-work-or-school-account"></a>İş veya okul hesabınızı ekleyin
 
-1. Bilgisayarınızda [ek güvenlik doğrulama](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) sayfasına gidin.
+Aşağıdakilerden birini yaparak iş veya okul hesabınızı Microsoft Authenticator uygulamasına ekleyebilirsiniz:
 
-    >[!Note]
-    >**Ek güvenlik doğrulama** sayfasını görmüyorsanız, yöneticiniz güvenlik bilgileri (Önizleme) deneyimini açmış olabilir. Bu durumda, [bir Authenticator uygulaması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-auth-app.md) bölümündeki yönergeleri izlemelisiniz. Böyle bir durum söz konusu değilse, yardım almak için kuruluşunuzun yardım masasına başvurmanız gerekir. Güvenlik bilgileri hakkında daha fazla bilgi için bkz. [güvenlik bilgileri (Önizleme) genel bakış](./security-info-setup-signin.md).
+- İş veya okul hesabınızla oturum açın kimlik bilgileri (Önizleme)
+- QR kodunu tarama
 
-2. **Authenticator uygulaması**' nın yanındaki kutuyu işaretleyin ve ardından **Yapılandır**' ı seçin.
+### <a name="sign-in-with-your-credentials"></a>Kimlik bilgilerinizle oturum açın
 
-    **Mobil uygulamayı Yapılandır** sayfası görünür.
+>[!Note]
+>Bu özellik yalnızca yöneticileri BT 'nin kimlik doğrulayıcı uygulamasını kullanarak telefonla oturum açmayı etkin olan kullanıcılar tarafından kullanılabilir.
 
-    ![QR kodu sağlayan ekran](./media/user-help-auth-app-download-install/auth-app-barcode.png)
+Kimlik bilgilerinizi kullanarak iş veya okul hesabınızda oturum açarak bir hesap eklemek için:
 
-3. Microsoft Authenticator uygulamasını açın, sağ üst köşedeki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin ve sonra **iş veya okul hesabı**' nı seçin.
+1. Microsoft Authenticator uygulamasını açın ve **+** düğmeyi seçip **iş veya okul hesabı ekle**' ye dokunun. **Oturum aç**'ı seçin.
 
-    >[!Note]
-    >Microsoft Authenticator uygulamasını ilk kez ayarlıyorsanız, uygulamanın kameranıza erişmesine izin verip vermeyeceğinizi (iOS) veya uygulamanın resim almasına ve video (Android) kaydetmesine izin verip vermeyeceğinizi soran bir istem alabilirsiniz. Bir sonraki adımda QR kodunun bir resmini almak için, kimlik doğrulayıcı uygulamasının kameranıza erişebilmesi için **Izin ver** ' i seçmeniz gerekir. Kameraya izin vermezseniz, kimlik doğrulayıcı uygulamasını ayarlamaya devam edebilirsiniz, ancak kod bilgilerini el ile eklemeniz gerekir. Kodu el ile ekleme hakkında daha fazla bilgi için bkz. [uygulamaya el ile hesap ekleme](user-help-auth-app-add-account-manual.md).
+1. İş veya okul hesabınızın kimlik bilgilerini girin. Geçici bir erişim geçişinizdeki (dokunarak) oturum açmak için bunu kullanabilirsiniz. Bu noktada, muhtemelen aşağıdaki koşullardan biri ile devam etmeniz engellenebilir:
 
-4. Bilgisayarınızda **mobil uygulama yapılandırma** ekranından QR kodunu taramak için cihazınızın kamerayı kullanın ve ardından **bitti**' yi seçin.
+   - Hesabınız üzerinde güçlü bir kimlik doğrulama belirteci almak için yeterli kimlik doğrulama yöntemine sahip değilseniz, hesap ekleme işlemine devam edemezsiniz.
 
-    >[!Note]
-    >Kameranız QR kodunu yakalayamaz, iki öğeli doğrulama için hesap bilgilerinizi Microsoft Authenticator uygulamasına el ile ekleyebilirsiniz. Daha fazla bilgi ve nasıl yapılacağı hakkında daha fazla bilgi için, bkz. [hesabınızı el ile ekleme](user-help-auth-app-add-account-manual.md).
+   - İletiyi alırsanız `You might be signing in from a location that is restricted by your admin` , engellenir ve [güvenlik bilgilerinde](https://mysignins.microsoft.com/security-info)sizi engellemeyi kaldırmanız gerekir.
 
-5. Hesabınızın doğru olduğundan ve altı basamaklı bir doğrulama kodu olduğundan emin olmak için cihazınızdaki uygulamanın **hesaplar** ekranını gözden geçirin. Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+   - Yönetici tarafından kimlik doğrulayıcı uygulamasını kullanarak telefon oturumu açma izniniz engellenmemişse, passwordless telefon oturum açma ve Azure Multi-Factor Authentication (MFA) için kurulum için cihaz kaydı ' na gidebilirsiniz.
 
-    ![Hesaplar ekranı](./media/user-help-auth-app-download-install/auth-app-accounts.png)
+1. Bu noktada, uygulamada şirket içi Multi-Factor Authentication hesabı ayarlamak için kuruluşunuz tarafından sunulan bir QR kodunu taramak isteyip istemediğiniz sorulabilir. Bunu yalnızca kuruluşunuz şirket içi MFA sunucusu kullanıyorsa yapmanız gerekir.
+
+1. Cihazınızda hesaba dokunun ve tam ekran görünümünde hesabınızın doğru olduğunu ve altı basamaklı bir doğrulama kodu olduğunu doğrulayın. Ek güvenlik için, doğrulama kodu her 30 saniyede bir kullanıcının kodu birden çok kez kullanmasını önler.
+
+## <a name="sign-in-with-a-qr-code"></a>QR kodu ile oturum açın
+
+Bir QR kodunu tarayarak bir hesap eklemek için aşağıdakileri yapın:
+
+1. Bilgisayarınızda **ek güvenlik doğrulama** sayfasına gidin.
+
+   >[!Note]
+   >**Ek güvenlik doğrulama** sayfasını görmüyorsanız, yöneticiniz güvenlik bilgileri (Önizleme) deneyimini açmış olabilir. Bu durumda, [bir Authenticator uygulaması kullanmak için güvenlik bilgilerini ayarlama](security-info-setup-auth-app.md) bölümündeki yönergeleri izlemelisiniz. Böyle bir durum söz konusu değilse, yardım almak için kuruluşunuzun yardım masasına başvurmanız gerekir. Güvenlik bilgileri hakkında daha fazla bilgi için bkz. [oturum açma Isteminden güvenlik bilgilerinizi ayarlama](security-info-setup-signin.md).
+
+1. Authenticator uygulaması ' nın yanındaki onay kutusunu işaretleyin ve ardından **Yapılandır**' ı seçin. **Mobil uygulamayı Yapılandır** sayfası görünür.
+
+   ![QR kodu sağlayan ekran](./media/user-help-auth-app-add-work-school-account/auth-app-barcode.png)
+
+1. Microsoft Authenticator uygulamasını açın, artı simgesini seçin, ![ iOS veya Android cihazlarda artı simgesini seçin ](media/user-help-auth-app-add-work-school-account/plus-icon.png) ve **Hesap Ekle**' yi seçin, sonra da **iş veya okul hesabı '** nı seçin ve ardından **QR kodunu tarayın**.
+   Kimlik doğrulayıcı uygulamasında ayarlanmış bir hesabınız yoksa **Hesap Ekle**' yi belirten büyük mavi bir düğme görürsünüz.
+
+Bir QR kodunu taramak için kameranızı kullanmanız istenmezse, telefonunuzun ayarlarınızda, kimlik doğrulayıcı uygulamasının telefon kameraya erişimi olduğundan emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

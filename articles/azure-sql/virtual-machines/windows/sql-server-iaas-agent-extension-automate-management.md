@@ -8,6 +8,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -16,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 572363f429cb828d44c9dd12ba2424930c94fefe
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: e8268630b2c108dc95ded059ce41866a14fadd0e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553548"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359260"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>SQL Server IaaS Aracısı Uzantısı ile yönetimi otomatikleştirme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -35,13 +36,13 @@ Bu makale, uzantıya genel bir bakış sağlar. SQL Server IaaS uzantısını Az
 
 SQL Server IaaS Aracısı uzantısı, Azure VM 'lerinde SQL Server için birkaç avantaj sağlar: 
 
-- **Özellik avantajları** : uzantı, Portal yönetimi, lisans esnekliği, otomatik yedekleme, otomatik düzeltme eki uygulama ve daha fazlası gibi birçok Otomasyon özelliği avantajlarından yararlanır. Ayrıntılar için bu makalenin ilerleyen kısımlarında bulunan [özellik avantajları](#feature-benefits) bölümüne bakın. 
+- **Özellik avantajları**: uzantı, Portal yönetimi, lisans esnekliği, otomatik yedekleme, otomatik düzeltme eki uygulama ve daha fazlası gibi birçok Otomasyon özelliği avantajlarından yararlanır. Ayrıntılar için bu makalenin ilerleyen kısımlarında bulunan [özellik avantajları](#feature-benefits) bölümüne bakın. 
 
-- **Uyumluluk** : uzantı, Microsoft 'a Azure hibrit avantajı, ürün koşullarında belirtilen şekilde etkinleştirildiğini bildirmek için gereksinimi karşılamakta olan basitleştirilmiş bir yöntem sunar. Bu işlem, her kaynak için lisanslama kayıt formlarını yönetmeye gerek duymasını geçersiz kılar.  
+- **Uyumluluk**: uzantı, Microsoft 'a Azure hibrit avantajı, ürün koşullarında belirtilen şekilde etkinleştirildiğini bildirmek için gereksinimi karşılamakta olan basitleştirilmiş bir yöntem sunar. Bu işlem, her kaynak için lisanslama kayıt formlarını yönetmeye gerek duymasını geçersiz kılar.  
 
-- **Ücretsiz** : tüm üç yönetilebilirlik modundaki uzantı tamamen ücretsizdir. Uzantı ile ilişkili ek maliyet yoktur veya değiştirme yönetimi modları vardır. 
+- **Ücretsiz**: tüm üç yönetilebilirlik modundaki uzantı tamamen ücretsizdir. Uzantı ile ilişkili ek maliyet yoktur veya değiştirme yönetimi modları vardır. 
 
-- **Basitleştirilmiş lisans yönetimi** : uzantı SQL Server lisans yönetimini basitleştirir ve [Azure Portal](manage-sql-vm-portal.md), Azure CLI veya PowerShell kullanarak etkinleştirilen Azure hibrit avantajı SQL Server VM 'leri hızlıca tanımlamanızı sağlar: 
+- **Basitleştirilmiş lisans yönetimi**: uzantı SQL Server lisans yönetimini basitleştirir ve [Azure Portal](manage-sql-vm-portal.md), Azure CLI veya PowerShell kullanarak etkinleştirilen Azure hibrit avantajı SQL Server VM 'leri hızlıca tanımlamanızı sağlar: 
 
    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -133,7 +134,7 @@ Uzantının durumunu denetlemek için Azure portal veya Azure PowerShell kullan�
 
 Azure portal uzantının yüklü olduğunu doğrulayın. 
 
-Sanal makine bölmesinde **Tüm ayarlar** ' ı seçin ve ardından **Uzantılar** ' ı seçin. **Sqliaasextenma** uzantısının listelendiğini görmeniz gerekir.
+Sanal makine bölmesinde **Tüm ayarlar** ' ı seçin ve ardından **Uzantılar**' ı seçin. **Sqliaasextenma** uzantısının listelendiğini görmeniz gerekir.
 
 ![Azure portal IaaS Aracısı uzantısının durumu SQL Server](./media/sql-server-iaas-agent-extension-automate-management/azure-rm-sql-server-iaas-agent-portal.png)
 

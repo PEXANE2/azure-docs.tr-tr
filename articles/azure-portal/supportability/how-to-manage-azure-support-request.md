@@ -5,12 +5,12 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: a9dd703dc0a3f5e8f85b1022fa2a71ff9a8c295d
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745579"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359073"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure destek isteğini yönetme
 
@@ -88,36 +88,36 @@ Karşıya dosya yükleme seçeneğini kullandığınızda aşağıdaki yönergel
 * Dosyalar 4 MB 'tan büyük olamaz.
 * Tüm dosyalar *. docx* veya *. xlsx* gibi bir dosya adı uzantısına sahip olmalıdır. Aşağıdaki tabloda karşıya yükleme için izin verilen dosya adı uzantıları gösterilmektedir.
 
-| 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
+| 0-9, A-C     | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | .dat  | . HWL        | . ODX  | . rar     | . tdb       | .xlam   |
-| . a          | . db   | . ics        | . oft  | . rdl     | . tdf       | . XLR    |
-| . abc        | . DMP  | dosyasında        | . Old  | . rdlc    | . metin      | .xls    |
-| . adm        | .do_  | .java       | . One  | .re_     | .thmx      | .xlsb   |
-| .aspx       | .doc  | .jpg        | .osd  | . reg     | .tif       | .xlsm   |
-| . ATF        | .docm | . LDF        | . OUT  | . Kaldır  | . trc       | .xlsx   |
-| . b          | .docx | . antetli | . P1   | . Ren     | . TTD       | .xlt    |
-| .ba_        | .dotm | . lnk        | . pcap | . yeniden adlandır  | .tx_       | .xltx   |
-| . bak        | .dotx | .lo_        | . pdb  | . rft     | .txt       | .xml    |
-| .bat        | . dtsx | günlük        | .pdf  | . rpt     | .uccapilog | . xmla   |
-| . blg        | . EDS  | . lpk        | . Piz  | . rte     | . uccplog   | .xps    |
-| .CA_        | . EMF  | . manifest   | . pmls | .rtf     | . udcx      | . xsd    |
-| . CAB        | . eml  | . Master     | .png  | . Run     | .vb_       | . xsn    |
-| . Cap        | . emz  | . mdmp       | .potx | . saz     | .vbs_      | . xxx    |
-| . CATX       | . err  | . mof        | .ppt  | .sql     | . vcf       | .z_     |
-| . CFG        | . etl  | .mp3        | .pptm | . sqlplan | . VSD       | .z01    |
-| . sıkıştırılmış | . evt  | .mpg        | .pptx | . STP     | . wdb       | .z02    |
-| . Config     | . evtx | .ms_        | . prn  | . svclog  | . WKS       | . Zi     |
-| . CPK        | . EX   | . msg        | . psf  |   -       | .wma       | .zi_    |
-| . cpp        | .ex_  | .msi        | . pst  |  -        | .wmv       | .zip    |
-| .cs         | .ex0  | . mso        | . pub  | -         | . wmz       | .zip_   |
-| . CSV        | . FRD  | . msu        | -      |-          | . WPS       | . Zipp   |
-| . CVR        | .gif  | . nfo        | -      |-          | . WPT       | . zip 'lenmiş |
-| -            | . Guid | -            | -      | -         | . wsdl      | . zipkopyala  |
-| -            | . gz   | -            | -      | -         | . wsp       | . ZIPX   |
-| -            | -      | -            | -      | -         | . WTL       | . zit    |
-| -            | -      | -            | -      | -         |     -       | . ZX    |
-| -            | -      | -            | -      | -         |  -          | . zzz    |
+| .7z         | .dat  | . har        | . ODX  | . rar     | . tdb       | .xlam   |
+| . a          | . db   | . HWL        | . oft  | . rdl     | . tdf       | . XLR    |
+| . abc        | . DMP  | . ics        | . Old  | . rdlc    | . metin      | .xls    |
+| . adm        | .do_  | dosyasında        | . One  | .re_     | .thmx      | .xlsb   |
+| .aspx       | .doc  | .java       | .osd  | . reg     | .tif       | .xlsm   |
+| . ATF        | .docm | .jpg        | . DıŞı  | . Kaldır  | . trc       | .xlsx   |
+| . b          | .docx | . LDF        | . P1   | . Ren     | . TTD       | .xlt    |
+| .ba_        | .dotm | . antetli | . pcap | . yeniden adlandır  | .tx_       | .xltx   |
+| . bak        | .dotx | . lnk        | . pdb  | . rft     | .txt       | .xml    |
+| .bat        | . dtsx | .lo_        | .pdf  | . rpt     | .uccapilog | . xmla   |
+| . blg        | . EDS  | günlük        | . Piz  | . rte     | . uccplog   | .xps    |
+| .CA_        | . EMF  | . lpk        | . pmls | .rtf     | . udcx      | . xsd    |
+| . KABINI        | . eml  | . manifest   | .png  | . Run     | .vb_       | . xsn    |
+| . Cap        | . emz  | . Master     | .potx | . saz     | .vbs_      | . xxx    |
+| . CATX       | . err  | . mdmp       | .ppt  | .sql     | . vcf       | .z_     |
+| . SATıRıNDA        | . etl  | . mof        | .pptm | . sqlplan | . VSD       | .z01    |
+| . sıkıştırılmış | . evt  | .mp3        | .pptx | . STP     | . wdb       | .z02    |
+| . Kurulumunun     | . evtx | .mpg        | . prn  | . svclog  | . WKS       | . Zi     |
+| . CPK        | . DEĞERINE   | .ms_        | . psf  | -        | .wma       | .zi_    |
+| . cpp        | .ex_  | . msg        | . pst  | -        | .wmv       | .zip    |
+| .cs         | .ex0  | .msi        | . pub  | -        | . wmz       | .zip_   |
+| . CSV        | . FRD  | . mso        | -     | -        | . WPS       | . Zipp   |
+| . CVR        | .gif  | . msu        | -     | -        | . WPT       | . zip 'lenmiş |
+| -           | . Guid | . nfo        | -     | -        | . wsdl      | . zipkopyala  |
+| -           | . gz   | -           | -     | -        | . wsp       | . ZIPX   |
+| -           | -     | -           | -     | -        | . WTL       | . zit    |
+| -           | -     | -           | -     | -        | -          | . ZX    |
+| -           | -     | -           | -     | -        | -          | . zzz    |
 
 ## <a name="reopen-a-closed-request"></a>Kapatılan bir isteği yeniden açın
 

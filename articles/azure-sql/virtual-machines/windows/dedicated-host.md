@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bb80abc35aedcdf0b46cefa279e477739cf1df6b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 957e458bf21eb4a95b1faba1daf0459271648310
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789803"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358699"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Azure adanmış bir konakta SQL Server VM çalıştırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,8 +37,8 @@ Bu makalede, [Azure adanmış ana bilgisayarı](../../../virtual-machines/dedica
 
 SQL Server VM Azure ayrılmış bir konağa yerleştirdiğinizde iki farklı lisans seçeneği arasından seçim yapabilirsiniz. 
 
-  - **SQL VM lisanslama** : Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
-  - **Adanmış konak lisanslama** : Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
+  - **SQL VM lisanslama**: Bu, her SQL Server VM lisansı için ayrı olarak ödediğiniz mevcut lisanslama seçeneğidir. 
+  - **Adanmış konak lisanslama**: Azure adanmış ana bilgisayar için sunulan yeni lisanslama modeli, SQL Server lisanslarının paketlenmiş ve ana bilgisayar düzeyinde için ödendiği yerdir. 
 
 
 Mevcut SQL Server lisanslarını kullanmaya yönelik konak düzeyi seçenekleri: 
@@ -72,7 +73,7 @@ Y: müşteriler, Azure Hibrit Avantajı kullanarak Azure adanmış ana bilgisaya
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

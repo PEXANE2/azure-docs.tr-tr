@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: f76fdb1559c90073d15ecad7acea58b6c7ed8b2e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021478"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359634"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks Azure Cosmos DB Cassandra API verilere erişin
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -54,14 +54,14 @@ Bu makalede, [Azure Databricks](/azure/databricks/scenarios/what-is-azure-databr
 
 ## <a name="sample-notebooks"></a>Örnek not defterleri
 
-Azure Databricks [örnek Not defterlerinin](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/notebooks/scala) listesi, GitHub deposunda indirileceği için kullanılabilir. Bu örnekler, Spark 'tan Azure Cosmos DB Cassandra API bağlanmayı ve veriler üzerinde farklı CRUD işlemleri yapmayı içerir. Ayrıca [, tüm not defterlerini](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/master/dbc) Databricks kümesi çalışma alanınıza aktarabilir ve çalıştırabilirsiniz. 
+Azure Databricks [örnek Not defterlerinin](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/main/notebooks/scala) listesi, GitHub deposunda indirileceği için kullanılabilir. Bu örnekler, Spark 'tan Azure Cosmos DB Cassandra API bağlanmayı ve veriler üzerinde farklı CRUD işlemleri yapmayı içerir. Ayrıca [, tüm not defterlerini](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-databricks/tree/main/dbc) Databricks kümesi çalışma alanınıza aktarabilir ve çalıştırabilirsiniz. 
 
 ## <a name="accessing-azure-cosmos-db-cassandra-api-from-spark-scala-programs"></a>Spark Scala programlarından Azure Cosmos DB Cassandra API erişme
 
 Azure Databricks üzerinde otomatikleştirilmiş işlemler olarak çalıştırılacak Spark programları [Spark-gönder](https://spark.apache.org/docs/latest/submitting-applications.html)kullanılarak kümeye gönderilir ve Azure Databricks işleri aracılığıyla çalıştırılmak üzere zamanlanır.
 
 Aşağıda, Azure Cosmos DB Cassandra API etkileşimde bulunmak için Spark Scala programları oluşturmaya başlamanıza yardımcı olacak bağlantılar yer alır.
-* [Spark Scala programından Azure Cosmos DB Cassandra API bağlama](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Spark Scala programından Azure Cosmos DB Cassandra API bağlama](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 * [Spark Scala programını Azure Databricks üzerinde otomatik iş olarak çalıştırma](https://docs.azuredatabricks.net/user-guide/jobs.html)
 * [Cassandra API ile çalışmak için kod örneklerinin tüm listesi](cassandra-spark-generic.md#next-steps)
 

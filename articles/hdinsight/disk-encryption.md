@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005665"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359768"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Bekleyen veriler için Azure HDInsight çift şifrelemesi
 
@@ -36,7 +36,7 @@ Bu türler aşağıdaki tabloda özetlenmiştir.
 |Küme türü |İşletim sistemi diski (yönetilen disk) |Veri diski (yönetilen disk) |Geçici veri diski (yerel SSD) |
 |---|---|---|---|
 |Hızlandırılmış yazma ile Kafka, HBase|LAYER1: [SSE şifreleme](../virtual-machines/managed-disks-overview.md#encryption) varsayılan olarak|LAYER1: [SSE şifreleme](../virtual-machines/managed-disks-overview.md#encryption) varsayılan olarak, Layer2: CMK kullanarak Rest 'de isteğe bağlı şifreleme|LAYER1: PMK kullanılarak konakta Isteğe bağlı şifreleme, Layer2: CMK kullanarak bekleyen Isteğe bağlı şifreleme|
-|Diğer tüm kümeler (Spark, etkileşimli, Hadoop, hızlandırılmamış yazma olmadan HBase)|LAYER1: [SSE şifreleme](../virtual-machines/managed-disks-overview.md#encryption) varsayılan olarak|YOK|LAYER1: PMK kullanılarak konakta Isteğe bağlı şifreleme, Layer2: CMK kullanarak bekleyen Isteğe bağlı şifreleme|
+|Diğer tüm kümeler (Spark, etkileşimli, Hadoop, hızlandırılmamış yazma olmadan HBase)|LAYER1: [SSE şifreleme](../virtual-machines/managed-disks-overview.md#encryption) varsayılan olarak|Yok|LAYER1: PMK kullanılarak konakta Isteğe bağlı şifreleme, Layer2: CMK kullanarak bekleyen Isteğe bağlı şifreleme|
 
 ## <a name="encryption-at-rest-using-customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarları kullanarak bekleyen şifreleme
 
@@ -111,7 +111,7 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 1. **Ekle**’yi seçin.
 
-1. **Kaydet**'i seçin.
+1. **Kaydet**’i seçin.
 
     ![Azure Key Vault erişim ilkesini Kaydet](./media/disk-encryption/add-key-vault-access-policy-save.png)
 
@@ -119,15 +119,24 @@ HDInsight yalnızca Azure Key Vault destekler. Kendi anahtar kasanıza sahipseni
 
 Artık yeni bir HDInsight kümesi oluşturmaya hazırsınız. Müşteri tarafından yönetilen anahtarlar, küme oluşturma sırasında yalnızca yeni kümelere uygulanabilir. Şifreleme, müşteri tarafından yönetilen anahtar kümelerinden kaldırılamaz ve müşteri tarafından yönetilen anahtarlar var olan kümelere eklenemez.
 
+HDInsight, [kasım 2020 sürümünden](hdinsight-release-notes.md#release-date-11182020)itibaren, hem sürümlü hem de sürüm-daha seyrek anahtar URI 'leri kullanarak kümelerin oluşturulmasını destekler. Kümeyi bir sürüm daha az anahtar URI 'SI ile oluşturursanız, HDInsight kümesi, anahtar Azure Key Vault anahtar güncelleştirilirken anahtar otomatik döndürmeyi gerçekleştirmeye çalışır. Kümeyi sürümlü anahtar URI 'SI ile oluşturursanız, [şifreleme anahtarını döndürme](#rotating-the-encryption-key)bölümünde anlatıldığı şekilde el ile anahtar döndürme gerçekleştirmeniz gerekecektir.
+
+Kasım 2020 sürümünden önce oluşturulan kümeler için, sürümlü anahtar URI 'sini kullanarak anahtar döndürmeyi el ile gerçekleştirmeniz gerekir.
+
 #### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 
-Küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam **anahtar tanımlayıcısını** sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Ayrıca, yönetilen kimliği kümeye atamanız ve anahtar URI 'sini sağlamanız gerekir.
+Küme oluşturma sırasında, sürümlü bir anahtar ya da aşağıdaki şekilde bir sürümsuz anahtar kullanabilirsiniz:
+
+- **Sürümlü** -küme oluşturma sırasında, anahtar sürümü de dahil olmak üzere tam **anahtar tanımlayıcısını** sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`.
+- **Versionless** -küme oluşturma sırasında yalnızca **anahtar tanımlayıcısını** sağlayın. Örneğin, `https://contoso-kv.vault.azure.net/keys/myClusterKey`.
+
+Ayrıca, yönetilen kimliği kümeye atamanız gerekir.
 
 ![Yeni küme oluştur](./media/disk-encryption/create-cluster-portal.png)
 
 #### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
-Aşağıdaki örnek, disk şifrelemesi etkinken yeni bir Apache Spark kümesi oluşturmak için Azure CLı 'nın nasıl kullanılacağını göstermektedir. Daha fazla bilgi için bkz. [Azure CLI az HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create).
+Aşağıdaki örnek, disk şifrelemesi etkinken yeni bir Apache Spark kümesi oluşturmak için Azure CLı 'nın nasıl kullanılacağını göstermektedir. Daha fazla bilgi için bkz. [Azure CLI az HDInsight Create](/cli/azure/hdinsight#az-hdinsight-create). Parametresi `encryption-key-version` isteğe bağlıdır.
 
 ```azurecli
 az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
@@ -141,7 +150,7 @@ az hdinsight create -t spark -g MyResourceGroup -n MyCluster \
 
 #### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarını kullanma
 
-Aşağıdaki örnekte, disk şifrelemesi etkin olan yeni bir Apache Spark kümesi oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [ARM şablonları nedir?](../azure-resource-manager/templates/overview.md).
+Aşağıdaki örnekte, disk şifrelemesi etkin olan yeni bir Apache Spark kümesi oluşturmak için bir Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Daha fazla bilgi için bkz. [ARM şablonları nedir?](../azure-resource-manager/templates/overview.md). Resource Manager şablonu özelliği `diskEncryptionKeyVersion` isteğe bağlıdır.
 
 Bu örnek, şablonu çağırmak için PowerShell kullanır.
 
@@ -355,7 +364,7 @@ Kaynak yönetimi şablonunun içeriği `azuredeploy.json` :
 
 ### <a name="rotating-the-encryption-key"></a>Şifreleme anahtarını döndürme
 
-Oluşturulduktan sonra HDInsight kümesi tarafından kullanılan şifreleme anahtarlarını değiştirmek isteyebileceğiniz senaryolar olabilir. Bu, Portal aracılığıyla kolayca olabilir. Bu işlem için, kümenin hem geçerli anahtara hem de hedeflenen yeni anahtara erişimi olması gerekir, aksi takdirde anahtar döndürme işlemi başarısız olur.
+Çalışan Kümenizde kullanılan şifreleme anahtarlarını Azure portal veya Azure CLı kullanarak değiştirebilirsiniz. Bu işlem için, kümenin hem geçerli anahtara hem de hedeflenen yeni anahtara erişimi olması gerekir, aksi takdirde anahtar döndürme işlemi başarısız olur. Kasım 2020 sürümünden sonra oluşturulan kümeler için yeni anahtarınızı bir sürüme sahip olacak şekilde kullanmak istiyorsanız seçeneğini belirleyebilirsiniz. Kasım 2020 sürümünden önce oluşturulan kümeler için, şifreleme anahtarını döndürürken sürümlü bir anahtar kullanmanız gerekir.
 
 #### <a name="using-the-azure-portal"></a>Azure portalını kullanma
 

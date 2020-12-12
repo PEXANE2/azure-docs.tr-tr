@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: eae5c38c80c43ffed5138733d9425e2055dc0b76
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334013"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359566"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark Azure Cosmos DB bağlayıcısını kullanarak büyük veri analizlerini hızlandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,9 @@ Bağlayıcıyı Azure 'da yönetilen Spark kümeleri sağlayan [Azure Databricks
 > Bu bağlayıcı Azure Cosmos DB Çekirdek (SQL) API 'sini destekler.
 > MongoDB API 'SI için Cosmos DB için [MongoDB Spark bağlayıcısını](https://docs.mongodb.com/spark-connector/master/)kullanın.
 > Cosmos DB Cassandra API için [Cassandra Spark bağlayıcısını](https://github.com/datastax/spark-cassandra-connector)kullanın.
->
+
+> [!IMPORTANT]
+> Azure Cosmos DB Spark Bağlayıcısı Şu anda [sunucusuz](serverless.md) hesaplarda desteklenmez. Sunucusuz teklif genel kullanıma açık hale geldiği için bu işlem karşılanır.
 
 ## <a name="quickstart"></a>Hızlı Başlangıç
 
@@ -275,11 +277,11 @@ mvn clean package
 
 [Cosmos DB Spark GitHub deposunda](https://github.com/Azure/azure-cosmosdb-spark) , deneyebileceğiniz aşağıdaki örnek Not defterleri ve betikler bulunur.
 
-* **Spark ve Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)HTML ile zaman içinde uçuş performansı  |  [html](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Spark SQL, graphframes 'i göstermek ve ml işlem hatlarını kullanarak uçuş gecikmelerini tahmin etmek için HDInsight Jupyter Notebook hizmetini kullanarak Spark 'ı Cosmos DB bağlayın.
-* **Apache Spark ve Azure Cosmos DB değişiklik akışı ile Twitter kaynağı** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
-* **Cosmos DB grafiklerini sorgulamak için Apache Spark kullanma** : [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
+* **Spark ve Cosmos DB (Seattle)** [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.ipynb)HTML ile zaman içinde uçuş performansı  |  [](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/On-Time%20Flight%20Performance%20with%20Spark%20and%20Cosmos%20DB%20-%20Seattle.html): Spark SQL, graphframes 'i göstermek ve ml işlem hatlarını kullanarak uçuş gecikmelerini tahmin etmek için HDInsight Jupyter Notebook hizmetini kullanarak Spark 'ı Cosmos DB bağlayın.
+* **Apache Spark ve Azure Cosmos DB değişiklik akışı ile Twitter kaynağı**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Twitter%20with%20Spark%20and%20Azure%20Cosmos%20DB%20Change%20Feed.html)
+* **Cosmos DB grafiklerini sorgulamak için Apache Spark kullanma**: [ipynb](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.ipynb)  |  [HTML](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/notebooks/Using%20Apache%20Spark%20to%20query%20Cosmos%20DB%20Graphs.html)
 * Kullanarak **[Azure Cosmos DB Azure Databricks bağlama](https://docs.databricks.com/spark/latest/data-sources/azure/cosmosdb-connector.html)** `azure-cosmosdb-spark` .  Buraya bağlı, Ayrıca, [Şirket Içi uçuş performansı Not defterinin](https://github.com/dennyglee/databricks/tree/master/notebooks/Users/denny%40databricks.com/azure-databricks)Azure Databricks bir sürümüdür.
-* **[Azure Cosmos DB ve HDInsight Ile lambda mimarisi (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)** : Cosmos DB ve Spark kullanarak büyük veri işlem hatlarını korumanın işletimsel yükünü azaltabilirsiniz.
+* **[Azure Cosmos DB ve HDInsight Ile lambda mimarisi (Apache Spark)](https://github.com/Azure/azure-cosmosdb-spark/blob/master/samples/lambda/readme.md)**: Cosmos DB ve Spark kullanarak büyük veri işlem hatlarını korumanın işletimsel yükünü azaltabilirsiniz.
 
 ## <a name="more-information"></a>Daha Fazla Bilgi
 

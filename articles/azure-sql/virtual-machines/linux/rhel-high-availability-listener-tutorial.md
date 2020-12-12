@@ -2,18 +2,17 @@
 title: Azure-Linux sanal makinelerinde RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma | Microsoft Docs
 description: Azure 'daki RHEL sanal makinelerinde SQL Server bir kullanılabilirlik grubu dinleyicisi ayarlama hakkında bilgi edinin
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485813"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359991"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -49,7 +48,7 @@ Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availabilit
 
 2. Kaynak grubunda, **Ekle**' ye tıklayın.
 
-3. **Yük dengeleyici** araması yapın ve ardından arama sonuçlarında **Microsoft**tarafından yayınlanan **Load Balancer**seçin.
+3. **Yük dengeleyici** araması yapın ve ardından arama sonuçlarında **Microsoft** tarafından yayınlanan **Load Balancer** seçin.
 
 4. **Load Balancer** dikey penceresinde **Oluştur**' a tıklayın.
 
@@ -59,8 +58,8 @@ Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availabilit
    | --- | --- |
    | **Ad** |Yük dengeleyiciyi temsil eden bir metin adı. Örneğin, **Sqllb**. |
    | **Tür** |**İç** |
-   | **Sanal ağ** |Oluşturulan varsayılan sanal ağ **VM1VNET**olarak adlandırılmalıdır. |
-   | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. Varsayılan değer **VM1Subnet**olmalıdır.|
+   | **Sanal ağ** |Oluşturulan varsayılan sanal ağ **VM1VNET** olarak adlandırılmalıdır. |
+   | **Alt ağ** |SQL Server örneklerinin bulunduğu alt ağı seçin. Varsayılan değer **VM1Subnet** olmalıdır.|
    | **IP adresi ataması** |**Static** |
    | **Özel IP adresi** |`virtualip`Kümede oluşturulan IP adresini kullanın. |
    | **Abonelik** |Kaynak grubunuz için kullanılan aboneliği kullanın. |
@@ -68,7 +67,7 @@ Aşağıdaki yönergeler, yük [dengeleyici-Azure Portal](../windows/availabilit
    | **Konum** |SQL Server örneklerinin bulunduğu Azure konumunu seçin. |
 
 ### <a name="configure-the-back-end-pool"></a>Arka uç havuzunu yapılandırma
-Azure arka uç adres havuzu *arka uç havuzunu*çağırır. Bu durumda, arka uç havuzu, kullanılabilirlik grubunuzdaki üç SQL Server örneğinin adresleridir. 
+Azure arka uç adres havuzu *arka uç havuzunu* çağırır. Bu durumda, arka uç havuzu, kullanılabilirlik grubunuzdaki üç SQL Server örneğinin adresleridir. 
 
 1. Kaynak grubunuzda, oluşturduğunuz yük dengeleyiciye tıklayın. 
 
@@ -104,7 +103,7 @@ Araştırma, Azure 'un şu anda kullanılabilirlik grubu dinleyicisine sahip SQL
    | **Aralık** |*5* |
    | **İyi durumda olmayan durum eşiği** |*2* |
 
-4.  **Tamam**'a tıklayın. 
+4.  **Tamam** düğmesine tıklayın. 
 
 5. Tüm sanal makinelerinizde oturum açın ve aşağıdaki komutları kullanarak araştırma bağlantı noktasını açın:
 
@@ -131,14 +130,14 @@ Yük Dengeleme kuralları, yük dengeleyicinin trafiği SQL Server örneklerine 
    | **Protokol** |**TCP** |
    | **Bağlantı noktası** |*1433* |
    | **Arka uç bağlantı noktası** |*1433*. Bu kural **kayan IP (doğrudan sunucu dönüşü)** kullandığından bu değer yok sayılır. |
-   | **Yokla** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
+   | **Yoklama** |Bu yük dengeleyici için oluşturduğunuz araştırmanın adını kullanın. |
    | **Oturum kalıcılığı** |**Hiçbiri** |
    | **Boşta kalma zaman aşımı (dakika)** |*4* |
    | **Kayan IP (doğrudan sunucu dönüşü)** |**Etkin** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Arka uç Havuzu Ekle":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Yük Dengeleme kuralı ekle":::
 
-4. **Tamam**'a tıklayın. 
+4. **Tamam** düğmesine tıklayın. 
 5. Azure, Yük Dengeleme kuralını yapılandırır. Artık yük dengeleyici, trafiği kullanılabilirlik grubu için dinleyiciyi barındıran SQL Server örneğine yönlendirmek üzere yapılandırılmıştır. 
 
 Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengeleyici vardır. Yük dengeleyici Ayrıca, her makinenin kullanılabilirlik grupları için isteklere yanıt verebilmeleri için SQL Server Always on kullanılabilirlik grubu dinleyicisi için bir IP adresi de içerir.

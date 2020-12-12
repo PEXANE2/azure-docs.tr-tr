@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: abfcd6a13bc5e8ad262fe47111eb680ad00a34df
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 07ce01304f27ded4e0a566777fcf7027f7a15e4b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168981"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359447"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Kullanılabilirlik grubu için DNN dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -110,7 +111,7 @@ DNN dinleyicisini oluşturmak için, kullanılabilirlik grubu, dinleyici adı ve
 
 1. Komut istemi veya PowerShell gibi bir komut satırı arabirim aracı açın. 
 1. Betiği kaydettiğiniz yere gidin `.ps1` , örneğin c:\Documents. 
-1. Betiği yürütün: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Örnek: 
+1. Betiği yürütün: ```add_dnn_listener.ps1 <ag name> <listener-name> <listener port>``` . Örneğin: 
 
    ```console
    c:\Documents> add_dnn_listener.ps1 ag1 dnnlsnr 6789
@@ -136,7 +137,7 @@ SELECT * FROM SYS.AVAILABILITY_GROUP_LISTENERS
 
 İçin değeri, `1` `is_distributed_network_name` dinleyicinin bir dağıtılmış ağ adı (DNN) dinleyicisi olduğunu gösterir: 
 
-:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="SQL Server Management Studio (SSMS) içindeki kullanılabilirlik grubu dinleyicileri altında DNN dinleyicisini görüntüleme":::
+:::image type="content" source="media/availability-group-distributed-network-name-dnn-listener-configure/dnn-listener-tsql.png" alt-text="Değeri 1 olan DNN dinleyicilerini belirlemek için sys.availability_group_listeners kullanın is_distributed_network_name":::
 
 
 ## <a name="update-connection-string"></a>Bağlantı dizesini Güncelleştir

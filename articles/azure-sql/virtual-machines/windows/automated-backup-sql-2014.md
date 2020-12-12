@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: bdc63fd1-db49-4e76-87d5-b5c6a890e53c
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ccd998bc2f6e2771ff4dd1bedfa2213af7573102
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 41add54ce767413982ab0503f7263c58aed4d4e2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556599"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359311"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>SQL Server 2014 sanal makineleri için otomatik yedekleme (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,15 +32,15 @@ Otomatik yedekleme, SQL Server 2014 Standard veya Enterprise çalıştıran bir 
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Otomatik yedeklemeyi kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
 
-**İşletim sistemi** :
+**İşletim sistemi**:
 
 - Windows Server 2012 ve üzeri 
 
-**SQL Server sürüm/sürüm** :
+**SQL Server sürüm/sürüm**:
 
 - SQL Server 2014 standart
 - SQL Server 2014 Enterprise
@@ -47,7 +48,7 @@ Otomatik yedeklemeyi kullanmak için aşağıdaki önkoşulları göz önünde b
 > [!NOTE]
 > SQL 2016 ve üzeri için bkz. [SQL Server 2016 Için otomatik yedekleme](automated-backup.md).
 
-**Veritabanı yapılandırması** :
+**Veritabanı yapılandırması**:
 
 - Hedef _Kullanıcı_ veritabanlarının tam kurtarma modelini kullanması gerekir. Sistem veritabanlarının tam kurtarma modelini kullanması gerekmez. Ancak, model veya MSDB için günlük yedeklemelerinin alınması gerekiyorsa, tam kurtarma modelini kullanmanız gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
 - SQL Server VM, SQL IaaS Aracısı uzantısına [tam yönetim modunda](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)kaydedilir. 
@@ -57,7 +58,7 @@ Otomatik yedeklemeyi kullanmak için aşağıdaki önkoşulları göz önünde b
 
 Aşağıdaki tabloda otomatik yedekleme için yapılandırılabilecek seçenekler açıklanmaktadır. Gerçek yapılandırma adımları Azure portal veya Azure Windows PowerShell komutlarını kullanıp kullanmayacağınızı bağlı olarak değişir.
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Otomatik Yedekleme** | Etkinleştir/devre dışı bırak (devre dışı) | SQL Server 2014 Standard veya Enterprise çalıştıran bir Azure VM için Otomatik yedeklemeyi etkinleştirilir veya devre dışı bırakır. |
 | **Bekletme dönemi** | 1-30 gün (30 gün) | Bir yedeklemenin saklanacağı gün sayısı. |
@@ -70,7 +71,7 @@ Aşağıdaki tabloda otomatik yedekleme için yapılandırılabilecek seçenekle
 
 Kaynak Yöneticisi dağıtım modelinde yeni bir SQL Server 2014 sanal makinesi oluşturduğunuzda otomatik yedeklemeyi yapılandırmak için Azure portal kullanın.
 
-**SQL Server ayarları** sekmesinde, **otomatik yedekleme** ' ye kaydırın ve **Etkinleştir** ' i seçin. Aşağıdaki Azure portal ekran görüntüsü **SQL otomatik yedekleme** ayarlarını gösterir.
+**SQL Server ayarları** sekmesinde, **otomatik yedekleme** ' ye kaydırın ve **Etkinleştir**' i seçin. Aşağıdaki Azure portal ekran görüntüsü **SQL otomatik yedekleme** ayarlarını gösterir.
 
 ![Azure portal SQL otomatik yedekleme yapılandırması](./media/automated-backup-sql-2014/azure-sql-arm-autobackup.png)
 
@@ -80,7 +81,7 @@ Kaynak Yöneticisi dağıtım modelinde yeni bir SQL Server 2014 sanal makinesi 
 
 Mevcut SQL Server VM 'Ler için otomatik yedeklemeleri etkinleştirebilir ve devre dışı bırakabilir, saklama süresini değiştirebilir, depolama hesabını belirtebilir ve Azure portal şifrelemeyi etkinleştirebilirsiniz. 
 
-SQL Server 2014 sanal makinenizin [SQL sanal makineler kaynağına](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) gidin ve **yedeklemeler** ' i seçin. 
+SQL Server 2014 sanal makinenizin [SQL sanal makineler kaynağına](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) gidin ve **yedeklemeler**' i seçin. 
 
 ![Mevcut VM 'Ler için SQL otomatik yedekleme](./media/automated-backup-sql-2014/azure-sql-rm-autobackup-existing-vms.png)
 
@@ -112,7 +113,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Aracısı uzantısı yüklüyse, "SqlIaaSAgent" veya "Sqliaasextenma" olarak listelenmiş olduğunu görmeniz gerekir. Uzantının **Provisioningstate** 'i de "başarılı" olarak gösterilmelidir.
 
-Bu yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi ( **$Region** ) de belirtmeniz gerekir. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](licensing-model-azure-hybrid-benefit-ahb-change.md). 
+Bu yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi (**$Region**) de belirtmeniz gerekir. SQL Server VM için lisans türünü belirtin, [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)aracılığıyla Kullandıkça Öde veya kendi lisansını getir seçeneklerinden birini belirleyin. Lisanslama hakkında daha fazla bilgi için bkz. [lisans modeli](licensing-model-azure-hybrid-benefit-ahb-change.md). 
 
 ```powershell
 New-AzSqlVM  -Name $vmname `
@@ -172,7 +173,7 @@ If (-Not $storage)
 > [!NOTE]
 > Otomatik yedekleme, Premium depolamada yedeklemelerin depolanmasını desteklemez, ancak Premium depolama kullanan VM disklerinden yedeklemeler alabilir.
 
-Ardından, Azure depolama hesabında yedeklemeleri depolamak için otomatik yedekleme ayarlarını etkinleştirmek ve yapılandırmak üzere **New-Azvmsqlserverotomatikbackupconfig** komutunu kullanın. Bu örnekte, yedeklemeler 10 gün boyunca tutulur. İkinci komut, **set-AzVMSqlServerExtension** , BELIRTILEN Azure VM 'yi bu ayarlarla güncelleştirir.
+Ardından, Azure depolama hesabında yedeklemeleri depolamak için otomatik yedekleme ayarlarını etkinleştirmek ve yapılandırmak üzere **New-Azvmsqlserverotomatikbackupconfig** komutunu kullanın. Bu örnekte, yedeklemeler 10 gün boyunca tutulur. İkinci komut, **set-AzVMSqlServerExtension**, BELIRTILEN Azure VM 'yi bu ayarlarla güncelleştirir.
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `
@@ -186,7 +187,7 @@ Set-AzVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 SQL Server IaaS aracısının yüklenmesi ve yapılandırılması birkaç dakika sürebilir.
 
 > [!NOTE]
-> **New-Azvmsqlserverotomatikbackupconfig** için yalnızca SQL Server 2016 ve otomatik yedekleme v2 için uygulanan başka ayarlar vardır. SQL Server 2014 şu ayarları desteklemez: **Backupsystemdbs** , **backupscheduletype** , **fullbackupfrequency** , **fullbackupstarthour** , **fullbackupwindowınhours** ve **LogBackupFrequencyInMinutes**. Bu ayarları SQL Server 2014 sanal makinesinde yapılandırmaya çalışırsanız, bir hata yoktur, ancak ayarlar uygulanmaz. Bu ayarları SQL Server 2016 sanal makinesinde kullanmak istiyorsanız, [SQL Server 2016 Azure sanal makineleri Için otomatik yedekleme v2](automated-backup.md)bölümüne bakın.
+> **New-Azvmsqlserverotomatikbackupconfig** için yalnızca SQL Server 2016 ve otomatik yedekleme v2 için uygulanan başka ayarlar vardır. SQL Server 2014 şu ayarları desteklemez: **Backupsystemdbs**, **backupscheduletype**, **fullbackupfrequency**, **fullbackupstarthour**, **fullbackupwindowınhours** ve **LogBackupFrequencyInMinutes**. Bu ayarları SQL Server 2014 sanal makinesinde yapılandırmaya çalışırsanız, bir hata yoktur, ancak ayarlar uygulanmaz. Bu ayarları SQL Server 2016 sanal makinesinde kullanmak istiyorsanız, [SQL Server 2016 Azure sanal makineleri Için otomatik yedekleme v2](automated-backup.md)bölümüne bakın.
 
 Şifrelemeyi etkinleştirmek için, önceki betiği, **Enableencryption** parametresini **CertificatePassword** parametresi için bir parola (güvenli dize) ile birlikte geçecek şekilde değiştirin. Aşağıdaki betik, önceki örnekteki otomatik yedekleme ayarlarını sağlar ve şifreleme ekler.
 

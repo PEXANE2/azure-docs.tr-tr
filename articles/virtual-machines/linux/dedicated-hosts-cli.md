@@ -6,19 +6,19 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: d2cf78d328017f96552bd51794ac997c394d18f1
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008427"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360076"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak adanmış konaklara dağıtma
  
 
 Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](../dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
 
-Azure CLı sürüm 2.0.70 veya üstünü yüklediğinizden ve kullanarak bir Azure hesabında oturum açtığınızdan emin olun `az login` . 
+Azure CLı sürüm 2.16.0 veya üstünü yüklediğinizden ve kullanarak bir Azure hesabında oturum açtığınızdan emin olun `az login` . 
 
 
 ## <a name="limitations"></a>Sınırlamalar

@@ -5,16 +5,17 @@ author: MashaMSFT
 ms.author: mathoma
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.openlocfilehash: a8eb112b0895d1c7a927621e6fb9e5160038692d
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 1ef7943586123a1870ed9a2d0c21aa8b5fd38c1c
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557998"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360008"
 ---
 # <a name="automatic-registration-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile otomatik kayıt
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +35,7 @@ Bir abonelik için otomatik kayıt etkinleştirildikten sonra, SQL Server yükl�
 > [!IMPORTANT]
 > SQL IaaS Aracısı uzantısı, Azure sanal makineler 'de SQL Server kullanırken müşterilere isteğe bağlı avantajlar vermek için veri toplar. Microsoft, bu verileri müşterinin öncelikli onayı olmadan lisanslama denetimleri için kullanmaz. Daha fazla bilgi için [SQL Server Gizlilik Eki](/sql/sql-server/sql-server-privacy#non-personal-data) ' ne bakın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM uzantıya kaydetmek için şunlar gerekir: 
 
@@ -53,7 +54,7 @@ Azure portal SQL Server sanal makinelerinizin otomatik olarak kaydedilmesini etk
    :::image type="content" source="media/sql-agent-extension-automatic-registration-all-vms/automatic-registration.png" alt-text="Otomatik kayıt sayfasını açmak için otomatik SQL Server VM kaydını seçin":::
 
 1. Açılır listeden aboneliğinizi seçin. 
-1. Koşulları okuyun ve **kabul ediyorsanız kabul ediyorum** ' u seçin. 
+1. Koşulları okuyun ve **kabul ediyorsanız kabul ediyorum**' u seçin. 
 1. Özelliği etkinleştirmek için **Kaydet** ' i seçin ve tüm geçerli ve gelecekteki SQL Server VM 'Leri SQL IaaS Aracısı Uzantısı ile otomatik olarak kaydedin. Bu işlem, VM 'lerden hiçbirinde SQL Server hizmetini yeniden başlatmaz. 
 
 ## <a name="disable"></a>Devre Dışı Bırak

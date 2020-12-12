@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
@@ -13,12 +14,12 @@ ms.date: 08/20/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019, devx-track-azurecli
-ms.openlocfilehash: 9129d0cb44aea9b85c5569d4d939c0904c398c07
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 865ee3a5aeb8a2dd06d8759ba04d02259d2b4bee
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556531"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359974"
 ---
 # <a name="use-powershell-or-az-cli-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Azure VM 'de SQL Server için bir kullanılabilirlik grubu yapılandırmak için PowerShell veya az CLı kullanın 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +30,7 @@ Kullanılabilirlik grubunun dağıtımı SQL Server Management Studio (SSMS) vey
 
 Bu makalede, kullanılabilirlik grubu ortamını yapılandırmak için PowerShell ve az CLı kullanılırken, ayrıca [Azure Portal](availability-group-azure-portal-configure.md), [Azure hızlı başlangıç şablonları](availability-group-quickstart-template-configure.md)veya [el ile](availability-group-manually-configure-tutorial.md) de yapılabilir. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Her zaman açık kullanılabilirlik grubunu yapılandırmak için aşağıdaki önkoşullara sahip olmanız gerekir: 
 
@@ -240,7 +241,7 @@ New-AzLoadBalancer -name sqlILB -ResourceGroupName <resource group name> `
 ---
 
 >[!IMPORTANT]
-> Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu** ' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
+> Her bir SQL Server VM genel IP kaynağının standart yük dengeleyiciye uyumlu olması için standart bir SKU 'SU olmalıdır. SANAL makinenizin genel IP kaynağının SKU 'sunu belirlemek için, **kaynak grubu**' na gidin, istediğiniz SQL Server VM IÇIN **genel IP adresi** kaynağınızı seçin ve **genel bakış** bölmesinde **SKU** altındaki değeri bulun.  
 
 ## <a name="create-listener"></a>Dinleyici oluştur
 
@@ -510,7 +511,7 @@ Remove-AzSqlVMGroup -ResourceGroupName "<resource group name>" -Name "<cluster n
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [SQL Server VM 'lerine genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [SQL Server VM 'Ler için SSS](frequently-asked-questions-faq.md)

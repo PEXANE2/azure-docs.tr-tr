@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 194c6a5cead400e1bac78ba42cb7238b64bd3b7b
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327483"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358939"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -84,9 +85,20 @@ Azure Blob depolama ile kullanılabilirlik grupları, veritabanı yansıtma, gü
 
 [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)varsa, pasif olağanüstü durum kurtarma örneği için ek lisans maliyetleri yapmadan SQL Server ile karma olağanüstü durum kurtarma (Dr) planları uygulayabilirsiniz.
 
-Aşağıdaki görüntüde kurulum, 12 çekirdek kullanan bir şirket içi SQL Server dağıtımı için olağanüstü durum kurtarma çoğaltması olarak 12 çekirdek kullanan bir Azure sanal makinesinde çalışan SQL Server kullanır. Geçmişte, şirket içi dağıtım ve Azure sanal makineleri dağıtımı için SQL Server 12 çekirdeğe lisans almanız gerekir. Yeni avantaj, Azure sanal makinesinde çalışmaya yönelik pasif çoğaltma avantajlarına sahiptir. Azure sanal makinelerinde pasif çoğaltma için olağanüstü durum kurtarma ölçütleri karşılandığında, artık şirket içinde çalışan SQL Server yalnızca 12 çekirdeğe lisans almanız gerekir.
+Örneğin, Azure 'da etkin bir birincil şirket içi ve Azure 'da ücretsiz bir pasif ikincil sahip olabilirsiniz: 
 
-![Azure 'da ücretsiz olağanüstü durum kurtarma çoğaltması](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/free-dr-replica-azure.png)
+![Azure 'da ücretsiz ikincil pasif](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
+
+Yukarıdaki görüntüde kurulum, 12 çekirdek kullanan bir şirket içi SQL Server dağıtımı için olağanüstü durum kurtarma çoğaltması olarak 12 çekirdek kullanan bir Azure sanal makinesinde çalışan SQL Server kullanır. Geçmişte, şirket içi dağıtım ve Azure sanal makineleri dağıtımı için SQL Server 12 çekirdeğe lisans almanız gerekir. Yeni avantaj, Azure sanal makinesinde çalışmaya yönelik pasif çoğaltma avantajlarına sahiptir. Azure sanal makinelerinde pasif çoğaltma için olağanüstü durum kurtarma ölçütleri karşılandığında, artık şirket içinde çalışan SQL Server yalnızca 12 çekirdeğe lisans almanız gerekir.
+
+Ayrıca, her üç çoğaltma da Azure 'da barındırıldığı zaman iki adet ücretsiz pasif ikincikde sahip olabilirsiniz: 
+
+![Azure 'daki her şey olduğunda iki ücretsiz pasta](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
+
+Ya da bir karma yük devretme ortamı, lisanslı bir birincil şirket içi, HA için bir ücretsiz pasif ve DR için iki ücretsiz pasa ile yapılandırabilirsiniz: 
+
+![Ortam bir adet birincil şirket içi çoğaltmayla karma olduğunda üç ücretsiz pasa](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
+
 
 Daha fazla bilgi için [ürün lisanslama koşullarına](https://www.microsoft.com/licensing/product-licensing/products)bakın. 
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 962b95307b440c3bafde019b5b2b630461718073
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029014"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359056"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Azure Cosmos DB ve .NET SDK v2 için performans ipuçları
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -133,7 +133,7 @@ Ağ Geçidi modunu kullandığınızda Azure Cosmos DB istekleri HTTPS/REST üze
 
 **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
 
-SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, seri karşılığından daha iyi sorgu gecikmesi ve verimlilik sağlamak üzere tasarlanmıştır. Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki parametre sağlar: 
+SQL .NET SDK 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, seri karşılığından daha iyi sorgu gecikmesi ve verimlilik sağlamak üzere tasarlanmıştır. Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabilmeniz için iki parametre sağlar: 
 - `MaxDegreeOfParallelism` paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
 - `MaxBufferedItemCount` önceden getirilen sonuçların sayısını denetler.
 

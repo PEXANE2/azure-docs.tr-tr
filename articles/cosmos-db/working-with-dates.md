@@ -8,12 +8,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b74a403cef8474ae32d98a20899437c2124f3abf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: ba4d4e63bdd1e795bc1c599d0eae8a595aa0d643
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340388"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359532"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB tarihlerle çalışma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -94,6 +94,6 @@ Sorgular DateTime değerleriyle ortaktır. Bu sorguları verimli bir şekilde y�
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [GitHub 'Da kod örneklerini](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples) indirme ve çalıştırma
+* [GitHub 'Da kod örneklerini](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/code-samples) indirme ve çalıştırma
 * [SQL sorguları](sql-query-getting-started.md) hakkında daha fazla bilgi edinin
 * [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md) hakkında daha fazla bilgi edinin

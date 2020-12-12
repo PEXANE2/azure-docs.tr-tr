@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 9d0dd8ee1b99ddd2abf4fad154c70315a3d33c83
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556429"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359651"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak SQL Server VM oluşturma
 
@@ -58,26 +59,26 @@ Azure VM şablonlarındaki daha fazla SQL Server [hızlı başlangıç şablonu 
 
 2. Aşağıdaki değerleri seçin veya girin.
 
-    * **Abonelik** : bir Azure aboneliği seçin.
-    * **Kaynak grubu** : SQL Server VM hazırlanan kaynak grubu. 
-    * **Bölge** : bir bölge seçin.  Örneğin **Orta ABD**.
-    * **Sanal makine adı** : SQL Server sanal makine için bir ad girin. 
-    * **Sanal makine boyutu** : açılan kutudan sanal makineniz için uygun boyutu seçin.
-    * **Var olan sanal ağ adı** : SQL Server VM hazırlanan sanal ağın adını girin. 
-    * **Mevcut VNET kaynak grubu** : sanal ağınızın hazırlandığı kaynak grubunu girin. 
-    * **Mevcut alt ağ adı** : hazırlanmış alt ağınızın adı. 
-    * **Görüntü teklifi** : iş gereksinimlerinize en uygun SQL Server ve Windows Server görüntüsünü seçin. 
-    * **SQL SKU 'su** : iş gereksinimlerinize en uygun SQL Server SKU sürümünü seçin. 
-    * **Yönetici Kullanıcı adı** : sanal makinenin yöneticisinin Kullanıcı adı. 
-    * **Yönetici parolası** : VM yönetici hesabı tarafından kullanılan parola. 
-    * **Depolama Iş yükü türü** : işinizle en iyi şekilde eşleşen iş yükünün depolama türü. 
-    * **SQL veri diskleri sayısı** : veri dosyaları için kullanılan SQL Server disk sayısı.  
-    * **Veri yolu** : SQL Server veri dosyalarının yolu. 
-    * **SQL günlük diskleri sayısı** : günlük dosyaları için kullanılan SQL Server disk sayısı. 
-    * **Günlük yolu** : SQL Server günlük dosyalarının yolu. 
-    * **Konum** : tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
+    * **Abonelik**: bir Azure aboneliği seçin.
+    * **Kaynak grubu**: SQL Server VM hazırlanan kaynak grubu. 
+    * **Bölge**: bir bölge seçin.  Örneğin **Orta ABD**.
+    * **Sanal makine adı**: SQL Server sanal makine için bir ad girin. 
+    * **Sanal makine boyutu**: açılan kutudan sanal makineniz için uygun boyutu seçin.
+    * **Var olan sanal ağ adı**: SQL Server VM hazırlanan sanal ağın adını girin. 
+    * **Mevcut VNET kaynak grubu**: sanal ağınızın hazırlandığı kaynak grubunu girin. 
+    * **Mevcut alt ağ adı**: hazırlanmış alt ağınızın adı. 
+    * **Görüntü teklifi**: iş gereksinimlerinize en uygun SQL Server ve Windows Server görüntüsünü seçin. 
+    * **SQL SKU 'su**: iş gereksinimlerinize en uygun SQL Server SKU sürümünü seçin. 
+    * **Yönetici Kullanıcı adı**: sanal makinenin yöneticisinin Kullanıcı adı. 
+    * **Yönetici parolası**: VM yönetici hesabı tarafından kullanılan parola. 
+    * **Depolama Iş yükü türü**: işinizle en iyi şekilde eşleşen iş yükünün depolama türü. 
+    * **SQL veri diskleri sayısı**: veri dosyaları için kullanılan SQL Server disk sayısı.  
+    * **Veri yolu**: SQL Server veri dosyalarının yolu. 
+    * **SQL günlük diskleri sayısı**: günlük dosyaları için kullanılan SQL Server disk sayısı. 
+    * **Günlük yolu**: SQL Server günlük dosyalarının yolu. 
+    * **Konum**: tüm kaynakların konumu, bu değer varsayılan olarak kalmalıdır `[resourceGroup().location]` . 
 
-3. **Gözden geçir + oluştur** ’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
+3. **Gözden geçir ve oluştur**’u seçin. SQL Server VM başarıyla dağıtıldıktan sonra bir bildirim alırsınız.
 
 Şablonu dağıtmak için Azure portalı kullanılır. Azure portal ek olarak, Azure PowerShell, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../../../azure-resource-manager/templates/deploy-powershell.md).
 

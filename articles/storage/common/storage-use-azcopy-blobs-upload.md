@@ -4,16 +4,16 @@ description: Bu makale, Azure Blob depolama alanına dosya yüklemeye yardımcı
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 11d40805cda2ea2e3693c6c93034ae19f1f0fcc0
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ec88a3c740ceda7ccf352f8f32f94e2cd52d0988
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907586"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358767"
 ---
 # <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak Azure Blob depolamaya dosya yükleme
 
@@ -21,7 +21,7 @@ AzCopy ile v10 arasındaki komut satırı yardımcı programını kullanarak blo
 
 Blob 'ları indirme, blob depolamayla eşitleme veya hesaplar arasında blobları kopyalama gibi diğer görev türlerine yönelik örnekleri görmek için, bu makalenin [sonraki adımları](#next-steps) bölümünde sunulan bağlantılara bakın.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md) makalesini inceleyin ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayabileceğiniz yolları hakkında bilgi edinin.
 
@@ -135,9 +135,11 @@ Ayrıca, seçeneğini kullanarak dosyaları dışarıda bırakabilirsiniz `--exc
 
 `--include-pattern`Ve `--exclude-pattern` seçenekleri, yalnızca dosya adları için geçerlidir, yola değildir.  Bir dizin ağacında var olan tüm metin dosyalarını kopyalamak istiyorsanız, tüm `–recursive` dizin ağacını almak için seçeneğini kullanın ve ardından öğesini kullanarak `–include-pattern` `*.txt` tüm metin dosyalarını alın.
 
-### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>Tarih ve saatten sonra değiştirilen dosyaları karşıya yükleme 
+### <a name="upload-files-that-were-modified-before-or-after-a-date-and-time"></a>Tarih ve saatten önce veya sonra değiştirilen dosyaları karşıya yükleme 
 
-Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-after` . ISO-8601 biçiminde bir tarih ve saat belirtin (örneğin: `2020-08-19T15:04:00Z` ). 
+Veya seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-before` `--include-after` . ISO-8601 biçiminde bir tarih ve saat belirtin (örneğin: `2020-08-19T15:04:00Z` ). 
+
+Aşağıdaki örnekler, belirtilen tarihte veya sonra değiştirilen dosyaları karşıya yükler.
 
 |    |     |
 |--------|-----------|
@@ -186,9 +188,9 @@ Tüm liste için bkz. [Seçenekler](storage-ref-azcopy-copy.md#options).
 
 Bu makalelerde daha fazla örnek bulun:
 
-- [Örnekler: Indir](storage-use-azcopy-blobs-download.md)
-- [Örnekler: hesaplar arasında kopyalama](storage-use-azcopy-blobs-copy.md)
-- [Örnekler: Synchronize](storage-use-azcopy-blobs-synchronize.md)
+- [Örnekler: Karşıdan Yükle](storage-use-azcopy-blobs-download.md)
+- [Örnekler: Hesaplar arasında kopyala](storage-use-azcopy-blobs-copy.md)
+- [Örnekler: Eşitle](storage-use-azcopy-blobs-synchronize.md)
 - [Örnekler: Amazon S3 demetleri](storage-use-azcopy-s3.md)
 - [Örnekler: Azure dosyaları](storage-use-azcopy-files.md)
 - [Öğretici: AzCopy kullanarak şirket içi verileri bulut depolamasına taşıma](storage-use-azcopy-migrate-on-premises-data.md)

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 12/11/2020
 ms.author: jeedes
-ms.openlocfilehash: 6b4484b9bb235b24d2b733c329b52ab6b04be183
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2fd4346467b0cacbbb4eeb78072749e416b16de1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006430"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358546"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>Öğretici: yakınlaştırma ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, yakınlaştırmayı Azure Active Directory (Azure AD) ile tüml
 * Azure AD 'de yakınlaştırma erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla yakınlaştırmak için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -46,18 +44,18 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Yakınlaştırma tümleştirmesini Azure AD 'ye göre yapılandırmak için Galeri 'den yönetilen SaaS uygulamaları listenize yakınlaştırma eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Yakınlaştır** yazın.
 1. Sonuçlar panelinden **Yakınlaştır** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-zoom"></a>Azure AD çoklu oturum açmayı yakınlaştırma için yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-zoom"></a>Azure AD SSO 'yu yakınlaştırma için yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu yakınlaştırarak yapılandırın ve test edin. SSO 'nun çalışması için, yakınlaştırılmış bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu yakınlaştırma ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu yakınlaştırmadan yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -70,7 +68,7 @@ Azure AD SSO 'yu yakınlaştırma ile yapılandırmak ve test etmek için aşağ
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), Uygulama tümleştirmesini **Yakınlaştır** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, Uygulama tümleştirmesini **Yakınlaştır** sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -111,7 +109,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
     1. **Ad** alanına `B.Simon` girin.  
     1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
     1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-    1. **Oluştur**'a tıklayın.
+    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -120,20 +118,22 @@ Bu bölümde, yakınlaştırma erişimi vererek Azure çoklu oturum açma özell
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Yakınlaştır**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-zoom-sso"></a>Yakınlaştırma SSO 'yu Yapılandır
 
-1. Farklı bir Web tarayıcısı penceresinde, yakınlaştırma şirket sitenizde yönetici olarak oturum açın.
+1. Yakınlaştırma sırasında yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **ayarı** Yakınlaştır ' a tıklayarak sizi yakınlaştırma uygulamasına yönlendirebilirsiniz. Buradan, yakınlaştırma sırasında oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Farklı bir Web tarayıcısı penceresinde yakınlaştırmayı el ile ayarlamak istiyorsanız, yakınlaştırma şirket sitenizde yönetici olarak oturum açın.
 
 2. **Çoklu oturum açma** sekmesine tıklayın.
 
@@ -177,16 +177,14 @@ Bu bölümün amacı, yakınlaştırma aşamasında B. Simon adlı bir Kullanıc
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde yakınlaştırma kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yakınlaştırmadan otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz oturum açma URL 'sini yakınlaştırmayı yönlendirecektir.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Doğrudan oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki yakınlaştırma kutucuğuna tıkladığınızda bu, yakınlaştırma oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile yakınlaştırmayı deneyin](https://aad.portal.azure.com/)
+Azure AD yakınlaştırmasını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin boyutunu gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)

@@ -6,15 +6,15 @@ author: kevinvngo
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 312c57c103bf733bc72c5de1d22ab3239d5b5e96
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 86ef610af605c657868824eefe2e6e706f6963ac
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484714"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360195"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Hızlı başlangıç: SYNAPSE SQL ile toplu yükleme
 
@@ -33,32 +33,31 @@ SYNAPSE Studio 'daki toplu yükleme Sihirbazı ile veri yükleme kolaydır. Topl
 
 - ' Ye yüklenecek yeni bir tablo oluşturuyorsanız [Copy ifadesini kullanmak](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#permissions) ve tablo oluşturmak için gerekli izinlere sahip olmanız gerekir.
 
-- ADLS 2. hesabıyla ilişkili bağlı hizmetin yüklenecek dosya klasörüne **erişimi olmalıdır** / **folder** . Örneğin, bağlantılı hizmet kimlik doğrulama mekanizması yönetilen kimlik ise, çalışma alanı yönetilen kimliği, depolama hesabında en az Depolama Blobu okuyucusu iznine sahip olmalıdır.
+- ADLS 2. hesabıyla ilişkili bağlı hizmetin yüklenecek dosya klasörüne **erişimi olmalıdır** /  . Örneğin, bağlantılı hizmet kimlik doğrulama mekanizması yönetilen kimlik ise, çalışma alanı yönetilen kimliği, depolama hesabında en az Depolama Blobu okuyucusu iznine sahip olmalıdır.
 
 - Çalışma alanınızda VNet etkinse, kaynak veriler ve hata dosyası konumu için ADLS 2. hesabıyla ilişkili tümleşik çalışma zamanının etkileşimli yazma özelliğinin etkinleştirildiğinden emin olun. Etkileşimli yazma, yeniden şema algılama, kaynak dosya içeriklerinin önizlemesi ve sihirbazın içindeki ADLS 2. depolama hesaplarına göz atmak için gereklidir.
 
 ### <a name="steps"></a>Adımlar
 
-1. Kaynak depolama konumu panelinden depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin. Sihirbaz, Parquet dosyalarını otomatik olarak algılamaya çalışacaktır. Parquet dosya türü onaylanmazsa, ayrılmış metin (CSV) varsayılan olarak kullanılacaktır.
+1. Kaynak depolama konumu panelinden depolama hesabını ve yükleme yaptığınız dosyayı veya klasörü seçin. Sihirbaz, kaynak alanları dosyadan uygun hedef SQL veri türlerine eşlemek de dahil olmak üzere, otomatik olarak Parquet dosyalarını ve sınırlandırılmış metin (CSV) dosyalarını algılamaya çalışacaktır. 
 
    ![Kaynak konumu seçme](./sql/media/bulk-load/bulk-load-source-location.png)
 
-2. Reddedilen satırları (hata dosyası) yazmak istediğiniz depolama hesabı da dahil olmak üzere dosya biçimi ayarlarını seçin. Şu anda yalnızca CSV ve Parquet dosyaları desteklenir.
+2. Toplu yükleme işlemi sırasında reddedilen satırlar olduğunda hata ayarlarınız dahil olmak üzere dosya biçimi ayarlarını seçin. Ayrıca, COPY ifadesinin dosya biçimi ayarlarını yapılandırmanıza yardımcı olmak üzere dosyayı nasıl ayrıştırarak olduğunu görmek için "Verileri Önizle" seçeneğini de belirleyebilirsiniz. KOPYA ifadesinin dosyayı güncelleştirilmiş ayarla nasıl ayrıştıracağını görmek için, bir dosya biçimi ayarını her değiştirdiğinizde "Verileri Önizle" seçeneğini belirleyin:
 
-    ![Dosya biçimi ayarlarını seçme](./sql/media/bulk-load/bulk-load-file-format-settings.png)
-
-3. COPY ifadesinin dosya biçimi ayarlarını yapılandırmanıza yardımcı olmak üzere dosyayı nasıl ayrıştırarak olduğunu görmek için "Verileri Önizle" seçeneğini belirleyebilirsiniz. KOPYA ifadesinin dosyayı güncelleştirilmiş ayarla nasıl ayrıştıracağını görmek için "Verileri Önizle" seçeneğini belirleyin: ![ verileri önizleme](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
+   ![Verileri önizleme](./sql/media/bulk-load/bulk-load-file-format-settings-preview-data.png) 
 
 > [!NOTE]  
 >
 > - Çoklu karakter alanı sonlandırıcılarını içeren verilerin önizlemesi toplu yükleme sihirbazında desteklenmez. Çoklu karakter alanı Sonlandırıcı belirtildiğinde toplu yükleme Sihirbazı, tek bir sütundaki verilerin önizlemesini alacak. 
-> - Çoklu karakter satır sonlandırıcılarını belirtmek COPY ifadesinde desteklenir; Ancak, bu, bir hatanın oluştuğu toplu yükleme sihirbazında desteklenmez.
+> - "Sütun adlarını çıkar" seçeneği belirlendiğinde toplu yükleme Sihirbazı, "Ilk satır" alanı tarafından belirtilen ilk satırdaki sütun adlarını ayrıştırır. Toplu Yükleme Sihirbazı, bu üst bilgi satırını yoksaymak için COPY deyimindeki FIRSTROW değerini otomatik olarak 1 artırır. 
+> - Çoklu karakter satır sonlandırıcılarını belirtmek COPY ifadesinde desteklenir; Ancak, bu, bir hatanın oluşturulduğu toplu yükleme sihirbazında desteklenmez.
 
-4. Yükün mevcut bir tablo veya yeni tablo için olup olmayacağını dahil etmek için kullanmakta olduğunuz adanmış SQL havuzunu seçin: ![ hedef konum seçme](./sql/media/bulk-load/bulk-load-target-location.png)
+3. Yükün mevcut bir tablo veya yeni tablo için olup olmayacağını dahil etmek için kullanmakta olduğunuz adanmış SQL havuzunu seçin: ![ hedef konum seçme](./sql/media/bulk-load/bulk-load-target-location.png)
+4. Uygun sütun eşlemesine sahip olduğunuzdan emin olmak için "Sütun eşlemeyi Yapılandır" ı seçin. "Sütun adlarını çıkar" etkinse, sütun adları otomatik olarak algılanır. Yeni tablolar için, sütun eşlemesini yapılandırmak, hedef sütun veri türlerini güncelleştirmek için önemlidir:
 
-5. Uygun sütun eşlemesine sahip olduğunuzdan emin olmak için "Sütun eşlemeyi Yapılandır" ı seçin. "Sütun adlarını çıkar" etkinse, sütun adları otomatik olarak algılanır. Yeni tablolar için, sütun eşlemesini yapılandırmak, hedef sütun veri türlerini güncelleştirmek için önemlidir: ![ Sütun eşlemeyi yapılandırma](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
-
-6. "Betiği aç" ı seçin ve Data Lake 'ınızdan yüklenecek olan COPY ifadesiyle bir T-SQL betiği oluşturulacaktır: ![ SQL betiğini açma](./sql/media/bulk-load/bulk-load-target-final-script.png)
+   ![Sütun eşlemeyi yapılandırma](./sql/media/bulk-load/bulk-load-target-location-column-mapping.png)
+5. "Betiği aç" ı seçin ve Data Lake 'ınızdan yüklenecek olan COPY ifadesiyle bir T-SQL betiği oluşturulacaktır: ![ SQL betiğini açma](./sql/media/bulk-load/bulk-load-target-final-script.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

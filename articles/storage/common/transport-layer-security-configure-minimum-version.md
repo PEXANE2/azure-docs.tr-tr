@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/09/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: b6c75bc13bf26510ee72968c5a27407b6b7bfee6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 558f4792a055fc491f15600ecc5502c3a114a94b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937500"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360229"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Depolama hesabına yönelik istekler için gereken en düşük Aktarım Katmanı Güvenliği (TLS) sürümünü zorla
 
@@ -86,6 +86,9 @@ StorageBlobLogs
 ## <a name="remediate-security-risks-with-a-minimum-version-of-tls"></a>En düşük TLS sürümü ile güvenlik risklerini düzeltin
 
 Daha eski TLS sürümlerini kullanan istemcilerden gelen trafiğin en az olduğundan veya daha eski bir TLS sürümüyle yapılan isteklerin başarısız olması için kabul edilebilir olduğundan emin olduğunuzda, depolama hesabınızda en düşük TLS sürümünü zorlamayı kullanmaya başlayabilirsiniz. İstemcilerin bir depolama hesabına karşı isteklerin olması için en düşük TLS sürümünü kullanmasını zorunlu kılmak, verilerinize yönelik güvenlik risklerini en aza indirmek için bir stratejinin bir parçasıdır.
+
+> [!IMPORTANT]
+> Azure depolama 'ya bağlanan bir hizmet kullanıyorsanız, bir depolama hesabı için gerekli en düşük sürümü ayarlamadan önce bu hizmetin, istekleri Azure depolama 'ya göndermek için uygun TLS sürümünü kullanmasını sağlayın.
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Depolama hesabı için en düşük TLS sürümünü yapılandırın
 

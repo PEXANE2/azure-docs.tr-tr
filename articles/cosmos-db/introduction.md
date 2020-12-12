@@ -6,19 +6,19 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 2dd60d1962734f7a4264587fd1b5b0d2a03c9ff0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637022"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359771"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB’ye hoş geldiniz
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Günümüzde uygulamaların çok kısa sürede yanıt vermesi ve her zaman açık olması beklenmektedir. Düşük gecikme süresi ve yüksek kullanılabilirlik düzeylerine erişmek için bu uygulamaların örneklerinin kullanıcılara yakın veri merkezlerine dağıtılması gerekir. Uygulamaların yoğun saatlerdeki büyük ölçekli kullanım değişikliklerine gerçek zamanlı olarak yanıt vermesi, hacmi sürekli artan verileri depolaması ve bu verileri birkaç milisaniye içinde kullanıcılara sunması gerekmektedir.
 
-Azure Cosmos DB modern uygulama geliştirmesi için tam olarak yönetilen bir NoSQL veritabanıdır. Tek basamaklı milisaniyelik yanıt süreleri ve otomatik ve anında ölçeklenebilirlik, herhangi bir ölçekte hız garantisi. İş sürekliliği, [SLA ile desteklenen](https://azure.microsoft.com/support/legal/sla/cosmos-db) kullanılabilirlik ve kurumsal sınıf güvenlik olanakları konusunda garanti edilir. Uygulama geliştirme, dünyanın herhangi bir yerindeki çok ana veri dağıtımı, popüler diller için açık kaynak API 'Leri ve SDK 'lar sayesinde daha hızlı ve daha üretken bir hale gelidir. Tam olarak yönetilen bir hizmet olarak Azure Cosmos DB, otomatik yönetim, güncelleştirmeler ve düzeltme eki uygulama sayesinde veritabanı yönetimini ellerinizi kapabir biçimde alır. Ayrıca, uygun maliyetli sunucusuz ve uygulama ihtiyaçlarına yanıt veren otomatik ölçeklendirme seçenekleriyle kapasite yönetimini de işler.
+Azure Cosmos DB modern uygulama geliştirmesi için tam olarak yönetilen bir NoSQL veritabanıdır. Tek basamaklı milisaniyelik yanıt süreleri ve otomatik ve anında ölçeklenebilirlik, herhangi bir ölçekte hız garantisi. İş sürekliliği, [SLA ile desteklenen](https://azure.microsoft.com/support/legal/sla/cosmos-db) kullanılabilirlik ve kurumsal sınıf güvenlik olanakları konusunda garanti edilir. Uygulama geliştirme, dünyanın herhangi bir yerindeki çok fazla bölge veri dağıtımı, popüler diller için açık kaynak API 'Leri ve SDK 'lar sayesinde daha hızlı ve daha üretken bir hale gelidir. Tam olarak yönetilen bir hizmet olarak Azure Cosmos DB, otomatik yönetim, güncelleştirmeler ve düzeltme eki uygulama sayesinde veritabanı yönetimini ellerinizi kapabir biçimde alır. Ayrıca, uygun maliyetli sunucusuz ve uygulama ihtiyaçlarına yanıt veren otomatik ölçeklendirme seçenekleriyle kapasite yönetimini de işler.
 
 Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyebilir](https://azure.microsoft.com/try/cosmosdb/) , ücretsiz ve taahhütlere sahip olabilirsiniz veya Ilk 400 ru/sn ve 5 GB depolama alanı ücretsiz bir hesap almak için [Azure Cosmos DB ücretsiz katmanını](optimize-dev-test.md#azure-cosmos-db-free-tier) kullanabilirsiniz.
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097286"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359549"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB ' de bir SQL API hesabını yönetmek için JavaScript SDK 'sını kullanarak Node.js Web uygulaması oluşturma 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -191,7 +191,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 
 1. Projenizin **routes** dizininde **tasklist.js** adlı yeni bir dosya oluşturun.  
 
-2. Aşağıdaki kodu **tasklist.js** 'ye ekleyin. Bu kod, **tasklist.js** tarafından kullanılan CosmosClient ve async modüllerini yükler. Bu kod, daha önce tanımladığımız **TaskDao** nesnesinin bir örneği olarak geçirilmiş **TaskList** sınıfını da tanımlar:
+2. Aşağıdaki kodu **tasklist.js**'ye ekleyin. Bu kod, **tasklist.js** tarafından kullanılan CosmosClient ve async modüllerini yükler. Bu kod, daha önce tanımladığımız **TaskDao** nesnesinin bir örneği olarak geçirilmiş **TaskList** sınıfını da tanımlar:
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -360,7 +360,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Kullanıcı arabirimi oluşturma
 
-Şimdi bir kullanıcının uygulamayla etkileşime girebilmesi için Kullanıcı arabirimini oluşturalım. Önceki bölümlerde oluşturduğumuz Express uygulaması, görüntüleme altyapısı olarak **Jade** 'i kullanır.
+Şimdi bir kullanıcının uygulamayla etkileşime girebilmesi için Kullanıcı arabirimini oluşturalım. Önceki bölümlerde oluşturduğumuz Express uygulaması, görüntüleme altyapısı olarak **Jade**'i kullanır.
 
 1. **views** dizinindeki **layout.jade** dosyası diğer **.jade** dosyaları için genel bir şablon olarak kullanılır. Bu adımda, web sitesi tasarlamak için kullanılan bir araç seti olan Twitter Bootstrap'i kullanmak için bu dosyayı değiştireceksiniz.  
 
@@ -440,18 +440,18 @@ Artık uygulamayı oluşturduğunuza göre, aşağıdaki adımları kullanarak y
 
 1. Uygulamayı yerel makinenizde test etmek için `npm start` terminalde çalıştırarak uygulamanızı başlatın ve `http://localhost:3000` tarayıcı sayfasını yenileyin. Sayfa, aşağıdaki ekran görüntüsünde gösterildiği gibi görünmelidir:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Node.js öğrenin - Bir tarayıcı penceresinde Hello World uygulamasının ekran görüntüsü":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Bir tarayıcı penceresinde Yapılacaklar Listem uygulamasının ekran görüntüsü":::
 
     > [!TIP]
     > Layout. Jade dosyasında veya index. Jade dosyasında girintileme hakkında bir hata alırsanız, her iki dosyada bulunan ilk iki satırın, boşluk olmadan sola hizalı olduğundan emin olun. İlk iki satırdan önce boşluklar varsa, bunları kaldırın, her iki dosyayı da kaydedin ve ardından tarayıcı pencerenizi yenileyin. 
 
-2. Öğe, öğe adı ve kategori alanlarını kullanarak yeni bir görev girip **öğe Ekle** ' yi seçin. Bu işlem, Azure Cosmos DB içinde bu özelliklere sahip bir belge oluşturur. 
+2. Öğe, öğe adı ve kategori alanlarını kullanarak yeni bir görev girip **öğe Ekle**' yi seçin. Bu işlem, Azure Cosmos DB içinde bu özelliklere sahip bir belge oluşturur. 
 
 3. Sayfa, Yapılacaklar listesinde yeni oluşturulan öğeyi görüntülemek üzere güncelleştirilmelidir.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Node.js öğrenin - Bir tarayıcı penceresinde Hello World uygulamasının ekran görüntüsü":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Yapılacaklar listesinde yeni bir öğeyi içeren uygulamanın ekran görüntüsü":::
 
-4. Bir görevi gerçekleştirmek için, tamam sütunundaki onay kutusunu seçin ve ardından **görevleri güncelleştir** ' i seçin. Bu işlem önceden oluşturduğunuz belgeyi güncelleştirir ve görünümden kaldırır.
+4. Bir görevi gerçekleştirmek için, tamam sütunundaki onay kutusunu seçin ve ardından **görevleri güncelleştir**' i seçin. Bu işlem önceden oluşturduğunuz belgeyi güncelleştirir ve görünümden kaldırır.
 
 5. Uygulamayı durdurmak için terminal penceresinde CTRL+C tuşlarına basın ve ardından toplu işlemi sonlandırmak için **Y** öğesini seçin.
 
@@ -470,14 +470,14 @@ Uygulamanız yerel olarak başarılı olduktan sonra, aşağıdaki adımları ku
 3. Uygulamayı uzak öğeye göndererek dağıtın.
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. Web uygulamanız birkaç saniye içinde yayımlanır ve bir tarayıcıda başlatılır.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil** ' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
+Bu kaynaklara artık ihtiyaç duyulmadığında, kaynak grubunu, Azure Cosmos DB hesabı ve tüm ilgili kaynakları silebilirsiniz. Bunu yapmak için Azure Cosmos DB hesabı için kullandığınız kaynak grubunu seçin, **Sil**' i seçin ve ardından silinecek kaynak grubunun adını onaylayın.
 
 ## <a name="next-steps"></a><a name="_Toc395637775"></a>Sonraki adımlar
 

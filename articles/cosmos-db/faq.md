@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 2e4ff4d9159947ea87f97d56f3fb9c2825698227
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 81c959467c4bb3700120917cf150773fb18e866d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095075"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359838"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -180,7 +180,7 @@ SQL API,,,,, `COUNT` `MIN` `MAX` `AVG` ve `SUM` SQL dilbilgisi aracılığıyla 
 
 SQL API 'SI, HTTP varlık etiketleri veya ETags aracılığıyla iyimser eşzamanlılık denetimini (OCC) destekler. Her SQL API kaynağı bir ETag öğesine sahiptir ve bir belge her güncelleştirildiği zaman sunucu üzerinde ETag ayarlanır. ETag üst bilgisi ve geçerli değer tüm yanıt iletilerine dahildir. ETags, sunucunun bir kaynağın güncelleştirilip güncelleştirilmediğini meyeceğine karar vermesini sağlamak için If-Match üstbilgisiyle birlikte kullanılabilir. If-Match değeri, denetlenecek ETag değeridir. ETag değeri sunucu ETag değeriyle eşleşiyorsa, kaynak güncellenir. ETag artık geçerli değilse, sunucu işlemi "HTTP 412 Önkoşul hatası" Yanıt koduyla reddeder. İstemci daha sonra kaynak için geçerli ETag değerini almak üzere kaynağı yeniden ekler. Ayrıca, ETags bir kaynağın tekrar al gerekip gerekmediğini belirleyebilmek için If-None-Match üst bilgisiyle birlikte kullanılabilir.
 
-.NET 'te iyimser eşzamanlılık kullanmak için [Accesscondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) sınıfını kullanın. Bir .NET örneği için bkz. GitHub 'daki DocumentManagement örneğindeki [program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) .
+.NET 'te iyimser eşzamanlılık kullanmak için [Accesscondition](/dotnet/api/microsoft.azure.documents.client.accesscondition) sınıfını kullanın. Bir .NET örneği için bkz. GitHub 'daki DocumentManagement örneğindeki [program.cs](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/DocumentManagement/Program.cs) .
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>SQL API 'de işlem Nasıl yaparım? mı?
 

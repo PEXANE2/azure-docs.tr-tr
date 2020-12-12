@@ -8,18 +8,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6c7ea0057553ea0052ded72353d22ade86b9d74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 429fe39f84a54c22fa97178b85f417d76dc84a8e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91298924"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359481"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Azure sanal makinelerinde SQL Server için otomatik düzeltme eki uygulama (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -27,11 +28,11 @@ ms.locfileid: "91298924"
 Otomatik düzeltme eki uygulama SQL Server çalıştıran bir Azure sanal makinesine yönelik bir bakım penceresi oluşturur. Otomatik Güncelleştirmeler yalnızca bu bakım penceresi sırasında yüklenebilir. SQL Server için bu kısıtlama, sistem güncelleştirmelerinin ve ilişkili tüm yeniden başlatmaların veritabanı için mümkün olan en uygun zamanda yapılmasını sağlar. 
 
 > [!IMPORTANT]
-> Yalnızca Windows ve SQL Server, **önemli** veya **kritik** olarak işaretlenen güncelleştirmeler yüklenir. **Önemli** veya **kritik**olarak işaretlenmemiş hizmet paketleri ve toplu güncelleştirmeler gibi diğer SQL Server güncelleştirmelerin el ile yüklenmesi gerekir. 
+> Yalnızca Windows ve SQL Server, **önemli** veya **kritik** olarak işaretlenen güncelleştirmeler yüklenir. **Önemli** veya **kritik** olarak işaretlenmemiş hizmet paketleri ve toplu güncelleştirmeler gibi diğer SQL Server güncelleştirmelerin el ile yüklenmesi gerekir. 
 
 Otomatik düzeltme eki uygulama [SQL Server hizmet olarak altyapı (IaaS) aracı uzantısına](sql-server-iaas-agent-extension-automate-management.md)bağlıdır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Otomatik düzeltme eki kullanmak için aşağıdaki önkoşulları göz önünde bulundurun:
 
 **İşletim sistemi**:
@@ -79,7 +80,7 @@ Azure portal, sağlama sırasında veya var olan VM 'Lerde otomatik düzeltme ek
 ### <a name="new-vms"></a>Yeni VM 'Ler
 Kaynak Yöneticisi dağıtım modelinde yeni bir SQL Server sanal makine oluşturduğunuzda otomatik düzeltme eki yapılandırmak için Azure portal kullanın.
 
-**SQL Server ayarları** sekmesinde **Otomatik Düzeltme Eki**altında **yapılandırmayı Değiştir** ' i seçin. Aşağıdaki Azure portal ekran görüntüsünde **SQL otomatik düzeltme eki uygulama** dikey penceresi gösterilmektedir.
+**SQL Server ayarları** sekmesinde **Otomatik Düzeltme Eki** altında **yapılandırmayı Değiştir** ' i seçin. Aşağıdaki Azure portal ekran görüntüsünde **SQL otomatik düzeltme eki uygulama** dikey penceresi gösterilmektedir.
 
 ![Azure portal SQL otomatik düzeltme eki uygulama](./media/automated-patching/azure-sql-arm-patching.png)
 
@@ -89,7 +90,7 @@ Daha fazla bilgi için bkz. [Azure 'da SQL Server sanal makinesi sağlama](creat
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Mevcut SQL Server sanal makineler için [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağınızı açın ve **Ayarlar**altında **Düzeltme Eki** ' ni seçin. 
+Mevcut SQL Server sanal makineler için [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağınızı açın ve **Ayarlar** altında **Düzeltme Eki** ' ni seçin. 
 
 ![Mevcut VM 'Ler için SQL otomatik düzeltme eki uygulama](./media/automated-patching/azure-sql-rm-patching-existing-vms.png)
 
@@ -125,7 +126,7 @@ Bu örneğe bağlı olarak, aşağıdaki tabloda hedef Azure VM üzerinde pratik
 
 SQL Server IaaS aracısının yüklenmesi ve yapılandırılması birkaç dakika sürebilir.
 
-Otomatik Düzeltme Eki uygulamayı devre dışı bırakmak için, **New-Azvmsqlserverotomatikpatchingconfig**için **-Enable** parametresi olmadan aynı betiği çalıştırın. **-Enable** parametresinin yokluğu, özelliği devre dışı bırakma komutuna işaret eder.
+Otomatik Düzeltme Eki uygulamayı devre dışı bırakmak için, **New-Azvmsqlserverotomatikpatchingconfig** için **-Enable** parametresi olmadan aynı betiği çalıştırın. **-Enable** parametresinin yokluğu, özelliği devre dışı bırakma komutuna işaret eder.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Diğer kullanılabilir otomasyon görevleri hakkında daha fazla bilgi için bkz. [IaaS Aracısı uzantısı SQL Server](sql-server-iaas-agent-extension-automate-management.md).

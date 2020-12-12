@@ -8,18 +8,19 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8572a73586b01967c8aef7f6c4947b5ce96146b4
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 1a9a2f9d999a51f2b4600e8379d4a8913675b338
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324866"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360025"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Öğretici: Azure sanal makinelerinde SQL Server üzerinde kullanılabilirlik grupları oluşturmaya yönelik önkoşullar
 
@@ -169,7 +170,7 @@ Ağı, alt ağları ve kullanılabilirlik kümelerini oluşturduktan sonra, etki
 
 Etki alanı denetleyicileri oluşturup yapılandırmak için, **SQL-ha-RG** kaynak grubuna dönün.
 
-1. **Add (Ekle)** seçeneğini belirleyin. 
+1. **Ekle**’yi seçin. 
 2. **Windows Server 2016 Datacenter** yazın.
 3. **Windows Server 2016 Datacenter** öğesini seçin. **Windows Server 2016 Datacenter**'da dağıtım modelinin **Kaynak Yöneticisi** olduğundan emin olun ve ardından **Oluştur**' u seçin. 
 
@@ -313,7 +314,7 @@ Birincil etki alanı denetleyicisi yeniden başlatıldıktan sonra, ikinci etki 
 
     ![Dağıtım yapılandırması](./media/availability-group-manually-configure-prerequisites-tutorial-/28-deploymentconfig.png)
 
-18. **Seç**'e tıklayın.
+18. **Seç**’e tıklayın.
 19. Yönetici hesabını kullanarak bağlanın (**corp. CONTOSO. COM\domainadmin**) ve parola (**contoso! 0000**).
 20. **Ormandan bir etki alanı seçin** bölümünde, etki alanınızı seçin ve ardından **Tamam**' ı seçin.
 21. **Etki alanı denetleyicisi seçenekleri**' nde, varsayılan değerleri kullanın ve DSRM parolasını ayarlayın.
@@ -403,7 +404,7 @@ Ardından, üç VM oluşturun-iki SQL Server VM ve ek bir küme düğümü için
 | Sanal makine yapılandırma **temelleri** |**Ad** = küme-FSW<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-0<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |**Ad** = SqlServer-1<br/>**Kullanıcı adı** = DomainAdmin<br/>**Parola** = contoso! 0000<br/>**Abonelik** = aboneliğiniz<br/>**Kaynak grubu** = SQL-ha-RG<br/>**Konum** = Azure konumunuz |
 | Sanal makine yapılandırma **boyutu** |**Boyut** = DS1 \_ v2 (1 vcpu, 3,5 GB) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB)</br>Boyut SSD depolamayı desteklemelidir (Premium disk desteği). )) |**Boyut** = DS2 \_ v2 (2 sanal CPU, 7 GB) |
 | Sanal makine yapılandırma **ayarları** |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |**Depolama**: yönetilen diskleri kullanın.<br/>**Sanal ağ** = autoHAVNET<br/>**Subnet** = sqlsubnet (10.1.1.0/24)<br/>**Genel IP adresi** otomatik olarak oluşturulur.<br/>**Ağ güvenlik grubu** = yok<br/>**Izleme tanılaması** = etkin<br/>**Tanılama depolama hesabı** = otomatik olarak oluşturulan bir depolama hesabı kullan<br/>**Kullanılabilirlik kümesi** = sqlAvailabilitySet<br/> |
-| Sanal makine yapılandırması **SQL Server ayarları** |Uygulanamaz |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
+| Sanal makine yapılandırması **SQL Server ayarları** |Geçerli değil |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |**SQL bağlantısı** = özel (sanal ağ içinde)<br/>**Bağlantı noktası** = 1433<br/>**SQL kimlik doğrulaması** = devre dışı<br/>**Depolama yapılandırması** = genel<br/>**Otomatik düzeltme eki uygulama** = Pazar 2:00<br/>**Otomatik yedekleme** = devre dışı</br>**Azure Key Vault tümleştirme** = devre dışı |
 
 <br/>
 

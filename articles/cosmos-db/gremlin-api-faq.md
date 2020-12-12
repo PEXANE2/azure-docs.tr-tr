@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339368"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359797"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Azure Cosmos DB 'da Gremlin API 'SI hakkında sık sorulan sorular
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -109,7 +109,7 @@ Azure Cosmos DB Gremlin API 'SI, açık kaynaklı sürücülerden hizmete yönel
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin sürücülerini kullanarak ekleme saldırılarına karşı nasıl koruyabilirim?
 
-Çoğu yerel Apache Tinkerpop Gremlin sürücüleri, sorgu yürütme için bir parametre sözlüğü sağlama seçeneğine izin verir. Bu, [Gremlin.net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) Içinde ve [Gremlin-JavaScript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js)içinde nasıl yapılacağını gösteren bir örnektir.
+Çoğu yerel Apache Tinkerpop Gremlin sürücüleri, sorgu yürütme için bir parametre sözlüğü sağlama seçeneğine izin verir. Bu, [Gremlin.net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) Içinde ve [Gremlin-JavaScript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js)içinde nasıl yapılacağını gösteren bir örnektir.
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Neden "Gremlin sorgu derleme hatası: herhangi bir yöntem bulunamıyor" hatası alıyorum?
 

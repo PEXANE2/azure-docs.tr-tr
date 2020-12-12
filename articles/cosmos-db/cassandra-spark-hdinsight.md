@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: cee5181bf3dda3f0fb609d5aa344697e989ae6c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e09ac39037024b5c360af4bb6ada26590b142924
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098901"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359606"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight ile YARN 'de Spark Azure Cosmos DB Cassandra API erişme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -119,7 +119,7 @@ HDInsight-Spark Zeppelin ve Jupyter Not defteri hizmetleriyle birlikte gelir. Bu
 
 Aşağıdaki jupi Not defterleri, HDInsight Spark kümenize yüklenebilir ve Azure Cosmos DB Cassandra API çalışmaya yönelik hazırlık örnekleri sağlayabilir. `1.0-ReadMe.ipynb`Azure Cosmos DB Cassandra API bağlanmaya yönelik Spark hizmeti yapılandırmasını gözden geçirmek için ilk not defterini gözden geçirdiğinizden emin olun.
 
-Bu not defterlerini [Azure-Cosmos-DB-Cassandra-api-Spark-Not defterleri-jupyıter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/master/scala/) altında makinenize indirin.
+Bu not defterlerini [Azure-Cosmos-DB-Cassandra-api-Spark-Not defterleri-jupyıter](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-notebooks-jupyter/blob/main/scala/) altında makinenize indirin.
   
 ### <a name="how-to-upload"></a>Karşıya yükleme:
 Jupyıter 'ı başlattığınızda Scala 'ya gidin. Önce bir dizin oluşturun ve ardından not defterlerini dizine yükleyin. Karşıya Yükle düğmesi üst, sağ taraftaki bir düğmedir.  
@@ -135,6 +135,6 @@ Not defterlerini ve her bir not defteri hücresini sırayla çalıştırın.  T�
 
 * [Bir IDE 'de Spark Scala programı oluşturma ve yürütme için Livy aracılığıyla HDInsight Spark kümesine gönderme](../hdinsight/spark/apache-spark-create-standalone-application.md)
 
-* [Spark Scala programından Azure Cosmos DB Cassandra API bağlama](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/master/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
+* [Spark Scala programından Azure Cosmos DB Cassandra API bağlama](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
 
 * [Cassandra API ile çalışmak için kod örneklerinin tüm listesi](cassandra-spark-generic.md)

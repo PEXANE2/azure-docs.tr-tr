@@ -4,15 +4,15 @@ description: AzCopy işlemleri için Azure Active Directory (Azure AD) kullanara
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/03/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b13b5e1e27e9717066ff8f1aa8e245e8d9f54bbb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498124"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360297"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy ve Azure Active Directory (Azure AD) ile bloblara erişim yetkisi verme
 
@@ -73,7 +73,7 @@ Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür.
 
 Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra, tarayıcı penceresini kapatabilir ve AzCopy kullanmaya başlayabilirsiniz.
 
-<a id="service-principal"></a>
+<a id="managed-identity"></a>
 
 ## <a name="authorize-a-managed-identity"></a>Yönetilen kimliği yetkilendirme
 
@@ -116,6 +116,8 @@ azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
 `<resource-id>`Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak kimliği ile değiştirin.
+
+<a id="service-principal"></a>
 
 ## <a name="authorize-a-service-principal"></a>Hizmet sorumlusu yetkilendirme
 
@@ -181,8 +183,113 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, parolanız konsolunuzun komut geçmişinde görünmez. 
 
-<a id="managed-identity"></a>
+## <a name="authorize-without-a-keyring-linux"></a>Kimlik anahtarlığı olmadan yetkilendirme (Linux)
 
+İşletim sisteminizin *kimlik anahtarlığı* gibi bir gizli deposu yoksa, `azcopy login` komut çalışmaz. Bunun yerine, her bir işlemi çalıştırmadan önce bellek içi ortam değişkenlerini ayarlayabilirsiniz. Bu değerler, işlem tamamlandıktan sonra bellekten kaybolur, bu yüzden AzCopy komutunu her çalıştırdığınızda bu değişkenleri ayarlamanız gerekir.
+
+### <a name="authorize-a-user-identity"></a>Kullanıcı kimliğini yetkilendirme
+
+Kullanıcı kimliğinize gerekli yetkilendirme düzeyi verildiğini doğruladıktan sonra, aşağıdaki komutu yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=DEVICE
+```
+
+Ardından, herhangi bir AzCopy komutunu çalıştırın (örneğin: `azcopy list https://contoso.blob.core.windows.net` ).
+
+Bu komut, bir kimlik doğrulama kodu ve bir Web sitesinin URL 'sini döndürür. Web sitesini açın, kodu sağlayın ve sonra **İleri** düğmesini seçin.
+
+![Kapsayıcı oluşturma](media/storage-use-azcopy-v10/azcopy-login.png)
+
+Oturum açma penceresi görüntülenir. Bu pencerede, Azure hesabı kimlik bilgilerinizi kullanarak Azure hesabınızda oturum açın. Başarıyla oturum açtıktan sonra işlem tamamlanabilir.
+
+### <a name="authorize-by-using-a-system-wide-managed-identity"></a>Sistem genelinde yönetilen kimlik kullanarak yetkilendirme
+
+İlk olarak, VM 'niz üzerinde sistem genelinde yönetilen bir kimlik etkinleştirdiğinizden emin olun. Bkz. [sistem tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity).
+
+Aşağıdaki komutu yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Ardından, herhangi bir AzCopy komutunu çalıştırın (örneğin: `azcopy list https://contoso.blob.core.windows.net` ).
+
+### <a name="authorize-by-using-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik kullanarak yetkilendirme
+
+İlk olarak, VM 'niz üzerinde kullanıcı tarafından atanan bir yönetilen kimliği etkinleştirdiğinizden emin olun. Bkz. [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity).
+
+Aşağıdaki komutu yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=MSI
+```
+
+Ardından, aşağıdaki komutlardan birini yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_MSI_CLIENT_ID=<client-id>
+```
+
+`<client-id>`Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin ISTEMCI kimliği ile değiştirin.
+
+```bash
+export AZCOPY_MSI_OBJECT_ID=<object-id>
+```
+
+`<object-id>`Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin nesne kimliğiyle değiştirin.
+
+```bash
+export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
+```
+
+`<resource-id>`Yer tutucusunu Kullanıcı tarafından atanan yönetilen kimliğin kaynak kimliği ile değiştirin.
+
+Bu değişkenleri ayarladıktan sonra herhangi bir AzCopy komutunu (örneğin: `azcopy list https://contoso.blob.core.windows.net` ) çalıştırabilirsiniz.
+
+### <a name="authorize-a-service-principal"></a>Hizmet sorumlusu yetkilendirme
+
+Bir betiği çalıştırmadan önce, hizmet sorumlunuzu kimlik bilgileriyle AzCopy sağlayabilmeniz için, etkileşimli olarak en az bir kez oturum açmanız gerekir.  Bu kimlik bilgileri güvenli ve şifreli bir dosyada depolanır, böylece komut dosyanız bu hassas bilgileri sağlamalıdır.
+
+Bir istemci gizli anahtarını veya hizmet sorumlusunun uygulama kaydıyla ilişkili bir sertifikanın parolasını kullanarak hesabınızda oturum açabilirsiniz.
+
+#### <a name="authorize-a-service-principal-by-using-a-client-secret"></a>İstemci parolası kullanarak hizmet sorumlusu yetkilendirme
+
+Aşağıdaki komutu yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_APPLICATION_ID=<application-id>
+export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+```
+
+`<application-id>`Yer tutucusunu, hizmet sorumlusunun uygulama kaydının uygulama kimliğiyle değiştirin. `<client-secret>`Yer tutucusunu, istemci gizli anahtarı ile değiştirin.
+
+> [!NOTE]
+> Kullanıcıdan parolayı toplamak için bir istem kullanmayı düşünün. Bu şekilde, parolanız komut geçmişinizde görünmez. 
+
+Ardından, herhangi bir AzCopy komutunu çalıştırın (örneğin: `azcopy list https://contoso.blob.core.windows.net` ).
+
+#### <a name="authorize-a-service-principal-by-using-a-certificate"></a>Bir sertifika kullanarak hizmet sorumlusu yetkilendirme
+
+Yetkilendirme için kendi kimlik bilgilerinizi kullanmayı tercih ediyorsanız, uygulama kaydınıza bir sertifika yükleyebilir ve sonra bu sertifikayı kullanarak oturum açabilirsiniz.
+
+Sertifikanızı uygulama kaydıza yüklemeye ek olarak, AzCopy 'in çalıştığı makineye veya VM 'ye kaydedilmiş sertifikanın bir kopyasına sahip olmanız da gerekir. Sertifikanın bu kopyası içinde olmalıdır. PFX veya. PEK biçimi ve özel anahtarı içermelidir. Özel anahtar parola korumalı olmalıdır. 
+
+Aşağıdaki komutu yazın ve ENTER tuşuna basın.
+
+```bash
+export AZCOPY_AUTO_LOGIN_TYPE=SPN
+export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
+export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+```
+
+`<path-to-certificate-file>`Yer tutucusunu, sertifika dosyasının göreli veya tam yoluyla değiştirin. AzCopy, bu sertifikaya olan yolu kaydeder ancak sertifikanın bir kopyasını kaydetmez, bu nedenle bu sertifikayı yerinde sakladığınızdan emin olun. `<certificate-password>`Yer tutucusunu sertifikanın parolasıyla değiştirin.
+
+> [!NOTE]
+> Kullanıcıdan parolayı toplamak için bir istem kullanmayı düşünün. Bu şekilde, parolanız komut geçmişinizde görünmez. 
+
+Ardından, herhangi bir AzCopy komutunu çalıştırın (örneğin: `azcopy list https://contoso.blob.core.windows.net` ).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

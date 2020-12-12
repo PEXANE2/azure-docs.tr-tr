@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124943"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359464"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Çalışma grubu kullanılabilirlik grubunu yapılandırma 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -60,7 +61,7 @@ DNS sonekini yapılandırmak için aşağıdaki adımları izleyin:
    ![Çalışma grubu adını değiştir](./media/availability-group-clusterless-workgroup-configure/1-change-workgroup-name.png)
 
 1. **DNS son eki ve NetBIOS bilgisayar adı** iletişim kutusunu açmak Için **daha fazla...** seçeneğini belirleyin. 
-1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki** altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam** ' ı seçin: 
+1. DNS son ekinin adını **Bu bilgisayarın BIRINCIL DNS son eki** altına yazın (gibi) `ag.wgcluster.example.com` ve ardından **Tamam**' ı seçin: 
 
    ![Ekran görüntüsü, değeri girebileceğiniz D N S soneki ve NetBIOS bilgisayar adı iletişim kutusunu gösterir.](./media/availability-group-clusterless-workgroup-configure/2-add-dns-suffix.png)
 
@@ -115,12 +116,12 @@ Bu adımda, yük devretme kümesi oluşturacaksınız. Bu adımları tanımıyor
 
 Küme oluşturulduktan sonra bir statik küme IP adresi atayın. Bunu yapmak için aşağıdaki adımları izleyin:
 
-1. Düğümlerden birinde, **Yük devretme kümesi Yöneticisi** açın, kümeyi seçin, **küme çekirdek kaynakları** altında, **\<ClusterNam> ad** ' a sağ tıklayın ve ardından **Özellikler** ' i seçin. 
+1. Düğümlerden birinde, **Yük devretme kümesi Yöneticisi** açın, kümeyi seçin, **küme çekirdek kaynakları** altında, **\<ClusterNam> ad** ' a sağ tıklayın ve ardından **Özellikler**' i seçin. 
 
    ![Küme adı için başlatma özellikleri](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
-1. **IP adresleri** altında IP adresini seçin ve **Düzenle** ' yi seçin. 
-1. **Statik kullan** ' ı seçin, kümenin IP adresini belirtin ve ardından **Tamam** ' ı seçin: 
+1. **IP adresleri** altında IP adresini seçin ve **Düzenle**' yi seçin. 
+1. **Statik kullan**' ı seçin, kümenin IP adresini belirtin ve ardından **Tamam**' ı seçin: 
 
    ![Küme için statik bir IP adresi sağlayın](./media/availability-group-clusterless-workgroup-configure/6-provide-static-ip-for-cluster.png)
 

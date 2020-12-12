@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020101"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359209"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına Microsoft dışı hesapları ekleme
 
-Google, Facebook veya GitHub gibi Microsoft dışı hesaplarınızı iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleyin. Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanan tüm uygulamalar ve zaman tabanlı bir kerelik parola (TOTP) standartlarını destekleyen herhangi bir hesap ile birlikte kullanılabilir.
+Google, Facebook veya GitHub gibi Microsoft olmayan hesaplarınız varsa, bunları iki öğeli doğrulama için Microsoft Authenticator uygulamasına ekleyebilirsiniz. Microsoft Authenticator uygulaması, iki öğeli doğrulama kullanan tüm uygulamalar ve zaman tabanlı bir kerelik parola (TOTP) standartlarını destekleyen herhangi bir hesap ile birlikte kullanılabilir.
 
 >[!Important]
 >Hesabınızı ekleyebilmeniz için önce Microsoft Authenticator uygulamasını indirmeniz ve kurmanız gerekir. Henüz yapmadıysanız, [uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) makalesindeki adımları izleyin.
@@ -130,7 +130,7 @@ Facebook, Google, GitHub ve Amazon hesaplarınız için bu işlemi burada sunuyo
 
 1. Bilgisayarınızdaki **iki öğeli kimlik doğrulama** sayfasında, **uygulama kullanarak ayarla**' yı seçin.
 
-2. Erişiminizi kaybederseniz ve sonra **İleri**' yi seçerek hesabınıza geri dönmek için kurtarma kodlarınızı kaydedin. 
+2. Erişiminizi kaybederseniz ve sonra **İleri**' yi seçerek hesabınıza geri dönmek için kurtarma kodlarınızı kaydedin.
 
     Kodlarınızı cihazınıza indirerek, sabit bir kopya yazdırarak veya bir parola Yöneticisi aracına kopyalayarak kaydedebilirsiniz.
 

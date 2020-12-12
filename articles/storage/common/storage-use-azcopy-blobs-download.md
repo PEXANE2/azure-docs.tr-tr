@@ -4,16 +4,16 @@ description: Bu makale, Azure Blob depolamadan blob 'ları indirmelerine yardım
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0a2490a104d18f77a0ec326933f463eb4ebb4339
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: ea8300447b9aa596e8678038982771263a4c76f6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923972"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358784"
 ---
 # <a name="download-blobs-from-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak blob 'ları Azure Blob depolamadan indirin
 
@@ -21,7 +21,7 @@ AzCopy ile v10 arasındaki komut satırı yardımcı programını kullanarak blo
 
 Dosyaları karşıya yükleme, blob depolamayla eşitleme veya hesaplar arasında blobları kopyalama gibi diğer görev türlerine yönelik örnekleri görmek için, bu makalenin [sonraki adımları](#next-steps) bölümünde sunulan bağlantılara bakın.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md) makalesini inceleyin ve depolama hizmetine yetkilendirme kimlik bilgilerini nasıl sağlayabileceğiniz yolları hakkında bilgi edinin.
 
@@ -39,7 +39,7 @@ AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>' '<local-file-path>'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt' 'C:\myDirectory\myTextFile.txt'` |
 
@@ -55,7 +55,7 @@ AzCopy ['i indirmek Için AzCopy ile çalışmaya başlama](storage-use-azcopy-v
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<directory-path>' '<local-directory-path>' --recursive` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myBlobDirectory' 'C:\myDirectory'  --recursive` |
 
@@ -73,7 +73,7 @@ Joker karakter simgesini (*) kullanarak dizinin kendisini kopyalamadan içeriği
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.blob.core.windows.net/<container-name>/*' '<local-directory-path>/'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory/*' 'C:\myDirectory'` |
 
 `--recursive`Dosyaları tüm alt dizinlere indirmek için bayrağı ekleyin.
@@ -91,7 +91,7 @@ Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın 
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>'  --include-path <semicolon-separated-file-list>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt' --recursive` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-path 'photos;documents\myFile.txt'--recursive` |
 
@@ -105,7 +105,7 @@ Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın 
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>' '<local-directory-path>' --include-pattern <semicolon-separated-file-list-with-wildcard-characters>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory' 'C:\myDirectory'  --include-pattern 'myFile*.txt;*.pdf*'` |
 
@@ -113,13 +113,15 @@ Ayrıca, seçeneğini kullanarak blob 'ları hariç bırakabilirsiniz `--exclude
 
 `--include-pattern`Ve `--exclude-pattern` seçenekleri, yalnızca blob adları için geçerlidir, yola değildir.  Bir dizin ağacında var olan tüm metin dosyalarını (Blobları) kopyalamak istiyorsanız, tüm `–recursive` dizin ağacını almak için seçeneğini kullanın ve ardından öğesini kullanarak `–include-pattern` `*.txt` tüm metin dosyalarını alın.
 
-#### <a name="download-blobs-that-were-modified-after-a-date-and-time"></a>Tarih ve saatten sonra değiştirilen Blobları indirin 
+#### <a name="download-blobs-that-were-modified-before-or-after-a-date-and-time"></a>Tarih ve saatten önce veya sonra değiştirilen Blobları indirin 
 
-Seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-after` . ISO-8601 biçiminde bir tarih ve saat belirtin (örneğin: `2020-08-19T15:04:00Z` ). 
+Veya seçeneğiyle [AzCopy kopyalama](storage-ref-azcopy-copy.md) komutunu kullanın `--include-before` `--include-after` . ISO-8601 biçiminde bir tarih ve saat belirtin (örneğin: `2020-08-19T15:04:00Z` ). 
+
+Aşağıdaki örnekler, belirtilen tarihte veya sonra değiştirilen dosyaları indirir.
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-or-directory-name>/*' '<local-directory-path>' --include-after <Date-Time-in-ISO-8601-format>` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/FileDirectory/*' 'C:\myDirectory'  --include-after '2020-08-19T15:04:00Z'` |
 
@@ -129,7 +131,7 @@ Ayrıntılı başvuru için bkz. [AzCopy kopyası](storage-ref-azcopy-copy.md) b
 
 [BLOB sürüm oluşturmayı](../blobs/versioning-enable.md)etkinleştirdiyseniz, bir Blobun bir veya daha fazla önceki sürümünü indirebilirsiniz. 
 
-İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örnek: 
+İlk olarak, [Sürüm kimliklerinin](../blobs/versioning-overview.md)bir listesini içeren bir metin dosyası oluşturun. Her sürüm KIMLIĞI ayrı bir satırda görünmelidir. Örneğin: 
 
 ```
 2020-08-17T05:50:34.2199403Z
@@ -145,7 +147,7 @@ Blob anlık görüntüsünün **Tarih saat** değerine başvurarak bir [BLOB anl
 
 |    |     |
 |--------|-----------|
-| **Sözdizimi** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
+| **Syntax** | `azcopy copy 'https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>?sharesnapshot=<DateTime-of-snapshot>' '<local-file-path>'` |
 | **Örnek** | `azcopy copy 'https://mystorageaccount.blob.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 | **Örnek** (hiyerarşik ad alanı) | `azcopy copy 'https://mystorageaccount.dfs.core.windows.net/mycontainer/myTextFile.txt?sharesnapshot=2020-09-23T08:21:07.0000000Z' 'C:\myDirectory\myTextFile.txt'` |
 
@@ -168,9 +170,9 @@ Tüm liste için bkz. [Seçenekler](storage-ref-azcopy-copy.md#options).
 
 Bu makalelerde daha fazla örnek bulun:
 
-- [Örnekler: karşıya yükle](storage-use-azcopy-blobs-upload.md)
+- [Örnekler: Karşıya Yükle](storage-use-azcopy-blobs-upload.md)
 - [Örnekler: hesap arasında kopyalama](storage-use-azcopy-blobs-copy.md)
-- [Örnekler: Synchronize](storage-use-azcopy-blobs-synchronize.md)
+- [Örnekler: Eşitle](storage-use-azcopy-blobs-synchronize.md)
 - [Örnekler: Amazon S3 demetleri](storage-use-azcopy-s3.md)
 - [Örnekler: Azure dosyaları](storage-use-azcopy-files.md)
 - [Öğretici: AzCopy kullanarak şirket içi verileri bulut depolamasına taşıma](storage-use-azcopy-migrate-on-premises-data.md)

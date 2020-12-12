@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: c9e0b155a4cf34373bb6d851241dc62ddd661045
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 06e62f49b996eac09b9a0a6cb9001eb362833168
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602390"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359308"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal bir Azure purview hesabı oluşturun
 
@@ -30,6 +30,10 @@ Bu hızlı başlangıçta bir Azure purview hesabı oluşturursunuz.
 * Hesabınız abonelikte kaynak oluşturma iznine sahip olmalıdır
 
 * Tüm uygulamaların **depolama hesabı** ve **EventHub ad alanı** oluşturmasını engelleyen **Azure Ilkeniz** varsa, bir purview hesabı oluşturma işlemi sırasında girilebilen Tag kullanarak ilke özel durumu yapmanız gerekir. Ana neden her bir purview hesabının oluşturulması, bir yönetilen kaynak grubu ve bu kaynak grubu, bir depolama hesabı ve bir EventHub ad alanı içinde oluşturulması gerekir.
+
+    > [!important]
+    > Azure Ilkeniz yoksa veya mevcut bir Azure Ilkesi **depolama hesabı** ve **EventHub ad alanı** oluşturulmasını engellemiyor ise bu adımı izlemeniz gerekmez.
+
     1. Azure portal gidin ve **ilkeyi** arayın
     1. Operator ve Tag ile iki özel durum eklemek için [özel ilke tanımı oluştur](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) veya mevcut ilkeyi Değiştir ' i izleyin `not` `resourceBypass` :
 
@@ -151,7 +155,7 @@ Ekle ' ye tıkladığınızda, hem işaretlenmiş (devre dışı) hem de işaret
 
 1. **Rol ataması ekle**’yi seçin.
 
-1. , Hizmet sorumlusunun ne için kullanılacağı ile ilgili olarak veri kaynağı yönetici **rolü** veya **takip görünümü veri kaynağı Yöneticisi rolünü** görüntüleme içindeki rol türü için (Lütfen ayrıntılar için [Katalog izinleri](catalog-permissions.md) bölümüne bakın).
+1. Güvenlik sorumlusunun kullanım için ne olduğuna bağlı olarak, **purview Data Curator rolü** veya **purview veri kaynağı Yöneticisi rolünü** inceleyin. Ayrıntılar için lütfen bkz. Azure Active Directory [Katalog izinleri](catalog-permissions.md) ve [uygulama ve hizmet sorumlusu nesneleri](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) .
 
 1. **Ata erişimi** için varsayılan, **Kullanıcı, Grup veya hizmet sorumlusu**' nı bırakın.
 

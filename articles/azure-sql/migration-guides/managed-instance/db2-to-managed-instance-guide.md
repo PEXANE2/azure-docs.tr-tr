@@ -1,5 +1,5 @@
 ---
-title: "Geçiş Kılavuzu: DB2 'den SQL yönetilen örneği"
+title: "DB2 'den SQL yönetilen örneği: geçiş kılavuzu"
 description: DB2 veritabanlarınızı Azure SQL yönetilen örneğine geçirmek için bu kılavuzu izleyin.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: c31187e87f18f0ec84cd5b80ccab997d0ba381c3
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3902661553bbb390e6e999e0f67cd043eee8df09
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324763"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359192"
 ---
 # <a name="migration-guide-db2-to-sql-managed-instance"></a>Geçiş Kılavuzu: DB2 'den SQL yönetilen örneği
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]

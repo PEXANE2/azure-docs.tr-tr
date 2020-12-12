@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 12/10/2020
+ms.date: 12/11/2020
 ms.author: cherylmc
-ms.openlocfilehash: d4257e5ade1e32ec971bb77f9d5a686d30195735
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b0937bbd72460b1d46ce0394af1933e858424966
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111537"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360331"
 ---
 # <a name="manage-secure-access-to-resources-in-spoke-vnets-for-user-vpn-clients"></a>Kullanıcı VPN istemcileri için bağlı olan sanal ağlarda bulunan kaynaklara güvenli erişimi yönetme
 
@@ -41,7 +41,11 @@ Noktadan siteye (P2S) yapılandırması, uzak istemcileri bağlamaya yönelik pa
 
 Kimlik doğrulama yöntemini seçerken üç seçeneğiniz vardır. Her yöntemin belirli gereksinimleri vardır. Aşağıdaki yöntemlerden birini seçin ve ardından adımları uygulayın.
 
-* **Azure Active Directory kimlik doğrulaması:** Azure AD kiracınızda, [verenin](https://sts.windows.net/your-Directory-ID/)ve [Azure AD KIRACıSıNDA](https://login.microsoftonline.com/your-Directory-ID)kayıtlı Azure VPN kurumsal uygulamasının uygulama kimliğini edinin.
+* **Azure Active Directory kimlik doğrulaması:** Aşağıdakileri edinin:
+
+   * Azure AD kiracınızda kayıtlı Azure VPN kurumsal uygulamasının **uygulama kimliği** .
+   * **Veren**. Örnek: `https://sts.windows.net/your-Directory-ID`.
+   * **Azure AD kiracısı**. Örnek: `https://login.microsoftonline.com/your-Directory-ID`.
 
 * **RADIUS tabanlı kimlik doğrulaması:** RADIUS sunucusu IP 'sini, RADIUS sunucu gizli anahtarını ve sertifika bilgilerini alın.
 

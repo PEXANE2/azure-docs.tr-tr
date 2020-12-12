@@ -8,18 +8,18 @@ ms.custom: mvc, devcenter, devx-track-csharp
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 8820fd7b0812d925af6aca923a2b205d5bc92f3e
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a06d07a7d54b6399ab5f83c41284fb2fab7217fb
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341459"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97360280"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için .NET (C#) kullanma-tek sunucu
 
 Bu hızlı başlangıçta, C# uygulaması kullanılarak PostgreSQL için Azure Veritabanı'na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, C# kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıç için şunlar gerekir:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free).
@@ -32,7 +32,7 @@ Bu hızlı başlangıç için şunlar gerekir:
   | **Hizmet uç noktasını yapılandır** | Genel | [Portal](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | **Özel bağlantıyı Yapılandır** | Özel | [Portal](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- Platformunuzun (Windows, Ubuntu Linux veya macOS) [.NET Framework](https://www.microsoft.com/net/download) yüklemesini yapın. 
+- Platformunuzun (Windows, Ubuntu Linux veya macOS) [.NET Framework](https://www.microsoft.com/net/download) yüklemesini yapın.
 - Projenizi derlemek için [Visual Studio 'yu](https://www.visualstudio.com/downloads/) yükler.
 - Visual Studio 'da [Npgsql](https://www.nuget.org/packages/Npgsql/) NuGet paketini yükler.
 
@@ -40,19 +40,19 @@ Bu hızlı başlangıç için şunlar gerekir:
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-csharp/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="step-1-connect-and-insert-data"></a>1. Adım: verileri bağlama ve ekleme
-Aşağıdaki kodu kullanarak bağlanın ve **CREATE TABLE** ve **INSERT INTO** SQL deyimlerini kullanarak verileri yükleyin. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır: 
+Aşağıdaki kodu kullanarak bağlanın ve **CREATE TABLE** ve **INSERT INTO** SQL deyimlerini kullanarak verileri yükleyin. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır:
 - PostgreSQL veritabanına bağlantı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) .
 - [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) CommandText özelliğini ayarlar.
-- [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemi veritabanı komutlarını çalıştırmak için. 
+- [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemi veritabanı komutlarını çalıştırmak için.
 
 > [!IMPORTANT]
-> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```csharp
 using System;
@@ -91,7 +91,7 @@ namespace Driver
                 conn.Open();
 
                 using (var command = new NpgsqlCommand("DROP TABLE IF EXISTS inventory", conn))
-                { 
+                {
                     command.ExecuteNonQuery();
                     Console.Out.WriteLine("Finished dropping table (if existed)");
 
@@ -111,7 +111,7 @@ namespace Driver
                     command.Parameters.AddWithValue("q2", 154);
                     command.Parameters.AddWithValue("n3", "apple");
                     command.Parameters.AddWithValue("q3", 100);
-                    
+
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
                 }
@@ -134,7 +134,7 @@ Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdak
 - Kayıttaki değerleri ayrıştırmak için [GetInt32 ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetInt32_System_Int32_) ve [GetString ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlDataReader.html#Npgsql_NpgsqlDataReader_GetString_System_Int32_) .
 
 > [!IMPORTANT]
-> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```csharp
 using System;
@@ -187,6 +187,7 @@ namespace Driver
                                 )
                             );
                     }
+                    reader.Close();
                 }
             }
 
@@ -201,12 +202,12 @@ namespace Driver
 
 ## <a name="step-3-update-data"></a>3. Adım: verileri güncelleştirme
 Bağlanmak ve bir **UPDATE** SQL deyimi kullanarak verileri güncelleştirmek için aşağıdaki kodu kullanın. Kod, yöntemi ile NpgsqlCommand sınıfını kullanır:
-- PostgreSQL bağlantısı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) . 
+- PostgreSQL bağlantısı kurmak için [() öğesini açın](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) .
 - [CreateCommand ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand), CommandText özelliğini ayarlar.
 - [ExecuteNonQuery ()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemi veritabanı komutlarını çalıştırmak için.
 
 > [!IMPORTANT]
-> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```csharp
 using System;
@@ -247,7 +248,6 @@ namespace Driver
                 {
                     command.Parameters.AddWithValue("n", "banana");
                     command.Parameters.AddWithValue("q", 200);
-                    
                     int nRows = command.ExecuteNonQuery();
                     Console.Out.WriteLine(String.Format("Number of rows updated={0}", nRows));
                 }
@@ -265,12 +265,12 @@ namespace Driver
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/postgres-doc-feedback)
 
 ## <a name="step-4-delete-data"></a>4. Adım: verileri silme
-**DELETE** SQL deyimini kullanarak bağlanmak ve verileri silmek için aşağıdaki kodu kullanın. 
+**DELETE** SQL deyimini kullanarak bağlanmak ve verileri silmek için aşağıdaki kodu kullanın.
 
 Kod, [Open()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_Open) yöntemiyle birlikte NpgsqlCommand sınıfını kullanarak PostgreSQL veritabanı ile bağlantı kurar. Ardından kod [CreateCommand()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlConnection.html#Npgsql_NpgsqlConnection_CreateCommand) yöntemini kullanarak CommandText özelliğini ayarlar ve [ExecuteNonQuery()](https://www.npgsql.org/doc/api/Npgsql.NpgsqlCommand.html#Npgsql_NpgsqlCommand_ExecuteNonQuery) yöntemini çağırarak veritabanı komutlarını çalıştırır.
 
 > [!IMPORTANT]
-> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin. 
+> Host, DBName, User ve Password parametrelerini, sunucuyu ve veritabanını oluştururken belirttiğiniz değerlerle değiştirin.
 
 ```csharp
 using System;

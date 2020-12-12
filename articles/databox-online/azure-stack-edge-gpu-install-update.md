@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: 8d17528728c5519244210217b35d6cd6a3afe715
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448961"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359158"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'larınızı güncelleştirin 
 
@@ -22,9 +22,14 @@ Bu makalede, yerel Web Kullanıcı arabirimi aracılığıyla ve Azure portal ar
 Bu makalede açıklanan yordam, yazılımın farklı bir sürümü kullanılarak gerçekleştirilmiştir, ancak işlem geçerli yazılım sürümü için aynı kalır.
 
 > [!IMPORTANT]
-> - Güncelleştirme **2011** geçerli güncelleştirmedir. <!--and corresponds to **2.1.1377.2170** software version on your device.--> Bu güncelleştirme hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2011-release-notes.md)' na gidin.
->
-> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, cihaz yazılım güncelleştirmelerini ve Kubernetes güncelleştirmelerini içerir. Azure Stack Edge Pro tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız güncelleştirme için 30 dakikaya kadar bir kesinti yaşar.
+> - Güncelleştirme **2012** geçerli güncelleştirmedir ve şu şekilde karşılık gelir:
+>   - Cihaz yazılımı sürümü- **2.2.1438.2470**
+>   - Kubernetes Server sürümü- **v 1.17.3**
+>   - IoT Edge sürüm: **0.1.0-beta10**
+>    
+>    Bu güncelleştirmedeki yenilikler hakkında daha fazla bilgi için, [sürüm notları](azure-stack-edge-gpu-2012-release-notes.md)' na gidin.
+> - 2012 güncelleştirmesini uygulamak için cihazınız 2010 çalıştırıyor olmalıdır.
+> - Güncelleştirme veya düzeltme yüklendiğinde cihazınızın yeniden başlatıldığını aklınızda bulundurun. Bu güncelleştirme, cihaz yazılım güncelleştirmelerini ve Kubernetes güncelleştirmelerini içerir. Azure Stack Edge Pro tek düğümlü bir cihaz olduğundan, sürmekte olan g/ç miktarı bozulur ve cihazınız güncelleştirme için 1,5 saate kadar bir kesinti yaşar.
 
 Güncelleştirmeleri cihazınıza yüklemek için önce güncelleştirme sunucusunun konumunu yapılandırmanız gerekir. Güncelleştirme sunucusu yapılandırıldıktan sonra, Azure portal Kullanıcı arabirimi veya yerel Web Kullanıcı arabirimi aracılığıyla güncelleştirmeleri uygulayabilirsiniz.
 
@@ -46,7 +51,7 @@ Bu adımların her biri aşağıdaki bölümlerde açıklanmıştır.
     
     Daha fazla bilgi için [Windows Server Update Services (WSUS)](/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus) sayfasına gidin
 
-## <a name="use-the-azure-portal"></a>Azure portalını kullanma
+## <a name="use-the-azure-portal"></a>Azure portalı kullanma
 
 Azure portal aracılığıyla güncelleştirmeleri yüklemenizi öneririz. Cihaz güncelleştirmeler için günde bir kez otomatik olarak tarama yapar. Güncelleştirmeler kullanılabilir olduktan sonra portalda bir bildirim görürsünüz. Bundan sonra güncelleştirmeleri indirebilir ve yükleyebilirsiniz. 
 
@@ -161,7 +166,7 @@ Microsoft Update kataloğundan güncelleştirmeyi indirmek için aşağıdaki ad
 
 2. Microsoft Update kataloğunun arama kutusuna, indirmek istediğiniz güncelleştirme için düzeltme veya koşulların Bilgi Bankası (KB) numarasını girin. Örneğin, **Azure Stack Edge Pro** yazın ve ardından **Ara**' ya tıklayın.
    
-    Güncelleştirme listesi **Azure Stack Edge güncelleştirme 2011** olarak görüntülenir.
+    Güncelleştirme listesi **Azure Stack Edge güncelleştirme 2012** olarak görüntülenir.
    
     <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
 
@@ -196,7 +201,7 @@ Bu yordamın tamamlandığı 20 dakika sürer. Güncelleştirmeyi veya düzeltme
 
 5. Güncelleştirme başlar. Cihaz başarıyla güncelleştirildikten sonra yeniden başlatılır. Yerel Kullanıcı arabirimine bu süre içinde erişilemiyor.
    
-6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Geçerli yayın için, görüntülenmiş yazılım sürümü **Azure Stack Edge 2011** olmalıdır.
+6. Yeniden başlatma işlemi tamamlandıktan sonra **oturum açma** sayfasına yönlendirilirsiniz. Cihaz yazılımının güncelleştirildiğini doğrulamak için, yerel Web Kullanıcı arabiriminde **bakım**  >  **yazılım güncelleştirmesi**' ne gidin. Geçerli yayın için, görüntülenmiş yazılım sürümü **Azure Stack Edge 2012** olmalıdır.
 
    <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
 

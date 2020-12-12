@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
+ms.subservice: backup
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 78b422cd41f4cea72b74257fe70c09471e9d2d5b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: f41614d54dc4320f683f406b2882a7b388bb4c3d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556593"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358427"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure sanal makineleri için otomatik yedekleme v2 (Kaynak Yöneticisi)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -31,21 +32,21 @@ Otomatik yedekleme v2, SQL Server 2016 veya üzeri Standard, Enterprise veya Dev
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Otomatik yedekleme v2 'yi kullanmak için aşağıdaki önkoşulları gözden geçirin:
 
-**İşletim sistemi** :
+**İşletim sistemi**:
 
 - Windows Server 2012 R2 veya üzeri
 
-**SQL Server sürüm/sürüm** :
+**SQL Server sürüm/sürüm**:
 
 - SQL Server 2016 veya üzeri: geliştirici, standart veya kurumsal
 
 > [!NOTE]
 > SQL Server 2014 için bkz. [SQL Server 2014 Için otomatik yedekleme](automated-backup-sql-2014.md).
 
-**Veritabanı yapılandırması** :
+**Veritabanı yapılandırması**:
 
 - Hedef _Kullanıcı_ veritabanlarının tam kurtarma modelini kullanması gerekir. Sistem veritabanlarının tam kurtarma modelini kullanması gerekmez. Ancak, model veya MSDB için günlük yedeklemelerinin alınması gerekiyorsa, tam kurtarma modelini kullanmanız gerekir. Yedeklemelerdeki tam kurtarma modelinin etkileri hakkında daha fazla bilgi için, bkz. [yedekleme tam kurtarma modeli altında](/previous-versions/sql/sql-server-2008-r2/ms190217(v=sql.105)). 
 - SQL Server VM, SQL IaaS Aracısı uzantısına [tam yönetim modunda](sql-agent-extension-manually-register-single-vm.md#upgrade-to-full)kaydedilir. 
@@ -56,7 +57,7 @@ Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçen
 
 ### <a name="basic-settings"></a>Temel Ayarlar
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Otomatik Yedekleme** | Etkinleştir/devre dışı bırak (devre dışı) | SQL Server 2016/2017 Developer, Standard veya Enterprise çalıştıran bir Azure VM için Otomatik yedeklemeyi etkinleştirilir veya devre dışı bırakır. |
 | **Bekletme dönemi** | 1-30 gün (30 gün) | Yedeklemelerin saklanacağı gün sayısı. |
@@ -66,7 +67,7 @@ Aşağıdaki tabloda, otomatik yedekleme v2 için yapılandırılabilecek seçen
 
 ### <a name="advanced-settings"></a>Gelişmiş Ayarlar
 
-| Ayar | Aralık (varsayılan) | Description |
+| Ayar | Aralık (varsayılan) | Açıklama |
 | --- | --- | --- |
 | **Sistem veritabanı yedeklemeleri** | Etkinleştir/devre dışı bırak (devre dışı) | Bu özellik etkinleştirildiğinde, sistem veritabanlarını da yedekler: Master, MSDB ve model. MSDB ve model veritabanları için, günlük yedeklerinin alınmasını istiyorsanız bunların tam kurtarma modunda olduğunu doğrulayın. Günlük yedeklemeleri hiçbir şekilde ana için alınmaz. Ve TempDB için hiçbir yedekleme yapılmaz. |
 | **Yedekleme Zamanlaması** | El ile/otomatik (otomatik) | Varsayılan olarak, yedekleme zamanlaması günlük büyümeye göre otomatik olarak belirlenir. El ile yedekleme zamanlaması, kullanıcının yedeklemeler için zaman penceresini belirtmesini sağlar. Bu durumda, yedeklemeler yalnızca belirtilen sıklıkta ve belirli bir günün belirtilen zaman penceresinde gerçekleşirken gerçekleşir. |
@@ -158,7 +159,7 @@ $resourcegroupname = "resourcegroupname"
 
 SQL Server IaaS Aracısı uzantısı yüklüyse, "SqlIaaSAgent" veya "Sqliaasextenma" olarak listelenmiş olduğunu görmeniz gerekir. Uzantının **Provisioningstate** 'i de "başarılı" olarak gösterilmelidir. 
 
-Bu yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi ( **$Region** ) de belirtmeniz gerekir.
+Bu yüklü değilse veya sağlanmadıysa, aşağıdaki komutla yükleyebilirsiniz. VM adı ve kaynak grubuna ek olarak, sanal makinenizin bulunduğu bölgeyi (**$Region**) de belirtmeniz gerekir.
 
 ```powershell
 $region = "EASTUS2"
@@ -215,7 +216,7 @@ If (-Not $storage)
 > [!NOTE]
 > Otomatik yedekleme, Premium depolamada yedeklemelerin depolanmasını desteklemez, ancak Premium depolama kullanan VM disklerinden yedeklemeler alabilir.
 
-Ardından, Azure depolama hesabında yedeklemeleri depolamak için otomatik yedekleme v2 ayarlarını etkinleştirmek ve yapılandırmak üzere **New-Azvmsqlserverotomatikbackupconfig** komutunu kullanın. Bu örnekte, yedeklemeler 10 gün boyunca tutulacak şekilde ayarlanır. Sistem veritabanı yedeklemeleri etkindir. Tam yedeklemeler, iki saat boyunca 20:00 ile başlayan bir zaman penceresiyle haftalık olarak zamanlanır. Günlük yedeklemeleri, her 30 dakikada bir zamanlanır. İkinci komut, **set-AzVMSqlServerExtension** , BELIRTILEN Azure VM 'yi bu ayarlarla güncelleştirir.
+Ardından, Azure depolama hesabında yedeklemeleri depolamak için otomatik yedekleme v2 ayarlarını etkinleştirmek ve yapılandırmak üzere **New-Azvmsqlserverotomatikbackupconfig** komutunu kullanın. Bu örnekte, yedeklemeler 10 gün boyunca tutulacak şekilde ayarlanır. Sistem veritabanı yedeklemeleri etkindir. Tam yedeklemeler, iki saat boyunca 20:00 ile başlayan bir zaman penceresiyle haftalık olarak zamanlanır. Günlük yedeklemeleri, her 30 dakikada bir zamanlanır. İkinci komut, **set-AzVMSqlServerExtension**, BELIRTILEN Azure VM 'yi bu ayarlarla güncelleştirir.
 
 ```powershell
 $autobackupconfig = New-AzVMSqlServerAutoBackupConfig -Enable `

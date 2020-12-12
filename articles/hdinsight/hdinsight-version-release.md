@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350203"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359736"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 genel bakış
 
@@ -38,7 +38,12 @@ Hive artık dinamik gerçekleştirilmiş görünümleri veya ilgili özetler iç
 
 ### <a name="hive-transactional-tables"></a>Hive işlem tabloları
 
-HDI 4,0 Apache Hive 3 içerir. Hive 3 ' te, Hive ambarında bulunan işlem tabloları için Atomicity, tutarlılık, yalıtım ve dayanıklılık uyumluluğu gerekir. ACID uyumluluğuna sahip tablolar ve tablo verileri için erişim ve yönetim Hive tarafından gerçekleştirilir. Oluşturma, alma, güncelleştirme ve silme (CRUD) tablolarının verileri en Iyileştirilmiş satır sütunu (ORC) dosya biçiminde olmalıdır. Yalnızca INSERT tabloları tüm dosya biçimlerini destekler.
+HDI 4,0 Apache Hive 3 içerir. Hive 3 ' te, Hive ambarında bulunan işlem tabloları için Atomicity, tutarlılık, yalıtım ve dayanıklılık uyumluluğu gerekir. ACID uyumluluğuna sahip tablolar ve tablo verileri için erişim ve yönetim Hive tarafından gerçekleştirilir. Oluşturma, alma, güncelleştirme ve silme (CRUD) tablolarının verileri en Iyileştirilmiş satır sütunu (ORC) dosya biçiminde olmalıdır. Yalnızca INSERT tabloları tüm dosya biçimlerini destekler. 
+
+> [!Note]
+> ACID/işlemsel destek yalnızca yönetilen tablolar için ve dış tablolar için geçerlidir. Hive dış tabloları, dış tarafların, temel alınan verilerin herhangi bir değişikliği yapmadan tablo verilerini okuyup yazabilmesi için tasarlanmıştır. ACID tablolarında Hive, temel alınan verileri compactions ve Transactions ile değiştirebilir.
+
+ACID tablolarının bazı avantajları şunlardır:
 
 * ACID v2 hem depolama biçimi hem de yürütme altyapısı alanında performans geliştirmelerine sahiptir.
 

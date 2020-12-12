@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: f27e4f9f8e9f027233db89838614b523c5d0fe1f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cb0dd8eb879c5511da3c79a3dee6a715fb1275e4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341782"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358682"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB ile performans ve ölçek testi
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Bu makaleyi okuduktan sonra aşağıdaki soruları cevaplayabilirsiniz:
 * Azure Cosmos DB performans testi için örnek bir .NET istemci uygulamasını nereden bulabilirim? 
 * Nasıl yaparım? istemci uygulamamın Azure Cosmos DB yüksek verimlilik düzeylerine mi ulaşsın?
 
-Kodu kullanmaya başlamak için [Azure Cosmos DB performans testi örneğinden](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)projeyi indirin. 
+Kodu kullanmaya başlamak için [Azure Cosmos DB performans testi örneğinden](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)projeyi indirin. 
 
 > [!NOTE]
 > Bu uygulamanın amacı, az sayıda istemci makinesi ile Azure Cosmos DB en iyi performansı nasıl alınacağını göstermektir. Örneğin amacı, Azure Cosmos DB en yüksek aktarım hızı kapasitesini elde etmez (hiçbir sınır olmadan ölçeklendirilebilen).
@@ -37,7 +37,7 @@ Azure Cosmos DB performansını geliştirmek için istemci tarafı yapılandırm
 ## <a name="run-the-performance-testing-application"></a>Performans testi uygulamasını çalıştırma
 Kullanmaya başlamanın en hızlı yolu, aşağıdaki adımlarda açıklandığı gibi .NET örneğini derleyip çalıştırmamaktadır. Ayrıca, kaynak kodu gözden geçirebilir ve kendi istemci uygulamalarınıza benzer yapılandırmalara de uygulayabilirsiniz.
 
-**1. Adım:** Projeyi [Azure Cosmos DB performans testi örneğinden](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)Indirin veya GitHub deposunu çatalla.
+**1. Adım:** Projeyi [Azure Cosmos DB performans testi örneğinden](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)Indirin veya GitHub deposunu çatalla.
 
 **2. Adım:** App.config 'de EndpointUrl, AuthorizationKey, Collectionüretilen Iş ve DocumentTemplate (isteğe bağlı) ayarlarını değiştirin.
 
@@ -95,9 +95,9 @@ Uygulamayı çalıştırdıktan sonra, aktarım hızı ve gecikme süresi üzeri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, .NET konsol uygulaması kullanarak Azure Cosmos DB nasıl performans ve ölçek testi gerçekleştirekullanabileceğinizi inceledik. Daha fazla bilgi için aşağıdaki makaleleri inceleyin:
 
-* [Azure Cosmos DB performans testi örneği](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)
+* [Azure Cosmos DB performans testi örneği](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
 * [Azure Cosmos DB performansını geliştirmek için istemci yapılandırma seçenekleri](performance-tips.md)
 * [Azure Cosmos DB sunucu tarafında bölümlendirme](partitioning-overview.md)
 

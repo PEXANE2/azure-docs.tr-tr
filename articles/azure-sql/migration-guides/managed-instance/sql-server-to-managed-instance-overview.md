@@ -1,5 +1,5 @@
 ---
-title: SQL yönetilen örneği 'ne SQL Server-geçişe genel bakış
+title: "SQL yönetilen örneği 'ne SQL Server: geçişe genel bakış"
 description: SQL Server veritabanlarınızı Azure SQL yönetilen örneği 'ne geçirebileceğiniz farklı araçlar ve seçenekler hakkında bilgi edinin.
 ms.service: sql-managed-instance
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96531199"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358886"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Geçişe genel bakış: SQL yönetilen örneğine SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ SQL Server Azure SQL yönetilen örneği 'ne geçirmeye yönelik farklı geçiş
 
 Diğer senaryolar için [veritabanı geçiş kılavuzuna](https://datamigration.microsoft.com/)bakın. 
 
-## <a name="overview"></a>Genel bakış
+## <a name="overview"></a>Genel Bakış
 
 [Azure SQL yönetilen örneği](../../managed-instance/sql-managed-instance-paas-overview.md) , sanal makineleri veya işletim sistemlerini yönetmek zorunda kalmadan tam olarak yönetilen bir hizmet gerektiren SQL Server iş yükleri için önerilen bir hedef seçenektir. SQL yönetilen örneği, yerel sanal ağ (VNet) desteğiyle örneklerinizi tamamen yalıtımıyla, en az uygulama veya veritabanı değişikliğine sahip şirket içi uygulamalarınızı Azure 'a eklemenize ve kaydırabilmenizi sağlar. 
 

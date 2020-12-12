@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 7577c8510746d1140c1f8b70081f600d992ae512
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016684"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358750"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Sanal makine ölçek kümesini değiştirme
 
@@ -284,7 +284,7 @@ Küresel ölçek kümesi özelliğini güncelleştirmek için ölçek kümesi mo
 Ölçek kümelerinde, sanal makinelerin en son ölçek kümesi modeliyle güncel hale getirilme biçimini belirleyen bir "yükseltme ilkesi" bulunur. Yükseltme ilkesi için üç mod şunlardır:
 
 - **Otomatik** -bu modda, ölçek kümesi, açılan VM 'lerin sırası hakkında hiçbir garanti vermez. Ölçek kümesi tüm VM 'Leri aynı anda alabilir. 
-- **Rolling** Bu modda, ölçek kümesi, toplu işler arasında isteğe bağlı bir duraklatma süresi ile güncelleştirmeyi toplu olarak yapar.
+-  Bu modda, ölçek kümesi, toplu işler arasında isteğe bağlı bir duraklatma süresi ile güncelleştirmeyi toplu olarak yapar.
 - **El ile** -bu modda, ölçek kümesi modelini güncelleştirdiğinizde mevcut VM 'lere hiçbir şey olmaz.
  
 Mevcut VM 'Leri güncelleştirmek için, var olan her VM 'nin bir "el ile yükseltme" yapmanız gerekir. Bu el ile yükseltmeyi şu şekilde yapabilirsiniz:
@@ -350,12 +350,12 @@ Bazı özellikler, geçerli değere bağlı olarak özel durumlarla birlikte de�
 
 - **singleplacementgroup** -singleplacementgroup true ise, false olarak değiştirilebilir. Ancak, singlePlacementGroup false ise true **olarak değiştirilemez.**
 - **alt ağ** -bir ölçek kümesinin alt ağı, özgün alt ağ ve yeni alt ağ aynı sanal ağ içinde olduğu sürece değiştirilebilir.
+- **ımagereferencesku** -Image Reference SKU 'su, [plan bilgileri](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties)olmayan, desteklenen [Linux Distro 'lara](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), Windows Server/istemci görüntüleri ve görüntüleri için güncelleştirilemeyebilir. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Değişikliğe göre ayırmayı gerektiren özellikler
 Ölçek kümesindeki VM 'Ler serbest bırakıldığında bazı özellikler yalnızca belirli değerlere değiştirilebilir. Bu özellikler şunları içerir:
 
-- **SKU adı**-yenı VM SKU 'su ölçek kümesi şu anda açık olan donanımda DESTEKLENMIYORSA, SKU adını değiştirmeden önce ölçek kümesindeki VM 'leri serbest getirmeniz gerekir. Daha fazla bilgi için bkz. [Azure VM 'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md).
-
+- **SKU adı**-yenı VM SKU 'su ölçek kümesi şu anda açık olan donanımda DESTEKLENMIYORSA, SKU adını değiştirmeden önce ölçek kümesindeki VM 'leri serbest getirmeniz gerekir. Daha fazla bilgi için bkz. [Azure VM 'yi yeniden boyutlandırma](../virtual-machines/windows/resize-vm.md). 
 
 ## <a name="vm-specific-updates"></a>VM 'ye özgü güncelleştirmeler
 Belirli değişiklikler, küresel ölçek kümesi özellikleri yerine belirli sanal makinelere uygulanabilir. Şu anda desteklenen tek VM 'ye özgü güncelleştirme, ölçek kümesindeki VM 'lere/sanal makinelere veri diskleri eklemek/ayırmak içindir. Bu özellik önizlemede. Daha fazla bilgi için bkz. [Önizleme belgeleri](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk).

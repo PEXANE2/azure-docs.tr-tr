@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852532"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359855"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Örnek etiketleme aracını dağıtma
 
@@ -41,7 +41,7 @@ Başlamadan önce, örnek etiketleme aracını bir Azure Container Instance 'a (
 
 Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımları izleyin: 
 
-1. [Azure Portal](https://portal.azure.com/signin/index/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/signin/index/) oturum açın.
 2. **Kaynak oluştur**’u seçin. 
 3. Ardından **Web uygulaması**' nı seçin. 
 
@@ -86,7 +86,7 @@ Azure portal kullanarak yeni bir kaynak oluşturmak için aşağıdaki adımlar�
    * Sunucu URL 'SI-bunu olarak ayarlayın `https://mcr.microsoft.com`
    * Kullanıcı adı (Isteğe bağlı)-Kullanıcı adı oluşturun. 
    * Parola (Isteğe bağlı)-anımsayabileceğiniz güvenli bir parola oluşturun.
-   * Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview`
+   * Image ve Tag-bunu olarak ayarla `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview`
    * Sürekli dağıtım-geliştirme ekibi örnek etiketleme aracında değişiklik yaptığında otomatik güncelleştirmeler almak istiyorsanız bunu **Açık** olarak ayarlayın.
    * Başlangıç komutu-bunu olarak ayarlayın `./run.sh eula=accept`
     
