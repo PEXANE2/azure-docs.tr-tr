@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/15/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 615ce7da3ec480b766ceaeb307c50f7cb759fd4a
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52904296df77d9097a6180345388e8e702e2bca0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100125"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357644"
 ---
 # <a name="provision-autoscale-throughput-on-database-or-container-in-azure-cosmos-db---sql-api"></a>Azure Cosmos DB-SQL API 'sindeki veritabanı veya kapsayıcıda otomatik ölçeklendirme performansı sağlama
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -34,7 +34,7 @@ Farklı bir API kullanıyorsanız, üretilen işi sağlamak için [MongoDB Için
 
    :::image type="content" source="./media/how-to-provision-autoscale-throughput/create-new-autoscale-container.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
 
-1. **Tamam** ’ı seçin.
+1. **Tamam**’ı seçin.
 
 Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak için yeni bir veritabanı oluştururken **veritabanı Işleme sağlama** seçeneğini belirleyin. 
 
@@ -49,9 +49,9 @@ Paylaşılan aktarım hızı veritabanında otomatik ölçeklendirme sağlamak i
 
 1. Kapsayıcınız için **ölçek ve ayarlar** ' ı veya veritabanınızın **ölçeğini** seçin.
 
-1. **Ölçek** altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin** .
+1. **Ölçek** altında, **Otomatik ölçeklendirme** seçeneğini belirleyin ve **kaydedin**.
 
-   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Kapsayıcı oluşturma ve otomatik ölçeklendirme sağlanan verimini yapılandırma":::
+   :::image type="content" source="./media/how-to-provision-autoscale-throughput/autoscale-scale-and-settings.png" alt-text="Varolan bir kapsayıcıda otomatik ölçeklendirmeyi etkinleştirme":::
 
 > [!NOTE]
 > Varolan bir veritabanı veya kapsayıcıda otomatik ölçeklendirmeyi etkinleştirdiğinizde, en fazla RU/sn için başlangıç değeri sistem tarafından belirlenir ve geçerli el ile sağlanan aktarım hızı ayarları ve depolama alanınızı temel alır. İşlem tamamlandıktan sonra gerekirse en fazla RU/sn 'yi değiştirebilirsiniz. [Daha fazla bilgi edinin.](autoscale-faq.md#how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work) 
@@ -122,13 +122,13 @@ Otomatik ölçeklendirme kaynaklarını yönetmek için SQL API için Azure Cosm
 
 ### <a name="create-database-with-shared-throughput"></a>Paylaşılan verimlilik ile veritabanı oluşturma
 
-#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+#### <a name="async"></a>[Eş](#tab/api-async)
 
 ```java
 // Create instance of CosmosClient
 CosmosAsyncClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildAsyncClient();
 
@@ -145,7 +145,7 @@ CosmosAsyncDatabase database = client.createDatabase(databaseName, autoscaleThro
 // Create instance of CosmosClient
 CosmosClient client = new CosmosClientBuilder()
     .setEndpoint(HOST)
-    .setKey(MASTER)
+    .setKey(PRIMARYKEY)
     .setConnectionPolicy(CONNECTIONPOLICY)
     .buildClient();
 
@@ -160,7 +160,7 @@ CosmosDatabase database = client.createDatabase(databaseName, autoscaleThroughpu
 
 ### <a name="create-container-with-dedicated-throughput"></a>Adanmış aktarım hızı ile kapsayıcı oluşturma
 
-#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+#### <a name="async"></a>[Eş](#tab/api-async)
 
 ```java
 // Get reference to database that container will be created in
@@ -195,7 +195,7 @@ CosmosContainer container = database.createContainer(autoscaleContainerPropertie
 
 ### <a name="read-the-current-throughput-rus"></a>Geçerli aktarım hızını (RU/s) okuyun
 
-#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+#### <a name="async"></a>[Eş](#tab/api-async)
 
 ```java
 // Get a reference to the resource
@@ -231,7 +231,7 @@ int currentThroughput = autoscaleContainerThroughput.Throughput;
 
 ### <a name="change-the-autoscale-max-throughput-rus"></a>Otomatik ölçeklendirme maksimum aktarım hızını değiştirme (RU/s)
 
-#### <a name="async"></a>[Zaman Uyumsuz](#tab/api-async)
+#### <a name="async"></a>[Eş](#tab/api-async)
 
 ```java
 // Change the autoscale max throughput (RU/s)

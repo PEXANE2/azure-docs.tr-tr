@@ -3,12 +3,12 @@ title: Öğretici-VMware HCX 'i dağıtma ve yapılandırma
 description: Azure VMware çözümünüz özel bulutunuz için bir VMware HCX çözümünü dağıtmayı ve yapılandırmayı öğrenin.
 ms.topic: tutorial
 ms.date: 11/25/2020
-ms.openlocfilehash: e50454c2299ed0f7e249563eecac1935a29a9c47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a792f8dbc646f61377cf0a88e1a6e386340f23e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352481"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357900"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX’i dağıtma ve yapılandırma
 
@@ -72,11 +72,11 @@ Sanal Gereci şirket içi vCenter 'ınıza dağıtmadan önce, VMware HCX bağla
 
 1. Azure portal Azure VMware çözümü özel bulutu ' nı seçin. 
 
-1. Bağlantıyı **Yönet**  >  **Connectivity** ' i seçin ve Azure VMware çözümü HCX yöneticisinin IP adresini belirlemek için **HCX** sekmesini seçin. 
+1. Bağlantıyı **Yönet**  >   ' i seçin ve Azure VMware çözümü HCX yöneticisinin IP adresini belirlemek için **HCX** sekmesini seçin. 
 
    :::image type="content" source="media/tutorial-vmware-hcx/find-hcx-ip-address.png" alt-text="VMware HCX IP adresinin ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/find-hcx-ip-address.png":::
 
-1. **Manage**  >  Parolayı tanımlamak için **kimliği** Yönet ' i ve **vCenter yönetici parolası** ' nı seçin.
+1.   >  Parolayı tanımlamak için **kimliği** Yönet ' i ve **vCenter yönetici parolası** ' nı seçin.
 
    > [!TIP]
    > VCenter parolası, özel bulutu ayarlarken tanımlanmıştır. Azure VMware Solution HCX Manager 'da oturum açmak için kullandığınız parola aynı.
@@ -123,7 +123,7 @@ Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX gereç d
 
 VMware HCX bağlayıcısını şirket içinde dağıttıktan sonra gereci başlattıktan sonra, ' yi etkinleştirmeye hazırsınız demektir. İlk olarak, Azure VMware Çözüm Portalından bir lisans anahtarı almanız gerekir.
 
-1. Azure VMware Çözüm portalında **Manage**  >  **bağlantıyı** Yönet ' e gidin, **HCX** sekmesini seçin ve ardından **Ekle**' yi seçin.
+1. Azure VMware Çözüm portalında   >  **bağlantıyı** Yönet ' e gidin, **HCX** sekmesini seçin ve ardından **Ekle**' yi seçin.
 
 1. Şirket içi VMware HCX yöneticisinde oturum açmak için **yönetici** kimlik bilgilerini kullanın `https://HCXManagerIP:9443` . 
 
@@ -163,7 +163,7 @@ Hizmetler yeniden başlatıldıktan sonra, vCenter görüntülenen ekranda yeşi
 
 :::image type="content" source="media/tutorial-vmware-hcx/activation-done.png" alt-text="Yeşil vCenter durumu içeren panonun ekran görüntüsü." lightbox="media/tutorial-vmware-hcx/activation-done.png":::  
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümünü görüntüleyin: HCX videosunu etkinleştirin](https://www.youtube.com/embed/jzQZawslF8w) .
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümünü görüntüleyin: HCX videosunu etkinleştirin](https://www.youtube.com/embed/PnVg6SZkQsY?rel=0&amp;vq=hd720) .
 
    > [!IMPORTANT]
    > VMware HCX Advanced veya VMware HCX Enterprise kullanıyor olabilirsiniz, düzeltme ekini VMware 'in [KB makalesi 81558](https://kb.vmware.com/s/article/81558)' den yüklemeniz gerekebilir. 
@@ -192,7 +192,7 @@ Azure VMware çözümünde VMware HCX bulut yöneticisini, veri merkezinizdeki V
 
    :::image type="content" source="media/tutorial-vmware-hcx/site-pairing-complete.png" alt-text="Azure VMware çözümünde HCX yöneticisinin ve VMware HCX bağlayıcısının eşleştirmesinin gösterildiği ekran görüntüsü.":::
 
-Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX site eşleştirme](https://www.youtube.com/embed/iTJtjbiwvsw) videosunu görüntüleyin.
+Bu yordama uçtan uca genel bakış için [Azure VMware çözümü: HCX site eşleştirme](https://www.youtube.com/embed/jXOmYUnbWZY?rel=0&amp;vq=hd720) videosunu görüntüleyin.
 
 ### <a name="create-network-profiles"></a>Ağ profilleri oluşturma
 

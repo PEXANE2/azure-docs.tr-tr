@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse nedir?
 description: Azure Athouse, hizmet sağlayıcılarının daha yüksek otomasyon ve verimlilik özelliklerine sahip müşterileri için yönetilen hizmetler sunmasına olanak tanır.
-ms.date: 11/12/2020
+ms.date: 12/10/2020
 ms.topic: overview
-ms.openlocfilehash: a8fd796218804a79c82a5723c0e5851af359cdea
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bef6107878f36e02a896b3c38b8913ebb50169a7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528831"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356370"
 ---
 # <a name="what-is-azure-lighthouse"></a>Azure Lighthouse nedir?
 
@@ -45,3 +45,4 @@ Azure ışıklı kullanımı, katılım ve yönetimin kolaylaştırılmasına ya
 - [Azure tarafından atanan temsilcinin kaynak yönetimi](concepts/azure-delegated-resource-management.md) hakkında bilgi edinin.
 - [Çapraz kiracı yönetim deneyimlerini](concepts/cross-tenant-management-experience.md)gezin.
 - Bkz. [Azure açık thouse 'ı bir kuruluş içinde kullanma](concepts/enterprise.md).
+- Azure ınthouse için [kullanılabilirlik](https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all) ve [Fedrampa ve DOD CC SRG denetim kapsamı](../azure-government/compliance/azure-services-in-fedramp-auditscope.md) ayrıntılarını görüntüleyin.

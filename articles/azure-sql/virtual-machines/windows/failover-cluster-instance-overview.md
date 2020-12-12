@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: overview
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: d5bd2fc150ee1d35127eeb9dbf3dc1eeffdc9659
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 33be57832d9364b859042cd38349c2437bcfcb18
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685945"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358155"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server yük devretme kümesi örnekleri
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,9 +51,9 @@ Azure VM 'lerinde SQL Server, SQL Server yük devretme kümesi örneklerinin da�
 |---------|---------|---------|---------|
 |**En düşük işletim sistemi sürümü**| Tümü |Windows Server 2012|Windows Server 2016|
 |**En düşük SQL Server sürümü**|Tümü|SQL Server 2012|SQL Server 2016|
-|**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
-|**FILESTREAM 'i destekler**|Yes|Hayır|Yes |
-|**Azure Blob önbelleği**|Hayır|Hayır|Yes|
+|**Desteklenen VM kullanılabilirliği** |Yakınlık yerleşimi gruplarıyla kullanılabilirlik kümeleri (Premium SSD Için) </br> Aynı Kullanılabilirlik bölgesi (Ultra SSD Için) |Kullanılabilirlik kümeleri ve kullanılabilirlik bölgeleri|Kullanılabilirlik kümeleri |
+|**FILESTREAM 'i destekler**|Evet|Hayır|Evet |
+|**Azure Blob önbelleği**|Hayır|Hayır|Evet|
 
 Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabilen her depolama seçeneğinin avantajları ve sınırlamaları listelenmektedir. 
 
@@ -69,12 +70,16 @@ Bu bölümün geri kalanında, Azure VM 'lerinde SQL Server için kullanılabile
 - , Paylaşılan Azure Premium SSD ve Azure Ultra Disk depolamayı destekler.
 - Paylaşılan bir depolama havuzu oluşturmak için tek bir paylaşılan disk kullanabilir veya birden çok paylaşılan disk oluşturabilirsiniz. 
 - FILESTREAM 'i destekler.
+- Premium SSD 'Ler kullanılabilirlik kümelerini destekler. 
 
 
 **Sınırlamalar**: 
-- Sanal makinelerin aynı Kullanılabilirlik kümesine ve yakınlık yerleşimi grubuna yerleştirilmesi gerekir.
-- Kullanılabilirlik alanları desteklenmiyor.
+- Sanal makinelerin aynı Kullanılabilirlik kümesine ve yakınlık yerleşimi grubuna yerleştirilmesi önerilir.
+- Ultra diskler kullanılabilirlik kümelerini desteklemez. 
+- Kullanılabilirlik alanları, Ultra diskler için desteklenir, ancak VM 'Lerin aynı Kullanılabilirlik bölgesinde olması gerekir ve bu da sanal makinenin kullanılabilirliğini azaltır. 
+- Seçilen donanım kullanılabilirliği çözümüne bakılmaksızın, Azure paylaşılan diskler kullanılırken yük devretme kümesinin kullanılabilirliği her zaman% 99,9 ' dir. 
 - Premium SSD disk önbelleğe alma desteklenmez.
+
  
 Başlamak için bkz. [Azure Paylaşılan disklerle SQL Server yük devretme kümesi örneği](failover-cluster-instance-azure-shared-disks-manually-configure.md). 
 

@@ -6,18 +6,19 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6b563e8ca93487a123f97f0bbb86624dc3be2db0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 68c7805136a7361a64a6ff6dfbb9e7d910b2ea9b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556299"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357951"
 ---
 # <a name="manage-sql-server-vms-in-azure-by-using-the-azure-portal"></a>Azure 'da SQL Server VM 'Leri Azure portal kullanarak yönetin
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +38,7 @@ ms.locfileid: "94556299"
 **SQL sanal makineler** kaynağına erişmek için aşağıdakileri yapın:
 
 1. [Azure portalını](https://portal.azure.com) açın. 
-1. **Tüm hizmetler** ' i seçin. 
+1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **SQL sanal makinelerini** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **SQL sanal makineler** ' in yanındaki yıldızı seçin. 
 1. **SQL sanal makinelerini** seçin. 
@@ -62,10 +63,10 @@ ms.locfileid: "94556299"
 Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal makineler** kaynağına gidin. Aşağıdaki adımları kullanın:
 
 1. [Azure portalını](https://portal.azure.com) açın. 
-1. **Tüm hizmetler** ' i seçin. 
+1. **Tüm hizmetler**' i seçin. 
 1. Arama kutusuna **sanal makineler** girin.
 1. (İsteğe bağlı): Bu seçeneği **Sık Kullanılanlar** menünüzde eklemek için **sanal makineler** ' in yanındaki yıldızı seçin. 
-1. **Sanal makineler** 'i seçin. 
+1. **Sanal makineler**'i seçin. 
 
    ![Sanal makineleri ara](./media/manage-sql-vm-portal/vm-search.png)
 
@@ -76,7 +77,7 @@ Kullanım dışı **SQL Server yapılandırma** sekmesine erişmek için **sanal
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

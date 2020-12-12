@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173711"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355882"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -51,11 +51,23 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
-1. En az 4 GB RAM ve .NET 4.7.1 + çalışma zamanı ile Windows Server 2012 R2 veya üstünü çalıştıran etki alanına katılmış bir konak sunucusu belirler.
+ 1. En az 4 GB RAM ve .NET 4.7.1 + çalışma zamanı ile Windows Server 2012 R2 veya üstünü çalıştıran etki alanına katılmış bir konak sunucusu belirler.
 
-1. Yerel sunucudaki PowerShell yürütme ilkesinin tanımsız veya RemoteSigned olarak ayarlanması gerekir.
+ >[!NOTE]
+ > Kapsam filtresi tanımlamanın, ana bilgisayar sunucusunda bir bellek maliyeti olduğunu unutmayın.  Kapsam filtresi kullanılmazsa, ek bellek maliyeti yoktur. En az 4 GB kapsam filtresinde tanımlanan en fazla 12 kuruluş birimi için eşitlemeyi destekleyecektir. Ek OU 'Ları eşitlemeniz gerekiyorsa, en düşük bellek miktarını artırmanız gerekir. Aşağıdaki tabloyu kılavuz olarak kullanın:
+ >
+ >  
+ >  | Kapsam filtresindeki OU sayısı| gerekli en düşük bellek|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5,5 GB|
+ >  | 28|10 + GB|
+ >
+ > 
 
-1. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
+ 2. Yerel sunucudaki PowerShell yürütme ilkesinin tanımsız veya RemoteSigned olarak ayarlanması gerekir.
+
+ 3. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
    - Aracıların Azure AD 'ye aşağıdaki bağlantı noktaları üzerinden *giden* istekler yapabilmeleri için emin olun:
 
         | Bağlantı noktası numarası | Nasıl kullanılır? |
@@ -100,7 +112,20 @@ TLS 1,2 ' i etkinleştirmek için aşağıdaki adımları izleyin.
 
 1. Sunucuyu yeniden başlatın.
 
+## <a name="known-limitations"></a>Bilinen sınırlamalar
+Aşağıda bilinen sınırlamalar verilmiştir:
 
+### <a name="delta-synchronization"></a>Delta Eşitleme
+
+- Delta eşitleme için Grup kapsamı filtrelemesi 1500 taneden fazla üyeyi desteklemez.
+- Grup kapsamı filtresinin bir parçası olarak kullanılan bir grubu sildiğinizde, grubun üyesi olan kullanıcılar silinmez. 
+- Kapsam içindeki OU veya grubu yeniden adlandırdığınızda, Delta eşitlemesi kullanıcıları kaldırmaz.
+
+### <a name="provisioning-logs"></a>Sağlama Günlükleri
+- Sağlama günlükleri, oluşturma ve güncelleştirme işlemleri arasında açıkça ayrım içermez.  Bir güncelleştirme için oluşturma işlemi ve bir oluşturma için güncelleştirme işlemi görebilirsiniz.
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Grup yeniden adlandırma veya OU yeniden adlandırma
+- Belirli bir yapılandırma için kapsamda olan AD ' de bir grubu veya OU 'yu yeniden adlandırırsanız, bulut sağlama işi AD 'deki ad değişikliğini tanıyamaz. İş karantinaya alınmayacak ve sağlıklı olmaya devam edecektir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar 

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099887"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357645"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Öğretici: anahtar/değer verilerini depolamak için bir Java uygulaması kullanarak Azure Cosmos DB Cassandra API hesabı oluşturma
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,21 +43,21 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın. 
 
-2. Azure Cosmos DB **kaynak veritabanları oluştur** ' u seçin  >  **Databases**  >  **Azure Cosmos DB** . 
+2. Azure Cosmos DB **kaynak veritabanları oluştur**' u seçin  >    >  . 
 
 3. **Yeni hesap** bölmesinde yeni Azure Cosmos hesabının ayarlarını girin. 
 
    |Ayar   |Önerilen değer  |Açıklama  |
    |---------|---------|---------|
    |ID   |   Benzersiz bir ad girin    | Bu Azure Cosmos hesabını tanımlamak için benzersiz bir ad girin. <br/><br/>Cassandra.cosmosdb.azure.com, iletişim noktanızı oluşturmak için sağladığınız KIMLIĞE eklendiği için benzersiz ancak tanımlanabilir bir KIMLIK kullanın.         |
-   |API    |  Cassandra   |  API, oluşturulacak hesap türünü belirler. <br/> **Cassandra** ' ı seçin, bu makalede Cassandra sorgu DILI (CQL) sözdizimi kullanılarak sorgulanabilecek geniş sütunlu bir veritabanı oluşturacaksınız.  |
+   |API    |  Cassandra   |  API, oluşturulacak hesap türünü belirler. <br/> **Cassandra**' ı seçin, bu makalede Cassandra sorgu DILI (CQL) sözdizimi kullanılarak sorgulanabilecek geniş sütunlu bir veritabanı oluşturacaksınız.  |
    |Abonelik    |  Aboneliğiniz        |  Bu Azure Cosmos hesabı için kullanmak istediğiniz Azure aboneliğini seçin.        |
-   |Kaynak Grubu   | Bir ad girin    |  **Yeni oluştur** ’u seçin ve ardından hesabınız için yeni bir kaynak grubu adı girin. Kolaylık olması için kimliğinizle aynı adı kullanabilirsiniz.    |
+   |Kaynak Grubu   | Bir ad girin    |  **Yeni oluştur**’u seçin ve ardından hesabınız için yeni bir kaynak grubu adı girin. Kolaylık olması için kimliğinizle aynı adı kullanabilirsiniz.    |
    |Konum    |  Kullanıcılarınıza en yakın bölgeyi seçin    |  Azure Cosmos hesabınızın barındırılacağı coğrafi konumu seçin. Verilere en hızlı erişim sağlamak için kullanıcılarınıza en yakın konumu kullanın.    |
 
    :::image type="content" source="./media/create-cassandra-api-account-java/create-account.png" alt-text="Portalla hesap oluşturma":::
 
-4. **Oluştur** ’u seçin. <br/>Hesabın oluşturulması birkaç dakika sürer. Kaynak oluşturulduktan sonra, portalın sağ tarafında **dağıtım başarılı** bildirimini görebilirsiniz.
+4. **Oluştur**’u seçin. <br/>Hesabın oluşturulması birkaç dakika sürer. Kaynak oluşturulduktan sonra, portalın sağ tarafında **dağıtım başarılı** bildirimini görebilirsiniz.
 
 ## <a name="get-the-connection-details-of-your-account"></a>Hesabınızın bağlantı ayrıntılarını alma  
 
@@ -67,7 +67,7 @@ Azure portal bağlantı dizesi bilgilerini alın ve Java yapılandırma dosyası
 
 2. **Bağlantı dizesi** bölmesini açın.  
 
-3. **TEMAS NOKTASI** , **BAĞLANTI NOKTASI** , **KULLANICI ADI** ve **BİRİNCİL PAROLA** değerlerini sonraki adımlarda kullanmak üzere kopyalayın.
+3. **TEMAS NOKTASI**, **BAĞLANTI NOKTASI**, **KULLANICI ADI** ve **BİRİNCİL PAROLA** değerlerini sonraki adımlarda kullanmak üzere kopyalayın.
 
 ## <a name="create-the-project-and-the-dependencies"></a>Projeyi ve bağımlılıkları oluşturma 
 
@@ -92,21 +92,21 @@ Sıfırdan örnek oluşturmak için aşağıdaki adımları kullanın:
  
 2. `cassandra-demo` klasörünü bulun. Metin düzenleyicisi kullanarak, oluşturulmuş olan `pom.xml` dosyasını açın. 
 
-   [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) dosyasında gösterildiği gibi, projeniz Için gereken Cassandra bağımlılıklarını ve yapı eklentilerini ekleyin.  
+   [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) dosyasında gösterildiği gibi, projeniz Için gereken Cassandra bağımlılıklarını ve yapı eklentilerini ekleyin.  
 
 3. `cassandra-demo\src\main` klasörünün altında `resources` adlı yeni bir klasör oluşturun.  Resources klasörünün altına config.properties ve log4j.properties dosyalarını ekleyin:
 
-   - [Config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) dosyası Cassandra API hesabının bağlantı uç noktasını ve anahtar değerlerini depolar. 
+   - [Config. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) dosyası Cassandra API hesabının bağlantı uç noktasını ve anahtar değerlerini depolar. 
    
-   - [Log4J. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) dosyası Cassandra API etkileşimde bulunmak için gereken günlük düzeyini tanımlar.  
+   - [Log4J. Properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) dosyası Cassandra API etkileşimde bulunmak için gereken günlük düzeyini tanımlar.  
 
 4. `src/main/java/com/azure/cosmosdb/cassandra/`Klasöre gidin. Cassandra klasörünün içinde `utils` adlı başka bir klasör oluşturun. Yeni klasörde Cassandra API hesabına bağlanmak için gereken yardımcı program sınıfları depolanır. 
 
-   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB Cassandra API hesabına bağlanır ve erişim için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
+   Kümeyi oluşturmak ve Cassandra oturumlarını açıp kapatmak için [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) sınıfını ekleyin. Küme, Azure Cosmos DB Cassandra API hesabına bağlanır ve erişim için bir oturum döndürür. Config.properties dosyasından bağlantı dizesi bilgisini okumak için [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) sınıfını kullanın. 
 
 5. Java örneği Kullanıcı adı, Kullanıcı KIMLIĞI ve Kullanıcı şehri gibi Kullanıcı bilgileri içeren bir veritabanı oluşturur. Main işlevindeki kullanıcı ayrıntılarına erişmek için get ve set yöntemlerini tanımlamanız gerekir.
  
-   Get ve set yöntemleri ile klasör altında bir [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) sınıfı oluşturun `src/main/java/com/azure/cosmosdb/cassandra/` . 
+   Get ve set yöntemleri ile klasör altında bir [User. Java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java) sınıfı oluşturun `src/main/java/com/azure/cosmosdb/cassandra/` . 
 
 ## <a name="add-a-database-and-a-table"></a>Veritabanı ve tablo ekleme  
 
@@ -220,7 +220,7 @@ Bu bölüm, CQL kullanarak bir veritabanının (keyspace) ve tablonun nasıl ekl
 
    Terminal penceresinde anahtar alanı ve tablonun oluşturulduğuna yönelik bildirimler gösterilir. 
    
-2. Şimdi, keyspace'in ve tablonun oluşturulduğunu onaylamak için Azure portalda **Veri Gezgini** 'ni açın.
+2. Şimdi, keyspace'in ve tablonun oluşturulduğunu onaylamak için Azure portalda **Veri Gezgini**'ni açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

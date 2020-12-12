@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7008cfcdeb4615b42839f92a6df71357f9acf911
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485000"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357390"
 ---
 # <a name="storage-account-overview"></a>Depolama hesabına genel bakış
 
@@ -54,7 +54,7 @@ Genel amaçlı v1 depolama hesapları, tüm Azure depolama hizmetlerine erişim 
 - Kuyruklar
 - Tablolar
 
-Çoğu durumda genel amaçlı v2 hesapları kullanmanız gerekir. Bu senaryolar için genel amaçlı v1 hesaplarını kullanabilirsiniz:
+Microsoft, çoğu senaryo için genel amaçlı v2 hesapları önerir. Bu senaryolar için genel amaçlı v1 hesaplarını kullanabilirsiniz:
 
 - Uygulamalarınız Azure klasik dağıtım modelini gerektirir. Genel amaçlı v2 hesapları ve BLOB depolama hesapları yalnızca Azure Resource Manager dağıtım modelini destekler.
 
@@ -152,7 +152,7 @@ Aşağıdaki yaklaşımlardan herhangi birini kullanarak Depolama hesabınızdak
 
 - **Azure Active Directory:** Blob ve kuyruk verilerine erişim için bir kullanıcının, grubun veya diğer kimliğin kimliğini doğrulamak üzere Azure Active Directory (Azure AD) kimlik bilgilerini kullanın. Kimlik doğrulaması başarılı olursa Azure AD, Azure Blob depolama veya kuyruk depolama için isteği yetkilendirmede kullanılacak bir belirteç döndürür. Daha fazla bilgi için bkz. [Azure Active Directory kullanarak Azure depolama 'ya erişim kimlik doğrulaması](storage-auth-aad.md).
 - **Paylaşılan anahtar yetkilendirmesi:** Azure depolama 'ya erişmek için uygulamanızın çalışma zamanında kullandığı bir bağlantı dizesi oluşturmak için depolama hesabı erişim anahtarınızı kullanın. Bağlantı dizesindeki değerler, Azure depolama 'ya geçirilen *Yetkilendirme* üst bilgisini oluşturmak için kullanılır. Daha fazla bilgi için bkz. [Azure Storage bağlantı dizelerini yapılandırma](storage-configure-connection-string.md).
-- **Paylaşılan erişim imzası:** Azure AD yetkilendirmesi kullanmıyorsanız, Depolama hesabınızdaki kaynaklara erişim yetkisi vermek için paylaşılan erişim imzası kullanın. Paylaşılan erişim imzası, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsülleyen bir belirteçtir. Depolama kaynağını, verilen izinleri ve izinlerin, paylaşılan erişim imzasının bir parçası olarak geçerli olduğu zaman aralığını belirtebilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzalarını kullanma (SAS)](storage-sas-overview.md).
+- **Paylaşılan erişim imzası:** Paylaşılan erişim imzası (SAS) Depolama hesabınızdaki kaynaklara temsilci erişimine izin veren bir belirteçtir. SAS belirteci, URL 'de Azure depolama 'ya bir istek yetkilendirmek için gereken tüm bilgileri kapsüller. SAS oluşturduğunuzda, SAS 'nin bir kaynağa verdiği izinleri ve izinlerin geçerli olduğu aralığı belirtebilirsiniz. Bir SAS belirteci, Azure AD kimlik bilgileriyle veya paylaşılan anahtarla imzalanabilir. Daha fazla bilgi için bkz. [paylaşılan erişim imzaları (SAS) kullanarak Azure depolama kaynaklarına sınırlı erişim verme](storage-sas-overview.md).
 
 > [!NOTE]
 > Azure AD kimlik bilgilerini kullanarak kullanıcıların veya uygulamaların kimliğini doğrulamak, diğer yetkilendirme yolları üzerinde üstün güvenlik ve kullanım kolaylığı sağlar. Uygulamalarınızla paylaşılan anahtar yetkilendirmesi kullanmaya devam edebilirsiniz, ancak Azure AD atlama 'yi kullanarak hesap erişim anahtarınızı kodunuzla depolama gereksinimini ortadan kaldırabilirsiniz. Ayrıca, Depolama hesabınızdaki kaynaklara ayrıntılı erişim sağlamak için paylaşılan erişim imzaları (SAS) kullanmaya devam edebilirsiniz, ancak Azure AD SAS belirteçlerini yönetmeye gerek kalmadan veya güvenliği aşılmış bir SAS iptal etme gereksinimi olmadan benzer yetenekler sunmaktadır.
@@ -192,3 +192,5 @@ Azure depolama REST API hakkında daha fazla bilgi için bkz. [Azure Storage Ser
 
 - [Depolama hesabı oluşturma](storage-account-create.md)
 - [Blok blobu depolama hesabı oluşturma](../blobs/storage-blob-create-account-block-blob.md)
+- [Genel amaçlı v2 depolama hesabına yükseltme](storage-account-upgrade.md)
+- [Silinmiş bir depolama hesabını kurtarma](storage-account-recover.md)

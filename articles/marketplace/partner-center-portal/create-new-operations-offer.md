@@ -1,38 +1,35 @@
 ---
-title: Ticari Market 'te bir Dynamics 365 for Operations teklifi oluşturun
-description: Azure Market, AppSource veya Microsoft Iş Ortağı Merkezi 'ndeki ticari Market portalını kullanan bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleme veya satma için yeni bir Dynamics 365 Işlem teklifi oluşturma.
+title: Microsoft AppSource için Dynamics 365 ' de teklif oluşturun
+description: Microsoft AppSource ' de bir Dynamics 365 for Operations teklifi oluşturma. Teklifinizi AppSource 'ta veya bulut çözümü sağlayıcısı (CSP) programı aracılığıyla listeleyin veya satın.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 1c28b4edab1e1033bf9ac7df6b1249b549bb4fe1
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/02/2020
+ms.openlocfilehash: bcb7f2d008c54981223b4839f9a750e6ee9ac5cc
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131522"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355160"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations teklifi oluşturma
 
-Bu konuda, yeni bir Dynamics 365 for Operations teklifinin nasıl oluşturulduğu açıklanmaktadır. [Finans ve işlemler Için Microsoft Dynamics 365](https://dynamics.microsoft.com/finance-and-operations) , gelişmiş finans, işlemler, üretim ve tedarik zinciri yönetimini destekleyen bir kurumsal kaynak planlama (ERP) hizmetidir. Operations için Dynamics 365 için tüm teklifler, sertifika sürecimize gitmelidir.
+Bu makalede, yeni bir Dynamics 365 for Operations teklifinin nasıl oluşturulacağı açıklanır. [Finans ve işlemler Için Microsoft Dynamics 365](https://dynamics.microsoft.com/finance-and-operations) , gelişmiş finans, işlemler, üretim ve tedarik zinciri yönetimini destekleyen bir kurumsal kaynak planlama (ERP) hizmetidir. Operations için Dynamics 365 için tüm teklifler, sertifika sürecimize gitmelidir.
 
 Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari Market hesabı oluşturun](create-account.md) . Hesabınızın ticari Market programına kayıtlı olduğundan emin olun.
 
 >[!NOTE]
-> Bir teklif yayımlandıktan sonra, teklifte yapılan düzenlemeler yalnızca yayın teklifini yeniden gönderdikten sonra Iş Ortağı Merkezi 'nde ve çevrimiçi mağazada güncelleştirilir.
+> Bir teklif yayımlandıktan sonra, teklifin düzenlemeleri yalnızca yayın teklifini yeniden gönderdikten sonra Iş Ortağı Merkezi 'nde ve çevrimiçi mağazada güncelleştirilir.
 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
-3. Genel Bakış sayfasında, işlemler için **+ yeni teklif**  >  **Dynamics 365** ' i seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında, işlemler için **+ yeni teklif**  >  **Dynamics 365**' i seçin.
 
     ![Sol gezinti menüsünü gösterir.](./media/new-offer-dynamics-365-operations.png)
-
-> [!NOTE]
-> Bir teklif yayımlandıktan sonra, Iş Ortağı Merkezi 'nde yapılan düzenlemeler, teklif yeniden yayımlandıktan sonra yalnızca çevrimiçi mağazalarda görünür. Değişiklik yaptıktan sonra her zaman yeniden yayımlaytığınızdan emin olun.
 
 ## <a name="new-offer"></a>Yeni teklif
 
@@ -40,35 +37,33 @@ Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bi
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yayımcı KIMLIĞIYLE birleştirilmiş teklif KIMLIĞI, 40 karakter uzunluğunda olmalıdır.
-- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir ancak boşluk içeremez. Örneğin, yayımcı KIMLIĞINIZ testpublisherıd ise ve **Test-teklif-1** ' i buraya girerseniz, teklif Web adresi olur `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir ancak boşluk içeremez. Örneğin, yayımcı KIMLIĞINIZ ise `testpublisherid` ve **Test-teklif-1** girerseniz, teklif Web adresi olur `https://appsource.microsoft.com/product/dynamics-365/testpublisherid.test-offer-1` .
+- Bu KIMLIK, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
+- Bu ad, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 ## <a name="offer-setup"></a>Teklif kurulumu
 
-### <a name="how-do-you-want-potential-customers-to-interact-with-this-listing-offer"></a>Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?
+### <a name="alias"></a>Diğer ad
 
-Bu teklif için kullanmak istediğiniz seçeneği belirleyin.
+Bu teklifine yalnızca Iş Ortağı Merkezi içinde başvurmak için kullanacağımız açıklayıcı bir ad girin. Bu ad (teklif oluşturduğunuzda girdiğiniz değer ile önceden doldurulur) Market 'te kullanılmaz ve müşteriler tarafından gösterilen teklif adından farklıdır. Teklif adını daha sonra güncelleştirmek istiyorsanız [teklif listesi](#offer-listing) sayfasına gidin.
 
-#### <a name="get-it-now-free"></a>Şimdi alın (ücretsiz)
+### <a name="setup-details"></a>Kurulum Ayrıntıları
 
-Müşterilerinizin teklifinizi ücretsiz olarak listeleyin.
+**Potansiyel müşterilerin bu liste teklifiyle nasıl etkileşime geçmesini istiyorsunuz?**, bu teklif için kullanmak istediğiniz seçeneği belirleyin.
 
-#### <a name="free-trial-listing"></a>Ücretsiz deneme (listeleme)
+- **Şimdi alın (ücretsiz)** – teklifinizi ücretsiz olarak listeleyin.
+- **Ücretsiz deneme (listeleme)** – teklifinizi ücretsiz bir deneme bağlantısı olan müşterilere listeleyin. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
 
-Ücretsiz deneme bağlantısı olan müşterilere teklifinizi listeleyin. Ücretsiz denemelerdeki teklif listesi, hizmetiniz tarafından oluşturulur, yönetilir ve yapılandırılır ve Microsoft tarafından yönetilen abonelikler içermez.
+    > [!NOTE]
+    > Uygulamanızın deneme bağlantınız aracılığıyla alacağı belirteçler, uygulamanızda hesap oluşturmayı otomatikleştirmek için yalnızca Azure Active Directory (Azure AD) aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları desteklenmez.
 
-> [!NOTE]
-> Uygulamanızın deneme bağlantınız aracılığıyla alacağı belirteçler, uygulamanızda hesap oluşturmayı otomatikleştirmek için yalnızca Azure Active Directory (Azure AD) aracılığıyla Kullanıcı bilgilerini almak üzere kullanılabilir. Bu belirteci kullanarak kimlik doğrulaması için Microsoft hesapları desteklenmez.
-
-#### <a name="contact-me"></a>Benimle iletişim kurun
-
-Müşteri Ilişkileri yönetimi (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [müşteri adayları](#customer-leads).
+- **Benimle Iletişim kurun** – müşteri ilişkileri YÖNETIMI (CRM) sisteminizi bağlayarak müşteri iletişim bilgilerini toplayın. Müşterinin, bilgilerini paylaşması için izin istenir. Bu müşteri ayrıntıları, teklifinizin bulunduğu teklif adı, KIMLIĞI ve Market kaynağıyla birlikte, yapılandırdığınız CRM sistemine gönderilir. CRM 'nizi yapılandırma hakkında daha fazla bilgi için bkz. [müşteri adayları](#customer-leads).
 
 ### <a name="test-drive"></a>Sınama sürücüsü
 
@@ -88,18 +83,18 @@ Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destekleyen yasal sözleşmelerde gruplandırmak için kullanılan kategorileri ve endüstrileri tanımlamanızı sağlar.
 
-### <a name="category"></a>Kategori
+### <a name="categories"></a>Kategoriler
 
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
 
 [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
-### <a name="industry"></a>Sektör
+### <a name="industries"></a>Sektörler
 
-[!INCLUDE [Industry Taxonomy](./includes/industry-taxonomy.md)]
+[!INCLUDE [Industry Taxonomy](includes/industry-taxonomy.md)]
 
 ### <a name="app-version"></a>Uygulama sürümü
 
@@ -107,21 +102,21 @@ Teklifinizin sürüm numarasını girin. Müşteriler bu sürümü teklifin ayr�
 
 ### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
-**Hüküm ve koşullar** alanında kendi yasal hüküm ve koşullarınızı belirtin. Ayrıca, hüküm ve koşullarınızın bulunabileceği URL 'YI de sağlayabilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+Burada kendi yasal hüküm ve koşullarınızı sağlayın. Hüküm ve koşullarınızın bulunabileceği adresi de sağlayabilirsiniz. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="offer-listing"></a>Teklif listesi
 
-Bu sayfa, teklifinizin listelenecek dilleri görüntüler. Şu anda **İngilizce (Birleşik Devletler)** kullanılabilir tek seçenektir.
+<!--This page displays the languages in which your offer will be listed. Currently, **English (United States)** is the only available option.
 
-Her dil/Pazar için Market ayrıntılarını (teklif adı, açıklama, görüntüler vb.) tanımlamanız gerekir. Bu bilgileri sağlamak için dil/Pazar adını seçin.
+Define marketplace details such as offer name, description, and images for each language/market. Select the language/market name to provide this info.-->This page lets you define offer details such as offer name, description, links, and contacts.
 
 > [!NOTE]
-> Teklif açıklaması (örneğin, açıklama, belgeler, ekran görüntüleri, kullanım koşulları vb.) için teklif listesi içeriği, "Bu uygulama yalnızca [Ingilizce olmayan dil] içinde kullanılabilir" olarak, Ingilizce olması gerekmez. Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
+> Yalnızca bir dilde liste ayrıntılarını sunun. Teklif açıklaması "ifadesi ile başladığı sürece Ingilizce olması gerekmez," Bu uygulama yalnızca [Ingilizce olmayan dilde] kullanılabilir ". Ayrıca, teklif listeleme içeriğinde kullanılandan farklı bir dilde içerik sunmak için *yararlı bir bağlantı URL 'si* sağlamak da kabul edilebilir.
 
-Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir:
-
+Teklif bilgilerinin Microsoft AppSource nasıl göründüğünü gösteren bir örnek aşağıda verilmiştir (listelenen tüm fiyatlar yalnızca örnek amaçlıdır ve gerçek maliyetlerin yansıtılmasına yönelik değildir):
+<!-- update screen? -->
 :::image type="content" source="media/example-azure-marketplace-d365-operations.png" alt-text="Bu teklifin Microsoft AppSource nasıl göründüğünü gösterir.":::
 
 #### <a name="call-out-descriptions"></a>Çağrı açıklamaları
@@ -134,18 +129,14 @@ Teklif bilgilerinin Microsoft AppSource ' de nasıl göründüğünü gösteren 
 6. Kullanım koşulları
 7. Gizlilik ilkesi
 8. Teklif adı
-9. Ekran görüntüleri/videolar
-10. Açıklama
+9. Açıklama
+10. Ekran görüntüleri/videolar
 
-### <a name="name"></a>Ad
+### <a name="marketplace-details"></a>Market ayrıntıları
 
-Buraya girdiğiniz ad, müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
+Buraya girdiğiniz **ad** , müşteriler tarafından teklif listelerinizin başlığı olarak gösterilir. Bu alan, teklifi oluştururken **teklif diğer adı** için girdiğiniz metinle önceden doldurulur, ancak bu değeri değiştirebilirsiniz. Bu ad trademarked olabilir (ve ticari marka veya telif hakkı sembolleri dahil edebilirsiniz). Ad 50 karakterden uzun olamaz ve herhangi bir emojıs içeremez.
 
-### <a name="short-description"></a>Kısa açıklama
-
-Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıklama sağlayın. Bu açıklama Market arama sonuçlarında kullanılabilir.
-
-### <a name="description"></a>Açıklama
+**Arama sonuçları Özeti** için en fazla 100 karakter uzunluğunda olan teklifinizin kısa bir açıklamasını girin. Bu açıklama Market arama sonuçlarında kullanılabilir.
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -153,51 +144,38 @@ Teklifinizin en fazla 100 karakter uzunluğunda olması için kısa bir açıkla
 
 [!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
-### <a name="search-keywords"></a>Anahtar sözcükleri ara
+Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç **arama anahtar sözcüğü** girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanın.
 
-Müşterilerin teklifinizi Market 'te bulmasına yardımcı olmak için isteğe bağlı en fazla üç arama anahtar sözcüğü girebilirsiniz. En iyi sonuçlar için, tanımlarınızda bu anahtar sözcükleri de kullanmayı deneyin.
+Müşterilerinizin **Uygulamanızın hangi ürünleri** yaptığını bilmesini sağlamak istiyorsanız, en fazla üç ürün adı girin.
 
-### <a name="products-your-app-works-with"></a>Uygulamanızın ile birlikte çalışarak ürünler
+### <a name="helpprivacy-urls"></a>Yardım/Gizlilik URL 'Leri
 
-Müşterilerinizin uygulamanızın belirli ürünlerle birlikte çalışıp çalışmadığını bilmesini istiyorsanız buraya en fazla üç ürün adı girin.
+Müşterilerinizin teklifiniz hakkında daha fazla bilgi sağlayabilecekleri uygulamanızın (URL) **Yardım bağlantısını** girin. Yardım URL 'niz, destek URL 'niz ile aynı olamaz.
 
-### <a name="support-urls"></a>Destek URL 'Leri
+Kuruluşunuzun gizlilik ilkesine **Gizlilik ilkesi bağlantısını** (URL) girin. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
 
-Bu bölüm, müşterilerinizin teklifiniz hakkında daha fazla bilgi sağlamasına yardımcı olacak bağlantılar sağlamanıza olanak tanır.
+### <a name="contact-information"></a>İletişim bilgileri
 
-#### <a name="help-link"></a>Yardım bağlantısı
+Bir **destek kişisi** ve **mühendislik ilgili kişisi** için ad, e-posta ve telefon numarası girin. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
 
-Müşterilerinizin teklifiniz hakkında daha fazla bilgi sağlayabilecekleri URL 'YI girin.
-
-#### <a name="privacy-policy-url"></a>Gizlilik ilkesi URL 'SI
-
-Kuruluşunuzun gizlilik ilkesinin URL 'sini girin. Uygulamanızın gizlilik yasaları ve yönetmeliklerle uyumlu olmasını sağlamaktan ve geçerli bir gizlilik ilkesi sağlamaya yönelik siz sorumlusunuz.
-
-### <a name="contacts"></a>Kişiler
-
-Bu bölümde, bir **destek kişisi** ve **mühendislik ilgili kişisi** için ad, e-posta ve telefon numarası girin. Bu bilgiler müşterilere gösterilmez, ancak Microsoft tarafından kullanılabilir ve CSP iş ortakları için de sağlanıyor olabilir.
-
-**Destek kişisi** bölümünde, CSP iş ortaklarının teklifiniz için destek BULABILECEĞI **Destek URL** 'sini sağlayın.
+**Destek kişisi** bölümünde, CSP iş ortaklarının teklifiniz için destek BULABILECEĞI **Destek URL** 'sini sağlayın. Destek URL 'niz yardım URL 'niz ile aynı olamaz.
 
 ### <a name="supporting-documents"></a>Destekleyici belgeler
 
-Burada, teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en az bir (en fazla üç) ilgili pazarlama belgesi sağlayın. Bu belgeler PDF biçiminde olmalıdır.
+PDF biçiminde teknik incelemeler, broşürler, denetim listeleri veya sunular gibi en az bir (en fazla üç) ilgili pazarlama belgesi sağlayın.
 
-### <a name="marketplace-images"></a>Market görüntüleri
+### <a name="marketplace-media"></a>Market medyası
 
-Bu bölümde, müşteri teklifinizi gösterirken kullanılacak logo ve görüntüler sağlayabilirsiniz. Tüm görüntülerin. png biçiminde olması gerekir.
+Müşterilerinizin teklifinizi gösterirken kullanılacak logoları ve görüntüler sağlayın. Tüm görüntülerin PNG biçiminde olması gerekir.
 
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
 >Dosya yükleme sorununuz varsa, yerel ağınızın https://upload.xboxlive.com Iş Ortağı Merkezi tarafından kullanılan hizmeti engellemediğinden emin olun.
 
-#### <a name="store-logos"></a>Mağaza logoları
+#### <a name="logos"></a>Ların
 
-**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi, **küçük** bir logo oluşturmak için bunu kullanacaktır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
-
-- **Büyük** (216 x 216-350 x 350 px, gereklidir)
-- **Küçük** (48 x 48 piksel, isteğe bağlı)
+**Büyük** boyutlu amblem IÇIN bir PNG dosyası sağlayın. İş Ortağı Merkezi bunu, gerekli diğer boyutları oluşturmak için kullanır. İsterseniz bunu daha sonra farklı bir görüntüyle değiştirebilirsiniz.
 
 Bu amblemler, listede farklı yerlerde kullanılır:
 
@@ -207,34 +185,30 @@ Bu amblemler, listede farklı yerlerde kullanılır:
 
 #### <a name="screenshots"></a>Ekran görüntüleri
 
-Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En az bir ekran görüntüsü gereklidir ve en fazla beş tane ekleyebilirsiniz. Tüm ekran görüntüleri 1280 x 720 piksel olmalıdır.
+Teklifinizin nasıl çalıştığını gösteren ekran görüntüleri ekleyin. En az bir ekran görüntüsü gereklidir ve en fazla beş tane ekleyebilirsiniz. Tüm ekran görüntülerinin 1280 x 720 piksel ve PNG biçiminde olması gerekir.
 
 #### <a name="videos"></a>Videolar
 
-İsteğe bağlı olarak, teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Bu videoların YouTube ve/veya Vimeo 'da barındırılması gerekir. Her biri için videonun adını, URL 'sini ve videonun küçük bir görüntüsünü girin (1280 x 720 piksel)
+İsteğe bağlı olarak, teklifinizi gösteren dört adede kadar video ekleyebilirsiniz. Videoların bir dış sitede barındırılması gerekir. Her biri için videonun adını, adresini ve videonun küçük bir görüntüsünü (1280 x 720 piksel) girin.
 
-#### <a name="additional-marketplace-listing-resources"></a>Ek Market listeleme kaynakları
-
-[Market teklif listeleri için en iyi uygulamalar](../gtm-offer-listing-best-practices.md)
+Diğer Market listeleme kaynakları için bkz. [Market teklif listeleri Için en iyi uygulamalar](../gtm-offer-listing-best-practices.md).
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Bu sayfa, teklifinizin nerede ve nasıl kullanılabileceğini gösteren seçenekler sağlar.
+Bu sayfa, teklifinizin nerede ve nasıl kullanılabileceğini tanımlamanıza olanak sağlar.
 
 ### <a name="markets"></a>Pazar
 
-Bu bölüm, teklifinizin kullanılabilir olması gereken pazarları belirtmenize olanak tanır. Bunu yapmak için **Pazar seçimi** açılır penceresini görüntüleyen **pazarları Düzenle '** yi seçin.
+Teklifinizin kullanılabilir olması gereken pazarları belirtmek için **Pazar seçimi** açılır penceresini göstermek üzere **pazarları Düzenle** ' yi seçin.
 
-Varsayılan olarak, bir piyasa seçili değildir. Teklifinizi yayımlamak için en az bir pazar seçin. Teklifinizin her olası pazarda kullanılabilmesini sağlamak için  **Tümünü Seç** ' e tıklayın veya eklemek istediğiniz belirli pazarları seçin. İşiniz bittiğinde **Kaydet** ' i seçin.
+En az bir pazar seçin. Teklifinizin her olası pazarda kullanılabilmesini sağlamak için Tümünü Seç ' i seçin veya yalnızca istediğiniz **pazarların** birini seçin. İşiniz bittiğinde **Kaydet**' i seçin.
 
-Burada yaptığınız seçimler yalnızca yeni alımlar için geçerlidir; zaten belirli bir pazar ortamında uygulamanız varsa ve daha sonra bu pazarı kaldırırsanız, bu pazarda zaten sunulan bir pazara sahip kişiler bunu kullanmaya devam edebilir, ancak bu pazardaki yeni müşteriler teklifinizi alabilir.
+Burada yaptığınız seçimler yalnızca yeni alımlar için geçerlidir; zaten belirli bir pazar ortamında uygulamanız varsa ve daha sonra bu pazarı kaldırırsanız, bu pazarda sunulan bir pazara zaten sahip olan kişiler bunu kullanmaya devam edebilir, ancak bu pazardaki yeni müşteriler teklifinizi alabilir.
 
 > [!IMPORTANT]
-> Bu gereksinimler burada veya Iş Ortağı Merkezi 'nde listelenmese de, yerel yasal gereksinimleri karşılamak sizin sorumluluğunuzdadır.
-
-Tüm pazarlar ' i seçtiğinizde, yerel yasalar ve kısıtlamalar ya da diğer faktörler bazı ülkelerde ve bölgelerde belirli tekliflerin listelenmesini engelleyebilse de aklınızda bulundurun.
+> Bu gereksinimler burada veya Iş Ortağı Merkezi 'nde listelenmese de, yerel yasal gereksinimleri karşılamak sizin sorumluluğunuzdadır. Tüm pazarlar ' ı seçseniz bile, yerel yasalar, kısıtlamalar veya diğer faktörler belirli tekliflerin bazı ülkelerde ve bölgelerde listelenmesine engel olabilir.
 
 ### <a name="preview-audience"></a>İzleyiciyi Önizle
 
@@ -254,7 +228,7 @@ Bu sayfa, teklifiniz ile bağlantı kurmak için kullanılan teknik ayrıntılar
 
 Çözüm tanımlarınızı bulmak için:
 
-1. Microsoft Dynamics yaşam döngüsü Hizmetleri 'nde (LCS) **Çözüm Yönetimi** ' ni seçin.
+1. Microsoft Dynamics yaşam döngüsü Hizmetleri 'nde (LCS) **Çözüm Yönetimi**' ni seçin.
 2. Çözümünüzü seçin, sonra **pakete genel bakış** bölümünde **çözüm tanımlayıcısı** ' nı arayın. Tanımlayıcı boşsa, **düzenleme** yapın ve paketinizi yeniden yayımlayın, sonra yeniden deneyin.
 
 ### <a name="release-version"></a>Yayın sürümü
@@ -263,17 +237,17 @@ Finans için Dynamics 365 sürümünü ve bu çözümün birlikte çalıştığ�
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
-## <a name="test-drive-technical-configuration"></a>Test sürüşü teknik yapılandırması
+<!-- ## Test drive technical configuration
 
-Bu sayfa, müşterilerin satın almadan önce teklifinizi denemesini sağlayan bir tanıtım ("test sürücüsü") ayarlamanıza olanak sağlar. [Test sürücüsü nedir?](../what-is-test-drive.md)bölümünde daha fazla bilgi edinin.
+This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
 
-Bir sınama sürücüsünü etkinleştirmek için [teklif kurulumu](#test-drive) sekmesinde **bir test sürücüsünü etkinleştir** onay kutusunu işaretleyin. Test sürücüsünü teklifinizden kaldırmak için bu onay kutusunu temizleyin.
+To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
 
-Test sürücünüzü ayarlamayı bitirdiğinizde devam etmeden önce **Taslağı kaydet** ' i seçin.
-
+When you've finished setting up your test drive, select **Save draft** before continuing.
+-->
 ## <a name="supplemental-content"></a>Ek içerik
 
-Bu sayfa teklifinizi doğrulamamıza yardımcı olmak için teklifiniz hakkında ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
+Bu sayfa, teklifinizi doğrulamamıza yardımcı olmak için ek bilgiler sağlamanıza olanak tanır. Bu bilgiler müşterilere gösterilmez veya Market 'te yayımlanmamıştır.
 
 ### <a name="validation-assets"></a>Doğrulama varlıkları
 
@@ -283,11 +257,11 @@ Bu dosya. xls veya. xlsx biçiminde olmalıdır. Birden fazla raporunuz varsa, t
 
 ### <a name="does-solution-include-localizations"></a>Çözüm yerelleştirmeler içeriyor mu?
 
-Çözüm yerel standartlar ve ilkelerin kullanımına izin verirseniz (örneğin, farklı ülkeler/bölgeler için gereken farklı Bordro kurallarına uygunsa) **Evet** ' i seçin. Gerekmiyorsa **Hayır** 'ı seçin.
+Çözüm yerel standartlar ve ilkelerin kullanımına izin verirseniz (örneğin, farklı ülkeler/bölgeler için gereken farklı Bordro kurallarına uygunsa) **Evet** ' i seçin. Gerekmiyorsa **Hayır**'ı seçin.
 
 ### <a name="does-solution-enable-translations"></a>Çözüm çevirileri etkinleştirir mi?
 
-Çözümünüzdeki metin diğer dillere çevrilebilmesi için **Evet** yanıtını verin. Gerekmiyorsa **Hayır** 'ı seçin.
+Çözümünüzdeki metin diğer dillere çevrilebilmesi için **Evet** yanıtını verin. Gerekmiyorsa **Hayır**'ı seçin.
 
 Devam etmeden önce **Taslağı kaydet** ' i seçin.
 
@@ -300,12 +274,12 @@ Teklifin tüm gerekli bölümlerini tamamladıktan sonra, portalın sağ üst k�
 Bu teklifi ilk kez yayımladıysanız şunları yapabilirsiniz:
 
 - Teklifin her bölümü için tamamlanma durumuna bakın.
-    - **Başlatılmamış** – bölüm dokunulmamış ve tamamlanmalıdır.
-    - **Tamamlanmamış** – bölümde düzeltilmesi gereken hatalar var veya daha fazla bilgi sağlanması gerekiyor. Bölüm (ler) e geri dönün ve güncelleştirin.
-    - **Tamamlandı** – bölüm tamamlandı, tüm gerekli veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
+    - **Başlatılmamış** – bölüm dokunulmamış ve tamamlanması gerekiyor.
+    - **Tamamlanmamış** – bölüm düzeltilmesi gereken veya daha fazla bilgi gerektiren hatalar içeriyor. Bölüm (ler) e geri dönün ve güncelleştirin.
+    - **Tamamlandı** – bölüm tamamlandı, gerekli tüm veriler sağlanmış ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamen bir durumda olması gerekir.
 - **Sertifika notları** bölümünde, uygulamanızı anlamak için yararlı olan tüm ek notlara ek olarak, uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Yönergeleri test etme ve ilk yayımlamayı tamamlama hakkında daha fazla bilgi için bkz. [Appsource Dynamics 365 finans ve Operations ilevsel doğrulaması](../dynamics-365-finance-operations-functional-validation.md).
-- **Gönder** ' i seçerek teklifi yayımlamaya gönderebilirsiniz. Size, gözden geçirmeniz ve onaylamanız için teklifin bir önizleme sürümünün ne zaman kullanılabileceğini bilmenizi sağlayacak bir e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık bir şekilde **yayımlamak için teklif ' i seçin.**
+- **Gönder**' i seçerek teklifi yayımlamaya gönderebilirsiniz. Teklifin bir önizleme sürümü incelenmek ve onaylanmak için kullanılabilir olduğunda size e-posta göndereceğiz. Iş Ortağı Merkezi 'ne dönün ve teklifinizi herkese açık olarak yayımlamak için **Git-Live** ' ı seçin.
 
-## <a name="next-step"></a>Sonraki adım
+## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ticari Market'te bulunan bir teklifi güncelleştirme](./update-existing-offer.md)

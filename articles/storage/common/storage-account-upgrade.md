@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/25/2019
+ms.date: 12/11/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 50a0894898dcdc817ee253ad326b88a9bb61b9d6
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694618"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357373"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
@@ -168,4 +168,7 @@ Blob depolama hesaplarında coğrafi çoğaltma veri aktarımı maliyeti de bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* [Depolama hesabına genel bakış](storage-account-overview.md)
 * [Depolama hesabı oluşturma](storage-account-create.md)
+* [Bir Azure Depolama hesabını başka bir bölgeye taşıma](storage-account-move.md)
+* [Silinmiş bir depolama hesabını kurtarma](storage-account-recover.md)

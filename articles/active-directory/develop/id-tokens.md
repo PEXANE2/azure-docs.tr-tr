@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646600"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355656"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform KIMLIĞI belirteçleri
 
-`id_tokens` , bir [OpenID Connect](v2-protocols-oidc.md) (OIDC) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine ya da üzerinden gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
+`id_tokens` , bir [OpenID Connect](v2-protocols-oidc.md) (OIDC) akışının parçası olarak istemci uygulamasına gönderilir. Bunlar, bir erişim belirteci yerine veya bu şekilde gönderilebilir ve istemci tarafından kullanıcının kimliğini doğrulamak için kullanılır.
 
 ## <a name="using-the-id_token"></a>İd_token kullanma
 
@@ -96,7 +96,7 @@ Bu liste varsayılan olarak en çok id_tokens olan JWT taleplerini gösterir (ak
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Bir kullanıcıyı güvenilir bir şekilde tanımlamak için talepler kullanma (konu ve nesne KIMLIĞI)
 
-Bir Kullanıcı (örneğin, bir veritabanında arayarak veya sahip oldukları izinlere karar verirken) tanımlarken, zaman içinde sabit ve benzersiz kalacak bilgilerin kullanılması önemlidir.  Eski uygulamalar bazen e-posta adresi, telefon numarası veya UPN gibi alanları kullanır.  Bunların hepsi zaman içinde değişebilir ve zaman içinde, bir çalışan adını değiştirdiğinde ya da bir çalışana bir önceki, artık çalışanla ilgili bir e-posta adresi verildiğinde, bir çalışanın adı değiştiğinde yeniden kullanılabilir. Bu nedenle, uygulamanızın okunabilir bir kullanıcıyı tanımlamak için insan tarafından okunabilen verileri kullanması **önemli bir öneme** sahiptir.  Bunun yerine, OıDC standardı tarafından sunulan talepleri veya Microsoft-ve talepleri tarafından sunulan uzantı taleplerini kullanın `sub` `oid` .
+Bir Kullanıcı (örneğin, bir veritabanında arayarak veya sahip oldukları izinlere karar verirken) tanımlarken, zaman içinde sabit ve benzersiz kalacak bilgilerin kullanılması önemlidir. Eski uygulamalar bazen e-posta adresi, telefon numarası veya UPN gibi alanları kullanır.  Bunların hepsi zaman içinde değişebilir ve zaman içinde, bir çalışan adını değiştirdiğinde ya da bir çalışana bir önceki, artık çalışanla ilgili bir e-posta adresi verildiğinde, bir çalışanın adı değiştiğinde yeniden kullanılabilir. Bu nedenle, uygulamanızın okunabilir bir kullanıcıyı tanımlamak için insan tarafından okunabilen verileri kullanması **önemli bir öneme** sahiptir. Bunun yerine, OıDC standardı tarafından sunulan talepleri veya Microsoft-ve talepleri tarafından sunulan uzantı taleplerini kullanın `sub` `oid` .
 
 Kullanıcı başına bilgileri doğru bir şekilde depolamak için, `sub` `oid` gerektiğinde yönlendirme veya parçalama için kullanılan veya tek başına (GUID 'ler benzersiz olan) kullanın `tid` .  Verileri hizmetler arasında paylaşmanız gerekiyorsa, `oid` + `tid` tüm uygulamalar `oid` `tid` belirli bir kullanıcı için aynı ve talepler elde ettiği için en iyi seçenektir.  `sub`Microsoft Identity platform 'daki talep "çift yönlü", belirteç alıcısı, kiracı ve Kullanıcı birleşimine göre benzersizdir.  Bu nedenle, belirli bir kullanıcı için KIMLIK belirteçleri isteyen iki uygulama farklı talepler alır `sub` , ancak `oid` bu kullanıcı için aynı taleplerdir.
 

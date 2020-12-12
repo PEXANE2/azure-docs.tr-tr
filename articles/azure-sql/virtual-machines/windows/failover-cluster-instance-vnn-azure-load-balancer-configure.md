@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8f8513746271fff0ab52603e31b75304d5ebc1bf
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 5670a29e86eb201a707e5ceef28043aafe4839d9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168984"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357985"
 ---
 # <a name="configure-azure-load-balancer-for-failover-cluster-instance-vnn"></a>Yük devretme kümesi örneği için Azure Load Balancer yapılandırın VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +47,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Azure portal, sanal makineleri içeren kaynak grubuna gidin.
 
-1. **Ekle**’yi seçin. **Load Balancer**Için Azure Market 'te arama yapın. **Load Balancer**seçin.
+1. **Ekle**’yi seçin. **Load Balancer** Için Azure Market 'te arama yapın. **Load Balancer** seçin.
 
 1. **Oluştur**’u seçin.
 
@@ -75,7 +76,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. Arka uç havuzunu VM 'Leri içeren kullanılabilirlik kümesiyle ilişkilendirin.
 
-1. **Hedef ağ IP yapılandırması**altında, **sanal makine** ' yi seçin ve küme düğümleri olarak katılacak sanal makineleri seçin. FCı veya kullanılabilirlik grubunu barındıracak tüm sanal makineleri eklediğinizden emin olun.
+1. **Hedef ağ IP yapılandırması** altında, **sanal makine** ' yi seçin ve küme düğümleri olarak katılacak sanal makineleri seçin. FCı veya kullanılabilirlik grubunu barındıracak tüm sanal makineleri eklediğinizden emin olun.
 
 1. Arka uç havuzunu oluşturmak için **Tamam ' ı** seçin.
 
@@ -85,7 +86,7 @@ Yük dengeleyiciyi oluşturmak için [Azure Portal](https://portal.azure.com) ku
 
 1. **Ekle**’yi seçin.
 
-1. **Durum araştırma bölmesi Ekle** bölümünde aşağıdaki sistem <span id="probe"> </span> durumu araştırma parametrelerini ayarlayın:
+1. **Durum araştırma bölmesi Ekle** bölümünde aşağıdaki sistem <span id="probe"></span> durumu araştırma parametrelerini ayarlayın:
 
    - **Ad**: sistem durumu araştırması için bir ad.
    - **Protokol**: TCP.
@@ -137,10 +138,10 @@ Aşağıdaki tabloda, güncelleştirmeniz gereken değerler açıklanmaktadır:
 
 |**Değer**|**Açıklama**|
 |---------|---------|
-|`Cluster Network Name`| Ağ için Windows Server yük devretme kümesi adı. **Yük devretme kümesi Yöneticisi**  >  **ağlarda**ağa sağ tıklayıp **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
-|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCı 'nın veya AG dinleyicisinin IP adresinin kaynak adı. **Yük devretme kümesi Yöneticisi**  >  **Roller**' de, SQL Server FCI rolü altında, **sunucu adı**altında, IP adresi kaynağına sağ tıklayın ve **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
+|`Cluster Network Name`| Ağ için Windows Server yük devretme kümesi adı. **Yük devretme kümesi Yöneticisi**  >  **ağlarda** ağa sağ tıklayıp **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
+|`SQL Server FCI/AG listener IP Address Resource Name`|SQL Server FCı 'nın veya AG dinleyicisinin IP adresinin kaynak adı. **Yük devretme kümesi Yöneticisi**  >  **Roller**' de, SQL Server FCI rolü altında, **sunucu adı** altında, IP adresi kaynağına sağ tıklayın ve **Özellikler**' i seçin. Doğru değer **genel** sekmesinde **ad** ' ın altında bulunur.|
 |`ILBIP`|İç yük dengeleyicinin (ıLB) IP adresi. Bu adres, Azure portal ıLB 'nin ön uç adresi olarak yapılandırılır. Bu Ayrıca, FCı 'nın IP adresidir SQL Server. **Yük devretme kümesi Yöneticisi** içinde bulduğunuz aynı Özellikler sayfasında bulabilirsiniz `<SQL Server FCI/AG listener IP Address Resource Name>` .|
-|`nnnnn`|Yük dengeleyicinin sistem durumu araştırmasına yapılandırdığınız araştırma bağlantı noktası. Kullanılmayan tüm TCP bağlantı noktaları geçerlidir.|
+|`nnnnn`|Yük dengeleyicinin sistem durumu araştırmasına yapılandırdığınız araştırma bağlantı noktası. Kullanılmayan herhangi bir TCP bağlantı noktası geçerlidir.|
 |Altağ| Küme parametresi için alt ağ maskesi. TCP IP yayını adresi olmalıdır: `255.255.255.255` .| 
 
 
@@ -159,9 +160,9 @@ Küme işlevselliğini doğrulamak için kümelenmiş kaynağın yük devretmesi
 Aşağıdaki adımları izleyin:
 
 1. RDP kullanarak SQL Server küme düğümlerinden birine bağlanın.
-1. **Yük devretme kümesi Yöneticisi**açın. **Rolleri**seçin. Hangi düğümün SQL Server FCı rolüne sahip olduğuna dikkat edin.
+1. **Yük devretme kümesi Yöneticisi** açın. **Rolleri** seçin. Hangi düğümün SQL Server FCı rolüne sahip olduğuna dikkat edin.
 1. SQL Server FCı rolüne sağ tıklayın. 
-1. **Taşı**' yı seçin ve ardından **mümkün olan en iyi düğümü**seçin.
+1. **Taşı**' yı seçin ve ardından **mümkün olan en iyi düğümü** seçin.
 
 **Yük devretme kümesi Yöneticisi** rolü gösterir ve kaynakları çevrimdışı duruma geçer. Kaynaklar daha sonra taşınır ve diğer düğümde yeniden çevrimiçi duruma gelir.
 

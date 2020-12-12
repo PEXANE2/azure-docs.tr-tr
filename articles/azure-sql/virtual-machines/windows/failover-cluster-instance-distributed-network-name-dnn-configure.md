@@ -7,6 +7,7 @@ author: MashaMSFT
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -14,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: dff6d69a107091a0ce030065da0f70a3d68c5841
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 8549592ace00e712929ebc76045a32531b9db659
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168915"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358325"
 ---
 # <a name="configure-a-dnn-for-failover-cluster-instance"></a>Yük devretme kümesi örneği için DNN yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -131,7 +132,7 @@ Olası sahipleri güncelleştirmek için şu adımları izleyin:
 
 1. Yük devretme kümesi örneğine katılmayan düğümlerin onay kutusunu temizleyin. DNN kaynağı için olası sahipler listesi, SQL Server örneği kaynağı için olası sahipler listesiyle eşleşmelidir. Örneğin, DATA3 'in FCı 'ye katılmadığından, aşağıdaki görüntüde DNN kaynağı için olası sahipler listesinden DATA3 kaldırma örneği verilmiştir: 
 
-   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN kaynağı için kısayol menüsü, Özellikler komutuyla vurgulanır.":::
+   :::image type="content" source="media/hadr-distributed-network-name-dnn-configure/clear-check-for-nodes-not-in-fci.png" alt-text="DNN kaynağının olası sahipleri için FCı 'ye katılmayan düğümlerin yanındaki onay kutusunu temizleyin":::
 
 1. Ayarlarınızı kaydetmek için **Tamam ' ı** seçin. 
 
@@ -159,9 +160,9 @@ Küme işlevselliğini doğrulamak için kümelenmiş kaynağın yük devretmesi
 Yük devretmeyi sınamak için aşağıdaki adımları izleyin: 
 
 1. RDP kullanarak SQL Server küme düğümlerinden birine bağlanın.
-1. **Yük devretme kümesi Yöneticisi**açın. **Rolleri**seçin. Hangi düğümün SQL Server FCı rolüne sahip olduğuna dikkat edin.
+1. **Yük devretme kümesi Yöneticisi** açın. **Rolleri** seçin. Hangi düğümün SQL Server FCı rolüne sahip olduğuna dikkat edin.
 1. SQL Server FCı rolüne sağ tıklayın. 
-1. **Taşı**' yı seçin ve ardından **mümkün olan en iyi düğümü**seçin.
+1. **Taşı**' yı seçin ve ardından **mümkün olan en iyi düğümü** seçin.
 
 **Yük devretme kümesi Yöneticisi** rolü gösterir ve kaynakları çevrimdışı duruma geçer. Kaynaklar daha sonra taşınır ve diğer düğümde yeniden çevrimiçi duruma gelir.
 

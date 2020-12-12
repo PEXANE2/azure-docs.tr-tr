@@ -6,6 +6,7 @@ documentationcenter: na
 author: MashaMSFT
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
@@ -13,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 208df7ad53049598255ce358f2db128ba84fea9a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 558daede55f6563155d3f54e97d77c0a3ca4de59
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558000"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357238"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile birden çok SQL VM 'yi Azure 'da kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,16 +35,16 @@ Bu makale, SQL Server VM 'Leri toplu olarak el ile kaydetmenizi öğretir. Alter
 
 Kayıt işlemi risk içermez, kapalı kalma süresi yoktur ve SQL Server hizmeti ya da sanal makineyi yeniden başlatmaz. 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 SQL Server VM uzantıya kaydetmek için şunlar gerekir: 
 
 - [ **Microsoft. sqlvirtualmachine** sağlayıcısına kayıtlı](sql-agent-extension-manually-register-single-vm.md#register-subscription-with-rp) ve kaydedilmemiş SQL Server sanal makineler içeren bir [Azure aboneliği](https://azure.microsoft.com/free/) . 
-- Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu Azure rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı** , **katkıda bulunan** veya **sahip**. 
+- Sanal makineleri kaydetmek için kullanılan istemci kimlik bilgileri şu Azure rollerinin hiçbirinde bulunuyor: **sanal makine katılımcısı**, **katkıda bulunan** veya **sahip**. 
 - En son [az PowerShell sürümü (en az 5,0)](/powershell/azure/new-azureps-module-az). 
 
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Devam etmeden önce, önce betiğin yerel bir kopyasını oluşturmanız, PowerShell modülü olarak içeri aktarmanız ve Azure 'a bağlanmanız gerekir. 
 
@@ -239,7 +240,7 @@ Tam betiği kopyalayın ve olarak kaydedin `RegisterSqLVMs.psm1` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için aşağıdaki makalelere bakın: 
+Daha fazla bilgi için aşağıdaki makaleleri inceleyin: 
 
 * [Windows VM 'de SQL Server genel bakış](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM 'de SQL Server hakkında SSS](frequently-asked-questions-faq.md)

@@ -1,14 +1,14 @@
 ---
 title: Hizmet sağlayıcısı etkinliğini görüntüleme
 description: Müşteriler, Azure tarafından atanan kaynak yönetimi aracılığıyla hizmet sağlayıcıları tarafından gerçekleştirilen eylemleri görmek için günlüğe kaydedilen etkinliği görüntüleyebilir.
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371095"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356387"
 ---
 # <a name="view-service-provider-activity"></a>Hizmet sağlayıcısı etkinliğini görüntüleme
 
@@ -42,6 +42,12 @@ Daha fazla bilgi için bkz. [etkinlik günlüğü uyarıları oluşturma ve yön
 Günlüğe kaydedilen etkinliğinizi çözümlemek veya belirli öğelere odaklanmak için sorgular oluşturabilirsiniz. Örneğin, bir denetim, bir abonelikte gerçekleştirilen tüm yönetim düzeyi eylemleri raporlamak için gerekli olabilir. Yalnızca bu eylemleri filtrelemek ve sonuçları Kullanıcı, tarih veya başka bir değere göre sıralamak için bir sorgu oluşturabilirsiniz.
 
 Daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="view-user-activity-across-domains"></a>Etki alanları genelindeki Kullanıcı etkinliğini görüntüleme
+
+Etki alanı örnek çalışma kitabına [göre etkinlik günlüklerini](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) kullanarak, birden çok etki alanında bulunan bireysel kullanıcılardan etkinliği görüntüleyebilirsiniz.
+
+Sonuçlar, etki alanı adına göre filtrelenebilir. Kategori, düzey veya kaynak grubu gibi ek filtreler de uygulayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

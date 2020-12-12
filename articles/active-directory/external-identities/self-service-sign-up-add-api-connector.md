@@ -11,16 +11,19 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d121e6280b83265a742736f9b8dd3aee96a8b32e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351768"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355402"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
 Bir [API bağlayıcısını](api-connectors-overview.md)kullanmak IÇIN önce API bağlayıcısını oluşturun ve ardından Kullanıcı akışında etkinleştirin.
+
+> [!IMPORTANT]
+>**4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
 
 ## <a name="create-an-api-connector"></a>API Bağlayıcısı oluşturma
 
@@ -246,8 +249,8 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
-| eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
+| sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
+| eylem                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | API Bağlayıcısı yapılandırmasında ve bir Kullanıcı akışı için **Kullanıcı özniteliklerinde** bir _ *talebi* olarak seçilirse değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
@@ -268,9 +271,9 @@ Content-type: application/json
 
 | Parametre   | Tür   | Gerekli | Açıklama                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize | Yes      | API sürümü.                                                    |
-| eylem      | Dize | Yes      | Değer olmalıdır `ShowBlockPage`                                              |
-| userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize | Evet      | API sürümü.                                                    |
+| eylem      | Dize | Evet      | Değer olmalıdır `ShowBlockPage`                                              |
+| userMessage | Dize | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Engelleyici bir Yanıt ile son kullanıcı deneyimi**
@@ -294,10 +297,10 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Yes      | API sürümü.                                                    |
-| eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
-| durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
-| userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize  | Evet      | API sürümü.                                                    |
+| eylem      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
+| durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
+| userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**

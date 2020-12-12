@@ -12,12 +12,12 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: c113a252363d3b94131ac423f795f6efb13b1975
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 14b6d6ecc6523199102fd3ef9370fe901c4ff51d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029558"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355707"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Microsoft kimlik platformu uç noktasında izinler ve onay
 
@@ -89,7 +89,7 @@ Bir uygulama, [OpenID Connect](active-directory-v2-protocols.md)kullanarak oturu
 [ `offline_access` Kapsam](https://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) , uygulamanızın kullanıcı adına uzun bir süre boyunca kaynaklara erişmesini sağlar. Onay sayfasında, bu kapsam "erişim vermiş olduğunuz verilere erişimi koru" izni olarak görünür. Kullanıcı kapsamı onayladığında `offline_access` , uygulamanız Microsoft Identity platform belirteci uç noktasından yenileme belirteçleri alabilir. Yenileme belirteçleri uzun süreli. Uygulamanız, eski kullanım süreleri dolana kadar yeni erişim belirteçleri alabilir.
 
 > [!NOTE]
-> Bu izin, yenileme belirteci sağlamayan akışlar ( [örtük akış](v2-oauth2-implicit-grant-flow.md)) için bile, bugün tüm onay ekranlarında görünür.  Bu, bir istemcinin örtük akış içinde başlayabileceği senaryoları kapsar ve sonra bir yenileme belirtecinin beklendiği kod akışına geçebilir.
+> Bu izin, yenileme belirteci sağlamayan akışlar ( [örtük akış](v2-oauth2-implicit-grant-flow.md)) için bile, bugün tüm onay ekranlarında görünür. Bu, bir istemcinin örtük akış içinde başlayabileceği senaryoları kapsadığından yenileme belirtecinin beklendiği kod akışına geçebilir.
 
 Microsoft Identity platformunda (v 2.0 uç noktasında yapılan istekler), `offline_access` yenileme belirteçleri almak için uygulamanızın kapsamı açıkça istemesi gerekir. Bu, [OAuth 2,0 yetkilendirme kodu akışında](active-directory-v2-protocols.md)bir yetkilendirme kodu kullandığınızda uç noktadan yalnızca bir erişim belirteci alacağınız anlamına gelir `/token` . Erişim belirteci kısa bir süre için geçerlidir. Erişim belirtecinin genellikle bir saat içinde süresi dolar. Bu noktada, uygulamanızın `/authorize` Yeni bir yetkilendirme kodu almak için kullanıcıyı uç noktaya yeniden yönlendirmesi gerekir. Bu yeniden yönlendirme sırasında, uygulamanın türüne bağlı olarak, kullanıcının kimlik bilgilerini yeniden girmesi veya izinleri yeniden onaylaması gerekebilir.
 

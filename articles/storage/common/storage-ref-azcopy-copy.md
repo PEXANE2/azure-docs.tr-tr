@@ -4,16 +4,16 @@ description: Bu makale, AzCopy kopyalama komutu için başvuru bilgileri sağlar
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512163"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356183"
 ---
 # <a name="azcopy-copy"></a>azcopy kopya
 
@@ -275,6 +275,8 @@ Dosya ve dizinleri Azure depolama hesabına aktarın ve BLOB üzerinde verilen s
 **--**  kopyalama için yardım yardım.
 
 **--Include-After** dizesi yalnızca verilen tarih/saat içinde veya daha sonra değiştirilen dosyaları içerir. Değer ıSO8601 biçiminde olmalıdır. Hiçbir saat dilimi belirtilmemişse, değer AzCopy çalıştıran makinenin yerel saat diliminde olduğu varsayılır. Örneğin, `2020-08-19T15:04:00Z` BIR UTC saati veya `2020-08-19` yerel saat dilimindeki gece yarısı (00:00) için. AzCopy 10,5 itibariyle, bu bayrak yalnızca dosyalar için geçerlidir, bu nedenle bu bayrak veya ile kullanılırken klasör özellikleri kopyalanmaz `--preserve-smb-info` `--preserve-smb-permissions` .
+
+ **--Include-Before** dize yalnızca belirtilen tarih/saat veya üzerinde değiştirilen dosyaları içermelidir. Değer ıSO8601 biçiminde olmalıdır. Hiçbir saat dilimi belirtilmemişse, değer AzCopy çalıştıran makinenin yerel saat diliminde olduğu varsayılır. Örneğin `2020-08-19T15:04:00Z` UTC saati veya `2020-08-19` gece yarısı (00:00) için yerel saat diliminde. AzCopy 10,7 itibariyle, bu bayrak yalnızca dosyalar için geçerlidir, bu nedenle bu bayrak veya ile kullanılırken klasör özellikleri kopyalanmaz `--preserve-smb-info` `--preserve-smb-permissions` .
 
 **--Include-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
 

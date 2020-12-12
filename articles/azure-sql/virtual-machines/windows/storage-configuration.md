@@ -7,17 +7,18 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146731"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356740"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM’leri için depolama yapılandırması
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +55,7 @@ Disk yapılandırması tamamen özelleştirilebilir olduğundan, SQL Server VM i
 
 Ayrıca, diskler için önbelleğe alma özelliğini ayarlayabilirsiniz. Azure VM 'Leri, [Premium disklerle](../../../virtual-machines/disks-types.md#premium-ssd)kullanıldığında [blob önbelleği](../../../virtual-machines/premium-storage-performance.md#disk-caching) adlı çok katmanlı bir önbelleğe alma teknolojisine sahiptir. Blob önbelleği, önbelleğe alma için sanal makine RAM ve yerel SSD 'nin bir birleşimini kullanır. 
 
-Premium SSD için disk önbelleğe alma *ReadOnly* , *ReadWrite* veya *none* olabilir. 
+Premium SSD için disk önbelleğe alma *ReadOnly*, *ReadWrite* veya *none* olabilir. 
 
 - *ReadOnly* önbelleğe alma, Premium depolamada depolanan SQL Server veri dosyaları için oldukça faydalıdır. *Salt* okunur önbellek, düşük okuma gecikmesi, yüksek okuma IOPS ve aktarım hızı gibi IŞLEMLERI, VM belleği ve yerel SSD içindeki önbellekten gerçekleştirilen okuma işlemleri, önbellekten gerçekleştirilir. Bu okumalar, Azure Blob depolamadan olan veri diskinden okumalarından çok daha hızlıdır. Premium Depolama, önbellekten sunulan okuma sayısını disk ıOPS ve aktarım hızı ile saymaz. Bu nedenle, uygun olan toplam ıOPS ve aktarım hızı elde edebilirsiniz. 
 - Günlük dosyası sıralı olarak yazıldığı ve *salt okunur* önbelleğe alma özelliğinden yararlanmadığı için, SQL Server günlük dosyası barındıran diskler için *hiçbiri* önbellek yapılandırması kullanılmamalıdır. 
@@ -62,7 +63,7 @@ Premium SSD için disk önbelleğe alma *ReadOnly* , *ReadWrite* veya *none* ola
 
 
    > [!TIP]
-   > Depolama yapılandırmanızın seçili VM boyutu tarafından uygulanan kısıtlamalarla eşleştiğinden emin olun. VM boyutunun performans üst sınırını aşan depolama parametrelerinin seçilmesi şu hatayla sonuçlanır: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.` . Disk türünü değiştirerek IOPS 'yi azaltın veya VM boyutunu artırarak performans üst sınırı değerini artırın. 
+   > Depolama yapılandırmanızın seçili VM boyutu tarafından uygulanan kısıtlamalarla eşleştiğinden emin olun. VM boyutunun performans üst sınırını aşan depolama parametrelerinin seçilmesi uyarı olarak sonuçlanır: `The desired performance might not be reached due to the maximum virtual machine disk performance cap` . Disk türünü değiştirerek IOPS 'yi azaltın veya VM boyutunu artırarak performans üst sınırı değerini artırın. Bu, sağlamayı durdurmaz. 
 
 
 Azure, seçimlerinize bağlı olarak VM 'yi oluşturduktan sonra aşağıdaki depolama yapılandırma görevlerini gerçekleştirir:
@@ -94,7 +95,7 @@ Depolama iyileştirmesi kullanarak bir SQL Server VM dağıtmak için aşağıda
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
-Mevcut SQL Server VM 'Ler için Azure portal bazı depolama ayarlarını değiştirebilirsiniz. [SQL sanal makineleri kaynağını](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)açın ve **genel bakış** ' ı seçin. SQL Server genel bakış sayfası, sanal makinenizin geçerli depolama kullanımını gösterir. SANAL makinenizde bulunan tüm sürücüler bu grafikte görüntülenir. Her sürücü için, depolama alanı dört bölümde görüntülenir:
+Mevcut SQL Server VM 'Ler için Azure portal bazı depolama ayarlarını değiştirebilirsiniz. [SQL sanal makineleri kaynağını](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource)açın ve **genel bakış**' ı seçin. SQL Server genel bakış sayfası, sanal makinenizin geçerli depolama kullanımını gösterir. SANAL makinenizde bulunan tüm sürücüler bu grafikte görüntülenir. Her sürücü için, depolama alanı dört bölümde görüntülenir:
 
 * SQL verileri
 * SQL günlüğü

@@ -1,5 +1,5 @@
 ---
-title: SQL veritabanı 'na SQL Server-geçişe genel bakış
+title: "SQL veritabanı 'na SQL Server: geçişe genel bakış"
 description: SQL Server veritabanlarınızı Azure SQL veritabanı 'na geçirmek için kullanabileceğiniz farklı araçlar ve seçenekler hakkında bilgi edinin.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 2d668775e8d11faa0b2913cebc41e5217b49c278
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326939"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357356"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Geçişe genel bakış: SQL veritabanı 'na SQL Server
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]

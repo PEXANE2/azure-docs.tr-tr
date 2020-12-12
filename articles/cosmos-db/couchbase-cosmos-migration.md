@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: 73d6fe0233eccea9ebf1d82beb509c56fb45f4da
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339521"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357611"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
 
 * Azure Cosmos DB, koleksiyon adı zaten mevcut olduğundan üst düzey hiyerarşinin koleksiyonu belirtmek için gerekli değildir. Bu özellik, JSON yapısını çok daha kolay hale getirir. Aşağıdaki örnek, Couşbase ve Azure Cosmos DB arasında veri modelinde farkları gösteren bir örnektir:
 
-   **Couşbase** : belge kimliği = "99FF4444"
+   **Couşbase**: belge kimliği = "99FF4444"
 
     ```json
     {
@@ -69,7 +69,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
     }
    ```
 
-   **Azure Cosmos DB** : belge içinde aşağıda gösterildiği gıbı "kimlik" öğesine bakın
+   **Azure Cosmos DB**: belge içinde aşağıda gösterildiği gıbı "kimlik" öğesine bakın
 
     ```json
     {
@@ -181,7 +181,7 @@ Bölüm anahtarını belirtmeden veya belirtmeden belgeyi okuyabilirsiniz. Böl�
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Bu, artık uygulamanızı Azure Cosmos DB kullanarak kullanabilirsiniz. Bu belgede açıklanan örnek için tam kod örneği [Couşbasetocosmosdb-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub deposunda mevcuttur.
+Bu, artık uygulamanızı Azure Cosmos DB kullanarak kullanabilirsiniz. Bu belgede açıklanan örnek için tam kod örneği [Couşbasetocosmosdb-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/SpringCosmos) GitHub deposunda mevcuttur.
 
 ## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>N1QL sorguları kullanarak belge deposu olarak couşbase &
 
@@ -222,9 +222,9 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
     
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();   
    
@@ -305,7 +305,7 @@ CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği, [Couşbasetocosmosdb-Asynınspring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub deposunda mevcuttur.
+Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği, [Couşbasetocosmosdb-Asynınspring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncInSpring) GitHub deposunda mevcuttur.
 
 ## <a name="couchbase-as-a-keyvalue-pair"></a>Anahtar/değer çifti olarak couşbase
 
@@ -351,9 +351,9 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
    
    if(client==null)
     client= CosmosClient.builder()
-        .endpoint(Host)//(Host, MasterKey, dbName, collName).Builder()
+        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
         .connectionPolicy(cp)
-        .key(MasterKey)
+        .key(PrimaryKey)
         .consistencyLevel(ConsistencyLevel.EVENTUAL)
         .build();
     
@@ -427,7 +427,7 @@ CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği [Couşbasetocosmosdb-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub deposunda mevcuttur.
+Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği [Couşbasetocosmosdb-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/main/AsyncKeyValue) GitHub deposunda mevcuttur.
 
 ## <a name="data-migration"></a>Veri Taşıma
 

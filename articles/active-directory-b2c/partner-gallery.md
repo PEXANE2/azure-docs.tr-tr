@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bbcb3367f4a1b99ae6689a5d9fa33b7629145ead
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 4592742b99d7c3e915c31ca5a202355d32e76d68
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092603"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356132"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV iş ortakları
 
@@ -51,6 +51,7 @@ MFA ve passwordless kimlik doğrulaması için aşağıdaki ISV 'Ler ile Microso
 |:-------------------------|:--------------|
 | ![Hypr logosunun ekran görüntüsü](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) , ortak anahtar şifrelemeleri olan parolaların sahteciliği, kimlik avlarını ve kimlik bilgilerini yeniden kullanımını ortadan kaldıran, parolasız bir kimlik doğrulama sağlayıcısıdır. |
 | ![Itsme logosunun ekran görüntüsü](./media/partner-gallery/itsme-logo.png) | [ıtsme](./partner-itsme.md) , kullanıcıların kart okuyucuları, parolalar, iki öğeli kimlik doğrulaması ve bırden çok PIN kodu olmadan güvenli bir şekilde oturum açmalarına olanak tanımak Için bir elektronik tanımlama, kimlik doğrulama ve güven Hizmetleri (eidas) ile uyumlu dijital kimlik çözümüdür. |
+| ![Nevis logosunun ekran görüntüsü](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) , passwordless kimlik doğrulamasını sağlar ve güçlü müşteri kimlik doğrulaması IÇIN ve PSD2 işlem gereksinimleriyle uyum sağlamak üzere Nevis Access uygulamasıyla mobil ve tamamen markalı Son Kullanıcı deneyimi sağlar. |
 | ![Trusona logosunun ekran görüntüsü](./media/partner-gallery/trusona-logo.png) | [Truslonıntegration](./partner-trusona.md) , güvenli bir şekilde oturum açmanıza ve passwordless kimlik doğrulaması, MFA ve dijital lisans taramasını başlatmanıza yardımcı olur. |
 | ![Bir Twilio logosunun ekran görüntüsü.](./media/partner-gallery/twilio-logo.png) | [Twilio Verify App](./partner-twilio.md) , SMS tek seferlik parola (OTP), zaman tabanlı bir kerelik parola (TOTP) ve anında iletme BILDIRIMLERI aracılığıyla MFA 'yı ETKINLEŞTIRMEK ve PSD2 için SCA gereksinimleriyle uyum sağlamak için birden çok çözüm sağlar. |
 | ![TypingDNA logosunun ekran görüntüsü](./media/partner-gallery/typingdna-logo.png) | [Typingdna](./partner-twilio.md) , bir kullanıcının yazma modelini çözümleyerek güçlü müşteri kimlik doğrulamasını mümkün bir şekilde sunar. Şirketlerin sessiz MFA 'yı etkinleştirmesine ve PSD2 için SCA gereksinimleriyle uyumlu hale belirlemesine yardımcı olur. |

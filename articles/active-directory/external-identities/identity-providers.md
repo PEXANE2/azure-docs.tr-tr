@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61eca3340985886ef782b28a59a1283c5f473ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ead05598c6ca4d096e1a68c8d640938ecd771c2
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265723"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355520"
 ---
 # <a name="identity-providers-for-external-identities"></a>Dış kimlikler için kimlik sağlayıcıları
 
@@ -25,6 +25,9 @@ Kimlik *sağlayıcısı* , uygulamalara kimlik doğrulama hizmetleri sağlarken 
 Bununla birlikte, kullanıcıların çeşitli kimlik sağlayıcılarıyla oturum açmasını sağlayabilirsiniz.
 
 - **Google**: Google Federasyonu, dış kullanıcıların kendi Gmail hesaplarıyla uygulamalarınızda oturum açarak davetlerini sizin tarafınızdan kullanmasına izin verir. Google Federation, self servis kaydolma Kullanıcı akışlarınızda da kullanılabilir.
+   > [!IMPORTANT]
+   > **4 ocak 2021 tarihinden itibaren** Google, [WebView oturum açma desteğini kullanımdan](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html)kaldırır. Gmail ile Google Federasyonu veya self servis kaydolma kullanıyorsanız, [iş kolu yerel uygulamalarınızı uyumluluk için test](google-federation.md#deprecation-of-webview-sign-in-support)etmeniz gerekir.
+
    > [!NOTE]
    > Geçerli self servis kaydolma önizlemesinde, bir Kullanıcı akışı bir uygulamayla ilişkiliyse ve bu uygulamaya bir Kullanıcı daveti gönderirseniz, Kullanıcı daveti kullanmak için bir Gmail hesabı kullanamaz. Geçici bir çözüm olarak, Kullanıcı self servis kaydolma işlemini gerçekleştirebilir. Ya da, farklı bir uygulamaya erişerek veya ' de My Apps Portal ' ı kullanarak daveti kullanabilirler https://myapps.microsoft.com .
 

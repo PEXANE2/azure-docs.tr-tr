@@ -7,18 +7,21 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 57e740e6c47d9518c12a49473e103d0abe772618
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93337022"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357578"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Hızlı başlangıç: Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
-[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın. 
+**Uygulama hedefi**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL için Azure veritabanı-tek sunuculu :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL Için Azure veritabanı-esnek sunucu
 
-## <a name="prerequisites"></a>Ön koşullar
+[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın.
+
+
+## <a name="prerequisites"></a>Önkoşullar
 
 Şunlara ihtiyacınız vardır: 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -66,7 +69,12 @@ Yer tutucuları `server-name` Azure 'da barındırılan MySQL sunucunuzun adıyl
 
 ## <a name="copy-the-mysql-connection-string"></a>MySQL bağlantı dizesini Kopyala 
 
-Azure Portal, MySQL için Azure veritabanı sunucusuna gidin ve **Ayarlar**  >  **bağlantı dizeleri** ' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi şuna benzer olacaktır. 
+Azure Portal, MySQL için Azure veritabanı sunucusuna gidin ve **Ayarlar**  >  **bağlantı dizeleri**' ni açın. **ADO.NET** bağlantı dizesini kopyalayın. Ve için yer tutucu değerlerini `your_database` değiştirin `your_password` . Bağlantı dizesi şuna benzer olacaktır. 
+
+> [!IMPORTANT]
+> - Tek sunucu için **uid = adminusername@servername** kullanın. Gerektiğini aklınızda edin **@servername** .
+> - Esnek sunucu için, olmadan **uid = AdminUserName** kullanın @servername . MySQL esnek sunucusunun önizlemede olduğunu unutmayın. 
+
 
 ```output
    Server=my-mysql-server.mysql.database.azure.com; Port=3306; Database={your_database}; Uid=adminname@my-mysql-server; Pwd={your_password}; SslMode=Preferred;
@@ -77,7 +85,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. [GitHub](https://github.com/)'da deponuza gözatamazsınız.
 
-1. **Yeni gizli > > ayarlar** ' ı seçin.
+1. **Yeni gizli > > ayarlar**' ı seçin.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 

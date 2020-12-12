@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744117"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355881"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için veri yerleşimi ve müşteri verileri
 
@@ -57,7 +57,7 @@ Azure B2C kimlik doğrulaması, NPS uzantısı ve Windows Server 2016 ya da 2019
 | Microsoft Authenticator bildirimi | Multi-Factor Authentication günlüklerde<br />Multi-Factor Authentication etkinlik raporu veri deposu<br />Sahtekarlık bildiriliyorsa engellenen kullanıcılar<br />Microsoft Authenticator cihaz belirteci değiştiğinde istekleri değiştirme |
 
 > [!NOTE]
-> Multi-Factor Authentication etkinlik raporu veri deposu, kimlik doğrulama isteğini işleyen bölgeden bağımsız olarak tüm bulutlara yönelik Birleşik Devletler depolanır. Microsoft Azure Almanya, 21Vianet tarafından çalıştırılan Microsoft Azure ve Microsoft kamu bulutu, genel bulut bölgesi veri depolarından ayrı olarak kendi bağımsız veri depolarına sahiptir, ancak bu veriler her zaman Birleşik Devletler depolanır.
+> Multi-Factor Authentication etkinlik raporu veri deposu, kimlik doğrulama isteğini işleyen bölgeden bağımsız olarak tüm bulutlara yönelik Birleşik Devletler depolanır. Microsoft Azure Almanya, 21Vianet tarafından çalıştırılan Microsoft Azure ve Microsoft kamu bulutu, genel bulut bölgesi veri depolarından ayrı olarak kendi bağımsız veri depolarına sahiptir, ancak bu veriler her zaman Birleşik Devletler depolanır. Bu veri depoları, Kullanıcı asıl adı (UPN) ve tüm telefon numarası gibi kişisel olarak tanımlanabilen bilgileri (PII) içerir. 
 
 Microsoft Azure Kamu, Microsoft Azure Almanya, 21Vianet tarafından çalıştırılan Microsoft Azure, Azure B2C kimlik doğrulaması, NPS uzantısı ve Windows Server 2016 ya da 2019 AD FS bağdaştırıcısı için aşağıdaki kişisel veriler depolanır:
 

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: d219ff8469c471a37deb47e0f217292d70e8f0f9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497121"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355231"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -29,7 +29,7 @@ Varsayılan olarak, Azure Data Factory Kullanıcı arabirimi deneyimi (UX) yazar
 Daha iyi bir yazma deneyimi sağlamak için Azure Data Factory, bir Git deposunu Azure Repos veya GitHub ile yapılandırmanıza olanak tanır. Git, daha kolay değişiklik izleme ve işbirliğine olanak tanıyan bir sürüm denetim sistemidir. Bu makale, en iyi yöntemler ve sorun giderme kılavuzu ile birlikte bir git deposunda yapılandırma ve çalışmayı özetler.
 
 > [!NOTE]
-> Azure Data Factory git tümleştirmesi, Azure Kamu Bulutu 'nda kullanılamaz.
+> Azure Data Factory git tümleştirmesi yalnızca Azure Kamu bulutundaki GitHub Enterprise için kullanılabilir.
 
 Azure Data Factory git ile tümleştirilme hakkında daha fazla bilgi edinmek için aşağıdaki 15 dakikalık öğretici videosunu görüntüleyin:
 
@@ -199,7 +199,7 @@ Bu adımları izledikten sonra, fabrikanızın kuruluşunuzda hem genel hem de �
 - Data Factory görsel yazma araçları ile GitHub tümleştirmesi yalnızca, Data Factory genel kullanıma sunulan sürümünde çalışmaktadır.
 
 
-- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir. Azure DevOps git 'in bu sınırlaması yoktur.
+- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir. Azure DevOps Git'te bu sınırlama yoktur.
 
 ## <a name="version-control"></a>Sürüm denetimi
 

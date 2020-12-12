@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564489"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358021"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Bir FCı için sanal makineleri hazırlama (Azure VM 'lerinde SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +27,7 @@ Bu makalede, Azure sanal makinelerinin (VM 'Ler) SQL Server yük devretme kümes
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Önkoşullar 
 
 - Microsoft Azure aboneliği. [Ücretsiz](https://azure.microsoft.com/free/)olarak kullanmaya başlayın. 
 - Azure sanal makinelerinde veya şirket içi bir veri merkezinde sanal ağ eşleştirmesine sahip Azure 'a genişletilmiş bir Windows etki alanı.
@@ -47,19 +48,22 @@ Yük devretme kümesi özelliği, sanal makinelerin bir [kullanılabilirlik küm
 
 Amaçlanan küme yapılandırmanızla eşleşen VM kullanılabilirlik seçeneğini dikkatle seçin: 
 
- - **Azure paylaşılan diskler** : hata etki alanıyla yapılandırılan [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) ve etki alanı 1 olarak ayarlanır ve bir [yakınlık yerleşimi grubuna](../../../virtual-machines/windows/proximity-placement-groups-portal.md)yerleştirilir.
- - **Premium dosya paylaşımları** : [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) veya [kullanılabilirlik alanı](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). VM 'niz için kullanılabilirlik yapılandırması olarak kullanılabilirlik alanları ' nı seçerseniz, Premium dosya paylaşımları yalnızca paylaşılan depolama seçeneğidir. 
- - **Depolama alanları doğrudan** : [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+- **Azure paylaşılan diskler**: kullanılabilirlik seçeneği, Premium ssds veya UltraDisk kullanıyorsanız değişir:
+   - Premium SSD: bir [yakınlık yerleştirme grubunun](../../../virtual-machines/windows/proximity-placement-groups-portal.md)Içine yerleştirilmiş Premium SSD 'ler için farklı hata/güncelleştirme etki alanlarında [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) .
+   - Ultra Disk: [kullanılabilirlik alanı](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) ancak VM 'lerin, kümenin kullanılabilirliğini% 99,9 olarak azaltan aynı Kullanılabilirlik bölgesine yerleştirilmesi gerekir. 
+- **Premium dosya paylaşımları**: [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) veya [kullanılabilirlik alanı](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
+- **Depolama alanları doğrudan**: [kullanılabilirlik kümesi](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
->[!IMPORTANT]
->Bir sanal makineyi oluşturduktan sonra kullanılabilirlik kümesini ayarlayamazsınız veya değiştiremezsiniz.
+> [!IMPORTANT]
+> Bir sanal makineyi oluşturduktan sonra kullanılabilirlik kümesini ayarlayamazsınız veya değiştiremezsiniz.
 
 ## <a name="create-the-virtual-machines"></a>Sanal makineleri oluşturma
 
 VM kullanılabilirliğini yapılandırdıktan sonra, sanal makinelerinizi oluşturmaya hazırsınız demektir. Üzerinde SQL Server zaten yüklü olmayan veya olmayan bir Azure Marketi görüntüsü kullanmayı seçebilirsiniz. Ancak, Azure VM 'lerinde SQL Server için bir görüntü seçerseniz, yük devretme kümesi örneğini yapılandırmadan önce sanal makineden SQL Server kaldırmanız gerekir. 
 
 ### <a name="considerations"></a>Dikkat edilmesi gerekenler
-Azure IaaS VM konuk yük devretme kümesinde sunucu başına (küme düğümü) tek bir NIC ve tek bir alt ağ kullanılması önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağ üzerinde erişilebilir durumda olduğuna dair bir uyarı gösterse de bu uyarı Azure IaaS VM konuk yük devretme kümelerinde güvenli bir şekilde yoksayılabilir.
+
+Bir Azure VM konuk yük devretme kümesinde, sunucu başına (küme düğümü) ve tek bir alt ağ için tek bir NIC önerilir. Azure ağ iletişimi, Azure IaaS VM Konuk kümesinde ek NIC 'Lerin ve alt ağların gereksiz olmasını sağlayan fiziksel yedekliliğe sahiptir. Küme doğrulama raporu, düğümlerin yalnızca tek bir ağ üzerinde erişilebilir durumda olduğuna dair bir uyarı gösterse de bu uyarı Azure IaaS VM konuk yük devretme kümelerinde güvenli bir şekilde yoksayılabilir.
 
 Her iki sanal makineyi de Yerleştir:
 
@@ -85,18 +89,18 @@ Uzantıdan kaydolduktan sonra, SQL Server kaldırabilirsiniz. Her sanal makine i
 
 1. RDP kullanarak sanal makineye bağlanın.
 
-   RDP kullanarak bir sanal makineye ilk kez bağlandığınızda, bir istem, BILGISAYARıN ağda bulunabilir olmasını isteyip istemediğinizi sorar. **Evet** ’i seçin.
+   RDP kullanarak bir sanal makineye ilk kez bağlandığınızda, bir istem, BILGISAYARıN ağda bulunabilir olmasını isteyip istemediğinizi sorar. **Evet**’i seçin.
 
 1. SQL Server tabanlı sanal makine görüntülerinden birini kullanıyorsanız, SQL Server örneğini kaldırın:
 
-   1. **Programlar ve Özellikler** ' de **Microsoft SQL Server 201_ (64-bit)** öğesine sağ tıklayın ve **Kaldır/Değiştir** ' i seçin.
-   1. **Kaldır** ' ı seçin.
+   1. **Programlar ve Özellikler**' de **Microsoft SQL Server 201_ (64-bit)** öğesine sağ tıklayın ve **Kaldır/Değiştir**' i seçin.
+   1. **Kaldır**' ı seçin.
    1. Varsayılan örneği seçin.
    1. **Veritabanı motoru Hizmetleri** altındaki tüm özellikleri kaldırın. **Paylaşılan Özellikler** altında herhangi bir şeyi kaldırmayın. Aşağıdaki ekran görüntüsüne benzer bir şey göreceksiniz:
 
       ![Özellik seçme](./media/failover-cluster-instance-prepare-vm/03-remove-features.png)
 
-   1. **İleri** ' yi ve ardından **Kaldır** ' ı seçin.
+   1. **İleri**' yi ve ardından **Kaldır**' ı seçin.
    1. Örnek başarıyla kaldırıldıktan sonra, sanal makineyi yeniden başlatın. 
 
 ## <a name="open-the-firewall"></a>Güvenlik duvarını açın 
@@ -109,9 +113,9 @@ Bu tabloda, FCı yapılandırmanıza bağlı olarak, açmanız gerekebilecek ba�
 
    | Amaç | Bağlantı noktası | Notlar
    | ------ | ------ | ------
-   | SQL Server | TCP 1433 | Varsayılan SQL Server örnekleri için normal bağlantı noktası. Galeriden bir görüntü kullandıysanız, bu bağlantı noktası otomatik olarak açılır. </br> </br> **Kullanan** : tüm FCI yapılandırması. |
-   | Durum yoklaması | TCP 59999 | Açık herhangi bir TCP bağlantı noktası. Yük dengeleyici [sistem durumu araştırmasını](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) ve kümeyi Bu bağlantı noktasını kullanacak şekilde yapılandırın. </br> </br> **Kullanan** : FCI yük dengeleyici. |
-   | Dosya paylaşımı | UDP 445 | Dosya paylaşma hizmetinin kullandığı bağlantı noktası. </br> </br> **Kullanan** : FCI Premium dosya paylaşımıyla. |
+   | SQL Server | TCP 1433 | Varsayılan SQL Server örnekleri için normal bağlantı noktası. Galeriden bir görüntü kullandıysanız, bu bağlantı noktası otomatik olarak açılır. </br> </br> **Kullanan**: tüm FCI yapılandırması. |
+   | Durum yoklaması | TCP 59999 | Açık herhangi bir TCP bağlantı noktası. Yük dengeleyici [sistem durumu araştırmasını](failover-cluster-instance-vnn-azure-load-balancer-configure.md#configure-health-probe) ve kümeyi Bu bağlantı noktasını kullanacak şekilde yapılandırın. </br> </br> **Kullanan**: FCI yük dengeleyici. |
+   | Dosya paylaşımı | UDP 445 | Dosya paylaşma hizmetinin kullandığı bağlantı noktası. </br> </br> **Kullanan**: FCI Premium dosya paylaşımıyla. |
 
 ## <a name="join-the-domain"></a>Etki alanına katılarak
 

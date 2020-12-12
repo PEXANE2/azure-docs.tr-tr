@@ -1,22 +1,25 @@
 ---
-title: Common Data Service Bağlan
-description: Azure Logic Apps kullanarak Common Data Service kayıtları oluşturun ve yönetin
+title: Common Data Service bağlanma (Microsoft Datadize)
+description: Azure Logic Apps kullanarak Common Data Service (Microsoft Dataverse) kayıtları oluşturun ve yönetin
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334591"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355129"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Common Data Service kayıtları oluşturma ve yönetme
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Common Data Service (Microsoft Dataverse) içinde Azure Logic Apps kullanarak kayıt oluşturma ve yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Common Data Service Bağlayıcısı](/connectors/commondataservice/)ile [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro) veritabanınızdaki kayıtları yöneten otomatik iş akışları oluşturabilirsiniz. Bu iş akışları kayıt oluşturabilir, kayıtları güncelleştirebilir ve diğer işlemleri gerçekleştirebilir. Ayrıca, Common Data Service veritabanından bilgi alabilir ve bu çıktıyı mantıksal uygulamanızda kullanmak üzere diğer eylemler için kullanılabilir hale getirebilirsiniz. Örneğin, Common Data Service veritabanınızda bir kayıt güncelleştirilirse, Office 365 Outlook bağlayıcısını kullanarak e-posta gönderebilirsiniz.
+> [!NOTE]
+> Kasım 2020 ' de, Common Data Service Microsoft veri deposu olarak yeniden adlandırıldı.
+
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Common Data Service Bağlayıcısı](/connectors/commondataservice/)sayesinde, [artık Microsoft datadize veritabanı Common Data Service,](/powerapps/maker/common-data-service/data-platform-intro) kayıtlarını yöneten otomatik iş akışları oluşturabilirsiniz. Bu iş akışları kayıt oluşturabilir, kayıtları güncelleştirebilir ve diğer işlemleri gerçekleştirebilir. Ayrıca, Common Data Service veritabanından bilgi alabilir ve bu çıktıyı mantıksal uygulamanızda kullanmak üzere diğer eylemler için kullanılabilir hale getirebilirsiniz. Örneğin, Common Data Service veritabanınızda bir kayıt güncelleştirilirse, Office 365 Outlook bağlayıcısını kullanarak e-posta gönderebilirsiniz.
 
 Bu makalede, her yeni bir müşteri adayı kaydı oluşturulduğunda görev kaydı oluşturan bir mantıksal uygulamayı nasıl oluşturabileceğiniz gösterilmektedir.
 
@@ -110,7 +113,7 @@ Kayıtlar güncelleştirilirken çalışan Tetikleyiciler (örneğin, **bir kay�
 
    !["Bir kayıt güncelleştirilirken" eylemi ve "öznitelik filtreleri" özelliği seçiliyken açılan "yeni parametre Ekle" listesini gösteren ekran görüntüsü.](./media/connect-common-data-service/when-record-updated-trigger-add-attribute-filters.png)
 
-1. Her **öznitelik filtresi öğesi**için, güncelleştirmeler için izlemek istediğiniz özniteliği seçin, örneğin:
+1. Her **öznitelik filtresi öğesi** için, güncelleştirmeler için izlemek istediğiniz özniteliği seçin, örneğin:
 
    !["Öznitelik filtreleri" özelliği Ekle](./media/connect-common-data-service/when-record-updated-trigger-select-attribute-filter.png)
 
@@ -151,7 +154,7 @@ Bu tabloda bazı alan türleri ve bu alanların değerleri için gereken veri t�
 | Alan | Veri türü | Açıklama |
 |-------|-----------|-------------|
 | Metin alanı | Tek satırlı metin | Metin veri türüne sahip tek satırlık bir metin veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Açıklaması** <br>- **Alan** |
-| Tamsayı alanı | Tamsayı | Tamsayı veri türüne sahip bir tamsayı veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Tamamlanma yüzdesi** <br>- **Sürenin** |
+| Tamsayı alanı | Tam sayı | Tamsayı veri türüne sahip bir tamsayı veya dinamik içerik gerektirir, örneğin, bu özellikler: <p><p>- **Tamamlanma yüzdesi** <br>- **Sürenin** |
 | Tarih alanı | Tarih ve Saat | AA/gg/YYY biçiminde veya tarih veri türüne sahip dinamik içerikte bir tarih gerektirir, örneğin, bu özellikler: <p><p>- **Oluşturulma tarihi** <br>- **Başlangıç tarihi** <br>- **Gerçek başlangıç** <br>- **Gerçek bitiş** <br>- **Son Tarih** |
 | Başka bir varlık kaydına başvuran alan | Birincil anahtar | GUID gibi bir kayıt KIMLIĞI ve bir arama türü gerektirir, bu da dinamik içerik listesindeki değerlerin, örneğin, bu özellikler gibi çalışmadıkları anlamına gelir: <p><p>- **Sahip**: geçerli BIR kullanıcı kimliği veya bir takım kayıt kimliği olmalıdır. <br>- **Sahip türü**: sırasıyla veya gibi bir arama türü olmalıdır `systemusers` `teams` . <p><p>- **İlgili**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Ilgili tür**: sırasıyla veya gibi bir arama türü olmalıdır `accounts` `contacts` . <p><p>- **Müşteri**: hesap kimliği veya ilgili kışı kaydı kimliği gibi geçerli BIR kayıt kimliği olmalıdır. <br>- **Müşteri türü**: sırasıyla veya gibi arama türü olmalıdır `accounts` `contacts` . |
 ||||

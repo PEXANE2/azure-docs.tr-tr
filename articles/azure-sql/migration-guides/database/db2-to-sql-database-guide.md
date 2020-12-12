@@ -1,5 +1,5 @@
 ---
-title: DB2-SQL veritabanı-geçiş kılavuzu
+title: "DB2 'den SQL veritabanı: geçiş kılavuzu"
 description: DB2 veritabanlarınızı Azure SQL veritabanı 'na geçirmek için bu kılavuzu izleyin.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 3e216c4aeb8d1206011ff9cca2d80900c23b2399
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325171"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356353"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Geçiş Kılavuzu: DB2 'den SQL veritabanına
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]

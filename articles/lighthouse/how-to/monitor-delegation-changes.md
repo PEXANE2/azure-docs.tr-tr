@@ -1,14 +1,14 @@
 ---
 title: Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 description: Müşteri kiracılarından yönetilen kiracınıza olan yetkilendirme etkinliğini izlemeyi öğrenin.
-ms.date: 09/08/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 15e96939d4115bd93260687f637143cc798a4331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d254c90881d23255dda5c38a868eb61e51b4f08
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336607"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356421"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönettiğiniz kiracınızdaki yetkilendirme değişikliklerini izleme
 
@@ -175,9 +175,10 @@ Izleme okuyucusu Azure yerleşik rolü kök kapsamda atanmış olan kullanıcıl
 1. **Müşterilerimiz** sayfasına gidin ve ardından sol taraftaki gezinti menüsünde **etkinlik günlüğü** ' nü seçin.
 1. Ekranın üst kısmındaki filtrede **Dizin etkinliğinin** seçildiğinden emin olun.
 
-Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü**ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
+Temsili değişikliklerinin bir listesi görüntülenir. **Durum**, **olay kategorisi**, **saat**, **zaman damgası**, **abonelik**, **olay tarafından başlatılan olay**, kaynak **grubu**, **kaynak türü** ve **kaynak** değerlerini göstermek veya gizlemek için **Sütunları Düzenle** seçeneğini belirleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure](../concepts/azure-delegated-resource-management.md)'un nasıl kullanılacağına ilişkin müşterileri nasıl kullanacağınızı öğrenin.
 - [Azure izleyici](../../azure-monitor/index.yml) ve [Azure etkinlik günlüğü](../../azure-monitor/platform/platform-logs-overview.md)hakkında bilgi edinin.
+- Azure etkinlik günlüklerinin, etki alanı adına göre filtrelemeye yönelik bir seçeneğe sahip abonelikler arasında nasıl görüntüleneceğini öğrenmek için, etki alanı örnek çalışma kitabına [göre etkinlik günlüklerini](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) gözden geçirin.

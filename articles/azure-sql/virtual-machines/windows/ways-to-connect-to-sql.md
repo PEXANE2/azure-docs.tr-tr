@@ -7,18 +7,19 @@ author: MashaMSFT
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
+ms.subservice: management
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f8bee990074debf09cc9bfd19f96470a029b50c9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 28b68178b98e53b7a7d4192ad20c05a667344969
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793135"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356744"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure 'da SQL Server sanal makinesine bağlanma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -41,7 +42,7 @@ Bağlantı seçenekleriniz şunlardır:
 
 | Seçenek | Açıklama |
 |---|---|
-| **Genel** | İnternet üzerinden SQL Server 'e bağlanın. |
+| **Geneldir** | İnternet üzerinden SQL Server 'e bağlanın. |
 | **Özel** | Aynı sanal ağda SQL Server bağlanın. |
 | **Yerel** | Aynı sanal makinede yerel olarak SQL Server bağlantı. | 
 
@@ -65,7 +66,7 @@ SQL Server veritabanı altyapısına internet 'ten bağlanmak istiyorsanız, sa�
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-Bu dize Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server örneğine bağlanabildiği anlamına gelmez. Dış istemciler, doğru Kullanıcı adını ve parolayı kullanmalıdır. Bununla birlikte, ek güvenlik için, bilinen 1433 numaralı bağlantı noktasından kaçınabilirsiniz. Örneğin, bağlantı noktası 1500 ' i dinlemek için SQL Server yapılandırmak ve uygun güvenlik duvarı ve ağ güvenlik grubu kuralları oluşturmak için, bağlantı noktası numarasını sunucu adına ekleyerek bağlanabilirsiniz. Aşağıdaki örnek, sunucu adına **1500** , özel bir bağlantı noktası numarası ekleyerek öncekini değiştirir:
+Bu dize Internet üzerinden istemciler için bağlantıya izin verse de, bu, herkesin SQL Server örneğine bağlanabildiği anlamına gelmez. Dış istemciler, doğru Kullanıcı adını ve parolayı kullanmalıdır. Bununla birlikte, ek güvenlik için, bilinen 1433 numaralı bağlantı noktasından kaçınabilirsiniz. Örneğin, bağlantı noktası 1500 ' i dinlemek için SQL Server yapılandırmak ve uygun güvenlik duvarı ve ağ güvenlik grubu kuralları oluşturmak için, bağlantı noktası numarasını sunucu adına ekleyerek bağlanabilirsiniz. Aşağıdaki örnek, sunucu adına **1500**, özel bir bağlantı noktası numarası ekleyerek öncekini değiştirir:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -97,11 +98,11 @@ Server=mysqlvm;Integrated Security=true
 
 Azure portal SQL Server sanal makinenizin bağlantı ayarlarını değiştirebilirsiniz.
 
-1. Azure portal, **SQL sanal makineler** ' i seçin.
+1. Azure portal, **SQL sanal makineler**' i seçin.
 
 2. SQL Server VM seçin.
 
-3. **Ayarlar** altında **güvenlik** ' i seçin.
+3. **Ayarlar** altında **güvenlik**' i seçin.
 
 4. **SQL bağlantı düzeyini** gerekli ayarınızla değiştirin. İsteğe bağlı olarak, SQL Server bağlantı noktasını veya SQL kimlik doğrulaması ayarlarını değiştirmek için bu alanı kullanabilirsiniz.
 
