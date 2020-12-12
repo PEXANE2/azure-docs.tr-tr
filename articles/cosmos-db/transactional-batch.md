@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340575"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347566"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>.NET SDK kullanarak Azure Cosmos DB işlem toplu işlem işlemleri
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-İşlem toplu işi, bir kapsayıcıda aynı bölüm anahtarıyla başarılı veya başarısız olması gereken bir dizi nokta işlemi tanımlar. .NET SDK 'sında, `TranscationalBatch` sınıfı bu işlem toplu işlemini tanımlamak için kullanılır. Tüm işlemler, işlem toplu işlem içinde açıklandıkları sırada başarılı olursa, işlem kaydedilir. Ancak, herhangi bir işlem başarısız olursa, tüm işlem geri alınır.
+İşlem toplu işi, bir kapsayıcıda aynı bölüm anahtarıyla başarılı veya başarısız olması gereken bir dizi nokta işlemi tanımlar. .NET SDK 'sında, `TransactionalBatch` sınıfı bu işlem toplu işlemini tanımlamak için kullanılır. Tüm işlemler, işlem toplu işlem içinde açıklandıkları sırada başarılı olursa, işlem kaydedilir. Ancak, herhangi bir işlem başarısız olursa, tüm işlem geri alınır.
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Azure Cosmos DB bir işlem nedir?
 
@@ -35,7 +35,7 @@ Azure Cosmos DB Şu anda işlemler üzerindeki işlem kapsamını da sağlayan s
 
 * **Dil seçeneği** – işlem toplu işi, zaten kullandığınız SDK ve dilde desteklenir, ancak saklı yordamların JavaScript 'te yazılması gerekir.
 * **Kod sürümü oluşturma** – uygulama kodunun sürümü oluşturma ve CI/CD işlem hattınıza ekleme, saklı bir yordamın güncelleştirilmesini düzenleyen ve geçişin doğru zamanda gerçekleşmediğinden emin olmak için çok daha doğal hale gelir. Ayrıca, değişiklikleri geri alma daha kolay hale gelir.
-* **Performans** : saklı yordam yürütme ile karşılaştırıldığında, %30 ' a kadar denk işlem gecikmesini azalmıştır.
+* **Performans** : saklı yordam yürütme ile karşılaştırıldığında, denk işlemlerde %30 ' a varan gecikme süresi azaltılır.
 * **İçerik serileştirme** – bir işlem toplu işlemindeki her işlem, yükü için özel serileştirme seçeneklerinden yararlanabilir.
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>İşlem Batch işlemi oluşturma
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-Ardından, şunu çağırmanız gerekir `ExecuteAsync` :
+Ardından, `ExecuteAsync` Batch üzerinde çağırmanız gerekir:
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-Yanıt alındıktan sonra, başarılı olup olmadığını incelemeniz ve sonuçları ayıklamanız gerekir:
+Yanıt alındıktan sonra, başarılı olup olmadığını inceleyin ve sonuçları ayıklayın:
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-Bir hata oluşursa, başarısız olan işlem ilgili hatanın durum koduna sahip olur. Diğer tüm işlemlerin 424 durum kodu (başarısız bağımlılığı) olacaktır. Aşağıdaki örnekte, zaten var olan bir öğe (409 HttpStatusCode. Conflict) oluşturmaya çalıştığı için işlem başarısız olur. Durum kodları, işlem başarısızlığının nedenini belirlemeyi kolaylaştırır.
+Bir hata oluşursa, başarısız olan işlem ilgili hatanın durum koduna sahip olur. Diğer tüm işlemlerin 424 durum kodu (başarısız bağımlılığı) olacaktır. Aşağıdaki örnekte, zaten var olan bir öğe (409 HttpStatusCode. Conflict) oluşturmaya çalıştığı için işlem başarısız olur. Durum kodu, bir işlemin hatanın nedenini belirlemesine olanak sağlar.
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 `ExecuteAsync`Yöntemi çağrıldığında, nesnedeki tüm işlemler `TransactionalBatch` gruplandırılır, tek bir yükte serileştirilir ve Azure Cosmos DB hizmetine tek bir istek olarak gönderilir.
 
-Hizmet, isteği alır ve tüm işlemleri bir işlem kapsamı içinde yürütür ve aynı serileştirme protokolünü kullanarak bir yanıt döndürür. Bu yanıt bir başarı veya bir hata ya da tek tek bireysel işlem yanıtlarını dahili olarak içerir.
+Hizmet, isteği alır ve tüm işlemleri bir işlem kapsamı içinde yürütür ve aynı serileştirme protokolünü kullanarak bir yanıt döndürür. Bu yanıt bir başarılı veya bir hata ya da işlem başına bireysel işlem yanıtları sağlar.
 
 SDK, sonucu doğrulamak için size yanıtı gösterir ve isteğe bağlı olarak, iç işlem sonuçlarının her birini ayıklar.
 
@@ -108,7 +108,7 @@ SDK, sonucu doğrulamak için size yanıtı gösterir ve isteğe bağlı olarak,
 
 Şu anda iki bilinen sınır vardır:
 
-* Azure Cosmos DB istek boyutu sınırı, `TransactionalBatch` yükün boyutunun 2 MB 'ı aşmaması ve en fazla yürütme süresi 5 saniyedir.
+* Azure Cosmos DB istek boyutu sınırı, `TransactionalBatch` yükün boyutunu 2 MB 'ı aşmayacak şekilde kısıtlar ve en fazla yürütme süresi 5 saniyedir.
 * `TransactionalBatch`Performansın beklenen ve SLA 'ların içinde olduğundan emin olmak için 100 işlem başına geçerli bir sınır vardır.
 
 ## <a name="next-steps"></a>Sonraki adımlar

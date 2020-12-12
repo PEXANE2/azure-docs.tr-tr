@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: afb940d63f76acce6575b74bf5a21a7fb912fc4e
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 4741053acdefe27eadc380d9144c548af4b5143c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920113"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346121"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir dosya sistemine veri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -151,9 +151,9 @@ Dosya sistemi için, `storeSettings` Biçim tabanlı kopyalama kaynağı 'ndaki 
 | tür                     | Altındaki Type özelliği `storeSettings` **Fileserverreadsettings** olarak ayarlanmalıdır. | Evet                                           |
 | **_Kopyalanacak dosyaları bulun:_* _ |  |  |
 | SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen klasör/dosya yolundan Kopyala. Tüm dosyaları bir klasörden kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `_` . |  |
-| Seçenek 2: sunucu tarafı filtresi<br>-fileFilter  | Dosya sunucusu tarafı yerel filtresi, seçenek 3 joker karakter filtresinden daha iyi performans sağlar. `*`Sıfır veya daha fazla karakterle eşleştirmek ve `?` sıfır veya tek karakterle eşleştirmek için kullanın. [Bu bölümün](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)altındaki notlardan sözdizimi ve notlar hakkında **Remarks** daha fazla bilgi edinin. | Hayır                                                          |
+| Seçenek 2: sunucu tarafı filtresi<br>-fileFilter  | Dosya sunucusu tarafı yerel filtresi, seçenek 3 joker karakter filtresinden daha iyi performans sağlar. `*`Sıfır veya daha fazla karakterle eşleştirmek ve `?` sıfır veya tek karakterle eşleştirmek için kullanın. [Bu bölümün](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_)altındaki notlardan sözdizimi ve notlar hakkında  daha fazla bilgi edinin. | Hayır                                                          |
 | Seçenek 3: istemci tarafı filtresi<br>-Yavaya Cardfolderpath | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. ADF tarafında bu tür bir filtre olur, ADF verilen yolun altındaki klasörleri/dosyaları numaralandırın ve sonra joker karakter filtresini uygulayın.<br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Hayır                                            |
-| Seçenek 3: istemci tarafı filtresi<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. ADF tarafında bu tür bir filtre olur, ADF verilen yolun altındaki dosyaları numaralandırın ve sonra joker karakter filtresini uygulayın.<br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.<br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Evet |
+| Seçenek 3: istemci tarafı filtresi<br>-Yavaya Cardfilename | Kaynak dosyalarını filtrelemek için, belirtilen folderPath/, Cardfolderpath altındaki joker karakterlerle dosya adı. ADF tarafında bu tür bir filtre olur, ADF verilen yolun altındaki dosyaları numaralandırın ve sonra joker karakter filtresini uygulayın.<br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek dosya adınızın joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.<br>[Klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek görüntüleyin. | Evet |
 | Seçenek 3: dosya listesi<br>-fileListPath | Belirli bir dosya kümesinin kopyalanıp ayrılmadığını gösterir. Veri kümesinde yapılandırılan yolun göreli yolu olan, kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin.<br/>Bu seçeneği kullanırken, veri kümesinde dosya adı belirtmeyin. [Dosya listesi örneklerinde](#file-list-examples)daha fazla örneğe bakın. |Hayır |
 | ***Ek ayarlar:** _ |  | |
 | öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri true olarak ayarlandığında ve havuz dosya tabanlı bir depo olduğunda, havuzda boş bir klasör veya alt klasör kopyalanmadığını veya oluşturulamadığına unutmayın. <br>İzin verilen değerler _ *true** (varsayılan) ve **false** şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |

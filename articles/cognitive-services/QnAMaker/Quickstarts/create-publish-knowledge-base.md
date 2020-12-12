@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: efe1b212ab45da3cddc038957f83991defd65e41
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937738"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347545"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -48,7 +48,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
-    |**+ URL Ekle**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ URL Ekle**|`https://www.microsoft.com/software-download/faq`|
     |**Günlük konuşma**|**Profesyonel** seçin|
 
 7. **5. adımda**, **KB 'nizi oluştur**' u seçin.
@@ -83,7 +83,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
-    |**+ URL Ekle**|`https://azure.microsoft.com/en-us/support/faq/`|
+    |**+ Dosya Ekle**| Surface dizüstü el ile ' ' adresinden indir https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf 
     |**Günlük konuşma**|**Profesyonel** seçin|
 
 8. **5. adımda**, **KB 'nizi oluştur**' u seçin.
@@ -122,9 +122,9 @@ Düzenlemelerinizi kaydetmek ve Soru-Cevap Oluşturma eğitmeniz için sağ üst
 1. Soru-Cevap Oluşturma portalında, sağ üst köşedeki **Test** ' i seçerek yaptığınız değişikliklerin etkili olduğunu test edin.
 2. Metin kutusuna bir örnek Kullanıcı sorgusu girin.
 
-    `How many Azure services are used by a knowledge base?`
+    `I want to know the difference between 32 bit and 64 bit Windows`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Metin kutusuna bir örnek Kullanıcı sorgusu girin.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/query-dialogue.png" alt-text="Metin kutusuna bir örnek Kullanıcı sorgusu girin.":::
 
 3. Yanıtı daha ayrıntılı bir şekilde incelemek için **Inspect** (Denetle) öğesini seçin. Bilgi tabanınızı yayımlamadan önce Bilgi Bankası 'nda yaptığınız değişiklikleri test etmek için test penceresi kullanılır.
 

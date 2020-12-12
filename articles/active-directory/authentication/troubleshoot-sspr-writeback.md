@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a3044127aacb5910a270d40d94d3255031a71a2
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 4d6bf4df1499d919cead0a184054e5ba0db9c06e
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741312"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346609"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Azure Active Directory içinde self servis parola sıfırlama geri yazma sorunlarını giderme
 
@@ -42,6 +42,11 @@ Azure AD Connect Version *1.1.443.0* ve üzeri için, *giden https* erişimi aş
 
 * *\*. passwordreset.microsoftonline.com*
 * *\*. servicebus.windows.net*
+
+Azure [gov uç noktaları](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure#guidance-for-developers):
+
+* *\*. passwordreset.microsoftonline.us*
+* *\*. servicebus.usgovcloudapi.net*
 
 Daha fazla ayrıntı düzeyi gerekiyorsa [Microsoft Azure veri MERKEZI IP aralıkları listesine](https://www.microsoft.com/download/details.aspx?id=41653)bakın. Bu liste her Çarşamba güncellenir ve sonraki Pazartesi devreye girer.
 
@@ -101,7 +106,7 @@ Azure AD Connect sunucusunun en son sürümünü yüklemek sorununuzu gidermezse
 
 Azure AD Connect parola geri yazma işlemini gerçekleştirmek için **parola sıfırlama** izninin AD DS gerekir. Azure AD Connect belirli bir şirket içi AD DS kullanıcı hesabı için gerekli izinlere sahip olup olmadığını denetlemek için **Windows etkin izin** özelliğini kullanın:
 
-1. Azure AD Connect sunucusunda oturum açın ve **Synchronization Service Manager** **Start**  >  **eşitleme hizmetini** Başlat ' a tıklayarak Synchronization Service Manager başlatın.
+1. Azure AD Connect sunucusunda oturum açın ve    >  **eşitleme hizmetini** Başlat ' a tıklayarak Synchronization Service Manager başlatın.
 1. **Bağlayıcılar** sekmesinde şirket içi **Active Directory Domain Services** Bağlayıcısı ' nı seçin ve ardından **Özellikler**' i seçin.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Özelliklerin nasıl düzenleneceğini gösteren Synchronization Service Manager" border="false":::

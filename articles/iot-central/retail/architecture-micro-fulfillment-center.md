@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: b0d030240ebe22886826b7a25bd5ca7b8f54e358
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a0d91677770e89f3e249fc699057332cccaa323
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000430"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347481"
 ---
 # <a name="micro-fulfillment-center-architecture"></a>Mikro-karşılama merkezi mimarisi
 
@@ -22,11 +22,11 @@ Mikro Karşılama Merkezi çözümleri, güvenlik ve genel verimliliği artırar
 
 ![Azure IoT Central Mağazası Analizi](./media/architecture/micro-fulfillment-center-architecture-frame.png)
 
-- Bir ağ geçidi cihazına telemetri verileri gönderen IoT sensörleri kümesi
-- IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
-- İşleme için istenen Azure hizmetine sürekli veri aktarma
-- Veriler istenen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
-- İş uygulamaları, verileri sorgulayabilir ve Power Retail işlemleri ile ilgili öngörüler oluşturabilir
+1. Bir ağ geçidi cihazına telemetri verileri gönderen IoT sensörleri kümesi
+2. IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
+3. İşleme için istenen Azure hizmetine sürekli veri aktarma
+4. Veriler istenen biçimde yapılandırılabilir ve bir depolama hizmetine gönderilebilir
+5. İş uygulamaları, verileri sorgulayabilir ve Power Retail işlemleri ile ilgili öngörüler oluşturabilir
  
 Genellikle, mikro Karşılama Merkezi çözümünde bir bölümü oynatacak anahtar bileşenlere göz atalım.
 

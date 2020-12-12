@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: 0206c111be7cd6441d9de32af498e961833d214f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 398441123d5ad309d9c2d506a75b80b58a6d56d0
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980701"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346223"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-connected-logistics-application-template"></a>Öğretici: bağlı bir lojistik uygulama şablonunu dağıtma ve gözden geçir
 
@@ -41,9 +41,9 @@ Aşağıdaki adımları kullanarak uygulamayı oluşturun:
 
     :::image type="content" source="media/tutorial-iot-central-connected-logistics/iotc-retail-homepage.png" alt-text="Bağlı lojistik şablonu":::
 
-2. **Bağlı lojistik uygulaması**altında **uygulama oluştur** ' u seçin.
+1. **Bağlı lojistik uygulaması** altında **uygulama oluştur** ' u seçin.
 
-3. **Uygulama oluştur** **Yeni uygulama** formunu açar. Şu ayrıntıları girin:
+1. **Uygulama oluştur** **Yeni uygulama** formunu açar. Şu ayrıntıları girin:
 
 
     * **Uygulama adı**: varsayılan önerilen adı kullanabilir veya kolay uygulamanızın adını girebilirsiniz.
@@ -51,9 +51,9 @@ Aşağıdaki adımları kullanarak uygulamayı oluşturun:
     * **Fatura bilgileri**: kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
     * **Oluştur**: uygulamanızı dağıtmak için sayfanın alt kısmındaki Oluştur ' u seçin.
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Bağlı lojistik şablonu":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create.png" alt-text="Bağlı lojistik uygulama şablonu":::
 
-    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Bağlı lojistik şablonu":::
+    :::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-app-create-billinginfo.png" alt-text="Bağlı lojistik faturalandırma bilgileri":::
 
 ## <a name="walk-through-the-application"></a>Uygulamayı gözden geçir
 
@@ -81,13 +81,13 @@ Pano iki farklı ağ geçidi cihaz yönetimi işlemini mümkün bir şekilde sun
 * Kamyonun sevkıyatları için lojistik rotalarını ve okyanus sevkiyatlarının konum ayrıntılarını görüntüleyin.
 * Ağ Geçidi durumunu ve diğer ilgili bilgileri görüntüleyin.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard1.png" alt-text="Bağlı lojistik panosu":::
 
 * Toplam ağ geçidi sayısını, etkin ve bilinmeyen etiketleri izleyebilirsiniz.
 * Cihaz yönetimi işlemlerini şu şekilde yapabilirsiniz: üretici yazılımını güncelleştirme, algılayıcıları devre dışı bırakma ve etkinleştirme, bir algılayıcı eşiğini güncelleştirme, telemetri aralıklarını güncelleştirme ve cihaz hizmeti sözleşmelerini güncelleştirme.
 * Cihaz pili tüketimini görüntüleyin.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-dashboard2.png" alt-text="Bağlı lojistik Pano durumu":::
 
 #### <a name="device-template"></a>Cihaz şablonu
 
@@ -95,11 +95,11 @@ Ağ Geçidi yetenek modelini görmek için **cihaz şablonları** ' nı seçin. 
 
 **Ağ geçidi telemetrisi & özelliği** -bu arabirim sensörler, konum ve cihaz bilgileriyle ilgili tüm telemetrileri tanımlar. Arabirim Ayrıca, algılayıcı eşikleri ve güncelleştirme aralıkları gibi cihaz ikizi Özellik özelliklerini de tanımlar.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate1.png" alt-text="Telemetri ve özellik arabirimi":::
 
 **Ağ geçidi komutları** -bu arabirim tüm ağ geçidi komut yeteneklerini düzenler:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-devicetemplate2.png" alt-text="Ağ Geçidi komutları arabirimi":::
 
 ### <a name="rules"></a>Kurallar
 
@@ -109,13 +109,13 @@ Bu uygulama şablonundaki kuralların **kurallar** sekmesini seçin. Bu kurallar
 
 **Yanıt vermeyen Ağ Geçidi**: Bu kural, ağ geçidi, uzun süreli bir süre için buluta rapor vermezse tetiklenir. Düşük pil, bağlantı kaybı veya cihaz bozulması nedeniyle ağ geçidi yanıt vermemeye başladı.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-rules.png" alt-text="Kural tanımları":::
 
 ### <a name="jobs"></a>İşler
 
 Bu uygulamadaki işleri görmek için **işler** sekmesini seçin:
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-jobs.png" alt-text="Çalıştırılacak işler":::
 
 İşleri uygulama genelinde işlemler yapmak için kullanabilirsiniz. Bu uygulamadaki işler, tüm ağ geçitlerinde belirli algılayıcıları devre dışı bırakma veya yükleme moduna ve rotaya göre algılayıcı eşiğini değiştirme gibi görevleri yapmak için cihaz komutlarını ve ikizi yeteneklerini kullanır:
 
@@ -127,7 +127,7 @@ Bu uygulamadaki işleri görmek için **işler** sekmesini seçin:
 
 Bu uygulamayı kullanmaya devam edemeyecekiniz, **Yönetim**  >  **uygulaması ayarlarını** ziyaret ederek uygulama şablonunu silin ve **Sil**' i seçin.
 
-:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Bağlı lojistik şablonu":::
+:::image type="content" source="media/tutorial-iot-central-connected-logistics/connected-logistics-cleanup.png" alt-text="Şablon Temizleme":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * Şu konular hakkında daha fazla bilgi edinin: 

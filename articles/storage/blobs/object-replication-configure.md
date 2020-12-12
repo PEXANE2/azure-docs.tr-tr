@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: e3503a9eef5c11db35684ca61fb1ee39525a465d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 9f2b0dccde0532646457a0841fc2798e103d8cc7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427607"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347957"
 ---
 # <a name="configure-object-replication-for-block-blobs"></a>Blok Blobları için nesne çoğaltmasını yapılandırma
 
@@ -52,8 +52,8 @@ Azure portal, ilkeyi hedef hesap için yapılandırdıktan sonra kaynak hesapta 
 Azure portal bir çoğaltma ilkesi oluşturmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
-1. **BLOB hizmeti** altında, **nesne çoğaltma** ' yı seçin.
-1. **Çoğaltma kurallarını ayarla** ' yı seçin.
+1. **BLOB hizmeti** altında, **nesne çoğaltma**' yı seçin.
+1. **Çoğaltma kurallarını ayarla**' yı seçin.
 1. Hedef aboneliği ve depolama hesabını seçin.
 1. **Kapsayıcı çiftleri** bölümünde, kaynak hesaptan kaynak kapsayıcısını ve hedef hesaptan bir hedef kapsayıcıyı seçin. Çoğaltma İlkesi başına en fazla 10 kapsayıcı çifti oluşturabilirsiniz.
 
@@ -281,7 +281,7 @@ Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılan
     Çoğaltma ilkesini tanımlayan bir JSON dosyası oluşturmanın kolay bir yolu, öncelikle Azure portal iki depolama hesabı arasında bir test çoğaltma ilkesi oluşturmaktır. Daha sonra çoğaltma kurallarını indirebilir ve JSON dosyasını gerektiği gibi değiştirebilirsiniz.
 
 1. Azure portal hedef hesabın **nesne çoğaltma** ayarları ' na gidin.
-1. **Çoğaltma kurallarını karşıya yükle** ' yi seçin.
+1. **Çoğaltma kurallarını karşıya yükle**' yi seçin.
 1. JSON dosyasını karşıya yükleyin. Azure portal, aşağıdaki görüntüde gösterildiği gibi, oluşturulacak ilke ve kuralları görüntüler.
 
     :::image type="content" source="media/object-replication-configure/replication-rules-upload-portal.png" alt-text="Çoğaltma İlkesi tanımlamak için bir JSON dosyasının nasıl karşıya yükleneceğini gösteren ekran görüntüsü":::
@@ -291,7 +291,7 @@ Hedef hesapta nesne çoğaltmasını Azure portal bir JSON dosyası ile yapılan
 Daha sonra kaynak hesabı yapılandırmak için başka bir kullanıcıya sağlayabileceğiniz ilke tanımını içeren bir JSON dosyası indirebilirsiniz. Bu JSON dosyasını indirmek için şu adımları izleyin:
 
 1. Azure portal hedef hesabın **nesne çoğaltma** ayarları ' na gidin.
-1. İndirmek istediğiniz ilkenin yanındaki **daha fazla** düğmesini seçin, ardından aşağıdaki görüntüde gösterildiği gibi, **kuralları indir** ' i seçin.
+1. İndirmek istediğiniz ilkenin yanındaki **daha fazla** düğmesini seçin, ardından aşağıdaki görüntüde gösterildiği gibi, **kuralları indir**' i seçin.
 
     :::image type="content" source="media/object-replication-configure/replication-rules-download-portal.png" alt-text="Çoğaltma kurallarının bir JSON dosyasına nasıl indirileceği gösteren ekran görüntüsü":::
 
@@ -314,7 +314,7 @@ $destPolicy = Get-AzStorageObjectReplicationPolicy -ResourceGroupName $rgname `
 $destPolicy | ConvertTo-Json -Depth 5 > c:\temp\json.txt
 ```
 
-Kaynak hesapta PowerShell ile çoğaltma ilkesini yapılandırmak üzere JSON dosyasını kullanmak için yerel dosyayı alın ve JSON 'dan bir nesneye dönüştürün. Ardından, aşağıdaki örnekte gösterildiği gibi, ilkeyi kaynak hesapta yapılandırmak için [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) komutunu çağırın. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
+Kaynak hesapta PowerShell ile çoğaltma ilkesini tanımlamak için JSON dosyasını kullanmak için yerel dosyayı alın ve JSON 'dan bir nesneye dönüştürün. Ardından, aşağıdaki örnekte gösterildiği gibi, ilkeyi kaynak hesapta yapılandırmak için [set-AzStorageObjectReplicationPolicy](/powershell/module/az.storage/set-azstorageobjectreplicationpolicy) komutunu çağırın. Açılı ayraçlar ve dosya yolundaki değerleri kendi değerlerinizle değiştirmeyi unutmayın:
 
 ```powershell
 $object = Get-Content -Path C:\temp\json.txt | ConvertFrom-Json
@@ -407,9 +407,9 @@ Bir çoğaltma ilkesini ve ilişkili kurallarını kaldırmak için Azure portal
 Azure portal bir çoğaltma ilkesini kaldırmak için şu adımları izleyin:
 
 1. Azure portal kaynak depolama hesabına gidin.
-1. **Ayarlar** altında, **nesne çoğaltma** ' yı seçin.
+1. **Ayarlar** altında, **nesne çoğaltma**' yı seçin.
 1. İlke adının yanındaki **diğer** düğmesine tıklayın.
-1. **Kuralları Sil** ' i seçin.
+1. **Kuralları Sil**' i seçin.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

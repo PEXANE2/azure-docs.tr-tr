@@ -4,16 +4,16 @@ description: Azure Kubernetes Service (AKS) ' de sürdürülebilirlik yazılım 
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984977"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346903"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içinde sürdürülebilir Yazılım Mühendisliği ilkeleri
 
-Sürdürülebilir Yazılım Mühendisliği ilkeleri, sürdürülebilir uygulamalar tanımlamanıza, oluşturmanıza ve çalıştırmanıza yardımcı olan bir uzmanlık kümesidir. Genel amaç, uygulamanızın her yönüyle karbon izi azaltmaktır. [İlkeler. yeşil proje][principles-green] , sürdürülebilirlik yazılım mühendisliğinin ilkelerine genel bir bakış içerir.
+Sürdürülebilir Yazılım Mühendisliği ilkeleri, sürdürülebilir uygulamalar tanımlamanıza, oluşturmanıza ve çalıştırmanıza yardımcı olan bir uzmanlık kümesidir. Genel amaç, uygulamanızın her yönüyle karbon izi azaltmaktır. [Sürdürülebilirlik yazılım mühendisliğinin ilkeleri][principles-sse] , sürdürülebilir yazılım mühendisliğinin ilkelerine genel bakış içerir.
 
 Yazılım mühendisliğinin, önceliklerin ve odaklanmanın bir vardiyası olduğunu anlamak için önemli bir fikir. Çoğu durumda, yazılım, hızlı performans ve düşük gecikme süresine odaklanan bir biçimde tasarlanır ve çalışır. Sürdürülebilir Yazılım Mühendisliği, mümkün olduğunca fazla bilgi azaltmada odaklanır. Bazı durumlarda, sürdürülebilir Yazılım Mühendisliği ilkelerini uygulamak, toplam ağ yolculuğu gibi daha hızlı performans veya daha düşük gecikme süresi sağlayabilir. Diğer durumlarda, bilgi azaltma düşük öncelikli iş yüklerini erteleyerek daha yavaş performans veya daha fazla gecikme süresine neden olabilir. Uygulamanıza sürdürülebilir Yazılım Mühendisliği ilkeleri uygulamayı düşünmeden önce, uygulamanızın önceliklerini, ihtiyaçlarını ve dengeliğini gözden geçirin.
 
@@ -32,7 +32,7 @@ Kümenizin kullanımını inceledikten sonra, [birden çok düğüm havuzu][mult
 
 Kullanım artırma, [her düğümdeki kaynak ayırmaları][resource-reservations]tarafından tüketilen enerji miktarını azaltan fazla düğümleri de azaltabilir.
 
-Ayrıca, uygulamalarınızın Kubernetes bildirimlerinde CPU ve bellek *isteklerini* ve *sınırlarını* gözden geçirin. Bellek ve CPU için bu değerleri düşürdükçe, diğer iş yüklerini çalıştırmak için kümede daha fazla bellek ve CPU vardır. Daha düşük CPU ve bellekle daha fazla iş yükü çalıştırırken, kümeniz daha seyrek bir şekilde ayrılmış hale gelir ve bu da kullanımınızı artırır. Uygulamalarınız için CPU ve bellek azaltıldığında, bu değerleri çok düşük olarak ayarlarsanız uygulamalarınızın davranışı azaltılabilir veya kararsız hale gelebilir. CPU ve bellek *isteklerini* ve *sınırlarını*değiştirmeden önce, bu değerlerin uygun şekilde ayarlanmış olup olmadığını anlamak için bazı benchsýnamalar çalıştırmayı göz önünde bulundurun. Ayrıca, uygulamanız kararsız hale geldiğinde bu değerleri hiçbir zaman noktaya azaltmayın.
+Ayrıca, uygulamalarınızın Kubernetes bildirimlerinde CPU ve bellek *isteklerini* ve *sınırlarını* gözden geçirin. Bellek ve CPU için bu değerleri düşürdükçe, diğer iş yüklerini çalıştırmak için kümede daha fazla bellek ve CPU vardır. Daha düşük CPU ve bellekle daha fazla iş yükü çalıştırırken, kümeniz daha seyrek bir şekilde ayrılmış hale gelir ve bu da kullanımınızı artırır. Uygulamalarınız için CPU ve bellek azaltıldığında, bu değerleri çok düşük olarak ayarlarsanız uygulamalarınızın davranışı azaltılabilir veya kararsız hale gelebilir. CPU ve bellek *isteklerini* ve *sınırlarını* değiştirmeden önce, bu değerlerin uygun şekilde ayarlanmış olup olmadığını anlamak için bazı benchsýnamalar çalıştırmayı göz önünde bulundurun. Ayrıca, uygulamanız kararsız hale geldiğinde bu değerleri hiçbir zaman noktaya azaltmayın.
 
 ## <a name="reduce-network-travel"></a>Ağ yolculuğu azaltma
 
@@ -74,4 +74,4 @@ Bu makalede bahsedilen AKS özellikleri hakkında daha fazla bilgi edinin:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

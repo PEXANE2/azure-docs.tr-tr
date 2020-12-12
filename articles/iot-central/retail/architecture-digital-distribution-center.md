@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
-ms.openlocfilehash: b73d065b43aff5f9793e642a102ff8bb2a7be036
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2e6993cd8dc77ccb9b43a3d5aef7b25fd9d7250
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81000451"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347124"
 ---
 # <a name="architecture-of-iot-central-digital-distribution-center-application-template"></a>IoT Central Digital Distribution Center uygulama şablonu mimarisi
 
@@ -26,7 +26,7 @@ ms.locfileid: "81000451"
 1. Bir ağ geçidi cihazına telemetri verileri gönderen IoT sensörleri kümesi
 2. IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
 3. Veriler, işleme için istenen Azure hizmetine yönlendirilir
-4. ASA veya Azure Işlevleri gibi Azure Hizmetleri, veri akışlarını yeniden biçimlendirmek ve istenen depolama hesaplarına göndermek için kullanılabilir 
+4. ASA veya Azure Işlevleri gibi Azure Hizmetleri, veri akışlarını yeniden biçimlendirmek ve istenen depolama hesaplarına göndermek için kullanılabilir
 5. İşlenen veriler, ML veya Batch analizine dayalı ek Öngörüler için neredeyse gerçek zamanlı eylemler veya soğuk depolama için sık erişimli depolama alanında depolanır. 
 6. Logic Apps, son kullanıcı iş uygulamalarında çeşitli iş iş akışlarını desteklemek için kullanılabilir
 

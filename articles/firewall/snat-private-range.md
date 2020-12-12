@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 858343b6c5081b52d9e93909f9d52eaccd88a584
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660279"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348042"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Güvenlik Duvarı SNAT özel IP adresi aralıkları
 
@@ -35,9 +35,22 @@ Güvenlik Duvarı için özel IP adresi aralıklarını belirtmek üzere Azure P
 
 ### <a name="new-firewall"></a>Yeni güvenlik duvarı
 
-Yeni bir güvenlik duvarı için Azure PowerShell komutu şu şekilde olur:
+Yeni bir güvenlik duvarı için Azure PowerShell cmdlet 'i şunlardır:
 
-`New-AzFirewall -Name $GatewayName -ResourceGroupName $RG -Location $Location -VirtualNetworkName $vnet.Name -PublicIpName $LBPip.Name -PrivateRange @("IANAPrivateRanges","IPRange1", "IPRange2")`
+```azurepowershell
+$azFw = @{
+    Name               = '<fw-name>'
+    ResourceGroupName  = '<resourcegroup-name>'
+    Location           = '<location>'
+    VirtualNetworkName = '<vnet-name>'
+    PublicIpName       = '<public-ip-name>'
+    PrivateRange       = @("IANAPrivateRanges", "192.168.1.0/24", "192.168.1.10")
+}
+
+New-AzFirewall @azFw
+```
+> [!NOTE]
+> Kullanarak Azure Güvenlik Duvarı dağıtmak `New-AzFirewall` , mevcut bir VNET ve genel IP adresi gerektirir. Tam dağıtım kılavuzu için [Azure PowerShell kullanarak Azure Güvenlik Duvarı dağıtma ve yapılandırma](deploy-ps.md) konusuna bakın.
 
 > [!NOTE]
 > IANAPrivateRanges, diğer aralıklar buna eklenirken Azure Güvenlik duvarında geçerli varsayılan değerlere genişletilir. Özel Aralık belirtimde IANAPrivateRanges varsayılan kalmasını sağlamak için, `PrivateRange` Aşağıdaki örneklerde gösterildiği gibi belirtimde kalması gerekir.
@@ -46,22 +59,54 @@ Daha fazla bilgi için bkz. [New-AzFirewall](/powershell/module/az.network/new-a
 
 ### <a name="existing-firewall"></a>Mevcut güvenlik duvarı
 
-Mevcut bir güvenlik duvarını yapılandırmak için aşağıdaki Azure PowerShell komutları kullanın:
+Mevcut bir güvenlik duvarını yapılandırmak için aşağıdaki Azure PowerShell cmdlet 'lerini kullanın:
 
 ```azurepowershell
-$azfw = Get-AzFirewall -ResourceGroupName "Firewall Resource Group name"
-$azfw.PrivateRange = @("IANAPrivateRanges","IPRange1", "IPRange2")
+$azfw = Get-AzFirewall -Name '<fw-name>' -ResourceGroupName '<resourcegroup-name>'
+$azfw.PrivateRange = @("IANAPrivateRanges","192.168.1.0/24", "192.168.1.10")
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
-### <a name="templates"></a>Şablonlar
+## <a name="configure-snat-private-ip-address-ranges---azure-cli"></a>SNAT özel IP adresi aralıklarını Yapılandırma-Azure CLı
 
-Bölümüne aşağıdakileri ekleyebilirsiniz `additionalProperties` :
+Güvenlik Duvarı için özel IP adresi aralıklarını belirtmek üzere Azure CLı kullanabilirsiniz.
 
+### <a name="new-firewall"></a>Yeni güvenlik duvarı
+
+Yeni bir güvenlik duvarı için, Azure CLı komutu şu şekilde olur:
+
+```azurecli-interactive
+az network firewall create \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
 ```
+
+> [!NOTE]
+> Azure CLı komutunu kullanarak Azure Güvenlik Duvarı 'Nı dağıtmak `az network firewall create` , genel IP adresleri ve IP yapılandırması oluşturmak için ek yapılandırma adımları gerektirir. Tam dağıtım kılavuzu için bkz. [Azure CLI kullanarak Azure Güvenlik duvarını dağıtma ve yapılandırma](deploy-cli.md) .
+
+> [!NOTE]
+> IANAPrivateRanges, diğer aralıklar buna eklenirken Azure Güvenlik duvarında geçerli varsayılan değerlere genişletilir. Özel Aralık belirtimde IANAPrivateRanges varsayılan kalmasını sağlamak için, `PrivateRange` Aşağıdaki örneklerde gösterildiği gibi belirtimde kalması gerekir.
+
+### <a name="existing-firewall"></a>Mevcut güvenlik duvarı
+
+Mevcut bir güvenlik duvarını yapılandırmak için, Azure CLı komutu şu şekilde olur:
+
+```azurecli-interactive
+az network firewall update \
+-n <fw-name> \
+-g <resourcegroup-name> \
+--private-ranges 192.168.1.0/24 192.168.1.10 IANAPrivateRanges
+```
+
+## <a name="configure-snat-private-ip-address-ranges---arm-template"></a>SNAT özel IP adresi aralıklarını yapılandırma-ARM şablonu
+
+ARM Şablon dağıtımı sırasında SNAT 'yi yapılandırmak için, özelliğine aşağıdakileri ekleyebilirsiniz `additionalProperties` :
+
+```json
 "additionalProperties": {
-                    "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
-                },
+   "Network.SNAT.PrivateRanges": "IANAPrivateRanges , IPRange1, IPRange2"
+},
 ```
 
 ## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>SNAT özel IP adresi aralıklarını Yapılandırma-Azure portal

@@ -4,12 +4,12 @@ description: Bu makalede, Azure Izleyici 'de kapsayıcılar için kubectl kullan
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: a97d7ed5fe513798f4265498f4efa60098ea15c6
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920719"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346840"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Kubernetes günlüklerini, olayları ve pod ölçümlerini gerçek zamanlı olarak görüntüleme
 
@@ -35,7 +35,7 @@ Kapsayıcılar için Azure Izleyici tarafından izlenmeyen AKS kümelerinin bir 
 
 5. Canlı verilerin toplanmasını başlatmak için bir pod seçin.
 
-    ![Canlı dağıtım günlükleri](./media/container-insights-livedata-overview/live-data-deployment.png)
+    [![Canlı dağıtım günlükleri](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>Günlükleri görüntüleme
 
@@ -112,11 +112,17 @@ Canlı veriler (Önizleme) özelliği, arama işlevlerini içerir. **Arama** ala
 
 ![Canlı veri konsol bölmesi filtre örneği](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
 
+![Dağıtım için canlı veri konsol bölmesi filtresi örneği](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
 ### <a name="scroll-lock-and-pause"></a>Scroll Lock ve Duraklat
 
 Otomatik kaydırmayı askıya almak ve bölmenin davranışını denetlemek için, yeni verileri okuma bölümünde el ile kaydırabilmenizi sağlayan **kaydırma** seçeneğini kullanabilirsiniz. Otomatik kaydırmayı yeniden etkinleştirmek için **kaydırma** seçeneğini tekrar seçmeniz yeterlidir. Ayrıca, **Duraklat** seçeneğini belirleyerek günlük veya olay verilerinin alınmasını da duraklatabilirsiniz ve devam etmek Için hazırsanız **oynat**' ı seçmeniz yeterlidir.
 
 ![Canlı veri konsol bölmesi canlı görünümü Duraklat](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![Canlı veri konsol bölmesi dağıtım için canlı görünümü Duraklat](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
 
 >[!IMPORTANT]
 >Bir sorunu giderirken kısa bir süre boyunca yalnızca otomatik kaydırma askıya alıp duraklamasını öneririz. Bu istekler, kümenizde Kubernetes API 'sinin kullanılabilirliğini ve azaltmasını etkileyebilir.

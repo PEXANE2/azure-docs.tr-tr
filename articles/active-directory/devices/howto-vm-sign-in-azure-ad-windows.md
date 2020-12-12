@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837133"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347447"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -157,6 +157,9 @@ VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
 - Azure AD Portal deneyimini kullanma
 - Azure Cloud Shell deneyimini kullanma
 
+> [!NOTE]
+> Sanal Makine Yöneticisi oturum açma ve sanal makine Kullanıcı oturum açma rolleri dataActions kullanır ve bu nedenle yönetim grubu kapsamında atanamaz. Şu anda bu roller yalnızca abonelik kapsamında atanabilir.
+
 ### <a name="using-azure-ad-portal-experience"></a>Azure AD Portal deneyimini kullanma
 
 Azure AD özellikli Windows Server 2019 Datacenter VM 'leriniz için rol atamalarını yapılandırmak için:
@@ -177,8 +180,8 @@ Birkaç dakika sonra, güvenlik sorumlusu seçili kapsamda role atanır.
 Aşağıdaki örnek, geçerli Azure kullanıcılarınız için sanal makine Yöneticisi oturum açma rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve kapsam, [az VM Show](/cli/azure/vm#az-vm-show)ile ÖNCEKI bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal Azure RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [Azure 'da Azure Active Directory kimlik doğrulaması kullanarak bir Linux sanal makinesinde oturum açma](../../virtual-machines/linux/login-using-aad.md).
 
 ```   AzureCLI
-username=$(az account show --query user.name --output tsv)
-vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
+$username=$(az account show --query user.name --output tsv)
+$vm=$(az vm show --resource-group myResourceGroup --name myVM --query id -o tsv)
 
 az role assignment create \
     --role "Virtual Machine Administrator Login" \

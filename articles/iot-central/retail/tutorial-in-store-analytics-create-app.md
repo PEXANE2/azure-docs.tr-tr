@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: a15ccd6d67b4819ba5dd6233a2a001015037c404
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: fc8928c9f64e323aafb29c9b1e717cc5c2ab6691
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165681"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346716"
 ---
 # <a name="tutorial-create-an-in-store-analytics-application-in-azure-iot-central"></a>Öğretici: Azure 'da bir mağaza Analytics uygulaması oluşturma IoT Central
 
@@ -34,7 +34,7 @@ Kullanıma alma ve koşul izleme çözümünü üç bölümde geliştirebilirsin
 * Operatörlerin cihazları izlemesini ve yönetmesini sağlamak için panoyu özelleştirme
 * Mağaza yöneticilerinin analiz çalıştırmasını ve öngörüleri görselleştirmesini sağlamak için veri vermeyi yapılandırma
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 > * Azure IoT Central **Mağaza içi analiz-kullanıma alma** şablonunu kullanarak bir perakende mağaza uygulaması oluşturun
 > * Uygulama ayarlarını özelleştirme
@@ -68,12 +68,12 @@ Yeni bir mağaza Analytics kullanıma alma uygulaması oluşturmak için:
 
 1. **Mağaza içi analiz-kullanıma alma** uygulama şablonunu seçin. Bu şablon, RuuviTag algılayıcı haricinde öğreticide kullanılan tüm cihazların cihaz şablonlarını içerir. Şablon Ayrıca, kullanıma alma ve çevre koşullarını ve cihaz durumunu izlemek için bir operatör panosu sağlar. 
 
-1. İsteğe bağlı olarak, kolay bir **uygulama adı**seçin. Bu uygulama, contoso adlı kurgusal bir perakende mağazayı temel alır. Öğretici, *contoso kullanıma alma* **uygulama adını** kullanır. Uygulama şablonu kurgusal şirket Northwind ' i temel alır. Bu öğreticide, uygulamayı özelleştirmeyi öğrenmek için Contoso 'yu kullanırsınız.
+1. İsteğe bağlı olarak, kolay bir **uygulama adı** seçin. Bu uygulama, contoso adlı kurgusal bir perakende mağazayı temel alır. Öğretici, *contoso kullanıma alma* **uygulama adını** kullanır. Uygulama şablonu kurgusal şirket Northwind ' i temel alır. Bu öğreticide, uygulamayı özelleştirmeyi öğrenmek için Contoso 'yu kullanırsınız.
 
     > [!NOTE]
-    > Kolay bir **uygulama adı**kullanırsanız, uygulama **URL 'si**için yine de benzersiz bir değer kullanmanız gerekir.
+    > Kolay bir **uygulama adı** kullanırsanız, uygulama **URL 'si** için yine de benzersiz bir değer kullanmanız gerekir.
 
-1. Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi*girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
+1. Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi* girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
     Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central.md).
 
@@ -93,7 +93,7 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
     ![Azure IoT Central uygulama ayarları](./media/tutorial-in-store-analytics-create-app/settings-icon.png)
 
-2. Yeni bir **Tema**seçin.
+2. Yeni bir **Tema** seçin.
 
 3. **Kaydet**’i seçin.
 
@@ -107,11 +107,11 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 
 1. **Uygulamanızı özelleştirmek > yönetim**' i seçin.
 
-1. **Uygulama logosu**olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın. İsteğe bağlı olarak, **logo alt metni**için bir değer belirtin. 
+1. **Uygulama logosu** olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın. İsteğe bağlı olarak, **logo alt metni** için bir değer belirtin. 
 
 1. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini kullanın.
 
-1. İsteğe bağlı olarak, varsayılan **tarayıcı RENKLERINI** HTML onaltılık renk kodları ekleyerek değiştirin. **Üst bilgi**için *#008575*ekleyin.  **Vurgu**için *#A1F3EA*ekleyin. 
+1. İsteğe bağlı olarak, varsayılan **tarayıcı RENKLERINI** HTML onaltılık renk kodları ekleyerek değiştirin. **Üst bilgi** için *#008575* ekleyin.  **Vurgu** için *#A1F3EA* ekleyin. 
 
 1. **Kaydet**’i seçin. 
 
@@ -177,7 +177,7 @@ RuuviTag cihaz şablonunun yerleşik arabirimlerini özelleştirmek için:
 
 1. RuuviTag cihaz şablonu menüsünde **Özelleştir** ' i seçin. 
 
-1. Özellik listesinde kaydırma yapın ve `humidity` telemetri türünü bulun. Bu, düzenlenebilir **görünen ad** değeri *nem*olan satır öğesidir.
+1. Özellik listesinde kaydırma yapın ve `humidity` telemetri türünü bulun. Bu, düzenlenebilir **görünen ad** değeri *nem* olan satır öğesidir.
 
 Aşağıdaki adımlarda, `humidity` RuuviTag algılayıcılar için telemetri türünü özelleştirirsiniz. İsteğe bağlı olarak, diğer telemetri türlerinden bazılarını özelleştirin.
 
@@ -185,9 +185,9 @@ Aşağıdaki adımlarda, `humidity` RuuviTag algılayıcılar için telemetri t�
 
 1. Satır için şema ayrıntılarını genişletmek üzere **genişletme** denetimini seçin.
 
-1. **Görünen ad** değerini *nem* 'ten *bağıl nem*gibi özel bir değere güncelleştirin.
+1. **Görünen ad** değerini *nem* 'ten *bağıl nem* gibi özel bir değere güncelleştirin.
 
-1. **Anlamsal tür** seçeneğini *none* iken *nem*olarak değiştirin.  İsteğe bağlı olarak, genişletilmiş şema görünümünde nem telemetri türü için şema değerlerini ayarlayın. Şema ayarları, sensörlerinizin izlediğiniz veriler için ayrıntılı doğrulama gereksinimleri oluşturmanıza imkan tanır. Örneğin, belirli bir arabirim için en düşük ve en yüksek işletim aralığı değerlerini ayarlayabilirsiniz.
+1. **Anlamsal tür** seçeneğini *none* iken *nem* olarak değiştirin.  İsteğe bağlı olarak, genişletilmiş şema görünümünde nem telemetri türü için şema değerlerini ayarlayın. Şema ayarları, sensörlerinizin izlediğiniz veriler için ayrıntılı doğrulama gereksinimleri oluşturmanıza imkan tanır. Örneğin, belirli bir arabirim için en düşük ve en yüksek işletim aralığı değerlerini ayarlayabilirsiniz.
 
 1. Değişikliklerinizi kaydetmek için **Kaydet** seçeneğini belirleyin.
 
@@ -201,13 +201,13 @@ Uygulamanızdaki bir cihaz şablonuna bir bulut özelliği eklemek için:
 
 Her bir cihazın konumunu depolamak üzere özel bir özellik oluşturmak için aşağıdaki değerleri belirtin:
 
-1. **Görünen ad**Için değer *konumunu* girin. Bu değer, özellik için kolay bir ad olan **ad** alanına otomatik olarak kopyalanır. Kopyalanmış değeri kullanabilir veya değiştirebilirsiniz.
+1. **Görünen ad** Için değer *konumunu* girin. Bu değer, özellik için kolay bir ad olan **ad** alanına otomatik olarak kopyalanır. Kopyalanmış değeri kullanabilir veya değiştirebilirsiniz.
 
-1. **Şema** açılan menüsünde *dize* ' yi seçin. Bir dize türü, bir konum adı dizesini şablona dayalı herhangi bir cihazla ilişkilendirmenizi sağlar. Örneğin, bir depodaki bir alanı her cihazla ilişkilendirebilirsiniz. İsteğe bağlı olarak, özelliğin **anlam türünü** *konum*olarak ayarlayabilirsiniz ve bu, **Şemayı** otomatik olarak *geopoint*olarak ayarlar. GPS koordinatlarını bir cihazla ilişkilendirmenize olanak sağlar. 
+1. **Şema** açılan menüsünde *dize* ' yi seçin. Bir dize türü, bir konum adı dizesini şablona dayalı herhangi bir cihazla ilişkilendirmenizi sağlar. Örneğin, bir depodaki bir alanı her cihazla ilişkilendirebilirsiniz. İsteğe bağlı olarak, özelliğin **anlam türünü** *konum* olarak ayarlayabilirsiniz ve bu, **Şemayı** otomatik olarak *geopoint* olarak ayarlar. GPS koordinatlarını bir cihazla ilişkilendirmenize olanak sağlar. 
 
-1. **Minimum uzunluğu** *2*olarak ayarlayın. 
+1. **Minimum uzunluğu** *2* olarak ayarlayın. 
 
-1. **Boşluk Kırp** 'ı **Açık**olarak ayarlayın.
+1. **Boşluk Kırp** 'ı **Açık** olarak ayarlayın.
 
 1. Özel bulut özelliğini kaydetmek için **Kaydet** ' i seçin.
 
@@ -236,7 +236,7 @@ Gerçek bir Rigado ağ geçidini ve RuuviTag sensörleriyle bağlantı kurmak i�
 ## <a name="add-rules-and-actions"></a>Kural ve eylem ekleme
 Koşulları izlemek için Azure IoT Central uygulamanızda sensörler kullanmanın bir parçası olarak, belirli koşullar karşılandığında eylemleri çalıştırmak için kurallar oluşturabilirsiniz. Bir kural bir cihaz şablonuyla ve bir veya daha fazla cihazla ilişkilendirilir ve cihaz telemetri veya olaylarına göre karşılanması gereken koşulları içerir. Bir kuralda bir veya daha fazla ilişkili eylem de vardır. Eylemler e-posta bildirimleri göndermeyi veya diğer hizmetlere veri göndermek için bir Web kancası eylemi tetiklemesini içerebilir. **Mağaza içi analiz-kullanıma alma** uygulama şablonu, uygulamadaki cihazlar için önceden tanımlanmış bazı kurallar içerir.
 
-Bu bölümde, RuuviTag algılayıcı telemetrisine göre maksimum göreli nem düzeyini denetleyen yeni bir kural oluşturacaksınız. Kurala bir eylem eklersiniz, böylece nem en büyük değeri aşarsa, uygulama e-posta gönderir. 
+Bu bölümde, RuuviTag algılayıcı telemetrisine göre maksimum göreli nem düzeyini denetleyen yeni bir kural oluşturacaksınız. Kurala bir eylem eklersiniz, böylece nem en büyük değeri aşarsa, uygulama bir e-posta gönderir. 
 
 Bir kural oluşturmak için: 
 
@@ -248,19 +248,19 @@ Bir kural oluşturmak için:
 
 1. Kuralın adı olarak *nem düzeyini* girin. 
 
-1. **Kapsamlardaki**RuuviTag cihaz şablonunu seçin. Tanımladığınız kural, bu şablona dayalı tüm sensörler için geçerlidir. İsteğe bağlı olarak, kuralı yalnızca sensörların tanımlı bir alt kümesine uygulayacak bir filtre oluşturabilirsiniz. 
+1. **Kapsamlardaki** RuuviTag cihaz şablonunu seçin. Tanımladığınız kural, bu şablona dayalı tüm sensörler için geçerlidir. İsteğe bağlı olarak, kuralı yalnızca sensörların tanımlı bir alt kümesine uygulayacak bir filtre oluşturabilirsiniz. 
 
-1. `Relative humidity` **Telemetri**olarak seçin. Bu, önceki bir adımda özelleştirdiğiniz cihaz özelliğidir.
+1. `Relative humidity` **Telemetri** olarak seçin. Bu, önceki bir adımda özelleştirdiğiniz cihaz özelliğidir.
 
-1. `Is greater than` **İşleç**olarak seçin. 
+1. `Is greater than` **İşleç** olarak seçin. 
 
-1. Ortamınız için, **değer**olarak tipik bir büyük erimli ıntıl nem düzeyi girin. Örneğin *65*yazın. Bir RuuviTag gerçek veya benzetim algılayıcısı bu değeri aşarsa, kuralınız için bir koşul ayarlarsınız. Ortamınızdaki normal nem aralığına göre değeri yukarı veya aşağı ayarlamanız gerekebilir.  
+1. Ortamınız için, **değer** olarak tipik bir büyük erimli ıntıl nem düzeyi girin. Örneğin *65* yazın. Bir RuuviTag gerçek veya benzetim algılayıcısı bu değeri aşarsa, kuralınız için bir koşul ayarlarsınız. Ortamınızdaki normal nem aralığına göre değeri yukarı veya aşağı ayarlamanız gerekebilir.  
 
    ![Azure IoT Central kural koşulları ekleme](./media/tutorial-in-store-analytics-create-app/rules-add-conditions.png)
 
 Kurala bir eylem eklemek için:
 
-1. **+ E-posta**seçeneğini belirleyin. 
+1. **+ E-posta** seçeneğini belirleyin. 
 
 1. Eylem için kolay **görünen ad** olarak *yüksek nem bildirimi* girin. 
 

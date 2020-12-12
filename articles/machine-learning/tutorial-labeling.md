@@ -10,12 +10,13 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 36c5f0103908ea150cbe6eb373e25f7d741127f5
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.custom: data4ml
+ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913271"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347515"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 
@@ -58,7 +59,7 @@ Daha sonra, tüm beceri seviyelerinin veri bilimi senaryolarına yönelik veri b
 
 Azure Machine Learning veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkilendirmesi gibi bağlantı bilgilerini depolamak için kullanılır. Burada, Bu öğreticinin görüntülerini içeren depolama hesabına bağlanmak için bir veri deposu kullanırsınız.
 
-1. Çalışma alanınızın sol tarafında **veri depoları** ' nı seçin.
+1. Çalışma alanınızın sol tarafında **veri depoları**' nı seçin.
 
 1. **+ Yeni veri deposu** seçin.
 
@@ -67,8 +68,8 @@ Azure Machine Learning veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkile
     Alan|Açıklama 
     ---|---
     Veri deposu adı | Veri deposuna bir ad verin.  Burada **labeling_tutorial** kullanırız.
-    Veri deposu türü | Depolama türünü seçin.  Burada, görüntüler için tercih edilen depolama alanı olan **Azure Blob depolama** 'yı kullanırız.
-    Hesap seçim yöntemi | **El Ile gir** ' i seçin.
+    Veri deposu türü | Depolama türünü seçin.  Burada, görüntüler için tercih edilen depolama alanı olan **Azure Blob depolama**'yı kullanırız.
+    Hesap seçim yöntemi | **El Ile gir**' i seçin.
     URL | `https://azureopendatastorage.blob.core.windows.net/openimagescontainer`
     Kimlik doğrulaması türü | **SAS belirtecini** seçin.
     Hesap anahtarı | `?sv=2019-02-02&ss=bfqt&srt=sco&sp=rl&se=2025-03-25T04:51:17Z&st=2020-03-24T20:51:17Z&spr=https&sig=7D7SdkQidGT6pURQ9R4SUzWGxZ%2BHlNPCstoSRRVg8OY%3D`
@@ -79,9 +80,9 @@ Azure Machine Learning veri depoları, abonelik KIMLIĞINIZ ve belirteç yetkile
 
 Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme projenizi oluşturun.
 
-1. Sayfanın üst kısmında **Projeler** ' i seçin.
+1. Sayfanın üst kısmında **Projeler**' i seçin.
 
-1. **+ Proje Ekle** ' yi seçin.
+1. **+ Proje Ekle**' yi seçin.
 
     :::image type="content" source="media/tutorial-labeling/create-project.png" alt-text="Proje oluşturma":::
 
@@ -91,8 +92,8 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 
     Alan|Açıklama 
     ---|---
-    Proje adı | Projenize bir ad verin.  Burada **öğretici-kediler-n-Dog** 'leri kullanacağız.
-    Etiketleme görev türü | **Görüntü sınıflandırması çoklu sınıf** ' ı seçin.  
+    Proje adı | Projenize bir ad verin.  Burada **öğretici-kediler-n-Dog**'leri kullanacağız.
+    Etiketleme görev türü | **Görüntü sınıflandırması çoklu sınıf**' ı seçin.  
     
     Projeyi oluşturmaya devam etmek için **İleri ' yi** seçin.
 
@@ -102,11 +103,11 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 
 1. Veri **deposundan Create DataSet** form için aşağıdaki girişi kullanın:
 
-    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler** .  İsterseniz bir açıklama ekleyin.  Sonra **İleri** ’yi seçin.
+    1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Sonra **İleri**’yi seçin.
     1. **Veri deposu seçim** formunda, **daha önce oluşturduğunuz veri deposunu** seçmek için açılan listeyi kullanın (örneğin, **tutorial_images (Azure Blob depolama)**
-    1. Bundan sonra, **veri deposu seçim** formunda, git ' i seçin ve **birden çok Lass-DogsCats** ' **yi seçin.**  Yol olarak **/birden çok Lass-DogsCats** kullanmak için **Kaydet** ' i seçin.
+    1. Bundan sonra, **veri deposu seçim** formunda, git ' i seçin ve **birden çok Lass-DogsCats**' **yi seçin.**  Yol olarak **/birden çok Lass-DogsCats** kullanmak için **Kaydet** ' i seçin.
     1. Ayrıntıları onaylamak için **İleri** ' yi, sonra da **Oluştur** ' u seçerek veri kümesini oluşturun.
-    1. Listedeki veri kümesi adının yanındaki daireyi seçin (örneğin, **eğitim için görüntüler** ).
+    1. Listedeki veri kümesi adının yanındaki daireyi seçin (örneğin, **eğitim için görüntüler**).
 
 1. Projeyi oluşturmaya devam etmek için **İleri ' yi** seçin.
 
@@ -118,7 +119,7 @@ Devam etmek için **İleri** seçeneğini belirleyin.
 
 ### <a name="label-classes"></a>Etiket sınıfları
 
-1. **Etiket sınıfları** formunda, bir etiket adı yazın ve ardından sonraki etiketi yazmak için **+ etiket ekle** ' yi seçin.  Bu proje için Etiketler **Cat** , **köpek** ve **belirsiz** ' dir.
+1. **Etiket sınıfları** formunda, bir etiket adı yazın ve ardından sonraki etiketi yazmak için **+ etiket ekle** ' yi seçin.  Bu proje için Etiketler **Cat**, **köpek** ve **belirsiz**' dir.
 
 1. Tüm etiketleri ekledikten **sonra ileri ' yi** seçin.
 
@@ -128,7 +129,7 @@ Devam etmek için **İleri** seçeneğini belirleyin.
 
 1. Ayrıca, doğrudan forma görevin kısa bir açıklamasını da ekleyebilirsiniz.  Tür **etiketleme öğreticisi-kediler & köpekler.**
 
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 
 1. **Ml yardımlı etiketleme** bölümünde onay kutusunu işaretlenmemiş olarak bırakın. ML yardımlı etiketleme, bu öğreticide kullandığınızdan daha fazla veri gerektirir.
 
@@ -142,17 +143,17 @@ Azure kaynaklarınızı ayarlamış ve bir veri etiketleme projesi yapılandırm
 
 ### <a name="tag-the-images"></a>Görüntüleri etiketleme
 
-Öğreticinin bu bölümünde, *Proje yöneticisinden* rolleri bir *etiketleyici* 'ye değiştireceksiniz.  Çalışma alanınıza katılımcı erişimi olan herkes bir etiketleyici olabilir.
+Öğreticinin bu bölümünde, *Proje yöneticisinden* rolleri bir *etiketleyici*'ye değiştireceksiniz.  Çalışma alanınıza katılımcı erişimi olan herkes bir etiketleyici olabilir.
 
 1. Projeyi bulmak için [Machine Learning Studio](https://ml.azure.com)'da sol taraftaki **veri etiketleme** ' yi seçin.  
 
 1. Proje için **etiket bağlantısı** ' nı seçin.
 
-1. Yönergeleri okuyun ve **Görevler** ' i seçin.
+1. Yönergeleri okuyun ve **Görevler**' i seçin.
 
 1. Bir go içinde etiketlemek istediğiniz görüntü sayısını göstermek için sağ tarafta bir küçük resim seçin. Üzerinde geçiş yapabilmeniz için önce tüm bu görüntülerin etiketlenmesi gerekir. Yalnızca etiketli verilerin yeni bir sayfasına sahip olduğunuzda mizanpajları değiştirin. Mizanpajları değiştirmek sayfanın devam eden etiketleme işini temizler.
 
-1. Bir veya daha fazla görüntü seçin, sonra seçime uygulanacak bir etiket seçin. Etiket görüntünün altında görünür.  Sayfadaki tüm görüntüleri seçip etiketleyerek devam edin.  Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç** ' i seçin. Etiket uygulamak için en az bir görüntü seçin.
+1. Bir veya daha fazla görüntü seçin, sonra seçime uygulanacak bir etiket seçin. Etiket görüntünün altında görünür.  Sayfadaki tüm görüntüleri seçip etiketleyerek devam edin.  Görüntülenecek tüm görüntüleri eşzamanlı olarak seçmek için **Tümünü Seç**' i seçin. Etiket uygulamak için en az bir görüntü seçin.
 
 
     > [!TIP]
@@ -178,7 +179,7 @@ Yönetici olarak, etiketleyicinin çalışmasını gözden geçirmek isteyebilir
 
 1. Panoda projenizin ilerleme durumu gösterilir.
 
-1. Sayfanın üst kısmında, **veriler** ' i seçin.
+1. Sayfanın üst kısmında, **veriler**' i seçin.
 
 1. Etiketli görüntülerinizi görmek için sol tarafta **etiketli veriler** ' i seçin.  
 

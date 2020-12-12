@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5ed3e858168ce5ad9a7f089b723bb75ca8a49fca
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 26fd8bc73fad3ea313641fc4b1e0f454ee2c0813
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007526"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347787"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service için yerel git dağıtımı
 
@@ -80,7 +80,7 @@ Uygulamanızı bir sonraki adımda dağıtmak için döndüren URL 'YI kullanın
    git remote add azure <url>
    ```
    
-1. İle Azure 'a gönderin `git push azure main` . 
+1. İle Azure 'a gönderin `git push azure master` . 
    
 1. **Git kimlik bilgileri Yöneticisi** penceresinde, Azure oturum açma parolanızı değil, [dağıtım Kullanıcı parolanızı](#configure-a-deployment-user)girin.
    
@@ -131,7 +131,7 @@ Azure Pipelines (Önizleme) ile uygulamanız için yerel git dağıtımını etk
    git remote add azure <url>
    ```
    
-1. İle Azure 'a gönderin `git push azure main` . 
+1. İle Azure 'a gönderin `git push azure master` . 
    
 1. **Git kimlik bilgileri Yöneticisi** sayfasında, VisualStudio.com Kullanıcı adınızla oturum açın. Diğer kimlik doğrulama yöntemleri için bkz. [Azure DevOps Services kimlik doğrulamasına genel bakış](/vsts/git/auth-overview?view=vsts).
    
@@ -149,8 +149,8 @@ Azure 'da bir App Service uygulamasına yayımlamak için git kullandığınızd
 ---|---|---|
 |`Unable to access '[siteURL]': Failed to connect to [scmAddress]`|Uygulama çalışır durumda değil.|Uygulamayı Azure portal başlatın. Web uygulaması durdurulduğunda git dağıtımı kullanılamaz.|
 |`Couldn't resolve host 'hostname'`|' Azure ' uzak için adres bilgileri yanlış.|`git remote -v`ILIŞKILI URL ile birlikte tüm uzaktan kumandalar listelemek için komutunu kullanın. ' Azure ' uzak için URL 'nin doğru olduğundan emin olun. Gerekirse, doğru URL 'YI kullanarak bu uzak kopyayı kaldırın ve yeniden oluşturun.|
-|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Sırasında bir dal belirtmediniz veya ' `git push` `push.default` de değer ayarlamadıysanız `.gitconfig` .|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure main` .|
-|`src refspec [branchname] does not match any.`|' Azure ' uzak üzerinde ana dışında bir dala gönderim çalıştınız.|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure main` .|
+|`No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'main'.`|Sırasında bir dal belirtmediniz veya ' `git push` `push.default` de değer ayarlamadıysanız `.gitconfig` .|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
+|`src refspec [branchname] does not match any.`|' Azure ' uzak üzerinde ana dışında bir dala gönderim çalıştınız.|`git push`Ana dalı belirterek yeniden çalıştırın: `git push azure master` .|
 |`RPC failed; result=22, HTTP code = 5xx.`|HTTPS üzerinden büyük bir git deposu göndermeye çalışırsanız bu hata oluşabilir.|Daha büyük olması için yerel makinedeki git yapılandırmasını değiştirin `postBuffer` . Örneğin: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|Bir Node.js uygulamasını, ek gerekli modülleri belirten _package.js_ bir dosya ile dağıttınız.|Hatada `npm ERR!` daha fazla bağlam için bu hatadan önce hata iletilerini gözden geçirin. Aşağıda bu hatanın bilinen nedenleri ve ilgili `npm ERR!` iletiler verilmiştir:<br /><br />**Dosyada hatalı biçimlendirilmiş package.js**: `npm ERR! Couldn't read dependencies.`<br /><br />**Yerel modülün Windows için ikili bir dağıtımı yok**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />veya <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 

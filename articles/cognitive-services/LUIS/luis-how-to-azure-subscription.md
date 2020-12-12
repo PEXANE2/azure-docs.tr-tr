@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999918"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348076"
 ---
 # <a name="create-luis-resources"></a>LUSıS kaynakları oluşturma
 
@@ -51,16 +51,13 @@ Bir kaynağın sahipliğini değiştirmek için şu eylemlerden birini yapabilir
 * Aboneliğinizin [sahipliğini](../../cost-management-billing/manage/billing-subscription-transfer.md) aktarın.
 * LUO uygulamasını bir dosya olarak dışarı aktarın ve uygulamayı farklı bir abonelikte içeri aktarın. Dışarı aktarma, Lua portalındaki **uygulamalarım** sayfasında bulunur.
 
-
 ## <a name="resource-limits"></a>Kaynak sınırları
 
 ### <a name="authoring-key-creation-limits"></a>Anahtar oluşturma sınırlarını yazma
 
-Her abonelik için bölge başına 10 yazma anahtarı oluşturabilirsiniz.
+Her abonelik için bölge başına 10 yazma anahtarı oluşturabilirsiniz. Yayımlama bölgeleri, yazma bölgelerinden farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun. Yazma bölgelerini yayımlama bölgeleriyle eşleme hakkında bilgi için bkz. [yazma ve yayımlama bölgeleri](luis-reference-regions.md). 
 
-Daha fazla bilgi için bkz. [anahtar sınırları](luis-limits.md#key-limits) ve [Azure bölgeleri](luis-reference-regions.md).
-
-Yayımlama bölgeleri, yazma bölgelerinden farklıdır. İstemci uygulamanızın bulunmasını istediğiniz yayımlama bölgesine karşılık gelen yazma bölgesinde bir uygulama oluşturduğunuzdan emin olun.
+Anahtar limitleri hakkında daha fazla bilgi için bkz. [anahtar sınırları](luis-limits.md#key-limits).
 
 ### <a name="errors-for-key-usage-limits"></a>Anahtar kullanımı sınırlarına ilişkin hatalar
 
@@ -204,7 +201,7 @@ Kaynak `kind` :
     ```
 
     > [!Note]
-    > Bu anahtarlar, Lua **Manage**  >  portalındaki **Azure kaynaklarını** Yönet sayfasında atanana kadar Luo portalı tarafından kullanılmaz.
+    > Bu anahtarlar, Lua   >  portalındaki **Azure kaynaklarını** Yönet sayfasında atanana kadar Luo portalı tarafından kullanılmaz.
 
 <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>
 
@@ -214,7 +211,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 
 1. [Lui portalında](https://www.luis.ai)oturum açın.
 1. Sağ üst köşede kullanıcı hesabınızı seçin ve ardından **Ayarlar**' ı seçin.
-1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle**' yi seçin ve ardından var olan bir yazma kaynağı ' nı seçin. **Kaydet**'i seçin.
+1. **Kullanıcı ayarları** sayfasında, **yazma kaynağı Ekle**' yi seçin ve ardından var olan bir yazma kaynağı ' nı seçin. **Kaydet**’i seçin.
 
 ## <a name="assign-a-resource-to-an-app"></a>Uygulamaya kaynak atama
 
@@ -224,7 +221,7 @@ Tek bir uygulama için veya LUSıS 'deki tüm uygulamalar için bir yazma kayna�
 Bu yordamı, bir yazma veya tahmin kaynağı oluşturmak veya bir uygulamaya atamak için kullanabilirsiniz: 
 
 1. [Lui portalında](https://www.luis.ai)oturum açın. **Uygulamalarım** listesinden bir uygulama seçin.
-1. **Manage**  >  **Azure kaynaklarını** yönetme sayfasına gidin:
+1.   >  **Azure kaynaklarını** yönetme sayfasına gidin:
 
     ![Azure kaynakları sayfasını gösteren ekran görüntüsü.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
 
@@ -269,7 +266,7 @@ CI/CD işlem hatları gibi otomatikleştirilmiş süreçler için bir Luo çalı
 ## <a name="unassign-a-resource"></a>Bir kaynağın atamasını kaldırma
 
 1. [Luo portalında](https://www.luis.ai)oturum açın ve ardından **uygulamalarım** listesinden bir uygulama seçin.
-1. **Manage**  >  **Azure kaynaklarını** yönetme sayfasına gidin.
+1.   >  **Azure kaynaklarını** yönetme sayfasına gidin.
 1. **Tahmin kaynağı** veya **yazma kaynağı** sekmesinde kaynağın **atamasını Kaldır** düğmesini seçin.
 
 Bir kaynağın atamasını kaldırdığınızda, Azure 'dan silinmez. Yalnızca LUSıS bağlantısı kaldırılır.

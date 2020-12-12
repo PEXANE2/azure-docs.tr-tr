@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 7f5db2a2df7314c89f2ebba8e7e54ebe24126386
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098253"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347685"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Işlevleri için Azure Tablo depolama Giriş bağlamaları
 
@@ -540,9 +540,9 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Table` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**tür** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
+|**türüyle** | yok | Olarak ayarlanmalıdır `table` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır.|
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . Azure portal bağlama oluşturduğunuzda bu özellik otomatik olarak ayarlanır. |
 |**ada** | yok | İşlev kodundaki tabloyu veya varlığı temsil eden değişkenin adı. | 
 |**tableName** | **TableName** | Tablonun adı.| 
@@ -560,11 +560,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.
@@ -573,11 +573,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 * **İçindeki bir satırı okuyun**
 
-  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
+  `partitionKey`Ve ayarlayın `rowKey` . Bir yöntem parametresi kullanarak tablo verilerine erişin `T <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. `T` genellikle uygulayan `ITableEntity` veya ondan türetilen bir türdür `TableEntity` . `filter`Ve `take` özellikleri bu senaryoda kullanılmaz.
 
 * **Bir veya daha fazla satırı okuyun**
 
-  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` * üzerindefunction.js*özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
+  Bir yöntem parametresi kullanarak tablo verilerine erişin `IQueryable<T> <paramName>` . C# komut dosyasında, `paramName` `name` *üzerindefunction.js* özelliğinde belirtilen değerdir. `T` uygulayan `ITableEntity` veya ondan türetilen bir tür olmalıdır `TableEntity` . `IQueryable`Yöntemleri, gerekli filtrelemeleri yapmak için kullanabilirsiniz. `partitionKey`,, `rowKey` `filter` Ve `take` özellikleri bu senaryoda kullanılmaz.  
 
   > [!NOTE]
   > `IQueryable`[Functions v2 çalışma zamanında](functions-versions.md)desteklenmez. Alternatif olarak, Azure depolama SDK 'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanılır](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) . ' `CloudTable` A bağlanıp bir hata iletisi almaya çalışırsanız, [doğru depolama SDK sürümüne](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)başvurunuz olduğundan emin olun.

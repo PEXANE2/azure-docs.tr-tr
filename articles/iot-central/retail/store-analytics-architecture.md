@@ -9,15 +9,14 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: f1f83fdd73816e6e30c5cac7d193719591bb8dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3486b636325393f9c8e96669ba3d21e7d489efee
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "80999015"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347991"
 ---
 # <a name="in-store-analytics-architecture"></a>Mağaza içi analiz mimarisi
-
 
 
 Mağaza içi analiz çözümleri, perakende mağaza ortamındaki çeşitli koşulları izlemenizi sağlar. Bu çözümler IoT Central içindeki uygulama şablonlarından biri ve kılavuz olarak aşağıdaki mimaride kullanılarak oluşturulabilir.
@@ -55,4 +54,4 @@ IoT verileri, perakende ortamında dağıtılan farklı türlerde iş uygulamala
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Mağaza Içi analiz kullanıma alma](https://aka.ms/checkouttemplate) ve [Mağaza Içi analiz koşulu izleme](https://aka.ms/conditiontemplate) uygulama şablonlarını kullanmaya başlayın. 
-* Store Analytics Uygulama şablonlarından birini kullanarak bir çözüm oluşturma konusunda size yol gösteren [uçtan uca öğreticiye](https://aka.ms/storeanalytics-tutorial) göz atın.
+* In-Store Analytics Uygulama şablonlarından birini kullanarak çözüm oluşturma konusunda size yol gösteren [uçtan uca öğreticiye](https://aka.ms/storeanalytics-tutorial) göz atın.

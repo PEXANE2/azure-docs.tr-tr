@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782663"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347073"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Azure SQL yönetilen örnek Havuzu (Önizleme) nedir?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Ayrıca, örnek havuzlar aynı alt ağda birden çok örnek havuzu ve birden ço
 
 Örnek havuzlar aşağıdaki avantajları sağlar:
 
-1. 2 sanal çekirdek örnekleri barındırma özelliği. *\* Yalnızca örnek havuzlardaki örnekler için* .
+1. 2 sanal çekirdek örnekleri barındırma özelliği. *\* Yalnızca örnek havuzlardaki örnekler için*.
 2. Öngörülebilir ve hızlı örnek dağıtım süresi (5 dakikaya kadar).
 3. En az IP adresi ayırması.
 
@@ -59,7 +59,7 @@ Aşağıdaki listede, örnek havuzlarının göz önünde bulundurulması gereke
 
 ## <a name="architecture"></a>Mimari
 
-Örnek havuzlarının normal ( *tek* ) yönetilen örneklere benzer bir mimarisi vardır. [Azure sanal ağları içindeki dağıtımları](../../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](connectivity-architecture-overview.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
+Örnek havuzlarının normal (*tek*) yönetilen örneklere benzer bir mimarisi vardır. [Azure sanal ağları içindeki dağıtımları](../../virtual-network/virtual-network-for-azure-services.md) desteklemek ve müşterilere yalıtım ve güvenlik sağlamak için, örnek havuzları [sanal kümelere](connectivity-architecture-overview.md#high-level-connectivity-architecture)da güvenir. Sanal kümeler, müşterinin sanal ağ alt ağı içinde dağıtılan ayrılmış bir yalıtılmış sanal makine kümesini temsil eder.
 
 İki dağıtım modeli arasındaki temel fark, örnek havuzların [Windows iş nesneleri](/windows/desktop/ProcThread/job-objects)kullanılarak yönetilen aynı sanal makine düğümünde birden çok SQL Server işlem dağıtımına izin verişleridir, tek örnekler her zaman bir sanal makine düğümünde yer alır.
 
@@ -78,7 +78,10 @@ Her örnek havuz, altında ayrı bir sanal küme oluşturur. Bir havuz içindeki
 - Tüm [örnek düzeyi sınırları](resource-limits.md#service-tier-characteristics) , bir havuz içinde oluşturulan örneklere uygulanır.
 - Örnek düzeyi limitlerinin yanı sıra, *örnek havuzu düzeyinde* uygulanan iki sınır de vardır:
   - Havuz başına toplam depolama boyutu (8 TB).
-  - Havuz başına toplam veritabanı sayısı (100).
+  - Havuz başına Toplam Kullanıcı veritabanı sayısı. Bu sınır, havuz sanal çekirdekleri değerine bağlıdır:
+    - 8 sanal çekirdek havuzu en fazla 200 veritabanını destekler,
+    - 16 sanal çekirdek havuzu en fazla 400 veritabanını destekler,
+    - 24 ve daha büyük sanal çekirdek havuzu en fazla 500 veritabanını destekler.
 - Örnek havuzunda dağıtılan örnekler için AAD Yöneticisi ayarlanamaz, bu nedenle AAD kimlik doğrulaması kullanılamaz.
 
 Toplam depolama alanı ayırma ve tüm örneklerde bulunan veritabanlarının sayısı, örnek havuzlarının açığa çıkarılan limitlere eşit veya ondan daha düşük olmalıdır.
@@ -86,8 +89,9 @@ Toplam depolama alanı ayırma ve tüm örneklerde bulunan veritabanlarının sa
 - Örnek havuzları 8, 16, 24, 32, 40, 64 ve 80 sanal çekirdekleri destekler.
 - Havuzlar içindeki yönetilen örnekler 2, 4, 8, 16, 24, 32, 40, 64 ve 80 sanal çekirdekleri destekler.
 - Havuzlar içindeki yönetilen örnekler, şunlar dışında 32 GB ile 8 TB arasında depolama boyutlarını destekler:
-  - 2 sanal çekirdek örneği 32 GB ile 640 GB arasındaki boyutları destekler
-  - 4 sanal çekirdek örneği 32 GB ile 2 TB arasında boyutları destekler
+  - 2 sanal çekirdek örneği 32 GB ve 640 GB arasındaki boyutları destekler,
+  - 4 sanal çekirdek örneği 32 GB ile 2 TB arasındaki boyutları destekler.
+- Havuzlar içindeki yönetilen örneklerin, örnek başına en fazla 50 kullanıcı veritabanını destekleyen 2 sanal çekirdek örneği dışında, örnek başına 100 Kullanıcı veritabanı sınırı vardır.
 
 [Hizmet katmanı özelliği](resource-limits.md#service-tier-characteristics) örnek havuzu kaynağıyla ilişkilendirilir, bu nedenle havuzdaki tüm örneklerin havuzun hizmet katmanıyla aynı hizmet katmanı olması gerekir. Şu anda yalnızca Genel Amaçlı hizmet katmanı kullanılabilir (geçerli Önizlemedeki sınırlamalar hakkında aşağıdaki bölüme bakın).
 
@@ -137,8 +141,8 @@ Havuzun sanal çekirdek fiyatı, bu havuzda kaç örnek dağıtıldığına bak�
 
 İşlem fiyatı (sanal çekirdekler cinsinden ölçülür) için, iki fiyatlandırma seçeneği mevcuttur:
 
-  1. *Lisans dahil* : SQL Server lisans fiyatları dahildir. Bu, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulamalarını seçen müşteriler içindir.
-  2. *Azure hibrit avantajı* : SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
+  1. *Lisans dahil*: SQL Server lisans fiyatları dahildir. Bu, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını uygulamalarını seçen müşteriler içindir.
+  2. *Azure hibrit avantajı*: SQL Server için Azure hibrit avantajı içeren daha düşük bir fiyat. Müşteriler, Yazılım Güvencesi kapsamındaki mevcut SQL Server lisanslarını kullanarak bu fiyatı kabul edebilir. Uygunluk ve diğer ayrıntılar için bkz. [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Bir havuzdaki tek tek örnekler için farklı fiyatlandırma seçeneklerinin ayarlanması mümkün değildir. Üst havuzdaki tüm örnekler, lisans dahil fiyattan veya Azure Hibrit Avantajı fiyattan olmalıdır. Havuzun lisans modeli, havuz oluşturulduktan sonra değiştirilebilir.
 

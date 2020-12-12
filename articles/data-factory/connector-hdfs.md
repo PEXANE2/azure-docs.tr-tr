@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 96603de7014419b142cc35714b891f9e4b15ec99
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f43f516b0999c4d5b775fc9b78dea9b05e228f0d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91405095"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346257"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>Azure Data Factory kullanarak, bu sunucudan verileri kopyalama
 
@@ -42,14 +42,14 @@ Aşağıdaki etkinlikler için,
 - *Webbir* protokol veya *yerleşik dıtcp* desteği kullanarak dosyaları kopyalama.
 - Dosyaları olarak kopyalama veya [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs.md)ile dosyaları ayrıştırma veya oluşturma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
 > [!NOTE]
 > Tümleştirme çalışma zamanının tüm [name node Server]: [ad düğümü bağlantı noktası] ve [veri düğüm sunucuları]: [veri düğümü bağlantı noktası] için Hadoop kümesinin *Tüm* erişimine erişebildiğinizden emin olun. Varsayılan [ad düğümü bağlantı noktası] 50070, varsayılan [veri düğümü bağlantı noktası] 50075 ' dir.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -64,7 +64,7 @@ Aşağıdaki özellikler,,
 | tür | *Type* özelliği, bir olarak *ayarlanmalıdır.* | Evet |
 | url |Bu URL 'nin URL 'si |Evet |
 | authenticationType | İzin verilen değerler *anonim* veya *Windows*. <br><br> Şirket içi ortamınızı ayarlamak için, bkz. [bağlantı kimliği Için Kerberos kimlik doğrulaması kullanma](#use-kerberos-authentication-for-the-hdfs-connector) bölümü. |Evet |
-| userName |Windows kimlik doğrulaması için Kullanıcı adı. Kerberos kimlik doğrulaması için ** \<username> @ \<domain> . com**belirtin. |Evet (Windows kimlik doğrulaması için) |
+| userName |Windows kimlik doğrulaması için Kullanıcı adı. Kerberos kimlik doğrulaması için **\<username> @ \<domain> . com** belirtin. |Evet (Windows kimlik doğrulaması için) |
 | password |Windows kimlik doğrulaması için parola. Veri fabrikanıza güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya bir [Azure Anahtar Kasası 'nda depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. |Evet (Windows kimlik doğrulaması için) |
 | connectVia | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Daha fazla bilgi edinmek için [Önkoşullar](#prerequisites) bölümüne bakın. Tümleştirme çalışma zamanı belirtilmemişse, hizmet varsayılan Azure Integration Runtime kullanır. |Hayır |
 
@@ -122,7 +122,7 @@ Aşağıdaki özellikler, `location` Biçim tabanlı veri kümesindeki ayarlar '
 
 | Özellik   | Açıklama                                                  | Gerekli |
 | ---------- | ------------------------------------------------------------ | -------- |
-| tür       | *type* `location` Veri kümesinde bulunan tür özelliğinin *hdfslocation*olarak ayarlanması gerekir. | Evet      |
+| tür       |  `location` Veri kümesinde bulunan tür özelliğinin *hdfslocation* olarak ayarlanması gerekir. | Evet      |
 | folderPath | Klasörün yolu. Klasörü filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarları ' nda yolunu belirtin. | Hayır       |
 | fileName   | Belirtilen folderPath altındaki dosya adı. Dosyaları filtrelemek için bir joker karakter kullanmak istiyorsanız, bu ayarı atlayın ve etkinlik kaynağı ayarlarında dosya adını belirtin. | Hayır       |
 
@@ -164,27 +164,27 @@ Aşağıdaki özellikler, `storeSettings` Biçim tabanlı kopyalama kaynağında
 
 | Özellik                 | Açıklama                                                  | Gerekli                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
-| tür                     | Altındaki *Type* özelliği `storeSettings` **hdfsreadsettings**olarak ayarlanmalıdır. | Evet                                           |
-| ***Kopyalanacak dosyaları bulun*** |  |  |
-| SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen klasör veya dosya yolundan kopyalama. Tüm dosyaları bir klasörden kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `*` . |  |
+| tür                     | Altındaki *Type* özelliği `storeSettings` **hdfsreadsettings** olarak ayarlanmalıdır. | Evet                                           |
+| **_Kopyalanacak dosyaları bulun_* _ |  |  |
+| SEÇENEK 1: statik yol<br> | Veri kümesinde belirtilen klasör veya dosya yolundan kopyalama. Tüm dosyaları bir klasörden kopyalamak istiyorsanız, ayrıca olarak öğesini belirtin `wildcardFileName` `_` . |  |
 | Seçenek 2: joker karakter<br>-Yavaya Cardfolderpath | Kaynak klasörlerin filtreleneceği joker karakter içeren klasör yolu. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir). `^`Gerçek klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br>Daha fazla örnek için bkz. [klasör ve dosya filtresi örnekleri](#folder-and-file-filter-examples). | Hayır                                            |
-| Seçenek 2: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyaları filtrelemek için belirtilen folderPath/Yavao Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  Daha fazla örnek için bkz. [klasör ve dosya filtresi örnekleri](#folder-and-file-filter-examples). | Evet |
+| Seçenek 2: joker karakter<br>-Yavaya Cardfilename | Kaynak dosyaları filtrelemek için belirtilen folderPath/Yavao Cardfolderpath altındaki joker karakterlerle dosya adı. <br>İzin verilen joker karakterler: `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek dosya adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın.  Daha fazla örnek için bkz. [klasör ve dosya filtresi örnekleri](#folder-and-file-filter-examples). | Evet |
 | Seçenek 3: dosya listesi<br>-fileListPath | Belirtilen dosya kümesinin kopyalanacağını gösterir. Kopyalamak istediğiniz dosyaların listesini içeren bir metin dosyası üzerine gelin (veri kümesinde yapılandırılan yolun göreli yolu ile her satıra bir dosya).<br/>Bu seçeneği kullandığınızda, veri kümesinde dosya adı belirtmeyin. Daha fazla örnek için bkz. [dosya listesi örnekleri](#file-list-examples). |Hayır |
-| ***Ek ayarlar*** |  | |
-| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. `recursive` *Doğru* olarak ayarlandığında ve havuz dosya tabanlı bir deposa, havuzda boş bir klasör veya alt klasör kopyalanmaz veya oluşturulmaz. <br>İzin verilen değerler *true* (varsayılan) ve *false*şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |
+| ***Ek ayarlar** _ |  | |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. `recursive`, _True * olarak ayarlandığında ve havuz dosya tabanlı bir deposa, havuzda boş bir klasör veya alt klasör kopyalanmaz veya oluşturulmaz. <br>İzin verilen değerler *true* (varsayılan) ve *false* şeklindedir.<br>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . |Hayır |
 | deleteFilesAfterCompletion | Hedef depoya başarıyla taşıdıktan sonra, ikili dosyaların kaynak depodan silinip silinmeyeceğini gösterir. Dosya silme dosya başına yapılır, bu nedenle kopyalama etkinliği başarısız olduğunda, bazı dosyaların hedefe zaten kopyalanmış ve kaynaktan silindiği görürsünüz, diğerleri ise kaynak deposunda hala kalır. <br/>Bu özellik yalnızca ikili dosyalar kopyalama senaryosunda geçerlidir. Varsayılan değer: false. |Hayır |
-| modifiedDatetimeStart    | Dosyalar, *son değiştirilen*özniteliğe göre filtrelenir. <br>Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z*biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | Hayır                                            |
+| modifiedDatetimeStart    | Dosyalar, *son değiştirilen* özniteliğe göre filtrelenir. <br>Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z* biçiminde uygulanır. <br> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.<br/>Bu özellik, yapılandırdığınızda uygulanmaz `fileListPath` . | Hayır                                            |
 | modifiedDatetimeEnd      | Yukarıdaki gibi.  
-| enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true**şeklindedir. | Hayır                                            |
+| enablePartitionDiscovery | Bölümlenmiş dosyalar için, dosya yolundan bölümlerin ayrıştırıp ayrıştırmayacağını belirtin ve bunları ek kaynak sütunları olarak ekleyin.<br/>İzin verilen değerler **false** (varsayılan) ve **true** şeklindedir. | Hayır                                            |
 | Partitionrootyolu | Bölüm bulma etkin olduğunda, bölümlenmiş klasörleri veri sütunları olarak okumak için mutlak kök yolunu belirtin.<br/><br/>Belirtilmemişse, varsayılan olarak<br/>-Veri kümesinde dosya yolunu veya kaynaktaki dosya listesini kullandığınızda, bölüm kök yolu, veri kümesinde yapılandırılan yoldur.<br/>-Joker karakter klasörü filtresi kullandığınızda, bölüm kök yolu ilk joker karakterin öncesindeki alt yoldur.<br/><br/>Örneğin, veri kümesindeki yolu "root/Folder/Year = 2020/ay = 08/gün = 27" olarak yapılandırdığınız varsayılarak:<br/>-Bölüm kök yolunu "root/Folder/Year = 2020" olarak belirtirseniz, kopyalama etkinliği `month` `day` dosyaların içindeki sütunlara ek olarak, sırasıyla "08" ve "27" değeriyle birlikte iki sütun oluşturur.<br/>-Bölüm kök yolu belirtilmemişse, ek sütun oluşturulmaz. | Hayır                                            |
 | maxConcurrentConnections | Depolama deposuna eşzamanlı olarak bağlanabilecek bağlantı sayısı. Yalnızca veri deposuyla eşzamanlı bağlantıyı sınırlandırmak istediğinizde bir değer belirtin. | Hayır                                            |
-| ***DistCp ayarları*** |  | |
+| **_Dıtcp ayarları_* _ |  | |
 | distcpSettings | ,,,, | Hayır |
 | resourceManagerEndpoint | YARN (ancak başka bir kaynak Negotiator) uç noktası | Evet, DistCp kullanılıyorsa |
 | tempScriptPath | Temp DistCp komut betiğini depolamak için kullanılan bir klasör yolu. Betik dosyası Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | Evet, DistCp kullanılıyorsa |
 | distcpOptions | DistCp komutuna ek seçenekler sağlanmaktadır. | Hayır |
 
-**Örnek:**
+_ *Örnek:**
 
 ```json
 "activities":[
@@ -234,8 +234,8 @@ Bu bölümde, klasör yolu ve dosya adı ile bir joker karakter filtresi kullan�
 
 | folderPath | fileName             | öz | Kaynak klasör yapısı ve filtre sonucu ( **kalın** olan dosyalar alınır) |
 | :--------- | :------------------- | :-------- | :----------------------------------------------------------- |
-| `Folder*`  | (boş, Varsayılanı kullan) | yanlış     | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;** ÜzerindeFile2.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile4.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
-| `Folder*`  | (boş, Varsayılanı kullan) | true      | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;** ÜzerindeFile2.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;** ÜzerindeFile4.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (boş, Varsayılanı kullan) | yanlış     | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**ÜzerindeFile2.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile4.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
+| `Folder*`  | (boş, Varsayılanı kullan) | true      | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;**ÜzerindeFile2.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**ÜzerindeFile4.js**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | yanlış     | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile2.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3.csv<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile4.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5.csv<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 | `Folder*`  | `*.csv`              | true      | Klasör a<br/>&nbsp;&nbsp;&nbsp;&nbsp;**File1.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile2.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3.csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ÜzerindeFile4.js<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5.csv**<br/>AnotherFolderB<br/>&nbsp;&nbsp;&nbsp;&nbsp;File6.csv |
 
@@ -253,7 +253,7 @@ Bu bölümde, kopyalama etkinlik kaynağında bir dosya listesi yolu kullanmanı
 
 Kopyalama etkinliği, dosyaları Azure Blob depolama alanına ( [hazırlanan kopya](copy-activity-performance.md)dahil) veya bir Azure Data Lake Store 'a olduğu gibi kopyalamak Için distcp kullanımını destekler. Bu durumda, DistCp, kendinden konak tümleştirme çalışma zamanı üzerinde çalıştırmak yerine kümenizin gücünden yararlanabilir. DistCp kullanmak, özellikle kümeniz çok güçlü olduğunda daha iyi kopyalama performansı sağlar. Veri fabrikanızdaki yapılandırmaya bağlı olarak, kopyalama etkinliği otomatik olarak bir DistCp komutu oluşturur, bunu Hadoop kümenize gönderir ve kopyalama durumunu izler.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 Dosya kopyalamak için DistCp 'yi kullanmak için, Azure Blob depolama 'dan (hazırlanan kopya dahil) veya Azure Data Lake Store 'dan Azure Blob Storage 'dan, Hadoop kümenizin aşağıdaki gereksinimleri karşıladığından emin olun:
 
@@ -366,7 +366,7 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 **KDC sunucusunda:**
 
-1. Aşağıdaki yapılandırma şablonuna başvurarak KDC 'nin Windows etki alanına güvenmesini sağlamak için *krb5. conf* dosyasındaki KDC yapılandırmasını düzenleyin. Varsayılan olarak, yapılandırma */etc/kronb5,conf*konumunda bulunur.
+1. Aşağıdaki yapılandırma şablonuna başvurarak KDC 'nin Windows etki alanına güvenmesini sağlamak için *krb5. conf* dosyasındaki KDC yapılandırmasını düzenleyin. Varsayılan olarak, yapılandırma */etc/kronb5,conf* konumunda bulunur.
 
    ```config
    [logging]
@@ -423,7 +423,7 @@ Kadmin> addprinc <username>@<REALM.COM>
     C:> ksetup /addhosttorealmmap HDFS-service-FQDN REALM.COM
     ```
 
-2.  Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu *krbtgt/Realm. COM \@ ad.com*için paroladır.
+2.  Windows etki alanından Kerberos bölgesine güven oluşturun. [password] sorumlu *krbtgt/Realm. COM \@ ad.com* için paroladır.
 
     ```cmd
     C:> netdom trust REALM.COM /Domain: AD.COM /add /realm /password:[password]
@@ -447,9 +447,9 @@ Kadmin> addprinc <username>@<REALM.COM>
 
 4.  Windows etki alanında Kerberos sorumlusunu kullanabilmeniz için etki alanı hesabı ve Kerberos sorumlusu arasında eşleme oluşturun.
 
-    a. **Administrative tools**  >  **Kullanıcılar ve bilgisayarlar Active Directory**Yönetim Araçları ' nı seçin.
+    a.   >  **Kullanıcılar ve bilgisayarlar Active Directory** Yönetim Araçları ' nı seçin.
 
-    b. Gelişmiş özellikleri **görüntüle**  >  **Gelişmiş**özelliklerini seçerek yapılandırın.
+    b. Gelişmiş özellikleri **görüntüle**  >  **Gelişmiş** özelliklerini seçerek yapılandırın.
 
     c. **Gelişmiş Özellikler** bölmesinde, eşleme oluşturmak istediğiniz hesaba sağ tıklayın ve **ad eşlemeleri** bölmesinde **Kerberos adları** sekmesini seçin.
 
@@ -490,10 +490,10 @@ Etkinlik özelliklerini silme hakkında daha fazla bilgi için bkz. [Azure Data 
 | tür | DataSet 'in *Type* özelliği *FileShare* olarak ayarlanmalıdır |Evet |
 | folderPath | Klasörün yolu. Joker karakter filtresi desteklenir. İzin verilen joker karakterler `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek karakterle eşleşir); `^` gerçek dosya adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. <br/><br/>Örnekler: RootFolder/alt klasör/, bkz. [klasör ve dosya filtresi örneklerinde](#folder-and-file-filter-examples)daha fazla örnek. |Evet |
 | fileName |  Belirtilen "folderPath" altındaki dosyalar için ad veya joker karakter filtresi. Bu özellik için bir değer belirtmezseniz, veri kümesi klasördeki tüm dosyaları işaret eder. <br/><br/>Filtre için, izin verilen joker karakterler `*` (sıfır veya daha fazla karakterle eşleşir) ve `?` (sıfır veya tek bir karakterle eşleşir).<br/>-Örnek 1: `"fileName": "*.csv"`<br/>-Örnek 2: `"fileName": "???20180427.txt"`<br/>`^`Gerçek klasör adınızın bir joker karakter veya içinde bu kaçış karakteri varsa kaçış için kullanın. |Hayır |
-| modifiedDatetimeStart | Dosyalar, *son değiştirilen*özniteliğe göre filtrelenir. Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z*biçiminde uygulanır. <br/><br/> Çok sayıda dosyaya dosya filtresi uygulamak istediğinizde bu ayarın etkinleştirilmesi için veri hareketinin genel performansının etkileneceği göz önünde bulundurun. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.| Hayır |
-| modifiedDatetimeEnd | Dosyalar, *son değiştirilen*özniteliğe göre filtrelenir. Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z*biçiminde uygulanır. <br/><br/> Çok sayıda dosyaya dosya filtresi uygulamak istediğinizde bu ayarın etkinleştirilmesi için veri hareketinin genel performansının etkileneceği göz önünde bulundurun. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.| Hayır |
+| modifiedDatetimeStart | Dosyalar, *son değiştirilen* özniteliğe göre filtrelenir. Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z* biçiminde uygulanır. <br/><br/> Çok sayıda dosyaya dosya filtresi uygulamak istediğinizde bu ayarın etkinleştirilmesi için veri hareketinin genel performansının etkileneceği göz önünde bulundurun. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.| Hayır |
+| modifiedDatetimeEnd | Dosyalar, *son değiştirilen* özniteliğe göre filtrelenir. Son değiştirilme zamanı, ile arasında ise dosyalar seçilir `modifiedDatetimeStart` `modifiedDatetimeEnd` . Saat, UTC saat dilimine *2018-12-01T05:00:00Z* biçiminde uygulanır. <br/><br/> Çok sayıda dosyaya dosya filtresi uygulamak istediğinizde bu ayarın etkinleştirilmesi için veri hareketinin genel performansının etkileneceği göz önünde bulundurun. <br/><br/> Özellikler NULL olabilir, bu da veri kümesine hiçbir dosya özniteliği filtresinin uygulanmadığı anlamına gelir.  Ne zaman `modifiedDatetimeStart` bir tarih saat değeri olduğunda `modifiedDatetimeEnd` , ancak null ise, son değiştirilen özniteliği DateTime değerinden büyük veya buna eşit olan dosyaların seçildiği anlamına gelir.  Ne zaman `modifiedDatetimeEnd` bir tarih saat değeri olduğunda `modifiedDatetimeStart` , ancak null ise, son değiştirilen özniteliği tarih saat değerinden küçük olan dosyaların seçildiği anlamına gelir.| Hayır |
 | biçim | Dosyaları dosya tabanlı depolarla (ikili kopya) olduğu gibi kopyalamak istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın.<br/><br/>Dosyaları belirli bir biçimde ayrıştırmak isterseniz, aşağıdaki dosya biçimi türleri desteklenir: *TextFormat*, *jsonformat*, *avroformat*, *orcformat*, *parquetformat*. Biçim ' in altındaki *Type* özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](supported-file-formats-and-compression-codecs-legacy.md#text-format), [JSON biçimi](supported-file-formats-and-compression-codecs-legacy.md#json-format), [avro Format](supported-file-formats-and-compression-codecs-legacy.md#avro-format), [orc biçimi](supported-file-formats-and-compression-codecs-legacy.md#orc-format)ve [Parquet biçim](supported-file-formats-and-compression-codecs-legacy.md#parquet-format) bölümleri. |Hayır (yalnızca ikili kopya senaryosu için) |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Desteklenen türler şunlardır: *gzip*, *söndür*, *bzip2*ve *zipsöndür*.<br/>Desteklenen düzeyler şunlardır: *en iyi* ve *en hızlı*. |Hayır |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Daha fazla bilgi için bkz. [Desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri](supported-file-formats-and-compression-codecs-legacy.md#compression-support).<br/>Desteklenen türler şunlardır: *gzip*, *söndür*, *bzip2* ve *zipsöndür*.<br/>Desteklenen düzeyler şunlardır: *en iyi* ve *en hızlı*. |Hayır |
 
 >[!TIP]
 >Bir klasörün altındaki tüm dosyaları kopyalamak için, yalnızca **FolderPath** ' i belirtin.<br>Belirtilen ada sahip tek bir dosyayı kopyalamak için klasör **bölümü ve dosya adı ile dosya** adı ile **FolderPath** belirtin.<br>Bir klasörün altına bir dosya alt kümesini kopyalamak için klasör bölümü ve **dosya adı** joker karakter filtresi ile **FolderPath** öğesini belirtin.
@@ -532,8 +532,8 @@ Etkinlik özelliklerini silme hakkında daha fazla bilgi için bkz. [Azure Data 
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının *Type* özelliği *hdfssource*olarak ayarlanmalıdır. |Evet |
-| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri *true* olarak ayarlandığında ve havuz dosya tabanlı bir deposa, boş bir klasör veya alt klasör, havuzda kopyalanmaz veya oluşturulmaz.<br/>İzin verilen değerler *true* (varsayılan) ve *false*şeklindedir. | Hayır |
+| tür | Kopyalama etkinliği kaynağının *Type* özelliği *hdfssource* olarak ayarlanmalıdır. |Evet |
+| öz | Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. Özyinelemeli değeri *true* olarak ayarlandığında ve havuz dosya tabanlı bir deposa, boş bir klasör veya alt klasör, havuzda kopyalanmaz veya oluşturulmaz.<br/>İzin verilen değerler *true* (varsayılan) ve *false* şeklindedir. | Hayır |
 | distcpSettings | Bu özellik grubu, bir. | Hayır |
 | resourceManagerEndpoint | YARN Kaynak Yöneticisi uç noktası | Evet, DistCp kullanılıyorsa |
 | tempScriptPath | Temp DistCp komut betiğini depolamak için kullanılan bir klasör yolu. Betik dosyası Data Factory tarafından oluşturulur ve kopyalama işi tamamlandıktan sonra kaldırılır. | Evet, DistCp kullanılıyorsa |

@@ -11,15 +11,14 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: f00448f19cc0a2118477a9527005548fea25537e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187281"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346376"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>Öğretici: Azure IoT Central verileri dışarı aktarın ve öngörüleri Power BI görselleştirin
-
 
 
 Önceki iki öğreticilerde, **Mağaza Analizi-kullanıma alma** uygulama şablonunu kullanarak bir IoT Central uygulaması oluşturdunuz ve özelleştirdiniz. Bu öğreticide, cihazdan toplanan Telemetriyi dışarı aktarmak için IoT Central uygulamanızı yapılandırırsınız. Daha sonra Power BI kullanarak, telemetriden türetilen öngörüleri görselleştirmek üzere mağaza yöneticisi için özel bir pano oluşturun.
@@ -30,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Bir olay hub 'ından Power BI akış veri kümesine veri göndermek için Logic Apps kullanın.
 > * Akış veri kümesindeki verileri görselleştirmek için Power BI panosu oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -42,7 +41,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Olay Hub 'ınızı ve mantıksal uygulamanızı oluşturmadan önce, bunları yönetmek için bir kaynak grubu oluşturmanız gerekir. Kaynak grubu, **Mağaza Analytics-checkout** IoT Central uygulaması ile aynı konumda olmalıdır. Kaynak grubu oluşturmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Sol gezinti bölmesinde **kaynak grupları**' nı seçin. Ardından **Ekle**'yi seçin.
 1. **Abonelik** için, IoT Central uygulamanızı oluşturmak Için kullandığınız Azure aboneliğinin adını seçin.
 1. **Kaynak grubu** adı için _Retail-Store-Analysis_* yazın.

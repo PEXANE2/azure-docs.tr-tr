@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029379"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347498"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bağlı bir kuruluş ekleme
 
@@ -29,7 +29,13 @@ Azure Active Directory (Azure AD) yetkilendirme yönetimi sayesinde, kuruluşunu
 
 ## <a name="what-is-a-connected-organization"></a>Bağlı kuruluş nedir?
 
-Bağlı bir kuruluş, ile ilişkiniz olan bir dış Azure AD dizini veya etki alanıdır.
+Bağlı bir kuruluş, ile ilişkiniz olan başka bir kuruluştur.  Bu kuruluştaki kullanıcıların, SharePoint Online siteleriniz veya uygulamalarınız gibi kaynaklarınıza erişebilmeleri için bu dizindeki kullanıcıların söz konusu dizinde bir gösterimine sahip olmanız gerekir.  Çoğu durumda bu kuruluştaki kullanıcılar zaten Azure AD dizininizde olmadığından, gerektiğinde Azure AD dizininize getirmek için yetkilendirme yönetimini kullanabilirsiniz.  
+
+Yetkilendirme yönetiminin, bağlı bir kuruluş oluşturan kullanıcıları belirtmenize izin veren üç yolu vardır.  Olabilir
+
+* başka bir Azure AD dizinindeki kullanıcılar,
+* doğrudan Federasyon için yapılandırılmış başka bir Azure dışı AD dizinindeki kullanıcılar veya
+* e-posta adresi hepsi ortak olarak aynı etki alanı adına sahip olan başka bir Azure dışı AD dizininde bulunan kullanıcılar.
 
 Örneğin, Woodgrove Bank 'ta çalıştığınızı ve iki harici kurum ile işbirliği yapmak istediğinizi varsayalım. Bu iki kuruluş farklı yapılandırmalara sahiptir:
 

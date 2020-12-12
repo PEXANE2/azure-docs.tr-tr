@@ -3,14 +3,14 @@ title: TLS karşılıklı kimlik doğrulamayı yapılandırma
 description: TLS üzerinde istemci sertifikalarının nasıl doğrulandığını öğrenin. Azure App Service, istemci sertifikasını doğrulama için uygulama kodu için kullanılabilir hale getirir.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213635"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347737"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamasını yapılandırma
 
@@ -24,20 +24,33 @@ Azure App Service uygulamanıza erişimi, farklı kimlik doğrulama türlerini e
 
 ## <a name="enable-client-certificates"></a>İstemci sertifikalarını etkinleştir
 
-Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için Azure portalından **yapılandırma**genel ayarları ' nı seçerek gelen sertifika **iste ' yi** değiştirebilir  >  **General Settings** veya `clientCertEnabled` uygulamanızın ayarını olarak ayarlamanız gerekir `true` . Ayarı ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın.
+Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için:
+
+1. Uygulamanızın Yönetim sayfasının sol gezinti sayfasından **yapılandırma**  >  **genel ayarları**' nı seçin.
+
+1. **İstemci sertifikası modunu** **gerekli** olacak şekilde ayarlayın. Sayfanın üst kısmından **Kaydet**'e tıklayın.
+
+Azure CLı ile aynı yapmak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Kimlik doğrulama gerektirmesinden dışlanan yollar
 
-Uygulamanız için karşılıklı kimlik doğrulamasını etkinleştirdiğinizde, uygulamanızın kökündeki tüm yollar erişim için bir istemci sertifikası gerektirir. Bazı yolların anonim erişim için açık kalmasını sağlamak için, uygulama yapılandırmanızın bir parçası olarak dışlama yolları tanımlayabilirsiniz.
+Uygulamanız için karşılıklı kimlik doğrulamasını etkinleştirdiğinizde, uygulamanızın kökündeki tüm yollar erişim için bir istemci sertifikası gerektirir. Belirli yolların bu gereksinimini kaldırmak için, uygulama yapılandırmanızın bir parçası olarak dışlama yolları tanımlayın.
 
-Dışlama yolları **yapılandırma**  >  **genel ayarları** seçilerek ve bir dışlama yolu tanımlayarak yapılandırılabilir. Bu örnekte, `/public` uygulamanız için yol altındaki her şey bir istemci sertifikası istemeyebilir.
+1. Uygulamanızın Yönetim sayfasının sol gezinti sayfasından **yapılandırma**  >  **genel ayarları**' nı seçin.
+
+1. **İstemci dışlama yollarının** yanındaki Düzenle simgesine tıklayın.
+
+1. **Yeni yol**' ı tıklatın, bir yol belirtin ve **Tamam**' ı tıklatın.
+
+1. Sayfanın üst kısmından **Kaydet**'e tıklayın.
+
+Aşağıdaki ekran görüntüsünde, uygulamanızın yolu altındaki her şey `/public` bir istemci sertifikası istememektedir.
 
 ![Sertifika dışlama yolları][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>İstemci sertifikasına erişin
 

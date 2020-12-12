@@ -8,18 +8,18 @@ ms.subservice: iot-central-retail
 ms.topic: overview
 ms.date: 10/20/2019
 ms.custom: mqtt
-ms.openlocfilehash: 8925b98269b67bfb8a96cb057982ee4e396f17ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 41232ba3899d098c019674e4ca4a0a8f2f7d465f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81686221"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97345968"
 ---
 # <a name="architecture-of-iot-central-connected-logistics-application-template"></a>IoT Central bağlı lojistik uygulama şablonu mimarisi
 
 
 
-İş ortakları & müşteri, uçtan uca **bağlı lojistik çözümlerini**geliştirmek için aşağıdaki kılavuzdan & uygulama şablonunu kullanabilir.
+İş ortakları & müşteri, uçtan uca **bağlı lojistik çözümlerini** geliştirmek için aşağıdaki kılavuzdan & uygulama şablonunu kullanabilir.
 
 > [!div class="mx-imgBorder"]
 > ![bağlı lojistik panosu](./media/concept-connected-logistics-architecture/connected-logistics-architecture.png)
@@ -27,7 +27,7 @@ ms.locfileid: "81686221"
 1. Bir ağ geçidi cihazına telemetri verileri gönderen IoT etiketleri kümesi
 2. IoT Central telemetri ve toplu Öngörüler gönderen ağ geçidi cihazları
 3. Veriler, işleme için istenen Azure hizmetine yönlendirilir
-4. ASA veya Azure Işlevleri gibi Azure Hizmetleri, veri akışlarını yeniden biçimlendirmek ve istenen depolama hesaplarına göndermek için kullanılabilir 
+4. ASA veya Azure Işlevleri gibi Azure Hizmetleri, veri akışlarını yeniden biçimlendirmek ve istenen depolama hesaplarına göndermek için kullanılabilir
 5. Çeşitli iş iş akışları, son kullanıcı iş uygulamaları tarafından desteklenmektedir
 
 ## <a name="details"></a>Ayrıntılar
@@ -37,7 +37,7 @@ Aşağıdaki bölümde, IoT etiketlerinden & ağ geçitlerinden kavramsal mimari
 IoT etiketleri; sıcaklık, nem, darbe, eğim &ışığı gibi fiziksel, çevresel ve çevresel algılayıcı özellikleri sağlar. IoT etiketleri genellikle Zigbee (802.15.4) aracılığıyla ağ geçidi cihazına bağlanır. Etiketler daha ucuz sensörlerdir; Bu nedenle, ters lojistik ile güçlüklere engel olmak için tipik bir lojistik yolculuğunun sonunda atılabilir.
 
 ## <a name="gateway"></a>Ağ geçidi
-Ağ geçitleri Ayrıca çevresel algılama özelliklerine sahip IoT etiketleri olarak davranabilir. Ağ Geçidi, hücresel, Wi-Fi kanalları kullanarak yukarı akış Azure IoT bulut bağlantısına (MQTT) izin verebilir.  Bluetooth, NFC ve 802.15.4 kablosuz algılayıcı ağı (WSN) modları, IoT etiketleriyle aşağı akış iletişimi için kullanılır. Ağ geçitleri uçtan uca güvenli bulut bağlantısı, IoT etiketi eşleştirmesi, algılayıcı veri toplama, veri saklama ve uyarı eşiklerini yapılandırma yeteneği sağlar.
+Ağ geçitleri Ayrıca çevresel algılama özelliklerine sahip IoT etiketleri olarak davranabilir. Ağ Geçidi, hücresel Wi-Fi kanalları kullanarak yukarı akış Azure IoT bulut bağlantısına (MQTT) izin verebilir.  Bluetooth, NFC ve 802.15.4 kablosuz algılayıcı ağı (WSN) modları, IoT etiketleriyle aşağı akış iletişimi için kullanılır. Ağ geçitleri uçtan uca güvenli bulut bağlantısı, IoT etiketi eşleştirmesi, algılayıcı veri toplama, veri saklama ve alarm eşiklerini yapılandırma olanağı sağlar.
 
 ## <a name="device-management-with-iot-central"></a>IoT Central ile cihaz yönetimi 
 Azure IoT Central, IoT cihaz bağlantısı, yapılandırma ve yönetimini kolaylaştıran bir çözüm geliştirme platformudur. Platform IoT cihaz yönetimi, işlemler ve ilgili geliştirmelerin yükünü ve maliyetlerini önemli ölçüde azaltır. Müşteriler & iş ortakları, bir uçtan uca kurumsal çözüm oluşturabilir ve bu da lojistik 'de dijital bir geri bildirim döngüsü elde edebilir.

@@ -9,16 +9,16 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: a8a662bf94e958d9e96a454ced9c44058b178a8c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366851"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347804"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Paralel belgelerde tümce eşleştirme ve hizalama
 
-Eğitim sırasında, paralel belgelerde bulunan cümleler eşleştirilmiş veya hizalanır. Özel çevirmen, veri kümelerinin her birinde hizalanmış cümleler olarak eşlenebildiği cümle sayısını raporlar.
+Belgeler karşıya yüklendikten sonra, paralel belgelerde bulunan cümleler eşleştirilmiş veya hizalanır. Özel çevirmen, veri kümelerinin her birinde hizalanmış cümleler olarak eşlenebildiği cümle sayısını raporlar.
 
 ## <a name="pairing-and-alignment-process"></a>Eşleştirme ve hizalama işlemi
 
@@ -37,7 +37,7 @@ Bir eğitimin başarılı olması için, aşağıdaki tabloda her belge türünd
 | Belge türü   | Önerilen minimum tümce sayısı | En fazla tümce sayısı |
 |------------|--------------------------------------------|--------------------------------|
 | Eğitim   | 10,000                                     | Üst sınır yok                 |
-| Ayarlarını     | 500                                      | 2,500       |
+| Ayarlama     | 500                                      | 2,500       |
 | Sınama    | 500                                      | 2,500  |
 | Sözlük | 0                                          | Üst sınır yok                 |
 

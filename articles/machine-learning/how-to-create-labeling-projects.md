@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.custom: data4ml
+ms.openlocfilehash: 5abb222a6211e2f3f92c002a49987ac54edc78e2
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558734"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346665"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Veri etiketleme projesi ve dışarı aktarma etiketleri oluşturma 
 
@@ -76,7 +77,7 @@ Verilerinizi içeren bir veri kümesi zaten oluşturduysanız, **mevcut bir veri
 
 Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturmak için:
 
-1. Veri **deposundan veri kümesi oluştur**' u seçin  >  **From datastore**.
+1. Veri **deposundan veri kümesi oluştur**' u seçin  >  .
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü** olarak **Dosya** ' yı seçin.  Yalnızca dosya veri kümesi türleri desteklenir.
 1. Veri deposunu seçin.
@@ -92,7 +93,7 @@ Azure Blob depolamada zaten depoladığınız verilerden veri kümesi oluşturma
 
 Verilerinizi doğrudan karşıya yüklemek için:
 
-1. Yerel **dosyalardan veri kümesi oluştur**' u seçin  >  **From local files**.
+1. Yerel **dosyalardan veri kümesi oluştur**' u seçin  >  .
 1. Veri kümenize bir **ad** atayın.
 1. **Veri kümesi türü** olarak "dosya" yı seçin.
 1. *Isteğe bağlı:* Veri deposu, kapsayıcı ve yolun yolunu özelleştirmek için **Gelişmiş ayarlar** ' ı seçin.
@@ -103,7 +104,7 @@ Verilerinizi doğrudan karşıya yüklemek için:
 
 Veriler, Machine Learning çalışma alanınızın varsayılan blob deposuna ("Workspace BlobStore") yüklenir.
 
-## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Artımlı yenilemeyi yapılandırma
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"></a> Artımlı yenilemeyi yapılandırma
 
 Veri kümenize yeni görüntüler eklemeyi planlıyorsanız, bu yeni görüntüleri projenize eklemek için artımlı yenileme kullanın.   **Artımlı yenileme** etkinleştirildiğinde, veri kümesi, etiketleme tamamlanma hızına bağlı olarak bir projeye eklenecek yeni görüntülerin düzenli aralıklarla denetlenir.   Yeni veri denetimi, proje en fazla 500.000 görüntüsünü içerdiğinde duraklar.
 

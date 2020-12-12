@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763257"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347906"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure dijital TWINS sorunlarını giderme: ölçümler
 
@@ -48,6 +48,17 @@ Bu makalede açıklanan ölçümler, Azure aboneliğinizdeki Azure dijital TWINS
 Azure dijital TWINS, örneğinizin sistem durumuna ve ilişkili kaynaklarına ilişkin bir genel bakış sunmak için çeşitli ölçümler sunar. Ayrıca, örneğinizin durumunun büyük bir resmini boyamak için birden fazla ölçüden bilgi birleştirebilirsiniz. 
 
 Aşağıdaki tablolarda, her bir Azure dijital TWINS örneği tarafından izlenen ölçümler ve her ölçümün örneğinizin genel durumuyla nasıl ilişkili olduğu açıklanır.
+
+#### <a name="metrics-for-tracking-service-limits"></a>Hizmet sınırlarını izleme ölçümleri
+
+Bu ölçümleri, çözümünüzün bazı yönlerine yönelik [yayımlanmış bir hizmet sınırına](reference-service-limits.md#functional-limits) yaklaşdığınızda izlemek üzere yapılandırabilirsiniz. 
+
+Bu ayarı yapmak için Azure Izleyici 'de [Uyarılar](troubleshoot-alerts.md) özelliğini kullanın. Bu ölçümler için eşikler tanımlayabilir, böylece bir ölçüm yayımlanmış sınırının belirli bir yüzdesine ulaştığında bir uyarı alırsınız.
+
+| Ölçüm | Ölçüm görünen adı | Birim | Toplama türü| Açıklama | Boyutlar |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | İkizi sayısı (Önizleme) | Count | Toplam | Azure dijital TWINS örneğindeki toplam TWINS sayısı. Örnek başına izin verilen en fazla sayıda TWINS için [hizmet sınırına](reference-service-limits.md#functional-limits) yaklaşıp yaklaşmadığını öğrenmek için bu ölçümü kullanın. |  Yok |
+| ModelCount | Model sayısı (Önizleme) | Count | Toplam | Azure dijital TWINS örneğindeki toplam model sayısı. Örnek başına izin verilen maksimum model sayısı için [hizmet sınırına](reference-service-limits.md#functional-limits) yaklaşıp yaklaşmadığını öğrenmek için bu ölçümü kullanın. | Yok |
 
 #### <a name="api-request-metrics"></a>API isteği ölçümleri
 

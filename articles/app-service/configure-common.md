@@ -1,21 +1,21 @@
 ---
 title: Portalda uygulama yapılandırma
-description: Azure portal bir App Service uygulamasının ortak ayarlarını yapılandırmayı öğrenin. Uygulama ayarları, bağlantı dizeleri, Platform, dil yığını, kapsayıcı vb.
+description: Azure portal bir App Service uygulamasının ortak ayarlarını yapılandırmayı öğrenin. Uygulama ayarları, uygulama yapılandırması, bağlantı dizeleri, Platform, dil yığını, kapsayıcı vb.
 keywords: Azure App Service, Web uygulaması, uygulama ayarları, ortam değişkenleri
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 12/07/2020
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
-ms.openlocfilehash: 76cfefa3f104ecef69e28fecd1c37fc336b0ce8c
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 4594a3a7ac7af7acf75fa5c47e2eab3246fc00e7
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854657"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346774"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Azure portal App Service uygulama yapılandırma
 
-Bu konuda, [Azure Portal]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
+Bu makalede, [Azure Portal]kullanarak Web Apps, mobil arka uç veya API uygulaması için genel ayarların nasıl yapılandırılacağı açıklanmaktadır.
 
 ## <a name="configure-app-settings"></a>Uygulama ayarlarını yapılandırma
 
@@ -118,7 +118,10 @@ Komut satırından ayarları oluşturmak ve yönetmek için Azure CLı ' yı kul
 
 ASP.NET ve ASP.NET Core geliştiricileri için, App Service bağlantı dizeleriniWeb.config' de ayarlama gibidir `<connectionStrings>` , ancak App Service **' de ayarladığınız değerler *Web.config* geçersiz kılar. *Web.config* ve üretim gizli dizileri (ÖRNEĞIN, SQL veritabanı kimlik bilgileri) içinde App Service güvenli bir şekilde geliştirme ayarlarını (örneğin, bir veritabanı dosyası) koruyabilirsiniz. Aynı kod, yerel olarak hata ayıkladığınızda geliştirme ayarlarınızı kullanır ve Azure 'a dağıtıldığında üretim sırlarınızı kullanır.
 
-Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-app-settings) kullanılması daha iyidir, çünkü bağlantı dizeleri değerlere erişmek için değişken anahtarlarında özel biçimlendirme gerektirir. Ancak bir özel durum aşağıda verilmiştir: uygulamanızda bağlantı dizelerini yapılandırırsanız, belirli Azure veritabanı türleri uygulamayla birlikte yedeklenir. Daha fazla bilgi için bkz. [nelerin yedeklenebileceği](manage-backup.md#what-gets-backed-up). Bu otomatik yedeklemeye ihtiyacınız yoksa uygulama ayarları ' nı kullanın.
+Diğer dil yığınları için bunun yerine [uygulama ayarlarının](#configure-app-settings) kullanılması daha iyidir, çünkü bağlantı dizeleri değerlere erişmek için değişken anahtarlarında özel biçimlendirme gerektirir. 
+
+> [!NOTE]
+> Non-.NET dilleri için uygulama ayarları yerine bağlantı dizelerini kullanmak isteyebileceğiniz bir durum vardır: belirli Azure veritabanı türleri uygulamayla birlikte _yalnızca_ App Service uygulamanızda veritabanı için bir bağlantı dizesi yapılandırırsanız yedeklenir. Daha fazla bilgi için bkz. [nelerin yedeklenebileceği](manage-backup.md#what-gets-backed-up). Bu otomatik yedeklemeye ihtiyacınız yoksa uygulama ayarları ' nı kullanın.
 
 Çalışma zamanında, bağlantı dizeleri aşağıdaki bağlantı türleri ön eki olan ortam değişkenleri olarak kullanılabilir:
 
@@ -228,21 +231,27 @@ Uygulama, statik içerik sunmak yerine URL 'ye bağlı olarak yönlendiren modü
 
 ![Yol eşlemeleri](./media/configure-common/open-path.png)
 
-**Yol eşlemeleri** sayfası, işletim sistemi türüne göre farklı şeyler gösterir.
+> [!NOTE] 
+> **Yol eşlemeleri** sekmesi, burada gösterilen örnekteki farklı işletim sistemine özgü ayarları gösterebilir.
 
 ### <a name="windows-apps-uncontainerized"></a>Windows uygulamaları (Kapsayıcılı olmayan)
 
 Windows uygulamaları için IIS İşleyici eşlemelerini ve sanal uygulamaları ve dizinleri özelleştirebilirsiniz.
 
-İşleyici eşlemeleri belirli dosya uzantılarına yönelik istekleri işlemek için özel betik işlemcileri eklemenize olanak sağlar. Özel bir işleyici eklemek için **yeni işleyici**' ye tıklayın. İşleyiciyi şu şekilde yapılandırın:
+İşleyici eşlemeleri belirli dosya uzantılarına yönelik istekleri işlemek için özel betik işlemcileri eklemenize olanak sağlar. Özel bir işleyici eklemek için **yeni işleyici eşlemesi**' ne tıklayın. İşleyiciyi şu şekilde yapılandırın:
 
 - **Uzantı**. İşlemek istediğiniz *\* . php* veya *Handler. FCGI* gibi dosya uzantısı.
 - **Betik işlemcisi**. Betik işlemcisinin size mutlak yolu. Dosya uzantısıyla eşleşen dosya istekleri betik işlemcisi tarafından işlenir. `D:\home\site\wwwroot`Uygulamanın kök dizinine başvurmak için yolu kullanın.
 - **Bağımsız değişkenler**. Betik işlemcisi için isteğe bağlı komut satırı bağımsız değişkenleri.
 
-Her uygulama, kodunuzun varsayılan olarak dağıtıldığı varsayılan kök yolu ( `/` ) ile eşlenir `D:\home\site\wwwroot` . Uygulama kökleriniz farklı bir klasörlerde varsa veya deponuzda birden fazla uygulama varsa, sanal uygulamaları ve dizinleri buradan düzenleyebilir veya ekleyebilirsiniz. **Yeni sanal uygulama veya dizin**' e tıklayın.
+Her uygulama, kodunuzun varsayılan olarak dağıtıldığı varsayılan kök yolu ( `/` ) ile eşlenir `D:\home\site\wwwroot` . Uygulama kökleriniz farklı bir klasörlerde varsa veya deponuzda birden fazla uygulama varsa, sanal uygulamaları ve dizinleri buradan düzenleyebilir veya ekleyebilirsiniz. 
 
-Sanal uygulamaları ve dizinleri yapılandırmak için, her bir sanal dizini ve ilgili fiziksel yolunu Web sitesi köküne () göre belirtin `D:\home` . İsteğe bağlı olarak, bir sanal dizini bir uygulama olarak işaretlemek için **uygulama** onay kutusunu seçebilirsiniz.
+**Yol eşlemeleri** sekmesinden **Yeni sanal uygulama veya dizin**' e tıklayın. 
+
+- Bir sanal dizini fiziksel bir yola eşlemek için **Dizin** onay kutusunu seçili bırakın. Web sitesi köküne () sanal dizin ve karşılık gelen göreli (fiziksel) yolu belirtin `D:\home` .
+- Bir sanal dizini Web uygulaması olarak işaretlemek için **Dizin** onay kutusunu temizleyin.
+  
+  ![Dizin onay kutusu](./media/configure-common/directory-check-box.png)
 
 ### <a name="containerized-apps"></a>Kapsayıcılı uygulamalar
 

@@ -1,72 +1,72 @@
 ---
-title: Sorun giderme-Azure Izleyici Application Insights Java
-description: Azure Izleyici Application Insights Java 'da sorun giderme
+title: Java için Azure Izleyici Application Insights sorunlarını giderme
+description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Application Insights
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: cf27763f857cc1fd1aad5256d0c6cecf91251caf
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855657"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347840"
 ---
-# <a name="troubleshooting-azure-monitor-application-insights-java"></a>Azure Izleyici Application Insights Java 'da sorun giderme
+# <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
-Bu makalede, bir kullanıcının Java aracısını kullanarak bu sorunları çözme adımlarıyla birlikte Java uygulamasını düzenleme sırasında karşılaştığı yaygın sorunlardan bazılarını ele aldık.
+Bu makalede, Application Insights için Java aracısını kullanarak bir Java uygulamasını düzenleme sırasında karşılaşabileceğiniz yaygın sorunlardan bazılarını ele aldık. Ayrıca, bu sorunları çözmek için gereken adımları ele alınmaktadır. Application Insights, Azure Izleyici Platform hizmeti 'nin bir özelliğidir.
 
-## <a name="self-diagnostic-log-file"></a>Kendi kendine tanılama günlük dosyası
+## <a name="check-the-self-diagnostic-log-file"></a>Kendi kendine tanılama günlük dosyasını denetleme
 
-Varsayılan olarak, Application Insights Java 3,0, dosyanın bulunduğu dizinde adlı bir günlük dosyası oluşturacaktır `applicationinsights.log` `applicationinsights-agent-3.0.0.jar` .
+Varsayılan olarak, Application Insights için Java 3,0 Aracısı, `applicationinsights.log` dosyayı tutan aynı dizinde adlı bir günlük dosyası üretir `applicationinsights-agent-3.0.0.jar` .
 
-Bu günlük dosyası, karşılaşabileceğiniz sorunların ipuçlarını denetlemek için ilk yerdir.
+Bu günlük dosyası, karşılaşmanız gerekebilecek herhangi bir sorunun ipuçlarını denetlemek için ilk yerdir.
 
-## <a name="upgrade-from-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
+## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights yükseltme
 
-Bkz. [2. x SDK 'Dan yükseltme](./java-standalone-upgrade-from-2x.md).
+Uygulamanızda Java 2. x SDK Application Insights zaten kullanıyorsanız, bunu kullanmaya devam edebilirsiniz. Java 3,0 Aracısı tarafından algılanır. Daha fazla bilgi için bkz. [Java 2. x SDK 'Dan yükseltme](./java-standalone-upgrade-from-2x.md).
 
-## <a name="upgrade-from-30-preview"></a>3,0 Preview sürümünden yükseltme
+## <a name="upgrade-from-application-insights-java-30-preview"></a>Application Insights Java 3,0 Preview sürümünden yükseltme
 
-3,0 önizlemesinden yükseltiyorsanız, JSON yapısı 3,0 GA sürümünde tamamen değiştiği için lütfen tüm [yapılandırma seçeneklerini](./java-standalone-config.md) dikkatle gözden geçirin.
+Java 3,0 Önizleme aracılarından yükseltiyorsanız, tüm [yapılandırma seçeneklerini](./java-standalone-config.md) dikkatle gözden geçirin. JSON yapısı, 3,0 genel kullanılabilirlik (GA) sürümünde tamamen değiştirilmiştir.
 
 Bu değişiklikler şunları içerir:
 
-1.  Yapılandırma dosyası adının kendisi `ApplicationInsights.json` olarak değiştirildi `applicationinsights.json` .
-2.  `instrumentationSettings`Düğüm artık yok. İçindeki tüm içerik `instrumentationSettings` kök düzeye taşınır. 
-3.  `sampling`, Ve gibi yapılandırma `jmxMetrics` düğümleri `instrumentation` `heartbeat` `preview` kök düzeye taşınır.
+-  Yapılandırma dosyası adı, `ApplicationInsights.json` olarak değiştirildi `applicationinsights.json` .
+-  `instrumentationSettings`Düğüm artık yok. İçindeki tüm içerik `instrumentationSettings` kök düzeye taşınır. 
+-  ,, Ve gibi yapılandırma düğümleri `sampling` `jmxMetrics` `instrumentation` `heartbeat` `preview` kök düzeye taşınır.
 
-## <a name="ssl-certificate-issues"></a>SSL sertifikası sorunları
+## <a name="import-ssl-certificates"></a>SSL sertifikalarını içeri aktarma
 
-Varsayılan Java keystore kullanıyorsanız, tüm CA kök sertifikalarına zaten sahip olur ve daha fazla SSL sertifikası almanız gerekmez.
+Varsayılan Java keystore kullanıyorsanız, tüm CA kök sertifikalarına zaten sahip olur. Daha fazla SSL sertifikası içeri aktarmanız gerekmez.
 
 Özel bir Java keystore kullanıyorsanız, Application Insights uç nokta SSL sertifikalarını buna aktarmanız gerekebilir.
 
-### <a name="some-key-terminology"></a>Bazı temel terminoloji:
-*Keystore* , sertifikalar, ortak ve özel anahtarların bir deposudur. Genellikle JDK dağıtımlarını yönetmek için çalıştırılabilir dosya vardır `keytool` .
+### <a name="key-terminology"></a>Anahtar terminolojisi
+*Anahtar deposu* , sertifikalar, ortak anahtarlar ve özel anahtarların bir deposudur. Genellikle, Java Development Kit dağıtımları bunları yönetmek için çalıştırılabilir dosya sahiptir: `keytool` .
 
 Aşağıdaki örnek, bir SSL sertifikasını keystore 'a aktarmaya yönelik basit bir komuttur:
 
 `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
 
-### <a name="steps-to-download-and-add-the-ssl-certificate"></a>SSL sertifikasını indirme ve ekleme adımları:
+### <a name="steps-to-download-and-add-an-ssl-certificate"></a>SSL sertifikası indirme ve ekleme adımları
 
-1.  En sevdiğiniz tarayıcıyı açın ve `IngestionEndpoint` aşağıda gösterildiği gibi uygulamanızı işaretlemek için kullanılan bağlantı dizesinde bulunan URL 'ye gidin
+1.  En sevdiğiniz tarayıcıyı açın ve `IngestionEndpoint` uygulamanızı işaretlemek için kullanılan bağlantı dizesinde bulunan URL 'ye gidin.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Application Insights bağlantı dizesi":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Bir Application Insights bağlantı dizesi gösteren ekran görüntüsü.":::
 
-2.  Tarayıcıdaki ' site bilgilerini görüntüle ' (kilit) simgesine tıklayın ve aşağıda göster ' sertifika ' seçeneğine tıklayın
+2.  Tarayıcıda **site bilgilerini görüntüle** (kilit) simgesini seçin ve ardından **sertifika** seçeneğini belirleyin.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="SSL sertifikası yakalama":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Site bilgilerinde sertifika seçeneğinin ekran görüntüsü.":::
 
-3.  Ayrıntılar sekmesine gidin ve dosyaya Kopyala ' ya tıklayın.
-4.  İleri düğmesine tıklayın ve "Base-64 Encoded X. 509.440 (. CER) "biçimini seçin ve ileri ' yi seçin.
+3.  **Ayrıntılar** sekmesine gidin ve **Dosyaya Kopyala**' yı seçin.
+4.  **İleri** düğmesini seçin, **Base-64 Encoded X. 509.440 (. CER)** biçimini seçin ve ardından **İleri** ' yi seçin.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="SSL sertifikası dışarı ExportWizard":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Sertifika Dışarı Aktarma Sihirbazı 'nın seçili bir biçim ile ekran görüntüsü.":::
 
-5.  SSL sertifikasını kaydetmek istediğiniz dosyayı belirtin. Son olarak ileri ve son ' a tıklayın. "Dışarı aktarma başarılı oldu" iletisini görmeniz gerekir.
-6.  Sertifikayı bir Java keystore 'a aktarma süresi bittikten sonra. Sertifikaları içeri aktarmak için yukarıdaki [komutu](#some-key-terminology) kullanın.
+5.  SSL sertifikasını kaydetmek istediğiniz dosyayı belirtin. Ardından **İleri**  >  **son**' u seçin. "Dışarı aktarma başarılı oldu" iletisini görmeniz gerekir.
+6.  Sertifikayı aldıktan sonra, sertifikayı bir Java keystore 'a aktarmaya zaman atalım. Sertifikaları içeri aktarmak için [önceki komutu](#key-terminology) kullanın.
 
 > [!WARNING]
-> Geçerli sertifikanın süresi dolmadan önce yeni sertifikayı almak için bu adımları yinelemeniz gerekecektir. Süre sonu bilgilerini aşağıda gösterildiği gibi sertifika açılan penceresinde "Ayrıntılar" sekmesinde bulabilirsiniz
-
-:::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL sertifikası ayrıntıları":::
+> Geçerli sertifikanın süresi dolmadan önce yeni sertifikayı almak için bu adımları yinelemeniz gerekir. Süre sonu bilgilerini **sertifika** Iletişim kutusunun **Ayrıntılar** sekmesinde bulabilirsiniz.
+>
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="SSL sertifikası ayrıntılarını gösteren ekran görüntüsü.":::

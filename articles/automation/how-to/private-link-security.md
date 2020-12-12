@@ -4,27 +4,27 @@ description: Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için
 author: mgoedtel
 ms.author: magoedte
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: a4985784a17f2e0350a7b2c7a4f62f574862d50c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26e7dbf3f5629d4691211b6c9b82446ba4035421
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91714356"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347635"
 ---
-# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation-preview"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın (Önizleme)
+# <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Ağları Azure Otomasyonu 'na güvenli bir şekilde bağlamak için Azure özel bağlantısı 'nı kullanın
 
 Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete özel olarak ve güvenle bağlayan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak Otomasyon hizmetini sanal ağınıza etkin bir şekilde getiriyor. VNet ve Otomasyon hesabı arasındaki ağ trafiği, VNet üzerinden ve Microsoft omurga ağındaki özel bir bağlantı üzerinden, genel İnternet 'ten etkilenme olasılığını ortadan kaldırır.
 
 Örneğin, giden internet erişimini devre dışı bıraktığınız bir sanal ağınız var. Ancak, Otomasyon hesabınıza özel olarak erişmek ve karma runbook çalışanları üzerinde Web kancaları, durum yapılandırması ve Runbook işleri gibi Otomasyon özelliklerini kullanmak istersiniz. Üstelik, kullanıcıların yalnızca VNET aracılığıyla Otomasyon hesabına erişimi olmasını istiyorsunuz.  Özel uç nokta dağıtımı bu hedeflere erişir.
 
-Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla (Önizleme) özel bir uç noktanın nasıl ayarlanacağı ele alınmaktadır.
+Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla özel bir uç noktanın nasıl ayarlanacağı ele alınmaktadır.
 
 ![Azure Otomasyonu için özel bağlantıya kavramsal genel bakış](./media/private-link-security/private-endpoints-automation.png)
 
 >[!NOTE]
-> Azure Otomasyonu ile özel bağlantı desteği (Önizleme) yalnızca Azure ticari ve Azure ABD kamu bulutlarında kullanılabilir.
+> Azure Otomasyonu ile özel bağlantı desteği yalnızca Azure ticari ve Azure ABD kamu bulutlarında kullanılabilir.
 
 ## <a name="advantages"></a>Avantajlar
 
@@ -34,7 +34,7 @@ Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla (Önizle
 - Herhangi bir genel ağ erişimi açmadan Azure Izleyici Log Analytics çalışma alanına özel olarak bağlanın.
 
     >[!NOTE]
-    >Otomasyon hesabınız iş verilerini iletmek için bir Log Analytics çalışma alanına bağlanmışsa ve Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter, durum yapılandırması veya VM'leri çalışma saatleri dışında başlat/durdur gibi özellikleri etkinleştirdiğinizde bu gereklidir. Azure Izleyici için özel bağlantı hakkında daha fazla bilgi için bkz. Azure [özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](../../azure-monitor/platform/private-link-security.md).
+    >Automation hesabınız iş verilerini iletmek için bir Log Analytics çalışma alanına bağlanmışsa ve Güncelleştirme Yönetimi, Değişiklik İzleme ve envanter, durum yapılandırması veya VM'leri çalışma saatleri dışında başlat/durdur gibi özellikleri etkinleştirdiğinizde Log Analytics çalışma alanınız için ayrı bir özel uç nokta gereklidir. Azure Izleyici için özel bağlantı hakkında daha fazla bilgi için bkz. Azure [özel bağlantı kullanarak ağları güvenli bir şekilde Azure izleyici 'ye bağlama](../../azure-monitor/platform/private-link-security.md).
 
 - Otomasyon verilerinize yalnızca yetkili özel ağlar aracılığıyla erişildiğinden emin olun.
 - Özel uç noktanızla bağlanan Azure Otomasyonu kaynağınızı tanımlayarak özel ağlarınızdan veri alımını önleyin.
@@ -43,17 +43,45 @@ Bu makalede, ' nin ne zaman kullanılacağı ve otomasyon hesabınızla (Önizle
 
 Daha fazla bilgi için bkz.  [özel bağlantının önemli avantajları](../../private-link/private-link-overview.md#key-benefits).
 
+## <a name="limitations"></a>Sınırlamalar
+
+- Özel bağlantının geçerli uygulamasında Otomasyon hesabı bulutu işleri, Özel uç nokta kullanılarak güvenliği sağlanmış Azure kaynaklarına erişemez. Örneğin, Azure Key Vault, Azure SQL, Azure depolama hesabı vb. Bunun geçici çözümü için bunun yerine [karma Runbook Worker](../automation-hybrid-runbook-worker.md) kullanın.
+- Windows veya Linux için [Log Analytics aracısının](../../azure-monitor/platform/log-analytics-agent.md) en son sürümünü kullanmanız gerekir.
+- [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) özel bağlantıyı desteklemez.
+
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure Otomasyonu özel bağlantısı, bir veya daha fazla özel uç noktayı (ve bu nedenle içerdikleri sanal ağları) Otomasyon hesabı kaynağına bağlar. Bu uç noktalar, bir runbook 'u başlatmak için Web kancaları kullanan makinelerdir, karma Runbook Worker rolünü barındıran makineler ve DSC düğümleri.
+Azure Otomasyonu özel bağlantısı, bir veya daha fazla özel uç noktayı (ve bu nedenle içerdikleri sanal ağları) Otomasyon hesabı kaynağına bağlar. Bu uç noktalar, bir runbook 'u başlatmak için Web kancaları kullanan makinelerdir, karma Runbook Worker rolünü barındıran makineler ve Istenen durum yapılandırması (DSC) düğümleri.
 
-Otomasyon için özel uç noktalar oluşturduktan sonra, siz veya bir makine doğrudan iletişim kurabildiğiniz, genel kullanıma açık Otomasyon URL 'lerinin her biri, VNet 'iniz içindeki bir özel uç noktaya eşlenir.
-
-Önizleme sürümünün bir parçası olarak, bir Otomasyon hesabı özel uç nokta kullanılarak güvenliği sağlanmış Azure kaynaklarına erişemez. Örneğin, Azure Key Vault, Azure SQL, Azure depolama hesabı vb.
+Otomasyon için özel uç noktalar oluşturduktan sonra, genel kullanıma açık Otomasyon URL 'lerinin her biri sanal ağınızdaki bir özel uç noktaya eşlenir. Siz veya bir makine doğrudan Otomasyon URL 'Lerine bağlantı sağlayabilir.
 
 ### <a name="webhook-scenario"></a>Web kancası senaryosu
 
 Web kancası URL 'sinde bir GÖNDERI yaparak runbook 'ları başlatabilirsiniz. Örneğin, URL şöyle görünür: `https://<automationAccountId>.webhooks.<region>.azure-automation.net/webhooks?token=gzGMz4SMpqNo8gidqPxAJ3E%3d`
+
+### <a name="hybrid-runbook-worker-scenario"></a>Karma Runbook Worker senaryosu
+
+Azure Otomasyonu 'nun Kullanıcı karma Runbook Worker özelliği, runbook 'ları doğrudan Azure 'da veya Azure 'da çalışan, Azure Arc etkinleştirilmiş sunucularla kayıtlı sunucular dahil olmak üzere Azure 'da çalıştırmanızı sağlar. Rolü barındıran makineden veya sunucudan runbook 'ları doğrudan üzerinde ve bu yerel kaynakları yönetmek için ortamdaki kaynaklara karşı çalıştırabilirsiniz.
+
+Bir JRDS uç noktası, karma çalışan tarafından Runbook 'ları başlatmak/durdurmak, runbook 'ları çalışana indirmek ve iş günlüğü akışını Automation hizmetine geri göndermek için kullanılır.JRDS uç noktasını etkinleştirdikten sonra URL şöyle görünür: `https://<automationaccountID>.jobruntimedata.<region>.azure-automation.net` . Bu, Azure sanal ağına bağlı karma çalışan üzerinde runbook yürütmenin, Internet 'e giden bir bağlantıyı açmaya gerek kalmadan işleri yürütebilmesini sağlar.  
+
+> [!NOTE]
+>Azure Otomasyonu için özel bağlantıların geçerli uygulamasıyla, yalnızca bir Azure sanal ağına bağlı olan karma Runbook Worker üzerinde çalışan işleri destekler ve bulut işlerini desteklemez.
+
+## <a name="hybrid-worker-scenario-for-update-management"></a>Güncelleştirme Yönetimi için karma çalışanı senaryosu  
+
+Sistem karma Runbook Worker, Windows ve Linux makinelerine Kullanıcı tarafından belirtilen güncelleştirmeleri yüklemek için tasarlanan Güncelleştirme Yönetimi özelliği tarafından kullanılan bir gizli runbook kümesini destekler. Azure Otomasyonu Güncelleştirme Yönetimi etkinleştirildiğinde, Log Analytics çalışma alanınıza bağlı tüm makineler otomatik olarak bir sistem karma runbook çalışanı olarak yapılandırılır.
+
+& [güncelleştirme yönetimi hakkında](../update-management/overview.md)güncelleştirme yönetimi gözden geçirmeyi anlamak için. Güncelleştirme Yönetimi özelliğinin bir Log Analytics çalışma alanına bağımlılığı vardır ve bu nedenle çalışma alanını bir Otomasyon hesabıyla bağlamayı gerektirir. Log Analytics çalışma alanı, çözüm tarafından toplanan verileri depolar ve günlük aramalarını ve görünümlerini barındırır.
+
+Güncelleştirme yönetimi için yapılandırılmış makinelerinizin özel bağlantı kanalı üzerinden güvenli bir şekilde Otomasyon & Log Analytics çalışma alanına bağlanmasını istiyorsanız, özel bağlantıyla yapılandırılmış Otomasyon hesabına bağlı Log Analytics çalışma alanı için özel bağlantıyı etkinleştirmeniz gerekir.
+
+[Yapılandırma Log Analytics](../../azure-monitor/platform/private-link-security.md#configure-log-analytics)' de açıklanan adımları izleyerek, bir Log Analytics çalışma alanının özel bağlantı kapsamları dışından nasıl erişilebilir olduğunu denetleyebilirsiniz. Alma **için genel ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, bağlı kapsamların dışındaki makineler bu çalışma alanına veri yükleyebilir. **Sorgular için ortak ağ erişimine Izin ver** ' i **Hayır** olarak ayarlarsanız, kapsamların dışındaki makineler bu çalışma alanındaki verilere erişemez.
+
+Kullanıcı & sistem karma çalışanları için özel bağlantıyı etkinleştirmek üzere **Dscandhyıbridworker** Target alt kaynağını kullanın.
+
+> [!NOTE]
+> Güncelleştirme Yönetimi tarafından yönetilen ve Azure dışında barındırılan makineler, Özel uç noktaları kullanan ExpressRoute özel eşlemesi, VPN tünelleri ve eşlenmiş sanal ağlar üzerinden Azure VNet 'e bağlanır.
 
 ### <a name="state-configuration-agentsvc-scenario"></a>Durum Yapılandırması (Agentsvc) senaryosu
 
@@ -73,11 +101,11 @@ Ağımızı bağlamak için özel bir uç nokta oluşturun. Bunu, [Azure Portal 
 
 Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksınız.
 
-1. Ekranın sol üst kısmında, **ağ > özel bağlantı merkezi (Önizleme) > kaynak oluştur**' u seçin.
+1. Ekranın sol üst kısmında, **özel bağlantı merkezi > ağ > kaynak oluştur**' u seçin.
 
-2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma**seçeneğinde, **Başlat**' ı seçin.
+2. **Özel bağlantı merkezi 'Ne genel bakış**' da, **bir hizmete özel bağlantı oluşturma** seçeneğinde, **Başlat**' ı seçin.
 
-3. **Sanal makine oluşturma-temel bilgiler**bölümünde aşağıdaki bilgileri girin veya seçin:
+3. **Sanal makine oluşturma-temel bilgiler** bölümünde aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -85,13 +113,13 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Abonelik | Aboneliğinizi seçin. |
     | Kaynak grubu | **myResourceGroup** öğesini seçin. Bu, önceki bölümde oluşturdunuz.  |
     | **ÖRNEK AYRıNTıLARı** |  |
-    | Adı | *Privateendpoint*girin. |
+    | Ad | *Privateendpoint* girin. |
     | Bölge | **Yourregion**' ı seçin. |
     |||
 
 4. **Sonraki: kaynak**' ı seçin.
 
-5. **Özel uç nokta oluştur-kaynak**bölümünde aşağıdaki bilgileri girin veya seçin:
+5. **Özel uç nokta oluştur-kaynak** bölümünde aşağıdaki bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
@@ -109,8 +137,8 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
     | Ayar | Değer |
     | ------- | ----- |
     |**AĞ**| |
-    | Sanal ağ| *MyVirtualNetwork*öğesini seçin. |
-    | Alt ağ | *Mysubnet*öğesini seçin. |
+    | Sanal ağ| *MyVirtualNetwork* öğesini seçin. |
+    | Alt ağ | *Mysubnet* öğesini seçin. |
     |**ÖZEL DNS TÜMLEŞTİRMESİ**||
     |Özel DNS bölgesi ile tümleştirme |**Evet**’i seçin. |
     |Özel DNS Bölgesi |Seç *(yeni) Privatelink. Azure-Automation.net* |
@@ -120,13 +148,13 @@ Bu bölümde, Otomasyon hesabınız için özel bir uç nokta oluşturacaksını
 
 9. **Doğrulama başarılı** iletisini gördüğünüzde **Oluştur**’u seçin.
 
-Özel **bağlantı merkezi 'nde (Önizleme)** özel bağlantı kaynağınızı görüntülemek için özel **uç noktalar** ' ı seçin.
+Özel **bağlantı merkezinde** özel **uç noktalar** ' ı seçerek özel bağlantı kaynağınızı görüntüleyin.
 
 ![Otomasyon kaynağı özel bağlantısı](./media/private-link-security/private-link-automation-resource.png)
 
-Tüm ayrıntıları görmek için kaynağı seçin. Bu, Otomasyon hesabınız için yeni bir özel uç nokta oluşturur ve sanal ağınızdan özel bir IP atar. **Bağlantı durumu** **Onaylandı**olarak gösterilir.
+Tüm ayrıntıları görmek için kaynağı seçin. Bu, Otomasyon hesabınız için yeni bir özel uç nokta oluşturur ve sanal ağınızdan özel bir IP atar. **Bağlantı durumu** **Onaylandı** olarak gösterilir.
 
-Benzer şekilde, durum yapılandırması (Agentsvc) ve karma Runbook Worker iş çalışma zamanı (jrds) için benzersiz bir tam etki alanı adı (FQDN) oluşturulur. Her birine sanal ağınızdan ayrı bir IP atanır ve **bağlantı durumu** **Onaylandı**olarak gösterilir.
+Benzer şekilde, durum yapılandırması (Agentsvc) ve karma Runbook Worker iş çalışma zamanı (jrds) için benzersiz bir tam etki alanı adı (FQDN) oluşturulur. Her birine sanal ağınızdan ayrı bir IP atanır ve **bağlantı durumu** **Onaylandı** olarak gösterilir.
 
 Hizmet tüketicisinin Otomasyon kaynağında Azure RBAC izinleri varsa, otomatik onay yöntemini seçebilirler. Bu durumda, istek Otomasyon sağlayıcı kaynağına ulaştığında, hizmet sağlayıcısından herhangi bir işlem yapmanız gerekmez ve bağlantı otomatik olarak onaylanır.
 
@@ -134,7 +162,7 @@ Hizmet tüketicisinin Otomasyon kaynağında Azure RBAC izinleri varsa, otomatik
 
 Bir Otomasyon hesabını tüm genel konfigürasyonları reddedecek şekilde yapılandırabilir ve yalnızca özel uç noktalar aracılığıyla ağ güvenliğini artırmak için bağlantılara izin verebilirsiniz. Otomasyon hesabına erişimi yalnızca VNet içinden kısıtlamak ve genel İnternet 'ten erişime izin vermek istiyorsanız `publicNetworkAccess` özelliği olarak ayarlayabilirsiniz `$false` .
 
-**Genel ağ erişimi** ayarı olarak ayarlandığında `$false` , yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir ve genel uç noktalar aracılığıyla tüm bağlantılar, unathorized hata ILETISIYLE ve 401 http durumuyla reddedilir. 
+**Genel ağ erişimi** ayarı olarak ayarlandığında `$false` , yalnızca özel uç noktalar aracılığıyla bağlantılara izin verilir ve genel uç noktalar aracılığıyla tüm bağlantılar yetkisiz bir hata ILETISIYLE ve 401 http durumuyla reddedilir.
 
 Aşağıdaki PowerShell betiği, `Get` `Set` Otomasyon hesabı düzeyinde nasıl ve **genel ağ erişim** özelliğinin nasıl yapılacağını gösterir:
 
@@ -144,6 +172,10 @@ $account.Properties | Add-Member -Name 'publicNetworkAccess' -Type NoteProperty 
 $account | Set-AzResource -Force -ApiVersion "2020-01-13-preview"
 ```
 
+Ayrıca, Azure portal ortak ağ erişimi özelliğini denetleyebilirsiniz. Otomasyon hesabınızdan, **Hesap ayarları** bölümünün altındaki sol bölmeden **ağ yalıtımı** ' nı seçin. Genel ağ erişimi ayarı **Hayır** olarak ayarlandığında, yalnızca özel uç noktalar üzerinden bağlantılara izin verilir ve genel uç noktalar üzerinden tüm bağlantılar reddedilir.
+
+![Genel ağ erişim ayarı](./media/private-link-security/allow-public-network-access.png)
+
 ## <a name="dns-configuration"></a>DNS yapılandırması
 
 Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak bir özel bağlantı kaynağına bağlanırken, DNS ayarlarınızı ayrılmış özel IP adresine çözümlemek üzere doğru şekilde yapılandırmak önemlidir. Mevcut Azure hizmetlerinde ortak bir uç nokta üzerinden bağlanılırken kullanılacak bir DNS yapılandırması zaten olabilir. DNS yapılandırmanızın özel uç noktanız kullanılarak bağlanacak şekilde incelenmesi ve güncellenmesi gerekir.
@@ -152,7 +184,7 @@ Bağlantı dizesinin bir parçası olarak tam etki alanı adı (FQDN) kullanarak
 
 Özel uç noktalar için DNS ayarlarınızı yapılandırmak üzere aşağıdaki seçenekleri kullanabilirsiniz:
 
-* Ana bilgisayar dosyasını kullanın (yalnızca test için önerilir). Önce ad çözümlemesi için DNS kullanarak geçersiz kılmak üzere bir sanal makinede ana bilgisayar dosyasını kullanabilirsiniz.
+* Ana bilgisayar dosyasını kullanın (yalnızca test için önerilir). Önce ad çözümlemesi için DNS kullanarak geçersiz kılmak üzere bir sanal makinede ana bilgisayar dosyasını kullanabilirsiniz. DNS girişiniz aşağıdaki örnekteki gibi görünmelidir: `privatelinkFQDN.jrds.sea.azure-automation.net` .
 
 * Özel bir [DNS bölgesi](../../dns/private-dns-privatednszone.md)kullanın. Belirli bir özel uç nokta için DNS çözümlemesini geçersiz kılmak üzere özel DNS bölgelerini kullanabilirsiniz. Özel bir DNS bölgesi, belirli etki alanlarını çözümlemek için sanal ağınıza bağlanabilir. Sanal makinenizde aracının özel uç nokta üzerinden iletişim kurmasını sağlamak için, olarak Özel DNS bir kayıt oluşturun `privatelink.azure-automation.net` . Özel uç noktanın IP 'si için yeni *BIR DNS a* kaydı eşlemesi ekleyin.
 

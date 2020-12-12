@@ -8,12 +8,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.custom: data4ml
+ms.openlocfilehash: f14e120fb7373cc80b9d6e23f155dd964b37a551
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96324729"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347974"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Etiketleme projesindeki resimleri etiketleme 
 
@@ -121,7 +122,7 @@ Varsayılan olarak, varolan sınırlayıcı kutuları düzenleyebilirsiniz. **Ki
 
 **Bölge işleme** aracını kullanın ![ Bu bölge işleme aracı simgelerdir. merkezden, yukarı, sağa, aşağı ve sola doğru işaret eden dört ok.](./media/how-to-label-images/regions-tool.png) ya da "e", varolan bir sınırlayıcı kutuyu ayarlamak için. Şekli ayarlamak için kenarları veya köşeleri sürükleyin. Tüm sınırlayıcı kutusunu sürüklemek için iç öğesine tıklayın. Bir bölgeyi düzenleyemezsiniz, büyük olasılıkla bir bölgeyi **Kilitle/kilidini aç** aracını atlayabilirsiniz.
 
-**Template-based box** ![ ](./media/how-to-label-images/template-box-tool.png) Aynı boyutta birden fazla sınırlayıcı kutu oluşturmak için şablon tabanlı kutu aracı şablon kutusu aracını veya "T" kullanın. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
+ ![ ](./media/how-to-label-images/template-box-tool.png) Aynı boyutta birden fazla sınırlayıcı kutu oluşturmak için şablon tabanlı kutu aracı şablon kutusu aracını veya "T" kullanın. Görüntüde hiçbir sınırlayıcı kutu yoksa ve şablon tabanlı kutuları etkinleştirirseniz, araç 50-50 piksel kutu üretir. Bir sınırlayıcı kutusu oluşturup şablon tabanlı kutuları etkinleştirirseniz, yeni sınırlama kutuları oluşturduğunuz son kutunun boyutu olur. Şablon tabanlı kutular, yerleştirme sonrasında yeniden boyutlandırılabilir. Şablon tabanlı bir kutunun yeniden boyutlandırılması yalnızca belirli bir kutuyu yeniden boyutlandırır.
 
 Geçerli görüntüdeki *Tüm* sınırlayıcı kutuları silmek için **tüm bölgeleri Sil** araç ![ bölgelerini Sil aracını seçin ](./media/how-to-label-images/delete-regions-tool.png) .
 
@@ -132,7 +133,7 @@ Bir görüntü için sınırlayıcı kutuları oluşturduktan sonra, çalışman
 Projeniz "örnek kesimleme (çokgen)" türündedir, görüntüde bir veya daha fazla poligonu belirtip her bir çokgen için bir etiket uygularsınız. Görüntülerde, her biri tek etiketli birden çok sınırlayıcı Çokgen olabilir. Projenizde birden çok sınırlayıcı poligonun kullanıldığını anlamak için **ayrıntılı yönergeleri görüntüle** ' i kullanın.
 
 1. Oluşturmayı planladığınız Çokgen için bir etiket seçin.
-1. Çokgen bölgesi **Draw polygon region** aracı çiz araç alanı ![ Çokgen ](./media/how-to-label-images/polygon-tool.png) veya "P" seçeneğini belirleyin.
+1. Çokgen bölgesi  aracı çiz araç alanı ![ Çokgen ](./media/how-to-label-images/polygon-tool.png) veya "P" seçeneğini belirleyin.
 1. Poligon her bir nokta için tıklayın.  Şekli tamamladıktan sonra, son ' a çift tıklayın.
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Kedi ve köpek için çokgenler oluşturun":::

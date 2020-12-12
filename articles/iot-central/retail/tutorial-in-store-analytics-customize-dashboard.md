@@ -11,17 +11,17 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/12/2019
-ms.openlocfilehash: 47edaec54a2470e9b657b2f214be923439e1e8a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5165f7d6e16e0d136dbf8d4507090c78372185cb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81000122"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348059"
 ---
 # <a name="tutorial--customize-the-operator-dashboard-and-manage-devices-in-azure-iot-central"></a>Öğretici: işletmen panosunu özelleştirme ve Azure IoT Central cihazları yönetme
 
 
-Bu öğreticide, bir Oluşturucu olarak Azure IoT Central mağaza içi analiz uygulamanızda operatör panosunu özelleştirmeyi öğrenin. Uygulama işleçleri, uygulamayı çalıştırmak ve ekli cihazları yönetmek için özelleştirilmiş panoyu kullanabilir.
+Bu öğreticide, bir Oluşturucu olarak, Azure IoT Central mağaza içi analiz uygulamanızda operatör panosunu özelleştirmeyi öğreneceksiniz. Uygulama işleçleri, uygulamayı çalıştırmak ve ekli cihazları yönetmek için özelleştirilmiş panoyu kullanabilir.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Cihaz ayrıntılarını göstermek için özellik kutucukları ekleyin
 > * Çalıştır komutlarına komut kutucukları ekleyin
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Oluşturucunun Azure IoT Central mağaza içi analiz uygulaması oluşturmak ve cihaz eklemesi için öğreticiyi tamamlaması gerekir:
 
@@ -70,9 +70,9 @@ Panoda marka resmi görüntüleyen görüntü kutucuğunu özelleştirmek için:
 
     ![Azure IoT Central marka görüntüsünü düzenleme](./media/tutorial-in-store-analytics-customize-dashboard/brand-image-edit.png)
 
-1. **Başlığı**değiştirin. Bir Kullanıcı görüntünün üzerine geldiğinde başlık görüntülenir.
+1. **Başlığı** değiştirin. Bir Kullanıcı görüntünün üzerine geldiğinde başlık görüntülenir.
 
-1. **Görüntü**seçin. Bir iletişim kutusu açılır ve özel bir görüntü yüklemeniz sağlanır. 
+1. **Görüntü** seçin. Bir iletişim kutusu açılır ve özel bir görüntü yüklemeniz sağlanır. 
 
 1. İsteğe bağlı olarak, görüntü için bir URL belirtin.
 
@@ -80,7 +80,7 @@ Panoda marka resmi görüntüleyen görüntü kutucuğunu özelleştirmek için:
 
     ![Azure IoT Central marka görüntüsünü Kaydet](./media/tutorial-in-store-analytics-customize-dashboard/brand-image-save.png)
 
-1. İsteğe bağlı olarak, **Belgeler**başlıklı kutucukta **Yapılandır** ' ı seçin ve destek içeriği için bir URL belirtin. 
+1. İsteğe bağlı olarak, **Belgeler** başlıklı kutucukta **Yapılandır** ' ı seçin ve destek içeriği için bir URL belirtin. 
 
 Depodaki algılayıcı bölgelerinin haritasını görüntüleyen görüntü kutucuğunu özelleştirmek için:
 
@@ -107,13 +107,13 @@ Uygulamanızda kullanmayı planlamadığınız kutucukları kaldırmak için:
 
 1. Pano araç çubuğunda **Düzenle** ' yi seçin. 
 
-1. Aşağıdaki kutucukları kaldırmak için **X Delete** ' i seçin: **tüm bölgelere geri döndüğünüzde**mağaza panosu, **bekleme süresi**ve **kullanıma alma 3**ile ilişkili üç kutucuk **ziyaret edin**. Contoso mağaza panosu Bu kutucukları kullanmaz. 
+1. Aşağıdaki kutucukları kaldırmak için **X Delete** ' i seçin: **tüm bölgelere geri döndüğünüzde** mağaza panosu, **bekleme süresi** ve **kullanıma alma 3** ile ilişkili üç kutucuk **ziyaret edin**. Contoso mağaza panosu Bu kutucukları kullanmaz. 
 
     ![Azure IoT Central kutucukları silme](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles.png)
 
 1. Kalan Pano kutucuklarını görünüme getirmek için kaydırın.
 
-1. Aşağıdaki kutucukları kaldırmak için **X Delete** ' i seçin: **Isınma kullanıma alma bölgesi**, seyrek erişimli **kullanıma alma bölgesi**, **doluluk algılayıcısı ayarları**, **termostat algılayıcı ayarları**ve **ortam koşulları**. 
+1. Aşağıdaki kutucukları kaldırmak için **X Delete** ' i seçin: **Isınma kullanıma alma bölgesi**, seyrek erişimli **kullanıma alma bölgesi**, **doluluk algılayıcısı ayarları**, **termostat algılayıcı ayarları** ve **ortam koşulları**. 
 
    ![Azure IoT Central kalan kutucukları Sil](./media/tutorial-in-store-analytics-customize-dashboard/delete-tiles-2.png)
 
@@ -162,7 +162,7 @@ RuuviTag sensörlerinden çevresel verileri görüntüleyen kutucuklar eklemek i
 
 1. RuuviTag algılayıcısı için yeni kutucukta **Yapılandır** ' ı seçin. 
 
-1. **Başlığı** *bölge 1 ortamı*olarak değiştirin. 
+1. **Başlığı** *bölge 1 ortamı* olarak değiştirin. 
 
 1. **Güncelleştirme yapılandırması**' nı seçin.
 
@@ -182,13 +182,13 @@ Yalnızca iki kullanıma alma bölgesi için telemetri göstermek üzere **kişi
 
 1. **Kişiler trafik** kutucuğunda **Yapılandır** ' ı seçin.
 
-1. **Telemetri** ' te **sayı 1**, **Sayı 2**ve **Sayı 3**' ü seçin. 
+1. **Telemetri** ' te **sayı 1**, **Sayı 2** ve **Sayı 3**' ü seçin. 
 
 1. **Güncelleştirme yapılandırması**' nı seçin. Kutucukta varolan yapılandırmayı temizler. 
 
 1. **Kişiler trafik** kutucuğunda yeniden **Yapılandır** ' ı seçin.
 
-1. **Telemetri** ' de, **sayı 1**ve **Sayı 2**' yi seçin. 
+1. **Telemetri** ' de, **sayı 1** ve **Sayı 2**' yi seçin. 
 
 1. **Güncelleştirme yapılandırması**' nı seçin. 
 
@@ -211,9 +211,9 @@ Her RuuviTag için bir özellik kutucuğu eklemek için:
 
 1. **Birleştir**' i seçin. 
 
-1. **Yazılım sürümü**başlıklı yeni oluşturulan kutucukta **Yapılandır** ' ı seçin. 
+1. **Yazılım sürümü** başlıklı yeni oluşturulan kutucukta **Yapılandır** ' ı seçin. 
 
-1. **Başlığı** *ruuvi 1 yazılım sürümü*olarak değiştirin.
+1. **Başlığı** *ruuvi 1 yazılım sürümü* olarak değiştirin.
 
 1. **Güncelleştirme yapılandırması**' nı seçin. 
 
@@ -234,7 +234,7 @@ Ağ geçidini yeniden başlatmak için bir komut kutucuğu eklemek için:
 
 1. `C500` **Cihaz şablonu listesinde öğesini** seçin. Bu, Rigado C500 ağ geçidi şablonudur. 
 
-1. **Cihaz örneğindeki**ağ geçidi örneğini seçin.
+1. **Cihaz örneğindeki** ağ geçidi örneğini seçin.
 
 1. **Yeniden başlatma > komutu** seçin ve mağaza haritasının yanındaki panoya sürükleyin. 
 
