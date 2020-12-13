@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: bf4d0a845b7f26c82ba3940d6613a33bcacf9187
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5734591bfc48469eacc1ad39cbb89f3850bfc8c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448323"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97367075"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Başarısız Azure Stack Edge Pro GPU cihazından kurtarma 
 
@@ -35,12 +35,12 @@ Başarısız olan cihazdan yedeklediğiniz cihaz yapılandırma bilgilerini alı
 
 Değiştirme cihazını yapılandırmak için aşağıdaki adımları izleyin:
 
-1. [Dağıtım denetim listesinde](azure-stack-edge-gpu-deploy-checklist.md)gereken bilgileri toplayın. Önceki cihaz yapılandırmasından kaydettiğiniz bilgileri kullanmanız gerekir. 
+1. [Dağıtım denetim listesinde](azure-stack-edge-gpu-deploy-checklist.md)gereken bilgileri toplayın. Önceki cihaz yapılandırmasından kaydettiğiniz bilgileri kullanabilirsiniz. 
 1. Başarısız olan yapılandırmayla aynı yapılandırmaya sahip yeni bir cihaz sıralayın.  Bir sipariş yerleştirmek için, Azure portal [Yeni bir Azure Stack Edge kaynağı oluşturun](azure-stack-edge-gpu-deploy-prep.md#) .
 1. [Paketi](azure-stack-edge-gpu-deploy-install.md#unpack-the-device)açın, [raf takın](azure-stack-edge-gpu-deploy-install.md#rack-the-device) ve [cihazınızı bağlayın](azure-stack-edge-gpu-deploy-install.md#cable-the-device). 
 1. [Cihazın yerel kullanıcı arabirimine bağlanın](azure-stack-edge-gpu-deploy-connect.md).
-1. Ağı, eski cihazınız için kullandığınız IP adreslerini kullanarak yapılandırın. Bu, ortamınızda kullanılan tüm istemci makinelerde etkiyi en aza indirir. Bkz. [ağ ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
-1. Eski cihazınız ile aynı cihaz adı ve DNS etki alanını atayın. Bu, istemcilerinizin yeni cihazla konuşmak için aynı cihaz adını kullanmasını sağlar. Bkz. [cihaz ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-set-up-device-update-time.md).
+1. Ağı, eski cihazınız için kullandığınız IP adreslerini kullanarak yapılandırın. Aynı IP adreslerini kullanmak ortamınızda kullanılan tüm istemci makinelerde etkiyi en aza indirir. Bkz. [ağ ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+1. Eski cihazınız ile aynı cihaz adı ve DNS etki alanını atayın. Bu şekilde, istemcileriniz yeni cihazla konuşmak için aynı cihaz adını kullanabilir. Bkz. [cihaz ayarlarını yapılandırma](azure-stack-edge-gpu-deploy-set-up-device-update-time.md).
 1. Yeni cihazdaki sertifikaları eski cihazla yaptığınız şekilde yapılandırın. Yeni cihazın yeni bir düğüm seri numarası olduğunu aklınızda bulundurun. Eski cihazda kendi sertifikalarınızı kullandıysanız yeni bir düğüm sertifikası almanız gerekecektir. Bkz. [sertifikaları yapılandırma](azure-stack-edge-gpu-deploy-configure-certificates.md).
 1. Azure portal etkinleştirme anahtarını alın ve yeni cihazı etkinleştirin. Bkz. [cihazı etkinleştirme](azure-stack-edge-gpu-deploy-activate.md).
 
@@ -62,12 +62,13 @@ Olası bir cihaz hatasına hazırlanmak için, Kubernetes veya IoT iş yüklerin
 | Üçüncü taraf yazılım           | Çözüme başvuru                               |
 |--------------------------------|---------------------------------------------------------|
 | Cohesity                       | [https://www.cohesity.com/solution/cloud/azure/](https://www.cohesity.com/solution/cloud/azure/) <br> Ayrıntılar için Cohesity başvurun.          |
-| Commvault                      | https://www.commvault.com/azure <br> Ayrıntılar için, Commkasaya başvurun. |
-| Veritas                        | http://veritas.com/azure <br> Ayrıntılar için VERITAS ile iletişim kurun.   |
+| Commvault                      | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br> Ayrıntılar için, Commkasaya başvurun. |
+| Veritas                        | [http://veritas.com/azure](http://veritas.com/azure) <br> Ayrıntılar için VERITAS ile iletişim kurun.   |
+| Veeam                          | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> Ayrıntılar için, Veead ile iletişim kurun. |
 
 Değiştirme aygıtı tam olarak yapılandırıldıktan sonra, cihazı yerel depolama için etkinleştirin. 
 
-Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin: 
+Yerel paylaşımlardaki verileri kurtarmak için şu adımları izleyin:
 
 1. [Cihazda Işlem yapılandırma](azure-stack-edge-gpu-deploy-configure-compute.md).
 1. [Yerel bir paylaşımdan geri ekleyin](azure-stack-edge-j-series-manage-shares.md#add-a-local-share) .
@@ -82,9 +83,10 @@ Potansiyel bir cihaz hatasına hazırlanmak için, VM 'lerdeki verileri korumak 
 | Yedekleme çözümleri        | Desteklenen işletim sistemi   | Başvuru                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
 | Azure Backup için Microsoft Azure Kurtarma Hizmetleri (MARS) Aracısı | Windows        | [MARS aracısı hakkında](../backup/backup-azure-about-mars.md)    |
-| Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme ve kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |
-| Commvault               | Windows, Linux | https://www.commvault.com/azure <br> Ayrıntılar için, Commkasaya başvurun.
-| Veritas                 | Windows, Linux | http://veritas.com/azure <br> Ayrıntılar için VERITAS ile iletişim kurun.                    |
+| Cohesity                | Windows, Linux | [Microsoft Azure tümleştirme, yedekleme & kurtarma çözümü kısa](https://www.cohesity.com/solution/cloud/azure) <br>Ayrıntılar için Cohesity başvurun.                          |
+| Commvault               | Windows, Linux | [https://www.commvault.com/azure](https://www.commvault.com/azure) <br> Ayrıntılar için, Commkasaya başvurun.
+| Veritas                 | Windows, Linux | [https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-edge-with-NetBackup/ba-p/883370](https://vox.veritas.com/t5/Protection/Protecting-Azure-Stack-edge-with-NetBackup/ba-p/883370) <br> Ayrıntılar için VERITAS ile iletişim kurun.                    |
+| Veeam                   | Windows, Linux | [https://www.veeam.com/kb4041](https://www.veeam.com/kb4041) <br> Ayrıntılar için, Veead ile iletişim kurun. |
 
 Değiştirme aygıtı tam olarak yapılandırıldıktan sonra VM 'Leri daha önce kullanılan VM görüntüsü ile yeniden dağıtabilirsiniz. 
 
@@ -94,6 +96,10 @@ VM 'lerdeki verileri kurtarmak için şu adımları izleyin:
 1. SANAL makineye tercih edilen veri koruma çözümünü yükler.
 1. Tercih edilen veri koruma çözümü tarafından sunulan kurtarma yordamını çalıştırın. Yukarıdaki tablodaki başvurulara bakın.
 
+## <a name="restore-a-kubernetes-deployment"></a>Kubernetes dağıtımını geri yükleme
+
+Kubernetes dağıtımınızı Azure Arc aracılığıyla gerçekleştirdiyseniz, toleransı olmayan bir cihaz hatasından sonra dağıtımı geri yükleyebilirsiniz. Müşteri uygulamasını/kapsayıcıları `git` uygulama tanımının depolandığı depodan yeniden dağıtmanız gerekir. [Azure Arc ile Kubernetes dağıtma hakkında bilgi](./azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)<!--Original text: Kubernetes deployments can be restored from a non-tolerated failure with the device when deployed with Azure Arc. Customer application/containers deployed onto a Kubernetes on Azure Stack Edge via Azure Arc can be redeployed from the git repository where the application definition is. Here is a link to the article to deploy Kubernetes with Arc -->
+ 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Stack Edge Pro cihazının nasıl döneceğinizi](azure-stack-edge-return-device.md)öğrenin.

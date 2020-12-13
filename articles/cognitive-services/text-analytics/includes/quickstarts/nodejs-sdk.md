@@ -6,16 +6,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3de8954bcbe648fcb7f5cb0f50d9694de92baeb4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 69a7e63a5dcd892c1085367bd9747ffae9a835bf
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94978528"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366323"
 ---
 <a name="HOLTop"></a>
 
@@ -35,13 +35,14 @@ ms.locfileid: "94978528"
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Node.js](https://nodejs.org/)geçerli sürümü.
 * Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Çözümle özelliğini kullanmak için standart fiyatlandırma katmanına sahip bir Metin Analizi kaynağına ihtiyacınız olacaktır.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -67,7 +68,7 @@ npm init
 `@azure/ai-text-analytics`NPM paketlerini yüklerken:
 
 ```console
-npm install --save @azure/ai-text-analytics@5.1.0-beta.1
+npm install --save @azure/ai-text-analytics@5.1.0-beta.3
 ```
 
 > [!TIP]
@@ -214,7 +215,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -276,7 +277,7 @@ sentimentAnalysisWithOpinionMining(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -341,7 +342,7 @@ sentimentAnalysis(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -365,7 +366,7 @@ ID: 0
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 [ { id: '1', score: 0.87 } ]
@@ -400,7 +401,7 @@ languageDetection(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -429,7 +430,7 @@ languageDetection(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -444,7 +445,7 @@ Belgelerinizi içeren sözlük nesnelerinin bir listesini oluşturun. İstemcini
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1 , Language: English
@@ -486,7 +487,7 @@ entityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -535,7 +536,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -590,7 +591,7 @@ piiRecognition(textAnalyticsClient)
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text:  The employee's phone number is **************.
@@ -628,7 +629,7 @@ entityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -677,7 +678,7 @@ linkedEntityRecognition(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 0
@@ -714,7 +715,7 @@ Belgelerinizi içeren bir nesne listesi oluşturun. İstemcinin [Entities ()](/j
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1
@@ -770,7 +771,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -799,7 +800,7 @@ keyPhraseExtraction(textAnalyticsClient);
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ID: 0
@@ -814,7 +815,7 @@ Belgelerinizi içeren bir nesne listesi oluşturun. İstemcinin [keyPhrases ()](
 
 Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 [
@@ -824,6 +825,71 @@ Kodunuzu `node index.js` konsol pencerenizde çalıştırın.
     { id: '3', keyPhrases: [ 'fútbol' ] }
 ]
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Çözümleme işlemi ile API 'YI zaman uyumsuz olarak kullanma
+
+# <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
+
+> [!CAUTION]
+> Analiz işlemlerini kullanmak için standart fiyatlandırma katmanıyla bir Metin Analizi kaynağı kullanmanız gerekir.  
+
+İşlevini çağıran, adlı yeni bir işlev oluşturun `analyze_example()` `beginAnalyze()` . Sonuç, sonuçlar için yoklamak üzere uzun süren bir işlem olacaktır.
+
+```javascript
+const documents = [
+  "Microsoft was founded by Bill Gates and Paul Allen.",
+];
+
+async function analyze_example(client) {
+  console.log("== Analyze Sample ==");
+
+  const tasks = {
+    entityRecognitionTasks: [{ modelVersion: "latest" }]
+  };
+  const poller = await client.beginAnalyze(documents, tasks);
+  const resultPages = await poller.pollUntilDone();
+
+  for await (const page of resultPages) {
+    const entitiesResults = page.entitiesRecognitionResults![0];
+    for (const doc of entitiesResults) {
+      console.log(`- Document ${doc.id}`);
+      if (!doc.error) {
+        console.log("\tEntities:");
+        for (const entity of doc.entities) {
+          console.log(`\t- Entity ${entity.text} of type ${entity.category}`);
+        }
+      } else {
+        console.error("  Error:", doc.error);
+      }
+    }
+  }
+}
+
+analyze_example(textAnalyticsClient);
+```
+
+### <a name="output"></a>Çıktı
+
+```console
+== Analyze Sample ==
+- Document 0
+        Entities:
+        - Entity Microsoft of type Organization
+        - Entity Bill Gates of type Person
+        - Entity Paul Allen of type Person
+```
+
+PII ve anahtar tümceciği ayıklamayı algılamak için Çözümle işlemini de kullanabilirsiniz. GitHub 'da [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/javascript/beginAnalyze.js) ve [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/textanalytics/ai-text-analytics/samples/typescript/src/beginAnalyze.ts) için örnekleri çözümle bölümüne bakın.
+
+# <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+Bu özellik 3,0 sürümünde kullanılamaz.
+
+# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+
+Bu özellik 2,1 sürümünde kullanılamaz.
 
 ---
 

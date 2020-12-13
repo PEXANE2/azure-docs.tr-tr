@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287347"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368724"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Windows Masaüstü istemcisine bağlanma
 
@@ -32,7 +32,7 @@ Windows sürümünüzle eşleşen istemciyi seçin:
 
 Yönetici hakları gerektirmeyen geçerli kullanıcı için istemcisini yükleyebilir veya yöneticiniz, cihazdaki tüm kullanıcıların erişebilmesi için istemciyi yükleyip yapılandırabilir.
 
-Yüklendikten sonra istemci, **Uzak Masaüstü**araması yaparak başlangıç menüsünden başlatılabilir.
+Yüklendikten sonra istemci, **Uzak Masaüstü** araması yaparak başlangıç menüsünden başlatılabilir.
 
 > [!IMPORTANT]
 > Windows sanal masaüstü, RemoteApp ve Masaüstü bağlantıları (ÇDC) istemcisini veya Uzak Masaüstü Bağlantısı (MSTSC) istemcisini desteklemez.
@@ -57,7 +57,7 @@ Bir çalışma alanına abone olabileceğiniz iki yol vardır. İstemci, iş vey
 
 1. İstemcinin ana sayfasında **URL Ile abone ol**' u seçin.
 2. Çalışma alanı URL 'sini veya e-posta adresinizi girin:
-   - **Çalışma alanı URL 'sini**kullanıyorsanız, yöneticinizin size verdiği bir tane kullanın. Windows sanal masaüstünden kaynaklara erişim için aşağıdaki URL 'Lerden birini kullanabilirsiniz:
+   - **Çalışma alanı URL 'sini** kullanıyorsanız, yöneticinizin size verdiği bir tane kullanın. Windows sanal masaüstünden kaynaklara erişim için aşağıdaki URL 'Lerden birini kullanabilirsiniz:
      - Windows sanal masaüstü (klasik): `https://rdweb.wvd.microsoft.com/api/feeddiscovery/webfeeddiscovery.aspx`
      - Windows sanal masaüstü: `https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery`
      - Windows sanal masaüstü (US Gov): `https://rdweb.wvd.azure.us/api/arm/feeddiscovery`
@@ -69,3 +69,5 @@ Bir çalışma alanına abone olabileceğiniz iki yol vardır. İstemci, iş vey
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Windows Masaüstü istemcisinin nasıl kullanılacağı hakkında daha fazla bilgi edinmek için, [Windows Masaüstü istemcisi ile çalışmaya başlama](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/)konusunu inceleyin.
+
+Windows Masaüstü kullanma hakkında daha ayrıntılı bilgi edinmek isteyen bir yöneticileriniz varsa, [Yöneticiler Için Windows Masaüstü istemcisi](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin)' ne göz atın.

@@ -52,7 +52,7 @@
               href: ../../synapse-analytics/sql-data-warehouse/quickstart-arm-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: Blok zinciri
           items:
-            - name: Blok zinciri
+            - name: Blok Zinciri
               href: ../../blockchain/service/create-member-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: İşlem
           items:
@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Kaynaklar
   items:
+    - name: Microsoft Learn ile becerilerinizi geliştirin
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure Hızlı Başlangıç Şablonları
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure Yol Haritası

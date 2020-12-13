@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5cd518828668ed20a4fa7be0cd6c9798a013055a
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909599"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369183"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell kullanarak Azure özel rolleri oluşturma veya güncelleştirme
 
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 Özel bir rol oluşturmak için PowerShell kullandığınızda, [yerleşik rollerden](built-in-roles.md) birini başlangıç noktası olarak kullanabilir veya sıfırdan başlayabilirsiniz. Bu bölümdeki ilk örnek, yerleşik bir rolle başlar ve daha sonra daha fazla izinle özelleştirir. İstediğiniz, veya öğesini eklemek için özniteliklerini düzenleyin `Actions` `NotActions` `AssignableScopes` ve ardından değişiklikleri yeni bir rol olarak kaydedin.
 
-Aşağıdaki örnek, sanal makine [katılımcısı](built-in-roles.md#virtual-machine-contributor) adlı yerleşik rol ile başlar ve *sanal makine operatörü* adlı özel bir rol oluşturulur. Yeni rol, *Microsoft. COMPUTE* , *Microsoft. Storage* ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim verir ve sanal makineleri başlatma, yeniden başlatma ve izleme erişimi verir. Özel rol iki abonelik için kullanılabilir.
+Aşağıdaki örnek, sanal makine [katılımcısı](built-in-roles.md#virtual-machine-contributor) adlı yerleşik rol ile başlar ve *sanal makine operatörü* adlı özel bir rol oluşturulur. Yeni rol, *Microsoft. COMPUTE*, *Microsoft. Storage* ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim verir ve sanal makineleri başlatma, yeniden başlatma ve izleme erişimi verir. Özel rol iki abonelik için kullanılabilir.
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -403,4 +403,4 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 - [Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma](tutorial-custom-role-powershell.md)
 - [Özel Azure rolleri](custom-roles.md)
-- [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+- [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

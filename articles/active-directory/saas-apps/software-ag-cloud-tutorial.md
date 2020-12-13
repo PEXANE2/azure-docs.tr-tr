@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/20/2020
+ms.date: 12/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 144263835e129c3571dcc5c2f8e8bde03dca9a0e
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602079"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369353"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Öğretici: Software AG bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -145,15 +145,12 @@ Bu bölümde, yazılım AG bulutu 'nda Britta Simon adlı bir Kullanıcı oluşt
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı Aşağıdaki seçenekle test edersiniz. 
 
-* Microsoft Azure, yazılım AG bulutu 'nda bir sağlayıcı olarak yapılandırıldığı varsayılarak, öğesine gidin `www.softwareag.cloud` ve oturum aç düğmesine tıklayın ve ortam adını girin. Sonraki ekranda, "oturum aç <IDP NAME> " bağlantısına tıklayın ve kimlik bilgilerini girin. Kimliği doğrulandıktan sonra, oturum açılır ve yazılım AG bulutu giriş sayfasına yönlendirilirsiniz.
-
-* Yazılım AG bulutu oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
-
-* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım ' da yazılım AG bulutu kutucuğuna tıkladığınızda bu, Software AG bulutu oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
-
+Microsoft Azure, yazılım AG bulutu 'nda bir sağlayıcı olarak yapılandırıldığı varsayılarak, öğesine gidin `www.softwareag.cloud` ve oturum aç düğmesine tıklayın ve ortam adını girin. Sonraki ekranda, "oturum aç <IDP NAME> " bağlantısına tıklayın ve kimlik bilgilerini girin. Kimliği doğrulandıktan sonra, oturum açılır ve yazılım AG bulutu giriş sayfasına yönlendirilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Software AG bulutu 'nı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+Software AG bulutu 'nı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+

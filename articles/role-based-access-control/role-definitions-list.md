@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5421efc96b957f5ae96515bbcf17c8a773397c9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9dad8ffc9971894a2777e8bda9bcf6d78eee00a9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368256"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369285"
 ---
 # <a name="list-azure-role-definitions"></a>Azure rol tanımlarını listeleyin
 
@@ -33,7 +33,7 @@ Azure Active Directory için Yönetici rollerinin listesini görmek için, [Azur
 
 Azure portal tüm rolleri listelemek için aşağıdaki adımları izleyin.
 
-1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları**veya bir kaynak seçebilirsiniz.
+1. Azure portal, **tüm hizmetler** ' e tıklayın ve ardından herhangi bir kapsamı seçin. Örneğin, **Yönetim grupları**, **abonelikler**, **kaynak grupları** veya bir kaynak seçebilirsiniz.
 
 1. Belirli kaynağa tıklayın.
 
@@ -351,12 +351,12 @@ Rol tanımlarını listelemek için, [rol tanımları-liste](/rest/api/authoriza
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Kaynak grubu |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Kaynak |
 
-    Önceki örnekte, Microsoft. Web bir App Service örneğine başvuran bir kaynak sağlayıcıdır. Benzer şekilde, diğer herhangi bir kaynak sağlayıcısını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) ve desteklenen [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md).  
+    Önceki örnekte, Microsoft. Web bir App Service örneğine başvuran bir kaynak sağlayıcıdır. Benzer şekilde, diğer herhangi bir kaynak sağlayıcısını kullanabilir ve kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md) ve desteklenen [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md).  
      
 1. *{Filter}* değerini, rol tanımı listesini filtrelemek için uygulamak istediğiniz koşulla değiştirin.
 
     > [!div class="mx-tableFixed"]
-    > | Filtre | Description |
+    > | Filtre | Açıklama |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Belirtilen kapsam ve tüm alt kapsamlar için rol tanımlarını listeler. |
     > | `$filter=type+eq+'{type}'` | Belirtilen türdeki rol tanımlarını listeler. Rol türü `CustomRole` veya olabilir `BuiltInRole` . |

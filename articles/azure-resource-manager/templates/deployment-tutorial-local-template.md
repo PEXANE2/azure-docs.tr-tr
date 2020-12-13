@@ -1,22 +1,22 @@
 ---
 title: Öğretici-yerel bir Azure Resource Manager şablonu dağıtma
-description: Yerel bilgisayarınızdan Azure Resource Manager şablonu dağıtmayı öğrenin
+description: Yerel bilgisayarınızdan bir Azure Resource Manager şablonu (ARM şablonu) dağıtmayı öğrenin
 ms.date: 05/20/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: fe13376ced428713703f2bd5cf33941129dec1d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 640d314711e34119dac5e1c5bf9fa245685b6f38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611631"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368146"
 ---
-# <a name="tutorial-deploy-a-local-azure-resource-manager-template"></a>Öğretici: yerel bir Azure Resource Manager şablonu dağıtma
+# <a name="tutorial-deploy-a-local-arm-template"></a>Öğretici: yerel bir ARM şablonu dağıtma
 
-Yerel makinenizden Azure Resource Manager şablonu dağıtmayı öğrenin. Yaklaşık **8 dakika** sürer.
+Yerel makinenizden Azure Resource Manager şablonu (ARM şablonu) dağıtmayı öğrenin. Yaklaşık **8 dakika** sürer.
 
-Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bağlantılı bir şablon oluşturarak şablonu modüle getirin, bağlantılı şablonu bir depolama hesabında depolar ve SAS belirtecini kullanarak bağlı şablonu güvenli hale getirin ve şablonları dağıtmak için bir DevOp Işlem hattı oluşturmayı öğreneceksiniz. Bu seri, şablon dağıtımına odaklanır.  Şablon geliştirmeyi öğrenmek isterseniz, [Başlangıç öğreticilerine](./template-tutorial-create-first-template.md)bakın.
+Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bağlantılı bir şablon oluşturarak şablonu modüle getirin, bağlantılı şablonu bir depolama hesabında depolar ve SAS belirtecini kullanarak bağlı şablonu güvenli hale getirin ve şablonları dağıtmak için bir DevOps işlem hattı oluşturmayı öğreneceksiniz. Bu seri, şablon dağıtımına odaklanır. Şablon geliştirmeyi öğrenmek isterseniz, [Başlangıç öğreticilerine](./template-tutorial-create-first-template.md)bakın.
 
 ## <a name="get-tools"></a>Araçları al
 
@@ -26,15 +26,16 @@ Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, ba
 
 Şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell'i yükleme](/powershell/azure/install-az-ps)
+- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
+- [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)
 
 Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin olun. Yardım için bkz. [oturum açma-PowerShell](/powershell/azure/install-az-ps#sign-in) veya [Oturum Açma-Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
 ### <a name="editor-optional"></a>Düzenleyici (Isteğe bağlı)
 
-Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/düzenlemek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: Visual Studio Code ile Azure Resource Manager şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
+Şablonlar JSON dosyalarıdır. Şablonları gözden geçirmek/düzenlemek için iyi bir JSON düzenleyicisine ihtiyacınız vardır. Kaynak Yöneticisi Araçları uzantısı ile Visual Studio Code önerilir. Bu araçları yüklemeniz gerekiyorsa bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="review-template"></a>Şablonu gözden geçir
 
@@ -43,9 +44,9 @@ Azure PowerShell veya Azure CLı yükledikten sonra, ilk kez oturum açarak emin
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/local-template/azuredeploy.json":::
 
 > [!IMPORTANT]
-> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
+> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı, **Mağaza** eklenmiş proje adıdır ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
-Şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy.js. Bu şablonu öğreticide daha sonra dağıtırsınız.
+Şablonun bir kopyasını _. JSON_ uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, _azuredeploy.js_. Bu şablonu öğreticide daha sonra dağıtırsınız.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
@@ -65,7 +66,7 @@ az login
 
 ---
 
-Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin:
+Birden çok Azure aboneliğiniz varsa, kullanmak istediğiniz aboneliği seçin. `[SubscriptionID/SubscriptionName]`Ve köşeli ayraçları `[]` Abonelik bilgileriniz ile değiştirin:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -83,7 +84,7 @@ az account set --subscription [SubscriptionID/SubscriptionName]
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, kaynak grubunu Azure CLı veya Azure PowerShell ile oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
+Bir şablonu dağıtırken, kaynakları içerecek bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce Azure CLI veya Azure PowerShell ile kaynak grubunu oluşturun. Azure PowerShell ve Azure CLı arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLı örnekleri bash kabuğu için yazılmıştır.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -129,7 +130,7 @@ New-AzResourceGroupDeployment `
   -verbose
 ```
 
-Azure PowerShell kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure PowerShell ile kaynak dağıtma](./deploy-powershell.md).
+Azure PowerShell kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](./deploy-powershell.md).
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -148,7 +149,7 @@ az deployment group create \
   --verbose
 ```
 
-Azure CLı kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi şablonları ve Azure CLI ile kaynak dağıtma](./deploy-cli.md).
+Azure CLı kullanarak şablon dağıtma hakkında daha fazla bilgi için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](./deploy-cli.md).
 
 ---
 
@@ -166,4 +167,4 @@ Kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 Yerel bir şablon dağıtmayı öğrendiniz. Sonraki öğreticide, şablonu bir ana şablona ve bağlı bir şablona ayırdınız ve bağlantılı şablonu nasıl depolayacağınızı ve güvenli hale ayarlayacağınızı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Bağlı şablon dağıtma](./deployment-tutorial-linked-template.md)
+> [Bağlantılı şablonu dağıtma](./deployment-tutorial-linked-template.md)

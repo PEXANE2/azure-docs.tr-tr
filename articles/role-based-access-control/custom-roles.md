@@ -2,36 +2,76 @@
 title: Azure özel rolleri-Azure RBAC
 description: Azure kaynakları için ayrıntılı erişim yönetimi için Azure rol tabanlı erişim denetimi (Azure RBAC) ile Azure özel rolleri oluşturmayı öğrenin.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd737a22a37d6edc47c2769a470af00537d720eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eddbd9cb695f3ff7eabd9f2549d0a868d8826eb9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87124162"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369132"
 ---
 # <a name="azure-custom-roles"></a>Özel Azure rolleri
 
 > [!IMPORTANT]
 > ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, yönetim grubu, abonelik ve kaynak grubu kapsamları ' nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz.
 
 Özel Roller aynı Azure AD dizinine güvenen abonelikler arasında paylaşılabilir. Dizin başına **5.000** özel rol sınırı vardır. (Azure Almanya ve Azure Çin 21Vianet için sınır 2.000 özel rollerdir.) Özel roller Azure portal, Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir.
+
+## <a name="steps-to-create-a-custom-role"></a>Özel rol oluşturma adımları
+
+Özel bir rol oluşturmak için temel adımlar aşağıda verilmiştir.
+
+1. İhtiyaç duyduğunuz izinleri saptayın.
+
+    Özel bir rol oluşturduğunuzda, izinlerinizi tanımlamak için kullanılabilir işlemleri bilmeniz gerekir. Genellikle, mevcut yerleşik bir rolle başlayıp gereksinimlerinize göre değiştirirsiniz. İşlemleri `Actions` `NotActions` [Rol tanımının](role-definitions.md)veya özelliklerine ekleyeceksiniz. Veri işlemlerdir, bunları `DataActions` veya `NotDataActions` özelliklerine eklersiniz.
+
+    Daha fazla bilgi için, [ihtiyacınız olan Izinleri nasıl belirleyebir](#how-to-determine-the-permissions-you-need)sonraki bölüme bakın.
+
+1. Özel rolü nasıl oluşturmak istediğinize karar verin.
+
+    [Azure Portal](custom-roles-portal.md), [Azure POWERSHELL](custom-roles-powershell.md), [Azure CLI](custom-roles-cli.md)veya [REST API](custom-roles-rest.md)kullanarak özel roller oluşturabilirsiniz.
+
+1. Özel rolü oluşturun.
+
+    En kolay yöntem Azure portal kullanmaktır. Azure portal kullanarak özel rol oluşturma adımları için, bkz. [Azure Portal kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-portal.md).
+
+1. Özel rolü test edin.
+
+    Özel rolünüzü aldıktan sonra, beklendiği gibi çalıştığını doğrulamak için test etmeniz gerekir. Daha sonra ayarlamalar yapmanız gerekiyorsa, özel rolü güncelleştirebilirsiniz.
+
+## <a name="how-to-determine-the-permissions-you-need"></a>İhtiyaç duyduğunuz izinleri belirleme
+
+Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirlemenize yardımcı olabilecek bazı yöntemler şunlardır:
+
+- Mevcut [yerleşik rollere](built-in-roles.md)bakın.
+
+    Mevcut bir rolü değiştirmek veya birden çok rolde kullanılan izinleri birleştirmek isteyebilirsiniz.
+
+- Erişim vermek istediğiniz Azure hizmetlerini listeleyin.
+
+- [Azure hizmetleriyle eşlenen kaynak sağlayıcılarını](../azure-resource-manager/management/azure-services-resource-providers.md)belirleme.
+
+    Azure Hizmetleri, [kaynak sağlayıcıları](../azure-resource-manager/management/overview.md)aracılığıyla işlevlerini ve izinlerini kullanıma sunar. Örneğin, Microsoft. COMPUTE kaynak sağlayıcısı, sanal makine kaynaklarını ve Microsoft. faturalandırma kaynak sağlayıcısını, abonelik ve faturalandırma kaynakları sağlar. Kaynak sağlayıcılarının bilinmesi, özel rolünüzün gereksinim duyduğunuz izinleri daraltmanıza ve belirlemenize yardımcı olabilir.
+
+    Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcükleri arayarak kaynak sağlayıcılarını da belirleyebilirsiniz. Bu arama işlevi, [Azure Portal kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-portal.md#step-4-permissions)konularında açıklanmaktadır.
+
+    ![Kaynak sağlayıcısı ile izin bölmesi ekleme](./media/custom-roles-portal/add-permissions-provider.png)
+
+- Dahil etmek istediğiniz izinleri bulmak için [kullanılabilir izinleri](resource-provider-operations.md) arayın.
+
+    Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcüğe göre izinler araması yapabilirsiniz. Örneğin, *sanal makine* veya *faturalandırma* izinleri için arama yapabilirsiniz. Ayrıca tüm izinleri bir CSV dosyası olarak indirebilir ve ardından bu dosyada arama yapabilirsiniz. Bu arama işlevi, [Azure Portal kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-portal.md#step-4-permissions)konularında açıklanmaktadır.
+
+    ![İzin listesi ekle](./media/custom-roles-portal/add-permissions-list.png)
 
 ## <a name="custom-role-example"></a>Özel rol örneği
 
@@ -150,26 +190,6 @@ Bir dizede birden fazla joker karakter de olabilir. Örneğin, aşağıdaki dize
 ```
 Microsoft.CostManagement/*/query/*
 ```
-
-## <a name="steps-to-create-a-custom-role"></a>Özel rol oluşturma adımları
-
-Özel bir rol oluşturmak için aşağıdaki temel adımları izlemeniz gerekir.
-
-1. Özel rolü nasıl oluşturmak istediğinize karar verin.
-
-    Azure portal, Azure PowerShell, Azure CLı veya REST API kullanarak özel roller oluşturabilirsiniz.
-
-1. İhtiyaç duyduğunuz izinleri saptayın.
-
-    Özel bir rol oluşturduğunuzda, izinlerinizi tanımlamak için kullanılabilir işlemleri bilmeniz gerekir. İşlem listesini görüntülemek için [Azure Resource Manager kaynak sağlayıcısı işlemlerine](resource-provider-operations.md)bakın. İşlemleri `Actions` `NotActions` [Rol tanımının](role-definitions.md)veya özelliklerine ekleyeceksiniz. Veri işlemlerdir, bunları `DataActions` veya `NotDataActions` özelliklerine eklersiniz.
-
-1. Özel rolü oluşturun.
-
-    Genellikle, mevcut yerleşik bir rolle başlayıp gereksinimlerinize göre değiştirirsiniz. En kolay yöntem Azure portal kullanmaktır. Azure portal kullanarak özel rol oluşturma adımları için, bkz. [Azure Portal kullanarak Azure özel rolleri oluşturma veya güncelleştirme](custom-roles-portal.md).
-
-1. Özel rolü test edin.
-
-    Özel rolünüzü aldıktan sonra, beklendiği gibi çalıştığını doğrulamak için test etmeniz gerekir. Daha sonra ayarlamalar yapmanız gerekiyorsa, özel rolü güncelleştirebilirsiniz.
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Özel bir rol oluşturabilir, silebilir, güncelleştirebilir veya görüntüleyebilir
 

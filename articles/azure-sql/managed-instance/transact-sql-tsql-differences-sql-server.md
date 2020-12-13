@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684929"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368707"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL yönetilen örneği arasındaki T-SQL farklılıkları
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -396,9 +396,9 @@ Daha fazla bilgi için bkz. [FILESTREAM](/sql/relational-databases/blob/filestre
 
 SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi destekler:
 
-- Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı, Azure SYNAPSE SQL ve SQL Server örnekleri. 
+- Desteklenen hedefler SQL yönetilen örneği, SQL veritabanı, Azure SYNAPSE SQL [sunucusuz](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) ve adanmış havuzlardır ve SQL Server örnekleridir. 
 - Bağlı sunucular dağıtılmış yazılabilir işlemleri (MS DTC) desteklemez.
-- Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. `BULK INSERT` `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya kullanarak Azure Blob depolama 'DAN yerel CSV içeri aktarmayı kullanmayı deneyin.
+- Desteklenmeyen hedefler dosya, Analysis Services ve diğer RDBMS ' dir. Azure Blob Storage 'dan `BULK INSERT` veya `OPENROWSET` Dosya içeri aktarma için alternatif olarak veya [Azure SYNAPSE Analytics 'te SUNUCUSUZ bir SQL havuzu](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)kullanarak dosyaları yüklemeden yerel CSV içeri aktarmayı kullanmayı deneyin.
 
 İşlemler: 
 
@@ -406,11 +406,12 @@ SQL yönetilen örneğindeki bağlantılı sunucular, sınırlı sayıda hedefi 
 - `sp_dropserver` , bağlı bir sunucunun atılması için desteklenir. Bkz. [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - `OPENROWSET`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Bkz. [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - `OPENDATASOURCE`İşlevi yalnızca SQL Server örneklerinde sorgu yürütmek için kullanılabilir. Bunlar yönetilen, şirket içi veya sanal makinelerde olabilir. Yalnızca `SQLNCLI` , `SQLNCLI11` ve `SQLOLEDB` değerleri sağlayıcı olarak desteklenir. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee` bunun bir örneğidir. Bkz. [opendatasource](/sql/t-sql/functions/opendatasource-transact-sql).
-- Bağlı sunucular ağ paylaşımlarından dosyaları (Excel, CSV) okumak için kullanılamaz. Azure Blob depolamadan CSV dosyalarını okuyan [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) veya [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) kullanmayı deneyin. [SQL yönetilen örnek geri bildirim öğesinde](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources) bu istekleri izle|
+- Bağlı sunucular ağ paylaşımlarından dosyaları (Excel, CSV) okumak için kullanılamaz. Azure Blob depolama alanından CSV dosyalarını okuyan [bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file), [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) veya [SYNAPSE ANALYTICS 'te sunucusuz bir SQL havuzuna başvuran bağlı bir sunucu](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/)kullanmayı deneyin. [SQL yönetilen örnek geri bildirim öğesinde](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources) bu istekleri izle|
 
 ### <a name="polybase"></a>PolyBase
 
-Tek desteklenen dış kaynak türü, Azure SQL veritabanı ve diğer Azure SQL yönetilen örneği için RDBMS 'dir. PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](/sql/relational-databases/polybase/polybase-guide).
+Mevcut dış kaynak türleri, Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE havuzu için RDBMS 'dir (genel önizlemede). [SYNAPSE Analytics 'te sunucusuz SQL havuzuna başvuran bir dış tabloyu](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) , doğrudan Azure Storage 'Dan okuyan PolyBase dış tabloları için geçici bir çözüm olarak kullanabilirsiniz. Azure SQL yönetilen örneği 'nde, bağlı sunucuları [SYNAPSE Analytics 'te sunucusuz BIR SQL havuzunda](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) veya Azure depolama verilerini okumak için SQL Server kullanabilirsiniz.
+PolyBase hakkında daha fazla bilgi için bkz. [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Çoğaltma
 

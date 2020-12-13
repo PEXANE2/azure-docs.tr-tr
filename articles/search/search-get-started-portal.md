@@ -7,21 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: b783366958380f391dc76583c42988badc9915c8
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.date: 12/12/2020
+ms.openlocfilehash: 1e9d63c88cf0cd6f65db99b2bc878797770d53cd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056489"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368639"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Hızlı başlangıç: Azure portal Azure Bilişsel Arama dizini oluşturma
 
-**Veri Içeri aktarma** Sihirbazı, bir arama dizini oluşturma işlemi boyunca size kılavuzluk eden bir Azure Portal aracıdır. böylece, dakikalar içinde ilginç sorgular yazabilirsiniz. 
+**Veri alma** Sihirbazı 'nı ve kurgusal otel verilerinden oluşan yerleşik bir örnek veri kaynağını kullanarak ilk dizininizi oluşturun. Sihirbaz bir arama dizini (oteller-örnek-dizin) oluşturma sürecinde size kılavuzluk eder. böylece, dakikalar içinde ilginç sorgular yazabilirsiniz. 
 
-Ayrıca, görüntü dosyalarından ve yapılandırılmamış metinden metin ve yapı ayıklayabilmeniz için, sihirbazın AI zenginleştirme sayfaları vardır. AI ile içerik işleme, optik karakter tanıma (OCR), anahtar tümceciği ve varlık ayıklama ve görüntü analizi içerir.
+Bu hızlı başlangıçta seçenekleri kullanamazsınız, ancak görüntü dosyalarından metin ve yapıyı ayıklayabilmeniz için, sihirbaz AI zenginleştirme için bir sayfa içerir. AI zenginleştirme içeren benzer bir anlatım için bkz. [hızlı başlangıç:](cognitive-search-quickstart-blob.md)Bilişsel Beceri oluşturma.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce aşağıdakilere sahip olmanız gerekir:
 
@@ -49,11 +49,11 @@ Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracı
 
 1. [Arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) ve genel bakış sayfasında, bir arama dizini oluşturmak ve doldurmak için komut çubuğunda **verileri içeri aktar** ' a tıklayın.
 
-   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Verileri içeri aktar komutu":::
 
-1. Sihirbazda, **veri**  >  **Samples**  >  **örneklerimize Bağlan oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
+1. Sihirbazda, **veri**  >    >  **örneklerimize Bağlan oteller-örnek**' e tıklayın. Bu veri kaynağı yerleşik olarak bulunur. Kendi veri kaynağınızı oluşturuyorsanız ad, tür ve bağlantı bilgilerini belirtmeniz gerekir. Oluşturulan kaynak, diğer içeri aktarma işlemlerinde yeniden kullanılabilecek bir “mevcut veri kaynağı” olur.
 
-   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Örnek veri kümesi seçme":::
 
 1. Sonraki sayfaya devam edin.
 
@@ -61,9 +61,9 @@ Bu öğreticide, [ **veri alma** Sihirbazı](search-import-data-portal.md)aracı
 
 Sihirbaz bilişsel hizmetler AI algoritmalarını dizine eklemek için bir [AI zenginleştirme ardışık düzeni](cognitive-search-concept-intro.md) oluşturmayı destekler. 
 
-Bu adımı şimdilik atlayacağız ve **hedef dizini özelleştirmek**için doğrudan üzerine ilerliyoruz.
+Bu adımı şimdilik atlayacağız ve **hedef dizini özelleştirmek** için doğrudan üzerine ilerliyoruz.
 
-   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Bilişsel beceri adımını atlama":::
 
 > [!TIP]
 > Bir [hızlı başlangıç](cognitive-search-quickstart-blob.md) veya [öğreticide](cognitive-search-tutorial-blob.md)bir AI dizin oluşturma örneği aracılığıyla ilerlemesini sağlayabilirsiniz.
@@ -76,18 +76,18 @@ Alanların veri türleri ve öznitelikleri vardır. Üstteki onay kutuları, ala
 
 * **Alınabilir**, arama sonuçları listesinde çıktığı anlamına gelir. Bu onay kutusunu temizleyerek, örneğin yalnızca filtre ifadelerinde kullanılan alanlar için, bu onay kutusunu temizleyerek, tek tek alanları, arama sonuçları için sınırlı olarak işaretleyebilirsiniz.
 * **Anahtar** , benzersiz belge tanımlayıcısıdır. Her zaman bir dizedir ve gereklidir.
-* **Filtrelenebilir**, **sıralanabilir**ve çok **yönlü tablo** , alanların bir filtre, sıralama veya çok yönlü gezinti yapısında kullanılıp kullanılmadığını belirtir.
+* **Filtrelenebilir**, **sıralanabilir** ve çok **yönlü tablo** , alanların bir filtre, sıralama veya çok yönlü gezinti yapısında kullanılıp kullanılmadığını belirtir.
 * **Aranabilir**, bir alanın tam metin aramasına dahil olduğu anlamına gelir. Dizelerde arama yapılabilir. Sayısal alanlar ve Boolean alanları genellikle aranamaz olarak işaretlenir.
 
 Depolama gereksinimleri, seçiminizin sonucu olarak farklılık gösterir. Örneğin, birden çok alanda **alınabilir** özniteliğini ayarlarsanız, depolama gereksinimleri güncel değildir.
 
-Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzersiz tanımlayıcıların bulunması için veri kaynağı taranır. *Dizeler* **alınabilir** ve **aranabilir**olarak atanır. *Tamsayılar* **alınabilir**, **filtrelenebilir**, **sıralanabilir**ve çok **yönlü tablo**olarak atanır.
+Varsayılan olarak sihirbaz tarafından anahtar alanının temeli olarak benzersiz tanımlayıcıların bulunması için veri kaynağı taranır. *Dizeler* **alınabilir** ve **aranabilir** olarak atanır. *Tamsayılar* **alınabilir**, **filtrelenebilir**, **sıralanabilir** ve çok **yönlü tablo** olarak atanır.
 
-1. Varsayılanları kabul edin. 
+1. Varsayılanları kabul edin.
 
    Sihirbazı ikinci kez mevcut bir oteller veri kaynağını kullanarak yeniden çalıştırırsanız, dizin varsayılan özniteliklerle yapılandırılmaz. Gelecekteki içeri aktarmalardan öznitelikleri el ile seçmeniz gerekir. 
 
-   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Oluşturulan oteller dizini":::
 
 2. Sonraki sayfaya devam edin.
 
@@ -100,7 +100,7 @@ Bu nesne, yürütülebilir bir işlemi tanımlar. Yinelenen bir zamanlamaya gör
 
 Dizin oluşturucuyu oluşturmak ve aynı anda çalıştırmak için **Gönder** ' e tıklayın.
 
-  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="oteller Dizin Oluşturucusu":::
 
 ## <a name="monitor-progress"></a>İlerlemeyi izleme
 
@@ -108,7 +108,7 @@ Sihirbaz sizi ilerlemeyi izleyebileceğiniz Dizin oluşturucular listesine göt�
 
 Portalın sayfayı güncelleştirmesi birkaç dakika sürebilir, ancak "devam ediyor" veya Success, "sürüyor" veya Success (Dizin oluşturulmuş belge sayısıyla birlikte) durumuyla yeni oluşturulan dizin oluşturucuyu görmeniz gerekir.
 
-   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Dizin oluşturucu ilerleme durumu iletisi":::
 
 ## <a name="view-the-index"></a>Dizini görüntüleme
 
@@ -116,13 +116,13 @@ Ana hizmet sayfası, Azure Bilişsel Arama hizmetinizde oluşturulan kaynaklara 
 
 Portal sayfasının yenilenmesini bekleyin. Birkaç dakika sonra, dizini bir belge sayısı ve depolama boyutuyla görmeniz gerekir.
 
-   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Hizmet panosundaki dizinler listesi":::
 
 Bu listeden, yeni oluşturduğunuz *oteller-örnek* dizinine tıklayabilirsiniz, Dizin şemasını görüntüleyebilirsiniz. ve isteğe bağlı olarak yeni alanlar ekleyin. 
 
 **Alanlar** sekmesi Dizin şemasını gösterir. Yeni bir alan girmek için listenin en altına gidin. Çoğu durumda, mevcut alanları değiştiremezsiniz. Mevcut alanlar Azure Bilişsel Arama bir fiziksel gösterimine sahiptir ve bu nedenle kodda bile değil, değiştirilemeyen değildir. Var olan bir alanı temel olarak değiştirmek için yeni bir dizin oluşturun ve özgün olanı bırakarak.
 
-   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Örnek dizin tanımı":::
 
 Puanlama profilleri ve CORS seçenekleri gibi diğer yapılar herhangi bir noktada eklenebilir.
 
@@ -140,15 +140,15 @@ Artık yerleşik [**Arama gezgini**](search-explorer.md) sorgu sayfasını kulla
 
 1. Komut çubuğunda **Arama gezgini**'ne tıklayın.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Search gezgini komutu":::
 
 2. **Dizin** açılan listesinden *oteller-örnek-dizin*' i seçin. Hangi REST API 'Lerinin kullanılabilir olduğunu görmek için **API sürümü** açılan listesine tıklayın. Aşağıdaki sorgular için genel kullanıma sunulan sürümü (2020-06-30) kullanın.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Dizin ve API komutları":::
 
 3. Arama çubuğunda, aşağıdaki sorgu dizelerini yapıştırın ve **Ara**' ya tıklayın.
 
-   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Dizin, Dizin oluşturucular ve veri kaynakları listesi":::
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Sorgu dizesi ve arama düğmesi":::
 
 ## <a name="example-queries"></a>Örnek sorgular
 
@@ -188,8 +188,8 @@ Model filtreleri arama isteklerine dahil edilir. Sağladığınız model değeri
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Örnek (kapsamı azaltılarak modellenmiş): `search=*&facet=Category&$top=2`
 
-* **search=*** boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
-* **facet**, bir kullanıcı arabirimi denetimine geçirebileceğiniz bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori*olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet` , her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
+* **Search =** _ boş bir aramadır. Boş aramalar her şeyi arar. Boş sorgu göndermenin nedenlerinden biri, belge kümesinin tamamını filtrelemek veya görüntülemektir. Örneğin, dizin içindeki tüm otellerden oluşan bir gezinti yapısının olmasını istersiniz.
+_ **modeli** , bir UI denetimine geçirebilmeniz için bir gezinti yapısı döndürür. Kategorileri ve bir sayımı döndürür. Bu durumda, kategoriler *Kategori* olarak adlandırılan bir alanı temel alır. Azure Bilişsel Arama 'de toplama yoktur, ancak toplama yoluyla `facet` , her kategoride belge sayısı veren bir dizi belge elde edebilirsiniz.
 
 * **$top=2** iki belge getirir ve sonuçları azaltmak veya artırmak için `top` kullanabileceğinizi gösterir.
 

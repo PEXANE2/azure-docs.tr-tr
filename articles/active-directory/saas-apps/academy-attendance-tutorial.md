@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 2fd7425169ddc3ebed11ddaf513f0182dd397703
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 28f5a905845861803c213e03ae1a8524fe9c4a94
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313534"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368826"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-academy-attendance"></a>Öğretici: akademik katılımcıları ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, akademik katılımcıları Azure Active Directory (Azure AD) il
 * Kullanıcılarınızın Azure AD hesaplarıyla katılımda akademik olması için kullanıcılarınızın otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,7 +39,6 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Akademik katılımcıları **SP** tarafından başlatılan SSO 'yu destekliyor
 
-
 * Katılımcıları **, katılım anında** Kullanıcı sağlamayı destekliyor
 
 
@@ -49,7 +46,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Akademik katılımcıları Azure AD 'ye tümleştirmesi yapılandırmak için, galerisindeki katılımcıları, yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -57,11 +54,11 @@ Akademik katılımcıları Azure AD 'ye tümleştirmesi yapılandırmak için, g
 1. Sonuçlar panelinden **katılımcıları** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-academy-attendance"></a>Akademik katılımcıları için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-academy-attendance"></a>Akademik katılımcıları için Azure AD SSO 'yu yapılandırma ve test etme
 
-Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullanarak akademik katılımcıları ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, akademik katılımcıları ' nde bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **B. Simon** adlı bir test kullanıcısı kullanarak akademik katılımcıları ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, akademik katılımcıları ' nde bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu akademik katılımcıları ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu akademik katılımcıları ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -74,7 +71,7 @@ Azure AD SSO 'yu akademik katılımcıları ile yapılandırmak ve test etmek i�
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **akademik katılım** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **akademik katılım** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -93,14 +90,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![image](common/edit-attribute.png)
 
-    > [!NOTE]
-    > Akademik katılımcıları, kullanıcılar için iki rolü destekler: **Leturer** ve **öğrenci**. Kullanıcılara uygun roller atanabilmeleri için Azure AD 'de bu rolleri ayarlayın. Lütfen Azure AD 'de özel roller oluşturmayı açıklayan [Bu](../develop/active-directory-enterprise-app-role-management.md) belgeye başvurun.
-
 1. Daha fazlasına ek olarak, akademik katılım uygulamamın daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesi beklenir. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
     | Ad |  Kaynak özniteliği|
     | --------- | --------------- |
     | rol      | Kullanıcı. atandroles |
+
+    > [!NOTE]
+    > Akademik katılımcıları, kullanıcılar için iki rolü destekler: **Leturer** ve **öğrenci**. Kullanıcılara uygun roller atanabilmeleri için Azure AD 'de bu rolleri ayarlayın. Lütfen Azure AD 'de özel roller oluşturmayı açıklayan [Bu](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) belgeye başvurun.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -129,15 +126,9 @@ Bu bölümde, akademik katılımcıları için erişim izni vererek Azure çoklu
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **akademik katılımcıları**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-academy-attendance-sso"></a>Akademik katılım SSO 'SU yapılandırma
@@ -150,16 +141,15 @@ Bu bölümde, akademik katılımcıları içinde Britta Simon adlı bir Kullanı
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde akademik katılımcıları kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız akademik katılımcıları için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz katılım oturum açma URL 'SI için yeniden yönlendirecektir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Akademik katılım oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki akademik katılımcıları kutucuğuna tıkladığınızda bu, katılımcıları katılım oturum açma URL 'SI ile yeniden yönlendirecektir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile katılımcıları ile akademik olan katılımcıları deneyin](https://aad.portal.azure.com/)
+Akademik katılımcıları yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

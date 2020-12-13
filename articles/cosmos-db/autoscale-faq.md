@@ -5,13 +5,13 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/10/2020
-ms.openlocfilehash: 58e7d54750da86b8a700a4f2195bc4cfa012ae4b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 12/11/2020
+ms.openlocfilehash: a740ad62dacc9a29cab1cc144f1789e125ec2e89
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092696"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368588"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB 'de otomatik ölçeklendirme sağlanan aktarım hızı hakkında sık sorulan sorular
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Tek bir yazma bölgesi hesabında, 100 RU/sn başına otomatik ölçeklendirme o
 Birden çok yazma bölgesi olan hesaplarda, 100 RU/sn başına otomatik ölçeklendirme oranı, standart (el ile) sağlanan birden çok yazma bölgesi üretiminin oranıyla aynıdır. Faturanızda var olan birden fazla yazma bölgesi ölçeri görürsünüz. Ücretler aynı olduğundan, otomatik ölçeklendirme kullanırsanız, standart aktarım hızı ile aynı miktarı görürsünüz.
 
 ### <a name="does-autoscale-work-with-reserved-capacity"></a>Otomatik ölçeklendirme ayrılmış kapasiteyle çalışıyor mu?
-Evet. Birden çok yazma bölgesi olan hesaplar için ayrılmış kapasite satın aldığınızda, otomatik ölçeklendirme kaynakları için rezervasyon indirimi, ölçüm kullanımınız için 1,5 * veya [belirli bölgenin oranının](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)oranıyla birlikte uygulanır. 
+Evet. Tek bir yazma bölgesi olan hesaplar için ayrılmış kapasite satın aldığınızda, otomatik ölçeklendirme kaynakları için rezervasyon indirimi, ölçüm kullanımınız için 1,5 * veya [belirli bölgenin oranının](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)oranıyla birlikte uygulanır. 
 
 Çoklu yazma bölgesi ayrılmış kapasitesi, otomatik ölçeklendirme ve standart (el ile) sağlanan aktarım hızı için aynı şekilde geçerlidir. Bkz. [Azure Cosmos DB ayrılmış kapasite](cosmos-db-reserved-capacity.md)
 
@@ -109,9 +109,9 @@ En fazla ru/sn 'yi artırmak için bir istek gönderdiğinizde, hizmet, en yüks
 #### <a name="lowering-the-max-rus"></a>En büyük RU/sn 'yi kısın
 En büyük RU/s 'yi düşürürseniz, en küçük değer olarak ayarlayabilirsiniz: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` , en yakın 1000 ru/sn 'ye yuvarlanır. 
 
-Örnek #1:20.000 RU/sn 'nin (2000-20.000 RU/sn) ve 50 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. En düşük, en düşük değer: en büyük RU/s ' yi şu şekilde ayarlayabilirsiniz: MAX (4000, 20.000/10, **50 * 100** ) = 5000 ru/s (500-5000 ru/s arasında ölçeklendirme).
+Örnek #1:20.000 RU/sn 'nin (2000-20.000 RU/sn) ve 50 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. En düşük, en düşük değer: en büyük RU/s ' yi şu şekilde ayarlayabilirsiniz: MAX (4000, 20.000/10, **50 * 100**) = 5000 ru/s (500-5000 ru/s arasında ölçeklendirme).
 
-Örnek #2:100.000 RU/sn ve 100 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. Şimdi, en fazla RU/s 'yi 150.000 RU/sn 'ye ölçeklendirebilirsiniz (15.000-150.000 RU/s arasında ölçeklendirme). En düşük, en düşük değer şu anda en fazla RU/sn 'yi ayarlayabilirsiniz: MAX (4000, **150.000/10** , 100 * 100) = 15.000 ru/s (1500-15.000 ru/s arasında ölçeklendirme). 
+Örnek #2:100.000 RU/sn ve 100 GB depolama alanı için en fazla RU/sn içeren bir otomatik ölçeklendirme kapsayıcısına sahip olduğunuzu varsayalım. Şimdi, en fazla RU/s 'yi 150.000 RU/sn 'ye ölçeklendirebilirsiniz (15.000-150.000 RU/s arasında ölçeklendirme). En düşük, en düşük değer şu anda en fazla RU/sn 'yi ayarlayabilirsiniz: MAX (4000, **150.000/10**, 100 * 100) = 15.000 ru/s (1500-15.000 ru/s arasında ölçeklendirme). 
 
 Paylaşılan bir üretilen iş veritabanı için, en fazla RU/sn 'yi düşürürseniz, en düşük değer olan en küçük `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` 1000 ru/sn 'ye yuvarlanır.  
 

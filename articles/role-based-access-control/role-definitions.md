@@ -15,12 +15,12 @@ ms.date: 05/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511645"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369268"
 ---
 # <a name="understand-azure-role-definitions"></a>Azure rol tanımlarını anlama
 
@@ -28,7 +28,7 @@ Bir Azure rolünün nasıl çalıştığını anlamaya çalışıyorsanız veya 
 
 ## <a name="role-definition"></a>Rol tanımı
 
-*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca bir *rol*olarak adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, temel alınan verilerle ilgili olarak izin verilen işlemler veya işlemlerden çıkarılan işlemleri de listeleyebilir.
+*Rol tanımı*, izinlerden oluşan bir koleksiyondur. Bazen yalnızca bir *rol* olarak adlandırılır. Rol tanımı; okuma, yazma ve silme gibi gerçekleştirilebilecek işlemleri listeler. Ayrıca, temel alınan verilerle ilgili olarak izin verilen işlemler veya işlemlerden çıkarılan işlemleri de listeleyebilir.
 
 Aşağıda, Azure PowerShell kullanılarak görüntülenmediğinde rol tanımındaki özelliklerin bir örneği gösterilmektedir:
 
@@ -339,4 +339,4 @@ Yerleşik roller `AssignableScopes` kök kapsamına ( `"/"` ) ayarlı. Kök kaps
 
 * [Azure yerleşik rolleri](built-in-roles.md)
 * [Özel Azure rolleri](custom-roles.md)
-* [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+* [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

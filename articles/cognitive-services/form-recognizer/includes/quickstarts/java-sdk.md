@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: d53863ccf71970cca3900707c844a2e5add050fa
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 23d76f441178238ae6527c2fa5440c4ab7b1d4e3
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356520"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366330"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
@@ -120,7 +120,7 @@ Uygulamanın **Formtanıyıcı** sınıfında, kaynağınızın anahtarı ve uç
 
 Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan yöntemlere çağrılar ekleyin. Bunları daha sonra tanımlayacaksınız. Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir.
 
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 * Sınanacak bir formun URL 'sini almak için yukarıdaki adımları kullanarak blob depolamada tek bir belgenin SAS URL 'sini alabilirsiniz. Ya da başka bir yerde bulunan bir belgenin URL 'sini alın.
 * Bir makbuz görüntüsünün URL 'sini de almak için yukarıdaki yöntemi kullanın.
 
@@ -204,7 +204,7 @@ Verilen bir URL 'deki bir dosyanın içeriğini tanımak için **Beginrecognizec
 Döndürülen değer bir **Formpage** nesneleri koleksiyonudur: gönderilen belgedeki her sayfa için bir tane. Aşağıdaki kod bu nesneler boyunca yinelenir ve ayıklanan anahtar/değer çiftlerini ve tablo verilerini yazdırır.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_getcontent_print)]
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Get form content...
@@ -242,7 +242,7 @@ Sonraki kod bloğu, alış irsaliyesinde algılanan bireysel öğeler arasında 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_receipts_print_items)]
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 ```console
 Analyze receipt...
@@ -320,7 +320,7 @@ Son olarak, bu yöntem modelin benzersiz KIMLIĞINI döndürür.
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_train_return)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Train Model with training data...
@@ -352,7 +352,7 @@ Döndürülen **Customformmodel** modeli, modelin ayıklayabileceğiniz alanlar�
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_trainlabels_print)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Train Model with training data...
@@ -391,7 +391,7 @@ Döndürülen değer, gönderilen belgedeki her sayfa için bir tane olan **Reco
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_analyze_print)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Analyze PDF form...
@@ -421,7 +421,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_count)]
 
 
-#### <a name="output"></a>Çıkış 
+#### <a name="output"></a>Çıktı 
 
 ```console
 The account has 12 custom models, and we can have at most 250 custom models
@@ -434,7 +434,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_manage_list)]
 
 
-#### <a name="output"></a>Çıkış 
+#### <a name="output"></a>Çıktı 
 
 Bu yanıt okunabilirlik için kesildi.
 

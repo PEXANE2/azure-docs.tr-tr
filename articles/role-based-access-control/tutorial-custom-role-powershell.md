@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b1815e7598410cd709572d93082d5dee5e0b0fb
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82735598"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369251"
 ---
 # <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma
 
@@ -36,7 +36,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
@@ -51,7 +51,7 @@ Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 Özel rol oluşturmanın en kolay yolu yerleşik rolle başlayıp düzenledikten sonra yeni bir rol oluşturmaktır.
 
-1. PowerShell 'de, Microsoft. support kaynak sağlayıcısı 'nın işlem listesini almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) komutunu kullanın. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır. İşlemlerin tam listesini [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md#microsoftsupport) sayfasında da görebilirsiniz.
+1. PowerShell 'de, Microsoft. support kaynak sağlayıcısı 'nın işlem listesini almak için [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) komutunu kullanın. İzinlerinizi oluşturmak için kullanabileceğiniz işlemleri bilmeniz yararlıdır. [Azure Kaynak sağlayıcısı işlemlerinde](resource-provider-operations.md#microsoftsupport)tüm işlemlerin listesini de görebilirsiniz.
 
     ```azurepowershell
     Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize

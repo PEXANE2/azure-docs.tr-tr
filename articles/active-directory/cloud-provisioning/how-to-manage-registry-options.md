@@ -1,0 +1,74 @@
+---
+title: 'Azure AD Connect Cloud sağlama Aracısı: kayıt defteri seçeneklerini yönetme | Microsoft Docs'
+description: Bu makalede Azure AD Connect bulut sağlama aracısında kayıt defteri seçeneklerinin nasıl yönetileceği açıklanır.
+services: active-directory
+documentationcenter: ''
+author: cmmdesai
+manager: daveba
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: how-to
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 12/11/2020
+ms.subservice: hybrid
+ms.author: chmutali
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.translationtype: MT
+ms.contentlocale: tr-TR
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97371200"
+---
+# <a name="manage-agent-registry-options"></a>Aracı kayıt defteri seçeneklerini yönetme
+
+Bu bölümde, Azure AD Connect sağlama aracısının çalışma zamanı işleme davranışını denetlemek için ayarlayabileceğiniz kayıt defteri seçenekleri açıklanmaktadır. 
+
+## <a name="configure-ldap-connection-timeout"></a>LDAP bağlantısı zaman aşımını yapılandırma
+Yapılandırılmış Active Directory etki alanı denetleyicilerinde LDAP işlemlerini gerçekleştirirken, varsayılan olarak, sağlama Aracısı varsayılan bağlantı zaman aşımı değeri olan 30 saniye kullanır. Etki alanı denetleyicinizin yanıt vermesi daha fazla sürerse, aracı günlük dosyasında aşağıdaki hata iletisini görebilirsiniz: 
+
+`
+System.DirectoryServices.Protocols.LdapException: The operation was aborted because the client side timeout limit was exceeded.
+`
+
+Arama özniteliğinin dizini oluşturulmadıysa LDAP arama işlemleri daha uzun sürebilir. İlk adım olarak, yukarıdaki hatayı alırsanız, önce arama/arama özniteliğinin [dizine alınmış](https://docs.microsoft.com/windows/win32/ad/indexed-attributes)olup olmadığını kontrol edin. Arama öznitelikleri dizine alınmışsa ve hata devam ederse, aşağıdaki adımları kullanarak LDAP bağlantısı zaman aşımını artırabilirsiniz: 
+
+1. Azure AD Connect sağlama aracısını çalıştıran Windows Server 'da yönetici olarak oturum açın.
+1. *Çalıştır* menü öğesini kullanarak kayıt defteri düzenleyicisini açın (regedit.exe) 
+1. Anahtar klasörünü bulun **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Sağ tıklayın ve "New-> dize değeri" öğesini seçin
+1. Adı girin: `LdapConnectionTimeoutInMilliseconds`
+1. **Değer adına** çift tıklayın ve değer verisini milisaniye olarak girin `60000` .
+    > [!div class="mx-imgBorder"]
+    > ![LDAP bağlantısı zaman aşımı](media/how-to-manage-registry-options/ldap-connection-timeout.png)
+1. Azure AD Connect sağlama hizmetini *Hizmetler* konsolundan yeniden başlatın.
+1. Birden çok sağlama Aracısı dağıttıysanız, bu kayıt defteri değişikliğini tutarlılık için tüm aracılara uygulayın. 
+
+## <a name="configure-referral-chasing"></a>Başvuru işlemesini yapılandırma
+Varsayılan olarak, Azure AD Connect sağlama Aracısı [başvuruları](https://docs.microsoft.com/windows/win32/ad/referrals)içermez. Belirli HR gelen sağlama senaryolarını desteklemek için başvuru işlemesini etkinleştirmek isteyebilirsiniz: 
+* Birden çok etki alanı genelinde UPN 'nin benzersizliği denetleniyor
+* Etki alanları arası yönetici başvurularını çözme
+
+Başvuru işlemesini açmak için aşağıdaki adımları kullanın:
+
+1. Azure AD Connect sağlama aracısını çalıştıran Windows Server 'da yönetici olarak oturum açın.
+1. *Çalıştır* menü öğesini kullanarak kayıt defteri düzenleyicisini açın (regedit.exe) 
+1. Anahtar klasörünü bulun **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Sağ tıklayın ve "New-> dize değeri" öğesini seçin
+1. Adı girin: `ReferralChasingOptions`
+1. **Değer adına** çift tıklayın ve değer verisini olarak girin `96` . Bu değer, için sabit değere karşılık gelir `ReferralChasingOptions.All` ve hem alt ağacın hem de taban düzeyi başvuruların, aracı tarafından izlenen olduğunu belirtir. 
+    > [!div class="mx-imgBorder"]
+    > ![Başvuru izleme](media/how-to-manage-registry-options/referral-chasing.png)
+1. Azure AD Connect sağlama hizmetini *Hizmetler* konsolundan yeniden başlatın.
+1. Birden çok sağlama Aracısı dağıttıysanız, bu kayıt defteri değişikliğini tutarlılık için tüm aracılara uygulayın.
+
+> [!NOTE]
+> [Ayrıntılı günlük kaydını](how-to-troubleshoot.md#log-files)etkinleştirerek kayıt defteri seçeneklerinin ayarlandığını doğrulayabilirsiniz. Aracı başlatma sırasında yayınlanan Günlükler, kayıt defterinden çekilen yapılandırma değerlerini görüntüler. 
+
+## <a name="next-steps"></a>Sonraki adımlar 
+
+- [Sağlama nedir?](what-is-provisioning.md)
+- [Azure AD Connect bulut sağlama nedir?](what-is-cloud-provisioning.md)
+

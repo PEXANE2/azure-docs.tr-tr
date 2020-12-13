@@ -6,22 +6,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.reviewer: tasharm, assafi, sumeh
-ms.openlocfilehash: b7e5ebb9ac4c71d71b19b10763ebbdf57d752d49
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 5aa14ae179270813a8c7410425c1614d95b8b497
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980971"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366509"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-[Başvuru belgeleri](/java/api/overview/azure/ai-textanalytics-readme-pre?view=azure-java-preview)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.1)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics/src/samples)
+[Başvuru belgeleri](/java/api/overview/azure/ai-textanalytics-readme?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics)  |  [Paket](https://mvnrepository.com/artifact/com.azure/azure-ai-textanalytics/5.1.0-beta.3)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-textanalytics_5.1.0-beta.3/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics)
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -33,13 +33,14 @@ Bu makale yalnızca API 'nin 3. x sürümünü açıklar.
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK) sürüm 8 veya üzeri
 * Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun.  Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Çözümle özelliğini kullanmak için standart fiyatlandırma katmanına sahip bir Metin Analizi kaynağına ihtiyacınız olacaktır.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -54,7 +55,7 @@ Tercih ettiğiniz IDE veya geliştirme ortamınızda Maven projesi oluşturun. S
      <dependency>
         <groupId>com.azure</groupId>
         <artifactId>azure-ai-textanalytics</artifactId>
-        <version>5.1.0-beta.1</version>
+        <version>5.1.0-beta.3</version>
     </dependency>
 </dependencies>
 ```
@@ -132,6 +133,7 @@ public static void main(String[] args) {
     recognizeEntitiesExample(client);
     recognizeLinkedEntitiesExample(client);
     extractKeyPhrasesExample(client);
+        AnalyzeOperationExample(client)
 }
 ```
 
@@ -209,7 +211,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -260,7 +262,7 @@ static void sentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document = Bad atmosphere. Not close to plenty of restaurants, hotels, and transit! Staff are not friendly and helpful.
@@ -312,7 +314,7 @@ static void sentimentAnalysisExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized document sentiment: positive, positive score: 1.0, neutral score: 0.0, negative score: 0.0.
@@ -347,7 +349,7 @@ static void detectLanguageExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Detected primary language: French, ISO 6391 name: fr, score: 1.00.
@@ -383,7 +385,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61, offset: 8, length: 4.
@@ -425,7 +427,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -470,7 +472,7 @@ static void recognizePiiEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text: My SSN is ***********
@@ -503,7 +505,7 @@ static void recognizeEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized entity: trip, entity category: Event, entity sub-category: null, score: 0.61.
@@ -542,7 +544,7 @@ static void recognizeLinkedEntitiesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -591,10 +593,100 @@ static void extractKeyPhrasesExample(TextAnalyticsClient client)
 }
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Recognized phrases: 
 cat
 veterinarian
 ```
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Çözümleme işlemi ile API 'YI zaman uyumsuz olarak kullanma
+
+# <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
+
+> [!CAUTION]
+> Analiz işlemlerini kullanmak için standart fiyatlandırma katmanıyla bir Metin Analizi kaynağı kullanmanız gerekir.  
+
+İşlevini çağıran, adlı yeni bir işlev oluşturun `analyzeOperationExample()` `beginAnalyzeTasks()` . Sonuç, sonuçlar için yoklamak üzere uzun süren bir işlem olacaktır.
+
+```java
+static void analyzeOperationExample(TextAnalyticsClient client)
+{
+        List<TextDocumentInput> documents = Arrays.asList(
+                        new TextDocumentInput("0", "Microsoft was founded by Bill Gates and Paul Allen.")
+                        );
+
+        SyncPoller<TextAnalyticsOperationResult, PagedIterable<AnalyzeTasksResult>> syncPoller =
+                        client.beginAnalyzeTasks(documents,
+                                        new AnalyzeTasksOptions().setDisplayName("{tasks_display_name}")
+                                                        .setEntitiesRecognitionTasks(Arrays.asList(new EntitiesTask())),
+                                        Context.NONE);
+
+        syncPoller.waitForCompletion();
+        PagedIterable<AnalyzeTasksResult> result = syncPoller.getFinalResult();
+
+        result.forEach(analyzeJobState -> {
+                System.out.printf("Job Display Name: %s, Job ID: %s.%n", analyzeJobState.getDisplayName(),
+                                analyzeJobState.getJobId());
+                System.out.printf("Total tasks: %s, completed: %s, failed: %s, in progress: %s.%n",
+                                analyzeJobState.getTotal(), analyzeJobState.getCompleted(), analyzeJobState.getFailed(),
+                                analyzeJobState.getInProgress());
+
+                List<RecognizeEntitiesResultCollection> entityRecognitionTasks =
+                                analyzeJobState.getEntityRecognitionTasks();
+                if (entityRecognitionTasks != null) {
+                        entityRecognitionTasks.forEach(taskResult -> {
+                                // Recognized entities for each of documents from a batch of documents
+                                AtomicInteger counter = new AtomicInteger();
+                                for (RecognizeEntitiesResult entitiesResult : taskResult) {
+                                        System.out.printf("%n%s%n", documents.get(counter.getAndIncrement()));
+                                        if (entitiesResult.isError()) {
+                                                // Erroneous document
+                                                System.out.printf("Cannot recognize entities. Error: %s%n",
+                                                                entitiesResult.getError().getMessage());
+                                        } else {
+                                                // Valid document
+                                                entitiesResult.getEntities().forEach(entity -> System.out.printf(
+                                                                "Recognized entity: %s, entity category: %s, entity subcategory: %s, "
+                                                                                + "confidence score: %f.%n",
+                                                                entity.getText(), entity.getCategory(), entity.getSubcategory(),
+                                                                entity.getConfidenceScore()));
+                                        }
+                                }
+                        });
+                }
+        });
+    }
+```
+
+Bu örneği uygulamanıza ekledikten sonra, `main()` yöntebir yönteme çağırın.
+
+```java
+analyzeOperationExample(client);
+```
+
+### <a name="output"></a>Çıktı
+
+```console
+Job Display Name: {tasks_display_name}, Job ID: 84fd4db4-0734-47ec-b263-ac5451e83f2a_637432416000000000.
+Total tasks: 1, completed: 1, failed: 0, in progress: 0.
+
+Text = Microsoft was founded by Bill Gates and Paul Allen., Id = 0, Language = null
+Recognized entity: Microsoft, entity category: Organization, entity subcategory: null, confidence score: 0.960000.
+Recognized entity: Bill Gates, entity category: Person, entity subcategory: null, confidence score: 1.000000.
+Recognized entity: Paul Allen, entity category: Person, entity subcategory: null, confidence score: 0.990000.
+```
+
+PII ve anahtar tümceciği ayıklamayı algılamak için Çözümle işlemini de kullanabilirsiniz. GitHub 'daki [Çözümle örneği](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/textanalytics/azure-ai-textanalytics/src/samples/java/com/azure/ai/textanalytics/lro/AnalyzeTasksAsync.java) ' ne bakın.
+
+# <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+Bu özellik 3,0 sürümünde kullanılamaz.
+
+# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+
+Bu özellik 2,1 sürümünde kullanılamaz.
+
+---

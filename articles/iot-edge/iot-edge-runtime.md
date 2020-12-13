@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, mqtt, devx-track-csharp
-ms.openlocfilehash: 133be436853ee8c2b04df2f943368513108b226b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c0c3a452c93b88483ac7027405665c26ceab8183
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444316"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368520"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge çalışma zamanını ve mimarisini anlayın
 
@@ -81,7 +81,7 @@ IoT Edge hub 'ı yerel olarak çalışan IoT Hub tam bir sürümü değildir. Io
 
 IoT Edge çözümünüzün kullandığı bant genişliğini azaltmak için, IoT Edge hub 'ı buluta kaç tane gerçek bağlantı yapıldığını en iyi duruma getirir. IoT Edge hub, modüller veya aşağı akış cihazlarından mantıksal bağlantılar alır ve bunları buluta tek bir fiziksel bağlantı için birleştirir. Bu işlemin ayrıntıları çözümün geri kalanına saydamdır. İstemciler, hepsi aynı bağlantı üzerinden gönderilse de, buluta kendilerine ait bağlantıları olduğunu düşündüler. IoT Edge hub 'ı, aşağı akış cihazları tarafından kullanılan protokollerden bağımsız olarak, buluta yukarı akış ile iletişim kurmak için AMQP veya MQTT protokolünü kullanabilir. Ancak, IoT Edge merkezi şu anda yalnızca AMQP 'yi yukarı akış protokolü ve çoğullama özellikleri olarak kullanarak tek bir fiziksel bağlantı halinde birleştirmeyi destekler. AMQP varsayılan yukarı akış protokolüdür.
 
-![IoT Edge hub, fiziksel cihazlar ve IoT Hub arasında bir ağ geçididir](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge hub, fiziksel cihazlar ve IoT Hub arasında bir ağ geçididir](./media/iot-edge-runtime/gateway-communication.png)
 
 IoT Edge hub, IoT Hub bağlanıp bağlanmadığını belirleyebilir. Bağlantı kaybolursa IoT Edge hub iletileri veya ikizi güncelleştirmelerini yerel olarak kaydeder. Bir bağlantı yeniden kurulduktan sonra tüm verileri eşitler. Bu geçici önbellek için kullanılan konum, IoT Edge hub 'ının modül ikizi bir özelliği tarafından belirlenir. Önbelleğin boyutu artmaz ve cihazın depolama kapasitesi olduğu sürece büyüyecektir. Daha fazla bilgi için bkz. [çevrimdışı yetenekler](offline-capabilities.md).
 
@@ -112,7 +112,7 @@ Moduleclient sınıfı ve iletişim yöntemleri hakkında daha fazla bilgi için
 
 Çözüm geliştiricisi, IoT Edge hub 'ının iletileri modüller arasında nasıl geçireceğini belirleyen kuralları belirtmekten sorumludur. Yönlendirme kuralları bulutta tanımlanmıştır ve modülünde IoT Edge hub 'ına dağıtılır ikizi. IoT Hub yollar için aynı söz dizimi, Azure IoT Edge modüller arasındaki yolları tanımlamak için kullanılır. Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
 
-![Modüller arasındaki rotalar IoT Edge hub 'ına gider](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Modüller arasındaki rotalar IoT Edge hub 'ına gider](./media/iot-edge-runtime/module-endpoints-routing.png)
 ::: moniker-end
 
 <!-- <1.2> -->
@@ -134,7 +134,7 @@ IoT Edge hub 'ı iki aracılı mekanizmayı destekler:
 
 İlk aracı mekanizması, iletilerin cihazlar veya modüller arasında nasıl geçtiğini belirtmek için IoT Hub ile aynı yönlendirme özelliklerinden yararlanır. İlk cihazlar veya modüller iletileri kabul ettikleri girişleri ve ileti yazdıkları çıkışları belirtir. Daha sonra bir çözüm geliştiricisi, iletileri bir kaynak, örneğin çıktılar ve bir hedef (örn. girişler) gibi olası filtrelerle yönlendirebilir.
 
-![Modüller arasındaki rotalar IoT Edge hub 'ına gider](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![Modüller arasındaki rotalar IoT Edge hub 'ına gider](./media/iot-edge-runtime/module-endpoints-routing.png)
 
 Yönlendirme, AMQP veya MQTT protokolü aracılığıyla Azure IoT cihaz SDK 'Ları ile oluşturulan cihazlar veya modüller tarafından kullanılabilir. Tüm mesajlaşma IoT Hub temel elemanlar, örn. telemetri, doğrudan Yöntemler, C2D, TWINS desteklenir, ancak kullanıcı tanımlı konularda iletişim desteklenmez.
 

@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d6676187f87cecb7f876150d1582cde9051dd251
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f6c990b3ce5edaab4d2ce6600c0291272058e092
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367491"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369302"
 ---
 # <a name="security-control-v2-privileged-access"></a>Güvenlik denetimi v2: ayrıcalıklı erişim
 
 Ayrıcalıklı erişim, Azure kiracınıza ve kaynaklarınıza ayrıcalıklı erişimi korumaya yönelik denetimleri ele alır. Bu, yönetim modelinizi, yönetim hesaplarınızı ve ayrıcalıklı erişim İş istasyonlarınızı bilinçli ve yanlışlıkla riske karşı korumak için bir denetim aralığı içerir.
 
-## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: yüksek ayrıcalıklı kullanıcıları koruyun ve sınırlayın
+## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Yüksek ayrıcalıklı kullanıcıları koruyun ve sınırlayın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-1 | 4,3, 4,8 | AC-2 |
 
@@ -32,15 +32,15 @@ Yüksek ayrıcalıklı kullanıcı hesabı sayısını sınırlayın ve bu hesap
 
 Note: özel rolleri atanmış belirli ayrıcalıklı izinlerle kullanıyorsanız, yönetilmelidir başka kritik rolleriniz olabilir. Ayrıca, önemli iş varlıklarının yönetici hesabına de benzer denetimler uygulamak isteyebilirsiniz.  
 
-Azure kaynaklarına ve Azure AD 'ye Azure AD Privileged Identity Management (PıM) kullanarak tam zamanında (JıT) ayrıcalıklı erişim sağlayabilirsiniz. JıT, ayrıcalıklı görevleri yalnızca kullanıcılara ihtiyaç duyduklarından gerçekleştirmek için geçici izinler verir. PıM Ayrıca, Azure AD kuruluşunuzda şüpheli veya güvenli olmayan bir etkinlik olduğunda güvenlik uyarıları oluşturabilir.
+Azure AD Privileged Identity Management’ı (PIM) kullanarak Azure kaynaklarına ve Azure AD’ye tam zamanında (JIT) ayrıcalıklı erişimi etkinleştirebilirsiniz. JIT yalnızca kullanıcıların ihtiyacı olduğunda ayrıcalıklı görevler gerçekleştirmeleri için geçici izinler verir. Azure AD kuruluşunuzda güvenli olmayan veya şüpheli etkinlikler olduğunda da PIM güvenlik uyarıları oluşturabilir.
 
-- [Azure AD 'de yönetici rolü izinleri](../../active-directory/roles/permissions-reference.md)
+- [Azure AD'de yönetici rolü izinleri](../../active-directory/roles/permissions-reference.md)
 
 - [Azure Privileged Identity Management güvenlik uyarılarını kullanma](../../active-directory/privileged-identity-management/pim-how-to-configure-security-alerts.md)
 
 - [Azure AD'de karma ve bulut dağıtımları için ayrıcalıklı erişim güvenliğini sağlama](../../active-directory/roles/security-planning.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -52,9 +52,9 @@ Azure kaynaklarına ve Azure AD 'ye Azure AD Privileged Identity Management (Pı
 
 - [Güvenlik Işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
-## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: iş açısından kritik sistemlere yönetici erişimini kısıtlama
+## <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: İş açısından kritik sistemlere yönetici erişimini kısıtlayın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-2 | 13,2, 2,10 | AC-2, SC-3, SC-7 |
 
@@ -70,7 +70,7 @@ E-posta, göz atma ve üretkenlik görevlerinde kullanılan standart kullanıcı
 
 - [Azure abonelik yöneticileri](../../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -80,9 +80,9 @@ E-posta, göz atma ve üretkenlik görevlerinde kullanılan standart kullanıcı
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
-## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Kullanıcı erişimini düzenli olarak gözden geçirme ve mutabık kılma
+## <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Kullanıcı erişimini düzenli olarak gözden geçirin ve mutabık kılın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-3 | 4,1, 16,9, 16,10 | AC-2 |
 
@@ -93,9 +93,9 @@ Note: bazı Azure Hizmetleri, Azure AD aracılığıyla yönetilmeyen yerel kull
 
 - [Privileged Identity Management (PıM) içinde Azure Kaynak rolleri için erişim gözden geçirmesi oluşturma](../../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md)
 
-- [Azure AD kimlik ve erişim gözden geçirmeleri kullanma](../../active-directory/governance/access-reviews-overview.md)
+- [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../../active-directory/governance/access-reviews-overview.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -105,18 +105,18 @@ Note: bazı Azure Hizmetleri, Azure AD aracılığıyla yönetilmeyen yerel kull
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Azure AD 'de acil durum erişimi ayarlama
+## <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Azure AD'de acil durum erişimini ayarlayın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-4 | 16 | AC-2, CP-2 |
 
-Yanlışlıkla Azure AD kuruluşunuzun dışına kilitlenmesini engellemek için, normal yönetim hesapları kullanılmazsa erişim için bir acil durum erişim hesabı ayarlayın. Acil durum erişim hesapları genellikle yüksek ayrıcalıklı olur ve belirli kişilere atanmamalıdır. Acil durum erişim hesapları, normal yönetim hesaplarının kullanılabileceği acil durum veya "cam camı" senaryolarıyla sınırlıdır.
-Acil durum erişim hesapları için kimlik bilgilerinin (parola, sertifika veya akıllı kart gibi) güvenli tutulduğundan ve yalnızca bir acil durumda bunları kullanma yetkisine sahip olan bireyler için bilindiğinden emin olmanız gerekir.
+Yanlışlıkla Azure AD kuruluşunuzun dışına kilitlenmesini engellemek için, normal yönetim hesapları kullanılmazsa erişim için bir acil durum erişim hesabı ayarlayın. Acil durum erişim hesapları genellikle yüksek ayrıcalığa sahiptir ve herhangi bir kişiye atanmamalıdır. Acil durum erişim hesaplarının kullanım alanı, normal yönetici hesaplarının kullanılamadığı acil veya "camı kırın" senaryolarıyla sınırlıdır.
+Acil durum erişim hesaplarının kimlik bilgilerinin (parola, sertifika veya akıllı kart) güvenli bir şekilde saklandığından ve yalnızca acil bir durumda bunları kullanma yetkisine sahip olan kullanıcılar tarafından bilindiğinden emin olmanız gerekir.
 
-- [Azure AD 'de acil durum erişim hesaplarını yönetme](../../active-directory/roles/security-emergency-access.md)
+- [Azure AD'deki acil durum erişim hesaplarını yönetme](../../active-directory/roles/security-emergency-access.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -130,7 +130,7 @@ Acil durum erişim hesapları için kimlik bilgilerinin (parola, sertifika veya 
 
 ## <a name="pa-5-automate-entitlement-management"></a>PA-5: yetkilendirme yönetimini otomatikleştirme
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-5 | 16 | AC-2, AC-5, PM-10 |
 
@@ -139,7 +139,7 @@ Erişim atamaları, incelemeler ve süre sonu dahil olmak üzere, erişim isteğ
 
 - [Azure AD yetkilendirme yönetimi nedir?](../../active-directory/governance/entitlement-management-overview.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -149,19 +149,19 @@ Erişim atamaları, incelemeler ve süre sonu dahil olmak üzere, erişim isteğ
 
 - [Güvenlik Uyumluluk Yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: ayrıcalıklı erişim iş istasyonlarını kullanma
+## <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Ayrıcalıklı erişim iş istasyonlarını kullanın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-6 | 4,6, 11,6, 12,12 | AC-2, SC-3, SC-7 |
 
-Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve kritik hizmet işleçleri gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. Yönetim görevleri için yüksek düzeyde güvenli Kullanıcı iş istasyonları ve/veya Azure savunma kullanın. Yönetim görevleri için güvenli ve yönetilen bir kullanıcı iş istasyonu dağıtmak üzere Azure Active Directory, Microsoft Defender Gelişmiş tehdit koruması (ATP) ve/veya Microsoft Intune kullanın. Güvenli iş istasyonları, güçlü kimlik doğrulaması, yazılım ve donanım temelleri ve kısıtlı mantıksal ve ağ erişimi gibi güvenli yapılandırmayı zorlamak için merkezi olarak yönetilebilir. 
+Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve kritik hizmet işleçleri gibi hassas rollerin güvenliği açısından kritik öneme sahiptir. Yönetim görevleri için yüksek düzeyde güvenli Kullanıcı iş istasyonları ve/veya Azure savunma kullanın. Yönetim görevlerine yönelik güvenli ve yönetilen bir kullanıcı iş istasyonu dağıtmak için Azure Active Directory, Microsoft Defender Gelişmiş Tehdit Koruması (ATP) ve/veya Microsoft Intune hizmetlerini kullanın. Güvenli iş istasyonları, güçlü kimlik doğrulaması, yazılım ve donanım temelleri ve kısıtlı mantıksal ve ağ erişimi gibi güvenli yapılandırmayı zorlamak için merkezi olarak yönetilebilir. 
 
 - [Ayrıcalıklı erişim iş istasyonlarını anlama](../../active-directory/devices/concept-azure-managed-workstation.md)
 
 - [Ayrıcalıklı erişim iş istasyonu dağıtma](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -171,22 +171,22 @@ Güvenli, yalıtılmış iş istasyonları Yöneticiler, geliştiriciler ve krit
 
 - [Kimlik ve anahtar yönetimi](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
-## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: yalnızca yeterli yönetim (en az ayrıcalık ilkesi) Izleyin
+## <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>AE-7: Tam yetecek kadar yönetim uygulama (en düşük ayrıcalık ilkesi)
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-7 | 14,6 | AC-2, AC-3, SC-3 |
 
 Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynak erişimini rol atamaları aracılığıyla yönetmenizi sağlar. Kullanıcılara, Grup hizmeti sorumlularına ve yönetilen kimliklere bu rolleri atayabilirsiniz. Belirli kaynaklar için önceden tanımlı yerleşik roller vardır ve bu roller Azure CLı, Azure PowerShell ve Azure portal gibi araçlarla envantere alınabilir veya sorgulanabilir. Azure RBAC aracılığıyla kaynaklara atadığınız ayrıcalıklar, her zaman roller için gerekdiklere göre sınırlandırılmalıdır. Sınırlı ayrıcalıklar Azure AD Privileged Identity Management (PıM) tam zamanında (JıT) yaklaşımını tamamlar ve bu ayrıcalıkların düzenli olarak gözden geçirilmesi gerekir.
-İzin ayırmak ve yalnızca gerektiğinde özel rol oluşturmak için yerleşik rolleri kullanın. 
+Yerleşik rolleri kullanarak izin verin ve yalnızca gerektiğinde özel rol oluşturun. 
 
 - [Azure rol tabanlı erişim denetimi nedir (Azure RBAC)](../../role-based-access-control/overview.md)
 
 - [Azure RBAC 'yi yapılandırma](../../role-based-access-control/role-assignments-portal.md)
 
-- [Azure AD kimlik ve erişim gözden geçirmeleri kullanma](../../active-directory/governance/access-reviews-overview.md)
+- [Azure AD kimlik ve erişim gözden geçirmelerini kullanma](../../active-directory/governance/access-reviews-overview.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
@@ -200,7 +200,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC), Azure kaynak erişimini rol at
 
 ## <a name="pa-8-choose-approval-process-for-microsoft-support"></a>PA-8: Microsoft desteği için onay işlemini seçin 
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | PA-8 | 16 | AC-2, AC-3, AC-4 |
 
@@ -208,7 +208,7 @@ Microsoft 'un müşteri verilerine erişmesi gereken destek senaryolarında, Mü
 
 - [Müşteri Kasası anlayın](../fundamentals/customer-lockbox-overview.md)
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 **Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 

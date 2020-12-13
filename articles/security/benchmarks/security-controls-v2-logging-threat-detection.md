@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 99e7a8fcb34c963cfab366f1913508a7ff3f4a51
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c5a855ffe06a17d8ec1bfe249dbe7bc41d1166af
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408711"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369081"
 ---
 # <a name="security-control-v2-logging-and-threat-detection"></a>Güvenlik denetimi v2: günlük kaydı ve tehdit algılama
 
@@ -20,7 +20,7 @@ Günlüğe kaydetme ve tehdit algılama, Azure 'da tehditleri algılama ve Azure
 
 ## <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Azure kaynakları için tehdit algılamayı etkinleştirme
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -38,9 +38,9 @@ Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi 
 
 - [Azure Sentinel ile Cyber Threat Intelligence](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -52,16 +52,16 @@ Ayrıca, ortamınızda belirli ölçütlerle eşleşen tehditleri araya analizi 
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Azure kimlik ve erişim yönetimi için tehdit algılamayı etkinleştirme
+## <a name="lt-2-enable-threat-detection-for-azure-identity-and-access-management"></a>LT-2: Azure kimlik ve erişim yönetimi için tehdit algılamayı etkinleştirin
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3, AU-6, AU-12, SI-4 |
 
 Azure AD, Azure AD raporlama 'da görüntülenebilen veya Azure Izleyici, Azure Sentinel veya diğer SıEM/izleme araçlarıyla tümleştirilen, daha karmaşık izleme ve analiz kullanım durumları için kullanılabilen aşağıdaki kullanıcı günlüklerini sağlar: 
--   Oturum açma işlemleri – oturum açma işlemleri raporu, yönetilen uygulamaların kullanımı ve Kullanıcı oturum açma etkinliklerinin kullanımı hakkında bilgi sağlar.
+-   Oturum açma bilgileri – Oturum açma bilgileri raporu, yönetilen uygulamaların kullanımı ve kullanıcı oturum açma etkinlikleri hakkında bilgi sağlar.
 
--   Denetim günlükleri - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Denetim günlüklerine örnek olarak, Azure AD 'de Kullanıcı, uygulama, Grup, rol ve ilke ekleme veya kaldırma gibi herhangi bir kaynak üzerinde yapılan değişiklikler bulunur.
+-   Denetim günlükleri - Azure AD içindeki çeşitli özellikler tarafından yapılan tüm değişiklikler için günlükler aracılığıyla izlenebilirlik sağlar. Azure AD içindeki herhangi bir kaynakta yapılan kullanıcı, uygulama, grup, rol ve ilkeleri ekleme veya kaldırma işlemleri gibi değişiklikler, denetim günlüklerine örnek gösterilebilir.
 
 -   Riskli oturum açma işlemleri - Riskli oturum açma işlemi bir kullanıcı hesabının meşru sahibi olmayan bir kişi tarafından gerçekleştirilmiş olabilecek oturum açma girişiminin göstergesidir.
 
@@ -71,13 +71,13 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 - [Azure AD 'de denetim etkinlik raporları](../../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Azure kimlik koruması 'nı etkinleştirme](../../active-directory/identity-protection/overview-identity-protection.md)
+- [Azure Kimlik Koruması’nı etkinleştirme](../../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Azure Güvenlik Merkezi’nde tehdit koruması](../../security-center/azure-defender.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -89,9 +89,9 @@ Azure Güvenlik Merkezi, çok fazla sayıda başarısız kimlik doğrulama giri�
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Azure ağ etkinlikleri için günlüğe kaydetmeyi etkinleştirme
+## <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Azure ağ etkinlikleri için günlüğe kaydetmeyi etkinleştirin
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-3 | 9,3, 12,2, 12,5, 12,8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -109,9 +109,9 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 - [DNS Analizi çözümü ile DNS altyapınız hakkında Öngörüler toplayın](../../azure-monitor/insights/dns-analytics.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -123,9 +123,9 @@ Olay analizlerini, tehdit arayışınızı ve güvenlik uyarısı oluşturmayı 
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Azure kaynakları için günlüğe kaydetmeyi etkinleştirme
+## <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Azure kaynakları için günlüğe kaydetmeyi etkinleştirin
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-4 | 6,2, 6,3, 8,8 | AU-3, AU-12 |
 
@@ -137,9 +137,9 @@ Azure Güvenlik Merkezi 'ni ve Azure Ilkesini, denetim, güvenlik ve kaynak gün
 
 - [Azure Güvenlik Merkezi veri toplamayı anlama](../../security-center/security-center-enable-data-collection.md)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: Paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik işlemleri](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
@@ -149,9 +149,9 @@ Altyapı ve uç nokta güvenliği
 
 - [Tehdit bilgileri](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: güvenlik günlüğü yönetimini ve analizini merkezileştirme
+## <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Güvenlik günlüğü yönetim ve analiz süreçlerini merkezileştirin
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-5 | 6,5, 6,6 | AU-3, SI-4 |
 
@@ -167,9 +167,9 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -177,9 +177,9 @@ Birçok kuruluş, daha az sıklıkta kullanılan "soğuk" verileri için sık ku
 
 - [Altyapı ve uç nokta güvenliği](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-## <a name="lt-6-configure-log-storage-retention"></a>LT-6: günlük depolama bekletmesini yapılandırma
+## <a name="lt-6-configure-log-storage-retention"></a>LT-6: Günlük depolama alanının saklama süresini yapılandırın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
@@ -193,9 +193,9 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 
 - [Azure Güvenlik Merkezi uyarıları ve önerileri dışarı aktarma](../../security-center/continuous-export.md)
 
-**Sorumluluk** : müşteri
+**Sorumluluk**: Müşteri
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Güvenlik mimarisi](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -207,7 +207,7 @@ Azure Izleyici 'de, Log Analytics çalışma alanı saklama dönemini kuruluşun
 
 ## <a name="lt-7-use-approved-time-synchronization-sources"></a>LT-7: onaylanan zaman eşitleme kaynaklarını kullanın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -221,9 +221,9 @@ Azure içindeki kaynaklar tarafından oluşturulan tüm Günlükler varsayılan 
 
 - [Azure hizmetleri için gelen UDP 'yi devre dışı bırakma](https://support.microsoft.com/help/4558520/how-to-disable-inbound-udp-for-azure-services)
 
-**Sorumluluk** : paylaşılan
+**Sorumluluk**: Paylaşılan
 
-**Müşteri güvenlik paydaşları** ( [daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Müşteri güvenlik paydaşları** ([daha fazla bilgi](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [İlke ve standartlar](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 

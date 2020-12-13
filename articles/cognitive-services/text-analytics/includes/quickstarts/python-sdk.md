@@ -3,14 +3,14 @@ author: aahill
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
-ms.openlocfilehash: ab9824b8880c5d2a994481bf4917efb368ed09a9
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: da5aae933de1317dd97f74c97f9c08ca6cc1d090
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980975"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366359"
 ---
 <a name="HOLTop"></a>
 
@@ -28,13 +28,14 @@ ms.locfileid: "94980975"
 
 ---
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
 * Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Çözümle özelliğini kullanmak için standart fiyatlandırma katmanına sahip bir Metin Analizi kaynağına ihtiyacınız olacaktır.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -224,7 +225,7 @@ def sentiment_analysis_example(client):
 sentiment_analysis_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document Sentiment: positive
@@ -301,7 +302,7 @@ def sentiment_analysis_with_opinion_mining_example(client):
 sentiment_analysis_with_opinion_mining_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document Sentiment: positive
@@ -380,7 +381,7 @@ def sentiment_analysis_example(client):
 sentiment_analysis_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document Sentiment: positive
@@ -407,7 +408,7 @@ Negative=0.02
 
 [!code-python[sentiment analysis](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=sentimentAnalysis)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1 , Sentiment Score: 0.87
@@ -440,7 +441,7 @@ language_detection_example(client)
 ```
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Language:  French
@@ -466,7 +467,7 @@ language_detection_example(client)
 ```
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Language:  French
@@ -479,7 +480,7 @@ Daha önce oluşturulan istemciyi kullanarak [detect_language ()](/python/api/az
 [!code-python[language detection](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=languageDetection)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1 , Language: English
@@ -516,7 +517,7 @@ def entity_recognition_example(client):
 entity_recognition_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Named Entities:
@@ -562,7 +563,7 @@ def entity_linking_example(client):
 entity_linking_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -642,7 +643,7 @@ def pii_recognition_example(client):
 pii_recognition_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Redacted Text: The employee's SSN is ***********.
@@ -684,7 +685,7 @@ def entity_recognition_example(client):
 entity_recognition_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Named Entities:
@@ -728,7 +729,7 @@ def entity_linking_example(client):
 entity_linking_example(client)
 ```
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Linked Entities:
@@ -778,7 +779,7 @@ Daha önce oluşturulan istemciyi kullanarak, [Entities ()](/python/api/azure-co
 
 [!code-python[Entity recognition](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=entityRecognition)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1
@@ -847,7 +848,7 @@ key_phrase_extraction_example(client)
 ```
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
     Key Phrases:
@@ -881,7 +882,7 @@ key_phrase_extraction_example(client)
 ```
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
     Key Phrases:
@@ -896,7 +897,7 @@ Daha önce oluşturulan istemciyi kullanarak, [key_phrases ()](/python/api/azure
 [!code-python[key phrase extraction](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=keyPhrases)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Document ID: 1
@@ -916,5 +917,77 @@ Document ID: 4
          Key phrases:
                 fútbol
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Çözümleme işlemi ile API 'YI zaman uyumsuz olarak kullanma
+
+# <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
+
+> [!CAUTION]
+> Analiz işlemlerini kullanmak için standart fiyatlandırma katmanıyla bir Metin Analizi kaynağı kullanmanız gerekir.  
+
+`analyze_example()`İstemciyi bağımsız değişken olarak alan adlı yeni bir işlev oluşturun, sonra `begin_analyze()` işlevi çağırır. Sonuç, sonuçlar için yoklamak üzere uzun süren bir işlem olacaktır.
+
+```python
+    def analyze_example(client):
+        documents = [
+            "Microsoft was founded by Bill Gates and Paul Allen."
+        ]
+
+        poller = text_analytics_client.begin_analyze(
+            documents,
+            display_name="Sample Text Analysis",
+            entities_recognition_tasks=[EntitiesRecognitionTask()]
+        )
+
+        result = poller.result()
+
+        for page in result:
+            for task in page.entities_recognition_results:
+                print("Results of Entities Recognition task:")
+                
+                docs = [doc for doc in task.results if not doc.is_error]
+                for idx, doc in enumerate(docs):
+                    print("\nDocument text: {}".format(documents[idx]))
+                    for entity in doc.entities:
+                        print("Entity: {}".format(entity.text))
+                        print("...Category: {}".format(entity.category))
+                        print("...Confidence Score: {}".format(entity.confidence_score))
+                        print("...Offset: {}".format(entity.offset))
+                    print("------------------------------------------")
+
+analyze_example(client)
+```
+
+### <a name="output"></a>Çıktı
+
+```console
+Results of Entities Recognition task:
+Document text: Microsoft was founded by Bill Gates and Paul Allen.
+Entity: Microsoft
+...Category: Organization
+...Confidence Score: 0.83
+...Offset: 0
+Entity: Bill Gates
+...Category: Person
+...Confidence Score: 0.85
+...Offset: 25
+Entity: Paul Allen
+...Category: Person
+...Confidence Score: 0.9
+...Offset: 40
+------------------------------------------
+```
+
+PII ve anahtar tümceciği ayıklamayı algılamak için Çözümle işlemini de kullanabilirsiniz. GitHub 'daki [Çözümle örneği](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/textanalytics/azure-ai-textanalytics/samples/async_samples/sample_analyze_async.py) ' ne bakın.
+
+# <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+Bu özellik 3,0 sürümünde kullanılamaz.
+
+# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+
+Bu özellik 2,1 sürümünde kullanılamaz.
 
 ---

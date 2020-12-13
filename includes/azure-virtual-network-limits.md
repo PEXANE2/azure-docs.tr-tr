@@ -1,6 +1,6 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: networking
 author: anavinahar
 ms.service: networking
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94329537"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366536"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları-Azure Resource Manager
 Aşağıdaki sınırlar yalnızca, her abonelik için bölge başına **Azure Resource Manager** ile yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre görüntülemeyi](../articles/networking/check-usage-against-limits.md)öğrenin.
@@ -73,7 +73,7 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | NIC başına kural (bir NIC 'deki tüm IP 'lerde) | 300                           |
 | Ön uç IP yapılandırması              | 600                           |
 | Arka uç havuzu boyutu                       | 1.000 IP yapılandırması, tek bir sanal ağ |
-| Load Balancer 1 başına arka uç kaynakları <sup><sup> | 150                   |
+| Load Balancer 1 başına arka uç kaynakları <sup><sup> | 250                   |
 | Yüksek kullanılabilirlik bağlantı noktaları                 | iç ön uç başına 1       |
 | Load Balancer başına giden kuralları        | 600                           |
 | VM başına yük dengeleyiciler                   | 2 (1 genel ve 1 iç)   |

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 12b49bf81328cc405337b682241aef2cd965c3de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 89520dacd9faea0373559119636d5c558b3b1536
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356554"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366518"
 ---
 > [!IMPORTANT]
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
@@ -123,7 +123,7 @@ Burada, yukarıda tanımladığınız abonelik değişkenlerini kullanarak iki i
 ## <a name="get-assets-for-testing"></a>Test için varlıkları al
 
 Eğitim ve test verileriniz için URL 'lere başvuru eklemeniz gerekir.
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 * Aşağıdaki örneklerde bulunan ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) ' da de mevcuttur) ve giriş görüntülerini kullanarak, blob depolamada tek BIR BELGENIN SAS URL 'sini almak için yukarıdaki adımları kullanabilirsiniz. 
 
 > [!NOTE]
@@ -140,7 +140,7 @@ Belirli bir URL 'deki bir dosyanın içeriğini tanımak için `begin_recognize_
 > [!TIP]
 > Ayrıca, yerel görüntülerden içerik alabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_content` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Table found on page 1:
@@ -172,7 +172,7 @@ Bu bölümde, önceden eğitilen bir makbuz modeli kullanılarak ABD makbuzları
 > [!TIP]
 > Ayrıca, yerel alındı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_receipts` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 ReceiptType: Itemized has confidence 0.659
@@ -234,7 +234,7 @@ Aşağıdaki kod, `begin_training` belirli bir belge kümesi üzerinde bir model
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -277,7 +277,7 @@ Ayrıca, eğitim belgelerini el ile etiketleyerek özel modeller de eğitebilirs
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_trainlabels)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, [Python SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/training)'da bulunan eğitim verileriyle eğitilen bir modelin çıktıdır.
 
@@ -327,7 +327,7 @@ Bu bölümde, kendi formlarınız ile eğitilen modeller kullanılarak özel for
 > Yerel görüntüleri de analiz edebilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_custom_forms` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Önceki örnekteki modeli kullanarak aşağıdaki çıktı sağlanır.
 
@@ -361,7 +361,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_count)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Our account has 5 custom models, and we can have at most 5000 custom models
@@ -374,7 +374,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_list)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, sınama hesabı için bir örnek çıktıdır.
 
@@ -394,7 +394,7 @@ Aşağıdaki kod bloğu, önceki bölümden kaydedilen model KIMLIĞINI kullanı
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_manage_getmodel)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu, önceki örnekte oluşturulan özel modelin örnek çıktıdır.
 
@@ -433,7 +433,7 @@ Bilişsel hizmetler aboneliğini temizlemek ve kaldırmak istiyorsanız, kaynağ
 
 Form tanıyıcı istemci kitaplığı, [Azure Core](https://aka.ms/azsdk-python-azure-core)'da tanımlanan özel durumları yükseltir.
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 
 Bu kitaplık günlüğe kaydetmek için [Standart günlük kitaplığını](https://docs.python.org/3/library/logging.html) kullanır. HTTP oturumları (URL 'Ler, üstbilgiler vb.) hakkındaki temel bilgiler BILGI düzeyinde günlüğe kaydedilir.
 

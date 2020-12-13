@@ -2,16 +2,16 @@
 title: Azure Kubernetes hizmeti (AKS) için CoreDNS 'i özelleştirme
 description: Azure Kubernetes Service (AKS) kullanarak alt etki alanları eklemek veya özel DNS uç noktalarını genişletmek için CoreDNS 'i özelleştirmeyi öğrenin
 services: container-service
-author: jnoller
+author: palma21
 ms.topic: article
 ms.date: 03/15/2019
-ms.author: jenoller
-ms.openlocfilehash: e99d841dcfb18b41df128283c37f46682e3fa129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.author: jpalma
+ms.openlocfilehash: 5b13931bc6a13d988c21f728b996c51270769e0c
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88257126"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368690"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Azure Kubernetes Service ile CoreDNS hizmetini özelleştirme
 
@@ -28,7 +28,7 @@ Bu makalede, AKS 'de CoreDNS 'in temel özelleştirme seçenekleri için ConfigM
 
 Bu makalede, mevcut bir AKS kümeniz olduğunu varsaymaktadır. AKS kümesine ihtiyacınız varsa bkz. [Azure CLI kullanarak][aks-quickstart-cli] aks hızlı başlangıç veya [Azure Portal kullanımı][aks-quickstart-portal].
 
-Aşağıdaki örneklerde olduğu gibi bir yapılandırma oluştururken, *veri* bölümündeki adlarınızın *. Server* veya *. override*ile bitmesi gerekir. Bu adlandırma kuralı, komutunu kullanarak görüntüleyebileceğiniz varsayılan AKS CoreDNS Configmap ' de tanımlanmıştır `kubectl get configmaps --namespace=kube-system coredns -o yaml` .
+Aşağıdaki örneklerde olduğu gibi bir yapılandırma oluştururken, *veri* bölümündeki adlarınızın *. Server* veya *. override* ile bitmesi gerekir. Bu adlandırma kuralı, komutunu kullanarak görüntüleyebileceğiniz varsayılan AKS CoreDNS Configmap ' de tanımlanmıştır `kubectl get configmaps --namespace=kube-system coredns -o yaml` .
 
 ## <a name="what-is-supportedunsupported"></a>Desteklenir/desteklenmez
 
@@ -109,7 +109,7 @@ kubectl delete pod --namespace kube-system --selector k8s-app=kube-dns
 
 ## <a name="use-custom-domains"></a>Özel etki alanlarını kullanma
 
-Yalnızca dahili olarak çözümlenebileceğiniz özel etki alanlarını yapılandırmak isteyebilirsiniz. Örneğin, geçerli bir üst düzey etki alanı olmayan, *poglife. Local*özel etki alanını çözümlemek isteyebilirsiniz. Özel bir etki alanı ConfigMap olmadan AKS kümesi adresi çözemiyor.
+Yalnızca dahili olarak çözümlenebileceğiniz özel etki alanlarını yapılandırmak isteyebilirsiniz. Örneğin, geçerli bir üst düzey etki alanı olmayan, *poglife. Local* özel etki alanını çözümlemek isteyebilirsiniz. Özel bir etki alanı ConfigMap olmadan AKS kümesi adresi çözemiyor.
 
 Aşağıdaki örnekte, özel etki alanını ve IP adresini kendi ortamınızın değerleriyle doğrudan trafiğe yönlendirmek için güncelleştirin. Adlı bir dosya oluşturun `corednsms.yaml` ve aşağıdaki örnek yapılandırmayı yapıştırın:
 

@@ -4,12 +4,12 @@ description: Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetle
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: b3b648ca27a407640b42932fe2ed7c32f5109114
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f0c41b535f9403d0a7027687cc5261cd437275
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89145578"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368605"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup hizmetini kullanarak Microsoft Azure Kurtarma Hizmetleri (MARS) aracı yedeklemelerini yönetme
 
@@ -21,7 +21,7 @@ Yedekleme ilkesini değiştirirken, yeni öğeler ekleyebilir, var olan öğeler
 
 - **Öğe Ekle** bu seçeneği yalnızca yedeklenecek yeni öğeler eklemek için kullanın. Varolan öğeleri kaldırmak için **öğeleri kaldır** veya **dışlama ayarları** seçeneğini kullanın.  
 - **Öğeleri kaldır** öğeleri yedeklenmeden kaldırmak için bu seçeneği kullanın.
-  - **Öğeleri kaldırmak**yerine bir birim içindeki tüm öğeleri kaldırmak Için **dışlama ayarlarını** kullanın.
+  - **Öğeleri kaldırmak** yerine bir birim içindeki tüm öğeleri kaldırmak Için **dışlama ayarlarını** kullanın.
   - Bir birimdeki tüm seçimlerin temizlenmesi, öğelerin eski yedeklerinin, son yedekleme sırasında, değişiklik için kapsam olmadan saklama ayarlarına göre korunmasına neden olur.
   - Bu öğeleri yeniden seçtiğinizde, ilk tam yedekleme ve yeni ilke değişiklikleri eski yedeklemelere uygulanmaz.
   - Tüm birim seçimini kaldırmak, bekletme ilkesini değiştirmek için herhangi bir kapsam olmadan son yedeklemeyi korur.
@@ -33,11 +33,11 @@ Yedekleme ilkesini değiştirirken, yeni öğeler ekleyebilir, var olan öğeler
 
     ![Windows Server yedeklemesini zamanlama](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. **İlke öğesi Seç** sekmesinde, **dosyalarınız ve klasörleriniz Için Yedekleme zamanlamasını değiştir** ' i seçin ve ileri ' **yi**seçin.
+2. **İlke öğesi Seç** sekmesinde, **dosyalarınız ve klasörleriniz Için Yedekleme zamanlamasını değiştir** ' i seçin ve ileri ' **yi** seçin.
 
     ![Ilke öğelerini seçin](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. **Zamanlamayı yedeklemeyi Değiştir veya Durdur** sekmesinde **yedekleme öğelerinde veya saatlerde değişiklik yap** ' ı seçin ve ileri ' **yi**seçin.
+3. **Zamanlamayı yedeklemeyi Değiştir veya Durdur** sekmesinde **yedekleme öğelerinde veya saatlerde değişiklik yap** ' ı seçin ve ileri ' **yi** seçin.
 
     ![Yedeklemeyi değiştirin veya zamanlayın](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
@@ -63,7 +63,7 @@ Yedeklenmesini istemediğiniz dosya ve klasörleri atlamak için dışlama kural
 
     ![Dışlama Ekle](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. **Hariç tutulacak öğeleri seçin**listesinden dosya ve klasörlere gözatıp dışlamak istediğiniz öğeleri seçin ve **Tamam**' ı seçin.
+3. **Hariç tutulacak öğeleri seçin** listesinden dosya ve klasörlere gözatıp dışlamak istediğiniz öğeleri seçin ve **Tamam**' ı seçin.
 
     ![Dışlanacak öğeleri seçin](./media/backup-azure-manage-mars/select-items-exclude.png)
 
@@ -75,7 +75,7 @@ Yedeklenmesini istemediğiniz dosya ve klasörleri atlamak için dışlama kural
 
 ### <a name="remove-items-from-existing-policy"></a>Varolan ilkeden öğeleri kaldır
 
-1. Eylemler bölmesinden, **yedeklemeyi zamanla**' yı seçin. **Yedeklenecek öğeleri seçin**bölümüne gidin. Listeden, yedekleme zamanlamadan kaldırmak istediğiniz dosya ve klasörleri seçin ve **öğeleri kaldır**' ı seçin.
+1. Eylemler bölmesinden, **yedeklemeyi zamanla**' yı seçin. **Yedeklenecek öğeleri seçin** bölümüne gidin. Listeden, yedekleme zamanlamadan kaldırmak istediğiniz dosya ve klasörleri seçin ve **öğeleri kaldır**' ı seçin.
 
     ![Kaldırılacak öğeleri seçin](./media/backup-azure-manage-mars/select-items-remove.png)
 
@@ -100,19 +100,19 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
 
 ### <a name="stop-protection-and-retain-backup-data"></a>Korumayı durdurun ve yedekleme verilerini koruyun
 
-1. MARS yönetim konsolunu açın, **eylemler bölmesine**gidin ve **yedeklemeyi zamanla**' yı seçin.
+1. MARS yönetim konsolunu açın, **eylemler bölmesine** gidin ve **yedeklemeyi zamanla**' yı seçin.
 
     ![Yedeklemeyi Zamanla ' yı seçin](./media/backup-azure-manage-mars/mars-actions.png)
-1. **Ilke öğesi Seç** sayfasında **dosyalarınız ve klasörleriniz için bir yedekleme zamanlaması Değiştir** ' i seçin ve **İleri ' yi**seçin.
+1. **Ilke öğesi Seç** sayfasında **dosyalarınız ve klasörleriniz için bir yedekleme zamanlaması Değiştir** ' i seçin ve **İleri ' yi** seçin.
 
     ![İlke öğesi seçin](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. **Zamanlanmış bir yedeklemeyi Değiştir veya Durdur** sayfasında, **Bu yedekleme zamanlamasını kullanmayı Durdur ' u seçin, ancak bir zamanlama yeniden etkinleştirilinceye kadar depolanan yedeklemeleri saklayın**. Ardından **İleri**' yi seçin.
 
     ![Zamanlanmış bir yedeklemeyi durdurun.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. **Zamanlanan yedeklemeyi Duraklat**bölümünde, bilgileri gözden geçirin ve **son**' u seçin.
+1. **Zamanlanan yedeklemeyi Duraklat** bölümünde, bilgileri gözden geçirin ve **son**' u seçin.
 
     ![Zamanlanmış bir yedeklemeyi duraklatın.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **Yedekleme Işlemini değiştirme**sırasında, zaman çizelgenize yedekleme duraklamasını denetleyin ve **çıkmak için Kapat** ' ı seçin.
+1. **Yedekleme Işlemini değiştirme** sırasında, zaman çizelgenize yedekleme duraklamasını denetleyin ve **çıkmak için Kapat** ' ı seçin.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Korumayı Durdur ve yedekleme verilerini sil
 
@@ -142,21 +142,21 @@ Dosya ve klasör yedeklemesini korumayı durdurmanın iki yolu vardır:
 Verileri korurken korumayı durdurduysanız ve korumayı sürdürmeye karar verdiyseniz Yedekleme zamanlamasını değiştir seçeneğini kullanarak yedeklemeyi yeniden etkinleştirebilirsiniz.
 
 1. **Eylemler** üzerinde **yedeklemeyi zamanla**' yı seçin.
-1. **Yedekleme zamanlamasını yeniden etkinleştir ' i seçin. Ayrıca, yedekleme öğelerini veya zamanları değiştirebilir** ve ileri ' **yi**seçebilirsiniz.<br>
+1. **Yedekleme zamanlamasını yeniden etkinleştir ' i seçin. Ayrıca, yedekleme öğelerini veya zamanları değiştirebilir** ve ileri ' **yi** seçebilirsiniz.<br>
 
     ![Yedekleme zamanlamasını yeniden etkinleştirin](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. **Yedeklenecek öğeleri seçin**' de, **İleri**' yi seçin.
 
     ![Yedeklenecek öğeleri seçin](./media/backup-azure-manage-mars/re-enable-next.png)
-1. **Yedekleme zamanlamasını belirtin**bölümünde Yedekleme zamanlamasını belirtin ve **İleri**' yi seçin.
-1. **Bekletme Ilkesi Seç**bölümünde, saklama süresini belirtin ve **İleri**' yi seçin.
+1. **Yedekleme zamanlamasını belirtin** bölümünde Yedekleme zamanlamasını belirtin ve **İleri**' yi seçin.
+1. **Bekletme Ilkesi Seç** bölümünde, saklama süresini belirtin ve **İleri**' yi seçin.
 1. Son olarak, **onay** ekranında, ilke ayrıntılarını gözden geçirin ve **son**' u seçin.
 
 ## <a name="re-generate-passphrase"></a>Parolayı yeniden oluştur
 
 Bir parola, şirket içi veya yerel makinenizi, MARS aracısını veya Azure 'dan veya Azure 'dan yedekleme sırasında verileri şifrelemek ve şifrelerini çözmek için kullanılır. Parolayı kaybettiyseniz veya unuttuysanız, bu adımları izleyerek, parolayı yeniden oluşturabilirsiniz (makineniz hala kurtarma hizmetleri kasası ile kaydedilir ve yedekleme yapılandırılmışsa):
 
-1. Mars Aracısı konsolundan **Eylemler bölmesi**  >  >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine**gidin.<br>
+1. Mars Aracısı konsolundan **Eylemler bölmesi**  >  >**Özellikleri Değiştir** ' e gidin. Ardından **şifreleme sekmesine** gidin.<br>
 1. **Parolayı Değiştir** onay kutusunu seçin.<br>
 1. Yeni bir parola girin veya **parola oluştur**' u seçin.
 1. Yeni parolayı kaydetmek için **Araştır** ' ı seçin.
@@ -189,6 +189,19 @@ MARS için yedekleme ilkesini yönetmek, Portal üzerinden değil MARS konsolu a
   1. Aracıyı yükler ve aynı kasaya ve aynı parolayla yeniden kaydolun
   1. Saklama süresini gereksinimlerinize göre genişletmek için MARS istemcisini başlatın
 - MARS ile korunan yeni geri yüklenen makineniz yedeklemeler almaya devam edecektir.  
+
+## <a name="configuring-antivirus-for-the-mars-agent"></a>MARS Aracısı için virüsten koruma yapılandırma
+
+MARS aracısının işlemiyle ilgili çakışmaları önlemek için virüsten koruma yazılımınız için aşağıdaki yapılandırmayı öneririz.
+
+1. **Yol dışlamaları ekleme**: performans ve olası çakışmaların azalmasına engel olmak için, aşağıdaki yolları virüsten koruma yazılımının gerçek zamanlı izlemelerinden hariç tutun:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent` ve alt klasörler
+    1. **Karalama klasörü**: karalama klasörü standart konumda değilse, bunları dışlamalarla birlikte ekleyin.  Karalama klasörü konumunu belirleme [adımları için buraya bakın](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible) .
+1. **Ikili Dışlamalar ekleme**: yedekleme ve konsol etkinliklerinin azalmasına engel olmak için, aşağıdaki ikili dosyalar için işlemleri virüsten koruma yazılımının gerçek zamanlı izlemeden hariç tutun:
+    1. `%ProgramFiles%\Microsoft Azure Recovery Services Agent\bin\cbengine.exe`
+
+>[!NOTE]
+>Bu yolların dışlanması birçok virüsten koruma yazılımı için yeterli olacaktır, ancak bazı işlemler MARS Aracısı işlemlerini kesintiye uğratabilecek olmaya devam edebilir. Beklenmeyen hatalardan karşılaşırsanız, geçici olarak virüsten koruma yazılımını kaldırın ve sorun olup olmadığını görmek için izleyin. Bu sorunu giderirse, ürünlerinin doğru yapılandırmasıyla ilgili yardım almak için virüsten koruma yazılımı satıcınıza başvurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

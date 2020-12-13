@@ -8,43 +8,11 @@
   items:
     - name: Oturum açma ve kullanıcı kimliği ayarlama
       href: quickstart-sign-in-azure-notebooks.md
-    - name: Not defteri oluşturma ve paylaşma
-      href: quickstart-create-share-jupyter-notebook.md
-    - name: Not defterini kopyalama
-      href: quickstart-clone-jupyter-notebook.md
-    - name: Yerel Jupyter not defterini geçirme
-      href: quickstart-migrate-local-jupyter-notebook.md
-    - name: Özel ortam kullanma
-      href: quickstart-create-jupyter-notebook-project-environment.md
     - name: Projenizi dışarı aktarma
       href: quickstart-export-jupyter-notebook-project.md
-- name: Öğreticiler
-  items:
-    - name: Not defteri oluşturma ve çalıştırma
-      href: tutorial-create-run-jupyter-notebook.md
-- name: Örnekler
-  items:
-    - name: Örnek not defterleri
-      href: azure-notebooks-samples.md
 - name: Kavramlar
   items:
     - name: Hesaplar
       href: azure-notebooks-user-account.md
     - name: Profiller
       href: azure-notebooks-user-profile.md
-- name: Nasıl yapılır kılavuzları
-  items:
-    - name: Projeleri oluşturma ve kopyalama
-      href: create-clone-jupyter-notebooks.md
-    - name: Projeleri yönetme ve yapılandırma
-      href: configure-manage-azure-notebooks-projects.md
-    - name: Not defterinde paketleri yükleme
-      href: install-packages-jupyter-notebook.md
-    - name: Slayt gösterisi yapma
-      href: present-jupyter-notebooks-slideshow.md
-    - name: Veri dosyalarıyla çalışma
-      href: work-with-project-data-files.md
-    - name: Veri kaynaklarına erişme
-      href: access-data-resources-jupyter-notebooks.md
-    - name: Veri Bilimi Sanal Makineleri’ni kullanma
-      href: use-data-science-virtual-machine.md

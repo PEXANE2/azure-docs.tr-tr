@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349138"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368767"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -70,7 +70,7 @@ Paylaşılan bir üretilen iş veritabanının el ile üretilen iş için gereke
 * Veritabanı/100 üzerinde sağlanan en yüksek RU/sn
 * 400 + MAX (kapsayıcı sayısı-25, 0) * 100 RU/sn
 
-Örnek: 400 RU/s, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu varsayalım. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 ru/s. 
+Örnek: 400 RU/s, 15 GB depolama ve 10 kapsayıcı ile sağlanan bir veritabanınız olduğunu varsayalım. En az RU/sn `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 ru/sn 'dir. Veritabanında 30 kapsayıcı varsa, en az RU/sn şöyle olacaktır `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 ru/s. 
 
 **Note:** Kapsayıcınız veya VERITABANıNıZ 1 TB 'tan fazla veri içeriyorsa, hesabınız ["yüksek depolama/düşük aktarım hızı" programına](set-throughput.md#high-storage-low-throughput-program)uygun olabilir.
 

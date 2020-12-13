@@ -87,8 +87,6 @@
     - name: Tanılama günlüklerini izleme
       href: firewall-diagnostics.md
       displayName: 'Azure CLI, az monitor diagnostic-settings create, monitor diagnostic settings'
-    - name: Azure İzleyici günlükleri
-      href: log-analytics-samples.md
     - name: Azure Güvenlik Duvarı Çalışma Kitabı
       href: firewall-workbook.md
 - name: Başvuru

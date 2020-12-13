@@ -5,12 +5,12 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: a90bb90c90206ffe00f8b4f2d035c0ea844b5c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91611682"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368112"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Öğretici: bağlı bir şablon dağıtma
 
@@ -32,11 +32,11 @@ Depolama hesabı kaynağını bağlı bir şablona ayırabilirsiniz:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Aşağıdaki şablon ana şablondur.  Vurgulanan **Microsoft. resources/dağıtımlar** nesnesi, bağlantılı bir şablonun nasıl çağrılacağını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olarak depolanamaz. Yalnızca *http* ya da *https*içeren bir URI değeri sağlayabilirsiniz. Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır. URI, parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
+Aşağıdaki şablon ana şablondur. Vurgulanan `Microsoft.Resources/deployments` nesne, bağlantılı bir şablonun nasıl çağrılacağını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olarak depolanamaz. Yalnızca ya da içeren bir URI değeri sağlayabilirsiniz `HTTP` `HTTPS` . Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır. URI, parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 
-Ana şablonun bir kopyasını. JSON uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, azuredeploy.js. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez.  Bağlantılı şablon bir GitHub deposundan bir depolama hesabına kopyalanacak.
+Ana şablonun bir kopyasını _. JSON_ uzantısıyla yerel bilgisayarınıza kaydedin, örneğin, _azuredeploy.js_. Bağlantılı şablonun bir kopyasını kaydetmeniz gerekmez. Bağlantılı şablon bir GitHub deposundan bir depolama hesabına kopyalanacak.
 
 ## <a name="store-the-linked-template"></a>Bağlı şablonu depola
 
@@ -45,7 +45,7 @@ Aşağıdaki PowerShell betiği bir depolama hesabı oluşturur, bir kapsayıcı
 Cloud Shell açmak için **dene** ' yi seçin, PowerShell betiğini kopyalamak için **Kopyala** ' yı seçin ve komut dosyasını yapıştırmak için kabuk bölmesine sağ tıklayın:
 
 > [!IMPORTANT]
-> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı "depola" eklenmiş proje adı ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
+> Depolama hesabı adları 3 ila 24 karakter uzunluğunda olmalı ve yalnızca rakam ve küçük harf kullanılmalıdır. Ad benzersiz olmalıdır. Şablonda, depolama hesabı adı, **Mağaza** eklenmiş proje adıdır ve proje adı 3 ila 11 karakter arasında olmalıdır. Bu nedenle, proje adı depolama hesabı adı gereksinimlerini karşılamalıdır ve 11 ' den az karakter içermelidir.
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
@@ -93,7 +93,7 @@ Bir depolama hesabında özel bir şablon dağıtmak için bir SAS belirteci olu
 Kaynak grubunu oluşturmadıysanız, bkz. [kaynak grubu oluşturma](./deployment-tutorial-local-template.md#create-resource-group).
 
 > [!NOTE]
-> Aşağıdaki Azure CLı kodunda Tarih parametresi-d, macOS içinde geçersiz bir bağımsız değişken olabilir. Yani macOS kullanıcıları, macOS 'ta terminalde geçerli saate 2 saat eklemek için-v + 2H kullanmanız gerekir.
+> Aşağıdaki Azure CLı kodunda, `date` parametre `-d` MacOS içinde geçersiz bir bağımsız değişkendir. Bu nedenle, macOS kullanıcıları, ' yi kullanmanız gereken macOS 'ta terminalde geçerli saate 2 saat eklemek için `-v+2H` .
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -176,7 +176,7 @@ Kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlı bir şablonu dağıtmayı öğrendiniz. Sonraki öğreticide, bir şablonu dağıtmak için DevOp Işlem hattı oluşturmayı öğreneceksiniz.
+Bağlı bir şablonu dağıtmayı öğrendiniz. Sonraki öğreticide, bir şablonu dağıtmak için DevOps işlem hattı oluşturmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
 > [İşlem hattı oluşturma](./deployment-tutorial-pipeline.md)

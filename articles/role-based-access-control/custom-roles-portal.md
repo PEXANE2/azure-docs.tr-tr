@@ -6,18 +6,16 @@ documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2020
+ms.date: 12/11/2020
 ms.author: rolyon
-ms.openlocfilehash: 9ab6561b1dc0e8b977fc69d259c5f26366f355ce
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: ecda0edcd34999e8cbb6c7ab9039953d17c119e5
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481338"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369236"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Azure portalı kullanarak özel Azure rolleri oluşturma veya güncelleştirme
 
@@ -31,14 +29,12 @@ ms.locfileid: "92481338"
 
 ## <a name="step-1-determine-the-permissions-you-need"></a>1. Adım: ihtiyacınız olan izinleri belirleme
 
-Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirleyebilmeniz için kullanabileceğiniz dört yol aşağıda verilmiştir:
+Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirlemenize yardımcı olabilecek bazı yöntemler şunlardır:
 
-| Yöntem | Açıklama |
-| --- | --- |
-| Mevcut rollere bakın | Hangi izinlerin kullanıldığını görmek için mevcut rollere bakabilirsiniz. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](built-in-roles.md). |
-| Anahtar sözcüğe göre izinleri ara | Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcüğe göre izinler araması yapabilirsiniz. Örneğin, *sanal makine* veya *faturalandırma* izinleri için arama yapabilirsiniz. Bu arama işlevi, [4. Adım: izinler](#step-4-permissions)bölümünde daha sonra açıklanmaktadır. |
-| Tüm izinleri indir | Azure portal kullanarak özel bir rol oluşturduğunuzda tüm izinleri bir CSV dosyası olarak indirebilir ve ardından bu dosyada arama yapabilirsiniz. İzinleri **Ekle** bölmesinde tüm izinleri indirmek için **tüm izinleri indir** düğmesine tıklayın. İzin Ekle bölmesi hakkında daha fazla bilgi için bkz. [4. Adım: izinler](#step-4-permissions). |
-| Docs 'taki izinleri görüntüleme | Kullanılabilir izinleri [Azure Resource Manager kaynak sağlayıcısı işlemlerinde](resource-provider-operations.md)görüntüleyebilirsiniz. |
+- Mevcut [yerleşik rollere](built-in-roles.md)bakın.
+- Erişim vermek istediğiniz Azure hizmetlerini listeleyin.
+- [Azure hizmetleriyle eşlenen kaynak sağlayıcılarını](../azure-resource-manager/management/azure-services-resource-providers.md)belirleme. Bir arama yöntemi daha sonra 4. [Adım: izinler](#step-4-permissions)bölümünde açıklanmaktadır.
+- Dahil etmek istediğiniz izinleri bulmak için [kullanılabilir izinleri](resource-provider-operations.md) arayın. Bir arama yöntemi daha sonra 4. [Adım: izinler](#step-4-permissions)bölümünde açıklanmaktadır.
 
 ## <a name="step-2-choose-how-to-start"></a>2. Adım: nasıl başlayakullanacağınızı seçin
 
@@ -174,7 +170,7 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
 
 1. İzinler eklemek için **izin Ekle ' ye tıklayarak izin** Ekle bölmesini açın.
 
-    Bu bölme, kullanılabilir tüm izinleri bir kart biçiminde farklı kategoriler halinde gruplanmış olarak listeler. Her kategori, Azure kaynaklarını sağlayan bir hizmet olan bir *kaynak sağlayıcısını*temsil eder.
+    Bu bölme, kullanılabilir tüm izinleri bir kart biçiminde farklı kategoriler halinde gruplanmış olarak listeler. Her kategori, Azure kaynaklarını sağlayan bir hizmet olan bir *kaynak sağlayıcısını* temsil eder.
 
 1. **Izin ara** kutusuna, izinleri aramak için bir dize yazın. Örneğin, faturayla ilgili izinleri bulmak için *Fatura* araması yapın.
 
@@ -182,7 +178,7 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
 
     ![Kaynak sağlayıcısı ile izin bölmesi ekleme](./media/custom-roles-portal/add-permissions-provider.png)
 
-1. Özel rolünüze eklemek istediğiniz izinlere sahip olabilecek **Microsoft faturalandırma**gibi bir kaynak sağlayıcısı kartına tıklayın.
+1. Özel rolünüze eklemek istediğiniz izinlere sahip olabilecek **Microsoft faturalandırma** gibi bir kaynak sağlayıcısı kartına tıklayın.
 
     Bu kaynak sağlayıcının yönetim izinlerinin listesi, arama dizeniz temelinde görüntülenir.
 
@@ -339,4 +335,4 @@ Bir izni dışladığınızda, veya olarak eklenir `NotActions` `NotDataActions`
 
 - [Öğretici: Azure PowerShell kullanarak bir Azure özel rolü oluşturma](tutorial-custom-role-powershell.md)
 - [Özel Azure rolleri](custom-roles.md)
-- [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+- [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

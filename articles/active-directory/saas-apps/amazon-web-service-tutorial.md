@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: d5e191107366c6932d3ba66234776ffaaf6cf98c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1fe228eb7e8bb54e8ebb9cbf31ef0035a0038718
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180634"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368775"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Amazon Web Services (AWS) Azure Active Directory (Azure AD) ile
 * Azure AD 'de Amazon Web Services erişimi olan denetim (AWS).
 * Kullanıcılarınızın Azure AD hesaplarıyla Amazon Web Services (AWS) için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 > [!Note]
 > Azure AD, AWS SSO 'SU ile çoklu oturum açma tümleştirmesini desteklemez, AWS 'den farklı bir üründür. AWS 'nin [buraya](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)bahsetmesine rağmen, Azure AD, müşterilerin tek tek hesaplarda koşullu erişim ilkelerini kullanarak daha iyi güvenlik denetimleri elde etmenizi ve bu uygulamaları daha iyi idare etmelerini sağlamak için AWS IAM tümleştirmesini kullanmasını önerir.
@@ -52,7 +50,7 @@ Bu yaklaşım aşağıdaki nedenlerle önerilir:
 > [!Note]
 > Yalnızca bir galeri uygulaması kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -72,7 +70,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 Amazon Web Services (AWS) tümleştirmesini Azure AD ile yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Amazon Web Services (AWS) eklemeniz gerekir.
 
-1. İş hesabı, okul hesabı veya kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. İş hesabı, okul hesabı veya kişisel Microsoft hesabı kullanarak Azure portal oturum açın.
 1. Azure portal, araması yapın ve **Azure Active Directory** seçin.
 1. Azure Active Directory genel bakış menüsünde **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 1. Uygulama eklemek için **Yeni uygulama** ' yı seçin.
@@ -83,7 +81,7 @@ Amazon Web Services (AWS) tümleştirmesini Azure AD ile yapılandırmak için, 
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Amazon Web Services (AWS) ile yapılandırın ve test edin. SSO 'nun çalışması için, Amazon Web Services (AWS) ' de bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Amazon Web Services (AWS) ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Amazon Web Services (AWS) ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -97,7 +95,7 @@ Azure AD SSO 'yu Amazon Web Services (AWS) ile yapılandırmak ve test etmek iç
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Amazon Web Services (AWS)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Amazon Web Services (AWS)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -115,11 +113,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. AWS uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Adı  | Kaynak özniteliği  | Ad Alanı |
+    | Ad  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
     | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
     | SessionDuration             | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
+
+    > [!NOTE]
+    > AWS, uygulamaya atanan kullanıcılar için roller bekliyor. Kullanıcılara uygun roller atanabilmeleri için lütfen bu rolleri Azure AD 'de ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) bakın
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** (3. adım) iletişim kutusunda **sertifika ekle**' yi seçin.
 
@@ -148,25 +149,18 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal, araması yapın ve **Azure Active Directory** seçin.
-1. Azure Active Directory genel bakış menüsünde **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
-1. Uygulama listesinde **Amazon Web Services (AWS)** öğesini seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Amazon Web Services (AWS)** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-amazon-web-services-aws-sso"></a>Amazon Web Services (AWS) SSO 'yu yapılandırma
@@ -201,7 +195,7 @@ Bu bölümde, Amazon Web Services (AWS) erişimi vererek Azure çoklu oturum aç
 
     ![Create vurgulanan ile sağlayıcı bilgilerini doğrulama ekran görüntüsü][15]
 
-7. Rol **Roles**  >  **oluşturma rolü**' nü seçin.
+7. Rol   >  **oluşturma rolü**' nü seçin.
 
     ![Roller sayfasının ekran görüntüsü][16]
 

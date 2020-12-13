@@ -9,3 +9,14 @@
         - name: Metin Analizi
           tocHref: /azure/cognitive-services/
           topicHref: /azure/cognitive-services/text-analytics/index
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: Bilişsel Hizmetler
+      tocHref: /legal/cognitive-services/text-analytics
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: Metin Analizi
+          tocHref: /legal/cognitive-services/text-analytics
+          topicHref: /azure/cognitive-services/text-analytics/index

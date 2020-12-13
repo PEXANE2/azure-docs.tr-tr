@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 256685e035659cd0fac7fa5577d99f43f4761ea2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ef057b64fa04387d0ebec5a6e5c38f0e06c55a7d
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180628"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368979"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Öğretici: Alibaba Cloud Service ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory (rol tabanlı SSO)
 
@@ -26,7 +26,7 @@ Bu öğreticide, Alibaba bulut hizmeti 'ni (rol tabanlı SSO) Azure Active Direc
 * Kullanıcılarınızın Azure AD hesaplarıyla Alibaba bulut hizmeti 'ne (rol tabanlı SSO) otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -72,7 +72,7 @@ Azure AD SSO 'yu Alibaba bulut hizmeti (rol tabanlı SSO) ile yapılandırmak ve
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Alibaba bulut hizmeti (rol tabanlı SSO)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Alibaba bulut hizmeti (rol tabanlı SSO)** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -94,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!Note]
     > **Tanımlayıcı** ve **yanıt URL 'si** değerleri otomatik olarak doldurulmazsa, değerleri gereksinimlerinize göre el ile girin.
 
-1. Alibaba bulut hizmeti (rol tabanlı SSO), Azure AD 'de rollerin yapılandırılmasını gerektirir. Rol talebi önceden yapılandırılmıştır, bu sayede onu yapılandırmanız gerekmez, ancak yine de bu [makaleyi](../develop/active-directory-enterprise-app-role-management.md)kullanarak Azure AD 'de oluşturmanız gerekir.
+1. Alibaba bulut hizmeti (rol tabanlı SSO), Azure AD 'de rollerin yapılandırılmasını gerektirir. Rol talebi önceden yapılandırılmıştır, bu sayede onu yapılandırmanız gerekmez, ancak yine de bu [makaleyi](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)kullanarak Azure AD 'de oluşturmanız gerekir.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -114,7 +114,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -143,7 +143,7 @@ Bu bölümde, Alibaba bulut hizmeti 'ne (rol tabanlı SSO) erişim izni vererek 
 
 3. **Rol tabanlı SSO** sekmesinde **IDP oluştur ' a** tıklayın.
 
-4. Görüntülenecek sayfada `AAD` IDP adı alanına bir açıklama girin, daha önce indirdiğiniz Federasyon meta veri dosyasını karşıya **Note** yüklemek için **karşıya yükle** ' ye tıklayın ve **Tamam**' a tıklayın.
+4. Görüntülenecek sayfada `AAD` IDP adı alanına bir açıklama girin, daha önce indirdiğiniz Federasyon meta veri dosyasını karşıya  yüklemek için **karşıya yükle** ' ye tıklayın ve **Tamam**' a tıklayın.
 
 5. IDP başarıyla oluşturulduktan sonra, **RAM rolü oluştur**' a tıklayın.
 

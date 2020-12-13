@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f3b492534bedde50d2413b88fa38cd6325ed5df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 32aa64a9343a8e3c62af4322b3320b28ce805064
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91328267"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369200"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Azure Güvenlik kıyaslaması tanıtımı
 
@@ -27,7 +27,7 @@ Azure Güvenlik kıyaslaması, Azure 'da kullandığınız hizmetlerin güvenli�
 - **Hizmet temelleri**: Bu hizmetin güvenlik yapılandırmasına yönelik öneriler sağlamak için denetimleri tek tek Azure hizmetlerine uygular.
 
 ## <a name="implement-the-azure-security-benchmark"></a>Azure Güvenlik kıyaslaması 'nı uygulama
-- Denetim çatısını planlamak için kurumsal denetimlerin ve hizmete özel temellerin [belgelerini](overview.md) Inceleyerek ve CIS (Controls v 7.1) ve NıST (SP800-53) çerçevesi gibi bir kılavuza nasıl eşlendiğini Inceleyerek Azure Güvenlik kıyaslama uygulamanızı **planlayın** .
+- Denetim çatısını planlamak ve CIS (Controls v 7.1) ve NıST (SP 800-53) çerçevesi gibi bir kılavuza nasıl eşlendiğini öğrenmek için kurumsal denetimlerin ve hizmete özel temellerin [belgelerini](overview.md) Inceleyerek Azure Güvenlik kıyaslama uygulamanızı **planlayın** .
 - Azure Güvenlik Merkezi [mevzuat uyumluluk panosunu](../../security-center/security-center-compliance-dashboard.md)kullanarak Azure güvenliği kıyaslama durumu (ve diğer denetim kümeleri) ile uyumluluğunuzu **izleyin** .
 - Azure şemaları ve Azure Ilkesi ile güvenli yapılandırmaların otomatikleştirilmesi ve Azure Güvenlik kıyaslamaları (ve kuruluşunuzdaki diğer gereksinimler) ile uyumluluğu zorlamak için **guardrayları oluşturun** .
  

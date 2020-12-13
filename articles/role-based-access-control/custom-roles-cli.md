@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31dabcf77f0db76047919fa76d00f1c5ed3c96d6
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84984180"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369149"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Azure CLı kullanarak Azure özel rolleri oluşturma veya güncelleştirme
 
 > [!IMPORTANT]
 > ' Ye bir yönetim grubu eklemek `AssignableScopes` Şu anda önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi özel rollerinizi de oluşturabilirsiniz. Bu makalede, Azure CLı kullanılarak özel rolleri listeleme, oluşturma, güncelleştirme veya silme işlemlerinin nasıl yapılacağı açıklanır.
 
@@ -146,7 +146,7 @@ az role definition list --name "Virtual Machine Operator" --output json --query 
 az role definition create --role-definition {roleDefinition}
 ```
 
-Aşağıdaki örnek, *sanal makine işleci*adlı özel bir rol oluşturur. Bu özel rol, *Microsoft. COMPUTE*, *Microsoft. Storage*ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim atar ve sanal makinelere başlatma, yeniden başlatma ve izleme erişimi atar. Bu özel rol iki abonelik için kullanılabilir. Bu örnek, bir JSON dosyasını girdi olarak kullanır.
+Aşağıdaki örnek, *sanal makine işleci* adlı özel bir rol oluşturur. Bu özel rol, *Microsoft. COMPUTE*, *Microsoft. Storage* ve *Microsoft. Network* kaynak sağlayıcılarının tüm okuma işlemlerine erişim atar ve sanal makinelere başlatma, yeniden başlatma ve izleme erişimi atar. Bu özel rol iki abonelik için kullanılabilir. Bu örnek, bir JSON dosyasını girdi olarak kullanır.
 
 Üzerinde vmoperator.js
 
@@ -244,4 +244,4 @@ az role definition delete --name "Virtual Machine Operator"
 
 - [Öğretici: Azure CLı kullanarak Azure özel rolü oluşturma](tutorial-custom-role-cli.md)
 - [Özel Azure rolleri](custom-roles.md)
-- [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+- [Azure Kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

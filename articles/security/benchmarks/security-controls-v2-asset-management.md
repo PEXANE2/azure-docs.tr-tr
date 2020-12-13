@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8602450ef7df7f728fc5bdcda4f46ae30058fc94
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96487805"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368911"
 ---
 # <a name="security-control-v2-asset-management"></a>Güvenlik denetimi v2: varlık yönetimi
 
@@ -20,7 +20,7 @@ Varlık yönetimi, Azure kaynakları üzerinde güvenlik görünürlüğü ve id
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Güvenlik ekibinin varlıklarla ilgili riskleri görebildiğinden emin olun
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-1 | 1,1, 1,2 | CM-8, PM-5 |
 
@@ -46,7 +46,7 @@ Not: İş yükleri ve hizmetlerin görünürlüğünü elde etmek için ek izinl
 
 ## <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Güvenlik ekibinin varlık envanterine ve meta verilerine erişebildiğinden emin olun
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-2 | 1,1, 1,2, 1,4, 1,5, 9,1, 12,1 | CM-8, PM-5 |
 
@@ -72,7 +72,7 @@ Azure'daki etiketleri ve diğer meta verileri (ad, açıklama ve kategori) kulla
 
 ## <a name="am-3-use-only-approved-azure-services"></a>AM-3: Yalnızca onaylı Azure hizmetlerini kullanın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-3 | 2,3, 2,4 | CM-7, CM-8 |
 
@@ -94,7 +94,7 @@ Kullanıcılarınızın ortamınızda sağlayabileceği hizmetleri denetlemek ve
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>VY-4: Varlık yaşam döngüsü yönetiminin güvenliğini sağlama
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-4 | 2,3, 2,4, 2,5 | CM-7, CM-8, CM-10, CM-11 |
 
@@ -116,7 +116,7 @@ Artık gerekmeyen Azure kaynaklarını kaldırın.
 
 ## <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>ÖÖ-5: kullanıcıların Azure Resource Manager etkileşime geçme yeteneğini sınırlayın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-5 | 2.9 | AC-3 |
 
@@ -134,7 +134,7 @@ Artık gerekmeyen Azure kaynaklarını kaldırın.
 
 ## <a name="am-6-use-only-approved-applications-in-compute-resources"></a>HAR-6: yalnızca işlem kaynaklarında onaylanan uygulamaları kullanın
 
-| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP800-53 R4 KIMLIĞI |
+| Azure KIMLIĞI | CIS v 7.1 ID 'leri denetler | NıST SP 800-53 R4 ID 'leri |
 |--|--|--|--|
 | ÖÖ-6 | 2,6, 2,7 | AC-3, CM-7, CM-8, CM-10, CM-11 |
 

@@ -6,12 +6,12 @@ ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dc625237c03cf38f9fe2eb0446c55dcf96f5f3a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106776"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368435"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -51,7 +51,7 @@ Yine, aşağıdaki içerikle yeni bir dosya oluşturun. Dosyayı _azuredeploy.pa
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
-Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için **Standard_GRS** kullandığına, kaynakları **contoso** ön ekine göre isimettiğini ve _ortam_ etiketini **Üretim** olarak ayarladığına dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
+Bu dosya, üretim ortamı için parametre dosyasıdır. Depolama hesabı için **Standard_GRS** kullandığından, kaynakları **contoso** ön ekine göre adlandırır ve `Environment` etiketi **Üretim** olarak ayarlıyor olduğuna dikkat edin. Gerçek bir üretim ortamında, ücretsiz olarak aynı SKU ile bir App Service kullanmak isteyeceksiniz, ancak bu öğretici için bu SKU 'YU kullanmaya devam edeceğiz.
 
 ## <a name="deploy-template"></a>Şablon dağıtma
 

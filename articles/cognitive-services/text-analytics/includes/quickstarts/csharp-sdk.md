@@ -6,21 +6,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 10/07/2020
+ms.date: 12/11/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 35d5940fbc001d1806711afb14aa4a549bcb1826
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8ed768d7bb47db6f102dbb48b438f9f4a2987f1e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96615773"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366351"
 ---
 <a name="HOLTop"></a>
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-[v 3.1 başvuru belgeleri](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews)  |  [v 3.1 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 paketi (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.1)  |  [v 3.1 örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[v 3.1 başvuru belgeleri](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-previews)  |  [v 3.1 kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1 paketi (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.3)  |  [v 3.1 örnekleri](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -39,6 +39,7 @@ ms.locfileid: "96615773"
 * Azure aboneliğiniz olduktan sonra, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir metin analizi kaynağı oluşturun metin analizi bir kaynak oluşturun.  Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
     * Uygulamanızı Metin Analizi API'si bağlamak için oluşturduğunuz kaynaktaki anahtar ve uç nokta gerekir. Anahtarınızı ve uç noktanızı daha sonra hızlı başlangıçta aşağıdaki koda yapıştırabilirsiniz.
     * `F0`Hizmeti denemek ve daha sonra üretime yönelik ücretli bir katmana yükseltmek için ücretsiz fiyatlandırma katmanını () kullanabilirsiniz.
+* Çözümle özelliğini kullanmak için standart fiyatlandırma katmanına sahip bir Metin Analizi kaynağına ihtiyacınız olacaktır.
 
 ## <a name="setting-up"></a>Ayarlanıyor
 
@@ -48,7 +49,7 @@ Visual Studio IDE 'yi kullanarak yeni bir .NET Core konsol uygulaması oluşturu
 
 # <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
 
-**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan paket yöneticisinde, **bul** ve ara ' yı seçin `Azure.AI.TextAnalytics` . **Dahil etme prerelase** kutusunu işaretleyin, sürüm ' ü seçin `5.1.0-beta.1` ve **Install** ardından ' i seçin. [Paket Yöneticisi konsolunu](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
+**Çözüm Gezgini** çözüme sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yüklemelisiniz. Açılan paket yöneticisinde, **bul** ve ara ' yı seçin `Azure.AI.TextAnalytics` . **Dahil etme prerelase** kutusunu işaretleyin, sürüm ' ü seçin `5.1.0-beta.3` ve ardından ' i seçin. [Paket Yöneticisi konsolunu](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package)da kullanabilirsiniz.
 
 # <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
@@ -179,7 +180,7 @@ Hizmetin sürümünü kullanıyorsanız `3.x` , `TextAnalyticsClientOptions` ist
 * [Dil algılama](#language-detection)
 * [Adlandırılmış varlık tanıma](#named-entity-recognition-ner)
 * [Varlık bağlama](#entity-linking)
-* [Anahtar ifade ayıklama](#key-phrase-extraction)
+* [Anahtar tümceciği ayıklama](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
@@ -804,5 +805,103 @@ Key phrases:
     cat
     veterinarian
 ```
+
+---
+
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Çözümleme işlemi ile API 'YI zaman uyumsuz olarak kullanma
+
+# <a name="version-31-preview"></a>[Sürüm 3,1 Önizleme](#tab/version-3-1)
+
+> [!CAUTION]
+> Çözümle işlemini kullanmak için Azure kaynağınızın standart bir fiyatlandırma katmanı kullandığını doğrulayın.
+
+`AnalyzeOperationExample()`Daha önce oluşturduğunuz istemciyi alan adlı yeni bir işlev oluşturun ve `StartAnalyzeOperationBatch()` işlevini çağırın. Döndürülen `AnalyzeOperation` nesne `Operation` için arabirim nesnesini içerir `AnalyzeOperationResult` . Uzun süre çalışan bir Işlem olduğu için, `await` üzerinde `operation.WaitForCompletionAsync()` güncelleştirilecektir. Tamamlandıktan sonra `WaitForCompletionAsync()` koleksiyonun içinde güncelleştirilmeleri gerekir `operation.Value` . Bir hata oluşursa, bir oluşturur `RequestFailedException` .
+
+
+```csharp
+static async Task AnalyzeOperationExample(TextAnalyticsClient client)
+{
+    string inputText = "Microsoft was founded by Bill Gates and Paul Allen.";
+
+    var batchDocuments = new List<string> { inputText };
+
+    AnalyzeOperationOptions operationOptions = new AnalyzeOperationOptions()
+    {
+        EntitiesTaskParameters = new EntitiesTaskParameters(),
+        DisplayName = "Analyze Operation Quick Start Example"
+    };
+
+    AnalyzeOperation operation = client.StartAnalyzeOperationBatch(batchDocuments, operationOptions, "en");
+
+    await operation.WaitForCompletionAsync();
+
+    AnalyzeOperationResult resultCollection = operation.Value;
+
+    RecognizeEntitiesResultCollection entitiesResult = resultCollection.Tasks.EntityRecognitionTasks[0].Results;
+
+    Console.WriteLine("Analyze Operation Request Details");
+    Console.WriteLine($"    Status: {resultCollection.Status}");
+    Console.WriteLine($"    DisplayName: {resultCollection.DisplayName}");
+    Console.WriteLine("");
+
+    Console.WriteLine("Recognized Entities");
+
+    foreach (RecognizeEntitiesResult result in entitiesResult)
+    {
+        Console.WriteLine($"    Recognized the following {result.Entities.Count} entities:");
+
+        foreach (CategorizedEntity entity in result.Entities)
+        {
+            Console.WriteLine($"    Entity: {entity.Text}");
+            Console.WriteLine($"    Category: {entity.Category}");
+            Console.WriteLine($"    Offset: {entity.Offset}");
+            Console.WriteLine($"    ConfidenceScore: {entity.ConfidenceScore}");
+            Console.WriteLine($"    SubCategory: {entity.SubCategory}");
+        }
+        Console.WriteLine("");
+    }
+}
+```
+
+Bu örneği uygulamanıza ekledikten sonra, `main()` kullanarak yönteminizi çağırın `await` .
+
+```csharp
+await AnalyzeOperationExample(client).ConfigureAwait(false);
+```
+### <a name="output"></a>Çıktı
+
+```console
+Analyze Operation Request Details
+    Status: succeeded
+    DisplayName: Analyze Operation Quick Start Example
+
+Recognized Entities
+    Recognized the following 3 entities:
+    Entity: Microsoft
+    Category: Organization
+    Offset: 0
+    ConfidenceScore: 0.83
+    SubCategory: 
+    Entity: Bill Gates
+    Category: Person
+    Offset: 25
+    ConfidenceScore: 0.85
+    SubCategory: 
+    Entity: Paul Allen
+    Category: Person
+    Offset: 40
+    ConfidenceScore: 0.9
+    SubCategory: 
+```
+
+PII ve anahtar tümceciği ayıklamayı algılamak için Çözümle işlemini de kullanabilirsiniz. GitHub 'daki [Çözümle örneği](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples/Sample_AnalyzeOperation.md) ' ne bakın.
+
+# <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+Bu özellik 3,0 sürümünde kullanılamaz.
+
+# <a name="version-21"></a>[Sürüm 2,1](#tab/version-2)
+
+Bu özellik 2,1 sürümünde kullanılamaz.
 
 ---

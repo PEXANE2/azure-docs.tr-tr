@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: d7577668d87ecaf2d769136d64990f95fc212fe6
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356537"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97366416"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
@@ -168,8 +168,8 @@ Eğitim istemcisinin kimliğini doğrulayan yeni bir yöntem için yukarıdaki a
 
 Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerekecektir. Bunları **Program** sınıfınızın köküne ekleyin.
 
-* Özel model eğitim verilerinize yönelik SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. **Okuma** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
-* Ardından, blob depolamada tek bir belgenin SAS URL 'sini almak için yukarıdaki adımları kullanın.
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+* Ardından, BLOB depolama kapsayıcısında tek bir belgenin SAS URL 'sini almak için yukarıdaki adımları tekrarlayın. Geçici bir konuma da kaydedin.
 * Son olarak, aşağıda yer alan örnek görüntünün URL 'sini kaydedin ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)üzerinde de mevcuttur). 
 
 #### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
@@ -195,7 +195,7 @@ Bu görevin geri kalanı, içerik bilgilerini konsola yazdırır.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_getcontent_print)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 ```console
 Form Page 1 has 18 lines.
@@ -245,7 +245,7 @@ Döndürülen değer bir `RecognizedReceipt` nesne koleksiyonudur: gönderilen b
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_receipt_print)]
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 ```console
 Form Page 1 has 18 lines.
@@ -350,7 +350,7 @@ Son olarak, sonraki adımlarda kullanmak üzere eğitilen model KIMLIĞINI dönd
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_train_return)]
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -417,7 +417,7 @@ Döndürülen, `CustomFormModel` modelin ayıklayabileceğiniz alanları, her bi
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_trainlabels_response)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -478,7 +478,7 @@ Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: gönderilen belg
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_analyze_response)]
 
 
-### <a name="output"></a>Çıkış
+### <a name="output"></a>Çıktı
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -552,7 +552,7 @@ Aşağıdaki kod bloğu, form tanıyıcı hesabınıza kaç modelin kaydedildiğ
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_count)]
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 ```console
 Account has 20 models.
@@ -566,7 +566,7 @@ Aşağıdaki kod bloğu, hesabınızdaki geçerli modelleri listeler ve ayrınt�
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_list)]
 
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 Bu yanıt okunabilirlik için kesildi.
 
@@ -594,7 +594,7 @@ Aşağıdaki kod bloğu yeni bir model ( [model eğitme](#train-a-model-without-
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_manage_model_get)]
 
-### <a name="output"></a>Çıkış 
+### <a name="output"></a>Çıktı 
 
 Bu yanıt okunabilirlik için kesildi.
 
