@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 4b29e5375c10fc3c1aaa203df720fdd24090d11e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601144"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371892"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -146,7 +146,7 @@ Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebilece
 | **Özel olaylar**   |            |                     |  Evet    |
 | **Özel ölçümler**  |  Evet       |                     |  Evet    |
 | **Bağımlılıklar**    |            |                     |  Evet    |
-| **Özel Durumlar**      |            |  Evet                |  Evet    |
+| **Özel durumlar**      |            |  Evet                |  Evet    |
 | **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
 | **İstekler**        |            |                     |  Evet    |
 | **İzlemeler**          |            |  Evet                |  Evet    |
@@ -186,17 +186,17 @@ Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlü
 Varsayılan olarak günlük kaydı yalnızca BILGI düzeyinde veya yukarıdaki günlüğe kaydetme gerçekleştirildiğinde toplanır.
 Bu düzeyin nasıl değiştirileceği için [yapılandırma seçeneklerine](./java-standalone-config.md#auto-collected-logging) bakın.
 
-Günlükleriniz için özel boyutlar eklemek istiyorsanız, [Log4J 1 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [Log4J 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)veya [logback MDC](http://logback.qos.ch/manual/mdc.html)kullanabilirsiniz ve Application Insights Java 3,0, bu MDC özelliklerini, izleme ve özel durum telemetrisi için özel boyutlar olarak otomatik olarak yakalar.
+Günlükleriniz için özel boyutlar eklemek istiyorsanız, [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [Log4J 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)veya [logback MDC](http://logback.qos.ch/manual/mdc.html)kullanabilirsiniz ve Application Insights Java 3,0, bu MDC özelliklerini, izleme ve özel durum telemetrisi için özel boyutlar olarak otomatik olarak yakalar.
 
 ### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights kullanarak özel telemetri gönderme
 
-`applicationinsights-core-2.6.0.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
+`applicationinsights-core-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
 ```xml
 <dependency>
   <groupId>com.microsoft.azure</groupId>
   <artifactId>applicationinsights-core</artifactId>
-  <version>2.6.0</version>
+  <version>2.6.2</version>
 </dependency>
 ```
 
@@ -208,7 +208,7 @@ static final TelemetryClient telemetryClient = new TelemetryClient();
 
 ve özel telemetri göndermek için kullanın:
 
-##### <a name="events"></a>Olaylar
+##### <a name="events"></a>Ekinlikler
 
 ```java
 telemetryClient.trackEvent("WinGame");
@@ -242,7 +242,7 @@ try {
 telemetryClient.trackTrace(message, SeverityLevel.Warning, properties);
 ```
 
-##### <a name="exceptions"></a>Özel Durumlar
+##### <a name="exceptions"></a>Özel durumlar
 
 ```java
 try {

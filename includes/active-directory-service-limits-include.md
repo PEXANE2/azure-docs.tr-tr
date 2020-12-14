@@ -1,29 +1,29 @@
 ---
-title: include dosyası
-description: include dosyası
+title: dosya dahil etme
+description: dosya dahil etme
 services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 09/10/2020
+ms.date: 12/11/2020
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 47d994a572d2fb0a76e1b6a713b61b70cccbd659
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9be85a7da67fa659e29d802d1f77fa09008f4428
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96509534"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97371330"
 ---
 Azure Active Directory (Azure AD) hizmetine yönelik kullanım kısıtlamalarını ve diğer hizmet sınırlarını burada bulabilirsiniz.
 
-| Category | Sınır |
+| Kategori | Sınır |
 | --- | --- |
 | Kiracılar | Tek bir kullanıcı üye veya konuk olarak en fazla 500 Azure AD kiracılarına ait olabilir.<br/>Tek bir Kullanıcı, en fazla 200 dizin oluşturabilir. |
 | Etki Alanları | En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için ayarlarsanız, her kiracıya 450 'den fazla etki alanı adı ekleyebilirsiniz. |
 |Kaynaklar |<ul><li>Varsayılan olarak Azure Active Directory ücretsiz sürümü kullanıcıları tarafından tek bir kiracıya en fazla 50.000 Azure AD kaynağı oluşturulabilir. En az bir doğrulanmış etki alanınız varsa, kuruluşunuz için varsayılan Azure AD hizmet kotası 300.000 Azure AD kaynaklarına genişletilir. Self Servis kaydolma tarafından oluşturulan kuruluşlar için Azure AD hizmet kotası, dahili bir yönetim gerçekleştirmesinden ve kuruluşun en az bir doğrulanmış etki alanı ile yönetilen bir kiracıya dönüştürülmesinden sonra bile 50.000 Azure AD kaynakları kalır. Bu hizmet sınırı, Azure AD fiyatlandırma sayfasında 500.000 kaynağın fiyatlandırma katmanı limiti ile ilişkili değildir. Varsayılan kotanın ötesine geçmek için Microsoft Desteği başvurmanız gerekir.</li><li>Yönetici olmayan bir Kullanıcı 250 taneden fazla Azure AD kaynağı oluşturabilir. Hem etkin kaynaklar hem de geri yüklenebilecek silinen kaynaklar bu kotaya doğru sayılır. Yalnızca 30 günden daha kısa bir süre önce silinen Azure AD kaynakları geri yüklemek için kullanılabilir. 30 gün boyunca bir çeyrekte bu kotaya doğru sayımı geri yüklemek için artık kullanılamayan Azure AD kaynakları silindi. Normal görevleri çerçevesinde bu kotayı sürekli olarak aşmaları muhtemel olan geliştiricileriniz varsa, sınırsız sayıda uygulama kaydı oluşturma izniyle [özel bir rol oluşturabilir ve atayabilirsiniz](../articles/active-directory/roles/quickstart-app-registration-limits.md) .</li></ul> |
 | Şema uzantıları |<ul><li>Dize türü uzantılar en fazla 256 karakter olabilir. </li><li>İkili tür uzantılar 256 bayt ile sınırlıdır.</li><li>Tek bir Azure AD kaynağına yalnızca 100 uzantı değeri, *Tüm* türler ve *Tüm* uygulamalar arasında yazılabilir.</li><li>Dize türü veya ikili tür tek değerli özniteliklerle yalnızca User, Group, TenantDetail, Device, Application ve ServicePrincipal varlıkları uzatılabilir.</li><li>Şema uzantıları yalnızca Graph API'si 1.21 önizleme sürümünde kullanılabilir. Bir uzantıyı kaydetmek için uygulamaya yazma erişimi verilmelidir.</li></ul> |
-| Uygulamalar |Tek bir uygulamanın sahibi en fazla 100 kullanıcı olabilir. |
+| Uygulamalar | <ul><li>Tek bir uygulamanın sahibi en fazla 100 kullanıcı olabilir.</li><li>Parola tabanlı SSO uygulamasının 48 Kullanıcı sınırlaması vardır. Bu, uygulama başına Kullanıcı adı/parola çiftleri için 48 anahtar sınırı olduğu anlamına gelir. Ek kullanıcılar eklemek istiyorsanız, [Azure AD 'de parola tabanlı çoklu oturum açma sorunlarını giderme](../articles/active-directory/manage-apps/troubleshoot-password-based-sso.md#i-cant-add-another-user-to-my-password-based-sso-app)konusundaki sorun giderme yönergelerine bakın.</li></ul> |
 |Uygulama bildirimi |Uygulama bildiriminde en fazla 1200 giriş eklenebilir. |
 | Gruplar |<ul><li>Yönetici olmayan bir Kullanıcı, bir Azure AD kuruluşunda en fazla 250 grup oluşturabilir. Kuruluştaki grupları yönetebilen herhangi bir Azure AD yöneticisi de sınırsız sayıda grup oluşturabilir (Azure AD nesne sınırına kadar). Bir kullanıcı için sınırı kaldırmak üzere bir rol atarsanız, bunları Kullanıcı Yöneticisi veya gruplar Yöneticisi gibi daha az ayrıcalıklı bir yerleşik role atayın.</li><li>Bir Azure AD kuruluşunda en fazla 5000 dinamik grup olabilir.<li>Tek bir grubun sahibi olarak en fazla 100 kullanıcı atanabilir.</li><li>Herhangi bir sayıda Azure AD kaynağı tek bir grubun üyesi olabilir.</li><li>Bir kullanıcı, herhangi bir sayıda grubun üyesi olabilir.</li><li>Varsayılan olarak, bir gruptaki şirket içi Active Directory Azure Active Directory Azure AD Connect kullanarak eşitleyebileceğiniz üye sayısı 50.000 üye ile sınırlıdır. Bu sınırın üzerinde olan bir grup üyeliğini eşitlemeniz gerekiyorsa, [Azure AD Connect Sync v2 Endpoint API 'sini](../articles/active-directory/hybrid/how-to-connect-sync-endpoint-api-v2.md)eklemeniz gerekir.</li><li>Azure AD 'de iç içe gruplar tüm senaryolarda desteklenmez</li></ul><br/> Şu anda, iç içe gruplar ile desteklenen senaryolar aşağıda verilmiştir.<ul><li> Bir grup, başka bir grubun üyesi olarak eklenebilir ve gruba iç içe geçme elde edebilirsiniz.</li><li> Grup üyeliği talepleri (bir uygulama, belirteçte grup üyeliği taleplerini alacak şekilde yapılandırıldığında, oturum açan kullanıcının üye olduğu iç içe gruplar dahil)</li><li>Koşullu erişim (bir koşullu erişim ilkesi bir grup kapsamına sahip olduğunda)</li><li>Self servis parola sıfırlamaya erişimi sınırlandırma</li><li>Hangi kullanıcıların Azure AD JOIN ve cihaz kaydı yapabileceği sınırlandırma</li></ul><br/>Aşağıdaki senaryolar iç içe gruplar için desteklenmez:<ul><li> Uygulama rolü ataması (bir uygulamaya Grup atama desteklenir, ancak hem erişim hem de sağlama için, doğrudan atanan grup içinde iç içe gruplar erişime sahip olmaz)</li><li>Grup tabanlı lisanslama (bir grubun tüm üyelerine otomatik olarak lisans atama)</li><li>Grupları Microsoft 365.</li></ul> |
 | Uygulama Ara Sunucusu | <ul><li>Her uygulama proxy uygulaması için saniyede en fazla 500 işlem</li><li>Azure AD kuruluşu için saniye başına en fazla 750 işlem</li></ul><br/>Bir işlem, benzersiz bir kaynak için tek bir http isteği ve yanıtı olarak tanımlanır. Kısıtlandığınızda, istemciler bir 429 yanıtı (çok fazla istek) alır. |

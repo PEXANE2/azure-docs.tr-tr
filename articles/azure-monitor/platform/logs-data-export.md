@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: d2e93ccfaf3ff2c5b74ceef1f6a274f71ee52c4e
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309843"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371977"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -48,7 +48,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 > [!NOTE]
 > Log Analytics veri dışa aktarma verileri, şu anda Azure Data Lake Storage 2. için önizleme aşamasında olan Append blobu olarak yazar. Bu depolama alanına dışarı aktarmayı yapılandırmadan önce bir destek isteği açmalısınız. Bu istek için aşağıdaki ayrıntıları kullanın.
 > - Sorun türü: Teknik
-> - Abonelik: aboneliğiniz
+> - Abonelik: Aboneliğiniz
 > - Hizmet: Data Lake Storage 2.
 > - Kaynak: kaynak adınız
 > - Özet: Log Analytics verileri dışarı aktarma işleminden verileri kabul etmek için abonelik kaydı Isteniyor.
@@ -58,7 +58,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Cost
+## <a name="cost"></a>Maliyet
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -122,6 +122,10 @@ Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek ve
 
 Yok
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Yok
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Çalışma alanınızdaki tabloları görüntülemek için aşağıdaki CLı komutunu kullanın. İstediğiniz tabloları kopyalayıp veri dışa aktarma kuralına dahil etmek için yardımcı olabilir.
@@ -133,13 +137,22 @@ az monitor log-analytics workspace table list -resource-group resourceGroupName 
 CLı kullanarak bir depolama hesabına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountId
+$storageAccountResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Storage/storageAccounts/storage-account-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $storageAccountResourceId
 ```
 
-CLı kullanarak bir olay hub 'ına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın.
+CLı kullanarak bir olay hub 'ına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın. Her tablo için ayrı bir olay hub 'ı oluşturulur.
 
 ```azurecli
-az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesId
+$eventHubsNamespacesResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubsNamespacesResourceId
+```
+
+CLı kullanarak belirli bir olay hub 'ına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın. Tüm tablolar, belirtilen olay hub 'ının adına verilir. 
+
+```azurecli
+$eventHubResourceId = '/subscriptions/subscription-id/resourceGroups/resource-group-name/providers/Microsoft.EventHub/namespaces/namespaces-name/eventHubName/eventhub-name'
+az monitor log-analytics workspace data-export create --resource-group resourceGroupName --workspace-name workspaceName --name ruleName --tables SecurityEvent Heartbeat --destination $eventHubResourceId
 ```
 
 # <a name="rest"></a>[REST](#tab/rest)
@@ -205,9 +218,13 @@ Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST ist
 ```
 ---
 
-## <a name="view-data-export-configuration"></a>Veri dışarı aktarma yapılandırmasını görüntüle
+## <a name="view-data-export-rule-configuration"></a>Veri dışa aktarma kuralı yapılandırmasını görüntüle
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Yok
 
@@ -231,6 +248,10 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="disable-an-export-rule"></a>Dışarı aktarma kuralını devre dışı bırak
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+
+Yok
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Yok
 
@@ -272,6 +293,10 @@ Content-type: application/json
 
 Yok
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Yok
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLı kullanarak bir veri dışarı aktarma kuralını silmek için aşağıdaki komutu kullanın.
@@ -295,6 +320,10 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 Yok
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Yok
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 CLı kullanarak bir çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntülemek için aşağıdaki komutu kullanın.
@@ -315,7 +344,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 ## <a name="unsupported-tables"></a>Desteklenmeyen tablolar
 Veri dışa aktarma kuralı desteklenmeyen bir tablo içeriyorsa, yapılandırma başarılı olur, ancak bu tablo için hiçbir veri aktarılmaz. Tablo daha sonra destekleniyorsa, verileri o anda dışarıya kaydedilir.
 
-Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, hata ile başarısız olur ```Table <tableName> does not exist in the workspace.```
+Veri dışa aktarma kuralı mevcut olmayan bir tablo içeriyorsa, "tablo <tableName> çalışma alanında yok" hatasıyla başarısız olur.
 
 
 ## <a name="supported-tables"></a>Desteklenen tablolar

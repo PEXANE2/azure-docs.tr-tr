@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/21/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a02c30423ab3c6de87eac7d34b5f0004e54a8d5d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 28d47b61bce7e154da6c6adb4b74e2b5cf1f3f3d
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957818"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371858"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Azure dağıtımları için hangi SAP yazılımı desteklenir?
 Bu makalede, Azure dağıtımları için hangi SAP yazılımlarının desteklendiğini ve gereken işletim sistemi yayınlarının veya DBMS sürümlerinin ne olduğu nasıl bulabileceğiniz açıklanır.
@@ -82,6 +82,12 @@ Azure 'da desteklenen bir işletim sistemi, Oracle DBMS yayınları ve Oracle i�
 - Unicode olmayan SAP sistemleri yalnızca Windows Konuk işletim sistemi ile çalışan uygulama sunucularıyla desteklenir. DBMS 'nin Konuk işletim sistemi Oracle Linux veya Windows olabilir. Bu kısıtlamanın nedeni SAP ürün kullanılabilirliği matrisi (PAM) denetlenirken görünür. Oracle Linux için SAP hiçbir şekilde Unicode olmayan SAP çekirdekleri yayımlamadı
 
 Hedeflenen Azure altyapısıyla desteklenen DBMS sürümlerini bilmenin gerekli olduğu işletim sistemi yayınları ve DBMS 'ler, çalıştırmak istediğiniz SAP ürün sürümlerinizin ile desteklenip desteklenmediğini belirten SAP ürün kullanılabilirliği matrisini denetlemeniz gerekir. 
+
+## <a name="oracle-linux"></a>Oracle Linux
+Oracle Linux etrafında en belirgin sorulardan biri, SAP 'nin Oracle Linux bir parçası olan Red Hat çekirdeğini destekleyip desteklemediğini belirtir. Ayrıntılar için bkz. [sap destek notunun #1565179](https://launchpad.support.sap.com/#/notes/1565179).
+
+## <a name="other-database-than-sap-hana"></a>SAP HANA diğer veritabanı
+SAP iş yükü için HANA olmayan veritabanlarının desteklenmesi, [sap destek notunda #1928533](https://launchpad.support.sap.com/#/notes/1928533)belgelenmiştir.
 
 
 ## <a name="sap-hana-support"></a>SAP HANA desteği

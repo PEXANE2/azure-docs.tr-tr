@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/09/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: 9bdda9b78e103f02d91c81cb3dc28c957d313436
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 8734c43ecb92faf37f1d95b1a24d1c99db3e86d5
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95321442"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371926"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -31,7 +31,11 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 ## <a name="planned-changes"></a>Planlanan değişiklikler
 
-Şu anda önceden bildirimde bulunan önemli değişikliklere gerek yoktur. 
+### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>Azure Ilke değerlendirmelerinde "uygun değil" kaynakları "uyumlu" olarak bildirilecek kaynaklar
+
+**Değişikliğin tahmini tarihi:** Ocak 2021
+
+Şu anda, bir öneri için değerlendirilen ve **uygulanamaz** olarak bulunan kaynaklar Azure ilkesinde "uyumsuz" olarak görünür. Kullanıcı eylemi, durumunu "uyumlu" olarak değiştirebilir. Bu planlı değişiklikten sonra, gelişmiş açıklık için "uyumlu" olarak bildirilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/26/2020
+ms.date: 12/12/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e07876f9e28e7f3245f2524b5ef5da08de085ec1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
+ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486479"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97371944"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -47,6 +47,8 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
 - Azure Hizmetleri, Azure VM türleri ve Azure Depolama Hizmetleri farklı Azure bölgelerinde kullanılabilir, [bölgeye göre kullanılabilir site ürünlerini](https://azure.microsoft.com/global-infrastructure/services/) kontrol edin 
 - Windows ve Paceyapıcısı 'nin desteklenme yanı sıra üçüncü taraf HA çerçevesi çalışıyor mu? [Sap destek notunun](https://launchpad.support.sap.com/#/notes/1928533) alt kısmına bakın #1928533
 - Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) okuyun
+- , SAP tarafından desteklenen Oracle Enterprise Linux 'taki Red Hat çekirdeği midir? SAP [sap destek dekontunu okuyun #1565179](https://launchpad.support.sap.com/#/notes/1565179)
+- Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) 'lar sanal makine aileleri neden SAP HANA için sertifikalı değil? Azure das/EAS VM aileleri, AMD işlemci tabanlı donanımı temel alır. SAP HANA, sanallaştırılmış senaryolarda bile olmayan AMD işlemcileri desteklemez.
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -74,12 +76,13 @@ Bu bölümde, SAP SaaS ve PaaS hizmetleri, NetWeaver ve Fiori ' nin birçoğu il
 
 
 ## <a name="documentation-on-integration-of-azure-services-into-sap-components"></a>Azure hizmetlerinin SAP bileşenleriyle tümleştirilmesine yönelik belgeler
-Bu bölümde, PowerBI tümleştirmesiyle ilgili belgeleri SAP veri kaynaklarına ve SAP BW Azure Data Factory tümleştirmesini bulabilirsiniz.
+Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri kaynaklarına ve SAP BW Azure Data Factory tümleştirmesini bulabilirsiniz.
 
 
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 12/12/2020: SAP [, Azure dağıtımları için desteklenen SAP YAZıLıMıNı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) SAP 'ye göre Oracle Enterprise Linux desteğiyle ilgili ayrıntıları açıklığa kavuşturan SAP notuna yönelik işaretçi eklendi
 - 11/26/2020: [SAP iş yükü için](./planning-guide-storage.md) Azure [sanal makine depolama yapılandırmalarının](./hana-vm-operations-storage.md) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın
 - 11/05/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md) desteklenen dosya sistemi türleri hakkında yeni SAP notuna yönelik bağlantıyı değiştirme 
 - 10/26/2020: Azure Premium Depolama yapılandırması için bazı tabloları değiştirme [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) sağlanan ve veri bloğu aktarım hızını açıklığa kavuşturacak
@@ -141,7 +144,7 @@ Bu bölümde, PowerBI tümleştirmesiyle ilgili belgeleri SAP veri kaynaklarına
 - 03/11/2020: DBMS örnek desteği başına birden çok veritabanını netleştirmek için [Azure sanal makinesi desteklenen senaryolarda SAP iş](./sap-planning-supported-configurations.md) yükünde değişiklik yapın
 - 11 Mart 2020:1. nesil ve 2. nesil VM 'Lerin yanı sıra [SAP NetWeaver için planlama ve uygulama Için Azure sanal makinelerinde](./planning-guide.md) değişiklik yapma
 - 10 Mart 2020: [SAP HANA Azure sanal makine depolama yapılandırmalarında](./hana-vm-operations-storage.md) , ANF 'nin gerçek mevcut aktarım hızı sınırlarını açıklığa kavuşturacak şekilde değiştirin
-- 09 Mart 2020: SAP [uygulamaları için SUSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)değişikliği, SAP uygulamaları için [Azure NetApp Files Ile SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md) [SUSE LINUX ENTERPRISE Server üzerindeki Azure VM 'lerinde NFS için yüksek kullanılabilirlik](./high-availability-guide-suse-nfs.md), [azure 'Da SUSE Linux Enterprise Server üzerinde paceyapıcısı ayarlama, Azure](./high-availability-guide-suse-pacemaker.md)VM 'lerinde yüksek kullanılabilirliğe sahip Azure sanal makinelerinde SUSE Linux Enterprise Server, [Azure](./dbms-guide-ha-ibm.md)VM 'lerinde yüksek kullanılabilirlik ve kaynak Aracısı Azure-lb ile [High availability of SAP HANA on Azure VMs on SUSE Linux Enterprise Server](./sap-hana-high-availability.md) küme kaynaklarını güncelleştirmek için [yüksek kullanılabilirlik SUSE Linux Enterprise Server](./high-availability-guide-suse-multi-sid.md) SAP HANA 
+- 09 Mart 2020: SAP [uygulamaları için SUSE Linux Enterprise Server Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse.md)değişikliği, SAP uygulamaları için [Azure NetApp Files Ile SUSE Linux Enterprise Server Azure VM 'lerinde SAP NetWeaver için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md) [SUSE LINUX ENTERPRISE Server üzerindeki Azure VM 'lerinde NFS için yüksek kullanılabilirlik](./high-availability-guide-suse-nfs.md), [azure 'Da SUSE Linux Enterprise Server üzerinde paceyapıcısı ayarlama, Azure](./high-availability-guide-suse-pacemaker.md)VM 'lerinde yüksek kullanılabilirliğe sahip Azure sanal makinelerinde SUSE Linux Enterprise Server, [Azure](./dbms-guide-ha-ibm.md)VM 'lerinde yüksek kullanılabilirlik ve kaynak Aracısı Azure-lb ile [](./sap-hana-high-availability.md) küme kaynaklarını güncelleştirmek için [yüksek kullanılabilirlik SUSE Linux Enterprise Server](./high-availability-guide-suse-multi-sid.md) SAP HANA 
 - 05 Mart 2020: Azure bölgeleri ve Azure sanal makineleri için Azure sanal makineler 'de yapılan değişiklikleri ve içerik değişikliklerini, [SAP NetWeaver planlama ve uygulama Için](./planning-guide.md) yapılandırma
 - 03/03/2020: SAP için [SLES 'Teki Azure VM 'LERINDE SAP NW 'yi](./high-availability-guide-suse-netapp-files.md) daha verimli ANF birimi düzenine göre değiştirmek için yüksek kullanılabilirlik olarak değiştirin
 - 01 Mart 2020: [Azure sanal makinelerinde SAP HANA için](./sap-hana-backup-guide.md) Azure Backup hizmetini içerecek yedekleme Kılavuzu yeniden çalıştı. [SAP HANA Azure Backup dosya düzeyinde](./sap-hana-backup-file-level.md) daha az ve dar içerik ve disk anlık görüntüsü aracılığıyla yedekleme ile ilgili üçüncü bir belgeyi sildi. İçerik, Azure sanal makinelerinde SAP HANA için yedekleme kılavuzunda ele alınır 
