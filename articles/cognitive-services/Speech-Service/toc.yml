@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: Bellek kullanımını izleme
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: Özel uç noktayı etkinleştirme
+      href: speech-services-private-link.md
     - name: Linux için OpenSSL’yi yapılandırma
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

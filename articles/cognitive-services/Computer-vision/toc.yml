@@ -41,17 +41,17 @@
       href: concept-generating-thumbnails.md
     - name: Yetişkinlere yönelik içeriği algılama
       href: concept-detecting-adult-content.md
-- name: Sorumlu AI
+- name: Yapay zekanın sorumluluk sahibi bir biçimde kullanılması
   items:
     - name: Uzamsal Analiz
       items:
-        - name: Saydamlık Notu
+        - name: Saydamlık notları
           items:
             - name: Uzamsal Analize Giriş
               href: /legal/cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: Özellikler ve sınırlamalar
               href: /legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: Dağıtım Yönergeleri
+        - name: Tümleştirme ve sorumlu kullanım
           items:
             - name: Yapay zeka dağıtımında sorumlu kullanım
               href: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
