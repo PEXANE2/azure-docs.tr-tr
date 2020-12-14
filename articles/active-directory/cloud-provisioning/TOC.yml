@@ -48,6 +48,8 @@
       items:
         - name: Aracıyı otomatik yükseltme
           href: how-to-automatic-upgrade.md
+        - name: Aracı kayıt seçenekleri
+          href: how-to-manage-registry-options.md
     - name: Geliştirme
       items:
         - name: Dönüşümler

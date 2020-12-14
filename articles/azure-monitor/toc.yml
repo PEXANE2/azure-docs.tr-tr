@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: Gruplar
               href: platform/workbooks-groups.md
+            - name: Kendi depolama alanınızı getirme
+              href: platform/workbooks-bring-your-own-storage.md
             - name: JSONPath ile JSON verilerini dönüştürme
               href: platform/workbooks-jsonpath.md
             - name: Workbooks’u başka bir bölgeye taşıma

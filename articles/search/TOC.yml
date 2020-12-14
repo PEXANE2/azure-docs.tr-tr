@@ -256,9 +256,11 @@
       items:
         - name: Sorgu türleri ve oluşturma
           href: search-query-overview.md
-        - name: Basit bir sorgu oluşturma
+        - name: Temel bir sorgu oluşturma
+          href: search-query-create.md
+        - name: Basit söz dizimi kullanma (örnekler)
           href: search-query-simple-examples.md
-        - name: Tam Lucene söz dizimini kullanma
+        - name: Tam Lucene kullanma (örnekler)
           href: search-query-lucene-examples.md
         - name: Parçalı terimler ve özel karakterler
           href: search-query-partial-matching.md
@@ -404,7 +406,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: JFK dosyaları tanıtımı
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: NYC İşleri tanıtımı
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Eğitim
       items:
         - name: Giriş (Microsoft Learn)

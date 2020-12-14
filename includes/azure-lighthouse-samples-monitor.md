@@ -5,15 +5,15 @@ services: lighthouse
 author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 03/30/2020
+ms.date: 12/11/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: be8aae6308e712449402b002576974743bc125ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0056e18b6cb3aad2a4504bbe20b3b3421793489e
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80986667"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356282"
 ---
 Bu örnekler Azure İzleyici'nin, Azure tarafından atanan temsilcinin kaynak yönetimi için eklenen aboneliklerde uyarı oluşturmak amacıyla nasıl kullanılacağını gösterir.
 
@@ -23,3 +23,4 @@ Bu örnekler Azure İzleyici'nin, Azure tarafından atanan temsilcinin kaynak y�
 | [alert-using-actiongroup](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/alert-using-actiongroup) | Bu şablon bir Azure uyarısı oluşturur ve mevcut Eylem Grubuna bağlanır.|
 | [multiple-loganalytics-alerts](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/multiple-loganalytics-alerts) | Kusto sorgularına dayalı birden fazla Log Analytics uyarısı oluşturur.|
 | [delegation-alert-for-customer](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegation-alert-for-customer) | Kullanıcı, yöneten kiracıya bir aboneliği temsilci olarak atadığında kiracıda uyarı dağıtır.|
+| [workbook-activitylogs-by-domain](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) | Abonelikler genelindeki Azure Etkinlik günlüklerini etki alanı adına göre filtreleme seçeneğiyle birlikte görüntüler. |

@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 9cac0a0026a7007e227607e04e03a77e4df99ecd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368145"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387675"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
-Azure Bilişsel Arama, ücretsiz form aramasından yüksek düzeyde belirtilen sorgu desenlerine kadar çok sayıda senaryoyu desteklemeye yönelik bir expante sorgu dili sunar. Bu makalede oluşturabileceğiniz sorgu türleri özetlenmektedir.
+Azure Bilişsel Arama, ücretsiz metin aramasından yüksek düzeyde belirtilen sorgu desenlerine kadar çok sayıda senaryoyu desteklemek için zengin bir sorgu dili sunar. Bu makalede oluşturabileceğiniz sorgu türleri özetlenmektedir.
 
 Bilişsel Arama bir sorgu, **`search`** her ikisinin de sorgu yürütmesini bilgilendirmesini ve yanıtı şekillendirip geri geldiğini bildiren bir gidiş dönüş işleminin tam belirtimidir. Parametreler ve Çözümleyicileri sorgu isteği türünü tespit. Aşağıdaki sorgu örneği, [otel demo dizinini](search-get-started-portal.md)hedefleyen [arama belgelerini (REST API)](/rest/api/searchservice/search-documents)kullanır.
 
@@ -38,7 +38,7 @@ Sorgu yürütme sırasında kullanılan parametreler:
 
 + **`queryType`**[varsayılan basit sorgu ayrıştırıcı](search-query-simple-examples.md) (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, belirsiz ve joker karakter arama gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısının](search-query-lucene-examples.md) , birkaç kez ad vermek üzere Ayrıştırıcıyı ayarlar.
 
-+ **`search`** eşleştirme ölçütünü, genellikle tüm terimleri veya tümceleri, işleçlere sahip veya olmayan bir şekilde sağlar. Dizin şemasında *aranabilir* olarak öznitelikli tüm alanlar, bu parametre için bir adaydır. 
++ **`search`** eşleştirme ölçütünü, genellikle tüm terimleri veya tümceleri, işleçlere sahip veya olmayan bir şekilde sağlar. Dizin şemasında *aranabilir* olarak öznitelikli tüm alanlar, bu parametre için bir adaydır.
 
 + **`searchFields`** sorgu yürütmesini belirli aranabilir alanlarla kısıtlar.
 
@@ -110,10 +110,8 @@ Gelişmiş sorgu formu, belirli bir sorgu davranışını tetikleyen tam Lucene 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha ayrıntılı bir şekilde incelemek için portalı veya Postman veya Visual Studio Code gibi başka bir aracı veya SDK 'Lardan birini kullanın. Aşağıdaki bağlantılar başlamanızı sağlayacak.
+Sorgu uygulamasına daha yakından bakmak için, her bir sözdizimi için örnekleri gözden geçirin. Tam metin arama için yeni olduğunuzda, sorgu altyapısının eşit derecede iyi bir seçim yapabileceğini daha yakından inceleyelim.
 
-+ [Arama Gezgini](search-explorer.md)
-+ [REST 'te sorgulama](search-get-started-rest.md)
-+ [.NET 'te sorgulama](search-get-started-dotnet.md)
-+ [Python 'da sorgulama](search-get-started-python.md)
-+ [JavaScript 'te sorgulama](search-get-started-javascript.md)
++ [Basit sorgu örnekleri](search-query-simple-examples.md)
++ [Lucene sözdizimi sorgu gelişmiş sorgular oluşturmaya yönelik örnekler](search-query-lucene-examples.md)
++ [Azure Bilişsel Arama’da tam metin araması nasıl çalışır?](search-lucene-query-architecture.md)

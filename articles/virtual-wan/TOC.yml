@@ -141,6 +141,8 @@
           href: howto-firewall.md
         - name: Özel Bağlantı bağlanabilirliğini yapılandırma
           href: howto-private-link.md
+        - name: Kaynaklara erişimi yönetme - Spoke VNet P2S
+          href: manage-secure-access-resources-spoke-p2s.md
     - name: İzleme
       items:
         - name: Günlükleri ve ölçümler

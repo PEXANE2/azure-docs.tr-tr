@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2020
+ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d92047a5b24f04ee7e0d08454867ec9e1a52a8b1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754391"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387479"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -68,12 +68,24 @@ Azure Defender 'ı etkinleştirmek için:
 
 ## <a name="faq---pricing-and-billing"></a>SSS-fiyatlandırma ve faturalandırma 
 
-### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Kuruluşumun Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?
+- [Kuruluşumun Azure Güvenlik Merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Güvenlik Merkezi tarafından sunulan planlar nelerdir?](#what-are-the-plans-offered-by-security-center)
+- [Aboneliğim için Azure Defender'ı nasıl etkinleştirebilirim?](#how-do-i-enable-azure-defender-for-my-subscription)
+- [Azure Defender'ı aboneliğimdeki sunucuların bir alt kümesinde yer alan sunucular için etkinleştirebilir miyim?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
+- [Aboneliğimin etkinleştirilmiş sunucular için Azure Defender 'ı var, çalışan olmayan sunucular için ücret ödersiniz mi?](#my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers)
+- [Log Analytics Aracısı yüklenmeden makineler için ücretlendirilmem gerekir mi?](#will-i-be-charged-for-machines-without-the-log-analytics-agent-installed)
+- [Bir Log Analytics Aracısı birden çok çalışma alanına rapor veriyor, iki kez ücretlendirilecektir.](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
+- [Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
+- [Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+
+### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Kuruluşumun, güvenlik merkezi 'ndeki Azure Defender değişikliklerini etkinleştirdiğim kişileri nasıl izleyebilirim?
 Azure aboneliklerinde fiyatlandırma ayarlarını değiştirme izinlerine sahip birden çok yönetici olabilir. Hangi kullanıcının bir değişiklik yaptığını öğrenmek için Azure etkinlik günlüğünü kullanın.
 
-Kullanıcının bilgileri sütununda **tarafından başlatılan olay** listesinde yoksa, ilgili ayrıntıları görmek için olayı bulun.
+:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Fiyatlandırma değişikliği olayını gösteren Azure etkinlik günlüğü":::
 
-:::image type="content" source="media/security-center-pricing/logged-change-to-pricing.png" alt-text="Fiyatlandırma değişikliği olayını gösteren Azure olay günlüğü":::
+Kullanıcının bilgileri sütununda **tarafından başlatılan olay** listesinde yoksa, ilgili ayrıntılar IÇIN olayın JSON 'sini bulun.
+
+:::image type="content" source="media/security-center-pricing/tracking-pricing-changes-in-activity-log.png" alt-text="Azure etkinlik günlüğü JSON Gezgini":::
 
 
 ### <a name="what-are-the-plans-offered-by-security-center"></a>Güvenlik Merkezi tarafından sunulan planlar nelerdir? 
@@ -115,6 +127,10 @@ Evet. Log Analytics aracınızı, verileri iki veya daha fazla farklı Log Analy
 ### <a name="if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them"></a>Bir Log Analytics Aracısı birden fazla çalışma alanına bildirirse, tüm bunlar üzerinde 500 MB boş veri alma işlemi kullanılabilir mi?
 Evet. Log Analytics aracınızı, verileri iki veya daha fazla farklı Log Analytics çalışma alanına (çoklu giriş) gönderecek şekilde yapılandırdıysanız, 500 MB boş veri alımı alırsınız. Her düğüm için, bildirilen çalışma alanı başına, günlük olarak hesaplanır ve ' Güvenlik ' veya ' kötü amaçlı yazılımdan koruma ' çözümlerinin yüklü olduğu her çalışma alanında kullanılabilir. 500 MB üzerinden alınan tüm veriler için ücretlendirilirsiniz.
 
+### <a name="is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine"></a>Tüm çalışma alanı veya tamamen makine başına 500 MB boş veri alımı mi hesaplansın?
+Çalışma alanına bağlı her makine için günde 500 MB boş veri alımı alacaksınız. Özellikle Azure Güvenlik Merkezi tarafından doğrudan toplanan güvenlik veri türleri için.
+
+Bu veriler, tüm düğümlerde ortalama bir günlük orandır. Bu nedenle, bazı makineler 100 MB gönderiyor ve diğerleri 800-MB gönderiyor olsa da, toplam **[makine sayısı] x 500-MB** boş sınırı aşarsa ek ücret ödemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Bu makalede Güvenlik Merkezi 'nin fiyatlandırma seçenekleri açıklanmaktadır. İlgili malzemeler için bkz.:

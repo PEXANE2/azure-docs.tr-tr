@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: Otomatik gönderimi kullanma
               href: data-box-portal-customer-managed-shipping.md
+            - name: Kendi sertifikalarınızı getirme
+              href: data-box-bring-your-own-certificates.md
             - name: Müşteri tarafından yönetilen anahtarı etkinleştirme
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Müşteri Kasası'nı kullanma
@@ -233,7 +235,7 @@
                   href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
     - name: Başvuru
       items:
-        - name: Azure CLI’si
+        - name: Azure CLI
           href: /cli/azure/ext/databox/databox
         - name: Azure PowerShell
           href: /powershell/module/az.databox

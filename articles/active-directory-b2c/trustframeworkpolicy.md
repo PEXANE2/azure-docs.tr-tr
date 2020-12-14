@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29eddbcfb7c0da98e5438f968dd3976b77a44680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85203104"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386893"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -40,11 +40,11 @@ ms.locfileid: "85203104"
 
 | Öznitelik | Gerekli | Açıklama |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Evet | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır `0.3.0.0` |
+| PolicySchemaVersion | Yes | İlkeyi yürütmek için kullanılacak şema sürümü. Değer şu şekilde olmalıdır `0.3.0.0` |
 | Tenantobjectıd | Hayır | Azure Active Directory B2C (Azure AD B2C) kiracının benzersiz nesne tanımlayıcısı. |
-| TenantId | Evet | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
-| PolicyId | Evet | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
-| PublicPolicyUri | Evet | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
+| TenantId | Yes | Bu ilkenin ait olduğu kiracının benzersiz tanımlayıcısı. |
+| PolicyId | Yes | İlke için benzersiz tanımlayıcı. Bu tanımlayıcının önüne *B2C_1A_* gelmelidir |
+| PublicPolicyUri | Yes | İlke için kiracı KIMLIĞI ve ilke KIMLIĞI birleşimi olan URI. |
 | DeploymentMode | Hayır | Olası değerler: `Production` , veya `Development` . `Production` varsayılan değerdir. İlkenizde hata ayıklamak için bu özelliği kullanın. Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 | Kullanıcıbağlantısı Neyırecorderendpoint | Hayır | **DeploymentMode** olarak ayarlandığında kullanılan uç nokta `Development` . Değer olmalıdır `urn:journeyrecorder:applicationinsights` . Daha fazla bilgi için bkz. [günlükleri toplama](troubleshoot-with-application-insights.md). |
 
@@ -62,27 +62,15 @@ Aşağıdaki örnek, **TrustFrameworkPolicy** öğesinin nasıl kullanılacağı
    PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
 ```
 
-## <a name="inheritance-model"></a>Devralma modeli
+**TrustFrameworkPolicy** öğesi aşağıdaki öğeleri içerir:
 
-Bu ilke dosyası türleri genellikle Kullanıcı yolculuğunda kullanılır:
-
-- Tanımlarının çoğunu içeren bir **temel** dosya. İlkeleriniz için sorun giderme ve uzun süreli bakımla yardımcı olmak üzere bu dosyada en az sayıda değişiklik yapmanız önerilir.
-- Kiracınız için benzersiz yapılandırma değişikliklerini tutan bir **uzantı** dosyası. Bu ilke dosyası temel dosyadan türetilir. Yeni işlevsellik eklemek veya var olan işlevleri geçersiz kılmak için bu dosyayı kullanın. Örneğin, bu dosyayı yeni kimlik sağlayıcılarıyla federasyona eklemek için kullanın.
-- Web, mobil veya masaüstü uygulamalarınız gibi bağlı olan taraf uygulaması tarafından doğrudan çağrılan tek bir görev odaklı dosya olan bir **bağlı olan taraf (RP)** dosyası. Kaydolma veya oturum açma, parola sıfırlama veya profil düzenleme gibi her benzersiz görev kendi RP ilke dosyası gerektirir. Bu ilke dosyası, uzantılar dosyasından türetilir.
-
-Bağlı olan taraf uygulaması, belirli bir görevi yürütmek için RP ilke dosyasını çağırır. Örneğin, oturum açma akışını başlatmak için. Azure AD B2C ' deki kimlik deneyimi çerçevesi, ilk olarak tüm öğeleri temel dosyadan, ardından uzantı dosyasından ve son olarak geçerli ilkeyi birleştirmek için RP ilke dosyasından ekler. RP dosyasındaki aynı tür ve ad öğeleri, Uzantılardaki öğeleri geçersiz kılar ve uzantılar temeli geçersiz kılar. Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları arasındaki ilişki gösterilmektedir.
-
-![Güven çerçevesi ilke devralma modelini gösteren diyagram](./media/trustframeworkpolicy/custom-policy-Inheritance-model.png)
-
-Devralma modeli aşağıdaki gibidir:
-
-- Üst ilke ve alt ilke aynı şemadır.
-- Herhangi bir düzeydeki alt ilke üst ilkeden devralınabilir ve yeni öğeler ekleyerek genişletebilirler.
-- Düzey sayısı için bir sınır yoktur.
-
-Daha fazla bilgi için bkz. [özel ilkelerle çalışmaya başlama](custom-policy-get-started.md).
-
-## <a name="base-policy"></a>Temel ilke
+| Öğe | Öğeleri | Açıklama |
+| ------- | ----------- | ----------- |
+| BasePolicy| 0:1| Temel bir ilkenin tanımlayıcısı. |
+| [BuildingBlocks](buildingblocks.md) | 0:1 | İlkenizin yapı taşları. |
+| [ClaimsProviders](claimsproviders.md) | 0:1 | Talep sağlayıcılar koleksiyonu. |
+| [UserJourneys](userjourneys.md) | 0:1 | Kullanıcı bir koleksiyonu. |
+| [RelyingParty](relyingparty.md) | 0:1 | Bağlı olan taraf ilkesinin tanımı. |
 
 Bir ilkeyi başka bir ilkeden devralması için bir **Basepolicy** öğesi, Ilke dosyasının **TrustFrameworkPolicy** öğesi altında bildirilmelidir. **Basepolicy** öğesi, bu ilkenin türetildiği temel ilkeye bir başvurudur.
 
@@ -114,46 +102,3 @@ Aşağıdaki örnek, temel bir ilkenin nasıl ekleneceğini gösterir. Bu **B2C_
 </TrustFrameworkPolicy>
 ```
 
-## <a name="policy-execution"></a>İlke yürütme
-
-Web, mobil veya masaüstü uygulaması gibi bir bağlı olan taraf uygulaması, [bağlı olan taraf (RP) ilkesini](relyingparty.md)çağırır. RP ilke dosyası, oturum açma, parola sıfırlama veya bir profili düzenlemeyle ilgili belirli bir görevi yürütür. RP ilkesi, bağlı olan taraf uygulamanın verilen belirtecin bir parçası olarak aldığı taleplerin listesini yapılandırır. Birden çok uygulama aynı ilkeyi kullanabilir. Tüm uygulamalar taleplerle aynı belirteci alır ve Kullanıcı aynı kullanıcı yolculuğuna gider. Tek bir uygulama, birden çok ilke kullanabilir.
-
-RP ilke dosyasında, [Kullanıcı yolculuğuna](userjourneys.md)Işaret eden **defaultuseryolculuney** öğesini belirtirsiniz. Kullanıcı yolculuğu genellikle temel veya uzantılar ilkesinde tanımlanmıştır.
-
-B2C_1A_signup_signin ilkesi:
-
-```xml
-<RelyingParty>
-  <DefaultUserJourney ReferenceId="SignUpOrSignIn">
-  ...
-```
-
-B2C_1A_TrustFrameWorkBase veya B2C_1A_TrustFrameworkExtensionPolicy:
-
-```xml
-<UserJourneys>
-  <UserJourney Id="SignUpOrSignIn">
-  ...
-```
-
-Kullanıcı yolculuğu, kullanıcının ne kadar ilerreceğini belirleyen iş mantığını tanımlar. Her Kullanıcı yolculuğu, kimlik doğrulaması ve bilgi toplama açısından sırayla bir dizi eylem gerçekleştiren bir düzenleme adımları kümesidir.
-
-[Başlangıç paketindeki](custom-policy-get-started.md#custom-policy-starter-pack) **SocialAndLocalAccounts** Ilke dosyası Signuporsignın, profileedit, passwordreset Kullanıcı bir bağlantı içerir. E-posta adresini değiştirme veya sosyal hesabın bağlantısını kaldırma gibi diğer senaryolar için daha fazla kullanıcı bağlantısı ekleyebilirsiniz.
-
-Düzenleme adımları [Teknik bir profil](technicalprofiles.md)çağırabilir. Teknik bir profil, farklı türlerde taraflar ile iletişim kurmak için yerleşik mekanizmaya sahip bir çerçeve sağlar. Örneğin, teknik bir profil, diğerleri arasında bu eylemleri gerçekleştirebilir:
-
-- Kullanıcı deneyimini işleme.
-- Kullanıcıların Facebook, Microsoft hesabı, Google, Salesforce veya başka herhangi bir kimlik sağlayıcısı gibi sosyal veya kurumsal bir hesapla oturum açmalarına izin verin.
-- MFA için telefon doğrulamasını ayarlayın.
-- Azure AD B2C bir kimlik deposundan veri okuma ve yazma.
-- Özel bir yeniden deneme API hizmeti çağırın.
-
-![İlke yürütme akışını gösteren diyagram](./media/trustframeworkpolicy/custom-policy-execution.png)
-
- **TrustFrameworkPolicy** öğesi aşağıdaki öğeleri içerir:
-
-- Yukarıda belirtildiği gibi BasePolicy
-- [BuildingBlocks](buildingblocks.md)
-- [ClaimsProviders](claimsproviders.md)
-- [UserJourneys](userjourneys.md)
-- [RelyingParty](relyingparty.md)

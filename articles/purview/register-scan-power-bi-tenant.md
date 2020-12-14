@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905001"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387590"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
 Bu makalede, Azure purview Portal 'ın Power BI kiracıyı kaydetmek ve taramak için nasıl kullanılacağı gösterilmektedir.
 
 > [!Note]
-> Purview örneği ve Power BI kiracısı aynı Azure kiracısında ise, Power BI kiracının taramasını ayarlamak için yalnızca yönetilen kimlik (MSI) kimlik doğrulamasını kullanabilirsiniz. Purview örneği ve Power BI kiracısı farklı Azure kiracılarında yer alıyorsa, Temsilcili kimlik doğrulamasıyla kimlik doğrulamanız gerekir ve taramalarınızı ayarlamak için PowerShell kullanmanız gerekir. [Power BI kaydetmek ve taramak Için PowerShell 'ı kullanma](powershell-register-scan-power-bi.md)konusuna bakın.
+> Purview örneği ve Power BI kiracısı aynı Azure kiracısında ise, Power BI kiracının taramasını ayarlamak için yalnızca yönetilen kimlik (MSI) kimlik doğrulamasını kullanabilirsiniz. 
 
 ## <a name="create-a-security-group-for-permissions"></a>İzinler için bir güvenlik grubu oluşturma
 

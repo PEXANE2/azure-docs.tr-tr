@@ -8,18 +8,18 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: dobett
-ms.openlocfilehash: b05ed6e1239721bcf3c1cf33d3ee63a992fd9843
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5a088cb07fa74b65e497de54be8c97bd51d31c16
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853241"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387845"
 ---
 # <a name="use-the-azureiotsolutionscom-site-to-deploy-your-solution-accelerator"></a>Çözüm hızlandırıcıyı dağıtmak için azureiotsolutions.com sitesini kullanın
 
 Azure IoT çözüm hızlandırıcılarına [AzureIoTSolutions.com](https://www.azureiotsolutions.com/Accelerators)adresinden Azure aboneliğinize dağıtım yapabilirsiniz. AzureIoTSolutions.com, hem Microsoft açık kaynak hem de iş ortağı çözüm hızlandırıcılarını barındırır. Bu çözüm Hızlandırıcılar, [Azure IoT başvuru mimarisi](/azure/architecture/reference-architectures/iot)ile hizalanır. Siteyi kullanarak bir çözüm hızlandırıcıyı tanıtım veya üretim ortamı olarak hızlı bir şekilde dağıtabilirsiniz.
 
-![AzureIoTSolutions.com](media/iot-accelerators-permissions/iotsolutionscom.png)
+:::image type="content" source="media/iot-accelerators-permissions/iotsolutionscom.png" alt-text="IoT çözümleri giriş sayfası":::
 
 > [!TIP]
 > Dağıtım işlemi üzerinde daha fazla denetime ihtiyacınız varsa, bir çözüm Hızlandırıcısı dağıtmak için CLı 'yi kullanabilirsiniz.

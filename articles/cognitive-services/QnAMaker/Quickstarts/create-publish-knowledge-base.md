@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: 1ed74f5678a1b1c5d5ded525da0c3e7e7a75b902
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 1fe1ad14dc1cc8f5ff5171ef517d23363969be4d
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347545"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387794"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Hızlı başlangıç: Soru-Cevap Oluşturma bilgi bankasını oluşturma, eğitme ve yayımlama
 
@@ -48,7 +48,7 @@ SSS sayfaları veya ürün kılavuzları gibi sahip olduğunuz içerikleri kulla
     |--|--|
     |**URL 'Ler,. PDF veya. docx dosyalarından Çoklu açma ayıklamasını etkinleştirin.**|İşaretli|
     |**Çoklu açma varsayılan metni**| Seç ve seçeneğini belirleyin|
-    |**+ URL Ekle**|`https://www.microsoft.com/software-download/faq`|
+    |**+ URL Ekle**|`https://www.microsoft.com/en-us/software-download/faq`|
     |**Günlük konuşma**|**Profesyonel** seçin|
 
 7. **5. adımda**, **KB 'nizi oluştur**' u seçin.

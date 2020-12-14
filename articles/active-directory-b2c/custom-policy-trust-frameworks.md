@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C 'de başvuru güven çerçeveleri | Microsoft Docs
+title: Özel ilkeye genel bakış Azure AD B2C | Microsoft Docs
 description: Azure Active Directory B2C özel ilkelerle ve kimlik deneyimi çerçevesiyle ilgili bir konu.
 services: active-directory-b2c
 author: msmimart
@@ -7,121 +7,170 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2017
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95990992"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387046"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Azure AD B2C Identity Experience Framework ile güven çerçeveleri tanımlama
+# <a name="azure-ad-b2c-custom-policy-overview"></a>Azure AD B2C özel ilkeye genel bakış
 
-Azure Active Directory B2C (Azure AD B2C) kimlik deneyimi çerçevesini kullanan özel ilkeler, kuruluşunuza merkezi bir hizmet sağlar. Bu hizmet, büyük bir ilgi alanındaki kimlik Federasyonu karmaşıklığını azaltır. Karmaşıklık, tek bir güven ilişkisine ve tek bir meta veri değişimine düşürülür.
+Özel ilkeler, Azure Active Directory B2C (Azure AD B2C) kiracınızın davranışını tanımlayan yapılandırma dosyalarıdır. [Kullanıcı akışları](user-flow-overview.md) , en yaygın kimlik görevlerinin Azure AD B2C portalında önceden tanımlanmıştır. Özel ilkeler, bir kimlik geliştiricisi tarafından birçok farklı görevi tamamlayabilecek şekilde tamamen düzenlenebilir.
 
-Azure AD B2C özel ilkeler, aşağıdaki soruları cevaplamanıza olanak tanımak için kimlik deneyimi çerçevesini kullanır:
+Özel bir ilke, OpenID Connect, OAuth, SAML gibi standart protokol biçimlerindeki varlıklar arasında güveni düzenleyen ve örneğin REST API tabanlı sistemden sisteme talep alışverişi gibi standart olmayan, ilke odaklı bir ilke tabanlıdır. Framework, Kullanıcı dostu, beyaz etiketli deneyimler oluşturur.
 
-- Hangi yasal, güvenlik, gizlilik ve veri koruma ilkelerine uymak gerekir?
-- Kişiler kim ve acalacaklandırılan katılımcı haline geliyor?
-- Acalacaklandırılan kimlik bilgileri sağlayıcıları kim ("talep sağlayıcıları" olarak da bilinir) ve neleri sunuyoruz?
-- Acalacaklandırılan bağlı olan taraflar kim (ve isteğe bağlı olarak ne gerekir)?
-- Katılımcılar için "tel" birlikte çalışabilirlik gereksinimleri nelerdir?
-- Dijital kimlik bilgilerini değiş tokuş için uygulanması gereken işletimsel "çalışma zamanı" kuralları nelerdir?
+Özel bir ilke, bir veya daha fazla XML biçimli dosya olarak temsil edilir ve hiyerarşik bir zincirde birbirini ifade eder. XML öğeleri, derleme bloonları, kullanıcıyla etkileşimi ve diğer tarafları ve iş mantığını tanımlar. 
 
-Tüm bu soruları yanıtlamak için, kimlik deneyimi çerçevesini kullanan özel ilkeler Azure AD B2C güven çerçevesi (TF) yapısını kullanın. Bu yapıyı ve neler sağladığını ele alalım.
+## <a name="custom-policy-starter-pack"></a>Özel ilke başlangıç paketi
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Güven çerçevesini ve Federasyon yönetim temelini anlayın
+Azure AD B2C özel ilke [Starter Pack](custom-policy-get-started.md#get-the-starter-pack) , hızlı bir şekilde çalışmaya başlamanıza olanak sağlamak için önceden oluşturulmuş birkaç ilkeyle birlikte gelir. Bu başlangıç paketlerinin her biri, açıklanan senaryolara ulaşmak için gereken en az teknik profil ve Kullanıcı bağlantısı sayısını içerir:
 
-Güven çerçevesi, bir ilgilendiğiniz topluluktaki katılımcıların uyması gereken kimlik, güvenlik, gizlilik ve veri koruma ilkelerinin yazılı bir belirtimidir.
+- **LocalAccounts** -yalnızca yerel hesapların kullanılmasına izin verir.
+- **Socialaccounts** -yalnızca sosyal (veya federal) hesapların kullanılmasını mümkün.
+- **SocialAndLocalAccounts** -hem yerel hem de sosyal hesapların kullanımını mümkün. Örneklerimizin çoğu bu ilkeye başvurduğumuz.
+- **SocialAndLocalAccountsWithMFA** -sosyal, yerel ve Multi-Factor Authentication seçeneklerini sunar.
 
-Federal Kimlik, Internet ölçeğinde Son Kullanıcı kimlik güvencesi sağlamak için bir temel sağlar. Üçüncü taraflara kimlik yönetimi temsilcisi seçerek, son kullanıcının tek bir dijital kimliği birden çok bağlı olan tarafla yeniden kullanılabilir.
+## <a name="understanding-the-basics"></a>Temel bilgileri anlama 
 
-Kimlik güvencesi, kimlik sağlayıcılarının (IDPs) ve öznitelik sağlayıcılarının (AtPs) belirli güvenlik, gizlilik ve işlem ilkelerine ve uygulamalarına bağlı olmasını gerektirir.  Doğrudan İncelemeleri gerçekleştireistemlerse, bağlı olan taraflar (RPs), ile çalışmayı seçtikleri IDPs ve AtPs 'Ler ile güven ilişkileri geliştirmeniz gerekir.
+### <a name="claims"></a>Talepler
 
-Dijital kimlik bilgilerinin tüketicileri ve sağlayıcılarının sayısı arttıkça, bu güven ilişkilerinin ikili yönetimine veya hatta ağ bağlantısı için gereken teknik meta verilerin ikili değişimine devam etmek zordur.  Federasyon hub 'ları, bu sorunları çözmek için yalnızca sınırlı başarıları elde edin.
+Bir talep, Azure AD B2C ilkesi yürütmesi sırasında verilerin geçici olarak depolanmasını sağlar. Kullanıcı hakkındaki bilgileri, örneğin ilk adı, soyadı veya Kullanıcı veya diğer sistemlerden elde edilen başka herhangi bir talebi (talep alışverişleri) depolayabilirler. [Talep şeması](claimsschema.md) , taleplerinizi bildirdiğiniz yerdir. 
 
-### <a name="what-a-trust-framework-specification-defines"></a>Güven çerçevesi belirtimi ne tanımlar
-TFs, her bir ilgilendiğiniz topluluğun belirli bir TF belirtimine göre yönetilebileceği açık kimlik değişimi (Ox) güven çerçevesi modelinin linchkıgiğlerdir. Bu tür bir TF belirtimi şunları tanımlar:
+İlke çalıştığında, Azure AD B2C iç ve dış taraflara talepler gönderip alır ve ardından bu taleplerin bir alt kümesini, belirtecin bir parçası olarak bağlı olan taraf uygulamanıza gönderir. Talepler şu yollarla kullanılır: 
 
-- **Şu tanım ile ilgilenilen topluluk için güvenlik ve gizlilik ölçümleri:**
-    - Katılımcılar tarafından sunulan/gerekli güvence düzeyleri (LOA); Örneğin, dijital kimlik bilgisinin orijinalliği için sıralı bir güven derecelendirmeleri kümesi.
-    - Katılımcılar tarafından sunulan/gerekli olan koruma düzeyleri (LOP); Örneğin, ilgilenilen topluluktaki katılımcılar tarafından işlenen dijital kimlik bilgilerinin korunması için sıralı bir güven derecelendirmeleri kümesi.
+- Bir talep, dizin kullanıcı nesnesine göre kaydedilir, okur veya güncelleştirilir.
+- Bir dış kimlik sağlayıcısından talep alındı.
+- Talepler özel bir REST API hizmeti kullanılarak gönderilir veya alınır.
+- Veriler, oturum açma veya profil düzenleme akışları sırasında kullanıcıdan talep olarak toplanır.
 
-- **Katılımcılar tarafından sunulan/gerekli dijital kimlik bilgilerinin açıklaması**.
+### <a name="manipulating-your-claims"></a>Taleplerinizi düzenleme
 
-- **Dijital kimlik bilgilerinin üretimi ve tüketimi için teknik ilkeler ve LOA ve LOP 'nin ölçülmesi. Bu yazılı ilkeler genellikle aşağıdaki ilke kategorilerini içerir:**
-    - Kimlik doğrulama ilkeleri, örneğin: *kişinin kimlik bilgileri ne kadar kuvvetlidir?*
-    - Güvenlik ilkeleri, örneğin: *bilgi bütünlüğü ve gizliliği koruma ne kadar kuvvetlidir?*
-    - Gizlilik ilkeleri, örneğin: *bir kullanıcının kişisel olarak tanımlanabilen bilgileri (PII) hangi denetimde vardır*?
-    - Daha fazla kullanılabilirlik ilkeleri, örneğin: *bir sağlayıcı işlemleri sona erer, PII işlevinin sürekliliği ve korunması nasıl yapılır?*
+[Talep dönüştürmeleri](claimstransformations.md) , belirli bir talebi başka bir talebe dönüştürmek, bir talebi değerlendirmek veya bir talep değeri ayarlamak için kullanılabilen önceden tanımlanmış işlevlerdir. Örneğin, bir dize koleksiyonuna bir öğe ekleme, bir dizenin durumunu değiştirme veya bir veri ve zaman talebini değerlendirme. Bir talep dönüştürmesi bir Transform yöntemini belirtir. 
 
-- **Üretim ve dijital kimlik bilgilerinin tüketimi için teknik profiller. Bu profiller şunları içerir:**
-    - Belirtilen LOA 'da dijital kimlik bilgisinin kullanılabildiği kapsam arabirimleri.
-    - Hat üzeri birlikte çalışabilirlik için teknik gereksinimler.
+### <a name="customize-and-localize-your-ui"></a>Kullanıcı arabiriminizi özelleştirin ve yerelleştirin
 
-- **Topluluktaki katılımcıların gerçekleştirebileceği çeşitli rollerin açıklamaları ve bu rolleri yerine getirmek için gereken nitelikler.**
+Kullanıcılarınızın web tarayıcısında bir sayfa sunarak bilgi toplamak istediğinizde, [kendi kendine onaylanan teknik profili](self-asserted-technical-profile.md)kullanın. [Talepler eklemek ve Kullanıcı girişini özelleştirmek](custom-policy-configure-user-input.md)için kendi kendini onaylanan teknik profilinizi düzenleyebilirsiniz.
 
-Bu nedenle, bir TF belirtimi, kimlik bilgilerinin ilgilendiğiniz Topluluk katılımcıları arasında nasıl değiştirildiğini yönetir: bağlı olan taraflar, kimlik ve öznitelik sağlayıcıları ve öznitelik Doğrulayıcıları.
+Kendi kendini onaylanan teknik profiliniz için [Kullanıcı arabirimini özelleştirmek](customize-ui-with-html.md) üzere, özelleştirilmiş HTML içeriğiyle [İçerik tanımı](contentdefinitions.md) öğesinde bir URL belirtirsiniz. Kendi kendine onaylanan teknik profilde, bu içerik tanımı KIMLIĞI ' ni işaret edersiniz.
 
-Bir TF belirtimi, topluluk içerisindeki dijital kimlik bilgilerinin onayını ve tüketimini düzenleyen bir ilgilendiğiniz topluluk yönetimi için başvuru olarak görev yapan bir veya birden çok belgelerdir. Bu, ilgilenilen bir topluluk üyeleri arasındaki çevrimiçi işlemler için kullanılan dijital kimliklerdeki güven oluşturmak için tasarlanan, belgelenmiş bir ilke ve yordamlar kümesidir.
+Dile özgü dizeleri özelleştirmek için [Yerelleştirme](localization.md) öğesini kullanın. Bir içerik tanımı, yüklenecek yerelleştirilmiş kaynakların bir listesini belirten bir [Yerelleştirme](localization.md) başvurusu içerebilir. Azure AD B2C, Kullanıcı arabirimi öğelerini URL 'nizden yüklenen HTML içeriğiyle birleştirir ve ardından sayfayı kullanıcıya görüntüler. 
 
-Diğer bir deyişle, bir TF belirtimi, bir topluluk için uygun bir federal kimlik ekosistemi oluşturmaya yönelik kuralları tanımlar.
+## <a name="relying-party-policy-overview"></a>Bağlı olan taraf ilkesine genel bakış
 
-Şu anda böyle bir yaklaşımın avantajı hakkında yaygın olarak anlaşma vardır. Altyapı özelliklerinin güveneceği, doğrulanabilen güvenlik, güvence ve gizlilik özellikleriyle dijital kimlik ekosistemlerinin geliştirilmesini kolaylaştırmaya yardımcı olur ve bu da birçok ilgilendiğiniz topluluk genelinde yeniden kullanılabilir.
+Bağlı olan taraf uygulaması veya hizmet sağlayıcısı olarak bilinen SAML protokolünde, belirli bir Kullanıcı yolculuğu yürütmek için [bağlı olan taraf ilkesini](relyingparty.md) çağırır. Bağlı olan taraf ilkesi, yürütülecek Kullanıcı yolculuğunu ve belirtecin içerdiği taleplerin listesini belirtir. 
 
-Bu nedenle, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, birlikte çalışabilirliği kolaylaştırmak için bir TF 'in veri gösteriminin temeli olarak belirtimi kullanır.
+![İlke yürütme akışını gösteren diyagram](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-Kimlik deneyimi çerçevesi 'nden yararlanan Azure AD B2C özel ilkeler, insan ve makine tarafından okunabilen verilerin bir karışımı olarak bir TF belirtimini temsil eder. Bu modelin bazı bölümleri (genellikle idare altına daha fazla yönelimli bölümler), yayımlanan güvenlik ve Gizlilik ilkesi belgelerinin (varsa) ilgili yordamlarla birlikte başvuru olarak temsil edilir. Diğer bölümlerde, işletimsel Otomasyonu kolaylaştıran yapılandırma meta verileri ve çalışma zamanı kuralları ayrıntılı olarak açıklanır.
+Aynı ilkeyi kullanan tüm bağlı olan taraf uygulamaları, aynı belirteç taleplerini alır ve Kullanıcı aynı kullanıcı yolculuğuna gider.
 
-## <a name="understand-trust-framework-policies"></a>Güven çerçevesi ilkelerini anlama
+### <a name="user-journeys"></a>Kullanıcı yolculukları
 
-Uygulama açısından, TF belirtimi, kimlik davranışları ve deneyimleri üzerinde tüm denetime izin veren bir ilke kümesinden oluşur.  Kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, kendi TF ' i tanımlayıp yapılandırabileceğiniz, bu tür bildirimli ilkeler aracılığıyla yazıp oluşturmanızı sağlar:
+[Kullanıcı yolculukları](userjourneys.md) , uygulamanıza erişmek için kullanıcının takip edecesiyle birlikte iş mantığını tanımlamanızı sağlar. Kullanıcı, uygulamanıza sunulacak talepleri almak için Kullanıcı yolculuğu üzerinden alınır. Kullanıcı yolculuğu bir [düzenleme adımı](userjourneys.md#orchestrationsteps)dizisinden oluşturulmuştur. Bir Kullanıcı belirteç almak için son adıma ulaşmalıdır. 
 
-- TF ile ilgili olan topluluğun federal kimlik ekosistemini tanımlayan belge başvurusu veya başvuruları. Bunlar, TF belgelerinin bağlantılardır. (Önceden tanımlanmış) işlemsel "çalışma zamanı" kuralları ya da Kullanıcı, talepler için ve/veya kullanımını otomatik hale getirmeyi ve/veya denetlemeyi denetler. Bu Kullanıcı, bir LOA (ve LOP) ile ilişkilendirilir. Bu nedenle, bir ilke farklı LOAs (ve LOPs) ile Kullanıcı ile ilgili olabilir.
+Aşağıda, [sosyal ve yerel hesap başlangıç paketi](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) ilkesine düzenleme adımlarını nasıl ekleyebileceğiniz açıklanmaktadır. Eklenen REST API çağrının bir örneği aşağıda verilmiştir.
 
-- Kimlik ve öznitelik sağlayıcıları veya talep sağlayıcılar, ilgilendikleri topluluk içinde ve bunlarla ilgili (bant dışı) LOA/LOP actatsyon ile birlikte destekledikleri teknik profiller.
+![özelleştirilmiş Kullanıcı yolculuğu](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
-- Öznitelik Doğrulayıcıları veya talep sağlayıcılarıyla tümleştirme.
 
-- Topluluktaki bağlı olan taraflar (çıkarım).
+### <a name="orchestration-steps"></a>Düzenleme adımları
 
-- Katılımcılar arasında ağ iletişimleri oluşturmaya yönelik meta veriler. Bu meta veriler, teknik profillerle birlikte, bağlı olan taraf ve diğer topluluk katılımcıları arasında "tel çalışma" ile birlikte çalışabilirlik için bir işlem sırasında kullanılır.
+Düzenleme adımı amaçlanan amacını veya işlevselliğini uygulayan bir yönteme başvurur. Bu yönteme [Teknik bir profil](technicalprofiles.md)denir. Kullanıcı yolculuğunda iş mantığını daha iyi temsil etmek için dallandırma gerektiğinde, düzenleme adımı [alt yolculuğa](subjourneys.md)başvurur. Bir alt yolculuğun kendi düzenleme adımları kümesi vardır.
 
-- Varsa protokol dönüştürmesi (örneğin, SAML 2,0, OAuth2, WS-Federation ve OpenID Connect).
+Bir Kullanıcı bir belirteci almak için Kullanıcı yolculuğunda son düzenleme adımına ulaşmalıdır. Ancak kullanıcıların tüm düzenleme adımlarını dolaşmaları gerekebilir. Düzenleme adımları düzenleme adımında tanımlanan [önkoşullara](userjourneys.md#preconditions) göre koşullu olarak çalıştırılabilir. 
 
-- Kimlik doğrulama gereksinimleri.
+Bir düzenleme adımı tamamlandıktan sonra, Azure AD B2C çıktıların talep **çantasında** depolar. Talep çantasındaki talepler, Kullanıcı yolculuğunda daha fazla düzenleme adımı tarafından kullanılabilir.
 
-- Varsa çok faktörlü düzenlemesi.
+Aşağıdaki diyagramda Kullanıcı yolculuğun düzenleme adımlarının talep çantasına nasıl erişebileceği gösterilmektedir.
 
-- Kullanılabilen tüm talepler için paylaşılan bir şema ve ilgili bir topluluk katılımcılarının katılımcıları ile eşlemeler.
+![Azure AD B2C Kullanıcı yolculuğu](media/custom-policy-trust-frameworks/user-journey-diagram.png)
 
-- Tüm talep dönüştürmelerinin yanı sıra bu bağlamdaki olası veriler en aza, taleplerin değişimine ve kullanımına dayanabilir.
+### <a name="technical-profile"></a>Teknik profil
 
-- Bağlama ve şifreleme.
+Teknik bir profil, farklı türlerde taraflar ile iletişim kurmak için bir arabirim sağlar. Kullanıcı yolculuğu, iş mantığınızı tanımlamak için düzenleme adımları aracılığıyla teknik profilleri çağırmayı birleştirir.
 
-- Talep depolama alanı.
+Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderir, talep dönüşümünü çalıştırır ve yapılandırılmış tarafla iletişim kurun. İşlem tamamlandıktan sonra teknik profil, istek paketine giden çıkış taleplerini döndürür. Daha fazla bilgi için bkz. [Teknik profillere genel bakış](technicalprofiles.md)
 
-### <a name="understand-claims"></a>Talepleri anlama
+### <a name="validation-technical-profile"></a>Doğrulama teknik profili
 
-> [!NOTE]
-> "Talepler" olarak değiş tokuş edilen tüm olası kimlik bilgileri türlerine topluca başvurduk: son kullanıcının kimlik doğrulama kimlik bilgileri, kimlik erişimi, iletişim cihazı, fiziksel konum, kişisel tanımlama öznitelikleri vb. talepler.
->
-> "Öznitelikler" yerine "talepler" terimini kullanıyoruz--çevrimiçi işlemlerde bu veri yapıtları, bağlı olan taraf tarafından doğrudan doğrulanmayacak olgular değildir. Bunlar, bağlı olan tarafın son kullanıcıya istenen işleme izin vermek için yeterli güvenle geliştirilmesi gereken olgular hakkında veya taleplerdir.
->
-> Ayrıca, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler, temeldeki protokolün Kullanıcı kimlik doğrulaması veya öznitelik alımı için tanımlanıp tanımlanmadığına bakılmaksızın tutarlı bir şekilde, her türlü dijital kimlik bilgisinin değişimini basitleştirmek üzere tasarlandığından "talepler" terimini kullanırız.  Benzer şekilde, belirli işlevleri arasında ayrım yapmak istemediğimiz zaman, kimlik sağlayıcılarına, öznitelik sağlayıcılarına ve öznitelik Doğrulayıcıları için "talep sağlayıcıları" terimini kullanırız.
+Bir Kullanıcı Kullanıcı arabirimiyle etkileşime geçtiğinde, toplanan verileri doğrulamak isteyebilirsiniz. Kullanıcıyla etkileşime geçmek için, [kendiliğinden onaylanan bir teknik profilin](self-asserted-technical-profile.md) kullanılması gerekir.
 
-Bu nedenle, bir bağlı olan taraf, kimlik ve öznitelik sağlayıcıları ve öznitelik doğrulayıcıları arasında kimlik bilgilerinin nasıl değiştirildiğini yönetir. Bağlı olan tarafın kimlik doğrulaması için hangi kimlik ve öznitelik sağlayıcılarının gerekli olduğunu denetler. Bunlar, etki alanına özgü dil (DSL), diğer bir deyişle, devralma, *if* deyimleri, çok biçimlilik olan belirli bir uygulama etki alanı için özelleştirilmiş bir bilgisayar dili olarak düşünülmelidir.
+Kullanıcı girişini doğrulamak için, kendi kendine onaylanan teknik profilden bir [doğrulama teknik profilleri](validation-technical-profile.md) çağırılır. 
 
-Bu ilkeler, kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkelerde, TF yapısının makine tarafından okunabilen bölümünü oluşturur. İşlem düzenleme ve Otomasyonu kolaylaştırmak için, talep sağlayıcıları ' meta verileri ve teknik profilleri, talep şeması tanımları, talep dönüştürme işlevleri ve Kullanıcı başvuruları dahil olmak üzere tüm işletimsel ayrıntıları içerirler.
+Doğrulama teknik profili, etkileşimli olmayan teknik bir profili çağırmak için bir yöntemdir. Bu durumda, teknik profil çıkış taleplerini veya bir hata iletisi döndürebilir. Hata iletisi kullanıcıya ekranda işlenir ve kullanıcının yeniden denenmesine izin verir.
 
-İçeriklerinin, ilkelerde bildirildiği etkin katılımcılar ile ilgili zaman içinde değişeceğinden emin olacağından, bunlar, *yaşayan belgeler* olarak kabul edilir. Ayrıca, katılımcı olma koşullarının ve koşulların değiştirebileceği da potansiyel olarak vardır.
+Aşağıdaki diyagramda, Azure AD B2C kullanıcının kimlik bilgilerini doğrulamak için bir doğrulama teknik profili nasıl kullandığı gösterilmektedir.
 
-Federasyon kurulumu ve bakımı, farklı talep sağlayıcıları/doğrulayıcılar (tarafından temsil edilen topluluk) ilke kümesiyle sürekli güven ve bağlantı yeniden yapılandırmalarından koruma için büyük ölçüde basitleştirilmiştir.
+![Doğrulama teknik profili diyagramı](media/custom-policy-trust-frameworks/validation-technical-profile.png)
 
-Birlikte çalışabilirlik başka bir önemli zorluk dır. Bağlı olan taraflar gerekli tüm protokollerin desteklenmesi olası olduğundan, ek talep sağlayıcıları/Doğrulayıcıları tümleştirmelidir. Azure AD B2C özel ilkeler, sektör standardı protokollerini destekleyerek ve bağlı olan taraflar ve öznitelik sağlayıcılarının aynı protokolü desteklemediği durumlarda istekleri tersine çevir için belirli kullanıcı ilerliklerini uygulayarak bu sorunu çözebilir.
+## <a name="inheritance-model"></a>Devralma modeli
 
-Kullanıcı yolculukları, bağlı olan taraf ve diğer katılımcılar arasında "kabloda" birlikte çalışabilirliği açmak için kullanılan protokol profillerini ve meta verileri içerir. Ayrıca, TF belirtiminin bir parçası olarak yayımlanan ilkelerle uyumluluğu zorlamaya yönelik kimlik bilgileri Exchange istek/yanıt iletilerine uygulanan işletimsel çalışma zamanı kuralları vardır. Kullanıcı yolculukları, müşteri deneyiminin özelleştirilmesi için önemli bir uygulamadır. Ayrıca, sistemin protokol düzeyinde nasıl çalıştığı üzerinde de ışık vardır.
+Her başlatıcı paketi aşağıdaki dosyaları içerir:
 
-Bu temelde, bağlı olan taraf uygulamaları ve portalları, kendi bağlamına bağlı olarak, belirli bir ilkenin adını geçirerek kimlik deneyimi çerçevesini kullanan Azure AD B2C özel ilkeler çağırabilir ve herhangi bir musun, Fuss veya risk olmadan istedikleri davranış ve bilgi alışverişini tam olarak alır.
+- Tanımlarının çoğunu içeren bir **temel** dosya. İlkeleriniz için sorun giderme ve uzun süreli bakımla yardımcı olmak üzere bu dosyada en az sayıda değişiklik yapmanız önerilir.
+- Kiracınız için benzersiz yapılandırma değişikliklerini tutan bir **uzantı** dosyası. Bu ilke dosyası temel dosyadan türetilir. Yeni işlevsellik eklemek veya var olan işlevleri geçersiz kılmak için bu dosyayı kullanın. Örneğin, bu dosyayı yeni kimlik sağlayıcılarıyla federasyona eklemek için kullanın.
+- Web, mobil veya masaüstü uygulamalarınız gibi bağlı olan taraf uygulaması tarafından doğrudan çağrılan tek bir görev odaklı dosya olan bir **bağlı olan taraf (RP)** dosyası. Kaydolma, oturum açma, parola sıfırlama veya profil düzenleme gibi her benzersiz görev, kendi bağlı olan taraf ilkesi dosyasını gerektirir. Bu ilke dosyası, uzantılar dosyasından türetilir.
+
+Devralma modeli aşağıdaki gibidir:
+
+- Herhangi bir düzeydeki alt ilke üst ilkeden devralınabilir ve yeni öğeler ekleyerek genişletebilirler.
+- Daha karmaşık senaryolar için daha fazla ınhabitance düzeyi (toplamda 5 ' e kadar) ekleyebilirsiniz
+- Daha fazla bağlı olan taraf ilkesi ekleyebilirsiniz. Örneğin, Hesabımı Sil, telefon numarası, SAML bağlı olan taraf ilkesini ve daha fazlasını değiştirin.
+
+Aşağıdaki diyagramda, ilke dosyaları ve bağlı olan taraf uygulamaları arasındaki ilişki gösterilmektedir.
+
+![Güven çerçevesi ilke devralma modelini gösteren diyagram](media/custom-policy-trust-frameworks/policies.png)
+
+
+## <a name="guidance-and-best-practices"></a>Rehberlik ve en iyi deneyimler
+
+### <a name="best-practices"></a>Önerilen uygulamalar
+
+Azure AD B2C özel bir ilke içinde, kullanıcıların ihtiyaç duyduğu ve genişletmeniz için kendi iş mantığınızı tümleştirebilmeniz gerekir. Kullanmaya başlamak için en iyi uygulama ve önerilerden oluşan bir kümesidir.
+
+- **Uzantı ilkesi** veya **geçiş partisi ilkesi** içinde mantığınızı oluşturun. Aynı KIMLIĞE başvurarak temel ilkeyi geçersiz kılacak yeni öğeler ekleyebilirsiniz. Bu, Microsoft 'un yeni başlangıç paketleri yayımlarsa temel ilkeyi daha sonra yükseltmeyi kolaylaştırırken projenizi ölçeklendirmenize olanak tanır.
+- **Temel ilke** içinde herhangi bir değişiklik yapmaktan kaçınıyoruz.  Gerektiğinde, değişikliklerin yapıldığı yerde yorum yapın.
+- Teknik profil meta verileri gibi bir öğeyi geçersiz kıldığınızda, tüm teknik profilin temel ilkeden kopyalanmasını önleyin. Bunun yerine, öğesinin yalnızca gerekli kısmını kopyalayın. Değişikliğin nasıl yapılacağını gösteren bir örnek için bkz. [e-posta doğrulamayı devre dışı bırakma](custom-policy-disable-email-verification.md) .
+- Temel işlevlerin paylaşıldığı teknik profillerin çoğaltılmasını azaltmak için [Teknik profille içerme](technicalprofiles.md#include-technical-profile)özelliğini kullanın.
+- Oturum açma sırasında Azure AD dizinine yazmaktan kaçının, bu da azaltma sorunlarına yol açabilir.
+- İlkenizin dış bağımlılıkları varsa REST API gibi, yüksek oranda kullanılabilir olduklarından emin olur.
+- Daha iyi bir kullanıcı deneyimi için, özel HTML şablonlarınızın [çevrimiçi içerik teslimi](https://docs.microsoft.com/azure/cdn/)kullanılarak küresel bir şekilde dağıtıldığından emin olun. Azure Content Delivery Network (CDN), yükleme sürelerini azaltmanıza, bant genişliğinden tasarruf etmenize ve yanıt hızını hızlandırmanıza olanak tanır.
+- Kullanıcı yolculuğunda değişiklik yapmak istiyorsanız. Kullanıcı yolculuğunun tamamını temel ilkeden uzantı ilkesine kopyalayın. Kopyaladığınız Kullanıcı yolculuğuna benzersiz bir Kullanıcı yolculuğu KIMLIĞI sağlayın. Ardından [bağlı olan taraf ilkesinde](relyingparty.md), [Varsayılan Kullanıcı](relyingparty.md#defaultuserjourney) yolculuğu öğesini yeni Kullanıcı yolculuğuna işaret etmek üzere değiştirin.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Azure AD B2C ilkeleriyle geliştirme yaparken, Kullanıcı yolculuğunu yürütürken hatalarla veya özel durumlarla karşılaşabilirsiniz. Application Insights kullanılarak araştırılır.
+
+- [Özel durumları tanılamak](troubleshoot-with-application-insights.md)için Application Insights Azure AD B2C ile tümleştirin.
+- [Vs Code için Azure AD B2C uzantısı](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) , ilke adı ve saatine göre günlüklere erişmenize ve bunları [görselleştirmenize](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) yardımcı olabilir.
+- Özel ilkeleri ayarlamadaki en yaygın hata hatalı biçimli XML 'dir. XML dosyanızı karşıya yüklemeden önce hataları belirlemek için [XML şema doğrulamasını](troubleshoot-custom-policies.md) kullanın.
+
+## <a name="continuous-integration"></a>Sürekli tümleştirme
+
+Azure Pipelines ' de ayarladığınız bir sürekli tümleştirme ve teslim (CI/CD) işlem hattı kullanarak, yazılım teslimine ve kod denetim otomasyonuna [Azure AD B2C özel ilkelerinizi dahil](deploy-custom-policies-devops.md) edebilirsiniz. Geliştirme, test ve üretim gibi farklı Azure AD B2C ortamlara dağıtırken, el ile işlemleri kaldırmanızı ve Azure Pipelines kullanarak otomatikleştirilmiş test gerçekleştirmenizi öneririz.
+
+## <a name="prepare-your-environment"></a>Ortamınızı hazırlama
+
+Azure AD B2C özel ilke ile çalışmaya başlayın:
+
+1. [Azure AD B2C kiracısı oluşturma](tutorial-create-tenant.md)
+1. [Bir Web uygulamasını](tutorial-register-applications.md) Azure Portal kullanarak kaydedin. Bu nedenle, ilkenizi test edebilirsiniz.
+1. Gerekli [ilke anahtarlarını](custom-policy-get-started.md#add-signing-and-encryption-keys) ekleme ve [kimlik deneyimi çerçevesi uygulamalarını kaydetme](custom-policy-get-started.md#register-identity-experience-framework-applications)
+1. [Azure AD B2C İlkesi başlangıç paketini alın](custom-policy-get-started.md#get-the-starter-pack) ve kiracınıza yükleyin. 
+1. Başlangıç paketini karşıya yükledikten sonra [kaydolma veya oturum açma ilkenizi test](custom-policy-get-started.md#test-the-custom-policy) edin
+1. [Visual Studio Code](https://code.visualstudio.com/) indirip yüklemenizi öneririz (vs Code). Visual Studio Code masaüstünüzde çalışan ve Windows, macOS ile Linux’ta kullanılabilen hafif ama güçlü bir kaynak kod düzenleyicidir. VS Code, Azure AD B2C özel ilke XML dosyalarını düzenleyebilirsiniz.
+1. Azure AD B2C özel ilkelerde hızlıca gezinmek için, [vs Code için Azure AD B2C uzantısı](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) yüklemenizi öneririz
+ 
+## <a name="next-steps"></a>Sonraki adımlar
+
+Azure AD B2C ilkenizi ayarlayıp test ettikten sonra ilkenizi özelleştirmeye başlayabilirsiniz. Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki makalelere bakın:
+
+- Özel ilkeler kullanarak [talepler ekleyin ve Kullanıcı girişini özelleştirin](custom-policy-configure-user-input.md) . Bir talep tanımlama hakkında bilgi edinin, bazı başlangıç paketi teknik profillerini özelleştirerek Kullanıcı arabirimine talep ekleme.
+- Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini özelleştirin](customize-ui-with-html.md) . Kendi HTML içeriğinizi oluşturmayı ve içerik tanımını özelleştirmeyi öğrenin.
+- Özel bir ilke kullanarak uygulamanızın [Kullanıcı arabirimini yerelleştirin](custom-policy-localization.md) . Desteklenen dillerin listesini ayarlamayı ve yerelleştirilmiş kaynaklar öğesini ekleyerek dile özgü Etiketler sağlamayı öğrenin.
+- İlke geliştirme ve test etme sırasında, [e-posta doğrulamasını devre dışı](custom-policy-disable-email-verification.md)bırakabilirsiniz. Teknik profil meta verilerinin üzerine yazmayı öğrenin.
+- Özel ilkeler kullanarak [bir Google hesabı ile oturum açma ayarlayın](identity-provider-google-custom.md) . OAuth2 Technical profile ile yeni bir talep sağlayıcı oluşturmayı öğrenin. Ardından Kullanıcı yolculuğu 'nı Google oturum açma seçeneğini içerecek şekilde özelleştirin.
+- Özel ilkeleriniz ile ilgili sorunları tanılamak için, [Application Insights Azure Active Directory B2C günlüklerini toplayabilirsiniz](troubleshoot-with-application-insights.md). Yeni teknik profillerin nasıl ekleneceğini ve geçiş partisi ilkenizi nasıl yapılandıracağınızı öğrenin.

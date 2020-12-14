@@ -1,27 +1,27 @@
 ---
 title: Azure Active Directory B2C için alt bağlantı | Microsoft Docs
-description: Azure Active Directory B2C bir özel ilkenin alt, neys öğesini belirtin.
+description: Azure Active Directory B2C bir özel ilkenin Sub. newys öğesini belirtin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/15/2020
+ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6609dabe9bd507751bd131a4effe24295e2aac04
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952466"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97386876"
 ---
-# <a name="subjourneys"></a>Alt, neys
+# <a name="sub-journeys"></a>Alt, neys
 
-Alt işlemler, Kullanıcı yolculuğu içindeki düzenleme adımlarının akışını düzenlemek ve basitleştirmek için kullanılabilir. [Kullanıcı yolculukları](userjourneys.md) , bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı, bağlı olan tarafa sunulacak talepleri almak için bu yollar üzerinden alınır. Diğer bir deyişle, Kullanıcı yolculukları, Azure AD B2C kimlik deneyimi çerçevesi, isteği işleyen bir son kullanıcının iş mantığını tanımlar. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Bir düzenleme adımının [Claimsexchange](userjourneys.md#claimsexchanges) öğesi, çalıştıran tek bir [Teknik profile](technical-profiles-overview.md) bağlıdır.
+Alt işlemler, Kullanıcı yolculuğu içindeki düzenleme adımlarının akışını düzenlemek ve basitleştirmek için kullanılabilir. [Kullanıcı yolculukları](userjourneys.md) , bir ilkenin bir kullanıcı için istenen talepleri elde etmesine izin veren bir ilke aracılığıyla açık yollar belirtmektir. Kullanıcı, bağlı olan tarafa sunulacak talepleri almak için bu yollar üzerinden alınır. Diğer bir deyişle, Kullanıcı yolculukları, Azure AD B2C kimlik deneyimi çerçevesi, isteği işleyen bir son kullanıcının iş mantığını tanımlar. Kullanıcı yolculuğu, başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edilir. Bir düzenleme adımının [Claimsexchange](userjourneys.md#claimsexchanges) öğesi, çalıştıran tek bir [Teknik profile](technicalprofiles.md) bağlıdır.
 
-Bir alt yolculukta, Kullanıcı yolculuğu içinde herhangi bir noktada çağrılabilecek bir düzenleme adımları gruplandırmadır. Yeniden kullanılabilir adım dizileri oluşturmak veya iş mantığını daha iyi temsil etmek için dallanmayı uygulamak üzere alt, neys kullanabilirsiniz.
+Bir alt yolculukta, Kullanıcı yolculuğu içinde herhangi bir noktada çağrılabilecek bir düzenleme adımları gruplandırmadır. Yeniden kullanılabilir adım dizileri oluşturmak veya iş mantığını daha iyi temsil etmek için dallanmayı uygulamak üzere Sub. neys kullanabilirsiniz.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
@@ -29,16 +29,16 @@ Bir alt yolculukta, Kullanıcı yolculuğu içinde herhangi bir noktada çağrı
 
 Alt bağlantı, her ikisi de başarılı bir işlem için izlenmesi gereken bir düzenleme sırası olarak temsil edildiği için [Kullanıcı, neys](userjourneys.md)gibi davranır. Kullanıcı, neys kendi başına çağrılabilir ve yürütmek için bir Sendclaim adımı gerektirir. Alt bağlantı, Kullanıcı ve bağımsız olarak çağrılamaz ve bağımsız olarak çağrılamaz ve Kullanıcı yolculuğunda her zaman çağrılır.
 
-Dalın anahtar bileşeni, Kullanıcı yolculuğunda daha iyi iş mantığı işlemeye izin veriydi. Ortak düzenleme adımları ayrı ayrı olarak çağrılacak ayrı parçalar halinde gruplandırılır. Bir alt yolculukta, birden fazla düzenleme adımının birlikte birbirine bağlanmış olduğu bir yolculuğun basitleşmesi (aynı önkoşullara sahip olması). Bir alt yolculuğun yalnızca Kullanıcı yolculuğu aracılığıyla çağrılması, başka bir alt yolculuğa çağrı yapmamamalıdır.
+Dalın anahtar bileşeni, Kullanıcı yolculuğunda daha iyi iş mantığı işlemeye izin veriydi. Ortak düzenleme adımları ayrı ayrı olarak çağrılacak ayrı parçalar halinde gruplandırılır. Bir alt yolculukta, birden fazla düzenleme adımı birlikte birbirine bağlanmış (aynı önkoşullara sahip) bir yolculuğun basitleşebilir. Bir alt yolculuğun yalnızca Kullanıcı yolculuğu aracılığıyla çağrılması, başka bir alt yolculuğa çağrı yapmamamalıdır.
 
-İki tür alt bağlantı vardır:
+İki tür Sub, neys vardır:
 
-- **Call** -çağırıcının denetimini döndürür. Alt yolculuğun yürütülmesi ve sonra Denetim, Kullanıcı yolculuğu içinde yürütülmekte olan düzenleme adımına döndürülür.
-- **Transfer** -denetimi, alt yolculuğa (geri alınamaz dallanma) aktarır. Alt yolculuğun, talepleri bağlı olan taraf uygulamasına geri döndürmek için bir Sendclaim adımı olması gerekir.
+- **Call** -çağırıcının denetimini döndürür. Alt bir yolculuğun yürütülmesi ve sonra Denetim, Kullanıcı yolculuğu içinde yürütülmekte olan düzenleme adımına döndürülür.
+- **Transfer** -denetimi alt yolculuğa aktarır (geri alınamaz dallanma). Alt bir yolculuğun, talepleri bağlı olan taraf uygulamasına geri döndürmesi için bir Sendclaim adımı olması gerekir.
 
 ## <a name="example-scenarios"></a>Örnek senaryolar
 
-### <a name="call-subjourney"></a>Alt yolculuğa çağrı
+### <a name="call-sub-journey"></a>Alt yolculuğa çağrı
 
 Aşağıdaki senaryolarda bir çağrı alt yolculuğu yararlı olur:
 
@@ -46,14 +46,14 @@ Aşağıdaki senaryolarda bir çağrı alt yolculuğu yararlı olur:
 - Ebeveyn onayı: dallandırma, kullanıcının, kullanıcının onay gerektirdiğini bulduktan sonra bir ana izin Kullanıcı yolculuğuna dallayabilmesine olanak tanıyarak, ebeveyn onayı tasarımında kolaylık sağlar. 
 - Oturum açmak için kaydolun: bir kullanıcının dizinde zaten varolduğu, ancak aslında bir hesap oluşturduğunu unuttulabileceği bir senaryoyu düşünün. Bu, kullanıcıya girdiğiniz kimlik bilgilerinin zaten var olduğunu ve kullanıcının bu kullanıcı için bir kaydolma akışından oturum açma akışından bir kayıt akışı yapmaya zorlanmasını zorunlu hale getirmek yerine, bu tür bir durumda istenebilir.  
 
-### <a name="transfer-subjourney"></a>Aktarım alt yolculuğu
+### <a name="transfer-sub-journey"></a>Alt yolculuğa aktar
 
 Aşağıdaki senaryolarda bir aktarım alt yolculuğu yararlı olur:
 
 - Bir blok sayfası gösteriliyor.
 - Bir/B testi, isteği bir belirteci yürütmek ve vermek için bir alt yolculuğa yönlendirerek test edin.
 
-## <a name="adding-a-subjourney-element"></a>Subbir ney öğesi ekleme
+## <a name="adding-a-subjourneys-element"></a>Bir Subbir neys öğesi ekleme
 
 Aşağıda, `SubJourney` `Call` Denetim Kullanıcı yolculuğuna geri döndüren türünde bir öğe örneği verilmiştir.
 
@@ -95,9 +95,9 @@ Aşağıda, `SubJourney` `Transfer` bağlı olan taraf uygulamasına bir belirte
 </SubJourneys>
 ```
 
-### <a name="invoke-a-subjourney-step"></a>Bir alt yolculuğu adımını çağırma
+### <a name="invoke-a-sub-journey-step"></a>Sub yolculuğu adımını çağırma
 
-Yeni bir düzenleme adımı `InvokeSubJourney` , bir alt yolculuğun yürütülmesi için kullanılır. Aşağıda, bu düzenleme adımının tüm yürütme öğelerini gösteren bir örnek verilmiştir.
+`InvokeSubJourney`Bir alt yolculuğun yürütülmesi için türünün yeni bir düzenleme adımı kullanılır. Aşağıda, bu düzenleme adımının tüm yürütme öğelerini gösteren bir örnek verilmiştir.
 
 ```xml
 <OrchestrationStep Order="5" Type="InvokeSubJourney">
@@ -108,7 +108,7 @@ Yeni bir düzenleme adımı `InvokeSubJourney` , bir alt yolculuğun yürütülm
 ```
 
 > [!NOTE]
-> Bir alt yolculuğa başka bir alt yolculuğa çağrı mamalıdır.
+> Alt bir yolculukta başka bir alt yolculuğa çağrı olmamalıdır.
 
 ## <a name="components"></a>Bileşenler
 
@@ -124,7 +124,7 @@ Yeni bir düzenleme adımı `InvokeSubJourney` , bir alt yolculuğun yürütülm
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Yes | İlkedeki alt yolculuğa başvurmak için Kullanıcı yolculuğu tarafından kullanılabilen alt yolculuğun tanımlayıcısı. [Aday](userjourneys.md#journeylist) öğesi 'nin **Subbir Newınreferenceıd** öğesi bu özniteliğe işaret ediyor. |
+| Id | Yes | İlkedeki alt yolculuğa başvurmak için Kullanıcı yolculuğu tarafından kullanılabilen alt e-Poney tanımlayıcısı. [Aday](userjourneys.md#journeylist) öğesi 'nin **Subbir Newınreferenceıd** öğesi bu özniteliğe işaret ediyor. |
 | Tür | Yes | Olası değerler: `Call` , veya `Transfer` . Daha fazla bilgi için bkz. [Kullanıcı yolculuğu dallandırma](#user-journey-branching)|
 
 **Subyolculuney** öğesi aşağıdaki öğeyi içerir:
@@ -139,4 +139,4 @@ Orchestration Step öğelerinin tüm listesi için bkz. [User, neys](userjourney
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[UserJourneys](userjourneys.md)
+Kullanıcı, [neys](userjourneys.md) hakkında bilgi edinin

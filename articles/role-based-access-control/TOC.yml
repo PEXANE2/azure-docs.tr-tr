@@ -9,7 +9,7 @@
       href: rbac-and-directory-admin-roles.md
 - name: Hızlı Başlangıçlar
   items:
-    - name: Kullanıcının erişimini görüntüleme
+    - name: Kullanıcı için erişimi denetleme
       href: check-access.md
     - name: ARM şablonu
       displayName: Resource Manager

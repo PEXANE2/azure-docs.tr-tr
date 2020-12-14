@@ -9,12 +9,12 @@ metadata:
   author: JoshuaPartlow
   ms.author: joshuapa
   ms.date: 06/17/2020
-  ms.openlocfilehash: 3f89d249e126cfeb65b141e39d6a6a998e4d1758
-  ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+  ms.openlocfilehash: c729e93f48a0b3ef382edd32a9322ec5c0174b3b
+  ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/19/2020
-  ms.locfileid: "92207759"
+  ms.lasthandoff: 12/11/2020
+  ms.locfileid: "97109411"
 landingContent:
 - title: Azure Notebooks hakkında
   linkLists:
@@ -22,49 +22,15 @@ landingContent:
     links:
     - text: Azure Notebooks hizmeti nedir?
       url: azure-notebooks-overview.md
-  - linkListType: deploy
-    links:
-    - text: Azure Notebooks örnekleri
-      url: azure-notebooks-samples.md
   - linkListType: get-started
     links:
     - text: Azure Notebooks dosyalarınıza erişme
       url: https://notebooks.azure.com/
 - title: Azure Notebooks'u kullanmaya başlama
   linkLists:
-  - linkListType: learn
-    links:
-    - text: Azure Notebooks ile iklim verilerini analiz etme
-      url: /learn/modules/analyze-climate-data-with-azure-notebooks/
-  - linkListType: tutorial
-    links:
-    - text: Python ile Jupyter Notebook oluşturma ve çalıştırma
-      url: tutorial-create-run-jupyter-notebook.md
   - linkListType: quickstart
     links:
     - text: Oturum açma ve kullanıcı kimliği ayarlama
       url: quickstart-sign-in-azure-notebooks.md
-    - text: Notebook oluşturma ve paylaşma
-      url: quickstart-create-share-jupyter-notebook.md
-    - text: Notebook kopyalama
-      url: quickstart-clone-jupyter-notebook.md
-    - text: Yerel Jupyter Notebook’u geçirme
-      url: quickstart-migrate-local-jupyter-notebook.md
-    - text: Özel bir ortamla proje oluşturma
-      url: quickstart-create-jupyter-notebook-project-environment.md
     - text: Projenizi dışarı aktarma
       url: quickstart-export-jupyter-notebook-project.md
-- title: Azure Notebooks'un en önemli görevleri
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Projeleri yönetme ve yapılandırma
-      url: configure-manage-azure-notebooks-projects.md
-    - text: Veri dosyalarıyla çalışma
-      url: work-with-project-data-files.md
-    - text: Projeleri oluşturma ve kopyalama
-      url: create-clone-jupyter-notebooks.md
-    - text: Notebook’taki bulut verilerine erişme
-      url: access-data-resources-jupyter-notebooks.md
-    - text: Notebook’ta paketleri yükleme
-      url: install-packages-jupyter-notebook.md

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 185cb24d5edd08438c56603b602448226ce31f0b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360259"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387828"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Öğretici: REST API 'Lerini kullanma
 
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Başlamak için, mevcut bir Azure purview hesabına sahip olmanız gerekir. Bir kataloğunuz yoksa, [Azure purview hesabı oluşturmaya yönelik hızlı başlangıç](create-catalog-portal.md)bölümüne bakın.
 
@@ -39,7 +39,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure portalda](https://portal.azure.com) oturum açın.
 
 ## <a name="create-a-service-principal-application"></a>Hizmet sorumlusu oluşturma (uygulama)
 
@@ -113,7 +113,7 @@ Aşağıdaki değerleri bulun ve kaydedin:
   * Sol bölmedeki **Yönet** bölümünde **Özellikler**' i seçin, **Kiracı kimliğini** bulun ve sonra değerini kaydetmek için **Panoya Kopyala** simgesini seçin.
 * Atlas uç noktası:
   * Azure portal [Azure takip hesapları sayfasında](https://aka.ms/purviewportal) , listeden Azure purview hesabınızı bulun ve seçin.
-  * **Genel bakış**' ı seçin, **Atlas uç noktasını** bulun ve sonra değerini kaydetmek için **Panoya Kopyala** simgesini seçin. Dizeyi daha sonra kullandığınızda dizenin *https://* kısmını kaldırın.
+  * **Özellikler**' i seçin, **Atlas uç noktasını** bulun ve sonra değerini kaydetmek için **Panoya Kopyala** simgesini seçin. Dizeyi daha sonra kullandığınızda dizenin *https://* kısmını kaldırın.
 * Hesap adı:
   * Atlas uç nokta dizesinden kataloğunuzun adını ayıklayın. Örneğin, Atlas uç noktanız ise, `https://ThisIsMyCatalog.catalog.purview.azure.com` hesap adınız olur `ThisIsMyCatalog` .
 

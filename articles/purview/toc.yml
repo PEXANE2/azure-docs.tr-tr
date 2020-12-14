@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: Veri içgörüleri
         href: concept-insights.md
+      - name: Desteklenen Tarayıcılar
+        href: supported-browsers.md
       - name: Sık sorulan sorular
         href: frequently-asked-questions.md
   - name: Nasıl yapılır kılavuzları
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Terim şablonlarını yönetme
             href: how-to-manage-term-templates.md
+          - name: Sözlük terimleri atamak için varlıkları toplu olarak düzenleme
+            href: how-to-bulk-edit-assets.md
       - name: Sınıflandırma
         items:
           - name: Özel sınıflandırma ve sınıflandırma kuralı oluşturma

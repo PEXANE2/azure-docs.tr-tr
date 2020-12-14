@@ -39,6 +39,8 @@
       href: template-samples.md
 - name: Kavramlar
   items:
+    - name: Kavramlar ve en iyi deneyimler
+      href: concepts-and-best-practices.md
     - name: İş sürekliliği
       href: virtual-network-disaster-recovery-guidance.md
     - name: Bağlantı

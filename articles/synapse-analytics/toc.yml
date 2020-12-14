@@ -1095,9 +1095,9 @@
         - name: Ayrılmış SQL havuzları için puanlama sihirbazını kullanma
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Azure AutoML ile kodsuz olarak model eğitme
+        - name: Otomatik makine öğrenmesi ile kod olmadan model eğitme
           href: ./machine-learning/tutorial-automl.md
-        - name: Azure AutoML ile Python’da model eğitme
+        - name: Otomatik makine öğrenmesi ile Python’da model eğitme
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Apache Spark MLlib ile model oluşturma

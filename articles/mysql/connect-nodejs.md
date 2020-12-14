@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-js
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 5/26/2020
-ms.openlocfilehash: d1291b645e987f33bd2035580587650b843f1771
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 12/11/2020
+ms.openlocfilehash: b055201bba5147e72fc7ee80e1e9f24320f124a5
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535665"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387658"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-mysql"></a>Hızlı başlangıç: MySQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Node.js kullanma
 
@@ -50,10 +50,16 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 
-1. **Node.js** ’yi ve Node.js’nin paket yöneticisi olan **npm** ’yi yüklemek için aşağıdaki komutları çalıştırın.
+1. **Node.js**’yi ve Node.js’nin paket yöneticisi olan **npm**’yi yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
-   sudo apt-get install -y nodejs npm
+    # Using Ubuntu
+    curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    
+    # Using Debian, as root
+    curl -sL https://deb.nodesource.com/setup_14.x | bash -
+    apt-get install -y nodejs
    ```
 
 2. Bir proje klasörü oluşturmak `mysqlnodejs` ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
@@ -68,12 +74,8 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
 
 ### <a name="macos"></a>macOS
 
-1. MacOS ve **Node.js** için kullanımı kolay bir paket yöneticisi olan **Brew** 'ı yüklemek için aşağıdaki komutları girin.
+1. [Node.js İndirmeleri sayfasını](https://nodejs.org/en/download/)ziyaret edin ve ardından MacOS yükleyicinizi seçin.
 
-   ```bash
-   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-   brew install node
-   ```
 2. Bir proje klasörü oluşturmak `mysqlnodejs` ve MySQL paketini bu klasöre yüklemek için aşağıdaki komutları çalıştırın.
 
    ```bash
@@ -90,9 +92,9 @@ Platformunuza bağlı olarak, [Node.js](https://nodejs.org)yüklemek için uygun
 MySQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure Portal sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum** ) arayın.
+2. Azure Portal sol taraftaki menüden **tüm kaynaklar**' ı seçin ve oluşturduğunuz sunucuyu (örneğin, **demosunucum**) arayın.
 3. Sunucu adını seçin.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-nodejs/server-name-azure-database-mysql.png" alt-text="MySQL için Azure Veritabanı sunucu adı":::
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js’de JavaScript kodunu çalıştırma

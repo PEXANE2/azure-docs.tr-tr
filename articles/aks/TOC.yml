@@ -333,8 +333,10 @@
           href: spark-job.md
         - name: GPU'ları kullanma
           href: gpu-cluster.md
-        - name: PostgreSQL için Azure Veritabanı kullanma
-          href: ../postgresql/concepts-aks.md
+        - name: PostgreSQL ile uygulama oluşturma
+          href: ../postgresql/flexible-server/tutorial-django-aks-database.md
+        - name: MySQL ile uygulama oluşturma
+          href: ../mysql/flexible-server/tutorial-deploy-wordpress-on-aks.md
           maintainContext: true
         - name: Azure API Management'ı kullanma
           href: ../api-management/api-management-kubernetes.md

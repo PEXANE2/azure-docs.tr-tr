@@ -42,13 +42,13 @@
               href: /sql/azdata/install/deploy-install-azdata-pip?toc=/azure/azure-arc/data/toc.json&bc=/azure/azure-arc/data/breadcrumb/toc.json
     - name: Veri denetleyicisi oluşturma
       items:
-        - name: Veri denetleyicisi oluşturma (Azure Data Studio)
+        - name: Azure Data Studio
           href: create-data-controller-azure-data-studio.md
-        - name: Veri denetleyicisi kaynağı oluşturma (portal)
+        - name: Azure portal
           href: create-data-controller-resource-in-azure-portal.md
-        - name: Veri denetleyicisi oluşturma (Azure Data CLI)
+        - name: Azure Veri CLI’si (azdata)
           href: create-data-controller-using-azdata.md
-        - name: Kubernetes kullanarak veri denetleyicisi oluşturma
+        - name: Kubernetes araçları
           href: create-data-controller-using-kubernetes-native-tools.md
     - name: Azure Arc özellikli veri hizmetlerindeki yaygın deneyimler
       items:
@@ -80,6 +80,8 @@
           href: view-arc-data-services-inventory-in-azure-portal.md
         - name: Veri denetleyicisi kullanıcı adı ve parolası alma
           href: retrieve-the-username-password-for-data-controller.md
+        - name: Hizmet sorumlusu kimlik bilgilerini güncelleştirme
+          href: update-service-principal-credentials.md
     - name: Sorun giderme
       items:
         - name: Kılavuz

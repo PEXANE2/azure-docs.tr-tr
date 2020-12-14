@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: f64d4d2b9acbe0e6585ca546c915b82d2d1dbbc4
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737184"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387352"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
 
@@ -36,13 +36,13 @@ BEGIN
 END;
 ```
 
-**Çözüm** : hatayı çözümlemek için, Portal 'daki [sunucu parametreleri](howto-server-parameters.md) dikey penceresinden log_bin_trust_function_creators 1 ' i ayarlayın, DDL deyimlerini yürütün veya istenen nesneleri oluşturmak için şemayı içeri aktarın ve oluşturulduktan sonra log_bin_trust_function_creators parametresini önceki değerine geri dönün.
+**Çözüm**: hatayı çözümlemek için, Portal 'daki [sunucu parametreleri](howto-server-parameters.md) dikey penceresinden log_bin_trust_function_creators 1 ' i ayarlayın, DDL deyimlerini yürütün veya istenen nesneleri oluşturmak için şemayı içeri aktarın ve oluşturulduktan sonra log_bin_trust_function_creators parametresini önceki değerine geri dönün.
 
 #### <a name="error-1227-42000-at-line-101-access-denied-you-need-at-least-one-of-the-super-privileges-for-this-operation-operation-failed-with-exitcode-1"></a>HATA 1227 (42000), satır 101: erişim engellendi; Bu işlem için süper ayrıcalıklar (en az biri) gereklidir. İşlem, ExitCode 1 ile başarısız oldu
 
 Yukarıdaki hata, bir döküm dosyası içeri aktarılırken veya [definers](https://dev.mysql.com/doc/refman/5.7/en/create-procedure.html)içeren yordam oluşturulurken oluşabilir. 
 
-**Çözüm** : Bu hatayı çözmek için Yönetici Kullanıcı, aşağıdaki örneklerde olduğu gıbı, Grant komutunu çalıştırarak yordam oluşturma veya yürütme ayrıcalıkları verebilir:
+**Çözüm**: Bu hatayı çözmek için Yönetici Kullanıcı, aşağıdaki örneklerde olduğu gıbı, Grant komutunu çalıştırarak yordam oluşturma veya yürütme ayrıcalıkları verebilir:
 
 ```sql
 GRANT CREATE ROUTINE ON mydb.* TO 'someuser'@'somehost';
@@ -61,6 +61,17 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`AdminUserName`@`ServerName`*/ /*!50003
 DELIMITER ;
 ```
+#### <a name="error-1227-42000-at-line-295-access-denied-you-need-at-least-one-of-the-super-or-set_user_id-privileges-for-this-operation"></a>HATA 1227 (42000), satır 295: erişim engellendi; Bu işlem için süper veya SET_USER_ID ayrıcalıkları (en az biri) gerekir
+
+Döküm dosyası almanın veya bir betik çalıştırmanın parçası olarak DEFINER deyimleriyle oluşturma görünümü yürütülürken yukarıdaki hata ortaya çıkabilir. MySQL için Azure veritabanı, herhangi bir kullanıcının süper ayrıcalıklarına veya SET_USER_ID ayrıcalığına izin vermez. 
+
+**Çözüm**: 
+* Mümkünse oluşturma görünümü yürütmek için definer kullanıcısını kullanın. Farklı tanımlı farklı izinleri olan çok sayıda görünüm olduğundan, bu mümkün olmayabilir.  VEYA
+* Döküm dosyasını düzenleyin veya görünüm betiği oluşturun ve DEFINER = ifadesini döküm dosyasından kaldırın veya 
+* Döküm dosyasını düzenleyin veya görünüm betiği oluşturun ve definer değerlerini Kullanıcı ile içeri aktarma veya yürütme işlemini gerçekleştiren yönetici izinleriyle değiştirin.
+
+> [!Tip] 
+> DEFINER = ifadesini değiştirmek için bir döküm dosyasını veya SQL betiğini değiştirmek üzere SED veya Perl kullanın
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Aradığınız yanıtı bulamazsanız aşağıdakileri göz önünde bulundurun:

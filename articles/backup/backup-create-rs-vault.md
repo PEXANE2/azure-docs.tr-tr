@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan kurt
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: ef3d464c051f15d656a4a60937bb05ac496ee52d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548435"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387743"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Kurtarma Hizmetleri Kasası oluşturma ve yapılandırma
 
@@ -77,8 +77,9 @@ GRS yedekliliği ile oluşturulan bir kasa, çapraz bölge geri yükleme özelli
 
  ![Yedekleme yapılandırması başlığı](./media/backup-azure-arm-restore-vms/banner.png)
 
-1. Portaldan kurtarma hizmetleri Kasası > ayarlar > Özellikler ' e gidin.
-2. İşlevselliği etkinleştirmek için **Bu kasada çapraz bölge geri yüklemeyi etkinleştir '** i seçin.
+1. Portaldan kurtarma hizmetleri kasanıza > **Özellikler** ' e gidin ( **Ayarlar** altında).
+1. **Yedekleme yapılandırması** altında **Güncelleştir**' i seçin.
+1. İşlevselliği etkinleştirmek için **Bu kasada çapraz bölge geri yüklemeyi etkinleştir '** i seçin.
 
    ![Çapraz bölge geri yüklemeyi etkinleştir](./media/backup-azure-arm-restore-vms/backup-configuration.png)
 
