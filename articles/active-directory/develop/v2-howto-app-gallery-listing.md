@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 396d6f69673f8758d8d1302f8d10b8a92e5f50b4
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530772"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399375"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Uygulamanızı Azure AD uygulama galerisine yayımlayın
 
@@ -95,8 +95,8 @@ Aşağıdaki tabloda ana standartlar karşılaştırılmaktadır: OpenID Connect
 | Web tabanlı çoklu oturum kapatma| √| √ |
 | Mobil tabanlı çoklu oturum açma| √| √* |
 | Mobil tabanlı çoklu oturum açma| √| √* |
-| Mobil uygulamalar için koşullu erişim ilkeleri| √| X |
-| Mobil uygulamalar için sorunsuz MFA deneyimi| √| X |
+| Mobil uygulamalar için koşullu erişim ilkeleri| √| √* |
+| Mobil uygulamalar için sorunsuz MFA deneyimi| √| √* |
 | SCıM sağlama| √| √ |
 | Erişim Microsoft Graph| √| X |
 

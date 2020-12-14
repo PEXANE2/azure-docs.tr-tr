@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 76aa18c9724d85b1dd3fb8de3d7d033d40ff95ce
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544165"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400242"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT bölümü olan bir işletim sistemi diskini yeniden boyutlandırma
 
@@ -292,13 +292,13 @@ VM yeniden başlatıldığında şu adımları uygulayın:
    1. Portaldan işletim sistemi diskinin boyutunu artırın.
    1. VM’yi başlatın.
 
-1. VM yeniden başlatıldığında, işletim sistemi diskinin boyutunu artırmanız gereken komutu edinmek için **Cloud-utils-growpart** paketini yüklemeniz `growpart` gerekir.
+1. VM yeniden başlatıldığında, aşağıdaki adımı izleyin:
 
-      Bu paket, Azure Marketi görüntülerinin çoğunda önceden yüklenir.
+   - OS diskinin boyutunu ve GPT disk düzenleri için GDisk işleyicisini artırmak için gereken **growpart** komutunu sağlamak üzere **Cloud-utils-growpart** paketini yüklemek için Bu paketler çoğu Market görüntülerine önceden yüklenir.
 
-      ```bash
-      [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
-      ```
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
+   ```
 
 1. Komutunu kullanarak, hangi disk ve bölümün, **rootvg** adlı birim grubunda LVM fiziksel birimini veya BIRIMLERINI (BD) bulundurduğunu saptayın `pvscan` . Köşeli ayraçlar (**[** ve **]**) arasında listelenen boyut ve boş alanı aklınızda bırakın.
 
@@ -400,8 +400,6 @@ VM yeniden başlatıldığında şu adımları uygulayın:
 > Diğer herhangi bir mantıksal birimi yeniden boyutlandırmak için aynı yordamı kullanmak için, adım 12 ' de LV adı ' nı değiştirin.
 
 ### <a name="rhel-raw"></a>RHEL RAW
->[!NOTE]
->İşletim sistemi disk boyutunu arttırmadan önce her zaman sanal makinenin anlık görüntüsünü alın.
 
 Bir RHEL RAW bölümünde işletim sistemi diskinin boyutunu artırmak için:
 
@@ -411,119 +409,125 @@ Bir RHEL RAW bölümünde işletim sistemi diskinin boyutunu artırmak için:
 
 VM yeniden başlatıldığında şu adımları uygulayın:
 
-1. Şu komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
- 
-   ```
-   sudo su
+1. Aşağıdaki komutu kullanarak sanal makinenize **kök** Kullanıcı olarak erişin:
+
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. İşletim sistemi diskinin boyutunu artırmanız gereken **gptfdisk** paketini yüklemeniz gerekir:
+1. VM yeniden başlatıldığında, aşağıdaki adımı izleyin:
 
-   ```
-   yum install gdisk -y
-   ```
+   - OS diskinin boyutunu ve GPT disk düzenleri için GDisk işleyicisini artırmak için gereken **growpart** komutunu sağlamak üzere **Cloud-utils-growpart** paketini yüklemek için Bu paket, Market görüntülerinin çoğunda önceden yüklenir.
 
-1.  Diskte bulunan tüm kesimleri görmek için şu komutu çalıştırın:
-    ```
-    gdisk -l /dev/sda
-    ```
-
-1. Bölüm türünü bildiren ayrıntıları görürsünüz. GPT olduğundan emin olun. Kök bölümü belirler. Önyükleme bölümünü (BIOS önyükleme bölümü) veya sistem bölümünü (EFı sistem bölümü) değiştirmeyin veya silmeyin.
-
-1. Bölümlemeyi ilk kez başlatmak için bu komutu kullanın: 
-    ```
-    gdisk /dev/sda
-    ```
-
-1. Sonraki komutu sizden isteyen bir ileti görürsünüz: `Command: ? for help` . **W** tuşunu seçin:
-
-   ```
-   w
+   ```bash
+   [root@dd-rhel7vm ~]# yum install cloud-utils-growpart gdisk
    ```
 
-1. Şu iletiyi alırsınız: `Warning! Secondary header is placed too early on the disk! Do you want to
-correct this problem? (Y/N)` . **Y** anahtarını seçin: 
+1. Kök () bölümünü tutan bölüm ve dosya sistemi türünü doğrulamak için **lsblk-f** komutunu kullanın **/** :
 
-   ```
-   Y
-   ```
-
-1. Nihai denetimlerin tamamlandığını ve onay istendiğini belirten bir ileti görmeniz gerekir. **Y** anahtarını seçin:
-
-   ```
-   Y
-   ```
-
-1. `partprobe`Her şeyin doğru olup olmadığını denetlemek için komutunu kullanın:
-
-   ```
-   partprobe
+   ```bash
+   [root@vm-dd-cent7 ~]# lsblk -f
+   NAME    FSTYPE LABEL UUID                                 MOUNTPOINT
+   sda
+   ├─sda1  xfs          2a7bb59d-6a71-4841-a3c6-cba23413a5d2 /boot
+   ├─sda2  xfs          148be922-e3ec-43b5-8705-69786b522b05 /
+   ├─sda14
+   └─sda15 vfat         788D-DC65                            /boot/efi
+   sdb
+   └─sdb1  ext4         923f51ff-acbd-4b91-b01b-c56140920098 /mnt/resource
    ```
 
-1. İkincil GPT üstbilgisinin sonuna yerleştirildiğinden emin olmak için önceki adımları tamamladınız. Sonra, aracı tekrar kullanarak yeniden boyutlandırma sürecini başlatın `gdisk` . Aşağıdaki komutu kullanın:
+1. Doğrulama için, SDA diskinin bölüm tablosunu **GDisk** ile listeleyerek başlatın. Bu örnekte, 29,0 GiB 'de Bölüm 2 ile 48 GB bir disk görüyoruz. Disk, Azure portal 30 GB ile 48 GB arasında genişletilmiştir.
 
-   ```
-   gdisk /dev/sda
-   ```
-1. Komut menüsünde, bölüm listesini görmek için **p** anahtarını seçin. Kök bölümü belirler. (Bu adımlarda, **sda2** kök bölüm olarak kabul edilir.) Önyükleme bölümünü belirler. (Bu adımlarda, **sda3** önyükleme bölümü olarak kabul edilir.) 
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
 
-   ```
-   p
-   ```
-    ![Kök bölümü ve önyükleme bölümünü gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
 
-1. Bölümü silmek için **d** anahtarını seçin. Ardından, önyükleme bölümüne atanan bölüm numarasını seçin. (Bu örnekte **3**' ün olması gerekir.)
-   ```
-   d
-   3
-   ```
-1. Bölümü silmek için **d** anahtarını seçin. Önyükleme bölümüne atanan bölüm numarasını seçin. (Bu örnekte, **2**' dir.)
-   ```
-   d
-   2
-   ```
-    ![Kök ve önyükleme bölümlerini silme adımlarını gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 62914526
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 6076 sectors (3.0 MiB)
 
-1. Kök bölümü daha yüksek boyutla yeniden oluşturmak için **n** anahtarını seçin ve daha önce kök için sildiğiniz bölüm numarasını (Bu örnekte **2** ) girin. `Default Value`İlk kesim için seçin. `Last sector value -  boot size sector`Son kesim için seçin ( `4096` Bu durumda, 2 MB önyüklemesine karşılık gelir). `8300`Onaltılık kod için seçin.
-   ```
-   n
-   2
-   (Enter default)
-   (Calculated value of Last sector value - 4096)
-   8300
-   ```
-1. Önyükleme bölümünü yeniden oluşturmak için **n** anahtarını seçin ve daha önce önyükleme için sildiğiniz bölüm numarasını (Bu örnekte **3** ) girin. `Default Value`İlk kesim ve son sektör için seçin. `EF02`Onaltılık kod için seçin.
-   ```
-   n
-   3
-   (Enter default)
-   (Enter default)
-   EF02
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048        62912511   29.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
 
-1. Komutunu kullanarak değişiklikleri yazın `w` ve ardından `Y` değişiklikleri onaylamak için seçin:
-   ```
-   w
-   Y
-   ```
-1. `partprobe`Disk kararlılığını denetlemek için komutunu çalıştırın:
-   ```
-   partprobe
-   ```
-1. VM 'yi yeniden başlatın. Kök bölüm boyutu artmalıdır.
-   ```
-   reboot
+1. **Growpart** komutunu kullanarak, bu örnekte sda2 for root bölümünü genişletin. Bu komutun kullanılması, disk üzerindeki tüm bitişik alanı kullanmak için bölümü genişletir.
+
+   ```bash
+   [root@vm-dd-cent7 ~]# growpart /dev/sda 2
+   CHANGED: partition=2 start=2050048 old: size=60862464 end=62912512 new: size=98613214 end=100663262
    ```
 
-   ![Önyükleme bölümünü yeniden oluşturma adımlarını gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+1. Şimdi yeni bölüm tablosunu **GDisk** ile yeniden yazdırın.  Bölüm 2 ' nin 47,0 GiB 'ye genişlediğine dikkat edin:
 
-1. `xfs_growfs`Yeniden boyutlandırmak için bölümde komutunu çalıştırın:
+   ```bash
+   [root@vm-dd-cent7 ~]# gdisk -l /dev/sda
+   GPT fdisk (gdisk) version 0.8.10
+
+   Partition table scan:
+   MBR: protective
+   BSD: not present
+   APM: not present
+   GPT: present
+
+   Found valid GPT with protective MBR; using GPT.
+   Disk /dev/sda: 100663296 sectors, 48.0 GiB
+   Logical sector size: 512 bytes
+   Disk identifier (GUID): 78CDF84D-9C8E-4B9F-8978-8C496A1BEC83
+   Partition table holds up to 128 entries
+   First usable sector is 34, last usable sector is 100663262
+   Partitions will be aligned on 2048-sector boundaries
+   Total free space is 4062 sectors (2.0 MiB)
+
+   Number  Start (sector)    End (sector)  Size       Code  Name
+      1         1026048         2050047   500.0 MiB   0700
+      2         2050048       100663261   47.0 GiB    0700
+   14            2048           10239   4.0 MiB     EF02
+   15           10240         1024000   495.0 MiB   EF00  EFI System Partition
    ```
-   xfs_growfs /dev/sda2
+
+1. Bölümdeki FileSystem 'ı, standart Market tarafından oluşturulan bir RedHat sistemine uygun olan **xfs_growfs** ile genişletin:
+
+   ```bash
+   [root@vm-dd-cent7 ~]# xfs_growfs /
+   meta-data=/dev/sda2              isize=512    agcount=4, agsize=1901952 blks
+            =                       sectsz=4096  attr=2, projid32bit=1
+            =                       crc=1        finobt=0 spinodes=0
+   data     =                       bsize=4096   blocks=7607808, imaxpct=25
+            =                       sunit=0      swidth=0 blks
+   naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+   log      =internal               bsize=4096   blocks=3714, version=2
+            =                       sectsz=4096  sunit=1 blks, lazy-count=1
+   realtime =none                   extsz=4096   blocks=0, rtextents=0
+   data blocks changed from 7607808 to 12326651
    ```
 
-   ![Xfs_growfs çalıştırmanın sonucunu gösteren ekran görüntüsü.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+1. Yeni boyutun **df** komutu kullanılarak yansıtıldığını doğrulayın:
 
-## <a name="next-steps"></a>Sonraki adımlar
-
-- [Diski yeniden boyutlandır](expand-disks.md)
+   ```bash
+   [root@vm-dd-cent7 ~]# df -hl
+   Filesystem      Size  Used Avail Use% Mounted on
+   devtmpfs        452M     0  452M   0% /dev
+   tmpfs           464M     0  464M   0% /dev/shm
+   tmpfs           464M  6.8M  457M   2% /run
+   tmpfs           464M     0  464M   0% /sys/fs/cgroup
+   /dev/sda2        48G  2.1G   46G   5% /
+   /dev/sda1       494M   65M  430M  13% /boot
+   /dev/sda15      495M   12M  484M   3% /boot/efi
+   /dev/sdb1       3.9G   16M  3.7G   1% /mnt/resource
+   tmpfs            93M     0   93M   0% /run/user/1000
+   ```

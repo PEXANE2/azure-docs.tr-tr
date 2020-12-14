@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: f0c19130312db4e6ef500a0750f40359931d48d2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099122"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400616"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure Digital Twins nedir?
 
@@ -88,7 +88,7 @@ Azure dijital TWINS kullanan tüm çözümler aşağıdaki bölümleri içerebil
 
 Aşağıdaki diyagramda Azure Digital TWINS 'in daha büyük bir Azure IoT çözümü bağlamında bulunduğu yer gösterilmektedir.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="Dijital TWINS 'i temsil eden düğümlerin grafiğini gösteren Azure Digital TWINS Explorer örnek uygulamasının ekran görüntüsü" border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Hem istemci uygulamalarıyla hem de dış işlem kaynaklarıyla birlikte giriş kaynaklarını, çıkış hizmetlerini ve iki yönlü iletişimi gösteren diyagram." border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits"></a>Hizmet sınırlamaları
 
@@ -96,9 +96,6 @@ Azure dijital TWINS sınırları listesi için bkz. [*Başvuru: hizmet limitleri
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure dijital TWINS 'in (Ekim 2018) ilk önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin:
-* [*Genel Bakış: ilk sürümden farklılıklar*](overview-differences.md)
+Azure dijital TWINS 'in (Ekim 2018) ilk önizleme sürümüyle çalıştıysanız, nelerin değiştiğini öğrenin: [*genel bakış: ilk sürümden farklar*](overview-differences.md).
 
-Veya ilk öğreticiyle Azure dijital ikgörüleri ile çalışmaya devam edin:
-
-[*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
+Bunun yanı sıra, hızlı başlangıç: [*hızlı başlangıç: örnek senaryo*](quickstart-adt-explorer.md)hakkında daha fazla bilgi edinmek Için Azure dijital ikgörüleri ile çalışmaya devam edin.

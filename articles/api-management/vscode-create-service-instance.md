@@ -7,12 +7,12 @@ author: vladvino
 ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
-ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: fdf7e842959e09a8ec35017031f745cb16d13c6d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90057434"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400412"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak yeni bir Azure API Management hizmet örneği oluşturma
 
@@ -55,7 +55,7 @@ Belirtilen adla yeni bir API Management örneği (ve üst kaynak grubu) oluştur
 >
 > *Tüketim* SKU 'sunun sağlanması bir dakikadan kısa sürer, ancak diğer SKU 'ların oluşturulması genellikle 30-40 dakika sürer.
 
-Bu noktada, ilk API 'nizi içeri aktarıp yayımlamaya hazırsınız. Bunu yapabilir ve ayrıca Visual Studio Code uzantısı içinde ortak API Management işlemleri gerçekleştirebilirsiniz. Daha fazla bilgi için [Visual Studio Code için API Management uzantısına](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement&ssr=false#overview) bakın.
+Bu noktada, ilk API 'nizi içeri aktarıp yayımlamaya hazırsınız. Bunu yapabilir ve ayrıca Visual Studio Code uzantısı içinde ortak API Management işlemleri gerçekleştirebilirsiniz. Daha fazla bilgi için [öğreticiye](visual-studio-code-tutorial.md) bakın.
 
 ![VS Code API Management uzantı bölmesinde yeni oluşturulan API Management örneği](./media/vscode-create-service-instance/vscode-apim-instance.png)
 
@@ -70,4 +70,4 @@ Alternatif olarak, **API Management Sil** ' i seçerek yalnızca API Management 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
+> [API Management uzantısını kullanarak API 'Leri içeri aktarma ve yönetme](visual-studio-code-tutorial.md)

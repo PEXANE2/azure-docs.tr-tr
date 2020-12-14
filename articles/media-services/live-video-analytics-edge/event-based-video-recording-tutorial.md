@@ -3,12 +3,12 @@ title: Bulut öğreticiden buluta ve kayıttan yürütmeye yönelik olay tabanl�
 description: Bu öğreticide, bulutta olay tabanlı bir video kaydı kaydetmek ve buluttan kayıttan yürütmek için Azure Live video analizinin Azure IoT Edge nasıl kullanılacağını öğreneceksiniz.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498311"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401683"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Öğretici: buluta yönelik olay tabanlı video kaydı ve buluttan kayıttan yürütme
 
@@ -68,16 +68,16 @@ Alternatif olarak, yalnızca bir ınpoger hizmeti belirli bir olayın oluştuğu
 Diyagram, bir [medya grafiğinin](media-graph-concept.md) ve istenen senaryoyu gerçekleştiren ek modüllerin bir resim gösterimidir. Dört IoT Edge modül dahil edilir:
 
 * IoT Edge modülünde canlı video analizi.
-* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [Yolo v3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
+* Bir HTTP uç noktasının arkasında bir AI modeli çalıştıran bir Edge modülü. Bu AI modülü, birçok nesne türünü tespit eden [YOLOv3](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis/yolov3-onnx) modelini kullanır.
 * Diyagramda bir nesne sayacı olarak adlandırılan nesneleri saymak ve filtrelemek için özel bir modül. Bir nesne sayacı oluşturup bu öğreticide dağıtırsınız.
 * Bir RTSP kamerasının benzetimini yapmak için bir [RTSP simülatör modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) .
     
 Diyagramda gösterildiği gibi, trafiğin sanal bir şekilde canlı videosunu yakalamak ve bu videoyu iki yola göndermek için medya grafiğinde bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü kullanacaksınız:
 
-* İlk yol, video çerçevelerini belirtilen (azaltılmış) kare hızında çıkaran bir [kare hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüdür. Bu video çerçeveleri bir HTTP uzantısı düğümüne gönderilir. Düğüm daha sonra çerçeveleri görüntüler olarak, bir nesne algılayıcısı olan YOLO v3 olan AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
+* İlk yol bir HTTP uzantısı düğümüne ait. Düğüm, alanı kullanarak bir değere göre ayarlanmış bir değere örnek `samplingOptions` olarak gelir ve ardından çerçeveleri görüntüler halinde bir nesne algılayıcısı olan YOLOV3 AI modülüne geçirir. Düğüm, model tarafından algılanan nesneler (bir trafikte araçlar) olan sonuçları alır. HTTP uzantısı düğümü daha sonra IoT Hub ileti havuzu düğümü aracılığıyla sonuçları IoT Edge hub 'ına yayınlar.
 * ObjectCounter modülü, nesne algılama sonuçlarını (trafikte araçlar) içeren IoT Edge hub 'ından ileti alacak şekilde ayarlanır. Modül, bu iletileri denetler ve bir ayar aracılığıyla yapılandırılan belirli bir türdeki nesneleri arar. Böyle bir nesne bulunduğunda bu modül IoT Edge hub 'ına bir ileti gönderir. Bu "nesne bulundu" iletileri daha sonra medya grafiğinin IoT Hub kaynak düğümüne yönlendirilir. Böyle bir ileti alındığında, medya grafiğindeki IoT Hub kaynak düğümü, [sinyal kapısı işlemci](media-graph-concept.md#signal-gate-processor) düğümünü tetikler. Sinyal kapısı işlemci düğümü daha sonra yapılandırılan bir süre için açılır. Video, o süre için varlık havuzu düğümüne ağ geçidi üzerinden akar. Canlı akışın bu bölümü daha sonra [varlık havuzu](media-graph-concept.md#asset-sink) düğümü aracılığıyla Azure Media Services hesabınızdaki bir [varlığa](terminology.md#asset) kaydedilir.
 
-## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı ayarlama
+## <a name="set-up-your-development-environment"></a>Geliştirme ortamınızı kurma
 
 Başlamadan önce, [önkoşullardan](#prerequisites)üçüncü madde işaretini tamamladığınızdan emin olun. Kaynak kurulum betiği bittikten sonra, klasör yapısını göstermek için süslü ayraçları seçin. ~/CloudDrive/LVA-Sample dizininde oluşturulmuş birkaç dosya görürsünüz.
 

@@ -3,18 +3,18 @@ title: Azure Notebooks önizlemeye genel bakış
 description: Kurulum veya yapılandırma gerektirmeyen ücretsiz Azure Notebooks önizleme hizmetini kullanarak bulutta Jupyıter not defterlerini çalıştırın.
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: ef0a033c5125b3a359d281be30dd0ec2a2aa1747
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7e622bdef785085384395bb0c8ac3efba2b2053a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109496"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400293"
 ---
 # <a name="overview-of-azure-notebooks-preview"></a>Azure Notebooks önizlemeye genel bakış
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Azure Notebooks, yükleme yapmadan Jupyter not defterlerini geliştirmeye ve çalıştırmaya yönelik, ücretsiz ve barındırılan bir hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri *Not defteri* olarak adlandırılan tek ve paylaşılabilir bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem ' dir (Jupyter.org Image hitap):
+Azure Notebooks, bulutta jupi not defterlerini geliştirmek ve çalıştırmak için ücretsiz bir barındırılan hizmettir. [Jupyter](https://jupyter.org/) (eski adıyla IPython), markı metnini, çalıştırılabilir kodu, kalıcı verileri, grafikleri ve görselleştirmeleri *Not defteri* olarak adlandırılan tek ve paylaşılabilir bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem ' dir (Jupyter.org Image hitap):
 
 [![Jupyıter Not defteri örnekleri](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
@@ -92,4 +92,4 @@ Azure Notebooks hakkındaki sorularınızı tartışmak için [GitHub deposunda]
 - Hızlı Başlangıçlar:
 
   - [Oturum açma ve kullanıcı kimliği ayarlama](quickstart-sign-in-azure-notebooks.md)
-  - [Jupyter Not defterini dışarı aktarma](quickstart-export-jupyter-notebook-project.md)
+  - [Jupyter Notebook dışarı aktarma](quickstart-export-jupyter-notebook-project.md)

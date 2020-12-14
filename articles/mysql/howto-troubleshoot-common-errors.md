@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 8f735ecd4f8b79b4f5bd0c95d0bfb9f280d93833
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387352"
+ms.locfileid: "97401721"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
 
@@ -73,8 +73,30 @@ Döküm dosyası almanın veya bir betik çalıştırmanın parçası olarak DEF
 > [!Tip] 
 > DEFINER = ifadesini değiştirmek için bir döküm dosyasını veya SQL betiğini değiştirmek üzere SED veya Perl kullanın
 
-## <a name="next-steps"></a>Sonraki Adımlar
+## <a name="common-connection-errors-for-server-admin-login"></a>Sunucu Yöneticisi oturum açma için ortak bağlantı hataları
+
+MySQL için Azure veritabanı sunucusu oluşturulduğunda, sunucu oluşturma sırasında Son Kullanıcı tarafından Sunucu Yöneticisi oturum açma bilgileri sağlanır. Sunucu Yöneticisi oturum açma, yeni veritabanları oluşturmanıza, yeni kullanıcılar eklemenize ve izin vermenize olanak tanır. Sunucu Yöneticisi oturum açma silinirse, izinleri iptal edilir veya parolası değiştirilirse, bağlantı sırasında uygulamanızdaki bağlantı hatalarını görmeyi başlatabilirsiniz. Yaygın hatalardan bazıları aşağıda verilmiştir
+
+#### <a name="error-1045-28000-access-denied-for-user-usernameip-address-using-password-yes"></a>HATA 1045 (28000): Kullanıcı ' Kullanıcı adı ' @ ' IP adresi ' için erişim engellendi (parola kullanılarak: Evet)
+
+Şu durumlarda yukarıdaki hata oluşur:
+
+* Kullanıcı adı yok
+* Kullanıcı Kullanıcı adı silindi
+* parolasını değiştirme veya sıfırlama
+
+Hatanın çözümü 
+
+**Çözüm**: 
+* "Kullanıcı adı" nın sunucuda geçerli bir kullanıcı olarak var olduğunu veya yanlışlıkla silindiğini doğrulayın. MySQL için Azure veritabanı kullanıcısına oturum açarak aşağıdaki sorguyu yürütebilirsiniz:
+  ```sql
+  select user from mysql.user;
+  ```
+* Yukarıdaki sorgunun kendisini yürütmek için MySQL 'de oturum açabiliyorsanız [Azure Portal kullanarak yönetici parolasını sıfırlamanızı](howto-create-manage-server-portal.md)öneririz. Azure portal parola sıfırlama seçeneği, kullanıcıyı yeniden oluşturmaya, parolayı sıfırlamasına ve yönetici izinlerini geri yüklemenize yardımcı olur. Bu, Sunucu Yöneticisi 'ni kullanarak oturum açıp daha fazla işlem gerçekleştirmenize olanak tanır.
+
+## <a name="next-steps"></a>Sonraki adımlar
 Aradığınız yanıtı bulamazsanız aşağıdakileri göz önünde bulundurun:
+
 - Sorunuzu [Microsoft Q&soru sayfası](/answers/topics/azure-database-mysql.html) veya [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql)olarak gönderin.
 - MySQL için Azure veritabanı ekibine bir e-posta gönderin [ @Ask ](mailto:AskAzureDBforMySQL@service.microsoft.com). Bu e-posta adresi bir teknik destek diğer adı değil.
 - Azure desteği 'ne başvurun, [Azure Portal bir bilet dosyası](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)yapın. Hesabınızla ilgili bir sorun gidermek için Azure portalda bir [destek isteği](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) oluşturun.

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: c0253dc3c9dc029cd964fb32b148be1405e7fbad
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 2ff35a8d86534a99b8957a9272f9a1eb59fc27ab
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780187"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399987"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama
 
@@ -49,7 +49,7 @@ Bir uygulama için çoklu oturum açmayı ayarlamak için:
     :::image type="content" source="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png" alt-text="Ekran görüntüsünde çoklu oturum açma seçeneği ve kaydolma düğmesi gösterilir." lightbox="media/add-application-portal-setup-oidc-sso/sign-up-oidc-sso.png":::
 
 
-2. **Kaydolma** ' yı seçin ve uygulama geliştiricileri oturum açma sayfasını alırsınız. Azure Active Directory oturum açma kimlik bilgilerini kullanarak oturum açın. 
+2. **Kaydolma** ' yı seçin ve uygulama geliştiricileri oturum açma sayfasına yönlendirilirsiniz. Azure Active Directory oturum açma kimlik bilgilerini kullanarak oturum açın. 
 
    > [!IMPORTANT]
     > Zaten uygulamaya bir aboneliğiniz varsa, Kullanıcı ayrıntılarının doğrulanması ve kiracı/dizin bilgilerinin gerçekleşmesi gerekir. Uygulama kullanıcıyı doğrulayamezse uygulama hizmetine veya hata sayfasına kaydolmak için sizi yönlendirecektir.

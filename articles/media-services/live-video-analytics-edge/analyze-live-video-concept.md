@@ -3,12 +3,12 @@ title: Canlı videoyu herhangi bir kayıt olmadan çözümleme-Azure
 description: Bir medya grafiği, bir canlı video akışından gelen analizi, bir kenara veya buluta kaydetmeye gerek kalmadan ayıklamak için kullanılabilir. Bu makalede bu kavram ele alınmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 5dda18b68cb19d29623f2120fe07d7cc617f0c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25a7cadc47603b726542fa391d441e1fbca78908
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893017"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97398983"
 ---
 # <a name="analyzing-live-video-without-any-recording"></a>Canlı videoyu herhangi bir kayıt olmadan çözümleme
 
@@ -33,14 +33,16 @@ Aşağıda gösterilen medya grafiği bir [RTSP kaynak](media-graph-concept.md#r
 Aşağıda gösterilen medya grafiği, ayrı bir modülde paketlenmiş özel bir Vision modeli kullanarak canlı bir video akışını analiz etmenizi sağlar. Bu tür bir medya grafiğinin grafik topolojisinin JSON temsili [burada](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)bulunabilir. Bir çıkarım hizmeti olarak çalışan IoT Edge modüllerine model sarmalama [üzerinde bazı örnekler bulabilirsiniz.](https://github.com/Azure/live-video-analytics/tree/master/utilities/video-analysis)
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Hareket algılamayı temel alan canlı video analizi":::
+> :::image type="content" source="./media/analyze-live-video/motion-detected-frames.svg" alt-text="Dış bir ınlaç modülü temelinde canlı video analizi":::
 
-Bu medya grafiğinde, çerçeve hızı filtre işlemcisi düğümü, gelen canlı video akışının kare hızını, bekleyen bir dış çıkarım hizmetine görüntü çerçeveleri (JPEG, BMP veya PNG biçiminde) gönderen bir [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne göndermeden önce azaltır. Dış çıkarım hizmetinin sonuçları HTTP uzantısı düğümü tarafından alınır ve IoT Hub ileti havuzu düğümü aracılığıyla IoT Edge hub 'ına işlenir. Bu tür medya grafiği, bir kesişme noktasındaki araçlar 'ın zaman serisi dağıtımını anlama, bir perakende mağazasındaki tüketici trafiği modelini anlama vb. gibi çeşitli senaryolar için çözümler oluşturmak üzere kullanılabilir.
+Bu medya grafiğinde, RTSP kaynağından alınan video girişi, bekleyen bir dış çıkarım hizmetine görüntü çerçeveleri (JPEG, BMP veya PNG biçiminde) gönderen bir [http uzantısı işlemci](media-graph-concept.md#http-extension-processor) düğümüne gönderilir. Dış çıkarım hizmetinin sonuçları HTTP uzantısı düğümü tarafından alınır ve IoT Hub ileti havuzu düğümü aracılığıyla IoT Edge hub 'ına işlenir. Bu tür medya grafiği, bir kesişme noktasındaki araçlar 'ın zaman serisi dağıtımını anlama, bir perakende mağazasındaki tüketici trafiği modelini anlama vb. gibi çeşitli senaryolar için çözümler oluşturmak üzere kullanılabilir.
+>[!TIP]
+> Akış hızını, `samplingOptions` alanı aşağı akış göndermeden önce kullanarak http uzantısı işlemci düğümü içinde yönetebilirsiniz.
 
-Bu örnek için bir geliştirme, çerçeve hızı filtresi işlemci düğümündeki bir hareket algılayıcısı işlemcisini kullanmaktır. Bu, yalnızca videoda bir hareket etkinliği olduğunda kullanıldığından, çıkarım hizmetindeki yükü azaltır.
+Bu örnek için bir geliştirme, HTTP uzantısı işlemci düğümünden önce bir hareket algılayıcısı işlemcisi kullanmaktır. Bu, yalnızca videoda bir hareket etkinliği olduğunda kullanıldığından, çıkarım hizmetindeki yükü azaltır.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Hareket algılamayı temel alan canlı video analizi":::
+> :::image type="content" source="./media/analyze-live-video/custom-model.svg" alt-text="Dış ınlaç modülü aracılığıyla hareket algılanan çerçeveleri temel alan canlı video analizi":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

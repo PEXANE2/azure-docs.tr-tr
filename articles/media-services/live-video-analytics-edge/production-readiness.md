@@ -3,12 +3,12 @@ title: Üretim hazırlığı ve en iyi uygulamalar-Azure
 description: Bu makalede, canlı video analizinin üretim ortamlarında IoT Edge modülünde nasıl yapılandırılacağı ve dağıtılacağı hakkında rehberlik sunulmaktadır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906344"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400565"
 ---
 # <a name="production-readiness-and-best-practices"></a>Üretim hazırlığı ve en iyi uygulamalar
 
@@ -109,7 +109,11 @@ Ardından, dağıtım bildiriminde Edge modülünün oluşturma seçeneklerinde,
 
 ### <a name="naming-video-assets-or-files"></a>Video varlıklarını veya dosyalarını adlandırma
 
-Medya grafikleri, buluttaki bulutta veya MP4 dosyalarında varlık oluşturulmasına olanak sağlar. Medya varlıkları, [sürekli video kaydı](continuous-video-recording-tutorial.md) veya [olay tabanlı video kaydı](event-based-video-recording-tutorial.md)tarafından oluşturulabilir. Bu varlıklar ve dosyalar istediğiniz şekilde adlandırılmasına karşın, sürekli video kayıt tabanlı medya varlığı için önerilen adlandırma yapısı " &lt; anytext &gt; -$ {System. Graphtopologyıname}-$ {System. graphınstancename}" dir. Örnek olarak, varlık havuzunda assetNamePattern öğesini şu şekilde ayarlayabilirsiniz:
+Medya grafikleri, buluttaki bulutta veya MP4 dosyalarında varlık oluşturulmasına olanak sağlar. Medya varlıkları, [sürekli video kaydı](continuous-video-recording-tutorial.md) veya [olay tabanlı video kaydı](event-based-video-recording-tutorial.md)tarafından oluşturulabilir. Bu varlıklar ve dosyalar istediğiniz şekilde adlandırılmasına karşın, sürekli video kayıt tabanlı medya varlığı için önerilen adlandırma yapısı " &lt; anytext &gt; -$ {System. Graphtopologyıname}-$ {System. graphınstancename}" dir.   
+
+Değiştirme stili $ işareti tarafından ve ardından Küme ayraçları tarafından tanımlanır: **$ {VariableName}**.  
+
+Örnek olarak, varlık havuzunda assetNamePattern öğesini şu şekilde ayarlayabilirsiniz:
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Aynı grafiğin birden çok örneğini çalıştırıyorsanız, ayırt etmek iç
 Kenarda olay tabanlı video kaydı tarafından oluşturulan MP4 video klipleri için, önerilen adlandırma deseninin tarih saat içermesi ve aynı grafiğin birden çok örneği için Graphtopologyıname ve Graphınstancename sistem değişkenlerinin kullanılması önerilir. Örnek olarak, dosya havuzunda Filepathmodel ' i aşağıdaki gibi ayarlayabilirsiniz: 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 Veya 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> Yukarıdaki örnekte, **Filesinkoutputname** değişkeni, Graph topolojide tanımladığınız bir örnek değişken adıdır. Bu bir sistem değişkeni **değil** . 
 
+#### <a name="system-variables"></a>Sistem değişkenleri
+Kullanabileceğiniz bazı sistem tanımlı değişkenler şunlardır:
+
+|Sistem değişkeni|Açıklama|Örnek|
+|-----------|-----------|-----------|
+|System. DateTime|ISO8601 dosya uyumlu biçimdeki UTC tarih saati (temel Gösterim YYYYMMDDThhmmss).|20200222T173200Z|
+|System. ııisedatetime|ISO8601 dosya uyumlu biçimindeki UTC Tarih saat (temel Gösterim YYYYMMDDThhmmss. SSS).|20200222T 173200.123 Z|
+|System. Graphtopologyıname|Çalışan grafik topolojisinin Kullanıcı tarafından sağlanmış adı.|Ingestandkaydı|
+|System. Graphınstancename|Çalışan grafik örneğinin Kullanıcı tarafından sağlanmış adı.|camera001|
+
+>[!TIP]
+> System. Ida DateTime, "." nedeniyle varlıklar adlandırırken kullanılamaz. adında
 ### <a name="keeping-your-vm-clean"></a>SANAL makinenizin temiz tutulması
 
 Sınır aygıtı olarak kullandığınız Linux sanal makinesi, düzenli aralıklarla yönetilmiyorsa yanıt vermemeye dönüşebilir. Önbellekler temiz tutulması, gereksiz paketleri ortadan kaldırmak ve kullanılmayan kapsayıcıları VM 'den kaldırmak önemlidir. Bunu yapmak için, uç sanal makinenizde kullanabileceğiniz önerilen komutların bir kümesi verilmiştir.
@@ -153,7 +171,7 @@ Sınır aygıtı olarak kullandığınız Linux sanal makinesi, düzenli aralık
 
     Otomatik Kaldır seçeneği, başka bir paket gerektiğinden, ancak diğer paketlerin kaldırılmasının artık gerekli olmadığı için otomatik olarak yüklenen paketleri kaldırır
 1. `sudo docker image ls` – Uç sisteminizde Docker görüntülerinin listesini sağlar
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker, görüntü, kapsayıcılar, birimler ve ağlar gibi kullanılmayan nesneleri (genellikle "çöp toplama" olarak adlandırılır) temizlemeye yönelik bir koruyucu yaklaşım sağlar: Bu nesneler, açıkça Docker 'a sorun yapmadığınız sürece genellikle kaldırılmaz. Bu, Docker 'ın fazladan disk alanı kullanmasına neden olabilir. Her nesne türü için Docker bir Ayıkla komutu sağlar. Ayrıca, aynı anda birden çok nesne türünü temizlemek için Docker sistem Ayıkla ' yı kullanabilirsiniz. Daha fazla bilgi için [kullanılmayan Docker nesnelerini ayıklama](https://docs.docker.com/config/pruning/)bölümüne bakın.
 1. `sudo docker rmi REPOSITORY:TAG`

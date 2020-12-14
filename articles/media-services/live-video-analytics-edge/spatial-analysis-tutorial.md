@@ -3,12 +3,12 @@ title: Uzamsal analiz için Görüntü İşleme ile canlı videoyu çözümleme-
 description: Bu öğreticide, canlı video analizinin Azure bilişsel hizmetler 'deki Görüntü İşleme uzamsal analiz AI özelliği ile birlikte nasıl kullanılacağı gösterilmektedir. Bu, (benzetimli) bir IP kamerasından canlı video akışını analiz edebilir.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015694"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400543"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Uzamsal analizler için Görüntü İşleme ile canlı videoyu çözümleme (Önizleme)
 
@@ -35,7 +35,7 @@ Başlamadan önce şu makaleleri okuyun:
 * [Öğretici: IoT Edge modülünü geliştirme](../../iot-edge/tutorial-develop-for-linux.md)
 * [Azure Stack Edge üzerinde canlı video analizi dağıtma](deploy-azure-stack-edge-how-to.md) 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Aşağıda, uzamsal analiz modülünü canlı video analizi modülüne bağlama önkoşulları verilmiştir.
 
@@ -44,14 +44,14 @@ Aşağıda, uzamsal analiz modülünü canlı video analizi modülüne bağlama 
 * GPU hızlandırmalı [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/) .  
     Azure Stack Edge 'i GPU hızlandırmalı kullanmanızı öneririz, ancak kapsayıcı, [NVIDIA Tesla T4 GPU 'su](https://www.nvidia.com/en-us/data-center/tesla-t4/)olan diğer tüm cihazlarda çalışır. 
 * Uzamsal analiz için Azure bilişsel [hizmet görüntü işleme kapsayıcısı](https://azure.microsoft.com/services/cognitive-services/computer-vision/) .  
-    Bu kapsayıcıyı kullanabilmeniz için, ilişkili **API anahtarını** ve bir **uç nokta URI 'sini**almak için bir görüntü işleme kaynağınız olması gerekir. API anahtarı Azure portal Görüntü İşleme genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcıyı başlatmak için anahtar ve uç nokta gereklidir.
+    Bu kapsayıcıyı kullanabilmeniz için, ilişkili **API anahtarını** ve bir **uç nokta URI 'sini** almak için bir görüntü işleme kaynağınız olması gerekir. API anahtarı Azure portal Görüntü İşleme genel bakış ve anahtarlar sayfalarında kullanılabilir. Kapsayıcıyı başlatmak için anahtar ve uç nokta gereklidir.
 
 ## <a name="overview"></a>Genel Bakış
 
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Uzamsal Analize genel bakış":::
  
-Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve [çerçeve hızı filtre işlemcisi](media-graph-concept.md#frame-rate-filter-processor) düğümüne video çerçeveleri gönderir. Bu işlemci, MediaGraphCognitiveServicesVisionExtension işlemci düğümüne ulaşan video akışının kare oranını sınırlandırır.
+Bu diyagramda, sinyallerin Bu öğreticide nasıl akagösterdiği gösterilmektedir. [Edge modülü](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) , Real-Time Akış Protokolü (RTSP) sunucusunu BARıNDıRAN bir IP kamerasına benzetir. Bir [RTSP kaynak](media-graph-concept.md#rtsp-source) düğümü, bu sunucudan video akışını çeker ve işlemci düğümüne video çerçeveleri gönderir `MediaGraphCognitiveServicesVisionExtension` .
 
 MediaGraphCognitiveServicesVisionExtension düğümü bir ara sunucu rolünü yürütür. Video çerçevelerini belirtilen görüntü türüne dönüştürür. Ardından, görüntüyü **paylaşılan bellek** üzerine bir GRPC uç noktasının ARKASıNDA bulunan AI işlemlerini çalıştıran başka bir uç modüle geçirir. Bu örnekte, bu Edge modülü, uzamsal analiz modülüdür. MediaGraphCognitiveServicesVisionExtension işlemci düğümü iki şey yapar:
 
@@ -71,7 +71,7 @@ Uzamsal analiz kapsayıcısı dahil olmak üzere, gereken tüm bilişsel hizmetl
 Bir anahtar, uzamsal analiz kapsayıcısını başlatmak için kullanılır ve ilgili bilişsel `Keys and Endpoint` hizmet kaynağının Azure Portal sayfasında kullanılabilir. Bu sayfaya gidin ve anahtarları ve uç nokta URI 'sini bulun.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Uzamsal Analize genel bakış":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Uç nokta URI 'SI":::
 
 ## <a name="set-up-azure-stack-edge"></a>Azure Stack kenarını ayarlama
 
@@ -169,17 +169,32 @@ Dağıtım bildirimi, bir sınır cihazına hangi modüllerin dağıtıldığın
 1. AZURE ıOT HUB bölmesinin yanındaki IoT Hub bağlantı dizesini ayarlamak için diğer Eylemler simgesini seçin. Dizeyi src/buluttan cihazdan-Console-App/appsettings.jsdosyasından kopyalayabilirsiniz.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Uzamsal Analize genel bakış":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Uzamsal analiz: bağlantı dizesi":::
 1. Sağ tıklayın `src/edge/deployment.spatialAnalysis.template.json` ve IoT Edge dağıtım bildirimi oluştur ' u seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Uzamsal Analize genel bakış":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Uzamsal analiz: dağıtım AMD64 JSON":::
     
     Bu eylem, src/Edge/config klasöründe deployment.amd64.jsadlı bir bildirim dosyası oluşturmalı.
 1. Sağ tıklayın `src/edge/config/deployment.spatialAnalysis.amd64.json` , tek cihaz Için dağıtım oluştur ' u seçin ve ardından Edge cihazınızın adını seçin.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Uzamsal Analize genel bakış" olmalıdır.
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Uzamsal analiz: dağıtım şablonu JSON":::   
+1. IoT Hub bir cihaz seçmeniz istendiğinde, açılır menüden Azure Stack Edge adını seçin.
+1. 30 saniye sonra, pencerenin sol alt köşesinde Azure IoT Hub ' yi yenileyin. Edge cihazında artık aşağıdaki dağıtılan modüller gösterilmektedir:
+    
+    * IoT Edge (modül adı lvaEdge) üzerinde canlı video analizi.
+    * Real-Time streaming Protocol (RTSP) Simülatörü (modül adı rtspsım).
+    * Uzamsal analiz (modül adı spatialAnalysis).
+    
+Başarıyla dağıtırsanız, çıktıda aşağıdakine benzer bir ileti olacaktır:
+
+```
+[Edge] Start deployment to device [<Azure Stack Edge name>]
+[Edge] Deployment succeeded.
+```
+
+Sonra `lvaEdge` `rtspsim` `spatialAnalysis` `rtspsim` cihazlar/modüller altında, ve modüllerini bulabilir ve bunların durumu "çalışıyor" olmalıdır.
 
 ## <a name="prepare-to-monitor-events"></a>Olayları izlemeye hazırlanma
 
@@ -189,16 +204,17 @@ Bu olayları görmek için şu adımları izleyin:
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzamsal Analize genel bakış" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Uzamsal Analize genel bakış":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
 1. Gezgin bölmesini açın ve sol alt köşedeki Azure IoT Hub arayın.
 1. Cihazlar düğümünü genişletin.
 1. Azure Stack Kenarıza sağ tıklayıp Izlemeyi Başlat yerleşik olay uç noktasını seçin.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Uzamsal Analize genel bakış":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Uzamsal analiz: izlemeyi Başlat":::
      
 ## <a name="run-the-program"></a>Programı çalıştırma
 
@@ -249,11 +265,11 @@ operations.js:
 
 `topologyUrl` : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/lva-spatial-analysis/topology.json"
 
-**Graphınstanceset**altında, grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
+**Graphınstanceset** altında, grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
 
 `topologyName` : Inıngencingwithcvextension
 
-**Graphtopologydelete**altında adı düzenleyin:
+**Graphtopologydelete** altında adı düzenleyin:
 
 `name`: Inıngencingwithcvextension
 
@@ -366,4 +382,4 @@ PersonZoneEvent için örnek çıkış (biliveservices. Vision. spatialanalysis-
 > Çerçevede birden fazla kişi bulunan [örnek bir video dosyası](https://lvamedia.blob.core.windows.net/public/2018-03-07.16-50-00.16-55-00.school.G421.mkv) kullanın.
 
 > [!NOTE]
-> Tek seferde yalnızca bir işlem çalıştırabilirsiniz. Bu nedenle, lütfen yalnızca bir bayrağın **true** , diğerleri **ise false**olarak ayarlandığından emin olun.
+> Tek seferde yalnızca bir işlem çalıştırabilirsiniz. Bu nedenle, lütfen yalnızca bir bayrağın **true** , diğerleri **ise false** olarak ayarlandığından emin olun.

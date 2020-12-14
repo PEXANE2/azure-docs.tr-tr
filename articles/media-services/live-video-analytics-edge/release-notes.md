@@ -3,12 +3,12 @@ title: IoT Edge sürüm notlarında canlı video analizi-Azure
 description: Bu konu, IoT Edge sürümler, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar üzerine canlı video analizinin sürüm notlarını sağlar.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015643"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400854"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge sürüm notlarında canlı video analizi
 
@@ -23,9 +23,23 @@ Bu makalede hakkında bilgi verilmektedir:
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>14 Aralık 2020
+Bu sürüm, IoT Edge üzerindeki canlı video analizinin genel önizleme sürümünü yenileme sürümüdür. Yayın etiketi
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>Modül güncelleştirmeleri
+* Grafik topolojisi başına birden fazla HTTP uzantı işlemcisi ve gRPC uzantı işlemcisi kullanımı için destek eklendi.
+* Havuz düğümleri için disk alanı yönetimine yönelik destek eklendi.
+* `MediaGraphGrpcExtension` düğüm artık tek bir gRPC sunucusu içinde birden çok AI modeli kullanmak için [Extensionconfiguration](grpc-extension-protocol.md) özelliğini destekliyor.
+* [Prometheus biçiminde](https://prometheus.io/docs/practices/naming/) canlı video analizi modülü ölçümleri toplama desteği eklendi 
+* Çerçeve hızı filtre işlemcisi **kullanım dışıdır**.  
+    * Çerçeve hızı yönetimi artık grafik uzantısı işlemci düğümlerinin içinde kullanılabilir.
+
 ## <a name="september-22-2020"></a>22 Eylül 2020
 
-Modülün Eylül 2020 yenilemesi için bu yayın etiketi:
+Bu yayın etiketi, modülün Eylül 2020 yenilemesi için kullanılır:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>19 Ağustos 2020
 
-Modülün Ağustos 2020 yenilemesi için bu yayın etiketi:
+Bu yayın etiketi, modülün Ağustos 2020 yenilemesi için kullanılır:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -73,7 +87,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ## <a name="july-13-2020"></a>13 Temmuz 2020
 
-Modülün Temmuz 2020 yenilemesi için bu yayın etiketi:
+Bu yayın etiketi, modülün Temmuz 2020 yenilemesi için kullanılır:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

@@ -3,16 +3,18 @@ title: HTTP uzantı Protokolü-Azure
 description: Bu makalede, canlı video analizi modülü ile AI veya CV modülünüzün arasında ileti göndermek için HTTP uzantısı protokolünü kullanma hakkında bilgi edineceksiniz.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52c98231780a2776f4ff67992f29b247eccb8bc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016663"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399154"
 ---
 # <a name="http-extension-protocol"></a>HTTP uzantısı protokolü
 
-Bu makalede, canlı video analizi modülü ile AI veya CV modülünüzün arasında ileti göndermek için HTTP uzantısı protokolünü kullanma hakkında bilgi edineceksiniz.
+IoT Edge üzerinde canlı video analizi, bir [grafik uzantısı düğümü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update)aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. Uzantı düğümü olarak HTTP uzantısı işlemcisini kullanıyorsanız, canlı video analizi modülü ile AI veya CV modülünüz arasındaki iletişim HTTP üzerinden yapılır
+
+Bu makalede, canlı video analizi modülü ile AI veya CV modülünüzün arasında ileti göndermek için HTTP uzantısı protokolünü kullanma hakkında bilgi edineceksiniz. 
 
 HTTP sözleşmesi aşağıdaki iki bileşen arasında tanımlanır:
 
@@ -85,19 +87,16 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Yanıtların, aşağıda tanımlanan önceden oluşturulan şemadan sonra geçerli JSON belgeleri kullanılarak döndürülmesi önemle önerilir. Bu, diğer bileşenlerle birlikte çalışabilirliğini ve canlı video analizi modülüne eklenen olası gelecekteki özellikleri daha iyi sağlar.
+Yanıtların, [çıkarım meta veri şeması nesne modeli](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)için tanımlanmış önceden oluşturulan şemanın ardından geçerli JSON belgeleri kullanılarak döndürülmesi önemle önerilir. Bu, diğer bileşenlerle birlikte çalışabilirliğini ve canlı video analizi modülüne eklenen olası gelecekteki özellikleri daha iyi sağlar.
 
 Modülünüzün içerik türü "Application/JSON" olmayan bir yanıt döndürürse, canlı video analizi iletiyi temel 64 içeriği olarak kodlayıp donuk bir JSON yükü olarak seri hale getirir.
 
-Modülünüzün içerik türü "Application/JSON" olarak bir yanıt döndürürse, ancak JSON şeması aşağıda özetlenen çıkarım meta veri şemasını izlemediği için ileti yükü işlem hattı üzerinden iletilir, ancak birlikte çalışabilirlik azaltılır.
+Modülünüzün içerik türü "Application/JSON" olarak bir yanıt döndürürse, ancak JSON şeması aşağıda özetlenen çıkarım meta veri şemasını izlemediği için ileti yükü işlem hattı üzerinden iletilir, ancak birlikte çalışabilirlik azaltılır. Lütfen çıkarım meta verileri şeması hakkında ayrıntılı ve güncel bilgi için [buraya](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update) bakın.
 
 > [!NOTE]
 > Modülünüzün herhangi bir sonuç oluşturmuyorsa, boş bir yanıt gövdesi ile HTTP 204 durum kodu (Içerik yok) döndürmelidir. Canlı video analizi bunu boş bir sonuç olarak anlayacak ve olayı ardışık düzen boyunca iletmeyecektir.
 
-## <a name="data-contracts---class-hierarchy"></a>Veri sözleşmeleri-sınıf hiyerarşisi
-
-![sınıf hiyerarşisi](./media/http-extension-protocol/class-hierarchy.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[gRPC veri anlaşması](./grpc-extension-protocol.md)
+[gRPC uzantısı protokolü](./grpc-extension-protocol.md)

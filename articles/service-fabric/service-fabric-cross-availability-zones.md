@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d8e4a9201c14e71520bd58ff1017b700ca47fa21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109831"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401738"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -407,12 +407,12 @@ Birden çok kullanılabilirlik bölgesini desteklemek için Service Fabric nodeT
 >[!NOTE]
 > * Genel IP ve Load Balancer kaynakları, makalenin önceki kısımlarında açıklandığı gibi standart SKU 'YU kullanmalıdır.
 > * nodeType üzerinde "Çoğulkullanılabilirliği Bilityzones" özelliği yalnızca nodeType oluşturma sırasında tanımlanabilir ve daha sonra değiştirilemez. Bu nedenle, mevcut nodeTypes bu özellikle yapılandırılamaz.
-> * "HierarchicalUpgradeDomain" atlandığında veya true olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir.
+> * "SfZonalUpgradeMode" atlandığında veya "sıradüzenli" olarak ayarlandığında, kümede daha fazla yükseltme etki alanı olduğu için küme ve uygulama dağıtımları daha yavaş olur. Yükseltme ilkesi zaman aşımlarını, 15 yükseltme etki alanı için yükseltme süresi boyunca içerecek şekilde doğru şekilde ayarlamanız önemlidir.
 > * Kümenin bir bölge alt senaryosunu kullandığından emin olmak için küme güvenilirlik düzeyini Platinum olarak ayarlamanız önerilir.
 
 >[!NOTE]
-> En iyi uygulama için, hierarchicalUpgradeDomain ' nin doğru olarak ayarlanacağını veya atlanacağını öneririz. Dağıtım, daha küçük bir çoğaltmalar ve/veya örneklerin daha güvenli hale getirilmesi için, VM 'lerin ZGen dağılımını takip edecektir.
-> Dağıtım hızı bir öncelik veya yalnızca durum bilgisi olan bir iş yükü yalnızca birden çok AZ olan düğüm türü üzerinde çalışıyorsa yanlış olarak hierarchicalUpgradeDomain ayarını kullanın. Bu, UD 'nin tüm AZ ' de paralel olarak oluşmasına neden olur.
+> En iyi uygulama için sfZonalUpgradeMode sıradüzensel olarak ayarlanmalıdır veya atlanacaktır. Dağıtım, daha küçük bir çoğaltmalar ve/veya örneklerin daha güvenli hale getirilmesi için, VM 'lerin ZGen dağılımını takip edecektir.
+> Dağıtım hızı bir öncelik veya yalnızca durum bilgisi olan bir iş yükü birden çok AZ olan düğüm türü üzerinde çalışıyorsa, sfZonalUpgradeMode öğesini paralel olarak ayarlayın. Bu, UD 'nin tüm AZ ' de paralel olarak oluşmasına neden olur.
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>Birden çok Kullanılabilirlik Alanları düğüm türüne geçiş
 Tüm geçiş senaryoları için, birden çok kullanılabilirlik bölgesi desteklenmeleri gereken yeni bir nodeType eklenmelidir. Mevcut bir nodeType birden çok bölgeyi destekleyecek şekilde geçirilemez.

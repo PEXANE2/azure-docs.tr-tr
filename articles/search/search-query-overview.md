@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/11/2020
-ms.openlocfilehash: 9ce0ab34aac1a3dda823c9270f4eacebfb99166f
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.date: 12/14/2020
+ms.openlocfilehash: 7277ad060c57b44d633054c4fc4d29d151bd7192
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387675"
+ms.locfileid: "97400820"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Bilişsel Arama sorgulama
 
-Azure Bilişsel Arama, ücretsiz metin aramasından yüksek düzeyde belirtilen sorgu desenlerine kadar çok sayıda senaryoyu desteklemek için zengin bir sorgu dili sunar. Bu makalede oluşturabileceğiniz sorgu türleri özetlenmektedir.
+Azure Bilişsel Arama, ücretsiz metin aramasından yüksek düzeyde belirtilen sorgu desenlerine kadar çok sayıda senaryoyu desteklemek için zengin bir sorgu dili sunar. Bu makalede sorgu istekleri ve oluşturabileceğiniz sorgu türleri açıklanmaktadır.
 
-Bilişsel Arama bir sorgu, **`search`** her ikisinin de sorgu yürütmesini bilgilendirmesini ve yanıtı şekillendirip geri geldiğini bildiren bir gidiş dönüş işleminin tam belirtimidir. Parametreler ve Çözümleyicileri sorgu isteği türünü tespit. Aşağıdaki sorgu örneği, [otel demo dizinini](search-get-started-portal.md)hedefleyen [arama belgelerini (REST API)](/rest/api/searchservice/search-documents)kullanır.
+Bilişsel Arama bir sorgu, **`search`** her ikisinin de sorgu yürütmesini bilgilendirmesini ve yanıtı şekillendirip geri geldiğini bildiren bir gidiş dönüş işleminin tam belirtimidir. Parametreler ve Çözümleyicileri sorgu isteği türünü tespit. Aşağıdaki sorgu örneği,, [otel-örnek-dizin](search-get-started-portal.md) belgeleri koleksiyonunu hedefleyen [arama belgelerini (REST API)](/rest/api/searchservice/search-documents)kullanarak Boole operatörü olan bir boş metin sorgusudur.
 
 ```http
 POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
@@ -34,7 +34,7 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
 }
 ```
 
-Sorgu yürütme sırasında kullanılan parametreler:
+Sorgu yürütme sırasında kullanılan parametreler şunları içerir:
 
 + **`queryType`**[varsayılan basit sorgu ayrıştırıcı](search-query-simple-examples.md) (tam metin araması için en uygun) veya normal ifadeler, yakınlık araması, belirsiz ve joker karakter arama gibi gelişmiş sorgu yapıları için kullanılan [tam Lucene sorgu ayrıştırıcısının](search-query-lucene-examples.md) , birkaç kez ad vermek üzere Ayrıştırıcıyı ayarlar.
 
@@ -66,7 +66,7 @@ Arama uygulamanız, terim girişlerini toplayan bir arama kutusu içeriyorsa, ta
 
 Bilişsel Arama, tam metin araması Apache Lucene sorgu altyapısında oluşturulmuştur. Tam metin aramasında sorgu dizeleri, taramaları daha verimli hale getirmek için sözlü Analize sahiptir. Analiz, tüm terimleri azaltır, "The" gibi durdurma sözcüklerini kaldırır ve temel kök formlara yönelik terimleri azaltır. Varsayılan çözümleyici standart Lucene ' dir.
 
-Eşleşen terimler bulunduğunda, sorgu altyapısı eşleşmeyi içeren bir arama belgesi reconstitutes, belgeleri ilgi sırasına göre derecelendirir ve yanıtta en üstteki 50 (varsayılan olarak) döndürür.
+Eşleşen terimler bulunduğunda sorgu altyapısı, alan değerlerini birleştirmek için belge anahtarını veya KIMLIĞINI kullanarak eşleştirmeyi içeren bir arama belgesi reconstitutes, belgeleri ilgi sırasına göre derecelendirir ve belirtilmişse en üstteki 50 (varsayılan olarak) değerini döndürür **`top`** .
 
 Tam metin araması gerçekleştiriyorsanız, içeriğinizin nasıl simgeleştirilmiş olduğunu anlamak, tüm sorgu anormallarını hata ayıklamanıza yardımcı olur. Hecelenmiş dizeler veya özel karakterler üzerinde sorgular, dizinin doğru belirteçleri içerdiğinden emin olmak için varsayılan standart Lucene dışında bir çözümleyici kullanmayı gerekli olabilir. Varsayılan ayarı, [dil Çözümleyicileri](index-add-language-analyzers.md#language-analyzer-list) veya sözcük temelli analizleri değiştiren [özelleştirilmiş çözümleyiciler](index-add-custom-analyzers.md#AnalyzerTable) ile geçersiz kılabilirsiniz. Bir örnek, bir alanın tüm içeriğini tek bir belirteç olarak ele alan [anahtar sözcüktür](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) . Bu, ZIP kodları, kimlikler ve bazı ürün adları gibi veriler için yararlıdır. Daha fazla bilgi için bkz. [özel karakterlerle kısmi terim arama ve desenleri](search-query-partial-matching.md).
 
@@ -78,11 +78,11 @@ Büyük metin blokları (bir içerik alanı veya uzun açıklamalar) içeren diz
 
 ## <a name="filter-search"></a>Arama filtrele
 
-Filtreler Bilişsel Arama içeren uygulamalarda yaygın olarak kullanılır. Uygulama sayfalarında, filtreler genellikle kullanıcı tabanlı filtreleme için bağlantı gezinti yapılarında modeller olarak görselleştirilir. Filtreler, dizinlenmiş içeriğin dilimlerini göstermek için dahili olarak da kullanılır. Örneğin, bir dizinde hem Ingilizce hem de Fransızca alanları varsa bir dilde filtre yapabilirsiniz. 
+Filtreler Bilişsel Arama içeren uygulamalarda yaygın olarak kullanılır. Uygulama sayfalarında, filtreler genellikle kullanıcı tabanlı filtreleme için bağlantı gezinti yapılarında modeller olarak görselleştirilir. Filtreler, dizinlenmiş içeriğin dilimlerini göstermek için dahili olarak da kullanılır. Örneğin, bir ürün kategorisinde filtre kullanarak bir arama sayfası başlatabilir veya bir dizinde hem Ingilizce hem de Fransızca alanları varsa bir dil kullanabilirsiniz.
 
 Ayrıca, aşağıdaki tabloda açıklandığı gibi özelleştirilmiş bir sorgu formunu çağırmak için filtreler de gerekebilir. Belirtilmemiş bir aramayla ( **`search=*`** ) veya terimleri, tümceleri, işleçleri ve desenleri içeren bir sorgu dizesiyle bir filtre kullanabilirsiniz.
 
-| Filtre senaryosu | Açıklama |
+| Filtre senaryosu | Description |
 |-----------------|-------------|
 | Aralık filtreleri | Azure Bilişsel Arama 'de, Aralık sorguları filtre parametresi kullanılarak oluşturulur. Daha fazla bilgi ve örnek için bkz. [Aralık filtresi örneği](search-query-simple-examples.md#example-4-range-filters). |
 | Coğrafi konum arama | Aranabilir bir alan [Edm. Geographyıpoint türünde](/rest/api/searchservice/supported-data-types)ise, "yakın beni bul" veya harita tabanlı arama denetimleri için bir filtre ifadesi oluşturabilirsiniz. Coğrafi arama 'nın bulunduğu alanlar koordinatları içerir. Daha fazla bilgi ve örnek için bkz. [coğrafi arama örneği](search-query-simple-examples.md#example-5-geo-search). |

@@ -3,25 +3,27 @@ title: Medya grafiği uzantısı nedir? Azure
 description: IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89569347"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401126"
 ---
 # <a name="media-graph-extension"></a>Medya grafiği uzantısı
 
-IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. Analytics uzantı eklentisi, geleneksel görüntü işleme tekniklerinden veya bilgisayar Vision AI modellerinden kullanılabilir. Grafik uzantıları, bir ortam grafiğine uzantı işlemcisi düğümü eklenerek etkinleştirilir. Uzantı işlemcisi düğümü, video çerçevelerini yapılandırılmış uç noktaya geçirir ve uzantınızın arabirimi olarak görev yapar. Bağlantı, yerel veya uzak bir uç noktaya yapılabilir ve gerekirse, kimlik doğrulama ve TLS şifrelemesi ile güvenliği sağlanmış olabilir. Ayrıca, grafik uzantısı işlemci düğümü, video çerçevelerinin özel uzantınızı göndermeden önce isteğe bağlı ölçeklendirilmesine ve kodlamasına olanak sağlar.
+IoT Edge üzerinde canlı video analizi, bir grafik uzantısı düğümü aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. Analytics uzantı eklentisi, geleneksel görüntü işleme tekniklerinden veya bilgisayar Vision AI modellerinden kullanılabilir. Grafik uzantıları, bir ortam grafiğine uzantı işlemcisi düğümü eklenerek etkinleştirilir. Uzantı işlemcisi düğümü, video çerçevelerini yapılandırılmış uç noktaya geçirir ve uzantınızın arabirimi olarak görev yapar. Bağlantı, yerel veya uzak bir uç noktaya yapılabilir ve gerekirse, kimlik doğrulama ve TLS şifrelemesi ile güvenliği sağlanmış olabilir. Ayrıca, grafik uzantısı işlemci düğümü, video çerçevelerinin özel uzantınızı göndermeden önce isteğe bağlı ölçeklendirilmesine ve kodlamasına olanak sağlar. 
 
 Canlı video analizi, iki tür medya grafiği uzantısı işlemciyi destekler:
 
 * [HTTP uzantısı işlemcisi](media-graph-concept.md#http-extension-processor)
 * [gRPC uzantı işlemcisi](media-graph-concept.md#grpc-extension-processor)
 
+Grafik uzantısı düğümü, Analytics uzantı eklentisinin sonuçları JSON biçiminde döndürmesini bekler. İdeal olarak sonuçlar, [çıkarım meta veri şeması nesne modelini](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)izlemelidir.
+
 ## <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
-HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı HTTP protokolünü kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
+HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının birincil sorun olmadığı [http protokolünü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update)kullanarak genişletilebilirlik senaryolarına izin verir. Bir HTTP REST uç noktası aracılığıyla kendi AI 'nizi bir medya grafiğinde kullanıma sunabilirsiniz. 
 
 Şu durumlarda HTTP uzantı işlemcisi düğümünü kullan:
 
@@ -31,7 +33,7 @@ HTTP uzantısı işlemcisi, performans ve/veya en iyi kaynak kullanımının bir
 
 ## <a name="grpc-extension-processor"></a>gRPC uzantı işlemcisi
 
-gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı yapılandırılmış protokolü kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
+gRPC uzantısı işlemcisi, gRPC tabanlı, yüksek performanslı [yapılandırılmış Protokolü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update)kullanan genişletilebilirlik senaryolarına izin vermez. Performans ve/veya en iyi kaynak kullanımının öncelik olduğu senaryolar için idealdir. GRPC uzantısı işlemcisi, yapılandırılmış veri tanımlarının tam avantajını almanızı sağlar. gRPC, aşağıdakileri kullanarak yüksek içerik aktarımı performansı sunar:
 
 * [yerleşik paylaşılan bellek](https://en.wikipedia.org/wiki/Shared_memory) veya 
 * içerik, gRPC iletilerinin gövdesine doğrudan katıştırılıyor. 
@@ -46,7 +48,7 @@ Bu nedenle, şu durumlarda bir gRPC uzantı işlemcisi düğümü kullanın:
 
 ## <a name="use-your-inferencing-model-with-live-video-analytics"></a>Canlı video analizi ile ınsıya sınırlama modelinizi kullanın
 
-Medya grafiği uzantıları, tercih ettiğiniz çıkarım modellerini, ONNX, TensorFlow, PyTorch veya kendi Docker kapsayıcısındaki diğer kişiler gibi kullanılabilir bir çıkarma çalışma zamanı üzerinde çalıştırmanızı sağlar. En iyi performansı elde etmek için, Inse sınırlaması özel uzantısının canlı video analizi Edge modülü ile birlikte dağıtılması gerekir ve daha sonra, grafik topolojinize dahil edilen HTTP uzantısı işlemcisi veya gRPC uzantı işlemcisi aracılığıyla çağrılacaktır. Ayrıca, özel uzantıza yapılan çağrıların sıklığı isteğe bağlı olarak bir [hareket algılayıcısı işlemcisi](media-graph-concept.md#motion-detection-processor) ve medya uzantısı işlemcisine bir [kare hızı filtresi işlemcisi](media-graph-concept.md#frame-rate-filter-processor) yukarı akış eklenerek kısıtlanabilir.
+Medya grafiği uzantıları, tercih ettiğiniz çıkarım modellerini, ONNX, TensorFlow, PyTorch veya kendi Docker kapsayıcısındaki diğer kişiler gibi kullanılabilir bir çıkarma çalışma zamanı üzerinde çalıştırmanızı sağlar. En iyi performansı elde etmek için, Inse sınırlaması özel uzantısının canlı video analizi Edge modülü ile birlikte dağıtılması gerekir ve daha sonra, grafik topolojinize dahil edilen HTTP uzantısı işlemcisi veya gRPC uzantı işlemcisi aracılığıyla çağrılacaktır. Ayrıca, özel uzantıza yapılan çağrıların sıklığı isteğe bağlı olarak, medya uzantısı işlemcisine yukarı akış bir [hareket algılayıcısı işlemcisi](media-graph-concept.md#motion-detection-processor) eklenerek kısıtlanabilir.
 
 Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
 
@@ -55,7 +57,9 @@ Aşağıdaki diyagramda üst düzey veri akışı gösterilmektedir:
 
 ## <a name="samples"></a>Örnekler
 
-Canlı video analizi için [Jupyter Not defteri](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) örneklerimizden bazılarını kullanıma alın. Bu not defterleri size **medya grafik uzantıları** için adım adım yönergeler sağlar:
+Daha önceden oluşturulmuş uzantı hizmeti olan canlı video analizlerini, [http uzantısı işlemcisi](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) Ile veya [GRPC uzantı işlemcisi](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) ile yüksek kare ücretlerine sahip olan düşük kare ücretlerine sahip olan hızlı başlangıçlardan biriyle çalışmaya başlayın
+
+Gelişmiş kullanıcılar için, canlı video analizi için [Jupyter Not defteri](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) örneklerinden bazılarını kullanıma alabilirsiniz. Bu not defterleri size **medya grafik uzantıları** için adım adım yönergeler sağlar:
 
 * Uzantı hizmetinin Docker kapsayıcı görüntüsü oluşturma
 * Uzantı hizmetini bir kapsayıcı olarak ve canlı video analizi kapsayıcısı ile birlikte dağıtma

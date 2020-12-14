@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f5c16fce68213b291b970c11921a17b39527270
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1e16c984e48c11961dba0c977d3bdbddbd6bdf36
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032126"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400328"
 ---
 # <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
 
@@ -157,14 +157,17 @@ Bu ağ kaynakları, yukarıda oluşturulan sanal ağınıza bağlanır.
 
 Küçük alt ağ aralığı IP adreslerini kaydeder, ancak Azure yay bulutunun tutabilmesine izin verilen en fazla uygulama örneği sayısına yönelik sınırlamalar getirir. 
 
-| CıDR | Toplam IP sayısı | Kullanılabilir IP 'Ler | En fazla uygulama örnekleri                                        |
-| ---- | --------- | ------------- | ------------------------------------------------------------ |
-| /28  | 16        | 8             | <p> 1 çekirdekli uygulama: 96 <br/> 2 çekirdek içeren uygulama: 48<br/>  3 çekirdekle uygulama: 32 <br/> 4 çekirdek içeren uygulama: 24 </p> |
-| /27  | 32        | 24            | <p> 1 çekirdekli uygulama: 228<br/> 2 çekirdek içeren uygulama: 144<br/>  3 çekirdekle uygulama: 96 <br/>  4 çekirdek içeren uygulama: 72</p> |
-| /26  | 64        | 56            | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 336<br/>  3 çekirdekle uygulama: 224<br/>  4 çekirdek içeren uygulama: 168</p> |
-| /25  | 128       | 120           | <p> 1 çekirdekli uygulama: 500<br> 2 çekirdek içeren uygulama: 500<br>  3 çekirdekle uygulama: 480<br>  4 çekirdek içeren uygulama: 360</p> |
-| /24  | 256       | 248           | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 500<br/>  3 çekirdekle uygulama: 500<br/>  4 çekirdek içeren uygulama: 500</p> |
+| Uygulama alt ağı CıDR | Toplam IP sayısı | Kullanılabilir IP 'Ler | En fazla uygulama örnekleri                                        |
+| --------------- | --------- | ------------- | ------------------------------------------------------------ |
+| /28             | 16        | 8             | <p> 1 çekirdekli uygulama: 96 <br/> 2 çekirdek içeren uygulama: 48<br/>  3 çekirdekle uygulama: 32 <br/> 4 çekirdek içeren uygulama: 24 </p> |
+| /27             | 32        | 24            | <p> 1 çekirdekli uygulama: 228<br/> 2 çekirdek içeren uygulama: 144<br/>  3 çekirdekle uygulama: 96 <br/>  4 çekirdek içeren uygulama: 72</p> |
+| /26             | 64        | 56            | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 336<br/>  3 çekirdekle uygulama: 224<br/>  4 çekirdek içeren uygulama: 168</p> |
+| /25             | 128       | 120           | <p> 1 çekirdekli uygulama: 500<br> 2 çekirdek içeren uygulama: 500<br>  3 çekirdekle uygulama: 480<br>  4 çekirdek içeren uygulama: 360</p> |
+| /24             | 256       | 248           | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 500<br/>  3 çekirdekle uygulama: 500<br/>  4 çekirdek içeren uygulama: 500</p> |
 
+Alt ağlar için, 5 IP adresi Azure tarafından ayrılmıştır ve Azure Spring Cloud için en az 4 adres gereklidir. En az 9 IP adresi gereklidir, bu nedenle/29 ve/30 işlemsel değildir.
+
+Hizmet çalışma zamanı alt ağı için, en az boyut bir/28 ve bu, uygulama örneği sayısı üzerinde hiçbir pul içermez.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [VNet 'iniz üzerinde Azure Spring Cloud 'a uygulama dağıtma](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)

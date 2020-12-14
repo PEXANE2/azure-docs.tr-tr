@@ -8,32 +8,32 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: ad572905d9864083466049fd602e24d9f3632ea3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387437"
+ms.locfileid: "97400225"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir sorgu oluşturma
 
-Sorgu oluşturmaya yönelik araçlar ve API 'Ler, bir sorgu oluşturmak için kullanılan yöntemler ve dizin yapısı ile içeriğinin sorgu sonuçlarını nasıl etkileyebileceği hakkında bilgi edinin. Sorgu isteğinin neye benzediklerine giriş için [sorgu türleri ve kompozisyonlarla](search-query-overview.md)başlayın.
+İlk kez bir sorgu oluşturuyorsanız, bu makalede ihtiyacınız olacak araçlar ve API 'Ler, bir sorgu oluşturmak için kullanılan yöntemler ve dizin yapısı ile içeriğinin sorgu sonuçlarını nasıl etkileyebileceği açıklanmaktadır. Sorgu isteğinin neye benzediklerine giriş için [sorgu türleri ve kompozisyonlarla](search-query-overview.md)başlayın.
 
 ## <a name="choose-tools-and-apis"></a>Araçlar ve API 'Ler seçin
 
-Test veya üretim iş yükleri için sorgular oluşturmak üzere aşağıdaki araçlardan ve API 'lerden herhangi birini kullanabilirsiniz.
+Sorgu oluşturmak için bir araç veya API gerekir. Aşağıdaki önerilerden herhangi biri, test ve üretim iş yükleri için yararlıdır.
 
-| Yöntem | Açıklama |
+| Yöntem | Description |
 |-------------|-------------|
-| Portal| [Arama Gezgini (portal)](search-explorer.md) , temel arama hizmetindeki dizinlerle ilgili sorguları çalıştırmak için kullanılabilecek Azure Portal bir sorgu arabirimidir. Portal, arka planda REST API çağrısı yapar. Önizleme sürümleri dahil olmak üzere herhangi bir dizini ve desteklenen REST API sürümlerini seçebilirsiniz. Sorgu dizesi basit ve tam sözdiziminde olabilir ve filtre ifadeleri, modeller, Select ve searchField deyimlerini ve searchMode içerebilir. Portalda, bir dizini açtığınızda, alan özniteliklerine kolay erişim için yan yana sekmelerde JSON tanımının yanı sıra arama Gezgini ile çalışabilirsiniz. Sorguları test ederken hangi alanların aranabilir, sıralanabilir, filtrelenebilir ve çok yönlü tablo olduğunu kontrol edebilirsiniz. Erken araştırma, test ve doğrulama için önerilir. <br/>[Daha fazla bilgi edinin.](search-explorer.md) |
-| Web testi araçları| [Postman veya Visual Studio Code](search-get-started-rest.md) , bekleyen [arama belgelerinin bir talebini formülleyen](/rest/api/searchservice/search-documents) güçlü seçimlerdir. REST API Azure Bilişsel Arama her programlı işlemi destekler ve Postman veya Visual Studio Code gibi bir araç kullandığınızda, koda yatırım yapmadan önce nasıl çalıştığını anlamak için istekleri etkileşimli olarak verebilirsiniz. Azure portal bir Web testi aracı, katkıda bulunan veya yönetici haklarına sahip olmadığınız durumlarda iyi bir seçenektir. Bir arama URL 'SI ve sorgu API 'SI anahtarınız olduğu sürece, mevcut bir dizine yönelik sorguları çalıştırmak için araçları kullanabilirsiniz. |
-| Azure SDK | Kod yazmaya hazırsanız, .NET, Python, JavaScript veya Java için Azure SDK 'larında Azure.Search.Document istemci kitaplıklarını kullanabilirsiniz. Her SDK kendi yayın zamanlamasında bulunur, ancak bunların tümünde dizinler oluşturabilir ve sorgulayabilirsiniz. <br/><br/>[Searchclient (.net)](/dotnet/api/azure.search.documents.searchclient) , C# içindeki bir arama dizinini sorgulamak Için kullanılabilir.  [Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md)<br/><br/>[Searchclient (Python)](/dotnet/api/azure.search.documents.searchclient) , Python 'da bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-python.md) <br/><br/> [Searchclient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) , JavaScript 'te bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-javascript.md) |
+| Portal| [Arama Gezgini (portal)](search-explorer.md) , temel arama hizmetindeki dizinlerde sorgular çalıştıran Azure Portal bir sorgu arabirimidir. Portal, arka plan, öneri veya belge [arama işlemleri için](/rest/api/searchservice/search-documents) arka planda REST API çağrısı yapar.<br/><br/> Önizleme dahil olmak üzere herhangi bir dizini ve REST API sürümünü seçebilirsiniz. Sorgu dizesi, tüm sorgu parametreleri (filtre, seçme, searchFields vb.) desteğiyle basit veya tam sözdizimini kullanabilir. Portalda, bir dizini açtığınızda, alan özniteliklerine kolay erişim için yan yana sekmelerde JSON tanımının yanı sıra arama Gezgini ile çalışabilirsiniz. Sorguları test ederken hangi alanların aranabilir, sıralanabilir, filtrelenebilir ve çok yönlü tablo olduğunu denetleyin. <br/>Erken araştırma, test ve doğrulama için önerilir. [Daha fazla bilgi edinin.](search-explorer.md) |
+| Web testi araçları| [Postman veya Visual Studio Code](search-get-started-rest.md) , bir arama belgesi isteğini ve diğer tüm ISTEKLERI, bekleyen bir şekilde [formülleyen](/rest/api/searchservice/search-documents) güçlü seçimlerdir. REST API 'Leri, Azure Bilişsel Arama 'daki olası her bir programlı işlemi destekler ve Postman veya Visual Studio Code gibi bir araç kullandığınızda, özelliğin kod içinde yatırım yapmadan önce nasıl çalıştığını anlamak için istekleri etkileşimli bir şekilde verebilirsiniz. Azure portal bir Web testi aracı, katkıda bulunan veya yönetici haklarına sahip olmadığınız durumlarda iyi bir seçenektir. Bir arama URL 'SI ve sorgu API 'SI anahtarınız olduğu sürece, mevcut bir dizine yönelik sorguları çalıştırmak için araçları kullanabilirsiniz. |
+| Azure SDK | Kod yazmaya hazırsanız, .NET, Python, JavaScript veya Java için Azure SDK 'larında Azure.Search.Document istemci kitaplıklarını kullanabilirsiniz. Her SDK kendi yayın zamanlamasında bulunur, ancak bunların tümünde dizinler oluşturabilir ve sorgulayabilirsiniz. <br/><br/>[Searchclient (.net)](/dotnet/api/azure.search.documents.searchclient) , C# içindeki bir arama dizinini sorgulamak Için kullanılabilir.  [Daha fazla bilgi edinin.](search-howto-dotnet-sdk.md)<br/><br/>[Searchclient (Python)](/dotnet/api/azure.search.documents.searchclient) , Python 'da bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-python.md)<br/><br/>[Searchclient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) , JavaScript 'te bir arama dizinini sorgulamak için kullanılabilir. [Daha fazla bilgi edinin.](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Arama İstemcisi ayarlama
 
 Arama İstemcisi arama hizmetinde kimlik doğrular, istek gönderir ve yanıtları işler. Kullandığınız araç veya API 'yi ne olursa olsun, bir arama istemcisinde aşağıdakiler olmalıdır:
 
-| Özellikler | Açıklama |
+| Özellikler | Description |
 |------------|-------------|
 | Uç Nokta | Bir arama hizmeti şu biçimde bir URL adreslenebilir: `https://[service-name].search.windows.net` . |
 | API erişim anahtarı (yönetici veya sorgu) | Arama hizmetine yönelik isteğin kimliğini doğrular. |

@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/19/2020
-ms.openlocfilehash: c9f29a891061dc0e6dcfe8c8f6a65f0f190c6afc
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bd1b33b2f6b1b0e0bf94639b3991b6507a89f5a9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593595"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400803"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Azure SQL 'de hızlandırılmış veritabanı kurtarma 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 **Hızlandırılmış veritabanı kurtarma (ADR)** , özellikle uzun süre çalışan işlemler söz konusu olduğunda veritabanı kullanılabilirliğini, SQL Server veritabanı altyapısı kurtarma işlemini yeniden tasarlayarak büyük ölçüde artıran bir SQL Server veritabanı altyapısı özelliğidir. 
 
-ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics 'teki veritabanları (Şu anda önizleme aşamasındadır) ve SQL Server 2019 ' den başlayarak Azure VM 'lerinde SQL Server kullanılabilir. 
+ADR Şu anda Azure SQL veritabanı, Azure SQL yönetilen örneği, Azure SYNAPSE Analytics 'teki veritabanları ve SQL Server 2019 ile başlayan Azure VM 'lerinde SQL Server kullanılabilir. 
 
 > [!NOTE] 
 > ADR, Azure SQL veritabanı ve Azure SQL yönetilen örneği 'nde varsayılan olarak etkindir ve her iki ürün için ADR 'nin devre dışı bırakılması desteklenmez. 

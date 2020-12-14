@@ -3,12 +3,12 @@ title: İzleme ve günlüğe kaydetme-Azure
 description: Bu makalede, IoT Edge izleme ve günlüğe kaydetme hakkında canlı video analizine genel bakış sunulmaktadır.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: ef00517fc61ac532bdd99c1e887dfd93d56a8c4f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ae455a4157cd649f610620e486323ac2c0a5744
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89567563"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401058"
 ---
 # <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 
@@ -21,7 +21,7 @@ Ayrıca, modülün oluşturduğu günlükleri nasıl denetleyebileceğinizi de �
 IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki sınıflandırmaya göre yayar.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi&quot;:::
+> :::image type="content" source="./media/telemetry-schema/taxonomy.png" alt-text="Olayların taksonomisi":::
 
 * İşletimsel: bir kullanıcı tarafından alınan eylemlerin bir parçası olarak veya bir [medya grafiğinin](media-graph-concept.md)yürütülmesi sırasında oluşturulan olaylar.
    
@@ -32,16 +32,16 @@ IoT Edge canlı video analizi, olayları veya telemetri verilerini aşağıdaki 
       
       ```
       {
-        &quot;body&quot;: {
-          &quot;outputType&quot;: &quot;assetName&quot;,
-          &quot;outputLocation&quot;: &quot;sampleAssetFromEVR-LVAEdge-20200512T233309Z&quot;
+        "body": {
+          "outputType": "assetName",
+          "outputLocation": "sampleAssetFromEVR-LVAEdge-20200512T233309Z"
         },
-        &quot;applicationProperties&quot;: {
-          &quot;topic&quot;: &quot;/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>&quot;,
-          &quot;subject&quot;: &quot;/graphInstances/Sample-Graph-2/sinks/assetSink&quot;,
-          &quot;eventType&quot;: &quot;Microsoft.Media.Graph.Operational.RecordingStarted&quot;,
-          &quot;eventTime&quot;: &quot;2020-05-12T23:33:10.392Z&quot;,
-          &quot;dataVersion&quot;: &quot;1.0"
+        "applicationProperties": {
+          "topic": "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/<my-resource-group>/providers/microsoft.media/mediaservices/<ams-account-name>",
+          "subject": "/graphInstances/Sample-Graph-2/sinks/assetSink",
+          "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
+          "eventTime": "2020-05-12T23:33:10.392Z",
+          "dataVersion": "1.0"
         }
       }
       ```
@@ -168,7 +168,7 @@ IoT Hub üzerinden gözlemlendiği her olayın, aşağıda açıklandığı gibi
 |---|---|---|---|
 |ileti kimliği |sistemin |guid|  Benzersiz olay KIMLIĞI.|
 |konu başlığı| applicationProperty |string|    Media Services hesabının yolunu Azure Resource Manager.|
-|Konu|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
+|subject|   applicationProperty |string|    Olayı yayan varlığın alt yolu.|
 |eventTime| applicationProperty|    string| Olayın oluşturulduğu zaman.|
 |eventType| applicationProperty |string|    Olay türü tanımlayıcısı (aşağıya bakın).|
 |body|body  |object|    Belirli olay verileri.|
@@ -186,7 +186,7 @@ Grafikle ilişkili Azure Medya hizmeti hesabını temsil eder.
 
 `/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Media/mediaServices/{accountName}`
 
-#### <a name="subject"></a>Konu
+#### <a name="subject"></a>subject
 
 Olayı yayan varlık:
 
@@ -205,7 +205,7 @@ Olay türleri bir ad alanına aşağıdaki şemaya göre atanır:
 
 #### <a name="event-classes"></a>Olay sınıfları
 
-|Sınıf Adı|Açıklama|
+|Sınıf Adı|Description|
 |---|---|
 |Analiz  |İçerik analizinin bir parçası olarak oluşturulan olaylar.|
 |Tanılama    |Sorunların ve performansın tanılanmasına yardımcı olan olaylar.|
@@ -223,7 +223,86 @@ Olay türleri her bir olay sınıfına özeldir.
 
 Olay saati, ıSO8601 dizesinde ve olayın gerçekleştiği zaman ile açıklanır.
 
-## <a name="logging"></a>Günlüğe Kaydetme
+### <a name="azure-monitor-collection-using-telegraf"></a>Telegraf kullanarak Azure Izleyici koleksiyonu
+
+Bu ölçümler IoT Edge modülündeki canlı video analizlerini raporlacaktır:  
+
+|Ölçüm Adı|Tür|Etiketle|Description|
+|-----------|----|-----|-----------|
+|lva_active_graph_instances|Ölçer|ıothub, edge_device, module_name graph_topology|Topoloji başına toplam etkin grafik sayısı.|
+|lva_received_bytes_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node|Bir düğüm tarafından alınan toplam bayt sayısı. Yalnızca RTSP kaynakları için desteklenir|
+|lva_data_dropped_total|Sayaç|ıothub, edge_device, module_name, graph_topology, graph_instance, graph_node, data_kind|Bırakılan tüm veriler (olaylar, ortamlar, vb.) sayacı|
+
+> [!NOTE]
+> Bir [Prometheus uç noktası](https://prometheus.io/docs/practices/naming/) , kapsayıcının **9600** numaralı bağlantı noktasında kullanıma sunulur. Canlı video analizinizi "lvaEdge" IoT Edge modüle ayarlarsanız, ' a bir GET isteği göndererek ölçümlere erişebilecektir http://lvaEdge:9600/metrics .   
+
+IoT Edge modülündeki canlı video analizinden ölçüm toplamayı etkinleştirmek için şu adımları izleyin:
+
+1. Geliştirme makinenizde bir klasör oluşturun ve bu klasöre gidin
+
+1. Bu klasörde, `telegraf.toml` aşağıdaki içeriklerle dosya oluşturun
+    ```
+    [agent]
+        interval = "30s"
+        omit_hostname = true
+
+    [[inputs.prometheus]]
+      metric_version = 2
+      urls = ["http://edgeHub:9600/metrics", "http://edgeAgent:9600/metrics", "http://{LVA_EDGE_MODULE_NAME}:9600/metrics"]
+
+    [[outputs.azure_monitor]]
+      namespace_prefix = ""
+      region = "westus"
+      resource_id = "/subscriptions/{SUBSCRIPTON_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.Devices/IotHubs/{IOT_HUB_NAME}"
+    ```
+    > [!IMPORTANT]
+    > İçerik dosyasında değişkenleri (ile işaretlenen) değiştirdiğinizden emin olun `{ }`
+
+1. Bu klasörde, `.dockerfile` aşağıdaki içerikle bir oluştur
+    ```
+        FROM telegraf:1.15.3-alpine
+        COPY telegraf.toml /etc/telegraf/telegraf.conf
+    ```
+
+1. Şimdi Docker CLı komutunu kullanarak **Docker dosyasını derleyin** ve görüntüyü Azure Container Registry yayımlayın.
+    1. [Docker görüntülerini gönderme ve çekme-Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)hakkında bilgi edinin.  Daha fazla Azure Container Registry (ACR) [bulunabilir.](https://docs.microsoft.com/azure/container-registry/)
+
+
+1. ACR 'ye gönderme işlemi tamamlandıktan sonra, dağıtım bildirimi dosyanızda aşağıdaki düğümü ekleyin:
+    ```
+    "telegraf": 
+    {
+      "settings": 
+        {
+            "image": "{ACR_LINK_TO_YOUR_TELEGRAF_IMAGE}"
+        },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": 
+        {
+            "AZURE_TENANT_ID": { "value": "{YOUR_TENANT_ID}" },
+            "AZURE_CLIENT_ID": { "value": "{YOUR CLIENT_ID}" },
+            "AZURE_CLIENT_SECRET": { "value": "{YOUR_CLIENT_SECRET}" }
+        }
+    ``` 
+    > [!IMPORTANT]
+    > İçerik dosyasında değişkenleri (ile işaretlenen) değiştirdiğinizden emin olun `{ }`
+
+
+1. **Kimlik Doğrulaması**
+    1. Azure Izleyici, [hizmet sorumlusu tarafından doğrulanabilir](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication).
+        1. Azure Izleyici telegraf eklentisi [çeşitli kimlik doğrulama yöntemleri](https://github.com/influxdata/telegraf/blob/master/plugins/outputs/azure_monitor/README.md#azure-authentication)sunar. Hizmet sorumlusu kimlik doğrulamasını kullanmak için aşağıdaki ortam değişkenleri ayarlanmalıdır.  
+            • AZURE_TENANT_ID: kimlik doğrulaması yapılacak kiracıyı belirtir.  
+            • AZURE_CLIENT_ID: kullanılacak uygulama istemci KIMLIĞINI belirtir.  
+            • AZURE_CLIENT_SECRET: kullanılacak uygulama gizli dizesini belirtir.  
+    >[!TIP]
+    > Hizmet sorumlusuna "**Izleme ölçümleri yayımcısı**" rolü verilebilir.
+
+1. Modüller dağıtıldıktan sonra, ölçümler Azure Izleyici 'de, Prometheus tarafından yayıldıklarla eşleşen ölçüm adlarıyla tek bir ad alanı altında görüntülenir. 
+    1. Bu durumda, Azure portal IoT Hub gidin ve sol gezinti bölmesindeki "**ölçümler**" bağlantısına tıklayın. Ölçümleri burada görmeniz gerekir.
+## <a name="logging"></a>Günlüğe kaydetme
 
 Diğer IoT Edge modülleriyle benzer şekilde, uç cihazdaki [kapsayıcı günlüklerini de inceleyebilirsiniz](../../iot-edge/troubleshoot.md#check-container-logs-for-issues) . Günlüklere yazılan bilgiler [aşağıdaki Module ikizi](module-twin-configuration-schema.md) özellikleri tarafından denetlenebilir:
 

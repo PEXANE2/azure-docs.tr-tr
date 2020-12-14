@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077379"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400582"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Yönetilen Örneği kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -108,7 +108,7 @@ Genel Amaçlı hizmet katmanında her veritabanı dosyası, dosya boyutuna bağl
 
 Bazı veritabanı dosyasında yüksek GÇ gecikme süresi fark ederseniz veya ıOPS/aktarım hızının sınıra ulaşdığına görürseniz, [dosya boyutunu artırarak](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337)performansı artırabilirsiniz.
 
-Ayrıca, en büyük günlük yazma aktarım hızı (22 MB/sn) üzerinde örnek düzeyinde bir sınır vardır. bu nedenle, örnek işleme sınırına ulaştığınız için günlük dosyasında Yukarıdaki en büyük dosyaya erişemeyebilirsiniz.
+Ayrıca, en büyük günlük yazma aktarım hızına (örneğin, 22 MB/sn) ait bir örnek düzeyi sınırı vardır. bu nedenle, örnek aktarım hızı sınırına ulaştığınız için günlük dosyasında en fazla dosya ile iletişime geçemeyebilirsiniz.
 
 ## <a name="supported-regions"></a>Desteklenen bölgeler
 
@@ -132,8 +132,8 @@ SQL yönetilen örneği şu anda yalnızca aşağıdaki abonelik türlerinde da�
 
 Desteklenen Abonelik türleri, bölge başına sınırlı sayıda kaynak içerebilir. SQL yönetilen örneği, Azure bölgesi başına iki varsayılan sınıra sahiptir (bir abonelik türü türüne göre Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturarak isteğe bağlı olarak artırılabilir:
 
-- **Alt ağ sınırı** : SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
-- **Vcore birim sınırı** : tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
+- **Alt ağ sınırı**: SQL yönetilen örnek örneklerinin tek bir bölgede dağıtıldığı alt ağların en fazla sayısı.
+- **Vcore birim sınırı**: tek bir bölgedeki tüm örneklerde dağıtılabilecek en fazla Vcore birimi sayısı. Bir GP sanal çekirdeği bir vCore birimi kullanır ve bir BC sanal çekirdek 4 sanal çekirdek birimi alır. Toplam örnek sayısı, sanal çekirdek birim sınırının içinde olduğu sürece sınırlı değildir.
 
 > [!Note]
 > Bu sınırlar varsayılan ayarlar değildir ve teknik sınırlamalardır. Geçerli bölgede daha fazla örneğe ihtiyaç duyuyorsanız, Azure portal özel bir [destek isteği](../database/quota-increase-request.md) oluşturularak sınırlar artırılabilir. Alternatif olarak, destek istekleri göndermeden başka bir Azure bölgesinde SQL yönetilen örneğinin yeni örneklerini oluşturabilirsiniz.

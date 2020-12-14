@@ -3,25 +3,29 @@ title: gRPC uzantı Protokolü-Azure
 description: Bu makalede, canlı video analizi modülü ile AI veya CV özel uzantısı arasında ileti göndermek için gRPC uzantı protokolünü kullanma hakkında bilgi edineceksiniz.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448384"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401636"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC uzantısı protokolü
 
+IoT Edge üzerinde canlı video analizi, bir [grafik uzantısı düğümü](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update)aracılığıyla medya grafiği işleme yeteneklerini genişletmenizi sağlar. GRPC uzantı işlemcisini uzantı düğümü olarak kullanırsanız, canlı video analizi modülü ile AI veya CV modülünüz arasındaki iletişim, gRPC tabanlı, yüksek performanslı yapılandırılmış protokoldedir.
+
 Bu makalede, canlı video analizi modülü ile AI veya CV özel uzantısı arasında ileti göndermek için gRPC uzantı protokolünü kullanma hakkında bilgi edineceksiniz.
 
-gRPC, herhangi bir ortamda çalışan modern, açık kaynaklı ve yüksek performanslı bir RPC çerçevesidir. GRPC aktarma hizmeti, aralarında HTTP/2 çift yönlü akış kullanır:
+gRPC, herhangi bir ortamda çalışan ve platformlar arası ve çapraz dil iletişimini destekleyen modern, açık kaynaklı ve yüksek performanslı bir RPC çerçevesidir. GRPC aktarma hizmeti, aralarında HTTP/2 çift yönlü akış kullanır:
 
 * gRPC istemcisi (IoT Edge modülünde canlı video analizi) ve 
 * gRPC sunucusu (özel uzantınız).
 
 GRPC oturumu, gRPC istemcisinden TCP/TLS bağlantı noktası üzerinden gRPC sunucusuna tek bağlantıdır. 
 
-Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) bir ileti olarak bir medya akış tanımlayıcısı ve ardından sunucuya video çerçeveleri gönderir. Sunucu akış tanımlayıcısını doğrular, video çerçevesini analiz edin ve çıkarım sonuçlarını bir prototipme iletisi olarak döndürür.
+Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) bir ileti olarak bir medya akış tanımlayıcısı ve ardından sunucuya video çerçeveleri gönderir. Sunucu akış tanımlayıcısını doğrular, video çerçevesini analiz edin ve çıkarım sonuçlarını bir prototipme iletisi olarak döndürür. 
+
+Yanıtların, [çıkarım meta veri şeması nesne modeli](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)için tanımlanmış önceden oluşturulan şemanın ardından geçerli JSON belgeleri kullanılarak döndürülmesi önemle önerilir. Bu, diğer bileşenlerle birlikte çalışabilirliğini ve canlı video analizi modülüne eklenen olası gelecekteki özellikleri daha iyi sağlar.
 
 ![gRPC uzantı sözleşmesi](./media/grpc-extension-protocol/grpc.png)
 
@@ -32,9 +36,10 @@ Tek bir oturumda: istemci, gRPC akış oturumu üzerinde [prototipsiz](https://g
 Özel uzantının aşağıdaki gRPC hizmetini uygulaması gerekir:
 
 ```
-service MediaGraphExtension {
-  rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
-}
+service MediaGraphExtension
+    {
+        rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
+    }
 ```
 
 Çağrıldığında, gRPC uzantısı ve canlı video analizi grafiği arasında akışa almak üzere çift yönlü bir akış açar. Her taraf tarafından Bu akışta gönderilen ilk ileti, aşağıdaki MediaSamples ' de hangi bilgilerin gönderileceğini tanımlayan bir MediaStreamDescriptor içerir.
@@ -45,18 +50,23 @@ service MediaGraphExtension {
  {
     "sequence_number": 1,
     "ack_sequence_number": 0,
-    "media_stream_descriptor": {
-        "graph_identifier": {
+    "media_stream_descriptor": 
+    {
+        "graph_identifier": 
+        {
             "media_services_arm_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/microsoft.media/mediaservices/mediaAccountName",
             "graph_instance_name": "mediaGraphName",
             "graph_node_name": "grpcExtension"
         },
-        "media_descriptor": {
+        "media_descriptor": 
+        {
             "timescale": 90000,
-            "video_frame_sample_format": {
+            "video_frame_sample_format": 
+            {
                 "encoding": "RAW",
                 "pixel_format": "RGB24",
-                "dimensions": {
+                "dimensions": 
+                {
                     "width": 416,
                     "height": 416
                 },
@@ -73,13 +83,17 @@ service MediaGraphExtension {
 {
     "sequence_number": 1,
     "ack_sequence_number": 1,
-    "media_stream_descriptor": {
-        "extension_identifier": "customExtensionName"    }
+    "media_stream_descriptor": 
+    {
+        "extension_identifier": "customExtensionName"    
+    }
 }
 ```
 
 Her iki taraf da medya tanımlayıcılarını değiş tokuş eden canlı video analizi, çerçeveleri uzantıya iletmeye başlayacaktır.
 
+> [!NOTE]
+> GRPC sunucu tarafı uygulama, tercih ettiğiniz programlama dilinde yapılabilir.
 ### <a name="sequence-numbers"></a>Dizi numaraları
 
 Hem gRPC uzantı düğümü hem de özel uzantı, iletilerine atanan ayrı bir dizi numara kümesi tutar. Bu sıra numaraları, 1 ' den başlayarak tek parçalı artışlara sahip olmalıdır. `ack_sequence_number` ileti onaylanmazsa, ilk ileti gönderildiğinde ortaya çıkabilecek bir ileti yok sayılabilir.
@@ -106,7 +120,8 @@ Alıcı daha sonra dosyayı açar `/dev/shm/inference_client_share_memory_214698
 ```
 {
     "timestamp": 143598615750000,
-    "content_reference": {
+    "content_reference": 
+    {
         "address_offset": 519168,
         "length_bytes": 173056
     }
@@ -123,25 +138,27 @@ Canlı video analizi kapsayıcısının paylaşılan bellek üzerinden iletişim
 Bu, yukarıda bulunan ilk seçenek kullanılarak Device ikizi 'ta nasıl görünebileceğini aşağıda bulabilirsiniz.
 
 ```
-"liveVideoAnalytics": {
+"liveVideoAnalytics": 
+{
   "version": "1.0",
   "type": "docker",
   "status": "running",
   "restartPolicy": "always",
-  "settings": {
+  "settings": 
+  {
     "image": "mcr.microsoft.com/media/live-video-analytics:1",
     "createOptions": 
-      "HostConfig": {
+      "HostConfig": 
+      {
         "IpcMode": "host"
       }
-    }
   }
 }
 ```
 
 IPC modları hakkında daha fazla bilgi için bkz https://docs.docker.com/engine/reference/run/#ipc-settings---ipc ..
 
-## <a name="media-graph-grpc-extension-contract-definitions"></a>Medya grafiği gRPC uzantısı sözleşme tanımları
+## <a name="mediagraph-grpc-extension-contract-definitions"></a>MediaGraph gRPC uzantısı sözleşme tanımları
 
 Bu bölümde, veri akışını tanımlayan gRPC sözleşmesi tanımlanmaktadır.
 
@@ -159,10 +176,12 @@ Bu, bunu gerçekleştirmek için Kullanıcı adı/parola kimlik bilgileri kullan
 {
   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
   "name": "{moduleIdentifier}",
-  "endpoint": {
+  "endpoint": 
+  {
     "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
     "url": "tcp://customExtension:8081",
-    "credentials": {
+    "credentials": 
+    {
       "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
       "username": "username",
       "password": "password"
@@ -175,6 +194,35 @@ Bu, bunu gerçekleştirmek için Kullanıcı adı/parola kimlik bilgileri kullan
 GRPC isteği gönderildiğinde, aşağıdaki üst bilgi istek meta verilerinde yer alır, HTTP temel kimlik doğrulaması da bu şekilde görünür.
 
 `x-ms-authentication: Basic (Base64 Encoded username:password)`
+
+
+## <a name="configuring-inference-server-for-each-mediagraph-over-grpc-extension"></a>GRPC uzantısı üzerinden her bir MediaGraph için çıkarım sunucusunu yapılandırma
+Çıkarım sunucunuzu yapılandırırken, çıkarım sunucusu içinde paketlenmiş her AI modeli için bir düğüm sergilemelisiniz. Bunun yerine, bir grafik örneği için, `extensionConfiguration` düğümünün özelliğini kullanabilir `MediaGraphGrpcExtension` ve AI modellerini nasıl seçkullanacağınızı tanımlayabilirsiniz. Yürütme sırasında LVA, bu dizeyi istenen AI modelini çağırmak için onu kullanan ınsıya geçişli sunucuya iletir. Bu `extensionConfiguration` Özellik isteğe bağlı bir özelliktir ve sunucuya özeldir. Özelliği aşağıdaki gibi kullanılabilir:
+```
+{
+  "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+  "name": "{moduleIdentifier}",
+  "endpoint": 
+  {
+    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+    "url": "${grpcExtensionAddress}",
+    "credentials": 
+    {
+      "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+      "username": "${grpcExtensionUserName}",
+      "password": "${grpcExtensionPassword}"
+    }
+  },
+    // Optional server configuration string. This is server specific 
+  "extensionConfiguration": "{Optional extension specific string}",
+  "dataTransfer": 
+  {
+    "mode": "sharedMemory",
+    "SharedMemorySizeMiB": "5"
+  }
+    //Other fields omitted
+}
+```
 
 ## <a name="using-grpc-over-tls"></a>TLS üzerinden gRPC kullanma
 

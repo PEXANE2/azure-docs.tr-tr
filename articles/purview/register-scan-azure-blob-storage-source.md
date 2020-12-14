@@ -1,20 +1,20 @@
 ---
 title: Azure Storage blob 'unu tarama
 description: Azure takip görünümü veri kataloğunuzda Azure Blob depolamayı taramayı öğrenin.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 6d2e2316525465c1ef9f58e7b83b8d0e99d46bd4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555499"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400718"
 ---
-# <a name="register-and-scan-azure-blob-storage"></a>Azure Blob depolamayı kaydetme ve tarama
+# <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Depolamayı kaydetme ve tarama
 
 Bu makalede bir Azure Blob depolama hesabının nasıl kaydedileceği ve bir tarama ayarlandığı özetlenmektedir.
 
@@ -22,7 +22,7 @@ Bu makalede bir Azure Blob depolama hesabının nasıl kaydedileceği ve bir tar
 
 Azure Blob depolama, meta verileri ve şemayı yakalamak için tam ve artımlı taramaları destekler. Ayrıca, verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Azure purview veri kaynağı Yöneticisi olmanız gerekir

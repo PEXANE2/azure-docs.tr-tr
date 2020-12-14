@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483963"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401160"
 ---
 # <a name="speech-service-release-notes"></a>Konuşma hizmeti sürüm notları
+
+## <a name="text-to-speech-2020-december-release"></a>Metinden konuşmaya 2020-Aralık yayını
+
+**GA ve Preview 'da yeni sinir sesleri**
+
+54 diller/yerel ayarlar arasında Toplam 129 sinir seste 51 yeni ses yayınlandı:
+
+- **46 yeni ses GA yerel ayarlar**: Arapça `ar-EG` (Mısır), `ar-SA` Arapça (Suudi Arabistan), Shakir (Bulgaristan), Katalanca (Bulgarca), Katalanca (Ispanya), Marana, (Çek Cumhuriyeti), Danca (Danimarka) ile Jonas, Almanca (Avusturya), Almanca (İsviçre), Kuzey (Yunanistan), Yunanca (Yunanistan), İngilizce (Kanada), İngilizce (Kanada), Doğu ve İngilizce (İrlanda), Hintçe (Hindistan), Tamil dili (Hindistan), Katalanca (İspanya), en düşük (İsviçre), Finlandiya 'Ta kert (Estonya), Fince (Finlandiya), Kuzey Kuzey (Finlandiya), Fince (Finlandiya), Kuzey (Finlandiya), `bg-BG` `ca-ES` `cs-CZ` `da-DK` `de-AT` `de-CH` `el-GR` `en-CA` `en-IE` `en-IN` `en-IN` `en-IN` `en-IN` `es-ES` `et-EE` `fi-FI` `fi-FI` Kuzey (İsviçre), Içte, `fr-CH` `ga-IE` Avrı `he-IL` İbranice (Israil), Hırvatça 'de Srecko `hr-HR` (Hırvatistan), tamas Içinde (Macaristan), gadis (Endonezya), (Endonezya), (Macarca), (Endonezya), `hu-HU` `id-ID` LEONAS `lt-LT` Litvanca (Litvanya `lv-LV` `ms-MY` `mt-MT` ),, Letonca (Letonya), , Norveççe 'de Finn, Bokmål (Norveç), Norveççe (Norveç), Bokmål (Norveç), Hollanda dili (Hollanda), Hollanda dili (Hollanda), Felemenkçe (Hollanda), Lehçe (Polonya), Lehçe (Polonya), Portekizce (Brezilya), Portekizce (Brezilya), Portekizce (Brezilya), Portekizce (Brezilya), Çemel Svetlana Rusça (Rusya), Lukas: Slovakça (Slovakya), Slovence (Slovenya), İsviçre 'de Yark (Slovak), İsveççe (İsviçre), İsveç dili (İsveç), deniz WAT (İsviçre), Vietnam dili (Türkiye), `nb-NO` `nb-NO` `nl-NL` `nl-NL` `pl-PL` `pl-PL` `pt-BR` `pt-PT` `ro-RO` Vietnam dili `ru-RU` `ru-RU` `sk-SK` `sl-SI` `sv-SE` `sv-SE` `th-TH` `tr-TR` `vi-VN` (Vietnam), `zh-TW` Kiwanese Mandarin (Tayvan), YunJhe ın `zh-TW` Taiwanese Mandarin (Tayvan), `zh-HK` Çin Cantonetik (Hong Kong), `zh-HK` Çince cantonetik (Hong Kong) içinde wanlung.
+
+- **Önizleme yerel ayarları 'nda 5 yeni ses**: `et-EE` Estonya dili (Estonya), birlikte `ga-IE` İrlanda 'da (İrlanda), Litvanya 'daki (Letonya), `lv-LV` LEONAS, `lt-LT` Litvanca (Litvanya `mt-MT` ), Joseph içinde (Malta)
+
+Bu sürümle birlikte, artık 54 dil/yerel ayarlarda Toplam 129 sinir sesi destekliyoruz. Ayrıca, 70 standart sesten fazla 49 dil/yerel ayarlar. Tam liste için [dil desteğini](language-support.md#text-to-speech) ziyaret edin.
+
+**Ses Içeriği oluşturma güncelleştirmeleri**
+- Ses kategorileri ve ayrıntılı ses açıklamaları ile iyileştirilmiş sesli seçim Kullanıcı arabirimi. 
+- Farklı dillerdeki tüm sinir seslerine yönelik ayarlama ayarı etkinleştirildi.
+- Tarayıcının diline göre otomatik kullanıcı arabirimi yerelleştirimi.
+- `StyleDegree`Tüm `zh-CN` sinir seslerine yönelik etkin denetimler.
+Yeni özellikleri kullanıma almak için [Ses Içeriği oluşturma aracı](https://speech.microsoft.com/audiocontentcreation) 'nı ziyaret edin. 
+
+**Zh-CN seslerindeki güncelleştirmeler**
+- Tüm `zh-CN` sinir sesleri, İngilizce konuşmayı destekleyecek şekilde güncelleştirildi.
+- Tüm `zh-CN` sinir sesleri, iç içe ayarlamayı destekleyecek şekilde etkinleştirildi. En iyi şekilde ayarlanması için SSML veya ses Içeriği oluşturma aracı kullanılabilir.
+- Tüm `zh-CN` Multi-Style sinir sesleri, denetimi destekleyecek şekilde güncelleştirildi `StyleDegree` . Duygu yoğunluğu (geçici veya güçlü) ayarlanabilir.
+- `zh-CN-YunyeNeural`Farklı lamalar gerçekleştirebilen birden çok stili destekleyecek şekilde güncelleştirildi.
+
+## <a name="text-to-speech-2020-november-release"></a>Metinden konuşmaya 2020-Kasım sürümü
+
+**Önizlemede yeni yerel ayarlar ve sesler**
+- Sinir TTS portföyüne **beş yeni ses ve dil** eklenmiştir. Bunlar şunlardır: Malta dili (Malta), y de Litvanca (Litvanya), Estonca (Estonya), Orla, Irlanda 'da (Irlanda) ve Everita, Letonca (Letonya) içinde mehil süresi.
+- **`zh-CN` Birden çok stil ve rol içeren beş yeni ses desteği**: Xiaohan, Xiaomo, Xiaoruı, Xiaoxuan ve Yunxi.
+
+> Bu sesler üç Azure bölgesinde genel önizlemede sunulmaktadır: EastUS, Güneydoğu ve WestEurope.
+
+**Sinir TTS kapsayıcısı GA**
+- Sinir TTS kapsayıcısı sayesinde geliştiriciler, belirli güvenlik ve veri idare gereksinimleri için kendi ortamlarında en doğal dijital seslerle konuşma birleştirmelerini çalıştırabilir. [Konuşma kapsayıcılarını yüklemeyi](speech-container-howto.md)denetleyin. 
+
+**Yeni özellikler**
+- **Özel ses**: bir bir bölgeden diğerine ses modeli kopyalamak için oped kullanıcılar; Desteklenen uç nokta askıya alma ve sürdürme. [Portala](https://speech.microsoft.com/customvoice) buradan gidin.
+- [SSML sessizlik etiketi](speech-synthesis-markup.md#add-silence) desteği. 
+- Genel TTS ses kalitesi geliştirmeleri: NB-NO ' da geliştirilmiş sözcük düzeyi telaffuz doğruluğu. %53 telaffuz hatası azaltılmıştır.
+
+> [Bu teknik blogda](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604)daha fazla bilgi edinin.
 
 ## <a name="text-to-speech-2020-october-release"></a>Metin okuma 2020-Ekim yayını
 
@@ -407,7 +450,7 @@ Sağlıklı olun!
 - C#: [DIL kimliği](./how-to-automatic-language-detection.md?pivots=programming-language-csharp) ve [kaynak dil yapılandırması](./how-to-specify-source-language.md?pivots=programming-language-csharp) artık kullanılabilir.
 - JavaScript: `Connection` nesneye, konuşma hizmetinden geri arama olarak özel iletiler geçirmek için bir özellik eklenmiştir `receivedServiceMessage` .
 - JavaScript: `FromHost API` Şirket içi kapsayıcılar ve bağımsız bulutlarla kullanım kolaylığı sağlamak için desteği eklendi. [Belgelere bakın](speech-container-howto.md).
-- JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [orgads](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
+- JavaScript: artık orgads ' `NODE_TLS_REJECT_UNAUTHORIZED` dan bir katkı için teşekkürler [](https://github.com/orgads). [Ayrıntılara bakın](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75).
 
 **Yeni değişiklikler**
 

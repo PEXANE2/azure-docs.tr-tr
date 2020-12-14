@@ -1,18 +1,18 @@
 ---
 title: "Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)"
 description: Bu öğreticide, Sözlük terimleri oluşturma, bir varlığa Sözlük terimleri ekleme ve sözlük koşullarını içeri aktarma açıklanır.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3a81d9480dfb07703d5f1ccfb495d069f140dd71
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555841"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399817"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)
 
@@ -31,15 +31,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Bir varlığa Sözlük terimleri ekleyin.
 > * Sözlük koşullarını içeri aktarın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tüm [öğretici: Azure purview (Önizleme) içinde kaynak kümelerini, ayrıntıları, şemaları ve sınıflandırmaları araştırma](tutorial-schemas-and-classifications.md).
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalında](https://portal.azure.com) oturum açın.
+[Azure portalda](https://portal.azure.com) oturum açın.
 
-## <a name="create-glossary-terms"></a>Sözlük terimleri oluştur
+## <a name="create-glossary-terms"></a>Sözlük terimleri oluşturma
 
 Sözlükte iş veya teknik koşullar oluşturabilirsiniz. Ayrıca, bunlara hüküm uygulayarak varlıklara açıklama ekleyebilirsiniz.
 
@@ -167,7 +167,7 @@ Daha sonra, oluşturduğunuz **duyarlılık düzeyi** şablonunu kullanarak yeni
 
    Zaten mevcut olmayan **Ilgili şartlar** veya **eş anlamlılar** sütununda listelenen herhangi bir terim, dosya karşıya yüklenirken oluşturulacaktır. Bunlar, **sistem varsayılan** şablonu kullanılarak oluşturulur.
 
-1. Dosyayı karşıya yüklemek için **terimleri Içeri aktarma** ekranına dönün ve Tamam ' ı seçerek **Browse** Tamam ' ı seçin **. Karşıya yüklenecek CSV dosyası** kutusu. Açılan iletişim kutusunda dosyanızı seçin ve ardından **Tamam**' ı seçin.
+1. Dosyayı karşıya yüklemek için **terimleri Içeri aktarma** ekranına dönün ve Tamam ' ı seçerek  Tamam ' ı seçin **. Karşıya yüklenecek CSV dosyası** kutusu. Açılan iletişim kutusunda dosyanızı seçin ve ardından **Tamam**' ı seçin.
 
 1. Yeni terimler artık **Sözlük terimleri** ekranında listelenmiştir. Listedeki terim adına tıklayarak yeni koşullara ilişkin ayrıntıları görüntüleyebilirsiniz.
 

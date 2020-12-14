@@ -7,18 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 4d87602ccd0ff576c0580f9cc20b475335ee577f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109190"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400480"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure geçişi 'ndeki yenilikler
 
 [Azure geçişi](migrate-services-overview.md) , şirket içi sunucuları, uygulamaları ve verileri Microsoft Azure bulutuna keşfetmenize, değerlendirmenize ve geçirmenize yardımcı olur. Bu makalede, Azure geçişi 'ndeki yeni sürümler ve Özellikler özetlenmektedir.
 ## <a name="update-december-2020"></a>Güncelleştirme (Aralık 2020)
 - Azure geçişi artık, VMware geçiş 'nin aracısız yöntemini kullanarak Azure VM aracısını VMware VM 'lerine otomatik olarak Azure 'a geçirirken VMware VM 'lerine otomatik olarak yüklenir.
+- VMware VM 'lerinin, müşteri tarafından yönetilen anahtarlarla (CMK) birlikte sunucu tarafı şifreleme (SSE) kullanılarak şifrelenmiş disklerle Azure sanal makinelerine geçirilmesi, Azure geçişi sunucu geçişini (aracısız çoğaltma) kullanarak artık Azure portal aracılığıyla kullanıma sunulmuştur.
 
 ## <a name="update-september-2020"></a>Güncelleştirme (Eylül 2020)
 - Sunucuların Kullanılabilirlik Alanları geçişi artık desteklenmektedir.

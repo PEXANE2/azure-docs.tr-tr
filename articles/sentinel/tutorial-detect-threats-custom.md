@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652119"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401653"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Öğretici: tehditleri algılamak için özel analiz kuralları oluşturma
 
@@ -80,7 +80,7 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
           > **Alma gecikmesi**
           > - Kaynaktaki bir olayın oluşturulması ve Azure Sentinel 'e alımı arasında oluşabilecek **gecikme süresini** hesaba katmak ve veri çoğaltma olmadan tam kapsama sağlamak Için, Azure Sentinel zamanlanan analiz kurallarını zamanlanan zamanlarından **beş dakikalık bir gecikmeyle** çalıştırır.
 
-    1. Bir taban çizgisi tanımlamak için **uyarı eşiği** bölümünü kullanın. Örneğin, **sorgu sonucu sayısı şundan büyük olduğunda uyarı üret** ' i **Is greater than** ayarlayın ve kuralın yalnızca sorgu her çalıştığında 1000 ' den fazla sonuç döndürürse bir uyarı oluşturmasını istiyorsanız 1000 numarasını girin. Bu gerekli bir alandır. bu nedenle, bir taban çizgisi ayarlamak istemiyorsanız (yani, uyarının her olayı kaydetmesini istiyorsanız) sayı alanına 0 girin.
+    1. Bir taban çizgisi tanımlamak için **uyarı eşiği** bölümünü kullanın. Örneğin, **sorgu sonucu sayısı şundan büyük olduğunda uyarı üret** ' i  ayarlayın ve kuralın yalnızca sorgu her çalıştığında 1000 ' den fazla sonuç döndürürse bir uyarı oluşturmasını istiyorsanız 1000 numarasını girin. Bu gerekli bir alandır. bu nedenle, bir taban çizgisi ayarlamak istemiyorsanız (yani, uyarının her olayı kaydetmesini istiyorsanız) sayı alanına 0 girin.
     
     1. **Olay gruplandırması** altında, **olayların** gruplandırılmasına yönelik iki yönden birini **seçin:** 
 
@@ -114,7 +114,7 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
     1. **Olay ayarları** bölümünde, **Bu analiz kuralı tarafından tetiklenen uyarılardan olaylar oluşturun** , varsayılan olarak **etkin** olarak ayarlanır, yani Azure Sentinel, her biri ve kural tarafından tetiklenen her uyarıdan tek ve ayrı bir olay oluşturur.
        - Bu kuralın herhangi bir olay oluşturmaya neden olmasını istemiyorsanız (örneğin, bu kural sonraki Analize ilişkin bilgileri toplamak için), bunu **devre dışı** olarak ayarlayın.
 
-    1. **Uyarı gruplama** bölümünde, tek bir olayın 150 benzer veya yinelenen uyarılarla (bkz. nota) oluşturulmasını istiyorsanız, **Bu analiz kuralı tarafından tetiklenen, grup ile ilgili uyarıları** ve aşağıdaki parametreleri ayarlayın. **Enabled**
+    1. **Uyarı gruplama** bölümünde, tek bir olayın 150 benzer veya yinelenen uyarılarla (bkz. nota) oluşturulmasını istiyorsanız, **Bu analiz kuralı tarafından tetiklenen, grup ile ilgili uyarıları** ve aşağıdaki parametreleri ayarlayın. 
 
     - **Grubu seçilen zaman çerçevesinde oluşturulan uyarılarla sınırlayın**: benzer veya yinelenen uyarıların birlikte gruplandırılacağı zaman çerçevesini belirleme. Bu zaman çerçevesinde karşılık gelen tüm uyarılar toplu olarak bir olay veya bir olay kümesi oluşturur (aşağıdaki gruplandırma ayarlarına bağlı olarak). Bu zaman dilimi dışındaki uyarılar, ayrı bir olay veya olay kümesi oluşturur.
 
@@ -145,7 +145,13 @@ Ortamınızda şüpheli olan tehditler ve bozukluklar için arama yapmanıza yar
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Zamanlanmış bir kural yürütülemedi veya OTOMATIK devre DıŞı olarak ada eklenmiş şekilde görünür
+### <a name="issue-no-events-appear-in-query-results"></a>Sorun: sorgu sonuçlarında hiçbir olay görünmüyor
+
+**Olay gruplama** , **her olay için bir uyarı tetikleyecek** şekilde ayarlandıysa, bazı senaryolarda sorgu sonuçlarını daha sonra (örneğin, bir olaydan uyarılara özetleme gibi) görüntülerken, hiçbir sorgu sonucu görünmeyecektir. Bunun nedeni, olayın uyarı bağlantısının, belirli olay bilgilerinin karmasında ve karmayı sorguya dahil edilmesi nedeniyle yapılır. Uyarı oluşturulduktan sonra sorgu sonuçları değiştiyse, karma artık geçerli olmaz ve hiçbir sonuç görüntülenmez. 
+
+Olayları görmek için, kuralın sorgusundan karmayı içeren satırı el ile kaldırın ve sorguyu çalıştırın.
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Sorun: zamanlanmış bir kural yürütülemedi veya OTOMATIK devre DıŞı olarak ada eklenmiş şekilde görünür
 
 Zamanlanmış bir sorgu kuralının çalışamamasından kaynaklanabilir, ancak bu durum oluşabilir. Azure Sentinel, hatanın belirli türüne ve kendisine yönelik koşullara göre geçici ya da kalıcı olarak, hataları ortaya çıkarak sınıflandırır.
 

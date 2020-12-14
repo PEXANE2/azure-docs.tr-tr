@@ -3,12 +3,12 @@ title: Medya grafiği kavramı-Azure
 description: Medya grafiği, medyanın nerede yakalanabileceğini, nasıl işleneceğini ve sonuçların nereye teslim edileceğini tanımlamanızı sağlar. Bu makale, medya grafiği kavramının ayrıntılı bir açıklamasını vermektedir.
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 5efb62440b52d6219373d15ba3d19ddac1a2a834
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97007849"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401109"
 ---
 # <a name="media-graph"></a>Medya grafiği
 
@@ -87,6 +87,8 @@ Hareket algılama işlemcisi düğümü, canlı video 'daki hareketi algılaman�
 #### <a name="frame-rate-filter-processor"></a>Çerçeve hızı filtre işlemcisi  
 
 Çerçeve hızı filtresi işlemci düğümü, gelen video akışından belirtilen bir hızda çerçeveler örneklemenizi sağlar. Bu, daha fazla işleme için aşağı akış bileşenlerine (HTTP uzantısı işlemci düğümü gibi) gönderilen çerçevelerin sayısını azaltmanıza olanak sağlar.
+>[!WARNING]
+> Bu işlemci, IoT Edge modülündeki canlı video analizinin en son sürümünde **kullanımdan kaldırılmıştır** . Çerçeve hızı yönetimi artık grafik uzantısı işlemcilerinin içinde destekleniyor.
 
 #### <a name="http-extension-processor"></a>HTTP uzantısı işlemcisi
 
@@ -108,8 +110,9 @@ Bir varlık havuzu düğümü, bir Azure Media Services varlığına medya (vide
 
 #### <a name="file-sink"></a>Dosya havuzu  
 
-Dosya havuzu düğümü, IoT Edge cihazının yerel dosya sistemindeki bir konuma medya (video ve/veya ses) verileri yazmanızı sağlar. Bir medya grafiğinde yalnızca bir dosya havuzu düğümü olabilir ve sinyal kapısı işlemci düğümünün bir aşağı akış olması gerekir. Bu, çıkış dosyalarının süresini sinyal kapısı işlemci düğümü özelliklerinde belirtilen değerlerle sınırlandırır.
-
+Dosya havuzu düğümü, IoT Edge cihazının yerel dosya sistemindeki bir konuma medya (video ve/veya ses) verileri yazmanızı sağlar. Bir medya grafiğinde yalnızca bir dosya havuzu düğümü olabilir ve sinyal kapısı işlemci düğümünün bir aşağı akış olması gerekir. Bu, çıkış dosyalarının süresini sinyal kapısı işlemci düğümü özelliklerinde belirtilen değerlerle sınırlandırır. Edge cihazınızın disk alanı tükendiğinden emin olmak için, IoT Edge modülündeki canlı video analizinin verileri depolamak için kullanabileceği en büyük boyutu da ayarlayabilirsiniz.  
+> [!NOTE]
+Dosya havuzu tam alırsa, IoT Edge modüldeki canlı video analizi en eski verileri silmeye başlar ve yeni bir dosyayla değiştirir.
 #### <a name="iot-hub-message-sink"></a>IoT Hub ileti havuzu  
 
 Bir IoT Hub ileti havuzu düğümü, olayları IoT Edge hub 'a yayımlamanıza olanak sağlar. IoT Edge Hub daha sonra verileri uç cihazdaki diğer modüllere veya uygulamalara yönlendirebilir veya bulutta IoT Hub (dağıtım bildiriminde belirtilen yollar başına). IoT Hub ileti havuzu düğümü, bir hareket algılama işlemcisi düğümü veya bir dış çıkarım hizmetinden bir HTTP uzantısı işlemci düğümü aracılığıyla olayları kabul edebilir.

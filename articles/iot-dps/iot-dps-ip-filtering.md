@@ -6,13 +6,13 @@ ms.author: wesmc
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 03/12/2020
-ms.openlocfilehash: 4067d157a13618b008e2cb1a5fee31259bfd43a9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/14/2020
+ms.openlocfilehash: 6ff5731e7d346c954253ec4186357595461b7678
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094361"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400278"
 ---
 # <a name="use-azure-iot-dps-ip-connection-filters"></a>Azure IoT DPS IP bağlantı filtrelerini kullanma
 
@@ -58,7 +58,7 @@ Alanları doldurduktan sonra **Kaydet**'i seçerek kuralı kaydedin. Güncelleş
 
 ![IP filtresi kuralını kaydetme bildirimi](./media/iot-dps-ip-filtering/ip-filter-save-new-rule.png)
 
-IP filtresi kurallarının üst sınırı olan 10 kurala ulaştığınızda **Ekle** seçeneği devre dışı bırakılır.
+En fazla 100 IP filtresi kuralına ulaştığınızda **Ekle** seçeneği devre dışıdır.
 
 Mevcut kuralı düzenlemek için, değiştirmek istediğiniz verileri seçin, değişikliği yapın ve sonra da **Kaydet**'i seçerek düzenlemenizi kaydedin.
 
