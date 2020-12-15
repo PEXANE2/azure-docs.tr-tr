@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 041229ffb047c922e1f1f97993fada3841133d35
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eae72b38d36348a6bdc98d3cbd98a5a712b3161
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489658"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399307"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Azure Service Bus kuyruklarından ileti gönderme ve iletileri alma (Java)
 Bu hızlı başlangıçta, bir Azure Service Bus sırasından ileti göndermek ve ileti almak için bir Java uygulaması oluşturacaksınız. 
@@ -221,9 +221,7 @@ Aşağıdaki belgelere ve örneklere bakın:
 
 - [Java için Azure Service Bus istemci kitaplığı-Benioku](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [GitHub’daki örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java API'si başvurusu](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
-
-[GitHub 'da daha fazla örnek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus)görüntüleyin. 
+- [Java API'si başvurusu](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-stable)
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

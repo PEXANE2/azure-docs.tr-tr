@@ -8,22 +8,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 10/10/2019
+ms.date: 12/04/2020
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: f74cdb700013dc9b124c6a2df195456f08e4b60a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29f33f05c2883fe0696ea7769ac655e91aeb0b42
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182147"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399705"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri
 
 Bulut özellikli [bir hizmet olarak yazılım (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) uygulaması Azure Active Directory ile tümleştirmenize yardımcı olmak için, yapılandırma boyunca size kılavuzluk eden bir öğretici koleksiyonu geliştirdik.
 
-Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps).
+Azure AD ile önceden tümleştirilmiş olan tüm SaaS uygulamalarının listesi için bkz. [market Active Directory](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
 
 Otomatik sağlama galerisine veya SSO galerisine eklenecek bir SAML/OıDC özellikli uygulamaya eklenecek bir [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) etkin uygulaması istemek için [uygulama ağ portalı](../develop/v2-howto-app-gallery-listing.md) 'nı kullanın.
 
@@ -60,10 +60,14 @@ Daha fazla öğretici bulmak için sol taraftaki İçindekiler tablosunu kullan�
 | ![Logo-genlik](./media/tutorial-list/active-directory-saas-amplitude-tutorial.png)| [Amplitude](amplitude-tutorial.md)|
 | ![Logo-Appraisd](./media/tutorial-list/active-directory-saas-appraisd-tutorial.png)| [Appraisd](appraisd-tutorial.md)|
 | ![Logo-argıs Enterprise](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS Enterprise](arcgisenterprise-tutorial.md)|
+| ![Logo-AskYourTeam](./media/tutorial-list/active-directory-saas-askyourteam-tutorial.png)| [AskYourTeam](askyourteam-tutorial.md)|
 | ![Logo-Atlasme bulutu](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
+| ![Logo-kutu](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [Box](box-tutorial.md)|
 | ![Logo-Carbonite uç noktası yedeklemesi](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
 | ![Logo-Cakesa](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|
 | ![Logo-Cisco WebEx](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-spark-tutorial.md)|
+| ![Logo-Citrix ShareFile](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
+| ![Logo-Concur seyahat ve harcama](./media/tutorial-list/active-directory-saas-concur-travel-and-expense-tutorial.png)| [Concur Travel and Expense](concur-travel-and-expense-tutorial.md)|
 | ![Logo-Deskradar](./media/tutorial-list/active-directory-saas-deskradar-tutorial.png)| [Deskradar](deskradar-tutorial.md)|
 | ![Logo-Displayr](./media/tutorial-list/active-directory-saas-displayr-tutorial.png)| [Displayr](displayr-tutorial.md)|
 | ![Logo-dmarcian](./media/tutorial-list/active-directory-saas-dmarcian-tutorial.png)| [dmarcian](dmarcian-tutorial.md)|
@@ -71,6 +75,10 @@ Daha fazla öğretici bulmak için sol taraftaki İçindekiler tablosunu kullan�
 | ![Logo-Dome9 yay](./media/tutorial-list/active-directory-saas-dome9arc-tutorial.png)| [Dome9 Arc](dome9arc-tutorial.md)|
 | ![Logo-DRFT](./media/tutorial-list/active-directory-saas-drift-tutorial.png)| [Drift](drift-tutorial.md)|
 | ![Logo-Iş için Dropbox](./media/tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox for Business](dropboxforbusiness-tutorial.md)|
+| ![Bamboo için logo-EasySSO](./media/tutorial-list/active-directory-saas-easy-sso-for-bamboo-tutorial.png)| [Bamboo için EasySSO](easysso-for-bamboo-tutorial.md)|
+| ![Bit demeti için logo-EasySSO](./media/tutorial-list/active-directory-saas-easy-sso-for-bitbucket-tutorial.png)| [BitBucket için EasySSO](easysso-for-bitbucket-tutorial.md)|
+| ![Bu, Confluence için logo-EasySSO](./media/tutorial-list/active-directory-saas-easy-sso-for-confluence-tutorial.png)| [Confluence için EasySSO](easysso-for-confluence-tutorial.md)|
+| ![Logo-Ekarda](./media/tutorial-list/active-directory-saas-ekarda-tutorial.png)| [Ekarda](ekarda-tutorial.md)|
 | ![Logo-Elium](./media/tutorial-list/active-directory-saas-elium-tutorial.png)| [Elium](elium-tutorial.md)|
 | ![Logo-Envoy](./media/tutorial-list/active-directory-saas-envoy-tutorial.png)| [Envoy](envoy-tutorial.md)|
 | ![Logo-Evernote](./media/tutorial-list/active-directory-saas-evernote-tutorial.png)| [Evernote](evernote-tutorial.md)|
@@ -83,29 +91,39 @@ Daha fazla öğretici bulmak için sol taraftaki İçindekiler tablosunu kullan�
 | ![Logo-yardım Scout](./media/tutorial-list/active-directory-saas-helpscout-tutorial.png)| [Help Scout](helpscout-tutorial.md)|
 | ![Logo-Hightail](./media/tutorial-list/active-directory-saas-hightail-tutorial.png)| [Hightail](hightail-tutorial.md)|
 | ![Logo-Hrçalışmatek Sign-On](./media/tutorial-list/active-directory-saas-hrworks-single-sign-on-tutorial.png)| [HRworks Single Sign-On](hrworks-single-sign-on-tutorial.md)|
+| ![Logo-görme](./media/tutorial-list/active-directory-saas-invision-tutorial.png)| [InVision](invision-tutorial.md)|
 | ![Logo-JAMF Pro](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|
 | ![Logo-Kanbanize](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|
 | ![Logo-bilgi her yerde LMS](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|
+| ![Logo-Litmus](./media/tutorial-list/active-directory-saas-litmus-tutorial.png)| [Litmus](litmus-tutorial.md)|
+| ![Logo-Meraki panosu](./media/tutorial-list/active-directory-saas-meraki-dashboard-tutorial.png)| [Meraki Panosu](meraki-dashboard-tutorial.md)|
 | ![logo-monday.com](./media/tutorial-list/active-directory-saas-mondaycom-tutorial.png)| [monday.com](mondaycom-tutorial.md)|
 | ![Logo-MyWorkDrive](./media/tutorial-list/active-directory-saas-myworkdrive-tutorial.png)| [MyWorkDrive](myworkdrive-tutorial.md)|
 | ![Logo-Nuclino](./media/tutorial-list/active-directory-saas-nuclino-tutorial.png)| [Nuclino](nuclino-tutorial.md)|
 | ![Logo-OneDesk](./media/tutorial-list/active-directory-saas-onedesk-tutorial.png)| [OneDesk](onedesk-tutorial.md)|
+| ![Logo-OpsGenie](./media/tutorial-list/active-directory-saas-opsgenie-tutorial.png)| [OpsGenie](opsgenie-tutorial.md)|
 | ![Logo-kişiler](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [People](people-tutorial.md)|
 | ![Logo-productboard](./media/tutorial-list/active-directory-saas-productboard-tutorial.png)| [productboard](productboard-tutorial.md)|
 | ![Logo-PurelyHR](./media/tutorial-list/active-directory-saas-purelyhr-tutorial.png)| [PurelyHR](purelyhr-tutorial.md)|
 | ![Logo-halka orta](./media/tutorial-list/active-directory-saas-ringcentral-tutorial.png)| [RingCentral](ringcentral-tutorial.md)|
 | ![Logo-Salesforce](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)|
+| ![Logo-SAP bulut platformu kimlik doğrulaması](./media/tutorial-list/active-directory-saas-sap-hana-tutorial.png)| [SAP Cloud Platform Kimlik Doğrulaması](sap-hana-cloud-platform-identity-authentication-tutorial.md)|
 | ![Logo-ScaleX kurumsal](./media/tutorial-list/active-directory-saas-scalex-enterprise-tutorial.png)| [ScaleX Enterprise](scalex-enterprise-tutorial.md)|
 | ![Logo-ekran kaydı-O-tek](./media/tutorial-list/active-directory-saas-screencast-tutorial.png)| [Screencast-O-Matic](screencast-tutorial.md)|
+| ![Logo-bolluk](./media/tutorial-list/active-directory-saas-slack-tutorial.png)| [Slack](slack-tutorial.md)|
 | ![Logo-SmartDraw](./media/tutorial-list/active-directory-saas-smartdraw-tutorial.png)| [SmartDraw](smartdraw-tutorial.md)|
 | ![Logo-Soloinsight-CloudGate SSO](./media/tutorial-list/active-directory-saas-soloinsight-cloudgate-sso-tutorial.png)| [Soloinsight-CloudGate SSO](soloinsight-cloudgate-sso-tutorial.md)|
+| ![Logo-Tableau çevrimiçi](./media/tutorial-list/active-directory-saas-tableau-online-tutorial.png)| [Tableau Online](tableauonline-tutorial.md)|
 | ![Logo-TargetProcess](./media/tutorial-list/active-directory-saas-target-process-tutorial.png)| [TargetProcess](target-process-tutorial.md)|
 | ![Logo-Teamphoria](./media/tutorial-list/active-directory-saas-teamphoria-tutorial.png)| [Teamphoria](teamphoria-tutorial.md)|
 | ![Logo-TextMagic](./media/tutorial-list/active-directory-saas-textmagic-tutorial.png)| [TextMagic](textmagic-tutorial.md)|
+| ![Logo-güvenle](./media/tutorial-list/active-directory-saas-upshotly-tutorial.png)| [Upshotly](upshotly-tutorial.md)|
 | ![Logo-Velpıc SAML](./media/tutorial-list/active-directory-saas-velpicsaml-tutorial.png)| [Velpic SAML](velpicsaml-tutorial.md)|
 | ![Logo-Wandera](./media/tutorial-list/active-directory-saas-wandera-tutorial.png)| [Wandera](wandera-tutorial.md)|
 | ![Logo-renklere göre Izle](./media/tutorial-list/active-directory-saas-watch-by-colors-tutorial.png)| [Watch by Colors](watch-by-colors-tutorial.md)|
 | ![Logo-yöntemi](./media/tutorial-list/active-directory-saas-waywedo-tutorial.png)| [Way We Do](waywedo-tutorial.md)|
+| ![Logo-Whimsical](./media/tutorial-list/active-directory-saas-whimsical-tutorial.png)| [Whimsical](whimsical-tutorial.md)|
+| ![Logo-WhosOffice](./media/tutorial-list/active-directory-saas-whosoffice-tutorial.png)| [WhosOffice](whosoffice-tutorial.md)|
 | ![Logo-Facebook tarafından çalışma alanı](./media/tutorial-list/active-directory-saas-workplacebyfacebook-tutorial.png)| [Workplace by Facebook](workplacebyfacebook-tutorial.md)|
 | ![Logo-Workteam](./media/tutorial-list/active-directory-saas-workteam-tutorial.png)| [Workteam](workteam-tutorial.md)|
 | ![Logo-XaitPorter](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|

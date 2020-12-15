@@ -1,18 +1,18 @@
 ---
 title: Dağıtım en iyi uygulamaları
 description: Bu makalede, Azure purview dağıtımı için en iyi yöntemler sunulmaktadır. Azure takip görünümü, herhangi bir kullanıcının veri kaynaklarını kaydetmesini, bulmasını, anlamasını ve kullanmasını sağlar.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96554173"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400701"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Azure purview dağıtımı en iyi uygulamaları
 
@@ -24,7 +24,7 @@ Bir veri yönetimi platformunun (Azure purview gibi) iyi planlanmış bir dağı
 - Geliştirilmiş analitik işbirliği
 - Büyütülmüş, yatırımdaki dönüş.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Geliştirme veya üretim aboneliğiyle Microsoft Azure erişim
 * Purview dahil Azure kaynakları oluşturma yeteneği
@@ -49,7 +49,7 @@ Erken aşamalarda tanımlamak isteyebileceğiniz bazı yaygın veri idare hedefl
 
 Genel yaklaşım, bu fazla bu hedefleri çeşitli kategorilere ve hedeflere bölmek için kullanılır. Bazı örnekler şunlardır:
 
-|Category|Hedef|
+|Kategori|Hedef|
 |---------|---------|
 |Bulma|Yönetici kullanıcılar, veri varlıkları ile ilgili bilgileri otomatik olarak toplamak için Azure ve Azure olmayan veri kaynaklarını (Şirket içi kaynaklar dahil) tarayabilmesi gerekir.|
 |Sınıflandırma|Platform, verileri bir örneklemeye göre otomatik olarak sınıflandırmalı ve özel sınıflandırmalar kullanarak el ile geçersiz kılmaya izin verir.|

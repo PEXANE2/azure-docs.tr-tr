@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4eb32243df219d721d7baae80984c45d0fc4cf25
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8ed834c9ab093ae063e386978bca4d73fa46543
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91345130"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400735"
 ---
 # <a name="debug-azure-api-management-policies-in-visual-studio-code"></a>Visual Studio Code Azure API Management ilkeleri hatalarını ayıklama
 
@@ -28,11 +28,13 @@ Bu makalede [Visual Studio Code Için Azure API Management uzantısı](https://m
 > [!NOTE]
 > Bu özellik genel önizleme aşamasındadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-Önce bu [öğreticiyi](get-started-create-service-instance.md) Izleyerek API Management geliştirici katmanı örneği oluşturun.
+* Önce bu [hızlı](get-started-create-service-instance.md) başlangıcı Izleyerek API Management geliştirici katmanı örneği oluşturun.
 
-Visual Studio Code için [Visual Studio Code](https://code.visualstudio.com/) ve [Azure API Management uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)en son sürümünü yükler. 
+* Visual Studio Code için [Visual Studio Code](https://code.visualstudio.com/) ve [Azure API Management uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-apimanagement)en son sürümünü yükler. 
+
+* API Management örneğine bir API aktarın. Örneğin adımları için bkz. [öğretici: API 'leri içeri aktarmak ve yönetmek için Visual Studio Code API Management uzantısını kullanın](visual-studio-code-tutorial.md).
 
 ## <a name="restrictions-and-limitations"></a>Kısıtlamalar ve sınırlamalar
 
