@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6b522f234343cc6a50d76607d1629c46cd180b7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894023"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508841"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -200,6 +200,7 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 * `en-US-GuyNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
+* `zh-CN-YunyeNeural`
 * `zh-CN-YunxiNeural` Önizle
 * `zh-CN-XiaohanNeural` Önizle
 * `zh-CN-XiaomoNeural` Önizle
@@ -243,7 +244,7 @@ Yukarıdaki değişiklikler tümce düzeyinde uygulanır ve stiller ve rol oynat
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
-| Ses                   | Stil                     | Description                                                 |
+| Ses                   | Stil                     | Açıklama                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Haber teslimi için resmi, güvenilir ve yetkili bir tonu ifade eder |
 |                         | `style="newscast-casual"` | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder        |
@@ -271,7 +272,14 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="gentle"`          | Daha düşük aralıklı ve Vocal enerji ile hafif, polite ve Pleasant tonu ifade eder         |   
 |                         | `style="lyrical"`         | Bir Melodic ve sentisel şekilde ifade eder         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  | 
-| `zh-CN-YunxiNeural`    | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+| `zh-CN-YunyeNeural`     | `style="calm"`            | Konuşurken seyrek erişimli, toplanan ve oluşan bir atnetme ifade eder. Ton, sıklık, Prosody, diğer konuşma türleriyle karşılaştırıldığında çok daha Tekdüzen.    | 
+|                         | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
+|                         | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
+|                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
+|                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
+|                         | `style="disgruntled"`     | Bir korinsuz ve şikayetçi tonu ifade eder. Bu duyuşun konuşmayı, depleasure ve Contempt 'yi görüntüler.              |
+|                         | `style="serious"`         | Katı ve bir komut veren tonu ifade eder. Konuşmacı genellikle, matemposunda ile daha az ve çok daha rahat bir şekilde ses çıkarabilir.          |
+| `zh-CN-YunxiNeural`     | `style="cheerful"`        | Daha yüksek aralıklı ve Vocal enerji ile bir UPA ve bir şü                         |
 |                         | `style="sad"`             | Daha yüksek bir sıklık, daha az yoğunluk ve daha düşük Vocal enerji ile bir sorun şiddetini ifade eder. Bu duygu tanıma 'un genel göstergeleri, konuşma sırasında göz çıkarıcılar veya eğitme olabilir.            |
 |                         | `style="angry"`           | Daha düşük bir, daha yüksek yoğunluk ve daha yüksek Vocal enerji ile birlikte bir angın ve annokızı ifade eder. Konuşmacı, IRate, görüntüleme kiraladığı ve boşaltmış bir durumdur.       |
 |                         | `style="fearful"`         | Daha yüksek aralıklı, daha yüksek Vocal enerji ve daha hızlı bir şekilde bir korya ve nervous sesini ifade eder. Konuşmacı, tenseness ve unkımın durumunda.                          |
@@ -383,7 +391,7 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | `time` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | İsteğe Bağlı |
 
-| Gücüyle                      | Description |
+| Gücüyle                      | Açıklama |
 |-------------------------------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS        |
 | x-zayıf                        | 250 MS      |
@@ -748,7 +756,7 @@ Sıklık değişiklikleri, standart seslere veya tümce düzeyinde uygulanabilir
 
 Ve öznitelikleri için desteklenen içerik türleri aşağıda verilmiştir `interpret-as` `format` . `format`Yalnızca `interpret-as` Tarih ve saat olarak ayarlandıysa özniteliği ekleyin.
 
-| farklı yorumlama | biçim | Yorumlama |
+| farklı yorumlama | biçim | Yorum |
 |--------------|--------|----------------|
 | `address` | | Metin bir adres olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />Yani "150th mahkeme, Kuzey Doğu Redmond Washington." |
 | `cardinal`, `number` | | Metin bir Kardinal sayı olarak konuşulur. Konuşma birleştirme motoru pronounces:<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"Üç alternatif vardır." |

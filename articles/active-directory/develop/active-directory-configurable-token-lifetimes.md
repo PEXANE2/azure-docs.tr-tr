@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/29/2020
+ms.date: 12/14/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 12d74e2f21678fdbb02719c29a31c0fcdc4fa132
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f73186612fe79af88e84956bb4d0f0b374f4c986
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030154"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507804"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Microsoft Identity platformunda yapılandırılabilir belirteç yaşam süreleri (Önizleme)
 
 > [!IMPORTANT]
-> %30 Ocak 2021 ' den sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak ve Azure Active Directory bu tarihten sonra ilkelerde yenileme ve oturum belirteci yapılandırmasını durdurur.
+> 2020 Mayıs 'tan sonra, kiracılar artık yenileme ve oturum belirteci yaşam sürelerini yapılandıramayacak.  Azure Active Directory, 30 Ocak 2021 ' den sonra ilkelerde bulunan mevcut yenileme ve oturum belirteci yapılandırmasını durdurur. Kullanımdan kaldırıldıktan sonra erişim belirteci yaşam sürelerini yapılandırabilirsiniz.
 >
-> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [Azure AD fiyatlandırma sayfasını](https://azure.microsoft.com/en-us/pricing/details/active-directory/)ziyaret edin.
+> Bir kullanıcının yeniden oturum açması istenmeden önce geçen süreyi tanımlamaya devam etmeniz gerekiyorsa, koşullu erişimde oturum açma sıklığını yapılandırın. Koşullu erişim hakkında daha fazla bilgi edinmek için [kimlik doğrulama oturumu yönetimini koşullu erişimle yapılandırma](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime)makalesini ziyaret edin.
 >
 > Kullanımdan kaldırma tarihinden sonra koşullu erişim kullanmak istemediğiniz kiracılar için, Azure AD 'nin bir sonraki bölümde özetlenen varsayılan yapılandırmayı kabul edebilecekleri bir işlem olabilir.
 

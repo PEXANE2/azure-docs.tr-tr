@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8594250d72754e6b7d2a6d8c27d3d5bcd0e9c8e4
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 16b924f486215d972477e93c4e199e7076a0a531
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920878"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508892"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal Azure Data Factory kullanarak birden çok tabloyu toplu olarak kopyalama
 
@@ -25,7 +25,7 @@ ms.locfileid: "96920878"
 Bu öğreticide **, Azure SQL veritabanından Azure SYNAPSE Analytics 'e kadar birçok tablo kopyalama** gösterilmektedir. Aynı düzeni diğer kopyalama senaryolarında da uygulayabilirsiniz. Örneğin, tabloları SQL Server/Oracle 'dan Azure SQL veritabanı/Azure SYNAPSE Analytics/Azure Blob 'a kopyalayarak blob 'tan Azure SQL veritabanı tablolarına farklı yollar kopyalarsınız.
 
 > [!NOTE]
-> - Azure Data Factory kullanmaya yeni başlıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
+> Azure Data Factory kullanmaya yeni başlıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
 
 Yüksek düzeyde, bu öğretici aşağıdaki adımları içerir:
 
@@ -99,9 +99,7 @@ Bu ayarı doğrulamak ve etkinleştirmek için, sunucunuza > güvenlik > güvenl
 1. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
    
 1. Data Factory kullanıcı arabirimi uygulamasını ayrı bir sekmede açmak için **Author & Monitor** (Oluştur ve İzle) kutucuğuna tıklayın.
-1. **Haydi** başlayın sayfasında, aşağıdaki görüntüde gösterildiği gibi sol paneldeki **Yazar** sekmesine geçin:
 
-     ![Başlarken sayfası](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
 Veri depolarınızı ve işlemlerinizi veri fabrikasına bağlamak için bağlı hizmetler oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin çalışma zamanında veri deposuna bağlanmak için kullandığı bağlantı bilgilerini içerir. 
@@ -177,7 +175,9 @@ Bu öğreticide, kaynak ve hedef SQL tabloları veri kümesi tanımında sabit k
 
 ### <a name="create-a-dataset-for-source-sql-database"></a>Kaynak SQL Veritabanı için veri kümesi oluşturma
 
-1. Sol bölmedeki **+ (artı)** seçeneğine ve ardından **veri kümesi**' ne tıklayın. 
+1. Sol bölmeden **Yazar** sekmesini seçin.
+
+1. **+** Sol bölmedeki (artı) öğesini seçin ve ardından **veri kümesi**' ni seçin. 
 
     ![Yeni veri kümesi menüsü](./media/tutorial-bulk-copy-portal/new-dataset-menu.png)
 1. **Yeni veri kümesi** PENCERESINDE **Azure SQL veritabanı**' nı seçin ve ardından **devam**' a tıklayın. 
@@ -277,7 +277,7 @@ Bu öğreticide, iki işlem hattı oluşturursunuz: **IterateAndCopySQLTables** 
     1. **Hazırlamayı etkinleştir** onay kutusunu seçin.
     1. **Depo Hesabı Bağlı Hizmeti** için **AzureStorageLinkedService** hizmetini seçin.
 
-1. İşlem hattı ayarlarını doğrulamak için üst işlem hattı araç çubuğunda **Doğrula**’ya tıklayın. Doğrulama hatası olmadığından emin olun. **İşlem Hattı Doğrulama Raporu**'nu kapatmak için **>>** seçeneğine tıklayın.
+1. İşlem hattı ayarlarını doğrulamak için üst işlem hattı araç çubuğunda **Doğrula**’ya tıklayın. Doğrulama hatası olmadığından emin olun. İşlem **hattı doğrulama raporunu** kapatmak için çift açılı ayraçları tıklatın **>>** .
 
 ### <a name="create-the-pipeline-gettablelistandtriggercopydata"></a>GetTableListAndTriggerCopyData işlem hattını oluşturma
 
@@ -285,6 +285,8 @@ Bu işlem hattı iki eylem yapar:
 
 * Kopyalanacak tabloların listesini almak için Azure SQL Veritabanı sistem tablosunu arar.
 * Gerçek veri kopyalamayı yapmak için "IterateAndCopySQLTables" işlem hattını tetikler.
+
+İşlem hattını oluşturma adımları aşağıda verilmiştir:
 
 1. Sol bölmede, **+ (artı)** düğmesine ve sonra da **İşlem Hattı**’na tıklayın.
 1. Genel panelinde **Özellikler** altında, işlem hattının adını **Gettablelistandtriggercopydata** olarak değiştirin. 

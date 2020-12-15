@@ -13,12 +13,12 @@ ms.date: 09/18/2020
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 5260ca049f971cce07659f12b54ce30304dd826d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f04a8aa96b51ac9330e4302c3afcc48f7d305b39
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107643"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507719"
 ---
 # <a name="tutorial-sign-in-users-and-call-microsoft-graph-from-an-ios-or-macos-app"></a>Öğretici: Kullanıcı oturum açma ve iOS veya macOS uygulamasından Microsoft Graph çağırma
 
@@ -71,16 +71,17 @@ Bu öğreticide oluşturduğunuz uygulamanın tamamlanmış bir sürümünü ind
 
 ## <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure portal](https://aka.ms/MobileAppReg)'a gidin
-2. Uygulama kayıtları dikey penceresini açın ve **+ Yeni kayıt**' yi seçin.
-3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI 'si ayarlamadan sonra.
-4. **Desteklenen hesap türleri** altındaki **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-Multitenant) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar** seçin
-5. **Kaydol** ' u seçin
-6. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulaması**' nı seçin.
-
-7. Yeni uygulama kayıt deneyimini açmak için ekranın üst kısmındaki **Yeni deneyimi deneyin** ' i seçin ve ardından **+ Yeni kayıt**  >  **+ Platform**  >  **iOS/MacOS** Ekle ' yi seçin.
-    - Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
-8. `Configure`Uygulamanızı daha sonra yapılandırırken girmeniz Için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** seçin ve kaydedin. **Bitti**’yi seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Desteklenen hesap türleri** altındaki **herhangi bir kurumsal dizinde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarının (örn. Skype, Xbox) hesaplarını** seçin.
+1. **Kaydet**’i seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform Ekle**  >  **iOS/MacOS**' u seçin.
+1. Projenizin paket KIMLIĞINI girin. Kodu indirdiyseniz, bu `com.microsoft.identitysample.MSALiOS` . Kendi projenizi oluşturuyorsanız, Xcode 'da projenizi seçin ve **genel** sekmesini açın. Paket tanımlayıcısı **kimlik** bölümünde görünür.
+1. Uygulamanızı daha sonra yapılandırırken girmeniz için **msal yapılandırma** sayfasında görünen **msal yapılandırmasını** **Yapılandır** ve Kaydet ' i seçin. 
+1. **Bitti**’yi seçin.
 
 ## <a name="add-msal"></a>MSAL Ekle
 

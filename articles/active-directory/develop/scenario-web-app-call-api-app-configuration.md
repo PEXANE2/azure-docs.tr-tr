@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: b24b95423adb271b8a4016430e7d2b381c386cd2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e055287f069c477318a54aedf3d9a2fe22343367
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443764"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509164"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web uygulaması: kod yapılandırması
 
@@ -99,7 +99,7 @@ Aşağıdaki örnekte, `GraphBeta` bölümü bu ayarları belirtir.
 
 ## <a name="startupcs"></a>Startup.cs
 
-Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır, `ITokenAcquisition` denetleyicinizde ve sayfa eylemlerinde kullanabileceğiniz hizmeti sunar. Ancak, aşağıdaki iki seçenekten de göreceğiniz gibi daha basit bir şekilde yapılabilir. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : *Startup.cs*
+Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir. `.EnableTokenAcquisitionToCallDownstreamApi()`Sonra satırı ekleyerek belirlersiniz `.AddMicrosoftIdentityWebApi(Configuration)` . Bu satır, `ITokenAcquisition` denetleyicinizde ve sayfa eylemlerinde kullanabileceğiniz hizmeti sunar. Ancak, aşağıdaki iki seçenekten de göreceğiniz gibi daha basit bir şekilde yapılabilir. Ayrıca, Startup.cs içinde bir belirteç önbelleği uygulamasını seçmeniz gerekir `.AddInMemoryTokenCaches()` : 
 
    ```csharp
    using Microsoft.Identity.Web;
@@ -110,7 +110,7 @@ Web uygulamanızın aşağı akış API 'SI için bir belirteç edinmesi gerekir
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                .AddInMemoryTokenCaches();
@@ -140,7 +140,7 @@ Microsoft Graph çağırmak isterseniz, *Microsoft. Identity. Web* , `GraphServi
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, Configuration.GetSection("AzureAd"))
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddMicrosoftGraph(Configuration.GetSection("GraphBeta"))
@@ -164,7 +164,7 @@ Microsoft Graph dışındaki bir Web API 'sini çağırmak için, *Microsoft. Id
      public void ConfigureServices(IServiceCollection services)
      {
      // ...
-     services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+     services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
              .AddMicrosoftIdentityWebApp(Configuration, "AzureAd")
                .EnableTokenAcquisitionToCallDownstreamApi(new string[]{"user.read" })
                   .AddDownstreamWebApi("MyApi", Configuration.GetSection("GraphBeta"))
@@ -218,7 +218,7 @@ Microsoft. Identity. Web, doğru OpenID Connect ayarlarını ayarlayarak, alına
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 
-ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [App_Start\Startup.Auth.cs](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar aynı zamanda ASP.NET Core de benzerdir, ancak ASP.NET içinde, `RedirectUri` [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)içinde belirtmeniz gerekir. Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
+ASP.NET \Startup.Auth.cs dosyasında, OpenID Connect 'in yapılandırması ve App_Start olay aboneliği olması dışında, ASP.NET Core benzer şeyleri işler `OnAuthorizationCodeReceived` . [](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/a2da310539aa613b77da1f9e1c17585311ab22b7/WebApp/App_Start/Startup.Auth.cs) Kavramlar aynı zamanda ASP.NET Core de benzerdir, ancak ASP.NET içinde, `RedirectUri` [Web.config # L15](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/blob/master/WebApp/Web.config#L15)içinde belirtmeniz gerekir. Uygulamanızı dağıtırken değiştirmeniz gerektiğinden, bu yapılandırma ASP.NET Core ' den daha az bir sağlamdır.
 
 Startup.Auth.cs için kod şöyledir:
 

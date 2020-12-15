@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 11/09/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96013403"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509028"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Hızlı Başlangıç: Azure Data Factory kullanıcı arabirimini kullanarak bir veri fabrikası oluşturma 
 
@@ -45,42 +45,42 @@ Bu videoyu izlemeniz, Data Factory kullanıcı arabirimini anlamanıza yardımc�
 1. **Tümleştirme**' i ve ardından **Data Factory**' yi seçin. 
    
    ![“Yeni” bölmesinde Data Factory seçimi](./media/doc-common-process/new-azure-data-factory-menu.png)
-1. **Yeni veri fabrikası** sayfasında **Ad** için **ADFTutorialDataFactory** girin. 
+1. **Data Factory oluştur** sayfasında, **temel bilgiler** sekmesinde, veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
+1. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
+
+    a. Açılan listeden var olan bir kaynak grubunu seçin.
+
+    b. **Yeni oluştur**' u seçin ve yeni bir kaynak grubunun adını girin.
+    
+    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
+
+1. **Bölge** için, veri fabrikasının konumunu seçin.
+
+   Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
  
+1. **Ad** için **ADFTutorialDataFactory** girin.
    Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Aşağıdaki hatayı görürseniz veri fabrikasının adını değiştirin (örneğin, **&lt; adınız &gt; ADFTutorialDataFactory**) ve yeniden oluşturmayı deneyin. Data Factory yapıtlarının adlandırma kuralları için [Data Factory - adlandırma kuralları](naming-rules.md) makalesini inceleyin.
   
    ![Bir ad kullanılamadığında alınan hata](./media/doc-common-process/name-not-available-error.png)
-1. **Abonelik** için, veri fabrikasını oluşturmak istediğiniz Azure aboneliğini seçin. 
-1. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
-     
-   - **Var olanı kullan**’ı ve ardından listeden var olan bir kaynak grubunu seçin. 
-   - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
-         
-   Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
+
 1. **Sürüm** bölümünde **V2**'yi seçin.
-1. **Konum** için, veri fabrikasının konumunu seçin.
 
-   Listede yalnızca Data Factory tarafından desteklenen ve Azure Data Factory meta verilerinizin depolanacağı konumlar gösterilir. Data Factory kullanımı ile ilişkili veri depoları (Azure depolama ve Azure SQL veritabanı gibi) ve bu işlemler (Azure HDInsight gibi) başka bölgelerde çalıştırılabilir.
+1. Ileri ' yi seçin ve git **yapılandırması**' nı sonra **Git** yapılandırma onay kutusunu seçin.
 
-1. Ileri ' yi seçin ve git **yapılandırması**' nı **daha sonra Yapılandır**' ı seçin.
+1. **Gözden geçir + oluştur**' u seçin ve doğrulama geçtikten sonra **Oluştur** ' u seçin. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
 
-1. **Oluştur**’u seçin. Oluşturma işlemi tamamlandıktan sonra **Data Factory** sayfasına gitmek Için **Kaynağa Git** ' i seçin. 
-
-1. Azure Data Factory kullanıcı arabirimi (UI) uygulamasını ayrı bir sekmede başlatmak için **Yazar ve İzleyici** kutucuğunu seçin.
+1. Azure Data Factory Kullanıcı arabirimi (UI) uygulamasını ayrı bir tarayıcı sekmesinde başlatmak için **yazar & izleyici** kutucuğunu seçin.
    
    ![Veri fabrikasının “Yazar ve İzleyici” kutucuğuna sahip ana sayfası](./media/doc-common-process/data-factory-home-page.png)
    
    > [!NOTE]
    > Web tarayıcısının "yetkilendirme" sırasında takılı olduğunu görürseniz, **üçüncü taraf tanımlama bilgilerini ve site verilerini engelle** onay kutusunu temizleyin. Veya seçili durumda tutun, **login.microsoftonline.com** için bir özel durum oluşturun ve uygulamayı yeniden açmayı deneyin.
    
-1. **Başlayalım** sayfasında, sol bölmede bulunan **Yazar** sekmesine geçin. 
-
-    ![“Başlayalım” sayfası](./media/doc-common-process/get-started-page-author-button.png)
 
 ## <a name="create-a-linked-service"></a>Bağlı hizmet oluşturma
 Bu yordamda, Azure depolama hesabınızı veri fabrikasına bağlamak için bağlı bir hizmet oluşturursunuz. Bağlı hizmetler, Data Factory hizmetinin bunlara bağlanmak için çalışma zamanında kullandığı bağlantı bilgilerini içerir.
 
-1. Sol bölmedeki [Yönet sekmesini](./author-management-hub.md) açın.
+1. Azure Data Factory Kullanıcı arabirimi sayfasında, sol bölmedeki [**Yönet**](./author-management-hub.md) sekmesini açın.
 
 1. Bağlı hizmetler sayfasında **+ Yeni** ' yi seçerek yeni bir bağlı hizmet oluşturun.
 
@@ -109,10 +109,13 @@ Giriş veri kümesi, giriş klasöründeki kaynak verileri temsil eder. Giriş v
 Çıkış veri kümesi hedefe kopyalanan verileri temsil eder. Çıkış veri kümesi tanımında, verilerin kopyalandığı blob kapsayıcısını (**adftutorial**), klasörü (**output**) ve dosyayı belirtirsiniz. Bir işlem hattının her çalıştırmasıyla ilişkili benzersiz bir Kimlik vardır. Bu kimliğe **RunId** sistem değişkenini kullanarak erişebilirsiniz. Çıkış dosyasının adı, işlem hattının çalıştırma kimliği temelinde dinamik olarak belirlenir.   
 
 Bağlı hizmet ayarlarında, kaynak verileri içeren Azure Depolama hesabını belirttiniz. Kaynak veri kümesi ayarlarında, kaynak verilerin tam olarak nerede durduğunu (blob kapsayıcısı, klasör ve dosya) belirtirsiniz. Havuz veri kümesi ayarlarında, verilerin nereye kopyalandığını (blob kapsayıcısı, klasör ve dosya) belirtirsiniz. 
- 
+
+1. Sol bölmeden **Yazar** sekmesini seçin.
+
 1. **+**(Artı) düğmesini seçin ve ardından **veri kümesi**' ni seçin.
 
    ![Veri kümesi oluşturma menüsü](./media/quickstart-create-data-factory-portal/new-dataset-menu.png)
+
 1. **Yeni veri kümesi** sayfasında **Azure Blob depolama**' yı seçin ve ardından **devam**' ı seçin. 
 
 1. **Biçim Seç** sayfasında verilerinizin biçim türünü seçin ve ardından **devam**' ı seçin. Bu durumda, içeriği ayrıştırmadan dosyaları olduğu gibi kopyaladığınızda **ikili** ' ı seçin.
@@ -163,7 +166,7 @@ Bu yordamda, giriş ve çıkış veri kümelerini kullanan kopyalama etkinliğiy
 
 1. Kopyalama etkinliği ayarlarında **Kaynak** sekmesine geçin ve **Havuz Veri Kümesi** olarak **OutputDataset** öğesini seçin.
 
-1. İşlem hattı ayarlarını doğrulamak için işlem hattı araç çubuğunda **Doğrula**'ya tıklayın. İşlem hattının başarıyla doğrulandığını onaylayın. Doğrulama çıkışını kapatmak için **>>** (sağ ok) düğmesini seçin. 
+1. İşlem hattı ayarlarını doğrulamak için işlem hattı araç çubuğunda **Doğrula**'ya tıklayın. İşlem hattının başarıyla doğrulandığını onaylayın. Doğrulama çıkışını kapatmak için sağ üst köşedeki doğrulama düğmesini seçin. 
 
    ![İşlem hattını doğrulama](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
@@ -185,7 +188,7 @@ Bu yordamda, varlıkları (bağlı hizmetler, veri kümeleri, işlem hatları) A
 
     ![Tümünü Yayımla](./media/quickstart-create-data-factory-portal/publish-all.png)
 
-1. İşlem hattını el ile tetiklemek için, işlem hattı araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. İşlem **hattı çalıştırma** sayfasında **son**' u seçin.
+1. İşlem hattını el ile tetiklemek için, işlem hattı araç çubuğunda **tetikleyici Ekle** ' yi seçin ve sonra **Şimdi Tetikle**' yi seçin. İşlem **hattı çalıştırma** sayfasında **Tamam**' ı seçin.
 
 ## <a name="monitor-the-pipeline"></a>İşlem hattını izleme
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d205cff71b962afb9ead8271ee0c220fa1e2242f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 5fb7c0df653048adcffceda4d8a384be823b5c3a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518779"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507702"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Öğretici: Windows masaüstü uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -104,18 +104,17 @@ Aşağıdakileri yaparak uygulamanızı hızlı bir şekilde kaydedebilirsiniz:
 ### <a name="option-2-advanced-mode"></a>Seçenek 2: Gelişmiş mod
 
 Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze eklemek için aşağıdakileri yapın:
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Yeni kayıt** seçeneğini belirleyin.
-   - **Ad** bölümünde, örneğin, uygulamanın kullanıcılarına görüntülenecek anlamlı bir uygulama adı girin `Win-App-calling-MsGraph` .
-   - **Desteklenen hesap türleri** bölümünde **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları (ör. Skype, Xbox, Outlook.com)** seçeneğini belirtin.
-   - Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin.
-   1. Yeniden yönlendirme **URI** 'leri bölümünde, yeniden yönlendirme URI 'leri listesinde:
-   1. **Tür** sütununda **ortak istemci/yerel ' i (mobil & Masaüstü)** seçin.
-   1. **Yeniden yönlendirme URI 'si** sütununda, şunu girin`https://login.microsoftonline.com/common/oauth2/nativeclient`
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin (örneğin,) `Win-App-calling-MsGraph` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Desteklenen hesap türleri** bölümünde **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin.
 1. **Kaydet**’i seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform ekleme**' yi seçin.
+1. **Mobil ve Masaüstü uygulamaları '** nı seçin.
+1. **Yeniden yönlendirme URI 'leri** bölümünde öğesini seçin **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. **Yapılandır**'ı seçin.
 1. Visual Studio 'ya gidin, *app.xaml.cs* dosyasını açın ve `Enter_the_Application_Id_here` Aşağıdaki kod parçacığında, yeni kaydettiğiniz ve kopyaladığınız uygulama kimliğiyle değiştirin.
 
     ```csharp

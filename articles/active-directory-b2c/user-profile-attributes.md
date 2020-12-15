@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 85030285810433dc77d1f466d160c50d1f89770e
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 31926653950594b986aca19e2db2877cd655ca24
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750416"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509606"
 ---
 # <a name="user-profile-attributes"></a>Kullanıcı profili öznitelikleri
 
@@ -35,51 +35,51 @@ Aşağıdaki tabloda, Azure AD B2C Directory Kullanıcı profili tarafından des
 - Öznitelik bir Kullanıcı akışında kullanılıyorsa
 - Öznitelik, özel bir ilkede [Azure AD teknik profilinde](active-directory-technical-profile.md) ve bu bölümde ( &lt; ınputclaim &gt; , &lt; outputclaim &gt; veya &lt; PersistedClaims &gt; ) kullanılabilir
 
-|Ad     |Tür     |Açıklama|Azure portal|Kullanıcı akışları|Özel ilke|
+|Ad     |Tür     |Açıklama|Azure portalı|Kullanıcı akışları|Özel ilke|
 |---------|---------|----------|------------|----------|-------------|
-|accountEnabled  |Boole|Kullanıcı hesabının etkin mi yoksa devre dışı mı olduğunu: hesap etkinse **doğru** , aksi takdirde **yanlış** olur.|Evet|Hayır|Kalıcı, çıkış|
-|ageGroup        |Dize|Kullanıcının yaş grubu. Olası değerler: null, tanımsız, küçük, Yetişkin, NotAdult.|Evet|Hayır|Kalıcı, çıkış|
+|accountEnabled  |Boole|Kullanıcı hesabının etkin mi yoksa devre dışı mı olduğunu: hesap etkinse **doğru** , aksi takdirde **yanlış** olur.|Yes|Hayır|Kalıcı, çıkış|
+|ageGroup        |Dize|Kullanıcının yaş grubu. Olası değerler: null, tanımsız, küçük, Yetişkin, NotAdult.|Yes|Hayır|Kalıcı, çıkış|
 |Alternativesecurityıd ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Dize|Dış kimlik sağlayıcısından tek bir kullanıcı kimliği.|Hayır|Hayır|Giriş, kalıcı, çıkış|
 |Alternativesecurityıds ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Alternatif Securityıd koleksiyonu|Dış kimlik sağlayıcılarından Kullanıcı kimlikleri koleksiyonu.|Hayır|Hayır|Kalıcı, çıkış|
-|city            |Dize|Kullanıcının bulunduğu şehir. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
-|consentProvidedForMinor|Dize|İkincil için onay sağlanmış olup olmadığı. İzin verilen değerler: null, verildi, reddedildi veya notRequired.|Evet|Hayır|Kalıcı, çıkış|
-|ülke         |Dize|Kullanıcının bulunduğu ülke/bölge. Örnek: "US" veya "UK". Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
+|city            |Dize|Kullanıcının bulunduğu şehir. Maksimum uzunluk 128.|Yes|Yes|Kalıcı, çıkış|
+|consentProvidedForMinor|Dize|İkincil için onay sağlanmış olup olmadığı. İzin verilen değerler: null, verildi, reddedildi veya notRequired.|Yes|Hayır|Kalıcı, çıkış|
+|ülke         |Dize|Kullanıcının bulunduğu ülke/bölge. Örnek: "US" veya "UK". Maksimum uzunluk 128.|Yes|Yes|Kalıcı, çıkış|
 |Saati|DateTime|Kullanıcı nesnesinin oluşturulduğu tarih. Salt okunurdur.|Hayır|Hayır|Kalıcı, çıkış|
 |creationType    |Dize|Kullanıcı hesabı bir Azure Active Directory B2C kiracısı için yerel hesap olarak oluşturulduysa, değer LocalAccount veya namebir. Salt okunurdur.|Hayır|Hayır|Kalıcı, çıkış|
 |Tarih Ofdoğum     |Tarih|Doğum tarihi.|Hayır|Hayır|Kalıcı, çıkış|
-|bölüm      |Dize|Kullanıcının çalıştığı departmanın adı. Maksimum uzunluk 64.|Evet|Hayır|Kalıcı, çıkış|
-|displayName     |Dize|Kullanıcının görünen adı. Maksimum uzunluk 256.|Evet|Evet|Kalıcı, çıkış|
-|facsimileTelephoneNumber<sup>1</sup>|Dize|Kullanıcının iş Faks makinesinin telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
-|givenName       |Dize|Kullanıcının verilen adı (ilk adı). Maksimum uzunluk 64.|Evet|Evet|Kalıcı, çıkış|
-|jobTitle        |Dize|Kullanıcının iş unvanı. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
+|bölüm      |Dize|Kullanıcının çalıştığı departmanın adı. Maksimum uzunluk 64.|Yes|Hayır|Kalıcı, çıkış|
+|displayName     |Dize|Kullanıcının görünen adı. Maksimum uzunluk 256.|Yes|Yes|Kalıcı, çıkış|
+|facsimileTelephoneNumber<sup>1</sup>|Dize|Kullanıcının iş Faks makinesinin telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
+|givenName       |Dize|Kullanıcının verilen adı (ilk adı). Maksimum uzunluk 64.|Yes|Yes|Kalıcı, çıkış|
+|jobTitle        |Dize|Kullanıcının iş unvanı. Maksimum uzunluk 128.|Yes|Yes|Kalıcı, çıkış|
 |ImmutableID     |Dize|Genellikle şirket içi Active Directory geçirilen kullanıcılar için kullanılan bir tanımlayıcı.|Hayır|Hayır|Kalıcı, çıkış|
-|Ligalagegroupclassification|Dize|Yasal yaş grubu sınıflandırması. Bir salt okunurdur ve ageGroup ve consentProvidedForMinor özellikleri temel alınarak hesaplanır. İzin verilen değerler: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult ve yetişkin.|Evet|Hayır|Kalıcı, çıkış|
+|legalAgeGroupClassification|Dize|Yasal yaş grubu sınıflandırması. Bir salt okunurdur ve ageGroup ve consentProvidedForMinor özellikleri temel alınarak hesaplanır. İzin verilen değerler: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult ve yetişkin.|Yes|Hayır|Kalıcı, çıkış|
 |legalCountry<sup>1</sup>  |Dize|Yasal amaçlar için ülke/bölge.|Hayır|Hayır|Kalıcı, çıkış|
 |posta            |Dize|Kullanıcının SMTP adresi (örneğin, " bob@contoso.com "). Salt okunur.|Hayır|Hayır|Kalıcı, çıkış|
 |mailNickName    |Dize|Kullanıcının posta diğer adı. Maksimum uzunluk 64.|Hayır|Hayır|Kalıcı, çıkış|
-|Mobil (mobilePhone) |Dize|Kullanıcının birincil cep telefonu numarası. Maksimum uzunluk 64.|Evet|Hayır|Kalıcı, çıkış|
+|Mobil (mobilePhone) |Dize|Kullanıcının birincil cep telefonu numarası. Maksimum uzunluk 64.|Yes|Hayır|Kalıcı, çıkış|
 |NetID           |Dize|Ağ KIMLIĞI.|Hayır|Hayır|Kalıcı, çıkış|
-|Uzantının        |Dize|Kullanıcının benzersiz tanımlayıcısı olan bir genel benzersiz tanımlayıcı (GUID). Örnek: 12345678-9ABC-def0-1234-56789abcde. Salt okuma, sabit.|Salt okunur|Evet|Giriş, kalıcı, çıkış|
+|objectId        |Dize|Kullanıcının benzersiz tanımlayıcısı olan bir genel benzersiz tanımlayıcı (GUID). Örnek: 12345678-9ABC-def0-1234-56789abcde. Salt okuma, sabit.|Salt okunur|Yes|Giriş, kalıcı, çıkış|
 |Diğer postalar      |Dize koleksiyonu|Kullanıcı için ek e-posta adresleri listesi. Örnek: [" bob@contoso.com ", " Robert@fabrikam.com "].|Evet (alternatif e-posta)|Hayır|Kalıcı, çıkış|
 |password        |Dize|Kullanıcı oluşturma sırasında yerel hesabın parolası.|Hayır|Hayır|Kalıcı|
-|passwordPolicies     |Dize|Parolanın ilkesi. Bu, virgülle ayrılmış farklı ilke adından oluşan bir dizedir. Yani "Disablepasswordexpiasyon, DisableStrongPassword".|Hayır|Hayır|Kalıcı, çıkış|
-|physicalDeliveryOfficeName (officeLocation)|Dize|Kullanıcının iş yerinde Office konumu. Maksimum uzunluk 128.|Evet|Hayır|Kalıcı, çıkış|
-|postalCode      |Dize|Kullanıcının posta adresi için posta kodu. Posta kodu kullanıcının ülkesine/bölgesine özeldir. America Birleşik Devletler, bu öznitelik ZIP kodunu içerir. Maksimum Uzunluk 40.|Evet|Hayır|Kalıcı, çıkış|
+|passwordPolicies     |Dize|Parolanın ilkesi. Bu, virgülle ayrılmış farklı ilke adından oluşan bir dizedir. Örneğin, "Disablepasswordexpiasyon, DisableStrongPassword".|Hayır|Hayır|Kalıcı, çıkış|
+|physicalDeliveryOfficeName (officeLocation)|Dize|Kullanıcının iş yerinde Office konumu. Maksimum uzunluk 128.|Yes|Hayır|Kalıcı, çıkış|
+|postalCode      |Dize|Kullanıcının posta adresi için posta kodu. Posta kodu kullanıcının ülkesine/bölgesine özeldir. America Birleşik Devletler, bu öznitelik ZIP kodunu içerir. Maksimum Uzunluk 40.|Yes|Hayır|Kalıcı, çıkış|
 |preferredLanguage    |Dize|Kullanıcı için tercih edilen dil. ISO 639-1 kodunu izlemelidir. Örnek: "en-US".|Hayır|Hayır|Kalıcı, çıkış|
 |refreshTokensValidFromDateTime|DateTime|Bu saatten önce verilen yenileme belirteçleri geçersiz ve uygulamalar, yeni bir erişim belirteci almak için geçersiz yenileme belirteci kullanırken bir hata alır. Bu durumda, uygulamanın yetkilendirme uç noktasına istek yaparak yeni bir yenileme belirteci edinmesi gerekir. Salt okunur.|Hayır|Hayır|Çıktı|
-|Signınnames ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki herhangi bir türdeki yerel hesap kullanıcısının benzersiz oturum açma adı. Yerel hesap türünü belirtmeden oturum açma değeri olan bir kullanıcı almak için bunu kullanın.|Hayır|Hayır|Giriş|
-|Signınnames. userName ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz Kullanıcı adı. Bunu, belirli bir oturum açma Kullanıcı adı ile Kullanıcı oluşturmak veya almak için kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
-|Signınnames. phoneNumber ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz telefon numarası. Belirli bir oturum açma telefon numarası ile Kullanıcı oluşturmak veya almak için bunu kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
-|Signınnames. Emaadresi ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Dize|Dizindeki yerel hesap kullanıcısının benzersiz e-posta adresi. Belirli bir oturum açma e-posta adresine sahip bir kullanıcı oluşturmak veya almak için bunu kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
-|state           |Dize|Kullanıcının adresindeki eyalet veya bölge. Maksimum uzunluk 128.|Evet|Evet|Kalıcı, çıkış|
-|streetAddress   |Dize|Kullanıcının iş yeri için cadde adresi. Maksimum uzunluk 1024.|Evet|Evet|Kalıcı, çıkış|
-|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullandığı ikincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
-|Strongauthenticationemaadresi<sup>1</sup>|Dize|Kullanıcının SMTP adresi. Örnek: " bob@contoso.com " Bu öznitelik, kullanıcı e-posta adresini depolamak için Kullanıcı adı ilkesi ile oturum açma için kullanılır. Daha sonra bir parola sıfırlama akışında kullanılan e-posta adresi.|Evet|Hayır|Kalıcı, çıkış|
-|strongAuthenticationPhoneNumber<sup>2</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullanılan birincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
-|surname         |Dize|Kullanıcının Soyadı (aile adı veya soyadı). Maksimum uzunluk 64.|Evet|Evet|Kalıcı, çıkış|
-|telephoneNumber (ilk departman girişi)|Dize|Kullanıcının iş yeri için birincil telefon numarası.|Evet|Hayır|Kalıcı, çıkış|
+|Signınnames ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki herhangi bir türdeki yerel hesap kullanıcısının benzersiz oturum açma adı. Yerel hesap türünü belirtmeden oturum açma değeri olan bir kullanıcıyı almak için bu özniteliği kullanın.|Hayır|Hayır|Giriş|
+|Signınnames. userName ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz Kullanıcı adı. Bu özniteliği, belirli bir oturum açma Kullanıcı adı ile Kullanıcı oluşturmak veya almak için kullanın. Bunu Patch işlemi sırasında PersistedClaims içinde belirtmek, diğer oturum adı türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
+|Signınnames. phoneNumber ([kimlikler](manage-user-accounts-graph-api.md#identities-property)) |Dize|Dizindeki yerel hesap kullanıcısının benzersiz telefon numarası. Bu özniteliği, belirli bir oturum açma telefon numarası olan bir kullanıcı oluşturmak veya almak için kullanın. Bu özniteliğin, düzeltme eki sırasında tek başına PersistedClaims içinde belirtilmesi, diğer Signınnames türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
+|Signınnames. Emaadresi ([kimlikler](manage-user-accounts-graph-api.md#identities-property))|Dize|Dizindeki yerel hesap kullanıcısının benzersiz e-posta adresi. Belirli bir oturum açma e-posta adresine sahip bir kullanıcı oluşturmak veya almak için bunu kullanın. Bu özniteliğin, düzeltme eki sırasında tek başına PersistedClaims içinde belirtilmesi, diğer Signınnames türlerini kaldırır. Yeni bir Signınnames türü eklemek istiyorsanız, mevcut Signınnames 'leri de kalıcı hale getirmeniz gerekir.|Hayır|Hayır|Giriş, kalıcı, çıkış|
+|state           |Dize|Kullanıcının adresindeki eyalet veya bölge. Maksimum uzunluk 128.|Yes|Yes|Kalıcı, çıkış|
+|streetAddress   |Dize|Kullanıcının iş yeri için cadde adresi. Maksimum uzunluk 1024.|Yes|Yes|Kalıcı, çıkış|
+|strongAuthentication AlternativePhoneNumber<sup>1</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullandığı ikincil telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
+|Strongauthenticationemaadresi<sup>1</sup>|Dize|Kullanıcının SMTP adresi. Örnek: " bob@contoso.com " Bu öznitelik, kullanıcı e-posta adresini depolamak için Kullanıcı adı ilkesi ile oturum açma için kullanılır. Daha sonra bir parola sıfırlama akışında kullanılan e-posta adresi.|Yes|Hayır|Kalıcı, çıkış|
+|strongAuthenticationPhoneNumber<sup>2</sup>|Dize|Kullanıcının çok faktörlü kimlik doğrulaması için kullanılan birincil telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
+|surname         |Dize|Kullanıcının Soyadı (aile adı veya soyadı). Maksimum uzunluk 64.|Yes|Yes|Kalıcı, çıkış|
+|telephoneNumber (ilk departman girişi)|Dize|Kullanıcının iş yeri için birincil telefon numarası.|Yes|Hayır|Kalıcı, çıkış|
 |userPrincipalName    |Dize|Kullanıcının kullanıcı asıl adı (UPN). UPN, Internet standart RFC 822 ' i temel alan Kullanıcı için Internet stili bir oturum açma adıdır. Etki alanının, kiracının doğrulanmış etki alanları koleksiyonunda mevcut olması gerekir. Bir hesap oluşturulduğunda bu özellik gereklidir. Değişmez.|Hayır|Hayır|Giriş, kalıcı, çıkış|
-|usageLocation   |Dize|Ülkelerde/bölgelerde hizmetlerin kullanılabilirliğini kontrol etmek için yasal gereksinim nedeniyle lisanslar atanacak kullanıcılar için gereklidir. Null yapılabilir değil. İki harfli ülke/bölge kodu (ISO standart 3166). Örnekler: "US", "JP" ve "GB".|Evet|Hayır|Kalıcı, çıkış|
+|usageLocation   |Dize|Ülkelerde/bölgelerde hizmetlerin kullanılabilirliğini kontrol etmek için yasal gereksinim nedeniyle lisanslar atanacak kullanıcılar için gereklidir. Null yapılabilir değil. İki harfli ülke/bölge kodu (ISO standart 3166). Örnekler: "US", "JP" ve "GB".|Yes|Hayır|Kalıcı, çıkış|
 |userType        |Dize|Dizininizdeki Kullanıcı türlerini sınıflandırmak için kullanılabilen bir dize değeri. Değer üye olmalıdır. Salt okunur.|Salt okunur|Hayır|Kalıcı, çıkış|
 |userState (externalUserState)<sup>3</sup>|Dize|Yalnızca Azure AD B2B hesabı için, davetin Pendingkabulünü veya kabul edilip edilmediğini belirtir.|Hayır|Hayır|Kalıcı, çıkış|
 |userStateChangedOn (externalUserStateChangeDateTime)<sup>2</sup>|DateTime|UserState özelliği için en son değişikliğin zaman damgasını gösterir.|Hayır|Hayır|Kalıcı, çıkış|
@@ -120,5 +120,4 @@ Aşağıdaki veri türleri bir şema uzantısında Özellik tanımlanırken dest
 ## <a name="next-steps"></a>Sonraki adımlar
 Uzantı öznitelikleri hakkında daha fazla bilgi edinin:
 - [Şema uzantıları](/graph/extensibility-overview#schema-extensions)
-- [Kullanıcı akışıyla özel öznitelikler tanımlama](user-flow-custom-attributes.md)
-- [Özel ilkeyle özel öznitelikler tanımlama](custom-policy-custom-attributes.md)
+- [Özel öznitelikleri tanımlama](user-flow-custom-attributes.md)

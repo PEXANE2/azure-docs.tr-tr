@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 0dad7add63102d462a2111f1ecf12ae43dae123c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4dca1fa0e823b482044d35f98412187af2fa72ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996194"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507770"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Öğretici: Microsoft 'a bir ASP.NET Web uygulamasına oturum açma ekleme
 
@@ -48,7 +48,7 @@ Oluşturduğunuz örnek uygulama, kullanıcının oturum açma düğmesiyle kiml
 
 Bu kılavuz aşağıdaki kitaplıkları kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Uygulamanın kimlik doğrulaması için OpenIdConnect kullanmasını sağlayan ara yazılım|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Bir uygulamanın tanımlama bilgilerini kullanarak bir Kullanıcı oturumu korumasına olanak tanıyan ara yazılım|
@@ -87,7 +87,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
 
 > [!TIP]
 > Projenizin kök klasöründe `Startup.cs` adlı bir dosya yoksa:
-> 1. Projenin kök klasörüne sağ tıklayın ve ardından **Add**  >  **Yeni öğe** Ekle  >  **Başlangıç sınıfı**' nı seçin.<br/>
+> 1. Projenin kök klasörüne sağ tıklayın ve ardından   >  **Yeni öğe** Ekle  >  **Başlangıç sınıfı**' nı seçin.<br/>
 > 2. **Startup.cs** olarak adlandırın.
 >
 >> Seçilen sınıfın bir OWıN başlangıç sınıfı olduğundan ve standart C# sınıfı olmadığından emin olun. [Assembly: Owınstartup (typeof ({NameSpace}) gördüğünüz doğrulayarak bunu onaylayın. Başlangıç))] ad alanı üzerinde.
@@ -185,7 +185,7 @@ Aşağıdaki adımlar, OpenID Connect kimlik doğrulamasını yapılandırmak i�
 
 Oturum açma ve oturum kapatma yöntemlerini kullanıma sunmak üzere yeni bir denetleyici oluşturmak için aşağıdaki adımları izleyin:
 
-1.  **Denetleyiciler** klasörüne sağ tıklayın ve denetleyici **Ekle**' yi seçin  >  **Controller**.
+1.  **Denetleyiciler** klasörüne sağ tıklayın ve denetleyici **Ekle**' yi seçin  >  .
 2.  **MVC (.NET sürümü) Denetleyici – Boş** girişini seçin.
 3.  **Ekle**’yi seçin.
 4.  **HomeController** olarak adlandırın ve **Ekle**' yi seçin.
@@ -277,7 +277,7 @@ Visual Studio 'da, oturum açma düğmesini eklemek ve kimlik doğrulamasından 
 ## <a name="add-a-controller-to-display-users-claims"></a>Kullanıcının taleplerini göstermek için bir denetleyici ekleme
 Bu denetleyici bir denetleyiciyi koruma amacıyla `[Authorize]` özniteliğini kullanma şeklini gösterir. Bu öznitelik yalnızca kimliği doğrulanmış kullanıcılara izin vererek denetleyiciye erişimi kısıtlar. Aşağıdaki kod, oturum açma kapsamında alınan kullanıcı taleplerini göstermek için özniteliğini kullanır:
 
-1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından denetleyici **Ekle**' yi seçin  >  **Controller**.
+1.  **Denetleyiciler** klasörüne sağ tıklayın ve ardından denetleyici **Ekle**' yi seçin  >  .
 2.  **MVC {sürüm} Denetleyici – Boş** girişini seçin.
 3.  **Ekle**’yi seçin.
 4.  **ClaimsController** olarak adlandırın.
@@ -373,15 +373,16 @@ Uygulamanızı kaydetmek ve uygulama kayıt bilgilerinizi çözümünüze el ile
    1. Çözüm Gezgini, projeyi seçin ve Özellikler penceresi görüntüleyin (Özellikler penceresi görmüyorsanız F4 tuşuna basın).
    1. SSL etkin olarak değiştirin `True` .
    1. Visual Studio 'da projeye sağ tıklayın, **Özellikler**' i seçin ve ardından **Web** sekmesini seçin. **Sunucular** bölümünde, **proje URL** ayarını **SSL URL 'si** olarak değiştirin.
-   1. SSL URL 'sini kopyalayın. Bu URL 'YI, sonraki adımda, kayıt portalının yeniden yönlendirme URL 'leri listesinde bulunan yeniden yönlendirme URL 'Leri listesine ekleyeceksiniz.<br/><br/>![Proje özellikleri](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
-1. Bir iş veya okul hesabı kullanarak veya kişisel bir Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. Hesabınız birden fazla kiracıya erişim veriyorsa, sağ üst köşede hesabınızı seçin ve Portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
-1. Geliştiriciler için Microsoft Identity platformu [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Yeni kayıt** seçeneğini belirleyin.
-1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
-   1. **Ad** bölümünde, uygulama kullanıcılarına, **ASPNET-öğreticisi** gibi görüntülenecek anlamlı bir uygulama adı girin.
-   1. Adım 1 ' de (örneğin,), yanıt URL 'sindeki Visual Studio 'dan kopyaladığınız SSL URL 'sini ekleyin `https://localhost:44368/` ve **Kaydet**' i seçin. **Reply URL**
-1. **Kimlik doğrulama** menüsünü seçin, **örtük izin** altında **Kimlik belirteçleri** ' ni seçin ve ardından **Kaydet**' i seçin.
+   1. SSL URL 'sini kopyalayın. Bu URL 'YI, sonraki adımda, kayıt portalının yeniden yönlendirme URI 'leri listesindeki yeniden yönlendirme URI 'Leri listesine ekleyeceksiniz.<br/><br/>![Proje özellikleri](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin (örneğin,) `ASPNET-Tutorial` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. Visual Studio 'dan kopyaladığınız SSL URL 'sini adım 1 ' de (örneğin, `https://localhost:44368/` ) **YENIDEN yönlendirme URI**'sindeki ekleyin.
+1. **Kaydet**’i seçin.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Örtük izin** bölümünde **Kimlik belirteçleri**' ni seçin ve ardından **Kaydet**' i seçin.
 1. Aşağıdaki, bölümündeki kök klasörde bulunan web.config dosyasına aşağıdakileri ekleyin `configuration\appSettings` :
 
     ```xml

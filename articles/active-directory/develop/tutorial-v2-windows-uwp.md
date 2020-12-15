@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 774c17af88e45e25cf1e8edc0df60ab55fe53e0e
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95974345"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509470"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Öğretici: Evrensel Windows Platformu (UWP) uygulamasından Microsoft Graph API 'sini çağırma
 
@@ -48,7 +48,7 @@ Bu kılavuz Microsoft Graph API 'sini sorgulayan bir örnek UWP uygulaması olu�
 
 Bu kılavuz aşağıdaki NuGet paketini kullanır:
 
-|Kitaplık|Description|
+|Kitaplık|Açıklama|
 |---|---|
 |[Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 |[Microsoft. Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph Istemci kitaplığı|
@@ -347,21 +347,23 @@ private async Task DisplayMessageAsync(string message)
 Şimdi uygulamanızı kaydetmeniz gerekir:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**  >  **uygulama kayıtları** seçin.
-1. **Yeni kayıt** seçeneğini belirleyin. Uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin; Örneğin, *UWP-app-çağıran-MSGraph*.
-1. **Desteklenen hesap türleri** altında, **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox) hesaplar**' ı seçin. Sonra devam etmek için **Kaydet** ' i seçin.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin (örneğin,) `UWP-App-calling-MSGraph` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Desteklenen hesap türleri** altında **herhangi bir kuruluş dizininde (HERHANGI bir Azure ad dizini-çoklu kiracı) ve kişisel Microsoft hesaplarından (örn. Skype, Xbox) hesaplar**' ı seçin. 
+1. **Kaydet**’i seçin.
 1. Genel Bakış sayfasında, **uygulama (istemci) kimlik** değerini bulun ve kopyalayın. Visual Studio 'ya geri dönün, *MainPage.xaml.cs* açın ve değerini `ClientId` bu değerle değiştirin.
 
 Uygulamanız için kimlik doğrulamasını yapılandırın:
 
-1. [Azure Portal](https://portal.azure.com)geri döndüğünüzde, **Yönet** altında **kimlik doğrulaması**' nı seçin.
-1. **Yeniden yönlendirme URI 'lerinde**  |  **ortak istemciler için önerilen yeniden yönlendirme URI 'leri (mobil, masaüstü)** bölümüne bakın https://login.microsoftonline.com/common/oauth2/nativeclient .
-1. **Kaydet**'i seçin.
+1. [Azure Portal](https://portal.azure.com)geri döndüğünüzde, **Yönet** altında **kimlik doğrulama**  >  **Platform Ekle**' yi seçin ve ardından **mobil ve Masaüstü uygulamaları**' nı seçin.
+1. **Yeniden yönlendirme URI 'leri** bölümünde, öğesini kontrol edin **https://login.microsoftonline.com/common/oauth2/nativeclient** .
+1. **Yapılandır**'ı seçin.
 
 Uygulamanız için API izinlerini yapılandırın:
 
-1. **Yönet** altında **API izinleri**' ni seçin.
-1. **Izin Ekle**' yi seçin ve ardından **Microsoft API 'leri** seçtiğinizden emin olun.
+1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin.
 1. **Microsoft Graph** seçin.
 1. **Temsilci izinleri**' ni seçin, *Kullanıcı. okuma*' yı arayın ve **Kullanıcı. Read** ' in seçildiğini doğrulayın.
 1. Herhangi bir değişiklik yaptıysanız, bunları kaydetmek için **Izinleri Ekle** ' yi seçin.
@@ -464,7 +466,7 @@ Uygulamanızda ilk kez oturum açtığınızda aşağıdaki görüntüye benzer 
 
 Ayrıca, `AcquireTokenInteractive` `AcquireTokenSilent` **belirteç bilgisi** kutusunda veya aracılığıyla alınan belirteçle ilgili temel bilgileri görürsünüz:
 
-|Özellik  |Biçimlendir  |Description |
+|Özellik  |Biçimlendir  |Açıklama |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Kullanıcıyı tanımlayan Kullanıcı adı.|
 |`Token Expires` |`DateTime` |Belirtecin süresinin dolacağı zaman. Microsoft kimlik doğrulama kitaplığı, belirteci gerektiği şekilde yenileyerek sona erme tarihini genişletir.|

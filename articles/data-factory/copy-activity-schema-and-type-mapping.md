@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637267"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507532"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Kopyalama etkinliğinde şema ve veri türü eşleme
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -49,7 +49,7 @@ Eşlemeyi Data Factory yazma Kullanıcı arabirimi-> kopyalama etkinliği > eşl
 
 | Özellik | Açıklama                                                  | Gerekli |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | Kaynak veya havuz sütununun/alanının adı. Tablosal kaynak ve havuz için geçerlidir. | Evet      |
+| name     | Kaynak veya havuz sütununun/alanının adı. Tablosal kaynak ve havuz için geçerlidir. | Yes      |
 | numarasını  | Sütun dizini. 1 ' den başlayın. <br>Üst bilgi satırı olmayan sınırlandırılmış metin kullanılırken geçerlidir ve gereklidir. | Hayır       |
 | path     | Ayıklanacak veya eşlenecek her alan için JSON yol ifadesi. Hiyerarşik kaynak ve havuz için, örneğin Cosmos DB, MongoDB veya REST bağlayıcıları için geçerlidir.<br>Kök nesnesi altındaki alanlar için JSON yolu root ile başlar `$` ; özelliği tarafından seçilen dizi içindeki alanlar IÇIN `collectionReference` JSON yolu, olmadan dizi öğesinden başlar `$` . | Hayır       |
 | tür     | Kaynak veya havuz sütununun geçici veri türü Data Factory. Genel olarak, bu özelliği belirtmeniz veya değiştirmeniz gerekmez. [Veri türü eşlemesi](#data-type-mapping)hakkında daha fazla bilgi edinin. | Hayır       |
@@ -454,8 +454,8 @@ Aşağıdaki JSON bir işlem hattındaki kopyalama etkinliğini tanımlar. **Çe
 
 | Özellik            | Açıklama                                                  | Gerekli |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| tür                | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Evet      |
-| schemaMapping       | **Kaynak taraftan havuz tarafına** olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Anahtar:** kaynağı temsil eder. **Tablo kaynağı** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Değer:** havuzu temsil eder. **Tablo havuzu** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar özelliği tarafından seçilen dizi içindeki alanlar için `collectionReference` JSON yolu dizi öğesinden başlar. | Evet      |
+| tür                | Kopyalama etkinliği çeviricisinin Type özelliği: **Tabulartranslator** olarak ayarlanmalıdır | Yes      |
+| schemaMapping       | **Kaynak taraftan havuz tarafına** olan eşleme ilişkisini temsil eden anahtar-değer çiftleri koleksiyonu.<br/>- **Anahtar:** kaynağı temsil eder. **Tablo kaynağı** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik kaynak** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin.<br>- **Değer:** havuzu temsil eder. **Tablo havuzu** için, sütun adını veri kümesi yapısında tanımlanan şekilde belirtin; **hiyerarşik havuz** için, Ayıklanacak ve eşlenecek her alan için JSON yolu ifadesini belirtin. <br>Hiyerarşik veriler söz konusu olduğunda, kök nesne altındaki alanlar için JSON yolu kök $; ile başlar özelliği tarafından seçilen dizi içindeki alanlar için `collectionReference` JSON yolu dizi öğesinden başlar. | Yes      |
 | collectionReference | Aynı düzene sahip **bir dizi alanı içindeki** nesnelerden verileri yinelemek ve ayıklamak istiyorsanız, her nesne için bu dizinin JSON yolunu belirtin. Bu özellik yalnızca hiyerarşik veriler kaynak olduğunda desteklenir. | Hayır       |
 
 **Örnek: MongoDB 'den Oracle 'a kopyalama:**

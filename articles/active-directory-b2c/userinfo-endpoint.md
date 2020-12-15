@@ -11,12 +11,12 @@ ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 62f2869bfe1110dd5bf8459c9f6f6b21701dc934
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 95f41283b78c39ed2cf3b4abb75275902d8cf7bd
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425966"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509589"
 ---
 # <a name="userinfo-endpoint"></a>UserInfo uç noktası
 
@@ -103,7 +103,7 @@ Kullanıcı bilgileri Kullanıcı yolculuğu şunları belirtir:
 
 1. Userınfoıssuer Technical profile içindeki Outputclaim bölümü, döndürmek istediğiniz öznitelikleri belirtir. Kullanıcı yolculuğunun sonunda Userınfoıssuer teknik profili çağırılır. 
 1. Userınfoauthorization teknik profili imza, verenin adı ve belirteç kitlesini doğrular ve gelen belirteçten talebi ayıklar. Aşağıdaki meta verileri ortamınızı yansıtacak şekilde değiştirin:
-    1. **veren** -bu değer `iss` , erişim belirteci talep kapsamındaki talebe özdeş olmalıdır. Azure AD B2C tarafından verilen belirteçler, biçimde veren kullanır `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . [Belirteç özelleştirmesi](configure-tokens-custom-policy.md)hakkında daha fazla bilgi edinin.
+    1. **veren** -bu değer `iss` , erişim belirteci talep kapsamındaki talebe özdeş olmalıdır. Azure AD B2C tarafından verilen belirteçler, biçimde veren kullanır `https://yourtenant.b2clogin.com/your-tenant-id/v2.0/` . [Belirteç özelleştirmesi](configure-tokens.md)hakkında daha fazla bilgi edinin.
     1. **Idtokenaudience** `aud` , erişim belirteci talep içindeki talebe özdeş olmalıdır. Azure AD B2C, `aud` talep bağlı olan taraf UYGULAMANıZıN kimliğidir. Bu değer bir koleksiyondur ve bir virgül sınırlayıcısı kullanarak birden çok değeri destekler.
 
 Aşağıdaki erişim belirtecinde, `iss` talep değeri `https://contoso.b2clogin.com/11111111-1111-1111-1111-111111111111/v2.0/` . `aud`Talep değeri `22222222-2222-2222-2222-222222222222` .
@@ -200,7 +200,7 @@ Tamamlanmış bağlı olan taraf öğesi aşağıdaki gibi olacaktır:
 
 ### <a name="4-upload-the-files"></a>4. dosyaları karşıya yükleyin
 
-1. [Azure portalda](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kimlik deneyimi çerçevesini** seçin.

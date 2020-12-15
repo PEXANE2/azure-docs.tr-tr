@@ -12,12 +12,12 @@ ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 3fd91bb86b32a958344dc366cfcd142bff369c1f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e0185cc8786dc101375262ddfd187c5d8e7e054f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108153"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509572"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Nasıl yapılır: uygulamanıza isteğe bağlı talepler sağlama
 
@@ -124,15 +124,16 @@ Bu Optionalclaim nesnesi, istemciye döndürülen KIMLIK belirtecinin `upn` ek a
 
 Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz.
 
-1. [Azure portalına](https://portal.azure.com) gidin. **Azure Active Directory**'yi bulun ve seçin.
-1. **Yönet** bölümünden **uygulama kayıtları**' yi seçin.
+1. [Azure portalına](https://portal.azure.com) gidin. 
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
 
 **Kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
 [![Kullanıcı arabiriminde isteğe bağlı talepler yapılandırma](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-1. **Yönet** bölümünde **belirteç yapılandırması**' nı seçin.
+1. **Yönet** altında **belirteç yapılandırması**' nı seçin.
 1. **İsteğe bağlı talep Ekle**' yi seçin.
 1. Yapılandırmak istediğiniz belirteç türünü seçin.
 1. Eklenecek isteğe bağlı talepler ' i seçin.
@@ -145,7 +146,7 @@ Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız içi
 
 [![Uygulama bildirimini kullanarak isteğe bağlı taleplerin nasıl yapılandırılacağını gösterir](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
 
-1. **Yönet** bölümünde, **bildirim**' ı seçin. Web tabanlı bir bildirim Düzenleyicisi açılarak, bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz. Uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama makalesi](reference-app-manifest.md).
+1. **Yönet** altında **bildirim**' ı seçin. Web tabanlı bir bildirim Düzenleyicisi açılarak, bildirimi düzenlemenize olanak tanır. İsteğe bağlı olarak **İndir** seçeneğini belirleyip bildirimi yerel ortamda düzenledikten sonra **Yükle** seçeneğiyle uygulamanıza yeniden uygulayabilirsiniz. Uygulama bildirimi hakkında daha fazla bilgi için bkz. [Azure AD uygulama bildirimini anlama makalesi](reference-app-manifest.md).
 
     Aşağıdaki uygulama bildirimi girişi, KIMLIK, erişim ve SAML belirteçlerine auth_time, IPADDR ve UPN isteğe bağlı taleplerini ekler.
 
@@ -225,22 +226,19 @@ SAML belirteçlerinde Bu talepler aşağıdaki URI biçimiyle alınacaktır: `ht
 
 ## <a name="configuring-groups-optional-claims"></a>Grupları yapılandırma isteğe bağlı talepler
 
-   > [!NOTE]
-   > Şirket içinden eşitlenen kullanıcılar ve gruplar için Grup adlarını yayma özelliği genel önizlemeye sunuldu.
-
 Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi Windows Active Directory eşitlenen özniteliklere varsayılan gruptan değiştirilmesini sağlamak için isteğe bağlı talepler altındaki yapılandırma seçeneklerini anlatmaktadır. Kullanıcı arabirimi veya uygulama bildirimi aracılığıyla uygulamanız için isteğe bağlı talepler yapılandırabilirsiniz.
 
 > [!IMPORTANT]
-> Şirket içi özniteliklerdeki grup taleplerinin genel önizlemesine ilişkin önemli uyarılar dahil olmak üzere daha fazla ayrıntı için bkz. [Azure AD ile uygulamalar için grup taleplerini yapılandırma](../hybrid/how-to-connect-fed-group-claims.md).
+> Şirket içi özniteliklerdeki grup taleplerine ilişkin önemli uyarılar dahil olmak üzere daha fazla ayrıntı için bkz. [Azure AD ile uygulamalar için grup taleplerini yapılandırma](../hybrid/how-to-connect-fed-group-claims.md).
 
 **Grupları kullanıcı arabirimi aracılığıyla isteğe bağlı talepler yapılandırma:**
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
-1. **Yönet** bölümünün altında **uygulama kayıtları**' yi seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
-1. **Yönet** bölümünde, **belirteç yapılandırması**' nı seçin.
+1. **Yönet** altında **belirteç yapılandırması**' nı seçin.
 1. **Grup Ekle talebi**' ni seçin.
 1. Döndürülecek Grup türlerini (**güvenlik grupları** veya **Dizin rolleri**, **tüm gruplar** ve/veya **uygulamaya atanan gruplar**) seçin. **Uygulama seçeneğine atanan gruplar** yalnızca uygulamaya atanan grupları içerir. **Tüm gruplar** seçeneği **SecurityGroup**, **directoryrole** ve **distributionlist** içerir, ancak **uygulamaya atanan grupları** içermez. 
 1. İsteğe bağlı: gruplar talep değerini, şirket içi grup özniteliklerini içerecek şekilde değiştirmek veya talep türünü bir rol olarak değiştirmek için belirli belirteç türü özelliklerini seçin.
@@ -250,9 +248,9 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı seçin.
-1. **Yönet** bölümünün altında, **bildirim**' ı seçin.
+1. **Yönet** altında **bildirim**' ı seçin.
 1. Bildirim düzenleyicisini kullanarak aşağıdaki girişi ekleyin:
 
    Geçerli değerler şunlardır:
@@ -262,7 +260,7 @@ Bu bölüm, Grup taleplerinde kullanılan grup özniteliklerinin, şirket içi W
    - "DirectoryRole"
    - "ApplicationGroup" (Bu seçenek yalnızca uygulamaya atanan grupları içerir)
 
-   Örneğin:
+   Örnek:
 
     ```json
     "groupMembershipClaims": "SecurityGroup"
@@ -382,13 +380,13 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
 
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
 
-1. **Yönet** bölümünün altında **uygulama kayıtları**' yi seçin.
+1. **Yönet**'in altında **Uygulama kayıtları** nı seçin.
 
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.
 
-1. **Yönet** bölümünde, **belirteç yapılandırması**' nı seçin.
+1. **Yönet** altında **belirteç yapılandırması**' nı seçin.
 
 1. **İsteğe bağlı talep Ekle**' yi seçin **, kimlik** belirteci türünü seçin, talepler listesinden **UPN** ' yi seçin ve ardından **Ekle**' yi seçin.
 
@@ -404,9 +402,9 @@ Aşağıdaki örnekte, uygulamanız için tasarlanan erişim, KIMLIK ve SAML bel
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Kimlik doğrulamasından geçtikten sonra, sayfanın sağ üst köşesinden seçerek Azure AD kiracınızı seçin.
-1. Sol taraftaki menüden **Azure Active Directory** ' yi seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
 1. Listede için isteğe bağlı talepler yapılandırmak istediğiniz uygulamayı bulun ve seçin.
-1. **Yönet** bölümünde, satır içi bildirim düzenleyicisini açmak için **bildirim** ' ı seçin.
+1. **Yönet** altında, satır içi bildirim düzenleyicisini açmak için **bildirim** ' ı seçin.
 1. Bu düzenleyiciyi kullanarak bildirimi doğrudan düzenleyebilirsiniz. Bildirim, [uygulama varlığının](./reference-app-manifest.md)şemasını izler ve bir kez kaydedildikten sonra bildirimi otomatik biçimlendirir. Özelliğe yeni öğeler eklenecektir `OptionalClaims` .
 
     ```json

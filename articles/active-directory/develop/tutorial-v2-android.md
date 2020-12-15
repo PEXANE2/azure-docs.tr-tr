@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 08ee000d8f801559fcf572b8ab489161fd090b77
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 7ba15e66cca7baefdf8cca5cabd5e5d5b1e2c7f7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95996211"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507821"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Öğretici: kullanıcılarda oturum açın ve Android uygulamasından Microsoft Graph API 'sini çağırın
 
@@ -75,24 +75,28 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 ### <a name="register-your-application"></a>Uygulamanızı kaydetme
 
-1. [Azure portalına](https://aka.ms/MobileAppReg) gidin.
-2. [Uygulama kayıtları dikey penceresini](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) açın ve **+ Yeni kayıt**' ye tıklayın.
-3. Uygulamanız için bir **ad** girin ve yeniden yönlendirme URI **'sini ayarlamadan** **Kaydet**' e tıklayın.
-4. Görüntülenen bölmenin **Yönet** bölümünde **kimlik doğrulama**  >  **+ Platform**  >  **Android** Ekle ' yi seçin. (Bu bölümü görmek için dikey pencerenin üst kısmındaki "yeni deneyime geç" seçeneğini seçmeniz gerekebilir.
-5. Projenizin paket adını girin. Kodu indirdiyseniz, bu değer olur `com.azuresamples.msalandroidapp` .
-6. **Android uygulamanızı yapılandırma** sayfanızın **imza karması** bölümünde, **bir geliştirme imza karması oluşturma** ' ya tıklayın. ve platformunuz için kullanmak üzere KeyTool komutunu kopyalayın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin. Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Kaydet**’i seçin.
+1. **Yönet** altında **kimlik doğrulama**  >  **Platform**  >  **Android** ekleme ' yi seçin.
+1. Projenizin paket adını girin. Kodu indirdiyseniz, bu değer olur `com.azuresamples.msalandroidapp` .
+1. **Android uygulamanızı yapılandırma** sayfanızın **imza karması** bölümünde, **bir geliştirme imza karması oluşturma** ' yı seçin. ve platformunuz için kullanmak üzere KeyTool komutunu kopyalayın.
 
    > [!Note]
    > KeyTool.exe, Java Development Kit 'in (JDK) bir parçası olarak yüklenir. Ayrıca, KeyTool komutunu yürütmek için OpenSSL aracını da yüklemelisiniz. Daha fazla bilgi için [bir anahtar oluşturma hakkındaki Android belgelerine](https://developer.android.com/studio/publish/app-signing#generate-key) bakın.
 
-7. KeyTool tarafından oluşturulan **imza karmasını** girin.
-8. `Configure`Uygulamanızı daha sonra yapılandırırken girebilmek Için **Android yapılandırma** sayfasında görüntülenen **msal yapılandırmasını** tıklatın ve kaydedin.  **Bitti**’ye tıklayın.
+1. KeyTool tarafından oluşturulan **imza karmasını** girin.
+1. Uygulamanızı daha sonra yapılandırırken girebilmeniz için **Android yapılandırma** sayfasında görünen **msal yapılandırmasını** **Yapılandır** ve Kaydet ' i seçin.  
+1. **Bitti**’yi seçin.
 
 ### <a name="configure-your-application"></a>Uygulamanızı yapılandırma
 
 1. Android Studio projesi bölmesinde **app\src\mainres dizinine** gidin.
-2. **Kay** ' a sağ tıklayın ve **Yeni**  >  **Dizin**' i seçin. `raw`Yeni dizin adı olarak girin ve **Tamam**' a tıklayın.
-3. **App**  >  **src**  >  **ana**  >  **res**  >  **RAW** bölümünde, adlı yeni bir JSON dosyası oluşturun `auth_config_single_account.json` ve daha önce kaydettiğiniz msal yapılandırmasını yapıştırın.
+1. **Kay** ' a sağ tıklayın ve **Yeni**  >  **Dizin**' i seçin. `raw`Yeni dizin adı olarak girin ve **Tamam**' a tıklayın.
+1. **App**  >  **src**  >  **ana**  >  **res**  >  **RAW** bölümünde, adlı yeni bir JSON dosyası oluşturun `auth_config_single_account.json` ve daha önce kaydettiğiniz msal yapılandırmasını yapıştırın.
 
     Yeniden yönlendirme URI 'sinin altında şunu yapıştırın:
     ```json
@@ -165,7 +169,7 @@ Henüz bir Android uygulamanız yoksa, yeni bir proje ayarlamak için aşağıda
 
 ### <a name="required-imports"></a>Gerekli İçeri Aktarmalar
 
-Aşağıdakini **App**  >  **src** Main Java com ' un en üstüne ekleyin  >  **main** >  **java**  >  **. örnek (yourapp)**  >  **MainActivity. Java**
+Aşağıdakini **App**  >  **src** Main Java com ' un en üstüne ekleyin  >   >    >  **. örnek (yourapp)**  >  **MainActivity. Java**
 
 ```java
 import android.os.Bundle;

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8644040565bd46800b888a32653b6c8bbf89f096
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347447"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509317"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -158,7 +158,7 @@ VM için rol atamalarını yapılandırabileceğiniz birçok yol vardır:
 - Azure Cloud Shell deneyimini kullanma
 
 > [!NOTE]
-> Sanal Makine Yöneticisi oturum açma ve sanal makine Kullanıcı oturum açma rolleri dataActions kullanır ve bu nedenle yönetim grubu kapsamında atanamaz. Şu anda bu roller yalnızca abonelik kapsamında atanabilir.
+> Sanal Makine Yöneticisi oturum açma ve sanal makine Kullanıcı oturum açma rolleri dataActions kullanır ve bu nedenle yönetim grubu kapsamında atanamaz. Şu anda bu roller yalnızca abonelikte, kaynak grubunda veya kaynak kapsamında atanabilir.
 
 ### <a name="using-azure-ad-portal-experience"></a>Azure AD Portal deneyimini kullanma
 

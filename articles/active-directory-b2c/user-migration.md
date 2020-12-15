@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 60dff717fbd86fa83821575ac90c9dac36dbc4d1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85383980"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509623"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Kullanıcıları Azure AD B2C geçir
 
@@ -90,7 +90,7 @@ Eski kimlik sağlayıcısındaki bilgilerin tümünün Azure AD B2C dizinine ge�
 
 Geçiş işlemine başlamadan önce dizininizi Temizleme fırsatına sahip olursunuz.
 
-- Azure AD B2C depolanacak kullanıcı özniteliklerinin kümesini belirleyin ve yalnızca ihtiyacınız olanları geçirin. Gerekirse, bir kullanıcı hakkında daha fazla veri depolamak için [özel öznitelikler](custom-policy-custom-attributes.md) oluşturabilirsiniz.
+- Azure AD B2C depolanacak kullanıcı özniteliklerinin kümesini belirleyin ve yalnızca ihtiyacınız olanları geçirin. Gerekirse, bir kullanıcı hakkında daha fazla veri depolamak için [özel öznitelikler](user-flow-custom-attributes.md) oluşturabilirsiniz.
 - Birden çok kimlik doğrulama kaynağına sahip bir ortamdan geçiş yapıyorsanız (örneğin, her uygulama kendi kullanıcı dizinine sahipse) Azure AD B2C Birleşik bir hesaba geçirin.
 - Birden çok uygulamanın farklı Kullanıcı adları varsa, kimlikler koleksiyonunu kullanarak bunları bir Azure AD B2C Kullanıcı hesabında saklayabilirsiniz. Parolayla ilgili olarak, kullanıcının bir tane seçmesini ve dizinde ayarlayabilmesine izin verin. Örneğin, sorunsuz geçişle yalnızca seçilen parolanın Azure AD B2C hesapta depolanması gerekir.
 - Geçişten önce kullanılmayan kullanıcı hesaplarını kaldırın veya eski hesapları geçirmeyin.

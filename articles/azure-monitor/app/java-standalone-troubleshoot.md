@@ -4,12 +4,12 @@ description: Azure Izleyici için Java aracısında sorun gidermeyi öğrenin Ap
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1ccfd583b58d129268af2a94e3072200e58308cd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347840"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507651"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Sorun giderme kılavuzu: Java için Azure Izleyici Application Insights
 
@@ -34,6 +34,14 @@ Bu değişiklikler şunları içerir:
 -  Yapılandırma dosyası adı, `ApplicationInsights.json` olarak değiştirildi `applicationinsights.json` .
 -  `instrumentationSettings`Düğüm artık yok. İçindeki tüm içerik `instrumentationSettings` kök düzeye taşınır. 
 -  ,, Ve gibi yapılandırma düğümleri `sampling` `jmxMetrics` `instrumentation` `heartbeat` `preview` kök düzeye taşınır.
+
+## <a name="some-logging-is-not-auto-collected"></a>Bazı günlük kaydı otomatik olarak toplanmadı
+
+Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılıyorsa yakalanır ve ikincisi de Application Insights yapılandırılan eşiği karşılar.
+
+Belirli bir günlüğe kaydetme bildiriminin günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılayıp karşılamadığını öğrenmenin en iyi yolu, normal uygulama günlüğinizde (ör. dosya veya konsol) görüntülendiğini doğrulamadır.
+
+Daha fazla ayrıntı için [Otomatik toplanan günlük yapılandırmasına](./java-standalone-config.md#auto-collected-logging) bakın.
 
 ## <a name="import-ssl-certificates"></a>SSL sertifikalarını içeri aktarma
 

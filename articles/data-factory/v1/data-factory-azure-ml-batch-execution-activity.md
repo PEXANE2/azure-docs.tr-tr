@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c65ef2eb25f330f645048cdc73371d98d8c2ce91
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496529"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508481"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning Studio (klasik) ve Azure Data Factory kullanarak tahmine dayalı işlem hatları oluşturun
 
@@ -35,7 +35,6 @@ ms.locfileid: "96496529"
 ## <a name="introduction"></a>Giriş
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory makine öğrenimi kullanarak verileri dönüştürme](../transform-data-using-machine-learning.md).
-
 
 ### <a name="azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (klasik)
 [Azure Machine Learning Studio (klasik)](https://azure.microsoft.com/documentation/services/machine-learning/) tahmine dayalı analiz çözümleri oluşturmanıza, test etmenize ve dağıtmanıza olanak sağlar. Üst düzey bir görünüm noktasından üç adımda yapılır:
@@ -86,7 +85,7 @@ Bu senaryoda, Studio (klasik) Web hizmeti, Azure Blob depolama alanındaki bir d
 >
 >
 
-```JSON
+```json
 {
   "name": "PredictivePipeline",
   "properties": {
@@ -127,6 +126,7 @@ Bu senaryoda, Studio (klasik) Web hizmeti, Azure Blob depolama alanındaki bir d
   }
 }
 ```
+
 > [!NOTE]
 > Yalnızca AzureMLBatchExecution etkinliğinin girişleri ve çıkışları Web hizmetine parametre olarak geçirilebilir. Örneğin, yukarıdaki JSON parçacığında, Decisiontreeınputblob, AzureMLBatchExecution etkinliğine yönelik bir giriştir ve bu, WebServiceInput parametresi aracılığıyla Web hizmetine giriş olarak geçirilir.
 >
@@ -139,115 +139,119 @@ Bu örneğe geçmeden önce [ilk işlem hattınızı Data Factory öğreticiyle 
 
 1. **Azure depolama alanı** için **bağlı bir hizmet** oluşturun. Giriş ve çıkış dosyaları farklı depolama hesaplarınızda ise, iki bağlı hizmet gerekir. Bir JSON örneği aşağıda verilmiştir:
 
-    ```JSON
-    {
-      "name": "StorageLinkedService",
-      "properties": {
-        "type": "AzureStorage",
-        "typeProperties": {
-          "connectionString": "DefaultEndpointsProtocol=https;AccountName=[acctName];AccountKey=[acctKey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "StorageLinkedService",
+     "properties": {
+       "type": "AzureStorage",
+       "typeProperties": {
+         "connectionString": "DefaultEndpointsProtocol=https;AccountName= [acctName];AccountKey=[acctKey]"
+       }
+     }
+   }
+   ```
+
 2. **Giriş** Azure Data Factory **veri kümesini** oluşturun. Diğer bazı Data Factory veri kümelerinden farklı olarak, bu veri kümelerinin her ikisi de **FolderPath** ve **filename** değerlerini içermesi gerekir. Her toplu iş yürütmesinin (her veri dilimi) benzersiz giriş ve çıkış dosyalarını işlemesini veya üretmesine neden olmak için bölümleme kullanabilirsiniz. Girişi CSV dosya biçimine dönüştürmek ve her dilim için depolama hesabına yerleştirmek üzere bazı yukarı akış etkinliklerini eklemeniz gerekebilir. Bu durumda, aşağıdaki örnekte gösterilen **dış** ve **externaldata** ayarlarını eklemeyin ve decisiontreeınputblob, farklı bir etkinliğin çıkış veri kümesi olur.
 
-    ```JSON
-    {
-      "name": "DecisionTreeInputBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/input",
-          "fileName": "in.csv",
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "external": true,
-        "availability": {
-          "frequency": "Day",
-          "interval": 1
-        },
-        "policy": {
-          "externalData": {
-            "retryInterval": "00:01:00",
-            "retryTimeout": "00:10:00",
-            "maximumRetry": 3
-          }
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeInputBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/input",
+         "fileName": "in.csv",
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "external": true,
+       "availability": {
+         "frequency": "Day",
+         "interval": 1
+       },
+       "policy": {
+         "externalData": {
+           "retryInterval": "00:01:00",
+           "retryTimeout": "00:10:00",
+           "maximumRetry": 3
+         }
+       }
+     }
+   }
+   ```
 
-    Giriş CSV dosyanız, sütun üst bilgisi satırına sahip olmalıdır. CSV 'yi blob depolamaya oluşturmak/taşımak için **kopyalama etkinliğini** kullanıyorsanız **blobwriteraddheader** havuz özelliğini **true** olarak ayarlamanız gerekir. Örnek:
+   Giriş CSV dosyanız, sütun üst bilgisi satırına sahip olmalıdır. CSV 'yi blob depolamaya oluşturmak/taşımak için **kopyalama etkinliğini** kullanıyorsanız **blobwriteraddheader** havuz özelliğini **true** olarak ayarlamanız gerekir. Örnek:
 
-    ```JSON
-    sink:
-    {
-        "type": "BlobSink",
-        "blobWriterAddHeader": true
-    }
-    ```
+   ```json
+   sink:
+   {
+     "type": "BlobSink",
+     "blobWriterAddHeader": true
+     }
+   ```
 
-    CSV dosyasında başlık satırı yoksa şu hatayı görebilirsiniz: **etkinlikte hata: dize okuma hatası. Beklenmeyen belirteç: StartObject. Yol ' ', satır 1, konum 1**.
+   CSV dosyasında başlık satırı yoksa şu hatayı görebilirsiniz: **etkinlikte hata: dize okuma hatası. Beklenmeyen belirteç: StartObject. Yol ' ', satır 1, konum 1**.
+
 3. **Çıktı** Azure Data Factory **veri kümesi** oluşturun. Bu örnek, her bir dilim yürütmesi için benzersiz bir çıkış yolu oluşturmak üzere bölümlendirme kullanır. Bölümleme olmadan etkinlik dosyanın üzerine yazar.
 
-    ```JSON
-    {
-      "name": "DecisionTreeResultBlob",
-      "properties": {
-        "type": "AzureBlob",
-        "linkedServiceName": "StorageLinkedService",
-        "typeProperties": {
-          "folderPath": "azuremltesting/scored/{folderpart}/",
-          "fileName": "{filepart}result.csv",
-          "partitionedBy": [
-            {
-              "name": "folderpart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "yyyyMMdd"
-              }
-            },
-            {
-              "name": "filepart",
-              "value": {
-                "type": "DateTime",
-                "date": "SliceStart",
-                "format": "HHmmss"
-              }
-            }
-          ],
-          "format": {
-            "type": "TextFormat",
-            "columnDelimiter": ","
-          }
-        },
-        "availability": {
-          "frequency": "Day",
-          "interval": 15
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "DecisionTreeResultBlob",
+     "properties": {
+       "type": "AzureBlob",
+       "linkedServiceName": "StorageLinkedService",
+       "typeProperties": {
+         "folderPath": "azuremltesting/scored/{folderpart}/",
+         "fileName": "{filepart}result.csv",
+         "partitionedBy": [
+           {
+             "name": "folderpart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "yyyyMMdd"
+             }
+           },
+           {
+             "name": "filepart",
+             "value": {
+               "type": "DateTime",
+               "date": "SliceStart",
+               "format": "HHmmss"
+             }
+           }
+         ],
+         "format": {
+           "type": "TextFormat",
+           "columnDelimiter": ","
+         }
+       },
+       "availability": {
+         "frequency": "Day",
+         "interval": 15
+       }
+     }
+   }
+   ```
+
 4. API anahtarı ve modeli toplu yürütme URL 'SI sağlayan, **AzureMLLinkedService** türünde bir **bağlı hizmet** oluşturun.
 
-    ```JSON
-    {
-      "name": "MyAzureMLLinkedService",
-      "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-          "mlEndpoint": "https://[batch execution endpoint]/jobs",
-          "apiKey": "[apikey]"
-        }
-      }
-    }
-    ```
+   ```json
+   {
+     "name": "MyAzureMLLinkedService",
+     "properties": {
+       "type": "AzureML",
+       "typeProperties": {
+         "mlEndpoint": "https://[batch execution endpoint]/jobs",
+         "apiKey": "[apikey]"
+       }
+     }
+   }
+   ```
+
 5. Son olarak, **AzureMLBatchExecution** etkinliği içeren bir işlem hattı yazın. Çalışma zamanında, işlem hattı aşağıdaki adımları gerçekleştirir:
 
    1. Giriş veri kümelerinizde bulunan giriş dosyasının konumunu alır.
@@ -259,45 +263,45 @@ Bu örneğe geçmeden önce [ilk işlem hattınızı Data Factory öğreticiyle 
       >
       >
 
-      ```JSON
+      ```json
       {
         "name": "PredictivePipeline",
         "properties": {
-            "description": "use AzureML model",
-            "activities": [
-            {
-                "name": "MLActivity",
-                "type": "AzureMLBatchExecution",
-                "description": "prediction analysis on batch input",
-                "inputs": [
+          "description": "use AzureML model",
+          "activities": [
+              {
+              "name": "MLActivity",
+              "type": "AzureMLBatchExecution",
+              "description": "prediction analysis on batch input",
+              "inputs": [
                 {
-                    "name": "DecisionTreeInputBlob"
+                  "name": "DecisionTreeInputBlob"
                 }
                 ],
-                "outputs": [
+              "outputs": [
                 {
-                    "name": "DecisionTreeResultBlob"
+                  "name": "DecisionTreeResultBlob"
                 }
                 ],
-                "linkedServiceName": "MyAzureMLLinkedService",
-                "typeProperties":
+              "linkedServiceName": "MyAzureMLLinkedService",
+              "typeProperties":
                 {
-                    "webServiceInput": "DecisionTreeInputBlob",
-                    "webServiceOutputs": {
-                        "output1": "DecisionTreeResultBlob"
-                    }
+                "webServiceInput": "DecisionTreeInputBlob",
+                "webServiceOutputs": {
+                  "output1": "DecisionTreeResultBlob"
+                }
                 },
-                "policy": {
-                    "concurrency": 3,
-                    "executionPriorityOrder": "NewestFirst",
-                    "retry": 1,
-                    "timeout": "02:00:00"
-                }
+              "policy": {
+                "concurrency": 3,
+                "executionPriorityOrder": "NewestFirst",
+                "retry": 1,
+                "timeout": "02:00:00"
+              }
             }
-            ],
-            "start": "2016-02-13T00:00:00Z",
-            "end": "2016-02-14T00:00:00Z"
-        }
+          ],
+          "start": "2016-02-13T00:00:00Z",
+          "end": "2016-02-14T00:00:00Z"
+          }
       }
       ```
 
@@ -320,7 +324,7 @@ Okuyucu ve yazıcı modüllerini kullanırken, bu okuyucu/yazıcı modüllerinin
 
 Web hizmeti parametrelerini kullanmak için bir senaryoya göz atalım. Studio (klasik) tarafından desteklenen veri kaynaklarından birinden (örneğin, Azure SQL veritabanı) veri okumak için bir okuyucu modülü kullanan dağıtılmış bir Studio (klasik) Web hizmetiniz vardır. Toplu yürütme gerçekleştirildikten sonra, sonuçlar bir yazıcı modülü (Azure SQL veritabanı) kullanılarak yazılır.  Denemeleri içinde hiçbir Web hizmeti girişi ve çıkışı tanımlanmamıştır. Bu durumda, okuyucu ve yazıcı modülleri için ilgili Web hizmeti parametrelerini yapılandırmanızı öneririz. Bu yapılandırma, AzureMLBatchExecution etkinliği kullanılırken okuyucu/yazıcı modüllerinin yapılandırılmasını sağlar. Web hizmeti parametrelerini etkinlik JSON ' daki **Globalparameters** bölümünde aşağıdaki gibi belirtirsiniz.
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
         "Param 1": "Value 1",
@@ -331,7 +335,7 @@ Web hizmeti parametrelerini kullanmak için bir senaryoya göz atalım. Studio (
 
 Ayrıca, aşağıdaki örnekte gösterildiği gibi, Web hizmeti parametrelerinin değerlerini geçirerek [Data Factory işlevleri](data-factory-functions-variables.md) de kullanabilirsiniz:
 
-```JSON
+```json
 "typeProperties": {
     "globalParameters": {
        "Database query": "$$Text.Format('SELECT * FROM myTable WHERE timeColumn = \\'{0:yyyy-MM-dd HH:mm:ss}\\'', Time.AddHours(WindowStart, 0))"

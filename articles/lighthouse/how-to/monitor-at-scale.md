@@ -1,14 +1,14 @@
 ---
 title: Temsil edilen kaynakları ölçeklendirmeye göre izleme
 description: Azure Izleyici günlüklerini, yönettiğiniz müşteri kiracılarında ölçeklenebilir bir şekilde nasıl verimli bir şekilde kullanacağınızı öğrenin.
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461514"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509283"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Temsil edilen kaynakları ölçeklendirmeye göre izleme
 
@@ -40,7 +40,25 @@ Hangi ilkelerin dağıtılacağını belirledikten sonra, [bunları uygun ölçe
 
 ## <a name="analyze-the-gathered-data"></a>Toplanan verileri analiz etme
 
-İlkelerinizi dağıttıktan sonra, veriler her bir müşteri kiracısında oluşturduğunuz Log Analytics çalışma alanlarında günlüğe kaydedilir. Tüm yönetilen müşterilerle ilgili Öngörüler elde etmek için [Azure Izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) gibi araçları kullanarak birden çok veri kaynağından bilgi toplayabilir ve analiz edebilirsiniz. 
+İlkelerinizi dağıttıktan sonra, veriler her bir müşteri kiracısında oluşturduğunuz Log Analytics çalışma alanlarında günlüğe kaydedilir. Tüm yönetilen müşterilerle ilgili Öngörüler elde etmek için [Azure Izleyici çalışma kitapları](../../azure-monitor/platform/workbooks-overview.md) gibi araçları kullanarak birden çok veri kaynağından bilgi toplayabilir ve analiz edebilirsiniz.
+
+## <a name="view-alerts-across-customers"></a>Müşteriler arasında uyarıları görüntüleme
+
+Yönettiğiniz müşteri kiracılarında Temsilcili abonelikler için [Uyarı](../../azure-monitor/platform/alerts-overview.md) görüntüleyebilirsiniz.
+
+Uyarıları birden fazla müşteri genelinde otomatik olarak yenilemek IÇIN, uyarıları filtrelemek üzere bir [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) sorgusu kullanın. Sorguyu panonuza sabitleyebilir ve tüm uygun müşterileri ve abonelikleri seçebilirsiniz.
+
+Aşağıdaki örnek sorgu önem derecesi 0 ve 1 uyarıları görüntüleyecektir, her 60 dakikada bir yenileme yapılır.
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

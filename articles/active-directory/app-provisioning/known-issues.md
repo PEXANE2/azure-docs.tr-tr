@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 11/19/2020
+ms.date: 12/14/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: b8bdb216cbe8d359f35c758ae89f4267ab223483
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 78e9d7355b8c96295456f8aa9cb80b1d3bdd2fab
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928758"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509555"
 ---
 # <a name="known-issues-application-provisioning"></a>Bilinen sorunlar: uygulama sağlama
 Uygulama sağlama ile çalışırken farkında olmak üzere bilinen sorunlar. UserVoice üzerinde uygulama sağlama hizmeti hakkında geri bildirimde bulunmak için bkz. [Azure AD uygulama sağlama UserVoice](https://aka.ms/appprovisioningfeaturerequest). Hizmeti iyileştirebilmemiz için UserVoice 'ı yakından izliyoruz. 
@@ -68,7 +68,8 @@ Dizin genişletmeleri, Approtaatamalar, userType ve accountExpires kapsam filtre
 
 - Sağlama parolaları desteklenmez. 
 - İç içe grupların sağlanması desteklenmez. 
-- Bu kiracılar için sağlama, kiracının boyutu nedeniyle desteklenmiyor. 
+- Bu kiracılar için sağlama, kiracının boyutu nedeniyle desteklenmiyor.
+- Tüm bulutlarda sağlama uygulamaları kullanılabilir değildir. Örneğin, Atlasme henüz kamu bulutu 'nda mevcut değildir. Uygulama geliştiricileriyle uygulamalarını tüm bulutlara eklemek için çalışıyoruz.
 
 **OıDC tabanlı uygulamamda otomatik sağlama kullanılamıyor**
 

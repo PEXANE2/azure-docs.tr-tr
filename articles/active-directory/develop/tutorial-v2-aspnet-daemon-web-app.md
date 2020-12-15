@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 031ee9a6d945d923279fd3025c32212c3ead98ed
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95406608"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509436"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Öğretici: Microsoft Identity platformunu kullanan çok kiracılı bir Daemon oluşturma
 
@@ -65,7 +65,7 @@ Ya da [örneği bir zip dosyasına indirin](https://github.com/Azure-Samples/ms-
 
 Bu örnekte bir proje vardır. Uygulamayı Azure AD kiracınızla kaydetmek için şunlardan birini yapabilirsiniz:
 
-- [Örneği Azure Active Directory kiracınızla kaydetme](#register-your-application) bölümündeki adımları izleyin ve [örneği Azure AD kiracınızı kullanacak şekilde yapılandırın](#choose-the-azure-ad-tenant).
+- [Örneği Azure Active Directory kiracınızla kaydetme](#register-the-client-app-dotnet-web-daemon-v2) bölümündeki adımları izleyin ve [örneği Azure AD kiracınızı kullanacak şekilde yapılandırın](#choose-the-azure-ad-tenant).
 - PowerShell betiklerini şu şekilde kullanın:
   - Azure AD uygulamalarını ve ilgili nesneleri (parolalar, izinler, bağımlılıklar) sizin için *otomatik olarak* oluşturun.
   - Visual Studio projelerinin yapılandırma dosyalarını değiştirin.
@@ -93,40 +93,34 @@ Otomasyonu kullanmak istemiyorsanız, aşağıdaki bölümlerde bulunan adımlar
 
 ### <a name="choose-the-azure-ad-tenant"></a>Azure AD kiracısını seçme
 
-1. İş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. Hesabınız birden fazla Azure AD kiracısında varsa, sayfanın en üstündeki menüden profilinizi seçin ve ardından **Dizin Değiştir**' i seçin.
-1. Portal oturumunuzu istenen Azure AD kiracısına değiştirin.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. Birden fazla kiracıya erişiminiz varsa, uygulamayı kaydetmek istediğiniz kiracıyı seçmek için üst menüdeki **Dizin + abonelik** filtresini kullanın :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: .
+
 
 ### <a name="register-the-client-app-dotnet-web-daemon-v2"></a>İstemci uygulamasını kaydetme (DotNet-Web-Daemon-v2)
 
-1. Geliştiriciler için Microsoft Identity platformunda [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) sayfasına gidin.
-1. **Yeni kayıt** seçeneğini belirleyin.
-1. **Bir uygulamayı kaydet** sayfası göründüğünde, uygulamanızın kayıt bilgilerini girin:
-   - **Ad** bölümünde, uygulamanın kullanıcılarına gösterilecek anlamlı bir uygulama adı girin. Örneğin **DotNet-Web-Daemon-v2** yazın.
-   - **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
-   - **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve aşağıdaki yeniden yönlendirme URI 'lerini girin:
-       - **https://localhost:44316/**
-       - **https://localhost:44316/Account/GrantPermissions**
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet** altında   >  **Yeni kayıt** uygulama kayıtları ' yi seçin.
+1. Uygulamanız için bir **ad** girin (örneğin,) `dotnet-web-daemon-v2` . Uygulamanızın kullanıcıları bu adı görebilir ve daha sonra değiştirebilirsiniz.
+1. **Desteklenen hesap türleri** bölümünde, **herhangi bir kuruluş dizininde hesaplar**' ı seçin.
+1. **Yeniden yönlendirme URI 'si (isteğe bağlı)** bölümünde, açılan kutuda **Web** ' i seçin ve `https://localhost:44316/` `https://localhost:44316/Account/GrantPermissions` yeniden yönlendirme URI 'leri girin.
 
-     İkiden fazla yeniden yönlendirme URI 'si varsa, uygulama başarıyla oluşturulduktan sonra bunları daha sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
+    İkiden fazla yeniden yönlendirme URI 'si varsa, uygulama başarıyla oluşturulduktan sonra bunları daha sonra **kimlik doğrulama** sekmesinden eklemeniz gerekir.
 1. Uygulamayı kaydetmek için **Kaydet**'i seçin.
-1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra için kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
-1. Uygulama sayfa listesinde **Kimlik doğrulaması**'nı seçin. Sonra:
-   - **Gelişmiş ayarlar** bölümünde, **oturum kapatma URL 'sini** olarak ayarlayın **https://localhost:44316/Account/EndSession** .
-   - **Gelişmiş ayarlar**  >  **örtük verme** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
-1. **Kaydet**'i seçin.
-1. **Sertifikalar & gizlilikler** sayfasında, **istemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. Sonra:
-
-   1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli** anahtarı),
-   1. **1 yılda**, **2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
-   1. **Ekle** düğmesini seçin.
-   1. Anahtar değeri göründüğünde güvenli bir konuma kopyalayın ve kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir. Bu bir kez daha gösterilmez veya başka yollarla alınabilir.
-1. Uygulama için sayfa listesinde, **API izinleri**' ni seçin. Sonra:
-   1. **İzin ekleyin** düğmesini seçin.
-   1. **Microsoft API 'leri** sekmesinin seçili olduğundan emin olun.
-   1. **Yaygın olarak kullanılan Microsoft API 'leri** bölümünde **Microsoft Graph**' yi seçin.
-   1. **Uygulama izinleri** bölümünde, doğru izinlerin seçildiğinden emin olun: **User. Read. All**.
-   1. **Izin Ekle** düğmesini seçin.
+1. Uygulamanın **genel bakış** sayfasında, **uygulama (istemci) kimlik** değerini bulun ve daha sonra kullanmak üzere kaydedin. Bu proje için Visual Studio yapılandırma dosyasını yapılandırmak için gerekli olacaktır.
+1. **Yönet** altında **kimlik doğrulaması**' nı seçin.
+1. **Logout URL 'sini** olarak ayarlayın `https://localhost:44316/Account/EndSession` .
+1. **Örtük izin** bölümünde, **erişim belirteçleri** ve **Kimlik belirteçleri**' ni seçin. Bu örnek, kullanıcının oturum açması ve bir API çağırması için [örtük verme akışının](v2-oauth2-implicit-grant-flow.md) etkinleştirilmesini gerektirir.
+1. **Kaydet**’i seçin.
+1. **Yönet**’in altında **Sertifikalar ve gizli diziler**’i seçin.
+1. **İstemci gizli** dizileri bölümünde **yeni istemci parolası**' nı seçin. 
+1. Bir anahtar açıklaması girin (örneğin, **uygulama gizli** dizisi).
+1. **1 yılda**, **2 yıl içinde** bir anahtar süresi seçin veya **hiçbir zaman sona ermez**.
+1. **Ekle**’yi seçin. Anahtar değerini güvenli bir konuma kaydedin. Bu anahtar daha sonra Visual Studio 'da projeyi yapılandırmak için gereklidir.
+1. **Yönet** altında **API izinleri**  >  **bir izin Ekle**' yi seçin.
+1. **Yaygın olarak kullanılan Microsoft API 'leri** bölümünde **Microsoft Graph**' yi seçin.
+1. **Uygulama izinleri** bölümünde, doğru izinlerin seçildiğinden emin olun: **User. Read. All**.
+1. **Izin Ekle**' yi seçin.
 
 ## <a name="configure-the-sample-to-use-your-azure-ad-tenant"></a>Örneği Azure AD kiracınızı kullanacak şekilde yapılandırın
 
@@ -224,7 +218,7 @@ Bu projede Web uygulaması ve Web API projeleri vardır. Azure Web siteleri 'ne 
 1. **Yapılandır**'ı seçin.
 1. **Bağlantı** sekmesinde, hedef URL 'yi "https" kullanacak şekilde güncelleştirin. Örneğin, kullanın `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . **İleri**’yi seçin.
 1. **Ayarlar** sekmesinde, **Kurumsal kimlik doğrulamasını etkinleştir** ' in temizlenmiş olduğundan emin olun.
-1. **Kaydet**'i seçin. Ana ekranda **Yayımla** ' yı seçin.
+1. **Kaydet**’i seçin. Ana ekranda **Yayımla** ' yı seçin.
 
 Visual Studio projeyi yayımlayacak ve projenin URL 'sine otomatik olarak bir tarayıcı açacak. Projenin varsayılan Web sayfasını görürseniz, yayın başarılı olmuştur.
 

@@ -3,12 +3,12 @@ title: Tek başına küme dağıtımı hazırlığı
 description: Ortamı hazırlamaya ve küme yapılandırması oluşturmaya ilişkin belgeler, bir üretim iş yükünü işlemeye yönelik bir kümeyi dağıtmadan önce göz önünde bulundurulmalıdır.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842963"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509181"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Service Fabric tek başına küme dağıtımınızı planlayın ve hazırlayın
 
@@ -78,8 +78,8 @@ Bu dosyadaki bölümlerle ilgili ayrıntılar için bkz. [tek başına Windows k
 
 | **Yapılandırma ayarı** | **Açıklama** |
 | --- | --- |
-| **NodeTypes** |Düğüm türleri, küme düğümlerinizi çeşitli gruplar halinde ayırmanızı sağlar. Bir kümenin en az bir NodeType olması gerekir. Bir gruptaki tüm düğümler aşağıdaki ortak özelliklere sahiptir: <br> **Ad** -bu düğüm türü adıdır. <br>**Uç nokta bağlantı noktaları** -bu düğüm türüyle ilişkili çeşitli adlandırılmış uç noktaları (bağlantı noktaları) vardır. İstediğiniz herhangi bir bağlantı noktası numarasını, bu bildirimde başka hiçbir şeyle çakışmadığı ve makine/VM üzerinde çalışan başka bir uygulama tarafından kullanımda olmadığı sürece kullanabilirsiniz. <br> **Yerleştirme özellikleri** -bu düğüm türü için, sistem hizmetleri veya hizmetleriniz için yerleştirme kısıtlamaları olarak kullandığınız özellikler açıklanır. Bu özellikler, belirli bir düğüm için ek meta veri sağlayan Kullanıcı tanımlı anahtar/değer çiftleridir. Düğüm özelliklerinin örnekleri, düğümün sabit sürücü veya grafik kartına sahip olup olmadığı, sabit sürücü, çekirdek sayısı ve diğer fiziksel özelliklerle ilgili olarak bulunduğu sayıdır. <br> **Kapasiteler** -düğüm kapasiteleri, belirli bir düğümün tüketim için kullanabileceği belirli bir kaynağın adını ve miktarını tanımlar. Örneğin, bir düğüm, "MemoryMB" adlı bir ölçüm için kapasiteye sahip olduğunu ve varsayılan olarak 2048 MB olduğunu tanımlayabilir. Bu kapasiteler, belirli miktarlarda kaynak gerektiren hizmetlerin gerekli miktarlarda kullanılabilir kaynakları bulunan düğümlere yerleştirildiğinden emin olmak için çalışma zamanında kullanılır.<br>**IsPrimary** -birden fazla NodeType tanımlı ise, sistem hizmetlerinin çalıştığı, *doğru*değeri olan yalnızca bir tane birincil olarak ayarlandığından emin olun. Diğer tüm düğüm türleri *false* değerine ayarlanmalıdır |
-| **Düğümler** |Bunlar kümenin parçası olan düğümlerin (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı) her biri için ayrıntılardır. Kümenin oluşturulmasını istediğiniz makinelerin, IP adresleriyle birlikte burada listelenmesi gerekir. <br> Tüm düğümler için aynı IP adresini kullanırsanız, test amacıyla kullanabileceğiniz bir tek Box kümesi oluşturulur. Üretim iş yüklerini dağıtmak için tek Box kümeleri kullanmayın. |
+| **NodeTypes** |Düğüm türleri, küme düğümlerinizi çeşitli gruplar halinde ayırmanızı sağlar. Bir kümenin en az bir NodeType olması gerekir. Bir gruptaki tüm düğümler aşağıdaki ortak özelliklere sahiptir: <br> **Ad** -bu düğüm türü adıdır. <br>**Uç nokta bağlantı noktaları** -bu düğüm türüyle ilişkili çeşitli adlandırılmış uç noktaları (bağlantı noktaları) vardır. İstediğiniz herhangi bir bağlantı noktası numarasını, bu bildirimde başka hiçbir şeyle çakışmadığı ve makine/VM üzerinde çalışan başka bir uygulama tarafından kullanımda olmadığı sürece kullanabilirsiniz. <br> **Yerleştirme özellikleri** -bu düğüm türü için, sistem hizmetleri veya hizmetleriniz için yerleştirme kısıtlamaları olarak kullandığınız özellikler açıklanır. Bu özellikler, belirli bir düğüm için ek meta veri sağlayan Kullanıcı tanımlı anahtar/değer çiftleridir. Düğüm özelliklerinin örnekleri, düğümün sabit sürücü veya grafik kartına sahip olup olmadığı, sabit sürücü, çekirdek sayısı ve diğer fiziksel özelliklerle ilgili olarak bulunduğu sayıdır. <br> **Kapasiteler** -düğüm kapasiteleri, belirli bir düğümün tüketim için kullanabileceği belirli bir kaynağın adını ve miktarını tanımlar. Örneğin, bir düğüm, "MemoryMB" adlı bir ölçüm için kapasiteye sahip olduğunu ve varsayılan olarak 2048 MB olduğunu tanımlayabilir. Bu kapasiteler, belirli miktarlarda kaynak gerektiren hizmetlerin gerekli miktarlarda kullanılabilir kaynakları bulunan düğümlere yerleştirildiğinden emin olmak için çalışma zamanında kullanılır.<br>**IsPrimary** -birden fazla NodeType tanımlı ise, sistem hizmetlerinin çalıştığı, *doğru* değeri olan yalnızca bir tane birincil olarak ayarlandığından emin olun. Diğer tüm düğüm türleri *false* değerine ayarlanmalıdır |
+| **Düğümlerini** |Bunlar kümenin parçası olan düğümlerin (düğüm türü, düğüm adı, IP adresi, hata etki alanı ve yükseltme etki alanı) her biri için ayrıntılardır. Kümenin oluşturulmasını istediğiniz makinelerin, IP adresleriyle birlikte burada listelenmesi gerekir. <br> Tüm düğümler için aynı IP adresini kullanırsanız, test amacıyla kullanabileceğiniz bir tek Box kümesi oluşturulur. Üretim iş yüklerini dağıtmak için tek Box kümeleri kullanmayın. |
 
 Küme yapılandırmasının tüm ayarları ortama yapılandırıldıktan sonra, küme ortamına karşı test edilebilir (adım 7).
 
@@ -103,7 +103,7 @@ Bir Küme Yöneticisi Service Fabric tek başına kümesi yapılandırdığında
 5. Küme makineleri internet 'e erişemezse, küme yapılandırmasında aşağıdakileri ayarlayın:
    * Telemetriyi devre dışı bırak: *Özellikler* altında *"enabletelemetri" kümesi: false*
    * Otomatik doku sürümü indirmeyi devre dışı bırak & geçerli küme sürümünün destek sonuna yaklaştığı bildirimler: *"Fabricclusterotomatik Upgradeenabled"* olarak ayarlanmış *Özellikler* altında: false
-   * Alternatif olarak, ağ internet erişimi, beyaz listeye eklenen etki alanlarıyla sınırlı ise, otomatik yükseltme için aşağıdaki etki alanları gerekir: go.microsoft.com download.microsoft.com
+   * Alternatif olarak, ağ internet erişimi, allowlistelenmiş etki alanlarıyla sınırlı ise, otomatik yükseltme için aşağıdaki etki alanları gerekir: go.microsoft.com download.microsoft.com
 
 6. Virüsten koruma dışlamalarını uygun Service Fabric ayarlayın:
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546919"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507583"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Konuşma CLı 'nın temellerini öğrenin
 
@@ -87,7 +87,7 @@ Bu komutta, hem kaynak **(çevrilecek** dil) hem de hedef (çevrilecek **dil) di
 
 ### <a name="configuration-files-in-the-datastore"></a>Veri deposundaki yapılandırma dosyaları
 
-Konuşma CLı 'nın davranışı, yapılandırma dosyalarındaki ayarlara bağlı olabilir. Bu, bir @ simgesi kullanarak konuşma CLı çağrıları içinde başvurabilirsiniz.
+Konuşma CLı 'nın davranışı, yapılandırma dosyalarındaki ayarlara bağlı olabilir. Bu, bir sembol kullanarak konuşma CLı çağrıları içinde ifade edebilirsiniz \@ .
 Konuşma CLı, yeni bir ayarı `./spx/data` geçerli çalışma dizininde oluşturduğu yeni bir alt dizine kaydeder.
 Bir yapılandırma değeri ararken, konuşma CLı geçerli çalışma dizininizi, ardından üzerindeki veri deposunda `./spx/data` ve daha sonra diğer veri depolarında, ikili dosyada son salt okuma veri deposu da dahil olmak üzere `spx` .
 Daha önce, ve değerlerini kaydetmek için veri deposunu `@key` kullandınız `@region` , bu nedenle bunları her bir komut satırı çağrısıyla belirtmeniz gerekmez.
@@ -190,7 +190,7 @@ Bu komut, `spx synthesize --text Sample text to synthesize --audio output C:\bat
 
 * Sütun başlıkları, `audio.output` ve `text` sırasıyla komut satırı bağımsız değişkenlerine karşılık gelir `--audio output` `--text` . Gibi çok parçalı komut satırı bağımsız değişkenleri `--audio output` , boşluk olmadan dosyada, önde gelen tireler olmadan ve dizeleri ayıran noktalarla biçimlendirilmelidir. Örneğin, `audio.output` . Diğer mevcut komut satırı bağımsız değişkenleri, bu model kullanılarak ek sütunlar olarak dosyaya eklenebilir.
 * Dosya bu şekilde biçimlendirildiğinde, başka bir bağımsız değişken geçirilmesi gerekmez `--foreach` .
-* İçindeki her değeri bir sekmeyle ayırtığınızdan emin olun `.tsv` . **tab**
+* İçindeki her değeri bir sekmeyle ayırtığınızdan emin olun `.tsv` . 
 
 Ancak, `.tsv` Aşağıdaki örnekte olduğu gibi bir dosyanız varsa, komut satırı bağımsız değişkenleriyle **eşleşmeyen** sütun başlıkları vardır:
 

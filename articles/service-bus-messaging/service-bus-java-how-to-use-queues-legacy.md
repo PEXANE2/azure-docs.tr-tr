@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 774f9e485c58712ea8648a148c92b6f9ef6a58c0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d24645ada2ef4ac12101aa747aacc1bbf90f123e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452620"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509266"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Hızlı başlangıç: ileti göndermek ve almak için Java ile Azure Service Bus kuyrukları kullanma
 
@@ -18,7 +18,7 @@ ms.locfileid: "96452620"
 Bu öğreticide, Azure Service Bus kuyruğuna ileti göndermek ve ileti almak için Java uygulamaları oluşturmayı öğreneceksiniz. 
 
 > [!WARNING]
->  Bu hızlı başlangıçta eski Azure-ServiceBus paketleri kullanılmaktadır. En son Azure-mesajlaşma-ServiceBus paketini kullanan bir hızlı başlangıç için bkz. [Azure-mesajlaşma-ServiceBus kullanarak Ileti gönderme ve alma](service-bus-java-how-to-use-queues.md). 
+>  Bu hızlı başlangıç, eski `azure-servicebus` paketleri kullanır. En son paketi kullanan bir hızlı başlangıç için `azure-messaging-servicebus` bkz. [ `azure-messaging-servicebus` kullanarak ileti gönderme ve alma ](service-bus-java-how-to-use-queues.md). 
 
 
 ## <a name="prerequisites"></a>Önkoşullar
@@ -136,7 +136,7 @@ Aşağıdaki örnek, iletilerin **PeekLock** modu kullanılarak nasıl alınaca�
     void registerReceiver(QueueClient queueClient) throws Exception {
         // register the RegisterMessageHandler callback
         queueClient.registerMessageHandler(new IMessageHandler() {
-        // callback invoked when the message handler loop has obtained a message
+            // callback invoked when the message handler loop has obtained a message
             public CompletableFuture<Void> onMessageAsync(IMessage message) {
             // receives message is passed to callback
                 if (message.getLabel() != null &&
@@ -183,8 +183,7 @@ Uygulamanın ileti işlendikten sonra çöktüğü durumda, ancak **tamamlanma (
 > Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-[Azure-Service-Bus deposunda](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)GitHub 'da Java örnekleri bulabilirsiniz.
-
+, [ `azure-service-bus` Depoda](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)GitHub 'da Java örnekleri bulabilirsiniz.
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started
 [Azure Toolkit for Eclipse]: /azure/developer/java/toolkit-for-eclipse/installation

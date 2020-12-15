@@ -12,12 +12,12 @@ ms.date: 12/10/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 698864a4dc1081cb8cad9036ff1cfc737a17473c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53f5346030e3c5a247d1ad2a73b23882e83ed41a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111477"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508127"
 ---
 #  <a name="add-user-attributes-and-customize-user-input-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı öznitelikleri ekleme ve Kullanıcı girişini özelleştirme
 
@@ -129,7 +129,7 @@ Uygulama talepleri, uygulamaya döndürülen değerlerdir. Kullanıcı akışın
 ::: zone pivot="b2c-custom-policy"
 
 > [!NOTE]
-> Bu örnek, yerleşik ' City ' talebini kullanır. Bunun yerine, desteklenen [Azure AD B2C yerleşik özniteliklerinden](user-profile-attributes.md) birini veya özel bir özniteliği seçebilirsiniz. Özel bir öznitelik kullanmak için, [ilkenizde özel öznitelikleri etkinleştirin](custom-policy-custom-attributes.md). Farklı bir yerleşik veya özel öznitelik kullanmak için ' City ' değerini istediğiniz özniteliğiyle değiştirin; Örneğin, yerleşik özniteliği *JobTitle* veya *extension_loyaltyId* gibi özel bir öznitelik.  
+> Bu örnek, yerleşik ' City ' talebini kullanır. Bunun yerine, desteklenen [Azure AD B2C yerleşik özniteliklerinden](user-profile-attributes.md) birini veya özel bir özniteliği seçebilirsiniz. Özel bir öznitelik kullanmak için [özel öznitelikleri etkinleştirin](user-flow-custom-attributes.md). Farklı bir yerleşik veya özel öznitelik kullanmak için ' City ' değerini istediğiniz özniteliğiyle değiştirin; Örneğin, yerleşik özniteliği *JobTitle* veya *extension_loyaltyId* gibi özel bir öznitelik.  
 
 Kayıt veya oturum açma Kullanıcı yolculuğu kullanarak kullanıcılarınızla ilk verileri toplayabilirsiniz. Ek talepler, daha sonra bir profil düzenleme Kullanıcı yolculuğu kullanılarak toplanabilir. Azure AD B2C her zaman doğrudan kullanıcıdan etkileşimli olarak bilgi toplar, kimlik deneyimi çerçevesi [kendi kendine onaylanan teknik profilini](self-asserted-technical-profile.md)kullanır. Bu örnekte şunları yapabilirsiniz:
 
@@ -342,6 +342,6 @@ Uygulamanıza geri gönderilen belirteç `city` talebi içerir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - IEF başvurusunda [Claimsschema](claimsschema.md) öğesi hakkında daha fazla bilgi edinin.
-- Özel [bir profil düzenleme ilkesinde özel öznitelikleri nasıl kullanacağınızı](custom-policy-custom-attributes.md)öğrenin.
+- [Azure AD B2C ' de özel öznitelikler kullanmayı](user-flow-custom-attributes.md)öğrenin.
 
 ::: zone-end

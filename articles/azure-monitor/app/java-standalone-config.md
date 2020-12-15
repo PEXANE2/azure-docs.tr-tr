@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: b5c1ab7db818daa91497728299d2247f612fe21b
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387760"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507668"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -184,9 +184,9 @@ Daha fazla bilgi için [telemetri işlemcisi](./java-standalone-telemetry-proces
 
 Log4J, Logback ve Java. util. Logging otomatik olarak işaretlenir ve bu günlüğe kaydetme çerçeveleri aracılığıyla gerçekleştirilen günlüğe kaydetme otomatik olarak toplanır.
 
-Varsayılan olarak, günlüğe kaydetme yalnızca, veya üzeri bir günlüğe kaydetme gerçekleştirildiğinde toplanır `INFO` .
+Günlüğe kaydetme işlemi, yalnızca ilk olarak günlüğe kaydetme çerçevelerinin yapılandırılmış eşiğini karşılıyorsa yakalanır ve ikincisi de Application Insights yapılandırılan eşiği karşılar.
 
-Bu koleksiyon düzeyini değiştirmek istiyorsanız:
+Varsayılan Application Insights eşiği `INFO` . Bu düzeyi değiştirmek istiyorsanız:
 
 ```json
 {

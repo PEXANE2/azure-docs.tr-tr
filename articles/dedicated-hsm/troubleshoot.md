@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: b911181abea06894873e64da51afbb8799f1066a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 42bfa52721160a469db2aa0507dadfa85ff41389
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927847"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508280"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure ayrılmış HSM hizmeti sorunlarını giderme
 
@@ -29,7 +29,7 @@ Azure ayrılmış HSM hizmeti iki ayrı model içerir. İlk olarak, HSM cihazlar
 
 ## <a name="hsm-registration"></a>HSM kaydı
 
-Adanmış HSM, bulutta donanım kaynakları sunarken kullanım için ücretsiz olarak kullanılamaz ve bu nedenle korunması gereken değerli bir kaynaktır. Bu nedenle, kullanarak e-posta aracılığıyla beyaz listeleme işlemi kullanıyoruz HSMrequest@microsoft.com . 
+Adanmış HSM, bulutta donanım kaynakları sunarken kullanım için ücretsiz olarak kullanılamaz ve bu nedenle korunması gereken değerli bir kaynaktır. Bu nedenle, kullanarak e-posta aracılığıyla bir allowlisteleme işlemi kullanıyoruz HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Adanmış HSM 'ye erişim sağlama
 
@@ -69,7 +69,7 @@ Her bölge için 2 HSM/damga ve 4 HSM 'yi aşarsanız dağıtımlar başarısız
 Belirli bir damga veya bölge dolduğunda, diğer bir deyişle, neredeyse tüm ücretsiz HSM 'ler sağlandığında, bu dağıtım hatalarına neden olabilir. Her damga, müşteriler için kullanılabilir 11 HSMs 'ye sahiptir ve bu, bölge başına 22 anlamına gelir. Her bir damgada 3 yedek ve 1 test cihazı vardır. Sınır olduğunu düşünüyorsanız, HSMrequest@microsoft.com belirli damgaların Fill düzeyi hakkında bilgi için e-posta gönderin.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Nasıl yaparım?, sağlanan HSM 'leri görmek mi istiyorsunuz?
-Adanmış HSM 'nin beyaz listeye eklenen bir hizmet olması nedeniyle, Azure portal bir "gizli tür" olarak kabul edilir. HSM kaynaklarını görmek için aşağıda gösterildiği gibi "gizli türleri göster" onay kutusunu denetlemeniz gerekir. NIC kaynağı her zaman HSM 'yi izler ve bağlanmak için SSH kullanılmadan önce HSM 'nin IP adresini bulmak için iyi bir yerdir.
+Ayrılmış HSM 'nin allowlistelenmiş bir hizmet olması nedeniyle, Azure portal bir "gizli tür" olarak kabul edilir. HSM kaynaklarını görmek için aşağıda gösterildiği gibi "gizli türleri göster" onay kutusunu denetlemeniz gerekir. NIC kaynağı her zaman HSM 'yi izler ve bağlanmak için SSH kullanılmadan önce HSM 'nin IP adresini bulmak için iyi bir yerdir.
 
 ![Gizli türleri göster denetimini vurgulayan ekran görüntüsü](./media/troubleshoot/hsm-provisioned.png)
 

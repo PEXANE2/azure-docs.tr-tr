@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904163"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507617"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Öğretici: Azure Data Factory kullanarak SQL Edge 'den Azure Blob depolama 'ya veri eşitleme
 
@@ -59,8 +59,11 @@ Bu komutları SQL Edge örneğinde çalıştırın:
     CREATE PROCEDURE usp_write_watermark @timestamp datetime, @TableName varchar(50)  
     AS  
     BEGIN
+    
     UPDATE [dbo].[watermarktable]
-    SET [WatermarkValue] = @timestamp WHERE [TableName] = @TableName
+    SET [WatermarkValue] = @timestamp
+    WHERE [TableName] = @TableName
+
     END
     Go
 ```
@@ -81,25 +84,25 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
 2. İşlem hattının **Özellikler** penceresinin **genel** sayfasında, ad için **dönemsiz eşitleme** girin.
 
-3. Eski eşik değerini almak için arama etkinliğini ekleyin. **Etkinlikler** bölmesinde, **genel** ' i genişletin ve **arama** etkinliğini işlem hattı Tasarımcısı yüzeyine sürükleyin. Etkinliğin adını **Oldfiligrandan**değiştirin.
+3. Eski eşik değerini almak için arama etkinliğini ekleyin. **Etkinlikler** bölmesinde, **genel** ' i genişletin ve **arama** etkinliğini işlem hattı Tasarımcısı yüzeyine sürükleyin. Etkinliğin adını **Oldfiligrandan** değiştirin.
 
     ![Eski filigran aramasını ekleyin](media/tutorial-sync-data-factory/create-old-watermark-lookup.png)
 
-4. **Ayarlar** sekmesine geçin ve **kaynak veri kümesi**için **Yeni** ' yi seçin. Artık filigran tablosundaki verileri temsil etmek için bir veri kümesi oluşturacaksınız. Bu tablo, önceki kopyalama işleminde kullanılan eski filigranı içerir.
+4. **Ayarlar** sekmesine geçin ve **kaynak veri kümesi** için **Yeni** ' yi seçin. Artık filigran tablosundaki verileri temsil etmek için bir veri kümesi oluşturacaksınız. Bu tablo, önceki kopyalama işleminde kullanılan eski filigranı içerir.
 
 5. **Yeni veri kümesi** penceresinde **Azure SQL Server**' yi seçin ve ardından **devam**' ı seçin.  
 
-6. Veri kümesinin **Özellikler** penceresinde, **ad**' ın altına **sulu su**yazın.
+6. Veri kümesinin **Özellikler** penceresinde, **ad**' ın altına **sulu su** yazın.
 
-7. **Bağlı hizmet**için **Yeni**' yi seçin ve ardından şu adımları uygulayın:
+7. **Bağlı hizmet** için **Yeni**' yi seçin ve ardından şu adımları uygulayın:
 
-    1. **Ad**alanına **SQLDBEdgeLinkedService**girin.
+    1. **Ad** alanına **SQLDBEdgeLinkedService** girin.
 
-    2. **Sunucu adı**bölümüne SQL Edge sunucu ayrıntılarınızı girin.
+    2. **Sunucu adı** bölümüne SQL Edge sunucu ayrıntılarınızı girin.
 
     3. Listeden **veritabanınızın adını** seçin.
 
-    4. **Kullanıcı adınızı** ve **parolanızı**girin.
+    4. **Kullanıcı adınızı** ve **parolanızı** girin.
 
     5. SQL Edge örneğiyle bağlantıyı test etmek için **Bağlantıyı Sına**' yı seçin.
 
@@ -111,7 +114,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
 8. **Ayarlar** sekmesinde **Düzenle**' yi seçin.
 
-9. **Bağlantı** sekmesinde **[dbo] öğesini seçin. [ Tablo için su marktable]** . **Table** Tablodaki verileri önizlemek istiyorsanız, **Verileri Önizle**' yi seçin.
+9. **Bağlantı** sekmesinde **[dbo] öğesini seçin. [ Tablo için su marktable]** .  Tablodaki verileri önizlemek istiyorsanız, **Verileri Önizle**' yi seçin.
 
 10. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem hattı düzenleyicisine geçin. Arama etkinliğinin Özellikler penceresinde, **kaynak veri kümesi** listesinde **sulu markmarkdataset** ' in seçili olduğunu onaylayın.
 
@@ -121,7 +124,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
 13. **Yeni veri kümesi** penceresinde **SQL Edge örneği**' ni seçin ve ardından **devam**' ı seçin.
 
-    1. **Özellikleri ayarla** penceresinde, **ad**' ın altında **sourceDataset**' i girin. **Bağlı hizmet**altında **SQLDBEdgeLinkedService**öğesini seçin.
+    1. **Özellikleri ayarla** penceresinde, **ad**' ın altında **sourceDataset**' i girin. **Bağlı hizmet** altında **SQLDBEdgeLinkedService** öğesini seçin.
 
     2. **Tablo**' nın altında, eşitlenmesini istediğiniz tabloyu seçin. Bu veri kümesi için, Bu öğreticinin ilerleyen kısımlarında açıklandığı gibi bir sorgu de belirtebilirsiniz. Sorgu, bu adımda belirttiğiniz tabloya göre önceliklidir.
 
@@ -129,7 +132,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
 14. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem hattı düzenleyicisine geçin. Arama etkinliğinin Özellikler penceresinde, **kaynak veri kümesi** listesinde **sourceDataset** öğesinin seçili olduğunu doğrulayın.
 
-15. Sorgu **kullan**altında **sorgu** ' yı seçin. Aşağıdaki sorgudaki tablo adını güncelleştirin ve ardından sorguyu girin. Tablodan yalnızca en yüksek değeri seçiyoruz `timestamp` . **Yalnızca ilk satırı**seçtiğinizden emin olun.
+15. Sorgu **kullan** altında **sorgu** ' yı seçin. Aşağıdaki sorgudaki tablo adını güncelleştirin ve ardından sorguyu girin. Tablodan yalnızca en yüksek değeri seçiyoruz `timestamp` . **Yalnızca ilk satırı** seçtiğinizden emin olun.
 
     ```sql
     select MAX(timestamp) as NewWatermarkvalue from [TableName]
@@ -137,7 +140,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
     ![Sorgu Seç](media/tutorial-sync-data-factory/select-query-data-factory.png)
 
-16. **Etkinlikler** bölmesinde, **Taşı & Dönüştür** ' ü genişletin ve **kopyalama** etkinliğini **Etkinlikler** bölmesinden tasarımcı yüzeyine sürükleyin. Etkinliğin adını **IncrementalCopy**olarak ayarlayın.
+16. **Etkinlikler** bölmesinde, **Taşı & Dönüştür** ' ü genişletin ve **kopyalama** etkinliğini **Etkinlikler** bölmesinden tasarımcı yüzeyine sürükleyin. Etkinliğin adını **IncrementalCopy** olarak ayarlayın.
 
 17. Arama etkinliklerine bağlı yeşil düğmeyi Kopyalama etkinliğine sürükleyerek her iki Arama etkinliğini Kopyalama etkinliğine bağlayın. Kopyalama etkinliğinin kenarlık rengini mavi olarak değiştirip fare düğmesini bırakın.
 
@@ -147,7 +150,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
     1. **Kaynak veri kümesi** kutusunda **sourceDataset**' i seçin.
 
-    2. **Sorgu kullan**altında **sorgu**' yı seçin.
+    2. **Sorgu kullan** altında **sorgu**' yı seçin.
 
     3. **Sorgu** kutusuna SQL sorgusunu girin. Örnek bir sorgu aşağıda verilmiştir:
 
@@ -155,43 +158,43 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
     select * from TemperatureSensor where timestamp > '@{activity('OldWaterMark').output.firstRow.WatermarkValue}' and timestamp <= '@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}'
     ```
 
-20. **Havuz** sekmesinde, **Havuz veri kümesi**altında **Yeni** ' yi seçin.
+20. **Havuz** sekmesinde, **Havuz veri kümesi** altında **Yeni** ' yi seçin.
 
 21. Bu öğreticide, havuz veri deposu bir Azure Blob depolama veri deposudur. **Azure Blob depolama**' yı seçin ve ardından **Yeni veri kümesi** penceresinde **devam** ' ı seçin.
 
 22. **Biçim Seç** penceresinde verilerinizin biçimini seçin ve ardından **devam**' ı seçin.
 
-23. **Özellikleri ayarla** penceresinde, **ad**' ın altında **sinkdataset**adını girin. **Bağlı hizmet**altında **Yeni**' yi seçin. Artık Azure Blob depolama alanına bir bağlantı (bağlı hizmet) oluşturacaksınız.
+23. **Özellikleri ayarla** penceresinde, **ad**' ın altında **sinkdataset** adını girin. **Bağlı hizmet** altında **Yeni**' yi seçin. Artık Azure Blob depolama alanına bir bağlantı (bağlı hizmet) oluşturacaksınız.
 
 24. **Yeni bağlı hizmet (Azure Blob depolama)** penceresinde şu adımları uygulayın:
 
-    1. **Ad** kutusuna **AzureStorageLinkedService**girin.
+    1. **Ad** kutusuna **AzureStorageLinkedService** girin.
 
-    2. **Depolama hesabı adı**altında Azure aboneliğiniz için Azure Depolama hesabını seçin.
+    2. **Depolama hesabı adı** altında Azure aboneliğiniz için Azure Depolama hesabını seçin.
 
     3. Bağlantıyı test edin ve ardından **son**' u seçin.
 
-25. **Özellikleri ayarla** penceresinde, **AzureStorageLinkedService** **bağlı hizmet**altında seçili olduğunu doğrulayın. **Oluştur** ve **Tamam**' ı seçin.
+25. **Özellikleri ayarla** penceresinde, **AzureStorageLinkedService** **bağlı hizmet** altında seçili olduğunu doğrulayın. **Oluştur** ve **Tamam**' ı seçin.
 
 26. **Havuz** sekmesinde **Düzenle**' yi seçin.
 
 27. SinkDataset 'in **bağlantı** sekmesine gidin ve aşağıdaki adımları tamamlayın:
 
-    1. **Dosya yolu**' nun altında *asdedatasync/incrementalcopy*girin; burada *asdedatasync* blob kapsayıcısı adıdır ve *incrementalcopy* klasör adıdır. Mevcut değilse kapsayıcıyı oluşturun veya var olan bir adın adını kullanın. Azure Data Factory, *incrementalcopy* çıktı klasörünü otomatik olarak oluşturur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
+    1. **Dosya yolu**' nun altında *asdedatasync/incrementalcopy* girin; burada *asdedatasync* blob kapsayıcısı adıdır ve *incrementalcopy* klasör adıdır. Mevcut değilse kapsayıcıyı oluşturun veya var olan bir adın adını kullanın. Azure Data Factory, *incrementalcopy* çıktı klasörünü otomatik olarak oluşturur. Bir blob kapsayıcısındaki klasörlerden birine gitmek istiyorsanız **Dosya yolu** için **Gözat** düğmesini de kullanabilirsiniz.
 
-    2. **Dosya yolunun** **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve ** @CONCAT (' artımlı-', işlem hattı () girin. RunId, '. txt ')** açılan pencerede. **Son**’u seçin. Dosya adı, ifade tarafından dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
+    2. **Dosya yolunun** **Dosya** bölümü Için, **dinamik Içerik Ekle [alt + P]** öğesini seçin ve **@CONCAT (' artımlı-', işlem hattı () girin. RunId, '. txt ')** açılan pencerede. **Son**'u seçin. Dosya adı, ifade tarafından dinamik olarak oluşturulur. Her işlem hattı çalıştırması benzersiz bir kimliğe sahiptir. Kopyalama etkinliği, dosya adını oluşturmak için çalışma kimliğini kullanır.
 
 28. En üstteki işlem hattı sekmesini seçerek veya soldaki ağaç görünümünde işlem hattının adını seçerek işlem hattı düzenleyicisine geçin.
 
 29. **Etkinlikler** bölmesinde, **genel** ' i genişletin ve **saklı yordam** etkinliğini **Etkinlikler** bölmesinden işlem hattı Tasarımcısı yüzeyine sürükleyin. Kopyalama etkinliğinin yeşil (başarılı) çıkışını saklı yordam etkinliğine bağlayın.
 
-30. Işlem hattı tasarımcısında **saklı yordam etkinliği** ' ni seçin ve adını **Sptoupdatesulu markactivity**olarak değiştirin.
+30. Işlem hattı tasarımcısında **saklı yordam etkinliği** ' ni seçin ve adını **Sptoupdatesulu markactivity** olarak değiştirin.
 
-31. **SQL hesabı** sekmesine geçin ve **bağlı hizmet**altında ***QLDBEdgeLinkedService** öğesini seçin.
+31. **SQL hesabı** sekmesine geçin ve **bağlı hizmet** altında **_QLDBEdgeLinkedService_* öğesini seçin.
 
 32. **Saklı yordam** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-    1. **Saklı yordam adı**altında **[dbo] öğesini seçin. [ usp_write_watermark]**.
+    1. **Saklı yordam adı** altında **[dbo] öğesini seçin. [ usp_write_watermark]**.
 
     2. Saklı yordam parametrelerinin değerlerini belirtmek için, **parametreyi Içeri aktar** ' ı seçin ve parametreler için şu değerleri girin:
 
@@ -208,7 +211,7 @@ Bu bölümde, Azure SQL Edge 'deki bir tablodan verileri Azure Blob depolama ile
 
 1. İşlem hattı araç çubuğunda **tetikleyici Ekle**' yi seçin, **Yeni/Düzenle**' yi seçin ve ardından **Yeni**' yi seçin.
 
-2. Tetikleyicinizi **HourlySync**olarak adlandırın. **Tür**altında **zamanlama**' yı seçin. **Yinelemeyi** her 1 saat olarak ayarlayın.
+2. Tetikleyicinizi **HourlySync** olarak adlandırın. **Tür** altında **zamanlama**' yı seçin. **Yinelemeyi** her 1 saat olarak ayarlayın.
 
 3. **Tamam**’ı seçin.
 

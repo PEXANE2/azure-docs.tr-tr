@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/11/2020
+ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: ef9ac29735289d5c7a60ff0fca3b9e9f360f6e08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 34eb34a86948a2b4c043d5d9b58b50958855e449
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005138"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508723"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure Blob depolamadan Azure SQL veritabanı 'ndaki bir veritabanına veri kopyalama
 
@@ -26,7 +26,7 @@ ms.locfileid: "96005138"
 Bu öğreticide, Azure Data Factory kullanıcı arabirimini (UI) kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob depolama alanından Azure SQL veritabanı 'ndaki bir veritabanına kopyalar. Bu öğreticideki yapılandırma düzeni, dosya tabanlı bir veri deposundan ilişkisel bir veri deposuna kopyalama için geçerlidir. Kaynak ve havuz olarak desteklenen veri depolarının listesi için [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
 > [!NOTE]
-> - İlk kez Data Factory kullanıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
+> İlk kez Data Factory kullanıyorsanız bkz. [Azure Data Factory'ye giriş](introduction.md).
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -82,24 +82,26 @@ Bu adımda, bir veri fabrikası oluşturacak ve veri fabrikasında bir işlem ha
 
 1. **Microsoft Edge** veya **Google Chrome**'ı açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
 2. Sol menüde, **kaynak**  >  **tümleştirmesi**  >  **Data Factory** oluştur ' u seçin.
-3. **Yeni veri fabrikası** sayfasında **Ad** bölümüne **ADFTutorialDataFactory** girin.
+3. **Data Factory oluştur** sayfasında, **temel bilgiler** sekmesinde, veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
+4. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
+
+    a. Açılan listeden var olan bir kaynak grubunu seçin.
+
+    b. **Yeni oluştur**' u seçin ve yeni bir kaynak grubunun adını girin.
+    
+    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
+5. **Bölge** altında, Veri Fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
+6. **Ad** alanına **ADFTutorialDataFactory** girin.
 
    Azure veri fabrikasının adı *genel olarak benzersiz* olmalıdır. Ad değeriyle ilgili bir hata iletisi alırsanız, veri fabrikası için farklı bir ad girin. (örneğin, Adınızadftutorialdatafactory). Data Factory yapıtlarının adlandırma kuralları için bkz.[Data Factory adlandırma kuralları](naming-rules.md).
 
      ![Yeni veri fabrikası](./media/doc-common-process/name-not-available-error.png)
-4. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğinizi** seçin.
-5. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
 
-    a. **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
-
-    b. **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin. 
-         
-    Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md). 
-6. **Sürüm** bölümünde **V2**'yi seçin.
-7. **Konum** bölümünden veri fabrikası için bir konum seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları (örneğin, Azure Depolama ve SQL Veritabanı) ve işlemler (örneğin, Azure HDInsight) başka bölgelerde olabilir.
-8. **Oluştur**’u seçin.
-9. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
-10. Data Factory Kullanıcı Arabirimini (UI) ayrı bir sekmede başlatmak için **Geliştir ve İzle**’yi seçin.
+7. **Sürüm** bölümünde **V2**'yi seçin.
+8. Üstteki **Git yapılandırması** sekmesini seçin ve **Git 'ı daha sonra Yapılandır** onay kutusunu seçin.
+9. **Gözden geçir + oluştur**' u seçin ve doğrulama geçtikten sonra **Oluştur** ' u seçin.
+10. Oluşturma işlemi tamamlandıktan sonra, Bildirim Merkezi ' nde bildirimi görürsünüz. Data Factory sayfasına gitmek için **Kaynağa Git** ' i seçin.
+11. Azure Data Factory Kullanıcı arabirimini ayrı bir sekmede başlatmak için **yazar & İzleyicisi** ' ni seçin.
 
 
 ## <a name="create-a-pipeline"></a>İşlem hattı oluşturma
@@ -115,7 +117,7 @@ Bu öğreticide işlem hattını oluşturmaya başlayacaksınız. Daha sonra iş
 
    ![İşlem hattı oluşturma](./media/doc-common-process/get-started-page.png)
 
-1. 1. Genel panelinde **Özellikler** altında, **ad** için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
+1. Genel panelinde **Özellikler** altında, **ad** için **copypipeline** ' yı belirtin. Sonra sağ üst köşedeki Özellikler simgesine tıklayarak paneli daraltın.
 
 1. **Etkinlikler** araç kutusunda **taşıma ve dönüştürme** kategorisini genişletin ve araç kutusundan **veri kopyalama** etkinliğini sürükleyin ve ardışık düzen Tasarımcısı yüzeyine bırakın. **Ad** için **CopyFromBlobToSql** adını belirtin.
 
@@ -209,7 +211,7 @@ Bu adımda, önceki adımda yayımladığınız işlem hattını el ile tetikler
 
     [![Etkinlik çalıştırmalarını izleme](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. Veritabanındaki ısetable tablosuna iki satır daha eklendiğini **emp** doğrulayın.
+1. Veritabanındaki ısetable tablosuna iki satır daha eklendiğini  doğrulayın.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>İşlem hattını bir zamanlamaya göre tetikleme
 Bu zamanlamada, işlem hattı için bir zamanlayıcı tetikleyicisi oluşturacaksınız. Tetikleyici, işlem hattını saatlik veya günlük gibi belirli bir zamanlamaya göre çalıştırır. Burada, belirtilen bitiş tarih/saati kadar tetikleyiciyi her dakikada çalışacak şekilde ayarlarsınız.
