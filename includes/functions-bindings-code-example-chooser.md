@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/24/2020
 ms.author: glenga
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 541b72fdd97c48388d5f954d5ee13399d24bf22a
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 1ff9606d10ac62e0bab15f970a964bfd0b08bee8
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92116759"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506278"
 ---
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -23,6 +23,7 @@ ms.locfileid: "92116759"
 | IoT Hub |[Tetikleyici](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=csharp#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=csharp#example) | |
 | HTTP |[Tetikleyici](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#example) | [Bağlantısının](https://www.serverlesslibrary.net/?language=C%23&filtertext=http) |
 | Kuyruk depolama | [Tetikleyici](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=csharp#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=csharp#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=C%23) |
+| RabbitMQ |[Tetikleyici](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=csharp#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=csharp#example) |
 | SendGrid | [Çıktı](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=csharp#example) | |
 | Service Bus |[Tetikleyici](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=csharp#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=csharp#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=C%23) |
 | SignalR| [Tetikleyici](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=csharp#example)<br/>[Giriş](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=csharp#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=csharp) | |
@@ -41,6 +42,7 @@ ms.locfileid: "92116759"
 | IoT Hub |[Tetikleyici](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=java#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=java#example) | |
 | HTTP |[Tetikleyici](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=java#example) | [Bağlantısının](https://www.serverlesslibrary.net/?language=Java&filtertext=http) |
 | Kuyruk depolama | [Tetikleyici](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=java#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=java#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Java) |
+| RabbitMQ |[Tetikleyici](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=java#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=java#example) |
 | SendGrid | [Çıktı](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=java#example) | |
 | Service Bus |[Tetikleyici](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=java#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=java#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Java) |
 | SignalR| [Tetikleyici](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=java#example)<br/>[Giriş](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=java#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=java) | |
@@ -59,6 +61,7 @@ ms.locfileid: "92116759"
 | IoT Hub |[Tetikleyici](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=javascript#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=javascript#example) | |
 | HTTP |[Tetikleyici](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=javascript#example) | [Bağlantısının](https://www.serverlesslibrary.net/?language=JavaScript&filtertext=http) |
 | Kuyruk depolama | [Tetikleyici](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=javascript#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=javascript#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=JavaScript) |
+| RabbitMQ |[Tetikleyici](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=javascript#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=javascript#example) |
 | SendGrid | [Çıktı](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=javascript#example) | |
 | Service Bus |[Tetikleyici](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=javascript#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=javascript#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=JavaScript) |
 | SignalR| [Tetikleyici](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=javascript#example)<br/>[Giriş](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=javascript#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=javascript) | |
@@ -77,6 +80,7 @@ ms.locfileid: "92116759"
 | IoT Hub |[Tetikleyici](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=powershell#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=powershell#example) | |
 | HTTP |[Tetikleyici](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=powershell#example) | [Bağlantısının](https://www.serverlesslibrary.net/?language=PowerShell&filtertext=http) |
 | Kuyruk depolama | [Tetikleyici](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=powershell#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=powershell#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=PowerShell) |
+| RabbitMQ |[Tetikleyici](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=powershell#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=powershell#example) |
 | SendGrid | [Çıktı](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=powershell#example) | |
 | Service Bus |[Tetikleyici](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=powershell#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=powershell#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=PowerShell) |
 | SignalR| [Tetikleyici](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=powershell#example)<br/>[Giriş](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=powershell#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=powershell) | |
@@ -95,6 +99,7 @@ ms.locfileid: "92116759"
 | IoT Hub |[Tetikleyici](../articles/azure-functions/functions-bindings-event-iot-trigger.md?tabs=python#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-event-iot-output.md?tabs=python#example) | |
 | HTTP |[Tetikleyici](../articles/azure-functions/functions-bindings-http-webhook-trigger.md?tabs=python#example) | [Bağlantısının](https://www.serverlesslibrary.net/?language=Python&filtertext=http) |
 | Kuyruk depolama | [Tetikleyici](../articles/azure-functions/functions-bindings-storage-queue-trigger.md?tabs=python#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-storage-queue-output.md?tabs=python#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Storage%20Queue&language=Python) |
+| RabbitMQ |[Tetikleyici](../articles/azure-functions/functions-bindings-rabbitmq-trigger.md?tabs=python#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-rabbitmq-output.md?tabs=python#example) |
 | SendGrid | [Çıktı](../articles/azure-functions/functions-bindings-sendgrid.md?tabs=python#example) | |
 | Service Bus |[Tetikleyici](../articles/azure-functions/functions-bindings-service-bus-trigger.md?tabs=python#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-service-bus-output.md?tabs=python#example) | [Bağlantısının](https://www.serverlesslibrary.net/?technology=Service%20Bus%20Queue&language=Python) |
 | SignalR| [Tetikleyici](../articles/azure-functions/functions-bindings-signalr-service-trigger.md?tabs=python#example)<br/>[Giriş](../articles/azure-functions/functions-bindings-signalr-service-input.md?tabs=python#example)<br/>[Çıktı](../articles/azure-functions/functions-bindings-signalr-service-output.md?tabs=python) | |

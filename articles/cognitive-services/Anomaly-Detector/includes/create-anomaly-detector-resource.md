@@ -8,17 +8,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: e896ac5f4625d36060d713d66fa885f8b24756f1
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: d1add17c1c84d2a22d76aaa1f96aeca4db645ba7
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014757"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506359"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın
-1. [ **Anomali algılayıcı** kaynağı oluştur](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) ' a tıklayın
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal <span class="docon docon-navigate-external x-hidden-focus"></span> </a>oturum açın.
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector" target="_blank">Anomali algılayıcı <span class="docon docon-navigate-external x-hidden-focus"></span> kaynağı oluştur</a> ' u seçin.
 1. Tüm gerekli ayarları girin:
 
     |Ayar|Değer|
@@ -26,15 +26,15 @@ ms.locfileid: "92014757"
     |Ad|İstenen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -Minimum Fiyatlandırma Katmanı|
+    |Fiyatlandırma Katmanı|`F0` -100 çağrı/saniye, aylık 20K Işlem. <br> Veya<br> `S0` -80 çağrı/saniye|
     |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
 1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin
 1. Toplama yapılandırılmış `endpoint` ve bır API anahtarı:
 
-    |Portalda kaynak sekmesi|Ayar|Değer|
+    |Portalda anahtarlar ve uç nokta sekmesi|Ayar|Değer|
     |--|--|--|
-    |**Genel Bakış**|Uç Noktası|Uç noktayı kopyalayın. Şuna benzer görünüyor `https://westus2.api.cognitive.microsoft.com/`|
+    |**Genel Bakış**|Uç Nokta|Uç noktayı kopyalayın. Şuna benzer görünüyor ` https://<your-resource-name>.cognitiveservices.azure.com/`|
     |**Anahtarlar**|API Anahtarı|İki anahtardan oluşan 1 ' i kopyalayın. Boşluk veya tire içermeyen 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
 
 

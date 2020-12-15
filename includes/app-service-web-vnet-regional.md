@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 86d4eb68866e35300738a15cbd3549485c3cbafb
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096258"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506317"
 ---
 Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
 
@@ -99,8 +99,8 @@ Sınır Ağ Geçidi Protokolü (BGP) rotaları de uygulama trafiğinizi etkiler.
 Uygulamanız VNet 'iniz ile tümleştirdikten sonra, sanal ağınızın yapılandırıldığı aynı DNS sunucusunu kullanır. Varsayılan olarak, uygulamanız Azure DNS Özel Bölgeleri çalışmaz. Azure DNS Özel Bölgeleri çalışmak için aşağıdaki uygulama ayarlarını eklemeniz gerekir:
 
 
-1. 168.63.129.16 1 değeri ile WEBSITE_DNS_SERVER. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER
-1. 1 1 değeriyle WEBSITE_VNET_ROUTE_ALL. Değer 1 ile WEBSITE_VNET_ROUTE_ALL
+1. 168.63.129.16 değeri ile WEBSITE_DNS_SERVER
+1. Değer 1 ile WEBSITE_VNET_ROUTE_ALL
 
 
 Bu ayarlar, uygulamanızın özel bölgeler Azure DNS kullanmasını olanaklı hale getirecek ek olarak, uygulamanızdaki tüm giden çağrılarınızı sanal ağınıza gönderir.   Bu ayarlar, uygulamanızdaki tüm giden çağrıları sanal ağınıza gönderir. Ayrıca, Özel DNS bölgesini çalışan düzeyinde sorgulayarak uygulamanın Azure DNS kullanmasına olanak sağlar. Bu işlev, çalışan bir uygulama Özel DNS bir bölgeye erişirken kullanılır.

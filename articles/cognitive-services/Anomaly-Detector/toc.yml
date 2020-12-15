@@ -30,6 +30,8 @@
   items:
     - name: Verilerinizdeki anomalileri belirleme
       href: how-to/identify-anomalies.md
+    - name: IoT Edge'e dağıtma
+      href: how-to/deploy-anomaly-detection-on-iot-edge.md
     - name: Kapsayıcıları kullanma
       items:
         - name: Kapsayıcıları yükleme ve çalıştırma
