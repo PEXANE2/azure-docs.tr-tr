@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602793"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505265"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
@@ -188,7 +188,7 @@ example.json
 
 ## <a name="set-up-a-request"></a>İstek ayarlama 
 
-Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örnek:
+Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örneğin:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
@@ -253,7 +253,7 @@ API isteğini gönder. Zaman uyumlu bir uç noktaya çağrı yaptıysanız, yan�
 Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bir 202 yanıt kodu aldığınızı kontrol edin. sonuçları görüntülemek için yanıtı almanız gerekir:
 
 1. API yanıtında, `Operation-Location` API 'ye gönderdiğiniz işi tanımlayan üst bilgiden öğesini bulun. 
-2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örnek:
+2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örneğin:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 
@@ -346,5 +346,5 @@ Durum bilgisi zaman uyumsuz API yanıtının Metin Analizi hakkında daha fazla 
 * [Metin Analizine genel bakış](../overview.md)
 * [Sık sorulan sorular (SSS)](../text-analytics-resource-faq.md)</br>
 * [Metin Analizi ürün sayfası](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/client-libraries-rest-api.md)
 * [Yenilikler](../whats-new.md)

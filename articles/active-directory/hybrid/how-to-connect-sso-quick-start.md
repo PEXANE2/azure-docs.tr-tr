@@ -16,18 +16,21 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40d77f4ebb897884f03377e6d9f1243a6d436766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500215"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504398"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Kesintisiz çoklu oturum açma Azure Active Directory: hızlı başlangıç
 
 ## <a name="deploy-seamless-single-sign-on"></a>Kesintisiz tek Sign-On dağıtma
 
 Azure Active Directory (Azure AD) sorunsuz tek Sign-On (sorunsuz SSO), kullanıcılar şirket ağınıza bağlı olan kurumsal masaüstlerinde olduklarında otomatik olarak oturum açar. Sorunsuz SSO, kullanıcılarınıza ek şirket içi bileşenlere gerek duymadan bulut tabanlı uygulamalarınıza kolay erişim sağlar.
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Sorunsuz SSO dağıtmak için aşağıdaki adımları izleyin.
 
@@ -124,7 +127,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
 1. Grup İlkesi Yönetimi Düzenleyicisi aracını açın.
 2. Kullanıcılarınıza veya tümüne uygulanan Grup ilkesini düzenleyin. Bu örnek **varsayılan etki alanı ilkesi** kullanır.
-3. **User Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
+3.   >    >    >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **siteden bölgeye atama listesi**' ni seçin.
     !["Güvenlik sayfası" nı "Site-bölge atama listesi" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso6.png)
 4. İlkeyi etkinleştirin ve iletişim kutusuna aşağıdaki değerleri girin:
    - **Değer adı**: Kerberos biletleri Iletileceği Azure AD URL 'si.
@@ -144,7 +147,7 @@ Kullanıcıların Intranet bölgesi ayarlarını değiştirmek için iki yol var
 
     ![Bir bölge atamasının seçili olduğu "Içeriği göster" penceresini gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. **User Configuration**  >  **Policies**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
+6.   >    >    >  **Windows bileşenleri**  >  **Internet Explorer**  >  **Internet Denetim Masası**  >  **Güvenlik sayfası**  >  **Intranet bölgesi** Yönetim Şablonları Kullanıcı yapılandırma ilkelerine gidin. Ardından **betik aracılığıyla durum çubuğunda güncelleştirmelere Izin ver**' i seçin.
 
     !["Intranet bölgesi" sayfasını, "komut dosyası aracılığıyla durum çubuğuna güncelleştirmeler Izin ver" seçiliyken gösteren ekran görüntüsü.](./media/how-to-connect-sso-quick-start/sso11.png)
 

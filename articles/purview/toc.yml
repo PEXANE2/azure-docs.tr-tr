@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: Power BI kiracısı - Portal
                 href: register-scan-power-bi-tenant.md
-              - name: Power BI kiracısı - PowerShell
-                href: powershell-register-scan-power-bi.md
       - name: İş sözlüğü
         items:
           - name: Sözlük terimlerini oluşturma ve dışarı aktarma

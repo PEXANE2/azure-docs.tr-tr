@@ -2,13 +2,13 @@
 title: Azure Arc etkin sunucular aracısındaki yenilikler
 description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için ek ayrıntıların bağlantıları vardır.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 5322a92bfc67d9f80c2271a3ef9b5626455e9ad7
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.date: 12/14/2020
+ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445294"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505656"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısındaki yenilikler
 
@@ -17,6 +17,16 @@ Azure Arc etkin sunucular bağlı makine Aracısı, iyileştirmeleri sürekli ol
 - En son yayınlar
 - Bilinen sorunlar
 - Hata düzeltmeleri
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="new-feature"></a>Yeni Özellik
+
+Windows Server 2008 R2 için destek eklendi
+
+### <a name="fixed"></a>Sabit
+
+Çözülen sorun, Linux üzerinde özel betik uzantısının başarıyla yüklenmesini engellemektedir.
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -65,13 +75,13 @@ Sürüm: 1,0 (genel kullanılabilirlik)
 
 Sürüm: 0,11
 
-- Bu sürüm daha önce Ubuntu 20,04 için destek duyurmuştur. Bazı Azure VM uzantıları Ubuntu 20,04 ' ı desteklemediğinden, Ubuntu 'nın bu sürümü için destek kaldırılıyor.
+- Bu sürüm daha önce Ubuntu 20,04 için destek duyurmuştur. Bazı Azure VM uzantıları Ubuntu 20,04 'yi desteklemediğinden, Ubuntu 'nın bu sürümü için destek kaldırılıyor.
 
 - Uzantı dağıtımları için güvenilirlik iyileştirmeleri.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
-Linux aracısının eski bir sürümünü kullanıyorsanız ve bunu bir ara sunucu kullanacak şekilde yapılandırdıysanız, yükseltmeden sonra proxy sunucu ayarını yeniden yapılandırmanız gerekir. Bunu yapmak için öğesini çalıştırın `sudo azcmagent_proxy add http://proxyserver.local:83` .
+Linux aracısının eski bir sürümünü kullanıyorsanız ve bir ara sunucu kullanmak üzere yapılandırıldıysa, yükseltmeden sonra proxy sunucu ayarını yeniden yapılandırmanız gerekir. Bunu yapmak için öğesini çalıştırın `sudo azcmagent_proxy add http://proxyserver.local:83` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

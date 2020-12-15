@@ -1,5 +1,5 @@
 ---
-title: Purview Studio 'Yu kullanma
+title: Purview Studio'yu kullanma
 description: Bu kavramsal makalede Azure purview Studio 'Nun nasıl kullanılacağı açıklanmaktadır.
 author: nayenama
 ms.author: nayenama
@@ -7,18 +7,18 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1b2d371153d6612f454e1bf51b78c6b6189a08b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553851"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503959"
 ---
-# <a name="use-purview-studio"></a>Purview Studio 'Yu kullanma
+# <a name="use-purview-studio"></a>Purview Studio'yu kullanma
 
 Bu makale, Azure purview 'ın bazı ana özelliklerine genel bir bakış sunar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure portal 'de etkin bir purview hesabı zaten oluşturulmuş ve kullanıcının purview Studio 'ya erişme izinleri var.
 
@@ -50,15 +50,16 @@ Aşağıdaki liste, ana **sayfanın** ana özelliklerini özetler. Listedeki her
 
 4. Hızlı erişim düğmeleri uygulamanın sık kullanılan işlevlerine erişim sağlar. Sunulan düğmeler, Kullanıcı hesabınıza atanan role göre değişir.
 
-    - *Veri kaynağı Yöneticisi* için hızlı erişim düğmeleri şunlardır: **veri kaynaklarını** ve **bilgi merkezini** kaydetme.
     - *Veri seçicisi* Için düğmeler **Bilgi Merkezi**, **varlıklara gözatıp**, **sözlüğü Yönet** ve **öngörüleri görüntüle**' dir.
     - *Veri okuyucu* için, öne çıkan düğmeler **Bilgi Merkezi**, **varlıklara gözatıp**, **sözlüğü görüntüle** ve **öngörüleri görüntüle**' dir.
+    - *Veri kaynağı yönetici*  +  *verisi Seçicisi* için, öne çıkan düğmeler **Bilgi Merkezi**, **veri kaynaklarını kaydet**, **varlıklara gözatıp** ve **Sözlük yönetir**.
+    - *Veri kaynağı Yöneticisi*  +  *veri okuyucusu* için, öne çıkan düğmeler **Bilgi Merkezi**, **veri kaynaklarını kaydetme**, **varlıklara gözatması** ve **Sözlük görünümü**' dir.
 
 5. Sol gezinti çubuğu, uygulamanın ana sayfalarını bulmanıza yardımcı olur. Sunulan düğmeler, Kullanıcı hesabınıza atanan role göre değişir.
 
-    - *Veri kaynağı Yöneticisi* Için düğmeler **ana**, **kaynak** ve **Yönetim Merkezi**' dir.
     - *Veri seçicisi* Için düğmeler **ana**, **Sözlük**, **Öngörüler** ve **Yönetim Merkezi**' dir.
     - *Veri okuyucu* Için düğmeler **ana**, **Sözlük**, **Öngörüler** ve **Yönetim Merkezi**' dir.
+    - *Veri kaynağı yönetici*  +  *verileri Seçicisi/okuyucu* için düğmeler **ana**, **kaynak**, **Sözlük**, **Öngörüler** ve **Yönetim Merkezi**' dir.
   
 6. **Son erişilen** sekme, son erişilen veri varlıklarının bir listesini gösterir. Varlıklara erişme hakkında daha fazla bilgi için bkz. [veri kataloğunu arama](how-to-search-catalog.md) ve [varlık türüne göre tarama](how-to-browse-catalog.md#browse-experience).  **Öğelerim** sekmesi, oturum açan kullanıcının sahip olduğu veri varlıklarının bir listesidir.
 7. **Faydalı bağlantılar** bölge durumu, belgeler, fiyatlandırma, genel bakış ve takip durumu bağlantılarını içerir
@@ -73,6 +74,9 @@ Bilgi Merkezi, purview ile ilgili tüm videoları ve öğreticileri bulabileceğ
 Azure purview Studio 'daki her UX, sayfaya genel bakış sağlamak için Kılavuzlu Turlar kullanacaktır. Kılavuzlu tura başlamak için üstteki çubukta **Yardım** ' ı seçin ve **Kılavuzlu Turları** seçin.
 
 :::image type="content" source="./media/use-purview-studio/guided-tour.png" alt-text="Kılavuzlu turun ekran görüntüsü.":::
+
+> [!Important]
+   > Tek başına veri kaynağı Yöneticisi rolünün purview Studio 'ya erişimi yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

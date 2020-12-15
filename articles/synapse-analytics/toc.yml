@@ -96,8 +96,6 @@
           href: ./cicd/continuous-integration-deployment.md
         - name: Güvenlik
           items:
-            - name: Güvenlik temeli
-              href: security-baseline.md
             - name: Şifreleme
               href: ./security/workspaces-encryption.md
             - name: Ağ Güvenliği
@@ -566,7 +564,7 @@
           href: ./spark/apache-spark-delta-lake-overview.md
         - name: Kitaplıkları yönetme
           href: ./spark/apache-spark-azure-portal-add-libraries.md
-        - name: Not defterlerini kullanma
+        - name: Not defterlerini ve IDE araçlarını kullanma
           items:
             - name: Not defterlerini yönetme
               href: ./spark/apache-spark-development-using-notebooks.md

@@ -3,12 +3,12 @@ title: Azure Application Insights Genel Bakış Panosu | Microsoft Docs
 description: Azure Application Insights ve Genel Bakış Panosu işlevselliğine sahip uygulamaları izleyin.
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 714488d88b269f252dfd6677f847db315969a270
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b0708fa70d3a3ecb406f1d974bb1f2b47e55b40
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970614"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504109"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights Genel Bakış Panosu
 
@@ -26,7 +26,7 @@ Zaman aralığı seçimi basit bir tıklama arabirimine basitleştirildi.
 
 ![Zaman aralığı](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
-Genel performans büyük ölçüde artmıştır. **Arama** ve **analiz**gibi popüler özelliklere tek tıklamayla erişebilirsiniz. Her varsayılan dinamik olarak KPI kutucuğu, karşılık gelen Application Insights özellikleriyle ilgili öngörüler sağlar. Başarısız istekler hakkında daha fazla bilgi edinmek için **Araştır** üst bilgisinde **hata** seçin:
+Genel performans büyük ölçüde artmıştır. **Arama** ve **analiz** gibi popüler özelliklere tek tıklamayla erişebilirsiniz. Her varsayılan dinamik olarak KPI kutucuğu, karşılık gelen Application Insights özellikleriyle ilgili öngörüler sağlar. Başarısız istekler hakkında daha fazla bilgi edinmek için **Araştır** üst bilgisinde **hata** seçin:
 
 ![Hatalar](./media/overview-dashboard/app-insights-overview-dashboard-04.png)
 
@@ -53,7 +53,7 @@ Genel Bakış deneyimine geri gitmek için yalnızca şunları seçin:
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-**Kutucuk ayarlarını yapılandır** ' ı seçerseniz ve 31 günden fazla süre içinde özel bir zaman aralığı ayarlarsanız, 90 günlük varsayılan veri saklama süresi ile birlikte Pano 31 günlük verilerin ötesinde gösterilmez. Şu anda bu davranış için geçici çözüm yoktur.
+Şu anda bir panoda görüntülenen veriler için 30 günlük veri sınırı vardır. 30 günden daha fazla zaman filtresi seçerseniz veya **kutucuk ayarlarını yapılandır** ' ı seçerseniz ve 30 günden fazla bir özel zaman aralığı ayarlarsanız, 90 günlük varsayılan veri saklama süresi ile birlikte Pano 30 günden daha fazla veri ile gösterilmez. Şu anda bu davranış için geçici çözüm yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

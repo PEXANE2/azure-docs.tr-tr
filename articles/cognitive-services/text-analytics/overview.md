@@ -12,18 +12,18 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 0f5e6a2327f5d952f92009b0c9e408ab8188d6d7
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 2d8ebe87cdf1d11ae4d9c9050ba1ac924089aa33
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505622"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
 Metin Analizi API'si, metin madenciliği ve metin analizi için doğal dil Işleme (NLP) özellikleri sağlayan bulut tabanlı bir hizmettir: yaklaşım analizi, bakım madenciliği, anahtar tümceciği ayıklama, dil algılama ve adlandırılmış varlık tanıma.
 
-API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](../index.yml)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/text-analytics-sdk.md)birlikte kullanabilirsiniz.
+API, geliştirme projeleriniz için bulutta makine öğrenimi ve AI algoritmaları koleksiyonu olan Azure bilişsel [Hizmetler](../index.yml)'in bir parçasıdır. Bu özellikleri [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/)veya [istemci kitaplığıyla](quickstarts/client-libraries-rest-api.md)birlikte kullanabilirsiniz.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -109,7 +109,7 @@ Metin Analizi API'si, metin gösterimi ve karakter sayısı hesaplamaları için
 
 + Uygulamalarınız için bir anahtar ve uç nokta almak üzere Metin Analizi için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) .
 
-+ API çağrıları göndermeye başlamak için [hızlı](quickstarts/text-analytics-sdk.md) başlangıcı kullanın. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin.
++ API çağrıları göndermeye başlamak için [hızlı](quickstarts/client-libraries-rest-api.md) başlangıcı kullanın. Minimum kodla metin göndermeyi, analiz seçmeyi ve sonuçları görüntülemeyi öğrenin.
 
 + Yeni yayınlar ve özellikler hakkında bilgi edinmek için [Metin Analizi API'si](whats-new.md) yenilikleri inceleyin.
 

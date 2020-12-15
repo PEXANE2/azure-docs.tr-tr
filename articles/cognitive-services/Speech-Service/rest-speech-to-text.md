@@ -8,35 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 12/10/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483929"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504483"
 ---
 # <a name="speech-to-text-rest-api"></a>Konuşmayı metne dönüştürme REST API'si
 
-Konuşma [SDK 'sına](speech-sdk.md)alternatif olarak, konuşma hizmeti bir REST API kullanarak konuşmayı metne dönüştürmenize olanak tanır. Her erişilebilir uç nokta bir bölgeyle ilişkilendirilir. Uygulamanız, kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir. REST API çok sınırlıdır ve yalnızca [konuşma SDK 'sının](speech-sdk.md) olmaması durumunda kullanılmalıdır.
+Konuşmadan metne iki farklı REST API 'si vardır. Her API özel amacını sunar ve farklı uç noktaları kümelerini kullanır.
 
-Konuşmayı metne REST API kullanmadan önce aşağıdakileri göz önünde bulundurun:
+Konuşmadan metne REST API 'Leri şunlardır:
+- [Okuma-metin REST API v 3.0](#speech-to-text-rest-api-v30) , [toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılır. v 3.0, [v 2.0 'ın bir ardıldır](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- [Kısa seste konuşmadan metne REST API](#speech-to-text-rest-api-for-short-audio) , [konuşma SDK 'sının](speech-sdk.md)bir alternatifi olarak çevrimiçi döküm için kullanılır. Bu API kullanan istekler, istek başına yalnızca en fazla 60 saniyelik ses aktarabilir. 
 
-* REST API ve doğrudan ses iletimi kullanan istekler yalnızca en fazla 60 saniyelik ses içerebilir.
-* Konuşmadan metne REST API yalnızca nihai sonuçları döndürür. Kısmi sonuçlar sağlanmaz.
+## <a name="speech-to-text-rest-api-v30"></a>Konuşmayı metne REST API v 3.0
 
-Daha uzun bir ses gönderdiğinizde uygulamanız için bir gereklilik varsa, [konuşma SDK 'sını](speech-sdk.md) veya [toplu iş dökümü](batch-transcription.md)gibi dosya tabanlı REST API kullanmayı düşünün.
+Okuma-metin REST API v 3.0, [toplu iş dökümü](batch-transcription.md) ve [özel konuşma tanıma](custom-speech-overview.md)için kullanılır. REST aracılığıyla çevrimiçi dökümle iletişim kurması gerekiyorsa, [kısa ses Için konuşmayı metne REST API](#speech-to-text-rest-api-for-short-audio)kullanın.
+
+REST API v 3.0 kullanarak şunları yapın:
+- İş arkadaşlarınızın oluşturduğunuz bir modele erişmesini istiyorsanız veya bir modeli birden fazla bölgeye dağıtmak istediğiniz durumlarda, diğer aboneliklerdeki modelleri kopyalayın
+- Bir kapsayıcıdan (toplu döküm) veri oluşturma ve birden çok ses dosyası URL 'Si sağlama
+- SAS URI 'Si kullanımı üzerinden Azure depolama hesaplarından veri yükleme
+- Bu uç nokta için Günlükler isteniyorsa uç nokta başına günlükleri al
+- Şirket içi kapsayıcılar ayarlama amacıyla oluşturduğunuz modellerin bildirimini isteyin
+
+REST API v 3.0, şu özelliklere sahiptir:
+- **Bildirimler-Web kancaları**— hizmetin tüm çalışan işlemleriyle artık Web kancası bildirimleri desteklenir. REST API v 3.0, Web Kancalarınızı bildirimlerin gönderileceği yere kaydetmenizi sağlamak için çağrılar sağlar
+- **Uç noktaların arkasındaki modelleri güncelleştirme** 
+- **Birden çok veri kümesiyle model uyarlama**— akustik, dil ve Söyleniş verilerinin birden çok veri kümesi birleşimini kullanarak bir modeli uyarlayın
+- **Kendi depolama alanınızı getir**— Günlükler, döküm dosyaları ve diğer veriler için kendi depolama hesaplarınızı kullanın
+
+Toplu Iş dökümü [Bu makalele](batch-transcription.md)birlikte REST API v 3.0 kullanma örneklerine bakın.
+
+Konuşmayı metne REST API v 2.0 kullanıyorsanız, [Bu kılavuzdaki](/azure/cognitive-services/speech-service/migrate-v2-to-v3)v 3.0 'a nasıl geçirebileceğiniz konusuna bakın.
+
+Tam konuşmadan metne REST API v 3.0 başvurusunu [buraya](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)bakın.
+
+## <a name="speech-to-text-rest-api-for-short-audio"></a>Kısa ses için konuşmaya metne REST API
+
+Konuşma [SDK 'sına](speech-sdk.md)alternatif olarak, konuşma hizmeti bir REST API kullanarak konuşmayı metne dönüştürmenize olanak tanır. Her erişilebilir uç nokta bir bölgeyle ilişkilendirilir. Uygulamanız, kullanmayı planladığınız uç nokta için bir abonelik anahtarı gerektirir. Kısa ses için REST API çok sınırlıdır ve yalnızca [konuşma SDK 'sının](speech-sdk.md) olmaması durumunda kullanılmalıdır.
+
+Kısa ses için konuşmayı metne REST API kullanmadan önce aşağıdakileri göz önünde bulundurun:
+
+* Kısa ses için REST API kullanan istekler ve doğrudan ses iletimi, en fazla 60 saniyelik ses içerebilir.
+* Kısa seste konuşmadan metne REST API yalnızca nihai sonuçları döndürür. Kısmi sonuçlar sağlanmaz.
+
+Daha uzun bir ses gönderiyorsanız uygulamanız için bir gereksinimdir, [konuşma SDK 'sını](speech-sdk.md) veya [konuşmayı metne REST API v 3.0](#speech-to-text-rest-api-v30)kullanmayı düşünün.
 
 > [!TIP]
 > Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](../../azure-government/compare-azure-government-global-azure.md) inceleyin.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
+### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
-REST API uç noktası şu biçimdedir:
+Kısa ses için REST API uç noktası şu biçimdedir:
 
 ```
 https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1
@@ -49,7 +80,7 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 > [!NOTE]
 > Bir 4xx HTTP hatası almamak için dil parametresi URL 'ye eklenmelidir. Örneğin, Batı ABD uç noktası kullanılarak dil ABD Ingilizcesi olarak ayarlanmıştır: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
-## <a name="query-parameters"></a>Sorgu parametreleri
+### <a name="query-parameters"></a>Sorgu parametreleri
 
 Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 
@@ -60,11 +91,11 @@ Bu parametreler REST isteğinin sorgu dizesine dahil edilebilir.
 | `profanity` | Tanıma sonuçlarında küfür nasıl işleneceğini belirtir. Kabul edilen değerler `masked` , küfür ile bir `removed` bütün küfür kaldıran, ya da `raw` sonuçtaki küfür da dahil olmak üzere yıldız işaretiyle değiştirilir. Varsayılan ayar `masked` değeridir. | İsteğe Bağlı |
 | `cid` | Özel modeller oluşturmak için [özel konuşma tanıma portalını](./custom-speech-overview.md) kullanırken, **dağıtım** SAYFASıNDA bulunan **uç nokta kimlikleri** aracılığıyla özel modeller kullanabilirsiniz. Sorgu dizesi parametresinin bağımsız değişkeni olarak **uç nokta kimliğini** kullanın `cid` . | İsteğe Bağlı |
 
-## <a name="request-headers"></a>İstek üst bilgileri
+### <a name="request-headers"></a>İstek üst bilgileri
 
 Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-|Üst bilgi| Açıklama | Gerekli/Isteğe bağlı |
+|Üst bilgi| Description | Gerekli/Isteğe bağlı |
 |------|-------------|---------------------|
 | `Ocp-Apim-Subscription-Key` | Konuşma hizmeti abonelik anahtarınız. | Bu üst bilgi ya da `Authorization` gerekli. |
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Bu üst bilgi ya da `Ocp-Apim-Subscription-Key` gerekli. |
@@ -74,7 +105,7 @@ Bu tabloda, konuşma-metin istekleri için gerekli ve isteğe bağlı üstbilgil
 | `Expect` | Öbekli aktarım kullanılıyorsa, gönderin `Expect: 100-continue` . Konuşma hizmeti, ilk isteği ve bekleek verileri onaylar.| Öbekli ses verileri gönderiyorsanız gereklidir. |
 | `Accept` | Sağlanmışsa, olmalıdır `application/json` . Konuşma hizmeti, sonuçları JSON ile sağlar. Bazı istek çerçeveleri uyumsuz bir varsayılan değer sağlar. Her zaman dahil etmek iyi bir uygulamadır `Accept` . | İsteğe bağlı, ancak önerilir. |
 
-## <a name="audio-formats"></a>Ses biçimleri
+### <a name="audio-formats"></a>Ses biçimleri
 
 HTTP isteğinin gövdesinde ses gönderilir `POST` . Bu tablodaki biçimlerden birinde olmalıdır:
 
@@ -84,9 +115,9 @@ HTTP isteğinin gövdesinde ses gönderilir `POST` . Bu tablodaki biçimlerden b
 | OGG    | OPUS 'LAR  | 256 kpbs | 16 kHz, mono |
 
 >[!NOTE]
->Yukarıdaki biçimler, konuşma hizmetindeki REST API ve WebSocket aracılığıyla desteklenir. [Konuşma SDK 'sı](speech-sdk.md) Şu anda, PCM codec ve [DIĞER biçimlere](how-to-use-codec-compressed-audio-input-streams.md)sahip WAV biçimini desteklemektedir.
+>Yukarıdaki biçimler, konuşma hizmetindeki kısa ses ve WebSocket için REST API aracılığıyla desteklenir. [Konuşma SDK 'sı](speech-sdk.md) Şu anda, PCM codec ve [DIĞER biçimlere](how-to-use-codec-compressed-audio-input-streams.md)sahip WAV biçimini desteklemektedir.
 
-## <a name="pronunciation-assessment-parameters"></a>Telaffuz değerlendirme parametreleri
+### <a name="pronunciation-assessment-parameters"></a>Telaffuz değerlendirme parametreleri
 
 Bu tabloda, telaffuz değerlendirmesi için gerekli ve isteğe bağlı parametreler listelenmektedir.
 
@@ -123,7 +154,7 @@ Ses verilerinin, gecikme süresini önemli ölçüde azaltan akış (öbekli) ka
 >[!NOTE]
 >Telaffuz değerlendirmesi özelliği şu anda yalnızca `westus` `eastasia` ve `centralindia` bölgelerinde kullanılabilir. Bu özellik şu anda yalnızca `en-US` dilde kullanılabilir.
 
-## <a name="sample-request"></a>Örnek istek
+### <a name="sample-request"></a>Örnek istek
 
 Aşağıdaki örnekte konak adı ve gerekli üst bilgiler yer alır. Hizmetin bu örneğe dahil olmayan ses verilerini de beklediğini unutmayın. Daha önce belirtildiği gibi, öbek oluşturma önerilir, ancak gerekli değildir.
 
@@ -143,7 +174,7 @@ Telaffuz değerlendirmesini etkinleştirmek için aşağıdaki üst bilgiyi ekle
 Pronunciation-Assessment: eyJSZWZlcm...
 ```
 
-## <a name="http-status-codes"></a>HTTP durum kodu
+### <a name="http-status-codes"></a>HTTP durum kodu
 
 Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 
@@ -155,9 +186,9 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 | `401` | Yetkisiz | Belirtilen bölgede veya geçersiz uç noktada abonelik anahtarı veya yetkilendirme belirteci geçersiz. |
 | `403` | Yasak | Abonelik anahtarı veya yetkilendirme belirteci eksik. |
 
-## <a name="chunked-transfer"></a>Öbekli aktarım
+### <a name="chunked-transfer"></a>Öbekli aktarım
 
-Öbekli aktarım ( `Transfer-Encoding: chunked` ), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. REST API kısmi veya geçici sonuçlar sağlamıyor.
+Öbekli aktarım ( `Transfer-Encoding: chunked` ), tanınma gecikmesini azaltmaya yardımcı olabilir. Konuşma hizmetinin, aktarım sırasında ses dosyasını işlemeye başlamasını sağlar. Kısa ses REST API kısmi veya geçici sonuçlar sağlamıyor.
 
 Bu kod örneği, öbekte nasıl ses gönderileceğini gösterir. Yalnızca ilk öbek, ses dosyasının üst bilgisini içermelidir. `request` , `HttpWebRequest` uygun REST uç noktasına bağlı bir nesnedir. `audioFile` diskteki bir ses dosyasının yoludur.
 
@@ -191,7 +222,7 @@ using (var fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
 }
 ```
 
-## <a name="response-parameters"></a>Yanıt parametreleri
+### <a name="response-parameters"></a>Yanıt parametreleri
 
 Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içerir.
 
@@ -233,7 +264,7 @@ Sonuçlar JSON olarak sağlanır. `simple`Biçim, bu üst düzey alanları içer
 | `PronScore` | Verilen konuşmayı gösteren telaffuz kalitesini belirten genel puan. Bu `AccuracyScore` , `FluencyScore` ve `CompletenessScore` ağırlığıyla toplanır. |
 | `ErrorType` | Bu değer, ile karşılaştırıldığında bir sözcüğün atlanıp atlanmadığını, ekleneceğini veya hatalı bir şekilde olduğunu gösterir `ReferenceText` . Olası değerler şunlardır `None` (Yani bu sözcükte hata yok), `Omission` `Insertion` ve `Mispronunciation` . |
 
-## <a name="sample-responses"></a>Örnek yanıtlar
+### <a name="sample-responses"></a>Örnek yanıtlar
 
 Tanıma için tipik bir yanıt `simple` :
 
@@ -309,3 +340,4 @@ Telaffuz değerlendirmesi ile tipik bir yanıt:
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
 - [Akustik modelleri özelleştirme](./how-to-custom-speech-train-model.md)
 - [Dil modellerini özelleştirme](./how-to-custom-speech-train-model.md)
+- [Toplu Iş dökümü hakkında bilgi edinin](batch-transcription.md)

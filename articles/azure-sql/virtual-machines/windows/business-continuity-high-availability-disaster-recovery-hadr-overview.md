@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: dbe5fba838e7c4ad9487a29889eab11d4e42671f
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1a0d1018991be9d78623b0826aeab3d13958e996
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358939"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504143"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure sanal makineler 'de SQL Server için iş sürekliliği ve HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -85,20 +85,13 @@ Azure Blob depolama ile kullanılabilirlik grupları, veritabanı yansıtma, gü
 
 [Yazılım güvencesi](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)varsa, pasif olağanüstü durum kurtarma örneği için ek lisans maliyetleri yapmadan SQL Server ile karma olağanüstü durum kurtarma (Dr) planları uygulayabilirsiniz.
 
-Örneğin, Azure 'da etkin bir birincil şirket içi ve Azure 'da ücretsiz bir pasif ikincil sahip olabilirsiniz: 
-
-![Azure 'da ücretsiz ikincil pasif](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-secondary-in-azure.png)
-
-Yukarıdaki görüntüde kurulum, 12 çekirdek kullanan bir şirket içi SQL Server dağıtımı için olağanüstü durum kurtarma çoğaltması olarak 12 çekirdek kullanan bir Azure sanal makinesinde çalışan SQL Server kullanır. Geçmişte, şirket içi dağıtım ve Azure sanal makineleri dağıtımı için SQL Server 12 çekirdeğe lisans almanız gerekir. Yeni avantaj, Azure sanal makinesinde çalışmaya yönelik pasif çoğaltma avantajlarına sahiptir. Azure sanal makinelerinde pasif çoğaltma için olağanüstü durum kurtarma ölçütleri karşılandığında, artık şirket içinde çalışan SQL Server yalnızca 12 çekirdeğe lisans almanız gerekir.
-
-Ayrıca, her üç çoğaltma da Azure 'da barındırıldığı zaman iki adet ücretsiz pasif ikincikde sahip olabilirsiniz: 
+Örneğin, her üç çoğaltma da Azure 'da barındırıldığı zaman iki adet ücretsiz pasif ikincil sahip olabilir: 
 
 ![Azure 'daki her şey olduğunda iki ücretsiz pasta](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/failover-with-primary-in-azure.png)
 
-Ya da bir karma yük devretme ortamı, lisanslı bir birincil şirket içi, HA için bir ücretsiz pasif ve DR için iki ücretsiz pasa ile yapılandırabilirsiniz: 
+Ya da bir karma yük devretme ortamını, lisanslı bir birincil şirket içi, HA için bir ücretsiz pasif, ister şirket içi bir ücretsiz pasif, hem de Azure 'da DR için ücretsiz bir pasif ile yapılandırabilirsiniz:
 
 ![Ortam bir adet birincil şirket içi çoğaltmayla karma olduğunda üç ücretsiz pasa](./media/business-continuity-high-availability-disaster-recovery-hadr-overview/hybrid-with-primary-on-prem.png)
-
 
 Daha fazla bilgi için [ürün lisanslama koşullarına](https://www.microsoft.com/licensing/product-licensing/products)bakın. 
 

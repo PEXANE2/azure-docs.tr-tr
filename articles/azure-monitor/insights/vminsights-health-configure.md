@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/08/2020
-ms.openlocfilehash: f41a43e76993a03554d32fc7f3ce3149848989a9
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.date: 12/14/2020
+ms.openlocfilehash: 427bdec2b5e5ab14d566375d5ad8f9da9dc3e81b
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94687154"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505605"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-preview"></a>VM'ler için Azure İzleyici Konuk sistem durumunda izlemeyi yapılandırma (Önizleme)
 VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, Azure portal kullanarak varsayılan izlemenin nasıl değiştirileceği açıklanır. Ayrıca, [bir veri toplama kuralı kullanarak izlemeyi yapılandırmak](vminsights-health-configure-dcr.md)için gereken izleyicilerin temel kavramlarını açıklar.
@@ -33,6 +33,12 @@ Birim izleyicilerinin ve toplam izleyicilerin, izleyiciyi etkinleştirmenizi vey
 Bir izleyici devre dışı bırakıldığında, aşağıdaki örnekte gösterildiği gibi herhangi bir ölçüt kullanılamaz olarak gösterilir.
 
 ![Devre dışı izleme](media/vminsights-health-configure/disabled-monitor.png)
+
+
+> [!NOTE]
+> Bir üst izleme devre dışıysa, tüm alt izleyiciler de devre dışı bırakılır. Alt izlemeyi açıkça etkinleştirirseniz, üst öğe de etkinleştirilir, ancak yapılandırma durumu aynı kalır. Bu durumda, üst monitörde aşağıdaki iletiyi alacaksınız.
+>
+> *İzleyicinin yapılandırılan durumu ' devre dışı ' olduğundan bir tutarsızlık var, ancak sistem durumu bunu yansıtmıyor. Bunun nedeni, yapılandırılan değişikliklerin yayılmakta olması veya alt izlemelerinin herhangi birinin açıkça etkinleştirilmiş olması nedeniyle oluşur.*
 
 ## <a name="enable-or-disable-virtual-machine"></a>Sanal makineyi etkinleştir veya devre dışı bırak
 Tüm izleyicileri geçici olarak durdurmak için bir VM 'nin izlenmesini devre dışı bırakabilirsiniz. Üzerinde bakım gerçekleştirirken bir VM için izlemeyi devre dışı bırakabilirsiniz.

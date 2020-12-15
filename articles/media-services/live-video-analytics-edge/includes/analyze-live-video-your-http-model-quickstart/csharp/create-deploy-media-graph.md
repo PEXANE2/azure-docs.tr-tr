@@ -1,32 +1,32 @@
 ---
-ms.openlocfilehash: 6732fe364ba67bb2c4ea8fb2543c576166f8a110
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d4a712a20c1c172fe5a2792636a8d6e9573358b7
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91829321"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97486882"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Örnek dosyaları İnceleme ve düzenleme
 
 Önkoşulların bir parçası olarak, örnek kodu bir klasöre indirdiniz. Örnek dosyaları incelemek ve düzenlemek için bu adımları izleyin.
 
-1. Visual Studio Code, *src/Edge*bölümüne gidin. *. Env* dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
+1. Visual Studio Code, *src/Edge* bölümüne gidin. *. Env* dosyanızı ve birkaç dağıtım şablonu dosyasını görürsünüz.
 
     Dağıtım şablonu, Edge cihazının dağıtım bildirimini ifade eder. Bazı yer tutucu değerleri içerir. *. Env* dosyası bu değişkenlerin değerlerini içerir.
 1. *Src/buluttan cihaza-Console-App* klasörüne gidin. Burada dosya ve diğer birkaç dosya *appsettings.js* görürsünüz:
 
-    * ***C2D-Console-App. csproj*** -Visual Studio Code için proje dosyası.
-    * ***operations.js*** , programın çalıştırmasını istediğiniz işlemlerin bir listesi.
-    * ***Program.cs*** -örnek program kodu. Bu kod:
+    * ***C2D-Console-App. csproj** _-Visual Studio Code için proje dosyası.
+    _ ***operations.json** _-programın çalıştırmasını istediğiniz işlemlerin listesi.
+    _ ***Program.cs** _-örnek program kodu. Bu kod:
 
-        * Uygulama ayarlarını yükler.
+        _ Uygulama ayarlarını yükler.
         * IoT Edge modülündeki canlı video analizinin sunduğu doğrudan yöntemleri çağırır. [Doğrudan yöntemlerini](../../../direct-methods.md)çağırarak canlı video akışlarını çözümlemek için modülünü kullanabilirsiniz.
         * Program çıkışını **TERMINAL** penceresinde Incelemenize ve **Çıkış** penceresinde modül tarafından oluşturulan olayları incelemenize olanak tanıyan duraklar.
         * Kaynakları temizlemek için doğrudan yöntemleri çağırır.
 1. Dosyadaki *operations.js* düzenleyin:
     * Grafik topolojisine olan bağlantıyı değiştirin:
 
-        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+        `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 
     * Altında `GraphInstanceSet` , grafik topolojisinin adını önceki bağlantıdaki değerle eşleşecek şekilde düzenleyin:
 
@@ -58,7 +58,7 @@ ms.locfileid: "91829321"
     * `rtspsim`BIR RTSP sunucusunun benzetimini yapan ve canlı video akışı kaynağı görevi gören modül.
 
         > [!NOTE]
-        > Kurulum betiğimizden temin yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için uç cihazınıza gidin ve **yönetici haklarıyla**aşağıdaki komutları çalıştırın:  
+        > Kurulum betiğimizden temin yerine kendi Edge cihazınızı kullanıyorsanız, bu hızlı başlangıç için kullanılan örnek video dosyasını çekmek ve depolamak için uç cihazınıza gidin ve **yönetici haklarıyla** aşağıdaki komutları çalıştırın:  
         
         ```
         mkdir /home/lvaadmin/samples
@@ -76,12 +76,11 @@ ms.locfileid: "91829321"
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster":::
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
 1. Canlı video analizi cihazına sağ tıklayın ve **Izlemeyi Başlat yerleşik olay uç noktası**' nı seçin. Visual Studio Code **Çıkış** penceresinde IoT Hub olaylarını izlemek için bu adıma ihtiyacınız vardır. 
 
    ![İzlemeyi Başlat](../../../media/quickstarts/start-monitoring-iothub-events.png) 
@@ -89,7 +88,7 @@ ms.locfileid: "91829321"
 ### <a name="run-the-sample-program"></a>Örnek programı çalıştırma
 
 1. Bir hata ayıklama oturumu başlatmak için F5 tuşunu seçin. **TERMINAL** penceresinde yazdırılan iletileri görürsünüz.
-1. Kod * üzerindekioperations.js* doğrudan yöntemlere ve çağrılarıyla başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
+1. Kod *üzerindekioperations.js* doğrudan yöntemlere ve çağrılarıyla başlatılır `GraphTopologyList` `GraphInstanceList` . Önceki hızlı başlangıçlarını tamamladıktan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve ardından duraklatılır. Devam etmek için Enter tuşunu seçin.
 
    ```
    --------------------------------------------------------------------------

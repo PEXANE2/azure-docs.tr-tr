@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558989"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505248"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -37,7 +37,7 @@ PII özelliği, NER 'in bir parçasıdır ve gizli varlıkları, telefon numaras
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Öne çıkan özelliği                                                         | NER v 3.0 | NER v 3.1-Önizleme. 3 |
+| Özellik                                                         | NER v 3.0 | NER v 3.1-Önizleme. 3 |
 |-----------------------------------------------------------------|--------|----------|
 | Tek ve toplu istekler için Yöntemler                          | X      | X        |
 | Çeşitli kategoriler genelinde Genişletilmiş varlık tanıma           | X      | X        |
@@ -309,5 +309,5 @@ Bu makalede, bilişsel hizmetler 'deki Metin Analizi kullanarak varlık bağlama
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/client-libraries-rest-api.md)
 * [Yenilikler](../whats-new.md)

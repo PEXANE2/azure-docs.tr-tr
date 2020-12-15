@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: a3ef198c79683786a7d6fb36a46cd0c989071c9e
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 0ff6bcd2e50b64993966f2780c6c8118aea2694f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346902"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505180"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Örnek: Metin Analizi Dili algıla
 
@@ -78,7 +78,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Koleksiy
 + İstek gövdesinde, bu analiz için hazırladığınız JSON belgeleri koleksiyonunu sağlayın.
 
 > [!Tip]
-> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)**API testi konsolu** ’nu açın.
+> İsteği yapılandırmak ve hizmete GÖNDERMEK için [Postman](text-analytics-how-to-call-api.md) kullanın veya [belgelerdeki](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)**API testi konsolu**’nu açın.
 
 ## <a name="step-2-post-the-request"></a>2. Adım: isteği GÖNDERIN
 
@@ -303,5 +303,5 @@ Bu makalede, Azure bilişsel hizmetler 'de Metin Analizi kullanarak dil algılam
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/client-libraries-rest-api.md)
 * [Yenilikler](../whats-new.md)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318326"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505282"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics ve Application Insights'da depolanan kişisel veriler için kılavuz
 
@@ -81,7 +81,7 @@ Log Analytics, verilerinize bir şemayı etkilemeden, her alanı özel değerler
 Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu API 'si](https://dev.loganalytics.io/) veya  [Application Insights sorgu API 'si](https://dev.applicationinsights.io/quickstart) kullanılmalıdır. Kullanıcılarınıza teslim etmek üzere verilerin şeklini uygun bir şekilde dönüştürme mantığı, uygulamanız için size uygun olacaktır. [Azure işlevleri](https://azure.microsoft.com/services/functions/) bu tür mantığı barındırmak için harika bir yer sunar.
 
 > [!IMPORTANT]
->  Temizleme işlemlerinin büyük çoğunluğu SLA 'dan çok daha hızlı tamamlanabilir, ancak **Temizleme işlemlerinin tamamlanmasına yönelik RESMI SLA** , kullanılan veri platformunda ağır etkileri nedeniyle 30 gün içinde ayarlanır. Bu otomatikleştirilmiş bir işlemdir; bir işlemin daha hızlı işlenmesini istemek için bir yol yoktur.
+>  Temizleme işlemlerinin büyük çoğunluğu SLA 'dan çok daha hızlı tamamlanabilir, ancak **Temizleme işlemlerinin tamamlanmasına yönelik RESMI SLA** , kullanılan veri platformunda ağır etkileri nedeniyle 30 gün içinde ayarlanır. Bu SLA GDPR gereksinimlerini karşılar. Bu otomatikleştirilmiş bir işlemdir, böylece bir işlemin daha hızlı işlenmesini istemek için bir yol yoktur. 
 
 ### <a name="delete"></a>Sil
 
@@ -89,6 +89,9 @@ Veri görüntüleme ve dışarı aktarma istekleri için [Log Analytics sorgu AP
 > Log Analytics, bozucu ve geri alınamaz bir şekilde silinir! Lütfen yürütmesinde çok dikkatli olun.
 
 Bir *Temizleme* API 'si yolunu işlemenin bir parçası olarak kullanıma sunulmuştur. Bu yol, sorun ile ilişkili risk, olası performans etkisi ve Log Analytics verilerinizin diğer yönlerini, ölçümlerinin ve diğer yönlerini eğmek için potansiyel olarak kullanılmalıdır. Özel verileri işlemeye yönelik alternatif yaklaşımlar için [kişisel veri Işleme stratejisi](#strategy-for-personal-data-handling) bölümüne bakın.
+
+> [!NOTE]
+> Temizleme işlemi gerçekleştirildikten sonra, [Temizleme işlemi durumu](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *beklenirken* verilere erişilemez. 
 
 Temizleme, Azure 'daki hiçbir uygulamanın veya kullanıcının (kaynak sahibi dahil) Azure Resource Manager içinde açıkça bir rol verilmeden yürütme izinlerine sahip olacağı yüksek ayrıcalıklı bir işlemdir. Bu rol _veri_ kaybı olur ve veri kaybı nedeniyle dikkatli bir şekilde temsil edilmelidir. 
 

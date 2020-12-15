@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, indirme güncelleştirme, en son, kullanılabilir, yükleme
-ms.openlocfilehash: 48a3df3962796cf561057e8ec85b754c974200f4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2fd14781c42192c713d826729f8fab6c698d6321
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358514"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505486"
 ---
 # <a name="azure-kinect-sensor-sdk-download"></a>Azure Kinect algılayıcı SDK indirmesi
 
@@ -26,14 +26,14 @@ Bu sayfada, Azure Kinect algılayıcı SDK 'sının her bir sürümü için indi
 - [Azure Kinect Kaydedicisi](azure-kinect-recorder.md).
 - [Azure Kinect üretici yazılımı aracı](azure-kinect-firmware-tool.md).
 
-## <a name="windows-download-link"></a>Windows indirme bağlantısı
+## <a name="windows-installation-instructions"></a>Windows yükleme yönergeleri
 
-[Microsoft yükleyicisi](https://download.microsoft.com/download/3/d/6/3d6d9e99-a251-4cf3-8c6a-8e108e960b4b/Azure%20Kinect%20SDK%201.4.1.exe)  |  [GitHub Kaynak kodu](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/issues/1093)
+Azure Kinect algılayıcı SDK 'sının en son ve önceki sürümleri için yükleme ayrıntılarını [buradan](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md)bulabilirsiniz.
+
+Kaynak kodunu [buradan](https://github.com/microsoft/Azure-Kinect-Sensor-SDK)bulabilirsiniz.
 
 > [!NOTE]
 > SDK 'yı yüklerken, yüklediğiniz yolu unutmayın. Örneğin, "C:\Program Files\Azure Kinect SDK 1,2". Bu yoldaki makalelerde başvurulan araçları bulacaksınız.
-
-Azure ınect algılayıcı SDK 'sının ve üretici yazılımının önceki sürümlerini [GitHub](https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/usage.md)' da bulabilirsiniz.
 
 ## <a name="linux-installation-instructions"></a>Linux yükleme yönergeleri
 

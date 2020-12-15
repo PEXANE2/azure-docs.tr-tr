@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 68da6a134f2410ca81ae16b8e00c40d0a9c8f22c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 39823792a438e533134f38c04e72f2c314c57678
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965026"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505197"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama
 
@@ -177,5 +177,5 @@ Bu makalede bilişsel hizmetler 'de Metin Analizi kullanarak anahtar tümceciği
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/client-libraries-rest-api.md)
 * [Yenilikler](../whats-new.md)

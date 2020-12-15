@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/14/2020
 ms.author: memildin
-ms.openlocfilehash: 63ae35da973525a8331eeeb463eb09e36e8b6e26
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fcdcda8aaa6d48b24c346d87a402f6966ab11cf5
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97398941"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505503"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Güvenlik Merkezi 'Nde yapılan önemli değişiklikler
 
@@ -40,6 +40,7 @@ En son sürüm notlarını arıyorsanız, bunları [Azure Güvenlik Merkezi 'nde
 
 Şu anda, bir öneri için değerlendirilen ve **uygulanamaz** olarak bulunan kaynaklar Azure ilkesinde "uyumsuz" olarak görünür. Kullanıcı eylemi, durumunu "uyumlu" olarak değiştirebilir. Bu planlı değişiklikten sonra, gelişmiş açıklık için "uyumlu" olarak bildirilir.
 
+Azure Ilkesinde, uyumlu kaynakların sayısının arttıracağı tek etkisi görünür. Azure Güvenlik Merkezi 'nde güvenli puanınızın hiçbir etkisi olmayacaktır.
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure Güvenlik kıyaslamasının kapsamını artırmak için 35 önizleme önerisi eklendi
 

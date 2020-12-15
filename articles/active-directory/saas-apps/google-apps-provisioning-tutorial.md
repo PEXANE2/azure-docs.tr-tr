@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180889"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504585"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -32,6 +32,9 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 > * [Burada](https://developers.google.com/admin-sdk/directory)tanımlananla eşleşecek şekilde, G Suite hedef öznitelik adları güncelleştirildi.
 > * Varsayılan öznitelik eşlemeleri güncelleştirildi.
 
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+
 ## <a name="capabilities-supported"></a>Desteklenen özellikler
 > [!div class="checklist"]
 > * G Suite 'te Kullanıcı oluşturma
@@ -40,7 +43,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem G Suit
 > * G Suite 'te grupları ve grup üyeliklerini sağlama
 > * G Suite ['Te çoklu oturum açma](./google-apps-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 

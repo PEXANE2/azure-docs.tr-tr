@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7bd9560399a2b2b377cb543a4f829883bcbdf7c8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183779"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505537"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>Karma Runbook Çalışanına genel bakış
 
@@ -22,7 +22,7 @@ Aşağıdaki görüntüde Bu işlevsellik gösterilmektedir:
 
 İki tür runbook çalışanı vardır-sistem ve Kullanıcı. Aşağıdaki tabloda aralarındaki fark açıklanmaktadır.
 
-|Tür | Açıklama |
+|Tür | Description |
 |-----|-------------|
 |**Sistem** |, Windows ve Linux makinelerine Kullanıcı tarafından belirtilen güncelleştirmeleri yüklemek için tasarlanan Güncelleştirme Yönetimi özelliği tarafından kullanılan bir gizli runbook kümesini destekler.<br> Bu karma runbook çalışanı türü karma Runbook Worker grubunun bir üyesi değildir ve bu nedenle bir runbook worker grubunu hedefleyen runbook 'ları çalıştırmaz. |
 |**Kullanıcı** |, Bir veya daha fazla Runbook Worker grubunun üyesi olan Windows ve Linux makinesinde doğrudan çalıştırılması amaçlanan Kullanıcı tanımlı runbook 'ları destekler. |
@@ -46,7 +46,7 @@ Disk alanı, bellek veya ağ yuvaları üzerinde birçok korumalı alan [sınır
 
 Bir Kullanıcı karma Runbook Worker 'ı yüklemek için işlem işletim sistemine bağlıdır. Aşağıdaki tabloda dağıtım türleri tanımlanmaktadır.
 
-|İşletim Sistemi  |Dağıtım türleri  |
+|Operating System  |Dağıtım türleri  |
 |---------|---------|
 |Windows     | [Otomatik](automation-windows-hrw-install.md#automated-deployment)<br>[El ile](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [El ile](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
@@ -92,7 +92,7 @@ Azure Otomasyonu karma Runbook Worker, Azure Kamu 'da aşağıdaki iki yapıland
 
 * [Yalıtılmış sanal makine](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Dağıtıldığında, IL5 iş yüklerini desteklemek için gereken yalıtım düzeyini sağlayan bu makine için tüm fiziksel ana bilgisayarı tüketir.
 
-* Tek bir Azure aboneliğine ayrılmış bir veya daha fazla sanal makineyi barındırabilen fiziksel sunucular sağlayan [Azure ayrılmış Konakları](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-hosts).
+* Tek bir Azure aboneliğine ayrılmış bir veya daha fazla sanal makineyi barındırabilen fiziksel sunucular sağlayan [Azure ayrılmış Konakları](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host).
 
 >[!NOTE]
 >Karma runbook çalışanı rolü aracılığıyla işlem yalıtımı, Azure ticari ve ABD kamu bulutları için kullanılabilir. 
@@ -125,7 +125,7 @@ Azure dışı kaynaklara erişirken, bir Kullanıcı karma runbook çalışanı 
 
 ## <a name="view-system-hybrid-runbook-workers"></a>Sistem karma runbook çalışanlarını görüntüleme
 
-Güncelleştirme Yönetimi özelliği Windows veya Linux makinelerde etkinleştirildikten sonra, Azure portal sistem karma runbook çalışanları grubunun listesini envantere kaydedebilirsiniz. Seçilen Otomasyon hesabı için sol bölmeden **karma çalışanlar grubu** seçeneğini belirleyerek, portalda en **System hybrid workers group** fazla 2.000 çalışanı görüntüleyebilirsiniz ve ardından,
+Güncelleştirme Yönetimi özelliği Windows veya Linux makinelerde etkinleştirildikten sonra, Azure portal sistem karma runbook çalışanları grubunun listesini envantere kaydedebilirsiniz. Seçilen Otomasyon hesabı için sol bölmeden **karma çalışanlar grubu** seçeneğini belirleyerek, portalda en  fazla 2.000 çalışanı görüntüleyebilirsiniz ve ardından,
 
 :::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Otomasyon hesabı sistemi karma çalışanı grupları sayfası" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
 

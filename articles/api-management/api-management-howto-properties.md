@@ -1,80 +1,121 @@
 ---
 title: Azure API Management ilkelerinde adlandırılmış değerleri kullanma
-description: Azure API Management ilkelerinde adlandırılmış değerleri nasıl kullanacağınızı öğrenin. Adlandırılmış değerler, sabit dizeler ve ilke ifadeleri içerebilir.
+description: Azure API Management ilkelerinde adlandırılmış değerleri nasıl kullanacağınızı öğrenin. Adlandırılmış değerler, Azure Key Vault depolanan sabit dizeler, ilke ifadeleri ve gizli dizileri içerebilir.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852200"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504741"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanma
+# <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ilkelerinde adlandırılmış değerleri kullanın
 
-API Management ilkeleri, sistemin yapılandırma aracılığıyla API 'nin davranışını değiştirmesine Azure portal olanak tanıyan güçlü bir yetenektir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. İlke deyimleri, sabit metin değerleri, ilke ifadeleri ve adlandırılmış değerler kullanılarak oluşturulabilir.
+[API Management ilkeleri](api-management-howto-policies.md) , yayımcının API 'nin davranışını yapılandırma yoluyla değiştirmesine olanak tanıyan güçlü bir yetenektir. İlkeler, bir API isteği veya yanıtı üzerinde sırayla yürütülen deyimlerin bir koleksiyonudur. İlke deyimleri, sabit metin değerleri, ilke ifadeleri ve adlandırılmış değerler kullanılarak oluşturulabilir.
 
-Her bir API Management hizmet örneği, hizmet örneği için genel olan adlandırılmış değerler olarak adlandırılan anahtar/değer çiftleri koleksiyonuna sahiptir. Koleksiyondaki öğe sayısı üzerinde hiçbir uygulanan sınır yoktur. Adlandırılmış değerler, tüm API yapılandırması ve ilkeleri genelinde sabit dize değerlerini yönetmek için kullanılabilir. Her bir adlandırılmış değer aşağıdaki özniteliklere sahip olabilir:
+*Adlandırılmış değerler* her bir API Management örneğindeki genel ad/değer çiftleri koleksiyonudur. Koleksiyondaki öğe sayısı üzerinde hiçbir uygulanan sınır yoktur. Adlandırılmış değerler, tüm API yapılandırmalarında ve ilkelerinde sabit dize değerlerini ve gizli dizileri yönetmek için kullanılabilir. 
 
-| Öznitelik      | Tür            | Description                                                                                                                            |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | dize          | İlkelerdeki adlandırılmış değere başvurmak için kullanılır. Bir ile 256 karakter arasında bir dize. Yalnızca harfler, rakamlar, nokta ve tireye izin verilir. |
-| `Value`        | string          | Gerçek değer. Boş olmamalı veya yalnızca boşluklardan oluşmalıdır. En fazla 4096 karakter uzunluğunda.                                        |
-| `Secret`       | boolean         | Değerin gizli olup olmadığını ve şifrelenmesinin gerekip gerekmediğini belirler.                                                               |
-| `Tags`         | dize dizisi | Adlandırılmış değer listesini filtrelemek için kullanılır. En fazla 32 etiket.                                                                                    |
+:::image type="content" source="media/api-management-howto-properties/named-values.png" alt-text="Azure portal adlandırılmış değerler":::
 
-![Adlandırılmış değerler](./media/api-management-howto-properties/named-values.png)
+## <a name="value-types"></a>Değer türleri
 
-Adlandırılmış değerler, sabit dizeler ve [ilke ifadeleri](./api-management-policy-expressions.md)içerebilir. Örneğin, değeri `Expression` geçerli tarih ve saati içeren bir dize döndüren bir ilke deyimidir. Adlandırılmış değer `Credential` gizli olarak işaretlenir, bu nedenle değeri varsayılan olarak görüntülenmez.
+|Tür  |Description  |
+|---------|---------|
+|Düz     |  Sabit dize veya ilke ifadesi     |
+|Gizli dizi     |   API Management tarafından şifrelenen sabit dize veya ilke ifadesi      |
+|[Anahtar Kasası](#key-vault-secrets)     |  Azure Anahtar Kasası 'nda depolanan bir gizli dizi tanımlayıcısı.      |
 
-| Name       | Değer                      | Gizli dizi | Etiketler          |
-| ---------- | -------------------------- | ------ | ------------- |
-| Değer      | 42                         | Yanlış  | önemli sayılar |
-| Kimlik Bilgisi | ••••••••••••••••••••••     | Doğru   | güvenlik      |
-| Expression | @ (DateTime. Now. ToString ()) | Yanlış  |               |
+Düz değerler veya gizlilikler, [ilke ifadeleri](./api-management-policy-expressions.md)içerebilir. Örneğin, ifade `@(DateTime.Now.ToString())` geçerli tarih ve saati içeren bir dize döndürür.
 
-> [!NOTE]
-> Bir API Management hizmeti içinde depolanan adlandırılmış değerler yerine, bu [örnekte](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml)gösterildiği gibi [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) hizmetinde depolanan değerleri kullanabilirsiniz.
+Adlandırılmış değer öznitelikleri hakkında daha fazla bilgi için API Management [REST API başvurusuna](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate)bakın.
 
-## <a name="to-add-and-edit-a-named-value"></a>Adlandırılmış bir değer eklemek ve düzenlemek için
+## <a name="key-vault-secrets"></a>Anahtar Kasası gizli dizileri
 
-![Adlandırılmış bir değer ekleyin](./media/api-management-howto-properties/add-property.png)
+Gizli değerler, API Management (özel gizlilikler) şifreli dizeler olarak veya [Azure Key Vault](../key-vault/general/overview.md)gizli dizileri olarak depolanabilir. 
 
-1. **API YÖNETİMİ** bölümünden **API’ler** öğesini seçin.
-2. **Adlandırılmış değerleri**seçin.
-3. **+ Ekle**tuşuna basın.
+Anahtar Kasası gizliliklerin kullanılması önerilir API Management güvenliği artırmaya yardımcı olur:
 
-    Ad ve değer gerekli değerlerdir. Değer bir gizli dizi ise, _Bu gizli bir_ onay kutusu olup olmadığını kontrol edin. Adlandırılmış değerlerinizi organize etmenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket girin ve Kaydet ' e tıklayın.
+* Anahtar kasalarında depolanan gizli dizileri, hizmetler arasında yeniden kullanılabilir
+* Ayrıntılı [erişim ilkeleri](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) gizli anahtarlara uygulanabilir
+* Anahtar kasasında güncellenen gizli diziler API Management otomatik olarak döndürülür. Anahtar kasasındaki güncelleştirmeden sonra, API Management bir adlandırılmış değer 4 saat içinde güncelleştirilir. 
 
-4. **Oluştur**’a tıklayın.
+### <a name="prerequisites-for-key-vault-integration"></a>Anahtar Kasası tümleştirmesi için Önkoşullar
 
-Adlandırılmış değer oluşturulduktan sonra, üzerine tıklayarak düzenleyebilirsiniz. Adlandırılmış değer adını değiştirirseniz, bu adlandırılmış değere başvuruda bulunan tüm ilkeler, yeni adı kullanacak şekilde otomatik olarak güncelleştirilir.
+1. Bir Anahtar Kasası oluşturma adımları için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md).
+1. API Management örneğinde sistem tarafından atanan veya Kullanıcı tarafından atanan bir [yönetilen kimliği](api-management-howto-use-managed-service-identity.md) etkinleştirin.
+1. Kasadaki gizli dizileri almak ve listelemek için izinleri olan yönetilen kimliğe bir [Anahtar Kasası erişim ilkesi](../key-vault/general/assign-access-policy-portal.md) atayın. İlkeyi eklemek için:
+    1. Portalda anahtar kasanıza gidin.
+    1. **Ayarlar > erişim ilkeleri > + erişim Ilkesi Ekle**' yi seçin.
+    1. **Gizli izinler**' i seçin, ardından **Al** ve **Listele**' yi seçin.
+    1. **Asıl seçin**' de, yönetilen kimliğinizin kaynak adını seçin. Sistem tarafından atanan bir kimlik kullanıyorsanız sorumlu, API Management örneğinizin adıdır.
+1. Anahtar kasasında bir gizli dizi oluşturun veya bu anahtarı içeri aktarın. Bkz. [hızlı başlangıç: Azure Key Vault Azure Portal kullanarak bir gizli dizi ayarlama ve alma](../key-vault/secrets/quick-create-portal.md).
 
-## <a name="to-delete-a-named-value"></a>Adlandırılmış bir değeri silmek için
+Anahtar Kasası gizliliğini kullanmak için, [adlandırılmış bir değer ekleyin veya düzenleyin](#add-or-edit-a-named-value)ve **Anahtar Kasası** türünü belirtin. Anahtar kasasından gizli dizi seçin.
 
-Adlandırılmış bir değeri silmek için, silinecek adlandırılmış değerin yanındaki **Sil** ' e tıklayın.
+> [!CAUTION]
+> API Management bir Anahtar Kasası gizli dizisi kullanırken, anahtar kasasına erişmek için kullanılan gizli anahtarı, anahtar kasasını veya yönetilen kimliği silmemeye dikkat edin.
 
-> [!IMPORTANT]
-> Adlandırılmış değere herhangi bir ilke tarafından başvuruluyorsa, adlandırılmış değeri onu kullanan tüm ilkelerden kaldırana kadar başarıyla silemezsiniz.
+Anahtar Kasanızda [Key Vault güvenlik duvarı](../key-vault/general/network-security.md) etkinse, Anahtar Kasası gizli dizileri kullanmak için ek gereksinimler aşağıda verilmiştir:
 
-## <a name="to-search-and-filter-named-values"></a>Adlandırılmış değerleri aramak ve filtrelemek için
+* Anahtar kasasına erişmek için API Management örneğinin **sistem tarafından atanan** yönetilen kimliğini kullanmanız gerekir.
+* Güvenlik Duvarı Key Vault, **Güvenilen Microsoft hizmetlerinin bu güvenlik duvarını atlamasına Izin ver** seçeneğini etkinleştirin.
 
-**Adlandırılmış değerler** sekmesi, adlandırılmış değerlerinizi yönetmenize yardımcı olmak için arama ve filtreleme özelliklerini içerir. Adlandırılmış değerler listesini ada göre filtrelemek için **arama özelliği** metin kutusuna bir arama terimi girin. Tüm adlandırılmış değerleri göstermek için **arama özelliği** metin kutusunu temizleyin ve ENTER tuşuna basın.
+API Management örneği bir sanal ağda dağıtılmışsa, aşağıdaki ağ ayarlarını da yapılandırın:
+* API Management alt ağında Azure Key Vault için bir [hizmet uç noktası](../key-vault/general/overview-vnet-service-endpoints.md) etkinleştirin.
+* AzureKeyVault ve AzureActiveDirectory [hizmet etiketlerine](../virtual-network/service-tags-overview.md)giden trafiğe izin vermek için bir ağ güvenlik grubu (NSG) kuralı yapılandırın. 
 
-Listeyi etikete göre filtrelemek için **etiketlere göre filtrele** metin kutusuna bir veya daha fazla etiket girin. Tüm adlandırılmış değerleri göstermek için **etiketlere göre filtrele** metin kutusunu temizleyin ve ENTER tuşuna basın.
+Ayrıntılar için bkz. [sanal ağa bağlanma](api-management-using-with-vnet.md#-common-network-configuration-issues)içindeki ağ yapılandırması ayrıntıları.
 
-## <a name="to-use-a-named-value"></a>Adlandırılmış bir değer kullanmak için
+## <a name="add-or-edit-a-named-value"></a>Adlandırılmış değer ekleme veya düzenleme
 
-Bir ilkede adlandırılmış bir değer kullanmak için, adını `{{ContosoHeader}}` Aşağıdaki örnekte gösterildiği gibi çift küme ayracı içine yerleştirin:
+### <a name="add-a-key-vault-secret"></a>Anahtar Kasası gizli anahtarı ekleme
+
+Bkz. [Anahtar Kasası tümleştirmesi Için Önkoşullar](#prerequisites-for-key-vault-integration).
+
+1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
+1. **API 'ler** altında, **adlandırılmış değerler**  >  **+ Ekle**' yi seçin.
+1. Bir **ad** tanımlayıcısı girin ve ilkelerde özelliğe başvurmak için kullanılan bir **görünen ad** girin.
+1. **Değer türü**' nde **Anahtar Kasası**' nı seçin.
+1. Bir Anahtar Kasası parolasının tanımlayıcısını (sürüm olmadan) girin veya bir anahtar kasasından gizli dizi seçmek için **Seç** ' i seçin.
+    > [!IMPORTANT]
+    > Kendi kendinize bir Anahtar Kasası gizli tanımlayıcısı girerseniz, sürüm bilgisi olmadığından emin olun. Aksi takdirde, anahtar kasasındaki bir güncelleştirmeden sonra gizli dizi API Management otomatik olarak döndürülmez.
+1. **İstemci kimliği**' nde, sistem tarafından atanan veya Kullanıcı tarafından atanan mevcut bir yönetilen kimlik seçin. [API Management hizmetinize Yönetilen kimlikler ekleme veya değiştirme](api-management-howto-use-managed-service-identity.md)hakkında bilgi edinin.
+    > [!NOTE]
+    > Kimliğin, anahtar kasasından parolaları almak ve listelemek için izinleri olması gerekir. Zaten Anahtar Kasası 'na erişimi yapılandırmadıysanız, API Management kimliği, gerekli izinlerle otomatik olarak yapılandırabilmesi için sizi uyarır.
+1. Adlandırılmış değerlerinizi düzenlemenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket ekleyin ve ardından **kaydedin**.
+1. **Oluştur**’u seçin.
+
+    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Anahtar Kasası gizli değeri Ekle":::
+
+### <a name="add-a-plain-or-secret-value"></a>Düz veya gizli değer ekleme
+
+1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
+1. **API 'ler** altında, **adlandırılmış değerler**  >  **+ Ekle**' yi seçin.
+1. Bir **ad** tanımlayıcısı girin ve ilkelerde özelliğe başvurmak için kullanılan bir **görünen ad** girin.
+1. **Değer türü**' nde **düz** veya **gizli** öğesini seçin.
+1. **Değer** alanına bir dize veya ilke ifadesi girin.
+1. Adlandırılmış değerlerinizi düzenlemenize yardımcı olmak için bir veya daha fazla isteğe bağlı etiket ekleyin ve ardından **kaydedin**.
+1. **Oluştur**’u seçin.
+
+Adlandırılmış değer oluşturulduktan sonra, adı seçerek düzenleyebilirsiniz. Görünen adı değiştirirseniz, adlandırılmış değere başvuruda bulunan tüm ilkeler, yeni görünen adı kullanacak şekilde otomatik olarak güncelleştirilir.
+
+## <a name="use-a-named-value"></a>Adlandırılmış bir değer kullan
+
+Bu bölümdeki örnekler, aşağıdaki tabloda gösterilen adlandırılmış değerleri kullanır.
+
+| Name               | Değer                      | Gizli dizi | 
+|--------------------|----------------------------|--------|---------|
+| ContosoHeader      | `TrackingId`                 | Yanlış  | 
+| ContosoHeaderValue | ••••••••••••••••••••••     | Doğru   | 
+| ExpressionProperty | `@(DateTime.Now.ToString())` | Yanlış  | 
+
+İlkede adlandırılmış bir değer kullanmak için, `{{ContosoHeader}}` Aşağıdaki örnekte gösterildiği gibi, görünen adını gibi çift bir küme ayracı içine yerleştirin:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,9 +125,13 @@ Bir ilkede adlandırılmış bir değer kullanmak için, adını `{{ContosoHeade
 
 Bu örnekte, `ContosoHeader` bir ilkedeki üst bilgi adı olarak kullanılır `set-header` ve bu `ContosoHeaderValue` üstbilginin değeri olarak kullanılır. Bu ilke bir istek veya API Management ağ geçidine yanıt sırasında değerlendirildiğinde `{{ContosoHeader}}` ve `{{ContosoHeaderValue}}` ilgili değerleriyle değiştirilmiştir.
 
-Adlandırılmış değerler, önceki örnekte gösterildiği gibi, tüm öznitelik veya öğe değerleri olarak kullanılabilir, ancak aşağıdaki örnekte gösterildiği gibi, değişmez değer metin ifadesinin bir bölümüne eklenebilir veya birleştirilebilir: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Adlandırılmış değerler, önceki örnekte gösterildiği gibi, tüm öznitelik veya öğe değerleri olarak kullanılabilir, ancak aşağıdaki örnekte gösterildiği gibi, değişmez değer metin ifadesinin bir bölümüne eklenebilir veya birleştirilebilir: 
 
-Adlandırılmış değerler, ilke ifadeleri de içerebilir. Aşağıdaki örnekte, `ExpressionProperty` kullanılır.
+```xml
+<set-header name = "CustomHeader{{ContosoHeader}}" ...>
+```
+
+Adlandırılmış değerler, ilke ifadeleri de içerebilir. Aşağıdaki örnekte, `ExpressionProperty` ifadesi kullanılır.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -94,17 +139,27 @@ Adlandırılmış değerler, ilke ifadeleri de içerebilir. Aşağıdaki örnekt
 </set-header>
 ```
 
-Bu ilke değerlendirildiğinde, `{{ExpressionProperty}}` değeri ile değiştirilmiştir: `@(DateTime.Now.ToString())` . Değer bir ilke ifadesi olduğundan, ifade değerlendirilir ve ilke yürütmeye devam eder.
+Bu ilke değerlendirildiğinde, `{{ExpressionProperty}}` değeri ile değiştirilmiştir `@(DateTime.Now.ToString())` . Değer bir ilke ifadesi olduğundan, ifade değerlendirilir ve ilke yürütmeye devam eder.
 
-Kapsam içinde adlandırılmış değerlere sahip bir ilkeye sahip bir işlem çağırarak Geliştirici Portalında bunu test edebilirsiniz. Aşağıdaki örnekte, bir işlem, `set-header` adlandırılmış değerlere sahip olan iki önceki örnek ilkesiyle birlikte çağırılır. Yanıtın, adlandırılmış değerleri olan ilkeler kullanılarak yapılandırılmış iki özel üst bilgi içerdiğini unutmayın.
+Kapsamda adlandırılmış değerler içeren bir işlem çağırarak Azure portal veya [Geliştirici Portalında](api-management-howto-developer-portal.md) bunu test edebilirsiniz. Aşağıdaki örnekte, bir işlem, `set-header` adlandırılmış değerlere sahip olan iki önceki örnek ilkesiyle birlikte çağırılır. Yanıtın, adlandırılmış değerleri olan ilkeler kullanılarak yapılandırılmış iki özel üst bilgi içerdiğine dikkat edin.
 
-![Geliştirici portalı][api-management-send-results]
+:::image type="content" source="media/api-management-howto-properties/api-management-send-results.png" alt-text="API yanıtını sına":::
 
-Adlandırılmış değerlere sahip iki önceki örnek ilkeyi içeren bir çağrı için [API denetçisi izlemeye](api-management-howto-api-inspector.md) bakarsanız, `set-header` adlandırılmış değerlerin eklendiği iki ilkeyi ve ilke ifadesini içeren adlandırılmış değer için ilke ifadesi değerlendirmesini görebilirsiniz.
+Adlandırılmış değerlere sahip iki önceki örnek ilkeyi içeren bir çağrı için giden [API izlemeye](api-management-howto-api-inspector.md) bakarsanız, `set-header` adlandırılmış değerlerin eklendiği iki ilkeyi ve ilke ifadesini içeren adlandırılmış değer için ilke ifadesi değerlendirmesini görebilirsiniz.
 
-![API denetçisi izleme][api-management-api-inspector-trace]
+:::image type="content" source="media/api-management-howto-properties/api-management-api-inspector-trace.png" alt-text="API denetçisi izleme":::
+
+> [!CAUTION]
+> Bir ilke Azure Key Vault bir gizli dizi başvurusu varsa, anahtar kasasındaki değer [API isteği izleme](api-management-howto-api-inspector.md)için etkinleştirilen aboneliklere erişimi olan kullanıcılar tarafından görülebilir.
 
 Adlandırılmış değerler ilke ifadeleri içerebildiği sürece, diğer adlandırılmış değerleri içeremez. Adlandırılmış bir değer başvurusu içeren metin, gibi bir değer için kullanılırsa, `Text: {{MyProperty}}` Bu başvuru çözümlenmez ve değiştirilmez.
+
+## <a name="delete-a-named-value"></a>Adlandırılmış bir değeri silme
+
+Adlandırılmış bir değeri silmek için, adı seçin ve bağlam menüsünden **Sil** ' i (**...**) seçin.
+
+> [!IMPORTANT]
+> Adlandırılmış değere herhangi bir API Management ilkesi tarafından başvuruluyorsa, bunu kullanan tüm ilkelerden, adlandırılmış değeri kaldırana kadar silemezsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -114,5 +169,4 @@ Adlandırılmış değerler ilke ifadeleri içerebildiği sürece, diğer adland
     -   [İlke ifadeleri](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-[api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
-[api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
+

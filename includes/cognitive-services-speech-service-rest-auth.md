@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/29/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a3ec1d6e33c08b460088c9aeb4fd18f6bf29ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 410b73d3f9011f9384fafa18394d9318e3eafa67
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88864895"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504500"
 ---
 ## <a name="authentication"></a>Kimlik Doğrulaması
 
@@ -17,8 +17,8 @@ Her istek bir yetkilendirme üst bilgisi gerektirir. Bu tabloda, her bir hizmet 
 
 | Desteklenen yetkilendirme üstbilgileri | Konuşmayı metne dönüştürme | Metin okuma |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | Evet | Hayır |
-| Yetkilendirme: taşıyıcı | Evet | Evet |
+| Ocp-Apim-Subscription-Key | Yes | Hayır |
+| Yetkilendirme: taşıyıcı | Yes | Yes |
 
 `Ocp-Apim-Subscription-Key`Üstbilgiyi kullanırken yalnızca abonelik anahtarınızı sağlamanız gerekir. Örneğin:
 
@@ -151,7 +151,7 @@ def get_token(subscription_key):
 
 Erişim belirtecinin, üst bilgi olarak hizmete gönderilmesi gerekir `Authorization: Bearer <TOKEN>` . Her erişim belirteci 10 dakika için geçerlidir. Her zaman yeni bir belirteç alabilirsiniz, ancak ağ trafiğini ve gecikmesini en aza indirmek için dokuz dakika boyunca aynı belirteci kullanmanızı öneririz.
 
-Metinden konuşmaya REST API örnek bir HTTP isteği aşağıda verilmiştir:
+İşte kısa ses için konuşmayı metne dönüştürme REST API örnek bir HTTP isteği:
 
 ```http
 POST /cognitiveservices/v1 HTTP/1.1

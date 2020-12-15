@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/14/2020
-ms.openlocfilehash: d94a4858b4c4fa99a09acc2bec88f94a64686c2d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 7fa3355ff7e61d624d57da68d0f835faa7ca3736
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539148"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505435"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Microsoft Cognitive Toolkit derin öğrenme modelini Azure HDInsight Spark kümesiyle kullanma
 
@@ -31,12 +31,12 @@ Bu makalede, aşağıdaki adımları uygulayın.
 
 ## <a name="how-does-this-solution-flow"></a>Bu çözüm nasıl akar?
 
-Bu çözüm, bu makale ile karşıya yüklediğiniz bir Jupyter Not defteri ile bu makalenin bir parçası olarak bölünür. Bu makalede, aşağıdaki adımları tamamlayadınız:
+Bu çözüm bu makale ile bu makalenin bir parçası olarak karşıya yüklediğiniz Jupyter Notebook bölünmüştür. Bu makalede, aşağıdaki adımları tamamlayadınız:
 
 * Microsoft Cognitive Toolkit ve Python paketlerini yüklemek için bir HDInsight Spark kümesinde betik eylemi çalıştırın.
-* Çözümü, HDInsight Spark kümesine çalıştıran Jupyter Not defterini karşıya yükleyin.
+* Çözümü, HDInsight Spark kümesine çalıştıran Jupyter Notebook yükleyin.
 
-Aşağıdaki kalan adımlar Jupyter not defterinde ele alınmıştır.
+Aşağıdaki kalan adımlar Jupyter Notebook kapsamına alınmıştır.
 
 * Örnek görüntüleri Spark dayanıklı Dağıtılmış bir veri kümesine veya RDD 'ye yükleyin.
   * Modülleri yükleyin ve ön ayarları tanımlayın.
@@ -66,17 +66,17 @@ Betik eylemini çalıştırmak için Azure portal kullanma hakkında yönergeler
 |Düğüm türleri:|Baş, çalışan|
 |Parametreler|Hiçbiri|
 
-## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Jupyter Not defterini Azure HDInsight Spark kümesine yükleme
+## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>Jupyter Notebook Azure HDInsight Spark kümesine yükle
 
-Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle birlikte kullanmak için, Jupyter Not defteri **CNTK_model_scoring_on_Spark_walkthrough. ipynb** not defterini Azure HDInsight Spark kümesine yüklemeniz gerekir. Bu not defteri, tarihinde GitHub 'da kullanılabilir [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
+Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle kullanmak için **CNTK_model_scoring_on_Spark_walkthrough. ipynb** Jupyter Notebook Azure HDInsight Spark kümesine yüklemeniz gerekir. Bu not defteri, tarihinde GitHub 'da kullanılabilir [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. İndirin ve sıkıştırmayı açın [https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration](https://github.com/Azure-Samples/hdinsight-pyspark-cntk-integration) .
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/jupyter` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Jupyter Not defterinden sağ üst köşedeki **karşıya** Yükle ' yi seçin ve ardından İndir ' e gidin ve dosyayı seçin `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
+1. Jupyter Notebook, sağ üst köşedeki **karşıya yükle** ' yi seçin ve ardından İndir ' e gidin ve dosyayı seçin `CNTK_model_scoring_on_Spark_walkthrough.ipynb` .
 
-    ![Jupyter Not defterini Azure HDInsight Spark kümesine yükleme](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Not defterini Azure HDInsight Spark kümesine yükleme")
+    ![Jupyter Notebook Azure HDInsight Spark kümesine yükle](./media/apache-spark-microsoft-cognitive-toolkit/hdinsight-microsoft-cognitive-toolkit-load-jupyter-notebook.png "Jupyter Notebook Azure HDInsight Spark kümesine yükle")
 
 1. **Karşıya yükle** ' yi seçin.
 
@@ -104,8 +104,8 @@ Microsoft Cognitive Toolkit Azure HDInsight Spark kümesiyle birlikte kullanmak 
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

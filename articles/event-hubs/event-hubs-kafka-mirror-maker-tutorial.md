@@ -3,12 +3,12 @@ title: Apache Kafka MirrorMaker 'ı kullanın-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, AzureEvent hub 'Larda bir Kafka kümesini yansıtmak için Kafka MirrorMaker 'ın nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: d1ec20a32ef27856483492212608e20e82725f58
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369531"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503208"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Kafka MirrorMaker 'ı kullanma
 
@@ -19,6 +19,8 @@ Bu öğreticide, Kafka MirrorMaker kullanarak bir olay hub 'ında Kafka aracıs�
 > [!NOTE]
 > Bu örnek [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) 'da kullanılabilir
 
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
@@ -33,7 +35,7 @@ Modern bulut ölçekli uygulamalar için önemli bir göz önünde bulundurun, h
 
 Azure Event Hubs Kafka uç noktası, Azure Event Hubs 'a Kafka protokolünü (yani, Kafka istemcileri) kullanarak bağlanmanızı sağlar. Bir Kafka uygulamasında en az değişiklik yaparak Azure Event Hubs bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Event Hubs Şu anda Kafka sürümleri 1,0 ve üstünü desteklemektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 

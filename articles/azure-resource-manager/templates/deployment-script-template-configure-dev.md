@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 232a1ae5d125a2ea1d5723e85073fb3dd02420cc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87294478"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503565"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma (Önizleme)
+# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma
 
 Dağıtım komut dosyalarını bir dağıtım betiği görüntüsüyle geliştirmek ve test etmek için bir geliştirme ortamı oluşturmayı öğrenin. [Azure Container Instance](../../container-instances/container-instances-overview.md) oluşturabilir ya da [Docker](https://docs.docker.com/get-docker/)kullanabilirsiniz. Her ikisi de bu makalede ele alınmıştır.
 
@@ -237,7 +237,7 @@ Ayrıca, Dağıtım betiklerini Docker kapsayıcısına içeren dizini bağlamak
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    ** &lt; Konak sürücü harfi>** ve ** &lt; konak dizin adı>** paylaşılan sürücüdeki mevcut bir klasörle değiştirin.  Klasörü, kapsayıcıdaki **/Data** klasörüne eşler. Örneğin, D:\docker 'ı eşlemek için:
+    **&lt; Konak sürücü harfi>** ve **&lt; konak dizin adı>** paylaşılan sürücüdeki mevcut bir klasörle değiştirin.  Klasörü, kapsayıcıdaki **/Data** klasörüne eşler. Örneğin, D:\docker 'ı eşlemek için:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3

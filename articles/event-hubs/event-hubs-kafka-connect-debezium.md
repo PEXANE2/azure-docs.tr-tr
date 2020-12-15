@@ -5,18 +5,21 @@ ms.topic: how-to
 author: abhirockzz
 ms.author: abhishgu
 ms.date: 08/11/2020
-ms.openlocfilehash: a13713f01a6bdb0ffcd787ef9c1d2f9a0336f63c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ae3ef2e1f35be432558769c512845543867ef27a
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369565"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505418"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview-with-debezium-for-change-data-capture"></a>Değişiklik verilerini yakalama için Debezium ile Azure Event Hubs (Önizleme) üzerinde Apache Kafka Connect desteğini tümleştirin
 
 **Değişiklik verilerini yakalama (CDC)** , oluşturma, güncelleştirme ve silme işlemlerine yanıt olarak veritabanı tablolarındaki satır düzeyi değişiklikleri izlemek için kullanılan bir tekniktir. [Debezium](https://debezium.io/) , farklı veritabanlarında bulunan değişiklik verilerini yakalama özelliklerini (örneğin, [PostgreSQL içinde mantıksal kod çözme](https://www.postgresql.org/docs/current/static/logicaldecoding-explanation.html)) oluşturan, dağıtılmış bir platformdur. Veritabanı tabloları içindeki satır düzeyi değişikliklere dokunarak [Kafka Connect bağlayıcıları](https://debezium.io/documentation/reference/1.2/connectors/index.html) kümesi sağlar ve bunları [Apache Kafka](https://kafka.apache.org/)' a gönderilen olay akışlarına dönüştürür.
 
 Bu öğretici, Azure 'da Azure [Event Hubs](./event-hubs-about.md?WT.mc_id=devto-blog-abhishgu) (Kafka için), [PostgreSQL için Azure DB](../postgresql/overview.md) ve debezium kullanarak Azure 'da değişiklik verilerini yakalama tabanlı sistem ayarlama konusunda size kılavuzluk eder. Azure Event Hubs PostgreSQL 'ten Kafka konularına veritabanı değişiklikleri akışı için [Debezium PostgreSQL bağlayıcısını](https://debezium.io/documentation/reference/1.2/connectors/postgresql.html) kullanır
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 

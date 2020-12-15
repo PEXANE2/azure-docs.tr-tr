@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad03942a2200c57475cf8a81d0fb08d475ec6964
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95973227"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504891"
 ---
 # <a name="risky-ip-report-public-preview"></a>Riskli IP raporu (Genel Önizleme)
 AD FS müşteriler, son kullanıcıların Microsoft 365 gibi SaaS uygulamalarına erişmesi için kimlik doğrulama hizmetleri sağlamak üzere internet 'e parola kimlik doğrulama uç noktaları sunabilir. Bu durumda kötü bir aktör, bir son kullanıcı parolasını tahmin etmek ve uygulama kaynaklarına erişmek amacıyla AD FS sisteminize karşı oturum açma girişimlerinde bulunabilir. AD FS, Windows Server 2012 R2'de AD FS’den itibaren bu tür saldırıları önlemek için extranet hesap kilitleme işlevselliği sağlamaktadır. Daha düşük bir sürüm kullanıyorsanız, AD FS sisteminizi Windows Server 2016’ya yükseltmeniz kesinlikle önerilir. <br />
@@ -36,7 +36,10 @@ Ayrıca, tek bir IP adresinin birden fazla kullanıcıya karşı birden çok otu
 > [!NOTE]
 > Bu raporu kullanmak için AD FS denetiminin etkin olduğundan emin olmanız gerekir. Daha fazla bilgi için bkz. [AD FS için Denetimi Etkinleştirme](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
 > Erişmek için önizleme, Genel Yönetici veya [Güvenlik Okuyucusu](../../role-based-access-control/built-in-roles.md#security-reader) izni gereklidir.  
-> 
+>
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="what-is-in-the-report"></a>Raporda ne var?
 Başarısız oturum açma etkinliği istemci IP adresleri, Web uygulaması ara sunucuları aracılığıyla toplanır. Riskli IP raporundaki her bir öğe, belirlenmiş eşiği aşan başarısız AD FS oturum açma etkinlikleri hakkında toplu bilgiler gösterir. Aşağıdaki bilgileri sağlar: ![ sütun başlıkları vurgulanmış riskli BIR IP raporu gösteren ekran görüntüsü.](./media/how-to-connect-health-adfs/report4a.png)

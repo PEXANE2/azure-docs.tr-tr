@@ -1,20 +1,20 @@
 ---
 title: Azure Arc etkin sunucularıyla VM Uzantısı yönetimi
 description: Azure Arc etkin sunucuları, Azure olmayan VM 'lerle dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan sanal makine uzantılarının dağıtımını yönetebilir.
-ms.date: 11/06/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7682f6c8631bbaf2310d501d7cee6aecb2311226
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358040"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504517"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc etkin sunucularıyla sanal makine uzantısı yönetimi
 
-Sanal makine (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin bir sanal makinede yazılım yüklemesi gerekiyorsa, virüsten koruma gerekiyorsa veya içinde bir betik çalıştırılacaksa VM uzantısı kullanılabilir.
+Sanal makine (VM) uzantıları, Azure VM 'lerinde dağıtım sonrası yapılandırma ve otomasyon görevleri sağlayan küçük uygulamalardır. Örneğin, bir sanal makine yazılım yüklemesi, virüsten koruma koruması veya bir betik çalıştırmak istiyorsa, bir VM Uzantısı kullanılabilir.
 
-Azure yay özellikli sunucular, Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak tanıdığından, karma makinenizin şirket içi, kenar ve diğer bulut ortamlarının yaşam döngülerinde yönetimini basitleştirir. SANAL makine uzantıları, karma makinelerinizde veya Arc etkin sunucularla yönetilen sunucularda aşağıdaki yöntemler kullanılarak yönetilebilir:
+Azure yay özellikli sunucular, Azure VM uzantılarını Azure olmayan Windows ve Linux VM 'lerine dağıtmanıza olanak sağlar ve bu da karma makinenizin yaşam döngülerinde yönetimini basitleştirir. SANAL makine uzantıları, karma makinelerinizde veya Arc etkin sunucularla yönetilen sunucularda aşağıdaki yöntemler kullanılarak yönetilebilir:
 
 - [Azure Portal](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
@@ -27,7 +27,7 @@ Azure Arc etkin sunucuları VM uzantısı desteği aşağıdaki önemli avantajl
 
 - [Azure Otomasyonu durum yapılandırması](../../automation/automation-dsc-overview.md) ' nı kullanarak yapılandırmaları merkezi olarak depolar ve DSC VM Uzantısı aracılığıyla etkinleştirilen karma bağlı makinelerin istenen durumunu koruyun.
 
-- [Azure izleyici 'de Günlükler](../../azure-monitor/platform/data-platform-logs.md) ile analizler için günlük verilerini log ANALYTICS aracı VM Uzantısı aracılığıyla toplayın. Bu, çeşitli kaynaklardaki veriler arasında karmaşık analizler gerçekleştirmek için yararlıdır.
+- [Azure izleyici 'de Günlükler](../../azure-monitor/platform/data-platform-logs.md) ile analizler için günlük verilerini log ANALYTICS aracı VM Uzantısı aracılığıyla toplayın. Bu, farklı türdeki kaynaklardaki veriler arasında karmaşık analizler yapmak için yararlıdır.
 
 - [VM'ler için Azure izleyici](../../azure-monitor/insights/vminsights-overview.md), Windows ve Linux sanal makinelerinizin performansını analiz eder ve diğer kaynaklardaki ve dış süreçlerdeki işlem ve bağımlılıklarını izler. Bu, hem Log Analytics Aracısı hem de bağımlılık Aracısı VM uzantılarını etkinleştirerek elde edilir.
 
@@ -65,11 +65,13 @@ Bu özellik, aboneliğinizdeki aşağıdaki Azure Kaynak sağlayıcılarına ba�
 - **Microsoft. HybridCompute**
 - **Microsoft. GuestConfiguration**
 
-Henüz kayıtlı değilse, [Azure kaynak sağlayıcıları 'Nı kaydetme](agent-overview.md#register-azure-resource-providers)bölümündeki adımları izleyin.
+Henüz kaydolmadıysanız [Azure kaynak sağlayıcıları 'Nı kaydetme](agent-overview.md#register-azure-resource-providers)bölümündeki adımları izleyin.
+
+Bir ağ veya sistem gereksinimlerine sahip olup olmadığını anlamak için önceki tabloda başvurulan her bir VM uzantısının belgelerini gözden geçirdiğinizden emin olun. Bu, söz konusu VM uzantısına dayanan bir Azure hizmeti veya özelliği ile ilgili herhangi bir bağlantı sorununu önlemenize yardımcı olabilir.
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM Uzantısı
 
-Linux için Log Analytics Agent VM uzantısı, hedef makinede Python 2. x ' in yüklü olmasını gerektirir.
+Linux için Log Analytics Agent VM uzantısı, hedef makinede Python 2. x ' in yüklü olmasını gerektirir. 
 
 ### <a name="azure-key-vault-vm-extension-preview"></a>Azure Key Vault VM Uzantısı (Önizleme)
 

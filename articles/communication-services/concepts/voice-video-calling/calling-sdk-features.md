@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5ace6866ef863b2f901c98f9a32a12540a990d0d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931920"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505554"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -90,6 +90,15 @@ Uygulamanın bir parçasını farklı bir etki alanından barındırmak için bi
 ```html
 <iframe allow="camera *; microphone *">
 ```
+
+## <a name="calling-client-library-streaming-support"></a>İstemci kitaplığı akış desteğini çağırma
+İstemci kitaplığını çağıran Iletişim Hizmetleri aşağıdaki akış yapılandırmasını destekler:
+
+|           |Web | Android/iOS|
+|-----------|----|------------|
+|aynı anda gönderilebilecek giden akış sayısı |1 video + 1 ekran paylaşımı | 1 video + 1 ekran paylaşımı|
+|aynı anda işlenebilen gelen akış sayısı |1 video + 1 ekran paylaşımı| 6 video + 1 ekran paylaşımı |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

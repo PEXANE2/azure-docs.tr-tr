@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905800"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503942"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Genel IP adreslerini yükseltme
 
@@ -32,9 +32,6 @@ Bu makalede aşağıdaki senaryolar incelenmelidir:
 * Klasik bir Azure Ayrılmış IP Azure Resource Manager temel SKU genel IP 'ye geçirme
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Genel IP adresini temel sunucudan standart SKU 'ya yükseltme
-
->[!NOTE]
->Genel IP 'Leri temel ile standart arasında yükseltme yeteneği, tüm bölgelerde kullanılamaz.  Daha fazla ayrıntı için lütfen [**sınırlamalara**](#limitations) bakın.
 
 Genel bir IP 'yi yükseltmek için, bu, herhangi bir kaynakla ilişkilendirilmemelidir (genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için [Bu sayfaya](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) bakın).
 
@@ -147,15 +144,6 @@ Azure Resource Manager ' deki yeni bir kaynak grubu, geçirilen Ayrılmış IP a
 ---
 
 ## <a name="limitations"></a>Sınırlamalar
-
-* Bu özellik şu anda şu bölgelerde kullanılamıyor:<br>
-US Gov Virginia<br>
-Doğu US DoD<br>
-Orta US DoD<br>
-Doğu Çin<br>
-Çin Doğu 2<br>
-Kuzey Çin<br>
-Çin Kuzey 2
 
 * Temel bir genel IP 'yi yükseltmek için, herhangi bir Azure kaynağıyla ilişkilendirilemez.  Genel IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address) gözden geçirin.  Benzer şekilde, bir Ayrılmış IP geçirmek için herhangi bir bulut hizmeti ile ilişkilendirilemez.  Ayrılmış IP 'Lerin ilişkisini kaldırma hakkında daha fazla bilgi için lütfen [Bu sayfayı](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm) gözden geçirin.  
 * Temel ve standart SKU 'ya yükseltilen genel IP 'Ler, hiçbir [kullanılabilirlik](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) alanına sahip olmaya devam eder ve bu nedenle bölge yedekli veya zonal olan bir Azure kaynağıyla ilişkilendirilemez.  Bu, yalnızca kullanılabilirlik alanları sunan bölgeler için geçerlidir.

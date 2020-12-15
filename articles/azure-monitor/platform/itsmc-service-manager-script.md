@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 46c219a82d45129ed0856d22d88be819938e5240
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fefa16a39545c0c4094db8dbd18b46fb94ef5025
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325313"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504041"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Otomatikleştirilmiş betiği kullanarak Service Manager Web uygulaması oluşturma
 
@@ -26,9 +26,12 @@ Aşağıdaki gerekli ayrıntıları sağlayarak betiği çalıştırın:
 - Web uygulamanız için site adı ön eki
 - ServiceBus ad alanı.
 
-Betik, belirttiğiniz adı kullanarak Web uygulamasını oluşturur (benzersiz hale getirmek için birkaç ek dize ile birlikte). **Web uygulaması URL 'sini**, **istemci kimliğini**ve **istemci gizli**anahtarını oluşturur.
+Betik, belirttiğiniz adı kullanarak Web uygulamasını oluşturur (benzersiz hale getirmek için birkaç ek dize ile birlikte). **Web uygulaması URL 'sini**, **istemci kimliğini** ve **istemci gizli** anahtarını oluşturur.
 
 Bu değerleri kaydedin, BT Hizmet Yönetimi Bağlayıcısı bir bağlantı oluşturduğunuzda bu değerlere ihtiyacınız olur.
+
+> [!NOTE]
+> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

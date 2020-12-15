@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359722"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504415"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Azure Active Directory portalında Lisans atama veya kaldırma
 
@@ -49,11 +49,18 @@ Bireysel lisanslar dahil olmak üzere kullanılabilir hizmet planlarınızı gö
 
 1. **Azure Active Directory**' yi seçin ve ardından **lisanslar**' ı seçin.
 
-    ![Lisanslar sayfası, satın alınan hizmet sayısı ve atanmış lisanslar](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Lisanslar sayfası, satın alınan hizmet sayısı ve atanmış lisanslar":::
 
-1. **Ürünler** sayfasını görüntülemek ve lisans planlarınız için **atanan**, **kullanılabilir**ve **süresi dolan en erken** numaraları görmek üzere **satın alınan** bağlantıyı seçin.
+1. Tüm ürünler sayfasını görüntülemek için **Tüm** Ürünler ' i seçin ve lisans planlarınız için **Toplam**, **atanan**, **kullanılabilir** ve **süresi dolan en erken** numaraları görüntüleyin.
 
-    ![Hizmetler sayfası, hizmet lisans planları ve ilişkili lisans bilgileri](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="Hizmetler sayfası-hizmet lisans planlarıyla ilişkili lisans bilgileri":::
+
+    > [!NOTE]
+    > Sayılar şu şekilde tanımlanır: 
+    > - Toplam: satın alınan toplam lisans sayısı
+    > - Atandı: kullanıcılara atanan lisansların sayısı
+    > - Kullanılabilir: atama için kullanılabilen lisansların sayısı yakında dolacak
+    > - Yakında süresi doluyor: süresi yakında dolacak olan lisans sayısı
 
 1. Lisanslı kullanıcılarını ve gruplarını görmek için bir plan adı seçin.
 
@@ -75,14 +82,14 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
 
     ![Vurgulanan arama ve seçim seçeneklerini içeren lisans sayfası ata](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. **Atama seçeneklerini**belirleyin, uygun lisans seçeneklerinin açık olduğundan emin olun ve ardından **Tamam**' ı seçin.
+1. **Atama seçeneklerini** belirleyin, uygun lisans seçeneklerinin açık olduğundan emin olun ve ardından **Tamam**' ı seçin.
 
     ![Lisans seçeneği sayfasında, lisans planındaki tüm seçeneklerle kullanılabilir](media/license-users-groups/license-option-blade-assignments.png)
 
     Bir kullanıcının seçili olduğunu ve atamaların yapılandırıldığını göstermek için **Lisans ata** sayfası güncellenir.
 
     > [!NOTE]
-    > Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir kullanıcıya atanabilmesi için önce **kullanım konumunu**belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
+    > Tüm Microsoft Hizmetleri tüm konumlarda kullanılabilir değildir. Bir lisansın bir kullanıcıya atanabilmesi için önce **kullanım konumunu** belirtmeniz gerekir. Bu değeri, Azure AD 'de **Azure Active Directory &gt; kullanıcıları &gt; profil &gt; ayarları** alanında ayarlayabilirsiniz. Kullanım konumu belirtilmemiş olan tüm kullanıcılar, Azure AD kuruluşunun konumunu devralır.
 
 1. **Ata**’yı seçin.
 
@@ -104,7 +111,7 @@ Lisanslı bir Azure AD hizmeti kullanması gereken herkesin uygun lisansa sahip 
 
     ![Vurgulanan aramayla lisans sayfası atayın ve seçenekleri belirleyin 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. **Atama seçeneklerini**belirleyin, uygun lisans seçeneklerinin açık olduğundan emin olun ve ardından **Tamam**' ı seçin.
+1. **Atama seçeneklerini** belirleyin, uygun lisans seçeneklerinin açık olduğundan emin olun ve ardından **Tamam**' ı seçin.
 
     ![Lisans seçeneği sayfasında, lisans planı 2 ' de kullanılabilir tüm seçenekler mevcuttur](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -138,7 +145,7 @@ Bir kullanıcının Azure AD Kullanıcı sayfasından bir lisansı, Grup atama i
     ![Lisansı kaldır seçeneği vurgulanmış olan lisanslı gruplar sayfası 2](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
     
     > [!NOTE]
-    > Azure AD ile eşitlenen şirket içi bir kullanıcı hesabı eşitleme için kapsam dışına düştüğünde veya eşitleme kaldırıldığında, Kullanıcı Azure AD 'de geçici olarak silinir. Bu durumda, kullanıcıya doğrudan veya grup tabanlı lisanslama aracılığıyla atanan lisanslar, **silinmek**yerine **askıya alındı** olarak işaretlenir.
+    > Azure AD ile eşitlenen şirket içi bir kullanıcı hesabı eşitleme için kapsam dışına düştüğünde veya eşitleme kaldırıldığında, Kullanıcı Azure AD 'de geçici olarak silinir. Bu durumda, kullanıcıya doğrudan veya grup tabanlı lisanslama aracılığıyla atanan lisanslar, **silinmek** yerine **askıya alındı** olarak işaretlenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

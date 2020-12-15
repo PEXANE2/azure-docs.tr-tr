@@ -14,13 +14,13 @@ ms.workload: iaas-sql-server
 ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: bb7331747db301be5db00d550eec211f75257e29
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
+ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360042"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505639"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL IaaS Aracısı Uzantısı ile SQL Server VM kaydetme
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -194,7 +194,7 @@ Uzantıyı *hafif* modda kaydetmiş SQL Server VM 'ler, Azure Portal, Azure clı
 
 Azure portal kullanarak uzantıyı tam moda yükseltmek için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 1. [SQL sanal makineler](manage-sql-vm-portal.md#access-the-sql-virtual-machines-resource) kaynağına gidin. 
 1. SQL Server VM seçin ve **genel bakış**' ı seçin. 
 1. NoAgent veya Lightweight IaaS modundaki sanal makineler SQL Server için, **SQL IaaS uzantı Iletisiyle tek lisans türünü seçin ve sürüm güncelleştirmelerini** seçin.
@@ -237,7 +237,7 @@ SQL Server VM, Azure portal, Azure CLı veya Azure PowerShell kullanarak SQL Iaa
 
 Azure portal kullanarak kayıt durumunu doğrulamak için aşağıdaki adımları izleyin: 
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portalda](https://portal.azure.com) oturum açın. 
 1. [SQL Server sanal](manage-sql-vm-portal.md)makinelerinize gidin.
 1. Listeden SQL Server VM seçin. SQL Server VM burada listelenmiyorsa, büyük olasılıkla SQL IaaS Aracısı uzantısına kayıtlı değildir. 
 1. **Durum** altındaki değeri görüntüleyin. **Durum** **başarılı** olursa SQL Server VM SQL IaaS Aracısı uzantısı başarıyla kaydedildi. 

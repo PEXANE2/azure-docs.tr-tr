@@ -503,7 +503,7 @@
       displayName: pipelines
       items:
         - name: ML işlem hatları oluşturma (Python)
-          href: how-to-create-your-first-pipeline.md
+          href: how-to-create-machine-learning-pipelines.md
         - name: ML işlem hattı adımlarına ve adımlar arasında veri taşıma (Python)
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML işlem hattı dağıtma (Python)

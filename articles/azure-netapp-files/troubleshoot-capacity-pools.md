@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/06/2020
 ms.author: b-juche
-ms.openlocfilehash: c6194469837997108964feda82d406c9108641b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369248"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505469"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Kapasite havuzu sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bu makalede, havuz değiştirme işlemi de dahil olmak üzere kapasite havuzlar�
 | Bir kapasite havuzunu silme sorunları  |  Kapasite havuzunu silmeye çalıştığınız abonelikte tüm Azure NetApp Files birimlerini ve anlık görüntüleri kaldırdığınızdan emin olun. <br> Tüm birimleri ve anlık görüntüleri zaten kaldırdıysanız ve yine de kapasite havuzunu silemiyorsanız, kaynak başvuruları portalda gösterilmeksizin yine de mevcut olabilir. Bu durumda, bir destek bileti dosyası ve yukarıdaki önerilen adımları gerçekleştirdiğini belirtin. |
 | Birim oluşturma veya değiştirme hata vererek başarısız oluyor `Requested throughput not available` | Bir birim için kullanılabilir verimlilik, kapasite havuzunun boyutu ve hizmet düzeyi tarafından belirlenir. Yeterli üretilen iş yoksa, havuz boyutunu artırmanız veya var olan birim aktarım hızını ayarlamanız gerekir. | 
 
-## <a name="issues-moving-a-capacity-pool"></a>Bir kapasite havuzunu taşıma sorunları 
+## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Bir birimin kapasite havuzunu değiştirirken oluşan sorunlar 
 
 > [!IMPORTANT] 
 > Bir birim genel önizlemesi kaydının [hizmet düzeyini dinamik olarak değiştirme](dynamic-change-volume-service-level.md) , daha fazla bildirimde bulununcaya kadar tutmaktır.

@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 09/01/2020
+ms.date: 12/14/2020
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c120f343ec539783f04fe35e96891c5372c5d39
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: 466b9e389beb94ff527cbce014ca39f85de8d5bd
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109088"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503633"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı akışlarına koşullu erişim ekleme
 
@@ -35,9 +36,25 @@ Koşullu erişim, Kullanıcı akışlarının en son sürümlerinde desteklenir.
 
 Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-identity-protection-overview.md) hakkında daha fazla bilgi edinin veya [nasıl ayarlanacağını](conditional-access-identity-protection-setup.md)öğrenin.
 
+## <a name="prerequisites"></a>Önkoşullar
+
+- Riskli oturum açma ilkeleri oluşturmak için Azure AD B2C Premium 2 gereklidir. Premium P1 kiracılar konum, uygulama veya grup tabanlı ilkeler oluşturabilir.
+- Sınama amacıyla, [](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 
+- Riskli bir oturum açma benzetimi yapmak için TOR tarayıcısını indirin ve Kullanıcı akış uç noktasında oturum açmayı deneyin.
+- Aşağıdaki ayarları kullanarak, [bir koşullu erişim ilkesi oluşturun](conditional-access-identity-protection-setup.md):
+   
+  - **Kullanıcılar ve gruplar** için, test kullanıcısını seçin ( **tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz).
+  - **Bulut uygulamaları veya eylemler** Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
+  - Koşullar için **oturum açma riski** ve **yüksek**, **Orta** ve **düşük** riskli Düzeyler ' i seçin.
+  - **Izin ver** Için **erişimi engelle**' yi seçin.
+
+      ![Risk algılamaları](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
+
+::: zone pivot="b2c-user-flow"
+
 ## <a name="add-conditional-access-to-a-new-user-flow"></a>Yeni bir Kullanıcı akışına koşullu erişim ekleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 1. Azure portal, araması yapın ve **Azure AD B2C** seçin.
 1. **İlkeler** altında **Kullanıcı akışları**' nı seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
@@ -67,7 +84,7 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 > [!NOTE]
 > Mevcut Kullanıcı akışı, koşullu erişimi destekleyen bir sürüm olmalıdır. Bu Kullanıcı akışı sürümlerinin **kullanılması önerilir**.
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 
 1. Portal araç çubuğunda **Dizin + abonelik** simgesini seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
 
@@ -89,19 +106,6 @@ Azure AD B2C ' de [kimlik koruması ve koşullu erişim](conditional-access-iden
 
 Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu erişim ilkesi oluşturun](conditional-access-identity-protection-setup.md) ve yukarıda açıklandığı gibi Kullanıcı akışınızda koşullu erişimi etkinleştirin. 
 
-### <a name="prerequisites"></a>Önkoşullar
-
-- Riskli oturum açma ilkeleri oluşturmak için Azure AD B2C Premium 2 gereklidir. Premium P1 kiracılar konum, uygulama veya grup tabanlı ilkeler oluşturabilir.
-- Sınama amacıyla, [](tutorial-register-applications.md) `https://jwt.ms` bir belirtecin kodu çözülmüş Içeriğini görüntüleyen, Microsoft 'a ait bir Web uygulaması olan test Web uygulamasını kaydedebilirsiniz (belirtecin içeriği hiçbir şekilde tarayıcıdan ayrılmayın). 
-- Riskli bir oturum açma benzetimi yapmak için TOR tarayıcısını indirin ve Kullanıcı akış uç noktasında oturum açmayı deneyin.
-- Aşağıdaki ayarları kullanarak, [bir koşullu erişim ilkesi oluşturun](conditional-access-identity-protection-setup.md):
-   
-   - **Kullanıcılar ve gruplar** için, test kullanıcısını seçin ( **tüm kullanıcıları** seçmeyin veya kendi oturum açmasını engelleyebilirsiniz).
-   - **Bulut uygulamaları veya eylemler** Için **Uygulama Seç**' i seçin ve ardından bağlı olan taraf uygulamanızı seçin.
-   - Koşullar için **oturum açma riski** ve **yüksek**, **Orta** ve **düşük** riskli Düzeyler ' i seçin.
-   - **Izin ver** Için **erişimi engelle**' yi seçin.
-
-      ![Risk algılamaları](media/conditional-access-identity-protection-setup/test-conditional-access-policy.png)
 
 ### <a name="run-the-user-flow"></a>Kullanıcı akışını çalıştırma
 
@@ -116,6 +120,16 @@ Kullanıcı akışındaki koşullu erişimi test etmek için, [bir koşullu eri�
 1. Oturum açma sayfasında istenen bilgileri girin ve oturum açmayı deneyin. Belirteç öğesine döner `https://jwt.ms` ve size gösterilmesi gerekir. Jwt.ms kodu çözülen belirteçte, oturum açma 'nın engellendiğini görmeniz gerekir:
 
    ![Engellenen bir oturum açma sınamasını yapın](media/conditional-access-identity-protection-setup/test-blocked-sign-in.png)
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+## <a name="add-conditional-access-to-your-policy"></a>İlkenize koşullu erişim ekleme
+
+[GitHub](https://github.com/azure-ad-b2c/samples/tree/master/policies/conditional-access)'da koşullu erişim ilkesi örneğini bulabilirsiniz.
+
+::: zone-end
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

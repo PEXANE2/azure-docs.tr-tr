@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558768"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505231"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
@@ -27,7 +27,7 @@ API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızc
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Öne çıkan özelliği                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
+| Özellik                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
 |-------------------------------------------|-----------------------|-----------------------------------|
 | Tek ve toplu istekler için Yöntemler    | X                     | X                                 |
 | Yaklaşım Analizi puanları ve etiketleme             | X                     | X                                 |
@@ -51,7 +51,7 @@ Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıf
 
 ## <a name="opinion-mining"></a>Görüşün madenciliği
 
-Fikrinizi araştırma, 3,1-Preview. 1 ' den başlayarak Yaklaşım Analizi bir özelliktir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar. 
+Fikrinizi araştırma, 3,1 sürümünün önizlemeden başlayarak Yaklaşım Analizi özelliğidir. Doğal dil Işlemede (NLP) en boy tabanlı Yaklaşım Analizi olarak da bilinen bu özellik, metinle ilgili, özelliklerle (ürünlerin veya hizmetlerin öznitelikleri gibi) ilgili daha ayrıntılı bilgiler sağlar.
 
 Örneğin, bir müşteri bir otel hakkında "Oda harika, ancak personelin kullanımı çok iyiydi" gibi bir otel hakkında geri bildirim bırakırsa, görüşmelerin araştırma metni ve bunlarla ilişkili ek ve yaklaşım gibi konuları bulur. Yaklaşım Analizi yalnızca negatif bir yaklaşım rapor edebilir.
 
@@ -74,7 +74,7 @@ Belge boyutunun belge başına 5.120 karakter altında olması gerekir. Bir kole
 
 Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz için aşağıdaki başvuru bağlantılarında [Postman](text-analytics-how-to-call-api.md) veya **API test konsolunu** kullanabilirsiniz. 
 
-#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
 
 [Yaklaşım Analizi v 3.1 başvurusu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -86,22 +86,22 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
 
 > [!NOTE]
 > Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı Azure portal bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
 
-#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
 
 **Yaklaşım Analizi**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **Görüşün madenciliği**
 
-Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
+Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örneğin:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 Bu parametre `false` Varsayılan olarak olarak ayarlanır. 
 
@@ -144,7 +144,7 @@ Metin Analizi API'si durum bilgisiz. Hesabınızda hiç veri depolanmaz ve sonu�
 
 Hemen çıktı döndürülür. Sonuçları JSON kabul eden bir uygulamaya veya çıktıyı yerel sistemdeki bir dosyaya kaydedebilirsiniz. Sonra çıktıyı, verileri sıralamak, aramak ve işlemek için kullanabileceğiniz bir uygulamaya içeri aktarın. Çok dilli ve Emoji desteği nedeniyle, yanıt metin uzaklıkları içerebilir. Daha fazla bilgi için bkz. [uzaklıkları işleme](../concepts/text-offsets.md) .
 
-#### <a name="version-31-preview2"></a>[Sürüm 3,1-Önizleme. 2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Sürüm 3,1-Önizleme. 3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Yaklaşım Analizi ve görüşün Inceleme örneği yanıtı
 
@@ -302,5 +302,5 @@ Bu makalede, Metin Analizi API'si kullanarak yaklaşım analizi için kavramlar�
 ## <a name="see-also"></a>Ayrıca bkz.
 
 * [Metin Analizine genel bakış](../overview.md)
-* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/text-analytics-sdk.md)
+* [Metin Analizi istemci kitaplığını kullanma](../quickstarts/client-libraries-rest-api.md)
 * [Yenilikler](../whats-new.md)

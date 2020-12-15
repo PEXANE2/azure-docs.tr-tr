@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.author: jeedes
-ms.openlocfilehash: fcaaea387cab24772b9e6f31f4e7d93ff643b983
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 59c01d5d8589b61ff0aaacb81d12fed8fba4f842
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515602"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505520"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-paylocity"></a>Öğretici: Paylocity ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -56,7 +56,7 @@ Paylocity 'in Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden,
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-paylocity"></a>Azure AD çoklu oturum açmayı, Paylocity için yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Paylocity ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Paylocity ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Paylocity ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Paylocity ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu, Paylocity ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -91,7 +91,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha yukarıya ek olarak, Paylocity uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak bu öznitelikleri gerçek değerlerle güncelleştirmeniz gerekir.
 
-    | Adı |  Kaynak özniteliği|
+    | Name |  Kaynak özniteliği|
     | ---------------| --------------- |
     | İş ortağı kimliği | `P8000010` |
     | PaylocityUser | `user.mail`|
@@ -148,7 +148,15 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Paylocity 'e eri
 
 ## <a name="configure-paylocity-sso"></a>Paylocity SSO 'yu yapılandırma
 
-**Paylocity** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' dan [Paylocity destek ekibine](mailto:service@paylocity.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Paylıity** tarafında çoklu oturum açmayı yapılandırmak için
+
+1. **Federasyon meta VERILERI XML**'i indirin.
+1. Paylocity 'de, **İK & Bordro**  >  **Kullanıcı erişimi**  >  **SSO yapılandırması**' na gidin.
+1. **SSO tümleştirmeleri** altında **SSO tümleştirmesi Ekle** ' yi seçin. Yeni bir çekmece açılır.
+1. Açılan listeden SSO sağlayıcısı olarak **Microsoft Azure** ' yi seçin.
+1. Açılan listeden **durum** ' u seçin.
+1. Meta veri dosyasını bırakma alanına sürükleyin ve bırakın. Ödeyeninin, veren, yeniden yönlendirme ve bağlama URL 'Leri ve güvenlik sertifikalarını ayrıştırmaya çalışır.
+1. Değişiklikleri onaylamak için **Kaydet** ' i seçin. Tümleştirme, **SSO tümleştirmeleri** altında görüntülenmelidir.
 
 ### <a name="create-paylocity-test-user"></a>Paylocity test kullanıcısı oluşturma
 

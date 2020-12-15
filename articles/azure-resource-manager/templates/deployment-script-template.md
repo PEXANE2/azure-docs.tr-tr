@@ -5,16 +5,16 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 7566235cf92965d5d3de1ec7f40353430ec7e0c6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: c6d171717865fe4bdf3dfb30a6d24badd4fe29ca
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107150"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505571"
 ---
-# <a name="use-deployment-scripts-in-arm-templates-preview"></a>ARM şablonlarında dağıtım betikleri kullanma (Önizleme)
+# <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
 Azure Kaynak şablonlarında (ARM şablonları) Dağıtım betiklerini nasıl kullanacağınızı öğrenin. Adlı yeni bir kaynak türüyle `Microsoft.Resources/deploymentScripts` Kullanıcılar, şablon dağıtımlarında betikleri yürütebilir ve yürütme sonuçlarını gözden geçirebilir. Bu betikler, aşağıdaki gibi özel adımları gerçekleştirmek için kullanılabilir:
 
@@ -88,7 +88,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 ```json
 {
   "type": "Microsoft.Resources/deploymentScripts",
-  "apiVersion": "2019-10-01-preview",
+  "apiVersion": "2020-10-01",
   "name": "runPowerShellInline",
   "location": "[resourceGroup().location]",
   "kind": "AzurePowerShell", // or "AzureCLI"
@@ -441,18 +441,18 @@ Liste komut çıktısı şuna benzerdir:
 Dağıtım betik kaynağı dağıtım bilgilerini kaynak grubu düzeyinde ve abonelik düzeyinde REST API kullanarak edinebilirsiniz:
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>?api-version=2020-10-01
 ```
 
 ```rest
-/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/providers/microsoft.resources/deploymentScripts?api-version=2020-10-01
 ```
 
 Aşağıdaki örnek [Armclient](https://github.com/projectkudu/ARMClient)kullanır:
 
 ```azurepowershell
 armclient login
-armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2019-10-01-preview
+armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups/myrg/providers/microsoft.resources/deploymentScripts/myDeployementScript?api-version=2020-10-01
 ```
 
 Çıktı şuna benzer olacaktır:
@@ -510,7 +510,7 @@ armclient get /subscriptions/01234567-89AB-CDEF-0123-456789ABCDEF/resourcegroups
 Aşağıdaki REST API günlüğü döndürür:
 
 ```rest
-/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2019-10-01-preview
+/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/microsoft.resources/deploymentScripts/<DeploymentScriptResourceName>/logs?api-version=2020-10-01
 ```
 
 Yalnızca dağıtım betiği kaynakları silinmeden önce işe yarar.
@@ -560,7 +560,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Açıklama |
+| Hata kodu | Description |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |

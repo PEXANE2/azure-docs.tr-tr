@@ -4,13 +4,13 @@ description: Destek isteklerini görüntüleme, ileti gönderme, istek önem der
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.topic: how-to
-ms.date: 06/30/2020
-ms.openlocfilehash: 882dfaa802638efd98eaf6f12a33a77a9727adc2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 12/14/2020
+ms.openlocfilehash: 8110f87401da1352309fb55615093d49981c754d
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359073"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504823"
 ---
 # <a name="manage-an-azure-support-request"></a>Azure destek isteğini yönetme
 
@@ -119,9 +119,17 @@ Karşıya dosya yükleme seçeneğini kullandığınızda aşağıdaki yönergel
 | -           | -     | -           | -     | -        | -          | . ZX    |
 | -           | -     | -           | -     | -        | -          | . zzz    |
 
+## <a name="close-a-support-request"></a>Bir destek isteğini kapat
+
+Bir destek isteğini kapatmanız gerekirse, isteğin kapatılmasını isteyen [bir ileti gönderin](#send-a-message) .
+
 ## <a name="reopen-a-closed-request"></a>Kapatılan bir isteği yeniden açın
 
 Kapalı bir destek isteğini yeniden açmanız gerekiyorsa, isteği otomatik olarak yeniden açan [Yeni bir ileti](#send-a-message)oluşturun.
+
+## <a name="cancel-a-support-plan"></a>Bir destek planını iptal etme
+
+Bir destek planını iptal etmeniz gerekiyorsa bkz. [bir destek planını Iptal etme](../../cost-management-billing/manage/cancel-azure-subscription.md#cancel-a-support-plan).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

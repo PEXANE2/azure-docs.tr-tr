@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 4155cda1e1de6f15aefa6d5fc960988eba15068d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371977"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505452"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -118,7 +118,7 @@ Depolama hesabınızı seçili ağlardan erişime izin verecek şekilde yapılan
 Veri dışa aktarma kuralı, bir tablo kümesi için tek bir hedefe verilecek verileri tanımlar. Her hedef için bir kural oluşturabilirsiniz.
 
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -131,7 +131,7 @@ Yok
 Çalışma alanınızdaki tabloları görüntülemek için aşağıdaki CLı komutunu kullanın. İstediğiniz tabloları kopyalayıp veri dışa aktarma kuralına dahil etmek için yardımcı olabilir.
 
 ```azurecli
-az monitor log-analytics workspace table list -resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
+az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
 ```
 
 CLı kullanarak bir depolama hesabına veri dışarı aktarma kuralı oluşturmak için aşağıdaki komutu kullanın.
@@ -220,7 +220,7 @@ Aşağıda, Olay Hub 'ı adının sağlandığı bir olay hub 'ı için REST ist
 
 ## <a name="view-data-export-rule-configuration"></a>Veri dışa aktarma kuralı yapılandırmasını görüntüle
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -247,7 +247,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="disable-an-export-rule"></a>Dışarı aktarma kuralını devre dışı bırak
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -289,7 +289,7 @@ Content-type: application/json
 
 ## <a name="delete-an-export-rule"></a>Dışarı aktarma kuralını silme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 
@@ -316,7 +316,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 ## <a name="view-all-data-export-rules-in-a-workspace"></a>Çalışma alanındaki tüm veri dışarı aktarma kurallarını görüntüleme
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 Yok
 

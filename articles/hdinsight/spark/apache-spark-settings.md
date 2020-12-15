@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 231ab5cc93d98d7356d47472b7e160ddd3ade790
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504942"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
@@ -60,7 +60,7 @@ Kümede performans iyileştirmesi yapmadan önce geçerli HDInsight kümesi yap�
 
 Apache ambarı Web Kullanıcı arabirimi, anahtar kümesi kaynak kullanımı ölçümlerinin bir panosu ile görüntülenir.  Ambarı panosu, Apache Spark yapılandırmayı ve diğer yüklü Hizmetleri gösterir. Pano, Spark dahil olmak üzere yüklü hizmetler için bilgileri görüntülediğiniz bir **yapılandırma geçmişi** sekmesi içerir.
 
-Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi** ' ni seçin ve ardından **Spark2** ' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** `Spark` `Spark2` hizmet listesindeki (sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
+Apache Spark yapılandırma değerlerini görmek için yapılandırma **geçmişi**' ni seçin ve ardından **Spark2**' ı seçin.  Yapılandırma sekmesini **seçin ve ardından** `Spark` `Spark2` hizmet listesindeki (sürümünüze bağlı olarak) bağlantısını seçin.  Kümeniz için yapılandırma değerlerinin listesini görürsünüz:
 
 ![Spark yapılandırması](./media/apache-spark-settings/spark-configurations.png)
 
@@ -121,7 +121,7 @@ YARN, her Spark düğümündeki kapsayıcı tarafından kullanılan en fazla bel
 
 ![YARN Spark bellek yönetimi](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
-## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulama için parametreleri değiştirme
+## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook çalıştıran bir uygulama için parametreleri değiştirme
 
 HDInsight 'ta Spark kümeleri, varsayılan olarak bir dizi bileşen içerir. Bu bileşenlerin her biri, gerektiğinde geçersiz kılınabilen varsayılan yapılandırma değerlerini içerir.
 
@@ -133,12 +133,12 @@ HDInsight 'ta Spark kümeleri, varsayılan olarak bir dizi bileşen içerir. Bu 
 |Jupyter ve Apache Zeppelin Not defterleri|Spark kümeniz ile etkileşimde bulunmak için etkileşimli tarayıcı tabanlı kullanıcı arabirimi.|
 |ODBC sürücüsü|HDInsight 'ta Spark kümelerini Microsoft Power BI ve Tableau gibi iş zekası (BI) araçlarına bağlar.|
 
-Jupyter not defterinde çalışan uygulamalar için, `%%configure` komut defteri içinden yapılandırma değişikliği yapmak için komutunu kullanın. Bu yapılandırma değişiklikleri, Not defteri örneğinden çalıştırılan Spark işlerine uygulanır. İlk kod hücresini çalıştırmadan önce, uygulamanın başlangıcında bu değişiklikleri yapın. Değiştirilen yapılandırma, oluşturulması sırasında, Livy oturumuna uygulanır.
+Jupyter Notebook çalıştıran uygulamalar için, `%%configure` komut defteri içinden yapılandırma değişikliği yapmak için komutunu kullanın. Bu yapılandırma değişiklikleri, Not defteri örneğinden çalıştırılan Spark işlerine uygulanır. İlk kod hücresini çalıştırmadan önce, uygulamanın başlangıcında bu değişiklikleri yapın. Değiştirilen yapılandırma, oluşturulması sırasında, Livy oturumuna uygulanır.
 
 > [!NOTE]  
 > Uygulamanın sonraki bir aşamada yapılandırmayı değiştirmek için `-f` (zorlama) parametresini kullanın. Ancak, uygulamadaki tüm ilerleme durumu kaybedilir.
 
-Aşağıdaki kod, bir Jupyter not defterinde çalışan bir uygulama için yapılandırmanın nasıl değiştirileceğini gösterir.
+Aşağıdaki kod, Jupyter Notebook çalıştıran bir uygulama için yapılandırmanın nasıl değiştirileceğini gösterir.
 
 ```
 %%configure

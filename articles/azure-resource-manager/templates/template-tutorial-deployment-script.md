@@ -4,23 +4,21 @@ description: Azure Resource Manager şablonlarda (ARM şablonları) dağıtım b
 services: azure-resource-manager
 documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/25/2020
+ms.date: 12/14/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: cc19222cf1e610c6c65d7c721a54f9949bed70ae
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 13d2fbdc2337995a2aa8056cdd93e2c348e550f6
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931444"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504381"
 ---
-# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanma (Önizleme)
+# <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanın
 
 Azure Resource Manager şablonlarda (ARM şablonları) dağıtım betikleri kullanmayı öğrenin. Dağıtım betikleri, ARM şablonları tarafından yapılamadığını özel adımlar gerçekleştirmek için kullanılabilir. Örneğin, otomatik olarak imzalanan bir sertifika oluşturma.  Bu öğreticide, bir Azure Anahtar Kasası dağıtmak için bir şablon oluşturup, bir `Microsoft.Resources/deploymentScripts` sertifika oluşturmak ve ardından sertifikayı anahtar kasasına eklemek için aynı şablonda bir kaynak kullanırsınız. Dağıtım betiği hakkında daha fazla bilgi edinmek için bkz. [ARM şablonlarındaki Dağıtım betiklerini kullanma](./deployment-script-template.md).
 
@@ -178,7 +176,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
     ```json
     {
       "type": "Microsoft.Resources/deploymentScripts",
-      "apiVersion": "2019-10-01-preview",
+      "apiVersion": "2020-10-01",
       "name": "createAddCertificate",
       "location": "[resourceGroup().location]",
       "dependsOn": [
@@ -324,7 +322,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 ## <a name="debug-the-failed-script"></a>Başarısız komut dosyasında hata ayıkla
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure portalda](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. **RG** eklenmiş proje adıdır. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları* denir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
