@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893990"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510575"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarısı kuralları için Kaynak Yöneticisi şablonu örnekleri
 
@@ -343,7 +343,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolar
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolar
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -712,10 +712,10 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
 2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
 
 Örneğin, bu uyarı kuralı tarafından izlenen olası zaman serisinin bir birkaçı şunlardır:
-- Ölçüm = *işlemler* , responseType = *başarılı* , Apiname = *GetBlob*
-- Metric = *işlemler* , responseType = *başarılı* , Apiname = *PutBlob*
-- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *GetBlob*
-- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *PutBlob*
+- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
 
 ### <a name="template-file"></a>Şablon dosyası
 
@@ -875,7 +875,7 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -903,10 +903,10 @@ Bu örnekte, uyarı kuralı, **işlem** ölçümü Için **responseType** ve **a
 2. **Apiname** -farklı bir zaman serisi yalnızca **GetBlob** ve **PutBlob** boyut değerleri için izlenir.
 
 Örneğin, bu uyarı kuralı tarafından izlenen olası zaman serisinin bir birkaçı şunlardır:
-- Ölçüm = *işlemler* , responseType = *başarılı* , Apiname = *GetBlob*
-- Metric = *işlemler* , responseType = *başarılı* , Apiname = *PutBlob*
-- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *GetBlob*
-- Metric = *işlemler* , responseType = *sunucu zaman aşımı* , Apiname = *PutBlob*
+- Ölçüm = *işlemler*, responseType = *başarılı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *başarılı*, Apiname = *PutBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *GetBlob*
+- Metric = *işlemler*, responseType = *sunucu zaman aşımı*, Apiname = *PutBlob*
 
 >[!NOTE]
 > Dinamik eşikleri kullanan ölçüm uyarısı kuralları için şu anda birden çok ölçüt desteklenmiyor.

@@ -3,12 +3,12 @@ title: Hareket algılama, video Azure Media Services kaydetme
 description: Bu hızlı başlangıçta canlı video analizinin IoT Edge, canlı video akışındaki hareketleri tespit etmek ve video kliplerini Azure Media Services kaydetmek için nasıl kullanılacağı gösterilmektedir.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776485"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511901"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Hızlı başlangıç: hareketi algılama, videoyu Media Services kaydetme
 
@@ -16,7 +16,7 @@ Bu makalede, [olay tabanlı kayıt](event-based-video-recording-concept.md)için
 
 Bu makalede [Başlarken hızlı](get-started-detect-motion-emit-events-quickstart.md)başlangıcı hakkında daha fazla yer vardır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Azure IoT araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)ile makinenizde [Visual Studio Code](https://code.visualstudio.com/) .
@@ -44,10 +44,11 @@ Doğrudan yöntemleri çağırarak canlı video akışlarını çözümlemek iç
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Hareket olaylarına göre kıymetlere olay tabanlı video kaydı" i arayın ve etkinleştirin.
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Hareket olaylarına göre kıymetlere olay tabanlı video kaydı":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
 
 ### <a name="invoke-graphtopologylist"></a>Graphtopologyılist komutunu çağır
 Bu adım modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-graph-topologies-and-instances) numaralandırır.
@@ -58,7 +59,7 @@ Bu adım modüldeki tüm [grafik topolojilerini](media-graph-concept.md#media-gr
     
 ```
 {
-    "@apiVersion" : "1.0"
+    "@apiVersion" : "2.0"
 }
 ```
 
@@ -83,7 +84,7 @@ Graphtopologyılist ' i çağırmak için özetlenen adımlarla aynı adımları
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "EVRtoAssetsOnMotionDetection",
     "properties": {
       "description": "Event-based video recording to Assets based on motion events",
@@ -330,7 +331,7 @@ Döndürülen durum 201 ' dir ve yeni bir Graph topolojisi oluşturulduğunu gö
 ```
 
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```
@@ -473,7 +474,7 @@ Ardından, yukarıdaki grafik topolojisine başvuran bir grafik örneği oluştu
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2",
     "properties" : {
         "topologyName" : "EVRtoAssetsOnMotionDetection",
@@ -555,7 +556,7 @@ Oluşturduğunuz medya grafiği, hareketi algılamak için hareket algılama iş
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -579,7 +580,7 @@ Yanıt yükünde 200 durum kodu, grafik örneğinin başarıyla etkinleştirildi
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -758,7 +759,7 @@ Aşağıdaki yük ile Graphınstancedeactivate doğrudan metodunu çağırın:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -786,7 +787,7 @@ Aşağıdaki yük ile Graphınstancedelete doğrudan yöntemini çağır
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-2"
 }
 ```
@@ -810,7 +811,7 @@ Aşağıdaki yük ile GraphTopologyDelete doğrudan metodunu çağırın:
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "EVRtoAssetsOnMotionDetection"
 }
 ```

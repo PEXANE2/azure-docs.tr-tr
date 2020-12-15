@@ -1,19 +1,19 @@
 ---
 title: Azure eşleştirilmiş bölgeleri kullanarak olağanüstü durum kurtarma & iş sürekliliği sağlama
 description: Azure bölgesel eşleştirme kullanarak uygulama dayanıklılığı sağlayın
-author: barbkess
-manager: barbkess
+author: martinekuan
+manager: martinekuan
 ms.service: multiple
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.author: barbkess
+ms.author: martinek
 ms.custom: references_regions
-ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 3310d4a7d86db9dee7d5f71fc9410545817886f3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539065"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511238"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Eşleştirilmiş Azure Bölgeleri
 
@@ -64,7 +64,7 @@ Hayır. Müşteriler, Azure 'un bölgesel çiftlerine bağlı kalmadan dayanıkl
 | Japonya |Doğu Japonya |Batı Japonya |
 | Güney Kore |Güney Kore - Orta |Güney Kore - Güney |
 | Kuzey Amerika |Doğu ABD |Batı ABD |
-| Kuzey Amerika |Doğu ABD 2 |Orta ABD |
+| Kuzey Amerika |Doğu ABD 2 |Central US |
 | Kuzey Amerika |Orta Kuzey ABD |Orta Güney ABD |
 | Kuzey Amerika |Batı ABD 2 |Orta Batı ABD |
 | Norveç | Norveç Doğu | Norveç Batı |

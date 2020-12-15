@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: a02d51d66b9d2b8bf3c08d4515713ecb062e0c8e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400225"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510473"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama bir sorgu oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "97400225"
 
 Sorgu oluşturmak için bir araç veya API gerekir. Aşağıdaki önerilerden herhangi biri, test ve üretim iş yükleri için yararlıdır.
 
-| Yöntem | Description |
+| Yöntem | Açıklama |
 |-------------|-------------|
 | Portal| [Arama Gezgini (portal)](search-explorer.md) , temel arama hizmetindeki dizinlerde sorgular çalıştıran Azure Portal bir sorgu arabirimidir. Portal, arka plan, öneri veya belge [arama işlemleri için](/rest/api/searchservice/search-documents) arka planda REST API çağrısı yapar.<br/><br/> Önizleme dahil olmak üzere herhangi bir dizini ve REST API sürümünü seçebilirsiniz. Sorgu dizesi, tüm sorgu parametreleri (filtre, seçme, searchFields vb.) desteğiyle basit veya tam sözdizimini kullanabilir. Portalda, bir dizini açtığınızda, alan özniteliklerine kolay erişim için yan yana sekmelerde JSON tanımının yanı sıra arama Gezgini ile çalışabilirsiniz. Sorguları test ederken hangi alanların aranabilir, sıralanabilir, filtrelenebilir ve çok yönlü tablo olduğunu denetleyin. <br/>Erken araştırma, test ve doğrulama için önerilir. [Daha fazla bilgi edinin.](search-explorer.md) |
 | Web testi araçları| [Postman veya Visual Studio Code](search-get-started-rest.md) , bir arama belgesi isteğini ve diğer tüm ISTEKLERI, bekleyen bir şekilde [formülleyen](/rest/api/searchservice/search-documents) güçlü seçimlerdir. REST API 'Leri, Azure Bilişsel Arama 'daki olası her bir programlı işlemi destekler ve Postman veya Visual Studio Code gibi bir araç kullandığınızda, özelliğin kod içinde yatırım yapmadan önce nasıl çalıştığını anlamak için istekleri etkileşimli bir şekilde verebilirsiniz. Azure portal bir Web testi aracı, katkıda bulunan veya yönetici haklarına sahip olmadığınız durumlarda iyi bir seçenektir. Bir arama URL 'SI ve sorgu API 'SI anahtarınız olduğu sürece, mevcut bir dizine yönelik sorguları çalıştırmak için araçları kullanabilirsiniz. |
@@ -33,7 +33,7 @@ Sorgu oluşturmak için bir araç veya API gerekir. Aşağıdaki önerilerden he
 
 Arama İstemcisi arama hizmetinde kimlik doğrular, istek gönderir ve yanıtları işler. Kullandığınız araç veya API 'yi ne olursa olsun, bir arama istemcisinde aşağıdakiler olmalıdır:
 
-| Özellikler | Description |
+| Özellikler | Açıklama |
 |------------|-------------|
 | Uç Nokta | Bir arama hizmeti şu biçimde bir URL adreslenebilir: `https://[service-name].search.windows.net` . |
 | API erişim anahtarı (yönetici veya sorgu) | Arama hizmetine yönelik isteğin kimliğini doğrular. |
@@ -76,31 +76,7 @@ Sorgunuz tam metin arama ise, arama parametresinin içeriğini işlemek için bi
 
 İsteğe eklediğinizde etkinleştirilen [tam Lucene sorgu söz dizimi](query-Lucene-syntax.md#bkmk_syntax), `queryType=full` [Apache Lucene ayrıştırıcısına](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)dayalıdır.
 
-Tam sözdizimi, benzer arama, joker karakter araması, yakınlık araması ve normal ifadeler gibi gelişmiş sorgular oluşturabilmeniz için daha fazla işleçle basit sözdiziminin bir uzantısıdır. Aşağıdaki örneklerde nokta: aynı sorgu, ancak farklı sonuçlar sağlayan farklı **`queryType`** ayarlarla gösterilmektedir. İlk basit sorguda, `^3` sonrasında `historic` arama teriminin bir parçası olarak işlenir. Bu sorgu için en üst dereceli sonuç, açıklamasında *okyanus* olan "Marquis plaza & paketleriniz" dır.
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "simple",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
-
-Tam Lucene ayrıştırıcısı kullanılarak aynı sorgu, `^3` alan terimi rampa olarak yorumlar. Çözümleyicileri değiştirmek, en üste *geçen dönemi içeren* sonuçlarla birlikte derecelendirmeyi değiştirir.
-
-```http
-POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
-{
-    "count": true,
-    "queryType": "full",
-    "search": "ocean historic^3",
-    "searchFields": "Description",
-    "select": "HotelId, HotelName, Tags, Description",
-}
-```
+Tam sözdizimi ve basit sözdizimi, her ikisi de aynı öneki ve Boole işlemlerini destekledikleri, ancak tam sözdizimi daha fazla işleç sağladığı ölçüde çakışıyor. Tam olarak, Boolean ifadelerine yönelik daha fazla işleç ve benzer arama, joker karakter arama, yakınlık araması ve normal ifadeler gibi gelişmiş sorgular için daha fazla işleç vardır.
 
 ## <a name="choose-query-methods"></a>Sorgu yöntemlerini seçin
 

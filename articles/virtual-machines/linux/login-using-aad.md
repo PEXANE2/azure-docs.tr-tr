@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: sandeo
-ms.openlocfilehash: 4c11e8c9cbd767bb95e094535a8a6cd7c8fe84fc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b4fc6b9facc79db109c5ce5be09576b16a2abdc7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340892"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510898"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Önizleme: Azure Active Directory kimlik doğrulaması kullanarak Azure 'da Linux sanal makinesinde oturum açma
 
@@ -119,7 +119,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) ilkesi, VM 'de kimlerin oturum 
 - **Sanal makine Kullanıcı oturumu açma**: Bu role atanmış kullanıcılar, normal kullanıcı ayrıcalıklarına sahip bir Azure sanal makinesinde oturum açabilir.
 
 > [!NOTE]
-> Bir kullanıcının SSH üzerinden VM 'de oturum açmasına izin vermek için, *Sanal Makine Yöneticisi oturum açma* veya *sanal makine Kullanıcı oturum açma* rolünü atamanız gerekir. Bir VM için atanan *sahip* veya *katkıda* bulunan rollerinin bulunduğu bir Azure KULLANıCıSıNıN, sanal makinede SSH üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur.
+> Bir kullanıcının SSH üzerinden VM 'de oturum açmasına izin vermek için, *Sanal Makine Yöneticisi oturum açma* veya *sanal makine Kullanıcı oturum açma* rolünü atamanız gerekir. Sanal Makine Yöneticisi oturum açma ve sanal makine Kullanıcı oturum açma rolleri dataActions kullanır ve bu nedenle yönetim grubu kapsamında atanamaz. Şu anda bu roller yalnızca abonelikte, kaynak grubunda veya kaynak kapsamında atanabilir. Bir VM için atanan *sahip* veya *katkıda* bulunan rollerinin bulunduğu bir Azure KULLANıCıSıNıN, sanal makinede SSH üzerinden oturum açma ayrıcalıkları otomatik olarak yoktur. 
 
 Aşağıdaki örnek, geçerli Azure kullanıcılarınız için *Sanal Makine Yöneticisi oturum açma* rolünü VM 'ye atamak için [az role atama Create](/cli/azure/role/assignment#az-role-assignment-create) ' i kullanır. Etkin Azure hesabınızın Kullanıcı adı [az Account Show](/cli/azure/account#az-account-show)komutuyla alınır ve *kapsam* , [az VM Show](/cli/azure/vm#az-vm-show)ile önceki bir adımda oluşturulan VM 'ye ayarlanır. Kapsam Ayrıca bir kaynak grubuna veya abonelik düzeyine atanabilir ve normal Azure RBAC devralma izinleri geçerlidir. Daha fazla bilgi için bkz. [Azure RBAC](../../role-based-access-control/overview.md)
 
@@ -138,7 +138,12 @@ az role assignment create \
 
 Azure RBAC kaynaklarına erişimi yönetmek için Azure RBAC kullanma hakkında daha fazla bilgi için bkz. [Azure CLI](../../role-based-access-control/role-assignments-cli.md), [Azure Portal](../../role-based-access-control/role-assignments-portal.md)veya [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)kullanma.
 
-Ayrıca, belirli bir kullanıcının Linux sanal makinesinde oturum açması için çok faktörlü kimlik doğrulaması gerektirecek şekilde Azure AD 'yi yapılandırabilirsiniz. Daha fazla bilgi için bkz. [Bulutta Azure AD Multi-Factor Authentication kullanmaya başlama](../../active-directory/authentication/howto-mfa-getstarted.md).
+## <a name="using-conditional-access"></a>Koşullu erişim kullanma
+
+Azure AD oturum açma özelliği ile etkinleştirilen Azure 'da Linux VM 'lerine erişimi yetkilendirmeden önce Multi-Factor Authentication veya Kullanıcı oturum açma riski denetimi gibi koşullu erişim ilkelerini uygulayabilirsiniz. Koşullu erişim ilkesini uygulamak için, bulut uygulamaları veya eylemler atama seçeneğinden "Azure Linux VM oturum açma" uygulamasını seçmeniz ve ardından, bir koşul olarak oturum açma riskini ve/veya çok faktörlü kimlik doğrulamasının izin verme erişim denetimi olarak kullanılmasını sağlamanız gerekir. 
+
+> [!WARNING]
+> Kullanıcı başına etkin/Zorlanmış Azure AD Multi-Factor Authentication, VM 'de oturum açma için desteklenmez.
 
 ## <a name="log-in-to-the-linux-virtual-machine"></a>Linux sanal makinesinde oturum açma
 
@@ -195,6 +200,8 @@ Using keyboard-interactive authentication.
 Access denied:  to sign-in you be assigned a role with action 'Microsoft.Compute/virtualMachines/login/action', for example 'Virtual Machine User Login'
 Access denied
 ```
+> [!NOTE]
+> Azure rol atamaları ile ilgili sorunlarla karşılaşırsanız bkz. [Azure RBAC sorunlarını giderme](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
 
 ### <a name="continued-ssh-sign-in-prompts"></a>Devam eden SSH oturum açma istemleri
 

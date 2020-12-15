@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 7fe788677a084575d41f2f28154b74b28ea9d3d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955744"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510949"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC Uzantısı
 
@@ -27,7 +27,7 @@ ms.locfileid: "94955744"
 
 Windows için PowerShell DSC Uzantısı Microsoft tarafından yayımlanır ve desteklenir. Uzantı, bir Azure VM 'de PowerShell DSC yapılandırmasını karşıya yükler ve uygular. DSC Uzantısı, VM 'de alınan DSC yapılandırmasını uygulamak için PowerShell DSC 'ye çağrı görür. Bu belgede, Windows için DSC sanal makine uzantısı için desteklenen platformlar, konfigürasyonlar ve dağıtım seçenekleri ayrıntılı olarak bulunmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="operating-system"></a>İşletim sistemi
 
@@ -74,7 +74,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
         "advancedOptions": {
             "forcePullAndApply": false,
             "downloadMappings": {
-                "specificDependencyKey": "https://myCustomDependencyLocation"
+             "specificDependencyKey": "https://myCustomDependencyLocation"
             }
         } 
     },
@@ -98,16 +98,16 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
-| apiVersion | 2018-10-01 | tarih |
+| apiVersion | 2018-10-01 | date |
 | yayımcı | Microsoft. PowerShell. DSC | string |
 | tür | DSC | string |
 | typeHandlerVersion | 2,77 | int |
 
 ### <a name="settings-property-values"></a>Ayarlar özellik değerleri
 
-| Name | Veri Türü | Açıklama
+| Ad | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | Settings. wmfVersion | string | Sanal makinenize yüklenmesi gereken Windows Management Framework sürümünü belirtir. Bu özelliğin ' en son ' olarak ayarlanması, WMF 'nin en güncel sürümünü yükler. Bu özellik için geçerli olası değerler şunlardır. ' 4,0 ', ' 5,0 ' ve ' Latest '. Bu olası değerler güncelleştirmelere tabidir. Varsayılan değer ' Latest '. |
 | settings.configacation. URL | string | DSC yapılandırma ZIP dosyanızın indirileceği URL konumunu belirtir. Belirtilen URL erişim için bir SAS belirteci gerektiriyorsa, protectedSettings.configurationUrlSasToken özelliğini SAS belirtecinizin değerine ayarlamanız gerekir. settings.configuration. Script ve/veya settings.configuration. Function tanımlanırsa bu özellik gereklidir.
@@ -121,7 +121,7 @@ Aşağıdaki JSON, bir Azure Resource Manager şablonunda DSC uzantısının Aya
 
 ### <a name="protected-settings-property-values"></a>Korumalı ayarlar özellik değerleri
 
-| Name | Veri Türü | Açıklama
+| Ad | Veri Türü | Açıklama
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | DSC yapılandırmanıza geçirmek istediğiniz parametreleri tanımlar. Bu özellik şifrelenir. |
 | protectedSettings.configurationUrlSasToken | string | Configuration. URL tarafından tanımlanan URL 'ye erişmek için SAS belirtecini belirtir. Bu özellik şifrelenir. |

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: c8a4b6998d1471a79dd789ed6528e22b07f2015c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 95a4d00a27a0da363561f469b4c5e9e2ad16463c
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540984"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510507"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>App Service Ortamınızı zorlamalı tünel ile yapılandırma
 
@@ -95,7 +95,7 @@ Azure Depolama’ya gidenler dışında, ASE’nizden çıkan tüm giden trafiğ
 
 3. App Service Ortamınızdan İnternet’e giden tüm trafik için kullanılacak adresleri alın. Şirket içi trafiği yönlendiriyorsanız bu adresler NAT veya ağ geçidi IP’lerinizdir. App Service Ortamı giden trafiğini bir NVA üzerinden yönlendirmek istiyorsanız, çıkış adresi NVA’nın genel IP’sidir.
 
-4. _Mevcut bir App Service ortamı çıkış adreslerini ayarlamak için:_ Resources.azure.com adresine gidin ve abonelik/ \<subscription id> /ResourceGroups//Providers/Microsoft.Web/hostingenvironments/menüsüne gidin adresine gidin \<ase resource group> \<ase name> . Bundan sonra App Service Ortamınızı tanımlayan JSON dosyasını görebilirsiniz. Üst kısımda **read/write** ifadesinin gösterildiğinden emin olun. **Düzenle** ’yi seçin. Ekranı en alta kadar kaydırın. **null** olan **userWhitelistedIpRanges** değerini aşağıdakine benzer bir değerle değiştirin. Çıkış adres aralığı olarak ayarlamak istediğiniz adresleri kullanın. 
+4. _Mevcut bir App Service ortamı çıkış adreslerini ayarlamak için:_ Resources.azure.com adresine gidin ve abonelik/ \<subscription id> /ResourceGroups//Providers/Microsoft.Web/hostingenvironments/menüsüne gidin adresine gidin \<ase resource group> \<ase name> . Bundan sonra App Service Ortamınızı tanımlayan JSON dosyasını görebilirsiniz. Üst kısımda **read/write** ifadesinin gösterildiğinden emin olun. **Düzenle**’yi seçin. Ekranı en alta kadar kaydırın. **null** olan **userWhitelistedIpRanges** değerini aşağıdakine benzer bir değerle değiştirin. Çıkış adres aralığı olarak ayarlamak istediğiniz adresleri kullanın. 
 
     ```json
     "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"]
@@ -103,7 +103,7 @@ Azure Depolama’ya gidenler dışında, ASE’nizden çıkan tüm giden trafiğ
 
    Üst kısımdaki **PUT** öğesini seçin. Bu seçenek, App Service Ortamınızda bir ölçeklendirme işlemi başlatır ve güvenlik duvarını ayarlar.
 
-_Çıkış adresleri ile ASE’nizi oluşturmak için_ : [Bir şablon ile App Service Ortamı oluşturma][template] bölümündeki yönergeleri izleyin ve uygun şablonu seçin.  "Özellikler" bloğunda değil, azuredeploy.json dosyasındaki "kaynaklar" bölümünü düzenleyin ve **userWhitelistedIpRanges** için değerlerinizi içeren bir satır ekleyin.
+_Çıkış adresleri ile ASE’nizi oluşturmak için_: [Bir şablon ile App Service Ortamı oluşturma][template] bölümündeki yönergeleri izleyin ve uygun şablonu seçin.  "Özellikler" bloğunda değil, azuredeploy.json dosyasındaki "kaynaklar" bölümünü düzenleyin ve **userWhitelistedIpRanges** için değerlerinizi içeren bir satır ekleyin.
 
 ```json
 "resources": [
@@ -131,7 +131,7 @@ _Çıkış adresleri ile ASE’nizi oluşturmak için_ : [Bir şablon ile App Se
 
 Bu değişiklikler, doğrudan ASE’de Azure Depolama’ya trafiği gönderir ve ASE VIP’si dışında ek adreslerden Azure SQL’e erişime izin verir.
 
-   ![SQL beyaz listesi ile zorlamalı tünel][3]
+   ![SQL izin ile Zorlamalı tünel][3]
 
 ## <a name="preventing-issues"></a>Sorunları önleme ##
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 3a188189b39311734a25a2fc98ea78a62bbe0cff
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 621bbac6bc9ff3cb147110942060c8268fd86989
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108850"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511187"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Öğretici: Microsoft tarafından JıRA SAML SSO 'SU ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -40,7 +40,7 @@ Azure AD tümleştirmesini Microsoft tarafından JıRA SAML SSO 'SU ile yapılan
 - JIRA Core ve Software 6,4 for 8.14.0 veya JIRA Service Desk 3,0 to 4.11.1 Windows 64-bit sürümünde yüklenip yapılandırılmalıdır
 - JıRA sunucusu HTTPS etkin
 - Aşağıdaki bölümde, JIRA eklentisinin desteklenen sürümlerinin bahsedildiğini aklınızda bulabilirsiniz.
-- JıRA sunucusuna, kimlik doğrulaması için özellikle Azure AD oturum açma sayfasında internet 'ten erişilebilir ve bu belirteci Azure AD 'den alabilmelidir
+- JıRA sunucusuna, özellikle kimlik doğrulaması için Azure AD oturum açma sayfasında Internet üzerinden erişilebilir ve belirteci Azure AD 'den alabilmelidir
 - Yönetim kimlik bilgileri JIRA 'da ayarlanır
 - WebSudo, JIRA 'da devre dışı
 - JIRA sunucu uygulamasında oluşturulan test kullanıcısı

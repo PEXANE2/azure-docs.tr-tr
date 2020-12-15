@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3ea231258f7a60ce90ec119803b5abc8b6e525fe
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94561140"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510626"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Değişiklik izleme bilgilerini kullanarak Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme Azure portal
 
@@ -69,14 +69,14 @@ Bu öğreticide, aşağıdaki iki işlemi gerçekleştiren iki işlem hattı olu
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 * **Azure SQL veritabanı**. Veritabanını **kaynak** veri deposu olarak kullanabilirsiniz. Azure SQL veritabanında bir veritabanınız yoksa, oluşturma adımları için [Azure SQL veritabanı 'nda veritabanı oluşturma](../azure-sql/database/single-database-create-quickstart.md) makalesine bakın.
 * **Azure depolama hesabı**. Blob depolamayı **Havuz** veri deposu olarak kullanırsınız. Azure depolama hesabınız yoksa, oluşturma adımları için [Depolama hesabı oluşturma](../storage/common/storage-account-create.md) makalesine bakın. **adftutorial** adlı bir kapsayıcı oluşturun. 
 
 ### <a name="create-a-data-source-table-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veri kaynağı tablosu oluşturma
 
 1. **SQL Server Management Studio** başlatın ve SQL veritabanı 'na bağlanın.
-2. **Sunucu Gezgini** ’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu** ’yu seçin.
+2. **Sunucu Gezgini**’nde **veritabanınıza** sağ tıklayın ve **Yeni Sorgu**’yu seçin.
 3. Veri kaynağı deposu olarak adlandırılan bir tablo oluşturmak için aşağıdaki SQL komutunu veritabanınızda çalıştırın `data_source_table` .  
 
     ```sql
@@ -140,8 +140,8 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 
     BEGIN
 
-        UPDATE table_store_ChangeTracking_version
-        SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
+    UPDATE table_store_ChangeTracking_version
+    SET [SYS_CHANGE_VERSION] = @CurrentTrackingVersion
     WHERE [TableName] = @TableName
 
     END    
@@ -156,7 +156,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 ## <a name="create-a-data-factory"></a>Veri fabrikası oluşturma
 
 1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda Data Factory kullanıcı arabirimi yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenmektedir.
-1. Sol taraftaki menüden veri ve analiz **kaynak oluştur** ' u seçin  >  **Data + Analytics**  >  **Data Factory** :
+1. Sol taraftaki menüden veri ve analiz **kaynak oluştur**' u seçin  >    >  **Data Factory**:
 
    ![“Yeni” bölmesinde Data Factory seçimi](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -170,14 +170,14 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 3. Veri fabrikasını oluşturmak istediğiniz Azure **aboneliğini** seçin.
 4. **Kaynak grubu** için aşağıdaki adımlardan birini yapın:
 
-      - **Var olanı kullan** ’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
-      - **Yeni oluştur** ’u seçin ve bir kaynak grubunun adını girin.   
+      - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin.
+      - **Yeni oluştur**’u seçin ve bir kaynak grubunun adını girin.   
          
         Kaynak grupları hakkında daha fazla bilgi için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md).  
 4. **Sürüm** için **V2 (Önizleme)** öğesini seçin.
 5. Data factory için **konum** seçin. Açılan listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan verileri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (HDInsight vb.) başka bölgelerde olabilir.
-6. **Panoya sabitle** ’yi seçin.     
-7. **Oluştur** 'a tıklayın.      
+6. **Panoya sabitle**’yi seçin.     
+7. **Oluştur**’a tıklayın.      
 8. Panoda şu kutucuğu ve üzerinde şu durumu görürsünüz: **Veri fabrikası dağıtılıyor**.
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -195,17 +195,17 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
 ### <a name="create-azure-storage-linked-service"></a>Azure Depolama bağlı hizmeti oluşturma.
 Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 
-1. **Bağlantılar** ’a ve sonra **+ Yeni** ’ye tıklayın.
+1. **Bağlantılar**’a ve sonra **+ Yeni**’ye tıklayın.
 
    ![Yeni bağlantı düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
-2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama** ’yı seçip  **Devam** ’a tıklayın.
+2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure Blob Depolama**’yı seçip **Devam**’a tıklayın.
 
    ![Azure Blob Depolama’yı seçin](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
 3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** için **AzureStorageLinkedService** adını girin.
     2. **Depolama hesabı adı** Için Azure depolama hesabınızı seçin.
-    3. **Kaydet** ’e tıklayın.
+    3. **Kaydet**’e tıklayın.
 
    ![Azure Depolama Hesabı ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -213,8 +213,8 @@ Bu adımda, Azure Depolama Hesabınızı veri fabrikasına bağlarsınız.
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti oluşturun.
 Bu adımda, veritabanınızı veri fabrikasına bağlarsınız.
 
-1. **Bağlantılar** ’a ve sonra **+ Yeni** ’ye tıklayın.
-2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı** ’nı seçip  **Devam** ’a tıklayın.
+1. **Bağlantılar**’a ve sonra **+ Yeni**’ye tıklayın.
+2. **New Linked Service** (Yeni Bağlı Hizmet) penceresinde **Azure SQL Veritabanı**’nı seçip **Devam**’a tıklayın.
 3. **Yeni Bağlı Hizmet** penceresinde aşağıdaki adımları izleyin:
 
     1. **Ad** alanına **AzureSqlDatabaseLinkedService** adını girin.
@@ -222,8 +222,8 @@ Bu adımda, veritabanınızı veri fabrikasına bağlarsınız.
     3. **Veritabanı adı** alanı için veritabanınızı seçin.
     4. **Kullanıcı adı** alanına kullanıcının adını girin.
     5. **Parola** alanına kullanıcının parolasını girin.
-    6. Bağlantıyı test etmek için **Bağlantıyı sına** ’ya tıklayın.
-    7. Bağlı hizmeti kaydetmek için **Kaydet** ’e tıklayın.
+    6. Bağlantıyı test etmek için **Bağlantıyı sına**’ya tıklayın.
+    7. Bağlı hizmeti kaydetmek için **Kaydet**’e tıklayın.
 
        ![Azure SQL Veritabanı bağlı hizmet ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-sql-database-linked-service-settings.png)
 
@@ -233,10 +233,10 @@ Bu adımda veri kaynağını, veri hedefini ve SYS_CHANGE_VERSION depolanacağı
 ### <a name="create-a-dataset-to-represent-source-data"></a>Kaynak verileri temsil eden bir veri kümesi oluşturma
 Bu adımda, kaynak verileri temsil etmek için bir veri kümesi oluşturursunuz.
 
-1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi** ’ne tıklayın.
+1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi**’ne tıklayın.
 
    ![Yeni Veri Kümesi menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
-2. **Azure SQL Veritabanı** ’nı seçip **Son** ’a tıklayın.
+2. **Azure SQL Veritabanı**’nı seçip **Son**’a tıklayın.
 
    ![Kaynak veri kümesi türü - Azure SQL Veritabanı](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-sql-database.png)
 3. Veri kümesini yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, veri kümesini ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, veri kümesinin adını **SourceDataset** olarak değiştirin.
@@ -252,10 +252,10 @@ Bu adımda, kaynak verileri temsil etmek için bir veri kümesi oluşturursunuz.
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>Havuz veri deposuna kopyalanan verileri temsil eden bir veri kümesi oluşturun.
 Bu adımda, kaynak veri deposundan kopyalanan verileri temsil etmek için bir veri kümesi oluşturursunuz. Önkoşulların bir parçası olarak, Azure Blob Depolama’nızda adftutorial kapsayıcısını oluşturdunuz. Henüz yoksa kapsayıcıyı oluşturun (veya) var olan bir kapsayıcının adına ayarlayın. Bu öğreticide çıktı dosyasının adı `@CONCAT('Incremental-', pipeline().RunId, '.txt')` ifadesi kullanılarak dinamik olarak oluşturulur.
 
-1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi** ’ne tıklayın.
+1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi**’ne tıklayın.
 
    ![Yeni Veri Kümesi menüsü](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
-2. **Azure Blob Depolama** ’yı seçip **Son** ’a tıklayın.
+2. **Azure Blob Depolama**’yı seçip **Son**’a tıklayın.
 
    ![Havuz veri kümesi türü - Azure Blob Depolama](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-type.png)
 3. Veri kümesini yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, veri kümesini ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, veri kümesinin adını **SinkDataset** olarak değiştirin.
@@ -265,15 +265,15 @@ Bu adımda, kaynak veri deposundan kopyalanan verileri temsil etmek için bir ve
 
     1. **Bağlı hizmet** için **AzureStorageLinkedService** hizmetini seçin.
     2. **filePath** yolunun **klasör** bölümü için **adftutorial/incchgtracking** yolunu girin.
-    3. **\@ Concat (' artımlı-', işlem hattı () girin. RunId, '. txt ')** FilePath **dosyasının dosya** bölümü. **filePath**  
+    3. **\@ Concat (' artımlı-', işlem hattı () girin. RunId, '. txt ')** FilePath **dosyasının dosya** bölümü.   
 
        ![Havuz veri kümesi - bağlantı](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
 ### <a name="create-a-dataset-to-represent-change-tracking-data"></a>Değişiklik izleme verilerini temsil eden bir veri kümesi oluşturma
 Bu adımda değişiklik izleme sürümünü depolamak için bir veri kümesi oluşturacaksınız.  Önkoşulların bir parçası olarak table_store_ChangeTracking_version tablosunu oluşturdunuz.
 
-1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi** ’ne tıklayın.
-2. **Azure SQL Veritabanı** ’nı seçip **Son** ’a tıklayın.
+1. Ağaç görünümünde **+ (artı)** seçeneğine ve sonra **Veri Kümesi**’ne tıklayın.
+2. **Azure SQL Veritabanı**’nı seçip **Son**’a tıklayın.
 3. Veri kümesini yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, veri kümesini ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, veri kümesinin adını **ChangeTrackingDataset** olarak değiştirin.
 4. **Bağlantı** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
@@ -283,25 +283,25 @@ Bu adımda değişiklik izleme sürümünü depolamak için bir veri kümesi olu
 ## <a name="create-a-pipeline-for-the-full-copy"></a>Tam kopya için işlem hattı oluşturma
 Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef veri deposuna (Azure Blob Depolama) kopyalayan bir kopyalama etkinliğine sahip bir işlem hattı oluşturursunuz.
 
-1. Sol bölmedeki **+ (artı)** seçeneğine tıklayıp **İşlem Hattı** ’na tıklayın.
+1. Sol bölmedeki **+ (artı)** seçeneğine tıklayıp **İşlem Hattı**’na tıklayın.
 
     ![Ekran görüntüsü, bir veri fabrikası için işlem hattı seçeneğini gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. İşlem hattını yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, işlem hattını ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, işlem hattının adını **FullCopyPipeline** olarak değiştirin.
 
     ![Ekran görüntüsünde bir ada girilen bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
-3. **Etkinlikler** araç kutusunda **Veri Akışı** ’nı genişletin, **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın ve adı **FullCopyActivity** olarak ayarlayın.
+3. **Etkinlikler** araç kutusunda **Veri Akışı**’nı genişletin, **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın ve adı **FullCopyActivity** olarak ayarlayın.
 
     ![Tam kopyalama etkinliği adı](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
-4. **Kaynak** sekmesine geçin ve **Kaynak Veri Kümesi** alanı için **SourceDataset** ’i seçin.
+4. **Kaynak** sekmesine geçin ve **Kaynak Veri Kümesi** alanı için **SourceDataset**’i seçin.
 
     ![Kopyalama etkinliği - kaynak](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png)
-5. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **SinkDataset** ’i seçin.
+5. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **SinkDataset**’i seçin.
 
     ![Kopyalama etkinliği - havuz](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
-6. İşlem hattı tanımını doğrulamak için araç çubuğunda **Doğrula** ’ya tıklayın. Doğrulama hatası olmadığından emin olun. **>>** seçeneğine tıklayarak **İşlem Hattı Doğrulama Raporu** ’nu kapatın.
+6. İşlem hattı tanımını doğrulamak için araç çubuğunda **Doğrula**’ya tıklayın. Doğrulama hatası olmadığından emin olun. **>>** seçeneğine tıklayarak **İşlem Hattı Doğrulama Raporu**’nu kapatın.
 
     ![İşlem hattını doğrulama](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
-7. Varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) yayımlamak için **Yayımla** ’ya tıklayın. Yayımlama başarılı olana kadar bekleyin.
+7. Varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) yayımlamak için **Yayımla**’ya tıklayın. Yayımlama başarılı olana kadar bekleyin.
 
     ![Ekran görüntüsü, tümünü Yayımla düğmesi olarak adlandırılan veri fabrikasını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. **Başarıyla yayımlandı** iletisini görene kadar bekleyin.
@@ -313,13 +313,13 @@ Bu adımda, kaynak veri deposundaki (Azure SQL Veritabanı) tüm verileri hedef 
 
 
 ### <a name="run-the-full-copy-pipeline"></a>Tam kopyalama işlem hattını çalıştırma
-İşlem hattının araç çubuğunda **Tetikle** ’ye tıklayıp **Şimdi Tetikle** ’ye tıklayın.
+İşlem hattının araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın.
 
 ![Ekran görüntüsü, tetikleyici menüsünden şimdi Tetikle seçeneğinin seçili olduğunu gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>Tam kopyalama işlem hattını izleme
 
-1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile** ’ye tıklayın. Eylemler sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
+1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile**’ye tıklayın. Eylemler sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
 
     ![Ekran görüntüsü bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
 2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster** bağlantısına tıklayın. İşlem hattında yalnızca bir etkinlik olduğundan listede tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısına tıklayın.
@@ -358,27 +358,27 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ```
 
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>Değişiklik kopyası için bir işlem hattı oluşturma
-Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu düzenli olarak çalıştırırsınız. **Arama etkinlikleri** , eski ve yeni SYS_CHANGE_VERSION değerlerini Azure SQL Veritabanı’ndan alır ve bunu kopyalama etkinliğine geçirir. **Kopyalama etkinliği** , SYS_CHANGE_VERSION değerleri arasındaki eklenen/güncelleştirilen/silinen verileri Azure SQL Veritabanı’ndan Azure Blob Depolama’ya kopyalar. **Saklı yordam etkinliği** , SYS_CHANGE_VERSION değerini bir sonraki işlem hattı çalıştırmasında güncelleştirir.
+Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu düzenli olarak çalıştırırsınız. **Arama etkinlikleri**, eski ve yeni SYS_CHANGE_VERSION değerlerini Azure SQL Veritabanı’ndan alır ve bunu kopyalama etkinliğine geçirir. **Kopyalama etkinliği**, SYS_CHANGE_VERSION değerleri arasındaki eklenen/güncelleştirilen/silinen verileri Azure SQL Veritabanı’ndan Azure Blob Depolama’ya kopyalar. **Saklı yordam etkinliği**, SYS_CHANGE_VERSION değerini bir sonraki işlem hattı çalıştırmasında güncelleştirir.
 
-1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin. Sol bölmedeki **+ (artı)** düğmesine tıklayın ve işlem **hattı** ' na tıklayın.
+1. Data Factory Kullanıcı arabiriminde, **Düzenle** sekmesine geçin. Sol bölmedeki **+ (artı)** düğmesine tıklayın ve işlem **hattı**' na tıklayın.
 
     ![Ekran görüntüsü, bir veri fabrikasında bir işlem hattının nasıl oluşturulacağını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. İşlem hattını yapılandırmak için yeni bir sekme görürsünüz. Ayrıca, işlem hattını ağaç görünümünde de görürsünüz. **Özellikler** penceresinde, işlem hattının adını **IncrementalCopyPipeline** olarak değiştirin.
 
     ![İşlem hattı adı](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
-3. **Etkinlikler** araç kutusunda **Genel** ’i genişletin ve **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupLastChangeTrackingVersionActivity** olarak ayarlayın. Bu etkinlik, **table_store_ChangeTracking_version** tablosunda depolanan son kopyalama işleminde kullanılan değişiklik izleme sürümünü alır.
+3. **Etkinlikler** araç kutusunda **Genel**’i genişletin ve **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupLastChangeTrackingVersionActivity** olarak ayarlayın. Bu etkinlik, **table_store_ChangeTracking_version** tablosunda depolanan son kopyalama işleminde kullanılan değişiklik izleme sürümünü alır.
 
     ![Ekran görüntüsünde, arama etkinliği olan bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
-4. **Özellikler** penceresinde **Ayarlar** ’a geçin ve **Kaynak Veri Kümesi** alanı için **ChangeTrackingDataset** seçeneğini belirleyin.
+4. **Özellikler** penceresinde **Ayarlar**’a geçin ve **Kaynak Veri Kümesi** alanı için **ChangeTrackingDataset** seçeneğini belirleyin.
 
     ![Ekran görüntüsü Özellikler penceresi ayarlar sekmesini gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. **Etkinlikler** araç kutusundan **Arama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **LookupCurrentChangeTrackingVersionActivity** olarak ayarlayın. Bu etkinlik, geçerli değişiklik izleme sürümünü alır.
 
     ![Ekran görüntüsünde iki arama etkinliği içeren bir işlem hattı gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-name.png)
-6. **Özellikler** penceresinde **Ayarlar** ’a geçin ve aşağıdaki adımları uygulayın:
+6. **Özellikler** penceresinde **Ayarlar**’a geçin ve aşağıdaki adımları uygulayın:
 
-   1. **Kaynak Veri Kümesi** alanı için **SourceDataset** ’i seçin.
-   2. **Sorgu Kullan** için **Sorgu** ’yu seçin.
+   1. **Kaynak Veri Kümesi** alanı için **SourceDataset**’i seçin.
+   2. **Sorgu Kullan** için **Sorgu**’yu seçin.
    3. **Sorgu** için aşağıdaki SQL sorgusunu girin.
 
        ```sql
@@ -386,13 +386,13 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
        ```
 
       ![Ekran görüntüsünde Özellikler penceresi Ayarlar sekmesine eklenen bir sorgu gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/second-lookup-activity-settings.png)
-7. **Etkinlikler** araç kutusunda **Veri Akışı** ’nı genişletin ve **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **IncrementalCopyActivity** olarak ayarlayın. Bu etkinlik, son değişiklik izleme sürümü ile geçerli değişiklik izleme sürümü arasındaki verileri hedef veri deposuna kopyalar.
+7. **Etkinlikler** araç kutusunda **Veri Akışı**’nı genişletin ve **Kopyalama** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **IncrementalCopyActivity** olarak ayarlayın. Bu etkinlik, son değişiklik izleme sürümü ile geçerli değişiklik izleme sürümü arasındaki verileri hedef veri deposuna kopyalar.
 
     ![Kopyalama Etkinliği - ad](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-activity-name.png)
 8. **Özellikler** penceresinde **Kaynak** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
-   1. **Kaynak Veri Kümesi** için **SourceDataset** ’i seçin.
-   2. **Sorgu Kullan** için **Sorgu** ’yu seçin.
+   1. **Kaynak Veri Kümesi** için **SourceDataset**’i seçin.
+   2. **Sorgu Kullan** için **Sorgu**’yu seçin.
    3. **Sorgu** için aşağıdaki SQL sorgusunu girin.
 
        ```sql
@@ -400,7 +400,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
        ```
 
       ![Kopyalama Etkinliği - kaynak ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
-9. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **SinkDataset** ’i seçin.
+9. **Havuz** sekmesine geçin ve **Havuz Veri Kümesi** alanı için **SinkDataset**’i seçin.
 
     ![Kopyalama Etkinliği - havuz ayarları](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
 10. Tek tek **her iki Arama etkinliğini Kopyalama etkinliğine bağlayın**. **Arama** etkinliğine bağlı **yeşil** düğmeyi **Kopyalama** etkinliğine sürükleyin.
@@ -409,13 +409,13 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
 11. **Etkinlikler** araç kutusundan **Saklı Yordam** etkinliğini sürükleyerek işlem hattı tasarımcısının yüzeyine bırakın. Etkinliğin adını **StoredProceduretoUpdateChangeTrackingActivity** olarak ayarlayın. Bu etkinlik, **table_store_ChangeTracking_version** tablosunda değişiklik izleme sürümünü güncelleştirir.
 
     ![Saklı Yordam Etkinliği - ad](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. *SQL hesabına* * sekmesine geçin ve **bağlı hizmet** Için **azuressqldatabaselinkedservice** ' i seçin.
+12. *SQL hesabına** sekmesine geçin ve **bağlı hizmet** Için **azuressqldatabaselinkedservice** ' i seçin.
 
     ![Saklı Yordam Etkinliği - SQL Hesabı](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. **Saklı Yordam** sekmesine geçin ve aşağıdaki adımları uygulayın:
 
     1. **Saklı yordam adı** için **Update_ChangeTracking_Version** adını seçin.  
-    2. **Parametreyi içeri aktar** ’ı seçin.
+    2. **Parametreyi içeri aktar**’ı seçin.
     3. **Saklı yordam parametreleri** bölümünde, parametreler için aşağıdaki değerleri belirtin:
 
         | Ad | Tür | Değer |
@@ -427,7 +427,7 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
 14. **Kopyalama etkinliğini Saklı Yordam Etkinliğine bağlayın**. Kopyalama etkinliğine bağlı **yeşil** düğmeyi sürükleyip Saklı Yordam etkinliğine bırakın.
 
     ![Kopyalama ve Saklı Yordam etkinliklerini bağlama](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
-15. Araç çubuğunda **Doğrula** ’ya tıklayın. Doğrulama hatası olmadığından emin olun. **>>** seçeneğine tıklayarak **İşlem Hattı Doğrulama Raporu** penceresini kapatın.
+15. Araç çubuğunda **Doğrula**’ya tıklayın. Doğrulama hatası olmadığından emin olun. **>>** seçeneğine tıklayarak **İşlem Hattı Doğrulama Raporu** penceresini kapatın.
 
     ![Doğrula düğmesi](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. **Tümünü Yayımla** düğmesine tıklayarak varlıkları (bağlı hizmetler, veri kümeleri ve işlem hatları) Data Factory hizmetinde yayımlayın. **Yayımlama başarılı** iletisini görene kadar bekleyin.
@@ -435,13 +435,13 @@ Bu adımda, aşağıdaki etkinliklerle bir işlem hattı oluşturursunuz ve bunu
        ![Ekran görüntüsünde bir veri fabrikası için Tümünü Yayımla düğmesi gösterilir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>Artımlı kopyalama işlem hattını çalıştırma
-1. İşlem hattının araç çubuğunda **Tetikle** ’ye tıklayıp **Şimdi Tetikle** ’ye tıklayın.
+1. İşlem hattının araç çubuğunda **Tetikle**’ye tıklayıp **Şimdi Tetikle**’ye tıklayın.
 
     ![Ekran görüntüsünde etkinlik içeren bir işlem hattı ve tetikleyici menüsünde şimdi Tetikle seçeneği seçilidir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
-2. **İşlem Hattı Çalıştırma** penceresinde **Son** ’u seçin.
+2. **İşlem Hattı Çalıştırma** penceresinde **Son**’u seçin.
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Artımlı kopyalama işlem hattını izleme
-1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile** ’ye tıklayın. **Eylemler** sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
+1. Soldaki **İzleyici** sekmesine tıklayın. Listede işlem hattı çalıştırmasını ve çalıştırmanın durumunu görebilirsiniz. Listeyi yenilemek için **Yenile**’ye tıklayın. **Eylemler** sütunundaki bağlantılar, işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemenize ve işlem hattını yeniden çalıştırmanıza imkan tanır.
 
     ![Ekran görüntüsü, ardışık düzen dahil bir veri fabrikası için işlem hattı çalıştırmalarını gösterir.](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
 2. İşlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki **Etkinlik Çalıştırmalarını Göster** bağlantısına tıklayın. İşlem hattında yalnızca bir etkinlik olduğundan listede tek bir girdi görürsünüz. İşlem hattı çalıştırmaları görünümüne geri dönmek için üstteki işlem **hatları** bağlantısına tıklayın.
@@ -466,13 +466,12 @@ Dosyanın yalnızca veritabanınızdaki Delta verileri olmalıdır. `U` bulunan 
 ==================================================================
 PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ==================================================================
-1        update  10     2                     U
-6        new     50     1                     I
+1        update  10            2                                 U
+6        new     50            1                                 I
 ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Yalnızca LastModifiedDate göre yeni ve değiştirilmiş dosyaları kopyalama hakkında bilgi edinmek için aşağıdaki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
->[Yeni dosyaları LastModifiedDate göre Kopyala](tutorial-incremental-copy-lastmodified-copy-data-tool.md)
+> [Yeni dosyaları LastModifiedDate göre Kopyala](tutorial-incremental-copy-lastmodified-copy-data-tool.md)

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd4c70354920655507f987f43a542e4b474803e1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170948"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509827"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Azure AD B2C için kullanılabilir Microsoft Graph işlemler
 
@@ -107,7 +107,7 @@ Microsoft Graph API 'sindeki ilke anahtarları için en üst düzey kaynak, [gü
 
 - [Uzantı özelliklerini listele](/graph/api/application-list-extensionproperty)
 
-Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar. Kullanıcı akışları için, bu uzantı özellikleri [Azure Portal kullanılarak yönetilir](custom-policy-custom-attributes.md). Özel ilkeler için Azure AD B2C, ilke uzantı özelliğine ilk kez bir değer yazdığında, sizin için özelliği oluşturur.
+Azure AD B2C, Kullanıcı başına 100 özel öznitelik tutan bir dizin sağlar. Kullanıcı akışları için, bu uzantı özellikleri [Azure Portal kullanılarak yönetilir](user-flow-custom-attributes.md). Özel ilkeler için Azure AD B2C, ilke uzantı özelliğine ilk kez bir değer yazdığında, sizin için özelliği oluşturur.
 
 ## <a name="audit-logs"></a>Denetim günlükleri
 

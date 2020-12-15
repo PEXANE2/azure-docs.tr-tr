@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ad9d3adacf36f0d224e2915836356c5a24e6256a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 10b01538c26f301a375a6d9b1660895dc3e3108b
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936684"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509844"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde OpenID Connect Teknik profili tanımlama
 
@@ -76,9 +76,9 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_id | Evet | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
+| client_id | Yes | Kimlik sağlayıcısının uygulama tanımlayıcısı. |
 | Idtokenaudience | Hayır | İd_token kitlesi. Belirtilmişse, `aud` kimlik sağlayıcısı tarafından döndürülen bir belirteçte talebin ıdtokenaudience meta verilerinde belirtilen değere eşit olup olmadığını denetler Azure AD B2C.  |
-| VERIYI | Evet | OpenID ile bilinen yapılandırma uç noktası olarak da bilinen bir OpenID Connect kimlik sağlayıcısı yapılandırma belgesine işaret eden bir URL. URL, `{tenant}` kiracı adıyla değiştirilmiş olan ifadesini içerebilir.  |
+| VERIYI | Yes | OpenID ile bilinen yapılandırma uç noktası olarak da bilinen bir OpenID Connect kimlik sağlayıcısı yapılandırma belgesine işaret eden bir URL. URL, `{tenant}` kiracı adıyla değiştirilmiş olan ifadesini içerebilir.  |
 | authorization_endpoint | Hayır | Bir OpenID Connect kimlik sağlayıcısı yapılandırma yetkilendirmesi uç noktasına işaret eden bir URL. Authorization_endpoint meta veri değeri, `authorization_endpoint` OpenID iyi bilinen yapılandırma uç noktasında belirtilen değere göre önceliklidir. URL, `{tenant}` kiracı adıyla değiştirilmiş olan ifadesini içerebilir. |
 | end_session_endpoint | Hayır | Bitiş oturumu uç noktasının URL 'SI. Authorization_endpoint meta veri değeri, `end_session_endpoint` OpenID iyi bilinen yapılandırma uç noktasında belirtilen değere göre önceliklidir. |
 | yayınlayan | Hayır | Bir OpenID Connect kimlik sağlayıcısının benzersiz tanımlayıcısı. Verenin meta verilerinin değeri, `issuer` OpenID iyi bilinen yapılandırma uç noktasında belirtilen değere göre önceliklidir.  Belirtilmişse, `iss` kimlik sağlayıcısı tarafından döndürülen bir belirteçte talebin, verenin meta verilerinde belirtilen değere eşit olup olmadığını denetler Azure AD B2C. |
@@ -93,7 +93,7 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülmeyen talepleri de 
 | Discovermetadatabyıtokenıssuer | Hayır | OıDC meta verilerinin JWT belirtecindeki veren kullanılarak bulunup bulunmadığını gösterir. |
 | IncludeClaimResolvingInClaimsHandling  | Hayır | Giriş ve çıkış talepleri için, [talep çözümlemenin](claim-resolver-overview.md) teknik profile dahil edilip edilmeyeceğini belirtir. Olası değerler: `true` , veya `false` (varsayılan). Teknik profilde bir talep çözümleyici kullanmak istiyorsanız, bunu olarak ayarlayın `true` . |
 |token_endpoint_auth_method| Hayır| Azure AD B2C, kimlik doğrulama üst bilgisini belirteç uç noktasına nasıl göndereceğini belirtir. Olası değerler: `client_secret_post` (varsayılan) ve `client_secret_basic` (Genel Önizleme). Daha fazla bilgi için bkz. [OpenID Connect istemci kimlik doğrulaması bölümü](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-|SingleLogoutEnabled| Hayır| Teknik profilde oturum açma sırasında, federal kimlik sağlayıcılarının oturumunu açmaya çalışıp çalışmadığını belirtir. Daha fazla bilgi için bkz. [oturum oturumunu Azure AD B2C](session-overview.md#sign-out).  Olası değerler: `true` (varsayılan) veya `false` .|
+|SingleLogoutEnabled| Hayır| Teknik profilde oturum açma sırasında, federal kimlik sağlayıcılarının oturumunu açmaya çalışıp çalışmadığını belirtir. Daha fazla bilgi için bkz. [oturum oturumunu Azure AD B2C](session-behavior.md#sign-out).  Olası değerler: `true` (varsayılan) veya `false` .|
 
 ```xml
 <Metadata>
@@ -124,7 +124,7 @@ Hata durumunda görüntülenecek hata iletisini yapılandırmak için aşağıda
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| client_secret | Evet | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri olarak ayarlanmışsa gereklidir `code` . Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler olarak ayarlandıysa, `id_token` şifreleme anahtarını atlayabilirsiniz.  |
+| client_secret | Yes | Kimlik sağlayıcısı uygulamasının istemci gizli anahtarı. Şifreleme anahtarı yalnızca **response_types** meta verileri olarak ayarlanmışsa gereklidir `code` . Bu durumda Azure AD B2C, bir erişim belirtecinin yetkilendirme kodunu Exchange için başka bir çağrı yapar. Meta veriler olarak ayarlandıysa, `id_token` şifreleme anahtarını atlayabilirsiniz.  |
 
 ## <a name="redirect-uri"></a>Yeniden yönlendirme URI 'Si
 

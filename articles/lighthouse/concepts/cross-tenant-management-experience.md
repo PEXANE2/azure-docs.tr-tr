@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905132"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510660"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -90,7 +90,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 
 [Azure izleyici](../../azure-monitor/index.yml):
 
-- Tüm aboneliklerdeki uyarıları görüntüleyebilme olanağı sayesinde, temsilci atanmış abonelikler için uyarıları görüntüleme
+- Tüm aboneliklerdeki uyarıları görüntüleme ve yenileme özelliği sayesinde, temsilci olan abonelikler için uyarıları görüntüleme
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
 - Log Analytics: birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama
 - Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında, Web kancaları aracılığıyla kiracıyı yönetme bölümünde uyarı oluşturma

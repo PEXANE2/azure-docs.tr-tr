@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698300"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511850"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -41,6 +41,10 @@ Ortak yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kulla
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'Lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
+
+*Şekil: hızlı başlangıçta oluşturulan kaynaklar.*
+
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
 
 Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsayılan olarak **Loadbalancerön uç** olarak adlandırılır) olarak yapılandırılmış yeni BIR genel IP adresi oluşturun.
@@ -54,7 +58,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Createpublbqs-RG** girin.|
     | Ad                   | **Myloadbalancer** girin                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Standart** seçin |
     | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin. |
@@ -140,7 +144,7 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
     | Durum yoklaması | **Myhealtharaştırması**' ni seçin. |
     | Boşta kalma zaman aşımı (dakika) | Kaydırıcıyı **15** dakikaya taşıyın. |
     | TCP sıfırlaması | **Etkin**'i seçin. |
-    | Giden kaynak ağ adresi çevirisi (SNAT) | **, Arka uç havuzu üyelerine internet erişimi sağlamak için giden kuralları kullanın (önerilir)** seçeneğini belirleyin. |
+    | Giden kaynak ağ adresi çevirisi (SNAT) | **Arka uç havuzu üyelerine internet erişimi sağlamak için giden kuralları kullanın (önerilir)** seçeneğini belirleyin. |
 
 4. Kalan varsayılan değerleri bırakın ve **Tamam**' ı seçin.
 
@@ -167,7 +171,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Createpublbqs-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Batı Avrupa** seçin |
+    | Bölge           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -220,7 +224,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Createpublbqs-RG** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Region | **Batı Avrupa** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik bölgelerini** seçin |
     | Kullanılabilirlik alanı | **1** seçin |
     | Görüntü | **Windows Server 2019 Datacenter** seçin |
@@ -259,9 +263,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Ayar | Değer |
     |-|-|
     | **İzleme** |  |
-    | Önyükleme tanılaması | Seçme **kapalı** |
+    | Önyükleme tanılamaları | Seçme **kapalı** |
    
-7. **Gözden geçir + oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -322,6 +326,10 @@ Giden bağlantılar hakkında daha fazla bilgi için bkz. [Azure 'Da giden bağl
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir.  SKU 'Lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
+
+*Şekil: hızlı başlangıçta oluşturulan kaynaklar.*
+
 Bu bölümde, sanal makinelerin yükünü dengeleyen bir yük dengeleyici oluşturacaksınız. 
 
 Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsayılan olarak **Loadbalancerön uç** olarak adlandırılır) olarak yapılandırılmış yeni BIR genel IP adresi oluşturun.
@@ -335,7 +343,7 @@ Ortak yük dengeleyici oluşturduğunuzda, yük dengeleyici için ön uç (varsa
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | **Yeni oluştur** ' u seçin ve metin kutusuna **Createpublbqs-RG** yazın.|
     | Ad                   | **Myloadbalancer** girin                                   |
-    | Region         | **Batı Avrupa**'yı seçin.                                        |
+    | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Genel**’i seçin.                                        |
     | SKU           | **Temel** seçin |
     | Genel IP adresi | **Yeni oluştur**’u seçin. Kullanmak istediğiniz mevcut bir genel IP varsa, **Varolanı kullan**' ı seçin. |
@@ -373,7 +381,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | Kaynak Grubu   | **Createpublbqs-RG** seçin |
     | **Örnek ayrıntıları** |                                                                 |
     | Name             | **Myvnet** girin                                    |
-    | Region           | **Batı Avrupa** seçin |
+    | Bölge           | **Batı Avrupa** seçin |
 
 3. **IP adresleri** sekmesini seçin veya sayfanın altındaki **Sonraki: IP adresleri** düğmesini seçin.
 
@@ -507,9 +515,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Kaynak Grubu | **Createpublbqs-RG** seçin |
     | **Örnek ayrıntıları** |  |
     | Sanal makine adı | **MyVM1** girin |
-    | Region | **Batı Avrupa** seçin |
+    | Bölge | **Batı Avrupa** seçin |
     | Kullanılabilirlik seçenekleri | **Kullanılabilirlik kümesi**’ni seçin |
-    | Kullanılabilirlik kümesi | **Yeni oluştur**’u seçin. </br> Ada **myAvailabilitySet** girin **Name**. </br> **Tamam**'ı seçin |
+    | Kullanılabilirlik kümesi | **Yeni oluştur**’u seçin. </br> Ada **myAvailabilitySet** girin . </br> **Tamam**'ı seçin |
     | Görüntü | **Windows Server 2019 Datacenter** |
     | Azure Spot örneği | **Hayır** seçin |
     | Boyut | VM boyutunu seçin veya varsayılan ayarı yapın |
@@ -540,9 +548,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
     | Ayar | Değer |
     |---|---|
     | **İzleme** | |
-    | Önyükleme tanılaması | Seçme **kapalı** |
+    | Önyükleme tanılamaları | Seçme **kapalı** |
 
-7. **Gözden geçir + oluştur**’u seçin. 
+7. **Gözden geçir ve oluştur**’u seçin. 
   
 8. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
@@ -562,7 +570,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 2. **Ayarlar** altında **arka uç havuzları**' nı seçin ve ardından **mybackendpool**' u seçin.
 
-3. Ilişkili **sanal makineleri** seçin **Associated to**.
+3. Ilişkili **sanal makineleri** seçin .
 
 4. **Sanal makineler** bölümünde **+ Ekle**' yi seçin.
 
@@ -576,7 +584,7 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 ## <a name="install-iis"></a>IIS yükleme
 
-1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden, **createstdlbqs-RG** kaynak grubunda bulunan **myVM1** ' yi seçin.
+1. Sol taraftaki menüden **tüm hizmetler** ' i seçin, **tüm kaynaklar**' ı seçin ve ardından kaynaklar listesinden **createpublbqs-RG** kaynak grubunda bulunan **myVM1** ' yi seçin.
 
 2. **Genel bakış** sayfasında **Bağlan** **' ı ve** sonra da ' yi seçin.
 

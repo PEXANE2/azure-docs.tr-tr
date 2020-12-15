@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837609"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509997"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
-Azure AD kullanım koşulları, kuruluşların son kullanıcılara bilgi sunmak için kullanabileceği basit bir yöntem sağlar. Bu sunum, kullanıcıların yasal gereksinimler veya uyumluluk gereksinimleriyle ilgili bildirimleri görmesi sağlar. Bu makalede kullanım koşulları ile çalışmaya başlama konusu açıklanmaktadır.
+Azure AD kullanım koşulları, kuruluşların son kullanıcılara bilgi sunmak için kullanabileceği basit bir yöntem sağlar. Bu sunum, kullanıcıların yasal gereksinimler veya uyumluluk gereksinimleriyle ilgili bildirimleri görmesi sağlar. Bu makalede kullanım koşulları (ToU) ile çalışmaya başlama açıklanmaktadır.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -52,7 +52,7 @@ Azure AD kullanım koşulları aşağıdaki yeteneklere sahiptir:
 - Uyumluluk ve denetim için kullanım koşulları etkinlik günlüğünü görüntüleyin.
 - [Microsoft Graph API 'leri](/graph/api/resources/agreement?view=graph-rest-beta) kullanarak kullanım koşulları oluşturun ve yönetin (Şu anda önizleme aşamasındadır).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD kullanım koşulları 'nı kullanmak ve yapılandırmak için şunları yapmanız gerekir:
 
@@ -111,7 +111,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
    | 'Ndaki | 1 Oca | 31 Oca | 2. Mar | 1 Nis |
    | Bob | 15 Oca | 14 Şub | 16 Mar | 15 Nis |
 
-   Yeniden kabul etmeden önce, **zaman aşımı** süresi ve **süre (gün)** ayarlarını kullanmak mümkündür, ancak genellikle bir veya diğerini kullanırsınız.
+   **Yeniden kabul etmeden önce** , **zaman süresi** ve süre sonu (gün) ayarlarını kullanmak mümkündür, ancak genellikle bir veya diğerini kullanırsınız.
 
 1. **Koşullu erişim** altında, Kullanım Koşullarını zorlayacağı şablonu seçmek Için **koşullu erişim ilkesi şablonunu Uygula** listesini kullanın.
 
@@ -119,8 +119,8 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    | Şablon | Açıklama |
    | --- | --- |
-   | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturum açmanız ve oturum açmanız gerekebilir. |
-   | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra, oturumunuzu kapatıp oturum açmanız gerekecektir. |
+   | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekebilir. |
+   | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekecektir. |
    | **Özel ilke** | Bu kullanım koşullarının uygulanacağı kullanıcıları, grupları ve uygulamaları seçin. |
    | **Koşullu erişim ilkesini daha sonra Oluştur** | Bu kullanım koşulları, koşullu erişim ilkesi oluştururken izin verme denetim listesinde görünür. |
 
@@ -129,7 +129,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
     Özel koşullu erişim ilkeleri, belirli bir bulut uygulamasına veya kullanıcı grubuna göre ayrıntılı kullanım koşullarını sağlar. Daha fazla bilgi için bkz. [hızlı başlangıç: bulut uygulamalarına erişmeden önce kabul edilmesi gereken kullanım koşulları](require-tou.md).
 
-1. **Oluştur**'a tıklayın.
+1. **Oluştur**’a tıklayın.
 
    Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
 
@@ -219,15 +219,55 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 1. Düzenlemek istediğiniz kullanım koşullarını seçin.
 1. **Terimleri Düzenle**' ye tıklayın.
-1. Kullanım koşulları Düzenle bölmesinde adı, görünen adı değiştirin veya kullanıcıların değerleri genişletmesini gerektir.
+1. Kullanım koşullarını Düzenle bölmesinde, aşağıdakileri değiştirebilirsiniz:
+     - **Ad** : Bu, son kullanıcılarla paylaşılmayan ToU 'ın iç adıdır
+     - **Görünen ad** – bu, son kullanıcıların ToU 'yi görüntülerken görebilmesini sağlayan addır
+     - **Kullanıcıların kullanım koşullarını genişletmesini gerektir** – bunu **Açık** olarak ayarlamak, son kullanımı, kabul etmeden önce belge kullanım koşullarını genişletmeye zorlar.
+     - Önizle **Mevcut bir kullanım koşulları belgesini güncelleştirebilirsiniz**
+     - Mevcut bir ToU 'ya bir dil ekleyebilirsiniz
 
    PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önce süreyi veya koşullu erişim ilkesini, yeni bir kullanım koşulları oluşturmanız gerekir.
 
-   ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-tou.png)
+    ![Farklı dil seçeneklerini göstermeyi Düzenle ](./media/terms-of-use/edit-terms-use.png)
 
-1. **Kaydet**’a tıklayarak değişikliklerinizi kaydedin.
+1. İşiniz bittiğinde, değişikliklerinizi kaydetmek için **Kaydet** ' e tıklayın.
 
-   Değişikliklerinizi kaydettikten sonra, kullanıcılar bu düzenlemeleri yeniden kabul etmek zorunda olmayacaktır.
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Mevcut kullanım koşullarının sürümünü veya PDF 'yi güncelleştirme
+
+1.  Azure 'da oturum açın ve [kullanım koşulları](https://aka.ms/catou) gidin
+2.  Düzenlemek istediğiniz kullanım koşullarını seçin.
+3.  **Terimleri Düzenle**' ye tıklayın.
+4.  Yeni bir sürümü güncelleştirmek istediğiniz dil için eylem sütununun altındaki **Güncelleştir** ' e tıklayın.
+ 
+     ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-terms-use.png)
+
+5.  Sağ taraftaki bölmede, yeni sürüm için PDF 'yi karşıya yükleyin
+6.  Burada, kullanıcılarınızın bir sonraki oturum açışlarında bu yeni sürümü kabul etmelerini gerektirmek istiyorsanız **yeniden kabul iste** ' de bir değiştirme seçeneği gerekir. Kullanıcılarınızın yeniden kabul etmesini istiyorsanız, koşullu erişim ilkenizde tanımlanan kaynağa bir dahaki sefer erişmeye çalıştıklarında, bu yeni sürümü kabul etmeleri istenir. Kullanıcılarınızın yeniden kabul etmesini gerekmiyorsa, önceki onay bilgileri güncel kalır ve yalnızca izin süresinin dolması veya süresi dolan yeni kullanıcılar yeni sürümü görür.
+
+    ![Kullanım koşullarını düzenleme yeniden kabul et seçeneği vurgulanmış](./media/terms-of-use/re-accept.png)
+
+7.  Yeni PDF 'nizi karşıya yükledikten ve yeniden kabul etmeye karar verdikten sonra bölmenin alt kısmındaki Ekle ' ye tıklayın.
+8.  Artık belge sütununun altında en son sürümü görürsünüz.
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>Kullanım koşullarının önceki sürümlerini görüntüleme
+
+1.  Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için https://aka.ms/catou sayfasına gidin.
+2.  Sürüm geçmişini görüntülemek istediğiniz kullanım koşullarını seçin.
+3.  **Diller ve sürüm geçmişine** tıklayın
+4.  **Önceki sürümleri gör** ' e tıklayın.
+
+    ![dil sürümleri dahil belge ayrıntıları](./media/terms-of-use/document-details.png)
+
+5.  Bu sürümü indirmek için belgenin adına tıklayabilirsiniz
+
+## <a name="see-who-has-accepted-each-version"></a>Her sürümü kimlerin kabul ettiğini görün
+
+1.  Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için https://aka.ms/catou sayfasına gidin.
+2.  Şu anda ToU 'yi kabul eden kişiyi görmek için, istediğiniz ToU için **kabul edilen** sütunun altındaki sayıya tıklayın.
+3.  Varsayılan olarak, sonraki sayfada her bir kullanıcının geçerli durumu ToU 'ya kabul edilir
+4.  Önceki onay olaylarını görmek isterseniz, **geçerli durum** açılan listesinden **Tümünü** seçebilirsiniz. Artık her bir sürüm hakkındaki ayrıntıları ve ne olduğunu görmek için her Kullanıcı olayını görebilirsiniz.
+5.  Alternatif olarak, belirli sürümü kimlerin kabul ettiğini görmek için **Sürüm**  açılan listesinden belirli bir sürümü seçebilirsiniz.
+
 
 ## <a name="add-a-terms-of-use-language"></a>Kullanım koşulları dili ekleme
 
@@ -235,14 +275,14 @@ Aşağıdaki yordamda bir kullanım koşulları dilinin nasıl ekleneceği açı
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 1. Düzenlemek istediğiniz kullanım koşullarını seçin.
-1. Ayrıntılar bölmesinde **Diller** sekmesine tıklayın.
-
-   ![Kullanım koşulları seçili ve Ayrıntılar bölmesindeki diller sekmesi gösteriliyor](./media/terms-of-use/languages-tou.png)
-
-1. **Dil ekle**' ye tıklayın.
+1. **Terimleri Düzenle** öğesine tıklayın
+1. Sayfanın alt kısmındaki **Dil ekle** ' ye tıklayın.
 1. Kullanım koşulları Ekle dil bölmesinde yerelleştirilmiş PDF 'nizi karşıya yükleyin ve dili seçin.
 
-   ![Yerelleştirilmiş PDF 'Leri karşıya yükleme seçenekleri ile dil bölmesi kullanım koşulları ekleme](./media/terms-of-use/language-add-tou.png)
+   ![Kullanım koşulları seçili ve Ayrıntılar bölmesindeki diller sekmesi gösteriliyor](./media/terms-of-use/select-language.png)
+
+1. **Dil ekle**' ye tıklayın.
+1. **Kaydet**’e tıklayın
 
 1. Dili eklemek için **Ekle** ' ye tıklayın.
 
@@ -318,7 +358,7 @@ Koşullu erişim ilkeleri hemen etkili olur. Bu durumda, yönetici "üzgün bulu
 > - Koşullu erişim ilkesi kullanım koşulları üzerinde etkinleştirilir
 > - veya ikinci bir kullanım koşulları belgesi oluşturulduğunda
 
-## <a name="b2b-guests-preview"></a>B2B konukları (Önizleme)
+## <a name="b2b-guests"></a>B2B konukları
 
 Çoğu kuruluşta, çalışanları kuruluşun kullanım koşulları ve gizlilik bildirimleri onayı için bir işlem yapılır. Ancak SharePoint veya takımlar aracılığıyla eklendiklerinde Azure AD işletmeden işletmeye (B2B) konuklarına yönelik aynı yarışmaları nasıl zorunlu kılabilirsiniz? Koşullu erişimi ve kullanım koşullarını kullanarak, bir ilkeyi doğrudan B2B Konuk kullanıcıları doğrultusunda zorlayabilirsiniz. Davet teminat akışı sırasında, kullanıcıya kullanım koşulları sunulur. Bu destek şu anda önizlemededir.
 
@@ -326,7 +366,7 @@ Kullanım koşulları, yalnızca kullanıcının Azure AD 'de bir Konuk hesabı 
 
 ![Kullanıcılar ve gruplar bölmesi-tüm konuk kullanıcılar seçeneği işaretli sekmesini dahil et](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>Bulut uygulamaları için destek (Önizleme)
+## <a name="support-for-cloud-apps"></a>Bulut uygulamaları için destek
 
 Kullanım koşulları, Azure Information Protection ve Microsoft Intune gibi farklı bulut uygulamaları için kullanılabilir. Bu destek şu anda önizlemededir.
 

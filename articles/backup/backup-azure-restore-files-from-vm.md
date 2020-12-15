@@ -2,14 +2,14 @@
 title: Azure VM yedeğinden dosya ve klasörleri kurtarma
 description: Bu makalede, Azure sanal makine kurtarma noktasından dosya ve klasörleri kurtarmayı öğrenin.
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841171"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511663"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure sanal makine yedeklemesinden dosyaları kurtarma
 
@@ -156,7 +156,7 @@ Yürütülebilir dosyayı çalıştırdığınızda, işletim sistemi yeni birim
 
    ![Bağlı kurtarma birimleri](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**Büyük disklere sahip yedeklenen VM 'Ler için (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>Büyük disklere sahip yedeklenen VM 'Ler için (Windows)
 
 Dosya kurtarma işlemi, dosya geri yükleme betiğini çalıştırdıktan sonra askıda kalırsa (örneğin, diskler hiçbir şekilde bağlanmadıysa veya bağlanmamışsa ancak birimler görünmezse), aşağıdaki adımları uygulayın:
   
@@ -182,7 +182,7 @@ Linux 'ta, kurtarma noktasının birimleri betiğin çalıştırıldığı klas�
   ![Linux dosya kurtarma menüsü](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**Büyük disklere sahip yedeklenen VM 'Ler için (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>Büyük disklere sahip yedeklenen VM 'Ler için (Linux) * *
 
 Dosya kurtarma işlemi, dosya geri yükleme betiğini çalıştırdıktan sonra askıda kalırsa (örneğin, diskler hiçbir şekilde bağlanmadıysa veya bağlanmamışsa ancak birimler görünmezse), aşağıdaki adımları uygulayın:
 

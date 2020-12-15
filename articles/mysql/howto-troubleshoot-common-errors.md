@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 39e058487effea432369b74a9e638f30722ef089
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401721"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510971"
 ---
 # <a name="common-errors"></a>Sık karşılaşılan hatalar
 
@@ -83,9 +83,7 @@ MySQL için Azure veritabanı sunucusu oluşturulduğunda, sunucu oluşturma sı
 
 * Kullanıcı adı yok
 * Kullanıcı Kullanıcı adı silindi
-* parolasını değiştirme veya sıfırlama
-
-Hatanın çözümü 
+* parolası değiştirilir veya sıfırlanır.
 
 **Çözüm**: 
 * "Kullanıcı adı" nın sunucuda geçerli bir kullanıcı olarak var olduğunu veya yanlışlıkla silindiğini doğrulayın. MySQL için Azure veritabanı kullanıcısına oturum açarak aşağıdaki sorguyu yürütebilirsiniz:

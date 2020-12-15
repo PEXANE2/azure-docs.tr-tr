@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6aaed76ad398b5278850dd66ce1da6d5bd33807f
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95254672"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511221"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -140,6 +140,10 @@ Toplu Iş düğümlerinde bir görevi zamanlarken, görev kapsamı veya havuz ka
 ### <a name="idempotent-start-tasks"></a>Idempotent başlangıç görevleri
 
 Diğer görevlerde olduğu gibi, düğüm [Başlangıç görevi](jobs-and-tasks.md#start-task) , düğüm her önyüklendiğinde yeniden çalıştırılacak şekilde ıdempotent olmalıdır. Bir ıdempotent görevi, birden çok kez çalıştırıldığında tutarlı bir sonuç üreten bir görevdir.
+
+### <a name="isolated-nodes"></a>Yalıtılmış düğümler
+
+Uyumluluk ve mevzuat gereksinimleri olan iş yükleri için yalıtılmış VM boyutu kullanmayı düşünün. Sanal makine yapılandırma modundaki desteklenen yalıtılmış Boyutlar,,,, `Standard_E64i_v3` `Standard_E80ids_v4` ve içerir `Standard_F72s_v2` `Standard_G5` `Standard_GS5` `Standard_M128ms` . Yalıtılmış VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da sanal makine yalıtımı](https://docs.microsoft.com/azure/virtual-machines/isolation).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>İşletim sistemi Hizmetleri arabirimi aracılığıyla uzun süre çalışan hizmetleri yönetme
 

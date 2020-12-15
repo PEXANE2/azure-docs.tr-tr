@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6ca0513f95bc490087f3c84eeecc4ea623f64604
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517096"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511289"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Azure üzerinde güvenli uygulamalar geliştirme
 Bu makalede, bulut için uygulama geliştirirken göz önünde bulundurmanız gereken güvenlik etkinlikleri ve denetimler sunuyoruz. Microsoft [güvenlik geliştirme yaşam döngüsü 'nin (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) uygulama ve doğrulama aşamaları sırasında göz önünde bulundurmanız gereken güvenlik soruları ve kavramlar ele alınmıştır. Amaç, daha güvenli bir uygulama geliştirmek için kullanabileceğiniz etkinlikleri ve Azure hizmetlerini tanımlamanıza yardımcı olmaktır.
@@ -48,15 +48,15 @@ Uygulamanızı en sık kullanılan Web uygulaması güvenlik açıklarına karş
 
 Yalnızca düzgün biçimlendirilmiş verilerin iş akışına girdiğinden emin olmak için girişi veri akışında erken doğrulayın. Hatalı biçimlendirilmiş verilerin veritabanınızda kalıcı olmasını veya bir aşağı akış bileşeninde bir arızası tetiklemesini istemezsiniz.
 
-Kara liste ve beyaz listeleme, giriş sözdizimi doğrulaması gerçekleştirmeye yönelik iki genel yaklaşımlar sağlar:
+Blok listeleme ve allowlist, giriş sözdizimi doğrulaması gerçekleştirmeye yönelik iki genel yaklaşımlar sağlar:
 
-  - Kara liste, belirli bir Kullanıcı girişinin "kötü amaçlı olarak bilinen" içerik içermediğini denetlemeye çalışır.
+  - Blok listeleme, belirli bir Kullanıcı girişinin "kötü amaçlı olarak bilinen" içerik içermediğini denetlemeye çalışır.
 
-  - Beyaz listeleme, belirli bir Kullanıcı girişinin bir "bilinen iyi" girişler kümesiyle eşleşip eşleşmediğini denetlemeye çalışır. Karakter tabanlı beyaz liste, bir uygulamanın kullanıcı girişinin yalnızca "bilinen iyi" karakterler içerdiğini veya girişin bilinen bir biçimle eşleşip eşleşmediğini denetlediği bir beyaz listeleme biçimidir.
+  - Allowlisteleme, belirli bir Kullanıcı girişinin "bilinen iyi" girişler kümesiyle eşleşip eşleşmediğini denetlemeye çalışır. Karakter tabanlı allowlist, bir uygulamanın kullanıcı girişinin yalnızca "bilinen iyi" karakterler içerdiğini veya girişin bilinen bir biçimle eşleşip eşleşmediğini kontrol ettiği bir allowlist biçimidir.
     Örneğin, bu, Kullanıcı adının yalnızca alfasayısal karakter içerdiğini veya tam olarak iki sayı içerdiğini denetlemeyi gerektirebilir.
 
-Beyaz liste, güvenli yazılım oluşturmak için tercih edilen yaklaşımdır.
-Büyük olasılıkla hatalı girişin tamamı listesini düşünmek imkansız olduğundan kara listeye hata açıktır.
+Allowlist, güvenli yazılım oluşturmak için tercih edilen yaklaşımdır.
+Büyük olasılıkla hatalı girişin tamamını bir listesini düşünmek imkansız olduğundan, blok listeleme hatayla açıktır.
 
 Bu işi, istemci tarafında (veya sunucu ve istemci tarafında) değil, sunucuda yapın.
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs | laboratuvarınızda bir yapıt deposu ekleyin | Micr
 description: Ortak yapıt deposunda kullanılabilir olmayan depolama araçlarını Azure DevTest Labs ' de laboratuvarınız için kendi yapıt deponuzu belirtmeyi öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88270997"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97512020"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs 'de laboratuvarınızda yapıt deposu ekleme
 DevTest Labs, VM oluşturma sırasında veya VM oluşturulduktan sonra VM 'ye eklenecek bir yapıt belirtmenize olanak tanır. Bu yapıt, VM 'ye yüklemek istediğiniz bir araç veya uygulama olabilir. Yapıtlar, GitHub veya Azure DevOps git deposundan yüklenen bir JSON dosyasında tanımlanır.
@@ -19,8 +19,8 @@ Bu makalede, Azure portal, Azure Kaynak Yönetimi şablonlarını ve Azure Power
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
-Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri alın. Aşağıdaki bölümlerde **GitHub** veya **Azure DevOps**üzerinde barındırılan depolarda gerekli bilgilerin nasıl alınacağı açıklanır.
+## <a name="prerequisites"></a>Önkoşullar
+Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri alın. Aşağıdaki bölümlerde **GitHub** veya **Azure DevOps** üzerinde barındırılan depolarda gerekli bilgilerin nasıl alınacağı açıklanır.
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub deposu kopya URL 'sini ve kişisel erişim belirtecini al
 
@@ -31,7 +31,7 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 5. Soldaki **kişisel ayarlar** menüsünde, **Geliştirici ayarları**' nı seçin.
 6. Sol taraftaki menüden **kişisel erişim belirteçleri** ' ni seçin.
 7. **Yeni belirteç oluştur**' u seçin.
-8. **Yeni kişisel erişim belirteci** sayfasında, **belirteç açıklaması**altında bir açıklama girin. **Kapsamları Seç**altında varsayılan öğeleri kabul edin ve ardından **belirteç oluştur**' u seçin.
+8. **Yeni kişisel erişim belirteci** sayfasında, **belirteç açıklaması** altında bir açıklama girin. **Kapsamları Seç** altında varsayılan öğeleri kabul edin ve ardından **belirteç oluştur**' u seçin.
 9. Oluşturulan belirteci kaydedin. Belirteci daha sonra kullanırsınız.
 10. GitHub 'ı kapatın.   
 
@@ -40,13 +40,13 @@ Laboratuvarınıza bir depo eklemek için önce deponuzdan anahtar bilgileri al�
 2. Proje giriş sayfasında **kod**' u seçin.
 3. Kopya URL 'sini görüntülemek için, proje **kodu** sayfasında, **Kopyala**' yı seçin.
 4. URL 'YI kaydedin. URL 'YI daha sonra kullanırsınız.
-5. Kişisel erişim belirteci oluşturmak için, Kullanıcı hesabı açılan menüsünde **profilimi**seçin.
+5. Kişisel erişim belirteci oluşturmak için, Kullanıcı hesabı açılan menüsünde **profilimi** seçin.
 6. Profil bilgileri sayfasında **güvenlik**' i seçin.
 7. **Güvenlik > kişisel erişim belirteçleri** sekmesinde **+ Yeni belirteç**' ı seçin.
 8. **Yeni kişisel erişim belirteci oluştur** sayfasında:
    1. Belirteç için bir **ad** girin.
    2. **Kuruluş** listesinde, **tüm erişilebilir kuruluşlar**' ı seçin.
-   3. **Süre sonu (UTC)** listesinde, **90 gün**veya özel bir tanımlı süre sonu dönemi ' ni seçin.
+   3. **Süre sonu (UTC)** listesinde, **90 gün** veya özel bir tanımlı süre sonu dönemi ' ni seçin.
    4. Kapsamlar için **tam erişim** seçeneğini belirleyin.
    5. **Oluştur**’u seçin.
 9. Yeni belirteç, **kişisel erişim belirteçleri** listesinde görünür. **Belirteci Kopyala**' yı seçin ve ardından daha sonra kullanmak üzere belirteç değerini kaydedin.

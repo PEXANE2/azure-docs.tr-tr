@@ -3,19 +3,19 @@ title: Azure DevTest Labs ' a sahip ve Kullanıcı ekleme | Microsoft Docs
 description: Azure portal veya PowerShell kullanarak Azure DevTest Labs sahipleri ve kullanıcıları ekleme
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330198"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511986"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs sahip ve Kullanıcı ekleme
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure DevTest Labs erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)tarafından denetlenir. Azure RBAC 'yi kullanarak, takımınızda, işlerini yalnızca kullanıcılara gereken erişim miktarına verdiğiniz *rollere* ayırabilirsiniz. Bu Azure rollerinin üçü *sahip*, *DevTest Labs kullanıcısı*ve *katkıda bulunan*. Bu makalede, üç ana Azure rolünün her birinde hangi eylemlerin gerçekleştirilebileceğini öğrenirsiniz. Buradan, bir laboratuvara Kullanıcı eklemeyi öğrenirsiniz: Portal aracılığıyla ve bir PowerShell betiği aracılığıyla ve abonelik düzeyinde Kullanıcı ekleme.
+Azure DevTest Labs erişim, [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)tarafından denetlenir. Azure RBAC 'yi kullanarak, takımınızda, işlerini yalnızca kullanıcılara gereken erişim miktarına verdiğiniz *rollere* ayırabilirsiniz. Bu Azure rollerinin üçü *sahip*, *DevTest Labs kullanıcısı* ve *katkıda bulunan*. Bu makalede, üç ana Azure rolünün her birinde hangi eylemlerin gerçekleştirilebileceğini öğrenirsiniz. Buradan, bir laboratuvara Kullanıcı eklemeyi öğrenirsiniz: Portal aracılığıyla ve bir PowerShell betiği aracılığıyla ve abonelik düzeyinde Kullanıcı ekleme.
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Her rolde gerçekleştirilebilecek eylemler
 Kullanıcı atayabilmeniz için üç ana rol vardır:
@@ -29,20 +29,20 @@ Aşağıdaki tabloda, bu rollerin her birinde kullanıcılar tarafından gerçek
 | **Bu roldeki eylem kullanıcıları gerçekleştirebilir** | **DevTest Labs kullanıcısı** | **Sahibi** | **Katkıda Bulunan** |
 | --- | --- | --- | --- |
 | **Laboratuvar görevleri** | | | |
-| Laboratuvara Kullanıcı ekleme |Hayır |Evet |Hayır |
-| Maliyet ayarlarını Güncelleştir |Hayır |Evet |Evet |
+| Laboratuvara Kullanıcı ekleme |Hayır |Yes |Hayır |
+| Maliyet ayarlarını Güncelleştir |Hayır |Yes |Yes |
 | **VM temel görevleri** | | | |
-| Özel görüntüler ekleme ve kaldırma |Hayır |Evet |Evet |
-| Formüller ekleme, güncelleştirme ve silme |Evet |Evet |Evet |
-| Azure Marketi görüntülerini beyaz listeye ekleme |Hayır |Evet |Evet |
+| Özel görüntüler ekleme ve kaldırma |Hayır |Yes |Yes |
+| Formüller ekleme, güncelleştirme ve silme |Yes |Yes |Yes |
+| Market görüntülerini etkinleştir |Hayır |Yes |Yes |
 | **VM görevleri** | | | |
-| VM oluşturma |Evet |Evet |Evet |
-| VM 'Leri başlatma, durdurma ve silme |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Evet |Evet |
-| VM ilkelerini güncelleştirme |Hayır |Evet |Evet |
-| VM 'lere/sanal makinelere veri diskleri Ekle/Kaldır |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Evet |Evet |
+| VM oluşturma |Yes |Yes |Yes |
+| VM 'Leri başlatma, durdurma ve silme |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Yes |Yes |
+| VM ilkelerini güncelleştirme |Hayır |Yes |Yes |
+| VM 'lere/sanal makinelere veri diskleri Ekle/Kaldır |Yalnızca Kullanıcı tarafından oluşturulan VM 'Ler |Yes |Yes |
 | **Yapıt görevleri** | | | |
-| Yapıt depoları ekleme ve kaldırma |Hayır |Evet |Evet |
-| Yapıtları Uygula |Evet |Evet |Evet |
+| Yapıt depoları ekleme ve kaldırma |Hayır |Yes |Yes |
+| Yapıtları Uygula |Yes |Yes |Yes |
 
 > [!NOTE]
 > Bir Kullanıcı bir VM oluşturduğunda, bu kullanıcı otomatik olarak oluşturulan VM 'nin **sahip** rolüne atanır.

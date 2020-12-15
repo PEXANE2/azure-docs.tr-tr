@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
 ms.subservice: alerts
-ms.openlocfilehash: e5f78c8b58cc3100d746957094ddfd9bab2b29fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51ae97567e9c3720c7e36a81bfa7bff44935aac6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91813228"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511629"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager şablonu ile ölçüm uyarısı oluşturma
 
@@ -270,7 +270,7 @@ az login
 
 az deployment group create \
     --name AlertDeployment \
-    --resource-group ResourceGroupofTargetResource \
+    --resource-group ResourceGroupOfTargetResource \
     --template-file simplestaticmetricalert.json \
     --parameters @simplestaticmetricalert.parameters.json
 ```
@@ -377,7 +377,7 @@ Bu izlenecek yolun amacına uygun olarak JSON 'u simpledynamicmetricalert.jsolar
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -518,7 +518,7 @@ Aşağıdaki JSON 'ı simpledynamicmetricalert.parameters.jsolarak kaydedin ve g
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -570,7 +570,6 @@ Bu şekilde, birden çok ölçüt içeren bir uyarı kuralında boyutlar kullan�
 - \*Bir boyut değeri olarak "" kullanamazsınız.
 - Farklı criterions ' de yapılandırılan ölçümler aynı boyutu destekledikleri zaman, yapılandırılan bir boyut değeri, bu ölçümler için (ilgili criterions) aynı şekilde açıkça ayarlanmalıdır.
     - Aşağıdaki örnekte, hem **işlemler** hem de **SuccessE2ELatency** ölçümleri bir **apiname** boyutuna sahip olduğundan ve *Criterion1* **apiname** boyutu için *"GetBlob"* değerini belirttiğinden, Ayrıca, *criterion2* de **apiname** boyutu için bir *"GetBlob"* değeri ayarlamış olmalıdır.
-
 
 Bu izlenecek yolun amacına uygun olarak JSON 'u advancedstaticmetricalert.jsolarak kaydedin.
 
@@ -976,7 +975,7 @@ Bu izlenecek yolun amacına uygun olarak, aşağıdaki JSON 'ı multidimensional
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }

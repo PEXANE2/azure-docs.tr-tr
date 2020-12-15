@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 26bb61e0c5a473a56c57391b53009419453956fd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 90abe6bf680f6a186b970631dcd0a42d6d36bf94
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753425"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511595"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -31,7 +31,7 @@ Gereç destek gereksinimlerini [gözden geçirin](migrate-appliance.md) .
 2. Dağıtım hala başarısız olursa ve OVF dosyasını dağıtmak için VMware vSphere istemcisini kullanıyorsanız, vSphere Web istemcisi aracılığıyla dağıtmayı deneyin. Dağıtım hala başarısız olursa, farklı bir Web tarayıcısı kullanmayı deneyin.
 3. VSphere Web istemcisini kullanıyorsanız ve vCenter Server 6,5 veya 6,7 ' de dağıtmaya çalışıyorsanız, OVA 'yı doğrudan ESXi konağına dağıtmayı deneyin:
    - Web istemcisi (https://<*ana BILGISAYAR IP adresi*>/UI) Ile ESXi konağına doğrudan (vCenter Server yerine) bağlanın.
-   - **Ev**  >  **envanterinde**, **File**  >  **ovf şablonu**' nu Dağıt ' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
+   - **Ev**  >  **envanterinde**,   >  **ovf şablonu**' nu Dağıt ' ı seçin. OVA 'ya gidin ve dağıtımı doldurun.
 4. Dağıtım hala başarısız olursa Azure geçiş desteği 'ne başvurun.
 
 ## <a name="cant-connect-to-the-internet"></a>İnternet 'e bağlanılamıyor
@@ -41,6 +41,13 @@ Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 - Ara sunucuya gerekiyorsa yetkilendirme kimlik bilgilerini sağlamaya dikkat edin.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, [Bu URL 'leri](migrate-appliance.md#url-access) izin verilenler listesine ekleyin.
 - İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](./migrate-appliance.md)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
+
+
+## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>' Login' düğmesine tıklanması, cihaz kodu olmadan yeni bir sekme açar
+
+Gereç yapılandırma yöneticisinde ' Login' düğmesine tıkladıktan sonra, kod olmadan yeni bir sekme açılır, Gereç Yapılandırma Yöneticisi sekmesine geri dönün ve aşağıdaki ekran görüntüsünde gösterildiği gibi ' Login' düğmesinin altında bulunan kalın yazı tipinde Cihaz kodunu bulabilirsiniz. Kodu kopyalayın ve Azure ile kimlik doğrulamak için oturum açma sekmesine yapıştırın.
+
+![Cihaz kodu](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Azure 'da gereç Web uygulamasından oturum açılamıyor
 

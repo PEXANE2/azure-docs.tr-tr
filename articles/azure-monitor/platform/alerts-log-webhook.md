@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c3ead4dbdf0608c6b7cd1be6a9edf242ecd2b5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012331"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510772"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Günlük uyarı kuralları için web kancası eylemleri
 
@@ -316,7 +316,6 @@ Aşağıdaki örnek yük, herhangi bir günlük uyarısı için özel bir Web ka
         }
     }
 ```
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure uyarılarında günlük uyarıları](alerts-unified-log.md)hakkında bilgi edinin.

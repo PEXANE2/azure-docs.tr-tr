@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: ac81832765f674e58ad6b3213238e9c68e04d2dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "81726469"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511748"
 ---
 # <a name="azure-media-player-quickstart"></a>Azure Media Player hızlı başlangıcı
 Azure Media Player kolayca ayarlanabilir. Azure Media Services hesabınızdan medya içeriğinin temel oynatımını almak yalnızca birkaç dakika sürer. Bu bölümde ayrıntılara girilmeden temel adımlar anlatılmaktadır. Aşağıdaki bölümlerde Azure Media Player ayarlama ve yapılandırma hakkında size ilişkin ayrıntılar verilmektedir.  Aşağıdakileri belgenizin `<head>` bölümüne eklemeniz yeterlidir:
@@ -22,7 +22,7 @@ Azure Media Player kolayca ayarlanabilir. Azure Media Services hesabınızdan me
 ```
 
 > [!IMPORTANT]
-> Bu, **NOT** `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümüyle değiştirin; örneğin `latest` , ile değiştirin `1.0.0` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
+> Bu,  `latest` isteğe bağlı olarak değişikliğe tabi olduğu için üretimde sürümü kullanmamalısınız. `latest`Azure Media Player bir sürümüyle değiştirin; örneğin `latest` , ile değiştirin `1.0.0` . Azure Media Player sürümler [buradan](azure-media-player-changelog.md)sorgulanabilir.
 
 ## <a name="use-the-video-element"></a>Video öğesini kullanma
 
@@ -63,4 +63,4 @@ Otomatik kurulum 'u kullanmak istemiyorsanız, `data-setup` özniteliği atlayab
 
 ## <a name="next-steps"></a>Sonraki adımlar ##
 
-- [Hızlı başlangıç Azure Media Player](azure-media-player-quickstart.md)
+- [Azure Media Player tam kurulum](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)

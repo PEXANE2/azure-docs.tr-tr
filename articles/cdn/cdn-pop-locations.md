@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 4d74d2a5f23fce28eed4901d1f5a5a4a6537adf5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 46fd9285f550b1a730b9040c46bacd7e34650b1e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852549"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511680"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Metro tarafından Azure CDN kapsama 
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 > Her Azure CDN ürününde CDN altyapılarını oluşturmanın ayrı bir yolu olduğundan, Microsoft, hangi Azure CDN ürünün kullanılacağına karar vermek için POP konumlarının kullanılmasını önerir. Bunun yerine, özelliklerini ve Son Kullanıcı performansını göz önünde bulundurun. Kullanıcılarınız için doğru ürünü seçmek üzere her bir Azure CDN ürünüyle performansı test edin. 
 > 
 
-| Region | Microsoft | Verizon | Akamai |
+| Bölge | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Kuzey Amerika | TORIN, Kanada<br />Vansu ver, Kanada<br />Montreal, Kanada<br />Querétaro, Meksika<br />San Juan, Porto Riko<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Raleigh, NC, USA<br />Boston, MA, USA<br />Cheyenne, WY, ABD<br />Minneapolis, MN, USA<br />Chicago, IL, ABD<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, ABD<br />Las Vegas, NV, ABD<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland veya, ABD<br />San Antonio, TX, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA | Guadalajara, Meksika<br />Mexico City, Mexico<br />Puebla, Meksika<br />Querétaro, Meksika<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, ABD<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, ABD<br />Miamı, FL, USA<br />New York, NY, USA<br />Philaphia, PA, USA<br />San Josa, CA, ABD<br />Seattle, WA, USA<br />Washington, DC, USA <br /> Ashburn, VA, USA <br /> Phoenix, AZ, USA | Kanada<br />Meksika<br />USA |
 | Güney Amerika | Kaya, Brezilya<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Santiago, Şili<br />Bogota, Kolombiya<br />Buenos Aonis, Arjantin | Buenos Aonis, Arjantin<br />Rio de Janeiro, Brezilya<br />Sao Paulo, Brezilya<br />Valparaíso, Şili<br />Bogota, Kolombiya<br />Barranquilla, Kolombiya<br />Medellin, Kolombiya<br />Tito, Ekvador<br />Lima, Peru | Arjantin<br />Brezilya<br />Şili<br />Kolombiya<br />Ekvador<br />Peru<br />Uruguay |
@@ -49,4 +49,4 @@ Bu makalede, Azure Content Delivery Network (CDN) ürünleriyle ilgili varlık n
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Beyaz listeye yönelik en son IP adreslerini almak için [Azure CDN Edge düğümleri API 'sine](/rest/api/cdn/edgenodes)bakın.
+* Allowlist için en son IP adreslerini almak üzere [Azure CDN Edge düğümleri API 'sine](/rest/api/cdn/edgenodes)bakın.

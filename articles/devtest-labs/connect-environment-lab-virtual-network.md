@@ -3,12 +3,12 @@ title: Ortamları Azure DevTest Labs bir laboratuvarın VNET 'ine bağlama | Mic
 description: Azure DevTest Labs içindeki laboratuvarınızın sanal ağına bir ortamı (Service Fabric küme gibi) bağlamayı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 31f924a4b6d7cbe1b6f71c7e34d43fd9c135bac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 980c6317ded70db374c2b948075f060754168b0f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483780"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511969"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs ortamında bir ortamı laboratuvarınızın sanal ağına bağlama
 Azure DevTest Labs, [yerleşik ağ](devtest-lab-configure-vnet.md)ile laboratuvarda sanal makine oluşturmayı kolaylaştırır. [Çoklu VM ortamları oluşturma](devtest-lab-test-env.md)özelliği sayesinde harika bir esneklik elde edin. Bu makalede, bir ortamdaki VM 'Leri laboratuvar sanal ağına nasıl bağlayabilmeniz gösterilmektedir. Bu özelliği kullandığınız bir senaryo, laboratuvardaki test VM 'lerine erişmek için laboratuvar VNet 'e bağlı SQL Server veri katmanı ile N katmanlı bir uygulama ayarlamadır.  

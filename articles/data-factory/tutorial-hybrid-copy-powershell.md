@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
-ms.openlocfilehash: 9562c9fd590ea1234fb2378f03861141e58432ff
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: bed497dfdc25ec2815f51795a1f40847586ce798
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637539"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510320"
 ---
 # <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Öğretici: SQL Server veritabanından Azure Blob depolama alanına veri kopyalama
 
@@ -38,14 +38,14 @@ Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 > * Bir işlem hattı çalıştırması başlatma.
 > * İşlem hattı çalıştırmasını izleme.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 ### <a name="azure-subscription"></a>Azure aboneliği
 Başlamadan önce, mevcut bir Azure aboneliğiniz yoksa [ücretsiz hesap oluşturun](https://azure.microsoft.com/free/).
 
 ### <a name="azure-roles"></a>Azure rolleri
 Veri fabrikası örnekleri oluşturmak için Azure’da oturum açarken kullandığınız kullanıcı hesabına *Katkıda bulunan* veya *Sahip* rolü atanmalı ya da bu hesap Azure aboneliğinin *yöneticisi* olmalıdır.
 
-Abonelikte sahip olduğunuz izinleri görüntülemek için Azure portalına gidin, sağ üst köşeden kullanıcı adınızı seçtikten sonra **İzinler** ’i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin. Bir role kullanıcı eklemeye ilişkin örnek yönergeler için [Azure Portal makalesini kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md) bölümüne bakın.
+Abonelikte sahip olduğunuz izinleri görüntülemek için Azure portalına gidin, sağ üst köşeden kullanıcı adınızı seçtikten sonra **İzinler**’i seçin. Birden çok aboneliğe erişiminiz varsa uygun aboneliği seçin. Bir role kullanıcı eklemeye ilişkin örnek yönergeler için [Azure Portal makalesini kullanarak Azure rol atamaları ekleme veya kaldırma](../role-based-access-control/role-assignments-portal.md) bölümüne bakın.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 ve 2017
 Bu öğreticide, bir SQL Server veritabanını *kaynak* veri deposu olarak kullanırsınız. Bu öğreticide oluşturduğunuz veri fabrikasındaki işlem hattı, verileri bu SQL Server veritabanından (kaynak) Azure Blob depolama alanına (havuz) kopyalar. Daha sonra SQL Server veritabanınızda **emp** adlı bir tablo oluşturur ve tabloya birkaç örnek girdi eklersiniz.
@@ -54,11 +54,11 @@ Bu öğreticide, bir SQL Server veritabanını *kaynak* veri deposu olarak kulla
 
 1. Kimlik bilgilerinizi kullanarak SQL Server örneğinize bağlanın.
 
-1. Örnek bir veritabanı oluşturun. Ağaç görünümünde **Veritabanları** 'na sağ tıklayın ve **Yeni Veritabanı** 'nı seçin.
+1. Örnek bir veritabanı oluşturun. Ağaç görünümünde **Veritabanları**'na sağ tıklayın ve **Yeni Veritabanı**'nı seçin.
 
-1. **Yeni Veritabanı** penceresinde, veritabanı için bir ad girin ve **Tamam** 'ı seçin.
+1. **Yeni Veritabanı** penceresinde, veritabanı için bir ad girin ve **Tamam**'ı seçin.
 
-1. Çalışan **tablosunu oluşturmak** ve içine bazı örnek verileri eklemek için veritabanında aşağıdaki sorgu betiğini çalıştırın. Ağaç görünümünde, oluşturduğunuz veritabanına sağ tıklayın ve **Yeni Sorgu** 'yu seçin.
+1. Çalışan **tablosunu oluşturmak** ve içine bazı örnek verileri eklemek için veritabanında aşağıdaki sorgu betiğini çalıştırın. Ağaç görünümünde, oluşturduğunuz veritabanına sağ tıklayın ve **Yeni Sorgu**'yu seçin.
 
     ```sql
     CREATE TABLE dbo.emp
@@ -83,30 +83,30 @@ Bu öğreticide, Azure depolama hesabınızın adını ve anahtarını kullanır
 
 1. Azure kullanıcı adı ve parolanızla [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Sol bölmede, **Depolama** anahtar sözcüğünü kullanarak **Diğer hizmetler** filtresini ve ardından **Depolama hesapları** ’nı seçin.
+1. Sol bölmede, **Depolama** anahtar sözcüğünü kullanarak **Diğer hizmetler** filtresini ve ardından **Depolama hesapları**’nı seçin.
 
     ![Depolama hesabını arama](media/doc-common-process/search-storage-account.png)
 
 1. Depolama hesapları listesinde, depolama hesabınız için filtre uygulayın (gerekirse) ve depolama hesabınızı seçin.
 
-1. **Depolama hesabı** penceresinde **Erişim anahtarları** 'nı seçin.
+1. **Depolama hesabı** penceresinde **Erişim anahtarları**'nı seçin.
 
 1. **Depolama hesabı adı** ve **key1** kutularında değerleri kopyalayın ve ardından onları öğreticide daha sonra kullanmak için Not Defteri'ne veya başka bir düzenleyiciye yapıştırın.
 
 #### <a name="create-the-adftutorial-container"></a>Adftutorial kapsayıcını oluşturma
 Bu bölümde, Azure Blob depolamada **adföğreticisi** adlı bir blob kapsayıcısı oluşturursunuz.
 
-1. **Depolama hesabı** penceresinde **Genel Bakış** ’a geçin ve sonra **Bloblar** ’ı seçin.
+1. **Depolama hesabı** penceresinde **Genel Bakış**’a geçin ve sonra **Bloblar**’ı seçin.
 
     ![Bloblar seçeneğini belirleyin](media/tutorial-hybrid-copy-powershell/select-blobs.png)
 
-1. **Blob hizmeti** penceresinde **Kapsayıcı** ’yı seçin.
+1. **Blob hizmeti** penceresinde **Kapsayıcı**’yı seçin.
 
-1. **Yeni kapsayıcı** penceresinde, **Ad** kutusuna **adftutorial** girin ve ardından **Tamam** ’ı seçin.
+1. **Yeni kapsayıcı** penceresinde, **Ad** kutusuna **adftutorial** girin ve ardından **Tamam**’ı seçin.
 
     ![Kapsayıcı adını girin](media/tutorial-hybrid-copy-powershell/new-container-dialog.png)
 
-1. Kapsayıcılar listesinde **adftutorial** ’ı seçin.  
+1. Kapsayıcılar listesinde **adftutorial**’ı seçin.  
 
 1. **Adföğreticisi** için **kapsayıcı** penceresini açık tutun. Öğreticinin sonundaki çıktıyı doğrulamak için bu sayfayı kullanırsınız. Data Factory bu kapsayıcıda çıktı klasörünü otomatik olarak oluşturduğundan sizin oluşturmanız gerekmez.
 
@@ -129,7 +129,7 @@ Makinenizde önceden yüklü değilse Azure PowerShell’in en son sürümünü 
     Connect-AzAccount
     ```        
 
-1. Birden çok Azure aboneliğiniz varsa, birlikte çalışmak istediğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId** ’yi Azure aboneliğinizin kimliği ile değiştirin:
+1. Birden çok Azure aboneliğiniz varsa, birlikte çalışmak istediğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **SubscriptionId**’yi Azure aboneliğinizin kimliği ile değiştirin:
 
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
@@ -179,7 +179,7 @@ Makinenizde önceden yüklü değilse Azure PowerShell’in en son sürümünü 
 >    The specified data factory name 'ADFv2TutorialDataFactory' is already in use. Data factory names must be globally unique.
 >    ```
 > * Veri fabrikası örnekleri oluşturmak için Azure’da oturum açarken kullandığınız kullanıcı hesabına *katkıda bulunan* veya *sahip* rolü atanmalı veya bu hesap Azure aboneliğinin *yöneticisi* olmalıdır.
-> * Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics** 'i genişleterek **Data Factory** : [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
+> * Data Factory'nin kullanılabileceği Azure bölgelerinin bir listesi için bir sonraki sayfada ilgilendiğiniz bölgeleri seçin ve **Analytics**'i genişleterek **Data Factory**: [Products available by region](https://azure.microsoft.com/global-infrastructure/services/) (Bölgeye göre kullanılabilir durumdaki ürünler) bölümünü bulun. Veri fabrikası tarafından kullanılan veri depoları (Azure Depolama, Azure SQL Veritabanı vb.) ve işlemler (Azure HDInsight vb.) başka bölgelerde olabilir.
 >
 >
 
@@ -201,7 +201,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     Name              : ADFTutorialIR
     Type              : SelfHosted
     ResourceGroupName : <resourceGroupName>
@@ -218,7 +218,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     State                     : NeedRegistration
     Version                   :
     CreateTime                : 9/10/2019 3:24:09 AM
@@ -257,21 +257,21 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 ## <a name="install-the-integration-runtime"></a>Tümleştirme çalışma zamanını yükleme
 1. [Azure Data Factory Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717)’ı yerel Windows makinesine indirin ve yüklemeyi çalıştırın.
 
-1. **Microsoft Integration Runtime Kurulum Sihirbazına Hoş Geldiniz** sayfasında **İleri** 'yi seçin.  
+1. **Microsoft Integration Runtime Kurulum Sihirbazına Hoş Geldiniz** sayfasında **İleri**'yi seçin.  
 
-1. **Son Kullanıcı Lisans Sözleşmesi** penceresinde koşulları ve lisans sözleşmesini kabul edin ve **İleri** 'yi seçin.
+1. **Son Kullanıcı Lisans Sözleşmesi** penceresinde koşulları ve lisans sözleşmesini kabul edin ve **İleri**'yi seçin.
 
-1. **Hedef Klasör** penceresinde **İleri** ’yi seçin.
+1. **Hedef Klasör** penceresinde **İleri**’yi seçin.
 
-1. **Microsoft Integration Runtime yüklenmeye hazır** penceresinde **Yükle** 'yi seçin.
+1. **Microsoft Integration Runtime yüklenmeye hazır** penceresinde **Yükle**'yi seçin.
 
-1. **Microsoft Integration Runtime Kurulum Sihirbazı Tamamlandı** sayfasında **Son** 'u seçin.
+1. **Microsoft Integration Runtime Kurulum Sihirbazı Tamamlandı** sayfasında **Son**'u seçin.
 
-1. **Integration Runtime’ı (şirket içinde barındırılan) Kaydet** penceresinde, önceki bölümde kaydettiğiniz anahtarı yapıştırın ve **Kaydol** 'u seçin.
+1. **Integration Runtime’ı (şirket içinde barındırılan) Kaydet** penceresinde, önceki bölümde kaydettiğiniz anahtarı yapıştırın ve **Kaydol**'u seçin.
 
     ![Tümleştirme çalışma zamanını kaydetme](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
 
-1. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** penceresinde **son** ' u seçin.
+1. **Yeni Integration Runtime (Şirket içinde barındırılan) düğümü** penceresinde **son**' u seçin.
 
     ![Yeni Integration Runtime Düğümü penceresi](media/tutorial-hybrid-copy-powershell/new-integration-runtime-node-page.png)
 
@@ -279,7 +279,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     ![Başarıyla kaydedildi](media/tutorial-hybrid-copy-powershell/registered-successfully.png)
 
-1. **Integration Runtime’ı (şirket içinde barındırılan) Kaydet** penceresinde **Configuration Manager'ı Başlat** 'ı seçin.
+1. **Integration Runtime’ı (şirket içinde barındırılan) Kaydet** penceresinde **Configuration Manager'ı Başlat**'ı seçin.
 
 1. Düğüm bulut hizmetine bağlandığında şu ileti görüntülenir:
 
@@ -289,7 +289,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     a. **Configuration Manager** penceresinde **Tanılama** sekmesine geçin.
 
-    b. **Veri kaynağı türü** kutusunda **SqlServer** ’ı seçin.
+    b. **Veri kaynağı türü** kutusunda **SqlServer**’ı seçin.
 
     c. Sunucu adını girin.
 
@@ -301,7 +301,7 @@ Bu bölümde, şirket içinde barındırılan bir tümleştirme çalışma zaman
 
     örneğin: Kullanıcı adıyla ilişkili parolayı girin.
 
-    h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Sına** ’yı seçin.  
+    h. Tümleştirme çalışma zamanının SQL Server’a bağlanabildiğini onaylamak için **Sına**’yı seçin.  
     ![Bağlantı başarılı oldu](media/tutorial-hybrid-copy-powershell/config-manager-diagnostics-tab.png)
 
     Bağlantı başarılı olursa yeşil bir onay işareti görüntülenir. Başarılı olmazsa hata ile ilişkili bir hata iletisi alırsınız. Sorunları giderin ve tümleştirme çalışma zamanının SQL Server örneğinize bağlanabildiğinden emin olun.
@@ -345,7 +345,7 @@ Bu adımda, Azure depolama hesabınızı veri fabrikasına bağlarsınız.
 
    Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroup name>
     DataFactoryName   : <dataFactory name>
@@ -415,10 +415,10 @@ Bu adımda, SQL Server örneğinizi Data Factory 'ye bağlarsınız.
     > - SQL Server örneğinize bağlanmak için kullandığınız kimlik doğrulaması yöntemine dayalı bölümü seçin.
     > - **\<integration runtime name>** Tümleştirme çalışma zamanının adıyla değiştirin.
     > - Dosyayı kaydetmeden önce,,, **\<servername>** ve öğesini **\<databasename>** **\<username>** **\<password>** SQL Server örneğinizin değerleriyle değiştirin.
-    > - Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *etkialanım \\ \\ \ Kullanıcı* ' yı kullanın.
+    > - Kullanıcı hesabınızda veya sunucu adında ters eğik çizgi karakteri (\\) kullanmanız gerekirse önüne kaçış karakterini (\\) koyun. Örneğin, *etkialanım \\ \\ \ Kullanıcı*' yı kullanın.
 
 1. Hassas verileri (kullanıcı adı, parola ve benzeri) şifrelemek için `New-AzDataFactoryV2LinkedServiceEncryptedCredential` cmdlet'ini çalıştırın.  
-    Bu şifreleme, kimlik bilgilerinin Veri Koruma Uygulama Programlama Arabirimi (DPAPI) kullanılarak şifrelenmesini sağlar. Şifrelenmiş kimlik bilgileri, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde (yerel makine) yerel olarak kaydedilir. Çıktı yükü, şifrelenmiş kimlik bilgilerini içeren başka bir JSON dosyasına (bu örnekte *encryptedLinkedService.json* ) yönlendirilebilir.
+    Bu şifreleme, kimlik bilgilerinin Veri Koruma Uygulama Programlama Arabirimi (DPAPI) kullanılarak şifrelenmesini sağlar. Şifrelenmiş kimlik bilgileri, şirket içinde barındırılan tümleştirme çalışma zamanı düğümünde (yerel makine) yerel olarak kaydedilir. Çıktı yükü, şifrelenmiş kimlik bilgilerini içeren başka bir JSON dosyasına (bu örnekte *encryptedLinkedService.json*) yönlendirilebilir.
 
    ```powershell
    New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
@@ -469,7 +469,7 @@ Bu adımda, SQL Server veritabanı örneğindeki verileri temsil eden bir veri k
 
     Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     DatasetName       : SqlServerDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -522,7 +522,7 @@ Bağlı hizmet, veri fabrikasının çalışma zamanında Azure depolama hesabı
 
     Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     DatasetName       : AzureBlobDataset
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -602,7 +602,7 @@ Bu öğreticide, kopyalama etkinliği ile bir işlem hattı oluşturursunuz. Kop
 
     Örnek çıktı aşağıdaki gibidir:
 
-    ```json
+    ```console
     PipelineName      : SQLServerToBlobPipeline
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -639,7 +639,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 
     Örnek çalıştırmanın çıktısı aşağıdaki gibidir:
 
-    ```JSON
+    ```console
     ResourceGroupName    : <resourceGroupName>
     DataFactoryName      : <dataFactoryName>
     ActivityRunId        : 24af7cf6-efca-4a95-931d-067c5c921c25
@@ -709,7 +709,7 @@ $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -Resou
 ## <a name="verify-the-output"></a>Çıktıyı doğrulama
 İşlem hattı, `adftutorial` blob kapsayıcısında *fromonprem* adlı çıktı klasörünü otomatik olarak oluşturur. Çıktı klasöründe *dbo.emp.txt* dosyasını gördüğünüzü onaylayın.
 
-1. Çıktı klasörünü görmek için, Azure portalındaki **adftutorial** kapsayıcı penceresinde **Yenile** ’yi seçin.
+1. Çıktı klasörünü görmek için, Azure portalındaki **adftutorial** kapsayıcı penceresinde **Yenile**’yi seçin.
 1. Klasör listesinde `fromonprem` seçeneğini belirleyin.
 1. `dbo.emp.txt` adlı bir dosya gördüğünüzü onaylayın.
 

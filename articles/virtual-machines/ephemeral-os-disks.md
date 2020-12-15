@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927932"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511000"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Azure VM 'Leri için kısa ömürlü işletim sistemi diskleri
 
@@ -86,15 +86,15 @@ az vm create \
 
 Ölçek Kümeleri için, `--ephemeral-os-disk true` [az-VMSS-Create](/cli/azure/vmss#az-vmss-create) parametresini kullanın ve `--os-disk-caching` parametresini olarak ayarlayın `ReadOnly` .
 
-## <a name="portal"></a>Portal   
+## <a name="portal"></a>Portal
 
-Azure portal, **diskler** sekmesinin **Gelişmiş** bölümünü açarak bir VM dağıtımı sırasında kısa ömürlü diskler kullanmayı seçebilirsiniz. **Kısa ömürlü işletim sistemi diski kullan** için **Evet** ' i seçin.
+Azure portal, **diskler** sekmesinin **Gelişmiş** bölümünü açarak bir VM dağıtımı sırasında kısa ömürlü diskler kullanmayı seçebilirsiniz. **Kısa ömürlü işletim sistemi diski kullan** için **Evet**' i seçin.
 
 ![Kısa ömürlü işletim sistemi diski kullanmayı seçme için radyo düğmesini gösteren ekran görüntüsü](./media/virtual-machines-common-ephemeral/ephemeral-portal.png)
 
 Kısa ömürlü disk kullanma seçeneği gri ise, işletim sistemi görüntüsünden daha büyük bir önbellek boyutuna sahip olmayan veya Premium depolamayı desteklemeyen bir VM boyutu seçmiş olabilirsiniz. **Temel bilgiler** sayfasına dönün ve başka bir VM boyutu seçmeyi deneyin.
 
-Ayrıca, Portal 'ı kullanarak kısa ömürlü işletim sistemi diskleri ile ölçek kümeleri de oluşturabilirsiniz. Yeterli büyüklükte bir önbellek boyutuna sahip bir VM boyutu seçtiğinizden emin olun ve ardından **kısa ömürlü işletim sistemi diski kullanın** ' de **Evet** ' i seçin.
+Ayrıca, Portal 'ı kullanarak kısa ömürlü işletim sistemi diskleri ile ölçek kümeleri de oluşturabilirsiniz. Yeterli büyüklükte bir önbellek boyutuna sahip bir VM boyutu seçtiğinizden emin olun ve ardından **kısa ömürlü işletim sistemi diski kullanın** ' de **Evet**' i seçin.
 
 ![Ölçek kümesi için kısa ömürlü bir işletim sistemi diski kullanmayı seçme radyo düğmesini gösteren ekran görüntüsü](./media/virtual-machines-common-ephemeral/scale-set.png)
 
@@ -120,7 +120,7 @@ Kısa ömürlü işletim sistemi diski kullanan bir ölçek kümesi oluşturma i
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

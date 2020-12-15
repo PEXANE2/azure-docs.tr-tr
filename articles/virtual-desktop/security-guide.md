@@ -3,15 +3,15 @@ title: Windows sanal masaüstü güvenliği en iyi yöntemleri-Azure
 description: Windows sanal masaüstü ortamınızı güvenli tutmak için en iyi uygulamalar.
 author: heidilohr
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d3033af32229be238831740c11a1112513259a43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023165"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511544"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -35,10 +35,10 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 |Oturum Ana Bilgisayarı işletim sistemi|Yes|
 |Dağıtım yapılandırması|Yes|
 |Ağ denetimleri|Yes|
-|Sanallaştırma denetim düzlemi|No|
-|Fiziksel konaklar|No|
-|Fiziksel ağ|No|
-|Fiziksel veri merkezi|No|
+|Sanallaştırma denetim düzlemi|Hayır|
+|Fiziksel konaklar|Hayır|
+|Fiziksel ağ|Hayır|
+|Fiziksel veri merkezi|Hayır|
 
 Müşterinin sorumlu olmadığı güvenlik ihtiyaçları Microsoft tarafından işlenir.
 
@@ -80,7 +80,7 @@ Windows sanal masaüstündeki tüm kullanıcılar ve yöneticiler için Multi-Fa
 
 Denetim günlüğü toplamayı etkinleştirmek, Windows sanal masaüstü ile ilgili Kullanıcı ve yönetici etkinliğini görüntülemenize olanak sağlar. Anahtar denetim günlüklerine bazı örnekler şunlardır:
 
--   [Azure Etkinlik Günlüğü](../azure-monitor/platform/activity-log.md)
+-   [Azure etkinlik günlüğü](../azure-monitor/platform/activity-log.md)
 -   [Etkinlik günlüğünü Azure Active Directory](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Oturum Konakları](../azure-monitor/platform/agent-windows.md)
@@ -98,6 +98,25 @@ Bir dağıtım modeli seçerken, uzak kullanıcılara tüm sanal masaüstlerine 
 ## <a name="session-host-security-best-practices"></a>Oturum Ana bilgisayarı güvenlik en iyi uygulamaları
 
 Oturum Konakları, bir Azure aboneliği ve sanal ağ içinde çalışan sanal makinelerdir. Windows sanal masaüstü dağıtımınızın genel güvenliği, oturum konaklarınıza yerleştirdiğiniz güvenlik denetimlerine bağlıdır. Bu bölümde, oturum konaklarınızın güvende tutulması için en iyi uygulamalar açıklanmaktadır.
+
+### <a name="enable-screen-capture-protection-preview"></a>Ekran yakalama korumasını etkinleştir (Önizleme)
+
+Ekran yakalama koruması özelliği, önemli bilgilerin istemci uç noktalarında yakalanmasını önler. Bu özelliği etkinleştirdiğinizde, uzak içerik ekran görüntüleri ve ekran paylaşımlarında otomatik olarak engellenir veya gizlenir. Ayrıca, ekranınızın içeriğini sürekli olarak yakaladığı kötü amaçlı yazılımdan de gizlenir.
+
+Bu ilke, bir kayıt defteri anahtarı yapılandırılarak ana bilgisayar düzeyinde zorlanır. Bu ilkeyi etkinleştirmek için PowerShell 'i açın ve şu cmdlet 'i çalıştırarak **Fenablescreencaptureprotection** kayıt defteri anahtarını ayarlayın:
+
+```powershell
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fEnableScreenCaptureProtection /t REG_DWORD /d 1
+```
+
+Bu yeni özelliği test etmek için:
+
+- Konak havuzlarınızın doğrulama ortamında sağlandığından emin olun.
+- Windows Masaüstü istemcisi, sürüm 1.2.1526 veya üstünü indirdiğinizden ve yüklediğinizden emin olun.
+
+>[!NOTE]
+>Önizleme sırasında, yalnızca Windows 10 uç noktalarından gelen tam masaüstü bağlantıları bu özelliği destekler.
+
 
 ### <a name="enable-endpoint-protection"></a>Endpoint Protection 'ı etkinleştir
 

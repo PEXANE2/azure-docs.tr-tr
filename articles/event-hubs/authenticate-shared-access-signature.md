@@ -4,12 +4,12 @@ description: Bu makalede, paylaşılan erişim imzalarını kullanarak Event Hub
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5d52b82ad6bbcb8dc7c028d3eba25a584590840
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 26c921213168e1028f311eabaa417efdb76f5c97
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332442"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510099"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Event Hubs kaynaklarına erişimin kimliğini doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere verdiğiniz erişim türü üzerinde ayrıntılı denetim sağlar. SAS içinde ayarlayabileceğiniz bazı denetimler aşağıda verilmiştir: 
@@ -212,7 +212,7 @@ Tüm belirteçler SAS anahtarlarıyla atanır. Genellikle, tüm belirteçler ayn
 >
 > İstemci bir olay hub 'ına veri gönderdiğinde, isteği belirteç ile Etiketler. Bir saldırganın belirteci bırakıp çalmasını önlemek için, istemci ile Olay Hub 'ı arasındaki iletişim şifrelenmiş bir kanal üzerinden gerçekleşmelidir.
 > 
-> Bir belirteç saldırgan tarafından çalınırsa saldırgan, belirtecinin çalındığı istemciyi taklit edebilir. Bir yayımcıyı kara listelemek, farklı bir yayımcı kullanan yeni bir belirteç alıncaya kadar istemciyi kullanılamaz hale getirir.
+> Bir belirteç saldırgan tarafından çalınırsa saldırgan, belirtecinin çalındığı istemciyi taklit edebilir. Yayımcı listeleme, farklı bir yayımcı kullanan yeni bir belirteç alıncaya kadar istemciyi kullanılamaz hale getirir.
 
 
 ## <a name="authenticating-event-hubs-consumers-with-sas"></a>SAS ile Event Hubs tüketicilerinin kimliğini doğrulama 
