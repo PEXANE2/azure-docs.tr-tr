@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Bağlayıcılar
           href: connector-troubleshoot-guide.md
+        - name: İşlem Hattı Tetikleyicileri
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: Veri Akışları
           href: data-flow-troubleshoot-guide.md
         - name: Sürekli Tümleştirme ve Dağıtım

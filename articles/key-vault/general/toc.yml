@@ -114,10 +114,6 @@
           href: developers-guide.md
         - name: Key Vault dağıtmak için Azure Resource Manager kullanma
           href: vault-create-template.md
-        - name: Web Uygulaması gizli dizilerini kaydetme
-          href: /previous-versions/azure/key-vault/vs-secure-secret-appsettings?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-        - name: .NET ile hizmetten hizmete kimlik doğrulaması
-          href: service-to-service-authentication.md
         - name: Key Vault Bağlı Hizmetini kullanma
           href: vs-key-vault-add-connected-service.md
     - name: İzleme ve yönetme
