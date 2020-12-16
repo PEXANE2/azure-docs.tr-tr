@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory uygulama yönetiminde yenilikler
 description: Azure Active Directory Uygulama yönetimi için yeni ve güncelleştirilmiş belgeler.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,30 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 38602482f1a25f212829342fe691d7bb75666d31
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: bad312b777c57a48c3205de588325d477b5773af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571020"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563407"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Uygulama yönetimi Azure Active Directory: yenilikler
 
 Azure Active Directory Uygulama yönetimi belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Uygulama yönetimi hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdaki bir uygulama için OıDC tabanlı çoklu oturum açma (SSO) ayarlama](add-application-portal-setup-oidc-sso.md)
+- [Öğretici: Azure Active Directory içindeki uygulama proxy 'Si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md)
+- [OıDC tabanlı çoklu oturum açmayı anlama](configure-oidc-single-sign-on.md)
+- [Uygulama kimlik doğrulamasını Active Directory Federasyon Hizmetleri’nden Azure Active Directory’ye taşıma](migrate-adfs-apps-to-azure.md)
+- [Mevcut şirket içi proxy sunucularıyla çalışma](application-proxy-configure-connectors-with-proxy-servers.md)
+- [Uygulama yönetimi Azure Active Directory: yenilikler](whats-new-docs.md)
+- [Uygulamaları Azure AD 'ye geçirmek için AD FS uygulama etkinliği raporunu (Önizleme) kullanın](migrate-adfs-application-activity.md)
+- [Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama](application-proxy-integrate-with-remote-desktop-services.md)
+
 
 ## <a name="november-2020"></a>Kasım 2020
 

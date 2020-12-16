@@ -11,52 +11,61 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/15/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 75ca0438336825bf8d4bbdc6e08eca109f430fde
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785927"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563356"
 ---
-# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama
+# <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama
 
-Bu konu başlığı altında, kaynaklarınızı korumak için aldığınız uyarıların nasıl görüntüleneceği ve işlenmesi gösterilmektedir. 
+> [!TIP]
+> Bu sayfadaki bilgiler, güvenlik uyarıları sayfasının en üstündeki başlıkta bulunan yeni (Önizleme) uyarılar deneyimine başvurur. 
+>
+> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Yeni önizleme uyarıları deneyimine bağlantı içeren başlık":::
 
-* Farklı Uyarı türleri hakkında bilgi edinmek için bkz. [güvenlik uyarısı türleri](alerts-reference.md).
-* Güvenlik Merkezi 'nin nasıl uyarı üretdiğine ilişkin genel bakış için bkz. [Azure Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-alerts-overview.md).
+Bu konu başlığı altında, güvenlik merkezi 'nin uyarılarını görüntüleme ve işleme ve kaynaklarınızı koruma işlemlerinin nasıl yapılacağı gösterilmektedir.
 
-> [!NOTE]
-> Gelişmiş algılamaları etkinleştirmek için Azure Defender 'ı etkinleştirin. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için [Güvenlik İlkesi](tutorial-security-policy.md)'nde Fiyatlandırma Katmanı’nı seçin. Daha fazla bilgi için bkz. [Azure Güvenlik Merkezi fiyatlandırması](security-center-pricing.md).
+Güvenlik uyarılarını tetikleyen gelişmiş algılamalar yalnızca Azure Defender ile kullanılabilir. Ücretsiz deneme sürümü mevcuttur. Yükseltmek için bkz. [Azure Defender 'ı etkinleştirme](security-center-pricing.md#enable-azure-defender).
 
 ## <a name="what-are-security-alerts"></a>Güvenlik uyarıları nedir?
 Güvenlik Merkezi, gerçek tehditleri algılamak ve hatalı pozitif sonuçları azaltmak için Azure kaynaklarınızdan, ağınızdan ve güvenlik duvarı ve uç nokta koruma çözümleri gibi bağlı iş ortağı çözümlerinden günlük verilerini otomatik olarak toplar, çözümler ve tümleştirir. Öncelikli güvenlik uyarıları listesi, sorunu hızlıca araştırmanız gereken bilgiler ve saldırıyı düzeltme hakkındaki önerilerle birlikte Güvenlik Merkezi'nde gösterilir.
 
-> [!NOTE]
-> Güvenlik Merkezi algılama yeteneklerinin nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-alerts-overview.md#detect-threats).
+Farklı Uyarı türleri hakkında bilgi edinmek için bkz. [güvenlik uyarıları-bir başvuru kılavuzu](alerts-reference.md).
+
+Güvenlik Merkezi 'nin nasıl uyarı üretdiğine ilişkin genel bakış için bkz. [Azure Güvenlik Merkezi 'nin tehditleri nasıl algıladığı ve yanıt verdiği](security-center-alerts-overview.md).
+
 
 ## <a name="manage-your-security-alerts"></a>Güvenlik uyarılarınızı yönetme
 
-1. Güvenlik Merkezi panosunda, uyarıları görüntülemek ve genel bakış için  **tehdit koruması** kutucuğuna bakın.
+1. Güvenlik Merkezi 'nin Genel Bakış sayfasında, sayfanın üst kısmındaki **güvenlik uyarıları** kutucuğunu veya kenar çubuğundan bağlantıyı seçin.
 
-    ![Güvenlik Merkezi'nde güvenlik uyarıları kutucuğu](./media/security-center-managing-and-responding-alerts/security-center-dashboard-alert.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/overview-page-alerts-links.png" alt-text="Azure Güvenlik Merkezi 'nin Genel Bakış sayfasından güvenlik uyarıları sayfasına alma":::
 
-1. Uyarılar hakkında daha fazla ayrıntı görmek için kutucuğa tıklayın.
+    Güvenlik uyarıları sayfası açılır.
 
-   ![Güvenlik Merkezi'nde Güvenlik uyarıları](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
+    :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Güvenlik Merkezi 'nin güvenlik uyarıları listesi":::
 
-1. Gösterilen uyarıları filtrelemek için **filtre** ' ye tıklayın ve açılan **filtre** dikey penceresinde, uygulamak istediğiniz filtre seçeneklerini belirleyin. Liste seçili filtreye göre güncelleştirilir. Filtreleme çok faydalı olabilir. Örneğin, sistemde olası bir ihlali araştırdığınız için son 24 saatte oluşan güvenlik uyarılarını ele almak isteyebilirsiniz.
+1. Uyarılar listesini filtrelemek için ilgili filtrelerin birini seçin. İsteğe bağlı olarak **Filtre Ekle** seçeneği ile daha fazla filtre ekleyebilirsiniz.
 
-    ![Güvenlik Merkezi'nde uyarıları filtreleme](./media/security-center-managing-and-responding-alerts/security-center-filter-alerts.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-small.png" alt-text="Uyarılar görünümüne filtreler ekleme" lightbox="./media/security-center-managing-and-responding-alerts/alerts-adding-filters-large.png":::
+
+    Liste, seçtiğiniz filtreleme seçeneklerine göre güncelleştirilir. Filtreleme çok faydalı olabilir. Örneğin, sistemde olası bir ihlali araştırdığınız için son 24 saatte oluşan güvenlik uyarılarını ele almak isteyebilirsiniz.
+
 
 ## <a name="respond-to-security-alerts"></a>Güvenlik uyarılarını yanıtlama
 
-1. **Güvenlik uyarıları** listesinden bir güvenlik uyarısı ' na tıklayın. Bir saldırının düzeltilmesi için gerçekleştirmeniz gereken kaynaklar ve ilgili adımlar gösterilir.
+1. **Güvenlik uyarıları** listesinden bir uyarı seçin. Bir yan bölme açılır ve uyarının açıklaması ve etkilenen tüm kaynaklar gösterilir. 
 
-    ![Güvenlik uyarılarını yanıtlama](./media/security-center-managing-and-responding-alerts/security-center-alert.png)
+    :::image type="content" source="./media/security-center-managing-and-responding-alerts/alerts-details-pane.png" alt-text="Güvenlik uyarısının mini Ayrıntılar görünümü":::
 
-1. Bilgileri inceledikten sonra saldırıya uğrayan bir kaynağa tıklayın.
+    > [!TIP]
+    > Bu yan bölme açıkken, klavyenizdeki yukarı ve aşağı oklarıyla uyarı listesini hızlıca inceleyebilirsiniz.
+
+1. Daha fazla bilgi için **tam ayrıntıları görüntüle**' yi seçin.
 
     Güvenlik Uyarısı sayfasının sol bölmesi, güvenlik uyarısıyla ilgili üst düzey bilgileri gösterir: Başlık, önem derecesi, durum, etkinlik süresi, şüpheli etkinliğin açıklaması ve etkilenen kaynak. Etkilenen kaynağın yanı sıra kaynakla ilgili Azure etiketlerdir. Uyarıyı araştırırken kaynağın kuruluş bağlamını anlamak için bunları kullanın.
 
@@ -81,3 +90,4 @@ Bu belgede, güvenlik uyarılarını görüntülemeyi öğrendiniz. İlgili malz
 
 - [Uyarı gizleme kurallarını yapılandırma](alerts-suppression-rules.md)
 - [Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirin](workflow-automation.md)
+- [Güvenlik uyarıları - başvuru kılavuzu](alerts-reference.md)

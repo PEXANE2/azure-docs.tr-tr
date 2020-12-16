@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9312094d1d86ea25ebd573e5d14b6d5bd0619cfc
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: a3f423a144738fdaa4462606de6ad4a4e34d6775
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108244"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563424"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Azure DevOps kullanarak sürekli teslim
 
@@ -30,7 +30,7 @@ YAML tabanlı bir işlem hattı oluşturmak için, önce uygulamanızı derleyin
 
 Uygulamanızı nasıl derleyebilirsiniz Azure Pipelines uygulamanızın programlama diline bağlıdır. Her dilin bir dağıtım yapıtı oluşturan belirli derleme adımları vardır. Bir dağıtım yapıtı, işlev uygulamanızı Azure 'da dağıtmak için kullanılır.
 
-# <a name="c"></a>[C\#](#tab/csharp)
+# <a name="c"></a>[,\#](#tab/csharp)
 
 .NET uygulaması derlemek üzere bir YAML dosyası oluşturmak için aşağıdaki örneği kullanabilirsiniz:
 
@@ -234,7 +234,7 @@ Bazı durumlarda, yapı yapıtları belirli bir klasör yapısına sahiptir. **Y
 
 #### <a name="javascript-apps"></a>JavaScript uygulamaları
 
-JavaScript uygulamanızın Windows yerel modüllerine bağımlılığı varsa, aracı havuzu sürümünü **BARıNDıRıLAN VS2017**olarak güncelleştirmeniz gerekir.
+JavaScript uygulamanızın Windows yerel modüllerine bağımlılığı varsa, aracı havuzu sürümünü **BARıNDıRıLAN VS2017** olarak güncelleştirmeniz gerekir.
 
 ![Aracı havuzu sürümünü Güncelleştir](media/functions-how-to-azure-devops/change-agent.png)
 
@@ -258,7 +258,7 @@ Azure 'da bir derleme işlem hattı oluşturmak için `az functionapp devops-pip
 
     - Yeterli izinlere sahip bir GitHub kişisel erişim belirteci (PAT) oluşturmak için izinleriniz olmalıdır. Daha fazla bilgi için bkz [. GITHUB Pat izin gereksinimleri.](/azure/devops/pipelines/repos/github#repository-permissions-for-personal-access-token-pat-authentication)
 
-    - Otomatik olarak oluşturulan YAML dosyasını yürütmek için GitHub deponuzdaki Ana dala yürütmek için izinleriniz olmalıdır.
+    - Otomatik olarak oluşturulmuş YAML dosyasını çalıştırabilmeniz için GitHub deponuzdaki Ana dala yürütmek için izinleriniz olmalıdır.
 
 - Kodunuz Azure Repos:
 

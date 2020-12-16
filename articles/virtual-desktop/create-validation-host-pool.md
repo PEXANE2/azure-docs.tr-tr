@@ -3,15 +3,15 @@ title: Windows sanal masaüstü konak havuzu hizmet güncelleştirmeleri-Azure
 description: Üretime yönelik güncelleştirmeleri kullanıma almadan önce hizmet güncelleştirmelerini izlemek için bir doğrulama ana bilgisayarı havuzu oluşturma.
 author: Heidilohr
 ms.topic: tutorial
-ms.date: 03/13/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b8eb8378480b8784939e3ab63327e73e3705c74a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ead4c0aa7d8d71642fd8a4635edbabcafee5b6c2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90526519"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563254"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Öğretici: hizmet güncelleştirmelerini doğrulamak için bir konak havuzu oluşturma
 
@@ -66,6 +66,20 @@ Cmdlet 'inin sonuçları şu çıkışa benzer görünmelidir:
     LoadBalancerType    : BreadthFirst
     ValidationEnvironment : True
 ```
+
+## <a name="enable-your-validation-environment-with-the-azure-portal"></a>Azure portal ile doğrulama ortamınızı etkinleştirin
+
+Doğrulama ortamınızı etkinleştirmek için Azure portal de kullanabilirsiniz.
+
+Doğrulama ana bilgisayar havuzunuzu yapılandırmak için Azure portal kullanmak için:
+
+1. <https://portal.azure.com> adresinden Azure portalında oturum açın.
+2. **Windows sanal masaüstü** araması yapın ve seçin.
+3. Windows sanal masaüstü sayfasında **konak havuzları**' nı seçin.
+4. Düzenlemek istediğiniz konak havuzunun adını seçin.
+5. **Özellikler**’i seçin.
+6. Doğrulama ortamı alanında, doğrulama ortamını etkinleştirmek için **Evet** ' i seçin.
+7. **Kaydet**’i seçin. Bu, yeni ayarları uygular.
 
 ## <a name="update-schedule"></a>Zamanlamayı Güncelleştir
 

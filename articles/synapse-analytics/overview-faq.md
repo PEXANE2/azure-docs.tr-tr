@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576035"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563271"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
@@ -37,7 +37,7 @@ SYNAPSE RBAC rolleri:
 * SYNAPSE kimlik bilgileri kullanıcısı (Önizleme)
 
 SYNAPSE çalışma alanınızı güvenli hale getirmek için RBAC rollerini şu RBAC kapsamlarına atayın:
-* Çalışma Alanları
+* Çalışma alanları
 * Spark havuzları
 * Tümleştirme çalışma zamanları
 * Bağlı hizmetler
@@ -59,7 +59,7 @@ Y: başlangıç noktası olarak Azure SYNAPSE, Azure abonelik düzeyinde sunulan
 
 A: SYNAPSE çalışma alanları Kullanıcı tanımlı klasörleri destekler.
 
-### <a name="q-can-i-link-more-than-one-power-bi-workspaces-to-a-single-azure-synapse-workspace"></a>S: birden fazla Power BI çalışma alanını tek bir Azure SYNAPSE çalışma alanına bağlayabilir miyim?
+### <a name="q-can-i-link-more-than-one-power-bi-workspace-to-a-single-azure-synapse-workspace"></a>S: birden fazla Power BI çalışma alanını tek bir Azure SYNAPSE çalışma alanına bağlayabilir miyim?
     
 Y: Şu anda, tek bir Power BI çalışma alanını Azure SYNAPSE çalışma alanına bağlayabilirsiniz. 
 
@@ -69,9 +69,9 @@ A: Apache Spark için SYNAPSE bağlantısı GA 'dir. Sunucusuz SQL havuzu için 
 
 ### <a name="q-does-azure-synapse-workspace-support-cicd"></a>S: Azure SYNAPSE çalışma alanı CI/CD 'yi destekliyor mu? 
 
-Y: Evet! Tüm işlem hattı yapıtları, Not defterleri, SQL betikleri ve Spark iş tanımları GIT içinde yer alır. Tüm havuz tanımları, GIT 'te ARM şablonları olarak depolanır. Adanmış SQL havuzu nesneleri (şemalar, tablolar, görünümler, vb.), CI/CD desteğiyle veritabanı projeleriyle yönetilir.
+Y: Evet! Tüm işlem hattı yapıtları, Not defterleri, SQL betikleri ve Spark iş tanımları git içinde yer alır. Tüm havuz tanımları, git 'te ARM şablonları olarak depolanır. Adanmış SQL havuzu nesneleri (şemalar, tablolar, görünümler, vb.), CI/CD desteğiyle veritabanı projeleriyle yönetilir.
 
-## <a name="pipelines"></a>İşlem hatları
+## <a name="pipelines"></a>Pipelines
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>S: bir ardışık düzen çalıştırmak için hangi kimlik bilgilerinin kullanıldığını Nasıl yaparım? emin olun. 
 
@@ -91,11 +91,11 @@ Y: Şu anda, JSON 'u özgün işlem hattından dışarı aktararak ve SYNAPSE ç
 
 Y: SYNAPSE için Apache Spark, diğer hizmetlerle (AAD, AzureML, vb.) tümleştirmelere ve ek kitaplıklara (msmini tuıls, Hummingbird) ve önceden ayarlanmış performans yapılandırmalarına sahip olan Apache Spark.
 
-Apache Spark üzerinde çalışmakta olan herhangi bir iş yükü, hiçbir değişiklik yapılmadan MSFT Spark üzerinde çalışır. 
+Apache Spark üzerinde çalışmakta olan herhangi bir iş yükü, Azure SYNAPSE için değişiklik yapılmadan Apache Spark çalışır. 
 
 ### <a name="q-what-versions-of-spark-are-available"></a>S: Spark 'ın hangi sürümleri mevcuttur?
 
-Y: Azure SYNAPSE Apache Spark, Spark 2,4 ' i tam olarak destekler. Çekirdek bileşenlerin tam listesi ve şu anda desteklenen sürüm için [Apache Spark sürüm desteği ](./spark/apache-spark-version-support.md)' ne bakın.
+Y: Azure SYNAPSE Apache Spark, Spark 2,4 ' i tam olarak destekler. Çekirdek bileşenlerin tam listesi ve şu anda desteklenen sürüm için [Apache Spark sürüm desteği](./spark/apache-spark-version-support.md)' ne bakın.
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>S: Azure SYNAPSE Spark 'ta DButils 'ın eşdeğeri var mı?
 
@@ -121,7 +121,7 @@ Bu görevi gerçekleştirmenin en kolay yolu Spark ile verileri aşmanız ve bu 
  
 Bu senaryoyu karşılamak için, her geliştiriciye, az sayıda Spark kaynağı kullanacak şekilde ayarlanmış bir sunucusuz Spark havuzu vermeniz gerekir. Sunucusuz Spark havuzları hiçbir şey yapmadığından, etkin olarak kullanılana kadar çok sayıda geliştirici olduğunda maliyeti en aza indirir. Havuzlar, birbirleriyle kolayca çalışabilmek için meta verileri (Spark tabloları) paylaşır.
 
-### <a name="q-how-do-i-include-manage-and-install-libraries"></a>S: Nasıl yaparım? ekleme, yönetme ve yüklemeyi yönetme 
+### <a name="q-how-do-i-include-manage-and-install-libraries"></a>S: kitaplıkları dahil Nasıl yaparım?, yönetin ve yükler mi?
 
 Y: Spark havuzunu oluştururken, SYNAPSE çalışma alanından veya Azure portal, harici paketleri bir requirements.txt dosyası aracılığıyla yükleyebilirsiniz. Bkz. [Azure SYNAPSE Analytics 'te Apache Spark için kitaplıkları yönetme](./spark/apache-spark-azure-portal-add-libraries.md).
 
@@ -140,7 +140,7 @@ Y: "taşı" veya "geçiş" yoktur. Mevcut Havuzlarınızda yeni çalışma alan�
 A: varsayılan olarak, tüm yeni adanmış SQL havuzları bir çalışma alanına dağıtılacak; Ancak, bir tek başına form faktöründe adanmış bir SQL Havuzu (eski adıyla SQL DW) oluşturmaya devam edebilirsiniz. 
 
 
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pool"></a>S: adanmış SQL havuzları ve sunucusuz SQL havuzu arasındaki işlevsel farklılıklar nelerdir? 
+### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>S: adanmış SQL havuzları ve sunucusuz SQL havuzları arasındaki işlevsel farklılıklar nelerdir?
 
 [Y: SYNAPSE SQL Içindeki T-SQL Özellik farklılıklarının](./sql/overview-features.md)tam bir listesini bulabilirsiniz.
 
