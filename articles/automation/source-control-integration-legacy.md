@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: f1e4e288b5b95f355221188a45f1e6c764fde77c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4dedbcf58e76b8c969f8607db6922e87a85f08e5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187345"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591882"
 ---
 # <a name="use-source-control-integration-in-azure-automation---legacy"></a>Azure Otomasyonu 'nda kaynak denetimi tümleştirmesini kullanma-eski
 
@@ -34,22 +34,22 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
 
 ### <a name="set-up-source-control"></a>Kaynak denetimini ayarlama
 
-1. Azure portal Otomasyon hesabı sayfasından, **Hesap ayarları**altında, **kaynak denetimi** ' ne tıklayın.
+1. Azure portal Otomasyon hesabı sayfasından, **Hesap ayarları** altında, **kaynak denetimi** ' ne tıklayın.
 
 2. GitHub hesabı ayrıntılarınızı yapılandırabileceğiniz kaynak denetimi sayfası açılır. Yapılandırılacak parametrelerin listesi aşağıdadır:  
 
    | **Parametre** | **Açıklama** |
    |:--- |:--- |
    | Kaynak seçin |Kaynağı seçin. Şu anda yalnızca **GitHub** desteklenir. |
-   | Yetkilendirme |GitHub deponuza Azure Otomasyonu erişimi sağlamak için **Yetkilendir** düğmesine tıklayın. Zaten GitHub hesabınızda farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra sayfa, **yetkilendirme özelliği**altında GitHub Kullanıcı adınızı gösterir. |
+   | Yetkilendirme |GitHub deponuza Azure Otomasyonu erişimi sağlamak için **Yetkilendir** düğmesine tıklayın. Zaten GitHub hesabınızda farklı bir pencerede oturum açtıysanız, bu hesabın kimlik bilgileri kullanılır. Yetkilendirme başarılı olduktan sonra sayfa, **yetkilendirme özelliği** altında GitHub Kullanıcı adınızı gösterir. |
    | Depo seçin |Kullanılabilir depolar listesinden bir GitHub deposu seçin. |
-   | Dal seçin |Kullanılabilir dallar listesinden bir dal seçin. Yalnızca dal oluşturmadıysanız, **ana** dal gösterilir. |
-   | Runbook klasörü yolu |Runbook klasörü yolu, kodunuzu göndermek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/FolderName/subklasöradı**biçiminde girilmesi gerekir. Yalnızca runbook klasörü yolundaki runbook 'lar Otomasyon hesabınızla eşitlenir. Runbook klasör yolunun alt klasörlerindeki runbook **'lar eşitlenmez.** **/** Depodaki tüm runbook 'ları eşitlemek için kullanın. |
-3. Örneğin, **RootFolder**adlı ve **alt**klasörü adlı bir klasör içeren **powershellscripts** adlı bir havuzunuz varsa. Her klasör düzeyini eşitlemek için aşağıdaki dizeleri kullanabilirsiniz:
+   | Dal seçin |Kullanılabilir dallar listesinden bir dal seçin. Yalnızca bir dal oluşturmadıysanız **ana** dal gösterilir. |
+   | Runbook klasörü yolu |Runbook klasörü yolu, kodunuzu göndermek veya çekmek istediğiniz GitHub deposundaki yolu belirtir. **/FolderName/subklasöradı** biçiminde girilmesi gerekir. Yalnızca runbook klasörü yolundaki runbook 'lar Otomasyon hesabınızla eşitlenir. Runbook klasör yolunun alt klasörlerindeki runbook **'lar eşitlenmez.** **/** Depodaki tüm runbook 'ları eşitlemek için kullanın. |
+3. Örneğin, **RootFolder** adlı ve **alt** klasörü adlı bir klasör içeren **powershellscripts** adlı bir havuzunuz varsa. Her klasör düzeyini eşitlemek için aşağıdaki dizeleri kullanabilirsiniz:
 
-   1. Runbook 'ları **depodan**eşitlemek için Runbook klasörü yolu ' dur **/** .
-   2. Runbook 'ları **RootFolder**'a eşitlemek için Runbook klasörü yolu **/RootFolder**olur.
-   3. Runbook 'ları **alt**klasörden eşitlemek için, runbook klasörü yolu **/RootFolder/alt klasörüdür**.
+   1. Runbook 'ları **depodan** eşitlemek için Runbook klasörü yolu ' dur **/** .
+   2. Runbook 'ları **RootFolder**'a eşitlemek için Runbook klasörü yolu **/RootFolder** olur.
+   3. Runbook 'ları **alt** klasörden eşitlemek için, runbook klasörü yolu **/RootFolder/alt klasörüdür**.
 4. Parametreleri yapılandırdıktan sonra, kaynak denetimi ayarlama sayfasında görüntülenir.  
 
     ![Ayarları gösteren kaynak denetimi sayfası](media/source-control-integration-legacy/automation-SourceControlConfigure.png)
@@ -66,7 +66,7 @@ Azure Otomasyonu 'na bağlamak istediğiniz bir GitHub hesabınız ve bir deponu
      | `Type`  |Dize |
      | `Value` |{"Branch": \<*Your branch name*> , "runbookfolderpath": \<*Runbook folder path*> , "ProviderType": \<*has a value 1 for GitHub*> , "depo": \<*Name of your repository*> , "kullanıcıadı": \<*Your GitHub user name*> } |
 
-   * **Microsoft. Azure. Automation. SourceControl. OAuthToken**değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
+   * **Microsoft. Azure. Automation. SourceControl. OAuthToken** değişkeni, OAuthToken 'inizin güvenli şifreli değerini içerir.  
 
      |**Parametre**            |**Değer** |
      |:---|:---|
