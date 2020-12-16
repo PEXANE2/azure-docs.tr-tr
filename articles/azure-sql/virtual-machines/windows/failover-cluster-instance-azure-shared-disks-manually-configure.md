@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 244fae9f8611acd21f2ee6cd7dafa45b88606456
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6a000daa7d9e2aa93e68844e8aec5aa168c9fa60
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359362"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592424"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan di
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 
@@ -97,20 +97,19 @@ Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin:
 
 3. Her VM için, ekli Paylaşılan diskleri GUID bölümleme tablosu (GPT) olarak başlatın ve bu komutu çalıştırarak onları yeni teknoloji dosya sistemi (NTFS) olarak biçimlendirin: 
 
-   ```powershell
-   $resourceGroup = "<your resource group name>"
-       $location = "<region of your shared disk>"
-       $ppgName = "<your proximity placement groups name>"
-       $vm = Get-AzVM -ResourceGroupName "<your resource group name>" `
-           -Name "<your VM node name>"
-       $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup `
-           -DiskName "<your shared disk name>"
-       $vm = Add-AzVMDataDisk -VM $vm -Name "<your shared disk name>" `
-           -CreateOption Attach -ManagedDiskId $dataDisk.Id `
-           -Lun <available LUN  check disk setting of the VM>
-    update-AzVm -VM $vm -ResourceGroupName $resourceGroup
-   ```
-
+    ```powershell
+    $resourceGroup = "<your resource group name>"
+    $location = "<region of your shared disk>"
+    $ppgName = "<your proximity placement groups name>"
+    $vm = Get-AzVM -ResourceGroupName "<your resource group name>" `
+        -Name "<your VM node name>"
+    $dataDisk = Get-AzDisk -ResourceGroupName $resourceGroup `
+        -DiskName "<your shared disk name>"
+    $vm = Add-AzVMDataDisk -VM $vm -Name "<your shared disk name>" `
+        -CreateOption Attach -ManagedDiskId $dataDisk.Id `
+        -Lun <available LUN - check disk setting of the VM>
+    Update-AzVm -VM $vm -ResourceGroupName $resourceGroup
+    ```
 
 ## <a name="create-failover-cluster"></a>Yük devretme kümesi oluşturma
 
@@ -205,7 +204,7 @@ PowerShell ile hafif modda bir SQL Server VM kaydetme:
 ```powershell-interactive
 # Get the existing compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
-         
+
 # Register SQL VM with 'Lightweight' SQL IaaS agent
 New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
    -LicenseType PAYG -SqlManagementType LightWeight  

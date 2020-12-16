@@ -4,12 +4,12 @@ description: Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve
 ms.topic: article
 ms.date: 06/26/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fe370ec882fd0462bba6afdf11c718cf46618f0c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89fe380c3a8e0e0a82cc806bf19f9a3454041d94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480941"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592356"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs altyapısını idare edin-Şirket ilkesi ve uyumluluğu
 Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve uyumluluğunu yöneten yönergeler sunulmaktadır. 
@@ -37,7 +37,7 @@ Kuruluşunuzun genel idare ve yapılandırma yönetimi stratejisinin bir parças
 - Azure Repos kimlik doğrulaması ve yetkilendirme için Azure aboneliğinin kullandığı Azure Active Directory kiracısıyla ilişkilendirin.
 - Merkezi olarak yönetilen Azure Active Directory **Tüm DevTest Labs geliştiricileri** adlı bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
 - Aynı Azure Active Directory grubu, Azure Repos deposuna ve laboratuvarına erişim sağlamak için kullanılabilir.
-- Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle birlikte Ana dala eklenir. Kod gözden geçiren değişikliği onayladığında, ana dalın bakımında sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir. 
+- Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle Ana dala eklenir. Kod gözden geçireni değişikliği onayladığında, ana dalın bakımına sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir. 
 
 ## <a name="corporate-security-policies"></a>Kurumsal güvenlik ilkeleri
 

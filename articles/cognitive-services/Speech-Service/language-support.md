@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 12c9777449d3f360b8f08d99aca7b916856139d4
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400196"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606904"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -36,94 +36,94 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Dil                          | Yerel ayar (BCP-47) | Özelleştirmeler                                   |
-|-----------------------------------|--------|--------------------------------------------------|
-|Arapça (Bahreyn), modern standart  |`ar-BH` | Dil modeli                                   |
-|Arapça (Mısır)                     |`ar-EG` | Dil modeli                                   |
-|Arapça (Irak)                      |`ar-IQ` | Dil modeli                                   |
-|Arapça (Israil)                              |`ar-IL` | Dil modeli                                                   |
-|Arapça (Ürdün)                    |`ar-JO` | Dil modeli                                   |
-|Arapça (Kuveyt)                    |`ar-KW` | Dil modeli                                   |
-|Arapça (Lübnan)                   |`ar-LB` | Dil modeli                                   |
-|Arapça (Umman)                      |`ar-OM` | Dil modeli                                   |
-|Arapça (Qtor)                     |`ar-QA` | Dil modeli                                   |
-|Arapça (Suudi Arabistan)              |`ar-SA` | Dil modeli                                   |
-|Arapça (Filistin Yönetimi devleti)            |`ar-PS` | Dil modeli                                   |
-|Arapça (Suriye)                     |`ar-SY` | Dil modeli                                   |
-|Arapça (Birleşik Arap Emirlikleri)      |`ar-AE` | Dil modeli                                   |
-|Bulgarca (Bulgaristan)               |`bg-BG` | Dil modeli                                   |
-|Katalanca (İspanya)                    |`ca-ES` | Dil modeli                                   |
-|Çince (Cantoneo, geleneksel)   |`zh-HK` | Dil modeli                                   |
-|Çince (Mandarin, Basitleştirilmiş)     |`zh-CN` | Akustik model<br>Dil modeli                 |
-|Çince (Taiwanese Mandarin)       |`zh-TW` | Dil modeli                                   |
-|Hırvatça (Hırvatistan)                 |`hr-HR` | Dil modeli                                   |
-|Çekçe (Çek Cumhuriyeti)             |`cs-CZ` | Dil modeli                                   |
-|Danca (Danimarka)                   |`da-DK` | Dil modeli                                   |
-|Felemenkçe (Hollanda)                |`nl-NL` | Dil modeli                                   |
-|İngilizce (Avustralya)                |`en-AU` | Akustik model<br>Dil modeli                 |
-|İngilizce (Kanada)                   |`en-CA` | Akustik model<br>Dil modeli                 |
-|İngilizce (Hong Kong)                |`en-HK` | Dil modeli                                   |
-|İngilizce (Hindistan)                    |`en-IN` | Akustik model<br>Dil modeli                 |
-|İngilizce (İrlanda)                  |`en-IE` | Dil modeli                                   |
-|İngilizce (Yeni Zelanda)              |`en-NZ` | Akustik model<br>Dil modeli                 |
-|İngilizce (Nijerya)                          |`en-NG` | Dil modeli                                                     |
-|İngilizce (Filipinler)              |`en-PH` | Dil modeli                                   |
-|İngilizce (Singapur)                |`en-SG` | Dil modeli                                   |
-|İngilizce (Güney Afrika)             |`en-ZA` | Dil modeli                                   |
-|İngilizce (İngiltere)           |`en-GB` | Akustik model<br>Dil modeli<br>İşi|
-|İngilizce (ABD)            |`en-US` | Akustik model<br>Dil modeli<br>İşi|
-|Estonya dili (Estonya)                  |`et-EE` | Dil modeli                                   |
-|Fince (Finlandiya)                  |`fi-FI` | Dil modeli                                   |
-|Fransızca (Kanada)                    |`fr-CA` | Akustik model<br>Dil modeli                 |
-|Fransızca (Fransa)                    |`fr-FR` | Akustik model<br>Dil modeli<br>İşi|
-|Almanca (Almanya)                   |`de-DE` | Akustik model<br>Dil modeli<br>İşi|
-|Yunanca (Yunanistan)                     |`el-GR` | Dil modeli                                   |
-|Gucerat dili (Hindistan)                  |`gu-IN` | Dil modeli                                   |
-|Hintçe (Hindistan)                      |`hi-IN` | Akustik model<br>Dil modeli                 |
-|Macarca (Macaristan)                |`hu-HU` | Dil modeli                                   |
-|İrlanda dili (Irlanda)                     |`ga-IE` | Dil modeli                                   |
-|İtalyanca (İtalya)                    |`it-IT` | Akustik model<br>Dil modeli<br>İşi|
-|Japonca (Japonya)                   |`ja-JP` | Dil modeli                                   |
-|Korece (Kore)                     |`ko-KR` | Dil modeli                                   |
-|Letonca (Letonya)                   |`lv-LV` | Dil modeli                                   |
-|Litvanca (Litvanya)             |`lt-LT` | Dil modeli                                   |
-|Malta dili (Malta)                     |`mt-MT` | Dil modeli                                   |
-|Marathi dili (Hindistan)                    |`mr-IN` | Dil modeli                                   |
-|Norveççe (Bokmål, Norveç)         |`nb-NO` | Dil modeli                                   |
-|Lehçe (Polonya)                    |`pl-PL` | Dil modeli                                   |
-|Portekizce (Brezilya)                |`pt-BR` | Akustik model<br>Dil modeli<br>İşi|
-|Portekizce (Portekiz)              |`pt-PT` | Dil modeli                                   |
-|Rumence (Romanya)                 |`ro-RO` | Dil modeli                                   |
-|Rusça (Rusya)                   |`ru-RU` | Akustik model<br>Dil modeli                 |
-|Slovakça (Slovakya)                  |`sk-SK` | Dil modeli                                   |
-|Slovence (Slovenya)               |`sl-SI` | Dil modeli                                   |
-|İspanyolca (Arjantin)                |`es-AR` | Dil modeli                                   |
-|İspanyolca (Bolivya)                  |`es-BO` | Dil modeli                                   |
-|İspanyolca (Şili)                    |`es-CL` | Dil modeli                                   |
-|İspanyolca (Kolombiya)                 |`es-CO` | Dil modeli                                   |
-|İspanyolca (Kosta Rika)               |`es-CR` | Dil modeli                                   |
-|İspanyolca (Küa)                     |`es-CU` | Dil modeli                                   |
-|İspanyolca (Dominik Cumhuriyeti)       |`es-DO` | Dil modeli                                   |
-|İspanyolca (Ekvador)                  |`es-EC` | Dil modeli                                   |
-|İspanyolca (El Salvador)              |`es-SV` | Dil modeli                                   |
-|İspanyolca (Ekvator Ginesi)            |`es-GQ` | Dil modeli                                   |
-|İspanyolca (Guatemala)                |`es-GT` | Dil modeli                                   |
-|İspanyolca (Honduras)                 |`es-HN` | Dil modeli                                   |
-|İspanyolca (Meksika)                   |`es-MX` | Akustik model<br>Dil modeli                 |
-|İspanyolca (Nikaragua)                |`es-NI` | Dil modeli                                   |
-|İspanyolca (Panama)                   |`es-PA` | Dil modeli                                   |
-|İspanyolca (Paraguay)                 |`es-PY` | Dil modeli                                   |
-|İspanyolca (Peru)                     |`es-PE` | Dil modeli                                   |
-|İspanyolca (Porto Riko)              |`es-PR` | Dil modeli                                   |
-|İspanyolca (İspanya)                    |`es-ES` | Akustik model<br>Dil modeli                 |
-|İspanyolca (Uruguay)                  |`es-UY` | Dil modeli                                   |
-|İspanyolca (ABD)                      |`es-US` | Dil modeli                                   |
-|İspanyolca (Venezuela)                |`es-VE` | Dil modeli                                   |
-|İsveççe (İsviçre)                   |`sv-SE` | Dil modeli                                   |
-|Tamil dili (Hindistan)                      |`ta-IN` | Dil modeli                                   |
-|Telugu dili (Hindistan)                     |`te-IN` | Dil modeli                                   |
-|Tayca (Tayland)                    |`th-TH` | Dil modeli                                   |
-|Türkçe (Türkiye)                   |`tr-TR` | Dil modeli                                   |
+| Dil                           | Yerel ayar (BCP-47) | Özelleştirmeler                                   |
+|------------------------------------|--------|--------------------------------------------------|
+| Arapça (Bahreyn), modern standart  | `ar-BH` | Dil modeli                                   |
+| Arapça (Mısır)                     | `ar-EG` | Dil modeli                                   |
+| Arapça (Irak)                      | `ar-IQ` | Dil modeli                                   |
+| Arapça (Israil)                    | `ar-IL` | Dil modeli                                   |
+| Arapça (Ürdün)                    | `ar-JO` | Dil modeli                                   |
+| Arapça (Kuveyt)                    | `ar-KW` | Dil modeli                                   |
+| Arapça (Lübnan)                   | `ar-LB` | Dil modeli                                   |
+| Arapça (Umman)                      | `ar-OM` | Dil modeli                                   |
+| Arapça (Qtor)                     | `ar-QA` | Dil modeli                                   |
+| Arapça (Suudi Arabistan)              | `ar-SA` | Dil modeli                                   |
+| Arapça (Filistin Yönetimi devleti)        | `ar-PS` | Dil modeli                                   |
+| Arapça (Suriye)                     | `ar-SY` | Dil modeli                                   |
+| Arapça (Birleşik Arap Emirlikleri)      | `ar-AE` | Dil modeli                                   |
+| Bulgarca (Bulgaristan)               | `bg-BG` | Dil modeli                                   |
+| Katalanca (İspanya)                    | `ca-ES` | Dil modeli                                   |
+| Çince (Cantoneo, geleneksel)   | `zh-HK` | Dil modeli                                   |
+| Çince (Mandarin, Basitleştirilmiş)     | `zh-CN` | Akustik model<br>Dil modeli                 |
+| Çince (Taiwanese Mandarin)       | `zh-TW` | Dil modeli                                   |
+| Hırvatça (Hırvatistan)                 | `hr-HR` | Dil modeli                                   |
+| Çekçe (Çek Cumhuriyeti)             | `cs-CZ` | Dil modeli                                   |
+| Danca (Danimarka)                   | `da-DK` | Dil modeli                                   |
+| Felemenkçe (Hollanda)                | `nl-NL` | Dil modeli                                   |
+| İngilizce (Avustralya)                | `en-AU` | Akustik model<br>Dil modeli                 |
+| İngilizce (Kanada)                   | `en-CA` | Akustik model<br>Dil modeli                 |
+| İngilizce (Hong Kong)                | `en-HK` | Dil modeli                                   |
+| İngilizce (Hindistan)                    | `en-IN` | Akustik model<br>Dil modeli                 |
+| İngilizce (İrlanda)                  | `en-IE` | Dil modeli                                   |
+| İngilizce (Yeni Zelanda)              | `en-NZ` | Akustik model<br>Dil modeli                 |
+| İngilizce (Nijerya)                  | `en-NG` | Dil modeli                                   |
+| İngilizce (Filipinler)              | `en-PH` | Dil modeli                                   |
+| İngilizce (Singapur)                | `en-SG` | Dil modeli                                   |
+| İngilizce (Güney Afrika)             | `en-ZA` | Dil modeli                                   |
+| İngilizce (İngiltere)           | `en-GB` | Akustik model<br>Dil modeli<br>İşi|
+| İngilizce (ABD)            | `en-US` | Akustik model<br>Dil modeli<br>İşi|
+| Estonya dili (Estonya)                  | `et-EE` | Dil modeli                                   |
+| Fince (Finlandiya)                  | `fi-FI` | Dil modeli                                   |
+| Fransızca (Kanada)                    | `fr-CA` | Akustik model<br>Dil modeli                 |
+| Fransızca (Fransa)                    | `fr-FR` | Akustik model<br>Dil modeli<br>İşi|
+| Almanca (Almanya)                   | `de-DE` | Akustik model<br>Dil modeli<br>İşi|
+| Yunanca (Yunanistan)                     | `el-GR` | Dil modeli                                   |
+| Gucerat dili (Hindistan)                  | `gu-IN` | Dil modeli                                   |
+| Hintçe (Hindistan)                      | `hi-IN` | Akustik model<br>Dil modeli                 |
+| Macarca (Macaristan)                | `hu-HU` | Dil modeli                                   |
+| İrlanda dili (Irlanda)                     | `ga-IE` | Dil modeli                                   |
+| İtalyanca (İtalya)                    | `it-IT` | Akustik model<br>Dil modeli<br>İşi|
+| Japonca (Japonya)                   | `ja-JP` | Dil modeli                                   |
+| Korece (Kore)                     | `ko-KR` | Dil modeli                                   |
+| Letonca (Letonya)                   | `lv-LV` | Dil modeli                                   |
+| Litvanca (Litvanya)             | `lt-LT` | Dil modeli                                   |
+| Malta dili (Malta)                     | `mt-MT` | Dil modeli                                   |
+| Marathi dili (Hindistan)                    | `mr-IN` | Dil modeli                                   |
+| Norveççe (Bokmål, Norveç)         | `nb-NO` | Dil modeli                                   |
+| Lehçe (Polonya)                    | `pl-PL` | Dil modeli                                   |
+| Portekizce (Brezilya)                | `pt-BR` | Akustik model<br>Dil modeli<br>İşi|
+| Portekizce (Portekiz)              | `pt-PT` | Dil modeli                                   |
+| Rumence (Romanya)                 | `ro-RO` | Dil modeli                                   |
+| Rusça (Rusya)                   | `ru-RU` | Akustik model<br>Dil modeli                 |
+| Slovakça (Slovakya)                  | `sk-SK` | Dil modeli                                   |
+| Slovence (Slovenya)               | `sl-SI` | Dil modeli                                   |
+| İspanyolca (Arjantin)                | `es-AR` | Dil modeli                                   |
+| İspanyolca (Bolivya)                  | `es-BO` | Dil modeli                                   |
+| İspanyolca (Şili)                    | `es-CL` | Dil modeli                                   |
+| İspanyolca (Kolombiya)                 | `es-CO` | Dil modeli                                   |
+| İspanyolca (Kosta Rika)               | `es-CR` | Dil modeli                                   |
+| İspanyolca (Küa)                     | `es-CU` | Dil modeli                                   |
+| İspanyolca (Dominik Cumhuriyeti)       | `es-DO` | Dil modeli                                   |
+| İspanyolca (Ekvador)                  | `es-EC` | Dil modeli                                   |
+| İspanyolca (El Salvador)              | `es-SV` | Dil modeli                                   |
+| İspanyolca (Ekvator Ginesi)        | `es-GQ` | Dil modeli                                   |
+| İspanyolca (Guatemala)                | `es-GT` | Dil modeli                                   |
+| İspanyolca (Honduras)                 | `es-HN` | Dil modeli                                   |
+| İspanyolca (Meksika)                   | `es-MX` | Akustik model<br>Dil modeli                 |
+| İspanyolca (Nikaragua)                | `es-NI` | Dil modeli                                   |
+| İspanyolca (Panama)                   | `es-PA` | Dil modeli                                   |
+| İspanyolca (Paraguay)                 | `es-PY` | Dil modeli                                   |
+| İspanyolca (Peru)                     | `es-PE` | Dil modeli                                   |
+| İspanyolca (Porto Riko)              | `es-PR` | Dil modeli                                   |
+| İspanyolca (İspanya)                    | `es-ES` | Akustik model<br>Dil modeli                 |
+| İspanyolca (Uruguay)                  | `es-UY` | Dil modeli                                   |
+| İspanyolca (ABD)                      | `es-US` | Dil modeli                                   |
+| İspanyolca (Venezuela)                | `es-VE` | Dil modeli                                   |
+| İsveççe (İsviçre)                   | `sv-SE` | Dil modeli                                   |
+| Tamil dili (Hindistan)                      | `ta-IN` | Dil modeli                                   |
+| Telugu dili (Hindistan)                     | `te-IN` | Dil modeli                                   |
+| Tayca (Tayland)                    | `th-TH` | Dil modeli                                   |
+| Türkçe (Türkiye)                   | `tr-TR` | Dil modeli                                   |
 
 ## <a name="text-to-speech"></a>Metin okuma
 

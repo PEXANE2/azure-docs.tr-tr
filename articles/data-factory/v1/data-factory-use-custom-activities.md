@@ -13,12 +13,12 @@ ms.author: abnarain
 ms.custom: devx-track-csharp
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: b3391727b19e9e8e88646f72667545f1df7fe5a7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ef6c97f7924c890bb6665100259970372f1cd26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012876"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606955"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-version-1-pipeline"></a>Azure Data Factory sürüm 1 ardışık düzeninde özel etkinlikler kullanma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -43,14 +43,14 @@ Aşağıdaki izlenecek yol, özel bir .NET etkinliği oluşturmaya ve bir işlem
 > - Şirket içi veri kaynaklarına erişmek için özel etkinlikten bir Veri Yönetimi ağ geçidi kullanılması mümkün değildir. Şu anda [veri yönetimi ağ geçidi](data-factory-data-management-gateway.md) , Data Factory içindeki kopyalama etkinliği ve saklı yordam etkinliğini destekler.
 
 ## <a name="walkthrough-create-a-custom-activity"></a>İzlenecek yol: özel etkinlik oluşturma
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 * Visual Studio 2012/2013/2015/2017
 * [Azure .NET SDK 'sını](https://azure.microsoft.com/downloads/) indirme ve yükleme
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch önkoşulları
 İzlenecek yolda, işlem kaynağı olarak Azure Batch kullanarak özel .NET etkinliklerinizi çalıştırırsınız. **Azure Batch** , bulutta etkin bir şekilde büyük ölçekli paralel ve yüksek performanslı bilgi Işlem (HPC) uygulamaları çalıştırmaya yönelik bir platform hizmetidir. Azure Batch, yönetilen bir **sanal makine koleksiyonunda** çalışacak işlem yoğunluğu olan işleri zamanlar ve işlerin ihtiyaçlarını karşılamak için işlem kaynaklarını otomatik olarak ölçeklendirebilir. Azure Batch hizmetine ayrıntılı bir genel bakış için [Azure Batch temel bilgiler][batch-technical-overview] makalesine bakın.
 
-Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Uygulamanız gereken adımlar:
+Öğretici için, VM havuzu ile bir Azure Batch hesabı oluşturun. Adımlar şunlardır:
 
 1. [Azure Portal](https://portal.azure.com)kullanarak bir **Azure Batch hesabı** oluşturun. Yönergeler için [Azure Batch hesap oluşturma ve yönetme][batch-create-account] makalesine bakın.
 2. Azure Batch hesap adı, hesap anahtarı, URI ve havuz adı ' na göz önüne alın. Azure Batch bağlı bir hizmet oluşturmak için bunlara ihtiyacınız vardır.
@@ -98,8 +98,10 @@ Yöntemi dört parametre alır:
 Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir sözlük döndürür. Bu özellik henüz uygulanmadı, bu nedenle yöntemden boş bir sözlük döndürün.
 
 ### <a name="procedure"></a>Yordam
+
 1. **.NET sınıf kitaplığı** projesi oluşturun.
-   <ol type="a">
+   
+    <ol type="a">
      <li>Visual Studio 'Yu başlatın.</li>
      <li><b>Dosya</b>’ya tıklayın, <b>Yeni</b>’nin üzerine gelin ve <b>Proje</b>’ye tıklayın.</li>
      <li><b>Şablonlar</b>’ı genişletin ve <b>Visual C#</b> seçeneğini belirleyin. Bu kılavuzda C# kullanıyorsunuz, ancak özel etkinlik geliştirmek için herhangi bir .NET dili kullanabilirsiniz.</li>
@@ -116,6 +118,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     ```powershell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
+
 4. **Azure Storage** NuGet paketini projeye aktarın.
 
     ```powershell
@@ -149,16 +152,19 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
+
 6. **Ad alanının** adını **MyDotNetActivityNS** olarak değiştirin.
 
     ```csharp
     namespace MyDotNetActivityNS
     ```
+
 7. Sınıfın adını **MyDotNetActivity** olarak değiştirin ve aşağıdaki kod parçacığında gösterildiği gibi **ıdotnetactivity** arabiriminden türetirsiniz:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
+
 8. **Idotnetactivity** arabiriminin **Execute** yöntemini **MyDotNetActivity** sınıfına uygulayın ve aşağıdaki örnek kodu yöntemine kopyalayın.
 
     Aşağıdaki örnek, bir veri dilimiyle ilişkilendirilen her Blobun arama teriminin ("Microsoft") oluşum sayısını sayar.
@@ -279,6 +285,7 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
         return new Dictionary<string, string>();
     }
     ```
+
 9. Aşağıdaki yardımcı yöntemleri ekleyin:
 
     ```csharp
@@ -367,25 +374,30 @@ Yöntemi, gelecekte özel etkinlikleri zincirlemek için kullanılabilecek bir s
     ```
 
     Calculate yöntemi giriş dosyalarında Microsoft anahtar sözcük örneklerinin sayısını hesaplar (klasördeki Bloblar). Arama terimi ("Microsoft") kodda sabit kodlanmış.
+
 10. Projeyi derleyin. Menüden **Oluştur** ' a tıklayın ve **çözüm oluştur**' a tıklayın.
 
     > [!IMPORTANT]
     > .NET Framework 4.5.2 sürümünü projeniz için hedef çerçeve olarak ayarlayın: projeye sağ tıklayın ve **Özellikler** ' e tıklayarak hedef Framework 'ü ayarlayın. Data Factory, 4.5.2 ' den sonraki sürümlere .NET Framework göre derlenen özel etkinlikleri desteklemez.
 
 11. **Windows Gezgini**'ni başlatın ve derleme türüne göre **bin\Debug** veya **bin\release** klasörüne gidin.
+
 12. \Bin\debug klasöründeki tüm ikilileri içeren bir ZIP dosyası **MyDotNetActivity.zip** oluşturun \<project folder\> . Hata oluştuğunda soruna neden olan kaynak kodundaki satır numarası gibi ek ayrıntılar almak için **MyDotNetActivity. pdb** dosyasını dahil edin.
 
     > [!IMPORTANT]
     > Özel etkinliğin zip dosyasındaki tüm dosyalar alt klasör olmadan **en üst düzeyde** olmalıdır.
 
     ![İkili çıktı dosyaları](./media/data-factory-use-custom-activities/Binaries.png)
-14. Zaten mevcut değilse, **customactivitycontainer** adlı bir blob kapsayıcısı oluşturun.
-15. AzureStorageLinkedService tarafından başvurulan **genel amaçlı** bir Azure Blob depolama alanına (etkin/seyrek erişimli BLOB depolama alanı değil) bir blob olarak MyDotNetActivity.zip yükleyin.
+
+13. Zaten mevcut değilse, **customactivitycontainer** adlı bir blob kapsayıcısı oluşturun.
+
+14. AzureStorageLinkedService tarafından başvurulan **genel amaçlı** bir Azure Blob depolama alanına (etkin/seyrek erişimli BLOB depolama alanı değil) bir blob olarak MyDotNetActivity.zip yükleyin.
 
 > [!IMPORTANT]
 > Bu .NET etkinliği projesini Visual Studio 'da bir Data Factory projesi içeren bir çözüme ekler ve Data Factory uygulama projesinden .NET etkinlik projesine bir başvuru eklerseniz, ZIP dosyasını el ile oluşturma ve genel amaçlı Azure Blob depolamaya yükleme konusunda son iki adımı gerçekleştirmeniz gerekmez. Visual Studio 'Yu kullanarak Data Factory varlıkları yayımladığınızda, bu adımlar yayımlama işlemi tarafından otomatik olarak yapılır. Daha fazla bilgi için bkz. [Visual Studio 'da Data Factory projesi](#data-factory-project-in-visual-studio) bölümü.
 
 ## <a name="create-a-pipeline-with-custom-activity"></a>Özel etkinlikle bir işlem hattı oluşturma
+
 Özel bir etkinlik oluşturdunuz ve ZIP dosyasını, **genel amaçlı** bir Azure depolama hesabındaki bir blob kapsayıcısına ikili dosyalarla karşıya yüklediniz. Bu bölümde, özel etkinliği kullanan bir işlem hattı ile bir Azure Data Factory oluşturacaksınız.
 
 Özel etkinlik için giriş veri kümesi blob depolamada adföğreticisi kapsayıcısının customactivityınput klasöründe Blobları (dosyalar) temsil eder. Etkinliğin çıkış veri kümesi, blob depolamada adföğreticisi kapsayıcısının customactivityoutput klasöründe çıktı bloblarını temsil eder.

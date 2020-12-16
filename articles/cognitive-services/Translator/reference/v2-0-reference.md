@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 25dda63c6450040e396de9ee0d3fb0a459416343
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369520"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606838"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
 
@@ -51,9 +51,9 @@ Kaynak metinde olsa bile küfür 'ın çeviride oluşmasını engellemek isterse
 
 |ProfanityAction    |Eylem |Örnek kaynak (Japonca)  |Örnek çeviri (Ingilizce)  |
 |:--|:--|:--|:--|
-|NoAction   |Varsayılan. Seçeneği ayarlamaya benzer. Küfür kaynaktan hedefe geçirilecek.        |彼はジャッカスです.     |Bu bir Jackass.   |
-|İm     |Küfürlü kelimeler, XML etiketleri \<profanity> ve ile çevrelenebilir \</profanity> .       |彼はジャッカスです. |Bu bir \<profanity> Jackass \</profanity> .  |
-|Silindi    |Küfürlü sözcükler, değişiklik yapılmadan çıkışta kaldırılacak.     |彼はジャッカスです. |Bir.   |
+|NoAction   |Varsayılan. Seçeneği ayarlamaya benzer. Küfür kaynaktan hedefe geçirilecek. |彼はジャッカスです. |Bu bir Jackass.  |
+|İm |Küfürlü kelimeler, XML etiketleri \<profanity> ve ile çevrelenebilir \</profanity> . |彼はジャッカスです.   |Bu bir \<profanity> Jackass \</profanity> .  |
+|Silindi    |Küfürlü sözcükler, değişiklik yapılmadan çıkışta kaldırılacak. |彼はジャッカスです. |Bir.   |
 
     
 ## <a name="excluding-content-from-translation"></a>İçeriği çeviriye dışlama
@@ -209,7 +209,7 @@ Geçirilen dile yerelleştirilmiş, parametresi olarak geçirilen dillerin kolay
 
 İstek URI 'SI `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames` .
 
-İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. İşte bir örnek:
+İstek gövdesi, kolay adların alınacağı ISO 639-1 dil kodlarını temsil eden bir dize dizisi içerir. Aşağıda bir örnek verilmiştir:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -611,7 +611,7 @@ Mağazadan ve MT altyapısından belirli bir dil çiftinin çeviri dizisini alı
     - Lendir. Derecelendirmeler aşağıdaki gibi uygulanır: 
          - En iyi otomatik çeviri, 5 derecesine sahiptir.
        - CTF 'nin alternatifleri gözden geçirenin yetkilisini yansıtır. -10 ile + 10 arasında değişir.
-       - Otomatik olarak oluşturulan ( *n* -en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
+       - Otomatik olarak oluşturulan (*n*-en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
     - Alternatifin sayısı. Döndürülen alternatiflere ilişkin sayı ' de belirtilen değer kadar yüksek olabilir `maxTranslations` , ancak daha az olabilir.
     - Dil çiftleri. Bu işlev, Basitleştirilmiş Çince ve geleneksel Çince arasında her iki yönde de çeviri için kullanılamaz. Microsoft Translator tarafından desteklenen tüm diğer dil çiftleri için kullanılabilir.
 * `State`: İstek ve yanıtı ilişkilendirmenize yardımcı olmak için Kullanıcı durumu. Yanıtta aynı içerik döndürülecek.
@@ -723,7 +723,7 @@ Birden çok kaynak metin için birden çok çeviri adayları alır.
         - Derecelendirmeler aşağıdaki gibi uygulanır:
           - En iyi otomatik çeviri, 5 derecesine sahiptir.
           - CTF 'nin alternatifleri gözden geçirenin yetkilisini yansıtır. -10 ile + 10 arasında değişir.
-          - Otomatik olarak oluşturulan ( *n* -en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
+          - Otomatik olarak oluşturulan (*n*-en iyi) çeviri alternatifleri, 0 derecelendirmesine ve 100 eşleşme derecesine sahiptir.
         - Alternatifin sayısı. Döndürülen alternatiflere ilişkin sayı ' de belirtilen değer kadar yüksek olabilir `maxTranslations` , ancak daha az olabilir.
         - Dil çiftleri. Bu işlev, Basitleştirilmiş Çince ve geleneksel Çince arasında her iki yönde de çeviri için kullanılamaz. Microsoft Translator tarafından desteklenen tüm diğer dil çiftleri için kullanılabilir.
 * `State`: İstek ve yanıtı ilişkilendirmenize yardımcı olmak için Kullanıcı durumu. Yanıtta aynı içerik döndürülecek.

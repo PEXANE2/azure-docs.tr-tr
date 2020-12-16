@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 1b49faabb1c61a10418bfce3ae2e8187429981ad
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 00e264cea34c7c3e7223b47217ecf5a59b76ba41
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186091"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592475"
 ---
 # <a name="azure-activity-log"></a>Azure Etkinlik Günlüğü
 Etkinlik günlüğü Azure'da abonelik düzeyi olaylarıyla ilgili içgörüler sağlayan bir [platform günlüğüdür](platform-logs-overview.md). Bir kaynağın ne zaman değiştirildiği veya sanal makinenin ne zaman başlatıldığı gibi bilgileri içerir. Etkinlik günlüğünü Azure portal görüntüleyebilir veya PowerShell ve CLı ile girdileri alabilirsiniz. Ek işlevsellik için, etkinlik günlüğü 'nü Azure [Izleyici günlüklerine](data-platform-logs.md), Azure Event Hubs Azure 'da veya arşivleme Için Azure depolama 'ya iletecek şekilde göndermek üzere bir tanılama ayarı oluşturmanız gerekir. Bu makale, etkinlik günlüğünü görüntüleme ve farklı hedeflere gönderme hakkında ayrıntılar sağlar.
@@ -56,7 +56,8 @@ Etkinlik günlüğü olaylarına aşağıdaki yöntemleri kullanarak da erişebi
 - Karmaşık analizler gerçekleştirmek ve etkinlik günlüğü girişleriyle ilgili ayrıntılı Öngörüler elde etmek için günlük sorgularını kullanın.
 - Daha karmaşık uyarı mantığına izin veren etkinlik girişleriyle birlikte günlük uyarılarını kullanın.
 - Etkinlik günlüğü girdilerini 90 günden daha uzun bir süre için depolayın.
-- Log Analytics çalışma alanında depolanan etkinlik günlüğü verileri için veri alımı veya veri saklama ücreti alınmaz.
+- Log Analytics çalışma alanında depolanan etkinlik günlüğü verileri için veri alma ücreti yok.
+- Log Analytics çalışma alanında depolanan etkinlik günlüğü verileri için 90 güne kadar veri saklama ücreti ücretlendirmez.
 
 Etkinlik günlüğünü bir Log Analytics çalışma alanına göndermek için [bir tanılama ayarı oluşturun](diagnostic-settings.md) . Etkinlik günlüğünü herhangi bir tek abonelikten beş çalışma alanına gönderebilirsiniz. Kiracılar arasında günlükleri toplamak için [Azure Lighthouse](../../lighthouse/index.yml) gerekir.
 
@@ -201,12 +202,12 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmalı v
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | Ad |Evet |Günlük profilinizin adı. |
-    | Storageaccountıd |Hayır |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
-    | Servicebusruleıd |Hayır |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
+    | Ad |Yes |Günlük profilinizin adı. |
+    | Storageaccountıd |No |Etkinlik günlüğünün kaydedilmesi gereken depolama hesabının kaynak KIMLIĞI. |
+    | Servicebusruleıd |No |İçinde Olay Hub 'larının oluşturulmasını istediğiniz Service Bus ad alanı için kural KIMLIĞI Service Bus. Bu şu biçimde bir dizedir: `{service bus resource ID}/authorizationrules/{key name}` . |
     | Konum |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin virgülle ayrılmış listesi. |
-    | Retentionındays |Evet |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
-    | Kategori |Hayır |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ ve _eylem_. |
+    | Retentionındays |Yes |Depolama hesabında olayların saklanacağı gün sayısı (1 ile 365 arasında). Sıfır değeri, günlükleri süresiz olarak depolar. |
+    | Kategori |No |Toplanması gereken olay kategorilerinin virgülle ayrılmış listesi. Olası değerler _yazma_, _silme_ ve _eylem_. |
 
 ### <a name="example-script"></a>Örnek betik
 Aşağıda, etkinlik günlüğünü hem depolama hesabına hem de Olay Hub 'ına yazan bir günlük profili oluşturmak için örnek bir PowerShell betiği verilmiştir.
@@ -244,12 +245,12 @@ Zaten bir günlük profili varsa, önce mevcut günlük profilini kaldırmanız 
 
     | Özellik | Gerekli | Açıklama |
     | --- | --- | --- |
-    | name |Evet |Günlük profilinizin adı. |
-    | depolama hesabı-kimliği |Evet |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
-    | yerlerini |Evet |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. Kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz `az account list-locations --query [].name` . |
-    | gün |Evet |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
-    |enabled | Evet |Doğru veya Yanlış.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
-    | kategoriler |Evet |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
+    | name |Yes |Günlük profilinizin adı. |
+    | depolama hesabı-kimliği |Yes |Etkinlik günlüklerinin kaydedileceği depolama hesabının kaynak KIMLIĞI. |
+    | yerlerini |Yes |Etkinlik günlüğü olaylarını toplamak istediğiniz bölgelerin boşlukla ayrılmış listesi. Kullanarak aboneliğiniz için tüm bölgelerin bir listesini görüntüleyebilirsiniz `az account list-locations --query [].name` . |
+    | gün |Yes |Olayların saklanacağı gün sayısı, 1 ile 365 arasında. Sıfır değeri günlükleri süresiz olarak depolar (süresiz).  Sıfır ise, etkin parametre false olarak ayarlanmalıdır. |
+    |enabled | Yes |Doğru veya Yanlış.  Bekletme ilkesini etkinleştirmek veya devre dışı bırakmak için kullanılır.  True ise Days parametresi 0 ' dan büyük bir değer olmalıdır.
+    | kategoriler |Yes |Toplanması gereken olay kategorilerinin boşlukla ayrılmış listesi. Olası değerler yazma, silme ve eylem. |
 
 
 ### <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b59a764510b93daf358e00a4d75bcefd31d2980f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7ca566c554c02d20d21bd7eba87dfbcbf1f746da
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460249"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Öğretici: ınfogix Data3Sixty yönetir ile tümleştirme Azure Active Directory
 
@@ -62,13 +62,13 @@ Infogix Data3Sixty yönetmesinin tümleştirmesini Azure AD ile yapılandırmak 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ınfogix Data3Sixty yönetir**yazın, sonuç panelinden **ınfogix Data3Sixty yönetir** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **ınfogix Data3Sixty yönetir** yazın, sonuç panelinden **ınfogix Data3Sixty yönetir** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuçlar listesinde ınfogix Data3Sixty yönetir](common/search-new-app.png)
+    ![Sonuçlar listesinde ınfogix Data3Sixty yönetir](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre ınfogix Data3Sixty yönetir Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre ınfogix Data3Sixty yönetir Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ınfogix Data3Sixty yönetir içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Infogix Data3Sixty yönetme ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -124,8 +124,8 @@ Azure AD çoklu oturum açmayı ınfogix Data3Sixty yönetir ile yapılandırmak
     | Name | Kaynak özniteliği|
     | -----------| -------------- |
     | FirstName  | Kullanıcı. |
-    | Soyadı   | User. soyadı |
-    | username   | Kullanıcı. Mail    |
+    | Soyadı | User. soyadı |
+    | username | Kullanıcı. Mail |
 
     a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açmayı ınfogix Data3Sixty yönetir ile yapılandırmak
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -179,9 +179,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -196,7 +196,7 @@ Bu bölümde, ınfogix Data3Sixty yönetmesinin erişimine izin vererek Azure ç
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **ınfogix Data3Sixty yönetir**öğesini seçin.
+2. Uygulamalar listesinde **ınfogix Data3Sixty yönetir** öğesini seçin.
 
     ![Uygulamalar listesindeki ınfogix Data3Sixty yönetir bağlantısı](common/all-applications.png)
 

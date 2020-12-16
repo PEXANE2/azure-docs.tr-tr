@@ -3,12 +3,12 @@ title: Azure DevTest Labs kaynakların dağıtılmış işbirliğine dayalı gel
 description: DevTest Labs kaynaklarını geliştirmek üzere dağıtılmış ve işbirliğine dayalı bir geliştirme ortamı ayarlamak için en iyi yöntemleri sağlar.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c18bbbfd3ad727811cc28c424381e5caf32b1cfc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ef6d7aa7d3cfd4fcc64eaa45259684dfcb9ccee
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85483814"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592373"
 ---
 # <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Azure DevTest Labs kaynaklarının dağıtılmış ve işbirliğine dayalı olarak geliştirilmesi için en iyi uygulamalar
 Dağıtılmış işbirliğine dayalı geliştirme, farklı ekiplerin veya kişilerin bir kod tabanı geliştirmesini ve bakımını sağlar. Geliştirme süreci başarılı olmak için bilgi oluşturma, paylaşma ve tümleştirme özelliğine bağlıdır. Bu anahtar geliştirme ilkesi, Azure DevTest Labs içinde kullanılabilir. Bir laboratuvarda, bir kuruluş içindeki farklı laboratuvarlar arasında yaygın olarak dağıtılan birkaç kaynak türü vardır. Farklı kaynak türleri iki alana odaklanılmıştır:
@@ -45,7 +45,7 @@ Aşağıdaki diyagramda iki depo gösterilmektedir: BT bölümünün tuttuğu bi
 
 ![Örnek dağıtılabilir ve işbirliğine dayalı bir geliştirme ortamı](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-Bu katmanlı yapı, bir laboratuvara bağlı birden çok depo olduğunda daha fazla esneklik sağlamak için ana dalda daha yüksek bir kalite düzeyi tutarken geliştirmeye olanak sağlar.
+Bu katmanlı yapı, bir laboratuvara bağlı birden çok depo olduğunda daha fazla esneklik sağlayan ana dalda daha yüksek düzeyde kalite sağlarken geliştirmeye olanak sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar    
 Aşağıdaki makalelere bakın:

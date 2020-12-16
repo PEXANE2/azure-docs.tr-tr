@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: b338b8ee93fb24cff54968630d4ff00deca0b64b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516521"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606734"
 ---
 # <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
 
@@ -20,7 +20,6 @@ ms.locfileid: "97516521"
 **Depolama Için Azure Defender** , depolama hesaplarınıza yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan bir Azure Native Security Intelligence katmanıdır. Bağlamsal güvenlik uyarıları ve önerileri sağlamak için güvenlik AI ve [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) 'ın gelişmiş özelliklerinden yararlanır.
 
 Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu uyarılar Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
-
 
 ## <a name="availability"></a>Kullanılabilirlik
 
@@ -31,6 +30,17 @@ Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde t
 |Korumalı Depolama türleri:|[Blob Depolama](https://azure.microsoft.com/services/storage/blobs/)<br>[Azure Dosyaları](../storage/files/storage-files-introduction.md)<br>[Azure Data Lake Storage 2. Nesil](../storage/blobs/data-lake-storage-introduction.md)|
 |Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
+
+
+## <a name="what-are-the-benefits-of-azure-defender-for-storage"></a>Depolama için Azure Defender 'ın yararları nelerdir?
+
+Depolama için Azure Defender şunları sağlar:
+
+- **Azure-Native Security** -1-etkinleştirme ' ye tıklayarak depolama için Defender, Azure blob, Azure dosyaları ve veri Lakes 'de depolanan verileri korur. Azure-Native hizmeti olarak, depolama için Defender, Azure tarafından yönetilen tüm veri varlıkları genelinde merkezi güvenlik sağlar ve Azure Sentinel gibi diğer Azure Güvenlik hizmetleriyle tümleşiktir.
+- Microsoft Threat Intelligence tarafından desteklenen **zengin algılama paketi** -depolama için Defender 'daki algılamalar, anonim erişim, güvenliği aşılmış kimlik bilgileri, sosyal mühendislik, ayrıcalık kötüye kullanımı ve kötü amaçlı içerik gibi en üst depolama tehditleri kapsar.
+- **Ölçek** Güvenlik Merkezi 'nin Otomasyon araçlarındaki yanıt, belirlenen tehditleri önlemeye ve bunlara yanıt vermeye daha kolay hale getirir. [Güvenlik Merkezi tetikleyicilerine yönelik yanıtları otomatikleştirmede](workflow-automation.md)daha fazla bilgi edinin.
+
+:::image type="content" source="media/defender-for-storage-introduction/defender-for-storage-high-level-overview.png" alt-text="Depolama için Azure Defender özelliklerine üst düzey genel bakış":::
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-storage-provide"></a>Azure Defender, depolama için ne tür uyarılar sağlar?

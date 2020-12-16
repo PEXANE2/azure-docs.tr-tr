@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 02/20/2020
 ms.topic: article
 keywords: Azure, Kinect, özellikler, donanım, DK, yetenekler, derinlik, renk, RGB, IMU, dizi, derinlik, çoklu, eşitleme
-ms.openlocfilehash: 7c79101de5e5455ae2ff9fd8b5d8369a3832631c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 30961152b31a659cb27e91a99d6806490998d18d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361169"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592288"
 ---
 # <a name="synchronize-multiple-azure-kinect-dk-devices"></a>Birden çok Azure Kinect DK cihazını eşitler
 
@@ -89,6 +89,9 @@ Ayrıca, kamera saati ile cihaz üretici yazılımı saati arasındaki farklar 1
 
 Yazılımınıza, ```depth_delay_off_color_usec``` ```subordinate_delay_off_master_usec``` her IR Laser 'nin kendi 160 &mu; s penceresinde veya farklı bir görünüm alanına sahip olduğundan emin olmak için veya kullanın.
 
+> [!NOTE]  
+> Gerçek Pulse genişliği 125abd, ancak biraz daha kolay bir şekilde sunmamız durumunda. Örnek olarak NFOV yok alınıyor, her 125US Pulse, 1450us boşta ile izlenir. Bu yukarı alma-(9 x 125) + (8 x 1450)-12.8 MS 'nin etkilenme süresini verir. 2 Cihazın açığa çıkmasına neden olan Closet, ilk kameranın ilk boşta kalma süresine düşecek ikinci kameranın ilk Pulse olması olabilir. Birinci ve ikinci kameralar arasındaki gecikme 125US (bir Pulse genişliği) kadar az olabilir, ancak bu nedenle 160u bu şekilde biraz daha önerilir. Verilen 160US, en fazla 10 kameradan oluşan pozlama dönemlerini ayırmada kullanabilirsiniz.
+
 ## <a name="prepare-your-devices-and-other-hardware"></a>Cihazlarınızı ve diğer donanımınızı hazırlayın
 
 Birden çok Azure Kinect DK cihazına ek olarak, derlemek istediğiniz yapılandırmayı desteklemek için ek konak bilgisayarları ve başka donanımlar almanız gerekebilir. Kuruluma başlamadan önce tüm cihazların ve donanımların kullanılabilir olduğundan emin olmak için bu bölümdeki bilgileri kullanın.
@@ -122,7 +125,7 @@ Varsayılan olarak, Linux tabanlı ana bilgisayar bilgisayarları USB denetleyic
    ```
    > [!NOTE]  
    > Bu komutlar USB belleğini 32 MB olarak ayarlar. Bu, varsayılan değerin iki katı olan örnek bir ayardır. Çözümünüz için uygun olan çok daha büyük bir değer belirleyebilirsiniz.
-1. **Sudo Update-grub**çalıştırın.
+1. **Sudo Update-grub** çalıştırın.
 1. Bilgisayarı yeniden başlatın.
 
 ### <a name="cables"></a>Kablolar
@@ -160,17 +163,17 @@ Cihazların doğru şekilde bağlandığını doğrulamak için [Azure Kinect g�
 > Bu yordam için, her bir Azure Kinect DK 'nin seri numarasını bilmeniz gerekir.
 
 1. Azure Kinect görüntüleyicisinin iki örneğini açın.
-1. **Cihazı aç**altında, test etmek istediğiniz alt cihazın seri numarasını seçin.  
+1. **Cihazı aç** altında, test etmek istediğiniz alt cihazın seri numarasını seçin.  
    ![Cihazı aç](./media/open-devices.png)
    > [!IMPORTANT]  
    > Tüm cihazlar arasında tam görüntü yakalama hizalaması almak için, ana cihazı en son başlatmanız gerekir.  
-1. **Dış eşitleme**altında **Sub**' ı seçin.  
+1. **Dış eşitleme** altında **Sub**' ı seçin.  
    ![Alt kamera başlangıcı](./media/sub-device-start.png)
 1.  **Başlat**'ı seçin.  
     > [!NOTE]  
     > Bu bir alt cihaz olduğundan, Azure Kinect Görüntüleyicisi cihaz başladıktan sonra bir görüntü görüntülemez. Alt cihaz ana cihazdan bir eşitleme sinyali alıncaya kadar görüntü gösterilmez.
 1. Alt cihaz başlatıldıktan sonra, ana cihazı açmak için Azure Kinect Görüntüleyicisi 'nin diğer örneğini kullanın.
-1. **Dış eşitleme**altında, **ana**' yı seçin.
+1. **Dış eşitleme** altında, **ana**' yı seçin.
 1. **Başlat**'ı seçin.
 
 Ana Azure Kinect cihazı başlatıldığında, her iki Azure Kinect Görüntüleyici örneği de görüntüleri görüntülemelidir.

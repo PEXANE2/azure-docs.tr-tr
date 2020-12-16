@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 11/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2866633503399e9f6d78e8665f7a45d9063f01d9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8ec0f8cf090b3ae85a8602fb39cb07f03a417133
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585794"
+ms.locfileid: "97605607"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Azure API Management Yönetilen kimlikler kullanma
 
@@ -38,7 +38,6 @@ Azure portal yönetilen bir kimlik ayarlamak için, önce bir API Management ör
 3. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin. **Kaydet**’i seçin.
 
     :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Sistem tarafından atanan yönetilen kimliği etkinleştirme seçimleri" border="true":::
-
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -118,7 +117,6 @@ Bu özellik Azure 'un API Management örneğiniz için kimlik oluşturmasını v
 ```
 
 `tenantId`Özelliği, kimliğin hangi Azure AD kiracıya ait olduğunu tanımlar. `principalId`Özelliği, örneğin yeni kimliği için benzersiz bir tanımlayıcıdır. Azure AD 'de hizmet sorumlusu, API Management örneğinize verdiğiniz aynı ada sahiptir.
-
 
 > [!NOTE]
 > Bir API Management örneği aynı anda hem sistem tarafından hem de Kullanıcı tarafından atanan kimliklere sahip olabilir. Bu durumda, `type` özelliği olur `SystemAssigned,UserAssigned` .
@@ -265,7 +263,6 @@ Aşağıdaki örnekte aşağıdaki adımları içeren bir Azure Resource Manager
 ### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>API Management kimliği kullanarak arka uçta kimlik doğrulama
 
 [Kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi aracılığıyla arka uçta kimlik doğrulaması yapmak için sistem tarafından atanan kimliğini kullanabilirsiniz.
-
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Kullanıcı tarafından atanan yönetilen kimlik oluşturma
 
@@ -415,7 +412,6 @@ Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıkla
 ### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Kullanıcı tarafından atanan bir kimlik kullanarak arka uçta kimlik doğrulama
 
 [Kimlik doğrulaması ile yönetilen](api-management-authentication-policies.md#ManagedIdentity) kimlik ilkesi aracılığıyla arka uçta kimlik doğrulaması yapmak için Kullanıcı tarafından atanan kimlik ' i kullanabilirsiniz.
-
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Kimlik kaldırma
 

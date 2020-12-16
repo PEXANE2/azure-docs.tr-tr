@@ -7,16 +7,16 @@ ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: ae587b9501c9c68600ff880744d311ba966923ed
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 4f5deb33218c336da7a477b4f39cd45f7386debf
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008036"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97604983"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>GitHub eylemlerini kullanarak App Service özel kapsayıcı dağıtma
 
-[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) , otomatik yazılım geliştirme iş akışı oluşturma esnekliği sağlar. [Azure Web dağıtımı eylemiyle](https://github.com/Azure/webapps-deploy), GitHub eylemlerini kullanarak [App Service](overview.md) için özel kapsayıcılar dağıtmak üzere iş akışınızı otomatik hale getirebilirsiniz.
+[GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) , otomatik yazılım geliştirme iş akışı oluşturma esnekliği sağlar. [Azure Web dağıtımı eylemiyle](https://github.com/Azure/webapps-deploy), GitHub eylemlerini kullanarak [App Service](overview.md) için özel kapsayıcılar dağıtmak üzere iş akışınızı otomatik hale getirebilirsiniz.
 
 Bir iş akışı, deponuzdaki yoldaki bir YAML (. yıml) dosyası tarafından tanımlanır `/.github/workflows/` . Bu tanım, iş akışındaki çeşitli adımları ve parametreleri içerir.
 
@@ -28,7 +28,7 @@ Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vard�
 |**Derleme** | 1. ortamı oluşturun. <br /> 2. kapsayıcı görüntüsünü oluşturun. |
 |**Dağıtma** | 1. kapsayıcı görüntüsünü dağıtın. |
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun. Azure App Service dağıtmak için bir GitHub deposunda kodunuz olması gerekir. 
@@ -39,7 +39,7 @@ Azure App Service kapsayıcı iş akışı için, dosyanın üç bölümü vard�
 
 GitHub eylemleri için Azure App Services ile kimlik doğrulamak için önerilen yol, bir yayımlama profiliyle birlikte bulunur. Hizmet sorumlusu ile de kimlik doğrulaması yapabilirsiniz ancak işlem daha fazla adım gerektirir. 
 
-Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
+Yayımlama profili kimlik bilgilerinizi veya hizmet sorumlunuzu Azure ile kimlik doğrulamak için [GitHub gizli anahtarı](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) olarak kaydedin. Gizli anahtar, iş akışınız dahilinde. 
 
 # <a name="publish-profile"></a>[Profili Yayımla](#tab/publish-profile)
 
@@ -88,7 +88,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
 
 [Uygulama düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak için, indirilen yayımlama profili dosyasının içeriğini gizli dizinin değer alanına yapıştırın. Parolayı adlandırın `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örneğin:
+GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azure Web uygulaması dağıtma eyleminde öğesini kullanırsınız. Örnek:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -102,7 +102,7 @@ GitHub iş akışınızı yapılandırırken, `AZURE_WEBAPP_PUBLISH_PROFILE` Azu
 
 [Kullanıcı düzeyi kimlik bilgilerini](#generate-deployment-credentials)kullanmak IÇIN Azure CLI KOMUTUNDAN tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını gibi verin `AZURE_CREDENTIALS` .
 
-Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
 ```yaml
 - uses: azure/login@v1
@@ -273,7 +273,7 @@ GitHub 'daki farklı depolarda gruplanmış eylem listemizi, her biri, CI/CD iç
 
 - [Docker oturum açma/kapatma](https://github.com/Azure/docker-login)
 
-- [İş akışlarını tetikleyen olaylar](https://help.github.com/en/articles/events-that-trigger-workflows)
+- [İş akışlarını tetikleyen olaylar](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 - [K8s dağıtımı](https://github.com/Azure/k8s-deploy)
 

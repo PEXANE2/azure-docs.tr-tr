@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 3d4e5ad0b24b7163072d7e3110a523dad9608923
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ecdecc78d4c1adeba49a28f3cf555caa164a97a5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507380"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592458"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -154,9 +154,9 @@ Eylem grupları, Azure uyarılarınız için eylemleri tetiklemenin modüler ve 
 
     * İş öğesi açılan kutusu "olay" veya "uyarı" bölümünde seçtiğiniz bir durumda: **her bir yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu temizlerseniz, her uyarı yeni bir iş öğesi oluşturur. Yapılandırma öğesi başına birden fazla uyarı olabilir.
 
-       ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
-
-    * İş öğesi açılan kutusu "olay" nda seçtiğiniz bir durumda: radyo düğmeleri seçiminde her bir **günlük girişi için bireysel iş öğeleri oluştur** ' u seçerseniz, her uyarı yeni bir iş öğesi oluşturur. Radyo düğmeleri seçiminde **her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, her yapılandırma öğesinin kendi iş öğesi olur.
+   ![' Iş öğesi ' için seçili ' olay ' ile ıTSM bilet penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * İş öğesi açılan kutusu "olay" nda seçtiğiniz bir durumda: radyo düğmeleri seçiminde her bir **günlük girişi için bireysel iş öğeleri oluştur** ' u seçerseniz, her uyarı yeni bir iş öğesi oluşturur. Radyo düğmeleri seçiminde **her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** ' u seçerseniz, her yapılandırma öğesinin kendi iş öğesi olur.
    ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. **Tamam**’ı seçin.
@@ -236,7 +236,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 - Planlanan bitiş tarihi
 - Çalışma başlangıç tarihi
 - Çalışma bitiş tarihi
-- Açıklama
+- Description
 - Bilgisayar
 
 ## <a name="output-data-for-a-servicenow-incident"></a>ServiceNow olayı için çıkış verileri
@@ -283,7 +283,7 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 | PlannedEndDate_t  | Planlanan bitiş tarihi |
 | WorkStartDate_t  | Gerçek başlangıç tarihi |
 | WorkEndDate_t | Gerçek bitiş tarihi|
-| Description_s | Açıklama |
+| Description_s | Description |
 | Bilgisayar  | Yapılandırma öğesi |
 
 ## <a name="contact-us"></a>Bizimle iletişim kurun

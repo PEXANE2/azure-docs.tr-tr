@@ -3,12 +3,12 @@ title: Öğretici-çok Kapsayıcılı grup dağıtma-YAML
 description: Bu öğreticide, Azure CLı ile bir YAML dosyası kullanarak Azure Container Instances birden çok kapsayıcılı bir kapsayıcı grubunu dağıtmayı öğreneceksiniz.
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: 8f1f13d4fa7e32b76988cdf356d5d1bb0528f824
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091302"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605170"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Öğretici: YAML dosyası kullanarak çok kapsayıcılı bir grup dağıtma
 
@@ -178,7 +178,6 @@ Bu öğreticide, Azure Container Instances içinde çok kapsayıcılı bir grubu
 Ayrıca, [Kaynak Yöneticisi şablonu](container-instances-multi-container-group.md)kullanarak çok kapsayıcılı bir grup belirtebilirsiniz. Bir Kaynak Yöneticisi şablonu, kapsayıcı grubuyla ek Azure hizmet kaynakları dağıtmanız gerektiğinde senaryolar için kolay bir şekilde uyarlanmıştır.
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

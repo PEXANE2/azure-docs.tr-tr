@@ -9,15 +9,15 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 08/31/2020
-ms.openlocfilehash: 51e9e66e2fd8ff60dd20c275a66fd13c047cc629
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94985527"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605403"
 ---
-# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL yönetilen örneği üzerinde kullanıcı tarafından başlatılan el ile yük devretme
+# <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Yönetilen Örneği'nde kullanıcı tarafından başlatılan el ile yük devretme
 
 Bu makalede, SQL yönetilen örnek Genel Amaçlı (GP) ve İş Açısından Kritik (BC) hizmeti katmanlarında bir birincil düğümün nasıl el ile yük devretmekte ve yalnızca BC hizmet katmanında ikincil bir salt okuma Çoğaltma düğümünün el ile nasıl yük devretmekte olduğu açıklanır.
 
@@ -46,7 +46,7 @@ Yük devretmeyi başlatan kullanıcının aşağıdaki Azure rollerinden birine 
 - Aşağıdaki izne sahip özel rol:
   - `Microsoft.Sql/managedInstances/failover/action`
 
-### <a name="using-powershell"></a>PowerShell'i kullanma
+### <a name="using-powershell"></a>PowerShell’i kullanma
 
 En az az. SQL sürümünün [v 2.9.0](https://www.powershellgallery.com/packages/Az.Sql/2.9.0)olması gerekir. Her zaman en son PowerShell sürümü bulunan Azure portal [Azure Cloud Shell](../../cloud-shell/overview.md) kullanmayı göz önünde bulundurun. 
 
@@ -140,7 +140,7 @@ Daha önce BC için gösterilen GP hizmet katmanıyla aynı çıktıyı göremez
 
 > [!IMPORTANT]
 > Kullanıcı tarafından başlatılan el ile yük devretmenin işlevsel sınırlamaları şunlardır:
-> - Her **30 dakikada** bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
+> - Her **15 dakikada** bir yönetilen örnek üzerinde bir (1) yük devretme başlatılmış olabilir.
 > - BC örnekleri için, yük devretme isteğinin kabul edilmesi için mevcut çoğaltmaların çekirdeği olması gerekir.
 > - BC örnekleri için, hangi okunabilir ikincil çoğaltmanın üzerinde yük devretmeyi başlatacağını belirtmek mümkün değildir.
 

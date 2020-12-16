@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/16/2020
+ms.date: 12/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 822e28402d0b7829b835ad03a3b3cf7d05c3d343
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 96c4eba31013b868fa7afb41544d5d8cbcc1cdc6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181013"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607227"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Öğretici: bulut akademik My-SSO ile çoklu oturum açma tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide Cloud akademik My-SSO 'yu Azure Active Directory (Azure AD) ile 
 * Cloud akademik My-SSO ile kimlerin erişebileceğini denetlemek için Azure AD 'yi kullanın.
 * Kullanıcılarınızın Azure AD hesaplarıyla bulut akademik My-SSO ' da otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -39,15 +37,14 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edeceksiniz.
 
-Cloud akademik My-SSO, SP tarafından başlatılan SSO 'yu destekler.
-
-Cloud akademik My-SSO 'yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimleri koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
+* Bulut akademik My-SSO, **SP** tarafından başlatılan SSO 'yu destekler
+* Cloud akademik My-SSO **, yalnızca zamanında** Kullanıcı sağlamasını destekler
 
 ## <a name="add-cloud-academy---sso-from-the-gallery"></a>Galeriden bulut akademik My-SSO 'SU Ekle
 
 Cloud akademik My-SSO ile Azure AD arasındaki tümleştirmeyi yapılandırmak için, Galeriden bulut akademik My-SSO ' u yönetilen SaaS uygulamaları listenize eklemeniz gerekir:
 
-1. [Azure Portal](https://portal.azure.com) bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
+1. Azure portal bir iş veya okul hesabıyla ya da kişisel bir Microsoft hesabı oturum açın.
 1. Sol bölmede **Azure Active Directory**’yi seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Bir uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -72,14 +69,29 @@ Azure AD SSO 'yu Cloud akademik My-SSO ile yapılandırmak ve test etmek için �
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için şu adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), **Cloud AKADEMIK My-SSO** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Cloud akademik My-SSO** uygulama tümleştirmesi sayfasında, **Yönet** bölümünde **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem düğmesini seçin:
 
    ![Temel SAML yapılandırmasını düzenlemenin kalem düğmesini gösteren ekran görüntüsü.](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **oturum açma URL 'si** kutusuna girin `https://cloudacademy.com/login/enterprise/` .
+1. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
 
+    a. **Oturum açma URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
+    
+    | Oturum açma URL'si |
+    |--------------|
+    | `https://cloudacademy.com/login/enterprise/` |
+    | `https://app.qa.com/login/enterprise/` |
+    |
+    
+    b. **Yanıt URL 'si** metin kutusuna aşağıdaki URL 'lerden birini yazın:
+    
+    | Yanıt URL'si |
+    |--------------|
+    | `https://cloudacademy.com/labs/social/complete/saml/` |
+    | `https://app.qa.com/labs/social/complete/saml/` |
+    |
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak için Kopyala düğmesini seçin. URL 'YI kaydedin.
 
     ![Uygulama Federasyon meta veri URL 'SI için Kopyala düğmesini gösteren ekran görüntüsü.](common/copy-metadataurl.png)
@@ -103,15 +115,9 @@ Bu bölümde, bu kullanıcıya bulut akademik mi-SSO 'SU erişimi vererek Azure 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde, **Cloud akademik My-SSO**' yı seçin.
 1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünde, **Kullanıcılar ve gruplar**' ı seçin:
-
-   ![Kullanıcılar ve gruplar seçeneğini gösteren ekran görüntüsü.](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin:
-
-    ![Kullanıcı Ekle düğmesini gösteren ekran görüntüsü.](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinde **B. Simon** öğesini seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ## <a name="configure-single-sign-on-for-cloud-academy"></a>Bulut akademik My için çoklu oturum açmayı yapılandırma
@@ -145,36 +151,19 @@ Bu bölümde, bu kullanıcıya bulut akademik mi-SSO 'SU erişimi vererek Azure 
 
 ### <a name="create-a-cloud-academy-test-user"></a>Bir bulut akademik test kullanıcısı oluşturma
 
-1. Cloud akademik My-SSO ' da oturum açın.
-
-1. Şirketinizin adını seçin ve açılan menüden **Üyeler** ' i seçin:
-
-    ![Üyeler seçeneğini gösteren ekran görüntüsü.](./media/cloud-academy-sso-tutorial/create-user.PNG)
-
-1. **Üyeleri davet et** ' i ve sonra **tek bir üyeyi davet et**' i seçin
-
-    ![Tek bir üyeyi davet et seçeneğini gösteren ekran görüntüsü.](./media/cloud-academy-sso-tutorial/create-user-1.PNG)
-
-1. Gerekli alanlara değerleri girip **davet et**' i seçin:
-
-    ![Üye davet etme iletişim kutusunu gösteren ekran görüntüsü.](./media/cloud-academy-sso-tutorial/create-user-2.PNG)
+Bu bölümde, bulut akademik My-SSO 'da Britta Simon adlı bir Kullanıcı oluşturulmuştur. Cloud akademik My-SSO, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı bulut akademik My-SSO 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Artık erişim paneli 'ni kullanarak Azure AD SSO yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Access panel 'de Cloud akademik My-SSO kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız Cloud akademik My-SSO örneğinde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [erişim paneli 'Ne giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz bulut akademik oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Cloud akademik My-SSO oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Cloud akademik My-SSO kutucuğuna tıkladığınızda bu, bulut akademik oturum açma URL 'SI ile yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile Cloud akademik My-SSO 'yu deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimleri kullanarak bulut akademik My-SSO koruması](/cloud-app-security/proxy-intro-aad)
+Cloud akademik My-SSO 'yu yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

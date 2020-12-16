@@ -7,19 +7,19 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: af8d768ceeaacdf1c8a0f6cdc8be0041e4ae4ed1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb0d3e3c57a26f7ca14b74edc42cb657ba6074c3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099088"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605016"
 ---
 # <a name="what-is-the-new-azure-digital-twins-how-is-it-different-from-the-previous-version-2018"></a>Yeni Azure dijital TWINS nedir? Önceki sürümden (2018) farklı mi?
 
 Azure Digital TWINS 'in ilk genel önizlemesi Ekim 2018 ' de yayımlanmıştır. Bu ilk sürümden temel kavramlar yeni hizmete taşınana kadar, arabirimlerin ve uygulama ayrıntılarının birçoğu hizmeti daha esnek ve erişilebilir hale getirmek üzere değiştirilmiştir. Bu değişiklikler müşteri geri bildirimleri tarafından görüşmiş.
 
 > [!IMPORTANT]
-> Yeni hizmetin genişletilmiş özelliklerine yönelik olarak, önceki Azure dijital TWINS hizmeti 2020 yılının sonuna kadar kullanımdan kaldırılacaktır.
+> Yeni hizmetin genişletilmiş özellikleri 'nin açık olduğu, önceki Azure dijital TWINS hizmeti, API 'Leri ve ilgili verileri de 18 Ocak 2021 tarihinden itibaren kullanılamayacak şekilde kullanımdan kaldırılacaktır.
 
 İlk genel önizleme sırasında Azure Digital TWINS 'in ilk sürümünü kullandıysanız, yeni hizmetle nasıl çalışacağınızı öğrenmek ve özelliklerinden yararlanmak için bu makaledeki bilgileri ve en iyi uygulamaları kullanın.
 

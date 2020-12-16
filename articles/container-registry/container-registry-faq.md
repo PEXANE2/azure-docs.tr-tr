@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 09/18/2020
 ms.author: sajaya
-ms.openlocfilehash: a2cddc9bbe868a2d18ee8111aabf6db7dc8643cf
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 055f039d5bba0dba2906e1d3b8410af00c5600ef
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347004"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606292"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry hakkında sık sorulan sorular
 
@@ -111,6 +111,7 @@ Güvenlik duvarı kuralı değişikliklerinin yayılması biraz zaman alır. Gü
 - [Kayıt defteri kaynağını yönetme izni olmadan çekme veya gönderme görüntülerine erişim izni Nasıl yaparım? mı?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Kayıt defteri için otomatik görüntü karantinasını etkinleştirmek Nasıl yaparım? mı?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
 - [Anonim çekme erişimini etkinleştirmek Nasıl yaparım? istiyor musunuz?](#how-do-i-enable-anonymous-pull-access)
+- [Dağıtılabilir olmayan katmanları bir kayıt defterine itmi Nasıl yaparım??](#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker kayıt defteri HTTP API v2 'ye Nasıl yaparım? erişin?
 
@@ -265,6 +266,33 @@ Anonim (genel) çekme erişimi için bir Azure Kapsayıcı kayıt defteri ayarla
 > * Yalnızca bilinen bir görüntüyü çekmek için gereken API 'Ler anonim olarak erişilebilir. Etiket listesi veya depo listesi gibi işlemler için başka API 'Ler anonim olarak erişilebilir değildir.
 > * Anonim çekme işlemini denemeden önce, `docker logout` tüm mevcut Docker kimlik bilgilerini temizlemenizi sağlamak için öğesini çalıştırın.
 
+### <a name="how-do-i-push-non-distributable-layers-to-a-registry"></a>Dağıtılabilir olmayan katmanları bir kayıt defterine itmi Nasıl yaparım??
+
+Bir bildirimde dağıtılabilir olmayan bir katman, içeriğin getirileceği bir URL parametresi içerir. Dağıtılabilir katman gönderimleri etkinleştirmek için bazı olası kullanım durumları, ağ kısıtlı kayıt defterleri, kısıtlı erişime sahip AIR-gapped kayıt defterleri veya internet bağlantısı olmayan kayıt defterleri için kullanılır.
+
+Örneğin, bir VM 'nin yalnızca Azure Container Kayıt defterinizden görüntü çekebilmesi için NSG kurallarınızı ayarladıysanız, Docker yabancı/dağıtılabilir olmayan katmanlar için hatalara sahip olur. Örneğin, bir Windows Server çekirdek görüntüsü, bildiriminde Azure Container Registry 'ye yabancı Katman başvuruları içerir ve bu senaryoya çekme işlemi başarısız olur.
+
+Dağıtılabilir katmanların göndermeyi etkinleştirmek için:
+
+1. `daemon.json` `/etc/docker/` Linux konaklarında ve Windows Server 'da bulunan dosyasını düzenleyin `C:\ProgramData\docker\config\daemon.json` . Dosyanın daha önce boş olduğunu varsayarsak, aşağıdaki içerikleri ekleyin:
+
+   ```json
+   {
+     "allow-nondistributable-artifacts": ["myregistry.azurecr.io"]
+   }
+   ```
+   > [!NOTE]
+   > Değer, virgülle ayrılmış bir kayıt defteri adresleri dizisidir.
+
+2. Dosyayı kaydedin ve kapatın.
+
+3. Docker 'ı yeniden başlatın.
+
+Görüntüleri listedeki kayıt defterlerine gönderdiğinizde, dağıtılabilir olmayan katmanlar kayıt defterine gönderilir.
+
+> [!WARNING]
+> Dağıtılabilir yapıtlar genellikle ve nerede dağıtılabilecekleri ve paylaşılabileceği konusunda kısıtlamalar vardır. Yapıtları yalnızca özel kayıt defterlerine göndermek için bu özelliği kullanın. Dağıtılabilir olmayan yapıtları yeniden dağıtımı kapsayan koşullarla uyumlu olduğunuzdan emin olun.
+
 ## <a name="diagnostics-and-health-checks"></a>Tanılama ve durum denetimleri
 
 - [Sistem durumunu denetle `az acr check-health`](#check-health-with-az-acr-check-health)
@@ -322,7 +350,7 @@ unauthorized: authentication required
 ```
 
 Hatayı gidermek için:
-1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örneğin:
+1. `--signature-verification=false`Docker Daemon yapılandırma dosyasına seçeneğini ekleyin `/etc/sysconfig/docker` . Örnek:
    
    `OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'`
    
@@ -457,7 +485,7 @@ Tüm depo adlandırma kuralları için bkz. [kapsayıcı girişim dağıtım bel
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows 'da http izlemeleri Nasıl yaparım? mi toplıyorsunuz?
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 - Fiddler 'da https şifresini çözmeyi etkinleştir:  <https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS>
 - Docker Kullanıcı arabirimi aracılığıyla bir proxy kullanmak için Docker 'ı etkinleştirin: <https://docs.docker.com/docker-for-windows/#proxies>
@@ -509,10 +537,10 @@ Bu ayar komut için de geçerlidir `az acr run` .
 
 | Git hizmeti | Kaynak bağlamı | El ile derleme | Tamamlama tetikleyicisi aracılığıyla otomatik derleme |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Evet |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Evet | Evet |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Hayır |
-| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Evet | Hayır |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | Evet | Yes |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | Yes | Yes |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | Yes | Hayır |
+| BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | Yes | Hayır |
 
 ## <a name="run-error-message-troubleshooting"></a>Çalıştırma hata Iletisi sorun giderme
 

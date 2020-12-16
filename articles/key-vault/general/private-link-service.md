@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 75f06ae11d308028431202c22338ff4a589acf28
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460060"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592305"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault'u Azure Özel Bağlantı ile tümleştirme
 
@@ -23,7 +23,7 @@ Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir 
 
 Daha fazla bilgi için bkz. [Azure özel bağlantısı nedir?](../../private-link/private-link-overview.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şunlar gerekir:
 
@@ -36,7 +36,7 @@ Bir anahtar kasasını Azure özel bağlantısıyla bütünleştirmek için şun
 
 Özel uç noktanız sanal ağınızda özel bir IP adresi kullanıyor.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 ## <a name="establish-a-private-link-connection-to-key-vault-using-the-azure-portal"></a>Key Vault Azure portal kullanarak bir özel bağlantı bağlantısı kurun 
 
@@ -53,7 +53,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. Ağ sekmesinde Özel uç nokta radyo düğmesini seçin.
 1. Özel uç nokta eklemek için "+ Ekle" düğmesine tıklayın.
 
-    ![Görüntü](../media/private-link-service-1.png)
+    ![' Anahtar Kasası oluşturma ' sayfasında ' ağ ' sekmesini gösteren ekran görüntüsü.](../media/private-link-service-1.png)
  
 1. Özel uç nokta oluştur dikey penceresinin "konum" alanında, sanal ağınızın bulunduğu bölgeyi seçin. 
 1. "Ad" alanında, bu özel uç noktayı tanımlamanızı sağlayacak açıklayıcı bir ad oluşturun. 
@@ -61,7 +61,7 @@ Anahtar Kasası temel bilgilerini yapılandırdıktan sonra, ağ sekmesini seçi
 1. "Özel bölge DNS ile tümleştirin" seçeneğini değiştirmeden bırakın.  
 1. "Tamam" ı seçin.
 
-    ![Görüntü](../media/private-link-service-8.png)
+    ![Ayarlar seçiliyken ' özel uç nokta oluştur ' sayfasını gösteren ekran görüntüsü.](../media/private-link-service-8.png)
  
 Artık yapılandırılmış özel uç noktayı görebileceksiniz. Artık bu özel uç noktayı silme ve düzenleme seçeneğiniz vardır. "Gözden geçir + oluştur" düğmesini seçin ve Anahtar Kasası oluşturun. Dağıtımın tamamlanması 5-10 dakika sürer. 
 
@@ -76,12 +76,13 @@ Zaten bir anahtar kasanız varsa, aşağıdaki adımları izleyerek bir özel ba
 1. Sayfanın üst kısmındaki özel uç nokta bağlantıları sekmesini seçin
 1. Sayfanın üst kısmındaki "+ özel uç nokta" düğmesini seçin.
 
-    ![Görüntü ](../media/private-link-service-3.png) ![ resmi](../media/private-link-service-4.png)
+    ![' Ağ ' sayfasında ' + özel uç nokta ' düğmesini gösteren ekran görüntüsü.](../media/private-link-service-3.png)
+    ![' Özel uç nokta (Önizleme) oluştur sayfasında ' temel bilgiler ' sekmesini gösteren ekran görüntüsü.](../media/private-link-service-4.png)
 
 Bu dikey pencereyi kullanarak, içindeki herhangi bir Azure kaynağı için özel bir uç nokta oluşturmayı tercih edebilirsiniz. Açılır menüleri kullanarak bir kaynak türü seçebilir ve dizininizdeki bir kaynağı seçebilir ya da kaynak KIMLIĞI kullanarak herhangi bir Azure kaynağına bağlanabilirsiniz. "Özel bölge DNS ile tümleştirin" seçeneğini değiştirmeden bırakın.  
 
-![Görüntü ](../media/private-link-service-3.png)
- ![ resmi](../media/private-link-service-4.png)
+![Geçerli dikey pencereyi kullanarak özel uç nokta eklemeyi gösteren ekran görüntüsü. ](../media/private-link-service-3.png)
+ ![ ' Özel uç nokta (Önizleme) oluşturma sayfasına bir örnek gösteren ekran görüntüsü.](../media/private-link-service-4.png)
 
 Özel bir uç nokta oluşturduğunuzda bağlantının onaylanması gerekir. Özel bir uç noktası oluşturduğunuz kaynak dizininizdeki ise, yeterli izinlere sahip olduğunuz için bağlantı isteğini onaylayabileceksiniz; başka bir dizindeki bir Azure kaynağına bağlanıyorsanız, bu kaynağın sahibinin bağlantı isteğinizi onaylamasını beklemeniz gerekir.
 

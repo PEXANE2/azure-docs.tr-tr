@@ -4,12 +4,12 @@ description: Otomatik ölçeklendirme ayarlarının ve nasıl çalıştıkları 
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87317476"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605249"
 ---
 # <a name="understand-autoscale-settings"></a>Otomatik Ölçeklendirme ayarlarını anlama
 Otomatik ölçeklendirme ayarları, uygulamanızın dalgalanma yükünü işlemek için çalışan doğru kaynak miktarına sahip olmanızı sağlar. Otomatik ölçeklendirme ayarlarını, yük veya performansı belirten veya zamanlanan bir tarih ve saatte tetiklenen ölçümlere göre tetiklenecek şekilde yapılandırabilirsiniz. Bu makalede, bir otomatik ölçeklendirme ayarının anatomtoize ayrıntılı bir bakış ele alır. Makale, bir ayarın şeması ve özellikleriyle başlar ve yapılandırılabilecek farklı profil türlerini gösterir. Son olarak, makalede, Azure 'daki otomatik ölçeklendirme özelliğinin, belirli bir zamanda hangi profilin yürütüleceğini nasıl değerlendirdiği açıklanmaktadır.
@@ -60,7 +60,7 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
               "cooldown": "PT5M"
             }
           },
-    {
+          {
             "metricTrigger": {
               "metricName": "Percentage CPU",
               "metricResourceUri": "/subscriptions/s1/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachineScaleSets/vmss1",
@@ -119,34 +119,41 @@ Otomatik ölçeklendirme ayarı şemasını göstermek için aşağıdaki otomat
 
 - **Sabit tarih profili:** Bu profil özel durumlar içindir. Örneğin, 26 Aralık 2017 (PST) tarihinde önemli bir olayınızın olduğunu varsayalım. Kaynağınızın en düşük ve en büyük kapasitelerinin o gün için farklı olmasını istiyorsunuz, ancak yine de aynı ölçümleri ölçeklendirin. Bu durumda, ayarınızın profil listesine sabit bir tarih profili eklemeniz gerekir. Profil, yalnızca olayın gününde çalışacak şekilde yapılandırılmıştır. Herhangi bir gün için otomatik ölçeklendirme normal profili kullanır.
 
-    ``` JSON
-    "profiles": [{
-    "name": " regularProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    },
-    {
-    ...
-    }]
-    },
-    {
-    "name": "eventProfile",
-    "capacity": {
-    ...
-    },
-    "rules": [{
-    ...
-    }, {
-    ...
-    }],
-    "fixedDate": {
-        "timeZone": "Pacific Standard Time",
-               "start": "2017-12-26T00:00:00",
-               "end": "2017-12-26T23:59:00"
-    }}
+    ```json
+    "profiles": [
+        {
+            "name": " regularProfile",
+            "capacity": {
+                ...
+            },
+            "rules": [
+                {
+                ...
+                },
+                {
+                ...
+                }
+            ]
+        },
+        {
+            "name": "eventProfile",
+            "capacity": {
+            ...
+            },
+            "rules": [
+                {
+                ...
+                }, 
+                {
+                ...
+                }
+            ],
+            "fixedDate": {
+                "timeZone": "Pacific Standard Time",
+                "start": "2017-12-26T00:00:00",
+                "end": "2017-12-26T23:59:00"
+            }
+        }
     ]
     ```
     

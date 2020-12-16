@@ -3,13 +3,13 @@ title: Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 description: Azure Kubernetes hizmeti 'nde (AKS) yönetilen kimlikleri nasıl kullanacağınızı öğrenin
 services: container-service
 ms.topic: article
-ms.date: 12/06/2020
-ms.openlocfilehash: 68d8111da5ec10f23d14b375a18229bca075da84
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/16/2020
+ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97026838"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607295"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde Yönetilen kimlikler kullanma
 
@@ -36,7 +36,7 @@ AKS, yerleşik hizmetler ve eklentiler için birkaç yönetilen kimlik kullanır
 
 | Kimlik                       | Name    | Kullanım örneği | Varsayılan izinler | Kendi kimliğinizi getir
 |----------------------------|-----------|----------|
-| Kontrol düzlemi | görünür değil | AKS denetim düzlemi bileşenleri tarafından, giriş yük dengeleyiciler ve AKS yönetilen ortak IP 'Ler ve küme otomatik Scaler işlemleri dahil olmak üzere küme kaynaklarını yönetmek için kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | Önizleme
+| Kontrol düzlemi | görünür değil | AKS denetim düzlemi bileşenleri tarafından, giriş yük dengeleyiciler ve AKS yönetilen ortak IP 'Ler ve küme otomatik Scaler işlemleri dahil olmak üzere küme kaynaklarını yönetmek için kullanılır | Düğüm kaynak grubu için katkıda bulunan rolü | destekleniyor
 | Kubelet | AKS küme adı-agentpool | Azure Container Registry (ACR) ile kimlik doğrulaması | NA (Kubernetes v 1.15 + için) | Şu anda desteklenmiyor
 | Eklenti | AzureNPM | Kimlik gerekli değil | NA | No
 | Eklenti | Azurecnı ağ izleme | Kimlik gerekli değil | NA | No

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185666"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607434"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
@@ -36,7 +36,7 @@ SDK sürümü **1.0.6** veya üzeri ile, `/negotiate` `413 Payload Too Large` ol
 
 ### <a name="solution"></a>Çözüm:
 
-Varsayılan olarak, talepleri,, `context.User.Claims` talepler korunabilmesi ve **A** istemci öğesine bağlandığı zaman **ASRS** 'den öğesine geçirilebilmesi IÇIN, **IRS**'ye JWT erişim belirteci oluştururken (zure **s** ıgnal **R** **s** ervice) dahil edilir `Hub` `Hub` .
+Varsayılan olarak, talepleri,, `context.User.Claims` talepler korunabilmesi veistemci öğesine bağlandığı zaman **ASRS** 'den öğesine geçirilebilmesi IÇIN, **IRS**'ye JWT erişim belirteci oluştururken (zure **s** ıgnal **R** **s** ervice) dahil edilir `Hub` `Hub` .
 
 Bazı durumlarda, `context.User.Claims` çoğu uygulama sunucusu için, `Hub` ancak diğer bileşenleri tarafından kullanılmayan birçok bilgi depolamak için yararlanılabilir.
 
@@ -144,11 +144,17 @@ ASP.NET SignalR için, [istemci bağlantısı düşerse](#client_connection_drop
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>istemci istekleri için 429 (çok fazla Istek) döndürüldü
 
-429, **eşzamanlı** bağlantı sayımınız sınırı aşarsa döndürür.
+İki durum vardır.
+
+### <a name="concurrent-connection-count-exceeds-limit"></a>**Eşzamanlı** bağlantı sayısı sınırı aşıyor.
 
 **Ücretsiz** örnekler Için, **eşzamanlı** bağlantı sayısı sınırı **Standart** örnekler için 20, **birim başına** **eşzamanlı** bağlantı sayısı sınırı 1 K olur, bu da Unit100 100-K eş zamanlı bağlantılara izin verir.
 
 Bağlantılar hem istemci hem de sunucu bağlantılarını içerir. bağlantıların nasıl sayılacağını [kontrol edin](./signalr-concept-messages-and-connections.md#how-connections-are-counted) .
+
+### <a name="too-many-negotiate-requests-at-the-same-time"></a>Aynı anda çok fazla anlaşma isteği.
+
+Yeniden bağlanmadan önce rastgele bir gecikme önermesi önerilir, lütfen yeniden deneme örnekleri için [buraya](#restart_connection) bakın.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500: Azure SignalR hizmeti henüz bağlı değil, lütfen daha sonra yeniden deneyin.
 
@@ -257,7 +263,7 @@ SignalR istemci bağlantısı `DisposeAsync` hiçbir şekilde çağrılmaz, bağ
 
 Bağlantıyı kapatmayı denetleyin. `HubConnection.DisposeAsync()`Bağlantıyı kullandıktan sonra durdurmak için el ile çağrı yapın.
 
-Örneğin:
+Örnek:
 
 ```C#
 var connection = new HubConnectionBuilder()

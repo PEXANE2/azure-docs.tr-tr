@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: b04a5535ada9532d62d395f7070d9bcd8aa4380c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: cef2e2ca9c7ad4640014d9b5a9a7da42d308ef7c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591788"
+ms.locfileid: "97605153"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Birden çok konuşma geçişi oluşturmak için takip istemlerini kullanma
 
@@ -38,7 +38,6 @@ Bir Kullanıcı soru sorarsa, Soru-Cevap Oluşturma yanıtı _ve_ herhangi bir i
 Önceki görüntüde, Kullanıcı **hesabımı** girerek bir konuşma başlattı. Bilgi Bankası 'nda üç bağlantılı soru-cevap çifti bulunur. Kullanıcı, yanıtı iyileştirmek için bilgi bankasındaki üç seçenekten birini seçer. Soru (#1), sohbet bot 'ta üç seçenek olarak sunulan üç izleme istemiyle sahiptir (#2).
 
 Kullanıcı bir seçenek seçtiğinde (#3), bir sonraki iyileştirme seçenekleri listesi (#4) sunulur. Bu dizi, Kullanıcı doğru, son yanıtı (#6) seçinceye kadar devam eder (#5).
-
 
 ### <a name="use-multi-turn-in-a-bot"></a>Bir bot 'ta Çoklu açma kullan
 
@@ -79,7 +78,6 @@ Hiyerarşik bir belge eklediğinizde Soru-Cevap Oluşturma, konuşma akışı ol
 > [!Caution]
 > Yeni veya boş Bilgi Bankası için bir veri kaynağı olarak, aktarılmış bir TSV veya XLS çoklu çift yönlü bilgi tabanı dosyası kullanma desteği desteklenmez. Dışarı aktarılan çoklu oturum istemlerini bir bilgi tabanına eklemek için, bu dosya türünü Soru-Cevap Oluşturma portalının **Ayarlar** sayfasından **içeri aktarmanız** gerekir.
 
-
 ## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>Oluşturma API 'SI ile çok yönlü istemlerle Bilgi Bankası oluşturma
 
 [Soru-cevap oluşturma API oluşturma](/rest/api/cognitiveservices/qnamaker/knowledgebase/create)' yı kullanarak çok yönlü istemlerle bir bilgi talebi oluşturabilirsiniz. İstemler, `context` özelliğin `prompts` dizisine ekliyor.
@@ -116,7 +114,6 @@ Mevcut bir soru-cevap çiftine Şu anda bağlı olmayan bir izleme istemi ekleyi
     |Yalnızca bağlam| Bu onay kutusunu seçin. Yanıt yalnızca soru, bağlam belirttiğinde döndürülür.|
     |Yanıta bağla|Mevcut soru-cevap çiftini bulmak için **oturum açma ekranını kullanın** yazın.|
 
-
 1.  Bir eşleşme döndürülür. Bu yanıtı izleme olarak seçin ve ardından **Kaydet**' i seçin.
 
     !["Izleme istemi (ÖNIZLEME)" sayfası](../media/conversational-context/search-follow-up-prompt-for-existing-answer.png)
@@ -137,7 +134,6 @@ Bir izleme istemi oluşturulduğunda ve **Yanıt bağlantısı** olarak mevcut s
 1. Görüntü metnini düzenlemenizi bitirdiğinizde **Kaydet**' i seçin.
 1. Üst gezinti çubuğunda **Kaydet ve eğitme**.
 
-
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>Yeni soru-cevap çiftini bir izleme istemi olarak ekleyin
 
 Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bir izleme istemi olarak mevcut bir soruya bağlanması gerekir.
@@ -155,7 +151,6 @@ Bilgi Bankası 'na yeni bir soru-cevap çifti eklediğinizde, her bir çiftin bi
     |||
 
     ![Yeni bir istem sorusu ve yanıtı oluşturma](../media/conversational-context/create-child-prompt-from-parent.png)
-
 
 1. **Yeni oluştur**' u seçin ve ardından **Kaydet**' i seçin.
 
@@ -353,7 +348,6 @@ Soru-Cevap Oluşturma _Generateanswer_ JSON yanıtı, `context` nesnedeki ilk ö
 ## <a name="query-the-knowledge-base-with-the-qna-maker-id"></a>Bilgi Bankası 'nı Soru-Cevap Oluşturma KIMLIĞIYLE sorgulayın
 
 Çoklu açma özelliğini kullanarak özel bir uygulama oluşturuyorsanız. İlk sorunun yanıtında, tüm izleme istemleri ve onunla ilişkili `qnaId` döndürülür. KIMLIĞINIZ olduğuna göre, bunu izleme isteminin istek gövdesinde geçirebilirsiniz. İstek gövdesi `qnaId` öğesini ve bağlam nesnesini içeriyorsa (önceki soru-cevap oluşturma özelliklerini içeren), GenerateAnswer, soru metninin yanıtını bulmak için derecelendirme algoritmasını kullanmak yerıne kimliğe göre tam soruyu döndürür.
-
 
 ## <a name="display-order-is-supported-in-the-update-api"></a>Güncelleştirme API 'sinde görüntüleme sırası destekleniyor
 

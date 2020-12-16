@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a6b92d1b7f36b73d91b8e0e8e519981b936d8735
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185921"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592441"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -154,7 +154,7 @@ Saklama Ayrıca parametresi kullanılarak [Azure Resource Manager ile de ayarlan
 
 Çalışma alanı tabanlı Application Insights kaynak (,,,,,,,, `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` , `AppSystemEvents` ve) veri türleri `AppTraces` de varsayılan olarak 90 gün boyunca tutulur ve bu 90 günlük bekletmeye yönelik ücret alınmaz. Saklama, veri türü işlevselliğine göre bekletme kullanılarak ayarlanabilir. 
 
-Log Analytics [Temizleme API 'sinin](/rest/api/loganalytics/workspacepurge/purge) bekletme faturalandırmayı etkilemediğini ve çok sınırlı durumlar için kullanılması amaçlandığını unutmayın. Bekletme faturanızı azaltmak için bekletme döneminin, çalışma alanı ya da belirli veri türleri için azaltılmalıdır. 
+Log Analytics [temizleme API'sinin](/rest/api/loganalytics/workspacepurge/purge) saklama faturasını etkilemediğini ve çok sınırlı durumlarda kullanılmaya yönelik olduğunu unutmayın. Bekletme faturanızı azaltmak için bekletme döneminin, çalışma alanı ya da belirli veri türleri için azaltılmalıdır. 
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
 

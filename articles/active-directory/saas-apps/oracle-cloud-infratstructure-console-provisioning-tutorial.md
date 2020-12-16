@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 94de0ca0a5393c891e567e558cbbadd0ca1f453b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938945"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608009"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Oracle bulut altyapı konsolunu yapılandırma
 
@@ -31,7 +31,7 @@ Bu öğreticide, otomatik Kullanıcı sağlamayı yapılandırmak için hem Orac
 > * Oracle bulut altyapısı konsolunda grupları ve grup üyeliklerini sağlama
 > * Oracle bulut altyapı konsolu 'nda [Çoklu oturum açma](./oracle-cloud-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -120,40 +120,40 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki Kullanıcı hesaplarıyla eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, Oracle bulut altyapısı konsolu API 'sinin, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-      |Öznitelik|Tür|
-      |---|---|
-      |displayName|Dize|
-      |userName|Dize|
-      |active|Boole|
-      |başlık|Dize|
-      |emails[type eq "work"].value|Dize|
-      |preferredLanguage|Dize|
-      |name.givenName|Dize|
-      |name.familyName|Dize|
-      |adresler [tür EQ "iş"]. biçimlendirildi|Dize|
-      |adresler [tür EQ "iş"]. konum|Dize|
-      |adresler [tür EQ "iş"]. bölge|Dize|
-      |adresler [tür EQ "iş"]. PostaKodu|Dize|
-      |adresler [tür EQ "iş"]. ülke|Dize|
-      |adresler [tür EQ "Work"]. streetAddress|Dize|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
-      |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
-      |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: bypassNotification|Boole|
-      |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: ısfederateduser|Boole|
+    |Öznitelik|Tür|
+    |---|---|
+    |displayName|Dize|
+    |userName|Dize|
+    |active|Boole|
+    |başlık|Dize|
+    |emails[type eq "work"].value|Dize|
+    |preferredLanguage|Dize|
+    |name.givenName|Dize|
+    |name.familyName|Dize|
+    |adresler [tür EQ "iş"]. biçimlendirildi|Dize|
+    |adresler [tür EQ "iş"]. konum|Dize|
+    |adresler [tür EQ "iş"]. bölge|Dize|
+    |adresler [tür EQ "iş"]. PostaKodu|Dize|
+    |adresler [tür EQ "iş"]. ülke|Dize|
+    |adresler [tür EQ "Work"]. streetAddress|Dize|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: employeeNumber|Dize|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Department|Dize|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: costCenter|Dize|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Bölüm|Dize|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Manager|Başvuru|
+    |urn: IETF: params: Scim: schemas: Extension: Enterprise: 2.0: User: Organization|Dize|
+    |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: bypassNotification|Boole|
+    |urn: IETF: params: Scim: schemas: Oracle: IDCs: Extension: User: User: ısfederateduser|Boole|
 
 10. **Eşlemeler** bölümünde, **Azure Active Directory grupları Oracle bulut altyapısı konsolu olarak eşitler**' ı seçin.
 
 11. **Öznitelik eşleme** bölümünde, Azure AD 'Den Oracle bulut altyapısı konsoluna eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Oracle bulut altyapısı konsolundaki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-      |Öznitelik|Tür|
-      |---|---|
-      |displayName|Dize|
-      |externalId|Dize|
-      |üyeler|Başvuru|
+    | Öznitelik | Tür |
+    |--|--|
+    | displayName | Dize |
+    | externalId | Dize |
+    | üyeler | Başvuru |
 
 12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
 

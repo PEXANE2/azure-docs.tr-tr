@@ -8,12 +8,12 @@ ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.custom: devx-track-java
-ms.openlocfilehash: e84b80233d87ac4ae5e2281b506e225c4ab1bd9d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a15c6b5919f428b28daab86fea9c3b6473d19162
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357611"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606207"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -24,12 +24,12 @@ Azure Cosmos DB, ölçeklenebilir, global olarak dağıtılmış, tam olarak yö
 
 Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı şekilde çalışan temel özellikler verilmiştir:
 
-|   Couchbase     |   Azure Cosmos DB   |
-| ---------------|-------------------|
-|Couşbase sunucusu| Hesap       |
-|Demet           | Veritabanı      |
-|Demet           | Kapsayıcı/koleksiyon |
-|JSON belgesi    | Öğe/belge |
+| Couchbase | Azure Cosmos DB |
+|--|--|
+| Couşbase sunucusu | Hesap |
+| Demet | Veritabanı |
+| Demet | Kapsayıcı/koleksiyon |
+| JSON belgesi | Öğe/belge |
 
 ## <a name="key-differences"></a>Temel farklılıklar
 
@@ -189,7 +189,7 @@ N1QL sorguları, Couşbase 'de sorguları tanımlamanın yoludur.
 
 |N1QL sorgusu | Azure CosmosDB sorgusu|
 |-------------------|-------------------|
-|META ( `TravelDocument` ). ID as ID, `TravelDocument` . * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki HERHANGI bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0   | C. ID, c 'den c. Country = ' Hindistan ' konumundan c._type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') olarak SıRASıYLA c. id, c ' yi SEÇIN. geçerlilik DESC KAYMASı 0 sınır |
+|META ( `TravelDocument` ). ID as ID, `TravelDocument` . * from `TravelDocument` `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve Vizas 'deki HERHANGI bir d 'yi karşılayan bir d. Type = = ' Multi-entry ' ve d. Country, ` Validity` DESC sınırına 25 fark 0 | C. ID, c 'den c. Country = ' Hindistan ' konumundan c._type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') olarak SıRASıYLA c. id, c ' yi SEÇIN. geçerlilik DESC KAYMASı 0 sınır |
 
 N1QL sorgularınızda aşağıdaki değişiklikleri görebilirsiniz:
 
@@ -221,12 +221,12 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
    cp.connectionMode(ConnectionMode.DIRECT);
     
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();   
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
    
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -242,22 +242,22 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
 ```java
 for(SqlQuerySpec query:queries)
 {
-    objFlux= container.queryItems(query, fo);
-    objFlux .publishOn(Schedulers.elastic())
-            .subscribe(feedResponse->
-                {
-                    if(feedResponse.results().size()>0)
-                    {
-                        _docs.addAll(feedResponse.results());
-                    }
-                
-                },
-                Throwable::printStackTrace,latch::countDown);
-    lstFlux.add(objFlux);
+   objFlux= container.queryItems(query, fo);
+   objFlux .publishOn(Schedulers.elastic())
+         .subscribe(feedResponse->
+            {
+               if(feedResponse.results().size()>0)
+               {
+                  _docs.addAll(feedResponse.results());
+               }
+            
+            },
+            Throwable::printStackTrace,latch::countDown);
+   lstFlux.add(objFlux);
 }
-                        
-        Flux.merge(lstFlux);
-        latch.await();
+                  
+      Flux.merge(lstFlux);
+      latch.await();
 }
 ```
 
@@ -267,7 +267,7 @@ for(SqlQuerySpec query:queries)
 
 Belgeyi eklemek için aşağıdaki kodu çalıştırın:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -278,13 +278,13 @@ CountDownLatch latch=new CountDownLatch(1);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
+           if(resourceResponse.statusCode()!=successStatus)
+              {
+                 throw new RuntimeException(resourceResponse.toString());
+              }
+           },
         Throwable::printStackTrace,latch::countDown);
-latch.await();              
+latch.await();
 ```
 
 ### <a name="upsert-operation"></a>Upsert işlem
@@ -300,7 +300,7 @@ Ardından mono 'ya abone olun. Ekleme işleminde mono abonelik kod parçacığı
 
 Aşağıdaki kod parçacığı, silme işlemini yapılacak:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
@@ -350,12 +350,12 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
    cp.connectionMode(ConnectionMode.DIRECT);
    
    if(client==null)
-    client= CosmosClient.builder()
-        .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
-        .connectionPolicy(cp)
-        .key(PrimaryKey)
-        .consistencyLevel(ConsistencyLevel.EVENTUAL)
-        .build();
+      client= CosmosClient.builder()
+         .endpoint(Host)//(Host, PrimaryKey, dbName, collName).Builder()
+          .connectionPolicy(cp)
+          .key(PrimaryKey)
+          .consistencyLevel(ConsistencyLevel.EVENTUAL)
+          .build();
     
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
@@ -370,16 +370,16 @@ Artık CRUD işlemlerini aşağıdaki gibi çalıştırabilirsiniz:
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
 ro.partitionKey(new PartitionKey(documentId));
 CountDownLatch latch=new CountDownLatch(1);
-        
+      
 var objCosmosItem= container.getItem(documentId, documentId);
 Mono<CosmosItemResponse> objMono = objCosmosItem.read(ro);
 objMono .subscribeOn(Schedulers.elastic())
         .subscribe(resourceResponse->
         {
-            if(resourceResponse.item()!=null)
-            {
-                doc= resourceResponse.properties().toObject(UserModel.class);
-            }
+           if(resourceResponse.item()!=null)
+           {
+              doc= resourceResponse.properties().toObject(UserModel.class);
+           }
         },
         Throwable::printStackTrace,latch::countDown);
 latch.await();
@@ -389,7 +389,7 @@ latch.await();
 
 Bir öğe eklemek için aşağıdaki kodu uygulayabilirsiniz:
 
-```java 
+```java
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
@@ -398,14 +398,14 @@ Ardından mono 'ya abone ol:
 ```java
 CountDownLatch latch=new CountDownLatch(1);
 objMono.subscribeOn(Schedulers.elastic())
-        .subscribe(resourceResponse->
-        {
-            if(resourceResponse.statusCode()!=successStatus)
-                {
-                    throw new RuntimeException(resourceResponse.toString());
-                }
-            },
-        Throwable::printStackTrace,latch::countDown);
+      .subscribe(resourceResponse->
+      {
+         if(resourceResponse.statusCode()!=successStatus)
+            {
+               throw new RuntimeException(resourceResponse.toString());
+            }
+         },
+      Throwable::printStackTrace,latch::countDown);
 latch.await();
 ```
 
@@ -422,7 +422,7 @@ Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığı
 
 Silme işlemini yürütmek için aşağıdaki kod parçacığını kullanın:
 
-```java     
+```java
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```

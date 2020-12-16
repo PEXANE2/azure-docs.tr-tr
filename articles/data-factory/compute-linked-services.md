@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f2a0784b2795b82131880d73a6d9217acc1d72d3
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96022471"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606224"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory tarafından desteklenen işlem ortamları
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda, Data Factory tarafından desteklenen işlem ortamlarının
 | [Azure Machine Learning Studio (klasik)](#azure-machine-learning-studio-classic-linked-service) | [Machine Learning Studio (klasik) etkinlikleri: toplu yürütme ve kaynak güncelleştirme](transform-data-using-machine-learning.md) |
 | [Azure Machine Learning](#azure-machine-learning-linked-service) | [Azure Machine Learning yürütme işlem hattı](transform-data-machine-learning-service.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](transform-data-using-data-lake-analytics.md) |
-| [Azure SQL](#azure-sql-database-linked-service), [Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı)](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Saklı yordam](transform-data-using-stored-procedure.md) |
+| [Azure SQL](#azure-sql-database-linked-service), [Azure Synapse Analytics](#azure-synapse-analytics-linked-service), [SQL Server](#sql-server-linked-service) | [Saklı Yordam](transform-data-using-stored-procedure.md) |
 | [Azure Databricks](#azure-databricks-linked-service)         | [Not defteri](transform-data-databricks-notebook.md), [jar](transform-data-databricks-jar.md), [Python](transform-data-databricks-python.md) |
 | [Azure İşlevi](#azure-function-linked-service)         | [Azure Işlevi etkinliği](control-flow-azure-function-activity.md)
 >  
@@ -253,7 +253,7 @@ D4 boyutlu baş düğümleri ve çalışan düğümleri oluşturmak istiyorsanı
 "dataNodeSize": "Standard_D4",
 ```
 
-Bu özellikler için yanlış bir değer belirtirseniz, şu **hatayı alabilirsiniz:** küme oluşturulamadı. Özel durum: Küme oluşturma işlemi tamamlanamadı. İşlem '400' koduyla başarısız oldu. Küme geride bırakma durumu: 'Hata'. İleti: ' Prelustercreationvalidationfailure '. Bu hatayı aldığınızda, [sanal makinelerin boyutları](../virtual-machines/sizes.md) makalesindeki tabloda **CMDLET & API 'leri** adını kullandığınızdan emin olun.          
+Bu özellikler için yanlış bir değer belirtirseniz, şu **hatayı alabilirsiniz:** küme oluşturulamadı. Özel durum: Küme oluşturma işlemi tamamlanamadı. İşlem '400' koduyla başarısız oldu. Küme geride bırakma durumu: 'Hata'. İleti: ' Prelustercreationvalidationfailure '. Bu hatayı aldığınızda, [sanal makinelerin boyutları](../virtual-machines/sizes.md) makalesindeki tabloda **CMDLET & API 'leri** adını kullandığınızdan emin olun.
 
 ### <a name="bring-your-own-compute-environment"></a>Kendi işlem ortamınızı getirin
 Bu yapılandırmada, kullanıcılar zaten mevcut bir bilgi işlem ortamını Data Factory bağlı hizmet olarak kaydedebilir. Bilgi işlem ortamı Kullanıcı tarafından yönetilir ve Data Factory hizmeti tarafından etkinlikleri yürütmek için kullanılır.
@@ -549,7 +549,7 @@ Databricks iş yüklerini (Not defteri, Jar, Python) çalıştırmak için kulla
 | etki alanı               | Databricks çalışma alanının bölgesine göre uygun şekilde Azure bölgesini belirtin. Örnek: https://eastus.azuredatabricks.net | Yes                                 |
 | accessToken          | Azure Databricks kimlik doğrulaması için Data Factory erişim belirteci gereklidir. Erişim belirtecinin databricks çalışma alanından oluşturulması gerekir. Erişim belirtecini bulmak için daha ayrıntılı adımlar [burada](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token) bulunabilir  | No                                       |
 | MSI          | Azure Databricks kimlik doğrulamak için Data Factory yönetilen kimliğini (sistem tarafından atanan) kullanın. ' MSI ' kimlik doğrulaması kullanılırken erişim belirtecine ihtiyacınız yoktur  | No                                       |
-| Existingclusterıd    | Bu kümedeki tüm işleri çalıştırmak için var olan bir kümenin küme KIMLIĞI. Bu, önceden oluşturulmuş bir etkileşimli küme olmalıdır. Yanıt vermeyi durdurduğunda kümeyi el ile yeniden başlatmanız gerekebilir. Databricks daha fazla güvenilirlik sağlamak için işleri yeni kümeler üzerinde çalıştırmaya öneriyor. Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla ayrıntı’yı seçin](https://docs.databricks.com/user-guide/clusters/tags.html) | No 
+| Existingclusterıd    | Bu kümedeki tüm işleri çalıştırmak için var olan bir kümenin küme KIMLIĞI. Bu, önceden oluşturulmuş bir etkileşimli küme olmalıdır. Yanıt vermeyi durdurduğunda kümeyi el ile yeniden başlatmanız gerekebilir. Databricks daha fazla güvenilirlik sağlamak için işleri yeni kümeler üzerinde çalıştırmaya öneriyor. Databricks çalışma alanı-> kümeleri-> etkileşimli küme adı-> yapılandırma-> etiketleri üzerinde etkileşimli bir kümenin küme KIMLIĞINI bulabilirsiniz. [Daha fazla ayrıntı](https://docs.databricks.com/user-guide/clusters/tags.html) | No 
 | instancePoolId    | Databricks çalışma alanında var olan bir havuzun örnek havuzu KIMLIĞI.  | No  |
 | newClusterVersion    | Kümenin Spark sürümü. Databricks içinde bir iş kümesi oluşturur. | No  |
 | newClusterNumOfWorker| Bu kümenin sahip olması gereken çalışan düğüm sayısı. Bir kümede, toplam num_workers + 1 Spark düğümü için bir Spark sürücüsü ve num_workers Yürüticileri vardır. "1" gibi bir Int32 dizesi, numOfWorker 'ın 1 veya "1:10" olması anlamına gelir.  | No                |
@@ -564,7 +564,7 @@ Bir Azure SQL bağlı hizmeti oluşturur ve bir Data Factory işlem hattından s
 
 ## <a name="azure-synapse-analytics-linked-service"></a>Azure SYNAPSE Analytics bağlı hizmeti
 
-Bir Azure SYNAPSE Analytics (eski adıyla SQL veri ambarı) bağlantılı hizmeti oluşturun ve bir Data Factory işlem hattından saklı yordam çağırmak için [saklı yordam etkinliğini](transform-data-using-stored-procedure.md) kullanın. Bu bağlı hizmet hakkındaki ayrıntılar için bkz. [Azure SYNAPSE Analytics (eski ADıYLA SQL veri ambarı) Bağlayıcısı](connector-azure-sql-data-warehouse.md#linked-service-properties) makalesi.
+Bir Azure SYNAPSE Analytics bağlı hizmeti oluşturun ve bir Data Factory işlem hattından saklı yordam çağırmak için [saklı yordam etkinliğiyle](transform-data-using-stored-procedure.md) birlikte kullanabilirsiniz. Bu bağlı hizmet hakkındaki ayrıntılar için bkz. [Azure SYNAPSE Analytics Bağlayıcısı](connector-azure-sql-data-warehouse.md#linked-service-properties) makalesi.
 
 ## <a name="sql-server-linked-service"></a>Bağlı hizmet SQL Server
 
@@ -576,8 +576,8 @@ Azure Işlev bağlı hizmeti oluşturup Azure Işlevleri 'ni bir Data Factory i�
 
 | **Özellik** | **Açıklama** | **Gerekli** |
 | --- | --- | --- |
-| tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | yes |
-| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | yes |
+| tür   | Type özelliği: **AzureFunction** olarak ayarlanmalıdır | evet |
+| işlev uygulaması URL 'si | Azure İşlev Uygulaması URL 'SI. Biçim `https://<accountname>.azurewebsites.net` . Bu URL, Azure portal İşlev Uygulaması görüntülenirken **URL** bölümündeki değerdir  | evet |
 | işlev anahtarı | Azure Işlevi için erişim anahtarı. İlgili işlevin **Yönet** bölümüne tıklayın ve **işlev anahtarını** ya da **ana bilgisayar anahtarını** kopyalayın. Buradan daha fazla bilgi edinebilirsiniz: [Azure IŞLEVLERI http Tetikleyicileri ve bağlamaları](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | evet |
 |   |   |   |
 

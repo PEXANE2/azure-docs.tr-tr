@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c6b646688fb0c42091182cc7f94e019432b354fa
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: f1e6cd222c9ee8f40f81d4db3750956e8e698e3e
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504652"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607678"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Öğretici: TextMagic ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, TextMagic 'i Azure Active Directory (Azure AD) ile tümleştirm
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ TextMagic 'in Azure AD 'ye tümleştirilmesini yapılandırmak için galerideki 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-textmagic"></a>TextMagic için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak textmagic Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, TextMagic 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak textmagic Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, TextMagic 'teki bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlantı ilişkisi kurmanız gerekir.
 
 TextMagic ile Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -84,18 +84,18 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     **Tanımlayıcı** metin kutusuna bir URL yazın:`https://my.textmagic.com/saml/metadata`
 
-5. TextMagic uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. TextMagic uygulaması **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+5. TextMagic uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. TextMagic uygulaması **NameIdentifier** 'ın **User. Mail** ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![image](common/edit-attribute.png)
 
 1. TextMagic uygulaması, yukarıdakine ek olarak aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı |   Kaynak özniteliği| Ad Alanı  |
+    | Name |   Kaynak özniteliği| Ad Alanı  |
     | --------------- | --------------- | --------------- |
     | şirket | User. CompanyName | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | firstName               | Kullanıcı. |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | lastName            | User. soyadı |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
-    | telefon               | Kullanıcı. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | firstName | Kullanıcı. |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | lastName | User. soyadı |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
+    | telefon | Kullanıcı. telephoneNumber |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -137,7 +137,7 @@ Bu bölümde, TextMagic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
 ### <a name="configure-textmagic-sso"></a>TextMagic SSO 'yu yapılandırma
 
-1. TextMagic 'teki yapılandırmayı otomatik hale getirmek için, **uzantıyı**İndir ' e tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+1. TextMagic 'teki yapılandırmayı otomatik hale getirmek için, **uzantıyı** İndir ' e tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -155,11 +155,11 @@ Bu bölümde, TextMagic 'e erişim vererek Azure çoklu oturum açma özelliğin
 
     ![Ekran görüntüsü, açıklanan değerleri girebileceğiniz tek Sign-On sekmesini gösterir.](./media/textmagic-tutorial/config2.png)
 
-    a. **Kimlik sağlayıcısı VARLıK kimliği:** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    a. **Kimlik sağlayıcısı VARLıK kimliği:** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    b. **Kimlik sağlayıcısı SSO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Kimlik sağlayıcısı SSO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    c. **Kimlik sağlayıcısı SLO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    c. **Kimlik sağlayıcısı SLO URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     d. Azure portal 'den indirilen Not defteri 'nde **Base-64 kodlu sertifikanızı** açın, bu içeriği panonuza kopyalayın ve ardından **genel x509 sertifikası:** TextBox ' a yapıştırın.
 

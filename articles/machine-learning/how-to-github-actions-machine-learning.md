@@ -1,5 +1,5 @@
 ---
-title: CI/CD için GitHub eylemleri
+title: CI/CD için GitHub Actions
 titleSuffix: Azure Machine Learning
 description: Azure Machine Learning bir modeli eğitme için bir GitHub eylemleri iş akışı oluşturma hakkında bilgi edinin
 services: machine-learning
@@ -10,16 +10,16 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: 4336827dc7f8cb45f04e4cef94d79d1e6409d5c0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e7f6066cb7ed5c166d3e2bdc3f895073b05b92b9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795341"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605034"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning GitHub eylemlerini kullanma
 
-Azure Machine Learning bir modeli eğitmek için [GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) ile çalışmaya başlayın. 
+Azure Machine Learning bir modeli eğitmek için [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) ile çalışmaya başlayın. 
 
 > [!NOTE]
 > Azure Machine Learning için GitHub eylemleri, olduğu gibi sağlanır ve Microsoft tarafından tam olarak desteklenmez. Belirli bir eylemle ilgili sorunlarla karşılaşırsanız, eylem için depoda bir sorun açın. Örneğin, AML-Deploy eylemiyle ilgili bir sorunla karşılaşırsanız, sorunu [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) depoya bildirin.
@@ -47,7 +47,7 @@ Dosya dört bölümden oluşur:
 [GitHub eylemleri ve Azure Machine Learning şablonuyla ml Ops](https://github.com/machine-learning-apps/ml-template-azure)'dan yeni bir depo oluşturun. 
 
 1. [Şablonu](https://github.com/machine-learning-apps/ml-template-azure) GitHub üzerinde açın. 
-2. **Bu şablonu kullan** ' ı seçin. 
+2. **Bu şablonu kullan**' ı seçin. 
 
     :::image type="content" source="media/how-to-github-actions-machine-learning/gh-actions-use-template.png" alt-text="Bu şablonu kullan ' ı seçin":::
 3. Şablondan yeni bir depo oluşturun. Depo adını `ml-learning` ya da seçtiğiniz bir adı ayarlayın. 
@@ -77,7 +77,7 @@ Yukarıdaki örnekte yer tutucuları abonelik KIMLIĞINIZ, kaynak grubu adı ve 
 
 ## <a name="configure-the-github-secret"></a>GitHub gizliliğini yapılandırma
 
-1. [GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin** .
+1. [GitHub](https://github.com/)'da deponuza gözatıp **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
 
 2. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 

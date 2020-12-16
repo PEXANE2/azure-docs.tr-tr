@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cb946bc889d37b37f3330b07b18dd3ef3423af28
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 683f765b898d485f74652386025ac7e3556f8477
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515313"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607941"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-printerlogic-saas"></a>Öğretici: PrinterLogic SaaS ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, PrinterLogic SaaS 'ı Azure Active Directory (Azure AD) ile tü
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -39,11 +39,8 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-
-
 * PrinterLogic SaaS **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * PrinterLogic SaaS **, tam zamanında** Kullanıcı sağlamayı destekler
-
 
 ## <a name="adding-printerlogic-saas-from-the-gallery"></a>Galeriden PrinterLogic SaaS ekleme
 
@@ -56,10 +53,9 @@ PrinterLogic SaaS 'in Azure AD 'ye tümleştirilmesini yapılandırmak için, Ga
 1. **Galeriden Ekle** bölümünde, arama kutusuna **printerlogic SaaS** yazın.
 1. Sonuçlar panelinden **Printerlogic SaaS** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-printerlogic-saas"></a>PrinterLogic SaaS için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Printerlogic SaaS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve PrinterLogic SaaS içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Printerlogic SaaS ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve PrinterLogic SaaS içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu PrinterLogic SaaS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -99,9 +95,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, PrinterLogic SaaS uygulaması aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği |
+    | Name | Kaynak özniteliği |
     | ---------| ------------ |
-    | Rol     | Kullanıcı. atandroles |
+    | Rol | Kullanıcı. atandroles |
 
     > [!NOTE]
     > Azure AD 'de rolün nasıl yapılandırılacağını öğrenmek için lütfen [buraya](../develop/active-directory-enterprise-app-role-management.md) tıklayın
@@ -131,7 +127,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, PrinterLogic SaaS 'ye erişim vererek, B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Printerlogic SaaS**öğesini seçin.
+1. Uygulamalar listesinde **Printerlogic SaaS** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -160,9 +156,9 @@ Erişim panelinde PrinterLogic SaaS kutucuğunu tıklattığınızda, SSO 'yu ay
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

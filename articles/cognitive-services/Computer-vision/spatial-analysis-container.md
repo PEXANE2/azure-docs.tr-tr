@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 2f03746a6a5afc388db2beeff84b3ab4cbd393b5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f41e513ee0f2755c446a9cb95465c1f636fe5a7a
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014603"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606275"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Uzamsal analiz kapsayıcısını (Önizleme) yükleyip çalıştırın
 
 Uzamsal analiz kapsayıcısı, kişiler, taşınanlar ve fiziksel ortamlardaki nesnelerle etkileşimler arasındaki uzamsal ilişkileri anlamak için gerçek zamanlı akış videosunu analiz etmenizi sağlar. Kapsayıcılar, belirli güvenlik ve veri idare gereksinimleri için çok kullanışlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure aboneliğiniz olduktan sonra, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" "  target="_blank"> <span class="docon docon-navigate-external x-hidden-focus"></span> </a> anahtarınızı ve uç noktanızı almak için Azure Portal bir görüntü işleme kaynağı oluşturun görüntü işleme bir kaynak oluşturun. Dağıtıldıktan sonra **Kaynağa Git ' e** tıklayın.
@@ -111,9 +111,9 @@ Uzamsal analiz, bir AI çözümünü çalıştırmak için Azure Stack ucunun i�
 
  **Edge Işlem yapılandırma**   sayfasında, mevcut bir IoT Hub seçin veya yenisini oluşturmayı seçin. Varsayılan olarak, bir IoT Hub kaynağı oluşturmak için standart (S1) Fiyatlandırma Katmanı kullanılır. Boş bir katman IoT Hub kullanmak için, bir tane oluşturun ve ardından seçin. IoT Hub kaynak, Azure Stack Edge kaynağı tarafından kullanılan aynı abonelik ve kaynak grubunu kullanır 
 
-**Oluştur**'a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
+**Oluştur**’a tıklayın. IoT Hub kaynak oluşturma birkaç dakika sürebilir. IoT Hub kaynağı oluşturulduktan sonra, yeni yapılandırmayı göstermek için **Edge işlem bölmesini Yapılandır** ' ı güncellecektir. Edge işlem rolünün yapılandırıldığını doğrulamak için, **Işlem yapılandırma** kutucuğunda yapılandırmayı **görüntüle** ' yi seçin   .
 
-Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Azure IoT Edge çalışma zamanı IoT Edge cihazda zaten çalışıyor.            
+Edge cihazında Edge hesaplama rolü ayarlandığında, iki cihaz oluşturur: bir IoT cihazı ve bir IoT Edge cihaz. Her iki cihaz de IoT Hub kaynağında görüntülenebilir. Azure IoT Edge çalışma zamanı IoT Edge cihazda zaten çalışıyor.
 
 > [!NOTE]
 > * Şu anda yalnızca Linux platformu IoT Edge cihazlar için desteklenir. Azure Stack Edge cihazında sorun giderme konusunda yardım için bkz. [günlük ve sorun giderme](spatial-analysis-logging.md) makalesi.

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2019
-ms.openlocfilehash: 5035a81838ace0678f0cbb68ad2b9325de498003
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1edd5ffc2578a27a53c7e9a46a4a5f1cf61331ff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353128"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605068"
 ---
 # <a name="language-support-for-a-qna-maker-resource-and-knowledge-bases"></a>Soru-Cevap Oluşturma bir kaynak ve bilgi tabanı için dil desteği
 
@@ -83,61 +83,61 @@ Birkaç dil içeren bir Bilgi Bankası sistemini desteklemeniz gerekiyorsa şunl
 
 Aşağıdaki liste, bir Soru-Cevap Oluşturma kaynağı için desteklenen dilleri içerir. 
 
-|Dil|
+| Dil |
 |--|
-|Arapça|
-|Ermenice|
-|Bangla|
-|Baskça|
-|Bulgarca|
-|Katalanca|
-|Chinese_Simplified|
-|Chinese_Traditional|
-|Hırvatça|
-|Çekçe|
-|Danca|
-|Felemenkçe|
-|İngilizce|
-|Estonya Dili|
-|Fince|
-|Fransızca|
-|Galiçya Dili|
-|Almanca|
-|Yunanca|
-|Gucerat dili|
-|İbranice|
-|Hintçe|
-|Macarca|
-|İzlandaca|
-|Endonezce|
-|İrlandaca|
-|İtalyanca|
-|Japonca|
-|Kannada dili|
-|Korece|
-|Letonca|
-|Litvanca|
-|Malayalam dili|
-|Malayca|
-|Norveççe|
-|Lehçe|
-|Portekizce|
-|Pencap dili|
-|Rumence|
-|Rusça|
-|Serbian_Cyrillic|
-|Serbian_Latin|
-|Slovakça|
-|Slovence|
-|İspanyolca|
-|İsveççe|
-|Tamil dili|
-|Telugu dili|
-|Tayca|
-|Türkçe|
-|Ukraynaca|
-|Urduca|
-|Vietnamca|
+| Arapça |
+| Ermenice |
+| Bangla |
+| Baskça |
+| Bulgarca |
+| Katalanca |
+| Chinese_Simplified |
+| Chinese_Traditional |
+| Hırvatça |
+| Çekçe |
+| Danca |
+| Felemenkçe |
+| İngilizce |
+| Estonya Dili |
+| Fince |
+| Fransızca |
+| Galiçya Dili |
+| Almanca |
+| Yunanca |
+| Gucerat dili |
+| İbranice |
+| Hintçe |
+| Macarca |
+| İzlandaca |
+| Endonezce |
+| İrlandaca |
+| İtalyanca |
+| Japonca |
+| Kannada dili |
+| Korece |
+| Letonca |
+| Litvanca |
+| Malayalam dili |
+| Malayca |
+| Norveççe |
+| Lehçe |
+| Portekizce |
+| Pencap dili |
+| Rumence |
+| Rusça |
+| Serbian_Cyrillic |
+| Serbian_Latin |
+| Slovakça |
+| Slovence |
+| İspanyolca |
+| İsveççe |
+| Tamil dili |
+| Telugu dili |
+| Tayca |
+| Türkçe |
+| Ukraynaca |
+| Urduca |
+| Vietnamca |
 
 ## <a name="query-matching-and-relevance"></a>Sorgu eşleştirme ve ilgisi
 Soru-Cevap Oluşturma, sonuçları sağlamak için [Azure bilişsel arama dil Çözümleyicileri](/rest/api/searchservice/language-support) 'ne bağlıdır.

@@ -6,12 +6,12 @@ ms.date: 03/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: dbc9e48987f527c9579decc3db84091a432a17e5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6b578cd03daa6e996a69c03afd327097d6123045
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601025"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607907"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Java SDK için sorun giderme ve soru-cevap Application Insights
 
@@ -33,7 +33,7 @@ ms.locfileid: "96601025"
 * `<DisableTelemetry>true</DisableTelemetry>`XML dosyasında düğüm olmadığını doğrulayın.
 * Güvenlik duvarınızdaki dc.services.visualstudio.com 'e giden trafik için 80 ve 443 TCP bağlantı noktalarını açmanız gerekebilir. [Güvenlik Duvarı özel durumlarının tam listesini](./ip-addresses.md) görüntüleyin
 * Microsoft Azure başlangıç panosunda, hizmet durumu haritasına bakın. Bazı uyarı göstergeleri varsa, Tamam ' a dönene kadar bekleyin ve ardından Application Insights uygulaması dikey penceresini kapatıp yeniden açın.
-* [Turn on logging](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights.xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ' a ait olan girişleri kontrol edin. 
+* [](#debug-data-from-the-sdk) `<SDKLogger />` ApplicationInsights.xml dosyasındaki kök düğümün altına bir öğe ekleyerek günlüğü açın (Projenizdeki kaynaklar klasöründe) ve tüm şüpheli Günlükler için, AI: Info/warn/Error ' a ait olan girişleri kontrol edin. 
 * Doğru ApplicationInsights.xml dosyanın Java SDK 'Sı tarafından başarılı bir şekilde yüklendiğinden emin olun. Bu, konsolun "yapılandırma dosyası başarıyla bulundu" bildiriminin çıkış iletilerine bakar.
 * Yapılandırma dosyası bulunamazsa, yapılandırma dosyasının nerede arandığını görmek için çıkış iletilerini denetleyin ve ApplicationInsights.xml bu arama konumlarından birinde bulunduğundan emin olun. Thumb kuralı olarak, yapılandırma dosyasını Application Insights SDK JARs yakınına yerleştirebilirsiniz. Örneğin: Tomcat 'te bu, WEB-INF/Classes klasörü anlamına gelir. Geliştirme sırasında, ApplicationInsights.xml Web projenizin Resources klasörüne yerleştirebilirsiniz.
 * Ayrıca, SDK ile ilgili bilinen sorunlar için [GitHub sorunları sayfasına](https://github.com/Microsoft/ApplicationInsights-Java/issues) bakın.
@@ -63,7 +63,6 @@ Uygulamanızı sunucudan telemetri gönderecek şekilde ayarlayın. Şimdi bir s
 Alternatif olarak, istemciniz [telefonda veya diğer bir cihazdaki][platforms]bir uygulama ise, bu bilgisayardan telemetri gönderebilirsiniz.
 
 Hem istemci hem de sunucu telemetrinizi ayarlamak için aynı izleme anahtarını kullanın. Veriler aynı Application Insights kaynağında görünür ve olayları istemci ve sunucudan ilişkilendirebileceksiniz.
-
 
 ## <a name="disabling-telemetry"></a>Telemetri devre dışı bırakılıyor
 **Telemetri toplamayı nasıl devre dışı bırakabilirim?**
@@ -183,7 +182,6 @@ Application Insights kullanır `org.apache.http` . Bu, ad alanı altındaki Appl
 
 >[!NOTE]
 >Uygulamadaki tüm ad alanları için hata ayıklama düzeyinde günlüğe yazmayı etkinleştirirseniz, olarak yeniden adlandırıldı dahil tüm çalışan modüller tarafından kabul edilir `org.apache.http` `com.microsoft.applicationinsights.core.dependencies.http` . Application Insights, günlük çağrısı Apache kitaplığı tarafından yapıldığından, bu çağrılar için filtreleme uygulayamayacak. Hata ayıklama düzeyinde günlüğe kaydetme, önemli miktarda günlük verisi üretir ve canlı üretim örnekleri için önerilmez.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 **Java sunucusu uygulamamın Application Insights ayarladım. Başka ne yapabilirim?**

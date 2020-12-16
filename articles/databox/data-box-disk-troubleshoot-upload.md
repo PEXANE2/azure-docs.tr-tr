@@ -9,12 +9,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7225b04908753bb7c07ac89510859bac9db5b89c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b53cf607bdf60c785c7324d9ede526a0983b7e6
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85565017"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605284"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Azure Data Box Disk veri yükleme sorunlarını gidermek için günlükleri anlama
 
@@ -38,7 +38,7 @@ Karşıya yükleme günlüklerini bulmak için aşağıdaki adımları uygulayı
 
     ![Portalda günlüklere bağlantı](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs.png)
 
-2. **Gmallara**gidin.
+2. **Gmallara** gidin.
 
     ![hata ve ayrıntılı Günlükler](./media/data-box-disk-troubleshoot-upload/data-box-disk-portal-logs-1.png)
 
@@ -117,46 +117,46 @@ Bu örnekte hata dosyası, `Summary` tüm dosya düzeyi hatalarını içeren bir
 , `Summary` Ve içerir `ValidationErrors` `CopyErrors` . Bu durumda, 8 dosya veya klasör Azure 'a yüklenmiş ve doğrulama hatası yoktu. Veriler Azure Storage hesabına kopyalanırken, 5 dosya veya klasör başarıyla karşıya yüklenir. Geri kalan 3 dosya veya klasör, Azure Container adlandırma kurallarına göre yeniden adlandırıldı ve Azure 'a başarıyla yüklendi.
 
 Dosya düzeyi durumu, `BlobStatus` Blobları karşıya yüklemek için gerçekleştirilen eylemleri açıklar. Bu durumda, verilerin kopyalandığı klasörler kapsayıcılar için Azure adlandırma kurallarıyla uyumlu olmadığı için üç kapsayıcı yeniden adlandırılır. Bu kapsayıcılara yüklenen Bloblar için, yeni kapsayıcı adı, Azure 'daki Blobun yolu, özgün geçersiz dosya yolu ve BLOB boyutu dahildir.
-    
+  
 ```xml
  <?xml version="1.0" encoding="utf-8"?>
-    <DriveLog Version="2018-10-01">
-      <DriveId>18041C582D7E</DriveId>
-      <Summary>
+  <DriveLog Version="2018-10-01">
+    <DriveId>18041C582D7E</DriveId>
+    <Summary>
      <!--Summary for validation and data copy to Azure -->
-        <ValidationErrors>
-          <None Count="8" />
-        </ValidationErrors>
-        <CopyErrors>
-          <Completed Count="5" Description="No errors encountered" />
-          <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
-        </CopyErrors>
-      </Summary>
+      <ValidationErrors>
+        <None Count="8" />
+      </ValidationErrors>
+      <CopyErrors>
+        <Completed Count="5" Description="No errors encountered" />
+        <ContainerRenamed Count="3" Description="Renamed the container as the original container name does not follow Azure conventions." />
+      </CopyErrors>
+    </Summary>
     <!--List of renamed containers with the new names, new file path in Azure, original invalid file path, and size -->
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
-        <SizeInBytes>71528448</SizeInBytes>
-      </Blob>
-      <Blob Status="ContainerRenamed">
-        <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
-        <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
-        <SizeInBytes>10490880</SizeInBytes>
-      </Blob>
-      <Status>CompletedWithErrors</Status>
-    </DriveLog>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/private.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\private.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/resource.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\resource.vhd</OriginalFilePath>
+      <SizeInBytes>71528448</SizeInBytes>
+    </Blob>
+    <Blob Status="ContainerRenamed">
+      <BlobPath>databox-c2073fd1cc379d83e03d6b7acce23a6cf29d1eef/role.vhd</BlobPath>
+      <OriginalFilePath>\PageBlob\pageblob test\role.vhd</OriginalFilePath>
+      <SizeInBytes>10490880</SizeInBytes>
+    </Blob>
+    <Status>CompletedWithErrors</Status>
+  </DriveLog>
 ```
 
 ## <a name="data-upload-errors"></a>Karşıya veri yükleme hataları
 
 Verileri Azure 'a yüklerken oluşturulan hatalar aşağıdaki tabloda özetlenmiştir.
 
-| Hata kodu | Açıklama                   |
+| Hata kodu | Description                   |
 |-------------|------------------------------|
 |`None` |  Başarıyla tamamlandı.           |
 |`Renamed` | Blob başarıyla yeniden adlandırıldı.   |

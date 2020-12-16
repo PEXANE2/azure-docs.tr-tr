@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1376dcb76c22bcd70937f533d337ee9679e9dc59
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 832c08123904b9fb889231faa86c1308704a2581
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455837"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Öğretici: LoginRadius ile Azure Active Directory tümleştirme
 
@@ -32,7 +32,7 @@ Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek is
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini LoginRadius ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -151,7 +151,7 @@ Bu bölümde, LoginRadius yönetici konsolunda Azure AD çoklu oturum açma 'yı
        - SP için sertifika anahtarını almak için komutu: `openssl genrsa -out lr.hub.loginradius.com.key 2048`
 
        - SP için sertifikayı almak için komutu: `openssl req -new -x509 -key lr.hub.loginradius.com.key -out lr.hub.loginradius.com.cert -days 3650 -subj /CN=lr.hub.loginradius.com`
-     
+
        > [!NOTE]
        > Üst bilgi ve alt bilgiyle sertifika ve sertifika anahtarı değerlerini girdiğinizden emin olun:
        > - Sertifika değeri örnek biçimi: `-----BEGIN CERTIFICATE-----<certifciate value>-----END CERTIFICATE-----`

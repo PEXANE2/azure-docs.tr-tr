@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928792"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606921"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS kümesini yapılandırma
 
@@ -173,7 +173,7 @@ Moby (Docker) çalışma zamanı ile düğüm havuzları oluşturmak istiyorsan�
 * Artık Docker altyapısına erişemez veya Docker- `/var/run/docker.sock` ın-Docker (Dintıd) kullanabilirsiniz.
   * Şu anda Docker altyapısından uygulama günlükleri veya izleme verileri ayıklandıysanız, lütfen bunun yerine [kapsayıcılar Için Azure izleyici](../azure-monitor/insights/container-insights-enable-new-cluster.md) gibi bir şey kullanın. Ayrıca AKS, kararsızlığa neden olabilecek aracı düğümlerinde bant dışı komutların çalıştırılmasını desteklemez.
   * Moby/Docker kullanırken, görüntülerin oluşturulması ve yukarıdaki yöntemler aracılığıyla Docker altyapısının doğrudan kullanılmasıyla kesinlikle önerilmez. Kubernetes, bu tüketilen kaynakların tamamen farkında değildir ve bu yaklaşımlar [burada](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/) [ve burada ayrıntılı olarak ayrıntılı](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)bir şekilde ortaya bulunur.
-* Görüntü oluşturma-görüntü oluşturmak için önerilen yaklaşım [ACR görevlerini](../container-registry/container-registry-quickstart-task-cli.md)kullanmaktır. Alternatif bir yaklaşım, [Docker buildx](https://github.com/docker/buildx)gibi daha güvenli küme içi seçenekler kullanmaktır.
+* Görüntü oluşturma-AKS kümenizde görüntü oluşturulmadığınız sürece geçerli Docker Build iş akışınızı normal olarak kullanmaya devam edebilirsiniz. Bu durumda, [ACR görevlerini](../container-registry/container-registry-quickstart-task-cli.md)kullanarak görüntü oluşturmak için önerilen yaklaşımın veya [Docker buildx](https://github.com/docker/buildx)gibi daha güvenli bir küme içi seçeneğinde geçiş yapmayı düşünün.
 
 ## <a name="generation-2-virtual-machines-preview"></a>2. nesil sanal makineler (Önizleme)
 

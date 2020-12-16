@@ -1,20 +1,20 @@
 ---
 title: Azure kuyruk depolama Node.js-Azure depolama 'dan nasıl kullanılır
-description: Kuyrukları oluşturmak ve silmek için Azure Kuyruk hizmeti kullanmayı öğrenin. Node.js kullanarak ileti eklemeyi, almayı ve silmeyi öğrenin.
+description: Kuyrukları oluşturmak ve silmek için Azure kuyruk depolama alanını kullanmayı öğrenin. Node.js kullanarak ileti eklemeyi, almayı ve silmeyi öğrenin.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/31/2020
+ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.topic: how-to
-ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: c5a9fb1a179164d24c84213762ee7e2332a1aa25
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ebae3c8850947f3b6cbde6f2ebd8bfbd45b2fbb4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345950"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97592186"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Node.js Azure kuyruk depolamayı kullanma
 
@@ -22,7 +22,7 @@ ms.locfileid: "93345950"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu kılavuzda, Microsoft Azure Kuyruk hizmeti kullanarak genel senaryoları nasıl gerçekleştirebileceğiniz gösterilmektedir. Örnekler Node.js API kullanılarak yazılır. Kapsanan senaryolar sıra iletilerini ekleme, göz atma, alma ve silmeyi içerir. Kuyrukları oluşturmayı ve silmeyi de öğrenin.
+Bu kılavuzda, Azure kuyruk depolama kullanarak genel senaryoları nasıl gerçekleştirebileceğiniz gösterilmektedir. Örnekler Node.js API kullanılarak yazılır. Kapsanan senaryolar sıra iletilerini ekleme, göz atma, alma ve silmeyi içerir. Kuyrukları oluşturmayı ve silmeyi de öğrenin.
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
@@ -30,27 +30,29 @@ Bu kılavuzda, Microsoft Azure Kuyruk hizmeti kullanarak genel senaryoları nas�
 
 ## <a name="create-a-nodejs-application"></a>Node.js uygulaması oluşturma
 
-Boş bir Node.js uygulaması oluşturmak için, bkz. [Azure App Service 'da Node.js Web uygulaması oluşturma][Create a Node.js web app in Azure App Service], Windows PowerShell kullanarak [Azure bulut hizmetinde bir Node.js uygulaması oluşturma ve dağıtma][Build and deploy a Node.js application to an Azure Cloud Service] , veya [Visual Studio Code][Visual Studio Code].
+Boş bir Node.js uygulaması oluşturmak için, bkz. [Azure App Service 'da Node.js Web uygulaması oluşturma](../../app-service/quickstart-nodejs.md), PowerShell veya [Cloud Services](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)kullanarak [Azure Visual Studio Code 'de bir Node.js uygulaması derleme ve dağıtma](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) .
 
 ## <a name="configure-your-application-to-access-storage"></a>Uygulamanızı depolamaya erişecek şekilde yapılandırma
 
-[JavaScript Için Azure Storage istemci kitaplığı][Azure Storage client library for JavaScript] , depolama Rest hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içerir.
+[JavaScript Için Azure Storage istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript) , depolama Rest hizmetleriyle iletişim kuran bir dizi kullanışlı kitaplık içerir.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'Ni (NPM) kullanın
+<!-- docutune:ignore Terminal -->
+
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Paketi edinmek için düğüm Paket Yöneticisi 'ni (NPM) kullanın
 
 1. PowerShell (Windows), Terminal (Mac) veya Bash (Unix) gibi bir komut satırı arabirimi kullanın, örnek uygulamanızı oluşturduğunuz klasöre gidin.
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-1. Komut penceresine **NPM Install \@ Azure/Storage-Queue** yazın.
+1. `npm install @azure/storage-queue`Komut penceresine yazın.
 
-1. Bir **düğüm \_ modülleri** klasörünün oluşturulduğunu doğrulayın. Bu klasörün içinde, depolamaya erişmeniz gereken istemci kitaplığını içeren **\@ Azure/Storage-Queue** paketini bulacaksınız.
+1. Bir `node_modules` klasörün oluşturulduğunu doğrulayın. Bu klasörün içinde `@azure/storage-queue` , depolamaya erişmeniz gereken istemci kitaplığını içeren paketi bulacaksınız.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-1. Komut penceresine **npm install azure-storage** yazın.
+1. `npm install azure-storage`Komut penceresine yazın.
 
-1. Bir **düğüm \_ modülleri** klasörünün oluşturulduğunu doğrulayın. Bu klasörün içinde, depolamaya erişmeniz gereken kitaplıkları içeren **Azure depolama** paketini bulacaksınız.
+1. Bir `node_modules` klasörün oluşturulduğunu doğrulayın. Bu klasörün içinde, `azure-storage` depolamaya erişmeniz gereken kitaplıkları içeren paketi bulacaksınız.
 
 ---
 
@@ -74,7 +76,7 @@ var azure = require('azure-storage');
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Aşağıdaki kod, adlı bir ortam değişkeninin değerini alır `AZURE_STORAGE_CONNECTION_STRING` ve bunu bir [QueueServiceClient](/javascript/api/@azure/storage-queue/queueserviceclient) nesnesi oluşturmak için kullanır. **QueueServiceClient** nesnesi daha sonra bir [queueclient](/javascript/api/@azure/storage-queue/queueclient) nesnesi oluşturmak için kullanılır. **Queueclient** nesnesi belirli bir kuyruk ile çalışmanıza olanak sağlar.
+Aşağıdaki kod, adlı bir ortam değişkeninin değerini alır `AZURE_STORAGE_CONNECTION_STRING` ve bunu bir nesne oluşturmak için kullanır [`QueueServiceClient`](/javascript/api/@azure/storage-queue/queueserviceclient) . Bu nesne daha sonra [`QueueClient`](/javascript/api/@azure/storage-queue/queueclient) belirli bir kuyruk ile çalışmanıza izin veren bir nesne oluşturmak için kullanılır.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_CreateQueue":::
 
@@ -82,15 +84,15 @@ Sıra zaten varsa, bir özel durum oluşturulur.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Azure modülü, ortam değişkenlerini `AZURE_STORAGE_ACCOUNT` ve `AZURE_STORAGE_ACCESS_KEY` ya da `AZURE_STORAGE_CONNECTION_STRING` Azure depolama hesabınıza bağlanmak için gereken bilgileri okuyacaktır. Bu ortam değişkenleri ayarlanmamışsa, **Createqueueservice** çağrılırken hesap bilgilerini belirtmeniz gerekir.
+Azure modülü, ortam değişkenlerini `AZURE_STORAGE_ACCOUNT` ve `AZURE_STORAGE_ACCESS_KEY` ya da `AZURE_STORAGE_CONNECTION_STRING` Azure depolama hesabınıza bağlanmak için gereken bilgileri okuyacaktır. Bu ortam değişkenleri ayarlanmamışsa, çağırırken hesap bilgilerini belirtmeniz gerekir `createQueueService` .
 
-Aşağıdaki kod, kuyruklarla çalışmanıza olanak sağlayan bir **QueueService** nesnesi oluşturur.
+Aşağıdaki kod `QueueService` , kuyruklar ile çalışmanıza olanak sağlayan bir nesnesi oluşturur.
 
 ```javascript
 var queueSvc = azure.createQueueService();
 ```
 
-Belirtilen ada sahip yeni bir sıra oluşturmak için **Createqueueifnotexists** metodunu çağırın veya zaten varsa kuyruğu döndürün.
+`createQueueIfNotExists`Belirtilen ada sahip yeni bir sıra oluşturmak veya zaten varsa kuyruğu döndürmek için yöntemini çağırın.
 
 ```javascript
 queueSvc.createQueueIfNotExists('myqueue', function(error, results, response){
@@ -108,16 +110,16 @@ Sıra oluşturulduysa, `result.created` doğru olur. Sıra varsa, `result.create
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Bir kuyruğa ileti eklemek için, [SendMessage](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) metodunu çağırın.
+Bir kuyruğa ileti eklemek için [`sendMessage`](/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) yöntemini çağırın.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_AddMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Bir kuyruğa ileti eklemek için, **CreateMessage** yöntemini çağırarak yeni bir ileti oluşturun ve kuyruğa ekleyin.
+Bir kuyruğa ileti eklemek için, `createMessage` Yeni bir ileti oluşturmak ve kuyruğa eklemek üzere yöntemini çağırın.
 
 ```javascript
-queueSvc.createMessage('myqueue', "Hello world!", function(error, results, response){
+queueSvc.createMessage('myqueue', "Hello, World", function(error, results, response){
   if(!error){
     // Message inserted
   }
@@ -128,17 +130,17 @@ queueSvc.createMessage('myqueue', "Hello world!", function(error, results, respo
 
 ## <a name="how-to-peek-at-the-next-message"></a>Sonraki iletiye nasıl göz atın
 
-Kuyruktaki iletilere, **peekMessages** yöntemini çağırarak kuyruktan kaldırmadan göz atmayı sağlayabilirsiniz.
+Yöntemi çağırarak kuyruktaki iletilere, kuyruktan kaldırmadan göz atmayı sağlayabilirsiniz `peekMessages` .
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Varsayılan olarak, [peekMessages](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) , tek bir iletiye bakar. Aşağıdaki örnekte kuyruktaki ilk beş ileti göz atar. Beşten az ileti görünür durumdaysa, yalnızca görünür iletiler döndürülür.
+Varsayılan olarak [`peekMessages`](/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) tek bir iletiye göz atar. Aşağıdaki örnekte kuyruktaki ilk beş ileti göz atar. Beşten az ileti görünür durumdaysa, yalnızca görünür iletiler döndürülür.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_PeekMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Varsayılan olarak, **peekMessages** , tek bir iletiye bakar.
+Varsayılan olarak `peekMessages` tek bir iletiye göz atar.
 
 ```javascript
 queueSvc.peekMessages('myqueue', function(error, results, response){
@@ -152,7 +154,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 
 ---
 
-Kuyrukta hiçbir ileti olmadığında **peekMessages** çağırma bir hata döndürmez. Ancak, hiçbir ileti döndürülmez.
+`peekMessages`Kuyrukta hiçbir ileti olmadığında çağrı bir hata döndürmez. Ancak, hiçbir ileti döndürülmez.
 
 ## <a name="how-to-change-the-contents-of-a-queued-message"></a>Sıraya alınan iletinin içeriğini değiştirme
 
@@ -160,13 +162,13 @@ Aşağıdaki örnek bir iletinin metnini güncelleştirir.
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-[Updatemessage](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-)' i çağırarak kuyruktaki bir iletinin içeriğini değiştirme.
+Çağırarak kuyruktaki bir iletinin içeriğini değiştirme [`updateMessage`](/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--number--queueupdatemessageoptions-) .
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_UpdateMessage":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-**Updatemessage** ' i çağırarak kuyruktaki bir iletinin içeriğini değiştirme.
+Çağırarak kuyruktaki bir iletinin içeriğini değiştirme `updateMessage` .
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, getResults, getResponse){
@@ -196,17 +198,17 @@ Aşağıdaki örnekte bir ileti alınır ve silinir.
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Bir ileti almak için, [Receivemessages](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) yöntemini çağırın. Bu çağrı, iletileri kuyrukta görünmez hale getirir, dolayısıyla başka hiçbir istemci bunları işleyemez. Uygulamanız bir iletiyi işledikten sonra sıradan silmek için [deleteMessage](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) ' ı çağırın.
+Bir ileti almak için [`receiveMessages`](/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) yöntemini çağırın. Bu çağrı, iletileri kuyrukta görünmez hale getirir, dolayısıyla başka hiçbir istemci bunları işleyemez. Uygulamanız bir iletiyi işledikten sonra sıradan silme çağrısı yapın [`deleteMessage`](/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) .
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessage":::
 
-Varsayılan olarak, bir ileti yalnızca 30 saniye gizli olur. 30 saniye sonra diğer istemcilere görünür olur. **Receivemessages** 'i çağırdığınızda [Options. visibilitytimeout seçeneğini](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) ayarlayarak farklı bir değer belirtebilirsiniz.
+Varsayılan olarak, bir ileti yalnızca 30 saniye gizli olur. 30 saniye sonra diğer istemcilere görünür olur. ' İ çağırdığınızda, farklı bir değer belirtebilirsiniz [`options.visibilityTimeout`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) `receiveMessages` .
 
-Kuyrukta hiçbir ileti olmadığında **receivemessages** çağırma bir hata döndürmez. Ancak, hiçbir ileti döndürülmeyecektir.
+`receiveMessages`Kuyrukta hiçbir ileti olmadığında çağrı bir hata döndürmez. Ancak, hiçbir ileti döndürülmeyecektir.
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Bir ileti almak için **GetMessages** yöntemini çağırın. Bu çağrı, iletileri kuyrukta görünmez hale getirir, dolayısıyla başka hiçbir istemci bunları işleyemez. Uygulamanız bir iletiyi işledikten sonra sıradan silmek için **deleteMessage** ' ı çağırın.
+Bir ileti almak için `getMessages` yöntemini çağırın. Bu çağrı, iletileri kuyrukta görünmez hale getirir, dolayısıyla başka hiçbir istemci bunları işleyemez. Uygulamanız bir iletiyi işledikten sonra sıradan silme çağrısı yapın `deleteMessage` .
 
 ```javascript
 queueSvc.getMessages('myqueue', function(error, results, response){
@@ -222,9 +224,9 @@ queueSvc.getMessages('myqueue', function(error, results, response){
 });
 ```
 
-Varsayılan olarak, bir ileti yalnızca 30 saniye gizli olur. 30 saniye sonra diğer istemcilere görünür olur. `options.visibilityTimeout` **GetMessages** ile kullanarak farklı bir değer belirtebilirsiniz.
+Varsayılan olarak, bir ileti yalnızca 30 saniye gizli olur. 30 saniye sonra diğer istemcilere görünür olur. İle kullanarak farklı bir değer belirtebilirsiniz `options.visibilityTimeout` `getMessages` .
 
-Kuyrukta hiçbir ileti olmadığında **GetMessages** kullanımı bir hata döndürmez. Ancak, hiçbir ileti döndürülmeyecektir.
+`getMessages`Kuyrukta hiçbir ileti olmadığında kullanmak bir hata döndürmez. Ancak, hiçbir ileti döndürülmeyecektir.
 
 ---
 
@@ -234,10 +236,10 @@ Kuyrukta hiçbir ileti olmadığında **GetMessages** kullanımı bir hata dönd
 
 Bir kuyruktan ileti alımını özelleştirmek için iki yol vardır:
 
-- [Options. numberofmessages](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages) -bir toplu ileti alma (32 'e kadar)
-- [Options. visibilityTimeout](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout) -daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
+- [`options.numberOfMessages`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#numberofmessages): Bir toplu ileti alın (32 'e kadar).
+- [`options.visibilityTimeout`](/javascript/api/@azure/storage-queue/queuereceivemessageoptions#visibilitytimeout): Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
 
-Aşağıdaki örnek, tek bir çağrıda beş ileti almak için **receivemessages** yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
+Aşağıdaki örnek, `receiveMessages` tek bir çağrıda beş ileti almak için yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DequeueMessages":::
 
@@ -245,10 +247,10 @@ Aşağıdaki örnek, tek bir çağrıda beş ileti almak için **receivemessages
 
 Bir kuyruktan ileti alımını özelleştirmek için iki yol vardır:
 
-- `options.numOfMessages` -Bir ileti toplu işi alın (32 'e kadar.)
-- `options.visibilityTimeout` -Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
+- `options.numOfMessages`: Bir toplu ileti alın (32 'e kadar).
+- `options.visibilityTimeout`: Daha uzun veya daha kısa görünürlük zaman aşımı ayarlayın.
 
-Aşağıdaki örnek, bir çağrıda 15 ileti almak için **GetMessages** yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
+Aşağıdaki örnek, `getMessages` tek bir çağrıda 15 ileti almak için yöntemini kullanır. Ardından, her iletiyi bir döngü kullanarak işler `for` . Ayrıca, bu yöntemin döndürdüğü tüm iletiler için geçersiz kılma zaman aşımını beş dakikaya ayarlar.
 
 ```javascript
 queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, function(error, results, getResponse){
@@ -273,13 +275,13 @@ queueSvc.getMessages('myqueue', {numOfMessages: 15, visibilityTimeout: 5 * 60}, 
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-[GetProperties](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-) metodu, sırada bekleyen ileti sayısı dahil olmak üzere kuyrukla ilgili meta verileri döndürür.
+Yöntemi, sırada [`getProperties`](/javascript/api/@azure/storage-queue/queueclient#getproperties-queuegetpropertiesoptions-) bekleyen iletilerin yaklaşık sayısı dahil olmak üzere kuyruk hakkında meta veriler döndürür.
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_QueueLength":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-**Getqueuemetadata** yöntemi, sırada bekleyen yaklaşık ileti sayısı dahil olmak üzere kuyruk hakkında meta veriler döndürür.
+Yöntemi, sırada `getQueueMetadata` bekleyen iletilerin yaklaşık sayısı dahil olmak üzere kuyruk hakkında meta veriler döndürür.
 
 ```javascript
 queueSvc.getQueueMetadata('myqueue', function(error, results, response){
@@ -295,13 +297,13 @@ queueSvc.getQueueMetadata('myqueue', function(error, results, response){
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Sıraların listesini almak için [QueueServiceClient. listqueues]()çağırın. Belirli bir önekle filtrelenmiş bir listeyi almak için, **Listqueues** çağrın çağrdaki [Options. Prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) ' i ayarlayın.
+Kuyrukların listesini almak için çağırın [`QueueServiceClient.listQueues`](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) . Belirli bir önekle filtrelenmiş bir listeyi almak için, çağrdaki [Options. Prefix](/javascript/api/@azure/storage-queue/servicelistqueuesoptions#prefix) ' i ayarlayın `listQueues` .
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_ListQueues":::
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Kuyrukların listesini almak için **Listqueueskesimli** öğesini kullanın. Belirli bir ön eke göre filtrelenmiş bir listeyi almak için **listQueuesSegmentedWithPrefix** kullanın.
+Kuyrukların listesini almak için kullanın `listQueuesSegmented` . Belirli bir ön eke göre filtrelenmiş bir listeyi almak için kullanın `listQueuesSegmentedWithPrefix` .
 
 ```javascript
 queueSvc.listQueuesSegmented(null, function(error, results, response){
@@ -311,7 +313,7 @@ queueSvc.listQueuesSegmented(null, function(error, results, response){
 });
 ```
 
-Tüm kuyruklar döndürülmezse, `result.continuationToken` daha fazla sonuç almak Için **Listqueuessegmentinin** ilk parametresi olarak veya **listQueuesSegmentedWithPrefix** ikinci parametresi olarak geçirin.
+Tüm kuyruklar döndürülmezse, `result.continuationToken` `listQueuesSegmented` `listQueuesSegmentedWithPrefix` daha fazla sonuç almak için ilk parametresi olarak veya ikinci parametresi olarak geçirin.
 
 ---
 
@@ -319,15 +321,15 @@ Tüm kuyruklar döndürülmezse, `result.continuationToken` daha fazla sonuç al
 
 # <a name="javascript-v12"></a>[JavaScript V12](#tab/javascript)
 
-Bir kuyruğu ve içerdiği tüm iletileri silmek için **Queueclient** nesnesinde [DeleteQueue](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) yöntemini çağırın.
+Bir kuyruğu ve içerdiği tüm iletileri silmek için [`DeleteQueue`](/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) nesnesi üzerinde yöntemini çağırın `QueueClient` .
 
 :::code language="javascript" source="~/azure-storage-snippets/queues/howto/JavaScript/JavaScript-v12/javascript-queues-v12.js" id="Snippet_DeleteQueue":::
 
-Bir kuyruktan silmeden tüm iletileri silmek için [ClearMessages](/javascript/api/@azure/storage-queue/queueclient#clearmessages-queueclearmessagesoptions-)çağrısı yapın.
+Bir kuyruktan silmeden tüm iletileri temizlemek için çağırın [`ClearMessages`](/javascript/api/@azure/storage-queue/queueclient#clearmessages-queueclearmessagesoptions-) .
 
 # <a name="javascript-v2"></a>[JavaScript v2](#tab/javascript2)
 
-Bir kuyruğu ve içerdiği tüm iletileri silmek için, kuyruk nesnesi üzerinde **DeleteQueue** yöntemini çağırın.
+Bir kuyruğu ve içerdiği tüm iletileri silmek için, `deleteQueue` kuyruk nesnesi üzerinde yöntemini çağırın.
 
 ```javascript
 queueSvc.deleteQueue(queueName, function(error, response){
@@ -337,7 +339,7 @@ queueSvc.deleteQueue(queueName, function(error, response){
 });
 ```
 
-Bir kuyruktan silmeden tüm iletileri silmek için **ClearMessages** çağrısı yapın.
+Bir kuyruktan silmeden tüm iletileri temizlemek için çağırın `clearMessages` .
 
 ---
 
@@ -347,11 +349,5 @@ Bir kuyruktan silmeden tüm iletileri silmek için **ClearMessages** çağrısı
 
 Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
-- Yenilikleri öğrenmek için [Azure depolama ekibi blogu][Azure Storage Team Blog] ' nu ziyaret edin
-- GitHub 'da [JavaScript deposu Için Azure depolama istemci kitaplığı][Azure Storage client library for JavaScript] ' nı ziyaret edin
-
-[Azure Storage client library for JavaScript]: https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#azure-storage-client-library-for-javascript
-[Azure Storage Team Blog]: https://techcommunity.microsoft.com/t5/azure-storage/bg-p/AzureStorageBlog
-[Build and deploy a Node.js application to an Azure Cloud Service]: ../../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Create a Node.js web app in Azure App Service]: ../../app-service/quickstart-nodejs.md
-[Visual Studio Code]: https://code.visualstudio.com/docs/nodejs/nodejs-tutorial
+- Yenilikleri öğrenmek için [Azure depolama ekibi blogu](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog) ' nu ziyaret edin
+- GitHub 'da [JavaScript deposu Için Azure depolama istemci kitaplığı](https://github.com/Azure/Azure-SDK-for-js/tree/master/SDK/storage#Azure-storage-client-library-for-JavaScript) ' nı ziyaret edin

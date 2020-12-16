@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: bdd12b5c866ee723547513e35a5adcfabb59dab9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: c7e859b05450b95cf9c75421599dd9c54a639cdc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364434"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606853"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Metin ve konuşma çevirisi için dil ve bölge desteği
 
@@ -34,88 +34,88 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 
 [Çeviri işlemi başvuru belgelerini görüntüle](reference/v3-0-translate.md)
 
-|Dil|  Dil kodu|
-|:-----|:-----:|
-|Afrikaner| `af`|
-|Arapça|    `ar`    |
-|Assam|  `as`    |
-|Bangla|    `bn`    |
-|Boşnakça (Latin)|   `bs`    |
-|Bulgarca| `bg`    |
-|Cantonetıcı (Geleneksel)|   `yue`|
-|Katalanca|   `ca`    |
-|Basitleştirilmiş Çince|    `zh-Hans`|
-|Geleneksel Çince|   `zh-Hant`       |
-|Hırvatça|  `hr`    |
-|Çekçe| `cs`    |
-|Dili|  `prs`   |
-|Danca|    `da`        |
-|Felemenkçe| `nl`|
-|İngilizce|   `en`    |
-|Estonya Dili|  `et`    |
-|Fiji Adaları dili|    `fj`    |
-|Filipino|  `fil`   |
-|Fince|   `fi`    |
-|Fransızca|    `fr`    |
-|Fransızca (Kanada)|   `fr-ca` |
-|Almanca|    `de`    |
-|Yunanca| `el`    |
-|Gucerat dili|  `gu`    |
-|Haian Creole|    `ht`        |
-|İbranice |`he`   |
-|Hintçe| `hi`    |
-|Hmong DAW| `mww`   |
-|Macarca| `hu`    |
-|İzlandaca| `is`    |
-|Endonezce|    `id`    |
-|İrlandaca | `ga`|
-|İtalyanca|   `it`    |
-|Japonca|  `ja`    |
-|Kannada dili|`kn`|
-|Kazakça|`kk`|
-|Klingon|   `tlh-Latn`  |
-|Klingon (plqaD)|   `tlh-Piqd`  |
-|Korece |`ko`   |
-|Kürtçe (orta)  |`ku`   |
-|Kürtçe (Kuzey) |`kmr`  |
-|Letonca|   `lv`    |
-|Litvanca|    `lt`    |
-|Malgaşça|  `mg`    |
-|Malayca| `ms`        |
-|Malayalam dili| `ml` |
-|Maltaca|   `mt`    |
-|Maori dili| `mi`  |
-|Marathi| `mr`  |
-|Norveççe| `nb`    |
-|Odia|  `or`    |
-|Peştuca|    `ps`    |
-|Farsça|   `fa`    |
-|Lehçe|    `pl`    |
-|Portekizce (Brezilya)|   `pt-br` |
-|Portekizce (Portekiz)| `pt-pt` |
-|Pencap dili|`pa`|
-|Queretaro Otomi|   `otq`   |
-|Rumence|  `ro`    |
-|Rusça|   `ru`    |
-|Samoan|    `sm`    |
-|Sırpça (Kiril)|    `sr-Cyrl`|
-|Sırpça (Latin)|   `sr-Latn`       |
-|Slovakça|    `sk`    |
-|Slovence| `sl`    |
-|İspanyolca|   `es`    |
-|Svahili dili|   `sw`    |
-|İsveççe|   `sv`    |
-|Tahiti dili|  `ty`    |
-|Tamil dili| `ta`    |
-|Telugu dili|    `te`    |
-|Tayca|  `th`    |
-|Tonga dili|    `to`    |
-|Türkçe|   `tr`        |
-|Ukraynaca| `uk`    |
-|Urduca|  `ur`    |
-|Vietnamca|    `vi`    |
-|Galce| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Dil | Dil kodu |
+|:-|:-:|
+| Afrikaner | `af` |
+| Arapça | `ar` |
+| Assam | `as` |
+| Bangla | `bn` |
+| Boşnakça (Latin) | `bs` |
+| Bulgarca | `bg` |
+| Cantonetıcı (Geleneksel) | `yue` |
+| Katalanca | `ca` |
+| Basitleştirilmiş Çince | `zh-Hans` |
+| Geleneksel Çince | `zh-Hant` |
+| Hırvatça | `hr` |
+| Çekçe | `cs` |
+| Dili | `prs` |
+| Danca | `da` |
+| Felemenkçe | `nl` |
+| İngilizce | `en` |
+| Estonya Dili | `et` |
+| Fiji Adaları dili | `fj` |
+| Filipino | `fil` |
+| Fince | `fi` |
+| Fransızca | `fr` |
+| Fransızca (Kanada) | `fr-ca` |
+| Almanca | `de` |
+| Yunanca | `el` |
+| Gucerat dili | `gu` |
+| Haian Creole | `ht` |
+| İbranice | `he` |
+| Hintçe | `hi` |
+| Hmong DAW | `mww` |
+| Macarca | `hu` |
+| İzlandaca | `is` |
+| Endonezce | `id` |
+| İrlandaca | `ga` |
+| İtalyanca | `it` |
+| Japonca | `ja` |
+| Kannada dili | `kn` |
+| Kazakça | `kk` |
+| Klingon | `tlh-Latn` |
+| Klingon (plqaD) | `tlh-Piqd` |
+| Korece | `ko` |
+| Kürtçe (orta) | `ku` |
+| Kürtçe (Kuzey) | `kmr` |
+| Letonca | `lv` |
+| Litvanca | `lt` |
+| Malgaşça | `mg` |
+| Malayca | `ms` |
+| Malayalam dili | `ml` |
+| Maltaca | `mt` |
+| Maori dili | `mi` |
+| Marathi | `mr` |
+| Norveççe | `nb` |
+| Odia | `or` |
+| Peştuca | `ps` |
+| Farsça | `fa` |
+| Lehçe | `pl` |
+| Portekizce (Brezilya) | `pt-br` |
+| Portekizce (Portekiz) | `pt-pt` |
+| Pencap dili | `pa` |
+| Queretaro Otomi | `otq` |
+| Rumence | `ro` |
+| Rusça | `ru` |
+| Samoan | `sm` |
+| Sırpça (Kiril) | `sr-Cyrl` |
+| Sırpça (Latin) | `sr-Latn` |
+| Slovakça | `sk` |
+| Slovence | `sl` |
+| İspanyolca | `es` |
+| Svahili dili | `sw` |
+| İsveççe | `sv` |
+| Tahiti dili | `ty` |
+| Tamil dili | `ta` |
+| Telugu dili | `te` |
+| Tayca | `th` |
+| Tonga dili | `to` |
+| Türkçe | `tr` |
+| Ukraynaca | `uk` |
+| Urduca | `ur` |
+| Vietnamca | `vi` |
+| Galce | `cy` |
+| Yucatec Maya | `yua` |
 
 > [!NOTE]
 > Dil kodu `pt` Varsayılan olarak `pt-br` , Portekizce (Brezilya) olur.
@@ -126,63 +126,63 @@ Translator metin çevirisi için aşağıdaki dilleri destekler.
 
 [İşlem başvurusunu Algıla belgelerini görüntüle](reference/v3-0-detect.md)
 
-|Dil|  Dil kodu|
-|:-----|:-----:|
-|Afrikaner| `af`|
-|Arapça|    `ar`    |
-|Bulgarca| `bg`    |
-|Katalanca|   `ca`    |
-|Basitleştirilmiş Çince|    `zh-Hans`|
-|Geleneksel Çince|   `zh-Hant`       |
-|Hırvatça|  `hr`    |
-|Çekçe| `cs`    |
-|Danca|    `da`        |
-|Felemenkçe| `nl`|
-|İngilizce|   `en`    |
-|Estonya Dili|  `et`    |
-|Fince|   `fi`    |
-|Fransızca|    `fr`    |
-|Almanca|    `de`    |
-|Yunanca| `el`    |
-|Gucerat dili|  `gu`    |
-|Haian Creole|    `ht`        |
-|İbranice |`he`   |
-|Hintçe| `hi`    |
-|Macarca| `hu`    |
-|İzlandaca| `is`    |
-|Endonezce|    `id`    |
-|İrlandaca | `ga`|
-|İtalyanca|   `it`    |
-|Japonca|  `ja`    |
-|Klingon|   `tlh-Latn`  |
-|Korece |`ko`   |
-|Kürtçe (orta)  |`ku-Arab`  |
-|Letonca|   `lv`    |
-|Litvanca|    `lt`    |
-|Malayca| `ms`        |
-|Maltaca|   `mt`    |
-|Norveççe| `nb`    |
-|Peştuca|    `ps`    |
-|Farsça|   `fa`    |
-|Lehçe|    `pl`    |
-|Portekizce|    `pt`    |
-|Rumence|  `ro`    |
-|Rusça|   `ru`    |
-|Sırpça (Kiril)|    `sr-Cyrl`|
-|Sırpça (Latin)|   `sr-Latn`       |
-|Slovakça|    `sk`    |
-|Slovence| `sl`    |
-|İspanyolca|   `es`    |
-|Svahili dili|   `sw`    |
-|İsveççe|   `sv`    |
-|Tahiti dili|  `ty`    |
-|Tayca|  `th`    |
-|Türkçe|   `tr`        |
-|Ukraynaca| `uk`    |
-|Urduca|  `ur`    |
-|Vietnamca|    `vi`    |
-|Galce| `cy`    |
-|Yucatec Maya|  `yua`   |
+| Dil | Dil kodu |
+|:-|:-:|
+| Afrikaner | `af` |
+| Arapça | `ar` |
+| Bulgarca | `bg` |
+| Katalanca | `ca` |
+| Basitleştirilmiş Çince | `zh-Hans` |
+| Geleneksel Çince | `zh-Hant` |
+| Hırvatça | `hr` |
+| Çekçe | `cs` |
+| Danca | `da` |
+| Felemenkçe | `nl` |
+| İngilizce | `en` |
+| Estonya Dili | `et` |
+| Fince | `fi` |
+| Fransızca | `fr` |
+| Almanca | `de` |
+| Yunanca | `el` |
+| Gucerat dili | `gu` |
+| Haian Creole | `ht` |
+| İbranice | `he` |
+| Hintçe | `hi` |
+| Macarca | `hu` |
+| İzlandaca | `is` |
+| Endonezce | `id` |
+| İrlandaca | `ga` |
+| İtalyanca | `it` |
+| Japonca | `ja` |
+| Klingon | `tlh-Latn` |
+| Korece | `ko` |
+| Kürtçe (orta) | `ku-Arab` |
+| Letonca | `lv` |
+| Litvanca | `lt` |
+| Malayca | `ms` |
+| Maltaca | `mt` |
+| Norveççe | `nb` |
+| Peştuca | `ps` |
+| Farsça | `fa` |
+| Lehçe | `pl` |
+| Portekizce | `pt` |
+| Rumence | `ro` |
+| Rusça | `ru` |
+| Sırpça (Kiril) | `sr-Cyrl` |
+| Sırpça (Latin) | `sr-Latn` |
+| Slovakça | `sk` |
+| Slovence | `sl` |
+| İspanyolca | `es` |
+| Svahili dili | `sw` |
+| İsveççe | `sv` |
+| Tahiti dili | `ty` |
+| Tayca | `th` |
+| Türkçe | `tr` |
+| Ukraynaca | `uk` |
+| Urduca | `ur` |
+| Vietnamca | `vi` |
+| Galce | `cy` |
+| Yucatec Maya | `yua` |
 
 ### <a name="transliterate"></a>Karakter Dönüştürme
 
@@ -319,7 +319,7 @@ Aşağıdaki diller, [özel çevirici](https://aka.ms/CustomTranslator)kullanıl
 | Letonca      | `lv`          |
 | Litvanca      | `lt`          |
 | Malgaşça| `mg`    |
-| Malayca|    `ms`        |
+| Malayca|    `ms` |
 |Maltaca|   `mt`    |
 | Maori dili| `mi`  |
 | Marathi| `mr`  |
@@ -387,47 +387,47 @@ Konuşma çevirisi, bilişsel hizmetler konuşma hizmeti ile Translator kullanı
 ### <a name="text-to-speech"></a>Metin okuma
 Metni konuşmaya dönüştürün. Metin okuma, çeviri sonuçlarının duyulabilir çıktısını eklemek veya konuşmayı metne yönelik olarak kullanıldığında konuşma tanıma çevirisi için kullanılır. 
 
-| Dil    |
-|:----------- |
-|Arapça|
-|Bulgarca|
-|Cantonetıcı (Geleneksel)|
-|Katalanca|
-|Basitleştirilmiş Çince|
-|Geleneksel Çince|
-|Hırvatça|
-|Çekçe|
-|Danca|
-|Felemenkçe|
-|İngilizce|
-|Fince|
-|Fransızca|
-|Fransızca (Kanada)|
-|Almanca|
-|Yunanca|
-|İbranice|
-|Hintçe|
-|Macarca|
-|Endonezce|
-|İtalyanca|
-|Japonca|
-|Korece|
-|Malayca|
-|Norveççe|
-|Lehçe|
-|Portekizce (Brezilya)|
-|Portekizce (Portekiz)|
-|Rumence|
-|Rusça|
-|Slovakça|
-|Slovence|
-|İspanyolca|
-|İsveççe|
-|Tamil dili|
-|Telugu dili|
-|Tayca|
-|Türkçe|
-|Vietnamca|
+| Dil |
+|:-|
+| Arapça |
+| Bulgarca |
+| Cantonetıcı (Geleneksel) |
+| Katalanca |
+| Basitleştirilmiş Çince |
+| Geleneksel Çince |
+| Hırvatça |
+| Çekçe |
+| Danca |
+| Felemenkçe |
+| İngilizce |
+| Fince |
+| Fransızca |
+| Fransızca (Kanada) |
+| Almanca |
+| Yunanca |
+| İbranice |
+| Hintçe |
+| Macarca |
+| Endonezce |
+| İtalyanca |
+| Japonca |
+| Korece |
+| Malayca |
+| Norveççe |
+| Lehçe |
+| Portekizce (Brezilya) |
+| Portekizce (Portekiz) |
+| Rumence |
+| Rusça |
+| Slovakça |
+| Slovence |
+| İspanyolca |
+| İsveççe |
+| Tamil dili |
+| Telugu dili |
+| Tayca |
+| Türkçe |
+| Vietnamca |
 
 ## <a name="view-the-language-list-on-the-microsoft-translator-website"></a>Microsoft Translator Web sitesinde dil listesini görüntüleyin
 
