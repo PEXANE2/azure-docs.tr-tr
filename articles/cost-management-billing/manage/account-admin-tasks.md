@@ -9,13 +9,13 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: banders
-ms.custom: contentperfq2
-ms.openlocfilehash: c9f344ec6eae40db2c76f3712df6f1f9d8cead37
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: bd46e7b2f0713da67842def47dfeadc837027d8f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668868"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027977"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Azure portalındaki Hesap Yöneticisi görevleri
 
@@ -41,7 +41,7 @@ Bu görevleri gerçekleştirmek için Hesap Yöneticisi olmanız gerekir.
    > [!NOTE]
    > Aboneliklerinizden bazılarını burada görmüyorsanız, bunun nedeni abonelik dizinini değiştirmeniz olabilir. Bu abonelikler için, özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
 
-1. **Ödeme yöntemleri** 'ni seçin.
+1. **Ödeme yöntemleri**'ni seçin.
 
     ![Ekran görüntüsü ödeme yöntemi ekleyebileceğiniz Ödeme yöntemleri sayfasını gösterir.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
@@ -63,7 +63,7 @@ Yeni bir kredi kartı ekleyerek veya kayıtlı olan kartlardan birini seçerek e
 
     ![Kartın etkin ödeme yöntemi olarak belirlenmesini sağlayan onay kutusunu gösteren ekran görüntüsü.](./media/account-admin-tasks/subscription-make-active-payment-method-x.png)
 
-1. **İleri** ’yi seçin.
+1. **İleri**’yi seçin.
 
 Etkin ödeme yöntemini önceden kaydedilmiş bir kredi kartı olarak değiştirmek için:
 
@@ -71,7 +71,7 @@ Etkin ödeme yöntemini önceden kaydedilmiş bir kredi kartı olarak değiştir
 
     ![Kredi kartının yanındaki işaretlenmiş olan kutuyu gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-checked-payment-method-x.png)
 
-1. Komut çubuğunda **Etkin olarak ayarla** 'ya tıklayın.
+1. Komut çubuğunda **Etkin olarak ayarla**'ya tıklayın.
 
     ![Etkin olarak ayarla düğmesini gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-checked-payment-method-set-active.png)
 
@@ -81,7 +81,7 @@ Son kullanma tarihi veya adres gibi kredi kartı bilgilerini düzenlemek için d
 
 ![Kredi kartının seçili olduğunu gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-edit-payment-method-x.png)
 
-Kredi kartı bilgilerini güncelleştirin ve **Kaydet** 'e tıklayın.
+Kredi kartı bilgilerini güncelleştirin ve **Kaydet**'e tıklayın.
 
 ### <a name="remove-a-credit-card-from-the-account"></a>Hesaptan kredi kartını kaldırma
 
@@ -89,7 +89,7 @@ Kredi kartı bilgilerini güncelleştirin ve **Kaydet** 'e tıklayın.
 
     ![Kredi kartının yanındaki işaretlenmiş olan kutuyu gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-checked-payment-method-x.png)
 
-1. Komut çubuğunda **Sil** ’e tıklayın.
+1. Komut çubuğunda **Sil**’e tıklayın.
 
     ![Sil düğmesini gösteren ekran görüntüsü](./media/account-admin-tasks/subscription-checked-payment-method-delete.png)
 
@@ -99,18 +99,18 @@ Kredi kartınız herhangi bir Microsoft aboneliğiniz için etkin ödeme yöntem
 
 Fatura (çek/havale) ile ödemeye uygunsanız Azure portalında aboneliğinizi faturayla (çek/havale) yapacak şekilde değiştirebilirsiniz.
 
-1. Komut çubuğunda **Fatura ile ödeme** 'yi seçin.
+1. Komut çubuğunda **Fatura ile ödeme**'yi seçin.
 
     ![Ekran görüntüsü Fatura ile ödeme'nin seçildiği Ödeme yöntemleri sayfasını gösterir.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Fatura ile ödeme yöntemine ait adresi girin.
-1. **İleri** ’ye tıklayın.
+1. **İleri**’ye tıklayın.
 
 Fatura ile ödeme yapmak için onay almak isterseniz bkz. [Fatura ile ödeme yapmayı öğrenme](pay-by-invoice.md).
 
 ### <a name="edit-invoice-payment-address"></a>Fatura ile ödeme adresini düzenleme
 
-Fatura ödeme yönteminizin adresini düzenlemek için aboneliğinize ait ödeme yöntemleri listesinde **Fatura** 'ya tıklayın. Sağ tarafta adres formu açılır.
+Fatura ödeme yönteminizin adresini düzenlemek için aboneliğinize ait ödeme yöntemleri listesinde **Fatura**'ya tıklayın. Sağ tarafta adres formu açılır.
 
 ## <a name="remove-spending-limit"></a>Harcama limitini kaldırma
 
@@ -138,7 +138,7 @@ Harcama limiti, taahhüt planları veya kullandıkça öde fiyatlandırmasının
 
    ![Harcama limitini kaldırma dikey penceresini gösteren ekran görüntüsü](./media/account-admin-tasks/remove-spending-limit-blade-x.png)
 
-1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin** 'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
+1. Aboneliğiniz için bir ödeme yöntemi seçmek üzere **Ödeme yöntemini seçin**'e tıklayın. Bu yöntem, aboneliğinizin etkin ödeme yöntemi olur.
 
 1. **Finish (Son)** düğmesine tıklayın.
 
@@ -158,7 +158,7 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
    > [!NOTE]
    > Aboneliğinizi burada görmüyorsanız, bunun nedeni dizinini değiştirmeniz olabilir. Aboneliğinizde özgün dizine (başlangıçta kaydolduğunuz dizin) geçmeniz gerekir. Ardından 2. adımı tekrarlayın.
 
-1. **Kredi geçmişi** 'ni seçin.
+1. **Kredi geçmişi**'ni seçin.
 
     ![Kredi geçmişini gösteren ekran görüntüsü](./media/account-admin-tasks/aio-credit-history-blade.png)
 
@@ -172,13 +172,13 @@ Open ile Azure Lisansı aboneliğiniz varsa Azure portalında bir ürün anahtar
 
 1. Ürün anahtarını tercih ederseniz:
     - Ürün anahtarını girin.
-    - **Doğrula** 'ya tıklayın.
+    - **Doğrula**'ya tıklayın.
 
 1. Kredi kartını tercih ederseniz:
-    - **Ödeme yöntemini seçin** 'e tıklayarak kredi kartı ekleyin veya mevcut kartlardan birini seçin.
+    - **Ödeme yöntemini seçin**'e tıklayarak kredi kartı ekleyin veya mevcut kartlardan birini seçin.
     - Eklemek istediğiniz kredi miktarını belirtin.
 
-1. **Uygula** 'ya tıklayın.
+1. **Uygula**'ya tıklayın.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 Sanal veya ön ödemeli kartları desteklemiyoruz. Geçerli bir kredi kartı eklerken veya güncelleştirirken hata alıyorsanız tarayıcınızı gizli modda açmayı deneyin.

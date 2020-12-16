@@ -7,12 +7,12 @@ description: GitHub eylemleri ve Azure Dev Spaces kullanarak doğrudan Azure Kub
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, GitHub eylemleri, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
 manager: gwallace
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9bed61861c80f141270e50b644b32ae42fbe8e77
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 447c41055ededfc55e44bebd92de89b3d23de3c7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995582"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591574"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub eylemleri & Azure Kubernetes hizmeti (Önizleme)
 
@@ -103,7 +103,7 @@ Ele geçirilen deponuza gidin ve *Ayarlar*' a tıklayın. Sol kenar çubuğundak
 > [!NOTE]
 > Tüm bu gizlilikler GitHub eylemi tarafından kullanılır ve [. GitHub/iş akışları/bisiklet. yıml][github-action-yaml]içinde yapılandırılır.
 
-İsteğe bağlı olarak, çekme isteği birleştirildikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io* *MASTER_SPACE>. GATEWAY. <HOST_SUFFIX><* formunu alan *GATEWAY_HOST* gizli anahtarını ekleyin. Değişikliklerinizi çatalınızdaki ana dalda birleştirdiğinizde, tüm uygulamanızı yeniden oluşturup ana geliştirme alanında çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, ana alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
+İsteğe bağlı olarak, çekme isteği birleştirildikten sonra ana alanı güncelleştirmek istiyorsanız, bu örnekte *dev.gateway.fedcab0987.eus.azds.io* *MASTER_SPACE>. GATEWAY. <HOST_SUFFIX><* formunu alan *GATEWAY_HOST* gizli anahtarını ekleyin. Değişikliklerinizi çatalınızdaki Ana dala birleştirdiğinizde, uygulamanın tamamını ana geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, ana alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
 Ayrıca, çekme yaptığınız değişikliklerin bir en alt alanda çalışmasını istiyorsanız, *MASTER_SPACE* ve *konak* sırları güncelleştirin. Örneğin, uygulamanız geliştirme */azureuser1* bir alt alan *dev 'da çalışıyorsa* , çekme isteği *dev/azureuser1* alt alanında çalışır:
 
@@ -162,7 +162,7 @@ Eylem tamamlandıktan sonra, çekme isteğindeki değişiklikleri temel alan yen
 
 Açıklamadan URL 'YI açarak *bıkesharingweb* hizmetine gidin. Kullanıcı olarak *Aurelia Briggs (müşteri)* öğesini seçin ve ardından kiralamak istediğiniz bir bisiklet seçin. Bisiklet için yer tutucu görüntüsünü artık görmediğinizi doğrulayın.
 
-Değişikliklerinizi çatalınızdaki *ana* dalda birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
+Değişikliklerinizi çatalınızdaki *ana* dala birleştirirseniz, uygulamanın tamamını üst geliştirme alanında yeniden oluşturmak ve çalıştırmak için başka bir eylem çalıştırılır. Bu örnekte, üst alan *dev* olur. Bu eylem [. GitHub/iş akışları/bıkesharing. yıml][github-action-bikesharing-yaml]içinde yapılandırılır.
 
 ## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
 

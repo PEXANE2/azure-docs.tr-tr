@@ -1,21 +1,21 @@
 ---
 title: Kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 titleSuffix: Azure Storage
-description: PowerShell, Azure depolama kuyruğu verilerinde komutları çalıştırmak için Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum için bir erişim belirteci sağlanır ve çağrı işlemlerine yetki vermek için kullanılır. İzinler, Azure AD güvenlik sorumlusu 'na atanan Azure rolüne bağımlıdır.
-services: storage
+description: PowerShell, Azure kuyruk depolama verilerinde komutları çalıştırmak için Azure AD kimlik bilgileriyle oturum açmayı destekler. Oturum için bir erişim belirteci sağlanır ve çağrı işlemlerine yetki vermek için kullanılır. İzinler, Azure AD güvenlik sorumlusu 'na atanan Azure rolüne bağımlıdır.
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/14/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozgun
+ms.date: 09/14/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 3636b0366dfe687c4825ec1a16c5e8094a7db10b
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf2696d329f852741c42219219600dc773090623
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637409"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590724"
 ---
 # <a name="run-powershell-commands-with-azure-ad-credentials-to-access-queue-data"></a>Kuyruk verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma
 
@@ -25,7 +25,7 @@ Azure rol tabanlı erişim denetimi (Azure RBAC) aracılığıyla bir Azure AD g
 
 ## <a name="supported-operations"></a>Desteklenen işlemler
 
-Azure depolama uzantıları, kuyruk verilerinde işlemler için desteklenir. Hangi işlemler çağrlayabileceği, PowerShell 'de oturum açmak için Azure AD güvenlik sorumlusuna verilen izinlere bağlıdır. Azure depolama kuyrukları izinleri Azure RBAC aracılığıyla atanır. Örneğin, **kuyruk veri okuyucusu** rolünü atadıysanız, bir kuyruktan veri okuyan komut dosyası komutlarını çalıştırabilirsiniz. **Kuyruk verileri katılımcısı** rolüne atandıysanız, bir kuyruğu veya içerdikleri verileri okuyan, yazan veya silen betik komutlarını çalıştırabilirsiniz.
+Azure depolama uzantıları, kuyruk verilerinde işlemler için desteklenir. Hangi işlemler çağrlayabileceği, PowerShell 'de oturum açmak için Azure AD güvenlik sorumlusuna verilen izinlere bağlıdır. Kuyrukların izinleri Azure RBAC aracılığıyla atanır. Örneğin, **kuyruk veri okuyucusu** rolünü atadıysanız, bir kuyruktan veri okuyan komut dosyası komutlarını çalıştırabilirsiniz. **Kuyruk verileri katılımcısı** rolüne atandıysanız, bir kuyruğu veya içerdikleri verileri okuyan, yazan veya silen betik komutlarını çalıştırabilirsiniz.
 
 Bir kuyruktaki her bir Azure depolama işlemi için gereken izinler hakkında daha fazla bilgi için bkz. [OAuth belirteçleriyle depolama Işlemlerini çağırma](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).
 

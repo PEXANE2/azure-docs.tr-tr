@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 32989b4d5c595416f82fc9d3f1cec2eddec1d6ee
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929268"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400361"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Öğretici: Dışarı aktarılan verileri oluşturma ve yönetme
 
@@ -153,7 +153,7 @@ Başlangıç olarak ortamınızı Azure PowerShell için hazırlayın:
 
 [!INCLUDE [azure-powershell-requirements-no-header.md](../../../includes/azure-powershell-requirements-no-header.md)]
 
-* > [!IMPORTANT]
+  > [!IMPORTANT]
   > **Az.CostManagement** PowerShell modülü önizleme aşamasındayken `Install-Module` cmdlet'ini kullanarak modülü ayrı olarak yüklemeniz gerekir. Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
 
   ```azurepowershell-interactive

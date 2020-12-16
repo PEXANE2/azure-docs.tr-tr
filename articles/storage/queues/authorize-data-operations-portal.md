@@ -2,21 +2,21 @@
 title: Azure portal kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 titleSuffix: Azure Storage
 description: Azure portal kullanarak kuyruk verilerine eriştiğinizde, Portal, kapsamakta olan Azure depolama 'ya istek yapar. Azure depolama 'ya yönelik bu isteklerin kimliği, Azure AD hesabınız veya depolama hesabı erişim anahtarı kullanılarak doğrulanabilir ve yetkilendirilir.
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: how-to
-ms.date: 09/08/2020
+services: storage
 ms.author: tamram
 ms.reviewer: ozguns
+ms.date: 09/08/2020
+ms.topic: how-to
+ms.service: storage
 ms.subservice: queues
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 68ac9cd5e89617a820cba9a1d6c61890e50a56a7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 504d2eb939758e6045a2af095c66093c8754cb94
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031751"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590758"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-in-the-azure-portal"></a>Azure portal kuyruk verilerine erişim yetkisi verme seçeneğini belirleyin
 
@@ -28,22 +28,22 @@ Azure portal kuyruk verilerine erişimi nasıl yetkilendirmek istediğinize bağ
 
 ### <a name="use-the-account-access-key"></a>Hesap erişim anahtarını kullan
 
-Hesap erişim anahtarıyla kuyruk verilerine erişmek için, size atanmış bir Azure rolüne sahip olmanız gerekir. Bu işlem, **Microsoft. Storage/storageAccounts/ListKeys/Action** Azure RBAC eylemini içerir. Bu Azure rolü yerleşik veya özel bir rol olabilir. **Microsoft. Storage/storageAccounts/ListKeys/Action** 'ı destekleyen yerleşik roller şunlardır:
+Hesap erişim anahtarıyla kuyruk verilerine erişmek için Azure RBAC eylemini içeren size atanmış bir Azure rolüne sahip olmanız gerekir `Microsoft.Storage/storageAccounts/listkeys/action` . Bu Azure rolü yerleşik veya özel bir rol olabilir. Destekleyen yerleşik roller `Microsoft.Storage/storageAccounts/listkeys/action` şunları içerir:
 
-- Azure Resource Manager [Owner](../../role-based-access-control/built-in-roles.md#owner) rolü
-- Azure Resource Manager [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolü
-- [Depolama hesabı katılımcısı](../../role-based-access-control/built-in-roles.md#storage-account-contributor) rolü
+- Azure Resource Manager [Owner rolü](../../role-based-access-control/built-in-roles.md#owner)
+- Azure Resource Manager [katkıda bulunan rolü](../../role-based-access-control/built-in-roles.md#contributor)
+- [Depolama hesabı katılımcısı rolü](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-Azure portal kuyruk verilerine erişmeye çalıştığınızda, portal önce **Microsoft. Storage/storageAccounts/ListKeys/Action** ile bir rol atanıp atanmadığını denetler. Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
+Azure portal kuyruk verilerine erişmeye çalıştığınızda, Portal öncelikle ile bir rol atanıp atanmadığını denetler `Microsoft.Storage/storageAccounts/listkeys/action` . Bu eylemle bir rol atanmışsa, Portal kuyruk verilerine erişmek için hesap anahtarını kullanır. Bu eylemle bir rol atanmamışsa, Portal Azure AD hesabınızı kullanarak verilere erişmeye çalışır.
 
 > [!NOTE]
-> Klasik abonelik yöneticisi rolleri hizmet yöneticisi ve Co-Administrator Azure Resource Manager [sahip](../../role-based-access-control/built-in-roles.md#owner) rolünün eşdeğerini içerir. **Sahip** rolü, **Microsoft. Storage/storageaccounts/ListKeys/ACTION** dahil olmak üzere tüm eylemleri içerir, bu nedenle bu yönetici rollerinden birine sahip bir kullanıcı da hesap anahtarıyla kuyruk verilerine erişebilir. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
+> Klasik abonelik yöneticisi rolleri **Hizmet Yöneticisi** ve **ortak yönetici** , Azure Resource Manager rolünün eşdeğerini içerir [`Owner`](../../role-based-access-control/built-in-roles.md#owner) . **Sahip** rolü, dahil olmak üzere tüm eylemleri içerir `Microsoft.Storage/storageAccounts/listkeys/action` , bu nedenle bu yönetim rollerinden birine sahip bir Kullanıcı kuyruk verilerine hesap anahtarıyla de erişebilirler. Daha fazla bilgi için bkz. [Klasik abonelik yöneticisi rolleri, Azure rolleri ve Azure AD yönetici rolleri](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles).
 
 ### <a name="use-your-azure-ad-account"></a>Azure AD hesabınızı kullanın
 
 Azure AD hesabınızı kullanarak Azure portal kuyruk verilerine erişmek için aşağıdaki iki deyimin her ikisi de doğru olmalıdır:
 
-- En azından, depolama hesabı düzeyine veya daha yüksek bir kapsamda Azure Resource Manager [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolü atanmıştı. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir.
+- [`Reader`](../../role-based-access-control/built-in-roles.md#reader)En azından, depolama hesabı düzeyi veya daha yüksek bir kapsamda Azure Resource Manager rolü atanmıştı. **Okuyucu** rolü, en kısıtlı izinleri verir, ancak depolama hesabı yönetim kaynaklarına erişim izni veren başka bir Azure Resource Manager rolü de kabul edilebilir.
 - Kuyruk verilerine erişim sağlayan yerleşik veya özel bir rol atanmıştı.
 
 Kullanıcının Azure portal depolama hesabı yönetim kaynaklarını görüntülemesi ve gezinebilmesi için **okuyucu** rol ataması veya başka bir Azure Resource Manager rol ataması gerekir. Kuyruk verilerine erişim izni veren Azure rolleri, depolama hesabı yönetim kaynaklarına erişim izni vermez. Portalda kuyruk verilerine erişmek için, kullanıcının depolama hesabı kaynaklarında gezinmek için izinleri olması gerekir. Bu gereksinim hakkında daha fazla bilgi için bkz. [Portal erişimi Için okuyucu rolünü atama](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access).
@@ -58,11 +58,11 @@ Kuyruk verilerinize erişimi destekleyen yerleşik roller şunlardır:
 Klasik abonelik Yöneticisi rolüne sahip sıraların listelenmesi desteklenmez. Kuyrukları listelemek için, bir kullanıcının bunlara Azure Resource Manager **okuyucu** rolüne, **depolama kuyruğu veri okuyucusu** rolüne veya **depolama kuyruğu verileri katılımcısı** rolüne atanmış olması gerekir.
 
 > [!IMPORTANT]
-> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için **Microsoft. Storage/storageAccounts/ListKeys/Action** içeren bir rol atanmalıdır.
+> Azure portal Depolama Gezgini önizleme sürümü, kuyruk verilerini görüntülemek ve değiştirmek için Azure AD kimlik bilgilerini kullanmayı desteklemez. Azure portal Depolama Gezgini, her zaman verilere erişmek için hesap anahtarlarını kullanır. Azure portal Depolama Gezgini kullanmak için, içeren bir rol atanması gerekir `Microsoft.Storage/storageAccounts/listkeys/action` .
 
 ## <a name="navigate-to-queues-in-the-azure-portal"></a>Azure portal kuyruklara gitme
 
-Portalda kuyruk verilerini görüntülemek için depolama hesabınıza **Genel Bakış ' a** gidin ve **kuyruklara** yönelik bağlantılara tıklayın. Alternatif olarak, menüdeki **kuyruk hizmeti** bölümlerine gidebilirsiniz.
+Portalda kuyruk verilerini görüntülemek için depolama hesabınıza **Genel Bakış ' a** gidin ve **kuyruklara** yönelik bağlantılara tıklayın. Alternatif olarak, menüdeki **kuyruk hizmeti** bölümüne gidebilirsiniz.
 
 :::image type="content" source="media/authorize-data-operations-portal/queue-access-portal.png" alt-text="Azure portal kuyruk verilerine nasıl gidebileceğiniz gösteren ekran görüntüsü":::
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: f82ea154d5949f4d229ac76e7a7ce2a89d15ac13
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7e27c3dd6e70d9a532c326d8187d82e14bf7ddda
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025676"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591625"
 ---
 # <a name="cicd-for-custom-speech"></a>Özel Konuşma Tanıma için CI/CD
 
@@ -84,7 +84,7 @@ Eğitim verilerine yönelik bir güncelleştirme bir modelin tanınmasını iyil
 
 - Şablon deposunu GitHub hesabınıza kopyalayın, ardından GitHub eylemleri CI/CD iş akışları için Azure kaynakları ve [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) oluşturun.
 - "[Geliştirme iç döngüsü](https://mitchdenny.com/the-inner-loop/)" boyunca ilerleyin. Güncelleştirme eğitimi ve bir özellik dalında verileri test edin, değişiklikleri geçici bir geliştirme modeliyle test edin ve değişiklikleri önermek ve gözden geçirmek için bir çekme isteği yükseltin.
-- Eğitim verileri, *ana öğe* için bir çekme isteğinde güncelleniyorsa, modelleri GITHUB eylemleri CI iş akışıyla eğitme.
+- Eğitim verileri bir çekme isteğinde *Main*'e güncelleniyorsa, modelleri GITHUB eylemleri CI iş akışıyla eğitme.
 - Bir modelin [sözcük hata oranını](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) oluşturmak için otomatik doğruluk testi gerçekleştirin. Test sonuçlarını Azure Blob 'da depolayın.
 - WER artdığı zaman bir uç nokta oluşturmak için CD iş akışını yürütün.
 

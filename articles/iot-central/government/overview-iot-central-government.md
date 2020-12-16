@@ -3,22 +3,20 @@ title: Azure IoT Central ile kamu çözümleri oluşturma
 description: Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmayı öğrenin.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 5f92750217dd0bcf5d7a5074a6187d994f19722a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 72b0e3c3cee0ed9131fe6ee1f50cee10ec03a7b7
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126575"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590826"
 ---
 # <a name="building-government-solutions-with-azure-iot-central"></a>Azure IoT Central ile kamu çözümleri oluşturma
 
-
-
-Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesinde izleme**, **su tüketimi izleme**ve **bağlı çöp yönetimiyle**hemen başlayın.
+Azure IoT Central uygulama şablonlarını kullanarak akıllı şehir çözümleri oluşturmaya başlayın. **Su kalitesinde izleme**, **su tüketimi izleme** ve **bağlı çöp yönetimiyle** hemen başlayın.
 
 ## <a name="what-is-water-quality-monitoring-application-template"></a>Su kalitesi Izleme uygulama şablonu nedir?   
 
@@ -41,7 +39,6 @@ Uygulama şablonu aşağıdakilerden oluşur:
 ## <a name="what-is-water-consumption-monitoring-application-template"></a>Su tüketim Izleme uygulama şablonu nedir? 
 
 Geleneksel su tüketim izlemesi, su sitelerindeki su kullanım ölçümlerini el ile okurken su operatörlerine dayanır. Daha fazla şehir, kullanımı uzaktan izlemeyi ve su akışını denetlemek üzere vanaları uzaktan denetlemeyi sağlayan gelişmiş akıllı ölçümler ile geleneksel ölçümleri değiştiriyor. Vatandaşlık ile dijital geri bildirim iletisi ile bağlanmış su tüketimi izleme, tanımayı artırabilir ve su tüketimini azaltabilir. 
-
 
 Su tüketim Izleme uygulaması, su yardımcı programlarını ve şehirlerinizi uzaktan izleyip, tüketimi azaltmak üzere su akışını uzaktan izleyip denetlemenize yardımcı olan bir IoT Central App şablonudur. 
 

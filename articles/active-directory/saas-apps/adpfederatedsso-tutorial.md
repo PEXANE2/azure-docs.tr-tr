@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/26/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6973242e81cef53625a3b1eda4f2d92e1d5ffd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0d78f2c8da338a92ef88734371647a48ddb190c3
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998643"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591251"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adp"></a>Öğretici: ADP ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, ADP 'yi Azure Active Directory (Azure AD) ile tümleştirmeyi �
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -112,7 +112,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -155,11 +155,11 @@ ADP temsilcinizden onay alındıktan sonra, ADP hizmetinizi yapılandırın ve b
 
     ![Çoklu oturum açma bağlantılı özellikleri](./media/adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
-    a.  **Kullanıcıların oturum açma** alanı değerini **Evet** olarak ayarlayın.
+    1. **Kullanıcıların oturum açma** alanı değerini **Evet** olarak ayarlayın.
 
-    b.  **Kullanıcı Ataması gerekli** alan değerini **Evet** olarak ayarlayın.
+    1. **Kullanıcı Ataması gerekli** alan değerini **Evet** olarak ayarlayın.
 
-    c.  **Kullanıcılar Için görünür** alan değerini **Evet** olarak ayarlayın.
+    1. **Kullanıcılar Için görünür** alan değerini **Evet** olarak ayarlayın.
 
 1. [Azure Portal](https://portal.azure.com/), **ADP** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 
@@ -171,39 +171,39 @@ ADP temsilcinizden onay alındıktan sonra, ADP hizmetinizi yapılandırın ve b
 
     ![Çoklu oturum açma Prop](./media/adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
 
-    a. Yukarıdaki **Özellikler sekmesinden** kopyaladığınız **Kullanıcı erişim URL 'sini** yapıştırın (ana ADP uygulamasından).
-                                                             
-    b. Farklı **geçiş durumu URL 'lerini** destekleyen 5 uygulama aşağıda verilmiştir. Belirli bir uygulama için uygun **geçiş durumu URL 'si** değerini **Kullanıcı erişim URL**'sine el ile eklemeniz gerekir.
-    
-    * **ADP iş gücü artık**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
+    1. Yukarıdaki **Özellikler sekmesinden** kopyaladığınız **Kullanıcı erişim URL 'sini** yapıştırın (ana ADP uygulamasından).
 
-    * **ADP iş gücü artık gelişmiş saat**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
-    
-    * **ADP Vanu HCM**
-        
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
+    1. Farklı **geçiş durumu URL 'lerini** destekleyen 5 uygulama aşağıda verilmiştir. Belirli bir uygulama için uygun **geçiş durumu URL 'si** değerini **Kullanıcı erişim URL**'sine el ile eklemeniz gerekir.
 
-    * **ADP kurumsal HR**
+        * **ADP iş gücü artık**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?WFN`
 
-    * **MyADP**
+        * **ADP iş gücü artık gelişmiş saat**
 
-        `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?EETDC2`
 
-9. Değişikliklerinizi **kaydedin** .
+        * **ADP Vanu HCM**
 
-10. ADP temsilcinizden onay alındıktan sonra, bir veya iki kullanıcıyla testi başlatın.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?ADPVANTAGE`
 
-    a. Federasyon erişimini test etmek için, ADP hizmeti uygulamasına birkaç Kullanıcı atayın.
+        * **ADP kurumsal HR**
 
-    b. Kullanıcılar galerideki ADP hizmeti uygulamasına erişirken ve ADP hizmetine erişebillerinde test başarılı olur.
- 
-11. Başarılı bir testi onaylamada, Federasyon ADP hizmetini ayrı kullanıcılara veya Kullanıcı gruplarına atayın. Bu, öğreticide daha sonra açıklanarak çalışanlarınıza ulaşın.
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?PORTAL`
+
+        * **MyADP**
+
+            `<User access URL>&relaystate=https://fed.adp.com/saml/fedlanding.html?REDBOX`
+
+1. Değişikliklerinizi **kaydedin** .
+
+1. ADP temsilcinizden onay alındıktan sonra, bir veya iki kullanıcıyla testi başlatın.
+
+    1. Federasyon erişimini test etmek için, ADP hizmeti uygulamasına birkaç Kullanıcı atayın.
+
+    1. Kullanıcılar galerideki ADP hizmeti uygulamasına erişirken ve ADP hizmetine erişebillerinde test başarılı olur.
+
+1. Başarılı bir testi onaylamada, Federasyon ADP hizmetini ayrı kullanıcılara veya Kullanıcı gruplarına atayın. Bu, öğreticide daha sonra açıklanarak çalışanlarınıza ulaşın.
 
 ### <a name="create-adp-test-user"></a>ADP test kullanıcısı oluştur
 
@@ -217,10 +217,8 @@ Erişim panelinde ADP kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile ADP 'yi deneyin](https://aad.portal.azure.com)

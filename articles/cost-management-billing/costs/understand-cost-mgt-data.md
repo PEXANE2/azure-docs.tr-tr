@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contentperfq2
-ms.openlocfilehash: 923b03f0c7bbf8d6948a80742530db6cb9b06c25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675901"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032584"
 ---
 # <a name="understand-cost-management-data"></a>Maliyet Yönetimi verilerini anlama
 
@@ -83,7 +83,7 @@ Aşağıdaki teklifler henüz desteklenmiyor:
 
 ### <a name="determine-your-offer-type"></a>Teklif türünü belirleme
 
-Abonelikle ilgili veri görmüyorsanız ve aboneliğinizin desteklenen tekliflerin arasında olup olmadığı öğrenmek istiyorsanız aboneliğinizin desteklenip desteklenmediğini doğrulayabilirsiniz. Bir Azure aboneliğinin desteklenip desteklenmediğini doğrulamak için Azure portalında oturum açın. Ardından sol taraftaki menü bölmesinden **Tüm Hizmetler** 'i seçin. Hizmetler listesinde **Abonelikler** 'i seçin. Abonelik listesi menüsünden doğrulamak istediğiniz aboneliği seçin. Aboneliğiniz Genel Bakış sekmesinde gösterilir ve **Teklif** ile **Teklif Kimliği** bilgilerini görebilirsiniz. Aşağıdaki resimde bir örnek gösterilir.
+Abonelikle ilgili veri görmüyorsanız ve aboneliğinizin desteklenen tekliflerin arasında olup olmadığı öğrenmek istiyorsanız aboneliğinizin desteklenip desteklenmediğini doğrulayabilirsiniz. Bir Azure aboneliğinin desteklenip desteklenmediğini doğrulamak için Azure portalında oturum açın. Ardından sol taraftaki menü bölmesinden **Tüm Hizmetler**'i seçin. Hizmetler listesinde **Abonelikler**'i seçin. Abonelik listesi menüsünden doğrulamak istediğiniz aboneliği seçin. Aboneliğiniz Genel Bakış sekmesinde gösterilir ve **Teklif** ile **Teklif Kimliği** bilgilerini görebilirsiniz. Aşağıdaki resimde bir örnek gösterilir.
 
 ![Teklif ve Teklif Kimliği bilgilerinin gösterildiği Aboneliğe Genel Bakış sekmesi örneği](./media/understand-cost-mgt-data/offer-and-offer-id.png)
 
@@ -150,7 +150,7 @@ Maliyet ve kullanım verileri genellikle 8 ila 24 saat arasında, Azure portalı
 - Geçerli faturalama dönemine ait tahmini ücretler günde altı kez güncelleştirilir.
 - Geçerli faturalama dönemine ait tahmini ücretler, kullanım arttıkça değişebilir.
 - Güncelleştirmeler birikmelidir ve her biri, bir önceki güncelleştirmede bulunan satır öğelerinin ve bilgilerinin tamamını içerir.
-- Azure, faturalama dönemi sona erdikten 72 saat (üç takvim günü) sonra geçerli faturalama dönemini sonlandırır veya _kapatır_ .
+- Azure, faturalama dönemi sona erdikten 72 saat (üç takvim günü) sonra geçerli faturalama dönemini sonlandırır veya _kapatır_.
 
 Aşağıdaki örnekte faturalama döneminin nasıl bitebileceği gösterilmiştir:
 

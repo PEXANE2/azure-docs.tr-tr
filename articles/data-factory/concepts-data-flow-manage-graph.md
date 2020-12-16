@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2020
-ms.openlocfilehash: 15a4a0ea78ef169480d4494683cb929cfefd16f2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: f55364fe0eabae4bb1698bd655cde8d3e01b127a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026981"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590469"
 ---
 # <a name="managing-the-mapping-data-flow-graph"></a>Eşleme veri akışı grafiğini yönetme
 
@@ -21,7 +21,7 @@ ms.locfileid: "93026981"
 
 Eşleme veri akışları, veri akışı grafiği olarak bilinen bir tasarım yüzeyi kullanılarak yazılır. Grafikte, dönüştürme mantığı soldan sağa oluşturulmuştur ve ek veri akışları yukarıdan aşağı eklenir. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin.
 
-![Tuval](media/data-flow/canvas2.png "Tuval")
+![Tuval](media/data-flow/canvas-2.png)
 
 Veri akışlarınız daha karmaşık olduğu için, veri akışı grafiğine etkin bir şekilde gezinmek ve bunları yönetmek için aşağıdaki mekanizmalardan yararlanın. 
 
@@ -39,7 +39,7 @@ Dönüşümünüzü düzenlediğinizde, pano 'nun tamamını gizleyerek, yapıla
 
 ![Grafiği gizle](media/data-flow/hide-graph.png "grafiği gizle")
 
-Grafik gizli olduğunda, **İleri** veya **geri** ' ye tıklayarak bir akış içindeki dönüşümler arasında geçiş yapabilirsiniz. Grafiği göstermek için aşağı bakan köşeli çift ayraca tıklayın.
+Grafik gizli olduğunda, **İleri** veya **geri**' ye tıklayarak bir akış içindeki dönüşümler arasında geçiş yapabilirsiniz. Grafiği göstermek için aşağı bakan köşeli çift ayraca tıklayın.
 
 ![Grafiği göster](media/data-flow/show-graph.png "Grafiği göster")
 
@@ -55,7 +55,7 @@ Bir dönüştürmeyi bulmak için dönüşüm adına veya açıklamaya göre ara
 
 ## <a name="hide-reference-nodes"></a>Başvuru düğümlerini gizle
 
-Veri akışınız herhangi bir birleştirme, arama, mevcut veya birleşim dönüşümlerine sahipse, veri akışı tüm gelen akışlara başvuru düğümlerini gösterir. Alınan dikey alan miktarını en aza indirmek isterseniz, başvuru düğümlerinizi en aza indirmenize olanak sağlayabilirsiniz. Bunu yapmak için tuvale sağ tıklayıp **başvuru düğümlerini Gizle** ' yi seçin.
+Veri akışınız herhangi bir birleştirme, arama, mevcut veya birleşim dönüşümlerine sahipse, veri akışı tüm gelen akışlara başvuru düğümlerini gösterir. Alınan dikey alan miktarını en aza indirmek isterseniz, başvuru düğümlerinizi en aza indirmenize olanak sağlayabilirsiniz. Bunu yapmak için tuvale sağ tıklayıp **başvuru düğümlerini Gizle**' yi seçin.
 
 ![Başvuru düğümlerini gizle](media/data-flow/hide-reference-nodes.png "Başvuru düğümlerini gizle")
 

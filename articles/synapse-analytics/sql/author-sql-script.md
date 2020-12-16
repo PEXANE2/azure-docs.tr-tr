@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8d4c1928ae1fac9b840245756c4bf5fe22a83f0f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458008"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590520"
 ---
 # <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te SYNAPSE Studio SQL betikleri 
 
@@ -79,7 +79,7 @@ SQL veritabanlarının düğümlerine sağ tıklayarak kullanılabilir hareketi 
 SQL betikleri geliştirme altındaki Eylemler menüsünde, SQL betikleri geliştirme altında "eylemler" menüsünden "yeni klasör" seçeneğini belirleyin. Ve açılır penceredeki yeni klasörün adını yazın. 
 
 > [!div class="mx-imgBorder"] 
-> ![newsqlscript](./media/author-sql-script/new-sql-script-create-folder.png)
+> ![' Yeni klasör ' seçiliyken bir SQL komut dosyası örneği gösteren ekran görüntüsü.](./media/author-sql-script/new-sql-script-create-folder.png)
 
 Bir SQL betiğini bir klasöre taşımak için, SQL betiğini seçip Eylemler menüsünden "taşı" seçeneğini belirleyebilirsiniz. Ardından, yeni pencerede hedef klasörünü bulun ve SQL betiğini seçili klasöre taşıyın. Ayrıca, SQL betiğini hızlıca sürükleyip bir klasöre bırakabilirsiniz.  
 

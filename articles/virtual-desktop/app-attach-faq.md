@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 73fb9bf436c043e903977fafbb5a502e2edc5488
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 78c21e9515965f1c15315967f6a19a0df2838dc2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518694"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591204"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX uygulama iliştirme SSS
 
@@ -27,7 +27,7 @@ Msix, uygulamalar için bir paketleme biçimidir, ancak MSIX uygulama iliştirme
 
 MSIX uygulaması iliştirme FSLogix kullanmaz. Ancak, MALTıUYGULAMA iliştirme ve FSLogix, sorunsuz bir kullanıcı deneyimi sağlamak için birlikte çalışacak şekilde tasarlanmıştır.
 
-## <a name="can-i-use-msix-app-attach-outside-of-windows-virtual-desktop"></a>MALTı uygulamayı Windows sanal masaüstü dışında kullanıma açabilir miyim?
+## <a name="can-i-use-the-msix-app-attach-outside-of-windows-virtual-desktop"></a>MALTı uygulamayı Windows sanal masaüstü dışında kullanıma açabilir miyim?
 
 Power MALTı uygulama iliştirmeye yönelik API 'Ler Windows 10 Enterprise için kullanılabilir. Bu API 'Ler, Windows sanal masaüstü dışında kullanılabilir. Ancak, MSIX uygulaması için Windows sanal masaüstü dışında ek bir yönetim düzlemi yoktur.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: 004fb022847432a9739e79f7063b80636f8dcf2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87374244"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590877"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi
 Eclipse, Java geliştiricileri için en yaygın kullanılan tümleşik geliştirme ortamlarından (IDE’ler) biridir. Bu makalede, Azure Service Fabric ile çalışmak için Eclipse geliştirme ortamınızı ayarlama işlemi ele alınmaktadır. Service Fabric eklentisini yükleme, Service fabric uygulaması oluşturma ve Service Fabric uygulamanızı Eclipse’teki yerel veya uzak bir Service Fabric kümesine dağıtma hakkında bilgi edinin. 
@@ -31,20 +31,20 @@ Eclipse'te Service Fabric eklentisi yükleyebilirsiniz. Eklenti, Java hizmetleri
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. 
 
 [Eclipse sitesinden](https://www.eclipse.org) Eclipse Neon veya sonraki bir sürümü yükleyin.  Ayrıca Buildship 2.2.1 veya sonraki bir sürümü de yükleyin (Service Fabric eklentisi, eski Buildship sürümleriyle uyumlu değildir):
--   Yüklü bileşenlerin sürümlerini denetlemek için, tutulma ' da, **Help**  >  **tutulma**  >  **Yükleme ayrıntıları**hakkında Yardım ' a gidin.
+-   Yüklü bileşenlerin sürümlerini denetlemek için, tutulma ' da,   >  **tutulma**  >  **Yükleme ayrıntıları** hakkında Yardım ' a gidin.
 -   Buildship’i güncelleştirmek için bkz. [Eclipse Buildship: Gradle için Eclipse Eklentileri][buildship-update].
--   Çakışan Küreler güncelleştirmelerini denetlemek ve yüklemek için bkz **Help**  >  .**güncelleştirmeleri denetlemek**için yardım.
+-   Çakışan Küreler güncelleştirmelerini denetlemek ve yüklemek için bkz   >  .**güncelleştirmeleri denetlemek** için yardım.
 
-Service Fabric eklentisini, çakışan küreler ' de yükleyip **Help**  >  **yeni yazılım yüklemeye**Yardım ' a gidin.
+Service Fabric eklentisini, çakışan küreler ' de yükleyip   >  **yeni yazılım yüklemeye** Yardım ' a gidin.
 1. **Birlikte çalış** kutusuna https: \/ /DL.Microsoft.com/Eclipse girin.
 2. **Ekle**'ye tıklayın.
 
    ![Eclipse için Service Fabric eklentisi][sf-eclipse-plugin-install]
 3. Service Fabric eklentisini seçip **İleri**’ye tıklayın.
 4. Yükleme adımlarını tamamlayın ve ardından Microsoft Yazılım Lisans Koşulları’nı kabul edin.
-  
+
 Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin. 
-1. Kullanılabilir güncelleştirmeleri denetlemek için, **Help**  >  **tutulma**  >  **Yükleme ayrıntıları**hakkında bölümüne gidin. 
+1. Kullanılabilir güncelleştirmeleri denetlemek için,   >  **tutulma**  >  **Yükleme ayrıntıları** hakkında bölümüne gidin. 
 2. Yüklü eklentiler listesinde Service Fabric’i seçip **Güncelleştir**’e tıklayın. Kullanılabilir güncelleştirmeler yüklenir.
 3. Service Fabric eklentisini güncelleştirdikten sonra Gradle projesini de yenileyin.  **build.gradle** öğesine sağ tıklayın ve **Yenile**’yi seçin.
 
@@ -57,7 +57,7 @@ Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin.
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse’te Service Fabric uygulaması oluşturma
 
-1.  Tutulma ' da, yeni **Dosya**' ya gidin  >  **New**  >  **Other**. **Service Fabric Projesi**’ni seçip **İleri**’ye tıklayın.
+1.  Tutulma ' da, yeni **Dosya**' ya gidin  >    >  . **Service Fabric Projesi**’ni seçip **İleri**’ye tıklayın.
 
     ![Service Fabric Yeni Proje sayfa 1][create-application/p1]
 
@@ -91,7 +91,7 @@ Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin.
     -   Uygulamayı temizlemeden derlemek için **Uygulamayı Derle**’ye tıklayın.
     -   Uygulamanın temiz bir derlemesini gerçekleştirmek için **Uygulamayı Yeniden Derle**’ye tıklayın.
     -   Derlenen yapıtları uygulamadan temizlemek için **Uygulamayı Temizle**’ye tıklayın.
-     
+
 ## <a name="deploy-a-service-fabric-application-to-the-local-cluster-with-eclipse"></a>Yerel kümeye Çakışan Küreler Service Fabric uygulama dağıtma
 
 Service Fabric uygulamanızı oluşturduktan sonra, yerel kümeye dağıtmak için aşağıdaki adımları izleyin.
@@ -166,9 +166,9 @@ Java 'da yazılmış bir Service Fabric Reliable Services uygulamasının güven
 
 Service Fabric uygulamanızı dağıtmanın alternatif bir yolu, Eclipse çalıştırma yapılandırmalarının kullanılmasıdır.
 
-1. Tutulma ' da Çalıştır çalışma **Run**  >  **yapılandırması**' na gidin.
+1. Tutulma ' da Çalıştır çalışma   >  **yapılandırması**' na gidin.
 2. **Grade Projesi** altındaki **ServiceFabricDeployer** çalıştırma yapılandırmasını seçin.
-3. Sağ bölmedeki **bağımsız değişkenler** sekmesinde, **IP**, **bağlantı noktası**, **Clientcert**ve **clientkey** parametrelerinin dağıtımınız için uygun şekilde ayarlandığından emin olun. Varsayılan olarak parametreler, aşağıdaki ekran görüntüsünde gösterildiği gibi yerel kümeye dağıtılacak şekilde ayarlanır. Uygulamanızı Azure 'da yayımlamak için, parametreleri Azure kümeniz için uç nokta ayrıntılarını ve güvenlik kimlik bilgilerini içerecek şekilde değiştirebilirsiniz. Daha fazla bilgi için bkz. önceki bölüm, [Service Fabric uygulamanızı Çakışan Küreler Azure 'Da yayımlayın](#publish-your-service-fabric-application-to-azure-with-eclipse).
+3. Sağ bölmedeki **bağımsız değişkenler** sekmesinde, **IP**, **bağlantı noktası**, **Clientcert** ve **clientkey** parametrelerinin dağıtımınız için uygun şekilde ayarlandığından emin olun. Varsayılan olarak parametreler, aşağıdaki ekran görüntüsünde gösterildiği gibi yerel kümeye dağıtılacak şekilde ayarlanır. Uygulamanızı Azure 'da yayımlamak için, parametreleri Azure kümeniz için uç nokta ayrıntılarını ve güvenlik kimlik bilgilerini içerecek şekilde değiştirebilirsiniz. Daha fazla bilgi için bkz. önceki bölüm, [Service Fabric uygulamanızı Çakışan Küreler Azure 'Da yayımlayın](#publish-your-service-fabric-application-to-azure-with-eclipse).
 
     ![Yapılandırma Iletişim kutusunu yerel olarak çalıştır](./media/service-fabric-get-started-eclipse/run-config-local.png)
 

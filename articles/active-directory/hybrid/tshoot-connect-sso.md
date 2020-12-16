@@ -13,12 +13,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bc638eec174a52d501120d5e53bb2dc9e35b688
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997690"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591183"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory sorunsuz tek Sign-On sorunlarını giderme
 
@@ -55,7 +55,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 
 ![Azure Active Directory Yönetim Merkezi: oturum açma işlemleri raporu](./media/tshoot-connect-sso/sso9.png)
 
-**Azure Active Directory**  >  [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/)Azure Active Directory **oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+  >  [Azure Active Directory Yönetim merkezinde](https://aad.portal.azure.com/)Azure Active Directory **oturum açma** işlemleri yapın ve ardından belirli bir kullanıcının oturum açma etkinliğini seçin. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---
@@ -94,11 +94,11 @@ Sorunsuz SSO sorunlarını gidermek için aşağıdaki denetim listesini kullan�
 Etki alanı denetleyicinizde başarı denetimini etkinleştirirseniz, Kullanıcı sorunsuz SSO aracılığıyla her oturum açtığında olay günlüğüne bir güvenlik girişi kaydedilir. Aşağıdaki sorguyu kullanarak, bu güvenlik olaylarını bulabilirsiniz. (Bilgisayar hesabı **Azureadssoacc $** ile ilişkili olay **4769** ' i arayın.)
 
 ```
-    <QueryList>
-      <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
-      </Query>
-    </QueryList>
+  <QueryList>
+    <Query Id="0" Path="Security">
+      <Select Path="Security">*[EventData[Data[@Name='ServiceName'] and (Data='AZUREADSSOACC$')]]</Select>
+    </Query>
+  </QueryList>
 ```
 
 ## <a name="manual-reset-of-the-feature"></a>Özelliği el ile sıfırlama

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: 680908fdb2b7badcc1bbf713805b638213590877
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dd125860aab8e64d316a91ec8876a3678c646d52
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508093"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591478"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>PostgreSQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede PostgreSQL için Azure veritabanı bağlantı mimarisi ve trafiğin Azure 'daki ve dışındaki istemcilerden PostgreSQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -30,7 +30,7 @@ Ağ Geçidi Hizmeti, bir IP adresinin arkasında yer alan durum bilgisiz işlem 
 
 Devam eden hizmet bakımının bir parçası olarak, en güvenli ve yüksek performanslı deneyim sağlamamız için ağ geçitlerini barındıran işlem donanımını düzenli olarak yenileyeceğiz. Ağ Geçidi donanımı yenilendiğinde, önce işlem düğümlerinin yeni bir halkası oluşturulur. Bu yeni halka, tüm yeni oluşturulan PostgreSQL için Azure veritabanı sunucuları için trafiğe hizmet verir ve trafiği ayırt etmek için aynı bölgedeki eski ağ geçidi halkalarından farklı bir IP adresine sahip olur. Yeni halka tam çalışır olduktan sonra, mevcut sunuculara hizmet veren eski ağ geçidi donanımı kullanımdan kaldırma için planlanmaktadır. Bir ağ geçidi donanımını kullanımdan kaldırmadan önce, sunucularını çalıştıran ve eski ağ geçidi halkalarına bağlanan müşteriler, kullanımdan kaldırmadan önce üç ay içinde ve Azure portal üzerinden gönderilir. Ağ geçitlerinin yetkisini alma, şu durumlarda sunucularınız için bağlantıyı etkileyebilir 
 
-* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. 
+* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. Uygulamanızın bağlantı dizesinde. postgres.database.azure.com biçiminde sunucunuzun tam etki alanı adını (FQDN) kullanmanız gerekir <servername> . 
 * Giden trafiğin yeni ağ geçidi halkalarımıza erişebilmesini sağlamak için istemci tarafı güvenlik duvarında daha yeni ağ geçidi IP adreslerini güncelleştirmeyin.
 
 Aşağıdaki tabloda, tüm veri bölgeleri için PostgreSQL için Azure veritabanı ağ geçidi IP adresleri listelenmektedir. Her bölge için ağ geçidi IP adreslerinin en güncel bilgileri aşağıdaki tabloda tutulur. Aşağıdaki tabloda sütunlar aşağıdakileri temsil eder:

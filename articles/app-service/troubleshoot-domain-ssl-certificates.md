@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 1cefb5a7b554b9a477f6a51eab3b22b0e8f55378
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c8d6f59f64aed2870494fa8697014e670e373337
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958448"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590367"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Service etki alanı ve TLS/SSL sertifikası sorunlarını giderme
 
@@ -90,7 +90,7 @@ Bu sorun, aşağıdakilerden herhangi biri nedeniyle oluşabilir:
 
     1. [Azure portalında](https://portal.azure.com) oturum açın.
     2. **App Service sertifikalar**' a gidin ve sertifikayı seçin.
-    3. **Sertifika yapılandırma**  >  **Adım 2:**  >  **etki alanı doğrulamayı**doğrulama. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
+    3. **Sertifika yapılandırma**  >  **Adım 2:**  >  **etki alanı doğrulamayı** doğrulama. Bu adım, sorunu çözmek için Azure Sertifika sağlayıcısına bir e-posta bildirimi gönderir.
 
 ## <a name="custom-domain-problems"></a>Özel etki alanı sorunları
 
@@ -104,7 +104,7 @@ Bu sorun, aşağıdakilerden herhangi biri nedeniyle oluşabilir:
 
 #### <a name="cause-and-solution"></a>Neden ve çözüm
 
-**Neden 1** 
+**1\. Neden** 
 
 Yapılandırdığınız özel etki alanında bir CNAME veya bir kayıt eksik. 
 
@@ -114,13 +114,13 @@ Yapılandırdığınız özel etki alanında bir CNAME veya bir kayıt eksik.
 - Uygulamanız için kök etki alanını kullanmanız gerekmiyorsa, bir kayıt yerine bir CNAME kaydı kullanmanızı öneririz.
 - Aynı etki alanı için hem CNAME kaydı hem de bir kayıt kullanmayın. Bu sorun bir çakışmaya neden olabilir ve etki alanının çözülmesini engelleyebilir. 
 
-**Neden 2** 
+**2\. Neden** 
 
 Internet tarayıcısı, etki alanınız için eski IP adresini önbelleğe almaya devam edebilir. 
 
 **Neden 2 için çözüm**
 
-Tarayıcıyı temizleyin. Windows cihazları için komutunu çalıştırabilirsiniz `ipconfig /flushdns` . Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın. 
+Tarayıcıyı temizleyin. Windows cihazları için komutunu çalıştırabilirsiniz `ipconfig /flushdns` . Etki alanınızı uygulamanın IP adresine işaret ettiğini doğrulamak için [WhatsmyDNS.net](https://www.whatsmydns.net/) kullanın.
 
 ### <a name="you-cant-add-a-subdomain"></a>Alt etki alanı ekleyemezsiniz 
 
@@ -185,7 +185,7 @@ App Service sertifikası yenilendi, ancak App Service sertifikasını kullanan u
 
 #### <a name="cause"></a>Nedeni 
 App Service, sertifikanızı 48 saat içinde otomatik olarak eşitler. Bir sertifikayı döndürdüğünüzde veya güncelleştirdiğinizde, bazı durumlarda uygulama yeni güncelleştirilmiş sertifikayı değil eski sertifikayı almaya devam eder. Bunun nedeni, sertifika kaynağını eşitleme işinin henüz çalıştırılmadığını unutmayın. Eşitle ' ye tıklayın. Eşitleme işlemi, uygulamalarınıza herhangi bir kapalı kalma süresine neden olmadan App Service içindeki sertifika için konak bağlamalarını otomatik olarak güncelleştirir.
- 
+
 #### <a name="solution"></a>Çözüm
 
 Sertifikanın eşitlenmesini zorunlu hale getirebilirsiniz:
@@ -201,17 +201,17 @@ App Service sertifikası, sertifika kullanıma hazırlanmadan önce etki alanı 
 
 #### <a name="solution"></a>Çözüm
 Bir TXT kaydı ekleyerek etki alanınızı el ile doğrulayın:
- 
-1.  Etki alanı adınızı barındıran etki alanı adı hizmeti (DNS) sağlayıcısına gidin.
-2.  Etki alanınız için Azure portal gösterilen etki alanı belirtecinin değerini kullanan bir TXT kaydı ekleyin. 
+
+1. Etki alanı adınızı barındıran etki alanı adı hizmeti (DNS) sağlayıcısına gidin.
+1. Etki alanınız için Azure portal gösterilen etki alanı belirtecinin değerini kullanan bir TXT kaydı ekleyin. 
 
 DNS yayılması 'nın çalışması için birkaç dakika bekleyin ve ardından doğrulamayı tetiklemek için **Yenile** düğmesini seçin. 
 
 Alternatif olarak, etki alanınızı el ile doğrulamak için HTML Web sayfası yöntemini de kullanabilirsiniz. Bu yöntem, sertifika yetkilisinin sertifikanın verildiği etki alanının etki alanı sahipliğini onaylamasını sağlar.
 
-1.  {Etki alanı doğrulama belirteci}. html adlı bir HTML dosyası oluşturun. Bu dosyanın içeriği, etki alanı doğrulama belirtecinin değeri olmalıdır.
-3.  Bu dosyayı, etki alanınızı barındıran Web sunucusunun köküne yükleyin.
-4.  Sertifika durumunu denetlemek için **Yenile** ' yi seçin. Doğrulamanın tamamlanması birkaç dakika sürebilir.
+1. {Etki alanı doğrulama belirteci}. html adlı bir HTML dosyası oluşturun. Bu dosyanın içeriği, etki alanı doğrulama belirtecinin değeri olmalıdır.
+1. Bu dosyayı, etki alanınızı barındıran Web sunucusunun köküne yükleyin.
+1. Sertifika durumunu denetlemek için **Yenile** ' yi seçin. Doğrulamanın tamamlanması birkaç dakika sürebilir.
 
 Örneğin, etki alanı doğrulama belirteci 1234abcd ile azure.com için standart bir sertifika satın aldıysanız, ' ye yapılan bir Web isteği, https://azure.com/1234abcd.html 1234abcd döndürmelidir. 
 
@@ -260,7 +260,7 @@ Bu sorun aşağıdaki nedenlerden biriyle oluşur:
 
     **Çözüm**: CNAME veya bir kaydın doğru yapılandırıldığını doğrulayın. Özel bir etki alanını bir uygulamayla eşlemek için bir CNAME kaydı veya bir kayıt oluşturun. Kök etki alanı kullanmak istiyorsanız, ve TXT kayıtlarını kullanmanız gerekir:
 
-    |Kayıt türü|Ana bilgisayar|Üzerine gelin|
+    |Kayıt türü|Yönetici|Üzerine gelin|
     |------|------|-----|
     |A|@|Bir uygulama için IP adresi|
     |TXT|@|`<app-name>.azurewebsites.net`|

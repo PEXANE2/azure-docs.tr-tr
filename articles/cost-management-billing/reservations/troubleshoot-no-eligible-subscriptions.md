@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 12/15/2020
+ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887204"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561214"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>Koşullara uygun abonelik yok hata iletisiyle ilgili sorunları giderme
 
@@ -94,8 +94,8 @@ Geçerli rezervasyon siparişinin sahibi veya rezervasyon sahibi aşağıdaki ad
 1. Sahip olarak eklemek istediğiniz kullanıcının e-posta adresini yazın.
 1. Kullanıcıyı ve ardından **Kaydet**'i seçin.
 
-Daha fazla bilgi için bkz. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+Daha fazla bilgi için bkz. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Rezervasyon sahibinin size erişim vermesine ihtiyaç duyuyorsanız [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) başlıklı makaleyi gözden geçirin.
+- Rezervasyon sahibinin size erişim vermesine ihtiyaç duyuyorsanız [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default) başlıklı makaleyi gözden geçirin.

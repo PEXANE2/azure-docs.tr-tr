@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2019
+ms.date: 12/15/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31e4f80aa8ffec96538b53ac64df6918c632a950
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 90b18c2556796f23be0c1135b0bad0d53368a46d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997452"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590962"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Azure CLı kullanarak Azure VM 'de Azure kaynakları için Yönetilen kimlikler yapılandırma
 
@@ -35,7 +35,7 @@ Bu makalede, Azure CLı 'yı kullanarak Azure VM 'de Azure kaynakları işlemler
 
 Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure kaynakları için Yönetilen kimlikler hakkında bilgi sahibi değilseniz bkz. [Azure kaynakları için Yönetilen kimlikler nelerdir?](overview.md). Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik türleri hakkında bilgi edinmek için bkz. [yönetilen kimlik türleri](overview.md#managed-identity-types).
 
@@ -71,7 +71,7 @@ Bir VM 'de sistem tarafından atanan yönetilen kimliği etkinleştirmek için h
    az login
    ```
 
-2. [az vm identity assign](/cli/azure/vm/identity/) `identity assign` Sistem tarafından atanan KIMLIĞI mevcut bir VM 'ye etkinleştirmek için az VM Identity Assign komutunu kullanın:
+2. [](/cli/azure/vm/identity/) `identity assign` Sistem tarafından atanan KIMLIĞI mevcut bir VM 'ye etkinleştirmek için az VM Identity Assign komutunu kullanın:
 
    ```azurecli-interactive
    az vm identity assign -g myResourceGroup -n myVm

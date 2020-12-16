@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e31c18338243f9405a071b8fa544fe44044be
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 734d37af58290201b415f1a4b7c8ff7553187550
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903165"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591268"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler nelerdir?
 
@@ -159,6 +159,8 @@ Kiracı yöneticileri artık, ProxyAddresses ile belirli Azure AD gruplarına e-
 **Ürün yeteneği:** & raporlamayı izleme
  
 Oturum açma tanılamasının ilk önizleme sürümü ile yöneticiler artık Kullanıcı oturum açma işlemlerini gözden geçirebilir. Yöneticiler bağlamsal, özel ve ilgili ayrıntıları ve oturum açma sırasında neler olduğunu ve sorunların nasıl düzeltileceğini gösteren kılavuzları alabilir. Tanılama, hem Azure AD düzeyinde hem de koşullu erişim 'i Tanıla ve çöz Blade ' de kullanılabilir. Bu sürümde ele alınan tanılama senaryoları, koşullu erişim, Multi-Factor Authentication ve başarılı oturum açma Erişimlerdir.
+
+Daha fazla bilgi için bkz. [Azure AD 'de oturum açma tanılaması nedir?](../reports-monitoring/overview-sign-in-diagnostics.md).
  
 ---
 
@@ -412,7 +414,7 @@ Kimlik korumasının risk tabanlı koşullu erişim ve risk algılama özellikle
  
 2020 Ekim 'de, federasyon desteğiyle App Gallery 'de aşağıdaki 27 yeni uygulamayı ekledik:
 
-[Sentry](../saas-apps/sentry-tutorial.md), [bıfrelebee-üretkenlik süper uygulaması](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture bulutu](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [Eabesteci](../saas-apps/eacomposer-tutorial.md), [Genesys bulut tümleştirmesi, Azure için](https://apps.mypurecloud.com/msteams-integration/) [bölge teknolojileri portalı](https://portail.zonetechnologie.com/signin), [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), [datawiza Access Broker](https://console.datawiza.com/), [zokri](https://app.zokri.com/), [checkkanıt](../saas-apps/checkproof-tutorial.md), [Ecochallenge.org](https://events.ecochallenge.org/users/login), [ATIO](http://atspoke.com/login), [randevu anımsatıcısı](https://app.appointmentreminder.co.nz/account/login), [Cloud. Market](https://cloud.market/), [seyahatperk](../saas-apps/travelperk-tutorial.md), rebera, [orgvıtitesi SSO [Greetly](https://app.greetly.com/) /SaaS-Apps/orgvitality-SSO-tutorial.MD), [Web Cargo hava](../saas-apps/web-cargo-air-tutorial.md), [döngü Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [starakılda](../saas-apps/starmind-tutorial.md), [workstem](https://hrm.workstem.com/login), [Perakende Zipline](../saas-apps/retail-zipline-tutorial.md), [hoxhunt](../saas-apps/hoxhunt-tutorial.md), [mevisio](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure sanal Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
+[Sentry](../saas-apps/sentry-tutorial.md), [bıfrelebee-üretkenlik süper uygulaması](https://app.yellowmessenger.com/user/login), [ABBYY FlexiCapture bulutu](../saas-apps/abbyy-flexicapture-cloud-tutorial.md), [Eabesteci](../saas-apps/eacomposer-tutorial.md), [Genesys bulut tümleştirmesi, Azure için](https://apps.mypurecloud.com/msteams-integration/) [bölge teknolojileri portalı](https://portail.zonetechnologie.com/signin), [Beautiful.ai](../saas-apps/beautiful.ai-tutorial.md), [datawiza Access Broker](https://console.datawiza.com/), [zokri](https://app.zokri.com/), [checkkanıt](../saas-apps/checkproof-tutorial.md), [Ecochallenge.org](https://events.ecochallenge.org/users/login), [ATIO](http://atspoke.com/login), [randevu anımsatıcısı](https://app.appointmentreminder.co.nz/account/login), [Cloud. Market](https://cloud.market/), [seyahatperk](../saas-apps/travelperk-tutorial.md), rebera, [orgvıtitesi SSO [](https://app.greetly.com/) /SaaS-Apps/orgvitality-SSO-tutorial.MD), [Web Cargo hava](../saas-apps/web-cargo-air-tutorial.md), [döngü Flow CRM](../saas-apps/loop-flow-crm-tutorial.md), [starakılda](../saas-apps/starmind-tutorial.md), [workstem](https://hrm.workstem.com/login), [Perakende Zipline](../saas-apps/retail-zipline-tutorial.md), [hoxhunt](../saas-apps/hoxhunt-tutorial.md), [mevisio](../saas-apps/mevisio-tutorial.md), [Samsara](../saas-apps/samsara-tutorial.md), [Nimbus](../saas-apps/nimbus-tutorial.md), [Pulse Secure sanal Traffic Manager](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md)
 
 Ayrıca, tüm uygulamaların belgelerini buradan bulabilirsiniz. https://aka.ms/AppsTutorial
 

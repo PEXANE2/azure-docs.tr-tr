@@ -16,12 +16,12 @@ ms.date: 09/16/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e36b2d4576b43544bec89efd326363344b35be9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48b5260e883d85899953240f6ee4f83127681c9e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90998106"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591315"
 ---
 # <a name="change-approval-and-requestor-information-preview-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin onay ve istek sahibi bilgileri (Önizleme) ayarlarını değiştirme
 
@@ -54,7 +54,7 @@ Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adım
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi veya erişim paketi Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -64,9 +64,9 @@ Erişim paketine yönelik isteklerin onay ayarlarını belirtmek için şu adım
 
 1. **İstek** sekmesine gidin.
 
-1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet**olarak ayarlayın. Ya da isteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır**olarak ayarlayın.
+1. Seçili kullanıcılardan gelen isteklere onay gerektirmek için **onay gerektir** seçeneğini **Evet** olarak ayarlayın. Ya da isteklerin otomatik olarak onaylanmasını sağlamak için, geçiş seçeneğini **Hayır** olarak ayarlayın.
 
-1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **istek sahibine iste** modunu **Evet**olarak ayarlayın.
+1. Kullanıcıların erişim paketi istemek için bir gerekçe sağlamasını gerektirmek için, **istek sahibine iste** modunu **Evet** olarak ayarlayın.
     
 1. Şimdi isteklerin tek veya 2 aşamalı onay gerektirmesine göre belirlenir. Tek aşamalı onay için **1** ' e geçiş yapma veya 2 aşamalı onay için **2** ' **ye geçişi ayarlama** .
 
@@ -77,13 +77,13 @@ Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için 
 
 ### <a name="single-stage-approval"></a>Tek aşamalı onay
 
-1. **Ilk onaylayanı**ekleyin:
+1. **Ilk onaylayanı** ekleyin:
     
-    İlke, dizininizdeki kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, yönetici ' yi **onaylayan olarak**seçebilirsiniz. Ya da, belirli bir **kullanıcıyı ekleme ' yi seçtikten sonra,** açılan menüden belirli onaylayanları Seç ' i tıklatarak ekleyebilirsiniz.
+    İlke, dizininizdeki kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, yönetici ' yi **onaylayan olarak** seçebilirsiniz. Ya da, belirli bir **kullanıcıyı ekleme ' yi seçtikten sonra,** açılan menüden belirli onaylayanları Seç ' i tıklatarak ekleyebilirsiniz.
     
     ![Erişim paketi-Istekler-Dizin-Ilk onaylayanın kullanıcıları Için](./media/entitlement-management-access-package-approval-policy/approval-single-stage-first-approver-manager.png)
 
-    Bu ilke, dizininizde olmayan kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, **Harici sponsor** veya **dahili sponsor**seçeneğini belirleyebilirsiniz. Ya da belirli onaylayanlara seç altında **Onaylayanlar Ekle** veya gruplar ' a tıklayarak belirli bir kullanıcıyı ekleyin.
+    Bu ilke, dizininizde olmayan kullanıcılar için erişimi yönetecek şekilde ayarlandıysa, **Harici sponsor** veya **dahili sponsor** seçeneğini belirleyebilirsiniz. Ya da belirli onaylayanlara seç altında **Onaylayanlar Ekle** veya gruplar ' a tıklayarak belirli bir kullanıcıyı ekleyin.
     
     ![Erişim paketi-Istekler-Dizin Ilk onaylayan kullanıcılar Için](./media/entitlement-management-access-package-approval-policy/out-directory-first-approver.png)
     
@@ -97,7 +97,7 @@ Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için 
 
     Bu süre içinde bir istek onaylanmamışsa, otomatik olarak reddedilir. Kullanıcının erişim paketi için başka bir istek göndermesi gerekir.
 
-1. Onaylayanlara kararların bir gerekçe vermesini gerektirmek için, onaylayan gerekçe ıste seçeneğini **Evet**olarak ayarlayın.
+1. Onaylayanlara kararların bir gerekçe vermesini gerektirmek için, onaylayan gerekçe ıste seçeneğini **Evet** olarak ayarlayın.
 
     Gerekçe diğer onaylayanlara ve istek sahibine görünür.
 
@@ -105,7 +105,7 @@ Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için 
 
 2 aşamalı onay seçtiyseniz ikinci bir onaylayan eklemeniz gerekir.
 
-1. **Ikinci onaylayanı**ekleyin: 
+1. **Ikinci onaylayanı** ekleyin: 
     
     Kullanıcılar dizininizdeki ise, belirli onaylayanları seçin altında **onaylayan Ekle** ' ye tıklayarak ikinci onaylayan olarak belirli bir kullanıcıyı ekleyin.
 
@@ -115,9 +115,9 @@ Kaç aşamanın gerekli olduğunu seçtikten sonra onaylayanları eklemek için 
 
     ![Erişim paketi Istekleri-Ikinci Dizin Için olan kullanıcılar Için-Ikinci onaylayan](./media/entitlement-management-access-package-approval-policy/out-directory-second-approver.png) 
 
-1. İkinci onaylayanın onay kutusundaki isteği onaylaması gereken gün sayısını **kaç gün içinde yapmanız gerektiğini**belirtin. 
+1. İkinci onaylayanın onay kutusundaki isteği onaylaması gereken gün sayısını **kaç gün içinde yapmanız gerektiğini** belirtin. 
 
-1. Onaylayan ıste gerekçe **Evet** veya **Hayır**olarak ayarlanmalıdır.
+1. Onaylayan ıste gerekçe **Evet** veya **Hayır** olarak ayarlanmalıdır.
 
 ### <a name="alternate-approvers"></a>Alternatif onaylayanlar
 
@@ -132,13 +132,15 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
 
 1. Ilk onaylayanın, Ikinci onaylayan veya her ikisinde de **Gelişmiş istek ayarlarını göster**' e tıklayın.
 
-    ![Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster](./media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png)
+    :::image type="content" source="media/entitlement-management-access-package-approval-policy/alternate-approvers-click-advanced-request.png" alt-text="Erişim paketi-Ilke-Gelişmiş istek ayarlarını göster":::
 
-1. **Herhangi bir eylem yapılmadı, alternatif onaylayanlara ilet mi?** **Evet**olarak değiştirin.
+1. **Herhangi bir eylem yapılmadı, alternatif onaylayanlara ilet mi?** **Evet** olarak değiştirin.
 
 1. **Alternatif onaylayanlar Ekle** ' ye tıklayın ve listeden alternatif onaylayanı seçin.
 
     ![Erişim paketi-Ilke-alternatif onaylayanlar ekleme](./media/entitlement-management-access-package-approval-policy/alternate-approvers-add.png)
+
+    Ilk onaylayan için yöneticiyi onaylayan olarak seçerseniz, alternatif onaylayan alanındaki **ikinci düzey yönetici alternatif onaylayan olarak** ek bir seçeneğe sahip olursunuz. Bu seçeneği belirlerseniz, sistemin ikinci düzey yöneticiyi bulamadığı durumlarda isteği iletmek için bir geri dönüş onaylayan eklemeniz gerekir.
 
 1. **Kaç gün sonra diğer onaylayanlara ilet** kutusunda, onaylayanın bir isteği onaylaması veya reddetmesi için sahip olduğu gün sayısına koyun. Onaylayan, istek süresinden önce isteği onaylamadıysa veya reddetmezse, isteğin süresi dolar (zaman aşımı) ve kullanıcının erişim paketi için başka bir istek göndermesi gerekecektir. 
 
@@ -146,11 +148,11 @@ Kişiler veya kişi gruplarını onaylayan ve alternatif onaylayanlar olacak şe
 
 ## <a name="enable-requests"></a>İstekleri etkinleştir
 
-1. Erişim paketinin istek ilkesindeki kullanıcıların istemesi için hemen kullanılabilir olmasını istiyorsanız, etkinleştir seçeneğini **Evet**olarak taşıyın.
+1. Erişim paketinin istek ilkesindeki kullanıcıların istemesi için hemen kullanılabilir olmasını istiyorsanız, etkinleştir seçeneğini **Evet** olarak taşıyın.
 
     Erişim paketini oluşturma işlemi bittikten sonra bunu gelecekte etkinleştirebilirsiniz.
 
-    Hiçbiri ' ni seçtiyseniz **(yalnızca yönetici doğrudan atamaları)** ve Etkinleştir **' i ayarlarsanız, Yöneticiler**bu erişim paketini doğrudan atayamaz.
+    Hiçbiri ' ni seçtiyseniz **(yalnızca yönetici doğrudan atamaları)** ve Etkinleştir **' i ayarlarsanız, Yöneticiler** bu erişim paketini doğrudan atayamaz.
 
     ![Erişim paketi-Ilke-ilke ayarını etkinleştir](./media/entitlement-management-access-package-approval-policy/enable-requests.png)
 
@@ -173,7 +175,7 @@ Kullanıcıların doğru erişim paketlerine erişim elde etmeleri için, istek 
 
     ![Erişim paketi-Ilke-yerelleştirilmiş metni yapılandırın](./media/entitlement-management-access-package-approval-policy/add-localization-question.png)
 
-1. İstek sahipleri 'ın yanıtlamasını istediğiniz **Yanıt biçimini** seçin. Yanıt biçimleri şunlardır: *kısa metin*, *Çoklu seçim*ve *uzun metin*.
+1. İstek sahipleri 'ın yanıtlamasını istediğiniz **Yanıt biçimini** seçin. Yanıt biçimleri şunlardır: *kısa metin*, *Çoklu seçim* ve *uzun metin*.
  
     ![Erişim paketi-Ilke-birden çok seçim yanıtı biçimini görüntüle ve Düzenle ' yi seçin](./media/entitlement-management-access-package-approval-policy/answer-format-view-edit.png)
  
@@ -184,7 +186,7 @@ Kullanıcıların doğru erişim paketlerine erişim elde etmeleri için, istek 
     
     ![Erişim paketi-Ilke-birden çok seçim seçeneği girin](./media/entitlement-management-access-package-approval-policy/answer-multiple-choice.png)
   
-1. Bir erişim paketine erişim isteğinde bulunmalarını talep etmek için **gerekli**onay kutusuna tıklayın.
+1. Bir erişim paketine erişim isteğinde bulunmalarını talep etmek için **gerekli** onay kutusuna tıklayın.
 
 1. Gereksinimlerinize göre kalan sekmeleri (örn. yaşam döngüsü) doldurun.
 

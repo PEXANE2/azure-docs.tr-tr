@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 84e156074d6db837556ba4ed9febdb43bcdf3318
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902332"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591910"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory’de sürekli tümleştirme ve teslim
 
@@ -668,7 +668,7 @@ Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerin
     - Data Factory varlıkları birbirlerine bağlıdır. Örneğin, tetikler, işlem hatlarına ve işlem hatları, veri kümelerine ve diğer işlem hattına bağlıdır. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden olabilir.
     - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim ortamı](#hotfix-production-environment).
 
-- Azure Data Factory ekibi, bir veri fabrikasında tek tek varlıklara (ardışık düzen, veri kümeleri vb.) Azure RBAC denetimleri atamayı önermez. Örneğin geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmelidir. Bir veri fabrikası içinde birçok Azure rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
+- Azure Data Factory ekibi, bir veri fabrikasında tek tek varlıklara (işlem hatları, veri kümeleri, vb.) Azure RBAC denetimleri atamayı önermez. Örneğin geliştiricinin bir işlem hattına veya veri kümesine erişimi varsa, veri fabrikasındaki tüm işlem hatlarına veya veri kümelerine erişebilmelidir. Bir veri fabrikası içinde birçok Azure rolü uygulamanız gerektiğini düşünüyorsanız, ikinci bir veri fabrikası dağıtmaya bakın.
 
 -   Özel dallardan yayımlayamazsınız.
 

@@ -1,20 +1,20 @@
 ---
-title: Azure kuyruk depolama izleme verileri başvurusu | Microsoft Docs
+title: Azure kuyruk depolama izleme verileri başvurusu
 description: Azure kuyruğu depolamadaki verileri izlemek için günlük ve ölçüm başvurusu.
 author: normesta
 services: azure-monitor
-ms.service: azure-monitor
-ms.topic: reference
-ms.date: 10/02/2020
 ms.author: normesta
+ms.date: 10/02/2020
+ms.topic: reference
+ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: a3a07f828bb8ef20da630e909e46f03e8556eb98
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780374"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590656"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure kuyruk depolama izleme verileri başvurusu
 
@@ -30,19 +30,19 @@ Kapasite ölçümleri değerleri günlük olarak (24 saate kadar) yenilenir. Zam
 
 Azure depolama, Azure Izleyici 'de aşağıdaki kapasite ölçümlerini sağlar.
 
-#### <a name="account-level"></a>Hesap düzeyi
+#### <a name="account-level-capacity-metrics"></a>Hesap düzeyi kapasite ölçümleri
 
-[!INCLUDE [Account level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
+[!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
-#### <a name="queue-storage"></a>Kuyruk depolama
+#### <a name="queue-storage-metrics"></a>Kuyruk depolama ölçümleri
 
 Bu tabloda [kuyruk depolama ölçümleri](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)gösterilmektedir.
 
 | Ölçüm | Açıklama |
 | ------------------- | ----------------- |
-| QueueCapacity | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br/><br/> Birim: bayt <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
-| QueueCount   | Depolama hesabındaki sıraların sayısı. <br/><br/> Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
-| QueueMessageCount | Depolama hesabının Kuyruk hizmeti sıra iletilerinin yaklaşık sayısı. <br/><br/>Birim: sayım <br/> Toplama türü: Ortalama <br/> Değer örneği: 1024 |
+| **QueueCapacity** | Depolama hesabı tarafından kullanılan kuyruk depolama miktarı. <br><br> Birim `Bytes` <br> Toplama türü: `Average` <br> Değer örneği: `1024` |
+| **QueueCount** | Depolama hesabındaki sıraların sayısı. <br><br> Birim `Count` <br> Toplama türü: `Average` <br> Değer örneği: `1024` |
+| **QueueMessageCount** | Depolama hesabındaki sıra iletilerinin yaklaşık sayısı. <br><br> Birim `Count` <br> Toplama türü: `Average` <br> Değer örneği: `1024` |
 
 ### <a name="transaction-metrics"></a>İşlem ölçümleri
 
@@ -79,5 +79,5 @@ Aşağıdaki tabloda Azure Izleyici günlüklerinde veya Azure Storage 'da topla
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- Bkz. Azure Storage izleme hakkında bir açıklama için bkz. Azure [kuyruk depolamayı izleme](monitor-queue-storage.md) .
+- Bkz. Azure kuyruk depolamayı izleme açıklaması için bkz. [Azure kuyruk depolamayı izleme](monitor-queue-storage.md) .
 - Azure kaynaklarını izleme hakkında ayrıntılı bilgi için bkz. Azure [izleyici ile Azure kaynaklarını izleme](../../azure-monitor/insights/monitor-azure-resource.md) .

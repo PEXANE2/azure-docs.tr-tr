@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.author: jeedes
-ms.openlocfilehash: 246eba24f42baacf264c1c6d39ea63a51c62c51f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7e71058e1899cf83e712025b534e51a1be1f6bdb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457444"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>Öğretici: Amazon Web Services (AWS) ile Azure Active Directory tümleştirme (eski öğretici)
 
@@ -75,7 +75,7 @@ Amazon Web Services (AWS) tümleştirmesini Azure AD ile yapılandırmak için, 
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Amazon Web Services (AWS)** yazın.
 1. Sonuçlar panelinden **Amazon Web Services (AWS)** öğesini seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. Uygulama eklendikten sonra **Özellikler** sayfasına gidin ve **nesne kimliğini**kopyalayın.
+1. Uygulama eklendikten sonra **Özellikler** sayfasına gidin ve **nesne kimliğini** kopyalayın.
 
     ![Nesne Kimliği](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
@@ -122,20 +122,20 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes`|
-    | SessionDuration             | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
+    | Rol | Kullanıcı. atandroles | `https://aws.amazon.com/SAML/Attributes`|
+    | SessionDuration | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    1. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![Ekran görüntüsü, yeni talep Ekle ve Kaydet olarak adlandırılan Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
+        ![Ekran görüntüsü, yeni talep Ekle ve Kaydet olarak adlandırılan Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![Ekran görüntüsünde, bu adımda açıklanan değerleri girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
+        ![Ekran görüntüsünde, bu adımda açıklanan değerleri girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
 
     b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
     c. **Ad alanı** metin kutusuna, bu satır Için gösterilen ad alanı değerini yazın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -167,7 +167,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
     ![Tek Sign-On iletişim kutusunu Yapılandır][14]
 
-    a. **Sağlayıcı türü**olarak **SAML**' yi seçin.
+    a. **Sağlayıcı türü** olarak **SAML**' yi seçin.
 
     b. **Sağlayıcı adı** metin kutusuna bir sağlayıcı adı yazın (örneğin: *Waad*).
 
@@ -195,7 +195,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     b. **SAML 2,0 sağlayıcısı Seç bölümünde**, daha önce oluşturduğunuz **SAML sağlayıcısını** seçin (örneğin: *Waad*)
 
     c. **Programlı ve AWS Yönetim Konsolu erişimine Izin ver '** i seçin.
-  
+
     d. **İleri**' ye tıklayın.
 
 1. Arama çubuğunda **yönetici erişimi** arayın ve **Yönetimtoraccess** onay kutusunu seçin ve ardından **İleri: Etiketler**' e tıklayın.
@@ -253,39 +253,35 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
 
 1. [Microsoft Graph Gezginini](https://developer.microsoft.com/graph/graph-explorer) başka bir pencerede açın.
 
-    a. Kiracınız için genel yönetici/ortak yönetici kimlik bilgilerini kullanarak Microsoft Graph gezgin sitesinde oturum açın.
+    1. Kiracınız için genel yönetici/ortak yönetici kimlik bilgilerini kullanarak Microsoft Graph gezgin sitesinde oturum açın.
 
-    b. Rolleri oluşturmak için yeterli izinlere sahip olmanız gerekir. Gerekli izinleri almak için **izinleri değiştir** ' e tıklayın.
+    1. Rolleri oluşturmak için yeterli izinlere sahip olmanız gerekir. Gerekli izinleri almak için **izinleri değiştir** ' e tıklayın.
 
-    ![Microsoft Graph Explorer iletişim Box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
+        ![Microsoft Graph Explorer iletişim Box1](./media/aws-multi-accounts-tutorial/graph-explorer-new9.png)
 
-    c. Listeden aşağıdaki izinleri seçin (henüz yoksa) ve "Izinleri Değiştir" e tıklayın 
+    1. Listeden aşağıdaki izinleri seçin (henüz yoksa) ve "Izinleri Değiştir" e tıklayın 
 
-    ![Microsoft Graph Explorer iletişim box2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
+        ![Microsoft Graph Explorer iletişim box2](./media/aws-multi-accounts-tutorial/graph-explorer-new10.png)
 
-    d. Bu, yeniden oturum açıp onayı kabul etmenizi ister. Onayı kabul ettikten sonra, Microsoft Graph Explorer 'da yeniden oturum açarsınız.
+    1. Bu, yeniden oturum açıp onayı kabul etmenizi ister. Onayı kabul ettikten sonra, Microsoft Graph Explorer 'da yeniden oturum açarsınız.
 
-    e. Sürüm açılan menüsünü **Beta**olarak değiştirin. Kiracınızdaki tüm hizmet sorumlularını getirmek için aşağıdaki sorguyu kullanın:
+    1. Sürüm açılan menüsünü **Beta** olarak değiştirin. Kiracınızdaki tüm hizmet sorumlularını getirmek için aşağıdaki sorguyu kullanın: `https://graph.microsoft.com/beta/servicePrincipals` . Birden çok dizin kullanıyorsanız, üzerinde birincil etki alanınız olan aşağıdaki kalıbı kullanabilirsiniz: `https://graph.microsoft.com/beta/contoso.com/servicePrincipals` .
 
-    `https://graph.microsoft.com/beta/servicePrincipals`
+        ![Microsoft Graph Explorer iletişim box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    Birden çok dizin kullanıyorsanız, üzerinde birincil etki alanınız bulunan aşağıdaki kalıbı kullanabilirsiniz  `https://graph.microsoft.com/beta/contoso.com/servicePrincipals`
+    1. Getirilen hizmet sorumluları listesinden, değiştirmeniz gereken bir tane alın. Ayrıca, uygulamayı listelenen tüm hizmet sorumlularından aramak için CTRL + F ' i de kullanabilirsiniz. İlgili hizmet sorumlusuna ulaşmak için Azure AD Özellikleri sayfasından kopyaladığınız **hizmet sorumlusu nesne kimliğini** kullanarak aşağıdaki sorguyu kullanabilirsiniz.
 
-    ![Microsoft Graph Explorer iletişim box3](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
-  
-    f. Getirilen hizmet sorumluları listesinden, değiştirmeniz gereken bir tane alın. Ayrıca, uygulamayı listelenen tüm hizmet sorumlularından aramak için CTRL + F ' i de kullanabilirsiniz. İlgili hizmet sorumlusuna ulaşmak için Azure AD Özellikleri sayfasından kopyaladığınız **hizmet sorumlusu nesne kimliğini** kullanarak aşağıdaki sorguyu kullanabilirsiniz.
+        `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
 
-    `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`.
+        ![Microsoft Graph Explorer iletişim box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
 
-    ![Microsoft Graph Explorer iletişim box4](./media/aws-multi-accounts-tutorial/graph-explorer-new2.png)
+    1. Hizmet sorumlusu nesnesinden appRoles özelliğini ayıklayın.
 
-    örneğin: Hizmet sorumlusu nesnesinden appRoles özelliğini ayıklayın.
+        ![Microsoft Graph Explorer iletişim box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
 
-    ![Microsoft Graph Explorer iletişim box5](./media/aws-multi-accounts-tutorial/graph-explorer-new3.png)
+    1. Artık uygulamanız için yeni roller oluşturmanız gerekir. 
 
-    h. Artık uygulamanız için yeni roller oluşturmanız gerekir. 
-
-    i. Aşağıdaki JSON, appRoles nesnesine bir örnektir. Uygulamanız için istediğiniz rolleri eklemek için benzer bir nesne oluşturun.
+    1. Aşağıdaki JSON, appRoles nesnesine bir örnektir. Uygulamanız için istediğiniz rolleri eklemek için benzer bir nesne oluşturun.
 
     ```
     {
@@ -329,9 +325,9 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleşti
     > [!Note]
     > Düzeltme Eki işlemi için **msiam_access** sonrasında yalnızca yeni roller ekleyebilirsiniz. Ayrıca, kuruluşunuzun ihtiyaç duyduğu kadar istediğiniz sayıda rol ekleyebilirsiniz. Azure AD, bu rollerin **DEĞERINI** SAML yanıtında talep değeri olarak gönderir.
 
-    j. Microsoft Graph Gezginine dönün ve yöntemi **Al** 'dan **Patch**öğesine değiştirin. Örnek bölümünde gösterilenle benzer appRoles özelliğini güncelleştirerek istenen rollere sahip olmak için hizmet sorumlusu nesnesine yama yapın. Düzeltme Eki işlemini yürütmek için **Sorguyu Çalıştır** ' a tıklayın. Başarılı iletisi, Amazon Web Services uygulamanız için rolün oluşturulmasını onaylar.
+    1. Microsoft Graph Gezginine dönün ve yöntemi **Al** 'dan **Patch** öğesine değiştirin. Örnek bölümünde gösterilenle benzer appRoles özelliğini güncelleştirerek istenen rollere sahip olmak için hizmet sorumlusu nesnesine yama yapın. Düzeltme Eki işlemini yürütmek için **Sorguyu Çalıştır** ' a tıklayın. Başarılı iletisi, Amazon Web Services uygulamanız için rolün oluşturulmasını onaylar.
 
-    ![Microsoft Graph Explorer iletişim box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
+        ![Microsoft Graph Explorer iletişim box6](./media/aws-multi-accounts-tutorial/graph-explorer-new11.png)
 
 1. Hizmet sorumlusu daha fazla rolle düzeltme eki uygulandıktan sonra, ilgili rollere kullanıcılar/gruplar atayabilirsiniz. Bu, portala gidip Amazon Web Services uygulamasına gidilerek yapılabilir. Üstteki **Kullanıcılar ve gruplar** sekmesine tıklayın.
 

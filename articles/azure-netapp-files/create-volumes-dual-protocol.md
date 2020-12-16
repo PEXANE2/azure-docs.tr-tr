@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ee5e1230acd059d69648144b84a8fbfa652ef6e7
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854062"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591831"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -49,8 +49,8 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
     
     | Güvenlik stili    | İzinleri değiştirebilecek istemciler   | İstemcilerin kullanabileceği izinler  | Ortaya çıkan etkin güvenlik stili    | Dosyalara erişebilen istemciler     |
     |-  |-  |-  |-  |-  |
-    | UNIX  | NFS   | NFSv3 modu bitleri   | UNIX  | NFS ve Windows   |
-    | NTFS  | Windows   | NTFS ACL 'Leri     | NTFS  |NFS ve Windows|
+    | `Unix`    | NFS   | NFSv3 modu bitleri   | UNIX  | NFS ve Windows   |
+    | `Ntfs`    | Windows   | NTFS ACL 'Leri     | NTFS  |NFS ve Windows|
 * NFS kullanarak NTFS güvenlik stili birimini bağlama UNIX kullanıcıları, `root` UNIX Için Windows kullanıcısı `root` ve `pcuser` diğer tüm kullanıcılar için doğrulanır. Bu Kullanıcı hesaplarının, NFS kullanırken birimi bağlamadan önce Active Directory bulunduğundan emin olun. 
 
 

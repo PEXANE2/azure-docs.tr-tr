@@ -3,17 +3,17 @@ title: 'Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluştur
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak su kalite izleme uygulaması oluşturmayı öğrenin.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 07f0e66888eaa909dfce14924e9186bcb9b876b4
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6e8f9b8b33d391c4e13c6076a8589d336455d8c0
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014501"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590231"
 ---
 # <a name="tutorial-create-a-water-quality-monitoring-application-in-azure-iot-central"></a>Öğretici: Azure IoT Central su kalitesinde izleme uygulaması oluşturma
 
@@ -32,7 +32,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * İşleri yapılandırma.
 > * Beyaz etiketleme kullanarak uygulama markalamasını özelleştirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlayabilmeniz için bir Azure aboneliğinizin olması önerilir. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
@@ -231,7 +231,7 @@ Azure IoT Central işleri sayesinde, güncelleştirmeleri cihaz veya bulut özel
 
 Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek için çeşitli ayarları değiştirebilirsiniz.
 
-1. Uygulamanızı **Özelleştir ' i seçin**  >  **Customize your application**.
+1. Uygulamanızı **Özelleştir ' i seçin**  >  .
 1. **Uygulama logosu** altında, logo olarak karşıya yüklenecek görüntüyü seçmek için **Değiştir** ' i seçin.
 1. Tarayıcı **simgesinde**, tarayıcı sekmelerinde görüntülenen görüntüyü seçmek için **Değiştir** ' i seçin.
 1. **Tarayıcı renkleri** altında, varsayılan değerleri HTML onaltılık renk kodlarıyla değiştirebilirsiniz.

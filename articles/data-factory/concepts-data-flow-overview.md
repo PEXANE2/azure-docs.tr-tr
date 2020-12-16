@@ -7,17 +7,17 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 09/02/2020
-ms.openlocfilehash: 32f1602c91d17ef2ad3283d4bc03d00d432641aa
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/10/2020
+ms.openlocfilehash: f78cbaedea90a241efddd0eff9cb7503201528c5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027610"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590415"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory veri akışlarını eşleme
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 ## <a name="what-are-mapping-data-flows"></a>Veri akışlarını eşleme nedir?
 
@@ -27,9 +27,9 @@ Veri akışlarını eşleme, hiçbir kodlamaya gerek olmadan tamamen görsel bir
 
 ## <a name="getting-started"></a>Başlarken
 
-Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları** ' nın yanındaki artı işaretini ve ardından **veri akışı** ' nı seçin. 
+Veri akışları, işlem hatları ve veri kümeleri gibi fabrika kaynakları bölmesinden oluşturulur. Bir veri akışı oluşturmak için, **fabrika kaynakları**' nın yanındaki artı işaretini ve ardından **veri akışı**' nı seçin. 
 
-![Yeni veri akışı](media/data-flow/new-data-flow.png "Yeni veri akışı")
+![Yeni veri akışı](media/data-flow/new-data-flow.png)
 
 Bu eylem sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı tuvaline götürür. Kaynak dönüştürmeyi yapılandırmaya başlamak için **Kaynak Ekle** ' yi seçin. Daha fazla bilgi için bkz. [kaynak dönüştürme](data-flow-source.md).
 
@@ -37,17 +37,17 @@ Bu eylem sizi, dönüşüm mantığınızı oluşturabileceğiniz veri akışı 
 
 Eşleme veri akışı, dönüştürme mantığını kolayca oluşturmak için tasarlanan benzersiz bir yazma tuvaline sahiptir. Veri akışı tuvali üç parçaya ayrılmıştır: üst çubuk, grafik ve yapılandırma paneli. 
 
-![Ekran görüntüsünde, etiketli üst çubuk, grafik ve yapılandırma paneli ile veri akışı tuvali gösterilmektedir.](media/data-flow/canvas1.png "Tuval")
+![Ekran görüntüsünde, etiketli üst çubuk, grafik ve yapılandırma paneli ile veri akışı tuvali gösterilmektedir.](media/data-flow/canvas-1.png "Tuval")
 
 ### <a name="graph"></a>Graf
 
-Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle** ' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin. [Veri akışı grafiğinin nasıl yönetileceği](concepts-data-flow-manage-graph.md)hakkında daha fazla bilgi edinin.
+Grafik, dönüşüm akışını görüntüler. Bir veya daha fazla havuza akan kaynak verilerinin kökenini gösterir. Yeni bir kaynak eklemek için **Kaynak Ekle**' yi seçin. Yeni bir dönüşüm eklemek için, varolan bir dönüşümün sağ alt köşesindeki artı işaretini seçin. [Veri akışı grafiğinin nasıl yönetileceği](concepts-data-flow-manage-graph.md)hakkında daha fazla bilgi edinin.
 
-![Ekran görüntüsü, bir arama metin kutusuyla tuvalin grafik bölümünü gösterir.](media/data-flow/canvas2.png "Tuval")
+![Ekran görüntüsü, bir arama metin kutusuyla tuvalin grafik bölümünü gösterir.](media/data-flow/canvas-2.png)
 
 ### <a name="configuration-panel"></a>Yapılandırma bölmesi
 
-Yapılandırma panelinde seçili olan dönüştürmeye özgü ayarlar gösterilir. Hiçbir dönüşüm seçilmezse, veri akışını gösterir. Genel veri akışı yapılandırmasında, **genel** sekmesinin altındaki adı ve açıklamayı düzenleyebilir veya **Parametreler** sekmesi aracılığıyla parametreler ekleyebilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametrelerini eşleme](parameters-data-flow.md).
+Yapılandırma panelinde seçili olan dönüştürmeye özgü ayarlar gösterilir. Hiçbir dönüşüm seçilmezse, veri akışını gösterir. Genel veri akışı yapılandırmasında **Parametreler** sekmesini kullanarak parametreler ekleyebilirsiniz. Daha fazla bilgi için bkz. [veri akışı parametrelerini eşleme](parameters-data-flow.md).
 
 Her dönüşümde en az dört Yapılandırma sekmesi bulunur.
 
@@ -99,63 +99,63 @@ Azure Data Factory ekibi, iş mantığınızı oluşturduktan sonra veri akışl
 
 ## <a name="available-regions"></a>Kullanılabilir bölgeler
 
-Eşleme veri akışları aşağıdaki bölgelerde kullanılabilir:
+Veri akışlarını eşleme, ADF içinde aşağıdaki bölgelerde kullanılabilir:
 
-| Azure bölgesi | ADF 'de veri akışları | SYNAPSE Studio 'daki veri akışları |
-| ------------ | ----------------- | ---------------------------- |
-|  Orta Avustralya | | |  
-| Orta Avustralya 2 | | |
-| Doğu Avustralya | ✓ |  ✓ |
-| Avustralya Güneydoğu   | ✓ | ✓ |
-| Brezilya Güney  | ✓ |  |
-| Orta Kanada | ✓ |  |
-| Orta Hindistan | ✓ |   ✓ |
-| Central US    | ✓ |   ✓ |
-| Doğu Çin |      | ✓ |
-| Çin Doğu 2  |   |    |
-| Çin bölgesel olmayan | | |
-| Kuzey Çin |     | |
-| Çin Kuzey 2 | |  |
-| Doğu Asya | ✓ | |
-| Doğu ABD   | ✓ | ✓ |
-| Doğu ABD 2 | ✓ | ✓ |
-| Orta Fransa | ✓ | ✓ |
-| Güney Fransa  | | |
-| Almanya Orta (Sovereign) | | |
-| Almanya Bölgesel Olmayan (Sovereign) | | |
-| Almanya Kuzey (genel) | | |
-| Almanya Kuzeydoğu (Sovereign) | | |
-| Almanya Orta Batı (genel) |  | ✓ |
-| Doğu Japonya | ✓ |  |
-| Batı Japonya |  | |
-| Güney Kore - Orta | ✓ |  |
-| Güney Kore - Güney | | |
-| Orta Kuzey ABD  | ✓ | ✓ |
-| Kuzey Avrupa  | ✓ |    |
-| Norveç Doğu | | |
-| Norveç Batı | | |
-| Güney Afrika - Kuzey    | ✓ | |
-| Güney Afrika - Batı |  |    |
-| Orta Güney ABD  | | ✓ |
-| Güney Hindistan | | |
-| Güneydoğu Asya    | ✓ | ✓ |
-| İsviçre Kuzey |   |  |
-| İsviçre Batı | | |
-| BAE Orta | | |
-| BAE Kuzey |  |    |
-| Güney Birleşik Krallık  | ✓ |   | ✓ |
-| Batı Birleşik Krallık |     | ✓ |
-| Orta US DoD | |  |
-| Doğu US DoD | |  |
-| US Gov Arizona |      |  |
-| US Gov Bölgesel Olmayan | |  |
-| US Gov Texas | |  |
-| US Gov Virginia |     |  |
-| Orta Batı ABD |     | ✓ |
-| West Europe   | ✓ |   ✓ |
-| Batı Hindistan | | |
-| Batı ABD   | ✓ |   |
-| Batı ABD 2 | ✓ |   ✓ | 
+| Azure bölgesi | ADF 'de veri akışları |
+| ------------ | ----------------- |
+|  Orta Avustralya | |
+| Orta Avustralya 2 | |
+| Doğu Avustralya | ✓ |
+| Avustralya Güneydoğu   | ✓ |
+| Brezilya Güney  | ✓ |
+| Orta Kanada | ✓ |
+| Orta Hindistan | ✓ |
+| Central US    | ✓ |
+| Doğu Çin |      |
+| Çin Doğu 2  |   |
+| Çin bölgesel olmayan | |
+| Kuzey Çin |     |
+| Çin Kuzey 2 | |
+| Doğu Asya | ✓ |
+| Doğu ABD   | ✓ |
+| Doğu ABD 2 | ✓ |
+| Orta Fransa | ✓ |
+| Güney Fransa  | |
+| Almanya Orta (Sovereign) | |
+| Almanya Bölgesel Olmayan (Sovereign) | |
+| Almanya Kuzey (genel) | |
+| Almanya Kuzeydoğu (Sovereign) | |
+| Almanya Orta Batı (genel) |  |
+| Doğu Japonya | ✓ |
+| Batı Japonya |  |
+| Güney Kore - Orta | ✓ |
+| Güney Kore - Güney | |
+| Orta Kuzey ABD  | ✓ |
+| Kuzey Avrupa  | ✓ |
+| Norveç Doğu | |
+| Norveç Batı | |
+| Güney Afrika - Kuzey    | ✓ |
+| Güney Afrika - Batı |  |
+| Orta Güney ABD  | |
+| Güney Hindistan | |
+| Güneydoğu Asya    | ✓ |
+| İsviçre Kuzey |   |
+| İsviçre Batı | |
+| BAE Orta | |
+| BAE Kuzey |  |
+| Güney Birleşik Krallık  | ✓ |
+| Batı Birleşik Krallık |     |
+| Orta US DoD | |
+| Doğu US DoD | |
+| US Gov Arizona |      |
+| US Gov Bölgesel Olmayan | |
+| US Gov Texas | |
+| US Gov Virginia |     |
+| Orta Batı ABD |     |
+| West Europe   | ✓ |
+| Batı Hindistan | |
+| Batı ABD   | ✓ |
+| Batı ABD 2 | ✓ |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs SSS | Microsoft Docs
 description: Bu makalede Azure DevTest Labs hakkında sık sorulan soruların (SSS) bazılarına yanıtlar verilmektedir.
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 1cbea3628d6c8c1b43766140d201ce46964a60b5
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328394"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590282"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs SSS
 Azure DevTest Labs hakkındaki en yaygın soruların bazılarına yanıt alın.
@@ -98,7 +98,7 @@ Daha fazla bilgi için bkz. [Azure Kurumsal yapı iskelesi – seçkin abonelik 
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Kullanıcıların belirli bir görevi yapmasına izin vermek için Nasıl yaparım? bir rol oluşturmak mı istiyorsunuz?
-Özel roller oluşturma ve bir role izin atama hakkında kapsamlı bir makale için bkz. [belirli laboratuvar ilkelerine Kullanıcı Izinleri verme](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Laboratuvardaki tüm VM 'Leri başlatma ve durdurma iznine sahip olan **DevTest Labs Ileri düzey Kullanıcı**rolünü oluşturan bir betik örneği aşağıda verilmiştir:
+Özel roller oluşturma ve bir role izin atama hakkında kapsamlı bir makale için bkz. [belirli laboratuvar ilkelerine Kullanıcı Izinleri verme](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Laboratuvardaki tüm VM 'Leri başlatma ve durdurma iznine sahip olan **DevTest Labs Ileri düzey Kullanıcı** rolünü oluşturan bir betik örneği aşağıda verilmiştir:
 
 
 ```powershell
@@ -165,7 +165,7 @@ Coğrafi sınırları da dikkate almanız gerekebilir. Örneğin, Kuzey Doğu Bi
 Ayrıca, Azure DevOps Projeleri içindeki belirli bir proje için de laboratuvar kullanabilirsiniz. Daha sonra, her iki kaynak kümesine erişime izin veren belirtilen bir Azure Active Directory grubu aracılığıyla güvenliği uygularsınız. Laboratuvara atanan sanal ağ, kullanıcıları birleştirmek için başka bir sınır olabilir.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Laboratuvardaki kaynakların silinmesini nasıl önleyebiliriz?
-Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi**olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanıcılarının kaynakları kullanma hakları vardır ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvar dahilinde sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
+Yalnızca yetkili kullanıcıların kaynakları silmesi veya laboratuvar ilkelerini değiştirmesi için uygun izinleri laboratuvar düzeyinde ayarlamanızı öneririz. Geliştiricilerin **DevTest Labs Kullanıcı** grubu içine yerleştirilmesi gerekir. Lider geliştiricisi veya altyapı lideri, **DevTest Labs sahibi** olmalıdır. Yalnızca iki laboratuar sahibi olmasını öneririz. Bu ilke, bozulmayı önlemek için kod deposuna doğru genişletilir. Laboratuvar kullanıcılarının kaynakları kullanma hakları vardır ancak laboratuvar ilkelerini güncelleştiremez. Her bir yerleşik grubun bir laboratuvar dahilinde sahip olduğu rolleri ve hakları listeleyen aşağıdaki makaleye bakın: [Azure DevTest Labs sahip ve Kullanıcı ekleme](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Nasıl yaparım? laboratuvara doğrudan bir bağlantı paylaşsın mı?
 
@@ -318,7 +318,7 @@ Kuruluşunuzun genel idare ve yapılandırma yönetimi stratejisinin bir parças
 - Azure Repos kimlik doğrulaması ve yetkilendirme için Azure aboneliğinin kullandığı Azure Active Directory kiracısıyla ilişkilendirin.
 - `All DevTest Labs Developers`Merkezi olarak yönetilen Azure Active Directory adında bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
 - Aynı Azure Active Directory grubu, Azure Repos deposuna ve laboratuvarına erişim sağlamak için kullanılabilir.
-- Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle birlikte Ana dala eklenir. Kod gözden geçiren değişikliği onayladığında, ana dalın bakımında sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir.
+- Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle Ana dala eklenir. Kod gözden geçireni değişikliği onayladığında, ana dalın bakımına sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir.
 
 ## <a name="cicd-integration"></a>CI/CD tümleştirmesi
 

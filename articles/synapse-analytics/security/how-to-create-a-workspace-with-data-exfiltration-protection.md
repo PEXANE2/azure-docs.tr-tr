@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8f11f104e8d3d0a4f3a004ebe9f149cb4132d910
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f8ebbdf70836f3f2613183268f03dc43da1f0671
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501616"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590569"
 ---
 # <a name="create-a-workspace-with-data-exfiltration-protection-enabled"></a>Veri ayıklanmasıyla koruma etkin bir çalışma alanı oluşturma
 Bu makalede, veri alma koruması etkin olan bir çalışma alanı oluşturma ve bu çalışma alanı için onaylanan Azure AD kiracılarının nasıl yönetileceği açıklanır.
@@ -21,7 +21,7 @@ Bu makalede, veri alma koruması etkin olan bir çalışma alanı oluşturma ve 
 >[!Note]
 >Çalışma alanı oluşturulduktan sonra yönetilen sanal ağ ve veri savunma koruması için çalışma alanı yapılandırmasını değiştiremezsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 - Azure 'da çalışma alanı kaynağı oluşturma izinleri.
 - Yönetilen özel uç noktalar oluşturmak için çalışma alanı izinlerini SYNAPSE.
 - Ağ kaynak sağlayıcısı için kaydedilen abonelikler. [Daha fazla bilgi edinin.](../../azure-resource-manager/management/resource-providers-and-types.md)
@@ -33,7 +33,7 @@ Bu makalede, veri alma koruması etkin olan bir çalışma alanı oluşturma ve 
 1. "Yalnızca onaylanan hedeflere giden veri trafiğine Izin ver" seçeneğini belirleyin.
 1. Bu çalışma alanı için onaylanan Azure AD kiracılarını seçin.
 1. Yapılandırmayı gözden geçirin ve çalışma alanını oluşturun.
-:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="Veri taşmasıyla koruma koruması ile çalışma alanı oluşturma":::
+:::image type="content" source="./media/how-to-create-a-workspace-with-data-exfiltration-protection/workspace-creation-data-exfiltration-protection.png" alt-text="' Sanal ağ yönetimini etkinleştir ' seçiliyken bir create SYNAPSE çalışma alanı gösteren ekran görüntüsü.":::
 
 ## <a name="manage-approved-azure-active-directory-tenants-for-the-workspace"></a>Çalışma alanı için onaylanan Azure Active Directory kiracılarını yönetme
 1. Çalışma alanının Azure portal, "onaylanan Azure AD kiracılar" bölümüne gidin. Çalışma alanı için onaylanan Azure AD kiracılarının listesi burada listelenir. Çalışma alanının kiracısı varsayılan olarak dahil edilmiştir ve listelenmez.

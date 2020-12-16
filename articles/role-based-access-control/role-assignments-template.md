@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1e05ecd162ccb333c6ab29b0185f6ffcb04a6213
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184289"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591370"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure Resource Manager şablonları kullanarak Azure rol atamaları ekleme
 
@@ -109,14 +109,14 @@ Aşağıdaki şablonda rol ataması eklemenin temel bir yolu gösterilmektedir. 
 }
 ```
 
-Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) komutları, örneğin examplegroup adlı bir kaynak grubunda dağıtımı başlatma komutlarını aşağıda bulabilirsiniz.
+Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az dağıtım grubu oluşturma](/cli/azure/deployment/group#az_deployment_group_create) komutları aşağıda verilmiştir grup adlı bir kaynak grubunda dağıtımı başlatmak için kullanılır.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
 Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya okuyucu rolü atamasının bir örneği gösterilmektedir.
@@ -187,24 +187,24 @@ Aşağıda, şablonu dağıttıktan sonra bir kaynak grubu için kullanıcıya o
 > [!NOTE]
 > Bu şablon, `roleNameGuid` şablon dağıtımı için bir parametre olarak aynı değer sağlanmamışsa ıdempotent değildir. Hayır `roleNameGuid` sağlanmazsa, varsayılan olarak her dağıtımda yeni BIR GUID oluşturulur ve sonraki dağıtımlar hata vererek başarısız olur `Conflict: RoleAssignmentExists` .
 
-Rol atamasının kapsamı, dağıtımın düzeyinden belirlenir. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak grubu kapsamında dağıtımın nasıl başlatılacağı hakkında daha [az grup dağıtımı oluşturma](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
+Rol atamasının kapsamı, dağıtımın düzeyinden belirlenir. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az dağıtım grubu oluşturma](/cli/azure/deployment/group#az_deployment_group_create) komutları bir kaynak grubu kapsamında nasıl başlayaöğreneceksiniz?.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Aşağıda örnek [New-azdeployment](/powershell/module/az.resources/new-azdeployment) ve dağıtım [oluşturma](/cli/azure/deployment#az-deployment-create) komutları bir abonelik kapsamında başlatılır ve konumu belirtebilirsiniz.
+Aşağıda örnek [New-azdeployment](/powershell/module/az.resources/new-azdeployment) ve bir abonelik kapsamında dağıtımın başlatılması ve konumun belirtilmesi için [az dağıtım alt oluşturma](/cli/azure/deployment/sub#az_deployment_sub_create) komutları verilmiştir.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
+az deployment sub create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 ### <a name="resource-scope"></a>Kaynak kapsamı
@@ -290,14 +290,14 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 }
 ```
 
-Önceki şablonu dağıtmak için kaynak grubu komutlarını kullanırsınız. Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak kapsamında dağıtımın başlatılması için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
+Önceki şablonu dağıtmak için kaynak grubu komutlarını kullanırsınız. Aşağıda örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve dağıtım [grubu oluşturma](/cli/azure/deployment/group#az_deployment_group_create) komutları bir kaynak kapsamında başlatılır.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
+az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Aşağıda, şablonu dağıttıktan sonra bir depolama hesabı için kullanıcıya katkıda bulunan rol atamasının bir örneği gösterilmektedir.
@@ -360,14 +360,14 @@ Aşağıdaki şablonda şunları gösterilmektedir:
 }
 ```
 
-Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve bir kaynak grubu kapsamında dağıtımın nasıl başlatılacağı hakkında daha [az grup dağıtımı oluşturma](/cli/azure/group/deployment#az-group-deployment-create) komutları aşağıda verilmiştir.
+Örnek [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az dağıtım grubu oluşturma](/cli/azure/deployment/group#az_deployment_group_create) komutları bir kaynak grubu kapsamında nasıl başlayaöğreneceksiniz?.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup2 --template-file rbac-test.json
+az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
 Aşağıda, şablonu dağıttıktan sonra yeni bir yönetilen kimlik hizmeti sorumlusuna katkıda bulunan rolü atamasının bir örneği gösterilmektedir.
@@ -385,7 +385,7 @@ Azure RBAC 'de, bir Azure kaynağına erişimi kaldırmak için rol atamasını 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hızlı başlangıç: Azure portalı kullanarak Azure Resource Manager şablonu oluşturma ve dağıtma](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
-- [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](../azure-resource-manager/templates/template-syntax.md)
+- [Hızlı başlangıç: Azure portal kullanarak ARM şablonları oluşturma ve dağıtma](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [ARM şablonlarının yapısını ve söz dizimini anlama](../azure-resource-manager/templates/template-syntax.md)
 - [Abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure Hızlı Başlangıç Şablonları](https://azure.microsoft.com/resources/templates/?term=rbac)

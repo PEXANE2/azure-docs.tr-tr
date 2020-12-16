@@ -1,5 +1,5 @@
 ---
-title: Geçici silme, tüm Azure Anahtar Kasası 'nda etkinleştirilecek | Microsoft Docs
+title: Tüm Azure Anahtar Kasası 'nda geçici silme özelliğini etkinleştirme | Microsoft Docs
 description: Tüm Anahtar kasaları için geçici silme benimsemek üzere bu belgeyi kullanın.
 services: key-vault
 author: ShaneBala-keyvault
@@ -7,19 +7,19 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 12/15/2020
 ms.author: sudbalas
-ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e512cccdbfdc56500fa7c69372ca38f59d3195c2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825251"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590095"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>Geçici silme, tüm anahtar kasaları üzerinde etkinleştirilecek
 
 > [!WARNING]
-> **Son değişiklik**: geçici silme işlemini devre dışı bırakma özelliği, yılın sonuna kadar kullanım dışı olacaktır ve tüm anahtar kasaları için otomatik olarak geçici silme koruması açılır.  Azure Key Vault kullanıcılar ve Yöneticiler, anahtar kasalarında doğrudan geçici silme olanağı sağlamalıdır.
+> **Son değişiklik**: geçici silme işlemini devre dışı bırakma özelliği yakında kullanım dışı bırakılacak. Azure Key Vault kullanıcılar ve Yöneticiler, anahtar kasalarında doğrudan geçici silme olanağı sağlamalıdır.
 >
 > Yönetilen HSM için geçici silme varsayılan olarak etkindir ve devre dışı bırakılamaz.
 
@@ -29,9 +29,18 @@ Gizli dizi koruması olmayan bir anahtar kasasından gizli dizi silindiğinde, g
 
 Geçici silme işleviyle ilgili tüm ayrıntılar için bkz. [Azure Key Vault geçici görünüm](soft-delete-overview.md).
 
-## <a name="how-do-i-respond-to-breaking-changes"></a>Nasıl yaparım? son değişikliklere yanıt verme
+## <a name="can-my-application-work-with-soft-delete-enabled"></a>Uygulamamın geçici silme etkin bir şekilde çalışmasına mi?
 
-Bir Anahtar Kasası nesnesi, geçici olarak silinen durumda bir Anahtar Kasası nesnesi ile aynı ada sahip oluşturulamaz.  Örneğin, `test key` Anahtar Kasası a 'da adlı bir anahtarı silerseniz, `test key` geçici olarak silinen nesne temizlenene kadar, Anahtar Kasası içinde adlı yeni bir anahtar oluşturabileceksiniz `test key` .
+> [!Important] 
+> **Anahtar kasaları için geçici silme özelliğini açmadan önce lütfen aşağıdaki bilgileri dikkatle gözden geçirin**
+
+Key Vault adları genel olarak benzersizdir. Bir anahtar kasasında depolanan gizli dizi adları da benzersizdir. Geçici olarak silinen durumunda bulunan bir Anahtar Kasası veya Anahtar Kasası nesnesinin adını yeniden kullanamazsınız. 
+
+**Örnek #1** Uygulamanız program aracılığıyla ' kasa A ' adlı bir Anahtar Kasası oluşturup daha sonra ' kasa A ' öğesini silerse. Anahtar Kasası geçici olarak silinmiş duruma taşınacaktır. Uygulamanız, geçici olarak silinen durumdan, Anahtar Kasası temizlenene kadar ' kasa A ' adlı başka bir Anahtar Kasası yeniden oluşturamayacak. 
+
+**Örnek #2** Uygulamanız `test key` , Anahtar Kasası a 'da adlı bir anahtar oluşturup daha sonra anahtarı a kasasından silerse, uygulama `test key` geçici olarak silinen durumdan kaldırılana kadar, Anahtar Kasası içinde adlı yeni bir anahtar oluşturamayacak `test key` . 
+
+Bu, bir Anahtar Kasası nesnesini silmeye ve bunu önce geçici olarak silinen durumdan kaldırmadan aynı adla yeniden oluşturmaya çalıştığınızda çakışma hatalarına neden olabilir. Bu durum uygulamalarınızın veya otomasyonunun başarısız olmasına neden olabilir. Gerekli uygulama ve yönetim değişikliklerini aşağıda yapmadan önce geliştirme ekibinize başvurun. 
 
 ### <a name="application-changes"></a>Uygulama değişiklikleri
 
@@ -59,13 +68,14 @@ Kuruluşunuz yasal uyumluluk gereksinimlerine tabidir ve Silinen anahtar kasalar
 2. "Azure Ilkesi" araması yapın.
 3. "Tanımlar" ı seçin.
 4. Kategori altında, filtrede "Key Vault" öğesini seçin.
-5. "Key Vault nesneleri kurtarılabilir olmalıdır" ilkesini seçin.
+5. "Key Vault geçici silme etkin olmalıdır" ilkesini seçin.
 6. "Ata" ya tıklayın.
 7. Kapsamını aboneliğiniz olarak ayarlayın.
-8. "Gözden geçir + oluştur" u seçin.
-9. Ortamında, ortamınızda tam taramanın tamamlanması 24 saate kadar sürebilir.
-10. Azure Ilkesi dikey penceresinde "Uyumluluk" e tıklayın.
-11. Uyguladığınız ilkeyi seçin.
+8. İlke efektinin "Denetim" olarak ayarlandığından emin olun.
+9. "Gözden geçir + oluştur" u seçin.
+10. Ortamında, ortamınızda tam taramanın tamamlanması 24 saate kadar sürebilir.
+11. Azure Ilkesi dikey penceresinde "Uyumluluk" e tıklayın.
+12. Uyguladığınız ilkeyi seçin.
 
 Artık anahtar kasalarınızdan hangilerinin geçici silme etkin (uyumlu kaynaklar) ve hangi anahtar kasalarının yazılım için (uyumlu olmayan kaynaklar) etkin olmadığını filtreleyebilmeli.
 
@@ -106,15 +116,11 @@ Lütfen "Soft-Delete açık olup olmadığını denetlemek için anahtar kasalar
 
 ### <a name="what-action-do-i-need-to-take"></a>Ne yapmam gerekir?
 
-Uygulama mantığınızdaki değişiklikleri yapmak zorunda olmadığından emin olun. Bunu onayladıktan sonra tüm anahtar kasalarınızda geçici silme özelliğini açın. Bu, yılın sonundaki tüm anahtar kasaları için geçici silme açık olduğunda bir son değişiklikten etkilenmemesini sağlayacaktır.
+Uygulama mantığınızdaki değişiklikleri yapmak zorunda olmadığından emin olun. Bunu onayladıktan sonra tüm anahtar kasalarınızda geçici silme özelliğini açın.
 
 ### <a name="by-when-do-i-need-to-take-action"></a>Ne zaman işlem yapmam gerekir?
 
-Geçici silme, yıl sonuna kadar tüm anahtar kasaları için açık olacaktır. Uygulamalarınızın etkilenmediğinden emin olmak için, anahtar kasalarınızda mümkün olan en kısa sürede geçici silme özelliğini açın.
-
-## <a name="what-will-happen-if-i-dont-take-any-action"></a>Hiçbir eylemde yoksa ne olur?
-
-Herhangi bir işlem yapmazsanız, yıl sonunda tüm anahtar kasaları için geçici silme otomatik olarak açılır. Bu, bir Anahtar Kasası nesnesini silmeye ve bunu önce geçici olarak silinen durumdan kaldırmadan aynı adla yeniden oluşturmaya çalıştığınızda çakışma hatalarına neden olabilir. Bu durum uygulamalarınızın veya otomasyonunun başarısız olmasına neden olabilir.
+Uygulamalarınızın etkilenmediğinden emin olmak için, anahtar kasalarınızda mümkün olan en kısa sürede geçici silme özelliğini açın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -4,12 +4,12 @@ description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma,
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0068b9869e5ef7a3b6c0fd21c1b69cdae1d4ab4b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454824"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97591642"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
@@ -31,7 +31,7 @@ Bu makalede, iş akışını kurmanın iki yolu gösterilmektedir:
 > [!IMPORTANT]
 > Azure Container Instances için GitHub eylemi şu anda önizlemededir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * **GitHub hesabı** -henüz yoksa bir hesap oluşturun https://github.com .
 * **Azure CLI** -Azure CLI adımlarını tamamlayabilmeniz için Azure Cloud Shell veya yerel BIR Azure CLI yüklemesi kullanabilirsiniz. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
@@ -112,7 +112,7 @@ az role assignment create \
 
 ### <a name="save-credentials-to-github-repo"></a>Kimlik bilgilerini GitHub deposuna Kaydet
 
-1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar** gizli dizileri ' ni seçin  >  **Secrets**. 
+1. GitHub Kullanıcı arabiriminde, gizli deponuza gidin ve **Ayarlar** gizli dizileri ' ni seçin  >  . 
 
 1. Aşağıdaki gizli dizileri eklemek için **Yeni bir parola Ekle** ' yi seçin:
 
@@ -141,7 +141,7 @@ jobs:
         steps:
         # checkout the repo
         - name: 'Checkout GitHub Action'
-          uses: actions/checkout@master
+          uses: actions/checkout@main
           
         - name: 'Login via Azure CLI'
           uses: azure/login@v1
