@@ -7,20 +7,20 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553443"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516693"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Azure purview 'da kaynak kimlik doğrulaması için kimlik bilgileri
 
 Bu makalede, kayıtlı kimlik doğrulama bilgilerini hızlı bir şekilde yeniden kullanmak ve veri kaynağı taramalarınızda uygulamanız için Azure takip görünümü 'nde nasıl kimlik bilgileri oluşturabileceğiniz açıklanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-* Azure Anahtar Kasası. Henüz bir tane oluşturmak için (KV oluşturma makalesinin bağlantısını ekleyin).
+* Azure Anahtar Kasası. Bir oluşturma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak bir Anahtar Kasası oluşturma](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Giriş
 Kimlik bilgileri, Azure purview 'ın kayıtlı veri kaynaklarınızda kimlik doğrulamak için kullanabileceği kimlik doğrulama bilgileridir. Çeşitli kimlik doğrulama senaryoları (Kullanıcı adı/parola gerektiren temel kimlik doğrulaması gibi) için bir kimlik bilgisi nesnesi oluşturulabilir ve seçilen kimlik doğrulama yöntemi türüne göre gereken belirli bilgileri yakalar. Kimlik bilgileri, kimlik bilgileri oluşturma işlemi sırasında hassas kimlik doğrulama bilgilerini almak için mevcut Azure Anahtar Kasası sırlarınızı kullanır.
@@ -32,7 +32,7 @@ Taramaları ayarlamak için purview yönetilen kimliğini kullanıyorsanız, bu 
 - [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
 - [Azure Data Lake Storage 2. Nesil](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
 - [Azure SQL Veritabanı](register-scan-azure-sql-database.md)
-- [Azure SQL veritabanı yönetilen örneği](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
+- [Azure SQL Veritabanı Yönetilen Örneği](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Azure purview hesabınızda Azure Anahtar Kasası bağlantıları oluşturma

@@ -2,13 +2,13 @@
 title: Azure Arc etkin sunucularıyla karma makineyi bağlama
 description: Azure Arc etkin sunucularıyla karma makinenizi bağlamayı ve kaydetmeyi öğrenin.
 ms.topic: quickstart
-ms.date: 11/12/2020
-ms.openlocfilehash: 3779d95ac138e83b1d953f744e07ae553890a5d7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/15/2020
+ms.openlocfilehash: 68869854cbfcf6d7297137e6239b2229a20c04a1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576844"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516794"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Hızlı başlangıç: Azure Arc etkin sunucularıyla karma makineyi bağlama
 
@@ -29,6 +29,9 @@ ms.locfileid: "94576844"
     * Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, [listelenen](../agent-overview.md#networking-configuration) URL 'lerin engellenmediğinden emin olun.
 
     * Azure Arc etkin sunucuları yalnızca [burada](../overview.md#supported-regions)belirtilen bölgeleri destekler.
+
+> [!WARNING]
+> Linux hostname veya Windows bilgisayar adı, ad içindeki ayrılmış sözcüklerden veya ticari markalara ait olamaz, aksi halde bağlı makineyi Azure 'a kaydetmeye çalışmak başarısız olur. Ayrılmış sözcüklerin listesi için bkz. [ayrılmış kaynak adı hatalarını çözümleme](../../../azure-resource-manager/templates/error-reserved-resource-name.md) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
@@ -51,17 +54,17 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale getirmeye yönelik betik, Azure portal kullanılabilir. İşlemi gerçekleştirmek için aşağıdakileri yapın:
 
-1. **Tüm hizmetler** ' e tıklayıp sunucular ' ı arayıp seçin **-Azure arc** ' ı Azure Portal Azure yay hizmetini başlatın.
+1. **Tüm hizmetler**' e tıklayıp sunucular ' ı arayıp seçin **-Azure arc**' ı Azure Portal Azure yay hizmetini başlatın.
 
     :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Tüm hizmetlerde yay etkin sunucular için arama yapın" border="false":::
 
 1. **Sunucular-Azure yay** sayfasında sol üst köşedeki **Ekle** ' yi seçin.
 
-1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur** ' u seçin.
+1. **Bir yöntem seçin** sayfasında, **etkileşimli betiği kullanarak sunucu Ekle** ' yi seçin ve ardından **betik oluştur**' u seçin.
 
 1. **Betik oluştur** sayfasında, makinenin Azure 'da yönetilmesini istediğiniz aboneliği ve kaynak grubunu seçin. Makine meta verilerinin depolanacağı Azure konumunu seçin. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
 
-1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları** ' nı seçin.
+1. **Önkoşullar** sayfasında, bilgileri gözden geçirin ve ardından **İleri: kaynak ayrıntıları**' nı seçin.
 
 1. **Kaynak ayrıntıları** sayfasında, aşağıdakileri sağlayın:
 
@@ -69,13 +72,13 @@ Azure Arc ile indirme, yükleme ve bağlantı kurma işlemlerini otomatik hale g
     1. **Bölge** açılan listesinde, sunucu meta verilerini depolamak için Azure bölgesini seçin.
     1. **İşletim sistemi** açılan listesinde, betiğin üzerinde çalışmak üzere yapılandırıldığı işletim sistemini seçin.
     1. Makine Internet 'e bağlanmak için bir proxy sunucusu üzerinden iletişim kurduklarında, proxy sunucusu IP adresini veya makinenin proxy sunucusuyla iletişim kurmak için kullanacağı adı ve bağlantı noktası numarasını belirtin. Değeri biçiminde girin `http://<proxyURL>:<proxyport>` .
-    1. **Sonraki: Etiketler** ' i seçin.
+    1. **Sonraki: Etiketler**' i seçin.
 
 1. **Etiketler** sayfasında, önerilen varsayılan **fiziksel konum etiketlerini** gözden geçirin ve bir değer girin veya standartlarınızı desteklemek için bir veya daha fazla **özel etiket** belirtin.
 
 1. **İleri ' yi seçin: betiği indir ve Çalıştır**.
 
-1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir** ' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki** ' yi seçin.
+1. **Betiği indir ve Çalıştır** sayfasında, Özet bilgilerini gözden geçirin ve ardından **İndir**' i seçin. Hala değişiklik yapmanız gerekiyorsa, **önceki**' yi seçin.
 
 ## <a name="install-the-agent-using-the-script"></a>Betiği kullanarak aracıyı yükler
 

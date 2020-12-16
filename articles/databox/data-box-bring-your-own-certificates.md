@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/08/2020
+ms.date: 12/11/2020
 ms.author: alkohli
-ms.openlocfilehash: dab34b26d8237d743e22149ed0da2dd9471d7431
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: deb52c8716f97874beae4accbf6f34f72e20ca04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096208"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516458"
 ---
 # <a name="use-your-own-certificates-with-data-box-and-data-box-heavy-devices"></a>Data Box ve Data Box Heavy cihazlarıyla kendi sertifikalarınızı kullanın
 
@@ -95,11 +95,12 @@ Cihazınıza kendi sertifikanızı eklemek için aşağıdaki adımları izleyin
 
    ![Error after a new Local web UI certificate is added to a Data Box device](media/data-box-bring-your-own-certificates/certificates-unable-to-communicate-error.png) TEST. RESTORE IF ERROR IS REPRODUCED.-->
 
-6. Yerel Web Kullanıcı arabirimine erişmek için kullanmakta olduğunuz istemci bilgisayara yeni sertifikayı yükler. Yönergeler için bkz. [sertifikaları Istemciye Içeri aktarma](#import-certificates-to-client).
-
-7. Yerel Web Kullanıcı arabirimi için sertifikayı değiştirdiyseniz, tarayıcıyı ve ardından yerel Web Kullanıcı arabirimini yeniden başlatmanız gerekir. SSL önbelleği sorunlarından kaçınmak için bu adım gereklidir.
+6. Yerel Web Kullanıcı arabirimi için sertifikayı değiştirdiyseniz, tarayıcıyı ve ardından yerel Web Kullanıcı arabirimini yeniden başlatmanız gerekir. SSL önbelleği sorunlarından kaçınmak için bu adım gereklidir.
 
   <!-- TESTING THIS - The communication error should be gone from the **Certificates** screen.-->
+
+7. Yerel Web Kullanıcı arabirimine erişmek için kullanmakta olduğunuz istemci bilgisayara yeni sertifikayı yükler. Yönergeler için bkz. [sertifikaları Istemciye Içeri aktarma](#import-certificates-to-client).
+
 
 ## <a name="import-certificates-to-client"></a>Sertifikaları istemciye aktar
 

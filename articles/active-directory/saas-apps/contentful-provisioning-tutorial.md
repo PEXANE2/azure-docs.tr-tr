@@ -1,10 +1,9 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için çekişme yapılandırma | Microsoft Docs'
-description: Azure AD 'den Contenura Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
+title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için çekişme yapılandırma'
+description: Azure Active Directory (Azure AD) ' den çekişme için Kullanıcı hesaplarını otomatik olarak sağlamayı ve sağlamayı öğrenin.
 services: active-directory
 documentationcenter: ''
-author: Zhchia
-writer: Zhchia
+author: zchia
 manager: beatrizd
 ms.assetid: 3b761984-a9a0-4519-b23e-563438978de5
 ms.service: active-directory
@@ -14,114 +13,116 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2020
-ms.author: Zhchia
-ms.openlocfilehash: 4ff08e51f6e3b2ae72da43052c25046be8bb5397
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.author: zhchia
+ms.openlocfilehash: c9d19624d90b1228b2a44caeff7d103af3172ed9
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352159"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516338"
 ---
 # <a name="tutorial-configure-contentful-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için çekişmeden yapılandırma
 
-Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem çekişme hem de Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımları açıklamaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama hizmeti ['ni kullanarak kullanıcıları](https://www.contentful.com/) ve grupları otomatik olarak sağlar ve bunların sağlamasını kaldırır. Hizmetin işlevleri ve çalışma şekli hakkında daha fazla bilgi edinmek ve sık sorulan soruları incelemek için bkz. [Azure Active Directory ile SaaS uygulamalarına kullanıcı hazırlama ve kaldırma işlemlerini otomatik hale getirme](../app-provisioning/user-provisioning.md). 
+Bu makalede, otomatik Kullanıcı sağlamayı yapılandırmak için çekişmeden ve Azure Active Directory (Azure AD) içinde gerçekleştirmeniz gereken adımlar açıklanmaktadır. Yapılandırıldığında, Azure AD, Azure AD sağlama [hizmeti 'ni kullanarak](https://www.contentful.com/) kullanıcıları ve grupları otomatik olarak sağlamasını ve sağlamasını kaldırır. Bu hizmetin ne yaptığı ve nasıl çalıştığı hakkında önemli ayrıntılar ve sık sorulan sorular için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md). 
 
+## <a name="capabilities-supported"></a>Desteklenen özellikler
 
-## <a name="capabilities-supported"></a>Desteklenen yetenekler
 > [!div class="checklist"]
 > * Contente Kullanıcı oluşturma
 > * Artık erişim gerektirmeyen kullanıcıları çekişirken kaldırın
 > * Kullanıcı özniteliklerinin Azure AD ile çekişme arasında eşitlenmiş olmasını sağlama
 > * Contente grupları ve grup üyeliklerini sağlama
-> * Çekişme için [Çoklu oturum açma](./contentful-tutorial.md) (önerilir)
+> * Çekişme için [Çoklu oturum açma](contentful-tutorial.md) (önerilir)
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Bir Azure AD kiracısı](../develop/quickstart-create-new-tenant.md) 
+* [Azure AD kiracısı](../develop/quickstart-create-new-tenant.md). 
 * Azure AD 'de sağlamayı yapılandırma [izni](../roles/permissions-reference.md) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-* SCıM sağlamasını destekleyen bir aboneliğe sahip bir çekişme organizasyon hesabı. [support@contentful.com](mailto:support@contentful.com)Kuruluşunuzun aboneliği hakkında sorularınız varsa, çekişme ile ulaşın.
+* Etki alanları arası kimlik yönetimi (SCıM) sağlama için sistemi destekleyen bir aboneliği olan çekişmeden bir kuruluş hesabı. Kuruluşunuzun aboneliği hakkında sorularınız varsa, [çekişme desteğiyle](mailto:support@contentful.com)iletişim kurun.
  
-## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
+## <a name="plan-your-provisioning-deployment"></a>Hazırlama dağıtımınızı planlama
+
 1. [Hazırlama hizmetinin nasıl çalıştığı](../app-provisioning/user-provisioning.md) hakkında bilgi edinin.
 2. [Hazırlık kapsamına](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) dahil edilecek kullanıcıları seçin.
 3. [Azure AD ve çekişme arasında](../app-provisioning/customize-application-attributes.md)hangi verilerin eşlendiğini saptayın. 
 
-## <a name="step-2-configure-contentful-to-support-provisioning-with-azure-ad"></a>Adım 2. Azure AD ile sağlamayı desteklemek için çekişmeden yapılandırma
+## <a name="configure-contentful-to-support-provisioning-with-azure-ad"></a>Azure AD ile sağlamayı desteklemek için çekişmeden yapılandırma
 
-1. Contente bir **hizmet Kullanıcı** hesabı oluşturun. Azure için tüm sağlama izinleri, bu hesap üzerinden sağlanacaktır. Bu hesabın kuruluş rolü olarak **sahip** ' i seçmeniz önerilir.
+1. Çekişme ' de bir **hizmet Kullanıcı** hesabı oluşturun. Azure için tüm sağlama izinleri bu hesap üzerinden sağlanır. Bu hesabın kuruluş rolü olarak **sahip** ' i seçmenizi öneririz.
 
-2. Önceki adımda oluşturduğunuz **hizmet kullanıcısı** olarak çekişme 'de oturum açın.
+2. **Hizmet kullanıcısı** olarak çekişme 'de oturum açın.
 
-3. **Sol kaydırıcı**  ->  **kuruluş ayarları**  ->  **erişim araçları**  ->  **Kullanıcı hazırlama**' ya gidin.
+3. Sol taraftaki menüden **kuruluş ayarları**  >  **erişim araçları**  >  **Kullanıcı hazırlama**' yı seçin.
 
-    ![Menü](media/contentful-provisioning-tutorial/access.png)
+   ![Erişim araçları altında vurgulanan Kullanıcı sağlama ile çekişmeden Kuruluş Ayarları menüsünün ekran görüntüsü.](media/contentful-provisioning-tutorial/access.png)
 
-4. **SCIM URL 'sini** kopyalayıp kaydedin. Bu değer, Azure portal çekişme uygulamanızın sağlama sekmesine girilir.
+4. **SCIM URL 'sini** kopyalayıp kaydedin. Bu değeri, Contensaklayacağımız uygulamanızın **sağlama** sekmesinde Azure Portal girersiniz.
 
-5. **Kişisel erişim belirteci oluştur**' a tıklayın.
+5. **Kişisel erişim belirteci oluştur**' u seçin.
 
     ![url](media/contentful-provisioning-tutorial/generate.png)
 
-6. Kalıcı penceresinde, kişisel erişim belirtecinize anlamlı bir ad verin ve "Oluştur" a tıklayın.
-    
-7. **SCIM URL 'si** ve **gizli belirteç** oluşturulacaktır. Bu değerleri kopyalayın ve kaydedin. Bu değerler, Azure portal çekişme uygulamanızın sağlama sekmesine girilir.
+6. Kalıcı penceresinde, kişisel erişim belirteciniz için bir ad girin ve ardından **Oluştur**' u seçin.
 
-    ![erişim](media/contentful-provisioning-tutorial/token.png)
+7. SCıM URL 'SI ve gizli belirteç oluşturulur. Bu değerleri kopyalayın ve kaydedin. Bu değerleri, Azure portal çekişme uygulamanızın **sağlama** sekmesine girersiniz.
 
-
-[support@contentful.com](mailto:support@contentful.com)Contentli yönetici konsolunda sağlamayı yapılandırırken sorularınız varsa, ' e ulaşın.
+    ![C F P A T ve belirteç yer tutucusu adı vurgulanmış şekilde kişisel erişim belirteci bölmesinin ekran görüntüsü.](media/contentful-provisioning-tutorial/token.png)
 
 
-## <a name="step-3-add-contentful-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden çekişme ekleme
+Contentli yönetim konsolunda sağlamayı yapılandırırken sorularınız varsa, [çekişme desteğiyle](mailto:support@contentful.com)iletişim kurun.
 
-Çekişmeden sağlamayı yönetmeye başlamak için Azure AD uygulama galerisinden çekişme ekleyin. Daha önce SSO için çekişme kurulumu yaptıysanız aynı uygulamayı kullanabilirsiniz. Ancak başlangıçta tümleştirmeyi test ederken ayrı bir uygulama oluşturmanız önerilir. Galeriden uygulama ekleme hakkında daha fazla bilgi için [buraya](../manage-apps/add-application-portal.md) bakın. 
+## <a name="add-contentful-from-the-azure-ad-application-gallery"></a>Azure AD uygulama galerisinden çekişme ekleme
 
-## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. Adım: Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama 
+Çekişmeden sağlamayı yönetmek için Azure AD uygulama galerisinden çekişme ekleyin. Çoklu oturum açma için daha önce çekişme ayarladıysanız aynı uygulamayı kullanabilirsiniz. Ancak, tümleştirmeyi başlangıçta test etmek için ayrı bir uygulama oluşturmanızı öneririz. [Galerideki bir uygulamayı nasıl ekleyeceğinizi](../manage-apps/add-application-portal.md)öğrenin. 
 
-Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun özniteliklerine göre hazırlanacak kişilerin kapsamını belirlemenizi sağlar. Uygulamanız için hazırlanacak kişilerin kapsamını atamaya göre belirlemeyi seçerseniz kullanıcıları ve grupları uygulamaya atamak için aşağıdaki [adımları](../manage-apps/assign-user-or-group-access-portal.md) kullanabilirsiniz. Hazırlanacak kişilerin kapsamını yalnızca kullanıcı veya grup özniteliklerine göre belirlemeyi seçerseniz [burada](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) anlatılan kapsam belirleme filtresini kullanabilirsiniz. 
+## <a name="define-who-will-be-in-scope-for-provisioning"></a>Hazırlık kapsamına dahil edilecek kullanıcıları tanımlama 
 
-* Çekişme için Kullanıcı ve grup atarken **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan Erişim rolüne sahip kullanıcılar hazırlama kapsamından hariç tutulur ve hazırlama günlüklerinde yeterli yetkiye sahip olmadıkları belirtilir. Uygulama için kullanılabilen tek rol varsayılan erişim rolüyse [uygulama bildirimini güncelleştirerek](../develop/howto-add-app-roles-in-azure-ad-apps.md) daha fazla rol ekleyebilirsiniz. 
+Azure AD sağlama hizmeti 'ni, uygulamaya atamaya veya Kullanıcı ya da grubun özniteliklerine göre sağlanacak şekilde verilecek kapsam için kullanabilirsiniz. 
 
-* Başlangıçta kapsamı sınırlı tutun. Herkesi hazırlamadan önce birkaç kullanıcı ve grupla test yapın. Hazırlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında uygulamaya bir veya iki kullanıcı ya da grup atayarak bu adımı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) belirtebilirsiniz. 
+Atamaya göre uygulamanıza sağlanacak kapsamı tercih ederseniz, [uygulamaya Kullanıcı ve Grup atama](../manage-apps/assign-user-or-group-access-portal.md)adımlarını uygulayın.
 
+Yalnızca Kullanıcı veya grup özniteliklerine göre sağlanacak olan kapsamı tercih ederseniz, [Kullanıcı hesaplarını sağlamaya yönelik koşullu kuralları tanımlamak](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)için bir kapsam filtresi kullanın. 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-contentful"></a>5. Adım. Otomatik Kullanıcı sağlamasını çekişme için yapılandırma 
+* Kullanıcıları ve grupları çekişme için atadığınızda, **varsayılan erişim** dışında bir rol seçmelisiniz. Varsayılan erişim rolüne sahip kullanıcılar, sağlanmasından çıkarılır ve sağlama günlüklerinde etkin değil olarak belirtilir. Uygulamada kullanılabilen tek rol varsayılan erişim rolü ise, daha fazla rol eklemek için [uygulama bildirimini güncelleştirebilirsiniz](../develop/howto-add-app-roles-in-azure-ad-apps.md) . 
+* Başlangıçta kapsamı sınırlı tutun. Herkese göndermeden önce küçük bir Kullanıcı ve grup kümesi ile test edin. Sağlama kapsamı atanan kullanıcılar ve gruplar olarak ayarlandığında, uygulamaya bir veya iki kullanıcı veya grup atayarak kapsamı kontrol edebilirsiniz. Kapsam tüm kullanıcılar ve gruplar olarak ayarlandığında, [öznitelik tabanlı kapsam filtresi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)belirtebilirsiniz. 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
+## <a name="configure-automatic-user-provisioning-to-contentful"></a>Otomatik Kullanıcı sağlamasını çekişme için yapılandırma 
 
-### <a name="to-configure-automatic-user-provisioning-for-contentful-in-azure-ad"></a>Azure AD 'de çekişmeden otomatik Kullanıcı sağlamayı yapılandırmak için:
+Bu bölümde, Azure AD 'de Kullanıcı veya grup atamalarını temel alan bir test uygulamasındaki kullanıcıları ve grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini ayarlama adımlarında size kılavuzluk eder.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin.
+### <a name="configure-automatic-user-provisioning-for-contentful-in-azure-ad"></a>Azure AD 'de çekişme için otomatik Kullanıcı sağlamayı yapılandırma
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+
+   ![Tüm uygulamalar vurgulanarak Azure portal kurumsal uygulamalar menüsünü gösteren ekran görüntüsü.](common/enterprise-applications.png)
 
 2. Uygulamalar listesinde, **çekişme**' yi seçin.
 
-    ![Uygulamalar listesindeki çekişme bağlantısı](common/all-applications.png)
+   ![Uygulamalar listesinde döndürülen ilk 20 sonucu gösteren ekran görüntüsü.](common/all-applications.png)
 
 3. **Hazırlama** sekmesini seçin.
 
-    ![Hazırlama sekmesi](common/provisioning.png)
+   ![Sol menünün Yönet bölümünde, sağlama sekmesinin ekran görüntüsü.](common/provisioning.png)
 
-4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
+4. **Sağlama modunu** **Otomatik** olarak ayarlayın.
 
-    ![Sekme otomatik sağlama](common/provisioning-automatic.png)
+   ![Otomatik vurgulanmış şekilde sağlama modu seçeneklerini gösteren ekran görüntüsü.](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümü altında, çekişme kiracı URL 'Nizi ve gizli belirtecinizi girin. Azure AD 'nin çekişme 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, çekişme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. **Yönetici kimlik bilgileri** bölümünde, çekişme KIRACı URL 'si ve gizli belirteç girin. Azure AD 'nin çekişme 'ye bağlanabildiğinden emin olmak için **Bağlantıyı Sına**' yı seçin. Bağlantı başarısız olursa, çekişme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve sonra yeniden deneyin.
 
-    ![Belirteç](common/provisioning-testconnection-tenanturltoken.png)
+   ![Bağlantıyı Sına düğmesi vurgulanmış şekilde kiracı U R L ve gizli belirteç metin kutularını gösteren ekran görüntüsü.](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
+6. **Bildirim e-postası**' nde, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve ardından **bir hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
-    ![Bildirim E-postası](common/provisioning-notification-email.png)
+   ![Bildirim e-postası metin kutusunu gösteren ekran görüntüsü.](common/provisioning-notification-email.png)
 
 7. **Kaydet**’i seçin.
 
 8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları çekişme olarak eşitler**' ı seçin.
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'den çekişmeden eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için çekişme içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, çekişme API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik eşleme** bölümünde, Azure AD 'den çekişmeye karşı eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için çekişme içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](../app-provisioning/customize-application-attributes.md)değiştirmeyi seçerseniz, çekişme API 'sinin, bu özniteliğe göre kullanıcıların filtrelenmesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
    |Öznitelik|Tür|Filtreleme için destekleniyor|
    |---|---|---|
@@ -129,43 +130,41 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
    |name.givenName|Dize|
    |name.familyName|Dize|
 
-10. **Eşlemeler** bölümü altında, **Azure Active Directory grupları çekişme olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Active Directory gruplarını Contenbir şekilde eşitler**' ı seçin.
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'den çekişmeden eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için çekişme içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik eşleme** bölümünde, Azure AD 'den çekişmeye karşı eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için çekişme içindeki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 
-      |Öznitelik|Tür|Filtreleme için destekleniyor|
-      |---|---|---|
-      |displayName|Dize|&check;|
-      |üyeler|Başvuru|
+    |Öznitelik|Tür|Filtreleme için destekleniyor|
+    |---|---|---|
+    |displayName|Dize|&check;|
+    |üyeler|Başvuru|
 
-12. Kapsam belirleme filtrelerini yapılandırmak için [Kapsam belirleme filtresi öğreticisi](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) ile sunulan yönergeleri izleyin.
+12. Kapsam filtrelerini ayarlamak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)açıklanan adımları doldurun.
 
-13. Azure AD sağlama hizmetini çekişmeden etkinleştirmek için, **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. Azure AD sağlama hizmetini çekişmeden etkinleştirmek için, **Ayarlar** bölümünde, **sağlama durumu** için **Açık**' ı seçin.
 
-    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
+    ![Geçiş durumunun açık ve kapalı olduğunu gösteren ekran görüntüsü.](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** Içindeki istenen değerleri seçerek çekişmek üzere sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. Çekişme için sağlamak istediğiniz kullanıcıları veya grupları tanımlamak için, **Ayarlar** bölümünde **kapsam** için ilgili seçeneği belirleyin.
 
-    ![Hazırlama Kapsamı](common/provisioning-scope.png)
+    ![Kapsam bölmesinde seçebileceğiniz seçenekleri gösteren ekran görüntüsü.](common/provisioning-scope.png)
 
-15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
+15. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
+    ![Kaydet düğmesini ve Iptal düğmesini gösteren ekran görüntüsü.](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümündeki **Kapsam** alanında tanımlanan tüm kullanıcılar ve gruplar için ilk eşitleme döngüsünü başlatır. İlk döngünün tamamlanması, Azure AD hazırlama hizmetinin çalıştığı süre boyunca yaklaşık olarak 40 dakikada bir gerçekleştirilen sonraki döngülerden daha uzun sürer. 
+Bu işlem, **Ayarlar** altındaki **kapsamda** tanımlanan tüm Kullanıcı ve grupların ilk eşitleme döngüsünü başlatır. İlk döngünün tamamlanması, Azure AD hazırlama hizmetinin çalıştığı süre boyunca yaklaşık olarak 40 dakikada bir gerçekleştirilen sonraki döngülerden daha uzun sürer. 
 
-## <a name="step-6-monitor-your-deployment"></a>6. Adım. Dağıtımınızı izleme
-Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
+## <a name="monitor-your-deployment"></a>Dağıtımınızı izleme
 
-1. Hazırlama işlemi başarılı ve başarısız olan kullanıcıları belirlemek için [hazırlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md) kullanın
-2. Hazırlama döngüsünün durumunu ve tamamlanması için kalan miktarı görmek için [ilerleme çubuğuna](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) bakın
-3. Hazırlama yapılandırmasının durumu iyi görünmüyorsa uygulama karantinaya geçer. Karantina durumu hakkında daha fazla bilgi edinmek için [buraya](../app-provisioning/application-provisioning-quarantine-status.md) bakın.  
+Sağlamayı yapılandırdıktan sonra, dağıtımınızı izlemek için aşağıdaki kaynakları kullanın:
 
-## <a name="additional-resources"></a>Ek kaynaklar
-
-* [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+* Hangi kullanıcıların başarıyla sağlandığını veya başarısız olduğunu anlamak için, [sağlama günlüklerini](../reports-monitoring/concept-provisioning-logs.md)görüntüleyin.
+* Sağlama döngüsünün durumunu ve ne kadar yakın olduğunu görmek için [ilerleme çubuğunu](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)kontrol edin.
+* Sağlama yapılandırması sağlıksız bir durumda görünüyorsa, uygulama karantinaya alınır. [Karantina durumları](../app-provisioning/application-provisioning-quarantine-status.md)hakkında daha fazla bilgi edinin.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Hazırlama etkinliği günlüklerini incelemeyi ve rapor oluşturmayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)

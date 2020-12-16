@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0e209e8114d8f1791a00e87894fa12206edcf34e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 29a314553584843ed6241b9311e9d72b42ec8705
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700231"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516413"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Bilişsel Arama hizmeti için API anahtarları oluşturma ve yönetme
 
@@ -49,7 +49,7 @@ Portalda veya [yönetim REST API](/rest/api/searchmanagement/)erişim tuşları 
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 2. Aboneliğiniz için [arama hizmetlerini](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listeleyin.
-3. Hizmeti seçin ve genel bakış sayfasında, **Settings**  > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar **anahtarlar** ' a tıklayın.
+3. Hizmeti seçin ve genel bakış sayfasında,   > Yönetim ve sorgu anahtarlarını görüntülemek için ayarlar **anahtarlar** ' a tıklayın.
 
    :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portal sayfası, görünüm ayarları, anahtarlar bölümü" border="false":::
 
@@ -88,6 +88,7 @@ Hizmete portal veya Yönetim Katmanı ([REST API](/rest/api/searchmanagement/), 
 Portal veya yönetim katmanı aracılığıyla yeni anahtarlar oluşturduktan sonra, yeni anahtarlar ve istekler üzerinde bu anahtarlar sağladığınızda, erişim içeriğinize (dizinler, Dizin oluşturucular, veri kaynakları, eş anlamlı haritalar) geri yüklenir.
 
 ## <a name="secure-api-keys"></a>Güvenli API anahtarları
+
 Ana güvenlik, portal veya Kaynak Yöneticisi arabirimleri (PowerShell veya komut satırı arabirimi) aracılığıyla erişimi kısıtlayarak bir şekilde yapılır. Belirtildiği gibi, abonelik yöneticileri tüm API anahtarlarını görüntüleyebilir ve yeniden oluşturabilir. Bir önlem olarak, yönetici anahtarlarına kimlerin erişebileceğini anlamak için rol atamalarını gözden geçirin.
 
 + Hizmet panosunda, hizmetinize ilişkin rol atamalarını görüntülemek için **erişim denetimi (IAM)** ve ardından **rol atamaları** sekmesini tıklatın.

@@ -3,25 +3,20 @@ title: Windows sanal masaüstü (klasik) için Tanılama aracını dağıtma-Azu
 description: Windows sanal masaüstü (klasik) için tanılama UX aracı 'nı dağıtma.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 729e22f8ad94d2119d0f3f3e9fc474cc83a493a8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9672d18fe99d8baae3c73fa3782531eb84114713
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023080"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97515646"
 ---
 # <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>Windows sanal masaüstü (klasik) Tanılama aracını dağıtma
 
 >[!IMPORTANT]
 >Bu içerik, Windows sanal masaüstü nesneleri Azure Resource Manager desteklemeyen Windows sanal masaüstü (klasik) için geçerlidir.
-
->[!IMPORTANT]
->16 Mart 2020 itibariyle, hizmet üzerindeki talep artmasından dolayı kullanıcı deneyiminin etkilediği tanılama sorgularını geçici olarak devre dışı bırakmış. Bu, işlevin çalışmayı durdurmasına neden olur çünkü bu sorguları işlevine kullanır. Tanılama sorguları yeniden kullanılabilir olduğunda bu makaleyi güncelleştireceğiz.
->
->Bu durumda, devam eden izleme için [Log Analytics kullanmanızı](diagnostics-log-analytics-2019.md) kesinlikle öneririz.
 
 Windows sanal masaüstü için tanılama aracı sizin için şunları yapabilir:
 
@@ -43,8 +38,8 @@ Araç için Azure Resource Manager şablonunu dağıtabilmeniz için önce bir A
 
 Başlamadan önce bu iki PowerShell modülünü de yüklemeniz gerekir:
 
-- [Azure PowerShell modülü](/powershell/azure/install-az-ps?view=azps-2.4.0/)
-- [Azure AD modülü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/)
+- [Azure PowerShell modülü](/powershell/azure/install-az-ps?view=azps-2.4.0/&preserve-view=true)
+- [Azure AD modülü](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0/&preserve-view=true)
 
 Oturum açtığınızda abonelik KIMLIĞINIZ için hazırlık yaptığınızdan emin olun.
 

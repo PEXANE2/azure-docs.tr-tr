@@ -3,21 +3,19 @@ title: 'Öğretici: IoT Central ile akıllı ölçüm analizi uygulaması oluşt
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak akıllı ölçüm izleme uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: af4940ae6b0dc001667602b8729faaa3a10d19da
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: a95f1befcdc9b59293eb97330ba7ceae3034a74b
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127140"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516765"
 ---
 # <a name="tutorial-create-and-walk-through-the-smart-meter-monitoring-app-template"></a>Öğretici: akıllı ölçüm izleme uygulaması şablonunu oluşturma ve adım adım izleme 
-
-
 
 Bu öğretici, benzetimli verilerle örnek bir cihaz modeli içeren akıllı ölçüm izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide şunları öğreneceksiniz:
 
@@ -38,14 +36,13 @@ Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.micr
 Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
 1. [Azure IoT Central giriş sayfasını](https://apps.azureiotcentral.com) açın ve yeni bir uygulama oluşturmak için **Oluştur** ' a tıklayın. 
-
-2. **Enerji** sekmesini seçin ve **akıllı ölçüm izleme** uygulaması kutucuğunda uygulama **Oluştur** ' a tıklayın.
+1. **Enerji** sekmesini seçin ve **akıllı ölçüm izleme** uygulaması kutucuğunda uygulama **Oluştur** ' a tıklayın.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama oluştur](media/tutorial-iot-central-smart-meter/smart-meter-build.png)
     
 
-3. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
+1. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
     * **Uygulama adı**: IoT Central uygulamanız için bir ad seçin. 
     * **URL**: bir IoT Central URL 'si seçin, platform benzersiz olduğunu doğrular.
     * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
@@ -56,12 +53,11 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
         ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-smart-meter/smart-meter-create-new-app-billinginfo.png)
 
-
 ### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama
 
 Yeni oluşturulan akıllı ölçüm uygulaması, uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Bu uygulamayı değiştirmeden önce uygulamanın dağıtıldığından ve beklendiği gibi çalıştığından emin olalım.
 
-Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya**gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
+Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya** gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
 
 ## <a name="application-walk-through"></a>Uygulama izlenecek yol
 Uygulama şablonunu başarıyla dağıttıktan sonra, örnek akıllı ölçüm cihazı, cihaz modeli ve bir pano ile birlikte gelir. 
@@ -99,7 +95,7 @@ Akıllı ölçüm cihaz modelini görmek için **cihaz şablonları** sekmesine 
 Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağıdaki adımları izleyerek uygulamanızı silin:
 
 1. Sol bölmeden Yönetim sekmesini açın
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
+1. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
 
     > [!div class="mx-imgBorder"]
     > ![Uygulamayı Sil](media/tutorial-iot-central-smart-meter/smart-meter-delete-app.png)

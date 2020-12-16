@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 74088d749279ab72851e714a50b558dc2adbc0d7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349189"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516545"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Cassandra 'dan verileri Azure Cosmos DB Cassandra API hesabına Azure Databricks kullanarak geçirin
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -42,7 +42,7 @@ Veritabanı iş yüklerini bir platformdan diğerine geçirmek için çeşitli y
 
 ## <a name="provision-an-azure-databricks-cluster"></a>Azure Databricks kümesi sağlama
 
-[Azure Databricks kümesi sağlamak](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)için talimatları izleyebilirsiniz. Ancak, lütfen Apache Spark 3. x Apache Cassandra Bağlayıcısı için şu anda desteklenmiyor. Apache Spark desteklenen v2. x sürümü ile bir Databricks çalışma zamanı sağlamanız gerekir. Databricks çalışma zamanının 6,6 sürümünü öneriyoruz:
+[Azure Databricks kümesi sağlamak](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)için talimatları izleyebilirsiniz. Ancak, lütfen Apache Spark 3. x Apache Cassandra Bağlayıcısı için şu anda desteklenmiyor. Apache Spark desteklenen v2. x sürümü ile bir Databricks çalışma zamanı sağlamanız gerekir. Databricks çalışma zamanının sürümünü, Scala sürüm 2,11 ' den sonra olmayan Spark 2. x öğesinin en son sürümünü destekleyen bir sürümünü seçmenizi öneririz:
 
 :::image type="content" source="./media/cassandra-migrate-cosmos-db-databricks/databricks-runtime.png" alt-text="Databricks çalışma zamanı":::
 

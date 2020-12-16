@@ -1,18 +1,18 @@
 ---
 title: Bir müşteriyi Azure Lighthouse’a ekleme
 description: Bir müşteriyi Azure Mathouse 'a eklemeyi öğrenin. böylece, kaynakları Azure tarafından atanan kaynak yönetimi kullanılarak kendi kiracınız aracılığıyla erişilebilir ve yönetilebilir.
-ms.date: 12/04/2020
+ms.date: 12/15/2020
 ms.topic: how-to
-ms.openlocfilehash: b353a8194b9f5dd48b315340435669531359e8d5
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608478"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516139"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Bir müşteriyi Azure Lighthouse’a ekleme
 
-Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure açık Thouse 'a nasıl oluşturabileceğiniz açıklanmaktadır. Bunu yaptığınızda, müşterinin Temsilcili kaynaklara (abonelikler ve/veya kaynak grupları) [Azure Temsilcili kaynak yönetimi](../concepts/azure-delegated-resource-management.md)kullanılarak kendi Azure Active Directory (Azure AD) kiracınız aracılığıyla erişilebilir ve yönetilebilir.
+Bu makalede, bir hizmet sağlayıcı olarak, bir müşteriyi Azure açık Thouse 'a nasıl oluşturabileceğiniz açıklanmaktadır. Bunu yaptığınızda, müşterinin Azure Active Directory (Azure AD) kiracısında atanan kaynaklar (abonelikler ve/veya kaynak grupları), [Azure tarafından atanan kaynak yönetimi](../concepts/azure-delegated-resource-management.md)kullanılarak kendi kiracınız aracılığıyla yönetilebilir.
 
 > [!TIP]
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvuruyoruz, ancak [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , Azure açık thouse 'u ayarlamak ve yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
@@ -22,7 +22,7 @@ Birden çok müşteri için ekleme işlemini yineleyebilirsiniz. Uygun izinlere 
 Müşteri görevlendirmeleri genelinde etkileri izlemek ve tanıma almak için, Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZI eklendi aboneliklerinizin her birine erişimi olan en az bir kullanıcı hesabıyla ilişkilendirin. Bu ilişkilendirmeyi hizmet sağlayıcı kiracınızda gerçekleştirmeniz gerekir. Kiracınızda MPN KIMLIĞINIZLE ilişkilendirilen bir hizmet sorumlusu hesabı oluşturmanızı ve sonra bu hizmet sorumlusunu bir müşteriyi her açışınızda dahil edilmesini öneririz. Daha fazla bilgi için bkz. [temsilci atanan kaynaklarda iş ortağı kazanılmış krediyi sağlamak için iş ortağı kimliğinizi bağlama](partner-earned-credit.md).
 
 > [!NOTE]
-> Müşteriler Azure Market ' te [yayımladığınız](publish-managed-services-offers.md)bir yönetilen hizmet teklifi (genel veya özel) satın alırken Azure 'da da eklendi de olabilir. Burada açıklanan ekleme işlemini Azure Marketi 'Nde yayınlanan tekliflerden de kullanabilirsiniz.
+> Müşteriler, [Azure Market](publish-managed-services-offers.md)' te yayımladığınız yönetilen bir hizmet teklifi (genel veya özel) satın alırken Azure 'un açık eklendi bir şekilde kullanıma sunulmasını sağlar. Burada açıklanan ekleme sürecini Azure Marketi 'Nde yayınlanan tekliflerle birlikte kullanabilirsiniz.
 
 Ekleme işlemi, eylemlerin hem hizmet sağlayıcının kiracısından hem de müşterinin kiracısından alınması gerekir. Bu adımların tümü bu makalede açıklanmıştır.
 
@@ -36,7 +36,7 @@ Bir müşterinin kiracısını eklemek için etkin bir Azure aboneliğine sahip 
 
 Bu KIMLIK değerleri zaten yoksa, bunları aşağıdaki yollarla alabilirsiniz. Dağıtımınızda bu tam değerleri kullandığınızdan emin olun ve bunları kullanın.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Kiracı KIMLIĞINIZ, Azure portal sağ üst tarafındaki hesap adınızın üzerine gelerek veya **Dizin Değiştir**' i seçerek görülebilir. Kiracı KIMLIĞINIZI seçmek ve kopyalamak için Portal içinden "Azure Active Directory" araması yapın, ardından **Özellikler** ' i seçin ve **dizin kimliği** alanında gösterilen değeri kopyalayın. Müşterinin kiracısında bir aboneliğin KIMLIĞINI bulmak için, "abonelikler" araması yapın ve ardından uygun abonelik KIMLIĞINI seçin.
 
@@ -208,7 +208,7 @@ Parametre dosyanızı güncelleştirdikten sonra, müşterinin kiracısındaki b
 
 Dağıtım Azure portal, PowerShell kullanılarak veya aşağıda gösterildiği gibi Azure CLı kullanılarak yapılabilir.
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 1. [GitHub](https://github.com/Azure/Azure-Lighthouse-samples/)deponuzda, kullanmak istediğiniz şablonun yanında gösterilen **Azure 'a dağıt** düğmesini seçin. Şablon Azure portalda açılır.
 1. **MSP teklif adı**, **MSP teklif açıklaması**, **Kiracı kimliği tarafından yönetilen** ve **yetkilendirmeler** için değerlerinizi girin. İsterseniz **parametreleri Düzenle** ' yi seçerek `mspOfferName` parametre dosyasında,,, `mspOfferDescription` `managedbyTenantId` ve doğrudan değerlerini girebilirsiniz `authorizations` . Şablondaki varsayılan değerleri kullanmak yerine bu değerleri güncelleştirdiğinizden emin olun.
@@ -260,7 +260,7 @@ az deployment sub create --name <deploymentName> \
 
 Bir müşteri aboneliğinin Azure Mathouse 'a başarıyla eklendi, hizmet sağlayıcının kiracısındaki kullanıcılar aboneliği ve kaynaklarını görebilir (tek tek veya bir Azure AD grubunun bir üyesi olarak, uygun izinlere sahip bir Azure AD grubuna erişim izni verildiyse). Bunu onaylamak için, aboneliğin aşağıdaki yollarla göründüğünden emin olun.  
 
-### <a name="azure-portal"></a>Azure portal
+### <a name="azure-portal"></a>Azure portalı
 
 Hizmet sağlayıcısının kiracısında:
 
@@ -303,7 +303,19 @@ az account list
 
 Müşteri eklendi sonra değişiklik yapmanız gerekirse, [temsilciyi güncelleştirebilirsiniz](update-delegation.md). Ayrıca [, temsilciye erişimi tamamen kaldırabilirsiniz](remove-delegation.md) .
 
+## <a name="troubleshooting"></a>Sorun giderme
+
+Müşterinizin başarıyla sunulabileceği takdirde veya kullanıcılarınız Temsilcili kaynaklara erişirken sorun yaşıyorsa, aşağıdaki ipuçları ve gereksinimleri denetleyip yeniden deneyin.
+
+- `managedbyTenantId`Değer, eklendi olan aboneliğin KIRACı kimliğiyle aynı olmamalıdır.
+- Aynı kapsamda aynı kapsamda birden çok atama olamaz `mspOfferName` . 
+- Atanmış abonelik için **Microsoft. ManagedServices** kaynak sağlayıcısının kayıtlı olması gerekir. Bu, dağıtım sırasında otomatik olarak gerçekleşmelidir, ancak yoksa [el ile kaydedebilirsiniz](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+- Yetkilendirmeler, [sahip](../../role-based-access-control/built-in-roles.md#owner) yerleşik rolüne sahip herhangi bir kullanıcı veya [dataactions](../../role-based-access-control/role-definitions.md#dataactions)içeren yerleşik roller içermemelidir.
+- Gruplar, **Microsoft 365** değil, [**Grup türü**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) **güvenlik** olarak ayarlanmış olmalıdır.
+- Azure portal kaynakları görüntülemesi gereken kullanıcıların [okuyucu](../../role-based-access-control/built-in-roles.md#reader) rolüne (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Çapraz kiracı yönetim deneyimleri](../concepts/cross-tenant-management-experience.md)hakkında bilgi edinin.
 - Azure portal **müşterilerime** giderek [müşterileri görüntüleyin ve yönetin](view-manage-customers.md) .
+- Bir temsilciyi [güncelleştirmeyi](update-delegation.md) veya [kaldırmayı](remove-delegation.md) öğrenin.

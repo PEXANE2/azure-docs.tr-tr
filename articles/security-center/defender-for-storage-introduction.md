@@ -7,18 +7,19 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 9b2855f82927b6f1707fd748f097dd357818ac4b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 8979e315f188a5c21cce206c24f195f72096d438
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341983"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516521"
 ---
-# <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender 'a giriş
+# <a name="introduction-to-azure-defender-for-storage"></a>Depolama için Azure Defender'a giriş
 
-**Depolama Için Azure Defender** , Azure depolama hesaplarınızdaki zararlı olabilecek etkinlikleri algılar. Verileriniz, blob kapsayıcıları, dosya paylaşımları veya veri Lakes olarak depolanıp saklanmadığı için korunabilir.
 
-Bu koruma katmanı, güvenlik uzmanı olmanıza gerek *kalmadan* tehditleri sağlamanıza olanak tanır ve güvenlik izleme sistemlerinizi yönetmenize yardımcı olur.
+**Depolama Için Azure Defender** , depolama hesaplarınıza yönelik olağan dışı ve potansiyel olarak zararlı girişimleri algılayan bir Azure Native Security Intelligence katmanıdır. Bağlamsal güvenlik uyarıları ve önerileri sağlamak için güvenlik AI ve [Microsoft Threat Intelligence](https://go.microsoft.com/fwlink/?linkid=2128684) 'ın gelişmiş özelliklerinden yararlanır.
+
+Güvenlik uyarıları, etkinlik durumunda olan bozukluklar gerçekleştiğinde tetiklenir. Bu uyarılar Azure Güvenlik Merkezi ile tümleşiktir ve ayrıca, şüpheli etkinliklerin ayrıntıları ve tehditleri İnceleme ve düzeltme önerileri ile abonelik yöneticilerine e-posta yoluyla da gönderilir.
 
 
 ## <a name="availability"></a>Kullanılabilirlik
@@ -36,14 +37,14 @@ Bu koruma katmanı, güvenlik uzmanı olmanıza gerek *kalmadan* tehditleri sağ
 
 Güvenlik uyarıları şunları yaparken tetiklenir:
 
-- **Şüpheli etkinlik** -Örneğin, depolama hesabına Tor 'ın etkin çıkış düğümü olarak BILINEN bir IP adresinden başarıyla erişildi
-- **Anormal davranış** ; Örneğin, erişim düzenindeki bir depolama hesabına yapılan değişiklikler
-- **Karşıya yüklenen olası kötü amaçlı yazılım** -karma saygınlığı Analizi karşıya yüklenen bir dosyanın kötü amaçlı
+- Bir Tor çıkış düğümünden veya Microsoft Threat Intelligence tarafından şüpheli olarak kabul edilen bir IP 'den başarılı erişim gibi **şüpheli erişim desenleri**
+- **Şüpheli etkinlikler** -anormal veri ayıklama veya olağan dışı erişim izinleri değişikliği
+- Kötü amaçlı yazılım dosyaları (karma saygınlığı analizine göre) veya kimlik avı içeriğinin barındırılması gibi **kötü amaçlı Içeriğin karşıya yüklenmesi**
 
-Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir.
+Uyarılar, bunları tetikleyen olayın ayrıntılarını ve tehditleri İnceleme ve düzeltme önerilerini içerir. Uyarılar, Azure Sentinel 'e veya diğer üçüncü taraf SıEM 'ye veya başka bir dış araca aktarılabilir.
 
 > [!TIP]
-> [Bu blog gönderisine](https://techcommunity.microsoft.com/t5/azure-security-center/validating-atp-for-azure-storage-detections-in-azure-security/ba-p/1068131)ait yönergeleri izleyerek depolama uyarılarının benzetimini yapabilirsiniz.
+> Azure Defender 'ı abonelik düzeyinde [depolama için yapılandırmak](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-security-center) en iyi uygulamadır, ancak aynı zamanda [tek bir depolama hesabında da yapılandırabilirsiniz](https://docs.microsoft.com/azure/storage/common/azure-defender-storage-configure?tabs=azure-portal).
 
 
 ## <a name="what-is-hash-reputation-analysis-for-malware"></a>Kötü amaçlı yazılım için karma saygınlığı analizi nedir?

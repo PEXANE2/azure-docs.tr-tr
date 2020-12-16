@@ -7,65 +7,38 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/23/2020
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: 6ea8bc2551df4f85e4b856dc9cf1c06a9bd571fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/14/2020
+ms.openlocfilehash: 0dbf418d0a673dd0799f0f638e454c484f837fd7
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88923458"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516597"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama Lucene sorgu söz dizimi
 
-Özelleştirilmiş sorgu formları için zengin [Lucene sorgu ayrıştırıcı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimine göre Azure bilişsel arama karşı sorgular yazabilirsiniz: joker karakter, benzer arama, yakınlık araması, normal ifadeler birkaç örnektir. Lucene sorgu ayrıştırıcısı sözdiziminin büyük bir bölümü [azure bilişsel arama ' de](search-lucene-query-architecture.md), deyimler aracılığıyla Azure bilişsel arama oluşturulan *Aralık aramaları* dışında bir şekilde uygulanır `$filter` . 
+Sorgu oluştururken, özel sorgu formları için [Lucene sorgu ayrıştırıcı](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) sözdizimini kabul edebilirsiniz: joker karakter, benzer arama, yakınlık arama, normal ifadeler. Lucene sorgu ayrıştırıcısı sözdiziminin çoğu, deyimler aracılığıyla oluşturulan *Aralık aramaları* dışında [Azure bilişsel arama ' de bir şekilde uygulanır](search-lucene-query-architecture.md) **`$filter`** . 
 
-> [!NOTE]
-> Full Lucene sözdizimi, bu API 'nin [$Filter](search-filters.md) parametresi Için kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır, [arama belgeleri](/rest/api/searchservice/search-documents) API 'sinin **arama** parametresinde geçirilen sorgu ifadeleri için kullanılır. Bu farklı sözdizimlerinin sorgu oluşturma, kaçış dizeleri vb. oluşturmak için kendi kuralları vardır.
+Full Lucene sözdizimi, **`search`** bir [arama belgeleri (REST API)](/rest/api/searchservice/search-documents) isteğinin parametresinde geçirilen sorgu ifadeleri için kullanılır, aynı istekteki ve ifadelerinde kullanılan [OData sözdizimiyle](query-odata-filter-orderby-syntax.md) karıştırılmamalıdır [**`$filter`**](search-filters.md) [**`$orderby`**](search-query-odata-orderby.md) . OData parametrelerinin sorgu oluşturma, kaçış dizeleri vb. için farklı sözdizimi ve kuralları vardır.
 
-## <a name="invoke-full-parsing"></a>Tam ayrıştırmayı çağır
+## <a name="example-full-syntax"></a>Örnek (tam sözdizimi)
 
-`queryType`Hangi ayrıştırıcısının kullanılacağını belirtmek için arama parametresini ayarlayın. Geçerli değerler `simple|full` , `simple` Varsayılan olarak ve `full` Lucene için içerir. 
+**`queryType`** Tam Lucene belirtmek için parametresini ayarlayın. Aşağıdaki örnek, alan içi arama ve terim arttırma için çağırır. Bu sorgu, Kategori alanının "bütçe" terimini içerdiği oteller için arama yapar. "Son randevu" ifadesini içeren tüm belgeler, artırma değeri (3) sonucu olarak daha yüksektir.  
 
-<a name="bkmk_example"></a> 
-
-### <a name="example-showing-full-syntax"></a>Tam sözdizimini gösteren örnek
-
-Aşağıdaki örnek, dizinde bulunan ve Lucene sorgu söz dizimini kullanarak dizindeki belgeleri bulur `queryType=full` . Bu sorgu, Kategori alanının "bütçe" terimini ve "son randevu" ifadesini içeren tüm aranabilir alanları içermesi halinde oteller döndürür. "Son randevu" ifadesini içeren belgeler, artırma değeri (3) sonucu olarak daha yüksektir.  
-
-`searchMode=all`Parametresi bu örnekle ilgilidir. Her operatör sorgu üzerinde olduğunda, genellikle `searchMode=all` ölçütlerin *tümünün* eşleştiğinden emin olmak için ayarlamanız gerekir.
-
-```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2020-06-30&querytype=full
-```
-
- Alternatif olarak, POST 'u kullanın:  
-
-```
-POST /indexes/hotels/docs/search?api-version=2020-06-30
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-  "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",
+  "search": "category:budget AND \"recently renovated\"^3",
   "searchMode": "all"
 }
 ```
 
-Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri Azure bilişsel arama 'de sorgu oluşturma](search-query-lucene-examples.md). Sorgu parametrelerinin tam olarak belirlenmesi hakkında daha fazla bilgi için bkz. [arama belgeleri &#40;Azure Bilişsel Arama REST API&#41;](/rest/api/searchservice/Search-Documents).
+**`searchMode`** Parametresi bu örnekle ilgilidir. Her operatör sorgu üzerinde olduğunda, genellikle `searchMode=all` ölçütlerin *tümünün* eşleştiğinden emin olmak için ayarlamanız gerekir.  
 
-> [!NOTE]  
->  Azure Bilişsel Arama [basit sorgu söz dizimini](query-simple-syntax.md)da destekler, basit ve güçlü bir sorgu dili, doğrudan anahtar sözcük araması için kullanılabilir.  
+Daha fazla örnek için bkz. [Lucene sorgu söz dizimi örnekleri](search-query-lucene-examples.md). Sorgu isteği ve parametreleri hakkında daha fazla bilgi için bkz. [arama belgeleri (REST API)](/rest/api/searchservice/Search-Documents).
 
-##  <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Sözdizimi temelleri  
+## <a name="syntax-fundamentals"></a><a name="bkmk_syntax"></a> Sözdizimi temelleri  
 
 Aşağıdaki sözdizimi temelleri, Lucene sözdizimini kullanan tüm sorgular için geçerlidir.  
 
@@ -95,39 +68,15 @@ Lütfen tüm güvenli olmayan ve ayrılmış karakterlerin bir URL 'de kodlandı
 
 Güvenli olmayan karakterler ``" ` < > # % { } | \ ^ ~ [ ]`` . Ayrılan karakterler şunlardır `; / ? : @ = + &` .
 
-###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a> Sorgu boyutu sınırları
+## <a name="boolean-operators"></a><a name="bkmk_boolean"></a> Boole işleçleri
 
- Azure Bilişsel Arama 'e gönderebilmeniz için sorguların boyutuyla ilgili bir sınır vardır. Özellikle, en fazla 1024 yan tümce (ve, veya ile ayrılmış ifadeler) olabilir. Ayrıca, bir sorgudaki her bir terimin boyutunda yaklaşık 32 KB 'lik bir sınır vardır. Uygulamanız program aracılığıyla arama sorguları oluşturursa, bu şekilde, sınırsız boyut sorguları oluşturmamasını sağlayan bir şekilde tasarlamayı öneririz.  
+Bir eşleşmenin hassasiyetini artırmak için bir sorgu dizesine Boole işleçleri ekleyebilirsiniz. Tam sözdizimi, karakter işleçlerine ek olarak metin işleçlerini destekler. Her zaman tüm büyük harf metin Boole işleçlerini (ve veya, DEĞIL) belirtin.
 
-### <a name="precedence-operators-grouping"></a>Öncelik işleçleri (gruplama)
-
- Parantez, parantez içinde işleç dahil olmak üzere alt sorgular oluşturmak için kullanabilirsiniz. Örneğin, `motel+(wifi||luxury)` "Motel" terimini ve "WiFi" veya "merkezlerini" (ya da her ikisi) içeren belgeleri arar.
-
-Alan gruplama benzerdir, ancak gruplamayı tek bir alanla kapsamlara sahiptir. Örneğin, " `hotelAmenities:(gym+(wifi||pool))` hotelAmenities" alanını "Gym" ve "WiFi" ya da "Gym" ve "havuz" olarak arar.  
-
-##  <a name="boolean-search"></a><a name="bkmk_boolean"></a> Boole arama
-
- Her zaman tüm büyük harf metin Boole işleçlerini (ve veya, DEĞIL) belirtin.  
-
-### <a name="or-operator-or-or-"></a>OR işleci `OR` veya `||`
-
-OR işleci dikey bir çubuk veya boru karakterdir. Örneğin: `wifi || luxury` "WiFi" veya "merkezlerini" ya da her ikisini de içeren belgeleri arar. YA da varsayılan bir bağlantılı operatör olduğundan, buna eşdeğer olan gibi da bırakabilirsiniz `wifi luxury`  `wifi || luxury` .
-
-### <a name="and-operator-and--or-"></a>AND işleci `AND` `&&` veya `+`
-
-AND işleci bir ve işareti ya da artı işareti. Örneğin: `wifi && luxury` "WiFi" ve "merkezlerini" içeren belgeler için arama yapılır. Plus karakteri (+) gerekli şartlar için kullanılır. Örneğin, `+wifi +luxury` her iki terimi tek bir belge alanında bir yerde gözükmelidir.
-
-### <a name="not-operator-not--or--"></a>NOT işleci `NOT` `!` veya `-`
-
-NOT işleci eksi işareti. Örneğin, `wifi –luxury` ve/veya olmayan belgeler için arama yapılır `wifi` `luxury` .
-
-Sorgu isteğindeki **searchMode** PARAMETRESI, Not işleci olan bir terimin, sorgudaki diğer koşullara sahip olup olmadığını denetler ( `+` diğer koşullarda hiçbir veya işleci olmadığı varsayılarak `|` ). Geçerli değerler `any` veya içerir `all` .
-
-`searchMode=any` sorgu geri çekmeyi daha fazla sonuç ekleyerek artırır ve varsayılan `-` olarak "veya Not" olarak yorumlanır. Örneğin, `wifi -luxury` terimi ya da terimi içermeyen belgelerle eşleşir `wifi` `luxury` .
-
-`searchMode=all` sorguların hassasiyetini daha az sonuç ekleyerek artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` terimi içeren belgelerle eşleştirecektir `wifi` ve "merkezlerini" terimini içermemelidir. Bu, operatör için daha sezgisel bir davranış ile yapılır `-` . Bu nedenle, `searchMode=all` `searchMode=any` aramalarını geri çağırmak yerine duyarlık için optimize etmek istiyorsanız yerine kullanmanız gerekir *ve* kullanıcılarınız, `-` aramalardaki işleci sıklıkla kullanır.
-
-Bir **searchMode** ayarı üzerinde karar verirken, çeşitli uygulamalardaki sorgular için Kullanıcı etkileşimi düzenlerini göz önünde bulundurun. Bilgi arayan kullanıcıların, daha fazla yerleşik gezinti yapılarına sahip olan e-ticaret sitelerinin aksine, bir sorguya işleç ekleme olasılığı yüksektir.
+|Metin işleci | Karakter | Örnek | Kullanım |
+|--------------|----------- |--------|-------|
+| AND | `&`, `+` | `wifi + luxury` | Bir eşleşmenin içermesi gereken terimleri belirtir. Örnekte, sorgu altyapısı hem hem de içeren belgeleri arayacaktır `wifi` `luxury` . Plus karakteri ( `+` ) gerekli şartlar için kullanılır. Örneğin, `+wifi +luxury` her iki terimi tek bir belge alanında bir yerde gözükmelidir.|
+| VEYA | `|` | `wifi | luxury` | Herhangi bir terim bulunduğunda bir eşleşme bulur. Örnekte, sorgu altyapısı veya ya da her ikisini içeren belgelerde eşleşme döndürür `wifi` `luxury` . YA da varsayılan bir bağlantılı operatör olduğundan, buna eşdeğer olan gibi da bırakabilirsiniz `wifi luxury`  `wifi | luxury` .|
+| NOT | `!`, `-` | `wifi –luxury` | Terimi hariç tutmak için eşleşen belgeleri döndürür. Örneğin, terimi olan, `wifi –luxury` `wifi` ancak olmayan belgeleri arar `luxury` . <br/><br/>`searchMode`Bir sorgu isteğindeki parametresi, Not işleci olan bir terimin, sorgudaki diğer koşullara sahip veya ORed olup olmadığını denetler ( `+` diğer koşullarda hiçbir veya işleci olmadığı varsayılarak `|` ). Geçerli değerler `any` veya içerir `all` .  <br/><br/>`searchMode=any` sorgu geri çekmeyi daha fazla sonuç ekleyerek artırır ve varsayılan `-` olarak "veya Not" olarak yorumlanır. Örneğin, `wifi -luxury` terimi ya da terimi içermeyen belgelerle eşleşir `wifi` `luxury` .  <br/><br/>`searchMode=all` sorguların hassasiyetini daha az sonuç ekleyerek artırır ve varsayılan olarak "ve NOT" olarak yorumlanır. Örneğin, `wifi -luxury` terimi içeren belgelerle eşleştirecektir `wifi` ve "merkezlerini" terimini içermemelidir. Bu, operatör için daha sezgisel bir davranış ile yapılır `-` . Bu nedenle, `searchMode=all` `searchMode=any` aramalarını geri çağırmak yerine duyarlık için optimize etmek istiyorsanız yerine kullanmanız gerekir *ve* kullanıcılarınız, `-` aramalardaki işleci sıklıkla kullanır.<br/><br/>Bir ayar üzerinde karar verirken `searchMode` , çeşitli uygulamalardaki sorgular için Kullanıcı etkileşimi düzenlerini göz önünde bulundurun. Bilgi arayan kullanıcıların, daha fazla yerleşik gezinti yapılarına sahip olan e-ticaret sitelerinin aksine, bir sorguya işleç ekleme olasılığı yüksektir. |
 
 ##  <a name="fielded-search"></a><a name="bkmk_fields"></a> Parçalı arama
 
@@ -148,14 +97,13 @@ Her iki dizenin de tek bir varlık olarak değerlendirilmesini istiyorsanız, bu
 
 Benzer bir arama, benzer bir yapıya sahip hükümlerde eşleşmeleri bulur ve iki veya daha az uzaklık ölçütlerine uyan en fazla 50 terim için bir terim genişletiyor. Daha fazla bilgi için bkz. [belirsiz arama](search-query-fuzzy.md).
 
- Benzer bir arama yapmak için, tek bir sözcüğün sonundaki tilde "~" sembolünü, isteğe bağlı bir parametreyle, 0 ile 2 (varsayılan) arasında, düzenleme uzaklığını belirten bir sayı kullanın. Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
+Benzer bir arama yapmak için, tek bir sözcüğün sonundaki tilde "~" sembolünü, isteğe bağlı bir parametreyle, 0 ile 2 (varsayılan) arasında, düzenleme uzaklığını belirten bir sayı kullanın. Örneğin, "mavi ~" veya "mavi ~ 1", "mavi", "maves" ve "tutkalla" döndürür.
 
- Benzer arama yalnızca koşullara uygulanabilir, tümceciklere uygulanamaz, ancak her terime bir çok parçalı ad veya ifade içinde her bir terime ekleyebilirsiniz. Örneğin, "Unviersty ~ of ~" Wshington ~ "," University of Washington "ile eşleşir.
+Benzer arama yalnızca koşullara uygulanabilir, tümceciklere uygulanamaz, ancak her terime bir çok parçalı ad veya ifade içinde her bir terime ekleyebilirsiniz. Örneğin, "Unviersty ~ of ~" Wshington ~ "," University of Washington "ile eşleşir.
  
 ##  <a name="proximity-search"></a><a name="bkmk_proximity"></a> Yakınlık araması
 
 Yakınlık aramaları, bir belgedeki birbirini yakın terimleri bulmak için kullanılır. Bir ifadenin sonuna, ardından yakınlık sınırını oluşturan sözcüklerin sayısını içeren bir tilde "~" simgesi ekleyin. Örneğin, `"hotel airport"~5` "otel" ve "Havaalanı" terimlerini bir belgedeki birbirini 5 sözcükten bulur.  
-
 
 ##  <a name="term-boosting"></a><a name="bkmk_termboost"></a> Terim artırma
 
@@ -194,9 +142,27 @@ En. Lucene (Ingilizce Lucene) Çözümleyicisi 'ni kullanacaksanız, her bir ter
 
 Diğer tarafta, Microsoft Çözümleyicileri (Bu durumda, en. Microsoft Çözümleyicisi) biraz daha ilerlemiş ve sözcük kökü ayırmayı yerine, açık bir hale getirme kullanır. Bu, oluşturulan tüm belirteçlerin geçerli Ingilizce sözcükler olması anlamına gelir. Örneğin, ' Sonlandır ', ' Terminate ' ve ' sonlandırma ' genellikle dizinde tamamen kalır ve Joker karakterlere ve benzer aramada çok büyük bir seçeneğe bağlı senaryolar için tercih edilen bir seçimdir.
 
-##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> Puanlama joker karakteri ve Regex sorguları
+## <a name="scoring-wildcard-and-regex-queries"></a>Puanlama joker karakteri ve Regex sorguları
 
 Azure Bilişsel Arama metin sorguları için sıklık tabanlı Puanlama ([tf-ıDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) kullanır. Bununla birlikte, koşulların kapsamını büyük olasılıkla geniş olabilecek bir joker karakter ve Regex sorguları için, derecelendirmenin, rarer terimleriyle eşleşmelerin eşleşmesini engellemek için sıklık faktörü yok sayılır. Tüm eşleşmeler joker ve Regex aramaları için eşit olarak değerlendirilir.
+
+## <a name="special-characters"></a>Özel karakterler
+
+Bazı durumlarda, bir ' ❤ ' emoji veya ' € ' işareti gibi özel bir karakter aramak isteyebilirsiniz. Bu gibi durumlarda, kullandığınız çözümleyicinin bu karakterleri filtrelemez olduğundan emin olun. Standart çözümleyici, dizininizden hariç olmak üzere birçok özel karakteri atlar.
+
+Özel karakterleri simgeleştirmek için kullanılan çözümleyiciler "Whitespace" çözümleyicisini içerir. Bu, "❤" dizesi belirteç olarak kabul edilir. Ayrıca, Microsoft Ingilizce Çözümleyicisi ("en. Microsoft") gibi bir dil Çözümleyicisi, "€" dizesini belirteç olarak alır. Belirli bir sorgu için ürettiği belirteçleri görmek üzere [bir Çözümleyicisi test](/rest/api/searchservice/test-analyzer) edebilirsiniz.
+
+Unicode karakterler kullanılırken, simgenin sorgu URL 'sinde doğru bir şekilde atlanacağından emin olun (örneğin, "❤" için çıkış sırasını kullanır `%E2%9D%A4+` ). Postman bu çeviriyi otomatik olarak yapar.  
+
+## <a name="precedence-grouping"></a>Öncelik (gruplama)
+
+Parantez, parantez içinde işleç dahil olmak üzere alt sorgular oluşturmak için kullanabilirsiniz. Örneğin, `motel+(wifi|luxury)` "Motel" terimini ve "WiFi" veya "merkezlerini" (ya da her ikisi) içeren belgeleri arar.
+
+Alan gruplama benzerdir, ancak gruplamayı tek bir alanla kapsamlara sahiptir. Örneğin, " `hotelAmenities:(gym+(wifi|pool))` hotelAmenities" alanını "Gym" ve "WiFi" ya da "Gym" ve "havuz" olarak arar.  
+
+## <a name="query-size-limits"></a>Sorgu boyutu sınırları
+
+Azure Bilişsel Arama 'e gönderebilmeniz için sorguların boyutuyla ilgili bir sınır vardır. Özellikle, en fazla 1024 yan tümce (ve, veya ile ayrılmış ifadeler) olabilir. Ayrıca, bir sorgudaki her bir terimin boyutunda yaklaşık 32 KB 'lik bir sınır vardır. Uygulamanız program aracılığıyla arama sorguları oluşturursa, bu şekilde, sınırsız boyut sorguları oluşturmamasını sağlayan bir şekilde tasarlamayı öneririz.  
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

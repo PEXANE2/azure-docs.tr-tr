@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 68526fd542d8bc891358a36d031af3314edab4c2
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507992"
+ms.locfileid: "97516105"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeler için geliştirici notları
 
@@ -116,7 +116,7 @@ El ile ilke yapılandırması, Azure AD B2C temel alınan platforma alt düzey e
 | Sorgu dizesi parametresi `login_hint` |  |  | X | Talep olarak kullanılabilir, ıDP 'ye geçirilebilir. |
 | JSON ile Kullanıcı yolculuğuna ekleme `client_assertion` | X |  |  | Kullanım dışı olacaktır. |
 | JSON 'ı Kullanıcı yolculuğuna ekleme `id_token_hint` |  | X |  | JSON geçişine git-ilet yaklaşımı. |
-| [Kimlik sağlayıcısı belirtecini uygulamaya geçir](idp-pass-through-custom.md) |  | X |  | Örneğin, Facebook 'tan uygulamaya. |
+| [Kimlik sağlayıcısı belirtecini uygulamaya geçir](idp-pass-through-user-flow.md) |  | X |  | Örneğin, Facebook 'tan uygulamaya. |
 
 
 ### <a name="session-management"></a>Oturum yönetimi

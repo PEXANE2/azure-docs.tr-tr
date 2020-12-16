@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/01/2020
+ms.date: 12/15/2020
 ms.custom: references_regions
-ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 118ee6ffb189b7a5558477912bd6b27ea739afde
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011804"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516172"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure Bilişsel Arama güvenlik-genel bakış
 
 Bu makalede, Azure Bilişsel Arama içerik ve işlemleri koruyabilecek temel güvenlik özellikleri açıklanmaktadır.
 
-+ Depolama katmanında, dizinler, eş anlamlı eşlemeler ve Dizin oluşturucular, veri kaynakları ve becerileri tanımları dahil olmak üzere diske kaydedilen tüm hizmet tarafından yönetilen içerikler için, Rest 'ten şifreleme yerleşik olarak bulunur. Azure Bilişsel Arama, dizinli içeriğin ek şifrelenmesi için müşteri tarafından yönetilen anahtarların (CMK) eklenmesini de destekler. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.
++ Depolama katmanında, diskler, eş anlamlı eşlemeler ve Dizin oluşturucular, veri kaynakları ve becerileri tanımları dahil olmak üzere diske kaydedilen tüm hizmet tarafından yönetilen içerikler için, Rest 'ten şifreleme yerleşik olarak bulunur. Azure Bilişsel Arama, dizinli içeriğin ek şifrelenmesi için müşteri tarafından yönetilen anahtarların (CMK) eklenmesini de destekler. 1 2020 Ağustos 'Tan sonra oluşturulan hizmetler için, CMK şifrelemesi, dizini oluşturulmuş içeriğin tam çift şifrelemesi için geçici disklerdeki verilere genişletilir.
 
 + Gelen güvenlik, arama hizmeti uç noktasını, güvenlik seviyelerine karşı koruma sağlar: istekteki API anahtarlarından, güvenlik duvarında gelen kurallara, genel İnternet 'ten hizmetinizi tamamen koruyan özel uç noktalara.
 
@@ -40,7 +40,7 @@ Azure Bilişsel Arama 'de, şifreleme bağlantılarla ve iletimlerle başlar ve 
 
 Arama hizmeti tarafından dahili olarak işlenen veriler için aşağıdaki tabloda [veri şifreleme modelleri](../security/fundamentals/encryption-models.md)açıklanmaktadır. Bilgi deposu, artımlı zenginleştirme ve Dizin Oluşturucu tabanlı dizin oluşturma, diğer Azure hizmetlerinde veri yapılarına okuma veya yazma gibi bazı özellikler. Bu hizmetlerin Azure Bilişsel Arama ayrı ayrı şifreleme desteği düzeyleri vardır.
 
-| Model | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
+| Modelleme | Belirlenmesine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Gereklilik&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Kısıtlamalar | Şunlara uygulanır |
 |------------------|-------|-------------|--------------|------------|
 | sunucu tarafı şifreleme | Microsoft tarafından yönetilen anahtarlar | Hiçbiri (yerleşik) | Hiçbiri, tüm bölgelerde, tüm bölgelerde bulunan ve 24 2018 Ocak 'tan sonra oluşturulan içerikler için kullanılabilir. | İçerik (dizinler ve eş anlamlı haritalar) ve tanımlar (Dizin oluşturucular, veri kaynakları, becerileri) |
 | sunucu tarafı şifreleme | Müşteri tarafından yönetilen anahtarlar | Azure Key Vault | Faturalandırılabilir katmanda, tüm bölgelerde, Ocak 2019 ' den sonra oluşturulan içerikler için kullanılabilir. | Veri disklerinde içerik (dizinler ve eş anlamlılar haritaları) |
@@ -76,7 +76,7 @@ Gelen güvenlik özellikleri, güvenlik ve karmaşıklık düzeylerini artırara
 
 ### <a name="public-access-using-api-keys"></a>API anahtarları kullanarak genel erişim
 
-Varsayılan olarak, bir arama hizmetine yönetim için anahtar tabanlı kimlik doğrulaması kullanılarak veya arama hizmeti uç noktasına sorgu erişimi kullanılarak genel bulut üzerinden erişilir. Bir API anahtarı rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu), erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığı kanıtları kabul edilir.
+Varsayılan olarak, bir arama hizmetine yönetim için anahtar tabanlı kimlik doğrulaması kullanılarak veya arama hizmeti uç noktasına sorgu erişimi kullanılarak genel bulut üzerinden erişilir. [API anahtarı](search-security-rbac.md) rastgele oluşturulan rakamlardan ve harflerden oluşan bir dizedir. Anahtar türü (yönetici veya sorgu), erişim düzeyini belirler. Geçerli bir anahtarın gönderilmesi, isteğin güvenilir bir varlıktan kaynaklandığı kanıtları kabul edilir.
 
 Arama hizmetinize aşağıdaki API anahtarları tarafından etkinleştirilen iki erişim düzeyi vardır:
 
@@ -114,15 +114,15 @@ Bu çözüm en güvenli hale geldiğinden, ek hizmetlerin kullanılması, ek bir
 
 Azure Bilişsel Arama, tek bir dizin, güvenli kılınabilir bir nesne değildir. Bunun yerine, bir dizin erişimi, hizmet katmanında (hizmete okuma veya yazma erişimi), bir işlemin içeriğiyle birlikte belirlenir.
 
-Son Kullanıcı erişimi için, bir sorgu anahtarı kullanarak bağlanmak üzere sorgu istekleri yapılandırabilirsiniz, bu da tüm istekleri salt okunurdur ve uygulamanız tarafından kullanılan belirli bir dizini içerir. Bir sorgu isteğinde, Dizin bağlama veya birden çok dizine aynı anda erişme kavramı yoktur, bu nedenle tüm istekler tanım ile tek bir dizin hedefleyin. Bu nedenle, sorgu isteğinin kendisi (bir anahtar ve tek bir hedef dizin), güvenlik sınırını tanımlar.
+Son Kullanıcı erişimi için, bir [sorgu anahtarı](search-security-rbac.md)kullanarak bağlanmak üzere sorgu istekleri yapılandırabilirsiniz, bu da tüm istekleri salt okunurdur ve uygulamanız tarafından kullanılan belirli bir dizini içerir. Bir sorgu isteğinde, Dizin bağlama veya birden çok dizine aynı anda erişme kavramı yoktur, bu nedenle tüm istekler tanım ile tek bir dizin hedefleyin. Bu nedenle, sorgu isteğinin kendisi (bir anahtar ve tek bir hedef dizin), güvenlik sınırını tanımlar.
 
-Dizinlere yönetici ve geliştirici erişimi farklılaştırılabilir: her ikisi de hizmet tarafından yönetilen nesneleri oluşturmak, silmek ve güncelleştirmek için yazma erişimine ihtiyaç duyar. Hizmetinize yönetici anahtarına sahip olan herkes aynı hizmette bulunan herhangi bir dizini okuyabilir, değiştirebilir veya silebilir. Dizinlerin yanlışlıkla veya kötü amaçlı olarak silinmesine karşı koruma için, kod varlıkları için şirket içi kaynak denetiminiz, istenmeyen bir dizin silme veya değiştirme işlemi için bir çözüm oluşturur. Azure Bilişsel Arama, kullanılabilirliği sağlamak için küme içinde yük devretmeye sahiptir, ancak dizinleri oluşturmak veya yüklemek için kullanılan özel kodunuzu depolamaz veya yürütmez.
+Dizinlere yönetici ve geliştirici erişimi farklılaştırılabilir: her ikisi de hizmet tarafından yönetilen nesneleri oluşturmak, silmek ve güncelleştirmek için yazma erişimine ihtiyaç duyar. Hizmetinize [yönetici anahtarına](search-security-rbac.md) sahip olan herkes aynı hizmette bulunan herhangi bir dizini okuyabilir, değiştirebilir veya silebilir. Dizinlerin yanlışlıkla veya kötü amaçlı olarak silinmesine karşı koruma için, kod varlıkları için şirket içi kaynak denetiminiz, istenmeyen bir dizin silme veya değiştirme işlemi için bir çözüm oluşturur. Azure Bilişsel Arama, kullanılabilirliği sağlamak için küme içinde yük devretmeye sahiptir, ancak dizinleri oluşturmak veya yüklemek için kullanılan özel kodunuzu depolamaz veya yürütmez.
 
 Dizin düzeyinde güvenlik sınırları gerektiren çok kiracılı çözümler için, bu tür çözümler genellikle müşterilerin Dizin yalıtımını işlemek için kullanacağı bir orta katman içerir. Çok kiracılı kullanım durumu hakkında daha fazla bilgi için bkz. [çok kiracılı SaaS uygulamaları ve Azure bilişsel arama Için tasarım desenleri](search-modeling-multitenant-saas-applications.md).
 
 ## <a name="user-access"></a>Kullanıcı erişimi
 
-Bir Kullanıcı bir dizine nasıl eriştiğinde ve diğer nesneler istekteki API anahtarı türüne göre belirlenir. Çoğu geliştirici, istemci tarafı arama istekleri için [*sorgu anahtarları*](search-security-api-keys.md) oluşturur ve atar. Sorgu anahtarı, dizin içinde aranabilir içeriğe salt okuma erişimi verir.
+Bir Kullanıcı bir dizine nasıl eriştiğinde ve diğer nesneler istekteki API anahtarı türüne göre belirlenir. Çoğu geliştirici, istemci tarafı arama istekleri için [sorgu anahtarları](search-security-api-keys.md) oluşturur ve atar. Sorgu anahtarı, dizin içinde aranabilir içeriğe salt okuma erişimi verir.
 
 Arama sonuçları üzerinde ayrıntılı, Kullanıcı başına denetim istiyorsanız, sorgularda güvenlik filtreleri oluşturabilir, bu, belirli bir güvenlik kimliğiyle ilişkili belgeleri döndürür. Kimlik tabanlı erişim denetimi, önceden tanımlanmış roller ve rol atamaları yerine, belgelerin ve içeriğin arama sonuçlarını kimliklere göre kırpan bir *filtre* olarak uygulanır. Aşağıdaki tabloda yetkisiz içeriğin arama sonuçlarını kırpma için iki yaklaşım açıklanmaktadır.
 

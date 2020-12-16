@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 483ae81f22358e41f252dd8090c01d5b4cad7fb1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344173"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516446"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -62,27 +62,56 @@ A. Data Box Disk ABD, Kanada, Avustralya, Batı Avrupa ve Kuzey Avrupa, Kore ve 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>S. Farklı bir ülkede yer alan bir Azure bölgesine tek bir ülkede/bölgede yer alan mevcut kaynak verilerini nasıl içeri aktarabilirim?
 A. Data Box Disk, yalnızca hedef olarak aynı ülke/bölge dahilinde veri alımı destekler ve uluslararası kenarlıkları geçmez. Tek istisna, Avrupa Birliği (AB), Data Box disklerin herhangi bir AB ülkesine/bölgesine nereden gönderdiklerinin bulunduğu siparişler içindir.
 
-Örneğin, Kanada 'daki konumunuzda verileri bir Azure WestUS depolama hesabına taşımak isterseniz, bunu aşağıdaki şekilde elde edebilirsiniz:
+Örneğin, Kanada 'daki konumdaki verileri bir Azure Batı ABD depolama hesabına taşımak isterseniz, bunu aşağıdaki şekilde elde edebilirsiniz:
 
 ### <a name="option-1"></a>1. Seçenek: 
 
-[Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure WestUS veri merkezine kadar verileri içeren [desteklenen bir disk](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) gönderin.
+[Azure içeri/dışarı aktarma hizmeti](../storage/common/storage-import-export-service.md) 'Ni kullanarak Kanada 'daki kaynak konumundan Azure Batı ABD veri merkezine kadar verileri içeren [desteklenen bir disk](../storage/common/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks) gönderin.
 
 ### <a name="option-2"></a>2. Seçenek:
 
-1. Canda merkezi 'nde bir depolama hesabı seçerek Kanada 'daki sipariş Data Box Disk. SSD disk (s), sipariş oluşturma sırasında verilen sevkiyat adresine (Kanada 'da) Kanada Orta Azure veri merkezinden gönderilir.
+1. Kanada Orta bir depolama hesabı seçerek Kanada 'daki sipariş Data Box Disk. SSD disk (s), sipariş oluşturma sırasında verilen sevkiyat adresine (Kanada 'da) Kanada Orta Azure veri merkezinden gönderilir.
 
 2. Şirket içi sunucunuzdaki veriler disklere kopyalandıktan sonra, Microsoft tarafından sunulan döndürülen etiketleri kullanarak bunları Kanada 'daki Azure veri merkezine döndürün. Data Box Disk bulunan veriler, ardından sipariş oluşturma sırasında seçilen Kanada Azure bölgesindeki hedef depolama hesabına yüklenir.
 
-3. Daha sonra AzCopy gibi bir araç kullanarak, verileri WestUS ' deki bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box Disk faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
+3. Daha sonra AzCopy gibi bir araç kullanarak verileri Batı ABD bir depolama hesabına kopyalayabilirsiniz. Bu adım, Data Box Disk faturalandırmaya dahil olmayan [Standart depolama](https://azure.microsoft.com/pricing/details/storage/) ve [bant genişliği ücretleri](https://azure.microsoft.com/pricing/details/bandwidth/) doğurur.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>S. Data Box Diskleriyle ilgili sorun yaşamam halinde kiminle iletişim kurmam gerekir?
-A. Data Box diskleriyle ilgili herhangi bir sorunla karşılaşırsanız lütfen [Microsoft desteği başvurun](./data-box-disk-contact-microsoft-support.md).
+A. Data Box disklerle ilgili herhangi bir sorunla karşılaşırsanız [Microsoft desteği başvurun](./data-box-disk-contact-microsoft-support.md).
+
+## <a name="order-device"></a>Cihaz sipariş etme
+
+### <a name="q-how-do-i-get-data-box-disk"></a>S. Nasıl yaparım? Data Box Disk Al? 
+A.  Azure Data Box Disk almak için Azure portal oturum açın ve bir Data Box Disk sırası oluşturun. İletişim bilgilerinizi ve bildirim ayrıntılarını girin. Kullanılabilirliği temel alarak bir siparişi girdikten sonra, Data Box Disk 10 gün içinde size gönderilir. Daha fazla bilgi için bkz. [Data Box sipariş etme](data-box-disk-deploy-ordered.md).
+
+### <a name="q-i-couldnt-create-a-data-box-disk-order-in-the-azure-portal-why"></a>S. Azure portal Data Box Disk sıra oluşturamadık. Neden?
+A. Data Box Disk sıra oluşturamıyoruz, abonelik türü veya erişim ile ilgili bir sorun vardır.
+
+Aboneliğinizi kontrol edin. Data Box Disk yalnızca Kurumsal Anlaşma (EA) ve bulut çözümü sağlayıcısı (CSP) abonelik teklifleri için kullanılabilir. Bu abonelik türlerinden birini yoksa aboneliğinizi yükseltmek için Microsoft Desteği başvurun.
+
+Aboneliğiniz, desteklenen teklif türlerinden birine aitse abonelik erişim düzeyinizi kontrol edin. Sipariş oluşturma için aboneliğinizde katkıda bulunan veya sahip olmanız gerekir.
+
+### <a name="q-how-long-will-my-order-take-from-order-creation-to-data-uploaded-to-azure"></a>S. Sıramın Azure 'a yüklenen verilere göre sipariş oluşturma ne kadar sürer?
+
+A. Sipariş işlemenin her aşaması için aşağıdaki tahmini sağlama süreleri, beklendiklerle ilgili size iyi bir fikir verecektir.  
+
+Bu sağlama süreleri *tahminlerdir*. Her sipariş işleme aşamasına ilişkin süre, veri merkezinde, eşzamanlı siparişlerde ve diğer ortam koşullarında yük tarafından etkilenir.
+
+**Data Box Disk sırası için tahmini sağlama süreleri:**
+
+1. Order Data Box Disk: birkaç dakika, portaldan
+2. Disk ayırma ve hazırlık: 1-2 iş günü
+3. Gönderim: 2-3 iş günü
+4. Müşteri sitesindeki veri kopyalama: verilerin, boyutun ve dosya sayısının yapısına bağlıdır
+5. İade gönderimi: 2-3 iş günü
+6. Veri merkezinde disk işleme: 1-2 iş günü
+7. Azure 'a veri yükleme: işlem tamamlandıktan hemen sonra ve disk bağlı olduğunda başlar. Karşıya yükleme süresi verilerin, boyutun ve dosya sayısının yapısına bağlıdır.
+
 
 ## <a name="configure-and-connect"></a>Yapılandırma ve bağlanma
  
 ### <a name="q-can-i-specify-the-number-of-data-box-disks-in-the-order"></a>S. Siparişteki Data Box Diski sayısını seçebilir miyim?
-A.  Hayır. Verilerinizin boyutuna ve disklerin kullanılabilirliğine göre 8 TB boyutunda diskler (en fazla 5 disk) gönderilir.  
+A.  Hayır. Veri boyutunuza ve disklerin kullanılabilirliğine bağlı olarak 8 TB disk (en fazla 5 disk) alırsınız.  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>S. Data Box Disklerinin kilidini nasıl açabilirim? 
 A.  Azure portalda Data Box Disk siparişinize gidin ve **Cihaz ayrıntıları**'na gidin. Geçiş anahtarını kopyalayın. İşletim sisteminiz için Azure portaldan Data Box kilidi açma aracını indirip açın. Aracı, disklere kopyalamak istediğiniz verileri içeren bilgisayarda çalıştırın. Disklerin kilidini açmak için geçiş anahtarını girin. Aynı geçiş anahtarı tüm disklerin kilidini açar. 
@@ -116,7 +145,7 @@ A. Evet. Microsoft ayrıca yalnızca US Gov bölgede otomatik olarak yönetilen 
 Veri kopyalama ve doğrulama işlemi tamamlandıktan sonra, diskinizi döndürmek için aşağıdaki adımları uygulayın:
 
 1. Veri doğrulama tamamlandıktan sonra diskleri çıkarın. Bağlantı kablolarını çıkarın.
-2. Tüm diskleri ve bağlantı kablolarını kabarcıklı naylona sarın ve bunları sevkiyat kutusuna yerleştirin. Aksesuarlar eksikse ücret uygulanabilir.
+2. Tüm diskleri ve bağlantı kablolarını bir kabarcık sarması ile sarın ve bunları teslim kutusuna yerleştirin. Aksesuarlar eksikse ücret uygulanabilir.
 
     - Ürün size ilk ulaştığında gönderilen paketi kullanın. Disklerinizi, hava kabarcıklı ambalaj malzemesiyle sıkıca sararak paketlemenizi öneririz.
     - Diskin kutunun içinde hareket etmesini engellemek için kutuda boşluk kalmadığından emin olun.
@@ -139,16 +168,16 @@ A. USB 3.0 bağlantısıyla yapılan testlerde disk performansının 430 MB/sn s
 A.  Data Box Diskleri BitLocker AES-128 bit şifreleme kullanılarak şifrelenir ve destek anahtarına yalnızca Azure portaldan erişilebilir. Geçiş anahtarını almak için hesap kimlik bilgilerinizi kullanarak Azure portalda oturum açın. Data Box Disk kilit açma aracını çalıştırdığınızda bu geçiş anahtarını kullanın.
 
 ### <a name="q-how-do-i-copy-the-data-to-the-data-box-disks"></a>S. Data Box Disklerine nasıl veri kopyalayabilirim? 
-A.  Robocopy, Diskboss veya Windows Dosya Gezgini gibi bir SMB kopyalama aracı kullanarak verileri sürükleyip diske bırakın.
+A.  `Robocopy` `Diskboss` Verileri disklere kopyalamak için,,, ve hatta Windows Dosya Gezgini gıbı bir SMB kopyalama aracı kullanın.
 
 ### <a name="q-are-there-any-tips-to-speed-up-the-data-copy"></a>S. Veri kopyalama işlemini hızlandırmaya yönelik ipuçları var mı?
 A.  Kopyalama işlemini hızlandırmak için:
 
-- Birden fazla veri kopyalama akışı kullanın. Örneğin Robocopy'de çok iş parçacıklı seçeneği kullanın. Kullanılan komut hakkında daha fazla bilgi için [Öğretici: Azure Data Box Diskine veri kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md#copy-data-to-disks) sayfasına gidin.
+- Birden fazla veri kopyalama akışı kullanın. Örneğin, ile `Robocopy` Çoklu iş parçacıklı seçeneğini kullanın. Kullanılan komut hakkında daha fazla bilgi için [Öğretici: Azure Data Box Diskine veri kopyalama ve doğrulama](data-box-disk-deploy-copy-data.md#copy-data-to-disks) sayfasına gidin.
 - Birden fazla oturum kullanın.
 - Ağ paylaşımı üzerinden kopyalama yapmak yerine (ağ hızları kısıtlayıcı olabilir) verilerin, disklerin bağlı olduğu bilgisayarın yerel depolama alanında bulunduğundan emin olun.
-- Kopyalama işlemi boyunca USB 3.0 veya üzeri bağlantı kullandığınızdan emin olun. Bilgisayara bağlı USB denetleyicilerini ve USB cihazlarını tanımlamak için [USBView aracını](/windows-hardware/drivers/debugger/usbview) indirin ve kullanın.
-- Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. Sunucu donanımının performansını karşılaştırmak için [Bluestop FIO aracını](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
+- Kopyalama işlemi boyunca USB 3.0 veya üzeri bağlantı kullandığınızdan emin olun. Bilgisayara bağlı USB denetleyicilerini ve USB cihazlarını belirlemek için [ `USBView` aracını](/windows-hardware/drivers/debugger/usbview) indirin ve kullanın.
+- Veri kopyalamak için kullanılan bilgisayarın performansını karşılaştırın. , Sunucu donanımının performansını kıyaslamaya yönelik [Mavestop `FIO` aracını](https://ci.appveyor.com/project/axboe/fio) indirin ve kullanın. En son x86 veya x64 yapısını seçin, **yapılar** sekmesini SEÇIN ve MSI 'yi indirin.
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>S. Kaynak veriler küçük dosyalardan (KB veya birkaç MB) oluşuyorsa veri aktarımını nasıl hızlandırabilirim?
 A.  Kopyalama işlemini hızlandırmak için:
@@ -163,7 +192,7 @@ A.  Hayır. Şu an için Data Box Diskleri ile yalnızca tek bir depolama hesab�
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>S. Data Box diskleriyle verilerim için araç seti nedir?
 A. Data Box Disk bulunan araç takımı üç araç içerir:
  - **Data Box disk kilit açma aracı**: Microsoft 'tan gönderilen şifrelenmiş disklerin kilidini açmak için bu aracı kullanın. Aracı kullanarak disklerin kilidini açarken, Azure portal Data Box Disk sırada kullanılabilir bir geçiş anahtarı sağlamanız gerekir. 
- - **Data Box disk doğrulama aracı**: Azure adlandırma kurallarına göre boyut, biçim ve BLOB adlarını doğrulamak için bu aracı kullanın. Ayrıca, Azure 'a yüklenen verileri doğrulamak için kullanılan kopyalanmış veriler için sağlama toplamı oluşturur.
+ - **Data Box disk doğrulama aracı**: Azure adlandırma kurallarına göre boyut, biçim ve BLOB adlarını doğrulamak için bu aracı kullanın. Ayrıca, kopyalanmış veriler için Azure 'a yüklenen verileri doğrulamak için kullanılan sağlama toplamı oluşturur.
  - **Bölünmüş kopyalama aracı Data Box disk**: birden çok disk kullanırken ve tüm disklerde bölünmesi ve kopyalanması gereken büyük bir veri kümesine sahip olduğunuzda bu aracı kullanın. Bu araç şu anda Windows için kullanılabilir. Bu araç yönetilen disklerle desteklenmez. Bu araç Ayrıca verileri kopyalarken doğrular, bu nedenle bu aracı kullanırken doğrulama adımını atlayabilirsiniz.
 
 Araç takımı hem Windows hem de Linux için kullanılabilir. Araç takımını buradan indirebilirsiniz:
@@ -180,10 +209,10 @@ A. Azure dosyaları Data Box Disk desteklenir, ancak Azure Dosya Eşitleme ile b
 A.  Veri Kopyalama işlemi için sipariş durumu tamamlandı olarak değiştiğinde verilerinize doğrudan erişim sağlayabilirsiniz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>S. Yükleme sonrasında verilerim Azure'da hangi konumda bulunur?
-A.  Verileri diskinizdeki *BlockBlob* ve *PageBlob* klasörlerinin altına kopyaladığınızda Azure depolama hesabında *BlockBlob* ve *PageBlob* klasörünün her alt klasörü için bir kapsayıcı oluşturulur. Dosyaları doğrudan *BlockBlob* ve *PageBlob* klasörlerine kopyaladıysanız Azure Depolama hesabında *$root* adlı varsayılan kapsayıcıya yerleştirilir. Verileri *AzureFile* klasörü altındaki bir klasöre kopyaladığınızda, bir FileShare oluşturulur.
+A.  Verileri diskinizdeki *BlockBlob* ve *PageBlob* klasörlerinin altına kopyaladığınızda Azure depolama hesabında *BlockBlob* ve *PageBlob* klasörünün her alt klasörü için bir kapsayıcı oluşturulur. Dosyaları *blockblob* ve *pageblob* klasörlerinin altına doğrudan kopyaladıysanız, dosyalar Azure depolama hesabı altında varsayılan bir kapsayıcı *$root* . Verileri *AzureFile* klasörü altındaki bir klasöre kopyaladığınızda, bir FileShare oluşturulur.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>S. Kapsayıcılarım için Azure adlandırma gereksinimlerine uygun hareket etmediğimi fark ettim. Verilerim yine de Azure'a yüklenir mi?
-A. Kapsayıcı adlarında büyük harf kullandıysanız bunlar otomatik olarak küçük harfe dönüştürülür. Adlar diğer kurallara (özel karakterler, diğer diller gibi) uygun değilse yükleme işlemi başarısız olur. Daha fazla bilgi için [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) gidin.
+A. Kapsayıcı adlarındaki tüm büyük harfler otomatik olarak küçük harfe dönüştürülür. Adlar diğer yollarla uyumlu değilse (örneğin, özel karakterler veya diğer diller içeriyorsa) karşıya yükleme başarısız olur. Daha fazla bilgi için [Azure adlandırma kurallarına](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) gidin.
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>S. Birden fazla Data Box Diskine kopyaladığım verileri nasıl doğrulayabilirim?
 A.  Veri kopyalama işlemi tamamlandıktan sonra *DataBoxDiskImport* klasöründe bulunan `DataBoxDiskValidation.cmd` uygulamasını çalıştırarak doğrulama için sağlama toplamları alabilirsiniz. Birden fazla diskiniz varsa her disk için bir komut penceresi açarak bu komutu çalıştırmanız gerekir. Bu işlemin verilerinizin boyutuna göre uzun sürebileceğini (birkaç saat) unutmayın.
@@ -192,7 +221,7 @@ A.  Veri kopyalama işlemi tamamlandıktan sonra *DataBoxDiskImport* klasöründ
 A.  Veriler Azure'a kopyalandıktan sonra disklerdeki veriler NIST SP 800-88 Revision 1 yönergelerine uygun ve güvenli bir şekilde silinir.  
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>S. Verilerim aktarım sırasında nasıl korunur? 
-A.  Data Box Diskleri AES-128 Microsoft BitLocker şifrelemesi ile korunur. Tüm disklerin kilidini açmak ve verilere erişmek için tek bir geçiş anahtarı kullanılması gerekir.
+A.  Data Box diskler AES-128 Microsoft BitLocker şifrelemesi ile şifrelenir ve tüm disklerin kilidini açmak ve verilere erişmek için tek bir geçiş anahtarı gerekir.
 
 ### <a name="q-do-i-need-to-rerun-checksum-validation-if-i-add-more-data-to-the-data-box-disks"></a>S. Data Box Disklerine daha fazla veri eklersem sağlama toplamı doğrulama işlemini tekrar çalıştırmam gerekir mi?
 A. Evet. Verilerinizi doğrulamaya karar verirseniz (bunu yapmanızı öneririz!) disklere daha fazla veri eklemeniz durumunda doğrulama işlemini tekrarlamanız gerekir.
@@ -200,11 +229,11 @@ A. Evet. Verilerinizi doğrulamaya karar verirseniz (bunu yapmanızı öneririz!
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>S. Veri aktarımı için tüm diskleri kullandım ve daha fazla disk sipariş etmem gerekiyor. Siparişi hızlı bir şekilde vermek için kullanabileceğim bir yöntem var mı?
 A. Önceki siparişinizi kopyalayabilirsiniz. Kopyalama işlemi, bir öncekiyle aynı bilgilere sahip bir sipariş oluşturur ve adres, iletişim ve bildirim ayrıntılarını yeniden girmenize gerek kalmadan yalnızca sipariş bilgilerini düzenleyebilirsiniz.
 
-### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>S. Verileri ManagedDisk klasörüne kopyaladım. Yönetilen diskler için belirtilen kaynak grubuyla hiçbir yönetilen disk görmüyorum. Verilerim Azure 'a yüklendi ve verileri nasıl bulabilirim?
-A. Evet. Verileriniz Azure 'a yüklendi ancak belirtilen kaynak gruplarıyla yönetilen disk görmüyorsanız, bunun nedeni verilerin geçerli olmaması olabilir. Sayfa Blobları, blok Blobları, Azure dosyaları ve yönetilen diskler geçerli değilse, bunlar aşağıdaki klasörlere gider:
- - Sayfa Blobları, *databoxdisk-geçersiz-PB-* ile başlayan bir Blok Blobu kapsayıcısına gider.
- - Azure dosyaları *databoxdisk-geçersiz-AF-* ile başlayan bir Blok Blobu kapsayıcısına gider.
- - Yönetilen diskler databoxdisk ile başlayan bir Blok Blobu kapsayıcısına gidebilir *-geçersiz-MD-*.
+### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>S. Verileri ManagedDisk klasörüne kopyaladım. Yönetilen diskler için belirtilen kaynak grubuyla hiçbir yönetilen disk görmüyorum. Verilerim Azure 'a yüklendi mi? Nasıl bulabilirim?
+A. Evet. Verileriniz Azure 'a yüklendi, ancak belirtilen kaynak gruplarıyla yönetilen disk görmüyorsanız, bu durum büyük olasılıkla verilerin geçerli olmaması olabilir. Sayfa Blobları, blok Blobları, Azure dosyaları veya yönetilen diskler geçerli değilse, şu klasörlere gidecektir:
+ - Sayfa Blobları, *databoxdisk-geçersiz-PB-* ile başlayan bir Blok Blobu kapsayıcısına gidecek.
+ - Azure dosyaları, databoxdisk ile başlayan bir Blok Blobu kapsayıcısına gider *-geçersiz-AF-*.
+ - Yönetilen diskler, databoxdisk ile başlayan bir Blok Blobu kapsayıcısına gider *-geçersiz-MD-*.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: d3ce6e888c937676027f2b71578c38b56f3bd6af
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 266c04a049cab574576f781c397aee566efe5372
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97388031"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516619"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Yalnızca durum bilgisi olan düğüm türleriyle bir Azure Service Fabric kümesi dağıtma (Önizleme)
 Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan hizmetlerin düğümlere yerleştirilebileceği bir süre ile gelir. Durum bilgisiz düğüm türleri bir düğüm türü için bu varsayımını daha hızlı hale getirme, böylece düğüm türünün daha hızlı genişleme işlemleri gibi diğer özellikleri kullanmasına izin vermek, bu sayede düğüm türünün daha hızlı genişleme işlemleri, en az sayıda düğüm için destek ve tek bir sanal makine ölçek kümesinde 100 ' den fazla düğüme
@@ -24,6 +24,8 @@ Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan
 
 ## <a name="enabling-stateless-node-types-in-service-fabric-cluster"></a>Service Fabric kümesinde durum bilgisiz düğüm türlerini etkinleştirme
 Bir küme kaynağında durum bilgisiz olarak bir veya daha fazla düğüm türü ayarlamak için, **ısdurumsuz** özelliğini "true" olarak ayarlayın. Durum bilgisiz düğüm türleriyle bir Service Fabric kümesi dağıtımında, küme kaynağında en az bir tane birincil düğüm türü olduğunu unutmayın.
+
+* Service Fabric küme kaynağı apiVersion, "2020-12-01-Preview" veya üzeri olmalıdır.
 
 ```json
 {
@@ -238,6 +240,8 @@ Standart Load Balancer ve standart genel IP, temel SKU 'Ları kullanmaya kıyasl
 
 
 ### <a name="migrate-to-using-stateless-node-types-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip"></a>Temel SKU Load Balancer ve temel SKU IP 'si kullanarak bir kümeden durum bilgisiz düğüm türlerini kullanmak için geçirme
+Tüm geçiş senaryolarında, yalnızca durum bilgisi olmayan yeni bir düğüm türünün eklenmesi gerekir. Mevcut düğüm türü yalnızca durum bilgisi olmayan bir şekilde geçirilemez.
+
 Temel SKU ile Load Balancer ve IP kullanan bir kümeyi geçirmek için, önce standart SKU 'yu kullanarak tamamen yeni bir Load Balancer ve IP kaynağı oluşturmanız gerekir. Bu kaynakları yerinde güncelleştirmek mümkün değildir.
 
 Yeni LB ve IP 'yi kullanmak istediğiniz yeni durum bilgisiz düğüm türlerinde başvurulmalıdır. Yukarıdaki örnekte, durum bilgisiz düğüm türleri için kullanılacak yeni bir sanal makine ölçek kümesi kaynakları eklenir. Bu sanal makine ölçek kümeleri, yeni oluşturulan LB ve IP 'ye başvurur ve Service Fabric küme kaynağında durum bilgisiz düğüm türü olarak işaretlenir.
@@ -247,28 +251,8 @@ Başlamak için, mevcut Kaynak Yöneticisi şablonunuza yeni kaynakları eklemen
 * Standart SKU kullanan bir Load Balancer kaynağı.
 * Sanal makine ölçek kümelerinizi dağıttığınız alt ağ tarafından başvurulan bir NSG.
 
-
-[Örnek şablonda](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/10-VM-2-NodeTypes-Windows-Stateless-Secure)bu kaynaklara bir örnek bulabilirsiniz.
-
-```powershell
-New-AzureRmResourceGroupDeployment `
-    -ResourceGroupName $ResourceGroupName `
-    -TemplateFile $Template `
-    -TemplateParameterFile $Parameters
-```
-
 Kaynakların dağıtımı tamamlandıktan sonra, özgün kümeden kaldırmak istediğiniz düğüm türündeki düğümleri devre dışı bırakmayı deneyebilirsiniz.
 
-```powershell
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName `
-    -KeepAliveIntervalInSec 10 `
-    -X509Credential `
-    -ServerCertThumbprint $thumb  `
-    -FindType FindByThumbprint `
-    -FindValue $thumb `
-    -StoreLocation CurrentUser `
-    -StoreName My 
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

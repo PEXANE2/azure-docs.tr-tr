@@ -3,21 +3,19 @@ title: 'Öğretici: IoT Central ile bir Solar paneli izleme uygulaması oluştur
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak Solar Panel uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 145aefbe5a31d71ae614826c63d285c37ac03571
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123934"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516761"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
-
-
 
 Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar paneli izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide şunları öğreneceksiniz:
 
@@ -31,8 +29,8 @@ Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar pane
 Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Önkoşullar
-- Hiçbiri
-- Azure aboneliği önerilir, ancak denemek için gerekli değildir
+* Hiçbiri
+* Azure aboneliği önerilir, ancak denemek için gerekli değildir
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Güneş paneli izleme uygulaması oluşturma 
@@ -41,12 +39,12 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
 1. [Azure IoT Central giriş sayfasını](https://apps.azureiotcentral.com) açın ve yeni bir uygulama oluşturmak için **Oluştur** ' a tıklayın. 
 
-2. **Enerji** sekmesini seçin ve sonra da **güneş paneli izleme** uygulaması kutucuğunda **uygulama oluştur** ' a tıklayın. 
+1. **Enerji** sekmesini seçin ve sonra da **güneş paneli izleme** uygulaması kutucuğunda **uygulama oluştur** ' a tıklayın. 
 
     > [!div class="mx-imgBorder"]
     > ![Uygulama oluştur](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-3. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
+1. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
     * **Uygulama adı**: IoT Central uygulamanız için bir ad seçin. 
     * **URL**: bir IoT Central URL 'si seçin, platform benzersiz olduğunu doğrular.
     * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
@@ -61,7 +59,7 @@ Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
 Yeni oluşturulan Solar paneli uygulaması, uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Bu uygulamayı değiştirmeden önce uygulamanın dağıtıldığından ve beklendiği gibi çalıştığından emin olalım.
 
-Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya**gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
+Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya** gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
 
 ## <a name="application-walk-through"></a>Uygulama izlenecek yol
 Uygulama şablonunu başarıyla dağıttıktan sonra, örnek akıllı ölçüm cihazı, cihaz modeli ve Pano ile birlikte gelir.
@@ -100,7 +98,7 @@ Güneş paneli cihaz modelini görmek için **cihaz şablonları** sekmesine tı
 Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağıdaki adımları izleyerek uygulamanızı silin:
 
 1. Sol bölmeden Yönetim sekmesini açın
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
+1. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
 
     > [!div class="mx-imgBorder"]
     > ![Uygulamayı Sil](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
