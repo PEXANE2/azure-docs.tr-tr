@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3f68ca0fc577e6cf3f896ede0418f11f59756701
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f4d8f8783e9f6eece4de8dc1c35740fa7aaf03f8
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86512631"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531878"
 ---
 | Kaynak | Temel | Standart | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "86512631"
 | Maksimum görüntü katmanı boyutu (GiB) | 200 | 200 | 200 |
 | Dakikada ReadOps<sup>2, 3</sup> | 1.000 | 3.000 | 10,000 |
 | Dakikada WriteOps<sup>2, 4</sup> | 100 | 500 | 2.000 |
-| İndirme bant genişliği MBps<sup>2</sup> | 30 | 60 | 100 |
-| Karşıya yükleme bant genişliği MBps<sup>2</sup> | 10 | 20 | 50 |
+| İndirme bant genişliği Mbps<sup>2</sup> | 30 | 60 | 100 |
+| Karşıya yükleme bant genişliği Mbps<sup>2</sup> | 10 | 20 | 50 |
 | Web Kancaları | 2 | 10 | 500 |
 | Coğrafi çoğaltma | Yok | Yok | [Desteklenir][geo-replication] |
 | İçerik güveni | Yok | Yok | [Desteklenir][content-trust] |
@@ -39,7 +39,7 @@ ms.locfileid: "86512631"
 
 <sup>1</sup> depolama her katman için günlük fiyata dahildir. Ek depolama için, depolama sınırına kadar, GiB başına ek bir günlük ücret ödersiniz. Hız bilgileri için bkz. [Azure Container Registry fiyatlandırması][pricing].
 
-<sup>2</sup>*readops*, *writeops*ve *bant genişliği* minimum tahminlerdir. Azure Container Registry, kullanım gerektirdiğinden performansı artırmak için çaba harcar.
+<sup>2</sup>*readops*, *writeops* ve *bant genişliği* minimum tahminlerdir. Azure Container Registry, kullanım gerektirdiğinden performansı artırmak için çaba harcar.
 
 <sup>3</sup> [Docker Pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) , görüntüdeki katmanların sayısına ve bildirim almaya göre birden çok okuma işlemine çevrilir.
 

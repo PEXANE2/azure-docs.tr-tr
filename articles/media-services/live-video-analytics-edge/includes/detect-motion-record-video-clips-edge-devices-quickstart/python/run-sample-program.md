@@ -1,21 +1,63 @@
 ---
-ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: c99d2489efe7c46b8d50b08861fcbbcd6f8a1966
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828846"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97531875"
 ---
 1. Visual Studio Code, **Uzantılar** sekmesini açın (veya CTRL + SHIFT + X tuşlarına basın) ve Azure IoT Hub aratın.
 1. Sağ tıklayıp **uzantı ayarları**' nı seçin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Uzantı ayarları":::
+1. "Ayrıntılı Iletiyi göster" i arayın ve etkinleştirin.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Uzantı ayarları&quot;:::
-1. &quot;Ayrıntılı Iletiyi göster"
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Ayrıntılı Iletiyi göster":::
+1. F5 tuşunu seçerek bir hata ayıklama oturumu başlatın. **TERMINAL** penceresinde bazı iletiler yazdırılır.
+1. Koddaki *operations.js* doğrudan yöntemleri `GraphTopologyList` ve ' i çağırır `GraphInstanceList` . Önceki hızlı başlangıçlardan sonra kaynakları temizledikten sonra bu işlem boş listeleri döndürür ve sonra duraklatılır. Enter tuşuna basın.
+    
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "2.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+  
+  **TERMINAL** penceresinde, bir sonraki doğrudan yöntem çağrısı kümesi gösterilir:  
+  
+  * Öğesine yapılan bir çağrı `GraphTopologySet``topologyUrl` 
+  * Aşağıdaki gövdesini kullanan öğesine yapılan bir çağrı `GraphInstanceSet` :
+  
+  ```
+  {
+    "@apiVersion": "2.0",
+    "name": "Sample-Graph",
+    "properties": {
+      "topologyName": "EVRToFilesOnMotionDetection",
+      "description": "Sample graph description",
+      "parameters": [
+        {
+          "name": "rtspUrl",
+          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+        },
+        {
+          "name": "rtspUserName",
+          "value": "testuser"
+        },
+        {
+          "name": "rtspPassword",
+          "value": "testpassword"
         }
       ]
     }

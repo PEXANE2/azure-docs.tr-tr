@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 09/18/2019
 ms.author: cephalin
-ms.openlocfilehash: 70ab0b5c70e94c4784a7ab260b3304107bcb1175
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 7458f6868d7fbee72b55ad002148691a113c269d
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096305"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97532062"
 ---
 Yapılandırmayı başka bir dağıtım yuvasından kopyaladığınızda, kopyalanmış yapılandırma düzenlenebilir olur. Bazı yapılandırma öğeleri bir takas (yuvaya özgü değil) içindeki içeriği izler, ancak diğer yapılandırma öğeleri bir değiştirme sonrasında aynı yuvada kalır (yuvaya özgü). Aşağıdaki listeler, yuvaları takas yaparken değişen ayarları gösterir.
 
@@ -41,5 +41,7 @@ Yıldız işareti (*) ile işaretlenen özellikler, takas edilmemiş olarak plan
 * Sanal ağ tümleştirmesi
 
 > [!NOTE]
+> Bu ayarları değiştirilebilir yapmak için uygulamanın her yuvasında uygulama ayarını ekleyin `WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS` ve değerini veya olarak ayarlayın `0` `false` . Bu ayarlar tamamen değiştirilebilir veya hiç yok. Başkalarının değil, yalnızca bazı ayarları deitirilebilir hale getirebilirsiniz.
+
 > Takas edilmemiş ayarlara uygulanan bazı uygulama ayarları da takas edilmez. Örneğin, Tanılama ayarları değiştirilmediğinden, ve gibi ilgili uygulama ayarları, `WEBSITE_HTTPLOGGING_RETENTION_DAYS` `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` yuva ayarı olarak gösterilmese bile, aynı zamanda takas edilmez.
 >
