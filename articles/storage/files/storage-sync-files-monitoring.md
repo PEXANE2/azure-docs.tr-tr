@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 87d0b740ec4f7ffb8966b386c273c023f69c42d8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008308"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586559"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure Dosya Eşitleme’yi izleme
 
@@ -161,7 +161,7 @@ Bulut katmanlama durumu
   - Olay KIMLIĞI 9003, bir sunucu uç noktası için hata dağıtımı sağlar. Örneğin: Toplam hata sayısı ve hata kodu. Hata kodu başına bir olay günlüğe kaydedilir.
   - Olay kimliği 9016, bir birim için hayalet kopya oluşturuluyor sonuçları sağlar. Örneğin: boş alan yüzdesi, oturumdaki hayalet dosya sayısı ve hayalet başarısız olan dosya sayısı.
   - Olay kimliği 9029, bir sunucu uç noktası için hayalet kopya oluşturuluyor oturum bilgileri sağlar. Örneğin: oturumda denenen dosya sayısı, oturumda katmanlı dosya sayısı ve zaten katmanlı dosya sayısı.
-  
+
 - Bir sunucudaki geri çekme etkinliğini izlemek için, *uygulamalar ve Services\Microsoft\FileSync\Agent* altında Olay Görüntüleyicisi bulunan telemetri olay GÜNLÜĞÜNDE olay kimliği 9005, 9006, 9009, 9059 ve 9071 kullanın.
 
   - Olay KIMLIĞI 9005, bir sunucu uç noktası için geri çağırma güvenilirliği sağlar. Örneğin: erişilen toplam benzersiz dosya ve başarısız erişimi olan toplam benzersiz dosya sayısı.
@@ -192,7 +192,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 
   > [!Note]  
   > Bir uyarı oluşturursanız ve çok gürültülü bir uyarı oluşturursanız eşik değerini ve uyarı mantığını ayarlayın.
-  
+
 ### <a name="how-to-create-an-alert-if-the-server-endpoint-health-shows-an-error-in-the-portal"></a>Sunucu uç noktası durumu portalda bir hata gösteriyorsa uyarı oluşturma
 
 1. **Azure Portal** Ilgili **depolama eşitleme hizmeti**' ne gidin. 
@@ -201,16 +201,16 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
 4. **Koşul Seç**' i tıklatarak koşulu yapılandırın.
 5. **Sinyal mantığını Yapılandır** dikey penceresinde, sinyal adı altında **eşitleme oturumu sonucu** ' na tıklayın.  
 6. Aşağıdaki boyut yapılandırmasını seçin: 
-    - Boyut adı: **sunucu uç noktası adı**  
-    - İşlecinde **=** 
-    - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
+     - Boyut adı: **sunucu uç noktası adı**  
+     - İşlecinde **=** 
+     - Boyut değerleri: **tüm geçerli ve gelecekteki değerler**  
 7. **Uyarı mantığına** gidin ve aşağıdakileri doldurun: 
-    - Eşik **statik** olarak ayarlandı 
-    - İşleç: **küçüktür** 
-    - Toplama türü: **en fazla**  
-    - Eşik değeri: **1** 
-    - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **24 saat** | Değerlendirme sıklığı = **her saat** 
-    - Bitti ' ye tıklayın **.** 
+     - Eşik **statik** olarak ayarlandı 
+     - İşleç: **küçüktür** 
+     - Toplama türü: **en fazla**  
+     - Eşik değeri: **1** 
+     - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **24 saat** | Değerlendirme sıklığı = **her saat** 
+     - Bitti ' ye tıklayın **.** 
 8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 10. **Uyarı kuralı oluştur**’a tıklayın. 
@@ -254,7 +254,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
      - Toplama türü: **en fazla**  
      - Eşik değeri (bayt): **1** 
      - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **1 saat** | Değerlendirme sıklığı = **her 30 dakikada** bir 
-        - Ölçümlerin her 15 ila 20 dakikada bir Azure Izleyici 'ye gönderileceğini unutmayın. **Değerlendirme sıklığını** 30 dakikadan kısa bir süre ayarlama (yanlış uyarılar üretir).
+         - Ölçümlerin her 15 ila 20 dakikada bir Azure Izleyici 'ye gönderileceğini unutmayın. **Değerlendirme sıklığını** 30 dakikadan kısa bir süre ayarlama (yanlış uyarılar üretir).
      - Bitti ' ye tıklayın **.** 
 8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
@@ -277,7 +277,7 @@ Bu bölüm Azure Dosya Eşitleme için bazı örnek uyarılar sağlar.
      - Toplama türü: **Toplam**  
      - Eşik değeri (bayt): **67108864000** 
      - Temel alınarak değerlendirilen: toplama ayrıntı düzeyi = **24 saat** | Değerlendirme sıklığı = **her saat** 
-    - Bitti ' ye tıklayın **.** 
+     - Bitti ' ye tıklayın **.** 
 8. Var olan bir eylem grubunu seçerek veya yeni bir eylem grubu oluşturarak uyarıya bir eylem grubu (e-posta, SMS, vb.) eklemek için **Eylem grubunu Seç** ' e tıklayın.
 9. Uyarı **kuralı adı**, **Açıklama** ve **önem derecesi** gibi **uyarı ayrıntılarını** girin.
 10. **Uyarı kuralı oluştur**’a tıklayın. 

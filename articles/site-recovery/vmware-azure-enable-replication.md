@@ -3,21 +3,21 @@ title: Azure Site Recovery kullanarak olağanüstü durum kurtarma için VMware 
 description: Bu makalede, Azure Site Recovery hizmeti kullanılarak olağanüstü durum kurtarma için VMware VM çoğaltmasının nasıl etkinleştirileceği açıklanır.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 04/01/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 74870d10348421bf726b9bdc58504a74cf4105a9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587766"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM’leri için Azure'a çoğaltmayı etkinleştirme
 
 Bu makalede, şirket içi VMware sanal makinelerinin (VM) Azure 'a nasıl çoğaltılmasının nasıl etkinleştirileceği açıklanır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, sisteminizin aşağıdaki ölçütleri karşıladığı varsayılmaktadır:
 
@@ -57,7 +57,7 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
 
 Çoğaltmayı etkinleştirmek için şu adımları izleyin:
 
-1. 2. **Adım: uygulama kaynağını Çoğalt**' a gidin  >  **Source**. Çoğaltmayı ilk kez etkinleştirdikten sonra ek sanal makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
+1. 2. **Adım: uygulama kaynağını Çoğalt**' a gidin  >  . Çoğaltmayı ilk kez etkinleştirdikten sonra ek sanal makineler için çoğaltmayı etkinleştirmek üzere kasada **+ Çoğalt** ' ı seçin.
 1. **Kaynak** sayfada > **kaynak** bölümünde yapılandırma sunucusunu seçin.
 1. **Makine türü** Için **sanal makineler** veya **fiziksel makineler**' i seçin.
 1. **vCenter/vSphere Hypervisor** bölümünde vSphere konağını yöneten vCenter sunucusunu veya konağı seçin. Fiziksel bilgisayarları çoğaltdıysanız Bu ayar ilgili değildir.
@@ -79,7 +79,7 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication5.png" alt-text="Çoğaltmayı etkinleştir sanal makineler penceresi seçin":::
 
-1. Özellikler **Properties**  >  **yapılandırma özellikleri** için, işlem sunucusunun VM 'ye Site Recovery Mobility hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. Ayrıca, veri dalgalanma desenlerinize göre çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
+1. Özellikler   >  **yapılandırma özellikleri** için, işlem sunucusunun VM 'ye Site Recovery Mobility hizmetini otomatik olarak yüklemek için kullandığı hesabı seçin. Ayrıca, veri dalgalanma desenlerinize göre çoğaltma için kullanılacak hedef yönetilen disk türünü seçin.
 1. Varsayılan olarak, bir kaynak VM 'nin tüm diskleri çoğaltılır. Diskleri çoğaltmanın dışında tutmak için, çoğaltmak istemediğiniz disklerin **dahil** etme onay kutusunu temizleyin. Ardından **Tamam**’ı seçin. Daha sonra ek özellikleri ayarlayabilirsiniz. Diskleri dışarıda bırakma hakkında [daha fazla bilgi edinin](vmware-azure-exclude-disk.md) .
 
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication6.png" alt-text="Çoğaltmayı etkinleştir özellikleri yapılandırma penceresi":::
@@ -94,6 +94,41 @@ Bu bölümdeki adımları uygulamadan önce, aşağıdaki bilgileri gözden geç
    :::image type="content" source="./media/vmware-azure-enable-replication/enable-replication7.png" alt-text="Çoğaltma penceresini etkinleştir":::
 
 1. **Çoğaltmayı etkinleştir**' i seçin. **Koruma** işinin ilerleme durumunu **Ayarlar**  >  **işleri**  >  **Site Recovery işler**' de izleyebilirsiniz. **Korumayı Sonlandır** işi çalıştıktan sonra, sanal makine yük devretmeye hazırsa.
+
+## <a name="monitor-initial-replication"></a>İlk çoğaltmayı izleme
+
+Korunan öğenin "çoğaltmayı etkinleştir" işlemi tamamlandıktan sonra, Azure Site Recovery kaynak makineden hedef bölgeye verilerin çoğaltılmasını (eşitlemeye ilişkin eş anlamlı) başlatır. Bu süre boyunca kaynak disklerin çoğaltması oluşturulur. Yalnızca özgün disklerin kopyalanmasının tamamlanmasından sonra, delta değişiklikleri hedef bölgeye kopyalanır. Özgün disklerin kopyalanması için geçen süre, gibi birden çok parametreye bağımlıdır:
+
+- kaynak makine disklerinin boyutu
+- verileri Azure 'a aktarmak için kullanılabilen bant genişliği (en uygun bant genişliğini belirlemek için dağıtım planlayıcısı 'ndan yararlanabilirsiniz)
+- bellek, boş disk alanı ve CPU gibi işlem sunucusu kaynakları, korumalı öğelerden alınan verileri işlemek & işlem sunucusunun [sağlıklı](vmware-physical-azure-monitor-process-server.md#monitor-proactively)olduğundan emin olun.
+
+İlk çoğaltmanın ilerlemesini izlemek için Azure portal > çoğaltılan öğeler-> izleyici "durum" sütun değeri çoğaltılan öğe ' de kurtarma hizmetleri Kasası ' na gidin. Durum, ilk çoğaltmanın tamamlanma yüzdesini gösterir. Durum üzerine gelindiğinde, "aktarılan toplam veri" kullanılabilir. Durum ' a tıklandıktan sonra bağlamsal bir sayfa açılır ve aşağıdaki parametreleri görüntüler:
+
+- Son yenilenme zamanı-tüm makinenin çoğaltma bilgilerinin hizmet tarafından yenilendiği en son zamanı gösterir.
+- Tamamlanma yüzdesi-VM için tamamlanan ilk çoğaltma yüzdesini gösterir
+- Aktarılan toplam veri-VM 'den Azure 'a aktarılan veri miktarı
+
+:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="çoğaltma durumu" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+
+- Eşitleme ilerlemesi (bir disk düzeyindeki ayrıntıları izlemek için)
+    - Çoğaltma durumu
+      - Çoğaltma henüz başlamazsa, durum "kuyrukta" olarak güncelleştirilir. İlk çoğaltma sırasında tek seferde yalnızca 3 disk çoğaltılır. Bu mekanizma, işlem sunucusunda azaltmayı önlemek için izlenir.
+      - Çoğaltma başladıktan sonra durum "sürüyor" olarak güncelleştirilir.
+      - İlk çoğaltma tamamlandıktan sonra durum "tamamlandı" olarak işaretlenir.        
+   - Site Recovery özgün diskten okur, verileri Azure 'a aktarır ve bir disk düzeyinde ilerleme durumunu yakalar. Site Recovery, diskin kullanılmayan boyutunun çoğaltılmasını atlayıp tamamlanmış verilere ekler. Bu nedenle, tüm diskler arasında aktarılan verilerin toplamı VM düzeyinde "aktarılan toplam veri" ekleyemeyebilir.
+   - Bir diske karşı bilgi balonuna tıklandıktan sonra, disk için çoğaltma (eşitleme için eş anlamlı) tetiklendiğinde, son 15 dakika içinde Azure 'a aktarılan verilerin ve ardından son yenilenen zaman damgasının sonunda Ayrıntılar alabilirsiniz. Bu zaman damgası, Azure hizmeti tarafından kaynak makineden :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-info-balloon.png" alt-text="ilk çoğaltma-bilgi-balon-ayrıntılarından" lightbox="media/vmware-azure-enable-replication/initial-replication-info-balloon.png"::: en son bilgilerin alındığı zamanı gösterir
+   - Her diskin sistem durumu görüntülenir
+      - Çoğaltma beklenenden yavaşsa, disk durumu uyarı ' ya döner.
+      - Çoğaltma ilerlemiyorsa, disk durumu kritik olarak döner
+
+Sistem durumu kritik/uyarı durumundaysa, makinenin ve [Işlem sunucusu](vmware-physical-azure-monitor-process-server.md) 'Nun çoğaltma durumunun sağlıklı olduğundan emin olun. 
+
+Çoğaltma işini etkinleştirme işlemi tamamlandıktan hemen sonra çoğaltma işlemi %0 olur ve aktarılan toplam veri yok olur. Tıklandıktan sonra, belirlenen her diske karşı veriler "NA" olur. Bu, çoğaltmanın başlatılmasının henüz başladığını ve Azure Site Recovery henüz en son istatistikleri almadığını gösterir. İlerleme, 30 dakikalık bir aralıkta yenilenir.
+
+> [!NOTE]
+> Doğru ilerlemenin yakalanıp Site Recovery hizmetlere gönderildiğinden emin olmak için yapılandırma sunucularını, genişleme işlem sunucularını ve Mobility aracılarını 9,36 veya üzeri sürümlere güncelleştirdiğinizden emin olun.
+
 
 ## <a name="view-and-manage-vm-properties"></a>VM özelliklerini görüntüleme ve yönetme
 

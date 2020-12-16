@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 8226a1e445c6f7f6360d715d17bbe5229e4172b6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a3b9ae91118f714ce15f56cde0f79faa4fb4d640
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454798"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586695"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Öğretici: doğrudan tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ Doğrudan Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetil
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **doğrudan**yazın, sonuç panelinden **doğrudan** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **doğrudan** yazın, sonuç panelinden **doğrudan** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![sonuçlar listesinde doğrudan](common/search-new-app.png)
+    ![sonuçlar listesinde doğrudan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre doğrudan yapılandırın ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre doğrudan yapılandırın ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve doğrudan ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Doğrudan Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -143,8 +143,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
+    a. **Ad** alanına **Brittasıon** girin.
+
     b. **Kullanıcı adı** alanına yazın brittasimon@yourcompanydomain.extension . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -185,15 +185,15 @@ Bu bölümde, doğrudan ' de Britta Simon adlı bir Kullanıcı oluşturacaksın
 
 Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-1. **IDP tarafından başlatılan modda**test etmek istiyorsanız:
+1. **IDP tarafından başlatılan modda** test etmek istiyorsanız:
 
     Erişim panelinde **doğrudan** Kutucuğa tıkladığınızda **doğrudan** uygulamanıza otomatik olarak oturum açmış olmanız gerekir.
 
-2. **SP tarafından başlatılan modda**test etmek istiyorsanız:
+2. **SP tarafından başlatılan modda** test etmek istiyorsanız:
 
     a. Erişim panelinde **doğrudan** kutucuğa tıklayın ve uygulama oturum açma sayfasına yönlendirilirsiniz.
 
-    b. `subdomain`Görüntülenecek metin kutusuna giriş yapın ve ' 次へ (ileri) ' tuşuna basın ve **doğrudan** uygulamanızda oturum açmanız gerekir.
+    b. `subdomain`Görüntülenecek metin kutusuna giriş yapın ve **İleri**' yi seçin ve **doğrudan** uygulamanıza otomatik olarak oturum açmış olmanız gerekir.
 
 Erişim panelinde doğrudan Kutucuğa tıkladığınızda, SSO 'yu ayarladığınız doğrudan için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 02919c8e31e556ab7b5e7e04fcbde27dcf981736
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511578"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586015"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -29,7 +29,7 @@ Ağ Geçidi Hizmeti, bir IP adresinin arkasında yer alan durum bilgisiz işlem 
 
 Devam eden hizmet bakımının bir parçası olarak, en güvenli ve yüksek performanslı deneyim sağlamamız için ağ geçitlerini barındıran işlem donanımını düzenli olarak yenileyeceğiz. Ağ Geçidi donanımı yenilendiğinde, önce işlem düğümlerinin yeni bir halkası oluşturulur. Bu yeni halkalar, tüm yeni oluşturulan MySQL sunucuları için trafiğe hizmet verir ve trafiği ayırt etmek için aynı bölgedeki eski ağ geçidi halkalarından farklı bir IP adresine sahip olur. Yeni halka tam çalışır olduktan sonra, mevcut sunuculara hizmet veren eski ağ geçidi donanımı kullanımdan kaldırma için planlanmaktadır. Bir ağ geçidi donanımını kullanımdan kaldırmadan önce, sunucularını çalıştıran ve eski ağ geçidi halkalarına bağlanan müşteriler, kullanımdan kaldırmadan önce üç ay içinde ve Azure portal üzerinden gönderilir. Ağ geçitlerinin yetkisini alma, şu durumlarda sunucularınız için bağlantıyı etkileyebilir 
 
-* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. 
+* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. Uygulamanızın bağlantı dizesinde. mysql.database.azure.com biçiminde sunucunuzun tam etki alanı adını (FQDN) kullanmanız gerekir <servername> . 
 * Giden trafiğin yeni ağ geçidi halkalarımıza erişebilmesini sağlamak için istemci tarafı güvenlik duvarında daha yeni ağ geçidi IP adreslerini güncelleştirmeyin.
 
 Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı ağ geçidinin ağ geçidi IP adresleri listelenmektedir. Her bölge için ağ geçidi IP adreslerinin en güncel bilgileri aşağıdaki tabloda tutulur. Aşağıdaki tabloda sütunlar aşağıdakileri temsil eder:

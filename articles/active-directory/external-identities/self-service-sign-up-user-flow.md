@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560042"
+ms.locfileid: "97586032"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
 > [!NOTE]
@@ -70,6 +70,9 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 7. **Kullanıcı öznitelikleri** altında, kullanıcıdan toplamak istediğiniz öznitelikleri seçin. Ek öznitelikler için **daha fazla göster**' i seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad** ve **posta kodu** için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
 
    ![Yeni bir Kullanıcı akış sayfası oluştur](media/self-service-sign-up-user-flow/create-user-flow.png)
+
+> [!NOTE]
+> Öznitelikleri yalnızca bir Kullanıcı ilk kez kaydolduğunda toplayabilirsiniz. Kullanıcı kaydolduktan sonra, kullanıcı akışını değiştirseniz bile, bu kullanıcılara artık öznitelik bilgilerini toplaması istenmez.
 
 8. **Oluştur**’u seçin.
 9. Yeni Kullanıcı akışı, **Kullanıcı akışları (Önizleme)** listesinde görünür. Gerekirse, sayfayı yenileyin.

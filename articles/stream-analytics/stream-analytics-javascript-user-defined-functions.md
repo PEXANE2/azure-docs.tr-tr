@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: dcbb82dafc5f4c51299e4bcca7947e2f38f502ff
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780850"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585488"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure Stream Analytics 'de Kullanıcı tanımlı JavaScript işlevleri
  
@@ -215,6 +215,14 @@ Bu sorgunun çıktısı, belirtilen seçeneklerle birlikte de giriş tarih/saat 
 Samstag, 28. Dezember 2019
 ```
 
+### <a name="user-logging"></a>Kullanıcı günlüğü
+Günlüğe kaydetme mekanizması, bir iş çalışırken özel bilgileri yakalamanızı sağlar. Hata ayıklamak veya gerçek zamanlı olarak özel kodun doğruluğunu değerlendirmek için günlük verilerini kullanabilirsiniz. Bu mekanizma, Console. log () yöntemi aracılığıyla kullanılabilir.
+
+```javascript
+console.log('my error message');
+```
+
+Günlük iletilerine [tanılama günlükleri](data-errors.md)aracılığıyla erişebilirsiniz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Machine Learning UDF](./machine-learning-udf.md)

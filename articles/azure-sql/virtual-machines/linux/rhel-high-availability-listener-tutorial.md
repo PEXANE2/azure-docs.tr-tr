@@ -7,12 +7,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: 7b7ded4e7f94e2f9dfdfdda86aec99ff87f2beda
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 83fde9e957cb2011ce585603e51d331be171bc08
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359991"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586236"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Öğretici: Azure 'da RHEL sanal makinelerinde SQL Server için bir kullanılabilirlik grubu dinleyicisi yapılandırma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -262,6 +262,10 @@ Bu noktada, kaynak grubunun tüm SQL Server makinelere bağlanan bir yük dengel
     ```
 
 1. Komutunu kullanarak küme kaynaklarınızı kontrol `sudo pcs resource` edin ve birincil Örneğin şu anda olduğunu görmeniz gerekir `<VM2>` .
+
+    > [!NOTE]
+    > Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+
 
     ```output
     [<username>@<VM1> ~]$ sudo pcs resource

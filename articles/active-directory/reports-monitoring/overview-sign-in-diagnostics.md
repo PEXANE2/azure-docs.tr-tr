@@ -1,5 +1,5 @@
 ---
-title: Azure AD 'de oturum açma tanılaması nelerdir? | Microsoft Belgeleri
+title: Azure AD 'de oturum açma tanılaması nedir? | Microsoft Belgeleri
 description: Azure AD 'de oturum açma tanılamalarına genel bir bakış sağlar.
 services: active-directory
 documentationcenter: ''
@@ -17,54 +17,62 @@ ms.date: 12/15/2020
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e113753bee5c0a94fbec47a2ea14b98c1779a394
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: d6aedf41fbf1ed0d70467a2efe97431fdecaa4fa
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578180"
+ms.locfileid: "97585927"
 ---
-# <a name="what-are-sign-in-diagnostics-in-azure-ad"></a>Azure AD 'de oturum açma tanılaması nelerdir?
+# <a name="what-is-sign-in-diagnostic-in-azure-ad"></a>Azure AD 'de oturum açma tanılaması nedir?
 
-Azure AD, kullanıcıların yönetilen kaynaklarla neler yapabileceğini denetlemek için esnek bir güvenlik modeli sağlar. Bu kaynaklara erişim, yalnızca kim olduğunuz ve aynı zamanda bunlara nasıl erişbir şekilde denetlenemez. Genellikle esneklik, sahip olduğunuz yapılandırma seçeneklerinin sayısı nedeniyle belirli bir karmaşıklık derecesi ile birlikte gelir. Karmaşıklık, hatalara karşı riski artırmak için olası bir isteklidir.
+Azure AD, kullanıcıların yönetilen kaynaklarla neler yapabileceğini denetlemek için esnek bir güvenlik modeli sağlar. Bu kaynaklara erişim, yalnızca **kim** olduğunuz ve aynı zamanda bunlara **nasıl** erişbir şekilde denetlenemez. Genellikle esneklik, sahip olduğunuz yapılandırma seçeneklerinin sayısı nedeniyle belirli bir karmaşıklık derecesi ile birlikte gelir. Karmaşıklık, hatalara karşı riski artırmak için olası bir isteklidir.
 
-BT Yöneticisi olarak, sorunları ortaya çıktığında kolayca tanılamanıza ve çözebilmeniz için, sisteminizdeki etkinliklere yönelik doğru Öngörüler sunan bir çözüme ihtiyacınız vardır. Azure AD 'de oturum açma Tanılaması, böyle bir araç için bir örnektir. Bir oturum açma sırasında ne olduğunu çözümlemek için tanılamayı ve Microsoft desteği 'ni kullanmak zorunda kalmadan sorunları çözmek için gerçekleştirebileceğiniz eylemleri analiz edin.
+BT Yöneticisi olarak, sorunları ortaya çıktığında kolayca tanılamanıza ve çözebilmeniz için, sisteminizdeki etkinliklere yönelik doğru Öngörüler sunan bir çözüme ihtiyacınız vardır. Azure AD 'de oturum açma Tanılaması, böyle bir çözüm örneğidir. Bir oturum açma sırasında ne olduğunu çözümlemek için tanılamayı ve Microsoft desteği 'ni kullanmak zorunda kalmadan sorunları çözmek için gerçekleştirebileceğiniz eylemleri analiz edin.
 
-Bu makalede, bu aracın ne yaptığını ve bunu nasıl kullanabileceğinizi gösteren bir genel bakış sunulmaktadır.
+Bu makalede, çözümün ne yaptığını ve nasıl kullanılabileceğini gösteren bir genel bakış sunulmaktadır.
 
 
 ## <a name="requirements"></a>Gereksinimler
 
-Oturum açma tanılaması Azure AD 'nin tüm sürümlerinde kullanılabilir.<br> Bu aracı kullanmak için Azure AD 'de bir genel yönetici üyesi olmanız gerekir.
+Oturum açma tanılaması Azure AD 'nin tüm sürümlerinde kullanılabilir.<br> Azure AD 'de kullanmak için bir genel yönetici olmanız gerekir.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Azure AD 'de, oturum açma girişimine olan yanıt, kiracınıza nasıl eriş, ancak aynı zamanda kiracınıza bağlı değildir. Örneğin, bir yönetici olarak, şirket ağınızdan oturum açtığınızda kiracınızın tüm yönlerini yapılandırabilirsiniz. Ancak, güvenilmeyen bir ağdan aynı hesabı kullanarak oturum açtığınızda bile engellenmiş olabilirsiniz. Sistemin bir oturum açma girişimine yanıt vermek daha fazla esneklik nedeniyle, oturum açma denemelerinde sorun gidermeye gerek duyduğunuz senaryolarda uçtan uca kalabilirsiniz. Oturum açma Tanılaması, oturum açma işleminden verileri çözümleyen ve ne olduğu hakkında belirli iletiler sunan bir özelliktir ve sorunları çözmek için ne yapmanız gerekenler hakkında öneriler sağlar. Azure AD 'de oturum açma Tanılaması, oturum açma hatalarının kendinden tanılamasını sağlamak için tasarlanmıştır. Tanılama işlemi dört ana yapı blobundan oluşur:
+Azure AD 'de, oturum açma **girişimine olan yanıt, sizin ve** kiracınıza **nasıl** erişebilirsiniz. Örneğin, yönetici olarak şirket ağınızdan oturum açtığınızda kiracınızın tüm yönlerini yapılandırabilirsiniz. Ancak, güvenilmeyen bir ağdan aynı hesapla oturum açtığınızda bile engellenmiş olabilirsiniz.
+ 
+Sistemin bir oturum açma girişimine yanıt vermesi için daha fazla esneklik nedeniyle, oturum açma işlemleri için sorun gidermeniz gereken senaryolarda uçtan uca kalabilirsiniz. Oturum açma Tanılaması, şu özelliklere sahiptir:
+
+- Oturum açma işlemlerinin verilerini analiz eder. 
+
+- Ne olduğunu ve sorunların nasıl çözümlendiğini gösterir. 
+
+Azure AD 'nin oturum açma Tanılaması, oturum açma hatalarının kendinden tanılamasını sağlamak üzere tasarlanmıştır. Tanılama işlemini gerçekleştirmek için şunları yapmanız gerekir:
 
 ![Oturum açma tanılama işlemi](./media/overview-sign-in-diagnostics/process.png)
  
 1. İlgilendiğiniz oturum açma olaylarının kapsamını **tanımlayın**
 
-2. İncelemek istediğiniz olayı **seçin**
+2. Gözden geçirmek istediğiniz oturum açma **seçeneğini belirleyin**
 
-3. Tanısı **gözden geçir**
+3. Tanılama sonucunu **gözden geçirin**
 
 4. Eylem **yapın**
 
  
-### <a name="define-sign-ins"></a>Oturum açma işlemlerini tanımlama
+### <a name="define-scope"></a>Kapsam tanımla
 
-Bu adımın amacı, araştırmak istediğiniz oturum açma olaylarının kapsamını tanımlamaktır. Kapsamınız bir kullanıcı veya tanımlayıcıyı (CorrelationId, RequestId) ve zaman aralığını temel alır. Ayrıca, bir uygulama adı da belirtebilirsiniz. Azure AD size doğru olayları bulmak için kapsam bilgilerini kullanır.  
+Bu adımın amacı, araştırmak istediğiniz oturum açma işlemlerinin kapsamını tanımlamaktır. Kapsamınız bir kullanıcı veya tanımlayıcıyı (CorrelationId, RequestId) ve zaman aralığını temel alır. Kapsamı daha da daraltmak için bir uygulama adı da belirtebilirsiniz. Azure AD size doğru olayları bulmak için kapsam bilgilerini kullanır.  
 
-### <a name="select-sign-in-event"></a>Oturum açma olayı seçin 
+### <a name="select-sign-in"></a>Oturum açma seçin  
 
-Azure AD, arama ölçütlerinize göre tüm eşleşen oturum açma olaylarını alır ve bunları bir kimlik doğrulaması özet listesi görünümünde gösterir. 
+Azure AD, arama ölçütlerinize göre tüm eşleşen oturum açma işlemlerini alır ve bunları bir kimlik doğrulaması özet listesi görünümünde gösterir. 
 
 ![Kimlik doğrulama özeti](./media/overview-sign-in-diagnostics/authentication-summary.png)
  
 Bu görünümde görüntülenecek sütunları özelleştirebilirsiniz.
 
-### <a name="review-diagnosis"></a>Tanısı gözden geçir
+### <a name="review-diagnostic"></a>Tanılamayı gözden geçir 
 
 Azure AD, seçilen oturum açma etkinliği için bir tanılama sonucu sağlar. 
 
@@ -100,11 +108,11 @@ Bu bölüm, kapsanan tanılama senaryolarına genel bir bakış sağlar. Aşağ�
 
 ### <a name="blocked-by-conditional-access"></a>Koşullu erişim tarafından engellendi
 
-Bu senaryo, koşullu erişim ilkesi tarafından engellenmiş bir oturum açma işlemi nedeniyle oluşur.
+Bu senaryo, koşullu erişim ilkesi tarafından engellenmiş bir oturum açma tabanlıdır.
 
 ![Erişimi engelleme](./media/overview-sign-in-diagnostics/block-access.png)
 
-Tanılama bölümünde Kullanıcı oturum açma ve uygulanan ilkelerle ilgili ayrıntılar gösterilir.
+Bu senaryonun tanılama bölümü Kullanıcı oturumu açma ve uygulanan ilkelerle ilgili ayrıntıları gösterir.
 
 
 ### <a name="failed-conditional-access"></a>Koşullu erişim başarısız
@@ -120,22 +128,22 @@ Bu senaryo genellikle, bir koşullu erişim ilkesinin gereksinimleri karşılanm
 - Uygulama koruma ilkesi gerektir   
 
 
-Tanılama, Kullanıcı oturumu açma ve uygulanan ilke ya da ilkelerle ilgili ayrıntıları sunar.
+Bu senaryonun tanılama bölümü Kullanıcı oturumu açma ve uygulanan ilkelerle ilgili ayrıntıları gösterir.
 
 
 ### <a name="mfa-from-conditional-access"></a>Koşullu erişimden MFA
 
-Bu senaryo, Multi-Factor Authentication kümesi kullanarak oturum açma gereksinimini içeren bir koşullu erişim ilkesi nedeniyle oluşur.
+Bu senaryo, Multi-Factor Authentication kümesi kullanarak oturum açma gereksinimini içeren bir koşullu erişim ilkesini temel alır.
 
 ![Multi-Factor Authentication gerektir](./media/overview-sign-in-diagnostics/require-mfa.png)
 
-Tanılama bölümünde Kullanıcı oturum açma ve uygulanan ilkelerle ilgili ayrıntılar gösterilir.
+Bu senaryonun tanılama bölümü Kullanıcı oturumu açma ve uygulanan ilkelerle ilgili ayrıntıları gösterir.
 
 
 
 ### <a name="mfa-from-other-requirements"></a>Diğer gereksinimlerden MFA
 
-Bu senaryo, çok faktörlü kimlik doğrulaması bir koşullu erişim ilkesi tarafından zorlandığında oluşur. Örneğin, kiracınızda Kullanıcı başına temelinde Multi-Factor Authentication 'ı yapılandırdınız.
+Bu senaryo, koşullu erişim ilkesi tarafından zorlanan bir Multi-Factor Authentication gereksinimini temel alır. Örneğin, Kullanıcı başına çok faktörlü kimlik doğrulaması.
 
 
 ![Kullanıcı başına çok faktörlü kimlik doğrulaması gerektir](./media/overview-sign-in-diagnostics/mfa-per-user.png)
@@ -151,24 +159,22 @@ Ayrıca, bu bölüm Kullanıcı oturum açma girişimine ilişkin tüm ayrıntı
 
 ### <a name="mfa-proof-up-required"></a>MFA sağlaması gerekli
 
-Bu senaryo, Multi-Factor Authentication 'ı ayarlama istekleri tarafından kesintiye uğramış olan oturum açma işlemlerinin sonucu olarak sonuçlanır. Bu kurulum işlemi "kanıtlama" olarak da bilinir.
+Bu senaryo, Multi-Factor Authentication 'ı ayarlama istekleri tarafından kesintiye uğramış olan oturum açma işlemlerini temel alır. Bu kurulum "kanıtlama" olarak da bilinir.
 
-Multi-Factor Authentication kanıtlama, bir kullanıcının Multi-Factor Authentication kullanması gerektiğinde, ancak daha önce hiç Ayarlamamışsa veya bir yönetici kullanıcıyı ayarlama gerektirecek şekilde yapılandırdıysa oluşur.
+Multi-Factor Authentication 'ı bir kullanıcının Multi-Factor Authentication kullanması gerektiğinde ancak henüz yapılandırmadığında veya bir yönetici kullanıcıyı yapılandırmak üzere yapılandırdıysa, çok faktörlü kimlik doğrulaması sağlaması oluşur.
 
 Bu tanı senaryosunun amacı, çok faktörlü kimlik doğrulama kesintisinin ayarlanmak ve kullanıcının kanıtları tamamlaması için öneri sağlaması için gereken öngörüyü sağlamaktır.
 
-### <a name="mfa-proof-up-required-but-user-sign-in-attempt-is-not-from-secure-location"></a>MFA sağlaması gerekli ancak kullanıcı oturum açma denemesi güvenli konumdan değil
+### <a name="mfa-proof-up-required-from-a-risky-sign-in"></a>Riskli oturum açma işleminden MFA sağlaması gerekiyor
 
-Bu senaryo, Multi-Factor Authentication 'ı ayarlama isteği tarafından kesintiye uğramış, ancak oturum açma riskli olarak görüldüğü oturum açma işlemlerinin sonuçlarını elde ediyor. 
-
-Multi-Factor Authentication kanıtlama, bir kullanıcının Multi-Factor Authentication kullanması gerektiğinde, ancak daha önce hiç Ayarlamamışsa veya bir yönetici kullanıcıyı ayarlama gerektirecek şekilde yapılandırdıysa oluşur.
+Bu senaryo, riskli oturum açma işleminden çok faktörlü kimlik doğrulaması ayarlamak için bir istek tarafından kesintiye uğramış olan oturum açma işlemlerinin sonuçlarını alır. 
 
 Bu tanı senaryosunun amacı, çok faktörlü kimlik doğrulama kesintisini ayarlamaya yönelik bir fikir sağlamaktır, ancak bunu, kullanıcının kanıt için tamamlaması ve riskli görünmeyen bir ağ konumundan yapması önerilir. Örneğin, bir şirket ağı bir adlandırılmış konum olarak tanımlanırsa, bunun yerine kurumsal ağdan Prova yapmayı deneyin.
 
 
 ### <a name="successful-sign-in"></a>Başarılı oturum açma
 
-Bu senaryo, koşullu erişim veya Multi-Factor Authentication 'dan kesinti olmadan Azure AD oturum açma konularını ele alır.
+Bu senaryo, koşullu erişim veya Multi-Factor Authentication tarafından kesintiye uğramayan oturum açma işlemlerini temel alır.
 
 Bu tanı senaryosunun amacı, uygulanması beklenen bir koşullu erişim ilkesi veya ilkeler olması veya Kullanıcı oturum açma işlemini kesintiye uğratmak beklenen yapılandırılmış bir Multi-Factor Authentication olması durumunda kullanıcının oturum açma sırasında sağladıklarına ilişkin Öngörüler sağlamaktır.
 

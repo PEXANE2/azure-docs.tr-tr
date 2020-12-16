@@ -3,23 +3,19 @@ title: Azure IoT Central uygulamanızı Dynamics 365 alan hizmetleriyle bağlama
 description: Azure IoT Central ve Dynamics 365 alan hizmeti ile uçtan uca bir çözüm oluşturmayı öğrenin
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 702de11abc274d1f4001df5b28498928fde71109
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1d098f56bbadfe115620580c8d93fb6dd021550d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014467"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586683"
 ---
 # <a name="build-end-to-end-solution-with-azure-iot-central-and-dynamics-365-field-service"></a>Azure IoT Central ve Dynamics 365 alan hizmeti ile uçtan uca çözüm oluşturma 
-
-
-
 Bir Oluşturucu olarak, Azure IoT Central uygulamanızın diğer iş sistemleriyle tümleştirilmesine olanak sağlayabilirsiniz. 
-
 
 Örneğin, bağlı bir çöp yönetimi çözümünde çöp koleksiyonları kamyonları gönderimi iyileştirebilirsiniz. İyileştirme, bağlı çöp kutularının IoT algılayıcı verilerine göre yapılabilir. [IoT Central bağlı çöp yönetimi uygulamanızda](./tutorial-connected-waste-management.md) , kuralları ve eylemleri yapılandırabilir ve bu ayarı Dynamics alan hizmeti 'nde uyarı oluşturmayı tetikleyebilirsiniz. Bu senaryo, uygulamalar ve hizmetler genelinde iş akışlarını otomatikleştirmek için IoT Central doğrudan yapılandırılacak güç otomatikleştirme kullanılarak gerçekleştirilir. Ayrıca, alan hizmetindeki hizmet etkinliklerine bağlı olarak, bilgiler Azure IoT Central 'ye gönderilebilir. 
 

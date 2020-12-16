@@ -1,56 +1,61 @@
 ---
-title: Öğretici-sanal ağda Azure yay bulutu dağıtma
-description: Azure yay bulutu 'nı sanal ağda (v-net ekleme) dağıtın.
+title: Öğretici-Azure Spring Cloud 'ı bir sanal ağda dağıtma
+description: Azure yay bulutu 'nı bir sanal ağda (VNet ekleme) dağıtın.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1e16c984e48c11961dba0c977d3bdbddbd6bdf36
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400328"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587732"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-azure-virtual-network-vnet-injection"></a>Öğretici: Azure sanal ağ 'da Azure yay bulutu dağıtma (VNet ekleme)
+# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Öğretici: Azure yay bulutu 'nı bir sanal ağda dağıtma
 
 **Bu makale şu şekilde geçerlidir:** ✔️ Java ✔️ C #
 
-Bu öğreticide, sanal ağınızda bir Azure Spring Cloud Service örneğinin nasıl dağıtılacağı açıklanmaktadır. Buna bazen VNet ekleme denir.  
+Bu öğreticide, sanal ağınıza bir Azure Spring Cloud örneğinin nasıl dağıtılacağı açıklanmaktadır. Bu dağıtım bazen VNet ekleme olarak adlandırılır.
 
 Dağıtım şunları sunar:
 
-* Şirket ağınızdaki Internet 'ten gelen Azure Mağazası bulut uygulamalarının ve hizmet çalışma zamanının yalıtımı
-* Azure Spring, şirket içi veri merkezlerinde ve/veya diğer sanal ağlardaki Azure hizmetlerindeki sistemlerle bulut etkileşimi
-* Azure Spring Cloud için gelen ve giden ağ iletişimlerini denetlemek için müşterilerin güçleme
+* Şirket ağınızdaki Internet 'ten gelen Azure Mağazası bulut uygulamalarının ve hizmet çalışma zamanının yalıtımı.
+* Azure, şirket içi veri merkezlerinde veya diğer sanal ağlardaki Azure hizmetlerinde bulunan sistemlerle bulut etkileşimini ister.
+* Müşterilerin Azure yay bulutu için gelen ve giden ağ iletişimlerini denetlemesine olanak sağlar.
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure portal veya şu az CLı komutunu çalıştırarak, [kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) yönergelerine göre *Microsoft. Appplatform* ve *Microsoft. Containerservice* Azure Spring Cloud kaynak sağlayıcısı 'nı kaydetmeniz gerekir:
+## <a name="prerequisites"></a>Ön koşullar
+
+Azure yay bulut kaynak sağlayıcısı **Microsoft. AppPlatform** ve **Microsoft. Containerservice** [' i Azure Portal kaynak sağlayıcısını kaydetme](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) BÖLÜMÜNDEKI yönergelere göre veya aşağıdaki Azure CLI komutunu çalıştırarak kaydedin:
 
 ```azurecli
 az provider register --namespace Microsoft.AppPlatform
 az provider register --namespace Microsoft.ContainerService
 ```
-## <a name="virtual-network-requirements"></a>Sanal ağ gereksinimleri
-Azure yay bulut hizmeti örneğinizi dağıttığınız sanal ağın aşağıdaki gereksinimleri karşılaması gerekir:
 
-* **Konum**: sanal ağın Azure yay bulut hizmeti örneğiyle aynı konumda bulunması gerekir.
-* **Abonelik**: sanal ağın Azure yay bulut hizmeti örneğiyle aynı abonelikte olması gerekir.
-* **Alt ağlar**: sanal ağ, bir Azure yay bulut hizmeti örneğine adanmış iki alt ağ içermelidir: 
-    * Biri hizmet çalışma zamanı için
-    * Bir tane, Spring Boot mikro hizmet uygulamalarınız için. 
-    * Bu alt ağlar ve bir Azure yay bulut hizmeti örneği arasında bire bir ilişki vardır. Dağıttığınız her bir hizmet örneği için yeni bir alt ağ kullanmanız gerekir ve her alt ağ yalnızca tek bir hizmet örneği içerebilir.
-* **Adres alanı**: CIDR, hem Service Runtime alt ağı hem de Spring Boot mikro hizmet uygulamaları alt ağı için **/28** ' i engeller.
+## <a name="virtual-network-requirements"></a>Sanal ağ gereksinimleri
+
+Azure yay bulutu örneğinizi dağıttığınız sanal ağ, aşağıdaki gereksinimleri karşılamalıdır:
+
+* **Konum**: sanal ağın Azure Spring Cloud örneğiyle aynı konumda bulunması gerekir.
+* **Abonelik**: sanal ağın Azure yay bulutu örneğiyle aynı abonelikte olması gerekir.
+* **Alt ağlar**: sanal ağ, bir Azure yay bulutu örneğine adanmış iki alt ağ içermelidir:
+
+    * Hizmet çalışma zamanı için bir tane.
+    * Bir tane, Spring Boot mikro hizmet uygulamalarınız için.
+    * Bu alt ağlar ve bir Azure yay bulutu örneği arasında bire bir ilişki vardır. Dağıttığınız her hizmet örneği için yeni bir alt ağ kullanın. Her alt ağ yalnızca tek bir hizmet örneği içerebilir.
+* **Adres alanı**: CIDR, hem hizmet çalışma zamanı alt ağı hem de Spring Boot mikro hizmet uygulamaları alt ağı için */28* ' i engeller.
 * **Yol tablosu**: alt ağlarda ilişkili mevcut bir rota tablosu olmalıdır.
 
 Aşağıdaki yordamlarda, sanal ağın Azure Spring Cloud örneğini içerecek şekilde kurulumu açıklanır.
 
 ## <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
-Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten varsa, 1. Adım 2 ve 3 ' ü atlayın. Sanal ağ için alt ağları hazırlamak üzere 4. adımdan başlayabilirsiniz.
 
-1. Azure portalı menüsünden **Kaynak oluştur**'u seçin. Azure Marketi ' nden **ağ**  >  **sanal ağı**' nı seçin.
+Azure yay bulutu örneğini barındıracak bir sanal ağınız zaten varsa 1, 2 ve 3. adımları atlayın. Sanal ağ için alt ağları hazırlamak üzere 4. adımdan başlayabilirsiniz.
+
+1. Azure portalı menüsünde **Kaynak oluştur**'u seçin. Azure Marketi 'nden **ağ**  >  **sanal ağı**' nı seçin.
 
 1. **Sanal ağ oluştur** iletişim kutusunda aşağıdaki bilgileri girin veya seçin:
 
@@ -58,39 +63,39 @@ Azure yay bulut hizmeti örneğini barındıracak bir sanal ağınız zaten vars
     |-----------------|--------------------------------------------------|
     |Abonelik     |Aboneliğinizi seçin.                         |
     |Kaynak grubu   |Kaynak grubunuzu seçin veya yeni bir tane oluşturun.  |
-    |Name             |*Azure-Spring-Cloud-VNET* girin                   |
-    |Konum         |**Doğu ABD** seçin                                |
+    |Name             |**Azure-Spring-Cloud-VNET** girin.                 |
+    |Konum         |**Doğu ABD**’yi seçin.                               |
 
-1. Ileri ' ye tıklayın **: IP adresleri >**. 
- 
-1. IPv4 adres alanı için 10.1.0.0/16 girin.
+1. **İleri ' yi seçin: IP adresleri**.
 
-1. Alt ağ **Ekle**' yi seçin, sonra alt ağ adı için *hizmet-çalışma zamanı-alt ağ* **adı** ve 10.1.0.0/28 **yazın.** Daha sonra **Ekle**'ye tıklayın.
+1. IPv4 adres alanı için **10.1.0.0/16** girin.
 
-1. **Alt ağ ekle** ' yi tekrar seçin, sonra **alt ağ adı** ve **alt ağ adres aralığı** girin, örneğin, *uygulamalar-alt ağ* ve 10.1.1.0/28.  **Ekle**'ye tıklayın.
+1. **Alt ağ ekle**' yi seçin. Sonra, **alt ağ adı** için **hizmet-çalışma zamanı-alt ağını** girip **alt ağ adres aralığı** için **10.1.0.0/28** girin. Ardından **Ekle**'yi seçin.
 
-1. **Gözden geçir ve oluştur**’a tıklayın. Rest 'i varsayılan olarak bırakın ve **Oluştur**' a tıklayın.
+1. **Alt ağ ekle** ' yi yeniden seçin ve sonra **alt ağ adı** ve **alt ağ adres aralığını** girin. Örneğin, **Apps-subnet** ve **10.1.1.0/28** yazın. Ardından **Ekle**'yi seçin.
+
+1. **Gözden geçir ve oluştur**’u seçin. Rest 'i varsayılan olarak bırakın ve **Oluştur**' u seçin.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Sanal ağ için hizmet izni verme
 
-Daha önce oluşturduğunuz sanal ağı *Azure-Spring-Cloud-VNET* ' i seçin.
+Daha önce oluşturduğunuz sanal ağı **Azure-Spring-Cloud-VNET** ' i seçin.
 
-1. **Erişim denetimi (IAM)** seçeneğini belirleyin ve ardından **Ekle > rol ataması** Ekle ' yi seçin.
+1. **Erişim denetimi (IAM)** öğesini seçin ve ardından   >  **Rol Ekle ataması** Ekle ' yi seçin.
 
-    ![V-net için erişim denetimi](./media/spring-cloud-v-net-injection/access-control.png)
+    ![Erişim denetimi ekranını gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/access-control.png)
 
-2. **Rol ataması Ekle** iletişim kutusunda bu bilgileri girin veya seçin:
+1. **Rol ataması Ekle** iletişim kutusunda aşağıdaki bilgileri girin veya seçin:
 
     |Ayar  |Değer                                             |
     |---------|--------------------------------------------------|
-    |Rol     |**Sahip** seçin                                  |
-    |Şunu seçin:   |*Azure Spring Cloud kaynak sağlayıcısı* 'nı girin      |
+    |Rol     |**Sahip** seçin.                                 |
+    |Şunu seçin:   |**Azure Spring Cloud kaynak sağlayıcısı**'nı girin.   |
 
-    Ardından *Azure yay bulut kaynak sağlayıcısı*' nı seçin ve **Kaydet**' e tıklayın.
+    Ardından **Azure yay bulut kaynak sağlayıcısı**' nı seçin ve **Kaydet**' i seçin.
 
-    ![Azure Spring Cloud kaynak sağlayıcısı 'nı v-net 'e verme](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
+    ![Azure yay bulut kaynak sağlayıcısını seçmeyi gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/grant-azure-spring-cloud-resource-provider-to-vnet.png)
 
-Bunu, aşağıdaki az CLı komutunu çalıştırarak de elde edebilirsiniz
+Aşağıdaki Azure CLı komutunu çalıştırarak da bu adımı yapabilirsiniz:
 
 ```azurecli
 VIRTUAL_NETWORK_RESOURCE_ID=`az network vnet show \
@@ -105,57 +110,59 @@ az role assignment create \
     --assignee e8de9221-a19c-4c81-b814-fd37c6caf9d2
 ```
 
-## <a name="deploy-azure-spring-cloud-service-instance-in-the-virtual-network"></a>Sanal ağda Azure yay bulut hizmeti örneğini dağıtma
+## <a name="deploy-an-azure-spring-cloud-instance"></a>Azure yay bulutu örneğini dağıtma
 
-1. ' İ kullanarak Azure portal açın https://portal.azure.com .
+Sanal ağda bir Azure yay bulutu örneği dağıtmak için:
 
-1. Üst arama kutusundan **Azure yay bulutu**' nı arayın ve sonuçtan **Azure yay bulutu** ' nı seçin.
+1. [Azure portalını](https://portal.azure.com) açın.
+
+1. Üst arama kutusunda **Azure Spring Cloud**' ı arayın. Sonuçtan **Azure yay bulutu** ' nı seçin.
 
 1. **Azure yay bulutu** sayfasında **+ Ekle**' yi seçin.
 
-1. Azure yay bulutu **Oluştur** sayfasında formu doldurun. 
+1. Azure yay bulutu **Oluştur** sayfasında formu doldurun.
 
 1. Sanal ağla aynı kaynak grubunu ve bölgeyi seçin.
 
-1. **Hizmet Ayrıntıları** altındaki **ad** için *Azure-Spring-Cloud-VNET*' i seçin.
+1. **Hizmet Ayrıntıları** altındaki **ad** için **Azure-Spring-Cloud-VNET**' i seçin.
 
-1. **Ağ** sekmesini seçin ve aşağıdakileri seçin:
+1. **Ağ** sekmesini seçin ve aşağıdaki değerleri seçin:
 
     |Ayar                                |Değer                                             |
     |---------------------------------------|--------------------------------------------------|
-    |Kendi sanal ağınıza dağıtın     |**Evet**’i seçin                                    |
-    |Sanal ağ                        |*Azure-Spring-Cloud-VNET* seçin                  |
-    |Hizmet çalışma zamanı alt ağı                 |*Hizmet-çalışma zamanı-alt ağ* seçin                   |
-    |Spring Boot mikro hizmet uygulamaları alt ağı   |*Uygulamaları seçin-alt ağ*                              |
+    |Kendi sanal ağınıza dağıtın     |**Evet**’i seçin.                                   |
+    |Sanal ağ                        |**Azure-Spring-Cloud-VNET**' i seçin.               |
+    |Hizmet çalışma zamanı alt ağı                 |**Hizmet-çalışma zamanı-alt ağ**' ı seçin.                |
+    |Spring Boot mikro hizmet uygulamaları alt ağı   |**Uygulamalar-alt ağ**' ı seçin.                           |
 
-    ![Oluşturma Ağ sekmesi](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
+    ![Azure yay bulutu Oluştur sayfasındaki ağ sekmesini gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/creation-blade-networking-tab.png)
 
-1. **Gözden geçir ve oluştur**’a tıklayın.
+1. **Gözden geçir ve Oluştur '** u seçin.
 
-1. Belirtimlerinizi doğrulayıp **Oluştur**' a tıklayın.
+1. Belirtimlerinizi doğrulayıp **Oluştur**' u seçin.
 
-    ![Belirtimleri doğrula](./media/spring-cloud-v-net-injection/verify-specifications.png)
+    ![Belirtimlerin doğrulandığının gösterildiği ekran görüntüsü.](./media/spring-cloud-v-net-injection/verify-specifications.png)
 
-Dağıtımdan sonra, Azure yay bulut hizmeti örneği için ağ kaynaklarını barındırmak üzere aboneliğinizde iki ek kaynak grubu oluşturulur.  Aşağıdaki yeni kaynak gruplarını bulmak için **Home** ' a gidip üstteki menü öğelerinden **kaynak grupları** ' nı seçin.
+Dağıtımdan sonra, Azure Spring Cloud örneğinin ağ kaynaklarını barındırmak için aboneliğinizde iki ek kaynak grubu oluşturulur. **Giriş**' e gidin ve ardından üstteki menü öğelerinden **kaynak grupları** ' nı seçerek aşağıdaki yeni kaynak gruplarını bulun.
 
-*AP-svc-RT_ {Service Instance Name} _ {Service Instance Region}* olarak adlandırılan kaynak grubu, hizmet örneğinin hizmet çalışma zamanına ait ağ kaynaklarını içerir.
+**AP-svc-RT_ {Service Instance Name} _ {Service Instance Region}** olarak adlandırılan kaynak grubu, hizmet örneğinin hizmet çalışma zamanına ait ağ kaynaklarını içerir.
 
-  ![Hizmet çalışma zamanı](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
+  ![Hizmet çalışma zamanını gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/service-runtime-resource-group.png)
 
-*AP-App_ {Service Instance Name} _ {Service Instance Region}* olarak adlandırılan kaynak grubu, hizmet örneğinin Spring Boot mikro hizmet uygulamalarınızın ağ kaynaklarını içerir.
+**AP-App_ {Service Instance Name} _ {Service Instance Region}** olarak adlandırılan kaynak grubu, hizmet örneğinin Spring Boot mikro hizmet uygulamalarınızın ağ kaynaklarını içerir.
 
-  ![Uygulamalar kaynak grubu](./media/spring-cloud-v-net-injection/apps-resource-group.png)
+  ![Uygulamalar kaynak grubunu gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/apps-resource-group.png)
 
-Bu ağ kaynakları, yukarıda oluşturulan sanal ağınıza bağlanır.
+Bu ağ kaynakları, önceki görüntüde oluşturulan sanal ağınıza bağlanır.
 
-  ![Bağlı cihazla V-net](./media/spring-cloud-v-net-injection/vnet-with-connected-device.png)
+  ![Bağlı cihazlara sahip sanal ağı gösteren ekran görüntüsü.](./media/spring-cloud-v-net-injection/vnet-with-connected-device.png)
 
    > [!Important]
-   > Kaynak grupları Azure Spring Cloud Service tarafından tam olarak yönetilir. Lütfen içindeki bir kaynağı el ile silmeyin veya değiştirmeyin.
+   > Kaynak grupları, Azure yay bulut hizmeti tarafından tam olarak yönetilir. İçindeki herhangi bir *kaynağı el ile silmeyin veya değiştirmeyin.*
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Küçük alt ağ aralığı IP adreslerini kaydeder, ancak Azure yay bulutunun tutabilmesine izin verilen en fazla uygulama örneği sayısına yönelik sınırlamalar getirir. 
+Küçük bir alt ağ aralığı IP adreslerini kaydeder, ancak Azure Spring Cloud örneğinin tutabilmesine izin verilen en fazla uygulama örneği sayısına yönelik sınırlamalar getirir.
 
 | Uygulama alt ağı CıDR | Toplam IP sayısı | Kullanılabilir IP 'Ler | En fazla uygulama örnekleri                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |
@@ -165,9 +172,10 @@ Küçük alt ağ aralığı IP adreslerini kaydeder, ancak Azure yay bulutunun t
 | /25             | 128       | 120           | <p> 1 çekirdekli uygulama: 500<br> 2 çekirdek içeren uygulama: 500<br>  3 çekirdekle uygulama: 480<br>  4 çekirdek içeren uygulama: 360</p> |
 | /24             | 256       | 248           | <p> 1 çekirdekli uygulama: 500<br/> 2 çekirdek içeren uygulama: 500<br/>  3 çekirdekle uygulama: 500<br/>  4 çekirdek içeren uygulama: 500</p> |
 
-Alt ağlar için, 5 IP adresi Azure tarafından ayrılmıştır ve Azure Spring Cloud için en az 4 adres gereklidir. En az 9 IP adresi gereklidir, bu nedenle/29 ve/30 işlemsel değildir.
+Alt ağlar için, beş IP adresi Azure tarafından ayrılmıştır ve Azure Spring Cloud için en az dört adres gereklidir. En az dokuz IP adresi gereklidir, bu nedenle/29 ve/30 işlem dışı.
 
-Hizmet çalışma zamanı alt ağı için, en az boyut bir/28 ve bu, uygulama örneği sayısı üzerinde hiçbir pul içermez.
+Bir hizmet çalışma zamanı alt ağı için en küçük boyut/28 ' dir. Bu boyut, uygulama örneklerinin sayısı üzerinde bir pul içermez.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [VNet 'iniz üzerinde Azure Spring Cloud 'a uygulama dağıtma](https://github.com/microsoft/vnet-in-azure-spring-cloud/blob/master/02-deploy-application-to-azure-spring-cloud-in-your-vnet.md)

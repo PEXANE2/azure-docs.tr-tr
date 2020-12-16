@@ -3,23 +3,19 @@ title: Azure IoT Central ile oluşturulmuş su kalitesi izleme çözümü için 
 description: Azure IoT Central ile oluşturulmuş bir su kalite izleme çözümü için kavramlar öğrenin.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 229074ad97e6d066a358da19bbbd43158fe1d6fc
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874058"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586729"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Su kalitesi izleme referans mimarisi 
-
-
-
 Su kalitesinde izleme çözümleri, **Azure IoT Central uygulama şablonuyla** birlikte bir başlangıç IoT uygulaması olarak oluşturulabilir. Bu makale uçtan uca çözüm oluşturma konusunda üst düzey bir başvuru mimarisi kılavuzu sağlar. 
-
 
 ![Su kalitesi izleme mimarisi](./media/concepts-waterqualitymonitoring-architecture/concepts-waterqualitymonitoring-architecture1.png)
 
@@ -27,8 +23,8 @@ Kavramlar:
 
 1. Cihazlar ve bağlantı  
 1. IoT Central 
-2. Genişletilebilirlik ve tümleştirmeler
-3. İş uygulamaları
+1. Genişletilebilirlik ve tümleştirmeler
+1. İş uygulamaları
 
 Genellikle su kalite izleme çözümünde bir bölümü oynatacak anahtar bileşenlere göz atalım.
 

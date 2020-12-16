@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: sorun giderme, güncelleştirme, hata, Kinect, geri bildirim, kurtarma, günlüğe kaydetme, ipuçları
-ms.openlocfilehash: 9711968de061956a945fca183444dd6ebde4ca9c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: a6e00b6c5e9e4f82bb668769aade8311896bef32
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356391"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587290"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect bilinen sorunlar ve sorun giderme
 
@@ -144,7 +144,7 @@ Daha sonra [Fabrika Sıfırlaması](https://support.microsoft.com/help/4494277/r
 
 Cihaz, Cihaz Yöneticisi altında numaralandırmadıysanız, bunun nedeni desteklenmeyen bir USB3 denetleyicisine takılmış olması olabilir. 
 
-Windows üzerinde Azure Kinect DK, **Intel** , **Texas Instruments (TI)** ve **Renesas** için *desteklenen tek konak denetleyicileridir*. Windows platformlarındaki Azure Kinect SDK 'Sı birleştirilmiş bir kapsayıcı KIMLIĞINI kullanır ve SDK 'nın, fiziksel olarak aynı cihazda bulunan derinlik, renk ve ses cihazlarını bulabilmesi için, USB 2,0 ve 3,0 cihazlarını kapsamalıdır. Linux 'ta, bu platform kapsayıcı KIMLIĞI üzerinde daha az ve cihaz seri numaraları üzerinde daha az kullanıldığı için daha fazla konak denetleyicisi desteklenebilir. 
+Windows üzerinde Azure Kinect DK, **Intel**, **Texas Instruments (TI)** ve **Renesas** için *desteklenen tek konak denetleyicileridir*. Windows platformlarındaki Azure Kinect SDK 'Sı birleştirilmiş bir kapsayıcı KIMLIĞINI kullanır ve SDK 'nın, fiziksel olarak aynı cihazda bulunan derinlik, renk ve ses cihazlarını bulabilmesi için, USB 2,0 ve 3,0 cihazlarını kapsamalıdır. Linux 'ta, bu platform kapsayıcı KIMLIĞI üzerinde daha az ve cihaz seri numaraları üzerinde daha az kullanıldığı için daha fazla konak denetleyicisi desteklenebilir. 
 
 BILGISAYARDA birden çok konak denetleyicisi yüklü olduğunda, USB ana bilgisayar denetleyicilerinin konusu, daha da karmaşıktır. Ana bilgisayar denetleyicileri karma olduğunda, bir Kullanıcı bazı bağlantı noktalarının iyi çalıştığı ve diğer bir yerde çalışmayan sorunlarla karşılaşabilir. Bağlantı noktalarının bu durum için nasıl kablolu olduğuna bağlı olarak, Azure Kinect ile ilgili sorun yaşayan tüm ön bağlantı noktalarını görebilirsiniz
 
@@ -165,6 +165,21 @@ Görüntü derinliği verilerini hesaplamak için derinlik kamerası tarafından
 ## <a name="using-body-tracking-sdk-with-unreal"></a>Gövde Izleme SDK 'Sı Unreal ile kullanma
 
 Gövde Izleme SDK 'sını Unreal ile birlikte kullanmak için, ortam değişkenine eklediğinizden ve `<SDK Installation Path>\tools` `PATH` ' a `dnn_model_2_0.onnx` ve ' ye kopyaladığınızdan emin `cudnn64_7.dll` olun `Program Files/Epic Games/UE_4.23/Engine/Binaries/Win64` .
+
+## <a name="using-azure-kinect-on-headless-linux-system"></a>Gözetimsiz Linux sisteminde Azure Kinect kullanma
+
+Linux üzerinde Azure Kinect derinlik altyapısı OpenGL kullanır. OpenGL, bir izleyicinin sisteme bağlanmasını gerektiren bir pencere örneği gerektirir. Bu soruna yönelik bir geçici çözüm:
+
+1. Kullanmayı planladığınız kullanıcı hesabı için otomatik oturum açmayı etkinleştirin. Otomatik oturum açmayı etkinleştirme yönergeleri için [Bu](https://vitux.com/how-to-enable-disable-automatic-login-in-ubuntu-18-04-lts/) makaleye bakın.
+2. Sistemin gücünü yapın, izleyicinin bağlantısını kesin ve sistemi kapatın. Otomatik oturum açma, bir x-sunucu oturumunun oluşturulmasına zorlar.
+2. SSH ile bağlanma ve ekran env değişkenini ayarlama `export DISPLAY=:0`
+3. Azure Kinect uygulamanızı başlatın.
+
+## <a name="missing-c-documentation"></a>Eksik C# belgeleri
+
+Algılayıcı SDK C# belgeleri [burada](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/namespace_microsoft_1_1_azure_1_1_kinect_1_1_sensor.html)yer alır.
+
+Gövde Izleme SDK 'Sı C# belgeleri [burada](https://microsoft.github.io/Azure-Kinect-Body-Tracking/release/1.x.x/namespace_microsoft_1_1_azure_1_1_kinect_1_1_body_tracking.html)yer alır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

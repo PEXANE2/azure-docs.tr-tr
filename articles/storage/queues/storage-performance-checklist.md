@@ -1,21 +1,23 @@
 ---
 title: Kuyruk depolama-Azure depolama için performans ve ölçeklenebilirlik denetim listesi
 description: Yüksek performanslı uygulamalar geliştirirken kuyruk depolamada kullanılmak üzere kanıtlanmış uygulamaların denetim listesi.
-services: storage
 author: tamram
-ms.service: storage
-ms.topic: overview
-ms.date: 10/10/2019
+services: storage
 ms.author: tamram
+ms.date: 10/10/2019
+ms.topic: overview
+ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e86950581255bd4e3a78b0b4a3f599a24a3cad0
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4040a81d5b509ddbdd355953e28721a7c9fccfb8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345763"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585675"
 ---
+<!-- docutune:casing "Timeout and Server Busy errors" -->
+
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Kuyruk depolama için performans ve ölçeklenebilirlik denetim listesi
 
 Microsoft, kuyruk depolama ile yüksek performanslı uygulamalar geliştirmeye yönelik bir dizi kanıtlanmış uygulama geliştirmiştir. Bu denetim listesi, geliştiricilerin performansı iyileştirmek için izleyebildiği önemli uygulamaları tanımlar. Uygulamanızı tasarlarken ve işlem boyunca bu uygulamaları göz önünde bulundurun.
@@ -27,32 +29,32 @@ Azure depolama kapasitesi, işlem hızı ve bant genişliği için ölçeklenebi
 Bu makale, sıra depolama uygulamanızı geliştirirken izleyebileceğiniz bir denetim listesi halinde performans için kanıtlanmış uygulamaları düzenler.
 
 | Bitti | Kategori | Tasarım değerlendirmesi |
-| --- | --- | --- |
-| &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
-| &nbsp; |Ölçeklenebilirlik hedefleri |[Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
-| &nbsp; |Ağ |[İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
-| &nbsp; |Ağ |[İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
-| &nbsp; |Ağ |[İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
-| &nbsp; |Doğrudan Istemci erişimi |[Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
-| &nbsp; |.NET yapılandırması |[En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
-| &nbsp; |.NET yapılandırması |[İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#increase-default-connection-limit) |
-| &nbsp; |.NET yapılandırması |[.NET uygulamaları için, .NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#increase-minimum-number-of-threads) |
-| &nbsp; |Paralellik |[Paralellik 'in, istemci yeteneklerini aşırı yüklemeden veya ölçeklenebilirlik hedeflerine yaklaşımak için uygun şekilde bağlanmış olduğunu merak etmeniz gerekir mi?](#unbounded-parallelism) |
-| &nbsp; |Araçlar |[Microsoft tarafından sağlanmış istemci kitaplıklarının ve araçlarının en son sürümlerini kullanıyor musunuz?](#client-libraries-and-tools) |
-| &nbsp; |Yeniden deneme sayısı |[Daraltma hataları ve zaman aşımları için üstel geri alma ile yeniden deneme İlkesi kullanıyor musunuz?](#timeout-and-server-busy-errors) |
-| &nbsp; |Yeniden deneme sayısı |[Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#non-retryable-errors) |
-| &nbsp; |Yapılandırma |[Küçük isteklerin performansını artırmak için Nagle algoritmasını kapattık mı?](#disable-nagle) |
-| &nbsp; |İleti boyutu |[İletiniz, sıranın performansını geliştirmek için sıkıştırmı?](#message-size) |
-| &nbsp; |Toplu alma |[Tek bir GET işleminde birden çok ileti alıyor musunuz?](#batch-retrieval) |
-| &nbsp; |Yoklama sıklığı |[Uygulamanızın algılanan gecikmesini azaltmak için yeterince sık yoklanıyor musunuz?](#queue-polling-interval) |
-| &nbsp; |Güncelleştirme Iletisi |[Bir hata oluşursa iletinin tamamını yeniden işlemek zorunda kalmamak için ileti işleme sürecini depolamak üzere iletileri güncelleştirme işlemini kullanıyorsunuz musunuz?](#use-update-message) |
-| &nbsp; |Mimari |[Uzun süre çalışan iş yüklerini kritik yoldan tutarak ve sonra bağımsız olarak ölçeklendirerek, tüm uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanıyor musunuz?](#application-architecture) |
+|--|--|--|
+| &nbsp; | Ölçeklenebilirlik hedefleri | [Uygulamanızı en fazla depolama hesabı sayısından daha fazla kullanmak üzere tasarlayabilmeniz gerekebilir mi?](#maximum-number-of-storage-accounts) |
+| &nbsp; | Ölçeklenebilirlik hedefleri | [Kapasite ve işlem sınırlarına yaklaşmaktan kaçınıyorsunuz musunuz?](#capacity-and-transaction-targets) |
+| &nbsp; | Ağ | [İstemci tarafı cihazlarda gereken performansa ulaşmak için yeterli yüksek bant genişliği ve düşük gecikme süresi var mı?](#throughput) |
+| &nbsp; | Ağ | [İstemci tarafı cihazların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
+| &nbsp; | Ağ | [İstemci uygulaması, depolama hesabıyla aynı bölgede mi?](#location) |
+| &nbsp; | Doğrudan istemci erişimi | [Azure Storage 'a doğrudan erişim sağlamak için paylaşılan erişim imzaları (SAS) ve çıkış noktaları arası kaynak paylaşımı (CORS) kullanıyor musunuz?](#sas-and-cors) |
+| &nbsp; | .NET yapılandırması | [En iyi performans için .NET Core 2,1 veya üstünü mi kullanıyorsunuz?](#use-net-core) |
+| &nbsp; | .NET yapılandırması | [İstemcinizi yeterli sayıda eşzamanlı bağlantı kullanacak şekilde yapılandırdınız mı?](#increase-default-connection-limit) |
+| &nbsp; | .NET yapılandırması | [.NET uygulamaları için, .NET 'i yeterli sayıda iş parçacığı kullanacak şekilde yapılandırdınız mı?](#increase-the-minimum-number-of-threads) |
+| &nbsp; | Paralellik | [Paralellik 'in, istemci yeteneklerini aşırı yüklemeden veya ölçeklenebilirlik hedeflerine yaklaşımak için uygun şekilde bağlanmış olduğunu merak etmeniz gerekir mi?](#unbounded-parallelism) |
+| &nbsp; | Araçlar | [Microsoft tarafından sağlanmış istemci kitaplıklarının ve araçlarının en son sürümlerini kullanıyor musunuz?](#client-libraries-and-tools) |
+| &nbsp; | Yeniden deneme sayısı | [Daraltma hataları ve zaman aşımları için üstel geri alma ile yeniden deneme İlkesi kullanıyor musunuz?](#timeout-and-server-busy-errors) |
+| &nbsp; | Yeniden deneme sayısı | [Uygulamanız yeniden denenmeyen hatalara karşı yeniden denemeyi önler mi?](#non-retryable-errors) |
+| &nbsp; | Yapılandırma | [Küçük isteklerin performansını artırmak için Nagle 'un algoritmasını kapattık mı?](#disable-nagles-algorithm) |
+| &nbsp; | İleti boyutu | [İletiniz, sıranın performansını geliştirmek için sıkıştırmı?](#message-size) |
+| &nbsp; | Toplu alma | [Tek bir get işleminde birden çok ileti alıyor musunuz?](#batch-retrieval) |
+| &nbsp; | Yoklama sıklığı | [Uygulamanızın algılanan gecikmesini azaltmak için yeterince sık yoklanıyor musunuz?](#queue-polling-interval) |
+| &nbsp; | Güncelleştirme iletisi | [Bir hata oluşursa iletinin tamamını yeniden işlemek zorunda kalmamak için ileti işleme ilerlemesini depolamak üzere bir güncelleştirme iletisi işlemi gerçekleştiriyor musunuz?](#perform-an-update-message-operation) |
+| &nbsp; | Mimari | [Uzun süre çalışan iş yüklerini kritik yoldan tutarak ve sonra bağımsız olarak ölçeklendirerek, tüm uygulamanızı daha ölçeklenebilir hale getirmek için kuyrukları kullanıyor musunuz?](#application-architecture) |
 
 ## <a name="scalability-targets"></a>Ölçeklenebilirlik hedefleri
 
-Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalken, hizmet 503 (sunucu meşgul) veya 500 (Işlem zaman aşımı) hata kodları döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
+Uygulamanız ölçeklenebilirlik hedeflerinin herhangi birini yaklaşırsa veya aşarsa, daha fazla işlem gecikmeleri veya azaltmasıyla karşılaşabilirler. Azure Storage uygulamanızı kısıtsalyorsa, hizmet 503 ( `Server Busy` ) veya 500 ( `Operation Timeout` ) hata kodlarını döndürmeye başlar. Ölçeklenebilirlik hedefleri sınırları içinde kalarak bu hatalardan kaçınmak, uygulamanızın performansını artırmanın önemli bir parçasıdır.
 
-Kuyruk hizmeti ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](./scalability-targets.md#scale-targets-for-queue-storage).
+Kuyruk depolama için ölçeklenebilirlik hedefleri hakkında daha fazla bilgi için bkz. [Azure Storage ölçeklenebilirlik ve performans hedefleri](./scalability-targets.md#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>En fazla depolama hesabı sayısı
 
@@ -66,7 +68,7 @@ Uygulamanız tek bir depolama hesabı için ölçeklenebilirlik hedeflerine yakl
 - Uygulamanızın ölçeklenebilirlik hedefini yaklaşımını veya aşmasına neden olan iş yükünü yeniden değerlendirin. Daha az bant genişliği veya kapasite veya daha az işlem kullanmak için farklı bir şekilde tasarlayabilirsiniz mi?
 - Uygulamanız ölçeklenebilirlik hedeflerinin birini aşmanız gerekiyorsa, birden çok depolama hesabı oluşturun ve uygulama verilerinizi bu birden çok depolama hesabı genelinde bölümleyin. Bu kalıbı kullanırsanız, daha sonra yük dengelemeye yönelik daha fazla depolama hesabı ekleyebilmeniz için uygulamanızı tasarlayadığınızdan emin olun. Depolama hesaplarının kendileri, depolanan veri, işlem yapılan veya aktarılan veri açısından kullanımınız dışında bir ücret içermez.
 - Uygulamanız bant genişliği hedeflerine yaklaşıyorsa, verileri Azure depolama 'ya göndermek için gereken bant genişliğini azaltmak için istemci tarafındaki verileri sıkıştırmayı göz önünde bulundurun. Verilerin sıkıştırılması bant genişliğini kaydedebilir ve ağ performansını iyileştireken performansı olumsuz etkileyebilir. İstemci tarafında veri sıkıştırma ve açma için ek işleme gereksinimlerinin performans etkisini değerlendirin. Sıkıştırılmış verilerin depolanması sorun gidermeyi daha zor hale getirir, çünkü verileri standart araçlar kullanarak görüntülemek daha zor olabilir.
-- Uygulamanız ölçeklenebilirlik hedeflerine yaklaşıyorsa, yeniden denemeler için bir üstel geri alma kullandığınızdan emin olun. Bu makalede açıklanan önerileri uygulayarak ölçeklenebilirlik hedeflerine ulaşmaktan kaçınmak en iyisidir. Ancak, yeniden denemeler için bir üstel geri alma kullanılması, uygulamanızın hızlı bir şekilde yeniden denenmesini engelleyecek ve bu da azaltmayı daha kötüleşmektedir. Daha fazla bilgi için [zaman aşımı ve sunucu meşgul hataları](#timeout-and-server-busy-errors)başlıklı bölüme bakın.
+- Uygulamanız ölçeklenebilirlik hedeflerine yaklaşıyorsa, yeniden denemeler için bir üstel geri alma kullandığınızdan emin olun. Bu makalede açıklanan önerileri uygulayarak ölçeklenebilirlik hedeflerine ulaşmaktan kaçınmak en iyisidir. Ancak, yeniden denemeler için bir üstel geri alma kullanılması, uygulamanızın hızlı bir şekilde yeniden denenmesini engelleyecek ve bu da azaltmayı daha kötüleşmektedir. Daha fazla bilgi için [zaman aşımı ve sunucu meşgul hataları](#timeout-and-server-busy-errors) bölümüne bakın.
 
 ## <a name="networking"></a>Ağ
 
@@ -78,15 +80,15 @@ Bant genişliği ve ağ bağlantısının kalitesi, aşağıdaki bölümlerde a�
 
 #### <a name="throughput"></a>Aktarım hızı
 
-Bant genişliği için genellikle bu sorun istemcinin yeteneklerine yöneliktir. Daha büyük Azure örneklerinin NIC 'Leri daha fazla kapasiteye sahip olduğundan, tek bir makineden daha yüksek ağ sınırlarına ihtiyaç duyuyorsanız daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Azure depolama 'yı şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci cihazının ağ yeteneklerini ve Azure depolama konumuna olan ağ bağlantısını anlayın ve bunları gerektiği gibi geliştirebilirsiniz ya da uygulamanızı kendi özellikleri içinde çalışacak şekilde tasarlayın.
+Bant genişliği için genellikle bu sorun istemcinin yeteneklerine yöneliktir. Daha büyük Azure örneklerinin NIC 'Leri daha fazla kapasiteye sahip olduğundan, tek bir makineden daha yüksek ağ sınırlarına ihtiyaç duyuyorsanız daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Azure depolama 'yı şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci cihazının ağ yeteneklerini ve Azure depolama konumuna ağ bağlantısını anlayın ve bunları gerektiği gibi geliştirebilirsiniz ya da uygulamanızı kendi özellikleri içinde çalışacak şekilde tasarlayın.
 
 #### <a name="link-quality"></a>Bağlantı kalitesi
 
-Her türlü ağ kullanımında olduğu gibi, ağ koşullarının hatalara ve paket kaybına neden olacağını aklınızda bulundurun. WireShark veya NetMon kullanmak bu sorunu tanılamanıza yardımcı olabilir.
+Her türlü ağ kullanımında olduğu gibi, ağ koşullarının hatalara ve paket kaybına neden olacağını aklınızda bulundurun. Wireshark veya Ağ İzleyicisi kullanmak bu sorunu tanılamanıza yardımcı olabilir.
 
 ### <a name="location"></a>Konum
 
-Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağlar. En düşük gecikme süresi ile Azure depolama erişimi için, istemciniz için en iyi konum aynı Azure bölgesi içindedir. Örneğin, Azure Storage kullanan bir Azure Web uygulamanız varsa, bunları her ikisi de ABD Batı veya Asya Güneydoğu gibi tek bir bölge içinde bulun. Ortak bulma kaynakları, tek bir bölgedeki bant genişliği kullanımı ücretsizdir gecikme süresini ve maliyeti azaltır.
+Dağıtılmış bir ortamda, istemciyi sunucuya eklemek en iyi performansı sağlar. En düşük gecikme süresi ile Azure depolama erişimi için, istemciniz için en iyi konum aynı Azure bölgesi içindedir. Örneğin, Azure Storage kullanan bir Azure Web uygulamanız varsa, bunları hem Batı ABD hem de Güneydoğu Asya gibi tek bir bölge içinde bulun. Ortak bulma kaynakları, tek bir bölgedeki bant genişliği kullanımı ücretsizdir gecikme süresini ve maliyeti azaltır.
 
 İstemci uygulamaları Azure depolama 'ya erişebilse ancak mobil cihaz uygulamaları veya şirket içi kurumsal hizmetler gibi Azure 'da barındırılandıklarında, bu istemcilere yakın bir bölgede depolama hesabını bulma gecikme süresini azaltabilir. İstemcileriniz büyük ölçüde dağıtılırsa (örneğin, Kuzey Amerika ve bazıları Avrupa 'da), her bölge için bir depolama hesabı kullanmayı düşünün. Uygulamanın depoladığı veriler bireysel kullanıcılara özgü ise ve depolama hesapları arasında veri çoğaltmayı gerektirmiyorsa, bu yaklaşım daha kolay bir şekilde uygulanır.
 
@@ -104,7 +106,7 @@ Hem SAS hem de CORS, Web uygulamanızda gereksiz yükün oluşmasını önlemeni
 
 ## <a name="net-configuration"></a>.NET yapılandırması
 
-.NET Framework kullanılıyorsa, bu bölümde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenir. Diğer dilleri kullanıyorsanız, seçtiğiniz dilde benzer kavramların uygulayıp uygulamamın olup olmadığını kontrol edin.
+.NET Framework kullanılıyorsa, bu bölümde önemli performans iyileştirmeleri yapmak için kullanabileceğiniz çeşitli hızlı yapılandırma ayarları listelenir. Diğer dilleri kullanıyorsanız, seçtiğiniz dilde benzer kavramların uygulanıp uygulanmadığını kontrol edin.
 
 ### <a name="use-net-core"></a>.NET Core kullanın
 
@@ -112,8 +114,8 @@ Performans geliştirmelerinden faydalanmak için .NET Core 2,1 veya sonraki bir 
 
 .NET Core 'da performans iyileştirmeleri hakkında daha fazla bilgi için aşağıdaki blog gönderilerine bakın:
 
-- [.NET Core 3,0 ' de performans Iyileştirmeleri](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
-- [.NET Core 2,1 ' de performans Iyileştirmeleri](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
+- [.NET Core 3,0 ' de performans iyileştirmeleri](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-3-0/)
+- [.NET Core 2,1 ' de performans iyileştirmeleri](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-core-2-1/)
 
 ### <a name="increase-default-connection-limit"></a>Varsayılan bağlantı sınırını artır
 
@@ -129,7 +131,7 @@ Diğer programlama dilleri için, bağlantı sınırının nasıl ayarlanacağı
 
 Daha fazla bilgi için [Web Hizmetleri: eşzamanlı bağlantılar](/archive/blogs/darrenj/web-services-concurrent-connections)' a bakın.
 
-### <a name="increase-minimum-number-of-threads"></a>En az iş parçacığı sayısını artır
+### <a name="increase-the-minimum-number-of-threads"></a>En az iş parçacığı sayısını artırın
 
 Zaman uyumsuz görevlerle birlikte zaman uyumlu çağrılar kullanıyorsanız, iş parçacığı havuzundaki iş parçacığı sayısını artırmak isteyebilirsiniz:
 
@@ -137,7 +139,7 @@ Zaman uyumsuz görevlerle birlikte zaman uyumlu çağrılar kullanıyorsanız, i
 ThreadPool.SetMinThreads(100,100); //(Determine the right number for your application)  
 ```
 
-Daha fazla bilgi için bkz [. ThreadPool. SetMinThreads](/dotnet/api/system.threading.threadpool.setminthreads) metodu.
+Daha fazla bilgi için bkz [`ThreadPool.SetMinThreads`](/dotnet/api/system.threading.threadpool.setminthreads) . yöntemi.
 
 ## <a name="unbounded-parallelism"></a>Sınırlandırılmamış paralellik
 
@@ -153,19 +155,19 @@ Hizmet bir isteği işleye, Azure Storage bir hata döndürüyor. Belirli bir se
 
 ### <a name="timeout-and-server-busy-errors"></a>Zaman aşımı ve sunucu meşgul hataları
 
-Ölçeklenebilirlik sınırlarına yaklaşırsa, Azure Storage uygulamanızı kısıtlayabilir. Bazı durumlarda, Azure Storage bazı geçici bir durum nedeniyle isteği işleyemeyebilir. Her iki durumda da hizmet 503 (sunucu meşgul) veya 500 (zaman aşımı) hatası döndürebilir. Bu hatalar, hizmet daha yüksek aktarım hızına izin vermek için veri bölümlerinin yeniden dengelenmesi durumunda da meydana gelebilir. İstemci uygulaması genellikle bu hatalardan birine neden olan işlemi yeniden dener. Bununla birlikte, ölçeklenebilirlik hedeflerini aştığından Azure Storage uygulamanızı azaltsa veya hizmet isteği başka bir nedenle hizmet veremese bile, agresif yeniden denemeler sorunu kötüleşme edebilir. Bir üstel geri deneme ilkesi kullanılması önerilir ve istemci kitaplıkları varsayılan olarak bu davranışa sahiptir. Örneğin, uygulamanız 2 saniye sonra, 4 saniye, sonra 10 saniye, 30 saniye sonra yeniden deneyebilir ve ardından tamamen daha fazla verebilir. Bu şekilde, uygulamanız exacerbating davranışı yerine hizmetin yükünü önemli ölçüde azaltır.
+Ölçeklenebilirlik sınırlarına yaklaşırsa, Azure Storage uygulamanızı kısıtlayabilir. Bazı durumlarda, Azure Storage bazı geçici bir durum nedeniyle isteği işleyemeyebilir. Her iki durumda da hizmet bir 503 ( `Server Busy` ) veya 500 ( `Timeout` ) hatası döndürebilir. Bu hatalar, hizmet daha yüksek aktarım hızına izin vermek için veri bölümlerinin yeniden dengelenmesi durumunda da meydana gelebilir. İstemci uygulaması genellikle bu hatalardan birine neden olan işlemi yeniden dener. Bununla birlikte, ölçeklenebilirlik hedeflerini aştığından Azure Storage uygulamanızı azaltsa veya hizmet isteği başka bir nedenle hizmet veremese bile, agresif yeniden denemeler sorunu kötüleşme edebilir. Bir üstel geri deneme ilkesi kullanılması önerilir ve istemci kitaplıkları varsayılan olarak bu davranışa sahiptir. Örneğin, uygulamanız 2 saniye sonra, 4 saniye, sonra 10 saniye, 30 saniye sonra yeniden deneyebilir ve ardından tamamen daha fazla verebilir. Bu şekilde, uygulamanız exacerbating davranışı yerine hizmetin yükünü önemli ölçüde azaltır.
 
 Bağlantı hataları, azaltma sonucu olmadığı ve geçici olması beklenen için hemen yeniden denenebilir.
 
 ### <a name="non-retryable-errors"></a>Yeniden denenmeyen hatalar
 
-İstemci kitaplıkları, hangi hataların yeniden deneneceği ve ne işleyebileceği hakkında bir tanıma yeniden denemeler gerçekleştirir. Ancak, Azure Storage REST API doğrudan arıyorsanız, yeniden denenmemelisiniz bazı hatalar vardır. Örneğin, 400 (Hatalı Istek) hatası, istemci uygulamanın beklenen biçimde olmadığı için işlenemeyen bir istek gönderdiğini gösterir. Bu istek her seferinde aynı yanıtı elde eder, bu nedenle yeniden denenme noktası yoktur. Azure Storage REST API doğrudan arıyorsanız, olası hatalardan haberdar olun ve yeniden denenip denenmeyeceğini unutmayın.
+İstemci kitaplıkları, hangi hataların yeniden deneneceği ve ne işleyebileceği hakkında bir tanıma yeniden denemeler gerçekleştirir. Ancak, Azure Storage REST API doğrudan arıyorsanız, yeniden denenmemelisiniz bazı hatalar vardır. Örneğin, 400 ( `Bad Request` ) hatası, istemci uygulamanın beklenen biçimde olmadığı için işlenemeyen bir istek gönderdiğini gösterir. Bu istek her seferinde aynı yanıtı elde eder, bu nedenle yeniden denenme noktası yoktur. Azure Storage REST API doğrudan arıyorsanız, olası hatalardan haberdar olun ve yeniden denenip denenmeyeceğini unutmayın.
 
 Azure Storage hata kodları hakkında daha fazla bilgi için bkz. [durum ve hata kodları](/rest/api/storageservices/status-and-error-codes2).
 
-## <a name="disable-nagle"></a>Nagle 'ı devre dışı bırak
+## <a name="disable-nagles-algorithm"></a>Nagle 'ın algoritmasını devre dışı bırak
 
-Nagle 'ın algoritması, TCP/IP ağlarında yaygın olarak, ağ performansının geliştirilmesi için bir yol olarak uygulanır. Ancak, tüm koşullarda en uygun değildir (yüksek oranda etkileşimli ortamlar gibi). Nagle 'ın algoritması, Azure Tablo hizmetine yapılan isteklerin performansına yönelik olumsuz bir etkiye sahiptir ve mümkünse devre dışı bırakmanız gerekir.
+Nagle 'ın algoritması, TCP/IP ağlarında yaygın olarak, ağ performansının geliştirilmesi için bir yol olarak uygulanır. Ancak, tüm koşullarda en uygun değildir (yüksek oranda etkileşimli ortamlar gibi). Nagle 'ın algoritması, Azure Tablo depolamaya yönelik isteklerin performansına yönelik olumsuz bir etkiye sahiptir ve mümkünse bunu devre dışı bırakmanız gerekir.
 
 ## <a name="message-size"></a>İleti boyutu
 
@@ -173,7 +175,7 @@ Nagle 'ın algoritması, TCP/IP ağlarında yaygın olarak, ağ performansının
 
 ## <a name="batch-retrieval"></a>Toplu iş alımı
 
-Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Toplu iş alımı, özellikle mobil cihazlar gibi yüksek gecikme süresine sahip olan ortamlar için yararlı olan istemci uygulamasından gelen gidiş dönüş sayısını azaltabilir.
+Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Toplu alma, özellikle mobil cihazlar gibi yüksek gecikme süresine sahip olan ortamlar için yararlı olan istemci uygulamasından gidiş dönüş sayısını azaltabilir.
 
 ## <a name="queue-polling-interval"></a>Sıra yoklama aralığı
 
@@ -181,9 +183,9 @@ Tek bir işlemde bir kuyruktan en fazla 32 ileti alabilirsiniz. Toplu iş alım�
 
 Güncel maliyet bilgileri için bkz. [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="use-update-message"></a>Güncelleştirme Iletisi kullan
+## <a name="perform-an-update-message-operation"></a>İleti güncelleştirme işlemini gerçekleştirme
 
-Hatalı bir zaman aşımını artırmak veya bir iletinin durum bilgilerini güncelleştirmek için **Ileti güncelleştirme** işlemini kullanabilirsiniz. **Güncelleştirme iletisi** kullanmak, işin her adımı tamamlandıktan sonra bir sıradan bir işi geçen bir iş akışı kullanmaktan daha verimli bir yaklaşım olabilir. Uygulamanız iş durumunu iletiye kaydedebilir ve sonra bir adım tamamlandığında işin bir sonraki adımına ilişkin iletiyi requeuing yerine çalışmaya devam edebilir. Her **güncelleştirme iletisi** işleminin ölçeklenebilirlik hedefine doğru olduğunu aklınızda bulundurun.
+Hatalı bir zaman aşımını artırmak veya bir iletinin durum bilgilerini güncelleştirmek için bir güncelleştirme iletisi işlemi yapabilirsiniz. Bu yaklaşım, işin her adımı tamamlandıktan sonra bir sıradan bir işi geçen bir iş akışına sahip olandan daha etkili olabilir. Uygulamanız iş durumunu iletiye kaydedebilir ve sonra bir adım tamamlandığında işin bir sonraki adımına ilişkin iletiyi requeuing yerine çalışmaya devam edebilir. Her güncelleştirme iletisi işleminin ölçeklenebilirlik hedefine doğru olduğunu aklınızda bulundurun.
 
 ## <a name="application-architecture"></a>Uygulama mimarisi
 

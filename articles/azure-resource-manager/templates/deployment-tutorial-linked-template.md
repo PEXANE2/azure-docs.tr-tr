@@ -5,18 +5,18 @@ ms.date: 03/13/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 7a5872f94a2d267ed2a0e17815e84cec5b02c613
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 81a8b6cd5044b31ee80f50448d6610ba6a57281e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368112"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585658"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>Öğretici: bağlı bir şablon dağıtma
 
 [Önceki öğreticilerde](./deployment-tutorial-local-template.md), yerel bilgisayarınızda depolanan bir şablonu dağıtmayı öğrendiniz. Karmaşık çözümleri dağıtmak için bir şablonu birçok şablona bölebilir ve bu şablonları bir ana şablon aracılığıyla dağıtabilirsiniz. Bu öğreticide, bağlantılı bir şablona başvuruyu içeren bir ana şablon dağıtmayı öğreneceksiniz. Ana şablon dağıtıldığında, bağlantılı şablonun dağıtımını tetikler. Ayrıca, bağlı şablonu SAS belirtecini kullanarak depolamayı ve güvenliğini nasıl sağlayacağınızı öğreneceksiniz. Yaklaşık **12 dakika** sürer.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Önceki öğreticiyi tamamlamanızı öneririz, ancak bu gerekli değildir.
 
@@ -32,7 +32,7 @@ Depolama hesabı kaynağını bağlı bir şablona ayırabilirsiniz:
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-Aşağıdaki şablon ana şablondur. Vurgulanan `Microsoft.Resources/deployments` nesne, bağlantılı bir şablonun nasıl çağrılacağını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olarak depolanamaz. Yalnızca ya da içeren bir URI değeri sağlayabilirsiniz `HTTP` `HTTPS` . Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır. URI, parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
+Aşağıdaki şablon ana şablondur. Vurgulanan `Microsoft.Resources/deployments` nesne, bağlantılı bir şablonun nasıl çağrılacağını gösterir. Bağlantılı şablon yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olarak depolanamaz. Yalnızca HTTP ya da HTTPS içeren bir URI değeri sağlayabilirsiniz. Kaynak Yöneticisi şablona erişebilmelidir. Bir seçenek, bağlantılı şablonunuzu bir depolama hesabına yerleştirmeli ve bu öğe için URI 'yi kullanacaktır. URI, parametre kullanılarak şablona geçirilir. Vurgulanan parametre tanımına bakın.
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
 

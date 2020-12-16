@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2613a4fd931ad49a4f40a4221ea20e8c25f185fe
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d49868199d8f9f2da97f08dd06f29afd8f553bd9
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501652"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586984"
 ---
 # <a name="connect-to-azure-synapse-studio-using-azure-private-link-hubs"></a>Azure özel bağlantı hub 'Larını kullanarak Azure SYNAPSE Studio 'ya bağlanma 
 
@@ -35,9 +35,9 @@ Azure SYNAPSE Studio kullanarak tüm Azure SYNAPSE Analytics çalışma alanlar�
 ## <a name="azure-private-links-hubs-and-azure-virtual-network"></a>Azure özel bağlantı hub 'Ları ve Azure sanal ağı
 SYNAPSE Studio ile uçtan uca bağlantıyı güvenli hale getirmek için Azure Sanal ağınızı SYNAPSE özel bağlantı hub kaynağına bağlamanız gerekir. Bunun için, sanal ağınızdan oluşturduğunuz özel bağlantı hub 'ına özel bir uç nokta oluşturmanız gerekir. Özel bağlantı hub 'ınız için Azure portal kullanabilir ve özel uç nokta bölümüne gidebilirsiniz. Özel bağlantı hub 'ınıza bağlanan yeni bir özel uç nokta oluşturmak için "+ özel uç nokta" seçeneğini belirleyin.
 
-:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Özel bağlantı merkezine özel bir uç nokta oluşturma":::
+:::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-private-endpoint.png" alt-text="Özel uç nokta bağlantıları sayfasını gösteren ekran görüntüsü.":::
 
-"Kaynak" sekmesinde "Microsoft. SYNAPSE/Privatelinkhub" kaynak türünü seçtiğinizden emin olun. :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="özel bağlantı merkezine özel bir uç nokta oluşturun":::
+"Kaynak" sekmesinde "Microsoft. SYNAPSE/Privatelinkhub" kaynak türünü seçtiğinizden emin olun. ' :::image type="content" source="./media/synapse-private-link-hubs/synapse-private-links-resource-type.png" alt-text="Resource Type ' vurgulanmış ' özel uç nokta oluştur ' sayfasını gösteren ekran görüntüsü"::: .
 
 "Yapılandırma" sekmesinde, sanal ağınızla ve özel DNS bölgesiyle tümleştirilirken Özel DNS bölgeler için "privatelink.azuresynapse.net" öğesini seçin.
 

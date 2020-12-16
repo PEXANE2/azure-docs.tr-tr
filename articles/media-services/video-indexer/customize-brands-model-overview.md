@@ -3,19 +3,19 @@ title: Video Indexer bir marka modelini özelleştirme-Azure
 titleSuffix: Azure Media Services
 description: Bu makale, Video Indexer bir marka modeli nedir ve özelleştirmeyi özelleştirmek için bir genel bakış sunar.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: kumud
-ms.openlocfilehash: e0df698cb431e5e26c69047a9f464904f0546487
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/15/2019
+ms.author: juliako
+ms.openlocfilehash: 81d7dda854c6afcc9397289ff23ba45b02ed9fc4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89294246"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586083"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Video Indexer bir markalar modeli özelleştirme
 
@@ -25,15 +25,15 @@ Marka algılama, içerik Arşivi ve bulma, bağlamsal reklam, Sosyal Medya Anali
 
 ## <a name="out-of-the-box-detection-example"></a>Kullanıma hazır algılama örneği
 
-[Microsoft Build 2017 gün 2](https://www.videoindexer.ai/media/ed6ede78ad/) sunusunda, "Microsoft Windows" markası birden çok kez görünür. Bazen, bazen görsel metin olarak ve hiçbir zaman tam olarak yazılı olarak yazı. Video Indexer, bir terimin bağlam temelinde gerçekten marka halinde olduğunu ve en fazla 90K markalarını ve sürekli olarak güncelleştirilmesini algılar. 02:25 ' de Video Indexer, konuşma ve Windows logosunun bir parçası olan görsel metinden daha sonra yeniden 02:40 ' de bir marka algılar.
+"Microsoft Build 2017 gün 2" sunusunda, "Microsoft Windows" markası birden çok kez görünür. Bazen, bazen görsel metin olarak ve hiçbir zaman tam olarak yazılı olarak yazı. Video Indexer, bir terimin bağlam temelinde gerçekten marka halinde olduğunu ve en fazla 90K markalarını ve sürekli olarak güncelleştirilmesini algılar. 02:25 ' de Video Indexer, konuşma ve Windows logosunun bir parçası olan görsel metinden daha sonra yeniden 02:40 ' de bir marka algılar.
 
 ![Markalara genel bakış](./media/content-model-customization/brands-overview.png)
 
-Oluşturma bağlamında Windows hakkında konuşmak, "Windows" sözcüğünü marka olarak algılamaz ve Box, Apple, Fox, vb. için aynı şekilde, bağlamdan nasıl ayırt leyeceğinizi bilen gelişmiş Machine Learning algoritmalarına dayanır. Marka algılama, tüm desteklenen dillerimiz için geçerlidir. [Tam Microsoft Build 2017 gün 2 açılış video ve dizini](https://www.videoindexer.ai/media/ed6ede78ad/)için buraya tıklayın.
-
-Kendi markalarınızı getirmek için sonraki adımlara göz atın.
+Oluşturma bağlamında Windows hakkında konuşmak, "Windows" sözcüğünü marka olarak algılamaz ve Box, Apple, Fox, vb. için aynı şekilde, bağlamdan nasıl ayırt leyeceğinizi bilen gelişmiş Machine Learning algoritmalarına dayanır. Marka algılama, tüm desteklenen dillerimiz için geçerlidir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+Kendi markalarınızı getirmek için şu konulara göz atın:
 
 [API 'Leri kullanarak markalar modelini özelleştirme](customize-brands-model-with-api.md)
 

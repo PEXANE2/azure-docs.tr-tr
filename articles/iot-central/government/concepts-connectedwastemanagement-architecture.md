@@ -3,20 +3,18 @@ title: Azure IoT Central ile oluşturulmuş bağlı çöp yönetimi çözümü i
 description: Azure IoT Central ile oluşturulmuş bağlı bir çöp yönetimi çözümü için kavramlar öğrenin.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873701"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586814"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Bağlı atık izleme referans mimarisi 
-
-
 
 Bağlı bir çöp yönetimi çözümü, **Azure IoT Central uygulama şablonu** kullanılarak bir başlangıç olarak başlangıç IoT uygulaması olarak oluşturulabilir. Bu makale uçtan uca çözüm oluşturma konusunda üst düzey bir başvuru mimarisi kılavuzu sağlar. 
 
@@ -27,8 +25,8 @@ Kavramlar:
 
 1. Cihazlar ve bağlantı  
 1. IoT Central 
-2. Genişletilebilirlik ve tümleştirmeler
-3. İş uygulamaları
+1. Genişletilebilirlik ve tümleştirmeler
+1. İş uygulamaları
 
 Genellikle su tüketim izleme çözümünde bir parçayı oynayan önemli bileşenlere göz atalım.
 

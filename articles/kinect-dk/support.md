@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, kayıt, algılayıcı, SDK, erişim, derinlik, video, kamera, İmu, hareket, algılayıcı, ses, mikrofon, Matroska, algılayıcı SDK, indirme, gövde, izleme, destek
-ms.openlocfilehash: 2fbfe9c52a46cbf7058e6d5ca91008f1f289bfd2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357054"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587103"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect destek seçenekleri ve kaynakları
 
@@ -56,6 +56,8 @@ Ayrıca, [bilinen sorunlarımızı ve sorun gidermeyi](troubleshooting.md)de den
 Bir cihaz veya algılayıcı işlevselliği, bellenim güncelleştirmeleri veya satın alma seçenekleriyle ilgili [yardım alın](https://support.microsoft.com/supportforbusiness/productselection?sapId=f77b1b95-721e-43a0-2db8-b01e81a3f813) .
 
 Destek teklifleri hakkında daha fazla bilgi için, [iş Için Microsoft desteği](https://support.microsoft.com/help/4341255/support-for-business)hakkında daha fazla bilgi edinin.
+
+Microsoft donanım ürünleri için Koformalik 'in AB bildirimleri [burada](https://www.microsoft.com/en-us/eu-declarations-compliance?activetab=pivot1:primaryr3) verilmiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

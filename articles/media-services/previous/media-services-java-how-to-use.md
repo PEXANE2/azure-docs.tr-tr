@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-java
-ms.openlocfilehash: 8a95ee631797c4dcca87f3506a6cf29245328159
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3c86689681aa99f60c4345e92f7f5c426795a69e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89263476"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586712"
 ---
 # <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Azure Media Services için Java istemci SDK’sı kullanmaya başlama
 
@@ -51,7 +51,7 @@ Java için Media Services SDK’sını kullanmaya başlamak üzere [Azure Media 
 >`azure-media` paket sürümü `0.9.8` itibariyle SDK, Azure Active Directory (AAD) kimlik doğrulaması desteği eklemiş ve Azure Access Control Service (ACS) kimlik doğrulaması desteğini kaldırmıştır. Azure AD kimlik doğrulaması modeline mümkün olan en kısa sürede geçiş yapmanız önerilir. Geçiş hakkında daha fazla bilgi için [Azure AD kimlik doğrulaması ile Azure Media Services API’sine erişim](media-services-use-aad-auth-to-access-ams-api.md) makalesini okuyun.
 
 >[!NOTE]
->Azure Media Services Java SDK'sının kaynak kodunu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media) bulabilirsiniz. Ana dal yerine 0,9 dalına geçiş yaptığınızdan emin olun. 
+>Azure Media Services Java SDK'sının kaynak kodunu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media) bulabilirsiniz. Ana dalı değil, 0,9 dalına geçdiğinizden emin olun. 
 
 ## <a name="how-to-use-azure-media-services-with-java"></a>Nasıl Yapılır: Java ile Azure Media Services’i Kullanma
 

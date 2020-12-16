@@ -7,18 +7,18 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: be2e4a002d1daf4da7d042f1fd7d5bf0e9a01377
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bafd8a9752d2587ec52fe586e442e3bfc86d7537
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544520"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585777"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Redsıs geliştirme hakkında Azure önbelleği SSS
 
 Bu makalede, redin için Azure önbelleği için geliştirme hakkında sık sorulan soruların yanıtları sağlanır.
 
-## <a name="common-questions-and-answers"></a>Sık sorulan sorular ve yanıtları
+## <a name="common-questions-and-answers"></a>Yaygın sorular ve yanıtları
 Bu bölümde aşağıdaki SSS ele alınmaktadır:
 
 * [Redsıs için Azure önbelleği 'ni kullanmaya nasıl başlarım?](#how-can-i-get-started-with-azure-cache-for-redis)
@@ -45,7 +45,7 @@ Henüz bir Azure hesabınız yoksa şunları yapabilirsiniz:
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>StackExchange. Redsıs yapılandırma seçenekleri ne olur?
 StackExchange. redin birçok seçeneği vardır. Bu bölüm bazı yaygın ayarlardan bazılarıdır. StackExchange. Redu seçenekleri hakkında daha ayrıntılı bilgi için bkz. [StackExchange. redsıs yapılandırması](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Açıklama | Öneri |
+| ConfigurationOptions | Description | Öneri |
 | --- | --- | --- |
 | AbortOnConnectFail |Doğru olarak ayarlandığında, ağ hatasından sonra bağlantı yeniden bağlanmaz. |False olarak ayarlayın ve StackExchange. redin otomatik olarak yeniden bağlanmasına izin verin. |
 | ConnectRetry |İlk bağlantı sırasında bağlantı denemelerinin yinelenme sayısı. |Rehberlik için aşağıdaki notlara bakın. |
@@ -55,7 +55,7 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
 
 * **Yeniden deneme sayısı**
   * ConnectRetry ve ConnectTimeout için genel rehberlik hızlı bir şekilde başarısız olur ve yeniden dener. Bu kılavuz, iş yükünüze ve istemcinizin bir Redi komutu vermesi ve yanıt alması için ne kadar süre harcandığından elde edilir.
-  * StackExchange. redin bağlantı durumunu denetlemek ve kendiniz yeniden bağlanmak yerine otomatik olarak yeniden bağlanmasına izin verin. **Connectionçoğullayıcı. IsConnected özelliğini kullanmaktan kaçının** .
+  * StackExchange. redin bağlantı durumunu denetlemek ve kendiniz yeniden bağlanmak yerine otomatik olarak yeniden bağlanmasına izin verin. **Connectionçoğullayıcı. IsConnected özelliğini kullanmaktan kaçının**.
   * Kar Balling-bazen yeniden denemekte olduğunuz ve yeniden deneme karından ve hiçbir zaman kurtarmadığı bir sorunla karşılaşabilirsiniz. Kar baletini oluşursa, Microsoft düzenleri & Yöntemler grubu tarafından yayımlanan, [yeniden deneme genel Kılavuzu](/azure/architecture/best-practices/transient-faults) ' nda açıklandığı gibi bir üstel geri alma algoritması kullanmayı göz önünde bulundurmanız gerekir.
   
 * **Zaman aşımı değerleri**
@@ -64,12 +64,12 @@ Genellikle istemcinin varsayılan değerleri yeterlidir. İş yükünüze göre 
   * Uygulama için tek bir Connectionçoğullayıcı örneği kullanın. Bir bağlantı özelliği tarafından döndürülen tek bir örnek oluşturmak için bir LazyConnection kullanabilirsiniz, bu, [Connectionçoğullayıcı sınıfı kullanılarak önbelleğe bağlanma](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)bölümünde gösterilmiştir.
   * Özelliği, `ConnectionMultiplexer.ClientName` tanılama amacıyla bir uygulama örneği benzersiz adı olarak ayarlayın.
   * `ConnectionMultiplexer`Özel iş yükleri için birden çok örnek kullanın.
-      * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örneğin:
-      * Büyük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
-      * Küçük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
-      * Bağlantı zaman aşımları için farklı değerler ayarlayabilir ve kullandığınız her bir Connectionçoğullayıcı için yeniden deneme mantığı yapabilirsiniz.
-      * Tanılama konusunda `ClientName` yardımcı olmak için her bir Çoğullayıcı özelliğini ayarlayın.
-      * Bu kılavuz, başına daha kolay gecikme süresine neden olabilir `ConnectionMultiplexer` .
+    * Uygulamanızda farklı yükleme yaptıysanız bu modeli takip edebilirsiniz. Örnek:
+    * Büyük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
+    * Küçük anahtarlarla ilgilenirken bir Çoğullayıcı olabilir.
+    * Bağlantı zaman aşımları için farklı değerler ayarlayabilir ve kullandığınız her bir Connectionçoğullayıcı için yeniden deneme mantığı yapabilirsiniz.
+    * Tanılama konusunda `ClientName` yardımcı olmak için her bir Çoğullayıcı özelliğini ayarlayın.
+    * Bu kılavuz, başına daha kolay gecikme süresine neden olabilir `ConnectionMultiplexer` .
 
 ### <a name="what-azure-cache-for-redis-clients-can-i-use"></a>Redsıs istemcileri için hangi Azure önbelleğinde kullanabilirim?
 Redin hakkında harika şeyler birçok farklı geliştirme dilini destekleyen çok sayıda istemci vardır. İstemcilerin geçerli listesi için bkz. [redsıs istemcileri](https://redis.io/clients). Birçok farklı dili ve istemciyi kapsayan öğreticiler için bkz. [Azure Cache 'ı redsıs için kullanma](cache-dotnet-how-to-use-azure-redis-cache.md) ve içerik tablosundaki eşdüzey makaleler.

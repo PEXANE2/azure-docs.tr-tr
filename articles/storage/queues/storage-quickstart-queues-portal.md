@@ -3,23 +3,23 @@ title: 'Hızlı başlangıç: portalda Azure depolama kuyrukları oluşturma'
 description: Bir kuyruk oluşturmak için Azure portal kullanın. Ardından, bir ileti eklemek, ileti özelliklerini görüntülemek ve iletiyi sıradan almak için Azure portal kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 08/13/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
-ms.openlocfilehash: 0ee3d9c26d6972da9e528660d034432ce696aa45
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 24b1d16ab5f13a9aef1faa5bc7a3579ad1a5aa5e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347208"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585556"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Hızlı başlangıç: kuyruk oluşturma ve Azure portal bir ileti ekleme
 
 Bu hızlı başlangıçta, Azure depolama 'da bir sıra oluşturmak ve ileti eklemek ve sıradan çıkarma için [Azure Portal](https://portal.azure.com/) kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -28,7 +28,7 @@ Bu hızlı başlangıçta, Azure depolama 'da bir sıra oluşturmak ve ileti ekl
 Azure portal bir sıra oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında yeni depolama hesabınıza gidin.
-2. Depolama hesabının sol menüsünde **kuyruk hizmeti** bölümüne gidin ve **Kuyruklar** ' ı seçin.
+2. Depolama hesabının sol menüsünde, **kuyruk depolaması** bölümüne gidin ve **Kuyruklar**' ı seçin.
 3. **+ Queue** düğmesini seçin.
 4. Yeni kuyruğunuz için bir ad yazın. Kuyruk adı küçük harfle yazılmalıdır, bir harf veya sayıyla başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.
 6. Kuyruğu oluşturmak için **Tamam ' ı** seçin.
@@ -66,4 +66,4 @@ Sıradan çıkarıcı her zaman kuyruktaki en eski iletiyi kaldırır.
 Bu hızlı başlangıçta, bir kuyruk oluşturma, ileti ekleme, ileti özelliklerini görüntüleme ve Azure portal bir iletiyi sıradan çıkarma hakkında öğrenirsiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Kuyrukları nelerdir?](storage-queues-introduction.md)
+> [Azure Kuyruk Depolama nedir?](storage-queues-introduction.md)

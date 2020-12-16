@@ -17,12 +17,12 @@ ms.date: 04/09/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4253fe52346890eaa993a18e8e9bc9b270bffd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8dbf14b1816d367f864cc3a2977497b34111df3f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89229863"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586202"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure İzleyici’de Azure AD etkinlik günlükleri
 
@@ -111,11 +111,11 @@ Aşağıdaki tabloda, Kullanıcı oturum açma davranışı gibi birçok etkene 
 
 
 
-| Günlük kategorisi       | Kullanıcı sayısı | Günlük olay sayısı | Aylık olay sayısı (30 gün) | ABD Doları (EST) cinsinden aylık maliyet |
-| :--                | ---             | ---            | ---                        | --:                          |
-| Denetim ve oturum açma işlemleri | 100.000         | 16.500.000     | 495.000.000                |  $1093,00                       |
-| Denetim              | 100.000         | 1.500.000      | 45.000.000                 |  $246,66                     |
-| Oturum açma işlemleri           | 100.000         | 15.000.000     | 450.000.000                |  $847,28                     |
+| Günlük kategorisi | Kullanıcı sayısı | Günlük olay sayısı | Aylık olay sayısı (30 gün) | ABD Doları (EST) cinsinden aylık maliyet |
+|:-|--|--|--|-:|
+| Denetim ve oturum açma işlemleri | 100.000 | 16.500.000 | 495.000.000 | $1093,00 |
+| Denetim | 100.000 | 1.500.000 | 45.000.000 | $246,66 |
+| Oturum açma işlemleri | 100.000 | 15.000.000 | 450.000.000 | $847,28 |
 
 
 
@@ -152,7 +152,7 @@ Bu bölümde, Azure İzleyici'deki Azure AD günlükleriyle ilgili sık sorulan 
 
 **S: bir yönetici bir tanılama ayarının bekletme süresini değiştirirse ne olur?**
 
-Y **: yeni**bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulanır. İlke değişikliğinden önce toplanan Günlükler etkilenmeyecektir.
+Y **: yeni** bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulanır. İlke değişikliğinden önce toplanan Günlükler etkilenmeyecektir.
 
 ---
 
@@ -180,7 +180,7 @@ Y **: yeni**bekletme ilkesi, değişiklikten sonra toplanan günlüklere uygulan
 
 **S: Hangi SIEM araçları desteklenmektedir?** 
 
-Y: **a** **: Şu**anda Azure Izleyici, [splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](./howto-integrate-activity-logs-with-arcsight.md), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Y: **a** **: Şu** anda Azure Izleyici, [splunk](./howto-integrate-activity-logs-with-splunk.md), IBM QRadar, [Sumo Logic](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory), [arcgözetimi](./howto-integrate-activity-logs-with-arcsight.md), logrhythm ve Logz.io tarafından desteklenir. Bağlayıcıların çalışma şekli hakkında daha fazla bilgi için bkz. [Azure izleme verilerini bir dış araç tarafından kullanılmak üzere bir olay hub'ına aktarma](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
 ---
 

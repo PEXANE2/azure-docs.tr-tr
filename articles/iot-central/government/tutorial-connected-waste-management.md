@@ -3,39 +3,35 @@ title: 'Öğretici: Azure IoT Central bağlı bir çöp yönetimi uygulaması ol
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak bağlı bir çöp yönetimi uygulaması oluşturma oluşturmayı öğrenin.'
 author: miriambrus
 ms.author: miriamb
-ms.date: 11/12/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0a7f5ec0231612a2cee2a9435144c886527c228e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5ecfa3e4c46c17a3b381e9743953c7d97309ea3b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014484"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587256"
 ---
 # <a name="tutorial-create-a-connected-waste-management-application-in-iot-central"></a>Öğretici: IoT Central bağlı bir çöp yönetimi uygulaması oluşturma
-
-
 
 Bu öğretici, IoT Central **bağlı çöp yönetimi** uygulama şablonundan Azure IoT Central bağlı bir çöp yönetimi uygulaması oluşturmanıza kılavuzluk eder. 
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz: 
 
-> [!div class="checklist"]
+* Bağlı çöp yönetimi uygulamanızı oluşturmak için Azure IoT Central **bağlı çöp yönetimi** şablonunu kullanın
+* Operatör panosunu keşfet ve özelleştirme 
+* Bağlı çöp kutusu cihaz şablonunu keşfet
+* Sanal cihazları keşfet
+* Kuralları keşfet ve yapılandırma
+* İşleri yapılandırma
+* Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
 
-> * Bağlı çöp yönetimi uygulamanızı oluşturmak için Azure IoT Central **bağlı çöp yönetimi** şablonunu kullanın
-> * Operatör panosunu keşfet ve özelleştirme 
-> * Bağlı çöp kutusu cihaz şablonunu keşfet
-> * Sanal cihazları keşfet
-> * Kuralları keşfet ve yapılandırma
-> * İşleri yapılandırma
-> * Beyaz etiketleme kullanarak uygulama markanızı özelleştirme
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
--  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
+*  Bir Azure aboneliği önerilir. İsteğe bağlı olarak 7 günlük ücretsiz deneme kullanabilirsiniz. Azure aboneliğiniz yoksa, [Azure kaydolma sayfasında](https://aka.ms/createazuresubscription)bir tane oluşturabilirsiniz.
 
 ## <a name="create-connected-waste-management-app-in-iot-central"></a>IoT Central bağlı çöp yönetimi uygulaması oluşturma
 
@@ -49,27 +45,27 @@ Yeni bir Azure IoT Central bağlı çöp yönetimi uygulaması oluşturmak için
 
     ![Kuruluş hesabınızı girin](./media/tutorial-connectedwastemanagement/sign-in.png)
 
-2. Sol bölmeden **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
+1. Sol bölmeden **Oluştur** ' a tıklayın ve **kamu** sekmesini seçin. Kamu sayfasında çeşitli kamu uygulaması şablonları görüntülenir.
 
     ![Kamu uygulaması şablonları oluşturun](./media/tutorial-connectedwastemanagement/iotcentral-government-tab-overview.png)
 
 1. **Bağlı çöp yönetimi** uygulama şablonunu seçin. Bu şablon, örnek bağlı çöp kutusu cihaz şablonu, sanal cihaz, işleç panosu ve önceden yapılandırılmış izleme kurallarını içerir.    
 
-2. Aşağıdaki alanlarla **Yeni uygulama** oluşturma formunu açacak **uygulama oluştur**' a tıklayın:
+1. Aşağıdaki alanlarla **Yeni uygulama** oluşturma formunu açacak **uygulama oluştur**' a tıklayın:
     * **Uygulama adı**. Varsayılan olarak, uygulama *bağlı çöp yönetimini* ve ardından IoT Central oluşturduğu BENZERSIZ bir kimlik dizesini kullanır. İsteğe bağlı olarak, kolay bir uygulama adı seçin. Uygulama adını daha sonra değiştirebilirsiniz.
     * **URL** : isteğe bağlı olarak, istediğiniz URL 'yi seçebilirsiniz. URL 'YI daha sonra değiştirebilirsiniz. 
     * Azure aboneliğiniz varsa *dizininizi, Azure aboneliğinizi ve bölgenizi* girin. Aboneliğiniz yoksa, **7 günlük ücretsiz denemeyi** etkinleştirebilir ve gerekli iletişim bilgilerini tamamlayabilirsiniz.  
 
     Dizinler ve abonelikler hakkında daha fazla bilgi için bkz. [Uygulama oluşturma hızlı başlangıcı](../core/quick-deploy-iot-central.md).
 
-5. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
+1. Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın. 
 
     ![Azure IoT Central bağlı çöp uygulama oluştur sayfası](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement.png)
     
     ![Azure IoT Central bağlı faturalandırma bilgileri oluşturma](./media/tutorial-connectedwastemanagement/new-application-connectedwastemanagement-billinginfo.png)
 
  
-6. Artık Azure IoT Central **bağlı çöp yönetimi şablonunu** kullanarak bağlı bir çöp yönetimi uygulaması oluşturdunuz. 
+1. Artık Azure IoT Central **bağlı çöp yönetimi şablonunu** kullanarak bağlı bir çöp yönetimi uygulaması oluşturdunuz. 
 
 Tebrikler! Yeni oluşturduğunuz uygulamanız önceden yapılandırılmış olarak gelir:
 * Örnek işleç panoları
@@ -87,8 +83,8 @@ Uygulamayı oluşturduktan sonra, **geniş bir atık bağlantılı çöp yöneti
 
 Bir Oluşturucu olarak, işleçler için panoda görünümler oluşturabilir ve özelleştirebilirsiniz. Özelleştirmeyi denemeden önce Panoyu keşfedelim. 
 
-> [!NOTE]
-> Panoda görünen tüm veriler, sonraki bölümde araştırılan sanal cihaz verilerini temel alır. 
+>>[!NOTE]
+>> Panoda görünen tüm veriler, sonraki bölümde araştırılan sanal cihaz verilerini temel alır. 
 
 Pano farklı kutucuk türlerinden oluşur:
 
@@ -98,7 +94,7 @@ _ ***Çöp kutusu resim kutucuğu** _: bir açıklayıcı metinle birlikte izlen
 
 _ ***Fill level KPI kutucuğu** _: kutucuk bir çöp kutusu içinde _Fill Level * algılayıcısı tarafından bildirilen bir değeri görüntüler. Bir çöp kutusu ölçüm *düzeyi* ve *oçi ölçümü* ya da *ağırlığı* gibi diğer sensörlere uzaktan izlenebilirler. Bir operatör çöp toplama kamyonu dağıtma gibi eylem gerçekleştirebilir. 
 
-*  ***Çöp izleme alanı Haritası** _: eşleme, Azure IoT Central 'da doğrudan yapılandırabileceğiniz Azure Maps kullanıyor. Harita kutucuğu cihaz konumunu görüntülüyor. Haritanın üzerine gelin ve yakınlaştırma, büyütme veya genişletme gibi harita üzerindeki denetimleri deneyin.
+* ***Çöp izleme alanı Haritası** _: eşleme, Azure IoT Central 'da doğrudan yapılandırabileceğiniz Azure Maps kullanıyor. Harita kutucuğu cihaz konumunu görüntülüyor. Haritanın üzerine gelin ve yakınlaştırma, büyütme veya genişletme gibi harita üzerindeki denetimleri deneyin.
 
      ![Bağlı çöp yönetimi Pano eşlemesi](./media/tutorial-connectedwastemanagement/connectedwastemanagement-dashboard-map.png)
 
@@ -118,12 +114,11 @@ Oluşturucu olarak, işleçler için panodaki görünümleri özelleştirebilirs
 
     ![Panoyu Düzenleme](./media/tutorial-connectedwastemanagement/edit-dashboard.png)
 
-2. Yeni Pano oluşturmak ve sıfırdan yapılandırmak için **+ Yeni** seçeneğine de tıklayabilirsiniz. Birden çok panonuz olabilir ve Pano menüsünden panolarınız arasında gezinebilirsiniz. 
+1. Yeni Pano oluşturmak ve sıfırdan yapılandırmak için **+ Yeni** seçeneğine de tıklayabilirsiniz. Birden çok panonuz olabilir ve Pano menüsünden panolarınız arasında gezinebilirsiniz. 
 
 ## <a name="explore-connected-waste-bin-device-template"></a>Bağlı çöp kutusu cihaz şablonunu keşfet
 
 Azure IoT Central bir cihaz şablonu, telemetri, özellikler veya komut olabilen bir cihazın yeteneklerini tanımlar. Bir Oluşturucu olarak, bağlandığınız cihazların yeteneklerini temsil eden cihaz şablonlarını tanımlayabilirsiniz. 
- 
 
 **Bağlı çöp yönetimi** uygulaması, örnek bağlı bir çöp kutusu cihaz şablonuyla birlikte gelir.
 
@@ -133,28 +128,27 @@ Cihaz şablonunu görüntülemek için:
 
     ![Uygulamadaki cihaz şablonlarının listesini gösteren ekran görüntüsü](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate.png)
 
-2. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu göreceksiniz. Ada tıklayarak açın.
+1. Cihaz şablonları listesinde **bağlı çöp kutusu**' nu göreceksiniz. Ada tıklayarak açın.
 
-3. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum* ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
+1. Cihaz şablonu özellikleri hakkında bilgi edinin. Bu konuda, *Fill level*, *oçi ölçümü*, *Ağırlık*, *konum* ve diğerleri gibi algılayıcılar tanımlanabileceğini görebilirsiniz.
 
    ![Bağlı çöp kutusu cihaz şablonunun ayrıntılarını gösteren ekran görüntüsü](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devicetemplate-connectedbin.png)
 
-   
 
 ### <a name="customizing-the-device-template"></a>Cihaz şablonunu özelleştirme
 
 Aşağıdakileri özelleştirmeyi deneyin:
 1. Cihaz şablonu menüsünden **Özelleştir** 'e gidin
-2. `Odor meter`Telemetri türünü bulun
-3. İçin **görünen adını** güncelleştirme `Odor meter``Odor level`
-4. Ayrıca, ölçüm birimini Güncelleştir ' i veya *Minimum değer* ve *en büyük değeri* ayarla ' yı deneyebilirsiniz
-5. Değişiklikleri **Kaydet** 
+1. `Odor meter`Telemetri türünü bulun
+1. İçin **görünen adını** güncelleştirme `Odor meter``Odor level`
+1. Ayrıca, ölçüm birimini Güncelleştir ' i veya *Minimum değer* ve *en büyük değeri* ayarla ' yı deneyebilirsiniz
+1. Değişiklikleri **Kaydet** 
 
 ### <a name="add-a-cloud-property"></a>Bulut özelliği Ekle 
 
 1. Cihaz şablonu menüsünden **Cloud özelliğine** gidin
-2. **+ Bulut özelliği Ekle**' ye tıklayarak yeni bir bulut özelliği ekleyin. IoT Central, cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmediği bir özelliği ekleyebilirsiniz. Örnek olarak, bir bulut özelliği, yükleme alanına, varlık bilgilerine veya bakım bilgilerine ve diğer bilgilere özgü bir uyarı eşiğine sahip olabilir. 
-3. Değişiklikleri **Kaydet** 
+1. **+ Bulut özelliği Ekle**' ye tıklayarak yeni bir bulut özelliği ekleyin. IoT Central, cihazla ilgili olan ancak cihaz tarafından gönderilmesi beklenmediği bir özelliği ekleyebilirsiniz. Örnek olarak, bir bulut özelliği, yükleme alanına, varlık bilgilerine veya bakım bilgilerine ve diğer bilgilere özgü bir uyarı eşiğine sahip olabilir. 
+1. Değişiklikleri **Kaydet** 
  
 ### <a name="views"></a>Görünümler 
 * Bağlı çöp kutusu cihaz şablonu önceden tanımlanmış görünümlerle gelir. Görünümleri keşfedebilir ve güncelleştirme yapabilirsiniz. Görünümler, operatörlerin cihaz verilerini nasıl göre, ancak bulut özelliklerinin de nasıl görüntüleneceğini tanımlar. 
@@ -181,15 +175,15 @@ IoT Central, cihaz şablonunuzu ve uygulamanızı test etmek için sanal cihazla
 
    ![Cihazlar](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices.png)
 
-2. Bağlı çöp kutusu cihazını seçin ve tıklayın.  
+1. Bağlı çöp kutusu cihazını seçin ve tıklayın.  
 
      ![Cihaz 1](./media/tutorial-connectedwastemanagement/connectedwastemanagement-devices-bin1.png)
 
-3. **Bulut özellikleri** sekmesine giderek değeri olarak güncelleştirme yapmayı deneyin `Bin full alert threshold` `95` `100` . 
+1. **Bulut özellikleri** sekmesine giderek değeri olarak güncelleştirme yapmayı deneyin `Bin full alert threshold` `95` `100` . 
 * **Cihaz özellikleri** sekmesini ve **cihaz panosu** sekmesini bulun. 
 
-> [!NOTE]
-> Tüm sekmelerin **cihaz şablonu görünümlerinden** yapılandırıldığını unutmayın.
+>> [!NOTE]
+>> Tüm sekmeler **cihaz şablonu görünümlerinden** yapılandırıldı.
 
 ### <a name="add-new-devices"></a>Yeni cihaz ekle
 
@@ -206,11 +200,11 @@ Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar o
 
    ![Kurallar](./media/tutorial-connectedwastemanagement/connectedwastemanagement-rules.png)
 
-2. **Bin tam uyarısını** seçin
+1. **Bin tam uyarısını** seçin
 
      ![Bin tam uyarısı](./media/tutorial-connectedwastemanagement/connectedwastemanagement-binfullalert.png)
 
- 3. `Bin full alert`Koşulu olduğunda denetler **Condition** `Fill level is greater than or equal to Bin full alert threshold` .
+ 1. `Bin full alert`Koşulu olduğunda denetler  `Fill level is greater than or equal to Bin full alert threshold` .
 
     , `Bin full alert threshold` Cihaz şablonunda tanımlanan bir *bulut özelliğidir* `Connected waste bin` . 
 
@@ -219,16 +213,16 @@ Azure IoT Central 'de cihaz Telemetriyi otomatik olarak izlemek için kurallar o
 ### <a name="create-an-email-action"></a>E-posta eylemi oluşturma
 Kuralın Eylemler listesinde bir e-posta eylemi yapılandırmak için:
 1. **+ E-posta** seçeneğini belirleyin. 
-2. Eylem için kolay **görünen ad** olarak *yüksek pH uyarısı* girin.
-3. **' Deki** IoT Central hesabınızla ilişkili e-posta adresini girin. 
-4. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
-5. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
-6. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin. 
+1. Eylem için kolay **görünen ad** olarak *yüksek pH uyarısı* girin.
+1. **' Deki** IoT Central hesabınızla ilişkili e-posta adresini girin. 
+1. İsteğe bağlı olarak, e-posta metnine dahil etmek için bir Note girin.
+1. Eylemi gerçekleştirmek için **bitti** ' yi seçin.
+1. Yeni kuralı kaydetmek ve etkinleştirmek için **Kaydet** ' i seçin. 
 
 Yapılandırılan **koşul** karşılandığında e-posta almalısınız.
 
-> [!NOTE]
-> Bir koşul her karşılandığında uygulama e-posta gönderir. Otomatik kuraldan e-posta almayı durdurma kuralını **devre dışı bırakın** . 
+>[!NOTE]
+>Bir koşul her karşılandığında uygulama e-posta gönderir. Otomatik kuraldan e-posta almayı durdurma kuralını **devre dışı bırakın** . 
   
 Yeni bir kural oluşturmak için: 
 1. Sol bölmedeki **kurallarda** **+ Yeni** ' yi seçin.
@@ -238,7 +232,7 @@ Yeni bir kural oluşturmak için:
 IoT Central, işler cihaz veya bulut özellikleri güncelleştirmelerini birden çok cihazda tetiklemeniz sağlar. Özelliklere ek olarak, birden çok cihazda cihaz komutlarını tetiklemek için işleri de kullanabilirsiniz. IoT Central, iş akışını sizin için otomatikleştirecektir. 
 
 1. Sol bölmedeki **işler** ' e gidin. 
-2. **+ Yeni** ' ye tıklayın ve bir veya daha fazla iş yapılandırın. 
+1. **+ Yeni** ' ye tıklayın ve bir veya daha fazla iş yapılandırın. 
 
 
 ## <a name="customize-your-application"></a>Uygulamanızı özelleştirme 
@@ -248,14 +242,14 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 ### <a name="to-change-the-application-theme"></a>Uygulama temasını değiştirmek için:
 
 1. **Yönetim > uygulamanızı özelleştirmek için yöneticinize** gidin.
-3. **Uygulama logosu** olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın.
-4. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini kullanın.
-5. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
+1. **Uygulama logosu** olarak karşıya yüklenecek bir görüntü seçmek için **Değiştir** düğmesini kullanın.
+1. Tarayıcı sekmelerinde görünecek bir **tarayıcı simgesi** görüntüsü seçmek için **Değiştir** düğmesini kullanın.
+1. Varsayılan **tarayıcı renklerini** , HTML onaltılık renk kodları ekleyerek de değiştirebilirsiniz.
 
    ![Azure IoT Central uygulamanızı özelleştirme](./media/tutorial-connectedwastemanagement/connectedwastemanagement-customize-your-application.png)
 
-6. Uygulama görüntülerini **yönetim > uygulama ayarları** ' na giderek ve **Görüntü düğmesini seçerek** de uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçebilirsiniz.
-7. Son olarak, uygulamanın künyesi üzerindeki **Ayarlar** ' a tıklayarak **Temayı** da değiştirebilirsiniz.
+1. Uygulama görüntülerini **yönetim > uygulama ayarları** ' na giderek ve **Görüntü düğmesini seçerek** de uygulama görüntüsü olarak karşıya yüklenecek bir görüntü seçebilirsiniz.
+1. Son olarak, uygulamanın künyesi üzerindeki **Ayarlar** ' a tıklayarak **Temayı** da değiştirebilirsiniz.
 
   
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -263,7 +257,7 @@ Bir Oluşturucu olarak, uygulamanızdaki Kullanıcı deneyimini özelleştirmek 
 Bu uygulamayı kullanmaya devam etmeyecekecekseniz, aşağıdaki adımlarla uygulamanızı silin:
 
 1. IoT Central uygulamanızın sol bölmesindeki Yönetim sekmesini açın.
-2. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
+1. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

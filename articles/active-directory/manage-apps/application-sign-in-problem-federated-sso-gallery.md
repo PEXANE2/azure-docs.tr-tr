@@ -12,12 +12,12 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e6d3674aaa4c89f42c2e7b87a6be6cdc8ecabf64
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028283"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586355"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>SAML tabanlı çoklu oturum açma ile yapılandırılmış uygulamalarda oturum açma sorunları
 Aşağıdaki oturum açma sorunlarını gidermek için, çözümü daha iyi tanılayıp otomatik hale getirmek için aşağıdaki işlemleri yapmanızı öneririz:
@@ -33,7 +33,9 @@ SAML tabanlı çoklu oturum açma yapılandırma sayfasını açmak için:
 1.  Filtre arama kutusuna **"Azure Active Directory"** yazın ve **Azure Active Directory** öğesini seçin.
 1.  Azure Active Directory sol gezinti menüsünde **Kurumsal Uygulamalar**’ı seçin.
 1.  Tüm uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar**'ı seçin.
+
     Burada gösterilmesini istediğiniz uygulamayı görmüyorsanız **Tüm Uygulamalar Listesi**’nin üst kısmındaki **Filtre** denetimini kullanarak **Göster** seçeneğini **Tüm Uygulamalar** olarak ayarlayın.
+
 1.  Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 1. Uygulama yüklendikten sonra, uygulamanın sol taraftaki gezinti menüsünden **Çoklu oturum açma** seçeneğini belirleyin.
 1. SAML tabanlı SSO’yu seçin.
@@ -63,7 +65,7 @@ SAML tabanlı SSO yapılandırma sayfasında, **temel SAML yapılandırması** b
 `AssertionConsumerServiceURL`SAML isteğindeki değerin Azure AD 'de yapılandırılan yanıt URL 'si değeri ile eşleştiğinden emin olun. 
 
 Yanıt URL 'SI metin kutusundaki değeri SAML isteğindeki değerle eşleşecek şekilde doğrulayın veya güncelleştirin `AssertionConsumerServiceURL` .   
-    
+
 Azure AD 'de yanıt URL 'SI değerini güncelleştirdikten ve SAML isteğindeki uygulama tarafından gönderilen değeri eşleştirdikten sonra, uygulamada oturum açabiliyor olmanız gerekir.
 
 ## <a name="user-not-assigned-a-role"></a>Kullanıcıya bir rol atanmamış

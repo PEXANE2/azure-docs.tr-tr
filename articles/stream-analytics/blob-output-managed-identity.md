@@ -5,15 +5,15 @@ author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/11/2020
-ms.openlocfilehash: f1aad2464e4979ecbf35deceaad4de70e05b3004
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/15/2020
+ms.openlocfilehash: 62651e9ea4e1b02b276e7870163453bfa55c3909
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573672"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587579"
 ---
-# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına kimliğini doğrulamak için yönetilen kimlik (Önizleme) kullanın
+# <a name="use-managed-identity-preview-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage"></a>Azure Stream Analytics işinizin Azure Blob depolama alanına kimliğini doğrulamak için yönetilen kimlik (Önizleme) kullanın
 
 Azure Blob depolama 'ya çıkış için [yönetilen kimlik doğrulama](../active-directory/managed-identities-azure-resources/overview.md) (Önizleme), Stream Analytics işlerinin bir bağlantı dizesi kullanmak yerine bir depolama hesabına doğrudan erişmesini sağlar. Bu özellik, geliştirilmiş güvenliğe ek olarak Azure içindeki bir sanal ağdaki (VNET) bir depolama hesabına veri yazmanızı de sağlar.
 

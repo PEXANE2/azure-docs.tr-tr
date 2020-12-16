@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5bd88493324867dc957922a732506f5cfb8bbc20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a2de9dbb479f43d6b646cd9f6cf604d6a08c8b6a
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91361243"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586118"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Video Indexer Web sitesiyle bir markalar modeli özelleştirme
 
@@ -31,20 +31,23 @@ Ayrıntılı bir genel bakış için bu [genel bakış](customize-brands-model-o
 
 Bu konuda açıklandığı gibi, videoda algılanan özel markalar modellerini oluşturmak, kullanmak ve düzenlemek için Video Indexer Web sitesini kullanabilirsiniz. API 'yi, API ['leri kullanarak markalar modelini özelleştirme](customize-brands-model-with-api.md)bölümünde açıklandığı gibi de kullanabilirsiniz.
 
+> [!NOTE]
+> Video, marka eklemeden önce dizinlendiğinden, onu yeniden eklemeniz gerekir. Video ile ilişkili açılan menüdeki öğeyi **yeniden dizinle** bulabilirsiniz. **Gelişmiş Seçenekler**  ->  **marka kategorileri** ' ni seçin ve **Tüm markalara** bakın.
+
 ## <a name="edit-brands-model-settings"></a>Markalar model ayarlarını Düzenle
 
 Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirleme seçeneğiniz vardır. Bu seçeneği ayarlamak için, markalar modelinizin ayarlarını düzenlemeniz gerekir. Şu adımları izleyin:
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web sitesine gidin ve oturum açın.
-2. Hesabınızdaki bir modeli özelleştirmek için sayfanın sağ üst köşesinde bulunan **içerik modeli özelleştirmesi** düğmesini seçin.
+1. Hesabınızdaki bir modeli özelleştirmek için sayfanın solundaki **içerik modeli özelleştirmesi** düğmesini seçin.
 
-   ![Video Indexer içerik modelini özelleştirme](./media/content-model-customization/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Video Indexer içerik modelini özelleştirme":::
+1. Markalar düzenlemek için **markalar** sekmesini seçin.
 
-3. Markalar düzenlemek için **markalar** sekmesini seçin.
-
-    ![Ekran görüntüsü, Içerik modeli özelleştirmesi iletişim kutusunun markalar sekmesini gösterir.](./media/customize-brand-model/customize-brand-model.png)
-
-4. Bing tarafından önerilen markaların algılanmasını Video Indexer istiyorsanız Bing tarafından önerilen **markalar göster** seçeneğinin işaretini kaldırın.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/customize-brand-model/customize-brand-model.png" alt-text="Ekran görüntüsü Içerik modeli özelleştirmesi iletişim kutusunun markalar sekmesini gösterir":::
+1. Bing tarafından önerilen markaların algılanmasını Video Indexer istiyorsanız Bing tarafından önerilen **markalar göster** seçeneğinin işaretini kaldırın.
 
 ## <a name="include-brands-in-the-model"></a>Modele markalar dahil etme
 
@@ -52,16 +55,14 @@ Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirl
 
 ### <a name="add-a-brand-to-include-list"></a>Bir marka listesini ekleme
 
-1. **+ Marka Ekle**' yi seçin.
-
-    ![Ekran görüntüsü, markaların ekleyebileceğiniz markalar dahil et iletişim kutusunu gösterir.](./media/customize-brand-model/add-brand.png)
+1. **+ Yeni marka oluştur**' u seçin.
 
     Ad (gerekli), kategori (isteğe bağlı), açıklama (isteğe bağlı) ve başvuru URL 'SI (isteğe bağlı) girin.
     Kategori alanı, markalarınızı etiketleyerek size yardımcı olmak için tasarlanmıştır. Bu alan, Video Indexer API 'Leri kullanılırken markasının *etiketleri* olarak gösterilir. Örneğin, "Azure" markası, "Cloud" olarak etiketlenebilir veya kategorilere ayrılmıştır.
 
     Başvuru URL 'SI alanı, marka için herhangi bir başvuru Web sitesi (örneğin, Vikipi sayfasına yönelik bir bağlantı gibi) olabilir.
 
-2. **Marka Ekle** ' yi seçtiğinizde, markaların **markaların dahil edileceğini** listesine eklendiğini görürsünüz.
+2. **Kaydet** ' i seçtiğinizde, markaların **markaların dahil edileceğini** listesine eklendiğini görürsünüz.
 
 ### <a name="edit-a-brand-on-the-include-list"></a>Ekleme listesinde bir marka düzenleme
 
@@ -82,11 +83,11 @@ Bing markaların veritabanından alınan markalar isteyip istemediğinizi belirl
 
 ### <a name="add-a-brand-to-exclude-list"></a>Dışlama listesine bir marka ekleyin
 
-1. **+ Marka Ekle** ' yi seçin.
+1. **+ Yeni marka oluştur** ' u seçin.
 
     Ad (gerekli), kategori (isteğe bağlı) girin.
 
-2. **Marka Ekle** ' yi seçtiğinizde, markaların *dışlama* listesine eklendiğini görürsünüz.
+2. **Kaydet** ' i seçtiğinizde markaların *dışlama* listesine eklendiğini görürsünüz.
 
 ### <a name="edit-a-brand-on-the-exclude-list"></a>Dışlama listesinde bir marka düzenleme
 

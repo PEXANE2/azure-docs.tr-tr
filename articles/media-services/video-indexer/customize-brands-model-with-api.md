@@ -10,18 +10,19 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: kumud
-ms.openlocfilehash: 5fc565ecc1b501f52e934784695594dcfef2a83a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c3056415d3432dbe64dd1f2bcf974a676bbf6c6b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020475"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586066"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Video Indexer API ile bir markalar modeli özelleştirme
 
-Video Indexer, video ve ses içeriğinin dizin oluşturma ve yeniden dizin oluşturma sırasında konuşma ve görsel metinden marka algılamayı destekler. Marka algılama özelliği, Bing 'ün markalar veritabanı tarafından önerilen ürünlerin, hizmetlerin ve şirketlerin bahsetmelerini belirler. Örneğin, Microsoft video veya ses içeriğiyle bahsedildiğinde veya videoda görsel metin gösteriyorsa, Video Indexer içeriği bir marka olarak algılar. Özel bir markalar modeli, belirli markaların algılanmadan dışlanmasını ve kuruluşunuzun markalar veritabanında bulunmayabilir, modelinizin bir parçası olması gereken markalar dahil etmenizi sağlar.
+Video Indexer, video ve ses içeriğinin dizin oluşturma ve yeniden dizin oluşturma sırasında konuşma ve görsel metinden marka algılamayı destekler. Marka algılama özelliği, Bing 'ün markalar veritabanı tarafından önerilen ürünlerin, hizmetlerin ve şirketlerin bahsetmelerini belirler. Örneğin, Microsoft video veya ses içeriğiyle bahsedildiğinde veya videoda görsel metin gösteriyorsa, Video Indexer içeriği bir marka olarak algılar. Özel bir markalar modeli, belirli markaların algılanmadan dışlanmasını ve kuruluşunuzun markalar veritabanında bulunmayabilir, modelinizin bir parçası olması gereken markalar dahil etmenizi sağlar. Daha fazla bilgi için bkz. [Genel Bakış](customize-brands-model-overview.md).
 
-Ayrıntılı bir genel bakış için bkz. [genel bakış](customize-brands-model-overview.md).
+> [!NOTE]
+> Video, marka eklemeden önce dizinlendiğinden, onu yeniden eklemeniz gerekir.
 
 Bu konuda açıklandığı gibi, videoda algılanan özel markalar modellerini oluşturmak, kullanmak ve düzenlemek için Video Indexer API 'Lerini kullanabilirsiniz. Ayrıca, [video Indexer Web sitesini kullanarak markalar modelini özelleştirme](customize-brands-model-with-api.md)bölümünde açıklandığı gibi video Indexer Web sitesini de kullanabilirsiniz.
 

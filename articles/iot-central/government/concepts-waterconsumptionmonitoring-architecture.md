@@ -3,20 +3,18 @@ title: Azure IoT Central ile oluşturulmuş su tüketimi izleme çözümü için
 description: Azure IoT Central ile oluşturulmuş su tüketim izleme çözümü kavramlarını öğrenin.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873568"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586797"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Su tüketimi izleme referans mimarisi 
-
-
 
 Su tüketim izleme çözümleri, **Azure IoT Central uygulama şablonuyla** bir başlangıç olarak başlangıç IoT uygulaması olarak oluşturulabilir. Bu makale uçtan uca çözüm oluşturma konusunda üst düzey bir başvuru mimarisi kılavuzu sağlar. 
 
@@ -26,8 +24,8 @@ Kavramlar:
 
 1. Cihazlar ve bağlantı  
 1. IoT Central 
-2. Genişletilebilirlik ve tümleştirmeler
-3. İş uygulamaları
+1. Genişletilebilirlik ve tümleştirmeler
+1. İş uygulamaları
 
 Genellikle su tüketim izleme çözümünde bir parçayı oynayan önemli bileşenlere göz atalım.
 
