@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1755404a06d8586968801aa22f2af532da278802
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fbddd2eb52414827561d8896dfc8bc9ff705f41b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96742332"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584400"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>En son Azure Multi-Factor Authentication Sunucusu’na yükseltme
 
@@ -33,16 +33,16 @@ V6. x veya üzeri sürümden v7. x veya daha yeni bir sürüme yükseltiyorsanı
 
 Adımları bir bakışta yükseltin:
 
-* Azure MFA sunucularını yükseltme (astlar ana)
+* Azure MFA sunucularını yükseltme (astlar, birincil)
 * Kullanıcı Portalı örneklerini yükseltme
 * AD FS bağdaştırıcı örneklerini yükseltme
 
 ## <a name="upgrade-azure-mfa-server"></a>Azure MFA sunucusunu yükseltme
 
 1. Azure MFA sunucu yükleyicisinin en son sürümünü almak için [azure Multi-Factor Authentication sunucusu 'Yi indirme](howto-mfaserver-deploy.md#download-the-mfa-server) bölümündeki yönergeleri kullanın.
-2. Master MFA sunucunuzdaki C:\Program Files\Multi-Factor Authentication Server\data\phonefactorlarpfdata (varsayılan install Location) yolunda bulunan MFA sunucusu veri dosyasının yedeklemesini yapın.
+2. Birincil MFA sunucunuzdaki C:\Program Files\Multi-Factor Authentication Server\data\phonefactor.exe (varsayılan yüklemenin bulunduğu konum) yolunda bulunan MFA sunucusu veri dosyasının yedeklemesini yapın.
 3. Yüksek kullanılabilirlik için birden çok sunucu çalıştırırsanız, yükseltilen sunuculara trafik göndermeyi durdurması için MFA sunucusuna kimlik doğrulayan istemci sistemlerini değiştirin. Yük dengeleyici kullanıyorsanız, yük dengeleyiciden bir alt MFA sunucusunu kaldırın, yükseltmeyi yapın ve ardından sunucuyu gruba yeniden ekleyin.
-4. Yeni yükleyiciyi her MFA sunucusunda çalıştırın. Ana sunucuları, ana sunucu tarafından çoğaltılan eski veri dosyasını okuyabildiğinden önce yükseltin.
+4. Yeni yükleyiciyi her MFA sunucusunda çalıştırın. Birincil sunucu tarafından çoğaltılan eski veri dosyasını okuyabildiğinden, alt sunucuları önce yükseltin.
 
    > [!NOTE]
    > Bir sunucuyu yükseltirken, diğer MFA sunucularıyla herhangi bir yük dengelemeden veya trafik paylaşımınızdan kaldırılmalıdır.
@@ -51,7 +51,7 @@ Adımları bir bakışta yükseltin:
   
 5. Microsoft Visual C++ 2015 yeniden dağıtılabilir güncelleştirme paketi yüklemek isteyip istemediğiniz sorulursa, istemi kabul edin. Paketin x86 ve x64 sürümleri yüklenir.
 6. Web hizmeti SDK 'sını kullanıyorsanız, yeni Web hizmeti SDK 'sını yüklemek isteyip istemediğiniz sorulur. Yeni Web hizmeti SDK 'sını yüklediğinizde, sanal dizin adının daha önce yüklü olan sanal dizinle eşleştiğinden emin olun (örneğin, MultiFactorAuthWebServiceSdk).
-7. Tüm bağımlı sunuculardaki adımları yineleyin. Astların birini yeni ana öğe olacak şekilde yükselterek eski ana sunucuyu yükseltin.
+7. Tüm bağımlı sunuculardaki adımları yineleyin. Astların birini yeni birincil olacak şekilde yükselterek eski birincil sunucuyu yükseltin.
 
 ## <a name="upgrade-the-user-portal"></a>Kullanıcı portalını yükseltme
 

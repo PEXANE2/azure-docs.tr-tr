@@ -1,20 +1,20 @@
 ---
-title: Sanal makine ve disk performansı
-description: VM 'Lerin ve bağlı disklerinin performans için birlikte nasıl çalıştığı hakkında daha fazla bilgi edinin
+title: Sanal makine ve disk performansı-Windows
+description: Sanal makinelerin ve bağlı disklerinin Windows üzerinde performans için birlikte nasıl çalıştığı hakkında daha fazla bilgi edinin.
 author: albecker1
 ms.author: albecker
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 88cf9c28a9d325d617f4b049015f0cd238a2fb31
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: dec8b0cc33a9fffa7cac1ac9261b3c38ef5a6449
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016555"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584128"
 ---
-# <a name="virtual-machine-and-disk-performance"></a>Sanal makine ve disk performansı
+# <a name="virtual-machine-and-disk-performance-windows"></a>Sanal makine ve disk performansı (Windows)
 [!INCLUDE [VM and Disk Performance](../../../includes/virtual-machine-disk-performance.md)]
 
 ## <a name="virtual-machine-uncached-vs-cached-limits"></a>Önbelleğe alınmamış ve önbelleğe alınan sanal makine sınırları

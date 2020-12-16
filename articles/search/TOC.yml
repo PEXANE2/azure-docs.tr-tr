@@ -306,10 +306,12 @@
       items:
         - name: Katman seçme
           href: search-sku-tier.md
-        - name: Hizmet sınırlamaları
-          href: search-limits-quotas-capacity.md
+        - name: Kapasiteyi ve maliyeti tahmin etme
+          href: search-sku-manage-costs.md
         - name: Kapasiteyi ayarlama
           href: search-capacity-planning.md
+        - name: Hizmet sınırlamaları
+          href: search-limits-quotas-capacity.md
         - name: Performansı ölçeklendirme
           href: search-performance-optimization.md
         - name: Çok kiracılı mimari
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: Özel uç nokta oluşturma
               href: service-create-private-endpoint.md
-        - name: Kimlik tabanlı erişim
-          items:
-            - name: Güvenlik filtreleri
-              href: search-security-trimming-for-azure-search.md
-            - name: Kullanıcı kimlikleri üzerinde filtreleme
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: Giden güvenlik (dizin oluşturucular)
           items:
             - name: Bir IP aralığı üzerinden erişim
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Özel uç noktalar üzerinden erişim
               href: search-indexer-howto-access-private.md
+        - name: Kimlik tabanlı erişim
+          items:
+            - name: Güvenlik filtreleri
+              href: search-security-trimming-for-azure-search.md
+            - name: Kullanıcı kimlikleri üzerinde filtreleme
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Yönetme
       items:
         - name: Portal
@@ -406,7 +408,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI
+    - name: Azure CLI’si
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search

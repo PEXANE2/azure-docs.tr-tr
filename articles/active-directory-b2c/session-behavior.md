@@ -8,15 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: de0f4824cb23a37f37d3834dce67eb0b7edf0b15
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: ad9bd8dec94660d94cf3a106d31dafdad06f47a8
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503246"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584519"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de oturum davranışını yapılandırma
 
@@ -28,7 +29,7 @@ ms.locfileid: "97503246"
 
 Kullanıcı başlangıçta bir uygulamaya oturum açtığında, Azure AD B2C tanımlama bilgisi tabanlı bir oturumu devam ettirir. Sonraki kimlik doğrulama istekleri üzerine Azure AD B2C, tanımlama bilgisi tabanlı oturumu okuyup doğrular ve kullanıcıdan tekrar oturum açmasını istemeden bir erişim belirteci yayınlar. Tanımlama bilgisi tabanlı oturumun süresi dolarsa veya geçersiz olursa kullanıcıdan tekrar oturum açması istenir.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -89,7 +90,7 @@ Azure AD B2C oturum davranışını aşağıdakiler dahil olmak üzere yapıland
 
 Oturum davranışını yapılandırmak için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kullanıcı akışları ' nı** seçin.
@@ -292,7 +293,7 @@ Oturum kapatıldıktan sonra, `post_logout_redirect_uri` uygulama için belirtil
 
 Oturum kapatma isteklerinde KIMLIK belirteci istemek için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Kullanıcı akışları ' nı** seçin.
@@ -320,7 +321,7 @@ Oturum kapatma isteklerinde bir KIMLIK belirteci istemek için, [RelyingParty](r
 
 Uygulama oturum kapatma URL 'nizi yapılandırmak için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
 1. **Uygulama kayıtları**' yi seçin ve ardından uygulamanızı seçin.

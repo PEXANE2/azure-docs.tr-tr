@@ -1,6 +1,6 @@
 ---
 title: Azure AD Connect bulut sağlama aracısını yükleme
-description: Bu makalede Azure AD Connect bulut sağlama aracısının nasıl yükleneceği açıklanır.
+description: Azure AD Connect bulut sağlama aracısının nasıl yükleneceğini ve Azure portal nasıl yapılandırılacağını öğrenin.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9553608fdd72d4dec4c1572e0d38cd460018a469
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348543"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584349"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Azure AD Connect bulut sağlama aracısını yükleme
 Bu belgede Azure Active Directory (Azure AD) Connect sağlama aracısının yükleme işleminde ve bu dosyayı ilk olarak Azure portal nasıl yapılandıracağınız açıklanmaktadır.
@@ -57,7 +57,7 @@ Aracıyı yüklemek için aşağıdaki adımları izleyin.
  10. Aracı hizmetini çalıştırmak için kullanılacak grup tarafından yönetilen hizmet hesabını oluşturmak için etki alanı yöneticisi kimlik bilgilerini girin. **İleri**’ye tıklayın.  
    ![GMSA oluştur](media/how-to-install/install-12.png)</br>
  11. **Bağlan Active Directory** ekranında **Dizin Ekle**' yi seçin. Ardından Active Directory Yönetici hesabınızla oturum açın. Bu işlem, şirket içi dizininizi ekler. 
- 12. İsteğe bağlı olarak, etki alanı **denetleyicisi önceliğini Seç** ' i seçerek ve etki alanı denetleyicilerinin listesini sipariş ederek aracının kullanacağı etki alanı denetleyicileri tercihini yönetebilirsiniz.   **Tamam**'a tıklayın.
+ 12. İsteğe bağlı olarak, etki alanı **denetleyicisi önceliğini Seç** ' i seçerek ve etki alanı denetleyicilerinin listesini sipariş ederek aracının kullanacağı etki alanı denetleyicileri tercihini yönetebilirsiniz.   **Tamam** düğmesine tıklayın.
   ![Etki alanı denetleyicilerini sıralama](media/how-to-install/install-2a.png)</br>
  13. **İleri**’yi seçin.
   ![Active Directory ekranına Bağlan](media/how-to-install/install-3a.png)</br>
@@ -92,7 +92,7 @@ Aracının Azure tarafından görüldüğünü doğrulamak için aşağıdaki ad
 Aracının çalıştığını doğrulamak için aşağıdaki adımları izleyin.
 
 1.  Sunucuda yönetici hesabıyla oturum açın.
-1.  **Hizmetlere** giderek veya Hizmetleri **Start**  >  **Çalıştır**  >  **. msc**' ye giderek Hizmetleri açın.
+1.  **Hizmetlere** giderek veya Hizmetleri   >  **Çalıştır**  >  **. msc**' ye giderek Hizmetleri açın.
 1.  **Hizmetler**' in altında **Microsoft Azure AD aracı güncelleştiricisi bağlama** ve **Microsoft Azure AD Connect sağlama aracısının** aynı olduğundan ve durumlarının *çalıştığından* emin olun.
 
     ![Hizmetler ekranı](media/how-to-install/troubleshoot-1.png)

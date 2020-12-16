@@ -66,6 +66,7 @@
     - name: Medya grafiği
       href: media-graph-concept.md
     - name: Medya grafiği uzantısı
+      displayName: AI
       href: media-graph-extension-concept.md
     - name: Video kaydı
       href: video-recording-concept.md
@@ -99,6 +100,10 @@
       href: configure-signal-gate-how-to.md
     - name: Sorun giderme
       href: troubleshoot-how-to.md
+    - name: Yükseltme
+      href: upgrading-lva-module.md
+    - name: gRPC çıkarım sunucusunu geliştirme ve dağıtma
+      href: develop-deploy-grpc-inference-srv-how-to.md
 - name: Başvuru
   items:
     - name: HTTP uzantısı protokolü

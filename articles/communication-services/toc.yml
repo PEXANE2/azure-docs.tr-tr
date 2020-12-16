@@ -16,6 +16,8 @@
       items:
         - name: Uygulamanıza sohbet ekleme
           href: quickstarts/chat/get-started.md
+        - name: Sohbet uygulamanızla bir Teams toplantısına katılma
+          href: quickstarts/chat/meeting-interop.md
     - name: Telefon ve SMS
       items:
         - name: Telefon numarası alma

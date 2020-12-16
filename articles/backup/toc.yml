@@ -423,6 +423,8 @@
       items:
         - name: Azure VM
           href: backup-azure-vms-troubleshoot.md
+        - name: Azure VM dosya kurtarma
+          href: backup-azure-vm-file-recovery-troubleshoot.md
         - name: Azure Backup aracısı veya VM uzantısı zaman aşımına uğradı
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Azure Backup aracısı

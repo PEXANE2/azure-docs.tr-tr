@@ -384,6 +384,8 @@
       href: /azure/templates/microsoft.consumption/budgets
     - name: Maliyet Yönetimi REST API Örnekleri
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
+    - name: Maliyet Yönetimi - Azure PowerShell
+      href: /powershell/module/Az.CostManagement
     - name: Faturalandırma Otomasyon Senaryoları
       href: manage/cost-management-automation-scenarios.md
     - name: Azure Faturalandırma API’sine genel bakış

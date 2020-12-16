@@ -126,7 +126,7 @@
           href: troubleshoot-reservation-utilization.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Rezervasyon sorunlarını giderme önerileri
           href: troubleshoot-reservation-recommendation.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Rezervasyonun kullanılamamasıyla ilgili sorunları giderme
+        - name: Rezervasyon SKU'su devre dışı sorunlarını giderme
           href: troubleshoot-product-not-available.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: İndirme kullanım ayrıntılarıyla ilgili sorunları giderme
           href: troubleshoot-download-usage.md?toc=/azure/cost-management-billing/reservations/toc.json

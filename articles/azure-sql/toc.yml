@@ -67,8 +67,10 @@
               items:
                 - name: SQL Güvenlik Açığı Değerlendirmesi
                   href: database/sql-vulnerability-assessment.md
-                - name: Güvenlik açığı değerlendirme kuralları
+                - name: Güvenlik Açığı Değerlendirmesi kuralları
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Güvenlik Açığı Değerlendirme kuralları değişiklik günlüğü
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: Güvenlik açığı taramalarını depolama alanında depolama
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Oturum açmalar, kullanıcı hesapları, roller ve izinler'

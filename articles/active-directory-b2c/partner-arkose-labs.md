@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 2c7eea87101a36edb0d77026489ea351b601158b
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108561"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584604"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile Arkoo Labs yapılandırma öğreticisi
 
 Bu öğreticide, Arkoo Labs ile Azure AD B2C kimlik doğrulamasını tümleştirmeyi öğrenin. Arkoo Labs, kuruluşlara bot saldırılarına, hesap hileli saldırıları ve sahte hesap açılışlarına karşı yardımcı olur.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için şunlar gerekir:
 
@@ -120,7 +120,7 @@ Git Bash 'i indirin ve aşağıdaki adımları izleyin:
 
    ``git commit -am "updated output"``
 
-   ``git push azure master``  
+   ``git push azure main``  
 
 ### <a name="part-3---final-setup"></a>Bölüm 3 – son kurulum
 

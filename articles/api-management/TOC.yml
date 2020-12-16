@@ -42,6 +42,8 @@
       href: api-management-get-started-publish-versions.md
     - name: 9 - Geliştirici portalını özelleştirme
       href: api-management-howto-developer-portal-customize.md
+    - name: 10 - Visual Studio Code'da API'leri yönetme
+      href: visual-studio-code-tutorial.md
 - name: Örnekler
   items:
     - name: İlkeler
@@ -216,7 +218,7 @@
           href: api-management-sample-flexible-throttling.md
         - name: Dış hizmetler kullanma
           href: api-management-sample-send-request.md
-        - name: Özellikleri kullanarak sırları yönetme
+        - name: Adlandırılmış değerleri kullanarak gizli dizileri yönetme
           href: api-management-howto-properties.md
         - name: Erişimi kısıtlama ilkeleri
           href: api-management-access-restriction-policies.md

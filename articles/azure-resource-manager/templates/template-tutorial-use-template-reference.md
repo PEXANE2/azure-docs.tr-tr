@@ -6,18 +6,18 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: dfd6311fab8d9c65fa7c82d2f707ac96549a32a9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: a44852fb2f491dd949b58217eca3e4f3e392cf17
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931427"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584145"
 ---
 # <a name="tutorial-utilize-the-arm-template-reference"></a>Öğretici: ARM şablon başvurusunu kullanma
 
 Şablon Şeması bilgilerini bulmayı ve bu bilgileri kullanarak Azure Resource Manager şablonları (ARM şablonları) oluşturmayı öğrenin.
 
-Bu öğreticide Azure Hızlı Başlangıç şablonları arasından temel bir şablon kullanırsınız. Şablon başvuru belgelerini kullanarak şablonu özelleştirirsiniz.
+Bu öğreticide, Azure hızlı başlangıç şablonlarından temel bir şablon kullanırsınız. Şablon başvuru belgelerini kullanarak şablonu özelleştirirsiniz.
 
 ![Kaynak Yöneticisi şablonu başvurusunu dağıt depolama hesabı](./media/template-tutorial-use-template-reference/resource-manager-template-tutorial-deploy-storage-account.png)
 
@@ -32,7 +32,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -42,7 +42,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -50,26 +50,26 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 
 1. Dosyayı açmak için **Aç**’ı seçin.
-1. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
+1. Dosyayı   >  yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** _'_ i seçin.
 
 ## <a name="understand-the-schema"></a>Şemayı anlama
 
-1. VS Code'da şablonu kök düzeye daraltın. Aşağıdaki öğelere sahip çok basit bir yapı görürsünüz:
+1. Visual Studio Code, şablonu kök düzeyine daraltın. Aşağıdaki öğelere sahip çok basit bir yapı görürsünüz:
 
     ![Resource Manager şablonu basit yapısı](./media/template-tutorial-use-template-reference/resource-manager-template-simplest-structure.png)
 
-    * **$schema**: Şablon dilinin sürümünü tanımlayan JSON şema dosyasının konumunu belirtin.
-    * **contentVersion**: Şablonunuzdaki önemli değişiklikleri belirtmek için bu öğeye istediğiniz değeri verebilirsiniz.
-    * **parameters**: Dağıtım, kaynak dağıtımını özelleştirme amacıyla yürütüldüğünde sağlanan değerleri belirtin.
-    * **variables**: Şablon dili ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerleri belirtin.
-    * **resources**: Kaynak grubunda dağıtılan veya güncelleştirilen kaynak türlerini belirtin.
-    * **outputs**: Dağıtım sonrasında döndürülen değerleri belirtin.
+    * `$schema`: şablon dilinin sürümünü açıklayan JSON Şema dosyasının konumunu belirtin.
+    * `contentVersion`: şablonunuzda önemli değişiklikleri belgelemek için bu öğe için herhangi bir değer belirtin.
+    * `parameters`: dağıtım yürütüldüğünde kaynak dağıtımını özelleştirmek için belirtilen değerleri belirtin.
+    * `variables`: şablon dil ifadelerini basitleştirmek için şablonda JSON parçaları olarak kullanılan değerleri belirtin.
+    * `resources`: bir kaynak grubunda dağıtılan veya güncellenen kaynak türlerini belirtin.
+    * `outputs`: dağıtımdan sonra döndürülen değerleri belirtin.
 
-1. **resources** bölümünü genişletin. Tanımlı bir `Microsoft.Storage/storageAccounts` kaynağı olduğunu göreceksiniz. SKU adı bir parametre değeri kullanır.  Parametreye **Storageaccounttype** adı verilir.
+1. Öğesini genişletin `resources` . `Microsoft.Storage/storageAccounts`Tanımlı bir kaynak vardır. SKU adı bir parametre değeri kullanır. Parametresi çağrılır `storageAccountType` .
 
     ![Resource Manager şablonu depolama hesabı tanımı](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resource.png)
 
-1. **Storageaccounttype** 'in nasıl tanımlandığını görmek için **Parametreler** ' i genişletin. Parametrenin dört izin verilen değeri vardır. İzin verilen diğer değerleri bulacak ve ardından parametre tanımını düzelteceksiniz.
+1. `parameters`Nasıl tanımlandığını görmek için genişletin `storageAccountType` . Parametrenin dört izin verilen değeri vardır. İzin verilen diğer değerleri bulacak ve ardından parametre tanımını düzelteceksiniz.
 
     ![Kaynak Yöneticisi Şablon depolama hesabı kaynakları SKU 'ları](./media/template-tutorial-use-template-reference/resource-manager-template-storage-resources-skus-old.png)
 
@@ -88,9 +88,9 @@ Bu makaleyi tamamlamak için gerekenler:
 
     ![Kaynak Yöneticisi şablonu başvuru depolama hesabı türleri sürümleri](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-types-versions.png)
 
-1. **Storageaccount** kaynak türünün en son sürümünü seçin. Bu makale yazıldığında en son sürüm **2019-06-01** ' dir. Bu sürümün, şablonunuzda depolama hesabı kaynağı için kullanılan sürümle eşleştiğinden emin olun. API sürümünü güncelleştirirseniz, kaynak tanımının şablon başvurusuyla eşleştiğini doğrulayın.
+1. Kaynak türünün en son sürümünü seçin `storageAccount` . Bu makale yazıldığında en son sürüm **2019-06-01** ' dir. Bu sürümün, şablonunuzda depolama hesabı kaynağı için kullanılan sürümle eşleştiğinden emin olun. API sürümünü güncelleştirirseniz, kaynak tanımının şablon başvurusuyla eşleştiğini doğrulayın.
 
-1. Bu sayfa, storageAccount kaynak türünün ayrıntılarını listeler.  Örneğin, **SKU** nesnesi için izin verilen değerleri listeler. Daha önce açtığınız hızlı başlangıç şablonunda listelenenlerden daha fazla SKU vardır. Hızlı başlangıç şablonunu tüm kullanılabilir depolama türlerini içerecek şekilde özelleştirebilirsiniz.
+1. Bu sayfa, storageAccount kaynak türünün ayrıntılarını listeler. Örneğin, **SKU nesnesi** için izin verilen değerleri listeler. Daha önce açtığınız hızlı başlangıç şablonunda listelenenlerden daha fazla SKU vardır. Hızlı başlangıç şablonunu tüm kullanılabilir depolama türlerini içerecek şekilde özelleştirebilirsiniz.
 
     ![Kaynak Yöneticisi şablonu başvuru depolama hesabı SKU 'ları](./media/template-tutorial-use-template-reference/resource-manager-template-resources-reference-storage-accounts-skus.png)
 
@@ -108,9 +108,11 @@ Visual Studio Code, aşağıdaki ekran görüntüsünde gösterildiği gibi ek d
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, `ls` `cat` dosyanın başarıyla karşıya yüklendiğini doğrulamak için komutunu ve komutunu kullanabilirsiniz.
 
 1. Cloud Shell aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin.
+
+   Şablonu dağıttığınızda, `storageAccountType` parametresini yeni eklenen bir değere (örneğin, **Standard_RAGRS**) belirtin. **Standard_RAGRS** izin verilen bir değer olmadığı için özgün hızlı başlangıç şablonunu kullandıysanız dağıtım başarısız olur.
 
     # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -137,16 +139,14 @@ Visual Studio Code, aşağıdaki ekran görüntüsünde gösterildiği gibi ek d
 
     ---
 
- Şablonu dağıttığınızda, yeni eklenen bir değerle **Storageaccounttype** parametresini belirtin, örneğin, **Standard_RAGRS**. **Standard_RAGRS** izin verilen bir değer olmadığından, özgün hızlı başlangıç şablonunu kullanırsanız, dağıtım başarısız olur.
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
 
 1. Azure portal, sol menüden **kaynak grubu** ' nu seçin.
-2. **Ada göre filtrele** alanına kaynak grubu adını girin.
-3. Kaynak grubu adını seçin.  Kaynak grubundaki toplam altı kaynak görüyor olmalısınız.
-4. Üstteki menüden **kaynak grubunu sil** ' i seçin.
+1. **Ada göre filtrele** alanına kaynak grubu adını girin.
+1. Kaynak grubu adını seçin.  Kaynak grubundaki toplam altı kaynak görüyor olmalısınız.
+1. Üstteki menüden **kaynak grubunu sil** ' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

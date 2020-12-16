@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: Yerleşik uygulamaları yayımlama
       href: publish-apps.md
-    - name: MSIX uygulama iliştirmeyi ayarlama
-      href: app-attach.md
+    - name: MSIX uygulama iliştirmeyi kullanma
+      items:
+        - name: Azure portalla MSIX uygulama iliştirmeyi ayarlama
+          href: app-attach-azure-portal.md
+        - name: PowerShell ile MSIX uygulama iliştirmeyi ayarlama
+          href: app-attach-powershell.md
+        - name: PowerShell betikleri oluşturma
+          href: app-attach.md
+        - name: MSIX görüntüsünü hazırlama
+          href: app-attach-image-prep.md
+        - name: Dosya paylaşımını ayarlama
+          href: app-attach-file-share.md
     - name: Microsoft Teams’i kullanma
       href: teams-on-wvd.md
     - name: Azure AD Multi-Factor Authentication’ı ayarlama
@@ -112,6 +122,8 @@
       href: disaster-recovery.md
 - name: Kavramlar
   items:
+    - name: Yerleşik roller
+      href: rbac.md
     - name: Kimlik Doğrulaması
       href: authentication.md
     - name: Windows Sanal Masaüstü ortamı

@@ -6,6 +6,8 @@
       href: overview-reports.md
     - name: Azure AD izleme nedir?
       href: overview-monitoring.md
+    - name: Oturum açma tanılamaları nelerdir?
+      href: overview-sign-in-diagnostics.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:

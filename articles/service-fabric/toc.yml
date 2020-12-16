@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Kullanılabilirlik alanlarına bir Azure Service Fabric Kümesi dağıtma
                   href: service-fabric-cross-availability-zones.md
+                - name: Durum bilgisi olmayan düğüm türlerine sahip Azure Service Fabric kümesini dağıtma
+                  href: service-fabric-stateless-node-types.md
                 - name: Azure Active Directory kimlik doğrulamasını ayarlama
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Özel küme şablonu oluşturma

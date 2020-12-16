@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 75eb977559573b72883de3ddbc27391c7e299a6f
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: ae2361d12dfe18cadd80dd3b84405b2b17751e59
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929326"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584094"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-arm-template-deployment"></a>Öğretici: Azure Key Vault'u ARM şablonunuzun dağıtımıyla tümleştirme
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -43,6 +43,7 @@ Bu makaleyi tamamlamak için gerekenler:
     ```console
     openssl rand -base64 32
     ```
+
     Oluşturulan parolanın VM parola gereksinimlerini karşıladığını doğrulayın. Her Azure hizmetinin parola gereksinimleri farklıdır. VM parola gereksinimleri için bkz. [VM oluştururken parola gereksinimleri nelerdir?](../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
 ## <a name="prepare-a-key-vault"></a>Anahtar Kasası hazırlama
@@ -53,7 +54,7 @@ Bu bölümde, bir Anahtar Kasası oluşturup buna bir gizli dizi ekleyerek, şab
 * Anahtar kasasına gizli dizi ekler. Gizli dizi VM yönetici parolasını depolar.
 
 > [!NOTE]
-> Sanal makine şablonunu dağıtan Kullanıcı olarak, anahtar kasasının sahibi veya katkıda bulunanı değilseniz, sahip veya katkıda bulunan, Anahtar Kasası için *Microsoft. Keykasası/Vaults/dağıtım/eylem* iznine erişim vermelidir. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli bir parametre değeri geçirmek için Azure Key Vault kullanma](./key-vault-parameter.md).
+> Sanal makine şablonunu dağıtan Kullanıcı olarak, anahtar kasasının sahibi veya katkıda bulunanı değilseniz, sahip veya katkıda bulunan, `Microsoft.KeyVault/vaults/deploy/action` Anahtar Kasası için izin erişimi vermelidir. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli bir parametre değeri geçirmek için Azure Key Vault kullanma](./key-vault-parameter.md).
 
 Aşağıdaki Azure PowerShell betiğini çalıştırmak için, Azure Cloud Shell açmak üzere **deneyin** ' i seçin. Betiği yapıştırmak için kabuk bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
 
@@ -79,7 +80,7 @@ Write-Host "Press [ENTER] to continue ..."
 > * Gizli dizi için varsayılan ad **Vmadminpassword**' dır. Şablonda sabit kodlanmış.
 > * Şablonu parolayı almak üzere etkinleştirmek için, Anahtar Kasası için **şablon dağıtımı Azure Resource Manager erişimi etkinleştir** adlı bir erişim ilkesi etkinleştirmeniz gerekir. Bu ilke şablonda etkinleştirilmiştir. Erişim ilkesi hakkında daha fazla bilgi için bkz. [Anahtar Kasası ve gizli dizileri dağıtma](./key-vault-parameter.md#deploy-key-vaults-and-secrets).
 
-Şablonda *Keyvaultıd* adlı bir çıkış değeri bulunur. Bu KIMLIĞI, daha sonra öğreticideki gizli değeri almak için gizli adıyla birlikte kullanacaksınız. Kaynak KIMLIĞI biçimi:
+Şablon, adlı bir çıkış değerine sahiptir `keyVaultId` . Bu KIMLIĞI, daha sonra öğreticideki gizli değeri almak için gizli adıyla birlikte kullanacaksınız. Kaynak KIMLIĞI biçimi:
 
 ```json
 /subscriptions/<SubscriptionID>/resourceGroups/mykeyvaultdeploymentrg/providers/Microsoft.KeyVault/vaults/<KeyVaultName>
@@ -87,7 +88,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 KIMLIĞI kopyalayıp yapıştırdığınızda, birden çok satıra ayrılabilir. Satırları birleştirin ve ek boşlukları kırpın.
 
-Dağıtımı doğrulamak için, parolayı şifresiz metin olarak almak için aynı kabuk bölmesinde aşağıdaki PowerShell komutunu çalıştırın. Komutu, önceki PowerShell betiğinden tanımlanan *$keyVaultName* değişkenini kullandığından, yalnızca aynı kabuk oturumunda çalışacaktır.
+Dağıtımı doğrulamak için, parolayı şifresiz metin olarak almak için aynı kabuk bölmesinde aşağıdaki PowerShell komutunu çalıştırın. Komutu, `$keyVaultName` önceki PowerShell betiğinden tanımlanan değişkenini kullandığından, yalnızca aynı kabuk oturumunda çalışacaktır.
 
 ```azurepowershell
 (Get-AzKeyVaultSecret -vaultName $keyVaultName  -name "vmAdminPassword").SecretValueText
@@ -146,14 +147,14 @@ Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişikl
     ```
 
     > [!IMPORTANT]
-    > **ID** değerini, önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliği ile değiştirin. SecretName, **Vmadminpassword** olarak kodlanmış.  Bkz. [Anahtar Kasası hazırlama](#prepare-a-key-vault).
+    > Değerini, `id` önceki yordamda oluşturduğunuz anahtar kasasının kaynak kimliği ile değiştirin. , `secretName` **Vmadminpassword** olarak kodlanır.  Bkz. [Anahtar Kasası hazırlama](#prepare-a-key-vault).
 
     ![Anahtar Kasası ve Kaynak Yöneticisi şablonu sanal makine dağıtım parametreleri dosyasını tümleştirin](./media/template-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
 
 1. Aşağıdaki değerleri güncelleştirin:
 
-    * **AdminUserName**: sanal makine yöneticisi hesabının adı.
-    * **dnslabelprefix**: dnslabelprefix değerini adlandırın.
+    * `adminUsername`: Sanal makine yöneticisi hesabının adı.
+    * `dnsLabelPrefix`: Değeri adlandırın `dnsLabelPrefix` .
 
     Adların örnekleri için önceki resme bakın.
 
@@ -167,7 +168,7 @@ Statik KIMLIK yöntemini kullanarak, şablon dosyasında herhangi bir değişikl
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Hem *azuredeploy.js* hem de *azuredeploy.parameters.js* Cloud Shell üzerine yükleyin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Hem *azuredeploy.js* hem de *azuredeploy.parameters.js* Cloud Shell üzerine yükleyin. Dosyayı karşıya yükledikten sonra, `ls` `cat` dosyanın başarıyla karşıya yüklendiğini doğrulamak için komutunu ve komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 

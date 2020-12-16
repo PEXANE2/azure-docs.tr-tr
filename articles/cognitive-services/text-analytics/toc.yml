@@ -31,24 +31,8 @@
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: İstemci kitaplığı
-      items:
-        - name: İstemci kitaplığını kullanarak Metni analiz etme
-          href: quickstarts/text-analytics-sdk.md
-    - name: REST API
-      items:
-        - name: Java'yı kullanma
-          href: quickstarts/java.md
-        - name: Python’u kullanma
-          href: quickstarts/python.md
-        - name: Node.js'yi kullanma
-          href: quickstarts/nodejs.md
-        - name: PHP'yi kullanma
-          href: quickstarts/php.md
-        - name: Go kullanma
-          href: quickstarts/go.md
-        - name: Ruby'yi kullanma
-          href: quickstarts/ruby.md
+    - name: İstemci kitaplığını veya REST API'yi kullanma
+      href: quickstarts/client-libraries-rest-api.md
 - name: Öğreticiler
   items:
     - name: Müşteri geri bildirimini analiz etmek için Power BI’ı tümleştirme

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 75073cd2f0dae9cac12175677427671101813a90
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355231"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97584213"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -103,7 +103,7 @@ Yapılandırma bölmesinde aşağıdaki Azure Repos kod deposu ayarları göster
 | **Azure Repos kuruluş** | Azure Repos kuruluşunuzun adı. Azure Repos kuruluşunuzun adını adresinde bulabilirsiniz `https://{organization name}.visualstudio.com` . Visual Studio profilinize erişmek ve depolarınızı ve projelerinizi görmek için [Azure Repos kuruluşunuzda oturum](https://www.visualstudio.com/team-services/git/) açabilirsiniz. | `<your organization name>` |
 | **ProjectName** | Azure Repos projenizin adı. Azure Repos projenizin adını adresinde bulabilirsiniz `https://{organization name}.visualstudio.com/{project name}` . | `<your Azure Repos project name>` |
 | **RepositoryName** | Azure Repos kod deposu adınız. Azure Repos projeler, projeniz büyüdükçe kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya projenizde zaten var olan bir depoyu kullanabilirsiniz. | `<your Azure Repos code repository name>` |
-| **İşbirliği dalı** | Yayımlamak için kullanılan Azure Repos işbirliği dalı. Varsayılan olarak, `master` . Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch name>` |
+| **İşbirliği dalı** | Yayımlamak için kullanılan Azure Repos işbirliği dalı. Varsayılan olarak, bu `main` . Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch name>` |
 | **Kök klasör** | Azure Repos işbirliği dalınızdaki kök klasörünüz. | `<your root folder name>` |
 | **Mevcut Data Factory kaynaklarını depoya aktar** | UX **yazma tuvalinden** bir Azure Repos git deposuna var olan veri fabrikası kaynaklarının içeri aktarılmayacağını belirtir. Veri Fabrikası kaynaklarınızı JSON biçiminde ilişkili git deposuna aktarmak için kutuyu seçin. Bu eylem, her kaynağı ayrı ayrı dışarı aktarır (yani, bağlı hizmetler ve veri kümeleri ayrı Jdönemleri içine aktarılır). Bu kutu seçili olmadığında, mevcut kaynaklar içeri aktarılmaz. | Seçili (varsayılan) |
 | **Kaynağı içeri aktarma dalı** | Veri Fabrikası kaynaklarının (işlem hatları, veri kümeleri, bağlı hizmetler vs.) içe aktarıldığı dalı belirtir. Kaynakları şu dallardan birine içeri aktarabilirsiniz: a. İşbirliği b. Yeni c oluştur. Mevcut olanı kullan |  |
@@ -153,7 +153,7 @@ Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedi
 | **GitHub Enterprise URL 'SI** | GitHub Enterprise root URL 'SI (yerel GitHub Enterprise Server için HTTPS olmalıdır). Örneğin: `https://github.mydomain.com`. Yalnızca **GitHub Enterprise kullan** seçilirse gereklidir | `<your GitHub enterprise url>` |                                                           
 | **GitHub hesabı** | GitHub hesabınızın adı. Bu ad https: \/ /GitHub.exe com/{Account Name}/{Repository Name} öğesinden bulunabilir. Bu sayfaya gidildiğinde GitHub hesabınıza GitHub OAuth kimlik bilgilerini girmeniz istenir. | `<your GitHub account name>` |
 | **Depo adı**  | GitHub kod deposu adınız. GitHub hesapları, kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya hesabınızda zaten var olan bir depoyu kullanabilirsiniz. | `<your repository name>` |
-| **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, ana. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
+| **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, bu ana. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
 | **Kök klasör** | GitHub işbirliği dalınızdaki kök klasörünüz. |`<your root folder name>` |
 | **Mevcut Data Factory kaynaklarını depoya aktar** | UX yazma tuvalinden bir GitHub deposuna var olan veri fabrikası kaynaklarının içeri aktarılmayacağını belirtir. Veri Fabrikası kaynaklarınızı JSON biçiminde ilişkili git deposuna aktarmak için kutuyu seçin. Bu eylem, her kaynağı ayrı ayrı dışarı aktarır (yani, bağlı hizmetler ve veri kümeleri ayrı Jdönemleri içine aktarılır). Bu kutu seçili olmadığında, mevcut kaynaklar içeri aktarılmaz. | Seçili (varsayılan) |
 | **Kaynağı içeri aktarma dalı** | Veri Fabrikası kaynaklarının (işlem hatları, veri kümeleri, bağlı hizmetler vs.) içe aktarıldığı dalı belirtir. Kaynakları şu dallardan birine içeri aktarabilirsiniz: a. İşbirliği b. Yeni c oluştur. Mevcut olanı kullan |  |
@@ -207,11 +207,11 @@ Sürüm denetimi sistemleri ( _kaynak denetimi_ olarak da bilinir), geliştirici
 
 ### <a name="creating-feature-branches"></a>Özellik dalları oluşturma
 
-Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği dalına sahiptir. ( `main` varsayılan işbirliği daldır). Kullanıcılar, dal açılan menüsünde **+ yeni dal** ' a tıklayarak da özellik dalları oluşturabilir. Yeni dal bölmesi göründüğünde, özellik dalınızın adını girin.
+Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği dalına sahiptir. ( `main` ) varsayılan işbirliği daldır). Kullanıcılar, dal açılan menüsünde **+ yeni dal** ' a tıklayarak da özellik dalları oluşturabilir. Yeni dal bölmesi göründüğünde, özellik dalınızın adını girin.
 
 ![Yeni dal oluştur](media/author-visually/new-branch.png)
 
-Özellik dalınızdaki değişiklikleri işbirliği dalınızla birleştirmeye hazırsanız, dal açılan listesine tıklayın ve **çekme Isteği oluştur**' u seçin. Bu eylem, çekme istekleri oluşturabileceğiniz, kod İncelemeleri yapabileceğiniz ve değişiklikleri işbirliği dalınızda birleştirebileceğiniz git Azure Repos için sizi yönlendirir. ( `master` varsayılan). Yalnızca Data Factory hizmetine işbirliği dalınızdan yayımlama izni verilir. 
+Özellik dalınızdaki değişiklikleri işbirliği dalınızla birleştirmeye hazırsanız, dal açılan listesine tıklayın ve **çekme Isteği oluştur**' u seçin. Bu eylem, çekme istekleri oluşturabileceğiniz, kod İncelemeleri yapabileceğiniz ve değişiklikleri işbirliği dalınızda birleştirebileceğiniz git Azure Repos için sizi yönlendirir. ( `main` varsayılan). Yalnızca Data Factory hizmetine işbirliği dalınızdan yayımlama izni verilir. 
 
 ![Yeni bir çekme isteği oluştur](media/author-visually/create-pull-request.png)
 
@@ -232,7 +232,7 @@ Tek seferde yalnızca bir yayımlama dalı olabilir Azure Data Factory. Yeni bir
 
 ### <a name="publish-code-changes"></a>Kod değişikliklerini Yayımla
 
-Değişiklikleri işbirliği dalında ( `master` Varsayılan olarak) birleştirdikten sonra, kod değişikliklerinizi ana dalda Data Factory hizmetine el ile yayımlamak Için **Yayımla** ' ya tıklayın.
+Çalışma dalındaki değişiklikleri ( `main` varsayılan değer) birleştirdikten sonra, kod değişikliklerinizi ana dalda Data Factory hizmetine el ile yayımlamak Için **Yayımla** ' ya tıklayın.
 
 ![Değişiklikleri Data Factory hizmette yayımlayın](media/author-visually/publish-changes.png)
 
@@ -241,7 +241,7 @@ Yayın dalının ve bekleyen değişikliklerin doğru olduğunu onaylamak için 
 ![Doğru yayımlama dalını onaylayın](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> Ana dal, Data Factory hizmetine dağıtılan özellikleri temsil etmez. Ana dalın Data Factory hizmetine el ile yayımlanması *gerekir* .
+> Ana dal, Data Factory hizmetine dağıtılan Özellikler temsilcisidir. Ana dalın Data Factory hizmetine el ile yayımlanması *gerekir* .
 
 ## <a name="best-practices-for-git-integration"></a>Git tümleştirmesi için en iyi uygulamalar
 
@@ -264,7 +264,7 @@ Key Vault veya MSI kimlik doğrulamasının kullanılması, Kaynak Yöneticisi �
 
 ### <a name="stale-publish-branch"></a>Eski yayımlama dalı
 
-Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel olmayan kaynaklar içeriyorsa, aşağıdaki adımları izleyin:
+Yayımla dalı ana Dalla eşitlenmemiş ve son yayımlama sırasında güncel kaynaklar içeriyorsa, aşağıdaki adımları izleyin:
 
 1. Geçerli git deponuzu kaldırma
 1. Git 'i aynı ayarlarla yeniden yapılandırın, ancak **mevcut Data Factory kaynaklarını depoya Içeri aktarma** işleminin seçili olduğundan emin olun ve **yeni dal** seçin

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: d8af626d2f04ad33899f4757b2ee85aaa122ea26
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e9d0e9d78f58807a05784e1606670e3a97fd600
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511935"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97583924"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MariaDB bağlantı mimarisi için Azure veritabanı 'nın yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden MariaDB örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -31,7 +31,7 @@ Ağ Geçidi Hizmeti, bir IP adresinin arkasında bulunan durum bilgisiz işlem d
 
 Devam eden hizmet bakımının bir parçası olarak, en güvenli ve yüksek performanslı deneyim sağlamamız için ağ geçitlerini barındıran işlem donanımını düzenli olarak yenileyeceğiz. Ağ Geçidi donanımı yenilendiğinde, önce işlem düğümlerinin yeni bir halkası oluşturulur. Bu yeni halka, tüm yeni oluşturulan MariaDB sunucuları için Azure veritabanı sunucularına yönelik trafiğe hizmet verir ve trafiğin ayırt edilebilmesi için aynı bölgedeki eski ağ geçidi halkalarından farklı bir IP adresine sahip olur. Yeni halka tam çalışır olduktan sonra, mevcut sunuculara hizmet veren eski ağ geçidi donanımı kullanımdan kaldırma için planlanmaktadır. Bir ağ geçidi donanımını kullanımdan kaldırmadan önce, sunucularını çalıştıran ve eski ağ geçidi halkalarına bağlanan müşteriler, kullanımdan kaldırmadan önce üç ay içinde ve Azure portal üzerinden gönderilir. Ağ geçitlerinin yetkisini alma, şu durumlarda sunucularınız için bağlantıyı etkileyebilir 
 
-* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. 
+* Ağ geçidi IP adreslerini uygulamanızın bağlantı dizesinde sabit olarak kodlayın. **Önerilmez**. Uygulamanızın bağlantı dizesinde. mariadb.database.azure.com biçiminde sunucunuzun tam etki alanı adını (FQDN) kullanmanız gerekir <servername> . 
 * Giden trafiğin yeni ağ geçidi halkalarımıza erişebilmesini sağlamak için istemci tarafı güvenlik duvarında daha yeni ağ geçidi IP adreslerini güncelleştirmeyin.
 
 Aşağıdaki tabloda, tüm veri bölgeleri için MariaDB ağ geçidi için Azure veritabanı ağ geçidi IP adresleri listelenmektedir. Her bölge için ağ geçidi IP adreslerinin en güncel bilgileri aşağıdaki tabloda tutulur. Aşağıdaki tabloda sütunlar aşağıdakileri temsil eder:
