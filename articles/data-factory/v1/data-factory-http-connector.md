@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ddf8236dbbc9714c705e442bb65eb2ac3d293cc7
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 653a53d6bb5c69cd95fd5e9a2483b51de8293b40
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589585"
+ms.locfileid: "97608587"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Azure Data Factory kullanarak bir HTTP kaynağından veri taşıma
 
@@ -26,7 +26,6 @@ ms.locfileid: "97589585"
 
 > [!NOTE]
 > Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Azure Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [v2 'de http Bağlayıcısı](../connector-http.md).
-
 
 Bu makalede, verileri şirket içi veya bulut HTTP uç noktasından desteklenen bir havuz veri deposuna taşımak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Bu makalede, kopyalama etkinliğini kullanarak veri hareketine genel bir bakış sunan [kopyalama etkinliğini kullanarak verileri taşıma](data-factory-data-movement-activities.md)hakkında bilgi oluşturulur. Makalede ayrıca kopyalama etkinliğinin kaynak ve havuz olarak desteklediği veri depoları listelenmektedir.
 
@@ -38,7 +37,7 @@ HTTP **Get** veya **Post** yöntemlerini kullanarak *hem buluttan hem de şirket
 
 Şirket içi HTTP uç noktasından veri kopyaladığınızda, şirket içi ortama veya bir Azure VM 'ye Veri Yönetimi ağ geçidi yüklemelisiniz. Veri Yönetimi ağ geçidi hakkında bilgi edinmek ve ağ geçidini ayarlama hakkında adım adım yönergeler için bkz. [Şirket içi konumlar ve bulut arasında veri taşıma](data-factory-move-data-between-onprem-and-cloud.md).
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Farklı araçları veya API 'Leri kullanarak bir HTTP kaynağından veri taşımak için kopyalama etkinliğine sahip bir işlem hattı oluşturabilirsiniz:
 
@@ -120,9 +119,8 @@ Bu bağlı hizmet, veri fabrikasını şirket içi HTTP Web sunucusuna bağlar. 
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "certThumbprint": "thumbprint of certificate",
-        "gatewayName": "gateway name"
-
+            "certThumbprint": "thumbprint of certificate",
+            "gatewayName": "gateway name"
         }
     }
 }
@@ -142,8 +140,8 @@ Bu bağlı hizmet, veri fabrikasını şirket içi HTTP Web sunucusuna bağlar. 
         {
             "authenticationType": "ClientCertificate",
             "url": "https://en.wikipedia.org/wiki/",
-        "embeddedCertData": "Base64-encoded cert data",
-        "password": "password of cert"
+            "embeddedCertData": "Base64-encoded cert data",
+            "password": "password of cert"
         }
     }
 }
@@ -176,9 +174,9 @@ Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi
     "type": "Http",
         "linkedServiceName": "HttpLinkedService",
         "typeProperties": {
-      "relativeUrl": "XXX/test.xml",
-        "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
-    },
+          "relativeUrl": "XXX/test.xml",
+          "additionalHeaders": "Connection: keep-alive\nUser-Agent: Mozilla/5.0\n"
+        },
         "external": true,
         "availability": {
             "frequency": "Hour",

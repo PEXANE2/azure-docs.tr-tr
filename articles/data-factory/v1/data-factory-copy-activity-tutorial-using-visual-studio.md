@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 013f82c33b149d754e059bbc4c9933f917a2555a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5a4a6e896d0cee22424274d845ccc24463833cc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85248641"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608774"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Öğretici: Visual Studio kullanarak Kopyalama Etkinliği ile işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -53,36 +53,44 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
 3. Bilgisayarınızda şunların yüklü olması gerekir: 
    * Visual Studio 2013 veya Visual Studio 2015
    * Visual Studio 2013 veya Visual Studio 2015 için Azure SDK’sını indirin. [Azure İndirme Sayfası](https://azure.microsoft.com/downloads/)’na gidin ve **.NET** bölümündeki **VS 2013** veya **VS 2015**’e tıklayın.
-   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  **Update**' na tıklayın.
+   * Visual Studio için en son Azure Data Factory eklentisini indirin: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) veya [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Ayrıca, aşağıdaki adımları uygulayarak eklentiyi güncelleştirebilirsiniz: menüde **Araçlar**  ->  **Uzantılar ve güncelleştirmeler**  ->  **çevrimiçi**  ->  **Visual Studio Galerisi**  ->  **Microsoft Azure Visual Studio Update Data Factory araçları**  ->  ' na tıklayın.
 
 ## <a name="steps"></a>Adımlar
+
 Bu eğitimin bir parçası olarak gerçekleştireceğiniz adımlar şunlardır:
 
 1. Veri fabrikasında **bağlı hizmetler** oluşturun. Bu adımda Azure Depolama ve Azure SQL Veritabanı türünde iki bağlı hizmet oluşturursunuz. 
-    
+
     AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağlar. Bir kapsayıcı oluşturup verileri [ön koşulların](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) parçası olarak bu depolama hesabına yüklediniz.   
 
     Azuressqllinkedservice, Azure SQL veritabanını Data Factory 'ye bağlar. Blob depolama alanından kopyalanan veriler bu veritabanında depolanır. Bu veritabanındaki SQL tablosunu, [ön koşulların](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) parçası olarak oluşturdunuz.     
+
 2. Veri fabrikasında girdi ve çıktı **veri kümesi oluşturma**.  
-    
+
     Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Giriş blob veri kümesi ise kapsayıcıyı ve girdi verilerini içeren klasörü belirtir.  
 
     Benzer şekilde, Azure SQL veritabanı bağlı hizmeti, Data Factory hizmetinin Azure SQL veritabanına bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Çıktı SQL tablosu veri kümesi ise blob depolama alanındaki verilerin kopyalandığı veritabanında tabloyu belirtir.
+
 3. Veri fabrikasında **işlem hattı** oluşturun. Bu adımda, kopyalama etkinliği ile bir işlem hattı oluşturursunuz.   
-    
-    Kopyalama etkinliği, verileri Azure Blob depolama alanındaki bir Blobun Azure SQL veritabanı 'ndaki bir tabloya kopyalar. Verileri desteklenen herhangi bir kaynaktan desteklenen herhangi bir hedefe kopyalamak için bir işlem hattındaki kopyalama etkinliğini kullanabilirsiniz. Desteklenen veri depolarının bir listesi için [veri taşıma etkinlikleri](data-factory-data-movement-activities.md#supported-data-stores-and-formats) makalesine bakın. 
+
+    Kopyalama etkinliği, verileri Azure Blob depolama alanındaki bir Blobun Azure SQL veritabanı 'ndaki bir tabloya kopyalar. Verileri desteklenen herhangi bir kaynaktan desteklenen herhangi bir hedefe kopyalamak için bir işlem hattındaki kopyalama etkinliğini kullanabilirsiniz. Desteklenen veri depolarının bir listesi için [veri taşıma etkinlikleri](data-factory-data-movement-activities.md#supported-data-stores-and-formats) makalesine bakın.
+
 4. Data Factory varlıklarını (bağlı hizmetler, veri kümeleri/tabloları ve işlem hatları) dağıtırken bir Azure **veri fabrikası** oluşturun. 
 
 ## <a name="create-visual-studio-project"></a>Visual Studio projesi oluşturma
+
 1. **Visual Studio 2015**’i başlatın. **Dosya**’ya tıklayın, **Yeni**’nin üzerine gelin ve **Proje**’ye tıklayın. **Yeni Proje** iletişim kutusu görmeniz gerekir.  
+
 2. **Yeni Proje** iletişim kutusunda **DataFactory** şablonunu seçip **Boş Data Factory Projesi**’ne tıklayın.  
-   
+
     ![Yeni proje iletişim kutusu](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-project-dialog.png)
+
 3. Proje adını, çözümün konumunu ve çözüm adını belirtip **Tamam**’a tıklayın.
-   
+
     ![Çözüm Gezgini](./media/data-factory-copy-activity-tutorial-using-visual-studio/solution-explorer.png)    
 
 ## <a name="create-linked-services"></a>Bağlı hizmetler oluşturma
+
 Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu öğreticide, Azure HDInsight veya Azure Data Lake Analytics gibi herhangi bir işlem hizmeti kullanmazsınız. Azure Depolama (kaynak) ve Azure SQL Veritabanı (hedef) türünde iki veri deposu kullanırsınız. 
 
 Bu nedenle, AzureStorage ve AzureSqlDatabase türünde iki bağlı hizmet oluşturursunuz.  
@@ -94,27 +102,32 @@ Azure SQL bağlı hizmeti, Azure SQL veritabanını Data Factory 'ye bağlar. Bl
 Bağlı hizmetler veri depolarını veya işlem hizmetlerini Azure data factory’ye bağlar. Kopyalama Etkinliği tarafından desteklenen tüm kaynaklar ve havuzlar için bkz. [desteklenen veri depoları](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory tarafından desteklenen işlem hizmetlerinin listesi için bkz. [bağlantılı işlem hizmetleri](data-factory-compute-linked-services.md). Bu öğreticide herhangi bir işlem hizmeti kullanmayın. 
 
 ### <a name="create-the-azure-storage-linked-service"></a>Azure Storage bağlı hizmeti oluşturma
+
 1. **Çözüm Gezgini**’nde **Bağlı Hizmetler**’e sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın.      
+
 2. **Yeni Öğe Ekle** iletişim kutusunda **Azure Storage Bağlı Hizmeti**’ni listeden seçip **Ekle**’ye tıklayın. 
-   
+
     ![Yeni Bağlı Hizmet](./media/data-factory-copy-activity-tutorial-using-visual-studio/new-linked-service-dialog.png)
+
 3. `<accountname>` ve `<accountkey>`* sözcüklerini Azure depolama hesabınızın adı ve anahtarıyla değiştirin. 
-   
+
     ![Azure Storage Bağlı Hizmeti](./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png)
+
 4. **AzureStorageLinkedService1.json** dosyasını kaydedin.
 
     Bağlı hizmet tanımındaki JSON özellikleri hakkında daha fazla bilgi için [Azure Blob Depolama bağlayıcısı](data-factory-azure-blob-connector.md#linked-service-properties) makalesine bakın.
 
 ### <a name="create-the-azure-sql-linked-service"></a>Azure SQL bağlı hizmeti oluşturma
+
 1. **Çözüm Gezgini**’nde bir kez daha **Bağlı Hizmetler** düğümüne sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın. 
 2. Bu sefer, **Azure SQL Bağlı Hizmeti**’ni seçin ve **Ekle**’ye tıklayın. 
 3. **DosyadakiAzureSqlLinkedService1.js**,,, ve yerine `<servername>` `<databasename>` `<username@servername>` `<password>` sunucu, veritabanı, Kullanıcı hesabı ve parola adlarını koyun.    
 4. **AzureSqlLinkedService1.json** dosyasını kaydedin. 
-    
+
     Bu JSON özellikleri hakkında daha fazla bilgi için [Azure SQL Veritabanı bağlayıcısı](data-factory-azure-sql-connector.md#linked-service-properties) makalesine bakın.
 
-
 ## <a name="create-datasets"></a>Veri kümeleri oluşturma
+
 Önceki adımda, Azure depolama hesabınızı ve Azure SQL veritabanınızı veri fabrikanıza bağlamak için bağlı hizmetler oluşturdunuz. Bu adımda, sırasıyla AzureStorageLinkedService1 ve AzureSqlLinkedService1 tarafından başvurulan veri depolarında depolanan girdi ve çıktı verilerini temsil eden InputDataset ve OutputDataset adlı iki veri kümesini tanımlarsınız.
 
 Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabınıza bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Giriş blobu veri kümesi (InputDataset) ise kapsayıcıyı ve girdi verilerini içeren klasörü belirtir.  
@@ -122,6 +135,7 @@ Azure Depolama bağlı hizmeti, Data Factory hizmetinin Azure depolama hesabın�
 Benzer şekilde, Azure SQL veritabanı bağlı hizmeti, Data Factory hizmetinin Azure SQL veritabanına bağlanmak için çalışma zamanında kullandığı bağlantı dizesini belirtir. Çıktı SQL tablosu veri kümesi (OututDataset) ise blob depolama alanındaki verilerin kopyalandığı veritabanında tabloyu belirtir. 
 
 ### <a name="create-input-dataset"></a>Girdi veri kümesi oluşturma
+
 Bu adımda, InputDataset adlı bir veri kümesi oluşturursunuz. Bu veri kümesi, AzureStorageLinkedService1 bağlı hizmetiyle temsil edilen Azure Depolama’daki bir blob kapsayıcısının (adftutorial) kök klasöründe bulunan blob dosyasını (emp.txt) işaret eder. fileName için bir değer belirtmezseniz (veya bu adımı atlarsanız) girdi klasöründe bulunan tüm blob’lardaki veriler hedefe kopyalanır. Bu öğreticide, dosya adı için bir değer belirtirsiniz. 
 
 Burada, "veri kümeleri" terimi yerine "tablo" terimini kullanırsınız. Tablo dikdörtgen bir veri kümesidir ve şu anda yalnızca bu veri kümesi türü desteklenmektedir. 
@@ -165,50 +179,52 @@ Burada, "veri kümeleri" terimi yerine "tablo" terimini kullanırsınız. Tablo 
 
     | Özellik | Açıklama |
     |:--- |:--- |
-    | tür | Veriler Azure blob depolama alanında yer aldığından type özelliği **AzureBlob** olarak ayarlanmıştır. |
-    | linkedServiceName | Daha önce oluşturduğunuz **AzureStorageLinkedService**’e başvurur. |
-    | folderPath | blob **kapsayıcıyı** ve girdi blob’larını içeren **klasörü** belirtir. Bu öğreticide adftutorial, blob kapsayıcısıdır ve klasör, kök klasördür. | 
-    | fileName | Bu özellik isteğe bağlıdır. Bu özelliği atarsanız tüm folderPath dosyaları alınır. Bu öğreticide fileName için **emp.txt** belirtilir, bu nedenle işlem için yalnızca bu dosya seçilir. |
-    | format -> type |Girdi dosyası metin biçiminde olduğundan **TextFormat**'ı kullanırız. |
-    | columnDelimiter | Girdi dosyasındaki sütunlar, **virgül (`,`)** ile ayrılmıştır. |
-    | frequency/interval | frequency **Saat**, interval da **1** olarak ayarlanmıştır. Bu, girdi dilimlerinin **saatlik** olarak kullanılabileceğini belirtir. Başka bir deyişle, Data Factory hizmeti belirttiğiniz blob kapsayıcısının (**adftutorial**) kök klasöründe girdi verilerini saatte bir kere arar. İşlem hattı başlangıç ve bitiş zamanlarındaki verileri arar, bu zamanlardan önceki veya sonraki verileri aramaz.  |
-    | external | Bu özellik, veriler bu işlem hattı tarafından oluşturulmazsa **true** olarak ayarlanır. Bu öğreticideki girdi verileri, bu işlem hattı tarafından oluşturulmayan emp.txt dosyasında bulunur, bu nedenle bu özelliği true olarak ayarlarız. |
+    | tür | Veri, anAzure blob depolamada bulunduğundan Type özelliği **AzureBlob** olarak ayarlanır. |
+    | linkedServiceName | Daha önce oluşturduğunuz **AzureStorageLinkedService** öğesine başvurur. |
+    | folderPath | Blob **kapsayıcısını** ve giriş bloblarını içeren **klasörü** belirtir. Bu öğreticide, adföğreticisi blob kapsayıcısı ve klasörü kök klasörüdür. | 
+    | fileName | Bu özellik isteğe bağlıdır. Bu özelliği atlarsanız, folderPath 'in tüm dosyaları çekilir. Bu öğreticide dosya adı için **emp.txt** belirtilir, bu nedenle yalnızca bu dosya işlenmek üzere alınır. |
+    | format -> type |Giriş dosyası Metin biçimindeyse,**TextFormat** kullanacağız. |
+    | columnDelimiter | Giriş dosyasındaki sütunlar **commacharacter ( `,` )** tarafından sınırlandırılır. |
+    | frequency/interval | Sıklık **saat** olarak ayarlanır ve Aralık **1**' dir. Bu, giriş dilimlerinin **saatlik** olarak kullanılabildiği anlamına gelir. Diğer bir deyişle, Data Factory hizmeti belirttiğiniz blob kapsayıcısının (**adföğreticisi**) rootklasöründe girdi verilerini saatte bir arar. İşlem hattı başlangıç ve bitiş zamanları içindeki verileri arar, bu durumlar önünde veya sonra değil.  |
+    | external | Bu işlem hattı tarafından veriler oluşturulmadığından bu özellik **true** olarak ayarlanır. Bu öğreticideki giriş verileri, bu işlem hattı tarafından üretilmemiş olan emp.txt dosyasında bulunur, bu nedenle bu özelliği true olarak ayarlayacağız. |
 
     Bu JSON özellikleri hakkında daha fazla bilgi için bkz. [Azure Blob bağlayıcısı makalesi](data-factory-azure-blob-connector.md#dataset-properties).   
 
 ### <a name="create-output-dataset"></a>Çıktı veri kümesi oluşturma
-Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu veri kümesi, **AzureSqlLinkedService1**tarafından temsil EDILEN Azure SQL VERITABANıNDA bir SQL tablosunu işaret eder. 
+
+Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu veri kümesi, **AzureSqlLinkedService1** tarafından temsil EDILEN Azure SQL VERITABANıNDA bir SQL tablosunu işaret eder. 
 
 1. **Çözüm Gezgini**’nde bir kez daha **Tablolar**’a sağ tıklayın, **Ekle**’nin üzerine gelip **Yeni Öğe**’ye tıklayın.
 2. **Yeni Öğe Ekle** iletişim kutusunda, **Azure SQL**’i seçin ve **Ekle**’ye tıklayın. 
 3. JSON metnini aşağıdaki JSON ile değiştirin ve **AzureSqlTableLocation1.json** dosyasını kaydedin.
 
-   ```json
+    ```json
     {
-     "name": "OutputDataset",
-     "properties": {
-       "structure": [
-         {
-           "name": "FirstName",
-           "type": "String"
-         },
-         {
-           "name": "LastName",
-           "type": "String"
-         }
-       ],
-       "type": "AzureSqlTable",
-       "linkedServiceName": "AzureSqlLinkedService1",
-       "typeProperties": {
-         "tableName": "emp"
-       },
-       "availability": {
-         "frequency": "Hour",
-         "interval": 1
-       }
-     }
+        "name": "OutputDataset",
+        "properties": {
+            "structure": [
+                {
+                    "name": "FirstName",
+                    "type": "String"
+                },
+                {
+                    "name": "LastName",
+                    "type": "String"
+                }
+            ],
+            "type": "AzureSqlTable",
+            "linkedServiceName": "AzureSqlLinkedService1",
+            "typeProperties": {
+              "tableName": "emp"
+            },
+            "availability": {
+              "frequency": "Hour",
+              "interval": 1
+            }
+        }
     }
     ```
+
     Aşağıdaki tabloda, kod parçacığında kullanılan JSON özellikleri için açıklamalar verilmektedir:
 
     | Özellik | Açıklama |
@@ -223,6 +239,7 @@ Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu
     Bu JSON özellikleri hakkında daha fazla bilgi için bkz. [Azure SQL bağlayıcısı makalesi](data-factory-azure-sql-connector.md#dataset-properties).
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
+
 Bu adımda, girdi olarak **InputDataset** ve çıktı olarak **OutputDataset** kullanan **kopyalama etkinliğine** sahip bir işlem hattı oluşturursunuz.
 
 Şu anda zamanlamayı çıktı veri kümesi yürütmektedir. Bu öğreticide, çıktı veri kümesi saatte bir dilim oluşturacak şekilde yapılandırılır. İşlem hattının başlangıç zamanı ve bitiş zamanı arasında bir gün, yani 24 saat vardır. Bu nedenle işlem hattı, çıktı veri kümesinden 24 dilim oluşturur. 
@@ -231,49 +248,49 @@ Bu adımda, girdi olarak **InputDataset** ve çıktı olarak **OutputDataset** k
 2. **Yeni Öğe Ekle** iletişim kutusunda **Veri İşlem Hattı Kopyala**’yı seçip **Ekle**’ye tıklayın. 
 3. JSON’u aşağıdaki JSON ile değiştirin ve **CopyActivity1.json** dosyasını kaydedin.
 
-   ```json   
-    {
-     "name": "ADFTutorialPipeline",
-     "properties": {
-       "description": "Copy data from a blob to Azure SQL table",
-       "activities": [
-         {
-           "name": "CopyFromBlobToSQL",
-           "type": "Copy",
-           "inputs": [
-             {
-               "name": "InputDataset"
-             }
-           ],
-           "outputs": [
-             {
-               "name": "OutputDataset"
-             }
-           ],
-           "typeProperties": {
-             "source": {
-               "type": "BlobSource"
-             },
-             "sink": {
-               "type": "SqlSink",
-               "writeBatchSize": 10000,
-               "writeBatchTimeout": "60:00:00"
-             }
-           },
-           "Policy": {
-             "concurrency": 1,
-             "executionPriorityOrder": "NewestFirst",
-             "style": "StartOfInterval",
-             "retry": 0,
-             "timeout": "01:00:00"
+   ```json
+  {
+   "name": "ADFTutorialPipeline",
+   "properties": {
+     "description": "Copy data from a blob to Azure SQL table",
+     "activities": [
+       {
+         "name": "CopyFromBlobToSQL",
+         "type": "Copy",
+         "inputs": [
+           {
+             "name": "InputDataset"
            }
+         ],
+         "outputs": [
+           {
+             "name": "OutputDataset"
+           }
+         ],
+         "typeProperties": {
+           "source": {
+             "type": "BlobSource"
+           },
+           "sink": {
+             "type": "SqlSink",
+             "writeBatchSize": 10000,
+             "writeBatchTimeout": "60:00:00"
+           }
+         },
+         "Policy": {
+           "concurrency": 1,
+           "executionPriorityOrder": "NewestFirst",
+           "style": "StartOfInterval",
+           "retry": 0,
+           "timeout": "01:00:00"
          }
-       ],
-       "start": "2017-05-11T00:00:00Z",
-       "end": "2017-05-12T00:00:00Z",
-       "isPaused": false
-     }
-    }
+       }
+     ],
+     "start": "2017-05-11T00:00:00Z",
+     "end": "2017-05-12T00:00:00Z",
+     "isPaused": false
+   }
+  }
     ```   
    - Etkinlikler bölümünde, **türü****Copy** olarak ayarlanmış yalnızca bir etkinlik vardır. Kopyalama etkinliği hakkında daha fazla bilgi için bkz. [veri taşıma etkinlikleri](data-factory-data-movement-activities.md). Data Factory çözümlerinde, [veri dönüştürme etkinliklerini](data-factory-data-transformation-activities.md) de kullanabilirsiniz.
    - Etkinlik girdisi **InputDataset** olarak, etkinlik çıktısı ise **OutputDataset** olarak ayarlanmıştır. 
@@ -333,13 +350,13 @@ Aşağıdaki noktalara dikkat edin:
   
   * Azure PowerShell’de Data Factory sağlayıcısını kaydetmek için aşağıdaki komutu çalıştırın. 
 
-    ```powershell    
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+  ```powershell    
+  Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
-    Data Factory sağlayıcısının kayıtlı olduğunu onaylamak için aşağıdaki komutu çalıştırabilirsiniz. 
+  Data Factory sağlayıcısının kayıtlı olduğunu onaylamak için aşağıdaki komutu çalıştırabilirsiniz. 
     
-    ```powershell
-    Get-AzResourceProvider
+  ```powershell
+  Get-AzResourceProvider
     ```
   * Azure aboneliğini kullanarak [Azure portalında](https://portal.azure.com) oturum açın ve Data Factory dikey penceresine gidin (ya da) Azure portalında bir data factory oluşturun. Bu eylem sağlayıcıyı sizin için otomatik olarak kaydeder.
 * Veri fabrikasının adı gelecekte bir DNS adı olarak kaydedilmiş ve herkese görünür hale gelmiş olabilir.
@@ -353,13 +370,13 @@ Veri fabrikanızın giriş sayfasına gidin:
 1. [Azure portalı](https://portal.azure.com)’nda oturum açın.
 2. Sol menüdeki **Diğer hizmetler**’e ve **Veri fabrikaları** öğesine tıklayın.
 
-    ![Data factory’lere göz atma](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
+  ![Data factory’lere göz atma](media/data-factory-copy-activity-tutorial-using-visual-studio/browse-data-factories.png)
 3. Veri fabrikanızın adını yazmaya başlayın.
 
-    ![Veri fabrikasının adı](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
+  ![Veri fabrikasının adı](media/data-factory-copy-activity-tutorial-using-visual-studio/enter-data-factory-name.png) 
 4. Veri fabrikanızın giriş sayfasını görmek için sonuç listesinde veri fabrikanıza tıklayın.
 
-    ![Data factory giriş sayfası](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
+  ![Data factory giriş sayfası](media/data-factory-copy-activity-tutorial-using-visual-studio/data-factory-home-page.png)
 5. Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek için [Veri kümelerini ve işlem hatlarını izleme](data-factory-monitor-manage-pipelines.md) makalesindeki yönergeleri uygulayın. Visual Studio şu anda Data Factory işlem hatlarını izlemeyi desteklememektedir. 
 
 ## <a name="summary"></a>Özet
@@ -369,7 +386,7 @@ Bu öğreticide, Azure blobundan Azure SQL veritabanı 'na veri kopyalamak için
 2. Oluşturulan **bağlı hizmetler**:
    1. Girdi verilerini tutan Azure Storage hesabınıza bağlamak için **Azure Storage** bağlı hizmeti.     
    2. Çıktı verilerini tutan veritabanınızı bağlamak için bir **Azure SQL** bağlı hizmeti. 
-3. İşlem hatları için girdi verilerini ve çıktı verilerini açıklayan veri **kümeleri**oluşturuldu.
+3. İşlem hatları için girdi verilerini ve çıktı verilerini açıklayan veri **kümeleri** oluşturuldu.
 4. **BLOB olarak blobsource** ve **Sqlsink** içeren **kopyalama etkinliğine** sahip bir işlem **hattı** oluşturuldu. 
 
 Azure HDInsight kümesini kullanarak verileri dönüştürmek için HDInsight Hive etkinliğinin nasıl kullanıldığını görmek için bkz. [öğretici: Hadoop kümesi kullanarak verileri dönüştürmek için ilk işlem hattınızı oluşturma](data-factory-build-your-first-pipeline.md).
@@ -388,7 +405,7 @@ Bu bölümde, Azure aboneliğinizdeki tüm veri fabrikalarını görüntülemek 
 
 - Sunucu Gezgini’nde bir veri fabrikasına sağ tıklayıp **Veri Fabrikasını Yeni Projeye Aktar**’ı seçerek mevcut bir veri fabrikasını temel alan Visual Studio projesi oluşturun.
 
-    ![Data factory’yi VS projesine aktarma](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
+  ![Data factory’yi VS projesine aktarma](./media/data-factory-copy-activity-tutorial-using-visual-studio/export-data-factory-menu.png)  
 
 ## <a name="update-data-factory-tools-for-visual-studio"></a>Visual Studio için Data Factory araçlarını güncelleştirme
 Visual Studio için Azure Data Factory araçlarını güncelleştirmek üzere aşağıdaki adımları uygulayın:
@@ -424,29 +441,29 @@ Aşağıdaki adımları uygulayarak her ortam için bir yapılandırma dosyası 
     ![Yapılandırma dosyasını ekleme](./media/data-factory-build-your-first-pipeline-using-vs/add-config-file.png)
 3. Yapılandırma parametrelerini ve değerlerini aşağıda gösterilen biçimde ekleyin:
 
-    ```json
-    {
-        "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
-        "AzureStorageLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
-        ],
-        "AzureSqlLinkedService1": [
-            {
-                "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-            }
-        ]
-    }
+  ```json
+  {
+      "$schema": "http://datafactories.schema.management.azure.com/vsschemas/V1/Microsoft.DataFactory.Config.json",
+      "AzureStorageLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+          }
+      ],
+      "AzureSqlLinkedService1": [
+          {
+              "name": "$.properties.typeProperties.connectionString",
+              "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure SQL datbase>;User ID=<Username>;Password=<Password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+          }
+      ]
+  }
     ```
 
     Bu örnek, Azure Storage bağlı hizmetinin ve Azure SQL bağlı hizmetinin connectionString özelliğini yapılandırır. Belirtilen adın sözdiziminin [JsonPath](https://goessner.net/articles/JsonPath/) olduğuna dikkat edin.   
 
     JSON’un aşağıdaki kodda gösterilen şekilde bir dizi değere sahip bir özelliği varsa:  
 
-    ```json
+  ```json
     "structure": [
           {
               "name": "FirstName",
@@ -461,7 +478,7 @@ Aşağıdaki adımları uygulayarak her ortam için bir yapılandırma dosyası 
 
     Özellikleri, aşağıdaki yapılandırma dosyasında gösterildiği gibi (sıfır tabanlı dizin oluşturma kullanın) yapılandırın:
 
-    ```json
+  ```json
     {
         "name": "$.properties.structure[0].name",
         "value": "FirstName"

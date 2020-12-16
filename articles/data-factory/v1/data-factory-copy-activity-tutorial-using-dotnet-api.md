@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7b925a25e1e246008f393f7b15160417c3b3d7a1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d047a45d678918541eb3c2d2c45e4519a34bdd57
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85254863"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608689"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>Öğretici: .NET API kullanarak Kopyalama Etkinlikli bir işlem hattı oluşturma
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Bir Azure Active Directory uygulaması oluşturun, uygulama için bir hizmet sor
     ```powershell
     Get-AzSubscription
     ```
-4. Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. ** &lt; Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin.
+4. Çalışmak isteğiniz aboneliği seçmek için aşağıdaki komutu çalıştırın. **&lt; Nameofazuyeniden gönderme Scription** &gt; değerini Azure aboneliğinizin adıyla değiştirin.
 
     ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
@@ -108,7 +108,7 @@ Bir Azure Active Directory uygulaması oluşturun, uygulama için bir hizmet sor
 9. Uygulama kimliğini alın.
 
     ```powershell
-    $azureAdApplication 
+    $azureAdApplication
     ```
     Çıktıdaki uygulama kimliğini (applicationID) not alın.
 
@@ -134,7 +134,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
    2. Azure Active Directory paketini yüklemek için şu komutu çalıştırın (kodda Active Directory API'sini kullanırsınız): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
 4. Aşağıdaki **appSetttings** bölümünü **App.config** dosyasına ekleyin. Bu ayarlar **GetAuthorizationHeader** yardımcı yöntemi tarafından kullanılır.
 
-    ** &lt; &gt; Uygulama kimliği**, ** &lt; parola &gt; **, ** &lt; Abonelik &gt; kimliği**ve ** &lt; Kiracı kimliği &gt; ** değerlerini kendi değerlerinizle değiştirin.
+    **&lt; &gt; Uygulama kimliği**, **&lt; parola &gt;**, **&lt; Abonelik &gt; kimliği** ve **&lt; Kiracı kimliği &gt;** değerlerini kendi değerlerinizle değiştirin.
 
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -240,7 +240,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 9. Bir **Azure SQL bağlı hizmeti** oluşturan aşağıdaki kodu **Main** yöntemine ekleyin.
 
    > [!IMPORTANT]
-   > **ServerName**, **DatabaseName**, **UserName**ve **Password** adlarını sunucunuzun, veritabanınızın, Kullanıcı ve parolanızın adlarıyla değiştirin.
+   > **ServerName**, **DatabaseName**, **UserName** ve **Password** adlarını sunucunuzun, veritabanınızın, Kullanıcı ve parolanızın adlarıyla değiştirin.
 
     ```csharp
     // create a linked service for output data store: Azure SQL Database
@@ -345,7 +345,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
 
     Bu adımda, InputDataset adlı bir veri kümesi oluşturursunuz. Bu veri kümesi, AzureStorageLinkedService bağlı hizmetiyle temsil edilen Azure Depolama’daki bir blob kapsayıcısının (adftutorial) kök klasöründe bulunan blob dosyasını (emp.txt) işaret eder. fileName için bir değer belirtmezseniz (veya bu adımı atlarsanız) girdi klasöründe bulunan tüm blob’lardaki veriler hedefe kopyalanır. Bu öğreticide, dosya adı için bir değer belirtirsiniz.    
 
-    Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu veri kümesi, **Azurestablinkedservice**tarafından temsil edilen VERITABANıNDA bir SQL tablosunu işaret eder.
+    Bu adımda **OutputDataset** adlı bir çıktı veri kümesi oluşturursunuz. Bu veri kümesi, **Azurestablinkedservice** tarafından temsil edilen VERITABANıNDA bir SQL tablosunu işaret eder.
 11. **Bir işlem hattı oluşturan ve işlem hattını etkinleştiren** aşağıdaki kodu **Main** yöntemine ekleyin. Bu adımda, girdi olarak **InputDataset** ve çıktı olarak **OutputDataset** kullanan **kopyalama etkinliğine** sahip bir işlem hattı oluşturursunuz.
 
     ```csharp
@@ -511,7 +511,7 @@ Bu adımlardan sonra aşağıdaki dört değere sahip olmanız gerekir:
     John, Doe
     Jane, Doe
     ```
-18. Menüdeki hata **Ayıkla**hata  ->  **ayıklamayı Başlat** ' a tıklayarak örneği çalıştırın. **Getting run details of a data slice** iletisini gördüğünüzde birkaç dakika bekleyin ve **ENTER** tuşuna basın.
+18. Menüdeki hata **Ayıkla** hata  ->  **ayıklamayı Başlat** ' a tıklayarak örneği çalıştırın. **Getting run details of a data slice** iletisini gördüğünüzde birkaç dakika bekleyin ve **ENTER** tuşuna basın.
 19. Azure portalı kullanarak **APITutorialFactory** veri fabrikasının aşağıdaki yapıtlarla birlikte oluşturulduğunu doğrulayın:
     * Bağlı hizmet: **LinkedService_AzureStorage**
     * Veri kümesi: **InputDataset** ve **OutputDataset**.

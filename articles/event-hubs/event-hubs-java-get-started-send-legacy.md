@@ -4,12 +4,12 @@ description: Bu makalede, Azure Event Hubs eski Azure-eventhubs paketini kullana
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: e77ff762de11a9c8a723b162993db11efe715b66
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e86ca76f3eb661e1407a02b58e60b62b391f5702
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591557"
+ms.locfileid: "97607992"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Azure Event Hubs (Azure-eventhubs) olay göndermek veya olayları almak için Java 'Yı kullanma
 
@@ -17,7 +17,6 @@ Bu hızlı başlangıçta, **Azure-eventhubs** Java paketini kullanarak Olay Hub
 
 > [!WARNING]
 > Bu hızlı başlangıçta eski **Azure-eventhubs** ve **Azure-eventhubs-EPH** paketleri kullanılmaktadır. En son  **Azure-Messaging-eventhubs** paketini kullanan bir hızlı başlangıç için bkz. [Azure-Messaging-eventhubs kullanarak olay gönderme ve alma](event-hubs-java-get-started-send.md). Uygulamanızı eski paketi kullanarak yeni bir pakete taşımak için [Azure-eventhubs 'den Azure-Messaging-eventhubs ' e geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/migration-guide.md)bakın. 
-
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -75,7 +74,6 @@ public class SimpleSend {
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
 
-
     }
  }
 ```
@@ -109,7 +107,6 @@ Bir dizeyi UTF-8 bayt kodlamasıyla dönüştürerek tekil bir olay oluşturun. 
         // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
-
 
         try {
             for (int i = 0; i < 10; i++) {
@@ -418,7 +415,6 @@ Uygulamanızda, varsayılan denetim noktası mekanizmasını geçersiz kılabili
 Ortamınızda kullanılabilir olan herhangi bir veri deposunu kullanabilirsiniz.
 
 Com. Microsoft. Azure. eventprocessorhost. EventProcessorHost sınıfı size EventProcessorHost için denetim noktası yöneticisini geçersiz kılmanıza olanak tanıyan iki Oluşturucu sağlar.
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makaleleri okuyun: 

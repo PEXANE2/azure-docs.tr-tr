@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: 6a000daa7d9e2aa93e68844e8aec5aa168c9fa60
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592424"
+ms.locfileid: "97607278"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Azure Paylaşılan disklerle (Azure VM 'lerinde SQL Server) bir FCı oluşturma
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -26,7 +26,6 @@ ms.locfileid: "97592424"
 Bu makalede, Azure sanal makinelerinde (VM) SQL Server ile Azure paylaşılan diskler kullanılarak yük devretme kümesi örneği (FCı) oluşturma işlemi açıklanmaktadır. 
 
 Daha fazla bilgi edinmek için bkz. Azure VM 'lerde ve [küme en iyi uygulamalarında](hadr-cluster-best-practices.md) [SQL Server ile FCI](failover-cluster-instance-overview.md) 'ye genel bakış. 
-
 
 ## <a name="prerequisites"></a>Ön koşullar 
 
@@ -37,12 +36,10 @@ Bu makaledeki yönergeleri tamamlamadan önce Şu durumda olmalıdır:
 - Hem Azure sanal makinelerinde hem de Active Directory nesne oluşturma izinlerine sahip olan bir hesap.
 - En son [PowerShell](/powershell/azure/install-az-ps)sürümü. 
 
-
 ## <a name="add-azure-shared-disk"></a>Azure Paylaşılan diski ekleme
 Paylaşılan disk özelliği etkinken yönetilen bir Premium SSD diski dağıtın. `maxShares`Diski tüm FCı düğümlerinde paylaşılabilir hale getirmek için **küme düğümü sayısıyla hizalı** olarak ayarlayın. 
 
 Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin: 
-
 
 1. Aşağıdaki betiği *SharedDiskConfig.js* olarak kaydedin: 
 
@@ -85,7 +82,6 @@ Aşağıdakileri yaparak bir Azure Paylaşılan diski ekleyin:
    }
    ```
 
-
 2. PowerShell kullanarak *üzerindeSharedDiskConfig.js* çalıştırın: 
 
    ```powershell
@@ -119,7 +115,6 @@ Yük devretme kümesini oluşturmak için şunlar gerekir:
 - Yük devretme kümesi için bir ad.
 - Yük devretme kümesi için bir IP adresi. Küme düğümleri ile aynı Azure sanal ağı ve alt ağı üzerinde kullanılmayan bir IP adresi kullanabilirsiniz.
 
-
 # <a name="windows-server-2012-2016"></a>[Windows Server 2012-2016](#tab/windows2012)
 
 Aşağıdaki PowerShell betiği bir yük devretme kümesi oluşturur. Betiği, düğümlerin adlarıyla (sanal makine adları) ve kullanılabilir bir IP adresini Azure sanal ağından güncelleştirin.
@@ -139,7 +134,6 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 Daha fazla bilgi için bkz. [Yük devretme kümesi: küme ağ nesnesi](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97).
 
 ---
-
 
 ## <a name="configure-quorum"></a>Çekirdeği yapılandırma
 
@@ -198,7 +192,6 @@ FCı veri dizinlerinin Azure Paylaşılan disklerinde olması gerekir.
 
 SQL Server VM portaldan yönetmek için, SQL IaaS Aracısı uzantısı 'na (RP) [basit yönetim modunda](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode)kaydedin, şu anda şu anda FCI ile desteklenen tek mod ve Azure vm 'lerinde SQL Server. 
 
-
 PowerShell ile hafif modda bir SQL Server VM kaydetme:  
 
 ```powershell-interactive
@@ -221,7 +214,6 @@ Trafiği geçerli birincil düğüme uygun bir şekilde yönlendirmek için, ort
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha önce yapmadıysanız, bir [sanal ağ adı ve bir Azure yük dengeleyici](failover-cluster-instance-vnn-azure-load-balancer-configure.md) veya [dağıtılmış ağ adı (DNN)](failover-cluster-instance-distributed-network-name-dnn-configure.md)ile FCI 'nize bağlantı yapılandırın. 
-
 
 Azure paylaşılan diskler sizin için uygun FCı depolama çözümü değilse, bunun yerine [Premium dosya paylaşımlarını](failover-cluster-instance-premium-file-share-manually-configure.md) veya [depolama alanları doğrudan](failover-cluster-instance-storage-spaces-direct-manually-configure.md) kullanarak FCI 'nizi oluşturmayı düşünün. 
 

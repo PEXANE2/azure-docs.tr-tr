@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: acd0206f45d714685cc3e01d968491049d3bb36f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 80c4b1998872c749228d7352484fd5af22b6d23d
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92522351"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608349"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opal"></a>Öğretici: Opal ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Opal 'ı tümleştirmeyi 
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -39,12 +39,10 @@ Başlamak için aşağıdaki öğeler gereklidir:
 
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
-
 * Opal, **IDP** tarafından başlatılan SSO 'yu destekler
 
 > [!NOTE]
 > Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
-
 
 ## <a name="adding-opal-from-the-gallery"></a>Galeriden Opal ekleme
 
@@ -57,10 +55,9 @@ Opal 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerinizden y
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Opal** yazın.
 1. Sonuçlar panelinden **Opal** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-opal"></a>Opal için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Opal ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Opal içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Opal ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Opal içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Opal ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -83,12 +80,14 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, aşağıdaki alanlar için değerleri girin:
 
-    a. **Tanımlayıcı** metin kutusuna bir URL yazın:`Opal`
+    1. **Tanımlayıcı** metin kutusuna bir URL yazın:`Opal`
 
-    b. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.ouropal.com/auth/saml/callback`
+    1. **Yanıt URL 'si** metin kutusuna aşağıdaki kalıbı kullanarak bir URL yazın:
 
-    > [!NOTE]
-    > Yanıt URL 'SI değeri gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [Opal istemci desteği ekibine](mailto:support@workwithopal.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+        `https://<subdomain>.ouropal.com/auth/saml/callback`
+
+        > [!NOTE]
+        > Yanıt URL 'SI değeri gerçek değil. Değeri gerçek yanıt URL 'siyle güncelleştirin. Değeri almak için [Opal istemci desteği ekibine](mailto:support@workwithopal.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 1. Opal uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
 
@@ -96,10 +95,10 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Opal uygulaması aşağıda gösterilen SAML yanıtında daha az sayıda özniteliğin geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ---------------| --------------- |
-    | FirstName           | Kullanıcı. |
-    | Soyadı        | User. soyadı |
+    | FirstName | Kullanıcı. |
+    | Soyadı | User. soyadı |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -116,7 +115,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad** alanına `B.Simon` girin.  
+   1. **Ad** alanına `B.Simon` girin.
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
    1. **Oluştur**’a tıklayın.
@@ -155,9 +154,9 @@ Erişim panelinde Opal kutucuğuna tıkladığınızda, SSO 'yu ayarladığını
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

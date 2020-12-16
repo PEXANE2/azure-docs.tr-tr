@@ -7,21 +7,21 @@ ms.topic: quickstart
 ms.author: jukullam
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fb5396fae4676d85f67e98bb333cd58324d5a4e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 6e3dbb968d0dff8d8227518fe53d257bfc1fae4b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357578"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607975"
 ---
 # <a name="quickstart-use-github-actions-to-connect-to-azure-mysql"></a>Hızlı başlangıç: Azure MySQL 'e bağlanmak için GitHub eylemlerini kullanma
 
 **Uygulama hedefi**: :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL için Azure veritabanı-tek sunuculu :::image type="icon" source="./media/applies-to/yes.png" border="false"::: PostgreSQL Için Azure veritabanı-esnek sunucu
 
-[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/actions) ile çalışmaya başlayın.
+[MySQL Için Azure veritabanı](https://azure.microsoft.com/services/mysql/)'na veritabanı güncelleştirmelerini dağıtmak üzere bir iş akışı kullanarak [GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) ile çalışmaya başlayın.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Şunlara ihtiyacınız vardır: 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -89,7 +89,7 @@ Bağlantı dizesini GitHub parolası olarak kullanacaksınız.
 
 1. Azure CLı komutundan tüm JSON çıkışını gizli dizi değeri alanına yapıştırın. Gizli dizi adını verin `AZURE_CREDENTIALS` .
 
-    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örneğin:
+    Daha sonra iş akışı dosyasını yapılandırdığınızda, `creds` Azure oturum açma eyleminin girişi için gizli anahtarı kullanırsınız. Örnek:
 
     ```yaml
     - uses: azure/login@v1

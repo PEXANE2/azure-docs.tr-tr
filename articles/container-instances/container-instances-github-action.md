@@ -4,16 +4,16 @@ description: Azure Container Instances bir kapsayıcı görüntüsü oluşturma,
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 270aa69e74045a48a3567ca74b722ca48a030654
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7dfa2a66851db760049e7c3dc3446223c7dffad1
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591642"
+ms.locfileid: "97609165"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Kapsayıcı örneği oluşturmak için bir GitHub eylemi yapılandırma
 
-[GitHub eylemleri](https://help.github.com/actions/getting-started-with-github-actions/about-github-actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
+[GitHub eylemleri](https://docs.github.com/en/free-pro-team@latest/actions) , yazılım geliştirme iş akışlarınızı aynı yerde otomatik hale getirmek için GitHub 'daki bir özellik paketidir. böylece, çekme istekleri ve sorunları üzerinde kod depolar ve işbirliği yapın.
 
 Tek bir kapsayıcının Azure Container Instances dağıtımını otomatik hale getirmek için GitHub [Azure Container Instances Için dağıt](https://github.com/azure/aci-deploy) eylemini kullanın. Bu eylem, [az Container Create][az-container-create] komutuyla benzer bir kapsayıcı örneği için özellikler ayarlamanıza olanak sağlar.
 
@@ -177,7 +177,7 @@ jobs:
 
 ![İş akışı ilerlemesini görüntüleme](./media/container-instances-github-action/github-action-progress.png)
 
-İş akışınızda her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için bkz. [iş akışı çalıştırmasını yönetme](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run) . İş akışı tamamlanmazsa, bkz. [sorunları tanılamak için günlükleri görüntüleme](https://docs.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run#viewing-logs-to-diagnose-failures).
+İş akışınızda her adımın durumunu ve sonuçlarını görüntüleme hakkında bilgi için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) . İş akışı tamamlanmazsa, bkz. [sorunları tanılamak için günlükleri görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures).
 
 İş akışı başarıyla tamamlandığında, [az Container Show][az-container-show] komutunu çalıştırarak *aci-SampleApp* adlı kapsayıcı örneği hakkında bilgi alın. Kaynak grubunuzun adını değiştirin: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Komut ilerleme durumu
 
-* İstendiğinde GitHub kimlik bilgilerinizi sağlayın veya GitHub hesabınızda kimlik doğrulaması yapmak için *Depo* ve *Kullanıcı* kapsamlarına sahip bir [GitHub kişisel erişim belirteci](https://help.github.com/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) (Pat) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur. İş akışını yapılandırmak için ek istemleri izleyin.
+* İstendiğinde GitHub kimlik bilgilerinizi sağlayın veya GitHub hesabınızda kimlik doğrulaması yapmak için *Depo* ve *Kullanıcı* kapsamlarına sahip bir [GitHub kişisel erişim belirteci](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) (Pat) sağlayın. GitHub kimlik bilgilerini sağlarsanız, komut sizin için bir PAT oluşturur. İş akışını yapılandırmak için ek istemleri izleyin.
 
 * Komut iş akışı için depo gizli dizileri oluşturur:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için bkz. [iş akışı çalıştırmasını yönetme](https://help.github.com/actions/configuring-and-managing-workflows/managing-a-workflow-run).
+GitHub Kullanıcı arabirimindeki her adımın iş akışı durumunu ve sonuçlarını görüntülemek için bkz. [iş akışı çalıştırma geçmişini görüntüleme](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history).
 
 ### <a name="validate-workflow"></a>İş akışını doğrula
 

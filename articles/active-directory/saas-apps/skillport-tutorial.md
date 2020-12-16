@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ed71311125229a7575c675dd3338b4908ea1be95
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8b49e3594754e8eed38e3b1ef44648bc065558b8
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518441"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Öğretici: Skillport ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Skillport Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Skillport ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Skillport tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Skillport**yazın, sonuç panelinden **Skillport** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Skillport** yazın, sonuç panelinden **Skillport** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesinde Skillport](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Skillport ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Skillport ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Skillport 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Skillport ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -101,23 +101,23 @@ Azure AD çoklu oturum açmayı Skillport ile yapılandırmak için aşağıdaki
 
     ![Skillport etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier-reply.png)
 
-    a. **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:
+    1. **Oturum açma URL** 'si metin kutusuna URL 'yi yazın:
 
-    AB veri merkezi: `https://adfs.skillport.eu`
+        AB veri merkezi: `https://adfs.skillport.eu`
 
-    ABD veri merkezi: `https://sso.skillport.com`
+        ABD veri merkezi: `https://sso.skillport.com`
 
-    b. **Tanımlayıcı** kutusuna URL 'yi yazın:
+    1. **Tanımlayıcı** kutusuna URL 'yi yazın:
 
-    AB veri merkezi: `http://adfs.skillport.eu/adfs/services/trust`
+        AB veri merkezi: `http://adfs.skillport.eu/adfs/services/trust`
 
-    ABD veri merkezi: `https://sso.skillport.com`
+        ABD veri merkezi: `https://sso.skillport.com`
 
-    c. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:
+    1. **Yanıt URL** 'si metin kutusuna URL 'yi yazın:
 
-    AB veri merkezi: `https://adfs.skillport.eu/adfs/ls/`
+        AB veri merkezi: `https://adfs.skillport.eu/adfs/ls/`
 
-      ABD veri merkezi: `https://sso.skillport.com/sp/ACS.saml2`
+        ABD veri merkezi: `https://sso.skillport.com/sp/ACS.saml2`
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -153,7 +153,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
     b. **Kullanıcı adı** alan türü`brittasimon@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com

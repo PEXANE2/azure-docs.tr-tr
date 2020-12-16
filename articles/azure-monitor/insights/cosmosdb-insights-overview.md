@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: dcd64cf779b931dbf3b4f743844071835e0b8c91
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5e40f91945f83af7880f272f1578370f2ee1ec42
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932065"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608502"
 ---
 # <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini keşfet
 
@@ -39,11 +39,11 @@ Tüm aboneliklerinizde depolama hesaplarınızın kullanımını ve performansı
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. **İzleme** araması yapın ve **izleyiciyi**seçin.
+2. **İzleme** araması yapın ve **izleyiciyi** seçin.
 
     !["Monitor" sözcüğünün bulunduğu ve bir hızölçer Style görüntüsüyle Hizmetleri "Monitor" adlı bir açılan pencerede arama kutusu](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. **Cosmos DB**seçin.
+3. **Cosmos DB** seçin.
 
     ![Cosmos DB genel bakış çalışma kitabının ekran görüntüsü](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -71,7 +71,7 @@ Sayfanın üst kısmındaki **hataların** yanı sıra çalışma kitabı şablo
 
 ![HTTP istek türüne göre dökümdeki hataların ekran görüntüsü](./media/cosmosdb-insights-overview/failures.png)
 
-| Kod      |  Açıklama       | 
+| Kod |  Description       | 
 |-----------|:--------------------|
 | `200 OK`  | Aşağıdaki REST işlemlerinden biri başarılı oldu: </br>-Bir kaynağa ULAŞıN. </br> -Bir kaynağa koyun. </br> -Bir kaynakta GÖNDERIN. </br> -Saklı yordamı yürütmek için bir saklı yordam kaynağını GÖNDERIN.|
 | `201 Created` | Kaynak oluşturmak için bir gönderme işlemi başarılı. |
@@ -111,7 +111,7 @@ Verilerinizi Excel biçiminde dışarı aktarmak için raptiye simgesinin solund
 
 ## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Izleyicisini özelleştirme
 
-Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa edildiğinden, **Customize**  >  değiştirilmiş sürümünüzün bir kopyasını**düzenleme** ve bir kopyasını özel çalışma kitabına **kaydetme** olanağınız vardır. 
+Bu deneyim, Azure izleyici çalışma kitabı şablonlarının üzerine inşa edildiğinden,   >  değiştirilmiş sürümünüzün bir kopyasını **düzenleme** ve bir kopyasını özel çalışma kitabına **kaydetme** olanağınız vardır. 
 
 ![Çubuğu Özelleştir](./media/cosmosdb-insights-overview/customize.png)
 

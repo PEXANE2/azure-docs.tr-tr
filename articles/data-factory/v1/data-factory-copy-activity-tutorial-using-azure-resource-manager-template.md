@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 831da4153eebc798265493441ee72c041901904f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a007e64a7bd034397c2030c435a5ad349bd4acc7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87053898"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608757"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Öğretici: Verileri kopyalamak üzere bir Data Factory işlem hattı oluşturmak için Azure Resource Manager şablonunu kullanma 
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Bir işlem hattında birden fazla etkinlik olabilir. Bir etkinliğin çıkış v
 ## <a name="in-this-tutorial"></a>Bu öğreticide
 Bu öğreticide, aşağıdaki Data Factory varlıklarıyla bir veri fabrikası oluşturursunuz:
 
-| Varlık | Açıklama |
+| Varlık | Description |
 | --- | --- |
 | Azure Storage bağlı hizmeti |Azure Storage hesabınızı veri fabrikasına bağlar. Azure depolama, kaynak veri deposudur ve Azure SQL veritabanı, öğreticideki kopyalama etkinliğinin havuz veri deposudur. Kopyalama etkinliği için giriş verilerini içeren depolama hesabını belirtir. |
 | Azure SQL Veritabanı bağlı hizmeti |Azure SQL veritabanı 'ndaki veritabanımızı Data Factory 'ye bağlar. Kopyalama etkinliğinin çıktı verilerini tutan veritabanını belirtir. |
@@ -341,46 +341,58 @@ Azure Resource Manager şablonuna yönelik parametreleri içeren **ADFCopyTutori
 ## <a name="monitor-pipeline"></a>İşlem hattını izleme
 
 1. Azure hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-2. Sol menüdeki **Veri fabrikaları**’na tıklayın (veya) **INTELLIGENCE + ANALYTICS** kategorisi altındaki **Tüm hizmetler** ve **Veri fabrikaları** öğelerine tıklayın.
+
+1. Sol menüdeki **Veri fabrikaları**’na tıklayın (veya) **INTELLIGENCE + ANALYTICS** kategorisi altındaki **Tüm hizmetler** ve **Veri fabrikaları** öğelerine tıklayın.
    
     ![Veri fabrikaları menüsü](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factories-menu.png)
-3. **Veri fabrikaları** sayfasında veri fabrikanızı (AzureBlobToAzureSQLDatabaseDF) bulun. 
+
+1. **Veri fabrikaları** sayfasında veri fabrikanızı (AzureBlobToAzureSQLDatabaseDF) bulun. 
    
     ![Veri fabrikası arama](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/search-for-data-factory.png)  
-4. Azure veri fabrikanıza tıklayın. Veri fabrikasının giriş sayfasını görürsünüz.
+
+1. Azure veri fabrikanıza tıklayın. Veri fabrikasının giriş sayfasını görürsünüz.
    
     ![Veri fabrikasının giriş sayfası](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
-6. Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek için [Veri kümelerini ve işlem hatlarını izleme](data-factory-monitor-manage-pipelines.md) makalesindeki yönergeleri uygulayın. Visual Studio şu anda Data Factory işlem hatlarını izlemeyi desteklememektedir.
-7. Bir dilim, **Ready** durumunda olduğunda, VERILERIN Azure SQL veritabanındaki bir **veritabanı tablosunda kopyalandığından** emin olun.
 
+1. Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek için [Veri kümelerini ve işlem hatlarını izleme](data-factory-monitor-manage-pipelines.md) makalesindeki yönergeleri uygulayın. Visual Studio şu anda Data Factory işlem hatlarını izlemeyi desteklememektedir.
+
+1. Bir dilim, **Ready** durumunda olduğunda, VERILERIN Azure SQL veritabanındaki bir **veritabanı tablosunda kopyalandığından** emin olun.
 
 Bu öğreticide oluşturduğunuz işlem hattını ve veri kümelerini izlemek üzere Azure portalı dikey pencerelerinin kullanımına ilişkin daha fazla bilgi için bkz. [Veri kümelerini ve işlem hatlarını izleme](data-factory-monitor-manage-pipelines.md).
 
 Veri işlem hatlarınızı izlemek üzere İzleme ve Yönetme uygulamasının kullanımına ilişkin daha fazla bilgi için bkz. [İzleme Uygulamasını kullanarak Azure Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-app.md).
 
 ## <a name="data-factory-entities-in-the-template"></a>Şablondaki Data Factory varlıkları
+
 ### <a name="define-data-factory"></a>Veri fabrikası tanımlama
-Resource Manager şablonunda bir veri fabrikasını aşağıdaki örnekte gösterildiği gibi tanımlayın:  
+
+Resource Manager şablonunda bir veri fabrikasını aşağıdaki örnekte gösterildiği gibi tanımlayın:
 
 ```json
-"resources": [
 {
-    "name": "[variables('dataFactoryName')]",
-    "apiVersion": "2015-10-01",
-    "type": "Microsoft.DataFactory/datafactories",
-    "location": "West US"
+  "resources": [
+    {
+      "name": "[variables('dataFactoryName')]",
+      "apiVersion": "2015-10-01",
+      "type": "Microsoft.DataFactory/datafactories",
+      "location": "West US"
+    }
+  ]
 }
 ```
 
 dataFactoryName aşağıdaki gibi tanımlanır: 
 
 ```json
-"dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+{
+    "dataFactoryName": "[concat('AzureBlobToAzureSQLDatabaseDF', uniqueString(resourceGroup().id))]"
+}
 ```
 
-Bu değer, kaynak grubu kimliğini temel alan benzersiz bir dizedir.  
+Bu değer, kaynak grubu kimliğini temel alan benzersiz bir dizedir.
 
 ### <a name="defining-data-factory-entities"></a>Data Factory varlıklarını tanımlama
+
 Aşağıdaki Data Factory varlıkları JSON şablonunda tanımlanır: 
 
 1. [Azure depolama bağlı hizmeti](#azure-storage-linked-service)
@@ -390,6 +402,7 @@ Aşağıdaki Data Factory varlıkları JSON şablonunda tanımlanır:
 5. [Kopyalama etkinliği içeren bir veri işlem hattı](#data-pipeline)
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage bağlı hizmeti
+
 AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağlar. Bir kapsayıcı oluşturup verileri [ön koşulların](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) parçası olarak bu depolama hesabına yüklediniz. Bu bölümde Azure depolama hesabınızın adını ve anahtarını belirtirsiniz. Bir Azure Storage bağlı hizmetini tanımlamak için kullanılan JSON özelliklerine ilişkin ayrıntılar için bkz. [Azure Storage bağlı hizmeti](data-factory-azure-blob-connector.md#azure-storage-linked-service). 
 
 ```json
@@ -413,6 +426,7 @@ AzureStorageLinkedService, Azure depolama hesabınızı veri fabrikasına bağla
 ConnectionString, storageAccountName ve storageAccountKey parametrelerini kullanır. Bu parametrelerin değerleri bir yapılandırma dosyası kullanılarak geçirilir. Tanım ayrıca şablonda tanımlanan değişkenleri kullanır: azureStorageLinkedService ve dataFactoryName. 
 
 #### <a name="azure-sql-database-linked-service"></a>Azure SQL Veritabanı bağlı hizmeti
+
 Azuressqllinkedservice, veritabanınızı Azure SQL veritabanı 'nda Data Factory 'ye bağlar. Blob depolama alanından kopyalanan veriler bu veritabanında depolanır. Bu veritabanındaki emp tablosunu, [önkoşulların](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) parçası olarak oluşturdunuz. Bu bölümde, mantıksal SQL Server adını, veritabanı adını, Kullanıcı adını ve Kullanıcı parolasını belirtirsiniz. Bir Azure SQL bağlı hizmetini tanımlamak için kullanılan JSON özelliklerine ilişkin ayrıntılar için bkz. [Azure SQL bağlı hizmeti](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
@@ -424,11 +438,11 @@ Azuressqllinkedservice, veritabanınızı Azure SQL veritabanı 'nda Data Factor
     ],
     "apiVersion": "2015-10-01",
     "properties": {
-          "type": "AzureSqlDatabase",
-          "description": "Azure SQL linked service",
-          "typeProperties": {
-            "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
-          }
+      "type": "AzureSqlDatabase",
+      "description": "Azure SQL linked service",
+      "typeProperties": {
+        "connectionString": "[concat('Server=tcp:',parameters('sqlServerName'),'.database.windows.net,1433;Database=', parameters('databaseName'), ';User ID=',parameters('sqlServerUserName'),';Password=',parameters('sqlServerPassword'),';Trusted_Connection=False;Encrypt=True;Connection Timeout=30')]"
+      }
     }
 }
 ```

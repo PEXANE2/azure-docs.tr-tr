@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413233"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608791"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc veri denetleyicisi oluşturma
 
@@ -36,7 +36,7 @@ Azure Arc etkin veri Hizmetleri, birden fazla farklı yaklaşım kullanılarak b
 - Genellikle kubeadm kullanarak dağıtılan açık kaynak, yukarı akış Kubernetes
 
 > [!IMPORTANT]
-> * Kubernetes 'in desteklenen en düşük sürümü v 1.17.
+> * Kubernetes 'in desteklenen en düşük sürümü v 1.17. Daha fazla bilgi için [bilinen sorunlara](./release-notes.md#known-issues) bakın. 
 > * OCP 'nin desteklenen en düşük sürümü 4,3 ' dir.
 > * Ortamınız ve Azure arasında hangi bağlantının gerekli olduğunu anlamak için [bağlantı gereksinimlerine](connectivity.md) bakın.
 > * Kalıcı depolama alanınızı yapılandırmaya ilişkin ayrıntıları öğrenmek için [depolama yapılandırma kılavuzu](storage-configuration.md) ' na bakın.
@@ -64,10 +64,10 @@ Seçtiğiniz seçenek ne olursa olsun, oluşturma işlemi sırasında aşağıda
 Azure Arc veri denetleyicisi oluşturmak için birden çok seçenek vardır:
 
 > **Yalnızca bir şeyi denemek mi istiyorsunuz?**  
-> Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ile hızlıca çalışmaya başlayın!
+> Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ile hızlıca çalışmaya başlayın!
 > 
 - [İle veri denetleyicisi oluşturma [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](create-data-controller-using-azdata.md)
 - [Azure Data Studio bir veri denetleyicisi oluşturma](create-data-controller-azure-data-studio.md)
 - [Azure Data Studio bir Jupyter Not defteri aracılığıyla Azure portal bir veri denetleyicisi oluşturun](create-data-controller-resource-in-azure-portal.md)
 - [Kubectl veya OC gibi Kubernetes araçlarıyla veri denetleyicisi oluşturma](create-data-controller-using-kubernetes-native-tools.md)
-- [Bir test dağıtımının hızlandırılmış deneyimi için Azure Arc Jumpstart ile veri denetleyicisi oluşturma](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services)
+- [Bir test dağıtımının hızlandırılmış deneyimi için Azure Arc Jumpstart ile veri denetleyicisi oluşturma](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/)

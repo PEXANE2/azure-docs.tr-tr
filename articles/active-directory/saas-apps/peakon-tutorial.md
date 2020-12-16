@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: d9850c83fc949aa3a2b0521dfa0d41d49b7283bd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a84d4d71e5190c455441d1e627381be86ef5e129
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515644"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peakon"></a>Öğretici: Peakon ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Peakon Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Azure AD tümleştirmesini Peakon ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -64,13 +64,13 @@ Peakon tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden Pea
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Peakon**yazın, sonuç panelinden **Peakon** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Peakon** yazın, sonuç panelinden **Peakon** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
      ![Sonuç listesinde Peakon](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Peakon ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Peakon ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Peakon 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Peakon ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -135,11 +135,11 @@ Azure AD çoklu oturum açmayı Peakon ile yapılandırmak için aşağıdaki ad
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Peakon 'de oturum açın.
 
-2. Sayfanın sol tarafındaki menü çubuğunda **yapılandırma**' ya tıklayın ve ardından **tümleştirmelere**gidin.
+2. Sayfanın sol tarafındaki menü çubuğunda **yapılandırma**' ya tıklayın ve ardından **tümleştirmelere** gidin.
 
     ![Yapılandırma](./media/peakon-tutorial/tutorial_peakon_config.png)
 
-3. **Tümleştirmeler** sayfasında, **Çoklu oturum**açma ' ya tıklayın.
+3. **Tümleştirmeler** sayfasında, **Çoklu oturum** açma ' ya tıklayın.
 
     ![Tek](./media/peakon-tutorial/tutorial_peakon_single.png)
 
@@ -151,9 +151,9 @@ Azure AD çoklu oturum açmayı Peakon ile yapılandırmak için aşağıdaki ad
 
     ![SAML](./media/peakon-tutorial/tutorial_peakon_saml.png)
 
-    a. **SSO oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **SSO oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    b. **SSO Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si**değerini yapıştırın.
+    b. **SSO Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
 
     c. Azure portal indirdiğiniz sertifikayı sertifika kutusuna yüklemek için **Dosya Seç** ' e tıklayın.
 
@@ -179,9 +179,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alan türü**brittasimon@yourcompanydomain.extension**  
+    b. **Kullanıcı adı** alan türü **brittasimon@yourcompanydomain.extension**  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -229,17 +229,17 @@ Peakon durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
 3. Sayfanın sağ üst kısmında **çalışan Ekle**' ye tıklayın.
 
-      ![Çalışan Ekle](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
+    ![Çalışan Ekle](./media/peakon-tutorial/tutorial_peakon_addemployee.png)
 
 3. **Yeni çalışan** iletişim sayfasında aşağıdaki adımları gerçekleştirin:
 
-     ![Yeni çalışan](./media/peakon-tutorial/tutorial_peakon_create.png)
+    ![Yeni çalışan](./media/peakon-tutorial/tutorial_peakon_create.png)
 
-    a. **Ad** metin kutusuna, Ilk adı **Britta** ve adı **Simon**olarak yazın.
+    1. **Ad** metin kutusuna, Ilk adı **Britta** ve adı **Simon** olarak yazın.
 
-    b. **E-posta** metin kutusuna **Brittasıon \@ contoso.com**gibi e-posta adresini yazın.
+    1. **E-posta** metin kutusuna **Brittasıon \@ contoso.com** gibi e-posta adresini yazın.
 
-    c. **Çalışan oluştur**' a tıklayın.
+    1. **Çalışan oluştur**' a tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520311"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608944"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile yaptığımız şekilde tümleştirin
 
@@ -28,7 +28,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile yaptığımız şekilde n
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -55,7 +55,7 @@ Azure AD 'de yaptığımız yönteme ilişkin tümleştirmeyi yapılandırmak i�
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Azure AD SSO 'yu, **B. Simon**adlı bir test kullanıcısı kullandığımız şekilde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında yaptığımız gibi bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO 'yu, **B. Simon** adlı bir test kullanıcısı kullandığımız şekilde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında yaptığımız gibi bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu bunu yaptığımız şekilde yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -95,7 +95,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 ### <a name="configure-way-we-do-sso"></a>SSO yaptığımız gibi yapılandırma
 
-1. Yapılandırmayı yaptığımız şekilde otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Yapılandırmayı yaptığımız şekilde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -117,26 +117,26 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Kaydetme yöntemi](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Çoklu oturum **açmayı etkinleştirmek için çoklu oturum açma aç** ' a tıklayarak **Evet** ' e tıklayın.
+    1. Çoklu oturum **açmayı etkinleştirmek için çoklu oturum açma aç** ' a tıklayarak **Evet** ' e tıklayın.
 
-    b. **Çoklu oturum açma adı** metin kutusuna adınızı girin.
+    1. **Çoklu oturum açma adı** metin kutusuna adınızı girin.
 
-    c. **VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının**değerini yapıştırın.
+    1. **VARLıK kimliği** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
 
-    d. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    1. **SAML SSO URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    e. **Sertifika**' nın yanındaki **Seç** düğmesine tıklayarak sertifikayı karşıya yükleyin.
+    1. **Sertifika**' nın yanındaki **Seç** düğmesine tıklayarak sertifikayı karşıya yükleyin.
 
-    f. **İsteğe bağlı ayarlar** -
-    
-    * Parolaları etkinleştir-Bu seçenek devre dışı bırakıldığında, kullanıcıların yalnızca çoklu oturum açma özelliğini kullanmasını sağlayacak şekilde, normal parola işlevleri çalışır.
+    1. **İsteğe bağlı ayarlar** -
 
-    * Otomatik sağlamayı etkinleştir-Bu etkinleştirildiğinde, oturum açmak için kullanılan e-posta adresi otomatik olarak, yaptığımız gibi kullanıcı listesiyle karşılaştırılır. E-posta adresi yaptığımız gibi etkin bir kullanıcıyla eşleşmezse, oturum açan kişi için otomatik olarak yeni bir kullanıcı hesabı ekler ve eksik bilgiler Ister.
+        * Parolaları etkinleştir-Bu seçenek devre dışı bırakıldığında, kullanıcıların yalnızca çoklu oturum açma özelliğini kullanmasını sağlayacak şekilde, normal parola işlevleri çalışır.
 
-      > [!NOTE]
-      > Çoklu oturum açma yoluyla eklenen kullanıcılar genel kullanıcı olarak eklenir ve sistemde bir rol atanmaz. Yönetici, güvenlik rollerini bir düzenleyici veya yönetici olarak değiştirebilir ve aynı zamanda bir veya birkaç kuruluş grafiği rolü atayabilirler.
+        * Otomatik sağlamayı etkinleştir-Bu etkinleştirildiğinde, oturum açmak için kullanılan e-posta adresi otomatik olarak, yaptığımız gibi kullanıcı listesiyle karşılaştırılır. E-posta adresi yaptığımız gibi etkin bir kullanıcıyla eşleşmezse, oturum açan kişi için otomatik olarak yeni bir kullanıcı hesabı ekler ve eksik bilgiler Ister.
 
-    örneğin: Ayarlarınızı sürdürmek için **Kaydet** ' e tıklayın.
+          > [!NOTE]
+          > Çoklu oturum açma yoluyla eklenen kullanıcılar genel kullanıcı olarak eklenir ve sistemde bir rol atanmaz. Yönetici, güvenlik rollerini bir düzenleyici veya yönetici olarak değiştirebilir ve aynı zamanda bir veya birkaç kuruluş grafiği rolü atayabilirler.
+
+    1. Ayarlarınızı sürdürmek için **Kaydet** ' e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -155,7 +155,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, Azure çoklu oturum açmayı kullanarak, yaptığımız şekilde erişim vererek B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **yaptığımız gibi**seçin.
+1. Uygulamalar listesinde, **yaptığımız gibi** seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)

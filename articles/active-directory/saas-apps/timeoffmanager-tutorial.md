@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0adb8d62d02325f92c77d2171eaafd6c2de16f0c
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 849236b9ac33cec92cc145bb32b4271b73476057
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516358"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608825"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Öğretici: TimeOffManager ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, TimeOffManager 'ı Azure Active Directory (Azure AD) ile tümle
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -62,7 +62,7 @@ TimeOffManager 'ın Azure AD ile tümleştirilmesini yapılandırmak için, Gale
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-timeoffmanager"></a>TimeOffManager için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak, TimeOffManager Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, TimeOffManager 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak, TimeOffManager Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, TimeOffManager 'da bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu TimeOffManager ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -96,7 +96,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Ayrıca, TimeOffManager uygulaması, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Adı | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | --- | --- |
     | FirstName |Kullanıcı. |
     | Soyadı |User. soyadı |
@@ -158,9 +158,9 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
    
     c. **IDP uç nokta URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
    
-    d. **SAML zorlama**olarak **Hayır**' ı seçin.
+    d. **SAML zorlama** olarak **Hayır**' ı seçin.
    
-    e. **Kullanıcıları otomatik oluştur**olarak **Evet**' i seçin.
+    e. **Kullanıcıları otomatik oluştur** olarak **Evet**' i seçin.
    
     f. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
    
@@ -168,7 +168,7 @@ Bu bölümde, TimeOffManager erişimi vererek Azure çoklu oturum açma özelli�
 
 4. **Çoklu oturum açma ayarları** sayfasında, **onaylama tüketici hizmeti URL 'si** değerini kopyalayın ve Azure Portal içindeki **temel SAML yapılandırması** bölümündeki **yanıt URL** 'si metin kutusuna yapıştırın. 
 
-      ![Ekran görüntüsünde, onaylama tüketici hizmeti U R L bağlantısı gösterilmektedir.](./media/timeoffmanager-tutorial/ic795915.png "Tek Sign-On ayarları")
+    ![Ekran görüntüsünde, onaylama tüketici hizmeti U R L bağlantısı gösterilmektedir.](./media/timeoffmanager-tutorial/ic795915.png "Tek Sign-On ayarları")
 
 ### <a name="create-timeoffmanager-test-user"></a>TimeOffManager test kullanıcısı oluşturma
 

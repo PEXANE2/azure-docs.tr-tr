@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 7d32fdd77fded90dc998db645aa6dcac2b502eb2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9643d0e63e85a9b500021a415e3cdaf3edc756c5
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459178"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608740"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-jira"></a>Öğretici: JIRA için Kantega SSO ile tümleştirme Azure Active Directory
 
@@ -61,13 +61,13 @@ JIRA için Kantega SSO 'yu Azure AD 'ye tümleştirmeyi yapılandırmak için, g
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Jira Için KANTEGA SSO**yazın, bir sonuç panelinden **Jira Için Kantega SSO** 'yu seçin, sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Jira Için KANTEGA SSO** yazın, bir sonuç panelinden **Jira Için Kantega SSO** 'yu seçin, sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
     ![Sonuç listesinde JIRA için Kantega SSO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre JIRA Için Kantega IÇIN Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre JIRA Için Kantega IÇIN Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve JIRA için Kantega SSO 'SU içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -132,7 +132,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
 1. Farklı bir Web tarayıcısı penceresinde, JIRA şirket içi sunucunuzda yönetici olarak oturum açın.
 
-1. Dişli üzerine gelin ve **eklentilere**tıklayın.
+1. Dişli üzerine gelin ve **eklentilere** tıklayın.
 
     !["COG" simgesinin seçili olduğunu ve açılan listeden "eklentileri" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon1.png)
 
@@ -152,7 +152,7 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     !["Yönet" düğmesi seçili "Kantega S S O" uygulama sayfasını gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon34.png)
     
-1. Yeni eklenti **tümleştirmeler**altında listelenmiştir. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
+1. Yeni eklenti **tümleştirmeler** altında listelenmiştir. Yeni eklentiyi yapılandırmak için **Yapılandır** ' a tıklayın.
 
     ![Sol taraftaki gezinti menüsünde "TÜMLEŞTIRMELER" ve "Eklentileri Yönet" bölümünde seçilen "Yapılandır" düğmesinin gösterildiği ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon35.png)
 
@@ -160,33 +160,33 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     !["Kimlik sağlayıcısı ekle" açılır listesini "Azure Active Directory (Azure A D)" seçiliyken gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon4.png)
 
-1. Abonelik düzeyini **temel**olarak seçin.
+1. Abonelik düzeyini **temel** olarak seçin.
 
-    !["Temel" seçiliyken "Azure A D 'yi hazırlama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon5.png)     
+    !["Temel" seçiliyken "Azure A D 'yi hazırlama" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon5.png)
 
 1. **Uygulama özellikleri** bölümünde aşağıdaki adımları gerçekleştirin: 
 
     !["App ı D U R L" metin kutusu ve Kopyala düğmesi vurgulanmış ve "Ileri" düğmesi seçili "uygulama özellikleri" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon6.png)
 
-    a. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **kimlik, yanıt URL 'si ve Sign-On URL 'si** olarak kullanın.
+    1. **Uygulama KIMLIĞI URI** değerini kopyalayın ve Azure Portal IÇINDEKI **temel SAML yapılandırması** bölümünde **kimlik, yanıt URL 'si ve Sign-On URL 'si** olarak kullanın.
 
-    b. **İleri**’ye tıklayın.
+    1. **İleri**’ye tıklayın.
 
 1. **Meta veri içeri aktarma** bölümünde aşağıdaki adımları gerçekleştirin: 
 
     !["Bilgisayarımdaki meta veri dosyası" bölümünün seçildiği "meta veri alma" bölümünü gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon7.png)
 
-    a. Bilgisayarımdaki **meta veri dosyasını**seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
+    1. Bilgisayarımdaki **meta veri dosyasını** seçin ve Azure Portal 'ten indirdiğiniz meta veri dosyasını karşıya yükleyin.
 
-    b. **İleri**’ye tıklayın.
+    1. **İleri**’ye tıklayın.
 
 1. **Ad ve SSO konumu** bölümünde aşağıdaki adımları gerçekleştirin:
 
     !["Kimlik sağlayıcı adı" metin kutusu vurgulanmış ve "Ileri" düğmesi seçili olan "ad ve S S O konumunu" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon8.png)
 
-    a. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
+    1. Kimlik sağlayıcısı **adı** metin kutusuna kimlik sağlayıcısının adını ekleyin (ör. Azure AD).
 
-    b. **İleri**’ye tıklayın.
+    1. **İleri**’ye tıklayın.
 
 1. Imzalama sertifikasını doğrulayın ve **İleri**' ye tıklayın.
 
@@ -196,9 +196,9 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     !["Jira 'nın dahili dizini 'nde Kullanıcı oluşturma" seçeneği vurgulanmış ve "Ileri" düğmesi seçili olan "JIRA Kullanıcı hesaplarını" gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/addon10.png)
 
-    a. **Gerekirse JIRA 'nın Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için grubun uygun adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
+    1. **Gerekirse JIRA 'nın Iç dizininde kullanıcı oluştur** ' u seçin ve Kullanıcı için grubun uygun adını girin (birden çok No olabilir. virgülle ayrılmış gruplar).
 
-    b. **İleri**’ye tıklayın.
+    1. **İleri**’ye tıklayın.
 
 1. **Finish (Son)** düğmesine tıklayın.
 
@@ -208,11 +208,11 @@ JIRA için Kantega SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     ![Tek Sign-On yapılandırma](./media/kantegassoforjira-tutorial/addon12.png)
 
-    a. Sayfanın sol panelinden **bilinen etki alanları ' nı** seçin.
+    1. Sayfanın sol panelinden **bilinen etki alanları ' nı** seçin.
 
-    b. **Bilinen etki alanları** metin kutusuna etki alanı adını girin.
+    2. **Bilinen etki alanları** metin kutusuna etki alanı adını girin.
 
-    c. **Kaydet**’e tıklayın.
+    3. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -230,13 +230,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
+    1. **Ad** alanına **Brittasıon** girin.
 
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+    1. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
-    d. **Oluştur**’a tıklayın.
+    1. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
+
+    1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -272,7 +272,7 @@ Azure AD kullanıcılarının JIRA 'da oturum açmasını sağlamak için, JIRA 
 
 1. JIRA şirket içi sunucunuzda yönetici olarak oturum açın.
 
-1. Dişli 'ye gelin ve **Kullanıcı yönetimine**tıklayın.
+1. Dişli 'ye gelin ve **Kullanıcı yönetimine** tıklayın.
 
     !["COG" simgesinin seçili olduğunu ve açılan listeden "Kullanıcı Yönetimi" seçeneğini gösteren ekran görüntüsü.](./media/kantegassoforjira-tutorial/user1.png) 
 
@@ -284,15 +284,15 @@ Azure AD kullanıcılarının JIRA 'da oturum açmasını sağlamak için, JIRA 
 
     ![Çalışan Ekle](./media/kantegassoforjira-tutorial/user3.png) 
 
-    a. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
+    1. **E-posta adresi** metin kutusuna, gibi kullanıcının e-posta adresini yazın Brittasimon@contoso.com .
 
-    b. **Tam ad** metin kutusuna, Britta Simon gibi kullanıcının tam adını yazın.
+    2. **Tam ad** metin kutusuna, Britta Simon gibi kullanıcının tam adını yazın.
 
-    c. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
+    3. Kullanıcı **adı** metin kutusuna, gibi kullanıcının e-postasını yazın Brittasimon@contoso.com .
 
-    d. **Parola** metin kutusuna kullanıcının parolasını yazın.
+    4. **Parola** metin kutusuna kullanıcının parolasını yazın.
 
-    e. **Kullanıcı oluştur**' a tıklayın.
+    5. **Kullanıcı oluştur**' a tıklayın.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

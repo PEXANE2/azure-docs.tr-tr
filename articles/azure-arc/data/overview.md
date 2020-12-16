@@ -9,14 +9,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316979"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609148"
 ---
-# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc etkin veri Hizmetleri (Önizleme) nedir?
+# <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc özellikli veri hizmetleri (önizleme) nelerdir?
 
 Azure Arc, Azure veri Hizmetleri 'ni şirket içinde, kenarda ve Kubernetes ve tercih ettiğiniz altyapıyı kullanarak genel bulutlarda çalıştırmanızı olanaklı kılar.
 
@@ -33,7 +33,7 @@ Azure Arc etkin SQL yönetilen örneği ve Azure Arc etkin PostgreSQL hiper öl�
 
 ## <a name="elastic-scale"></a>Esnek ölçek
 
-Şirket içi bulut benzeri esneklik sayesinde, altyapınızın kullanılabilir kapasitesine bağlı olarak, Azure 'da yaptığınız gibi, uygulamalarınızı dinamik bir şekilde yukarı veya aşağı ölçeklendirmenize olanak sağlar. Bu özellik, herhangi bir ölçekte, alt saniyelik yanıt süresi ile verilerin gerçek zamanlı olarak alınması ve sorgulanmasını gerektiren senaryolar da dahil olmak üzere geçici ihtiyaçları olan veri bloğu senaryolarını karşılar. Ayrıca, PostgreSQL için Azure veritabanı hiper ölçek 'in benzersiz Hyper ölçek dağıtım seçeneğini kullanarak veritabanı örneklerini genişletebilirsiniz. Bu özellik, veri iş yükleri için benzersiz*genişleme okuma ve* yazma işlemleri kullanarak kapasite iyileştirmesi için ek bir artırma sağlar.
+Şirket içi bulut benzeri esneklik sayesinde, altyapınızın kullanılabilir kapasitesine bağlı olarak, Azure 'da yaptığınız gibi, uygulamalarınızı dinamik bir şekilde yukarı veya aşağı ölçeklendirmenize olanak sağlar. Bu özellik, herhangi bir ölçekte, alt saniyelik yanıt süresi ile verilerin gerçek zamanlı olarak alınması ve sorgulanmasını gerektiren senaryolar da dahil olmak üzere geçici ihtiyaçları olan veri bloğu senaryolarını karşılar. Ayrıca, PostgreSQL için Azure veritabanı hiper ölçek 'in benzersiz Hyper ölçek dağıtım seçeneğini kullanarak veritabanı örneklerini genişletebilirsiniz. Bu özellik, veri iş yükleri için benzersiz *genişleme okuma ve* yazma işlemleri kullanarak kapasite iyileştirmesi için ek bir artırma sağlar.
 
 ## <a name="self-service-provisioning"></a>Self Servis sağlama
 
@@ -50,7 +50,7 @@ Self Servis sağlama, otomatik yedeklemeler/geri yükleme ve izleme gibi hizmetl
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > **Yalnızca bir şeyi denemek mi istiyorsunuz?**  
-> Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) ile hızlıca çalışmaya başlayın.
+> Azure Kubernetes Service (AKS), AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ile hızlıca çalışmaya başlayın.
 
 [İstemci araçları 'nı yükler](install-client-tools.md)
 
