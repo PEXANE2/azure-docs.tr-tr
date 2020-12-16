@@ -4,20 +4,20 @@ description: Azure Key Vault 'da geçici silme, anahtarlar, gizlilikler ve serti
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-author: msmbaldwin
-ms.author: mbaldwin
-ms.date: 09/30/2020
-ms.openlocfilehash: 184003e42a14e786cc52c4f585c6781f7b9fe0e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+author: ShaneBala-keyvault
+ms.author: sudbalas
+ms.date: 12/15/2020
+ms.openlocfilehash: 0f428954ac6ef74253e6e6e430977a85a3943f99
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452195"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589993"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault geçici silmeye genel bakış
 
 > [!IMPORTANT]
-> Anahtar kasalarınızda geçici silme özelliğini hemen etkinleştirmeniz gerekir. Geçici silme işlemini devre dışı bırakma özelliği, yılın sonuna kadar kullanım dışı olur ve tüm anahtar kasaları için otomatik olarak geçici silme koruması açılır.  Tam ayrıntıları [burada](soft-delete-change.md) görebilirsiniz
+> Anahtar kasalarınızda geçici silme özelliğini hemen etkinleştirmeniz gerekir. Geçici silme işlemini devre dışı bırakma özelliği yakında kullanım dışı bırakılacak. Tam ayrıntıları [burada](soft-delete-change.md) görebilirsiniz
 
 Key Vault geçici silme özelliği, geçici silme olarak bilinen silinmiş kasaların ve silinen Anahtar Kasası nesnelerinin kurtarılmasına olanak tanır (örneğin, anahtarlar, gizlilikler, sertifikalar). Özellikle, aşağıdaki senaryolara adresliyoruz: Bu koruma aşağıdaki korumaların sunulmasını sağlar:
 

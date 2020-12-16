@@ -3,27 +3,27 @@ title: 'Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure Stor
 description: Bu hızlı başlangıçta, bir kuyruk oluşturmak ve bu iletiye ileti eklemek için .NET için Azure depolama istemci kitaplığı 'nı nasıl kullanacağınızı öğreneceksiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
+ms.reviewer: dineshm
 ms.date: 07/24/2020
+ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
-ms.topic: quickstart
-ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f7368025993c91490d808ef0ae5f5f66233fe666
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 23703dc507aa909aea4711289a4d7d5c5e6a170e
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345627"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588211"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Hızlı başlangıç: bir kuyruğu yönetmek için .NET için Azure depolama SDK v11 kullanın
 
-Bu hızlı başlangıçta, bir kuyruk oluşturmak ve buna ileti eklemek için .NET için Azure depolama istemci kitaplığı sürüm 11 ' i nasıl kullanacağınızı öğrenirsiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz.
+Bu hızlı başlangıçta, bir kuyruk oluşturmak ve buna ileti eklemek için .NET için Azure depolama istemci kitaplığı v11 nasıl kullanacağınızı öğrenirsiniz. Ardından, sıradaki iletileri okumayı ve işlemeyi öğreneceksiniz.
 
 > [!NOTE]
 > Bu hızlı başlangıç, Azure kuyruk depolama istemci kitaplığı 'nın eski bir sürümünü kullanır. En son sürümü kullanmaya başlamak için bkz. [hızlı başlangıç: .net Için Azure kuyruk depolama istemci kitaplığı V12](storage-quickstart-queues-dotnet.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
@@ -50,13 +50,13 @@ Ardından, işletim sisteminiz için .NET Core 2.0’ı indirip yükleyin. Windo
 
 Bu hızlı başlangıçta kullanılan örnek uygulama, temel bir konsol uygulamasıdır. [GitHub](https://github.com/Azure-Samples/storage-queues-dotnet-quickstart) üzerindeki örnek uygulamayı inceleyebilirsiniz.
 
-Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/)'i kullanın.
+Uygulamanın bir kopyasını geliştirme ortamınıza indirmek için [Git](https://git-scm.com/) ' i kullanın.
 
 ```bash
 git clone https://github.com/Azure-Samples/storage-queues-dotnet-quickstart.git
 ```
 
-Bu komut, depoyu yerel Git klasörünüze kopyalar. Visual Studio çözümünü açmak için, *Storage-Queues-DotNet-QuickStart* klasörünü arayın, açın ve *Storage-Queues-DotNet-QuickStart. sln* ' ye çift tıklayın.
+Bu komut, depoyu yerel git klasörünüze klonlar. Visual Studio çözümünü açmak için `storage-queues-dotnet-quickstart` klasörü bulun, açın ve üzerine çift tıklayın `storage-queues-dotnet-quickstart.sln` .
 
 [!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
 
@@ -98,7 +98,7 @@ Ortam değişkenini ekledikten sonra değişiklikleri uygulamak için konsol pen
 
 ### <a name="windows"></a>Windows
 
-Düzenleyici olarak Visual Studio kullanıyorsanız **F5** tuşuna basarak çalıştırın.
+Düzenleyiciniz olarak Visual Studio kullanıyorsanız, `F5` çalıştırmak için tuşuna basabilirsiniz.
 
 Aksi takdirde uygulama dizininize gidip `dotnet run` komutuyla uygulamayı çalıştırın.
 
@@ -148,7 +148,7 @@ Ardından, nasıl çalıştığını anlayabilmeniz için örnek kodu inceleyin.
 
 ### <a name="try-parsing-the-connection-string"></a>Bağlantı dizesini ayrıştırmayı deneyin
 
-Örnek öncelikle ortam değişkeninin depolama hesabına işaret eden bir [Cloudstorageaccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) nesnesi oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerdiğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için örnek [Trypari](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) yöntemini kullanır. **TryParse** başarılı olursa *storageAccount* değişkenini başlatır ve **true** değerini döndürür.
+Örnek öncelikle ortam değişkeninin [`CloudStorageAccount`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) depolama hesabına işaret eden bir nesne oluşturmak için ayrıştırılabilen bir bağlantı dizesi içerdiğini denetler. Bağlantı dizesinin geçerli olup olmadığını denetlemek için, örnek [`TryParse`](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount.tryparse) yöntemini kullanır. `TryParse`Başarılı olursa, `storageAccount` değişkenini başlatır ve döndürür `true` .
 
 ```csharp
 // Retrieve the connection string for use with the application. The storage connection string is stored
@@ -204,7 +204,7 @@ Console.WriteLine("Message expiration time: {0}", message.ExpirationTime.ToStrin
 Console.WriteLine();
 ```
 
-Kullanım süreleri dolan bir ileti eklemek için `Timespan.FromSeconds(-1)` [Addmessageasync](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync)çağrısında kullanın.
+Kullanım süreleri dolan bir ileti eklemek için çağrımda ' i kullanın `Timespan.FromSeconds(-1)` [`AddMessageAsync`](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessageasync) .
 
 ```csharp
 await queue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -262,18 +262,18 @@ if (queue != null)
 
 ## <a name="resources-for-developing-net-applications-with-queues"></a>Kuyruklarla .NET uygulamaları geliştirmeye yönelik kaynaklar
 
-Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
+Azure kuyruk depolaması ile .NET geliştirme için şu ek kaynaklara bakın:
 
 ### <a name="binaries-and-source-code"></a>İkili dosyalar ve kaynak kodu
 
 - [.Net Için Azure Storage istemci kitaplığı](/dotnet/api/overview/azure/storage) 'nın en son sürümüne yönelik NuGet paketlerini indirin
-  - [Common](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  - [Common](https://www.nuget.org/packages/microsoft.azure.storage.common/)
   - [Kuyruklar](https://www.nuget.org/packages/Azure.Storage.Queues/)
 - GitHub üzerinde [.NET istemci kitaplığı kaynak kodunu](https://github.com/Azure/azure-storage-net) görüntüleyin.
 
-### <a name="client-library-reference-and-samples"></a>İstemci kitaplığı başvurusu ve örnekleri
+### <a name="azure-storage-client-library-reference-and-samples"></a>Azure depolama istemci kitaplığı başvurusu ve örnekleri
 
-- .NET istemci kitaplığı hakkında daha fazla bilgi için bkz. [.NET API başvurusu](/dotnet/api/overview/azure/storage).
+- .NET istemci kitaplıkları hakkında daha fazla bilgi için bkz. [.net Için Azure Storage istemci kitaplıkları başvurusu](/dotnet/api/overview/azure/storage) .
 - .NET istemci kitaplığı kullanılarak yazılmış [kuyruk depolama örneklerini](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) keşfet.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -281,6 +281,6 @@ Azure kuyrukları ile .NET geliştirme için şu ek kaynaklara bakın:
 Bu hızlı başlangıçta, bir kuyruğa ileti eklemeyi, sıradaki iletilere göz atmayı ve .NET kullanarak iletileri sıradan çıkarmayı ve işlemeyi öğrendiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Kuyruk depolamayla uygulamalar arasında iletişim kurma](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
+> [Azure kuyruk depolama ile uygulamalar arasında iletişim kurma](/learn/modules/communicate-between-apps-with-azure-queue-storage/index)
 
 - .NET Core hakkında daha fazla bilgi için bkz. [10 dakika içinde .NET kullanmaya başlama](https://www.microsoft.com/net/learn/get-started/).

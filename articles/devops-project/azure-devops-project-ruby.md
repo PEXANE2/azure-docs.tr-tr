@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: b7ab2fb13be10d5992f1b26973e9735ac238090a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e2f7115560148a1d3b9d2671be54c1ba4d61946
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856067"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588922"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-starter"></a>Azure DevOps Starter kullanarak Ruby on rayları için bir CI/CD işlem hattı oluşturun
 
@@ -30,9 +30,9 @@ Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstudio.m
 
 Azure DevOps Starter, Azure Repos içinde bir CI/CD işlem hattı oluşturur. Yeni bir Azure DevOps kuruluşu oluşturabilir veya var olan bir kuruluşu kullanabilirsiniz. DevOps Starter Ayrıca seçtiğiniz Azure aboneliğindeki Azure kaynaklarını da oluşturur.
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -42,7 +42,7 @@ Azure DevOps Starter, Azure Repos içinde bir CI/CD işlem hattı oluşturur. Ye
 
 1. **Ruby on Rails** uygulama çerçevesini seçin. İşiniz bittiğinde **İleri**' yi seçin.
 
-1. **Linux üzerinde Web App** varsayılan dağıtım hedefidir.  İsteğe bağlı olarak **kapsayıcılar için Web App**seçebilirsiniz. Daha önce seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler. 
+1. **Linux üzerinde Web App** varsayılan dağıtım hedefidir.  İsteğe bağlı olarak **kapsayıcılar için Web App** seçebilirsiniz. Daha önce seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler. 
     
 1. Seçtiğiniz hedef hizmeti seçin ve ardından **İleri**' yi seçin.
 
@@ -65,7 +65,7 @@ Azure DevOps Starter, Azure Pipelines veya GitHub 'da bir git deposu oluşturur.
 
 1. DevOps başlangıç panosunda, sol taraftaki ana dalınızın bağlantısını seçin. Bağlantı, yeni oluşturulan git deposuna bir görünüm açar.
 
-1. Depo kopyası URL 'sini görüntülemek için sağ üst köşedeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE 'de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
+1. Depo kopyası URL 'sini görüntülemek için sağ üst köşedeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE 'de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişikliklerini doğrudan ana dala getirmek ve yürütmek için Web tarayıcısını kullanabilirsiniz.
 
 1. Solda, *uygulama/görünümler/sayfalar/home.html. erb* dosyasına gidin ve ardından **Düzenle**' yi seçin.
 
@@ -115,7 +115,7 @@ Azure DevOps Starter, Azure DevOps kuruluşunuzda tam bir CI/CD işlem hattını
 
 1. **İşlemeler**'i seçin. Bu görünüm, bu dağıtımla ilişkili kod işlemelerini gösterir. 
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunları, dağıtımları sırasında ve sonrasında görüntüleyebilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

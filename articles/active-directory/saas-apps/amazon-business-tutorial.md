@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f2ad0cb67a41c0a5c59f6428a4912bd91a00e56
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318816"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589959"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -55,7 +55,7 @@ Amazon Business 'ın Azure AD ile tümleştirilmesini yapılandırmak için, gal
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Amazon Business Ile Azure AD SSO 'yu yapılandırın ve test edin.
+**B. Simon** adlı bir test kullanıcısı kullanarak Amazon Business Ile Azure AD SSO 'yu yapılandırın ve test edin.
 
 Azure AD SSO 'yu Amazon Business ile yapılandırmak ve test etmek için aşağıdaki oluşturma adımlarını izleyin:
 
@@ -109,19 +109,19 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Amazon Business Application, yukarıdakine ek olarak SAML yanıtına daha fazla özniteliğin geri geçirilmesini bekler. **Grup talepleri** Iletişim kutusunda **Kullanıcı öznitelikleri & talepler** bölümünde aşağıdaki adımları uygulayın:
 
-    a. **Talepte döndürülen gruplar ' ın**yanındaki **kaleme** tıklayın.
+    1. **Talepte döndürülen gruplar ' ın** yanındaki **kaleme** tıklayın.
 
-    ![Ekran görüntüsü, seçili talepler ' de döndürülen gruplar için Kullanıcı özniteliklerini & taleplerini gösterir.](./media/amazon-business-tutorial/config04.png)
+        ![Ekran görüntüsü, seçili talepler ' de döndürülen gruplar için Kullanıcı özniteliklerini & taleplerini gösterir.](./media/amazon-business-tutorial/config04.png)
 
-    ![Ekran görüntüsünde, bu yordamda açıklandığı gibi değerleri içeren Grup talepleri gösterilmektedir.](./media/amazon-business-tutorial/config05.png)
+        ![Ekran görüntüsünde, bu yordamda açıklandığı gibi değerleri içeren Grup talepleri gösterilmektedir.](./media/amazon-business-tutorial/config05.png)
 
-    b. Radyo listesinden **tüm gruplar** ' ı seçin.
+    1. Radyo listesinden **tüm gruplar** ' ı seçin.
 
-    c. **Kaynak özniteliği**olarak **Grup Kimliği** ' ni seçin.
+    1. **Kaynak özniteliği** olarak **Grup Kimliği** ' ni seçin.
 
-    d. **Grup Talebi onay kutusunun adını özelleştirin** ' i Işaretleyin ve kuruluşunuzun gereksinimlerine göre grup adını girin.
+    1. **Grup Talebi onay kutusunun adını özelleştirin** ' i Işaretleyin ve kuruluşunuzun gereksinimlerine göre grup adını girin.
 
-    e. **Kaydet**’e tıklayın.
+    1. **Kaydet**’e tıklayın.
 
 1. **SAML Ile tekli Sign-On ayarlama** sayfasında, **SAML Imzalama Sertifikası** bölümünde **meta veri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -186,11 +186,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Ekran görüntüsü, test için gerekli bir U R L 'yi alabileceğiniz ve sonra Etkinleştir ' i seçebileceğiniz g/ç tarafından başlatılan U R L 'yi gösterir.](media/amazon-business-tutorial/sso-connection3.png)
 
-1. **ETKIN SSO 'ya geçmeye çalışıyor musunuz?** sihirbazına izin vermek IÇIN, **SSO 'Yu tamamen test ediyorum ve canlı duruma** geç onay kutusunu işaretleyip **etkin ' e**tıklayın.
+1. **ETKIN SSO 'ya geçmeye çalışıyor musunuz?** sihirbazına izin vermek IÇIN, **SSO 'Yu tamamen test ediyorum ve canlı duruma** geç onay kutusunu işaretleyip **etkin ' e** tıklayın.
 
     ![Ekran görüntüsü, etkin ' e geç ' i seçebileceğiniz etkin S S öğesine geçiş yapmaya hazırız olduğunu gösterir.](media/amazon-business-tutorial/sso-connection4.png)
 
-1. Son olarak, **SSO bağlantı ayrıntıları** bölümünde **durum** **etkin**olarak gösterilir.
+1. Son olarak, **SSO bağlantı ayrıntıları** bölümünde **durum** **etkin** olarak gösterilir.
 
     ![Ekran görüntüsü, etkin durumuyla birlikte S O bağlantı ayrıntılarını gösterir.](media/amazon-business-tutorial/sso-connection5.png)
     

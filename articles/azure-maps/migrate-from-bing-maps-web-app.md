@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: be0b2a3a15c77ae0de303f02be078f115b283eb9
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 6037deb484ca966ab3a54cc60b0d53ac8299d500
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897152"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97590010"
 ---
 # <a name="tutorial---migrate-a-web-app-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan bir Web uygulaması geçirme
 
@@ -883,7 +883,7 @@ Bing Haritalar 'da geojson verileri GeoJSON modülü kullanılarak yüklenebilir
             var clusterSize = cluster.containedPushpins.length;
 
             var radius = 20;    //Default radius to 20 pixels.
-            var fillColor = 'lime';     //Default to lime green.
+            var fillColor = 'lime';   //Default to lime green.
 
             if (clusterSize >= 750) {
                 radius = 40;   //If point_count >= 750, radius is 40 pixels.
@@ -932,7 +932,7 @@ Azure haritalar 'da veriler bir veri kaynağı tarafından eklenir ve yönetilir
 
 Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümelenmiş ve kümelenmemiş veri noktaları gönderir. Veri kaynağı yüzlerce binlerce veri noktası kümelemesine sahiptir. Kümelenmiş bir veri noktası üzerinde aşağıdaki özelliklere sahiptir:
 
-| Özellik adı               | Tür    | Açıklama                                    |
+| Özellik adı               | Tür    | Description                                    |
 |-----------------------------|---------|------------------------------------------------|
 | `cluster`                   | boolean | Özelliğin bir kümeyi temsil ettiğini belirtir.     |
 | `cluster_id`                | string  | Kümeyle `DataSource` `getClusterExpansionZoom` , `getClusterChildren` , ve işlevleriyle KULLANıLABILECEK benzersiz bir kimlik `getClusterLeaves` . |
@@ -941,7 +941,7 @@ Kümeleme etkinleştirildiğinde veri kaynağı, işleme için katmanlara kümel
 
 `DataSource`Sınıfı, kullanarak bir kümeyle ilgili ek bilgilere erişmek için aşağıdaki yardımcı işleve sahiptir `cluster_id` .
 
-| İşlev       | Dönüş türü        | Açıklama     |
+| İşlev       | Dönüş türü        | Description     |
 |----------------|--------------------|-----------------|
 | `getClusterChildren(clusterId: number)`                              | `Promise<Feature<Geometry, any> | Shape>` | Sonraki yakınlaştırma düzeyinde verilen kümenin alt öğelerini alır. Bu alt öğeler, şekillerin ve alt kümelerin bir birleşimi olabilir. Alt kümeler, küme özellikleriyle eşleşen özelliklerle özellik olacaktır. |
 | `getClusterExpansionZoom(clusterId: number)`                         | `Promise<number>`                            | Kümenin genişlemekte veya parçalanmasına başlayacağı yakınlaştırma düzeyini hesaplar.    |

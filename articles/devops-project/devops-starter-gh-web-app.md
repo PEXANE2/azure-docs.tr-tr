@@ -7,12 +7,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 08/25/2020
 author: ninallam
-ms.openlocfilehash: 9a2abf7e714b75f2551a35a220e30c2465d86a49
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 4caac943df33177728997c74c9ec812105efd62c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332751"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588786"
 ---
 # <a name="tutorial-deploy-nodejs-app-to-azure-web-app-using-devops-starter-for-github-actions"></a>Öğretici: GitHub eylemleri için DevOps Starter kullanarak Azure Web uygulamasına Node.js uygulaması dağıtma
 
@@ -44,17 +44,17 @@ DevOps Starter, GitHub 'da bir iş akışı oluşturur. Mevcut bir GitHub organi
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
-1. CI/CD sağlayıcısının **GitHub eylemleri**olarak seçildiğinden emin olun.
+1. CI/CD sağlayıcısının **GitHub eylemleri** olarak seçildiğinden emin olun.
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
 1. **Node.js**' yi seçin ve ardından **İleri**' yi seçin.
 
-1. **Uygulama çerçevesi seçin**altında **Express.js**' yi seçin ve ardından **İleri**' yi seçin. Önceki adımda seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler. 
+1. **Uygulama çerçevesi seçin** altında **Express.js**' yi seçin ve ardından **İleri**' yi seçin. Önceki adımda seçtiğiniz uygulama çerçevesi, burada kullanılabilir olan Azure hizmet dağıtım hedefinin türünü belirler. 
 
 1. **Windows Web uygulaması**' nı seçin ve ardından **İleri**' yi seçin.
 
@@ -62,7 +62,7 @@ DevOps Starter, GitHub 'da bir iş akışı oluşturur. Mevcut bir GitHub organi
 
 1. **Yetkilendir** GitHub ve var olan bir GitHub organizasyonunu seçin. 
 
-1. **GitHub deponuz**için bir ad girin. 
+1. **GitHub deponuz** için bir ad girin. 
 
 1. Azure abonelik hizmetlerinizi seçin. İsteğe bağlı olarak **Değiştir** ' i seçip Azure kaynaklarının konumu gibi daha fazla yapılandırma ayrıntıları girebilirsiniz.
  
@@ -104,7 +104,7 @@ DevOps Starter, GitHub 'da bir depo oluşturur. Depoyu görüntülemek ve uygula
 
 1. DevOps başlangıç panosunun sol tarafında, ana dalınızın bağlantısını seçin. Bu bağlantı, yeni oluşturulan GitHub deposunun bir görünümünü açar.
 
-1. Depo kopyası URL 'sini görüntülemek için tarayıcının sağ üst köşesindeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE’de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
+1. Depo kopyası URL 'sini görüntülemek için tarayıcının sağ üst köşesindeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE’de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişikliklerini doğrudan ana dala getirmek ve yürütmek için Web tarayıcısını kullanabilirsiniz.
 
 1. Tarayıcının sol tarafında **/Application/views/Index.Pug** dosyasına gidin.
 

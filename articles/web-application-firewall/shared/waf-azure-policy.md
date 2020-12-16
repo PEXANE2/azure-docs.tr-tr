@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: rimansdo
-ms.openlocfilehash: fd474a32b4a517230a82615065d7815c04140045
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 7798d7e960286d4f8aa971eb2eb0b03d24bd6360
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96432977"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589466"
 ---
 # <a name="azure-web-application-firewall-and-azure-policy"></a>Azure Web uygulaması güvenlik duvarı ve Azure Ilkesi
 
@@ -47,7 +47,7 @@ WAF kaynaklarını yönetmek için birkaç yerleşik Azure Ilke tanımı vardır
     2.  **Dışlamalar**: ilke atamasından dışlamak üzere kapsamdan kaynak seçin.
     3.  **Ilke tanımı**: dışlamaları olan kapsama uygulanacak ilke tanımını seçin. İlgili Web uygulaması güvenlik duvarı Azure Ilkesini seçmek için arama çubuğuna "Web uygulaması güvenlik duvarı" yazın.
 
-:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="Ilke ata sayfasında temel bilgiler sekmesi":::
+:::image type="content" source="../media/waf-azure-policy/policy-listing.png" alt-text="' Kullanılabilir tanımlar ' sayfasında ' Ilke tanımları ' sekmesini gösteren ekran görüntüsü.":::
 
 5.  **Parametreler** sekmesini seçin ve ilke atama parametrelerini güncelleştirin. Parametrenin ne yaptığını netleştirmek için, daha fazla açıklama için parametre adının yanındaki bilgi simgesinin üzerine gelin.
 

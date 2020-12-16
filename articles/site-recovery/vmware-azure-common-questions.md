@@ -3,12 +3,12 @@ title: Azure Site Recovery ile VMware olağanüstü durum kurtarma hakkında sı
 description: Azure Site Recovery kullanarak şirket içi VMware VM 'lerinin olağanüstü durum kurtarma hakkında sık sorulan soruların yanıtlarını alın.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8f292e7f624b80e8e13514a714c5759d88fbe57c
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379999"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587801"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware’den Azure’a çoğaltmayla ilgili sık sorulan sorular
 
@@ -147,6 +147,10 @@ VMware VM 'lerini Azure 'a çoğaltırken çoğaltma işlemi sürekli olur.
 
 Genişletilmiş veya zincir çoğaltma desteklenmez. Bu özelliği [geri bildirim forumuna](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)iste.
 
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>İlk çoğaltma/eşitleme ilerlemesini nasıl izleyebilirim?
+
+Bu özellik son zamanlarda Site Recovery Hizmetleri için. Doğru ayrıntıları almak için Site Recovery altyapınızı (yapılandırma sunucuları, genişleme işlem sunucuları) ve Mobility Agent 'ı 9,36 veya üzeri sürümlere güncelleştirin. [İlerlemenin nasıl](vmware-azure-enable-replication.md#monitor-initial-replication)izleneceği hakkında daha fazla bilgi edinin.
+
 ### <a name="can-i-do-an-offline-initial-replication"></a>Çevrimdışı bir ilk çoğaltma yapabilir miyim?
 
 Çevrimdışı çoğaltma desteklenmez. Bu özelliği [geri bildirim forumuna](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)iste.
@@ -262,7 +266,7 @@ Evet. MySQL indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Ardından, el 
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>MySQL 'in indirimü, ancak Site Recovery yüklemesine izin verebilir miyim?
 
-Evet. MySQL yükleyicisini indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Yapılandırma sunucusu VM 'sini ayarlarken, koşulları kabul edin ve **indir ve yükle** ' yi seçin. Portal, MySQL 'i yüklemek için eklediğiniz yükleyiciyi kullanacaktır.
+Evet. MySQL yükleyicisini indirin ve C:\Temp\ASRSetup klasörüne yerleştirin. Yapılandırma sunucusu VM 'sini ayarlarken, koşulları kabul edin ve **indir ve yükle**' yi seçin. Portal, MySQL 'i yüklemek için eklediğiniz yükleyiciyi kullanacaktır.
 
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Yapılandırma sunucusu VM 'sini başka bir şey için kullanabilir miyim?
 
@@ -286,7 +290,7 @@ Parolayı indirmeyi [öğrenin](vmware-azure-manage-configuration-server.md#gene
 
 ### <a name="where-can-i-download-vault-registration-keys"></a>Kasa kayıt anahtarlarını nereden indirebilirim?
 
-Kurtarma Hizmetleri kasasında **Site Recovery altyapı** Yönetimi ' nde **yapılandırma sunucuları** ' nı seçin  >  **Manage**. Ardından, **sunucular** ' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
+Kurtarma Hizmetleri kasasında **Site Recovery altyapı** Yönetimi ' nde **yapılandırma sunucuları** ' nı seçin  >  . Ardından, **sunucular**' da, kasa kimlik bilgileri dosyasını indirmek için **kayıt anahtarını indir** ' i seçin.
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Birden çok vCenter örneğini korumak için tek bir yapılandırma sunucusu kullanılabilir mi?
 

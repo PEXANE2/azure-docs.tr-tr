@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090221"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588718"
 ---
 # <a name="collaborative-coding-with-git"></a>Git ile işbirliği içinde kodlama
 
@@ -39,7 +39,7 @@ Ayrıca, Windows veya Linux 'ta aşağıdaki git Bash komutunu kullanarak yeni b
 git checkout -b <new branch name> <base branch name>
 
 ```
-\<base branch name>' I belirtmezseniz, yeni dal temel alır `master` . 
+\<base branch name>' I belirtmezseniz, yeni dal temel alır `main` . 
 
 Çalışma dalınıza geçiş yapmak için aşağıdaki komutu çalıştırın: 
 
@@ -47,7 +47,7 @@ git checkout -b <new branch name> <base branch name>
 git checkout <working branch name>
 ```
 
-Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. Çalışan `git checkout master` anahtarlar, dala geri döner `master` .
+Çalışma dalına geçiş yaptıktan sonra, iş öğesini tamamlamaya yönelik kod veya belge yapıtları geliştirmeye başlayabilirsiniz. Çalışan `git checkout main` anahtarlar, dala geri döner `main` .
 
 Her Kullanıcı hikayesi iş öğesi için bir git dalı oluşturmak iyi bir uygulamadır. Ardından, her görev iş öğesi için Kullanıcı hikayesi dalını temel alan bir dal oluşturabilirsiniz. Aynı proje için farklı Kullanıcı hikayeleri üzerinde çalışan birden fazla kişiye veya aynı kullanıcı hikayesine yönelik farklı görevlere sahip olduğunuzda, dalları Kullanıcı Story-Task ilişkisine karşılık gelen bir hiyerarşide düzenleyin. Her bir takım üyesinin farklı bir dalda veya bir dalı paylaşırken farklı bir kodda ya da diğer yapıtlarda çalışmasını sağlayarak çakışmaları en aza indirmenize neden olabilirsiniz. 
 
@@ -80,7 +80,7 @@ Azure DevOps projenizin ana sayfasından, sol gezinti bölmesinde bulunan **Repo
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 
-**Yeni çekme isteği** ekranında, gerekirse Değişikliklerinizi birleştirmek istediğiniz git deposuna ve dalına gidin. İstediğiniz diğer bilgileri ekleyin veya değiştirin. **Gözden geçirenler**altında, gözden geçirenlerin adlarını ekleyin ve ardından **Oluştur**' u seçin. 
+**Yeni çekme isteği** ekranında, gerekirse Değişikliklerinizi birleştirmek istediğiniz git deposuna ve dalına gidin. İstediğiniz diğer bilgileri ekleyin veya değiştirin. **Gözden geçirenler** altında, gözden geçirenlerin adlarını ekleyin ve ardından **Oluştur**' u seçin. 
 
 ![7](./media/collaborative-coding-with-git/7-spring-send-pull-request.png)
 
@@ -94,7 +94,7 @@ Gözden geçirenler değişiklikleri onayladıktan sonra, sizin veya birleştirm
 
 ![10](./media/collaborative-coding-with-git/10-spring-complete-pullrequest.png)
 
-İsteğin **tamamlandı**olarak işaretlendiğinden emin olun. 
+İsteğin **tamamlandı** olarak işaretlendiğinden emin olun. 
 
 ![11](./media/collaborative-coding-with-git/11-spring-merge-pullrequest.png)
 
@@ -105,7 +105,7 @@ Sol gezinmede yer alan **depoya** geri döndüğünüzde, dal silindiğinden Ana
 Ayrıca, `script` çalışma dalını temel dalında birleştirmek ve Birleştirmeden sonra çalışma dalını silmek için aşağıdaki git Bash komutlarını da kullanabilirsiniz:
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```

@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49bc1a77e2e25cb069a89812603ff562b8a4c1cd
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9e04006a0908832c623230d89caa62b0985f32e4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931461"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587953"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-arm-templates"></a>Öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma
 
@@ -27,7 +27,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -42,7 +42,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell betiğini hazırlama
 
-Satır içi PowerShell betiği veya bir betik dosyası kullanabilirsiniz.  Bu öğreticide, bir betik dosyasının nasıl kullanılacağı gösterilmektedir. [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)'dan paylaşılan aşağıdaki içeriğe sahip bir PowerShell betiği:
+Satır içi bir PowerShell betiği veya bir betik dosyası kullanabilirsiniz. Bu öğreticide, bir betik dosyasının nasıl kullanılacağı gösterilmektedir. [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1)'dan paylaşılan aşağıdaki içeriğe sahip bir PowerShell betiği:
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -105,22 +105,22 @@ Aşağıdaki içeriği kullanarak var olan şablona bir sanal makine uzantısı 
 
 Bu kaynak tanımı hakkında daha fazla bilgi için [uzantı başvurusuna](/azure/templates/microsoft.compute/virtualmachines/extensions)bakın. Önemli öğeler şunlardır:
 
-* **name**: Uzantı kaynağı, sanal makine nesnesinin alt kaynağı olduğundan ad alanında sanal makine adı ön ek olarak kullanılmalıdır. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md).
-* **Bağımlıdson**: sanal makineyi oluşturduktan sonra uzantı kaynağını oluşturun.
-* **Fileuris**: betik dosyalarının depolandığı konumlar. Belirtilen konumu kullanmayı tercih ederseniz, değerleri güncelleştirmeniz gerekir.
-* **Commandtoexecute**: Bu komut betiği çağırır.
+* `name`: Uzantı kaynağı, sanal makine nesnesinin bir alt kaynağı olduğundan, adın sanal makine adı ön ekine sahip olması gerekir. Bkz. [alt kaynaklar için ad ve tür ayarlama](child-resource-name-type.md).
+* `dependsOn`: Sanal makineyi oluşturduktan sonra uzantı kaynağını oluşturun.
+* `fileUris`: Betik dosyalarının depolandığı konumlar. Belirtilen konumu kullanmayı tercih ederseniz, değerleri güncelleştirmeniz gerekir.
+* `commandToExecute`: Bu komut betiği çağırır.
 
-Satır içi betiği kullanmak için **Fileuris**'i kaldırın ve **commandtoexecute** öğesini şu şekilde güncelleştirin:
+Satır içi betiği kullanmak için, kaldırma `fileUris` ve güncelleştirme `commandToExecute` :
 
 ```powershell
 powershell.exe Install-WindowsFeature -name Web-Server -IncludeManagementTools && powershell.exe remove-item 'C:\\inetpub\\wwwroot\\iisstart.htm' && powershell.exe Add-Content -Path 'C:\\inetpub\\wwwroot\\iisstart.htm' -Value $('Hello World from ' + $env:computername)
 ```
 
-Bu satır içi betik Ayrıca iisstart.html içeriğini güncelleştirir.
+Bu satır içi betik Ayrıca _iisstart.html_ içeriğini güncelleştirir.
 
 Web sunucusuna erişebilmek için HTTP bağlantı noktasını da açmanız gerekir.
 
-1. Şablonda **SecurityRules** bulun.
+1. `securityRules`Şablonda bulun.
 1. **Varsayılan-Allow-3389**' ın yanına aşağıdaki kuralı ekleyin.
 
     ```json
@@ -141,7 +141,7 @@ Web sunucusuna erişebilmek için HTTP bağlantı noktasını da açmanız gerek
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
-Dağıtım yordamı için öğreticinin "şablonu dağıtma" bölümüne bakın [: bağımlı kaynaklarla ARM şablonları oluşturma](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Sanal makine yöneticisi hesabı için oluşturulmuş bir parola kullanmanızı öneririz. Bu makalenin [Önkoşullar](#prerequisites) bölümüne bakın.
+Dağıtım yordamı için öğreticinin **Şablon dağıtma** bölümüne bakın [: bağımlı kaynaklarla ARM şablonları oluşturma](./template-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Sanal makine yöneticisi hesabı için oluşturulmuş bir parola kullanmanızı öneririz. Bu makalenin [Önkoşullar](#prerequisites) bölümüne bakın.
 
 Cloud Shell, VM 'nin genel IP adresini almak için aşağıdaki komutu çalıştırın:
 

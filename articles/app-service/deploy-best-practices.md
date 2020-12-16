@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 37c1854aeb1a1fa3d9283c00b07c665b213b306c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74bd7bc159f7f5974452adf6b2f51148d869b4ed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708161"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589245"
 ---
 # <a name="deployment-best-practices"></a>Dağıtım En Iyi uygulamaları
 
@@ -45,7 +45,7 @@ Mümkün olduğunda, yeni bir üretim derlemesi dağıttığınızda [dağıtım
 
 Projenizde test, QA ve hazırlama için dallar belirlendiyse, bu dalların her biri sürekli olarak bir hazırlama yuvasına dağıtılmalıdır. (Bu, [Gitflow tasarımı](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)olarak bilinir.) Bu, paydaşlarınızın dalı kolayca değerlendirmesine ve test etmesine olanak tanır. 
 
-Sürekli dağıtım, üretim yuvalarınız için asla etkinleştirilmemelidir. Bunun yerine, üretim dalınızın (çoğunlukla ana) üretim dışı bir yuvaya dağıtılması gerekir. Temel dalı serbest bırakmaya hazırsanız, uygulamayı üretim yuvasına değiştirin. Üretime dönüştürme (üretime dağıtmak yerine), kapalı kalma süresini engeller ve yeniden takas yaparak değişiklikleri geri almanıza olanak sağlar. 
+Sürekli dağıtım, üretim yuvalarınız için asla etkinleştirilmemelidir. Bunun yerine, üretim dalınızın (genellikle ana) üretim dışı bir yuvaya dağıtılması gerekir. Temel dalı serbest bırakmaya hazırsanız, uygulamayı üretim yuvasına değiştirin. Üretime dönüştürme (üretime dağıtmak yerine), kapalı kalma süresini engeller ve yeniden takas yaparak değişiklikleri geri almanıza olanak sağlar. 
 
 ![Geliştirme, hazırlama ve ana dallar ile dağıtıldığı Yuvalar arasındaki akışı gösteren diyagram.](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
@@ -65,7 +65,7 @@ Yaygın Otomasyon çerçeveleri için aşağıda örnek verilmiştir.
 
 ### <a name="use-azure-devops"></a>Azure DevOps kullanma
 
-App Service, dağıtım merkezi aracılığıyla kapsayıcılar için [yerleşik sürekli teslimi](deploy-continuous-deployment.md) vardır. [Azure Portal](https://portal.azure.com/) uygulamanıza gidin ve **dağıtım**altındaki **Dağıtım Merkezi** ' ni seçin. Deponuzu ve dalınızı seçmek için yönergeleri izleyin. Bu işlem, seçili dala yeni işlemeler gönderildiğinde kapsayıcıyı otomatik olarak oluşturmak, etiketlemek ve dağıtmak için bir DevOps derleme ve sürüm işlem hattı yapılandırır.
+App Service, dağıtım merkezi aracılığıyla kapsayıcılar için [yerleşik sürekli teslimi](deploy-continuous-deployment.md) vardır. [Azure Portal](https://portal.azure.com/) uygulamanıza gidin ve **dağıtım** altındaki **Dağıtım Merkezi** ' ni seçin. Deponuzu ve dalınızı seçmek için yönergeleri izleyin. Bu işlem, seçili dala yeni işlemeler gönderildiğinde kapsayıcıyı otomatik olarak oluşturmak, etiketlemek ve dağıtmak için bir DevOps derleme ve sürüm işlem hattı yapılandırır.
 
 ### <a name="use-github-actions"></a>GitHub eylemlerini kullanma
 
@@ -84,7 +84,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     -name: Authenticate using a Service Principal
       uses: azure/actions/login@v1
@@ -129,7 +129,7 @@ Betiğinizdeki ile oturum açın `az login --service-principal` , ana bilgisayar
 
 JAR uygulamalarını dağıtmak için kudu [zipdeploy/](deploy-zip.md) API ve War uygulamaları için [wardeploy/](deploy-zip.md#deploy-war-file) API kullanın. Jenkins kullanıyorsanız, bu API 'Leri doğrudan dağıtım aşamasınca kullanabilirsiniz. Daha fazla bilgi için [Bu makaleye](/azure/developer/jenkins/deploy-to-azure-app-service-using-azure-cli)bakın.
 
-### <a name="node"></a>Node
+### <a name="node"></a>Düğüm
 
 Varsayılan olarak kudu, düğüm uygulamanız () için derleme adımlarını yürütür `npm install` . Azure DevOps gibi bir yapı hizmeti kullanıyorsanız kudu derlemesi gereksizdir. Kudu derlemesini devre dışı bırakmak için değeri olan bir uygulama ayarı oluşturun `SCM_DO_BUILD_DURING_DEPLOYMENT` `false` .
 

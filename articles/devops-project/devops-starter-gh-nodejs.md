@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 08/24/2020
 ms.author: ninallam
-ms.openlocfilehash: 92fa445cee75b2311cbadf96e24c31a1dbd579b8
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e3c72ce6a15f90f0dbe08bbff10db0ca5f6b5c8f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332774"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588820"
 ---
 # <a name="set-up-cicd-for-a-nodejs-app-with-devops-starter-using-github-actions"></a>GitHub eylemlerini kullanarak DevOps Starter ile Node.js bir uygulama için CI/CD ayarlama
 
@@ -33,7 +33,7 @@ DevOps Starter, GitHub eylemlerini kullanarak bir CI/CD iş akışı oluşturur.
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -43,7 +43,7 @@ DevOps Starter, GitHub eylemlerini kullanarak bir CI/CD iş akışı oluşturur.
 
     ![landing_page](_img/azure-devops-project-nodejs/landing-page.png)
 
-1. CI/CD sağlayıcısının **GitHub eylemleri**olarak seçildiğinden emin olun.
+1. CI/CD sağlayıcısının **GitHub eylemleri** olarak seçildiğinden emin olun.
 
     ![CICD_provider](_img/azure-devops-project-nodejs/provider-selection.png)
 
@@ -61,7 +61,7 @@ DevOps Starter, GitHub eylemlerini kullanarak bir CI/CD iş akışı oluşturur.
    
    1. GitHub 'da oturum açın. GitHub hesabınız yoksa, burada da kaydolabilirsiniz.
 
-2. Mevcut bir **GitHub organizasyonunu**seçin. 
+2. Mevcut bir **GitHub organizasyonunu** seçin. 
    
    1. GitHub deponuz için bir ad seçin. 
    
@@ -74,7 +74,7 @@ DevOps Starter, GitHub eylemlerini kullanarak bir CI/CD iş akışı oluşturur.
    
 3. Çalışan uygulamanızı görüntülemek için **Araştır** ' ı seçin.
     
-    Pano, GitHub iş akışı ve Azure kaynakları ayrıntılarını içerir. En son çalıştırma, işlemeler ve iş durumu gibi GitHub iş akışının ayrıntılarını görüntülemek için **GitHub 'A yetki**vermeniz gerekir.
+    Pano, GitHub iş akışı ve Azure kaynakları ayrıntılarını içerir. En son çalıştırma, işlemeler ve iş durumu gibi GitHub iş akışının ayrıntılarını görüntülemek için **GitHub 'A yetki** vermeniz gerekir.
    
    ![Authorize_dashboard](_img/azure-devops-project-nodejs/authenticate-dashboard.png)
 
@@ -88,7 +88,7 @@ DevOps Starter, GitHub 'da bir depo oluşturur. Depoyu görüntülemek ve uygula
 
 1. DevOps başlangıç panosunun sol tarafında, ana dalınızın bağlantısını seçin. Bu bağlantı, yeni oluşturulan GitHub deposunun bir görünümünü açar.
 
-1. Depo kopyası URL 'sini görüntülemek için tarayıcının sağ üst köşesindeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE’de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişiklikleri yapıp doğrudan ana dala işlemek için web tarayıcısını kullanabilirsiniz.
+1. Depo kopyası URL 'sini görüntülemek için tarayıcının sağ üst köşesindeki **Kopyala** ' yı seçin. Git deponuzu en sevdiğiniz IDE’de kopyalayabilirsiniz. Sonraki birkaç adımda, kod değişikliklerini doğrudan ana dala getirmek ve yürütmek için Web tarayıcısını kullanabilirsiniz.
 
 1. Tarayıcının sol tarafında **/Application/views/Index.Pug** dosyasına gidin.
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 99be6dc42a9b644166054d61e88a1e0ac329d2ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91854732"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589167"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter ile .NET için bir CI/CD işlem hattı oluşturma
 
@@ -34,7 +34,7 @@ DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Az
 
 1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın. 
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın. 
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png)
 
@@ -50,13 +50,13 @@ DevOps Starter, Azure DevOps 'da bir CI/CD işlem hattı oluşturur. Yeni bir Az
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps ve bir Azure aboneliği yapılandırma 
 
-1. Bir **Proje adı**girin.
+1. Bir **Proje adı** girin.
 
 2. Yeni bir ücretsiz **Azure DevOps organizasyonu** oluşturun veya açılan listeden mevcut bir kuruluştan birini seçin.
 
-3. **Azure aboneliğinizi**seçin, **Web uygulamanız** için bir ad girin veya varsayılan işlemi yapın ve **bitti**' yi seçin. Birkaç dakika sonra DevOps Başlatıcı dağıtımına genel bakış Azure portal görüntülenir. 
+3. **Azure aboneliğinizi** seçin, **Web uygulamanız** için bir ad girin veya varsayılan işlemi yapın ve **bitti**' yi seçin. Birkaç dakika sonra DevOps Başlatıcı dağıtımına genel bakış Azure portal görüntülenir. 
 
-4. DevOps başlangıç panosunu görüntülemek için **Kaynağa Git** ' i seçin. Hızlı erişim için, sağ üst köşede **projeyi** panonuza sabitleyin. Örnek bir uygulama, **Azure DevOps kuruluşunuzda**bir depoda ayarlanır. Bir yapı yürütülür ve uygulamanız Azure 'a dağıtılır.
+4. DevOps başlangıç panosunu görüntülemek için **Kaynağa Git** ' i seçin. Hızlı erişim için, sağ üst köşede **projeyi** panonuza sabitleyin. Örnek bir uygulama, **Azure DevOps kuruluşunuzda** bir depoda ayarlanır. Bir yapı yürütülür ve uygulamanız Azure 'a dağıtılır.
 
 5. Pano, kod deponuzda, CI/CD işlem hattınızla ve Azure 'daki uygulamanız için görünürlük sağlar. Çalışan uygulamanızı görüntülemek için Azure kaynakları ' nın sağ tarafında bulunan **Araştır** ' ı seçin.
 
@@ -70,7 +70,7 @@ DevOps Starter, Azure Repos veya GitHub 'da bir git deposu oluşturdu. Depoyu g�
 
 2. Sonraki birkaç adımda, kod değişikliklerini doğrudan **ana** dala getirmek ve yürütmek için Web tarayıcısını kullanabilirsiniz. Ayrıca, depo sayfasının sağ üst kısmından **Kopyala** ' yı seçerek git deponuzu sık kullandığınız IDE 'nize da kopyalayabilirsiniz. 
 
-3. Sol tarafta uygulama dosyası yapısına **Application/ASPNET-Core-DotNet-Core/Pages/Index. cshtml**sayfasına gidin.
+3. Sol tarafta uygulama dosyası yapısına **Application/ASPNET-Core-DotNet-Core/Pages/Index. cshtml** sayfasına gidin.
 
 4. **Düzenle**' yi seçin ve ardından H2 başlığında bir değişiklik yapın. Örneğin, **Azure DevOps Starter ile** hemen başlayın yazın veya başka bir değişiklik yapın.
 
@@ -122,7 +122,7 @@ DevOps Starter, Azure dağıtımlarını yönetmek için bir yayın işlem hatt�
 
 1. **İşlemeler**'i seçin. Bu görünüm, belirli bir dağıtımla ilişkili kod işlemelerini gösterir. 
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunlar hem dağıtım sırasında hem de sonrasında görüntülenebilir.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunlar hem dağıtım sırasında hem de sonrasında görüntülenebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

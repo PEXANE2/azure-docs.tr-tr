@@ -4,12 +4,12 @@ description: Azure Resource Manager şablonlarını sürekli oluşturma, test et
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1b9e60ec1b3f7626a3cb67a673bf12d14d7d259b
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368214"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588140"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Öğretici: Azure Pipelines ile ARM şablonlarının sürekli tümleştirilmesi
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -100,10 +100,10 @@ _azuredeploy.js_ , yerel depoya eklendi. Sonra, şablonu uzak depoya yüklersini
     ```bash
     git add .
     git commit -m "Add web app templates."
-    git push origin master
+    git push origin main
     ```
 
-    LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **ana** dal ana daldır.  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
+    LF hakkında bir uyarı alabilirsiniz. Uyarıyı yoksayabilirsiniz. **Main, ana daldır.**  Genellikle her güncelleştirme için bir dal oluşturursunuz. Öğreticiyi basitleştirmek için, ana dalı doğrudan kullanırsınız.
 
 1. Bir tarayıcıdan GitHub deponuza gidin. URL `https://github.com/[YourAccountName]/[YourGitHubRepository]` . _Createwebapp_ klasörünü ve klasör içinde üç dosyayı görürsünüz.
 1. Şablonu açmak için _linkedStorageAccount.jsaçık '_ ı seçin.
@@ -183,7 +183,7 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 
     ![Ekran görüntüsü, gerekli değerler girilen ARM şablonu dağıtım sayfasını gösterir.](./media/deployment-tutorial-pipeline/resource-manager-template-pipeline-configure.png)
 
-1. **Ekle**’yi seçin.
+1. **Add (Ekle)** seçeneğini belirleyin.
 
     Görev hakkında daha fazla bilgi için bkz. [Azure Kaynak grubu dağıtım görevi](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment)ve [Azure Resource Manager şablonu Dağıtım görevi](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)
 
@@ -217,10 +217,10 @@ Bu aşamada, aşağıdaki görevleri tamamladınız.  GitHub ve DevOps hakkında
 1. Git Bash/Shell ' den aşağıdaki komutları çalıştırarak, değişiklikleri uzak depoya gönderin.
 
     ```bash
-    git pull origin master
+    git pull origin main
     git add .
     git commit -m "Update the storage account type."
-    git push origin master
+    git push origin main
     ```
 
     İlk komut ( `pull` ) yerel depoyu uzak depoyla eşitler. Ardışık düzen YAML dosyası yalnızca uzak depoya eklendi. Komutu çalıştırmak, `pull` YAML dosyasının bir kopyasını yerel dala indirir.

@@ -5,18 +5,18 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 1f4e8c0bc6a066e0d82d393474bfc804be5e3fb3
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931376"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589143"
 ---
-# <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarındaki koşulu kullanma
+# <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarında koşul kullanma
 
 Azure Resource Manager şablonundaki koşullara göre Azure kaynaklarını dağıtmayı öğrenin (ARM şablonu).
 
-[Kaynak dağıtım sırasını ayarlama](./template-tutorial-create-templates-with-dependent-resources.md) öğreticisinde bir sanal makine, bir sanal ağ ve bir depolama hesabı dahil olmak üzere ek birkaç bağımlı kaynak oluşturmuştunuz. Her defasında yeni depolama hesabı oluşturmak yerine kullanıcıların yeni depolama hesabı oluşturma veya var olan depolama hesabını kullanma arasında seçim yapmasını sağlayacaksınız. Bu hedefe ulaşmak için ek bir parametre tanımlamanız gerekir. Parametrenin değeri "new" olduğunda yeni bir depolama hesabı oluşturulur. Aksi halde, belirtilen ada sahip mevcut bir depolama hesabı kullanılır.
+[Kaynak dağıtım sırasını ayarlama](./template-tutorial-create-templates-with-dependent-resources.md) öğreticisinde bir sanal makine, bir sanal ağ ve bir depolama hesabı dahil olmak üzere ek birkaç bağımlı kaynak oluşturmuştunuz. Her defasında yeni depolama hesabı oluşturmak yerine kullanıcıların yeni depolama hesabı oluşturma veya var olan depolama hesabını kullanma arasında seçim yapmasını sağlayacaksınız. Bu hedefe ulaşmak için ek bir parametre tanımlamanız gerekir. Parametresinin değeri **Yeni** ise, yeni bir depolama hesabı oluşturulur. Aksi halde, belirtilen ada sahip mevcut bir depolama hesabı kullanılır.
 
 ![Kaynak Yöneticisi şablonu kullanım koşulu diyagramı](./media/template-tutorial-use-conditions/resource-manager-template-use-condition-diagram.png)
 
@@ -37,7 +37,7 @@ Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele al
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -54,7 +54,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -73,19 +73,19 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
 
     Şablonu özelleştirmeden önce şablon başvurusunu gözden geçirmeniz faydalı olur.
 
-1. Dosyanın  > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
+1. Dosyanın   >  bir kopyasını yerel bilgisayarınıza _azuredeploy.js_ adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="modify-the-template"></a>Şablonu değiştirme
 
 Var olan şablonda iki değişiklik yapın:
 
 * Depolama hesabı ad parametresi ekleyin. Kullanıcılar ya yeni bir depolama hesabı adını ya da var olan bir depolama hesabı adını belirleyebilir.
-* **newOrExisting** adlı yeni bir parametre ekleyin. Dağıtım, yeni bir depolama hesabı mı oluşturulacağını yoksa mevcut bir depolama hesabını mı kullanacağınızı öğrenmek için bu parametreyi kullanır.
+* Adlı yeni bir parametre ekleyin `newOrExisting` . Dağıtım, yeni bir depolama hesabı mı oluşturulacağını yoksa mevcut bir depolama hesabını mı kullanacağınızı öğrenmek için bu parametreyi kullanır.
 
 Değişiklik yapmak için aşağıdaki adımları izleyin:
 
-1. **azuredeploy.json** dosyasını Visual Studio Code ile açın.
-1. Bu üç **değişkeni (' storageAccountName ')** tüm şablonda **Parametreler (' storageAccountName ')** ile değiştirin.
+1. _azuredeploy.json_ dosyasını Visual Studio Code ile açın.
+1. `variables('storageAccountName')`Tüm şablonda üç ile değiştirin `parameters('storageAccountName')` .
 1. Aşağıdaki değişken tanımını kaldırın:
 
     ![Kaldırmanız gereken değişken tanımlarını vurgulayan ekran görüntüsü.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template-remove-storageaccountname.png)
@@ -105,7 +105,7 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
     },
     ```
 
-    Visual Studio Code şablonu biçimlendirmek için **[alt] + [SHIFT] + F** tuşlarına basın.
+    Visual Studio Code şablonu biçimlendirmek için alt + SHIFT + F tuşlarına basın.
 
     Güncelleştirilmiş parametre tanımı şu şekilde görünür:
 
@@ -117,12 +117,12 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
     "condition": "[equals(parameters('newOrExisting'),'new')]",
     ```
 
-    Koşul, **newOrExisting** adlı parametrenin değerini denetler. Parametre değeri **new** ise dağıtım, depolama hesabını oluşturur.
+    Koşul, parametresinin değerini denetler `newOrExisting` . Parametre değeri **new** ise dağıtım, depolama hesabını oluşturur.
 
     Güncelleştirilmiş depolama hesabı tanımı şu şekilde görünür:
 
     ![Güncelleştirilmiş depolama hesabı tanımını gösteren ekran görüntüsü.](./media/template-tutorial-use-conditions/resource-manager-tutorial-use-condition-template.png)
-1. Sanal makine kaynak tanımının **Storageuri** özelliğini aşağıdaki değerle güncelleştirin:
+1. `storageUri`Sanal makine kaynak tanımının özelliğini aşağıdaki değerle güncelleştirin:
 
     ```json
     "storageUri": "[concat('https://', parameters('storageAccountName'), '.blob.core.windows.net')]"
@@ -136,16 +136,16 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
 
 1. [Azure Cloud Shell](https://shell.azure.com) oturum açın
 
-1. Sol üst köşedeki **PowerShell** veya **Bash** (CLI için) öğesini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
+1. Sol üst köşedeki **PowerShell** veya **Bash** (CLI için) öğesini seçerek tercih ettiğiniz ortamı seçin. Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, `ls` `cat` dosyanın başarıyla karşıya yüklendiğini doğrulamak için komutunu ve komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 
     > [!IMPORTANT]
-    > Depolama hesabı adının Azure’da benzersiz olması gerekir. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Depolama hesabı adı "depola" eklenmiş proje adıdır. Proje adının ve oluşturulan depolama hesabı adının depolama hesabı adı gereksinimlerini karşıladığından emin olun.
+    > Depolama hesabı adının Azure’da benzersiz olması gerekir. Ad yalnızca küçük harf veya rakam içermelidir. Bu, 24 karakterden uzun olamaz. Depolama hesabı adı, **Mağaza** eklenmiş proje adıdır. Proje adının ve oluşturulan depolama hesabı adının depolama hesabı adı gereksinimlerini karşıladığından emin olun.
 
     ```azurepowershell
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate resource group name and resource names"
@@ -172,9 +172,9 @@ Değişiklik yapmak için aşağıdaki adımları izleyin:
     ```
 
     > [!NOTE]
-    > **newOrExisting** değeri **new** olduğunda ancak belirtilen depolama hesabı adına sahip olan bir depolama hesabı mevcut olduğunda dağıtım başarısız olur.
+    > Dağıtım `newOrExisting` **Yeni** ise, ancak depolama hesabı adı belirtilen depolama hesabı zaten varsa, dağıtım başarısız olur.
 
-**Neworexıting** ile "var" olarak ayarlanmış başka bir dağıtım yapmayı deneyin ve var olan bir depolama hesabı belirtin. Depolama hesabını önceden oluşturmak için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
+Mevcut olarak ayarlanmış başka bir dağıtım yapmayı deneyin `newOrExisting` ve var olan bir depolama hesabı belirtin.  Depolama hesabını önceden oluşturmak için bkz. [Depolama hesabı oluşturma](../../storage/common/storage-account-create.md).
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

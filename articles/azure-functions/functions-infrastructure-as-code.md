@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 2403e3a4bfe7824659a9c34c407e55e6c56e6046
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994664"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589806"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Azure Işlevlerinde işlev uygulamanız için kaynak dağıtımını otomatikleştirme
 
@@ -299,8 +299,6 @@ Linux 'ta, işlev uygulamasının `kind` için ayarlanmış olması `functionapp
 }
 ```
 
-
-
 <a name="premium"></a>
 
 ## <a name="deploy-on-premium-plan"></a>Premium planda dağıt
@@ -380,7 +378,6 @@ Premium plandaki bir işlev uygulamasının, `serverFarmId` daha önce oluşturu
     }
 }
 ```
-
 
 <a name="app-service-plan"></a>
 
@@ -649,7 +646,7 @@ Bir işlev uygulamasının, dağıtımınızda kullanabileceğiniz uygulama ayar
 
 * [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [Azure portalı](../azure-resource-manager/templates/deploy-portal.md)
 * [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Azure'a Dağıt düğmesi

@@ -1,20 +1,20 @@
 ---
-title: ADF 'de işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
-description: ADF 'de işlem hattı tetikleme sorunlarını gidermek için farklı yöntemler kullanma
+title: Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
+description: Azure Data Factory içinde işlem hattı tetikleme sorunlarını gidermek için farklı yöntemler kullanın.
 author: ssabat
 ms.service: data-factory
 ms.date: 12/15/2020
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: ed3728513820da9f4ef85d44cac983dc09c3fc7d
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 0e67a316b012eda61607c84edfd8e10d6aa3318d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521853"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589177"
 ---
-# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-adf"></a>ADF 'de işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
+# <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory 'da işlem hattı düzenleme ve Tetikleyicileri sorunlarını giderme
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,10 +27,10 @@ Azure Data Factory'de işlem hattı çalıştırması, bir işlem hattı yürüt
 ### <a name="pipeline-with-azure-function-throws-error-with-private-end-point-connectivity"></a>Azure Işlevi ile işlem hattı özel uç nokta bağlantısı ile hata oluşturuyor
  
 #### <a name="issue"></a>Sorun
-Bazı bağlamda, ADF ve Azure İşlev Uygulaması özel bir uç nokta üzerinde çalışıyor. Azure İşlev Uygulaması çalışmak üzere etkileşim kuran bir işlem hattı almaya çalışıyorsunuz. Üç farklı yöntem denediniz, ancak bir hata döndürüyor `Bad Request` , diğer iki yöntem geri döndürüyor `103 Error Forbidden` .
+Bazı bağlamda, özel bir uç nokta üzerinde çalışan Data Factory ve Azure İşlev Uygulaması sahip olursunuz. Azure İşlev Uygulaması çalışmak üzere etkileşim kuran bir işlem hattı almaya çalışıyorsunuz. Üç farklı yöntem denediniz, ancak bir hata döndürüyor `Bad Request` , diğer iki yöntem geri döndürüyor `103 Error Forbidden` .
 
 #### <a name="cause"></a>Nedeni 
-ADF Şu anda Azure İşlev Uygulaması için özel bir uç nokta bağlayıcısını desteklemiyor. Bu nedenle, Azure İşlev Uygulaması, yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddetme nedeni olmalıdır.
+Data Factory Şu anda Azure İşlev Uygulaması için özel bir uç nokta bağlayıcısını desteklemez. Bu nedenle, Azure İşlev Uygulaması, yalnızca özel bir bağlantıdan gelen bağlantılara izin verecek şekilde yapılandırıldığından çağrıları reddetme nedeni olmalıdır.
 
 #### <a name="resolution"></a>Çözüm
 **Privatelinkservice** türünde özel bir uç nokta oluşturabilir ve Işlev uygulamanızın DNS 'sini sağlayabilirsiniz ve bağlantı çalışır.
@@ -46,7 +46,7 @@ Tarayıcıyı yenileyin ve izleme için sağ filtreler uygulayın.
 ### <a name="copy-pipeline-failure--found-more-columns-than-expected-column-count-delimitedtextmorecolumnsthandefined"></a>Kopyalama işlem hattı hatası – beklenen sütun sayısından daha fazla sütun bulundu (Delimitedtextmorecolumnsıısdefined tanımlandı)
 
 #### <a name="issue"></a>Sorun  
-Kopyaladığınız belirli bir klasördeki dosyalar, değişken sayısı, farklı sınırlayıcılar, quote char ayarları veya bazı veri sorunları gibi farklı şemalara sahip dosyalar içeriyorsa, ADF ardışık düzeni Bu hatada çalışmaya sona acaktır:
+Kopyaladığınız belirli bir klasördeki dosyalar, değişken sayısı, farklı sınırlayıcılar, quote char ayarları veya bazı veri sorunları gibi farklı şemalara sahip dosyalar içeriyorsa, Data Factory işlem hattı Bu hatada çalışmaya sona acaktır:
 
 `
 Operation on target Copy_sks  failed: Failure happened on 'Sink' side.
@@ -57,7 +57,7 @@ Source=Microsoft.DataTransfer.Common,'
 `
 
 #### <a name="resolution"></a>Çözüm
-Veri Kopyalama etkinliğini oluştururken "Ikili kopya" seçeneğini belirleyin. Bu şekilde, toplu kopyalama veya verilerinizi bir Data Lake diğerine geçirme için **ikili** SEÇENEKTE, ADF şemayı okumak için dosyaları açmaz, ancak her dosyayı ikili olarak değerlendirin ve diğer konuma kopyalayın.
+Veri Kopyalama etkinliğini oluştururken "Ikili kopya" seçeneğini belirleyin. Bu şekilde, toplu kopyalama veya verilerinizi bir Data Lake diğerine geçirme için, **ikili** seçeneğiyle, Data Factory şemayı okumak için dosyaları açmaz, ancak her dosyayı ikili olarak değerlendirir ve diğer konuma kopyalamanız yeterlidir.
 
 ### <a name="pipeline-run-fails-when-capacity-limit-of-integration-runtime-is-reached"></a>Tümleştirme çalışma zamanının kapasite sınırına ulaşıldığında işlem hattı çalıştırma başarısız olur
 
@@ -79,14 +79,14 @@ Aynı tümleştirme çalışma zamanını kullanarak büyük miktarda veri akı�
 ### <a name="how-to-monitor-pipeline-failures-on-regular-interval"></a>Düzenli aralıklarla işlem hattı başarısızlıklarını izleme
 
 #### <a name="issue"></a>Sorun
-Genellikle ADF işlem hatlarını dakikalar içinde izlemeniz, 5 dakika söylemeniz gerekir. Uç nokta kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
+Genellikle Data Factory işlem hatlarını, 5 dakika olarak izlemeniz gerekir. Uç nokta kullanarak bir veri fabrikasında işlem hattı çalıştırmalarını sorgulayabilir ve filtreleyebilirsiniz. 
 
 #### <a name="recommendation"></a>Öneri
 1. Her 5 dakikada bir başarısız olan tüm işlem hatlarını sorgulamak için bir Azure mantıksal uygulaması ayarlayın.
 2. Daha sonra, olayları [Querybyfactory](https://docs.microsoft.com/rest/api/datafactory/pipelineruns/querybyfactory)başına anahtar oluşturma sistemimize rapor edebilirsiniz.
 
 #### <a name="reference"></a>Başvuru
-- [ADF 'den dış gönderme bildirimleri](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
+- [Data Factory 'den dış gönderme bildirimleri](https://www.mssqltips.com/sqlservertip/5962/send-notifications-from-an-azure-data-factory-pipeline--part-2/)
 
 ### <a name="how-to-handle-activity-level-errors-and-failures-in-pipelines"></a>İşlem hatlarında etkinlik düzeyindeki hataları ve hataları işleme
 

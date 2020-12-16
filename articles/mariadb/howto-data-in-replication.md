@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535376"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587936"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'nda Gelen Verileri Çoğaltma yapılandırma
 
@@ -52,7 +52,7 @@ Bu makaledeki adımları gerçekleştirmeden önce, verileri çoğaltmanın [sı
 
 Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir VM 'de veya Gelen Verileri Çoğaltma için bir bulut veritabanı hizmetinde hazırlar ve yapılandırır. MariaDB sunucusu Gelen Verileri Çoğaltma kaynağıdır.
 
-1. Devam etmeden önce [ana sunucu gereksinimlerini](concepts-data-in-replication.md#requirements) gözden geçirin. 
+1. Devam etmeden önce [birincil sunucu gereksinimlerini](concepts-data-in-replication.md#requirements) gözden geçirin. 
 
 2. Kaynak sunucunun bağlantı noktası 3306 ' de gelen ve giden trafiğe izin verdiğinden ve kaynak sunucunun **ortak BIR IP adresi** olduğundan, DNS genel olarak erişilebilir olduğundan veya tam etki alanı adı (FQDN) olduğundan emin olun. 
    
@@ -141,7 +141,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
 
    **MySQL Workbench**
 
-   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** bölmesinde, **Kullanıcılar ve ayrıcalıklar** ' ı seçin. Ardından **Hesap Ekle** ' yi seçin.
+   MySQL çalışma ekranı 'nda çoğaltma rolünü oluşturmak için, **Yönetim** bölmesinde, **Kullanıcılar ve ayrıcalıklar**' ı seçin. Ardından **Hesap Ekle**' yi seçin.
  
    ![Kullanıcılar ve ayrıcalıklar](./media/howto-data-in-replication/users_privileges.png)
 
@@ -284,7 +284,7 @@ Aşağıdaki adımlar, şirket içinde barındırılan MariaDB sunucusunu, bir V
     
     MariaDB içindeki yerel bir çoğaltma sınırlaması nedeniyle,  [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) gtıd senaryosu olmadan çoğaltma üzerinde ve değişkenlerini ayarlamanız gerekir.
 
-    `sync_master_info` `sync_relay_log_info` Veri çoğaltma çoğaltmasının kararlı olduğundan emin olmak için bağımlı sunucunuzun ve değişkenlerini denetleyin ve değişkenlerini olarak ayarlayın `1` .
+    Çoğaltmanın `sync_master_info` `sync_relay_log_info` tutarlı olduğundan emin olmak için çoğaltma sunucunuzun ve değişkenlerini denetleyin ve değişkenlerini olarak ayarlayın `1` .
     
 ## <a name="other-stored-procedures"></a>Diğer saklı yordamlar
 

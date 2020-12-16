@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 162c1341c792844dab27f98e67ebf7a48282bfc5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ed35a0b6e6f2ad620b528283a332507845e4f00d
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92452794"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588327"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-floqast"></a>Öğretici: FloQast ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -52,10 +52,9 @@ FloQast 'nin tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galerid
 1. **Galeriden Ekle** bölümünde, arama kutusuna **floqast** yazın.
 1. Sonuçlar panelinden **Floqast** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-floqast"></a>FloQast için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu FloQast ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve FloQast içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısını kullanarak Azure AD SSO 'Yu FloQast ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve FloQast içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu FloQast ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -92,9 +91,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     | Name | Kaynak özniteliği|
     | ------------- | -------------- |
-    | FirstName           | Kullanıcı. |
-    | LastName            | User. soyadı |
-    | E-posta               | Kullanıcı. Mail    |
+    | FirstName | Kullanıcı. |
+    | LastName | User. soyadı |
+    | E-posta | Kullanıcı. Mail    |
 
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
@@ -104,11 +103,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![SAML Imzalama sertifikasını Düzenle](common/edit-certificate.png)
 
-    a. **Imzalama SEÇENEĞINDEN** **SAML yanıtı ve onayını imzala '** yı seçin.
-    
-    b. **Kaydet**’e tıklayın
+    1. **Imzalama SEÇENEĞINDEN** **SAML yanıtı ve onayını imzala '** yı seçin.
 
-    ![Communifire Imzalama seçeneği](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
+    1. **Kaydet**’e tıklayın
+
+        ![Communifire Imzalama seçeneği](./media/floqast-tutorial/tutorial-floqast-signing-option.png)
 
 1. **FloQast ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
 
@@ -131,7 +130,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
 Bu bölümde, FloQast 'ye erişim vererek, B. Simon 'u Azure çoklu oturum açma özelliğini kullanacak şekilde etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Floqast**öğesini seçin.
+1. Uygulamalar listesinde, **Floqast** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -160,9 +159,9 @@ Erişim panelinde FloQast kutucuğuna tıkladığınızda, SSO 'yu ayarladığı
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

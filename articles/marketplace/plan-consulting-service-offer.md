@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 7f56ff94c4dcf276accc56e8d1076266099d635d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 10c06f5b36de880302f17dc17c1d47d5209dd902
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780714"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588480"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Ticari Market 'te danışmanlık hizmeti teklifi planlaması
 
@@ -29,17 +29,42 @@ Danışmanlık hizmeti teklifleri **kişi benimle ilgili** dökümler olarak yay
 
 Her danışmanlık hizmeti, teklifin **birincil ürünü** olarak adlandırılan bu Microsoft ürünlerinden birine odaklanmalıdır:
 
-|Birincil ürün                               |                   |
-|-------------------------------|-------------------|
-|Azure                          |Dynamics 365 proje hizmeti Otomasyonu |
-|Dynamics 365 Business Central  |Dynamics 365 Sales |
-|Dynamics 365 ticari          |Dynamics 365 tedarik zinciri yönetimi |
-|Dynamics 365 Customer Insights |Microsoft 365 |
-|Dynamics 365 müşteri hizmeti  |Power Apps |
-|Dynamics 365 alan hizmeti     |Power Automate |
-|Dynamics 365 finans           |Power BI |
-|Dynamics 365 pazarlama         |Power Virtual Agents |
-|    |    |
+:::row:::
+    :::column:::
+        Azure
+
+        Dynamics 365 Business Central
+
+        Dynamics 365 ticari
+
+        Dynamics 365 Customer Insights
+
+        Dynamics 365 müşteri hizmeti
+
+        Dynamics 365 alan hizmeti
+
+        Dynamics 365 finans
+
+        Dynamics 365 pazarlama
+    :::column-end:::
+    :::column:::
+        Dynamics 365 proje hizmeti Otomasyonu
+
+        Dynamics 365 Sales
+
+        Dynamics 365 tedarik zinciri yönetimi
+
+        Microsoft 365
+
+        Power Apps
+
+        Power Automate
+
+        Power BI
+
+        Power Virtual Agents
+    :::column-end:::
+:::row-end:::
 
 Iş Ortağı Merkezi 'nde seçtiğiniz birincil ürün, teklifinizin Microsoft AppSource veya Azure Marketi 'nde yayımlanıp yayımlanamayacağını belirler.
 
@@ -89,7 +114,7 @@ Iş Ortağı Merkezi 'nde danışmanlık hizmeti teklifinizi oluşturduğunuzda 
 6. Ülke/bölge
 7. Teklif adı
 8. Arama sonucu Özeti
-9. Açıklama
+9. Description
 10. Ekran görüntüleri/videolar
 11. Destekleyici belgeler
 

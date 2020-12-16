@@ -5,16 +5,16 @@ author: mumian
 ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b798e5ceb72ece3989fb81014555f2bc0fea5926
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2d50903f464c03157ee393787af6ddfdad975aed
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931410"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588055"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Öğretici: ARM şablonlarıyla SQL BACPAC dosyalarını Içeri aktarma
 
-Azure SQL veritabanı uzantıları 'nı kullanarak BACPAC dosyasını Azure Resource Manager şablonları (ARM şablonları) ile içeri aktarma hakkında bilgi edinin. Dağıtım yapıtları, bir dağıtımı tamamlaması gereken ana şablon dosyalarına ek olarak herhangi bir dosya. BACPAC dosyası bir yapıdır.
+Azure SQL veritabanı uzantıları 'nı kullanarak [bacpac](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) dosyasını Azure Resource Manager ŞABLONLARı (ARM şablonları) ile içeri aktarma hakkında bilgi edinin. Dağıtım yapıtları, bir dağıtımı tamamlaması gereken ana şablon dosyalarına ek olarak herhangi bir dosya. BACPAC dosyası bir yapıdır.
 
 Bu öğreticide, bir [MANTıKSAL SQL Server](../../azure-sql/database/logical-servers.md) ve tek bir veritabanı DAĞıTMAK ve bacpac dosyasını içeri aktarmak için bir şablon oluşturacaksınız. ARM şablonları kullanarak Azure sanal makine uzantıları dağıtma hakkında daha fazla bilgi için bkz. [öğretici: ARM şablonlarıyla sanal makine uzantıları dağıtma](./template-tutorial-deploy-vm-extensions.md).
 
@@ -30,7 +30,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -55,7 +55,7 @@ BACPAC dosyası bir ARM şablonu kullanılarak içeri aktarılmadan önce bir Az
 * BACPAC dosyasını kapsayıcıya yükleyin.
 * Depolama hesabı anahtarını ve BLOB URL 'sini görüntüleyin.
 
-1. Cloud Shell 'i açmak için **deneyin** ' i seçin. Ardından, aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın.
+1. Kabuğu açmak için **deneyin** ' i seçin. Ardından, aşağıdaki PowerShell betiğini kabuk penceresine yapıştırın.
 
     ```azurepowershell-interactive
     $projectName = Read-Host -Prompt "Enter a project name that is used to generate Azure resource names"
@@ -120,7 +120,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
-1. Depolama hesabı anahtarını ve BACPAC URL 'sini ayarlamak için **Parametreler** bölümünün sonuna iki parametre ekleyin.
+1. `parameters`Depolama hesabı anahtarını ve BACPAC URL 'sini ayarlamak için bölümün sonuna iki parametre daha ekleyin.
 
     ```json
         "storageAccountKey": {
@@ -137,7 +137,7 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
         }
     ```
 
-    **AdminPassword**'ten sonra virgül ekleyin. JSON dosyasını Visual Studio Code biçimlendirmek için SHIFT + alt + F ' i seçin.
+    `adminPassword`Özelliğin kapanış küme ayracı () sonrasına bir virgül ekleyin `}` . JSON dosyasını Visual Studio Code biçimlendirmek için SHIFT + alt + F ' i seçin.
 
     Bu iki değeri almak için bkz. [BACPAC dosyası hazırlama](#prepare-a-bacpac-file).
 
@@ -196,11 +196,11 @@ Bu öğreticide kullanılan şablon [GitHub](https://raw.githubusercontent.com/A
 
         Kaynak tanımını anlamak için bkz. [SQL Veritabanı uzantısı başvurusu](/azure/templates/microsoft.sql/servers/databases/extensions). Önemli öğeler şunlardır:
 
-        * **Bağımlıdson**: uzantı kaynağı veritabanı oluşturulduktan sonra oluşturulmalıdır.
-        * **storageKeyType**: kullanılacak depolama anahtarının türünü belirtin. Değer `StorageAccessKey` veya `SharedAccessKey` olabilir. `StorageAccessKey`Bu öğreticide kullanın.
-        * **StorageKey**: bacpac dosyasının depolandığı depolama hesabı için anahtarı belirtin. Depolama anahtarı türü ise `SharedAccessKey` , önünde "?" olması gerekir.
-        * **Storageuri**: bir depolama hesabında depolanan bacpac dosyasının URL 'sini belirtin.
-        * **administratorLoginPassword**: SQL yönetici parolasıdır. Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
+        * `dependsOn`: Uzantı kaynağı, veritabanı oluşturulduktan sonra oluşturulmalıdır.
+        * `storageKeyType`: Kullanılacak depolama anahtarının türünü belirtin. Değer `StorageAccessKey` veya `SharedAccessKey` olabilir. `StorageAccessKey`Bu öğreticide kullanın.
+        * `storageKey`: BACPAC dosyasının depolandığı depolama hesabı için anahtarı belirtin. Depolama anahtarı türü ise `SharedAccessKey` , önünde "?" olması gerekir.
+        * `storageUri`: Bir depolama hesabında depolanan BACPAC dosyasının URL 'sini belirtin.
+        * `administratorLoginPassword`: SQL yöneticisinin parolası. Oluşturulan bir parola kullanın. [Ön koşullara](#prerequisites) bakın.
 
 Tamamlanan şablon aşağıdaki gibi görünür:
 

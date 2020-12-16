@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d342f672f4e8a5fdf33afe0feb7c5051956e29f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e8cb939b48f8cfe311ec10c0850cfb234de04fad
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318769"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Öğretici: Andromeda ile tümleştirme Azure Active Directory
 
@@ -62,13 +62,13 @@ Andromeda tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Andromeda**yazın, sonuç panelinden **Andromeda** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Andromeda** yazın, sonuç panelinden **Andromeda** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
     ![Sonuç listesinde Andromeda](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Andromeda ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Andromeda ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Andromeda 'deki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -124,32 +124,32 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
 7. **Kullanıcı öznitelikleri** Iletişim kutusundaki **Kullanıcı talepleri** bölümünde, yukarıdaki görüntüde gösterildiği gibi, **Düzen simgesini** kullanarak talepleri DÜZENLEYIN veya aşağıdaki resimde gösterildiği gibi SAML belirteci özniteliğini yapılandırmak için **yeni talep Ekle** ' yi kullanarak talepleri ekleyin ve aşağıdaki adımları gerçekleştirin: 
 
-    | Ad | Kaynak özniteliği|
+    | Name | Kaynak özniteliği|
     | ------ | -----------|
-    | rol        | Uygulamaya özel rol |
-    | tür        | Uygulama Türü |
-    | şirket       | CompanyName |
+    | rol | Uygulamaya özel rol |
+    | tür | Uygulama Türü |
+    | şirket | CompanyName |
 
     > [!NOTE]
     > Gerçek değer yok. Bu değerler yalnızca tanıtım amaçlı amaçlıdır, lütfen kuruluş rollerinizi kullanın.
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
+    1. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
-    ![Ekran görüntüsü, yeni talep ekleme ve kaydetme seçenekleri ile Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
+        ![Ekran görüntüsü, yeni talep ekleme ve kaydetme seçenekleri ile Kullanıcı taleplerini gösterir.](common/new-save-attribute.png)
 
-    ![Ekran görüntüsünde, bu adımla ilgili değer girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
+        ![Ekran görüntüsünde, bu adımla ilgili değer girebileceğiniz Kullanıcı taleplerini yönetme gösterilir.](common/new-attribute-details.png)
 
-    b. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
+    1. **Ad** metin kutusuna, bu satır için gösterilen öznitelik adını yazın.
 
-    c. **Ad alanını** boş bırakın.
+    1. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    1. **Öznitelik** olarak kaynak seçin.
 
-    e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
+    1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
-    f. **Tamam 'a** tıklayın
+    1. **Tamam 'a** tıklayın
 
-    örneğin: **Kaydet**’e tıklayın.
+    1. **Kaydet**’e tıklayın.
 
 8. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **sertifika (base64)** ' i gereksiniminize göre ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -159,11 +159,11 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
+    1. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+    1. Azure AD tanımlayıcısı
 
-    c. Oturum kapatma URL 'SI
+    1. Oturum kapatma URL 'SI
 
 ### <a name="configure-andromeda-single-sign-on"></a>Andromeda Single Sign-On yapılandırma
 
@@ -181,25 +181,25 @@ Azure AD çoklu oturum açmayı Andromeda ile yapılandırmak için aşağıdaki
 
     ![Andromeda yapılandırması](./media/andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a. **SAML Ile SSO 'Yu etkinleştir**' i işaretleyin.
+    1. **SAML Ile SSO 'Yu etkinleştir**' i işaretleyin.
 
-    b. **Andromeda bilgileri** bölümünde, **SP kimlik** DEĞERINI kopyalayın ve **temel SAML yapılandırması** bölümünün **tanımlayıcı** metin kutusuna yapıştırın.
+    1. **Andromeda bilgileri** bölümünde, **SP kimlik** DEĞERINI kopyalayın ve **temel SAML yapılandırması** bölümünün **tanımlayıcı** metin kutusuna yapıştırın.
 
-    c. **Tüketici URL 'si** değerini kopyalayın ve **temel SAML YAPıLANDıRMASı** bölümünün **yanıt URL** metin kutusuna yapıştırın.
+    1. **Tüketici URL 'si** değerini kopyalayın ve **temel SAML YAPıLANDıRMASı** bölümünün **yanıt URL** metin kutusuna yapıştırın.
 
-    d. **Oturum açma URL 'si** değerini kopyalayın ve **temel SAML yapılandırması** bölümünün **oturum açma URL 'si** metin kutusuna yapıştırın.
+    1. **Oturum açma URL 'si** değerini kopyalayın ve **temel SAML yapılandırması** bölümünün **oturum açma URL 'si** metin kutusuna yapıştırın.
 
-    e. **SAML kimlik sağlayıcısı** bölümünde IDP adınızı yazın.
+    1. **SAML kimlik sağlayıcısı** bölümünde IDP adınızı yazın.
 
-    f. **Çoklu oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    1. **Çoklu oturum açma uç noktası** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-    örneğin: İndirilen **Base64 kodlamalı sertifikayı** Not defteri 'ndeki Azure Portal açın, **X 509 Certificate** metin kutusuna yapıştırın.
-    
-    h. Azure AD 'den SSO oturumu açmayı kolaylaştırmak için aşağıdaki öznitelikleri ilgili değerle eşleyin. Oturum açmak için **Kullanıcı kimliği** özniteliği gereklidir. Sağlama, **e-posta**, **Şirket**, **Kullanıcı türü**ve **rol** için gereklidir. Bu bölümde, Azure portal içinde tanımlananlarla bağıntılı öznitelik eşlemesini (ad ve değerler) tanımlayacağız
+    1. İndirilen **Base64 kodlamalı sertifikayı** Not defteri 'ndeki Azure Portal açın, **X 509 Certificate** metin kutusuna yapıştırın.
 
-    ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    1. Azure AD 'den SSO oturumu açmayı kolaylaştırmak için aşağıdaki öznitelikleri ilgili değerle eşleyin. Oturum açmak için **Kullanıcı kimliği** özniteliği gereklidir. Sağlama, **e-posta**, **Şirket**, **Kullanıcı türü** ve **rol** için gereklidir. Bu bölümde, Azure portal içinde tanımlananlarla bağıntılı öznitelik eşlemesini (ad ve değerler) tanımlayacağız
 
-    i. **Kaydet**’e tıklayın.
+        ![Andromeda attbmap](./media/andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+
+    1. **Kaydet**’e tıklayın.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -217,8 +217,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
+    a. **Ad** alanına **Brittasıon** girin.
+
     b. **Kullanıcı adı** alanına yazın `brittasimon@yourcompanydomain.extension` . Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

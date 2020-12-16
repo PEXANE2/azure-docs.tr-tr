@@ -5,14 +5,14 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a43fa12e72484e97b828648cd7d610f5cf15ea4e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d1e5848e568f42fb8a77c65c775962f27a5a03df
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931597"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588045"
 ---
-# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Öğretici: bağımlı kaynaklarla ARM şablonları oluşturma
+# <a name="tutorial-create-arm-templates-with-dependent-resources"></a>Öğretici: Bağımlı kaynaklara sahip ARM şablonu oluşturma
 
 Birden çok kaynak dağıtmak ve dağıtım sırasını yapılandırmak için bir Azure Resource Manager şablonu (ARM şablonu) oluşturmayı öğrenin. Şablonu oluşturduktan sonra, Azure portal Cloud Shell kullanarak şablonu dağıtabilirsiniz.
 
@@ -29,7 +29,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -46,7 +46,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu öğreticide kullanılan şablonun adı: [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Basit bir Windows sanal makinesi dağıtma).
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -54,18 +54,18 @@ Azure hızlı başlangıç şablonları, ARM şablonları için bir depodur. Sı
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. Dosyanın **File** > bir kopyasını yerel bilgisayarınıza **azuredeploy.js** adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
+4. Dosyanın   >  bir kopyasını yerel bilgisayarınıza _azuredeploy.js_ adı ile kaydetmek için dosya **farklı kaydet** ' i seçin.
 
 ## <a name="explore-the-template"></a>Şablonu keşfetme
 
 Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışın:
 
 * Bu şablonda kaç adet Azure kaynağı tanımlanmıştır?
-* Kaynaklardan biri bir Azure depolama hesabıdır.  Tanım, son öğreticide kullanılan tanıma benziyor mu?
+* Kaynaklardan biri bir Azure depolama hesabıdır. Tanım, son öğreticide kullanılan tanıma benziyor mu?
 * Bu şablonda tanımlanan kaynaklara ilişkin şablon başvurularını bulabilir misiniz?
 * Kaynakların bağımlılıklarını bulabilir misiniz?
 
-1. Visual Studio Code'da birinci düzeydeki öğeleri ve **resources** içindeki ikinci düzey öğeleri görene kadar öğeleri daraltın:
+1. Visual Studio Code, yalnızca ilk düzey öğeleri ve içindeki ikinci düzey öğeleri görene kadar öğeleri daraltın `resources` :
 
     ![ARM şablonları Visual Studio Code](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
@@ -80,7 +80,7 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
      Şablonu özelleştirmeden önce şablon başvurusunu gözden geçirmeniz faydalı olur.
 
-1. İlk kaynağı genişletin. Bir depolama hesabıdır. Kaynak tanımını [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın.
+1. İlk kaynağı genişletin. Bu bir depolama hesabıdır. Kaynak tanımını [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın.
 
     ![Visual Studio Code ARM şablonları depolama hesabı tanımı](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
 
@@ -96,7 +96,7 @@ Bu bölümdeki şablonu inceledikten sonra şu soruları yanıtlamaya çalışı
 
     ![Visual Studio Code ARM şablonları sanal ağ Bağımlıdson](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-virtual-network-definition.png)
 
-    dependsOn öğesi, kaynaklardan birini diğer kaynaklardan birine veya daha fazlasına bağımlı olarak tanımlamanızı sağlar. Bu kaynak başka bir kaynağa bağlıdır:
+    `dependsOn`Öğesi bir veya daha fazla kaynağa bağımlı olan bir kaynağı tanımlamanızı sağlar. Bu kaynak başka bir kaynağa bağlıdır:
 
     * `Microsoft.Network/networkSecurityGroups`
 
@@ -124,7 +124,7 @@ Bağımlılıkların belirtilmesi, Resource Manager'ın çözümü verimli bir �
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Daha önce kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Daha önce kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, `ls` `cat` dosyanın başarıyla karşıya yüklendiğini doğrulamak için komutunu ve komutunu kullanabilirsiniz.
 
 1. Şablonu dağıtmak için aşağıdaki PowerShell betiğini çalıştırın.
 

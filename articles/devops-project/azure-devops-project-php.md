@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 99c8bc00beb7b189b200e0b02435262ae34835d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5727a08159f750a69920f66f4b743c187aa00885
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/08/2020
-ms.locfileid: "91856101"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588973"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-starter"></a>Azure DevOps Starter ile PHP için bir CI/CD işlem hattı oluşturma
 
@@ -32,7 +32,7 @@ Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstud
 
 1. [Microsoft Azure portalda](https://portal.azure.com) oturum açın.
 
-1. Arama kutusuna **DevOps Starter**yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
+1. Arama kutusuna **DevOps Starter** yazın ve ardından öğesini seçin. Yeni bir tane oluşturmak için **Ekle** ' ye tıklayın.
 
     ![DevOps başlangıç panosu](_img/azure-devops-starter-aks/search-devops-starter.png) 
 
@@ -90,7 +90,7 @@ Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstud
 
 1. Derleme işlem hattının üst kısmında derleme işlem hattı adı’nı seçin.
 
-1. Derleme işlem hattınızı daha açıklayıcı bir şekilde değiştirin, seçin, **& kuyruğu kaydedin**ve ardından **Kaydet**' i seçin.
+1. Derleme işlem hattınızı daha açıklayıcı bir şekilde değiştirin, seçin, **& kuyruğu kaydedin** ve ardından **Kaydet**' i seçin.
 
 1. Derleme işlem hattı adınızın altında **Geçmiş**’i seçin.  **Geçmiş** bölmesi, derleme için son değişikliklerinizin denetim izini görüntüler. Azure Pipelines, derleme ardışık düzeninde yapılan tüm değişiklikleri izler ve sürümleri karşılaştırmanızı sağlar.
 
@@ -114,7 +114,7 @@ Bir Azure aboneliğiniz yoksa, [Visual Studio Dev Essentials](https://visualstud
 
 1. **İşlemeler**'i seçin. Bu görünüm, belirli bir dağıtımla ilişkili kod işlemelerini gösterir. 
 
-1. **Günlükleri**seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunlar hem dağıtım sırasında hem de sonrasında görüntülenebilir.
+1. **Günlükleri** seçin. Günlüklerde, dağıtım işlemiyle ilgili yararlı bilgiler bulunur. Bunlar hem dağıtım sırasında hem de sonrasında görüntülenebilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

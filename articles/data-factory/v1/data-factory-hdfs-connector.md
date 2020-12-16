@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f22d5ddd35d5d0cba48f0d236b28fabae02a966a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: c4393ebeb8b1e287bd881233418a902fc523f7f5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631606"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589636"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Şirket içinden taşıma
 > [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
@@ -47,9 +47,9 @@ Ağ geçidini, aynı şirket içi makineye veya Azure VM 'ye bir bilgisayar adı
 ## <a name="getting-started"></a>Başlarken
 Farklı araçları/API 'Leri kullanarak bir, bir, bir
 
-İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı** ' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
+İşlem hattı oluşturmanın en kolay yolu **Kopyalama Sihirbazı**' nı kullanmaktır. Veri kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma hakkında hızlı bir yol için bkz. [öğretici: kopyalama Sihirbazı 'nı kullanarak işlem hattı oluşturma](data-factory-copy-data-wizard-tutorial.md) .
 
-İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Azure Portal** , **Visual Studio** , **Azure PowerShell** , **Azure Resource Manager şablonu** , **.NET API** ve **REST API** . Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+İşlem hattı oluşturmak için aşağıdaki araçları da kullanabilirsiniz: **Azure Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager şablonu**, **.NET API** ve **REST API**. Kopyalama etkinliğine sahip bir işlem hattı oluşturmak için adım adım yönergeler için bkz. [kopyalama etkinliği öğreticisi](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
 
 Araçları veya API 'Leri kullanıp kullanmayacağınızı bir kaynak veri deposundan havuz veri deposuna veri taşınan bir işlem hattı oluşturmak için aşağıdaki adımları gerçekleştirirsiniz:
 
@@ -66,13 +66,13 @@ Bağlı hizmet bir veri deposunu veri fabrikasına bağlar. Bir şirket içi bir
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| tür |Type **özelliği:,** olarak ayarlanmalıdır |Evet |
-| url |Bu URL 'nin URL 'si |Evet |
-| authenticationType |Anonim veya Windows. <br><br> Bir bağlantı **kimliği Için Kerberos kimlik doğrulaması** kullanmak üzere, şirket içi ortamınızı uygun şekilde ayarlamak için [Bu bölüme](#use-kerberos-authentication-for-hdfs-connector) bakın. |Evet |
+| tür |Type **özelliği:,** olarak ayarlanmalıdır |Yes |
+| url |Bu URL 'nin URL 'si |Yes |
+| authenticationType |Anonim veya Windows. <br><br> Bir bağlantı **kimliği Için Kerberos kimlik doğrulaması** kullanmak üzere, şirket içi ortamınızı uygun şekilde ayarlamak için [Bu bölüme](#use-kerberos-authentication-for-hdfs-connector) bakın. |Yes |
 | userName |Windows kimlik doğrulaması için Kullanıcı adı. Kerberos kimlik doğrulaması için, belirtin `<username>@<domain>.com` . |Evet (Windows kimlik doğrulaması için) |
 | password |Windows kimlik doğrulaması için parola. |Evet (Windows kimlik doğrulaması için) |
-| gatewayName |Data Factory hizmetinin, bir hizmetin bir bağlantı kurmak için kullanması gereken ağ geçidinin adı. |Evet |
-| encryptedCredential |Erişim kimlik bilgisinin [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) çıkışı. |Hayır |
+| gatewayName |Data Factory hizmetinin, bir hizmetin bir bağlantı kurmak için kullanması gereken ağ geçidinin adı. |Yes |
+| encryptedCredential |Erişim kimlik bilgisinin [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) çıkışı. |No |
 
 ### <a name="using-anonymous-authentication"></a>Anonim kimlik doğrulaması kullanma
 
@@ -119,11 +119,11 @@ Veri kümelerini tanımlamaya yönelik özellikler & bölümlerin tam listesi i�
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| folderPath |Klasörün yolu. Örnek: `myfolder`<br/><br/>Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örneğin: folder\alt klasörü için klasör alt klasörü \\ \\ ve d:\samplefolder için d: \\ \\ samplefolder belirtin.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Evet |
-| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Hayır |
-| partitionedBy |partitionedBy, zaman serisi verilerine yönelik bir dinamik folderPath, filename belirtmek için kullanılabilir. Örnek: her saat veri için folderPath parametreli parametrelenir. |Hayır |
-| biçim | Şu biçim türleri desteklenir: **TextFormat** , **jsonformat** , **avroformat** , **orcformat** , **parquetformat** . Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |Hayır |
-| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip** , **söndür** , **bzip2** ve **zipsöndür** . Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı** . Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |Hayır |
+| folderPath |Klasörün yolu. Örnek: `myfolder`<br/><br/>Dizedeki özel karakterler için ' \ ' kaçış karakterini kullanın. Örneğin: folder\alt klasörü için klasör alt klasörü \\ \\ ve d:\samplefolder için d: \\ \\ samplefolder belirtin.<br/><br/>Bu özelliği, dilim başlangıç/bitiş tarihi-saati temelinde klasör yolları sağlamak için **Partitionby** ile birleştirebilirsiniz. |Yes |
+| fileName |Tablonun klasördeki belirli bir dosyaya başvurmasını istiyorsanız, **FolderPath** içindeki dosyanın adını belirtin. Bu özellik için herhangi bir değer belirtmezseniz tablo, klasördeki tüm dosyaları gösterir.<br/><br/>Bir çıkış veri kümesi için dosya adı belirtilmediğinde, oluşturulan dosyanın adı şu biçimde olacaktır: <br/><br/>`Data.<Guid>.txt` (örneğin:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |No |
+| partitionedBy |partitionedBy, zaman serisi verilerine yönelik bir dinamik folderPath, filename belirtmek için kullanılabilir. Örnek: her saat veri için folderPath parametreli parametrelenir. |No |
+| biçim | Şu biçim türleri desteklenir: **TextFormat**, **jsonformat**, **avroformat**, **orcformat**, **parquetformat**. Biçim ' in altındaki **Type** özelliğini bu değerlerden birine ayarlayın. Daha fazla bilgi için bkz. [metin biçimi](data-factory-supported-file-and-compression-formats.md#text-format), [JSON biçimi](data-factory-supported-file-and-compression-formats.md#json-format), [avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [orc biçimi](data-factory-supported-file-and-compression-formats.md#orc-format)ve [Parquet biçim](data-factory-supported-file-and-compression-formats.md#parquet-format) bölümleri. <br><br> Dosyaları dosya tabanlı mağazalar (ikili kopya) arasında **olduğu gibi kopyalamak** istiyorsanız, hem giriş hem de çıkış veri kümesi tanımlarının biçim bölümünü atlayın. |No |
+| sıkıştırma | Verilerin türünü ve sıkıştırma düzeyini belirtin. Desteklenen türler şunlardır: **gzip**, **söndür**, **bzip2** ve **zipsöndür**. Desteklenen düzeyler şunlardır: **en iyi** ve **en hızlı**. Daha fazla bilgi için bkz. [Azure Data Factory dosya ve sıkıştırma biçimleri](data-factory-supported-file-and-compression-formats.md#compression-support). |No |
 
 > [!NOTE]
 > filename ve fileFilter aynı anda kullanılamaz.
@@ -170,7 +170,7 @@ Kopyalama etkinliği için kaynak **Filesystemsource** türünde olduğunda, typ
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |Hayır |
+| öz |Verilerin alt klasörlerden veya yalnızca belirtilen klasörden özyinelemeli olarak okunup okunmadığını gösterir. |True, false (varsayılan) |No |
 
 ## <a name="supported-file-and-compression-formats"></a>Desteklenen dosya ve sıkıştırma biçimleri
 Ayrıntılar hakkında [Azure Data Factory makalesinde dosya ve sıkıştırma biçimlerine](data-factory-supported-file-and-compression-formats.md) bakın.
@@ -381,26 +381,26 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
     default realm = REALM.COM (external)
     REALM.com:
         kdc = <your_kdc_server_address>
-        ```
+    ```
 
-**In Azure Data Factory:**
+**Azure Data Factory:**
 
-* Configure the HDFS connector using **Windows authentication** together with your Kerberos principal name and password to connect to the HDFS data source. Check [HDFS Linked Service properties](#linked-service-properties) section on configuration details.
+* Bir **Windows kimlik doğrulamasını** kullanarak, bu TBU veri kaynağına bağlanmak Için, Kerberos asıl adınız ve parolanızla birlikte, Yapılandırma ayrıntıları sayfasında, bu [bağlantı hizmeti özellikleri](#linked-service-properties) bölümüne bakın.
 
-### <a name="kerberos-mutual-trust"></a>Option 2: Enable mutual trust between Windows domain and Kerberos realm
+### <a name="option-2-enable-mutual-trust-between-windows-domain-and-kerberos-realm"></a><a name="kerberos-mutual-trust"></a>2. seçenek: Windows etki alanı ve Kerberos bölgesi arasında karşılıklı güveni etkinleştirin
 
-#### Requirement:
-*   The gateway machine must join a Windows domain.
-*   You need permission to update the domain controller's settings.
+#### <a name="requirement"></a>Malzeme
+*   Ağ Geçidi makinesi bir Windows etki alanına katılması gerekir.
+*   Etki alanı denetleyicisinin ayarlarını güncelleştirmek için izninizin olması gerekir.
 
-#### How to configure:
+#### <a name="how-to-configure"></a>Nasıl yapılandırılır:
 
 > [!NOTE]
-> Replace REALM.COM and AD.COM in the following tutorial with your own respective realm and domain controller as needed.
+> Aşağıdaki öğreticide, REALM.COM ve AD.COM ' i kendi ilgili bölge ve etki alanı denetleyiciyle gerektiği şekilde değiştirin.
 
-**On KDC server:**
+**KDC sunucusunda:**
 
-1. Edit the KDC configuration in **krb5.conf** file to let KDC trust Windows Domain referring to the following configuration template. By default, the configuration is located at **/etc/krb5.conf**.
+1. KDC güveni Windows etki alanının aşağıdaki yapılandırma şablonuna başvurmasına izin vermek için **krb5. conf** dosyasındaki KDC yapılandırmasını düzenleyin. Varsayılan olarak, yapılandırma **/etc/kronb5,conf** konumunda bulunur.
 
    ```config
    [logging]
@@ -467,7 +467,7 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 
     1. Sunucu Yöneticisi > grup ilkesi yönetim > etki alanı > Grup İlkesi nesneleri > varsayılan veya etkin etki alanı Ilkesi ' ne gidin ve düzenleyin.
 
-    2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, bilgisayar yapılandırması > Ilkeler > Windows ayarları > güvenlik ayarları > yerel Ilkeler > güvenlik seçenekleri ' ne gidin ve **ağ güvenliğini yapılandırın: Kerberos Için izin verilen şifreleme türlerini yapılandırın** .
+    2. **Grup İlkesi Yönetimi Düzenleyicisi** açılır penceresinde, bilgisayar yapılandırması > Ilkeler > Windows ayarları > güvenlik ayarları > yerel Ilkeler > güvenlik seçenekleri ' ne gidin ve **ağ güvenliğini yapılandırın: Kerberos Için izin verilen şifreleme türlerini yapılandırın**.
 
     3. KDC 'ye bağlanırken kullanmak istediğiniz şifreleme algoritmasını seçin. Genellikle, tüm seçenekleri seçmeniz yeterlidir.
 
@@ -483,7 +483,7 @@ Bir şirket içi ortamı ayarlamak için, bu şekilde iki seçenek bulunur. Büy
 
     1. **Kullanıcı ve bilgisayar Active Directory** yönetim araçlarını > başlatın.
 
-    2. Gelişmiş özellikleri **görüntüle** gelişmiş özellikleri ' ne tıklayarak yapılandırın  >  **Advanced Features** .
+    2. Gelişmiş özellikleri **görüntüle** gelişmiş özellikleri ' ne tıklayarak yapılandırın  >  .
 
     3. Eşleme oluşturmak istediğiniz hesabı bulun ve **ad eşlemelerini** görüntülemek için sağ tıklayın > **Kerberos adları** sekmesi ' ne tıklayın.
 

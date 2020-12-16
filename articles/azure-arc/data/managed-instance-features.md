@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90942142"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589228"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc etkin SQL yönetilen örneğinin özellikleri ve özellikleri
 
@@ -35,23 +35,23 @@ Azure Arc etkin SQL yönetilen örneği, SQL Server en son kararlı sürümüyle
   
 |Özellik|Azure Arc özellikli SQL Yönetilen Örneği|
 |-------------|----------------|
-|Günlük aktarma|Evet| 
-|Yedekleme sıkıştırması|Evet|
-|Veritabanı anlık görüntüsü|Evet|
+|Günlük aktarma|Yes| 
+|Yedekleme sıkıştırması|Yes|
+|Veritabanı anlık görüntüsü|Yes|
 |Her zaman yük devretme kümesi örneği<sup>1</sup>| Uygulanamaz. Benzer yetenekler mevcuttur |
 |Always on kullanılabilirlik grupları<sup>2</sup>|HA özellikleri planlanmaktadır.|
 |Temel kullanılabilirlik grupları <sup>2</sup>|HA özellikleri planlanmaktadır.|
 |En düşük çoğaltma yürütmesi kullanılabilirlik grubu <sup>2</sup>|HA özellikleri planlanmaktadır.|
-|Kümesiz kullanılabilirlik grubu|Evet|
-|Çevrimiçi sayfa ve dosya geri yükleme|Evet|
-|Çevrimiçi dizin oluşturma|Evet|
-|Sürdürülebilir çevrimiçi dizin yeniden oluştur|Evet|
-|Çevrimiçi şema değişikliği|Evet|
-|Hızlı kurtarma|Evet|
-|Yansıtılmış yedeklemeler|Evet|
-|Etkin bellek ve CPU ekleme|Evet|
-|Şifreli yedekleme|Evet|
-|Azure 'a karma yedekleme (URL 'ye yedekleme)|Evet|
+|Kümesiz kullanılabilirlik grubu|Yes|
+|Çevrimiçi sayfa ve dosya geri yükleme|Yes|
+|Çevrimiçi dizin oluşturma|Yes|
+|Sürdürülebilir çevrimiçi dizin yeniden oluştur|Yes|
+|Çevrimiçi şema değişikliği|Yes|
+|Hızlı kurtarma|Yes|
+|Yansıtılmış yedeklemeler|Yes|
+|Etkin bellek ve CPU ekleme|Yes|
+|Şifreli yedekleme|Yes|
+|Azure 'a karma yedekleme (URL 'ye yedekleme)|Yes|
 
 <sup>1</sup> Pod hatası olan senaryoda, yenı bir SQL yönetilen örneği, verilerinizi içeren kalıcı birime başlayıp yeniden eklenir. [Burada Kubernetes kalıcı birimleri hakkında daha fazla bilgi edinin](https://kubernetes.io/docs/concepts/storage/persistent-volumes).
 
@@ -59,78 +59,78 @@ Azure Arc etkin SQL yönetilen örneği, SQL Server en son kararlı sürümüyle
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS ölçeklenebilirliği ve performansı  
 
-|Özellik|Azure Arc özellikli SQL Yönetilen Örneği|
-|-------------|----------------|
-|Columnstore|   Evet|
-|Kümelenmiş columnstore dizinlerinde büyük nesne ikilileri|    Evet|
-|Çevrimiçi kümelenmemiş columnstore dizini yeniden oluşturma| Evet|
-|Bellek İçi OLTP|    Evet|
-|Kalıcı ana bellek|    Evet|
-|Tablo ve Dizin bölümlendirme|  Evet
-|Veri sıkıştırma|  Evet|
-|Resource Governor| Evet|
-|Bölümlenmiş tablo paralelliği| Evet|
-|NUMA 'yı algılayan ve büyük sayfa belleği ve arabellek dizisi ayırma|  Evet|
-|GÇ kaynak İdaresi|    Evet|
-|Gecikmeli dayanıklılık|    Evet|
-|Otomatik Ayarlama|  Evet|
-|Batch modu Uyarlamalı birleşimler| Evet|
-|Toplu iş modu bellek Izni geri bildirimi|  Evet|
-|Çok deyimli tablo değerli Işlevler için araya eklemeli yürütme|  Evet|
-|Toplu ekleme geliştirmeleri   |Evet|
+| Özellik | Azure Arc özellikli SQL Yönetilen Örneği |
+|--|--|
+| Columnstore | Yes |
+| Kümelenmiş columnstore dizinlerinde büyük nesne ikilileri | Yes |
+| Çevrimiçi kümelenmemiş columnstore dizini yeniden oluşturma | Yes |
+| Bellek İçi OLTP | Yes |
+| Kalıcı ana bellek | Yes |
+| Tablo ve Dizin bölümlendirme | Yes |
+| Veri sıkıştırma | Yes |
+| Resource Governor | Yes |
+| Bölümlenmiş tablo paralelliği | Yes |
+| NUMA 'yı algılayan ve büyük sayfa belleği ve arabellek dizisi ayırma | Yes |
+| GÇ kaynak İdaresi | Yes |
+| Gecikmeli dayanıklılık | Yes |
+| Otomatik Ayarlama | Yes |
+| Batch modu Uyarlamalı birleşimler | Yes |
+| Toplu iş modu bellek Izni geri bildirimi | Yes |
+| Çok deyimli tablo değerli Işlevler için araya eklemeli yürütme | Yes |
+| Toplu ekleme geliştirmeleri | Yes |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS güvenliği  
-|Özellik|Azure Arc özellikli SQL Yönetilen Örneği|
-|-------------|----------------|
-|Satır düzeyi güvenlik|    Evet|
-|Always Encrypted|  Evet|
-|Güvenli şifreleme ile Always Encrypted| Hayır|
-|Dinamik veri maskeleme|  Evet|
-|Temel denetim|    Evet|
-|Hassas denetim| Evet|
-|Saydam veritabanı şifrelemesi|   Evet|
-|Kullanıcı tanımlı roller|    Evet|
-|Bağımsız veritabanları|   Evet|
-|Yedeklemeler için şifreleme|    Evet|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS güvenliği
+
+| Özellik | Azure Arc özellikli SQL Yönetilen Örneği |
+|--|--|
+| Satır düzeyi güvenlik | Yes |
+| Always Encrypted | Yes |
+| Güvenli Kuşatmalarla Always Encrypted | No |
+| Dinamik veri maskeleme | Yes |
+| Temel denetim | Yes |
+| Hassas denetim | Yes |
+| Saydam veritabanı şifrelemesi | Yes |
+| Kullanıcı tanımlı roller | Yes |
+| Bağımsız veritabanları | Yes |
+| Yedeklemeler için şifreleme | Yes |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS yönetilebilirliği  
 
-|Özellik|Azure Arc özellikli SQL Yönetilen Örneği|
-|-------------|----------------|
-|Adanmış yönetici bağlantısı|    Evet|
-|PowerShell betik oluşturma desteği|  Evet|
-|Veri katmanı uygulaması bileşen işlemleri için destek-Ayıkla, dağıt, yükselt, Sil| Evet
-|İlke Otomasyonu (zamanlamayı ve değişikliği denetle)   |Evet|
-|Performans veri toplayıcısı|    Evet|
-|Standart performans raporları   |Evet|
-|Plan kılavuzlarını planlıyor ve planlıyor| Evet|
-|Dizinli görünümlerin doğrudan sorgusu (NOEXPAND ipucu kullanarak)|   Evet|
-|Otomatik dizinli görünümler Bakımı    |Evet|
-|Dağıtılmış bölümlenmiş görünümler| Evet|
-|Paralel dizinli işlemler    |Evet|
-|Sorgu iyileştiricisi tarafından dizinli görünümün otomatik kullanımı|  Evet|
-|Paralel tutarlılık denetimi |Evet|
-
+| Özellik | Azure Arc özellikli SQL Yönetilen Örneği |
+|--|--|
+| Adanmış yönetici bağlantısı | Yes |
+| PowerShell betik oluşturma desteği | Yes |
+| Veri katmanı uygulaması bileşen işlemleri için destek-Ayıkla, dağıt, yükselt, Sil | Yes |
+| İlke Otomasyonu (zamanlamayı ve değişikliği denetle) | Yes |
+| Performans veri toplayıcısı | Yes |
+| Standart performans raporları | Yes |
+| Plan kılavuzlarını planlıyor ve planlıyor | Yes |
+| Dizinli görünümlerin doğrudan sorgusu (NOEXPAND ipucu kullanarak) | Yes |
+| Otomatik dizinli görünümler Bakımı | Yes |
+| Dağıtılmış bölümlenmiş görünümler | Yes |
+| Paralel dizinli işlemler | Yes |
+| Sorgu iyileştiricisi tarafından dizinli görünümün otomatik kullanımı | Yes |
+| Paralel tutarlılık denetimi | Yes |
 
 ### <a name="programmability"></a><a name="Programmability"></a> İle  
 
-|Özellik|Azure Arc özellikli SQL Yönetilen Örneği|
-|-------------|----------------|
-|JSON|  Evet |       |
-|Sorgu Deposu    |Evet    |       
-|Zamana bağlı|  Evet |       
-|Yerel XML desteği|    Evet |       
-|XML dizini oluşturma   |Evet    |       
-|& UPSERT özellikleri BIRLEŞTIRME|   Evet |       
-|Tarih ve saat veri türleri    |Evet    |       
-|Uluslararası duruma getirme desteği|  Evet |       
-|Tam metin ve anlamsal arama |    Hayır      |
-|Sorgudaki dilin belirtimi |Evet        |   
-|Hizmet Aracısı (mesajlaşma)|    Evet     |   
-|Transact-SQL uç noktaları|    Evet |       
-|Graf| Evet |   
-|Machine Learning Services| Hayır  |   
-|PolyBase| Hayır   |
+| Özellik | Azure Arc özellikli SQL Yönetilen Örneği |
+|--|--|
+| JSON | Evet |
+| Sorgu Deposu | Yes |  |
+| Zamana bağlı | Yes |  |
+| Yerel XML desteği | Yes |  |
+| XML dizini oluşturma | Yes |  |
+| & UPSERT özellikleri BIRLEŞTIRME | Yes |  |
+| Tarih ve saat veri türleri | Yes |  |
+| Uluslararası duruma getirme desteği | Yes |  |
+| Tam metin ve anlamsal arama | No |
+| Sorgudaki dilin belirtimi | Yes |  |
+| Hizmet Aracısı (mesajlaşma) | Yes |  |
+| Transact-SQL uç noktaları | Yes |  |
+| Graf | Yes |  |
+| Machine Learning Services | No |  |
+| PolyBase | No |
 
 
 ### <a name="tools"></a>Araçlar
@@ -139,16 +139,16 @@ Azure Arc etkin SQL yönetilen örneği, verilerinizi yönetmenize yardımcı ol
 
 | **Araç** | Azure Arc özellikli SQL Yönetilen Örneği|
 | --- | --- | --- |
-| Azure portal <sup>1</sup> | Hayır |
-| Azure CLI | Hayır |
-| [Azure Data Studio](/sql/azure-data-studio/what-is) | Evet |
-| Azure PowerShell | Evet |
-| [BACPAC dosyası (dışarı aktarma)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Evet |
-| [BACPAC dosyası (içeri aktarma)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Evet |
-| [SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Evet |
-| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Evet |
-| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Evet |
-| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Evet |
+| Azure portal <sup>1</sup> | No |
+| Azure CLI | No |
+| [Azure Data Studio](/sql/azure-data-studio/what-is) | Yes |
+| Azure PowerShell | Yes |
+| [BACPAC dosyası (dışarı aktarma)](/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Yes |
+| [BACPAC dosyası (içeri aktarma)](/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Yes |
+| [SQL Server Veri Araçları (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt) | Yes |
+| [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) | Yes |
+| [SQL Server PowerShell](/sql/relational-databases/scripting/sql-server-powershell) | Yes |
+| [SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) | Yes |
 
 <sup>1</sup> Azure Portal yalnızca önizleme sırasında salt okuma modunda Azure Arc etkin SQL yönetilen örneklerini görüntülemek için kullanılır.
 
@@ -170,7 +170,7 @@ Aşağıdaki özellikler ve hizmetler, Azure Arc etkin SQL yönetilen örneği i
 | **SQL Server Agent** |  Alt sistemler: CmdExec, PowerShell, Queue Reader, SSIS, SSAS, SSRS |
 | &nbsp; | Uyarılar |
 | &nbsp; | Yönetilen Yedekleme |
-| **Yüksek Kullanılabilirlik** | Veritabanı yansıtma  |
+| **Yüksek kullanılabilirlik** | Veritabanı yansıtma  |
 | **Güvenlik** | Genişletilebilir anahtar yönetimi |
 | &nbsp; | Bağlı sunucular için AD kimlik doğrulaması | 
 | &nbsp; | Kullanılabilirlik grupları (AGs) için AD kimlik doğrulaması | 

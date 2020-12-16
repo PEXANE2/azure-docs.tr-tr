@@ -5,14 +5,14 @@ author: yashesvi
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 89b01205c08216b3ce1ec2d36cce48335b49eb47
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b0f17149eb646b6108dc6a81922e6e5b00f143d6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344292"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560551"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure Rezervasyonları için self servis değişimler ve para iadeleri
 
@@ -21,7 +21,7 @@ Azure Ayrılmış Sanal Makine Örnekleri, değişen ihtiyaçlarınızın karş�
 Self servis değişim ve iptal özelliği US Government Kurumsal Anlaşma müşterileri tarafından kullanılamaz. Kullandıkça Öde ve Bulut Çözümü Sağlayıcısı (CSP) da dahil olmak üzere diğer US Government abonelik türleri desteklenir.
 
 > [!NOTE]
-> - **Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır**. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](./manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+> - **Mevcut rezervasyonu değiştirmek veya para iadesi almak için Rezervasyon Siparişi üzerinde sahip erişiminiz olmalıdır**. [Rezervasyonu yönetebilecek kullanıcıları ekleyebilir veya değiştirebilirsiniz](./manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 > - Microsoft şu anda rezervasyon para iadelerinde erken sonlandırma ücretlerini almamaktadır. Gelecekte yapılacak para iadelerinde ücretleri alabiliriz. Şu anda bu ücretin etkinleştirileceği tarihi belirlemedik.
 
 ## <a name="how-to-exchange-or-refund-an-existing-reservation"></a>Mevcut rezervasyonu değiştirme veya rezervasyon için para iadesi alma
@@ -66,7 +66,7 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 **Değişim ilkeleri**
 
 - Aynı türde yeni bir rezervasyon satın almak için birden fazla mevcut rezervasyonu iade edebilirsiniz. Bir türdeki rezervasyonu başka bir türle değiştiremezsiniz. Örneğin, bir SQL rezervasyonu satın almak için sanal makine rezervasyonu iade edemezsiniz. Aile, seri, sürüm, SKU, bölge, miktar ve süre gibi bir rezervasyon özelliğini değişim ile değiştirebilirsiniz.
-- Yalnızca rezervasyon sahipleri bir değişimi işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Yalnızca rezervasyon sahipleri bir değişimi işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 - Değişim, para iadesi veya yeniden satın alma olarak işleme alınır. İptal ve yeniden rezervasyon satın alma için farklı işlemler oluşturulur. Eşit olarak dağıtılan rezervasyon tutarı, takas yapılan rezervasyonlar için iade edilir. Yeni satın alma için tam ücret size yansıtılır. Eşit olarak dağıtılan rezervasyon tutarı, iade edilen rezervasyonun günlere eşit olarak dağıtılan kalan değeridir.
 - Rezervasyonu satın almak için kullanılan kurumsal anlaşmanın süresi dolup yeni bir anlaşma olarak yenilenmiş olsa da rezervasyonları değiştiremez veya para iadesi alamazsınız.
 - Yeni rezervasyonun yaşam süresi taahhüdü, iade edilen rezervasyonun kalan taahhüdüne eşit veya ondan büyük olmalıdır. Örnek: Aylık 100 ABD Doları tutarında olan ve 18. ödemeden sonra değiştirilen üç yıllık bir rezervasyon için, yeni rezervasyonun yaşam süresi taahhüdü 1.800 ABD Doları veya daha fazla olmalıdır (aylık veya peşin).
@@ -79,7 +79,7 @@ Azure, iptaller, değişimler ve para iadeleri için aşağıdaki ilkelere sahip
 - Faturalama profili veya tek bir kayıt için iptal edilen toplam taahhüt son 12 aylık hareketli zaman penceresinde 50.000 ABD Dolarını aşamaz. Örneğin aylık 100 ABD Doları tutarında olan ve 18. ayda para iadesi yapılan üç yıllık bir rezervasyon için, iptal edilen taahhüt 1.800 ABD Dolarıdır. Para iadesinden sonra, yeni kullanılabilir para iadesi limitiniz 48.200 ABD Doları olur. Para iadesinden 365 gün sonra 48.200 ABD Doları tutarındaki limit 1.800 ABD Doları daha artırılarak yeni havuzunuz 50.000 ABD Doları olur. Faturalama profili veya EA kaydı için diğer tüm rezervasyon iptalleri aynı havuzdan düşülür ve aynı yenileme mantığı uygulanır.
 - Azure bir faturalama profili veya EA kaydı için son 12 aylık sürede 50.000 ABD Doları sınırını aşan hiçbir para iadesini işlemez.
 - Para iadeleri, satın aldığınız fiyattan veya geçerli rezervasyon fiyatından düşük olana göre hesaplanır.
-- Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Yalnızca rezervasyon siparişi sahipleri para iadesini işleme alabilir. [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme hakkında bilgi edinin](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dc6056653fc50976439d4b16594e6d554e62f061
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65107b0924351ca6debf37201e8849ffe8dd1eab
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652831"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589436"
 ---
 # <a name="nvv3-series"></a>NVv3 serisi
 
@@ -26,6 +26,7 @@ NVv3 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV ör
 [Dinamik geçiş](maintenance-and-updates.md): desteklenmiyor<br>
 [Güncelleştirmeleri koruyan bellek](maintenance-and-updates.md): desteklenmiyor<br>
 [VM oluşturma desteği](generation-2.md): 1. ve 2. nesil<br>
+Hızlandırılmış ağ: desteklenir<br>
 <br>
 
 | Boyut | Sanal işlemci | Bellek: GiB | Geçici depolama (SSD) GiB | GPU | GPU belleği: GiB | Maksimum veri diskleri | Önbelleğe alınmamış maksimum disk aktarım hızı: ıOPS/MBps | En fazla NIC/beklenen ağ bant genişliği (Mbps) | Sanal Iş Istasyonları | Sanal Uygulamalar |
@@ -35,8 +36,6 @@ NVv3 örneklerinde her GPU bir KıLAVUZ lisansıyla gelir. Bu lisans, bir NV ör
 | Standard_NV48s_v3 |48 | 448 | 1280 | 4 | 32 | 32 | 80000/800 | 8 / 24000 | 4 | 100 |
 
 <sup>1</sup> 1 GPU = bir yarı M60 kartı.
-
-<sup>2</sup> bu durumda, bu VM ailesinde hızlandırılmış ağ desteklenmez. bu nedenle gerçek dünya ağ performansı burada yakalanan en yüksek teorik sayıdan daha düşük olabilir.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

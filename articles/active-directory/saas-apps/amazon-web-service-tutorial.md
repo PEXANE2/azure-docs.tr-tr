@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 1fe228eb7e8bb54e8ebb9cbf31ef0035a0038718
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 237ed71f058ae099f19924481eb4dbeb2e2aba05
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368775"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589449"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Öğretici: Amazon Web Services (AWS) ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -31,7 +31,7 @@ Bu öğreticide, Amazon Web Services (AWS) Azure Active Directory (Azure AD) ile
 
 ![Azure AD ve AWS ilişkisi diyagramı](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
-Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örneğin:
+Birden çok örnek için birden çok tanımlayıcı yapılandırabilirsiniz. Örnek:
 
 * `https://signin.aws.amazon.com/saml#1`
 
@@ -50,7 +50,7 @@ Bu yaklaşım aşağıdaki nedenlerle önerilir:
 > [!Note]
 > Yalnızca bir galeri uygulaması kullandığınızdan emin olun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -113,11 +113,11 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. AWS uygulaması, yukarıdakine ek olarak, aşağıda gösterilen SAML yanıtına daha fazla öznitelik geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Ad  | Kaynak özniteliği  | Ad Alanı |
+    | Name  | Kaynak özniteliği  | Ad Alanı |
     | --------------- | --------------- | --------------- |
     | Roleoturumadı | User. UserPrincipalName | `https://aws.amazon.com/SAML/Attributes` |
-    | Rol            | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
-    | SessionDuration             | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
+    | Rol | Kullanıcı. atandroles |  `https://aws.amazon.com/SAML/Attributes` |
+    | SessionDuration | "900 saniye (15 dakika) ila 43200 saniye (12 saat) arasında bir değer belirtin" |  `https://aws.amazon.com/SAML/Attributes` |
 
     > [!NOTE]
     > AWS, uygulamaya atanan kullanıcılar için roller bekliyor. Kullanıcılara uygun roller atanabilmeleri için lütfen bu rolleri Azure AD 'de ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) bakın

@@ -5,12 +5,12 @@ author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 31c4e6383b5eaea2bb66dc1baafa0fbff4918a7c
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928537"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589126"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Öğretici: ARM şablon dağıtımlarının sorunlarını giderme
 
@@ -33,7 +33,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -43,7 +43,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonlarından](https://azure.microsoft.com/resources/templates/) [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) adlı bir şablon açın ve iki şablon sorunu kurun.
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
 2. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
@@ -51,16 +51,16 @@ Bu makaleyi tamamlamak için gerekenler:
     ```
 
 3. Dosyayı açmak için **Aç**’ı seçin.
-4. **Apiversion** satırını şu satıra değiştirin:
+4. `apiVersion`Satırı aşağıdaki satıra değiştirin:
 
     ```json
     "apiVersion1": "2018-07-02",
     ```
 
-    - **apiVersion1** geçersiz öğe adı. Bu bir doğrulama hatasıdır.
-    - API sürümü "2018-07-01" olacaktır.  Bu bir dağıtım hatasıdır.
+    - `apiVersion1` geçersiz bir öğe adı. Bu bir doğrulama hatasıdır.
+    - API sürümü olmalıdır `"2018-07-01"` .  Bu bir dağıtım hatasıdır.
 
-5. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
+5. Dosyayı   >  yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** _'_ i seçin.
 
 ## <a name="troubleshoot-the-validation-error"></a>Doğrulama hatası sorunlarını giderme
 
@@ -68,13 +68,13 @@ Bu makaleyi tamamlamak için gerekenler:
 
 Kabuktan şuna benzer bir hata alacaksınız:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:29:24 PM - Error: Code=InvalidRequestContent; Message=The request content was invalid and could not be deserialized: 'Could not find member 'apiVersion1' on object of type 'TemplateResource'. Path 'properties.template.resources[0].apiVersion1', line 36, position 24.'.
 ```
 
-Hata iletisi, sorunun **apiVersion1** olduğunu gösterir.
+Hata iletisi, sorun olduğunu gösterir `apiVersion1` .
 
-**ApiVersion1** to **apiversion** ile değiştirerek sorunu düzeltmek için Visual Studio Code kullanın ve şablonu kaydedin.
+Öğesini olarak değiştirerek sorunu düzeltmek için Visual Studio Code kullanın `apiVersion1` `apiVersion` ve şablonu kaydedin.
 
 ## <a name="troubleshoot-the-deployment-error"></a>Dağıtım hatası sorunlarını giderme
 
@@ -82,7 +82,7 @@ Hata iletisi, sorunun **apiVersion1** olduğunu gösterir.
 
 Kabuktan şuna benzer bir hata alacaksınız:
 
-```
+```azurepowershell
 New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageAccounts 'storeqii7x2rce77dc' failed with message '{
   "error": {
     "code": "NoRegisteredProviderFound",

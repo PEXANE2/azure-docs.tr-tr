@@ -6,12 +6,12 @@ ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 94509ba209e95eb9199ddd760529d47eb48bda10
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: fc1401959adb97f8c4caf6d413a212d9f3b62801
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930809"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588123"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-arm-templates"></a>Öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma
 
@@ -28,7 +28,7 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 
@@ -38,15 +38,16 @@ Bu makaleyi tamamlamak için gerekenler:
 
 [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/) , ARM şablonları için bir depodur. Sıfırdan bir şablon oluşturmak yerine örnek bir şablon bulabilir ve bunu özelleştirebilirsiniz. Bu hızlı başlangıçta kullanılan şablon [Standart depolama hesabı oluşturma](https://azure.microsoft.com/resources/templates/101-storage-account-create/) olarak adlandırılır. Şablon, Azure Depolama hesabı kaynağını tanımlar.
 
-1. Visual Studio Code **Dosya** > **Aç dosya**' yı seçin.
-2. **Dosya adı**’na şu URL’yi yapıştırın:
+1. Visual Studio Code **Dosya**  >  **Aç dosya**' yı seçin.
+1. **Dosya adı**’na şu URL’yi yapıştırın:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
-3. Dosyayı açmak için **Aç**’ı seçin.
-4. Şablonda tanımlı bir 'Microsoft.Storage/storageAccounts' kaynağı bulunur. Şablonu, [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Şablonu özelleştirmeden önce temel noktaları kavramak faydalı olacaktır.
-5. Dosyayı  > yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** **'** i seçin.
+
+1. Dosyayı açmak için **Aç**’ı seçin.
+1. `Microsoft.Storage/storageAccounts`Şablonda tanımlı bir kaynak vardır. Şablonu, [şablon başvurusu](/azure/templates/Microsoft.Storage/storageAccounts) ile karşılaştırın. Özelleştirme yapmadan önce şablon hakkında bazı temel bilgileri almak faydalı olur.
+1. Dosyayı   >  yerel bilgisayarınızaazuredeploy.jsolarak kaydetmek için dosya **farklı kaydet** _'_ i seçin.
 
 ## <a name="edit-the-template"></a>Şablonu düzenleme
 
@@ -56,10 +57,10 @@ Visual Studio Code’dan aşağıdaki dört değişikliği yapın:
 
 ![Azure Resource Manager birden çok örnek oluşturur](./media/template-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances.png)
 
-1. Depolama hesabı kaynak tanımına bir `copy` öğesi ekleyin. Kopyalama öğesinde, bu döngü için yineleme sayısı ve bir değişken belirtin. Sayı değeri pozitif bir tamsayı olmalıdır ve 800’ü aşamaz.
-2. `copyIndex()` İşlevi, döngüde geçerli yinelemeyi döndürür. Dizini ad ön eki olarak kullanırsınız. `copyIndex()` sıfır tabanlıdır. Dizin değerini kaydırmak için copyIndex () işlevine bir değer geçirebilirsiniz. Örneğin, *copyIndex(1)*.
-3. Artık kullanılmadığı için **değişkenler** öğesini silin.
-4. **Çıktılar** öğesini silin. Artık buna ihtiyacınız yoktur.
+1. Depolama hesabı kaynak tanımına bir `copy` öğesi ekleyin. `copy`Öğesinde, bu döngü için yineleme ve değişken sayısını belirtirsiniz. Sayı değeri pozitif bir tamsayı olmalıdır ve 800’ü aşamaz.
+2. `copyIndex()` İşlevi, döngüde geçerli yinelemeyi döndürür. Dizini ad ön eki olarak kullanırsınız. `copyIndex()` sıfır tabanlıdır. Dizin değerini kaydırmak için, işlevinde bir değer geçirebilirsiniz `copyIndex()` . Örneğin, `copyIndex(1)`.
+3. `variables`Artık kullanılmadığından öğeyi silin.
+4. Öğeyi silin `outputs` . Artık gerekli değildir.
 
 Tamamlanan şablon aşağıdaki gibi görünür:
 
@@ -109,17 +110,17 @@ Tamamlanan şablon aşağıdaki gibi görünür:
 }
 ```
 
-Birden çok örnek oluşturma hakkında daha fazla bilgi için bkz. [ARM şablonlarındaki bir kaynağın veya özelliğin birden çok örneğini dağıtma](./copy-resources.md)
+Birden çok örnek oluşturma hakkında daha fazla bilgi için bkz. [ARM şablonlarında kaynak yinelemesi](./copy-resources.md)
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
 1. [Azure Cloud Shell](https://shell.azure.com) oturum açın
 
-1. Sol üst köşedeki **PowerShell** veya **Bash** (CLI için) öğesini seçerek tercih ettiğiniz ortamı seçin.  Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
+1. Sol üst köşedeki **PowerShell** veya **Bash** (CLI için) öğesini seçerek tercih ettiğiniz ortamı seçin. Geçiş yaptığınızda kabuğun yeniden başlatılması gerekir.
 
     ![Dosyayı karşıya yükleme Cloud Shell Azure portal](./media/template-tutorial-use-template-reference/azure-portal-cloud-shell-upload-file.png)
 
-1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, dosyanın başarıyla karşıya yüklendiğini doğrulamak için **ls** komutunu ve **Cat** komutunu kullanabilirsiniz.
+1. **Dosyaları karşıya yükle/indir**'i seçin ve sonra da **Karşıya Yükle**'yi seçin. Önceki ekran görüntüsüne bakın. Önceki bölümde kaydettiğiniz dosyayı seçin. Dosyayı karşıya yükledikten sonra, `ls` `cat` dosyanın başarıyla karşıya yüklendiğini doğrulamak için komutunu ve komutunu kullanabilirsiniz.
 
 1. Cloud Shell aşağıdaki komutları çalıştırın. PowerShell kodunu veya CLI kodunu gösteren sekmeyi seçin.
 
@@ -148,9 +149,9 @@ Birden çok örnek oluşturma hakkında daha fazla bilgi için bkz. [ARM şablon
 
     ---
 
-Üç depolama hesabının tümünü listelemek için --ad parametresini atlayın:
+Başarılı bir şablon dağıtımı sonrasında, belirtilen kaynak grubunda oluşturulan üç depolama hesabını görüntüleyebilirsiniz. Depolama hesabı adlarını, şablondaki ad tanımıyla karşılaştırın.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="cli"></a>[CLI](#tab/azure-cli)
 
 ```azurecli
 echo "Enter a project name that is used to generate resource group name:" &&
@@ -172,8 +173,6 @@ Write-Host "Press [ENTER] to continue ..."
 
 ---
 
-Depolama hesabı adlarını, şablondaki ad tanımıyla karşılaştırın.
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığınız kaynakları temizleyin.
@@ -185,7 +184,7 @@ Artık Azure kaynakları gerekli değilse, kaynak grubunu silerek dağıttığı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, birden çok depolama hesabı örneği oluşturmayı öğrendiniz.  Bir sonraki öğreticide, birden fazla kaynağa ve birden çok kaynak türüne sahip bir şablon geliştireceksiniz. Bazı kaynakların bağımlı kaynakları vardır.
+Bu öğreticide, birden çok depolama hesabı örneği oluşturmayı öğrendiniz. Bir sonraki öğreticide, birden fazla kaynağa ve birden çok kaynak türüne sahip bir şablon geliştireceksiniz. Bazı kaynakların bağımlı kaynakları vardır.
 
 > [!div class="nextstepaction"]
 > [Bağımlı kaynaklar oluşturma](./template-tutorial-create-templates-with-dependent-resources.md)

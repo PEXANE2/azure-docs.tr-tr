@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c40a0cb362f8c43541194cd1ca0c57abbf8fa974
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033111"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588599"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) uygulama proxy 'Si hakkında sık sorulan sorular
 
@@ -80,10 +80,12 @@ Bağlayıcıyla birlikte yüklenen performans Izleme sayaçları vardır. Bunlar
 Bağlayıcının aynı alt ağda olması gerekmez. Ancak, kaynak için ad çözümlemesi (DNS, ana bilgisayar dosyası) ve gerekli ağ bağlantısı (kaynağa yönlendirme, kaynakta açık bağlantı noktaları, vb.) gerekir. Öneriler için [Azure Active Directory uygulama ara sunucusu kullanırken ağ topolojisi konuları](application-proxy-network-topology.md)bölümüne bakın.
 
 ### <a name="what-versions-of-windows-server-can-i-install-a-connector-on"></a>Windows Server 'ın hangi sürümlerini üzerine bir bağlayıcı yükleyebilirim?
+
 Uygulama proxy 'Si Windows Server 2012 R2 veya üstünü gerektirir. Windows Server 2019 için HTTP2 üzerinde şu anda bir sınırlama vardır. Bağlayıcıyı Windows Server 2019 ' de başarılı bir şekilde kullanabilmek için aşağıdaki kayıt defteri anahtarını eklemeniz ve sunucuyu yeniden başlatmanız gerekir:
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+
+```
+HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+```
 
 ## <a name="application-configuration"></a>Uygulama yapılandırması
 
@@ -131,7 +133,7 @@ Hayır, Azure AD 'deki bir Konuk Kullanıcı yukarıda belirtilen oturum açma k
 
 Bu durumda, "Kullanıcı asıl adı" na geri dönüş olur. B2B senaryosu hakkında daha fazla bilgi için lütfen [Azure AD 'de B2B kullanıcılarına şirket içi uygulamalarınıza erişim verme](../external-identities/hybrid-cloud-to-on-premises.md)konusunu okuyun.
 
-## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulaması
+## <a name="pass-through-authentication"></a>Doğrudan kimlik doğrulama
 
 ### <a name="can-i-use-conditional-access-policies-for-applications-published-with-pass-through-authentication"></a>Doğrudan kimlik doğrulamasıyla yayımlanan uygulamalar için koşullu erişim Ilkelerini kullanabilir miyim?
 

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087035"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587885"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda çoğaltma gecikmesi sorununu giderme
 
@@ -31,9 +31,12 @@ ms.locfileid: "93087035"
 
 Bu makalede, MySQL için Azure veritabanı 'nda çoğaltma gecikmesini nasıl giderebileceğinizi öğreneceksiniz. Çoğaltma sunucularında daha fazla çoğaltma gecikme süresinin bazı yaygın nedenlerini de anlamış olursunuz.
 
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
+
 ## <a name="replication-concepts"></a>Çoğaltma kavramları
 
-İkili günlük etkinleştirildiğinde, kaynak sunucu kaydedilmiş işlemleri ikili günlüğe yazar. İkili günlük çoğaltma için kullanılır. 16 TB 'a kadar depolamayı destekleyen yeni sağlanan tüm sunucular için varsayılan olarak açıktır. Çoğaltma sunucularında, her çoğaltma sunucusunda iki iş parçacığı çalışır. Bir iş parçacığı *GÇ iş parçacığıdır* ve diğeri *SQL iş parçacığıdır* :
+İkili günlük etkinleştirildiğinde, kaynak sunucu kaydedilmiş işlemleri ikili günlüğe yazar. İkili günlük çoğaltma için kullanılır. 16 TB 'a kadar depolamayı destekleyen yeni sağlanan tüm sunucular için varsayılan olarak açıktır. Çoğaltma sunucularında, her çoğaltma sunucusunda iki iş parçacığı çalışır. Bir iş parçacığı *GÇ iş parçacığıdır* ve diğeri *SQL iş parçacığıdır*:
 
 - GÇ iş parçacığı kaynak sunucuya bağlanır ve ikili günlükleri güncelleştirilmiş olarak ister. Bu iş parçacığı ikili günlük güncelleştirmelerini alır. Bu güncelleştirmeler bir çoğaltma sunucusuna, *geçiş günlüğü* adlı yerel bir günlüğe kaydedilir.
 - SQL iş parçacığı geçiş günlüğünü okur ve sonra veri değişikliklerini çoğaltma sunucularında uygular.
@@ -87,14 +90,14 @@ mysql> SHOW SLAVE STATUS;
 Tipik bir çıktı aşağıda verilmiştir:
   
 >[!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="İzleme çoğaltma gecikmesi&quot;:::
+> :::image type="content" source="./media/howto-troubleshoot-replication-latency/show-status.png" alt-text="İzleme çoğaltma gecikmesi":::
 
 
 Çıktı çok fazla bilgi içerir. Normal olarak, yalnızca aşağıdaki tabloda açıklanan satırlara odaklanmanız gerekir.
 
 |Ölçüm|Açıklama|
 |---|---|
-|Slave_IO_State| GÇ iş parçacığının geçerli durumunu temsil eder. Normalde, kaynak (ana) sunucusu eşitleme ise durum &quot;ana öğe gönderilmesi bekleniyor&quot; olur. &quot;Ana ağa bağlanma" gibi bir durum, çoğaltmanın kaynak sunucuyla olan bağlantıyı kaybettiğini belirtir. Kaynak sunucunun çalıştığından emin olun veya bir güvenlik duvarının bağlantıyı engelleyip engellemediğini denetleyin.|
+|Slave_IO_State| GÇ iş parçacığının geçerli durumunu temsil eder. Normalde, kaynak (ana) sunucusu eşitleme ise durum "ana öğe gönderilmesi bekleniyor" olur. "Ana ağa bağlanma" gibi bir durum, çoğaltmanın kaynak sunucuyla olan bağlantıyı kaybettiğini belirtir. Kaynak sunucunun çalıştığından emin olun veya bir güvenlik duvarının bağlantıyı engelleyip engellemediğini denetleyin.|
 |Master_Log_File| Kaynak sunucunun yazıldığı ikili günlük dosyasını temsil eder.|
 |Read_Master_Log_Pos| Kaynak sunucunun ikili günlük dosyasında yazdığını gösterir.|
 |Relay_Master_Log_File| Çoğaltma sunucusunun kaynak sunucudan okuduğu ikili günlük dosyasını temsil eder.|
