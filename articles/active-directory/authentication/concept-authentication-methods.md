@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/15/2020
+ms.date: 12/14/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: e239d9da4a083b50460ef746f9c538aa3081a577
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027331"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562132"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory'de mevcut olan kimlik doğrulaması ve doğrulama yöntemleri
 
@@ -26,9 +26,11 @@ Azure Active Directory (Azure AD) hesapları için oturum açma deneyiminin bir 
 
 Windows Hello, FIDO2 güvenlik anahtarları ve Microsoft Authenticator uygulaması gibi parolasız kimlik doğrulama yöntemleri, en güvenli oturum açma olaylarını sağlar.
 
-Azure AD Multi-Factor Authentication, yalnızca bir Kullanıcı oturum açtığında bir parola kullanarak ek güvenlik sağlar. Kullanıcıya bir anında iletme bildirimine yanıt vermek, bir yazılım veya donanım belirtecinden bir kod girmek ya da bir SMS veya telefon çağrısına yanıt vermek gibi ek kimlik doğrulama biçimleri istenebilir.
+Azure AD Multi-Factor Authentication (MFA), yalnızca bir Kullanıcı oturum açtığında bir parola kullanarak ek güvenlik sağlar. Kullanıcıya bir anında iletme bildirimine yanıt vermek, bir yazılım veya donanım belirtecinden bir kod girmek ya da bir SMS veya telefon çağrısına yanıt vermek gibi ek kimlik doğrulama biçimleri istenebilir.
 
-Kullanıcı taslak deneyimini basitleştirmek ve MFA ve SSPR için kaydolmak üzere [Birleşik güvenlik bilgileri kaydını etkinleştirmenizi](howto-registration-mfa-sspr-combined.md)öneririz. Dayanıklılık için, kullanıcıların birden çok kimlik doğrulama yöntemi kaydetmesini gerektirmenizi öneririz. Oturum açma veya SSPR sırasında bir kullanıcı için bir yöntem kullanılamadığında, başka bir yöntemle kimlik doğrulamayı seçebilirler. Daha fazla bilgi için bkz. [Azure AD 'de esnek erişim denetimi yönetim stratejisi oluşturma](concept-resilient-controls.md).
+Kullanıcı çıkarma deneyimini basitleştirmek ve hem MFA hem de Self servis parola sıfırlama (SSPR) için kaydolmak üzere [Birleşik güvenlik bilgileri kaydını etkinleştirmenizi](howto-registration-mfa-sspr-combined.md)öneririz. Dayanıklılık için, kullanıcıların birden çok kimlik doğrulama yöntemi kaydetmesini gerektirmenizi öneririz. Oturum açma veya SSPR sırasında bir kullanıcı için bir yöntem kullanılamadığında, başka bir yöntemle kimlik doğrulamayı seçebilirler. Daha fazla bilgi için bkz. [Azure AD 'de esnek erişim denetimi yönetim stratejisi oluşturma](concept-resilient-controls.md).
+
+Kuruluşunuzun güvenliğini sağlamak için en iyi kimlik doğrulama yöntemini seçmenize yardımcı olmak üzere oluşturduğumuz bir [video](https://www.youtube.com/watch?v=LB2yj4HSptc&feature=youtu.be) aşağıda verilmiştir.
 
 ## <a name="authentication-method-strength-and-security"></a>Kimlik doğrulama yöntemi gücü ve güvenliği
 
@@ -47,7 +49,10 @@ Aşağıdaki tabloda, kullanılabilir kimlik doğrulama yöntemlerine yönelik g
 | Ses                          | Orta   | Orta    | Orta       |
 | Parola                       | Düşük      | Yüksek      | Yüksek         |
 
-Güvenlik hakkında daha fazla bilgi için bkz. [kimlik doğrulama güvenlik açıkları ve saldırı vektörleri](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124).
+Güvenlikle ilgili en son bilgiler için blog gönderilerimize göz atın:
+
+- [Kimlik doğrulaması için telefon aktarımlarında asılı kalma zamanı](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/it-s-time-to-hang-up-on-phone-transports-for-authentication/ba-p/1751752)
+- [Kimlik doğrulama güvenlik açıkları ve saldırı vektörleri](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/all-your-creds-are-belong-to-us/ba-p/855124)
 
 > [!TIP]
 > Esneklik ve kullanılabilirlik için Microsoft Authenticator uygulamasını kullanmanızı öneririz. Bu kimlik doğrulama yöntemi, en iyi kullanıcı deneyimini ve passwordless, MFA anında iletme bildirimleri ve OATH kodları gibi birden çok modu sağlar.

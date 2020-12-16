@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ffae02a11f2857e72cf7c5d2bbc84d8ab6174e17
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d8ed429003a9da7ae93fb93f4218cd66767dcd7b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97426023"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562285"
 ---
 # <a name="set-up-msix-app-attach-with-the-azure-portal"></a>Azure portal ile birlikte MSIX uygulama eklemeyi ayarlama
 
@@ -31,6 +31,7 @@ Bu makalede, bir Windows sanal masaüstü ortamında MSIX uygulama iliştirme 'y
 
 - Çalışan bir Windows sanal masaüstü dağıtımı. Windows sanal masaüstü 'Nü (klasik) dağıtmayı öğrenmek için bkz. [Windows sanal masaüstü 'nde kiracı oluşturma](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Windows sanal masaüstü Azure Resource Manager tümleştirme ile nasıl dağıtılacağını öğrenmek için, bkz. [Azure Portal bir konak havuzu oluşturma](./create-host-pools-azure-marketplace.md).
 - En az bir etkin oturum ana bilgisayarı olan bir Windows sanal masaüstü konak Havuzu.
+- Bu konak havuzunun doğrulama ortamında olması gerekir. 
 - MSIX paketleme aracı.
 - Bir dosya paylaşımında karşıya yüklenen bir MSIX görüntüde genişletilen, MSIX paketlenmiş bir uygulama.
 - Windows sanal masaüstü dağıtımınızda MSIX paketinin depolanacağı bir dosya paylaşımıdır.

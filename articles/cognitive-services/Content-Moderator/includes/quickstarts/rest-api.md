@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: include
 ms.date: 12/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 06af722e8c827acdad356acb982ac3761ef68236
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ebef33072b802ffc35b8c011d974dbcd203fa6e1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905694"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561486"
 ---
 Azure Content Moderator REST API kullanmaya başlayın. 
 
@@ -23,8 +23,8 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 
 Content Moderator REST API için kullanın:
 
-* [Orta metin](#moderate-text)
-* [Orta görüntüler](#moderate-images)
+* Orta metin
+* Orta görüntüler
 
 ## <a name="prerequisites"></a>Önkoşullar
 

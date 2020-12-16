@@ -4,12 +4,12 @@ description: Bu öğreticide, bir git deposuna kaynak kodu kaydederken buluttaki
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 00f77d9dc56bf8fff792a23bbb139519ccd24351
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7f2e6d7f304977d3e6d92a778dba5bf026343707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030603"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562914"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Öğretici: Kaynak kodu teslim ettiğinizde bulutta kapsayıcı görüntüsü derlemelerini otomatikleştirme
 
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-Bu görev, `--context` ile belirtilen depodaki *ana* dala kod işlenen her durumda ACR Görevlerinin söz konusu daldaki koddan kapsayıcı görüntüsü derleyeceğini belirtir. Depo kökünden tarafından belirtilen Dockerfile, `--file` görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
+Bu görev, tarafından belirtilen depodaki *ana* dala herhangi bir zaman kodunun teslim olduğunu belirtir `--context` , ACR görevleri bu daldaki koddan kapsayıcı görüntüsünü oluşturur. Depo kökünden tarafından belirtilen Dockerfile, `--file` görüntüyü oluşturmak için kullanılır. `--image` bağımsız değişkeni, görüntü etiketinin sürüm kısmı için parametreli `{{.Run.ID}}` değeri belirtir ve derlenen görüntünün belirli bir derleme ile ilişkili olmasını ve benzersiz şekilde etiketlenmesini sağlar.
 
 Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı aşağıdakilere benzer:
 
@@ -103,7 +103,7 @@ Başarılı bir [az acr task create][az-acr-task-create] komutundaki çıktı a�
       {
         "name": "defaultSourceTriggerName",
         "sourceRepository": {
-          "branch": "master",
+          "branch": "main",
           "repositoryUrl": "https://github.com/gituser/acr-build-helloworld-node",
           "sourceControlAuthProperties": null,
           "sourceControlType": "GitHub"
@@ -194,7 +194,7 @@ Ardından, yeni bir dosya oluşturmak, işlemek ve GitHub üzerindeki depo çata
 echo "Hello World!" > hello.txt
 git add hello.txt
 git commit -m "Testing ACR Tasks"
-git push origin master
+git push origin main
 ```
 
 `git push` komutunu yürüttüğünüzde GitHub kimlik bilgilerinizi sağlamanız istenebilir. GitHub kullanıcı adınızı sağlayın ve parola için daha önce oluşturduğunuz kişisel erişim belirtecini (PAT) girin.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025985"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561316"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>LUSıS DevOps için sürekli tümleştirme ve sürekli teslim iş akışları
 
@@ -31,7 +31,7 @@ Kaynak kod Yönetimi (SCM) sisteminizde, otomatik derleme işlem hatlarını aş
 
 * [Sürekli teslim](/azure/devops/learn/what-is-continuous-delivery) (CD), sürekli tümleştirme kavramını, uygulamayı daha ayrıntılı test yapabileceğiniz bir ortama otomatik olarak dağıtmak için daha fazla kullanır. CD, değişikliklerden en kısa sürede ortaya çıkan ve ayrıca test kapsamımızda boşluklar hakkında bilgi edinmek için sık görülen tüm sorunlar hakkında daha önce öğrenmemizi sağlar.
 
-Sürekli tümleştirme ve sürekli teslimin amacı, "ana her zaman shiprilebilir,". Bir LUSıS uygulaması için bu, gerekirse, Ana daldaki bir sürümü alıp üretime sevk ettiğimiz anlamına gelir.
+Sürekli tümleştirme ve sürekli teslimin amacı, "Main 'in her zaman shiprilebilir" olmasını sağlamaktır. Bir LUSıS uygulaması için bu, gerekirse, ana dal LUO uygulamasındaki herhangi bir sürümü alıp üretime teslim ettiğimiz anlamına gelir.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>LUSıS için Otomasyon iş akışları oluşturmaya yönelik araçlar
 
@@ -47,7 +47,7 @@ LUSıS için Otomasyon iş akışları oluşturmak üzere aşağıdaki araçlar�
 
 ### <a name="the-pr-workflow"></a>PR iş akışı
 
-Belirtildiği gibi, bir geliştirici bir özellik dalından Ana dala birleştirilecek değişiklikler önermek üzere bir PR başlatıldığında bu iş akışını çalışacak şekilde yapılandırırsınız. Amaç, ana Dalla birleştirilmeden önce PR 'deki değişikliklerin kalitesini doğrulamadır.
+Belirtildiği gibi, bir geliştirici bir özellik dalından Ana dala birleştirilecek değişiklikler önermek üzere bir PR başlatıldığında bu iş akışını çalışacak şekilde yapılandırırsınız. Amaç, ana Dalla birleştirilmeden önce, çekme isteği içindeki değişikliklerin kalitesini doğrulamadır.
 
 Bu iş akışı:
 
@@ -59,9 +59,9 @@ Bu iş akışı:
 
 SCM 'niz tarafından destekleniyorsa, çekme isteği tamamlanmadan önce bu iş akışının başarıyla tamamlanması için dal koruma kurallarını yapılandırın.
 
-### <a name="the-master-branch-cicd-workflow"></a>Ana dal CI/CD iş akışı
+### <a name="the-main-branch-cicd-workflow"></a>Ana dal CI/CD iş akışı
 
-PR 'deki güncelleştirmeler Ana dala birleştirildikten sonra bu iş akışını çalışacak şekilde yapılandırın. Bunun amacı, güncelleştirmeleri test ederek ana dalınızın kalite çubuğunu en yüksek tutmaya yöneliktir. Güncelleştirmeler kalite çubuğunu karşılıyorsa, bu iş akışı yeni LUO uygulama sürümünü, daha ayrıntılı test yapabileceğiniz bir ortama dağıtır.
+PR 'deki güncelleştirmeler Ana dala birleştirildikten sonra bu iş akışını çalışacak şekilde yapılandırın. Bunun amacı, güncelleştirmeleri test ederek ana dalınızın kalite çubuğunu en yüksek düzeyde tutmamadır. Güncelleştirmeler kalite çubuğunu karşılıyorsa, bu iş akışı yeni LUO uygulama sürümünü, daha ayrıntılı test yapabileceğiniz bir ortama dağıtır.
 
 Bu iş akışı:
 

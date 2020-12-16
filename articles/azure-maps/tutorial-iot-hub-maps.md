@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 6109164d8827a343a550a114acc42db2461f3a2c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d475c76d338270cb9b8e34ea8563cdfd8fdf5122
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905358"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563067"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Öğretici: Azure Maps kullanarak IoT uzamsal analizler uygulama
 
@@ -32,7 +32,7 @@ Bu öğreticide şunları yapmanız gerekir:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 2. [Azure haritalar hesabı oluşturun](quick-demo-map-app.md#create-an-azure-maps-account).
 
@@ -131,7 +131,7 @@ Azure haritalar verilerini karşıya yükleme API 'sini kullanarak bölge bölge
 
     URL yolunda, `geojson` parametresindeki değer, `dataFormat` karşıya yüklenen verilerin biçimini temsil eder.
 
-4. **Body**  >  Giriş biçimi için gövde **RAW** ' yı seçin ve açılan listeden **JSON** ' ı seçin. [JSON veri dosyasını açın](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)ve JSON 'ı Body bölümüne kopyalayın. **Gönder**’i seçin.
+4.   >  Giriş biçimi için gövde **RAW** ' yı seçin ve açılan listeden **JSON** ' ı seçin. [JSON veri dosyasını açın](https://raw.githubusercontent.com/Azure-Samples/iothub-to-azure-maps-geofencing/master/src/Data/geofence.json?token=AKD25BYJYKDJBJ55PT62N4C5LRNN4)ve JSON 'ı Body bölümüne kopyalayın. **Gönder**’i seçin.
 
 5. **Gönder** ' i seçin ve isteği işleme için bekleyin. İstek tamamlandıktan sonra yanıtın **üstbilgiler** sekmesine gidin. Olan **konum** anahtarının değerini kopyalayın `status URL` .
 
@@ -143,8 +143,9 @@ Azure haritalar verilerini karşıya yükleme API 'sini kullanarak bölge bölge
 
    ```HTTP
    https://atlas.microsoft.com/mapData/<operationId>/status?api-version=1.0&subscription-key={subscription-key}
-
-7. When the **GET** HTTP request completes successfully, it returns a `resourceLocation`. The `resourceLocation` contains the unique `udid` for the uploaded content. Copy this `udid` for later use in this tutorial.
+   ```
+   
+7. HTTP isteği **Al** işlemi başarıyla tamamlandığında, bir döndürür `resourceLocation` . , `resourceLocation` `udid` Karşıya yüklenen içerik için benzersiz bir içerir. Bu `udid` öğreticide daha sonra kullanmak üzere bunu kopyalayın.
 
       ```json
       {

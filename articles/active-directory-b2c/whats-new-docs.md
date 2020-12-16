@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory işletmeden müşteriye (B2C) yenilikleri
 description: Azure Active Directory işletmeden müşteriye (B2C) yönelik yeni ve güncelleştirilmiş belgeler.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,29 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 4c204ec33604ff5edd1551f9728c28e3dcab9a61
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 8805caad990cd472b3199bda27130d8d63be3071
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571088"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559736"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C: yenilikler
 
 Azure Active Directory B2C belgelerindeki yenilikler 'e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. B2C hizmetiyle ilgili yenilikler hakkında bilgi edinmek için bkz. [Azure Active Directory](../active-directory/fundamentals/whats-new.md)yenilikleri.
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="new-articles"></a>Yeni makaleler
+
+- [Azure Active Directory B2C bir Kullanıcı akışı oluşturma](create-user-flow.md)
+- [Kullanıcı akışları için telefon kaydı ve oturum açma ayarlama (Önizleme)](phone-authentication-user-flows.md)
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Öğretici: Azure Active Directory B2C kiracısı oluşturma](tutorial-create-tenant.md)
+- [Azure Active Directory B2C kod örnekleri](code-samples.md)
+- [Sayfa düzeni sürümleri](page-layout.md)
 
 ## <a name="november-2020"></a>Kasım 2020
 

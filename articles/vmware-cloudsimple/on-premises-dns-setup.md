@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424702"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563016"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Şirket içi iş istasyonlarından özel bulut vCenter erişimi için ad çözümlemesi için DNS yapılandırma
 
@@ -25,7 +25,7 @@ ms.locfileid: "92424702"
 
 2. **Kaynaklar**  >  **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
-3. **Temel bilgi**altında özel bulutun **Özet** SAYFASıNDA, özel bulut DNS sunucusu IP adresini kopyalayın.
+3. **Temel bilgi** altında özel bulutun **Özet** SAYFASıNDA, özel bulut DNS sunucusu IP adresini kopyalayın.
 
     ![Özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
 
@@ -44,6 +44,9 @@ Bir bölgeyi saplama bölgesi olarak ayarlayabilir ve ad çözümlemesi için ö
 Belirli dosya ve yapılandırılacak parametreler, bireysel DNS kuruluma göre farklılık gösterebilir.
 
 Örneğin, varsayılan BIND sunucu yapılandırması için DNS sunucunuzdaki/etc/Named.exe dosyasını düzenleyin ve aşağıdaki bölge bilgilerini ekleyin.
+
+> [!NOTE]
+>Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ```
 zone "az.cloudsimple.io"

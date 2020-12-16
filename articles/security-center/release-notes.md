@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 12/15/2020
 ms.author: memildin
-ms.openlocfilehash: 3272212a857f24916acce7da5a4ee31561ec0c5a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922930"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560262"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -39,6 +39,7 @@ Aralık ayında güncelleştirmeler şunlardır:
 - [Azure SYNAPSE Analytics adanmış SQL havuzu için SQL için Azure Defender desteği genel kullanıma sunuldu](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
 - [Genel Yöneticiler, artık kendi kiracı düzeyinde izinler verebilir](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
+- [Azure portal yeni güvenlik uyarıları sayfası (Önizleme)](#new-security-alerts-page-in-the-azure-portal-preview)
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu
 
@@ -95,6 +96,24 @@ Bu yeni korumalar tehdit aktörlerini saldırılara karşı dayanıklılığın�
     - [DNS için Azure Defender uyarılarına yanıt verme](defender-for-dns-usage.md)
     - [DNS için Azure Defender tarafından sunulan uyarıların listesi](alerts-reference.md#alerts-dns)
 
+
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Azure portal yeni güvenlik uyarıları sayfası (Önizleme)
+
+Azure Güvenlik Merkezi 'nin güvenlik uyarıları sayfası, şunları sağlayacak şekilde yeniden tasarlandı:
+
+- **Uyarılar Için geliştirilmiş önceliklendirme deneyimi** -uyarıları daha kolay hale getirmeye ve en ilgili tehditlere odaklanmaya yardımcı olma, listede özelleştirilebilir filtreler ve gruplandırma seçenekleri de bulunur
+- **Uyarılar listesinde,** MITRE ATT&ACK Tactika gibi daha fazla bilgi
+- **Örnek uyarılar oluşturma düğmesi** -Azure Defender özelliklerini değerlendirmek ve uyarı yapılandırmanızı sınamak IÇIN (SIEM tümleştirmesi, e-posta bildirimleri ve iş akışı tahminleri için), tüm Azure Defender planlarından örnek uyarılar oluşturabilirsiniz
+- **Azure Sentinel 'in olay deneyimiyle hizalaması** -her iki ürünü de kullanan müşteriler için, aralarında geçiş yapmak artık daha basit bir deneyimdir ve bunlardan birini öğrenmenin kolay bir deneyimi vardır.
+- Büyük uyarı listeleri için **daha iyi performans**
+- Uyarı listesi aracılığıyla **klavye gezintisi**
+- **Azure Kaynak grafının uyarıları** -tüm kaynaklarınızın kusto benzeri API 'Si olan Azure Kaynak Grafında uyarıları sorgulayabilirsiniz. Bu, kendi uyarı panolarınızı oluşturuyorsanız de kullanışlıdır. [Azure Kaynak Grafiği hakkında daha fazla bilgi edinin](../governance/resource-graph/index.yml).
+
+Yeni deneyimle erişmek için, güvenlik uyarıları sayfasının en üstündeki başlığından ' Şimdi deneyin ' bağlantısını kullanın.
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Yeni önizleme uyarıları deneyimine bağlantı içeren başlık":::
+
+Yeni uyarılar deneyiminden örnek uyarılar oluşturmak için bkz. [örnek Azure Defender uyarıları](security-center-alert-validation.md#generate-sample-azure-defender-alerts)oluşturma.
 
 ## <a name="november-2020"></a>Kasım 2020
 

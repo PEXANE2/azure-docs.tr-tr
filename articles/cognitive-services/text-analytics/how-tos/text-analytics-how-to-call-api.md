@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 7b035af85e250d97fb05625bf386bec8dc94a74c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505265"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562574"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Metin Analizi nasıl çağrılacağını REST API
 
 Bu makalede, temel kavramları göstermek için Metin Analizi REST API ve [Postman](https://www.postman.com/downloads/) kullanırız. API, hizmetin özelliklerini kullanmak için birkaç zaman uyumlu ve zaman uyumsuz uç nokta sağlar. 
+
+## <a name="create-a-text-analytics-resource"></a>Metin Analizi kaynağı oluşturma
+
+> [!NOTE]
+> * Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` . `/analyze`Uç nokta [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)dahildir.
+
+Metin Analizi API'si kullanmadan önce, uygulamalarınız için anahtar ve uç nokta içeren bir Azure kaynağı oluşturmanız gerekecektir. 
+
+1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. [Fiyatlandırma katmanı](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)seçin.
+
+2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
+
+3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
+
+## <a name="using-the-api-synchronously"></a>API 'YI eşzamanlı olarak kullanma
+
+Metin Analizi zaman uyumlu olarak çağırabilirsiniz (düşük gecikmeli senaryolar için). Zaman uyumlu API kullanırken her API 'YI (özellik) ayrı ayrı çağırmanız gerekir. Birden çok özelliği çağırmanız gerekiyorsa, Metin Analizi zaman uyumsuz olarak nasıl çağrılacağını öğrenmek için aşağıdaki bölüme göz atın. 
 
 ## <a name="using-the-api-asynchronously"></a>API 'YI zaman uyumsuz kullanma
 
@@ -48,24 +66,16 @@ Hangi özelliklerin zaman uyumsuz olarak kullanılabileceğini görmek için aş
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-
-
-> [!NOTE]
-> * Veya uç noktalarını kullanmak istiyorsanız, standart (S) [fiyatlandırma katmanını](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) kullanarak bir metin analizi kaynağına ihtiyacınız olacaktır `/analyze` `/health` .
-
-1.  İlk olarak, [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) gidin ve henüz yoksa yeni bir metin analizi kaynağı oluşturun. Veya uç noktalarını kullanmak istiyorsanız, **Standart fiyatlandırma katmanını** seçin `/analyze` `/health` . `/analyze`Uç nokta [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)dahildir.
-
-2.  Uç noktanız için kullanmak istediğiniz bölgeyi seçin.  Lütfen `/analyze` ve `/health` uç noktaların yalnızca şu bölgelerde kullanılabilir olduğunu unutmayın: Batı ABD 2, Doğu ABD 2, Orta ABD, Kuzey Avrupa ve Batı Avrupa.
-
-3.  Metin Analizi kaynağını oluşturun ve sayfanın solundaki "anahtarlar ve uç nokta dikey penceresine" gidin. Daha sonra API 'Leri çağırdığınızda kullanılacak anahtarı kopyalayın. Bunu daha sonra üst bilgi için bir değer olarak eklersiniz `Ocp-Apim-Subscription-Key` .
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API istek biçimi
+## <a name="api-request-formats"></a>API istek biçimleri
+
+Metin Analizi API'si hem zaman uyumlu hem de zaman uyumsuz çağrılar gönderebilirsiniz.
 
 #### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>Zaman uyumlu istekler
 
 API isteklerinin biçimi tüm zaman uyumlu işlemler için aynıdır. Belgeler, bir JSON nesnesinde ham yapılandırılmamış metin olarak gönderilir. XML desteklenmiyor. JSON şeması aşağıda açıklanan öğelerden oluşur.
 
@@ -89,7 +99,9 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
 }
 ```
 
-#### <a name="analyze"></a>[Çözümleme](#tab/analyze)
+#### <a name="asynchronous"></a>[Zaman uyumsuz](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Uç noktaya yönelik zaman uyumsuz istekler `/analyze`
 
 > [!NOTE]
 > Metin Analizi istemci kitaplığının en son sürümü, istemci nesnesini kullanarak zaman uyumsuz analiz işlemlerini çağırmanızı sağlar. GitHub 'da örnekleri bulabilirsiniz:
@@ -154,7 +166,7 @@ Aşağıda, zaman uyumlu Metin Analizi uç noktaları için bir API isteği örn
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>Uç noktaya yönelik zaman uyumsuz istekler `/health`
 
 Durum barındırılan API için Metin Analizi API isteklerinin biçimi, kapsayıcısı için olan ile aynıdır. Belgeler, bir JSON nesnesinde ham yapılandırılmamış metin olarak gönderilir. XML desteklenmiyor. JSON şeması aşağıda açıklanan öğelerden oluşur.  Lütfen sistem durumu genel önizlemesi için Metin Analizi erişim istemek üzere bilişsel [Hizmetler istek formunu](https://aka.ms/csgate) doldurun ve iletin. Sistem durumu kullanımı için Metin Analizi faturalandırılmaz. 
 
@@ -188,11 +200,13 @@ example.json
 
 ## <a name="set-up-a-request"></a>İstek ayarlama 
 
-Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örneğin:
+Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz özelliğin uç noktasını ekleyin. Uygun uç nokta biçimini bulmak için aşağıdaki tabloyu kullanın ve kaynak uç noktanızla değiştirin `<your-text-analytics-resource>` . Örnek:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
 #### <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
+
+### <a name="endpoints-for-sending-synchronous-requests"></a>Zaman uyumlu istek göndermek için uç noktalar
 
 | Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
@@ -204,14 +218,16 @@ Postman 'da (veya başka bir Web API test aracında) kullanmak istediğiniz öze
 | Adlandırılmış varlık tanıma-PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Adlandırılmış varlık tanıma-FI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[Çözümleme](#tab/analyze)
+#### <a name="asynchronous"></a>[Zaman uyumsuz](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Uç noktaya zaman uyumsuz isteklerin gönderilmesi için uç noktalar `/analyze`
 
 | Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
 | Analiz işini gönder | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Çözümleme durumunu ve sonuçlarını al | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Uç noktaya zaman uyumsuz isteklerin gönderilmesi için uç noktalar `/health`
 
 | Özellik | İstek türü | Kaynak uç noktaları |
 |--|--|--|
@@ -253,7 +269,7 @@ API isteğini gönder. Zaman uyumlu bir uç noktaya çağrı yaptıysanız, yan�
 Zaman uyumsuz `/analyze` veya `/health` uç noktalara çağrı yaptıysanız, bir 202 yanıt kodu aldığınızı kontrol edin. sonuçları görüntülemek için yanıtı almanız gerekir:
 
 1. API yanıtında, `Operation-Location` API 'ye gönderdiğiniz işi tanımlayan üst bilgiden öğesini bulun. 
-2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örneğin:
+2. Kullandığınız uç nokta için bir GET isteği oluşturun. uç nokta biçimi için [yukarıdaki tabloya](#set-up-a-request) başvurun ve [API başvuru belgelerini](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus)gözden geçirin. Örnek:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>`
 
@@ -267,6 +283,8 @@ Lütfen hem zaman uyumsuz hem de `/analyze` `/health` işlemler için yukarıdak
  
 # <a name="synchronous"></a>[Zaman Uyumlu](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>Zaman uyumlu işlem için örnek yanıtlar
+
 Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir. Örnek yanıtlar için aşağıdaki makalelere bakın.
 
 + [Dil algılama](text-analytics-how-to-language-detection.md#step-3-view-the-results)
@@ -274,70 +292,15 @@ Zaman uyumlu uç nokta yanıtları kullandığınız uç noktaya göre değişir
 + [Yaklaşım Analizi](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[Çözümleme](#tab/analyze)
+# <a name="asynchronous"></a>[Zaman uyumsuz](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>Zaman uyumsuz işlemler için örnek yanıtlar
 
 Başarılı olursa, uç noktaya yönelik GET isteği `/analyze` atanan görevleri içeren bir nesne döndürür. Örneğin, `keyPhraseExtractionTasks`. Bu görevler, uygun Metin Analizi özelliğinden gelen yanıt nesnesini içerir. Daha fazla bilgi için aşağıdaki makalelere bakın.
 
 + [Anahtar ifade ayıklama](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Varlık tanıma](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[Sistem durumu için Metin Analizi](#tab/health)
-
-Durum bilgisi zaman uyumsuz API yanıtının Metin Analizi hakkında daha fazla bilgi için aşağıdaki makaleye bakın:
-
 + [Sistem durumu için Metin Analizi](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 05/13/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 39823792a438e533134f38c04e72f2c314c57678
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e5d25e71e4700f3f327319e4f444d2060c7ab5f6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505197"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561894"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Örnek: Metin Analizi kullanarak anahtar tümceleri ayıklama
 
@@ -37,7 +37,12 @@ Anahtar tümceciği ayıklama, üzerinde çalışmak için büyük miktarda meti
 
 Bu biçimde JSON belgelerinize sahip olmanız gerekir: KIMLIK, metin, dil
 
-Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, anahtar ifade ayıklaması için gönderebileceğiniz içeriğin bir gösterimidir.
+Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyon başına en fazla 1.000 öğe (kimlik) olabilir. Koleksiyon, istek gövdesinde gönderilir. Aşağıdaki örnek, anahtar ifade ayıklaması için gönderebileceğiniz içeriğin bir gösterimidir. 
+
+İstek ve yanıt nesneleri hakkında daha fazla bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md) .  
+
+### <a name="example-synchronous-request-object"></a>Örnek zaman uyumlu istek nesnesi
+
 
 ```json
     {
@@ -71,13 +76,43 @@ Belge boyutu belge başına 5.120 veya daha az karakter olmalıdır ve koleksiyo
     }
 ```
 
+### <a name="example-asynchronous-request-object"></a>Örnek zaman uyumsuz istek nesnesi
+
+' Den itibaren `v3.1-preview.3` , uç noktayı kullanarak ner isteklerini zaman uyumsuz olarak gönderebilirsiniz `/analyze` .
+
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "keyPhraseExtractionTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }],
+    }
+}
+```
+
 ## <a name="step-1-structure-the-request"></a>1. Adım: İsteği yapılandırma
 
 İstek tanımı hakkında bilgi için bkz. [nasıl çağrılacağını Metin Analizi API'si](text-analytics-how-to-call-api.md). Kolaylık olması için aşağıdaki noktalar yeniden belirtilmektedir:
 
 + Bir **POST** isteği oluşturun. Bu istek için API belgelerini gözden geçirin: [anahtar tümceleri API 'si](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. URL 'ye dahil etmeniz gerekir `/text/analytics/v3.0/keyPhrases` . Örneğin: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
++ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak anahtar tümceciği ayıklama için HTTP uç noktasını ayarlayın. API 'yi eşzamanlı olarak kullanıyorsanız, URL 'ye dahil etmeniz gerekir `/text/analytics/v3.0/keyPhrases` . Örneğin: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Metin Analizi işlemler için [erişim anahtarı](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) eklemek üzere bir istek üst bilgisi ayarlayın.
 
@@ -99,6 +134,8 @@ Tüm POST istekleri, kimlikler ve algılanan özelliklerle JSON tarafından biç
 Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akışa alabilir veya çıktıyı yerel sistemde bir dosyaya kaydedebilir, sonra da verileri sıralamanıza, aramanıza ve işlemenize olanak sağlayan bir uygulamaya içeri aktarabilirsiniz.
 
 V 3.1-Preview. 2 uç noktasındaki anahtar tümceciği ayıklama çıkışının bir örneği burada gösterilmektedir:
+
+### <a name="synchronous-result"></a>Zaman uyumlu sonuç
 
 ```json
     {
@@ -160,13 +197,68 @@ V 3.1-Preview. 2 uç noktasındaki anahtar tümceciği ayıklama çıkışının
 ```
 Belirtildiği gibi, çözümleyici, önemli olmayan sözcükleri bulur ve atar ve bir cümlenin konusu veya nesnesi olarak görünen tek terimleri veya tümceleri tutar.
 
+### <a name="asynchronous-result"></a>Zaman uyumsuz sonuç
+
+`/analyze`Uç noktasını zaman uyumsuz işlem için kullanıyorsanız, API 'ye gönderdiğiniz görevleri içeren bir yanıt alırsınız.
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
+
 ## <a name="summary"></a>Özet
 
 Bu makalede bilişsel hizmetler 'de Metin Analizi kullanarak anahtar tümceciği ayıklama için kavramları ve iş akışını öğrendiniz. Özet:
 
 + [Anahtar ifade ayıklama API’si](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases), seçili dillerde kullanılabilir.
 + İstek gövdesindeki JSON belgeleri bir KIMLIK, metin ve dil kodu içerir.
-+ POST isteği, aboneliğiniz için geçerli olan kişiselleştirilmiş bir [erişim anahtarı ve uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak `/keyphrases` uç noktasına yapılır.
++ POST isteği bir `/keyphrases` veya `/analyze` bitiş noktasına, kişiselleştirilmiş bir [erişim anahtarı ve aboneliğiniz için geçerli bir uç nokta](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) kullanılarak yapılır.
 + Her belge KIMLIĞI için anahtar sözcüklerden ve tümceciklerden oluşan yanıt çıkışı, Microsoft Office Excel ve Power BI dahil olmak üzere, birkaç kez ad vermek üzere JSON kabul eden herhangi bir uygulamaya akışla eklenebilir.
 
 ## <a name="see-also"></a>Ayrıca bkz.

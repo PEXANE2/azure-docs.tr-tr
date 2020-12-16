@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 12/15/2020
 ms.author: b-juche
-ms.openlocfilehash: ffa24115e8c827729b98656d319589101395d0e5
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 2b567eba43cfec9af05ebea262b3f6bd61b00259
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092525"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562557"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files kullanan çözüm mimarileri
 Bu makalede, Azure NetApp Files kullanmaya yönelik çözüm mimarilerini anlamanıza yardımcı olabilecek en iyi yöntemlere başvurular sağlanmaktadır.  
@@ -38,6 +38,9 @@ Bu bölüm, Linux OSS uygulamalarına ve veritabanlarına yönelik çözümler i
 * [Azure dağıtım Azure NetApp Files kullanarak en iyi Yöntem Kılavuzu](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Oracle VM görüntüleri ve bunların Microsoft Azure dağıtımı: paylaşılan depolama yapılandırma seçenekleri](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
 * [Oracle Database ile Azure NetApp Files kullanmanın avantajları](solutions-benefits-azure-netapp-files-oracle-database.md)
+
+### <a name="machine-learning"></a>Machine Learning
+*   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 
 ## <a name="windows-apps-and-sql-server-solutions"></a>Windows Uygulamaları ve SQL Server çözümleri
 

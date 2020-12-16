@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 9e2210cdbcc2916723c8c2e2ed1ef514d427c9d6
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032193"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563118"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -107,19 +107,31 @@ Application Insights 'a Application Gateway kaynağınız içindeki içgörüler
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure ağ geçidi Analizi çözümünden Azure Izleyici çalışma kitaplarına geçiş
 
 > [!NOTE]
-> Azure Application Gateway Analytics çözümü güncel değildir ve analiz kullanmanın önerilen yolu, Azure Izleyici ağ öngörüleri aracılığıyla sunulan çalışma kitapları aracılığıyla Application Gateway kaynağıdır.
+> Azure Izleyici ağ öngörüleri çalışma kitabı, Application Gateway kaynaklarınızın ölçüm ve Log Analytics 'e erişmesi için önerilen çözümdür.
 
-* Tanılama ayarı, günlükleri bir Log Analytics çalışma alanında depolamak için zaten etkinleştirilmişse, Azure Izleyici Network Insights çalışma kitabı aynı konumdaki verileri kullanabilir. Yeni yapılandırma gerekli değildir.
+1. Günlükleri bir Log Analytics çalışma alanında depolamak için [Tanılama ayarlarının etkinleştirildiğinden](#enable-azure-application-gateway-diagnostics-in-the-portal) emin olun. Zaten yapılandırıldıysa, Azure Izleyici Network Insights çalışma kitabı aynı konumdaki verileri tüketebilir ve ek değişiklik gerektirmez.
 
-* Önceki tüm veriler, nokta Tanılama ayarları etkinken çalışma kitabında zaten var. Veri aktarımı gerekli değildir.
+> [!NOTE]
+> Önceki tüm veriler, nokta tanılama ayarlarından önce çalışma kitabında zaten kullanılabilir. Veri aktarımı gerekli değildir.
 
-* Çalışma kitaplarına geçiş yapmak için etkin bir geçiş gerekli değildir. Hem Analytics çözümü hem de Network Insight çalışma kitabı paralel olarak çalışabilir.
+2. Application Gateway kaynağınız için [varsayılan Öngörüler çalışma kitabına](#accessing-azure-application-gateway-analytics-via-azure-monitor-network-insights) erişin. Application Gateway Analytics çözümü tarafından desteklenen tüm mevcut Öngörüler çalışma kitabında zaten mevcut olacaktır. Bu, ölçüm & günlük verilerine göre özel [görselleştirmeler](../platform/workbooks-overview.md#visualizations) ekleyerek genişletebilirsiniz.
 
-* Azure Izleyici çalışma kitapları ile ilişkili ek maliyet yoktur. Log Analytics çalışma alanı kullanım başına faturalandırılmaya devam edecektir.
-
-* Azure Gateway Analytics çözümünü çalışma alanınızdan temizlemek için çözüm kaynağı sayfasından çözümü silebilirsiniz.
+3. Tüm ölçüm ve günlük öngörülerinizi görebildikten sonra, çalışma alanınızdan Azure Gateway Analytics çözümünü temizlemek için çözüm kaynağı sayfasından çözümü silebilirsiniz.
 
 [![Azure Application Gateway Analytics çözümü için silme seçeneğinin ekran görüntüsü.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
+
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Izleyici Network Insights çalışma kitabıyla yeni yetenekler
+
+> [!NOTE]
+> Azure Monitor Insights çalışma kitabıyla ilişkili ek maliyet yoktur. Log Analytics çalışma alanı kullanım başına faturalandırılmaya devam edecektir.
+
+Network Insights çalışma kitabı, Azure Izleyici 'nin en son özelliklerini ve aşağıdakileri de içeren Log Analytics yararlanmanızı sağlar:
+
+* Hem [ölçüm](../insights/network-insights-overview.md#resource-health-and-metrics) hem de günlük verileri ile izleme ve sorun giderme için merkezi konsol.
+
+* Özel zengin [görselleştirmeler](../platform/workbooks-overview.md#visualizations)oluşturmayı desteklemek için esnek tuval.
+
+* [Çalışma kitabı şablonlarını](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) daha geniş bir topluluk ile kullanabilme ve paylaşma özelliği.
 
 Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi edinmek için kullanıma alma [çalışma kitapları-genel bakış](../platform/workbooks-overview.md)
 

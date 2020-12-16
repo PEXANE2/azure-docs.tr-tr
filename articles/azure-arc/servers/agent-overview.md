@@ -1,14 +1,14 @@
 ---
 title: Bağlı makine Windows aracısına genel bakış
 description: Bu makalede, karma ortamlarda barındırılan sanal makinelerin izlenmesini destekleyen Azure Arc etkin sunucu aracısına sunulan ayrıntılı bir genel bakış sunulmaktadır.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 277e6616ce1bf90ada83516cb71f9cb55de1b7b0
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516801"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563033"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısına genel bakış
 
@@ -80,9 +80,9 @@ Azure 'a aktarılan verilerin güvenliğini sağlamak için, makineyi Aktarım K
 
 ### <a name="networking-configuration"></a>Ağ yapılandırması
 
-Linux ve Windows için bağlı makine Aracısı, TCP bağlantı noktası 443 üzerinden Azure Arc ile güvenli bir şekilde iletişim kurar. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdaki gereksinimleri gözden geçirin.
+Linux ve Windows için bağlı makine Aracısı, TCP bağlantı noktası 443 üzerinden Azure Arc ile güvenli bir şekilde iletişim kurar. Makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya ara sunucu üzerinden bağlanıyorsa, ağ yapılandırma gereksinimlerini anlamak için aşağıdakileri gözden geçirin.
 
-Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtlanıyorsa, aşağıda listelenen URL 'Lerin engellenmediğinden emin olun. Aracının hizmetle iletişim kurması için gereken IP aralıklarına veya etki alanı adlarına izin verirseniz, aşağıdaki hizmet etiketlerine ve URL 'Lere erişime de izin vermeniz gerekir.
+Giden bağlantı, güvenlik duvarınız veya ara sunucunuz tarafından kısıtlanıyorsa, aşağıda listelenen URL 'Lerin engellenmediğinden emin olun. Aracının hizmetle iletişim kurması için gereken IP aralıklarının veya etki alanı adlarının yalnızca, aşağıdaki hizmet etiketlerine ve URL 'Lere erişim izni vermeniz gerekir.
 
 Hizmet Etiketleri:
 
@@ -181,8 +181,9 @@ Windows için bağlı makine aracısını yükledikten sonra, aşağıdaki ek si
 
     |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
-    |hımds |Azure hibrit Instance Metadata Service |himds.exe |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
-    |DscService |Konuk yapılandırma hizmeti |dsc_service.exe |In-Guest Ilkesi uygulamak için Azure 'da kullanılan Istenen durum yapılandırması (DSC v2) kod temeli.|
+    |hımds |Azure hibrit Instance Metadata Service |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
+    |GCArcService |Konuk yapılandırması yay hizmeti |gc_service |Makinenin istenen durum yapılandırmasını izler.|
+    |ExtensionService |Konuk yapılandırma uzantısı hizmeti | gc_service |Makineyi hedefleyen gerekli uzantıları yüklenir.|
 
 * Aşağıdaki çevresel değişkenler aracı yüklemesi sırasında oluşturulur.
 
@@ -232,8 +233,9 @@ Linux için bağlı makine aracısını yükledikten sonra, aşağıdaki ek sist
 
     |Hizmet adı |Görünen ad |İşlem adı |Description |
     |-------------|-------------|-------------|------------|
-    |hımdsd. hizmeti |Azure hibrit Instance Metadata Service |/opt/azcmagent/bin/himds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
-    |DSCD. hizmeti |Konuk yapılandırma hizmeti |/Seçenek/DSC/dsc_linux_service |Bu, Azure içinde In-Guest Ilkesi uygulamak için kullanılan Istenen durum yapılandırması (DSC v2) kod tabandır.|
+    |hımdsd. hizmeti |Azure bağlı makine Aracısı hizmeti |hımds |Bu hizmet, Azure ve bağlı makinenin Azure kimliğiyle bağlantıyı yönetmek için Azure örnek meta veri hizmeti 'ni (ıMDS) uygular.|
+    |gcad. servce |GC yay hizmeti |gc_linux_service |Makinenin istenen durum yapılandırmasını izler. |
+    |extd. Service |Uzantı hizmeti |gc_linux_service | Makineyi hedefleyen gerekli uzantıları yüklenir.|
 
 * Sorun giderme için kullanılabilen çeşitli günlük dosyaları vardır. Bunlar aşağıdaki tabloda açıklanmıştır.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535563"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561282"
 ---
 # <a name="devops-practices-for-luis"></a>LUSıS için DevOps uygulamaları
 
@@ -34,7 +34,7 @@ Bu belgede açıklanan kavramları ve yönergeleri kullanarak, bir kaynak deneti
   - Yeniden temellendirme veya Merge aracılığıyla bir daldaki bir dalla yapılan değişiklikleri bir dalla bütünleştirmek mümkündür.
   - Geliştiriciler bir PR 'yi üst dala birleştirebilirler.
 
-- **Sürüm Oluşturma**
+- **Sürüm oluşturma**
   - Büyük bir uygulamadaki her bileşeni bağımsız olarak sürümlenmiş olmalıdır, böylece geliştiricilerin sürüm numarasına bakarak yalnızca önemli değişiklikleri veya güncelleştirmeleri algılamasına izin verir.
 
 - **Kod Incelemeleri**
@@ -62,7 +62,7 @@ Bir LUSıS uygulaması için kaynaktan *derleme* yapmak, kaynağı içeri aktara
 
 - Kaynak denetiminden uygulamanın [ `.lu` sürümünü içeri aktarmak](./luis-how-to-manage-versions.md#import-version) ve uygulamayı [eğit](./luis-how-to-train.md) ve [yayımlamak](./luis-how-to-publish-app.md) için Luo portalını kullanın.
 
-- Uygulamanın sürümünü kaynak denetiminden bir LUO uygulamasına [aktarmak](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) ve uygulamayı eğitme ve yayımlama için, komut satırında veya bir CI/CD Iş akışında [luya Için bot Framework komut satırı arabirimini](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) kullanın `.lu` . [train](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) [publish](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)
+- Uygulamanın sürümünü kaynak denetiminden bir LUO uygulamasına [aktarmak](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) ve uygulamayı eğitme ve yayımlama için, komut satırında veya bir CI/CD Iş akışında [luya Için bot Framework komut satırı arabirimini](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) kullanın `.lu` . [](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) [](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish)
 
 ### <a name="files-to-maintain-under-source-control"></a>Kaynak denetimi altında korunacak dosyalar
 
@@ -98,7 +98,7 @@ Hangi dallanma stratejinizin olduğuna göre, bunların tümünün önemli bir p
 
 Bir LUO projesi ile bağımsız dallarda bağımsız çalışmayı desteklemek için:
 
-- **Ana dalın kendi LUO uygulaması vardır.** Bu uygulama, projeniz için çözümünüzün geçerli durumunu temsil eder ve geçerli etkin sürümü her zaman `.lu` Ana daldaki kaynakla eşleşmelidir. Bu uygulamanın kaynağı için tüm güncelleştirmeler `.lu` incelenmeli ve test edilmelidir, böylece bu uygulama herhangi bir zamanda üretim gibi ortamlara dağıtılabilir. Üzerinde yapılan güncelleştirmeler `.lu` bir özellik dalından ana öğe halinde birleştirildiğinde, Luo uygulamasında yeni bir sürüm oluşturmanız ve [sürüm numarasını çarpmalısınız](#versioning).
+- **Ana dalın kendi LUO uygulaması vardır.** Bu uygulama, projeniz için çözümünüzün geçerli durumunu temsil eder ve geçerli etkin sürümü her zaman `.lu` ana dalda olan kaynakla eşlenmelidir. Bu uygulamanın kaynağı için tüm güncelleştirmeler `.lu` incelenmeli ve test edilmelidir, böylece bu uygulama herhangi bir zamanda üretim gibi ortamlara dağıtılabilir. Üzerinde yapılan güncelleştirmeler `.lu` bir özellik dalından Main ile birleştirildiğinde, Luo uygulamasında yeni bir sürüm oluşturmanız ve [sürüm numarasını çarpmalısınız](#versioning).
 
 - **Her özellik dalı, BIR lusıs uygulamasının kendi örneğini kullanmalıdır**. Geliştiriciler, diğer dallarda çalışan geliştiricilerin etkilenmelerine gerek kalmadan bu uygulamayla bir özellik dalında çalışır. Bu ' dev Branch ' uygulaması, özellik dalı silindiğinde silinmesi gereken bir çalışma kopyasıdır.
 
@@ -108,13 +108,13 @@ Bir LUO projesi ile bağımsız dallarda bağımsız çalışmayı desteklemek i
 
 Geliştiriciler bir LUO uygulamasındaki güncelleştirmeler üzerinde diğer dallardan bağımsız olarak şu şekilde çalışabilir:
 
-1. Ana daldan bir özellik dalı oluşturma (dal stratejinize, genellikle ana veya geliştirme) göre.
+1. Ana daldan bir özellik dalı oluşturma (dal stratejinize, genellikle ana veya geliştirmeden) göre.
 
 1. LUO portalında ("*dev Branch App*") yalnızca özellik dalındaki işi desteklemek için [Yeni bir Luo uygulaması oluşturun](./luis-how-to-start-new-app.md) .
 
    * `.lu`Çözümünüz için kaynak dalınızda zaten mevcutsa, bu, projede daha önce başka bir dalda yapıldıktan sonra kaydedildiğinden, dosyayı içeri aktararak dev Branch lusıs uygulamanızı oluşturun `.lu` .
 
-   * Yeni bir proje üzerinde iş başlatıyorsanız, depoda `.lu` ana lusıs uygulamanız için kaynağınız olmayacaktır. `.lu`Özellik dalı işinizi tamamladıktan sonra, bu dosyayı, geliştirme dalı uygulamanızı portaldan dışarı aktararak oluşturacaksınız ve bunu çekme isteğinin bir parçası olarak gönderebilirsiniz.
+   * Yeni bir proje üzerinde iş başlatıyorsanız, `.lu` depoya henüz ana lusıs uygulamanız için kaynağınız olmayacaktır. `.lu`Özellik dalı işinizi tamamladıktan sonra, bu dosyayı, geliştirme dalı uygulamanızı portaldan dışarı aktararak oluşturacaksınız ve bunu çekme isteğinin bir parçası olarak gönderebilirsiniz.
 
 1. Gerekli değişiklikleri uygulamak için geliştirme dalı uygulamanızın etkin sürümünde çalışın. Tüm özellik dalı çalışması için yalnızca geliştirme dalı uygulamanızın tek bir sürümünde çalışmanız önerilir. Geliştirme Dalı uygulamanızda birden fazla sürüm oluşturursanız, çekme kodunuzu yükselttiğinizde iade etmek istediğiniz değişiklikleri içeren sürümü izlemeniz konusunda dikkatli olun.
 
@@ -124,7 +124,7 @@ Geliştiriciler bir LUO uygulamasındaki güncelleştirmeler üzerinde diğer da
 
 1. Güncelleştirmelerinizi iade edin ve güncelleştirmelerinizin eş incelemesini gözden geçirin. GitHub kullanıyorsanız, bir [çekme isteği](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)oluşturacaksınız.
 
-1. Değişiklikler onaylandığında, güncelleştirmeleri ana dalda birleştirin. Bu noktada, *ana Luo* uygulamasının yeni bir [sürümünü](./luis-how-to-manage-versions.md) , yönetici olarak güncelleştirilmiş kullanarak oluşturacaksınız `.lu` . Sürüm adını ayarlamayla ilgili konular için bkz. sürüm [oluşturma](#versioning) .
+1. Değişiklikler onaylandığında, güncelleştirmeleri ana dalda birleştirin. Bu noktada, *ana Luo* uygulamasının yeni bir [sürümünü](./luis-how-to-manage-versions.md) oluşturacaksınız `.lu` . Sürüm adını ayarlamayla ilgili konular için bkz. sürüm [oluşturma](#versioning) .
 
 1. Özellik dalı silindiğinde, özellik dalı çalışması için oluşturduğunuz dev dalı LUO uygulamasını silmek iyi bir fikirdir.
 
@@ -150,7 +150,7 @@ Aynı özellik dalında çalışan birden çok geliştiricisi aynı anda destekl
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Yeniden temellendirme veya birleştirme ile bir daldaki değişiklikleri diğerine ekleme
 
-Takımınızın başka bir dalda çalıştığı bazı diğer geliştiriciler, kaynak üzerinde güncelleştirme yapmış `.lu` ve bunları, özellik dalınızı oluşturduktan sonra Ana dala birleştiriyordu. Özellik dalınızda kendi değişikliklerini yapmaya devam etmeden önce, değişikliklerini çalışma sürümünüzle birleştirmek isteyebilirsiniz. Bunu, diğer kod varlıklarınızla aynı şekilde yeniden [temellendirerek veya birleştirerek](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) yapabilirsiniz. Luu biçimindeki LUıN uygulaması insan tarafından okunabilir olduğundan, standart birleştirme araçları kullanılarak birleştirmeyi destekler.
+Takımınızın başka bir dalda çalıştığı bazı diğer geliştiriciler, kaynak üzerinde güncelleştirme yapmış `.lu` ve bunları Özellik dalınızı oluşturduktan sonra Ana dala birleştirmiş olabilir. Özellik dalınızda kendi değişikliklerini yapmaya devam etmeden önce, değişikliklerini çalışma sürümünüzle birleştirmek isteyebilirsiniz. Bunu, diğer kod varlıklarınızla aynı şekilde yeniden [temellendirerek veya birleştirerek](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) yapabilirsiniz. Luu biçimindeki LUıN uygulaması insan tarafından okunabilir olduğundan, standart birleştirme araçları kullanılarak birleştirmeyi destekler.
 
 LUSıS uygulamanızı bir özellik dalında yeniden dayandırdığınızda bu ipuçlarını izleyin:
 
@@ -173,7 +173,7 @@ LUSıS uygulamanızı bir özellik dalında yeniden dayandırdığınızda bu ip
 Uygulama kodu varlıklarıyla aynı şekilde, LUSıS uygulama güncelleştirmeleriyle birlikte birim testlerini yazmanız gerekir. Test etmek için sürekli tümleştirme iş akışları kullanmalısınız:
 
 - Çekme isteği birleştirilmeden önce bir PR 'deki güncelleştirmeler
-- Ana dal, bir çekme isteği onaylandıktan ve değişiklikler ana öğe ile birleştirildikten sonra.
+- Ana dal, bir çekme isteği onaylandıktan ve değişiklikler Main ile birleştirildikten sonra bir uygulamadır.
 
 LUO DevOps için test etme hakkında daha fazla bilgi için bkz. [Lufor DevOps Için test etme](luis-concept-devops-testing.md). İş akışlarını uygulama hakkında daha fazla bilgi için bkz. [Lusıs DevOps Için Otomasyon iş akışları](luis-concept-devops-automation.md).
 
@@ -181,11 +181,11 @@ LUO DevOps için test etme hakkında daha fazla bilgi için bkz. [Lufor DevOps I
 
 Luu biçimindeki bir LUO uygulaması, gözden geçirime uygun bir PR 'deki değişikliklerin iletişimini destekleyen insandır. Birim test dosyaları da Luaşağı biçiminde yazılır ve ayrıca bir PR 'de kolayca yeniden görüntülenebilir.
 
-## <a name="versioning"></a>Sürüm Oluşturma
+## <a name="versioning"></a>Sürüm oluşturma
 
 Bir uygulama, [Azure bot hizmetinde](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)çalışan bir bot, [soru-cevap oluşturma](https://www.qnamaker.ai/), [Azure konuşma hizmeti](../speech-service/overview.md)ve daha fazlası gibi işlemleri içerebilen birden çok bileşenden oluşur. Gevşek olarak bağlanmış uygulamaların amacını elde etmek için, bir uygulamanın her bileşeninin bağımsız olarak sürümü oluşturulmuş olması için [Sürüm denetimini](/azure/devops/learn/git/what-is-version-control) kullanın, böylece geliştiricilerin sürüm numarasına bakarak, önemli değişiklikleri veya güncelleştirmeleri algılamasına izin vermiş olur. LUSıS uygulamanızı kendi depolarından korumak için diğer bileşenlerden bağımsız olarak kolayca yükleyebilirsiniz.
 
-Ana dala yönelik Lua uygulamasının bir sürüm oluşturma düzeni uygulanmış olması gerekir. `.lu`BIR Luo uygulaması için güncelleştirmelerini ana öğe olarak birleştirdiğinizde, bu güncelleştirilmiş kaynağı, ana dal IÇIN Luo uygulamasındaki yeni bir sürüme içeri aktarırsınız.
+Ana dala yönelik Lua uygulamasının bir sürüm oluşturma düzeni uygulanmış olması gerekir. `.lu`BIR Luo uygulaması için güncelleştirmelerini Main olarak birleştirdiğinizde, bu güncelleştirilmiş kaynağı, ana dal IÇIN Luo uygulamasındaki yeni bir sürüme içeri aktarırsınız.
 
 Ana LUO uygulama sürümü için sayısal sürüm oluşturma düzeni kullanmanız önerilir, örneğin:
 
@@ -207,9 +207,9 @@ Bkz.
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>' Özellik Dalı ' LUSıS uygulamasının sürümü oluşturma
 
-Bir özellik dalında çalışmayı desteklemek için oluşturduğunuz bir ' dev Branch ' LUO uygulaması ile çalışırken, çalışmanız tamamlandığında uygulamanızı dışarı aktaracaksınız ve bu uygulamayı çekme isteğinize dahil edersiniz `'lu` . Deponuzdaki dal ve ' dev Branch ' LUU uygulaması, çekme isteği ana öğe ile birleştirildikten sonra silinmelidir. Bu uygulama yalnızca özellik dalındaki işi desteklemek için mevcut olduğundan, bu uygulama içinde uygulamanız gereken belirli bir sürüm oluşturma düzeni yoktur.
+Bir özellik dalında çalışmayı desteklemek için oluşturduğunuz bir ' dev Branch ' LUO uygulaması ile çalışırken, çalışmanız tamamlandığında uygulamanızı dışarı aktaracaksınız ve bu uygulamayı çekme isteğinize dahil edersiniz `'lu` . Deponuzdaki dal ve ' dev Branch ' LUIN uygulaması, çekme isteği Main ile birleştirildikten sonra silinmelidir. Bu uygulama yalnızca özellik dalındaki işi desteklemek için mevcut olduğundan, bu uygulama içinde uygulamanız gereken belirli bir sürüm oluşturma düzeni yoktur.
 
-Çekme ortamınızda yaptığınız değişiklikler ana öğe ile birleştirildiğinde, bu, sürüm oluşturma uygulanması gerektiğinde, ana öğe güncelleştirmelerinin bağımsız olarak sürümü oluşturulur.
+Çekme ortamınızda yaptığınız değişiklikler Main ile birleştirildiğinde, bu, sürüm oluşturma uygulanması gerektiği için, ana için tüm güncelleştirmelerin bağımsız olarak sürümü oluşturulur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

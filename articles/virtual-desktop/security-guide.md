@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8cf5504e44239fed6a4a4b82d0064d49f5c5a99f
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: a106455ea9d7b7a64fecd7c4255c294d0bd62db8
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511544"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562625"
 ---
 # <a name="security-best-practices"></a>En iyi güvenlik uygulamaları
 
@@ -35,10 +35,10 @@ Windows sanal masaüstü dağıtımınızda sorumlu olduğunuz güvenlik ihtiya�
 |Oturum Ana Bilgisayarı işletim sistemi|Yes|
 |Dağıtım yapılandırması|Yes|
 |Ağ denetimleri|Yes|
-|Sanallaştırma denetim düzlemi|Hayır|
-|Fiziksel konaklar|Hayır|
-|Fiziksel ağ|Hayır|
-|Fiziksel veri merkezi|Hayır|
+|Sanallaştırma denetim düzlemi|No|
+|Fiziksel konaklar|No|
+|Fiziksel ağ|No|
+|Fiziksel veri merkezi|No|
 
 Müşterinin sorumlu olmadığı güvenlik ihtiyaçları Microsoft tarafından işlenir.
 
@@ -101,7 +101,7 @@ Oturum Konakları, bir Azure aboneliği ve sanal ağ içinde çalışan sanal ma
 
 ### <a name="enable-screen-capture-protection-preview"></a>Ekran yakalama korumasını etkinleştir (Önizleme)
 
-Ekran yakalama koruması özelliği, önemli bilgilerin istemci uç noktalarında yakalanmasını önler. Bu özelliği etkinleştirdiğinizde, uzak içerik ekran görüntüleri ve ekran paylaşımlarında otomatik olarak engellenir veya gizlenir. Ayrıca, ekranınızın içeriğini sürekli olarak yakaladığı kötü amaçlı yazılımdan de gizlenir.
+Ekran yakalama koruması özelliği, önemli bilgilerin istemci uç noktalarında yakalanmasını önler. Bu özelliği etkinleştirdiğinizde, uzak içerik ekran görüntüleri ve ekran paylaşımlarında otomatik olarak engellenir veya gizlenir. Ayrıca, ekranınızın içeriğini sürekli olarak yakaladığı kötü amaçlı yazılımdan de gizlenir. Bu özelliği kullanırken uzak içeriğin uç noktalara kopyalanmasını engellemek için pano yeniden yönlendirmeyi devre dışı bırakmanızı öneririz.
 
 Bu ilke, bir kayıt defteri anahtarı yapılandırılarak ana bilgisayar düzeyinde zorlanır. Bu ilkeyi etkinleştirmek için PowerShell 'i açın ve şu cmdlet 'i çalıştırarak **Fenablescreencaptureprotection** kayıt defteri anahtarını ayarlayın:
 

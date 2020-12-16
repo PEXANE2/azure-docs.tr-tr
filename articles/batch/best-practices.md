@@ -3,12 +3,12 @@ title: En iyi uygulamalar
 description: Azure Batch çözümlerinizi geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1eaa34e02a4c505691662e9fc29334cb823a3185
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f19fceca0212bd0a05d7caa311403b173c19de5
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511221"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563186"
 ---
 # <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
 
@@ -143,7 +143,7 @@ Diğer görevlerde olduğu gibi, düğüm [Başlangıç görevi](jobs-and-tasks.
 
 ### <a name="isolated-nodes"></a>Yalıtılmış düğümler
 
-Uyumluluk ve mevzuat gereksinimleri olan iş yükleri için yalıtılmış VM boyutu kullanmayı düşünün. Sanal makine yapılandırma modundaki desteklenen yalıtılmış Boyutlar,,,, `Standard_E64i_v3` `Standard_E80ids_v4` ve içerir `Standard_F72s_v2` `Standard_G5` `Standard_GS5` `Standard_M128ms` . Yalıtılmış VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da sanal makine yalıtımı](https://docs.microsoft.com/azure/virtual-machines/isolation).
+Uyumluluk ve mevzuat gereksinimleri olan iş yükleri için yalıtılmış VM boyutlarını kullanmayı düşünün. Sanal makine yapılandırma modundaki desteklenen yalıtılmış Boyutlar,,,, `Standard_E80ids_v4` `Standard_M128ms` ve içerir `Standard_F72s_v2` `Standard_G5` `Standard_GS5` `Standard_E64i_v3` . Yalıtılmış VM boyutları hakkında daha fazla bilgi için bkz. [Azure 'Da sanal makine yalıtımı](https://docs.microsoft.com/azure/virtual-machines/isolation).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>İşletim sistemi Hizmetleri arabirimi aracılığıyla uzun süre çalışan hizmetleri yönetme
 

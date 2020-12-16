@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852855"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563169"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -23,6 +23,8 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
 ## <a name="november-2020"></a>Kasım 2020
 
 ### <a name="new-features"></a>Yeni özellikler
+
+**Form tanıyıcı v 2.1 genel önizleme 2 artık kullanılabilir.** Aşağıdaki özellikler dahil olmak üzere v 2.1-Preview. 2 yayımlandı: 
 
 - **Yeni önceden oluşturulmuş fatura modeli** -yeni önceden oluşturulmuş fatura modeli, müşterilerin çeşitli biçimlerde faturalar almasını ve fatura işlemenin otomatikleştirilmesi için yapılandırılmış verileri döndürmesini sağlar. Güçlü optik karakter tanıma (OCR) olanaklarımızı, fatura ile ilgili ayrıntılı öğrenme modellerini anlamak için, gelişmiş bir deyişle, önemli bilgileri Ingilizce olarak birleştirir. Metin, tablo ve müşteri, satıcı, fatura KIMLIĞI, fatura son tarihi, toplam, ödenecek süre, vergi tutarı, sevk edilecek, fatura vb. gibi bilgileri ayıklar.
 
@@ -37,7 +39,7 @@ Form tanıyıcı hizmeti sürekli olarak güncelleştirilir. Özellik geliştirm
  
   > [Düzen ayıklama hakkında daha fazla bilgi edinin](concept-layout.md)
 
-- **İstemci kitaplığı güncelleştirmesi** -.net, Python, Java ve JavaScript için [istemci kitaplıklarının](quickstarts/client-library.md) en son sürümü, tanıyıcı 2,1 API biçimini destekler.
+- **İstemci kitaplığı güncelleştirmesi** -.net, Python, Java ve JavaScript için [istemci kitaplıklarının](quickstarts/client-library.md) en son SÜRÜMLERINDE, tanıyıcı 2,1 API biçimi desteklenir.
 - **Desteklenen yeni dil: Japonca** -şu yeni diller artık desteklenmektedir: `AnalyzeLayout` ve için `AnalyzeCustomForm` : Japonca ( `ja` ). [Dil desteği](language-support.md)
 - **Metin çizgisi stil göstergesi (el ile/diğer) (yalnızca Latin dilleri)** -form tanıyıcı `appearance` , her metin satırının bir güvenilirlik puanıyla birlikte el ile yazılmış tarzına göre bir nesne sınıflandırılmasına neden olur. Bu özellik yalnızca Latin dilleri için desteklenir.
 - **Kalite geliştirmeleri** -tek basamaklı ayıklama geliştirmeleri dahil ayıklama geliştirmeleri.

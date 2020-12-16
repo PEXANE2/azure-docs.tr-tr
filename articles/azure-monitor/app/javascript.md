@@ -4,12 +4,12 @@ description: Sayfa görüntüleme ve oturum sayıları, Web istemcisi verileri, 
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: f5f81fe5d3f7f7d24e5e6618ba3956b80451570c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0588a3eac4ced6cec1e7aea431c6555bbe8bff0a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921881"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559888"
 ---
 # <a name="application-insights-for-web-pages"></a>Web sayfaları için Application Insights
 
@@ -107,7 +107,7 @@ Her yapılandırma seçeneği, yukarıdaki yeni bir satırda gösterilir. [iste�
 
 Kullanılabilir yapılandırma seçenekleri şunlardır
 
-| Ad | Tür | Açıklama
+| Ad | Tür | Description
 |------|------|----------------
 | src | dize **[gerekli]** | SDK 'nın yükleneceği yerin tam URL 'SI. Bu değer, dinamik olarak eklenen bir betiğin/etiketin "src" özniteliği için kullanılır &lt; &gt; . Genel CDN konumunu veya kendi özel olarak barındırılan birini kullanabilirsiniz.
 | name | dize *[isteğe bağlı]* | Başlatılmış SDK için genel ad, varsayılan olarak olur `appInsights` . ```window.appInsights```Bu nedenle, başlatılmış örneğe bir başvuru olacaktır. Note: bir ad değeri sağlarsanız veya bir önceki örnek atanmak üzere görünüyorsa (Appınsi\dk genel adı aracılığıyla), bu ad değeri aynı zamanda genel ad alanında olarak tanımlanır ```window.appInsightsSDK=<name value>``` , bu da SDK başlatma kodunun doğru kod parçacığı çatısı ve proxy yöntemlerinin başlatılmasını ve güncelleştirilmesini sağlamak için gereklidir.
@@ -170,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Yapılandırma
 Çoğu yapılandırma alanı, varsayılan olarak false olarak ayarlanabilecek şekilde adlandırılır. Tüm alanlar, hariç olarak isteğe bağlıdır `instrumentationKey` .
 
-| Ad | Varsayılan | Açıklama |
+| Name | Varsayılan | Description |
 |------|---------|-------------|
 | ınstrumentationkey | null | **Gerekli**<br>Azure portal aldığınız izleme anahtarı. |
 | accountId | null | Uygulamanız kullanıcıları hesaplara gruplayan isteğe bağlı hesap KIMLIĞI. Boşluk, virgül, noktalı virgül, eşittir veya dikey çubuklar yok |
@@ -178,7 +178,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | sessionExpirationMs | 86400000 | Bu süre boyunca milisaniye cinsinden devam eden bir oturum günlüğe kaydedilir. Varsayılan değer 24 saattir |
 | Maxbatchsizeınbytes | 10000 | Telemetri toplu işinin en büyük boyutu. Bir toplu iş bu sınırı aşarsa, hemen gönderilir ve yeni bir toplu işlem başlatılır |
 | Maxbatchınterval | 15000 | Göndermeden önce toplu iş telemetrisi için ne kadar süre (milisaniye) |
-| disableExceptionTracking | yanlış | True ise özel durumlar, bir oto toplanmaz. Varsayılan değer false’tur. |
+| disableExceptionTracking | yanlış | True ise, özel durumlar tekrar toplanmamıştır. Varsayılan değer false’tur. |
 | Disabletelemetri | yanlış | True ise telemetri toplanmaz veya gönderilmez. Varsayılan değer false’tur. |
 | enableDebug | yanlış | True ise, **iç** hata ayıklama VERILERI, SDK günlüğü ayarlarından bağımsız olarak, günlüğe kaydedilmesi **yerine** bir özel durum olarak oluşturulur. Varsayılan değer false’tur. <br>**_Note:_* _ Bu ayarı etkinleştirmek, bir iç hata oluştuğunda telemetri oluşmasına neden olur. Bu, yapılandırma veya SDK kullanımınız ile ilgili sorunları hızlı bir şekilde tanımlamak için yararlı olabilir. Hata ayıklama sırasında Telemetriyi kaybetmek istemiyorsanız, veya yerine kullanmayı düşünün `consoleLoggingLevel` `telemetryLoggingLevel` `enableDebug` . |
 | loggingLevelConsole | 0 | _ *İç** Application Insights hatalarını konsola kaydeder. <br>0: kapalı, <br>1: yalnızca kritik hatalar, <br>2: her şey (hata & uyarı) |
@@ -258,7 +258,7 @@ Varsayılan olarak, bu SDK tek sayfalı uygulamalarda oluşan durum tabanlı yol
 
 Şu anda, bu SDK ile başlatabilmeniz için ayrı bir yanıt verme [eklentisi](javascript-react-plugin.md)sunuyoruz. Ayrıca, sizin için yol değişikliği izlemeyi da gerçekleştirecek ve diğer tepki verme açısından özel telemetri toplayacaktır.
 > [!NOTE]
-> `enableAutoRouteTracking: true`Yalnızca tepki verme eklentisini kullanmıyorsanız **not** kullanın. Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
+> `enableAutoRouteTracking: true`Yalnızca tepki verme eklentisini kullanmıyorsanız  kullanın. Her ikisi de yol değiştiğinde yeni PageViews gönderebilir. Her ikisi de etkinse, yinelenen PageViews gönderilebilir.
 
 ## <a name="extensions"></a>Uzantılar
 

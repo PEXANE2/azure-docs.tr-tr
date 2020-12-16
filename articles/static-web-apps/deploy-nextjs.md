@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a22d06137c3ec17851280605ac85c94ef8b342cd
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350220"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563084"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Azure statik Web Apps önizlemede statik işlenmiş Next.js Web siteleri dağıtma
 
@@ -125,7 +125,7 @@ Azure statik Web Apps, uygulamanızı bir GitHub deposundan dağıtır ve belirl
 1. Değişikliklerinizi GitHub 'a gönderin.
 
     ```bash
-    git push origin master
+    git push origin main
     ```
 
 ## <a name="deploy-your-static-website"></a>Statik Web sitenizi dağıtın
@@ -155,7 +155,7 @@ Yeni statik Web Apps hesabının, işleme otomatik olarak dağıtabilmesi için 
 1. **GitHub Ile oturum aç düğmesine** tıklayın
 1. GitHub Kullanıcı adınız olabilecek Next.js projeniz için depoyu oluşturduğunuz **kuruluşu** seçin.
 1. Daha önce oluşturduğunuz deponun adını bulun ve seçin.
-1. *Dal açılır listesinden* dal olarak **ana** öğesini seçin.
+1. *Dal* açılır listesinden dal olarak **ana** ' yı seçin.
 
    :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="GitHub'ı bağlama":::
 
@@ -189,7 +189,7 @@ https://github.com/<YOUR_GITHUB_USERNAME>/nextjs-starter/actions
 
 Uygulamayı oluştururken Azure static Web Apps, deponuzda bir GitHub eylemleri iş akışı dosyası oluşturdu. Git geçmişinizin eşitlenmesi için bu dosyayı yerel deponuza getirmeniz gerekir.
 
-Terminale dönün ve aşağıdaki komutu çalıştırın `git pull origin master` .
+Terminale dönün ve aşağıdaki komutu çalıştırın `git pull origin main` .
 
 ## <a name="configure-dynamic-routes"></a>Dinamik yolları yapılandırma
 

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: ae63173f683c97d71f22e0dd4d438be0a999bc08
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e9354dade695367ed058506533603318c3cfc288
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511204"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561707"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute ortakları ve eşleme konumları
 
@@ -159,7 +159,7 @@ Azure Ulusal bulutlar birbirinden ve küresel ticari Azure 'dan yalıtılmışt�
 | **Konum** | **Adres** | **Yerel Azure bölgeleri**| **ER doğrudan** | **Hizmet sağlayıcıları** |
 | --- | --- | --- | --- | --- |
 | **Atlanta** | [Equinix AT1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/atlanta-data-centers/at1/) | yok | 10G, 100G | Equinix |
-| **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | yok | 10G, 100G | AT&T NetBond, Equinix, Level 3 Communications, Verizon |
+| **Chicago** | [Equinix CH1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/chicago-data-centers/ch1/) | yok | 10G, 100G | &T Netbononun, Ingiliz telekomünikasyon, Equinx, düzey 3 Communications, Verizon |
 | **Şubesi** | [Equinix DA3](https://www.equinix.com/locations/americas-colocation/united-states-colocation/dallas-data-centers/da3/) | yok | 10G, 100G | Equinix, Megaport, Verizon |
 | **New Yok** | [Equinix NY5](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny5/) | yok | 10G, 100G | Equinix, CenturyLink Cloud Connect, Verizon |
 | **Phoenix** | [CyrusOne Chandler](https://cyrusone.com/locations/arizona/phoenix-arizona-chandler/) | US Gov Arizona | 10G, 100G | &T Netbono, CenturyLink Cloud Connect, Megaport |

@@ -2,14 +2,14 @@
 title: İstek sınırları ve azaltma
 description: Abonelik sınırlarına ulaşıldığında Azure Resource Manager isteklerle azaltma kullanımını açıklar.
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4d387749261747eb9ea1ea26629ade4fe8729856
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 181ed1a3059d86f78e40a9949448af77a551efbc
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80239356"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563135"
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager isteklerini azaltma
 
@@ -25,7 +25,7 @@ Her abonelik düzeyi ve kiracı düzeyindeki işlem, azaltma sınırlarına tabi
 
 Saat başına varsayılan azaltma sınırları aşağıdaki tabloda gösterilmiştir.
 
-| Kapsam | İşlemler | Sınır |
+| Kapsam | Operations | Sınır |
 | ----- | ---------- | ------- |
 | Abonelik | okuma | 12000 |
 | Abonelik | /Delete | 15000 |
@@ -51,7 +51,7 @@ Bu bölümde, yaygın olarak kullanılan bazı kaynak sağlayıcılarının azal
 
 Microsoft. Network kaynak sağlayıcısı aşağıdaki kısıtlama sınırlarını uygular:
 
-| İşlem | Sınır |
+| Çalışma | Sınır |
 | --------- | ----- |
 | yazma/silme (PUT) | 5 dakikada 1000 |
 | okuma (GET) | 5 dakikada 10000 |
@@ -66,9 +66,16 @@ Sanal makine ölçek kümesi içindeki sanal makine örneklerini denetlemek içi
 
 [Azure Kaynak Grafiği](../../governance/resource-graph/overview.md) , istek sayısını işlemlerine göre sınırlandırır. Kalan istekleri ve sınıra ulaşıldığında nasıl yanıt verileceğini öğrenmek için bu makaledeki adımlar kaynak grafı için de geçerlidir. Ancak, kaynak grafiği kendi sınırını ve sıfırlama oranını ayarlar. Daha fazla bilgi için bkz. [Kaynak Grafiği azaltma üstbilgileri](../../governance/resource-graph/concepts/guidance-for-throttled-requests.md#understand-throttling-headers).
 
+### <a name="other-resource-providers"></a>Diğer kaynak sağlayıcıları
+
+Diğer kaynak sağlayıcılarındaki daraltma hakkında daha fazla bilgi için bkz.:
+
+* [Azure Key Vault azaltma yönergeleri](../../key-vault/general/overview-throttling.md)
+* [AKS sorunlarını giderme](../../aks/troubleshooting.md#im-receiving-429---too-many-requests-errors)
+
 ## <a name="error-code"></a>Hata kodu
 
-Sınıra ulaştığınızda, **429 çok fazla Istek**http durum kodunu alırsınız. Yanıt, bir sonraki isteği göndermeden önce uygulamanızın beklemesi gereken saniye sayısını (veya uyku) belirten bir **yeniden deneme** değeri içerir. Yeniden deneme değeri geçmeden önce bir istek gönderirseniz isteğiniz işlenmez ve yeni bir yeniden deneme değeri döndürülür.
+Sınıra ulaştığınızda, **429 çok fazla Istek** http durum kodunu alırsınız. Yanıt, bir sonraki isteği göndermeden önce uygulamanızın beklemesi gereken saniye sayısını (veya uyku) belirten bir **yeniden deneme** değeri içerir. Yeniden deneme değeri geçmeden önce bir istek gönderirseniz isteğiniz işlenmez ve yeni bir yeniden deneme değeri döndürülür.
 
 Belirtilen süre bekledikten sonra Azure bağlantınızı kapatıp yeniden açabilirsiniz. Bağlantıyı sıfırlayarak, farklı bir Azure Resource Manager örneğine bağlanabilirsiniz.
 
@@ -80,7 +87,7 @@ Bazı kaynak sağlayıcıları geçici bir sorunu raporlamak için 429 döndür�
 
 Yanıt üstbilgilerini inceleyerek kalan isteklerin sayısını belirleyebilirsiniz. Okuma istekleri, kalan okuma isteklerinin sayısı için üst bilgide bir değer döndürür. Yazma istekleri, kalan yazma isteklerinin sayısı için bir değer içerir. Aşağıdaki tabloda, bu değerler için inceleyebileceğiniz yanıt üstbilgileri açıklanmaktadır:
 
-| Yanıt üst bilgisi | Açıklama |
+| Yanıt üst bilgisi | Description |
 | --- | --- |
 | x-MS-ratelimit-kalan-abonelik-okumalar |Abonelik kapsamlı okuma kaldı. Bu değer, okuma işlemlerinde döndürülür. |
 | x-MS-ratelimit-kalan-abonelik-yazmaları |Abonelik kapsamlı yazmaları kaldı. Bu değer, yazma işlemlerinde döndürülür. |

@@ -11,12 +11,12 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 404fc887cf40ee5d88b2824e8d2324d103226973
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: a875c036c79419357f1134c32f62fdb060fec7c6
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164372"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562302"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services ve ASP.NET kullanmaya başlama
 
@@ -400,7 +400,7 @@ Bu bölümde, yerel olarak test etmek amacıyla Azure Storage ve SQL bağlantı 
 ### <a name="add-code-files"></a>Kod dosyalarını ekleme
 Bu bölümde, indirilen çözümden yeni çözüme kod dosyaları kopyalarsınız. Aşağıdaki bölümlerde bu kodun temel kısımları gösterilmiş ve açıklanmıştır.
 
-Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve **Add**  -  **Varolan öğe**Ekle ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
+Bir projeye veya klasöre dosya eklemek için, projeye veya klasöre sağ tıklayın ve   -  **Varolan öğe** Ekle ' ye tıklayın. İstediğiniz dosyaları seçin ve ardından **Ekle**’ye tıklayın. Mevcut dosyaları değiştirmek isteyip istemediğiniz sorulursa **Evet**’e tıklayın.
 
 1. ContosoAdsCommon projesinde *Class1.cs* dosyasını silin ve indirilen projedeki *Ad.cs* ve *ContosoAdscontext.cs* dosyalarını onun yerine ekleyin.
 2. ContosoAdsWeb projesinde indirilen projeden aşağıdaki dosyaları ekleyin.
@@ -744,7 +744,7 @@ Bu kod, görüntü URL’sini almak için veritabanını okur, görüntüyü bir
 Bu öğreticideki yönergeleri izlerken bir sorun oluşması durumunda bazı yaygın hatalar ve çözümleri aşağıda verilmiştir.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException
-Uygulamayı Azure’da çalıştırdığınızda ya da Azure işlem öykünücüsü kullanarak yerel olarak çalıştırdığınızda Azure tarafından `RoleEnvironment` nesnesi sağlanır.  Yerel olarak çalıştırırken bu hatayı alırsanız ContosoAdsCloudService projesini başlangıç projesi olarak ayarladığınızdan emin olun. Bunun yapılması projeyi Azure işlem öykünücüsü kullanarak çalışacak şekilde ayarlar.
+`RoleEnvironment`Bir uygulamayı Azure 'da çalıştırdığınızda veya Azure Işlem öykünücüsü 'nü kullanarak yerel olarak çalıştırdığınızda, nesne Azure tarafından sağlanır.  Yerel olarak çalıştırırken bu hatayı alırsanız ContosoAdsCloudService projesini başlangıç projesi olarak ayarladığınızdan emin olun. Bu, projeyi Azure Işlem öykünücüsü kullanılarak çalışacak şekilde ayarlar.
 
 Uygulamanın Azure RoleEnvironment’ı kullanmasının bir nedeni *.cscfg* dosyalarına depolanmış bağlantı dizelerinin alınmasıdır; dolayısıyla bu özel durumun başka bir nedeni de eksik bir bağlantı dizesidir. ContosoAdsWeb projesinde hem Bulut hem de Yerel yapılandırmaları için StorageConnectionString ayarını oluşturduğunuzdan ve ContosoAdsWorker projesinde her iki yapılandırma için iki bağlantı dizesini de oluşturduğunuzdan emin olun. StorageConnectionString için çözümün tamamında **Tümünü Bul** araması yaparsanız 6 dosyada 9 kez görmeniz gerekir.
 
@@ -754,7 +754,7 @@ Web projesi tarafından kullanılan bağlantı noktası numarasını değiştirm
 Sorunu çözebilecek başka bir alternatif için sonraki bölüme bakın.
 
 ### <a name="other-errors-when-running-locally"></a>Yerel olarak çalışırken oluşan diğer hatalar
-Varsayılan olarak yeni bulut hizmeti projeleri, Azure ortamının benzetimini yapmak için Azure işlem öykünücüsü kullanır. Bu, tam işlem öykünücüsünün hafif sürümüdür ve hızlı sürümün çalışmadığı bazı koşullarda tam öykünücü çalışır.  
+Varsayılan olarak yeni bulut hizmeti projeleri, Azure ortamının benzetimini yapmak için Azure Işlem öykünücüsü Express 'i kullanır. Bu, tam işlem öykünücüsünün hafif sürümüdür ve hızlı sürümün çalışmadığı bazı koşullarda tam öykünücü çalışır.  
 
 Projeyi tam öykünücü kullanacak şekilde değiştirmek için ContosoAdsCloudService projesine sağ tıklayın ve ardından **Özellikler**’e tıklayın. **Özellikler** penceresinde **Web** sekmesine ve ardından **Tam Öykünücü Kullan** radyo düğmesine tıklayın.
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7713765a36207f0d9da05c4c11629e4a7f1164d9
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356503"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561520"
 ---
 Java için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. Maven paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -24,8 +24,8 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 
 Java için Content Moderator istemci kitaplığını kullanarak şunları yapın:
 
-* Orta görüntüler
 * Orta metin
+* Orta görüntüler
 
 [Başvuru belgeleri](/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-contentmoderator)  | [Yapıt (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-contentmoderator)  |  [Örnekler](/samples/browse/?products=azure&term=content-moderator)
 
@@ -127,14 +127,42 @@ Aşağıdaki sınıflar Content Moderator Java istemci kitaplığı 'nın bazı 
 Bu kod parçacıkları, Java için Content Moderator istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
-* [Orta görüntüler](#moderate-images)
 * [Orta metin](#moderate-text)
+* [Orta görüntüler](#moderate-images)
+
 
 ## <a name="authenticate-the-client"></a>İstemcinin kimliğini doğrulama
 
 Uygulamanın `main` yönteminde, abonelik uç noktası değerini ve abonelik anahtarınızı kullanarak bir [Contentmoderatorclient](/java/api/com.microsoft.azure.cognitiveservices.vision.contentmoderator.contentmoderatorclient?view=azure-java-stable) nesnesi oluşturun.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_client)]
+
+
+
+## <a name="moderate-text"></a>Orta metin
+
+### <a name="set-up-sample-text"></a>Örnek metin ayarlama
+
+**Contentmoderatorhızlı başlangıç** sınıfınızın en üstünde, bir yerel metin dosyasına bir başvuru tanımlayın. Proje dizininize bir. txt dosyası ekleyin ve çözümlemek istediğiniz metni girin.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
+
+### <a name="analyze-text"></a>Metni çözümle
+
+. Txt dosyasını okuyan ve her satırda **Screentext** yöntemini çağıran yeni bir yöntem oluşturun.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
+
+### <a name="print-text-moderation-results"></a>Metin denetleme sonuçlarını yazdır
+
+Denetleme sonuçlarını proje dizininizde bir. JSON dosyasına yazdırmak için aşağıdaki kodu ekleyin.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
+
+`try` `catch` Yöntemini gerçekleştirmek için ve ifadesini kapatın.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
+
 
 ## <a name="moderate-images"></a>Orta görüntüler
 
@@ -180,31 +208,6 @@ Son olarak, döndürülen bilgileri `EvaluationData` listede depolayın.
 `try`Yöntemi kapatın ve `catch` metodunu tamamlamaya yönelik bir ifade ekleyin.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_catch)]
-
-## <a name="moderate-text"></a>Orta metin
-
-### <a name="set-up-sample-text"></a>Örnek metin ayarlama
-
-**Contentmoderatorhızlı başlangıç** sınıfınızın en üstünde, bir yerel metin dosyasına bir başvuru tanımlayın. Proje dizininize bir. txt dosyası ekleyin ve çözümlemek istediğiniz metni girin.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_var)]
-
-### <a name="analyze-text"></a>Metni çözümle
-
-. Txt dosyasını okuyan ve her satırda **Screentext** yöntemini çağıran yeni bir yöntem oluşturun.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
-
-### <a name="print-text-moderation-results"></a>Metin denetleme sonuçlarını yazdır
-
-Denetleme sonuçlarını proje dizininizde bir. JSON dosyasına yazdırmak için aşağıdaki kodu ekleyin.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_print)]
-
-`try` `catch` Yöntemini gerçekleştirmek için ve ifadesini kapatın.
-
-[!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod_catch)]
-
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 

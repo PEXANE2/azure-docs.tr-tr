@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779553"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562251"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Öğretici: Azure App Service web uygulamasına Azure CDN ekleme
 
@@ -38,7 +38,7 @@ Kullanacağınız örnek statik HTML sitesinin ana sayfası:
 > * Önbelleğe alınan sürümleri denetlemek için sorgu dizeleri kullanma.
 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -60,7 +60,7 @@ CDN uç noktanızı dinamik site hızlandırma (DSA) için iyileştirmek istiyor
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>CDN profili ve uç noktası oluşturma
 
-Sol gezinti bölmesinde **Uygulama Hizmetleri** ’ni ve sonra [statik HTML hızlı başlangıç](../app-service/quickstart-html.md) içinde oluşturduğunuz uygulamayı seçin.
+Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızlı başlangıç](../app-service/quickstart-html.md) içinde oluşturduğunuz uygulamayı seçin.
 
 ![Portalda, App Service uygulamasını seçin](media/cdn-add-to-web-app/portal-select-app-services.png)
 
@@ -76,9 +76,9 @@ Sol gezinti bölmesinde **Uygulama Hizmetleri** ’ni ve sonra [statik HTML hız
 | ------- | --------------- | ----------- |
 | **CDN profili** | myCDNProfile | CDN profili, aynı fiyatlandırma katmanına sahip bir CDN uç noktaları koleksiyonudur. |
 | **Fiyatlandırma katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
-| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | *&lt; Uç nokta adı &gt;* . azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişirsiniz.
+| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | *&lt; Uç nokta adı &gt;*. azureedge.net etki alanındaki önbelleğe alınmış kaynaklarınıza erişirsiniz.
 
-CDN profili oluşturmak için **Oluştur** ’u seçin.
+CDN profili oluşturmak için **Oluştur**’u seçin.
 
 Azure, profili ve uç noktayı oluşturur. Yeni uç nokta, **Uç noktalar** listesinde gösterilir ve sağlandığında **Çalışıyor** durumunda olur.
 
@@ -91,7 +91,7 @@ Azure, profili ve uç noktayı oluşturur. Yeni uç nokta, **Uç noktalar** list
    - **Akamai’den Azure CDN Standart** profilleri için yayma işlemi genellikle bir dakika içinde tamamlanır. 
    - **Verizon’dan Azure CDN Standart** ve **Verizon’dan Azure CDN Premium** profilleri için yayma işlemi genellikle 90 dakika içinde tamamlanır. 
 
-Örnek uygulamanın, *index.html* dosyası ve diğer statik varlıkları içeren *css* , *img* ve *js* klasörleri vardır. Bu dosyaların tümünün içerik yolları, CDN uç noktasında aynıdır. Örneğin, aşağıdaki URL'ler *css* klasöründeki *bootstrap.css* dosyasına erişir:
+Örnek uygulamanın, *index.html* dosyası ve diğer statik varlıkları içeren *css*, *img* ve *js* klasörleri vardır. Bu dosyaların tümünün içerik yolları, CDN uç noktasında aynıdır. Örneğin, aşağıdaki URL'ler *css* klasöründeki *bootstrap.css* dosyasına erişir:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -135,7 +135,7 @@ Değişikliğinizi uygulayın ve web uygulamasına dağıtın.
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Dağıtım tamamlandıktan sonra, değişikliği görmek için web uygulaması URL'sine bakın.
@@ -158,7 +158,7 @@ http://<endpointname>.azureedge.net/index.html
 
 Önbelleğe alınmış sürümünü güncelleştirmek üzere CDN'i tetiklemek için, CDN'i temizleyin.
 
-Portalın sol gezinti bölümünde, **Kaynak grupları** ’nı ve ardından ve web uygulamanız için oluşturduğunuz kaynak grubunu (myResourceGroup) seçin.
+Portalın sol gezinti bölümünde, **Kaynak grupları**’nı ve ardından ve web uygulamanız için oluşturduğunuz kaynak grubunu (myResourceGroup) seçin.
 
 ![Kaynak grubunu seçme](media/cdn-add-to-web-app/portal-select-group.png)
 
@@ -166,13 +166,13 @@ Kaynak listesinden CDN uç noktanızı seçin.
 
 ![Uç nokta seçin](media/cdn-add-to-web-app/portal-select-endpoint.png)
 
-**Uç nokta** sayfasının üst kısmında, **Temizle** 'yi seçin.
+**Uç nokta** sayfasının üst kısmında, **Temizle**'yi seçin.
 
 ![Temizleme seçin](media/cdn-add-to-web-app/portal-select-purge.png)
 
 Temizlemek istediğiniz içerik yollarını girin. Tek bir dosyayı temizlemek için tam bir dosya yolunu geçirebileceğiniz gibi, bir klasördeki tüm içeriği temizlemek ve yenilemek için bir yol kesimini de geçirebilirsiniz. *index.html* dosyasını değiştirdiğiniz için, bunun yollardan birinde yer aldığından emin olun.
 
-Sayfanın alt kısmındaki **Temizle** 'yi seçin.
+Sayfanın alt kısmındaki **Temizle**'yi seçin.
 
 ![Sayfayı temizleyin](media/cdn-add-to-web-app/app-service-web-purge-cdn.png)
 
@@ -182,7 +182,7 @@ Temizleme isteğinin işlenmesi tamamlanana kadar bekleyin. Bu işlem genellikle
 
 ![Temizleme bildirimi](media/cdn-add-to-web-app/portal-purge-notification.png)
 
-*index.html* için CDN uç nokta URL'sine bakarken, giriş sayfasının başlığına eklediğiniz *V2* 'yi görürsünüz; bu, CDN önbelleğinin yenilendiğini gösterir.
+*index.html* için CDN uç nokta URL'sine bakarken, giriş sayfasının başlığına eklediğiniz *V2*'yi görürsünüz; bu, CDN önbelleğinin yenilendiğini gösterir.
 
 ```
 http://<endpointname>.azureedge.net/index.html
@@ -206,11 +206,11 @@ Azure CDN, aşağıdaki önbelleğe alma davranışı seçeneklerini sunar:
 
 ### <a name="change-the-cache-behavior"></a>Önbellek davranışını değiştirme
 
-Azure portalında bulunan **CDN Uç Noktası** sayfasında **Önbellek** ’i seçin.
+Azure portalında bulunan **CDN Uç Noktası** sayfasında **Önbellek**’i seçin.
 
-**Sorgu dizesi önbellek davranışı** açılan listesinden, **Her benzersiz URL’yi önbelleğe al** ’ı seçin.
+**Sorgu dizesi önbellek davranışı** açılan listesinden, **Her benzersiz URL’yi önbelleğe al**’ı seçin.
 
-**Kaydet** ’i seçin.
+**Kaydet**’i seçin.
 
 ![Sorgu dizesini önbelleğe alma davranışı seçin](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 
@@ -222,18 +222,18 @@ Bir tarayıcıda, CDN uç noktasındaki ana sayfaya gidin ve bir sorgu dizesi ek
 http://<endpointname>.azureedge.net/index.html?q=1
 ```
 
-Azure CDN, başlıkta *V2* 'nin de bulunduğu geçerli web uygulaması içeriğini döndürür. 
+Azure CDN, başlıkta *V2*'nin de bulunduğu geçerli web uygulaması içeriğini döndürür. 
 
 Bu sayfanın CDN'de önbelleğe alınmasını sağlamak için sayfayı yenileyin. 
 
-*index.html* dosyasını açın, *V2* 'yi *V3* olarak değiştirin ve değişikliği dağıtın. 
+*index.html* dosyasını açın, *V2*'yi *V3* olarak değiştirin ve değişikliği dağıtın. 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
-Tarayıcıda, yeni sorgu dizesiyle (örneğin, `q=2`) CDN uç nokta URL'sine gidin. Azure CDN geçerli *index.html* dosyasını alır ve *V3* olarak görüntüler. Öte yandan CDN uç noktasına `q=1` sorgu dizesiyle giderseniz, *V2* 'yi görürsünüz.
+Tarayıcıda, yeni sorgu dizesiyle (örneğin, `q=2`) CDN uç nokta URL'sine gidin. Azure CDN geçerli *index.html* dosyasını alır ve *V3* olarak görüntüler. Öte yandan CDN uç noktasına `q=1` sorgu dizesiyle giderseniz, *V2*'yi görürsünüz.
 
 ```
 http://<endpointname>.azureedge.net/index.html?q=2

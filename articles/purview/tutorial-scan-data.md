@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 802b7d2ca5d96bf385c4b8f0ee0cdaa3db181a1c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922571"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559973"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Öğretici: Azure purview ile verileri tarama (Önizleme)
 
@@ -146,10 +146,11 @@ Katalog yapılandırması tamamlandıktan sonra, varlıkları oluşturmak için 
 
    Komutu çalıştırdığınızda, Azure Active Directory kimlik bilgilerinizi kullanarak oturum açmanız için bir açılır pencere görünür.
 
-1. Başlangıç paketini çalıştırmak için aşağıdaki komutu kullanın. ,, `CatalogName` , `TenantID` `SubscriptionID` `newresourcegroupname` Ve `CatalogResourceGroupName` yer tutucularını değiştirin. İçin `newresourcegroupname` , kaynak grubu için verileri barındıran benzersiz bir ad kullanın.
 
-> [!IMPORTANT]
-> **Newresourcegroupname** yalnızca sayı ve küçük harf kullanır ve 17 karakterden az olmalıdır. **Büyük harfli harflerden oluşan sonuçlara ve özel karakterlere izin verilmez.** Bu kısıtlama, depolama hesabı adlandırma kurallarından gelir.
+1. Başlangıç paketini çalıştırmak için aşağıdaki komutu kullanın. ,, `CatalogName` , `TenantID` `SubscriptionID` `NewResourceGroupName` Ve `CatalogResourceGroupName` yer tutucularını değiştirin. İçin `NewResourceGroupName` , verileri içeren kaynak grubu için benzersiz bir ad (yalnızca küçük harf alfasayısal karakterlerle) kullanın.
+
+   > [!IMPORTANT]
+   > **Newresourcegroupname** yalnızca sayı ve küçük harf kullanır ve 17 karakterden az olmalıdır. **Büyük harfli harflerden oluşan sonuçlara ve özel karakterlere izin verilmez.** Bu kısıtlama, depolama hesabı adlandırma kurallarından gelir.
 
    ```powershell
    .\RunStarterKit.ps1 -CatalogName <CatalogName> -TenantId <TenantID>`

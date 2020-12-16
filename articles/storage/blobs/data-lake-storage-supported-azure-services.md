@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3d3fb983f5e55f8b262be0925c2138b465413fc3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cbbbf4ddc651c535cb1266257990f149c80b4742
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095415"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562506"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage 2. destekleyen Azure hizmetleri
 
@@ -39,7 +39,7 @@ Bu tabloda Azure Data Lake Storage 2. ile kullanabileceğiniz Azure hizmetleri l
 |HDInsight |Genel kullanıma sunuldu|Yes|Yes|[Azure HDInsight kümeleriyle Azure Data Lake Storage 2. Nesil hizmetini kullanma](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)<br>[Data Lake Storage 2. ile](data-lake-storage-use-hdfs-data-lake-storage.md) <br>[Öğretici: Azure HDInsight üzerinde Apache Hive kullanarak verileri ayıklama, dönüştürme ve yükleme](data-lake-storage-tutorial-extract-transform-load-hive.md)|
 |IoT Hub |Genel kullanıma sunuldu|Yes|Yes|[Farklı uç noktalara cihazdan buluta iletiler göndermek için IoT Hub ileti yönlendirmeyi kullanma](../../iot-hub/iot-hub-devguide-messages-d2c.md)|
 |Power BI|Genel kullanıma sunuldu|Yes|Yes|[Power BI kullanarak Data Lake Storage 2. verileri çözümleme](/power-query/connectors/datalakestorage)|
-|Azure Synapse Analytics (eski adı SQL Veri Ambarı)|Genel kullanıma sunuldu|Yes|Yes|[Azure SYNAPSE Analytics ile kullanma](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Azure Synapse Analytics (eski adı SQL Veri Ambarı)|Genel kullanıma sunuldu|Yes|Yes|[Depolama hesabındaki verileri analiz etme](/azure/synapse-analytics/get-started-analyze-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |SQL Server Integration Services (SSIS)|Genel kullanıma sunuldu|Yes|Yes|[Azure depolama bağlantı Yöneticisi](/sql/integration-services/connection-manager/azure-storage-connection-manager)|
 |Azure Veri Gezgini|Genel kullanıma sunuldu|Yes|Yes|[Azure Data Lake Azure Veri Gezgini kullanarak verileri sorgulama](/azure/data-explorer/data-lake-query-data)|
 |Azure Bilişsel Arama|Önizleme|Yes|Yes|[Azure Data Lake Storage 2. belgelerini dizin ve arama (Önizleme)](../../search/search-howto-index-azure-data-lake-storage.md)|

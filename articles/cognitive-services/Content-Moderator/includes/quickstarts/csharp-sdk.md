@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92924986"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561503"
 ---
 .NET için Azure Content Moderator istemci kitaplığı 'nı kullanmaya başlayın. NuGet paketini yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. 
 
@@ -24,9 +24,9 @@ Content Moderator, rahatsız edici, riskli veya başka türlü istenmeyen içeri
 
 .NET için Content Moderator istemci kitaplığı 'nı kullanın:
 
-* [Orta metin](#moderate-text)
-* [Orta görüntüler](#moderate-images)
-* [İnceleme oluştur](#create-a-review)
+* Orta metin
+* Orta görüntüler
+* İnceleme oluştur
 
 [Başvuru belgeleri](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/)  |  [Örnekler](../../samples-dotnet.md)
 
@@ -48,11 +48,11 @@ Visual Studio 'yu kullanarak yeni bir .NET Core uygulaması oluşturun.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler 
 
-Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet** ' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i** işaretleyin ve arama yapın `Microsoft.Azure.CognitiveServices.ContentModerator` . Sürüm `2.0.0` ' ü ve ardından **öğesini seçin** . 
+Yeni bir proje oluşturduktan sonra, **Çözüm Gezgini** proje çözümüne sağ tıklayıp **NuGet Paketlerini Yönet**' i seçerek istemci kitaplığını yükleyebilirsiniz. Açılan paket yöneticisinde, Seç ' i seçin, **ön sürümü dahil** **et ' i** işaretleyin ve arama yapın `Microsoft.Azure.CognitiveServices.ContentModerator` . Sürüm `2.0.0` ' ü ve ardından **öğesini seçin**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `content-moderator-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs* .
+Konsol penceresinde (cmd, PowerShell veya Bash gibi), `dotnet new` adıyla yeni bir konsol uygulaması oluşturmak için komutunu kullanın `content-moderator-quickstart` . Bu komut, tek bir kaynak dosyası olan basit bir "Merhaba Dünya" C# projesi oluşturur: *program.cs*.
 
 ```console
 dotnet new console -n content-moderator-quickstart

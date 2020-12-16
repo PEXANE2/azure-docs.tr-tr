@@ -1,29 +1,26 @@
 ---
-title: Şablon dağıtımı-if (Önizleme)
+title: Şablon dağıtımı
 description: Azure Resource Manager şablonu dağıtılmadan önce kaynaklarınızda hangi değişikliklerin gerçekleşecektir belirleme.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810080"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563101"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM şablonu dağıtımı ne-if işlemi (Önizleme)
+# <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
-Azure Resource Manager şablonu (ARM şablonu) dağıtılmadan önce, gerçekleşen değişikliklerin önizlemesini yapabilirsiniz. Azure Resource Manager, şablonu dağıtırsanız kaynakların ne şekilde değişdiklerinizi görmenizi sağlamak için ne yapılır işlemini sağlar. Bu işlem, mevcut kaynaklarda hiçbir değişiklik yapmaz. Bunun yerine, belirtilen şablon dağıtılırsa değişiklikleri tahmin eder.
-
-> [!NOTE]
-> Bu işlem şu anda önizleme aşamasındadır. Önizleme sürümü olarak, sonuçlar bazen hiçbir değişiklik gerçekleşmediği zaman bir kaynağın değiştirileceği gösterebilir. Bu sorunları azaltmak için çalışıyoruz, ancak yardımımız için ihtiyacımız var. Lütfen bu sorunları konusunda bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+Azure Resource Manager şablonu (ARM şablonu) dağıtılmadan önce, gerçekleşen değişikliklerin önizlemesini yapabilirsiniz. Azure Resource Manager, şablonu dağıtırsanız kaynakların ne şekilde değişdiklerinizi görmenizi sağlamak için ne yapılır işlemini sağlar. what-if komutu var olan kaynaklarda herhangi bir değişiklik yapmaz. Bunun yerine belirtilen şablonun dağıtılması halinde gerçekleştirilecek değişikliklerle ilgili tahminde bulunur.
 
 Azure PowerShell, Azure CLı veya REST API işlemleri ile durum işlemini kullanabilirsiniz. Kaynak grubu, abonelik, yönetim grubu ve kiracı düzeyinde dağıtımlar için ne desteklenir?
 
-## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
+## <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü yükleme
 
-PowerShell 'de ne olduğunu kullanmak için **az Module sürüm 4,2 veya sonraki bir**sürümünü kullanmanız gerekir.
+PowerShell 'de ne olduğunu kullanmak için **az Module sürüm 4,2 veya sonraki bir** sürümünü kullanmanız gerekir.
 
 Ancak, gerekli modülü yüklemeden önce PowerShell Core (6. x veya 7. x) olduğundan emin olun. PowerShell 5. x veya daha önceki [bir sürümünü kullanıyorsanız, PowerShell sürümünüzü güncelleştirin](/powershell/scripting/install/installing-powershell). Gerekli modülü PowerShell 5. x veya önceki bir sürümüne yükleyemezsiniz.
 
@@ -37,34 +34,9 @@ Install-Module -Name Az -Force
 
 Modül yükleme hakkında daha fazla bilgi için bkz. [yükleme Azure PowerShell](/powershell/azure/install-az-ps).
 
-### <a name="uninstall-alpha-version"></a>Alfa sürümünü kaldır
-
-Daha önce bir durum modülünün Alpha sürümünü yüklediyseniz, bu modülü kaldırın. Alfa sürümü yalnızca erken önizlemeye kaydolan kullanıcılar tarafından kullanılabilir. Bu önizlemeyi yüklemediyseniz, bu bölümü atlayabilirsiniz.
-
-1. PowerShell’i yönetici olarak çalıştırın
-1. Az. resources modülünün yüklü sürümlerini denetleyin.
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. Sürüm numarası **2. x. x-Alpha**biçiminde yüklü bir sürümünüz varsa, bu sürümü kaldırın.
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. Önizlemeyi yüklerken kullandığınız durum deposunun kaydını silin.
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-Ne yapılacağını kullanmaya hazırsınız.
-
 ## <a name="install-azure-cli-module"></a>Azure CLı modülünü yükler
 
-Azure CLı 'de ne olduğunu kullanmak için Azure CLı 2.5.0 veya sonraki bir sürüme sahip olmanız gerekir. Gerekirse, [en son Azure CLI sürümünü yüklemelisiniz](/cli/azure/install-azure-cli).
+Azure CLI'de what-if komutunu kullanmak için Azure CLI'nin en az 2.5.0 sürümüne sahip olmanız gerekir. Gerekirse [Azure CLI'nin en son sürümünü yükleyin](/cli/azure/install-azure-cli).
 
 ## <a name="see-results"></a>Sonuçlara bakın
 
@@ -123,14 +95,14 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure CLI’si
 
 Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullanın:
 
 * [az dağıtım grubu](/cli/azure/deployment/group#az-deployment-group-what-if) kaynak grubu dağıtımları için ne yapılır?
 * abonelik düzeyi dağıtımlar için [az Deployment Sub](/cli/azure/deployment/sub#az-deployment-sub-what-if)
-* Yönetim grubu dağıtımları için [az Deployment mg ne-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if)
-* [az dağıtım kiracısı](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) kiracı dağıtımları için ne yapılır?
+* Yönetim grubu dağıtımları için [az Deployment mg ne-if](/cli/azure/deployment/mg#az-deployment-mg-what-if)
+* [az dağıtım kiracısı](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) kiracı dağıtımları için ne yapılır?
 
 `--confirm-with-what-if` `-c` Değişiklikleri önizlemek ve dağıtıma devam etmek isteyip istemediğiniz sorulduğunda anahtarı (veya kısa biçimini) kullanabilirsiniz. Bu anahtarı şu şekilde ekleyin:
 
@@ -143,7 +115,7 @@ Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullan�
 
 Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür. Değişiklikler için programlı olarak inceleyebileceğiniz bir JSON nesnesi almak için `--no-pretty-print` anahtarını kullanın. Örneğin, `az deployment group what-if --no-pretty-print` kaynak grubu dağıtımları için kullanın.
 
-Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma](/cli/azure/azure-cli-configuration) dosyanızı açın. **No_color** **Evet**olarak ayarlayın.
+Sonuçları renkler olmadan döndürmek istiyorsanız, [Azure CLI yapılandırma](/cli/azure/azure-cli-configuration) dosyanızı açın. **No_color** **Evet** olarak ayarlayın.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 
@@ -160,15 +132,15 @@ Ne yapılır işlemi altı farklı değişiklik türünü listeler:
 
 - **Oluştur**: kaynak şu anda mevcut değil, ancak şablonda tanımlandı. Kaynak oluşturulacaktır.
 
-- **Sil**: Bu değişiklik türü yalnızca dağıtım için [tamamlanmış mod](deployment-modes.md) kullanılırken geçerlidir. Kaynak var, ancak şablonda tanımlı değil. Bu, tüm modda kaynak silinir. Yalnızca [tamamlanmış mod silme işlemini destekleyen](complete-mode-deletion.md) kaynaklar bu değişiklik türüne dahil edilir.
+- **Sil**: Bu değişiklik türü yalnızca dağıtım için [tamamlanmış mod](deployment-modes.md) kullanılırken geçerlidir. Kaynak mevcuttur ancak şablonda tanımlanmamıştır. Tamamlama modunda kaynak oluşturulacaktır. Yalnızca [tamamlanmış mod silme işlemini destekleyen](complete-mode-deletion.md) kaynaklar bu değişiklik türüne dahil edilir.
 
-- **Yoksay**: kaynak var, ancak şablonda tanımlı değil. Kaynak dağıtılmaz veya değiştirilmez.
+- **Yoksay**: kaynak var, ancak şablonda tanımlı değil. Kaynak dağıtılmayacak veya değiştirilmeyecektir.
 
-- **NOCHANGE**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak, ancak kaynağın özellikleri değişmeyecek. Bu değişiklik türü, varsayılan değer olan [RESULTFORMAT](#result-format) ayarlandığında döndürülür `FullResourcePayloads` .
+- **NOCHANGE**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacaktır ancak kaynağın özellikleri değişmeyecektir. Bu değişiklik türü, varsayılan değer olan [RESULTFORMAT](#result-format) ayarlandığında döndürülür `FullResourcePayloads` .
 
-- **Değiştir**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak ve kaynağın özellikleri değişecektir. Bu değişiklik türü, varsayılan değer olan [RESULTFORMAT](#result-format) ayarlandığında döndürülür `FullResourcePayloads` .
+- **Değiştir**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacaktır ve kaynağın özellikleri değişecektir. Bu değişiklik türü, varsayılan değer olan [RESULTFORMAT](#result-format) ayarlandığında döndürülür `FullResourcePayloads` .
 
-- **Dağıtım**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacak. Kaynağın özellikleri değişebilir veya değişmeyebilir. İşlem, herhangi bir özellik değişmeyeceği için yeterli bilgi olmadığında bu değişiklik türünü döndürür. Bu durumu yalnızca [RESULTFORMAT](#result-format) olarak ayarlandığında görürsünüz `ResourceIdOnly` .
+- **Dağıtım**: kaynak vardır ve şablonda tanımlanmıştır. Kaynak yeniden dağıtılacaktır. Kaynağın özellikleri değişebilir veya değişmeyebilir. İşlem, özelliklerin değiştirilip değiştirilmeyeceği konusunda karar vermek için yeterli bilgiye sahip olmadığında bu değişiklik türünü döndürür. Bu durumu yalnızca [RESULTFORMAT](#result-format) olarak ayarlandığında görürsünüz `ResourceIdOnly` .
 
 ## <a name="result-format"></a>Sonuç biçimi
 
@@ -282,7 +254,7 @@ az deployment group what-if \
 
 ---
 
-Şuna benzer bir durum ortaya çıkar:
+what-if komutunun çıkışı aşağıdakine benzer olacaktır:
 
 ![Kaynak Yöneticisi şablonu dağıtımı ne yapılır işlemi çıkışı](./media/template-deploy-what-if/resource-manager-deployment-whatif-change-types.png)
 
@@ -354,7 +326,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 [Dağıtım modunun](deployment-modes.md)kullanımını destekleyen durum işlemi. Tamamlanmış moda ayarlandığında şablonda olmayan kaynaklar silinir. Aşağıdaki örnek, tamamlanmış bir [kaynağı olmayan bir şablon dağıtmıştır](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-Bir şablonu dağıtımdan önce değişiklikleri önizlemek için dağıtım komutuyla Onayla anahtarını onaylama parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda, dağıtımın tamamlanmasını istediğinizi kabul edin.
+Şablonu dağıtmadan önce gerçekleştirilecek değişiklikleri önizlemek için dağıtım komutuyla birlikte confirm anahtarı parametresini kullanın. Değişiklikler beklediğiniz gibi olduğunda dağıtımın tamamlanmasını istediğinizi kabul edin.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -411,19 +383,19 @@ Are you sure you want to execute the deployment?
 
 Beklenen değişiklikleri görürsünüz ve dağıtımın çalıştırılmasını istediğinizi doğrulayabilirsiniz.
 
-## <a name="sdks"></a>SDK’lar
+## <a name="sdks"></a>SDK
 
 Azure SDK 'Ları aracılığıyla ne yapılır işlemini kullanabilirsiniz.
 
-* Python için, [ne yapılacağını](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)kullanın.
+* Python için, [ne yapılacağını](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-)kullanın.
 
-* Java için [Deploymentwhatif sınıfını](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable)kullanın.
+* Java için [Deploymentwhatif sınıfını](/java/api/com.microsoft.azure.management.resources.deploymentwhatif)kullanın.
 
-* .NET için [Deploymentwhatif sınıfını](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet)kullanın.
+* .NET için [Deploymentwhatif sınıfını](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif)kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Önizleme sürümünden yanlış sonuçlar olduğunu fark ederseniz, lütfen sorunları bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- Durum işleminden yanlış sonuçlar fark ederseniz lütfen sorunları bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Şablonları Azure PowerShell dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).
 - Şablonları Azure CLı ile dağıtmak için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](deploy-cli.md).
 - Şablonları REST ile dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Kaynak Yöneticisi REST API](deploy-rest.md).

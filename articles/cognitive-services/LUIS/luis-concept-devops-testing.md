@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025952"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561231"
 ---
 # <a name="testing-for-luis-devops"></a>LUSıS DevOps için test etme
 
@@ -18,7 +18,7 @@ Language Understanding (LUU) uygulaması geliştiren yazılım mühendisleri, bu
 
 Çevik yazılım geliştirme yöntemleri ' nde, test, kaliteli yazılım oluştururken bir integral rol oynar. Bir LUO uygulamasında yapılan her önemli değişiklik, geliştiricinin uygulamada oluşturduğu yeni işlevleri test etmek üzere tasarlanan testler ile birlikte kullanılmalıdır. Bu testler, LUSıS uygulamanızın kaynağıyla birlikte kaynak kod deponuzda işaretlenir `.lu` . Uygulama testleri karşılıyorsa değişikliğin uygulanması tamamlanmıştır.
 
-Testler [CI/CD iş akışlarının](luis-concept-devops-automation.md)kritik bir parçasıdır. Bir LUSıS uygulamasında yapılan değişiklikler bir çekme isteğinde (PR) önerilmişse veya değişiklikler ana dalınızla birleştirildikten sonra, bu durumda, güncelleştirmelerin hiçbir gerileme neden olmadığını doğrulamak için CI iş akışlarının testleri çalıştırmaları gerekir.
+Testler [CI/CD iş akışlarının](luis-concept-devops-automation.md)kritik bir parçasıdır. Bir LUSıS uygulamasında yapılan değişiklikler bir çekme isteğinde (PR) önerilmişse veya değişiklikler ana dalınızla birleştirildikten sonra, bu durumda, güncelleştirmelerin herhangi bir gerileme olmadığını doğrulamak için CI iş akışlarının testleri çalıştırmaları gerekir.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Birim testi ve toplu Işlem testi yapma
 
@@ -123,7 +123,7 @@ NLU 'yı kullanabilirsiniz [. ](https://github.com/microsoft/NLU.DevOps) Komut s
 NLU 'yı de kullanabilirsiniz. Komut satırında Batch testlerini çalıştırmak için DevOps paketi.
 
 * NLU kullanın. Testleri bir test dosyasından bir uç noktaya göndermek ve gerçek tahmin sonuçlarını birim testleriyle aynı bir dosyada yakalamak için DevOps [test komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md) .
-* NLU kullanın. Uygulamanızın performansını ölçmek için [performans testi modundaki](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) DevOps [Compare komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) , uygulamanızın performansını temel bir performans karşılaştırmasına karşı karşılaştırabilir. Örneğin, en son işlemeden ana veya geçerli yayına yönelik sonuçlar. Performans testi modunda `compare` komut, JSON biçiminde NUnit test çıktısı ve [Batch test sonuçları](./luis-glossary.md#batch-test) üretir.
+* NLU kullanın. Uygulamanızın performansını ölçmek için [performans testi modundaki](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode) DevOps [Compare komutu](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) , uygulamanızın performansını temel bir performans karşılaştırmasına karşı karşılaştırabilir, örneğin, en son işlemeden ana veya geçerli sürüme kadar olan sonuçlar. Performans testi modunda `compare` komut, JSON biçiminde NUnit test çıktısı ve [Batch test sonuçları](./luis-glossary.md#batch-test) üretir.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>LUSıS belirleyici olmayan eğitim ve test üzerindeki etkisi
 

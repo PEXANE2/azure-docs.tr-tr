@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 8340712e10721374bb2f0a35ac2e2e9a6abf181c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743046"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562149"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Mevcut ağ Ilkesi sunucusu (NPS) altyapınızı Azure AD Multi-Factor Authentication tümleştirme
 
@@ -225,6 +225,10 @@ Yük Dengeleme Özellikleri veya artıklık sağlamak için, aşağıdaki adıml
 
 1. Yükleyici tarafından oluşturulan PowerShell betiğini çalıştırın.
 
+   PowerShell 'in paketleri düzgün şekilde bağlanabilmesi ve indirebilmesi için öncelikle TLS 1,2 ' i etkinleştirmeniz gerekebilir:
+   
+   `[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12`
+
    > [!IMPORTANT]
    > Azure Kamu veya Azure Çin 21Vianet bulutlarını kullanan müşteriler için öncelikle `Connect-MsolService` *AzureMfaNpsExtnConfigSetup.ps1* betikteki cmdlet 'leri düzenleyerek gerekli bulutun *AzureEnvironment* parametrelerini ekleyin. Örneğin, *-AzureEnvironment Uskamu* veya *-AzureEnvironment AzureChinaCloud* belirtin.
    >
@@ -388,7 +392,7 @@ NPS sunucu günlüklerinde atılan paketleri neden görmenizin nedeni hakkında 
 
 Kuruluşunuz tarafından gerektirmedikleri takdirde eski ve daha zayıf şifre paketlerinin devre dışı bırakılması veya kaldırılması önerilir. Bu görevin nasıl tamamlanacağı hakkında bilgi, [AD FS IÇIN SSL/TLS protokollerini ve şifre paketlerini yönetme](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs) makalesinde bulunabilir
 
-### <a name="additional-troubleshooting"></a>Ek sorun giderme
+### <a name="additional-troubleshooting"></a>Ek sorun giderme işlemleri
 
 Ek sorun giderme kılavuzu ve olası çözümler, makalede [Azure AD Multi-Factor Authentication IÇIN NPS uzantısından hata Iletilerini çözümle](howto-mfa-nps-extension-errors.md)bulunabilir.
 

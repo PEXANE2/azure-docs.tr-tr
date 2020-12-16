@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302570"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562455"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure Machine Learning ile pekiştirmeye dayalı öğrenme (Önizleme)
 
@@ -24,9 +24,9 @@ ms.locfileid: "96302570"
 > [!NOTE]
 > Azure Machine Learning pekiştirmeye dayalı Learning Şu anda bir önizleme özelliğidir. Şu anda yalnızca Ray ve RLlib çerçeveleri destekleniyor.
 
-Bu makalede, video oyunu oynamak için pekiştirmeye dayalı Learning (RL) aracısını eğitme hakkında bilgi edineceksiniz. Dağıtılmış RL işlerinin karmaşıklığını yönetmek için, Azure Machine Learning ile açık kaynaklı Python Kitaplığı [Ray Rlrllib](https://ray.readthedocs.io/en/master/rllib.html) ' i kullanacaksınız.
+Bu makalede, video oyunu oynamak için pekiştirmeye dayalı Learning (RL) aracısını eğitme hakkında bilgi edineceksiniz. Dağıtılmış RL 'nin karmaşıklığını yönetmek için Azure Machine Learning birlikte açık kaynaklı Python Kitaplığı [Ray Rlrllib](https://ray.readthedocs.io/en/master/rllib.html) kullanın.
 
-Bu makalede, şunları nasıl yapacağınızı öğreneceksiniz:
+Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 > * Deneme ayarlama
 > * Baş ve çalışan düğümlerini tanımlama
@@ -38,7 +38,7 @@ Bu makale, Azure Machine Learning Not defteri [GitHub deposunda](https://github.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Bu kodu aşağıdaki ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneğini denemenizi öneririz. Pekiştirmeye dayalı örnek Not defterleri, Azure Machine Learning işlem örneğinde hızlı bir şekilde klonlamak ve çalıştırmak için kullanılabilir.
+Bu kodu bu ortamlardan birinde çalıştırın. En hızlı başlangıç deneyimi için Azure Machine Learning işlem örneği denemeniz önerilir. Pekiştirmeye dayalı örnek not defterlerini bir Azure Machine Learning işlem örneğinde hızlıca kopyalayabilir ve çalıştırabilirsiniz.
 
  - Azure Machine Learning işlem örneği
 
@@ -61,19 +61,21 @@ Pekiştirmeye dayalı Learning (RL), bir makine öğrenimine, bunu yaparak öğr
 
 Eğitim aracılarınız, **sanal bir ortamda** Pong oynamasını öğrendiğinde. Eğitim aracıları, her oyunun çerçevesini artırma, azaltma veya yerinde kalma gibi bir karardır. Bir karar vermek için oyunun durumuna (ekranın RGB görüntüsü) bakar.
 
-RL, kararlarının başarılı olup olmadığını aracıya bildirmek için **yeniden** kullanır. Bu ortamda, bir noktaya göre puanlandığında, aracı bir noktayı işaret ettikten sonra negatif bir ödül aldığında bir pozitif ödül alır. Eğitim Aracısı birçok yinelemeden sonra, beklenen gelecekteki yeniden temellerinin toplamını en iyi duruma getirir.
-
-Bu iyileştirmesi RL 'de gerçekleştirmek için **derin sinir ağı** (DNN) modeli kullanılması yaygındır. Başlangıçta öğrenme Aracısı düzgün şekilde gerçekleştirilir, ancak her oyun, modeli daha da geliştirmek için ek örnekler oluşturacaktır.
+RL, kararlarının başarılı olup olmadığını aracıya bildirmek için **yeniden** kullanır. Bu örnekte, aracı bir noktaya göre puanlandığında bir noktayı işaret eden bir nokta ve negatif bir ödül aldığında bir pozitif ödül alır. Eğitim Aracısı birçok yinelemeden sonra, beklenen gelecekteki yeniden temellerinin toplamını en iyi duruma getirir. Bu iyileştirmesi RL 'de gerçekleştirmek için **derin sinir Networks** (DNN) kullanılması yaygındır. 
 
 Eğitim, aracı bir eğitim dönemi içinde 18 ' in Ortalama bir yeniden puanına ulaştığında sona erer. Bu, aracının rakibinize, en az 21 ' e varan bir ortalama, en az 18 puntodan oluşan bir ortalama işaret ettiği anlamına gelir.
 
-Bir DNN benzetimi ve yeniden eğitimi aracılığıyla yineleme süreci, hesaplama maliyetlidir ve çok miktarda veri gerektirir. RL işlerinin performansını artırmanın bir yolu, birden çok eğitim aracısının aynı anda hareket edebilmesi ve öğrenilmesine olanak sağlayacak şekilde **işi paralelleştirmenize** yol açabilir. Ancak, dağıtılmış bir RL ortamının yönetilmesi karmaşık bir yetersiz duruma neden olabilir.
+Bir DNN benzetimi ve yeniden eğitimi aracılığıyla yineleme süreci, oldukça pahalıdır ve çok fazla veri gerektirir. RL işlerinin performansını artırmanın bir yolu, birden çok eğitim aracısının aynı anda hareket edebilmesi ve öğrenilmesine olanak sağlayacak şekilde **işi paralelleştirmenize** yol açabilir. Ancak, dağıtılmış bir RL ortamının yönetilmesi karmaşık bir yetersiz duruma neden olabilir.
 
 Azure Machine Learning, RL iş yüklerinizi ölçeklendirmek için bu karmaşıklıkları yönetme çerçevesini sağlar.
 
 ## <a name="set-up-the-environment"></a>Ortamı ayarlama
 
-Gerekli Python paketlerini yükleyerek, çalışma alanınızı başlatarak, bir deneme oluşturarak ve yapılandırılmış bir sanal ağ belirterek yerel bir RL ortamı ayarlayın.
+Yerel RL ortamını şu şekilde ayarlayın:
+1. Gerekli Python paketleri yükleniyor
+1. Çalışma alanınız başlatılıyor
+1. Deneme oluşturma
+1. Yapılandırılmış bir sanal ağ belirtme.
 
 ### <a name="import-libraries"></a>Kitaplıkları içeri aktarma
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>Çalışma alanını başlatma
 
-[Azure Machine Learning çalışma alanı](concept-workspace.md) , Azure Machine Learning için en üst düzey kaynaktır. Oluşturduğunuz tüm yapıtlarla çalışmak için merkezi bir yer sağlar.
-
-`config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi başlatın. Bu kodu bir Azure Machine Learning Işlem örneğinde yürütüyorsunuz, yapılandırma dosyası sizin için zaten oluşturulmuştur.
+[](concept-workspace.md) `config.json` [Önkoşullar bölümünde](#prerequisites)oluşturulan dosyadan bir çalışma alanı nesnesi başlatın. Bu kodu bir Azure Machine Learning Işlem örneğinde yürütüyorsunuz, yapılandırma dosyası sizin için zaten oluşturulmuştur.
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Bir sanal ağ belirtin
 
-Birden çok işlem hedefi kullanan RL işleri için, çalışan düğümlerinin ve baş düğümlerin birbirleriyle iletişim kurmasına izin veren açık bağlantı noktaları içeren bir sanal ağ belirtmeniz gerekir. Sanal ağ herhangi bir kaynak grubunda olabilir, ancak çalışma alanınız ile aynı bölgede olmalıdır. Sanal ağınızı ayarlama hakkında daha fazla bilgi için, Önkoşullar bölümünde bulunan çalışma alanı kurulum Not defteri ' ne bakın. Burada, kaynak grubunuzda sanal ağın adını belirtirsiniz.
+Birden çok işlem hedefi kullanan RL işleri için, çalışan düğümlerinin ve baş düğümlerin birbirleriyle iletişim kurmasına izin veren açık bağlantı noktaları içeren bir sanal ağ belirtmeniz gerekir.
+
+Sanal ağ herhangi bir kaynak grubunda olabilir, ancak çalışma alanınız ile aynı bölgede olmalıdır. Sanal ağınızı ayarlama hakkında daha fazla bilgi için, Önkoşullar bölümünde çalışma alanı kurulum Not defteri ' ne bakın. Burada, kaynak grubunuzda sanal ağın adını belirtirsiniz.
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>Baş ve çalışan işlem hedeflerini tanımlama
 
-Bu örnek, Ray baş ve çalışanlar düğümleri için ayrı işlem hedefleri kullanır. Bu ayarlar, işlem kaynaklarınızı beklenen iş yüküne bağlı olarak yukarı ve aşağı ölçeklendirmenizi sağlar. Deneme gereksinimlerinize göre düğümlerin sayısını ve her bir düğümün boyutunu ayarlayın.
+Bu örnek, Ray baş ve çalışanlar düğümleri için ayrı işlem hedefleri kullanır. Bu ayarlar, iş yükünüze bağlı olarak işlem kaynaklarınızı yukarı ve aşağı ölçeklendirmenizi sağlar. Gereksinimlerinize göre düğümlerin sayısını ve her bir düğümün boyutunu ayarlayın.
 
 ### <a name="head-computing-target"></a>Baş bilgi işlem hedefi
 
-Bu örnek, derin öğrenme performansını iyileştirmek için GPU donanımlı bir baş küme kullanır. Baş düğüm, aracının kararlar almak için kullandığı sinir ağını tratlar. Baş düğüm Ayrıca sinir ağını daha fazla eğitebilmeniz için çalışan düğümlerinden veri noktaları toplar.
+Derin öğrenme performansını geliştirmek için GPU ile donatılmış bir baş küme kullanabilirsiniz. Baş düğüm, aracının kararlar almak için kullandığı sinir ağını tratlar. Baş düğüm Ayrıca sinir ağını eğiteetmek için çalışan düğümlerinden veri noktaları toplar.
 
-Baş işlem tek bir [ `STANDARD_NC6` sanal makine](../virtual-machines/nc-series.md) (VM) kullanır. 6 sanal CPU 'ya sahiptir ve bu, çalışma 6 çalışma CPU 'su arasında iş dağıtabileceği anlamına gelir.
+Baş işlem tek bir [ `STANDARD_NC6` sanal makine](../virtual-machines/nc-series.md) (VM) kullanır. Üzerinde iş dağıtmak için 6 sanal CPU vardır.
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Çalışan bilgi işlem kümesi
 
-Bu örnek, çalışan işlem hedefi için dört [ `STANDARD_D2_V2` VM](../virtual-machines/nc-series.md) kullanır. Her çalışan düğümünde toplam 8 kullanılabilir CPU paralel hale getirmek iş için 2 kullanılabilir CPU vardır.
+Bu örnek, çalışan işlem hedefi için dört [ `STANDARD_D2_V2` VM](../virtual-machines/nc-series.md) kullanır. Her çalışan düğümünde toplam 8 kullanılabilir CPU için 2 kullanılabilir CPU bulunur.
 
 Derin öğrenme gerçekleştirmediği için GPU 'Lar çalışan düğümleri için gerekli değildir. Çalışanlar oyun benzetimleri çalıştırır ve veri toplar.
 
@@ -212,14 +214,13 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Pekiştirmeye dayalı Learning tahmin aracı oluşturma
+Azure Machine Learning bir eğitim işi göndermek için [Reforcementlearningestimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) ' i kullanın.
 
-Bu bölümde, Azure Machine Learning için bir eğitim işi göndermek üzere [Reforcementlearningestimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) ' ı nasıl kullanacağınızı öğreneceksiniz.
-
-Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını kolayca belirlemenizi sağlar. 
+Azure Machine Learning, çalışan yapılandırma bilgilerini kapsüllemek için tahmin aracı sınıflarını kullanır. Bu, bir komut dosyası yürütmenin nasıl yapılandırılacağını belirtmenizi sağlar. 
 
 ### <a name="define-a-worker-configuration"></a>Çalışan yapılandırması tanımlama
 
-WorkerConfiguration nesnesi, giriş betiğini çalıştıracak çalışan kümesinin nasıl başlatılacağını Azure Machine Learning söyler.
+WorkerConfiguration nesnesi, giriş betiğini çalıştıran çalışan kümenin nasıl başlatılacağını Azure Machine Learning söyler.
 
 ```python
 # Pip packages we will use for both head and worker
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 Giriş betiği, `pong_rllib.py` eğitim işinin nasıl yürütüleceğini tanımlayan parametrelerin bir listesini kabul eder. Bu parametreleri bir kapsülleme katmanı olarak tahmin aracı aracılığıyla geçirmek, betik parametrelerinin değiştirilmesini ve yapılandırmaların birbirinden bağımsız olarak çalıştırılmasını kolaylaştırır.
 
-Doğru belirtmek, `num_workers` paralelleştirme çabalarınızın en iyi şekilde bir kısmını elde eder. Çalışan sayısını kullanılabilir CPU sayısıyla aynı olarak ayarlayın. Bu örnekte, bunu aşağıdaki gibi hesaplayabilirsiniz:
+Doğru belirtme, `num_workers` paralelleştirme çabalarınızın en iyi şekilde yararlanmasına neden olur. Çalışan sayısını kullanılabilir CPU sayısıyla aynı olarak ayarlayın. Bu örnekte, aşağıdaki hesaplamayı kullanabilirsiniz:
 
-Baş düğüm 6 vCPU içeren bir [Standard_NC6](../virtual-machines/nc-series.md) . Çalışan kümesi, toplam 8 CPU için 2 CPU 'ya sahip 4 [Standard_D2_V2 VM](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 'dir. Ancak, baş düğüm rolüne ayrılmanız gerektiğinden, çalışan sayısı 1 CPU 'YU çıkarmalısınız. 6 CPU + 8 CPU-1 baş CPU = 13 eşzamanlı çalışan. Azure Machine Learning, işlem kaynaklarını ayırt etmek için baş ve çalışan kümelerini kullanır. Ancak, Ray baş ve çalışan arasında ayrım yapmaz ve tüm CPU 'lar çalışan iş parçacığı yürütmesi için kullanılabilir CPU 'Larda bulunur.
+Baş düğüm 6 vCPU içeren bir [Standard_NC6](../virtual-machines/nc-series.md) . Çalışan kümesi, toplam 8 CPU için 2 CPU 'ya sahip 4 [Standard_D2_V2 VM](../cloud-services/cloud-services-sizes-specs.md#dv2-series) 'dir. Ancak, baş düğüm rolüne ayrılmanız gerektiğinden, çalışan sayısı 1 CPU 'YU çıkarmalısınız.
+
+6 CPU + 8 CPU-1 baş CPU = 13 eşzamanlı çalışan. Azure Machine Learning, işlem kaynaklarını ayırt etmek için baş ve çalışan kümelerini kullanır. Ancak, Ray baş ve çalışanları ayırt etmez ve tüm CPU 'Lar çalışan iş parçacıkları olarak kullanılabilir.
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>Sonuçları izleme ve görüntüleme
 
-Çalışmalarınızın durumunu gerçek zamanlı olarak görmek için Azure Machine Learning jupi pencere öğesini kullanın. Bu örnekte, pencere öğesi iki alt çalışma gösterir: biri baş ve biri çalışanlar için. 
+Çalışmalarınızın durumunu gerçek zamanlı olarak görmek için Azure Machine Learning jupi pencere öğesini kullanın. Pencere öğesi iki alt çalışma gösterir: biri baş ve diğeri çalışanlar için. 
 
 ```python
 from azureml.widgets import RunDetails
@@ -429,7 +432,7 @@ Studio 'da ek çalışma bilgileri için **Azure Machine Learning Studio 'da ça
 
 Alt çalıştırmanın günlüklerine gözatıp, driver_log.txt dosyasına kaydedilmiş değerlendirme sonuçlarını görebilirsiniz. Bu ölçümler çalışma sayfasında kullanılabilir hale gelmeden birkaç dakika beklemeniz gerekebilir.
 
-Kısa bir çalışmada, bir pekiştirmeye dayalı öğrenme aracısını Pong 'ın çok iyi oynamasını sağlayacak şekilde eğitmek için birden çok işlem kaynağı yapılandırmayı öğrendiniz.
+Kısa çalışmalarda, bir pekiştirmeye dayalı öğrenme aracısının bir bilgisayar opppcomponent 'a karşı çok iyi oynamasını sağlamak üzere birden çok işlem kaynağını yapılandırmayı öğrendiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

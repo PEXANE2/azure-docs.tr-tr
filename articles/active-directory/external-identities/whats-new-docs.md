@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory dış Kimlikteki yenilikler
 description: Azure Active Directory dış kimliklere yönelik yeni ve güncelleştirilmiş belgeler.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,32 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: 35fa6909160ca707035ee9fc599e4035c2ae7981
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573910"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562387"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Dış kimlikler Azure Active Directory: yenilikler
 
 Azure Active Directory dış kimlikler belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Dış kimlikler hizmeti yenilikleri hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+
+- [Azure Active Directory B2B işbirliği SSS](faq.md)
+- [B2B Konuk kullanıcıları için bir kimlik sağlayıcısı olarak Google ekleme](google-federation.md)
+- [Dış kimlikler için kimlik sağlayıcıları](identity-providers.md)
+- [Azure Active Directory B2B işbirliği daveti kullanım](redemption-experience.md)
+- [Kullanıcı akışına API Bağlayıcısı ekleme](self-service-sign-up-add-api-connector.md)
+- [Self Servis kaydolma 'ya özel bir onay iş akışı ekleme](self-service-sign-up-add-approvals.md)
+- [B2B işbirliği Azure Active Directory sorunlarını giderme](troubleshoot.md)
+- [Azure Active Directory B2B’de konuk kullanıcı erişimi nedir?](what-is-b2b.md)
+- [Azure Active Directory B2B en iyi uygulamaları](b2b-fundamentals.md)
+- [B2B dış işbirliğini etkinleştirme ve konuk davet edebilecek kişileri yönetme](delegate-invitations.md)
+- [E-posta bir kerelik geçiş kodu kimlik doğrulaması](one-time-passcode.md)
 
 ## <a name="november-2020"></a>Kasım 2020
 

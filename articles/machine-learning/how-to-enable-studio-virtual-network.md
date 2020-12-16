@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: 8dc8446ecbc203622ce7c2163136c1c26aac1cc7
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032737"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559548"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure sanal ağında Azure Machine Learning Studio 'yu kullanma
 
@@ -71,7 +71,7 @@ Studio, bir sanal ağdaki aşağıdaki veri deposu türlerinden veri okumayı de
 
 ### <a name="configure-datastores-to-use-workspace-managed-identity"></a>Veri depolarını çalışma alanı tarafından yönetilen kimliği kullanacak şekilde yapılandırma
 
-Bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)Ile sanal ağınıza bir Azure depolama hesabı ekledikten sonra, veri depolama alanınızı [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) kimlik doğrulamasını kullanacak şekilde yapılandırmanız gerekir. Bunu yaptığınızda, Studio 'nun Depolama hesabınızdaki verilere erişmesine izin verir.
+Bir [hizmet uç noktası](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) veya [Özel uç nokta](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)Ile sanal ağınıza bir Azure depolama hesabı ekledikten sonra, veri deposundan [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) doğrulaması kullanmak için yapılandırmanız gerekir. Bunu yaptığınızda, Studio 'nun Depolama hesabınızdaki verilere erişmesine izin verir.
 
 Azure Machine Learning, depolama hesaplarına bağlanmak için [veri depolarını](concept-data.md#datastores) kullanır. Bir veri deposunu yönetilen kimlik kullanacak şekilde yapılandırmak için aşağıdaki adımları kullanın:
 
@@ -89,7 +89,9 @@ Bu adımlar, Azure RBAC kullanarak, çalışma alanı tarafından yönetilen kim
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Varsayılan depolama hesapları için yönetilen kimlik kimlik doğrulamasını etkinleştir
 
-Her Azure Machine Learning çalışma alanı, çalışma alanınızı oluştururken tanımlanan iki varsayılan depolama hesabıyla gelir. Studio, Studio 'daki belirli özellikler için kritik olan deneme ve model yapıtlarını depolamak için varsayılan depolama hesaplarını kullanır.
+Her Azure Machine Learning çalışma alanı, varsayılan bir BLOB depolama hesabı ve çalışma alanınızı oluştururken tanımlanan varsayılan bir dosya deposu hesabı olan iki varsayılan depolama hesabına sahiptir. Ayrıca, **veri deposu** Yönetim sayfasında Yeni varsayılanlar de ayarlayabilirsiniz.
+
+![Varsayılan veri depolarının nerede bulunileceğini gösteren ekran görüntüsü](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 Aşağıdaki tabloda, çalışma alanı varsayılan depolama hesaplarınız için yönetilen kimlik kimlik doğrulamasını neden etkinleştirmeniz gerekir.
 
@@ -98,8 +100,12 @@ Aşağıdaki tabloda, çalışma alanı varsayılan depolama hesaplarınız içi
 |Çalışma alanı varsayılan blob depolaması| Tasarımcıda Model varlıklarını depolar. Tasarımcıyı tasarımcıda dağıtmak için bu depolama hesabında yönetilen kimlik kimlik doğrulamasını etkinleştirmeniz gerekir. <br> <br> Yönetilen kimlik kullanmak üzere yapılandırılmış varsayılan olmayan bir veri deposu kullanıyorsa, tasarımcı işlem hattını görselleştirebilir ve çalıştırabilirsiniz. Ancak, varsayılan veri deposunda yönetilen kimlik olmadan eğitilen bir model dağıtmaya çalışırsanız, kullanımda olan diğer veri depolarından bağımsız olarak dağıtım başarısız olur.|
 |Çalışma alanı varsayılan dosya deposu| Oto ml deneme varlıklarını depolar. Bu depolama hesabında, oto ml denemeleri göndermek için yönetilen kimlik kimlik doğrulamasını etkinleştirmeniz gerekir. |
 
-
-![Varsayılan veri depolarının nerede bulunileceğini gösteren ekran görüntüsü](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> Varsayılan dosya deposunun klasörü otomatik olarak oluşturmadığından `azureml-filestore` , otomatik ml denemeleri göndermek için gerekli olduğu bilinen bir sorun vardır. Bu durum, kullanıcılar çalışma alanı oluşturma sırasında varsayılan dosya deposu olarak ayarlamak üzere var olan bir dosya deposunu getirmediğinde oluşur.
+> 
+> Bu sorundan kaçınmak için iki seçeneğiniz vardır: 1) çalışma alanı oluşturma işlemi yaparken otomatik olarak oluşturulan varsayılan dosya deposunu kullanın. 2) kendi dosya deponuzu getirmek için, çalışma alanı oluşturma sırasında Filestore 'un VNet 'in dışında olduğundan emin olun. Çalışma alanı oluşturulduktan sonra, depolama hesabını sanal ağa ekleyin.
+>
+> Bu sorunu çözmek için, Filestore hesabını sanal ağdan kaldırın ve sonra sanal ağa geri ekleyin.
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Depolama özel bağlantısına çalışma alanı yönetilen kimlik __okuyucusu__ erişimi verme

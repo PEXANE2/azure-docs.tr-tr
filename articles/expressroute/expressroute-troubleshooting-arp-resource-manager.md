@@ -1,19 +1,19 @@
 ---
 title: 'Azure ExpressRoute: ARP tabloları-sorun giderme'
-description: Bu sayfa, bir ExpressRoute devresine ait ARP tablolarını alma hakkında yönergeler sağlar
+description: Bu sayfa, bir ExpressRoute bağlantı hattı için Adres Çözümleme Protokolü (ARP) tablolarını alma hakkında yönergeler sağlar
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: troubleshooting
-ms.date: 01/30/2017
+ms.date: 12/15/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9272bb8bac2054d7a02a7eac8c214395a86ceebf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d8ae2c58979c66ebbbab366d172179bdeee4253
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394865"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561588"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Kaynak Yöneticisi dağıtım modelinde ARP tabloları alma
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Bu makalede, ExpressRoute bağlantı hattı için ARP tablolarını öğrenme ad
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Adres Çözümleme Protokolü (ARP) ve ARP tabloları
 Adres Çözümleme Protokolü (ARP), [RFC 826](https://tools.ietf.org/html/rfc826)' de tanımlanan bir katman 2 protokolüdür. ARP, Ethernet adresini (MAC adresi) bir IP adresi ile eşlemek için kullanılır.
 
-ARP tablosu, belirli bir eşleme için IPv4 adresi ve MAC adresi eşleştirmesi sağlar. Bir ExpressRoute bağlantı hattı eşlemesi için ARP tablosu, her arabirim için aşağıdaki bilgileri sağlar (birincil ve ikincil)
+ARP tablosu, her eşleme türü için hem birincil hem de ikincil arabirimler için aşağıdaki bilgileri sağlar:
 
 1. Şirket içi yönlendirici arabirimi IP adresini MAC adresine eşleme
 2. ExpressRoute yönlendirici arabirimi IP adresini MAC adresine eşleme
@@ -55,10 +55,10 @@ Age InterfaceProperty IpAddress  MacAddress
 Aşağıdaki bölümde, ExpressRoute Edge yönlendiricileri tarafından görülen ARP tablolarını nasıl görüntüleyegörebileceğiniz hakkında bilgi verilmektedir. 
 
 ## <a name="prerequisites-for-learning-arp-tables"></a>ARP tablolarını öğrenme önkoşulları
-Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun
+Daha fazla ilerlemeniz için aşağıdaki bilgilerin doğru olduğundan emin olun:
 
-* En az bir eşleme ile yapılandırılmış geçerli bir ExpressRoute devresi. Devre bağlantı sağlayıcısı tarafından tam olarak yapılandırılmalıdır. Siz (veya bağlantı sağlayıcınız) Bu bağlantı üzerinde en az bir eşleme (Azure Private, Azure genel ve Microsoft) yapılandırılmış olmalıdır.
-* Eşayarları yapılandırmak için kullanılan IP adresi aralıkları (Azure özel, Azure genel ve Microsoft). IP adreslerinin, sizin ve ExpressRoute tarafında bulunan arabirimlere nasıl eşlenildiğini anlamak için [ExpressRoute yönlendirme gereksinimleri sayfasındaki](expressroute-routing.md) IP adresi atama örneklerini gözden geçirin. [ExpressRoute eşleme yapılandırması sayfasını](expressroute-howto-routing-arm.md)inceleyerek eşleme yapılandırması hakkında bilgi edinebilirsiniz.
+* En az bir eşleme ile yapılandırılmış geçerli bir ExpressRoute devresi. Devre bağlantı sağlayıcısı tarafından tam olarak yapılandırılmalıdır. Siz veya bağlantı sağlayıcınız bu devrede en az Azure özel, Azure genel veya Microsoft eşlemesi yapılandırmış olmalıdır.
+* Eş ayarlarını yapılandırmak için kullanılan IP adresi aralıkları. IP adreslerinin arabirimlere nasıl eşlenildiğini anlamak için [ExpressRoute yönlendirme gereksinimleri sayfasındaki](expressroute-routing.md) IP adresi atama örneklerini gözden geçirin. [ExpressRoute eşleme yapılandırması sayfasını](expressroute-howto-routing-arm.md)inceleyerek eşleme yapılandırması hakkında bilgi edinebilirsiniz.
 * Bu IP adresleriyle kullanılan arabirimlerin MAC adreslerinde ağ takımınızdan/bağlantı sağlayıcınızdan alınan bilgiler.
 * Azure için en son PowerShell modülüne (sürüm 1,50 veya daha yeni) sahip olmanız gerekir.
 
@@ -151,10 +151,10 @@ Age InterfaceProperty IpAddress  MacAddress
 Eşleme ARP tablosu, katman 2 yapılandırmasını ve bağlantısını Doğrula ' yı tespit etmek için kullanılabilir. Bu bölümde, ARP tablolarının farklı senaryolarda nasıl görüneceğine ilişkin bir genel bakış sunulmaktadır.
 
 ### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Bir devre çalışma durumunda olduğunda ARP tablosu (beklenen durum)
-* ARP tablosu, şirket içi taraf için geçerli bir IP adresi ve MAC adresi ve Microsoft tarafı için benzer bir giriş içeren bir girişe sahip olacaktır. 
+* ARP tablosunun, geçerli bir IP adresi ve MAC adresi olan şirket içi tarafa yönelik bir girişi olacaktır. Aynı şekilde Microsoft tarafı için de görünebilirler. 
 * Şirket içi IP adresinin son sekizlisinin her zaman tek bir sayı olması gerekir.
 * Microsoft IP adresinin son sekizlisinin her zaman çift sayı olması gerekir.
-* Aynı MAC adresi, tüm 3 eşleme (birincil/ikincil) için Microsoft tarafında görünür. 
+* Aynı MAC adresi, her üç eşleme için de Microsoft tarafında görünür (birincil/ikincil). 
 
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
@@ -164,23 +164,21 @@ Age InterfaceProperty IpAddress  MacAddress
 ```
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Şirket içi/bağlantı sağlayıcı tarafında sorunlar olduğunda ARP tablosu
-Şirket içi veya bağlantı sağlayıcısında sorun varsa, ARP tablosunda yalnızca bir girişin göründüğünü veya şirket içi MAC adresi ' nin tamamlanmamış olduğunu görebilirsiniz. Bu işlem, Microsoft tarafında kullanılan MAC adresi ve IP adresi arasındaki eşlemeyi gösterir. 
+Şirket içi veya bağlantı sağlayıcıdaki bir sorun oluşursa ARP tablosu iki işlemlerden birini gösterir. Şirket içi MAC adresinde eksik göster ' i görürsünüz veya yalnızca ARP tablosunda Microsoft girişi ' ni görürsünüz.
   
-```output
-Age InterfaceProperty IpAddress  MacAddress    
---- ----------------- ---------  ----------    
-  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
-```
-
-veya
-       
 ```output
 Age InterfaceProperty IpAddress  MacAddress    
 --- ----------------- ---------  ----------   
   0 On-Prem           65.0.0.1   Incomplete
   0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 ```
-
+veya
+   
+```output
+Age InterfaceProperty IpAddress  MacAddress    
+--- ----------------- ---------  ----------    
+  0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
+```  
 
 > [!NOTE]
 > Bu tür sorunların hatalarını ayıklamak için bağlantı sağlayıcınızla bir destek isteği açın. ARP tablosunun MAC adreslerine eşlenen arabirimlerin IP adresleri yoksa, aşağıdaki bilgileri gözden geçirin:
@@ -194,9 +192,9 @@ Age InterfaceProperty IpAddress  MacAddress
 * [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ile bir destek bileti açın. Katman 2 bağlantısıyla ilgili bir sorun olduğunu belirtin. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* ExpressRoute devreniz için katman 3 yapılandırmasını doğrulama
-  * BGP oturumlarının durumunu öğrenmek için rota özeti al 
-  * ExpressRoute genelinde hangi öneklerinin tanıtıldığı için yol tablosu al
-* Gelen/giden baytları inceleyerek veri aktarımını doğrulama
+* ExpressRoute devreniz için katman 3 yapılandırmasını doğrulayın.
+  * BGP oturumlarının durumunu öğrenmek için rota özeti alın.
+  * ExpressRoute genelinde hangi öneklerin tanıtıldığı için rota tablosunu alın.
+* Gelen/giden baytları inceleyerek veri aktarımını doğrulayın.
 * Sorun yaşamaya devam ediyorsanız [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile bir destek bileti açın.
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903012"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561911"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>ARM şablonları hakkında sık sorulan sorular
 
@@ -154,7 +154,7 @@ Bu makale Azure Resource Manager şablonları (ARM şablonları) hakkında sık 
 
 * **Ne olursa kullanın, Şablonum içinde olmayan özelliklerde değişiklik görüyorum. Bu "gürültü" beklensin mi?**
 
-  Önizlemededir. Paraziti azaltmak için çalışıyoruz. GitHub deponuzdaki sorunları buraya göndererek iyileştirmemize yardımcı olabilirsiniz: https://aka.ms/WhatIfIssues
+  Paraziti azaltmak için çalışıyoruz. GitHub deponuzdaki sorunları buraya göndererek iyileştirmemize yardımcı olabilirsiniz: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Şablon görselleştiricisi
 

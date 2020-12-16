@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448850"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561945"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
 
@@ -31,6 +31,9 @@ Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-s
 ## <a name="prerequisites"></a>Önkoşullar
 
 Durum bilgisiz uygulamayı dağıtabilmeniz için cihazınızda aşağıdaki önkoşulları ve cihaza erişmek için kullanacağınız istemciyi tamamladığınızdan emin olun:
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ### <a name="for-device"></a>Cihaz için
 

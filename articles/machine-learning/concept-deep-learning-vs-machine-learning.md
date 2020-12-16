@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: 0379fd186c499e19d949d9494b0eb5dec4f2bb50
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032550"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562846"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
@@ -57,6 +57,16 @@ Aşağıdaki tabloda, daha ayrıntılı olarak iki teknik karşılaştırılmakt
 |  **Yürütme süresi** | Birkaç saniye ile birkaç saat arasında uyum sağlamak için karşılaştırmayı daha az zaman alır. | Derin bir öğrenme algoritması birçok katman içerdiğinden, genellikle eğitmek uzun sürer. |
 |  **Çıktı** | Çıktı genellikle bir puan veya sınıflandırma gibi sayısal bir değerdir. | Çıktıda metin, puan veya ses gibi birden çok biçim olabilir. |
 
+## <a name="transfer-learning"></a>Öğrenimi aktar
+
+Derinlemesine öğrenme modellerini eğitmek için genellikle büyük miktarda eğitim verisi, yüksek kaliteli işlem kaynakları (GPU, TPU) ve daha uzun bir eğitim süresi gerekir. Bunlardan herhangi birine sahip olmadığınız senaryolarda, eğitim sürecini aktarım öğrenimi olarak bilinen bir teknik kullanarak kısayol ile deneyebilirsiniz.
+
+Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir.
+
+Sinir Networks yapısı nedeniyle, ilk katman kümesi genellikle alt düzey özellikler içerir, ancak son katman kümesi söz konusu etki alanına yakın olan daha yüksek düzeyde bir özelliği içerir. Son katmanları yeni bir etki alanında veya bir sorun ile kullanmak üzere yeniden seçerek, yeni modeli eğmek için gereken süre, veri ve işlem kaynaklarının sayısını önemli ölçüde azaltabilirsiniz. Örneğin, otomobilleri tanıyan bir modeliniz zaten varsa, bu modeli aktarım öğrenimi 'ni kullanarak yeniden amaçlandırın, Ayrıca, aynı zamanda structuralks, otodöngüleri ve diğer araçlar türlerini de tanımak için kullanabilirsiniz.
+
+Azure Machine Learning 'de açık kaynaklı bir çerçeve kullanarak görüntü sınıflandırması için aktarım öğrenimini nasıl uygulayacağınızı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+
 ## <a name="deep-learning-use-cases"></a>Derin öğrenme kullanım örnekleri
 
 Yapay sinir ağ yapısı nedeniyle, derinlemesine öğrenme, görüntü, ses, video ve metin gibi yapılandırılmamış verilerde desenleri tanımlamaya. Bu nedenle, derin öğrenme, sağlık, enerji, finans ve taşıma gibi birçok sektörler hızla dönüştürülüyor. Bu endüstriler artık geleneksel iş süreçlerini yeniden düşünürken. 
@@ -72,8 +82,6 @@ Adlandırılmış varlık tanıma, bir metin parçasını giriş olarak alan ve 
 Derin öğrenme birçok nesne algılama kullanım durumunda uygulandı. Nesne algılama iki bölümden oluşur: görüntü sınıflandırması ve sonra görüntü yerelleştirme. Görüntü _sınıflandırması_ , görüntünün, otomobiller veya kişiler gibi nesnelerini tanımlar. Görüntü _Yerelleştirme_ bu nesnelerin belirli konumunu sağlar. 
 
 Nesne algılama, oyun, perakende, tourma ve kendi kendine çalışan otomobiller gibi sektörlerde zaten kullanılıyor.
-
-Azure Machine Learning ' de bir açık kaynaklı çerçevede görüntü sınıflandırma modeli kullanmayı öğrenin: [bir Pytorch modeli kullanarak görüntüleri sınıflandırın](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Resim yazısı oluşturma
 
@@ -107,7 +115,7 @@ Feedforward sinir Network, yapay sinir Network 'ün en basit türüdür. Bir fee
 
 Yinelenen sinir Networks, yaygın olarak kullanılan yapay bir sinir ağı. Bu ağlar bir katmanın çıkışını kaydeder ve katmanın sonucunun tahmin edilmesine yardımcı olması için giriş katmanına geri akışı sağlar. Yinelenen sinir ağlarında harika öğrenme becerileri vardır. Zaman serisi tahmin, öğrenme el yazısı ve dil tanıma gibi karmaşık görevler için yaygın olarak kullanılır.
 
-### <a name="convolutional-neural-networks"></a>Evsel sinir ağları
+### <a name="convolutional-neural-network"></a>Evsel sinir ağı
 
 Bir evsel sinir ağı, özellikle etkili bir yapay sinir ağı ve benzersiz bir mimari sunar. Katmanlar üç boyutta düzenlenmiştir: genişlik, yükseklik ve derinlik. Bir katmandaki katlara, bir sonraki katmandaki tüm neks 'ler bağlanır, ancak yalnızca katmanın nekatlarındaki küçük bir bölgedir. Son çıktı, derinlik boyutunun tek bir vektörüne indirgenecek ve derinlik boyutu üzerinde düzenlenmiştir. 
 

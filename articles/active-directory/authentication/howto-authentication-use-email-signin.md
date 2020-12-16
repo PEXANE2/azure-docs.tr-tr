@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743182"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559849"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Alternatif oturum açma KIMLIĞI (Önizleme) olarak e-posta kullanarak Azure Active Directory için oturum açın
 
@@ -36,6 +36,9 @@ Bu makalede, alternatif bir oturum açma KIMLIĞI olarak e-postayı nasıl etkin
 
 > [!NOTE]
 > Bu özellik yalnızca bulutta kimliği doğrulanmış Azure AD kullanıcılarına yöneliktir.
+
+> [!NOTE]
+> Şu anda bu özellik, bulut kimlik doğrulaması olan kiracılar için Azure AD 'ye katılmış Windows 10 cihazlarında desteklenmez. Bu özellik, karma Azure AD 'ye katılmış cihazlar için geçerli değildir.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Azure AD oturum açma yaklaşımlarına genel bakış
 
@@ -132,7 +135,7 @@ Daha fazla bilgi için bkz. [Azure AD karma kimlik çözümünüz için doğru k
     5de3afbe-4b7a-4b33-86b0-7bbe308db7f7 BasicAutoAccelerationPolicy HomeRealmDiscoveryPolicy True
     ```
 
-1. Zaten yapılandırılmış bir ilke varsa, *AlternateIdLogin*   Aşağıdaki örnek ilke çıkışında gösterildiği gibi alternateıdlogin özniteliğinin etkinleştirilip etkinleştirilmediğini denetleyin:
+1. Zaten yapılandırılmış bir ilke varsa, **   Aşağıdaki örnek ilke çıkışında gösterildiği gibi alternateıdlogin özniteliğinin etkinleştirilip etkinleştirilmediğini denetleyin:
 
     ```powershell
     Id : 5de3afbe-4b7a-4b33-86b0-7bbe308db7f7

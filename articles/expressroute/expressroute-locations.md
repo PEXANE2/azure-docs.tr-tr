@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: 6d39a4860e6db6f0f409ab5ce52260fd0ce2f3df
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cc844059d14a182db11e18f95e676b38762f6a0d
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092644"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561656"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -86,7 +86,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Desteklenir | Desteklenir | Tokyo |
 | **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Desteklenir |Desteklenir |Cape Town, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Desteklenir |Desteklenir |Montreal, Toronto, Quebec City |
-| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Hong Kong ÖIB, Johannesburg, Londra, London2, Newport (Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
+| **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Desteklenir |Desteklenir |Amsterdam, Amsterdam2, Chicago, Hong Kong ÖIB, Johannesburg, Londra, London2, Newport (Wales), Paris, Sao Paulo, Silicon Valley, Singapur, Sidney, Tokyo, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Desteklenir |Desteklenir |Miami |
 | **CDC** | Desteklenir | Desteklenir | Kanberra, Kanberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Desteklenir |Desteklenir |Amsterdam2, Chicago, Dublin, Frankfurt, Hong Kong, Las Vegas, London2, New York, Paris, San Antonio, Silicon Valley, Tokyo, Toron, Washington DC, Washington DC2 |

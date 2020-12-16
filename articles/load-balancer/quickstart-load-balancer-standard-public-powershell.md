@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 11/22/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 9081ba0aae14c39d70e62818dc13aa4d92c91986
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e1da9237f7dd4b4b0b5ae3b0cb3a2990ece76f55
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445948"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562030"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için ortak yük dengeleyici oluşturma
 
@@ -50,6 +50,8 @@ New-AzResourceGroup -Name 'CreatePubLBQS-rg' -Location 'eastus'
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
 
 ## <a name="create-a-public-ip-address---standard"></a>Genel IP adresi oluşturma-standart
 
@@ -445,6 +447,8 @@ $nicvm | Set-AzNetworkInterfaceIpConfig @be | Set-AzNetworkInterface
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/resources-diagram-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
 
 ## <a name="create-a-public-ip-address---basic"></a>Genel IP adresi oluşturma-temel
 

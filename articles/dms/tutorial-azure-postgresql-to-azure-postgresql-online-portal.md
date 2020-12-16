@@ -12,18 +12,18 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 05e523c368cfa8407d66ff57fc481a756664b1ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 772fc9f21f36a1487e2e3a1acbe644f9fd12e0f4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94961677"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563203"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Öğretici: PostgreSQL için Azure DB 'yi geçirme/yükseltme-tek sunucudan PostgreSQL için Azure VERITABANı-tek sunuculu, Azure portal aracılığıyla DMS kullanarak tek sunuculu bir çevrimiçi
 
 Azure veritabanı geçiş hizmeti 'ni, [PostgreSQL Için Azure veritabanı-tek sunuculu](../postgresql/overview.md#azure-database-for-postgresql---single-server) bir SQL örneğinden, PostgreSQL için Azure veritabanı 'nın aynı veya farklı bir sürümüne, örneğin, PostgreSQL için Azure veritabanı 'na (en az kapalı kalma süresi Ile) esnek sunucuya geçirmek için kullanabilirsiniz. Bu öğreticide, Azure veritabanı geçiş hizmeti 'ndeki çevrimiçi geçiş etkinliğini kullanarak PostgreSQL için Azure veritabanı ile v10 arasındaki ' dan PostgreSQL için Azure veritabanı 'na (tek sunucu) ait **DVD Kiralama** örneği veritabanını geçireceğiniz.
 
-Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > [!div class="checklist"]
 >
 > * Pg_dump yardımcı programını kullanarak örnek şemayı geçirin.
@@ -42,7 +42,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!IMPORTANT]
 > PostgreSQL için Azure veritabanından geçiş, PostgreSQL sürüm 10 ve üzeri için desteklenir. Bu öğreticiyi, bir PostgreSQL için Azure veritabanı örneğini PostgreSQL için başka bir Azure veritabanı örneğine veya Hyperscale (Citus) örneğine geçirmek için de kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
@@ -113,8 +113,8 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
 
     ```
     SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ', foreignkey), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ', table_schema, '.', table_name, STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ', foreignkey, ' FOREIGN KEY (', column_name, ')', ' REFERENCES ', foreign_table_schema, '.', foreign_table_name, '(', foreign_column_name, ')' ), ','), ';') as AddQuery
+        ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name ,'"', STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ','"', foreignkey,'"'), ','), ';') as DropQuery
+            ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name,'"', STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ','"', foreignkey,'"', ' FOREIGN KEY (','"', column_name,'"', ')', ' REFERENCES ','"', foreign_table_schema,'"', '.','"', foreign_table_name,'"', '(','"', foreign_column_name,'"', ')',' ON UPDATE ',update_rule,' ON DELETE ',delete_rule), ','), ';') as AddQuery
     FROM
         (SELECT
         S.table_schema,
@@ -123,7 +123,9 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
         STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
         S.foreign_table_schema,
         S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name
+        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name,
+        S.update_rule,
+        S.delete_rule
     FROM
         (SELECT DISTINCT
         tc.table_schema,
@@ -132,13 +134,16 @@ Tablo şemaları, dizinler ve saklı yordamlar gibi tüm veritabanı nesnelerini
         kcu.column_name,
         ccu.table_schema AS foreign_table_schema,
         ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name
+        ccu.column_name AS foreign_column_name,
+        rc.update_rule AS update_rule,
+        rc.delete_rule AS delete_rule
         FROM information_schema.table_constraints AS tc
         JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
         JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
+        JOIN information_schema.referential_constraints as rc ON rc.constraint_name = tc.constraint_name AND rc.constraint_schema = tc.table_schema
     WHERE constraint_type = 'FOREIGN KEY'
         ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name
+        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name,S.update_rule,S.delete_rule
         ) Q
         GROUP BY Q.table_schema, Q.table_name;
     ```

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffb1d5eb756c7bc316a6d8e1de30a95eb1ac5194
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f76f4a3e5fc87420c242c693e3c48a91244641e0
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287058"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560042"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Bir uygulamaya self servis kaydolma Kullanıcı akışı ekleme (Önizleme)
 > [!NOTE]
@@ -48,18 +48,18 @@ Kullanıcı öznitelikleri, self servis kaydolma sırasında kullanıcıdan topl
 Uygulamalarınıza self servis kaydolma Kullanıcı akışı ekleyebilmeniz için, kiracınız için özelliği etkinleştirmeniz gerekir. Etkinleştirildikten sonra, kullanıcı akışını bir uygulamayla ilişkilendirmenizi sağlayan Kullanıcı akışında denetimler kullanılabilir hale gelir.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
-3. **Kullanıcı ayarları**' nı seçin ve ardından **dış kullanıcılar**altında **dış işbirliği ayarlarını yönet**' i seçin.
-4. **Konuk self servis kaydolma özelliğini Kullanıcı akışları aracılığıyla (Önizleme) etkinleştir** **Evet**olarak ayarlayın.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
+3. **Kullanıcı ayarları**' nı seçin ve ardından **dış kullanıcılar** altında **dış işbirliği ayarlarını yönet**' i seçin.
+4. **Konuk self servis kaydolma özelliğini Kullanıcı akışları aracılığıyla (Önizleme) etkinleştir** **Evet** olarak ayarlayın.
 
    ![Konuk self servis kaydolma özelliğini etkinleştirme](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
-
+5. **Kaydet**’i seçin.
 ## <a name="create-the-user-flow-for-self-service-sign-up"></a>Self Servis kaydolma için Kullanıcı akışı oluşturma
 
 Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygulamayı bir uygulamaya ekleyeceksiniz.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
 4. **Kullanıcı akışları ' nı (Önizleme)** seçin ve ardından **Yeni Kullanıcı akışı**' nı seçin.
 
@@ -67,7 +67,7 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 
 5. **Oluştur** sayfasında, Kullanıcı akışı Için bir **ad** girin. Adın **B2X_1_** otomatik olarak ön ekli olduğunu unutmayın.
 6. **Kimlik sağlayıcıları** listesinde, dış kullanıcılarınızın uygulamanızda oturum açmak için kullanabileceği bir veya daha fazla kimlik sağlayıcısını seçin. **Azure Active Directory kaydolma** varsayılan olarak seçilidir. (Kimlik sağlayıcılarının nasıl ekleneceğini öğrenmek için bu makalenin önceki kısımlarında [başlamadan önce](#before-you-begin) bölümüne bakın.)
-7. **Kullanıcı öznitelikleri**altında, kullanıcıdan toplamak istediğiniz öznitelikleri seçin. Ek öznitelikler için **daha fazla göster**' i seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad**ve **posta kodu**için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
+7. **Kullanıcı öznitelikleri** altında, kullanıcıdan toplamak istediğiniz öznitelikleri seçin. Ek öznitelikler için **daha fazla göster**' i seçin. Örneğin, **daha fazla göster**' i seçin ve ardından **ülke/bölge**, **görünen ad** ve **posta kodu** için öznitelikler ve talepler ' i seçin. **Tamam**’ı seçin.
 
    ![Yeni bir Kullanıcı akış sayfası oluştur](media/self-service-sign-up-user-flow/create-user-flow.png)
 
@@ -78,11 +78,11 @@ Ardından, self servis kaydolma için Kullanıcı akışı oluşturacak ve uygul
 
 Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz. 
 
-1. [Azure portalda](https://portal.azure.com) **Azure Active Directory**'yi seçin.
+1. [Azure portalda](https://portal.azure.com)**Azure Active Directory**'yi seçin.
 2. **Dış kimlikler**' i seçin, **Kullanıcı akışları ' nı (Önizleme)** seçin.
 3. Listeden self servis kaydolma Kullanıcı akışını seçin.
-4. **Özelleştir**altında **sayfa düzenleri**' ni seçin.
-5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı**taşı, **aşağı taşı**, **üste**taşı veya **en alta taşı**' yı seçin.
+4. **Özelleştir** altında **sayfa düzenleri**' ni seçin.
+5. Toplamayı seçtiğiniz öznitelikler listelenir. Görüntüleme sırasını değiştirmek için bir öznitelik seçin ve ardından **yukarı** taşı, **aşağı taşı**, **üste** taşı veya **en alta taşı**' yı seçin.
 6. **Kaydet**’i seçin.
 
 ## <a name="add-applications-to-the-self-service-sign-up-user-flow"></a>Self Servis kaydolma Kullanıcı akışına uygulama ekleme
@@ -90,11 +90,11 @@ Kaydolma sayfasında özniteliklerin görüntülenme sırasını seçebilirsiniz
 Artık uygulamaları Kullanıcı akışıyla ilişkilendirebilirsiniz.
 
 1. [Azure portalda](https://portal.azure.com) Azure AD yöneticisi olarak oturum açın.
-2. **Azure hizmetleri**altında **Azure Active Directory**' yi seçin.
+2. **Azure hizmetleri** altında **Azure Active Directory**' yi seçin.
 3. Sol taraftaki menüden **dış kimlikler**' i seçin.
-4. **Self servis kaydolma**altında Kullanıcı akışları ' nı **(Önizleme)** seçin.
+4. **Self servis kaydolma** altında Kullanıcı akışları ' nı **(Önizleme)** seçin.
 5. Listeden self servis kaydolma Kullanıcı akışını seçin.
-6. Sol taraftaki menüde, **kullan**altında, **uygulamalar**' ı seçin.
+6. Sol taraftaki menüde, **kullan** altında, **uygulamalar**' ı seçin.
 7. **Uygulama Ekle**' yi seçin.
 
    ![Kullanıcı akışına uygulama atama](media/self-service-sign-up-user-flow/assign-app-to-user-flow.png)

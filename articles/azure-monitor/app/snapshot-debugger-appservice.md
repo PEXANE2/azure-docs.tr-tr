@@ -6,27 +6,32 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435731"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560942"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
 Snapshot Debugger Şu anda Windows hizmet planlarına Azure App Service çalışan ASP.NET ve ASP.NET Core uygulamalar için çalışır. Anlık görüntü hata ayıklayıcısı 'nı kullanırken uygulamanızı temel hizmet katmanında veya daha yüksek bir sürüme çalıştırmanızı öneririz. Çoğu uygulama için, ücretsiz ve paylaşılan hizmet katmanları anlık görüntüleri kaydetmek için yeterli belleğe sahip değildir.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger etkinleştir
-Bir uygulama için Snapshot Debugger etkinleştirmek üzere aşağıdaki yönergeleri izleyin. Farklı bir Azure hizmeti türü çalıştırıyorsanız, desteklenen diğer platformlarda Snapshot Debugger etkinleştirme talimatları aşağıda verilmiştir:
+Bir uygulama için Snapshot Debugger etkinleştirmek üzere aşağıdaki yönergeleri izleyin.
+
+Farklı bir Azure hizmeti türü çalıştırıyorsanız, desteklenen diğer platformlarda Snapshot Debugger etkinleştirme talimatları aşağıda verilmiştir:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric Hizmetleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure sanal makineleri ve sanal makine ölçek kümeleri](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Şirket içi sanal veya fiziksel makineler](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-.NET Core 'un önizleme sürümünü kullanıyorsanız, uygulama ile [Microsoft. ApplicationInsights. SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini dahil etmek için önce [diğer ortamların Snapshot Debugger etkinleştir](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) ' e yönelik yönergeleri izleyin ve ardından aşağıdaki yönergelerin geri kalanını tamamlayın. 
+> [!NOTE]
+> .NET Core 'un önizleme sürümünü kullanıyorsanız veya uygulamanız Application Insights SDK 'ya bir bağımlı derleme aracılığıyla doğrudan veya dolaylı olarak başvuruyorsa, [diğer ortamlar için](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) , uygulamaya sahip [Microsoft. ApplicationInsights. snapshotcollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet paketini dahil etmek için Snapshot Debugger etkinleştirme yönergelerini izleyin ve ardından aşağıdaki yönergelerin geri kalanını tamamlayın. 
 
-Application Insights Snapshot Debugger, App Services çalışma zamanının bir parçası olarak önceden yüklenir, ancak App Service uygulamanız için anlık görüntüler almak üzere açmanız gerekir. Bir uygulamayı dağıttıktan sonra, kaynak koda Application Insights SDK eklemiş olsanız bile, anlık görüntü hata ayıklayıcıyı etkinleştirmek için aşağıdaki adımları izleyin.
+Snapshot Debugger, App Services çalışma zamanının bir parçası olarak önceden yüklenir, ancak App Service uygulamanız için anlık görüntüler almak üzere açmanız gerekir.
+
+Bir uygulamayı dağıttıktan sonra, anlık görüntü hata ayıklayıcısını etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. App Service için Azure Denetim Masası ' na gidin.
 2. **Ayarlar > Application Insights** sayfasına gidin.
@@ -44,11 +49,12 @@ Application Insights Snapshot Debugger, App Services çalışma zamanının bir 
 ## <a name="disable-snapshot-debugger"></a>Snapshot Debugger devre dışı bırak
 
 **Etkinleştirme Snapshot Debugger** ile aynı adımları izleyin, ancak her iki anahtarı da Snapshot Debugger için **kapalı** olarak değiştirin.
+
 Uygulama özel durumlarının tanılamayı kolaylaştırmak için tüm uygulamalarınızda Snapshot Debugger etkinleştirilmiş olması önerilir.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
 
-Bir Azure App Service için, Snapshot Debugger ve profil oluşturucuyu etkinleştirmek üzere bir Azure Resource Manager şablonunda uygulama ayarları ayarlayabilirsiniz. Uygulama ayarlarını içeren bir yapılandırma kaynağını Web sitesinin alt kaynağı olarak eklersiniz:
+Azure App Service için, Azure Resource Manager şablonu içinde uygulama ayarlarını Snapshot Debugger ve profil oluşturucuyu etkinleştirmek üzere ayarlayabilirsiniz ve aşağıdaki şablon kod parçacığına bakın:
 
 ```json
 {

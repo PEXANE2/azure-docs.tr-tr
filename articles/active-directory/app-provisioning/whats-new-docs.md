@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Uygulama sağlamadaki yenilikler
 description: Azure Active Directory uygulama sağlama için yeni ve güncelleştirilmiş belgeler.
-ms.date: 12/03/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,24 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: fd9be81e8c23686695f8cdb49d873d5a663d69c4
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 053d342c8fbdd506ac5d4ba0916a1ae9361e7189
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571768"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562217"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Uygulama sağlamayı Azure Active Directory: yenilikler
 
 Azure Active Directory uygulama sağlama belgelerindeki yenilikler ' e hoş geldiniz. Bu makalede, eklenen ve son üç ay içinde önemli güncelleştirmeleri olan yeni belgeler listelenir. Sağlama hizmetiyle ilgili yenilikler hakkında bilgi edinmek için bkz. [Azure Active Directory](../fundamentals/whats-new.md)yenilikleri.
+
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
+- [Bilinen sorunlar: uygulama sağlama](known-issues.md)
+- [Azure AD 'de otomatik SaaS uygulaması Kullanıcı hazırlama nedir?](user-provisioning.md)
+- [Öğretici-Kullanıcı sağlama özniteliğini özelleştirme-Azure Active Directory SaaS uygulamaları için eşlemeler](customize-application-attributes.md)
+
 
 ## <a name="november-2020"></a>Kasım 2020
 

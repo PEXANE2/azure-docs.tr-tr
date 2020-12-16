@@ -10,22 +10,78 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/20/2020
+ms.date: 12/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 9cc86167b9d92289aa2edb605d8037a1bf6a9dcb
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: adaea28d105b72152e1af28cc9d79da19c548c2c
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338733"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561418"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk işletim sistemi
 Aşağıdaki tablolarda, Azure Konuk işletim sistemine uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmeleri gösterilmektedir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk işletim sistemi için geçerli olup olmadığını öğrenmek için bu makaleye arama yapın. Güncelleştirmeler her zaman üzerinde tanıtılan belirli bir [Aile][family-explain] için ileri doğru şekilde devam ederler.
 
+## <a name="december-2020-guest-os"></a>Aralık 2020 Konuk işletim sistemi
+>[!NOTE] 
+
+>Aralık Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri, Aralık Konuk işletim sisteminde bulunur. Bu liste değişikliğe tabidir. 
+
+| Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
+| --- | --- | --- | --- | --- |
+|  Rel 20-12 |  [4592440]  |  En son birikimli güncelleştirme | 6,26 | 8. ara, 2020 |
+|  Rel 20-12 |  [4580325]  |  Flash güncelleştirmesi | 3,92, 4,85, 5,50, 6,26 | 13 Ekim 2020 |
+|  Rel 20-12 |  [4586768]  |  IE toplu güncelleştirmeleri | 2,105, 3,92, 4,85 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4593226]  |  En son birikimli güncelleştirme | 5,50 | 8. ara, 2020 |
+|  Rel 20-12 |  [4052623]  |  Defender | 5,50, 6,26 | 13. ara, 2020 |
+|  Rel 20-12 |  [4578952]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 2,105 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578955]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 2,105 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578953]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 4,85 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578956]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 4,85 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578950]  |  .NET Framework 3,5 güvenlik ve kalite toplaması | 3,92 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578954]  |  .NET Framework 4.5.2 güvenlik ve kalite toplaması | 3,92 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4578966]  |  .NET Framework 3,5 ve 4.7.2 toplu güncelleştirmesi | 6,26 | 13 Ekim 2020 |
+|  Rel 20-12 |  [4592471]  |  Aylık toplu | 2,105 | 8. ara, 2020 |
+|  Rel 20-12 |  [4592468]  |  Aylık toplu | 3,92 | 8. ara, 2020 |
+|  Rel 20-12 |  [4592484]  |  Aylık toplu | 4,85 | 8. ara, 2020 |
+|  Rel 20-12 |  [4566426]  |  Hizmet yığını güncelleştirmesi | 3,92 | 14 Temmuz 2020 |
+|  Rel 20-12 |  [4566425]  |  Hizmet yığını güncelleştirmesi | 4,85 | 14 Temmuz 2020 |
+|  Rel 20-12 OOB |  [4578013]  |  Tek başına güvenlik güncelleştirmesi | 4,85 | 19 Ağu 2020 |
+|  Rel 20-12 |  [4576750]  |  Hizmet yığını güncelleştirmesi | 5,50 | 8 Eyl, 2020 |
+|  Rel 20-12 |  [4592510]  |  Hizmet yığını güncelleştirmesi | 2,105 | 8. ara, 2020 |
+|  Rel 20-12 |  [4587735]  |  Hizmet yığını güncelleştirmesi | 6,26 | 10 Kasım 2020 |
+|  Rel 20-12 |  [4494175]  |  Mikro kod | 5,50 | 1 Eyl, 2020 |
+|  Rel 20-12 |  [4494174]  |  Mikro kod | 6,26 | Eyl 3, 2020 |
+
+[4592440]: https://support.microsoft.com/kb/4592440
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4593226]: https://support.microsoft.com/kb/4593226
+[4052623]: https://support.microsoft.com/kb/4052623
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4592471]: https://support.microsoft.com/kb/4592471
+[4592468]: https://support.microsoft.com/kb/4592468
+[4592484]: https://support.microsoft.com/kb/4592484
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4576750]: https://support.microsoft.com/kb/4576750
+[4592510]: https://support.microsoft.com/kb/4592510
+[4587735]: https://support.microsoft.com/kb/4587735
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 ## <a name="november-2020-guest-os"></a>Kasım 2020 Konuk işletim sistemi
 >[!NOTE] 
 
->Kasım Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Ekim Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir. 
+>Kasım Konuk işletim sistemi şu anda otomatik güncelleştirmeler için yapılandırılmış bulut hizmeti VM 'lerine devredilir. Dağıtım tamamlandığında, bu sürüm Azure portal ve yapılandırma dosyaları aracılığıyla el ile güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme ekleri Kasım Konuk işletim sistemine dahildir. Bu liste değişikliğe tabidir. 
 
 | Ürün Kategorisi | Üst KB makalesi | Güvenlik açığı açıklaması | Konuk işletim sistemi | Ilk tanıtılan Tarih |
 | --- | --- | --- | --- | --- |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 5b064365a6f0bd8a544f57d67cd6e4beb98bb404
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505248"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562540"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -99,6 +99,14 @@ Ayrıca, `domain=phi` metindeki sağlık () bilgilerini algılamak için isteğe
 
 [Adlandırılmış varlık tanıma sürüm 3,1-Önizleme başvurusu `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**Zaman uyumsuz işlem**
+
+' Den itibaren `v3.1-preview.3` , uç noktayı kullanarak ner isteklerini zaman uyumsuz olarak gönderebilirsiniz `/analyze` .
+
+* Zaman uyumsuz işlem- `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+Zaman uyumsuz istekleri gönderme hakkında bilgi için bkz. [Metin Analizi API'si çağırma](text-analytics-how-to-call-api.md) .
+
 #### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
 
 Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ayrı uç noktalar kullanır. İsteğinize göre aşağıdan bir URL biçimi kullanın:
@@ -117,7 +125,11 @@ Adlandırılmış varlık tanıma v3, NER ve varlık bağlama istekleri için ay
 
 Metin Analizi API'si anahtarınızı dahil etmek için bir istek üst bilgisi ayarlayın. İstek gövdesinde, hazırladığınız JSON belgelerini sağlayın.
 
-### <a name="example-ner-request"></a>Örnek NER isteği 
+## <a name="example-requests"></a>Örnek istekler
+
+#### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>Örnek zaman uyumlu NER isteği 
 
 Aşağıdaki JSON, API 'ye gönderebilecek içeriklere bir örnektir. İstek biçimi, her iki API sürümü için de aynıdır.
 
@@ -131,8 +143,64 @@ Aşağıdaki JSON, API 'ye gönderebilecek içeriklere bir örnektir. İstek bi�
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>Örnek zaman uyumsuz NER isteği
+
+`/analyze`Uç noktasını [zaman uyumsuz işlem](text-analytics-how-to-call-api.md)IÇIN kullanıyorsanız, API 'ye gönderdiğiniz görevleri içeren bir yanıt alırsınız.
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[Sürüm 3,0](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>Örnek zaman uyumlu NER isteği 
+
+Sürüm 3,0 yalnızca zaman uyumlu işlemi içerir. Aşağıdaki JSON, API 'ye gönderebilecek içeriklere bir örnektir. İstek biçimi, her iki API sürümü için de aynıdır.
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>İsteği gönder
 
@@ -148,11 +216,68 @@ Hemen çıktı döndürülür. Sonuçları, JSON kabul eden bir uygulamada akı�
 
 ### <a name="example-responses"></a>Örnek yanıtlar
 
-Sürüm 3, genel NER, PII ve varlık bağlama için ayrı uç noktalar sağlar. Her iki işlem için de yanıtlar aşağıda verilmiştir. 
+Sürüm 3, genel NER, PII ve varlık bağlama için ayrı uç noktalar sağlar. Sürüm 3,1-pareview, zaman uyumsuz çözümleme modu içerir. Bu işlemlerin yanıtları aşağıda verilmiştir. 
 
 #### <a name="version-31-preview"></a>[Sürüm 3,1-Önizleme](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>Zaman uyumlu örnek sonuçları
+
+Genel bir NER yanıtı örneği:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 PII yanıtı örneği:
+
 ```json
 {
   "documents": [
@@ -236,6 +361,58 @@ Bir varlık bağlama yanıtı örneği:
   ],
   "errors": [],
   "modelVersion": "2020-02-01"
+}
+```
+
+### <a name="example-asynchronous-result"></a>Örnek zaman uyumsuz sonuç
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
 }
 ```
 

@@ -3,12 +3,12 @@ title: ACR Görevlerine genel bakış
 description: Bulutta güvenli, otomatik kapsayıcı görüntüsü oluşturma, yönetim ve düzeltme eki uygulama sağlayan bir Azure Container Registry özellik paketi olan ACR görevlerine giriş.
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027675"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562863"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR görevleriyle kapsayıcı görüntüsü derlemelerini ve bakımını otomatikleştirin
 
@@ -105,7 +105,7 @@ Aşağıdaki tabloda ACR görevleri için desteklenen bağlam konumlarının ör
 | Bağlam konumu | Açıklama | Örnek |
 | ---------------- | ----------- | ------- |
 | Yerel dosya sistemi | Yerel dosya sisteminde bir dizin içindeki dosyalar. | `/home/user/projects/myapp` |
-| GitHub ana dalı | Ortak veya özel bir GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub ana dalı | Genel veya özel bir GitHub deposunun ana (veya diğer varsayılan) daldaki dosyalar.  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub dalı | Ortak veya özel GitHub deposunun belirli bir dalı.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub alt klasörü | Ortak veya özel bir GitHub deposunda bulunan bir alt klasör içindeki dosyalar. Örnek, bir dal ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub yürütmesi | Genel veya özel bir GitHub deposunda belirli bir işleme. Örnek, bir COMMIT Hash (SHA) ve alt klasör belirtiminin birleşimini gösterir. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 2d8ebe87cdf1d11ae4d9c9050ba1ac924089aa33
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505622"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563237"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Metin Analizi API'si nedir?
 
@@ -64,7 +64,7 @@ Adlandırılmış varlık tanıma (NER), kişiler, konumlar, kuruluşlar, miktar
 
 İş akışı basittir. Analiz edilecek verileri gönderir ve çıktıları kodunuzda işlersiniz. Çözümleyiciler olduğu gibi kullanılır, ek yapılandırma veya özelleştirme gerçekleştirilmez.
 
-1. Metin Analizi için [bir Azure kaynağı oluşturun](../cognitive-services-apis-create-account.md) . Daha sonra, isteklerinizin kimlik doğrulaması için sizin için oluşturulan [anahtarı alın](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) .
+1. Metin Analizi için [bir Azure kaynağı oluşturun](how-tos/text-analytics-how-to-call-api.md) . Daha sonra, isteklerinizin kimlik doğrulaması için sizin için oluşturulan [anahtarı alın](how-tos/text-analytics-how-to-call-api.md) .
 
 2. JSON biçiminde verilerinizi yapılandırılmamış ham metin olarak içeren [bir istek düzenleyin](how-tos/text-analytics-how-to-call-api.md#json-schema).
 

@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20088ccc79abe978eb5b3f1c98e958f6c26bcb86
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: cfe3d995cef888d2f0e973a6a6b2a06e0dd6cb54
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861808"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563220"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Çoklu Oturum Açma için SAML 2.0 Kimlik Sağlayıcısı (IdP) Kullanma
 
@@ -273,7 +273,7 @@ Bu yordam, Azure AD 'ye tek bir kullanıcının nasıl ekleneceğini gösterir.
 "New-MsolUser" Checkout, [/Previous-Versions/Azure/dn194096 (v = Azure. 100)](/previous-versions/azure/dn194096(v=azure.100)) hakkında daha fazla bilgi için
 
 >[!NOTE]
->"Userprenlname" değeri, SAML 2,0 talepinizdeki "ıdpemail" için göndereceğiniz değerle eşleşmelidir ve "ImmutableID" değeri "NameID" onayyıklarınızın gönderdiği değerle eşleşmelidir.
+>"UserPrincipalName" değeri, SAML 2,0 talepinizdeki "ıdpemail" için göndereceğiniz değerle eşleşmelidir ve "ImmutableID" değeri "NameID" onayyıklarınızın gönderdiği değerle aynı olmalıdır.
 
 ## <a name="verify-single-sign-on-with-your-saml-20-idp"></a>SAML 2,0 ıDP ile çoklu oturum açmayı doğrulama
 Yönetici olarak, çoklu oturum açmayı doğruladıktan ve yönettiğinizde (Kimlik Federasyonu olarak da adlandırılır), bilgileri gözden geçirin ve SAML 2,0 SP-Lite tabanlı kimlik sağlayıcınızda çoklu oturum açmayı ayarlamak için aşağıdaki makalelerdeki adımları gerçekleştirin:

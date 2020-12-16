@@ -8,21 +8,21 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
-ms.date: 09/28/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: b03395b9c615466a4d64d8760db8ac23a040d832
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ed368615395614bc0d3e9a6f06727da8c64d8486
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360947"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559650"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
 Bu makalede, Azure Machine Learning kullanarak [Pytorch](https://pytorch.org/) eğitim betiklerinizi kurumsal ölçekte çalıştırmayı öğrenin.
 
-Bu makaledeki örnek betikler,, PyTorch 'ın aktarım öğrenimi [öğreticisini](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)temel alan derin bir öğrenme sinir ağı (DNN) oluşturmak üzere tavuk ve Türkiye görüntülerini sınıflandırmak için kullanılır. 
+Bu makaledeki örnek betikler,, PyTorch 'ın aktarım öğrenimi [öğreticisini](https://pytorch.org/tutorials/beginner/transfer_learning_tutorial.html)temel alan derin bir öğrenme sinir ağı (DNN) oluşturmak üzere tavuk ve Türkiye görüntülerini sınıflandırmak için kullanılır. Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir. Bu işlem, sıfırdan daha az veri, saat ve işlem kaynağı isteyerek eğitim sürecini kısayollar.
 
 Derin bir öğrenme PyTorch modelini baştan sona eğiyor veya mevcut bir modeli buluta çıkarksanız, elastik bulut işlem kaynakları kullanarak açık kaynaklı eğitim işlerini ölçeklendirmek için Azure Machine Learning kullanabilirsiniz. Azure Machine Learning ile üretim sınıfı modellerini oluşturabilir, dağıtabilir, sürüm ve izleyebilirsiniz. 
 
@@ -213,13 +213,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Çalıştırma yürütme sırasında ne olur?
 Çalıştırma yürütüldüğü için aşağıdaki aşamalardan geçer:
 
-- **Hazırlama** : bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
+- **Hazırlama**: bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
 
-- **Ölçeklendirme** : Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
+- **Ölçeklendirme**: Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
 
-- **Çalışıyor** : betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
+- **Çalışıyor**: betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
 
-- **Işlem sonrası** : çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
+- **Işlem sonrası**: çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
 
 ## <a name="register-or-download-a-model"></a>Bir modeli kaydetme veya indirme
 

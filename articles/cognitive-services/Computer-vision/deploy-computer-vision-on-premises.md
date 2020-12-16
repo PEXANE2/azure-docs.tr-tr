@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: dce8893cac156ce2941652e32409357cb8ec3b1a
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015324"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562608"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes ve Held ile Görüntü İşleme kapsayıcısı kullanma
 
@@ -166,6 +166,9 @@ spec:
 ```
 
 Aynı *Şablonlar* klasöründe aşağıdaki yardımcı işlevleri kopyalayıp içine yapıştırın `helpers.tpl` . `helpers.tpl` Hele şablonu oluşturmaya yardımcı olmak için yararlı işlevler tanımlar.
+
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ```yaml
 {{- define "rabbitmq.hostname" -}}

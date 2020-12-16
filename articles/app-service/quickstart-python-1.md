@@ -5,13 +5,13 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
-adobe-target: true
-ms.openlocfilehash: dc4c67437d6cc6d5eea87bf414058a676d7cd8a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+robots: noindex
+ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833699"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561554"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Hızlı başlangıç: Linux için Azure App Service bir Python uygulaması oluşturma
 
@@ -156,7 +156,7 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux ka
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
+1. Terminal pencerenizde,  + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -194,7 +194,7 @@ Python örnek kodu, yerleşik bir görüntü kullanarak App Service bir Linux ka
 
     ![Örnek bir Python uygulamasını yerel olarak çalıştırma](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Terminal pencerenizde, **Ctrl** + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
+1. Terminal pencerenizde,  + geliştirme sunucusundan çıkmak için CTRL **C** tuşuna basın.
 ::: zone-end
 
 [Sorun mu yaşıyorsunuz? Bize bilgi verin.](https://aka.ms/FlaskCLIQuickstartHelp)
