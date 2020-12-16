@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 0c6c80849f48cb4f859bcbaaeb4f072eb575ba74
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21f05363ed3d3aa3e9c1f1156425a6026eb21b71
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021309"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582623"
 ---
 Bu kılavuzda, bir nesne algılama modeli oluşturmak için Node.js Özel Görüntü İşleme istemci kitaplığını kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sunulmaktadır. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -28,7 +28,7 @@ Bu kılavuzda, bir nesne algılama modeli oluşturmak için Node.js Özel Görü
 Başvuru belgeleri [(eğitim)](/javascript/api/@azure/cognitiveservices-customvision-training/?view=azure-node-latest) [(tahmin)](/javascript/api/@azure/cognitiveservices-customvision-prediction/?view=azure-node-latest) | Kitaplık kaynak kodu [(eğitim)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-training) [(tahmin)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-customvision-prediction) | Paket (NPM) ( [eğitim)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-training) [(tahmin)](https://www.npmjs.com/package/@azure/cognitiveservices-customvision-prediction)  |  [örnekleri](/samples/browse/?products=azure&terms=custom%20vision&languages=javascript)
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Node.js](https://nodejs.org/) geçerli sürümü
@@ -75,7 +75,7 @@ Kaynağınızın Azure uç noktası ve anahtarları için değişkenler oluştur
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim Kaynakları ' uç noktası ile birlikte hem eğitim ve tahmin Anahtarlarınızı almanız gerekir.
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../../cognitive-services/cognitive-services-security.md) makalesine bakın.
 
@@ -118,14 +118,6 @@ Birden çok zaman uyumsuz çağrı yapmaya yardımcı olmak için aşağıdaki i
 ## <a name="create-a-new-custom-vision-project"></a>Yeni bir Özel Görüntü İşleme projesi oluşturma
 
 Tüm Özel Görüntü İşleme işlev çağrılarınızı içeren yeni bir işlev başlatın. Yeni bir Özel Görüntü İşleme Hizmeti projesi oluşturmak için aşağıdaki kodu ekleyin.
-
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
-
-## <a name="create-a-new-custom-vision-project"></a>Yeni bir Özel Görüntü İşleme projesi oluşturma
-
-Tüm Özel Görüntü İşleme işlev çağrılarınızı içeren yeni bir işlev başlatın. Yeni bir Özel Görüntü İşleme Hizmeti projesi oluşturmak için aşağıdaki kodu ekleyin.
-
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/CustomVision/ObjectDetection/CustomVisionQuickstart.js?name=snippet_create)]
 
@@ -179,6 +171,7 @@ node index.js
 
 Uygulamanın çıkışı konsolda görüntülenmelidir. Daha sonra test görüntüsünün ( **<sampleDataRoot> /Test/** içinde bulunur) uygun şekilde etiketlendiğini ve algılama bölgesinin doğru olduğunu doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

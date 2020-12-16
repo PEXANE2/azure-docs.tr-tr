@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 89520dacd9faea0373559119636d5c558b3b1536
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: a33490d289e3867dffec0041a5da21ea5f235b28
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366518"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582586"
 ---
 > [!IMPORTANT]
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Aşağıdaki başvuru belgelerine bakın. 
 
 [Başvuru belgeleri](/python/api/azure-ai-formrecognizer)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer)  |  [Paket (Pypı)](https://pypi.org/project/azure-ai-formrecognizer/)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
@@ -36,17 +36,23 @@ ms.locfileid: "97366518"
 
 Python yükledikten sonra, form tanıyıcı istemci kitaplığı 'nın en son sürümünü ile yükleyebilirsiniz:
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
 ```console
 pip install azure-ai-formrecognizer
 ```
 
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+> [!NOTE]
+> En son form tanıyıcı API sürüm 2,0 ' i yansıtır
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 ```console
 pip install azure-ai-formrecognizer --pre
 ```
+
+> [!NOTE]
+> Form tanıyıcı önizleme SDK 'sı API sürüm 2,1 Önizleme 'yi yansıtır
 
 ---
 
@@ -91,7 +97,7 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
 Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Form içeriğini tanı](#recognize-form-content)
@@ -100,7 +106,7 @@ Bu kod parçacıkları, Python için form tanıyıcı istemci kitaplığı ile a
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Form içeriğini tanı](#recognize-form-content)
@@ -194,11 +200,15 @@ Tax: 104.4 has confidence 0.713
 Total: 1203.39 has confidence 0.774
 ```
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
 
 ## <a name="recognize-business-cards"></a>İş kartlarını tanıma
+
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir. Bir URL 'den iş kartlarını tanımak için `begin_recognize_business_cards_from_url` yöntemini kullanın. 
 
@@ -207,7 +217,16 @@ Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarında
 > [!TIP]
 > Ayrıca, yerel iş kartı görüntülerini da tanıyabilirsiniz. Gibi [Formrecognizerclient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python) yöntemlerine bakın `begin_recognize_business_cards` . Ya da, yerel görüntüleri içeren senaryolar için [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 'daki örnek koda bakın.
 
+---
+
 ## <a name="recognize-invoices"></a>Faturaları tanıma
+
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir. Bir URL 'den faturaları tanımak için `begin_recognize_invoices_from_url` yöntemini kullanın. 
 

@@ -3,12 +3,12 @@ author: areddish
 ms.author: areddish
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: 4e9b5326f8ce28e94c829f9aed56d035c256be52
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 27eb4383084e9a782e0c2cb8ff734fba8496c9f1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625469"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582460"
 ---
 Bu kılavuz, bir görüntü sınıflandırma modeli oluşturmak üzere Go için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlamanıza yardımcı olacak yönergeler ve örnek kod sağlar. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -85,7 +85,7 @@ func main() {
 
 ## <a name="create-tags-in-the-project"></a>Projede etiketler oluşturma
 
-Projenize sınıflandırma etiketleri oluşturmak için aşağıdaki kodu örnek sonuna ekleyin *. git* :
+Projenize sınıflandırma etiketleri oluşturmak için aşağıdaki kodu örnek sonuna ekleyin *. git*:
 
 ```go
 // Make two tags in the new project
@@ -187,7 +187,9 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Ardından test görüntüsünün ( **<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+Ardından test görüntüsünün (**<base_image_url>/Images/Test/** yolunda bulunur) düzgün etiketlendiğini doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [clean-ic-project](../../includes/clean-ic-project.md)]
 

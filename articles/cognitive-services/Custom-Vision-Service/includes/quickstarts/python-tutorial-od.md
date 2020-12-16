@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: b35b383eb93b0c451fcb98c66538a4335480a649
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51b1af81e37008a7e959719846039c5470705760
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021375"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582740"
 ---
 Python için Özel Görüntü İşleme istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek için bu adımları izleyin ve bir nesne algılama modeli oluşturmak için örnek kodu deneyin. Bir proje oluşturacak, Etiketler ekleyecek, projeyi eğtireceksiniz ve projenin tahmin uç nokta URL 'sini programlı bir şekilde test etmek üzere kullanacaksınız. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -26,7 +26,7 @@ Python için Özel Görüntü İşleme istemci kitaplığını şu şekilde kull
 
 [Başvuru belgeleri](/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-customvision/azure/cognitiveservices/vision/customvision)  |  [Paket (Pypı)](https://pypi.org/project/azure-cognitiveservices-vision-customvision/)  |  [Örnekler](/samples/browse/?languages=python&products=azure&term=vision&terms=vision)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Python 3.x](https://www.python.org/)
@@ -59,7 +59,7 @@ Kaynağınızın Azure uç noktası ve abonelik anahtarları için değişkenler
 
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim ve tahmin anahtarlarınızın her ikisini de almanız gerekir.
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim Kaynakları ' uç noktası ile birlikte hem eğitim ve tahmin Anahtarlarınızı almanız gerekir.
 >
 > Tahmini kaynak KIMLIĞI değerini kaynağın **genel bakış** sekmesinde, **abonelik kimliği** olarak listelenmiş şekilde bulabilirsiniz.
 >
@@ -160,6 +160,8 @@ python CustomVisionQuickstart.py
 ```
 
 Uygulamanın çıkışı konsolda görüntülenmelidir. Daha sonra ( **<base_image_location>/images/Test**) üzerinde bulunan test görüntüsünün uygun şekilde etiketlendiğini ve algılama bölgesinin doğru olduğunu doğrulayabilirsiniz. Ayrıca [Özel Görüntü İşleme web sitesine](https://customvision.ai) geri dönebilir ve yeni oluşturulan projenizin geçerli durumunu görebilirsiniz.
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 [!INCLUDE [clean-od-project](../../includes/clean-od-project.md)]
 

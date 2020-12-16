@@ -4,14 +4,14 @@ ms.service: storage
 ms.topic: include
 ms.date: 07/17/2020
 ms.author: tamram
-ms.openlocfilehash: 85e7cb86217340e77a6f597a357c3de1f91fb8d0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 37fba0101365e425110c2943264c8c0e8c511329
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87070545"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582634"
 ---
-Azurite, paylaşılan anahtar kimlik doğrulaması için tek bir sabit hesabı ve iyi bilinen bir kimlik doğrulama anahtarını destekler. Bu hesap ve anahtar, Azurıite ile kullanım için izin verilen tek paylaşılan anahtar kimlik bilgileridir. Bunlar:
+Öykünücü, paylaşılan anahtar kimlik doğrulaması için tek bir sabit hesabı ve iyi bilinen bir kimlik doğrulama anahtarını destekler. Bu hesap ve anahtar, öykünücü ile kullanım için izin verilen tek paylaşılan anahtar kimlik bilgileridir. Bunlar:
 
 ```
 Account name: devstoreaccount1
@@ -19,13 +19,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> Azurite tarafından desteklenen kimlik doğrulama anahtarı yalnızca istemci kimlik doğrulama kodunuzun işlevlerini test etmek üzere tasarlanmıştır. Herhangi bir güvenlik amacına sahip değildir. Üretim depolama hesabınızı ve anahtarınızı Azurite ile kullanamazsınız. Üretim verileriyle birlikte geliştirme hesabı kullanmamalısınız.
+> Öykünücü tarafından desteklenen kimlik doğrulama anahtarı yalnızca istemci kimlik doğrulama kodunuzun işlevlerini test etmek üzere tasarlanmıştır. Herhangi bir güvenlik amacına sahip değildir. Üretim depolama hesabınızı ve anahtarınızı öykünücü ile kullanamazsınız. Üretim verileriyle birlikte geliştirme hesabı kullanmamalısınız.
 > 
-> Azurite yalnızca HTTP üzerinden bağlantıyı destekler. Ancak HTTPS, bir üretim Azure depolama hesabındaki kaynaklara erişmek için önerilen protokoldür.
+> Öykünücü yalnızca HTTP üzerinden bağlantıyı destekler. Ancak HTTPS, bir üretim Azure depolama hesabındaki kaynaklara erişmek için önerilen protokoldür.
 > 
 
 #### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Bir kısayol kullanarak öykünücü hesabına bağlanma
-Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında kısayola başvuran bir bağlantı dizesi yapılandırmaktır `UseDevelopmentStorage=true` . Bir *app.config* dosyasında Azurıite için bir bağlantı dizesi örneği aşağıda verilmiştir: 
+Uygulamanızdan öykünücüye bağlanmanın en kolay yolu, uygulamanızın yapılandırma dosyasında kısayola başvuran bir bağlantı dizesi yapılandırmaktır `UseDevelopmentStorage=true` . Bir *app.config* dosyadaki öykünücüye yönelik bağlantı dizesi örneği aşağıda verilmiştir: 
 
 ```xml
 <appSettings>
@@ -33,8 +33,7 @@ Uygulamanızdan Azurite 'ya bağlanmanın en kolay yolu, uygulamanızın yapıla
 </appSettings>
 ```
 
-#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>İyi bilinen hesap adını ve anahtarını kullanarak öykünücü hesabına bağlanın
-Öykünücü hesap adına ve anahtarına başvuran bir bağlantı dizesi oluşturmak için, bağlantı dizesindeki öykünücüsünde kullanmak istediğiniz her bir hizmet için uç noktaları belirtmeniz gerekir. Bu, bağlantı dizesinin, bir üretim depolama hesabı için olandan farklı olan öykünücü uç noktalarına başvurması için gereklidir. Örneğin, bağlantı dizeniz değeri şöyle görünür:
+, Bağlantı dizesinde kullanmak istediğiniz öykünücü hizmetlerinin her biri için hesap adını, hesap anahtarını ve uç noktalarını tam olarak belirtmeye eşdeğerdir. Bu, bağlantı dizesinin, bir üretim depolama hesabı için olandan farklı olan öykünücü uç noktalarına başvurması için gereklidir. Örneğin, bağlantı dizeniz değeri şöyle görünür:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -42,5 +41,3 @@ AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFP
 BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
-
-Bu değer yukarıda gösterilen kısayolla aynıdır `UseDevelopmentStorage=true` .

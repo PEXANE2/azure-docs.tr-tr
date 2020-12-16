@@ -9,19 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/06/2020
 ms.author: pafarley
-ms.openlocfilehash: 48a895875edab56e062320321d82b43da15234d0
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c67a859177695b71c6607c53b3ae9c268aee7797
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366416"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582592"
 ---
 > [!IMPORTANT]
 > Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır.
 
 [Başvuru belgeleri](/dotnet/api/overview/azure/ai.formrecognizer-readme)  |  [Kitaplık kaynak kodu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer)  |  [Örnekler](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual STUDIO IDE](https://visualstudio.microsoft.com/vs/) veya [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)'un geçerli sürümü.
@@ -58,17 +58,24 @@ Build succeeded.
 
 Uygulama dizini içinde, aşağıdaki komutla .NET için form tanıyıcı istemci Kitaplığı ' nı yükleyeceksiniz:
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.0.0
 ```
 
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+> [!NOTE]
+> Form tanıyıcı 3.0.0 SDK, API sürüm 2,0 ' i yansıtır
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 ```console
 dotnet add package Azure.AI.FormRecognizer --version 3.1.0-beta.1
 ```
+
+> [!NOTE]
+> Form tanıyıcı 3.1.0 SDK, API sürüm 2,1 Önizleme 'YI yansıtır
+
 ---
 
 > [!TIP]
@@ -89,9 +96,9 @@ Uygulamanın **Program** sınıfında, kaynağınızın anahtarı ve uç noktas�
 
 Uygulamanın **Main** yönteminde, bu hızlı başlangıçta kullanılan zaman uyumsuz görevlere bir çağrı ekleyin. Bunları daha sonra uygulayacaksınız.
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_main)]
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_main)]
 
 ---
@@ -127,7 +134,7 @@ Form tanıyıcı ile iki farklı istemci türü oluşturabilirsiniz. Birincisi, 
 
 Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aşağıdaki görevlerin nasıl yapılacağını gösterir:
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Form içeriğini tanı](#recognize-form-content)
@@ -136,7 +143,7 @@ Bu kod parçacıkları, .NET için form tanıyıcı istemci kitaplığı ile aş
 * [Formları özel bir model ile analiz etme](#analyze-forms-with-a-custom-model)
 * [Özel modellerinizi yönetin](#manage-your-custom-models)
 
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 * [İstemcinin kimliğini doğrulama](#authenticate-the-client)
 * [Form içeriğini tanı](#recognize-form-content)
@@ -172,9 +179,9 @@ Ayrıca, eğitim ve test verileriniz için URL 'lere başvurular eklemeniz gerek
 * Ardından, BLOB depolama kapsayıcısında tek bir belgenin SAS URL 'sini almak için yukarıdaki adımları tekrarlayın. Geçici bir konuma da kaydedin.
 * Son olarak, aşağıda yer alan örnek görüntünün URL 'sini kaydedin ( [GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms)üzerinde de mevcuttur). 
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart.cs?name=snippet_urls)]
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_urls)]
 
 ---
@@ -289,11 +296,15 @@ Item:
 Total: '1203.39', with confidence '0.774'
 ```
 
-#### <a name="version-30"></a>[sürüm 3,0](#tab/ga)
-
-#### <a name="version-31-preview"></a>[sürüm 3,1 Önizleme](#tab/preview)
-
 ## <a name="recognize-business-cards"></a>İş kartlarını tanıma
+
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
+
 
 Bu bölümde, önceden eğitilen bir model kullanarak Ingilizce iş kartlarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir.
 
@@ -308,7 +319,16 @@ Döndürülen değer bir `RecognizedForm` nesne koleksiyonudur: belgedeki her ka
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/FormRecognizerQuickstart-preview.cs?name=snippet_bc_print)]
 
+---
+
 ## <a name="recognize-invoices"></a>Faturaları tanıma
+
+#### <a name="version-20"></a>[sürüm 2,0](#tab/ga)
+
+> [!IMPORTANT]
+> Bu özellik seçili API sürümünde kullanılamaz.
+
+#### <a name="version-21-preview"></a>[sürüm 2,1 Önizleme](#tab/preview)
 
 Bu bölümde, önceden eğitilen bir model kullanılarak satış faturalarından ortak alanların nasıl tanınıp ayıklanacağı gösterilmektedir.
 

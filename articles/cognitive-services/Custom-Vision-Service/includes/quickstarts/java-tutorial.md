@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: f7c9981b4d26314965dd86994c6edaa50f355dc2
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 0a0ae0659e13035bfb29a0628330339ede349b8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625204"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97582466"
 ---
 Bir görüntü sınıflandırma modeli oluşturmak için Java için Özel Görüntü İşleme istemci kitaplığı 'nı kullanmaya başlayın. Paketi yüklemek için bu adımları izleyin ve temel görevler için örnek kodu deneyin. Bu örneği kendi görüntü tanıma uygulamanızı oluşturmak için bir şablon olarak kullanın.
 
@@ -53,7 +53,7 @@ mkdir myapp && cd myapp
 gradle init --type basic
 ```
 
-Bir **DSL** seçmeniz Istendiğinde, **Kotlin** ' ı seçin.
+Bir **DSL** seçmeniz Istendiğinde, **Kotlin**' ı seçin.
 
 ### <a name="install-the-client-library"></a>İstemci kitaplığını yükler
 
@@ -99,7 +99,7 @@ Uygulamanın **CustomVisionQuickstart** sınıfında, kaynağınızın anahtarla
 
 
 > [!IMPORTANT]
-> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz [ürün adı] kaynağı başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtar ve uç noktanızı kaynağın **anahtar ve uç nokta** sayfasında, **kaynak yönetimi** altında bulabilirsiniz. 
+> Azure portala gidin. **Önkoşullar** bölümünde oluşturduğunuz özel görüntü işleme kaynakları başarıyla dağıtılırsa, **sonraki adımlar** altında **Kaynağa Git** düğmesine tıklayın. Anahtarlarınızın ve uç noktanın **kaynak yönetimi** altında kaynakların **anahtar ve uç nokta** sayfalarında bulabilirsiniz. Eğitim Kaynakları ' uç noktası ile birlikte hem eğitim ve tahmin Anahtarlarınızı almanız gerekir.
 >
 > İşiniz bittiğinde kodu koddan kaldırmayı unutmayın ve hiçbir zaman herkese açık bir şekilde nakletmeyin. Üretim için, kimlik bilgilerinizi depolamak ve bunlara erişmek için güvenli bir yol kullanmayı düşünün. Daha fazla bilgi için bilişsel Hizmetler [güvenlik](../../../cognitive-services-security.md) makalesine bakın.
 
@@ -178,9 +178,6 @@ Bu yöntem, modelin geçerli yinelemesini sorgulama için kullanılabilir hale g
 Bu yöntem, test görüntüsünü yükler, model uç noktasını sorgular ve tahmin verilerinin konsola çıktısını verir.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_predict)]
-
-
-## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
 ## <a name="run-the-application"></a>Uygulamayı çalıştırma
 
