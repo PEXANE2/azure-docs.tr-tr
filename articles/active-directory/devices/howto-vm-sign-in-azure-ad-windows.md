@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c42495ceab7108d20b0f0dedbf0cf94f5f9352d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509317"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629808"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure 'da Azure Active Directory kimlik doğrulaması (Önizleme) kullanarak Windows sanal makinesinde oturum açma
 
@@ -333,6 +333,9 @@ Sanal makinenize Uzak Masaüstü bağlantısı başlattığınızda aşağıdaki
 ![Hesabınız, bu cihazı kullanmanızı engelleyecek şekilde yapılandırıldı.](./media/howto-vm-sign-in-azure-ad-windows/rbac-role-not-assigned.png)
 
 VM için, sanal makine Yöneticisi oturum açma veya sanal makine Kullanıcı oturum açma rolü veren [Azure RBAC ilkelerini yapılandırdığınızdan](../../virtual-machines/linux/login-using-aad.md) emin olun:
+
+> [!NOTE]
+> Azure rol atamaları ile ilgili sorunlarla karşılaşırsanız bkz. [Azure RBAC sorunlarını giderme](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
  
 #### <a name="unauthorized-client"></a>Yetkisiz istemci
 

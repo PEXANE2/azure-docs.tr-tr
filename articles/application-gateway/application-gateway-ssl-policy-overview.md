@@ -5,14 +5,14 @@ services: application gateway
 author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
-ms.date: 11/16/2019
+ms.date: 12/17/2020
 ms.author: amsriva
-ms.openlocfilehash: 16c6dd28d47573c2ad5b0d5a331b0dc48e7aacef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77239cd8586b8fb07abf6862be436979541bdb99
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85253639"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631699"
 ---
 # <a name="application-gateway-tls-policy-overview"></a>Application Gateway TLS ilkesine genel bakış
 
@@ -23,6 +23,18 @@ TLS ilkesi TLS protokol sürümünün ve şifreleme paketlerinin yanı sıra bir
 ## <a name="predefined-tls-policy"></a>Önceden tanımlanmış TLS ilkesi
 
 Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun güvenlik düzeyini almak için ağ geçidinizi bu ilkelerden herhangi biriyle yapılandırabilirsiniz. İlke adlarına, yapılandırıldığı yıl ve aya göre açıklama eklenir. Her ilke farklı TLS protokol sürümleri ve şifre paketleri sunar. En iyi TLS güvenliğini sağlamak için en yeni TLS ilkelerini kullanmanızı öneririz.
+
+## <a name="known-issue"></a>Bilinen sorun
+Application Gateway v2 aşağıdaki DHE şifrelemeleri desteklemez ve bunlar, önceden tanımlanmış ilkelerde bahsedilseler de istemcilerle TLS bağlantıları için kullanılmaz. DHE şifrelemeleri yerine güvenli ve daha hızlı ECDHE şifrelemeleri önerilir.
+
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
+- TLS_DHE_RSA_WITH_AES_256_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_128_CBC_SHA
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA256
+- TLS_DHE_DSS_WITH_AES_256_CBC_SHA
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
@@ -54,6 +66,10 @@ Application Gateway önceden tanımlanmış üç güvenlik ilkesi vardır. Uygun
 ## <a name="custom-tls-policy"></a>Özel TLS ilkesi
 
 Gereksinimlerinize göre önceden tanımlanmış bir TLS ilkesinin yapılandırılması gerekiyorsa, kendi özel TLS ilkenizi tanımlamanız gerekir. Özel bir TLS ilkesiyle, desteklenecek en düşük TLS protokol sürümü ve desteklenen şifre paketleri ve bunların öncelik sıralaması üzerinde tüm denetiminiz vardır.
+
+> [!IMPORTANT]
+> Application Gateway v1 SKU 'sunda (Standart veya WAF) özel bir SSL ilkesi kullanıyorsanız, "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256" zorunlu şifre listesini listeye eklediğinizden emin olun. Bu şifre Application Gateway v1 SKU 'sunda ölçümleri ve günlüğü etkinleştirmek için gereklidir.
+> Bu, Application Gateway v2 SKU 'SU (Standard_v2 veya WAF_v2) için zorunlu değildir.
  
 ### <a name="tlsssl-protocol-versions"></a>TLS/SSL protokol sürümleri
 
@@ -97,17 +113,6 @@ Application Gateway, özel ilkenizi seçebileceğiniz aşağıdaki şifre paketl
 
 > [!NOTE]
 > Bağlantı için kullanılan TLS şifre paketleri, kullanılan sertifikanın türüne de bağlıdır. İstemciden uygulama ağ geçidi bağlantılarında, kullanılan şifre paketleri uygulama ağ geçidi dinleyicisinde sunucu sertifikalarının türünü temel alır. Uygulama ağ geçidinde arka uç havuzu bağlantılarına, kullanılan şifre paketleri, arka uç havuzu sunucularındaki sunucu sertifikalarının türünü temel alır.
-
-## <a name="known-issue"></a>Bilinen sorun
-Application Gateway v2 Şu anda aşağıdaki şifrelemeleri desteklemez:
-- DHE-RSA-AES128-GCM-SHA256
-- DHE-RSA-AES128-SHA
-- DHE-RSA-AES256-GCM-SHA384
-- DHE-RSA-AES256-SHA
-- DHE-DSS-AES128-SHA256
-- DHE-DSS-AES128-SHA
-- DHE-DSS-AES256-SHA256
-- DHE-DSS-AES256-SHA
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1bc108f76ac35b13474de18d473f5728dbad9d23
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560025"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631374"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı Linux sanal makineleri için nasıl uygulanır
 
-Azure Hibrit Avantajı, bulutta Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerini (VM) çalıştırmanın maliyetlerini önemli ölçüde düşürmenize yardımcı olan bir lisanslama avantajıdır. Bu avantajla, RHEL veya SLES aboneliğiniz yazılım ücretini kapsadığından sanal makinenizin yalnızca altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için geçerlidir.
+Azure Hibrit Avantajı, bulutta Red Hat Enterprise Linux (RHEL) ve SUSE Linux Enterprise Server (SLES) sanal makinelerini (VM) çalıştırmanın maliyetlerini önemli ölçüde düşürmenize yardımcı olan bir lisanslama avantajıdır. Bu avantajla, RHEL veya SLES aboneliğiniz yazılım ücretini kapsadığından sanal makinenizin yalnızca altyapı maliyetleri için ödeme yaparsınız. Bu avantaj, tüm RHEL ve SLES Market (PAYG) görüntüleri için kullanılabilir.
 
 Linux sanal makineleri için Azure Hibrit Avantajı artık genel kullanıma sunulmuştur.
 
@@ -29,7 +29,7 @@ Azure Hibrit Avantajı aracılığıyla, şirket içi RHEL ve SLES sunucuların�
 
 :::image type="content" source="./media/ahb-linux/azure-hybrid-benefit-cost.png" alt-text="Linux VM 'lerinde Azure Hibrit Avantajı maliyet görselleştirmesi.":::
 
-Bir RHEL veya SLES VM 'de avantajı etkinleştirdikten sonra, genellikle bir PAYG VM 'si üzerinde tahakkuk eden ek yazılım ücreti için ücretlendirilirsiniz. Bunun yerine, VM 'niz, yalnızca işlem donanımı ücretini ve yazılım ücreti gerektirmeyen bir KCG ücreti tahakkuk eder.
+RHEL veya SLES VM 'de avantajı etkinleştirdikten sonra, genellikle bir PAYG VM 'de oluşan ek yazılım ücreti için ücretlendirilirsiniz. Bunun yerine, VM 'niz, yalnızca işlem donanımı ücretini ve yazılım ücreti gerektirmeyen bir KCG ücreti tahakkuk eder.
 
 Ayrıca, avantajı etkin olan bir VM 'yi bir PAYG faturalama modeline geri dönüştürmeyi seçebilirsiniz.
 
@@ -39,7 +39,7 @@ Azure Hibrit Avantajı Azure Marketi 'ndeki tüm RHEL ve SLES PAYG görüntüler
 
 Linux VM 'lerle avantajı zaten kullanıyorsanız, ayrılmış örnekler, Azure adanmış konak örnekleri ve SQL hibrit avantajları Azure Hibrit Avantajı için uygun değildir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 ### <a name="red-hat-customers"></a>Red Hat müşterileri
 
@@ -53,7 +53,7 @@ Red Hat avantajını kullanmaya başlamak için:
 1. [Red Hat bulut erişimi müşteri arabirimini](https://access.redhat.com/management/cloud)kullanarak Azure 'da kullanılmak üzere uygun RHEL aboneliklerinizden birini veya birkaçını etkinleştirin.
 
    Red Hat bulut erişimi etkinleştirme işlemi sırasında sağladığınız Azure aboneliklerinin Azure Hibrit Avantajı özelliğini kullanmasına izin verilir.
-1. Mevcut RHEL PAYG sanal makinelerinizden ve Azure Marketi PAYG görüntülerinden dağıttığınız tüm yeni RHEL VM 'lerine Azure Hibrit Avantajı uygulayın.
+1. Mevcut RHEL PAYG sanal makinelerinizden ve Azure Marketi PAYG görüntülerinden dağıttığınız tüm yeni RHEL VM 'lerine Azure Hibrit Avantajı uygulayın. Avantajı etkinleştirmek için Azure portal veya Azure CLı kullanabilirsiniz.
 1. RHEL VM 'leriniz için güncelleştirme kaynaklarını yapılandırma ve RHEL abonelik uyumluluk yönergeleri için önerilen [sonraki adımları](https://access.redhat.com/articles/5419341) izleyin.
 
 
@@ -62,8 +62,33 @@ Red Hat avantajını kullanmaya başlamak için:
 SUSE avantajı 'nı kullanmaya başlamak için:
 
 1. SUSE genel bulut programı ile kaydolun.
-1. Azure CLı aracılığıyla mevcut sanal makinelerinize avantajını uygulayın.
+1. Yeni oluşturduğunuz veya var olan sanal makinelerinize Azure portal veya Azure CLı aracılığıyla avantajını uygulayın.
 1. Avantajlarınızı alan VM 'lerinizi ayrı bir güncelleştirme kaynağıyla kaydedin.
+
+## <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Azure portal avantajı etkinleştirin ve devre dışı bırakın
+
+Sol taraftaki **yapılandırma** seçeneğini ziyaret ederek mevcut VM 'lerde avantajını etkinleştirebilir ve bu adımları takip edebilirsiniz. VM oluşturma deneyimi sırasında yeni VM 'lerde avantaja izin verebilir.
+
+### <a name="azure-portal-example-to-enable-the-benefit-for-an-existing-vm"></a>Var olan bir VM 'nin avantajını etkinleştirmek için örnek Azure portal:
+1. [Microsoft Azure Portal](https://portal.azure.com/) ziyaret edin
+1. Portalda ' sanal makine oluşturma ' sayfasına gidin.
+ ![VM oluşturulurken AHB](./media/azure-hybrid-benefit/create-vm-ahb.png)
+1. AHB dönüştürmesini etkinleştirmek ve bulut erişim lisanslarını kullanmak için onay kutusuna tıklayın.
+ ![VM oluştururken AHB onay kutusu](./media/azure-hybrid-benefit/create-vm-ahb-checkbox.png)
+1. Sonraki yönerge kümesinden sonra bir sanal makine oluşturun
+1. **Yapılandırma** dikey penceresini denetleyerek seçeneği etkin olarak görürsünüz. 
+![Oluşturmaktan sonra AHB yapılandırma dikey penceresi](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+### <a name="azure-portal-example-to-enable-the-benefit-during-creation-of-vm"></a>VM oluşturma sırasında avantajı etkinleştirmek için Azure portal örnek:
+1. [Microsoft Azure Portal](https://portal.azure.com/) ziyaret edin
+1. Dönüştürmeyi uygulamak istediğiniz sanal makine sayfasını açın.
+1. Soldaki **yapılandırma** seçeneğine gidin. Lisanslama bölümünü görürsünüz. AHB dönüştürmesini etkinleştirmek için ' Evet ' radyo düğmesini işaretleyin ve onay onay kutusunu işaretleyin.
+![Oluşturmaktan sonra AHB yapılandırma dikey penceresi](./media/azure-hybrid-benefit/create-configuration-blade.png)
+
+
+>[!NOTE]
+> Bir RHEL veya SLES PAYG marketi görüntüsünün **özel bir anlık görüntüsünü** veya **PAYLAŞıLAN görüntüsünü (SIG)** oluşturduysanız, Azure hibrit avantajı ETKINLEŞTIRMEK için yalnızca Azure CLI kullanabilirsiniz. Bu, bilinen bir kısıtlamadır ve şu anda bu özelliği Azure portalında sağlamak için zaman çizelgesi bulunmamaktadır.
+
 
 
 ## <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Azure CLı 'de avantajı etkinleştirme ve devre dışı bırakma
@@ -115,7 +140,7 @@ Mevcut Kullandıkça Öde VM 'lerine Azure Hibrit Avantajı uygulamanın yanı s
 ## <a name="check-the-azure-hybrid-benefit-status-of-a-vm"></a>Bir sanal makinenin Azure Hibrit Avantajı durumunu denetleme
 Azure CLı kullanarak veya Azure Instance Metadata Service kullanarak bir sanal makinenin Azure Hibrit Avantajı durumunu görüntüleyebilirsiniz.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 `az vm get-instance-view`Bu amaçla komutunu kullanabilirsiniz. `licenseType`Yanıttaki bir alanı bulun. `licenseType`Alan varsa ve değer `RHEL_BYOS` veya Ise `SLES_BYOS` , sanal makinenizin avantajı etkinleştirilmiştir.
 
@@ -184,7 +209,7 @@ Y: Hayır, bunu yapamazsınız. Ayrılmış örnekler şu anda RHEL ve SLES içi
 
 *S: RHEL görüntülerinde SQL Server için dağıtılan bir sanal makinede Azure Hibrit Avantajı kullanabilir miyim?*
 
-Y: Hayır, bunu yapamazsınız. Bunları desteklemeye yönelik bir plan yoktur.
+Y: Hayır, bunu yapamazsınız. Bu sanal makineleri desteklemeye yönelik bir plan yoktur.
  
 
 ## <a name="common-problems"></a>Sık karşılaşılan sorunlar

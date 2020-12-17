@@ -1,5 +1,5 @@
 ---
-title: Active Directory tümleştirme için kümeleri yapılandırma
+title: Azure Active Directory tümleştirme için kümeleri yapılandırma
 titleSuffix: Azure HDInsight
 description: Azure Active Directory Domain Services ve Kurumsal Güvenlik Paketi özelliğini kullanarak Active Directory ile tümleştirilmiş bir HDInsight kümesi ayarlamayı ve yapılandırmayı öğrenin.
 author: hrasheed-msft
@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 248d909e633607271aec7c2c9b8a373f111f7d98
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c5c5db892f417f2e2ef3fde3535d806d39342327
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031491"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631559"
 ---
-# <a name="configure-hdinsight-clusters-for-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Active Directory tümleştirme için HDInsight kümelerini yapılandırma
+# <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Azure Active Directory tümleştirme için HDInsight kümelerini yapılandırma
 
-Bu makalede, Kurumsal Güvenlik Paketi (ESP), Azure Active Directory Domain Services (Azure AD-DS) ve önceden var olan şirket içi Active Directory adlı bir özellik kullanarak Active Directory ile tümleştirilmiş bir HDInsight kümesi oluşturmayı ve yapılandırmayı öğreneceksiniz.
+Bu makalede, Azure Active Directory ile tümleştirilmiş bir HDInsight kümesi oluşturma ve yapılandırma sürecine bir Özet ve genel bakış sunulmaktadır. Bu tümleştirme, Kurumsal Güvenlik Paketi (ESP), Azure Active Directory Domain Services (Azure AD-DS) ve önceden mevcut şirket içi Active Directory adlı bir HDInsight özelliğini kullanır.
 
-Azure 'da bir etki alanı ayarlamaya ve yapılandırmaya yönelik bir öğretici ve bir ESP etkin küme oluşturma hakkında bilgi için bkz. [Azure HDInsight 'ta kurumsal güvenlik paketi kümeleri oluşturma ve yapılandırma](apache-domain-joined-create-configure-enterprise-security-cluster.md).
+Azure 'da bir etki alanı ayarlamaya ve yapılandırmaya ve ardından Şirket içi kullanıcıları eşitlemeye yönelik ayrıntılı bir adım adım öğretici için bkz. [Azure HDInsight 'ta kurumsal güvenlik paketi kümeleri oluşturma ve yapılandırma](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ## <a name="background"></a>Arka plan
 
@@ -33,12 +33,13 @@ Kurumsal Güvenlik Paketi (ESP), Azure HDInsight için Active Directory tümleş
 
 Bir ESP etkin HDInsight kümesi oluşturabilmeniz için birkaç önkoşul vardır:
 
+- Mevcut bir şirket içi Active Directory ve Azure Active Directory.
 - Azure AD-DS 'yi etkinleştirin.
 - Eşitlemenin tamamlandığından emin olmak için Azure AD-DS sistem durumunu kontrol edin.
 - Yönetilen bir kimlik oluşturun ve yetkilendirme yapın.
 - DNS ve ilgili sorunlar için ağ kurulumunu tamamen doldurun.
 
-Bu öğelerin her biri aşağıda ayrıntılı olarak ele alınacaktır.
+Bu öğelerin her biri aşağıda ayrıntılı olarak ele alınacaktır. Tüm bu adımları tamamlamaya yönelik bir anlatım için bkz. [Azure HDInsight 'ta kurumsal güvenlik paketi kümeleri oluşturma ve yapılandırma](apache-domain-joined-create-configure-enterprise-security-cluster.md).
 
 ### <a name="enable-azure-ad-ds"></a>Azure AD DS’yi etkinleştirme
 

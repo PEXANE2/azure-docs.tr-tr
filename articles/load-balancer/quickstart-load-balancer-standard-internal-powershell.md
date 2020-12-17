@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: e1fa97fb8a3dcae3a78ba0bc85cf59db2c167dea
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d2d266462cb119e4a803b0e1012f5dfbe94a4a6e
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696804"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630573"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -32,27 +32,16 @@ ms.locfileid: "94696804"
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Azure PowerShell yerel olarak veya Azure Cloud Shell yüklendi
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 PowerShell'i yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure PowerShell modülü 5.4.1 veya sonraki bir sürümünü gerektirir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız `Connect-AzAccount` Azure ile bir bağlantı oluşturmak için öğesini de çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
 Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun:
-
-* Adlandırılmış **Createıntlbqs-RG**.
-* **Eastus** konumunda.
+[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir kaynak grubu oluşturun.
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-
-New-AzResourceGroup -Name $rg -Location $loc
+New-AzResourceGroup -Name 'CreateIntLBQS-rg' -Location 'eastus'
 ```
 ---
 
@@ -61,418 +50,254 @@ New-AzResourceGroup -Name $rg -Location $loc
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
+
+## <a name="configure-virtual-network---standard"></a>Sanal ağ yapılandırma-standart
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Sanal ağ ve Azure savunma Konağı oluşturma
+Arka uç sanal makineleri için bir sanal ağ oluşturun.
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun:
+Sanal ağınıza gelen bağlantıları tanımlamak için bir ağ güvenlik grubu oluşturun.
 
-* **Myvnet** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Mybackendsubnet** adlı alt ağ.
-* **10.0.0.0/16** sanal ağı.
-* Alt ağ **10.0.0.0/24**.
-* **AzureBastionSubnet** adlı alt ağ.
-* Alt ağ **10.0.1.0/24**.
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Sanal ağ, ağ güvenlik grubu ve savunma Konağı oluşturma
+
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun.
+
+* [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir ağ güvenlik grubu kuralı oluşturun.
+
+* [Yeni aztasyon](/powershell/module/az.network/new-azbastion)Ile bir Azure savunma ana bilgisayarı oluşturun.
+
+* [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun.
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$sub = 'myBackendSubnet'
-$spfx = '10.0.0.0/24'
-$vnm = 'myVNet'
-$vpfx = '10.0.0.0/16'
-$bsub = 'AzureBastionSubnet'
-$bpfx = '10.0.1.0/24'
-
-
 ## Create backend subnet config ##
-$subnetConfig = 
-New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
+$subnet = @{
+    Name = 'myBackendSubnet'
+    AddressPrefix = '10.1.0.0/24'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-## Create Azure Bastion subnet 
-$bassubConfig =
-New-AzVirtualNetworkSubnetConfig -Name $bsub -AddressPrefix $bpfx
+## Create Azure Bastion subnet. ##
+$bastsubnet = @{
+    Name = 'AzureBastionSubnet' 
+    AddressPrefix = '10.1.1.0/24'
+}
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig @bastsubnet
 
 ## Create the virtual network ##
-$vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubConfig
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig,$bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
+## Create public IP address for bastion host. ##
+$ip = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @ip
+
+## Create bastion host ##
+$bastion = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @bastion -AsJob
+
+## Create rule for network security group and place in variable. ##
+$nsgrule = @{
+    Name = 'myNSGRuleHTTP'
+    Description = 'Allow HTTP'
+    Protocol = '*'
+    SourcePortRange = '*'
+    DestinationPortRange = '80'
+    SourceAddressPrefix = 'Internet'
+    DestinationAddressPrefix = '*'
+    Access = 'Allow'
+    Priority = '2000'
+    Direction = 'Inbound'
+}
+$rule1 = New-AzNetworkSecurityRuleConfig @nsgrule
+
+## Create network security group ##
+$nsg = @{
+    Name = 'myNSG'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    SecurityRules = $rule1
+}
+New-AzNetworkSecurityGroup @nsg
+
 ```
-
-### <a name="create-public-ip-address-for-azure-bastion-host"></a>Azure savunma ana bilgisayarı için genel IP adresi oluşturma
-
-[Yeni-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) kullanarak savunma konağı için genel bir IP adresi oluşturun:
-
-* Adlandırılmış **Mypubliciption**
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Ayırma yöntemi **statik**.
-* **Standart** SKU.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$ipn = 'myPublicIPBastion'
-$all = 'static'
-$sku = 'standard'
-
-$publicip = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -AllocationMethod $all -Sku $sku
-```
-
-### <a name="create-azure-bastion-host"></a>Azure savunma Konağı oluşturma
-
-Bir savunma konağı oluşturmak için [New-aztion](/powershell/module/az.network/new-azbastion) kullanın:
-
-* Adlandırılmış **Myeltion**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Genel IP adresi **Mypubliciption** ile ilişkilendirildi.
-
-```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'CreateIntLBQS-rg'
-$nmn = 'myBastion'
-
-## Command to create bastion host. $vnet and $publicip are from the previous steps ##
-New-AzBastion -ResourceGroupName $rg -Name $nmn -PublicIpAddress $publicip -VirtualNetwork $vnet
-
-```
-
-Azure savunma konağının dağıtılması birkaç dakika sürebilir.
-
-### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
-Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu oluşturun.
-
-#### <a name="create-a-network-security-group-rule-for-port-80"></a>80 numaralı bağlantı noktası için ağ güvenlik grubu kuralı oluşturma
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir ağ güvenlik grubu kuralı oluşturun:
-
-* **Mynsgrutahttp** adında.
-* HTTP 'ye **Izin ver** açıklaması.
-* **Allow** erişimi.
-* Protokol **(*)**.
-* Yön **gelen**.
-* Öncelik **2000**.
-* **Internet** kaynağı.
-* Kaynak bağlantı noktası aralığı **(*)**.
-* Hedef adres ön eki **(*)**.
-* Hedef **bağlantı noktası 80**.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleHTTP'
-$des = 'Allow HTTP'
-$acc = 'Allow'
-$pro = '*'
-$dir = 'Inbound'
-$pri = '2000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '80'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
-
-#### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
-
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun:
-
-* **Mynsg** adlı adlandırılmış.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Bir değişkende depolanan önceki adımlarda oluşturulan güvenlik kuralları.
-
-```azurepowershell
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nmn = 'myNSG'
-
-## $rule1 contains configuration information from the previous steps. ##
-$nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1
-```
-
 ## <a name="create-standard-load-balancer"></a>Standart yük dengeleyici oluştur
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
 
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+* Ön uç IP havuzu için [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) ile bir ön uç IP 'si oluşturun. Bu IP, yük dengeleyicide gelen trafiği alır
 
-### <a name="create-frontend-ip"></a>Ön uç IP oluşturma
+* Yük dengeleyicinin ön uçınızdan gönderilen trafik için [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) ile arka uç adres havuzu oluşturun. Bu havuz, arka uç sanal makinelerinizin dağıtıldığı yerdir.
 
-[New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig)ile bir ön uç IP 'si oluşturun:
+* [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) ile arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması oluşturun.
 
-* **Myön uç** adı.
-* **10.0.0.4** özel IP adresi.
+* Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) ile bir yük dengeleyici kuralı oluşturun.
 
-```azurepowershell-interactive
-## Variables for the commands ##
-$fe = 'myFrontEnd'
-$rg = 'CreateIntLBQS-rg'
-$ip = '10.0.0.4'
+* [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile bir genel yük dengeleyici oluşturun.
 
-## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
-$feip = 
-New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vnet.subnets[0].Id
-```
-
-### <a name="configure-back-end-address-pool"></a>Arka uç adres havuzunu yapılandırma
-
-[New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)ile arka uç adres havuzu oluşturun: 
-
-* **Mybackendpool** adlı adlandırılmış.
-* VM 'Ler, kalan adımlarda bu arka uç havuzuna ekler.
 
 ```azurepowershell-interactive
-## Variable for the command ##
-$be = 'myBackEndPool'
+## Place virtual network created in previous step into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreateIntLBQS-rg'
 
-$bepool = 
-New-AzLoadBalancerBackendAddressPoolConfig -Name $be
-```
+## Create load balancer frontend configuration and place in variable. ##
+$lbip = @{
+    Name = 'myFrontEnd'
+    PrivateIpAddress = '10.1.0.4'
+    SubnetId = $vnet.subnets[0].Id
+}
+$feip = New-AzLoadBalancerFrontendIpConfig @lbip
 
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
 
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset -DisableOutboundSNAT
 
-[Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)ile bir sistem durumu araştırması oluşturun:
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus'
+    Sku = 'Standard'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
 
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$hp = 'myHealthProbe'
-$pro = 'http'
-$port = '80'
-$int = '360'
-$cnt = '5'
-
-$probe = 
-New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath / -IntervalInSeconds $int -ProbeCount $cnt
-```
-
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
-
-Yük dengeleyici kuralı şunları tanımlar:
-
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
-* Gerekli kaynak ve hedef bağlantı noktası. 
-
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig)ile bir yük dengeleyici kuralı oluşturun: 
-
-* Adlandırılmış **Myhttprule**
-* Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP**.
-* **15 dakikalık** boşta zaman aşımı.
-* TCP sıfırlamayı etkinleştirin.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbr = 'myHTTPRule'
-$pro = 'tcp'
-$port = '80'
-$idl = '15'
-
-## $feip and $bePool are the variables from previous steps. ##
-
-$rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
 >Arka uç havuzundaki sanal makinelerin, bu yapılandırmayla giden internet bağlantısı olmayacaktır. </br> Giden bağlantı sağlama hakkında daha fazla bilgi için bkz. </br> **[Azure’da giden bağlantılar](load-balancer-outbound-connections.md)**</br> Bağlantı sağlamaya yönelik seçenekler: </br> **[Yalnızca giden yük dengeleyici yapılandırması](egress-only.md)** </br> **[Sanal ağ NAT nedir?](../virtual-network/nat-overview.md)**
 
+## <a name="create-virtual-machines---standard"></a>Sanal makine oluşturma-standart
 
-### <a name="create-load-balancer-resource"></a>Yük dengeleyici kaynağı oluştur
+Bu bölümde, yük dengeleyicinin arka uç havuzu için üç sanal makine oluşturacaksınız.
 
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile Iç yük dengeleyici oluşturma:
+* [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile üç ağ arabirimi oluşturun.
 
-* Adlandırılmış **Myloadbalancer**
-* **Eastus** içinde.
-* **Createıntlbqs-RG** kaynak grubunda.
+* VM 'Ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)ile bir Yönetici Kullanıcı adı ve parola ayarlayın.
 
-```azurepowershell-interactive
-## Variables for the command ##
-$lbn = 'myLoadBalancer'
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$sku = 'Standard'
-
-## $feip, $bepool, $probe, $rule are variables with configuration information from previous steps. ##
-
-$lb = 
-New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
-```
-
-### <a name="create-network-interfaces"></a>Ağ arabirimlerini oluşturma
-
-[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile üç ağ arabirimi oluşturun:
-
-#### <a name="vm-1"></a>VM 1
-
-* **MyNicVM1** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
+* Sanal makineleri şu şekilde oluşturun:
+    * [New-AzVM](/powershell/module/az.compute/new-azvm)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+    * [Set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)
+    * [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 ```azurepowershell-interactive
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nic1 = 'myNicVM1'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM1 ##
-$nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-2"></a>VM 2
-
-* **MyNicVM2** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nic2 = 'myNicVM2'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM2 ##
-$nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
-
-VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
-
-```azurepowershell
+# Set the administrator and password for the VMs. ##
 $cred = Get-Credential
+
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreateIntLBQS-rg'
+
+## Place the load balancer into a variable. ##
+$lb = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+}
+$bepool = Get-AzLoadBalancer @lb  | Get-AzLoadBalancerBackendAddressPoolConfig
+
+## Place the network security group into a variable. ##
+$nsg = Get-AzNetworkSecurityGroup -Name 'myNSG' -ResourceGroupName 'CreateIntLBQS-rg'
+
+## For loop with variable to create virtual machines for load balancer backend pool. ##
+for ($i=1; $i -le 3; $i++)
+{
+## Command to create network interface for VMs ##
+$nic = @{
+    Name = "myNicVM$i"
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    NetworkSecurityGroup = $nsg
+    LoadBalancerBackendAddressPool = $bepool
+}
+$nicVM = New-AzNetworkInterface @nic
+
+## Create a virtual machine configuration for VMs ##
+$vmsz = @{
+    VMName = "myVM$i"
+    VMSize = 'Standard_DS1_v2'  
+}
+$vmos = @{
+    ComputerName = "myVM$i"
+    Credential = $cred
+}
+$vmimage = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'    
+}
+$vmConfig = New-AzVMConfig @vmsz `
+    | Set-AzVMOperatingSystem @vmos -Windows `
+    | Set-AzVMSourceImage @vmimage `
+    | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine for VMs ##
+$vm = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    VM = $vmConfig
+    Zone = "$i"
+}
+New-AzVM @vm -AsJob
+}
+
 ```
 
-Sanal makineleri şu şekilde oluşturun:
-
-* [New-AzVM](/powershell/module/az.compute/new-azvm)
-* [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
-* [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
-* [Set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)
-* [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)
-
-
-#### <a name="vm1"></a>VM1
-
-* **MyVM1** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM1**.
-* Yük dengeleyici **Myloadbalancer**'a eklendi.
-* **Bölge 1**.
-* **Eastus** konumunda.
+Sanal makinelerin ve savunma konağının dağıtımları, PowerShell işleri olarak gönderilir. İşlerin durumunu görüntülemek için, [Get-Job](/powershell/module/microsoft.powershell.core/get-job)kullanın:
 
 ```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'CreateIntLBQS-rg'
-$vm = 'myVM1'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$zn = '1'
-$loc = 'eastus'
+Get-Job
 
-## Create a virtual machine configuration. $cred and $nicVM1 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM1.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
-```
-
-
-#### <a name="vm2"></a>VM2
-
-* **MyVM2** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM2**.
-* Yük dengeleyici **Myloadbalancer**'a eklendi.
-* **Bölge 2**.
-* **Eastus** konumunda.
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'CreateIntLBQS-rg'
-$vm = 'myVM2'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$zn = '2'
-$loc = 'eastus'
-
-## Create a virtual machine configuration. $cred and $nicVM2 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM2.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzBastion
+2      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
 
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-load-balancer-basic)
@@ -480,553 +305,373 @@ New-AzVM -ResourceGroupName $rg -Zone $zn -Location $loc -VM $vmConfig
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
-## <a name="configure-virtual-network"></a>Sanal ağ yapılandırma
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
+
+## <a name="configure-virtual-network---basic"></a>Sanal ağı yapılandırma-temel
 
 VM 'Leri dağıtmadan ve yük dengeleyicinizi test etmeden önce destekleyici sanal ağ kaynaklarını oluşturun.
 
-### <a name="create-a-virtual-network-and-azure-bastion-host"></a>Sanal ağ ve Azure savunma Konağı oluşturma
+Arka uç sanal makineleri için bir sanal ağ oluşturun.
 
-[New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun:
+Sanal ağınıza gelen bağlantıları tanımlamak için bir ağ güvenlik grubu oluşturun.
 
-* **Myvnet** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Mybackendsubnet** adlı alt ağ.
-* **10.0.0.0/16** sanal ağı.
-* Alt ağ **10.0.0.0/24**.
-* **AzureBastionSubnet** adlı alt ağ.
-* Alt ağ **10.0.1.0/24**.
+### <a name="create-virtual-network-network-security-group-and-bastion-host"></a>Sanal ağ, ağ güvenlik grubu ve savunma Konağı oluşturma
+
+* [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)ile bir sanal ağ oluşturun.
+
+* [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir ağ güvenlik grubu kuralı oluşturun.
+
+* [Yeni aztasyon](/powershell/module/az.network/new-azbastion)Ile bir Azure savunma ana bilgisayarı oluşturun.
+
+* [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun.
 
 ```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$sub = 'myBackendSubnet'
-$spfx = '10.0.0.0/24'
-$vnm = 'myVNet'
-$vpfx = '10.0.0.0/16'
-$bsub = 'AzureBastionSubnet'
-$bpfx = '10.0.1.0/24'
-
-
 ## Create backend subnet config ##
-$subnetConfig = 
-New-AzVirtualNetworkSubnetConfig -Name $sub -AddressPrefix $spfx
+$subnet = @{
+    Name = 'myBackendSubnet'
+    AddressPrefix = '10.1.0.0/24'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-## Create Azure Bastion subnet 
-$bassubConfig =
-New-AzVirtualNetworkSubnetConfig -Name $bsub -AddressPrefix $bpfx
+## Create Azure Bastion subnet. ##
+$bastsubnet = @{
+    Name = 'AzureBastionSubnet' 
+    AddressPrefix = '10.1.1.0/24'
+}
+$bastsubnetConfig = New-AzVirtualNetworkSubnetConfig @bastsubnet
 
 ## Create the virtual network ##
-$vnet = 
-New-AzVirtualNetwork -ResourceGroupName $rg -Location $loc -Name $vnm -AddressPrefix $vpfx -Subnet $subnetConfig,$bassubConfig
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig,$bastsubnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
+## Create public IP address for bastion host. ##
+$ip = @{
+    Name = 'myBastionIP'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Standard'
+    AllocationMethod = 'Static'
+}
+$publicip = New-AzPublicIpAddress @ip
+
+## Create bastion host ##
+$bastion = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Name = 'myBastion'
+    PublicIpAddress = $publicip
+    VirtualNetwork = $vnet
+}
+New-AzBastion @bastion -AsJob
+
+## Create rule for network security group and place in variable. ##
+$nsgrule = @{
+    Name = 'myNSGRuleHTTP'
+    Description = 'Allow HTTP'
+    Protocol = '*'
+    SourcePortRange = '*'
+    DestinationPortRange = '80'
+    SourceAddressPrefix = 'Internet'
+    DestinationAddressPrefix = '*'
+    Access = 'Allow'
+    Priority = '2000'
+    Direction = 'Inbound'
+}
+$rule1 = New-AzNetworkSecurityRuleConfig @nsgrule
+
+## Create network security group ##
+$nsg = @{
+    Name = 'myNSG'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    SecurityRules = $rule1
+}
+New-AzNetworkSecurityGroup @nsg
+
 ```
-
-### <a name="create-public-ip-address-for-azure-bastion-host"></a>Azure savunma ana bilgisayarı için genel IP adresi oluşturma
-
-[Yeni-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress) kullanarak savunma konağı için genel bir IP adresi oluşturun:
-
-* Adlandırılmış **Mypubliciption**
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Ayırma yöntemi **statik**.
-* **Standart** SKU.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$ipn = 'myPublicIPBastion'
-$all = 'static'
-$sku = 'standard'
-
-$publicip = 
-New-AzPublicIpAddress -ResourceGroupName $rg -Location $loc -Name $ipn -AllocationMethod $all -Sku $sku
-```
-
-### <a name="create-azure-bastion-host"></a>Azure savunma Konağı oluşturma
-
-Bir savunma konağı oluşturmak için [New-aztion](/powershell/module/az.network/new-azbastion) kullanın:
-
-* Adlandırılmış **Myeltion**.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Genel IP adresi **Mypubliciption** ile ilişkilendirildi.
-
-```azurepowershell-interactive
-## Variables for the commands ##
-$rg = 'CreateIntLBQS-rg'
-$nmn = 'myBastion'
-
-## Command to create bastion host. $vnet and $publicip are from the previous steps ##
-New-AzBastion -ResourceGroupName $rg -Name $nmn -PublicIpAddress $publicip -VirtualNetwork $vnet
-
-```
-
-Azure savunma konağının dağıtılması birkaç dakika sürebilir.
-
-
-### <a name="create-network-security-group"></a>Ağ güvenlik grubu oluşturma
-Sanal ağınıza gelen bağlantıları tanımlamak için ağ güvenlik grubu oluşturun.
-
-#### <a name="create-a-network-security-group-rule-for-port-80"></a>80 numaralı bağlantı noktası için ağ güvenlik grubu kuralı oluşturma
-[New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig)ile bir ağ güvenlik grubu kuralı oluşturun:
-
-* **Mynsgrutahttp** adında.
-* HTTP 'ye **Izin ver** açıklaması.
-* **Allow** erişimi.
-* Protokol **(*)**.
-* Yön **gelen**.
-* Öncelik **2000**.
-* **Internet** kaynağı.
-* Kaynak bağlantı noktası aralığı **(*)**.
-* Hedef adres ön eki **(*)**.
-* Hedef **bağlantı noktası 80**.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rnm = 'myNSGRuleHTTP'
-$des = 'Allow HTTP'
-$acc = 'Allow'
-$pro = '*'
-$dir = 'Inbound'
-$pri = '2000'
-$spfx = 'Internet'
-$spr = '*'
-$dpfx = '*'
-$dpr = '80'
-
-$rule1 = 
-New-AzNetworkSecurityRuleConfig -Name $rnm -Description $des -Access $acc -Protocol $pro -Direction $dir -Priority $pri -SourceAddressPrefix $spfx -SourcePortRange $spr -DestinationAddressPrefix $dpfx -DestinationPortRange $dpr
-```
-
-#### <a name="create-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
-
-[New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup)ile bir ağ güvenlik grubu oluşturun:
-
-* **Mynsg** adlı adlandırılmış.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Bir değişkende depolanan önceki adımlarda oluşturulan güvenlik kuralları.
-
-```azurepowershell
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nmn = 'myNSG'
-
-## $rule1 and $rule2 are variables with configuration information from the previous steps. ##
-$nsg = 
-New-AzNetworkSecurityGroup -ResourceGroupName $rg -Location $loc -Name $nmn -SecurityRules $rule1
-```
-
 ## <a name="create-basic-load-balancer"></a>Temel yük dengeleyici oluşturma
 
 Bu bölümde yük dengeleyicinin aşağıdaki bileşenlerini nasıl oluşturabileceğiniz ve yapılandırabileceğiniz açıklanmaktadır:
 
-  * Yük dengeleyicide gelen ağ trafiğini alan bir ön uç IP Havuzu.
-  * Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği bir arka uç IP Havuzu.
-  * Arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması.
-  * Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan bir yük dengeleyici kuralı.
+* Ön uç IP havuzu için [New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) ile bir ön uç IP 'si oluşturun. Bu IP, yük dengeleyicide gelen trafiği alır
 
-### <a name="create-frontend-ip"></a>Ön uç IP oluşturma
+* Yük dengeleyicinin ön uçınızdan gönderilen trafik için [New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) ile arka uç adres havuzu oluşturun. Bu havuz, arka uç sanal makinelerinizin dağıtıldığı yerdir.
 
-[New-Azloadbalancerfrontendıpconfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig)ile bir ön uç IP 'si oluşturun:
+* [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) ile arka uç sanal makine örneklerinin sistem durumunu belirleyen bir sistem durumu araştırması oluşturun.
 
-* **Myön uç** adı.
-* **10.0.0.4** özel IP adresi.
+* Trafiğin VM 'lere nasıl dağıtıldığını tanımlayan [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) ile bir yük dengeleyici kuralı oluşturun.
+
+* [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile bir genel yük dengeleyici oluşturun.
 
 ```azurepowershell-interactive
-## Variables for the commands ##
-$fe = 'myFrontEnd'
-$rg = 'CreateIntLBQS-rg'
-$ip = '10.0.0.4'
+## Place virtual network created in previous step into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreateIntLBQS-rg'
 
-## Command to create frontend configuration. The variable $vnet is from the previous commands. ##
-$feip = 
-New-AzLoadBalancerFrontendIpConfig -Name $fe -PrivateIpAddress $ip -SubnetId $vnet.subnets[0].Id
+## Create load balancer frontend configuration and place in variable. ##
+$lbip = @{
+    Name = 'myFrontEnd'
+    PrivateIpAddress = '10.1.0.4'
+    SubnetId = $vnet.subnets[0].Id
+}
+$feip = New-AzLoadBalancerFrontendIpConfig @lbip
+
+## Create load balancer frontend configuration and place in variable. ##
+$feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
+
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus'
+    Sku = 'Basic'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
 
-### <a name="configure-back-end-address-pool"></a>Arka uç adres havuzunu yapılandırma
+## <a name="create-virtual-machines---basic"></a>Sanal makineler oluşturma-temel
 
-[New-Azloadbalancerbackendadddresspoolconfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig)ile arka uç adres havuzu oluşturun: 
+Bu bölümde, yük dengeleyicinin arka uç havuzu için sanal makineler oluşturacaksınız.
 
-* **Mybackendpool** adlı adlandırılmış.
-* VM 'Ler, kalan adımlarda bu arka uç havuzuna ekler.
+* [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile üç ağ arabirimi oluşturun.
+
+* VM 'Ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)ile bir Yönetici Kullanıcı adı ve parola ayarlayın.
+
+* Sanal makineler için bir kullanılabilirlik kümesi oluşturmak üzere [New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) kullanın.
+
+* Sanal makineleri şu şekilde oluşturun:
+    * [New-AzVM](/powershell/module/az.compute/new-azvm)
+    * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
+    * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
+    * [Set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)
+    * [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
 ```azurepowershell-interactive
-## Variable for the command ##
-$be = 'myBackEndPool'
-
-$bepool = 
-New-AzLoadBalancerBackendAddressPoolConfig -Name $be
-```
-
-### <a name="create-the-health-probe"></a>Durum araştırması oluşturma
-
-Bir sistem durumu araştırması, tüm sanal makine örneklerini denetleyerek ağ trafiği gönderebilecekleri emin olmanızı sağlar. 
-
-Başarısız araştırma denetimine sahip bir sanal makine yük dengeleyiciden kaldırılır. Hata çözüldüğünde sanal makine yük dengeleyiciye geri eklenir.
-
-[Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig)ile bir sistem durumu araştırması oluşturun:
-
-* Sanal makinelerin sistem durumunu izler.
-* Adlandırılmış **Myhealtharaştırma**.
-* Protokol **TCP**.
-* İzleme **bağlantı noktası 80**.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$hp = 'myHealthProbe'
-$pro = 'http'
-$port = '80'
-$int = '360'
-$cnt = '5'
-
-$probe = 
-New-AzLoadBalancerProbeConfig -Name $hp -Protocol $pro -Port $port -RequestPath / -IntervalInSeconds $int -ProbeCount $cnt
-```
-
-### <a name="create-the-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
-
-Yük dengeleyici kuralı şunları tanımlar:
-
-* Gelen trafik için ön uç IP yapılandırması.
-* Trafiği almak için arka uç IP Havuzu.
-* Gerekli kaynak ve hedef bağlantı noktası. 
-
-[Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig)ile bir yük dengeleyici kuralı oluşturun: 
-
-* Adlandırılmış **Myhttprule**
-* Ön **uç** havuzundaki **80 numaralı bağlantı noktası** dinleniyor.
-* **80 numaralı bağlantı noktasını** kullanan **mybackendpool** arka uç adres havuzuna yük dengeli ağ trafiği gönderiliyor. 
-* Sistem durumu araştırması **Myhealtharaştırması** kullanılıyor.
-* Protokol **TCP**.
-* **15 dakikalık** boşta zaman aşımı.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbr = 'myHTTPRule'
-$pro = 'tcp'
-$port = '80'
-$idl = '15'
-
-## $feip and $bePool are the variables from previous steps. ##
-
-$rule = 
-New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -IdleTimeoutInMinutes $idl
-```
-
-### <a name="create-load-balancer-resource"></a>Yük dengeleyici kaynağı oluştur
-
-[New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer)ile ortak yük dengeleyici oluşturma:
-
-* Adlandırılmış **Myloadbalancer**
-* **Eastus** içinde.
-* **Createıntlbqs-RG** kaynak grubunda.
-
-```azurepowershell-interactive
-## Variables for the command ##
-$lbn = 'myLoadBalancer'
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$sku = 'Basic'
-
-## $feip, $bepool, $probe, $rule are variables with configuration information from previous steps. ##
-
-$lb = 
-New-AzLoadBalancer -ResourceGroupName $rg -Name $lbn -SKU $sku -Location $loc -FrontendIpConfiguration $feip -BackendAddressPool $bepool -Probe $probe -LoadBalancingRule $rule
-```
-
-### <a name="create-network-interfaces"></a>Ağ arabirimlerini oluşturma
-
-[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile üç ağ arabirimi oluşturun:
-
-#### <a name="vm-1"></a>VM 1
-
-* **MyNicVM1** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nic1 = 'myNicVM1'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM1 ##
-$nicVM1 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-#### <a name="vm-2"></a>VM 2
-
-* **MyNicVM2** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-* **Mybackendpool** Içindeki **myloadbalancer** yük dengeleyiciye eklendi.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nic2 = 'myNicVM2'
-$vnt = 'myVNet'
-$lb = 'myLoadBalancer'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get load balancer configuration
-$bepool = 
-Get-AzLoadBalancer -Name $lb -ResourceGroupName $rg | Get-AzLoadBalancerBackendAddressPoolConfig
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for VM2 ##
-$nicVM2 = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBalancerBackendAddressPool $bepool -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
-### <a name="create-availability-set-for-virtual-machines"></a>Sanal makineler için kullanılabilirlik kümesi oluştur
-
-[New-AzAvailabilitySet](/powershell/module/az.compute/new-azvm) kullanarak sanal makineler için bir kullanılabilirlik kümesi oluşturun:
-
-* **MyAvSet** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-
-```azurepowershell-interactive
-## Variables used for the command. ##
-$rg = 'CreateIntLBQS-rg'
-$avs = 'myAvSet'
-$loc = 'eastus'
-
-New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
-```
-
-### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
-
-VM’ler için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
-
-```azurepowershell
+# Set the administrator and password for the VMs. ##
 $cred = Get-Credential
+
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreateIntLBQS-rg'
+
+## Place the load balancer into a variable. ##
+$lb = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+}
+$bepool = Get-AzLoadBalancer @lb  | Get-AzLoadBalancerBackendAddressPoolConfig
+
+## Place the network security group into a variable. ##
+$nsg = Get-AzNetworkSecurityGroup -Name 'myNSG' -ResourceGroupName 'CreateIntLBQS-rg'
+
+## Create availability set for the virtual machines. ##
+$set = @{
+    Name = 'myAvailabilitySet'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Sku = 'Aligned'
+    PlatformFaultDomainCount = '2'
+    PlatformUpdateDomainCount =  '2'
+}
+$avs = New-AzAvailabilitySet @set
+
+## For loop with variable to create virtual machines. ##
+for ($i=1; $i -le 3; $i++)
+{
+## Command to create network interface for VMs ##
+$nic = @{
+    Name = "myNicVM$i"
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    NetworkSecurityGroup = $nsg
+    LoadBalancerBackendAddressPool = $bepool
+}
+$nicVM = New-AzNetworkInterface @nic
+
+## Create a virtual machine configuration for VMs ##
+$vmsz = @{
+    VMName = "myVM$i"
+    VMSize = 'Standard_DS1_v2'
+    AvailabilitySetId = $avs.Id   
+}
+$vmos = @{
+    ComputerName = "myVM$i"
+    Credential = $cred
+}
+$vmimage = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'    
+}
+$vmConfig = New-AzVMConfig @vmsz `
+    | Set-AzVMOperatingSystem @vmos -Windows `
+    | Set-AzVMSourceImage @vmimage `
+    | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine for VMs ##
+$vm = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    VM = $vmConfig
+}
+New-AzVM @vm -AsJob
+}
+
 ```
 
-Sanal makineleri şu şekilde oluşturun:
-
-* [New-AzVM](/powershell/module/az.compute/new-azvm)
-* [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
-* [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
-* [Set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)
-* [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)
-
-
-#### <a name="vm1"></a>VM1
-
-* **MyVM1** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM1**.
-* Yük dengeleyici **Myloadbalancer**'a eklendi.
-* **Eastus** konumunda.
-* **MyAvSet** kullanılabilirlik kümesinde.
+Sanal makinelerin ve savunma konağının dağıtımları, PowerShell işleri olarak gönderilir. İşlerin durumunu görüntülemek için, [Get-Job](/powershell/module/microsoft.powershell.core/get-job)kullanın:
 
 ```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'CreateIntLBQS-rg'
-$vm = 'myVM1'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
-$avs = 'myAvSet'
+Get-Job
 
-## Create a virtual machine configuration. $cred and $nicVM1 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM1.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetName $avs
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+1      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzBastion
+2      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+3      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
+4      Long Running O… AzureLongRunni… Completed     True            localhost            New-AzVM
 ```
-
-
-#### <a name="vm2"></a>VM2
-
-* **MyVM2** adlı.
-* **Createıntlbqs-RG** kaynak grubunda.
-* Ağ arabirimine bağlı **myNicVM2**.
-* Yük dengeleyici **Myloadbalancer**'a eklendi.
-* **Eastus** konumunda.
-* **MyAvSet** kullanılabilirlik kümesinde.
-
-```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'CreateIntLBQS-rg'
-$vm = 'myVM2'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
-$avs = 'myAvSet'
-
-## Create a virtual machine configuration. $cred and $nicVM2 are variables with configuration from the previous steps. ##
-
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicVM2.Id
-
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig -AvailabilitySetName $avs
-```
-
-Üç VM 'yi oluşturmak ve yapılandırmak birkaç dakika sürer.
 
 ---
 
 ## <a name="install-iis"></a>IIS yükleme
 
-Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](/powershell/module/az.compute/set-azvmextension?view=latest) kullanın. 
+Özel Betik uzantısını yüklemek için [set-Azvmexgerkomutunu](/powershell/module/az.compute/set-azvmextension) kullanın. 
 
-Uzantı, IIS Web sunucusunu yüklemek için PowerShell Add-WindowsFeature Web-Server çalıştırır ve ardından VM 'nin ana bilgisayar adını göstermek için Default.htm sayfasını güncelleştirir:
+Uzantı, IIS web sunucusunu yüklemek için `PowerShell Add-WindowsFeature Web-Server` komutunu çalıştırır ve ardından VM’nin ana bilgisayar adını göstermek için Default.htm sayfasını güncelleştirir:
 
-### <a name="vm1"></a>VM1 
-
-```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'CreateIntLBQS-rg'
-$enm = 'IIS'
-$vmn = 'myVM1'
-$loc = 'eastus'
-$pub = 'Microsoft.Compute'
-$ext = 'CustomScriptExtension'
-$typ = '1.8'
-
-Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
-```
-
-### <a name="vm2"></a>VM2 
+> [!IMPORTANT]
+> Devam etmeden önce sanal makine dağıtımlarının önceki adımlardan tamamlandığından emin olun.  `Get-Job`Sanal makine dağıtım işlerinin durumunu denetlemek için kullanın.
 
 ```azurepowershell-interactive
-## Variables for command. ##
-$rg = 'CreateIntLBQS-rg'
-$enm = 'IIS'
-$vmn = 'myVM2'
-$loc = 'eastus'
-$pub = 'Microsoft.Compute'
-$ext = 'CustomScriptExtension'
-$typ = '1.8'
-
-Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Location $loc -Publisher $pub -ExtensionType $ext -TypeHandlerVersion $typ -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+## For loop with variable to install custom script extension on virtual machines. ##
+for ($i=1; $i -le 3; $i++)
+{
+$ext = @{
+    Publisher = 'Microsoft.Compute'
+    ExtensionType = 'CustomScriptExtension'
+    ExtensionName = 'IIS'
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    VMName = "myVM$i"
+    Location = 'eastus'
+    TypeHandlerVersion = '1.8'
+    SettingString = '{"commandToExecute":"powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path \"C:\\inetpub\\wwwroot\\Default.htm\" -Value $($env:computername)"}'
+}
+Set-AzVMExtension @ext -AsJob
+}
 ```
+
+Uzantılar, PowerShell işleri olarak dağıtılır. Yükleme işlerinin durumunu görüntülemek için [Get-Job](/powershell/module/microsoft.powershell.core/get-job)kullanın:
+
+
+```azurepowershell-interactive
+Get-Job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+8      Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
+9      Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
+10     Long Running O… AzureLongRunni… Running       True            localhost            Set-AzVMExtension
+```
+
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-### <a name="create-network-interface"></a>Ağ arabirimi oluştur
-
-[New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)ile bir ağ arabirimi oluşturun:
-
-#### <a name="mytestvm"></a>myTestVM
-
-* **Mynictestvm** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Eastus** konumunda.
-* Sanal ağ **\** sanal ağı 'nda.
-* Alt ağda **Mybackendsubnet**.
-* Ağ güvenlik grubu ' nda, **Mynsg**.
-
-```azurepowershell-interactive
-## Variables for command ##
-$rg = 'CreateIntLBQS-rg'
-$loc = 'eastus'
-$nic1 = 'myNicTestVM'
-$vnt = 'myVNet'
-$ngn = 'myNSG'
-
-## Command to get virtual network configuration. ##
-$vnet = 
-Get-AzVirtualNetwork -Name $vnt -ResourceGroupName $rg
-
-## Command to get network security group configuration ##
-$nsg = 
-Get-AzNetworkSecurityGroup -Name $ngn -ResourceGroupName $rg
-
-## Command to create network interface for myTestVM ##
-$nicTestVM = 
-New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -NetworkSecurityGroup $nsg -Subnet $vnet.Subnets[0]
-```
-
 ### <a name="create-virtual-machine"></a>Sanal makine oluşturma
-
-VM için [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) ile bir yönetici kullanıcı adı ve parola ayarlayın:
-
-```azurepowershell
-$cred = Get-Credential
-```
 
 Sanal makineyi şu şekilde oluşturun:
 
+* [New-Aznetworkınterface](/powershell/module/az.network/new-aznetworkinterface)
 * [New-AzVM](/powershell/module/az.compute/new-azvm)
 * [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig)
 * [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem)
 * [Set-Azvmsourceımage](/powershell/module/az.compute/set-azvmsourceimage)
 * [Add-Azvmnetworkınterface](/powershell/module/az.compute/add-azvmnetworkinterface)
 
-
-#### <a name="mytestvm"></a>myTestVM
-
-* **Mytestvm** adında.
-* **Createıntlbqs-RG** kaynak grubunda.
-* **Mynictestvm** ağ arabirimine eklendi.
-* **Eastus** konumunda.
-
 ```azurepowershell-interactive
-## Variables used for command. ##
-$rg = 'CreateIntLBQS-rg'
-$vm = 'myTestVM'
-$siz = 'Standard_DS1_v2'
-$pub = 'MicrosoftWindowsServer'
-$off = 'WindowsServer'
-$sku = '2019-Datacenter'
-$ver = 'latest'
-$loc = 'eastus'
+# Set the administrator and password for the VM. ##
+$cred = Get-Credential
 
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreateIntLBQS-rg'
 
-## Create a virtual machine configuration. $cred and $nicTestVM are variables with configuration from the previous steps. ##
+## Place the network security group into a variable. ##
+$nsg = Get-AzNetworkSecurityGroup -Name 'myNSG' -ResourceGroupName 'CreateIntLBQS-rg'
 
-$vmConfig = 
-New-AzVMConfig -VMName $vm -VMSize $siz | Set-AzVMOperatingSystem -Windows -ComputerName $vm -Credential $cred | Set-AzVMSourceImage -PublisherName $pub -Offer WindowsServer -Skus $sku -Version $ver | Add-AzVMNetworkInterface -Id $nicTestVM.Id
+## Command to create network interface for VM ##
+$nic = @{
+    Name = "myNicTestVM"
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    Subnet = $vnet.Subnets[0]
+    NetworkSecurityGroup = $nsg
+}
+$nicVM = New-AzNetworkInterface @nic
 
-## Create the virtual machine ##
-New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
+## Create a virtual machine configuration for VMs ##
+$vmsz = @{
+    VMName = "myTestVM"
+    VMSize = 'Standard_DS1_v2' 
+}
+$vmos = @{
+    ComputerName = "myTestVM"
+    Credential = $cred
+}
+$vmimage = @{
+    PublisherName = 'MicrosoftWindowsServer'
+    Offer = 'WindowsServer'
+    Skus = '2019-Datacenter'
+    Version = 'latest'    
+}
+$vmConfig = New-AzVMConfig @vmsz `
+    | Set-AzVMOperatingSystem @vmos -Windows `
+    | Set-AzVMSourceImage @vmimage `
+    | Add-AzVMNetworkInterface -Id $nicVM.Id
+
+## Create the virtual machine for VMs ##
+$vm = @{
+    ResourceGroupName = 'CreateIntLBQS-rg'
+    Location = 'eastus'
+    VM = $vmConfig
+}
+New-AzVM @vm
+
 ```
 
 ### <a name="test"></a>Test etme
@@ -1056,21 +701,18 @@ Yük dengeleyicinin trafiği üç VM 'ye dağıtmasını görmek için, her bir 
 Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, yük dengeleyiciyi ve kalan kaynakları kaldırabilirsiniz.
 
 ```azurepowershell-interactive
-## Variable for command. ##
-$rg = 'CreateIntLBQS-rg'
-
-Remove-AzResourceGroup -Name $rg
+Remove-AzResourceGroup -Name 'CreateIntLBQS-rg'
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta
+Bu hızlı başlangıçta:
 
 * Standart veya temel bir iç yük dengeleyici oluşturdunuz
 * Bağlı sanal makineler. 
 * Yük dengeleyici trafik kuralı ve sistem durumu araştırması yapılandırıldı.
 * Yük dengeleyici test edildi.
 
-Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin..
+Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin:
 > [!div class="nextstepaction"]
 > [Azure Load Balancer nedir?](load-balancer-overview.md)

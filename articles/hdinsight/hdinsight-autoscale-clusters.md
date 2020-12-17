@@ -1,30 +1,29 @@
 ---
-title: Azure HDInsight kümelerini otomatik ölçeklendirme ölçeği
-description: Apache Hadoop kümelerini otomatik olarak ölçeklendirmek için Azure HDInsight otomatik ölçeklendirme özelliğini kullanın.
+title: Azure HDInsight kümelerini otomatik olarak ölçeklendirme
+description: Azure HDInsight kümelerini bir zamanlamaya veya performans ölçümlerine göre otomatik olarak ölçeklendirmek için otomatik ölçeklendirme özelliğini kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: contperf-fy21q1
-ms.date: 09/14/2020
-ms.openlocfilehash: 09e4412128a3b13abfa91bf0c128372b30b3e686
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.date: 12/14/2020
+ms.openlocfilehash: 2b23b4256e79723ce0b5edafd59186dc345eb791
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033145"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629264"
 ---
-# <a name="autoscale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik ölçeklendirme
+# <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight kümelerini otomatik olarak ölçeklendirme
 
-Azure HDInsight 'ın ücretsiz otomatik ölçeklendirme özelliği, daha önce ayarlanan ölçütlere göre kümenizdeki çalışan düğümlerinin sayısını otomatik olarak artırabilir veya azaltabilir. Küme oluşturma sırasında en az ve en fazla düğüm sayısını ayarlarsınız, bir gün-saat zamanlaması veya belirli performans ölçümlerini kullanarak ölçekleme ölçütlerini oluşturun ve HDInsight platformu Rest 'i yapar.
+Azure HDInsight 'ın ücretsiz otomatik ölçeklendirme özelliği, daha önce ayarlanan ölçütlere göre kümenizdeki çalışan düğümlerinin sayısını otomatik olarak artırabilir veya azaltabilir. Otomatik Ölçeklendirme özelliği, performans ölçümlerine veya ölçek artırma ve ölçek azaltma işlemlerine göre önceden ayarlanmış limitlerin içindeki düğüm sayısını ölçeklendirerek çalışır.
 
 ## <a name="how-it-works"></a>Nasıl çalışır?
 
-Otomatik Ölçeklendirme özelliği, ölçeklendirme olaylarını tetiklemek için iki tür koşul kullanır: çeşitli küme performansı ölçümleri ( *Yük tabanlı ölçeklendirme* olarak adlandırılır) ve zaman tabanlı tetikleyiciler ( *zamanlama tabanlı ölçeklendirme* olarak adlandırılır). Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için, kümenizdeki düğüm sayısını sizin ayarladığınız bir Aralık içinde değiştirir. Zamanlama tabanlı ölçeklendirme, belirli tarih ve saatlerle ilişkilendirdiğiniz işlemlere göre kümenizdeki düğüm sayısını değiştirir.
+Otomatik Ölçeklendirme özelliği, ölçeklendirme olaylarını tetiklemek için iki tür koşul kullanır: çeşitli küme performansı ölçümleri ( *Yük tabanlı ölçeklendirme* olarak adlandırılır) ve zaman tabanlı tetikleyiciler ( *zamanlama tabanlı ölçeklendirme* olarak adlandırılır). Yük tabanlı ölçeklendirme, en iyi CPU kullanımını sağlamak ve çalışan maliyeti en aza indirmek için, kümenizdeki düğüm sayısını sizin ayarladığınız bir Aralık içinde değiştirir. Zamanlama tabanlı ölçeklendirme, ölçek büyütme ve azaltma işlemlerinin bir zamanlaması temelinde kümenizdeki düğüm sayısını değiştirir.
 
 Aşağıdaki videoda, otomatik ölçeklendirmeyi çözen zorlukları ve HDInsight ile maliyetleri denetlemenize nasıl yardımcı olabilecek hakkında genel bir bakış sunulmaktadır.
-
 
 > [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
@@ -133,7 +132,7 @@ Azure portal kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi 
 
 #### <a name="load-based-autoscaling"></a>Yük tabanlı otomatik ölçeklendirme
 
-`autoscale` `computeProfile`  >  `workernode` Özellikler ile bölüme bir düğüm ekleyerek `minInstanceCount` ve `maxInstanceCount` aşağıdaki JSON kod parçacığında gösterildiği gibi, Azure Resource Manager şablonu yük tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz. Tüm Resource Manager şablonu için bkz. [hızlı başlangıç şablonu: Loadbased otomatik ölçeklendirme özelliği etkinken Spark kümesi dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
+`autoscale` `computeProfile`  >  `workernode` Özellikler ile bölüme bir düğüm ekleyerek `minInstanceCount` ve `maxInstanceCount` aşağıdaki JSON kod parçacığında gösterildiği gibi, Azure Resource Manager şablonu yük tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz. Tam bir Kaynak Yöneticisi Şablon için bkz. [hızlı başlangıç şablonu: yük tabanlı otomatik ölçeklendirme etkinken Spark kümesi dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased).
 
 ```json
 {
@@ -161,7 +160,7 @@ Azure portal kullanarak HDInsight kümesi oluşturma hakkında daha fazla bilgi 
 
 #### <a name="schedule-based-autoscaling"></a>Zamanlama tabanlı otomatik ölçeklendirme
 
-Bölüme bir düğüm ekleyerek bir Azure Resource Manager şablonu zamanlama tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz `autoscale` `computeProfile`  >  `workernode` . `autoscale`Düğüm, `recurrence` ' a sahip olan `timezone` ve `schedule` değişikliğin ne zaman gerçekleştireceğinizi açıklayan bir içerir. Tam bir Resource Manager şablonu için bkz. [zamanlama tabanlı otomatik ölçeklendirme etkinken Spark kümesini dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
+Bölüme bir düğüm ekleyerek bir Azure Resource Manager şablonu zamanlama tabanlı otomatik ölçeklendirmeyle bir HDInsight kümesi oluşturabilirsiniz `autoscale` `computeProfile`  >  `workernode` . `autoscale`Düğüm, `recurrence` ' a sahip olan `timezone` ve `schedule` değişikliğin ne zaman gerçekleştireceğinizi açıklayan bir içerir. Tam bir Kaynak Yöneticisi şablonu için bkz. [zamanlama tabanlı otomatik ölçeklendirme etkinken Spark kümesini dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased).
 
 ```json
 {

@@ -86,8 +86,8 @@
                 - name: SQL betiği
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: Eşleme Veri Akışı
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Veri Akışı
+                  href: concepts-data-flow-overview.md
         - name: Bakım zamanlaması
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Kaynak denetimi
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Veri akışları
           items:
-            - name: Veri akışını eşlemeye genel bakış
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Veri akışına genel bakış
+              href: concepts-data-flow-overview.md
             - name: Hata ayıklama modu
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Schema Drift

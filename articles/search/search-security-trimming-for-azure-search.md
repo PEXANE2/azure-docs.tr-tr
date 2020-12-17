@@ -1,19 +1,19 @@
 ---
 title: Sonuçları kırpma için güvenlik filtreleri
 titleSuffix: Azure Cognitive Search
-description: Güvenlik filtrelerini ve Kullanıcı kimliklerini kullanarak Azure Bilişsel Arama arama sonuçları için belge düzeyinde güvenlik ayrıcalıkları.
+description: Azure Bilişsel Arama arama sonuçları, güvenlik filtrelerini ve Kullanıcı kimliklerini kullanarak belge düzeyinde güvenlik ayrıcalıkları uygulamayı öğrenin.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/04/2020
-ms.openlocfilehash: 8562fd1afaa01e362bd6d95fd4dcf90cf3145c5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/16/2020
+ms.openlocfilehash: 8bd162fcf2011d2ccce716564763e7f54f19ff69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88928532"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631812"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama sonuçları kırpma için güvenlik filtreleri
 
@@ -32,7 +32,7 @@ Bu makalede, aşağıdaki adımları kullanarak güvenlik filtrelemeyi nasıl ge
 >[!NOTE]
 > Asıl tanımlayıcıları alma işlemi bu belgede kapsanmıyor. Bunu kimlik hizmeti sağlayıcınızdan almalısınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makalede bir [Azure aboneliğiniz](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F), bir[Azure bilişsel arama hizmeti](search-create-service-portal.md)ve bir [Dizin](search-what-is-an-index.md)olduğunu varsaymaktadır.  
 
@@ -62,7 +62,7 @@ Güvenli dosyalar dizini olduğunu ve her dosyaya farklı bir kullanıcı kümes
   
 Dizininizin URL uç noktasına bir HTTP POST isteği gönderin. HTTP isteğinin gövdesi, eklenecek belgeleri içeren bir JSON nesnesidir:
 
-```
+```http
 POST https://[search service].search.windows.net/indexes/securedfiles/docs/index?api-version=2020-06-30  
 Content-Type: application/json
 api-key: [admin key]
@@ -110,17 +110,18 @@ Mevcut bir belgeyi Grup listesi ile güncelleştirmeniz gerekiyorsa, `merge` ya 
 ```
 
 Belge ekleme veya güncelleştirme hakkında ayrıntılı bilgi için [belgeleri düzenleme belgesini](/rest/api/searchservice/addupdate-or-delete-documents)okuyabilirsiniz.
-   
+
 ## <a name="apply-the-security-filter"></a>Güvenlik filtresini uygulama
 
 Belgelere erişimi temel alarak kırpmak için bir `group_ids` filtre içeren bir arama sorgusu oluşturmalısınız `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` , burada ' group_id1, group_id2,... ' , arama isteği verenin ait olduğu gruplarıdır.
+
 Bu filtre, `group_ids` alanın verilen tanımlayıcılardan birini içerdiği tüm belgelerle eşleşir.
 Azure Bilişsel Arama kullanarak belge arama hakkında ayrıntılı bilgi için, [arama belgelerini](/rest/api/searchservice/search-documents)okuyabilirsiniz.
 Bu örnekte, bir POST isteği kullanılarak belgelerin nasıl aranacağı gösterilmektedir.
 
 HTTP POST isteğini verme:
 
-```
+```http
 POST https://[service name].search.windows.net/indexes/securedfiles/docs/search?api-version=2020-06-30
 Content-Type: application/json  
 api-key: [admin or query key]
@@ -152,12 +153,12 @@ Belgeleri `group_ids` "group_id1" veya "group_id2" içerdiğinde geri almalısı
  ]
 }
 ```
-## <a name="conclusion"></a>Sonuç
 
-Bu, Kullanıcı kimliği ve Azure Bilişsel Arama işlevi temelinde sonuçları filtreleyebilmeniz için de kullanılır `search.in()` . Bu işlevi, istenen kullanıcının her bir hedef belge ile ilişkili asıl tanımlayıcılarla eşleşmesi için ilke tanımlayıcılarını geçirmek için kullanabilirsiniz. Bir arama isteği işlendiği zaman, işlevi, `search.in` Kullanıcı sorumlularının hiçbirinin okuma erişimine sahip olmadığı arama sonuçlarını filtreler. Asıl tanımlayıcılar güvenlik grupları, roller ve hatta kullanıcının kendi kimliği gibi şeyleri temsil edebilir.
- 
-## <a name="see-also"></a>Ayrıca bkz.
+## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure Bilişsel Arama filtrelerini kullanarak kimlik tabanlı erişim denetimi Active Directory](search-security-trimming-for-azure-search-with-aad.md)
-+ [Azure Bilişsel Arama filtreler](search-filters.md)
-+ [Azure Bilişsel Arama işlemlerinde veri güvenliği ve erişim denetimi](search-security-overview.md)
+Bu makalede, sonuçları kullanıcı kimliğine ve işleve göre filtrelemeye yönelik bir model açıklanmaktadır `search.in()` . Bu işlevi, istenen kullanıcının her bir hedef belge ile ilişkili asıl tanımlayıcılarla eşleşmesi için ilke tanımlayıcılarını geçirmek için kullanabilirsiniz. Bir arama isteği işlendiği zaman, işlevi, `search.in` Kullanıcı sorumlularının hiçbirinin okuma erişimine sahip olmadığı arama sonuçlarını filtreler. Asıl tanımlayıcılar güvenlik grupları, roller ve hatta kullanıcının kendi kimliği gibi şeyleri temsil edebilir.
+
+Active Directory temel alan alternatif bir düzende veya diğer güvenlik özelliklerini tekrar ziyaret etmek için aşağıdaki bağlantılara bakın.
+
+* [Active Directory kimliklerini kullanarak sonuçları kırpma için güvenlik filtreleri](search-security-trimming-for-azure-search-with-aad.md)
+* [Azure Bilişsel Arama güvenliği](search-security-overview.md)

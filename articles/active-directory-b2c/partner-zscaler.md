@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: ff51c2a71dfcaec580733a92e265628ac816e229
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97096179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629383"
 ---
 # <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Güvenli karma erişim için Azure Active Directory B2C Zscaler özel erişimini yapılandırma öğreticisi
 
@@ -125,7 +125,7 @@ Adımların geri kalanı bu öğreticiyle ilgili değildir.
 
 Burada `<tenant-name>` Azure AD B2C kiracınızın adıdır ve `<policy-name>` son adımda oluşturduğunuz özel SAML ilkesinin adıdır.
 
-Örneğin, https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata
+Örneğin, " https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
 
 Bir Web tarayıcısı açın ve SAML meta veri URL 'sine gidin. Sayfa yüklendiğinde, sayfada herhangi bir yere sağ tıklayın. **Sayfayı farklı kaydet** ' i seçin ve dosyayı bilgisayarınıza kaydedin; Bunu bir sonraki bölümde kullanacaksınız.
 

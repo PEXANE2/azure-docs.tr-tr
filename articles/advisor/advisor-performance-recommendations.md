@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 55f5ac6784bf613170fd10060799ab5ad1290a62
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 59de7ee14a3af2f8740d63a3cae19571469afd7f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183354"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630352"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -175,6 +175,11 @@ Sanal makinelerinizin, kullanıcılarınızın Windows Sanal Masaüstü (WVD) ku
 Bu abonelik kapsamındaki kaynakların güncel olmayan Tam Ekran Okuyucu SDK’sı sürümlerini kullandığını belirledik. Tam Ekran Okuyucu SDK'sının en son sürümünü kullanmak, tümleştirme deneyiminizi özelleştirme ve geliştirmeye yönelik güncelleştirilmiş güvenlik, performans ve genişletilmiş özellik kümesi sağlar.
 [Modern Okuyucu SDK 'sı](../cognitive-services/immersive-reader/index.yml)hakkında daha fazla bilgi edinin.
 
+## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Maksimum oturum sınırını değiştirerek VM performansını iyileştirme
+
+Danışman, yük dengeleme algoritması olarak ilk ayarlanan derinliği olan bir konak havuzunuzun olduğunu ve ana bilgisayar havuzunun en fazla oturum sınırı 99999 ' den büyük veya buna eşit olduğunu algılar. Derinlik öncelikli yük dengeleme, tek bir oturum konağında eşzamanlı oturum açabilecek kullanıcı sayısı üst sınırını saptamak için en yüksek oturum sınırını kullanır. Maksimum oturum sınırı çok yüksekse, tüm Kullanıcı oturumları aynı oturum ana bilgisayarına yönlendirilir ve bu, performans ve güvenilirlik sorunlarına neden olur. Bu nedenle, bir konak havuzunu derinlemesine ilk yük dengelemeye sahip olacak şekilde ayarlarken, sanal makinelerinizin ve kapasitenizin yapılandırmasına göre uygun bir en fazla oturum sınırı ayarlamanız gerekir. 
+
+Windows sanal masaüstü 'nde yük dengeleme hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü yük dengeleme yöntemini yapılandırma](/virtual-desktop/troubleshoot-set-up-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 

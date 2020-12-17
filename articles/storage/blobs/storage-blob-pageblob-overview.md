@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39c1972eba84f4f1990c87112c5801c386849640
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545967"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629366"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure sayfa bloblarına genel bakış
 
@@ -57,7 +57,7 @@ Aşağıdaki diyagramda hesap, kapsayıcılar ve sayfa Blobları arasındaki gen
 
 # <a name="net-v12"></a>[.NET V12](#tab/dotnet)
 
-İlk olarak, bir kapsayıcıya başvuru alın. Bir Sayfa Blobu oluşturmak için [Getpageblobclient](/dotnet/api/azure.storage.blobs.specialized.specializedblobextensions.getpageblobclient) metodunu çağırın ve ardından [Pageblobclient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) yöntemini çağırın. Oluşturulacak blob 'un en büyük boyutunu geçirin. Bu boyut, 512 baytlık bir katı olmalıdır.
+İlk olarak, bir kapsayıcıya başvuru alın. Bir Sayfa Blobu oluşturmak için GetPageBlobClient metodunu çağırın ve ardından [pageblobclient. Create](/dotnet/api/azure.storage.blobs.specialized.pageblobclient.create) yöntemini çağırın. Oluşturulacak blob 'un en büyük boyutunu geçirin. Bu boyut, 512 baytlık bir katı olmalıdır.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_CreatePageBlob":::
 

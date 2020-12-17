@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 12/07/2020
-ms.openlocfilehash: d07f01a17c2d784eed61ad7e7ef47c8f7eb5ac30
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 9069a53166b30e206559f0c68c4bcef2ec136ac5
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862199"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631508"
 ---
 # <a name="cognitive-services-docs-whats-new-for-november-1-2020---november-30-2020"></a>Bilişsel hizmetler belgeleri: 1 Kasım 2020 ' deki yenilikler-30 Kasım 2020
 
@@ -33,35 +33,35 @@ ms.locfileid: "96862199"
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları](/azure/cognitive-services/containers/container-image-tags.md)
+- [Azure bilişsel hizmetler kapsayıcı görüntü etiketleri ve sürüm notları](/azure/cognitive-services/containers/container-image-tags)
 
 ## <a name="form-recognizer"></a>Form Tanıma
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Form tanıyıcı önceden oluşturulmuş fatura modeli](/azure/cognitive-services/form-recognizer/concept-invoices.md)
-- [Form tanıyıcı düzen hizmeti](/azure/cognitive-services/form-recognizer/concept-layout.md)
-- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak fatura verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices.md)
+- [Form tanıyıcı önceden oluşturulmuş fatura modeli](/azure/cognitive-services/form-recognizer/concept-invoices)
+- [Form tanıyıcı düzen hizmeti](/azure/cognitive-services/form-recognizer/concept-layout)
+- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak fatura verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-invoices)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Makbuz kavramları](/azure/cognitive-services/form-recognizer/concept-receipts.md)
-- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview.md)
-- [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](/azure/cognitive-services/form-recognizer/quickstarts/label-tool.md)
-- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards.md)
-- [Form Tanıma'daki yenilikler](/azure/cognitive-services/form-recognizer/whats-new.md)
+- [Makbuz kavramları](/azure/cognitive-services/form-recognizer/concept-receipts)
+- [Form Tanıma nedir?](/azure/cognitive-services/form-recognizer/overview)
+- [Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme](/azure/cognitive-services/form-recognizer/quickstarts/label-tool)
+- [Hızlı başlangıç: Python ile REST API form tanıyıcı kullanarak iş kartı verilerini ayıklama](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [Form Tanıma'daki yenilikler](/azure/cognitive-services/form-recognizer/whats-new)
 
 ## <a name="metrics-advisor"></a>Ölçüm Danışmanı
 
 ### <a name="new-articles"></a>Yeni makaleler
 
-- [Ölçüm Danışmanı: docs 'taki yenilikler](/azure/cognitive-services/metrics-advisor/whats-new.md)
+- [Ölçüm Danışmanı: docs 'taki yenilikler](/azure/cognitive-services/metrics-advisor/whats-new)
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Anomali geri bildirimi sağlama](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback.md)
-- [Ölçüm Danışmanı sık sorulan sorular](/azure/cognitive-services/metrics-advisor/faq.md)
-- [Hızlı başlangıç: çözümünüzü özelleştirmek için istemci kitaplıklarını veya REST API 'Lerini kullanma](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library.md)
+- [Anomali geri bildirimi sağlama](/azure/cognitive-services/metrics-advisor/how-tos/anomaly-feedback)
+- [Ölçüm Danışmanı sık sorulan sorular](/azure/cognitive-services/metrics-advisor/faq)
+- [Hızlı başlangıç: çözümünüzü özelleştirmek için istemci kitaplıklarını veya REST API 'Lerini kullanma](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api-and-client-library)
 
 ## <a name="qna-maker"></a>Soru-Cevap Oluşturucu 
 
@@ -75,12 +75,12 @@ ms.locfileid: "96862199"
 
 ### <a name="updated-articles"></a>Güncelleştirilmiş makaleler
 
-- [Metin Analizi API'si için veri ve hız sınırları](/azure/cognitive-services/text-analytics/concepts/data-limits.md)
-- [Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health.md)
-- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api.md)
-- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking.md)
-- [Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
-- [Metin Analizi API’sindeki yenilikler](/azure/cognitive-services/text-analytics/whats-new.md)
-- [Örnek: Metin Analizi Dili algıla](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)
+- [Metin Analizi API'si için veri ve hız sınırları](/azure/cognitive-services/text-analytics/concepts/data-limits)
+- [Nasıl yapılır: sistem durumu için Metin Analizi kullanma (Önizleme)](/azure/cognitive-services/text-analytics/how-tos/text-analytics-for-health)
+- [Metin Analizi nasıl çağrılacağını REST API](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-call-api)
+- [Metin Analizi içinde adlandırılmış varlık tanımayı kullanma](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking)
+- [Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis)
+- [Metin Analizi API’sindeki yenilikler](/azure/cognitive-services/text-analytics/whats-new)
+- [Örnek: Metin Analizi Dili algıla](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

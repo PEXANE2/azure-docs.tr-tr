@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 470dc146d1658b97a707be8cb7ad868d943a8e60
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170913"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629400"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Passwordless kimlik doğrulaması için Azure Active Directory B2C ile Nevis yapılandırma öğreticisi
 
 Bu örnek öğreticide, passwordless kimlik doğrulamasını etkinleştirmek için Azure AD B2C  [Nevis](https://www.nevis.net/solution/authentication-cloud) ile genişletmeyi öğrenin. Nevis, daha güçlü müşteri kimlik doğrulaması sağlamak ve ödeme hizmetleri yönerge 2 (PSD2) işlem gereksinimleriyle uyumlu olmak için Nevis Access uygulamasıyla mobil ve tamamen markalı Son Kullanıcı deneyimi sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -46,7 +46,7 @@ Diyagramda uygulama gösterilmektedir.
 
 ![Azure AD B2C ve Nevis ile üst düzey parola oturum açma akışı](./media/partner-nevis/nevis-architecture-diagram.png)
 
-|Adım | Açıklama |
+|Adım | Description |
 |:-----| :-----------|
 | 1. | Kullanıcı oturum açmaya veya Azure AD B2C oturum açma ve kaydolma ilkesi aracılığıyla bir uygulamaya kaydolma girişiminde bulunur.
 | 2. | Kaydolma sırasında, Nevis Access uygulaması kullanıcı cihazına bir QR kodu kullanılarak kaydedilir. Kullanıcı cihazında özel bir anahtar oluşturulur ve Kullanıcı isteklerini imzalamak için kullanılır.
@@ -92,7 +92,7 @@ Diyagramda uygulama gösterilmektedir.
 >[!NOTE]
 >Daha sonra Nevis erişim belirtecine ihtiyacınız olacak.
 
-11. **Bitti**'yi seçin.
+11. **Bitti**’yi seçin.
 
 ### <a name="install-the-nevis-access-app-on-your-phone"></a>Telefonunuza Nevis Access uygulamasını yükler
 
@@ -134,9 +134,9 @@ Diyagramda uygulama gösterilmektedir.
 
 4. Değişiklikleri dosyaya **kaydedin** .
 
-5. [Yönergeleri](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#2-create-an-azure-blob-storage-account) izleyin ve **nevis.html** dosyasını Azure Blob depolama alanına yükleyin.
+5. [Yönergeleri](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account) izleyin ve **nevis.html** dosyasını Azure Blob depolama alanına yükleyin.
 
-6. Bu dosya için [yönergeleri](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-ui-customization#3-configure-cors) Izleyin ve çıkış noktaları arası kaynak PAYLAŞıMıNı (CORS) etkinleştirin.
+6. Bu dosya için [yönergeleri](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors) Izleyin ve çıkış noktaları arası kaynak PAYLAŞıMıNı (CORS) etkinleştirin.
 
 7. Karşıya yükleme tamamlandıktan ve CORS etkinleştirildikten sonra, listeden **nevis.html** dosyasını seçin.
 

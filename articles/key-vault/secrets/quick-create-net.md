@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: dcf7c8db955b2e85ad7d1c047c714eb2c5968455
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e0141d4a5658b8612ee083c6ed1825b10c0009ec
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780816"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631717"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault gizli istemci kitaplığı (SDK v4)
 
@@ -159,7 +159,7 @@ Gizli anahtar artık olarak kaydedilir `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Gizli anahtarı silme
 
-Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) ve [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedsecretasync) yöntemleriyle anahtar kasanızdan parolayı silelim.
+Son olarak, [Startdeletesecretasync](/dotnet/api/azure.security.keyvault.secrets.secretclient.startdeletesecretasync) ve [PurgeDeletedSecretAsync](/dotnet/api/azure.security.keyvault.keys.keyclient) yöntemleriyle anahtar kasanızdan parolayı silelim.
 
 ```csharp
 var operation = await client.StartDeleteSecretAsync("mySecret");

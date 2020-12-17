@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/16/2020
-ms.openlocfilehash: bc93c3643e329879e5118d1cfb61a356442df808
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7d93002af866aa653972182a13ea37d37e912ce8
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97622255"
+ms.locfileid: "97630318"
 ---
 # <a name="tutorial-shard-data-on-worker-nodes-in-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı 'nda çalışan düğümlerinde verileri parçalara atma – hiper ölçek (Citus)
 
@@ -27,7 +27,7 @@ Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQ
 > * Dağıtılmış tablolarda kısıtlamalar oluşturma
 > * Dağıtılmış verilerde sorgu çalıştırma
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğretici, iki çalışan düğümü olan çalışan bir hiper ölçek (Citus) sunucu grubu gerektirir. Çalışan bir sunucu grubunuz yoksa, [sunucu grubu oluştur](tutorial-hyperscale-server-group.md) öğreticisini izleyin ve ardından buna geri dönün.
 
@@ -171,7 +171,7 @@ Parçaların eşit boyutta olduğunu görebiliriz. Bu yerlerin çalışanlar ara
 
 Örneğimizde bulunan satırlar `users` , dağıtım sütununun özellikleri nedeniyle eşit olarak dağıtılır `email` .
 
-1. E-posta adresi sayısı, parça sayısına eşit veya daha büyük
+1. E-posta adresi sayısı, parça sayısına eşit veya ondan büyük.
 2. Her e-posta adresi başına satır sayısı benzerdir (bizim örneğimizde, her adres için tam olarak bir satır) ve e-posta bir anahtar bildirdik.
 
 Her iki özelliğin de başarısız olduğu herhangi bir tablo ve dağıtım sütunu seçimi, çalışanlar üzerinde düzensiz veri boyutuyla, yani *veri eğimiyle* sona alınacaktır.

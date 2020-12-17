@@ -12,60 +12,65 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
+ms.date: 12/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 822d0c742bbd54b5bab0c69e82652743584a0696
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95e78c7557092a4d1203a8df3a107fe7b63eac9b
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89659614"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631450"
 ---
 # <a name="connect-your-data-from-azure-defender-formerly-azure-security-center-for-iot-to-azure-sentinel"></a>IoT için Azure Defender 'daki (eskiden Azure Güvenlik Merkezi) verilerinizi Azure Sentinel 'e bağlama 
 
 
 > [!IMPORTANT]
-> IoT için Azure Defender veri Bağlayıcısı Şu anda genel önizleme aşamasındadır. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> IoT veri Bağlayıcısı için Defender Şu anda genel önizleme aşamasındadır. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-IoT için Azure Defender ' a yönelik tüm olayları Azure Sentinel ' e aktarmak için IoT bağlayıcısını kullanın. 
+Tüm IoT olayları için Defender 'ı Azure Sentinel 'e aktarmak üzere IoT için Defender bağlayıcısını kullanın. 
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu tümleştirme, kuruluşların genellikle onu ve sınırları aşan çok aşamalı saldırıları hızla algılamasını sağlar. Ayrıca, IoT 'nin Azure Sentinel 'in güvenlik düzenlemesi, otomasyonu ve yanıtı (SOAR) özellikleri ile tümleştirilmesi için Defender, yerleşik olarak iyileştirilmiş PlayBook 'lar kullanılarak otomatik yanıt ve önlemeye imkan tanıyor. 
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Sentinel 'in dağıtıldığı çalışma alanında **okuma** ve **yazma** izinleri
-- **IoT Için Azure Defender 'ın** ilgili IoT Hub **etkinleştirilmiş** olması gerekir
-- Bağlanmak istediğiniz **Azure IoT Hub** **okuma** ve **yazma** izinleri
-- **Azure IoT Hub kaynak grubunda** **okuma** ve **yazma** izinleri
+- **IoT Için Defender 'ın** ilgili IoT Hub **etkinleştirilmiş** olması gerekir
+- Bağlanmak istediğiniz **abonelik** üzerinde **katkıda bulunan** izinlerinizin olması gerekir
 
-## <a name="connect-to-azure-defender-for-iot"></a>IoT için Azure Defender 'a bağlanma
+## <a name="connect-to-defender-for-iot"></a>IoT için Defender 'a bağlanma
 
-1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve ardından **Azure Defender** ' ı seçin (IoT için Azure Güvenlik Merkezi 'ni yine de kullanabilirsiniz).
-1. Sağ alt bölmeden **bağlayıcı sayfasını aç**' a tıklayın. 
+1. Azure Sentinel 'de, **veri bağlayıcıları** ' nı seçin ve sonra, galerinin **(IoT Için Azure** Güvenlik Merkezi 'nin hala bu şekilde adlandırılır) ' i seçin.
+
+1. Sağ bölmenin alt kısmından **bağlayıcı sayfasını aç**' a tıklayın. 
+
 1. Uyarıları ve cihaz uyarılarını Azure Sentinel 'e aktarmak istediğiniz her bir IoT Hub aboneliğinin yanındaki **Bağlan**' a tıklayın. 
-    - IoT için Azure Defender bu hub 'da etkinleştirilmemişse, bir **etkinleştirme** uyarı iletisi görürsünüz. Hizmeti başlatmak için **Etkinleştir** bağlantısına tıklayın. 
-1. IoT için Azure Defender uyarıları 'nın Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinize karar verebilirsiniz. **Olayları oluştur**' un altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturmak üzere varsayılan analitik kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Bu kural, **analiz**  >  **etkin** kuralları altında değiştirilebilir veya düzenlenebilir.
+    - IoT için Defender, bir abonelik içindeki en az bir IoT Hub etkinleştirilmemişse bir hata iletisi alırsınız. Hatayı kaldırmak için IoT Hub içindeki IoT için Defender 'ı etkinleştirin.
+
+1. IoT için Defender 'daki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinize karar verebilirsiniz. **Olayları oluştur** altında, varsayılan analiz kuralının oluşturulan uyarılardan otomatik olarak olay oluşturmasını sağlamak için **Etkinleştir** ' i seçin. Bu kural, **analiz**  >  **etkin kuralları** altında değiştirilebilir veya düzenlenebilir.
 
 > [!NOTE]
-> Bağlantı değişiklikleri yapıldıktan sonra hub listesinin yenilenmesi biraz zaman alabilir. 
+> **Abonelik** listesinin bağlantı değişiklikleri yapıldıktan sonra yenilenmesi için 10 saniye veya daha fazla zaman alabilir. 
 
-## <a name="log-analytics-alert-display"></a>Uyarı görüntüsünü Log Analytics
+## <a name="log-analytics-alert-view"></a>Log Analytics uyarı görünümü
 
-IoT uyarıları için Azure Defender 'ı göstermek üzere Log Analytics ' deki ilgili şemayı kullanmak için:
+Log Analytics bölümünde ilgili şemayı, IoT uyarıları için Defender 'ı göstermek üzere kullanmak için:
 
-1. **Günlükleri**  >  **securityınsights**  >  **securityalert**olarak açın veya **securityalert**araması yapın. 
-2. Aşağıdaki KQL filtresini kullanarak IoT tarafından oluşturulan uyarılar için yalnızca Azure Defender 'ı görmek üzere filtreleyin:
+1. **Günlükleri**  >  **securityınsights**  >  **securityalert** olarak açın veya **securityalert** araması yapın. 
+
+2. Aşağıdaki KQL filtresini kullanarak yalnızca IoT tarafından oluşturulan uyarılar için Defender 'ı görmek üzere filtreleyin:
 
 ```kusto
-SecurityAlert | where ProductName == "Azure Defender for IoT"
+SecurityAlert | where ProductName == "Azure Security Center for IoT"
 ``` 
 
 ### <a name="service-notes"></a>Hizmet notları
 
-Bir IoT Hub bağlandıktan sonra merkez verileri yaklaşık 15 dakika sonra Azure 'da kullanılabilir.
+Bir **aboneliği** bağladıktan sonra merkez verileri yaklaşık 15 dakika sonra Azure 'da kullanılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede IoT verileri için Azure Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+Bu belgede, IoT için Defender 'ı Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+
 - [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
 - [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
 - Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .

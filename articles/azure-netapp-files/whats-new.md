@@ -12,18 +12,32 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/05/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: 3f13d997f73e9737b8770eec7e0742d50bf1abb8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: bba3dce2a2a18888cb88f4cf8b33cd48d6a4cd69
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421711"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631168"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files yenilikleri
 
 Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni özellikler ve geliştirmeler hakkında bir Özet sağlar. 
+
+## <a name="december-2020"></a>Aralık 2020
+
+* [Azure uygulamayla tutarlı anlık görüntü aracı](azacsnap-introduction.md) (Genel Önizleme)    
+
+    Azure uygulamayla tutarlı anlık görüntü aracı (AzAcSnap), Linux ortamlarında (örneğin, SUSE ve RHEL) üçüncü taraf veritabanları (SAP HANA) için veri korumasını basitleştirmenizi sağlayan bir komut satırı aracıdır.   
+
+    AzAcSnap, Azure NetApp Files ve Azure büyük örneğindeki birim anlık görüntüsünü ve çoğaltma işlevlerini kullanır. Aşağıdaki avantajları sağlar:
+
+    * Uygulamayla tutarlı veri koruma 
+    * Veritabanı kataloğu yönetimi 
+    * *Geçici birim koruması* 
+    * Depolama birimlerinin kopyalanması 
+    * Olağanüstü durum kurtarma desteği 
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -52,10 +66,10 @@ Azure NetApp Files düzenli olarak güncelleştirilir. Bu makale, en son yeni ö
 * Yeni [ölçümler](azure-netapp-files-metrics.md):   
 
     * Yeni birim ölçümleri: 
-        * *Ayrılan birim boyutu* : birimin sağlanan boyutu
+        * *Ayrılan birim boyutu*: birimin sağlanan boyutu
     * Yeni havuz ölçümleri: 
-        * *Havuza ayrılan boyut* : havuzun sağlanan boyutu 
-        * *Havuz Için toplam anlık görüntü boyutu* : havuzdaki tüm birimlerden anlık görüntü boyutu toplamı
+        * *Havuza ayrılan boyut*: havuzun sağlanan boyutu 
+        * *Havuz Için toplam anlık görüntü boyutu*: havuzdaki tüm birimlerden anlık görüntü boyutu toplamı
 
 ## <a name="july-2020"></a>Temmuz 2020
 

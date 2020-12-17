@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c5bc00ecf5e4c8ae440ce6610e9be8c8f77ed666
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862216"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630624"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Kodu v 2.0 'dan v 3.0 'a geçirin REST API
 
@@ -33,12 +33,16 @@ Son değişikliklerin listesi, uyarlanabilmesi için gereken değişikliklerin b
 ### <a name="host-name-changes"></a>Ana bilgisayar adı değişiklikleri
 
 Uç nokta ana bilgisayar adları iken `{region}.cris.ai` olarak değiştirildi `{region}.api.cognitive.microsoft.com` . Yeni uç noktalara yönelik yollar artık `api/` ana bilgisayar adının bir parçası olduğundan içermez. [Swagger belgesi](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0) geçerli bölgeleri ve yolları listeler.
+>[!IMPORTANT]
+>Ana bilgisayar adını, `{region}.cris.ai` konuşma aboneliğinizin bölgesi olan bölge adıyla değiştirin `{region}.api.cognitive.microsoft.com` . Ayrıca `api/` , istemci kodunuzda herhangi bir yoldan kaldırın.
 
 ### <a name="identity-of-an-entity"></a>Bir varlığın kimliği
 
 Özelliği `id` artık `self` . V2 sürümünde bir API kullanıcısının, API 'deki yollarımızı nasıl oluşturduğumuzu öğrenmiş olması gerekiyordu. Bu, Genişletilebilir olmayan ve Kullanıcı tarafından gerekli olan gereksiz çalışmamıştı. Özelliği ( `id` UUID), `self` VARLıĞıN (URL) konumu olan (dize) ile değiştirilmiştir. Değer, tüm varlıklarınız arasında hala benzersizdir. `id`Kodunuzda bir dize olarak depolanıyorsa, yeni şemayı desteklemek için yeniden adlandırma yeterlidir. Artık `self` içeriği `GET` , `PATCH` varlığınızın,, ve REST çağrılarının URL 'si olarak kullanabilirsiniz `DELETE` .
 
 Varlığın diğer yollarla kullanılabilir ek işlevleri varsa, bunlar altında listelenir `links` . Aşağıdaki örnek, döküm içeriğine ayrı bir yöntemi gösterir `GET` :
+>[!IMPORTANT]
+>Özelliği `id` istemci kodunuzda olarak yeniden adlandırın `self` . Türünü, `uuid` gerekirse olarak değiştirin `string` . 
 
 **v2 dökümü:**
 
@@ -91,6 +95,9 @@ Yanıtın temel şekli tüm koleksiyonlar için aynıdır:
 
 Bu değişiklik, `GET` tüm öğeler döndürülünceye kadar bir döngüde koleksiyon için çağrılmasını gerektirir.
 
+>[!IMPORTANT]
+>Bir alma işleminin yanıtı `speechtotext/v3.0/{collection}` ' de bir değeri içerdiğinde `$.@nextLink` , `GETs` `$.@nextLink` `$.@nextLink` Bu koleksiyonun tüm öğelerini almak için ayarlanana kadar üzerinde verme işlemine devam edin.
+
 ### <a name="creating-transcriptions"></a>Döküm oluşturma
 
 [Toplu iş dökümlerinin nasıl yapılacağı](./batch-transcription.md)hakkında ayrıntılı bir açıklama, toplu olarak nasıl yapılır? bölümünde bulunabilir.
@@ -134,6 +141,8 @@ Altındaki yeni özellik `timeToLive` , `properties` var olan tamamlanmış varl
   }
 }
 ```
+>[!IMPORTANT]
+>Özelliğini, `recordingsUrl` `contentUrls` tek bir URL yerine bir URL dizisi olarak yeniden adlandırın ve geçirin. `diarizationEnabled`Ya da yerine için ayarları geçirin `wordLevelTimestampsEnabled` `bool` `string` .
 
 ### <a name="format-of-v3-transcription-results"></a>V3 dökümü sonuçlarının biçimi
 
@@ -201,6 +210,9 @@ Bir v3 dökümü sonucunun örneği. Farklar açıklamalarda açıklanmıştır.
   ]
 }
 ```
+>[!IMPORTANT]
+>Döküm sonucunun, yukarıda gösterildiği gibi yeni türe seri durumdan çıkarılması. Her ses kanalı başına tek bir dosya yerine, `channel` içindeki her öğe için özellik değerini denetleyerek kanalları ayırt edin `recognizedPhrases` . Her giriş dosyası için artık tek bir sonuç dosyası vardır.
+
 
 ### <a name="getting-the-content-of-entities-and-the-results"></a>Varlıkların içeriğini ve sonuçlarını alma
 
@@ -269,6 +281,9 @@ V3 'de, `links` `files` varlığın verileri (veri kümeleri, döküm, uç nokta
 
 `kind`Özelliği, dosyanın içerik biçimini gösterir. Döküm için, tür dosyaları `TranscriptionReport` işin özetidir ve tür dosyaları `Transcription` işin kendisinin sonucudur.
 
+>[!IMPORTANT]
+>İşlemlerin sonuçlarını almak için, bir üzerinde kullanın, veya ' de ' de `GET` `/speechtotext/v3.0/{collection}/{id}/files` yanıtlarında yer almaz `GET` `/speechtotext/v3.0/{collection}/{id}` `/speechtotext/v3.0/{collection}` .
+
 ### <a name="customizing-models"></a>Modelleri özelleştirme
 
 V3 'den önce, bir model eğitilirken bir _akustik model_ ve _dil modeli_ arasında bir ayrım vardı. Bu ayrım, uç noktalar veya döküm oluştururken birden çok model belirtme gereksiniminden sonuçlandı. Bu işlemi bir arayan için basitleştirmek amacıyla, farkları kaldırdık ve her şeyi, model eğitimi için kullanılan veri kümelerinin içeriğine bağlı olarak yaptık. Bu değişiklik ile model oluşturma artık karışık veri kümelerini (dil verileri ve akustik veriler) desteklemektedir. Uç noktalar ve döküm artık yalnızca bir model gerektirir.
@@ -277,11 +292,17 @@ Bu değişiklik ile, işlem içindeki bir için ihtiyacı `kind` `POST` kaldır�
 
 Eğitilen bir modelin sonuçlarını geliştirmek için, akustik veriler otomatik olarak dil eğitimi sırasında kullanılır. Genel olarak, v3 API 'SI ile oluşturulan modeller v2 API 'siyle oluşturulan modellerden daha doğru sonuçlar sunar.
 
+>[!IMPORTANT]
+>Hem akustik hem de dil modeli parçasını özelleştirmek için GÖNDERINIZIN içindeki tüm gerekli dili ve akustik veri kümelerini geçirin `datasets[]` `/speechtotext/v3.0/models` . Bu, her iki bölümden de özelleştirilmiş tek bir model oluşturur.
+
 ### <a name="retrieving-base-and-custom-models"></a>Temel ve özel modelleri alma
 
 V3, kullanılabilir modelleri almayı basitleştirmek için "temel modeller" koleksiyonlarını müşterinin "özelleştirilmiş modeller" sahipliğinde ayırmıştır. İki yol artık `GET /speechtotext/v3.0/models/base` ve ' dir `GET /speechtotext/v3.0/models/` .
 
 V2 'de, tüm modeller tek bir yanıtta birlikte döndürülür.
+
+>[!IMPORTANT]
+>Özelleştirme için sunulan temel modellerin bir listesini almak için `GET` üzerinde kullanın `/speechtotext/v3.0/models/base` . İle kendi özelleştirilmiş modellerinizi bulabilirsiniz `GET` `/speechtotext/v3.0/models` .
 
 ### <a name="name-of-an-entity"></a>Bir varlığın adı
 
@@ -302,6 +323,9 @@ V2 'de, tüm modeller tek bir yanıtta birlikte döndürülür.
     "displayName": "Transcription using locale en-US"
 }
 ```
+
+>[!IMPORTANT]
+>Özelliği `name` istemci kodunuzda olarak yeniden adlandırın `displayName` .
 
 ### <a name="accessing-referenced-entities"></a>Başvurulan varlıklara erişme
 
@@ -351,6 +375,10 @@ V2 'de, başvurulan Varlıklar her zaman satır içine alındı, örneğin bir u
 
 Yukarıdaki örnekte gösterildiği gibi başvurulan bir modelin ayrıntılarını kullanmanız gerekiyorsa, yalnızca bir GET ile sorun verirsiniz `$.model.self` .
 
+>[!IMPORTANT]
+>Başvurulan varlıkların meta verilerini almak için bir alma `$.{referencedEntity}.self` işlemi yapın, örneğin, bir döküm modelinin modelini alma `GET` `$.model.self` .
+
+
 ### <a name="retrieving-endpoint-logs"></a>Uç nokta günlüklerini alma
 
 Hizmet sürüm v2 günlük bitiş noktası sonuçlarını destekler. Bir uç noktanın sonuçlarını v2 ile almak için, bir zaman aralığı tarafından tanımlanan sonuçların anlık görüntüsünü temsil eden bir "veri dışarı aktarma" oluşturursunuz. Veri toplu işleri dışarı aktarma işlemi, esnek olarak kullanılabilir. V3 API her bir dosyaya erişim sağlar ve bunlara yineleme sağlar.
@@ -392,6 +420,9 @@ Uç nokta günlükleri için sayfalandırma, hiçbir uzaklığa izin belirtilmed
 
 V3 'de her bir uç nokta günlüğü, `DELETE` bir dosyanın üzerinde bir işlem göndererek `self` veya üzerinde kullanılarak tek tek silinebilir `DELETE` `$.links.logs` . Bir bitiş tarihi belirtmek için, isteğe sorgu parametresi `endDate` eklenebilir.
 
+>[!IMPORTANT]
+>Günlük `/api/speechtotext/v2.0/endpoints/{id}/data` `/v3.0/endpoints/{id}/files/logs/` dosyalarına tek tek erişmek için kullanılan günlük dışarı aktarmaları oluşturmak yerine. 
+
 ### <a name="using-custom-properties"></a>Özel özellikleri kullanma
 
 İsteğe bağlı yapılandırma özelliklerinden özel özellikleri ayırmak için, açıkça adlandırılmış tüm özellikler artık `properties` özellikte bulunur ve çağıranlar tarafından tanımlanan tüm özellikler artık `customProperties` özellikte bulunur.
@@ -424,15 +455,26 @@ V3 'de her bir uç nokta günlüğü, `DELETE` bir dosyanın üzerinde bir işle
 
 Bu değişiklik Ayrıca `properties` (örneğin, dize yerine Boolean gibi) tüm açıkça adlandırılmış özellikler üzerinde doğru türleri kullanmanıza imkan tanır.
 
+>[!IMPORTANT]
+>Tüm özel özellikleri `customProperties` istekleriniz yerine geçirin `properties` `POST` .
+
 ### <a name="response-headers"></a>Yanıt üst bilgileri
 
 V3, `Operation-Location` isteklerle ilgili üstbilgiye ek olarak artık üstbilgiyi döndürmez `Location` `POST` . V2 içindeki her iki üst bilgilerin değeri de aynıdır. Şimdi yalnızca `Location` döndürüldü.
 
 Yeni API sürümü artık Azure API Management (APıM) tarafından yönetildiğinden, ilgili üst bilgiler üzerinde kısıtlama, `X-RateLimit-Limit` `X-RateLimit-Remaining` ve `X-RateLimit-Reset` yanıt üst bilgilerinde yer almayan bir.
 
+>[!IMPORTANT]
+>Yerine yanıt üst bilgisinden konumu okuyun `Location` `Operation-Location` . 429 yanıt kodu söz konusu olduğunda, `Retry-After` veya yerine üst bilgi değerini okuyun `X-RateLimit-Limit` `X-RateLimit-Remaining` `X-RateLimit-Reset` .
+
+
 ### <a name="accuracy-tests"></a>Doğruluk testleri
 
 Yeni ad, ne kadar iyi temsil ettiğini açıkladığı için doğruluk testleri değerlendirmelere yeniden adlandırıldı. Yeni yollar şunlardır: `https://{region}.api.cognitive.microsoft.com/speechtotext/v3.0/evaluations` .
+
+>[!IMPORTANT]
+>Yol segmentini `accuracytests` istemci kodunuzda olarak yeniden adlandırın `evaluations` .
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

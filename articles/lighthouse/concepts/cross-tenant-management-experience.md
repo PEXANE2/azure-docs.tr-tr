@@ -3,12 +3,12 @@ title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
 ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616584"
+ms.locfileid: "97630097"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -99,7 +99,7 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 - Temsilcili abonelikler için etkinlik günlüğü ayrıntılarını görüntüleme
 - Log Analytics: birden çok Kiracıdaki uzak çalışma alanlarından verileri sorgulama
 - Azure Otomasyonu runbook 'ları veya Azure Işlevleri gibi Otomasyonu tetikleyen müşteri kiracılarında, Web kancaları aracılığıyla kiracıyı yönetme bölümünde uyarı oluşturma
-- Yönetim kiracısındaki çalışma alanlarına kaynak günlükleri göndermek için müşteri kiracılarında Tanılama ayarları oluşturma
+- Yönetim kiracısındaki çalışma alanlarına kaynak günlükleri göndermek için müşteri kiracılarında [Tanılama ayarları](../..//azure-monitor/platform/diagnostic-settings.md) oluşturma
 - SAP iş yükleri için, [Müşteri kiracılar genelinde toplu bir görünüm Ile SAP Çözümleri ölçümlerini izleyin](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure ağı](../../networking/networking-overview.md):

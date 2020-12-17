@@ -3,31 +3,33 @@ title: Azure portal Kubernetes kaynaklarına erişin
 description: Azure portal Azure Kubernetes hizmeti (AKS) kümesini yönetmek için Kubernetes kaynaklarıyla nasıl etkileşim kuracağınızı öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 12/09/2020
-ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 12/16/2020
+ms.openlocfilehash: 4f34535f74de562c0a1b65c31f28476ca02e540f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921588"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631884"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal"></a>Azure portal Kubernetes kaynaklarına erişin
 
 Azure portal, Azure Kubernetes Service (AKS) kümenizdeki Kubernetes kaynaklarına kolay erişim sağlayan bir Kubernetes kaynak görünümü içerir. Azure portal Kubernetes kaynaklarını görüntüleme, Azure portal ve komut satırı aracı arasındaki bağlam geçişini azaltır ve `kubectl` Kubernetes kaynaklarınızı görüntüleme ve düzenlemeyle ilgili deneyimi kolaylaştırır. Kaynak Görüntüleyicisi Şu anda dağıtımlar, pods ve çoğaltma kümeleri gibi birden çok kaynak türü içerir.
 
-Azure portal Kubernetes kaynak görünümü, kullanım dışı bırakılmış olan [aks Pano eklentisinin][kubernetes-dashboard]yerini almıştır.
+Azure portal Kubernetes kaynak görünümü, kullanım dışı olan [aks Pano eklentisinin][kubernetes-dashboard]yerini alır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Azure portal Kubernetes kaynaklarını görüntülemek için bir AKS kümeniz olması gerekir. Herhangi bir küme desteklenir, ancak Azure Active Directory (Azure AD) Tümleştirmesi kullanılıyorsa, kümenizde [aks tarafından yönetilen Azure AD tümleştirmesi][aks-managed-aad]kullanılmalıdır. Kümeniz eski Azure AD kullanıyorsa, kümenizi portalda veya [Azure CLI][cli-aad-upgrade]ile yükseltebilirsiniz.
+Azure portal Kubernetes kaynaklarını görüntülemek için bir AKS kümeniz olması gerekir. Herhangi bir küme desteklenir, ancak Azure Active Directory (Azure AD) Tümleştirmesi kullanılıyorsa, kümenizde [aks tarafından yönetilen Azure AD tümleştirmesi][aks-managed-aad]kullanılmalıdır. Kümeniz eski Azure AD kullanıyorsa, kümenizi portalda veya [Azure CLI][cli-aad-upgrade]ile yükseltebilirsiniz. Yeni bir AKS kümesi oluşturmak için [Azure Portal de kullanabilirsiniz][portal-cluster] .
 
 ## <a name="view-kubernetes-resources"></a>Kubernetes kaynaklarını görüntüle
 
 Kubernetes kaynaklarını görmek için Azure portal AKS kümenize gidin. Sol taraftaki Gezinti Bölmesi kaynaklarınıza erişmek için kullanılır. Kaynaklar şunları içerir:
 
 - **Ad alanları** , kümenizin ad alanlarını görüntüler. Ad alanı listesinin en üstündeki filtre, ad alanı kaynaklarınızı filtrelemeye ve görüntülemeye yönelik hızlı bir yol sağlar.
-- **Iş yükleri** , kümenize dağıtılan dağıtımlar, pods, çoğaltma kümeleri ve Daemon kümeleri hakkında bilgi gösterir. Aşağıdaki ekran görüntüsünde örnek bir AKS kümesindeki varsayılan sistem kümeleri gösterilmektedir.
+- **Iş yükleri** , kümenize dağıtılan dağıtımlar, pods, çoğaltma kümeleri, durum bilgisi bulunan kümeler, Daemon kümeleri, işler ve cron işleri hakkındaki bilgileri gösterir. Aşağıdaki ekran görüntüsünde örnek bir AKS kümesindeki varsayılan sistem kümeleri gösterilmektedir.
 - **Hizmetler ve** giriş kaynakları, kümenizin tüm hizmet ve giriş kaynaklarını gösterir.
+- **Depolama** , Azure depolama sınıflarınızı ve kalıcı birim bilgilerinizi gösterir.
+- **Yapılandırma** , kümenizin yapılandırma haritalarınızı ve sırları gösterir.
 
 :::image type="content" source="media/kubernetes-portal/workloads.png" alt-text="Kubernetes Pod bilgileri Azure portal görüntülendi." lightbox="media/kubernetes-portal/workloads.png":::
 
@@ -35,7 +37,7 @@ Kubernetes kaynaklarını görmek için Azure portal AKS kümenize gidin. Sol ta
 
 Bu örnekte, [aks hızlı başlangıç][portal-quickstart]noktasından Azure oy uygulamasını dağıtmak için örnek aks kümemizi kullanacağız.
 
-1. Kaynak görünümlerinden herhangi birinden (ad alanı, Iş yükleri veya hizmetler ve giriş) **Ekle** ' yi seçin.
+1. Kaynak görünümlerinden herhangi birinden (ad alanı, Iş yükleri, hizmetler ve giriş, depolama veya yapılandırma) **Ekle** ' yi seçin.
 1. [Aks hızlı başlangıç][portal-quickstart]konumundan Azure oy uygulaması için YAML 'yi yapıştırın.
 1. Uygulamayı dağıtmak için YAML düzenleyicisinin altında **Ekle** ' yi seçin. 
 
@@ -45,7 +47,7 @@ YAML dosyası eklendikten sonra, Kaynak Görüntüleyicisi oluşturulan Kubernet
 
 ### <a name="monitor-deployment-insights"></a>Dağıtım öngörülerini izleme
 
-[Kapsayıcılar Için Azure izleyici][enable-monitor] özellikli aks kümeleri, dağıtım öngörülerini hızla görüntüleyebilir. Kullanıcılar, Kubernetes kaynakları görünümünden, CPU ve bellek kullanımı dahil olmak üzere bireysel dağıtımların canlı durumunu görebilir ve daha ayrıntılı bilgi için Azure izleyici 'ye geçiş yapabilir. Örnek bir AKS kümesinden dağıtım öngörülerine bir örnek aşağıda verilmiştir:
+[Kapsayıcılar Için Azure izleyici][enable-monitor] özellikli aks kümeleri, dağıtımı ve diğer öngörüleri hızlıca görüntüleyebilir. Kullanıcılar, Kubernetes kaynakları görünümünden, CPU ve bellek kullanımı da dahil olmak üzere bireysel dağıtımların canlı durumunu görebilir ve belirli düğümler ve kapsayıcılar hakkında daha ayrıntılı bilgi için Azure izleyici 'ye geçiş yapabilir. Örnek bir AKS kümesinden dağıtım öngörülerine bir örnek aşağıda verilmiştir:
 
 :::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Dağıtım öngörüleri Azure portal görüntülendi." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
@@ -75,8 +77,6 @@ Kubernetes kaynaklarına erişmek için AKS kümesine, Kubernetes API 'sine ve K
 
 Mevcut kümeler için Kubernetes kaynak görünümünü etkinleştirmeniz gerekebilir. Kaynak görünümünü etkinleştirmek için, kümenizin portalındaki komut istemlerini izleyin.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Kubernetes kaynak görünümünü etkinleştirmek için Azure portal ileti." lightbox="media/kubernetes-portal/enable-resource-view.png":::
-
 > [!TIP]
 > API sunucusu için [**YETKILENDIRILMIŞ IP aralıklarının**](api-server-authorized-ip-ranges.md) aks ÖZELLIĞI, API sunucusu erişimini yalnızca güvenlik duvarının genel uç noktasına sınırlamak için eklenebilir. Bu tür kümeler için başka bir seçenek de `--api-server-authorized-ip-ranges` yerel bir istemci bilgisayara veya IP adresi aralığına (portala gözatılırken) erişim sağlamak üzere güncelleştiriyoruz. Bu erişime izin vermek için bilgisayarın genel IPv4 adresine sahip olmanız gerekir. Bu adresi aşağıdaki komutla veya bir internet tarayıcısında "IP adresim nedir?" arayarak bulabilirsiniz.
 ```bash
@@ -100,3 +100,4 @@ Bu makalede, AKS kümeniz için Kubernetes kaynaklarına nasıl erişebileceğin
 [aks-managed-aad]: managed-aad.md
 [cli-aad-upgrade]: managed-aad.md#upgrading-to-aks-managed-azure-ad-integration
 [enable-monitor]: ../azure-monitor/insights/container-insights-enable-existing-clusters.md
+[portal-cluster]: kubernetes-walkthrough-portal.md

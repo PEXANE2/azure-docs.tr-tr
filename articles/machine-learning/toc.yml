@@ -408,6 +408,9 @@
           href: how-to-configure-auto-train.md
         - name: Otomatik ML kullanma (arabirim)
           href: how-to-use-automated-ml-for-ml-models.md
+        - name: Databricks ile otomatik ML kullanma
+          displayName: automl
+          href: how-to-configure-databricks-automl-environment.md
         - name: Uzak işlem hedeflerini kullanma
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
@@ -463,6 +466,8 @@
               href: how-to-deploy-fpga-web-service.md
         - name: Sorun giderme ve hata ayıklama
           href: how-to-troubleshoot-deployment.md
+        - name: Sorun giderme ve hata ayıklama (yerel)
+          href: how-to-troubleshoot-deployment-local.md
         - name: Web hizmetini kullanma
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md

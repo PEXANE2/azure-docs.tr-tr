@@ -3,12 +3,12 @@ title: Azure VMware Çözüm kaynağınızı etkinleştirme
 description: Azure VMware Çözüm kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 6d614dffc4ab3127e1e6740b1a8773e5fd7c23ff
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346546"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630896"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Azure VMware Çözüm kaynağını etkinleştirme
 [Azure VMware Çözüm](introduction.md) kaynağınızı etkinleştirmek için bir destek isteği göndermeyi öğrenin. Ayrıca, mevcut Azure VMware çözümünüz özel bulutunuzda daha fazla ana bilgisayar isteyebilirsiniz.
@@ -61,7 +61,7 @@ Azure VMware Çözüm kaynağını oluşturmadan önce, konaklarınızın ayrıl
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>CSP müşterileri için Azure VMware çözümünü etkinleştirme 
 
-CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere [Microsoft Iş ortağı merkezini](https://partner.microsoft.com) kullanmalıdır. Bu makalede, iş ortakları için satın alma yordamını göstermek üzere bir örnek olarak [CSP Azure planı](/partner-center/azure-plan-lp.md) kullanılmaktadır.
+CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere [Microsoft Iş ortağı merkezini](https://partner.microsoft.com) kullanmalıdır. Bu makalede, iş ortakları için satın alma yordamını göstermek üzere bir örnek olarak [CSP Azure planı](/partner-center/azure-plan-lp) kullanılmaktadır.
 
    >[!IMPORTANT] 
    >Azure VMware çözüm hizmeti bir çoklu kiracı gerekli değil. Bunu gerektiren barındırma iş ortakları desteklenmez. 
@@ -76,9 +76,9 @@ CSP 'Ler, müşterileri için Azure VMware çözümünü etkinleştirmek üzere 
 
 1. **Azure planı** ' nı seçin ve ardından **Sepete Ekle**' yi seçin. 
 
-1. Müşterinizin Azure planı aboneliğini genel olarak ayarlamayı gözden geçirin ve son inceleyin. Daha fazla bilgi için bkz. [Microsoft Iş Ortağı Merkezi belgeleri](/partner-center/azure-plan-manage.md).
+1. Müşterinizin Azure planı aboneliğini genel olarak ayarlamayı gözden geçirin ve son inceleyin. Daha fazla bilgi için bkz. [Microsoft Iş Ortağı Merkezi belgeleri](/partner-center/azure-plan-manage).
 
-Azure planı yapılandırıldıktan ve abonelik için gereken [Azure RBAC izinleri](/partner-center/azure-plan-manage.md) varsa, bir Azure plan aboneliğine yönelik kotayı etkinleştirmek için Microsoft 'u devreye alırsınız. **Şirket adına yönetici** (Aobo) yordamını kullanarak [Microsoft iş ortağı merkezi](https://partner.microsoft.com) 'nden Azure Portal erişin.
+Azure planı yapılandırıldıktan ve abonelik için gereken [Azure RBAC izinleri](/partner-center/azure-plan-manage) varsa, bir Azure plan aboneliğine yönelik kotayı etkinleştirmek için Microsoft 'u devreye alırsınız. **Şirket adına yönetici** (Aobo) yordamını kullanarak [Microsoft iş ortağı merkezi](https://partner.microsoft.com) 'nden Azure Portal erişin.
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com)' nde oturum açın.
 

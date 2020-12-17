@@ -6,20 +6,52 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli
+ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 35c3901e9a48523a10c1a6aacbc52e6c165e278f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009798"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630947"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Betik eylemlerini kullanarak Azure HDInsight kümelerini özelleştirme
 
 Azure HDInsight, kümeyi özelleştirmek için özel betikler çağıran **betik eylemleri** adlı bir yapılandırma yöntemi sağlar. Bu betikler ek bileşenleri yüklemek ve yapılandırma ayarlarını değiştirmek için kullanılır. Betik eylemleri, küme oluşturma sırasında veya sonrasında kullanılabilir.
 
 Betik eylemleri, Azure Marketi 'Nde de HDInsight uygulaması olarak yayımlanabilir. HDInsight uygulamaları hakkında daha fazla bilgi için bkz. [Azure Marketi 'Nde HDInsight uygulaması yayımlama](hdinsight-apps-publish-applications.md).
+
+## <a name="understand-script-actions"></a>Betik eylemlerini anlama
+
+Bir betik eylemi, HDInsight kümesindeki düğümlerde çalışan Bash betiktir. Betik eylemlerinin özellikleri ve özellikleri şunlardır:
+
+- HDInsight kümesinden erişilebilen bir URI üzerinde depolanmalıdır. Olası depolama konumları aşağıda verilmiştir:
+
+    - Normal (ESP olmayan) kümeler için:
+      - Data Lake Storage 1./Gen2: hizmet sorumlusu HDInsight 'ın, Data Lake Storage erişmek için kullandığı hizmet, betikte okuma erişimine sahip olmalıdır. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` . Data Lake Storage 2. betikleri için URI biçimi `abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+      - HDInsight kümesi için birincil veya ek depolama hesabı olan bir Azure depolama hesabındaki blob. HDInsight, küme oluşturma sırasında bu tür depolama hesaplarının her ikisine de erişim izni verilir.
+
+        > [!IMPORTANT]  
+        > Bu Azure depolama hesabında depolama anahtarını döndürmeyin, çünkü bu komut dosyası eylemlerinin sonraki betiklerin başarısız olmasına neden olur.
+
+      - Yollar aracılığıyla erişilebilen ortak bir dosya paylaşım hizmeti `http://` . Azure blob, GitHub veya OneDrive örnekleri verilmiştir. Örneğin URI 'Ler için bkz. [örnek betik eylemi betikleri](#example-script-action-scripts).
+    - ESP içeren kümeler için, `wasb://` veya `wasbs://` veya `http[s]://` URI 'leri desteklenir.
+
+- Yalnızca belirli düğüm türlerinde çalışacak şekilde kısıtlanabilir. Örnekler, baş düğüm veya çalışan düğümlerdir.
+- Kalıcı veya *geçici* olabilir.
+
+    - Kalıcı betik eylemlerinin benzersiz bir adı olmalıdır. Kalıcı betikler, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır. Kalıcı bir betik, ölçeklendirme işlemleri gerçekleştiğinde başka bir düğüm türüne değişiklikler de uygulayabilir. Bir baş düğüm bir örnektir.
+    - *Geçici betikler kalıcı* değildir. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından *, geçici bir* betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği *geçici* bir komut dosyasına indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
+
+- , Yürütme sırasında komut dosyası tarafından kullanılan parametreleri kabul edebilir.
+- Küme düğümlerinde kök düzeyi ayrıcalıklarla çalıştırın.
+- Azure portal, Azure PowerShell, Azure CLı veya HDInsight .NET SDK 'Sı aracılığıyla kullanılabilir.
+- VM 'deki hizmet dosyalarını kaldırmak veya değiştirmek için betik eylemleri, hizmet durumunu ve kullanılabilirliğini etkileyebilir.
+
+Küme, çalıştırılan tüm betiklerin geçmişini tutar. Geçmiş, yükseltme veya indirgeme işlemleri için bir betiğin KIMLIĞINI bulmanız gerektiğinde yardımcı olur.
+
+> [!IMPORTANT]  
+> Betik eylemi tarafından yapılan değişiklikleri geri almanın otomatik bir yolu yoktur. Değişiklikleri el ile tersine çevirin ya da onları geri yükleyen bir betik sağlayın.
 
 ## <a name="permissions"></a>İzinler
 
@@ -32,62 +64,25 @@ Etki alanına katılmış HDInsight ile izinlerle çalışma hakkında daha fazl
 
 ## <a name="access-control"></a>Erişim denetimi
 
-Azure aboneliğinizin Yöneticisi veya sahibi değilseniz, hesabınız HDInsight kümesini içeren kaynak grubuna en az katkıda bulunan erişime sahip olmalıdır.
+Azure aboneliğinizin Yöneticisi veya sahibi değilseniz, hesabınızın `Contributor` HDInsight kümesini içeren kaynak grubuna en az erişimi olmalıdır.
 
 Azure aboneliğine en az katkıda bulunan erişimi olan birisi, sağlayıcıya daha önce kaydolmalıdır. Sağlayıcıya katkıda bulunan erişimi olan bir Kullanıcı bir kaynak oluşturduğunda sağlayıcı kaydı gerçekleşir. Kaynak oluşturmadan, bkz. [rest kullanarak sağlayıcı kaydetme](/rest/api/resources/providers#Providers_Register).
 
 Erişim yönetimiyle çalışma hakkında daha fazla bilgi alın:
 
-* [Azure portalında erişim yönetimi ile çalışmaya başlama](../role-based-access-control/overview.md)
-* [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](../role-based-access-control/role-assignments-portal.md)
+- [Azure portalında erişim yönetimi ile çalışmaya başlama](../role-based-access-control/overview.md)
+- [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanın](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="understand-script-actions"></a>Betik eylemlerini anlama
+## <a name="methods-for-using-script-actions"></a>Betik eylemlerini kullanma yöntemleri
 
-Bir betik eylemi, HDInsight kümesindeki düğümlerde çalışan Bash betiktir. Betik eylemlerinin özellikleri ve özellikleri şunlardır:
-
-* HDInsight kümesinden erişilebilen bir URI üzerinde depolanmalıdır. Olası depolama konumları aşağıda verilmiştir:
-
-    * Normal kümeler için:
-
-      * ADLS 1.: hizmet sorumlusu HDInsight 'ın, Data Lake Storage erişmek için kullandığı hizmet, betikte okuma erişimine sahip olmalıdır. Data Lake Storage 1. depolanan betiklerin URI biçimi `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` .
-
-      * HDInsight kümesi için birincil veya ek depolama hesabı olan bir Azure depolama hesabındaki blob. HDInsight, küme oluşturma sırasında bu tür depolama hesaplarının her ikisine de erişim izni verilir.
-
-        > [!IMPORTANT]  
-        > Bu Azure depolama hesabında depolama anahtarını döndürmeyin, çünkü bu komut dosyası eylemlerinin sonraki betiklerin başarısız olmasına neden olur.
-
-      * Http://yollarla erişilebilen bir ortak dosya paylaşım hizmeti. Örnekler Azure blob, GitHub, OneDrive. Örneğin URI 'Ler için bkz. [örnek betik eylemi betikleri](#example-script-action-scripts).
-
-     * ESP içeren kümeler için wasb://veya wasbs://veya http [s]://URI 'Leri desteklenir.
-
-* Yalnızca belirli düğüm türlerinde çalışacak şekilde kısıtlanabilir. Örnekler, baş düğüm veya çalışan düğümlerdir.
-
-* Kalıcı olabilir veya `ad hoc` .
-
-    Kalıcı betik eylemlerinin benzersiz bir adı olmalıdır. Kalıcı betikler, ölçek işlemleri aracılığıyla kümeye eklenen yeni çalışan düğümlerini özelleştirmek için kullanılır. Kalıcı bir betik, ölçeklendirme işlemleri gerçekleştiğinde başka bir düğüm türüne değişiklikler de uygulayabilir. Bir baş düğüm bir örnektir.
-
-    `Ad hoc` betikler kalıcı değil. Küme oluşturma sırasında kullanılan betik eylemleri otomatik olarak kalıcı hale getirilir. Betik çalıştırıldıktan sonra kümeye eklenen çalışan düğümlerine uygulanmaz. Ardından, bir `ad hoc` betiği kalıcı bir betiğe yükseltebilir veya kalıcı bir betiği bir `ad hoc` betiğe indirgeyebilirsiniz. Özel olarak olması gerektiğini gösterseniz bile, başarısız olan betikler kalıcı olmaz.
-
-* , Yürütme sırasında komut dosyası tarafından kullanılan parametreleri kabul edebilir.
-
-* Küme düğümlerinde kök düzeyi ayrıcalıklarla çalıştırın.
-
-* Azure portal, Azure PowerShell, Azure CLı veya HDInsight .NET SDK 'Sı aracılığıyla kullanılabilir.
-
-* VM 'deki hizmet dosyalarını kaldırmak veya değiştirmek için betik eylemleri, hizmet durumunu ve kullanılabilirliğini etkileyebilir.
-
-Küme, çalıştırılan tüm betiklerin geçmişini tutar. Geçmiş, yükseltme veya indirgeme işlemleri için bir betiğin KIMLIĞINI bulmanız gerektiğinde yardımcı olur.
-
-> [!IMPORTANT]  
-> Betik eylemi tarafından yapılan değişiklikleri geri almanın otomatik bir yolu yoktur. Değişiklikleri el ile tersine çevirin ya da onları geri yükleyen bir betik sağlayın.
+Küme ilk oluşturulduğunda veya var olan bir kümede çalışırken çalışacak bir betik eylemi yapılandırma seçeneğiniz vardır.
 
 ### <a name="script-action-in-the-cluster-creation-process"></a>Küme oluşturma işlemindeki betik eylemi
 
 Küme oluşturma sırasında kullanılan betik eylemleri, var olan bir kümede çalıştırılan betik eylemlerden biraz farklıdır:
 
-* Komut dosyası otomatik olarak kalıcıdır.
-
-* Betikteki bir hata, küme oluşturma işleminin başarısız olmasına neden olabilir.
+- Komut dosyası otomatik olarak kalıcıdır.
+- Betikteki bir hata, küme oluşturma işleminin başarısız olmasına neden olabilir.
 
 Aşağıdaki diyagramda, oluşturma işlemi sırasında betik eyleminin ne zaman çalıştığı gösterilmektedir:
 
@@ -191,9 +186,8 @@ Bu örnekte, komut dosyası eylemi aşağıdaki kod kullanılarak eklenir:
 
 Bir şablonu dağıtma hakkında daha fazla bilgi alın:
 
-* [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
-
-* [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md)
+- [Kaynakları Resource Manager şablonları ve Azure PowerShell ile dağıtma](../azure-resource-manager/templates/deploy-powershell.md)
+- [Kaynak Yöneticisi şablonları ve Azure CLı ile kaynak dağıtma](../azure-resource-manager/templates/deploy-cli.md)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Azure PowerShell kümeden küme oluşturma sırasında betik eylemi kullan
 
@@ -211,7 +205,7 @@ HDInsight .NET SDK 'Sı, bir .NET uygulamasından HDInsight ile çalışmayı ko
 
 ## <a name="script-action-to-a-running-cluster"></a>Çalışan bir kümeye betik eylemi
 
-Bu bölümde, çalışan bir kümeye betik eylemlerinin nasıl uygulanacağı açıklanmaktadır.
+Bu bölümde, çalışan bir kümede betik eylemlerinin nasıl uygulanacağı açıklanmaktadır.
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-portal"></a>Azure portal çalışan bir kümeye betik eylemi uygulama
 
@@ -319,7 +313,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 | Komut | Açıklama |
 | --- | --- |
@@ -327,7 +321,7 @@ Aşağıdaki örnek betik, bir betiği yükseltmek ve alçaltmak için cmdlet 'l
 |[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Belirtilen HDInsight kümesinde betik eylemlerini yürütün.|
 | [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Belirtilen küme için tüm kalıcı betik eylemlerini listeler. |
 |[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Belirtilen küme için tüm betiklerin yürütme geçmişini listeler.|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Belirtilen geçici betik yürütmeyi kalıcı bir betiğe yükseltir.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|, Belirtilen geçici betik yürütmeyi kalıcı bir betiğe yükseltir.|
 |[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Verilen betik yürütme KIMLIĞI için betik yürütme ayrıntısı alır.|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK 'Sı

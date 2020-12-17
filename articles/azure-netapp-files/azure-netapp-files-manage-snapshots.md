@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 03b7941385517fe694f0743194655a1b6a1c0e1e
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 35fce3723e92a3a7c68aaa62b28b756432182a8c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95253567"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629672"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Azure NetApp Files kullanarak anlık görüntüleri yönetme
 
@@ -177,7 +177,7 @@ Anlık görüntü yolunu Gizle seçeneği, bir birimin anlık görüntü yolunun
 
     ![Yeni birime geri yükle](../media/azure-netapp-files/snapshot-restore-new-volume.png) 
 
-4. **Gözden geçir + oluştur**' a tıklayın.  **Oluştur**'a tıklayın.   
+4. **Gözden geçir + oluştur**' a tıklayın.  **Oluştur**’a tıklayın.   
     Yeni birim, anlık görüntünün kullandığı protokolü kullanır.   
     Anlık görüntünün geri yüklendiği yeni birim birimler dikey penceresinde görünür.
 
@@ -269,3 +269,4 @@ Artık saklamak zorunda kalmayacak anlık görüntüleri silebilirsiniz.
 * [Anlık görüntü ilkelerinde sorun giderme](troubleshoot-snapshot-policies.md)
 * [Azure NetApp Files için kaynak sınırları](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Snapshot 101 videosu](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)
+* [Azure uygulaması tutarlı anlık görüntü aracı nedir?](azacsnap-introduction.md)

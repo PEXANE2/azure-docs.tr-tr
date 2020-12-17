@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 9c22e7cbc71c2b29c4b3e50319c6b6d256856bb3
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7d43c128f0f587a32cc4b8673727579043f268eb
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855702"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629604"
 ---
 # <a name="set-up-logging-to-monitor-logic-apps-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde mantıksal uygulamaları izlemek için günlüğü ayarlama
 
@@ -24,7 +24,7 @@ Logic Apps kaynaklarınızı [Microsoft Azure Güvenlik Merkezi](../security-cen
 
 * Azure aboneliği. Aboneliğiniz yoksa, başlamadan önce [ücretsiz bir Azure hesabı oluşturun](https://azure.microsoft.com/free/) .
 * [Tanılama günlüğü etkin](#enable-diagnostic-logging)olan mevcut mantıksal uygulamalar.
-* Mantıksal uygulamanız için günlüğe kaydetmeyi etkinleştirmek için gereken bir Log Analytics çalışma alanı. Çalışma alanınız yoksa, önce [çalışma alanınızı oluşturun](/learn/quick-create-workspace.md).
+* Mantıksal uygulamanız için günlüğe kaydetmeyi etkinleştirmek için gereken bir Log Analytics çalışma alanı. Çalışma alanınız yoksa, önce [çalışma alanınızı oluşturun](/azure/azure-monitor/learn/quick-create-workspace).
 
 ## <a name="enable-diagnostic-logging"></a>Tanılama günlüğünü etkinleştirme
 
@@ -37,7 +37,7 @@ Logic Apps 'in kaynak sistem durumunu görüntüleyebilmeniz için önce [tanıl
 
 Mantıksal uygulamalarınızın tanılama günlüğü 'nün etkin olup olmadığından emin değilseniz, güvenlik merkezi 'ne bakabilirsiniz:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Arama çubuğunda **Güvenlik Merkezi**' ni girin ve seçin.
 1. Güvenlik Merkezi Pano menüsünde, **genel** altında **öneriler**' i seçin.
 1. Güvenlik önerileri tablosunda, **denetimi etkinleştir ve** &gt; **Logic Apps ' de günlüğe kaydetme tanılama günlüklerini** bul ve Seç ' in güvenlik denetimleri tablosunda etkinleştirilmesi gerekir.
@@ -47,7 +47,7 @@ Mantıksal uygulamalarınızın tanılama günlüğü 'nün etkin olup olmadığ
 
 [Tanılama günlüğünü](#enable-diagnostic-logging)etkinleştirdikten sonra, güvenlik merkezi 'nde mantıksal uygulamalarınızın sistem durumunu görebilirsiniz.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Arama çubuğunda **Güvenlik Merkezi**' ni girin ve seçin.
 1. Güvenlik Merkezi Pano menüsünde, **genel** altında **Stok**' ı seçin.
 1. Sayım sayfasında, varlık listenizi yalnızca Logic Apps kaynakları gösterecek şekilde filtreleyin. Sayfa menüsünde, **kaynak türleri** &gt; **mantıksal uygulamalar**' ı seçin.

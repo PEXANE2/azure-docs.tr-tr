@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a9357f81c3b22f70af2a4a05de2de10e19acfbd9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: edf9df1777c4ab1d204cfc8058ec22c2d4e3f663
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458668"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631814"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Öğretici: Learning koltuk LMS ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Learning koltuk LMS 'yi Azure AD ile tümleştirmek aşağıdaki avantajları sa
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini öğrenme bilgisayar LMS ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Learning koltuk LMS 'yi Azure AD 'ye tümleştirmeyi yapılandırmak için, Gale
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **öğrenme bılgısayar LMS**yazın, sonuç panelinden **öğrenme koltuk LMS** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **öğrenme bılgısayar LMS** yazın, sonuç panelinden **öğrenme koltuk LMS** ' yi seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
      ![Sonuçlar listesinde bilgisayar LMS 'sini öğrenme](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre LEARNING koltuk LMS ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre LEARNING koltuk LMS ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve öğrenme bilgisayar LMS içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı öğrenme bilgisayar LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -112,7 +112,7 @@ Azure AD çoklu oturum açmayı öğrenme bilgisayar LMS ile yapılandırmak iç
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.learningseatlms.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [öğrenme bılgısayar LMS istemci destek ekibine](http://help.learningseatlms.com/help) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için [öğrenme bılgısayar LMS istemci destek ekibine](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
 6. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imza sertifikası** bölümünde, **Federasyon meta veri XML** 'sini gereksiniminize göre belirtilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir** ' e tıklayın.
 
@@ -130,7 +130,7 @@ Azure AD çoklu oturum açmayı öğrenme bilgisayar LMS ile yapılandırmak iç
 
 ### <a name="configure-learning-seat-lms-single-sign-on"></a>Learning koltuk LMS tek Sign-On yapılandırma
 
-**Bilgisayar Için öğrenme LMS** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den öğrenme özellikli bir [bilgisayar LMS destek ekibine](http://help.learningseatlms.com/help)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
+**Bilgisayar Için öğrenme LMS** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den öğrenme özellikli bir [bilgisayar LMS destek ekibine](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -148,9 +148,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
+    a. **Ad** alanına **Brittasıon** girin.
   
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -185,7 +185,7 @@ Bu bölümde, öğrenme koltuk LMS 'ye erişim izni vererek Azure çoklu oturum 
 
 ### <a name="create-learning-seat-lms-test-user"></a>Öğrenme koltuk LMS test kullanıcısı oluşturma
 
-Bu bölümde, Learning Bilgisayar LMS 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Learning koltuk LMS platformunda kullanıcıları eklemek için [Learning koltuk LMS destek ekibi](http://help.learningseatlms.com/help) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Learning Bilgisayar LMS 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Learning koltuk LMS platformunda kullanıcıları eklemek için [Learning koltuk LMS destek ekibi](https://azuremarketplace.microsoft.com/marketplace/apps/aad.learnconnect?tab=Overview) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

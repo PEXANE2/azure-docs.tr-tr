@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: 141dd37dff8403825df713de8f7176d4dd9d20f8
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008053"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632048"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Bizagı Studio 'Yu dijital Işlem otomasyonu için yapılandırma
 
@@ -58,7 +58,7 @@ Azure AD ile sağlamayı desteklemek için Bizagı Studio 'Yu dijital Işlem oto
 
    ![OAuth 2 uygulamaları vurgulanmış olan Bizagı 'nin ekran görüntüsü.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/admin.png)
 
-3. **Ekle**’yi seçin.
+3. **Add (Ekle)** seçeneğini belirleyin.
 4. **Verme türü** için **taşıyıcı belirteci**' ni seçin. **Izin verilen kapsam** için **API** ve **Kullanıcı eşitleme**' yi seçin. Sonra **Kaydet**'i seçin.
 
    ![Atama türü ve Izin verilen kapsam vurgulanmış şekilde, kayıt uygulamasının ekran görüntüsü.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/token.png)
@@ -88,7 +88,7 @@ Bu bölüm, Kullanıcı ve grupları oluşturmak, güncelleştirmek ve devre dı
 
 ### <a name="configure-automatic-user-provisioning-for-bizagi-studio-for-digital-process-automation-in-azure-ad"></a>Azure AD 'de dijital Işlem otomasyonu için Bizagı Studio için otomatik Kullanıcı sağlamayı yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
     ![Kurumsal uygulamalar ve tüm uygulamalar vurgulanarak Azure portal ekran görüntüsü.](common/enterprise-applications.png)
 
@@ -132,7 +132,14 @@ Bu bölüm, Kullanıcı ve grupları oluşturmak, güncelleştirmek ve devre dı
    |name.familyName|Dize|
    |ad. biçimlendirildi|Dize|
    |phoneNumbers[type eq "mobile"].value|Dize|
+
+   Özel uzantı öznitelikleri, **Bizagı için öznitelik listesini düzenle > gelişmiş seçenekleri göster**' e gidilerek eklenebilir. Özel uzantı özniteliklerine önek eklenmelidir: IETF: **params: Scim: schemas: Extension: bizagı: 2.0: UserProperties:**. Örneğin, özel uzantı özniteliği bir **ıdentifiationnumber** ise, öznitelik **urn: IETF: params: Scim: schemas: Extension: bizagı: 2.0: UserProperties: ıdencertificate: ationnumber** olarak eklenmelidir. Değişiklikleri uygulamak için **Kaydet** ' i seçin.
    
+    ![Öznitelik listesini düzenleyin.](media/bizagi-studio-for-digital-process-automation-provisioning-tutorial/edit.png)  
+
+   Özel öznitelikler ekleme hakkında daha fazla bilgi, [uygulama özniteliklerini özelleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)bölümünde bulunabilir.
+
+
 10. Kapsam filtrelerini yapılandırmak için bkz. [kapsam filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
 11. Dijital Işlem otomasyonu için Bizagı Studio için Azure AD sağlama hizmeti 'ni etkinleştirmek üzere **Ayarlar** bölümünde, **sağlama durumunu** **Açık** olarak değiştirin.

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: cf8b6670817132c8c0c0a09194b9aca4bbc8073c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923148"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632069"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -421,9 +421,9 @@ Bu örnekteki iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Evet | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
-   | **Konu** | Evet | `An email from your example workflow` | E-posta konusu |
-   | **Gövde** | Evet | `Hello from your example workflow!` | E-posta gövdesi içeriği |
+   | **Hedef** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
+   | **Konu** | Yes | `An email from your example workflow` | E-posta konusu |
+   | **Gövde** | Yes | `Hello from your example workflow!` | E-posta gövdesi içeriği |
    ||||
 
    > [!NOTE]
@@ -598,7 +598,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    ![Çalışma durumu ve geçmişi olan iş akışının genel bakış sayfasını gösteren ekran görüntüsü](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Çalışma durumu | Açıklama |
+   | Çalışma durumu | Description |
    |------------|-------------|
    | **İptal edildi** | Çalıştırma, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | **Yürütüldükten** | Çalıştırma tetiklendi ve başlatıldı, ancak bir iptal isteği alındı. |
@@ -622,7 +622,7 @@ Mantıksal uygulamanızı test etmek için aşağıdaki adımları izleyerek bir
 
    İşte iş akışındaki her adımın sahip olduğu olası durumlar şunlardır:
 
-   | Eylem durumu | Simge | Açıklama |
+   | Eylem durumu | Simge | Description |
    |---------------|------|-------------|
    | İptal edildi | !["Durdurulan" eylem durumu simgesi][aborted-icon] | Bu eylem, dış sorunlar nedeniyle durdurulmuş veya bitmedi; Örneğin, bir sistem kesintisi veya bir Azure aboneliği. |
    | İptal Edildi | !["Iptal edildi" eylem durumu simgesi][cancelled-icon] | Eylem çalışıyor ancak iptal isteği alındı. |
@@ -769,7 +769,7 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
 
       1. Mevcut bir Application Insights kaynağı seçin ya da **yeni Application Insights kaynağı oluşturun**.
 
-      1. [Azure portal](htpps://portal.azure.com)Application Insights kaynağına gidin.
+      1. [Azure portal](https://portal.azure.com)Application Insights kaynağına gidin.
 
       1. Kaynak menüsünde **genel bakış**' ı seçin. **Izleme anahtarı** değerini bulup kopyalayın.
 

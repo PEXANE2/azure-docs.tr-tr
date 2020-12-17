@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: cc6bcef77ca1601b76468586aa6af202836f1438
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356714"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97632001"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Konuşma kapsayıcıları için Batch işleme seti
 
@@ -86,13 +86,13 @@ docker run --rm -ti -v  /mnt/my_nfs:/my_nfs --entrypoint /bin/bash /mn
 Batch istemcisini çalıştırmak için:  
 
 ```Docker
-run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+run-batch-client -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 Batch istemcisini ve kapsayıcısını tek bir komutta çalıştırmak için:
 
 ```Docker
-docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
+docker run --rm -ti -v  /mnt/my_nfs:/my_nfs docker.io/batchkit/speech-batch-kit:latest  -config /my_nfs/config.yaml -input_folder /my_nfs/audio_files -output_folder /my_nfs/transcriptions -log_folder  /my_nfs/logs -file_log_level DEBUG -nbest 1 -m ONESHOT -diarization  None -language en-US -strict_config   
 ```
 
 
@@ -151,14 +151,14 @@ Batch işleme seti, parametresini kullanarak üç mod sunar `--run-mode` .
 
 ---
 
-## <a name="logging"></a>Günlüğe Kaydetme
+## <a name="logging"></a>Günlüğe kaydetme
 
 > [!NOTE]
 > Batch istemcisi çok büyük alırsa *Run. log* dosyasının üzerine düzenli olarak yazılabilir.
 
-İstemci, Docker komutunda bağımsız değişken tarafından belirtilen dizinde bir *Run. log* dosyası oluşturur `-log_folder` `run` . Günlükler, varsayılan olarak hata ayıklama düzeyinde yakalanır. Aynı Günlükler öğesine gönderilir `stdout/stderr` ve `-log_level` bağımsız değişkene göre filtrelenir. Bu günlük yalnızca hata ayıklama için gereklidir veya destek için bir izleme göndermeniz gerekir. Günlük klasörü, her ses dosyası için konuşma SDK günlüklerini de içerir.
+İstemci, Docker komutunda bağımsız değişken tarafından belirtilen dizinde bir *Run. log* dosyası oluşturur `-log_folder` `run` . Günlükler, varsayılan olarak hata ayıklama düzeyinde yakalanır. Aynı Günlükler öğesine gönderilir `stdout/stderr` ve `-file_log_level` veya `console_log_level` bağımsız değişkenlerine göre filtrelenir. Bu günlük yalnızca hata ayıklama için gereklidir veya destek için bir izleme göndermeniz gerekir. Günlük klasörü, her ses dosyası için konuşma SDK günlüklerini de içerir.
 
-Tarafından belirtilen çıkış dizini `-output_folder` *run_summary.json*   , her 30 saniyede bir veya yeni döküm her tamamlandığında düzenli olarak yeniden yazılabilir birrun_summary.jsdosyası içerecektir. Toplu işlem devam ederken ilerlemeyi denetlemek için bu dosyayı kullanabilirsiniz. Toplu işlem tamamlandığında her dosyanın son çalıştırma istatistiklerini ve nihai durumunu da içerir. İşlemin temiz bir çıkışı olduğunda Batch tamamlanır. 
+Tarafından belirtilen çıkış dizini `-output_folder`    , her 30 saniyede bir veya yeni döküm her tamamlandığında düzenli olarak yeniden yazılabilir birrun_summary.jsdosyası içerecektir. Toplu işlem devam ederken ilerlemeyi denetlemek için bu dosyayı kullanabilirsiniz. Toplu işlem tamamlandığında her dosyanın son çalıştırma istatistiklerini ve nihai durumunu da içerir. İşlemin temiz bir çıkışı olduğunda Batch tamamlanır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

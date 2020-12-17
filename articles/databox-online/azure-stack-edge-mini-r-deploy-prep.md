@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/22/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Mini R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: 54ac683dcc2b124c4a6410b2e8449fa7e969ce8c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6d41c186a5d239ad7228c37902f5691085e43dbf
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468887"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631253"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-mini-r"></a>Öğretici: Azure Stack Edge Mini R 'yi dağıtmaya hazırlanma
 
@@ -28,11 +28,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni kaynak oluşturma
 > * Etkinleştirme anahtarı alma
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 
 Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
-| Adım | Açıklama |
+| Adım | Description |
 | --- | --- |
 | **Hazırlama** |Bu adımların, yaklaşan dağıtım için hazırlanmasından tamamlanması gerekir. |
 | **[Dağıtım yapılandırma denetim listesi](#deployment-configuration-checklist)** |Dağıtımdan önce ve dağıtım sırasında bilgi toplamak ve bilgileri kaydetmek için bu denetim listesini kullanın. |
@@ -40,7 +40,7 @@ Azure Stack Edge Mini R dağıtmak için, önceden tanımlanmış sırada aşağ
 |  | |
 |**Dağıtım öğreticileri** |Azure Stack Edge Mini R cihazınızı üretime dağıtmak için bu öğreticiler gereklidir. |
 |**[1. cihaz için Azure portal hazırlayın](azure-stack-edge-mini-r-deploy-prep.md)** |Fiziksel cihazı yüklemeden önce Azure Stack Edge kaynağını oluşturun ve yapılandırın. |
-|**[2. cihazı yüklemesi](azure-stack-edge-mini-r-deploy-install.md)**|Fiziksel cihazınızın paketini açın, raf ve kablo.  |
+|**[2. cihazı yüklemesi](azure-stack-edge-mini-r-deploy-install.md)**|Fiziksel cihazınızı inceleyin ve kablosunu çıkarın.  |
 |**[3. cihaza bağlanın](azure-stack-edge-mini-r-deploy-connect.md)** |Cihaz yüklendikten sonra, cihaz yerel Web Kullanıcı arabirimine bağlanın.  |
 |**[4. ağ ayarlarını yapılandırma](azure-stack-edge-mini-r-deploy-configure-network-compute-web-proxy.md)** |Cihazınızın işlem ağı ve Web proxy ayarları dahil olmak üzere ağı yapılandırın.   |
 |**[5. cihaz ayarlarını yapılandırma](azure-stack-edge-mini-r-deploy-set-up-device-update-time.md)** |Bir cihaz adı ve DNS etki alanı atayın, güncelleştirme sunucusunu ve cihaz zamanını yapılandırın. |

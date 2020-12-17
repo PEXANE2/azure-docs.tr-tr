@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: f7e16400f6460f7479cdffd1928126cdd70a8f0c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504007"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631100"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -75,34 +75,23 @@ Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız ad
 
 Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
 
-### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>AKS ve Field üzerinde dağıtma-programlanabilir kapı dizisi (FPGA)
+### <a name="deploy-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde dağıtma
 
   > [!NOTE]
   > Bu bölümdeki bilgiler, tasarımcı için güvenli bir Web hizmeti dağıttığınızda de geçerlidir. Python SDK 'yı kullanmayı bilmiyorsanız bkz. [Python için Azure MACHINE LEARNING SDK nedir?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan bir küme ekleyebilirsiniz. Küme oluşturma veya ekleme hakkında daha fazla bilgi için bkz. [Azure Kubernetes hizmet kümesine model dağıtma](how-to-deploy-azure-kubernetes-service.md).
-  
--  Yeni bir küme oluşturursanız **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** kullanın.
-- Var olan bir kümeyi eklerseniz, **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** kullanın. Her ikisi de **Enable_ssl** yöntemi olan bir yapılandırma nesnesi döndürür.
+Hem **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** hem de **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** **Enable_ssl** yöntemine sahıp bir yapılandırma nesnesi döndürür ve TLS 'i etkinleştirmek için **Enable_ssl** metodunu kullanabilirsiniz.
 
-**Enable_ssl** yöntemi, Microsoft tarafından veya satın aldığınız bir sertifika tarafından sunulan bir sertifikayı kullanabilir.
+Microsoft sertifikası veya CA 'dan satın alınan özel bir sertifika ile TLS 'yi etkinleştirebilirsiniz. 
 
-> [!WARNING]
-> AKS kümeniz bir iç yük dengeleyiciye yapılandırılmışsa, Microsoft tarafından sağlanmış bir sertifika kullanılması __desteklenmez__. Microsoft tarafından sağlanan bir sertifikanın kullanılması, Azure 'da, iç yük dengeleyici için yapılandırıldığında AKS için kullanılamayan bir genel IP kaynağı gerektirir.
-
-  * Microsoft 'tan bir sertifika kullandığınızda *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label* üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz.
-
-    Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
-
-    > [!IMPORTANT]
-    > Microsoft 'tan bir sertifika kullandığınızda, kendi sertifikanızı veya etki alanı adınızı satın almanız gerekmez.
-
-    Aşağıdaki örnek, Microsoft 'tan bir TLS/SSL sertifikası sağlayan bir yapılandırmanın nasıl oluşturulacağını gösterir:
+* **Microsoft 'tan bir sertifika kullandığınızda** *leaf_domain_label* parametresini kullanmanız gerekir. Bu parametre, hizmetin DNS adını oluşturur. Örneğin, "contoso" değeri "contoso" etki alanı adını oluşturur \<six-random-characters> . \<azureregion> cloudapp.azure.com ", burada \<azureregion> hizmeti içeren bölgedir. İsteğe bağlı olarak, mevcut *leaf_domain_label* üzerine yazmak için *overwrite_existing_domain* parametresini kullanabilirsiniz. Aşağıdaki örnek, Microsoft sertifikası ile TLS sağlayan bir yapılandırmanın nasıl oluşturulacağını gösterir:
 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
@@ -112,20 +101,28 @@ AKS 'e dağıttığınızda, yeni bir AKS kümesi oluşturabilir veya var olan b
     # Config used to attach an existing AKS cluster to your workspace and enable TLS
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
+
     # Leaf domain label generates a name using the formula
     #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
     #  where "######" is a random series of characters
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
+    > [!IMPORTANT]
+    > Microsoft 'tan bir sertifika kullandığınızda, kendi sertifikanızı veya etki alanı adınızı satın almanız gerekmez.
 
-  * *Satın aldığınız bir sertifikayı* kullandığınızda *ssl_cert_pem_file*, *ssl_key_pem_file* ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için *. pek* dosyalarının nasıl kullanılacağını gösterir:
+    > [!WARNING]
+    > AKS kümeniz bir iç yük dengeleyiciye yapılandırılmışsa, Microsoft tarafından sağlanmış bir sertifika kullanılması __desteklenmez__ ve TLS 'yi etkinleştirmek için özel sertifika kullanmanız gerekir.
 
+* **Satın aldığınız özel bir sertifikayı kullandığınızda** *ssl_cert_pem_file*, *ssl_key_pem_file* ve *ssl_cname* parametrelerini kullanırsınız. Aşağıdaki örnek, satın aldığınız bir TLS/SSL sertifikası kullanan bir yapılandırma oluşturmak için. pek dosyalarının nasıl kullanılacağını gösterir:
+ 
     ```python
     from azureml.core.compute import AksCompute
+
     # Config used to create a new AKS cluster and enable TLS
     provisioning_config = AksCompute.provisioning_configuration()
     provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
                                         ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
@@ -150,23 +147,17 @@ Daha fazla bilgi için bkz. [AciWebservice.deploy_configuration ()](/python/api/
 
 ## <a name="update-your-dns"></a>DNS 'nizi güncelleştirme
 
-Sonra, DNS 'nizi Web hizmetine işaret etmek için güncelleştirmeniz gerekir.
+Özel sertifika veya acı dağıtımıyla AKS dağıtımı için DNS kaydınızı, Puanlama uç noktasının IP adresini gösterecek şekilde güncelleştirmeniz gerekir.
 
-+ **Container Instances için:**
+  > [!IMPORTANT]
+  > AKS dağıtımı için Microsoft 'tan bir sertifika kullandığınızda, kümenin DNS değerini el ile güncelleştirmeniz gerekmez. Değer otomatik olarak ayarlanmalıdır.
 
-  Etki alanı adınız için DNS kaydını güncelleştirmek üzere etki alanı ad kaydedicinizden araçları kullanın. Kayıt, hizmetin IP adresini göstermelidir.
+Özel etki alanı adınızın DNS kaydını güncelleştirmek için aşağıdaki adımları izleyebilirsiniz:
+* Puanlama uç noktası URI 'sinden, genellikle biçiminde olan Puanlama uç noktası IP adresini alın *http://104.214.29.152:80/api/v1/service/<service-name>/score* . 
+* Etki alanı adınız için DNS kaydını güncelleştirmek üzere etki alanı ad kaydedicinizden araçları kullanın. Kayıt, Puanlama uç noktasının IP adresini göstermelidir.
+* DNS kaydı güncelleştirmesinden sonra, *nslookup Custom-Domain-Name* komutunu kullanarak DNS çözümlemesini doğrulayabilirsiniz. DNS kaydı doğru şekilde güncelleştirilirse, özel etki alanı adı Puanlama uç noktasının IP adresini işaret eder.
+* İstemci, kayıt alanına ve etki alanı adı için yapılandırılmış "yaşam süresi" (TTL) değerine bağlı olarak, etki alanı adını çözebilmek için dakika veya saat gecikme süresi olabilir.
 
-  İstemci, kayıt alanına ve etki alanı adı için yapılandırılmış "yaşam süresi" (TTL) değerine bağlı olarak, etki alanı adını çözebilmek için dakika veya saat gecikme süresi olabilir.
-
-+ **AKS için:**
-
-  > [!WARNING]
-  > Hizmeti Microsoft 'un bir sertifikası kullanarak oluşturmak için *leaf_domain_label* kullandıysanız, kümenin DNS değerini el ile güncelleştirin. Değer otomatik olarak ayarlanmalıdır.
-  >
-  > AKS kümeniz bir iç yük dengeleyiciye yapılandırılmışsa, Microsoft tarafından sağlanmış bir sertifika ( *leaf_domain_label* ayarlanarak) kullanılması __desteklenmez__. Microsoft tarafından sağlanan bir sertifikanın kullanılması, Azure 'da, iç yük dengeleyici için yapılandırıldığında AKS için kullanılamayan bir genel IP kaynağı gerektirir.
-  Sol bölmedeki **Ayarlar** ' ın altındaki **yapılandırma** sekmesinde aks KÜMESININ genel IP adresinin DNS 'sini güncelleştirin. (Aşağıdaki resme bakın.) Genel IP adresi, AKS aracı düğümlerini ve diğer ağ kaynaklarını içeren kaynak grubu altında oluşturulan bir kaynak türüdür.
-
-  [![Azure Machine Learning: TLS ile Web hizmetlerinin güvenliğini sağlama](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-tlsssl-certificate"></a>TLS/SSL sertifikasını güncelleştirme
 

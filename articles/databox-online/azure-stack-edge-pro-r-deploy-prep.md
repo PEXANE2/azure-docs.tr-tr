@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 12/16/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro R so I can use it to transfer data to Azure.
-ms.openlocfilehash: d992748e9829993acc28795778baae3eb92e88f3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7ca9b21838d35b54b4ed84d5aaf3aa797b02d9e0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468827"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630777"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-r"></a>Öğretici: Azure Stack Edge Pro R 'yi dağıtmaya hazırlanma
 
@@ -29,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Yeni kaynak oluşturma
 > * Etkinleştirme anahtarı alma
 
-### <a name="get-started"></a>Kullanmaya başlayın
+### <a name="get-started"></a>başlarken
 
 Azure Stack Edge Pro R 'yi dağıtmak için, önceden tanımlanmış sırada aşağıdaki öğreticilere bakın.
 
@@ -41,7 +41,7 @@ Azure Stack Edge Pro R 'yi dağıtmak için, önceden tanımlanmış sırada aş
 |  | |
 |**Dağıtım öğreticileri** |Azure Stack Edge Pro R cihazınızı üretime dağıtmak için bu öğreticiler gereklidir. |
 |**[1. cihaz için Azure portal hazırlayın](azure-stack-edge-pro-r-deploy-prep.md)** |Azure Stack Edge kaynağını bir Azure Stack Box Edge fiziksel cihazı yüklemeden önce oluşturun ve yapılandırın. |
-|**[2. cihazı yüklemesi](azure-stack-edge-pro-r-deploy-install.md)**|Fiziksel cihazınızın paketini açın, raf ve kablo.  |
+|**[2. cihazı yüklemesi](azure-stack-edge-pro-r-deploy-install.md)**|Fiziksel cihazınızı inceleyin ve kablosunu çıkarın.  |
 |**[3. cihaza bağlanın](azure-stack-edge-pro-r-deploy-connect.md)** |Cihaz yüklendikten sonra, cihaz yerel Web Kullanıcı arabirimine bağlanın.  |
 |**[4. ağ ayarlarını yapılandırma](azure-stack-edge-pro-r-deploy-configure-network-compute-web-proxy.md)** |Cihazınızın işlem ağı ve Web proxy ayarları dahil olmak üzere ağı yapılandırın.   |
 |**[5. cihaz ayarlarını yapılandırma](azure-stack-edge-pro-r-deploy-set-up-device-update-time.md)** |Bir cihaz adı ve DNS etki alanı atayın, güncelleştirme sunucusunu ve cihaz zamanını yapılandırın. |

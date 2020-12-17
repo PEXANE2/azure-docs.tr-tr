@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure özel rolü oluşturma-Azure RBAC
-description: Azure Resource Manager şablonu (ARM şablonu) ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rolü oluşturmayı öğrenin.
+title: Azure Resource Manager şablonu kullanarak Azure özel rolleri oluşturma veya güncelleştirme-Azure RBAC
+description: Azure Resource Manager şablonu (ARM şablonu) ve Azure rol tabanlı erişim denetimi (Azure RBAC) kullanarak Azure özel rolleri oluşturma veya güncelleştirme hakkında bilgi edinin.
 services: role-based-access-control,azure-resource-manager
 author: rolyon
 manager: mtillman
@@ -8,18 +8,18 @@ ms.service: role-based-access-control
 ms.topic: how-to
 ms.custom: subject-armqs
 ms.workload: identity
-ms.date: 06/25/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 96dfdc0a1c32237c55d4e65bb25989656e2a4ad2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: beea0c5cecd7bb99973a4692a4cce17e7a69d708
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097031"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631321"
 ---
-# <a name="create-an-azure-custom-role-using-an-arm-template"></a>ARM şablonu kullanarak Azure özel rolü oluşturma
+# <a name="create-or-update-azure-custom-roles-using-an-arm-template"></a>ARM şablonu kullanarak Azure özel rolleri oluşturma veya güncelleştirme
 
-[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [özel rollerinizi](custom-roles.md)de oluşturabilirsiniz. Bu makalede bir Azure Resource Manager şablonu (ARM şablonu) kullanılarak nasıl özel bir rol oluşturulacağı açıklanır.
+[Azure yerleşik rolleri](built-in-roles.md) , kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi [özel rollerinizi](custom-roles.md)de oluşturabilirsiniz. Bu makalede, bir Azure Resource Manager şablonu (ARM şablonu) kullanarak özel bir rol oluşturma veya güncelleştirme açıklanmaktadır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -66,15 +66,13 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
     $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
     [string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
     $actions = $actions.Split(',')
-
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-deployments/create-role-def/azuredeploy.json"
-
     New-AzDeployment -Location $location -TemplateUri $templateUri -actions $actions
     ```
 
-1. Dağıtım için tek *merkezde ABD* gibi bir konum girin.
+1. Dağıtım için gibi bir konum girin `centralus` .
 
-1. Özel rol için *Microsoft. resources/Resources/Read, Microsoft. resources/abonelikler/resourceGroups/Read* gibi bir virgülle ayrılmış liste olarak eylemlerin bir listesini girin.
+1. Özel rol için, gibi bir virgülle ayrılmış liste olarak eylemlerin bir listesini girin `Microsoft.Resources/resources/read,Microsoft.Resources/subscriptions/resourceGroups/read` .
 
 1. Gerekirse, komutu çalıştırmak için ENTER tuşuna basın `New-AzDeployment` .
 
@@ -152,6 +150,47 @@ Bu özel rolün atanabileceği kapsam geçerli aboneliğe ayarlanır.
 1. **Özel rol-RG okuyucu** rolünün listelendiğini doğrulayın.
 
    ![Azure portal yeni özel rol](./media/custom-roles-template/custom-role-template-portal.png)
+
+## <a name="update-a-custom-role"></a>Özel rolü güncelleştirme
+
+Özel bir rol oluşturmaya benzer şekilde, bir şablon kullanarak var olan bir özel rolü güncelleştirebilirsiniz. Özel bir rolü güncelleştirmek için, güncelleştirmek istediğiniz rolü belirtmeniz gerekir.
+
+Özel rolü güncelleştirmek için, önceki hızlı başlangıç şablonunda yapmanız gereken değişiklikler aşağıda verilmiştir.
+
+- Rol KIMLIĞINI parametre olarak ekleyin.
+    ```json
+        ...
+        "roleDefName": {
+          "type": "string",
+          "metadata": {
+            "description": "ID of the role definition"
+          }
+        ...
+    ```
+
+- Rol tanımına rol KIMLIĞI parametresini ekleyin.
+
+    ```json
+      ...
+      "resources": [
+        {
+          "type": "Microsoft.Authorization/roleDefinitions",
+          "apiVersion": "2018-07-01",
+          "name": "[parameters('roleDefName')]",
+          "properties": {
+            ...
+    ```
+
+Şablonun nasıl dağıtılacağı hakkında bir örnek aşağıda verilmiştir.
+
+```azurepowershell
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+[string[]]$actions = Read-Host -Prompt "Enter actions as a comma-separated list (i.e. action1,action2)"
+$actions = $actions.Split(',')
+$roleDefName = Read-Host -Prompt "Enter the role ID to update"
+$templateFile = "rg-reader-update.json"
+New-AzDeployment -Location $location -TemplateFile $templateFile -actions $actions -roleDefName $roleDefName
+```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

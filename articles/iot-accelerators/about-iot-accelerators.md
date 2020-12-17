@@ -9,18 +9,18 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 193ceab0b2df1ab833a86eb748c18271a8e33b71
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 5012383e64a85ee025273f5339b828f5338e1d4f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852923"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629077"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Azure IoT çözüm hızlandırıcıları nedir?
 
 Bulut tabanlı bir IoT çözümü genellikle cihaz bağlantısı, veri işleme ve analiz ve sunum işlemlerini yönetmek için özel kod ve bulut hizmetleri kullanır.
 
-IoT çözüm hızlandırıcıları sık kullanılan IoT senaryolarını uygulayan tam kapsamlı ve dağıtıma hazır IoT çözümleridir. Senaryolar, bağlı fabrika ve cihaz benzetimi içerir. Bir çözüm hızlandırıcısını dağıttığınızda gerekli tüm bulut tabanlı hizmetler ve gerekli uygulama kodları dağıtılır.
+IoT çözüm hızlandırıcıları sık kullanılan IoT senaryolarını uygulayan tam kapsamlı ve dağıtıma hazır IoT çözümleridir. Senaryolar bağlı fabrika ve cihaz simülasyonundan oluşur. Bir çözüm hızlandırıcısını dağıttığınızda gerekli tüm bulut tabanlı hizmetler ve gerekli uygulama kodları dağıtılır.
 
 Çözüm hızlandırıcıları, kendi IoT çözümlerinizi oluşturmak için başlangıç noktalarıdır. Tüm çözüm hızlandırıcılarının kaynak kodu açık kaynaktır ve GitHub üzerinde mevcuttur. Çözüm hızlandırıcılarını indirmeniz ve gereksinimlerinize göre özelleştirmeniz önerilir.
 
@@ -29,7 +29,7 @@ Sıfırdan özel bir IoT çözümü derlemeden önce çözüm hızlandırıcıla
 Her çözüm hızlandırıcısındaki uygulama kodunda çözüm hızlandırıcısını yönetmenizi sağlayan bir web uygulaması bulunur.
 
 > [!NOTE]
-> Uzaktan izleme ve tahmine dayalı bakım çözümleri [Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) sitesinden kaldırılmıştır. Daha fazla bilgi edinmek için bkz. [Azure IoT Çözüm Hızlandırıcıları nelerdir? (önceki sürüm)](/previous-versions/azure/iot-accelerators/about-iot-accelerators.md).
+> Uzaktan izleme ve tahmine dayalı bakım çözümleri [Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com/Accelerators) sitesinden kaldırılmıştır. Daha fazla bilgi edinmek için bkz. [Azure IoT Çözüm Hızlandırıcıları nelerdir? (önceki sürüm)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
 
 ## <a name="supported-iot-scenarios"></a>Desteklenen IoT senaryoları
 

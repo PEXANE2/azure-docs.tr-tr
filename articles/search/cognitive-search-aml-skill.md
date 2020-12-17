@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
-ms.openlocfilehash: d1e6f4e16e3eda8519913a9e2ae14f7cc909bf61
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6cefe543ea8ba992b028448070bf041a77bfec64
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445464"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630284"
 ---
 # <a name="aml-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Azure Bilişsel Arama enzenginleştirme ardışık düzeninde AML yeteneği
 
@@ -33,7 +33,7 @@ Yerleşik yetenekler gibi, **AML** becerilerinin giriş ve çıkışları vardı
 
 * [AML çalışma alanı](../machine-learning/concept-workspace.md)
 * Bu çalışma alanında [dağıtılan bir modelle](../machine-learning/how-to-deploy-azure-kubernetes-service.md) bir [Azure Kubernetes hizmeti AML işlem hedefi](../machine-learning/concept-compute-target.md)
-  * [İşlem HEDEFINDE SSL etkin olmalıdır](../machine-learning/how-to-secure-web-service.md#deploy-on-aks-and-field-programmable-gate-array-fpga). Azure Bilişsel Arama yalnızca **https** uç noktalarına erişime izin veriyor
+  * [İşlem HEDEFINDE SSL etkin olmalıdır](../machine-learning/how-to-secure-web-service.md#deploy-on-azure-kubernetes-service). Azure Bilişsel Arama yalnızca **https** uç noktalarına erişime izin veriyor
   * Otomatik olarak imzalanan sertifikalar kullanılamayabilir.
 
 ## <a name="odatatype"></a>@odata.type  

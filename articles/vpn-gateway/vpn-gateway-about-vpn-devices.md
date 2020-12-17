@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: fdb7b1964bf4b8e2dbf6afd541e4415c0345347c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546820"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631474"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Siteden Siteye VPN Gateway bağlantıları için VPN cihazları ve IPsec/IKE parametreleri hakkında
 
@@ -61,7 +61,7 @@ VPN cihazınızı yapılandırmaya yardımcı olması için, uygun cihaz ailesin
 | Microsoft |Yönlendirme ve Uzaktan Erişim Hizmeti |Windows Server 2012 |Uyumlu değil |Desteklenir |
 | Open Systems AG |Mission Control Security Ağ Geçidi |Yok |[Yapılandırma Kılavuzu](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Uyumlu değil |
 | Palo Alto Networks |PAN-OS çalıştıran tüm cihazlar |PAN-OS<br>PolicyBased: 6.1.5 veya üzeri<br>RouteBased: 7.1.4 |Desteklenir |[Yapılandırma Kılavuzu](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu ](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (Geliştirici) | VyOS | VyOS 1.2.2 | (sınanmamıştır) | [Yapılandırma Kılavuzu ](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | Yeni Nesil UTM (NU serisi) | 9.0.1.3 | Uyumlu değil | [Yapılandırma Kılavuzu](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ Series, NSA Series<br>SuperMassive Series<br>E-Class NSA Series |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Uyumlu değil |[Yapılandırma Kılavuzu](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Yeni Nesil Güvenlik Duvarı | XG v17 | (sınanmamıştır) | [Yapılandırma Kılavuzu](https://community.sophos.com/kb/127546)<br><br>[Yapılandırma Kılavuzu-birden çok SAs](https://community.sophos.com/kb/en-us/133154) |

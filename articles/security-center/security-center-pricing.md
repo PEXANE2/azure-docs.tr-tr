@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2020
 ms.author: memildin
-ms.openlocfilehash: d3492685efbf70b69e5bafba919d38a4f06fb666
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 0b6a9d081d2b81124b0cae15e81e4b233f7824bb
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387479"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629349"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Güvenlik Merkezi fiyatlandırması
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Karma bulut iş yükleri, tehditlere maruz kalma olasılığını azaltan etkin savunmaları ve hızlı gelişen siber risklerle hızlanmanıza yardımcı olacak akıllı algılama üzerinde görünürlük ve denetim sağlar.
@@ -103,7 +103,7 @@ Aboneliğiniz için Azure Defender 'ı etkinleştirmek üzere aşağıdaki yolla
 |REST API|[Prmerler API 'SI](/rest/api/securitycenter/pricings)|
 |Azure CLI|[az Security fiyatlandırması](/cli/azure/security/pricing)|
 |PowerShell|[Set-Azsecurityprsosu](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure İlkesi|[Paket ları](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
+|Azure İlkesi|[Paket ları](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
 |||
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>Azure Defender'ı aboneliğimdeki sunucuların bir alt kümesinde yer alan sunucular için etkinleştirebilir miyim?

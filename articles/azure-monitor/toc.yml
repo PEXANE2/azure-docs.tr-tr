@@ -546,6 +546,8 @@
           items:
             - name: BT Hizmet Yönetimi Bağlayıcısı
               href: platform/itsmc-overview.md
+            - name: BT Hizmet Yönetimi Bağlayıcısı’nın Açıklaması
+              href: platform/itsmc-definition.md
             - name: BT Hizmet Yönetimi Bağlantıları
               href: platform/itsmc-connections.md
             - name: Service Manager web uygulaması oluşturma

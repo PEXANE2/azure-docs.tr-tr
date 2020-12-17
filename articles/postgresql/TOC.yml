@@ -553,6 +553,12 @@
               displayName: 'portal, create hyperscale'
     - name: Öğreticiler
       items:
+        - name: Sunucu grubu oluşturma
+          href: tutorial-hyperscale-server-group.md
+        - name: Verileri modelleme ve yükleme
+          items:
+            - name: Çalışan düğümlerinde veri paylaşma
+              href: tutorial-hyperscale-shard.md
         - name: Çok kiracılı bir veritabanı tasarlama
           href: tutorial-design-database-hyperscale-multi-tenant.md
           displayName: 'hyperscale, tutorial, multi-tenant'

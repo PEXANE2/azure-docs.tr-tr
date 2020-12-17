@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 324a2acbf069e8e23246b99a7d79a3195f737a56
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 836cf4600e353da61673ec8ee5df8f30fb4b9562
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492310"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629859"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı-hiper ölçek (Citus) için Azure Güvenlik temeli
 
@@ -582,7 +582,7 @@ Ayrıca, Azure Resource Manager, yapılandırmanın kuruluşunuzun güvenlik ger
 
 **Rehberlik**: PostgreSQL Için Azure veritabanı-hyperscale (Citus) Şu anda yönetilen kimlikleri doğrudan desteklemez. PostgreSQL için Azure veritabanı sunucusu oluştururken, yönetici kullanıcı için kimlik bilgilerini sağlamanız gerekir. Azure portal arabiriminde ek kullanıcı rolleri oluşturabilirsiniz.
 
-- [PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)](./quickstart-create-hyperscale-portal.md#create-an-azure-database-for-postgresql---hyperscale-citus)
+- [PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)](./quickstart-create-hyperscale-portal.md#create-a-hyperscale-citus-server-group)
 
 - [Ek Kullanıcı rolleri oluşturma](./howto-hyperscale-create-users.md#how-to-create-additional-user-roles)
 

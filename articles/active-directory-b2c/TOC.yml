@@ -95,8 +95,6 @@
       href: user-overview.md
     - name: Kullanıcı profili öznitelikleri
       href: user-profile-attributes.md
-    - name: SSO oturumları
-      href: session-overview.md
     - name: Kimlik Koruması ve Koşullu Erişim
       href: conditional-access-identity-protection-overview.md
 - name: Nasıl yapılır kılavuzları
@@ -155,6 +153,8 @@
           href: identity-provider-wechat.md
         - name: Weibo
           href: identity-provider-weibo.md
+        - name: Kimlik sağlayıcısı belirtecini geçme
+          href: idp-pass-through-user-flow.md
     - name: UX özelleştirme
       items:
         - name: Kullanıcı erişimini yapılandırma
@@ -174,6 +174,24 @@
         - name: MFA’yı etkinleştirme
           href: multi-factor-authentication.md
           displayName: multi-factor auth
+        - name: Doğrudan oturum açmayı ayarlama
+          href: direct-signin.md
+    - name: Belirteçler ve oturum yönetimi
+      items:
+        - name: Oturum davranışını yapılandırma
+          href: session-behavior.md
+        - name: Belirteçleri yapılandırma
+          href: configure-tokens.md
+    - name: Özel öznitelikleri tanımlama
+      href: user-flow-custom-attributes.md
+    - name: Kimlik Koruması ve Koşullu Erişim
+      items:
+        - name: Kimlik Koruması ve Koşullu Erişim'i ayarlama
+          href: conditional-access-identity-protection-setup.md
+        - name: Koşullu Erişim ekleme
+          href: conditional-access-user-flow.md
+    - name: Yaş sınırını yapılandırma
+      href: basic-age-gating.md
     - name: Kullanıcı akışı
       items:
         - name: Akış oluşturun
@@ -184,40 +202,23 @@
               href: configure-ropc.md
             - name: Self servis parola sıfırlamayı ayarlama
               href: user-flow-self-service-password-reset.md
-        - name: Koşullu Erişim ekleme
-          href: conditional-access-user-flow.md
-        - name: Belirteçler ve oturum yönetimi
-          items:
-            - name: Belirteçleri yapılandırma
-              href: configure-tokens.md
-            - name: Oturum davranışını yapılandırma
-              href: session-behavior.md
-        - name: Yaş sınırını yapılandırma
-          href: basic-age-gating.md
-        - name: Özel öznitelikleri tanımlama
-          href: user-flow-custom-attributes.md
         - name: API bağlayıcıları (önizleme)
           items:
             - name: Genel Bakış
               href: api-connectors-overview.md
             - name: API bağlayıcısı ekleme
               href: add-api-connector.md
-        - name: Doğrudan geçiş harici IdP belirteci
-          href: idp-pass-through-user-flow.md
-    - name: Kimlik Koruması ve Koşullu Erişim
-      href: conditional-access-identity-protection-setup.md
     - name: Özel ilke
       items:
+        - name: Özel ilkeye genel bakış
+          href: custom-policy-trust-frameworks.md
+        - name: Özel ilkeleri kullanmaya başlama
+          href: custom-policy-get-started.md
         - name: İlke oluşturma
           items:
-            - name: Özel ilkeleri kullanmaya başlama
-              href: custom-policy-get-started.md
             - name: Kaynak sahibinin parola kimlik bilgileri
               href: ropc-custom.md
               displayName: ropc
-            - name: Oturumumu açık bırak seçeneğini etkinleştirme
-              href: custom-policy-keep-me-signed-in.md
-              displayName: kmsi
             - name: Parola değiştirme
               href: custom-policy-password-change.md
             - name: Telefonla kaydolma ve oturum açma
@@ -230,18 +231,6 @@
             - name: SendGrid
               href: custom-email-sendgrid.md
           displayName: verification
-        - name: Belirteçler ve oturum yönetimi
-          items:
-            - name: Belirteçleri özelleştirme
-              href: configure-tokens-custom-policy.md
-            - name: Oturum davranışını yapılandırma
-              href: session-behavior-custom-policy.md
-        - name: Doğrudan geçiş harici IdP belirteci
-          href: idp-pass-through-custom.md
-        - name: Uyarlamalı deneyim
-          items:
-            - name: Doğrudan oturum açmayı ayarlama
-              href: direct-signin.md
         - name: Kendi iş mantığınızı ekleme
           items:
             - name: REST API’yi tümleştirme
@@ -254,8 +243,6 @@
               displayName: rest claims exchange
             - name: REST API’nin güvenliğini sağlama
               href: secure-rest-api.md
-        - name: Özel öznitelikleri tanımlama
-          href: custom-policy-custom-attributes.md
         - name: Sorun giderme
           items:
             - name: Application Insights’ı kullanarak günlük toplama
@@ -268,8 +255,6 @@
           href: analytics-with-application-insights.md
         - name: Başvuru
           items:
-            - name: Güven Altyapısı tanımı
-              href: custom-policy-trust-frameworks.md
             - name: TrustFrameworkPolicy
               href: trustframeworkpolicy.md
             - name: BuildingBlocks
@@ -315,11 +300,9 @@
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
-                - name: TechnicalProfiles
+                - name: Teknik Profiller
                   href: technicalprofiles.md
                   items:
-                    - name: Teknik profiller hakkında
-                      href: technical-profiles-overview.md
                     - name: Doğrulama teknik profilleri hakkında
                       href: validation-technical-profile.md
                     - name: Application Insights
@@ -370,6 +353,8 @@
               href: relyingparty.md
             - name: Talep çözümleyicileri
               href: claim-resolver-overview.md
+    - name: UserInfo uç noktası
+      href: userinfo-endpoint.md
     - name: İş ortağı tümleştirmesi
       items:
         - name: Azure AD B2C iş ortağı galerisi

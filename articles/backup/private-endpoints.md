@@ -3,12 +3,12 @@ title: Özel Uç Noktalar
 description: Azure Backup için özel uç noktalar oluşturma sürecini anlayın ve özel uç noktaları kullanmanın kaynaklarınızın güvenliğini sağlamaya yardımcı olur.
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ed71e49ebc550cb7bc2041e25aa6b9bde77b1ef
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184764"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97629723"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure Backup için özel uç noktalar
 
@@ -26,6 +26,7 @@ Bu makale, Azure Backup için özel uç noktalar oluşturma sürecini anlamanız
 - Azure Active Directory şu anda özel uç noktaları desteklemez. Bu nedenle Azure Active Directory bir bölgede çalışması için gereken IP 'Leri ve FQDN 'lerin, Azure VM 'lerinde veritabanlarının yedeklenmesi sırasında ve MARS Aracısı kullanılarak yedeklendiğinden güvenli ağdan giden erişime izin verilmesi gerekir. Ayrıca, geçerli olduğu şekilde Azure AD 'ye erişim izni vermek için NSG etiketlerini ve Azure Güvenlik Duvarı etiketlerini de kullanabilirsiniz.
 - Ağ Ilkelerine sahip sanal ağlar özel uç noktalar için desteklenmez. Devam etmeden önce ağ Ilkelerini devre dışı bırakmanız gerekir.
 - Kurtarma Hizmetleri kaynak sağlayıcısını, aboneliği 1 2020 Mayıs tarihinden önce kaydettirdiğiniz takdirde yeniden kaydetmeniz gerekir. Sağlayıcıyı yeniden kaydetmek için Azure portal aboneliğinize gidin, sol gezinti çubuğunda **kaynak sağlayıcısı** ' na gidin, ardından **Microsoft. recoveryservices** ' i seçin ve **yeniden kaydet**' i seçin.
+- Kasa için özel uç noktalar etkinse SQL ve SAP HANA veritabanı yedeklemeleri için [çapraz bölge geri yükleme](backup-create-rs-vault.md#set-cross-region-restore) desteklenmez.
 
 ## <a name="recommended-and-supported-scenarios"></a>Önerilen ve desteklenen senaryolar
 
@@ -439,7 +440,7 @@ Kuyruk hizmeti () için DNS bölgesi `privatelink.queue.core.windows.net` :
 
     ![Kuyruk hizmeti için bir tür kaydı olarak FQDN ve özel IP girdisi ekleme](./media/private-endpoints/add-type-a-record-for-queue.png)
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 S. Var olan bir yedekleme Kasası için özel bir uç nokta oluşturabilir miyim?<br>
 A. Hayır, Özel uç noktalar yalnızca yeni yedekleme kasaları için oluşturulabilir. Bu nedenle kasada hiç öğe korunmamış olmalıdır. Aslında, özel bitiş noktaları oluşturulmadan önce herhangi bir öğeyi kasaya koruma girişimi yapılabilir.

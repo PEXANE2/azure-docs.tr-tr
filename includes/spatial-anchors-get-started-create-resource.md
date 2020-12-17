@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 131b21ea7bc47df9654dd7c163eb22adb68e6678
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 596b73f8fb205b6a5681fecf3d00fd2a67c1f59f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185426"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97628766"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Uzamsal bağlayıcı kaynağı oluşturma
 
@@ -27,23 +27,23 @@ Sol bölmede **kaynak oluştur**' u seçin.
 
 **Uzamsal bağlayıcı hesabı** bölmesinde şunları yapın:
 
-* Normal alfasayısal karakterleri kullanarak benzersiz bir kaynak adı girin.  
-* Kaynağı iliştirmek istediğiniz aboneliği seçin.  
-* **Yeni oluştur** seçeneğini belirleyerek bir kaynak grubu oluşturun. **Myresourcegroup** olarak adlandırın ve ardından **Tamam**' ı seçin.  
+* Normal alfasayısal karakterleri kullanarak benzersiz bir kaynak adı girin.
+* Kaynağı iliştirmek istediğiniz aboneliği seçin.
+* **Yeni oluştur** seçeneğini belirleyerek bir kaynak grubu oluşturun. **Myresourcegroup** olarak adlandırın ve ardından **Tamam**' ı seçin.
 
   [!INCLUDE [resource group intro text](resource-group.md)]
-  
-* Kaynağın yerleştirileceği bir konum (bölge) seçin.  
+
+* Kaynağın yerleştirileceği bir konum (bölge) seçin.
 * Kaynağı oluşturmaya başlamak için **Yeni** ' yi seçin.
 
 ![Kaynak oluşturmak için uzamsal bağlayıcı bölmesinin ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-Kaynak oluşturulduktan sonra, Azure portal dağıtımınızın tamamlandığını gösterir. 
-   
+Kaynak oluşturulduktan sonra, Azure portal dağıtımınızın tamamlandığını gösterir.
+
 ![Kaynak dağıtımının tamamlandığını gösteren ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
 
-**Kaynağa git**’i seçin. Artık kaynak özelliklerini görüntüleyebilirsiniz. 
-   
+**Kaynağa git**’i seçin. Artık kaynak özelliklerini görüntüleyebilirsiniz.
+
 Kaynağın **hesap kimliği** değerini daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.
 
 ![Kaynak özellikleri bölmesinin ekran görüntüsü.](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
@@ -58,7 +58,7 @@ Ayrıca, kaynağın **hesap etki alanı** değerini daha sonra kullanmak üzere 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Ortamınızı Azure CLı için hazırlarken başlayın:
+Başlangıç olarak ortamınızı Azure CLI için hazırlayın:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](azure-cli-prepare-your-environment-no-header.md)]
 
@@ -121,6 +121,80 @@ Ortamınızı Azure CLı için hazırlarken başlayın:
 
 ```azurecli
 az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
+```
+
+### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+Başlangıç olarak ortamınızı Azure PowerShell için hazırlayın:
+
+[!INCLUDE [azure-powershell-requirements-no-header.md](azure-powershell-requirements-no-header.md)]
+
+> [!IMPORTANT]
+> **Az. MixedReality** PowerShell modülü önizlemedeyken, cmdlet 'ini kullanarak ayrı olarak yüklemelisiniz `Install-Module` . Bu PowerShell modülü genel kullanıma sunulduktan sonra, gelecekteki Az PowerShell modülü sürümlerinin bir parçası haline gelecek ve Azure Cloud Shell içinden varsayılan olarak sağlanacaktır.
+
+```azurepowershell-interactive
+Install-Module -Name Az.MixedReality
+```
+
+1. Oturum açtıktan sonra, uzamsal bağlayıcı hesabının ayarlanacağı aboneliği seçmek için [set-AzContext](/powershell/module/az.accounts/set-azcontext) cmdlet 'ini kullanın:
+
+   ```azurepowershell-interactive
+   Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
+   ```
+
+1. [Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) cmdlet 'ini çalıştırarak bir kaynak grubu oluşturun veya var olan bir kaynak grubunu kullanın:
+
+   ```azurepowershell-interactive
+   New-AzResourceGroup -Name myResourceGroup -Location eastus2
+   ```
+
+   [!INCLUDE [resource group intro text](resource-group.md)]
+
+   [Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) cmdlet 'ini kullanarak, bir kaynak grubu için geçerli uzamsal bağlayıcı hesaplarınızı görüntüleyebilirsiniz:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup
+   ```
+
+   Aboneliğiniz için de uzamsal bağlayıcı hesaplarını görüntüleyebilirsiniz:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount
+   ```
+
+1. Uzamsal bağlayıcı hesabınızı oluşturmak için [New-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/new-azspatialanchorsaccount) cmdlet 'ini çalıştırın:
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart -Location eastus2
+   ```
+
+1. [Get-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/get-azspatialanchorsaccount) cmdlet 'ini kullanarak kaynak özelliklerini görüntüleyin:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   Daha sonra kullanmak üzere **AccountID** değerini ve **accountdomain** değerini bir metin düzenleyicisine kopyalayın.
+
+1. Birincil ve ikincil anahtarlarınızı almak için [Get-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/get-azspatialanchorsaccountkey) cmdlet 'ini çalıştırın:
+
+   ```azurepowershell-interactive
+   Get-AzSpatialAnchorsAccountKey -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
+   ```
+
+   Anahtar değerlerini daha sonra kullanmak üzere bir metin düzenleyicisine kopyalayın.
+
+   Anahtarları yeniden oluşturmanız gerekirse, [New-AzSpatialAnchorsAccountKey](/powershell/module/az.mixedreality/new-azspatialanchorsaccountkey) cmdlet 'ini kullanın:
+
+   ```azurepowershell-interactive
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Primary
+   New-AzSpatialAnchorsAccountKey -ResourceGroupName myResourceGroup -Name MySpatialAnchorsQuickStart -Secondary
+   ```
+
+[Remove-AzSpatialAnchorsAccount](/powershell/module/az.mixedreality/remove-azspatialanchorsaccount) cmdlet 'ini kullanarak bir hesabı silebilirsiniz:
+
+```azurepowershell-interactive
+Remove-AzSpatialAnchorsAccount -ResourceGroup myResourceGroup -Name MySpatialAnchorsQuickStart
 ```
 
 ---

@@ -4,20 +4,20 @@ description: Bir Kbbitmq iletisi oluşturulduğunda bir Azure Işlevi çalışt�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617230"
+ms.locfileid: "97630743"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Kbbitmq tetikleyicisi
 
 > [!NOTE]
-> Kbbitmq bağlamaları yalnızca **Windows Premium** planlarında tam olarak desteklenmektedir. Tüketim ve Linux Şu anda desteklenmiyor.
+> Kbbitmq bağlamaları yalnızca **Windows Premium ve adanmış** planlarda tam olarak desteklenmektedir. Tüketim ve Linux Şu anda desteklenmiyor.
 
 Bir Kbıbitmq kuyruğundan iletilere yanıt vermek için Kbbitmq tetikleyicisini kullanın.
 
