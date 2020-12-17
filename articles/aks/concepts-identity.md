@@ -6,35 +6,78 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 983b1a5e024a44733fab418a67375f232e66cfe4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c291d9a9d48b6f75148b673848b8451521bab91
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457162"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615820"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) için erişim ve kimlik seçenekleri
 
 Kimlik doğrulamak, erişimi denetlemek/yetkilendirmek ve Kubernetes kümelerinin güvenliğini sağlamak için farklı yollar vardır. Kubernetes rol tabanlı erişim denetimini (Kubernetes RBAC) kullanarak kullanıcılara, gruplara ve hizmet hesaplarına yalnızca ihtiyaç duydukları kaynaklara erişim izni verebilirsiniz. Azure Kubernetes hizmeti (AKS) ile Azure Active Directory ve Azure RBAC kullanarak güvenlik ve izin yapısını daha da geliştirebilirsiniz. Bu yaklaşımlar, küme erişiminizi güvenli hale getirmenize ve yalnızca geliştiricilere ve işleçlere gereken en düşük izinleri sağlamanıza yardımcı olur.
 
-Bu makalede, AKS 'de izinleri kimlik doğrulamasından ve atamaya yardımcı olan temel kavramlar tanıtılmaktadır:
+Bu makalede, AKS 'de izinleri kimlik doğrulamasından ve atamanıza yardımcı olan temel kavramlar tanıtılmaktadır.
 
-- [Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC)](#kubernetes-role-based-access-control-kubernetes-rbac)
-  - [Roller ve Kümerolleri](#roles-and-clusterroles)
-  - [RoleBindings ve ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
-  - [Kubernetes hizmet hesapları](#kubernetes-service-accounts)
-- [Azure Active Directory tümleştirmesi](#azure-active-directory-integration)
-- [Azure RBAC](#azure-role-based-access-control-azure-rbac)
-  - [AKS kaynağına erişimi yetkilendirmek için Azure RBAC](#azure-rbac-to-authorize-access-to-the-aks-resource)
-  - [Kubernetes yetkilendirmesi için Azure RBAC (Önizleme)](#azure-rbac-for-kubernetes-authorization-preview)
+## <a name="aks-service-permissions"></a>AKS hizmeti izinleri
 
+Bir küme oluştururken, AKS, kümeyi oluşturan kullanıcı adına VM 'Ler ve NIC 'Ler gibi kümeyi oluşturmak ve çalıştırmak için gereken kaynakları oluşturur veya değiştirir. Bu kimlik, küme oluşturma sırasında oluşturulan kümenin kimlik izninden farklıdır.
+
+### <a name="identity-creating-and-operating-the-cluster-permissions"></a>Küme izinlerini oluşturma ve çalıştırma kimliği
+
+Kümeyi oluşturma ve çalıştırma kimliği için aşağıdaki izinler gereklidir.
+
+| İzin | Nedeni |
+|---|---|
+| Microsoft. COMPUTE/diskEncryptionSets/Read | Disk şifreleme kümesi KIMLIĞINI okumak için gereklidir. |
+| Microsoft. COMPUTE/proximityPlacementGroups/Write | Yakınlık yerleşimi gruplarını güncelleştirmek için gereklidir. |
+| Microsoft. Network/Applicationgateway/Read <br/> Microsoft. Network/Applicationgateway/Write <br/> Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Uygulama ağ geçitlerini yapılandırmak ve alt ağa katmak için gereklidir. |
+| Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Özel VNET kullanılırken alt ağ için ağ güvenlik grubunu yapılandırmak için gereklidir.|
+| Microsoft. Network/publicIPAddresses/JOIN/Action <br/> Microsoft. Network/Publicipöneklerini/JOIN/Action | Standart Load Balancer giden genel IP 'Leri yapılandırmak için gereklidir. |
+| Microsoft. Operationalınsights/çalışma alanları/sharedkeys/Read <br/> Microsoft. Operationalınsights/çalışma alanları/okuma <br/> Microsoft. OperationsManagement/Solutions/Write <br/> Microsoft. OperationsManagement/Solutions/Read <br/> Microsoft. Managedıdentity/Useratandıdentities/ata/eylem | Log Analytics çalışma alanları ve kapsayıcılar için Azure izleme oluşturma ve güncelleştirme için gereklidir. |
+
+### <a name="aks-cluster-identity-permissions"></a>AKS kümesi kimlik izinleri
+
+Aşağıdaki izinler, küme oluşturulduğunda ve AKS kümesiyle ilişkili olan AKS kümesi kimliği tarafından kullanılır. Her izin aşağıdaki nedenlerle kullanılır:
+
+| İzin | Nedeni |
+|---|---|
+| Microsoft. Network/loadBalancers/Delete <br/> Microsoft. Network/loadBalancers/Read <br/> Microsoft. Network/loadBalancers/Write | Bir LoadBalancer hizmeti için yük dengeleyiciyi yapılandırmak için gereklidir. |
+| Microsoft. Network/publicIPAddresses/Delete <br/> Microsoft. Network/publicIPAddresses/Read <br/> Microsoft. Network/Publicıpaddresses/Write | Bir LoadBalancer hizmeti için genel IP 'Leri bulmak ve yapılandırmak için gereklidir. |
+| Microsoft. Network/publicIPAddresses/JOIN/Action | Bir LoadBalancer hizmeti için genel IP 'Leri yapılandırmak için gereklidir. |
+| Microsoft. Network/networkSecurityGroups/Read <br/> Microsoft. Network/networkSecurityGroups/Write | Bir LoadBalancer hizmeti için güvenlik kuralları oluşturmak veya silmek için gereklidir. |
+| Microsoft. COMPUTE/diskler/Sil <br/> Microsoft. COMPUTE/Disks/Read <br/> Microsoft. COMPUTE/Disks/Write <br/> Microsoft. COMPUTE/Locations/DiskOperations/Read | AzureDisks 'yi yapılandırmak için gereklidir. |
+| Microsoft. Storage/storageAccounts/Delete <br/> Microsoft. Storage/storageAccounts/listKeys/Action <br/> Microsoft. Storage/storageAccounts/Read <br/> Microsoft. Storage/storageAccounts/Write <br/> Microsoft. Storage/işlemler/okuma | AzureFile veya AzureDisk için depolama hesaplarını yapılandırmak için gereklidir. |
+| Microsoft. Network/routeTables/Read <br/> Microsoft. Network/routeTables/rotalar/Delete <br/> Microsoft. Network/routeTables/rotalar/Read <br/> Microsoft. Network/routeTables/rotalar/Write <br/> Microsoft. Network/routeTables/Write | Düğümler için rota tabloları ve rotalar yapılandırmak için gereklidir. |
+| Microsoft. COMPUTE/virtualMachines/okuma | Bölgeler, hata etki alanı, boyut ve veri diskleri gibi sanal makinelere yönelik bilgileri bulmak için gereklidir. |
+| Microsoft. COMPUTE/virtualMachines/Write | Bir sanal makineye AzureDisks eklemek için gerekir. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/Read <br/> Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/Read <br/> Microsoft. COMPUTE/virtualMachineScaleSets/virtualmachines/InstanceView/Read | Bölgeler, hata etki alanı, boyut ve veri diskleri gibi bir sanal makine ölçek kümesindeki sanal makinelere ilişkin bilgileri bulmak için gereklidir. |
+| Microsoft. Network/NetworkInterfaces/Write | Bir sanal makineyi bir yük dengeleyici arka uç adres havuzuna bir VMAS 'e eklemek için gereklidir. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/Write | Bir sanal makine ölçek kümesini yük dengeleyici arka uç adres havuzlarına eklemek ve bir sanal makine ölçek kümesindeki düğümleri ölçeklendirmek için gereklidir. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/virtualmachines/Write | AzureDisks iliştirmek ve sanal makine ölçek kümesinden yük dengeleyiciye bir sanal makine eklemek için gereklidir. |
+| Microsoft. Network/NetworkInterfaces/Read | Sanal makineler için iç IP 'Leri ve yük dengeleyici arka uç adres havuzlarını bir VMALAR içinde aramak için gereklidir. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/Read | Sanal makine ölçek kümesindeki bir sanal makine için iç IP 'Leri ve yük dengeleyici arka uç adres havuzlarını aramak için gereklidir. |
+| Microsoft. COMPUTE/virtualMachineScaleSets/virtualMachines/NetworkInterfaces/ipconfigurations/publicıpaddresses/Read | Bir sanal makine ölçek kümesindeki bir sanal makine için genel IP 'Leri bulmak için gereklidir. |
+| Microsoft. Network/virtualNetworks/Read <br/> Microsoft. Network/virtualNetworks/alt ağlar/okuma | Başka bir kaynak grubundaki iç yük dengeleyici için bir alt ağın mevcut olup olmadığını doğrulamak için gereklidir. |
+| Microsoft. COMPUTE/Snapshot/Delete <br/> Microsoft. COMPUTE/Snapshot/Read <br/> Microsoft. COMPUTE/Snapshot/Write | AzureDisk için anlık görüntüleri yapılandırmak için gereklidir. |
+| Microsoft. COMPUTE/konumlar/vmSizes/Read <br/> Microsoft. COMPUTE/konumlar/işlemler/okuma | AzureDisk Birim sınırlarını bulmak için sanal makine boyutlarını bulmak için gereklidir. |
+
+### <a name="additional-cluster-identity-permissions"></a>Ek küme kimliği izinleri
+
+Belirli özniteliklere sahip bir küme oluşturulurken aşağıdaki ek izinler küme kimliği için gereklidir. Bu izinler otomatik olarak atanmaz, bu izinleri oluşturulduktan sonra küme kimliğine eklemeniz gerekir.
+
+| İzin | Nedeni |
+|---|---|
+| Microsoft. Network/networkSecurityGroups/Write <br/> Microsoft. Network/networkSecurityGroups/Read | Başka bir kaynak grubunda ağ güvenlik grubu kullanılıyorsa gereklidir. Bir LoadBalancer hizmeti için güvenlik kurallarını yapılandırmak için gereklidir. |
+| Microsoft. Network/virtualNetworks/alt ağlar/okuma <br/> Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action | Özel VNET gibi başka bir kaynak grubunda bir alt ağ kullanılıyorsa gereklidir. |
+| Microsoft. Network/routeTables/rotalar/Read <br/> Microsoft. Network/routeTables/rotalar/Write | Özel bir yol tablosu olan özel VNET gibi başka bir kaynak grubundaki yol tablosuyla ilişkili bir alt ağ kullanılıyorsa gereklidir. Diğer kaynak grubundaki alt ağ için bir alt ağın zaten mevcut olup olmadığını doğrulamak için gereklidir. |
+| Microsoft. Network/virtualNetworks/alt ağlar/okuma | Başka bir kaynak grubunda iç yük dengeleyici kullanılıyorsa gereklidir. Kaynak grubundaki iç yük dengeleyici için bir alt ağın zaten mevcut olup olmadığını doğrulamak için gereklidir. |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC)
 
 Kullanıcıların gerçekleştirebileceği eylemlerin parçalı filtrelemesini sağlamak için Kubernetes, Kubernetes rol tabanlı erişim denetimi (Kubernetes RBAC) kullanır. Bu denetim mekanizması, kullanıcıları veya Kullanıcı gruplarını atamanıza izin verir, kaynak oluşturma veya değiştirme gibi işlemleri yapma veya çalışan uygulama iş yüklerinden günlükleri görüntüleme izni verir. Bu izinler tek bir ad alanı kapsamında olabilir veya tüm AKS kümesi genelinde verilebilir. Kubernetes RBAC ile, izinleri tanımlamak için *Roller* oluşturun ve ardından bu rolleri *rol bağlamalarıyla* kullanıcılara atayın.
 
 Daha fazla bilgi için bkz. [Kubernetes RBAC yetkilendirmesini kullanma][kubernetes-rbac].
-
 
 ### <a name="roles-and-clusterroles"></a>Roller ve Kümerolleri
 
@@ -84,11 +127,11 @@ Yukarıdaki grafikte gösterildiği gibi, API sunucusu AKS Web kancası sunucusu
 1. Azure AD istemci uygulaması, [OAuth 2,0 cihaz yetkilendirme verme akışı](../active-directory/develop/v2-oauth2-device-code.md)ile kullanıcılar oturum açmak için kubectl tarafından kullanılır.
 2. Azure AD, bir access_token, id_token ve bir refresh_token sağlar.
 3. Kullanıcı, kubeconfig 'ten bir access_token kubectl 'ye bir istek yapar.
-4. Kubectl, access_token Apıver 'e gönderir.
+4. Kubectl access_token API sunucusuna gönderir.
 5. API sunucusu, doğrulama gerçekleştirmek için auth Web kancası sunucusuyla yapılandırılır.
 6. Kimlik doğrulama Web kancası sunucusu, Azure AD ortak imzalama anahtarını denetleyerek JSON Web Token imzasının geçerli olduğunu onaylar.
 7. Sunucu uygulaması, oturum açmış kullanıcının grup üyeliklerini MS Graph API sorgulamak için Kullanıcı tarafından sağlanmış kimlik bilgilerini kullanır.
-8. Erişim belirtecinin Kullanıcı asıl adı (UPN) talebi ve nesne KIMLIĞINE göre kullanıcının grup üyeliği gibi Kullanıcı bilgileri ile Apıver 'e bir yanıt gönderilir.
+8. API sunucusuna, erişim belirtecinin Kullanıcı asıl adı (UPN) talebi ve nesne KIMLIĞINE göre kullanıcının grup üyeliği gibi Kullanıcı bilgilerini içeren bir yanıt gönderilir.
 9. API, Kubernetes role/RoleBinding ' i temel alan bir yetkilendirme kararı uygular.
 10. Yetkilendirildikten sonra, API sunucusu kubectl 'ye bir yanıt döndürür.
 11. Kubectl kullanıcıya geri bildirim sağlar.
@@ -134,7 +177,7 @@ Bu özellik, örneğin, kullanıcılara yalnızca abonelikler arasında AKS kayn
 
 #### <a name="built-in-roles"></a>Yerleşik roller
 
-AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik rollerine](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) benzerdir, ancak crds 'yi destekleme gibi birkaç farklılık vardır. Her bir yerleşik rol tarafından izin verilen eylemlerin tam listesi için lütfen [buraya](../role-based-access-control/built-in-roles.md)bakın.
+AKS, aşağıdaki dört yerleşik rolü sağlar. Bunlar, [Kubernetes yerleşik rollerine](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) benzerdir, ancak crds 'yi destekleme gibi birkaç farklılık vardır. Her yerleşik rol tarafından izin verilen eylemlerin tam listesi için [buraya](../role-based-access-control/built-in-roles.md)bakın.
 
 | Rol                                | Açıklama  |
 |-------------------------------------|--------------|
@@ -154,7 +197,7 @@ Bu tabloda, Azure AD tümleştirmesi etkinleştirildiğinde, kullanıcıların K
 
 İkinci sütunda başvurulan rol verme, Azure portal **Access Control** sekmesinde GÖSTERILEN Azure RBAC rolü verlüdür. Küme Yöneticisi Azure AD grubu, portaldaki **yapılandırma** sekmesinde (veya `--aad-admin-group-object-ids` Azure CLI 'de parametre adı ile) gösterilir.
 
-| Açıklama        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
+| Description        | Rol verme gerekli| Küme Yöneticisi Azure AD grupları | Kullanılması gereken durumlar |
 | -------------------|------------|----------------------------|-------------|
 | İstemci sertifikası kullanarak eski yönetici oturumu açma| **Azure Kubernetes yönetici rolü**. Bu rol, `az aks get-credentials` `--admin` [eski (Azure dışı ad) küme yönetici sertifikasını](control-kubeconfig-access.md) kullanıcının kullanıcısına indiren bayrağıyla birlikte kullanılmasına izin verir `.kube/config` . Bu, "Azure Kubernetes yönetici rolü" nin tek amacı değildir.|yok|Kalıcı olarak engellendiyse, kümenize erişimi olan geçerli bir Azure AD grubuna erişemez.| 
 | El ile (küme) RoleBindings ile Azure AD| **Azure Kubernetes Kullanıcı rolü**. "Kullanıcı" rolü `az aks get-credentials` bayrak olmadan kullanılmasına izin verir `--admin` . (Bu, "Azure Kubernetes Kullanıcı rolü" öğesinin tek amacı olur.) Sonuç olarak, Azure AD özellikli bir kümede [boş bir girdinin](control-kubeconfig-access.md) indirilmesi, bu, `.kube/config` tarafından ilk kez kullanıldığında tarayıcı tabanlı kimlik doğrulamasını tetikler `kubectl` .| Kullanıcı bu grupların hiçbirinde değil. Kullanıcı herhangi bir Küme Yöneticisi grubunda olmadığından, hakları tamamen küme yöneticileri tarafından ayarlanan herhangi bir RoleBindings veya ClusterRoleBindings tarafından denetlenir. (Küme) RoleBindings, [Azure AD kullanıcılarını veya Azure AD gruplarını](azure-ad-rbac.md) oldukları gibi aday olarak belirler `subjects` . Böyle bir bağlama ayarlanmamışsa, Kullanıcı herhangi bir `kubectl` komutu kullanamaz.|Ayrıntılı erişim denetimi istiyorsanız ve Kubernetes yetkilendirmesi için Azure RBAC kullanmıyorsanız. Bağlamaları ayarlayan kullanıcının bu tabloda listelenen diğer yöntemlerden biriyle oturum açması gerektiğini unutmayın.|
@@ -192,3 +235,4 @@ Temel Kubernetes ve AKS kavramları hakkında daha fazla bilgi için aşağıdak
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [operator-best-practices-identity]: operator-best-practices-identity.md
+[upgrade-per-cluster]: ../azure-monitor/insights/container-insights-update-metrics.md#upgrade-per-cluster-using-azure-cli

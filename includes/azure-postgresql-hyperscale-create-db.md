@@ -1,43 +1,44 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 author: jonels-msft
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: include
-ms.date: 09/12/2019
+ms.date: 12/16/2020
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54cc31cdb0ddc7694568d60b1446f1cf99663e95
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74973432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616635"
 ---
+## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
+### <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
-## <a name="create-an-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı oluşturma-hiper ölçek (Citus)
 
 PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uygulayın:
 1. Azure portal sol üst köşesinde bulunan **kaynak oluştur ' a**  tıklayın.
 2. **Yeni** sayfasından **Veritabanları**’nı seçin ve **Veritabanları** sayfasından **PostgreSQL için Azure Veritabanı**’nı seçin.
 3. Dağıtım seçeneği için, **Hyperscale (Citus) sunucu grubu** altında **Oluştur** düğmesine tıklayın.
 4. Yeni sunucu ayrıntıları formunu aşağıdaki bilgilerle doldurun:
-   - Kaynak grubu: Bu alan için metin kutusunun altındaki **Yeni oluştur** bağlantısına tıklayın. **Myresourcegroup**gibi bir ad girin.
+   - Kaynak grubu: Bu alan için metin kutusunun altındaki **Yeni oluştur** bağlantısına tıklayın. **Myresourcegroup** gibi bir ad girin.
    - Sunucu grubu adı: sunucu alt etki alanı için de kullanılacak yeni sunucu grubu için benzersiz bir ad girin.
-   - Yönetici Kullanıcı adı: Şu anda **citus**değeri olması gerekiyordu ve değiştirilemez.
+   - Yönetici Kullanıcı adı: Şu anda **citus** değeri olması gerekiyordu ve değiştirilemez.
    - Parola: en az sekiz karakter uzunluğunda olmalı ve şu kategorilerden üçünden (Ingilizce büyük harfler, Ingilizce küçük harfler, sayılar (0-9) ve alfasayısal olmayan karakterler (!, $, #,%, vb.) karakter içermelidir.
    - Konum: verilere en hızlı erişim sağlamak için kullanıcılarınıza en yakın konumu kullanın.
 
    > [!IMPORTANT]
    > Burada belirttiğiniz sunucu yöneticisi parolası, sunucuda ve veritabanlarında oturum açmak için gereklidir. Bu bilgileri daha sonra kullanmak üzere aklınızda tutun veya kaydedin.
 
-5. **Sunucu grubunu yapılandır**öğesine tıklayın. Bu bölümdeki ayarları değiştirmeden bırakın ve **Kaydet**' e tıklayın.
+5. **Sunucu grubunu yapılandır** öğesine tıklayın. Bu bölümdeki ayarları değiştirmeden bırakın ve **Kaydet**' e tıklayın.
 6. Ileri ' ye tıklayın, ekranın alt kısmındaki **ağ >** .
 
 7. **Ağ** sekmesinde, **genel uç nokta** radyo düğmesine tıklayın.
@@ -53,11 +54,11 @@ PostgreSQL için Azure veritabanı sunucusu oluşturmak üzere şu adımları uy
 10. Sayfa dağıtımı izlemeye yeniden yönlendirilir. **Dağıtımınızdan** canlı durum değişikliği **dağıtımınız tamamlandığında**, sayfanın solundaki **çıktılar** menü öğesine tıklayın.
 11. Çıktılar sayfası, değeri panoya kopyalamak için düğmenin yanında bir düğme içeren bir düzenleyici ana bilgisayar adı içerecektir. Bu bilgileri daha sonra kullanmak üzere kaydedin.
 
-## <a name="connect-to-the-database-using-psql"></a>Psql kullanarak veritabanına bağlanma
+### <a name="connect-to-the-database-using-psql"></a>Psql kullanarak veritabanına bağlanma
 
 PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı varsayılan bir veritabanı oluşturulur. Veritabanı sunucunuza bağlanmak için bir bağlantı dizesi ve yönetici parolası gerekir.
 
-1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **bağlantı dizeleri** menü öğesine tıklayın. ( **Ayarlar**altında.) **Psql**olarak işaretlenmiş dizeyi bulun. Şu biçimdedir:
+1. Bağlantı dizesini edinin. Sunucu grubu sayfasında **bağlantı dizeleri** menü öğesine tıklayın. ( **Ayarlar** altında.) **Psql** olarak işaretlenmiş dizeyi bulun. Şu biçimdedir:
 
    ```
    psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
@@ -72,7 +73,7 @@ PostgreSQL için Azure veritabanı sunucusunu oluştururken, **citus** adlı var
    psql "host=..."
    ```
 
-   Örneğin, aşağıdaki komut, **demosunucum**sunucu grubunun düzenleyici düğümüne bağlanır:
+   Örneğin, aşağıdaki komut, **demosunucum** sunucu grubunun düzenleyici düğümüne bağlanır:
 
    ```bash
    psql "host=mydemoserver-c.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"

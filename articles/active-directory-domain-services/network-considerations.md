@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d1a3ab5face03754bf84f442ac0fa73768b0fc80
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619292"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615827"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -91,7 +91,7 @@ Sanal ağları bağlayan DNS sunucusunda koşullu DNS ileticileri veya yönetile
 
 Yönetilen bir etki alanı, dağıtım sırasında bazı ağ kaynakları oluşturur. Bu kaynaklar, yönetilen etki alanının başarılı bir şekilde çalışması ve yönetimi için gereklidir ve el ile yapılandırılmamalıdır.
 
-| Azure kaynağı                          | Açıklama |
+| Azure kaynağı                          | Description |
 |:----------------------------------------|:---|
 | Ağ arabirim kartı                  | Azure AD DS, Windows Server 'da Azure sanal makineleri olarak çalışan iki etki alanı denetleyicisinde (DC) yönetilen etki alanını barındırır. Her VM 'nin sanal ağ alt ağınıza bağlanan bir sanal ağ arabirimi vardır. |
 | Dinamik standart genel IP adresi      | Azure AD DS, standart SKU genel IP adresini kullanarak eşitleme ve yönetim hizmetiyle iletişim kurar. Genel IP adresleri hakkında daha fazla bilgi için bkz. [Azure 'Da IP adresi türleri ve ayırma yöntemleri](../virtual-network/public-ip-addresses.md). |
@@ -110,9 +110,8 @@ Yönetilen etki alanı için kimlik doğrulama ve yönetim hizmetleri sağlamak 
 
 | Bağlantı noktası numarası | Protokol | Kaynak                             | Hedef | Eylem | Gerekli | Amaç |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
-| 443         | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Azure AD kiracınızla eşitleme. |
-| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
-| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Evet      | Etki alanınızı yönetme. |
+| 5986        | TCP      | AzureActiveDirectoryDomainServices | Herhangi biri         | İzin Ver  | Yes      | Etki alanınızı yönetme. |
+| 3389        | TCP      | Corpnetgördünüz                         | Herhangi biri         | İzin Ver  | İsteğe Bağlı      | Destek için hata ayıklama. |
 
 Bu kuralların gerçekleşmesini gerektiren bir Azure Standart yük dengeleyici oluşturulur. Bu ağ güvenlik grubu, Azure AD DS güvenliğini sağlar ve yönetilen etki alanının düzgün çalışması için gereklidir. Bu ağ güvenlik grubunu silmeyin. Yük dengeleyici bu olmadan düzgün çalışmaz.
 
@@ -127,12 +126,17 @@ Gerekirse, [gerekli ağ güvenlik grubunu ve kuralları Azure PowerShell kullana
 >
 > Azure SLA, etki alanınızı güncelleştirme ve yönetme konusunda Azure AD DS engelleyen, yanlış yapılandırılmış bir ağ güvenlik grubu ve/veya Kullanıcı tanımlı yol tablolarının uygulandığı dağıtımlar için uygulanmaz.
 
-### <a name="port-443---synchronization-with-azure-ad"></a>Bağlantı noktası 443-Azure AD ile eşitleme
+### <a name="port-5986---management-using-powershell-remoting"></a>Bağlantı noktası 5986-PowerShell uzaktan iletişimini kullanan yönetim
 
-* Azure AD kiracınızı yönetilen etki alanınız ile senkronize etmek için kullanılır.
-* Bu bağlantı noktasına erişim olmadan, yönetilen etki alanınız Azure AD kiracınızla eşitlenemiyor. Parolalarında yapılan değişiklikler yönetilen etki alanınız ile eşitlenmediğinde kullanıcılar oturum açabiliyor olabilir.
-* Bu bağlantı noktasına IP adreslerine gelen erişim, **AzureActiveDirectoryDomainServices** Service etiketi kullanılarak varsayılan olarak kısıtlıdır.
-* Bu bağlantı noktasından giden erişimi kısıtlamayın.
+* Yönetilen etki alanında PowerShell uzaktan iletişimini kullanarak yönetim görevlerini gerçekleştirmek için kullanılır.
+* Bu bağlantı noktasına erişim olmadan, yönetilen etki alanınız güncelleştirilemiyor, yapılandırılamaz, yedeklenmez veya izlenemez.
+* Kaynak Yöneticisi tabanlı bir sanal ağ kullanan yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi *AzureActiveDirectoryDomainServices* hizmeti etiketiyle kısıtlayabilirsiniz.
+    * Klasik tabanlı bir sanal ağ kullanan eski yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* ve *104.40.87.209*.
+
+    > [!NOTE]
+    > 2017 ' de Azure AD Domain Services Azure Resource Manager ağda barındırana bilgisayar için kullanılabilir duruma geldi. Bu tarihten sonra, Azure Resource Manager modern yeteneklerini kullanarak daha güvenli bir hizmet oluşturuyoruz. Azure Resource Manager dağıtımları klasik dağıtımları tamamen yerine getirmek için Azure AD DS klasik sanal ağ dağıtımları 1 Mart 2023 ' de kullanımdan kaldırılacaktır.
+    >
+    > Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ### <a name="port-3389---management-using-remote-desktop"></a>Bağlantı noktası 3389-Uzak Masaüstü kullanarak yönetim
 
@@ -148,18 +152,6 @@ Gerekirse, [gerekli ağ güvenlik grubunu ve kuralları Azure PowerShell kullana
 > Örneğin, RDP 'ye izin veren bir kural oluşturmak için aşağıdaki betiği kullanabilirsiniz: 
 >
 > `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
-
-### <a name="port-5986---management-using-powershell-remoting"></a>Bağlantı noktası 5986-PowerShell uzaktan iletişimini kullanan yönetim
-
-* Yönetilen etki alanında PowerShell uzaktan iletişimini kullanarak yönetim görevlerini gerçekleştirmek için kullanılır.
-* Bu bağlantı noktasına erişim olmadan, yönetilen etki alanınız güncelleştirilemiyor, yapılandırılamaz, yedeklenmez veya izlenemez.
-* Kaynak Yöneticisi tabanlı bir sanal ağ kullanan yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi *AzureActiveDirectoryDomainServices* hizmeti etiketiyle kısıtlayabilirsiniz.
-    * Klasik tabanlı bir sanal ağ kullanan eski yönetilen etki alanları için, bu bağlantı noktasına gelen erişimi şu kaynak IP adreslerine kısıtlayabilirsiniz: *52.180.183.8*, *23.101.0.70*, *52.225.184.198*, *52.179.126.223*, *13.74.249.156*, *52.187.117.83*, *52.161.13.95*, *104.40.156.18* ve *104.40.87.209*.
-
-    > [!NOTE]
-    > 2017 ' de Azure AD Domain Services Azure Resource Manager ağda barındırana bilgisayar için kullanılabilir duruma geldi. Bu tarihten sonra, Azure Resource Manager modern yeteneklerini kullanarak daha güvenli bir hizmet oluşturuyoruz. Azure Resource Manager dağıtımları klasik dağıtımları tamamen yerine getirmek için Azure AD DS klasik sanal ağ dağıtımları 1 Mart 2023 ' de kullanımdan kaldırılacaktır.
-    >
-    > Daha fazla bilgi için bkz. [resmi kullanımdan kaldırma bildirimi](https://azure.microsoft.com/updates/we-are-retiring-azure-ad-domain-services-classic-vnet-support-on-march-1-2023/)
 
 ## <a name="user-defined-routes"></a>Kullanıcı tanımlı yollar
 

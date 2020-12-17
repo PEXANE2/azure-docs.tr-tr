@@ -4,12 +4,12 @@ description: Azure Kubernetes Service’te bir küme için Azure Active Director
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: e95eae3ab8d992bc169e54700e7e31715e72102e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: c6f50b152174cee1ee2cc37baa22432957107d2c
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607832"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614804"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) ile hizmet sorumluları
 
@@ -100,18 +100,7 @@ Kapsayıcı görüntü depolukça Azure Container Registry (ACR) kullanıyorsan�
 
 ### <a name="networking"></a>Ağ
 
-Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanabilirsiniz. Aşağıdaki rol izinleri kümesinden birini atayın:
-
-- Özel bir [rol][rbac-custom-role] oluşturun ve aşağıdaki rol izinlerini tanımlayın:
-  - *Microsoft. Network/virtualNetworks/alt ağlar/JOIN/Action*
-  - *Microsoft. Network/virtualNetworks/alt ağlar/okuma*
-  - *Microsoft. Network/publicIPAddresses/JOIN/Action*
-  - *Microsoft. Network/publicIPAddresses/Read*
-  - *Microsoft. Network/Publicıpaddresses/Write*
-  - [Kubenet kümelerinde özel yol tabloları](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) kullanılıyorsa şu ek izinleri ekleyin:
-    - *Microsoft. Network/routeTables/Write*
-    - *Microsoft. Network/routeTables/Read*
-- Veya, sanal ağ içindeki alt ağda bulunan [ağ katılımcısı][rbac-network-contributor] yerleşik rolünü atayın
+Sanal ağ ve alt ağ ya da genel IP adreslerinin başka bir kaynak grubunda olduğu gelişmiş ağ kullanabilirsiniz. [Ağ katılımcısı][rbac-network-contributor] yerleşik rolünü, sanal ağ içindeki alt ağ üzerinde atayın. Alternatif olarak, bu kaynak grubundaki ağ kaynaklarına erişim izinleri ile [özel bir rol][rbac-custom-role] oluşturabilirsiniz. Daha fazla bilgi için bkz. [aks hizmet izinleri][aks-permissions] .
 
 ### <a name="storage"></a>Depolama
 
@@ -188,3 +177,4 @@ Kimlik bilgilerini güncelleştirme hakkında daha fazla bilgi için bkz. [AKS '
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

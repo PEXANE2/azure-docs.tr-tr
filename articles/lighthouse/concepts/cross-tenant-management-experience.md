@@ -1,14 +1,14 @@
 ---
 title: Kiracılar arası yönetim deneyimleri
 description: Azure Temsilcili kaynak yönetimi, bir çapraz kiracı yönetim deneyimi sunar.
-ms.date: 11/19/2020
+ms.date: 12/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4550921fdefdca440b6757e7a3b7a03337599d16
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: dca14781aac9db3cdd47ab4b66506f77f0b78c31
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510660"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616584"
 ---
 # <a name="cross-tenant-management-experiences"></a>Kiracılar arası yönetim deneyimleri
 
@@ -77,6 +77,11 @@ Birçok görev ve hizmet, yönetilen kiracılar genelinde Temsilcili kaynaklar �
 [Azure maliyet yönetimi + faturalandırma](../../cost-management-billing/index.yml):
 
 - Yönetim kiracısından, CSP iş ortakları, Azure planı kapsamındaki müşteriler için vergi öncesi tüketim maliyetlerini (satın almalara dahil değil) görüntüleyebilir, yönetebilir ve analiz edebilir. Maliyet, perakende tariflerine ve iş ortağının müşterinin aboneliğine sahip olduğu Azure rol tabanlı erişim denetimi (Azure RBAC) erişimine göre yapılır.
+
+[Azure Key Vault](../../key-vault/general/index.yml):
+
+- Müşteri kiracılarında Anahtar kasaları oluşturma
+- Müşteri kiracılarında Anahtar kasaları oluşturmak için yönetilen bir kimlik kullanma
 
 [Azure Kubernetes hizmeti (AKS)](../../aks/index.yml):
 

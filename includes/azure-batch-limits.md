@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026752"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614528"
 ---
 | **Kaynak** | **Varsayılan sınır** | **Üst sınır** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96026752"
 | Batch hesabı başına havuz sayısı | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup>Bu sınırlarda artış istemek için Azure Desteği’ne ulaşın.
-
-> [!IMPORTANT]
-> Adanmış kotayı isteme ve yönetme şeklini değiştirdik.  Toplam ayrılmış vCPU sayısı şu anda zorlanan değerdir, ancak yakında VM Serisi başına adanmış kotayı zorlayacağız. Düşük öncelikli kota, toplam sınıra göre zorlanmaya devam eder; Bu, VM serisi tarafından zorlanmaz.
 
 > [!NOTE]
 > Varsayılan sınırlar, Batch hesabı oluşturmak için kullandığınız abonelik türüne bağlı olarak değişiklik gösterir. Gösterilen çekirdek kotaları, Batch hizmet modundaki Batch hesapları içindir. [Batch hesabınızdaki kotaları görüntüleme](../articles/batch/batch-quota-limit.md#view-batch-quotas).

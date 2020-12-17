@@ -4,15 +4,15 @@ description: Azure Işlevlerinden Kbıbitmq iletileri gönderme hakkında bilgi 
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/16/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 212bfcee09cd63b6ff09faaba4d99e4b4c583fe8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: febcb3d2b6990d36a686dc4fab57a6bcbc96b080
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505780"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616669"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Kbbitmq çıkış bağlamaya genel bakış
 
@@ -193,8 +193,6 @@ Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 }
 ```
 
-*_\_ İnit_ \_ . Kopyala* içinde, yöntemine bir değer geçirerek bir ileti yazabilirsiniz `set` .
-
 ```python
 import azure.functions as func
 
@@ -271,11 +269,13 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Görünüm** | yok | "Out" olarak ayarlanmalıdır. |
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. |
 |**Adı**|**Adı**| İletilerin gönderileceği kuyruğun adı. |
-|**Konak**|**Konak**|(ConnectStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişen ad |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişmek için parola|
+|**Konak**|**Konak**|(ConnectStringSetting kullanılıyorsa yoksayıldı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
+|**Nitelen**|**Nitelen**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için Kullanıcı adını içeren uygulama ayarının adı. Örn. UserNameSetting: "< UserNameFromSettings >"|
+|**parola**|**Parola**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parolayı içeren uygulama ayarının adı. Örn. UserNameSetting: "< UserNameFromSettings >"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Kbbitmq ileti kuyruğu bağlantı dizesini içeren uygulama ayarının adı. Bağlantı dizesini doğrudan belirtirseniz ve local.settings.jsüzerinde bir uygulama ayarı aracılığıyla değil, tetikleyicinin çalışmadığına lütfen emin olun. (Örn: *function.js*: connectionStringSetting: "Kbbitmqconnection" <br> *local.settings.json*: "Oybbitmqconnection": "< actualconnectionstring >")|
-|**bağ**|**Bağlantı noktası**|Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
+|**bağ**|**Bağlantı noktası**|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
@@ -297,7 +297,7 @@ C# işlevleriyle çalışırken:
 
 * `byte[]` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
 * `string` -İşlev çıktığında parametre değeri null ise, Işlevler bir ileti oluşturmaz.
-* `POCO` -Parametre değeri bir C# nesnesi olarak biçimlendirilmemişse bir hata alınır.
+* `POCO` -Parametre değeri bir C# nesnesi olarak biçimlendirilmemişse bir hata alınır. Tüm örnek için bkz. C# betik [örneği](#example).
 
 C# betik işlevleriyle çalışırken:
 
@@ -305,11 +305,11 @@ C# betik işlevleriyle çalışırken:
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kbbitmq iletisi bir dize aracılığıyla gönderilir.
+Kuyruk iletisi Context. Bindings aracılığıyla kullanılabilir.<NAME> <NAME>, üzerinde function.jstanımlanan adla eşleşir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kbbitmq iletisi bir dize aracılığıyla gönderilir.
+Python [örneğine](#example)bakın.
 
 # <a name="java"></a>[Java](#tab/java)
 

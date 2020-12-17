@@ -1,21 +1,23 @@
 ---
-title: 'Hızlı başlangıç: Linux için Python uygulaması oluşturma'
+title: 'Hızlı başlangıç: Linux üzerinde bir Python uygulaması oluşturma'
 description: App Service bir Linux kapsayıcısına Python uygulaması dağıtarak Azure App Service kullanmaya başlayın.
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561554"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614668"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Hızlı başlangıç: Linux için Azure App Service bir Python uygulaması oluşturma
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Hızlı başlangıç: Linux üzerinde Azure App Service bir Python uygulaması oluşturma
 
 Bu hızlı başlangıçta, Azure 'un yüksek düzeyde ölçeklenebilir ve kendini yayama Web barındırma hizmeti [olan Linux üzerinde App Service](overview.md#app-service-on-linux)Için bir Python web uygulaması dağıtırsınız. Bir Mac, Linux veya Windows bilgisayarında yerel [Azure komut satırı arabirimi 'ni (CLI)](/cli/azure/install-azure-cli) kullanarak Flask veya Docgo çerçeveleri ile bir örnek dağıtabilirsiniz. Yapılandırdığınız Web uygulaması ücretsiz bir App Service katmanını kullanır, bu nedenle bu makalenin kursunda hiçbir ücret ödeirsiniz.
+
+**Ortak terimlerin tanımları** için bkz. [Azure terimleri kısaca](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Uygulamaları bir IDE aracılığıyla dağıtmayı tercih ediyorsanız, bkz. **[Visual Studio Code App Service Için Python uygulamaları dağıtma](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)**.

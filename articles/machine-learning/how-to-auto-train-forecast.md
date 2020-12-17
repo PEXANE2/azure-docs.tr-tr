@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: e0cbbb3fd6cea962008218b5e695f119d211a909
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: f4975c0e8d8b23a7c107b9704b0e0825702a0010
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033706"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617026"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Zaman serisi tahmin modelini otomatik eğitme
 
@@ -33,7 +33,7 @@ Düşük bir kod deneyimi için bkz. öğreticide, [Azure Machine Learning Studi
 
 Klasik zaman serisi yöntemlerinin aksine, otomatik ML 'de, geçmiş zaman serisi değerleri, gerileme için diğer tahminlerle birlikte ek boyutlar haline gelir. Bu yaklaşım, eğitim sırasında birden çok bağlamsal değişkeni ve bunlarla ilişkilerini bir araya ekler. Birden çok etken bir tahmini etkileyebileceğinden, bu yöntem kendisini gerçek dünya tahmin senaryolarıyla iyi bir şekilde hizalar. Örneğin, satış tahmini yaparken geçmiş eğilimler, Döviz Kuru ve fiyatın etkileşimleri, satış sonucunu güvenle bir şekilde ister. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 İhtiyacınız olan bu makalede, 
 
@@ -128,7 +128,7 @@ Otomatik makine öğrenimi, model oluşturma ve ayarlama sürecinin bir parças�
 >[!Tip]
 > Geleneksel regresyon modelleri tahmin denemeleri için öneri sisteminin bir parçası olarak da test edilir. Modellerin tam listesi için [desteklenen model tablosuna](how-to-configure-auto-train.md#supported-models) bakın. 
 
-Modeller| Description | Yararları
+Modeller| Description | Avantajlar
 ----|----|---
 Prophet (Önizleme)|Prophet, önemli dönemsel etkileri ve geçmiş verilerin çeşitli mevsimlerine sahip zaman serisiyle en iyi şekilde çalışmaktadır. Bu modelden yararlanmak için kullanarak yerel olarak yüklemesini yapın `pip install fbprophet` . | Daha hızlı, güçlü ve aykırı verilere, eksik verilere ve zaman serinizdeki önemli değişikliklere göre doğru &.
 Otomatik-ARıMA (Önizleme)|Otomatik gerileme tümleşik hareketli ortalama (ARıMA), veriler sabit olduğunda en iyi şekilde çalışır. Bu, ortalama ve fark gibi istatistiksel özelliklerinin tüm küme üzerinde sabit olduğu anlamına gelir. Örneğin, bir para alanı çevirdiğinizde, bugün, yarın veya sonraki yılda bir değer çevirmenize bakılmaksızın kafa alma olasılığı %50 ' dir.| Sonraki değerleri tahmin etmek için geçmiş değerler kullanıldığından, tek değişkenli seriler için harika.
@@ -168,6 +168,7 @@ from azureml.automl.core.forecasting_parameters import ForecastingParameters
 forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                                forecast_horizon=50,
                                                time_series_id_column_names=["store"],
+                                               freq='W',
                                                target_lags='auto',
                                                target_rolling_window_size=10)
                                               

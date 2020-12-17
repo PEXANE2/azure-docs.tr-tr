@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860975"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614923"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Kullanıcıları sosyal kimliklerle oturum açmak için MSAL.NET kullanma
 
@@ -134,7 +134,7 @@ Bir ROPC akışında Kullanıcı adı/parola kullanarak birkaç şeyi fesınız:
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Azure AD B2C 'de ROPC akışını yapılandırma
 
-Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](../../active-directory-b2c/configure-ropc.md).
+Azure AD B2C kiracınızda yeni bir Kullanıcı akışı oluşturun ve ropc **kullanarak** Kullanıcı akışı için ropc 'yi etkinleştirin. Daha fazla bilgi için bkz. [kaynak sahibi parola kimlik bilgileri akışını yapılandırma](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` yöntemi içerir `AcquireTokenByUsernamePassword` :
 

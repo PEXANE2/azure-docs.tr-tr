@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperf-fy20q4
 ms.date: 11/09/2020
-ms.openlocfilehash: 010d37baff76a046bef2da877262f6427cb3d5c9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: aa0a14d57db932ef6cfb17df84b3204d3dec9e4d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094446"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617009"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure Machine Learning'deki bilinen sorunlar ve sorun giderme
 
@@ -428,6 +428,16 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
   2. `pip freeze` `tensorflow` Bulunursa, listelenen sürüm < 1,13 olmalıdır.
   3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall tensorflow` komut kabuğu 'nda, onay için y girin.
+
+## <a name="model-explanations"></a>Model açıklamaları
+
+* **Seyrek veriler desteklenmez**: model açıklama panosu çok sayıda özellik ile önemli ölçüde yavaşlar/yavaşlar, bu nedenle şu anda seyrek veri biçimini desteklemiyoruz. Ayrıca, genel bellek sorunları büyük veri kümeleri ve çok sayıda özellik ile ortaya çıkar. 
+
+* **Model açıklamaları ile desteklenmeyen tahmin modelleri**: yorumlenebilirlik, en iyi model açıklaması, aşağıdaki algoritmaların en iyi model olarak kullanılması için denemeleri, her zaman en iyi model: TCNForecaster, oto ARIMA, üs Alyumuşatma, ortalama, Naive, mevsimsel ortalama ve mevsimsel bir değer. Oto ve tahmin için açıklamaları destekleyen regresyon modelleri vardır. Ancak, açıklama kesik çizgi bord ' de, "bireysel Özellik önemi" sekmesi, veri işlem hatlarında karmaşıklık nedeniyle tahmin için desteklenmez.
+
+* **Veri dizini Için yerel açıklama**: Açıklama panosu, Pano verileri rasgele şekilde örnekleyecek şekilde, bu veri kümesi 5000 veri noktasından büyükse, yerel önem değerlerinin orijinal doğrulama veri kümesinden bir satır tanımlayıcısıyla ilişkilendirilmesi desteklenmez. Ancak, panoda her bir DataPoint için ham veri kümesi özellik değerleri, her bir özellik önem derecesi sekmesinde görüntülenir. Kullanıcılar, ham veri kümesi özellik değerleriyle eşleşen yerel kaynakları özgün veri kümesine geri eşleyebilir. Doğrulama veri kümesi boyutu 5000 örnek ise, `index` AzureML Studio 'daki Özellik doğrulama veri kümesindeki dizine karşılık gelir.
+
+* **AML Studio 'Da ne zaman/buz çizimleri desteklenmez**: What-If ve tek başına koşullu beklentiler (Ice) çizimleri, açıklama sekmesinin altında bulunan ve bağımsız özelliklerin öngörülerini ve olasılıkların yeniden hesaplanması için etkin bir işlem gerektirdiğinden. SDK kullanılarak pencere öğesi olarak çalıştırıldığında jupi not defterlerinde Şu anda desteklenmektedir.
 
 ## <a name="deploy--serve-models"></a>Modelleri dağıtma ve sunma
 

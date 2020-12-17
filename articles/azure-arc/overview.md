@@ -3,12 +3,12 @@ title: Azure Arc'a genel bakış
 description: Azure Arc 'ın ne olduğu ve müşterilerin karma kaynaklarını diğer Azure hizmetleri ve özellikleriyle yönetimi ve idare etmesine nasıl yardımcı olduğunu öğrenin.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 8e48378e5032768b3f56a5d99c1189e282ff37f8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714157"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616533"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc'a genel bakış
 
@@ -50,7 +50,7 @@ Aşağıda, Azure Arc ile sunulan özelliklerin fiyatlandırma ayrıntıları ve
 
 ### <a name="arc-enabled-servers"></a>Arc özellikli sunucular
 
-Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır.Buna aşağıdakiler dahildir:
+Azure Arc denetim düzlemi işlevselliği ek bir ücret ödemeden sunulmaktadır. Şunları içerir:
 
 * Azure Yönetim grupları ve Etiketler aracılığıyla kaynak organizasyonu.
 
@@ -73,6 +73,8 @@ Geçerli önizleme aşamasında, Azure Arc etkin Kubernetes ek bir ücret ödeme
 Geçerli önizleme aşamasında, Azure Arc etkin veri Hizmetleri ek bir ücret ödemeden sunulmaktadır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+* [Jumpstart senaryolarından](https://azurearcjumpstart.io/azure_arc_jumpstart/) yay özellikli hizmetler yaşamaya başlayın
 
 * Yay etkin sunucular hakkında daha fazla bilgi edinmek için aşağıdaki [genel bakışa](./servers/overview.md) bakın
 

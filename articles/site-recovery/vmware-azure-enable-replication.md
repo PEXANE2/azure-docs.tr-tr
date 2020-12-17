@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: a1f4759bc40c4074f0dd618be8ac66ad088e848c
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587766"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616618"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>VMware VM’leri için Azure'a çoğaltmayı etkinleştirme
 
@@ -109,7 +109,7 @@ Korunan öğenin "çoğaltmayı etkinleştir" işlemi tamamlandıktan sonra, Azu
 - Tamamlanma yüzdesi-VM için tamamlanan ilk çoğaltma yüzdesini gösterir
 - Aktarılan toplam veri-VM 'den Azure 'a aktarılan veri miktarı
 
-:::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="çoğaltma durumu" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
+    :::image type="content" source="media/vmware-azure-enable-replication/initial-replication-state.png" alt-text="çoğaltma durumu" lightbox="media/vmware-azure-enable-replication/initial-replication-state.png":::
 
 - Eşitleme ilerlemesi (bir disk düzeyindeki ayrıntıları izlemek için)
     - Çoğaltma durumu

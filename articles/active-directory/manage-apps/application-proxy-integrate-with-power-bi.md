@@ -16,18 +16,18 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c3188571e9188add7bc8f4f4d07ea5a562a79b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d4515d6140123e8e8784fc2d828242d49c59fc4
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658120"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616907"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Azure AD Uygulama Ara Sunucusu ile Power BI Mobil’e uzaktan erişimi etkinleştirme
 
 Bu makalede, Power BI mobil uygulamanın Power BI Rapor Sunucusu (PBIRS) ve SQL Server Reporting Services (SSRS) 2016 ve üzeri bir sürüme bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu 'nin nasıl kullanılacağı açıklanır. Bu tümleştirme sayesinde, kurumsal ağdan uzakta olan kullanıcılar Power BI raporlarına Power BI mobil uygulamadan erişebilir ve Azure AD kimlik doğrulaması tarafından korunabilir. Bu koruma, koşullu erişim ve çok faktörlü kimlik doğrulaması gibi [güvenlik avantajlarını](application-proxy-security.md#security-benefits) içerir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makalede, zaten rapor Hizmetleri dağıttığınız ve [uygulama ara sunucusu 'nu etkinleştirmiş](application-proxy-add-on-premises-application.md)olduğunuz varsayılmaktadır.
 
@@ -153,6 +153,8 @@ Power BI mobil uygulamanın rapor hizmetlerine bağlanabilmesi ve erişebilmesi 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Uygulama bir raporu birkaç dakikadan uzun bir süre yüklemeye çalıştıktan sonra bir hata sayfası döndürürse, zaman aşımı ayarını değiştirmeniz gerekebilir. Varsayılan olarak, uygulama proxy 'Si bir isteğe yanıt vermek için 85 saniyeye kadar geçen uygulamaları destekler. Bu ayarı 180 saniyeye uzatmak için, uygulama ara sunucusu ayarları sayfasında, arka uç zaman aşımını **uzun** olarak seçin. Hızlı ve güvenilir raporlar oluşturma hakkında ipuçları için bkz. [Power BI Reports En Iyi yöntemleri](/power-bi/power-bi-reports-performance).
+
+Power BI mobil uygulamanın şirket içi uygulamasına bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu kullanma Power BI Rapor Sunucusu, Microsoft Power BI uygulaması onaylı bir istemci uygulaması olarak gerektiren koşullu erişim ilkeleriyle desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

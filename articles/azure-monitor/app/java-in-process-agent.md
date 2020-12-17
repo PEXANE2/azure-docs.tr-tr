@@ -6,12 +6,12 @@ ms.date: 03/29/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 3cab22c2271fd5874b4b094be65c36f5b5f3a22d
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 2011d013cce43eaf471d61936d5c34c318360381
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371892"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616652"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights"></a>Java kodsuz kullanacaksınız uygulama izleme Azure izleyici Application Insights
 
@@ -139,17 +139,17 @@ Application Insights Java 3,0, bu API 'Ler aracılığıyla gönderilen Telemetr
 
 ### <a name="supported-custom-telemetry"></a>Desteklenen özel telemetri
 
-Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](#send-custom-telemetry-using-application-insights-java-2x-sdk)aracılığıyla desteklenir.
+Aşağıdaki tablo, Java 3,0 Aracısı 'nı tamamlamak için etkinleştirebileceğiniz, şu anda desteklenen özel telemetri türlerini temsil eder. Özetlemek gerekirse, özel ölçümler mikro ölçüm aracılığıyla desteklenir, özel özel durumlar ve izlemeler günlüğe kaydetme çerçeveleri aracılığıyla etkinleştirilebilir ve tüm özel telemetri türleri [Java 2. x SDK Application Insights](#send-custom-telemetry-using-the-2x-sdk)aracılığıyla desteklenir.
 
 |                     | Micrometer | Log4J, logback, Tem | 2. x SDK |
 |---------------------|------------|---------------------|---------|
-| **Özel olaylar**   |            |                     |  Evet    |
-| **Özel ölçümler**  |  Evet       |                     |  Evet    |
-| **Bağımlılıklar**    |            |                     |  Evet    |
-| **Özel durumlar**      |            |  Evet                |  Evet    |
-| **Sayfa Görüntülemeleri**      |            |                     |  Evet    |
-| **İstekler**        |            |                     |  Evet    |
-| **İzlemeler**          |            |  Evet                |  Evet    |
+| **Özel olaylar**   |            |                     |  Yes    |
+| **Özel ölçümler**  |  Yes       |                     |  Yes    |
+| **Bağımlılıklar**    |            |                     |  Yes    |
+| **Özel durumlar**      |            |  Yes                |  Yes    |
+| **Sayfa Görüntülemeleri**      |            |                     |  Yes    |
+| **İstekler**        |            |                     |  Yes    |
+| **İzlemeler**          |            |  Yes                |  Yes    |
 
 Application Insights 3,0 ile bir SDK 'Yı Şu anda serbest bırakmaya planlanıyoruz.
 
@@ -188,7 +188,7 @@ Bu düzeyin nasıl değiştirileceği için [yapılandırma seçeneklerine](./ja
 
 Günlükleriniz için özel boyutlar eklemek istiyorsanız, [Log4j 1,2 MDC](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/MDC.html), [Log4J 2 MDC](https://logging.apache.org/log4j/2.x/manual/thread-context.html)veya [logback MDC](http://logback.qos.ch/manual/mdc.html)kullanabilirsiniz ve Application Insights Java 3,0, bu MDC özelliklerini, izleme ve özel durum telemetrisi için özel boyutlar olarak otomatik olarak yakalar.
 
-### <a name="send-custom-telemetry-using-application-insights-java-2x-sdk"></a>Java 2. x SDK Application Insights kullanarak özel telemetri gönderme
+### <a name="send-custom-telemetry-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak özel telemetri gönderme
 
 `applicationinsights-core-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
 
@@ -251,3 +251,80 @@ try {
     telemetryClient.trackException(e);
 }
 ```
+
+### <a name="add-request-custom-dimensions-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek özel boyutları ekleme
+
+> [!NOTE]
+> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+
+`applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+ve kodunuzda özel boyutlar ekleyin:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getProperties().put("mydimension", "myvalue");
+```
+
+### <a name="set-the-request-telemetry-user_id-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek telemetrisi user_Id ayarlama
+
+> [!NOTE]
+> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+
+`applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+ve `user_Id` kodunuzda ' i ayarlayın:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.getContext().getUser().setId("myuser");
+```
+
+### <a name="override-the-request-telemetry-name-using-the-2x-sdk"></a>2. x SDK 'sını kullanarak istek telemetri adını geçersiz kılın
+
+> [!NOTE]
+> Bu özellik yalnızca 3.0.1-BETA ve üzeri sürümlerde
+
+`applicationinsights-web-2.6.2.jar`Uygulamanıza ekleme (tüm 2. x sürümleri Application Insights Java 3,0 tarafından desteklenir, ancak bir seçiminiz varsa en son kullanımı buna değecektir):
+
+```xml
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>applicationinsights-web</artifactId>
+  <version>2.6.2</version>
+</dependency>
+```
+
+ve kodunuzda adı ayarlayın:
+
+```java
+import com.microsoft.applicationinsights.web.internal.ThreadContext;
+
+RequestTelemetry requestTelemetry = ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry();
+requestTelemetry.setName("myname");
+```
+
+> [!NOTE]
+> `RequestTelemetry`Yukarıda açıklananlar dışında, ' den alınan diğer tüm işlemler `ThreadContext.getRequestTelemetryContext().getHttpRequestTelemetry()` hızlı bir şekilde başarısız olur ve 3,0 Aracısı altında tanımsız bir davranış olduğunu bilmenizi sağlamak için bir özel durum oluşturur.
+>
+> Diğer yöntemler için birlikte `RequestTelemetry` çalışabilme gerekiyorsa lütfen bir sorun açarak bize bildirin https://github.com/microsoft/ApplicationInsights-Java/issues .

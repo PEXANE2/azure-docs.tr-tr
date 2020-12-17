@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 3e5514c4a54083bcc6ef8187f2cd97515d2dd680
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88590192"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614602"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Azure Ölçüm Gezgini'ni kullanmaya başlama
 
@@ -29,15 +29,14 @@ Azure Izleyici Ölçüm Gezgini, grafikleri çizdirme, eğilimleri görsel olara
 
 Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azure Izleyici görünümünden **ölçümler** sekmesini açın ve şu adımları izleyin:
 
-1. Kaynak seçiciyi kullanarak, ölçümlerini görmek istediğiniz kaynağı seçin. ( **Ölçümleri** belirli bir kaynak bağlamında açtıysanız, kaynak önceden seçilmiş olur).
-
-    > ![Bir kaynak seçin](./media/metrics-getting-started/resource-picker.png)
+1. Kaynak kapsamı seçicisini açmak için "kapsam seçin" düğmesine tıklayın. Bu, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Kaynak menüsünden Ölçüm Gezgini 'ni açtıysanız kaynak zaten doldurulmalıdır. Birden çok kaynak arasında ölçümleri görüntülemeyi öğrenmek için [Bu makaleyi okuyun](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-dynamic-scope).
+    > ![Bir kaynak seçin](./media/metrics-getting-started/scope-picker.png)
 
 2. Bazı kaynaklar için bir ad alanı seçmelisiniz. Ad alanı, ölçümleri kolayca bulabilmeniz için, ölçümleri düzenlemenin bir yoludur. Örneğin, depolama hesaplarının dosya, tablo, blob 'Lar ve sıra ölçümlerini depolamak için ayrı ad alanları vardır. Birçok kaynak türünün yalnızca bir ad alanı vardır.
 
 3. Kullanılabilir ölçümler listesinden bir ölçüm seçin.
 
-    > ![Ölçüm seçin](./media/metrics-getting-started/metric-picker.png)
+    > ![Ölçüm seçin](./media/metrics-getting-started/metrics-dropdown.png)
 
 4. İsteğe bağlı olarak, [ölçüm toplamayı değiştirebilirsiniz](metrics-charts.md#changing-aggregation). Örneğin, grafiğinizin ölçüm minimum, maksimum veya Ortalama değerlerini göstermesini isteyebilirsiniz.
 
@@ -51,7 +50,7 @@ Bir ölçüm grafiği oluşturmak için, kaynak, kaynak grubu, abonelik veya Azu
 
 Varsayılan olarak, grafik en son 24 saat ölçüm verilerini gösterir. Zaman aralığını değiştirmek, grafiğinizde yakınlaştırmak veya uzaklaştırmak için **zaman Seçicisi** bölmesini kullanın. 
 
-![Zaman aralığı Bölmesini Değiştir](./media/metrics-getting-started/time-picker.png)
+![Zaman aralığı Bölmesini Değiştir](./media/metrics-getting-started/time.png)
 
 > [!TIP]
 > Grafiğin ilgi çekici bir alanını (ani veya bir DIP) araştırmak için **zaman fırçası** 'nı kullanın. Fare işaretçisini alanın başlangıcına koyun, sol fare düğmesine tıklayın ve basılı tutun, alanın diğer tarafına sürükleyin ve sonra düğmeyi bırakın. Grafik bu zaman aralığında yakınlaşacaktır. 
@@ -73,6 +72,7 @@ Grafik stilini, başlığı özelleştirebilir ve gelişmiş grafik ayarlarını
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Ölçüm Gezgini gelişmiş özellikleri hakkında bilgi edinin](metrics-charts.md)
+* [Ölçüm Gezgini birden çok kaynağı görüntüleme](metrics-dynamic-scope.md)
 * [Ölçüm Gezgini sorunlarını giderme](metrics-troubleshoot.md)
 * [Azure hizmetleri için kullanılabilir ölçümlerin listesine bakın](metrics-supported.md)
 * [Yapılandırılmış grafik örneklerine bakın](metric-chart-samples.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 787380dbf6f739d4b88f18a836da2146b06024c3
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443152"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614886"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API 'Lerini çağıran masaüstü uygulaması: uygulama kaydı
 
@@ -48,8 +48,8 @@ Bir masaüstü uygulamasında kullanılacak yeniden yönlendirme URI 'Leri, kull
 - Uygulamanız yalnızca tümleşik Windows kimlik doğrulaması veya Kullanıcı adı ve parola kullanıyorsa, uygulamanız için bir yeniden yönlendirme URI 'SI kaydetmeniz gerekmez. Bu akışlar Microsoft Identity platform v 2.0 uç noktasına gidiş dönüş yapılır. Uygulamanız belirli bir URI üzerinde geri çağrılmayacaktır.
 - [Cihaz kod akışı](scenario-desktop-acquire-token.md#device-code-flow), [Tümleşik Windows kimlik doğrulaması](scenario-desktop-acquire-token.md#integrated-windows-authentication)ve bir [Kullanıcı adı ile](scenario-desktop-acquire-token.md#username-and-password) gizli bir istemci uygulamasından bir parola ve bir parolayı, bir yeniden yönlendirme URI 'si gerektiren [arka plan uygulamalarında](scenario-daemon-overview.md)kullanılan bir istemci kimlik bilgisi akışı kullanarak ayırt etmek için, bunu bir ortak istemci uygulaması olarak yapılandırmanız gerekir. Bu yapılandırmayı elde etmek için:
 
-    1. [Azure Portal](https://portal.azure.com), **uygulama kayıtları** ' de Uygulamanızı seçin ve **kimlik doğrulaması** ' nı seçin.
-    1. **Gelişmiş ayarlar**  >  **varsayılan istemci türü**  >  **uygulamayı ortak istemci olarak değerlendir** ' de, **Evet** ' i seçin.
+    1. [Azure Portal](https://portal.azure.com), **uygulama kayıtları**' de Uygulamanızı seçin ve **kimlik doğrulaması**' nı seçin.
+    1. **Gelişmiş ayarlar**' da  >  **ortak istemci akışlarının**  >  **aşağıdaki mobil ve Masaüstü akışlarını etkinleştirmesine** izin ver:, **Evet**' i seçin.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Azure portal 'de kimlik doğrulama bölmesinde ortak istemci ayarını etkinleştir":::
 

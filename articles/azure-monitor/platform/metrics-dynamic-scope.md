@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 724809dbce3ca1b5a36f4da0ba5c03d0f78897f5
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9d1460a8bebe75a3ee471eb304fcf642d566b5dd
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97577759"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614651"
 ---
 # <a name="viewing-multiple-resources-in-metrics-explorer"></a>Ölçüm Gezgini birden çok kaynağı görüntüleme
 
@@ -71,7 +71,7 @@ Bölme, ölçümün farklı segmentlerinin birbirleriyle nasıl karşılaştır�
 
 ![VM başına yüzde CPU değerini görmek için bölmeyi nasıl kullanabileceğinizi gösteren ekran görüntüsü](./media/metrics-charts/026.png)
 
-Bölmenin yanı sıra, yalnızca görmek istediğiniz kaynak gruplarını görüntülemek için filtreleme özelliğini de kullanabilirsiniz.  Örneğin, belirli bir kaynak grubu için VM 'Lerin CPU yüzdesini görüntülemek istiyorsanız, kaynak grubuna göre filtrelemek için "Filtre Ekle" aracını kullanabilirsiniz. Bu örnekte, Uyarspintoysdemo içindeki kaynaklarla ilişkili ölçümleri kaldıran, bir,,, bir,,,, bir,,, bir 
+Bölmenin yanı sıra, yalnızca görmek istediğiniz kaynak gruplarını görüntülemek için filtreleme özelliğini de kullanabilirsiniz.  Örneğin, belirli bir kaynak grubu için VM 'Lerin CPU yüzdesini görüntülemek istiyorsanız, kaynak grubuna göre filtrelemek için "Filtre Ekle" aracını kullanabilirsiniz. Bu örnekte, bir Uyarspintoysdemo tarafından filtreliyoruz ve bu, Uyarspintoys 'daki kaynaklarla ilişkili ölçümleri kaldırır. 
 
 ![Kaynak grubuna göre nasıl filtreleyekullanabileceğinizi gösteren ekran görüntüsü](./media/metrics-charts/027.png)
 
@@ -80,7 +80,7 @@ Bölmenin yanı sıra, yalnızca görmek istediğiniz kaynak gruplarını görü
 > [!WARNING] 
 > Birden çok kaynakta, kaynak grubunda veya abonelikte ölçümleri görselleştirmek için abonelik düzeyinde Izleme okuyucusu izninizin olması gerekir. Bunu yapmak için lütfen [Bu belgedeki](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)yönergeleri izleyin. 
 
-Çoklu kaynak grafiğinizi sabitlemek için lütfen [buradaki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#create-alert-rules)yönergeleri izleyin. 
+Çoklu kaynak grafiğinizi sabitlemek için lütfen [buradaki](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pin-charts-to-dashboards)yönergeleri izleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

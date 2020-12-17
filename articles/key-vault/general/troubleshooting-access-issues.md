@@ -7,16 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 78b42a8ad3685d07b61c4faca384c7ee8f5a5f94
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441860"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616397"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Azure Anahtar Kasası erişim ilkesi sorunlarını giderme
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
+
+### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Gizli dizileri/anahtarları/sertifikaları listeedemiyorum veya alamıyoruz. "Bir sorun oluştu.." görüyorum Hatayla.
+Gizli anahtarı listeleme/alma/oluşturma veya erişimle ilgili sorun yaşıyorsanız, bu işlemi gerçekleştirmek için tanımlanmış erişim ilkesine sahip olduğunuzdan emin olun: [Key Vault erişim ilkeleri](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Anahtar kasalarına nasıl ve ne zaman erişildiğini nasıl tanımlayabilirim?
 

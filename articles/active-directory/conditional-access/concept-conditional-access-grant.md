@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 34f82fc060586e2df5acefa6b0836171e558aa4a
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029413"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615776"
 ---
 # <a name="conditional-access-grant"></a>Koşullu erişim: ver
 
@@ -110,6 +110,7 @@ Bu ayar, aşağıdaki iOS ve Android uygulamaları için geçerlidir:
    - Yalnızca iOS ve Android for Device platform koşulunu destekler.
    - Cihazı kaydetmek için bir aracı uygulaması gereklidir. Aracı uygulaması iOS için Microsoft Authenticator veya Android cihazları için Microsoft Authenticator ya da Microsoft şirket portalı olabilir.
 - Koşullu erişim, onaylanan bir istemci uygulamasında Microsoft Edge 'i InPrivate modunda kabul edemez.
+- Power BI mobil uygulamanın şirket içi uygulamasına bağlanmasını sağlamak için Azure AD Uygulama Ara Sunucusu kullanma Power BI Rapor Sunucusu, Microsoft Power BI uygulaması onaylı bir istemci uygulaması olarak gerektiren koşullu erişim ilkeleriyle desteklenmez.
 
 Yapılandırma örnekleri için [koşullu erişimle bkz. nasıl yapılır: Cloud App Access için onaylanan istemci uygulamaları gerektirme](app-based-conditional-access.md) .
 

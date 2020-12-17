@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: b7730558e2a660b0cf00a5b6962d1e2275dd472c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 799699662b738804790e3fe18ce9bd579027808d
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004372"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97616324"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service için sürekli dağıtım
 
@@ -92,11 +92,11 @@ Yerleşik kudu App Service derleme sunucusunu, GitHub, Bitbucket veya Azure Repo
 
 Hesabınız gerekli izinlere sahipse, GitHub 'dan veya Azure Repos sürekli olarak dağıtmak için Azure Pipelines ayarlayabilirsiniz. Azure Pipelines aracılığıyla dağıtma hakkında daha fazla bilgi için bkz. [Azure App Services 'a Web uygulaması dağıtma](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps).
 
-#### <a name="prerequisites"></a>Önkoşullar
+#### <a name="prerequisites"></a>Ön koşullar
 
 Azure Pipelines kullanarak sürekli teslim oluşturmak Azure App Service için, Azure DevOps kuruluşunuzun aşağıdaki izinlere sahip olması gerekir: 
 
-- Azure hesabınızın Azure Active Directory yazma ve hizmet oluşturma izinlerine sahip olması gerekir. 
+- Azure hesabınızın Azure Active Directory yazma ve uygulama kaydı oluşturma izinlerine sahip olması gerekir. 
   
 - Azure hesabınızın, Azure aboneliğinizde **sahip** rolü olmalıdır.
 
