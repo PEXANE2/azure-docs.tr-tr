@@ -27,6 +27,8 @@
   items:
     - name: Güvenlik
       items:
+        - name: Güvenliğe genel bakış
+          href: security.md
         - name: Güvenlik temeli
           href: security-baseline.md
     - name: Azure Veri Paylaşımı terminolojisi
@@ -62,8 +64,6 @@
       href: how-to-revoke-share-subscription.md
     - name: İzleme
       href: how-to-monitor.md
-    - name: Güvenlik
-      href: security.md
     - name: Olağanüstü durum kurtarma
       href: disaster-recovery.md
     - name: Sorun giderme

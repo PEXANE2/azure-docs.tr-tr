@@ -1,23 +1,23 @@
 ---
 title: Hizmet sağlayıcılarını görüntüleme ve yönetme
 description: Müşteriler, hizmet sağlayıcıları, hizmet sağlayıcısı teklifleri ve Temsilcili kaynaklar hakkındaki bilgileri görüntülemek için Azure portal hizmet sağlayıcıları sayfasını kullanabilir.
-ms.date: 10/12/2020
+ms.date: 12/16/2020
 ms.topic: how-to
-ms.openlocfilehash: e94a9fd6562a9fa8bc0f2d84cce477e7907a1e48
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5ee897503c997ab10fdb489f7921c9d2d001e472
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371112"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617213"
 ---
 # <a name="view-and-manage-service-providers"></a>Hizmet sağlayıcılarını görüntüleme ve yönetme
 
-Müşteriler, hizmet sağlayıcıları ve hizmet sağlayıcı teklifleri hakkındaki ayrıntıları görüntülemek, [Azure açık Thouse](../overview.md)'a belirli kaynaklar atamak ve yeni hizmet sağlayıcısı teklifleri için alışveriş yapmak üzere [Azure Portal](https://portal.azure.com) **hizmet sağlayıcıları** sayfasını kullanabilir.
+Azure portal **hizmet sağlayıcıları** sayfası, müşterilere [](https://portal.azure.com) [Azure açık thouse](../overview.md)kullanan hizmet sağlayıcılarına yönelik denetim ve görünürlük sağlar. Müşteriler, hizmet sağlayıcılarına ilişkin ayrıntıları görüntüleyebilir, belirli kaynakları devredebilir, yeni hizmet sağlayıcısı tekliflerini satın alabilir, hizmet sağlayıcı erişimini kaldırabilir ve daha fazlasını yapabilir.
 
 > [!TIP]
 > Burada hizmet sağlayıcılarına ve müşterilere başvuracağız. [birden çok kiracıyı yöneten kuruluşlar](../concepts/enterprise.md) , yönetim deneyimlerini birleştirmek için aynı süreci kullanabilir.
 
-Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri **tüm hizmetleri**seçip **hizmet sağlayıcıları** arayabilir ve bunu seçebilirsiniz. Ayrıca, Azure portal üst tarafına yakın arama kutusuna "hizmet sağlayıcıları" veya "Azure açık Thouse" girerek da bulabilir.
+Azure portal **hizmet sağlayıcıları** sayfasına erişmek için, müşteri **tüm hizmetleri** seçip **hizmet sağlayıcıları** arayabilir ve bunu seçebilirsiniz. Ayrıca, Azure portal üst tarafına yakın arama kutusuna "hizmet sağlayıcıları" veya "Azure açık Thouse" girerek da bulabilir.
 
 > [!NOTE]
 > **Hizmet sağlayıcıları** sayfasını görüntülemek için, müşterinin kiracısındaki bir kullanıcının [okuyucu yerleşik rolüne](../../role-based-access-control/built-in-roles.md#reader) (veya okuyucu erişimi de içeren başka bir yerleşik Role) sahip olması gerekir.
@@ -41,7 +41,7 @@ Müşteri, her bir servis sağlayıcısı teklifi için hizmet sağlayıcının 
 
 Müşteri, **teklif Ekle**' ye tıklayarak **hizmet sağlayıcı teklifleri** sayfasından yeni bir servis sağlayıcısı teklifi ekleyebilir. Hizmet sağlayıcısı bu müşteri için bir teklif yayımlamalıdır. Müşteri daha sonra **özel teklifler** ekranından bu teklifi seçip **Oluştur**' u seçin.
 
-Müşteri bir servis sağlayıcısı teklifini kaldırmak isterse, bu teklif için satırda çöp kutusu simgesini seçebilir. Silme işlemini onayladıktan sonra, söz konusu hizmet sağlayıcının artık bu teklif için daha önce atanmış olan müşteri kaynaklarına erişimi olmayacaktır.
+Müşteri bir servis sağlayıcısı teklifini kaldırmak isterse, bu teklif için satırdaki çöp kutusu simgesini seçerek herhangi bir zamanda bunu yapabilir. Silme işlemini onayladıktan sonra, söz konusu hizmet sağlayıcının artık bu teklif için daha önce atanmış olan müşteri kaynaklarına erişimi olmayacaktır.
 
 ## <a name="delegate-resources"></a>Kaynaklara temsilci atama
 
@@ -50,7 +50,7 @@ Bir hizmet sağlayıcının bir müşterinin kaynaklarına erişebilmesi ve bunl
 Abonelikler veya kaynak grupları atamak için:
 
 1. Hizmet sağlayıcı, teklif ve ad içeren satırın kutusunu işaretleyin. Ardından ekranın üst kısmındaki **kaynakları devretmek** ' ı seçin.
-1. **Kaynak temsilcisi** sayfasının **Teklif Ayrıntıları** bölümünde, hizmet sağlayıcısı ve teklifiyle ilgili ayrıntıları gözden geçirin. Teklifin rol atamalarını gözden geçirmek için, **Seçili teklifin ayrıntılarını görmek üzere buraya tıklayın ' ı**seçin.
+1. **Kaynak temsilcisi** sayfasının **Teklif Ayrıntıları** bölümünde, hizmet sağlayıcısı ve teklifiyle ilgili ayrıntıları gözden geçirin. Teklifin rol atamalarını gözden geçirmek için, **Seçili teklifin ayrıntılarını görmek üzere buraya tıklayın ' ı** seçin.
 1. **Temsilci** bölümünde, **temsilci abonelikleri** veya **temsilci kaynak grupları**' nı seçin.
 1. Bu teklif için temsilci seçmek istediğiniz abonelikleri ve/veya kaynak gruplarını seçin ve ardından **Ekle**' yi seçin.
 1. Bu hizmet sağlayıcısına seçtiğiniz kaynaklara erişim izni vermek istediğinizi onaylamak için sayfanın altındaki onay kutusunu seçin ve ardından **temsilci**' i seçin.
@@ -85,4 +85,5 @@ Başka bir [yerleşik ilke tanımı](../../governance/policy/samples/built-in-po
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure ışıklı kullanım](../overview.md)hakkında daha fazla bilgi edinin.
+- [Hizmet sağlayıcı etkinliğinin nasıl denetleneceğini](view-service-provider-activity.md)öğrenin.
 - Hizmet **sağlayıcılarının, Azure Portal müşteriler sayfasında** [müşterileri nasıl görüntüleyip yönetebileceğini](view-manage-customers.md) öğrenin.

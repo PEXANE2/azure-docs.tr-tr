@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 12/16/2020
 ms.author: rolyon
-ms.openlocfilehash: 4cb3e1fe0275c676e2ce54ff9201502fc3595937
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00fd00112dad9efc31cea83f69bb458a8e1ca935
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91595509"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617383"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Azure RBAC için en iyi uygulamalar
 
@@ -24,7 +24,7 @@ Bu makalede, Azure rol tabanlı erişim denetimi (Azure RBAC) kullanmaya yöneli
 
 Azure RBAC kullanarak ekibiniz içinde görevleri ayırabilir, bu işlere gerek duyan kişilere sadece erişim miktarını verebilirsiniz. Herkese Azure aboneliğiniz veya kaynaklarınızda sınırsız izin vermek yerine belirli eylemlere yalnızca belirli kapsamlarda izin verebilirsiniz.
 
-Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Daha geniş bir rolün daha kolay bir şekilde daha kolay görünse bile daha geniş kapsamlar atamaktan kaçının. Rolleri ve kapsamları sınırlayarak, güvenlik sorumlusu tehlikeye atılırsa hangi kaynakların risk altında olduğunu sınırlayabilirsiniz.
+Erişim denetimi stratejinizi planlarken en iyi yöntem, kullanıcılara yalnızca işlerini yapmak için gerekli olan ayrıcalığı tanımaktır. Daha geniş bir rolün daha kolay bir şekilde daha kolay görünse bile daha geniş kapsamlar atamaktan kaçının. Özel roller oluştururken, yalnızca kullanıcıların ihtiyacı olan izinleri ekleyin. Rolleri ve kapsamları sınırlayarak, güvenlik sorumlusu tehlikeye girerse, hangi kaynakların risk altında olduğunu sınırlayabilirsiniz.
 
 Aşağıdaki diyagramda Azure RBAC kullanımı için önerilen bir model gösterilmektedir.
 

@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533970"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617366"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows sanal masaüstündeki yenilikler nelerdir?
 
@@ -49,7 +49,7 @@ Windows sanal masaüstü cmdlet 'lerinin sürüm 2.0.1'i yayımladık. Bu günce
 
 ### <a name="azure-advisor-updates"></a>Azure Advisor güncelleştirmeleri
 
-Azure Advisor artık Windows sanal masaüstündeki yakınlık Kılavuzu için yeni bir önerisine sahiptir. [Azure Web sitesinden](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)daha fazla bilgi edinin.
+Azure Advisor artık Windows sanal masaüstündeki yakınlık Kılavuzu için yeni bir önerilere ve yüksek öncelikli yük dengeli konak havuzlarında performansı iyileştirmeye yönelik yeni bir önerisine sahiptir. [Azure Web sitesinden](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/)daha fazla bilgi edinin.
 
 ## <a name="october-2020"></a>Ekim 2020
 
@@ -155,7 +155,7 @@ Yeni özellikler hakkında daha fazla bilgi edinmek için [Bu blog gönderisine]
 
 Otomatik ölçeklendirme aracının Önizlemedeki en son sürümü genel kullanıma sunulmuştur. Bu araç, bir konak havuzu içindeki oturum ana bilgisayarı sanal makinelerini (VM 'Ler) otomatik olarak kapatmak ve yeniden başlatmak için bir Azure Otomasyonu hesabı ve Azure Logic app kullanır ve altyapı maliyetlerini azaltır. [Azure Otomasyonu 'nu kullanarak ölçek oturum Konakları](set-up-scaling-script.md)hakkında daha fazla bilgi edinin.
 
-### <a name="azure-portal"></a>Azure portalı
+### <a name="azure-portal"></a>Azure portal
 
 Artık Windows sanal masaüstündeki Azure portal aşağıdaki işlemleri yapabilirsiniz: 
 

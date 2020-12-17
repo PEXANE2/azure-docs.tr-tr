@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: ee2e7dc577e000878884655c0ed5f4bcb1aabab5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: f87ed9b7455bed870cf25a6920cc6295811d94c8
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167704"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617077"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -22,7 +22,7 @@ Azure Işlevleri, sınıflar ve bunların bağımlılıkları arasında [denetim
 
 - Bağımlılık ekleme desteği, Azure Işlevleri 2. x ile başlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini yüklemelisiniz:
 
@@ -118,9 +118,9 @@ Bu örnek, bir başlangıç kaydı için gereken [Microsoft. Extensions. http](h
 
 Azure Işlevleri uygulamaları, [ASP.net bağımlılığı ekleme](/aspnet/core/fundamentals/dependency-injection#service-lifetimes)ile aynı hizmet yaşam sürelerini sağlar. Işlevler uygulaması için farklı hizmet yaşam süreleri aşağıdaki gibi davranır:
 
-- **Geçici**: hizmet istekleri üzerine geçici hizmetler oluşturulur.
-- **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, her yürütme için bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
-- Tekil **: tek**hizmet ömrü, ana bilgisayar ömrü ile eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır. Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `DocumentClient` veya örnekler için önerilir `HttpClient` .
+- **Geçici**: geçici hizmetler, hizmetin her çözümlenme sonrasında oluşturulur.
+- **Kapsam**: kapsamlı hizmet ömrü bir işlev yürütme ömrü ile eşleşir. Kapsamlı hizmetler, işlev yürütmesi başına bir kez oluşturulur. Yürütme sırasında o hizmetin sonraki istekleri, var olan hizmet örneğini yeniden kullanır.
+- Tekil **: tek** hizmet ömrü, ana bilgisayar ömrü ile eşleşir ve bu örnekteki işlev Yürütmelerinde yeniden kullanılır. Tek ömür Hizmetleri, bağlantılar ve istemciler için, örneğin `DocumentClient` veya örnekler için önerilir `HttpClient` .
 
 GitHub üzerinde [farklı hizmet yaşam sürelerinin bir örneğini](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes) görüntüleyin veya indirin.
 
@@ -181,6 +181,8 @@ Aşağıdaki örnek `host.json` dosya günlük filtresini ekler.
     }
 }
 ```
+
+Günlük düzeyleri hakkında daha fazla bilgi için bkz. [günlük düzeylerini yapılandırma](configure-monitoring.md#configure-log-levels).
 
 ## <a name="function-app-provided-services"></a>İşlev uygulaması tarafından sunulan hizmetler
 

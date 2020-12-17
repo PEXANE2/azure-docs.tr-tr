@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6d1e9e8eeddaaa2ce8c891888935faad12d40295
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: f8210428e772241134b57ac4fccb5b1549e04483
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907577"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617281"
 ---
 # <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak Azure Blob depolama ile eşitlemeyi
 
@@ -79,7 +79,7 @@ Bu komutta görüntülenen ilk kapsayıcı kaynağıdır. İkincisi, hedefin bir
 | **Syntax** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
 | **Örnek** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
 
-## <a name="update-a-directory-with-changes-to-a-directory-in-another-file-share"></a>Başka bir dosya paylaşımındaki bir dizinde bulunan değişikliklerle Dizin güncelleştirme
+## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>Başka bir kapsayıcıdaki dizinde bulunan değişikliklerle bir dizin güncelleştirme
 
 Bu komutta görüntülenen ilk dizin kaynağıdır. İkincisi, hedefin bir biridir.
 
@@ -107,9 +107,9 @@ Tüm liste için bkz. [Seçenekler](storage-ref-azcopy-sync.md#options).
 
 Bu makalelerde daha fazla örnek bulun:
 
-- [Örnekler: karşıya yükle](storage-use-azcopy-blobs-upload.md)
-- [Örnekler: Indir](storage-use-azcopy-blobs-download.md)
-- [Örnekler: hesaplar arasında kopyalama](storage-use-azcopy-blobs-copy.md)
+- [Örnekler: Karşıya Yükle](storage-use-azcopy-blobs-upload.md)
+- [Örnekler: Karşıdan Yükle](storage-use-azcopy-blobs-download.md)
+- [Örnekler: Hesaplar arasında kopyala](storage-use-azcopy-blobs-copy.md)
 - [Örnekler: Amazon S3 demetleri](storage-use-azcopy-s3.md)
 - [Örnekler: Azure dosyaları](storage-use-azcopy-files.md)
 - [Öğretici: AzCopy kullanarak şirket içi verileri bulut depolamasına taşıma](storage-use-azcopy-migrate-on-premises-data.md)

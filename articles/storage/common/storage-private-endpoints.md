@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7af2e6794d0d2f37c342a86b2f36b94c9601cc7e
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905562"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617264"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktaları kullanma
 
@@ -45,6 +45,9 @@ Depolama hesabı sahipleri, [Azure Portal](https://portal.azure.com)depolama hes
 > Yalnızca özel uç nokta aracılığıyla depolama hesabınıza erişimi kısıtlamak istiyorsanız, depolama güvenlik duvarını genel uç nokta üzerinden erişimi reddedecek veya denetlemeye yönelik şekilde yapılandırın.
 
 Depolama hesabınızı, varsayılan olarak genel bitiş noktası üzerinden erişimi reddedecek şekilde [yapılandırarak](storage-network-security.md#change-the-default-network-access-rule) , depolama hesabınızı yalnızca sanal ağınızdan gelen bağlantıları kabul edecek şekilde güvenli hale getirebilirsiniz. Depolama güvenlik duvarı yalnızca genel uç nokta üzerinden erişimi denetlemediğinden, özel bir uç noktası olan VNet 'ten gelen trafiğe izin vermek için bir güvenlik duvarı kuralına gerek yoktur. Bunun yerine özel uç noktalar, depolama hizmetine alt ağ erişimi sağlamak için izin akışını kullanır.
+
+> [!NOTE]
+> Blob 'ları depolama hesapları arasında kopyalarken, istemciniz her iki hesaba da ağ erişimine sahip olmalıdır. Bu nedenle, yalnızca bir hesap (kaynak veya hedef) için özel bir bağlantı kullanmayı tercih ederseniz, istemcinizin diğer hesaba ağ erişimi olduğundan emin olun. Ağ erişimini yapılandırmanın diğer yolları hakkında bilgi edinmek için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](storage-network-security.md?toc=/azure/storage/blobs/toc.json). 
 
 ### <a name="private-endpoints-for-azure-storage"></a>Azure depolama için özel uç noktalar
 

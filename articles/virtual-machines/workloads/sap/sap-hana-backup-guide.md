@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
-ms.openlocfilehash: 522af4bf6cc711bbfdfd30d0443ee58dad56b87e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 340ce84ebe662b976f32048a47fd98d793083065
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950032"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617111"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure sanal makinelerinde SAP HANA için yedekleme Kılavuzu
 
@@ -103,7 +103,7 @@ Tablo tutarlılık denetimiyle ilgili bilgiler ayrıca, [tablo ve Katalog tutarl
 
 ### <a name="pros-and-cons-of-hana-backup-versus-storage-snapshot"></a>HANA yedeklemesini ve depolama anlık görüntüsüne yönelik olumlu ve olumsuz yönleri
 
-SAP&#39;t, depolama anlık görüntüsüne göre HANA yedeklemesini tercih edebilir. Profesyonelleri ve dezavantajlarını listeler. bu nedenle, bir diğeri duruma ve kullanılabilir depolama teknolojisine bağlı olarak hangisinin kullanılacağını belirleyebilir (bkz. [yedekleme ve kurtarma stratejinizi planlama](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)).
+SAP&#39;t, depolama anlık görüntüsüne göre HANA yedeklemesini tercih edebilir. Profesyonelleri ve dezavantajlarını listeler. bu nedenle, bir diğeri duruma ve kullanılabilir depolama teknolojisine bağlı olarak hangisinin kullanılacağını belirleyebilir (bkz. [yedekleme ve kurtarma stratejinizi planlama](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/ef085cd5949c40b788bba8fd3c65743e.html)).
 
 Azure 'da, Azure Blob anlık görüntüsü&#39;özelliğinin birden çok diskte dosya sistemi tutarlılığı sunduğuna dikkat edin (bkz. [PowerShell ile blob anlık görüntüleri kullanma](/archive/blogs/cie/using-blob-snapshots-with-powershell)). 
 

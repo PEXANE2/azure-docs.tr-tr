@@ -8,12 +8,12 @@ ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: f536e163e3d19d91c150506ab44fdd9cbc02c693
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 524e3f70f9588cfae2c739722fc1a44e683f9a7f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96907576"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617298"
 ---
 # <a name="copy-blobs-between-azure-storage-accounts-by-using-azcopy-v10"></a>AzCopy ile v10 arasındaki kullanarak blob 'ları Azure depolama hesapları arasında kopyalama
 
@@ -28,6 +28,8 @@ AzCopy 'i indirmek ve depolama hizmetine yetkilendirme kimlik bilgilerini sağla
 ## <a name="guidelines"></a>Yönergeler
 
 AzCopy komutlarınıza aşağıdaki yönergeleri uygulayın. 
+
+- İstemciniz hem kaynak hem de hedef depolama hesaplarına ağ erişimine sahip olmalıdır. Her depolama hesabı için ağ ayarlarını yapılandırma hakkında bilgi edinmek için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](storage-network-security.md?toc=/azure/storage/blobs/toc.json).
 
 - Her kaynak URL 'ye bir SAS belirteci ekleyin. 
 
@@ -146,9 +148,9 @@ Tüm liste için bkz. [Seçenekler](storage-ref-azcopy-copy.md#options).
 
 Bu makalelerde daha fazla örnek bulun:
 
-- [Örnekler: karşıya yükle](storage-use-azcopy-blobs-upload.md)
-- [Örnekler: Indir](storage-use-azcopy-blobs-download.md)
-- [Örnekler: Synchronize](storage-use-azcopy-blobs-synchronize.md)
+- [Örnekler: Karşıya Yükle](storage-use-azcopy-blobs-upload.md)
+- [Örnekler: Karşıdan Yükle](storage-use-azcopy-blobs-download.md)
+- [Örnekler: Eşitle](storage-use-azcopy-blobs-synchronize.md)
 - [Örnekler: Amazon S3 demetleri](storage-use-azcopy-s3.md)
 - [Örnekler: Azure dosyaları](storage-use-azcopy-files.md)
 - [Öğretici: AzCopy kullanarak şirket içi verileri bulut depolamasına taşıma](storage-use-azcopy-migrate-on-premises-data.md)

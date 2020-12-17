@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 43002fdfbdce146b52774aa4182445bf34dd7199
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360297"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617417"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy ve Azure Active Directory (Azure AD) ile bloblara erişim yetkisi verme
 
@@ -183,9 +183,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 > [!NOTE]
 > Bu örnekte gösterildiği gibi bir istem kullanmayı düşünün. Bu şekilde, parolanız konsolunuzun komut geçmişinde görünmez. 
 
-## <a name="authorize-without-a-keyring-linux"></a>Kimlik anahtarlığı olmadan yetkilendirme (Linux)
+## <a name="authorize-without-a-secret-store"></a>Gizli depo olmadan yetkilendir
 
-İşletim sisteminizin *kimlik anahtarlığı* gibi bir gizli deposu yoksa, `azcopy login` komut çalışmaz. Bunun yerine, her bir işlemi çalıştırmadan önce bellek içi ortam değişkenlerini ayarlayabilirsiniz. Bu değerler, işlem tamamlandıktan sonra bellekten kaybolur, bu yüzden AzCopy komutunu her çalıştırdığınızda bu değişkenleri ayarlamanız gerekir.
+İşletim sisteminizin bir Linux *kimlik anahtarlığı* gibi gizli bir deposu yoksa, `azcopy login` komut çalışmaz. Bunun yerine, her bir işlemi çalıştırmadan önce bellek içi ortam değişkenlerini ayarlayabilirsiniz. 
 
 ### <a name="authorize-a-user-identity"></a>Kullanıcı kimliğini yetkilendirme
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 0c8e13449a66c5eba055c64e072db3140b0cdc1c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606904"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617060"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -144,8 +144,8 @@ Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir 
 | Arapça (Mısır) | `ar-EG` | Erkek | `ar-EG-ShakirNeural` <sup>Yeni</sup> | Genel |
 | Arapça (Suudi Arabistan) | `ar-SA` | Kadın | `ar-SA-ZariyahNeural` | Genel |
 | Arapça (Suudi Arabistan) | `ar-SA` | Erkek | `ar-SA-HamedNeural` <sup>Yeni</sup> | Genel |
-| Bulgarca (Bulgary) | `bg-BG` | Kadın | `bg-BG-KalinaNeural` | Genel |
-| Bulgarca (Bulgary) | `bg-BG` | Erkek | `bg-BG-BorislavNeural` <sup>Yeni</sup> | Genel |
+| Bulgarca (Bulgaristan) | `bg-BG` | Kadın | `bg-BG-KalinaNeural` | Genel |
+| Bulgarca (Bulgaristan) | `bg-BG` | Erkek | `bg-BG-BorislavNeural` <sup>Yeni</sup> | Genel |
 | Katalanca (İspanya) | `ca-ES` | Kadın | `ca-ES-AlbaNeural` | Genel |
 | Katalanca (İspanya) | `ca-ES` | Kadın | `ca-ES-JoanaNeural` <sup>Yeni</sup> | Genel |
 | Katalanca (İspanya) | `ca-ES` | Erkek | `ca-ES-EnricNeural` <sup>Yeni</sup> | Genel |

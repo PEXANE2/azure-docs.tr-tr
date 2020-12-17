@@ -82,7 +82,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Özel roller oluşturma veya güncelleştirme
+    - name: Özel roller oluşturma
       items:
         - name: Genel Bakış
           href: custom-roles.md

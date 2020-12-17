@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 12/15/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 17c5cc265b4199d745325bf2c9d9fbca24cc6506
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562846"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617128"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Derin öğrenme ile Machine Learning Azure Machine Learning
 
@@ -57,9 +57,9 @@ Aşağıdaki tabloda, daha ayrıntılı olarak iki teknik karşılaştırılmakt
 |  **Yürütme süresi** | Birkaç saniye ile birkaç saat arasında uyum sağlamak için karşılaştırmayı daha az zaman alır. | Derin bir öğrenme algoritması birçok katman içerdiğinden, genellikle eğitmek uzun sürer. |
 |  **Çıktı** | Çıktı genellikle bir puan veya sınıflandırma gibi sayısal bir değerdir. | Çıktıda metin, puan veya ses gibi birden çok biçim olabilir. |
 
-## <a name="transfer-learning"></a>Öğrenimi aktar
+## <a name="transfer-learning"></a>Öğrenmeyi aktarma
 
-Derinlemesine öğrenme modellerini eğitmek için genellikle büyük miktarda eğitim verisi, yüksek kaliteli işlem kaynakları (GPU, TPU) ve daha uzun bir eğitim süresi gerekir. Bunlardan herhangi birine sahip olmadığınız senaryolarda, eğitim sürecini aktarım öğrenimi olarak bilinen bir teknik kullanarak kısayol ile deneyebilirsiniz.
+Derinlemesine öğrenme modellerini eğitmek için genellikle büyük miktarda eğitim verisi, yüksek kaliteli işlem kaynakları (GPU, TPU) ve daha uzun bir eğitim süresi gerekir. Bunlardan herhangi birine sahip olmadığınız senaryolarda, eğitim sürecini *Aktarım öğrenimi* olarak bilinen bir teknik kullanarak kısayol ile deneyebilirsiniz.
 
 Aktarım öğrenimi, bir problemi farklı ancak ilgili bir soruna çözmeyle elde edilen bilgileri uygulayan bir tekniktir.
 

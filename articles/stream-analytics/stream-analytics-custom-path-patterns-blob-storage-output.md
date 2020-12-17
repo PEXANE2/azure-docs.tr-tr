@@ -6,14 +6,14 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 12/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7239c2e3cb42cb17b01904e8fc226ae2408dbb47
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491681"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617434"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Özel blob çıkış bölümlendirme Azure Stream Analytics
 
@@ -25,7 +25,13 @@ Azure Stream Analytics özel alanlar veya öznitelikler ve özel tarih saat yolu
 
 ### <a name="partition-key-options"></a>Bölüm anahtarı seçenekleri
 
-Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, kısa çizgi, alt çizgi ve boşluk içeren alfasayısal karakterler içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir. Bölüm anahtarı NVARCHAR (MAX), BIGINT, FLOAT veya BIT (1,2 uyumluluk düzeyi veya üzeri) olmalıdır. Daha fazla bilgi için bkz. [Azure Stream Analytics veri türleri](/stream-analytics-query/data-types-azure-stream-analytics).
+Giriş verilerini bölümlemek için kullanılan bölüm anahtarı veya sütun adı, [BLOB adları](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)için kabul edilen herhangi bir karakteri içerebilir. Diğer adlarla birlikte kullanılmamışsa, iç içe geçmiş alanları bölüm anahtarı olarak kullanmak mümkün değildir, ancak bir dosya hiyerarşisi oluşturmak için belirli karakterleri kullanabilirsiniz. Örneğin, benzersiz bir bölüm anahtarı oluşturmak için iki diğer sütundaki verileri birleştiren bir sütun oluşturmak için aşağıdaki sorguyu kullanabilirsiniz.
+
+```sql
+SELECT name, id, CONCAT(name, "/", id) AS nameid
+```
+
+Bölüm anahtarı NVARCHAR (MAX), BIGINT, FLOAT veya BIT (1,2 uyumluluk düzeyi veya üzeri) olmalıdır. DateTime, dizi ve kayıt türleri desteklenmez, ancak dizelere dönüştürülürse bölüm anahtarları olarak kullanılabilir. Daha fazla bilgi için bkz. [Azure Stream Analytics veri türleri](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Örnek
 
@@ -73,7 +79,7 @@ Her bir dizin, her Blobun bir veya daha fazla kayıt içerdiği birden çok blob
 
 Aşağıdaki biçim belirteci belirteçleri özel tarih saat biçimlerini elde etmek için tek başına veya birlikte kullanılabilir:
 
-|Biçim belirteci   |Açıklama   |Sonuç örnek zaman 2018-01-02T10:06:08|
+|Biçim belirteci   |Description   |Sonuç örnek zaman 2018-01-02T10:06:08|
 |----------|-----------|------------|
 |{DateTime: yyyy}|Dört basamaklı bir sayı olarak yıl|2018|
 |{DateTime: dd}|01 ile 12 arasında bir ay|01|

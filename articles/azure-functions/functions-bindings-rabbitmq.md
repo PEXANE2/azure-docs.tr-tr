@@ -4,15 +4,15 @@ description: Azure Işlevleri 'nde Azure Kbıbitmq Tetikleyicileri ve bağlamala
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/11/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: cd6c8de0d9290aab273e25403bb1cb2d8fe07e27
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 72c31d0eebc19a926805976ed637168a00fa9495
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505768"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617196"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Kbbitmq bağlamaları genel bakış
 
@@ -30,7 +30,7 @@ Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings
 
 Bu uzantıyla geliştirmeye başlamak için önce [bir Kbbitmq uç noktası ayarladığınızdan](https://github.com/Azure/azure-functions-rabbitmq-extension/wiki/Setting-up-a-RabbitMQ-Endpoint)emin olun. Kbbitmq hakkında daha fazla bilgi edinmek için Başlarken [sayfasına](https://www.rabbitmq.com/getstarted.html)göz atın.
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2.x ve üzeri
+### <a name="functions-3x-and-higher"></a>İşlevler 3. x ve üzeri
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
@@ -46,9 +46,9 @@ Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Di�
 [Uzantılarınızı güncelleştirme]: ./functions-bindings-register.md
 [Azure Araçları uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-### <a name="functions-1x"></a>İşlevler 1.x
+### <a name="functions-1x-and-2x"></a>1. x ve 2. x işlevleri
 
-Kbbitmq bağlama uzantıları, 1. x Işlevleri için desteklenmez. Lütfen 2. x ve üzeri Işlevleri kullanın.
+Kbbitmq bağlama uzantıları, 1. x ve 2. x Işlevleri için desteklenmez. Lütfen 3. x ve üzeri Işlevleri kullanın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
