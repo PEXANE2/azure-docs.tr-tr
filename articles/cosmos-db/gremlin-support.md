@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 11/11/2020
 ms.author: sngun
-ms.openlocfilehash: a149f0b331a77462aa53b948fedf25dd1331969e
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 036338e90a3e7b466924d419400c0dcc692dec5f
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "94683633"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630760"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support-and-compatibility-with-tinkerpop-features"></a>Inkerpop özellikleriyle Azure Cosmos DB Gremlin Graph desteği ve uyumluluğu
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -121,7 +121,7 @@ Her bir özellik, bir dizi içinde birden çok değer depolayabilir.
 
 Şimdi de Azure Cosmos DB tarafından desteklenen Gremlin adımlarına bakalım. Gremlin hakkında eksiksiz bir başvuru için bkz. [TinkerPop başvurusu](https://tinkerpop.apache.org/docs/3.3.2/reference).
 
-| adım | Açıklama | TinkerPop 3.2 Belgeleri |
+| adım | Description | TinkerPop 3.2 Belgeleri |
 | --- | --- | --- |
 | `addE` | İki köşe arasına kenar ekler | [addE step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addedge-step) |
 | `addV` | Grafiğe bir köşe ekler | [addV step](https://tinkerpop.apache.org/docs/3.3.2/reference/#addvertex-step) |
@@ -195,31 +195,31 @@ _ **Lambda ifadeleri ve işlevleri** Şu anda desteklenmemektedir. Bu,, `.map{<e
 
 _ **Gremlin sorguları için, orta çapraz geçiş `.V()` adımlarıyla dizin kullanımı**: Şu anda, `.V()` bir geçiş geçişinin yalnızca ilk çağrısı, bu dizine iliştirilmiş tüm filtre ve koşullara çözüm sağlamak için dizini kullanır. Sonraki çağrılar dizine danışmayacak, bu da sorgunun gecikmesini ve maliyetini artırabilir.
     
-    Assuming default indexing, a typical read Gremlin query that starts with the `.V()` step would use parameters in its attached filtering steps, such as `.has()` or `.where()` to optimize the cost and performance of the query. For example:
+Varsayılan dizin oluşturma varsayılırsa, adımla başlayan tipik bir okunan Gremlin sorgusu, `.V()` `.has()` `.where()` sorgu maliyetini ve performansını iyileştirmek için veya gibi ilgili filtreleme adımlarında parametreleri kullanacaktır. Örnek:
 
-    ```java
-    g.V().has('category', 'A')
-    ```
+```java
+g.V().has('category', 'A')
+```
 
-    However, when more than one `.V()` step is included in the Gremlin query, the resolution of the data for the query might not be optimal. Take the following query as an example:
+Ancak, `.V()` Gremlin sorgusuna birden fazla adım eklendiğinde, sorgu verilerinin çözümlenmesi en iyi durumda olmayabilir. Örnek olarak aşağıdaki sorguyu gerçekleştirin:
 
-    ```java
-    g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
-    ```
+```java
+g.V().has('category', 'A').as('a').V().has('category', 'B').as('b').select('a', 'b')
+```
 
-    This query will return two groups of vertices based on their property called `category`. In this case, only the first call, `g.V().has('category', 'A')` will make use of the index to resolve the vertices based on the values of their properties.
+Bu sorgu, adlandırılan özelliklerine göre iki köşe grubu döndürür `category` . Bu durumda, yalnızca ilk çağrı, `g.V().has('category', 'A')` özelliklerinin değerlerine göre köşeleri çözümlemek için dizini kullanır.
 
-    A workaround for this query is to use subtraversal steps such as `.map()` and `union()`. This is exemplified below:
+Bu sorguya yönelik bir geçici çözüm, ve gibi subtraversal adımlarını kullanmaktır `.map()` `union()` . Bu, aşağıda belirtilen şekilde belirlenir:
 
-    ```java
-    // Query workaround using .map()
-    g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
+```java
+// Query workaround using .map()
+g.V().has('category', 'A').as('a').map(__.V().has('category', 'B')).as('b').select('a','b')
 
-    // Query workaround using .union()
-    g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
-    ```
+// Query workaround using .union()
+g.V().has('category', 'A').fold().union(unfold(), __.V().has('category', 'B'))
+```
 
-    You can review the performance of the queries by using the [Gremlin `executionProfile()` step](graph-execution-profile.md).
+[Gremlin `executionProfile()` adımını](graph-execution-profile.md)kullanarak sorguların performansını gözden geçirebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

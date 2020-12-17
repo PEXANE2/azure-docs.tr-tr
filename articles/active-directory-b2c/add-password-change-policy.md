@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4da0fccf10d387e7496a8b0ecc7623a22df58c93
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a42cb97d123d0943dab02bf1f70fcf306d6bcd96
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618937"
+ms.locfileid: "97629141"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırma
 
@@ -33,9 +33,14 @@ ms.locfileid: "97618937"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan kullanıcıların, kendi kimlik doğrulamasını e-posta doğrulamaya göre kanıtlamaları gerekmeden parolalarını değiştirmesine olanak sağlayabilirsiniz. Oturumun süresi dolduğunda Kullanıcı parola değiştirme akışına geçtiğinde, yeniden oturum açması istenir. Bu makalede, [özel ilkelerde](custom-policy-overview.md)parola değişikliğini yapılandırma gösterilmektedir. Kullanıcı akışları için [self servis parola sıfırlamayı](user-flow-self-service-password-reset.md) yapılandırmak da mümkündür.
+Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan kullanıcıların, kendi kimlik doğrulamasını e-posta doğrulamaya göre kanıtlamaları gerekmeden parolalarını değiştirmesine olanak sağlayabilirsiniz. Parola değiştirme akışı aşağıdaki adımları içerir:
 
-## <a name="prerequisites"></a>Ön koşullar
+1. Yerel bir hesapla oturum açın. Oturum hala etkinse, Azure AD B2C kullanıcıyı yetkilendirir ve sonraki adıma atlar.
+1. Kullanıcıların **eski parolayı** doğrulaması, oluşturması ve **Yeni parolayı** doğrulama olmaları gerekir.
+
+![Parola değiştirme akışı](./media/add-password-change-policy/password-change-flow.png)
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Active Directory B2C özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)bölümündeki adımları uygulayın.
 * Henüz yapmadıysanız, [bir Web uygulamasını Azure Active Directory B2C kaydedin](tutorial-register-applications.md).
@@ -66,41 +71,10 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
         <TechnicalProfiles>
           <TechnicalProfile Id="login-NonInteractive-PasswordChange">
             <DisplayName>Local Account SignIn</DisplayName>
-            <Protocol Name="OpenIdConnect" />
-            <Metadata>
-              <Item Key="UserMessageIfClaimsPrincipalDoesNotExist">We can't seem to find your account</Item>
-              <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
-              <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
-              <Item Key="ProviderName">https://sts.windows.net/</Item>
-              <Item Key="METADATA">https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration</Item>
-              <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}/oauth2/token</Item>
-              <Item Key="response_types">id_token</Item>
-              <Item Key="response_mode">query</Item>
-              <Item Key="scope">email openid</Item>
-              <Item Key="grant_type">password</Item>
-              <Item Key="UsePolicyInRedirectUri">false</Item>
-              <Item Key="HttpBinding">POST</Item>
-              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-            </Metadata>
             <InputClaims>
-              <InputClaim ClaimTypeReferenceId="signInName" PartnerClaimType="username" Required="true" />
               <InputClaim ClaimTypeReferenceId="oldPassword" PartnerClaimType="password" Required="true" />
-              <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
-              <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
-              <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-            </InputClaims>
-            <OutputClaims>
-              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
-              <OutputClaim ClaimTypeReferenceId="tenantId" PartnerClaimType="tid" />
-              <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-              <OutputClaim ClaimTypeReferenceId="surName" PartnerClaimType="family_name" />
-              <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-              <OutputClaim ClaimTypeReferenceId="userPrincipalName" PartnerClaimType="upn" />
-              <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="localAccountAuthentication" />
-            </OutputClaims>
+              </InputClaims>
+            <IncludeTechnicalProfile ReferenceId="login-NonInteractive" />
           </TechnicalProfile>
         </TechnicalProfiles>
       </ClaimsProvider>
@@ -113,9 +87,6 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
             <Metadata>
               <Item Key="ContentDefinitionReferenceId">api.selfasserted</Item>
             </Metadata>
-            <CryptographicKeys>
-              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
-            </CryptographicKeys>
             <InputClaims>
               <InputClaim ClaimTypeReferenceId="objectId" />
             </InputClaims>
@@ -134,15 +105,13 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
     </ClaimsProviders>
     ```
 
-    `IdentityExperienceFrameworkAppId`Önkoşul öğreticisinde oluşturduğunuz IdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin. `ProxyIdentityExperienceFrameworkAppId`Daha önce oluşturduğunuz ProxyIdentityExperienceFramework uygulamasının uygulama kimliğiyle değiştirin.
-
 3. [Kullanıcıyolculuğu](userjourneys.md) öğesi, uygulamanız ile etkileşim kurarken kullanıcının aldığı yolu tanımlar. Kullanıcı tarafından tanımlanan **Kullanıcı yolculuğu** Ile yoksa **Userıt neys** öğesini ekleyin `PasswordChange` :
 
     ```xml
     <UserJourneys>
       <UserJourney Id="PasswordChange">
         <OrchestrationSteps>
-          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.idpselections">
+          <OrchestrationStep Order="1" Type="ClaimsProviderSelection" ContentDefinitionReferenceId="api.signuporsignin">
             <ClaimsProviderSelections>
               <ClaimsProviderSelection TargetClaimsExchangeId="LocalAccountSigninEmailExchange" />
             </ClaimsProviderSelections>
@@ -157,7 +126,12 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
               <ClaimsExchange Id="NewCredentials" TechnicalProfileReferenceId="LocalAccountWritePasswordChangeUsingObjectId" />
             </ClaimsExchanges>
           </OrchestrationStep>
-          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+          <OrchestrationStep Order="4" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="5" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
         </OrchestrationSteps>
         <ClientDefinition ReferenceId="DefaultWeb" />
       </UserJourney>
@@ -170,13 +144,7 @@ Azure Active Directory B2C (Azure AD B2C) ' de, yerel bir hesapla oturum açan k
 7. ' Deki **Referenceıd** özniteliğini, `<DefaultUserJourney>` oluşturduğunuz yeni Kullanıcı yolculuğunun kimliğiyle eşleşecek şekilde değiştirin. Örneğin, *PasswordChange*.
 8. Yaptığınız değişiklikleri kaydedin.
 
-Örnek ilkeyi [burada](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)bulabilirsiniz.
-
-## <a name="test-your-policy"></a>İlkenizi test etme
-
-Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki talepleri gözden geçirebilmek için Azure AD B2C belirtecinin geri döndürüldüğünden yararlı olabilir.
-
-### <a name="upload-the-files"></a>Dosyaları karşıya yükleme
+## <a name="upload-and-test-the-policy"></a>İlkeyi karşıya yükleme ve test etme
 
 1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
@@ -195,6 +163,8 @@ Azure AD B2C ' de Uygulamalarınızı sınarken, `https://jwt.ms` içindeki tale
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [GitHub](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)'da örnek ilkeyi bulun.
 - [Azure AD B2C 'de parola karmaşıklığını nasıl yapılandırabileceğinizi](password-complexity.md)öğrenin.
+- [Parola sıfırlama akışı](add-password-reset-policy.md)ayarlayın.
 
 ::: zone-end

@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a7d55c6e550000d2dd6c2930d95086ec433c246b
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: c10b2041dec0f4084578de1a72cb59cf1d7a949b
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361106"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631083"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning ile keras modellerini ölçeklendirerek eğitme
 
@@ -78,7 +78,7 @@ ws = Workspace.from_config()
 
 ### <a name="create-a-file-dataset"></a>Dosya veri kümesi oluşturma
 
-`FileDataset`Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir oluşturarak `FileDataset` , veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. [how-to](./how-to-create-register-datasets.md) `Dataset` Daha fazla bilgi için bkz. paketteki nasıl yapılır Kılavuzu.
+`FileDataset`Nesne, çalışma alanı veri deposundaki veya genel URL 'lerdeki bir veya birden çok dosyaya başvurur. Dosyalar herhangi bir biçimde olabilir ve sınıfı, size dosyaları indirme veya işleme özelliğini sağlar. Bir oluşturarak `FileDataset` , veri kaynağı konumuna bir başvuru oluşturursunuz. Veri kümesine herhangi bir dönüştürme uyguladıysanız, bunlar veri kümesinde da depolanır. Veriler mevcut konumunda kalır, bu nedenle ek depolama maliyeti tahakkuk etmemesi gerekir. [](./how-to-create-register-datasets.md) `Dataset` Daha fazla bilgi için bkz. paketteki nasıl yapılır Kılavuzu.
 
 ```python
 from azureml.core.dataset import Dataset
@@ -192,7 +192,7 @@ src = ScriptRunConfig(source_directory=script_folder,
 ScriptRunConfig ile işleri yapılandırma hakkında daha fazla bilgi için bkz. [eğitim çalıştırmalarını yapılandırma ve gönderme](how-to-set-up-training-targets.md).
 
 > [!WARNING]
-> Keras eğitim işlerinizi yapılandırmak için önceden TensorFlow tahmin aracı kullanıyorsanız, Azure ML SDK 'sının gelecek bir sürümünde estimators 'ın kullanım dışı olacağını lütfen unutmayın. Azure ML SDK ile >= 1.15.0, ScriptRunConfig çerçeveleri kullanan eğitim işlerini yapılandırmak için önerilen yoldur.
+> Keras eğitim işlerinizi yapılandırmak için önceden TensorFlow tahmin aracı kullanıyorsanız, 1.19.0 SDK sürümü itibariyle estimators 'ın kullanım dışı olduğuna lütfen emin olun. Azure ML SDK ile >= 1.15.0, ScriptRunConfig, derinlemesine öğrenme çerçeveleri kullanan eğitim işlerini yapılandırmak için önerilen yoldur. Yaygın geçiş soruları için bkz. [Estimator to ScriptRunConfig Migration Guide](how-to-migrate-from-estimators-to-scriptrunconfig.md).
 
 ### <a name="submit-your-run"></a>Çalıştırmanızı gönder
 
@@ -206,13 +206,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Çalıştırma yürütme sırasında ne olur?
 Çalıştırma yürütüldüğü için aşağıdaki aşamalardan geçer:
 
-- **Hazırlama** : bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
+- **Hazırlama**: bir Docker görüntüsü, tanımlanan ortama göre oluşturulur. Görüntü, çalışma alanının kapsayıcı kayıt defterine yüklenir ve daha sonra çalışacak şekilde önbelleğe alınır. Günlükler, çalıştırma geçmişine de kaydedilir ve ilerlemeyi izlemek için görüntülenebilir. Bunun yerine, seçkin bir ortam belirtilmişse, bu eklenen ortamı destekleyen önbelleğe alınmış görüntü kullanılacaktır.
 
-- **Ölçeklendirme** : Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
+- **Ölçeklendirme**: Batch AI kümesi, çalışmayı yürütmek için daha fazla düğüm gerektiriyorsa, küme ölçeği büyütmeyi dener ve şu anda kullanılabilir.
 
-- **Çalışıyor** : betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
+- **Çalışıyor**: betik klasöründeki tüm betikler işlem hedefine yüklenir, veri depoları bağlanır veya kopyalanır ve `script` yürütülür. Stdout ve **./logs** klasörü çıkışları, çalıştırma geçmişine akışla kaydedilir ve çalıştırmayı izlemek için kullanılabilir.
 
-- **Işlem sonrası** : çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
+- **Işlem sonrası**: çalıştırmanın **./çıktılar** klasörü, çalışma geçmişine kopyalanır.
 
 ## <a name="register-the-model"></a>Modeli Kaydet
 

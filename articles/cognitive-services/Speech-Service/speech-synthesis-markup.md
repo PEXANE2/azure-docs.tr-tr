@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: df6a4053eb70c02e27599bbd9086dfa32b0bcc65
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5d11f343a55d30e5d14d6f4ae0ddb1a74d9c61fa
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508841"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631984"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Konuşma birleştirme biçimlendirme dili (SSML) ile senssıs 'yi geliştirme
 
@@ -32,6 +32,11 @@ SSML konuşma hizmeti uygulamasının, World Wide Web Konsorsiyumu [konuşma Sen
 Standart ve sinir sesler arasından seçim yapın ya da ürün veya marka için özel sesinizi benzersiz bir şekilde oluşturun. 45 ' den fazla dilde ve yerel ayarlarda 75 + standart sesler mevcuttur ve dört dilde ve yerel ayarlarda 5 sinir seste erişilebilir. Desteklenen dillerin, yerel ayarların ve seslerin (sinir ve standart) tüm listesi için bkz. [dil desteği](language-support.md).
 
 Standart, sinir ve özel sesler hakkında daha fazla bilgi edinmek için bkz. [metinden konuşmaya genel bakış](text-to-speech.md).
+
+
+> [!NOTE]
+> Seslerinizi farklı stillerde dinleyebilir ve [metin okuma sayfasını](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features)kullanarak örnek metni okumayı sağlayabilirsiniz.
+
 
 ## <a name="special-characters"></a>Özel karakterler
 
@@ -198,6 +203,7 @@ Varsayılan olarak, metinden konuşmaya hizmeti, standart ve sinir sesler için 
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
+* `pt-BR-FranciscaNeural`
 * `zh-CN-XiaoxiaoNeural`
 * `zh-CN-YunyangNeural`
 * `zh-CN-YunyeNeural`
@@ -244,7 +250,7 @@ Yukarıdaki değişiklikler tümce düzeyinde uygulanır ve stiller ve rol oynat
 
 Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek için bu tabloyu kullanın.
 
-| Ses                   | Stil                     | Açıklama                                                 |
+| Ses                   | Stil                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast-formal"` | Haber teslimi için resmi, güvenilir ve yetkili bir tonu ifade eder |
 |                         | `style="newscast-casual"` | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder        |
@@ -257,6 +263,7 @@ Her sinir sesi için hangi konuşma stillerinin desteklendiğini öğrenmek içi
 |                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
 |                         | `style="newscast"`        | Genel haber teslimi için çok yönlü ve sıradan bir tonu ifade eder   |
 | `en-US-GuyNeural`       | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
+| `pt-BR-FranciscaNeural` | `style="calm"`            | Konuşurken seyrek erişimli, toplanan ve oluşan bir atnetme ifade eder. Ton, sıklık, Prosody, diğer konuşma türleriyle karşılaştırıldığında çok daha Tekdüzen.                                |
 | `zh-CN-XiaoxiaoNeural`  | `style="newscast"`        | Anlatım haberleri için resmi ve profesyonel tonu ifade eder |
 |                         | `style="customerservice"` | Müşteri desteği için kolay ve yararlı bir tonu ifade eder  |
 |                         | `style="assistant"`       | Dijital yardımcılar için bir sıcak ve gevşek tonu ifade eder    |
@@ -391,7 +398,7 @@ Bu SSML kod parçacığı, `role` XiaomoNeural için rol oynamasını değiştir
 | `strength` | Aşağıdaki değerlerden birini kullanarak duraklamanın göreli süresini belirtir:<ul><li>yok</li><li>x-zayıf</li><li>zayıf</li><li>Orta (varsayılan)</li><li>lemenize</li><li>x-Strong</li></ul> | İsteğe Bağlı |
 | `time` | Saniye veya milisaniye cinsinden duraklamanın mutlak süresini belirtir, bu değer 5 000ms 'den az ayarlanmalıdır. Geçerli değerler örnekleri `2s` ve `500ms` | İsteğe Bağlı |
 
-| Gücüyle                      | Açıklama |
+| Gücüyle                      | Description |
 |-------------------------------|-------------|
 | Hiçbiri veya hiçbir değer sağlanmazsa | 0 MS        |
 | x-zayıf                        | 250 MS      |

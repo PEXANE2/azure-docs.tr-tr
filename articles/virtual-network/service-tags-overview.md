@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: d01136ea4377bd7d35a2e11b4bcf654bcf677fbe
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: e357667e650e9feeb8dceeffe71c287cde9fe8a0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401568"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631610"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -53,6 +53,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureActiveDirectory** | Azure Active Directory. | Outbound | Hayır | Yes |
 | **AzureActiveDirectoryDomainServices** | Azure Active Directory Domain Services adanmış dağıtımlar için yönetim trafiği. | Her ikisi | Hayır | Yes |
 | **AzureAdvancedThreatProtection** | Azure Gelişmiş tehdit koruması. | Outbound | Hayır | Hayır |
+| **AzureArcInfrastructure** | Azure Arc etkin sunucuları, Azure Arc etkin Kubernetes ve konuk yapılandırma trafiği.<br/><br/>*Note:* Bu etiketin **AzureActiveDirectory**,**AzureTrafficManager** ve **AzureResourceManager** etiketlerine bir bağımlılığı vardır. *Bu etiket Şu anda Azure Portal aracılığıyla yapılandırılamaz*.| Outbound | Hayır | Yes |
 | **AzureBackup** |Azure Backup.<br/><br/>*Note:* Bu etiketin **depolama** ve **AzureActiveDirectory** etiketlerine bir bağımlılığı vardır. | Outbound | Hayır | Yes |
 | **AzureBotService** | Azure bot hizmeti. | Outbound | Hayır | Hayır |
 | **AzureCloud** | Tüm [veri merkezi genel IP adresleri](https://www.microsoft.com/download/details.aspx?id=56519). | Outbound | Yes | Yes |

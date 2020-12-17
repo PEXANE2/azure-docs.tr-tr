@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 477856bd5772cdc0a9ec00d81adf9c50847afdd0
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484813"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631959"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Öğretici: Azure özel uç noktası kullanarak bir Azure Cosmos hesabına bağlanma
 
@@ -135,7 +135,7 @@ Bu bölümde, Özel uç noktayı test etmek için kullanılacak bir sanal makine
 
 Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapılandıracaksınız.
 
-1. Sol taraftaki menüde, **Create a resource**  >  **Databases**  >  **Hesap Cosmos DB** kaynak veritabanları oluştur ' u seçin veya arama kutusunda **Cosmos DB hesabı** arayın.
+1. Sol taraftaki menüde,   >    >  **Hesap Cosmos DB** kaynak veritabanları oluştur ' u seçin veya arama kutusunda **Cosmos DB hesabı** arayın.
 
 2. **Cosmos DB oluşturma hesabı** ' nın **temel bilgiler** sekmesinde aşağıdaki bilgileri girin veya seçin:
 
@@ -174,7 +174,7 @@ Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapıla
     | Abonelik | Azure aboneliğinizi seçin |
     | Kaynak Grubu | **Myresourcegroup** seçin |
     | Konum | **Doğu ABD** seçin |
-    | Ad | **Myprivateendpoint** girin |
+    | Name | **Myprivateendpoint** girin |
     | Hedef alt kaynak | Varsayılan çekirdeği bırak **(SQL)** |
     | **Ağ** |  |
     | Sanal ağ | **Myvnet** seçin |
@@ -208,13 +208,9 @@ Bu bölümde bir Cosmos DB hesabı oluşturacak ve özel uç noktasını yapıla
 
 5. **Tamam**’ı seçin.
 
-10. CosmosDB hesabının **Ayarlar** bölümünde **anahtarlar**' ı seçin.
+6. CosmosDB hesabının **Ayarlar** bölümünde **anahtarlar**' ı seçin.
 
-11. **myResourceGroup** öğesini seçin.
-
-12. Önceki adımlarda oluşturduğunuz depolama hesabını seçin.
-
-14. **BIRINCIL bağlantı dizesinde** Kopyala ' yı seçin.
+7. **BIRINCIL bağlantı dizesinde** Kopyala ' yı seçin.
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Özel uç nokta ile bağlantıyı sına
 
@@ -234,7 +230,7 @@ Bu bölümde, önceki adımda oluşturduğunuz sanal makineyi kullanarak özel u
 
 7. Bağlandıktan sonra sunucuda Windows PowerShell 'i açın.
 
-8. `nslookup <storage-account-name>.documents.azure.com` yazın. **\<storage-account-name>** Önceki adımlarda oluşturduğunuz depolama hesabının adıyla değiştirin. 
+8. `nslookup <cosmosdb-account-name>.documents.azure.com` yazın. **\<cosmosdb-account-name>** Önceki adımlarda oluşturduğunuz Cosmos DB hesabının adıyla değiştirin. 
 
     ```powershell
     Server:  UnKnown

@@ -188,15 +188,15 @@
               href: manage/pay-by-invoice.md
             - name: Ek abonelikler oluşturma
               href: manage/create-subscription.md
-            - name: EA abonelikleri oluşturma - REST
+            - name: Program aracılığıyla EA abonelikleri oluşturma
               href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: MCA abonelikleri oluşturma - REST
+            - name: Program aracılığıyla MCA abonelikleri oluşturma
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: MPA abonelikleri oluşturma - REST
+            - name: Program aracılığıyla MPA abonelikleri oluşturma
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
             - name: Abonelik oluşturma - ARM şablonu
               href: manage/create-subscription-template.md
-            - name: Abonelik oluşturma - REST önizlemesi
+            - name: Program aracılığıyla abonelik oluşturma - önizleme
               href: manage/programmatically-create-subscription-preview.md
             - name: EA abonelikleri oluşturmak için erişim izni verme
               href: manage/grant-access-to-create-subscription.md
