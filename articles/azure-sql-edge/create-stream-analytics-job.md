@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
-ms.openlocfilehash: 4d420bf45cd705f518df0d52929a331d23537184
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 97189fd7a232c2467981b23dc20da51ebef08252
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395181"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656351"
 ---
 # <a name="create-a-data-streaming-job-in-azure-sql-edge"></a>Azure SQL Edge 'de veri akışı işi oluşturma 
 
@@ -36,7 +36,7 @@ Ayrıca, Azure SQL Edge, SQL Server veya Azure SQL veritabanı bir çıkış ak�
 
 Azure SQL Edge Şu anda yalnızca akış girişleri ve çıkışları olarak aşağıdaki veri kaynaklarını destekler.
 
-| Veri kaynağı türü | Girdi | Çıktı | Açıklama |
+| Veri kaynağı türü | Girdi | Çıktı | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub 'ı | E | E | Bir Azure IoT Edge hub 'ına akış verilerini okumak ve yazmak için veri kaynağı. Daha fazla bilgi için bkz. [IoT Edge hub](../iot-edge/iot-edge-runtime.md#iot-edge-hub).|
 | SQL Veritabanı | N | E | SQL veritabanına akış verileri yazmak için veri kaynağı bağlantısı. Veritabanı, Azure SQL Edge 'deki bir yerel veritabanı veya SQL Server ya da Azure SQL veritabanı 'ndaki uzak bir veritabanı olabilir.|
@@ -117,7 +117,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
     go
     ```
 
-4. Dış akış nesnesini oluşturun. Aşağıdaki örnek, dbo tablosuna işaret eden bir dış akış nesnesi oluşturur *. TemperatureMeasurements* , *mysqldatabase* veritabanında.
+4. Dış akış nesnesini oluşturun. Aşağıdaki örnek, dbo tablosuna işaret eden bir dış akış nesnesi oluşturur *. TemperatureMeasurements*, *mysqldatabase* veritabanında.
 
     ```sql
     CREATE EXTERNAL STREAM TemperatureMeasurements 
@@ -154,7 +154,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
         DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' 
     )
    ```
-    
+
 3. Dış akış nesnesini oluşturun. Aşağıdaki örnek, Kafka konusuna işaret eden bir dış akış nesnesi oluşturur `*TemperatureMeasurement*` .
 
     ```sql
@@ -163,7 +163,7 @@ Aşağıdaki örnek, Azure SQL Edge 'de yerel veritabanında bir dış akış ne
     (  
         DATA_SOURCE = KafkaInput, 
         FILE_FORMAT = JsonGzipped,
-        LOCATION = 'TemperatureMeasurement',     
+        LOCATION = 'TemperatureMeasurement',
         INPUT_OPTIONS = 'PARTITIONS: 10' 
     ); 
     ```

@@ -2,16 +2,16 @@
 title: Öğretici-& dağıtım şablonu oluşturma
 description: İlk Azure Resource Manager şablonunuzu oluşturun (ARM şablonu). Öğreticide, şablon dosyası söz dizimi ve depolama hesabı dağıtma hakkında bilgi edineceksiniz.
 author: mumian
-ms.date: 09/28/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 191eacbc9cc66ccfb9b378cb5e8a90b4e0fb20e6
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 001a20c38a82d053ae22a2614a32f0be9d8aabce
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107032"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656997"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: ilk ARM şablonunuzu oluşturma ve dağıtma
 
@@ -19,7 +19,7 @@ Bu öğreticide, Azure Resource Manager şablonlar (ARM şablonları) sunulmakta
 
 Bu öğretici bir serinin birincisidir. Seriler aracılığıyla ilerleyerek, bir ARM şablonunun tüm temel parçalarını araştırana kadar başlangıç şablonu adımını adım adım değiştirirsiniz. Bu öğeler çok daha karmaşık şablonlar için yapı taşlarıdır. Kendi şablonlarınızı oluşturduğunuz ve dağıtımlarınızı şablonlarla otomatik hale getirmeye hazırlamış olduğunuz serinin sonunu umuyoruz.
 
-Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [ARM şablonuna genel bakış](overview.md).
+Şablon kullanmanın avantajları hakkında bilgi edinmek istiyorsanız ve şablonları ile dağıtımı otomatikleştirmeniz gerekiyorsa, bkz. [ARM şablonuna genel bakış](overview.md). Microsoft Learn üzerinde bir Kılavuzlu dizi modülle ARM şablonları hakkında bilgi edinmek için bkz. [ARM şablonlarını kullanarak Azure 'da kaynakları dağıtma ve yönetme](/learn/paths/deploy-manage-resource-manager-templates/).
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
@@ -35,7 +35,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](htt
 
 Ayrıca, şablonu dağıtmak için Azure PowerShell ya da Azure CLı gerekir. Azure CLı kullanıyorsanız, en son sürüme sahip olmanız gerekir. Yükleme yönergeleri için bkz.:
 
-- [Azure PowerShell yüklensin](/powershell/azure/install-az-ps)
+- [Azure PowerShell’i yükleme](/powershell/azure/install-az-ps)
 - [Windows'da Azure CLI'yi yükleme](/cli/azure/install-azure-cli-windows)
 - [Linux 'ta Azure CLı 'yı yükler](/cli/azure/install-azure-cli-linux)
 - [macOS’ta Azure CLI'yi yükleme](/cli/azure/install-azure-cli-macos)

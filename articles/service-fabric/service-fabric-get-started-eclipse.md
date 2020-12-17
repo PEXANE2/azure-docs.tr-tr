@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: rapatchi
 ms.custom: devx-track-java
-ms.openlocfilehash: c94f43b74edf5da18acd7e67417f3b7e10a07d5d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: b85206f9b1e92607bba7b6f141b700922c129b65
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590877"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656929"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi
 Eclipse, Java geliştiricileri için en yaygın kullanılan tümleşik geliştirme ortamlarından (IDE’ler) biridir. Bu makalede, Azure Service Fabric ile çalışmak için Eclipse geliştirme ortamınızı ayarlama işlemi ele alınmaktadır. Service Fabric eklentisini yükleme, Service fabric uygulaması oluşturma ve Service Fabric uygulamanızı Eclipse’teki yerel veya uzak bir Service Fabric kümesine dağıtma hakkında bilgi edinin. 
@@ -53,7 +53,6 @@ Service Fabric eklentisi zaten yüklüyse, en yeni sürümü yükleyin.
 
 > [!NOTE]
 >Eclipse Mac bilgisayarınızda beklendiği gibi çalışmıyorsa (veya süper kullanıcı olarak çalışmanızı gerektiriyorsa), **ECLIPSE_INSTALLATION_PATH** klasörüne ve ardından **Eclipse.app/Contents/MacOS** alt klasörüne gidin. `./eclipse` öğesini çalıştırarak Eclipse’i başlatın.
-
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse’te Service Fabric uygulaması oluşturma
 
@@ -156,7 +155,6 @@ Uygulamanızı buluta yayımlamak için şu adımları izleyin:
 
 4. Konsol penceresinde Yayımla işleminin ilerlemesini izleyebilirsiniz.
 5. Uygulamanızın çalıştığını doğrulamak için, bir tarayıcı penceresinde Azure kümenizde Service Fabric Explorer açın. Yukarıdaki örnekte bu şöyle olacaktır: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer` . **Uygulamalar** düğümünü genişletin ve uygulamanızın çalıştığından emin olun. 
-
 
 Güvenli Linux kümelerinde, uygulamanız Reliable Services Hizmetleri içeriyorsa, hizmetlerinizin Service Fabric çalışma zamanı API 'Lerini çağırmak için kullanabileceği bir sertifika yapılandırmanız da gerekir. Daha fazla bilgi edinmek için bkz. [Reliable Services uygulamasını Linux kümelerinde çalışacak şekilde yapılandırma](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).
 

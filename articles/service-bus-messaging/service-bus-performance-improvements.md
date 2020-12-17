@@ -4,12 +4,12 @@ description: Aracılı iletileri değiş tokuşu yaparken performansı iyileşti
 ms.topic: article
 ms.date: 11/11/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 12de7edd5dec42b01c46307febbef7d739d0495d
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95811663"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655637"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus Mesajlaşması kullanarak performans geliştirmek için en iyi yöntemler
 
@@ -349,7 +349,7 @@ Hedef: bir kuyruğun veya konunun gecikmesini en aza Indirir. Gönderenlerin ve 
 
 Hedef: bir kuyruğun veya konunun iş verimini çok sayıda gönderen ile en üst düzeye çıkarın. Her gönderici, bir orta oranına sahip iletiler gönderir. Alıcı sayısı küçüktür.
 
-Service Bus, bir mesajlaşma varlığına 1000 adede kadar eşzamanlı bağlantı sağlar. Bu sınır ad alanı düzeyinde zorlanır, kuyruklar, konular veya abonelikler ad alanı başına eşzamanlı bağlantı sınırına göre yapılır. Kuyruklar için bu sayı, Gönderenler ve alıcılar arasında paylaşılır. Göndericiler için tüm 1000 bağlantıları gerekliyse, kuyruğu bir konuyla ve tek bir abonelikle değiştirin. Bir konu, gönderenlerden en fazla 1000 eşzamanlı bağlantı kabul eder. Abonelik, alıcıların diğer 1000 eşzamanlı bağlantılarını kabul eder. 1000 'den fazla eşzamanlı gönderici gerekliyse, göndericiler HTTP aracılığıyla Service Bus protokolüne ileti göndermelidir.
+Service Bus, bir mesajlaşma varlığına 1000 adede kadar eşzamanlı bağlantı sağlar. Bu sınır ad alanı düzeyinde zorlanır, kuyruklar, konular veya abonelikler ad alanı başına eşzamanlı bağlantı sınırına göre belirlenir. Kuyruklar için bu sayı, Gönderenler ve alıcılar arasında paylaşılır. Göndericiler için tüm 1000 bağlantıları gerekliyse, kuyruğu bir konuyla ve tek bir abonelikle değiştirin. Bir konu, gönderenlerden en fazla 1000 eşzamanlı bağlantı kabul eder. Abonelik, alıcıların diğer 1000 eşzamanlı bağlantılarını kabul eder. 1000 'den fazla eşzamanlı gönderici gerekliyse, göndericiler HTTP aracılığıyla Service Bus protokolüne ileti göndermelidir.
 
 Aktarım hızını en üst düzeye çıkarmak için şu adımları izleyin:
 

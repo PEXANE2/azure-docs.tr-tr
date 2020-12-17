@@ -3,12 +3,12 @@ title: Kaynaklar için etiket desteği
 description: Hangi Azure kaynak türlerinin etiketleri desteklediğini gösterir. Tüm Azure hizmetleri için ayrıntılar sağlar.
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: fb81ed303cf27add3a033021f017c03f4b9e9750
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005733"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656980"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure kaynakları için etiket desteği
 Bu makalede, bir kaynak türünün [etiketleri](tag-resources.md)destekleyip desteklemediğini açıklanmaktadır. Etiketi **destekleyen** sütun, kaynak türünün etiket için bir özelliğe sahip olup olmadığını gösterir. **Maliyet raporundaki etiket** etiketli sütun, kaynak türünün etiketi maliyet raporuna geçirip geçirmediğini belirtir. [Maliyet yönetimi maliyet analizi](../../cost-management-billing/costs/group-filter.md) ve [Azure Faturalandırma faturasında ve günlük kullanım verilerinde](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)maliyeti etiketlere göre görüntüleyebilirsiniz.
@@ -921,7 +921,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Departmanlar | Hayır | Hayır |
 > | Boyutlar | Hayır | Hayır |
 > | Kayıt sayısı | Hayır | Hayır |
-> | Aktarımları | Hayır | Hayır |
+> | Dışarı Aktarmalar | Hayır | Hayır |
 > | ExternalBillingAccounts | Hayır | Hayır |
 > | ExternalBillingAccounts/uyarılar | Hayır | Hayır |
 > | ExternalBillingAccounts/Boyutlar | Hayır | Hayır |
@@ -2253,7 +2253,7 @@ Kaynak sağlayıcısı ad alanına atlayın:
 > | Kaynak türü | Etiketleri destekler | Maliyet raporundaki etiket |
 > | ------------- | ----------- | ----------- |
 > | ManagedInstances | Yes | Yes |
-> | ManagedInstances/veritabanları | Evet ( [aşağıdaki nota](#sqlnote)bakın) | Yes |
+> | ManagedInstances/veritabanları | Hayır | Hayır |
 > | ManagedInstances/veritabanları/backupShortTermRetentionPolicies | Hayır | Hayır |
 > | ManagedInstances/veritabanları/şemalar/tablolar/sütunlar/sensitivityLabels | Hayır | Hayır |
 > | ManagedInstances/veritabanları/ | Hayır | Hayır |

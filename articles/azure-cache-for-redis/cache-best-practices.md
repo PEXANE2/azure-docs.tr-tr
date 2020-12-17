@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 47c8096893742a25904f0f7e688af2fc641166d1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1b62777ec647efc6d5aded573e681cadd6475b47
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004322"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654804"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin performansını ve düşük maliyetli kullanımını en üst düzeye çıkarmanıza yardımcı olabilirsiniz.
@@ -34,20 +34,20 @@ Bu en iyi yöntemleri izleyerek Redsıs örneği için Azure önbelleğinizin pe
  * **İstemci kitaplığınızı en az 15 saniyelik bir *bağlantı zaman aşımı süresi* kullanacak şekilde yapılandırın**, böylece daha yüksek CPU koşullarında bile sunucuya bağlanma süresi vermiş olursunuz.  Küçük bir bağlantı zaman aşımı değeri, bağlantının bu zaman çerçevesinde kurulu olduğunu garanti etmez.  Bir sorun yanlış olursa (yüksek istemci CPU, yüksek sunucu CPU 'SU vb.), kısa bir bağlantı zaman aşımı değeri bağlantı girişiminin başarısız olmasına neden olur. Bu davranış genellikle kötü bir durumun daha kötüleşmesini sağlar.  Yardımcı olmak yerine, daha kısa zaman aşımları, sistemi yeniden bağlanmaya çalışmak için yeniden başlamaya zorlayarak, *Connect-> Fail-> yeniden deneme* döngüsüne neden olabilecek sorunu ortadan kaldırır. Genellikle bağlantı zaman aşımını 15 saniye veya daha yüksek bir düzeye bırakmamanız önerilir. Bağlantı denemesinin 15 veya 20 saniye sonra, yalnızca yeniden denemek için hızlı bir şekilde başarısız olmasına izin vermek daha iyidir. Bu tür bir yeniden deneme döngüsü, sistemin başlangıçta yalnızca daha uzun sürmesine izin verenden daha uzun sürmesine neden olabilir.  
      > [!NOTE]
      > Bu kılavuz, *bağlantı girişimine* ÖZELDIR ve Al veya Tamam gibi bir *işlemin* tamamlanmasını beklemek istediğiniz zamanla ilgili değildir.
- 
+
  * **Pahalı Işlemlerden kaçının** - [anahtarlar](https://redis.io/commands/keys) komutu gibi bazı redin işlemleri *çok* pahalıdır ve kaçınılmalıdır.  Daha fazla bilgi için bkz. uzun süreli [komutlarla](cache-troubleshoot-server.md#long-running-commands) ilgili bazı konular
 
  * **TLS şifrelemesini kullanma** -redsıs Için Azure önbelleği varsayılan olarak TLS şifreli iletişim gerektirir.  TLS sürümleri 1,0, 1,1 ve 1,2 Şu anda desteklenmektedir.  Ancak, bu durumda TLS 1,0 ve 1,1, sektör genelinde kullanımdan kalkmaya yönelik bir yoldur. bu nedenle, tüm mümkünse TLS 1,2 kullanın.  İstemci kitaplığınız veya aracınız TLS desteklemiyorsa, şifrelenmemiş bağlantıları etkinleştirmek Azure portal veya [Yönetim API 'leri](/rest/api/redis/redis/update) [aracılığıyla](cache-configure.md#access-ports) yapılabilir.  Şifrelenmiş bağlantıların mümkün olmadığı durumlarda, önbelleğinizi ve istemci uygulamanızı bir sanal ağa yerleştirmek önerilir.  Sanal ağ önbelleği senaryosunda hangi bağlantı noktalarının kullanıldığı hakkında daha fazla bilgi için bu [tabloya](cache-how-to-premium-vnet.md#outbound-port-requirements)bakın.
- 
+
  * **Boşta kalma zaman aşımı** -Azure Redu 'nin bağlantı için 10 dakikalık boş zaman aşımı süresi vardır; bu nedenle bu, 10 dakikadan kısa bir süre içinde ayarlanmalıdır.
- 
+
 ## <a name="memory-management"></a>Bellek yönetimi
 Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahilinde bellek kullanımıyla ilgili birkaç şey vardır.  İşte birkaç:
 
  * **Uygulamanız için uygun bir [çıkarma ilkesi](https://redis.io/topics/lru-cache) seçin.**  Azure Redl için varsayılan ilke *geçici LRU*' dır. Bu, yalnızca TTL değeri ayarlanmış olan anahtarların çıkarma için uygun olacağı anlamına gelir.  Anahtarın TTL değeri yoksa, sistem hiçbir anahtarı çıkaramaz.  Sistemin bellek baskısı altında herhangi bir anahtarın çıkarılmayı izin vermek istiyorsanız, *AllKeys-LRU* ilkesini göz önünde bulundurmanız gerekebilir.
 
  * **Anahtarlarınız üzerinde bir süre sonu değeri ayarlayın.**  Süre sonu, bellek baskısı kadar beklemek yerine anahtarları etkin bir şekilde kaldırır.  Çıkarma, bellek baskısı nedeniyle başlatıldığında sunucunuzda ek yüke neden olabilir.  Daha fazla bilgi için, [süre sonu](https://redis.io/commands/expire) ve [expireat](https://redis.io/commands/expireat) komutlarına yönelik belgelere bakın.
- 
+
 ## <a name="client-library-specific-guidance"></a>İstemci kitaplığına özgü kılavuz
  * [StackExchange. Reddir (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java-hangi istemciyi kullanmalıyım?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
@@ -62,9 +62,9 @@ Göz önünde bulundurmanız isteyebileceğiniz Redsıs sunucu örneğiniz dahil
 Ne yazık ki kolay bir yanıt yok.  Her uygulamanın hangi işlemlerin yeniden deneneceği ve ne yapabileceğine karar sağlaması gerekir.  Her işlem, farklı gereksinimlere ve anahtar arası bağımlılıklara sahiptir.  Göz önünde bulundurmanız gereken bazı şeyler şunlardır:
 
  * Red, çalıştırmak istediğiniz komutu başarılı bir şekilde çalıştırsa bile, istemci tarafı hataları alabilirsiniz.  Örnek:
-     - Zaman aşımları, istemci tarafı kavramıdır.  İşlem sunucuya ulaştıysa, istemci beklemeye alsa bile sunucu komutu çalıştırır.  
-     - Yuva bağlantısında bir hata oluştuğunda, işlemin sunucuda gerçekten çalışır durumda olup olmadığını bilmeleri mümkün değildir.  Örneğin, sunucu isteği işledikten sonra ancak istemci yanıtı almadan önce bağlantı hatası oluşabilir.
- *  Yanlışlıkla aynı işlemi iki kez çalıştırdığımda Uygulamam nasıl tepki veriyor?  Örneğin, bir tamsayıyı bir kez yerine iki kez artırdım.  Uygulamam birden çok konumdan aynı anahtara yazıyor mu?  Yeniden deneme mantığı uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazıyor mu?
+    - Zaman aşımları, istemci tarafı kavramıdır.  İşlem sunucuya ulaştıysa, istemci beklemeye alsa bile sunucu komutu çalıştırır.  
+    - Yuva bağlantısında bir hata oluştuğunda, işlemin sunucuda gerçekten çalışır durumda olup olmadığını bilmeleri mümkün değildir.  Örneğin, sunucu isteği işledikten sonra ancak istemci yanıtı almadan önce bağlantı hatası oluşabilir.
+ * Yanlışlıkla aynı işlemi iki kez çalıştırdığımda Uygulamam nasıl tepki veriyor?  Örneğin, bir tamsayıyı bir kez yerine iki kez artırdım.  Uygulamam birden çok konumdan aynı anahtara yazıyor mu?  Yeniden deneme mantığı uygulamamın başka bir bölümü tarafından ayarlanan bir değerin üzerine yazıyor mu?
 
 Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterseniz, [yeniden başlatma özelliğini](cache-administration.md#reboot)kullanmayı düşünün. Yeniden başlatma, bağlantı sinyalleri 'nin uygulamanızı nasıl etkilediğini görmenizi sağlar.
 
@@ -75,12 +75,12 @@ Kodunuzun hata koşulları altında nasıl çalıştığını test etmek isterse
  * Kullandığınız istemci VM 'sinin, test edilmekte olan önbelleğin *en az işlem ve bant genişliğine* sahip olduğundan emin olun. 
  * Windows kullanıyorsanız, istemci makinesinde **vRSS 'ı etkinleştirin** .  [Ayrıntılar için buraya bakın](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn383582(v=ws.11)).  Örnek PowerShell betiği:
      >PowerShell-ExecutionPolicy Kısıtlamasız Enable-NetAdapterRSS-adı (Get-NetAdapter). Ada 
-     
+
  * **Premium katman redsıs örnekleri kullanmayı düşünün**.  Bu önbellek boyutları, hem CPU hem de ağ için daha iyi donanımlar üzerinde çalıştıkları için daha iyi ağ gecikme süresi ve aktarım hızı olacaktır.
- 
+
      > [!NOTE]
      > Gözlemlenen performans sonuçlarımız, başvurunuz için [burada yayımlanır](cache-planning-faq.md#azure-cache-for-redis-performance) .   Ayrıca, SSL/TLS 'nin bazı ek yük eklediğinden emin olun. bu nedenle, aktarım şifrelemesini kullanıyorsanız farklı gecikme süreleri ve/veya aktarım hızı sağlayabilirsiniz.
- 
+
 ### <a name="redis-benchmark-examples"></a>Redis-Benchmark örnekleri
 **Ön test kurulumu**: önbellek örneğini aşağıda listelenen gecikme süresi ve işleme testi komutları için gereken verilerle hazırlayın.
 > redsıs-kıyaslama-h yourcache.redis.cache.windows.net-a yourAccesskey-t SET-n 10-d 1024 

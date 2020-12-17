@@ -3,12 +3,12 @@ title: Azure Site Recovery 'de fiziksel sunucu olağanüstü durum kurtarma mima
 description: Bu makalede, şirket içi fiziksel sunucuların olağanüstü durum kurtarması sırasında Azure Site Recovery hizmetiyle Azure 'da kullanılan bileşenlere ve mimariye ilişkin bir genel bakış sunulmaktadır.
 ms.topic: conceptual
 ms.date: 02/11/2020
-ms.openlocfilehash: f2184654a8169cb353fb40fa76f0a7fe9b3df6f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966636e269043d81912b552711635f34b412f22f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87422666"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654736"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fiziksel sunucudan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -42,7 +42,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 | **Ad**                  | **Ticari**                               | **Kamu**                                 | **Açıklama** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
 | Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
