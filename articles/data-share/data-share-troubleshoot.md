@@ -6,13 +6,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 10/15/2020
-ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 12/16/2020
+ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579156"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617247"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Azure Veri Paylaşımı'nda sık karşılaşılan sorunları giderme 
 
@@ -30,9 +30,9 @@ Bunun nedeni şunlar olabilir:
 
     1. Azure portalda **Abonelikler** sayfasına gidin
     1. Azure Veri Paylaşımı kaynağını oluştururken kullanmak istediğiniz aboneliği seçin
-    1. **Kaynak Sağlayıcıları** ’na tıklayın
+    1. **Kaynak Sağlayıcıları**’na tıklayın
     1. **Microsoft.DataShare** araması yapın
-    1. **Kaydet** 'e tıklayın 
+    1. **Kaydet**'e tıklayın 
 
     Bu adımları tamamlayabilmeniz için Azure aboneliği için [Azure katılımcısı rolüne](../role-based-access-control/built-in-roles.md#contributor) sahip olmanız gerekir. 
 
@@ -67,6 +67,10 @@ SQL tabanlı paylaşım ek izinler gerektirir. Ayrıntılı önkoşul listesi i�
 * Kaynak veya hedef veri deposuna yönelik veri paylaşımının bağlantısı güvenlik duvarı tarafından engelleniyor.
 * Paylaşılan veri kümesi veya kaynak ya da hedef veri deposu silinir.
 
+Depolama hesabı için, anlık görüntü hatalarının ek nedenleri aşağıda verilmiştir.
+
+* Anlık görüntü çalışırken dosya kaynakta güncelleştiriliyor. Bu, hedefte 0 baytlık bir dosya oluşmasına neden olabilir. Kaynak üzerinde güncelleştirme tamamlandıktan sonra sonraki anlık görüntü başarılı olmalıdır.
+
 SQL kaynakları için, anlık görüntü hatalarının ek nedenleri aşağıda verilmiştir. 
 
 * Veri paylaşma izni verilecek kaynak veya hedef SQL betiği çalıştırılmadı. Ya da Azure SQL veritabanı veya Azure SYNAPSE Analytics (eskiden Azure SQL DW) için, Azure Active Directory kimlik doğrulaması yerine SQL kimlik doğrulaması kullanılarak çalıştırılır.  
@@ -75,6 +79,9 @@ SQL kaynakları için, anlık görüntü hatalarının ek nedenleri aşağıda v
 * Kaynak veya hedef SQL veri deposu diğer süreçler tarafından kilitlidir. Azure veri paylaşımında, kaynak ve hedef SQL veri deposuna kilit uygulanmaz. Ancak, kaynak ve hedef SQL veri deposundaki mevcut kilitler anlık görüntü hatasına neden olur.
 * Hedef SQL tablosuna bir yabancı anahtar kısıtlaması tarafından başvuruluyor. Anlık görüntü sırasında, aynı ada sahip bir hedef tablo varsa, Azure veri paylaşımında tablo bırakılır ve yeni bir tablo oluşturulur. Hedef SQL tablosuna bir yabancı anahtar kısıtlaması başvuruluyorsa tablo bırakılamaz.
 * Hedef CSV dosyası oluşturuldu, ancak veriler Excel 'de okunamıyor. Bu durum, kaynak SQL tablosu Ingilizce olmayan karakterler içeren veriler içerdiğinde meydana gelebilir. Excel 'de ' veri al ' sekmesini seçin ve CSV dosyasını seçin, dosya kaynağı 65001: Unicode (UTF-8) ve yükleme verileri ' ni seçin.
+
+## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Anlık görüntü zamanlaması güncelleştirildikten sonra anlık görüntü sorunu
+Veri sağlayıcısı, gönderilen paylaşıma ait anlık görüntü zamanlamasını güncelleştirdikten sonra, veri tüketicisinin önceki anlık görüntü zamanlamasını devre dışı bırakması ve alınan paylaşımın güncelleştirilmiş anlık görüntü zamanlamasını yeniden etkinleştirmesi gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

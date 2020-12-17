@@ -10,13 +10,13 @@ ms.topic: how-to
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 04/14/2020
-ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/16/2020
+ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984439"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617315"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL veritabanı uzun süreli yedekleme bekletmesini yönetme
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -71,7 +71,7 @@ Bir LTR ilkesiyle belirli bir veritabanı için tutulan yedeklemeleri görüntü
 > [!NOTE]
 > Buradan [var olan veritabanına kopyalamak için geri yüklenen veritabanından veri ayıklama veya var olan veritabanını silerek geri yüklenen veritabanının adını var olan veritabanının adıyla değiştirme](recovery-using-backups.md#point-in-time-restore) gibi görevleri gerçekleştirmek için SQL Server Management Studio kullanarak geri yüklenen veritabanına bağlanabilirsiniz.
 
-## <a name="using-powershell"></a>PowerShell'i kullanma
+## <a name="using-powershell"></a>PowerShell’i kullanma
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -203,6 +203,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 
 ## <a name="limitations"></a>Sınırlamalar
 - Bir LTR yedeklemesinden geri yüklerken, okuma ölçeği özelliği devre dışıdır. Etkinleştirmek için geri yüklenen veritabanında ölçeği okuyun, oluşturulduktan sonra veritabanını güncelleştirin.
+- Veritabanı elastik bir havuzda olduğunda oluşturulan bir LTR yedeklemesinden geri yüklerken hedef hizmet düzeyi hedefini belirtmeniz gerekir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

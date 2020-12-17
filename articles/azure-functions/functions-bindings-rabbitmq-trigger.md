@@ -4,15 +4,15 @@ description: Bir Kbbitmq iletisi oluşturulduğunda bir Azure Işlevi çalışt�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/13/2020
+ms.date: 12/15/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: e7095c08c385457bddf6d70d345c4f47073b4adb
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 26dee5200a60f4900ed20c2fd49a874552272776
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505769"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97617230"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Kbbitmq tetikleyicisi
 
@@ -133,14 +133,12 @@ Bir Kbbitmq Binding, *türünün türü* olarak ayarlandığı *function.js* tan
             "name": "myQueueItem",
             "type": "rabbitMQTrigger",
             "direction": "in",
-            "queueName": "",
-            "connectionStringSetting": ""
+            "queueName": "queue",
+            "connectionStringSetting": "rabbitMQConnection"
         }
     ]
 }
 ```
-
-*_\_ İnit_ \_ . Kopyala* içindeki kod, `func.RabbitMQMessage` işlevinizdeki iletiyi okumanızı sağlayan olarak bir parametresini bildirir.
 
 ```python
 import logging
@@ -214,11 +212,11 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır.|
 |**ada** | yok | İşlev kodundaki kuyruğu temsil eden değişkenin adı. |
 |**Adı**|**Adı**| İletilerin alınacağı kuyruğun adı. |
-|**Konak**|**Konak**|(ConnectStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
-|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişen ad |
-|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişmek için parola|
+|**Konak**|**Konak**|(ConnectStringSetting kullanılıyorsa yoksayıldı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
+|**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için Kullanıcı adını içeren uygulama ayarının adı. Örn. UserNameSetting: "% < UserNameFromSettings >%"|
+|**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parolayı içeren uygulama ayarının adı. Örn. PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Kbbitmq ileti kuyruğu bağlantı dizesini içeren uygulama ayarının adı. Bağlantı dizesini doğrudan belirtirseniz ve local.settings.jsüzerinde bir uygulama ayarı aracılığıyla değil, tetikleyicinin çalışmadığına lütfen emin olun. (Örn: *function.js*: connectionStringSetting: "Kbbitmqconnection" <br> *local.settings.json*: "Oybbitmqconnection": "< actualconnectionstring >")|
-|**bağ**|**Bağlantı noktası**|Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
+|**bağ**|**Bağlantı noktası**|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -226,31 +224,29 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-Aşağıdaki parametre türleri ileti için kullanılabilir:
+Varsayılan ileti türü, [Kbbitmq olayıdır](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
 
-* [Kbbitmq olayı](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -kbbitmq iletileri için varsayılan biçim.
-  * `byte[]`-Kbıbitmq olayının ' Body ' özelliği aracılığıyla.
-* `string` -İleti metindir.
 * `An object serializable as JSON` -İleti geçerli bir JSON dizesi olarak teslim edilir.
+* `string`
+* `byte[]`
 * `POCO` -İleti bir C# nesnesi olarak biçimlendirilir. Tüm örnek için bkz. C# [örneği](#example).
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
-Aşağıdaki parametre türleri ileti için kullanılabilir:
+Varsayılan ileti türü, [Kbbitmq olayıdır](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html)ve `Body` kbbitmq olayının özelliği aşağıda listelenen türler olarak okunabilir:
 
-* [Kbbitmq olayı](https://www.rabbitmq.com/releases/rabbitmq-dotnet-client/v3.2.2/rabbitmq-dotnet-client-3.2.2-client-htmldoc/html/type-RabbitMQ.Client.Events.BasicDeliverEventArgs.html) -kbbitmq iletileri için varsayılan biçim.
-  * `byte[]`-Kbıbitmq olayının ' Body ' özelliği aracılığıyla.
-* `string` -İleti metindir.
 * `An object serializable as JSON` -İleti geçerli bir JSON dizesi olarak teslim edilir.
-* `POCO` -İleti bir C# nesnesi olarak biçimlendirilir.
+* `string`
+* `byte[]`
+* `POCO` -İleti bir C# nesnesi olarak biçimlendirilir. Tüm örnek için bkz. C# betik [örneği](#example).
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Kbbitmq iletisi, işleve bir dize veya JSON nesnesi olarak geçirilir.
+Kuyruk iletisi Context. Bindings aracılığıyla kullanılabilir.<NAME> <NAME>, üzerinde function.jstanımlanan adla eşleşir. Yük JSON ise, değer bir nesne olarak seri durumdan çıkarılacak.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Kbbitmq iletisi, işleve bir dize veya JSON nesnesi olarak geçirilir.
+Python [örneğine](#example)bakın.
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -284,7 +280,7 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |prefetchCount|30|İleti alıcısının eşzamanlı olarak istek aldığı ve önbelleğe alındığı ileti sayısını alır veya ayarlar.|
 |Adı|yok| İletilerin alınacağı kuyruğun adı. |
 |Dizisi|yok|Kbbitmq ileti kuyruğu bağlantı dizesini içeren uygulama ayarının adı. Bağlantı dizesini doğrudan belirtirseniz ve local.settings.jsüzerinde bir uygulama ayarı aracılığıyla değil, tetikleyicinin çalışmadığına lütfen emin olun.|
-|port|0|Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
+|port|0|(connectionString kullanılıyorsa yok sayılır) Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
 
 ## <a name="local-testing"></a>Yerel ortamda test etme
 
@@ -300,8 +296,8 @@ Bir bağlantı dizesi olmadan yerel olarak test ediyorsanız, "ana bilgisayar ad
         "rabbitMQ": {
             ...
             "hostName": "localhost",
-            "username": "<your username>",
-            "password": "<your password>"
+            "username": "userNameSetting",
+            "password": "passwordSetting"
         }
     }
 }
@@ -309,9 +305,9 @@ Bir bağlantı dizesi olmadan yerel olarak test ediyorsanız, "ana bilgisayar ad
 
 |Özellik  |Varsayılan | Description |
 |---------|---------|---------|
-|Konak|yok|(ConnectStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
-|userName|yok|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişen ad |
-|password|yok|(ConnectionStringSetting kullanılıyorsa isteğe bağlı) <br>Kuyruğa erişmek için parola|
+|Konak|yok|(ConnectStringSetting kullanılıyorsa yoksayıldı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
+|userName|yok|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişen ad |
+|password|yok|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parola|
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Kbıbitmq uç noktasını izleme
 Belirli bir Kbbitmq uç noktası için kuyrukları ve alışverlerinizi izlemek için:

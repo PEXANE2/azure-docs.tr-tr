@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 73e3d8834fcb41f863fe2e3d686b812bb6174e70
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7c5cac0b52fb0a224595ca7e328b551fd48d6661
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507668"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614243"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Yapılandırma seçenekleri-Java için Azure Izleyici Application Insights
 
@@ -168,6 +168,9 @@ Tüm telemetrinize özel boyutlar eklemek istiyorsanız:
 ```
 
 `${...}` , başlangıçta belirtilen ortam değişkeninden değeri okumak için kullanılabilir.
+
+> [!NOTE]
+> Version 3.0.1-BETA sürümünden başlayarak, adlı özel bir boyut eklerseniz, `service.version` Bu değer `application_Version` özel bir boyut yerine Application Insights logs tablosundaki sütunda depolanır.
 
 ## <a name="telemetry-processors-preview"></a>Telemetri işlemcileri (Önizleme)
 

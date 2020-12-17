@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: aahi
-ms.openlocfilehash: 247aea49d60c2d953d8b6dff37d22188a5442a1f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: e051eca990ae0aa0b5a79c208a594e1b2332bcb2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94625193"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612620"
 ---
 Bing Resim Arama istemci kitaplığını kullanarak ilk görüntünüzü aramanızı sağlamak için bu hızlı başlangıcı kullanın. 
 
@@ -37,15 +37,13 @@ Ayrıca bkz. bilişsel [Hizmetler fiyatlandırması-BING arama API](https://azur
 
 İlk olarak, yeni bir C# konsol uygulaması oluşturun.
 
-## <a name="create-a-console-project"></a>Konsol projesi oluşturma
-
 # <a name="visual-studio"></a>[Visual Studio](#tab/visualstudio)
 
 1. Visual Studio 'da *Bingimagesearch* adlı yeni bir konsol çözümü oluşturun.
     
 1. Bilişsel [resim arama NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.ImageSearch) ekleme
-    1. **Çözüm Gezgini** ' de projenize sağ tıklayın.
-    1. **NuGet Paketlerini Yönet** ' i seçin.
+    1. **Çözüm Gezgini**' de projenize sağ tıklayın.
+    1. **NuGet Paketlerini Yönet**' i seçin.
     1. *Microsoft. Azure. Biliveservices. Search. ımagesearch* için arama yapın ve seçin ve ardından paketi yükler.
     
 # <a name="vs-code"></a>[VS Code](#tab/vscode)
@@ -136,5 +134,5 @@ if (imageResults != null)
 * [Bing Resim Arama nedir?](../../overview.md)  
 * [Çevrimiçi etkileşimli bir tanıtımı deneyin](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
 * [Azure Bilişsel Hizmetler SDK’sı için .NET örnekleri](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
-* [Azure Bilişsel Hizmetler Belgeleri](../../../index.yml)
+* [Azure bilişsel hizmetler belgeleri](../../../index.yml)
 * [Bing Resim Arama API’si başvurusu](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

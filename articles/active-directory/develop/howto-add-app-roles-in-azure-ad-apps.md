@@ -13,12 +13,12 @@ ms.date: 11/13/2020
 ms.author: kkrishna
 ms.reviewer: marsma, kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 96c52c46a75d6d5810dfddf91439c275d14e85f1
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: bae8f0955ef45e21d38797789bdea4f62bf5ea28
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616166"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614940"
 ---
 # <a name="how-to-add-app-roles-to-your-application-and-receive-them-in-the-token"></a>Nasıl yapılır: uygulamanıza uygulama rolleri ekleme ve bunları belirtece alma
 
@@ -30,7 +30,10 @@ Diğer bir yaklaşım, GitHub 'daki [Active-Directory-aspnetcore-WebApp-openıdc
 
 ## <a name="declare-roles-for-an-application"></a>Bir uygulama için roller bildirme
 
-Uygulama rollerini [Azure Portal](https://portal.azure.com)kullanarak tanımlarsınız. Bir kullanıcı uygulamada oturum açtığında Azure AD, `roles` her rol için kullanıcıya tek tek ve grup üyeliğinden ayrı olarak verilen bir talep yayar.
+Uygulama rollerini [Azure Portal](https://portal.azure.com)kullanarak tanımlarsınız. Uygulama rolleri genellikle bir hizmeti, uygulamayı veya API 'yi temsil eden bir uygulama kaydında tanımlanmıştır. Kullanıcı uygulamada oturum açtığında Azure AD, `roles` her rol için Kullanıcı veya hizmet sorumlusunun kullanıcıya ve grup üyeliğinden ayrı ayrı verildiği bir talep yayar. Bu, talep tabanlı yetkilendirme uygulamak için kullanılabilir. Uygulama rolleri, [bir kullanıcıya veya kullanıcı grubuna](../manage-apps/add-application-portal-assign-users.md#assign-users-to-an-app)atanabilir. Ayrıca, uygulama rolleri başka bir uygulama için hizmet sorumlusuna veya [yönetilen bir kimliğin hizmet sorumlusu](../managed-identities-azure-resources/how-to-assign-app-role-managed-identity-powershell.md)için de atanabilir.
+
+> [!IMPORTANT]
+> Şu anda bir gruba bir hizmet sorumlusu ekler ve sonra bu gruba bir uygulama rolü atarsanız, Azure AD, `roles` BT 'nin verdiği belirteçlere talebi eklemez.
 
 Azure portal kullanarak uygulama rollerini belirtmenin iki yolu vardır:
 
@@ -48,9 +51,9 @@ Azure portal Kullanıcı arabirimini kullanarak bir uygulama rolü oluşturmak i
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresi ' ni seçin ve ardından uygulama rolü eklemek istediğiniz uygulama kaydını içeren Azure Active Directory kiracıyı seçin.
-1. **Azure Active Directory** 'yi bulun ve seçin.
-1. **Yönet** ' in altında **uygulama kayıtları** ' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
-1. **Uygulama rollerini seçin | Önizleme** yapın ve ardından **uygulama rolü oluştur** ' u seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
+1. **Uygulama rollerini seçin | Önizleme** yapın ve ardından **uygulama rolü oluştur**' u seçin.
 
    :::image type="content" source="media/howto-add-app-roles-in-azure-ad-apps/app-roles-overview-pane.png" alt-text="Azure portal bir uygulama kaydının uygulama rolleri bölmesi":::
 1. **Uygulama rolü oluştur** bölmesinde, rolün ayarlarını girin. Görüntüyü izleyen tablo her bir ayarı ve parametrelerini açıklar.
@@ -65,7 +68,7 @@ Azure portal Kullanıcı arabirimini kullanarak bir uygulama rolü oluşturmak i
     | **Açıklama** | Yönetici uygulama atama ve onay deneyimleri sırasında görünen uygulama rolünün daha ayrıntılı bir açıklaması. | `Writers can create surveys.` |
     | **Bu uygulama rolünü etkinleştirmek istiyor musunuz?** | Uygulama rolünün etkinleştirilip etkinleştirilmeyeceğini belirtir. Bir uygulama rolünü silmek için bu onay kutusunun işaretini kaldırın ve silme işlemini denemeden önce değişikliği uygulayın. | *Edildikten* |
 
-1. Yaptığınız değişiklikleri kaydetmek için **Apply** 'ı (Uygula) seçin.
+1. Yaptığınız değişiklikleri kaydetmek için **Apply**'ı (Uygula) seçin.
 
 ### <a name="app-manifest-editor"></a>Uygulama bildirimi Düzenleyicisi
 
@@ -73,9 +76,9 @@ Bildirimi doğrudan düzenleyerek roller eklemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. Üst menüdeki **Dizin + abonelik** filtresi ' ni seçin ve ardından uygulama rolü eklemek istediğiniz uygulama kaydını içeren Azure Active Directory kiracıyı seçin.
-1. **Azure Active Directory** 'yi bulun ve seçin.
-1. **Yönet** ' in altında **uygulama kayıtları** ' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
-1. **Yönet** altında, **bildirim** ' ı seçin.
+1. **Azure Active Directory**'yi bulun ve seçin.
+1. **Yönet**' in altında **uygulama kayıtları**' yi seçin ve ardından uygulama rollerini tanımlamak istediğiniz uygulamayı seçin.
+1. **Yönet** altında, **bildirim**' ı seçin.
 1. `appRoles`Ayarları bularak ve uygulama rollerinizi ekleyerek uygulama bildirimini düzenleyin. `users`, `applications` Veya her ikisini de hedefleyen uygulama rollerini tanımlayabilirsiniz. Aşağıdaki JSON parçacıkları her ikisinin de örneklerini gösterir.
 1. Bildirimi kaydedin.
 
@@ -134,10 +137,10 @@ Uygulamanıza uygulama rolleri ekledikten sonra, rollere kullanıcılar ve grupl
 Azure portal kullanarak kullanıcılara ve gruplara roller atamak için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** , sol taraftaki gezinti menüsünde **Kurumsal uygulamalar** ' ı seçin.
+1. **Azure Active Directory**, sol taraftaki gezinti menüsünde **Kurumsal uygulamalar** ' ı seçin.
 1. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin. Uygulamanız listede görünmezse, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 1. Rollere kullanıcı veya güvenlik grubu atamak istediğiniz uygulamayı seçin.
-1. **Yönet** bölümünde **Kullanıcılar ve gruplar** 'ı seçin.
+1. **Yönet** bölümünde **Kullanıcılar ve gruplar**'ı seçin.
 1. **Atama Ekle** bölmesini açmak Için **Kullanıcı Ekle** ' yi seçin.
 1. **Atama Ekle** bölmesinden **Kullanıcılar ve gruplar** seçicisini seçin. Kullanıcıların ve güvenlik gruplarının listesi görüntülenir. Belirli bir kullanıcı veya grup için arama yapabilir ve listede görünen birden çok kullanıcı ve grubu seçebilirsiniz.
 1. Kullanıcılar ve gruplar ' ı seçtikten sonra, devam etmek için **Seç** düğmesini seçin.
@@ -156,12 +159,12 @@ Uygulama rollerini bir uygulamaya atadığınızda, *Uygulama izinleri* oluştur
 Azure portal kullanarak uygulama rollerini bir uygulamaya atamak için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory** , sol taraftaki gezinti menüsünde **uygulama kayıtları** ' i seçin.
+1. **Azure Active Directory**, sol taraftaki gezinti menüsünde **uygulama kayıtları** ' i seçin.
 1. Tüm uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin. Uygulamanız listede görünmezse, listeyi kısıtlamak için **tüm uygulamalar** listesinin en üstündeki filtreleri kullanın veya uygulamanızı bulmak için listeyi aşağı kaydırın.
 1. Uygulama rolü atamak istediğiniz uygulamayı seçin.
 1. **API izinlerini** seçin  >  **izin Ekle**.
 1. **API 'Lerim** sekmesini seçin ve ardından uygulama rollerini tanımladığınız uygulamayı seçin.
-1. **Uygulama izinleri** ' ni seçin.
+1. **Uygulama izinleri**' ni seçin.
 1. Atamak istediğiniz rol (ler) i seçin.
 1. Rol (ler) in eklenmesi için **Izin Ekle** düğmesini seçin.
 
@@ -171,7 +174,7 @@ Yeni eklenen roller, uygulama kaydınızın **API izinleri** bölmesinde görün
 
 Bunlar *Uygulama izinleri* olmadığından, temsilci izinleri olmadığından, yönetici uygulamaya atanan uygulama rollerini kullanmak için izin vermelidir.
 
-1. Uygulama kaydının **API izinleri** bölmesinde, **Için \<tenant name\> yönetici onayı ver** ' i seçin.
+1. Uygulama kaydının **API izinleri** bölmesinde, **Için \<tenant name\> yönetici onayı ver**' i seçin.
 1. İstenen izinler için izin vermek isteyip istemediğiniz sorulduğunda **Evet** ' i seçin.
 
 **Durum** sütunu **için \<tenant name\> izin verildiğini** yansıtmalıdır.

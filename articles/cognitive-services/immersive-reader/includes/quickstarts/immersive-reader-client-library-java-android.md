@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 4118ef478f43c5887e2c5fba4595314e5a4ac02d
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 29bacfff2e7b555143c0483f9b7e4b4f61c9e973
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91779387"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612633"
 ---
 [Modern okuyucu](https://www.onenote.com/learningtools) , yeni okuyucular, dil öğrenimi ve öğrenimi gibi öğrenme farklılığı olan kişiler için okuma kavramasını geliştirmek üzere kanıtlanmış teknikler uygulayan, benzer şekilde tasarlanmış bir araçtır. Uygulamalarınızı odaklamak üzere metin yalıtmak, yaygın olarak kullanılan sözcüklerin resimlerini göstermek, konuşma parçalarını vurgulamak, seçili metni sesli okumak, sözcükleri ve tümceleri gerçek zamanlı olarak çevirmek ve daha fazlasını yapmak için uygulamalarınızda modern okuyucu kullanabilirsiniz.
 
@@ -24,7 +24,7 @@ Bu hızlı başlangıçta, sıfırdan bir Android uygulaması oluşturup tam ekr
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/cognitive-services/) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory kimlik doğrulaması için yapılandırılmış bir tam ekran okuyucu kaynağı. Kurulumunu yapmak için [Bu yönergeleri](../../how-to-create-immersive-reader.md) izleyin. Ortam özelliklerini yapılandırırken burada oluşturulan bazı değerler gerekir. Daha sonra başvurmak üzere oturumunuzun çıkışını bir metin dosyasına kaydedin.
@@ -44,7 +44,7 @@ Android Studio yeni bir proje başlatın. Bu örnek için kaynak kodu, [tam ekra
 
 ## <a name="configure-the-project"></a>Projeyi yapılandırma
 
-Projeyi **Quickstartjava**olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Java** ' yı seçin ve ardından **son**' u seçin.
+Projeyi **Quickstartjava** olarak adlandırın ve kaydedilecek bir konum seçin. Programlama dili olarak **Java** ' yı seçin ve ardından **son**' u seçin.
 
 ![Projeyi yapılandırma-Android](../../media/android/java/android-studio-configure-project.png)
 
@@ -206,7 +206,7 @@ dependencies {
 
 ## <a name="add-the-web-view-layout"></a>Web görünümü düzeni ekleme
 
-**Res/Layout/** klasöründe yeni bir düzen kaynak dosyası oluşturun ve **activity_immersive_reader**adlandırın. Ardından içeriğini aşağıdaki XML ile değiştirin. Bu XML, sonraki bir adımda oluşturulacak ıractivity Java kodu tarafından kullanılacak WebView bileşenini ekler. Şimdilik, tanımsız ve hatalara neden olacak.
+**Res/Layout/** klasöründe yeni bir düzen kaynak dosyası oluşturun ve **activity_immersive_reader** adlandırın. Ardından içeriğini aşağıdaki XML ile değiştirin. Bu XML, sonraki bir adımda oluşturulacak ıractivity Java kodu tarafından kullanılacak WebView bileşenini ekler. Şimdilik, tanımsız ve hatalara neden olacak.
 
 ![Yeni düzen kaynak dosyası oluşturma-Android](../../media/android/java/android-studio-new-layout-resource.png)
 
@@ -319,7 +319,6 @@ import java.lang.ref.WeakReference;
  * immersiveReader.read(ReadableTextChunk);
  */
 
-
 @Keep
 public class ImmersiveReader {
 
@@ -402,7 +401,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -770,7 +768,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             urlStringBuilder.append("/oauth2/token");
             URL tokenUrl = new URL(urlStringBuilder.toString());
 
-
             StringBuilder formStringBuilder = new StringBuilder();
             formStringBuilder.append("grant_type=client_credentials&resource=https://cognitiveservices.azure.com/&client_id=");
             formStringBuilder.append(clientId);
@@ -793,7 +790,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             if (responseCode == HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
-
 
                 String line = bufferedReader.readLine();
                 while (!TextUtils.isEmpty(line)) {
@@ -1293,7 +1289,7 @@ public class WebAppInterface {
 
 ## <a name="add-the-app-html-to-the-web-view"></a>Uygulama HTML 'ini Web görünümüne ekleme
 
-Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html**olarak adlandırın.
+Web görünümü uygulamasının çalışması için HTML gerekir. **/Varlıklar** klasörüne sağ tıklayın, yeni bir dosya oluşturun ve **immersiveReader.html** olarak adlandırın.
 
 ![Yeni bir HTML dosyası oluşturma-Android](../../media/android/java/android-studio-immersive-reader-html.png)
 

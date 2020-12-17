@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c476fe2af1fb4bddff4799609b164aab14f57b00
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187415"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612632"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Azure sanal WAN, GA 'de mi?
 
@@ -277,3 +277,7 @@ Bkz. [temel ve standart sanal WAN](../articles/virtual-wan/virtual-wan-about.md#
 ### <a name="does-virtual-wan-store-customer-data"></a>Sanal WAN mağazası müşteri verileri mi? 
 
 Hayır. Sanal WAN, hiçbir müşteri verisi depolamaz.
+
+### <a name="are-there-any-managed-service-providers-that-can-manage-virtual-wan-for-users-as-a-service"></a>Kullanıcılar için sanal WAN 'ı bir hizmet olarak yönetebilen yönetilen hizmet sağlayıcıları var mı? 
+
+Evet. Azure Marketi aracılığıyla etkinleştirilen yönetilen hizmet sağlayıcısı (MSP) çözümlerinin listesi için bkz. [Azure ağ oluşturma iş ortakları tarafından sunulan Azure Marketi teklifleri](../articles/networking/networking-partners-msp.md#msp).

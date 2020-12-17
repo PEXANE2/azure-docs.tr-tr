@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 07/06/2020
+ms.date: 12/16/2020
 ms.author: justinha
-ms.openlocfilehash: d8f2e77b7225306844cec85363a2971eaac4eebd
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 58cdd025587823f7eb702164c965ab622a7325d3
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620265"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97615656"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Bilinen sorunlar: Azure Active Directory Domain Services ağ yapılandırması uyarıları
 
@@ -38,21 +38,21 @@ Aşağıdaki varsayılan gelen ve giden güvenlik kuralları, yönetilen bir etk
 
 ### <a name="inbound-security-rules"></a>Gelen güvenlik kuralları
 
-| Öncelik | Ad | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
-| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
-| 201      | AllowRD | 3389 | TCP | Corpnetgördünüz | Herhangi biri | İzin Ver |
 | 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Herhangi biri | İzin Ver |
+| 201      | AllowRD | 3389 | TCP | Corpnetgördünüz | Herhangi bir | Reddet<sup>1</sup> |
 | 65000    | Allvnetınbound | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerInBound | Herhangi biri | Herhangi biri | AzureLoadBalancer | Herhangi biri | İzin Ver |
 | 65500    | DenyAllInBound | Herhangi biri | Herhangi biri | Herhangi biri | Herhangi biri | Reddet |
+<sup>1</sup> Hata ayıklama için isteğe bağlı. Gelişmiş sorun giderme için gerektiğinde izin verin.
 
 > [!NOTE]
 > Ayrıca, [GÜVENLI LDAP yapılandırırsanız][configure-ldaps]gelen trafiğe izin veren ek bir kuralınız olabilir. Bu ek kural doğru LDAPS iletişimi için gereklidir.
 
 ### <a name="outbound-security-rules"></a>Giden güvenlik kuralları
 
-| Öncelik | Ad | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
+| Öncelik | Name | Bağlantı noktası | Protokol | Kaynak | Hedef | Eylem |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | Allvnetoutbağlanmadı | Herhangi biri | Herhangi biri | VirtualNetwork | VirtualNetwork | İzin Ver |
 | 65001    | AllowAzureLoadBalancerOutBound | Herhangi biri | Herhangi biri |  Herhangi biri | İnternet | İzin Ver |

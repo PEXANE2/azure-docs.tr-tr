@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0cd9f0d6cf9529439f7b5ce46b1a5807d0a68a7c
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97111392"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614260"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Azure Active Directory B2C parolalar için karmaşıklık gereksinimlerini yapılandırın
 
@@ -26,7 +26,7 @@ ms.locfileid: "97111392"
 
 Azure Active Directory B2C (Azure AD B2C) bir hesap oluştururken Son Kullanıcı tarafından sağlanan parolaların karmaşıklık gereksinimlerinin değiştirilmesini destekler. Varsayılan olarak, Azure AD B2C **güçlü** parolalar kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -56,7 +56,7 @@ Parola karmaşıklığı aşağıdaki Kullanıcı akışları türlerinde yapıl
 
 ### <a name="comparison-chart"></a>Karşılaştırma grafiği
 
-| Karmaşıklık | Açıklama |
+| Karmaşıklık | Description |
 | --- | --- |
 | Basit | En az 8 ile 64 karakter uzunluğunda bir parola. |
 | Güçlü | En az 8 ile 64 karakter uzunluğunda bir parola. 3/4 küçük harf, büyük harf, sayı veya sembol gerektirir. |
@@ -218,7 +218,7 @@ Aşağıdaki teknik profiller, Azure Active Directory verileri okuyan ve yazan [
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory B2C özel ilkeleri kullanarak parola değişikliğini yapılandırmayı](custom-policy-password-change.md)öğrenin.
+- [Azure Active Directory B2C parola değişikliğini yapılandırmayı](add-password-change-policy.md)öğrenin.
 - IEF başvurusunda [koşullar](predicates.md) ve [predicatedoğrulamaları](predicates.md#predicatevalidations) öğeleri hakkında daha fazla bilgi edinin.
 
 
