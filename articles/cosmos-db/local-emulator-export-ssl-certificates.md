@@ -7,17 +7,17 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 1c111ca23ce7cf749dc4a7d5ad2ad39756236ab1
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028215"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656487"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java, Python ve Node.js uygulamalarıyla kullanmak üzere Azure Cosmos DB öykünücü sertifikalarını dışarı aktarın
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB Öykünücüsü, geliştirme amaçlı olarak Azure Cosmos DB hizmetine öykünen yerel bir ortam sağlar. Azure Cosmos öykünücüsü yalnızca TLS bağlantıları aracılığıyla güvenli iletişimi destekler.
+Azure Cosmos DB Öykünücüsü, geliştirme amaçlı olarak Azure Cosmos DB hizmetine öykünen yerel bir ortam sağlar. Azure Cosmos DB öykünücü yalnızca TLS bağlantılarıyla güvenli iletişimi destekler.
 
 Azure Cosmos DB yerel öykünücüdeki sertifikalar, öykünücüyü ilk kez çalıştırdığınızda oluşturulur. İki sertifika vardır. Bunlardan biri yerel öykünücüye bağlanmak için kullanılır ve diğeri öykünücü içindeki öykünücü verilerinin varsayılan şifrelemesini yönetmek için kullanılır. Dışarı aktarmak istediğiniz sertifika, "DocumentDBEmulatorCertificate" kısa adına sahip bağlantı sertifikasıdır.
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: ea812df825288eae3822cce01b24ebc82534c541
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 5ba5c6799db6a32bce64a730f4888f59080300dd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928826"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657184"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B serisi Burstable sanal makine boyutları
 
@@ -59,7 +59,7 @@ Taban çizgisi: %270
 
 ![Saatlik trafik verileri grafiği](./media/b-series-burstable/office-workload.png)
 
-| Senaryo | Zaman | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
+| Senaryo | Saat | CPU kullanımı (%) | Birikmiş jenerik<sup>1</sup> | Kredi var |
 | --- | --- | --- | --- | --- |
 | B16ms dağıtımı | Dağıtım | Dağıtım  | 480 (ilk krediler) | 480 |
 | Trafik yok | 0:00 | 0 | 162 | 642 |
@@ -94,7 +94,7 @@ Taban çizgisi: %270
 ## <a name="q--a"></a>Soru-Cevap
 
 ### <a name="q-what-happens-when-my-credits-run-out"></a>S: kredilerimin tükendiğinde ne olur?
-**A** Y: krediler TÜKENDIĞINDE, VM taban çizgisi performansına geri döner.
+Y: krediler TÜKENDIĞINDE, VM taban çizgisi performansına geri döner.
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>S: bir VM 'den %135 temel performansı nasıl alırsınız?
 
@@ -102,7 +102,7 @@ Y **:%** 135, VM boyutunu oluşturan 8 vCPU arasında paylaşılır. Örneğin, 
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>S: kredi bakiyenizi ve tüketimi nasıl izleyebilirim?
 
-**A** Y: **KREDI** ölçümü, sanal makinenizin kaç kredinin bankaya ve **TÜKETIM kredisi** ölçümünün, sanal makinenizin bankadan kaç tane kaç tane tükettiğini görmenizi sağlar.    Bu ölçümleri portalda ölçümler bölmesinden veya Azure Izleyici API 'Leri aracılığıyla programlı bir şekilde görüntüleyebileceksiniz.
+Y: **KREDI** ölçümü, sanal makinenizin kaç kredinin bankaya ve **TÜKETIM kredisi** ölçümünün, sanal makinenizin bankadan kaç tane kaç tane tükettiğini görmenizi sağlar.    Bu ölçümleri portalda ölçümler bölmesinden veya Azure Izleyici API 'Leri aracılığıyla programlı bir şekilde görüntüleyebileceksiniz.
 
 Azure için ölçüm verilerine erişme hakkında daha fazla bilgi için, bkz. [Microsoft Azure ölçümlere genel bakış](../azure-monitor/platform/data-platform.md).
 
@@ -112,7 +112,7 @@ Y **: VM** birikmesi ve tüketim ücretleri, tam olarak kendi temel performans d
 
 **Örnek**: küçük zaman ve katılımcı veritabanı uygulamamın B1ms boyutunu kullanarak bir VM dağıttım. Bu boyut, uygulamamın bir vCPU 'nun en fazla %20 ' sini kullanmasına izin verir. Bu, dakikada 0,2 kredi kullanabilir miyim veya banka.
 
-Uygulamam, çalışanlarınızın iş günlerimin başında ve sonunda meşgul, 7:00-9:00 ile 4:00-6 arasında: 00PM. Günün 20 saati boyunca Uygulamam genellikle yalnızca vCPU 'nun %10 ' u kullanılarak boşta kalır. Yoğun olmayan saatler için, dakikada 0,2 kredileri kazandım, ancak dakikada yalnızca 0. m kredisi elde ediyorum. bu nedenle, VM 'im her saat için 0,1 x 60 = 6 kredilerini kullanır.  Yoğun olmadığım 20 saat boyunca 120 kredi olarak sunulacaktır.  
+Uygulamam, çalışanlarınızın iş günlerimin başında ve sonunda meşgul, 7:00-9:00 ile 4:00-6 arasında: 00PM. Günün 20 saati boyunca Uygulamam genellikle yalnızca vCPU 'nun %10 ' u kullanılarak boşta kalır. Yoğun olmayan saatler için, dakikada 0,2 kredileri kazandım, ancak dakikada yalnızca 0,1 kredileri tüketiyorum. bu nedenle, VM 'im her saat için 0,1 x 60 = 6 kredileri alacak.  Yoğun olmadığım 20 saat boyunca 120 kredi olarak sunulacaktır.  
 
 Uygulamamın %60 vCPU kullanımının ortalamasını aldım, ancak dakika başına 0,2 kredileri kazandım, 0,6 ancak dakikada yıllık 0,4 0,4 krediler elde ediyorum. Maksimum kullanım gününde 4 saat sürer. bu nedenle, yoğun kullanımlarım için 4 x 24 = 96 kredi maliyetlerini ücretlendirildim.
 

@@ -4,12 +4,12 @@ description: Beş dakika içinde Java Service Fabric reliable actors uygulaması
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368940"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655960"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux üzerinde ilk Java Service Fabric Reliable Actors uygulamanızı oluşturma
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Reliable Actors hizmetini kullanmaya başlamak için anlamanız gereken birkaç 
 * **Aktör kaydı**. Reliable Services gibi Reliable Actor hizmetinin de Service Fabric çalışma zamanıyla kaydedilmesi gerekir. Ayrıca aktör türü de Actor çalışma zamanına kaydedilmelidir.
 * **Aktör arabirimi**. Aktör arabirimi, bir aktörün baskın türdeki genel arabirimini tanımlamak için kullanılır. Reliable Actor model terminolojisinde aktör arabirimi, aktörün anlayıp işleyebileceği ileti türlerini tanımlamak için kullanılır. Aktör arabirimi diğer aktörler ve istemci uygulamaları tarafından aktöre ileti "göndermek" (zaman uyumsuz) amacıyla kullanılır. Reliable Actors birden fazla arabirim uygulayabilir.
 * **ActorProxy sınıfı**. ActorProxy sınıfı, istemci uygulamaları tarafından aktör arabirimi aracılığıyla kullanıma sunulan yöntemleri çağırmak için kullanılır. ActorProxy sınıfı iki önemli işlev sunar:
-  
+
   * Ad çözümlemesi: Aktörü kümenin konumunu belirleyebilir (kümenin barındırıldığı düğümü bulabilir).
   * Hata işleme: Yöntem çağrılarını yeniden deneyebilir ve ardından aktör konumunu yeniden çözümleyebilir. Örnek olarak aktörün küme içindeki başka bir düğüme alınmasını gerektiren hata verilebilir.
 
@@ -160,9 +160,9 @@ Aktör hizmetinin Service Fabric çalışma zamanındaki bir hizmet türüne kay
 public class HelloWorldActorHost {
 
 private static final Logger logger = Logger.getLogger(HelloWorldActorHost.class.getName());
-    
+
 public static void main(String[] args) throws Exception {
-        
+
         try {
 
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
@@ -221,7 +221,7 @@ Aktörler kendi başına hiçbir şey yapmaz; başka bir hizmet veya istemcinin 
 1. Actor hizmetinin çıktısını görmek için izleme yardımcı programını kullanarak betiği çalıştırın.  Test betiği bir sayacın değerini yükseltmek için aktörde `setCountAsync()` yöntemine; yeni sayaç değerini edinmek içinse aktörde `getCountAsync()` yöntemine çağrı yapar ve bu değeri konsolda görüntüler.
 
    MAC OS X söz konusu olduğunda, aşağıdaki ek komutları çalıştırarak HelloWorldTestClient klasörünü kapsayıcının içindeki bazı konumlara kopyalamanız gerekir.    
-    
+
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
      docker exec -it [first-four-digits-of-container-ID] /bin/bash

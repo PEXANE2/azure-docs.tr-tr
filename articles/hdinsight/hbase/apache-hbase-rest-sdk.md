@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 17c3f07fe553e363d1eb2a997287feb77296a621
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540321"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654651"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Apache HBase için .NET SDK 'sını kullanma
 
@@ -38,13 +38,13 @@ var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdins
 client = new HBaseClient(credentials);
 ```
 
-CLUSTERNAME değerini HDInsight HBase küme adınızla ve Kullanıcı adı ve parola ile küme oluşturma sırasında belirtilen Apache Hadoop kimlik bilgileriyle değiştirin. Varsayılan Hadoop Kullanıcı adı **admin** ' dir.
+CLUSTERNAME değerini HDInsight HBase küme adınızla ve Kullanıcı adı ve parola ile küme oluşturma sırasında belirtilen Apache Hadoop kimlik bilgileriyle değiştirin. Varsayılan Hadoop Kullanıcı adı **admin**' dir.
 
 ## <a name="create-a-new-table"></a>Yeni tablo oluşturma
 
-HBase verileri tablolarda depolar. Tablo bir *Rowkey* , birincil anahtar ve *sütun aileleri* olarak adlandırılan bir veya daha fazla sütun grubundan oluşur. Her tablodaki veri, *bölgelere* bir rowkey aralığı tarafından yatay olarak dağıtılır. Her bölgenin bir başlangıç ve bitiş anahtarı vardır. Bir tabloda bir veya daha fazla bölge olabilir. Tablodaki veriler büyüdükçe HBase, büyük bölgeleri daha küçük bölgelere ayırır. Bölgeler, tek bir bölge sunucusunun birden çok bölgeyi depolayabileceği *bölge sunucularında* depolanır.
+HBase verileri tablolarda depolar. Tablo bir *Rowkey*, birincil anahtar ve *sütun aileleri* olarak adlandırılan bir veya daha fazla sütun grubundan oluşur. Her tablodaki veri, *bölgelere* bir rowkey aralığı tarafından yatay olarak dağıtılır. Her bölgenin bir başlangıç ve bitiş anahtarı vardır. Bir tabloda bir veya daha fazla bölge olabilir. Tablodaki veriler büyüdükçe HBase, büyük bölgeleri daha küçük bölgelere ayırır. Bölgeler, tek bir bölge sunucusunun birden çok bölgeyi depolayabileceği *bölge sunucularında* depolanır.
 
-Veriler, fiziksel olarak *Hfiles* 'da depolanır. Tek bir HFile, bir tablo, bir bölge ve bir sütun ailesi için veri içerir. HFile içindeki satırlar Rowkey üzerinde sıralanmış olarak depolanır. Her HFile, satırları hızlı bir şekilde almak için bir *B + ağaç* dizinine sahiptir.
+Veriler, fiziksel olarak *Hfiles*'da depolanır. Tek bir HFile, bir tablo, bir bölge ve bir sütun ailesi için veri içerir. HFile içindeki satırlar Rowkey üzerinde sıralanmış olarak depolanır. Her HFile, satırları hızlı bir şekilde almak için bir *B + ağaç* dizinine sahiptir.
 
 Yeni bir tablo oluşturmak için bir `TableSchema` ve sütunları belirtin. Aşağıdaki kod, ' RestSDKTable ' tablosunun zaten mevcut olup olmadığını denetler. yoksa tablo oluşturulur.
 

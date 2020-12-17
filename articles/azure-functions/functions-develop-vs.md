@@ -1,17 +1,17 @@
 ---
-title: Visual Studio ile Azure İşlevleri geliştirme
+title: Visual Studio kullanarak Azure İşlevleri geliştirme
 description: Visual Studio 2019 için Azure Işlevleri araçlarını kullanarak Azure Işlevleri geliştirmeyi ve test yapmayı öğrenin.
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: c5164d0757de5011c112a9506979da19d9585790
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 877c82e375b0ea469071402b83fadbd634177f3f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167806"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655824"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio ile Azure İşlevleri geliştirme  
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio kullanarak Azure İşlevleri geliştirme  
 
 Visual Studio, C# sınıf kitaplığı işlevlerini geliştirmenize, test etmenize ve Azure 'a dağıtmanıza imkan tanır. Azure Işlevleri ile ilk kez bu deneyim varsa bkz. [Azure işlevleri 'ne giriş](functions-overview.md).
 
@@ -76,7 +76,7 @@ Bir Azure Işlevleri projesi oluşturduktan sonra, proje şablonu bir C# projesi
 * **local.settings.js**:, işlevleri yerel olarak çalıştırırken kullanılan ayarları korur. Bu ayarlar, Azure 'da çalışırken kullanılmaz. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](#local-settings-file).
 
     >[!IMPORTANT]
-    >Dosyadaki local.settings.jsgizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir. Bu dosya için **Çıkış Dizinine Kopyala** ayarının, **daha yeniyse kopyala**olarak ayarlandığından emin olun. 
+    >Dosyadaki local.settings.jsgizli dizileri içerebildiğinden, bunu proje kaynak denetiinizden çıkarmanız gerekir. Bu dosya için **Çıkış Dizinine Kopyala** ayarının, **daha yeniyse kopyala** olarak ayarlandığından emin olun. 
 
 Daha fazla bilgi için bkz. [işlevler sınıf kitaplığı projesi](functions-dotnet-class-library.md#functions-class-library-project).
 
@@ -86,13 +86,25 @@ Visual Studio, projeyi yayımladığınızda local.settings.jsiçindeki ayarlar�
 
 Kodunuz Ayrıca, işlev uygulama ayarları değerlerini ortam değişkenleri olarak okuyabilir. Daha fazla bilgi için bkz. [ortam değişkenleri](functions-dotnet-class-library.md#environment-variables).
 
+## <a name="configure-your-build-output-settings"></a>Yapı çıkış ayarlarınızı yapılandırın
+
+Bir Azure Işlevleri projesi oluştururken, derleme araçları çıktıyı en iyileştirir ve böylece işlevler çalışma zamanına paylaşılan derlemelerin yalnızca bir kopyasının korunması sağlanır. Sonuç, mümkün olduğunca fazla alan kaydeden, iyileştirilmiş bir derleme olur. Ancak, proje derlemelerinizin herhangi birinin daha yeni bir sürümüne geçtiğinizde, derleme araçları bu derlemelerin korunması gerektiğini bilmiyor olabilir. İyileştirme işlemi sırasında bu derlemelerin korunduğundan emin olmak için, bunları `FunctionsPreservedDependencies` Proje (. csproj) dosyasındaki öğeleri kullanarak belirtebilirsiniz:
+
+```xml
+  <ItemGroup>
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Extensions.dll" />
+    <FunctionsPreservedDependencies Include="Microsoft.AspNetCore.Http.Features.dll" />
+  </ItemGroup>
+```
+
 ## <a name="configure-the-project-for-local-development"></a>Projeyi yerel geliştirme için yapılandırma
 
 Işlevler çalışma zamanı, dahili olarak bir Azure depolama hesabı kullanır. HTTP ve Web kancaları dışındaki tüm tetikleyici türleri için `Values.AzureWebJobsStorage` anahtarı geçerli bir Azure depolama hesabı bağlantı dizesi olarak ayarlayın. İşlev uygulamanız Ayrıca, proje için gerekli olan bağlantı ayarı için [Azure Storage öykünücüsü](../storage/common/storage-use-emulator.md) 'nü kullanabilir `AzureWebJobsStorage` . Öykünücüsünü kullanmak için değerini `AzureWebJobsStorage` olarak ayarlayın `UseDevelopmentStorage=true` . Dağıtımdan önce bu ayarı gerçek bir depolama hesabı bağlantı dizesiyle değiştirin.
 
 Depolama hesabı bağlantı dizesini ayarlamak için:
 
-1. Visual Studio 'da, **View**  >  **bulut Gezginini**görüntüle ' yi seçin.
+1. Visual Studio 'da,   >  **bulut Gezginini** görüntüle ' yi seçin.
 
 2. **Cloud Explorer**'Da **depolama hesapları**' nı genişletin ve depolama hesabınızı seçin. **Özellikler** sekmesinde, **birincil bağlantı dizesi** değerini kopyalayın.
 
@@ -104,7 +116,7 @@ Depolama hesabı bağlantı dizesini ayarlamak için:
 
 C# sınıf kitaplığı işlevlerinde, işlev tarafından kullanılan bağlamalar koddaki öznitelikler uygulanarak tanımlanır. İşlev tetiklerinizi, belirtilen şablonlardan oluşturduğunuzda, tetikleyici öznitelikleri sizin için uygulanır. 
 
-1. **Çözüm Gezgini**, proje düğümüne sağ tıklayın ve **Add**  >  **Yeni öğe**Ekle ' yi seçin. 
+1. **Çözüm Gezgini**, proje düğümüne sağ tıklayın ve   >  **Yeni öğe** Ekle ' yi seçin. 
 
 2. **Azure işlevi**' ni seçin, sınıf Için bir **ad** girin ve ardından **Ekle**' yi seçin.
 

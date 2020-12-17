@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: b3e00c3832f243ec0190023116bbfdeaaad86c94
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 64d1084fd7025c74676977f065062e5e94dabf1d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370432"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652254"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure'dan Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -130,7 +130,7 @@ VM 'ler için giden erişim URL 'lerle denetleniyorsa, bu URL 'Lere izin verin.
 
 | **Ad**                  | **Ticari**                               | **Kamu**                                 | **Açıklama** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
 | Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |

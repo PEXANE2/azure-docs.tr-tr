@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 18a1fc7f42884dcc194256e1f51ddecb62d2708c
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516398"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655484"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Sık Sorulan Sorular
 
@@ -97,11 +97,11 @@ Bu sağlama süreleri *tahminlerdir*. Her sipariş işleme aşamasına ilişkin 
 **Data Box sırası için tahmini sağlama süreleri:**
 
 1. Order Data Box: birkaç dakika, portaldan
-2. Cihaz ayırma ve hazırlama: 1-2 iş günü
+2. Cihaz ayırma ve hazırlık: 1-2 iş günü, envanter kullanılabilirliğine ve yerine getirilmesi bekleyen diğer siparişlere tabi
 3. Gönderim: 2-3 iş günü
 4. Müşteri sitesindeki veri kopyalama: verilerin, boyutun ve dosya sayısının yapısına bağlıdır
 5. İade gönderimi: 2-3 iş günü
-6. Cihazı veri merkezinde işleme: 1-2 iş günü
+6. Cihazı veri merkezinde işleme: 1-2 iş günü, işleme bekleyen diğer siparişlere tabi
 7. Azure 'a veri yükleme: işlem tamamlandıktan hemen sonra cihaz bağlı olduğunda başlar. Karşıya yükleme süresi verilerin, boyutun ve dosya sayısının yapısına bağlıdır.
 
 ### <a name="q-i-ordered-a-couple-of-data-box-devices-i-cant-create-any-additional-orders-why"></a>S. Birkaç Data Box cihazı sipariş ettim. Ek sipariş oluşturamıyorum. Neden?

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seodec18,seoapr2020
 ms.date: 05/14/2020
-ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71432dc2dd09381d39ca646d45c7f2bdd96012c6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83647566"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653444"
 ---
 # <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Kurumsal Güvenlik Paketi ile Azure HDInsight kümelerinde Apache Oozie çalıştırma
 
@@ -178,7 +178,7 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
 
 4. `clustername`Kümenin adıyla değiştirin.
 
-5. Dosyayı kaydetmek için **CTRL + X**' i seçin. **Y**girin. Ardından **ENTER**' ı seçin.
+5. Dosyayı kaydetmek için **CTRL + X**' i seçin. **Y** girin. Ardından **ENTER**' ı seçin.
 
     İş akışı iki kısma ayrılmıştır:
 
@@ -231,10 +231,10 @@ Oozie iş akışı tanımları Apache Hadoop Işlem tanımlama dilinde (hPDL) ya
    ```
 
    - `adl://home` `nameNode` Birincil küme depolama alanı olarak Azure Data Lake Storage 1. sahipseniz, özelliği için URI 'yi kullanın. Azure Blob depolamayı kullanıyorsanız, olarak değiştirin `wasb://home` . Azure Data Lake Storage 2. kullanıyorsanız, öğesini olarak değiştirin `abfs://home` .
-   - `domainuser`Etki alanı için Kullanıcı adınızla değiştirin.  
-   - `ClusterShortName`Kümenin kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net ise, `clustershortname` kümenin ilk altı karakteri: **sechad**.  
+   - `domainuser`Etki alanı için Kullanıcı adınızla değiştirin.
+   - `ClusterShortName`Kümenin kısa adıyla değiştirin. Örneğin, küme adı https:// *[örnek bağlantı]* sechadoopcontoso.azurehdisnight.net ise, `clustershortname` kümenin ilk altı karakteri: **sechad**.
    - `jdbcurlvalue`Hive YAPıLANDıRMASıNDAKI JDBC URL 'siyle değiştirin. Bir örnek: hive2://///
-   - Dosyayı kaydetmek için CTRL + X ' i seçin ve ENTER `Y` ' u seçin. **Enter**
+   - Dosyayı kaydetmek için CTRL + X ' i seçin ve ENTER `Y` ' u seçin. 
 
    Oozie işleri çalıştırılırken bu özellikler dosyasının yerel olarak mevcut olması gerekir.
 
@@ -313,17 +313,17 @@ CoordAction ID: -
 
 Actions
 ------------------------------------------------------------------------------------------------
-ID                      Status  Ext ID          ExtStatus   ErrCode
+ID                        Status    Ext ID            ExtStatus                 ErrCode
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@:start:    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@:start:    OK    -                         OK             -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@mr-test    OK  job_1529975666160_0051  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@mr-test    OK    job_1529975666160_0051    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive2    OK  job_1529975666160_0053  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive2    OK    job_1529975666160_0053    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@myHive OK  job_1529975666160_0055  SUCCEEDED   -
+0000015-180626011240801-oozie-oozi-W@myHive    OK     job_1529975666160_0055    SUCCEEDED      -
 ------------------------------------------------------------------------------------------------
-0000015-180626011240801-oozie-oozi-W@end    OK  -           OK      -
+0000015-180626011240801-oozie-oozi-W@end       OK     -                         OK             -
 -----------------------------------------------------------------------------------------------
 ```
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=weig, previous-ms.author=weig
-ms.openlocfilehash: bcebc568db4a0d2b4b287045ba0a67c88d9b8c92
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce37ee51e549a2bd6f2747f28af8c038c39d8f1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020611"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656844"
 ---
 # <a name="data-science-code-testing-on-azure-with-the-team-data-science-process-and-azure-devops-services"></a>Team Data Science Işlemi ve Azure DevOps Services Azure 'da veri bilimi kodu testi
 Bu makale, bir veri bilimi iş akışındaki kodu test etmek için ön yönergeleri sağlar. Bu tür testler, veri bilimcilerinin, kodunuzun kalitesini ve beklenen sonucunu denetlemek için sistematik ve verimli bir yol sunar. Kod testinin nasıl yapılacağını göstermek için daha önce yayımladığımız [UCI yetişkin gelir veri kümesini kullanan](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) bir ekip veri bilimi IŞLEMI (TDSP) projesi kullanıyoruz. 

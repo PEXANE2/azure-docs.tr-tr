@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187247"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656946"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -26,7 +26,7 @@ Bu makale, kullanılabilir API 'Lere ve bunlarla etkileşime yönelik yöntemler
 
 Denetim düzlemi API 'Leri, Azure dijital TWINS örneğinizi bir bütün olarak yönetmek için kullanılan [ARM](../azure-resource-manager/management/overview.md) API 'lardır, böylece tüm örneğinizi oluşturma veya silme gibi işlemleri kapsar. Bunları, uç noktaları oluşturmak ve silmek için de kullanacaksınız.
 
-En güncel Denetim düzlemi API sürümü _**2020-10-31**_' dir.
+En güncel Denetim düzlemi API sürümü _**2020-12-01**_' dir.
 
 Denetim düzlemi API 'Lerini kullanmak için:
 * [Denetim düzlemi Swagger klasöründeki](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins)en son Swagger 'A başvurarak API 'leri doğrudan çağırabilirsiniz. Bu depo ayrıca kullanımı gösteren örneklerin bir klasörünü de içerir.
@@ -275,7 +275,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 ## <a name="general-apisdk-usage-notes"></a>Genel API/SDK kullanım notları
 
 > [!NOTE]
-> Azure dijital TWINS 'in Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Etki ve çözüm stratejileri hakkında daha fazla bilgi için bkz. *Kavramlar: Azure dijital TWINS çözümleri Için güvenlik*. [*Cross-Origin Resource Sharing (CORS)*](concepts-security.md#cross-origin-resource-sharing-cors)
+> Azure dijital TWINS 'in Şu anda **çıkış noktaları arası kaynak paylaşımını (CORS)** desteklemediğini lütfen unutmayın. Etki ve çözüm stratejileri hakkında daha fazla bilgi için bkz. *Kavramlar: Azure dijital TWINS çözümleri Için güvenlik*. [](concepts-security.md#cross-origin-resource-sharing-cors)
 
 Aşağıdaki listede, API 'Leri ve SDK 'ları kullanmaya yönelik ek ayrıntılar ve genel yönergeler verilmiştir.
 
@@ -286,7 +286,7 @@ Aşağıdaki listede, API 'Leri ve SDK 'ları kullanmaya yönelik ek ayrıntıla
 * Tüm hizmet işlevleri, zaman uyumlu ve zaman uyumsuz sürümlerde bulunur.
 * Tüm hizmet işlevleri, 400 veya üzeri bir dönüş durumu için bir özel durum oluşturur. Çağrıları bir bölüme sardığınızdan `try` ve en azından yakaladığınızdan emin olun `RequestFailedExceptions` . Bu tür özel durum hakkında daha fazla bilgi için [buraya](/dotnet/api/azure.requestfailedexception?preserve-view=true&view=azure-dotnet)bakın.
 * Çoğu hizmet yöntemi döndürür `Response<T>` veya ( `Task<Response<T>>` zaman uyumsuz çağrılar için), burada `T` hizmet çağrısının dönüş nesnesinin sınıfıdır. [`Response`](/dotnet/api/azure.response-1?preserve-view=true&view=azure-dotnet)Sınıfı, hizmet döndürmesini kapsüller ve dönüş değerlerini kendi `Value` alanına sunar.  
-* Disk belleğine alınmış sonuçları olan hizmet yöntemleri, `Pageable<T>` veya `AsyncPageable<T>` sonuçlarını döndürür. Sınıfı hakkında daha fazla bilgi için buraya bakın `Pageable<T>` . hakkında daha fazla bilgi için [here](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview) `AsyncPageable<T>` [buraya](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)bakın.
+* Disk belleğine alınmış sonuçları olan hizmet yöntemleri, `Pageable<T>` veya `AsyncPageable<T>` sonuçlarını döndürür. Sınıfı hakkında daha fazla bilgi için buraya bakın `Pageable<T>` . hakkında daha fazla bilgi için [](/dotnet/api/azure.pageable-1?preserve-view=true&view=azure-dotnet-preview) `AsyncPageable<T>` [buraya](/dotnet/api/azure.asyncpageable-1?preserve-view=true&view=azure-dotnet-preview)bakın.
 * Bir döngüsü kullanarak, disk belleğine alınmış sonuçları yineleyebilirsiniz `await foreach` . Bu süreç hakkında daha fazla bilgi için [buraya](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)bakın.
 * Temel alınan SDK `Azure.Core` . SDK altyapısı ve türleri hakkında başvuru için bkz. [Azure ad alanı belgeleri](/dotnet/api/azure?preserve-view=true&view=azure-dotnet-preview) .
 

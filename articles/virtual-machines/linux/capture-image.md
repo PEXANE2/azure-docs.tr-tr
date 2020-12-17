@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
-ms.openlocfilehash: 376d9d76633060f504454f85841b9c15bafc6685
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eacd1426b856de11a18b0da6c509d281b3bca94c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87503047"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655178"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Bir sanal makinenin veya VHD 'nin yönetilen görüntüsünü oluşturma
 
@@ -54,14 +54,14 @@ Bu makalenin basitleştirilmiş bir sürümü ve Azure 'da VM 'Ler hakkında sı
 4. Komut tamamlandıktan sonra SSH istemcisini kapatmak için **Çıkış** ' ı girin.  VM hala bu noktada çalışmaya devam edecektir.
 
 ## <a name="step-2-create-vm-image"></a>2. Adım: VM görüntüsü oluşturma
-VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için Azure CLı 'yi kullanın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet*ve *myvm*' i içerir.
+VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için Azure CLı 'yi kullanın. Aşağıdaki örneklerde, örnek parametre adlarını kendi değerlerinizle değiştirin. Örnek parametre adları *Myresourcegroup*, *Myvnet* ve *myvm*' i içerir.
 
-1. [Az VM serbest bırakma](/cli/azure/vm)ile sağladığınız VM 'yi serbest bırakın. Aşağıdaki örnek, *Myresourcegroup*adlı kaynak grubunda *MYVM* adlı VM 'yi kaldırır.  
+1. [Az VM serbest bırakma](/cli/azure/vm)ile sağladığınız VM 'yi serbest bırakın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı VM 'yi kaldırır.  
    
     ```azurecli
     az vm deallocate \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
     
     Üzerinde geçiş yapmadan önce VM 'nin tamamen serbest olmasını bekleyin. Bu işlem birkaç dakika sürebilir.  VM, ayırmayı kaldırma sırasında kapatılır.
@@ -70,18 +70,18 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
    
     ```azurecli
     az vm generalize \
-      --resource-group myResourceGroup \
-      --name myVM
+        --resource-group myResourceGroup \
+        --name myVM
     ```
 
     Genelleştirilmiş bir VM artık yeniden başlatılamaz.
 
-3. [Az Image Create](/cli/azure/image#az-image-create)komutuyla VM kaynağının bir görüntüsünü oluşturun. Aşağıdaki örnek *Myresourcegroup* adlı kaynak grubunda *MYVM*adlı VM kaynağını kullanarak *MyImage* adlı bir görüntü oluşturur.
+3. [Az Image Create](/cli/azure/image#az-image-create)komutuyla VM kaynağının bir görüntüsünü oluşturun. Aşağıdaki örnek *Myresourcegroup* adlı kaynak grubunda *MYVM* adlı VM kaynağını kullanarak *MyImage* adlı bir görüntü oluşturur.
    
     ```azurecli
     az image create \
-      --resource-group myResourceGroup \
-      --name myImage --source myVM
+        --resource-group myResourceGroup \
+        --name myImage --source myVM
     ```
    
    > [!NOTE]
@@ -92,7 +92,7 @@ VM 'yi Genelleştirilmiş olarak işaretlemek ve görüntüyü yakalamak için A
 Bu komut, VM görüntüsünü açıklayan JSON döndürür. Bu çıktıyı daha sonra başvurmak üzere kaydedin.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>3. Adım: yakalanan görüntüden VM oluşturma
-[Az VM Create](/cli/azure/vm)ile oluşturduğunuz görüntüyü kullanarak bir VM oluşturun. Aşağıdaki örnek, *MyImage*adlı görüntüden *dağıtılan myvmadlı* bir VM oluşturur.
+[Az VM Create](/cli/azure/vm)ile oluşturduğunuz görüntüyü kullanarak bir VM oluşturun. Aşağıdaki örnek, *MyImage* adlı görüntüden *dağıtılan myvmadlı* bir VM oluşturur.
 
 ```azurecli
 az vm create \

@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4889ecd02be1b8f59c30550b7813ed5e5935f20f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0953d750ee8b59e9889512bb64cfd276a0bbeb53
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88924703"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654875"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Metin çevirisi Bilişsel Beceri
 
@@ -38,7 +38,7 @@ Bir kaydın en büyük boyutu, tarafından ölçülen 50.000 karakter olmalıdı
 
 Parametreler büyük/küçük harfe duyarlıdır.
 
-| Girişler                | Açıklama |
+| Girişler | Description |
 |---------------------|-------------|
 | defaultToLanguageCode | Istenir Kendisine açık olarak belirtmeyen belgeler için belgeleri içine çevirecek dil kodu. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md)görüntüleyin. |
 | defaultFromLanguageCode | Seçim Özel olarak kimden dilini belirtmeyen belgeler için belge çeviren dil kodu.  DefaultFromLanguageCode belirtilmemişse, kimden dilini saptamak için Translator Metin Çevirisi API'si tarafından sunulan otomatik dil algılama kullanılır. <br/> [Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md)görüntüleyin. |
@@ -46,7 +46,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
-| Giriş adı     | Açıklama |
+| Giriş adı     | Description |
 |--------------------|-------------|
 | metin | Çevrilecek metin.|
 | toLanguageCode    | Metnin çevrilmesi gereken dili belirten dize. Bu giriş belirtilmemişse, metni çevirmek için defaultToLanguageCode kullanılır. <br/>[Desteklenen dillerin tam listesini](../cognitive-services/translator/language-support.md) görün|
@@ -54,7 +54,7 @@ Parametreler büyük/küçük harfe duyarlıdır.
 
 ## <a name="skill-outputs"></a>Yetenek çıkışları
 
-| Çıkış adı    | Açıklama |
+| Çıkış adı    | Description |
 |--------------------|-------------|
 | translatedText | TranslatedFromLanguageCode öğesinden translatedToLanguageCode öğesine metin çevirisinin dize sonucu.|
 | translatedToLanguageCode  | Metnin çevrildiği dil kodunu belirten dize. Birden çok dile çeviriyor ve hangi metnin hangi dilde olduğunu takip etmek istiyorsanız yararlı olur.|

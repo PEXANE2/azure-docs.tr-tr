@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 66bec9635af696d0ce1cf9d7dcad8c26a1ef23ad
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020601"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652373"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Azure ile SendGrid kullanarak e-posta gönderme
 ## <a name="overview"></a>Genel Bakış
@@ -50,9 +50,9 @@ Daha fazla bilgi için, [https://sendgrid.com](https://sendgrid.com) veya SendGr
 
 Uygulamanıza SendGrid NuGet paketini yüklemek için aşağıdakileri yapın:
 
-1. **Yeni proje** ' ye tıklayın ve bir **şablon**seçin.
+1. **Yeni proje** ' ye tıklayın ve bir **şablon** seçin.
 
-   ![Yeni bir proje oluşturma][create-new-project]
+   ![Yeni proje oluşturma][create-new-project]
 2. **Çözüm Gezgini**, **Başvurular**' a sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' e tıklayın.
 
    ![SendGrid NuGet paketi][SendGrid-NuGet-package]
@@ -62,7 +62,7 @@ Uygulamanıza SendGrid NuGet paketini yüklemek için aşağıdakileri yapın:
    ![SendGrid paketi][sendgrid-package]
 5. Yüklemeyi **gerçekleştirmek için yükleme** ' ye tıklayın ve ardından bu iletişim kutusunu kapatın.
 
-SendGrid 'in .NET sınıf kitaplığına **SendGrid**adı verilir. Aşağıdaki ad alanlarını içerir:
+SendGrid 'in .NET sınıf kitaplığına **SendGrid** adı verilir. Aşağıdaki ad alanlarını içerir:
 
 * SendGrid 'in API 'SI ile iletişim kurmak için **SendGrid** .
 * E-postaların nasıl gönderileceğini belirten SendGridMessage nesnelerini kolayca oluşturmak üzere yardımcı yöntemler için **SendGrid. yardımcılar. Mail** .
@@ -107,7 +107,7 @@ E-posta göndermek için SendGrid API anahtarınızı sağlamanız gerekir. API 
 
 Bu kimlik bilgilerini, uygulama ayarları ' na tıklayarak ve uygulama ayarları altına anahtar/değer çiftleri ekleyerek Azure portal aracılığıyla saklayabilirsiniz.
 
- ![Azure Uygulama ayarları][azure_app_settings]
+![Azure Uygulama ayarları][azure_app_settings]
 
 Ardından, bunlara aşağıdaki şekilde erişebilirsiniz:
 
@@ -159,17 +159,17 @@ Bu örnekte, API anahtarı, `appsettings.json` Yukarıdaki örneklerde gösteril
 
 Dosyanın içeriği şuna benzemelidir `appsettings.json` :
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -208,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -222,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 

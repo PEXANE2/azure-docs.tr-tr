@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: 752e7dae9040059c662a93d9a9d668bac0e8e2d8
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 178d3896fe8d063855a734f3f0fe6c489b0ec1fc
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074677"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97651982"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android için ADAL MSAL geçiş kılavuzu
 
@@ -89,7 +89,7 @@ Kuruluş yöneticileri, uygulamanızın tüm üyelerinin adına gereksinim duydu
 > [!CAUTION]
 > Hem kapsamları hem de bir kaynak kimliğini ayarlamak mümkün değildir. Her ikisini de ayarlamaya çalışmak, bir ile sonuçlanır `IllegalArgumentException` .
 
- Bu, kullandığınız v1 davranışına neden olur. Uygulama kaydınızdan istenen tüm izinler kullanıcıdan ilk etkileşimi sırasında istenir.
+Bu, kullandığınız v1 davranışına neden olur. Uygulama kaydınızdan istenen tüm izinler kullanıcıdan ilk etkileşimi sırasında istenir.
 
 ### <a name="authenticate-and-request-permissions-only-as-needed"></a>Kimlik doğrulama ve izinleri yalnızca gerektiğinde iste
 
@@ -128,16 +128,16 @@ MSAL, yetkilendirme doğrulamasını etkinleştirmek veya devre dışı bırakma
 
 Microsoft tarafından bilinmeyen ve yapılandırmanıza dahil olmayan bir yetkiyi kullanmaya çalışırsanız, bir alırsınız `UnknownAuthorityException` .
 
-### <a name="logging"></a>Günlüğe Kaydetme
+### <a name="logging"></a>Günlüğe kaydetme
 Artık, aşağıdaki gibi, yapılandırmanızın bir parçası olarak günlük kaydını bildirimli olarak yapılandırabilirsiniz:
 
- ```
- "logging": {
-    "pii_enabled": false,
-    "log_level": "WARNING",
-    "logcat_enabled": true
-  }
-  ```
+```json
+"logging": {
+  "pii_enabled": false,
+  "log_level": "WARNING",
+  "logcat_enabled": true
+}
+```
 
 ## <a name="migrate-from-userinfo-to-account"></a>UserInfo 'dan hesaba geçiş
 
@@ -147,7 +147,7 @@ Bir banka hesabı değerlendirin. Birden fazla mali kurum üzerinde birden fazla
 
 Benzerleme vurguladı tarafından finansal bir kurumdaki hesaplar gibi, Microsoft Identity platformunda hesaplara kimlik bilgileri kullanılarak erişilir. Bu kimlik bilgileri, Microsoft tarafından kaydedilir veya tarafından verilir. Ya da bir kuruluş adına Microsoft tarafından.
 
-Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. İşte bir örnek:
+Microsoft Identity platformunun bir mali kuruluştan farklı olduğu durumlarda, bu benzerleme vurguladı Microsoft Identity platformunun, bir kullanıcının birden çok kişiye ve kuruluşa ait kaynaklara erişmek için bir hesap ve ilgili kimlik bilgilerini kullanmasına izin veren bir çerçeve sunmasına olanak tanır. Bu, henüz başka bir mali kurumda bir banka tarafından verilen kartı kullanabiliyor gibidir. Bu, söz konusu tüm kuruluşların, bir hesabın birden çok kuruluşta kullanılmasına izin veren Microsoft Identity platformunu kullandığından, bu işe yarar. Aşağıda bir örnek verilmiştir:
 
 Sam, Contoso.com için geçerlidir ancak Fabrikam.com 'e ait olan Azure sanal makinelerini yönetir. Sam 'nin fabrikam 'ın sanal makinelerini yönetmesi için onlara erişim yetkisi olması gerekir. Bu erişim, Sam hesabı Fabrikam.com 'ye eklenerek ve hesabına sanal makinelerle çalışmasına izin veren bir rol verilerek verilebilir. Bu işlem Azure portal yapılır.
 

@@ -3,12 +3,12 @@ title: 'Hızlı başlangıç: ilk go sorgunuz'
 description: Bu hızlı başlangıçta, kaynak grafiği paketini Go için etkinleştirmek ve ilk sorgunuzu çalıştırmak için adımları izleyin.
 ms.date: 10/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 748f6bfa673a2e9fabdcba0c91dc314931df268a
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: e09bbb63b56fd30eb3aa9e7e527acdd8691d3ee6
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057459"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655807"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-go"></a>Hızlı başlangıç: go kullanarak ilk kaynak grafik sorgunuzu çalıştırma
 
@@ -16,7 +16,7 @@ Azure Kaynak Grafiği 'ni kullanmanın ilk adımı, Go için gereken paketlerin 
 
 Bu işlemin sonunda, paketleri go yüklemenize eklemiş ve ilk kaynak Graf sorgunuzu çalıştıracaksınız.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
@@ -57,48 +57,48 @@ Git paketleri tercih ettiğiniz ortamınıza eklendiğinde, basit bir kaynak gra
    package main
    
    import (
-       "fmt"
-       "os"
-       "context"
-       "strconv"
-       arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
-       "github.com/Azure/go-autorest/autorest/azure/auth"
+      "fmt"
+      "os"
+      "context"
+      "strconv"
+      arg "github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph"
+      "github.com/Azure/go-autorest/autorest/azure/auth"
    )
    
    func main() {
-      // Get variables from command line arguments
-      var query = os.Args[1]
-      var subList = os.Args[2:]
+       // Get variables from command line arguments
+       var query = os.Args[1]
+       var subList = os.Args[2:]
    
-      // Create and authorize a ResourceGraph client
-      argClient := arg.New()
-      authorizer, err := auth.NewAuthorizerFromCLI()
-      if err == nil {
-          argClient.Authorizer = authorizer
-      } else {
-          fmt.Printf(err.Error())
-      }
-   
-      // Set options
-      RequestOptions := arg.QueryRequestOptions {
-          ResultFormat: "objectArray",
-      }
-   
-      // Create the query request
-      Request := arg.QueryRequest {
-          Subscriptions: &subList,
-          Query: &query,
-          Options: &RequestOptions,
-      }
-   
-      // Run the query and get the results
-      var results, queryErr = argClient.Resources(context.Background(), Request)
-      if queryErr == nil {
-          fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
-          fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
-      } else {
-          fmt.Printf(queryErr.Error())
-      }
+       // Create and authorize a ResourceGraph client
+       argClient := arg.New()
+       authorizer, err := auth.NewAuthorizerFromCLI()
+       if err == nil {
+           argClient.Authorizer = authorizer
+       } else {
+           fmt.Printf(err.Error())
+       }
+     
+       // Set options
+       RequestOptions := arg.QueryRequestOptions {
+           ResultFormat: "objectArray",
+       }
+     
+       // Create the query request
+       Request := arg.QueryRequest {
+           Subscriptions: &subList,
+           Query: &query,
+           Options: &RequestOptions,
+       }
+     
+       // Run the query and get the results
+       var results, queryErr = argClient.Resources(context.Background(), Request)
+       if queryErr == nil {
+           fmt.Printf("Resources found: " + strconv.FormatInt(*results.TotalRecords, 10) + "\n")
+           fmt.Printf("Results: " + fmt.Sprint(results.Data) + "\n")
+       } else {
+           fmt.Printf(queryErr.Error())
+       }
    }
    ```
 
@@ -117,7 +117,7 @@ Git paketleri tercih ettiğiniz ortamınıza eklendiğinde, basit bir kaynak gra
    > [!NOTE]
    > Bu sorgu örneği, `order by` gibi bir sıralama değiştirici sağlamadığı için, bu sorgunun birden çok kez çalıştırılması muhtemelen istek başına farklı bir kaynak kümesi sunacaktır.
 
-1. İlk parametreyi öğesine değiştirin `argQuery` ve sorguyu Name özelliği olarak değiştirin `order by` . **Name** `<SubID>`ABONELIK Kimliğinizle değiştirin:
+1. İlk parametreyi öğesine değiştirin `argQuery` ve sorguyu Name özelliği olarak değiştirin `order by` .  `<SubID>`ABONELIK Kimliğinizle değiştirin:
 
    ```bash
    argQuery "Resources | project name, type | limit 5 | order by name asc" "<SubID>"

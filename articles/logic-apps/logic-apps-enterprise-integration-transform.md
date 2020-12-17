@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 038c1d4c0f0b5ffd7b9aabea2de32e3a44e3b221
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832748"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654141"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps’te XML biçimini dönüştüren eşlemeler oluşturma
 
@@ -30,7 +30,7 @@ Dönüştürme/eşlemeyi tümleştirme hesabınıza yükledikten sonra, mantıks
 
 **Dönüştürme kullanma adımları şunlardır**:
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 
 * Bir tümleştirme hesabı oluşturun ve buna bir eşleme ekleyin  
 
@@ -44,10 +44,10 @@ Artık önkoşulları karşıladığınıza göre, mantıksal uygulamanızı olu
 4. Tüm eylemleri kullanmak istediğiniz bir şekilde filtrelemek için, arama kutusuna *dönüştürme* sözcüğü yazın  
    ![Istek tetikleyicisine eklenebilmesi için "Microsoft tarafından yönetilen API 'Leri göster" açılan menüsünde XML dönüşümü eyleminin nasıl aranacağını gösteren ekran görüntüsü.](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. **XML dönüştürme** eylemini seçin   
-6. Dönüştürmek istediğiniz XML **içeriğini** ekleyin. HTTP isteğinde aldığınız XML verilerini **içerik**olarak kullanabilirsiniz. Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteğinin gövdesini seçin.
+6. Dönüştürmek istediğiniz XML **içeriğini** ekleyin. HTTP isteğinde aldığınız XML verilerini **içerik** olarak kullanabilirsiniz. Bu örnekte, mantıksal uygulamayı tetikleyen HTTP isteğinin gövdesini seçin.
 
    > [!NOTE]
-   > **Transform XML** içeriğinin XML olduğundan emin olun. İçerik XML 'de değilse veya Base64 kodlamalı ise, içeriği işleyen bir ifade belirtmeniz gerekir. Örneğin, [functions](logic-apps-workflow-definition-language.md#functions) ```@base64ToBinary``` içeriği kod çözme veya ```@xml``` içeriği XML olarak işleme gibi işlevleri kullanabilirsiniz.
+   > **Transform XML** içeriğinin XML olduğundan emin olun. İçerik XML 'de değilse veya Base64 kodlamalı ise, içeriği işleyen bir ifade belirtmeniz gerekir. Örneğin, [](logic-apps-workflow-definition-language.md#functions) ```@base64ToBinary``` içeriği kod çözme veya ```@xml``` içeriği XML olarak işleme gibi işlevleri kullanabilirsiniz.
  
 
 7. Dönüştürmeyi gerçekleştirmek için kullanmak istediğiniz **haritanın** adını seçin. Eşleme, tümleştirme hesabınızda zaten olmalıdır. Önceki bir adımda, mantıksal uygulama erişiminizi eşlemenizi içeren tümleştirme hesabınıza zaten verdin.      
@@ -95,17 +95,17 @@ Dönüştürme eylemi, dış derlemeye yönelik başvuru ile haritaları veya d�
     <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
   </msxsl:script>
   <xsl:template match="data">
-     <circles>
-        <xsl:for-each select="circle">
-            <circle>
-                <xsl:copy-of select="node()"/>
-                    <circumference>
-                        <xsl:value-of select="user:circumference(radius)"/>
-                    </circumference>
-            </circle>
-        </xsl:for-each>
-     </circles>
-    </xsl:template>
+   <circles>
+    <xsl:for-each select="circle">
+      <circle>
+        <xsl:copy-of select="node()"/>
+          <circumference>
+            <xsl:value-of select="user:circumference(radius)"/>
+          </circumference>
+      </circle>
+    </xsl:for-each>
+   </circles>
+  </xsl:template>
     </xsl:stylesheet>
   ```
 

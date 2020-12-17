@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81721cb52035a51cffa2667568914c780b4c397b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1324afb38560afeb43b5be9191b6e2e7afc5c81d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588667"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654906"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>Azure 'da SAP ASCS/SCS örneği için Windows Yük devretme kümesine ve paylaşılan diske SAP NetWeaver HA 'yi yüklemeyin
 
@@ -66,8 +66,6 @@ ms.locfileid: "97588667"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f
 
 [sap-high-availability-infrastructure-wsfc-shared-disk]:sap-high-availability-infrastructure-wsfc-shared-disk.md
-
-
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
 [sap-ha-guide-figure-1001]:./media/virtual-machines-shared-sap-high-availability-guide/1001-wsfc-on-azure-ilb.png
@@ -153,7 +151,7 @@ Bu makalede, bir SAP ASCS/SCS örneğini Kümelendirmek için bir Windows Server
 - [Azure paylaşılan diskleri](../../disks-shared.md)
 - Kümelenmiş paylaşılan diskin benzetimini yapan yansıtılmış depolama alanı oluşturmak için [SIOS Dataman küme sürümünü](https://us.sios.com/products/datakeeper-cluster/) kullanma 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Yüklemeye başlamadan önce şu belgeleri gözden geçirin:
 
@@ -173,7 +171,6 @@ Farklı DBMS Hizmetleri, Azure 'daki kümelenmiş SAP Ass veya SCS yapılandırm
 > [!IMPORTANT]
 > Paylaşılan disk sunmak için SIOS kullanırsanız, sayfa dosyanızı SIOS veri kullanımı yansıtılmış birimlerine yerleştirmeyin. Sayfa dosyanızı, varsayılan olan bir Azure sanal makinesinin geçici sürücüsünde bırakabilirsiniz. Henüz orada yoksa, Windows sayfa dosyasını Azure sanal makinenizin D sürücüsüne taşıyın.  
 
-
 SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek şu görevleri içerir:
 
 * Kümelenmiş SAP ASCS/SCS örneği için bir sanal ana bilgisayar adı oluşturun.
@@ -189,7 +186,6 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
    > [!IMPORTANT]
    > ASCS/SCS örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız IP adresiyle aynı olmalıdır.  
 
-
    ![Şekil 1: SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama][sap-ha-guide-figure-3046]
 
    _SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlayın_
@@ -199,11 +195,9 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
    > [!IMPORTANT]
    > ERS2 örneğinin sanal ana bilgisayar adına atadığınız IP adresi, Azure Load Balancer atadığınız ikinci IP adresi olmalıdır.    
 
-
    ![Şekil 1A: SAP ASCS/SCS kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama][sap-ha-guide-figure-3046-ers2]
 
    _SAP ERS2 kümesi sanal adı ve TCP/IP adresi için DNS girişi tanımlama_
-
 
 3. Sanal ana bilgisayar adına atanan IP adresini tanımlamak için **DNS Yöneticisi**  >  **etki alanı**' nı seçin.
 
@@ -219,7 +213,6 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
    * **Java sistemi**: **SCS** örnek numarası **01**
    * **ABAP + Java sistemi**: **Ass** örnek numarası **00** ve **SCS** örnek numarası **01**
 
-
    > [!IMPORTANT]
    > Azure iç yük dengeleyici Yük Dengeleme kurallarında (temel SKU kullanılıyorsa) yapılandırmanın ve seçili SAP örnek numaralarının eşleşmesi gerektiğini unutmayın.
 
@@ -227,8 +220,6 @@ SAP 'yi yüksek kullanılabilirliğe sahip bir ASCS/SCS örneğiyle yüklemek ş
 
 > [!TIP]
 > SAP yükleme belgeleri, ilk ASCS/SCS küme düğümünün nasıl yükleneceğini açıklar.
-
-
 
 ### <a name="modify-the-sap-profile-of-the-ascsscs-instance"></a><a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> ASCS/SCS örneğinin SAP profilini değiştirme
 
@@ -295,7 +286,6 @@ Bir araştırma bağlantı noktası eklemek için, bu PowerShell modülünü kü
     .PARAMETER IsSAPERSClusteredInstance 
     Optional parameter.Default value is '$False'.
     If set to $True , then handle clsutered new SAP ERS2 instance.
-
 
     .EXAMPLE 
     # Set probe port to 62000, on SAP cluster resource 'SAP AB1 IP', and restart the SAP cluster group 'SAP AB1', to activate the changes.

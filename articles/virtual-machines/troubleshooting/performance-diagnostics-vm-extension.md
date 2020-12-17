@@ -1,7 +1,7 @@
 ---
 title: Windows için Azure Performans Tanılama VM Uzantısı | Microsoft Docs
 description: Windows için Azure Performans Tanılama VM uzantısını tanıtır.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
 manager: dcscontentpm
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 16af8b8c1258ef7945e88a7af42e86a7bba2003b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9edba575b35613abb8bc3081964a37b838bb358b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963270"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656604"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows için Azure Performans Tanılama VM Uzantısı
 
@@ -27,7 +27,7 @@ Azure Performans Tanılama VM uzantısı, Windows VM 'lerinden Performans Tanıl
 > [!NOTE]
 > Klasik olmayan VM 'Ler için Azure portal sanal makinelerinizdeki tanılamayı çalıştırmak istiyorsanız, yeni deneyim kullanılması önerilir. Daha fazla bilgi için bkz. [Azure sanal makineler Için Performans Tanılama](performance-diagnostics.md) 
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu uzantı, üzerine yüklenebilir
 * Windows Server 2019
@@ -54,16 +54,16 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameter('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
@@ -74,23 +74,23 @@ Aşağıdaki JSON, Azure Performans Tanılama VM Uzantısı şemasını gösteri
 
 ### <a name="property-values"></a>Özellik değerleri
 
-|   **Ad**   |**Değer/örnek**|       **Açıklama**      |
-|--------------|-------------------|----------------------------|
-|apiVersion|2015-06-15|API sürümü.
-|yayımcı|Microsoft. Azure. performance. Diagnostics|Uzantı için yayımcı ad alanı.
-|tür|AzurePerformanceDiagnostics|VM uzantısının türü.
-|typeHandlerVersion|1.0|Uzantı işleyicisinin sürümü.
-|Performanslı Orceni|basit|Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles**ve **Custom**.
-|traceDurationInSeconds|300|İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi.
-|perfCounterTrace|p|Performans sayacı Izlemesini etkinleştirme seçeneği. Geçerli değerler **p** veya boş değerdir. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.
-|networkTrace|n|Ağ Izlemesini etkinleştirme seçeneği. Geçerli değerler **n** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.
-|xperfTrace|x|XPerf Izlemesini etkinleştirme seçeneği. Geçerli değerler **x** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.
-|storPortTrace|s|StorPort Izlemesini etkinleştirme seçeneği. Geçerli değerler **s** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın.
-|srNumber|123452016365929|Varsa destek bileti numarası. Değer yoksa boş bırakın.
-|requestTimeUtc|2017-09-28T22:08:53.736 Z|UTC olarak geçerli tarih saat. Bu uzantıyı yüklemek için portalını kullanıyorsanız, bu değeri sağlamanız gerekmez.
-|resourceId|/Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/Providers/{resourceprovidernamespace}/{resourcettypeınfo}/{resourceName}|Bir VM 'nin benzersiz tanımlayıcısı.
-|storageAccountName|mystorageaccount|Tanılama günlüklerini ve sonuçlarını depolamak için depolama hesabının adı.
-|storageAccountKey|lDuVvxuZB28NNP... hAiRF3voADxLBTcc = =|Depolama hesabı için anahtar.
+| Name | Değer/örnek | Description |
+|--|--|--|
+| apiVersion | 2015-06-15 | API sürümü. |
+| yayımcı | Microsoft. Azure. performance. Diagnostics | Uzantı için yayımcı ad alanı. |
+| tür | AzurePerformanceDiagnostics | VM uzantısının türü. |
+| typeHandlerVersion | 1,0 | Uzantı işleyicisinin sürümü. |
+| Performanslı Orceni | basit | Verilerin yakalanması için performans senaryosu. Geçerli değerler şunlardır: **Basic**, **vmslow**, **azurefiles** ve **Custom**. |
+| traceDurationInSeconds | 300 | İzleme seçeneklerinden herhangi biri seçilirse izlemelerin süresi. |
+| perfCounterTrace | p | Performans sayacı Izlemesini etkinleştirme seçeneği. Geçerli değerler **p** veya boş değerdir. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın. |
+| networkTrace | n | Ağ Izlemesini etkinleştirme seçeneği. Geçerli değerler **n** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın. |
+| xperfTrace | x | XPerf Izlemesini etkinleştirme seçeneği. Geçerli değerler **x** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın. |
+| storPortTrace | s | StorPort Izlemesini etkinleştirme seçeneği. Geçerli değerler **s** veya boş değer. Bu izlemeyi yakalamak istemiyorsanız, değeri boş bırakın. |
+| srNumber | 123452016365929 | Varsa destek bileti numarası. Değer yoksa boş bırakın. |
+| requestTimeUtc | 2017-09-28T22:08:53.736 Z | UTC olarak geçerli tarih saat. Bu uzantıyı yüklemek için portalını kullanıyorsanız, bu değeri sağlamanız gerekmez. |
+| resourceId | /Subscriptions/{SubscriptionID}/ResourceGroups/{resourcegroupname}/Providers/{resourceprovidernamespace}/{resourcettypeınfo}/{resourceName} | Bir VM 'nin benzersiz tanımlayıcısı. |
+| storageAccountName | mystorageaccount | Tanılama günlüklerini ve sonuçlarını depolamak için depolama hesabının adı. |
+| storageAccountKey | lDuVvxuZB28NNP... hAiRF3voADxLBTcc = = | Depolama hesabı için anahtar. |
 
 ## <a name="install-the-extension"></a>Uzantıyı yükleme
 
@@ -117,6 +117,7 @@ Uzantıyı Windows sanal makinelerine yüklemek için aşağıdaki yönergeleri 
     > , Sağlama başarılı olduğunda uzantı çalışır. Temel senaryo için iki dakika veya daha kısa sürer. Diğer senaryolarda, yükleme sırasında belirtilen süre boyunca çalışır.
 
 ## <a name="remove-the-extension"></a>Uzantıyı kaldırma
+
 Uzantıyı bir sanal makineden kaldırmak için şu adımları izleyin:
 
 1. [Azure Portal](https://portal.azure.com)oturum açın, bu uzantıyı kaldırmak istediğiniz sanal makineyi seçin ve ardından **Uzantılar** dikey penceresini seçin. 
@@ -128,9 +129,10 @@ Uzantıyı bir sanal makineden kaldırmak için şu adımları izleyin:
     > Uzantı girişini de seçebilir ve **Kaldır** seçeneğini belirleyebilirsiniz.
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
+
 Azure sanal makine uzantıları, Azure Resource Manager şablonlarıyla dağıtılabilir. Önceki bölümde ayrıntılı olan JSON şeması bir Azure Resource Manager şablonunda kullanılabilir. Bu, Azure Resource Manager şablon dağıtımı sırasında Azure Performans Tanılama VM uzantısını çalıştırır. Örnek bir şablon aşağıda verilmiştir:
 
-```
+```json
 {
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
@@ -144,11 +146,11 @@ Azure sanal makine uzantıları, Azure Resource Manager şablonlarıyla dağıt�
       "defaultValue": "southcentralus"
     },
     "storageAccountName": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccount"
     },
     "storageAccountKey": {
-      "type": "securestring"
+      "type": "securestring",
       "defaultValue": "yourStorageAccountKey"
     },
     "performanceScenario": {
@@ -159,10 +161,10 @@ Azure sanal makine uzantıları, Azure Resource Manager şablonlarıyla dağıt�
       "type": "string",
       "defaultValue": ""
     },
-    "traceDurationInSeconds": {
-      "type": "int",
+  "traceDurationInSeconds": {
+    "type": "int",
     "defaultValue": 300
-    },
+  },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -196,16 +198,16 @@ Azure sanal makine uzantıları, Azure Resource Manager şablonlarıyla dağıt�
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
-            "performanceScenario": "[parameters('performanceScenario')]",
-            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-            "perfCounterTrace": "[parameters('perfCounterTrace')]",
-            "networkTrace": "[parameters('networkTrace')]",
-            "xperfTrace": "[parameters('xperfTrace')]",
-            "storPortTrace": "[parameters('storPortTrace')]",
-            "srNumber": "[parameters('srNumber')]",
-            "requestTimeUtc":  "[parameters('requestTimeUtc')]",
-            "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
+          "storageAccountName": "[parameters('storageAccountName')]",
+          "performanceScenario": "[parameters('performanceScenario')]",
+          "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+          "perfCounterTrace": "[parameters('perfCounterTrace')]",
+          "networkTrace": "[parameters('networkTrace')]",
+          "xperfTrace": "[parameters('xperfTrace')]",
+          "storPortTrace": "[parameters('storPortTrace')]",
+          "srNumber": "[parameters('srNumber')]",
+          "requestTimeUtc":  "[parameters('requestTimeUtc')]",
+          "resourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('vmName'))]"
         },
         "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"
@@ -217,6 +219,7 @@ Azure sanal makine uzantıları, Azure Resource Manager şablonlarıyla dağıt�
 ```
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
+
 Bu `Set-AzVMExtension` komut, Azure Performans Tanılama VM uzantısını var olan bir sanal makineye dağıtmak için kullanılabilir.
 
 PowerShell
@@ -241,7 +244,7 @@ Perfinsıghts Aracı, seçilen senaryoya bağlı olarak çeşitli günlükleri, 
 
 ## <a name="view-and-share-the-results"></a>Sonuçları görüntüleme ve paylaşma
 
-Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-sas-overview.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, ** \\ \<version> C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics**klasörü altındaki *zipfilename*_saslink.txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
+Uzantının çıktısı, yükleme sırasında belirtilen depolama hesabına yüklenen ve [paylaşılan erişim imzaları (SAS)](../../storage/common/storage-sas-overview.md)kullanılarak 30 gün boyunca paylaşılabilecek bir ZIP dosyasında bulunabilir. Bu ZIP dosyası tanılama günlükleri ve bulguları ve önerilerle bir rapor içerir. Çıkış ZIP dosyasına bir SAS bağlantısı, **\\ \<version> C:\Packages\Plugins\Microsoft.Azure.performance.Diagnostics.AzurePerformanceDiagnostics** klasörü altındaki *zipfilename* _saslink.txt adlı bir metin dosyası içinde bulunabilir. Bu bağlantıya sahip olan herkes ZIP dosyasını indirebiliyor.
 
 Destek mühendisinize yönelik destek Mühendisinize yardımcı olmak için, Microsoft bu SAS bağlantısını kullanarak tanılama verilerini indirebilir.
 

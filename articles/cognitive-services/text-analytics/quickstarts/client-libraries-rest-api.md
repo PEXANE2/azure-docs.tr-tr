@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: metin araştırma, yaklaşım analizi, metin analizi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: a1eba2f599a0365f43707ff7c9035d91e8637481
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f93b7954861bf3351d2930132e1391e1f21b2a6f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505826"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655127"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library-and-rest-api"></a>Hızlı başlangıç: Metin Analizi istemci kitaplığı ve REST API kullanın
 
@@ -39,8 +39,6 @@ Metin Analizi istemci kitaplığı ve REST API kullanmaya başlamak için bu mak
 >    * Yalnızca kullandığınız sürüme ait yönergeleri izlediğinizden emin olun.
 > * Bu makaledeki kod, basitlik nedenlerle zaman uyumlu Yöntemler ve güvenli olmayan kimlik bilgileri depolaması kullanır. Üretim senaryolarında, performans ve ölçeklenebilirlik için toplu zaman uyumsuz yöntemleri kullanmanızı öneririz. Aşağıdaki başvuru belgelerine bakın.
 > * Durum veya zaman uyumsuz işlemler için metin analizi kullanmak istiyorsanız, [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) veya [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) için GitHub 'daki örneklere bakın
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 [!INCLUDE [C# quickstart](../includes/quickstarts/csharp-sdk.md)]
 

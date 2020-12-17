@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 45baee286fede0ab16da62b7c2e84008d58690b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cf4dc5123040fd2af8efe54153867a8709fe1ef
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91626505"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652237"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware'den Azure'a olağanüstü durum kurtarma mimarisi
 
@@ -45,7 +45,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 | **Ad**                  | **Ticari**                               | **Kamu**                                 | **Açıklama** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
+| Depolama                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Verilerin VM’den kaynak bölgedeki önbellek depolama hesabına yazılmasına izin verir. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Site Recovery hizmet URL’leri için yetkilendirme ve kimlik doğrulama özellikleri sağlar. |
 | Çoğaltma               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | VM’nin Site Recovery hizmetiyle iletişim kurmasına izin verir. |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | VM’nin Site Recovery izleme ve tanılama verilerini yazmasına izin verir. |
@@ -89,7 +89,7 @@ Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 's
 
 Azure VM çoğaltmasını etkinleştirdiğinizde, varsayılan olarak Site Recovery tabloda özetlenen varsayılan ayarlarla yeni bir çoğaltma ilkesi oluşturur.
 
-**İlke ayarı** | **Ayrıntılar** | **Varsayılanını**
+**İlke ayarı** | **Ayrıntılar** | **Varsayılan**
 --- | --- | ---
 **Kurtarma noktası bekletme** | Site Recovery kurtarma noktalarını ne kadar süreyle tutacağını belirtir | 24 saat
 **Uygulamayla tutarlı anlık görüntü sıklığı** | Site Recovery ne sıklıkta uygulamayla tutarlı bir anlık görüntü alır. | Her dört saatte bir

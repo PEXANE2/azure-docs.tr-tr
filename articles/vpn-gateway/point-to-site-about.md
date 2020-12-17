@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68d2ed0d6702a42f44e502f2f7d3a91c0221ff6a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 795b6f13913590041b463115c0be65a6201fedab
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440943"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654073"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan siteye VPN hakkında
 
@@ -61,9 +61,9 @@ Yüksek düzeyde, Azure AD kimlik doğrulamasını yapılandırmak için aşağ�
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Active Directory (AD) etki alanı sunucusu kullanarak kimlik doğrulama
 
 AD etki alanı kimlik doğrulaması, kullanıcıların kuruluş etki alanı kimlik bilgilerini kullanarak Azure 'a bağlanmasına olanak sağlar. AD sunucusu ile tümleşen bir RADIUS sunucusu gerektirir. Kuruluşlar, var olan RADIUS dağıtımlarından da faydalanabilir.
-  
-RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.  
-  
+  
+RADIUS sunucusu şirket içinde veya Azure VNet 'te dağıtılabilir. Kimlik doğrulaması sırasında Azure VPN Gateway, kimlik doğrulama iletilerini RADIUS sunucusu ile bağlanan cihaz arasında ileri ve geri iletir. Bu nedenle, RADIUS sunucusuna ağ geçidi erişilebilirliği önemli. RADIUS sunucusu şirket içinde mevcutsa, ulaşılabilirlik için Azure 'dan şirket içi siteye bir VPN S2S bağlantısı gerekir.  
+  
 RADIUS sunucusu, AD Sertifika Hizmetleri ile de tümleştirilebilir. Bu, Azure sertifika kimlik doğrulamasına alternatif olarak, RADIUS sunucusunu ve P2S sertifika kimlik doğrulaması için kuruluş sertifika dağıtımınızı kullanmanıza olanak sağlar. Bunun avantajı, kök sertifikaları ve iptal edilen sertifikaları Azure 'a yüklemeniz gerekmez.
 
 Bir RADIUS sunucusu diğer dış kimlik sistemleriyle de tümleştirilebilir. Bu, Multi-Factor seçenekleri de dahil olmak üzere P2S VPN için birçok kimlik doğrulama seçeneği açar.
@@ -102,41 +102,41 @@ ZIP dosyası Ayrıca, Azure tarafında bu cihazların kendi profilinizi oluştur
 
 **Ike**
 
-|**Şifre** | **Bütünlük** | **PRF** | **DH Grubu** |
-|---        | ---           | ---       | ---   |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA384    | GROUP_ECP256 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_24 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_14 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP384 |
-|GCM_AES256 |   GCM_AES256  | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA384      | SHA384    | GROUP_24 |
-|AES256     |   SHA384      | SHA384    | GROUP_14 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP384 |
-|AES256     |   SHA384      | SHA384    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_24 |
-|AES256     |   SHA256      | SHA256    | GROUP_14 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP384 |
-|AES256     |   SHA256      | SHA256    | GROUP_ECP256 |
-|AES256     |   SHA256      | SHA256    | GROUP_2 |
+| **Şifre** | **Bütünlük** | **PRF** | **DH Grubu** |
+|--|--|--|--|
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA384 | GROUP_ECP256 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA384 | SHA384 | GROUP_24 |
+| AES256 | SHA384 | SHA384 | GROUP_14 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP384 |
+| AES256 | SHA384 | SHA384 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA256 | SHA256 | GROUP_2 |
 
 **IPsec**
 
-|**Şifre** | **Bütünlük** | **PFS Grubu** |
-|---        | ---           | ---       |
-|GCM_AES256 | GCM_AES256 | GROUP_NONE |
-|GCM_AES256 | GCM_AES256 | GROUP_24 |
-|GCM_AES256 | GCM_AES256 | GROUP_14 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
-|GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
-| AES256    | SHA256 | GROUP_NONE |
-| AES256    | SHA256 | GROUP_24 |
-| AES256    | SHA256 | GROUP_14 |
-| AES256    | SHA256 | GROUP_ECP384 |
-| AES256    | SHA256 | GROUP_ECP256 |
-| AES256    | SHA1 | GROUP_NONE |
+| **Şifre** | **Bütünlük** | **PFS Grubu** |
+|--|--|--|
+| GCM_AES256 | GCM_AES256 | GROUP_NONE |
+| GCM_AES256 | GCM_AES256 | GROUP_24 |
+| GCM_AES256 | GCM_AES256 | GROUP_14 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP384 |
+| GCM_AES256 | GCM_AES256 | GROUP_ECP256 |
+| AES256 | SHA256 | GROUP_NONE |
+| AES256 | SHA256 | GROUP_24 |
+| AES256 | SHA256 | GROUP_14 |
+| AES256 | SHA256 | GROUP_ECP384 |
+| AES256 | SHA256 | GROUP_ECP256 |
+| AES256 | SHA1 | GROUP_NONE |
 
 ## <a name="what-tls-policies-are-configured-on-vpn-gateways-for-p2s"></a><a name="TLS policies"></a>P2S için VPN ağ geçitlerinde hangi TLS ilkeleri yapılandırıldı?
 **IOCTL**

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509997"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653733"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -117,7 +117,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
    ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
 
-   | Şablon | Açıklama |
+   | Şablon | Description |
    | --- | --- |
    | **Tüm konuklar için bulut uygulamalarına erişim** | Tüm konuklar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekebilir. |
    | **Tüm kullanıcılar için bulut uygulamalarına erişim** | Tüm kullanıcılar ve tüm bulut uygulamaları için bir koşullu erişim ilkesi oluşturulacaktır. Bu ilke Azure portal etkiler. Bu oluşturulduktan sonra oturumunuzu kapatıp açmanız gerekecektir. |
@@ -238,8 +238,8 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 2.  Düzenlemek istediğiniz kullanım koşullarını seçin.
 3.  **Terimleri Düzenle**' ye tıklayın.
 4.  Yeni bir sürümü güncelleştirmek istediğiniz dil için eylem sütununun altındaki **Güncelleştir** ' e tıklayın.
- 
-     ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-terms-use.png)
+
+    ![Ad ve genişletme seçeneklerini gösteren kullanım koşulları bölmesini Düzenle](./media/terms-of-use/edit-terms-use.png)
 
 5.  Sağ taraftaki bölmede, yeni sürüm için PDF 'yi karşıya yükleyin
 6.  Burada, kullanıcılarınızın bir sonraki oturum açışlarında bu yeni sürümü kabul etmelerini gerektirmek istiyorsanız **yeniden kabul iste** ' de bir değiştirme seçeneği gerekir. Kullanıcılarınızın yeniden kabul etmesini istiyorsanız, koşullu erişim ilkenizde tanımlanan kaynağa bir dahaki sefer erişmeye çalıştıklarında, bu yeni sürümü kabul etmeleri istenir. Kullanıcılarınızın yeniden kabul etmesini gerekmiyorsa, önceki onay bilgileri güncel kalır ve yalnızca izin süresinin dolması veya süresi dolan yeni kullanıcılar yeni sürümü görür.

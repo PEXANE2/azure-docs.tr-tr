@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 909c8910a86734b0a34787f75c233975cd3503c3
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518252"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653291"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform erişim belirteçleri
 
@@ -110,7 +110,7 @@ Bazı talepler, Azure AD güvenli belirteçlerinin yeniden kullanım durumunda k
 | `name` | Dize | Belirtecin konusunu tanımlayan, okunabilir bir değer sağlar. Değerin benzersiz olması garanti edilmez, değişebilir ve yalnızca görüntüleme amacıyla kullanılmak üzere tasarlanmıştır. `profile`Bu talebi alabilmesi için kapsam gereklidir. |
 | `scp` | Dize, virgülle ayrılmış bir kapsam listesi | Uygulamanız tarafından sunulan, istemci uygulamasının istediği (ve aldığı) izin veren kapsamlar kümesi. Uygulamanız, bu kapsamların uygulamanız tarafından açığa çıkarılan geçerli olduğunu doğrulamalıdır ve bu kapsamların değerine göre yetkilendirme kararları verir. Yalnızca [Kullanıcı belirteçleri](#user-and-application-tokens)için dahil edilmiştir. |
 | `roles` | Dizelerin dizisi, bir izin listesi | Uygulamanız tarafından kullanıma sunulan uygulamanın veya kullanıcının çağrı için izin verilen izinler kümesi. [Uygulama belirteçleri](#user-and-application-tokens)için, bu, Kullanıcı kapsamları yerine istemci kimlik bilgisi akışı ([v 1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) sırasında kullanılır.  [Kullanıcı belirteçleri](#user-and-application-tokens) için bu, kullanıcının hedef uygulamada atandığı rollerle doldurulur. |
-| `wids` | [Roletemplateıd](../roles/permissions-reference.md#role-template-ids) GUID dizisi | Bu kullanıcıya atanan kiracı genelindeki rolleri, [yönetici rolleri sayfasında](../roles/permissions-reference.md#role-template-ids)bulunan roller bölümünden gösterir.  Bu talep uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde yapılandırılır `groupMembershipClaims` . [application manifest](reference-app-manifest.md)  "All" veya "DirectoryRole" olarak ayarlanması gerekir.  Belirteç uzunluğu sorunları nedeniyle örtük akış aracılığıyla alınan belirteçlerde bulunmayabilir. |
+| `wids` | [Roletemplateıd](../roles/permissions-reference.md#role-template-ids) GUID dizisi | Bu kullanıcıya atanan kiracı genelindeki rolleri, [yönetici rolleri sayfasında](../roles/permissions-reference.md#role-template-ids)bulunan roller bölümünden gösterir.  Bu talep uygulama bildiriminin özelliği aracılığıyla uygulama başına temelinde yapılandırılır `groupMembershipClaims` . [](reference-app-manifest.md)  "All" veya "DirectoryRole" olarak ayarlanması gerekir.  Belirteç uzunluğu sorunları nedeniyle örtük akış aracılığıyla alınan belirteçlerde bulunmayabilir. |
 | `groups` | GUID 'lerin JSON dizisi | Konunun grup üyeliklerini temsil eden nesne kimliklerini sağlar. Bu değerler benzersizdir (bkz. nesne KIMLIĞI) ve bir kaynağa erişmek için Yetkilendirmeyi zorlama gibi erişimi yönetmek için güvenli bir şekilde kullanılabilir. Gruplar talebine dahil olan gruplar, `groupMembershipClaims` [uygulama bildiriminin](reference-app-manifest.md)özelliği aracılığıyla uygulama başına temelinde yapılandırılır. Null değeri tüm grupları dışlayacak, "SecurityGroup" değeri yalnızca Active Directory güvenlik grubu üyeliklerini içerir ve "All" değeri hem güvenlik gruplarını hem de Microsoft 365 dağıtım listelerini içerir. <br><br>`hasgroups`Dolaylı izin ile talebi kullanma hakkında ayrıntılı bilgi için aşağıdaki talebe bakın `groups` . <br>Diğer akışlar için, kullanıcının sayısı bir sınırı (SAML için 150 200, JWT için) alıyorsa, bir fazla kullanım talebi, Kullanıcı için grupların listesini içeren Microsoft Graph uç noktasını gösteren talep kaynaklarına eklenir. |
 | `hasgroups` | Boole | Varsa, her zaman `true` kullanıcının en az bir grupta olduğunu belirten. `groups`Tam gruplar TALEBI URI PARÇASıNı URL uzunluğu sınırlarının ötesinde (Şu anda 6 veya daha fazla grup) genişletecek, örtük verme akışlarında JWTs talebi yerine kullanılır. İstemcinin, kullanıcının gruplarını () belirleyebilmek için Microsoft Graph API 'sini kullanması gerektiğini belirtir `https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects` . |
 | `groups:src1` | JSON nesnesi | Sınırlı olmayan Belirteç istekleri ( `hasgroups` yukarıya bakın), ancak belirteç için hala çok büyük olması için, kullanıcının tam gruplar listesine bir bağlantı dahil edilir. Cwts için, talep yerine yeni bir talep olarak SAML için dağıtılmış bir talep olarak `groups` . <br><br>**Örnek JWT değeri**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }` |
@@ -140,8 +140,8 @@ Belirteç boyutunun HTTP üst bilgi boyutu sınırlarını aşmadığından emin
        }
      }
   ...
- }
- ```
+}
+```
 
 `BulkCreateGroups.ps1`Fazla kullanım senaryolarını test etmenize yardımcı olması Için [uygulama oluşturma betikleri](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-2-Groups/AppCreationScripts) klasöründe sağlanan ' i kullanabilirsiniz.
 
@@ -186,7 +186,7 @@ Tüm uygulamaların belirteçleri doğrulaması gerekir. Yalnızca belirli senar
 
 Yukarıdaki senaryolardan hiçbiri uygulanmıyorsa, uygulamanız belirteci doğrulamaya yarar olmaz ve belirtecin geçerliliği temel alınarak kararlar yapılırsa bir güvenlik ve güvenilirlik riski sunabilir.  Yerel uygulamalar veya maça 'Lar gibi genel istemciler, belirteçlerin doğrulanması avantajına sahip değildir; bu nedenle SSL koruması, belirteçlerin geçerli olmasını sağlar.
 
- API 'Ler ve Web Apps yalnızca uygulamalarıyla eşleşen bir talebi olan belirteçleri doğrulamalıdır `aud` ; diğer kaynaklar özel belirteç doğrulama kurallarına sahip olabilir. Örneğin, Microsoft Graph belirteçleri, kendi özel biçimleri nedeniyle bu kurallara göre doğrulanmaz. Başka bir kaynak için anlamı olan belirteçleri doğrulamak ve kabul etmek, [karıştırılan](https://cwe.mitre.org/data/definitions/441.html) bir sorun örneğidir.
+API 'Ler ve Web Apps yalnızca uygulamalarıyla eşleşen bir talebi olan belirteçleri doğrulamalıdır `aud` ; diğer kaynaklar özel belirteç doğrulama kurallarına sahip olabilir. Örneğin, Microsoft Graph belirteçleri, kendi özel biçimleri nedeniyle bu kurallara göre doğrulanmaz. Başka bir kaynak için anlamı olan belirteçleri doğrulamak ve kabul etmek, [karıştırılan](https://cwe.mitre.org/data/definitions/441.html) bir sorun örneğidir.
 
 Uygulamanızın yukarıya göre bir id_token veya access_token doğrulaması gerekiyorsa, uygulamanız öncelikle belirtecin imzasını ve veren öğesini OpenID keşif belgesindeki değerlere göre doğrulamalıdır. Örneğin, belgenin kiracı bağımsız sürümü konumunda bulunur [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration) .
 

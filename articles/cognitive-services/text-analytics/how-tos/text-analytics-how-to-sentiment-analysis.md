@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505231"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656283"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
@@ -24,8 +24,6 @@ Metin Analizi API'si Yaklaşım Analizi özelliği pozitif ve olumsuz yaklaşım
 API tarafından kullanılan AI modelleri hizmet tarafından sağlanır, yalnızca analiz için içerik göndermeniz gerekir.
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Sürümler ve Özellikler Yaklaşım Analizi
-
-[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
 | Özellik                                   | Yaklaşım Analizi v3 | Yaklaşım Analizi v 3.1 (Önizleme) |
 |-------------------------------------------|-----------------------|-----------------------------------|
@@ -86,7 +84,7 @@ Bir POST isteği oluşturun. Hızlı bir şekilde yapısına ve gönderebilmeniz
 
 ### <a name="request-endpoints"></a>İstek uç noktaları
 
-Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örneğin:
+Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kapsayıcısı](text-analytics-how-to-install-containers.md)kullanarak yaklaşım ANALIZI için HTTPS uç noktasını ayarlayın. Kullanmak istediğiniz sürüm için doğru URL 'YI dahil etmeniz gerekir. Örnek:
 
 > [!NOTE]
 > Metin Analizi kaynağınız için anahtarınızı ve uç noktanızı Azure portal bulabilirsiniz. Kaynak **yönetimi** altında kaynağın **hızlı başlangıç** sayfasında yer alır. 
@@ -99,7 +97,7 @@ Azure 'da bir Metin Analizi kaynağı veya bir örneklenmiş [metin analizi kaps
 
 **Görüşün madenciliği**
 
-Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örneğin:
+Fikrinizi araştırma sonuçları almak için parametresini eklemeniz gerekir `opinionMining=true` . Örnek:
 
 `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
-ms.openlocfilehash: e034149372ba061ec958e0c1e22187d33009080c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 096b8ed60bf9880b6904ab952d4558939ca13574
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265842"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652084"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Nasıl yapılır: sertifika ile hizmet sorumlusu oluşturmak için Azure PowerShell kullanma
 
@@ -97,8 +97,8 @@ Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizin
 $TenantId = (Get-AzSubscription -SubscriptionName "Contoso Default").TenantId
 $ApplicationId = (Get-AzADApplication -DisplayNameStartWith exampleapp).ApplicationId
 
- $Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
- Connect-AzAccount -ServicePrincipal `
+$Thumbprint = (Get-ChildItem cert:\CurrentUser\My\ | Where-Object {$_.Subject -eq "CN=exampleappScriptCert" }).Thumbprint
+Connect-AzAccount -ServicePrincipal `
   -CertificateThumbprint $Thumbprint `
   -ApplicationId $ApplicationId `
   -TenantId $TenantId
@@ -126,7 +126,7 @@ Param (
  Connect-AzAccount
  Import-Module Az.Resources
  Set-AzContext -Subscription $SubscriptionId
- 
+
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
@@ -146,7 +146,7 @@ Param (
     $NewRole = Get-AzRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
- 
+
  $NewRole
 ```
 
@@ -155,13 +155,13 @@ Hizmet sorumlusu olarak her oturum açtığınızda, AD uygulamanız için dizin
 
 ```powershell
 Param (
- 
+
  [Parameter(Mandatory=$true)]
  [String] $CertPath,
 
  [Parameter(Mandatory=$true)]
  [String] $CertPlainPassword,
- 
+
  [Parameter(Mandatory=$true)]
  [String] $ApplicationId,
 
@@ -225,4 +225,4 @@ Hizmet sorumlusu oluştururken şu hataları alabilirsiniz:
 * Parolası olan bir hizmet sorumlusu ayarlamak için bkz. [Azure PowerShell ile Azure hizmet sorumlusu oluşturma](/powershell/azure/create-azure-service-principal-azureps).
 * Uygulamaların ve hizmet sorumlularının daha ayrıntılı açıklaması için bkz. [Uygulama Nesneleri ve Hizmet Sorumlusu Nesneleri](app-objects-and-service-principals.md).
 * Azure AD kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure AD Için kimlik doğrulama senaryoları](./authentication-vs-authorization.md).
-* **Microsoft Graph**kullanarak uygulama kayıtlarıyla çalışma hakkında daha fazla bilgi için bkz. [uygulamalar](/graph/api/resources/application) API başvurusu.
+* **Microsoft Graph** kullanarak uygulama kayıtlarıyla çalışma hakkında daha fazla bilgi için bkz. [uygulamalar](/graph/api/resources/application) API başvurusu.

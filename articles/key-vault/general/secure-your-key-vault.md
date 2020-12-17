@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3f28c50be73b2b87ed8b25429cfa2dee9a663f1b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5e1f8a099256040e14db1cdab288551a228512cd
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452179"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655382"
 ---
 # <a name="secure-access-to-a-key-vault"></a>Anahtar kasasına güvenli erişim
 
@@ -44,7 +44,7 @@ Key Vault kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure Key 
 
 Bir Azure aboneliğinde bir Anahtar Kasası oluşturduğunuzda, bu, aboneliğin Azure AD kiracısı ile otomatik olarak ilişkilendirilir. Her iki düzlemdeki tüm çağıranlar bu kiracıya kaydolmalıdır ve anahtar kasasına erişmek için kimliğini doğrular. Her iki durumda da, uygulamalar üç şekilde Key Vault erişebilir:
 
-- **Yalnızca uygulama**: uygulama bir hizmet sorumlusunu veya yönetilen kimliği temsil eder. Bu kimlik, anahtar kasasından düzenli olarak sertifikalara, anahtarlara veya gizli uygulamalara erişmesi gereken uygulamalar için en yaygın senaryolardır. Bu senaryonun çalışması için, `objectId` uygulamanın erişim ilkesinde belirtilmesi gerekir ve `applicationId` belirtilmemelidir veya olması gerekir _not_ `null` .
+- **Yalnızca uygulama**: uygulama bir hizmet sorumlusunu veya yönetilen kimliği temsil eder. Bu kimlik, anahtar kasasından düzenli olarak sertifikalara, anahtarlara veya gizli uygulamalara erişmesi gereken uygulamalar için en yaygın senaryolardır. Bu senaryonun çalışması için, `objectId` uygulamanın erişim ilkesinde belirtilmesi gerekir ve `applicationId` belirtilmemelidir veya olması gerekir  `null` .
 - **Yalnızca Kullanıcı**: Kullanıcı, kiracıda kayıtlı herhangi bir uygulamadan anahtar kasasına erişir. Bu tür erişimin örnekleri Azure PowerShell ve Azure portal içerir. Bu senaryonun çalışması için, `objectId` kullanıcının erişim ilkesinde belirtilmesi ve `applicationId` belirtilmemelidir veya olması _gerekir_ `null` .
 - **Uygulama-Plus-Kullanıcı** (bazen _bileşik kimlik_ olarak adlandırılır): kullanıcının belirli bir uygulamadan anahtar kasasına erişmesi _ve_ uygulamanın, kullanıcının kimliğine bürünmek için, Kullanıcı adına kimlik doğrulaması (OBO) akışı kullanması gerekir. Bu senaryonun çalışması için, her ikisi `applicationId` de `objectId` erişim ilkesinde belirtilmelidir. , `applicationId` Gerekli uygulamayı tanımlar ve `objectId` kullanıcıyı tanımlar. Şu anda bu seçenek, Azure RBAC (Önizleme) veri düzlemi için kullanılamaz.
 
@@ -62,7 +62,7 @@ Uygulamalar, uç noktalar aracılığıyla düzlemleri erişir. İki düzlemi i�
 
 Aşağıdaki tabloda yönetim ve veri düzlemleri için uç noktalar gösterilmektedir.
 
-| Erişim &nbsp; düzlemi | Erişim uç noktaları | İşlemler | Erişim &nbsp; denetimi mekanizması |
+| Erişim &nbsp; düzlemi | Erişim uç noktaları | Operations | Erişim &nbsp; denetimi mekanizması |
 | --- | --- | --- | --- |
 | Yönetim düzlemi | **Genel**<br> management.azure.com:443<br><br> **Azure Çin 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure ABD kamu:**<br> management.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> management.microsoftazure.de:443 | Anahtar kasaları oluşturun, okuyun, güncelleştirin ve silin<br><br>Key Vault erişim ilkelerini ayarlama<br><br>Key Vault etiketlerini ayarla | Azure RBAC |
 | Veri düzlemi | **Genel**<br> &lt;vault-name&gt;.vault.azure.net:443<br><br> **Azure Çin 21Vianet:**<br> &lt;vault-name&gt;.vault.azure.cn:443<br><br> **Azure ABD kamu:**<br> &lt;vault-name&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Almanya:**<br> &lt;vault-name&gt;.vault.microsoftazure.de:443 | Anahtarlar: şifreleme, şifre çözme, wrapKey, unwrapKey, imzala, doğrula, alma, listeleme, oluşturma, güncelleştirme, içeri aktarma, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br> Sertifikalar: managecontacts, getısers, listissuers, setısers, silme, yönetim verenler, alma, listeleme, oluşturma, içeri aktarma, güncelleştirme, silme, kurtarma, yedekleme, geri yükleme, Temizleme<br><br>  Gizlilikler: Al, Listele, ayarla, Sil, kurtar, Yedekle, geri yükle, temizle | Key Vault erişim ilkesi veya Azure RBAC (Önizleme)|
@@ -182,12 +182,12 @@ Rollerimiz için aşağıdaki işlemleri yetkilendirmemiz gerekir:
 
 Aşağıdaki tabloda rollerimiz ve uygulamamız için erişim izinleri özetlenmektedir.
 
-| Role | Yönetim düzlemi izinleri | Veri düzlemi izinleri-kasa erişim ilkeleri | Veri düzlemi izinleri-Azure RBAC (Önizleme)  |
+| Rol | Yönetim düzlemi izinleri | Veri düzlemi izinleri-kasa erişim ilkeleri | Veri düzlemi izinleri-Azure RBAC (Önizleme)  |
 | --- | --- | --- | --- |
 | Güvenlik ekibi | [Katkıda bulunan Key Vault](../../role-based-access-control/built-in-roles.md#key-vault-contributor) | Sertifikalar: tüm işlemler <br> Anahtarlar: tüm işlemler <br> Gizlilikler: tüm işlemler | [Key Vault Yöneticisi (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview) |
 | Geliştiriciler ve &nbsp; işleçler | Key Vault dağıtma izni<br><br> **Note**: Bu izin, dağıtılan VM 'lerin bir anahtar kasasından gizli dizileri almasına izin verir. | Yok | Yok |
-| Denetçiler | Yok | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)]https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#key-vault-reader-preview |
-| Azure Depolama Hesabı | Yok | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifrelemesi](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-preview) |
+| Denetçiler | Yok | Sertifikalar: liste <br> Anahtarlar: listeleme<br>Parolalar: listeleme<br><br> **Not**: Bu izin, denetçilerin, günlüklere yayılmayan anahtarlar ve gizli diziler için öznitelikleri (Etiketler, etkinleştirme tarihleri, sona erme tarihleri) incelemeye olanak sağlar. | [Key Vault okuyucu (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview) |
+| Azure Depolama Hesabı | Yok | Anahtarlar: get, List, wrapKey, unwrapKey <br> | [Key Vault şifreleme hizmeti şifreleme kullanıcısı](../../role-based-access-control/built-in-roles.md#key-vault-crypto-service-encryption-user-preview) |
 | Uygulama | Yok | Gizlilikler: get, List <br> Sertifikalar: get, List | [Key Vault okuyucu (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-reader-preview), [Key Vault gizli Kullanıcı (Önizleme)](../../role-based-access-control/built-in-roles.md#key-vault-secrets-user-preview) |
 
 Üç takım rolünün, Key Vault izinlerle birlikte diğer kaynaklara erişmesi gerekir. VM 'Leri (veya Azure App Service Web Apps özelliğini) dağıtmak için, geliştiricilere ve operatörlere erişim dağıtımı gerekir. Denetçilerin Key Vault günlüklerinin depolandığı depolama hesabına okuma erişimi olması gerekir.

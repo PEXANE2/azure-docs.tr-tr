@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi 'nde sunulan desteklenen özellikler | Microsoft Docs
-description: Bu belge, Azure Güvenlik Merkezi tarafından desteklenen hizmetlerin bir listesini sağlar.
+title: Azure Güvenlik Merkezi 'nin işletim sistemi, makine türü ve buluta göre özellikleri
+description: Hangi Azure Güvenlik Merkezi özelliklerinin işletim sistemine, türüne ve bulut dağıtımına göre kullanılabilir olduğunu öğrenin.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2020
+ms.date: 12/17/2020
 ms.author: memildin
-ms.openlocfilehash: 40d70c7bd740d8c72ddb72047a3bae3586e1aa1f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445260"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654753"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -99,10 +99,45 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | McAfee v10+ | Linux sunucu ailesi  | No | Evet * *\** _ |
 | Sophos v9 +| Linux sunucu ailesi  | No | Yes  _*\**_  |
 
- _ *\** * Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
+ _*\**_ Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
 > [!NOTE]
 > Windows Server 2008 R2 sanal makinesi üzerinde System Center Endpoint Protection (SCEP) algılama, PowerShell (v 3.0 veya üzeri) sonrasında SCEP yüklenmesini gerektirir.
+
+
+
+## <a name="feature-support-in-government-clouds"></a>Kamu bulutlarında özellik desteği
+
+| Hizmet/Özellik | US Gov | Çin gov |
+|------|:----:|:----:|
+|[Tam ZAMANıNDA VM erişimi](security-center-just-in-time.md) (1)|✔|✔|
+|[Dosya bütünlüğü izleme](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md) (1)|✔|✔|
+|[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md) (1)|-|-|
+|[Docker ana bilgisayar sağlamlaştırma](harden-docker-hosts.md) (1)|✔|✔|
+|[Makineler Için tümleşik güvenlik açığı değerlendirmesi](deploy-vulnerability-assessment-vm.md) (1)|-|-|
+|[Uç nokta Için Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
+|[AWS hesabına Bağlan](quickstart-onboard-aws.md) (1)|-|-|
+|[GCP hesabını bağlama](quickstart-onboard-gcp.md) (1)|-|-|
+|[Sürekli dışarı aktarma](continuous-export.md)|✔|✔|
+|[İş akışı Otomasyonu](workflow-automation.md)|✔|✔|
+|[Öneri muafiyet kuralları](exempt-resource.md)|-|-|
+|[Uyarı engelleme kuralları](alerts-suppression-rules.md)|✔|✔|
+|[Güvenlik uyarıları için e-posta bildirimleri](security-center-provide-security-contact-details.md)|✔|✔|
+|[Varlık envanteri](asset-inventory.md)|-|-|
+|[App Service için Azure Defender](defender-for-app-service-introduction.md)|-|-|
+|[Depolama için Azure Defender](defender-for-storage-introduction.md)|✔|-|
+|[SQL için Azure Defender](defender-for-sql-introduction.md)|✔|✔ (2)|
+|[Key Vault için Azure Defender](defender-for-key-vault-introduction.md)|-|-|
+|[Resource Manager için Azure Defender](defender-for-resource-manager-introduction.md)|-|-|
+|[DNS için Azure Defender](defender-for-dns-introduction.md)|-|-|
+|[Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)|✔|✔|
+|[Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)|✔ (2)|-|
+|||
+
+(1)*sunucular için _ Azure Defender* gerektirir*
+
+(2) kısmi
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
