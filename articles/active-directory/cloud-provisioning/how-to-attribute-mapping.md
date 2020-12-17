@@ -11,12 +11,12 @@ ms.date: 09/22/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e272c402cac803d10d9998298ce6d3370d0e000
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7fabad618233e8866c545e1c5ccbcc8cb7508ebf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348812"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652106"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-attribute-mapping"></a>Azure AD Connect bulut sağlama özniteliği eşleme
 
@@ -52,45 +52,51 @@ Bu özellik ile birlikte, öznitelik eşlemeleri de aşağıdaki öznitelikleri 
 > Bu belgede, Azure portal öznitelikleri eşlemek için nasıl kullanılacağı açıklanmaktadır.  Graph kullanma hakkında daha fazla bilgi için bkz. [dönüşümler](how-to-transformation.md)
 
 ## <a name="using-attribute-mapping"></a>Öznitelik eşlemesini kullanma
+
 Yeni özelliği kullanmak için aşağıdaki adımları izleyin.
-
- 1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
- 2.  **Azure AD Connect** seçin.
- 3.  **Sağlamayı Yönet**' i seçin.
-
-   ![Sağlamayı Yönet](media/how-to-configure/manage1.png)
- 
- 4. **Yapılandırma** altında yapılandırmanızı seçin.
- 5. **Eşlemeleri düzenlemek Için tıklayın ' ı** seçin.  Bu işlem öznitelik eşleme ekranını açar.
-
- ![Öznitelik ekleme](media/how-to-attribute-mapping/mapping6.png)
- 6.  **Öznitelik Ekle**' ye tıklayın.
-
- ![Eşleme türü](media/how-to-attribute-mapping/mapping1.png)
- 
- 7. **Eşleme türünü** seçin.  Bu örnekte Ifadesi kullanıyoruz.
- 8.  Kutuya ifadeyi girin.  Bu örnekte şunu kullanıyoruz: `Replace([mail], "@contoso.com", , ,"", ,).`
- 9.  Target özniteliğini girin.  Bu örnekte ExtensionAttribute15 kullanacağız.
- 10. Bunun ne zaman uygulanacağını seçin ve ardından **Uygula** ' ya tıklayın.
-   
-   ![Eşlemeleri Düzenle](media/how-to-attribute-mapping/mapping2a.png)
- 11. Öznitelik eşleme ekranına geri döndüğünüzde yeni öznitelik eşlemenizi görmeniz gerekir.  
- 12. **Şemayı kaydet**' e tıklayın.
-
- ![Şemayı Kaydet](media/how-to-attribute-mapping/mapping3.png)
-
-## <a name="test-your-attribute-mapping"></a>Öznitelik eşlemenizi test etme
-Öznitelik eşlemenizi test etmek için [isteğe bağlı sağlama](how-to-on-demand-provision.md)seçeneğini kullanabilirsiniz.  Öğesinden 
 
 1.  Azure portalında **Azure Active Directory** seçeneğini belirleyin.
 2.  **Azure AD Connect** seçin.
 3.  **Sağlamayı Yönet**' i seçin.
+
+    ![Sağlamayı Yönet](media/how-to-configure/manage1.png)
+
+4. **Yapılandırma** altında yapılandırmanızı seçin.
+5. **Eşlemeleri düzenlemek Için tıklayın ' ı** seçin.  Bu işlem öznitelik eşleme ekranını açar.
+
+    ![Öznitelik ekleme](media/how-to-attribute-mapping/mapping6.png)
+
+6.  **Öznitelik Ekle**' ye tıklayın.
+
+    ![Eşleme türü](media/how-to-attribute-mapping/mapping1.png)
+
+7. **Eşleme türünü** seçin.  Bu örnekte Ifadesi kullanıyoruz.
+8.  Kutuya ifadeyi girin.  Bu örnekte şunu kullanıyoruz: `Replace([mail], "@contoso.com", , ,"", ,).`
+9.  Target özniteliğini girin.  Bu örnekte ExtensionAttribute15 kullanacağız.
+10. Bunun ne zaman uygulanacağını seçin ve ardından **Uygula** ' ya tıklayın.
+
+    ![Eşlemeleri Düzenle](media/how-to-attribute-mapping/mapping2a.png)
+
+11. Öznitelik eşleme ekranına geri döndüğünüzde yeni öznitelik eşlemenizi görmeniz gerekir.  
+12. **Şemayı kaydet**' e tıklayın.
+
+    ![Şemayı Kaydet](media/how-to-attribute-mapping/mapping3.png)
+
+## <a name="test-your-attribute-mapping"></a>Öznitelik eşlemenizi test etme
+
+Öznitelik eşlemenizi test etmek için [isteğe bağlı sağlama](how-to-on-demand-provision.md)seçeneğini kullanabilirsiniz.  Öğesinden 
+
+1. Azure portalında **Azure Active Directory** seçeneğini belirleyin.
+2. **Azure AD Connect** seçin.
+3. **Sağlamayı Yönet**' i seçin.
 4. **Yapılandırma** altında yapılandırmanızı seçin.
 5. **Doğrula** altında **Kullanıcı sağla** düğmesine tıklayın. 
 6. İsteğe bağlı sağlama ekranında.  Bir kullanıcının veya grubun **ayırt edici adını** girin ve **sağla** düğmesine tıklayın.  
 7. Tamamlandıktan sonra, başarılı bir ekran ve başarıyla sağlandığını belirten 4 yeşil onay kutusu görmeniz gerekir.  
-  ![Sağlama başarısı](media/how-to-attribute-mapping/mapping4.png)
-1. **Eylem gerçekleştir** altında **Ayrıntıları görüntüle**' ye tıklayın.  Sağ tarafta, syncrhon, ve Expression uygulanmış yeni özniteliğini görmeniz gerekir.
+
+    ![Sağlama başarısı](media/how-to-attribute-mapping/mapping4.png)
+
+8. **Eylem gerçekleştir** altında **Ayrıntıları görüntüle**' ye tıklayın.  Sağ tarafta, syncrhon, ve Expression uygulanmış yeni özniteliğini görmeniz gerekir.
 
   ![Eylem gerçekleştir](media/how-to-attribute-mapping/mapping5.png)
 

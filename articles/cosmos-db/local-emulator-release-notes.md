@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 5d105ad4c2aff03dae52b340037e4c193bf82ca1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 92fdef48556a3306ee5e3f10e07ff609a8fc4be4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608444"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656232"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB öykünücü-sürüm notları ve indirme bilgileri
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -23,7 +23,7 @@ Bu makalede, Azure Cosmos DB öykünücü sürüm notları her sürümde yapıla
 | | |
 |---------|---------|
 |**MSI indirme**|[Microsoft İndirme Merkezi](https://aka.ms/cosmosdb-emulator)|
-|**Kullanmaya başlama**|[Azure Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)|
+|**Kullanmaya başlama**|[Azure Cosmos DB öykünücü ile yerel olarak geliştirme](local-emulator.md)|
 
 ## <a name="release-notes"></a>Sürüm notları
 
@@ -83,7 +83,7 @@ Bu sürüm iki yeni Cosmos öykünücü başlatma seçeneği ekler:
 
 ### <a name="246"></a>2.4.6
 
-- Bu sürüm Azure Cosmos 2019 hizmetindeki özelliklerle birlikte Azure [Cosmos öykünücüsü ile yerel olarak geliştirme](local-emulator.md)bölümünde belirtilen özel durumlar ile eşlik sağlar. Ayrıca, komut satırı ve doğrudan mod bağlantısı kullanan SDK istemcileri için iç IP adresi geçersiz kılmaları aracılığıyla çağrıldığında öykünücü kapanıyla ilgili çeşitli hataları düzeltir.
+- Bu sürüm, [Azure Cosmos DB öykünücü ile yerel olarak geliştirme](local-emulator.md)bölümünde belirtilen özel durumlar Ile 2019 Temmuz Itibariyle Azure Cosmos hizmetindeki özelliklerle eşlik sağlar. Ayrıca, komut satırı ve doğrudan mod bağlantısı kullanan SDK istemcileri için iç IP adresi geçersiz kılmaları aracılığıyla çağrıldığında öykünücü kapanıyla ilgili çeşitli hataları düzeltir.
 
 ### <a name="243"></a>2.4.3
 

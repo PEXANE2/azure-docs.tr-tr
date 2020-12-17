@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 03b7f7cd0ebff61047175c8667130a31866b7cbe
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2a557bb436b3bc10cf83beb450761465b43f621f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586015"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655365"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>MySQL için Azure veritabanı 'nda bağlantı mimarisi
 Bu makalede, MySQL için Azure veritabanı bağlantı mimarisinin yanı sıra trafiğin Azure 'daki ve dışındaki istemcilerden gelen MySQL için Azure veritabanı örneğine nasıl yönlendirildiği açıklanmaktadır.
@@ -48,7 +48,7 @@ Aşağıdaki tabloda, tüm veri bölgeleri için MySQL için Azure veritabanı a
 | Brezilya Güney |191.233.201.8, 191.233.200.16    |  | 104.41.11.5|
 | Orta Kanada |40.85.224.249  | | |
 | Doğu Kanada | 40.86.226.166    | | |
-| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     | | |
+| Central US | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38 | | |
 | Doğu Çin | 139.219.130.35    | | |
 | Çin Doğu 2 | 40.73.82.1  | | |
 | Kuzey Çin | 139.219.15.17    | | |

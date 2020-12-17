@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: af1bee00261cd96f61a39389f31a52109f4e64b5
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 603f14d2076b5b74dde0b92a732f8fe816f6dd10
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675817"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656793"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -33,7 +33,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 - Gizli anahtar
 - EventHub bağlantı dizesi
 
-Şu adımları uygulayın:
+Şu adımları izleyin:
 
 > [!NOTE]
 > Aşağıdaki adımları uygulamak için yönetici olmanız gerekir.
@@ -84,7 +84,7 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
 
     ```
 
-9. **API uç noktası** , **kiracı KIMLIĞI** , **Istemci kimliği** , **istemci gizli anahtarı** ve **EventHub bağlantı dizesi** için değerleri yakalamak üzere ekran yönergelerini izleyin.
+9. **API uç noktası**, **kiracı KIMLIĞI**, **Istemci kimliği**, **istemci gizli anahtarı** ve **EventHub bağlantı dizesi** için değerleri yakalamak üzere ekran yönergelerini izleyin.
 
 
 ## <a name="create-device-or-sensor-metadata"></a>Cihaz veya algılayıcı meta verileri oluşturma
@@ -96,51 +96,50 @@ Azure Farmtts örneğiniz için iş ortağı tümleştirmesini etkinleştirmeniz
  > [!NOTE]
  > Bir iş ortağı olarak yalnızca okuma, meta verileri oluşturma ve güncelleştirme için erişim sahibi olursunuz; **Sil seçeneği iş ortağıyla kısıtlıdır.**
 
-- /**Devicemodel** : devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
-- /**Cihaz** : cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
-- /**Sensormodel** : sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçümü gibi algılayıcı meta verilerine karşılık gelir.
-- /**Algılayıcı** : algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
+- /**Devicemodel**: devicemodel, Cihazın üreticisi ve bir ağ geçidi ya da düğüm olan cihaz türü gibi cihazın meta verilerine karşılık gelir.
+- /**Cihaz**: cihaz, grupta bulunan bir fiziksel cihaza karşılık gelir.
+- /**Sensormodel**: sensormodel: üretici, analog veya dijital olan algılayıcı türü ve çevresel sıcaklık ve basınç gibi algılayıcı ölçümü gibi algılayıcı meta verilerine karşılık gelir.
+- /**Algılayıcı**: algılayıcı, değerleri kaydeden bir fiziksel sensöre karşılık gelir. Bir algılayıcı genellikle cihaz KIMLIĞI olan bir cihaza bağlanır.
 
-
-|        DeviceModel   |  Öneriler   |
-| ------- | -------             |
-|     Tür (düğüm, ağ geçidi)        |          Cihaz düğümü veya ağ geçidi türü      |
-|          Üretici            |         Üreticinin adı    |
-|  ProductCode                    |  Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800.  |
-|            Bağlantı noktaları          |     Bağlantı noktası adı ve türü, dijital veya analog.
-|     Ad                 |  Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.
-      Açıklama     | Modelin anlamlı bir açıklamasını sağlayın.
-|    Özellikler          |    Üreticiden ek özellikler.   |
-|    **Cihaz**             |                      |
-|   Devicemodelıd     |     İlişkili cihaz modelinin KIMLIĞI.  |
-|  Donanım kimliği          | Cihazın MAC adresi gibi benzersiz KIMLIĞI.
-|  Reportingınterval        |   Saniye cinsinden raporlama aralığı.
-|  Konum            |  Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).
-|Parentdeviceıd       |    Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır.  |
-|    Ad            | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır.|
-|     Açıklama       |      Anlamlı bir açıklama sağlayın. |
-|     Özellikler    |  Üreticiden ek özellikler.
-|     **SensorModel**        |          |
-|       Tür (analog, dijital)          |      Onun analog veya dijital olup olmadığı algılayıcı türü.       |
-|          Üretici            |       Algılayıcısı üreticisi.     |
-|     ProductCode| Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01. |
-|       Sensorölçüleri > adı       | Algılayıcı ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinlikleri olan ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır.  |
-|          Sensorölçüleri > veri türü       |Telemetri veri türü. Şu anda, Double destekleniyor.|
-|    Sensorölçüleri > türü    |Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetlik, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salinity, Soılmoisture, Soalıngıl, Soalınş Daha fazla eklemek için/ExtendedType API 'sine bakın.|
-|        Sensorölçüleri > birimi              | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIS, PSI, milimetre ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın.|
-|    Sensorölçüleri > AggregationType    |  Değerler None, Average, Maximum, minimum veya Standardsapması olabilir.  |
-|          Ad            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
-|    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.|
-|   Özellikler       |  Üreticiden ek özellikler.|
-|    **Algılayıcısı**      |          |
-| Donanım kimliği          |   Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK.|
-|  Sensormodelıd     |    İlişkili algılayıcı modelinin KIMLIĞI.|
-| Konum          |  Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden).|
-|   Bağlantı noktası > adı        |  Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir.|
-|    DeviceID  |    Algılayıcıın bağlı olduğu cihazın KIMLIĞI. |
-| Ad            |   Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu.|
-|    Açıklama      | Anlamlı bir açıklama sağlayın.|
-|    Özellikler        |Üreticiden ek özellikler.|
+| DeviceModel | Öneriler |
+|--|--|
+| Tür (düğüm, ağ geçidi) | Cihaz düğümü veya ağ geçidi türü |
+| Üretici | Üreticinin adı |
+| ProductCode | Cihaz ürün kodu veya model adı veya numarası. Örneğin, EnviroMonitor # 6800. |
+| Bağlantı noktaları | Bağlantı noktası adı ve türü, dijital veya analog. |
+| Name | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+| Description | Modelin anlamlı bir açıklamasını sağlayın. |
+| Özellikler | Üreticiden ek özellikler. |
+| **Cihaz** |  |
+| Devicemodelıd | İlişkili cihaz modelinin KIMLIĞI. |
+| Donanım kimliği | Cihazın MAC adresi gibi benzersiz KIMLIĞI. |
+| Reportingınterval | Saniye cinsinden raporlama aralığı. |
+| Konum | Cihaz Latitude (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
+| Parentdeviceıd | Bu cihazın bağlı olduğu üst cihazın KIMLIĞI. Örneğin, bir ağ geçidine bağlı bir düğüm. Bir düğümde ağ geçidi olarak Parentdeviceıd vardır. |
+| Name | Kaynağı tanımlamak için bir ad. Cihaz iş ortakları, iş ortağı tarafında cihaz adı ile tutarlı bir ad göndermelidir. İş ortağı cihaz adı Kullanıcı tanımlı ise, aynı kullanıcı tanımlı ad, Farmtts 'ye yayılmalıdır. |
+| Description | Anlamlı bir açıklama sağlayın. |
+| Özellikler | Üreticiden ek özellikler. |
+| **SensorModel** |  |
+| Tür (analog, dijital) | Onun analog veya dijital olup olmadığı algılayıcı türü. |
+| Üretici | Algılayıcısı üreticisi. |
+| ProductCode | Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01. |
+| Sensorölçüleri > adı | Algılayıcı ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinlikleri olan ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır. |
+| Sensorölçüleri > veri türü | Telemetri veri türü. Şu anda, Double destekleniyor. |
+| Sensorölçüleri > türü | Algılayıcı Telemetri verilerinin ölçüm türü. Sistem tanımlı türler AmbientTemperature, CO2, Depth, Elektriicalttivity, Leafwetlik, length, LiquidLevel, Nitrate, O2, PH, Fospnefret, PointInTime, Potassium, basınç, RainGauge, Relativenem, Salinity, Soılmoisture, Soalıngıl, Soalınş Daha fazla eklemek için/ExtendedType API 'sine bakın. |
+| Sensorölçüleri > birimi | Algılayıcı telemetri verileri birimi. Sistem tarafından tanımlanan birimler NoUnit, santigrat, Fahrenhayt, Kelvin, Rankine, Pascal, CIS, PSI, milimetre ölçüm, Santimeter, ölçüm, Inç, fit, mil, kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, Percentage, Partspermilyon, MicroMol, mikro Molesperlitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Santibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, litre, MilliLiter, saniyeler, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour daha fazla bilgi eklemek Için/ExtendedType API 'sine bakın. |
+| Sensorölçüleri > AggregationType | Değerler None, Average, Maximum, minimum veya Standardsapması olabilir. |
+| Name | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı. |
+| Description | Modelin anlamlı bir açıklamasını sağlayın. |
+| Özellikler | Üreticiden ek özellikler. |
+| **Algılayıcısı** |  |
+| Donanım kimliği | Üretici tarafından ayarlanan algılayıcı için benzersiz KIMLIK. |
+| Sensormodelıd | İlişkili algılayıcı modelinin KIMLIĞI. |
+| Konum | Enlem (-90 ile + 90), Boylam (-180-180) ve yükseltme (ölçü cinsinden). |
+| Bağlantı noktası > adı | Algılayıcıdan cihazda bağlı olduğu bağlantı noktasının adı ve türü. Bunun, cihaz modelinde tanımlananla aynı ada sahip olması gerekir. |
+| DeviceID | Algılayıcıın bağlı olduğu cihazın KIMLIĞI. |
+| Name | Kaynağı tanımlamak için ad. Örneğin, algılayıcı adı veya ürün adı ve model numarası ya da ürün kodu. |
+| Description | Anlamlı bir açıklama sağlayın. |
+| Özellikler | Üreticiden ek özellikler. |
 
 Nesneler hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
 
@@ -192,9 +191,9 @@ access_token = token_response.get('access_token')
 
 Aşağıda, Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri verilmiştir:
 
-- **Content-Type** : Application/JSON
-- **Yetkilendirme** : taşıyıcı <Access-Token>
-- **Kabul et** : uygulama/JSON
+- **Content-Type**: Application/JSON
+- **Yetkilendirme**: taşıyıcı <Access-Token>
+- **Kabul et**: uygulama/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>Meta veri oluşturmak için giriş yükü
 
@@ -431,9 +430,9 @@ Telemetri iletisine bir örnek aşağıda verilmiştir:
 
 ### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Sensörlerden geçmiş/akış verileri alındıktan sonra telemetri verileri görüntülenemiyor
 
-**Belirti** : cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
+**Belirti**: cihazlar veya algılayıcılar dağıtılır ve bu cihaz/sensörler ve EventHub üzerinde telemetri/algılayıcılar oluşturdunuz, ancak bu verileri, farmınts üzerinde telemetri verilerini alamıyor veya görüntüleyemezsiniz.
 
-**Düzeltici eylem** :
+**Düzeltici eylem**:
 
 1. Uygun iş ortağı kaydını bitirdiğinizden emin olun. bunu, veri hub 'ının Swagger 'ınızla gidip/partner API 'sine giderek bir get yapın ve iş ortağının kayıtlı olup olmadığını kontrol edebilirsiniz. Aksi takdirde, iş ortağı eklemek için [buradaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
 

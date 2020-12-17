@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 10976c91e781763264d73adcc54ba88ec8d07f54
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68cd107b2606643d712c4de94b6d1a82e8ee614a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256540"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657269"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services V2 ile yük devretme akışını uygulama
 
@@ -53,7 +53,7 @@ Aşağıdaki noktalara dikkat edilmelidir:
 * Depolama şifreli varlıkları (AssetCreationOptions. Storageşifrelendi) çoğaltma için desteklenmez (şifreleme anahtarı her iki Media Services hesabında farklı olduğundan). 
 * Dinamik paketlemeden yararlanmak istiyorsanız, içeriğinizi akışa almak istediğiniz akış uç noktasının **çalışır** durumda olduğundan emin olun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Yeni veya mevcut bir Azure aboneliğindeki iki Media Services hesabı. Bkz. [Media Services hesabı oluşturma](media-services-portal-create-account.md).
 * İşletim sistemi: Windows 7, Windows 2008 R2 veya Windows 8.
@@ -66,7 +66,7 @@ Bu bölümde, bir C# konsol uygulaması projesi oluşturup ayarlarsınız.
 
 1. C# konsol uygulaması projesini içeren yeni bir çözüm oluşturmak için Visual Studio 'Yu kullanın. Ad için **HandleRedundancyForOnDemandStreaming** girin ve ardından **Tamam**' a tıklayın.
 2. **HandleRedundancyForOnDemandStreaming. csproj** proje dosyasıyla aynı düzeyde **supportfiles** klasörünü oluşturun. **Supportfiles** klasörü altında, **OutputFiles** ve **MP4Files** klasörlerini oluşturun. Bir. mp4 dosyasını **MP4Files** klasörüne kopyalayın. (Bu örnekte, **ignite.mp4** dosyası kullanılır.) 
-3. Media Services ile ilgili DLL 'lere başvurular eklemek için **NuGet** kullanın. **Visual Studio ana menüsünde** **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Konsol penceresinde **Install-Package windowsazure. mediaservices**yazın ve ENTER tuşuna basın.
+3. Media Services ile ilgili DLL 'lere başvurular eklemek için **NuGet** kullanın. **Visual Studio ana menüsünde** **Araçlar**  >  **NuGet Paket Yöneticisi**  >  **Paket Yöneticisi konsolu**' nu seçin. Konsol penceresinde **Install-Package windowsazure. mediaservices** yazın ve ENTER tuşuna basın.
 4. Bu proje için gereken diğer başvuruları ekleyin: System. Runtime. Serialization ve System. Web.
 5. **Programs.cs** dosyasına **eklenen deyimleri,** varsayılan olarak aşağıdakiler ile değiştirin:
 

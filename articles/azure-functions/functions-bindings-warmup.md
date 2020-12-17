@@ -10,16 +10,19 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 6a909b246e7cb3695533a75294c523d7c9aeaeda
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7cefe75eefb746c150b051a7bd1f4513c103d205
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832951"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655867"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Işlevleri ısınma tetikleyicisi
 
-Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılacağı açıklanmaktadır. Isınma tetikleyicisi yalnızca [Premium planda](functions-premium-plan.md)çalışan işlev uygulamaları için desteklenir. Çalışan bir işlev uygulamasını ölçeklendirmek için bir örnek eklendiğinde, ısınma tetikleyicisi çağrılır. İşlevlerinizin istekleri anında işlemeye hazırlanabilmesi için, [önceden Isıtma sürecinde](./functions-premium-plan.md#pre-warmed-instances) özel bağımlılıkları önceden yüklemek üzere ısınma tetikleyicisi kullanabilirsiniz. 
+Bu makalede, Azure işlevlerinde ısınma tetikleyicisiyle nasıl çalışılacağı açıklanmaktadır. Çalışan bir işlev uygulamasını ölçeklendirmek için bir örnek eklendiğinde, ısınma tetikleyicisi çağrılır. İşlevlerinizin istekleri anında işlemeye hazırlanabilmesi için, [önceden Isıtma sürecinde](./functions-premium-plan.md#pre-warmed-instances) özel bağımlılıkları önceden yüklemek üzere ısınma tetikleyicisi kullanabilirsiniz. 
+
+> [!NOTE]
+> Bir tüketim planında çalışan işlev uygulamaları için ısınma tetikleyicisi desteklenmez.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -225,7 +228,7 @@ Isınma tetikleyicisi, Java 'da bir öznitelik olarak desteklenmez.
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `WarmupTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 | **türüyle** | yok| Gerekli-olarak ayarlanmalıdır `warmupTrigger` . |
 | **Görünüm** | yok| Gerekli-olarak ayarlanmalıdır `in` . |

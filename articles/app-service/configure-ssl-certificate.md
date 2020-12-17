@@ -6,18 +6,21 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: dff98a5c54d2fee350e2b35dc00148c19ea233b8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 15a77835e3e618c17b9839aa5a010cd4d29cebe1
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956509"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653121"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Azure App Service'de TLS/SSL sertifikası ekleme
 
 [Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu makalede, App Service bir özel sertifika veya ortak sertifika oluşturma, karşıya yükleme veya içeri aktarma işlemlerinin nasıl yapılacağı gösterilir. 
 
 Sertifika, App Service uygulamanıza veya [işlev uygulamanıza](../azure-functions/index.yml)eklendikten sonra [özel bir DNS adının güvenliğini](configure-ssl-bindings.md) sağlayabilir veya [uygulama kodunuzda kullanabilirsiniz](configure-ssl-certificate-in-code.md).
+
+> [!NOTE]
+> Bir uygulamaya yüklenen bir sertifika, uygulamanın kaynak grubuna ve bölge birleşimine (dahili olarak bir *Web alanı* olarak adlandırılır) bağlanan bir dağıtım biriminde depolanır. Bu, sertifikayı aynı kaynak grubu ve bölge kombinasyonuna ait diğer uygulamalar için erişilebilir hale getirir. 
 
 Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçenekler listelenmektedir:
 
@@ -29,7 +32,7 @@ Aşağıdaki tabloda App Service sertifika eklemek için sahip olduğunuz seçen
 | Özel bir sertifikayı karşıya yükle | Bir üçüncü taraf sağlayıcıdan zaten özel bir sertifikanız varsa, bu sertifikaya yükleyebilirsiniz. Bkz. [özel sertifika gereksinimleri](#private-certificate-requirements). |
 | Ortak sertifikayı karşıya yükle | Ortak sertifikalar özel etki alanlarını güvenli hale getirmek için kullanılmaz, ancak uzak kaynaklara erişmesi gerekiyorsa bunları kodunuza yükleyebilirsiniz. |
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu nasıl yapılır kılavuzunu izlemek için:
 

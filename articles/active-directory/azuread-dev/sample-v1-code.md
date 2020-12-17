@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 824ae8d39d934ebc58fc75185e36f5faa11109a9
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 662a0f53a5d5e8e02ef3b29640009fd07bf4f1d0
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325375"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652153"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory kodu örnekleri (v 1.0 uç noktası)
 
@@ -40,10 +40,10 @@ Ayrıca, GitHub 'daki örneklerimize katkıda bulunabilirsiniz. Nasıl yapılaca
 
 Bu örnek, Azure AD ile güvenli bir şekilde tek sayfalı uygulamanın nasıl yazılacağını gösterir.
 
- Platform | Kendi API 'sini çağırır | Başka bir Web API 'SI çağırır
- -------- |  --------------------- | ------------------ 
-![Bu resimde JavaScript logosu gösterilir](media/sample-v2-code/logo-js.png) | [JavaScript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
-![Bu görüntüde angular JS logosu gösterilmektedir](media/sample-v2-code/logo-angular.png) | [AngularJS-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi)
+| Platform | Kendi API 'sini çağırır | Başka bir Web API 'SI çağırır |
+|--|--|--|
+| ![Bu resimde JavaScript logosu gösterilir](media/sample-v2-code/logo-js.png) | [JavaScript-singlepageapp](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |
+| ![Bu görüntüde angular JS logosu gösterilmektedir](media/sample-v2-code/logo-angular.png) | [AngularJS-singlepageapp](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp) | [AngularJS-singlepageapp-CORS](https://github.com/Azure-Samples/active-directory-angularjs-singlepageapp-dotnet-webapi) |
 
 ## <a name="web-applications"></a>Web Uygulamaları
 
@@ -51,21 +51,21 @@ Bu örnek, Azure AD ile güvenli bir şekilde tek sayfalı uygulamanın nasıl y
 
 Aşağıdaki örneklerde, kullanıcıları imzalayan Web uygulamaları gösterilmektedir. Bu uygulamalardan bazıları Ayrıca, oturum açmış kullanıcının adında Microsoft Graph veya kendi Web API 'nizi de çağırır.
 
- Platform | Yalnızca kullanıcılar oturum açar | Çağrılar Microsoft Graph | Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır
- -------- | ------------------- | --------------------- | -------------------------
-![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WEBAPP-WebApi-Multitenant-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD grafiği) | [DotNet-WebApp-WebApi-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore)
-![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 |  </p> [WEBAPP-Wsfederatıon-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-WebApi-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-Multitenant-openıdconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD grafiği) |
-![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo-python.png) | | [Python-WebApp-graphapı](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi)  |
-![Bu görüntüde Java günlüğü gösterilmektedir](media/sample-v2-code/logo-java.png)  | | [Java-WebApp-openıdconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect)  |
-![Bu görüntüde PHP logosu gösterilmektedir](media/sample-v2-code/logo-php.png) | | [php-graphapı-Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web)  |
+| Platform | Yalnızca kullanıcılar oturum açar | Çağrılar Microsoft Graph | Başka bir ASP.NET veya ASP.NET Core 2,0 Web API 'sini çağırır |
+|--|--|--|--|
+| ![Bu görüntüde ASP.NET Core logosu gösterilmektedir](media/sample-v2-code/logo-netcore.png)</p>ASP.NET Core 2,0 | [DotNet-WebApp-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect-aspnetcore) | [WEBAPP-WebApi-Multitenant-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-webapp-webapi-multitenant-openidconnect-aspnetcore/) </p>(AAD grafiği) | [DotNet-WebApp-WebApi-openıdconnect-aspnetcore](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore) |
+| ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | </p> [WEBAPP-Wsfederatıon-dotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation) </p> [DotNet-WebApp-WebApi-OAuth2-UserIdentity](https://github.com/Azure-Samples/active-directory-dotnet-webapp-webapi-oauth2-useridentity) | [DotNet-WebApp-Multitenant-openıdconnect](https://github.com/Azure-Samples/active-directory-dotnet-webapp-multitenant-openidconnect)</p> (AAD grafiği) |
+| ![Bu görüntüde Python logosu gösterilmektedir](media/sample-v2-code/logo-python.png) |  | [Python-WebApp-graphapı](https://github.com/Azure-Samples/active-directory-python-webapp-graphapi) |
+| ![Bu görüntüde Java günlüğü gösterilmektedir](media/sample-v2-code/logo-java.png) |  | [Java-WebApp-openıdconnect](https://github.com/azure-samples/active-directory-java-webapp-openidconnect) |
+| ![Bu görüntüde PHP logosu gösterilmektedir](media/sample-v2-code/logo-php.png) |  | [php-graphapı-Web](https://github.com/Azure-Samples/active-directory-php-graphapi-web) |
 
 ### <a name="web-applications-demonstrating-role-based-access-control-authorization"></a>Rol tabanlı erişim denetimi (yetkilendirme) gösteren Web uygulamaları
 
 Aşağıdaki örnekler rol tabanlı erişim denetiminin (RBAC) nasıl uygulanacağını gösterir. RBAC, bir Web uygulamasındaki belirli özelliklerin izinlerini belirli kullanıcılara kısıtlamak için kullanılır. Kullanıcılar bir **Azure AD grubuna** ait olup olmadığınıza veya belirli bir uygulama **rolüne** sahip olmasına bağlı olarak yetkilendirilir.
 
-Platform | Örnek |
- -------- | ------------------- |
-![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Yetkilendirme için Azure AD **rolleri** kullanan bir .NET 4,5 MVC web uygulaması
+| Platform | Örnek |
+|--|--|
+| ![Bu görüntüde ASP.NET Framework logosu gösterilmektedir](media/sample-v2-code/logo-netframework.png)</p> ASP.NET 4.5 | [DotNet-WebApp-groupclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims) </p>  [DotNet-WebApp-roleclaim](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) | Yetkilendirme için Azure AD **rolleri** kullanan bir .NET 4,5 MVC web uygulaması |
 
 ## <a name="desktop-and-mobile-public-client-applications-calling-microsoft-graph-or-a-web-api"></a>Microsoft Graph veya bir Web API 'sini çağıran masaüstü ve mobil ortak istemci uygulamaları
 

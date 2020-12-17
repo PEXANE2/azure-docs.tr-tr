@@ -7,12 +7,12 @@ author: DavidCBerry13
 ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83117572"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656776"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -57,7 +57,7 @@ Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin özelliğin
 
    ![Eylemde, Ayarlar menüsünü açın](./media/logic-apps-handle-large-messages/http-settings.png)
 
-2. **Içerik aktarımı**altında, **öbek kümesine izin ver** ' i **Açık**olarak ayarlayın.
+2. **Içerik aktarımı** altında, **öbek kümesine izin ver** ' i **Açık** olarak ayarlayın.
 
    ![Parçalama 'yi aç](./media/logic-apps-handle-large-messages/set-up-chunking.png)
 
@@ -67,7 +67,7 @@ Ayrıca, bir HTTP eylemi zaten parçalama etkinleştirmezse, eylemin özelliğin
 
 ## <a name="download-content-in-chunks"></a>Öbeklerdeki içeriği indirme
 
-Bir HTTP GET isteği aracılığıyla indirilen birçok uç nokta, öbeklere otomatik olarak büyük iletiler gönderir. HTTP üzerinden bir uç noktadan öbekli iletileri indirmek için, uç noktanın kısmi içerik isteklerini veya *öbekli İndirmeleri*desteklemesi gerekir. Mantıksal uygulamanız içerik indirmek için bir uç noktaya HTTP GET isteği gönderdiğinde ve uç nokta bir "206" durum kodu ile yanıt verirse, yanıt öbekli içerik içerir. Logic Apps, bir uç noktanın kısmi istekleri destekleyip desteklemediğini denetleyemiyorum. Ancak, mantıksal uygulamanız ilk "206" yanıtını aldığında, mantıksal uygulamanız tüm içeriği indirmek için otomatik olarak birden çok istek gönderir.
+Bir HTTP GET isteği aracılığıyla indirilen birçok uç nokta, öbeklere otomatik olarak büyük iletiler gönderir. HTTP üzerinden bir uç noktadan öbekli iletileri indirmek için, uç noktanın kısmi içerik isteklerini veya *öbekli İndirmeleri* desteklemesi gerekir. Mantıksal uygulamanız içerik indirmek için bir uç noktaya HTTP GET isteği gönderdiğinde ve uç nokta bir "206" durum kodu ile yanıt verirse, yanıt öbekli içerik içerir. Logic Apps, bir uç noktanın kısmi istekleri destekleyip desteklemediğini denetleyemiyorum. Ancak, mantıksal uygulamanız ilk "206" yanıtını aldığında, mantıksal uygulamanız tüm içeriği indirmek için otomatik olarak birden çok istek gönderir.
 
 Bir uç noktanın kısmi içeriği destekleyemeyeceğini denetlemek için bir HEAD isteği gönderin. Bu istek, yanıtın üstbilgiyi içerip içermediğini belirlemenize yardımcı olur `Accept-Ranges` . Bu şekilde, uç nokta, öbekli İndirmeleri destekliyorsa ancak öbekli içerik göndermezse, HTTP GET talebinizdeki üstbilgiyi ayarlayarak bu seçeneği *önerebilirsiniz* `Range` . 
 
@@ -113,7 +113,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
 1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*içerik uzunluğu*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
@@ -123,8 +123,8 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
-   | **Konum** | Dize | Evet | HTTP PATCH iletilerinin gönderileceği URL konumu |
+   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
+   | **Konum** | Dize | Yes | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
 3. Mantıksal uygulamanız, bu bilgileri içeren, izleme HTTP PATCH iletileri oluşturur ve gönderir:
@@ -133,7 +133,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
+     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
      |---------------------------------|-------|------|-------------|
      | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
      | **İçerik türü** | <*içerik türü*> | Dize | Öbekli içerik türü |
@@ -144,8 +144,8 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **Aralık** | Dize | Evet | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
-   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
+   | **Aralık** | Dize | Yes | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
+   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
    ||||
 
 Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özelliği şu `transferMode` şekilde ayarlanır `chunked` :

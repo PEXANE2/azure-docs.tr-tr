@@ -6,24 +6,24 @@ ms.date: 05/19/2020
 ms.topic: article
 author: mlearned
 ms.author: mlearned
-description: Azure Arc etkin küme yapılandırması (Önizleme) için Gilar 'ı kullanma
-keywords: Giüstler, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, kapsayıcılar
-ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+description: Azure Arc etkin bir Kubernetes kümesi (Önizleme) yapılandırmak için Gilar 'ı kullanma
+keywords: Gilar, Kubernetes, K8s, Azure, Arc, Azure Kubernetes hizmeti, AKS, kapsayıcılar
+ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659803"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653461"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Yay etkin Kubernetes kümesinde Gilar kullanarak yapılandırma dağıtma (Önizleme)
 
-Gila, bir git deposunda istenen Kubernetes yapılandırmasının (dağıtımlar, ad alanları vb.) ve ardından bu yapılandırmaların bir operatör kullanılarak kümeye bir yoklama ve çekme temelli dağıtımı ile ilgili olduğunu bildiren bir uygulamadır. Bu belge, Azure Arc etkin Kubernetes kümelerinde bu tür iş akışlarının kurulumunu içerir.
+Gilar, Kubernetes ile ilişkili olduğu gibi, bir git deposunda Kubernetes yapılandırmasının (dağıtımlar, ad alanları vb.) istenen durumunu bildirme ve ardından bu yapılandırmaların bir işleç kullanılarak kümeye bir yoklama ve çekme tabanlı dağıtımı ile ilgili bir uygulamadır. Bu belge, Azure Arc etkin Kubernetes kümelerinde bu tür iş akışlarının kurulumunu içerir.
 
-Kümeniz ve bir veya daha fazla git deposu arasındaki bağlantı, Azure Resource Manager ' de `sourceControlConfiguration` uzantı kaynağı olarak izlenir. `sourceControlConfiguration`Kaynak özellikleri, Kubernetes kaynaklarının git 'ten kümenize nasıl akmasını gerektiğini temsil eder. Veriler, `sourceControlConfiguration` verilerin gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
+Kümeniz ve git deposu arasındaki bağlantı, Azure Resource Manager `Microsoft.KubernetesConfiguration/sourceControlConfigurations` uzantı kaynağı olarak oluşturulur. `sourceControlConfiguration`Kaynak özellikleri, Kubernetes kaynaklarının git 'ten kümenize nasıl akmasını gerektiğini temsil eder. Veriler, `sourceControlConfiguration` verilerin gizliliğini sağlamak için bir Azure Cosmos DB veritabanında şifreli olarak depolanır.
 
-`config-agent`Kümenizde çalışan, `sourceControlConfiguration` Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş uzantı kaynaklarını Izlerken, git deposunu izlemek için Flox operatörü dağıtmaktan ve üzerinde yapılan tüm güncelleştirmeleri yaymaktan sorumludur `sourceControlConfiguration` . `sourceControlConfiguration` `namespace` Çok kiracılı hale ulaşmak Için aynı Azure Arc etkinleştirilmiş Kubernetes kümesi kapsamında birden fazla kaynak oluşturmak da mümkündür. Böyle bir durumda, her operatör yalnızca ilgili ad alanına yapılandırma dağıtabilir.
+`config-agent`Kümenizde çalışan, `sourceControlConfiguration` Azure Arc etkin Kubernetes kaynağında yeni veya güncelleştirilmiş uzantı kaynaklarını izlerken, her biri için Git deposunu izlemek üzere bir Flox operatörü dağıtmak `sourceControlConfiguration` ve herhangi bir güncelleştirmenin herhangi bir güncelleştirme uygulanması konusunda sorumludur `sourceControlConfiguration` . Çok `sourceControlConfiguration` kiracılı hale ulaşmak için aynı Azure Arc etkin Kubernetes kümesinde birden çok kaynak oluşturmak mümkündür. Bunları `sourceControlConfiguration` `namespace` ilgili ad alanları içinde ile sınırlamak için her bir farklı kapsama sahip oluşturabilirsiniz.
 
-Git deposu, ad alanları, ConfigMaps, dağıtımlar, DaemonSets vb. dahil olmak üzere geçerli bir Kubernetes kaynağı içerebilir.  Ayrıca, uygulamaları dağıtmak için Held grafikleri de içerebilir. Yaygın bir senaryo kümesi, kuruluşunuz için genel Azure rolleri ve bağlamaları, izleme veya günlüğe kaydetme aracılarını veya küme genelinde Hizmetleri içerebilen temel bir yapılandırma tanımlamayı içerir.
+Git deposu, ad alanları, ConfigMaps, dağıtımlar, DaemonSets vb. gibi geçerli bir Kubernetes kaynağını tanımlayan YAML biçimli bildirimler içerebilir.  Ayrıca, uygulamaları dağıtmak için Held grafikleri de içerebilir. Yaygın bir senaryo kümesi, kuruluşunuz için genel Azure rolleri ve bağlamaları, izleme veya günlüğe kaydetme aracılarını veya küme genelinde Hizmetleri içerebilen temel bir yapılandırma tanımlamayı içerir.
 
 Aynı model, heterojen ortamlar arasında dağıtılabilen daha büyük bir küme koleksiyonunu yönetmek için kullanılabilir. Örneğin, kuruluşunuz için taban çizgisi yapılandırmasını tanımlayan ve aynı anda onlarca Kubernetes kümesine uygulayabilen bir havuzunuz olabilir. [Azure ilkesi](use-azure-policy.md) , bir `sourceControlConfiguration` kapsam (abonelik veya kaynak grubu) altındaki tüm Azure Arc etkin Kubernetes kaynaklarında belirli bir parametre kümesiyle bir oluşturma işlemini otomatikleştirebilir.
 
@@ -46,7 +46,7 @@ Yeni `config-agent` `sourceControlConfiguration` `config-agent` veya güncelleş
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
 
-İçin Azure CLı uzantısını kullanarak `k8sconfiguration` , bağlantılı kümemizi [örnek bir git deposuna](https://github.com/Azure/arc-k8s-demo)bağlayalim. Bu yapılandırmaya bir ad vereceğiz `cluster-config` , aracıyı `cluster-config` ad alanına dağıtmasını ve operatör izinleri vermesini sağlıyoruz `cluster-admin` .
+`k8sconfiguration`Bağlı bir kümeyi [örnek git deposuna](https://github.com/Azure/arc-k8s-demo)bağlamak için Azure CLI uzantısını kullanın. Bu yapılandırmaya bir ad vereceğiz `cluster-config` , aracıyı `cluster-config` ad alanına dağıtmasını ve operatör izinleri vermesini sağlıyoruz `cluster-admin` .
 
 ```console
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
@@ -58,70 +58,101 @@ az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 {
   "complianceStatus": {
-    "ComplianceStatus": 1,
-    "clientAppliedTime": null,
-    "level": 3,
-    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}"
+    "complianceState": "Pending",
+    "lastConfigApplied": "0001-01-01T00:00:00",
+    "message": "{\"OperatorMessage\":null,\"ClusterState\":null}",
+    "messageLevel": "3"
   },
-  "configKind": "Git",
-  "configName": "cluster-config",
-  "configOperator": {
-    "operatorInstanceName": "cluster-config",
-    "operatorNamespace": "cluster-config",
-    "operatorParams": "--git-readonly",
-    "operatorScope": "cluster",
-    "operatorType": "flux"
-  },
-  "configType": "",
-  "id": null,
-  "name": null,
-  "operatorInstanceName": null,
-  "operatorNamespace": null,
-  "operatorParams": null,
-  "operatorScope": null,
-  "operatorType": null,
-  "providerName": "ConnectedClusters",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": null,
+  "id": "/subscriptions/<sub id>/resourceGroups/<group name>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "name": "cluster-config",
+  "operatorInstanceName": "cluster-config",
+  "operatorNamespace": "cluster-config",
+  "operatorParams": "--git-readonly",
+  "operatorScope": "cluster",
+  "operatorType": "Flux",
   "provisioningState": "Succeeded",
-  "repositoryPublicKey": null,
-  "repositoryUrl": null,
-  "sourceControlConfiguration": {
-    "repositoryPublicKey": "",
-    "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git"
+  "repositoryPublicKey": "",
+  "repositoryUrl": "https://github.com/Azure/arc-k8s-demo",
+  "resourceGroup": "MyRG",
+  "sshKnownHostsContents": "",
+  "systemData": {
+    "createdAt": "2020-11-24T21:22:01.542801+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-11-24T21:22:01.542801+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
   },
-  "type": null
-}
-```
+  "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
+  ```
 
-#### <a name="repository-url-parameter"></a>Depo-URL parametresi
+#### <a name="use-a-public-git-repo"></a>Ortak bir git deposu kullanma
 
---Repository-URL parametresi değeri için desteklenen senaryolar aşağıda verilmiştir.
+| Parametre | Biçimlendir |
+| ------------- | ------------- |
+| --Depo-URL | http [s]:/sunucu/repo [. git] veya git:/sunucu/repo [. git]
 
-| Senaryo | Biçimlendir | Açıklama |
+#### <a name="use-a-private-git-repo-with-ssh-and-flux-created-keys"></a>SSH ve Flox tarafından oluşturulan anahtarlarla özel bir git deposu kullanma
+
+| Parametre | Biçimlendir | Notlar
 | ------------- | ------------- | ------------- |
-| Genel git deposu | http [s]:/sunucu/repo.exe git veya git://server/repo.git   | Genel git deposu  |
-| Özel Git deposu – SSH – Flox tarafından oluşturulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Dağıtım anahtarı Kullanıcı hesabı yerine depoya eklenirse, yerine kullanın `git@` `user@` . Daha fazla bilgiyi [burada](#apply-configuration-from-a-private-git-repository) bulabilirsiniz |
+| --Depo-URL | ssh://user@server/repo[. git] veya user@server:repo [. git] | `git@` yerine kullanılabilir `user@`
 
-Bu senaryolar Flox tarafından desteklenir, ancak henüz sourceControlConfiguration tarafından desteklenmez.
+> [!NOTE]
+> Flox tarafından üretilen ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Anahtar, Kullanıcı hesabı > yerine depoya eklenirse, `git@` `user@` URL 'de yerine kullanın. [Daha fazla ayrıntı görüntüleyin](#apply-configuration-from-a-private-git-repository)
 
-| Senaryo | Biçimlendir | Açıklama |
+#### <a name="use-a-private-git-repo-with-ssh-and-user-provided-keys"></a>SSH ve Kullanıcı tarafından sağlanmış anahtarlarla özel bir git deposu kullanma
+
+| Parametre | Biçimlendir | Notlar |
 | ------------- | ------------- | ------------- |
-| Özel Git deposu-HTTPS | https://server/repo.git | Yakında (Kullanıcı adı/parola, Kullanıcı adı/belirteç, sertifika desteklenir) |
-| Özel Git deposu-SSH – kullanıcı tarafından sunulan anahtarlar | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Çok yakında |
-| Özel Git Konağı – SSH – özel known_hosts | SSH://[user@] sunucu/depo. git veya [user@] sunucu: depo. git | Çok yakında |
+| --Depo-URL  | ssh://user@server/repo[. git] veya user@server:repo [. git] | `git@` yerine kullanılabilir `user@` |
+| --SSH-private-anahtar | [pek biçiminde](https://aka.ms/PEMformat) Base64 kodlamalı anahtar | Anahtarı doğrudan sağlama |
+| --SSH-private-anahtar-dosya | yerel dosyanın tam yolu | Yerel dosyanın pek biçimli anahtarını içeren tam yolunu sağlayın
+
+> [!NOTE]
+> Kendi özel anahtarınızı doğrudan veya bir dosyaya sağlayın. Anahtar [pek biçiminde](https://aka.ms/PEMformat) olmalı ve yeni satır (\n) ile bitmelidir.  İlişkili ortak anahtar, git hizmeti sağlayıcınızdaki Kullanıcı hesabına eklenmelidir. Anahtar, Kullanıcı hesabı yerine depoya eklenirse, yerine kullanın `git@` `user@` . [Daha fazla ayrıntı görüntüleyin](#apply-configuration-from-a-private-git-repository)
+
+#### <a name="use-a-private-git-host-with-ssh-and-user-provided-known-hosts"></a>SSH ve Kullanıcı tarafından sağlanmış bilinen konaklarla özel bir git Konağı kullanma
+
+| Parametre | Biçimlendir | Notlar |
+| ------------- | ------------- | ------------- |
+| --Depo-URL  | ssh://user@server/repo[. git] veya user@server:repo [. git] | `git@` yerine kullanılabilir `user@` |
+| --SSH-bilinen-konaklar | base64 kodlu | doğrudan sağlanmış bilinen ana bilgisayarlar içeriği |
+| --SSH-bilinen-hosts-dosya | yerel dosyanın tam yolu | Yerel bir dosyada belirtilen bilinen ana bilgisayar içeriği
+
+> [!NOTE]
+> Flox işleci, SSH bağlantısını kurmadan önce git deposunun kimliğini doğrulamak için bilinen ana bilgisayar dosyasındaki ortak git konaklarının bir listesini tutar. Yaygın olmayan bir git deposu veya kendi git ana bilgisayarınızı kullanıyorsanız, akıcı x 'in deponuzu tanımlayabilmesi için ana bilgisayar anahtarını sağlamanız gerekebilir. Bilinen ana bilgisayar içeriğinizi doğrudan veya bir dosyasına sağlayabilirsiniz. [Bilinen ana bilgisayarlar içerik biçimi belirtimini görüntüleyin](https://aka.ms/KnownHostsFormat).
+> Bunu, yukarıda açıklanan SSH anahtar senaryolarından biriyle birlikte kullanabilirsiniz.
+
+#### <a name="use-a-private-git-repo-with-https"></a>HTTPS ile özel bir git deposu kullanma
+
+| Parametre | Biçimlendir | Notlar |
+| ------------- | ------------- | ------------- |
+| --Depo-URL | https://server/repo[. git] | Temel kimlik doğrulaması ile HTTPS |
+| --https-Kullanıcı | ham veya base64 kodlu | HTTPS Kullanıcı adı |
+| --https-anahtar | ham veya base64 kodlu | HTTPS kişisel erişim belirteci veya parolası
+
+> [!NOTE]
+> HTTPS helmrelease özel kimlik doğrulaması yalnızca Held operatörü grafik sürümü >= 1.2.0 ile desteklenir.  Sürüm 1.2.0 varsayılan olarak kullanılır.
+> Şu anda Azure Kubernetes Hizmetleri tarafından yönetilen kümeler için HTTPS helk sürümü özel kimlik doğrulaması desteklenmiyor.
+> Proxy 'niz aracılığıyla Git deposuna erişmek için Flox 'e ihtiyacınız varsa, Azure Arc aracılarını ara sunucu ayarlarıyla güncelleştirmeniz gerekecektir. [Daha fazla bilgi](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Ek parametreler
 
-Yapılandırma oluşturmayı özelleştirmek için birkaç ek parametre aşağıda verilmiştir:
+Yapılandırmayı özelleştirmek için kullanabileceğiniz daha fazla parametre bulabilirsiniz:
 
 `--enable-helm-operator` : Hele grafik dağıtımları desteğini etkinleştirmek için *Isteğe bağlı* anahtar.
 
-`--helm-operator-chart-values` : Hele işleci için *Isteğe bağlı* grafik değerleri (etkinse).  Örneğin, '--Held. Versions = v3 ' olarak ayarlayın.
+`--helm-operator-params` : Hele işleci için *Isteğe bağlı* grafik değerleri (etkinse).  Örneğin, '--Held. Versions = v3 ' olarak ayarlayın.
 
-`--helm-operator-chart-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 0.6.0 '.
+`--helm-operator-chart-version` : Held işleci için *Isteğe bağlı* grafik sürümü (etkinse). Varsayılan: ' 1.2.0 '.
 
 `--operator-namespace` : İşleç ad alanı için *Isteğe bağlı* ad. Varsayılan: ' varsayılan '
 
-`--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases' ```
+`--operator-params` : İşleç için *Isteğe bağlı* parametreler. Tek tırnak içinde verilmelidir. Örneğin, ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
 --İşleci-params içinde desteklenen seçenekler
 
@@ -148,7 +179,7 @@ Yapılandırma oluşturmayı özelleştirmek için birkaç ek parametre aşağı
 Daha fazla bilgi için bkz. [Flox belgeleri](https://aka.ms/FluxcdReadme).
 
 > [!TIP]
-> Azure portal, Azure Arc etkinleştirilmiş Kubernetes kaynak dikey penceresinin **yapılandırmalar** sekmesinde bir sourceControlConfiguration oluşturmak mümkündür.
+> Azure Arc etkin Kubernetes kaynağının **Gima** sekmesindeki Azure Portal sourceControlConfiguration oluşturmak mümkündür.
 
 ## <a name="validate-the-sourcecontrolconfiguration"></a>SourceControlConfiguration 'ı doğrulama
 
@@ -167,11 +198,17 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 {
   "complianceStatus": {
     "complianceState": "Installed",
-    "lastConfigApplied": "2019-12-05T05:34:41.481000",
+    "lastConfigApplied": "2020-12-10T18:26:52.801000+00:00",
     "message": "...",
-    "messageLevel": "3"
+    "messageLevel": "Information"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
+  "configurationProtectedSettings": {},
+  "enableHelmOperator": false,
+  "helmOperatorProperties": {
+    "chartValues": "",
+    "chartVersion": ""
+  },
+  "id": "/subscriptions/<sub id>/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/cluster-config",
   "name": "cluster-config",
   "operatorInstanceName": "cluster-config",
   "operatorNamespace": "cluster-config",
@@ -182,20 +219,29 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
   "repositoryPublicKey": "...",
   "repositoryUrl": "git://github.com/Azure/arc-k8s-demo.git",
   "resourceGroup": "AzureArcTest",
+  "sshKnownHostsContents": null,
+  "systemData": {
+    "createdAt": "2020-12-01T03:58:56.175674+00:00",
+    "createdBy": null,
+    "createdByType": null,
+    "lastModifiedAt": "2020-12-10T18:30:56.881219+00:00",
+    "lastModifiedBy": null,
+    "lastModifiedByType": null
+},
   "type": "Microsoft.KubernetesConfiguration/sourceControlConfigurations"
 }
 ```
 
 Oluşturulduğunda, `sourceControlConfiguration` çok sayıda şey meydana gelir:
 
-1. Azure Arc, `config-agent` Yeni veya güncelleştirilmiş yapılandırmalara yönelik Azure Resource Manager izler ( `Microsoft.KubernetesConfiguration/sourceControlConfiguration` )
+1. Azure Arc, `config-agent` Yeni veya güncelleştirilmiş yapılandırmalara yönelik Azure Resource Manager izler ( `Microsoft.KubernetesConfiguration/sourceControlConfigurations` )
 1. `config-agent`Yeni yapılandırmayı bildirimler `Pending`
 1. `config-agent` yapılandırma özelliklerini okur ve yönetilen bir örneğini dağıtmaya hazırlar `flux`
     * `config-agent` hedef ad alanını oluşturur
     * `config-agent` bir Kubernetes hizmet hesabını uygun izinle ( `cluster` veya `namespace` kapsamla) hazırlar
     * `config-agent` bir örneğini dağıtır `flux`
-    * `flux` bir SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder
-1. `config-agent` durumu geri bildirir `sourceControlConfiguration`
+    * `flux` bir SSH anahtarı oluşturur ve ortak anahtarı günlüğe kaydeder (SSH seçeneği akışkan x tarafından oluşturulan anahtarlarla kullanılıyorsa)
+1. `config-agent``sourceControlConfiguration`Azure 'da durumu kaynağa geri bildirir
 
 Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum değişikliği arasında hareket eder. Yukarıdaki komutla ilerlemeyi izleyin `az k8sconfiguration show ...` :
 
@@ -205,9 +251,13 @@ Sağlama işlemi gerçekleşirken, `sourceControlConfiguration` birkaç durum de
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Özel bir git deposundan yapılandırma Uygula
 
-Özel bir git deposu kullanıyorsanız, döngüyü kapatmak için bir görev daha gerçekleştirmeniz gerekir: tarafından oluşturulan ortak anahtarı `flux` depoya bir **dağıtım anahtarı** olarak ekleyin.
+Özel bir git deposu kullanıyorsanız, deponuzda SSH ortak anahtarını yapılandırmanız gerekir. Ortak anahtarı git deposunda veya depoya erişimi olan git kullanıcısına yapılandırabilirsiniz. SSH ortak anahtarı sizin sağladığınız ya da akıcı x 'in oluşturduğu bir tane olacaktır.
 
-**Azure CLı kullanarak ortak anahtarı alın**
+**Kendi ortak anahtarınızı alın**
+
+Kendi SSH anahtarlarınızı oluşturduysanız, özel ve ortak anahtarlarınız zaten vardır.
+
+**Azure CLı kullanarak ortak anahtarı alın (Flox anahtarları oluşturuyorsa yararlıdır)**
 
 ```console
 $ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
@@ -215,16 +265,16 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```
 
-**Azure portal ortak anahtarı al**
+**Azure portal ortak anahtarı al (Flox anahtarları oluşturuyorsa yararlı olur)**
 
 1. Azure portal bağlı küme kaynağına gidin.
-2. Kaynak sayfasında, "konfigürasyonlar" ı seçin ve bu küme için yapılandırmaların listesini görüntüleyin.
+2. Kaynak sayfasında, "Gilar" ı seçin ve bu küme için yapılandırmaların listesini görüntüleyin.
 3. Özel Git deposunu kullanan yapılandırmayı seçin.
 4. Açılan bağlam penceresinde, pencerenin alt kısmında **Depo ortak anahtarını** kopyalayın.
 
 GitHub kullanıyorsanız, aşağıdaki 2 seçenekten birini kullanın:
 
-**Seçenek 1: Kullanıcı hesabınıza ortak anahtar ekleme**
+**Seçenek 1: Kullanıcı hesabınıza ortak anahtar ekleme (hesabınızdaki tüm depolar için geçerlidir)**
 
 1. GitHub ' ı açın, sayfanın sağ üst köşesindeki profil simgesine tıklayın.
 2. **Ayarlar** ' a tıklayın
@@ -234,7 +284,7 @@ GitHub kullanıyorsanız, aşağıdaki 2 seçenekten birini kullanın:
 6. Ortak anahtarı (herhangi bir çevreleyen tırnak işareti) Yapıştır
 7. **SSH anahtarı Ekle** 'ye tıklayın
 
-**Seçenek 2: ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin**
+**Seçenek 2: ortak anahtarı git deposuna bir dağıtım anahtarı olarak ekleyin (yalnızca bu depo için geçerlidir)**
 
 1. GitHub ' ı açın, depoya, **Ayarlar**' a gidin ve **anahtarları dağıtın**
 2. **Dağıtım anahtarı Ekle** 'ye tıklayın
@@ -301,10 +351,10 @@ kubectl -n itops get all
 
 ## <a name="delete-a-configuration"></a>Yapılandırma silme
 
-`sourceControlConfiguration`Azure CLI veya Azure Portal kullanarak bir silme.  Sil komutunu başlattıktan sonra, `sourceControlConfiguration` kaynak Azure 'da hemen silinir, ancak ilişkili nesnelerin kümeden tam olarak silinmesi 1 saate kadar sürebilir (Bu zaman gecikmesini azaltmak için bir biriktirme listesi öğesidir).
+`sourceControlConfiguration`Azure CLI veya Azure Portal kullanarak bir silme.  Sil komutunu başlattıktan sonra, `sourceControlConfiguration` kaynak Azure 'da hemen silinir ve ilgili nesnelerin kümeden tam olarak silinmesi 10 dakika içinde gerçekleşmelidir.  `sourceControlConfiguration`Silindiği zaman hatalı durumdaysa, ilişkili nesnelerin tam silinmesi bir saate kadar sürebilir.
 
 > [!NOTE]
-> Ad alanı kapsamına sahip bir sourceControlConfiguration oluşturulduktan sonra, ad alanında rol bağlama olan kullanıcıların `edit` Bu ad alanına iş yüklerini dağıtması mümkündür. `sourceControlConfiguration`Ad alanı kapsamı silindiğinde, ad alanı değişmeden kalır ve bu diğer iş yüklerinin kesilmesini önlemek için silinmez.
+> Ad alanı kapsamına sahip bir sourceControlConfiguration oluşturulduktan sonra, ad alanında rol bağlama olan kullanıcıların `edit` Bu ad alanında iş yüklerini dağıtması mümkündür. `sourceControlConfiguration`Ad alanı kapsamı silindiğinde, ad alanı değişmeden kalır ve bu diğer iş yüklerinin kesilmesini önlemek için silinmez.  Gerekirse, bu ad alanını kubectl ile el ile silebilirsiniz.
 > Değişiklik yapıldığında, izlenen git deposundan dağıtımların sonucu olan kümedeki değişiklikler silinmez `sourceControlConfiguration` .
 
 ```console

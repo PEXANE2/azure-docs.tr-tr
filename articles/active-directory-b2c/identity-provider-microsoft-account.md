@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a05c987299a8a4967c81b7eb9cc481f253ac5b09
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 123b36ba854bec8b363d59bbed5e70f18da1e578
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584866"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653716"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Microsoft hesabı Azure Active Directory B2C kullanarak kaydolma ve oturum açma ayarlama
 
@@ -30,21 +30,9 @@ ms.locfileid: "97584866"
 
 ::: zone-end
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
-::: zone pivot="b2c-user-flow"
-
-* Kullanıcıların uygulamanıza kaydolmasını ve oturum açmasını sağlamak için [bir kullanıcı akışı oluşturun](tutorial-create-user-flows.md).
-* Daha önce yapmadıysanız, [Azure Active Directory B2C kiracınıza bir web API'si uygulaması ekleyin](add-web-api-application.md).
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-* [Active Directory B2C içindeki özel ilkeleri kullanmaya başlama](custom-policy-get-started.md)adımlarını izleyin.
-* Daha önce yapmadıysanız, [Azure Active Directory B2C kiracınıza bir web API'si uygulaması ekleyin](add-web-api-application.md).
-
-::: zone-end
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft hesabı uygulaması oluşturma
 

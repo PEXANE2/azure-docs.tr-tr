@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/18/2020
+ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f22b74b16594419b0eff33f0c73d6e9c3a62ac15
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002740"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655042"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -30,7 +30,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | Yerleşik rol | Description | ID |
 > | --- | --- | --- |
 > | **Genel** |  |  |
-> | [Katkıda Bulunan](#contributor) | Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza izin vermez. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Katkıda Bulunan](#contributor) | Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza, Azure 'da atamaları yönetmenize veya görüntü galerileri paylaşmanıza izin vermez. | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [Sahibi](#owner) | Azure RBAC 'de rol atama özelliği de dahil olmak üzere tüm kaynakları yönetmek için tam erişim verir. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Okuyucu](#reader) | Tüm kaynakları görüntüleyin, ancak herhangi bir değişiklik yapmanıza izin vermez. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Kullanıcı Erişimi Yöneticisi](#user-access-administrator) | Azure kaynaklarına Kullanıcı erişimini yönetmenizi sağlar. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
@@ -165,7 +165,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 > | [Key Vault sertifikaları Müdürü (Önizleme)](#key-vault-certificates-officer-preview) | İzinleri Yönet dışında bir anahtar kasasının sertifikaları üzerinde herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | a4417e6f-fecd-4de8-b567-7b0420556985 |
 > | [Katkıda bulunan Key Vault](#key-vault-contributor) | Anahtar kasalarını yönetin, ancak Azure RBAC 'de roller atamanıza izin vermez ve gizli dizi, anahtar veya sertifikalara erişmenize izin vermez. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Key Vault şifre Müdürü (Önizleme)](#key-vault-crypto-officer-preview) | Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 14b46e9e-c2b7-41B4-b07b-48a6ebf60603 |
-> | [Key Vault şifreleme hizmeti şifrelemesi (Önizleme)](#key-vault-crypto-service-encryption-preview) | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
+> | [Key Vault şifreleme hizmeti şifreleme kullanıcısı (Önizleme)](#key-vault-crypto-service-encryption-user-preview) | Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
 > | [Key Vault şifreleme kullanıcısı (Önizleme)](#key-vault-crypto-user-preview) | Anahtarları kullanarak şifreleme işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 12338af0-0e69-4776-kir7-57ae8d297424 |
 > | [Key Vault okuyucu (Önizleme)](#key-vault-reader-preview) | Anahtar kasalarının ve sertifika, anahtar ve gizli dizileri için meta verileri okuyun. Gizli içerik veya anahtar malzeme gibi hassas değerler okunamaz. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | 21090545-7CA7-4776-B22C-e363652d74d2 |
 > | [Key Vault gizli bilgileri Müdürü (Önizleme)](#key-vault-secrets-officer-preview) | Anahtar kasasının gizli dizileri üzerinde, izinleri yönet dışında herhangi bir işlem gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir. | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
@@ -225,7 +225,7 @@ Aşağıdaki tabloda, her yerleşik rolün bir kısa açıklaması ve benzersiz 
 
 ### <a name="contributor"></a>Katılımcı
 
-Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza izin vermez. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
+Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller atamanıza, Azure 'da atamaları yönetmenize veya görüntü galerileri paylaşmanıza izin vermez. [Daha fazla bilgi edinin](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Eylemler | Açıklama |
@@ -248,7 +248,7 @@ Tüm kaynakları yönetmek için tam erişim verir, ancak Azure RBAC 'de roller 
   "assignableScopes": [
     "/"
   ],
-  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, or share image galleries.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -4265,6 +4265,7 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/azureadonlyauthentications/* |  |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/Read | Yönetilen örneklerin listesini döndürün veya belirtilen yönetilen örnek için özellikleri alır. |
 > | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/ManagedInstances/azureadonlyauthentications/* |  |
+> | [Microsoft. Security/Sqlgüvenlik](resource-provider-operations.md#microsoftsecurity)açıcısı |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -4326,7 +4327,8 @@ SQL yönetilen örnekleri ve gerekli ağ yapılandırmasını yönetmenizi sağl
         "Microsoft.Support/*",
         "Microsoft.Sql/servers/azureADOnlyAuthentications/*",
         "Microsoft.Sql/managedInstances/read",
-        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*"
+        "Microsoft.Sql/managedInstances/azureADOnlyAuthentications/*",
+        "Microsoft.Security/sqlVulnerabilityAssessments/*"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6191,7 +6193,7 @@ Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleş
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Rolleri ve rol atamalarını oku |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/Read | Tümleştirme hizmeti ortamını okur. |
-> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/Join/Action | Tümleştirme Hizmeti Ortamı birleştirir. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/ıntegrationserviceenvironments/*/Join/Action |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -6213,7 +6215,7 @@ Geliştiricilerin, tümleştirme hizmeti ortamlarında iş akışları, tümleş
         "Microsoft.Authorization/*/read",
         "Microsoft.Support/*",
         "Microsoft.Logic/integrationServiceEnvironments/read",
-        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+        "Microsoft.Logic/integrationServiceEnvironments/*/join/action"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6688,6 +6690,7 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
 > | --- | --- |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Dataconnectorscheckgereksinims/Action | Kullanıcı yetkilendirmesini ve lisansını denetle |
+> | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Automationkurallarını/* |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
 > | [Microsoft. Securityınsights](resource-provider-operations.md#microsoftsecurityinsights)/Threatıntelligence/Indicators/appendtags/Action | Tehdit zekası göstergesine Etiketler Ekle |
@@ -6732,6 +6735,7 @@ Azure Sentinel Yanıtlayıcı [daha fazla bilgi](../sentinel/roles.md)
       "actions": [
         "Microsoft.SecurityInsights/*/read",
         "Microsoft.SecurityInsights/dataConnectorsCheckRequirements/action",
+        "Microsoft.SecurityInsights/automationRules/*",
         "Microsoft.SecurityInsights/cases/*",
         "Microsoft.SecurityInsights/incidents/*",
         "Microsoft.SecurityInsights/threatIntelligence/indicators/appendTags/action",
@@ -7004,7 +7008,7 @@ Anahtar kasasının anahtarları üzerinde, izinleri yönet dışında herhangi 
 }
 ```
 
-### <a name="key-vault-crypto-service-encryption-preview"></a>Key Vault şifreleme hizmeti şifrelemesi (Önizleme)
+### <a name="key-vault-crypto-service-encryption-user-preview"></a>Key Vault şifreleme hizmeti şifreleme kullanıcısı (Önizleme)
 
 Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekleştirin. Yalnızca ' Azure rol tabanlı erişim denetimi ' izin modelini kullanan anahtar kasaları için geçerlidir.
 
@@ -7041,7 +7045,7 @@ Anahtarların meta verilerini okuyun ve sarmalama/sarmalama işlemleri gerçekle
       "notDataActions": []
     }
   ],
-  "roleName": "Key Vault Crypto Service Encryption (preview)",
+  "roleName": "Key Vault Crypto Service Encryption User (preview)",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -7630,7 +7634,7 @@ Azure Laboratuvar hesaplarınız altında yeni laboratuvarlar oluşturmanızı s
 }
 ```
 
-## <a name="monitor"></a>İzleyici
+## <a name="monitor"></a>İzleme
 
 
 ### <a name="application-insights-component-contributor"></a>Application Insights bileşeni Katılımcısı
@@ -8455,6 +8459,7 @@ Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (ö
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Yapılandırma al |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Önerileri okur |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. faturalandırma](resource-provider-operations.md#microsoftbilling)/Billingproperty/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -8481,7 +8486,8 @@ Maliyetleri görüntüleyebilir ve maliyet yapılandırmasını yönetebilir (ö
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8510,6 +8516,7 @@ Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçel
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Yapılandırma al |
 > | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Önerileri okur |
 > | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/Managementgroups/Read | Kimliği doğrulanmış kullanıcı için Yönetim gruplarını listeleyin. |
+> | [Microsoft. faturalandırma](resource-provider-operations.md#microsoftbilling)/Billingproperty/Read |  |
 > | **NotActions** |  |
 > | *yok* |  |
 > | **Veri eylemleri** |  |
@@ -8536,7 +8543,8 @@ Maliyet verilerini ve yapılandırmayı görüntüleyebilir (örneğin, bütçel
         "Microsoft.Support/*",
         "Microsoft.Advisor/configurations/read",
         "Microsoft.Advisor/recommendations/read",
-        "Microsoft.Management/managementGroups/read"
+        "Microsoft.Management/managementGroups/read",
+        "Microsoft.Billing/billingProperty/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -8603,8 +8611,8 @@ Herhangi bir kullanıcıyı/hizmeti, Connectedkümeler kaynağı oluşturmak üz
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Abonelik işlem sonuçlarını alın. |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Aboneliklerin listesini alır. |
 > | [Microsoft. resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Read | Kaynak gruplarını alır veya listeler. |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/Connectedclusters/Write | Connectedkümeler yazar |
-> | [Microsoft. Kubernetes](resource-provider-operations.md#microsoftkubernetes)/Connectedclusters/Read | Connectedkümelerini oku |
+> | Microsoft. Kubernetes/Connectedkümeler/yazma |  |
+> | Microsoft. Kubernetes/Connectedkümeler/okuma |  |
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Destek bileti oluşturma ve güncelleştirme |
 > | **NotActions** |  |
 > | *yok* |  |

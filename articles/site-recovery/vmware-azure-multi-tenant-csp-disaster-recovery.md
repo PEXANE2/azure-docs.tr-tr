@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 334cbef7460306ef2954881a1cab918573e1e371
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb2a8a7bb14758ab21eb2183a119f456b53c8562
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400647"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654958"
 ---
 # <a name="set-up-vmware-disaster-recovery-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>Bulut çözümü sağlayıcısı (CSP) programıyla çok kiracılı bir ortamda VMware olağanüstü durum kurtarmayı ayarlama
 
@@ -22,7 +22,7 @@ ms.locfileid: "91400647"
 
 Bu makalede, bir iş ortağının, çok kiracılı bir VMware çoğaltma senaryosunda CSP aracılığıyla kiracı abonelikleri oluşturup yönetebileceğini açıklar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 VMware çoğaltmasını ayarlamak için şunları yapmanız gerekir:
 
@@ -65,24 +65,24 @@ Artık Azure portal kiracının tüm Site Recovery işlemlerini gerçekleştireb
 ## <a name="assign-tenant-access-to-the-subscription"></a>Aboneliğe kiracı erişimi atama
 
 1. Olağanüstü durum kurtarma altyapısının ayarlanmış olduğundan emin olun. İş ortakları, olağanüstü durum kurtarmanın yönetilip yönetilmediği veya self servis olmasından bağımsız olarak, CSP portalı aracılığıyla kiracı aboneliklerine erişir. Kasayı ayarlayın ve altyapıyı kiracı aboneliklerine kaydedin.
-2. Kiracıyı [oluşturduğunuz hesapla](#create-a-tenant-account)birlikte sağlayın.
-3. Aşağıdaki şekilde, CSP portalı aracılığıyla kiracı aboneliğine yeni bir kullanıcı ekleyebilirsiniz:
+1. Kiracıyı [oluşturduğunuz hesapla](#create-a-tenant-account)birlikte sağlayın.
+1. Aşağıdaki şekilde, CSP portalı aracılığıyla kiracı aboneliğine yeni bir kullanıcı ekleyebilirsiniz:
 
-    a) kiracının CSP aboneliği sayfasına gidin ve ardından **Kullanıcılar ve lisanslar** seçeneğini belirleyin.
+    1. Kiracının CSP aboneliği sayfasına gidin ve ardından **Kullanıcılar ve lisanslar** seçeneğini belirleyin.
 
-      ![Kiracının CSP abonelik sayfası](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
+       ![Kiracının CSP abonelik sayfası](./media/vmware-azure-multi-tenant-csp-disaster-recovery/users-and-licences.png)
 
-    b) şimdi ilgili ayrıntıları girerek ve izinler ' i seçerek ya da bir CSV dosyasındaki kullanıcı listesini karşıya yükleyerek yeni bir kullanıcı oluşturun.
-    
-    c) yeni bir kullanıcı oluşturduktan sonra, Azure portal geri dönün. **Abonelik** sayfasında, ilgili aboneliği seçin.
+    1. Şimdi ilgili ayrıntıları girerek ve izinler ' i seçerek ya da bir CSV dosyasındaki kullanıcı listesini karşıya yükleyerek yeni bir kullanıcı oluşturun.
 
-    d) **erişim denetimi (IAM)** öğesini seçin ve ardından **rol atamaları**' na tıklayın.
+    1. Yeni bir kullanıcı oluşturduktan sonra, Azure portal geri dönün. **Abonelik** sayfasında, ilgili aboneliği seçin.
 
-    e) ilgili erişim düzeyiyle bir kullanıcı eklemek için **rol ataması Ekle** ' ye tıklayın. CSP portalı üzerinden oluşturulan kullanıcılar rol atamaları sekmesinde görüntülenir.
+    1. **Erişim denetimi (IAM)** öğesini seçin ve ardından **rol atamaları**' na tıklayın.
 
-      ![Kullanıcı ekleme](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+    1. İlgili erişim düzeyiyle bir kullanıcı eklemek için **rol ataması Ekle** ' ye tıklayın. CSP portalı üzerinden oluşturulan kullanıcılar rol atamaları sekmesinde görüntülenir.
 
-- Çoğu yönetim işlemi için *katkıda* bulunan rolü yeterlidir. Bu erişim düzeyine sahip kullanıcılar, erişim düzeyleri ( *sahip*düzeyi erişim için gerekli) dışında bir abonelik üzerinde her şeyi gerçekleştirebilir.
+        ![Kullanıcı ekleme](./media/vmware-azure-multi-tenant-csp-disaster-recovery/add-user-subscription.png)
+
+- Çoğu yönetim işlemi için *katkıda* bulunan rolü yeterlidir. Bu erişim düzeyine sahip kullanıcılar, erişim düzeyleri ( *sahip* düzeyi erişim için gerekli) dışında bir abonelik üzerinde her şeyi gerçekleştirebilir.
 - Site Recovery Ayrıca, erişim düzeylerini gerektiği şekilde kısıtlamak için kullanılabilen üç [önceden tanımlı kullanıcı rolü](site-recovery-role-based-linked-access-control.md)de vardır.
 
 ## <a name="multi-tenant-environments"></a>Çok kiracılı ortamlar

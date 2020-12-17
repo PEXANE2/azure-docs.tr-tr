@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8fa823620d6d1306260d719cbabaa3d815cc0d09
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3b29245aed1b2c7767c340cbe8cd35dfa38610b9
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505452"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656691"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Izleyici 'de çalışma alanı verilerini dışarı aktarma Log Analytics (Önizleme)
 Azure Izleyici 'de Log Analytics çalışma alanı verileri dışarı aktarma işlemi, Log Analytics çalışma alanınızdaki seçili tablolardan verileri sürekli olarak bir Azure depolama hesabına veya Azure Event Hubs toplanarak dışarı aktaralmanıza olanak sağlar. Bu makalede, bu özellik hakkında ayrıntılar ve çalışma alanlarınızdaki veri dışarı aktarmayı yapılandırma adımları sağlanmaktadır.
@@ -58,7 +58,7 @@ Log Analytics çalışma alanı verileri dışarı aktarma bir Log Analytics ça
 ## <a name="data-completeness"></a>Veri bütünlüğü
 Verilerin dışarı aktarılması, hedefin kullanılamaz durumda olması durumunda 30 dakikaya kadar veri göndermeyi yeniden denemeye devam edecektir. 30 dakika sonra hala kullanılamıyorsa, veriler hedef kullanılabilir olana kadar atılır.
 
-## <a name="cost"></a>Maliyet
+## <a name="cost"></a>Cost
 Şu anda veri dışa aktarma özelliği için ek ücret alınmaz. Veri dışa aktarma fiyatlandırması gelecekte duyurulacaktır ve faturalandırma başlamadan önce bir uyarı verilir. Bildirim süresinden sonra veri dışa aktarmayı kullanmaya devam etmeyi seçerseniz, ilgili ücret üzerinden faturalandırılırsınız.
 
 ## <a name="export-destinations"></a>Hedefleri dışarı aktar
@@ -480,7 +480,7 @@ Desteklenen tablolar şu anda aşağıda belirtilenler ile sınırlıdır. Kıs�
 | NWConnectionMonitorTestResult | |
 | NWConnectionMonitorTestResult | |
 | Officeetkinliği | Kısmi destek. Office 365 ' den Web kancaları aracılığıyla alınacak verilerden bazıları Log Analytics. Bu veriler şu anda dışarıya aktarılmamış. |
-| İşlem | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
+| Çalışma | Kısmi destek. Bazı veriler dışarı aktarma için desteklenmeyen iç hizmetlerden alınır. Bu veriler şu anda dışarıya aktarılmamış. |
 | Perf | Kısmi destek. Şu anda yalnızca Windows performans verileri destekleniyor. Linux performans verileri şu anda dışarıya aktarılmamış. |
 | ProtectionStatus | |
 | Sccmassessmentönerisi | |

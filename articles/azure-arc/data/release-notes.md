@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 12/09/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935ba888352d2454a609a40866ef10ccf13a2dac
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 2c9b239269aa00255aa08d6c233cd7978b253d94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605471"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653580"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Sürüm notları-Azure Arc etkin veri Hizmetleri (Önizleme)
 
@@ -29,7 +29,7 @@ Azure Data CLı ( `azdata` ) sürüm numarası: 20.2.5. Adresinden indirin [http
 SQL yönetilen örneği ve PostgreSQL hiper ölçek için uç noktalarını, Azure Data CLı ( `azdata` ) ile ve komutlarını kullanarak görüntüleyin `azdata arc sql endpoint list` `azdata arc postgres endpoint list` .
 
 Azure Data Studio kullanarak SQL yönetilen örnek kaynağını (CPU çekirdeği ve bellek) isteklerini ve sınırlarını düzenleyin.
-     
+
 Azure Arc etkin PostgreSQL Hyperscale artık, her iki sürüm 11 ve 12 ' den PostgreSQL için tam yedekleme geri yüklemeye ek olarak zaman içinde nokta geri yüklemeye olanak sağlar. Zaman içindeki nokta geri yükleme özelliği, geri yüklenecek belirli bir tarih ve saati belirtmenize olanak tanır.
 
 Azure Arc 'ın hiper ölçek etkin PostgreSQL için adlandırma kuralı değişti. Şu biçimdedir: ServergroupName {r, s}-_n_. Örneğin, üç düğüm içeren bir sunucu grubu, bir düzenleyici düğümü ve iki çalışan düğümü şöyle temsil edilir:
@@ -127,7 +127,7 @@ Azure Arc etkin veri Hizmetleri genel önizleme için kullanıma sunuldu. Yay et
 Yönergeler için bkz. [Azure Arc etkin veri Hizmetleri nedir?](overview.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-  
+
 > **Yalnızca bir şeyi denemek mi istiyorsunuz?**  
 > AKS, AWS elastik Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) veya bir Azure VM 'de [Azure Arc Jumpstart](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) ile hızlı bir şekilde çalışmaya başlayın.
 

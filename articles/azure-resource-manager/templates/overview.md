@@ -2,13 +2,13 @@
 title: Şablonlara genel bakış
 description: Kaynak dağıtımı için Azure Resource Manager şablonları (ARM şablonları) kullanmanın avantajlarını açıklar.
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: da091d09f6d242d4b98903a8dcd76fe305e578b8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/17/2020
+ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498005"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657320"
 ---
 # <a name="what-are-arm-templates"></a>ARM şablonları nelerdir?
 
@@ -129,6 +129,7 @@ Katmanlarınızın farklı yaşam döngülerine sahip olacağını düşünüyor
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Şablon oluşturma sürecinde size kılavuzluk eden adım adım bir öğretici için bkz. [öğretici: Ilk ARM şablonunuzu oluşturma ve dağıtma](template-tutorial-create-first-template.md).
+* Microsoft Learn üzerinde bir Kılavuzlu dizi modülle ARM şablonları hakkında bilgi edinmek için bkz. [ARM şablonlarını kullanarak Azure 'da kaynakları dağıtma ve yönetme](/learn/paths/deploy-manage-resource-manager-templates/).
 * Şablon dosyalarındaki özellikler hakkında daha fazla bilgi için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
 * Şablonları dışarı aktarma hakkında bilgi edinmek için bkz. [hızlı başlangıç: Azure Portal kullanarak ARM şablonları oluşturma ve dağıtma](quickstart-create-templates-use-the-portal.md).
 * Yaygın soruların yanıtları için bkz. [ARM şablonları hakkında sık sorulan sorular](frequently-asked-questions.md).

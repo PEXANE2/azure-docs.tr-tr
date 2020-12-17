@@ -3,42 +3,115 @@ title: IoT Tak Çalıştır dijital ikizlerini anlama
 description: IoT Tak ve Kullan dijital TWINS 'i nasıl kullandığını anlayın
 author: prashmo
 ms.author: prashmo
-ms.date: 07/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: f13230c7bd88a9c3cf043fc1881a34f6b7ce6fe7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 99c957e5bf6ffe69c94e109796590f5ab975c3cf
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495330"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656895"
 ---
 # <a name="understand-iot-plug-and-play-digital-twins"></a>IoT Tak Çalıştır dijital ikizlerini anlama
 
-IoT Tak ve Kullan cihazı, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) şeması tarafından tanımlanan bir modeli uygular. Model, belirli bir cihazın sahip olduğu bileşenler, özellikler, komutlar ve telemetri iletileri kümesini açıklar. Bir IoT Hub 'ına ilk kez bağlantı Tak ve Kullan bir cihaz ikizi ve bir Digital ikizi başlatılır.
+IoT Tak ve Kullan cihazı, [dijital TWINS tanım dili (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) şeması tarafından tanımlanan bir modeli uygular. Model, belirli bir cihazın sahip olduğu bileşenler, özellikler, komutlar ve telemetri iletileri kümesini açıklar.
 
 IoT Tak ve Kullan DTDL sürüm 2 kullanır. Bu sürüm hakkında daha fazla bilgi için bkz. GitHub 'da [dijital TWINS tanım dili (DTDL)-sürüm 2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) belirtimi.
 
-DTDL, IoT Tak ve Kullan özel değildir. [Azure dijital TWINS](../digital-twins/overview.md)gibi diğer IoT Hizmetleri, binalar ve enerji ağları gibi tüm ortamları temsil etmek için bunu kullanır. Daha fazla bilgi için bkz. [Azure dijital TWINS 'de ikizi modellerini anlama](../digital-twins/concepts-models.md).
+> [!NOTE]
+> DTDL, IoT Tak ve Kullan özel değildir. [Azure dijital TWINS](../digital-twins/overview.md)gibi diğer IoT Hizmetleri, binalar ve enerji ağları gibi tüm ortamları temsil etmek için bunu kullanır.
 
-Bu makalede, bileşenlerin ve özelliklerin bir cihaz ikizi *istenen* ve *bildirilen* bölümlerinde nasıl temsil edildiği açıklanmaktadır. Ayrıca bu kavramların ilgili dijital ikizle nasıl eşlendiği de açıklanır.
+Azure IoT hizmeti SDK 'Ları, bir hizmetin bir cihazın dijital ikizi etkileşime girmesine izin veren API 'Leri içerir. Örneğin, bir hizmet, dijital ikizi cihaz özelliklerini okuyabilir veya bir cihazdaki komutu çağırmak için dijital ikizi kullanabilir. Daha fazla bilgi için bkz. [IoT Hub Digital ikizi örnekleri](concepts-developer-guide-service.md#iot-hub-digital-twin-examples).
 
-Bu makaledeki IoT bağlama ve yürütme aygıtı, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) bileşeniyle [sıcaklık denetleyicisi modelini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) uygular.
+Bu makaledeki örnek IoT Tak ve Kullan cihazı, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) bileşenlerine sahip bir [sıcaklık denetleyicisi modeli](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) uygular.
 
 ## <a name="device-twins-and-digital-twins"></a>Cihaz ikları ve dijital TWINS
 
-Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. Daha fazla bilgi edinmek için bkz. [IoT Hub 'da cihaz TWINS 'ı anlama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md). Hem cihaz hem de çözüm oluşturucular, IoT Tak ve Kullan kurallarını kullanarak cihaz ve çözümleri uygulamak için aynı cihaz Ikizi API 'Leri ve SDK 'ları kullanmaya devam edebilir.
+Ayrıca, dijital bir ikizi de Azure IoT Hub her bağlı cihaz için bir *cihaz ikizi* bulundurur. Bir cihaz ikizi, bir cihazın özelliklerinin temsili olan dijital bir ikizi benzerdir. Azure IoT hizmeti SDK 'Ları, cihaz ikikiyle etkileşime yönelik API 'Leri içerir.
 
-Dijital Ikizi API 'Leri, bileşenler, Özellikler ve komutlar gibi dijital TWINS tanım dili 'nde (DTDL) üst düzey yapılar üzerinde çalışır. Dijital Ikizi API 'Leri, çözüm oluşturucuların IoT Tak ve Kullan çözümleri oluşturmalarına daha kolay hale getirir.
+IoT Hub 'ı, bir IoT Tak ve Kullan cihazının ilk bağlanışında bir Digital ikizi ve bir cihaz ikizi başlatır.
 
-Bir cihaz ikizi, yazılabilir bir özelliğin durumu istenen ve bildirilen bölümler arasında bölünür. Tüm salt okunurdur özellikler, bildirilen bölümünde bulunur.
+Cihaz TWINS, meta veriler, konfigürasyonlar ve koşullar dahil olmak üzere cihaz durum bilgilerini depolayan JSON belgelerdir. Daha fazla bilgi için bkz. [IoT Hub hizmeti istemci örnekleri](concepts-developer-guide-service.md#iot-hub-service-client-examples). Hem cihaz hem de çözüm oluşturucular, IoT Tak ve Kullan kurallarını kullanarak cihaz ve çözümleri uygulamak için aynı cihaz Ikizi API 'Leri ve SDK 'ları kullanmaya devam edebilir.
+
+Digital ikizi API 'Leri, bileşenler, Özellikler ve komutlar gibi üst düzey DTDL yapıları üzerinde çalışır. Dijital ikizi API 'Leri, çözüm oluşturucuların IoT Tak ve Kullan çözümleri oluşturmalarına daha kolay hale getirir.
+
+Bir cihaz ikizi, yazılabilir bir özelliğin durumu *istenen özellikler* ve *bildirilen özellikler* bölümlerine bölünür. Tüm salt okunurdur özellikler, bildirilen Özellikler bölümünde bulunur.
 
 Dijital bir ikizi, özelliğin geçerli ve istenen durumunun birleştirilmiş bir görünümü vardır. Belirli bir özelliğin eşitleme durumu karşılık gelen varsayılan bileşen `$metadata` bölümünde saklanır.
 
-### <a name="digital-twin-json-format"></a>Digital ikizi JSON biçimi
+### <a name="device-twin-json-example"></a>Device ikizi JSON örneği
 
-JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanları içerir:
+Aşağıdaki kod parçacığında, bir ikizi, JSON nesnesi olarak biçimlendirilen bir IoT Tak ve Kullan cihazı gösterilmektedir:
+
+```json
+{
+  "deviceId": "sample-device",
+  "modelId": "dtmi:com:example:TemperatureController;1",
+  "version": 15,
+  "properties": {
+    "desired": {
+      "thermostat1": {
+        "__t": "c",
+        "targetTemperature": 21.8
+      },
+      "$metadata": {...},
+      "$version": 4
+    },
+    "reported": {
+      "serialNumber": "alwinexlepaho8329",
+      "thermostat1": {
+        "maxTempSinceLastReboot": 25.3,
+        "__t": "c",
+        "targetTemperature": {
+          "value": 21.8,
+          "ac": 200,
+          "ad": "Successfully executed patch",
+        }
+      },
+      "$metadata": {...},
+      "$version": 11
+    }
+  }
+}
+```
+
+### <a name="digital-twin-example"></a>Digital ikizi örneği
+
+Aşağıdaki kod parçacığında, JSON nesnesi olarak biçimlendirilen dijital ikizi gösterilmektedir:
+
+```json
+{
+  "$dtId": "sample-device",
+  "serialNumber": "alwinexlepaho8329",
+  "thermostat1": {
+    "maxTempSinceLastReboot": 25.3,
+    "targetTemperature": 21.8,
+    "$metadata": {
+      "targetTemperature": {
+        "desiredValue": 21.8,
+        "desiredVersion": 4,
+        "ackVersion": 4,
+        "ackCode": 200,
+        "ackDescription": "Successfully executed patch",
+        "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+      },
+      "maxTempSinceLastReboot": {
+         "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+      }
+    }
+  },
+  "$metadata": {
+    "$model": "dtmi:com:example:TemperatureController;1",
+    "serialNumber": {
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
+    }
+  }
+}
+```
+
+Aşağıdaki tablo, Digital ikizi JSON nesnesindeki alanları açıklar:
 
 | Alan adı | Description |
 | --- | --- |
@@ -55,83 +128,13 @@ JSON nesnesi olarak temsil edildiğinde, dijital bir ikizi aşağıdaki alanlar�
 | `{componentName}.{propertyName}` | JSON 'daki bileşen özelliğinin değeri |
 | `{componentName}.$metadata` | Bileşen için meta veri bilgileri. |
 
-#### <a name="device-twin-sample"></a>Cihaz Ikizi örneği
-
-Aşağıdaki kod parçacığında, bir ikizi, JSON nesnesi olarak biçimlendirilen bir IoT Tak ve Kullan cihazı gösterilmektedir:
-
-```json
-{
-    "deviceId": "sample-device",
-    "modelId": "dtmi:com:example:TemperatureController;1",
-    "version": 15,
-    "properties": {
-        "desired": {
-            "thermostat1": {
-                "__t": "c",
-                "targetTemperature": 21.8
-            },
-            "$metadata": {...},
-            "$version": 4
-        },
-        "reported": {
-            "serialNumber": "alwinexlepaho8329",
-            "thermostat1": {
-                "maxTempSinceLastReboot": 25.3,
-                "__t": "c",
-                "targetTemperature": {
-                    "value": 21.8,
-                    "ac": 200,
-                    "ad": "Successfully executed patch",
-                }
-            },
-            "$metadata": {...},
-            "$version": 11
-        }
-    }
-}
-```
-
-#### <a name="digital-twin-sample"></a>Dijital Ikizi örneği
-
-Aşağıdaki kod parçacığında, JSON nesnesi olarak biçimlendirilen dijital ikizi gösterilmektedir:
-
-```json
-{
-    "$dtId": "sample-device",
-    "serialNumber": "alwinexlepaho8329",
-    "thermostat1": {
-        "maxTempSinceLastReboot": 25.3,
-        "targetTemperature": 21.8,
-        "$metadata": {
-            "targetTemperature": {
-                "desiredValue": 21.8,
-                "desiredVersion": 4,
-                "ackVersion": 4,
-                "ackCode": 200,
-                "ackDescription": "Successfully executed patch",
-                "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-            },
-            "maxTempSinceLastReboot": {
-                "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-            }
-        }
-    },
-    "$metadata": {
-        "$model": "dtmi:com:example:TemperatureController;1",
-        "serialNumber": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
-    }
-}
-```
-
 ### <a name="properties"></a>Özellikler
 
 Özellikler, bir varlığın durumunu temsil eden veri alanlarıdır (birçok nesne odaklı programlama dilinde özellikler gibi).
 
 #### <a name="read-only-property"></a>Salt okunurdur özelliği
 
-Manızı
+DTDL şeması:
 
 ```json
 {
@@ -152,9 +155,9 @@ Aşağıdaki kod parçacıkları, özelliğinin yan yana JSON gösterimini göst
 
 ```json
 "properties": {
-    "reported": {
-        "serialNumber": "alwinexlepaho8329"
-    }
+  "reported": {
+    "serialNumber": "alwinexlepaho8329"
+  }
 }
 ```
 
@@ -171,15 +174,17 @@ Aşağıdaki kod parçacıkları, özelliğinin yan yana JSON gösterimini göst
 
 #### <a name="writable-property"></a>Yazılabilir Özellik
 
-Ayrıca, cihaz varsayılan bileşende aşağıdaki yazılabilir özelliğe de sahip olalım:
+Aşağıdaki örneklerde varsayılan bileşende yazılabilir bir özellik gösterilmektedir.
+
+DTDL:
 
 ```json
 {
-    "@type": "Property",
-    "name": "fanSpeed",
-    "displayName": "Fan Speed",
-    "writable": true,
-    "schema": "double"
+  "@type": "Property",
+  "name": "fanSpeed",
+  "displayName": "Fan Speed",
+  "writable": true,
+  "schema": "double"
 }
 ```
 
@@ -189,19 +194,19 @@ Ayrıca, cihaz varsayılan bileşende aşağıdaki yazılabilir özelliğe de sa
 
 ```json
 {
-    "properties": {
-        "desired": {
-            "fanSpeed": 2.0,
-        },
-        "reported": {
-            "fanSpeed": {
-                "value": 3.0,
-                "ac": 200,
-                "av": 1,
-                "ad": "Successfully executed patch version 1"
-            }
-        }
+  "properties": {
+    "desired": {
+      "fanSpeed": 2.0,
     },
+    "reported": {
+      "fanSpeed": {
+        "value": 3.0,
+        "ac": 200,
+        "av": 1,
+        "ad": "Successfully executed patch version 1"
+      }
+    }
+  },
 }
 ```
 
@@ -211,17 +216,17 @@ Ayrıca, cihaz varsayılan bileşende aşağıdaki yazılabilir özelliğe de sa
 
 ```json
 {
-    "fanSpeed": 3.0,
-    "$metadata": {
-        "fanSpeed": {
-            "desiredValue": 2.0,
-            "desiredVersion": 2,
-            "ackVersion": 1,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch version 1",
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "fanSpeed": 3.0,
+  "$metadata": {
+    "fanSpeed": {
+      "desiredValue": 2.0,
+      "desiredVersion": 2,
+      "ackVersion": 1,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch version 1",
+      "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -233,8 +238,7 @@ Bu örnekte, `3.0` `fanSpeed` cihaz tarafından bildirilen özelliğin geçerli 
 ### <a name="components"></a>Bileşenler
 
 Bileşenler, model arabiriminin diğer arabirimlerin derlemesi olarak oluşturulmasına izin verir.
-Model olarak tanımlanan [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) arabirimini göz önünde bulundurun.
-Bu arabirim artık [ısı denetleyicisi modeli](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)tanımlarken bir bileşen thermostat1 (ve başka bir bileşen thermostat2) olarak eklenebilir.
+Örneğin, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) arabirimi, bileşenler olarak `thermostat1` ve  `thermostat2` [sıcaklık denetleyicisi model](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) modelinde eklenebilir.
 
 Bir cihaz ikizi, bir bileşen işaret tarafından tanımlanır `{ "__t": "c"}` . Dijital bir ikizi, `$metadata` bir bileşeni işaret ediyor.
 
@@ -251,30 +255,30 @@ Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösteri
 
 ```json
 "properties": {
-    "desired": {
-        "thermostat1": {
-            "__t": "c",
-            "targetTemperature": 21.8
-        },
-        "$metadata": {
-        },
-        "$version": 4
+  "desired": {
+    "thermostat1": {
+      "__t": "c",
+      "targetTemperature": 21.8
     },
-    "reported": {
-        "thermostat1": {
-            "maxTempSinceLastReboot": 25.3,
-            "__t": "c",
-            "targetTemperature": {
-                "value": 21.8,
-                "ac": 200,
-                "ad": "Successfully executed patch",
-                "av": 4
-            }
-        },
-        "$metadata": {
-        },
-        "$version": 11
-    }
+    "$metadata": {
+    },
+    "$version": 4
+  },
+  "reported": {
+    "thermostat1": {
+      "maxTempSinceLastReboot": 25.3,
+      "__t": "c",
+      "targetTemperature": {
+        "value": 21.8,
+        "ac": 200,
+        "ad": "Successfully executed patch",
+        "av": 4
+      }
+    },
+    "$metadata": {
+    },
+    "$version": 11
+  }
 }
 ```
 
@@ -284,21 +288,21 @@ Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösteri
 
 ```json
 "thermostat1": {
-    "maxTempSinceLastReboot": 25.3,
-    "targetTemperature": 21.8,
-    "$metadata": {
-        "targetTemperature": {
-            "desiredValue": 21.8,
-            "desiredVersion": 4,
-            "ackVersion": 4,
-            "ackCode": 200,
-            "ackDescription": "Successfully executed patch",
-            "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
-        },
-        "maxTempSinceLastReboot": {
-            "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
-        }
+  "maxTempSinceLastReboot": 25.3,
+  "targetTemperature": 21.8,
+  "$metadata": {
+    "targetTemperature": {
+      "desiredValue": 21.8,
+      "desiredVersion": 4,
+      "ackVersion": 4,
+      "ackCode": 200,
+      "ackDescription": "Successfully executed patch",
+      "lastUpdateTime": "2020-07-17T06:11:04.9309159Z"
+    },
+    "maxTempSinceLastReboot": {
+       "lastUpdateTime": "2020-07-17T06:10:31.9609233Z"
     }
+  }
 }
 ```
 
@@ -307,7 +311,7 @@ Aşağıdaki kod parçacıkları, bileşenin yan yana JSON gösterimini gösteri
 
 ## <a name="digital-twin-apis"></a>Dijital ikizi API 'Leri
 
-Azure dijital TWINS, Device Digital ikizi 'yi yönetmek için **Digital ikizi**, **Update Digital Ikizi**, **Component komutunu çağır** ve **Invoke komutunu** kullanarak donatılmıştır. [REST API 'leri](/rest/api/iothub/service/digitaltwin) doğrudan ya da bir [hizmet SDK 'sı](../iot-pnp/libraries-sdks.md)aracılığıyla kullanabilirsiniz.
+Dijital ikizi API 'Leri, dijital **Ikizi al**, **dijital Ikizi güncelleştirme**, **bileşen çağırma** ve **komut işlemlerini çağırma** , dijital bir ikizi yönetme içerir. [REST API 'leri](/rest/api/iothub/service/digitaltwin) doğrudan ya da bir [hizmet SDK 'sı](../iot-pnp/libraries-sdks.md)aracılığıyla kullanabilirsiniz.
 
 ## <a name="digital-twin-change-events"></a>Dijital ikiz değişiklik olayları
 

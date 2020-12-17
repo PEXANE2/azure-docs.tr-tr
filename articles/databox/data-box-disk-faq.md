@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: acaa0fdb1fa0e9a338f4e249622cad0115c6b58e
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 3df8f75a726639e87157a1aa7fd9ff4d35c0ef4f
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516446"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654634"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk: sık sorulan sorular
 
@@ -100,13 +100,11 @@ Bu sağlama süreleri *tahminlerdir*. Her sipariş işleme aşamasına ilişkin 
 **Data Box Disk sırası için tahmini sağlama süreleri:**
 
 1. Order Data Box Disk: birkaç dakika, portaldan
-2. Disk ayırma ve hazırlık: 1-2 iş günü
+2. Disk ayırma ve hazırlık: stok kullanılabilirliğine ve işlenecek bekleyen siparişlerin sayısına bağlı olarak 5 adede kadar iş gününe kadar
 3. Gönderim: 2-3 iş günü
-4. Müşteri sitesindeki veri kopyalama: verilerin, boyutun ve dosya sayısının yapısına bağlıdır
+4. Müşteri sitesindeki veri kopyalama: verilerin, boyutun ve dosya sayısının yapısına bağlıdır.
 5. İade gönderimi: 2-3 iş günü
-6. Veri merkezinde disk işleme: 1-2 iş günü
-7. Azure 'a veri yükleme: işlem tamamlandıktan hemen sonra ve disk bağlı olduğunda başlar. Karşıya yükleme süresi verilerin, boyutun ve dosya sayısının yapısına bağlıdır.
-
+6. Veri merkezinde işleme ve Azure 'a yükleme: işletimsel işlem tamamlanır tamamlanmaz ve disk bağlı olduğunda veri yükleme veri merkezinde başlar. Karşıya yükleme süresi verilerin, boyutun ve dosya sayısının yapısına bağlıdır.
 
 ## <a name="configure-and-connect"></a>Yapılandırma ve bağlanma
  

@@ -3,16 +3,16 @@ title: IoT Edge-Azure 'da canlı video Analizte doğrudan Yöntemler kullanma
 description: IoT Edge canlı video analizi, çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, bu konuda açıklanan kuralları temel alır.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091836"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656249"
 ---
 # <a name="direct-methods"></a>Doğrudan yöntemler
 
-IoT Edge canlı video analizi, IoT Hub çağrılabilen çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, başarılı veya başarısız olmaları durumunda (Kullanıcı tarafından belirtilen zaman aşımından sonra) bir HTTP çağrısına benzer bir cihazla bir istek-yanıt etkileşimini temsil eder. Bu yaklaşım, cihazın yanıt verip vermediği bağımsız olarak, anlık eylem kursunun farklı olduğu senaryolar için yararlıdır. Daha fazla bilgi için bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](../../iot-hub/iot-hub-devguide-direct-methods.md).
+IoT Edge canlı video analizi, IoT Hub çağrılabilen çeşitli doğrudan yöntemler sunar. Doğrudan Yöntemler, başarılı veya başarısız olmaları durumunda (Kullanıcı tarafından belirtilen zaman aşımından sonra) bir HTTP çağrısına benzer bir cihazla bir istek-yanıt etkileşimini temsil eder. Bu yaklaşım, cihazın yanıt verip verememesine bağlı olarak farklılık gösteren acil eylem senaryoları için yararlıdır. Daha fazla bilgi için bkz. [IoT Hub doğrudan yöntemleri anlama ve çağırma](../../iot-hub/iot-hub-devguide-direct-methods.md).
 
 Bu konu, bu yöntemleri ve kuralları açıklamaktadır.
 
@@ -98,7 +98,7 @@ Grafik modülü doğrulamaları gibi ayrıntılı doğrulama hataları hata ayr�
 }
 ```
 
-|Durum|    Ayrıntılı kod   |Açıklama|
+|Durum|    Ayrıntılı kod   |Description|
 |---|---|---|
 |400|   GraphValidationError|   Döngüler veya bölümlendirme gibi genel grafik hataları.|
 |400|   ModuleValidationError|  Modüle özgü doğrulama hataları.|
@@ -140,12 +140,12 @@ Bu doğrudan yöntem tek bir grafik topolojisi alır.
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Varlık bulundu|  200 |Yok
-|Genel Kullanıcı hataları    |400 aralığı  ||
-|Varlık bulunamadı   |404        ||
-|Genel sunucu hataları| 500 aralığı       ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Varlık bulundu | 200 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Varlık bulunamadı | 404 |  |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphtopologyset"></a>Graphtopologyıset
 
@@ -227,13 +227,13 @@ Tek bir grafik topolojisini siler.
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Varlık silindi|    200|    Yok|
-|Varlık bulunamadı|  204|    Yok|
-|Genel Kullanıcı hataları|   400 aralığı   ||
-|Grafik topolojisine bir veya daha fazla grafik örneği tarafından başvuruluyor| 409 |Graphtopologyuse|
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Varlık silindi | 200 | Yok |
+| Varlık bulunamadı | 204 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Grafik topolojisine bir veya daha fazla grafik örneği tarafından başvuruluyor | 409 | Graphtopologyuse |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphtopologylist"></a>Graphtopologyılist
 
@@ -278,18 +278,18 @@ Filtre ölçütleriyle eşleşen tüm grafik topolojilerinin bir listesini alır
 
 #### <a name="filter-support"></a>Filtre desteği
 
-|İşlem      |Alan (lar)   |İşleçler|
+|Çalışma |Alan (lar)    |İşleçler|
 |---|---|---|
 |$orderby|name  |ASC|
 
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Başarılı|   200 |Yok|
-|Genel Kullanıcı hataları|   400 aralığı   ||
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Başarılı | 200 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphinstanceget"></a>Graphınstanceget
 
@@ -323,12 +323,12 @@ Tek bir grafik örneği alır:
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Varlık bulundu   |200|   Yok|
-|Genel Kullanıcı hataları|   400 aralığı   ||
-|Varlık bulunamadı|  404 ||
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Varlık bulundu | 200 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Varlık bulunamadı | 404 |  |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphinstanceset"></a>Graphınstanceset
 
@@ -373,15 +373,15 @@ Anahtar yönleri:
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Var olan varlık güncelleştirildi    |200    |Yok|
-|Yeni varlık oluşturuldu|    201 |Yok|
-|Genel Kullanıcı hataları|   400 aralığı   ||
-|Grafik doğrulama hataları    |400|   GraphValidationError|
-|Modül doğrulama hataları|  400 |ModuleValidationError|
-|Kaynak doğrulama hataları |409    |ResourceValidationError|
-|Genel sunucu hataları  |500 aralığı||    
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Var olan varlık güncelleştirildi | 200 | Yok |
+| Yeni varlık oluşturuldu | 201 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Grafik doğrulama hataları | 400 | GraphValidationError |
+| Modül doğrulama hataları | 400 | ModuleValidationError |
+| Kaynak doğrulama hataları | 409 | ResourceValidationError |
+| Genel sunucu hataları | 500 aralığı |  |  |
 
 ### <a name="graphinstancedelete"></a>Graphınstancedelete
 
@@ -414,13 +414,13 @@ Anahtar yönleri:
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Grafik başarıyla silindi|    200|    Yok|
-|Grafik bulunamadı|   204|    Yok|
-|Genel Kullanıcı hataları    |400 aralığı  ||
-|Grafik "durduruldu" durumunda değil    |409    |OperationNotAllowedInState|
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Grafik başarıyla silindi | 200 | Yok |
+| Grafik bulunamadı | 204 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Grafik "durduruldu" durumunda değil | 409 | OperationNotAllowedInState |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphinstancelist"></a>Graphınstancelist
 
@@ -466,17 +466,17 @@ Filtre ölçütleriyle eşleşen tüm grafik örneklerinin listesini alır.
 
 #### <a name="filter-support"></a>Filtre desteği
 
-|İşlem  |   Alan (lar)|   İşleçler|
+|Çalışma  |   Alan (lar)|   İşleçler|
 |---|---|---|
 |$orderby|  name|   ASC|
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Başarılı    |200    |Yok|
-|Genel Kullanıcı hataları|   400 aralığı   ||
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Başarılı | 200 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphinstanceactivate"></a>Graphınstanceactivate
 
@@ -516,15 +516,15 @@ Anahtar yönleri
 
 #### <a name="status-codes"></a>Durum kodları
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Grafik başarıyla etkinleştirildi   |200    |Yok|
-|Yeni varlık oluşturuldu |201|   Yok|
-|Genel Kullanıcı hataları    |400 aralığı  ||
-|Modül doğrulama hataları   |400|   ModuleValidationError|
-|Kaynak doğrulama hataları|    409|    ResourceValidationError|
-|Grafik devre dışı bırakılıyor durumunda |409    |OperationNotAllowedInState|
-|Genel sunucu hataları| 500 aralığı   ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Grafik başarıyla etkinleştirildi | 200 | Yok |
+| Yeni varlık oluşturuldu | 201 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Modül doğrulama hataları | 400 | ModuleValidationError |
+| Kaynak doğrulama hataları | 409 | ResourceValidationError |
+| Grafik devre dışı bırakılıyor durumunda | 409 | OperationNotAllowedInState |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ### <a name="graphinstancedeactivate"></a>Graphınstancedeactivate
 
@@ -565,13 +565,13 @@ Anahtar yönleri:
 }
 ```
 
-|Koşul  |Durum kodu    |Ayrıntılı hata kodu|
-|---|---|---|
-|Grafik başarıyla etkinleştirildi   |200|   Yok|
-|Yeni varlık oluşturuldu |201|   Yok|
-|Genel Kullanıcı hataları    |400 aralığı  ||
-|Grafik etkinleştiriliyor durumunda   |409|   OperationNotAllowedInState|
-|Genel sunucu hataları  |500 aralığı  ||
+| Koşul | Durum kodu | Ayrıntılı hata kodu |
+|--|--|--|
+| Grafik başarıyla etkinleştirildi | 200 | Yok |
+| Yeni varlık oluşturuldu | 201 | Yok |
+| Genel Kullanıcı hataları | 400 aralığı |  |
+| Grafik etkinleştiriliyor durumunda | 409 | OperationNotAllowedInState |
+| Genel sunucu hataları | 500 aralığı |  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

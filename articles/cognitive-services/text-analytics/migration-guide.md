@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 56464268b95181af0379a1895d392cc3cc26624c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 6a71bcbfb8341098711e330cebf8545e1fd2751c
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980907"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656963"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Metin Analizi API'si sürüm 3. x ' e geçirin
-
-[!INCLUDE [v3 region availability](includes/v3-region-availability.md)]
 
 Metin Analizi API'si sürüm 2,1 kullanıyorsanız, bu makale uygulamanızı 3. x sürümünü kullanacak şekilde yükseltmenize yardımcı olur. Sürüm 3,0 genel kullanıma sunulmuştur ve genişletilmiş [adlandırılmış varlık tanıma (ner)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-features-and-versions) ve [model sürümü oluşturma](concepts/model-versioning.md)gibi yeni özellikler sunar. Bir v 3.1 (v 3.1-Preview. x) önizleme sürümü de bulunur ve bu da, [fikrinizi araştırma](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)gibi özellikler ekler. V2 'de kullanılan modeller gelecekteki güncelleştirmeleri almaz. 
 
@@ -97,7 +95,7 @@ JSON yanıtının örnekleri için başvuru belgelerine bakın.
 
 [!INCLUDE [Client library migration information](includes/client-library-migration-section.md)]
 
-## <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
+## <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
 
 ### <a name="feature-changes"></a>Özellik değişiklikleri 
 

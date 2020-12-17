@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: 3677d67f55cfccdc80245b2ec870ffa76b0a1940
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088674"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657133"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Windows Önyükleme Yöneticisi hata sorunlarını giderme-0xC0000225 "durum bulunamadı"
  
@@ -27,7 +27,7 @@ Bu makalede, bir Azure VM 'de 0xC0000225 hata kodu oluştuğunda oluşan sorunla
 
 ## <a name="symptoms"></a>Belirtiler
 
-VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, *0xc0000225*durum koduyla bir Windows 'un hata başlatma başarısız olduğunu görürsünüz.
+VM 'nin ekran görüntüsünü görüntülemek için [önyükleme tanılamayı](./boot-diagnostics.md) kullandığınızda, ekran görüntüsünde, *0xc0000225* durum koduyla bir Windows 'un hata başlatma başarısız olduğunu görürsünüz.
 
 Bu hata koduyla ilişkili dosya, sorunu çözmek için hangi adımların ele alınacağı hakkında bilgi sağlayacaktır. Uygun eylem kursu belirlemek için **dosyanın** metin bölümünü bulun.
 
@@ -110,7 +110,7 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
 
       ![Dosya sürümü vurgulanmış olarak ' cng.sys ' dosyasının Özellikler penceresi.](./media/troubleshoot-boot-error-status-not-found/5.png)
 
-1. Dosyayı **< BINARY.SYS >. old**olarak yeniden adlandırın ve **< BINARY.SYS >** dosyasını dosyanın adıyla değiştirin.
+1. Dosyayı **< BINARY.SYS >. old** olarak yeniden adlandırın ve **< BINARY.SYS >** dosyasını dosyanın adıyla değiştirin.
 
    Yukarıdaki adımdaki görüntüde, dosya **cng.sys** **cng.sys. old** olarak yeniden adlandırılacak
 
@@ -119,14 +119,14 @@ Bu durumda, **önyükleme yapılandırma verileri (BCD)** bozuk ya da **sanal sa
 
 1. Bozuk dosya yeniden adlandırıldığına göre, dosyayı iç deposundan geri yükleyerek dosyayı düzeltemedi.
    1. Bir **cmd** oturumu başlatın.
-   1. **\Windows\winsxs**dizinine gidin.
+   1. **\Windows\winsxs** dizinine gidin.
 
    1. Aşağıdaki komutu kullanarak bu bölümün başlangıcında bulunan ikiliyi arayın:
 
       `dir <BINARY WITH ".SYS" EXTENSION>  /s`
 
       Bu komut, dosyanın sahip olduğu tüm dosya sürümlerini listelecektir ve size bu bileşenin yol geçmişini verir.
-      
+
       Örneğin, **dir cng.sys** **dir cng.sys/s** olarak yeniden adlandırılır
 
    1. Listedeki dosyanın en son sürümünü (veya dilediğiniz herhangi birini) seçin ve önceki yolu ve aşağıdaki komutu kullanarak dosyayı **Windows\System32** klasörüne kopyalayın:
@@ -160,7 +160,7 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
 
    ![Tanıtıcı özniteliği vurgulanmış şekilde, 1. nesil bir VM 'de gösterilen Windows önyükleme yükleyicisi. Vurgulanan tanımlayıcı özniteliği benzersiz bir alfasayısal dize gösterir.](./media/troubleshoot-boot-error-status-not-found/7.png)
 
-   Yolu **\windows\system32\winload.exe**olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
+   Yolu **\windows\system32\winload.exe** olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
 
 1. 2. nesil VM 'Ler için, işletim sistemi diskinin çevrimiçi olduğunu ve bölüm sürücü harflerinin atandığını doğrulayın. Bu doğrulandığında, önyükleme kurulum bilgilerini toplayın.
    1. **Windows Search**'Te **disk yönetimi** yazın ve disk yönetimi konsolunu açın. Bu konsolu, onarım sanal makinenize bağlı disk numarasını ve BCD deposunu tutan Genişletilebilir Bellenim Arabirimi (EFı) bölümünü belirlemek için kullanın.
@@ -207,7 +207,7 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
 
          ![Windows önyükleme yükleyicisi, tanımlayıcı özniteliği vurgulanmış şekilde 2. nesil bir VM 'de gösterilir. Tanımlayıcı özniteliği vurgulanmış olarak varsayılan değerini gösterir.](./media/troubleshoot-boot-error-status-not-found/12.png)
 
-         Yolu **\windows\system32\wınload.exe**olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
+         Yolu **\windows\system32\wınload.exe** olan Windows önyükleme yükleyicisinin tanımlayıcısını aklınızda edin.
 
 1. Etkin bölümdeki OSDEVICE değişkeninin eksik olduğuna dikkat edin:
 
@@ -220,9 +220,9 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
    Tek bölümlü işletim sistemi diskleri için, ekleyin `BOOT` .
 
    > [!NOTE]
-   > Önyükleme yapılabilen klasör Windows klasörü **\Windows klasörüyle**aynı bölümde olacaktır.
+   > Önyükleme yapılabilen klasör Windows klasörü **\Windows klasörüyle** aynı bölümde olacaktır.
    > - 1. nesil VM 'Ler için önyüklenebilir klasör **(\Boot\BCD klasörü)**.
-   > - 2. nesil VM 'Lerin önyüklenebilir klasörü **Efi\microsoft\boot\bcd**şeklindedir.
+   > - 2. nesil VM 'Lerin önyüklenebilir klasörü **Efi\microsoft\boot\bcd** şeklindedir.
 
    1. nesil VM 'Ler için aşağıdaki komutu girin:
 
@@ -235,9 +235,9 @@ Bu bilgi toplama, bir **\Boot\BCD** dosyası olmadığında bir hata verirse, bu
    Birden çok bölüm işletim sistemi diski için, ekleyin `PARTITION=<LETTER OF WINDOWS FOLDER>:` .
 
    > [!NOTE]
-   > Önyükleme yapılabilen klasör büyük olasılıkla Windows klasörü **\Windows klasöründen**farklı bir bölümde yer alır.
+   > Önyükleme yapılabilen klasör büyük olasılıkla Windows klasörü **\Windows klasöründen** farklı bir bölümde yer alır.
    > - 1. nesil VM 'Ler için önyüklenebilir klasör **(\Boot\BCD klasörü)**.
-   > - 2. nesil VM 'Lerin önyüklenebilir klasörü **Efi\microsoft\boot\bcd**şeklindedir.
+   > - 2. nesil VM 'Lerin önyüklenebilir klasörü **Efi\microsoft\boot\bcd** şeklindedir.
 
    1. nesil VM 'Ler için aşağıdaki komutu girin:
 

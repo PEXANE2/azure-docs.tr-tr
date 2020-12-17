@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 568243c6fecf26510f6e9988907d1ccad103cdc2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: c6bac44e6f7212344463665840f180732970c3d4
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618961"
+ms.locfileid: "97657167"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -259,4 +259,6 @@ ServiceDeskWorkItemType_s = "ChangeRequest"
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[BT Hizmet Yönetimi Bağlayıcısı için ıTSM ürünleri/hizmetleri ekleyin](./itsmc-connections.md)
+[ITSM Bağlayıcısı genel bakış](./itsmc-overview.md) 
+ BT Hizmet Yönetimi Bağlayıcısı için ıTSM [ürünleri/hizmetleri ekleyin](./itsmc-connections.md) 
+ [ITSM Bağlayıcısı sorunlarını giderme](./itsmc-resync-servicenow.md)

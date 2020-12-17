@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 03/05/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: aadb75d7257470cf4288c6123263f3d2dfe14d21
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781728"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654039"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -44,11 +44,11 @@ ms.locfileid: "92781728"
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Id | Evet | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
+| Id | Yes | Talep türü için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
 
 **ClaimType** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | Çeşitli ekranlarda kullanıcılara görüntülenen başlık. Değer [yerelleştirilmiş](localization.md)olabilir. |
 | DataType | 1:1 | Talebin türü. |
@@ -66,7 +66,7 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 **DataType** öğesi aşağıdaki değerleri destekler:
 
-| Tür | Açıklama |
+| Tür | Description |
 | ------- | ----------- |
 |boolean|Bir Boole ( `true` veya `false` ) değeri temsil eder.|
 |date| Genellikle günün bir tarihi olarak ifade edilen bir anlık zamanı temsil eder. Tarihin değeri ISO 8601 kuralı ' nı izler.|
@@ -84,7 +84,7 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 **Defaultpartnerclaimtypes** aşağıdaki öğeyi içerebilir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Protokol | 1: n | Varsayılan iş ortağı talep türü adı olan protokollerin listesi. |
 
@@ -92,10 +92,10 @@ PredicateValidationReference| 0:1 | Bir **Predicatevalidationsinput** öğesine 
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Ad | Evet | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
-| PartnerClaimType | Evet | Kullanılacak talep türü adı. |
+| Ad | Yes | Azure AD B2C tarafından desteklenen geçerli bir protokol adı. Olası değerler şunlardır: OAuth1, OAuth2, SAML2, Openıdconnect. |
+| PartnerClaimType | Yes | Kullanılacak talep türü adı. |
 
-Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla etkileşime geçtiğinde, **surname** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` openıdconnect ve OAuth2 ile, talep ile eşleştirilir `family_name` .
+Aşağıdaki örnekte, kimlik deneyimi çerçevesi bir SAML2 Identity provider veya bağlı olan taraf uygulamasıyla etkileşime geçtiğinde,  `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` openıdconnect ve OAuth2 ile, talep ile eşleştirilir `family_name` .
 
 ```xml
 <ClaimType Id="surname">
@@ -128,7 +128,7 @@ Sonuç olarak, Azure AD B2C tarafından verilen JWT belirteci, `family_name` Cla
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | `Type` | Evet | Talep maskesinin türü. Olası değerler: `Simple` veya `Regex` . Değer, bir `Simple` dize talebinin önde gelen kısmına bir basit metin maskesinin uygulanacağını gösterir. `Regex`Değer, normal bir ifadenin dize talebine tam olarak uygulandığını belirtir.  `Regex`Değer belirtilmişse, kullanılacak normal ifadeyle isteğe bağlı bir özniteliğin de tanımlanması gerekir. |
-| `Regex` | Hayır | **`Type`** Olarak ayarlanırsa `Regex` , kullanılacak normal ifadeyi belirtin.
+| `Regex` | No | **`Type`** Olarak ayarlanırsa `Regex` , kullanılacak normal ifadeyi belirtin.
 
 Aşağıdaki örnek, maskeyle bir **PhoneNumber** talebi yapılandırır `Simple` :
 
@@ -167,11 +167,11 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| MergeBehavior | Hayır | Aynı tanımlayıcıya sahip bir üst ilkede bir ClaimType ile numaralandırma değerlerini birleştirmek için kullanılan yöntem. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, üst ilkede belirtilen koleksiyonun sonuna eklenmesi gereken verilerin bir koleksiyonudur. `Prepend`Değer, üst ilkede belirtilen koleksiyondan önce eklenmesi gereken verilerin bir koleksiyonudur. `ReplaceAll`Değer, üst ilkede yok sayılacak belirtilen verilerin bir koleksiyonudur. |
+| MergeBehavior | No | Aynı tanımlayıcıya sahip bir üst ilkede bir ClaimType ile numaralandırma değerlerini birleştirmek için kullanılan yöntem. Temel ilkede belirtilen bir talebin üzerine yazdığınızda bu özniteliği kullanın. Olası değerler: `Append` , `Prepend` , veya `ReplaceAll` . `Append`Değer, üst ilkede belirtilen koleksiyonun sonuna eklenmesi gereken verilerin bir koleksiyonudur. `Prepend`Değer, üst ilkede belirtilen koleksiyondan önce eklenmesi gereken verilerin bir koleksiyonudur. `ReplaceAll`Değer, üst ilkede yok sayılacak belirtilen verilerin bir koleksiyonudur. |
 
 **Kısıtlama** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Öğeleri | Description |
 | ------- | ----------- | ----------- |
 | Sabit Listesi | 1: n | Kullanıcının bir talep için seçmesini sağlamak üzere Kullanıcı arabirimindeki kullanılabilir seçenekler (örneğin, açılan menüdeki bir değer). |
 | Desen | 1:1 | Kullanılacak normal ifade. |
@@ -184,9 +184,9 @@ Kimlik deneyimi çerçevesi yalnızca e-posta adresinin ilk harfini ve e-posta e
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Metin | Evet | Bu seçenek için Kullanıcı arabirimindeki kullanıcıya gösterilen görüntüleme dizesi. |
-|Değer | Evet | Bu seçeneği belirleyerek ilişkili talep değeri. |
-| SelectByDefault | Hayır | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
+| Metin | Yes | Bu seçenek için Kullanıcı arabirimindeki kullanıcıya gösterilen görüntüleme dizesi. |
+|Değer | Yes | Bu seçeneği belirleyerek ilişkili talep değeri. |
+| SelectByDefault | No | Bu seçeneğin Kullanıcı arabiriminde varsayılan olarak seçilmesinin gerekip gerekmediğini gösterir. Olası değerler: true veya false. |
 
 Aşağıdaki örnek, varsayılan değer olarak ayarlanmış bir **şehir** açılan listesi talebi yapılandırır `New York` :
 
@@ -213,8 +213,8 @@ Yeni York olarak ayarlanan varsayılan değere sahip aşağı açılan şehir li
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Cevap içerisinde RegularExpression | Evet | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
-| HelpText | Hayır | Normal ifade denetimi başarısız olursa kullanıcılara yönelik bir hata iletisi. |
+| Cevap içerisinde RegularExpression | Yes | Bu tür taleplerin geçerli olması için aynı olması gereken normal ifade. |
+| HelpText | No | Normal ifade denetimi başarısız olursa kullanıcılara yönelik bir hata iletisi. |
 
 Aşağıdaki örnek, normal ifade giriş doğrulaması ve yardım metni ile bir **e-posta** talebi yapılandırır:
 
@@ -223,14 +223,14 @@ Aşağıdaki örnek, normal ifade giriş doğrulaması ve yardım metni ile bir 
   <DisplayName>Email Address</DisplayName>
   <DataType>string</DataType>
   <DefaultPartnerClaimTypes>
-    <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
+  <Protocol Name="OpenIdConnect" PartnerClaimType="email" />
   </DefaultPartnerClaimTypes>
   <UserHelpText>Email address that can be used to contact you.</UserHelpText>
   <UserInputType>TextBox</UserInputType>
   <Restriction>
     <Pattern RegularExpression="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" HelpText="Please enter a valid email address." />
-    </Restriction>
- </ClaimType>
+  </Restriction>
+</ClaimType>
 ```
 
 Kimlik deneyimi çerçevesi, e-posta adresi talebini e-posta biçiminde giriş doğrulamasına göre işler:
@@ -243,7 +243,7 @@ Azure AD B2C, talep türü için talep verilerini el ile girerken kullanılabile
 
 **Userınputtype** öğesi kullanılabilir kullanıcı giriş türleri:
 
-| Userınputtype | Desteklenen ClaimType | Açıklama |
+| Userınputtype | Desteklenen ClaimType | Description |
 | --------- | -------- | ----------- |
 |CheckboxMultiSelect| `string` |Çoklu seçim açılan kutusu. Talep değeri, seçilen değerlerin bir virgülle ayrılmış dizesinde temsil edilir. |
 |DateTimeDropdown | `date`, `dateTime` |Gün, ay ve yıl seçmek için açılan listeler. |
@@ -394,7 +394,7 @@ Kullanıcı **giriş türü, kullanıcının** bir seçenek seçmesini sağlayan
 
 #### <a name="paragraph"></a>Paragraf
 
-**Paragraf** Kullanıcı giriş türü, yalnızca bir paragraf etiketinde metin gösteren bir alan sağlamak için kullanılır.  Örneğin, &lt; p &gt; metni &lt; /p &gt; . **Paragraph** `OutputClaim` Kendi kendine onaylanan teknik profilin paragraf Kullanıcı giriş türü `Required` özniteliği ayarlanmalıdır `false` (varsayılan).
+**Paragraf** Kullanıcı giriş türü, yalnızca bir paragraf etiketinde metin gösteren bir alan sağlamak için kullanılır.  Örneğin, &lt; p &gt; metni &lt; /p &gt; .  `OutputClaim` Kendi kendine onaylanan teknik profilin paragraf Kullanıcı giriş türü `Required` özniteliği ayarlanmalıdır `false` (varsayılan).
 
 ![Paragrafla birlikte talep türü kullanma](./media/claimsschema/paragraph.png)
 

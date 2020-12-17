@@ -1,7 +1,7 @@
 ---
 title: Azure sanal makineleri için Performans Tanılama | Microsoft Docs
 description: Windows için Azure performans tanılamayı tanıtır.
-services: virtual-machines-windows'
+services: virtual-machines-windows
 documentationcenter: ''
 author: anandhms
 manager: cshepard
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: fb0928c75b8fee567e9d0f03489794bd9f65e91e
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 70d1a52ff3326fcd3a628cc7f0f9d91edc9274e7
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109445"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655399"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure sanal makineleri için performans tanılamaları
 
@@ -191,7 +191,7 @@ Tanılama raporunu Microsoft ile paylaşmanın birden çok yolu vardır.
 Microsoft ile bir destek bileti açtığınızda, performans tanılama raporu 'nun paylaşılması önemlidir. Tanılamayı çalıştırırken bu bilgileri Microsoft ile paylaşmayı tercih ediyorsanız ("**Tanılama bilgilerini Microsoft ile paylaşmayı kabul** ediyorum" onay kutusunu seçerek), Microsoft, çıkış ZIP DOSYASıNA yönelik SAS bağlantısını kullanarak, çalışma tarihinden itibaren 30 güne kadar, depolama hesabınızdan rapora erişebilecek. Destek mühendisine yalnızca en son rapor kullanılabilir.
 
 **Seçenek 2:** Tanılama raporu sıkıştırılan dosya için paylaşılan erişim Imzası oluşturma  
-Paylaşılan erişim Imzalarını kullanarak, rapor sıkıştırılan dosya için bir bağlantı paylaşabilirsiniz. Bunu yapmak için şu adımları izleyin:
+Paylaşılan erişim Imzalarını kullanarak, rapor sıkıştırılan dosya için bir bağlantı paylaşabilirsiniz. Bunu yapmak için şu adımları uygulayın:
 
 1. Azure portal, tanılama verilerinin depolandığı depolama hesabına gidin.
 1. **BLOB hizmeti** bölümünde **BLOB 'ları** seçin.

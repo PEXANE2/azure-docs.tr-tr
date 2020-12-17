@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 56654f09d3a92eec5b86d8c8e4cd76fec0639394
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499671"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653053"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Depolama Gezgini sürüm notları
 
@@ -567,7 +567,7 @@ Disklerin karşıya yüklenmesi, indirilmesi ve çapraz bölge kopyalaması, AzC
   * Yeni Klasörler oluştur
   * Dosya ve klasörleri karşıya yükleme, indirme, yeniden adlandırma ve silme
   * Dosya ve klasör özelliklerini ve izinlerini yönetin (sağ taraftaki).
-    
+
     Geçici silme ve anlık görüntü gibi diğer tipik blob özellikleri şu anda kullanılamıyor. İzinleri yönetme yalnızca oturum açıldığında kullanılabilir. Ayrıca, bir ADLS 2. depolama hesabında çalışırken, Depolama Gezgini tüm yüklemeler ve indirmeler için AzCopy ve varsa tüm işlemler için ad ve anahtar kimlik bilgilerini kullanır.
 * Güçlü Kullanıcı geri bildirimlerinden sonra, birden fazla blobda kiraları aynı anda bölmek için bir kez daha yeniden kira kullanılabilir.
 

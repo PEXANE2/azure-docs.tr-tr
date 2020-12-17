@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 0d0d92c41ec15f4b4cf2307ac686b299cc5fb1ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cca17aacc914412d34f613adfeba31617c60c455
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262130"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652951"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasını kullanma
 
@@ -30,7 +30,7 @@ ms.locfileid: "89262130"
 
 Windowsazure. mediaservices 4.0.0.4 ile başlayan Azure Media Services, Azure Active Directory (Azure AD) tabanlı kimlik doğrulamasını destekler. Bu konuda, Microsoft .NET ile Azure Media Services API 'sine erişmek için Azure AD kimlik doğrulamasının nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure hesabı. Ayrıntılar için bkz. [Azure Ücretsiz deneme](https://azure.microsoft.com/pricing/free-trial/).
 - Bir Media Services hesabı. Daha fazla bilgi için [Azure Portal kullanarak Azure Media Services hesabı oluşturma](media-services-portal-create-account.md)konusuna bakın.
@@ -61,9 +61,9 @@ Ayrıca, **Azureadtokenprovider** öğesinin varsayılan uygulamasını kendi uy
 >Media Services .NET SDK ile Azure AD kimlik doğrulamasını kullanmak için en son [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) paketine sahip olmanız gerekir. Ayrıca, **Microsoft. IdentityModel. clients. ActiveDirectory** derlemesine bir başvuru ekleyin. Mevcut bir uygulamayı kullanıyorsanız, **Microsoft.WindowsAzure.MediaServices.Client.Common.Authentication.dll** derlemesini dahil edin.
 
 1. Visual Studio 'da yeni bir C# konsol uygulaması oluşturun.
-2. **.NET SDK Azure Media Services**yüklemek için [windowsazure. mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet paketini kullanın.
+2. **.NET SDK Azure Media Services** yüklemek için [windowsazure. mediaservices](https://www.nuget.org/packages/windowsazure.mediaservices) NuGet paketini kullanın.
 
-    NuGet kullanarak başvuru eklemek için aşağıdaki adımları uygulayın: **Çözüm Gezgini**, proje adına sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin. Ardından, **windowsazure. mediaservices** araması yapın ve **yüklemeyi**seçin.
+    NuGet kullanarak başvuru eklemek için aşağıdaki adımları uygulayın: **Çözüm Gezgini**, proje adına sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin. Ardından, **windowsazure. mediaservices** araması yapın ve **yüklemeyi** seçin.
 
     -veya-
 
@@ -88,9 +88,9 @@ Azure Media Service API 'sine Kullanıcı kimlik doğrulaması seçeneğiyle ba�
 - Media Services (yerel) uygulama istemci KIMLIĞI.
 - Media Services (yerel) uygulama yeniden yönlendirme URI 'SI.
 
-Bu parametrelerin değerleri **AzureEnvironments. AzureCloudEnvironment**içinde bulunabilir. **AzureEnvironments. AzureCloudEnvironment** sabiti, bir genel Azure veri merkezine yönelik doğru ortam değişkeni ayarlarını almak için .NET SDK 'sında yardımcı olur.
+Bu parametrelerin değerleri **AzureEnvironments. AzureCloudEnvironment** içinde bulunabilir. **AzureEnvironments. AzureCloudEnvironment** sabiti, bir genel Azure veri merkezine yönelik doğru ortam değişkeni ayarlarını almak için .NET SDK 'sında yardımcı olur.
 
-Yalnızca ortak veri merkezlerinde Media Services erişmek için önceden tanımlanmış ortam ayarlarını içerir. Sogeign veya kamu bulut bölgeleri için sırasıyla **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment**veya **AzureGermanCloudEnvironment** kullanabilirsiniz.
+Yalnızca ortak veri merkezlerinde Media Services erişmek için önceden tanımlanmış ortam ayarlarını içerir. Sogeign veya kamu bulut bölgeleri için sırasıyla **AzureChinaCloudEnvironment**, **AzureUsGovernmentEnvironment** veya **AzureGermanCloudEnvironment** kullanabilirsiniz.
 
 Aşağıdaki kod örneği bir belirteç oluşturur:
 
@@ -153,8 +153,8 @@ Aşağıdaki kod örneği, bir parametre olarak **Azureadclientsymmetrickey** al
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientSymmetricKey("{YOUR CLIENT ID HERE}", "{YOUR CLIENT SECRET}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 
 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 ```
@@ -165,8 +165,8 @@ Azure AD tarafından kullanılabilecek bir formda sertifika oluşturma ve yapıl
 
 ```csharp
 var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}",
-                            new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
-                            AzureEnvironments.AzureCloudEnvironment);
+                        new AzureAdClientCertificate("{YOUR CLIENT ID HERE}", "{YOUR CLIENT CERTIFICATE THUMBPRINT}"),
+                        AzureEnvironments.AzureCloudEnvironment);
 ```
 
 Programlamaya Media Services karşı başlamak için sunucu bağlamını temsil eden bir **Cloudmediacontext** örneği oluşturmanız gerekir. Ayrıca, **medya Rest Hizmetleri için kaynak URI** 'Sini **cloudmediacontext** oluşturucusuna geçirmeniz gerekir. **Medya Rest Hizmetleri için kaynak URI** 'sini Azure Portal de alabilirsiniz.

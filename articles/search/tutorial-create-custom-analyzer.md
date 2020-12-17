@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 90d60a20bb464936d04662b0b9286bd7aaac9e74
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b83ed506c0aa6299e5308e9e0c7276a21b7d9abe
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700180"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652356"
 ---
 # <a name="tutorial-create-a-custom-analyzer-for-phone-numbers"></a>Öğretici: telefon numaraları için özel çözümleyici oluşturma
 
@@ -160,7 +160,7 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
 
 Dizindeki verilerle aramaya başlamak için hazırız.
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 
 Aramayı sezgisel hale getirmek için, kullanıcıların sorguları belirli bir şekilde biçimlendirmeniz beklenmez. Bir Kullanıcı `(425) 555-0100` yukarıda gösterilen biçimlerden herhangi birinde arama yapmak için sonuçlar döndürülmeye devam edecektir. Bu adımda, nasıl çalıştığını görmek için birkaç örnek sorgu test edeceğiz.
 
@@ -270,8 +270,8 @@ POST https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/tutorial-basi
   api-key: <YOUR-ADMIN-API-KEY>
 
   {
-      "text": "(425) 555-0100",
-      "analyzer": "standard.lucene"
+    "text": "(425) 555-0100",
+    "analyzer": "standard.lucene"
   }
 ```
 

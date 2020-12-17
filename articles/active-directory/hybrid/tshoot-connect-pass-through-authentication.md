@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 251f9a2b075189f19b9e943ff660baaba93ec33b
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176197"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652050"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory Geçişli Kimlik Doğrulaması Sorunlarını Giderme
 
@@ -61,7 +61,7 @@ Bu sorun olduğunu doğrulamak için, ilk olarak geçişli kimlik doğrulama ara
 
 1. Bir sınama hesabı oluşturun.  
 2. Aracı makinede PowerShell modülünü içeri aktarın:
- 
+
  ```powershell
  Import-Module "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\PassthroughAuthPSModule\PassthroughAuthPSModule.psd1"
  ```
@@ -83,7 +83,7 @@ Kiracınızda ilişkili bir Azure AD Premium lisansı varsa, [Azure Active Direc
 
 ![Azure Active Directory Yönetim Merkezi-oturum açma işlemleri raporu](./media/tshoot-connect-pass-through-authentication/pta4.png)
 
-**Azure Active Directory**  ->  [Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde Azure Active Directory **oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
+  ->  [Azure Active Directory Yönetim Merkezi](https://aad.portal.azure.com/) 'nde Azure Active Directory **oturum açma** bölümüne gidin ve belirli bir kullanıcının oturum açma etkinliğine tıklayın. **Oturum açma hata kodu** alanını bulun. Aşağıdaki tabloyu kullanarak bu alanın değerini bir hata nedeni ve çözümüyle eşleyin:
 
 |Oturum açma hata kodu|Oturum açma hatası nedeni|Çözüm
 | --- | --- | ---

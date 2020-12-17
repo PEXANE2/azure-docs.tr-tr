@@ -7,12 +7,12 @@ ms.date: 07/20/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 51bd073b6f84f3378b91091e04f2f278ea2f49b6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ddb8027c145f6a38bfcd953be66dae2943a20c3a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95495279"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654617"
 ---
 # <a name="manage-iot-plug-and-play-digital-twins"></a>IoT Tak ve Kullan dijital TWINS 'i yönetme
 
@@ -26,7 +26,7 @@ IoT Tak ve Kullan cihazı, [dijital TWINS tanım dili v2 (DTDL)](https://github.
 
 Bu makalede bir örnek olarak kullanılan IoT Tak ve Kullan cihazı, [termostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) bileşenleriyle [sıcaklık denetleyicisi modelini](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) uygular.
 
-Aşağıdaki kod parçacığında, bir JSON nesnesi olarak biçimlendirilen bir **Get Digital ikizi** isteğine yanıt gösterilmektedir. Dijital ikizi biçimi hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan dijital TWINS 'ı anlama](./concepts-digital-twin.md#digital-twin-json-format):
+Aşağıdaki kod parçacığında, bir JSON nesnesi olarak biçimlendirilen bir **Get Digital ikizi** isteğine yanıt gösterilmektedir. Dijital ikizi biçimi hakkında daha fazla bilgi edinmek için bkz. [ıot Tak ve kullan dijital TWINS 'ı anlama](./concepts-digital-twin.md#digital-twin-example):
 
 ```json
 {

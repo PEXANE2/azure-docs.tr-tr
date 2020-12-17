@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 11/25/2020
 ms.subservice: alerts
-ms.openlocfilehash: ef8a07f0360338aeb659942967169b0605b08e51
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507226"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657303"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -72,7 +72,7 @@ Sanal makinelerin Konuk işletim sistemi ölçümleri hakkında uyarı almak iç
 - [Linux VM'leri için](./collect-custom-metrics-linux-telegraf.md)
 
 Bir sanal makinenin Konuk işletim sisteminden veri toplama hakkında daha fazla bilgi için [buraya](../insights/monitor-vm-azure.md#guest-operating-system)bakın.
-    
+
 > [!NOTE] 
 > Konuk ölçümlerini bir Log Analytics çalışma alanına gönderilmek üzere yapılandırdıysanız, ölçümler Log Analytics çalışma alanı kaynağı altında görünür ve **yalnızca** bunları izleyen bir uyarı kuralı oluşturduktan sonra verileri göstermeye başlayacaktır. Bunu yapmak için, [günlükler için ölçüm uyarısı yapılandırma](./alerts-metric-logs.md#configuring-metric-alert-for-logs) adımlarını izleyin.
 

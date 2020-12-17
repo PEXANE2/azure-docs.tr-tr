@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 81764294cc29ad74d5a77f2055f10498d69b59e5
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 591f01004cfba247112f702625ab05ddc0aaede3
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93343249"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97652934"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>Bırakılmış bir PostgreSQL sunucusu için Azure veritabanını geri yükleme
 
@@ -24,7 +24,7 @@ Bırakılan bir PostgreSQL sunucusu için Azure veritabanı 'nı geri yüklemek 
 
 ## <a name="steps-to-restore"></a>Geri yükleme adımları
 
-1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)gidin. **Azure izleyici** hizmetini seçip **etkinlik günlüğü** ' nü seçin.
+1. [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_ActivityLog/ActivityLogBlade)gidin. **Azure izleyici** hizmetini seçip **etkinlik günlüğü**' nü seçin.
 
 2. Etkinlik günlüğü ' nde, gösterilen **Filtre Ekle** ' ye tıklayın ve aşağıdakiler için aşağıdaki filtreleri ayarlayın
 
@@ -39,23 +39,26 @@ Bırakılan bir PostgreSQL sunucusu için Azure veritabanı 'nı geri yüklemek 
 
  4. PostgreSQL [sunucu oluşturma REST API sayfasına](/rest/api/PostgreSQL/servers/create) gidin ve yeşil renkte vurgulanmış olan **deneyin** sekmesini seçin. Azure hesabınızla oturum açın.
 
- 5. Önceki adımda yakalanan RESOURCEID özniteliği JSON değerine bağlı olarak **Resourcegroupname** , **ServerName** (silinen sunucu adı), **SubscriptionID** özelliklerini belirtin. Aşağıdaki görüntüde gösterildiği gibi, api sürümü özelliği önceden doldurulur ve olduğu gibi bırakılabilir.
+ 5. Önceki adımda yakalanan RESOURCEID özniteliği JSON değerine bağlı olarak **Resourcegroupname**, **ServerName** (silinen sunucu adı), **SubscriptionID** özelliklerini belirtin. Aşağıdaki görüntüde gösterildiği gibi, api sürümü özelliği önceden doldurulur ve olduğu gibi bırakılabilir.
 
     ![REST API kullanarak sunucu oluşturma](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
  6. Istek gövdesi bölümünde aşağıya kaydırın ve "bırakılan sunucu konumu", "submissionTimestamp" ve "RESOURCEID" değerlerini değiştirerek aşağıdakileri yapıştırın. "Restorepoinıntime" için, komutun hata içermediğinden emin olmak için "submissionTimestamp" değerini **15 dakika** olarak belirtin.
+    
     ```json
-        {
-          "location": "Dropped Server Location",  
-          "properties": 
-              {
-                  "restorePointInTime": "submissionTimestamp - 15 minutes",
-                  "createMode": "PointInTimeRestore",
-                  "sourceServerId": "resourceId"
-            }
-        }
+    {
+      "location": "Dropped Server Location",  
+      "properties": 
+      {
+        "restorePointInTime": "submissionTimestamp - 15 minutes",
+        "createMode": "PointInTimeRestore",
+        "sourceServerId": "resourceId"
+      }
+    }
     ```
+
     Örneğin, geçerli saat 2020-11-02T23:59:59.0000000 Z ise, zaman içinde en az 15 dakika önceki geri yükleme noktasını, 2020-11-02T23:44:59.0000000 Z olarak kullanmanızı öneririz.
+
     > [!Important]
     > Sunucu bırakıldıktan beş gün sonra zaman sınırı vardır. Beş günden sonra yedekleme dosyası bulunamadığı için bir hata beklenir.
     

@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 7b6c8faafac34ada664ddfadebf8d71a16c73fa7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710541"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97657031"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Sorgu deposuyla performansı izleme
 
@@ -88,7 +88,7 @@ Sorgu deposu etkinleştirildiğinde, verileri 15 dakikalık toplama Windows 'a k
 
 Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kullanılabilir.
 
-| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
 | pg_qs pg_qs.query_capture_mode | Hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, üst, tümü |
 | pg_qs pg_qs.max_query_text_length | Kaydedilebilecek maksimum sorgu uzunluğunu ayarlar. Daha uzun sorgular kesilecek. | 6000 | 100-10.000 |
@@ -97,13 +97,13 @@ Sorgu deposu parametrelerini yapılandırmak için aşağıdaki seçenekler kull
 
 Aşağıdaki seçenekler özellikle bekleme istatistikleri için geçerlidir.
 
-| **Parametre** | **Açıklama** | **Varsayılanını** | **Aralık**|
+| **Parametre** | **Açıklama** | **Varsayılan** | **Aralık**|
 |---|---|---|---|
 | pgms_wait_sampling pgms_wait_sampling.query_capture_mode | Bekleme istatistikleri için hangi deyimlerin izleneceğini ayarlar. | yok | hiçbiri, tümü|
 | Pgms_wait_sampling Pgms_wait_sampling.history_period | Bekleme olaylarının örneklendiği sıklığı milisaniye cinsinden ayarlayın. | 100 | 1-600000 |
 
 > [!NOTE] 
-> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode**yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur.
+> **pg_qs. query_capture_mode** , **pgms_wait_sampling. query_capture_mode** yerine geçiyor. Pg_qs. query_capture_mode NONE ise, pgms_wait_sampling. query_capture_mode ayarının etkisi yoktur.
 
 
 Bir parametre için farklı bir değer almak veya ayarlamak için [Azure Portal](howto-configure-server-parameters-using-portal.md) veya [Azure CLI](howto-configure-server-parameters-using-cli.md) kullanın.
@@ -149,25 +149,25 @@ Bu görünüm, sorgu deposundaki tüm verileri döndürür. Her farklı veritaba
 ### <a name="query_storequery_texts_view"></a>query_store query_store.query_texts_view
 Bu görünüm sorgu deposunda sorgu metin verileri döndürür. Her ayrı query_text için bir satır vardır.
 
-|**Ad**|  **Tür**|   **Açıklama**|
-|---|---|---|
-|query_text_id  |bigint     |Query_texts tablosunun KIMLIĞI|
-|query_sql_text |Varchar (10000)     |Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir.|
+| **Ad** | **Tür** | **Açıklama** |
+|--|--|--|
+| query_text_id | bigint | Query_texts tablosunun KIMLIĞI |
+| query_sql_text | Varchar (10000) | Temsili ifadesinin metni. Aynı yapıya sahip farklı sorgular birlikte kümelenir; Bu metin, kümedeki sorguların ilki için metindir. |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store query_store.pgms_wait_sampling_view
 Bu görünüm sorgu deposundaki bekleme olayları verilerini döndürür. Her farklı veritabanı KIMLIĞI, Kullanıcı KIMLIĞI, sorgu KIMLIĞI ve olay için bir satır vardır.
 
-|**Ad**|  **Tür**|   **Başvurular**| **Açıklama**|
-|---|---|---|---|
-|user_id    |id    |pg_authid. OID  |İfadeyi yürüten kullanıcının OID 'si|
-|db_id  |id    |pg_database. OID    |Deyimin yürütüldüğü veritabanının OID 'si|
-|query_id   |bigint     ||Deyimin ayrıştırma ağacından hesaplanan iç karma kod|
-|event_type |metin       ||Arka ucun beklediği olay türü|
-|event  |metin       ||Arka uç Şu anda bekliyorsa bekleme olayı adı|
-|aramalarda  |Tamsayı        ||Yakalanan aynı olay sayısı|
-
+| **Ad** | **Tür** | **Başvurular** | **Açıklama** |
+|--|--|--|--|
+| user_id | id | pg_authid. OID | İfadeyi yürüten kullanıcının OID 'si |
+| db_id | id | pg_database. OID | Deyimin yürütüldüğü veritabanının OID 'si |
+| query_id | bigint |  | Deyimin ayrıştırma ağacından hesaplanan iç karma kod |
+| event_type | metin |  | Arka ucun beklediği olay türü |
+| event | metin |  | Arka uç Şu anda bekliyorsa bekleme olayı adı |
+| aramalarda | Tamsayı |  | Yakalanan aynı olay sayısı |
 
 ### <a name="functions"></a>İşlevler
+
 Query_store Query_store.qs_reset () void döndürüyor
 
 `qs_reset` Şimdiye kadar toplanan tüm istatistikleri sorgu deposu tarafından atar. Bu işlev yalnızca sunucu yöneticisi rolü tarafından yürütülebilir.
@@ -192,7 +192,7 @@ Azure portal kullanarak kaynak günlüklerini etkinleştirmek için:
 2. Tanılama ayarı Ekle ' yi seçin.
 3. Bu ayarı adlandırın.
 4. Tercih ettiğiniz uç noktayı (depolama hesabı, Olay Hub 'ı, Log Analytics) seçin.
-5. **QueryStoreRuntimeStatistics** ve **Querystorewaitstatistics**günlük türlerini seçin.
+5. **QueryStoreRuntimeStatistics** ve **Querystorewaitstatistics** günlük türlerini seçin.
 6. Ayarınızı kaydedin.
 
 Bu ayarı PowerShell, CLı veya REST API kullanarak etkinleştirmek için [Tanılama ayarları makalesini](../azure-monitor/platform/diagnostic-settings.md)ziyaret edin.
@@ -218,8 +218,8 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | min_time_s | En düşük sorgu yürütme süresi (milisaniye) |
 | max_time_s | En fazla sorgu yürütme süresi (milisaniye) |
 | mean_time_s | Ortalama sorgu yürütme süresi (milisaniye) |
-| adlı yönetilen örnek, | Kaynak grubu | 
-| kaynak grubundaki | Abonelik KIMLIĞINIZ |
+| ResourceGroup | Kaynak grubu | 
+| SubscriptionId | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |
 | ResourceType | `Servers` | 
@@ -241,8 +241,8 @@ Aşağıdaki tablolar, iki günlük türü için alanları açıklar. Seçtiğin
 | start_time_t | Olay başlangıç saati |
 | end_time_s | Olay bitiş zamanı | 
 | LogicalServerName_s | Postgres sunucu adı | 
-| adlı yönetilen örnek, | Kaynak grubu | 
-| kaynak grubundaki | Abonelik KIMLIĞINIZ |
+| ResourceGroup | Kaynak grubu | 
+| SubscriptionId | Abonelik KIMLIĞINIZ |
 | ResourceProvider | `Microsoft.DBForPostgreSQL` | 
 | Kaynak | Postgres sunucu adı |
 | ResourceType | `Servers` | 

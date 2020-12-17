@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: e763dbd15ea443ad3c8f6295b37999c748db7e6c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: ca5f237585f74225a04091b5694dbfad12864332
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422340"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656045"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Bilişsel Arama dizinindeki dize alanlarına dil Çözümleyicileri ekleme
 
@@ -68,64 +68,64 @@ Dizin özellikleri hakkında daha fazla bilgi için bkz. [Create ındex &#40;Azu
 ## <a name="language-analyzer-list"></a>Dil Çözümleyicisi listesi 
  Aşağıda, Lucene ve Microsoft çözümleyici adlarıyla birlikte desteklenen dillerin listesi verilmiştir.  
 
-|Dil|Microsoft Çözümleyicisi adı|Lucene çözümleyici adı|  
-|--------------|-----------------------------|--------------------------|  
-|Arapça|ar. Microsoft|ar. Lucene|  
-|Ermenice||HY. Lucene|  
-|Bangla|milyar TL. Microsoft||  
-|Baskça||AB. Lucene|  
-|Bulgarca|bg. Microsoft|bg. Lucene|  
-|Katalanca|CA. Microsoft|CA. Lucene|  
-|Basitleştirilmiş Çince|zh-Hans. Microsoft|zh-Hans. Lucene|  
-|Geleneksel Çince|zh-Hant. Microsoft|zh-Hant. Lucene|  
-|Hırvatça|HR. Microsoft||  
-|Çekçe|CS. Microsoft|CS. Lucene|  
-|Danca|da. Microsoft|da. Lucene|  
-|Felemenkçe|nl. Microsoft|nl. Lucene|  
-|İngilizce|en. Microsoft|en. Lucene|  
-|Estonya Dili|et. Microsoft||  
-|Fince|Fi. Microsoft|Fi. Lucene|  
-|Fransızca|fr. Microsoft|fr. Lucene|  
-|Galiçya Dili||GL. Lucene|  
-|Almanca|de Microsoft|de. Lucene|  
-|Yunanca|El. Microsoft|El. Lucene|  
-|Gucerat dili|Gu. Microsoft||  
-|İbranice|BT. Microsoft||  
-|Hintçe|Merhaba. Microsoft|Merhaba. Lucene|  
-|Macarca|Hu. Microsoft|Hu. Lucene|  
-|İzlandaca|. Microsoft||  
-|Endonezya dili (Bahasa)|kimliği. Microsoft|ID. Lucene|  
-|İrlandaca||ga. Lucene|  
-|İtalyanca|BT. Microsoft|BT. Lucene|  
-|Japonca|Ja. Microsoft|Ja. Lucene|  
-|Kannada dili|KN. Microsoft||  
-|Korece|Ko. Microsoft|Ko. Lucene|  
-|Letonca|LV. Microsoft|LV. Lucene|  
-|Litvanca|lt. Microsoft||  
-|Malayalam dili|ml. Microsoft||  
-|Malay dili (Latin)|MS. Microsoft||  
-|Marathi|Mr. Microsoft||  
-|Norveççe|NB. Microsoft|Hayır. Lucene|  
-|Farsça||FA. Lucene|  
-|Lehçe|pl. Microsoft|pl. Lucene|  
-|Portekizce (Brezilya)|pt-br. Microsoft|pt-br. Lucene|  
-|Portekizce (Portekiz)|PT-PT. Microsoft|PT-PT. Lucene|  
-|Pencap dili|PA. Microsoft||  
-|Rumence|ro. Microsoft|ro. Lucene|  
-|Rusça|ru. Microsoft|ru. Lucene|  
-|Sırpça (Kiril)|SR-Kiril. Microsoft||  
-|Sırpça (Latin)|SR-Latin. Microsoft||  
-|Slovakça|SK. Microsoft||  
-|Slovence|SL. Microsoft||  
-|İspanyolca|es. Microsoft|es. Lucene|  
-|İsveççe|ZF. Microsoft|ZF. Lucene|  
-|Tamil dili|ta. Microsoft||  
-|Telugu dili|te. Microsoft||  
-|Tayca|TH. Microsoft|TH. Lucene|  
-|Türkçe|tr. Microsoft|tr. Lucene|  
-|Ukraynaca|UK. Microsoft||  
-|Urduca|. Microsoft||  
-|Vietnamca|Vi. Microsoft||  
+| Dil | Microsoft Çözümleyicisi adı | Lucene çözümleyici adı |  |
+|--|--|--|--|
+| Arapça | ar. Microsoft | ar. Lucene |  |
+| Ermenice |  | HY. Lucene |  |
+| Bangla | milyar TL. Microsoft |  |  |
+| Baskça |  | AB. Lucene |  |
+| Bulgarca | bg. Microsoft | bg. Lucene |  |
+| Katalanca | CA. Microsoft | CA. Lucene |  |
+| Basitleştirilmiş Çince | zh-Hans. Microsoft | zh-Hans. Lucene |  |
+| Geleneksel Çince | zh-Hant. Microsoft | zh-Hant. Lucene |  |
+| Hırvatça | HR. Microsoft |  |  |
+| Çekçe | CS. Microsoft | CS. Lucene |  |
+| Danca | da. Microsoft | da. Lucene |  |
+| Felemenkçe | nl. Microsoft | nl. Lucene |  |
+| İngilizce | en. Microsoft | en. Lucene |  |
+| Estonya Dili | et. Microsoft |  |  |
+| Fince | Fi. Microsoft | Fi. Lucene |  |
+| Fransızca | fr. Microsoft | fr. Lucene |  |
+| Galiçya Dili |  | GL. Lucene |  |
+| Almanca | de Microsoft | de. Lucene |  |
+| Yunanca | El. Microsoft | El. Lucene |  |
+| Gucerat dili | Gu. Microsoft |  |  |
+| İbranice | BT. Microsoft |  |  |
+| Hintçe | Merhaba. Microsoft | Merhaba. Lucene |  |
+| Macarca | Hu. Microsoft | Hu. Lucene |  |
+| İzlandaca | . Microsoft |  |  |
+| Endonezya dili (Bahasa) | kimliği. Microsoft | ID. Lucene |  |
+| İrlandaca |  | ga. Lucene |  |
+| İtalyanca | BT. Microsoft | BT. Lucene |  |
+| Japonca | Ja. Microsoft | Ja. Lucene |  |
+| Kannada dili | KN. Microsoft |  |  |
+| Korece | Ko. Microsoft | Ko. Lucene |  |
+| Letonca | LV. Microsoft | LV. Lucene |  |
+| Litvanca | lt. Microsoft |  |  |
+| Malayalam dili | ml. Microsoft |  |  |
+| Malay dili (Latin) | MS. Microsoft |  |  |
+| Marathi | Mr. Microsoft |  |  |
+| Norveççe | NB. Microsoft | Hayır. Lucene |  |
+| Farsça |  | FA. Lucene |  |
+| Lehçe | pl. Microsoft | pl. Lucene |  |
+| Portekizce (Brezilya) | pt-br. Microsoft | pt-br. Lucene |  |
+| Portekizce (Portekiz) | PT-PT. Microsoft | PT-PT. Lucene |  |
+| Pencap dili | PA. Microsoft |  |  |
+| Rumence | ro. Microsoft | ro. Lucene |  |
+| Rusça | ru. Microsoft | ru. Lucene |  |
+| Sırpça (Kiril) | SR-Kiril. Microsoft |  |  |
+| Sırpça (Latin) | SR-Latin. Microsoft |  |  |
+| Slovakça | SK. Microsoft |  |  |
+| Slovence | SL. Microsoft |  |  |
+| İspanyolca | es. Microsoft | es. Lucene |  |
+| İsveççe | ZF. Microsoft | ZF. Lucene |  |
+| Tamil dili | ta. Microsoft |  |  |
+| Telugu dili | te. Microsoft |  |  |
+| Tayca | TH. Microsoft | TH. Lucene |  |
+| Türkçe | tr. Microsoft | tr. Lucene |  |
+| Ukraynaca | UK. Microsoft |  |  |
+| Urduca | . Microsoft |  |  |
+| Vietnamca | Vi. Microsoft |  |  |
 
  **Lucene** ile açıklama eklenmiş adlara sahip tüm çözümleyiciler [Apache Lucene 'in dil Çözümleyicileri](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )tarafından desteklenir.
 

@@ -3,12 +3,12 @@ title: Azure Event Hubs-gerçek zamanlı olaylarda veri bozuklukilerini görsell
 description: 'Öğretici: Microsoft Azure gönderilen gerçek zamanlı olaylarda veri bozuklukilerini görselleştirin Event Hubs'
 ms.topic: tutorial
 ms.date: 06/23/2020
-ms.openlocfilehash: 1394f9bedfdfc3715090bdb8a9028d2654a1e4e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b72b82f3959565e6bd0598fef8e21bb64fedb053
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88934064"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655688"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Öğretici: Azure Event Hubs'a gönderilen gerçek zamanlı olaylardaki veri anomalilerini görselleştirme
 
@@ -26,14 +26,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Bu öğreticiyi tamamlamak için bir Azure aboneliğinizin olması gerekir. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun][] .
 
-## <a name="prerequisites"></a>Önkoşullar
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 - [Visual Studio 'yu](https://www.visualstudio.com/)yükler. 
 - Stream Analytics işinin çıktısını analiz edebilmek için bir Power BI hesabınızın olması gerekir. [Power BI'ı ücretsiz deneyebilirsiniz](https://app.powerbi.com/signupredirect?pbi_source=web).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="set-up-resources"></a>Kaynakları ayarlama
 
@@ -153,8 +151,8 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 [GitHub 'daki Event Hubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) , sizin için test verileri üreten bir anomali algılayıcı uygulaması içerir. Kredi kartı kullanım simülasyonu yapan bu uygulama olay hub'ına kredi kartı işlemlerini yazar ve arada anomali olarak etiketlenmeleri için birden fazla konumda aynı kredi kartına ait işlemler yazar. Bu uygulamayı çalıştırmak için aşağıdaki adımları uygulayın: 
 
 1. GitHub'dan [Azure Event Hubs örneklerini](https://github.com/Azure/azure-event-hubs/archive/master.zip) indirin ve dosyaları ayıklayın.
-2. Folder **\azure-Event-Hubs-master\samples\DotNet \\ ** klasörüne gidin. 
-3. **Azure. Messaging. Eventhubs\anoyıalgılayıcı \\ ** klasörüne geçin ve Visual Studio 'da çözümü açmak Için **anoialgılayıcısı. sln** ' ye çift tıklayın. 
+2. Folder **\azure-Event-Hubs-master\samples\DotNet \\** klasörüne gidin. 
+3. **Azure. Messaging. Eventhubs\anoyıalgılayıcı \\** klasörüne geçin ve Visual Studio 'da çözümü açmak Için **anoialgılayıcısı. sln** ' ye çift tıklayın. 
 
     Eski Microsoft. Azure. EventHubs paketini kullanan örneğin eski sürümünü kullanmak için **Microsoft. Azure. Eventhubs\anoyıalgılayıcı** klasöründen çözümü açın. 
 3. Program.cs dosyasını açın ve **Event Hubs connection string** yerine betiği çalıştırırken kaydettiğiniz bağlantı dizesini yazın. 
@@ -308,7 +306,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
    ![Veri kümesini belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-select-dataset.png)
 
-9. Görselleştirme türü olarak **Kart** seçin. **Alanlar**altında **Değer Ekle**' ye ve ardından öğesini seçin `fraudulentuses` .
+9. Görselleştirme türü olarak **Kart** seçin. **Alanlar** altında **Değer Ekle**' ye ve ardından öğesini seçin `fraudulentuses` .
 
    ![Görselleştirme türü ve alan belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-tile.png)
 
@@ -319,7 +317,7 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
     ![Pano kutucuğu için başlık ve alt başlık belirtme işleminin ekran görüntüsü.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
     > [!IMPORTANT]
-    > Örnek uygulamayı ve veri akışını Olay Hub 'ına çalıştırdığınızda, bu kutucukta bulunan sayı hızlı bir şekilde değişir (her saniye). Bunun nedeni, Stream Analytics sorgusunun değeri **her saniye**güncelleyen şeydir. Son birkaç dakika içinde toplamı görmek için sorguyu 3 dakikalık bir pencereye güncelleştirin. 
+    > Örnek uygulamayı ve veri akışını Olay Hub 'ına çalıştırdığınızda, bu kutucukta bulunan sayı hızlı bir şekilde değişir (her saniye). Bunun nedeni, Stream Analytics sorgusunun değeri **her saniye** güncelleyen şeydir. Son birkaç dakika içinde toplamı görmek için sorguyu 3 dakikalık bir pencereye güncelleştirin. 
 11. Başka bir görselleştirme ekleyin. İlk birkaç adımı tekrarlayın:
 
     * **Kutucuk Ekle**’ye tıklayın.
@@ -329,9 +327,9 @@ Stream Analytics işinde **Çalıştır**'a, **Şimdi**'ye ve ardından **Çalı
 
 12. **Görselleştirme Türü** olarak **Çizgi grafik** türünü seçin.
 
-13. **Eksen**altında **Değer Ekle**' ye tıklayın ve öğesini seçin `windowend` . 
+13. **Eksen** altında **Değer Ekle**' ye tıklayın ve öğesini seçin `windowend` . 
 
-14. **Değerler**altında **Değer Ekle** ' ye tıklayın ve öğesini seçin `fraudulentuses` .
+14. **Değerler** altında **Değer Ekle** ' ye tıklayın ve öğesini seçin `fraudulentuses` .
 
 15. **Görüntülenecek zaman penceresi** için son beş dakikayı seçin. **İleri**’ye tıklayın.
 
