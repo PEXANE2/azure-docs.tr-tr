@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d866729d428e7667cd2225a5d37836b3fd75fa7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642172"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680333"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>Karma sanal makine için VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure dışındaki bir sanal makine için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır.
@@ -19,7 +19,7 @@ Bu makalede, şirket içi ve diğer bulut ortamları dahil olmak üzere Azure d�
 > [!IMPORTANT]
 > Karma VM 'Leri etkinleştirmenin önerilen yöntemi, VM 'Lerin Azure sanal makinelerine benzer süreçler kullanılarak VM'ler için Azure İzleyici için etkinleştirilebilmesi için öncelikle [sunucular Için Azure yayı 'yi](../../azure-arc/servers/overview.md) etkinleştirir. Bu makalede, Azure Arc 'ı kullanmayı tercih ediyorsanız karma VM 'Lerin nasıl ekleneceği açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - [Log Analytics çalışma alanı oluşturun ve yapılandırın](vminsights-configure-workspace.md).
 - Etkinleştirmiş olduğunuz sanal makine veya sanal makine ölçek kümesinin işletim sisteminin desteklendiğinden emin olmak için [desteklenen işletim sistemleri](vminsights-enable-overview.md#supported-operating-systems) bölümüne bakın. 
@@ -43,8 +43,8 @@ Bağımlılık aracısını şu konumlardan indirebilirsiniz:
 
 | Dosya | İşletim Sistemi | Sürüm | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DAD5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.7.12710 | CA29CC328F991D7301FD0360F4F56DF78275545BB8CDA853679899CA885E96F0  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.7.12710 | 98380DBEB2E2A5848F2202BC22422C68B20B62090C1BFC1DECAB37ED5451ED8C |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows 'a bağımlılık Aracısı 'nı yükler
@@ -60,7 +60,7 @@ Aşağıdaki tabloda, komut satırından aracının kurulumu tarafından destekl
 
 Örneğin, yükleme programını parametresiyle çalıştırmak için `/?` **InstallDependencyAgent-Windows.exe/?** girin.
 
-Windows bağımlılık aracısının dosyaları varsayılan olarak *C:\Program Files\Microsoft Dependency Agent* 'e yüklenir. Kurulum tamamlandıktan sonra bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs*dizinidir.
+Windows bağımlılık aracısının dosyaları varsayılan olarak *C:\Program Files\Microsoft Dependency Agent* 'e yüklenir. Kurulum tamamlandıktan sonra bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Günlük dizini *%ProgramFiles%\Microsoft Dependency Fıles\logs* dizinidir.
 
 ### <a name="powershell-script"></a>PowerShell betiği
 Aracıyı indirmek ve yüklemek için aşağıdaki örnek PowerShell betiğini kullanın:
@@ -86,9 +86,9 @@ Bağımlılık Aracısı, kendi kendine ayıklanan ikiliye sahip bir kabuk beti�
 | -s | Kullanıcıdan bilgi istenmeden sessiz yükleme gerçekleştirir. |
 | --denetle | İzinleri ve işletim sistemini denetleyin, ancak aracıyı yüklemeyin. |
 
-Örneğin, yükleme programını parametresiyle çalıştırmak için `-help` , **InstallDependencyAgent-linux64. bin-Help**girin. Komutunu çalıştırarak Linux bağımlılık aracısını kök olarak yükler `sh InstallDependencyAgent-Linux64.bin` .
+Örneğin, yükleme programını parametresiyle çalıştırmak için `-help` , **InstallDependencyAgent-linux64. bin-Help** girin. Komutunu çalıştırarak Linux bağımlılık aracısını kök olarak yükler `sh InstallDependencyAgent-Linux64.bin` .
 
-Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log*olur.
+Bağımlılık Aracısı başlatılamazsa, ayrıntılı hata bilgileri için günlüklere bakın. Linux aracılarında günlük dizini */var/seçenek/Microsoft/Dependency-Agent/log* olur.
 
 Bağımlılık aracısına ait dosyalar aşağıdaki dizinlere yerleştirilir:
 

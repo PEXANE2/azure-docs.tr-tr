@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.author: alkohli
-ms.openlocfilehash: bbebe3b3f63e6ccbb5f351abfc9ba3b846ca6fbe
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: d53a619dc6ca5fb0f43f6097664f50bf22943928
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337670"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678893"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
@@ -56,11 +56,11 @@ Aşağıdaki tabloda, Data Box üzerindeki paylaşımların UNC yolu ve verileri
 
 Linux ana bilgisayarı kullanıyorsanız aşağıdaki adımları gerçekleştirerek Data Box'ı NFS istemcilerine izin verecek şekilde yapılandırın.
 
-1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi** 'ne tıklayın. 
+1. Paylaşıma erişmesine izin verilen istemcilerin IP adreslerini sağlayın. Yerel web arabiriminde **Bağlan ve kopyala** sayfasına gidin. **NFS ayarları** bölümünde **NFS istemci erişimi**'ne tıklayın. 
 
     ![NFS istemci erişimini yapılandırma](media/data-box-deploy-copy-data/nfs-client-access-1.png)
 
-2. NFS istemcisinin IP adresini girin ve **Ekle** 'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** ’a tıklayın.
+2. NFS istemcisinin IP adresini girin ve **Ekle**'ye tıklayın. Bu adımı tekrarlayarak birden fazla NFS istemcisi için erişim sağlayabilirsiniz. **Tamam** düğmesine tıklayın.
 
     ![NFS istemcisinin IP adresini yapılandırma](media/data-box-deploy-copy-data/nfs-client-access2.png)
 
@@ -98,11 +98,11 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 > [!IMPORTANT]
 > Data Box'ın verilerinizi Azure Depolama'ya aktardığını onaylayana kadar kaynak verilerinizin bir kopyasına sahip olduğunuzdan emin olun.
 
-Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux için kullanabileceğiniz bazı alternatifler: [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) veya [Ultracopier](https://ultracopier.first-world.info/).  
+Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux 'ta bulunan alternatiflere bazıları [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [uyum](https://www.cis.upenn.edu/~bcpierce/unison/)veya [Ultracopier](https://ultracopier.first-world.info/).  
 
 `cp` komutu, dizin kopyalamak için en iyi seçeneklerden biridir. Kullanımı hakkında daha fazla bilgi için [cp man sayfalarına](http://man7.org/linux/man-pages/man1/cp.1.html) gidin.
 
-Çok iş parçacığına sahip olan bir kopyalama işlemi için rsync seçeneğini kullanıyorsanız şu yönergeleri izleyin:
+`rsync`Çoklu iş parçacıklı bir kopya için kullanıyorsanız, aşağıdaki yönergeleri izleyin:
 
 * Linux istemcinizde kullanılan dosya sistemine bağlı olarak **CIFS Utils** veya **NFS Utils** paketini yükleyebilirsiniz.
 
@@ -110,7 +110,7 @@ Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardım
 
     `sudo apt-get install nfs-utils`
 
-* **Rsync** ve **Parallel** (Linux dağıtılmış sürümüne bağlı olarak değişir) ' i yükler.
+* Install `rsync` ve **Parallel** (Linux dağıtılmış sürümüne bağlı olarak değişir).
 
     `sudo apt-get install rsync`
    
@@ -143,7 +143,7 @@ Kopyalama işlemi sırasında hatalarla karşılaşırsanız bir bildirim görü
 
 ![Bağlan ve kopyala adımındaki hataları indirip görüntüleme](media/data-box-deploy-copy-data/view-errors-1.png)
 
-**Sorun listesini indir** ’i seçin.
+**Sorun listesini indir**’i seçin.
 
 ![Kopyalama hatası için sorunlar listesini indirin](media/data-box-deploy-copy-data/view-errors-2.png)
 

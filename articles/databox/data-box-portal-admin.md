@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 7d2734d386f1e49e2227058b148ee6b591d14a42
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 46a18cb2b6e1682427d5674be28b240f35b120fe
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336501"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678645"
 ---
 # <a name="use-the-azure-portal-to-administer-your-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box ve Azure Data Box Heavy yönetmek için Azure portal kullanın
 
@@ -21,18 +21,15 @@ Bu makale hem Azure Data Box hem de Azure Data Box Heavy için geçerlidir. Bu m
 
 Bu makale, Azure portalı kullanarak gerçekleştirebileceğiniz görevlere odaklanmaktadır. Azure portal kullanarak siparişleri yönetin, Data Box cihazı yönetin ve tamamlanana kadar siparişin durumunu izleyin.
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-
 ## <a name="cancel-an-order"></a>Siparişi iptal etme
 
-Siparişinizi verdikten sonra çeşitli nedenlerle iptal etmeniz gerekebilir. 
+Bunu yaptıktan sonra çeşitli nedenlerle bir siparişi iptal etmeniz gerekebilir.
 
-İçeri ve dışarı aktarma siparişlerinde, yalnızca sipariş işlenmeden önce siparişi iptal edebilirsiniz. Sipariş işlendikten ve Data Box cihaz hazırlandıktan sonra, siparişi iptal etmek mümkün değildir.
+İçeri ve dışarı aktarma siparişleri için, yalnızca işlenmeden önce siparişi iptal edebilirsiniz. Siparişiniz işlendikten ve Data Box cihaz hazırlandıktan sonra siparişi iptal edemezsiniz.
 
 Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > İptal** 'e gidin.
+1.  **Genel bakış > İptal**'e gidin.
 
     ![Bir siparişin Genel Bakış sekmesinde iptal komutu](media/data-box-portal-admin/portal-admin-cancel-command.png)
 
@@ -44,18 +41,15 @@ Bir siparişi iptal etmek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="clone-an-order"></a>Siparişi kopyalama
 
-Kopyalama belirli durumlarda kullanışlıdır. Örneğin kullanıcı, veri aktarımı için daha önceden Data Box kullanmıştır. Daha fazla veri üretilmeden, bu verileri Azure 'a aktarmaya yönelik başka bir Data Box cihazının olması gerekir. Bu durumda aynı sipariş kopyalanabilir.
-
-> [!IMPORTANT]
-> Dışarı aktarma siparişlerinde kopyalama kullanılamaz. Yalnızca içeri aktarma emirlerini kopyalayabilirsiniz.
+Kopyalama belirli durumlarda kullanışlıdır. Örneğin, bazı verileri aktarmak için Data Box kullandınız. Daha fazla veri üretilmeden bu verileri Azure 'a aktarmak için başka bir Data Box cihaz kullanmanız gerekir. Bu durumda, yalnızca aynı siparişi kopyalayabilirsiniz.
 
 İçeri Aktarma sırasını kopyalamak için aşağıdaki adımları gerçekleştirin.
 
-1.  **Genel bakış > Kopyala** 'ya gidin. 
+1.  **Genel bakış > Kopyala**'ya gidin. 
 
     ![Bir siparişin Genel Bakış sekmesinde kopyalama komutu](media/data-box-portal-admin/portal-admin-clone-command.png)
 
-2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur** 'a tıklayın.
+2.  Siparişin tüm ayrıntıları aynı şekilde korunur. Siparişin adı, özgün siparişin adına *-Kopya* eklenerek oluşturulur. Gizlilik bilgilerini gözden geçirdiğinizi onaylamak için onay kutusunu seçin. **Oluştur**’a tıklayın.
 
 Kopya sipariş birkaç dakikada oluşturulur ve portal yeni siparişi gösterecek şekilde güncelleştirilir.
 
@@ -66,17 +60,17 @@ Tamamlanan siparişleri silmek isteyebilirsiniz. Siparişte adınız, adresiniz 
 
 Yalnızca tamamlanan veya iptal edilen siparişleri silebilirsiniz. Siparişi silmek için aşağıdaki adımları gerçekleştirin.
 
-1. **Tüm kaynaklar** 'a gidin. Siparişinizi arayın.
+1. **Tüm kaynaklar**'a gidin. Siparişinizi arayın.
 
-2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış** 'a gidin. Komut çubuğundan **Sil** 'e tıklayın.
+2. Silmek istediğiniz siparişe tıklayın ve **Genel bakış**'a gidin. Komut çubuğundan **Sil**'e tıklayın.
 
     ![Bir siparişin Genel Bakış sekmesinde Sil komutu](media/data-box-portal-admin/portal-admin-delete-command.png)
 
-3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil** 'e tıklayın.
+3. Siparişi silme işlemini onaylamanız istendiğinde siparişin adını girin. **Sil**'e tıklayın.
 
 ## <a name="download-shipping-label"></a>Sevkiyat etiketini indirme
 
-Data Box’unuzun E-ink ekranı çalışmıyorsa ve iade gönderimi etiketini göstermiyorsa gönderim etiketini indirmeniz gerekebilir. Data Box Heavy bir E-mürekkep görüntülenmez ve bu nedenle bu iş akışı Data Box Heavy için uygulanmaz.
+Data Box E-mürekkep görünümü çalışmıyorsa ve iade sevkiyat etiketini görüntülemediğinizde sevkiyat etiketini indirmeniz gerekebilir. Data Box Heavy üzerinde E-mürekkep görüntülenmez, bu nedenle bu iş akışı Data Box Heavy için uygulanmaz.
 
 Sevkiyat etiketini indirmek için aşağıdaki adımları gerçekleştirin.
 
@@ -94,7 +88,7 @@ Siparişi verdikten sonra teslimat adresini düzenlemeniz gerekebilir. Bu işlem
 
 Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Teslimat adresini düzenle** 'ye gidin.
+1. **Sipariş ayrıntıları > Teslimat adresini düzenle**'ye gidin.
 
     ![Sipariş ayrıntılarında sevkiyat adresini Düzenle komutu](media/data-box-portal-admin/portal-admin-edit-shipping-address-command.png)
 
@@ -104,11 +98,11 @@ Siparişi düzenlemek için aşağıdaki adımları gerçekleştirin.
 
 ## <a name="edit-notification-details"></a>Bildirim ayrıntılarını düzenleme
 
-Sipariş durumu e-postalarının gönderilmesini istediğiniz kullanıcıları değiştirmek isteyebilirsiniz. Örneğin cihaz teslim edildiğinde veya alındığında bir kullanıcının bilgilendirilmesi gerekebilir. Verilerin kaynaktan silinmeden önce Azure depolama hesabında olduğunu doğrulayabilmeleri için, veri kopyalama işlemi tamamlandığında başka bir kullanıcının bilgilendirilmesi gerekebilir. Bu gibi durumlarda bildirim ayrıntılarını düzenleyebilirsiniz.
+Sıra durumu e-postalarını alan kullanıcıları değiştirmeniz gerekebilir. Örneğin cihaz teslim edildiğinde veya alındığında bir kullanıcının bilgilendirilmesi gerekebilir. Verilerin kaynaktan silinmeden önce Azure depolama hesabında olduğunu doğrulayabilmeleri için, veri kopyalama işlemi tamamlandığında başka bir kullanıcının bilgilendirilmesi gerekebilir. Bu gibi durumlarda bildirim ayrıntılarını düzenleyebilirsiniz.
 
 Bildirim ayrıntılarını düzenlemek için aşağıdaki adımları gerçekleştirin.
 
-1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle** 'ye gidin.
+1. **Sipariş ayrıntıları > Bildirim ayrıntılarını düzenle**'ye gidin.
 
     ![Bildirim ayrıntılarını Düzenle komutu sıralı Ayrıntılar](media/data-box-portal-admin/portal-admin-edit-notification-details-command.png)
 
@@ -123,14 +117,14 @@ Data Box siparişiniz tamamlandıktan sonra cihaz disklerindeki veriler silinir.
 
 Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
-1. Data Box siparişinizde **Genel Bakış** 'a gidin. Siparişin tamamlandığından emin olun. Sipariş ve cihaz temizleme tamamlandıysa, **Sipariş ayrıntıları** 'na gidin. **Sipariş geçmişi indirme** seçeneği bulunur.
+1. Data Box siparişinizde **Genel Bakış**'a gidin. Siparişin tamamlandığından emin olun. Sipariş ve cihaz temizleme tamamlandıysa, **Sipariş ayrıntıları**'na gidin. **Sipariş geçmişi indirme** seçeneği bulunur.
 
     ![Sipariş geçmişi indirme](media/data-box-portal-admin/portal-admin-download-order-history.png)
 
-2. **Sipariş geçmişini indir** 'e tıklayın. İndirilen geçmişte kurye takip günlüklerini bir kaydını görürsünüz. Data Box Heavy iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
+2. **Sipariş geçmişini indir**'e tıklayın. İndirilen geçmiş, taşıyıcı İzleme günlüklerinin bir kaydını içerir. Data Box Heavy bir cihazdaki iki düğüme karşılık gelen iki günlük kümesi olacaktır. Bu günlüğün en altına giderseniz, aşağıdakilere giden bağlantıları görebilirsiniz:
     
-   - **Günlükleri Kopyala** -Data Box veri kopyalama sırasında Azure depolama hesabınıza (içeri aktarma sırası) veya *tam tersi* (dışarı aktarma sırasına) göre hatalı bir dosya listesi alın.
-   - **Denetim günlükleri** -Azure veri merkezi 'nin dışında olduğunda Data Box paylaşımlara açma ve paylaşımlara erişme hakkında bilgi içerir.
+   - **Günlükleri Kopyala** -Data Box veri kopyalama sırasında Azure depolama hesabınıza (içeri aktarma sırası) veya depolama hesabınızdan Data Box (dışarı aktarma sırasına) veri kopyalama sırasında hatalı bir dosya listesini alın.
+   - **Denetim günlükleri** -Data Box Azure veri merkezi dışında olduğunda Data Box nasıl güçlendirin ve bu bilgisayardaki paylaşımlara erişme hakkında bilgi içerir.
    - **İçeri aktarma sırasındaki bom dosyaları** - **göndermeye hazırlama** sırasında indirebileceğiniz ve dosya adlarına, dosya boyutlarına ve dosya sağlama toplamlarını içeren dosya (dosya bildirimi olarak da bilinir) listesini içerir.
    - **Dışarı aktarma sırasında ayrıntılı Günlükler** -veriler Azure depolama hesaplarından Data Box kopyalanırken dosya adları, dosya boyutları ve sağlama toplamı hesaplamasına sahip dosyaların listesini içermelidir.
 
@@ -206,15 +200,15 @@ Sipariş geçmişini indirmek için aşağıdaki adımları uygulayın.
 
 ## <a name="view-order-status"></a>Sipariş durumunu görüntüleme
 
-Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
+Portalda cihaz durumu değiştiğinde bir e-posta ile bildirilir.
 
 ### <a name="statuses-for-import-order"></a>İçeri aktarma sırası için durumlar
 
 İçeri aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Description |
+|Sipariş durumu |Açıklama |
 |---------|---------|
-|Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
+|Sipariş edildi     | Sipariş başarıyla oluşturuldu. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz hemen kullanılamıyorsa, cihaz kullanılabilir hale geldiğinde sıra işlenir. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde karşılanmıyorsa, sipariş iptal edilir ve size bildirilir.         |
 |İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca cihaz gönderilmek üzere veri merkezinde hazırlanır.         |
 |Yola çıktı     | Sipariş sevk edildi. Gönderiyi takip etmek için portalda, siparişinizde görüntülenen takip kimliğini kullanın.        |
 |Teslim Edildi     | Gönderim, belirtilen adrese teslim edildi.        |
@@ -224,23 +218,23 @@ Cihaz durumu portalda değiştiğinde bu, size e-posta ile bildirilir.
 |Tamamlandı       |Sipariş başarıyla tamamlandı.<br> Şirket içi verilerini sunuculardan silmeden önce verilerinizin Azure’a kopyalandığından emin olun.         |
 |Hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. [Karşıya yükleme hatalarla tamamlandığında kopyalama günlüklerine örneklere](./data-box-logs.md#upload-completed-with-errors)bakın.   |
 |Uyarılarla tamamlandı| Veri kopyalama tamamlandı, ancak verileriniz değiştirildi. Veriler, dosya veya blob adlarını değiştirerek düzeltilen kritik olmayan BLOB veya dosya adı hatalarıyla karşılaştı. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Verilerdeki değişikliklere bir göz önünde bir dikkat edin. [Karşıya yükleme uyarılarla tamamlandığında, kopyalama günlüklerine örneklere](./data-box-logs.md#upload-completed-with-warnings)bakın.   |
-|İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal ettiniz veya bir hatayla karşılaşıldı ve sipariş, hizmet tarafından iptal edildi. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
+|İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal ettiniz ya da bir hata oluştuysa, hizmet sırayı iptal etmiş olursunuz. Sipariş 90 gün içinde karşılanmıyorsa, sipariş da iptal edilir ve size bildirilir.     |
 |Temizleme | Cihaz sürücülerindeki veriler silinir. Cihaz temizleme; sipariş geçmişi Azure portalından indirilmeye hazır olduğunda tamamlanmış olarak değerlendirilir.|
 
 ### <a name="statuses-for-export-order"></a>Dışarı aktarma sırası için durumlar
 
 Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 
-|Sipariş durumu |Description |
+|Sipariş durumu |Açıklama |
 |---------|---------|
 |Sipariş edildi     | Dışarı aktarma sırası başarıyla yerleştirildi. <br>Cihaz kullanılabilir durumdaysa Microsoft tarafından gönderilecek cihaz belirlenir ve cihaz hazırlanır. <br> Cihaz o anda mevcut değilse sipariş cihaz mevcut olduğunda işleme alınır. Siparişin işleme alınması birkaç gün ile birkaç ay sürebilir. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.         |
 |İptal edildi            |Sipariş iptal edildi. <br> Siparişi iptal etmiş olursunuz (yalnızca sipariş işlenmeden önce iptal edebilirsiniz) ya da bir hata ile karşılaşıldıktan sonra hizmet siparişi iptal etmiş olursunuz. Sipariş 90 gün içinde gerçekleştirilemiyorsa sipariş iptal edilir ve bu size bildirilir.     |
 |İşlendi     | Siparişin işlenmesi tamamlandı. Siparişiniz uyarınca, cihaz veri merkezindeki veri kopyalama için hazırlanır. Cihaz paylaşımları oluşturulur.         |
 |Veri kopyalama devam ediyor     | Belirtilen Azure depolama hesaplarından cihaza veri kopyalama işlemi devam ediyor. Azure portal’da siparişinizin kopyalama ilerleme durumunu takip edin. <br> Veri kopyalama işlemi tamamlanana kadar bekleyin. |
-|Kopyalama tamamlandı     | Belirtilen Azure depolama hesaplarından cihaza veri kopyalama işlemi tamamlanmıştır. Ayrıntılı günlük dosyası (Eğer seçenek sırasıyla etkinleştirilmişse) ve depolama hesabınızda bir kopyalama günlüğü oluşturulur. Ayrıntılı günlük, cihaza kopyalanan tüm dosyalar (ad, yol, hesaplama sağlama toplamı) hakkındaki bilgileri içerir. Kopyalama günlüğü, herhangi bir hata nedeniyle kopyalanamayan bir dosya listesi dahil olmak üzere kopyalama işleminin özetini içerir.<br> Depolama hesabı verileri olduğu gibi kalır. |
+|Kopyalama tamamlandı     | Belirtilen Azure depolama hesaplarından cihaza veri kopyalama işlemi tamamlanmıştır. Ayrıntılı günlük dosyası (Eğer seçenek sırasıyla etkinleştirilmişse) ve depolama hesabınızda bir kopyalama günlüğü oluşturulur. Ayrıntılı günlük, cihaza kopyalanan tüm dosyalar (ad, yol, hesaplama sağlama toplamı) hakkındaki bilgileri içerir. Kopyalama günlüğü, herhangi bir hata nedeniyle kopyalanamayan bir dosya listesi dahil olmak üzere kopyalama işleminin özetini içerir. <br> Depolama hesabı verileri olduğu gibi kalır. |
 |Kopyalama hatalarla tamamlandı| Veri kopyalama tamamlandı ancak kopyalama sırasında hatalar oluştu. <br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hatalarla tamamlandığında, günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-errors)bakın.   |
 |Kopyalama uyarılarla tamamlandı| Azure depolama hesabından veri kopyalama tamamlandı, ancak veriler kritik olmayan hatalara sahipti. <br> Azure portalda belirtilen yolu kullanarak kopyalama günlüklerini gözden geçirin. Kritik olmayan hataları bir yere dikkat edin. [İndirme, uyarılarla tamamlandığında günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-warnings)bakın.   |
-|Kopyalama hatalarla başarısız oldu| Azure depolama hesabından veri kopyalama işlemi başarısız oldu ve sıra sonlandırıldı. Bir cihaz gönderilmeyecektir.<br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hata ile başarısız olduğunda günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-errors)bakın.   |
+|Kopyalama hatalarla başarısız oldu| Azure depolama hesabından veri kopyalama başarısız oldu ve sıra sonlandırıldı. Bir cihaz gönderilmeyecektir. <br> Azure portal belirtilen yolu kullanarak Azure Storage hesabındaki kopyalama günlüklerini gözden geçirin. [İndirme işlemi hata ile başarısız olduğunda günlükleri kopyalama örneklerine](./data-box-logs.md#upload-completed-with-errors)bakın.   |
 |Yola çıktı     |Sipariş sevk edildi. Gönderiyi takip etmek için portalda, siparişinizde görüntülenen takip kimliğini kullanın.        |
 |Teslim Edildi     |Gönderim, belirtilen adrese teslim edildi.        |
 |Teslim alındı     |İade gönderiniz teslim alındı ve kurye tarafından tarandı.         |
@@ -252,14 +246,14 @@ Dışarı aktarma siparişi için durumlar aşağıda verilmiştir.
 > Azure depolama hesaplarından verileri dışarı aktarmaya yönelik kopyalama işi hatalar veya uyarılarla Data Box tamamlanırsa, cihaz yine de gönderilir. Yalnızca kopyalama hatası söz konusu olduğunda, sipariş sonlandırılır ve cihaz teslim edilmez.
 
 
-Kendi kendine yönetilen kargo kullanılıyorsa kopyalama tamamlandıktan sonra ve cihazı almadan önce, aşağıdaki durumları görürsünüz (önceki tabloda bahsedilen durumlar yerine):
+Otomatik olarak yönetilen kargo kullanıyorsanız, kopyalama işlemi tamamlandıktan sonra ve cihazı almadan önce aşağıdaki durumları görürsünüz (önceki tabloda bahsedilen durumlar yerine):
 
-|Sipariş durumu |Description |
+|Sipariş durumu |Açıklama |
 |---------|---------|
 |Azure veri merkezinde toplama için hazırlanma      |Cihaz, Azure veri merkezinde hazırlanmaya uygun.        |
 |Teslim alındı    |Cihazı tamamladınız.         |
 |Azure veri merkezinde almaya hazırlanma     |Cihaz, Azure veri merkezinde alınmak üzere hazırlanmıştı.        |
-|Alındı     |Cihaz, Azure veri merkezinde alınır.      |
+|Alındı     |Cihaz, Azure veri merkezinde alındı.      |
 
 
 

@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/14/2020
-ms.openlocfilehash: e2f61085d3dab6d4489aa190204be4169ea5c2fb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6271b83749c078b64c168a27f887ed7055e37d96
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638015"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678899"
 ---
 # <a name="plan-and-manage-costs-for-azure-data-factory"></a>Azure Data Factory maliyetlerini planlayın ve yönetin
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Azure Data Factory, bulut ölçeği için derlenmiş bir sunucusuz ve elastik veri tümleştirme hizmetidir.  Bu, yoğun yük için plan yapmanız gereken sabit boyutlu bir işlem olmadığı anlamına gelir; işlem başına isteğe bağlı olarak ne kadar kaynak ayrılacağını belirtmeniz gerekir. Bu, ETL işlemlerini çok daha ölçeklenebilir bir şekilde tasarlamanıza olanak sağlar. Ayrıca, ADF, tüketim tabanlı bir planda faturalandırılır ve bu, yalnızca kullandığınız kadar ödemenizi gösterir.
 
@@ -62,9 +62,9 @@ Maliyetleri yönetmek için [bütçeler](../cost-management-billing/costs/tutori
 
 Azure Data Factory kullanmaya başladığınızda, Azure portal [Maliyet Analizi](../cost-management-billing/costs/quick-acm-cost-analysis.md) bölmesinde tahakkuk eden maliyetleri görebilirsiniz.
 
-1. [Maliyet analizini](../cost-management-billing/costs/quick-acm-cost-analysis.md)görüntülemek Için, **maliyet yönetimi + faturalama** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Açık maliyet analizi** ' ni seçin.
+1. [Maliyet analizini](../cost-management-billing/costs/quick-acm-cost-analysis.md)görüntülemek Için, **maliyet yönetimi + faturalama** penceresini açın, menüden **maliyet yönetimi** ' ni seçin ve ardından **Açık maliyet analizi**' ni seçin.
 2. Varsayılan görünüm, geçerli ayın birikmiş maliyetlerini gösterir.  Farklı bir zaman aralığına ve günlük veya aylık gibi farklı bir ayrıntı düzeyine geçiş yapabilirsiniz.
-3. Azure Data Factory gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı** ' nı seçin.  Ardından listeden **Azure Data Factory v2** 'yi seçin.
+3. Azure Data Factory gibi tek bir hizmetin maliyetlerini daraltmak için, **Filtre Ekle** ' yi ve ardından **hizmet adı**' nı seçin.  Ardından listeden **Azure Data Factory v2** 'yi seçin.
 4. Belirli bir fabrika örneği ve belirli ADF ölçüm ayrıntı düzeyi için maliyeti çözümlemek üzere ek filtreler ekleyebilirsiniz.
 
    ![Maliyet analizi](media/plan-manage-costs/cost-analysis.png)

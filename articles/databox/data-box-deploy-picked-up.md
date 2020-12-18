@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 12/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28637f35294e9c70cbf0e96fb2cdcb1853d2ba39
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992735"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97028385"
 ---
 ::: zone target="docs"
 
@@ -47,7 +47,7 @@ Bu öğreticide şu gibi konular hakkında bilgi edineceksiniz:
 Başlamadan önce şunlardan emin olun:
 
 * [Öğretici: Verileri Azure Data Box'a kopyalama ve doğrulama](data-box-deploy-copy-data.md) bölümünü tamamladınız.
-* Kopyalama işleri tamamlanıp **Bağlan ve kopyala** sayfasında hata kalmadıysa. Kopyalama işleri devam ediyorsa veya **Bağlan ve kopyala** sayfasında hatalar varsa göndermeye hazırlama adımı çalışmaz.
+* Kopyalama işleri tamamlanıp **Bağlan ve kopyala** sayfasında hata kalmadıysa. Devam eden kopyalama işleri varsa veya **Bağlan ve kopyala** sayfasında hatalar varsa **Göndermeye Hazırlama** çalıştırılamaz.
 
 ## <a name="prepare-to-ship"></a>Göndermeye hazırlama
 
@@ -63,10 +63,10 @@ Veri kopyalama işlemi tamamlandıktan sonra cihazı hazırlayıp gönderin. Cih
 
 Göndermeye hazırlama işleminden önce kopyalama işlerinin tamamlandığından emin olun.
 
-1. Yerel web kullanıcı arabirimindeki **Göndermeye hazırla** sayfasına gidin ve gönderme hazırlığına başlayın. 
-2. Cihazı yerel web kullanıcı arabiriminden kapatın. Kabloları cihazdan çıkarın. 
+1. Yerel web kullanıcı arabirimindeki **Göndermeye hazırla** sayfasına gidin ve gönderme hazırlığına başlayın.
+2. Cihazı yerel web kullanıcı arabiriminden kapatın. Kabloları cihazdan çıkarın.
 
-Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir.
+Sonraki adımlar, cihazı iade ettiğiniz bölgeye göre belirlenir.
 
 ::: zone-end
 
@@ -74,7 +74,7 @@ Sonraki adımlar cihazın iade edildiği bölgeye göre belirlenir.
 
 ## <a name="ship-data-box-back"></a>Data Box'ı geri gönderme
 
-Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun. Cihazı gönderdiğiniz bölgeye bağlı olarak yordam farklıdır.
+Cihaza veri kopyalamanın tamamlandığından ve **Göndermeye Hazırlama** işleminin başarılı olduğundan emin olun. Cihazı gönderdiğiniz bölgeye bağlı olarak yordam farklıdır.
 
 ::: zone-end
 
@@ -82,14 +82,14 @@ Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işl
 
 Cihazı ABD, Kanada veya Avrupa’da iade ediyorsanız aşağıdaki adımları uygulayın.
 
-1. Cihazın kapalı olduğundan ve kabloların çıkartılmış olduğundan emin olun. 
+1. Cihazın kapalı olduğundan ve kabloların çıkartılmış olduğundan emin olun.
 2. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
 3. E-ink ekranda gönderi etiketinin görüntülendiğinden emin olun ve taşıyıcınızdan bir teslim alma randevusu alın. Etiket hasar görür veya kaybolursa ya da E-ink ekranında gösterilmezse Microsoft Desteği’ne başvurun. Destek öneride bulunursa Azure portalındaki **Genel Bakış > Gönderim etiketini indir** bölümüne gidebilirsiniz. Gönderim etiketini indirip cihaza yapıştırın. 
 4. Cihazı iade ediyorsanız UPS ile bir toplama zamanı ayarlayın. Teslim alma planlamak için:
 
     * Yerel UPS şubesini (ülkeye/bölgeye özel ücretsiz hatlar) arayın.
-    * Görüşme esnasında, E-ink ekranında veya basılı etiketinizde gördüğünüz iade izleme numarasını bildirin.
-    * İzleme numarası bildirilmezse, teslim alma esnasında UPS’ye ek ücret ödemeniz gerekir.
+    * Görüşme esnasında, E-ink ekranında veya basılı etiketinizde gördüğünüz iade izleme numarasını bildirin. İzleme numarasını belirtmezseniz, UPS teslimat sırasında ek bir ücret talep edecektir.
+    * Teslim alma planlarken herhangi bir sorunla karşılaşırsanız veya ek ücret ödemeniz istenirse Azure Data Box İşlemleri ile iletişime geçin. [adbops@microsoft.com](mailto:adbops@microsoft.com) adresine e-posta gönderin.
 
     Teslim alma zamanlama yerine Data Box’ı en yakın teslim etme yerine bırakabilirsiniz.
 4. Data Box nakliyeciniz tarafından toplandıktan ve tarandıktan sonra, portaldaki sipariş durumu **Toplandı** olarak güncelleştirilir. Ayrıca bir takip numarası da görüntülenir.
@@ -110,7 +110,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 Avustralya’daki Azure veri merkezlerinde ek güvenlik bildirimi uygulanır. Gelen tüm sevkiyatların önceden bildirilmesi gerekir. Avustralya’da gönderme için aşağıdaki adımları uygulayın.
 
-1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
+1. Cihazı iade etmek üzere göndermek için, kullanılan orijinal kutuyu saklayın.
 2. Cihaza veri kopyalamanın tamamlandığından ve **göndermeye hazırlama** işleminin başarılı olduğundan emin olun.
 3. Cihazı kapatın ve kabloları çıkarın.
 4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
@@ -130,7 +130,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ## <a name="japan"></a>[Japonya](#tab/in-japan)
 
-1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
+1. Cihazı iade etmek üzere göndermek için, kullanılan orijinal kutuyu saklayın.
 2. Cihazı kapatın ve kabloları çıkarın.
 3. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
 4. Sevk mektubuna, gönderici bilgisi olarak şirket adınızı ve adres bilgilerinizi yazın.
@@ -151,9 +151,9 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
     d. 17：00-19：00 
     ```
 
-6. Teslim alma rezervasyonu yaptıktan sonra Quantium Solutions’tan e-posta onay iletisi alırsınız. E-posta onay iletisi, Chakubarai sevk mektubuna yönelik bilgileri de içerir.
+6. Teslim alma rezervasyonu yaptıktan sonra Quantium Solutions’dan e-posta onayı alın. E-posta onay iletisi, Chakubarai sevk mektubuna yönelik bilgileri de içerir.
 
-Gerekirse, aşağıdaki bilgilerden Quantium Solutions Desteği (Japonca) ile iletişime geçebilirsiniz: 
+Gerekirse, aşağıdaki bilgileri kullanarak Quantium Solutions Desteği (Japonca) ile iletişime geçebilirsiniz:
 
 * E-posta: Customerservice.JP@quantiumsolutions.com 
 * Telefon：03-5755-0150 
@@ -172,8 +172,8 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 ## <a name="singapore"></a>[Singapur](#tab/in-singapore)
 
-1. İade gönderimi için cihazı gönderirken kullanılan orijinal kutuyu saklayın.
-2. İzleme numarasını (Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında başvuru numarası olarak gösterilir) not alın. Bu numara, göndermeye hazırlama adımı başarıyla tamamlandıktan sonra oluşturulur. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın.
+1. Cihazı iade etmek üzere göndermek için, kullanılan orijinal kutuyu saklayın.
+2. Data Box yerel web kullanıcısı arabiriminin **Göndermeye Hazırlama** sayfasında referans numarası olarak gösterilen izleme numarasını not alın. İzleme numarası, **Göndermeye Hazırlama** adımı başarıyla tamamlandıktan sonra sağlanır. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın.
 3. Cihazı kapatın ve kabloları çıkarın.
 4. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin. 
 5. Aşağıdaki e-posta şablonuna takip numarasını ekleyin ve SingPost Müşteri Hizmetleri'ne gönderin.
@@ -209,8 +209,8 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 1. İade gönderimi için cihazı orijinal kutusunda paketleyin.
 2. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-3. İzleme numarasını (Data Box yerel web kullanıcı arabiriminin **Göndermeye Hazırlama** sayfasında başvuru numarası olarak gösterilir) not alın. Bu numara, “Göndermeye hazırlama” adımı başarıyla tamamlandıktan sonra sağlanır. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın.
-4. Azure Data Box İşlemlerinden dönüş kodunu isteyin. Dönüş kodu, paketi veri merkezine geri teslim etmek için gereklidir. [adbops@microsoft.com](mailto:adbops@microsoft.com) adresine e-posta gönderin. Açıkça görünebilmesi için bu kodu gönderim etiketinde iade adresinin yanına ekleyin.
+3. İzleme numarasını (Data Box yerel web kullanıcı arabiriminin **Göndermeye Hazırlama** sayfasında başvuru numarası olarak gösterilir) not alın. İzleme numarası, “Göndermeye Hazırlama” adımı başarıyla tamamlandıktan sonra sağlanır. Bu sayfadaki gönderim etiketini indirin ve kutunun üzerine yapıştırın.
+4. Azure Data Box İşlemlerinden dönüş kodunu isteyin. Dönüş kodu, paketi veri merkezine geri teslim etmek için gereklidir. [adbops@microsoft.com](mailto:adbops@microsoft.com) adresine e-posta gönderin. Bu kodu, açıkça görülebilen iade adresinin yanındaki gönderim etiketine not edin.
 5. Aşağıdaki yöntemlerden birini kullanarak DHL ile bir teslim alma rezervasyonu yapın:
  
    * [DHL Express Güney Afrika, **Schedule a Pickup**](https://mydhl.express.dhl/za/en/schedule-pickup.html#/schedule-pickup#label-reference) (Teslim Alma Zamanla) öğesine gidip bir çevrimiçi teslim alma rezervasyonu yapın.
@@ -231,7 +231,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
     * İsterseniz paketi en yakın DHL hizmet noktasına da bırakabilirsiniz.
 
-6. Herhangi bir sorunla karşılaşırsanız [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine karşılaştığınız sorunun ayrıntılarını içeren bir e-posta gönderin ve Konu: satırına irsaliye numarasını ekleyin. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
+6. Herhangi bir sorunla karşılaşırsanız bununla ilgili ayrıntıları [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) adresine e-posta ile gönderin ve konşimento numarasını Konu: satırına yazın. +27(0)119213902 numaralı telefonu da arayabilirsiniz.
 
 ::: zone target="chromeless"
 
@@ -249,16 +249,16 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 
 1. İade gönderimi için cihazı orijinal kutusunda paketleyin.
 2. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-3. Çalışma saatleri içinde (Pazartesi - Cuma saat 09:00 ile 18:00 arası) **(852) 2318 1213** numaralı telefondan **Quantium Solutions** bilgi hattını arayın.  
+3. Çalışma saatleri içinde (Pazartesinden Cumaya 09:00-18:00) **(852) 2318 1213** numaralı telefondan **Quantium Solutions** bilgi hattını arayın.  
 4. Teslim almayı planlamak için iade gönderimi etiketinde Microsoft Azure teslim alma ifadesini, referans numarasını ve takip numarasını (barkodun üzerinde) belirtin.
-5. Teslim alma zamanlaması için sözlü teyit alırsınız. Teslim almak için kurye gönderilmezse alternatif düzenlemeler için Quantium Solutions bilgi hattını arayın.
-6. Quantium'la teslim alma rezervasyonunu yaptıktan sonra, aşağıdaki şablonu kullanarak onayı [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) ile paylaşın:
+5. Teslim alma zamanlamasının sözlü bir teyidini alırsınız. Teslim almak için kurye gelmezse alternatif düzenlemeler için Quantium Solutions bilgi hattını arayın.
+6. Quantium Solutions ile bir teslim alma rezervasyonu yaptıktan sonra, aşağıdaki şablonu kullanarak onayı [Microsoft Data Box İşlemleri Asya](mailto:adbo@microsoft.com) ile paylaşın:
 
     ```output
     To: adbo@microsoft.com
     Subject: Microsoft Data Box Job: [order name] has completed copy
     Body:
-    We have confirmed the pickup details with Quantium.
+    We have confirmed the pickup details with Quantium Solutions.
 
        * Requestor name:
        * Requestor contact number:
@@ -266,7 +266,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
        * Pickup time:
     ```
 
-Sorunlarla karşılaşırsanız konu üst bilgisine iş adını ve karşılaşılan sorunu belirterek Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) adresine e-posta gönderin.
+Herhangi bir sorunla karşılaşırsanız bununla ilgili ayrıntıları Data Box İşlemleri Asya [adbo@microsoft.com](mailto:adbo@microsoft.com) adresine e-posta ile gönderin ve iş adını Konu: satırına yazın.
 
 ::: zone target="chromeless"
 
@@ -283,7 +283,7 @@ Veriler Azure'a yüklendikten sonra Data Box disklerindeki veriyi [NIST SP 800-8
 <!--## [In Korea](#tab/in-korea) 
 
 1. Retain the original box used to ship the device for return shipment.
-2. Note down the tracking number (shown as reference number on the Prepare to Ship page of the Data Box local web UI). This is available after the prepare to ship step successfully completes. Download the shipping label from this page and paste on the packing box. 
+2. Note down the tracking number (shown as reference number on the **Prepare to Ship** page of the Data Box local web UI). The tracking number is available after the **Prepare to ship** step successfully completes. Download the shipping label from this page and paste on the packing box. 
 3. Power off the device and remove the cables.
 4. Spool and securely place the power cord that was provided with the device in the back of the device. 
 
@@ -322,11 +322,11 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Kullanıcı Yönetimli](#tab/in-selfmanaged)
 
-Data Box’ı US Government, Japonya, Singapur, Güney Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve sipariş oluşturma sırasında kullanıcı yönetimli gönderim seçeneğini belirlediyseniz bu yönergeleri izleyin. 
+Data Box’ı ABD Devleti, Japonya, Singapur, Kore, Hindistan, Güney Afrika veya Batı Avrupa’da kullanıyorsanız ve siparişinizi oluştururken kendi kendini yöneten gönderimi seçtiyseniz bu yönergeleri izleyin.
 
-1. Bu adım başarıyla tamamlandıktan sonra Data Box yerel web kullanıcı arabiriminin Göndermeye Hazırlama sayfasında gösterilen Yetkilendirme kodunu not alın.
+1. Adım başarıyla tamamlandıktan sonra Data Box için yerel web kullanıcı arabiriminin **Gönderime Hazırlama** sayfasında gösterilen Yetkilendirme kodunu not alın.
 2. Cihazı kapatın ve kabloları çıkarın. Cihaz ile beraber sağlanan güç kablosunu sararak emniyetli şekilde cihazın arkasına yerleştirin.
-3. Cihazı iade etmeye hazırsanız aşağıdaki şablonu kullanarak Azure Data Box Operasyon ekibine bir e-posta gönderin.
+3. Cihazı iade etmeye hazır olduğunuzda, aşağıdaki şablonu kullanarak Azure Data Box İşlemleri ekibine bir e-posta gönderin.
 
     ```
     To: adbops@microsoft.com

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Hubnoktadan veri kopyalama (Önizleme)
+title: Azure Data Factory kullanarak Hubnoktadan veri kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak HubSpot 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/08/2020
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 2d60a1b03da6fdf4af6b0d0378456c08d927f451
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 151f156439a40b2e5515886849635f00b2fcc1e7
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81415217"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680910"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Hubnoktadan veri kopyalama (Önizleme)
+# <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Azure Data Factory kullanarak Hubnoktadan veri kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, verileri Hubnoktadan kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
-
-> [!IMPORTANT]
-> Bu bağlayıcı Şu anda önizleme aşamasındadır. Deneyebilir ve geri bildirimde bulunun. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -50,14 +47,14 @@ Aşağıdaki özellikler, HubSpot bağlı hizmeti için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği şu şekilde ayarlanmalıdır: **HubSpot** | Evet |
-| clientId | HubSpot uygulamanız ile ilişkili istemci KIMLIĞI. [Buradan](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)hubın içinde uygulama oluşturmayı öğrenin. | Evet |
-| clientSecret | HubSpot uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| accessToken | İlk olarak OAuth tümleştirmenizi doğrularken alınan erişim belirteci. [Burada](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)istemci kimliğiniz ve gizli dizinizle nasıl erişim belirteci alabileceğinizi öğrenin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| refreshToken | İlk olarak OAuth tümleştirmenizi doğrularken alınan yenileme belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet |
-| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
-| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| tür | Type özelliği şu şekilde ayarlanmalıdır: **HubSpot** | Yes |
+| clientId | HubSpot uygulamanız ile ilişkili istemci KIMLIĞI. [Buradan](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot)hubın içinde uygulama oluşturmayı öğrenin. | Yes |
+| clientSecret | HubSpot uygulamanızla ilişkili istemci gizli dizisi. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| accessToken | İlk olarak OAuth tümleştirmenizi doğrularken alınan erişim belirteci. [Burada](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens)istemci kimliğiniz ve gizli dizinizle nasıl erişim belirteci alabileceğinizi öğrenin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| refreshToken | İlk olarak OAuth tümleştirmenizi doğrularken alınan yenileme belirteci. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Yes |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usehostdoğrulaması | Sunucu sertifikasında, TLS üzerinden bağlanırken sunucunun ana bilgisayar adıyla eşleşecek şekilde, ana bilgisayar adının istenip istenmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | No |
+| Usepeerdoğrulaması | TLS üzerinden bağlanılırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true şeklindedir.  | No |
 
 **Örnek:**
 
@@ -89,11 +86,11 @@ Aşağıdaki özellikler, HubSpot bağlı hizmeti için desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, HubSpot veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Hubtype 'tan veri kopyalamak için, veri kümesinin Type özelliğini **Hubspotobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Hubtype 'tan veri kopyalamak için, veri kümesinin Type özelliğini **Hubspotobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Veri kümesinin Type özelliği: **Hubspotobject** olarak ayarlanmalıdır | Evet |
+| tür | Veri kümesinin Type özelliği: **Hubspotobject** olarak ayarlanmalıdır | Yes |
 | tableName | Tablonun adı. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -119,11 +116,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="hubspotsource-as-source"></a>Kaynak olarak HubspotSource
 
-Hubtype 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hubspotsource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Hubtype 'tan veri kopyalamak için kopyalama etkinliğindeki kaynak türünü **Hubspotsource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hubspotsource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Hubspotsource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Companies where Company_Id = xxx"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

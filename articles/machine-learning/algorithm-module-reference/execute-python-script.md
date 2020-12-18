@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 12/02/2020
-ms.openlocfilehash: 360f0ce60a35bc96c6dd8e46d636f07124d01255
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511925"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679192"
 ---
 # <a name="execute-python-script-module"></a>Python betik modülünü Yürüt
 
@@ -156,7 +156,7 @@ Execute Python betik modülü, başlangıç noktası olarak kullanabileceğiniz 
     1. Betiği ve diğer özel kaynakları bir ZIP dosyasına paketleyin.
     1. Zip dosyasını bir **dosya veri kümesi** olarak Studio 'ya yükleyin. 
     1. Veri kümesi modülünü tasarımcı yazma sayfasındaki sol modül bölmesinde bulunan *veri kümeleri* listesinden sürükleyin. 
-    1. Veri kümesi modülünü, **R betiği yürütme** modülünün **betik paketi** bağlantı noktasına bağlayın.
+    1. Veri kümesi modülünü **Python betik modülünün yürütme** betik **paketi** bağlantı noktasına bağlayın.
     
     Karşıya yüklenen sıkıştırılmış arşivde bulunan herhangi bir dosya, işlem hattı yürütmesi sırasında kullanılabilir. Arşiv bir dizin yapısı içeriyorsa, yapı korunur.
  

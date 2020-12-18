@@ -10,13 +10,13 @@ ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: cc95913b0ab815449a1cd56c0c9127410a64b600
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 12/17/2020
+ms.openlocfilehash: b5b0f6dcef728f0597e7eac8ba57c8fd240d19c9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591910"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680297"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory’de sürekli tümleştirme ve teslim
 
@@ -28,7 +28,7 @@ Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik o
 
 Azure Data Factory, sürekli tümleştirme ve teslim (CI/CD), Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. Azure Data Factory, çeşitli ADF varlıklarınızın yapılandırmasını depolamak için [Azure Resource Manager şablonlarından](../azure-resource-manager/templates/overview.md) yararlanır (işlem hatları, veri kümeleri, veri akışları vb.). Bir veri fabrikasını başka bir ortama yükseltmek için önerilen iki yöntem vardır:
 
--    Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) tümleştirme kullanılarak otomatik dağıtım
+-    Data Factory [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) tümleştirme kullanılarak otomatik dağıtım
 -    Azure Resource Manager ile Data Factory UX tümleştirmesi kullanarak Kaynak Yöneticisi şablonunu el ile karşıya yükleyin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -115,7 +115,7 @@ Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikl
 
 1.  Yayın ardışık düzenini kaydedin.
 
-1. Bir yayını tetiklemek için **yayın oluştur**' u seçin. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers?view=azure-devops)
+1. Bir yayını tetiklemek için **yayın oluştur**' u seçin. Yayınların oluşturulmasını otomatikleştirmek için bkz. [Azure DevOps yayın Tetikleyicileri](/azure/devops/pipelines/release/triggers)
 
    ![Yayın oluştur ' u seçin](media/continuous-integration-deployment/continuous-integration-image10.png)
 
@@ -207,6 +207,12 @@ Geliştirme fabrikasında ilişkili bir git deposu varsa, şablonu yayımlayarak
 
 * Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
 * Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
+
+    Özel parametre 256 sınırını işlemek için 3 seçenek vardır:    
+  
+    * Özel parametre dosyasını kullanın ve Parametreleştirme gerektirmeyen özellikleri kaldırın, yani, varsayılan değeri tutan ve bu nedenle parametre sayısını azaltan Özellikler.
+    * Parametreleri azaltmak için veri akışındaki mantığı yeniden düzenleyin, örneğin, işlem hattı parametrelerinin hepsi aynı değere sahiptir, bunun yerine yalnızca genel parametreleri kullanabilirsiniz.
+    * Bir veri fabrikasını birden çok veri akışına ayırın.
 
 Varsayılan parameterleştirme şablonunu geçersiz kılmak için yönetim merkezine gidin ve kaynak denetimi bölümünde **Parametreleştirme şablonu** ' nu seçin. Parametreleştirme şablonu kod düzenleyicisini açmak için **Şablonu Düzenle** ' yi seçin. 
 
@@ -639,7 +645,7 @@ Ortamlarınızı nasıl sık düzelceğiniz hakkında ayrıntılı bir video ö�
 
 ## <a name="exposure-control-and-feature-flags"></a>Pozlama denetimi ve özellik bayrakları
 
-Bir ekip üzerinde çalışırken, değişiklikleri birleştirebileceğiniz ancak ÜRETIM ve QA gibi yükseltilmiş ortamlarda çalıştırılmalarını istemediğiniz örnekler vardır. ADF ekibi, bu senaryoyu işlemek için [özellik bayraklarını kullanma DevOps kavramını](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops)önerir. ADF 'de, bu ortam bayraklarını temel alan mantık kümelerini gizlemek için [genel parametreleri](author-global-parameters.md) ve [If koşulu etkinliğini](control-flow-if-condition-activity.md) birleştirebilirsiniz.
+Bir ekip üzerinde çalışırken, değişiklikleri birleştirebileceğiniz ancak ÜRETIM ve QA gibi yükseltilmiş ortamlarda çalıştırılmalarını istemediğiniz örnekler vardır. ADF ekibi, bu senaryoyu işlemek için [özellik bayraklarını kullanma DevOps kavramını](/azure/devops/migrate/phase-features-with-feature-flags)önerir. ADF 'de, bu ortam bayraklarını temel alan mantık kümelerini gizlemek için [genel parametreleri](author-global-parameters.md) ve [If koşulu etkinliğini](control-flow-if-condition-activity.md) birleştirebilirsiniz.
 
 Bir özellik bayrağını ayarlamayı öğrenmek için aşağıdaki video öğreticisine bakın:
 

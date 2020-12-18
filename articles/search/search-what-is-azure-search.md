@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 11/24/2020
+ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 01f61eac31c388cd0bf8a857beb7a10944187c6b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027909"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679521"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Azure Bilişsel Arama nedir?
 
@@ -25,8 +25,8 @@ Bir Bilişsel Arama hizmeti oluşturduğunuzda şunları alırsınız:
 + Dizin oluşturma ve sorgu yürütmeyi gerçekleştiren bir arama altyapısı
 + Oluşturduğunuz ve yönettiğiniz arama dizinlerinin kalıcı depolaması
 + Karmaşık sorguları basit sorgular oluşturmak için bir sorgu dili
-+ AI ortalanmış analiz, görüntülerin, ham metinden, uygulama dosyalarından aranabilir içerik oluşturma
-+ Arama Dizin oluşturucular aracılığıyla Azure verileriyle tümleştirme, verileri içeri aktarmayı ve yenilemeyi otomatikleştirme
++ [AI odaklı zenginler](cognitive-search-concept-intro.md), görüntü, ham metin ve uygulama dosyalarından aranabilir içerik oluşturma
++ Veri, makine öğrenimi/AI ve güvenlik için diğer Azure hizmetleriyle tümleştirme
 
 Mimari türsel olarak, bir arama hizmeti, dizini oluşturulmamış verilerinizi içeren dış veri depoları arasında ve bir arama dizinine sorgu istekleri gönderen ve yanıtı işleyen bir istemci uygulaması arasında yer alır.
 
@@ -89,11 +89,11 @@ Bulut sağlayıcıları arasında Azure Bilişsel Arama, birincil olarak hem bil
 Temel güçlü yönleri şunlardır:
 
 + Dizin oluşturma katmanında Azure veri tümleştirmesi (gezginler)
-+ Merkezi yönetim için Azure portalı
-+ Azure ölçekleme, güvenilirlik ve birinci sınıf kullanılabilirlik
-+ Resimlerin metin veya yapılandırılmamış içerikte desenler bulma dahil olmak üzere, ham verileri daha fazla aranabilir hale getirmek için AI işleme.
++ Internet güvenlik gereksinimlerini desteklemek için Azure özel bağlantı tümleştirmesi
++ Aranabilir içerik türlerini metin ile aranabilir hale getirmek için AI işlemeyle tümleştirme.
 + 56 dilde güçlü metin araması için çözümleyicilerle birlikte linguistik ve özel analiz
-+ [Arama odaklı uygulamalarda ortak olan temel özellikler](search-features-list.md): puanlama, modelleme, öneriler, eş anlamlılar, coğrafi arama ve daha fazlası.
++ [Kritik Özellikler](search-features-list.md): zengin sorgu dili, ilgi ayarlama, Faks, otomatik tamamlama, eş anlamlılar, coğrafi arama ve sonuç oluşturma.
++ Azure ölçekleme, güvenilirlik ve birinci sınıf kullanılabilirlik
 
 Müşterilerimiz arasında, Azure Bilişsel Arama ' deki en geniş özelliklerden faydalanabilir. Çevrimiçi Kataloglar, iş kolu programları ve belge bulma uygulamaları vardır.
 

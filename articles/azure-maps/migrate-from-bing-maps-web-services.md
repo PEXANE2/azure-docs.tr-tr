@@ -9,16 +9,23 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6024aae68183fbe02125ef4207e9fbce8abd6a2b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904967"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679079"
 ---
-# <a name="tutorial---migrate-web-service-from-bing-maps"></a>Öğretici-Bing Haritalar 'dan Web hizmeti geçirme
+# <a name="tutorial-migrate-web-service-from-bing-maps"></a>Öğretici: Bing Haritalar 'dan Web hizmeti geçirme
 
-Hem Azure hem de Bing Haritalar REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevler gerçekleştirir, ancak farklı adlandırma kuralları ve yanıt nesneleri kullanır.
+Hem Azure hem de Bing Haritalar REST Web Hizmetleri aracılığıyla uzamsal API 'lere erişim sağlar. Bu platformların API arabirimleri benzer işlevler gerçekleştirir, ancak farklı adlandırma kuralları ve yanıt nesneleri kullanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+
+> * İleri ve ters coğrafi kodlama
+> * İlgi noktası arama
+> * Rotaları ve yönleri hesapla
+> * Harita görüntüsünü al
+> * Uzaklık matrisini hesaplama
+> * Saat dilimi ayrıntılarını al
 
 Aşağıdaki tabloda, listelenen Bing Haritalar hizmeti API 'Lerinde benzer işlevler sağlayan Azure Maps hizmeti API 'Leri verilmiştir.
 
@@ -59,6 +66,12 @@ Aşağıdaki en iyi yöntemler kılavuzlarını da gözden geçirdiğinizden emi
 -   [Arama için en iyi yöntemler](./how-to-use-best-practices-for-search.md)
 -   [Yönlendirme için en iyi uygulamalar](./how-to-use-best-practices-for-routing.md)
 
+## <a name="prerequisites"></a>Ön koşullar
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
+
 ## <a name="geocoding-addresses"></a>Coğrafi kodlama adresleri
 
 Coğrafi kodlama, bir adresi (gibi `"1 Microsoft way, Redmond, WA"` ) bir koordine (Boylam:-122,1298, Enlem: 47,64005 gibi) dönüştürme işlemidir. Koordinatlar daha sonra bir haritada bir raptiye konumlandırmak veya Haritayı ortalamak için kullanılır.
@@ -91,9 +104,9 @@ Aşağıdaki tablolar, yapılandırılmış ve serbest biçimli adres coğrafi k
 
 Azure haritalar da destekler;
 
--   `countrySecondarySubdivision` – İlçe, bölgeleri
--   `countryTertiarySubdivision` -Adlandırılmış alan; Boroughs, Canton, communes
--   `ofs` -Parametre ile birlikte sonuçlar aracılığıyla sayfa `maxResults` .
+* `countrySecondarySubdivision` – İlçe, bölgeleri
+* `countryTertiarySubdivision` -Adlandırılmış alan; Boroughs, Canton, communes
+* `ofs` -Parametre ile birlikte sonuçlar aracılığıyla sayfa `maxResults` .
 
 **Sorguya göre konum (serbest biçimli adres dizesi)**
 
@@ -109,10 +122,10 @@ Azure haritalar da destekler;
 
 Azure haritalar da destekler;
 
--   `typeahead` -Türler sorgu kısmi giriş olarak yorumlanıp, arama tahmine dayalı moda (otomatik öneri/otomatik tamamlama) girer.
--   `countrySet` – Aramanın sınırlandıralınacağı ISO2 ülkelerin kodlarının virgülle ayrılmış bir listesi.
--   `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Sonuçları daha yerel olarak alakalı hale getirmek için Kullanıcı konumunu ve alanını belirtin.
--   `ofs` -Parametre ile birlikte sonuçlar aracılığıyla sayfa `maxResults` .
+* `typeahead` -Türler sorgu kısmi giriş olarak yorumlanıp, arama tahmine dayalı moda (otomatik öneri/otomatik tamamlama) girer.
+* `countrySet` – Aramanın sınırlandıralınacağı ISO2 ülkelerin kodlarının virgülle ayrılmış bir listesi.
+* `lat`/`lon`, `topLeft` / `btmRight` , `radius` – Sonuçları daha yerel olarak alakalı hale getirmek için Kullanıcı konumunu ve alanını belirtin.
+* `ofs` -Parametre ile birlikte sonuçlar aracılığıyla sayfa `maxResults` .
 
 Arama hizmetinin nasıl kullanılacağına ilişkin bir örnek [burada](./how-to-search-for-address.md)belgelenmiştir. [Arama belgeleri için en iyi uygulamaları](./how-to-use-best-practices-for-search.md) gözden geçirdiğinizden emin olun.
 
@@ -142,15 +155,15 @@ Aşağıdaki tabloda, Bing Haritalar API parametreleri Azure haritalar 'daki kar
 
 Azure haritalar ters coğrafi kodlama API 'SI, uygulamanızı geçirirken tümleştirme açısından yararlı olabilecek Bing Haritalar 'da bulunmayan bazı ek özelliklere sahiptir:
 
--   Hız sınırı verilerini alın.
--   Yol kullanım bilgilerini alma; Yerel yol, arterial, sınırlı erişim, rampa, vb.
--   Koordinat, koordinat tarafında yer alır.
+* Hız sınırı verilerini alın.
+* Yol kullanım bilgilerini alma; Yerel yol, arterial, sınırlı erişim, rampa, vb.
+* Koordinat, koordinat tarafında yer alır.
 
 **Varlık türü karşılaştırma tablosu**
 
 Aşağıdaki tabloda, Bing Haritalar varlık türü değerleri, Azure haritalar 'daki eşdeğer özellik adlarına başvuruyordur.
 
-| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Description                                |
+| Bing Haritalar varlık türü | Karşılaştırılabilir Azure Maps varlık türü               | Açıklama                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adres*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Larım*                             |
@@ -174,10 +187,10 @@ Azure haritalar arama API 'sinin bazıları, otomatik öneri senaryolarında kul
 
 Azure haritalar, yolları ve yönergeleri hesaplamak için kullanılabilir. Azure haritalar, Bing Haritalar yönlendirme hizmeti ile aynı işlevselliklerin çoğuna sahiptir; Örneğin;
 
--   varış ve ayrılma süreleri
--   gerçek zamanlı ve tahmine dayalı trafik rotaları
--   farklı ulaşım modları; itici, yürüyen, kamyon
--   güzergah noktası sırası iyileştirmesi (seyahat satış Bay)
+* varış ve ayrılma süreleri
+* gerçek zamanlı ve tahmine dayalı trafik rotaları
+* farklı ulaşım modları; itici, yürüyen, kamyon
+* güzergah noktası sırası iyileştirmesi (seyahat satış Bay)
 
 > [!NOTE]
 > Azure haritalar tüm waypoints 'in koordinatlarını gerektirir. Önce adreslerin coğrafi kodlanmış olması gerekir.
@@ -237,21 +250,21 @@ Azure haritalar yönlendirme API 'SI aynı API içindeki kamyon yönlendirmeyi d
 
 Azure haritalar yönlendirme API 'SI, Bing Haritalar 'da, uygulamanızı geçirirken tümleştirilebilen yararlı olabilecek birçok ek özelliğe sahiptir:
 
--   Rota türü desteği: en kısa, en hızlı, trilini ve en çok yakıt etkin.
--   Ek seyahat modları için destek: bisiklet, Bus, otocycle, Taxi, kamyon ve Van.
--   150 waypoints desteği.
--   Tek bir istekte birden çok seyahat süresi hesaplama; geçmiş trafik, canlı trafik, trafik yok.
--   Ek yol türlerinden kaçının: Carpool yol, geri alınamaz yollar, zaten kullanılan yollar.
--   Altyapı belirtimi tabanlı yönlendirme. Kalan yakıt/ücret ve altyapı belirtimlerini temel alarak, combustion veya elektrik taşıtlar için rotaları hesaplayın.
--   Maksimum araç hızını belirtin.
+* Rota türü desteği: en kısa, en hızlı, trilini ve en çok yakıt etkin.
+* Ek seyahat modları için destek: bisiklet, Bus, otocycle, Taxi, kamyon ve Van.
+* 150 waypoints desteği.
+* Tek bir istekte birden çok seyahat süresi hesaplama; geçmiş trafik, canlı trafik, trafik yok.
+* Ek yol türlerinden kaçının: Carpool yol, geri alınamaz yollar, zaten kullanılan yollar.
+* Altyapı belirtimi tabanlı yönlendirme. Kalan yakıt/ücret ve altyapı belirtimlerini temel alarak, combustion veya elektrik taşıtlar için rotaları hesaplayın.
+* Maksimum araç hızını belirtin.
 
 ## <a name="snap-coordinates-to-road"></a>Koordinatları yola yasla
 
 Azure haritalar 'daki yollara yönelik koordinatları yapışmanın birkaç yolu vardır.
 
--   Koordinatları yol ağı üzerinde bir mantıksal yola yaslama için yol yönleri API 'sini kullanın.
--   Bağımsız koordinatları vektör kutucuklarında en yakın yola eklemek için Azure Maps web SDK 'sını kullanın.
--   Tek tek koordinatları eklemek için Azure Maps vektör kutucuklarını doğrudan kullanın.
+* Koordinatları yol ağı üzerinde bir mantıksal yola yaslama için yol yönleri API 'sini kullanın.
+* Bağımsız koordinatları vektör kutucuklarında en yakın yola eklemek için Azure Maps web SDK 'sını kullanın.
+* Tek tek koordinatları eklemek için Azure Maps vektör kutucuklarını doğrudan kullanın.
 
 **Koordinatları yaslama için rota yönü API 'sini kullanma**
 
@@ -259,8 +272,8 @@ Azure haritalar [yol yönleri](/rest/api/maps/route/postroutedirections) API 'si
 
 Koordinatları yollara eklemek için yol yönleri API 'SI kullanmanın iki farklı yolu vardır.
 
--   150 koordinatları veya daha az varsa, rota yönlerini al API 'sinde waypoints olarak geçirilebilir. Bu yaklaşımın kullanılması iki farklı tür veri türü alınabilir; yol yönergeleri, tek tek bir şekilde, yol yolunda, koordinat arasındaki tam yolu dolduran, enterpolasyonlu bir koordinat kümesine sahip olacaktır.
--   150 ' den fazla koordinat varsa, yönlendirme yönlendirmeleri API 'SI kullanılabilir. Başlangıç ve bitiş koordinatlarının, sorgu parametresine geçirilmesi gerekir, ancak tüm koordinatlar `supportingPoints` POST isteğinin gövdesinde parametreye geçirilebilir ve bir coğrafi JSON geometrisi koleksiyonu olarak biçimlendirilir. Bu yaklaşım kullanılarak sunulan tek açık veriler, koordinatlar arasındaki tam yolu dolduran, enterpolasyonlu bir koordinat kümesi olan yol yolu olacaktır. Azure Maps web SDK 'sindeki hizmetler modülünü kullanarak bu yaklaşımın [bir örneği aşağıda](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) verilmiştir.
+* 150 koordinatları veya daha az varsa, rota yönlerini al API 'sinde waypoints olarak geçirilebilir. Bu yaklaşımın kullanılması iki farklı tür veri türü alınabilir; yol yönergeleri, tek tek bir şekilde, yol yolunda, koordinat arasındaki tam yolu dolduran, enterpolasyonlu bir koordinat kümesine sahip olacaktır.
+* 150 ' den fazla koordinat varsa, yönlendirme yönlendirmeleri API 'SI kullanılabilir. Başlangıç ve bitiş koordinatlarının, sorgu parametresine geçirilmesi gerekir, ancak tüm koordinatlar `supportingPoints` POST isteğinin gövdesinde parametreye geçirilebilir ve bir coğrafi JSON geometrisi koleksiyonu olarak biçimlendirilir. Bu yaklaşım kullanılarak sunulan tek açık veriler, koordinatlar arasındaki tam yolu dolduran, enterpolasyonlu bir koordinat kümesi olan yol yolu olacaktır. Azure Maps web SDK 'sindeki hizmetler modülünü kullanarak bu yaklaşımın [bir örneği aşağıda](https://azuremapscodesamples.azurewebsites.net/?sample=Snap%20points%20to%20logical%20route%20path) verilmiştir.
 
 Aşağıdaki tabloda, Bing Haritalar API parametreleri Azure haritalar 'daki karşılaştırılabilir API parametreleriyle birlikte çapraz başvuru yapılır.
 
@@ -368,9 +381,7 @@ Başka `pushpin` bir değer KÜMESIYLE URL 'ye ek parametreler eklenerek ek Push
 
 > `&pushpin=45,-110;7;AB`
 
-<center>
-
-![Bing Haritalar statik eşleme PIN 'i](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)</center>
+![Bing Haritalar statik eşleme PIN 'i](media/migrate-bing-maps-web-service/bing-maps-static-map-pin.jpg)
 
 **Sonrasında: Azure Maps**
 
@@ -384,21 +395,21 @@ Azure haritalar, PIN konumlarına geldiğinde, koordinatları biçiminde olması
 
 `iconType`Değer, oluşturulacak PIN türünü belirtir ve aşağıdaki değerlere sahip olabilir:
 
--   `default` – Varsayılan pin simgesi.
--   `none` – Simge gösterilmez, yalnızca Etiketler işlenir.
--   `custom` – Özel bir simgenin kullanılacağını belirtir. Simgenin sonuna işaret eden bir URL, `pins` PIN konum bilgileri sonrasında parametrenin sonuna eklenebilir.
--   `{udid}` – Azure Maps veri depolama platformunda depolanan bir simgenin benzersiz veri KIMLIĞI (UDıD).
+* `default` – Varsayılan pin simgesi.
+* `none` – Simge gösterilmez, yalnızca Etiketler işlenir.
+* `custom` – Özel bir simgenin kullanılacağını belirtir. Simgenin sonuna işaret eden bir URL, `pins` PIN konum bilgileri sonrasında parametrenin sonuna eklenebilir.
+* `{udid}` – Azure Maps veri depolama platformunda depolanan bir simgenin benzersiz veri KIMLIĞI (UDıD).
 
 Azure haritalar 'daki PIN stilleri `optionNameValue` , bu şekilde kanal () karakterleriyle ayrılmış birden çok stil içeren biçimiyle eklenir `|` `iconType|optionName1Value1|optionName2Value2` . Seçenek adları ve değerleri ayrılmadığını not edin. Aşağıdaki stil seçenek adları, Azure Maps 'ta pushpın 'leri stil eklemek için kullanılabilir:
 
--   `al` – Pushpin opaklığını (Alpha) belirtir. 0 ile 1 arasında bir sayı olabilir.
--   `an` – PIN bağlayıcısını belirtir. Biçimde belirtilen X ve y piksel değerleri `x y` .
--   `co` – PIN rengi. 24 bit onaltılık renk olmalıdır: `000000` to `FFFFFF` .
--   `la` – Etiket bağlayıcısını belirtir. Biçimde belirtilen X ve y piksel değerleri `x y` .
--   `lc` – Etiketin rengi. 24-, onaltılık renk olmalıdır: `000000` `FFFFFF` .
--   `ls` – Etiketin piksel cinsinden boyutu. 0 ' dan büyük bir sayı olabilir.
--   `ro` – Simgeyi döndürmek için derece cinsinden bir değer. -360 ile 360 arasında bir sayı olabilir.
--   `sc` – Pin simgesi için bir ölçek değeri. 0 ' dan büyük bir sayı olabilir.
+* `al` – Pushpin opaklığını (Alpha) belirtir. 0 ile 1 arasında bir sayı olabilir.
+* `an` – PIN bağlayıcısını belirtir. Biçimde belirtilen X ve y piksel değerleri `x y` .
+* `co` – PIN rengi. 24 bit onaltılık renk olmalıdır: `000000` to `FFFFFF` .
+* `la` – Etiket bağlayıcısını belirtir. Biçimde belirtilen X ve y piksel değerleri `x y` .
+* `lc` – Etiketin rengi. 24-, onaltılık renk olmalıdır: `000000` `FFFFFF` .
+* `ls` – Etiketin piksel cinsinden boyutu. 0 ' dan büyük bir sayı olabilir.
+* `ro` – Simgeyi döndürmek için derece cinsinden bir değer. -360 ile 360 arasında bir sayı olabilir.
+* `sc` – Pin simgesi için bir ölçek değeri. 0 ' dan büyük bir sayı olabilir.
 
 Her PIN konumu için etiket değerleri, konum listesindeki tüm Pushpin 'ler için geçerli olan tek bir etiket değerine sahip olmak yerine belirtilir. Etiket değeri birden fazla karakterden oluşan bir dize olabilir ve bir stil veya konum değeri olarak yanlış alınacağından emin olmak için tek tırnak işaretleriyle sarmalanabilir.
 
@@ -406,17 +417,13 @@ Her PIN konumu için etiket değerleri, konum listesindeki tüm Pushpin 'ler iç
 
 > `&pins=default|coFF0000|la15 50||'Space Needle'-122.349300 47.620180`
 
-<center>
-
-![Azure Maps statik harita PIN 'i](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)</center>
+![Azure Maps statik harita PIN 'i](media/migrate-bing-maps-web-service/azure-maps-static-map-pin.jpg)
 
 Aşağıdaki örnek, ' 1 ', ' 2 ' ve ' 3 ' Etiket değerleriyle üç PIN ekler:
 
 > `&pins=default||'1'-122 45|'2'-119.5 43.2|'3'-121.67 47.12`
 
-<center>
-
-![Azure haritalar statik eşleme birden çok pin](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)</center>
+![Azure haritalar statik eşleme birden çok pin](media/migrate-bing-maps-web-service/azure-maps-static-map-multiple-pins.jpg)
 
 ### <a name="draw-curve-url-parameter-format-comparison"></a>Çiz eğrisi URL parametre biçimi karşılaştırması
 
@@ -436,9 +443,7 @@ Bing Haritalar 'daki şekil türleri arasında çizgiler, çokgenler, daire ve e
 
 `&drawCurve=l,FF000088,4;45,-110_50,-100`
 
-<center>
-
-![Bing Haritalar statik eşleme çizgisi](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)</center>
+![Bing Haritalar statik eşleme çizgisi](media/migrate-bing-maps-web-service/bing-maps-static-map-line.jpg)
 
 **Sonrasında: Azure Maps**
 
@@ -450,20 +455,18 @@ Azure haritalar, yol konumlarına geldiğinde, koordinatları biçiminde olması
 
 Azure haritalar 'daki yol stilleri `optionNameValue` , bu şekilde kanal () karakterleriyle ayrılmış birden çok stil içeren biçimiyle eklenir `|` `optionName1Value1|optionName2Value2` . Seçenek adları ve değerleri ayrılmadığını not edin. Aşağıdaki stil seçenek adları, Azure haritalar 'daki yollara stil eklemek için kullanılabilir:
 
--   `fa` – Poligonları işlerken kullanılan Fill Color geçirgenliği (Alpha). 0 ile 1 arasında bir sayı olabilir.
--   `fc` – Bir çokgenin alanını işlemek için kullanılan Fill Color.
--   `la` – Çizgiler ve çokgenler ana hattı işlenirken kullanılan çizgi rengi geçirgenliği (Alpha). 0 ile 1 arasında bir sayı olabilir.
--   `lc` – Çizgileri oluşturmak için kullanılan çizgi rengi ve çokgenler ana hattı.
--   `lw` – Çizginin piksel cinsinden genişliği.
--   `ra` – Ölçümlerde bir daire yarıçapı belirtir.
+* `fa` – Poligonları işlerken kullanılan Fill Color geçirgenliği (Alpha). 0 ile 1 arasında bir sayı olabilir.
+* `fc` – Bir çokgenin alanını işlemek için kullanılan Fill Color.
+* `la` – Çizgiler ve çokgenler ana hattı işlenirken kullanılan çizgi rengi geçirgenliği (Alpha). 0 ile 1 arasında bir sayı olabilir.
+* `lc` – Çizgileri oluşturmak için kullanılan çizgi rengi ve çokgenler ana hattı.
+* `lw` – Çizginin piksel cinsinden genişliği.
+* `ra` – Ölçümlerde bir daire yarıçapı belirtir.
 
 Örneğin, Azure Maps 'ta, %50 opaklık ve dört piksellik bir çizgi, şu URL parametresiyle birlikte koordinatları (Boylam:-110, Enlem: 45 ve Boylam:-100, Latitude: 50) arasında haritaya eklenebilir:
 
 > `&path=lc0000FF|la.5|lw4||-110 45|-100 50`
 
-<center>
-
-![Azure haritalar statik eşleme çizgisi](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)</center>
+![Azure haritalar statik eşleme çizgisi](media/migrate-bing-maps-web-service/azure-maps-static-map-line.jpg)
 
 ## <a name="calculate-a-distance-matrix"></a>Uzaklık matrisini hesaplama
 
@@ -547,8 +550,8 @@ Azure Maps, ilgi noktaları için çeşitli arama API 'Leri sağlar:
 
 Azure Maps trafik verilerini almak için çeşitli API 'Ler sağlar. İki tür trafik verisi mevcuttur;
 
--   **Akış verileri** : yolların bölümlerine trafik akışı hakkında ölçümler sağlar. Bu, genellikle kod yollar için kullanılır. Bu veriler her 2 dakikada bir güncelleştirilir.
--   **Olay verileri** : oluşturma, yol kapanışları, kazalardan dolayı ve trafiği etkileyebilecek diğer olaylar hakkında veri sağlar. Bu veriler her dakikada güncellenir.
+* **Akış verileri** : yolların bölümlerine trafik akışı hakkında ölçümler sağlar. Bu, genellikle kod yollar için kullanılır. Bu veriler her 2 dakikada bir güncelleştirilir.
+* **Olay verileri** : oluşturma, yol kapanışları, kazalardan dolayı ve trafiği etkileyebilecek diğer olaylar hakkında veri sağlar. Bu veriler her dakikada güncellenir.
 
 Bing Haritalar, etkileşimli harita denetimlerinde trafik akışı ve olay verileri sağlar ve ayrıca olay verilerini bir hizmet olarak kullanılabilir hale getirir.
 
@@ -602,9 +605,9 @@ Buna ek olarak, Azure Maps Platformu, saat dilimi adları ve kimlikleri ile Dön
 
 Bing Haritalar 'daki uzamsal veri Hizmetleri üç temel işlev sunar:
 
--   Batch coğrafi kodlama – tek bir istekle birlikte büyük bir adres coğrafi kod grubu Işleyin.
--   Yönetim sınırı verilerini alma – bir koordinat kullanın ve belirtilen varlık türü için bir kesişme sınırı alın.
--   Konak ve sorgu uzamsal iş verileri – basit bir 2B veri tablosu yükleyin ve birkaç basit uzamsal sorgu kullanarak bu verilere erişin.
+* Batch coğrafi kodlama – tek bir istekle birlikte büyük bir adres coğrafi kod grubu Işleyin.
+* Yönetim sınırı verilerini alma – bir koordinat kullanın ve belirtilen varlık türü için bir kesişme sınırı alın.
+* Konak ve sorgu uzamsal iş verileri – basit bir 2B veri tablosu yükleyin ve birkaç basit uzamsal sorgu kullanarak bu verilere erişin.
 
 ### <a name="batch-geocode-data"></a>Toplu iş coğrafi kod verileri
 
@@ -660,7 +663,11 @@ Azure Maps, aşağıdaki programlama dilleri için istemci kitaplıkları sağla
 
 Diğer programlama dilleri için açık kaynaklı istemci kitaplıkları;
 
--   .NET Standard 2,0 – [GitHub projesi](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet paketi](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+* .NET Standard 2,0 – [GitHub projesi](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet paketi](https://www.nuget.org/packages/AzureMapsRestToolkit/)
+
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizlenecek kaynak yok.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -668,15 +675,3 @@ Azure haritalar REST hizmetleri hakkında daha fazla bilgi edinin.
 
 > [!div class="nextstepaction"]
 > [Arama hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Yönlendirme hizmetini kullanmaya yönelik en iyi uygulamalar](how-to-use-best-practices-for-search.md)
-
-> [!div class="nextstepaction"]
-> [Hizmetler modülünü kullanma (Web SDK)](how-to-use-best-practices-for-routing.md)
-
-> [!div class="nextstepaction"]
-> [Azure haritalar REST hizmeti API başvuru belgeleri](/rest/api/maps/)
-
-> [!div class="nextstepaction"]
-> [Kod örnekleri](/samples/browse/?products=azure-maps)

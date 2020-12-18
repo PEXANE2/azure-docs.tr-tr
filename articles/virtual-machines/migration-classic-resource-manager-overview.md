@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500419"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680206"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 'ta IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 
@@ -22,7 +22,7 @@ ms.locfileid: "96500419"
 
 
 
-Bu makalede, bir hizmet olarak altyapı (IaaS) kaynaklarını klasik 'dan Kaynak Yöneticisi dağıtım modelleriyle geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama ayrıntıları açıklanmaktadır. [Azure Resource Manager özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
+Bu makalede, Azure Service Manager (asm) diğer adıyla Classic 'ten Kaynak Yöneticisi (ARM) dağıtım modelleriyle kaynakları geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama hakkında genel bakış sunulmaktadır. [Azure Resource Manager özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
 
 ## <a name="goal-for-migration"></a>Geçiş için hedef
 Kaynak Yöneticisi, şablonlar aracılığıyla karmaşık uygulamaların dağıtılmasını, sanal makineleri VM uzantıları kullanarak yapılandırmayı ve erişim yönetimi ve etiketleme özelliklerini içerir. Azure Resource Manager, sanal makineler için kullanılabilirlik kümelerine ölçeklenebilir, paralel dağıtım içerir. Yeni dağıtım modeli ayrıca işlem, ağ ve depolamanın yaşam döngüsü yönetimini bağımsız olarak sağlar. Son olarak, bir sanal ağ içindeki sanal makinelerin zorlanması ile varsayılan olarak güvenliği etkinleştirmeye odaklanılmıştır.
@@ -37,7 +37,7 @@ Klasik dağıtım modelinden neredeyse tüm özellikler Azure Resource Manager a
 * Depolama Hesapları
 * Sanal Ağlar
 * VPN Ağ Geçitleri
-* Hızlı rota ağ geçitleri _(yalnızca sanal ağ ile aynı abonelikte)_
+* [Hızlı rota ağ geçitleri](https://docs.microsoft.com/azure/expressroute/expressroute-howto-move-arm) _(yalnızca sanal ağ ile aynı abonelikte)_
 * Ağ Güvenlik Grupları
 * Yönlendirme Tabloları
 * Ayrılmış IP’ler

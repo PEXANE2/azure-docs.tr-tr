@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 6a7d29d8487c6be6915ae4171b3759f0980f5448
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 21bdbecdbba31eae112053bf81411781245cc170
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874372"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678677"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Kullanılabilirlik alanları arasında Azure VM olağanüstü durum kurtarmayı etkinleştirme
 
@@ -20,7 +20,7 @@ Bu makalede, Azure sanal makinelerini aynı Azure bölgesindeki bir kullanılabi
 
 >[!NOTE]
 >
->- Bölge için olağanüstü durum kurtarma desteği şu anda iki bölgeyle sınırlı: Güneydoğu Asya ve UK Güney.  
+>- Bölgeye bölge olağanüstü durum kurtarma desteği şu anda beş bölge ile sınırlıdır: Güneydoğu Asya, UK Güney, Japonya Doğu, Avustralya Doğu ve Batı Avrupa.  
 >- Site Recovery, müşteri verileri, sistem olağanüstü durum kurtarma için bölge kullanırken dağıtıldığı bölgenin dışına taşımaz veya depolamaz. Müşteriler, bir kurtarma hizmetleri kasasını tercih ettikleri farklı bir bölgeden seçebilirler. Kurtarma Hizmetleri Kasası meta veriler içeriyor ancak gerçek müşteri verisi yok.
 
 Site Recovery hizmeti, planlı ve plansız kesintiler sırasında iş uygulamalarınızı çalışır durumda tutarak iş sürekliliği ve olağanüstü durum kurtarma stratejinize katkıda bulunur. Bölgesel kesintiler varsa uygulamalarınızın çalışır durumda tutulması için önerilen olağanüstü durum kurtarma seçeneğidir.
@@ -67,7 +67,7 @@ Yukarıda belirtildiği gibi, bölgeye karşı bölge olağanüstü durum kurtar
 
 Sanal makinelerinize bölge olağanüstü durum kurtarmaya dağıtım yapmadan önce, sanal makinede etkinleştirilen diğer özelliklerin bölge olağanüstü durum kurtarma ile birlikte kullanılabildiğinden emin olmak önemlidir.
 
-|Öne çıkan özelliği  | Support bildirisi  |
+|Özellik  | Support bildirisi  |
 |---------|---------|
 |Klasik VM'ler   |     Desteklenmez    |
 |ARM VM 'Leri    |    Desteklenir    |

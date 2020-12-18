@@ -3,22 +3,36 @@ title: "Öğretici: Bing Haritalar 'dan Azure Maps 'e geçiş | Microsoft Azure 
 description: Bing Haritalar 'dan Microsoft Azure haritalarını geçirmeye yönelik bir öğretici. Yönergeler, Azure Maps API 'Lerine ve SDK 'larına nasıl geçlenebileceğine kılavuzluk eder.
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/17/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0045520849ea20d3e53a30101e6db0f5d495ab15
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 52768874ef27bf87846d4abbd68e9e8c1972f996
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897016"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679440"
 ---
-# <a name="tutorial---migrate-from-bing-maps-to-azure-maps"></a>Öğretici-Bing Haritalar 'dan Azure Maps 'e geçiş
+# <a name="tutorial-migrate-from-bing-maps-to-azure-maps"></a>Öğretici: Bing Haritalar 'dan Azure Maps 'e geçiş
 
-Bu kılavuzda, Web, mobil ve sunucu tabanlı uygulamaların Bing Haritalar 'dan Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu kılavuzda, Azure Maps 'e geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi uygulamalar yer almaktadır.
+Bu kılavuzda, Web, mobil ve sunucu tabanlı uygulamaların Bing Haritalar 'dan Azure haritalar platformuna nasıl geçirileceğiyle ilgili Öngörüler sunulmaktadır. Bu kılavuzda, Azure Maps 'e geçiş için karşılaştırılma kodu örnekleri, geçiş önerileri ve en iyi uygulamalar yer almaktadır. 
+
+Bu öğreticide şunları öğreneceksiniz:
+
+> [!div class="checklist"]
+> * Azure haritalar 'da bulunan eşdeğer Bing Haritalar özellikleri için üst düzey karşılaştırma.
+> * Hangi lisans farklılıkları göz önünde bulundurulmalıdır.
+> * Geçişinizi planlayın.
+> * Teknik kaynakların ve desteğin nerede bulunacağı.
+
+## <a name="prerequisites"></a>Ön koşullar
+
+1. [Azure portalında](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
+3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
 ## <a name="azure-maps-platform-overview"></a>Azure haritalar platformuna genel bakış
 
@@ -39,7 +53,7 @@ Aşağıdaki tablo, Bing Haritalar özelliklerinin üst düzey bir listesini ve 
 | Otomatik öneri                           | ✓                  |
 | Yönergeler (kamyon dahil)          | ✓                  |
 | Uzaklık matrisi                       | ✓                  |
-| Yükseltmeleri                            | Planlandı            |
+| Yükseltmeleri                            | ✓ (Önizleme)        |
 | Imagery – statik eşleme                  | ✓                  |
 | Imagery meta verileri                      | ✓                  |
 | İzokron                            | ✓                  |
@@ -54,15 +68,15 @@ Aşağıdaki tablo, Bing Haritalar özelliklerinin üst düzey bir listesini ve 
 | Trafik olayları                     | ✓                  |
 | Yapılandırma temelli haritalar             | Yok                |
 
-Bing Haritalar temel anahtar tabanlı kimlik doğrulaması sağlar. Azure haritalar, temel anahtar tabanlı kimlik doğrulamasının yanı sıra yüksek düzeyde güvenli Azure Active Directory kimlik doğrulaması sağlar.
+Bing Haritalar temel anahtar tabanlı kimlik doğrulaması sağlar. Azure haritalar hem temel anahtar tabanlı kimlik doğrulaması hem de yüksek düzeyde güvenli Azure Active Directory kimlik doğrulaması sağlar.
 
 ## <a name="licensing-considerations"></a>Lisanslama konuları
 
-Bing Haritalar 'dan Azure Maps 'a geçiş yaparken, lisanslanması gereken, aşağıdakiler göz önünde bulundurulmalıdır.
+Bing Haritalar 'dan Azure Maps 'a geçiş yaparken, lisanslamayla ilgili olarak aşağıdaki bilgiler göz önünde bulundurulmalıdır.
 
--   Azure Maps, yüklenen harita kutucuklarının sayısına göre etkileşimli haritalar kullanımı için ücretlendirirken, Bing Haritalar harita denetimi 'nin (oturumlar) yüklemesi için ücretlendirir. Azure haritalar 'da, geliştirici maliyetini azaltmak için harita kutucukları otomatik olarak önbelleğe alınır. Yüklenen her 15 harita kutucuğu için bir Azure haritalar işlemi oluşturulur. Etkileşimli Azure Haritalar SDK 'Ları 512 piksellik kutucukları kullanır ve ortalama üzerinde sayfa görünümü başına bir veya daha az işlem oluşturur.
+* Azure Maps, yüklenen harita kutucuklarının sayısına göre etkileşimli haritalar kullanımı için ücretlendirirken, Bing Haritalar harita denetimi 'nin (oturumlar) yüklemesi için ücretlendirir. Azure haritalar, geliştiricilerin maliyetlerini azaltmak için harita kutucuklarını otomatik olarak önbelleğe alır. Yüklenen her 15 harita kutucuğu için bir Azure haritalar işlemi oluşturulur. Etkileşimli Azure Haritalar SDK 'Ları 512 piksellik kutucukları kullanır ve ortalama üzerinde sayfa görünümü başına bir veya daha az işlem oluşturur.
 
--   Azure haritalar, platformdaki verilerin Azure 'da depolanmasını sağlar. Ayrıca [kullanım koşullarına](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)göre altı aya kadar bir yerde önbelleğe alınabilir.
+* Azure haritalar, platformdaki verilerin Azure 'da depolanmasını sağlar. Ayrıca [kullanım koşullarına](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)göre altı aya kadar bir yerde önbelleğe alınabilir.
 
 Azure haritalar için lisanslama ile ilgili bazı kaynaklar aşağıda verilmiştir:
 
@@ -73,7 +87,7 @@ Azure haritalar için lisanslama ile ilgili bazı kaynaklar aşağıda verilmiş
 
 ## <a name="suggested-migration-plan"></a>Önerilen geçiş planı
 
-Aşağıda, üst düzey bir geçiş planı verilmiştir.
+Aşağıda, üst düzey bir geçiş planına örnek verilmiştir.
 
 1.  Uygulamanızın kullandığı Bing Haritalar SDK 'Ları ve hizmetleri hakkında daha fazla işlem yapın ve Azure Maps 'e geçiş yapmanız için alternatif SDK 'lar ve hizmetler sağladığını doğrulayın.
 2.  Bir Azure aboneliği oluşturun (henüz bir tane yoksa) <https://azure.com> .
@@ -88,28 +102,28 @@ Bir Azure Maps hesabı oluşturmak ve Azure haritalar platformuna erişmek için
 
 1. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure portalında](https://portal.azure.com/) oturum açın.
-3. [Azure haritalar hesabı](./how-to-manage-account-keys.md)oluşturun. 
+3. [Azure haritalar hesabı](./how-to-manage-account-keys.md)oluşturun.
 4. Gelişmiş güvenlik için [Azure Maps abonelik anahtarınızı](./how-to-manage-authentication.md#view-authentication-details) veya kurulum Azure Active Directory kimlik doğrulamasını alın.
 
 ## <a name="azure-maps-technical-resources"></a>Azure haritalar teknik kaynakları
 
 Azure haritalar için yararlı teknik kaynakların listesi aşağıda verilmiştir.
 
--   Genel Bakış: https://azure.com/maps
--   Belgelerle <https://aka.ms/AzureMapsDocs>
--   Web SDK kodu örnekleri: <https://aka.ms/AzureMapsSamples>
--   Geliştirici forumları: <https://aka.ms/AzureMapsForums>
--   Larınız <https://aka.ms/AzureMapsVideos>
--   Lenemeyen <https://aka.ms/AzureMapsBlog>
--   Azure haritalar geri bildirimi (UserVoice): <https://aka.ms/AzureMapsFeedback>
+* Genel Bakış: <https://azure.com/maps>
+* Belgelerle <https://aka.ms/AzureMapsDocs>
+* Web SDK kodu örnekleri: <https://aka.ms/AzureMapsSamples>
+* Geliştirici forumları: <https://aka.ms/AzureMapsForums>
+* Larınız <https://aka.ms/AzureMapsVideos>
+* Lenemeyen <https://aka.ms/AzureMapsBlog>
+* Azure haritalar geri bildirimi (UserVoice): <https://aka.ms/AzureMapsFeedback>
 
 ## <a name="migration-support"></a>Geçiş desteği
 
 Geliştiriciler, [Forum](/answers/topics/azure-maps.html) aracılığıyla veya birçok Azure destek seçeneğinden biri aracılığıyla geçiş desteği arayabilir: <https://azure.microsoft.com/support/options/>
 
-## <a name="new-terminology"></a>Yeni terminoloji 
+## <a name="new-terminology"></a>Yeni terminoloji
 
-Aşağıda, Azure Maps 'ta farklı bir terim tarafından bilinen yaygın Bing Haritalar koşullarının bir listesi verilmiştir.
+Aşağıdaki listede, yaygın Bing Haritalar terimleri ve bunlara karşılık gelen Azure haritalar terimleri yer almaktadır.
 
 | Bing Haritalar terimi                    | Azure haritalar terimi                                                |
 |-----------------------------------|----------------------------------------------------------------|
@@ -128,12 +142,13 @@ Aşağıda, Azure Maps 'ta farklı bir terim tarafından bilinen yaygın Bing Ha
 | Gezinti çubuğu                    | Harita stil Seçicisi, yakınlaştırma denetimi, aralıklı denetim, pusula denetimi |
 | Raptiye                           | Kabarcık katmanı, simge katmanı veya HTML Işaretçisi                      |
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizleme gerektiren kaynak yok.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Aşağıdaki makalelerle Bing Haritalar uygulamanızı nasıl geçirileceğiyle ilgili ayrıntıları öğrenin:
 
 > [!div class="nextstepaction"]
 > [Web uygulamasını geçirme](migrate-from-bing-maps-web-app.md)
-
-> [!div class="nextstepaction"]
-> [Web hizmetini geçirme](migrate-from-bing-maps-web-services.md)

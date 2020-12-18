@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 9ecde4cb0c8a3bfe3dd8fb2edb59423838e0751c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e80465cf8d43918e6ed6da8ebb3b96f3f197e887
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889876"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679961"
 ---
 # <a name="clustering-point-data"></a>Kümeleme noktası verileri
 
 Haritada çok sayıda veri noktasını görselleştirirken, veri noktaları birbirleriyle çakışabilir. Çakışma, eşlemenin okunamaz hale gelmesine ve kullanılması zor olmasına neden olabilir. Kümeleme noktası verileri, birbirine yakın olan nokta verisini birleştirme ve bunları haritada tek bir kümelenmiş veri noktası olarak temsil etme işlemidir. Kullanıcı haritada yakınlaştırdıktan sonra, kümeler kendi bireysel veri noktalarıyla kesilir. Çok sayıda veri noktasıyla çalışırken, Kullanıcı deneyiminizi geliştirmek için kümeleme süreçlerini kullanın.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Clustering-point-data-in-Azure-Maps/player?format=ny]
 
 ## <a name="enabling-clustering-on-a-data-source"></a>Veri kaynağında kümeleme etkinleştiriliyor
 
@@ -63,7 +63,7 @@ Kabarcığun üzerine kümenin boyutunu göstermek için, metinle birlikte bir s
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Temel kabarcık katmanı Kümelemesi" src="//codepen.io/azuremaps/embed/qvzRZY/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>temel balon katmanı kümelemesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/qvzRZY/'>temel balon katmanı kümelemesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="display-clusters-using-a-symbol-layer"></a>Sembol katmanı kullanarak kümeleri görüntüleme
@@ -75,7 +75,7 @@ Temiz bir kullanıcı arabirimi tutarken veri noktaları yoğunluğunu gösterme
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Kümelenmiş sembol katmanı" src="//codepen.io/azuremaps/embed/Wmqpzz/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () tarafından kullanılan kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>kümelenmiş sembol katmanını</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
+Codepen üzerinde Azure Maps () tarafından kullanılan kalem <a href='https://codepen.io/azuremaps/pen/Wmqpzz/'>kümelenmiş sembol katmanını</a> görüntüleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'></a>.
 </iframe>
 
 ## <a name="clustering-and-the-heat-maps-layer"></a>Kümeleme ve ısı haritaları katmanı
@@ -85,7 +85,7 @@ Isı haritaları haritadaki verilerin yoğunluğunu görüntülemenin harika bir
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme ağırlıklı ısı haritası" src="//codepen.io/azuremaps/embed/VRJrgO/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>kümesi ağırlıklı ısı haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>kümesi ağırlıklı ısı haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="mouse-events-on-clustered-data-points"></a>Kümelenmiş veri noktalarında fare olayları
@@ -104,7 +104,7 @@ Bu örnek, küme noktalarını işleyen ve bir tıklama olayı ekleyen bir kabar
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme getClusterExpansionZoom" src="//codepen.io/azuremaps/embed/moZWeV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () ile ilgili <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom kalem kümesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () ile ilgili <a href='https://codepen.io/azuremaps/pen/moZWeV/'>getClusterExpansionZoom kalem kümesine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="display-cluster-area"></a>Küme alanını görüntüle 
@@ -114,7 +114,7 @@ Bir kümenin temsil ettiği nokta verileri bir alanın üzerine yayılır. Bu ö
 <br/>
 
  <iframe height="500" style="width: 100%;" scrolling="no" title="Küme alanı convex kabuk" src="//codepen.io/azuremaps/embed/QoXqWJ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () tarafından <a href='https://codepen.io/azuremaps/pen/QoXqWJ/'>convex kabuk olan kalem kümesi alanı</a> ' na bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="aggregating-data-in-clusters"></a>Kümelerdeki verileri toplama
@@ -124,7 +124,7 @@ Genellikle kümeler, küme içindeki noktaların sayısıyla birlikte bir sembol
 Aşağıdaki örnek bir toplama ifadesi kullanır. Kod, bir kümedeki her bir veri noktasının varlık türü özelliğini temel alarak bir sayıyı hesaplar. Kullanıcı bir kümeye tıkladığında bir açılan pencerede, kümeyle ilgili ek bilgiler içeren bir açılır pencere görüntülenir.
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Küme toplamaları" src="//codepen.io/azuremaps/embed/jgYyRL/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () ile ilgili kalem <a href='https://codepen.io/azuremaps/pen/jgYyRL/'>kümesi toplamlarını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar

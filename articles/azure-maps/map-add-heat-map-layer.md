@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896387"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680151"
 ---
 # <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
@@ -24,16 +24,16 @@ Sembol, harita alanının çoğunu kapsayabilen on binlerce noktayı işleme. Bu
 
 Isı haritalarını birçok farklı senaryoda kullanabilirsiniz; örneğin:
 
-- **Sıcaklık verileri** : sıcaklığın iki veri noktası arasında olduğu yaklaşık bir değer sağlar.
-- **Gürültü sensörlerine yönelik veriler** : yalnızca sensörün olduğu gürültü şiddetini göstermez, ancak aynı zamanda bir mesafeden fazla bakış elde etmek için de bilgi sağlayabilir. Herhangi bir sitedeki gürültü düzeyi yüksek olmayabilir. Birden çok sensörden gürültü kapsam alanı çakışırsa, bu örtüşen alanın daha fazla gürültü düzeyiyle karşılaşması mümkündür. Bu nedenle örtüşen alan, ısı haritasında görünür olur.
-- **GPS izleme** : her bir veri noktasının yoğunluğu hızlı temel alınarak ağırlıklı bir yükseklik eşlemesi olarak hızı içerir. Örneğin, bu işlev bir aracın hızlandırmakta olduğunu görmek için bir yol sağlar.
+- **Sıcaklık verileri**: sıcaklığın iki veri noktası arasında olduğu yaklaşık bir değer sağlar.
+- **Gürültü sensörlerine yönelik veriler**: yalnızca sensörün olduğu gürültü şiddetini göstermez, ancak aynı zamanda bir mesafeden fazla bakış elde etmek için de bilgi sağlayabilir. Herhangi bir sitedeki gürültü düzeyi yüksek olmayabilir. Birden çok sensörden gürültü kapsam alanı çakışırsa, bu örtüşen alanın daha fazla gürültü düzeyiyle karşılaşması mümkündür. Bu nedenle örtüşen alan, ısı haritasında görünür olur.
+- **GPS izleme**: her bir veri noktasının yoğunluğu hızlı temel alınarak ağırlıklı bir yükseklik eşlemesi olarak hızı içerir. Örneğin, bu işlev bir aracın hızlandırmakta olduğunu görmek için bir yol sağlar.
 
 > [!TIP]
 > Isı haritası katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerini gösterecek şekilde sınırlamak için `filter` katmanın özelliğini olarak ayarlayın `['==', ['geometry-type'], 'Point']` . MultiPoint özelliklerini de dahil etmek istiyorsanız `filter` katmanın özelliğini olarak ayarlayın `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` .
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>Isı haritası katmanı ekleme
 
@@ -60,7 +60,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Basit ısı haritası katmanı' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>basit ısı haritası katmanını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='Basit ısı haritası katmanı' src='//codepen.io/azuremaps/embed/gQqdQB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen üzerinde Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/gQqdQB/'>basit ısı haritası katmanını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="customize-the-heat-map-layer"></a>Isı haritası katmanını özelleştirme
@@ -89,7 +89,7 @@ Farklı ısı haritası katman seçeneklerini test etmek için bir araç aşağ�
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Isı haritası katman seçenekleri' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>ısı haritası katman seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+<iframe height='700' scrolling='no' title='Isı haritası katman seçenekleri' src='//codepen.io/azuremaps/embed/WYPaXr/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Codepen 'da Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/WYPaXr/'>ısı haritası katman seçeneklerine</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 ## <a name="consistent-zoomable-heat-map"></a>Tutarlı Zoomable ısı haritası
@@ -103,7 +103,7 @@ Her yakınlaştırma düzeyiyle çift olacak şekilde yarıçap ölçekleme, tü
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Tutarlı Zoomable ısı haritası" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder='no' loading="lazy" loading="lazy" allowtransparency="true" allowfullscreen="true">
-Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>tutarlı Zoomable ısı haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen 'da Azure Maps () ile kalem <a href='https://codepen.io/azuremaps/pen/OGyMZr/'>tutarlı Zoomable ısı haritasını</a> inceleyin <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 > [!TIP]

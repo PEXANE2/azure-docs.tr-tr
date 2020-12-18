@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/19/2020
-ms.openlocfilehash: 94c926c555a4bc96ac3c6fbe773650e16554bcf2
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: d04fa25b9c953d151fc16d11f304c48b7046ab76
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315711"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680400"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Izleyici Aracısı için veri toplamayı yapılandırma (Önizleme)
 
@@ -35,6 +35,9 @@ Bir sanal makineye bir DCR uygulamak için, sanal makine için bir ilişki oluş
 
 Bir veri toplama kuralı oluşturmak ve aboneliğinizdeki sanal makineleri bu kurala ilişkilendirmek için Azure portal kullanabilirsiniz. Azure Izleyici Aracısı otomatik olarak yüklenir ve henüz yüklenmemiş sanal makineler için yönetilen bir kimlik oluşturulur.
 
+> [!IMPORTANT]
+> Şu anda, veri toplama kuralının Kullanıcı tarafından atanan yönetilen kimliğe sahip bir sanal makinede yönetilen bir kimlik oluşturduğunu, Kullanıcı tarafından atanan kimliğin devre dışı bırakıldığını belirten bilinen bir sorun vardır.
+
 Azure portal **Azure izleyici** menüsünde, **Ayarlar** bölümünden **veri toplama kuralları** ' nı seçin. Yeni bir veri toplama kuralı ve ataması eklemek için **Ekle** ' ye tıklayın.
 
 [![Veri toplama kuralları](media/azure-monitor-agent/data-collection-rules.png)](media/azure-monitor-agent/data-collection-rules.png#lightbox)
@@ -52,7 +55,7 @@ Yeni bir kural ve ilişkilendirme kümesi oluşturmak için **Ekle** ' ye tıkla
 [![Veri kaynağı temel](media/azure-monitor-agent/data-collection-rule-data-source-basic.png)](media/azure-monitor-agent/data-collection-rule-data-source-basic.png#lightbox)
 
 
-Diğer günlükleri ve performans sayaçlarını belirtmek için **özel**' i seçin. Ardından, toplanacak belirli değerler için bir [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) belirtebilirsiniz. Örnekler için bkz. [örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
+[Şu anda desteklenen veri kaynaklarından](azure-monitor-agent-overview.md#data-sources-and-destinations) diğer günlükleri ve performans sayaçlarını belirtmek veya XPath sorgularını kullanarak olayları filtrelemek için **özel**' i seçin. Ardından, toplanacak belirli değerler için bir [XPath ](https://www.w3schools.com/xml/xpath_syntax.asp) belirtebilirsiniz. Örnekler için bkz. [örnek DCR](data-collection-rule-overview.md#sample-data-collection-rule) .
 
 [![Veri kaynağı özel](media/azure-monitor-agent/data-collection-rule-data-source-custom.png)](media/azure-monitor-agent/data-collection-rule-data-source-custom.png#lightbox)
 

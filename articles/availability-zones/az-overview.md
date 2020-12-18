@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 32cd6c23e1fe465a801e56fad5dd3461df860503
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 485042c795fd94ef7daa8e00b9869190e9df61c8
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182742"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678540"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure 'da bölgeler ve Kullanılabilirlik Alanları
 
@@ -47,7 +47,7 @@ Bir Azure bölgesindeki kullanılabilirlik bölgesi bir hata etki alanının ve 
 
 Bir bölgedeki işlem, depolama, ağ ve veri kaynaklarınızı birlikte bularak ve diğer bölgelerde çoğaltarak uygulama mimarinizde yüksek kullanılabilirlik oluşturun. Kullanılabilirlik Alanlarını destekleyen Azure hizmetleri iki kategoriye ayrılır:
 
-- **Zonal services** Bir kaynağın belirli bir bölgeye sabitlendiği (örneğin, sanal makineler, yönetilen diskler, standart IP adresleri) veya
+-  Bir kaynağın belirli bir bölgeye sabitlendiği (örneğin, sanal makineler, yönetilen diskler, standart IP adresleri) veya
 - Bölgesel olarak **yedekli hizmetler** – Azure platformu bölgeler arasında otomatik olarak çoğaltılır (örneğin, bölgesel olarak yedekli depolama, SQL veritabanı).
 
 Azure 'da kapsamlı iş sürekliliği elde etmek için Azure bölge çiftleriyle Kullanılabilirlik Alanları birleşimini kullanarak uygulama mimarinizi geliştirin. Uygulamalarınızı ve verilerinizi Azure bölgesindeki Kullanılabilirlik Alanları kullanarak yüksek kullanılabilirlik ve olağanüstü durum kurtarma koruması için Azure bölgelerinde zaman uyumsuz olarak çoğaltma yapabilirsiniz.
@@ -181,6 +181,7 @@ Bir kullanılabilirlik bölgesinde dağıtılan sanal makineler için ek ücret 
 - [Redsıs için Azure önbelleği Başlarken Kullanılabilirlik Alanları](https://aka.ms/redis/az/getstarted)
 - [Azure Active Directory Domain Services örneği oluşturma](../active-directory-domain-services/tutorial-create-instance.md)
 - [Kullanılabilirlik Alanları kullanan bir Azure Kubernetes hizmeti (AKS) kümesi oluşturma](../aks/availability-zones.md)
+- [Azure Container Registry bölgede yedekliliği etkinleştir](../container-registry/zone-redundancy.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

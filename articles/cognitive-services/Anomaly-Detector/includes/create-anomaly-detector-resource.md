@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: d1add17c1c84d2a22d76aaa1f96aeca4db645ba7
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 037b9746571678e24e80bd76e7e2ed173ab8eb90
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506359"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97677625"
 ---
 ## <a name="create-an-anomaly-detector-resource"></a>Anomali algılayıcısı kaynağı oluşturma
 
@@ -26,7 +26,7 @@ ms.locfileid: "97506359"
     |Ad|İstenen ad (2-64 karakter)|
     |Abonelik|Uygun aboneliği seçin|
     |Konum|Yakındaki ve kullanılabilir herhangi bir konumu seçin|
-    |Fiyatlandırma Katmanı|`F0` -100 çağrı/saniye, aylık 20K Işlem. <br> Veya<br> `S0` -80 çağrı/saniye|
+    |Fiyatlandırma Katmanı|`F0` -saniyede 10 çağrı, aylık 20K Işlem. <br> Veya<br> `S0` -80 çağrı/saniye|
     |Kaynak Grubu|Kullanılabilir bir kaynak grubu seçin|
 
 1. **Oluştur** ' a tıklayın ve kaynağın oluşturulmasını bekleyin. Oluşturulduktan sonra kaynak sayfasına gidin

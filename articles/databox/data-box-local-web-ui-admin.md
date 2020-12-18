@@ -6,22 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/07/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: 859eb6abd138f0660407618bba4550daf9158ab9
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e84f39fa5b9245d1874e60d651156e99c0885040
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855014"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678912"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Data Box ve Data Box Heavy yönetmek için yerel Web Kullanıcı arabirimini kullanın
 
 Bu makalede Data Box ve Data Box Heavy cihazlarda gerçekleştirilen yapılandırma ve yönetim görevlerinin bazıları açıklanmaktadır. Azure portal Kullanıcı arabirimi ve cihaz için yerel Web Kullanıcı arabirimi aracılığıyla Data Box ve Data Box Heavy cihazlarını yönetebilirsiniz. Bu makale, yerel Web Kullanıcı arabirimi kullanılarak gerçekleştirilen görevlere odaklanır.
 
 Data Box için yerel Web Kullanıcı arabirimi ve Data Box Heavy için, cihazın ilk yapılandırması için kullanılır. Ayrıca, yerel Web Kullanıcı arabirimini kullanarak cihazı kapatabilir veya yeniden başlatabilir, tanılama testlerini çalıştırabilir, yazılımı güncelleştirebilir, kopyalama günlüklerini görüntüleyebilir, cihazdan yerel verileri silebilir ve Microsoft Desteği için bir destek paketi oluşturabilirsiniz. İki bağımsız düğüm içeren bir Data Box Heavy cihazda, cihazın her bir düğümüne karşılık gelen iki ayrı yerel Web 'e erişebilirsiniz.
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="generate-support-package"></a>Destek paketi oluşturma
 

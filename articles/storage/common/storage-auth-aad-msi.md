@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e58cbef74aa9b6f58207abf780fd63176d5edd7d
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778980"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680929"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimliklerle blob ve kuyruk verilerine erişim yetkisi verme
 
@@ -171,3 +171,4 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 - [Azure RBAC ile depolama verilerine erişim haklarını yönetin](./storage-auth-aad-rbac-portal.md).
 - [Azure AD 'yi depolama uygulamalarıyla kullanın](storage-auth-aad-app.md).
 - [Blob verilerine erişmek için Azure AD kimlik bilgileriyle PowerShell komutlarını çalıştırma](../blobs/authorize-data-operations-powershell.md)
+- [Öğretici: yönetilen tanımlayıcıların kullanımı ile App Service erişimli depolamaya erişin](/azure/app-service/scenario-secure-app-access-storage)

@@ -1,21 +1,21 @@
 ---
-title: Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
-description: Bir haritaya döşeme katmanı eklemeyi öğrenin. Bir haritaya Hava durumu radar kaplaması eklemek için Microsoft Azure haritaları Android SDK kullanan bir örneğe bakın.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 04/26/2019
-ms.topic: how-to
+title: Android Maps 'e kutucuk katmanı ekleme | Microsoft Azure haritaları
+description: Bir haritaya döşeme katmanı eklemeyi öğrenin. Bir haritaya Hava durumu radar kaplaması eklemek için Azure Maps Android SDK kullanan bir örneğe bakın.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 22618a28f1a87e68c19467aedf639e96ec2fb91e
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 8ea6f44c47c5cd4d223b053640f65827f46db482
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532685"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679310"
 ---
-# <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya kutucuk katmanı ekleme Android SDK
+# <a name="add-a-tile-layer-to-a-map-android-sdk"></a>Haritaya döşeme katmanı ekleme (Android SDK)
 
 Bu makalede, Azure Maps Android SDK kullanarak bir haritada kutucuk katmanının nasıl işleneceğini gösterilmektedir. Döşeme katmanları, Azure Maps temel harita kutucuklarının üzerine görüntü eklemenize olanak tanır. Azure haritalar döşeme sistemi hakkında daha fazla bilgi [yakınlaştırma düzeyleri ve kutucuk Kılavuzu](zoom-levels-and-tile-grid.md) belgelerinde bulunabilir.
 
@@ -23,10 +23,10 @@ Döşeme katmanı bir sunucudan kutucukları yükler. Bu görüntüler, kutucuk 
 
 * X, Y, yakınlaştırma gösterimi-yakınlaştırma düzeyine göre x, sütun ise döşeme kılavuzundaki döşemenin satır konumudur.
 * Quadkey gösterimi-x, y, zoom bilgilerini bir kutucuk için benzersiz bir tanımlayıcı olan tek bir dize değerine birleşimi.
-* Sınırlayıcı kutusu-sınırlayıcı kutu koordinatları, `{west},{south},{east},{north}` [Web eşleme HIZMETLERI (WMS)](https://www.opengeospatial.org/standards/wms)tarafından yaygın olarak kullanılan biçimde bir görüntü belirtmek için kullanılabilir.
+* Sınırlayıcı kutusu-sınırlayıcı kutu koordinatları `{west},{south},{east},{north}` , yaygın olarak [Web eşleme HIZMETLERI (WMS)](https://www.opengeospatial.org/standards/wms)tarafından kullanılan biçimde bir görüntü belirtmek için kullanılabilir.
 
 > [!TIP]
-> Bir TileLayer, haritada büyük veri kümelerini görselleştirmenin harika bir yoludur. Bir görüntüden yalnızca bir kutucuk katmanı oluşturulmayabilir, ancak vektör verileri de kutucuk katmanı olarak da oluşturulabilir. Vektör verilerini kutucuk katmanı olarak işleyerek, harita denetiminin yalnızca dosya boyutunda, temsil ettikleri vektör verilerinden çok daha küçük olabilen kutucukları yüklemesi gerekir. Bu teknik, haritada milyonlarca veri satırı oluşturması gereken birçok kişi tarafından kullanılır.
+> Bir TileLayer, haritada büyük veri kümelerini görselleştirmenin harika bir yoludur. Bir görüntüden yalnızca bir kutucuk katmanı oluşturulmayabilir, ancak vektör verileri de kutucuk katmanı olarak da oluşturulabilir. Vektör verilerini kutucuk katmanı olarak işleyerek, harita denetiminin yalnızca kutucukları yüklemesi gerekir. Bu, dosya boyutunda, temsil ettikleri vektör verilerinden çok daha küçük olabilir. Bu teknik, haritada milyonlarca veri satırı oluşturması gereken birçok kişi tarafından kullanılır.
 
 Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya aşağıdaki parametreleri kullanan bir kutucuk URL şablonuna yönelik bir http/https URL 'SI olmalıdır: 
 
@@ -37,146 +37,36 @@ Döşeme katmanına geçirilen kutucuk URL 'si, bir TileJSON kaynağına veya a�
 * `{bbox-epsg-3857}` - `{west},{south},{east},{north}` EPSG 3857 uzamsal başvuru sisteminde biçim içeren bir sınırlayıcı kutu dizesi.
 * `{subdomain}` -Alt etki alanı değeri belirtilmişse alt etki alanı değerleri için bir yer tutucu.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](./how-to-use-android-map-control-library.md) yüklemeniz gerekir.
-
+Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](how-to-use-android-map-control-library.md) yüklemeniz gerekir.
 
 ## <a name="add-a-tile-layer-to-the-map"></a>Haritaya kutucuk katmanı ekleyin
 
- Bu örnek, bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu Kutucuklar, "x, y, Zoom" Döşeme sistemini kullanır. Bu kutucuk katmanının kaynağı, [Iowa çevresel Mesonet 'in Iowa çevre](https://mesonet.agron.iastate.edu/ogc/)bir hava durumu radar kaplamasıyla. 
+Bu örnek, bir kutucuk kümesini işaret eden döşeme katmanının nasıl oluşturulacağını gösterir. Bu örnek, "x, y, Zoom" Döşeme sistemini kullanır. Bu kutucuk katmanının kaynağı, kitle kaynağı grafikleri içeren [openseamap projem](https://openseamap.org/index.php)' dir. Genellikle kutucuk katmanlarını görüntülerken haritadaki şehirlerin etiketlerini açıkça görmeniz istenebilir. Bu davranış, harita etiketi katmanlarının altına kutucuk katmanını ekleyerek elde edilebilir.
 
-Aşağıdaki adımları izleyerek haritaya bir kutucuk katmanı ekleyebilirsiniz.
+```java
+TileLayer layer = new TileLayer(
+    tileUrl("https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png"),
+    opacity(0.8f),
+    tileSize(256),
+    minSourceZoom(7),
+    maxSourceZoom(17)
+);
 
-1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
+map.layers.add(layer, "labels");
+```
 
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.75"
-            app:mapcontrol_centerLng="-99.47"
-            app:mapcontrol_zoom="3"
-            />
-    
-    </FrameLayout>
-    ```
+Aşağıdaki ekran görüntüsünde, koyu gri tonlamalı bir stile sahip bir haritada yer alan bir kutucuk katmanını görüntüleyen Yukarıdaki kod gösterilmektedir.
 
-2. Aşağıdaki kod parçacığını, sınıfınızın **OnCreate ()** metoduna kopyalayın `MainActivity.java` .
-
-    ```Java
-    mapControl.onReady(map -> {
-        //Add a tile layer to the map, below the map labels.
-        map.layers.add(new TileLayer(
-            tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-            opacity(0.8f),
-            tileSize(256)
-        ), "labels");
-    });
-    ```
-    
-    Yukarıdaki kod parçacığı ilk olarak, **Onready ()** geri çağırma yöntemini kullanarak bir Azure haritalar harita denetim örneği edinir. Daha sonra bir `TileLayer` nesnesi oluşturur ve biçimlendirilen bir **xyz** kutucuğu URL 'sini seçeneğe geçirir `tileUrl` . Katman opaklığı olarak ayarlanır `0.8` ve kutucuk hizmetinden kullanılan kutucuklar 256 piksel döşeme olduğundan bu bilgiler `tileSize` seçeneğe geçirilir. Kutucuk katmanı daha sonra Haritalar katman yöneticisine geçirilir.
-
-    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
-    
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.TileLayer;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileSize;
-    import static com.microsoft.azure.maps.mapcontrol.options.TileLayerOptions.tileUrl;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Add a tile layer to the map, below the map labels.
-                map.layers.add(new TileLayer(
-                    tileUrl("https://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{z}/{x}/{y}.png"),
-                    opacity(0.8f),
-                    tileSize(256)
-                ), "labels");
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-Uygulamanızı Şimdi çalıştırırsanız, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
-
-<center>
-
-![Android eşleme satırı](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Kutucuk katmanını görüntüleyen Android Haritası](media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Harita stillerini ayarlama yolları hakkında daha fazla bilgi edinmek için aşağıdaki makaleye bakın
 
 > [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](./set-android-map-styles.md)
+> [Harita stilini değiştirme](set-android-map-styles.md)
+
+> [!div class="nextstepaction"]
+> [Isı haritası ekleme](map-add-heat-map-layer-android.md)

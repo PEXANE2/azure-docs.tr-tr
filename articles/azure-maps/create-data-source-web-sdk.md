@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: d09dddbceed773cd723897cc9730198b68be0ff7
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9964c99ddfb59811fc67df634b41cede5847ede0
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903624"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678846"
 ---
 # <a name="create-a-data-source"></a>Veri kaynağı oluşturma
 
 Azure Haritalar Web SDK 'Sı verileri veri kaynaklarında depolar. Veri kaynaklarını kullanmak, sorgulamak ve işlemek için veri işlemlerini iyileştirir. Şu anda iki tür veri kaynağı vardır:
 
-- **Geojson kaynağı**: coğrafi konum verilerini yerel olarak geojson biçiminde yönetir. Küçük ve orta ölçekli veri kümeleri için iyi (yüzlerce yüz binlerce şekil).
-- **Vektör kutucuk kaynağı**: haritalar döşeme sistemine bağlı olarak, geçerli harita görünümü için vektör kutucukları olarak biçimlendirilen verileri yükler. Büyük ve çok büyük veri kümeleri (milyonlarca veya milyarlarca şekil) için idealdir.
+* **Geojson kaynağı**: coğrafi konum verilerini yerel olarak geojson biçiminde yönetir. Küçük ve orta ölçekli veri kümeleri için iyi (yüzlerce yüz binlerce şekil).
+* **Vektör kutucuk kaynağı**: haritalar döşeme sistemine bağlı olarak, geçerli harita görünümü için vektör kutucukları olarak biçimlendirilen verileri yükler. Büyük ve çok büyük veri kümeleri (milyonlarca veya milyarlarca şekil) için idealdir.
 
 ## <a name="geojson-data-source"></a>GeoJSON veri kaynağı
 
@@ -50,8 +50,8 @@ Oluşturulduktan sonra veri kaynakları, `map.sources` bir [sourcemanager](/java
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 ```
 
 Aşağıdaki kod, GeoJSON verilerinin bir öğesine eklenebilme yollarını gösterir `DataSource` .
@@ -60,13 +60,13 @@ Aşağıdaki kod, GeoJSON verilerinin bir öğesine eklenebilme yollarını gös
 //GeoJsonData in the following code can be a single or array of GeoJSON features or geometries, a GeoJSON feature colleciton, or a single or array of atlas.Shape objects.
 
 //Add geoJSON object to data source. 
-dataSource.add(geoJsonData);
+source.add(geoJsonData);
 
 //Load geoJSON data from URL. URL should be on a CORs enabled endpoint.
-dataSource.importDataFromUrl(geoJsonUrl);
+source.importDataFromUrl(geoJsonUrl);
 
 //Overwrite all data in data source.
-dataSource.setShapes(geoJsonData);
+source.setShapes(geoJsonData);
 ```
 
 > [!TIP]
@@ -76,10 +76,10 @@ dataSource.setShapes(geoJsonData);
 
 Vektör kutucuk kaynağı bir vektör kutucuk katmanına nasıl erişebileceğinizi açıklar. Vektör kutucuk kaynağı oluşturmak için [Vectortilesource](/javascript/api/azure-maps-control/atlas.source.vectortilesource) sınıfını kullanın. Vektör döşeme katmanları döşeme katmanlarına benzerdir, ancak aynı değildir. Döşeme katmanı bir raster görüntüsüdür. Vektör döşeme katmanları, **PBF** biçiminde sıkıştırılmış bir dosyadır. Bu sıkıştırılmış dosya, vektör eşleme verilerini ve bir veya daha fazla katmanı içerir. Dosya, her katmanın stiline bağlı olarak işlenilerek, istemci üzerinde stil oluşturulabilir. Vektör kutucuğunda bulunan veriler, işaret, çizgi ve çokgenler biçimindeki coğrafi özellikler içerir. Raster döşeme katmanları yerine vektör kutucuğu katmanlarını kullanmanın çeşitli avantajları vardır:
 
- - Vektör kutucuğunun dosya boyutu genellikle denk bir raster kutucuğundan çok daha küçüktür. Bu nedenle, daha az bant genişliği kullanılır. Daha düşük gecikme süresi, daha hızlı bir harita ve daha iyi bir kullanıcı deneyimi anlamına gelir.
- - Vektör kutucukları istemcide işlendiği için, üzerinde görüntülendikleri cihazın çözünürlüğüne uyarlarlar. Sonuç olarak, işlenen haritalar Crystal Clear etiketleriyle daha iyi tanımlanmış şekilde görünür.
- - Yeni stil istemciye uygulanamadığından, vektör eşlemlerdeki verilerin stilini değiştirmek, verilerin yeniden indirilmesini gerektirmez. Buna karşılık, bir raster kutucuk katmanının stilini değiştirmenin genellikle sunucudan kutucukları yükleme ve ardından yeni stili uygulama gerekir.
- - Veriler vektör biçiminde teslim edildiğinden, verileri hazırlamak için daha az sunucu tarafı işleme gerekir. Sonuç olarak, daha yeni veriler daha hızlı kullanılabilir hale getirilebilir.
+* Vektör kutucuğunun dosya boyutu genellikle denk bir raster kutucuğundan çok daha küçüktür. Bu nedenle, daha az bant genişliği kullanılır. Daha düşük gecikme süresi, daha hızlı bir harita ve daha iyi bir kullanıcı deneyimi anlamına gelir.
+* Vektör kutucukları istemcide işlendiği için, üzerinde görüntülendikleri cihazın çözünürlüğüne uyarlarlar. Sonuç olarak, işlenen haritalar Crystal Clear etiketleriyle daha iyi tanımlanmış şekilde görünür.
+* Yeni stil istemciye uygulanamadığından, vektör eşlemlerdeki verilerin stilini değiştirmek, verilerin yeniden indirilmesini gerektirmez. Buna karşılık, bir raster kutucuk katmanının stilini değiştirmenin genellikle sunucudan kutucukları yükleme ve ardından yeni stili uygulama gerekir.
+* Veriler vektör biçiminde teslim edildiğinden, verileri hazırlamak için daha az sunucu tarafı işleme gerekir. Sonuç olarak, daha yeni veriler daha hızlı kullanılabilir hale getirilebilir.
 
 Azure haritalar, açık bir standart olan [Mapbox vektör kutucuk belirtimine](https://github.com/mapbox/vector-tile-spec)uyar. Azure Maps, platformun bir parçası olarak aşağıdaki vektör kutucukları hizmetlerini sağlar:
 
@@ -95,14 +95,14 @@ Haritadaki bir vektör kutucuk kaynağından verileri göstermek için, kaynağ�
 
 ```javascript
 //Create a vector tile source and add it to the map.
-var datasource = new atlas.source.VectorTileSource(null, {
+var source = new atlas.source.VectorTileSource(null, {
     tiles: ['https://{azMapsDomain}/traffic/flow/tile/pbf?api-version=1.0&style=relative&zoom={z}&x={x}&y={y}'],
     maxZoom: 22
 });
-map.sources.add(datasource);
+map.sources.add(source);
 
 //Create a layer for traffic flow lines.
-var flowLayer = new atlas.layer.LineLayer(datasource, null, {
+var flowLayer = new atlas.layer.LineLayer(source, null, {
     //The name of the data layer within the data source to pass into this rendering layer.
     sourceLayer: 'Traffic flow',
 
@@ -133,7 +133,7 @@ map.layers.add(flowLayer, 'labels');
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Vektör döşeme çizgisi katmanı" src="https://codepen.io/azuremaps/embed/wvMXJYJ?height=500&theme-id=default&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>vektör kutucuk çizgisi katmanına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
+Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/wvMXJYJ'>vektör kutucuk çizgisi katmanına</a> bakın <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'></a>
 </iframe>
 
 <br/>
@@ -142,30 +142,30 @@ Codepen üzerinde Azure Maps () tarafından bulunan kalem <a href='https://codep
 
 Veriler, işleme katmanları kullanılarak haritada işlenir. Tek bir veri kaynağına, bir veya daha fazla işleme katmanı tarafından başvurulabilir. Aşağıdaki işleme katmanları bir veri kaynağı gerektirir:
 
-- [Kabarcık katmanı](map-add-bubble-layer.md) -nokta verilerini haritada ölçeklendirilen daireler olarak işler.
-- [Sembol katmanı](map-add-pin.md) -nokta verilerini simge veya metin olarak işler.
-- [Isı haritası katmanı](map-add-heat-map-layer.md) -nokta verilerini yoğunluk ısı haritası olarak işler.
-- [Çizgi katmanı](map-add-shape.md) -bir çizgiyi işleme ve çokgen ana hattını işleme. 
-- [Çokgen katmanı](map-add-shape.md) -bir çokgen alanını düz renk veya görüntü düzeniyle doldurur.
+* [Kabarcık katmanı](map-add-bubble-layer.md) -nokta verilerini haritada ölçeklendirilen daireler olarak işler.
+* [Sembol katmanı](map-add-pin.md) -nokta verilerini simge veya metin olarak işler.
+* [Isı haritası katmanı](map-add-heat-map-layer.md) -nokta verilerini yoğunluk ısı haritası olarak işler.
+* [Çizgi katmanı](map-add-shape.md) -bir çizgiyi işleme ve çokgen ana hattını işleme. 
+* [Çokgen katmanı](map-add-shape.md) -bir çokgen alanını düz renk veya görüntü düzeniyle doldurur.
 
 Aşağıdaki kod, bir veri kaynağının nasıl oluşturulacağını, haritaya nasıl ekleneceğini ve bir kabarcık katmanına nasıl bağlanacağını gösterir. Ve sonra, coğrafi JSON noktası verilerini uzak bir konumdan veri kaynağına aktarın. 
 
 ```javascript
 //Create a data source and add it to the map.
-var datasource = new atlas.source.DataSource();
-map.sources.add(datasource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a layer that defines how to render points in the data source and add it to the map.
-map.layers.add(new atlas.layer.BubbleLayer(datasource));
+map.layers.add(new atlas.layer.BubbleLayer(source));
 
 //Load the earthquake data.
-datasource.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
+source.importDataFromUrl('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson');
 ```
 
 Bu veri kaynaklarına bağlanmayama verileri doğrudan işleme için yükleyen ek işleme katmanları vardır. 
 
-- [Görüntü katmanı](map-add-image-layer.md) -Haritanın üstündeki tek bir görüntünün üzerine biçimlendirmeler ve köşelerini belirtilen koordinat kümesine bağlar.
-- [Döşeme katmanı](map-add-tile-layer.md) -haritanın üzerine bir raster döşeme katmanı uygular.
+* [Görüntü katmanı](map-add-image-layer.md) -Haritanın üstündeki tek bir görüntünün üzerine biçimlendirmeler ve köşelerini belirtilen koordinat kümesine bağlar.
+* [Döşeme katmanı](map-add-tile-layer.md) -haritanın üzerine bir raster döşeme katmanı uygular.
 
 ## <a name="one-data-source-with-multiple-layers"></a>Birden çok katmanlı bir veri kaynağı
 
@@ -179,34 +179,40 @@ Azure haritalar ile, bir veri kaynağında aşağıdaki kodda gösterildiği gib
 
 ```javascript
 //Create a data source and add it to the map.
-var dataSource = new atlas.source.DataSource();
-map.sources.add(dataSource);
+var source = new atlas.source.DataSource();
+map.sources.add(source);
 
 //Create a polygon and add it to the data source.
-dataSource.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
+source.add(new atlas.data.Polygon([[[/* Coordinates for polygon */]]]));
 
 //Create a polygon layer to render the filled in area of the polygon.
-var polygonLayer = new atlas.layer.PolygonLayer(dataSource, 'myPolygonLayer', {
+var polygonLayer = new atlas.layer.PolygonLayer(source, 'myPolygonLayer', {
      fillColor: 'rgba(255,165,0,0.2)'
 });
 
 //Create a line layer for greater control of rendering the outline of the polygon.
-var lineLayer = new atlas.layer.LineLayer(dataSource, 'myLineLayer', {
+var lineLayer = new atlas.layer.LineLayer(source, 'myLineLayer', {
      color: 'orange',
      width: 2
 });
 
 //Create a bubble layer to render the vertices of the polygon as scaled circles.
-var bubbleLayer = new atlas.layer.BubbleLayer(dataSource, 'myBubbleLayer', {
+var bubbleLayer = new atlas.layer.BubbleLayer(source, 'myBubbleLayer', {
      color: 'orange',
      radius: 5,
-     outlineColor: 'white',
-     outlineWidth: 2
+     strokeColor: 'white',
+     strokeWidth: 2
 });
 
 //Add all layers to the map.
 map.layers.add([polygonLayer, lineLayer, bubbleLayer]);
 ```
+
+> [!TIP]
+> İşlevi kullanarak haritaya katman eklerken `map.layers.add` , var olan bir KATMANıN kimliği veya örneği ikinci bir parametre olarak geçirilebilir. Bu, eşlemenin mevcut katmanın altına eklenen yeni katmanı eklemesini söyler. Bu yöntem, katman KIMLIĞINI geçirmenin yanı sıra aşağıdaki değerleri de destekler.
+>
+> * `"labels"` -Harita etiketi katmanlarının altına yeni katmanı ekler.
+> * `"transit"` -Harita yolu ve aktarım katmanlarının altına yeni katmanı ekler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

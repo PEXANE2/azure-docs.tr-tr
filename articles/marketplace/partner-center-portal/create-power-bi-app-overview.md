@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 04/02/2020
-ms.openlocfilehash: af77f18771d8e18ee86b79360ac03307d3330cb0
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b02c5bbf2e6accbea9c7a33dc26c4e89e46bb697
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131437"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679143"
 ---
 # <a name="power-bi-app-creation-overview"></a>Power BI uygulama oluşturmaya genel bakış
 
@@ -33,7 +33,7 @@ Ticari Market 'e yayımlamanın avantajları:
 
 Bunlar, önemli yayımlama adımlardır:
 
-1. Uygulamanızı Power BI oluşturun. Teklif için ana teknik varlık olan bir paket yüklemesi bağlantısı alacaksınız. Teklifi Iş Ortağı Merkezi ' nde oluşturmadan önce test paketini ön üretime gönderin. Ayrıntılar için bkz. [Power BI uygulamalar nelerdir?](/power-bi/service-template-apps-overview).
+1. Uygulamanızı Power BI oluşturun. Teklif için ana teknik varlık olan bir paket yüklemesi bağlantısı alacaksınız. Teklifi Iş Ortağı Merkezi ' nde oluşturmadan önce test paketini ön üretime gönderin. Ayrıntılar için bkz. [Power BI uygulamalar nelerdir?](/power-bi/service-template-apps-overview)
 2. Resmi ad, açıklama ve logo gibi pazarlama malzemeleri ekleyin.
 3. Kullanım koşulları, Gizlilik ilkesi, destek ilkesi ve Kullanıcı Yardımı gibi teklifin yasal ve destek belgelerini de dahil edin.
 4. Teklifi oluşturun – teklif açıklaması, pazarlama malzemeleri, yasal bilgiler, destek bilgileri ve varlık belirtimleri dahil olmak üzere ayrıntıları düzenlemek için Iş ortağı merkezini kullanın.

@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: b096b24acd5cf65f6ad3e9eabb1d536b3aae0168
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f4b0642ce54b862b4d4c7b9663cf10e74b206281
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187077"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680484"
 ---
-# <a name="tutorial---migrate-an-android-app-from-google-maps"></a>Öğretici-Google Maps 'tan bir Android uygulaması geçirme
+# <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Öğretici: Google Maps 'tan Android uygulaması geçirme
 
 Azure Haritalar Android SDK, Web SDK 'sına benzer bir API arabirimine sahiptir. Bu SDK 'Lardan biriyle geliştirdiyseniz, aynı kavramların, en iyi uygulamaların ve mimarilerin birçoğu geçerlidir. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -33,9 +33,9 @@ Tüm örnekler Java 'da verilmiştir; Ancak, Azure Maps Android SDK Kotlin kulla
 
 Azure haritalar tarafından Android SDK ile geliştirme hakkında daha fazla bilgi için bkz. [Azure Maps Için nasıl yapılır kılavuzlarıyla Android SDK](how-to-use-android-map-control-library.md).
 
-## <a name="prerequisites"></a>Ön koşullar 
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+1. [Azure Portal](https://portal.azure.com)oturum açarak bir Azure Maps hesabı oluşturun. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 2. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 3. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](how-to-manage-authentication.md).
 
@@ -46,14 +46,14 @@ Google veya Azure Maps kullanarak bir Android uygulamasına harita yükleme, ben
 * Her iki platforma de erişmek için bir API veya abonelik anahtarı alın.
 * Haritanın nerede işleneceğini ve nasıl düzenleneceğini belirtmek için bir etkinliğe bazı XML ekleyin.
 * Eşleme görünümünü içeren etkinlikten tüm yaşam döngüsü yöntemlerini Map sınıfında karşılık gelen yöntemlere geçersiz kılın. Özellikle, aşağıdaki yöntemleri geçersiz kılmanız gerekir:
-    * `onCreate(Bundle)`
-    * `onStart()`
-    * `onResume()`
-    * `onPause()`
-    * `onStop()`
-    * `onDestroy()`
-    * `onSaveInstanceState(Bundle)`
-    * `onLowMemory()`
+  * `onCreate(Bundle)`
+  * `onStart()`
+  * `onResume()`
+  * `onPause()`
+  * `onStop()`
+  * `onDestroy()`
+  * `onSaveInstanceState(Bundle)`
+  * `onLowMemory()`
 * Eşlemeye ve programa erişmeye çalışmadan önce haritanın hazırlanmaya başlamasını bekleyin.
 
 ### <a name="before-google-maps"></a>Önce: Google Maps
@@ -165,9 +165,9 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
 1. En üst düzey **Build. Gradle** dosyasını açın ve aşağıdaki kodu **tüm projeler** engelleme bölümüne ekleyin:
 
-    ```JAVA
+    ```java
     maven {
-            url "https://atlas.microsoft.com/sdk/android"
+        url "https://atlas.microsoft.com/sdk/android"
     }
     ```
 
@@ -186,12 +186,12 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
     3. Bağımlılıklar bloğunu güncelleştirin. En son Azure Maps Android SDK için yeni bir uygulama bağımlılığı satırı ekleyin:
 
-        ```java
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        ```Java
+        implementation "com.microsoft.azure.maps:mapcontrol:0.6"
         ```
 
         > [!Note]
-        > Azure Haritalar Android SDK düzenli olarak yükseltilir ve geliştirilir. En son Azure haritaları sürüm numarasını almak için [Android eşleme ile çalışmaya başlama denetimini](how-to-use-android-map-control-library.md) görebilirsiniz. Ayrıca, kodunuzun her zaman en son sürümü göstermesi için "0,2" olan sürüm numarasını "0 +" olarak ayarlayabilirsiniz.
+        > Kodunuzun her zaman en son sürümü göstermesi için sürüm numarasını "0 +" olarak ayarlayabilirsiniz.
 
     4. Araç çubuğunda **dosyasına** gidin ve ardından **projeyi Gradle dosyalarıyla Eşitle**' ye tıklayın.
 
@@ -224,98 +224,99 @@ Android için Azure Maps SDK 'sını kullanarak bir Haritayı göstermek için a
 
     Harita denetimi, Android 'ın OpenGL yaşam döngüsünü yönetmeye yönelik kendi yaşam döngüsü yöntemlerini içerir. Bu yöntemlerin doğrudan içerilen etkinlikten çağrılması gerekir. Harita denetiminin yaşam döngüsü yöntemlerini doğru şekilde çağırmak için, eşleme denetimini içeren etkinliğin aşağıdaki yaşam döngüsü yöntemlerini geçersiz kılmanız gerekir. İlgili harita denetim yöntemini çağırın.
 
-    * `onCreate(Bundle)` 
-    * `onStart()` 
-    * `onResume()` 
-    * `onPause()` 
-    * `onStop()` 
-    * `onDestroy()` 
-    * `onSaveInstanceState(Bundle)` 
+    * `onCreate(Bundle)`
+    * `onStart()`
+    * `onResume()`
+    * `onPause()`
+    * `onStop()`
+    * `onDestroy()`
+    * `onSaveInstanceState(Bundle)`
     * `onLowMemory()`
 
     **MainActivity. Java** dosyasını aşağıdaki gibi düzenleyin:
 
-    ```java
+    ```Java
     package com.example.myapplication;
-
-    import android.support.v7.app.AppCompatActivity;
-    import android.os.Bundle;
+    
+    //For older versions use: import android.support.v7.app.AppCompatActivity; 
+    import androidx.appcompat.app.AppCompatActivity;
     import com.microsoft.azure.maps.mapcontrol.AzureMaps;
     import com.microsoft.azure.maps.mapcontrol.MapControl;
     import com.microsoft.azure.maps.mapcontrol.layer.SymbolLayer;
     import com.microsoft.azure.maps.mapcontrol.options.MapStyle;
     import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-
+    
     public class MainActivity extends AppCompatActivity {
-     
-        static {
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-
-        MapControl mapControl;
-
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-
-            mapControl = findViewById(R.id.mapcontrol);
-
-            mapControl.onCreate(savedInstanceState);
     
-            //Wait until the map resources are ready.
-            mapControl.onReady(map -> {
-                //Add your post map load code here.
-    
-            });
-        }
+    static {
+        AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
 
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-
-        @Override
-        protected void onStart(){
-            super.onStart();
-            mapControl.onStart();
-        }
-
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
     }
+
+    MapControl mapControl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mapControl = findViewById(R.id.mapcontrol);
+
+        mapControl.onCreate(savedInstanceState);
+
+        //Wait until the map resources are ready.
+        mapControl.onReady(map -> {
+            //Add your post map load code here.
+
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapControl.onResume();
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        mapControl.onStart();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mapControl.onPause();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mapControl.onStop();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapControl.onLowMemory();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapControl.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapControl.onSaveInstanceState(outState);
+    }}
     ```
 
 Uygulamanızı çalıştırırsanız, eşleme denetimi aşağıdaki görüntüde olduğu gibi yüklenir.
-
 
 ![Basit Azure haritaları](media/migrate-google-maps-android-app/simple-azure-maps.png)
 
@@ -359,7 +360,7 @@ static {
     AzureMaps.setLanguage("fr-FR");
 
     //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("auto");
+    AzureMaps.setView("Auto");
 }
 ```
 
@@ -371,7 +372,7 @@ static {
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:mapcontrol_language="fr-FR"
-    app:mapcontrol_view="auto"
+    app:mapcontrol_view="Auto"
     />
 ```
 
@@ -379,8 +380,10 @@ static {
 
 ```java
 mapControl.onReady(map -> {
-    map.setStyle(StyleOptions.language("fr-FR"));
-    map.setStyle(StyleOptions.view("auto"));
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    );
 });
 ```
 
@@ -436,7 +439,7 @@ Harita görünümü haritalar `setCamera` ve yöntemler kullanılarak programlan
 ```java
 mapControl.onReady(map -> {
     //Set the camera of the map.
-    map.setCamera(center(35.0272, -111.0225), zoom(14));
+    map.setCamera(center(Point.fromLngLat(-111.0225, 35.0272)), zoom(14));
 
     //Set the style of the map.
     map.setStyle(style(MapStyle.SATELLITE));
@@ -492,10 +495,8 @@ mapControl.onReady(map -> {
 
 Özel görüntüler, bir haritadaki noktaları temsil etmek için kullanılabilir. Aşağıdaki örneklerde yer alan eşleme, haritada bir noktayı göstermek için özel bir görüntü kullanır. Bu nokta Enlem: 51,5 ve Boylam:-0,2 ' dir. Tutturucu, işaretin konumunu, raptiye simgesinin noktasının haritada doğru konuma göre hizalanmasını sağlayacak şekilde kaydırır.
 
-<center>
-
 ![sarı raptiye resmi](media/migrate-google-maps-web-app/yellow-pushpin.png)<br/>
-yellow-pushpin.png</center>
+yellow-pushpin.png
 
 Her iki örnekte de yukarıdaki görüntü, uygulamalar kaynaklarının çizilebilir klasörüne eklenir.
 
@@ -666,6 +667,7 @@ mapControl.onReady(map -> {
         strokeWidth(2f)));
 });
 ```
+
 ![Azure haritalar Çokgen](media/migrate-google-maps-android-app/azure-maps-polygon.png)
 
 ## <a name="overlay-a-tile-layer"></a>Döşeme katmanını kaplama
@@ -758,18 +760,13 @@ mapControl.onReady(map -> {
 
 ![Azure haritalar trafiği](media/migrate-google-maps-android-app/azure-maps-traffic.png)
 
+## <a name="clean-up-resources"></a>Kaynakları temizleme
+
+Temizlenecek kaynak yok.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar hakkında daha fazla bilgi Android SDK:
+Azure haritalar 'ı geçirme hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Android harita denetimini kullanma](how-to-use-android-map-control-library.md)
-
-> [!div class="nextstepaction"]
-> [Android haritasına sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Android haritasına şekil ekleme](./how-to-add-shapes-to-android-map.md)
-
-> [!div class="nextstepaction"]
-> [Android haritalar 'da harita stillerini değiştirme](./set-android-map-styles.md)
+> [Android uygulamasını geçirme](migrate-from-google-maps-android-app.md)

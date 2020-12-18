@@ -7,14 +7,14 @@ ms.date: 4/4/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 8f27f7532d074428fafe74e4a453628f5c61d2b8
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 41a117c9ea8b47afcedaa1714abc2031d3be6c21
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895979"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680066"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Veri tabanlı stil Ifadeleri (Web SDK)
 
@@ -24,9 +24,9 @@ Veri odaklı stiller, Stillendirme etrafında iş mantığını uygulamak için 
 
 Bu videoda, Azure Maps web SDK 'sında veri odaklı stillendirme hakkında genel bakış sunulmaktadır.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player?format=ny]
 
 İfadeler JSON dizileri olarak temsil edilir. Dizideki bir ifadenin ilk öğesi, ifade işlecinin adını belirten bir dizedir. Örneğin, "+" veya "Case". Sonraki öğeler (varsa), ifadenin bağımsız değişkenlerdir. Her bağımsız değişken bir değişmez değer (bir dize, sayı, Boolean veya `null` ) ya da başka bir ifade dizisi. Aşağıdaki sözde kod, bir ifadenin temel yapısını tanımlar. 
 
@@ -58,7 +58,7 @@ Azure Haritalar Web SDK 'Sı birçok tür ifadeyi destekler. İfadeler, kendi i�
 
 Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farklı yolları göstermek için aşağıdaki özelliği kullanır. 
 
-```javascript
+```json
 {
     "type": "Feature",
     "geometry": {
@@ -70,13 +70,13 @@ Bu belgedeki tüm örnekler, farklı ifade türlerinin kullanılabileceği farkl
         "entityType": "restaurant",
         "revenue": 12345,
         "subTitle": "Building 40", 
-        "temperature": 72,
+        "temperature": 64,
         "title": "Cafeteria", 
-        "zoneColor": "red",
-        "abcArray": ['a', 'b', 'c'],
-        "array2d": [['a', 'b'], ['x', 'y']],
+        "zoneColor": "purple",
+        "abcArray": ["a", "b", "c"],
+        "array2d": [["a", "b"], ["x", "y"]],
         "_style": {
-            "fillColor": 'red'
+            "fillColor": "red"
         }
     }
 }
@@ -88,22 +88,22 @@ Veri ifadeleri bir özelliğin özellik verilerine erişim sağlar.
 
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['at', number, array]` | object | Diziden bir öğe alır. |
+| `['at', number, array]` | değer | Diziden bir öğe alır. |
 | `['geometry-type']` | string | Özelliğin geometri türünü alır: Point, MultiPoint, LineString, MultiLineString, Çokgen, MultiPolygon. |
 | `['get', string]` | değer | Geçerli özelliğin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
 | `['get', string, object]` | değer | Belirtilen nesnenin özelliklerinden özellik değerini alır. İstenen özellik eksikse null değerini döndürür. |
 | `['has', string]` | boolean | Özelliğin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['has', string, object]` | boolean | Nesnenin özelliklerinin belirtilen özelliğe sahip olup olmadığını belirler. |
 | `['id']` | değer | Özelliği varsa özelliğin KIMLIĞINI alır. |
-| `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
 | `['in', boolean | string | number, array]` | boolean | Dizide bir öğe olup olmadığını belirler |
 | `['in', substring, string]` | boolean | Bir dizedeki alt dizenin mevcut olup olmadığını belirler |
 | `['index-of', boolean | string | number, array | string]`<br/><br/>`['index-of', boolean | string | number, array | string, number]` | sayı | Bir öğenin dizide bulunduğu ilk konumu veya bir dize içinde bir alt dize bulunabilir ya da `-1` giriş bulunamazsa. Aramanın başlatılacağı bir isteğe bağlı dizini kabul eder. |
-| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | `string`\|dizi | Bir diziden veya belirtilen başlangıç dizininden bir dizeden bir alt dizeden veya ayarlandıysa bir başlangıç dizininden bir bitiş dizininden bir öğe döndürür. Dönüş değeri, Başlangıç dizininin dahil değildir ancak son dizinden değil. |
+| `['length', string | array]` | sayı | Bir dizenin veya dizinin uzunluğunu alır. |
+| `['slice', array | string, number]`<br/><br/>`['slice', array | string, number, number]` | dize \| dizisi | Bir diziden veya belirtilen başlangıç dizininden bir dizeden bir alt dizeden veya ayarlandıysa bir başlangıç dizininden bir bitiş dizininden bir öğe döndürür. Dönüş değeri, Başlangıç dizininin dahil değildir ancak son dizinden değil. |
 
 **Örnekler**
 
-Bir özelliğin özelliklerine, bir ifade kullanarak doğrudan bir ifadede erişilebilir `get` . Bu örnek, bir kabarcık katmanının Color özelliğini belirtmek için özelliğinin "zoneColor" değerini kullanır. 
+Bir özelliğin özelliklerine, bir ifade kullanarak doğrudan bir ifadede erişilebilir `get` . Bu örnek, `zoneColor` bir kabarcık katmanının Color özelliğini belirtmek için özelliğinin değerini kullanır. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -111,7 +111,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Yukarıdaki örnek, tüm nokta özelliklerinin özelliği varsa düzgün çalışacaktır `zoneColor` . Aksi takdirde, renk büyük olasılıkla "siyah" a geri dönüş olur. Geri dönüş rengini değiştirmek için, `case` `has` özelliğinin mevcut olup olmadığını denetlemek için ifadesiyle birlikte bir ifade kullanın. Özelliği yoksa, bir geri dönüş rengi döndürün.
+Yukarıdaki örnek, tüm nokta özelliklerinin özelliği varsa düzgün çalışacaktır `zoneColor` . Aksi takdirde renk, büyük olasılıkla "siyah" a geri dönecektir. Geri dönüş rengini değiştirmek için, `case` `has` özelliğinin mevcut olup olmadığını denetlemek için ifadesiyle birlikte bir ifade kullanın. Özelliği yoksa, bir geri dönüş rengi döndürün.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -203,7 +203,7 @@ Matematik ifadeleri, ifade çerçevesi içinde veri odaklı hesaplamalar gerçek
 | `['max', number, number, …]` | sayı | Belirtilen sayı kümesindeki en büyük sayıyı hesaplar. |
 | `['min', number, number, …]` | sayı | Belirtilen sayı kümesindeki minimum sayıyı hesaplar. |
 | `['pi']` | sayı | Matematik sabitini döndürür `PI` . |
-| `['round', number]` | sayı | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]` -2 olarak değerlendirilir. |
+| `['round', number]` | sayı | Sayıyı en yakın tamsayıya yuvarlar. Yarı-değerler sıfırdan uzağa yuvarlanır. Örneğin, `['round', -1.5]` olarak değerlendirilir `-2` . |
 | `['sin', number]` | sayı | Belirtilen sayının sinüsünü hesaplar. |
 | `['sqrt', number]` | sayı | Belirtilen sayının kare kökünü hesaplar. |
 | `['tan', number]` | sayı | Belirtilen sayının tanjantını hesaplar. |
@@ -228,6 +228,16 @@ Toplama ifadesi üç değer alır: bir işleç değeri ve başlangıç değeri v
 
 Bir veri kümesindeki tüm özellikler bir sayı olan bir `revenue` özelliğe sahiptir. Daha sonra, bir kümede bulunan ve veri kümesinden oluşturulan tüm noktaların toplam geliri hesaplanabilir. Bu hesaplama aşağıdaki toplama ifadesi kullanılarak yapılır: `['+', 0, ['get', 'revenue']]`
 
+### <a name="accumulated-expression"></a>Birikmiş ifade
+
+`accumulated`İfade şimdiye kadar biriktirilen bir küme özelliğinin değerini alır. Bu, yalnızca `clusterProperties` kümelenmiş bir kaynak seçeneğinde kullanılabilir `DataSource` .
+
+**Kullanım**
+
+```javascript
+["accumulated"]
+```
+
 ## <a name="boolean-expressions"></a>Mantıksal ifadeler
 
 Boolean ifadeleri, Boole karşılaştırmaları değerlendirmek için bir dizi Boole işleci sağlar.
@@ -245,6 +255,7 @@ Değerler karşılaştırılırken karşılaştırma kesin olarak yazılır. Far
 | `['>=' value, value]` | boolean | `true`İlk girişin ikinciden büyük veya ona eşit olup olmadığını döndürür, `false` Aksi takdirde. Bağımsız değişkenlerin her iki dize veya iki sayı olması gerekir. |
 | `['all', boolean, boolean, …]` | boolean | `true`Tüm girdilerin `true` , yoksa, döndürür `false` . |
 | `['any', boolean, boolean, …]` | boolean | Girdilerden `true` herhangi biri ise `true` , `false` Aksi takdirde döndürür. |
+| `['within', Polygon | MultiPolygon | Feature<Polygon | MultiPolygon>]` | boolean | `true`Değerlendirilen özelliğin giriş geometrisi sınırının içinde tam olarak içerildiğini, aksi takdirde false değerini döndürür. Giriş değeri,, veya türünde geçerli bir geojson olabilir `Polygon` `MultiPolygon` `Feature` `FeatureCollection` . Değerlendirme için desteklenen özellikler:<br/><br/>-Point: `false` bir noktanın sınır üzerinde olması veya sınırın dışına düştüğünü döndürür.<br/>-LineString: `false` bir satırın herhangi bir bölümü sınırın dışında kalırsa, satır sınırın üzerine kesişiyor veya çizginin uç noktası sınırın üzerinde. |
 
 ## <a name="conditional-expressions"></a>Koşullu ifadeler
 
@@ -355,28 +366,6 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Aşağıdaki örnek bir "Array" veya "Array Contains" tür filtresini gerçekleştirmek için bir Match ifadesi kullanır. Bu durumda ifade, izin verilen kimlikler listesinde bir ID değeri olan verileri filtreler. Filtreler içeren ifadeler kullanılırken, sonucun bir Boole değeri olması gerekir.
-
-```javascript
-var layer = new atlas.layer.BubbleLayer(datasource, null, {
-    filter: [
-        'match',  
-
-        //Get the property to match.
-        ['get', 'id'],  
-
-         //List of values to match.
-        [24, 53, 98], 
-
-        //If there is a match, return true.
-        true,
-    
-        //Otherwise return false.
-        false
-    ]
-});
-```
-
 ### <a name="coalesce-expression"></a>Birleşim ifadesi
 
 `coalesce`İlk null olmayan değer alınana ve bu değeri döndürene kadar bir ifade kümesi aracılığıyla ifade adımları. 
@@ -394,7 +383,7 @@ Aşağıdaki sözde kod, ifadenin yapısını tanımlar `coalesce` .
 
 **Örnek**
 
-Aşağıdaki örnek bir `coalesce` sembol katmanının seçeneğini ayarlamak için bir ifade kullanır `textField` . Özelliği özellikte yoksa `title` veya olarak ayarlandıysa `null` , ifade daha sonra özelliği aramaya çalışır `subtitle` , veya eksikse, `null` daha sonra boş bir dizeye geri dönecektir. 
+Aşağıdaki örnek bir `coalesce` sembol katmanının seçeneğini ayarlamak için bir ifade kullanır `textField` . Özelliği özellikte yoksa `title` veya olarak ayarlandıysa `null` , ifade daha sonra özelliği aramaya çalışır `subTitle` , veya eksikse, `null` daha sonra boş bir dizeye geri dönecektir. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -405,8 +394,8 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
             //Try getting the title property.
             ['get', 'title'],
 
-            //If there is no title, try getting the subtitle. 
-            ['get', 'subtitle'],
+            //If there is no title, try getting the subTitle. 
+            ['get', 'subTitle'],
 
             //Default to an empty string.
             ''
@@ -439,8 +428,14 @@ Tür ifadeleri, dizeler, sayılar ve Boole değerleri gibi farklı veri türleri
 
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
+| `['array', value]` \| `['array', type: "string" | "number" | "boolean", value]` | Object [] | Girişin bir dizi olduğunu onaylar. |
+| `['boolean', value]` \| `["boolean", value, fallback: value, fallback: value, ...]` | boolean | Giriş değerinin bir Boole olduğunu onaylar. Birden çok değer sağlanmışsa, her biri Boole elde edilene kadar sırayla değerlendirilir. Girdilerden hiçbiri Boole değilse, ifade bir hatadır. |
+| `['collator', { 'case-sensitive': boolean, 'diacritic-sensitive': boolean, 'locale': string }]` | Collator | Yerel ayara bağlı karşılaştırma işlemlerinde kullanılmak üzere bir Harmanlayıcı döndürür. Büyük/küçük harfe duyarlı ve aksan duyarlı seçenekler varsayılan olarak false şeklindedir. Yerel ayar bağımsız değişkeni, kullanılacak yerel ayarın IETF dili etiketini belirtir. Hiçbiri sağlanmazsa, varsayılan yerel ayar kullanılır. İstenen yerel ayar kullanılamıyorsa, Harmanlayıcı sistem tarafından tanımlanan bir geri dönüş yerel ayarı kullanır. Yerel ayar geri dönüş davranışının sonuçlarını sınamak için çözümlenmiş-locale ' i kullanın. |
 | `['literal', array]`<br/><br/>`['literal', object]` | dizi \| nesnesi | Sabit bir dizi veya nesne değeri döndürür. Bir dizi ya da nesnenin bir ifade olarak değerlendirilmesini engellemek için bu ifadeyi kullanın. Bir dizi ya da nesnenin bir ifade tarafından döndürülmesi gerektiğinde bu gereklidir. |
 | `['image', string]` | string | Harita görüntüsü Sprite öğesine belirtilen görüntü KIMLIĞININ yüklenip yüklenmediğini denetler. Eğer ise, KIMLIK döndürülür, aksi takdirde null döndürülür. |
+| `['number', value]` \| `["number", value, fallback: value, fallback: value, ...]` | sayı | Giriş değerinin bir sayı olduğunu onaylar. Birden çok değer sağlanmışsa, her biri bir sayı alınana kadar sırayla değerlendirilir. Girdilerden hiçbiri sayı değilse, ifade bir hatadır. |
+| `['object', value]`  \| `["object", value, fallback: value, fallback: value, ...]` | Nesne | Giriş değerinin bir nesne olduğunu onaylar.  Birden çok değer sağlanmışsa, her biri bir nesne alınana kadar sırayla değerlendirilir. Girdilerden hiçbiri nesneler ise, ifade bir hatadır. |
+| `['string', value]` \| `["string", value, fallback: value, fallback: value, ...]` | string | Giriş değerinin bir dize olduğunu onaylar. Birden çok değer sağlanmışsa, her biri bir dize alınana kadar sırayla değerlendirilir. Girdilerden hiçbiri dize değilse, ifade bir hatadır. |
 | `['to-boolean', value]` | boolean | Giriş değerini bir Boole değerine dönüştürür. Sonuç, `false` girişin boş bir dize,,, veya, `0` `false` `null` `NaN` Aksi durumda `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Giriş değerini bir renge dönüştürür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | sayı | Mümkünse, giriş değerini bir sayıya dönüştürür. Giriş `null` veya ise `false` , sonuç 0 ' dır. Giriş ise, `true` Sonuç 1 ' dir. Giriş bir dizeyse, ECMAScript dil belirtiminin [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) dize işlevini kullanarak bir sayıya dönüştürülür. Birden çok değer sağlanmışsa, ilk başarılı dönüştürme alınana kadar her biri sırayla değerlendirilir. Girdilerden hiçbiri dönüştürülemiyorsa, ifade bir hatadır. |
@@ -475,9 +470,9 @@ Renk ifadeleri renk değerleri oluşturmayı ve işlemeyi kolaylaştırır.
 
 | Expression | Dönüş türü | Açıklama |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı* , *yeşil* ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
-| `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı* , *yeşil* , *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
-| `['to-rgba']` | \[sayı, sayı, sayı, sayı\] | Giriş renginin *kırmızı* , *yeşil* , *mavi* ve *Alfa* bileşenlerini içeren dört öğeli bir diziyi bu sırayla döndürür. |
+| `['rgb', number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil* ve *mavi* bileşenlerden bir renk değeri oluşturur `0` `255` ve bir alfa bileşeni `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
+| `['rgba', number, number, number, number]` | color | Ve arasında aralığa gereken *kırmızı*, *yeşil*, *mavi* bileşenlerden `0` `255` ve bir ve aralığı içindeki bir Alfa bileşeninden bir renk değeri oluşturur `0` `1` . Herhangi bir bileşen Aralık dışında olursa ifade bir hatadır. |
+| `['to-rgba']` | \[sayı, sayı, sayı, sayı\] | Giriş renginin *kırmızı*, *yeşil*, *mavi* ve *Alfa* bileşenlerini içeren dört öğeli bir diziyi bu sırayla döndürür. |
 
 **Örnek**
 
@@ -505,6 +500,8 @@ Dize operatörü ifadeleri, büyük/küçük harfe dönüştürme ve dönüştü
 |------------|-------------|-------------|
 | `['concat', string, string, …]` | dize | Birden çok dizeyi birlikte birleştirir. Her değer bir dize olmalıdır. `to-string`Gerekirse, diğer değer türlerini dizeye dönüştürmek için tür ifadesini kullanın. |
 | `['downcase', string]` | string | Belirtilen dizeyi küçük harfe dönüştürür. |
+| `['is-supported-script', string]` \| `['is-supported-script', Expression]`| boolean | Giriş dizesinin geçerli yazı tipi yığını tarafından desteklenen bir karakter kümesi kullanıp kullanmadığını belirler. Örnek: `['is-supported-script', 'ಗೌರವಾರ್ಥವಾಗಿ']` |
+| `['resolved-locale', string]` | string | Belirtilen Harmanlayıcı tarafından kullanılan yerel ayarın IETF dil etiketini döndürür. Bu, varsayılan sistem yerel ayarını belirlemekte veya istenen bir yerel ayarın başarıyla yüklenip yüklenmediğini belirleyebilmesi için kullanılabilir. |
 | `['upcase', string]` | string | Belirtilen dizeyi büyük harfe dönüştürür. |
 
 **Örnek**
@@ -575,14 +572,10 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'interpolate',
         ['linear'],
         ['get', 'temperature'],
-        50,        
-        'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        50, 'blue',
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -624,12 +617,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
         'step',
         ['get', 'temperature'],
         'blue',
-        60,
-        'yellow',
-        70,
-        'orange',
-        80,
-        'red'
+        60, 'yellow',
+        70, 'orange',
+        80, 'red'
     ]
 });
 ```
@@ -724,7 +714,6 @@ Metin alanı biçimi ifadesi, `textField` `textOptions` karışık metin biçiml
 
  * `'font-scale'` -Yazı tipi boyutu için ölçekleme faktörünü belirtir. Belirtilmişse, bu değer `size` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
  * `'text-font'` -Bu dize için kullanılması gereken bir veya daha fazla yazı tipi ailesini belirtir. Belirtilmişse, bu değer `font` bağımsız dize için öğesinin özelliğini geçersiz kılar `textOptions` .
- * `'text-color'` -İşleme sırasında metne uygulanacak rengi belirtir. 
 
 Aşağıdaki sözde kod, metin alanı biçim ifadesinin yapısını tanımlar. 
 
@@ -734,14 +723,12 @@ Aşağıdaki sözde kod, metin alanı biçim ifadesinin yapısını tanımlar.
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[],
-        'text-color': color
+        'text-font': string[]
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] ,
-        'text-color': color
+        'text-font': string[]
     },
     …
 ]
@@ -749,7 +736,7 @@ Aşağıdaki sözde kod, metin alanı biçim ifadesinin yapısını tanımlar.
 
 **Örnek**
 
-Aşağıdaki örnek, bir kalın yazı tipi ekleyerek ve özelliğin özelliğinin yazı tipi boyutunu ölçeklendirerek metin alanını biçimlendirir `title` . Bu örnek ayrıca `subtitle` , ölçeklenmiş bir yazı tipi boyutu ve kırmızı renkli olacak şekilde bir yeni satır üzerinde özelliğin özelliğini de ekler.
+Aşağıdaki örnek, bir kalın yazı tipi ekleyerek ve özelliğin özelliğinin yazı tipi boyutunu ölçeklendirerek metin alanını biçimlendirir `title` . Bu örnek ayrıca `subTitle` , ölçeklenmiş bir yazı tipi boyutuyla bir yeni satır üzerinde özelliğin özelliğini de ekler.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -766,11 +753,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             '\n', {},   //Add a new line without any formatting.
 
-            //Scale the font size down of the subtitle property. 
-            ['get', 'subtitle'],
+            //Scale the font size down of the subTitle property. 
+            ['get', 'subTitle'],
             { 
-                'font-scale': 0.75, 
-                'text-color': 'red' 
+                'font-scale': 0.75
             }
         ]
     }
@@ -817,7 +803,7 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
         textField: [
             'number-format', 
             ['get', 'revenue'], 
-            { ‘currency': 'USD' }
+            { 'currency': 'USD' }
         ],
 
         offset: [0, 0.75]
@@ -885,7 +871,7 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
         ['zoom'],
         
         //For zoom level 1 set the radius to 2 pixels.
-        10, 2,
+        1, 2,
 
         //Between zoom level 1 and 19, exponentially scale the radius from 2 pixels to 2 * Math.pow(2, 19 - 1) pixels (524,288 pixels).
         19, 2 * Math.pow(2, 19 - 1)

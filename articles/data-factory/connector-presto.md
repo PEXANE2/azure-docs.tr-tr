@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory kullanarak Presto 'dan veri kopyalama (Önizleme)
+title: Azure Data Factory kullanarak verileri Presto 'dan kopyalama
 description: Azure Data Factory bir işlem hattındaki kopyalama etkinliğini kullanarak, Presto 'dan desteklenen havuz veri depolarına veri kopyalamayı öğrenin.
 services: data-factory
 documentationcenter: ''
@@ -9,22 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 12/18/2020
 ms.author: jingwang
-ms.openlocfilehash: 15f4133b03c1fe77548425500445937e86ed5a8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af05983432c0f76a88ff82a3638d86a971ef77f5
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372510"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680699"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory kullanarak Presto 'dan veri kopyalama (Önizleme)
+# <a name="copy-data-from-presto-using-azure-data-factory"></a>Azure Data Factory kullanarak verileri Presto 'dan kopyalama
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede, verileri Presto 'dan kopyalamak için Azure Data Factory kopyalama etkinliğinin nasıl kullanılacağı özetlenmektedir. Kopyalama etkinliğine genel bir bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesinde oluşturulur.
-
-> [!IMPORTANT]
-> Bu bağlayıcı Şu anda önizleme aşamasındadır. Deneyebilir ve geri bildirimde bulunun. Çözümünüzde bir önizleme bağlayıcısı bağımlılığı olmasını istiyorsanız lütfen [Azure desteğine](https://azure.microsoft.com/support/) başvurun.
 
 ## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
@@ -49,20 +46,20 @@ Aşağıdaki özellikler, Presto Linked Service için desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Type özelliği şu şekilde ayarlanmalıdır: **Presto** | Evet |
-| konak | Presto Server 'ın IP adresi veya ana bilgisayar adı. (örn. 192.168.222.160)  | Evet |
-| serverVersion | Presto Server sürümü. (örn. 0,148-t)  | Evet |
-| kataloglarını | Sunucuya yönelik tüm istekler için Katalog bağlamı.  | Evet |
-| port | Presto Server 'ın istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 8080 ' dir.  | Hayır |
-| authenticationType | Presto sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **LDAP** | Evet |
-| username | Presto sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | Hayır |
-| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Hayır |
-| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | Hayır |
-| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | Hayır |
-| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | Hayır |
-| Saat dilimi | Bağlantı tarafından kullanılan yerel saat dilimi. Bu seçenek için geçerli değerler, ıANA saat dilimi veritabanında belirtilmiştir. Varsayılan değer sistem saati bölgesidir.  | Hayır |
+| tür | Type özelliği şu şekilde ayarlanmalıdır: **Presto** | Yes |
+| konak | Presto Server 'ın IP adresi veya ana bilgisayar adı. (örn. 192.168.222.160)  | Yes |
+| serverVersion | Presto Server sürümü. (örn. 0,148-t)  | Yes |
+| kataloglarını | Sunucuya yönelik tüm istekler için Katalog bağlamı.  | Yes |
+| port | Presto Server 'ın istemci bağlantılarını dinlemek için kullandığı TCP bağlantı noktası. Varsayılan değer 8080 ' dir.  | No |
+| authenticationType | Presto sunucusuna bağlanmak için kullanılan kimlik doğrulama mekanizması. <br/>İzin verilen değerler: **anonim**, **LDAP** | Yes |
+| username | Presto sunucusuna bağlanmak için kullanılan Kullanıcı adı.  | No |
+| password | Kullanıcı adına karşılık gelen parola. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | No |
+| enableSsl | Sunucu bağlantılarının TLS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer false'tur.  | No |
+| trustedCertPath | TLS üzerinden bağlanılırken sunucuyu doğrulamak için güvenilir CA sertifikaları içeren. ped dosyasının tam yolu. Bu özellik yalnızca, şirket içinde barındırılan IR 'de TLS kullanılırken ayarlanabilir. Varsayılan değer, IR ile birlikte yüklenen CAcert. Pez dosyasıdır.  | No |
+| useSystemTrustStore | Sistem güven deposundan veya belirtilen ped dosyasından bir CA sertifikası kullanılıp kullanılmayacağını belirtir. Varsayılan değer false'tur.  | No |
+| Allowwhostnamecnuyuşmazlığını | TLS üzerinden bağlanılırken, CA tarafından verilen bir TLS/SSL sertifika adının, sunucunun ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer false'tur.  | No |
+| allowSelfSignedServerCert | Sunucudan kendinden imzalı sertifikalara izin verilip verilmeyeceğini belirtir. Varsayılan değer false'tur.  | No |
+| Saat dilimi | Bağlantı tarafından kullanılan yerel saat dilimi. Bu seçenek için geçerli değerler, ıANA saat dilimi veritabanında belirtilmiştir. Varsayılan değer sistem saati bölgesidir.  | No |
 
 **Örnek:**
 
@@ -92,13 +89,13 @@ Aşağıdaki özellikler, Presto Linked Service için desteklenir:
 
 Veri kümelerini tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi için bkz. [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölüm, Presto DataSet tarafından desteklenen özelliklerin bir listesini sağlar.
 
-Verileri Presto 'dan kopyalamak için DataSet 'in Type özelliğini **Prestoobject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
+Verileri Presto 'dan kopyalamak için DataSet 'in Type özelliğini **Prestoobject** olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | DataSet 'in Type özelliği: **Prestoobject** olarak ayarlanmalıdır | Evet |
+| tür | DataSet 'in Type özelliği: **Prestoobject** olarak ayarlanmalıdır | Yes |
 | schema | Şemanın adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
-| tablo | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
+| table | Tablonun adı. |Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse)  |
 | tableName | Şemanın bulunduğu tablonun adı. Bu özellik geriye dönük uyumluluk için desteklenir. `schema` `table` Yeni iş yükü için ve kullanın. | Hayır (etkinlik kaynağı içinde "sorgu" belirtilmişse) |
 
 **Örnek**
@@ -124,11 +121,11 @@ Etkinlikleri tanımlamaya yönelik bölümlerin ve özelliklerin tam listesi iç
 
 ### <a name="presto-as-source"></a>Kaynak olarak Presto
 
-Verileri Presto 'dan kopyalamak için kopyalama etkinliğindeki kaynak türünü **Prestosource**olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
+Verileri Presto 'dan kopyalamak için kopyalama etkinliğindeki kaynak türünü **Prestosource** olarak ayarlayın. Aşağıdaki özellikler, etkinlik **kaynağını** kopyalama bölümünde desteklenir:
 
 | Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| tür | Kopyalama etkinliği kaynağının Type özelliği: **Prestosource** olarak ayarlanmalıdır | Evet |
+| tür | Kopyalama etkinliği kaynağının Type özelliği: **Prestosource** olarak ayarlanmalıdır | Yes |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM MyTable"`. | Hayır (veri kümesinde "tableName" belirtilmişse) |
 
 **Örnek:**

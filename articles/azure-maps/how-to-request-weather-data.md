@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: fe1b337fe3e1dcf499f9a7428f66543108d0c050
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906021"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680411"
 ---
 # <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Azure haritalar Hava durumu Hizmetleri 'ni (Önizleme) kullanarak gerçek zamanlı ve tahmini hava durumu verileri isteyin 
 
@@ -34,11 +34,11 @@ Bu makalede şunları öğreneceksiniz:
 
 Bu videoda, Azure Maps Hava durumu hizmetlerine REST çağrıları yapmak için örnekler sağlanmaktadır.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player" width="960" height="540" allowFullScreen frameBorder="0" title="Geliştiriciler için Azure Maps Hava durumu Hizmetleri-Microsoft Channel 9 videosu"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps-Weather-services-for-developers/player?format=ny]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
 2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account). Azure haritalar 'da kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure haritalar 'da kimlik doğrulamasını yönetme](./how-to-manage-authentication.md).

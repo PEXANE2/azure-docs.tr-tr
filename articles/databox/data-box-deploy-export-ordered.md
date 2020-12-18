@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003346"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680797"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma (Önizleme)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Öğretici: Azure Data Box için dışarı aktarma siparişi oluşturma
 
 Azure Data Box, verileri Azure 'dan konumunuza taşımanıza olanak sağlayan bir karma çözümdür. Bu öğreticide, Azure Data Box için dışarı aktarma siparişi oluşturma işlemi açıklanmaktadır. Bir dışarı aktarma siparişi oluşturmanın temel nedeni, şirket içi depolamanın tehlikeye alınması ve bir yedeklemenin geri yüklenmesi için olağanüstü durum kurtarma içindir.
 
@@ -28,9 +28,7 @@ Bu öğreticide şunları öğrenirsiniz:
 > * Dışarı aktarma sırasını izleyin
 > * Dışarı aktarma sırasını iptal et
 
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
-
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Cihazı sipariş etmeden önce Data Box hizmeti ve cihazı için aşağıdaki yapılandırma önkoşullarını doldurun.
 
@@ -332,7 +330,7 @@ XML dosyalarına göre bazı önemli noktaları:
 
 Aşağıdaki tabloda geçerli blob yollarının örnekleri gösterilmektedir:
 
-   | Seçici | Blob yolu | Description |
+   | Seçici | Blob yolu | Açıklama |
    | --- | --- | --- |
    | İle başlar |/ |Depolama hesabındaki tüm Blobları dışa aktarır |
    | İle başlar |/$root/ |Kök kapsayıcıdaki tüm Blobları dışa aktarır |

@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: bd8e6d4175c57bd31c3fd83bf6f9669d2b65ffb2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64bb5e94c4b18626d1f85d7e61252aae74202eb9
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91660861"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680615"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-nfs-preview"></a>Öğretici: NFS aracılığıyla Azure Data Box veri kopyalama (Önizleme)
+# <a name="tutorial-copy-data-from-azure-data-box-via-nfs"></a>Öğretici: NFS aracılığıyla Azure Data Box verileri kopyalama
 
 Bu öğreticide, Data Box yerel Web kullanıcı arabiriminden NFS aracılığıyla şirket içi veri sunucusuna nasıl bağlanabileceği ve verilerin nasıl kopyalanacağı açıklanmaktadır. Data Box veriler Azure Storage hesabınızdan içe aktarılabilir.
 
@@ -26,8 +26,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box’tan veri kopyalama
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -79,11 +77,11 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 
 [!INCLUDE [data-box-export-review-logs](../../includes/data-box-export-review-logs.md)]
 
- Artık veri kopyalamaya başlayabilirsiniz. Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux için kullanabileceğiniz bazı alternatifler: [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) veya [Ultracopier](https://ultracopier.first-world.info/).  
+ Artık veri kopyalamaya başlayabilirsiniz. Linux ana bilgisayar kullanıyorsanız Robocopy ile benzer bir kopyalama yardımcı programı kullanabilirsiniz. Linux 'ta bulunan alternatiflere bazıları [`rsync`](https://rsync.samba.org/) , [FreeFileSync](https://www.freefilesync.org/), [uyum](https://www.cis.upenn.edu/~bcpierce/unison/)veya [Ultracopier](https://ultracopier.first-world.info/).  
 
 `cp` komutu, dizin kopyalamak için en iyi seçeneklerden biridir. Kullanımı hakkında daha fazla bilgi için [cp man sayfalarına](http://man7.org/linux/man-pages/man1/cp.1.html) gidin.
 
-Çok iş parçacığına sahip olan bir kopyalama işlemi için rsync seçeneğini kullanıyorsanız şu yönergeleri izleyin:
+`rsync`Çoklu iş parçacıklı bir kopya için seçeneğini kullanıyorsanız, aşağıdaki yönergeleri izleyin:
 
 * Linux istemcinizde kullanılan dosya sistemine bağlı olarak **CIFS Utils** veya **NFS Utils** paketini yükleyebilirsiniz.
 
@@ -91,7 +89,7 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 
     `sudo apt-get install nfs-utils`
 
-* **Rsync** ve **Parallel** (Linux dağıtılmış sürümüne bağlı olarak değişir) ' i yükler.
+* Install `rsync` ve **Parallel** (Linux dağıtılmış sürümüne bağlı olarak değişir).
 
     `sudo apt-get install rsync`
    

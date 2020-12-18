@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: f47ee36c0e7806afc10f8f0907825378c2d24410
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: c801a276f3a116f00b34d750ca8bfec7e56d377b
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505554"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680739"
 ---
 # <a name="calling-client-library-overview"></a>Arama istemci kitaplığına genel bakış
 
@@ -58,13 +58,13 @@ Aşağıdaki liste, şu anda istemci kitaplıklarını çağıran Azure Iletişi
 |                   | Bir grup çağrısından PSTN katılımcısı olarak dışarıyı arama                                                                    | ✔️   | ✔️            | ✔️   
 | Genel           | Mikrofon, konuşmacı ve kameranızı bir ses sınama hizmeti (8 ' i çağırarak kullanılabilir: echo123) ile test edin                   |  ✔️  | ✔️            | ✔️   
 
-## <a name="calling-client-library-browser-support"></a>İstemci kitaplığı tarayıcı desteğini çağırma
+## <a name="javascript-calling-client-library-support-by-os-and-browser"></a>İşletim sistemi ve tarayıcı tarafından istemci kitaplığı desteğini çağıran JavaScript
 
 Aşağıdaki tablo, şu anda kullanılabilir olan desteklenen tarayıcı ve sürümlerin kümesini temsil eder.
 
-|                                  | Windows          | Mac OS          | Ubuntu | Linux  | Android | iOS    |
-| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ |
-| **İstemci kitaplığı çağrılıyor** | Chrome *, yeni kenar | Chrome *, Safari** | Mu  | Mu | Mu | Safari * * |
+|                                  | Windows          | Mac OS          | Ubuntu | Linux  | Android | iOS    | iPad işletim sistemi|
+| -------------------------------- | ---------------- | -------------- | ------- | ------ | ------ | ------ | -------|
+| **İstemci kitaplığı çağrılıyor** | Chrome *, yeni kenar | Chrome *, Safari** | Mu  | Mu | Mu | Safari * * | Safari * * |
 
 
 * Önceki iki sürüme ek olarak Chrome 'un en son sürümünün desteklendiğini unutmayın.<br/>

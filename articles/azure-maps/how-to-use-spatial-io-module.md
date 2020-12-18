@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: e64df21b31d686b72b210d2c62956745350891f5
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895401"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680687"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure haritalar uzamsal GÇ modülünü kullanma
 
@@ -30,15 +30,14 @@ Bu kılavuzda, bir Web uygulamasında uzamsal GÇ modülünü tümleştirme ve k
 
 Bu videoda, Azure Maps web SDK 'sında uzamsal GÇ modülüne ilişkin bir genel bakış sunulmaktadır.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="Uzamsal verileri Azure Maps ile kolayca tümleştirin-Microsoft Channel 9 videosu"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > Yalnızca güvendiğiniz bir kaynaktan gelen veri ve Hizmetleri, özellikle de başka bir etki alanından başvuru yapıyorsanız kullanın. Uzamsal GÇ modülü, riski en aza indirmek için gereken adımları ele alır, ancak en güvenli yaklaşım, uygulamanıza yönelik herhangi bir desteklenmeyen veriye izin vermez. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Uzamsal GÇ modülünü kullanabilmeniz için önce [bir Azure haritalar hesabı](./quick-demo-map-app.md#create-an-azure-maps-account) oluşturmanız ve [hesabınız için birincil abonelik anahtarını almanız](./quick-demo-map-app.md#get-the-primary-key-for-your-account)gerekir.
 

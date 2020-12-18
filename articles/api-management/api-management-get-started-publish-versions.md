@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/30/2020
 ms.author: apimpm
-ms.openlocfilehash: e6afa26c65f097683a5b471dc34621cca38c01e6
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 4a107b4cc0dbf0b0845211ca64691fb0e792a47c
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377434"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679096"
 ---
 # <a name="tutorial-publish-multiple-versions-of-your-api"></a>Öğretici: API 'nizin birden fazla sürümünü yayımlama 
 
@@ -41,14 +41,14 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 1. [Azure portal](https://portal.azure.com)API Management örneğinize gidin.
 1. **API’ler** seçeneğini belirleyin.
 1. API listesinden **Tanıtım Konferans API’sini** seçin. 
-1. **Tanıtım Konferansı API 'sinin** yanındaki bağlam menüsünü ( **...** ) seçin.
-1. **Sürüm Ekle** ' yi seçin.
+1. **Tanıtım Konferansı API 'sinin** yanındaki bağlam menüsünü (**...**) seçin.
+1. **Sürüm Ekle**' yi seçin.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/add-version-menu.png" alt-text="API bağlam menüsü-sürüm Ekle":::
 
 
 > [!TIP]
-> Sürümler, yeni bir API oluşturduğunuzda da etkinleştirilebilir. **API Ekle** ekranında, **Bu API 'yi, sürüm?** ' i seçin.
+> Sürümler, yeni bir API oluşturduğunuzda da etkinleştirilebilir. **API Ekle** ekranında, **Bu API 'yi, sürüm?**' i seçin.
 
 ## <a name="choose-a-versioning-scheme"></a>Sürüm oluşturma düzeni seçme
 
@@ -82,9 +82,9 @@ Sürüm oluşturulduktan sonra API listesinde **demo Conference API** altında g
 
 Örneğin, sürümü **sınırsız** ürüne eklemek için:
 1. Azure portal API Management örneğinize gidin.
-1. **Ürünleri**  >  **sınırsız**  >  **API**  >  **+ Ekle** ' yi seçin.
-1. **Tanıtım Konferansı API 'si** , sürüm **v1** ' yi seçin.
-1. **Seç** ’e tıklayın.
+1. **Ürünleri**  >  **sınırsız**  >  **API**  >  **+ Ekle**' yi seçin.
+1. **Tanıtım Konferansı API 'si**, sürüm **v1**' yi seçin.
+1. **Seç**’e tıklayın.
 
 :::image type="content" source="media/api-management-getstarted-publish-versions/08-add-multiple-versions-03-add-version-product.png" alt-text="Ürüne sürüm Ekle":::
 
@@ -92,10 +92,10 @@ Sürüm oluşturulduktan sonra API listesinde **demo Conference API** altında g
 
 [Geliştirici Portalını](api-management-howto-developer-portal-customize.md)DENEDIYSENIZ, API sürümlerini burada görebilirsiniz.
 
-1. Üstteki menüden **Geliştirici Portalı** ’nı seçin.
+1. Üstteki menüden **Geliştirici Portalı**’nı seçin.
 2. **API'ler** ve ardından **Tanıtım Konferans API’si** öğesini seçin.
 3. API adının yanında birden fazla sürümü olan bir açılan menü görmeniz gerekir.
-4. **v1** ’i seçin.
+4. **v1**’i seçin.
 5. Listedeki ilk işlemin **İstek URL'sine** dikkat edin. Bu, API URL’si yolunun **v1** içerdiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -111,4 +111,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 Sonraki öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
-> [Geliştirici portalı sayfalarının stilini özelleştirme](api-management-customize-styles.md)
+> [Geliştirici portalı sayfalarının stilini özelleştirme](api-management-howto-developer-portal-customize.md)

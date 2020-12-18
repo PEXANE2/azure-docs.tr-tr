@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0418c11d84fb82ac4a4b181289f032407a29f92e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0b2346ae4777b31ce2e5c396fb03084d38b2008f
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500674"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97678970"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows için Key Vault sanal makine uzantısı
 
@@ -88,7 +88,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Ad | Değer/örnek | Veri Türü |
+| Name | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
@@ -98,7 +98,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı, ko
 | certificateStoreName | MY | string |
 | Linkonyenilemeye | yanlış | boolean |
 | certificateStoreLocation  | LocalMachine veya CurrentUser (büyük/küçük harfe duyarlı) | string |
-| requiredInitialSync | true | boolean |
+| Requireınitialsync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate","https://myvault.vault.azure.net/secrets/mycertificate2"] | dize dizisi
 | Msıendpoint | http://169.254.169.254/metadata/identity | string |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
@@ -222,7 +222,7 @@ Lütfen aşağıdaki kısıtlamalara/gereksinimlere dikkat edin:
 
 ## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
-### <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+### <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 * Ayarlayabilmeniz için observedCertificates sayısında bir sınır var mı?
   Hayır, Key Vault VM uzantısının observedCertificates sayısı üzerinde sınırı yok.

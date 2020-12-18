@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 138160eb1515d1443302dbc23bbafa482e2eb905
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904559"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680749"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure haritalar topluluk-açık kaynaklı projeler
 
@@ -24,7 +24,7 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 **Botlar**
 
-| Proje Adı | Description |
+| Proje Adı | Açıklama |
 |-|-|
 | [Bot Framework-Ilgilendiğiniz beceri noktası](https://github.com/microsoft/botframework-solutions/tree/488093ac2fddf16096171f6a926315aa45e199e7/skills/csharp/pointofinterestskill) | Ilgilendiğiniz beceri noktası, Azure bot hizmeti ve bot Framework ile Azure haritalar 'ı kullanarak sanal bir yardımcı ile ilgili çok sayıda özellik sağlar. |
 | [BotBuilder konumu](https://github.com/Microsoft/BotBuilder-Location) | Bing Haritalar REST Hizmetleri tarafından desteklenen Microsoft bot Framework için açık kaynaklı konum seçici denetimi. |
@@ -35,31 +35,39 @@ Aşağıda, en popüler Azure haritaları açık kaynaklı projeler ve örnekler
 
 Aşağıda, Azure Maps web SDK 'sının yeteneklerini genişleten açık kaynaklı projelerin bir listesi verilmiştir.
 
-| Proje Adı | Description |
+| Proje Adı | Açıklama |
 |-|-|
 | [Azure haritalar animasyon modülü](https://github.com/Azure-Samples/azure-maps-animations) | Azure Haritalar Web SDK 'Sı ile kullanmak için zengin bir animasyon kitaplığı. |
+| [Azure haritalar verileri görünüm denetim modülüne getirir](https://github.com/Azure-Samples/azure-maps-bring-data-into-view-control) | Bir Azure Maps web SDK modülü, haritaya yüklenen tüm verileri görünüme getirmeyi kolaylaştıran bir denetim sağlar. |
 | [Azure Maps coğrafi konum denetim modülü](https://github.com/Azure-Samples/azure-maps-geolocation-control) | Kullanıcının haritada konumunu bulmak için tarayıcının coğrafi konum API 'sini kullanan bir denetim sağlayan bir Azure Maps web SDK modülü. |
 | [Azure haritalar gridded veri kaynağı modülü](https://github.com/Azure-Samples/azure-maps-gridded-data-source) | Bir kılavuz alanının hücrelerine işaret eden bir veri kaynağı sağlayan Azure Maps web SDK için bir modül. Bu işlem, tesseller, veri atma veya onaltılık bölmeler gibi birçok adla da bilinir.  |
 | [Azure haritalar tam ekran denetim modülü](https://github.com/Azure-Samples/azure-maps-fullscreen-control) | Haritayı tam ekranda göstermek için bir denetim sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar HTML Işaret katmanı modülü](https://github.com/Azure-Samples/azure-maps-html-marker-layer) | Bir veri kaynağından gelen nokta verilerini haritada HTML öğeleri olarak işleyen bir katman sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar görüntüsü Dışarı Aktarıcı modülü](https://github.com/Azure-Samples/azure-maps-image-exporter) | Haritanın ekran görüntülerini üreten Azure Maps web SDK için bir modül. |
+| [Azure Maps genel bakış eşleme Modülü](https://github.com/Azure-Samples/azure-maps-overview-map) | Ana haritanın odaklandığı alanın genel bakış haritasını görüntüleyen bir denetim sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar ölçek çubuğu denetim modülü](https://github.com/Azure-Samples/azure-maps-scale-bar-control) | Haritanın merkezinde piksel çözünürlüğüne göre bir ölçek çubuğu görüntüleyen bir denetim sağlayan bir Azure Maps web SDK modülü. |
 | [Azure haritalar seçim denetimi modülü](https://github.com/Azure-Samples/azure-maps-selection-control) | Çizim araçlarını kullanarak veya bir yol aralığı poligonu isteyerek veri kaynağındaki verileri seçmeye yönelik denetimler sağlayan bir Azure Maps web SDK modülü. |
+| [Azure haritalar Hizmetleri Kullanıcı arabirimi modülü](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure haritalar REST hizmetlerini çevrelediği Web UI denetimleri kümesi. |
+| [Azure Maps Spider kümeleri modülü](https://github.com/Azure-Samples/azure-maps-spider-clusters) | Kümeleri sarmal bir Spider düzenine genişleten haritaya görselleştirme ekleyen Azure Maps web SDK için bir modül. |
+| [Azure Maps Spyglass denetim modülü](https://github.com/Azure-Samples/azure-maps-spyglass-control) | Haritada bir Spyglass içinde veri kümesi görüntüleyen bir pencere sağlayan bir Azure Maps web SDK modülü.  |
 | [Azure haritalar çekme eşleme Modülü](https://github.com/Azure-Samples/azure-maps-swipe-map) | İki çakışan harita arasında kaydırmaya izin veren, iki çakışan veri kümesini karşılaştırmak için ideal olan Azure Maps web SDK modülü. |
 | [Azure haritalar eşitleme eşleme Modülü](https://github.com/Azure-Samples/azure-maps-sync-maps) | İki veya daha fazla harita kameralarını eşitleyen bir Azure Maps web SDK modülü. |
-| [Azure haritalar Hizmetleri Kullanıcı arabirimi modülü](https://github.com/Azure-Samples/azure-maps-services-ui) | Azure haritalar REST hizmetlerini çevrelediği Web UI denetimleri kümesi. |
 
 **Örnekler**
 
-| Proje Adı | Description |
+| Proje Adı | Açıklama |
 |-|-|
 | [Azure haritalar kod örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Web tabanlı uygulamalarda Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
 | [Azure Maps gov bulut kodu örnekleri](https://github.com/Azure-Samples/AzureMapsCodeSamples) | Azure Kamu Bulutu aracılığıyla Azure Maps kullanmaya yönelik kod örnekleri koleksiyonu. |
 | [Azure haritalar & Azure Active Directory örnekleri](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples) | Azure haritalar ile Azure Active Directory kullanmayı gösteren örnekler koleksiyonu. | 
+| [LiveMaps](https://github.com/Azure-Samples/LiveMaps) | Azure haritalar Oluşturucu kullanılarak Azure haritalar 'ın üzerinde IoT verilerinin görselleştirilmesini sağlayan örnek uygulama |
 | [Azure haritalar Jupyter Notebook örnekleri](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook) | Azure haritalar REST hizmetlerini kullanarak Python örnekleri koleksiyonu. |
 | [Azure Maps .NET UWP IoT uzaktan denetimi](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Bu, Azure Maps ve IoT Hub hizmetlerini kullanarak uzaktan denetlenen bir haritanın nasıl oluşturulacağını gösteren örnek bir uygulamadır. |
 | [Azure Haritalar'ı kullanarak IoT uzamsal analiz gerçekleştirme](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Boşluk ve saat içinde oluşan ilgili olayları izlemek ve yakalamak, yaygın bir IoT senaryosudur. |
 
 **Araçlar ve kaynaklar**
 
-| Proje Adı | Description |
+| Proje Adı | Açıklama |
 |-|-|
 | [Azure haritalar belgeleri](https://github.com/MicrosoftDocs/azure-docs/tree/master/articles/azure-maps) | Tüm Azure konum tabanlı hizmetler belgelerinin kaynağı. |
 | [Azure haritalar Oluşturucu (Önizleme) araçları](https://github.com/Azure-Samples/AzureMapsCreator) | Azure haritalar Oluşturucu (Önizleme) araçları için Python araçları. |
