@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 6259de345b534bfb51ef6ba1a9c3895800546caf
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605505"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683191"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Yalnızca durum bilgisi olan düğüm türleriyle bir Azure Service Fabric kümesi dağıtma (Önizleme)
 Service Fabric düğüm türleri, bazı zaman bir noktada, durum bilgisi olmayan hizmetlerin düğümlere yerleştirilebileceği bir süre ile gelir. Durum bilgisiz düğüm türleri bir düğüm türü için bu varsayımını daha hızlı hale getirme, böylece düğüm türünün daha hızlı genişleme işlemleri gibi diğer özellikleri kullanmasına izin vermek, bu sayede düğüm türünün daha hızlı genişleme işlemleri, en az sayıda düğüm için destek ve tek bir sanal makine ölçek kümesinde 100 ' den fazla düğüme
@@ -44,7 +44,7 @@ Bir küme kaynağında durum bilgisiz olarak bir veya daha fazla düğüm türü
         },
         "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
         "isPrimary": true,
-        "isStateles": false,
+        "isStateless": false,
         "vmInstanceCount": "[parameters('nt0InstanceCount')]"
     },
     {
@@ -71,9 +71,9 @@ Bir küme kaynağında durum bilgisiz olarak bir veya daha fazla düğüm türü
 ## <a name="configuring-virtual-machine-scale-set-for-stateless-node-types"></a>Durum bilgisiz düğüm türleri için sanal makine ölçek kümesini yapılandırma
 Durum bilgisiz düğüm türlerini etkinleştirmek için, temel alınan sanal makine ölçek kümesi kaynağını aşağıdaki şekilde yapılandırmalısınız:
 
-* 100 ' den fazla VM 'ye ölçeklendirme gereksinimine bağlı olarak doğru/yanlış olarak ayarlanması gereken  **Singleplacementgroup** özelliğinin değeri.
-* Sıralı olarak ayarlanması gereken ölçek kümesinin **upgrademode** 'ı.
-* Yükseltme modu, uygulama durumu uzantısının veya sistem durumu araştırmalarını gerektirir. Aşağıda önerilen durum bilgisiz düğüm türleri için varsayılan yapılandırmayla sistem durumu araştırmasını yapılandırın. Uygulamalar NodeType öğesine dağıtıldıktan sonra, sistem durumu araştırması/sistem durumu uzantısı bağlantı noktaları, uygulama durumunu izlemek için değiştirilebilir.
+* 100 ' den fazla VM 'ye ölçeklendirmeniz gerekiyorsa, **false** olarak ayarlanması gereken **Singleplacementgroup** özelliği.
+* Ölçek kümesinin **Upgradepolicy** ' nin, **sıralı olarak ayarlanması** gereken **modu** .
+* Yükseltme modu, uygulama durumu uzantısının veya sistem durumu araştırmalarını gerektirir. Aşağıda önerilen durum bilgisiz düğüm türleri için varsayılan yapılandırmayla sistem durumu araştırmasını yapılandırın. Uygulamalar düğüm türüne dağıtıldıktan sonra, sistem durumu araştırması/sistem durumu uzantısı bağlantı noktaları, uygulama durumunu izlemek için değiştirilebilir.
 
 ```json
 {

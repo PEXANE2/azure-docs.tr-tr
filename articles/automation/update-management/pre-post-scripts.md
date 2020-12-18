@@ -3,14 +3,14 @@ title: Azure 'da Güncelleştirme Yönetimi dağıtımınızda ön betikleri ve 
 description: Bu makalede, güncelleştirme dağıtımları için betiklerin ve son betiklerin nasıl yapılandırılacağı ve yönetileceği açıklanmaktadır.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: bb2a272829374cfeba5c334ff87268c4928885f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 4c37fe107d9256461e5aa632f859ae02c5dc42f5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92222934"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683408"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Ön betikleri ve son betikleri yönetme
 
@@ -102,7 +102,7 @@ Bir güncelleştirme dağıtımında bir ön betik veya bir komut dosyası kulla
 
 Kullanmak istediğiniz betiği seçin. Bu örnekte, **updatemanagement-TurnOnVms** runbook 'unu kullanırız. Runbook 'u seçtiğinizde, **betiği Yapılandır** sayfası açılır. **Ön betik**' i seçin ve ardından **Tamam**' ı seçin.
 
-**Updatemanagement-TurnOffVms** betiği için bu işlemi tekrarlayın. Ancak **komut dosyası türünü**seçtiğinizde, **betiği gönder**' i seçin.
+**Updatemanagement-TurnOffVms** betiği için bu işlemi tekrarlayın. Ancak **komut dosyası türünü** seçtiğinizde, **betiği gönder**' i seçin.
 
 **Seçili öğeler** bölümü artık betiklerinizin seçili olduğunu gösteriyor. Birisi bir ön betiktir ve diğeri bir komut dosyası olur:
 
@@ -146,7 +146,7 @@ foreach($summary in $finalStatus)
 * Farklı Çalıştır hesabı
 * Çalıştırmak istediğiniz runbook
 
-Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0) cmdlet 'Ini kullanarak Azure VM 'larınızla etkileşim kurun. Bunun nasıl yapılacağı hakkında bir örnek için bkz. runbook örneği [güncelleştirme yönetimi – Betiği Çalıştır komutuyla Çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc).
+Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) cmdlet 'Ini kullanarak Azure VM 'larınızla etkileşim kurun. Bunun nasıl yapılacağı hakkında bir örnek için bkz. runbook örneği [güncelleştirme yönetimi – Betiği Çalıştır komutuyla Çalıştır](https://github.com/azureautomation/update-management-run-script-with-run-command).
 
 ### <a name="interact-with-non-azure-machines"></a>Azure olmayan makinelerle etkileşim kurma
 
@@ -157,7 +157,7 @@ Azure makinelerle etkileşim kurmak için [Invoke-AzVMRunCommand](/powershell/mo
 * Yerel olarak çalıştırmak istediğiniz runbook
 * Üst runbook
 
-Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.7.0) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn`Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44).
+Azure olmayan makinelerle etkileşim kurmak için Azure bağlamında bir üst runbook çalıştırılır. Bu runbook, [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) cmdlet 'i ile bir alt runbook 'u çağırır. `RunOn`Parametresini belirtmeniz ve betiğin üzerinde çalışacağı karma Runbook Worker adını sağlamanız gerekir. Bkz. runbook örneği [güncelleştirme yönetimi – betiği yerel olarak çalıştır](https://github.com/azureautomation/update-management-run-script-locally).
 
 ## <a name="abort-patch-deployment"></a>Düzeltme Eki dağıtımını durdur
 
@@ -173,7 +173,7 @@ if (<My custom error logic>)
 
 ## <a name="samples"></a>Örnekler
 
-Ön betiklerin ve son betiklerin örnekleri, [betik Merkezi galerisinde](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B0%5D.Text=Windows%20Azure&f%5B1%5D.Type=SubCategory&f%5B1%5D.Value=WindowsAzure_automation&f%5B1%5D.Text=Automation&f%5B2%5D.Type=SearchText&f%5B2%5D.Value=update%20management&f%5B3%5D.Type=Tag&f%5B3%5D.Value=Patching&f%5B3%5D.Text=Patching&f%5B4%5D.Type=ProgrammingLanguage&f%5B4%5D.Value=PowerShell&f%5B4%5D.Text=PowerShell) ve [PowerShell Galerisi](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)bulunabilir ya da Azure Portal aracılığıyla içeri aktarabilirsiniz. Bunu yapmak için, Otomasyon hesabınızda, **Işlem Otomasyonu**altında **runbook 'lar Galerisi**' ni seçin. Filtre için **güncelleştirme yönetimi** kullanın.
+Ön betiklerin ve son betiklerin örnekleri [Azure Automation GitHub kuruluşunda](https://github.com/azureautomation) ve [PowerShell Galerisi](https://www.powershellgallery.com/packages?q=Tags%3A%22UpdateManagement%22+Tags%3A%22Automation%22)bulunabilir ya da Azure Portal aracılığıyla içeri aktarabilirsiniz. Bunu yapmak için, Otomasyon hesabınızda, **Işlem Otomasyonu** altında **runbook 'lar Galerisi**' ni seçin. Filtre için **güncelleştirme yönetimi** kullanın.
 
 ![Galeri listesi](./media/pre-post-scripts/runbook-gallery.png)
 
@@ -242,8 +242,8 @@ $variable = Get-AutomationVariable -Name $runId
 ```
 
 > [!NOTE]
-> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](../automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
+> Grafik olmayan PowerShell runbook 'ları için `Add-AzAccount` ve `Add-AzureRMAccount` [Connect-azaccount](/powershell/module/az.accounts/connect-azaccount)için diğer adlar. Bu cmdlet 'leri kullanabilir veya Otomasyon hesabınızdaki [modüllerinizi](../automation-update-azure-modules.md) en son sürümlere güncelleştirebilirsiniz. Yeni bir Otomasyon hesabı oluşturmuş olsanız bile modüllerinizi güncelleştirmeniz gerekebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Güncelleştirme yönetimi hakkında daha fazla bilgi için bkz. [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](manage-updates-for-vm.md).
+Güncelleştirme yönetimi hakkında daha fazla bilgi için bkz. [VM 'niz için güncelleştirmeleri ve düzeltme eklerini yönetme](manage-updates-for-vm.md).

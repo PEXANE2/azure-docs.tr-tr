@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: 589f320f0099fdab829e9e707a86e3e77d51c21e
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 0b57629f5c21d933fc898258263199b5fc713fdb
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656300"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683354"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Metin Analizi içinde adlandırılmış varlık tanımayı kullanma
 
@@ -52,7 +52,7 @@ Adlandırılmış varlık tanıma v 3.1-Önizleme. 3, v 3.0 'ın algılama yeten
 * `domain=phi`Gizli durum bilgilerini () algılamak için isteğe bağlı bir parametre `PHI` .
 * Uç nokta kullanan [zaman uyumsuz işlem](text-analytics-how-to-call-api.md) `/analyze` .
 
-Daha fazla bilgi için aşağıdaki [varlık kategorileri](../named-entity-types.md) makalesine ve [istek uç noktaları](#request-endpoints) bölümüne bakın. 
+Daha fazla bilgi için aşağıdaki [varlık kategorileri](../named-entity-types.md) makalesine ve [istek uç noktaları](#request-endpoints) bölümüne bakın. Güvenilirlik puanları hakkında daha fazla bilgi için [metin analizi saydamlık notuna](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)bakın. 
 
 ## <a name="sending-a-rest-api-request"></a>REST API isteği gönderiliyor
 

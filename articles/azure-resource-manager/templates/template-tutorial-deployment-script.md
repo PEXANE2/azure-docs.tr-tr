@@ -8,15 +8,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/14/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7352bde887648918cbfd2a9ebeaae83cddefc61e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673287"
+ms.locfileid: "97683498"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Öğretici: otomatik olarak imzalanan sertifika oluşturmak için dağıtım betikleri kullanın
 
@@ -42,7 +42,7 @@ Bu makaleyi tamamlamak için gerekenler:
 
 * **Kaynak Yöneticisi Araçları uzantısıyla [Visual Studio Code](https://code.visualstudio.com/)**. Bkz. [hızlı başlangıç: VISUAL STUDIO Code ARM şablonları oluşturma](./quickstart-create-templates-use-visual-studio-code.md).
 
-* **Abonelik düzeyinde katkıda bulunan rolü ile Kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, dağıtım betikleri yürütmek için kullanılır. Bir tane oluşturmak için bkz. [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
+* **Kullanıcı tarafından atanan yönetilen kimlik**. Bu kimlik, betikte Azure 'a özgü eylemler gerçekleştirmek için kullanılır. Bir tane oluşturmak için bkz. [Kullanıcı tarafından atanan yönetilen kimlik](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
@@ -255,7 +255,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
     `deploymentScripts`Kaynak, Anahtar Kasası kaynağına ve rol atama kaynağına bağlıdır. Şu özelliklere sahiptir:
 
-    * `identity`: Dağıtım betiği, komut dosyalarını yürütmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır.
+    * `identity`: Dağıtım betiği, komut dosyasındaki işlemleri gerçekleştirmek için Kullanıcı tarafından atanan bir yönetilen kimlik kullanır.
     * `kind`: Betiğin türünü belirtin. Şu anda yalnızca PowerShell betikleri desteklenir.
     * `forceUpdateTag`: Betik kaynağı değiştirilmese de dağıtım betiğinin yürütülüp yürütülmeyeceğini belirleme. Geçerli zaman damgası veya bir GUID olabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](./deployment-script-template.md#run-script-more-than-once).
     * `azPowerShellVersion`: Kullanılacak Azure PowerShell modülü sürümünü belirtir. Dağıtım betiği Şu anda 2.7.0, 2.8.0 ve 3.0.0 sürümünü destekler.
@@ -324,7 +324,7 @@ Dağıtım betiği, anahtar kasasına bir sertifika ekler. Yönetilen kimliğe i
 
 ## <a name="debug-the-failed-script"></a>Başarısız komut dosyasında hata ayıkla
 
-1. [Azure portalında](https://portal.azure.com) oturum açın.
+1. [Azure Portal](https://portal.azure.com) oturum açın.
 1. Kaynak grubunu açın. **RG** eklenmiş olan proje adı. Kaynak grubunda iki ek kaynak görürsünüz. Bu kaynaklara *dağıtım betiği kaynakları* denir.
 
     ![Kaynak Yöneticisi şablonu dağıtım betiği kaynakları](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)

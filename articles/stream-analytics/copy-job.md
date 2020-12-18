@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/11/2019
-ms.openlocfilehash: ba63358347cf9722d2cafa35598b9b3b37f49dc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 67e28e8c5092f2b52a3a34053f81d8a00afb24ed
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129465"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683221"
 ---
 # <a name="copy-or-back-up-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri kopyalama veya yedekleme
 
@@ -21,7 +21,7 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 ## <a name="before-you-begin"></a>Başlamadan önce
 * Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
 
-* [Azure portalında](https://portal.azure.com/) oturum açın.
+* [Azure Portal](https://portal.azure.com/) oturum açın.
 
 * [Visual Studio için Visual Studio Code veya Azure Stream Analytics araçları](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension) [için Azure Stream Analytics uzantısını](quick-create-visual-studio-code.md#install-the-azure-stream-analytics-tools-extension) yükler.  
 
@@ -37,8 +37,6 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 
     Proje seçtiğiniz klasöre aktarılmışsa ve geçerli çalışma alanınıza eklemiş olursunuz.
 
-    ![Visual Studio Code ASA işini dışarı aktarma](./media/stream-analytics-manage-job/copy-backup-stream-analytics-jobs.png)
-
 3. Farklı bir ad kullanarak işi başka bir bölgeye veya yedeklemeye yayımlamak için, sorgu Düzenleyicisi 'nde (. asaql) **yayımlamak üzere aboneliklerinizden Seç** ' i seçin \* ve yönergeleri izleyin.
 
     ![Visual Studio Code Azure 'da yayımlayın](./media/quick-create-visual-studio-code/submit-job.png)
@@ -53,4 +51,3 @@ Visual Studio Code veya Visual Studio kullanarak dağıtılan Azure Stream Analy
 
 * [Hızlı başlangıç: Visual Studio Code kullanarak Stream Analytics işi oluşturma](quick-create-visual-studio-code.md)
 * [Hızlı başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma](stream-analytics-tools-visual-studio-cicd-vsts.md)

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045561"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682815"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Azure Stream Analytics işleri görüntülemek için Visual Studio 'Yu kullanma
 
@@ -32,7 +32,7 @@ Visual Studio 'dan Azure Stream Analytics işlerle etkileşim kurmak için iş g
 
 ### <a name="open-the-job-view"></a>İş görünümünü açın
 
-1. **Sunucu Gezgini** **Stream Analytics işler** ' i seçin ve ardından **Yenile**' yi seçin. İşiniz **Stream Analytics işleri**altında görünmelidir.
+1. **Sunucu Gezgini** **Stream Analytics işler** ' i seçin ve ardından **Yenile**' yi seçin. İşiniz **Stream Analytics işleri** altında görünmelidir.
 
     ![Sunucu Gezgini listesini Stream Analytics](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-list-jobs-01.png)
 
@@ -60,7 +60,7 @@ Var olan bir işi projeye dışarı aktarmanın iki yolu vardır.
     
    ![İşi projeye aktar](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-01.png)
     
-    Oluşturulan proje **Çözüm Gezgini**görüntülenir.
+    Oluşturulan proje **Çözüm Gezgini** görüntülenir.
     
    ![Çözüm gezgini](./media/stream-analytics-vs-tools/stream-analytics-tools-for-vs-export-job-02.png)
 
@@ -82,5 +82,4 @@ Giriş ve çıkış bağlantıları, **test bağlantısı** açılan menüsünde
 
 * [Visual Studio 'Yu kullanarak Azure Stream Analytics işlerini izleme ve yönetme](stream-analytics-monitor-jobs-use-vs.md)
 * [Hızlı başlangıç: Visual Studio 'Yu kullanarak Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Öğretici: Azure Pipelines kullanarak CI/CD ile Azure Stream Analytics işi dağıtma](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Stream Analytics araçlarıyla sürekli tümleştirme ve geliştirme](stream-analytics-tools-for-visual-studio-cicd.md)

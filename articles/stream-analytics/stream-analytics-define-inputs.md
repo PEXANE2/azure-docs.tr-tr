@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d2fb2ac40dfbe6e48fef5c98e21896575b298a94
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127578"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683471"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics giriş olarak veri akışı
 
@@ -31,7 +31,7 @@ Stream Analytics tüm veri akışı giriş kaynaklarında sıkıştırmayı dest
 
 ## <a name="create-edit-or-test-inputs"></a>Girişleri oluşturma, düzenleme veya test etme
 
-[Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-visual-studio-code.md) kullanarak akış işinizdeki mevcut girişleri ekleyebilir ve bunları görüntüleyebilir veya düzenleyebilirsiniz. Ayrıca, Azure portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)ve [Visual Studio Code](visual-studio-code-local-run.md)örnek verilerden giriş bağlantılarını ve [Test sorgularını](stream-analytics-manage-job.md#test-your-query) test edebilirsiniz. Bir sorgu yazdığınızda FROM yan tümcesindeki girişi listeleyin. Portalda **sorgu** sayfasından kullanılabilir girişlerin listesini alabilirsiniz. Birden çok giriş kullanmak isterseniz, bu `JOIN` veya birden çok `SELECT` sorgu yazabilirsiniz.
+[Azure Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md)ve [Visual Studio Code](quick-create-visual-studio-code.md) kullanarak akış işinizdeki mevcut girişleri ekleyebilir ve bunları görüntüleyebilir veya düzenleyebilirsiniz. Ayrıca, Azure portal, [Visual Studio](stream-analytics-vs-tools-local-run.md)ve [Visual Studio Code](visual-studio-code-local-run.md)örnek verilerden giriş bağlantılarını ve test sorgularını test edebilirsiniz. Bir sorgu yazdığınızda FROM yan tümcesindeki girişi listeleyin. Portalda **sorgu** sayfasından kullanılabilir girişlerin listesini alabilirsiniz. Birden çok giriş kullanmak isterseniz, bu `JOIN` veya birden çok `SELECT` sorgu yazabilirsiniz.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Event Hubs’dan veri akışı sağlama

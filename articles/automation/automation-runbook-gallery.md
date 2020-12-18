@@ -3,18 +3,21 @@ title: PowerShell Galerisi 'de Azure Otomasyonu runbook 'larını ve modüllerin
 description: Bu makalede, Microsoft 'tan ve topluluk PowerShell Galerisi içindeki runbook 'ları ve modülleri nasıl kullanacağınız açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/20/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: f90d88e49675681a7f73df838ca489a7193955b3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90087869"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682759"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>PowerShell Galerisi’nde runbook’ları ve modülleri kullanma
 
-Azure Otomasyonu 'nda kendi runbook 'larınızı ve modüllerinizi oluşturmak yerine, Microsoft ve Community tarafından önceden oluşturulmuş senaryolara erişebilirsiniz. Betik Merkezi galerisindeki PowerShell Galerisi ve [Python runbook](#use-python-runbooks) 'lardan PowerShell runbook 'ları ve [modülleri](#modules-in-powershell-gallery) alabilirsiniz. Ayrıca, [geliştirdiğiniz senaryoları](#add-a-powershell-runbook-to-the-gallery)paylaşarak topluluğa katkıda bulunabilirsiniz. 
+Azure Otomasyonu 'nda kendi runbook 'larınızı ve modüllerinizi oluşturmak yerine, Microsoft ve Community tarafından önceden oluşturulmuş senaryolara erişebilirsiniz. Azure Otomasyonu GitHub kuruluşundaki PowerShell Galerisi ve [Python runbook](#use-python-runbooks) 'lardan PowerShell runbook 'ları ve [modülleri](#modules-in-powershell-gallery) alabilirsiniz. Ayrıca, [geliştirdiğiniz senaryoları](#add-a-powershell-runbook-to-the-gallery)paylaşarak topluluğa katkıda bulunabilirsiniz.
+
+> [!NOTE]
+> TechNet Betik Merkezi devre dışı bırakılıyor. Runbook galerisindeki betik merkezi 'ndeki tüm runbook 'lar [Otomasyon GitHub kuruluşumuza](https://github.com/azureautomation)taşındı.
 
 ## <a name="runbooks-in-powershell-gallery"></a>PowerShell Galerisi runbook 'lar
 
@@ -44,13 +47,13 @@ Aşağıdaki liste, yaygın senaryoları destekleyen birkaç runbook içerir. Az
 ## <a name="import-a-powershell-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure portal ile runbook galerisinden bir PowerShell runbook 'unu içeri aktarın
 
 1. Azure portalında, Otomasyon hesabınızı açın.
-2. **Işlem Otomasyonu**altında **runbook 'lar Galerisi** ' ni seçin.
+2. **Işlem Otomasyonu** altında **runbook 'lar Galerisi** ' ni seçin.
 3. **Kaynak seçin: PowerShell Galerisi**.
 4. İstediğiniz Galeri öğesini bulun ve ayrıntılarını görüntülemek için seçin. Sol tarafta yayımcı için ek arama parametreleri girebilir ve yazın.
 
    ![Galeriye göz atma](media/automation-runbook-gallery/browse-gallery.png)
 
-5. Öğeyi [TechNet Betik Merkezi](https://gallery.technet.microsoft.com/)' nde görüntülemek için **kaynak projeyi görüntüle** ' ye tıklayın.
+5. [Azure Otomasyonu GitHub kuruluşunda](https://github.com/azureautomation)öğeyi görüntülemek için **kaynak projeyi görüntüle** ' ye tıklayın.
 6. Bir öğeyi içeri aktarmak için üzerine tıklayarak ayrıntılarını görüntüleyin ve ardından **Içeri aktar**' a tıklayın.
 
    ![İçeri Aktar düğmesi](media/automation-runbook-gallery/gallery-item-detail.png)
@@ -94,10 +97,7 @@ Microsoft, diğer müşteriler için yararlı olacağını düşündüğünüz P
 
 ## <a name="use-python-runbooks"></a>Python runbook 'larını kullanma
 
-Python runbook 'Ları, [betik Merkezi galerisinde](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=)bulunur. **Bir katkıyı karşıya yükle**' ye tıklayarak Python runbook 'Larını betik merkezi galerisine katkıda bulabilirsiniz. Bunu yaptığınızda, katkılarınızı karşıya yüklerken etiketi eklemediğinizden emin olun `Python` .
-
-> [!NOTE]
-> [Komut dosyası merkezine](https://gallery.technet.microsoft.com/scriptcenter)içerik yüklemek için en az 100 noktaya ihtiyacınız vardır.
+Python runbook 'Ları, [Azure Otomasyonu GitHub kuruluşunda](https://github.com/azureautomation)bulunabilir. GitHub deponuzda katkıda bulundığınızda, katkılarınızı karşıya yüklerken Tag **(GitHub konu): Python3** ekleyin.
 
 ## <a name="request-a-runbook-or-module"></a>Runbook veya modül isteme
 
@@ -108,4 +108,4 @@ Python runbook 'Ları, [betik Merkezi galerisinde](https://gallery.technet.micro
 * PowerShell runbook 'unu kullanmaya başlamak için bkz. [öğretici: PowerShell runbook 'U oluşturma](learn/automation-tutorial-runbook-textual-powershell.md).
 * Runbook 'larla çalışmak için bkz. [Azure Otomasyonu 'nda runbook 'Ları yönetme](manage-runbooks.md).
 * PowerShell ayrıntıları için bkz. [PowerShell belgeleri](/powershell/scripting/overview).
-* * PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* PowerShell cmdlet başvurusu için bkz. [az. Automation](/powershell/module/az.automation).

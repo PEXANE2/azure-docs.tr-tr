@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 68d9a64e388d24f2067f47282945b9561d807535
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6a78b38bd71a2822d94e58834ab17824c9ef6ec6
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545936"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683114"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK'sını kullanırken karşılaşılan sorunları tanılama ve giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,6 +54,13 @@ Etkin olarak izlenen [GitHub sorunları bölümüne](https://github.com/Azure/az
 ### <a name="check-the-portal-metrics"></a>Portal ölçümlerini denetleyin
 [Portal ölçümlerinin](./monitor-cosmos-db.md) denetlenmesi, istemci tarafı bir sorun olup olmadığını veya hizmette bir sorun olup olmadığını belirlemenize yardımcı olur. Örneğin, ölçümler yüksek bir hız sınırlı istek (HTTP durum kodu 429) içeriyorsa, isteğin azaltıldı, [istek hızı çok büyük](troubleshoot-request-rate-too-large.md) bölümünü kontrol edin. 
 
+## <a name="retry-logic"></a>Yeniden deneme mantığı <a id="retry-logics"></a>
+Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyorsa, başarısız olan işlemi yeniden denemeye çalışır. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
+
+1. Okuma ve sorgulama GÇ arızaları, son kullanıcıya sunulmadan SDK tarafından yeniden denenir.
+2. Yazma (oluşturma, upsert, Replace, Delete) "Not" ıdempotent, bu nedenle SDK başarısız yazma işlemlerini her zaman yeniden denemeyebilir. Kullanıcının uygulama mantığının hatayı işlemesi ve yeniden denemesi gerekir.
+3. [SDK kullanılabilirliği ile Ilgili sorun giderme](troubleshoot-sdk-availability.md) , çok bölgeli Cosmos DB hesaplar için yeniden denemeleri açıklar.
+
 ## <a name="common-error-status-codes"></a>Ortak hata durum kodları <a id="error-codes"></a>
 
 | Durum Kodu | Açıklama | 
@@ -64,7 +71,7 @@ Etkin olarak izlenen [GitHub sorunları bölümüne](https://github.com/Azure/az
 | 408 | [İstek zaman aşımına uğradı](troubleshoot-dot-net-sdk-request-timeout.md) |
 | 409 | Çakışma hatası, yazma işlemindeki bir kaynak için belirtilen KIMLIğIN mevcut bir kaynak tarafından alındığı zaman. Bu sorunu çözmek için kaynak için başka bir KIMLIK kullanın, çünkü KIMLIK aynı bölüm anahtarı değerine sahip tüm belgeler içinde benzersiz olmalıdır. |
 | 410 | Özel durumlar (SLA 'yı ihlal etmemesi gereken geçici hata) |
-| 412 | Önkoşul hatası, işlemin sunucuda bulunan sürümden farklı bir eTag 'i belirttiği yerdir. Bu, iyimser eşzamanlılık hatasıdır. Kaynağın en son sürümünü okuyup istekteki eTag’i güncelleştirdikten sonra isteği yeniden deneyin.
+| 412 | Önkoşul hatası, işlemin sunucuda bulunan sürümden farklı bir eTag 'i belirttiği yerdir. Bu, iyimser bir eşzamanlılık hatasıdır. Kaynağın en son sürümünü okuyup istekteki eTag’i güncelleştirdikten sonra isteği yeniden deneyin.
 | 413 | [İstek varlığı çok büyük](concepts-limits.md#per-item-limits) |
 | 429 | [Çok fazla istek](troubleshoot-request-rate-too-large.md) |
 | 449 | Yalnızca yazma işlemlerinde oluşan ve yeniden denenme güvenli olan geçici hata |

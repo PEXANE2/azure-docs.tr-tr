@@ -9,12 +9,12 @@ ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.custom: devx-track-java
-ms.openlocfilehash: 4753f7c0b8b5e515d33da3f9df48a2cdd9d921cc
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d6b23a831426a3308a0b47946d5a82679e937bbe
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96017585"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683122"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>SQL API hesaplarıyla Java SDK 'Sı v4 Azure Cosmos DB kullandığınızda karşılaşılan sorunları giderme
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,6 +38,13 @@ Bu listeyle başla:
 * [GitHub 'da açık kaynak](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)olan Azure Cosmos DB merkezi depoda Java SDK 'sına bakın. Etkin olarak izlenen bir [sorunlar bölümü](https://github.com/Azure/azure-sdk-for-java/issues) vardır. Geçici bir çözüm ile benzer bir sorun olup olmadığını denetleyin. Yardımcı bir ipucu, sorunları *Cosmos: v4-item* etiketine göre filtrelemenize yardımcı olur.
 * Java SDK 'Sı v4 Azure Cosmos DB için [performans ipuçlarını](performance-tips-java-sdk-v4-sql.md) gözden geçirin ve önerilen uygulamaları izleyin.
 * Çözüm bulamazsanız, bu makalenin geri kalanını okuyun. Sonra bir [GitHub sorunu verin](https://github.com/Azure/azure-sdk-for-java/issues). GitHub sorununuz için etiket ekleme seçeneği varsa, *Cosmos: v4-item* etiketi ekleyin.
+
+### <a name="retry-logic"></a>Yeniden deneme mantığı <a id="retry-logics"></a>
+Herhangi bir GÇ hatasında Cosmos DB SDK, SDK 'da yeniden deneme uygulanabiliyorsa, başarısız olan işlemi yeniden denemeye çalışır. Herhangi bir hata için yeniden deneme olması iyi bir uygulamadır, ancak özellikle işleme/yeniden deneme yazma hataları olmalıdır. Yeniden deneme mantığı sürekli iyileştirildiğinden, en son SDK 'nın kullanılması önerilir.
+
+1. Okuma ve sorgulama GÇ arızaları, son kullanıcıya sunulmadan SDK tarafından yeniden denenir.
+2. Yazma (oluşturma, upsert, Replace, Delete) "Not" ıdempotent, bu nedenle SDK başarısız yazma işlemlerini her zaman yeniden denemeyebilir. Kullanıcının uygulama mantığının hatayı işlemesi ve yeniden denemesi gerekir.
+3. [SDK kullanılabilirliği ile Ilgili sorun giderme](troubleshoot-sdk-availability.md) , çok bölgeli Cosmos DB hesaplar için yeniden denemeleri açıklar.
 
 ## <a name="common-issues-and-workarounds"></a><a name="common-issues-workarounds"></a>Yaygın sorunlar ve geçici çözümler
 

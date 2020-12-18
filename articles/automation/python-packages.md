@@ -3,15 +3,15 @@ title: Azure Otomasyonu 'nda Python 2 paketlerini yönetme
 description: Bu makalede, Azure Automation 'da Python 2 paketlerinin nasıl yönetileceği açıklanır.
 services: automation
 ms.subservice: process-automation
-ms.date: 02/25/2019
+ms.date: 12/17/2020
 ms.topic: conceptual
 ms.custom: devx-track-python
-ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd830afd5628591019902ca583f9cbc8e2a7ecad
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987564"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683402"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Azure Otomasyonu 'nda Python 2 paketlerini yönetme
 
@@ -19,17 +19,17 @@ Azure Otomasyonu, Azure 'da ve Linux karma runbook çalışanları üzerinde Pyt
 
 ## <a name="import-packages"></a>Paketleri içeri aktarma
 
-Otomasyon hesabınızda, **paylaşılan kaynaklar**altında **Python 2 paketleri** ' ni seçin. **+ Python 2 paketi Ekle**' ye tıklayın.
+Otomasyon hesabınızda, **paylaşılan kaynaklar** altında **Python 2 paketleri** ' ni seçin. **+ Python 2 paketi Ekle**' ye tıklayın.
 
 :::image type="content" source="media/python-packages/add-python-package.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
 
 Python 2 paketi Ekle sayfasında, karşıya yüklenecek yerel bir paket seçin. Paket bir **. WHL** veya **. tar. gz** dosyası olabilir. Paket seçildiğinde, yüklemek için **Tamam** ' ı tıklatın.
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="Ekran görüntüsü, karşıya yüklenen bir tar. gz dosyası seçiliyken Python 2 paketi Ekle sayfasını gösterir.":::
 
 Paket içeri aktarıldıktan sonra, Otomasyon hesabınızdaki Python 2 paketleri sayfasında listelenir. Bir paketi kaldırmanız gerekiyorsa, paketi seçin ve **Sil**' e tıklayın.
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="Ekran görüntüsü, bir paket içe aktarıldıktan sonra Python 2 paketleri sayfasını gösterir.":::
 
 ## <a name="import-packages-with-dependencies"></a>Bağımlılıkları olan paketleri içeri aktarma
 
@@ -47,14 +47,14 @@ Paketler indirildikten sonra Otomasyon hesabınıza içeri aktarabilirsiniz.
 
 ### <a name="runbook"></a>Runbook
 
- Bir runbook almak için, [Pypı 'Den Otomasyon hesabınıza Python 2 paketlerini Azure Otomasyonu hesabına aktarın](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) . Çalıştırma ayarlarının **Azure** olarak ayarlandığından emin olun ve Runbook 'u parametrelerle başlatın. Runbook, Otomasyon hesabının çalışması için bir farklı çalıştır hesabı gerektirir. Her parametre için, aşağıdaki listede ve görüntüde görüldüğü gibi anahtarı ile başlattığınızdan emin olun:
+ Bir runbook almak için, [Pypı 'Deki Python 2 paketlerini](https://github.com/azureautomation/import-python-2-packages-from-pypi-into-azure-automation-account) Azure Automation GitHub kuruluşundan Otomasyon hesabınıza Azure Otomasyonu hesabına aktarın. Çalıştırma ayarlarının **Azure** olarak ayarlandığından emin olun ve Runbook 'u parametrelerle başlatın. Runbook, Otomasyon hesabının çalışması için bir farklı çalıştır hesabı gerektirir. Her parametre için, aşağıdaki listede ve görüntüde görüldüğü gibi anahtarı ile başlattığınızdan emin olun:
 
 * -s \<subscriptionId\>
 * -g \<resourceGroup\>
 * -a \<automationAccount\>
 * -a \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Python 2 paketleri sayfasının ekran görüntüsü Sol menüdeki Python 2 paketlerini gösterir ve bir Python 2 paketi vurgulanmış olarak ekler.":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="Ekran görüntüsünde, sağ taraftaki runbook 'U Başlat bölmesine sahip import_py2package_from_pypi için genel bakış sayfası gösterilir.":::
 
 Runbook, hangi paketin indirileceği belirtmenizi sağlar. Örneğin, `Azure` parametresinin kullanımı tüm Azure modüllerini ve tüm bağımlılıkları indirir (yaklaşık 105).
 
