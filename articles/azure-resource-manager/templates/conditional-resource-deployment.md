@@ -2,13 +2,13 @@
 title: Şablonlarla koşullu dağıtım
 description: Azure Resource Manager şablonunda bir kaynağın koşullu olarak nasıl dağıtılacağını açıklar (ARM şablonu).
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 0a31bd1fbf755046f331542b4d5952b27a793360
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 1492e9f9f45f23628f9933628fd2740e08ad9eb0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906004"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672857"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>ARM şablonlarında koşullu dağıtım
 
@@ -90,5 +90,6 @@ Bir şablonu, [tamamlanma modu](deployment-modes.md) ile dağıtırsanız ve ko�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Koşullu dağıtımı içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Şablon oluşturma hakkında öneriler için bkz. [ARM şablonu en iyi uygulamaları](template-best-practices.md).
 * Bir kaynağın birden çok örneğini oluşturmak için, bkz. [ARM şablonlarında kaynak yinelemesi](copy-resources.md).

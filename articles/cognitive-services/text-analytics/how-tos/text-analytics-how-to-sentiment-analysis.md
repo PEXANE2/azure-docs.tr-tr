@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 62b6869f7269cbc21590e97ba0e2cbda79466832
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656283"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673062"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Nasıl yapılır: yaklaşım Analizi ve Görüşleme madenciliği
 
@@ -45,7 +45,7 @@ Etiketler *pozitif*, *negatif* ve *nötr*. Belge düzeyinde, *karışık* yakla�
 | Belgede en az bir `negative` cümle ve en az bir `positive` cümle vardır.    | `mixed`                 |
 | Belgedeki tüm tümceler `neutral` .                                                  | `neutral`               |
 
-Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her belge veya her tümce için, etiketlerle ilişkilendirilen tahmin edilen puanlar (pozitif, negatif ve nötr) 1 ' e kadar bir değer ekler.
+Güvenirlik puanları 1 ile 0 arasındadır. 1 ' e yakın puan, etiketin sınıflandırmasında daha yüksek bir güven gösterir, ancak daha düşük puanlar daha düşük güvenilirliğe işaret ediyor. Her belge veya her tümce için, etiketlerle ilişkilendirilen tahmin edilen puanlar (pozitif, negatif ve nötr) 1 ' e kadar bir değer ekler. Daha fazla bilgi için [metin analizi saydamlık notuna](/legal/cognitive-services/text-analytics/transparency-note?context=/azure/cognitive-services/text-analytics/context/context)bakın. 
 
 ## <a name="opinion-mining"></a>Görüşün madenciliği
 

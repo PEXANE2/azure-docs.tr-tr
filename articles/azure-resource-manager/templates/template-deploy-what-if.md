@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: fa70d88b046cf38aa74582066d230c15580465b9
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563101"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673979"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM şablonu dağıtımı what-if işlemi
 
@@ -95,7 +95,7 @@ Yukarıdaki komutlar el ile inceleyebilmeniz için bir metin Özeti döndürür.
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult` kaynak grubu dağıtımları için
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult``$results = Get-AzDeploymentWhatIfResult`abonelik düzeyi dağıtımlar için veya
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 Bir şablonu dağıtımdan önce değişiklikleri önizlemek için şunu kullanın:
 
@@ -396,6 +396,7 @@ Azure SDK 'Ları aracılığıyla ne yapılır işlemini kullanabilirsiniz.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Durum işleminden yanlış sonuçlar fark ederseniz lütfen sorunları bildirin [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
+- Ne olursa kullanın bir Microsoft Learn modülü için, bkz. [değişiklik önizlemesi ve ARM şablonu test araç seti kullanarak Azure kaynaklarını doğrulama](/learn/modules/arm-template-test/).
 - Şablonları Azure PowerShell dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).
 - Şablonları Azure CLı ile dağıtmak için bkz. [ARM şablonları ve Azure CLI ile kaynak dağıtma](deploy-cli.md).
 - Şablonları REST ile dağıtmak için bkz. [ARM şablonlarıyla kaynak dağıtma ve Kaynak Yöneticisi REST API](deploy-rest.md).

@@ -1,6 +1,6 @@
 ---
 title: Fiyatlandırma & faturalandırma modeli
-description: Fiyatlandırma ve faturalandırma modelinin Azure Logic Apps için nasıl çalıştığı hakkında genel bakış
+description: Fiyatlandırma ve faturalandırma Azure Logic Apps nasıl çalıştığı hakkında genel bakış
 services: logic-apps
 ms.suite: integration
 author: jonfancey
@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 520b4a0e87f27a90a604947ae0b558066b4ab82f
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 9243d089b4a000066ec03dbeeccd046db374f558
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937602"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673119"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps için fiyatlandırma modeli
 
@@ -37,7 +37,7 @@ Ortak, "genel", çok kiracılı Azure Logic Apps hizmetinde çalışan yeni mant
 
 Standart [Bağlayıcılar](../connectors/apis-list.md#managed-connectors) [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir. Genel kullanıma sunulan [Kurumsal bağlayıcılar](../connectors/apis-list.md#managed-connectors) [Kurumsal bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir, ancak genel önizleme kurumsal bağlayıcıları [standart bağlayıcı fiyatı](https://azure.microsoft.com/pricing/details/logic-apps)üzerinden ücretlendirilir.
 
-Faturalandırma ve [eylem](#actions) düzeylerinde nasıl çalıştığı hakkında daha [triggers](#triggers) fazla bilgi edinin. Ya da sınırlar hakkında bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma](logic-apps-limits-and-config.md).
+Faturalandırma ve [eylem](#actions) düzeylerinde nasıl çalıştığı hakkında daha [](#triggers) fazla bilgi edinin. Ya da sınırlar hakkında bilgi için bkz. [Azure Logic Apps Için sınırlara ve yapılandırma](logic-apps-limits-and-config.md).
 
 <a name="fixed-pricing"></a>
 
@@ -65,11 +65,11 @@ Bir ıSE içinde oluşturup çalıştırdığınız Logic Apps için, bu yetenek
 
   * **Geliştirici** ISE SKU 'SU: tek bir [ücretsiz katman](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) tümleştirme hesabı
 
-  SKU 'dan bağımsız olarak her bir ıSE [sınırlı sayıda tümleştirme hesabına](logic-apps-limits-and-config.md#integration-account-limits)sahip olabilir. Bu sınırı, ek bir maliyet için yükseltebilirsiniz:
+  Ek bir maliyet için, [Toplam sınıra kadar](logic-apps-limits-and-config.md#integration-account-limits), o kadar çok tümleştirme hesabı oluşturabilirsiniz. 
 
-  * **Premium** ISE SKU 'SU: en fazla dört standart hesap. Ücretsiz veya temel hesap yok.
+  * **Premium** ISE SKU 'SU: en fazla 19 daha standart hesap. Ücretsiz veya temel hesaba izin verilmez.
 
-  * **Geliştirici** ISE SKU 'SU: 4 ' e kadar standart hesap veya toplam 5 Standart hesap. Temel hesap yok.
+  * **Geliştirici** ISE SKU 'SU: ücretsiz hesabınız varsa en fazla 19 daha standart hesap veya ücretsiz bir hesabınız yoksa 20 Toplam standart hesap. Temel hesaplara izin verilmez.
 
   Tümleştirme hesabı limitleri hakkında daha fazla bilgi için bkz. [Limit ve Configuration for Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Bu konunun ilerleyen kısımlarında [tümleştirme hesabı katmanları ve fiyatlandırma modelleri](#integration-accounts) hakkında daha fazla bilgi edinebilirsiniz.
 
@@ -118,7 +118,7 @@ Devre dışı bırakıldıklarında yeni örnekler oluşturamadığı için devr
 
 Azure Logic Apps, ücretsiz, temel ve standart tümleştirme hesapları sunmaktadır. Temel ve Standart katmanlar Logic Apps hizmet düzeyi sözleşmesi (SLA) tarafından desteklenir, ancak ücretsiz katman bir SLA tarafından desteklenmez ve bölge kullanılabilirliği, verimlilik ve kullanımı için sınırlara sahiptir. Ücretsiz katman tümleştirme hesapları haricinde, her bir Azure bölgesinde birden fazla tümleştirme hesabına sahip olabilirsiniz. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
 
-[SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'dan bağımsız olarak bir [ *tümleştirme hizmeti ortamınız* (ıSE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)varsa, Ise 'niz [sınırlı sayıda tümleştirme hesabına](logic-apps-limits-and-config.md#integration-account-limits)sahip olabilir, ancak [Bu sınırı ek bir maliyet için de yükseltebilirsiniz](#fixed-pricing). Sabit fiyatlandırma modelinin bir ıSE için nasıl çalıştığını öğrenmek için, bu konunun önceki [sabit fiyatlandırma modeli](#fixed-pricing) bölümüne bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
+Bir [ *tümleştirme hizmeti ortamınız* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)varsa, Ise, ek ücret ödemeden tek bir tümleştirme hesabı kullanabilir, ancak dahil edilen hesap türü [Ise SKU 'suna](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)göre değişir. Ek bir [Maliyet](#fixed-pricing)için, [tümleştirme hesaplarının toplam sınırına](logic-apps-limits-and-config.md#integration-account-limits)kadar o kadar çok tümleştirme hesabı oluşturabilirsiniz. Sabit fiyatlandırma modelinin bir ıSE için nasıl çalıştığını öğrenmek için, bu konunun önceki [sabit fiyatlandırma modeli](#fixed-pricing) bölümüne bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps).
 
 Ücretsiz, temel veya standart tümleştirme hesabı arasından seçim yapmak için bu kullanım örneği açıklamalarını gözden geçirin:
 

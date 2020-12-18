@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 78f473a7c4b10475c6c206764ce526c70fa056fe
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5fe070bc1abe0592b3082c597c1812781335448a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313343"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673197"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Öğretici: AcquireIO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, AcquireIO 'ı Azure Active Directory (Azure AD) ile tümleştir
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -54,7 +54,7 @@ Acquireıo 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeride
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-acquireio"></a>AcquireIO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak AcquireIO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve AcquireIO içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak AcquireIO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve AcquireIO içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu AcquireIO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -73,7 +73,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
@@ -110,7 +110,7 @@ Bu bölümde, Acquireıo erişimi vererek Azure çoklu oturum açma özelliğini
 1. Uygulamalar listesinde, **Acquireıo**' yı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -122,11 +122,11 @@ Bu bölümde, Acquireıo erişimi vererek Azure çoklu oturum açma özelliğini
 
 ## <a name="configure-acquireio-sso"></a>AcquireIO SSO 'yu yapılandırma
 
-1. AcquireIO içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. AcquireIO içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
-1. Uzantıyı tarayıcıya ekledikten sonra, acquireio ayarla ' ya tıklayarak Acquireıo uygulamasına yönlendiren bir **giriş**yapın. Buradan, Acquireıo 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+1. Uzantıyı tarayıcıya ekledikten sonra, acquireio ayarla ' ya tıklayarak Acquireıo uygulamasına yönlendiren bir **giriş** yapın. Buradan, Acquireıo 'da oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
@@ -134,9 +134,9 @@ Bu bölümde, Acquireıo erişimi vererek Azure çoklu oturum açma özelliğini
 
 1. Menünün sol tarafında **Uygulama Mağazası**' na tıklayın.
 
-     ![Uygulama mağazasını vurgulayan ekran görüntüsü.](./media/acquireio-tutorial/config01.png)
+    ![Uygulama mağazasını vurgulayan ekran görüntüsü.](./media/acquireio-tutorial/config01.png)
 
-1. **Active Directory** için aşağı kaydırın ve **yüklemeye**tıklayın.
+1. **Active Directory** için aşağı kaydırın ve **yüklemeye** tıklayın.
 
     ![Active Directory bölümünü ve Install düğmesini vurgulayan ekran görüntüsü.](./media/acquireio-tutorial/config02.png)
 
@@ -146,7 +146,7 @@ Bu bölümde, Acquireıo erişimi vererek Azure çoklu oturum açma özelliğini
 
     a. Örneğiniz için yanıt URL 'sini kopyalayıp Azure portal **temel SAML yapılandırması** bölümünde **yanıt URL** metin kutusuna yapıştırmak için **Kopyala** ' ya tıklayın.
 
-    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
     c. Base64 Ile kodlanmış sertifikayı not defteri 'nde açın, içeriğini kopyalayın ve **X. 509.440 sertifikası** metin kutusuna yapıştırın.
 
@@ -162,13 +162,13 @@ Azure AD kullanıcılarının Acquireıo 'da oturum açmasını sağlamak için,
 
 1. Menünün sol tarafında **profiller** ' e tıklayın ve **profil ekle**' ye gidin.
 
-     ![Profil ekle seçeneğinin yanı sıra ekranın sol tarafındaki menüdeki profillerin vurgualdığı ekran görüntüsü.](./media/acquireio-tutorial/config04.png)
+    ![Profil ekle seçeneğinin yanı sıra ekranın sol tarafındaki menüdeki profillerin vurgualdığı ekran görüntüsü.](./media/acquireio-tutorial/config04.png)
 
 1. **Müşteri Ekle** açılır penceresinde aşağıdaki adımları uygulayın:
 
     ![Acquireıo yapılandırması](./media/acquireio-tutorial/config05.png)
 
-    a. **Ad** metin kutusuna **B. Simon**gibi kullanıcının adını girin.
+    a. **Ad** metin kutusuna **B. Simon** gibi kullanıcının adını girin.
 
     b. **E-posta** metin kutusuna kullanıcının e-postasını girin **B.simon@contoso.com** .
 
@@ -182,9 +182,9 @@ Erişim panelinde AcquireIO kutucuğuna tıkladığınızda, SSO 'yu ayarladığ
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

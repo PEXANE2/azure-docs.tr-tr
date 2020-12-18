@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: App Auth kullanarak Android
           href: signin-appauth-android.md
+    - name: Akış oluşturun
+      items:
+        - name: Kaydolma veya oturum açma ilkesi
+          href: add-sign-up-and-sign-in-policy.md
+        - name: Parola sıfırlama ilkesi
+          href: add-password-reset-policy.md
+        - name: Parola değiştirme ilkesi
+          href: add-password-change-policy.md
+        - name: Profil düzenleme ilkesi
+          href: add-profile-editing-policy.md
+        - name: Kaynak sahibinin parola kimlik bilgileri ilkesi
+          href: add-ropc-policy.md
+        - name: Self servis parola sıfırlamayı ayarlama ilkesi (Kullanım dışı)
+          href: user-flow-self-service-password-reset.md
+        - name: Telefonla kaydolma ve oturum açma
+          href: phone-authentication-user-flows.md
     - name: Kimlik sağlayıcıları
       items:
         - name: Kimlik sağlayıcısı ekleme
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: Yaş sınırını yapılandırma
       href: basic-age-gating.md
-    - name: Kullanıcı akışı
+    - name: API bağlayıcıları (önizleme)
       items:
-        - name: Akış oluşturun
-          items:
-            - name: Kaydolma veya oturum açma
-              href: tutorial-create-user-flows.md
-            - name: Kaynak sahibinin parola kimlik bilgileri
-              href: configure-ropc.md
-            - name: Self servis parola sıfırlamayı ayarlama
-              href: user-flow-self-service-password-reset.md
-        - name: API bağlayıcıları (önizleme)
-          items:
-            - name: Genel Bakış
-              href: api-connectors-overview.md
-            - name: API bağlayıcısı ekleme
-              href: add-api-connector.md
+        - name: Genel Bakış
+          href: api-connectors-overview.md
+        - name: API bağlayıcısı ekleme
+          href: add-api-connector.md
     - name: Özel ilke
       items:
         - name: Özel ilkeye genel bakış
           href: custom-policy-trust-frameworks.md
         - name: Özel ilkeleri kullanmaya başlama
           href: custom-policy-get-started.md
-        - name: İlke oluşturma
-          items:
-            - name: Kaynak sahibinin parola kimlik bilgileri
-              href: ropc-custom.md
-              displayName: ropc
-            - name: Parola değiştirme
-              href: custom-policy-password-change.md
-            - name: Telefonla kaydolma ve oturum açma
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: Özel e-posta doğrulaması
           items:
             - name: Mailjet

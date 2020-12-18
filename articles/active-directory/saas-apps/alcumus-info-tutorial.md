@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 704449a9d70a38f9a05a68df290a4c0d0e6aeb54
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 2aaa301a95f3f07ca81d20daba3ef28b812da0e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318905"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Öğretici: Alya US Info Exchange ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile Alkısaus Info Exchange 'i tümleştirmek aşağıdaki avantajları
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Alyus Info Exchange ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Algus Info Exchange 'in Azure AD ile tümleştirilmesini yapılandırmak için, 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Alkısaus Info Exchange**yazın, sonuç panelinden **Alkısaus Info Exchange** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Alkısaus Info Exchange** yazın, sonuç panelinden **Alkısaus Info Exchange** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuçlar listesinde alal bilgi değişimi](common/search-new-app.png)
+    ![Sonuçlar listesinde alal bilgi değişimi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayanarak alg ABD bilgi değişimi ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayanarak alg ABD bilgi değişimi ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı yapılandırmak ve test bilgisi alışverişi ile test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,9 +142,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -179,7 +179,7 @@ Bu bölümde, aya US Info Exchange 'e erişim izni vererek Britta Simon 'u Azure
 
 ### <a name="create-alcumus-info-exchange-test-user"></a>Alkısaus Info Exchange test kullanıcısı oluşturma
 
-Bu bölümde, Alya US Info Exchange 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Alkısaus Info Exchange platformunda kullanıcıları eklemek için [Allu bilgi değişimi destek ekibi](mailto:helpdesk@alcumusgroup.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Alya US Info Exchange 'de Britta Simon adlı bir Kullanıcı oluşturacaksınız. Alkısaus Info Exchange platformunda kullanıcıları eklemek için [Allu bilgi değişimi destek ekibi](mailto:helpdesk@alcumusgroup.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

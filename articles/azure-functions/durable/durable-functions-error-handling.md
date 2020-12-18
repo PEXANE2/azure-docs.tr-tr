@@ -4,12 +4,12 @@ description: Azure Işlevleri için Dayanıklı İşlevler uzantısı 'ndaki hat
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 6650322834d491d78470e2d8dbd24e2c6750ae39
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 023f9dfcc421935c3f7515e847108925d5e5521e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87081704"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673656"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler hataları işleme (Azure Işlevleri)
 
@@ -191,16 +191,20 @@ main = df.Orchestrator.create(orchestrator_function)
 
 Önceki örnekteki etkinlik işlevi çağrısı otomatik yeniden deneme ilkesini yapılandırmak için bir parametre alır. Otomatik yeniden deneme ilkesini özelleştirmek için çeşitli seçenekler vardır:
 
-* **Deneme sayısı**üst sınırı: en fazla yeniden deneme denemesi sayısı.
+* **Deneme sayısı** üst sınırı: en fazla yeniden deneme denemesi sayısı.
 * **İlk yeniden deneme aralığı**: ilk yeniden deneme girişiminden önce beklenecek süre.
 * **Geri dönüşlü katsayı**: geri alma artışının oranını belirlemede kullanılan katsayı. Varsayılan değer 1 ' dir.
 * **En fazla yeniden deneme aralığı**: yeniden deneme girişimleri arasında beklenecek en uzun süre.
 * **Yeniden deneme zaman aşımı**: yeniden denemeler yapmak için harcayabileceğiniz en uzun süre. Varsayılan davranış süresiz olarak yeniden denenecektir.
-* **Tanıtıcı**: bir işlevin yeniden denenip denenmeyeceğini anlamak için Kullanıcı tanımlı geri çağırma belirtilebilir.
+* **Tanıtıcı**: bir işlevin yeniden denenip denenmeyeceğini anlamak için Kullanıcı tanımlı geri çağırma belirtilebilir. 
+
+> [!NOTE]
+> Kullanıcı tanımlı geri çağrılar Şu anda JavaScript () içinde Dayanıklı İşlevler tarafından desteklenmiyor `context.df.RetryOptions` .
+
 
 ## <a name="function-timeouts"></a>İşlev zaman aşımları
 
-Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bu işlemi bugün yapmanın doğru yolu, (.net), [durable timer](durable-functions-timers.md) (JavaScript) veya (Python) ile birlikte (.net), (JavaScript) veya ( `context.CreateTimer` Python) `context.df.createTimer` `context.create_timer` ile birlikte, `Task.WhenAny` `context.df.Task.any` `context.task_any` Aşağıdaki örnekte olduğu gibi dayanıklı bir Zamanlayıcı oluşturmaktır:
+Bir Orchestrator işlevi içindeki bir işlev çağrısını, tamamlanamayacak kadar uzun sürerse iptal etmek isteyebilirsiniz. Bu işlemi bugün yapmanın doğru yolu, (.net), [](durable-functions-timers.md) (JavaScript) veya (Python) ile birlikte (.net), (JavaScript) veya ( `context.CreateTimer` Python) `context.df.createTimer` `context.create_timer` ile birlikte, `Task.WhenAny` `context.df.Task.any` `context.task_any` Aşağıdaki örnekte olduğu gibi dayanıklı bir Zamanlayıcı oluşturmaktır:
 
 # <a name="c"></a>[C#](#tab/csharp)
 

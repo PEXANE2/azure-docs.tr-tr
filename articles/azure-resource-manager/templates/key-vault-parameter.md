@@ -2,13 +2,13 @@
 title: Şablonla gizli Key Vault
 description: Dağıtım sırasında anahtar kasasından bir parametre olarak bir parolanın nasıl geçirileceğini gösterir.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 8983d51d90e07e21ac4c9489c7ed553530278d3c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84677874"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672714"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma
 
@@ -377,3 +377,4 @@ Aşağıdaki şablon Anahtar Kasası KIMLIĞINI dinamik olarak oluşturur ve bir
 
 - Anahtar kasaları hakkında genel bilgi için bkz. [Azure Key Vault nedir?](../../key-vault/general/overview.md).
 - Anahtar gizli dizileri ile ilgili tüm örnekler için, [Key Vault örneklere](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)bakın.
+- Anahtar kasasından güvenli bir değer geçirmeyi içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablonu özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).

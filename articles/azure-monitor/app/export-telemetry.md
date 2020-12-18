@@ -3,12 +3,12 @@ title: Application Insights 'ten Telemetriyi sürekli dışa aktarma | Microsoft
 description: Tanılama ve kullanım verilerini Microsoft Azure depolama alanına aktarın ve buradan indirin.
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6f636ce9fe30c666f08935d5830eb0c12e6cb5e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87324344"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674146"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights’tan telemetriyi dışarı aktarma
 Telemetrinizi standart saklama süresinden daha uzun süre tutmak mı istiyorsunuz? Ya da özel bir şekilde işlesin mi? Sürekli dışa aktarma bu için idealdir. Application Insights portalında gördüğünüz olaylar JSON biçiminde Microsoft Azure depoya aktarılabilir. Buradan, verilerinizi indirebilir ve işlemek için gereken her kodu yazabilirsiniz.  
@@ -38,6 +38,9 @@ Sürekli dışarı aktarma, aşağıdaki Azure depolama özelliklerini/yapıland
 
 ## <a name="create-a-continuous-export"></a><a name="setup"></a> Sürekli dışarı aktarma oluşturma
 
+> [!NOTE]
+> Uygulama, günde 3TB 'den fazla veri dışa aktarabilir. Günde 3TB 'den fazla dışa aktarıldığında dışarı aktarma devre dışı bırakılır. Sınır olmadan dışarı aktarmak için [Tanılama ayarları tabanlı dışarı aktarmayı](#diagnostic-settings-based-export)kullanın.
+
 1. Soldaki yapılandırma bölümündeki uygulamanızın Application Insights kaynağında, sürekli dışarı aktarmayı açın ve **Ekle**' yi seçin:
 
 2. Dışarı aktarmak istediğiniz telemetri verileri türlerini seçin.
@@ -62,7 +65,7 @@ Verilerin depolamada görünmesi için bir saat yaklaşık bir gecikme olabilir.
 |:----|:------|
 | [Kullanılabilirlik](export-data-model.md#availability) | [Kullanılabilirlik Web testlerini](./monitor-web-app-availability.md)raporlar.  |
 | [Olay](export-data-model.md#events) | [Trackevent ()](./api-custom-events-metrics.md#trackevent)tarafından oluşturulan özel olaylar. 
-| [Özel Durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](./asp-net-exceptions.md) raporlar.
+| [Özel durumlar](export-data-model.md#exceptions) |Sunucudaki ve tarayıcıdaki [özel durumları](./asp-net-exceptions.md) raporlar.
 | [İletiler](export-data-model.md#trace-messages) | [Tracktrace](./api-custom-events-metrics.md#tracktrace)tarafından ve [günlük bağdaştırıcıları](./asp-net-trace-logs.md)tarafından gönderilir.
 | [Ölçümler](export-data-model.md#metrics) | Ölçüm API çağrıları tarafından oluşturulur.
 | [PerformanceCounters](export-data-model.md) | Application Insights tarafından toplanan performans sayaçları.
@@ -120,7 +123,7 @@ Konum
 ## <a name="data-format"></a><a name="format"></a> Veri biçimi
 * Her blob, birden çok ' \n ' ayrılmış satır içeren bir metin dosyasıdır. Yaklaşık bir dakikalık bir zaman diliminde işlenen Telemetriyi içerir.
 * Her satır, istek veya sayfa görünümü gibi bir telemetri veri noktasını temsil eder.
-* Her satır biçimlendirilmemiş bir JSON belgesidir. Satırları görüntülemek istiyorsanız, blobu Visual Studio 'da açın ve **Edit**  >  **Gelişmiş**  >  **Biçim dosyasını**Düzenle ' yi seçin:
+* Her satır biçimlendirilmemiş bir JSON belgesidir. Satırları görüntülemek istiyorsanız, blobu Visual Studio 'da açın ve   >  **Gelişmiş**  >  **Biçim dosyasını** Düzenle ' yi seçin:
 
    ![Uygun bir araçla telemetri görüntüleme](./media/export-telemetry/06-json.png)
 
@@ -135,7 +138,7 @@ Zaman süreleri, 10 000 ticks = 1 MS olduğunda yer işaretleri içinde bulunur.
 [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
 
 ## <a name="processing-the-data"></a>Verileri işleme
-Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örneğin:
+Küçük ölçekte, verilerinizi çekmek, bir elektronik tabloya okumak ve bu şekilde devam etmek için kod yazabilirsiniz. Örnek:
 
 ```csharp
 private IEnumerable<T> DeserializeMany<T>(string folderName)
@@ -207,6 +210,19 @@ Daha büyük ölçeklendirilirken, buluttaki [HDInsight](https://azure.microsoft
 * [Stream Analytics örneği](export-stream-analytics.md)
 * [Stream Analytics kullanarak SQL’ye aktarma][exportasa]
 * [Özellik türleri ve değerleri için ayrıntılı veri modeli başvurusu.](export-data-model.md)
+
+## <a name="diagnostic-settings-based-export"></a>Tanılama ayarları tabanlı dışarı aktarma
+
+Tanılama ayarları tabanlı dışarı aktarma, sürekli dışarı aktarmanın farklı bir şemasını kullanır. Ayrıca sürekli dışarı aktarmanın şu şekilde olmadığı özellikleri destekler:
+
+* VNET, güvenlik duvarları ve özel bağlantılar içeren Azure depolama hesapları.
+* Olay Hub 'ına aktar.
+
+Tanılama ayarları tabanlı dışarı aktarmaya geçiş yapmak için:
+
+1. Geçerli sürekli dışarı aktarmayı devre dışı bırak.
+2. [Uygulamayı çalışma alanı tabanlı olarak geçirin](convert-classic-resource.md).
+3. [Tanılama ayarlarını dışarı aktarmayı etkinleştirin](create-workspace-resource.md#export-telemetry). Tanılama ayarlarını seçin > Application Insights kaynağınız içinden **Tanılama ayarı ekleyin** .
 
 <!--Link references-->
 

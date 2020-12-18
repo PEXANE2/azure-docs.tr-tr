@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: aab51f4607e81a36c8bd553ea5a118abcf92411d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 34f72f0aa0b112cb12ebdd0b8c4afed2b49db47c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456764"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673216"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Öğretici: bridgeline bağlı olmayan Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile bridgeline bağlı olarak tümleştirme, aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bridgeline bağlı olarak yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -62,13 +62,13 @@ Bridgeline bağlı olarak Azure AD 'nin tümleştirilmesini yapılandırmak içi
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **bridgeline bağlı**değil yazın, sonuç panelinden **bridgeline bağlı** değil ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **bridgeline bağlı** değil yazın, sonuç panelinden **bridgeline bağlı** değil ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde bridgeline bağlı değil](common/search-new-app.png)
+    ![Sonuç listesinde bridgeline bağlı değil](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı,, **Britta Simon**adlı bir test kullanıcısına bağlı olarak bridgeline bağlı olarak yapılandırır ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı,, **Britta Simon** adlı bir test kullanıcısına bağlı olarak bridgeline bağlı olarak yapılandırır ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve bridgeline bağlı olmayan ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, bridgeline bağlı olarak yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -149,8 +149,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
+    a. **Ad** alanına **Brittasıon** girin.
+
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
@@ -162,11 +162,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, bridgeline bağlı olarak erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **bridgeline bağlı**değil ' i seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **bridgeline bağlı** değil ' i seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **bridgeline bağlı**değil ' i seçin.
+2. Uygulamalar listesinde, **bridgeline bağlı** değil ' i seçin.
 
     ![Uygulamalar listesinde bridgeline bağlı olmayan bağlantı](common/all-applications.png)
 

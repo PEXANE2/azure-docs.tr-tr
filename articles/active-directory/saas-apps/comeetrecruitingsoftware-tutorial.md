@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 7f992969cf50bb03df7091e0015c936a794946a6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d458d94a4bee4fce523819af2fd3e555db6e70df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455601"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Öğretici: Cokarşılayan Işe alma yazılımıyla Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile birlikte karşılamaları tümleştirme yazılımlarını tümleşt
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Cokarşılayan Işe alma yazılımıyla birlikte yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Cokarşılayan Işe alma yazılımının Azure AD 'ye tümleştirmesini yapılan
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **birlikte alma yazılım yazılımını**yazın, sonuç panelinden **ortak olarak işe alma yazılımlarını** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **birlikte alma yazılım yazılımını** yazın, sonuç panelinden **ortak olarak işe alma yazılımlarını** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde işbirliği yazılımlarını birlikte karşılayın](common/search-new-app.png)
+    ![Sonuç listesinde işbirliği yazılımlarını birlikte karşılayın](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre işbirliği yazılımıyla birlikte yapılandırma ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre işbirliği yazılımıyla birlikte yapılandırma ve test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, birlikte çalışma Işe alma yazılımının kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, birlikte bulunan Işe alma yazılımıyla birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -135,7 +135,7 @@ Azure AD çoklu oturum açmayı birlikte bulunan Işe alma yazılımıyla birlik
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -177,9 +177,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

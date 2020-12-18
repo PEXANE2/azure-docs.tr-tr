@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 0725896c1357700cc0e05abfdaaa8acfa588f729
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5a4b2af8626f69b6947950f87b99ed5a60692d8b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456594"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Öğretici: tuvalle Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Tuvali Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini tuvalle yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Tuvalin tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki tu
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **tuval**yazın, sonuç panelinden **tuval** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **tuval** yazın, sonuç panelinden **tuval** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde tuval](common/search-new-app.png)
+    ![Sonuçlar listesinde tuval](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre tuvalle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre tuvalle yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve tuvaldeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı tuvalle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -136,7 +136,7 @@ Azure AD çoklu oturum açmayı tuvalle yapılandırmak için aşağıdaki adım
 
 3. Sol taraftaki Gezinti bölmesinde **kimlik doğrulaması**' nı seçin ve ardından **Yeni SAML Yapılandırması Ekle**' ye tıklayın.
 
-    ![Kimlik Doğrulaması](./media/canvas-lms-tutorial/ic775991.png "Kimlik doğrulama")
+    ![Kimlik Doğrulaması](./media/canvas-lms-tutorial/ic775991.png "Kimlik Doğrulaması")
 
 4. Geçerli tümleştirme sayfasında, aşağıdaki adımları gerçekleştirin:
 
@@ -174,9 +174,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -233,11 +233,11 @@ Azure AD kullanıcılarının tuvalde oturum açmasını sağlamak için, tuvald
 
    ![Kullanıcı Ekle](./media/canvas-lms-tutorial/ic775997.png "Kullanıcı Ekleme")
 
-   a. **Tam ad** metin kutusuna, **Brittasıon**gibi kullanıcının adını girin.
+   a. **Tam ad** metin kutusuna, **Brittasıon** gibi kullanıcının adını girin.
 
-   b. **E-posta** metin kutusuna, **brittasıon \@ contoso.com**gibi kullanıcının e-postasını girin.
+   b. **E-posta** metin kutusuna, **brittasıon \@ contoso.com** gibi kullanıcının e-postasını girin.
 
-   c. **Oturum açma** metin kutusunda, kullanıcının Azure ad e-posta adresini **brittasıon \@ contoso.com**gibi girin.
+   c. **Oturum açma** metin kutusunda, kullanıcının Azure ad e-posta adresini **brittasıon \@ contoso.com** gibi girin.
 
    d. **Kullanıcıya bu hesap oluşturma hakkında e-posta gönder**' i seçin.
 

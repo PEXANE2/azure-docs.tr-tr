@@ -4,22 +4,22 @@ description: Azure Işlevleri 'nde Azure Kbıbitmq Tetikleyicileri ve bağlamala
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/15/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: ebf094ddfec19dac98238adf7d55af785b3df122
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629638"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672517"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Kbbitmq bağlamaları genel bakış
 
 > [!NOTE]
 > Kbbitmq bağlamaları yalnızca **Windows Premium ve adanmış** planlarda tam olarak desteklenmektedir. Tüketim ve Linux Şu anda desteklenmiyor.
 
-Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md)aracılığıyla [Kbbitmq](https://www.rabbitmq.com/) ile tümleşir. Azure Işlevleri kbbitmq bağlama uzantıları, kbbitmq API 'sini Işlevlerle kullanarak ileti göndermenizi ve almanızı sağlar.
+Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md)aracılığıyla [Kbbitmq](https://www.rabbitmq.com/) ile tümleşir. Azure Işlevleri kbbitmq uzantısı, Işlevleri ile kbbitmq API 'sini kullanarak ileti göndermenizi ve almanızı sağlar.
 
 | Eylem | Tür |
 |---------|---------|

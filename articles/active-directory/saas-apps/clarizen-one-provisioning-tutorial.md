@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179730"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673673"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için Clarizen bir yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Clariz
 > * Clarizen 'da gruplar ve grup üyelikleri sağlayın.
 > * Clarizen 'ya yönelik [Çoklu oturum açma (SSO)](./clarizen-tutorial.md) önerilir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -76,21 +76,21 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
 ### <a name="configure-automatic-user-provisioning-for-clarizen-one-in-azure-ad"></a>Azure AD 'de Clarizen için otomatik Kullanıcı sağlamayı yapılandırın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
 
-    ![Kurumsal uygulamalar bölmesini gösteren ekran görüntüsü.](common/enterprise-applications.png)
+      ![Kurumsal uygulamalar bölmesini gösteren ekran görüntüsü.](common/enterprise-applications.png)
 
 1. Uygulamalar listesinde **Clarizen One** öğesini seçin.
 
-    ![Uygulamalar listesinde Clarizen bir bağlantısını gösteren ekran görüntüsü.](common/all-applications.png)
+      ![Uygulamalar listesinde Clarizen bir bağlantısını gösteren ekran görüntüsü.](common/all-applications.png)
 
 1. **Hazırlama** sekmesini seçin.
 
-    ![Sağlama sekmesini gösteren ekran görüntüsü.](common/provisioning.png)
+      ![Sağlama sekmesini gösteren ekran görüntüsü.](common/provisioning.png)
 
 1. **Sağlama modunu** **Otomatik** olarak ayarlayın.
 
-    ![Sağlama sekmesi otomatik seçeneğini gösteren ekran görüntüsü.](common/provisioning-automatic.png)
+      ![Sağlama sekmesi otomatik seçeneğini gösteren ekran görüntüsü.](common/provisioning-automatic.png)
 
 1. **Yönetici kimlik bilgileri** bölümünde, en az bir **kiracı URL 'Si** ve **gizli belirteç** girin. Azure AD 'nin Clarizen 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' yı seçin. Bağlantı başarısız olursa, en az bir hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
@@ -162,15 +162,15 @@ Bu bölümde Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı veya grup a
 
 1. Azure AD sağlama hizmetini Clarizen One için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Sağlama durumunu açık olarak gösteren ekran görüntüsü.](common/provisioning-toggle-on.png)
+      ![Sağlama durumunu açık olarak gösteren ekran görüntüsü.](common/provisioning-toggle-on.png)
 
 1. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek Clarizen 'ya sağlamak istediğiniz kullanıcıları veya grupları tanımlayın.
 
-    ![Sağlama kapsamını gösteren ekran görüntüsü.](common/provisioning-scope.png)
+      ![Sağlama kapsamını gösteren ekran görüntüsü.](common/provisioning-scope.png)
 
 1. Sağlamaya hazırsanız **Kaydet**' i seçin.
 
-    ![Sağlama yapılandırmasının kaydedilmesini gösteren ekran görüntüsü.](common/provisioning-configuration-save.png)
+      ![Sağlama yapılandırmasının kaydedilmesini gösteren ekran görüntüsü.](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümündeki **Kapsam** alanında tanımlanan tüm kullanıcılar ve gruplar için ilk eşitleme döngüsünü başlatır. İlk döngünün tamamlanması, Azure AD hazırlama hizmetinin çalıştığı süre boyunca yaklaşık olarak 40 dakikada bir gerçekleştirilen sonraki döngülerden daha uzun sürer.
 

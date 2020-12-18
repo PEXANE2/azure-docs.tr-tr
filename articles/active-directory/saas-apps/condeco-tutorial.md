@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 835ee5f1c9da081618ed314c694f578a6e9f4aee
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 8181718d6524c78e036f6953ebff73217acab890
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455402"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>Öğretici: Condeasyon ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile yarışmadan tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini birlikte bulunan bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,13 +63,13 @@ Condeko 'ın Azure AD 'ye tümleştirmesini yapılandırmak için, Galeri 'den y
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **conko**yazın, sonuç panelinden **condeasyon** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **conko** yazın, sonuç panelinden **condeasyon** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde condeasyon](common/search-new-app.png)
+    ![Sonuçlar listesinde condeasyon](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına dayalı olarak yapılandırın ve test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına dayalı olarak yapılandırın ve test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, birlikte yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -142,9 +142,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -179,7 +179,7 @@ Bu bölümde, yarışarak erişim izni vererek Azure çoklu oturum açma özelli
 
 ### <a name="create-condeco-test-user"></a>Condeko test kullanıcısı oluşturma
 
-Bu bölümün amacı, kalabalık 'de Britta Simon adlı bir Kullanıcı oluşturmaktır. Conko, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı**destekler.
+Bu bölümün amacı, kalabalık 'de Britta Simon adlı bir Kullanıcı oluşturmaktır. Conko, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı** destekler.
 
 Bu bölümde sizin için herhangi bir eylem öğesi yok. Henüz mevcut değilse, erişim girişimi sırasında yeni bir Kullanıcı oluşturulur.
 
