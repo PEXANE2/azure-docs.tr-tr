@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/30/2020
+ms.date: 12/09/2020
 ms.author: banders
-ms.openlocfilehash: 8c3ab3f4f9bc56e9651a98e5c011cad65f21fd9d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ca55773b2deb74ea0647ed33df4040065762f94a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349002"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938486"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Diğer hesaplardan Azure aboneliklerinin fatura sahipliğini alma
 
@@ -22,6 +22,14 @@ Mevcut fatura sahibi kuruluşunuzdan ayrıldığında veya abonelikleri kendi ö
 Bu makale, Microsoft Müşteri Sözleşmesi’ne ilişkin ödeme hesabı için geçerlidir. [Microsoft Müşteri Sözleşmesi’ne erişiminiz olup olmadığını denetleyin](#check-for-access).
 
 Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölümü katkıda bulunanı** olmanız gerekir. Daha fazla bilgi için bkz. [Fatura bölümü rolleri görevleri](understand-mca-roles.md#invoice-section-roles-and-tasks).
+
+Fatura sahipliği isteğinde bulunduğunuz kişi aşağıdaki rollerden birine sahip olmalıdır:
+
+- Kurumsal Microsoft müşteri anlaşması için, Kullanıcı bir Faturalama Sahibi olur.
+- Kurumsal Sözleşme için, kullanıcının Hesap Sahibi olması gerekir.
+- Microsoft Çevrimiçi Hizmet Programı fatura hesabı için, kullanıcının Hesap Yöneticisi olması gerekir.
+
+Daha fazla bilgi için bkz. [Ödeme hesaplarınızı Azure portalında görüntüleme](view-all-accounts.md).
 
 ## <a name="request-billing-ownership"></a>Fatura sahipliğini isteme
 
@@ -42,7 +50,7 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 1. Listeden bir fatura bölümü seçin. Aboneliklerin sahipliğini üstlendiğinizde bu aboneliklere ilişkin kullanımlar faturalama profilinin faturasının bu bölümüne atanır.
 1. Sol alt köşeden **Aktarım istekleri**’ni ve ardından **Yeni istek ekle**’yi seçin.  
     [![Aktarım isteklerinin seçilmesini gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-transfer-requests.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests.png#lightbox)
-1. Kendisinden fatura sahipliğini istediğiniz kullanıcının e-posta adresini girin. Kullanıcının bir Microsoft Çevrimiçi Hizmet Programı ödeme hesabında Hesap Yöneticisi veya Kurumsal Anlaşmada hesap sahibi olması gerekir. Daha fazla bilgi için bkz. [Ödeme hesaplarınızı Azure portalında görüntüleme](view-all-accounts.md). **Aktarım isteği gönder**’i seçin.  
+1. Kendisinden fatura sahipliğini istediğiniz kullanıcının e-posta adresini girin. **Aktarım isteği gönder**’i seçin.  
     [![Aktarım isteği gönderme işlemini gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-send-transfer-requests.png)](./media/mca-request-billing-ownership/mca-send-transfer-requests.png#lightbox)
 1. Kullanıcı, aktarma isteğinizi gözden geçirme yönergelerini içeren bir e-posta alır.  
     ![Aktarım isteğini gözden geçirme e-postasını gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-review-transfer-request-email.png)
@@ -68,6 +76,7 @@ Fatura sahipliği istemek için **fatura bölümü sahibi** veya **fatura bölü
 1. Aktarım isteğinin gönderildiği listeden fatura bölümünü seçin.
 1. Sol alt taraftaki **Aktarım istekleri**'ni seçin. Aktarım istekleri sayfasında aşağıdaki bilgiler görüntülenir:  
     [![Aktarım isteklerinin listesini gösteren ekran görüntüsü](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)](./media/mca-request-billing-ownership/mca-select-transfer-requests-for-status.png#lightbox)
+
    |Sütun|Tanım|
    |---------|---------|
    |İstek tarihi|Aktarım isteğinin gönderildiği tarih|

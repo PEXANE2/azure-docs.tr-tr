@@ -1,361 +1,111 @@
 ---
-title: Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
-description: Haritalara şekil eklemeyi öğrenin. Haritaya bir çizgi ve çokgen eklemek için Microsoft Azure haritaları Android SDK kullanan kod örneklerine bakın.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 11/18/2020
-ms.topic: how-to
+title: Android Maps 'e çokgen katmanı ekleme | Microsoft Azure haritaları
+description: Haritalara çokgenler veya daireler eklemeyi öğrenin. Geometrik şekilleri özelleştirmek ve bunların güncelleştirilmesini ve bakımını kolaylaştırmak için Azure Haritalar Android SDK kullanma konusuna bakın.
+author: rbrundritt
+ms.author: richbrun
+ms.date: 12/08/2020
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: philmea
-ms.openlocfilehash: 9ef6e1910803cc18f03347e08abc4f0d836b3c0a
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+manager: cpendle
+ms.openlocfilehash: 1712cedab9cef23108fcc48b8e09bdc3e33065c4
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532780"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97679485"
 ---
-# <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak haritaya şekil ekleme Android SDK
+# <a name="add-a-polygon-layer-to-the-map-android-sdk"></a>Haritaya çokgen katmanı ekleme (Android SDK)
 
-Bu makalede, Azure Maps Android SDK kullanarak bir haritada şekillerin nasıl işleneceğini gösterilmektedir.
+Bu makalede, `Polygon` `MultiPolygon` bir çokgen katmanı kullanarak haritada ve özellik geometrileri arasındaki alanların nasıl işleneceğini gösterir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-1. [Azure haritalar hesabı oluşturma](quick-demo-map-app.md#create-an-azure-maps-account)
-2. Birincil anahtar veya abonelik anahtarı olarak da bilinen [birincil bir abonelik anahtarı alın](quick-demo-map-app.md#get-the-primary-key-for-your-account).
-3. [Azure haritalar Android SDK](./how-to-use-android-map-control-library.md)indirin ve yükleyin.
+[Hızlı başlangıç: Android uygulama belgesi oluşturma](quick-android-map.md) ' daki adımları tamamladığınızdan emin olun. Bu makaledeki kod blokları haritalar `onReady` olay işleyicisine eklenebilir.
 
-## <a name="add-a-line-to-the-map"></a>Haritaya bir satır ekleyin
+## <a name="use-a-polygon-layer"></a>Çokgen katmanı kullanma
 
-Haritada bir satır eklemek için **çizgi katmanını** kullanmak üzere aşağıdaki adımları izleyin.
+Bir çokgen katmanı bir veri kaynağına bağlıyken ve haritada yüklendiğinde, alanı `Polygon` ve `MultiPolygon` özellikleri işler. Bir çokgen oluşturmak için bir veri kaynağına ekleyin ve sınıfı kullanarak bir Çokgen katman ile oluşturun `PolygonLayer` .
 
-1. `res > layout > activity_main.xml`Aşağıdaki kod gibi görmek için düzenleyin:
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
 
-    ```XML
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.743270"
-            app:mapcontrol_centerLng="-74.004420"
-            app:mapcontrol_zoom="12"
-            />
-    </FrameLayout>
-    ```
-
-2. Aşağıdaki kod parçacığını sınıfınızın **OnCreate ()** yöntemine kopyalayın `MainActivity.java` .
-
-    >[!WARNING]
-    >Android Studio gerekli sınıfları içeri aktarmayabilir.  Sonuç olarak, kodun çözümlenemeyecek bazı başvuruları olacaktır. Gerekli sınıfları içeri aktarmak için, çözülmemiş her başvurunun üzerine gelin ve `Alt + Enter` (seçenek + bir Mac üzerinde dön) tuşuna basın.
-
-    ```Java
-    mapControl.onReady(map -> {
-
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-
-        //Create a list of points.
-        List<Point> points = Arrays.asList(
-            Point.fromLngLat(-73.972340, 40.743270),
-            Point.fromLngLat(-74.004420, 40.756800));
-    
-        //Create a LineString feature and add it to the data source.
-        dataSource.add(LineString.fromLngLats(points));
-    
-        //Create a line layer and add it to the map.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(5f)));
-    });
-
-    ```
-    Yukarıdaki kod parçacığı ilk olarak **Onready ()** geri çağırma yönteminde bir Azure haritalar harita denetim örneği edinir. Daha sonra **DataSource** sınıfını kullanarak bir veri kaynağı nesnesi oluşturur ve bunu haritaya ekler. Sonra, **nokta** nesnelerinin bir listesini oluşturur. İşaret listesinden bir **LineString** oluşturulur ve veri kaynağına eklenir. **Çizgi katmanı** , harita üzerindeki bir veri kaynağında kaydırılan çizgi nesnelerini işler. Daha sonra bir çizgi katmanı oluşturulur ve veri kaynağı buna eklenir.
-    
-    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
-
-    ```Java
-    package com.example.myapplication;
-
-    import android.app.Activity;
-    import android.os.Bundle;
-    import com.mapbox.geojson.LineString;
-    import com.mapbox.geojson.Point;
-    import android.support.v7.app.AppCompatActivity;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import java.util.Arrays;
-    import java.util.List;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-        
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of points.
-                List<Point> points = Arrays.asList(
-                    Point.fromLngLat(-73.972340, 40.743270),
-                    Point.fromLngLat(-74.004420, 40.756800));
-            
-                //Create a LineString feature and add it to the data source.
-                dataSource.add(LineString.fromLngLats(points));
-            
-                //Create a line layer and add it to the map.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(5f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
-
-Uygulamayı çalıştırdığınızda, haritada aşağıda görüldüğü gibi bir satır görmeniz gerekir:
-
-![Android haritasında işlenen bir satır](./media/how-to-add-shapes-to-android-map/android-map-line.png)</
-
-
-## <a name="add-a-polygon-to-the-map"></a>Haritaya Çokgen ekleme
-
-**Çokgen katmanı** , çokgenin alanını haritaya işlemenizi sağlar. Haritada bir çokgen eklemek için aşağıdaki adımları izleyin.
-
-1. **Kaynak > düzeni > activity_main.xml** aşağıdaki gibi görünmesi için düzenleyin:
-
-    ```XML
-    <?xml version="1.0" encoding="utf-8"?>
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    
-        <com.microsoft.azure.maps.mapcontrol.MapControl
-            android:id="@+id/mapcontrol"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:mapcontrol_centerLat="40.78"
-            app:mapcontrol_centerLng="-73.97"
-            app:mapcontrol_zoom="12"
-            />
-    
-    </FrameLayout>
-    ```
-
-2. Aşağıdaki kod parçacığını sınıfınızın **OnCreate ()** yöntemine kopyalayın `MainActivity.java` .
-
-    ```Java
-    mapControl.onReady(map -> {
-        //Create a data source and add it to the map.
-        DataSource dataSource = new DataSource();
-        map.sources.add(dataSource);
-    
-        //Create a list of point arrays to create polygon rings.
-        List<List<Point>> rings = Arrays.asList(Arrays.asList(
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
             Point.fromLngLat(-73.98235, 40.76799),
             Point.fromLngLat(-73.95785, 40.80044),
-            Point.fromLngLat(-73.94928, 40.7968),
+            Point.fromLngLat(-73.94928, 40.79680),
             Point.fromLngLat(-73.97317, 40.76437),
-            Point.fromLngLat(-73.98235, 40.76799)));
-    
-        //Create a Polygon feature and add it to the data source.
-        dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-    
-        //Add a polygon layer for rendering the polygon area.
-        map.layers.add(new PolygonLayer(dataSource,
-            fillColor("red")));
-    
-        //Add a line layer for rendering the polygon outline.
-        map.layers.add(new LineLayer(dataSource,
-            strokeColor("blue"),
-            strokeWidth(2f)));
-    });
-    ```
-    
-    Yukarıdaki kod parçacığını ekledikten sonra `MainActivity.java` aşağıdaki gibi görünmelidir:
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
 
-    ```Java
-    package com.example.myapplication;
-    
-    import android.app.Activity;
-    import android.os.Bundle;
-    import java.util.Arrays;
-    import android.util.Log;
-    import java.util.Collections;
-    import android.support.v7.app.AppCompatActivity;
-    import com.mapbox.geojson.Point;
-    import com.mapbox.geojson.Polygon;
-    import com.mapbox.geojson.Feature;
-    import com.microsoft.azure.maps.mapcontrol.layer.LineLayer;
-    import com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions;
-    import com.microsoft.azure.maps.mapcontrol.layer.PolygonLayer;
-    import com.microsoft.azure.maps.mapcontrol.source.DataSource;
-    import com.microsoft.azure.maps.mapcontrol.AzureMaps;
-    import com.microsoft.azure.maps.mapcontrol.MapControl;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeColor;
-    import static com.microsoft.azure.maps.mapcontrol.options.LineLayerOptions.strokeWidth;
-    import static com.microsoft.azure.maps.mapcontrol.options.PolygonLayerOptions.fillColor;
-    
-    public class MainActivity extends AppCompatActivity {
-    
-        static{
-            AzureMaps.setSubscriptionKey("<Your Azure Maps subscription key>");
-        }
-    
-        MapControl mapControl;
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-    
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
-    
-            mapControl = findViewById(R.id.mapcontrol);
-    
-            mapControl.onCreate(savedInstanceState);
-    
-            mapControl.onReady(map -> {
-                //Create a data source and add it to the map.
-                DataSource dataSource = new DataSource();
-                map.sources.add(dataSource);
-            
-                //Create a list of point arrays to create polygon rings.
-                List<List<Point>> rings = Arrays.asList(Arrays.asList(
-                    Point.fromLngLat(-73.98235, 40.76799),
-                    Point.fromLngLat(-73.95785, 40.80044),
-                    Point.fromLngLat(-73.94928, 40.7968),
-                    Point.fromLngLat(-73.97317, 40.76437),
-                    Point.fromLngLat(-73.98235, 40.76799)));
-            
-                //Create a Polygon feature and add it to the data source.
-                dataSource.add(Feature.fromGeometry(Polygon.fromLngLats(rings)));
-            
-                //Add a polygon layer for rendering the polygon area.
-                map.layers.add(new PolygonLayer(dataSource,
-                    fillColor("red")));
-            
-                //Add a line layer for rendering the polygon outline.
-                map.layers.add(new LineLayer(dataSource,
-                    strokeColor("blue"),
-                    strokeWidth(2f)));
-            });    
-        }
-    
-        @Override
-        public void onResume() {
-            super.onResume();
-            mapControl.onResume();
-        }
-    
-        @Override
-        public void onPause() {
-            super.onPause();
-            mapControl.onPause();
-        }
-    
-        @Override
-        public void onStop() {
-            super.onStop();
-            mapControl.onStop();
-        }
-    
-        @Override
-        public void onLowMemory() {
-            super.onLowMemory();
-            mapControl.onLowMemory();
-        }
-    
-        @Override
-        protected void onDestroy() {
-            super.onDestroy();
-            mapControl.onDestroy();
-        }
-    
-        @Override
-        protected void onSaveInstanceState(Bundle outState) {
-            super.onSaveInstanceState(outState);
-            mapControl.onSaveInstanceState(outState);
-        }    
-    }
-    ```
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source, 
+    fillColor("red"),
+    fillOpacity(0.7f)
+), "labels");
+```
 
-Uygulamayı çalıştırdığınızda, haritada aşağıda görüldüğü gibi bir çokgen görmeniz gerekir:
+Aşağıdaki ekran görüntüsünde, bir çokgen katmanı kullanarak bir çokgen alanını işleyen Yukarıdaki kod gösterilmektedir.
 
-![Android haritasında işlenen bir çokgen](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</
+![Fill alanı işlenmiş olan Çokgen](media/how-to-add-shapes-to-android-map/android-polygon-layer.png)
+
+## <a name="use-a-polygon-and-line-layer-together"></a>Bir çokgen ve çizgi katmanını birlikte kullanma
+
+Çokgenler ana hattını işlemek için çizgi katmanı kullanılır. Aşağıdaki kod örneği, önceki örnekte olduğu gibi bir çokgen oluşturur, ancak şimdi bir çizgi katmanı ekler. Bu çizgi katmanı, veri kaynağına bağlı ikinci bir katmandır.  
+
+```java
+//Create a data source and add it to the map.
+DataSource source = new DataSource();
+map.sources.add(source);
+
+//Create a rectangular polygon.
+source.add(Polygon.fromLngLats(
+    Arrays.asList(
+        Arrays.asList(
+            Point.fromLngLat(-73.98235, 40.76799),
+            Point.fromLngLat(-73.95785, 40.80044),
+            Point.fromLngLat(-73.94928, 40.79680),
+            Point.fromLngLat(-73.97317, 40.76437),
+            Point.fromLngLat(-73.98235, 40.76799)
+        )
+    )
+));
+
+//Create and add a polygon layer to render the polygon on the map, below the label layer.
+map.layers.add(new PolygonLayer(source,
+    fillColor("rgba(0, 200, 200, 0.5)")
+), "labels");
+
+//Create and add a line layer to render the outline of the polygon.
+map.layers.add(new LineLayer(source,
+    strokeColor("red"),
+    strokeWidth(2f)
+));
+```
+
+Aşağıdaki ekran görüntüsünde, bir çizgi katmanı kullanılarak oluşturulan ana hattı ile bir çokgen işlenen Yukarıdaki kod gösterilmektedir.
+
+![Kendi Fill alanı ve ana hattı işlenmiş Çokgen](media/how-to-add-shapes-to-android-map/android-polygon-and-line-layer.png)
+
+> [!TIP]
+> Bir çizgi katmanıyla bir çokgen ana hattını oluştururken, her bir nokta dizisinin aynı başlangıç ve bitiş noktasına sahip olması gibi çokgenler içindeki tüm halkaları kapatmayı unutmayın. Bu yapılmazsa, çizgi katmanı, çokgenin son noktasını ilk noktaya bağlayamayabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Haritanızda daha fazla veri eklemek için:
+Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Sembol katmanı ekleme](how-to-add-symbol-to-android-map.md)
+> [Veri kaynağı oluşturma](create-data-source-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Kutucuk katmanı ekleme](how-to-add-tile-layer-android-map.md)
+> [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-android-sdk.md)
 
 > [!div class="nextstepaction"]
-> [Özellik bilgilerini görüntüleme](display-feature-information-android.md)
+> [Çizgi katmanı ekleme](android-map-add-line-layer.md)

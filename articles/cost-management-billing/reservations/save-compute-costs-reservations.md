@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: overview
-ms.date: 11/18/2020
+ms.date: 12/15/2020
 ms.author: banders
-ms.openlocfilehash: 0ef3f833d1bac4f26f49ace2b366cdfcf5ef3e35
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b79bde204d82b069b3314855a45a680b863c3f69
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352992"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560500"
 ---
 # <a name="what-are-azure-reservations"></a>Azure Ayırmaları nedir?
 
@@ -58,13 +58,14 @@ Daha fazla bilgi için bkz.  [Rezervasyon satın alma](prepare-buy-reservation
 
 Rezervasyon ücreti, aboneliğe bağlı ödeme yöntemiyle tahsil edilir. Rezervasyon maliyeti, varsa parasal taahhüt bakiyenizden düşülür. Parasal taahhüt bakiyeniz rezervasyon maliyetini kapsamadığında fazla kullanım üzerinden faturalandırılırsınız. Kullandıkça öde tarifesine sahip tek bir plandan aboneliğiniz varsa, hesabınızda bulunan kredi kartından peşin alma işlemleri için hemen ücret alınır. Aylık ödemeler faturanızda görünür ve kredi kartınızdan aylık olarak ücret alınır. Fatura ile ücret aldığınızda ücretleri bir sonraki faturanızda görürsünüz. 
 
-## <a name="permissions-to-view-and-manage-reservations"></a>Rezervasyonları görüntüleme ve yönetme izinleri 
+## <a name="who-can-manage-a-reservation-by-default"></a>Bir rezervasyonu varsayılan olarak kim yönetebilir?
 
-Rezervasyon satın alan kullanıcı ve rezervasyonu faturalamak için kullanılan aboneliğin hesap yöneticisi, rezervasyon siparişinde ve rezervasyonun kendisinde Sahip rolü elde eder.
+Varsayılan olarak, aşağıdaki kullanıcılar rezervasyonları görüntüleyebilir ve yönetebilir:
 
-Rezervasyon siparişindeki veya rezervasyondaki rollere kullanıcı ekleyerek bir rezervasyonun yönetimi için temsilciler belirleyebilirsiniz. Rolleri Azure portalından veya API’leri ve PowerShell’i kullanarak atarsınız. 
+- Rezervasyonu satın alan kişi ve rezervasyonu satın almak için kullanılan faturalama aboneliğinin hesap yöneticisi rezervasyon siparişine eklenir.
+- Kurumsal Anlaşma ve Microsoft Müşteri Anlaşması faturalandırma yöneticileri.
 
-Daha fazla bilgi için bkz.  [Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation) 
+Diğer kişilerin rezervasyonları yönetme izin vermek için bkz. [Azure kaynakları için rezervasyonları yönetme](manage-reserved-vm-instance.md).
 
 ## <a name="get-reservation-details-and-utilization-after-purchase"></a>Satın alma işleminden sonra rezervasyon ayrıntılarını ve kullanımını alma
 

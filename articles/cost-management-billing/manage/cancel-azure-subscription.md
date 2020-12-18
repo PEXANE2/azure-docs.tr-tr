@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/01/2020
+ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444461"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503803"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure aboneliğinizi iptal etme
 
@@ -30,6 +30,17 @@ Microsoft, gerekli olmasa da aboneliğinizi iptal etmeden önce aşağıdaki iş
 
 Ücretli bir Azure Desteği planını iptal ederseniz abonelik döneminin kalan bölümü için faturalandırılırsınız. Daha fazla bilgi için bkz. [Azure destek planları](https://azure.microsoft.com/support/plans/).
 
+## <a name="who-can-cancel-a-subscription"></a>Aboneliği kim iptal edebilir?
+
+Aşağıdaki tabloda, bir aboneliği iptal etmek için gereken izinler açıklanmaktadır.
+
+|Abonelik türü     |İptal edebilen kişi  |
+|---------|---------|
+|Azure web sitesi üzerinden Azure’a kaydolduğunuzda oluşturulan abonelikler. Örneğin, bir [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/), [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio abonesi](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olarak kaydolduğunuzda. |  Aboneliğin hesap yöneticisi ve sahipleri  |
+|[Microsoft Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/) ve [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Aboneliğin hesap sahibi ve sahipleri       |
+|[Azure planı](https://azure.microsoft.com/offers/ms-azr-0017g/) ve [DevTest için Azure planı](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Aboneliğin sahipleri      |
+
+
 ## <a name="cancel-subscription-in-the-azure-portal"></a>Azure portalında aboneliği iptal etme
 
 1. [Azure portalındaki abonelik sayfasından](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) aboneliğinizi seçin.
@@ -41,15 +52,13 @@ Microsoft, gerekli olmasa da aboneliğinizi iptal etmeden önce aşağıdaki iş
 > [!NOTE]
 > Müşteri tarafından istenmesi ya da ödeme yapılmaması veya sahtekarlık yapılması durumunda iş ortakları aboneliği askıya alabilir veya iptal edebilir. Daha fazla bilgi için bkz. [Aboneliği askıya alma veya iptal etme](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
 
-## <a name="who-can-cancel-a-subscription"></a>Aboneliği kim iptal edebilir?
+## <a name="cancel-a-support-plan"></a>Bir destek planını iptal etme
 
-Aşağıdaki tabloda, bir aboneliği iptal etmek için gereken izinler açıklanmaktadır.
+Destek planınızı Azure web sitesi ya da Azure portal üzerinden satın aldıysanız veya Microsoft Müşteri Anlaşması kapsamında bir planınız varsa bir destek planını iptal edebilirsiniz. Destek planınızı bir Microsoft temsilcisi veya iş ortağı aracılığıyla satın aldıysanız yardım için onlarla iletişime geçin. 
 
-|Abonelik türü     |İptal edebilen kişi  |
-|---------|---------|
-|Azure web sitesi üzerinden Azure’a kaydolduğunuzda oluşturulan abonelikler. Örneğin, bir [Ücretsiz Azure Hesabına](https://azure.microsoft.com/offers/ms-azr-0044p/), [kullandıkça öde fiyatlarına tabi hesaba](https://azure.microsoft.com/offers/ms-azr-0003p/) veya [Visual Studio abonesi](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/) olarak kaydolduğunuzda. |  Aboneliğin hesap yöneticisi ve sahipleri  |
-|[Microsoft Kurumsal Anlaşma](https://azure.microsoft.com/pricing/enterprise-agreement/) ve [Kurumsal Geliştirme ve Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Aboneliğin hesap sahibi ve sahipleri       |
-|[Azure planı](https://azure.microsoft.com/offers/ms-azr-0017g/) ve [DevTest için Azure planı](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Aboneliğin sahipleri      |
+1. Azure portalda **Maliyet Yönetimi + Faturalama**’ya gidin.
+1. **Faturalama** bölümünde **Yinelenen ücretler**’i seçin.
+1. Destek planı satır öğesinin sağ tarafındaki üç noktayı ( **...** ) seçin ve **Otomatik yenilemeyi kapat**’ı seçin.
 
 ## <a name="what-happens-after-subscription-cancellation"></a>Abonelik iptal edildikten sonra ne olur?
 

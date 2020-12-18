@@ -1,24 +1,24 @@
 ---
-title: Azure’da Kuruluş için yönetici rollerini anlama
+title: Azure’da Kurumsal Anlaşmalar (EA) için yönetici rollerini anlama
 description: Azure’da Kuruluş yöneticisi rolleri hakkında bilgi edinin. Beş ayrı yönetim rolü atayabilirsiniz.
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 12/10/2020
 ms.author: banders
-ms.custom: contperfq1
-ms.openlocfilehash: e712b44f22a8080b14a2cc2532cadf2dd4738b76
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409219"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560534"
 ---
-# <a name="managing-azure-enterprise-roles"></a>Azure kurumsal rollerini yönetme
+# <a name="managing-azure-enterprise-agreement-roles"></a>Azure Kurumsal Anlaşma rollerini yönetme
 
-Kuruluşunuzun kullanım ve harcamasının yönetilmesine yardımcı olmak için Kurumsal Anlaşması (EA) olan Azure müşterileri beş farklı yönetici rolü atayabilir:
+Kuruluşunuzun kullanım ve harcamasının yönetilmesine yardımcı olmak için Kurumsal Anlaşması olan Azure müşterileri beş farklı yönetici rolü atayabilir:
 
 - Kuruluş Yöneticisi
 - Kuruluş Yöneticisi (salt okunur)<sup>1</sup>
@@ -40,17 +40,17 @@ Bu roller, Azure Kurumsal Anlaşmaları yönetmeye özgüdür ve kaynaklara eri�
 
 Azure Enterprise Portal hiyerarşisi şunlardan oluşur:
 
-- **Azure Enterprise Portal** , Azure EA hizmetlerinin maliyetini yönetmenize yardımcı olan bir çevrimiçi yönetim portalıdır. Şunları yapabilirsiniz:
+- **Azure Enterprise Portal**, Azure EA hizmetlerinin maliyetini yönetmenize yardımcı olan bir çevrimiçi yönetim portalıdır. Şunları yapabilirsiniz:
 
   - Departmanlar, hesaplar ve abonelikler içeren bir Azure EA hiyerarşisi oluşturma.
   - Tüketilen hizmetlerin maliyetlerini mutabık kılma, kullanım raporlarını indirme ve fiyat listelerini görüntüleme.
   - Kaydınız için API anahtarları oluşturma.
 
-- **Departmanlar** , maliyetleri mantıksal gruplar halinde segmentlere ayırmanıza yardımcı olur. Departmanlar sayesinde departman düzeyinde bütçe veya kota belirleyebilirsiniz.
+- **Departmanlar**, maliyetleri mantıksal gruplar halinde segmentlere ayırmanıza yardımcı olur. Departmanlar sayesinde departman düzeyinde bütçe veya kota belirleyebilirsiniz.
 
-- **Hesaplar** , Azure Enterprise Portal'daki kuruluş birimleridir. Hesapları kullanarak abonelikleri ve erişimi raporlarını yönetebilirsiniz.
+- **Hesaplar**, Azure Enterprise Portal'daki kuruluş birimleridir. Hesapları kullanarak abonelikleri ve erişimi raporlarını yönetebilirsiniz.
 
-- **Abonelikler** , Azure Enterprise Portal'daki en küçük birimdir. Hizmet yöneticisi tarafından yönetilen Azure hizmetlerine yönelik kapsayıcılardır.
+- **Abonelikler**, Azure Enterprise Portal'daki en küçük birimdir. Hizmet yöneticisi tarafından yönetilen Azure hizmetlerine yönelik kapsayıcılardır.
 
 Aşağıdaki diyagramda basit Azure EA hiyerarşileri gösterilmektedir.
 
@@ -82,6 +82,8 @@ Bu role sahip olan kullanıcılar en yüksek erişim düzeyine sahiptir. Bu kull
 - Bildirim kişilerini yönetme.
 - Tüm hesaplarda kullanımı görüntüleme.
 - Tüm hesaplarda faturalandırılmamış ücretleri görüntüleme.
+- Kurumsal Anlaşma için uygulanan tüm rezervasyon siparişlerini ve rezervasyonları görüntüleyin ve yönetin.
+  - Kuruluş yöneticisi (salt okuma), rezervasyon siparişlerini ve rezervasyonlarını görüntüleyebilir. Bunları yönetemez.
 
 Bir kuruluş kaydında birden çok kuruluş yöneticiniz olabilir. Kurumsal yöneticilere salt okuma erişimi verebilirsiniz. Hepsi departman yöneticisi rolünü devralırlar.
 
@@ -154,7 +156,7 @@ Kuruluş yöneticileri bir Azure EA kaydını yönetirken en fazla ayrıcalığa
 
 ## <a name="update-account-owner-state-from-pending-to-active"></a>Beklemede olan hesap sahibi durumunu etkin olarak güncelleştirme
 
-Bir Azure EA kaydına ilk kez yeni Hesap Sahipleri (AO) eklendiğinde durumları _beklemede_ olarak görünür. Yeni bir hesap sahibi etkinleştirme karşılama e-postasını aldığında, hesabını etkinleştirmek için oturum açabilir. Hesabını etkinleştirdiğinde, _beklemede_ olan hesap durumu _etkin_ olarak güncelleştirilir. Hesap sahibinin "Uyarı" iletisini okuması ve **Devam** 'ı seçmesi gerekir. Yeni kullanıcılardan Bir Ticari Hesap oluşturmak için ad ve soyadı girmeleri istenebilir. Bu durumda, devam etmek için gerekli bilgileri eklemesi gerekir. Bundan sonra hesap etkinleştirilir.
+Bir Azure EA kaydına ilk kez yeni Hesap Sahipleri (AO) eklendiğinde durumları _beklemede_ olarak görünür. Yeni bir hesap sahibi etkinleştirme karşılama e-postasını aldığında, hesabını etkinleştirmek için oturum açabilir. Hesabını etkinleştirdiğinde, _beklemede_ olan hesap durumu _etkin_ olarak güncelleştirilir. Hesap sahibinin "Uyarı" iletisini okuması ve **Devam**'ı seçmesi gerekir. Yeni kullanıcılardan Bir Ticari Hesap oluşturmak için ad ve soyadı girmeleri istenebilir. Bu durumda, devam etmek için gerekli bilgileri eklemesi gerekir. Bundan sonra hesap etkinleştirilir.
 
 ## <a name="add-a-department-admin"></a>Departman yöneticisi ekleme
 

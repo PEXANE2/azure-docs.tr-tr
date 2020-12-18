@@ -1,19 +1,19 @@
 ---
 title: Ücretsiz Azure hizmet kullanımını izleme
-description: Azure portalında ücretsiz hizmet kullanımının nasıl denetleneceğini öğrenin. Ücretsiz hesaba eklenen hizmetlerden, siz hizmet sınırlarını aşmadığınız sürece ücret alınmaz.
+description: Azure portalında ücretsiz hizmet kullanımının nasıl denetleneceğini öğrenin. Hizmet sınırlarını aşmadığınız sürece, ücretsiz hesaba dahil olan hizmetler için herhangi bir ücret alınmaz.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/04/2020
 ms.author: banders
-ms.openlocfilehash: 787d54ba2050a0293957310dbc8377b83a7f7bfc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c7c28e64822a6aefa17e8baa4ef42a3b3fea8adb
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690060"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589785"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Ücretsiz Azure hesabınıza dahil olan ücretsiz hizmetlerin kullanımını denetleme
 
@@ -22,18 +22,13 @@ Hizmetlerin limitlerini aşmadığınız sürece, ücretsiz Azure hesabınıza �
 ## <a name="check-usage-in-the-azure-portal"></a>Azure portalında kullanım bilgilerini denetleme
 
 1.  [Azure Portal](https://portal.azure.com) oturum açın.
-
-2.  **Abonelikler** araması yapın.
-
+1.  **Abonelikler** araması yapın.  
     ![Portalda abonelikler aramasını gösteren ekran görüntüsü](./media/check-free-service-usage/billing-search-subscriptions.png)
-
-3.  Ücretsiz Azure hesabına kaydolduğunuzda oluşturulan aboneliği seçin.
-
-4.  Ücretsiz hizmet kullanımını gösteren tabloyu bulmak için aşağı kaydırın.
-
+1.  Ücretsiz Azure hesabına kaydolduğunuzda oluşturulan aboneliği seçin.
+1.  Ücretsiz hizmet kullanımını gösteren tabloyu bulmak için aşağı kaydırın.  
     ![Ücretsiz hizmetlerin kullanımını gösteren ekran görüntüsü](./media/check-free-service-usage/subscription-usage-free-services.png)
 
-    Tabloda aşağıdaki sütunlar bulunur:
+Tabloda aşağıdaki sütunlar bulunur:
 
 * **Ölçüm:** Kullanılmakta olan hizmet için ölçüm birimini belirtir.
 * **Kullanım/Limit:** Geçerli aya ait ölçüm kullanımı ve limiti.
@@ -45,7 +40,7 @@ Hizmetlerin limitlerini aşmadığınız sürece, ücretsiz Azure hesabınıza �
 
 > [!IMPORTANT]
 >
-> Ücretsiz hizmetler yalnızca ücretsiz Azure hesabına kaydolurken oluşturulan abonelik için kullanılabilir. Aboneliğe genel bakış sayfasında ücretsiz hizmetler tablosunu göremiyorsanız, abonelik için kullanılabilir değildir.
+> Ücretsiz hizmetler yalnızca ücretsiz Azure hesabınıza kaydolduğunuzda oluşturulan abonelik için kullanılabilir. Aboneliğe genel bakış sayfasında ücretsiz hizmetler tablosunu göremiyorsanız, abonelik için kullanılabilir değildir.
 
 ## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bize ulaşın.
 

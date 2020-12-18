@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2dff68f98e2922d5fc7a4fca1e6de8740bc2ae68
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 12/18/2020
 ms.locfileid: "92459688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Öğretici: IRP ile tümleştirme Azure Active Directory
@@ -48,11 +48,11 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 IRP 'yi Azure AD 'ye tümleştirmeyi ayarlamak için Galeriden yönetilen SaaS uygulamaları listenize IRP eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com)sol bölmede **Azure Active Directory** ' i seçin:
+1. [Azure Portal](https://portal.azure.com)sol bölmede **Azure Active Directory**' i seçin:
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**  >  **tüm uygulamalar** ' a gidin:
+2. **Kurumsal uygulamalar**  >  **tüm uygulamalar**' a gidin:
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -60,7 +60,7 @@ IRP 'yi Azure AD 'ye tümleştirmeyi ayarlamak için Galeriden yönetilen SaaS u
 
     ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **ITRP** yazın. Arama sonuçlarında **IRP** ' yi seçin ve ardından **Ekle** ' yi seçin.
+4. Arama kutusuna **ITRP** yazın. Arama sonuçlarında **IRP** ' yi seçin ve ardından **Ekle**' yi seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
@@ -84,7 +84,7 @@ Bu bölümde, Azure portal Azure AD çoklu oturum açmayı etkinleştireceksiniz
 
 Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), IRP uygulama tümleştirmesi sayfasında, **Çoklu oturum açma** ' yı seçin:
+1. [Azure Portal](https://portal.azure.com/), IRP uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin:
 
     ![Çoklu oturum açma seçin](common/select-sso.png)
 
@@ -123,11 +123,11 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    1. **Oturum açma URL 'si** .
+    1. **Oturum açma URL 'si**.
 
-    1. **Azure AD tanımlayıcısı** .
+    1. **Azure AD tanımlayıcısı**.
 
-    1. **Oturum kapatma URL 'si** .
+    1. **Oturum kapatma URL 'si**.
 
 ### <a name="configure-itrp-single-sign-on"></a>IRP çoklu oturum açmayı yapılandırma
 
@@ -137,7 +137,7 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
     ![Ayarlar simgesi](./media/itrp-tutorial/ic775570.png "Ayarlar simgesi")
 
-1. Sol bölmede **Çoklu oturum açma** ' yı seçin:
+1. Sol bölmede **Çoklu oturum açma**' yı seçin:
 
     ![Çoklu oturum açma seçin](./media/itrp-tutorial/ic775571.png "Tek Sign-On seçin")
 
@@ -147,7 +147,7 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
     ![Ekran görüntüsü, bu adımda açıklanan bilgileri ekleyebileceğiniz tek Sign-On bölümünü gösterir.](./media/itrp-tutorial/ic775573.png "Tek Sign-On bölümü")
 
-    1. **Etkin** 'i seçin.
+    1. **Etkin**'i seçin.
 
     1. **Uzaktan oturum kapatma URL 'si** kutusunda, Azure Portal KOPYALADıĞıNıZ **Logout URL** değerini yapıştırın.
 
@@ -155,13 +155,13 @@ Azure AD çoklu oturum açma 'yı IRP ile yapılandırmak için şu adımları u
 
     1. **Sertifika parmak izi** kutusunda, Azure Portal kopyaladığınız sertifikanın **parmak izi** değerini yapıştırın.
 
-    1. **Kaydet** ’i seçin.
+    1. **Kaydet**’i seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar** ' ı seçin ve ardından **tüm kullanıcılar** ' ı seçin:
+1. Azure portal sol bölmedeki **Azure Active Directory** ' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin:
 
     ![Tüm kullanıcılar'ı seçin](common/users.png)
 
@@ -177,27 +177,27 @@ Bu bölümde, Azure portal Britta Simon adlı bir test kullanıcısı oluşturac
   
     1. **Kullanıcı adı** kutusuna **BrittaSimon@ girin \<yourcompanydomain> . \<extension>** (Örneğin, BrittaSimon@contoso.com .)
 
-    1. **Parolayı göster** ' i seçin ve ardından **parola** kutusunda değer ' i yazın.
+    1. **Parolayı göster**' i seçin ve ardından **parola** kutusunda değer ' i yazın.
 
-    1. **Oluştur** ’u seçin.
+    1. **Oluştur**’u seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak ITRP 'ye erişim izni vererek Britta Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar** ' ı seçin, **tüm uygulamalar** ' ı seçin ve ardından **IRP** ' yi seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **IRP**' yi seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **IRP** ' yi seçin.
+2. Uygulamalar listesinde **IRP**' yi seçin.
 
     ![Uygulama listesi](common/all-applications.png)
 
-3. Sol bölmede **Kullanıcılar ve gruplar** ' ı seçin:
+3. Sol bölmede **Kullanıcılar ve gruplar**' ı seçin:
 
     ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle** ' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+4. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
     ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
@@ -205,7 +205,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak ITRP 'ye erişim
 
 6. SAML assertion 'da bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Pencerenin alt kısmındaki **Seç** düğmesine tıklayın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** ' yı seçin.
+7. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ### <a name="create-an-itrp-test-user"></a>IRP test kullanıcısı oluşturma
 
@@ -219,7 +219,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
     ![Kayıtlar simgesi](./media/itrp-tutorial/ic775575.png "Kayıtlar simgesi")
 
-1. Menüsünde **kişiler** ' i seçin:
+1. Menüsünde **kişiler**' i seçin:
 
     ![Kişi Seç](./media/itrp-tutorial/ic775587.png "Kişi Seç")
 
@@ -233,7 +233,7 @@ Bir kullanıcı hesabı oluşturmak için şu adımları uygulayın:
 
     1. Eklemek istediğiniz geçerli bir Azure AD hesabının adını ve e-posta adresini girin.
 
-    1. **Kaydet** ’i seçin.
+    1. **Kaydet**’i seçin.
 
 > [!NOTE]
 > Azure AD Kullanıcı hesapları sağlamak için IRP tarafından sunulan herhangi bir kullanıcı hesabı oluşturma aracını veya API 'YI kullanabilirsiniz.

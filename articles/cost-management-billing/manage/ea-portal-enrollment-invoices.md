@@ -3,18 +3,18 @@ title: Azure Kurumsal kayıt faturaları
 description: Bu makalede Azure Kurumsal faturanızı nasıl yöneteceğiniz ve işleme alacağınız açıklanır.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/23/2020
+ms.date: 12/09/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.custom: contperfq1
-ms.openlocfilehash: 57ada2ca760ffff2124582c31fdd095d04d4375f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.custom: contperf-fy21q1
+ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410977"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97030731"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Kurumsal kayıt faturaları
 
@@ -27,7 +27,7 @@ Kuruluş yöneticileri, Azure Enterprise Portal’da kullanım verilerinin özet
 Belirli hesaplardaki ayrıntılı kullanımı görüntülemek için kullanım ayrıntıları raporunu indirin:
 
 1. Azure Enterprise Portal'da oturum açın.
-1. **Raporlar** ’ı seçin.
+1. **Raporlar**’ı seçin.
 1. **Kullanımı İndir** sekmesini seçin.
 1. Rapor listesinde indirmek istediğiniz aylık rapora ait olan **İndir** bağlantısını seçin.
 
@@ -39,18 +39,14 @@ Belirli hesaplardaki ayrıntılı kullanımı görüntülemek için kullanım ay
 Kullanım özeti raporlarını ve grafiklerini görüntülemek için:
 
 1. Azure Enterprise Portal'da oturum açın.
-
 1. Ön ödeme dönemi seçin.
-
-   **Kullanım Özeti** tarih aralığını değiştirmek için sayfanın sağ üst tarafından **M** (Aylık) yerine **C** (Özel) görünüme geçiş yapabilir ve özel başlangıç ve bitiş tarihleri girebilirsiniz.
-
+   **Kullanım Özeti** tarih aralığını değiştirmek için sayfanın sağ üst tarafından **M** (Aylık) yerine **C** (Özel) görünüme geçiş yapabilir ve özel başlangıç ve bitiş tarihleri girebilirsiniz.  
    ![Özel görünümde kullanım özetini oluşturup görüntüleme ve raporları indirme](./media/ea-portal-enrollment-invoices/create-ea-view-usage-summary-and-download-reports-custom-view.png)
 1. Ek ayrıntıları görüntülemek için grafikte bir dönem veya ay seçebilirsiniz.
-
    - Grafik, kullanılan kullanım, fazla servis ücreti, ayrı olarak faturalandırılan ücretler ve Azure Market ücretlerinin dökümü ile aylık kullanım üzerinden ayı gösterir.
    - Seçilen ay için grafiğin altındaki alanları kullanarak departmanlara, hesaplara ve aboneliklere göre filtreleme yapabilirsiniz.
    - **Hizmetlere Göre Ücret** ve **Hiyerarşiye Göre Ücret** arasında geçiş yapabilirsiniz.
-   - İlgili bölümleri genişleterek **Azure Hizmeti** , **Ayrı Olarak Faturalandırılan Ücretler** ve **Azure Market** ile ilgili ayrıntıları görüntüleyebilirsiniz.
+   - İlgili bölümleri genişleterek **Azure Hizmeti**, **Ayrı Olarak Faturalandırılan Ücretler** ve **Azure Market** ile ilgili ayrıntıları görüntüleyebilirsiniz.
 
 Kullanımı nasıl görüntüleyeceğinizi öğrenmek için şu videoyu izleyin:
 
@@ -67,12 +63,12 @@ Kuruluş yöneticileri, aşağıdaki raporları CSV dosyası olarak indirmek iç
 
 Raporları indirmek için:
 
-1. Azure Enterprise Portal'da **Rapor** 'u seçin.
-2. Sayfanın üst kısmındaki **Kullanımı İndir** 'i seçin.
-3. Ay raporunun yanındaki **İndir** 'i seçin.
+1. Azure Enterprise Portal'da **Rapor**'u seçin.
+2. Sayfanın üst kısmındaki **Kullanımı İndir**'i seçin.
+3. Ay raporunun yanındaki **İndir**'i seçin.
 
    > [!NOTE]
-   > Tahakkuk eden kullanım tarihi ile kullanımın raporlarda gösterilmesi arasında beş güne kadar gecikme olabilir.
+   > Tahakkuk eden kullanım tarihi ile kullanımın raporlarda gösterilmesi arasında 72 saate kadar gecikme olabilir.
    >
    > Safari ile Excel'e CSV dosyalarını indiren kullanıcılar biçimlendirme hatalarıyla karşılaşabilir. Hataları önlemek için dosyayı bir metin düzenleyicisi kullanarak açın.
 
@@ -86,9 +82,9 @@ Kullanım bilgilerinin nasıl indirileceğini görmek için şu videoyu izleyin:
 
 Belirli tarih aralıklarını veya hesapları kapsayan raporlar oluşturmak için gelişmiş rapor indirme işlevini kullanabilirsiniz. Çıkış dosyası, büyük kayıt kümelerinin kullanılabilmesi için CSV biçimindedir.
 
-1. Azure Enterprise Portal'da **Gelişmiş Rapor İndirme** 'yi seçin.
+1. Azure Enterprise Portal'da **Gelişmiş Rapor İndirme**'yi seçin.
 1. Uygun bir tarih aralığı ve uygun hesapları seçin.
-1. **Kullanım Verilerini İste** 'yi seçin.
+1. **Kullanım Verilerini İste**'yi seçin.
 1. Rapor durumu **İndir** olana kadar **Yenile** düğmesini seçin.
 1. Raporu indirin.
 
@@ -106,25 +102,25 @@ Kuruluş yöneticisi fatura tarihinden önce bir satın alma siparişi (PO) numa
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Azure hizmetleri satın alma siparişi numarasını güncelleştirmek için:
 
-1. Azure Enterprise Portal'da **Rapor** > **Kullanım Özeti** 'ni seçin.
-1. Sağ üst köşedeki **PO Numaralarını Düzenle** 'yi seçin.
+1. Azure Enterprise Portal'da **Rapor** > **Kullanım Özeti**'ni seçin.
+1. Sağ üst köşedeki **PO Numaralarını Düzenle**'yi seçin.
 1. **Azure Hizmetleri** radyo düğmesini seçin.
 1. Tarih aralıkları açılan menüsünden bir **Fatura Dönemi** seçin.
 
    Fatura bildirimi aldıktan sonraki yedi günlük süre içinde, faturayı ödemeden önce PO numarasını düzenleyebilirsiniz.
 1. **PO Numarası** alanına yeni bir PO numarası girin.
-1. Yaptığınız değişikliği göndermek için **Kaydet** ’i seçin.
+1. Yaptığınız değişikliği göndermek için **Kaydet**’i seçin.
 
 ### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Azure Market satın alma siparişi numarasını güncelleştirmek için:
 
-1. Azure Enterprise Portal'da **Rapor** > **Kullanım Özeti** 'ni seçin.
-1. Sağ üst köşedeki **PO Numaralarını Düzenle** 'yi seçin.
+1. Azure Enterprise Portal'da **Rapor** > **Kullanım Özeti**'ni seçin.
+1. Sağ üst köşedeki **PO Numaralarını Düzenle**'yi seçin.
 1. **Market** radyo düğmesini seçin.
 1. Tarih aralıkları açılan menüsünden bir **Fatura Dönemi** seçin.
 
    Fatura bildirimi aldıktan sonraki yedi günlük süre içinde, faturayı ödemeden önce PO numarasını düzenleyebilirsiniz.
 1. **PO Numarası** alanına yeni bir PO numarası girin.
-1. Yaptığınız değişikliği göndermek için **Kaydet** ’i seçin.
+1. Yaptığınız değişikliği göndermek için **Kaydet**’i seçin.
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure kurumsal faturalama sıklığı
 
@@ -142,20 +138,20 @@ Faturalama aralığınız, ön ödemeli satın alma işlemlerinizi nasıl tamaml
 
 Fazla kullanım faturanızın gönderileceği tarih, kayıt başlangıç ve kurulum tarihinize göre belirlenir:
 
-- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden önce olan doğrudan kayıtlar** :
+- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden önce olan doğrudan kayıtlar**:
   - Doğrudan Kurumsal Azure (EA) müşterisiyseniz Azure Market hizmetleri hariç olmak üzere Azure hizmetleri için yıllık faturalama dönemine tabi olursunuz. Faturalama döneminiz, yıl dönümü tarihinize (anlaşmanızın yürürlüğe girdiği tarihe) göre belirlenir.
   - Azure EA Ön Ödeme eşiğinizi %150 oranında aşmanız halinde, otomatik olarak yıl dönümü tarihinize göre belirlenen üç aylık faturalama dönemine geçersiniz. Ayrıca bir Azure hizmet fazla kullanımı faturası da gönderilir.
   - Azure Ön Ödeme eşiğinizi %150 oranında aşmazsanız kaydınız yıllık faturalama döneminde kalır. Fazla kullanım faturası, Ön ödeme yılının sonunda gönderilir.
 
-- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden sonra olan doğrudan kayıtlar** :
+- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden sonra olan doğrudan kayıtlar**:
   - Azure tüketiminiz ve ücretleriniz için aylık faturalama dönemi kullanılarak ayrı faturalar düzenlenir.
   - Azure Ön Ödeme kapsamına girmeyen ücretler, fazla kullanım ödemesi olarak değerlendirilir.  
 
-- **Kayıt tarihi 1 Mayıs 2018 tarihinden önce olan dolaylı kayıtlar** :
+- **Kayıt tarihi 1 Mayıs 2018 tarihinden önce olan dolaylı kayıtlar**:
 
   Başlangıç tarihi 1 Mayıs 2018 öncesinde olan dolaylı bir Kurumsal Anlaşma (EA) müşterisiyseniz üç aylık faturalama dönemini kullanırsınız. Kanal iş ortağı (CP) size doğrudan fatura düzenler.  
 
-- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden sonra olan dolaylı kayıtlar** :
+- **Başlangıç tarihi, 1 Mayıs 2018 tarihinden sonra olan dolaylı kayıtlar**:
 
   Aylık faturalama dönemini kullanırsınız.  
 
@@ -169,15 +165,15 @@ Fazla kullanım olduğunda, faturalama döneminde Ön ödemenizi aşan kullanım
 
 Faturadaki her bir öğe için şu bilgileri göreceksiniz:
 
-- **Genişletilmiş Tutar** : Ücretlerin toplamı
-- **Ön Ödeme Kullanımı** : Ücretleri karşılamak için kullanılan Ön ödeme miktarı
-- **Net Tutar** : Ön ödemenizi aşan ücretler
+- **Genişletilmiş Tutar**: Ücretlerin toplamı
+- **Ön Ödeme Kullanımı**: Ücretleri karşılamak için kullanılan Ön ödeme miktarı
+- **Net Tutar**: Ön ödemenizi aşan ücretler
 
 Geçerli vergiler yalnızca Ön ödemenizi aşan net tutar üzerinden hesaplanır.
 
 Fazla kullanım faturalama süreci otomatiktir. Bildirimlerin ve faturaların gönderim tarihi, faturalama dönemi bitiş tarihinize göre belirlenir.
 
-- Fazla kullanım bildirimi genellikle son faturalandırma tarihinizden yedi gün sonra gönderilir.
+- Fazla kullanım bildirimi normalde faturalandırma tarihinizden yedi gün sonra gönderilir.
 - Fazla kullanım faturaları, bildirimden sonra yedi ile dokuz gün arasında gönderilir.
 - Fazla kullanım bildirimi ile faturalama arasındaki yedi gün boyunca ücretleri gözden geçirebilir ve sistem tarafından oluşturulan PO numaralarını güncelleştirebilirsiniz.
 
@@ -210,7 +206,7 @@ Kaydınıza uygulanan tüm kredileri veya düzeltmeleri [Azure Enterprise Portal
 Kredileri görüntülemek için:
 
 1. [Azure Enterprise Portal](https://ea.azure.com)'da **Raporlar** bölümünü seçin.
-1. **Kullanım Özeti** 'ni seçin.
+1. **Kullanım Özeti**'ni seçin.
 1. Sağ üst köşeden **M** yerine **C** görünümüne geçiş yapın.
 1. Azure hizmet ön ödemesi tablosundaki düzeltme alanını genişletin.
 1. Kaydınıza uygulanan kredileri ve kısa açıklamaları görürsünüz. Örneğin: Hizmet Düzeyi Sözleşmesi Kredisi.
@@ -246,7 +242,7 @@ Kurumsal Anlaşma ölçü birimleri genellikle Microsoft Çevrimiçi Abonelik S�
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Kullanım ayrıntıları raporu ile kullanım özeti sayfası verilerini birbirine dönüştürme
 
-İndirilen kullanım verileri raporunda ham kullanım verileri için altı ondalık basamak bulunur. Ancak Azure Enterprise Portal’da gösterilen veriler, Ön Ödeme birimlerinde kullanımı dört ondalık basamağa yuvarlar, fazla kullanım birimlerinde de tüm ondalık basamakları siler. Ham kullanım verileri, Azure Enterprise Portal'da kullanılan birimlere dönüştürülmeden önce dört basamağa yuvarlanır. Daha sonra dönüştürülen Enterprise birimleri yeniden dört basamağa yuvarlanır. Dönüştürme öncesindeki tüketilen gerçek saat sayısı yalnızca indirilen kullanım raporunda gösterilir, Azure Enterprise Portal'da gösterilmez.
+İndirilen kullanım verileri raporunda ham kullanım verileri için altı ondalık basamak bulunur. Ancak Azure Enterprise Portal’da gösterilen veriler, Ön Ödeme birimlerinde kullanımı dört ondalık basamağa yuvarlar, fazla kullanım birimlerinde de tüm ondalık basamakları siler. Ham kullanım verileri, Azure Enterprise portalda kullanılan birimlere dönüştürülmeden önce ilk olarak dört basamağa yuvarlanır. Daha sonra dönüştürülen Enterprise birimleri yeniden dört basamağa yuvarlanır. Dönüştürme öncesindeki tüketilen gerçek saat sayısı yalnızca indirilen kullanım raporunda gösterilir, Azure Enterprise Portal'da gösterilmez.
 
 Örneğin: Kullanım raporunda 694,533404 gerçek SQL Server saatlerinin bildirildiğini düşünelim. Bu birimler önce 6,94533404 birim 100 işlem saatine dönüştürülür ve ardından 6,9453 şeklinde yuvarlanır ve Azure Enterprise Portal'da bu şekilde görüntülenir.
 
@@ -264,7 +260,7 @@ Faturalandırılan tüm kullanımlar, tam saatlik artışlar yerine dakikaların
 
 ### <a name="average-daily-consumption"></a>Günlük ortalama tüketim
 
-Bazı hizmetler aylık olarak fiyatlandırılır ancak kullanımı günlük olarak bildirilir. Bu gibi durumlarda kullanım günlük olarak hesaplanır, 31'e bölünür ve ilgili faturalama ayındaki gün sayısına göre toplanır. Bu durumda herhangi bir ay için beklenen ücretler yüksek olmaz ancak 31 günden kısa aylar için biraz daha düşük olur.
+Bazı hizmetler aylık olarak fiyatlandırılır ancak kullanımı günlük olarak bildirilir. Bu gibi durumlarda kullanım günlük olarak hesaplanır, 31'e bölünür ve ilgili faturalama ayındaki gün sayısına göre toplanır. Bu nedenle, oranlar hiçbir zaman herhangi bir ay için beklenenden yüksek olmaz ve 31 günden kısa aylar için biraz daha düşüktür.
 
 ### <a name="compute-hours-conversion"></a>İşlem saati dönüştürme
 
@@ -300,7 +296,7 @@ Azure Ön Ödeme, Azure hizmetleri için önceden ödenen tutardır. Hizmetler k
 
 ### <a name="charges-billed-separately"></a>Ayrı olarak faturalandırılan ücretler
 
-Üçüncü taraf kaynaklar tarafından sunulan bazı ürün ve hizmetler, Azure Ön Ödemesini kullanmaz. Bu öğeler bunun yerine standart faturalama döneminin fazla kullanım faturasında ayrı olarak faturalanır.
+Üçüncü taraf kaynaklardan sağlanan bazı ürün ve hizmetler Azure Ön Ödemesini kullanmaz. Bu öğeler bunun yerine standart faturalama döneminin fazla kullanım faturasında ayrı olarak faturalanır.
 
 Tüm Azure ve Azure Market ücretlerini, kaydın faturalama dönemiyle eşleşen tek bir fatura olacak şekilde birleştirdik. Birleştirilmiş fatura Avustralya, Japonya veya Singapur’daki müşteriler için geçerli değildir.
 
