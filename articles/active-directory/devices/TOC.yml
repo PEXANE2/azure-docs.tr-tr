@@ -30,8 +30,6 @@
       href: azuread-join-sso.md
     - name: Birincil Yenileme Belirteçleri
       href: concept-primary-refresh-token.md
-    - name: Azure tarafından yönetilen iş istasyonları
-      href: concept-azure-managed-workstation.md
 - name: Nasıl yapılır kılavuzları
   expanded: false
   items:
@@ -55,8 +53,6 @@
       href: howto-vm-sign-in-azure-ad-windows.md
     - name: Sanal masaüstü altyapısı
       href: howto-device-identity-virtual-desktop-infrastructure.md
-    - name: Azure tarafından yönetilen iş istasyonlarını dağıtma
-      href: howto-azure-managed-workstation.md
     - name: Cihaz kimliği sorunlarını giderme
       items:
         - name: Hibrit Azure AD’ye katılmış geçerli Windows cihazlarında sorun giderme

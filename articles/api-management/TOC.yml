@@ -110,6 +110,8 @@
       items:
         - name: Kapasite ölçümü
           href: api-management-capacity.md
+        - name: Maliyetleri planlama ve yönetme
+          href: plan-manage-costs.md
         - name: Yükseltme ve ölçeklendirme
           href: upgrade-and-scale.md
         - name: Otomatik ölçeklendirmeyi yapılandırma
