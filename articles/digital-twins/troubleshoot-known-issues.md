@@ -6,12 +6,13 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 549e1808a3b449f7d29b968cde76ef29391880b3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100625"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673483"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -19,73 +20,30 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 
 ## <a name="400-client-error-bad-request-in-cloud-shell"></a>"400 istemci hatası: Cloud Shell içinde bozuk Istek"
 
-' Da çalışan Cloud Shell komutları *https://shell.azure.com* zaman zaman "400 Istemci hatası: URL Için hatalı istek: http://localhost:50342/oauth2/token " ve ardından tam yığın izleme tarafından hata vererek başarısız olabilir.
+**Sorun açıklaması:** ' Da çalışan Cloud Shell komutları *https://shell.azure.com* zaman zaman "400 Istemci hatası: URL Için hatalı istek: http://localhost:50342/oauth2/token " ve ardından tam yığın izleme tarafından hata vererek başarısız olabilir.
 
-Azure dijital TWINS için özellikle bu, aşağıdaki komut gruplarını etkiler:
-* `az dt route`
-* `az dt model`
-* `az dt twin`
+| Bu, beni etkiler mi? | Nedeni | Çözüm |
+| --- | --- | --- |
+| &nbsp;Azure &nbsp; dijital &nbsp; TWINS 'de, bu, aşağıdaki komut gruplarını etkiler:<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | Bu Cloud Shell, bilinen bir sorunun sonucudur: [*Cloud Shell Token alma işlemi, 400 Istemci hatasıyla başarısız oluyor: Hatalı istek*](https://github.com/Azure/azure-cli/issues/11749).<br><br>Bu, Azure Digital TWINS örnek kimlik doğrulama belirteçleri ve Cloud Shell varsayılan [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) tabanlı kimlik doğrulaması ile ilgili bir sorun oluşturur. <br><br>Bu, veya komut gruplarından Azure dijital TWINS komutlarını `az dt` etkilemez `az dt endpoint` , çünkü bu, Cloud Shell yönetilen kimlik doğrulamasıyla ilgili bir sorun olmayan farklı bir kimlik doğrulama belirteci (Azure Resource Manager göre) kullanır. | Bunu çözmek için bir yol, `az login` Cloud Shell ' de komutu yeniden çalıştırmak ve sonraki oturum açma adımlarını tamamlıyor. Bu, oturumunuzu yönetilen kimlik kimlik doğrulamasından geçecek, bu da kök sorunu önleyen bir şekilde yapar. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.<br><br>Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz.<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal simge çubuğundaki Cloud Shell simgesinin görüntüsü" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz. |
 
-### <a name="troubleshooting-steps"></a>Sorun giderme adımları
-
-Bu, `az login` Cloud Shell komutu yeniden çalıştırarak ve sonraki oturum açma adımlarını tamamlayarak çözülebilir. Bundan sonra, komutunu yeniden çalıştırmanız gerekir.
-
-Alternatif olarak, Azure portal Cloud Shell bölmesini açabilir ve Cloud Shell işinizi buradan tamamlayabilirsiniz:
-
-:::image type="content" source="media/includes/portal-cloud-shell.png" alt-text="' Cloud Shell ' simgesi vurgulanmış Azure portal görünümü ve Portal penceresinin alt kısmında görünen Cloud Shell" lightbox="media/includes/portal-cloud-shell.png":::
-
-Son olarak, Azure CLı komutlarını yerel olarak çalıştırabilmeniz için başka bir çözüm, [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) 'yi makinenize yüklemektir. Yerel CLı bu sorunla karşılaşmaz.
-
-### <a name="possible-causes"></a>Olası nedenler
-
-Bu Cloud Shell, bilinen bir sorunun sonucudur: [*Cloud Shell Token alma işlemi, 400 Istemci hatasıyla başarısız oluyor: Hatalı istek*](https://github.com/Azure/azure-cli/issues/11749).
-
-Bu, Azure Digital TWINS örnek kimlik doğrulama belirteçleri ve Cloud Shell varsayılan [yönetilen kimlik](../active-directory/managed-identities-azure-resources/overview.md) tabanlı kimlik doğrulaması ile ilgili bir sorun oluşturur. Anahtar çalıştırmanın sorun giderme adımı, `az login` yönetilen kimlik kimlik doğrulamasından, bu nedenle bu sorunu gidermeye çalışır.
-
-Bu, ya da komut gruplarından Azure dijital TWINS komutlarını etkilemez `az dt` `az dt endpoint` , çünkü bu, Cloud Shell yönetilen kimlik doğrulamasıyla ilgili bir sorun olmayan farklı bir tür kimlik doğrulama BELIRTECI (ARM tabanlı) kullanır.
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>Komut dosyası kurulumundan sonra eksik rol ataması
 
-Bazı kullanıcılar [*nasıl yapılır: bir örnek ve kimlik doğrulaması (komut dosyası) ayarlama*](how-to-set-up-instance-scripted.md)rol atama bölümüyle ilgili sorunlar yaşayabilir. Betik hata göstermez, ancak *Azure Digital TWINS veri sahibi* rolü kullanıcıya başarıyla atanmaz ve bu sorun, diğer kaynakları daha fazla kaynak oluşturma yeteneğini etkiler.
+**Sorun açıklaması:** Bazı kullanıcılar [*nasıl yapılır: bir örnek ve kimlik doğrulaması (komut dosyası) ayarlama*](how-to-set-up-instance-scripted.md)rol atama bölümüyle ilgili sorunlar yaşayabilir. Betik hata göstermez, ancak *Azure Digital TWINS veri sahibi* rolü kullanıcıya başarıyla atanmaz ve bu sorun, diğer kaynakları daha fazla kaynak oluşturma yeteneğini etkiler.
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-Rol atamalarınızın betiği çalıştırdıktan sonra başarıyla ayarlandığını anlamak için, kurulum makalesinin [*Kullanıcı rolü atamasını doğrula*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) bölümüne ait yönergeleri izleyin. Kullanıcılarınız bu rolle gösterilmezse, bu sorun sizi etkiler.
-
-### <a name="troubleshooting-steps"></a>Sorun giderme adımları
-
-Çözümlemek için, CLı veya Azure portal kullanarak rol atamasını el ile ayarlayabilirsiniz. 
-
-Aşağıdaki yönergeleri izleyin:
-* [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)
-* [Portal@@](how-to-set-up-instance-portal.md#set-up-user-access-permissions)
-
-### <a name="possible-causes"></a>Olası nedenler
-
-Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile oturum açan kullanıcılar için, kullanıcının oturum açma e-postalarından sizin gibi komutları TANıMLAYAN asıl kimliğiniz, kullanıcının rolü doğru şekilde atamak için bulmasını ve kullanmasını zorlaştırıyor.
+| Bu, beni etkiler mi? | Nedeni | Çözüm |
+| --- | --- | --- |
+| Rol atamalarınızın betiği çalıştırdıktan sonra başarıyla ayarlandığını anlamak için, kurulum makalesinin [*Kullanıcı rolü atamasını doğrula*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) bölümüne ait yönergeleri izleyin. Kullanıcılarınız bu rolle gösterilmezse, bu sorun sizi etkiler. | Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile oturum açan kullanıcılar için, kullanıcının oturum açma e-postalarından sizin gibi komutları TANıMLAYAN asıl kimliğiniz, kullanıcının rolü doğru şekilde atamak için bulmasını ve kullanmasını zorlaştırıyor. | Çözümlemek için, [CLI yönergelerini](how-to-set-up-instance-cli.md#set-up-user-access-permissions) veya [Azure Portal yönergelerini](how-to-set-up-instance-portal.md#set-up-user-access-permissions)kullanarak rol atamasını el ile ayarlayabilirsiniz. |
 
 ## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
 
-Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı** 'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz.
+**Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtı olarak sunulur. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
 
-Bu, kitaplığın en son sürümü değildir. En son sürüm **1.2.2** ' dir.
-
-Etkilenen yöntem aşağıdaki makalelerde kullanılır: 
-* [*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)
-* [*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)
-* [*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md)
-
-Sorun, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtını içerir. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
-
-### <a name="troubleshooting-steps"></a>Sorun giderme adımları
-
-Çözümlemek için, uygulamalarınızı 1.2.2 sürümünü kullanacak şekilde `Azure.Identity` güncelleştirin **1.2.2** . Kitaplığın bu sürümüyle, tarayıcının beklendiği gibi yüklemesi ve kimlik doğrulaması gerekir.
-
-### <a name="possible-causes"></a>Olası nedenler
-
-Bu, kitaplığın en son sürümü (sürüm 1.2.0) ile ilgili bir açık sorun ile ilgilidir `Azure.Identity` : [*ınteractivebrowsercredential kullanılırken kimlik doğrulaması başarısız olur*](https://github.com/Azure/azure-sdk-for-net/issues/13940). **1.2.0**
-
-Bu sorunu, Azure dijital TWINS uygulamanızda sürüm **1.2.0** kullanıyorsanız veya bir sürüm belirtmeden kitaplığı projenize eklerseniz (Bu en son sürümü varsayılan olarak da budur) görürsünüz.
+| Bu, beni etkiler mi? | Nedeni | Çözüm |
+| --- | --- | --- |
+| &nbsp;Etkilenen &nbsp; Yöntem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; aşağıdaki makalelerde kullanılır:<br><br>[*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)<br><br>[*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)<br><br>[*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md) | Bazı kullanıcılar, kitaplığın sürüm **1.2.0** Bu soruna sahipti `Azure.Identity` . | Çözümlemek için uygulamalarınızı [en son sürümünü](https://www.nuget.org/packages/Azure.Identity) kullanacak şekilde güncelleştirin `Azure.Identity` . Kitaplık sürümünü güncelleştirdikten sonra, tarayıcı yüklenmesi ve beklendiği gibi kimlik doğrulaması yapılmalıdır. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

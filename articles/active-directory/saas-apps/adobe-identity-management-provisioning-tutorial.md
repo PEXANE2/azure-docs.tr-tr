@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a87a08db672c459138fc1efd865332dc0f19944e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 7b4dd01b74f81318338196a40949d339f13d16da
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586686"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673311"
 ---
 # <a name="tutorial-configure-adobe-identity-management-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Adobe Identity Management 'ı yapılandırma
 
@@ -35,7 +35,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Adobe 
 > * Adobe Identity Management 'ta grupları ve grup üyeliklerini sağlama
 > * Adobe Identity Management 'ta çoklu oturum açma (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -57,15 +57,15 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 2. **Eşitleme Ekle**' ye tıklayın.
 
-      ![Ekle](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
+    ![Ekle](media/adobe-identity-management-provisioning-tutorial/add-sync.png)
 
 3. **Microsoft Azure kullanıcıları Eşitle** ' yi seçin ve **İleri**' ye tıklayın.
 
-      ![' Kullanıcıları Microsoft Azure Active Directory 'tan Eşitle ' ' nin seçili olduğunu gösteren ekran görüntüsü.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
+    ![' Kullanıcıları Microsoft Azure Active Directory 'tan Eşitle ' ' nin seçili olduğunu gösteren ekran görüntüsü.](media/adobe-identity-management-provisioning-tutorial/sync-users.png)
 
 4. **Kiracı URL 'sini** ve **gizli anahtarı** kopyalayın ve kaydedin. Bu değerler, Azure portal Adobe Identity Management uygulamanızın sağlama sekmesinde **kiracı URL 'si** ve **gizli belirteç** alanlarına girilir.
 
-      ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
+    ![Sync](media/adobe-identity-management-provisioning-tutorial/token.png)
 
 ## <a name="step-3-add-adobe-identity-management-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden Adobe Identity Management ekleme
 

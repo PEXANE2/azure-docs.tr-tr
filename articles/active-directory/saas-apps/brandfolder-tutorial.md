@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: jeedes
-ms.openlocfilehash: 56d2a3355fac565fac65ac1ba3c7d0c4c2fd8429
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5004b433189700bc2fbaf5efe65e4556d40521cb
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456815"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brandfolder"></a>Öğretici: Brandfolder ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Brandfolder 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Brandfolder ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,13 +63,13 @@ Brandfolder tümleştirmesini Azure AD 'ye göre yapılandırmak için galeridek
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **brandfolder**yazın, sonuç panelinden **brandfolder** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **brandfolder** yazın, sonuç panelinden **brandfolder** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesindeki brandfolder](common/search-new-app.png)
+    ![Sonuçlar listesindeki brandfolder](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Brandfolder ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Brandfolder ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Brandfolder içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Brandfolder ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -134,8 +134,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
-  
+    a. **Ad** alanına **Brittasıon** yazın.
+
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
@@ -171,7 +171,7 @@ Bu bölümde, Brandfolder 'a erişim vererek Azure çoklu oturum açma özelliğ
 
 ### <a name="create-brandfolder-test-user"></a>Brandfolder test kullanıcısı oluştur
 
-Bu bölümde, Brandfolder 'da Britta Simon adlı bir Kullanıcı oluşturulur. Brandfolder, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Brandfolder 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Bu bölümde, Brandfolder 'da Britta Simon adlı bir Kullanıcı oluşturulur. Brandfolder, varsayılan olarak etkinleştirilen **tam zamanında Kullanıcı sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Brandfolder 'da zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

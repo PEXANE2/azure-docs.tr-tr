@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 28dec1681d2849c6dbcf4b0b1b5ac7767bd77e42
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 10531f87ee4a170310a97831a374a836641ce12b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457223"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673350"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Öğretici: BGS Online ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile BGS 'yi çevrimiçi tümleştirme, aşağıdaki avantajları sağla
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini BGS Online ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ BGS online 'ın Azure AD ile tümleştirilmesini yapılandırmak için, galeride
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **BGS online**yazın, sonuç panelinden **BGS online** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **BGS online** yazın, sonuç panelinden **BGS online** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuçlar listesinde BGS çevrimiçi](common/search-new-app.png)
+    ![Sonuçlar listesinde BGS çevrimiçi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre BGS online Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre BGS online Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve bag online 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı, BGS Online ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -150,9 +150,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

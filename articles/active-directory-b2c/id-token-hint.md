@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79a99d9f0ca117d8f47d56d76399210a72b91bb7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d77e145cabcef2931d5fe6e76599da7931e576e8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94951664"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669168"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde bir KIMLIK belirteci ipucu teknik profili tanımlama
 
 Azure AD B2C, bağlı olan taraf uygulamalarının OAuth2 yetkilendirme isteğinin bir parçası olarak bir gelen JWT göndermesini sağlar. JWT belirteci bir bağlı olan taraf uygulaması veya bir kimlik sağlayıcısı tarafından verilebilir ve Kullanıcı veya yetkilendirme isteği hakkında bir ipucu geçirebilir. Azure AD B2C imza, verenin adı ve belirteç kitini doğrular ve gelen belirteçten talebi ayıklar.
 
-## <a name="use-cases"></a>Uygulama alanları
+## <a name="use-cases"></a>Kullanım örnekleri
 
 Bu çözümü, tek bir JWT belirtecinde kapsüllenmiş Azure AD B2C veri göndermek için kullanabilirsiniz. Sistem yöneticinizin kullanıcılara imzalı bir davet gönderebildiği [e-posta daveti çözümüne kaydolma çözümü](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md), id_token_hint tabanlıdır. Yalnızca davet e-postasına erişimi olan kullanıcılar hesabı dizinde oluşturabilir.
 
@@ -36,10 +36,10 @@ Bu çözümü, tek bir JWT belirtecinde kapsüllenmiş Azure AD B2C veri gönder
 
 | Name | İste | Örnek değer | Description |
 | ---- | ----- | ------------- | ----------- |
-| Hedef kitle | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Belirtecin amaçlanan alıcısını tanımlar. Bu, belirteç veren tarafından tanımlanan rastgele bir dizedir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
-| Veren | `iss` |`https://localhost` | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu, belirteç veren tarafından tanımlanan rastgele bir URI 'dir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
-| Sona erme saati | `exp` | `1600087315` | Belirtecin, dönem zamanında temsil edilen geçersiz hale geldiği zaman. Azure AD B2C bu talebi doğrulamaz. |
-| Önce değil | `nbf` | `1599482515` | Belirtecin geçerli hale geldiği zaman, dönem süresi cinsinden temsil edilir. Bu zaman, genellikle belirtecin verildiği zaman ile aynıdır. Azure AD B2C bu talebi doğrulamaz. |
+| Hedef kitle | `aud` | `a489fc44-3cc0-4a78-92f6-e413cd853eae` | Belirtecin amaçlanan alıcısını tanımlar. Hedef kitle, belirteç veren tarafından tanımlanan rastgele bir dizedir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
+| Veren | `iss` |`https://localhost` | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Veren, belirteç veren tarafından tanımlanan rastgele bir URI 'dir. Azure AD B2C, bu değeri doğrular ve eşleşmezse belirteci reddeder.  |
+| Sona erme saati | `exp` | `1600087315` | Belirtecin, dönem zamanında temsil edilen geçersiz hale geldiği zaman. Azure AD B2C, bu değeri doğrular ve belirtecin geçerliliği dolmuşsa belirteci reddeder.|
+| Önce değil | `nbf` | `1599482515` | Belirtecin geçerli hale geldiği zaman, dönem süresi cinsinden temsil edilir. Bu zaman, genellikle belirtecin verildiği zaman ile aynıdır. Azure AD B2C bu değeri doğrular ve belirteç ömrü geçerli değilse belirteci reddeder. |
 
  Aşağıdaki belirteç geçerli bir KIMLIK belirteci örneğidir:
 
@@ -85,7 +85,7 @@ Simetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir.
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | yayınlayan | Yes | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer `iss` , JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. | 
-| Idtokenaudience | Yes | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talebinin talebiyle aynı olmalıdır. | 
+| Idtokenaudience | Yes | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. | 
 
 Asimetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir. 
 
@@ -93,7 +93,7 @@ Asimetrik anahtar kullanılırken aşağıdaki meta veriler geçerlidir.
 | --------- | -------- | ----------- |
 | VERIYI| Yes | Bir OpenID iyi bilinen yapılandırma uç noktası olarak da bilinen, belirteç verenin yapılandırma belgesine işaret eden bir URL.   |
 | yayınlayan | No | Güvenlik belirteci hizmetini (belirteç veren) tanımlar. Bu değer, meta verilerde yapılandırılan değerin üzerine yazmak için kullanılabilir ve `iss` JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. |  
-| Idtokenaudience | No | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talebinin talebiyle aynı olmalıdır. |  
+| Idtokenaudience | No | Belirtecin amaçlanan alıcısını tanımlar. `aud`JWT belirteci talep kapsamındaki talebe özdeş olmalıdır. |  
 
 ## <a name="cryptographic-keys"></a>Şifreleme anahtarları
 
@@ -272,7 +272,7 @@ Hem simetrik hem de asimetrik yaklaşımlar için `id_token_hint` Teknik profil,
     </RelyingParty>
     ```
 
-İş gereksinimlerinize bağlı olarak, belirteç doğrulamaları eklemeniz gerekebilir; Örneğin, belirteç süre sonu, e-posta adresi biçimi ve daha fazlasını denetlemek için. Bunu yapmak için, bir [talep dönüştürme teknik profili](claims-transformation-technical-profile.md)çağıran düzenleme adımları ekleyin. Ayrıca bir hata iletisi sunmak için [kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md) ekleyin. 
+İş gereksinimlerinize bağlı olarak, belirteç doğrulamaları eklemeniz gerekebilir, örneğin e-posta adresinin biçimini kontrol edebilirsiniz. Bunu yapmak için, bir [talep dönüştürme teknik profili](claims-transformation-technical-profile.md)çağıran düzenleme adımları ekleyin. Ayrıca bir hata iletisi sunmak için [kendi kendine onaylanan bir teknik profil](self-asserted-technical-profile.md) ekleyin. 
 
 ### <a name="create-and-sign-a-token"></a>Belirteç oluşturma ve imzalama
 

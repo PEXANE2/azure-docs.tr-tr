@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
-ms.openlocfilehash: ee314708f0d564bf1af639a3d864ea19472425cf
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 16002d7acf97832f743410a203e2f76e99646c0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937636"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673367"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps için sınırlar ve yapılandırma bilgileri
 
@@ -23,7 +23,7 @@ Bu makalede, Azure Logic Apps ile otomatik iş akışları oluşturma ve çalı�
 
 Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | İş akışı başına eylemler | 500 | Bu sınırı genişletmek için, gerektiği gibi iç içe geçmiş iş akışları ekleyebilirsiniz. |
 | Eylemler için izin verilen iç içe geçme derinliği | 8 | Bu sınırı genişletmek için, gerektiği gibi iç içe geçmiş iş akışları ekleyebilirsiniz. |
@@ -47,7 +47,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Çalıştırma süresi | 90 gün | 366 gün | Çalıştırma süresi, bir çalıştırmanın başlangıç saati ve iş akışı ayarında belirtilen sınır kullanılarak hesaplanır, bu başlangıç saatinde [**Geçmiş bekletme gerçekleştirin**](#change-duration) . <p><p>Varsayılan sınırı değiştirmek için bkz. [depolamada çalışma süresini ve geçmiş bekletmesini değiştirme](#change-duration). |
 | Depolama alanında çalışma geçmişi tutma | 90 gün | 366 gün | Bir çalıştırmanın süresi geçerli çalışma geçmişi saklama sınırını aşarsa, çalışma, depolama alanındaki çalıştırma geçmişinden kaldırılır. Çalıştırmanın tamamlanması veya zaman aşımına uğrayıp, çalıştırma geçmişi saklama, iş akışı ayarında belirtilen başlangıç saati ve geçerli sınır kullanılarak her zaman hesaplanır, [**geçmiş tutma işlemini gün olarak çalıştırın**](#change-retention). Önceki sınıra bakılmaksızın, geçerli sınır, saklama hesaplaması için her zaman kullanılır. <p><p>Varsayılan sınırı değiştirmek ve daha fazla bilgi için bkz. [depolama alanında değiştirme süresi ve çalıştırma geçmişi tutma](#change-retention). Maksimum limiti artırmak için, gereksinimlerle ilgili yardım için [Logic Apps ekibine başvurun](mailto://logicappsemail@microsoft.com) . |
@@ -112,7 +112,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 ### <a name="loops"></a>Döngüler
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Foreach dizi öğeleri | 100.000 | Bu sınır, "for each" döngüsünün işleyebilecekleri en yüksek dizi öğesi sayısını tanımlar. <p><p>Daha büyük dizileri filtrelemek için [sorgu eylemini](logic-apps-perform-data-operations.md#filter-array-action)kullanabilirsiniz. |
 | Foreach eşzamanlılık | Eşzamanlılık kapalı ile: 20 <p><p>Eşzamanlılık açık: <p><p>-Varsayılan: 20 <br>-Min: 1 <br>-Max: 50 | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek "for each" döngüsü yinelemesi sayısıdır. <p><p>Bu sınırı değiştirmek için, bkz. ["her bir eşzamanlılık sınırı" değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) veya ["for each" döngülerini sırayla çalıştırma](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
@@ -122,7 +122,7 @@ Tek bir mantıksal uygulama çalıştırması için sınırlar şunlardır:
 
 ### <a name="concurrency-and-debatching"></a>Eşzamanlılık ve ayırmayı kaldırma
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Eşzamanlılık tetikleme | Eşzamanlılık kapalı ile: sınırsız <p><p>' İ etkinleştirdikten sonra geri alamazsınız: <p><p>-Varsayılan: 25 <br>-Min: 1 <br>-Max: 50 | Bu sınır, aynı anda veya paralel olarak çalışabilen en yüksek mantıksal uygulama örneği sayısıdır. <p><p>**Note**: eşzamanlılık açık olduğunda, ayırma sınırı, [toplu işleme dizileri](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)için 100 öğeye düşürülür. <p><p>Bu sınırı değiştirmek için bkz. [tetikleyici eşzamanlılık limitini değiştirme](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) veya [örnekleri sıralı olarak tetikleme](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | En fazla bekleyen çalışma | Eşzamanlılık kapalı ile: <p><p>-Min: 1 <br>-Max: 50 <p><p>Eşzamanlılık açık: <p><p>-Min: 10 Plus eşzamanlı çalıştırma sayısı (eşzamanlılık tetikleme) <br>-Max: 100 | Bu sınır, mantıksal uygulamanız zaten en fazla eşzamanlı örnekleri çalıştırıyorsa çalışmayı BEKLENEBİLEN mantıksal uygulama örneklerinin en yüksek sayısıdır. <p><p>Bu sınırı değiştirmek için bkz. [değişiklik bekleyen çalışma sınırı](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
@@ -137,7 +137,7 @@ Tek bir mantıksal uygulama tanımının sınırları aşağıda verilmiştir:
 
 ### <a name="multi-tenant-logic-apps-service"></a>Çok kiracılı Logic Apps hizmeti
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Eylem: 5 dakika başına yürütme sayısı | 100.000 varsayılan sınırıdır, ancak 300.000 en yüksek limit olur. | Mantıksal uygulamanız için varsayılan sınırı en üst sınıra yükseltmek için, önizleme aşamasında olan [yüksek aktarım hızı modunda çalıştır](#run-high-throughput-mode)' a bakın. Ya da iş yükünü, gereken şekilde birden [fazla Logic App üzerinde dağıtabilirsiniz](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) . |
 | Eylem: eşzamanlı giden çağrılar | Yaklaşık 2.500 | Eşzamanlı istek sayısını azaltabilir veya süreyi gerektiği gibi azaltabilirsiniz. |
@@ -195,7 +195,7 @@ Mantıksal uygulama kaynak tanımınız hakkında daha fazla bilgi için bkz. [g
 
 [Premium Ise SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)için üretilen iş sınırları aşağıda verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 |------|-------|-------|
 | Taban birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Ayda ~ 4.000 eylem yürütmelerinin sayısını sağlar; Bu, ayda ~ 160.000.000 eylem yürütmeleri | |
 | Ölçek birimi yürütme sınırı | Altyapı kapasitesi %80 ' a ulaştığında sistem kısıtlanıyor | Her ölçek birimi, dakikada ~ 80.000.000 daha fazla eylem yürütmeleri olan ~ 2.000 ek eylem yürütmeleri sağlayabilir | |
@@ -225,7 +225,7 @@ Tek bir gelen veya giden çağrının sınırları aşağıda verilmiştir:
 
 Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası isteklerini dinler, bu nedenle bu işlemler için zaman aşımı Bu limitlerden daha uzun olabilir. Daha fazla bilgi için, belirli bağlayıcının teknik ayrıntılarına ve ayrıca [Iş akışı tetikleyicilerine ve eylemlerine](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)bakın.
 
-| Ad | Logic Apps (çok kiracılı) | Logic Apps (Önizleme) | Tümleştirme hizmeti ortamı | Notlar |
+| Name | Logic Apps (çok kiracılı) | Logic Apps (Önizleme) | Tümleştirme hizmeti ortamı | Notlar |
 |------|---------------------------|----------------------|---------------------------------|-------|
 | Giden istek | 120 saniye <br>(2 dakika) | 230 saniye <br>(3,9 dakika) | 240 saniye <br>(4 dakika) | Giden istek örnekleri, HTTP tetikleyicisi veya eylemi tarafından yapılan çağrıları içerir. Önizleme sürümü hakkında daha fazla bilgi için bkz. [Azure Logic Apps Preview](logic-apps-overview-preview.md). <p><p>**İpucu**: daha uzun süre çalışan işlemler için [zaman uyumsuz yoklama deseninin](../logic-apps/logic-apps-create-api-app.md#async-pattern) veya [until döngüsünün](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)kullanılması gerekir. [Çağrılabilir bir uç noktasına](logic-apps-http-endpoint.md)sahip başka bir mantıksal uygulamayı çağırdığınızda zaman aşımı sınırlarına geçici bir çözüm Için, yerleşik Azure Logic Apps eylemini kullanabilirsiniz. bunun yerine, **yerleşik olarak** bağlayıcı seçicisinde bulabilirsiniz. |
 | Gelen istek | 120 saniye <br>(2 dakika) | 230 saniye <br>(3,9 dakika) | 240 saniye <br>(4 dakika) | Gelen istek örnekleri, Istek tetikleyicisi, HTTP Web kancası tetikleyicisi ve HTTP Web kancası eylemi tarafından alınan çağrıları içerir. Önizleme sürümü hakkında daha fazla bilgi için bkz. [Azure Logic Apps Preview](logic-apps-overview-preview.md). <p><p>**Note**: özgün arayanın yanıtı alması için, başka bir mantıksal uygulamayı iç içe geçmiş iş akışı olarak çağırmadığınız sürece yanıttaki tüm adımların sınırı içinde tamamlaması gerekir. Daha fazla bilgi için bkz. [çağrı, tetikleyici veya iç içe mantıksal uygulamalar](../logic-apps/logic-apps-http-endpoint.md). |
@@ -235,7 +235,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 #### <a name="message-size"></a>İleti boyutu
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | İleti boyutu | 100 MB | 200 MB | Bu sınırı geçici olarak çözmek için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). Ancak, bazı bağlayıcılar ve API 'Ler parçalama veya varsayılan sınırı desteklemeyebilir. <p><p>-AS2, x12 ve EDIOLGU gibi bağlayıcılar kendi [B2B ileti sınırlarına](#b2b-protocol-limits)sahiptir. <br>-ISE bağlayıcıları Ise bağlayıcı limitlerini değil ıSE sınırını kullanır. |
 | Öbek ile ileti boyutu | 1 GB | 5 GB | Bu sınır, yerel olarak parçalama desteği olan veya çalışma zamanı yapılandırmasında parçalama özelliğini etkinleştirmenize izin veren eylemler için geçerlidir. <p><p>ISE kullanıyorsanız, Logic Apps altyapısı bu sınırı destekler, ancak bağlayıcılar altyapı sınırına kadar kendi parçalama sınırlarına sahiptir; Örneğin, [Azure Blob Storage BAĞLAYıCıSıNıN API başvurusu](/connectors/azureblob/). Öbek oluşturma hakkında daha fazla bilgi için bkz. [öbek ile büyük Iletileri işleme](../logic-apps/logic-apps-handle-large-messages.md). |
@@ -243,7 +243,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 #### <a name="character-limits"></a>Karakter sınırları
 
-| Ad | Notlar |
+| Name | Notlar |
 |------|-------|
 | İfade değerlendirme limiti | 131.072 karakter | , `@concat()` , `@base64()` `@string()` İfadeleri bu sınırdan daha uzun olamaz. |
 | İstek URL 'SI karakter sınırı | 16.384 karakter |
@@ -253,7 +253,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 #### <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Yeniden deneme sayısı | 90 | Varsayılan değer 4'tür. Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
 | En fazla gecikmede yeniden dene | 1 gün | Varsayılanı değiştirmek için [yeniden deneme ilkesi parametresini](../logic-apps/logic-apps-workflow-actions-triggers.md)kullanın. |
@@ -266,7 +266,7 @@ Bazı bağlayıcı işlemleri, zaman uyumsuz çağrılar yapar veya Web kancası
 
 Burada, Istek tetikleyicisiyle başlayan ve Istek tetikleyicisine gelen çağrıları yetkilendirmek için [Açık kimlik doğrulaması Azure Active Directory](../active-directory/develop/index.yml) (Azure AD OAuth) izin veren bir mantıksal uygulama sınırları verilmiştir:
 
-| Ad | Sınır | Notlar |
+| Name | Sınır | Notlar |
 | ---- | ----- | ----- |
 | Azure AD yetkilendirme ilkeleri | 5 | |
 | Yetkilendirme ilkesi başına talepler | 10 | |
@@ -279,7 +279,7 @@ Burada, Istek tetikleyicisiyle başlayan ve Istek tetikleyicisine gelen çağrı
 
 Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları aşağıda verilmiştir.
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | Özel bağlayıcı sayısı | Azure aboneliği başına 1000 | Azure aboneliği başına 1000 ||
 | Özel bağlayıcı için dakika başına istek sayısı | her bağlantı için dakikada 500 istek | *özel bağlayıcı* başına dakika başına 2.000 istek ||
@@ -289,7 +289,7 @@ Web API 'Lerinden oluşturabileceğiniz özel bağlayıcıların sınırları a�
 
 ## <a name="managed-identities"></a>Yönetilen kimlikler
 
-| Ad | Sınır |
+| Name | Sınır |
 |------|-------|
 | Mantıksal uygulama başına yönetilen kimlikler | Sistem tarafından atanan kimlik ya da 1 Kullanıcı tarafından atanan kimlik |
 | Bölge başına bir Azure aboneliğinde yönetilen kimliğe sahip mantıksal uygulama sayısı | 1.000 |
@@ -305,12 +305,12 @@ Her Azure aboneliği şu tümleştirme hesabı sınırlarına sahiptir:
 
 * [Geliştirici ve Premium SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'larda her türlü [tümleştirme hizmeti ortamında (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) tümleştirme hesapları dahil olmak üzere 1.000 toplam tümleştirme hesabı.
 
-* [Geliştirici veya Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'un toplam tümleştirme hesabı sayısıyla sınırlı olup olmadığı her BIR Ise, [Bu sınırı ek bir maliyet için de yükseltebilirsiniz](logic-apps-pricing.md#fixed-pricing):
+* [Geliştirici veya Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)'un her BIR Ise, ek ücret ödemeden tek bir tümleştirme hesabı kullanabilir, ancak dahil edilen hesap türü ıSE SKU 'suna göre değişir. [Ek bir maliyet](logic-apps-pricing.md#fixed-pricing)için, çalışma alanı için toplam sınıra kadar daha fazla tümleştirme hesabı oluşturabilirsiniz:
 
   | ıSE SKU 'SU | Tümleştirme hesabı limitleri |
   |---------|----------------------------|
-  | **Premium** | ücretsiz standart bir hesap dahil olmak üzere yalnızca 20 [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) hesap. [Ek bir maliyet için daha fazla tümleştirme hesabına](logic-apps-pricing.md#fixed-pricing)sahip olabilirsiniz. Ücretsiz veya temel hesaba izin verilmez. |
-  | **Geliştirici** | 20 toplam- [ücretsiz](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 hesap ile sınırlı) ve [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) birleştirilmiş veya tüm standart hesaplar. [Ek bir maliyet için daha fazla tümleştirme hesabına](logic-apps-pricing.md#fixed-pricing)sahip olabilirsiniz. Temel hesaplara izin verilmez. Deneme, geliştirme ve test için [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) kullanın, ancak üretim veya performans testi için kullanmayın. |
+  | **Premium** | ek ücret ödemeden bir standart hesap dahil olmak üzere 20 toplam hesap. Bu SKU ile yalnızca [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) hesaplara sahip olabilirsiniz. Ücretsiz veya temel hesaba izin verilmez. |
+  | **Geliştirici** | [ücretsiz](../logic-apps/logic-apps-pricing.md#integration-accounts) bir hesap (1 ile sınırlı) dahil olmak üzere 20 toplam hesap. Bu SKU ile herhangi bir bileşim olabilir: <p>-Ücretsiz bir hesap ve en fazla 19 [Standart](../logic-apps/logic-apps-pricing.md#integration-accounts) hesap. <br>-Ücretsiz hesap ve en fazla 20 Standart hesap. <p>Temel veya ek ücretsiz hesaba izin verilmez. <p><p>**Önemli**: deneme, geliştirme ve test için [Geliştirici SKU 'su](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) kullanın, ancak üretim veya performans testi için kullanmayın. |
   |||
 
 Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/).
@@ -319,8 +319,7 @@ Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek i�
 
 ### <a name="artifact-limits-per-integration-account"></a>Tümleştirme hesabı başına yapıt sınırları
 
-Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar aşağıda verilmiştir.
-Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma çalışma hesapları için nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#integration-accounts)bakın.
+Her bir tümleştirme hesabı katmanının yapıt sayısına ilişkin sınırlar aşağıda verilmiştir. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azure.microsoft.com/pricing/details/logic-apps/). Fiyatlandırma ve faturalandırma çalışma hesapları için nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#integration-accounts)bakın.
 
 > [!NOTE]
 > Ücretsiz katmanı yalnızca araştırmacı senaryolar için kullanın, üretim senaryolarından değil. Bu katman, aktarım hızını ve kullanımı kısıtlar ve hizmet düzeyi anlaşması (SLA) içermez.
@@ -365,7 +364,7 @@ Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](https://azur
 
 B2B protokolleri için uygulanan ileti boyutu sınırları aşağıda verilmiştir:
 
-| Ad | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
+| Name | Çok kiracılı sınır | Tümleştirme hizmeti ortam sınırı | Notlar |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2-100 MB<br>V1-25 MB | v2-200 MB <br>V1-25 MB | Kod çözme ve kodlama için geçerlidir |
 | X12 | 50 MB | 50 MB | Kod çözme ve kodlama için geçerlidir |

@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/22/2020
+ms.date: 12/16/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 99375abbf8e9749712b878ea35c9bc034bedbc5e
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616153"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671174"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -78,7 +78,7 @@ Log Analytics ücretleri Azure faturanızda eklenir. Azure faturanızın ayrınt
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Azure faturanızda Log Analytics kullanımı görüntüleme 
 
-Azure, [Azure maliyet yönetimi + faturalandırma](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. İlk olarak, "kaynak türü" ile bir filtre ekleyin (Log Analytics için Microsoft. operationalınsights/çalışma alanı ve Microsoft. operationalınsights/çalışma alanı Log Analytics kümeler için), Log Analytics harcamalarınızı izlemenize imkan tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetlerin ayrıca kullanımını Log Analytics çalışma alanı kaynaklarına karşı faturalayacağını unutmayın. Hizmet adı eşlemesini görmek için bir grafik yerine tablo görünümünü seçebilirsiniz. 
+Azure, [Azure maliyet yönetimi + faturalandırma](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) hub 'ında yararlı bir işlevsellik sağlar. Örneğin, "maliyet analizi" işlevi, Azure kaynakları için kullandığınız süreyi görüntülemenize olanak sağlar. İlk olarak, "kaynak türü" ile bir filtre ekleyin (Log Analytics için Microsoft. operationalınsights/çalışma alanı ve Microsoft. operationalınsights/Cluster için Log Analytics kümeler için), Log Analytics harcamalarınızı izlemenize olanak tanır. "Grup ölçütü" için "ölçüm kategorisi" veya "ölçüm" seçeneğini belirleyin.  Azure Güvenlik Merkezi ve Azure Sentinel gibi diğer hizmetlerin ayrıca kullanımını Log Analytics çalışma alanı kaynaklarına karşı faturalayacağını unutmayın. Hizmet adı eşlemesini görmek için bir grafik yerine tablo görünümünü seçebilirsiniz. 
 
 Kullanımınızı daha iyi anlamak için [Azure portalından kullanım bilgilerinizi indirebilirsiniz](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). İndirilen elektronik tabloda Azure kaynağı (örneğin, Log Analytics çalışma alanı) başına günlük kullanımınızı görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızın kullanımı "ölçüm kategorisi" sütununda "Log Analytics" göstermek için önce filtrelenebilir. içgörüler ve çözümlemeler "(Eski fiyatlandırma katmanlarından bazıları tarafından kullanılır) ve" Azure Izleyici "(kapasite ayırma fiyatlandırma katmanları tarafından kullanılır) ve sonra" çalışma alanı "veya" kümeyi içerir "olan" örnek KIMLIĞI "sütununa bir filtre ekleniyor (Log Analytics küme kullanımı dahil olmak üzere). Kullanım "tüketilen miktar" sütununda gösterilir ve her girdinin birimi "ölçü birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](../../cost-management-billing/understand/review-individual-bill.md) yardımcı olmak için daha fazla ayrıntı sağlanır. 
 
@@ -216,7 +216,7 @@ Günlük sınıra ulaşıldığında yakında faturalandırılabilir veri türle
 > Günlük sınır, özellikle belirtilen sınır düzeyi ve çok fazla veri beklendiğinden, özellikle de çalışma alanı yüksek hacime veri alıyorsa, veri toplamayı kesin olarak durduramaz. Günlük uç davranışını yeniden birleştirme konusunda yararlı olan bir sorgu için [aşağıya](#view-the-effect-of-the-daily-cap) bakın. 
 
 > [!WARNING]
-> Günlük sınır, Azure Güvenlik Merkezi 'nin 19 Haziran 2017 ' den önce yüklendiği çalışma alanları dışında Azure Sentuya da Azure Güvenlik Merkezi 'nden veri toplamayı durdurmaz. 
+> Günlük sınır, [Azure Güvenlik Merkezi 'ne göre günlük başına her düğüm](#log-analytics-and-security-center) için (WindowsEvent) bulunan veri türlerinin toplanmasını durdurmaz. Azure Güvenlik Merkezi 'Nin 19 Haziran 2017 ' den önce yüklendiği çalışma alanları dışında SecurityAlert, Securitybaseline, SecurityBaselineSummary, securitydetection, Securityevent, WindowsFirewall, MaliciousIPCommunication, Linuxdenetimgünlüğü, SysmonEvent, Protectionstatus, Update ve updateSummary). 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Hangi günlük veri sınırının tanımlanacağını belirleyin
 
@@ -266,7 +266,7 @@ Başlamanıza başlamak için, işlevi kullanarak tabloyu sorgulayan uyarının 
 - Uyarı kuralı adı: günlük veri sınırına ulaşıldı
 - Önem derecesi: uyarı (sev 1)
 
-Uyarı tanımlandıktan ve sınıra ulaşıldığında, bir uyarı tetiklenir ve eylem grubunda tanımlanan yanıtı gerçekleştirir. E-posta ve SMS iletileri aracılığıyla ekibinize bildirimde bulunabilir veya Web kancaları, Otomasyon Runbook 'ları veya [bir dış ıSM çözümüyle tümleştirme](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#create-itsm-work-items-from-azure-alerts)kullanarak eylemleri otomatikleştirebilir. 
+Uyarı tanımlandıktan ve sınıra ulaşıldığında, bir uyarı tetiklenir ve eylem grubunda tanımlanan yanıtı gerçekleştirir. E-posta ve SMS iletileri aracılığıyla ekibinize bildirimde bulunabilir veya Web kancaları, Otomasyon Runbook 'ları veya [bir dış ıSM çözümüyle tümleştirme](itsmc-definition.md#create-itsm-work-items-from-azure-alerts)kullanarak eylemleri otomatikleştirebilir. 
 
 ## <a name="troubleshooting-why-usage-is-higher-than-expected"></a>Kullanımın neden beklenenden daha yüksek olduğuyla ilgili sorunları giderme
 

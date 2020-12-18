@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 05c89c8628b4d4ce10ca4ba12c720b410b72601f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 29baaac7cf9139368a191153fdbd0179595bef66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005155"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Öğretici: Asana ile tümleştirme Azure Active Directory
 
@@ -65,7 +65,7 @@ Asana 'un Azure AD ile tümleştirilmesini yapılandırmak için, Galeriden yön
 
 4. Arama kutusuna **Asana** yazın, sonuç panelinden **Asana** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde Asana](common/search-new-app.png)
+    ![Sonuçlar listesinde Asana](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -154,13 +154,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
     a. **Ad** alanına **Brittasıon** girin.
-  
+
     b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

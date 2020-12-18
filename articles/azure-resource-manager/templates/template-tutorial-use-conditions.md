@@ -5,12 +5,12 @@ author: mumian
 ms.date: 04/23/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f044863be7d0bfaaad57d3974a1d2856b27927ea
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: bc6dc5b385a39ddb1c4f1663649ea21e5ed14767
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589143"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669321"
 ---
 # <a name="tutorial-use-condition-in-arm-templates"></a>Öğretici: ARM şablonlarında koşul kullanma
 
@@ -35,9 +35,11 @@ Bu öğretici yalnızca koşulların kullanıldığı temel bir senaryoyu ele al
 * [Şablon işlevi: Eğer](./template-functions-logical.md#if).
 * [ARM şablonları için karşılaştırma işlevleri](./template-functions-comparison.md)
 
+Koşulları içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
+
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaleyi tamamlamak için gerekenler:
 

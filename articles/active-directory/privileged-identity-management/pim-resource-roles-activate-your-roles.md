@@ -15,12 +15,12 @@ ms.date: 07/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4e3fe72492ef92fe65572c75bf9f88b5f9ffda3
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1a6ddde80ca554aea25d24694aff76e61e47d928
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653427"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672466"
 ---
 # <a name="activate-my-azure-resource-roles-in-privileged-identity-management"></a>Azure Kaynak rollerimi Privileged Identity Management etkinleştir
 
@@ -42,7 +42,7 @@ Bir Azure Kaynak rolünü gerçekleştirmeniz gerektiğinde, Privileged Identity
 
 1. Uygun Azure Kaynak rollerinizin listesini görmek için **Azure Kaynak rolleri** ' ni seçin.
 
-   ![Rollerim-Azure Kaynak rolleri sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
+    ![Rollerim-Azure Kaynak rolleri sayfası](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png)
 
 1. **Azure Kaynak rolleri** listesinde, etkinleştirmek istediğiniz rolü bulun.
 

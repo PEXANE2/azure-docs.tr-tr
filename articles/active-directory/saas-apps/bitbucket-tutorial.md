@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ffd93016a2cbde3aa2a5844cfdb72e4c0cc8b623
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5e0b1d8d2cb80886131a88c01a6c24102ad7c77c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457121"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Öğretici: çözüm GmbH göre Bitbucket için SAML SSO ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile, GmbH tarafından sağlanan Bitbucket için SAML SSO 'SU ile tümle
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 GmbH tarafından Bitbucket için SAML SSO 'SU ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -63,13 +63,13 @@ GmbH ile Bitbucket için SAML SSO 'yu Azure AD 'ye tümleştirme özelliğini ya
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **GmbH göre Bitbucket Için SAML SSO**yazın; sonuç panelinde, **çözünürlükte GmbH ile Bitbucket için SAML SSO** 'yu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **GmbH göre Bitbucket Için SAML SSO** yazın; sonuç panelinde, **çözünürlükte GmbH ile Bitbucket için SAML SSO** 'yu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde çözüm GmbH göre Bitbucket için SAML SSO 'SU](common/search-new-app.png)
+    ![Sonuç listesinde çözüm GmbH göre Bitbucket için SAML SSO 'SU](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, GmbH tarafından verilen Bitbucket için SAML SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, GmbH tarafından verilen Bitbucket için SAML SSO 'Su Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve GmbH ile Bitbucket için SAML SSO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 GmbH tarafından Bitbucket için SAML SSO 'SU ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -138,7 +138,7 @@ Azure AD çoklu oturum açmayı, bit demeti için SAML SSO 'yu çözüm GmbH gö
 
     ![Kimlik sağlayıcısı](./media/bitbucket-tutorial/tutorial_bitbucket_identityprovider.png)
 
-    a. **IDP türünü** **Azure AD**olarak seçin.
+    a. **IDP türünü** **Azure AD** olarak seçin.
 
     b. **Ad** metin kutusuna adı yazın.
 
@@ -153,7 +153,7 @@ Azure AD çoklu oturum açmayı, bit demeti için SAML SSO 'yu çözüm GmbH gö
 7.  Azure portal 'den indirdiğiniz **meta VERI XML** dosyasını karşıya yüklemek Için **SAML IDP meta verilerini Içeri aktar** sayfasında **Dosya Yükle** ' ye tıklayın.
 
     ![Idpmetadata](./media/bitbucket-tutorial/tutorial_bitbucket_idpmetadata.png)
-    
+
 8. **İleri**’ye tıklayın.
 
 9. **Ayarları kaydet**’e tıklayın.
@@ -176,9 +176,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

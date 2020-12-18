@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 27eecc5560bc99520fea85baf13c0ff4d8a84e7e
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 6eb016e968db7376913a4944dc6a638b35c9da4c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424710"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665145"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -162,6 +162,9 @@ Ses biçimini değiştirmek için `SetSpeechSynthesisOutputFormat()` nesnesi üz
 
 Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi ham biçimlerin `Raw24Khz16BitMonoPcm` Ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
 
+> [!NOTE]
+> Sesler **en-US-AriaRUS** ve **en-US-guyrus** `Riff24Khz16BitMonoPcm` örnek oranı destekler.
+
 Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `SpeechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?preserve-view=true&view=azure-dotnet) sonucun bellek içi akışını elde etmek ve ardından bir dosyaya yazmak için öğesini kullanırsınız.
 
 ```csharp
@@ -198,7 +201,7 @@ Konuşma sen, biçimlendirme dili (SSML), isteklerinizi bir XML şemasından gö
 Ardından, XML dosyanıza başvurmak için konuşma sensıs isteğini değiştirmeniz gerekir. İstek genellikle aynıdır, ancak işlevini kullanmak yerine `SpeakTextAsync()` kullanın `SpeakSsmlAsync()` . Bu işlev bir XML dizesi bekliyor, bu nedenle ilk olarak SSML yapılandırmasını kullanarak bir dize olarak yüklersiniz `File.ReadAllText()` . Buradan, sonuç nesnesi önceki örneklerle tamamen aynıdır.
 
 > [!NOTE]
-> Visual Studio kullanıyorsanız, derleme config dosyanız büyük olasılıkla XML dosyanızı varsayılan olarak bulamaz. Bu hatayı onarmak için, XML dosyasına sağ tıklayın ve **Özellikler** ' i seçin. **Derleme eylemini** *içerik* olarak değiştirin ve kopya **dizinine Kopyala** ' yı *her zaman kopyalamak* üzere değiştirin.
+> Visual Studio kullanıyorsanız, derleme config dosyanız büyük olasılıkla XML dosyanızı varsayılan olarak bulamaz. Bu hatayı onarmak için, XML dosyasına sağ tıklayın ve **Özellikler**' i seçin. **Derleme eylemini** *içerik* olarak değiştirin ve kopya **dizinine Kopyala** ' yı *her zaman kopyalamak* üzere değiştirin.
 
 ```csharp
 public static async Task SynthesizeAudioAsync() 
@@ -233,7 +236,7 @@ Sinir sesleri, derin sinir Networks tarafından desteklenen konuşma senime algo
 Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](../../../language-support.md#neural-voices)birini değiştirin. Ardından, için bir XML ad alanı ekleyin `mstts` ve metninizi etikete sarın `<mstts:express-as>` . `style`Konuşma stilini özelleştirmek için param 'ı kullanın. Bu örnek kullanır `cheerful` , ancak `customerservice` `chat` konuşma stilindeki farkı görmek için veya olarak ayarlamayı deneyin.
 
 > [!IMPORTANT]
-> Sinir sesleri **yalnızca** *Doğu ABD* , *Güney Doğu Asya* ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.
+> Sinir sesleri **yalnızca** *Doğu ABD*, *Güney Doğu Asya* ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">

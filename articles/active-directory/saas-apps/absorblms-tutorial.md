@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 31b0a4fd8d97371eb4e127a2a473893a0487f220
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 3d90d35e113b5f9757faf59681bb2532b66f2b09
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319087"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Öğretici: artışlarını devralarak LMS ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Artışlarını devralarak LMS 'yi Azure AD ile tümleştirmek aşağıdaki avan
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini artışlarını devralarak LMS ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -64,13 +64,13 @@ Artışlarını devralarak LMS 'nin tümleştirmesini Azure AD 'ye göre yapıla
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **ARTıŞLARıNı DEVRALARAK LMS**yazın, sonuç PANELINDEN **artışlarını devralarak LMS** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **ARTıŞLARıNı DEVRALARAK LMS** yazın, sonuç PANELINDEN **artışlarını devralarak LMS** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde artışlarını devralarak LMS](common/search-new-app.png)
+    ![Sonuç listesinde artışlarını devralarak LMS](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre artışlarını devralarak LMS Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre artışlarını devralarak LMS Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve artışlarını devralarak LMS içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -119,7 +119,7 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı ve yanıt URL 'siyle güncelleştirin. Bu değerleri almak için [ARTıŞLARıNı DEVRALARAK LMS istemci desteği ekibine](https://support.absorblms.com/hc/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-5. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir.
+5. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir.
 
     ![image](common/edit-attribute.png)
 
@@ -159,7 +159,7 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     a. **Ad** metin kutusuna Azure AD marketi SSO 'su gibi bir ad girin.
 
-    b. **Yöntem**olarak **SAML** ' yi seçin.
+    b. **Yöntem** olarak **SAML** ' yi seçin.
 
     c. Not defteri 'nde, Azure portal indirdiğiniz sertifikayı açın. **---Başlangıç sertifikası---** ve **---son sertifika---** etiketlerini kaldırın. Ardından, **anahtar** kutusunda kalan içeriği yapıştırın.
 
@@ -167,13 +167,13 @@ Azure AD çoklu oturum açmayı artışlarını devralarak LMS ile yapılandırm
 
     e. **Kimlik özellik** kutusunda, Azure AD 'de Kullanıcı tanımlayıcısı olarak yapılandırdığınız özniteliği seçin. Örneğin, Azure AD 'de *NameIdentifier* seçilirse **Kullanıcı adı**' nı seçin.
 
-    f. **Imza türü**olarak **SHA256** öğesini seçin.
+    f. **Imza türü** olarak **SHA256** öğesini seçin.
 
     örneğin: **Oturum açma URL** 'si kutusunda, Azure Portal uygulamanın **Özellikler** sayfasından **Kullanıcı erişim URL** 'sini yapıştırın.
 
     h. Oturum **kapatma URL**'si içinde, Azure Portal oturum açma **URL 'si** değerini, ' nin oturum açma **yapılandırma** penceresinden yapıştırın.
 
-    i. Öğesini **otomatik olarak** **Açık**olarak değiştirin.
+    i. Öğesini **otomatik olarak** **Açık** olarak değiştirin.
 
 6. Kaydet ' i seçin **.**
 
@@ -195,8 +195,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
+    a. **Ad** alanına **Brittasıon** girin.
+
     b. **Kullanıcı adı** alan türü`brittasimon\@yourcompanydomain.extension`  
     Örneğin, BrittaSimon@contoso.com
 
@@ -212,7 +212,7 @@ Bu bölümde, artışlarını devralarak LMS 'ye erişim izni vererek Azure çok
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **ARTıŞLARıNı DEVRALARAK LMS**yazın ve seçin.
+2. Uygulamalar listesinde **ARTıŞLARıNı DEVRALARAK LMS** yazın ve seçin.
 
     ![Uygulamalar listesindeki artışlarını devralarak LMS bağlantısı](common/all-applications.png)
 
@@ -252,9 +252,9 @@ Azure AD kullanıcılarının artışlarını devralarak LMS 'de oturum açması
 
     a. **Ad** kutusuna ilk adı yazın (örneğin, **Britta**).
 
-    b. **Son ad** kutusunda, **Simon**gibi soyadı yazın.
+    b. **Son ad** kutusunda, **Simon** gibi soyadı yazın.
 
-    c. **Kullanıcı adı** kutusuna, **Britta Simon**gibi bir tam ad yazın.
+    c. **Kullanıcı adı** kutusuna, **Britta Simon** gibi bir tam ad yazın.
 
     d. **Parola** kutusuna kullanıcı parolası yazın.
 

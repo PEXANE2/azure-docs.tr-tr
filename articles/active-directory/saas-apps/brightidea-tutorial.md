@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 659118039464a4f99e4f8df211318a7f639dbde9
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 9967f349011b52a2218681956885c33456ba1d46
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456730"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Öğretici: Parlatıdea ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Parlatıdea 'nın Azure AD ile tümleştirilmesi aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini en parlak bir şekilde yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -64,13 +64,13 @@ Parlatıdea 'nın Azure AD ile tümleştirilmesini yapılandırmak için, Galeri
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **parlatıdea**yazın, sonuç panelinden **parlatıdea** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **parlatıdea** yazın, sonuç panelinden **parlatıdea** ' yı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde parlatıdea](common/search-new-app.png)
+    ![Sonuç listesinde parlatıdea](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre en parlak şekilde yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre en parlak şekilde yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı en Parlala yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -141,11 +141,11 @@ Azure AD çoklu oturum açma 'yı en parlak şekilde yapılandırmak için aşa�
 
 1. Farklı bir Web tarayıcısı penceresinde, yönetici kimlik bilgilerini kullanarak en çok bir yönetim için oturum açın.
 
-2. En parlak sisteminizdeki SSO özelliğine ulaşmak için **Kurumsal kurulum**  ->  **kimlik doğrulaması sekmesine**gidin. İki alt sekme görürsünüz: kimlik doğrulama seçimi SAML profilleri &.
+2. En parlak sisteminizdeki SSO özelliğine ulaşmak için **Kurumsal kurulum**  ->  **kimlik doğrulaması sekmesine** gidin. İki alt sekme görürsünüz: kimlik doğrulama seçimi SAML profilleri &.
 
     ![Ekran görüntüsü, kimlik doğrulama sekmesi seçili olan en parlak siteyi gösterir.](./media/brightidea-tutorial/configure1.png)
 
-3. **Kimlik doğrulama seçimini**seçin. Varsayılan olarak, yalnızca iki standart yöntemi gösterir: bir oturum açma & kaydı. Bir SSO yöntemi eklendiğinde, listede görünür.
+3. **Kimlik doğrulama seçimini** seçin. Varsayılan olarak, yalnızca iki standart yöntemi gösterir: bir oturum açma & kaydı. Bir SSO yöntemi eklendiğinde, listede görünür.
 
     ![Ekran görüntüsü, kimlik doğrulama seçimi seçiliyken en parlak kimlik doğrulaması sekmesini gösterir.](./media/brightidea-tutorial/configure2.png)
 
@@ -156,20 +156,20 @@ Azure AD çoklu oturum açma 'yı en parlak şekilde yapılandırmak için aşa�
     a. Azure portal **meta verileri indir** ve **temel SAML yapılandırmasına** yükle bölümüne tıklayın.
 
     b. **Kimlik sağlayıcısı ayarı** altındaki **Yeni Ekle** düğmesine tıklayın ve aşağıdaki adımları gerçekleştirin:
-    
+
     ![Ekran görüntüsü, bilgi girebileceğiniz en parlak kimlik sağlayıcısı ayarını gösterir.](./media/brightidea-tutorial/configure4.png)
-    
+
    * **SAML profili adını** girin, örn.`Azure Ad SSO`
-    
-   * **Karşıya yükleme meta verileri**için Dosya Seç ' e tıklayın ve indirilen meta veri dosyasını Azure Portal yükleyin.
+
+   * **Karşıya yükleme meta verileri** için Dosya Seç ' e tıklayın ve indirilen meta veri dosyasını Azure Portal yükleyin.
 
      > [!NOTE]
      > Meta veri dosyasını karşıya yükledikten sonra, kalan alanlar **Çoklu oturum açma hizmeti, kimlik sağlayıcısı veren, yükleme ortak anahtarı** otomatik olarak doldurulur.
 
    * **E-posta** metin kutusuna değerini olarak girin `mail` .
-     
+
    * **Ekran adı** metin kutusuna değerini olarak girin `givenName` .
-     
+
    * **Değişiklikleri Kaydet**’e tıklayın.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
@@ -188,8 +188,8 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**yazın.
-  
+    a. **Ad** alanına **Brittasıon** yazın.
+
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: f0335e28b3f0fd2d339aa329b92203ddb8d3216c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 1d6471e1443e02592e86ea0708ac173a7afff3e1
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94424961"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97665138"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -38,7 +38,7 @@ Ayrıca, hedef ortama bağlı olarak, aşağıdakilerden birini kullanın:
 
 # <a name="script"></a>[SCRIPT](#tab/script)
 
-<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span>microsoft.cognitiveservices.speech.sdk.bundle.jsdosyası için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin. *microsoft.cognitiveservices.speech.sdk.bundle.js*
+<a href="https://aka.ms/csspeech/jsbrowserpackage" target="_blank">JavaScript <span class="docon docon-navigate-external x-hidden-focus"></span>microsoft.cognitiveservices.speech.sdk.bundle.jsdosyası için konuşma SDK 'sını</a> indirip ayıklayın ve HTML dosyanıza erişilebilen bir klasöre yerleştirin. 
 
 ```html
 <script src="microsoft.cognitiveservices.speech.sdk.bundle.js"></script>;
@@ -203,6 +203,9 @@ Ses biçimini değiştirmek için `speechSynthesisOutputFormat` nesnesi üzerind
 
 Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi ham biçimlerin `Raw24Khz16BitMonoPcm` Ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
 
+> [!NOTE]
+> Sesler **en-US-AriaRUS** ve **en-US-guyrus** `Riff24Khz16BitMonoPcm` örnek oranı destekler.
+
 Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `speechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, ses `ArrayBuffer` verilerini alın ve onunla etkileşime geçin.
 
 ```javascript
@@ -300,7 +303,7 @@ Sinir sesleri, derin sinir Networks tarafından desteklenen konuşma senime algo
 Bir sinir sesinize geçiş yapmak için, `name` [sinir Voice seçeneklerinden](../../../language-support.md#neural-voices)birini değiştirin. Ardından, için bir XML ad alanı ekleyin `mstts` ve metninizi etikete sarın `<mstts:express-as>` . `style`Konuşma stilini özelleştirmek için param 'ı kullanın. Bu örnek kullanır `cheerful` , ancak `customerservice` `chat` konuşma stilindeki farkı görmek için veya olarak ayarlamayı deneyin.
 
 > [!IMPORTANT]
-> Sinir sesleri **yalnızca** *Doğu ABD* , *Güney Doğu Asya* ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.
+> Sinir sesleri **yalnızca** *Doğu ABD*, *Güney Doğu Asya* ve *Batı Avrupa* bölgelerinde oluşturulan konuşma kaynakları için desteklenir.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis"

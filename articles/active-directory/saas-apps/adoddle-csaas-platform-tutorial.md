@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: e6ad11e4d0c0db30d091faec45f3433f544ef622
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5554ec4521a126a2c2e823b707fe42d9983b5d8e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309006"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Öğretici: Adoddle cSaas platformuyla tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Adoddle cSaas platformunu Azure AD ile tümleştirmek aşağıdaki avantajları 
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Adoddle cSaas platformuyla yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,13 +63,13 @@ Adoddle cSaas platformunun tümleştirmesini Azure AD 'ye göre yapılandırmak 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Adoddle cSaas platformu**yazın, sonuç panelinden **Adoddle csaas platformu** ' nu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Adoddle cSaas platformu** yazın, sonuç panelinden **Adoddle csaas platformu** ' nu seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde Adoddle cSaas platformu](common/search-new-app.png)
+    ![Sonuç listesinde Adoddle cSaas platformu](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre Adoddle Csaas platformuyla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Adoddle Csaas platformuyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Adoddle cSaas platformunda ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı Adoddle cSaas platformuyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -137,9 +137,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -174,7 +174,7 @@ Bu bölümde, Adoddle cSaas platformuna erişim vererek Azure çoklu oturum açm
 
 ### <a name="create-adoddle-csaas-platform-test-user"></a>Adoddle cSaas platform test kullanıcısı oluşturma
 
-Bu bölümde, Adoddle cSaas platformunda Britta Simon adlı bir Kullanıcı oluşturulur. Adoddle cSaas platformu, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Adoddle cSaas platformunda zaten mevcut değilse, Adoddle cSaas platformuna erişmeye çalıştığınızda yeni bir tane oluşturulur.
+Bu bölümde, Adoddle cSaas platformunda Britta Simon adlı bir Kullanıcı oluşturulur. Adoddle cSaas platformu, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir Kullanıcı Adoddle cSaas platformunda zaten mevcut değilse, Adoddle cSaas platformuna erişmeye çalıştığınızda yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -9,12 +9,12 @@ ms.custom: mvc, contperf-fy21q1
 ms.date: 12/03/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 3bfc8704919fc26db692701eaca526dd5c333b6f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 04ba20bd5607bc309735e509ac37b15c33445c52
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033502"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672742"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Güvenlik Duvarı nedir?
 
@@ -68,7 +68,6 @@ TCP/UDP dışı protokollere (örneğin ICMP) yönelik ağ filtreleme kuralları
 |Yapılandırma güncelleştirmeleri ortalama beş dakika sürebilir|Bir Azure Güvenlik Duvarı yapılandırma güncelleştirmesi ortalama üç ila beş dakika sürebilir ve paralel güncelleştirmeler desteklenmez.|Bir düzelme araştırılır.|
 |Azure Güvenlik Duvarı, HTTPS ve MSSQL trafiğini filtrelemek için SNı TLS üst bilgilerini kullanır|Tarayıcı veya sunucu yazılımı sunucu adı göstergesi (SNı) uzantısını desteklemiyorsa, Azure Güvenlik Duvarı üzerinden bağlanamazsınız.|Tarayıcı veya sunucu yazılımı SNı desteklemiyorsa, bağlantıyı bir uygulama kuralı yerine bir ağ kuralı kullanarak kontrol edebilirsiniz. SNı 'yi destekleyen yazılımlar için bkz. [sunucu adı belirtme](https://wikipedia.org/wiki/Server_Name_Indication) .|
 |Özel DNS zorlamalı tünelleme ile çalışmıyor|Zorlamalı tünel etkinleştirilirse, özel DNS çalışmaz.|Bir düzelme araştırılır.|
-|Birden çok Kullanılabilirlik Alanları için yeni genel IP adresi desteği|İki kullanılabilirlik alanıyla bir güvenlik duvarı dağıtırken yeni bir genel IP adresi ekleyemezsiniz (1 ve 2, 2 ve 3 veya 1 ve 3)|Bu, genel bir IP adresi kaynak sınırlamasıdır.|
 |Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış bir güvenlik duvarı ile çalışmıyor|Başlat/Durdur, Zorlamalı tünel modunda yapılandırılmış Azure Güvenlik Duvarı ile çalışmıyor. Zorlamalı tünel yapılandırılmış olarak Azure Güvenlik Duvarı 'Nı başlatma girişimi şu hata ile sonuçlanır:<br><br>*Set-AzFirewall: AzureFirewall FW-xx yönetim IP yapılandırması mevcut bir güvenlik duvarına eklenemiyor. Zorlamalı tünel desteğini kullanmak istiyorsanız bir yönetim IP yapılandırması ile yeniden dağıtın. <br> StatusCode: 400 <br> ReasonPhrase: Hatalı istek*|İnceleme altında.<br><br>Geçici bir çözüm olarak, mevcut güvenlik duvarını silebilir ve aynı parametrelerle yeni bir tane oluşturabilirsiniz.|
 |Portal kullanılarak güvenlik duvarı ilkesi etiketleri eklenemiyor|Azure Güvenlik Duvarı Ilkesinde, Azure portal kullanarak etiket eklemelerini önleyen bir yama destek sınırlaması vardır. Şu hata oluşturuldu: *kaynak için Etiketler kaydedilemedi*.|Bir düzelme araştırılır. Alternatif olarak, etiketleri güncelleştirmek için Azure PowerShell cmdlet 'ini kullanabilirsiniz `Set-AzFirewallPolicy` .|
 |IPv6 henüz desteklenmiyor|Bir kurala bir IPv6 adresi eklerseniz güvenlik duvarı başarısız olur.|Yalnızca IPv4 adreslerini kullanın. IPv6 desteği araştırma aşamasındadır.|

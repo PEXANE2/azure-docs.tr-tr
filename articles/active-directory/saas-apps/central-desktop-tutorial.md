@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 321c6bf52f4dac636f6bebb3a79d3a206c2ea11b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 36ba61c86082e191831c2c890de4466181f1a4db
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456441"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>Öğretici: Merkezi Masaüstü ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Merkezi masaüstünü Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini merkezi masaüstü ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Merkezi Masaüstü 'nün Azure AD ile tümleştirilmesini yapılandırmak için 
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Merkezi Masaüstü**yazın, sonuç panelinden **Merkezi Masaüstü** ' nü seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Merkezi Masaüstü** yazın, sonuç panelinden **Merkezi Masaüstü** ' nü seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde merkezi masaüstü](common/search-new-app.png)
+    ![Sonuç listesinde merkezi masaüstü](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre merkezi masaüstü ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre merkezi masaüstü ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve merkezi masaüstündeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı merkezi masaüstü ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -104,7 +104,7 @@ Azure AD çoklu oturum açmayı merkezi masaüstü ile yapılandırmak için aş
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.centraldesktop.com`
 
     b. **Tanımlayıcı** kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    
+
     ```http
     https://<companyname>.centraldesktop.com/saml2-metadata.php
     https://<companyname>.imeetcentral.com/saml2-metadata.php
@@ -152,7 +152,7 @@ Azure AD çoklu oturum açmayı merkezi masaüstü ile yapılandırmak için aş
 4. **Ileti Imzası doğrulama yöntemi** bölümünde aşağıdaki adımları uygulayın:
 
     ![İleti imzası doğrulama yöntemi](./media/central-desktop-tutorial/ic769565.png "İleti Imzası doğrulama yöntemi")
-    
+
     a. **Sertifika**’yı seçin.
 
     b. **SSO sertifikası** LISTESINDE **rsh SHA256**' ı seçin.
@@ -179,9 +179,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -236,7 +236,7 @@ Azure AD kullanıcılarının oturum açabilmeleri için merkezi masaüstü uygu
 4. **İç üye Ekle**' yi seçin.
 
     ![İç üye Ekle](./media/central-desktop-tutorial/ic781053.png "İç üye Ekle")
-  
+
    > [!NOTE]
    > Eklediğiniz kullanıcılar hesaplarının etkinleştirilmesi için onay bağlantısı içeren bir e-posta alır.
 

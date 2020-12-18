@@ -2,20 +2,20 @@
 title: Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme | Microsoft Docs
 description: Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0fc46c815906b9aaca7b3ce964e0d23cfdc4e1aa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560942"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673583"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Azure App Service .NET uygulamaları için Snapshot Debugger etkinleştirme
 
-Snapshot Debugger Şu anda Windows hizmet planlarına Azure App Service çalışan ASP.NET ve ASP.NET Core uygulamalar için çalışır. Anlık görüntü hata ayıklayıcısı 'nı kullanırken uygulamanızı temel hizmet katmanında veya daha yüksek bir sürüme çalıştırmanızı öneririz. Çoğu uygulama için, ücretsiz ve paylaşılan hizmet katmanları anlık görüntüleri kaydetmek için yeterli belleğe sahip değildir.
+Snapshot Debugger Şu anda Windows hizmet planlarına Azure App Service çalışan ASP.NET ve ASP.NET Core uygulamalar için çalışır. Anlık görüntü hata ayıklayıcısı 'nı kullanırken uygulamanızı temel hizmet katmanında veya daha yüksek bir sürüme çalıştırmanızı öneririz. Çoğu uygulama için, ücretsiz ve paylaşılan hizmet katmanlarında anlık görüntüleri kaydetmek için yeterli bellek veya disk alanı yoktur.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Snapshot Debugger etkinleştir
 Bir uygulama için Snapshot Debugger etkinleştirmek üzere aşağıdaki yönergeleri izleyin.

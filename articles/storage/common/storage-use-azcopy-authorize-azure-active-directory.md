@@ -4,15 +4,15 @@ description: AzCopy işlemleri için Azure Active Directory (Azure AD) kullanara
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 12/17/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 46a5c941822dd258b420b51c710734dc3152f30f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617417"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672500"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy ve Azure Active Directory (Azure AD) ile bloblara erişim yetkisi verme
 
@@ -185,7 +185,9 @@ azcopy login --service-principal --certificate-path <path-to-certificate-file> -
 
 ## <a name="authorize-without-a-secret-store"></a>Gizli depo olmadan yetkilendir
 
-İşletim sisteminizin bir Linux *kimlik anahtarlığı* gibi gizli bir deposu yoksa, `azcopy login` komut çalışmaz. Bunun yerine, her bir işlemi çalıştırmadan önce bellek içi ortam değişkenlerini ayarlayabilirsiniz. 
+`azcopy login`Komut bir OAuth belirteci alır ve bu belirteci sisteminizdeki gizli bir depoya koyar. İşletim sisteminizin Linux *kimlik anahtarlığı* gibi bir gizli deposu yoksa, belirtecin yerleştirileceği bir sorun olduğu için `azcopy login` komut çalışmaz. 
+
+Komutunu kullanmak yerine `azcopy login` , bellek içi ortam değişkenlerini ayarlayabilirsiniz. Ardından herhangi bir AzCopy komutunu çalıştırın. AzCopy, işlemi gerçekleştirmek için gereken kimlik doğrulama belirtecini alır. İşlem tamamlandıktan sonra, belirteç bellekten kaybolur. 
 
 ### <a name="authorize-a-user-identity"></a>Kullanıcı kimliğini yetkilendirme
 
@@ -248,8 +250,6 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 Bu değişkenleri ayarladıktan sonra herhangi bir AzCopy komutunu (örneğin: `azcopy list https://contoso.blob.core.windows.net` ) çalıştırabilirsiniz.
 
 ### <a name="authorize-a-service-principal"></a>Hizmet sorumlusu yetkilendirme
-
-Bir betiği çalıştırmadan önce, hizmet sorumlunuzu kimlik bilgileriyle AzCopy sağlayabilmeniz için, etkileşimli olarak en az bir kez oturum açmanız gerekir.  Bu kimlik bilgileri güvenli ve şifreli bir dosyada depolanır, böylece komut dosyanız bu hassas bilgileri sağlamalıdır.
 
 Bir istemci gizli anahtarını veya hizmet sorumlusunun uygulama kaydıyla ilişkili bir sertifikanın parolasını kullanarak hesabınızda oturum açabilirsiniz.
 

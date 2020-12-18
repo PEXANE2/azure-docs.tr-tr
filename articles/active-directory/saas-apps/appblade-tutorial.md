@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 27ff72c69ea09414e576be03e0e574e3e0f78804
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 49fa266319423b4c1a0bc56ad2a32b49c18f168e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458009"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appblade"></a>Öğretici: Appdikey ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Appdikey uygulamayı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Appdikey pencerede yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -62,13 +62,13 @@ Appdikey pencerenin Azure AD 'ye tümleştirilmesini yapılandırmak için galer
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **appdikey**yazın, sonuç panelinden **appdikey** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **appdikey** yazın, sonuç panelinden **appdikey** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuçlar listesinde uygulama dikey penceresi](common/search-new-app.png)
+    ![Sonuçlar listesinde uygulama dikey penceresi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre appdikey penceresinde yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre appdikey penceresinde yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Appdikey penceresinde ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Appdikey penceresinde Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -141,9 +141,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

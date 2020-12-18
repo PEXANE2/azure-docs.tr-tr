@@ -7,36 +7,41 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 5cb2f7b3b07c20e09d61e97412bc35f03b15cb3b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572159"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674438"
 ---
-# <a name="cross-resource-query-azure-data-explorer-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
-Azure Izleyici, Azure Veri Gezgini, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics (La)](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
+# <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Azure Izleyici kullanarak Azure Veri Gezgini çapraz kaynak sorgulama
+Azure Izleyici, Azure Veri Gezgini, [Application Insights](/azure/azure-monitor/app/app-insights-overview)ve [Log Analytics](/azure/azure-monitor/platform/data-platform-logs)arasında çapraz hizmet sorgularını destekler. Daha sonra, Log Analytics/Application Insights araçlarını kullanarak Azure Veri Gezgini kümenizi sorgulayabilir ve bir çapraz hizmet sorgusunda buna başvurabilirsiniz. Makalesinde, bir çapraz hizmet sorgusunun nasıl yapılacağı gösterilir.
 
-Azure Izleyici çapraz hizmet akışı: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Azure izleyici ve azure Veri Gezgini çapraz hizmet akışı.":::
+Aşağıdaki diyagramda Azure Izleyici çapraz hizmet akışı gösterilmektedir:
+
+:::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Bir Kullanıcı, Azure Izleyici, proxy ve Azure Veri Gezgini arasındaki sorguların akışını gösteren diyagram.":::
 
 >[!NOTE]
->* Azure Izleyici çapraz hizmet sorgusu özel önizleme aşamasındadır-Allowlist gereklidir.
->* Herhangi bir soru ile [hizmet ekibine](mailto:ADXProxy@microsoft.com) başvurun.
+> Azure Izleyici çapraz hizmet sorgusu özel önizlemede. Allowlist gereklidir. Herhangi bir soru ile [hizmet ekibine](mailto:ADXProxy@microsoft.com) başvurun.
+
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Log Analytics veya Application Insights kaynaklarınızı ve Azure Veri Gezgini çapraz sorgulama
 
-Log Analytics Web Kullanıcı arabirimi, çalışma kitapları, PowerShell, REST API ve daha fazlası gibi kusto sorgularını destekleyen istemci araçlarını kullanarak çapraz kaynak sorgularını çalıştırabilirsiniz.
+Kusto sorgularını destekleyen istemci araçlarını kullanarak, çapraz kaynak sorguları çalıştırabilirsiniz. Bu araçlara örnek olarak Log Analytics Web Kullanıcı arabirimi, çalışma kitapları, PowerShell ve REST API verilebilir.
 
-* ' ADX ' örüntüsünün içindeki bir sorgudaki Azure Veri Gezgini kümesi için tanımlayıcıyı, ardından veritabanı adını ve tabloyu girin.
+Model içindeki bir sorgudaki bir Azure Veri Gezgini kümesi için tanımlayıcıyı `adx` , ardından veritabanı adını ve tabloyu girin.
 
 ```kusto
 adx('https://help.kusto.windows.net/Samples').StormEvents
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Çapraz hizmet sorgu örneği.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-cross-service-query-example.png" alt-text="Bir çapraz hizmet sorgusuna bir örnek gösteren ekran görüntüsü.":::
 
 > [!NOTE]
 >* Veritabanı adları büyük/küçük harfe duyarlıdır.
->* Bir uyarı olarak çapraz kaynak sorgusu desteklenmez.
-## <a name="combining-azure-data-explorer-cluster-tables-using-union-and-join-with-la-workspace"></a>Azure Veri Gezgini küme tablolarını (UNION ve JOIN kullanarak) LA çalışma alanıyla birleştirme.
+>* Uyarı olarak çapraz kaynak sorgusu desteklenmez.
+
+## <a name="combine-azure-data-explorer-cluster-tables-with-a-log-analytics-workspace"></a>Azure Veri Gezgini küme tablolarını bir Log Analytics çalışma alanıyla birleştirme
+
+`union`Küme tablolarını bir Log Analytics çalışma alanıyla birleştirmek için komutunu kullanın.
 
 ```kusto
 union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
@@ -46,21 +51,25 @@ union customEvents, adx('https://help.kusto.windows.net/Samples').StormEvents
 let CL1 = adx('https://help.kusto.windows.net/Samples').StormEvents;
 union customEvents, CL1 | take 10
 ```
-:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Birleşim ile çapraz hizmet sorgu örneği.":::
+:::image type="content" source="media/azure-data-explorer-monitor-proxy/azure-monitor-union-cross-query.png" alt-text="Birleşim komutuyla bir çapraz hizmet sorgu örneği gösteren ekran görüntüsü.":::
 
->[!Tip]
->* Kısayol biçimine izin verilir-ClusterName/InitialCatalog. Örneğin, ADX (' yardım/örnekler ') ADX 'e çevrilir (' help. kusto. Windows. net/Samples ')
+> [!Tip]
+> Kısayol biçimine izin veriliyor: *clustername* / *InitialCatalog*. Örneğin, `adx('help/Samples')` öğesine çevrilir `adx('help.kusto.windows.net/Samples')` .
+
 ## <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Azure Izleyici kaynağı ile bir Kiracıdaki Azure Veri Gezgini kümesinden veri ekleme
 
-Hizmetler arasında çapraz kiracı sorguları desteklenmez. Her iki kaynağı kapsayan sorguyu çalıştırmak için tek bir kiracıya oturum açtınız.
+Hizmetler arasında çapraz kiracı sorguları desteklenmez. Her iki kaynağa yayılan sorguyu çalıştırmak için tek bir kiracıya oturum açtınız.
 
-Azure Veri Gezgini kaynağı ' A ' kiracısında ve Log Analytics çalışma alanı ' B ' kiracısında ise aşağıdaki iki yöntemden birini kullanın:
+Azure Veri Gezgini kaynağı kiracı A 'dedir ve Log Analytics çalışma alanı B kiracısında ise aşağıdaki yöntemlerden birini kullanın:
 
-*  Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. ' B ' kiracısında Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak ekleyin. Azure Veri Gezgini kümesinde ' *[Trustedexternaltenant '](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* özelliğinin ' B ' kiracısı içerdiğini doğrulayın. Çapraz sorguyu ' B ' kiracısında tamamen çalıştırın.
-*  Azure Izleyici kaynağını ' A ' kiracısında görüntülemek için, açık [thouse](https://docs.microsoft.com/azure/lighthouse/) kullanın.
+*  Azure Veri Gezgini, farklı kiracılardaki sorumlular için roller eklemenize olanak tanır. Kullanıcı KIMLIĞINIZI Azure Veri Gezgini kümesinde yetkili bir kullanıcı olarak B kiracısına ekleyin. Azure Veri Gezgini kümesindeki [Trustedexternaltenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) özelliğinin b kiracısı içerdiğini doğrulayın. çapraz sorguyu b kiracısı içinde tam olarak çalıştırın.
+*  Azure Izleyici kaynağını A kiracısına [eklemek için açık bir kullanım kullanın](https://docs.microsoft.com/azure/lighthouse/) .
+
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Farklı kiracılardan Azure Veri Gezgini kümelerine bağlanma
 
-Kusto Explorer, Kullanıcı hesabının ilk ait olduğu kiracıya otomatik olarak oturum açar. Aynı kullanıcı hesabına sahip diğer kiracılardaki kaynaklara erişmek için, `tenantId` bağlantı dizesinde açıkça belirtilmesi gerekir: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=` **tenantıd**
+Kusto Explorer, Kullanıcı hesabının ilk ait olduğu kiracıya otomatik olarak oturum açar. Aynı kullanıcı hesabına sahip diğer kiracılardaki kaynaklara erişmek için, bağlantı dizesinde açıkça belirtmeniz gerekir `TenantId` :
+
+`Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Sorgu yazma](https://docs.microsoft.com/azure/data-explorer/write-queries)

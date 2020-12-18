@@ -2,13 +2,13 @@
 title: Kaynaklar için dağıtım sırasını ayarla
 description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/17/2020
+ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85255220"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672823"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
 
@@ -40,7 +40,7 @@ Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama 
 }
 ```
 
-Yukarıdaki örnekte, **Storageloop**adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
+Yukarıdaki örnekte, **Storageloop** adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
 
 Bağımlılıkları tanımlarken, belirsizlik olmaması için kaynak sağlayıcısı ad alanını ve kaynak türünü dahil edebilirsiniz. Örneğin, diğer kaynaklarla aynı ada sahip olabilecek bir yük dengeleyiciyi ve sanal ağı netleştirmek için aşağıdaki biçimi kullanın:
 
@@ -150,6 +150,7 @@ Dağıtım sırasını değerlendirme ve bağımlılık hatalarını çözme hak
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Öğreticiye gitmek için bkz. [öğretici: bağımlı kaynaklarla Azure Resource Manager şablonları oluşturma](template-tutorial-create-templates-with-dependent-resources.md).
+* Kaynak bağımlılıklarını içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Bağımlılıkları ayarlarken öneriler için bkz. [Azure Resource Manager şablonu en iyi yöntemleri](template-best-practices.md).
 * Dağıtım sırasında bağımlılıklar sorunlarını giderme hakkında bilgi edinmek için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarıyla Ilgili sorunları giderme](common-deployment-errors.md).
 * Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).

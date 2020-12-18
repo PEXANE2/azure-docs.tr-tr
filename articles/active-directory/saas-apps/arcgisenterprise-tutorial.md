@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 61920b7c5356b6e1fa5683ac0553060c85e256d3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457833"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>Öğretici: ArcGIS Enterprise ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ ArcGIS Enterprise 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağ
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ArcGIS Enterprise ile Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -66,13 +66,13 @@ ArcGIS Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için, G
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, ArcGIS **Enterprise**yazın ve sonuç panelinden ArcGIS **Enterprise** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna, ArcGIS **Enterprise** yazın ve sonuç panelinden ArcGIS **Enterprise** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde ArcGIS Enterprise](common/search-new-app.png)
+    ![Sonuçlar listesinde ArcGIS Enterprise](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak [uygulama adı] ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak [uygulama adı] ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve [uygulama adı] içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı [uygulama adı] ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -117,7 +117,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
     **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için, ArcGIS [Kurumsal istemci destek ekibine](mailto:support@esri.com) başvurun. Bu öğreticinin ilerleyen kısımlarında açıklanan **kimlik sağlayıcısı ayarla bölümünde**tanımlayıcı değeri alacaksınız.
+    > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için, ArcGIS [Kurumsal istemci destek ekibine](mailto:support@esri.com) başvurun. Bu öğreticinin ilerleyen kısımlarında açıklanan **kimlik sağlayıcısı ayarla bölümünde** tanımlayıcı değeri alacaksınız.
 
 5. **SAML Ile tek Sign-On ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **uygulama Federasyon meta verileri URL 'sini** kopyalamak ve bilgisayarınıza kaydetmek için Kopyala düğmesine tıklayın.
 
@@ -125,7 +125,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>Argıs Kurumsal tek Sign-On yapılandırma
 
-1. ArcGIS Enterprise içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek**üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. ArcGIS Enterprise içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
 
     ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
 
@@ -157,7 +157,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
     b. **URL** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
 
     c. **Gelişmiş ayarları göster** ' e tıklayın ve **varlık kimliği** değerini kopyalayın ve Azure Portal ' deki **argıs Enterprise etki alanı ve URL 'ler** bölümünde **tanımlayıcı** metin kutusuna yapıştırın.
-    
+
     ![Ekran görüntüsünde, b varlığının ve güncelleştirme tanımlaması sağlayıcısının nereden alınacağını gösterir.](./media/arcgisenterprise-tutorial/configure5.png)
 
     d. **KIMLIK sağlayıcısını Güncelleştir**' e tıklayın.
@@ -178,9 +178,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -195,7 +195,7 @@ Bu bölümde, argıs Enterprise 'a erişim vererek Azure çoklu oturum açma öz
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **argıs Enterprise**yazın ve seçin.
+2. Uygulamalar listesinde, **argıs Enterprise** yazın ve seçin.
 
     ![Uygulamalar listesindeki ArcGIS kurumsal bağlantısı](common/all-applications.png)
 

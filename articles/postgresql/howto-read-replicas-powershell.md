@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8bacb7a434cfa04dbdfdaf39d9fd3a0baab5f11a
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b0a5547928bd7d19343c50e40ab9fcb2c335e893
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489821"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674540"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-postgresql-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı 'nda okuma çoğaltmaları oluşturma ve yönetme
 
@@ -51,16 +51,16 @@ Get-AzPostgreSqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `New-AzPostgreSqlServerReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulduğu kaynak grubu.  |
-| Adı | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
+| Name | mydemoreplicaserver | Oluşturulan yeni çoğaltma sunucusunun adı. |
 
 Çapraz bölge okuma çoğaltması oluşturmak için **konum** parametresini kullanın. Aşağıdaki örnekte **Batı ABD** bölgesinde bir çoğaltma oluşturulur.
 
 ```azurepowershell-interactive
 Get-AzPostgreSqlServer -Name mrdemoserver -ResourceGroupName myresourcegroup |
-  New-AzMariaDServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
+  New-AzPostgreSQLServerReplica -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -Location westus
 ```
 
 İçinde bir çoğaltma oluşturabileceğiniz bölgeler hakkında daha fazla bilgi edinmek için [çoğaltma kavramlarını oku makalesini](concepts-read-replicas.md)ziyaret edin.
@@ -75,15 +75,23 @@ Varsayılan olarak, **SKU** parametresi belirtilmediği sürece, okuma çoğaltm
 Belirli bir birincil sunucu için tüm çoğaltmaları görüntülemek için aşağıdaki komutu çalıştırın:
 
 ```azurepowershell-interactive
-Get-AzMariaDReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
+Get-AzPostgreSQLReplica -ResourceGroupName myresourcegroup -ServerName mydemoserver
 ```
 
-`Get-AzMariaDReplica`Komut aşağıdaki parametreleri gerektirir:
+`Get-AzPostgreSQLReplica`Komut aşağıdaki parametreleri gerektirir:
 
-| Ayar | Örnek değer | Açıklama  |
+| Ayar | Örnek değer | Description  |
 | --- | --- | --- |
 | ResourceGroupName |  myresourcegroup |  Çoğaltma sunucusunun oluşturulacağı kaynak grubu.  |
 | aboneliğinde ve | mydemoserver | Birincil sunucunun adı veya KIMLIĞI. |
+
+### <a name="stop-a-replica-server"></a>Çoğaltma sunucusunu durdur
+
+Okuma çoğaltması sunucusunu durdurmak, okuma çoğaltmasını bağımsız bir sunucu olacak şekilde yükseltir. `Update-AzPostgreSqlServer`Cmdlet 'i çalıştırılarak ve ReplicationRole değeri olarak ayarlanarak yapılabilir `None` .
+
+```azurepowershell-interactive
+Update-AzPostgreSqlServer -Name mydemoreplicaserver -ResourceGroupName myresourcegroup -ReplicationRole None
+```
 
 ### <a name="delete-a-replica-server"></a>Çoğaltma sunucusunu silme
 

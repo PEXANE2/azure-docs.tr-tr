@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 7f0eff28533d8cf736d032aff61454a49bcf379e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e3daf89b80daf47049150b05ca392eede360bd3e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449721"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673425"
 ---
 # <a name="capacity-limits-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te adanmış SQL havuzu için kapasite sınırları
 
@@ -27,7 +27,7 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
 | [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Tek adanmış SQL havuzu için maksimum DWU  | Gen1: DW6000<br></br>Gen2: DW30000c |
-| [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), DW5000c 'e kadar izin veren bir DTU kotasına sahiptir 54.000. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9,5 ' i çarpın. Örnek:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW5000c x 9,5 = 47.500 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
+| [Veri ambarı birimleri (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Sunucu başına varsayılan DTU |54.000<br></br>Varsayılan olarak, her SQL Server (örneğin, myserver.database.windows.net), DW6000c 'e kadar izin veren bir DTU kotasına sahiptir 54.000. Bu kota yalnızca bir güvenlik sınırıdır. [Bir destek bileti oluşturarak](sql-data-warehouse-get-started-create-support-ticket.md) ve istek türü olarak *Kota* ' yı seçerek kotanızı artırabilirsiniz.  DTU gereksinimlerinizi hesaplamak için, gereken toplam DWU ile 7,5 ' i çarpıp, gereken toplam cDWU ile 9 ' u çarpın. Örnek:<br></br>DW6000 x 7,5 = 45.000 DTU<br></br>DW7500c x 9 = 67.500 DTU.<br></br>Geçerli DTU tüketiminizi, portalda SQL Server seçeneğinden görüntüleyebilirsiniz. DTU kotasında hem duraklatılmış hem de duraklatılmamış veritabanları sayılır. |
 | Veritabanı bağlantısı |Maksimum eş zamanlı açık oturum |1024<br/><br/>Eş zamanlı açık oturumların sayısı, seçilen DWU 'ya göre değişiklik gösterecektir. DWU600c ve üzeri, en fazla 1024 açık oturumu destekler. DWU500c ve altı, en fazla eşzamanlı açık oturum sınırı olan 512 ' i destekler. Aynı anda yürütebileceğini sorgu sayısı için sınırlamalar olduğunu unutmayın. Eşzamanlılık sınırı aşıldığında, istek işlenmek üzere beklediği bir iç sıraya gider. |
 | Veritabanı bağlantısı |Hazırlanan deyimler için maksimum bellek |20 MB |
 | [İş yükü yönetimi](resource-classes-for-workload-management.md) |En fazla eşzamanlı sorgu |128<br/><br/>  En fazla 128 eşzamanlı sorgu yürütülecektir ve kalan sorgular sıraya alınacaktır.<br/><br/>Kullanıcılar daha yüksek kaynak sınıflarına atandığında veya [veri ambarı birimi](memory-concurrency-limits.md) ayarı düşürülen zaman eşzamanlı sorguların sayısı azalabilir. DMV sorguları gibi bazı sorguların çalışmasına her zaman izin verilir ve eşzamanlı sorgu sınırını etkilemez. Eşzamanlı sorgu yürütme hakkında daha fazla bilgi için bkz. [eşzamanlılık üst sınırları](memory-concurrency-limits.md) makalesi. |
@@ -54,7 +54,7 @@ Azure SYNAPSE Analytics 'te adanmış SQL havuzunun çeşitli bileşenleri için
 | İstatistikler |İstatistik nesnesi başına sütun. |32 |
 | İstatistikler |Tablo başına sütunlarda oluşturulan istatistikler. |30.000 |
 | Saklı Yordamlar |En fazla iç içe geçme düzeyi. |8 |
-| Görünüm |Görünüm başına sütun |1.024 |
+| Görüntüle |Görünüm başına sütun |1.024 |
 ||||
 
 ## <a name="loads"></a>Sayfam

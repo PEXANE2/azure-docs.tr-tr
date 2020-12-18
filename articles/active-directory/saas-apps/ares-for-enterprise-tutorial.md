@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 3e760ffa0dfc3bf080852da2fc401abd83fe4101
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cd8faece0d737e97f1c5809f27840f1d9192548
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457750"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673452"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ares-for-enterprise"></a>Öğretici: Kurumsal için ARES ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile kurumsal için ARES 'yi tümleştirmek aşağıdaki avantajları sa
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini kurumsal için ARES ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -63,13 +63,13 @@ ARES for Enterprise 'ın Azure AD ile tümleştirilmesini yapılandırmak için,
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **kuruluş Için Ares**yazın, sonuç panelinden **Kurumsal için Ares** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **kuruluş Için Ares** yazın, sonuç panelinden **Kurumsal için Ares** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde kuruluş için ARES](common/search-new-app.png)
+    ![Sonuçlar listesinde kuruluş için ARES](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Azure AD çoklu oturum açma 'yı kurumsal için Ares ile yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, Azure AD çoklu oturum açma 'yı kurumsal için Ares ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin kurumsal olması gerekir.
 
 Azure AD çoklu oturum açma 'yı kurumsal için ARES ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -129,9 +129,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -166,7 +166,7 @@ Bu bölümde, şirket içi kullanıcıların erişimine izin vererek Azure çokl
 
 ### <a name="create-ares-for-enterprise-test-user"></a>Kurumsal test kullanıcısı için ARES oluşturma
 
-Bu bölümde, Britta Simon adlı bir Kullanıcı kurumsal için ARES 'de oluşturulur. İçin ARES, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı**destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten kuruluş için ARES 'de yoksa, for Enterprise 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
+Bu bölümde, Britta Simon adlı bir Kullanıcı kurumsal için ARES 'de oluşturulur. İçin ARES, varsayılan olarak etkinleştirilen **tam zamanında sağlamayı** destekler. Bu bölümde sizin için herhangi bir eylem öğesi yok. Bir kullanıcı zaten kuruluş için ARES 'de yoksa, for Enterprise 'a erişmeye çalıştığınızda yeni bir tane oluşturulur.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2020
 ms.author: Zhchia
-ms.openlocfilehash: b739cd50c4d4477d3622350a9a9c96b600794c7d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4eaac716d06b102a07872059af28da4986889caa
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632048"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673450"
 ---
 # <a name="tutorial-configure-bizagi-studio-for-digital-process-automation-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Bizagı Studio 'Yu dijital Işlem otomasyonu için yapılandırma
 
@@ -139,6 +139,8 @@ Bu bölüm, Kullanıcı ve grupları oluşturmak, güncelleştirmek ve devre dı
 
    Özel öznitelikler ekleme hakkında daha fazla bilgi, [uygulama özniteliklerini özelleştirme](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)bölümünde bulunabilir.
 
+> [!NOTE]
+> Yalnızca temel tür özellikleri desteklenir (örneğin, String, Integer, Boolean, DateTime, vb.). Parametrik tablolara veya birden çok türe bağlı özellikler henüz desteklenmiyor.
 
 10. Kapsam filtrelerini yapılandırmak için bkz. [kapsam filtresi öğreticisi](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

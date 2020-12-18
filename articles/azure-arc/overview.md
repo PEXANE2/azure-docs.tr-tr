@@ -3,12 +3,12 @@ title: Azure Arc'a genel bakış
 description: Azure Arc 'ın ne olduğu ve müşterilerin karma kaynaklarını diğer Azure hizmetleri ve özellikleriyle yönetimi ve idare etmesine nasıl yardımcı olduğunu öğrenin.
 ms.date: 09/23/2020
 ms.topic: overview
-ms.openlocfilehash: 3a8b054d9b7fd8f48dc667a5bd49a2c6994de1a3
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 8f39dff16037b5f52a050b7d07193b0ad7cab93d
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616533"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672695"
 ---
 # <a name="azure-arc-overview"></a>Azure Arc'a genel bakış
 
@@ -74,10 +74,10 @@ Geçerli önizleme aşamasında, Azure Arc etkin veri Hizmetleri ek bir ücret �
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Jumpstart senaryolarından](https://azurearcjumpstart.io/azure_arc_jumpstart/) yay özellikli hizmetler yaşamaya başlayın
-
 * Yay etkin sunucular hakkında daha fazla bilgi edinmek için aşağıdaki [genel bakışa](./servers/overview.md) bakın
 
 * Arc etkin Kubernetes hakkında daha fazla bilgi edinmek için aşağıdaki [genel bakışa](./kubernetes/overview.md) bakın
 
 * Arc etkin veri hizmetleri hakkında daha fazla bilgi edinmek için aşağıdaki [genel bakışa](https://azure.microsoft.com/services/azure-arc/hybrid-data-services/) bakın
+
+* Prototip etkin Hizmetleri, kavram kanıtından [atlama kanıtı](https://azurearcjumpstart.io/azure_arc_jumpstart/)

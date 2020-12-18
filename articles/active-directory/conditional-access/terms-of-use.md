@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e8731312ee43930e0f2abcf81228c21bebfdb1f
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 399cbef4de91623ada1c38de7c6148d22fde94c7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653733"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672409"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Kullanım koşulları Azure Active Directory
 
@@ -74,11 +74,11 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 1. Azure 'da genel yönetici, güvenlik yöneticisi veya koşullu erişim Yöneticisi olarak oturum açın.
 1. **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 
-   ![Koşullu erişim-Kullanım koşulları dikey pencere](./media/terms-of-use/tou-blade.png)
+    ![Koşullu erişim-Kullanım koşulları dikey pencere](./media/terms-of-use/tou-blade.png)
 
 1. **Yeni koşullar**'a tıklayın.
 
-   ![Kullanım koşullarınızın ayarlarını belirtmek için yeni kullanım şartı bölmesi](./media/terms-of-use/new-tou.png)
+    ![Kullanım koşullarınızın ayarlarını belirtmek için yeni kullanım şartı bölmesi](./media/terms-of-use/new-tou.png)
 
 1. **Ad** kutusuna, Azure Portal kullanılacak kullanım koşulları için bir ad girin.
 1. **Görünen ad** kutusuna kullanıcıların oturum açtıklarında göreceği bir başlık girin.
@@ -88,7 +88,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 1. Son kullanıcıların, eriştiği her cihazda kullanım koşullarınızı kabul etmesini gerektirmek için, **kullanıcıların her cihazda** **üzerinde** onay vermesini iste seçeneğini belirleyin. Bu seçenek etkinleştirilirse kullanıcıların ek uygulamalar yüklemesi gerekebilir. Daha fazla bilgi için bkz. [cihaz başına kullanım koşulları](#per-device-terms-of-use).
 1. Kullanım koşullarını bir zamanlamaya göre sona erdirmek istiyorsanız, kullanım **süreleri sona erme** süresini **Açık** olarak ayarlayın. Açık olarak ayarlandığında, iki ek zamanlama ayarı görüntülenir.
 
-   ![Başlangıç tarihi, sıklığı ve süreyi ayarlamak için onayları ayarlarının süresi doluyor](./media/terms-of-use/expire-consents.png)
+    ![Başlangıç tarihi, sıklığı ve süreyi ayarlamak için onayları ayarlarının süresi doluyor](./media/terms-of-use/expire-consents.png)
 
 1. Kullanım son tarihleri için zamanlamayı belirtmek üzere başlangıç ve **Sıklık** ayarlarını **sona erdir** ' i kullanın. Aşağıdaki tabloda, birkaç örnek ayar için sonuç gösterilmektedir:
 
@@ -115,7 +115,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
 1. **Koşullu erişim** altında, Kullanım Koşullarını zorlayacağı şablonu seçmek Için **koşullu erişim ilkesi şablonunu Uygula** listesini kullanın.
 
-   ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
+    ![İlke şablonu seçmek için koşullu erişim açılan listesi](./media/terms-of-use/conditional-access-templates.png)
 
    | Şablon | Description |
    | --- | --- |
@@ -131,7 +131,7 @@ Kullanım koşullarınızı bir kez daha doldurduktan sonra eklemek için aşağ
 
 1. **Oluştur**’a tıklayın.
 
-   Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
+    Özel bir koşullu erişim şablonu seçtiyseniz, özel koşullu erişim ilkesi oluşturmanıza olanak sağlayan yeni bir ekran görüntülenir.
 
    ![Özel koşullu erişim ilkesi şablonunu seçtiyseniz yeni koşullu erişim bölmesi](./media/terms-of-use/custom-policy.png)
 
@@ -145,15 +145,15 @@ Kullanım Koşulları dikey penceresinin kabul eden ve reddeden kullanıcı say�
 
 1. Azure'da oturum açın ve **Kullanım Koşulları**'na erişmek için [https://aka.ms/catou](https://aka.ms/catou) sayfasına gidin.
 
-   ![Kullanıcı sayısını gösteren Kullanım koşulları dikey pencere sayısı kabul edildi ve reddedildi](./media/terms-of-use/view-tou.png)
+    ![Kullanıcı sayısını gösteren Kullanım koşulları dikey pencere sayısı kabul edildi ve reddedildi](./media/terms-of-use/view-tou.png)
 
 1. Kullanım koşulları için, kullanıcıların geçerli durumunu görüntülemek için **kabul edilen** veya **Reddedilen** sayılara tıklayın.
 
-   ![Kabul etmiş olan kullanıcıları listelemek kullanım koşulları onayları bölmesi](./media/terms-of-use/accepted-tou.png)
+    ![Kabul etmiş olan kullanıcıları listelemek kullanım koşulları onayları bölmesi](./media/terms-of-use/accepted-tou.png)
 
 1. Tek bir kullanıcının geçmişini görüntülemek için üç nokta (**...**) simgesine tıklayın ve ardından **geçmişi görüntüleyin**.
 
-   ![Kullanıcı için geçmişi görüntüle bağlam menüsü](./media/terms-of-use/view-history-menu.png)
+    ![Kullanıcı için geçmişi görüntüle bağlam menüsü](./media/terms-of-use/view-history-menu.png)
 
    Görünüm geçmişi bölmesinde, tüm kabul etme, reddetme ve süre sonları geçmişini görürsünüz.
 
@@ -169,11 +169,11 @@ Azure AD denetim günlükleri 'ni kullanmaya başlamak için aşağıdaki yordam
 1. Kullanım koşullarını seçin.
 1. **Denetim günlüklerini görüntüle**' ye tıklayın.
 
-   ![Denetim günlüklerini görüntüle seçeneğinin vurgulandığı dikey pencere Kullanım koşulları](./media/terms-of-use/audit-tou.png)
+    ![Denetim günlüklerini görüntüle seçeneğinin vurgulandığı dikey pencere Kullanım koşulları](./media/terms-of-use/audit-tou.png)
 
 1. Azure AD denetim günlükleri ekranında, belirli denetim günlüğü bilgilerini hedeflemek için, belirtilen listeleri kullanarak bilgileri filtreleyebilirsiniz.
 
-   Ayrıca **İndir**'e tıklayarak bilgileri yerel olarak kullanmak üzere bir .csv dosyasında indirebilirsiniz.
+    Ayrıca **İndir**'e tıklayarak bilgileri yerel olarak kullanmak üzere bir .csv dosyasında indirebilirsiniz.
 
    ![Azure AD denetim günlükleri ekran listeleme tarihi, hedef ilkesi, tarafından başlatılan ve etkinlik](./media/terms-of-use/audit-logs-tou.png)
 
@@ -204,11 +204,11 @@ Kullanıcılar, aşağıdaki yordamı kullanarak kabul ettikleri kullanım koşu
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) adresinde oturum açın.
 1. Sağ üst köşedeki ad ' a tıklayın ve **profil**' i seçin.
 
-   ![Kullanıcının bölmesi açık olan Uygps sitesi](./media/terms-of-use/tou14.png)
+    ![Kullanıcının bölmesi açık olan Uygps sitesi](./media/terms-of-use/tou14.png)
 
 1. Profil sayfanızda **Kullanım koşullarını gözden geçir**'e tıklayın.
 
-   ![Kullanım koşullarını gözden geçirme bağlantısını gösteren bir kullanıcının profil sayfası](./media/terms-of-use/tou13a.png)
+    ![Kullanım koşullarını gözden geçirme bağlantısını gösteren bir kullanıcının profil sayfası](./media/terms-of-use/tou13a.png)
 
 1. Buradan, kabul ettiğiniz kullanım koşullarını gözden geçirebilirsiniz.
 
@@ -220,11 +220,11 @@ Kullanım koşulları 'nın bazı ayrıntılarını düzenleyebilir, ancak var o
 1. Düzenlemek istediğiniz kullanım koşullarını seçin.
 1. **Terimleri Düzenle**' ye tıklayın.
 1. Kullanım koşullarını Düzenle bölmesinde, aşağıdakileri değiştirebilirsiniz:
-     - **Ad** : Bu, son kullanıcılarla paylaşılmayan ToU 'ın iç adıdır
-     - **Görünen ad** – bu, son kullanıcıların ToU 'yi görüntülerken görebilmesini sağlayan addır
-     - **Kullanıcıların kullanım koşullarını genişletmesini gerektir** – bunu **Açık** olarak ayarlamak, son kullanımı, kabul etmeden önce belge kullanım koşullarını genişletmeye zorlar.
-     - Önizle **Mevcut bir kullanım koşulları belgesini güncelleştirebilirsiniz**
-     - Mevcut bir ToU 'ya bir dil ekleyebilirsiniz
+    - **Ad** : Bu, son kullanıcılarla paylaşılmayan ToU 'ın iç adıdır
+    - **Görünen ad** – bu, son kullanıcıların ToU 'yi görüntülerken görebilmesini sağlayan addır
+    - **Kullanıcıların kullanım koşullarını genişletmesini gerektir** – bunu **Açık** olarak ayarlamak, son kullanımı, kabul etmeden önce belge kullanım koşullarını genişletmeye zorlar.
+    - Önizle **Mevcut bir kullanım koşulları belgesini güncelleştirebilirsiniz**
+    - Mevcut bir ToU 'ya bir dil ekleyebilirsiniz
 
    PDF belgesi gibi değiştirmek istediğiniz başka ayarlar varsa, kullanıcıların her cihazda onay vermesini, consents 'nin süresini, yeniden kabul etmeden önce süreyi veya koşullu erişim ilkesini, yeni bir kullanım koşulları oluşturmanız gerekir.
 
@@ -279,7 +279,7 @@ Aşağıdaki yordamda bir kullanım koşulları dilinin nasıl ekleneceği açı
 1. Sayfanın alt kısmındaki **Dil ekle** ' ye tıklayın.
 1. Kullanım koşulları Ekle dil bölmesinde yerelleştirilmiş PDF 'nizi karşıya yükleyin ve dili seçin.
 
-   ![Kullanım koşulları seçili ve Ayrıntılar bölmesindeki diller sekmesi gösteriliyor](./media/terms-of-use/select-language.png)
+    ![Kullanım koşulları seçili ve Ayrıntılar bölmesindeki diller sekmesi gösteriliyor](./media/terms-of-use/select-language.png)
 
 1. **Dil ekle**' ye tıklayın.
 1. **Kaydet**’e tıklayın
@@ -340,7 +340,7 @@ Aşağıdaki yordamı kullanarak eski kullanım koşullarını silebilirsiniz.
 1. **Koşulları sil**'e tıklayın.
 1. Devam etmek isteyip istemediğinizi soran iletide **Evet**'e tıklayın.
 
-   ![Kullanım koşullarını silme onayı isteyen ileti](./media/terms-of-use/delete-tou.png)
+    ![Kullanım koşullarını silme onayı isteyen ileti](./media/terms-of-use/delete-tou.png)
 
    Artık kullanım koşullarınızı görmemelisiniz.
 

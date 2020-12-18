@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07cdb6c3c4a0eb97b4b98b5854c481c4cee16a20
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 124485819bf7fab02e2d62bec46ad50468589773
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457191"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674359"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Öğretici: birsi çevik İş Analizi tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile birlikte bulunan çevik İş Analizi tümleştirme, aşağıdaki av
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini bir kuşı çevik İş Analizi yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Tek bir çevik İş Analizi tümleştirmesini Azure AD 'ye göre yapılandırmak
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Birlikst çevik iş analizi**yazın, sonuç panelinden **birlikst çevik iş analizi** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna, **Birlikst çevik iş analizi** yazın, sonuç panelinden **birlikst çevik iş analizi** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde kuşst çevik İş Analizi](common/search-new-app.png)
+    ![Sonuç listesinde kuşst çevik İş Analizi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak tek bir çevik iş analizi yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak tek bir çevik iş analizi yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin, tek bir çevik İş Analizi oluşturulması gerekir.
 
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için İş Analizi, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -149,9 +149,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -166,7 +166,7 @@ Bu bölümde, tek bir çevik İş Analizi erişim izni vererek Azure çoklu otur
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Kuşst çevik iş analizi**seçin.
+2. Uygulamalar listesinde, **Kuşst çevik iş analizi** seçin.
 
     ![Uygulamalar listesinde Kuşst çevik İş Analizi bağlantısı](common/all-applications.png)
 

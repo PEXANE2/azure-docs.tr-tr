@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c9fbf6990f789bdb0edb1cf45885003569d4f6a8
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a8c9a15761a4b37dfcf5ba7cc4cf046390092145
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653240"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672154"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft Identity platformunda imzalama anahtarı geçişi
 Bu makalede, güvenlik belirteçlerini imzalamak için Microsoft Identity platform tarafından kullanılan ortak anahtarlar hakkında bilmeniz gerekenler açıklanmaktadır. Bu anahtarların düzenli olarak bir süre içinde devredildiğini ve acil bir durumda bir acil durum için hemen geri alınabilir olduğunu unutmayın. Microsoft Identity platform kullanan tüm uygulamalar, anahtar geçişi işlemini programlı bir şekilde işleyebilmelidir. Anahtarların nasıl çalıştığını, uygulamanıza yapılan geçişin etkisini nasıl değerlendirireceğini ve gerekirse anahtar rollover 'ı işlemek için düzenli el ile geçiş süreci oluşturmayı öğrenmek için okumaya devam edin.
@@ -68,28 +68,30 @@ Azure Uygulama Hizmetleri ' kimlik doğrulama/yetkilendirme (EasyAuth) işlevsel
 ### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>.NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri
 Uygulamanız .NET OWIN OpenID Connect, WS-Fed veya Windowsazureactivedirectoryyataerauthentication ara yazılım kullanıyorsa, anahtar geçişi otomatik olarak işlemek için gerekli mantık zaten vardır.
 
-Uygulamanızın Startup.cs veya Startup.Auth.cs ' de aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
+Uygulamanızın Startup.cs veya Startup.Auth.cs dosyalarındaki aşağıdaki kod parçacıklarını arayarak uygulamanızın bunlardan herhangi birini kullandığını doğrulayabilirsiniz.
 
-```
+```csharp
 app.UseOpenIdConnectAuthentication(
-     new OpenIdConnectAuthenticationOptions
-     {
-         // ...
-     });
+    new OpenIdConnectAuthenticationOptions
+    {
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWsFederationAuthentication(
     new WsFederationAuthenticationOptions
     {
-     // ...
-     });
+        // ...
+    });
 ```
-```
+
+```csharp
 app.UseWindowsAzureActiveDirectoryBearerAuthentication(
-     new WindowsAzureActiveDirectoryBearerAuthenticationOptions
-     {
-     // ...
-     });
+    new WindowsAzureActiveDirectoryBearerAuthenticationOptions
+    {
+        // ...
+    });
 ```
 
 ### <a name="web-applications--apis-protecting-resources-using-net-core-openid-connect-or--jwtbearerauthentication-middleware"></a><a name="owincore"></a>.NET Core OpenID Connect veya Jwtyataerauthentication ara yazılımı kullanılarak kaynakları koruyan Web uygulamaları/API 'Leri

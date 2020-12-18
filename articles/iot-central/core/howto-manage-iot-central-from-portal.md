@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 02/11/2020
 ms.topic: how-to
 manager: philmea
-ms.openlocfilehash: 0802169898cad51e9a5d208e546a004f7ea7b3c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cf8fdfe0c8eb557946baa95d0d8beb2b388baa5
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91653341"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674455"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Azure portal IoT Central yönetme
 
@@ -25,7 +25,7 @@ ms.locfileid: "91653341"
 
 Bir uygulama oluşturmak için [Azure Portal](https://ms.portal.azure.com) gidin ve **kaynak oluştur**' u seçin.
 
-**Market çubuğunda ara** çubuğuna *IoT Central*yazın:
+**Market çubuğunda ara** çubuğuna *IoT Central* yazın:
 
 ![Yönetim Portalı: arama](media/howto-manage-iot-central-from-portal/image0a1.png)
 
@@ -41,7 +41,7 @@ Formdaki tüm alanları doldurur. Bu form, [Azure IoT Central uygulama Yönetici
 
 ![IoT Central form oluştur](media/howto-manage-iot-central-from-portal/image6a.png)
 
-**Konum** , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Azure IoT Central Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık**ve **Japonya** coğrafi graflarını kullanabilir. Bir konum seçtikten sonra, uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
+**Konum** , uygulamanızı oluşturmak istediğiniz [Coğrafya](https://azure.microsoft.com/global-infrastructure/geographies/) ' dır. Genellikle en iyi performansı elde etmek için cihazlarınıza fiziksel olarak en yakın konumu seçmeniz gerekir. Azure IoT Central Şu anda **Avustralya**, **Asya Pasifik**, **Avrupa**, **Birleşik Devletler**, **Birleşik Krallık** ve **Japonya** coğrafi graflarını kullanabilir. Bir konum seçtikten sonra, uygulamanızı daha sonra farklı bir konuma taşıyamazsınız.
 
 Tüm alanları doldurduktan sonra **Oluştur**' u seçin.
 
@@ -50,11 +50,11 @@ Tüm alanları doldurduktan sonra **Oluştur**' u seçin.
 Zaten bir Azure IoT Central uygulamanız varsa, bunu silebilir veya Azure portal farklı bir aboneliğe veya kaynak grubuna taşıyabilirsiniz.
 
 > [!NOTE]
-> Aboneliğiniz ile ilişkilendirilmediğinden, Azure portal ücretsiz fiyatlandırma planında oluşturulan uygulamaları göremezsiniz.
+> *Ücretsiz* plan kullanılarak oluşturulan uygulamalar, Azure abonelikleri gerektirmez ve bu nedenle, bunları Azure Portal Azure aboneliğinizdeki listede bulamayamayacağız. IoT Central portalından yalnızca ücretsiz uygulamaları görebilir ve yönetebilirsiniz.
 
 Başlamak için portalda **tüm kaynaklar** ' ı seçin. **Gizli türleri göster** ' i seçin ve bunu bulmak için **ada göre filtrele** ' de uygulamanızın adını yazmaya başlayın. Ardından, yönetmek istediğiniz IoT Central uygulamayı seçin.
 
-Uygulamaya gitmek için **IoT Central uygulama URL 'sini**seçin:
+Uygulamaya gitmek için **IoT Central uygulama URL 'sini** seçin:
 
 !["IoT Central uygulama URL 'SI" vurgulanmış "genel bakış" sayfasını gösteren ekran görüntüsü.](media/howto-manage-iot-central-from-portal/image3.png)
 

@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes hizmeti (AKS) kümesi oluşturmayı öğ
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 450d68e26c5a3fc1ecfbaf6a3be6b5f698ee65e3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183269"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673894"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes hizmet kümesi oluşturma
 
@@ -24,9 +24,11 @@ Denetim düzlemi veya API sunucusu, Azure Kubernetes hizmeti (AKS) tarafından y
 > [!NOTE]
 > Azure Kamu siteleri desteklenir, ancak eksik özel bağlantı desteği nedeniyle US Gov Teksas Şu anda desteklenmiyor.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure CLı sürüm 2.2.0 veya üzeri
+* Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
+* Özel bir DNS sunucusu kullanmak için IP 168.63.129.16 Azure DNS özel DNS sunucusuna yukarı akış DNS sunucusu olarak ekleyin.
 
 ## <a name="create-a-private-aks-cluster"></a>Özel AKS kümesi oluşturma
 
@@ -64,6 +66,20 @@ az aks create \
 > [!NOTE]
 > Docker Köprüsü CıDR (172.17.0.1/16) alt ağ CıDR ile çakışıyor, Docker köprü adresini uygun şekilde değiştirin.
 
+### <a name="configure-private-dns-zone"></a>Özel DNS bölgeyi yapılandırma
+
+--Private-DNS-Zone bağımsız değişkeni atlanırsa varsayılan değer "sistem" dir. AKS, düğüm kaynak grubunda bir Özel DNS bölgesi oluşturur. "None" parametresinin geçirilmesi, AKS 'in bir Özel DNS bölgesi oluşturmayacağı anlamına gelir.  Bu, kendi DNS sunucunuzu getir ve özel FQDN için DNS çözümlemesi yapılandırmanızı temel alır.  DNS çözümlemesini yapılandırmazsanız DNS yalnızca aracı düğümleri içinde çözülebilir ve dağıtımdan sonra küme sorunlarına neden olur.
+
+## <a name="no-private-dns-zone-prerequisites"></a>Özel DNS bölgesi önkoşulları yok
+PrivateDNSZone yok
+* Azure CLı sürüm 0.4.67 veya üzeri
+* API sürüm 2020-11-01 veya üzeri
+
+## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Özel DNS bölgesi ile özel bir AKS kümesi oluşturma
+
+```azurecli-interactive
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Özel kümeye bağlanma seçenekleri
 
 API sunucusu uç noktasının genel IP adresi yok. API sunucusunu yönetmek için, AKS kümesinin Azure sanal ağına (VNet) erişimi olan bir VM kullanmanız gerekir. Özel kümeye Ağ bağlantısı kurmak için çeşitli seçenekler vardır.
@@ -100,23 +116,19 @@ Belirtildiği gibi, sanal ağ eşlemesi özel kümenize erişmenin bir yoludur. 
 
 3. Kümenizi içeren VNet 'in özel DNS ayarları (4) olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerine (5) sahip olan VNet 'e bağlanmadığı takdirde küme dağıtımı başarısız olur. Bu bağlantı, Küme sağlama sırasında veya olay tabanlı dağıtım mekanizmaları (örneğin, Azure Event Grid ve Azure Işlevleri) kullanılarak bölge oluşturma algılandıktan sonra Otomasyon yoluyla, özel bölge oluşturulduktan sonra el ile oluşturulabilir.
 
-## <a name="dependencies"></a>Bağımlılıklar  
-
-* Özel bağlantı hizmeti yalnızca standart Azure Load Balancer desteklenir. Temel Azure Load Balancer desteklenmez.  
-* Özel bir DNS sunucusu kullanmak için IP 168.63.129.16 Azure DNS özel DNS sunucusuna yukarı akış DNS sunucusu olarak ekleyin.
+> [!NOTE]
+> [Kubernetes kullanan ile kendi yol tablonuzu getir](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) ve kendi DNS 'Nizi özel kümeyle getir ' i kullanıyorsanız, küme oluşturma işlemi başarısız olur. Oluşturma işleminin başarılı olması için, küme oluşturma işlemi başarısız olduktan sonra düğüm kaynak grubundaki [RouteTable](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) 'ı alt ağ ile ilişkilendirmeniz gerekir.
 
 ## <a name="limitations"></a>Sınırlamalar 
 * IP yetkili aralıkları özel API sunucusu uç noktasına uygulanamıyor, yalnızca ortak API sunucusu için geçerlidir
-* [Kullanılabilirlik alanları][availability-zones] Şu anda belirli bölgelerde destekleniyor. 
 * [Azure özel bağlantı hizmeti sınırlamaları][private-link-service] özel kümeler için geçerlidir.
-* Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları][devops-agents]kullanmayı göz önünde bulundurun. 
+* Özel kümelerle Azure DevOps Microsoft tarafından barındırılan aracılar için destek yoktur. [Şirket içinde barındırılan aracıları](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true)kullanmayı göz önünde bulundurun. 
 * Azure Container Registry özel AKS ile çalışmak üzere etkinleştirmesi gereken müşteriler için, Container Registry sanal ağı aracı kümesi sanal ağıyla eşlenmelidir.
-* Azure Dev Spaces için geçerli destek yok
 * Mevcut AKS kümelerini özel kümelere dönüştürme desteği yok
 * Müşteri alt ağındaki özel uç noktasını silmek veya değiştirmek kümenin çalışmayı durdurmasına neden olur. 
 * Kapsayıcılar için Azure Izleyici canlı veriler şu anda desteklenmiyor.
-* Çalışma süresi SLA 'Sı Şu anda desteklenmiyor.
-
+* Müşteriler, kendi DNS sunucularındaki bir kaydı güncelleştirdikten sonra, bu FID 'ler, yeniden başlatılana kadar geçişten sonra apıver FQDN 'sini daha eski IP 'ye çözeceklerdir. Müşterilerin, denetim düzlemi geçişinden sonra hostNetwork pods ve default-DNSPolicy pods ' i yeniden başlatması gerekir.
+* Denetim düzlemine yönelik bakım durumunda [aks IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.) 'niz değişebilir. Bu durumda, özel DNS sunucunuzdaki API sunucusu özel IP 'sine işaret eden bir kaydı güncelleştirmeniz ve hostnetwork kullanarak tüm özel POD veya dağıtımları yeniden başlatmanız gerekir.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

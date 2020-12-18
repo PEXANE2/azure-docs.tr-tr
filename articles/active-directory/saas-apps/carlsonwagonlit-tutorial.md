@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 86c2d9585abd546acb3efb22256d3f3b70bfb972
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302941"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674404"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Öğretici: Carlson Wagonaydınlatmalı seyahat ile Azure Active Directory tümleştirme
 
@@ -63,7 +63,7 @@ Carlson Wagonaydınlatmalı seyahatin Azure AD 'ye tümleştirilmesini yapıland
 
 4. Arama kutusuna **Carlson wagonaydınlatma** yazın, sonuç panelinden **Carlson wagonaydınlatma** ' yı seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde Carlson Wagonaydınlatma yolculuğu](common/search-new-app.png)
+    ![Sonuç listesinde Carlson Wagonaydınlatma yolculuğu](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -138,13 +138,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
     a. **Ad** alanına **Brittasıon** yazın.
-  
+
     b. **Kullanıcı adı** alanına **brittasıon \@ yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

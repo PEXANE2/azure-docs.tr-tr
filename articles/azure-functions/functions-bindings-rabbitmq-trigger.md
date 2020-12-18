@@ -4,15 +4,15 @@ description: Bir Kbbitmq iletisi oluşturulduğunda bir Azure Işlevi çalışt�
 author: cachai2
 ms.assetid: ''
 ms.topic: reference
-ms.date: 12/16/2020
+ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 1db27db97cdc1746b3392bd386ee6539980cd6d6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630743"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673996"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Kbbitmq tetikleyicisi
 
@@ -32,7 +32,7 @@ Aşağıdaki örnek, Kbbitmq iletisini bir [Kbbitmq olayı](https://www.rabbitmq
 ```cs
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] BasicDeliverEventArgs args,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] BasicDeliverEventArgs args,
     ILogger logger
     )
 {
@@ -50,7 +50,7 @@ public class TestClass
 
 [FunctionName("RabbitMQTriggerCSharp")]
 public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnection")] TestClass pocObj,
+    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
     ILogger logger
     )
 {
@@ -74,7 +74,7 @@ Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -105,7 +105,7 @@ Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -134,7 +134,7 @@ Bir Kbbitmq Binding, *türünün türü* olarak ayarlandığı *function.js* tan
             "type": "rabbitMQTrigger",
             "direction": "in",
             "queueName": "queue",
-            "connectionStringSetting": "rabbitMQConnection"
+            "connectionStringSetting": "rabbitMQConnectionAppSetting"
         }
     ]
 }
@@ -155,7 +155,7 @@ Aşağıdaki Java işlevi, `@RabbitMQTrigger` bir kbbitmq kuyruğu tetikleyicisi
 ```java
 @FunctionName("RabbitMQTriggerExample")
 public void run(
-    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnection", queueName = "queue") String input,
+    @RabbitMQTrigger(connectionStringSetting = "rabbitMQConnectionAppSetting", queueName = "queue") String input,
     final ExecutionContext context)
 {
     context.getLogger().info("Java HTTP trigger processed a request." + input);
@@ -180,7 +180,7 @@ public static void RabbitMQTest([RabbitMQTrigger("queue")] string message, ILogg
 }
 ```
 
-Tüm örnek için bkz. C# örneği.
+Tüm örnek için bkz. C# [örneği](#example).
 
 # <a name="c-script"></a>[C# betiği](#tab/csharp-script)
 
@@ -278,9 +278,9 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 |Özellik  |Varsayılan | Description |
 |---------|---------|---------|
 |prefetchCount|30|İleti alıcısının eşzamanlı olarak istek aldığı ve önbelleğe alındığı ileti sayısını alır veya ayarlar.|
-|Adı|yok| İletilerin alınacağı kuyruğun adı. |
-|Dizisi|yok|Kbbitmq ileti kuyruğu bağlantı dizesini içeren uygulama ayarının adı. Bağlantı dizesini doğrudan belirtirseniz ve local.settings.jsüzerinde bir uygulama ayarı aracılığıyla değil, tetikleyicinin çalışmadığına lütfen emin olun.|
-|port|0|(connectionString kullanılıyorsa yok sayılır) Ölçeklendirilen örnek başına eşzamanlı olarak işlenebilecek en fazla oturum sayısı.|
+|Adı|yok| İletilerin alınacağı kuyruğun adı.|
+|Dizisi|yok|Kbıbitmq ileti sırası bağlantı dizesi. Bağlantı dizesinin bir uygulama ayarı aracılığıyla değil, burada doğrudan belirtildiğine lütfen emin olun.|
+|port|0|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
 
 ## <a name="local-testing"></a>Yerel ortamda test etme
 

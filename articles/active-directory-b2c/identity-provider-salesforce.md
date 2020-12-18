@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0d8b90e18865afeb5cb0c171d21c89d7c6e932f0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 69c2bd96c7aa3bb3328784bb3b5027ade4902c43
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654294"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97669236"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak bir Salesforce hesabı ile kaydolma ve oturum açma ayarlama
 
@@ -39,7 +39,9 @@ ms.locfileid: "97654294"
 
 Azure Active Directory B2C (Azure AD B2C) ' de Salesforce hesabı kullanmak için Salesforce **App Manager**'da bir uygulama oluşturmanız gerekir. Daha fazla bilgi için bkz. [temel bağlı uygulama ayarlarını yapılandırma](https://help.salesforce.com/articleView?id=connected_app_create_basics.htm)ve [API Tümleştirmesi Için OAuth ayarlarını etkinleştirme](https://help.salesforce.com/articleView?id=connected_app_create_api_integration.htm)
 
-1. **Kurulumdan** **hızlı bul** kutusuna **uygulamalar** girin ve **App Manager**' ı seçin.
+1. [Salesforce 'Ta oturum açın](https://login.salesforce.com/).
+1. Menüden **Kurulum**' u seçin.
+1.  **Uygulamalar**' ı genişletin ve ardından **App Manager**' ı seçin.
 1. **Yeni bağlı uygulama**' yı seçin.
 1. **Temel bilgiler** altında şunu girin:
     1. **Bağlı uygulama adı** -bağlı uygulama adı App Manager 'Da ve uygulama başlatıcısı kutucuğunda görüntülenir. Ad, kuruluşunuz dahilinde benzersiz olmalıdır. 

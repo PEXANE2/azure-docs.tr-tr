@@ -2,13 +2,13 @@
 title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemi ve dizileri (ARM şablonu) kullanın.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 47f3d693b84347973889a6003360d7113c427f4d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.date: 12/17/2020
+ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905919"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672840"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
@@ -292,10 +292,9 @@ Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini olu
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Öğreticiye gitmek için bkz. [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
+* Kaynak kopyasını içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Copy öğesinin diğer kullanımları için bkz.:
   * [ARM şablonlarındaki Özellik yinelemesi](copy-properties.md)
   * [ARM şablonlarında değişken yineleme](copy-variables.md)
   * [ARM şablonlarındaki çıkış yinelemesi](copy-outputs.md)
 * İç içe şablonlar ile kopyalama kullanma hakkında daha fazla bilgi için, bkz. [kopyalamayı kullanma](linked-templates.md#using-copy).
-* Bir şablonun bölümleri hakkında bilgi edinmek istiyorsanız, bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Şablonunuzu dağıtmayı öğrenmek için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md).

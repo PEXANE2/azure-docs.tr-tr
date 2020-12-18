@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d53cfc874bca6529fdee821ce3173607d5f06b3
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7a4e3a4a6049b48fa70e5352680bdc7342676c0b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456063"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670298"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Öğretici: Cisco WebEx toplantılarıyla çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Cisco WebEx toplantılarının Azure Active Directory (Azure AD
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -59,7 +59,7 @@ Cisco WebEx toplantılarının Azure AD 'de tümleştirilmesini yapılandırmak 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-cisco-webex-meetings"></a>Cisco WebEx toplantıları için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Cisco WebEx toplantılarıyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için Cisco WebEx toplantılarında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Cisco WebEx toplantılarıyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için Cisco WebEx toplantılarında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Cisco WebEx toplantılarıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -92,8 +92,8 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     a. **Temel SAML yapılandırması** bölümünde Düzenle/kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-    
-    b. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:` https://<customername>.my.webex.com`
+
+    b. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak URL 'yi yazın:`https://<customername>.my.webex.com`
 
 5. Cisco WebEx Toplantıları uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
 
@@ -114,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     c. **Ad alanını** boş bırakın.
 
-    d. **Öznitelik**olarak kaynak seçin.
+    d. **Öznitelik** olarak kaynak seçin.
 
     e. **Kaynak özniteliği** listesinden, açılan listeden o satır için gösterilen öznitelik değerini seçin.
 
@@ -163,14 +163,14 @@ Bu bölümde, Cisco WebEx toplantılarına erişim vererek Azure çoklu oturum a
 1. `https://<customername>.webex.com/admin`Yönetim kimlik bilgilerinizle URL 'ye gidin.
 
 2. **Ortak site ayarları** ' na gidin ve **SSO yapılandırması**' na gidin.
- 
+
     ![Ekran görüntüsü ortak site ayarları ve S S O yapılandırması seçiliyken Cisco WebEx yönetimini gösterir.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. **WebEx yönetimi** sayfasında, aşağıdaki adımları uygulayın:
 
     ![Ekran görüntüsü WebEx yönetim sayfasını bu adımda açıklanan bilgilerle gösterir.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
-    a. **Federasyon Protokolü**olarak **SAML 2,0** ' ı seçin.
+    a. **Federasyon Protokolü** olarak **SAML 2,0** ' ı seçin.
 
     b. Azure portal 'ten indirdiğiniz meta veri dosyasını karşıya yüklemek için **SAML meta verilerini Içeri aktar** bağlantısına tıklayın.
 
@@ -178,10 +178,10 @@ Bu bölümde, Cisco WebEx toplantılarına erişim vererek Azure çoklu oturum a
 
     d. **Authcontextclassref** metin kutusunda, yazın `urn:oasis:names:tc:SAML:2.0:ac:classes:unspecified` ve Azure AD ile MFA 'yı etkinleştirmek istiyorsanız, şunun gibi iki değer yazın`urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport;urn:oasis:names:tc:SAML:2.0:ac:classes:X509`
 
-    e. **Otomatik hesap oluşturmayı**seçin.
+    e. **Otomatik hesap oluşturmayı** seçin.
 
     >[!NOTE]
-    >**Tam zamanında** Kullanıcı sağlamayı etkinleştirmek Için **Otomatik hesap oluşturmayı**denetlemeniz gerekir. Bu SAML belirteci özniteliklerinin yanı sıra SAML yanıtında geçirilmesi gerekir.
+    >**Tam zamanında** Kullanıcı sağlamayı etkinleştirmek Için **Otomatik hesap oluşturmayı** denetlemeniz gerekir. Bu SAML belirteci özniteliklerinin yanı sıra SAML yanıtında geçirilmesi gerekir.
 
     f. **Kaydet**’e tıklayın.
 
@@ -200,9 +200,9 @@ Erişim panelinde Cisco WebEx Toplantıları kutucuğuna tıkladığınızda, SS
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 

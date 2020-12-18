@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 069cf348bb6d0432d02a8350bc0847c2b155f90a
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498090"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672390"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory dağıtım planları
 Azure Active Directory (Azure AD) yeteneklerini dağıtmaya yönelik uçtan uca yönergeler mi arıyorsunuz? Azure AD dağıtım planları, yaygın Azure AD yeteneklerini başarıyla dağıtmak için gereken iş değeri, planlama konuları ve işlem yordamları boyunca size yol gösterir.
@@ -29,7 +29,7 @@ Herhangi bir plan sayfasında, belgelerin güncel çevrimdışı bir sürümün�
 
 | Özellik | Açıklama|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA), Microsoft 'un iki adımlı doğrulama çözümüdür. Yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, Azure AD MFA, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA), Microsoft 'un iki adımlı doğrulama çözümüdür. Yönetici onaylı kimlik doğrulama yöntemlerini kullanarak, Azure AD MFA, basit bir oturum açma işlemi talebini karşılarken verilerinize ve uygulamalarınıza erişimi korumaya yardımcı olur. [Kiracınızda Multi-Factor Authentication 'ı yapılandırma ve zorunlu kılmak için](https://www.youtube.com/watch?v=qNndxl7gqVM) bu videoyu izleyin|
 | [Koşullu Erişim](../conditional-access/plan-conditional-access.md)| Koşullu erişimle, koşullara göre bulut uygulamalarınıza kimlerin erişebileceği otomatik erişim denetimi kararları uygulayabilirsiniz. |
 | [Self servis parola sıfırlama](../authentication/howto-sspr-deployment.md)| Self servis parola sıfırlama, kullanıcılarınızın parolalarını yönetici müdahalesi olmadan sıfırlamasına, ne zaman ve nerede ihtiyaç duymalarına yardımcı olur. |
 | [Parolasız](../authentication/howto-authentication-passwordless-deployment.md) | Kuruluşunuzda Microsoft Authenticator App veya FIDO2 güvenlik anahtarlarını kullanarak passwordless kimlik doğrulaması uygulama |
@@ -86,7 +86,7 @@ Roller aşağıdaki gibi bulunabilir
 
 - Proje planı ve sonucu uygulamak için **R** esponerişilebilir 
 
-- **A** Proje planının ve sonucunun pproval 'i 
+- Proje planının ve sonucunun pproval 'i 
 
 - **C** ontributor-proje planı ve sonucu 
 

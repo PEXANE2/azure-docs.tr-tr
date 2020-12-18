@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: e5ad0b6dca7718166517b52148fbc6dd49f38869
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928197"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674021"
 ---
 # <a name="use-arm-template-test-toolkit"></a>ARM şablonu test araç setini kullanma
 
@@ -282,4 +282,5 @@ Sonraki örnek, testlerin nasıl çalıştırılacağını gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Varsayılan testler hakkında bilgi edinmek için bkz. [ARM şablonu test araç seti Için varsayılan test çalışmaları](test-cases.md).
+- Varsayılan testler hakkında bilgi edinmek için bkz. [ARM şablonu test araç seti Için varsayılan test çalışmaları](test-cases.md).
+- Test araç setini kullanarak kapsanan bir Microsoft Learn modülü için bkz. [değişiklik önizleme ve Azure kaynaklarını doğrulama, durum ve ARM şablonu test araç seti](/learn/modules/arm-template-test/).

@@ -1,14 +1,14 @@
 ---
 title: Düzeltilebilir bir ilke dağıtma
 description: Azure 'da bir düzeltme görevi kullanan ilkeleri dağıtmak için, müşteri kiracısında bir yönetilen kimlik oluşturmanız gerekir.
-ms.date: 08/12/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 998576d06d470c525a551463861f7a25d4ab9d8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010104"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670500"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Temsilci bir abonelik içinde düzeltilebilir bir ilke dağıtın
 
@@ -41,7 +41,7 @@ Aşağıdaki örnekte, Kullanıcı erişimi yönetici rolüne sahip olacak bir *
 
 ## <a name="deploy-policies-that-can-be-remediated"></a>Düzeltilenebilir ilkeleri dağıtma
 
-Yukarıda açıklanan izinlerle Kullanıcı oluşturduktan sonra, Kullanıcı, müşteri kiracısında düzeltme görevleri kullanan ilkeler dağıtabilir.
+Yukarıda açıklandığı gibi gerekli izinlerle kullanıcıyı oluşturduktan sonra, bu kullanıcı, temsilci olan müşteri abonelikleri içinde düzeltme görevleri kullanan ilkeler dağıtabilir.
 
 Örneğin, bu [örnekte](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring)gösterildiği gibi, müşteri kiracısındaki Azure Key Vault kaynaklarında tanılamayı etkinleştirmek istediğinizi varsayalım. Yönetim kiracısındaki bir kullanıcı uygun izinlerle (yukarıda açıklandığı gibi), bu senaryoyu etkinleştirmek için bir [Azure Resource Manager şablonu](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) dağıtır.
 

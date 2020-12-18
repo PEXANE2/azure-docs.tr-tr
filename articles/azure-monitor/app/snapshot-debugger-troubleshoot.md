@@ -3,14 +3,15 @@ title: Azure Application Insights Snapshot Debugger sorunlarını giderme
 description: Bu makalede, geliştiricilerin Application Insights Snapshot Debugger etkinleştirmesine ve kullanmasına yardımcı olacak sorun giderme adımları ve bilgileri sunulmaktadır.
 ms.topic: conceptual
 author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5dd1f799634fac223670db5c38effbe7fc29cf6f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560908"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673561"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Application Insights Snapshot Debugger etkinleştirme veya anlık görüntüleri görüntüleme sorunlarını giderme
 Uygulamanız için Application Insights Snapshot Debugger etkinleştirdiyseniz, ancak özel durumlar için anlık görüntüler görmüyorsanız, bu yönergeleri kullanarak sorun giderme yapabilirsiniz.

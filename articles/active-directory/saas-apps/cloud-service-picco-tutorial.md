@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.openlocfilehash: fe113575c9ac70efc0afc571758eea668a23d8cb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1df8c6fa0877c20518be072674447d28d7f1ca0c
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455825"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670181"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Öğretici: Cloud Service PICCO ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Bulut hizmeti PICCO 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sa
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Cloud Service PICCO ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -62,13 +62,13 @@ Cloud Service PICCO 'ın Azure AD ile tümleştirilmesini yapılandırmak için,
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Cloud SERVICE Picco**yazın, **Cloud Service Picco** ' u seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Cloud SERVICE Picco** yazın, **Cloud Service Picco** ' u seçin, sonra da uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuç listesinde bulut hizmeti PICCO](common/search-new-app.png)
+    ![Sonuç listesinde bulut hizmeti PICCO](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre bulut hizmeti Picco ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre bulut hizmeti Picco ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve bulut hizmeti PICCO 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açma 'yı bulut hizmeti PICCO ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -135,9 +135,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -148,11 +148,11 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak bulut hizmeti PICCO 'a erişim izni vererek Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **bulut hizmeti Picco**öğesini seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **bulut hizmeti Picco** öğesini seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **bulut hizmeti PICCO**öğesini seçin.
+2. Uygulamalar listesinde, **bulut hizmeti PICCO** öğesini seçin.
 
     ![Uygulamalar listesindeki bulut hizmeti PICCO bağlantısı](common/all-applications.png)
 

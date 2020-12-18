@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 89f59bba856d662aea0c3ed249d5a1462297ec60
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 63bbec6de8f122178289cc313e5d938e3b926af2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309057"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>Öğretici: Adobe ile Azure Active Directory tümleştirme ana
 
@@ -30,7 +30,7 @@ Azure AD ile Adobe açıklamalı ana ile tümleştirme, aşağıdaki avantajlar�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Adobe ana olarak yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Adobe ana yönetim 'in Azure AD ile tümleşmesini yapılandırmak için galerid
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Adobe Capları ana**yazın, sonuç panelinden **Adobe capları ana** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Adobe Capları ana** yazın, sonuç panelinden **Adobe capları ana** ' yı seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuçlar listesinde Adobe ana başlığı](common/search-new-app.png)
+    ![Sonuçlar listesinde Adobe ana başlığı](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Adobe CAPI ana ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Adobe CAPI ana ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bir bağlantı ilişkisinin, Adobe ana hat 'in oluşturulması gerekir.
 
 Azure AD 'de çoklu oturum açmayı yapılandırmak ve test etmek için, aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -143,9 +143,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -160,7 +160,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Adobe açıklam
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Adobe birinci**olarak göster ' i seçin.
+2. Uygulamalar listesinde, **Adobe birinci** olarak göster ' i seçin.
 
     ![Uygulamalar listesindeki Adobe ana hat](common/all-applications.png)
 
@@ -180,7 +180,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Adobe açıklam
 
 ### <a name="create-adobe-captivate-prime-test-user"></a>Adobe capi ana sınama kullanıcısı oluşturma
 
-Bu bölümde, Adobe köme ana 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Adobe capi ana platformunda kullanıcıları eklemek için [Adobe ana destek ekibi](mailto:captivateprimesupport@adobe.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, Adobe köme ana 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız. Adobe capi ana platformunda kullanıcıları eklemek için [Adobe ana destek ekibi](mailto:captivateprimesupport@adobe.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

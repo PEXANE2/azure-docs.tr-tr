@@ -1,14 +1,14 @@
 ---
 title: Azure Market 'Te yönetilen hizmet teklifi yayımlama
 description: Onpanolar müşterilerinin Azure 'da kullanımı için bir yönetilen hizmet teklifini nasıl yayımlayacağınızı öğrenin.
-ms.date: 08/18/2020
+ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 033003d7e782ca0e99b1fc908c5261b6e31bf613
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023934"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673163"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Market 'Te yönetilen hizmet teklifi yayımlama
 
@@ -18,7 +18,7 @@ Bu makalede ortak veya özel yönetilen hizmet teklifini Iş Ortağı Merkezi 'n
 
 Teklif oluşturmak ve yayımlamak için [Iş Ortağı Merkezi 'nde](../../marketplace/partner-center-portal/create-account.md) geçerli bir hesabınız olması gerekir. Zaten bir hesabınız yoksa [kaydolma işlemi](https://aka.ms/joinmarketplace) , Iş Ortağı Merkezi 'nde hesap oluşturma ve ticari Market programına kaydolma adımlarında size yol açacaktır.
 
-Yönetilen hizmet [teklifi sertifika gereksinimleri](/legal/marketplace/certification-policies#7004-business-requirements)uyarınca, yönetilen bir hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](/partner-center/learn-about-competencies) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir.
+Yönetilen hizmet [teklifi sertifika gereksinimleri](/legal/marketplace/certification-policies#7004-business-requirements)uyarınca, yönetilen bir hizmet teklifi yayımlamak için [gümüş veya altın bir bulut platformu uzmanlığına](/partner-center/learn-about-competencies) sahip olmanız veya bir [Azure uzman msp](https://partner.microsoft.com/membership/azure-expert-msp) olmanız gerekir. Müşterinin teklifinizi dağıttığı her seferinde [CRM sisteminizde bir kayıt oluşturacak bir müşteri adayı hedefi de girmeniz](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads) gerekir.
 
 Microsoft İş Ortağı Ağı (MPN) KIMLIĞINIZ, müşteri görevlendirmeleri genelinde etkilerini izlemek için yayımladığınız tekliflerle [otomatik olarak ilişkilendirilir](../../cost-management-billing/manage/link-partner-id.md) .
 
@@ -26,7 +26,7 @@ Bir teklifi Azure Marketi 'ne yayımlamak veya tüm gereksinimleri karşılamazs
 
 Aşağıdaki tablo, yönetilen bir hizmet teklifini yayımlayarak veya Azure Resource Manager şablonları kullanarak müşterilerin eklenip eklenmeyeceğini belirlemenize yardımcı olabilir.
 
-|**Dikkate Alınacak Nokta**  |**Yönetilen hizmet teklifi**  |**ARM şablonları**  |
+|**Değerlendirme**  |**Yönetilen hizmet teklifi**  |**ARM şablonları**  |
 |---------|---------|---------|
 |[Iş Ortağı Merkezi hesabı](../../marketplace/partner-center-portal/create-account.md) gerektirir   |Yes         |Hayır        |
 |[Gümüş veya altın bulut platformu uzmanlık düzeyi](/partner-center/learn-about-competencies) veya [Azure uzmanı msp](https://partner.microsoft.com/membership/azure-expert-msp) gerektirir      |Yes         |Hayır         |

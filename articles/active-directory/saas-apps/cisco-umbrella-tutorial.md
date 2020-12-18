@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ec2c0089295cdd269b5bb3bccf0baaef3cb14849
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: dde618b28e004e87edc2783bc44c5e7dd9f0ebba
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456143"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670698"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Öğretici: Cisco şemsiye ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Cisco şemsiye 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Cisco şemsiye ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Cisco şemsiye 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Gale
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Cisco şemsiye**yazın, sonuç panelinden **Cisco şemsiye** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Cisco şemsiye** yazın, sonuç panelinden **Cisco şemsiye** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Cisco şemsiye](common/search-new-app.png)
+    ![Sonuç listesinde Cisco şemsiye](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak [uygulama adı] ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına bağlı olarak [uygulama adı] ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve [uygulama adı] içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı [uygulama adı] ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -133,7 +133,7 @@ Azure AD çoklu oturum açmayı [uygulama adı] ile yapılandırmak için aşağ
 
     ![Diğer](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_other.png)
 
-4. **Cisco şemsiye meta verileri**sayfasında, **İleri**' ye tıklayın.
+4. **Cisco şemsiye meta verileri** sayfasında, **İleri**' ye tıklayın.
 
     ![Meta veriler](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_metadata.png)
 
@@ -167,9 +167,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -184,7 +184,7 @@ Bu bölümde, Cisco şemsiye 'e erişim vererek Azure çoklu oturum açma özell
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Cisco şemsiye**yazın ve seçin.
+2. Uygulamalar listesinde **Cisco şemsiye** yazın ve seçin.
 
     ![Uygulamalar listesindeki Cisco şemsiye bağlantısı](common/all-applications.png)
 
@@ -219,13 +219,13 @@ Cisco şemsiye durumunda sağlama, el ile gerçekleştirilen bir görevdir.
 
     ![Kullanıcı](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_createuser.png)
 
-    a. **Ad** alanına **Britta**gibi bir ad girin.
+    a. **Ad** alanına **Britta** gibi bir ad girin.
 
-    b. **Soyadı** alanına **Simon**gibi soyadı girin.
+    b. **Soyadı** alanına **Simon** gibi soyadı girin.
 
-    c. **Yönetici temsilcisi rolü**Seç ' de rolünüzü seçin.
-  
-    d. **E-posta adresi** alanına **brittasıon \@ contoso.com**gibi kullanıcının Emae-postaadını girin.
+    c. **Yönetici temsilcisi rolü** Seç ' de rolünüzü seçin.
+
+    d. **E-posta adresi** alanına **brittasıon \@ contoso.com** gibi kullanıcının Emae-postaadını girin.
 
     e. **Parola** alanına parolanızı girin.
 

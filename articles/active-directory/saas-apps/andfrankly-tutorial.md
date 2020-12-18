@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 97d95f9993f85a51ac7baa69ebb331f6c8588c18
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acc1660be99b3b7cc9a3c7414c47f9f6e159b559
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318730"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Öğretici: &Frankly ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Bu öğreticide, &Frankly 'yi Azure Active Directory (Azure AD) ile tümleştirm
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini &Frankly ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -61,13 +61,13 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **&Frankly**yazın, sonuç panelinden **&Frankly** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **&Frankly** yazın, sonuç panelinden **&Frankly** ' i seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde Frankly &](common/search-new-app.png)
+    ![Sonuç listesinde Frankly &](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre &Frankly ile yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre &Frankly ile yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve &Frankly içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 &Frankly ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -144,9 +144,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -181,7 +181,7 @@ Bu bölümde, &Frankly 'e erişim vererek Azure çoklu oturum açma özelliğini
 
 ### <a name="create-frankly-test-user"></a>&Frankly test kullanıcısı oluşturma
 
-Bu bölümde, &Frankly ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. &Frankly platformunda kullanıcıları eklemek için [&Frankly destek ekibi](mailto:help@andfrankly.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
+Bu bölümde, &Frankly ' de Britta Simon adlı bir Kullanıcı oluşturacaksınız. &Frankly platformunda kullanıcıları eklemek için [&Frankly destek ekibi](mailto:help@andfrankly.com) ile çalışın. Çoklu oturum açma kullanılmadan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 

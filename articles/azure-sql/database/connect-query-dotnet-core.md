@@ -12,52 +12,45 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 32ea1dd2141a8df1fb495af64848f87e9f152328
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 37cd2051670221b8b78c075f249f633f9f447099
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669737"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674316"
 ---
 # <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için .NET Core (C#) kullanma
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu hızlı başlangıçta, bir veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# Code 'u kullanacaksınız. Daha sonra verileri sorgulamak için bir Transact-SQL ifadesini çalıştıracaksınız.
 
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanında bir veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](/learn/modules/develop-app-that-queries-azure-sql/) hakkında bilgi edinmenize yardımcı olur
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - Bir veritabanı. Bir veritabanı oluşturup yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
-  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
-  |:--- |:--- |:---|:---|
-  | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) | [Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) |
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma| [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma|
-  |||
-
-  > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. SQL yönetilen örneği ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
+  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server | Azure Synapse Analytics |
+  |:--- |:--- |:---|:---|:---|
+  | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) | [Portal](/azure/synapse-analytics/quickstart-create-workspace.md) |
+  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | | [CLI](/azure/synapse-analytics/quickstart-create-workspace-cli.md) |
+  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md) | [PowerShell](/azure/synapse-analytics/quickstart-create-workspace-powershell.md) |
+  || | | [Dağıtım şablonu](/azure/azure-sql/virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Dağıtım şablonu](/azure/synapse-analytics/quickstart-deployment-template-workspaces.md) | 
+  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)| |
+  |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
+  ||||
 
 - [İşletim sisteminiz için .NET Core](https://www.microsoft.com/net/core) yüklendi.
-
-> [!NOTE]
-> Bu hızlı başlangıç, *Mysampledatabase* veritabanını kullanır. Farklı bir veritabanı kullanmak istiyorsanız, veritabanı başvurularını değiştirmeniz ve `SELECT` C# kodundaki sorguyu değiştirmeniz gerekecektir.
 
 ## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
 
 Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
 
@@ -68,7 +61,7 @@ Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bil
 
 ## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET bağlantı bilgilerini al (isteğe bağlı-yalnızca SQL veritabanı)
 
-1. **Mysampledatabase** sayfasına gidin ve **Ayarlar** altında **bağlantı dizeleri** ' ni seçin.
+1. Azure portal veritabanı dikey penceresine gidin ve **Ayarlar** altında **bağlantı dizeleri**' ni seçin.
 
 2. Tam **ADO.NET** bağlantı dizesini gözden geçirin.
 
@@ -84,7 +77,7 @@ Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bil
     dotnet new console
     ```
 
-    Bu komut, bir ilk C# kod dosyası ( **program.cs** ), bir XML yapılandırma dosyası ( **SQLtest. csproj** ) ve gerekli ikili dosyalar dahil olmak üzere yeni uygulama proje dosyaları oluşturur.
+    Bu komut, bir ilk C# kod dosyası (**program.cs**), bir XML yapılandırma dosyası (**SQLtest. csproj**) ve gerekli ikili dosyalar dahil olmak üzere yeni uygulama proje dosyaları oluşturur.
 
 2. Bir metin düzenleyicisinde **SQLtest. csproj** dosyasını açın ve aşağıdaki XML 'i Etiketler arasına yapıştırın `<Project>` . Bu XML `System.Data.SqlClient` bir bağımlılık olarak ekler.
 
@@ -131,12 +124,8 @@ namespace sqltest
                     Console.WriteLine("=========================================\n");
                     
                     connection.Open();       
-                    StringBuilder sb = new StringBuilder();
-                    sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                    sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                    sb.Append("JOIN [SalesLT].[Product] p ");
-                    sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                    String sql = sb.ToString();
+
+                    String sql = "SELECT name, collation_name FROM sys.databases";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -170,32 +159,15 @@ namespace sqltest
    dotnet run
    ```
 
-2. İlk 20 satırın döndürüldüğünden emin olun.
+2. Satırların döndürüldüğünden emin olun.
 
    ```text
    Query data example:
    =========================================
 
-   Road Frames HL Road Frame - Black, 58
-   Road Frames HL Road Frame - Red, 58
-   Helmets Sport-100 Helmet, Red
-   Helmets Sport-100 Helmet, Black
-   Socks Mountain Bike Socks, M
-   Socks Mountain Bike Socks, L
-   Helmets Sport-100 Helmet, Blue
-   Caps AWC Logo Cap
-   Jerseys Long-Sleeve Logo Jersey, S
-   Jerseys Long-Sleeve Logo Jersey, M
-   Jerseys Long-Sleeve Logo Jersey, L
-   Jerseys Long-Sleeve Logo Jersey, XL
-   Road Frames HL Road Frame - Red, 62
-   Road Frames HL Road Frame - Red, 44
-   Road Frames HL Road Frame - Red, 48
-   Road Frames HL Road Frame - Red, 52
-   Road Frames HL Road Frame - Red, 56
-   Road Frames LL Road Frame - Black, 58
-   Road Frames LL Road Frame - Black, 60
-   Road Frames LL Road Frame - Black, 62
+   master   SQL_Latin1_General_CP1_CI_AS
+   tempdb   SQL_Latin1_General_CP1_CI_AS
+   WideWorldImporters   Latin1_General_100_CI_AS
 
    Done. Press enter.
    ```

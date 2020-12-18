@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b6bf0736c2887ee19551e2719ec2418bbacdbd1d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: bf1b46a42b0b8b68e1ab95a3345bb3b5435a576b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313677"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673853"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-acadia"></a>Öğretici: Acaçya ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile Acadia 'yi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini, Acadia ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -62,13 +62,13 @@ Acadia 'in tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeriden
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Acadia**yazın, sonuç panelinden **Acadia** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **Acadia** yazın, sonuç panelinden **Acadia** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde Acadia](common/search-new-app.png)
+    ![Sonuç listesinde Acadia](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, Azure AD çoklu oturum açmayı, Acadia ile yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak, Azure AD çoklu oturum açmayı, Acadia ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
 
 Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurmanız gerekir:
@@ -131,7 +131,7 @@ Azure AD çoklu oturum açmayı, Acadia ile yapılandırmak için aşağıdaki a
 
 ### <a name="configure-acadia-single-sign-on"></a>Acadia tek Sign-On yapılandırma
 
-**Acadia** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **meta veri XML**'Sini, **uygulama Federasyon meta veri URL 'Sini**ve Azure Portal ' den [Acadia destek ekibine](mailto:support@systemsalliance.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak için bu ayarı yapılandırır.
+**Acadia** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **meta veri XML**'Sini, **uygulama Federasyon meta veri URL 'Sini** ve Azure Portal ' den [Acadia destek ekibine](mailto:support@systemsalliance.com)uygun şekilde kopyalanmış URL 'leri göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak için bu ayarı yapılandırır.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
@@ -149,9 +149,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

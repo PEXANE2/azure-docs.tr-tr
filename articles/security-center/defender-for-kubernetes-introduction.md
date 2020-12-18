@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372011"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673333"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'a giriş
 
@@ -31,7 +31,7 @@ Linux AKS düğümleriniz için ana bilgisayar düzeyinde tehdit algılama, [sun
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**Kubernetes Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Gerekli roller ve izinler:|**Güvenlik Yöneticisi** , uyarıları kapatabilir.<br>**Güvenlik okuyucusu** bulguları görüntüleyebilir.|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) Çin gov<br>![Hayır](./media/icons/no-icon.png) US Gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Kubernetes için Azure Defender 'ın yararları nelerdir?

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 0435fe3946118d59d786dd3e6cec350a5ab4eee4
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 34af380d057ad47811e394da1e7a29198e102920
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046460"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672789"
 ---
 # <a name="iot-plug-and-play-bridge"></a>IoT Tak Çalıştır köprüsü
 
@@ -29,63 +29,125 @@ IoT Tak ve Kullan Köprüsü, bağdaştırıcı belgelerinin bağlantılarıyla 
 
 |Çevre birimi|Windows|Linux|
 |---------|---------|---------|
-|[Bluetooth LE](https://aka.ms/iot-pnp-bridge-bluetooth)       |Yes|Hayır|
-|[Kameralar](https://aka.ms/iot-pnp-bridge-camera)               |Yes|Hayır|
-|[Modbus](https://aka.ms/iot-pnp-bridge-modbus)                |Yes|Yes|
-|[MQTT](https://aka.ms/iot-pnp-bridge-mqtt)                    |Yes|Yes|
-|[Ardışık](https://aka.ms/iot-pnp-bridge-serial)                |Yes|Yes|
-|[Windows USB çevre birimleri](https://aka.ms/iot-pnp-bridge-usb)  |Yes|Geçerli değil|
+|[Bluetooth algılayıcı bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/bluetooth_sensor_adapter.md) , Bluetooth düşük ENERJI (BLE) etkin sensörler algıladı.       |Yes|Hayır|
+|[Kamera bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/camera_adapter.md) , kameraları bir Windows 10 cihazına bağlar.               |Yes|Hayır|
+|[Modbus bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/modbus_adapters.md) , bir Modbus cihazında algılayıcıların bağlanmasını sağlar.              |Yes|Yes|
+|[MQTT bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/mqtt_adapter.md) , MQTT Aracısı kullanan cihazları bağlar.                  |Yes|Yes|
+|[Serialpnp bağdaştırıcısı](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/serialpnp/Readme.md) , bir seri bağlantı üzerinden iletişim kuran cihazları bağlar.               |Yes|Yes|
+|[WINDOWS USB çevre birimleri](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/docs/coredevicehealth_adapter.md) , belirli BIR donanım kimliği olan cihazları bağlamak için bağdaştırıcı tarafından desteklenen cihaz arabirimi sınıflarının listesini kullanır.  |Yes|Geçerli değil|
 
->[!Important]
->Geliştiriciler IoT **[Tak ve Kullan köprüsü geliştirici belgelerindeki](https://aka.ms/iot-pnp-bridge-dev-doc)** yönergeler aracılığıyla diğer cihaz protokollerini desteklemek için IoT Tak ve kullan köprüsünü genişletebilir.
-
-## <a name="prerequisites"></a>Önkoşullar
-
-### <a name="os-platform"></a>İşletim sistemi platformu
-
-Aşağıdaki işletim sistemi platformları ve sürümleri desteklenir:
-
-|Platform  |Desteklenen Sürümler  |
-|---------|---------|
-|Windows 10 |     Tüm Windows SKU 'Ları desteklenir. Örneğin: IoT Enterprise, Server, Desktop, IoT Core. *Kamera sistem durumu izleme işlevselliği için 20H1 veya üzeri derleme önerilir. Tüm Windows 10 Derlemeleriyle tüm diğer işlevler kullanılabilir.*  |
-|Linux     |Ubuntu 18,04 üzerinde sınanmış ve desteklenmiş, diğer dağıtımların işlevselliği sınanmamıştır.         |
-||
-
-### <a name="hardware"></a>Donanım
-
-- Yukarıdaki işletim sistemi SKU 'Larını ve sürümlerini destekleyen herhangi bir donanım platformu.
-- Seri, USB, Bluetooth ve kamera çevreörleri ve algılayıcılar yerel olarak desteklenir. IoT Tak ve Kullan Köprüsü, herhangi bir özel çevre birimi veya algılayıcıyı desteklemek için genişletilebilir ([Yukarıdaki çevre birimleri bölümüne bakın](#iot-plug-and-play-bridge)).
-
-### <a name="development-environment"></a>Geliştirme Ortamı
-
-IoT Tak ve Kullan köprüsü oluşturmak, genişletmek ve geliştirmek için gerekenler şunlardır:  
-
-- C++ derlemesini destekleyen bir geliştirme ortamı: [Visual Studio (Community, Professional veya Enterprise)](https://visualstudio.microsoft.com/downloads/)-Visual Studio 'Yu yüklerken c++ iş yüküyle masaüstü geliştirmeyi eklediğinizden emin olun.
-- [CMake](https://cmake.org/download/) -CMake 'i yüklediğinizde seçeneğini belirleyin `Add CMake to the system PATH` .
-- Windows üzerinde oluşturuyorsanız, Windows 17763 SDK 'sını de indirmeniz gerekir: [https://developer.microsoft.com/windows/downloads/windows-10-sdk](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-- [Azure IoT Hub Device C SDK](https://github.com/Azure/azure-iot-sdk-c). Bu depoya dahil edilen derleme betikleri, sizin için gerekli Azure IoT C SDK 'sını otomatik olarak klonlayabilir.
-
-### <a name="azure-iot-products-and-tools"></a>Azure IoT ürünleri ve araçları
-
-- **Azure IoT Hub** -cihazınızı uygulamasına bağlamak için Azure aboneliğinizde bir [Azure IoT Hub](../iot-hub/index.yml) 'ınız olması gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/). Bir IoT Hub 'ınız yoksa, [oluşturmak için bu yönergeleri izleyin](../iot-hub/iot-hub-create-using-cli.md).
-
-> [!Note]
-> IoT Tak ve Kullan şu anda Orta ABD, Kuzey Avrupa ve Doğu Japonya bölgelerinde oluşturulan IoT Hub 'larda sunulmaktadır. IoT Tak ve Kullan desteği temel katmanlı IoT Hub 'larına dahil değildir. IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT gezgin aracını kullanabilirsiniz. İşletim sisteminiz için [Azure IoT Explorer 'ın en son sürümünü indirin ve yükleyin](./howto-use-iot-explorer.md) .
+IoT Tak ve Kullan köprüsünü ek cihaz protokollerini destekleyecek şekilde genişletmeyi öğrenmek için bkz. [ıot Tak ve kullan köprüsünü oluşturma, dağıtma ve genişletme](howto-build-deploy-extend-pnp-bridge.md).
 
 ## <a name="iot-plug-and-play-bridge-architecture"></a>IoT Tak ve Kullan köprü mimarisi
 
-:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="Sol tarafta, IoT Tak ve Kullan Köprüsü içeren bir Windows veya Linux BILGISAYARA eklenen mevcut sensörlerden (hem kablolu hem de kablosuz) biri vardır. IoT Tak ve Kullan köprüsü daha sonra sağ taraftaki bir IoT Hub 'ına bağlanır":::
+:::image type="content" source="media/concepts-iot-pnp-bridge/iot-pnp-bridge-components.png" alt-text="Sol tarafta IoT Tak ve Kullan Köprüsü içeren bir Windows veya Linux BILGISAYARıNA bağlı çeşitli çevresel aygıtları belirten birkaç kutu vardır. Üstten, yapılandırma noktaları etiketli bir kutu köprüye doğru. Köprü daha sonra diyagramın sağ tarafındaki bir IoT Hub 'ına bağlanır.":::
+
+### <a name="iot-plug-and-play-bridge-adapters"></a>IoT Tak ve Kullan köprü bağdaştırıcıları
+
+IoT Tak ve Kullan Köprüsü, çeşitli cihaz türleri için bir IoT Tak ve Kullan Köprü bağdaştırıcısı kümesini destekler. Bir *Bağdaştırıcı bildirimi* , bağdaştırıcıları bir köprüye statik olarak tanımlar.
+
+Köprü bağdaştırıcısı Yöneticisi, bağdaştırıcı işlevlerini tanımlamak ve çağırmak için bildirimi kullanır. Bağdaştırıcı Yöneticisi, yalnızca yapılandırma dosyasında listelenen arabirim bileşenleri için gerekli olan köprü bağdaştırıcılarında Oluştur işlevini çağırır. Her IoT Tak ve Kullan bileşeni için bir bağdaştırıcı örneği oluşturulur.
+
+Bir köprü bağdaştırıcısı, dijital bir ikizi arabirimi tanıtıcısı oluşturur ve alır. Bağdaştırıcı, bu tanıtıcıyı cihaz işlevselliğini dijital ikizi bağlamak için kullanır.
+
+Köprü bağdaştırıcısı, yapılandırma dosyasındaki bilgileri kullanarak köprü aracılığıyla dijital ikizi iletişimine tam cihaz sağlamak için aşağıdaki teknikleri kullanır:
+
+- Doğrudan bir iletişim kanalı oluşturur.
+- Bir iletişim kanalının kullanılabilir hale gelmesini beklemek için bir cihaz İzleyicisi oluşturur.
+
+### <a name="configuration-file"></a>Yapılandırma dosyası
+
+IoT Tak ve Kullan Köprüsü, aşağıdakileri belirten bir JSON tabanlı yapılandırma dosyası kullanır:
+
+- IoT Hub 'ına veya IoT Central uygulamasına bağlanma: seçenekler arasında bağlantı dizeleri, kimlik doğrulama parametreleri veya cihaz sağlama hizmeti (DPS) bulunur.
+- Köprünün kullandığı IoT Tak ve Kullan yetenek modellerinin konumu. Model, IoT Tak ve Kullan cihazının yeteneklerini tanımlar ve statiktir ve sabittir.
+- IoT Tak ve Kullan arabirimi bileşenlerinin listesi ve her bir bileşen için aşağıdaki bilgiler:
+- Arabirim KIMLIĞI ve bileşen adı.
+- Bileşenle etkileşimde bulunmak için gereken Köprü bağdaştırıcısı.
+- Köprü bağdaştırıcısının cihazla iletişim kurması için ihtiyaç duyacağı cihaz bilgileri. Örneğin, donanım KIMLIĞI veya bir bağdaştırıcı, arabirim ya da protokol için özel bilgiler.
+- Bağdaştırıcı, benzer cihazlara sahip birden fazla iletişim türünü destekliyorsa, isteğe bağlı bir köprü bağdaştırıcısı alt türü veya arabirim yapılandırması. Örnek, Bluetooth algılayıcı bileşeninin nasıl yapılandırılabileceğini göstermektedir:
+
+    ```json
+    {
+      "_comment": "Component BLE sensor",
+      "pnp_bridge_component_name": "blesensor1",
+      "pnp_bridge_adapter_id": "bluetooth-sensor-pnp-adapter",
+      "pnp_bridge_adapter_config": {
+        "bluetooth_address": "267541100483311",
+        "blesensor_identity" : "Blesensor1"
+      }
+    }
+    ```
+
+- Genel köprü bağdaştırıcı parametrelerinin isteğe bağlı bir listesi. Örneğin, Bluetooth algılayıcı köprü bağdaştırıcısında Desteklenen yapılandırmaların bir sözlüğü vardır. Bluetooth algılayıcı bağdaştırıcısı gerektiren bir arabirim bileşeni, bu yapılandırmalardan birini şu şekilde seçebilir `blesensor_identity` :
+
+    ```json
+    {
+      "pnp_bridge_adapter_global_configs": {
+        "bluetooth-sensor-pnp-adapter": {
+          "Blesensor1" : {
+            "company_id": "0x499",
+            "endianness": "big",
+            "telemetry_descriptor": [
+              {
+                "telemetry_name": "humidity",
+                "data_parse_type": "uint8",
+                "data_offset": 1,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.5
+              },
+              {
+                "telemetry_name": "temperature",
+                "data_parse_type": "int8",
+                "data_offset": 2,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "pressure",
+                "data_parse_type": "int16",
+                "data_offset": 4,
+                "conversion_bias": 0,
+                "conversion_coefficient": 1.0
+              },
+              {
+                "telemetry_name": "acceleration_x",
+                "data_parse_type": "int16",
+                "data_offset": 6,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_y",
+                "data_parse_type": "int16",
+                "data_offset": 8,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              },
+              {
+                "telemetry_name": "acceleration_z",
+                "data_parse_type": "int16",
+                "data_offset": 10,
+                "conversion_bias": 0,
+                "conversion_coefficient": 0.00980665
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
 
 ## <a name="download-iot-plug-and-play-bridge"></a>IoT Tak ve Kullan köprüsü indir
 
-Bir köprünün önceden oluşturulmuş bir sürümünü [ıot Tak ve kullan köprü sürümlerinde](https://aka.ms/iot-pnp-bridge-releases) desteklenen bağdaştırıcılarla indirebilir ve en son sürümün varlık listesini genişletebilirsiniz. İşletim sisteminiz için uygulamanın en son sürümünü indirin.
+Bir köprünün önceden oluşturulmuş bir sürümünü [ıot Tak ve kullan köprü sürümlerinde](https://github.com/Azure/iot-plug-and-play-bridge/releases) desteklenen bağdaştırıcılarla indirebilir ve en son sürümün varlık listesini genişletebilirsiniz. İşletim sisteminiz için uygulamanın en son sürümünü indirin.
 
-Ayrıca, [GitHub 'Daki ıot Tak ve kullan köprüsünün](https://aka.ms/bridge)kaynak kodunu indirebilir ve görüntüleyebilirsiniz.
+Ayrıca, [GitHub 'Daki ıot Tak ve kullan köprüsünün](https://github.com/Azure/iot-plug-and-play-bridge)kaynak kodunu indirebilir ve görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT Tak ve Kullan köprüsü mimarisine genel bir bakış edinolduğunuza göre, sonraki adımlar hakkında daha fazla bilgi edinebilirsiniz:
 
 - [IoT Tak ve Kullan köprüsü kullanma](./howto-use-iot-pnp-bridge.md)
-- [IoT Tak ve Kullan köprüsü için GitHub geliştirici başvurusuna bakın](https://aka.ms/iot-pnp-bridge-dev-doc)
-- [GitHub 'da IoT Tak ve Kullan Köprüsü](https://aka.ms/iotplugandplaybridge)
+- [IoT Tak ve Kullan köprüsü oluşturma, dağıtma ve genişletme](howto-build-deploy-extend-pnp-bridge.md)
+- [GitHub 'da IoT Tak ve Kullan Köprüsü](https://github.com/Azure/iot-plug-and-play-bridge)

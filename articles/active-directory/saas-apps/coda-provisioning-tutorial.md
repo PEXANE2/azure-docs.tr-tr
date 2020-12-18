@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: Zhchia
-ms.openlocfilehash: ea2f25d6b03f002448079b16bd261729807d8a03
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8df1588a78829252d55f82349d6889c754c989e6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179733"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673237"
 ---
 # <a name="tutorial-configure-coda-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Coda yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Coda h
 > * Azure AD ve Coda arasında kullanıcı özniteliklerinin eşitlenmiş olmasını sağlama
 > * CODA ['Da çoklu oturum açma](./coda-tutorial.md) (önerilir)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -93,7 +93,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı atamaları
 
 5. **Yönetici kimlik bilgileri** bölümünde, 1. adımdaki Coda kiracı URL 'Nizi ve gizli anahtar belirtecinizi girin. Azure AD 'nin Coda 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Coda hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/coda-provisioning-tutorial/provisioning.png)
+     ![Ekran görüntüsü, kiracı U R L ve gizli belirteç girebileceğiniz yönetici kimlik bilgileri iletişim kutusunu gösterir.](./media/coda-provisioning-tutorial/provisioning.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 

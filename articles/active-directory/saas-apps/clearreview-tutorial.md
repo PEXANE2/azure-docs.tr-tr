@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: cc5a214d53441a5e1f30158a0264278b3cdc95a0
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e971b02fb87440d4833c2eeba8897143f97a20dd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455952"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Öğretici: temiz Inceleme ile Azure Active Directory tümleştirme
 
@@ -30,7 +30,7 @@ Azure AD ile açık Incelemeyi tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini açık gözden geçirmeyle yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -64,13 +64,13 @@ Temiz gözden geçirmeyi Azure AD 'ye tümleştirmeyi yapılandırmak için, Gal
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **gözden geçirmeyi temizle**yazın, sonuç panelinden **gözden geçirmeyi temizle** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+4. Arama kutusuna **gözden geçirmeyi temizle** yazın, sonuç panelinden **gözden geçirmeyi temizle** ' yi seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuçlar listesinde gözden geçirmeyi temizle](common/search-new-app.png)
+    ![Sonuçlar listesinde gözden geçirmeyi temizle](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre açık gözden geçirimiyle yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre açık gözden geçirimiyle yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasındaki bağlantıyı açık gözden geçirme ' de kurulması gerekir.
 
 Azure AD çoklu oturum açma 'yı açık gözden Geçirimiyle yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -117,13 +117,13 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
     > [!NOTE]
     > Bu değerler gerçek değildir. Bu değerleri gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI ile güncelleştirin. Bu değerleri almak için bkz. [istemci desteği ekibini inceleyin](https://clearreview.com/contact/) . Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
 
-6. Gözden geçirme uygulamasını temizle, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName**ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Gözden geçirme uygulamasını Temizle **NameIdentifier** 'ın **User. Mail**ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
+6. Gözden geçirme uygulamasını temizle, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde, **NameIdentifier** 'ın **User. UserPrincipalName** ile eşlendiği varsayılan özniteliklerin listesi gösterilmektedir. Gözden geçirme uygulamasını Temizle **NameIdentifier** 'ın **User. Mail** ile eşlenmesini bekler, bu nedenle, **Düzenle** simgesine tıklayarak ve öznitelik eşlemesini değiştirerek öznitelik eşlemesini düzenlemeniz gerekir.
 
     ![Ekran görüntüsü, düzenleme simgesi seçili olan kullanıcı özniteliklerini gösterir.](common/edit-attribute.png)
 
 7. **Kullanıcı öznitelikleri & talepler** iletişim kutusunda aşağıdaki adımları gerçekleştirin:
 
-    a. **Ad tanımlayıcı değerinin**sağ tarafındaki **Düzenle simgesine** tıklayın.
+    a. **Ad tanımlayıcı değerinin** sağ tarafındaki **Düzenle simgesine** tıklayın.
 
     ![Ekran görüntüsü, düzenleme simgesi seçili olan talepleri & Kullanıcı özniteliklerini gösterir.](./media/clearreview-tutorial/attribute02.png)
 
@@ -155,7 +155,7 @@ Gözden geçirmeyi temizle ile Azure AD çoklu oturum açmayı yapılandırmak i
 
     ![Ekran görüntüsünde, yönetici seçiliyken onay Incelemesi portalını gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Sayfanın alt kısmındaki **tümleştirmeler** bölümünde, **tek Sign-On ayarlarının**sağında bulunan **Değiştir** düğmesine tıklayın.
+3. Sayfanın alt kısmındaki **tümleştirmeler** bölümünde, **tek Sign-On ayarlarının** sağında bulunan **Değiştir** düğmesine tıklayın.
 
     ![Ekran görüntüsü, tek Sign-On değişiklik düğmesini gösterir.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -189,9 +189,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

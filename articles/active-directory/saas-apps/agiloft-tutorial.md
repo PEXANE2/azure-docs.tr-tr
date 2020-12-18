@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: c56f1ab546327aaf281ff3616fa489728f3885a6
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: cd926875eda5676da6c154a57b0ac18ca12d9b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96297092"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Öğretici: Agiloft ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Agiloft 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Agiloft ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -64,7 +64,7 @@ Agiloft 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden A
 
 4. Arama kutusuna **agiloft** yazın, sonuç panelinden **agiloft** ' i seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
 
-     ![Sonuç listesinde agiloft](common/search-new-app.png)
+    ![Sonuç listesinde agiloft](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -184,13 +184,13 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
     a. **Ad** alanına **Brittasıon** girin.
-  
+
     b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

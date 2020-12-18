@@ -11,18 +11,22 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360607"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674485"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
-Bu makalede, Azure Machine Learning çalıştırmalarını izlemeyi ve günlüklerini görüntülemeyi öğreneceksiniz. Günlükleri görüntüleyebilmeniz için önce bunları etkinleştirmeniz gerekir. Daha fazla bilgi için bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).
+Azure Machine Learning çalıştırmalarını izlemeyi ve günlüklerini görüntülemeyi öğrenin. 
 
-Günlükler, hataları ve uyarıları tanılamanıza veya parametreler ve model doğruluğu gibi performans ölçümlerini izlemenize yardımcı olabilir. Bu makalede, aşağıdaki yöntemleri kullanarak günlükleri görüntülemeyi öğreneceksiniz:
+Bir deneme çalıştırdığınızda Günlükler ve ölçümler sizin için akışla yapılır.  Ayrıca, kendi kendinizinkini ekleyebilirsiniz.  Nasıl yapılacağını öğrenmek için bkz. [Azure ML eğitim çalıştırmaları 'nda günlüğü etkinleştirme](how-to-track-experiments.md).
+
+Günlükler, çalıştırmanızda hata ve uyarıları tanılamanıza yardımcı olabilir. Parametreler ve model doğruluğu gibi performans ölçümleri, çalıştırmalarınızı izlemenize ve izlemenize yardımcı olur.
+
+Bu makalede, aşağıdaki yöntemleri kullanarak günlükleri görüntülemeyi öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Studio 'da izleme çalıştırmaları
@@ -32,27 +36,6 @@ Günlükler, hataları ve uyarıları tanılamanıza veya parametreler ve model 
 > * Çıkış günlüklerini Studio 'da görüntüleme
 
 Denemeleri 'nizi yönetme hakkında genel bilgi için bkz. [başlatma, izleme ve iptal eğitimi çalıştırmaları](how-to-manage-runs.md).
-
-## <a name="monitor-runs-in-the-studio"></a>Studio 'da izleme çalıştırmaları
-
-Tarayıcınızdan belirli bir işlem hedefine ait çalıştırmaları izlemek için aşağıdaki adımları kullanın:
-
-1. [Azure Machine Learning Studio](https://ml.azure.com/)'da, çalışma alanınızı seçin ve ardından sayfanın sol tarafındaki __işlem__ ' ı seçin.
-
-1. Eğitim için kullanılan işlem hedeflerinin bir listesini göstermek için __eğitim kümelerini__ seçin. Ardından kümeyi seçin.
-
-    ![Eğitim kümesini seçin](./media/how-to-track-experiments/select-training-compute.png)
-
-1. __Çalıştırmalar__ ' ı seçin. Bu kümeyi kullanan çalıştırmaların listesi görüntülenir. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için __Çalıştır__ sütunundaki bağlantıyı kullanın. Deneme ayrıntılarını görüntülemek için, __deneme__ sütunundaki bağlantıyı kullanın.
-
-    ![Eğitim kümesi için çalıştırmaları seçin](./media/how-to-track-experiments/show-runs-for-compute.png)
-    
-    > [!TIP]
-    > Eğitim işlem hedefleri paylaşılan bir kaynak olduğundan, belirli bir zamanda kuyruğa alınmış veya etkin birden fazla çalıştırma olabilir.
-    > 
-    > Bir çalıştırma alt çalıştırmalar içerebilir, bu nedenle bir eğitim işi birden fazla girişe neden olabilir.
-
-Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tamamlanan çalıştırmalar hakkındaki bilgileri görüntülemek için, Studio 'nun __denemeleri__ bölümünü ziyaret edin ve denemeyi ve çalıştırmayı seçin. Daha fazla bilgi için, [Tamamlanan çalıştırmalar için ölçümleri görüntüleme](#view-the-experiment-in-the-web-portal)bölümüne bakın.
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Jupyter Not defteri pencere öğesini kullanarak izleme çalıştırmaları
 
@@ -94,28 +77,28 @@ RunDetails(run).show()
 **ScriptRunConfig** kullandığınızda, ```run.wait_for_completion(show_output = True)``` model eğitiminin ne zaman tamamlandığını göstermek için kullanabilirsiniz. ```show_output```Bayrak size ayrıntılı çıkış verir. Daha fazla bilgi için bkz. [günlük kaydını etkinleştirme](how-to-track-experiments.md#scriptrun-logs)ScriptRunConfig bölümü.
 
 <a id="queryrunmetrics"></a>
+
 ## <a name="query-run-metrics"></a>Sorgu çalıştırma ölçümleri
 
 İle eğitilen bir modelin ölçümlerini görüntüleyebilirsiniz ```run.get_metrics()``` . Örneğin, en düşük ortalama kare hatası (MSE) değerine sahip modeli arayarak en iyi modeli belirleyebilmek için bunu Yukarıdaki örnekle birlikte kullanabilirsiniz.
 
 <a name="view-the-experiment-in-the-web-portal"></a>
+
 ## <a name="view-run-records-in-the-studio"></a>Studio 'da çalıştırma kayıtlarını görüntüleme
 
 Günlüğe kaydedilen ölçümler de dahil olmak üzere tamamlanan çalışma kayıtlarına gidebilirsiniz [Azure Machine Learning Studio](https://ml.azure.com).
 
-**Denemeleri** sekmesine gidin. Çalışma alanınızdaki tüm çalıştırmalarınızı denemeleri genelinde görüntülemek için **Tüm çalıştırmalar** sekmesini seçin. En üstteki menü çubuğuna deneme filtresini uygulayarak belirli denemeleri için çalıştırmalar üzerinde ayrıntıya gidebilirsiniz. 
+**Denemeleri** sekmesine gidin. Çalışma alanınızdaki tüm çalıştırmalarınızı denemeleri genelinde görüntülemek için **Tüm çalıştırmalar** sekmesini seçin. En üstteki menü çubuğuna deneme filtresini uygulayarak belirli denemeleri için çalıştırmalar üzerinde ayrıntıya gidebilirsiniz.
 
 Bireysel deneme görünümü için **tüm denemeleri** sekmesini seçin. Deneme çalıştırması panosunda, her çalıştırma için izlenen ölçümleri ve günlükleri görebilirsiniz. 
 
-Belirli bir çalıştırmaya gitmeyi, çıktılarını veya günlüklerini görüntülemek veya denemeler klasörünü başkalarıyla paylaşmak için deneme anlık görüntüsünü indirmek.
-
-Ayrıca, çalışma listesi tablosunu, birden çok çalıştırma seçmek ve çalıştırmalarınız için en son, en düşük veya en büyük günlüğe kaydedilmiş değeri göstermek üzere düzenleyebilirsiniz. Birden çok çalıştırma sırasında günlüğe kaydedilen ölçüm değerlerini ve toplamlarını karşılaştırmak için grafiklerinizi özelleştirin.
+Ayrıca, çalışma listesi tablosunu, birden çok çalıştırma seçmek ve çalıştırmalarınız için en son, en düşük veya en büyük günlüğe kaydedilmiş değeri göstermek üzere düzenleyebilirsiniz. Birden çok çalıştırma sırasında günlüğe kaydedilen ölçüm değerlerini ve toplamlarını karşılaştırmak için grafiklerinizi özelleştirin. 
 
 ![Azure Machine Learning Studio 'da ayrıntıları çalıştırma](media/how-to-track-experiments/experimentation-tab.gif)
 
-### <a name="format-charts-in-the-studio"></a>Studio 'da grafikleri biçimlendirme
+### <a name="format-charts"></a>Grafikleri Biçimlendir 
 
-Aşağıdaki yöntemleri kullanarak, oluşturma API 'Lerinde ölçümleri görselleştirir.
+Ölçüm görselleştirmelerini etkilemek için günlüğe kaydetme API 'Lerinde aşağıdaki yöntemleri kullanın.
 
 |Günlüğe kaydedilen değer|Örnek kod| Portalda biçim|
 |----|----|----|
@@ -123,6 +106,80 @@ Aşağıdaki yöntemleri kullanarak, oluşturma API 'Lerinde ölçümleri görse
 |Aynı ölçüm adı ile birlikte sürekli kullanılan tek bir sayısal değeri günlüğe kaydet (for döngüsü içinde olduğu gibi)| `for i in tqdm(range(-10, 10)):    run.log(name='Sigmoid', value=1 / (1 + np.exp(-i))) angle = i / 2.0`| Tek değişkenli çizgi grafik|
 |2 sayısal sütundan oluşan bir satırı sürekli olarak günlüğe kaydet|`run.log_row(name='Cosine Wave', angle=angle, cos=np.cos(angle))   sines['angle'].append(angle)      sines['sine'].append(np.sin(angle))`|İki değişkenli çizgi grafik|
 |2 sayısal sütun içeren günlük tablosu|`run.log_table(name='Sine Wave', value=sines)`|İki değişkenli çizgi grafik|
+
+
+### <a name="view-log-files-for-a-run"></a>Bir çalıştırma için günlük dosyalarını görüntüleme 
+
+Günlük dosyaları, Azure ML iş yüklerinde hata ayıklamak için gereken önemli bir kaynaktır. Günlüklerini ve çıktılarını görüntülemek için belirli bir çalıştırmaya detaya gitme:  
+
+1. **Denemeleri** sekmesine gidin.
+1. Belirli bir çalıştırma için RunId 'yi seçin.
+1. Sayfanın üst kısmındaki **çıktılar ve Günlükler '** i seçin.
+
+:::image type="content" source="media/how-to-monitor-view-training-logs/view-logs.png" alt-text="Bir çalıştırmanın çıkış ve Günlükler bölümünün ekran görüntüsü":::
+
+Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosyalarının içerikleri gösterilmektedir.
+
+> [!NOTE]
+> Kullanıcı, Skımingolsa bile her çalıştırma için her dosyayı görmeyecektir. Örneğin, 20_image_build_log *. txt yalnızca yeni bir görüntü oluşturulduğunda görüntülenir (örneğin, ortamınızı değiştirdiğinizde).
+
+#### <a name="azureml-logs-folder"></a>`azureml-logs` klasörde
+
+|Dosya  |Description  |
+|---------|---------|
+|20_image_build_log.txt     | Eğitim ortamı için Docker görüntü oluşturma günlüğü, her çalıştırma için isteğe bağlı. Yalnızca ortamınız güncelleştirilirken geçerlidir. Aksi takdirde AML, önbelleğe alınmış görüntüyü yeniden kullanır. Başarılı olursa, ilgili görüntü için görüntü kayıt defteri ayrıntılarını içerir.         |
+|55_azureml yürütme-<node_id # C1.txt     | düğüm başına bir tane olmak üzere konak aracının stdout/stderr günlüğü. İşlem hedefine görüntü çeker. Bu günlük, işlem kaynaklarını güvenli hale getirildikten sonra yalnızca bir kez görünür.         |
+|65_job_prep-<node_id # C1.txt     |   Her düğüm için bir tane olmak üzere iş hazırlama betiği stdout/stderr günlüğü. Hedef ve veri depolarını (istenirse) hesaplamak için kodunuzu indirin.       |
+|70_driver_log (_x). txt      |  AML denetim betiğinden stdout/stderr günlüğü, işlem başına bir tane. **Bu, betiğinizdeki standart çıktıdır. Bu, kodunuzun günlüklerinin (ör. Print deyimlerinin) gösterilmesi burada gösterilmektedir.** Çoğu durumda günlükleri burada izlemeniz gerekir.       |
+|70_mpi_log.txt     |   MPı Framework günlüğü, isteğe bağlı, her çalıştırma için bir. Yalnızca MPı çalıştırmaları için.   |
+|75_job_post-<node_id # C1.txt     |  Her düğüm için bir tane olmak üzere iş sürümü betiği stdout/stderr günlüğü. Günlükleri gönderin, işlem kaynaklarını Azure 'a geri bırakın.        |
+|Üzerinde process_info.js      |   hangi işlemin hangi düğümde çalıştığını gösterir.  |
+|Üzerinde process_status.js      | işlem durumunu göster, yani bir işlem başlatılmamışsa, çalışıyor veya tamamlandı.         |
+
+#### <a name="logs--azureml-folder"></a>`logs > azureml` klasörde
+
+|Dosya  |Description  |
+|---------|---------|
+|110_azureml. log      |         |
+|job_prep_azureml. log     |   iş hazırlığı için sistem günlüğü        |
+|job_release_azureml. log     | iş sürümü için sistem günlüğü        |
+
+#### <a name="logs--azureml--sidecar--node_id-folder"></a>`logs > azureml > sidecar > node_id` klasörde
+
+Sepet etkinleştirildiğinde, iş hazırlığı ve iş sürümü betikleri, sepet kapsayıcısı içinde çalıştırılır.  Her düğüm için bir klasör vardır. 
+
+|Dosya  |Description  |
+|---------|---------|
+|start_cms.txt     |  Sepet kapsayıcısı başladığında başlayan işlem günlüğü       |
+|prep_cmd.txt      |   Çalıştırıldığında girilen Contextyöneticileri için günlük kaydı `job_prep.py` (bir kısmı bu şekilde akışa alınacaktır `azureml-logs/65-job_prep` )       |
+|release_cmd.txt     |  Çalıştırıldıktan sonra Comtextyöneticileri için günlüğe çıkıldı `job_release.py`        |
+
+#### <a name="other-folders"></a>Diğer klasörler
+
+Çoklu işlem kümelerinde iş eğitimi için, her düğüm IP 'si için Günlükler bulunur. Her bir düğümün yapısı, tek düğümlü işlerle aynıdır. Genel yürütme, stderr ve STDOUT günlükleri için bir ek günlük klasörü vardır.
+
+Azure Machine Learning, eğitim sırasında (örneğin, oto ml) veya eğitim işini çalıştıran Docker kapsayıcısı gibi çeşitli kaynaklardan günlük bilgileri günlüğe kaydeder. Bu günlüklerin birçoğu açıklanmamıştır. Sorunlarla karşılaşırsanız ve Microsoft Destek ile iletişime geçerek, sorun giderme sırasında bu günlükleri kullanabiliyor olabilirler.
+
+## <a name="monitor-a-compute-cluster"></a>İşlem kümesini izleme
+
+Tarayıcınızdan belirli bir işlem hedefine ait çalıştırmaları izlemek için aşağıdaki adımları kullanın:
+
+1. [Azure Machine Learning Studio](https://ml.azure.com/)'da, çalışma alanınızı seçin ve ardından sayfanın sol tarafındaki __işlem__ ' ı seçin.
+
+1. Eğitim için kullanılan işlem hedeflerinin bir listesini göstermek için __eğitim kümelerini__ seçin. Ardından kümeyi seçin.
+
+    ![Eğitim kümesini seçin](./media/how-to-track-experiments/select-training-compute.png)
+
+1. __Çalıştırmalar__' ı seçin. Bu kümeyi kullanan çalıştırmaların listesi görüntülenir. Belirli bir çalıştırmanın ayrıntılarını görüntülemek için __Çalıştır__ sütunundaki bağlantıyı kullanın. Deneme ayrıntılarını görüntülemek için, __deneme__ sütunundaki bağlantıyı kullanın.
+
+    ![Eğitim kümesi için çalıştırmaları seçin](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > Eğitim işlem hedefleri paylaşılan bir kaynak olduğundan, belirli bir zamanda kuyruğa alınmış veya etkin birden fazla çalıştırma olabilir.
+    > 
+    > Bir çalıştırma alt çalıştırmalar içerebilir, bu nedenle bir eğitim işi birden fazla girişe neden olabilir.
+
+Bir çalıştırma tamamlandıktan sonra bu sayfada artık görüntülenmez. Tamamlanan çalıştırmalar hakkındaki bilgileri görüntülemek için, Studio 'nun __denemeleri__ bölümünü ziyaret edin ve denemeyi ve çalıştırmayı seçin. Daha fazla bilgi için, [Tamamlanan çalıştırmalar için ölçümleri görüntüleme](#view-the-experiment-in-the-web-portal)bölümüne bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

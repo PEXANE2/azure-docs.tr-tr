@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 003b577d09e9b1d72077cbda4fde53b457d80e8b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 77ccc361e93758feb91867ffe6954f34c1e9d01f
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455264"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Öğretici: Söysan ile tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile aynı şekilde tümleştirerek aşağıdaki avantajlar sunulmaktad�
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini dönüştürül ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -63,7 +63,7 @@ Azure AD 'ye yapılan bir şekilde tümleştirmeyi yapılandırmak için, Galeri
 
 4. Arama kutusuna, **dönüştürme yazın,** sonuç panelinden **dönüştürül** ' ı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
 
-     ![Sonuçlar listesine dönüştürül](common/search-new-app.png)
+    ![Sonuçlar listesine dönüştürül](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -147,9 +147,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.

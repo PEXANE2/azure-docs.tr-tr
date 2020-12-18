@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178951"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673387"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için CybSafe yapılandırma
 
@@ -34,7 +34,7 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem CybSaf
 > * Kullanıcı özniteliklerinin Azure AD ile CybSafe arasında eşitlenmiş olmasını sağlama
 > * CybSafe 'te grupları ve grup üyeliklerini sağlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
@@ -135,15 +135,15 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 13. Azure AD sağlama hizmetini CybSafe için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
 
-    ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
+      ![Hazırlama Durumu Açık](common/provisioning-toggle-on.png)
 
 14. **Ayarlar** bölümünde **kapsamda** Istenen değerleri seçerek cybsafe 'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Hazırlama Kapsamı](common/provisioning-scope.png)
+      ![Hazırlama Kapsamı](common/provisioning-scope.png)
 
 15. Hazırlama işlemini başlatmak için **Kaydet**'e tıklayın.
 
-    ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
+      ![Hazırlama Yapılandırmasını Kaydetme](common/provisioning-configuration-save.png)
 
 Bu işlem, **Ayarlar** bölümündeki **Kapsam** alanında tanımlanan tüm kullanıcılar ve gruplar için ilk eşitleme döngüsünü başlatır. İlk döngünün tamamlanması, Azure AD hazırlama hizmetinin çalıştığı süre boyunca yaklaşık olarak 40 dakikada bir gerçekleştirilen sonraki döngülerden daha uzun sürer. 
 

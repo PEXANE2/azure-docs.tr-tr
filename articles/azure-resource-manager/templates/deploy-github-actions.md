@@ -4,12 +4,12 @@ description: GitHub eylemleri kullanılarak Azure Resource Manager şablonların
 ms.topic: conceptual
 ms.date: 10/13/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: f8c669393d38d7af2af4f63f251740d8ad72edf7
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 4c1f59e9a18e7359ae543b0311baea0c2a4ab8d6
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607312"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674341"
 ---
 # <a name="deploy-arm-templates-by-using-github-actions"></a>GitHub eylemlerini kullanarak ARM şablonları dağıtma
 
@@ -17,7 +17,7 @@ ms.locfileid: "97607312"
 
 Azure 'a bir Azure Resource Manager şablonu (ARM şablonu) dağıtmayı otomatikleştirmek için [Azure Resource Manager şablonu dağıt eylemini](https://github.com/marketplace/actions/deploy-azure-resource-manager-arm-template) kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - GitHub hesabı. Bir hesabınız yoksa [ücretsiz](https://github.com/join)kaydolun.
@@ -158,3 +158,6 @@ Kaynak grubunuz ve deponuz artık gerekmiyorsa, kaynak grubunu ve GitHub deponuz
 
 > [!div class="nextstepaction"]
 > [İlk ARM şablonunuzu oluşturma](./template-tutorial-create-first-template.md)
+
+> [!div class="nextstepaction"]
+> [Modül öğren: GitHub eylemleri kullanarak ARM şablonlarının dağıtımını otomatikleştirme](/learn/modules/deploy-templates-command-line-github-actions/)

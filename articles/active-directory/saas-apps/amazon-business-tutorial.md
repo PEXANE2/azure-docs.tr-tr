@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 42da33fe874b6dea43bc16009dd27b70e6c3f535
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 1424669af9fe28257e66c8c5438f6e1d171954e0
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589959"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672908"
 ---
 # <a name="tutorial-integrate-amazon-business-with-azure-active-directory"></a>Öğretici: Amazon Business ile Azure Active Directory tümleştirme
 
@@ -28,7 +28,7 @@ Bu öğreticide, Amazon Business 'ı Azure Active Directory (Azure AD) ile tüml
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -74,12 +74,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız aşağıdaki adımları uygulayın:
 
     1. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
-    
+
        | URL | Bölge |
        |-|-|
        | `https://www.amazon.com`| Kuzey Amerika |
@@ -87,7 +87,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
        | `https://www.amazon.de`| Avrupa |
 
     1. **Yanıt URL 'si** metin kutusuna aşağıdaki desenlerden birini kullanarak bir URL yazın:
-    
+
        | URL | Bölge |
        |-|-|
        | `https://www.amazon.com/bb/feature/sso/action/3p_redirect?idpid={idpid}`| Kuzey Amerika |
@@ -146,7 +146,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. **SSO ayarlama** sihirbazında, Kuruluş gereksinimlerinize göre sağlayıcıyı seçin ve **İleri**' ye tıklayın.
 
     ![Ekran görüntüsü, S s 'yi, Microsoft Azure bir D ve Ileri seçiliyken ayarlamayı gösterir.](media/amazon-business-tutorial/default-group1.png)
-    
+
     > [!NOTE]
     > Microsoft ADFS listelenmiş bir seçenek olsa da Azure AD SSO ile çalışmaz.
 
@@ -193,12 +193,12 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 1. Son olarak, **SSO bağlantı ayrıntıları** bölümünde **durum** **etkin** olarak gösterilir.
 
     ![Ekran görüntüsü, etkin durumuyla birlikte S O bağlantı ayrıntılarını gösterir.](media/amazon-business-tutorial/sso-connection5.png)
-    
+
     > [!NOTE]
     > Uygulamayı **SP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımı tamamlayarak, Azure Portal **ek URL 'Leri ayarla** bölümünün **oturum açma URL 'si** metin kutusunda yukarıdaki ekran görüntüsünden oturum açma URL 'sini yapıştırın. Şu biçimi kullanın:
     >
     > `https://www.amazon.<TLD>/bb/feature/sso/action/start?domain_hint=<uniqueid>`
-    
+
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
@@ -236,7 +236,7 @@ Bu bölümde, Amazon Business 'a erişim vererek Azure çoklu oturum açma özel
 1. Uygulamalar listesinde, **Amazon Business**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
@@ -288,8 +288,8 @@ Erişim panelinde Amazon Business kutucuğuna tıkladığınızda, SSO 'yu ayarl
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)

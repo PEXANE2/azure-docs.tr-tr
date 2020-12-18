@@ -11,12 +11,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4956d11ea2a4b011a792827357c3f4627058ead9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1f0c94ba6fb9ee5ab019458043095271123e325e
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97651999"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97671021"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Azure AD Connect bulut sağlama önkoşulları
 Bu makalede, kimlik çözümünüz olarak Azure Active Directory (Azure AD) bulut sağlamasını bağlama ve kullanma hakkında rehberlik sunulmaktadır.
@@ -62,14 +62,11 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
     > | 12 | 4 GB |
     > | 18 | 5,5 GB|
     > | 28 | 10 + GB|
-    >
-    > 
 
 2. Yerel sunucudaki PowerShell yürütme ilkesinin tanımsız veya RemoteSigned olarak ayarlanması gerekir.
 
 3. Sunucularınız ve Azure AD arasında bir güvenlik duvarı varsa, aşağıdaki öğeleri yapılandırın:
-
-   - Aracıların Azure AD 'ye aşağıdaki bağlantı noktaları üzerinden *giden* istekler yapabilmeleri için emin olun:
+    - Aracıların Azure AD 'ye aşağıdaki bağlantı noktaları üzerinden *giden* istekler yapabilmeleri için emin olun:
 
       | Bağlantı noktası numarası | Nasıl kullanılır? |
       | --- | --- |
@@ -78,13 +75,13 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
       |**8082**|Yükleme için gereklidir ve yönetim API 'sini yapılandırmak istiyorsanız.  Bu bağlantı noktası, aracı yüklendikten ve API 'yi kullanmayı planlamadıysanız kaldırılabilir.   |
       | **8080** (isteğe bağlı) | Aracılar 443, 8080 numaralı bağlantı noktası kullanılamıyorsa, her 10 dakikada bir bu durumu bağlantı noktası üzerinden raporlar. Bu durum Azure AD portalında görüntülenir. |
 
-   - Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
-   - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net öğesine bağlantı ekleyin \* . Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
-   - Aracılarınızın ilk kayıt için login.windows.net ve login.microsoftonline.com 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
-   - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 ve www \. Microsoft.com:80. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanılır, bu nedenle bu URL 'Lerin engeli kaldırılmış olabilir.
+    - Güvenlik duvarınız, kaynak kullanıcılara göre kuralları zorlarsa, ağ hizmeti olarak çalışan Windows hizmetlerinden gelen trafik için bu bağlantı noktalarını açın.
+    - Güvenlik duvarınız veya ara sunucunuz güvenli sonekler belirtmenize izin veriyorsa, \* . msappproxy.net ve. ServiceBus.Windows.net öğesine bağlantı ekleyin \* . Aksi takdirde, haftalık olarak güncellenen [Azure veri MERKEZI IP aralıklarına](https://www.microsoft.com/download/details.aspx?id=41653)erişime izin verin.
+    - Aracılarınızın ilk kayıt için login.windows.net ve login.microsoftonline.com 'e erişmesi gerekir. Bu URL 'Ler için güvenlik duvarınızı da açın.
+    - Sertifika doğrulaması için şu URL 'Leri engellemeyi kaldırın: mscrl.microsoft.com:80, crl.microsoft.com:80, ocsp.msocsp.com:80 ve www \. Microsoft.com:80. Bu URL 'Ler diğer Microsoft ürünleriyle sertifika doğrulaması için kullanılır, bu nedenle bu URL 'Lerin engeli kaldırılmış olabilir.
 
->[!NOTE]
-> Bulut sağlama aracısının Windows Server Core 'a yüklenmesi desteklenmez.
+    >[!NOTE]
+    > Bulut sağlama aracısının Windows Server Core 'a yüklenmesi desteklenmez.
 
 ### <a name="additional-requirements"></a>Ek gereksinimler
 
@@ -92,8 +89,8 @@ Dizin özniteliklerini eşitlemeye hazırlamak için [ıddüzeltmesini aracını
 
 #### <a name="tls-requirements"></a>TLS gereksinimleri
 
->[!NOTE]
->Aktarım Katmanı Güvenliği (TLS), güvenli iletişimler için sağlayan bir protokoldür. TLS ayarlarının değiştirilmesi ormanın tamamını etkiler. Daha fazla bilgi için bkz. [Windows 'Da WinHTTP 'de varsayılan güvenli protokoller olarak tls 1,1 ve tls 1,2 ' i etkinleştirmek Için güncelleştirme](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
+> [!NOTE]
+> Aktarım Katmanı Güvenliği (TLS), güvenli iletişimler için sağlayan bir protokoldür. TLS ayarlarının değiştirilmesi ormanın tamamını etkiler. Daha fazla bilgi için bkz. [Windows 'Da WinHTTP 'de varsayılan güvenli protokoller olarak tls 1,1 ve tls 1,2 ' i etkinleştirmek Için güncelleştirme](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi).
 
 Azure AD Connect Cloud sağlama Aracısı 'nı barındıran Windows Server, yüklemeden önce TLS 1,2 ' i etkinleştirmiş olmalıdır.
 
@@ -111,6 +108,7 @@ TLS 1,2 ' i etkinleştirmek için aşağıdaki adımları izleyin.
 1. Sunucuyu yeniden başlatın.
 
 ## <a name="known-limitations"></a>Bilinen sınırlamalar
+
 Aşağıda bilinen sınırlamalar verilmiştir:
 
 ### <a name="delta-synchronization"></a>Delta Eşitleme

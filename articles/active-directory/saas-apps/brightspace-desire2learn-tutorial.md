@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 91d48e42dc1c92e05e963b4c8b53e44daa403378
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f999818ab791cabac6b0877b7735fa730dab89e2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456713"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Öğretici: Desire2Learn ile en parlak alan tümleştirmesi Azure Active Directory
 
@@ -30,7 +30,7 @@ Azure AD ile Desire2Learn ile en parlak alanı tümleştirmek aşağıdaki avant
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Desire2Learn tarafından en Parlamdan Azure AD tümleştirmesini yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -64,13 +64,13 @@ Desire2Learn tarafından Azure AD 'ye kadar parlak alan tümleştirmesini yapıl
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Desire2Learn göre parlatspace**yazın, sonuç panelinden **Desire2Learn tarafından parlamspace** ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Desire2Learn göre parlatspace** yazın, sonuç panelinden **Desire2Learn tarafından parlamspace** ' i seçin ve sonra uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesinde Desire2Learn göre en parlak alan](common/search-new-app.png)
+    ![Sonuç listesinde Desire2Learn göre en parlak alan](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına bağlı olarak Desire2Learn Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına bağlı olarak Desire2Learn Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Desire2Learn ile ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Desire2Learn ile Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -105,7 +105,7 @@ Desire2Learn ile Azure AD çoklu oturum açmayı yapılandırmak için aşağıd
     ![Desire2Learn etki alanı ve URL 'Ler çoklu oturum açma bilgileri ile en parlak alan](common/idp-intiated.png)
 
     a. **Tanımlayıcı** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:
-    
+
     ```http
     https://<companyname>.tenants.brightspace.com/samlLogin
     https://<companyname>.desire2learn.com/shibboleth-sp
@@ -150,9 +150,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -163,7 +163,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, Desire2Learn göre en parlak alana erişim vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Desire2Learn göre**en fazla parlaklık ' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Desire2Learn göre** en fazla parlaklık ' ı seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 

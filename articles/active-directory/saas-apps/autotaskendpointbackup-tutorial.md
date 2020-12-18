@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 0264baf6a8ff107c4a3aa811b9e8639352dca782
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301813"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673713"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Öğretici: otomatik görev uç noktası yedeklemeyle tümleştirme Azure Active Directory
 
@@ -63,7 +63,7 @@ Otomatik görev uç noktası yedeğinin tümleştirmesini Azure AD ile yapıland
 
 4. Arama kutusuna **otomatik görev uç noktası yedeklemesi** yazın, sonuç panelinden **otomatik görev uç noktası yedeklemesi** ' ni seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuçlar listesinde otomatik görev uç noktası yedeklemesi](common/search-new-app.png)
+    ![Sonuçlar listesinde otomatik görev uç noktası yedeklemesi](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
@@ -149,7 +149,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**'a tıklayın.
+    d. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

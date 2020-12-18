@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 99ee85c569340d8f1d3cff27112436465238c05f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 753256adddf8b28518bac45011d582bc7a079629
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455893"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Öğretici: tıklama üretkenlik platformuyla tümleştirme Azure Active Directory
 
@@ -30,7 +30,7 @@ Tıklama üretkenlik platformunu Azure AD ile tümleştirmek aşağıdaki avanta
 Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini tıklama verimliliği platformu ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
@@ -61,13 +61,13 @@ Tıklama üretkenlik platformunun tümleştirmesini Azure AD 'ye göre yapıland
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **tıklama üretkenlik platformunu**yazın, sonuç panelinden **tıklama üretkenlik platformunu** seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **tıklama üretkenlik platformunu** yazın, sonuç panelinden **tıklama üretkenlik platformunu** seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
 
-     ![Sonuç listesindeki üretkenlik platformunu tıklama](common/search-new-app.png)
+    ![Sonuç listesindeki üretkenlik platformunu tıklama](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına göre tıklama üretkenlik platformuyla yapılandırıp test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre tıklama üretkenlik platformuyla yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve tıklama üretkenlik platformunda ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
 Tıklama üretkenlik platformuyla Azure AD çoklu oturum açma 'yı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
@@ -131,7 +131,7 @@ Azure AD çoklu oturum açma 'yı tıklama verimliliği platformu ile yapıland�
     ![Ekran görüntüsü, b varlığını kopyalayabileceğiniz ve Azure Federasyon meta veri U R L 'sini kaydedebileceğiniz Microsoft Çoklu oturum açma sayfasını yapılandırma ' yı gösterir.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Varlık KIMLIĞI değerini kopyalamak için **Kopyala** ' ya tıklayın ve Azure Portal **temel SAML yapılandırması** bölümünde **tanımlayıcı (varlık kimliği)** metin kutusuna yapıştırın.
-    
+
     b. **Azure Federasyon meta veri URL 'si** metin kutusunda, Azure Portal kopyaladığınız uygulama Federasyon meta veri URL 'si değerini yapıştırın ve **Kaydet**' e tıklayın.
 
 5. Kurulumu tamamladıktan sonra kurulumu tamamlayıp Microsoft hesabıyla kimlik doğrulaması **yapmak Için Microsoft Ile kimlik doğrulaması** ' na tıklayın.
@@ -154,9 +154,9 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
+    a. **Ad** alanına **Brittasıon** girin.
+
+    b. **Kullanıcı adı** alanına **\@ bricompansıon yourcompanydomain. Extension** yazın  
     Örneğin, BrittaSimon@contoso.com
 
     c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
@@ -167,7 +167,7 @@ Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı ol
 
 Bu bölümde, tıklama üretkenlik platformuna erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **tıklama üretkenlik platformunu**seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin ve ardından **tıklama üretkenlik platformunu** seçin.
 
     ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
 
@@ -194,7 +194,7 @@ Bu bölümde, tıklama üretkenlik platformuna erişim izni vererek Azure çoklu
 1. Farklı bir Web tarayıcı penceresinde, yönetici olarak tıklama üretkenlik platformu kiracınızda oturum açın.
 
 2. **Kullanıcı profili**' ne tıklayın ve ardından **kişiler**' i seçin.
-   
+
     ![Ekran görüntüsü tıklama verimliliği kiracısını gösterir.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
     ![Ekran görüntüsü kişiler bağlantısının seçili olduğunu gösterir.](./media/clickup-productivity-platform-tutorial/user1.png)
