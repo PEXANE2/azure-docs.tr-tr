@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: a9af249aac18c847bf353f22b23ee67ab6e264c4
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a8cfdc76694d52acee70cde0e3f1697cd8129d06
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915235"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691912"
 ---
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,14 +40,14 @@ Xcode 'da yeni bir iOS projesi oluşturun ve **tek görünüm uygulama** şablon
    end
    ```
 
-2. `pod install` komutunu çalıştırın.
+2. Şu komutu çalıştırın: `pod install`.
 3. Öğesini `.xcworkspace` XCode ile açın.
 
 ### <a name="request-access-to-the-microphone"></a>Mikrofona erişim isteyin
 
 Cihazın mikrofonuna erişmek için uygulamanızın bilgi Özellik listesini bir ile güncelleştirmeniz gerekir `NSMicrophoneUsageDescription` . İlişkili değeri, `string` sistemin kullanıcıdan istek erişimi istemek için kullandığı iletişim kutusuna dahil edilecek bir öğesine ayarlarsınız.
 
-`Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  **Source Code**. Aşağıdaki satırları en üst düzey bölümüne ekleyin `<dict>` ve dosyayı kaydedin.
+`Info.plist`Proje ağacının girişine sağ tıklayın ve kaynak kodu **olarak aç**' ı seçin  >  . Aşağıdaki satırları en üst düzey bölümüne ekleyin `<dict>` ve dosyayı kaydedin.
 
 ```xml
 <key>NSMicrophoneUsageDescription</key>
@@ -106,12 +106,16 @@ public func fetchTokenSync(then onCompletion: TokenRefreshOnCompletion) {
 }
 ```
 
-Yukarıda oluşturulan CommunicationUserCredential nesnesini ACSCallClient 'a geçir
+Yukarıda oluşturulan CommunicationUserCredential nesnesini ACSCallClient öğesine geçirin ve görünen adı ayarlayın.
 
 ```swift
 
 callClient = CallClient()
-callClient?.createCallAgent(with: userCredential!,
+let callAgentOptions:CallAgentOptions = CallAgentOptions()
+options.displayName = "ACS iOS User"
+
+callClient?.createCallAgent(userCredential: userCredential!,
+    options: callAgentOptions,
     completionHandler: { (callAgent, error) in
         if error == nil {
             print("Create agent succeeded")
@@ -174,6 +178,39 @@ let groupCallContext = GroupCallContext()
 groupCallContext?.groupId = UUID(uuidString: "uuid_string")!
 let call = self.callAgent?.join(with: groupCallContext, joinCallOptions: JoinCallOptions())
 
+```
+
+### <a name="accept-an-incoming-call"></a>Gelen çağrıyı kabul et
+Bir çağrıyı kabul etmek için, çağırma nesnesinde ' Accept ' metodunu çağırın.
+CallAgent 'a bir temsilci ayarlayın 
+```swift
+final class CallHandler: NSObject, CallAgentDelegate
+{
+    public var incomingCall: Call?
+ 
+    public func onCallsUpdated(_ callAgent: CallAgent!, args: CallsUpdatedEventArgs!) {
+        if let incomingCall = args.addedCalls?.first(where: { $0.isIncoming }) {
+            self.incomingCall = incomingCall
+        }
+    }
+}
+
+let firstCamera: VideoDeviceInfo? = self.deviceManager?.getCameraList()![0]
+let localVideoStream = LocalVideoStream(camera: firstCamera)
+let acceptCallOptions = AcceptCallOptions()
+acceptCallOptions!.videoOptions = VideoOptions(localVideoStream:localVideoStream!)
+if let incomingCall = CallHandler().incomingCall {
+   incomingCall.accept(options: acceptCallOptions,
+                          completionHandler: { (error) in
+                           if error == nil {
+                               print("Incoming call accepted")
+                           } else {
+                               print("Failed to accept incoming call")
+                           }
+                       })
+} else {
+   print("No incoming call found to accept")
+}
 ```
 
 ## <a name="push-notification"></a>Anında iletme bildirimi

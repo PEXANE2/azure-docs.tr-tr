@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 09/24/2020
+ms.date: 12/18/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 49efc391b19d0a81b6d847f132429de9c15a5f1f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a749de57a1c57c828332957def27d68a121318b1
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96476694"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97691963"
 ---
 | Kategori | Veri deposu |
 |:--- |:--- |
@@ -47,7 +47,7 @@ ms.locfileid: "96476694"
 | &nbsp; |[Oracle](../articles/data-factory/connector-oracle.md) |
 | &nbsp; |[Phoenix](../articles/data-factory/connector-phoenix.md) |
 | &nbsp; |[PostgreSQL](../articles/data-factory/connector-postgresql.md) 
-| &nbsp; |[Presto (Önizleme)](../articles/data-factory/connector-presto.md) |
+| &nbsp; |[Presto](../articles/data-factory/connector-presto.md) |
 | &nbsp; |[SAP Business Warehouse Açık Hub'ı](../articles/data-factory/connector-sap-business-warehouse-open-hub.md) |
 | &nbsp; |[MDX aracılığıyla SAP Business Warehouse](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
@@ -76,7 +76,7 @@ ms.locfileid: "96476694"
 | &nbsp; |[Dynamics AX](../articles/data-factory/connector-dynamics-ax.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Google AdWords](../articles/data-factory/connector-google-adwords.md) |
-| &nbsp; |[HubSpot (Önizleme)](../articles/data-factory/connector-hubspot.md) |
+| &nbsp; |[HubSpot](../articles/data-factory/connector-hubspot.md) |
 | &nbsp; |[Jira](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (Önizleme)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (Önizleme)](../articles/data-factory/connector-marketo.md) |
