@@ -50,9 +50,9 @@ Aşağıdaki örnek, için bir teknik profil göstermektedir `JwtIssuer` :
 
 ## <a name="input-output-and-persist-claims"></a>Giriş, çıkış ve kalıcı talepler
 
-**Inputclaim**, **Outputclaim**ve **persistclaim** öğeleri boş veya yok. **Inutputclaimstransformations** ve **outputclaimstransformations** öğeleri de yok.
+**Inputclaim**, **Outputclaim** ve **persistclaim** öğeleri boş veya yok. **Inutputclaimstransformations** ve **outputclaimstransformations** öğeleri de yok.
 
-## <a name="metadata"></a>Meta veri
+## <a name="metadata"></a>Meta Veriler
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
