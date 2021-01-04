@@ -2,19 +2,21 @@
 title: Şablonlarda alt kaynaklar
 description: Bir Azure Resource Manager şablonunda alt kaynaklar için ad ve tür ayarlamayı açıklar.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 3a69829e674925982c618807f49433a033d8c5f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/21/2020
+ms.openlocfilehash: c594096fd95f663db2120b29c575b341924dcc36
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80743846"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97721953"
 ---
 # <a name="set-name-and-type-for-child-resources"></a>Alt kaynaklar için ad ve tür ayarla
 
-Alt kaynaklar yalnızca başka bir kaynağın bağlamında bulunan kaynaklardır. Örneğin, sanal makine [Uzantısı](/azure/templates/microsoft.compute/2019-03-01/virtualmachines/extensions) bir [sanal makine](/azure/templates/microsoft.compute/2019-03-01/virtualmachines)olmadan mevcut olamaz. Uzantı kaynağı, sanal makinenin bir alt öğesidir.
+Alt kaynaklar yalnızca başka bir kaynağın bağlamında bulunan kaynaklardır. Örneğin, sanal makine [Uzantısı](/azure/templates/microsoft.compute/virtualmachines/extensions) bir [sanal makine](/azure/templates/microsoft.compute/virtualmachines)olmadan mevcut olamaz. Uzantı kaynağı, sanal makinenin bir alt öğesidir.
 
-Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnek, üst kaynağın Resources özelliği içinde yer alan alt kaynağı gösterir.
+Her üst kaynak, alt kaynaklar olarak yalnızca belirli kaynak türlerini kabul eder. Alt kaynak için kaynak türü, üst kaynak için kaynak türünü içerir. Örneğin, **Microsoft. Web/Sites/config** ve **Microsoft. Web/Sites/Extensions** , **Microsoft. Web/sitelerinin** alt kaynaklarıdır. Kabul edilen kaynak türleri, üst kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir.
+
+Bir Azure Resource Manager şablonunda (ARM şablonu), alt kaynağı üst kaynak içinde veya üst kaynağın dışında belirtebilirsiniz. Aşağıdaki örnek, üst kaynağın Resources özelliği içinde yer alan alt kaynağı gösterir.
 
 ```json
 "resources": [
@@ -26,6 +28,8 @@ Kaynak Yöneticisi şablonunda, alt kaynağı üst kaynak içinde veya üst kayn
   }
 ]
 ```
+
+Alt kaynaklar yalnızca beş düzey derinlikli tanımlanmış olabilir.
 
 Sonraki örnekte alt kaynak, üst kaynağın dışında gösterilmektedir. Üst kaynak aynı şablonda dağıtılmamışsa veya birden fazla alt kaynak oluşturmak için [kopyalama](copy-resources.md) kullanmak istiyorsanız bu yaklaşımı kullanabilirsiniz.
 
@@ -51,7 +55,7 @@ Kaynak adı ve türü için sağladığınız değerler, alt kaynağın üst kay
 "name": "{child-resource-name}",
 ```
 
-Aşağıdaki örnekte bir sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edildiğini unutmayın. Ad **Subnet1** olarak ayarlanır ve tür **alt ağlar**olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
+Aşağıdaki örnekte bir sanal ağ ve bir alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edildiğini unutmayın. Ad **Subnet1** olarak ayarlanır ve tür **alt ağlar** olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
 
 ```json
 "resources": [
@@ -98,7 +102,7 @@ Alt kaynak adı **Subnet1** olarak ayarlanır ancak tam ad üst adı içerir. Ü
 "name": "{parent-resource-name}/{child-resource-name}",
 ```
 
-Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edilmediğini unutmayın. Ad **VNet1/Subnet1** olarak ayarlanır ve tür **Microsoft. Network/virtualnetworks/alt ağları**olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
+Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gösterilmektedir. Alt ağın, sanal ağ için kaynaklar dizisine dahil edilmediğini unutmayın. Ad **VNet1/Subnet1** olarak ayarlanır ve tür **Microsoft. Network/virtualnetworks/alt ağları** olarak ayarlanır. Alt kaynak dağıtılmadan önce üst kaynağın mevcut olması gerektiğinden, alt kaynak üst kaynağa bağımlı olarak işaretlenir.
 
 ```json
 "resources": [
@@ -132,6 +136,6 @@ Aşağıdaki örnekte, kök düzeyinde tanımlanan bir sanal ağ ve alt ağ gös
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
+* ARM şablonları oluşturma hakkında bilgi edinmek için bkz. [yazma şablonları](template-syntax.md).
 
 * Kaynağa başvururken kaynak adının biçimi hakkında bilgi edinmek için [başvuru işlevine](template-functions-resource.md#reference)bakın.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: a5457dc94082f089d3adf02c9614d05d2c5db244
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484014"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709308"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Özel Konuşma için verileri hazırlama
 
@@ -46,9 +46,11 @@ Bu tabloda, kabul edilen veri türleri, her veri türü ne zaman kullanılmalı 
 
 | Veri türü | Test için kullanılan | Önerilen miktar | Eğitim için kullanılır | Önerilen miktar |
 |-----------|-----------------|----------|-------------------|----------|
-| [Ses](#audio-data-for-testing) | Evet<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
-| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Evet<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Evet | 1-1000 saat ses |
-| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Evet | 1-200 MB ilgili metin |
+| [Ses](#audio-data-for-testing) | Yes<br>Görsel inceleme için kullanılır | 5 + ses dosyası | Hayır | Yok |
+| [Ses + ınsan etiketli yazılı betikler](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Doğruluğu değerlendirmek için kullanılır | 0,5-5 saat ses | Yes | 1-20 saat ses |
+| [İlgili metin](#related-text-data-for-training) | Hayır | Yok | Yes | 1-200 MB ilgili metin |
+
+Yeni bir modeli eğitedığınızda [ilgili metinle](#related-text-data-for-training)başlayın. Bu veriler, özel hüküm ve tümceciklerin tanınmasını zaten iyileştirir.
 
 Dosyalar bir veri kümesine türlerine göre gruplanmalı ve bir. zip dosyası olarak karşıya yüklenir. Her veri kümesi yalnızca tek bir veri türü içerebilir.
 
@@ -117,7 +119,7 @@ Ses dosyaları, kaydın başlangıcında ve sonunda sessizlik alabilir. Mümkün
 > [!NOTE]
 > Eğitim ve test verileri yüklenirken. zip dosyası boyutu 2 GB 'ı aşamaz. Yalnızca *tek* bir veri kümesinden test edebilirsiniz, bunu uygun dosya boyutunda tutmanız yeterlidir. Ayrıca, her eğitim dosyası 60 saniye aşılamaz, aksi takdirde hata dışarı kalır.
 
-Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 1.000 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
+Sözcük silme veya değiştirme gibi sorunları gidermek için, tanımayı geliştirmek için önemli miktarda veri gerekir. Genellikle, kabaca 10 ila 20 saatlik ses için Word sözcük dökümü sağlamanız önerilir. Tüm WAV dosyalarının transkripsiyonları tek bir düz metin dosyasına yerleştirilmelidir. Transkripsiyon dosyasının her satırında ses dosyalarından birinin adı ve transkripsiyon bulunmalıdır. Dosya adı ve transkripsiyon sekme (\t) ile ayrılmalıdır.
 
   Örnek:
 ```
@@ -135,6 +137,8 @@ Ses dosyalarınızı ve bunlara karşılık gelen kayıtları topladıktan sonra
 
 > [!div class="mx-imgBorder"]
 > ![Konuşma portalından ses seçme](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
+
+Konuşma hizmeti abonelikleriniz için önerilen bölgelerin listesi için bkz. [Azure hesabınızı ayarlama](custom-speech-overview.md#set-up-your-azure-account) . Bu bölgelerden birinde konuşma aboneliklerinin kurulması, modeli eğitmek için gereken süreyi azaltacaktır.
 
 ## <a name="related-text-data-for-training"></a>Eğitim için ilgili metin verileri
 

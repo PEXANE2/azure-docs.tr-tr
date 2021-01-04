@@ -1,5 +1,5 @@
 ---
-title: Kimlik doğrulaması ve yetkilendirme
+title: Kimlik doğrulama ve yetkilendirme
 description: Bir uygulama veya hizmetin Azure uzamsal bağlayıcıların kimliğini doğrulayabileceği çeşitli yollar ve uzamsal Tutturucuların erişimini geçit halinde denetleyebilmeniz gereken denetim düzeylerini öğrenin.
 author: msftradford
 manager: MehranAzimi-msft
@@ -9,12 +9,12 @@ ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 01065f9ac26599d26d6e2a6979eae1e559a82854
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95484619"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722972"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Azure uzamsal Tutturucuların kimlik doğrulaması ve yetkilendirmesi
 
@@ -110,7 +110,7 @@ Azure Active Directory kullanıcıları hedefleyen uygulamalar için, Kullanıc�
    3.    **Rol ataması ekle**’yi seçin.
    1.    [Bir rol seçin](#azure-role-based-access-control).
    2.    **Seç** kutusunda, erişim atamak istediğiniz kullanıcıların, grupların ve/veya uygulamaların adlarını girin.
-   3.    **Kaydet**'i seçin.
+   3.    **Kaydet**’i seçin.
 
 **Kodunuzda**
 1.    MSAL ' de **ISTEMCI kimliği** ve **redirecturı** PARAMETRELERI için kendi Azure AD uygulamanızın uygulama KIMLIĞI ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
@@ -188,12 +188,12 @@ Azure AD erişim belirteci [msal](../../active-directory/develop/msal-overview.m
               > [!NOTE]
               > **Rol ataması Ekle** bölmesinde, **erişim ata**' da **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin.
 
-        6.    **Kaydet**'i seçin.
+        6.    **Kaydet**’i seçin.
 
 **Kodunuzda**
 
 >[!NOTE]
-> GitHub 'da bulunan hizmet örneğini kullanabilirsiniz.
+> [Uzamsal bağlayıcı örnek uygulamalarının](https://github.com/Azure/azure-spatial-anchors-samples)bir parçası olarak kullanılabilen [hizmet örneğini](https://github.com/Azure/azure-spatial-anchors-samples/tree/master/Sharing/SharingServiceSample) kullanabilirsiniz.
 
 1.    MSAL ' de **ISTEMCI kimliği**, **gizli anahtar** ve **redirecturı** parametreleri olarak kendi Azure AD uygulamanızın uygulama kimliği, uygulama gizli anahtarı ve yeniden yönlendirme URI 'sini kullandığınızdan emin olun.
 2.    Kiracı KIMLIĞINI MSAL ' deki **yetkili** parametresinde kendı Azure AD kiracı kimliğiniz olarak ayarlayın.

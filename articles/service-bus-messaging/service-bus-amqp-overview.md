@@ -3,12 +3,12 @@ title: Azure Service Bus AMQP 1,0 'ye Genel Bakış
 description: Azure Service Bus bir açık standart protokol olan Gelişmiş İleti Sıraya Alma Protokolü (AMQP) nasıl destekleyeceğinizi öğrenin.
 ms.topic: article
 ms.date: 11/20/2020
-ms.openlocfilehash: e585fcc905d1651d49008b623b01a6c2f8a04fcc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 241a6b7fb9f9055ce610e44e5cd37dba87c77554
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498787"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709291"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus 'da AMQP 1,0 desteği
 Azure Service Bus bulut hizmeti, [Gelişmiş Ileti sıraya alma Protokolü (AMQP) 1,0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) ' i birincil iletişim yöntemi olarak kullanır. Microsoft, sektördeki iş ortaklarıyla, hem müşteriler hem de rekabet eden mesajlaşma aracılarında, [Oasin AMQP Technical komite](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)' de geliştirilen yeni uzantılarla, AMQP 'yi geçmiş yılda geliştirme ve geliştirme olanağı elde etti. AMQP 1,0, bir ISO ve ıEC Standard ([ıso 19464:20149](https://www.iso.org/standard/64955.html)). 
@@ -42,7 +42,7 @@ AMQP 1,0, her iki teknoloji tedarikçisinden ve Son Kullanıcı firmasından 20 
 * **Teknoloji satıcıları**: Axway yazılımı, Huawei Technologies, IIT Software, ınetco sistemleri, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
 * **Kullanıcı firmaları**: Amerika Bankası, kredi Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
-[OASIN AMQP Technical komite] ( https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) Red Hat ve Microsoft 'un geçerli sandalyesi).
+[Oasin AMQP Technical komite](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) 'in geçerli sandalyesi Red Hat ve Microsoft ' ü temsil etmektedir.
 
 Açık standartların yaygın olarak alıntı yapılan avantajlarından bazıları şunlardır:
 

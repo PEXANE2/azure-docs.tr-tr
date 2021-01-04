@@ -56,30 +56,20 @@
       items:
         - name: v3 Translator başvurusu
           href: reference/v3-0-reference.md
-          items:
-            - name: Diller
-              href: reference/v3-0-languages.md
-            - name: Çevirme
-              href: reference/v3-0-translate.md
-            - name: Karakter Dönüştürme
-              href: reference/v3-0-transliterate.md
-            - name: Algılama
-              href: reference/v3-0-detect.md
-            - name: BreakSentence
-              href: reference/v3-0-break-sentence.md
-            - name: Sözlük Arama
-              href: reference/v3-0-dictionary-lookup.md
-            - name: Sözlük Örnekleri
-              href: reference/v3-0-dictionary-examples.md
-        - name: v2 Translator başvurusu (Kullanım dışı)
-          href: reference/v2-0-reference.md
-          items:
-            - name: Metin dönüştürme
-              href: transform-text.md
-            - name: Collaborative Translation Framework (CTF) raporlamasını kullanma
-              href: ctf-reporting.md
-            - name: En iyi N çeviriyi döndürme
-              href: return-n-best-translations.md
+        - name: Diller
+          href: reference/v3-0-languages.md
+        - name: Çevirme
+          href: reference/v3-0-translate.md
+        - name: Karakter Dönüştürme
+          href: reference/v3-0-transliterate.md
+        - name: Algılama
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Sözlük Arama
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Sözlük Örnekleri
+          href: reference/v3-0-dictionary-examples.md
         - name: İstek sınırları
           href: request-limits.md
     - name: Kaynaklar

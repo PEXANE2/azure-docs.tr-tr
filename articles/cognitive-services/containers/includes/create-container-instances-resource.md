@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 09957461fd92114d1181a570550ee1a189edd8ea
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 874d44e3900b1edf24c2f6bee95d787c5fc3988d
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009928"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704853"
 ---
-## <a name="create-an-azure-container-instance-resource"></a>Azure Container Instance kaynağı oluşturma
+## <a name="create-an-azure-container-instance-resource-using-the-azure-portal"></a>Azure portal kullanarak bir Azure Container Instance kaynağı oluşturma
 
 1. Container Instances için [Oluştur](https://ms.portal.azure.com/#create/Microsoft.ContainerInstances) sayfasına gidin.
 
@@ -28,7 +28,7 @@ ms.locfileid: "96009928"
     |Kaynak grubu|Kullanılabilir kaynak grubunu seçin veya gibi yeni bir tane oluşturun `cognitive-services` .|
     |Kapsayıcı adı|Gibi bir ad girin `cognitive-container-instance` . Ad, daha küçük bir harf olmalıdır.|
     |Konum|Dağıtım için bir bölge seçin.|
-    |Görüntü türü|Kapsayıcı resminiz kimlik bilgileri gerektirmeyen bir kapsayıcı kayıt defterinde depolanıyorsa, öğesini seçin `Public` . Kapsayıcı yansımanıza erişim için kimlik bilgileri gerekiyorsa, öğesini seçin `Private` . Kapsayıcı görüntüsünün [container repositories and images](../../cognitive-services-container-support.md#container-repositories-and-images) mi yoksa `Public` `Private` ("genel önizleme") olup olmadığı hakkında ayrıntılar için kapsayıcı depoları ve resimlere bakın. |
+    |Görüntü türü|Kapsayıcı resminiz kimlik bilgileri gerektirmeyen bir kapsayıcı kayıt defterinde depolanıyorsa, öğesini seçin `Public` . Kapsayıcı yansımanıza erişim için kimlik bilgileri gerekiyorsa, öğesini seçin `Private` . Kapsayıcı görüntüsünün [](../../cognitive-services-container-support.md#container-repositories-and-images) mi yoksa `Public` `Private` ("genel önizleme") olup olmadığı hakkında ayrıntılar için kapsayıcı depoları ve resimlere bakın. |
     |Görüntü adı|Bilişsel hizmetler kapsayıcı konumunu girin. Konum, komuta bir bağımsız değişken olarak kullanılan şeydir `docker pull` . Kullanılabilir görüntü adları ve bunlara karşılık gelen depo için [kapsayıcı depoları ve görüntüleri](../../cognitive-services-container-support.md#container-repositories-and-images) inceleyin.<br><br>Görüntü adı, üç bölümden oluşan tam olarak nitelenmiş olmalıdır. İlk olarak, kapsayıcı kayıt defteri, ardından depo, son olarak görüntü adı: `<container-registry>/<repository>/<image-name>` .<br><br>Azure bilişsel `mcr.microsoft.com/azure-cognitive-services/keyphrase` Hizmetler deposu altında Microsoft Container Registry anahtar ifade ayıklama görüntüsünü temsil eden bir örnek aşağıda verilmiştir. Diğer bir örnek olarak, `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` kapsayıcı önizleme kapsayıcısı kayıt defterinin Microsoft deposunda konuşmayı metne dönüştürme görüntüsünü temsil eden bir örnektir. |
     |İşletim sistemi türü|`Linux`|
     |Boyut|Belirli bilişsel hizmet Kapsayıcınızın boyutunu önerilen önerilerle değiştirin:<br>2 CPU çekirdeği<br>4 GB
@@ -43,9 +43,9 @@ ms.locfileid: "96009928"
 
     | Anahtar | Değer |
     |--|--|
-    |`apikey`|Kaynağın **anahtarlar** sayfasından kopyalanmış. Boşluk veya tire içermeyen 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
-    |`billing`|Kaynağın **genel bakış** sayfasından kopyalanmış.|
-    |`eula`|`accept`|
+    |`ApiKey`|Kaynağın **anahtarlar ve uç nokta** sayfasından kopyalanmış. Boşluk veya tire içermeyen 32 alfasayısal karakter dizesidir `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` .|
+    |`Billing`| Endpoint URL 'niz kaynağın **anahtarlar ve uç nokta** sayfasından kopyalanmış.|
+    |`Eula`|`accept`|
 
 5. **Gözden geçir ve oluştur** 'a tıklayın
 6. Doğrulama işleminden sonra oluşturma işlemini tamamladıktan sonra **Oluştur** ' a tıklayın.

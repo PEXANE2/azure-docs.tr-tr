@@ -1,18 +1,18 @@
 ---
 title: Kaydet ve Tara Azure Data Lake Storage (ADLS) Gen2
 description: Bu öğreticide Azure Data Lake Storage 2. tarama açıklanmaktadır.
-author: prmujumd
-ms.author: prmujumd
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: ec708009e3f3f258c1c40aa6a06a35452d5988f4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555503"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694804"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Kaydet ve Tara Azure Data Lake Storage 2.
 
@@ -26,7 +26,7 @@ Azure Data Lake Storage 2. veri kaynağı aşağıdaki işlevleri destekler:
 
 - ADF kopyası/veri akışı etkinlikleri için veri varlıkları arasında **kökenini**
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 

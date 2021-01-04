@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 9b5b20de1b86eae72de54b3f2c1cf37074fba144
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095177"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695827"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem gruplarını oluşturma ve yönetme
 Bir eylem grubu, bir Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri koleksiyonudur. Azure Izleyici ve hizmet durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. 
@@ -132,6 +132,18 @@ Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sını
 Abonelik rolü üyelerine e-posta gönderin. E-posta yalnızca rolün **Azure AD Kullanıcı** üyelerine gönderilir. Azure AD gruplarına veya hizmet sorumlularına e-posta gönderilmez.
 
 Yalnızca *birincil e-posta* adresine bir bildirim e-postası gönderilir.
+
+*Birincil e-postanıza* bildirim aldıysanız aşağıdaki adımları deneyebilirsiniz:
+
+1. Azure portal *Active Directory* gidin.
+2. Tüm kullanıcılar ' a (sol bölmede) tıklayın, Kullanıcı listesini (sağ bölmede) görürsünüz.
+3. *Birincil e-posta* bilgilerini gözden geçirmek istediğiniz kullanıcıyı seçin.
+
+  :::image type="content" source="media/action-groups/active-directory-user-profile.png" alt-text="Kullanıcı profilini İnceleme hakkında örnek."border="true":::
+
+4. "E-posta" sekmesi boş ise, Iletişim bilgileri altındaki Kullanıcı profili ' nde, üstteki *Düzenle* düğmesine tıklayın ve *birincil e-postanızı* ekleyin ve en üstteki *Kaydet* düğmesine basın.
+
+  :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="Birincil e-postanın nasıl ekleneceği hakkında örnek."border="true":::
 
 Bir eylem grubunda sınırlı sayıda e-posta eylemi olabilir. Bkz. [hız sınırlandırma bilgileri](./alerts-rate-limiting.md) makalesi.
 

@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 11/16/2020
-ms.openlocfilehash: ff85ed669fb7c3ac43e322eb747c537a30801920
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 12/21/2020
+ms.openlocfilehash: 83bca8a2a81823cd0a8bda1633599292460ddd30
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701441"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724336"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>Machine Learning sorumlu nedir? (önizleme)
 
@@ -62,10 +62,7 @@ Analiz için veriler kullanıldığında, verilerin kullanımı boyunca özel ve
 
 Geleneksel senaryolarda, ham veriler dosya ve veritabanlarında depolanır. Kullanıcılar verileri çözümlerse genellikle ham verileri kullanır. Bu sorun, bir kişinin gizliliğine infringe olabileceğinden bir kaygıdır. Değişiklik gizliliği, kullanıcıların herhangi bir veri noktasını tanımlayamaması için verilere "gürültü" veya rasgelelik ekleyerek bu sorunla başa geçmeye çalışır.
 
-Farklı şekilde özel sistemlerin uygulanması zordur. [Whitenoıse](https://github.com/opendifferentialprivacy/whitenoise-core) , küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. Değişiklik gizliliği ve Whitenoıse projesi hakkında daha fazla bilgi edinmek için, [değişiklik gizliliği ve çalışırken veri gizliliğini koruma](./concept-differential-privacy.md) makalesini inceleyin.
-
-> [!NOTE]
-> Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
+Farklı şekilde özel sistemlerin uygulanması zordur. [Smartnoise](https://github.com/opendifferentialprivacy/smartnoise-core) , küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. Değişiklik gizliliği ve SmartNoise projesi hakkında daha fazla bilgi edinmek için, [değişiklik gizliliği ve smartnoise kullanarak veri gizliliğini koruma](./concept-differential-privacy.md) makalesini inceleyin.
 
 ## <a name="work-on-encrypted-data-with-homomorphic-encryption"></a>Homomorphic şifrelemesi ile şifrelenmiş veriler üzerinde çalışma
 

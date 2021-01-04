@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e5d360933cbeb611046aede6164ec2e2fa497664
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 7ed7c3a586f5671191e3c517b5925cab888caefb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347804"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724315"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Paralel belgelerde tümce eşleştirme ve hizalama
 
@@ -22,7 +22,7 @@ Belgeler karşıya yüklendikten sonra, paralel belgelerde bulunan cümleler eş
 
 ## <a name="pairing-and-alignment-process"></a>Eşleştirme ve hizalama işlemi
 
-Özel çevirici, her seferinde bir cümleden oluşan Tümcelerin çevirilerini öğrenir. Kaynaktan bir cümleyi ve sonra bu tümcenin hedeften çevirisini okumalar. Ardından, bu iki tümce içindeki kelimeleri ve tümceleri birbirlerine hizalar. Bu işlem, bir tümcedeki sözcüklerin ve deyimlerin, bu tümcenin çevirisi içindeki eşdeğer sözcüklere ve tümceciklere bir haritasını oluşturmasını sağlar. Hizalama, sistemin birbirleriyle çevirileri olan cümleler üzerinde hareket etmeye çalışır.
+Özel çevirici, her seferinde bir cümleden oluşan Tümcelerin çevirilerini öğrenir. Kaynak metinden bir cümleyi ve sonra bu tümcenin hedef metinden çevirisini okur. Ardından, bu iki tümce içindeki kelimeleri ve tümceleri birbirlerine hizalar. Bu işlem, bir tümcedeki sözcüklerin ve deyimlerin, cümlesinin çevirisi içindeki eşdeğer sözcüklere ve tümceciklere bir harita oluşturmasını sağlar. Hizalama, sistemin birbirleriyle çevirileri olan cümleler üzerinde hareket etmeye çalışır.
 
 ## <a name="pre-aligned-documents"></a>Önceden hizalanmış belgeler
 

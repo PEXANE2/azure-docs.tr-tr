@@ -7,14 +7,16 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d9c8df4fe296bcd40f26847233fcd49bcab573c0
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750994"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709461"
 ---
-# <a name="introduction-to-azure-defender"></a>Azure Defender 'a giriş
+# <a name="introduction-to-azure-defender"></a>Azure Defender'a giriş
+
+[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Güvenlik Merkezi 'nin özellikleri, bulut güvenliğinin iki geniş kapsamlı boyutunu kapsar:
 
@@ -39,7 +41,7 @@ Azure Defender 'ı Azure Güvenlik Merkezi 'nin **fiyatlandırma ve ayarlar** al
 - [Kubernetes için Azure Defender](defender-for-kubernetes-introduction.md)
 - [Kapsayıcı kayıt defterleri için Azure Defender](defender-for-container-registries-introduction.md)
 - [Key Vault için Azure Defender](defender-for-key-vault-introduction.md)
-- [Kaynak Yöneticisi için Azure Defender](defender-for-resource-manager-introduction.md)
+- [Resource Manager için Azure Defender](defender-for-resource-manager-introduction.md)
 - [DNS için Azure Defender](defender-for-dns-introduction.md)
 
 Bu planların her biri, güvenlik merkezi belgelerinde ayrı olarak açıklanmıştır.

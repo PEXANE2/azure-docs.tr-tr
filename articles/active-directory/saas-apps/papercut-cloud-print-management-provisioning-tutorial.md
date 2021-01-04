@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 860b880faae9c5fe37a2c7eab2ef3a068ed4da3e
-ms.sourcegitcommit: 236014c3274b31f03e5fcee5de510f9cacdc27a0
+ms.openlocfilehash: 127a9568d4f129763bee26210efedeaee8fe4aa1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96299099"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709392"
 ---
 # <a name="tutorial-configure-papercut-cloud-print-management-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için Paperkes bulut yazdırma yönetimini yapılandırın
 
@@ -37,9 +37,9 @@ Bu öğretici, otomatik Kullanıcı sağlamayı yapılandırmak için hem Paperk
 
 Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
 
-* [Bir Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* [Azure AD kiracısı](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant). 
 * Azure AD 'de sağlamayı yapılandırma [izni](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) olan bir kullanıcı hesabı (örneğin, uygulama Yöneticisi, bulut uygulaması Yöneticisi, uygulama sahibi veya genel yönetici). 
-* Paperbir Kullanıcı hesabı, yönetici izinleriyle bulut yazdırma yönetimini keser
+* Bir PaperCut bulut yazdırma yönetimi yönetici hesabı.
 
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Adım 1. Hazırlama dağıtımınızı planlama
@@ -52,7 +52,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 1. [Pocket Yönetici Konsolu](https://pocket.papercut.com/) 'nda oturum açın veya [Hive Yönetici Konsolu 'nu kesin](https://hive.papercut.com/).
 
-2. Eklentiler tüm eklentiler ' **e gidin**  >  **All Add-ons** ve **Microsoft Azure AD Kullanıcı eşitleme eklentisi**' ni bulun.
+2. Eklentiler tüm eklentiler ' **e gidin**  >  ve **Microsoft Azure AD Kullanıcı eşitleme eklentisi**' ni bulun.
 
 3. **Daha fazla bilgi** düğmesine tıklayın ve yüklemek için **Ekle** 'ye tıklayın.
 
@@ -76,7 +76,7 @@ Azure AD hazırlama hizmeti, uygulama atamasına veya kullanıcının/grubun öz
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-papercut-cloud-print-management"></a>5. Adım. Bulut yazdırma yönetimini kesmek için otomatik Kullanıcı sağlamayı yapılandırın
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan bir adım adım yol gösterir.
+Bu bölüm, Azure AD sağlama hizmeti 'ni, Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan Paperkes bulut yazdırma yönetimi 'nde kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımlarında size rehberlik eder.
 
 ### <a name="to-configure-automatic-user-provisioning-for-papercut-cloud-print-management-in-azure-ad"></a>Azure AD 'de Paperkes bulut yazdırma yönetimi için otomatik Kullanıcı sağlamayı yapılandırmak için:
 
@@ -106,7 +106,8 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 7. **Kaydet**’i seçin.
 
-8. **Eşlemeler** bölümünde, **bulut yazdırma yönetimi 'Ni kesmek Azure Active Directory Kullanıcıları eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları sağla**' yı seçin.
+   ![AAD eşleme](media/papercut-cloud-print-management-provisioning-tutorial/mapping.png)
 
 9. **Öznitelik eşleme** bölümünde, Azure AD 'den Paper, bulut yazdırma yönetimi ile eşitlenen Kullanıcı özniteliklerini inceleyin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için Paperkes bulut yazdırma yönetimi 'ndeki Kullanıcı hesaplarını eşleştirmek için kullanılır. [Eşleşen hedef özniteliğini](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)değiştirmeyi seçerseniz, paperkes 'in, bu özniteliğe göre kullanıcıların filtrelemesini desteklediğinden emin olmanız gerekir. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
 

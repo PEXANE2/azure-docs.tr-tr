@@ -5,21 +5,21 @@ description: Azure Blob depolamada istek yapan istemciler, istek temelinde bir �
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 09/17/2020
+ms.date: 12/14/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: abdc83019205fc39e1e85a53da7e49f8a7d4f11c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcc5c02c4a37e205622470260d3c620ad76d07d8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91618735"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694708"
 ---
 # <a name="provide-an-encryption-key-on-a-request-to-blob-storage"></a>BLOB depolama için istekte bir şifreleme anahtarı sağlayın
 
-Azure Blob depolamada istek yapan istemciler, istek temelinde bir şifreleme anahtarı sağlama seçeneğine sahiptir. İstek üzerine şifreleme anahtarı dahil olmak üzere, BLOB depolama işlemleri için şifreleme ayarları üzerinde ayrıntılı denetim sağlar. Müşteri tarafından sunulan anahtarlar, Azure Key Vault veya başka bir anahtar deposunda depolanabilir.
+Azure Blob depolama 'ya karşı istek yapan istemciler, istek başına temelinde bir AES-256 şifreleme anahtarı sağlama seçeneğine sahiptir. İstek üzerine şifreleme anahtarı dahil olmak üzere, BLOB depolama işlemleri için şifreleme ayarları üzerinde ayrıntılı denetim sağlar. Müşteri tarafından sunulan anahtarlar, Azure Key Vault veya başka bir anahtar deposunda depolanabilir.
 
 [!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
@@ -45,7 +45,7 @@ Her blob anlık görüntüsünün kendi şifreleme anahtarı olabilir.
 |---------------|-------------|
 |`x-ms-encryption-key` |Hem yazma hem de okuma istekleri için gereklidir. Base64 kodlamalı AES-256 şifreleme anahtarı değeri. |
 |`x-ms-encryption-key-sha256`| Hem yazma hem de okuma istekleri için gereklidir. Şifreleme anahtarının Base64 ile kodlanmış SHA256. |
-|`x-ms-encryption-algorithm` | Yazma istekleri için gereklidir, okuma istekleri için isteğe bağlıdır. Verilen anahtar kullanılarak verileri şifrelerken kullanılacak algoritmayı belirtir. AES256 olmalıdır. |
+|`x-ms-encryption-algorithm` | Yazma istekleri için gereklidir, okuma istekleri için isteğe bağlıdır. Verilen anahtar kullanılarak verileri şifrelerken kullanılacak algoritmayı belirtir.  Bu üstbilginin değeri olmalıdır `AES256` . |
 
 İstekte şifreleme anahtarlarının belirtilmesi isteğe bağlıdır. Ancak, bir yazma işlemi için yukarıda listelenen üst bilgilerden birini belirtirseniz, bunların tümünü belirtmeniz gerekir.
 

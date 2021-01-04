@@ -7,14 +7,14 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/20/2020
+ms.date: 12/18/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 544509a8c90c9273b748591509b1fa86510d71c3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbda4268ca00d1c12f851517e2b35add7fba7f9b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013828"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694301"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Azure Bilişsel Arama metin işleme için çözümleyiciler
 
@@ -315,55 +315,61 @@ Farklı dillerdeki dizeleri içeren alanlar dil Çözümleyicisi kullanabilir, d
 
 Olduğu gibi kullanılan ve yapılandırma olmadan kullanılan çözümleyici, bir alan tanımında belirtilmiştir. Dizinin **[çözümleyiciler]** bölümünde giriş oluşturmak için bir gereksinim yoktur. 
 
-Bu örnek, Açıklama alanlarına Microsoft Ingilizce ve Fransızca Çözümleyicileri atar. Bu bir kod parçacığı, otel dizininin daha büyük bir tanımından alınmış ve [Dotnethowto](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) örneğinin Hotels.cs dosyasındaki otel sınıfını kullanarak oluşturuluyor.
+Dil Çözümleyicileri olduğu gibi kullanılır. Bunları kullanmak için, Azure Bilişsel Arama 'nda desteklenen bir metin Çözümleyicisi sağlayan [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) türünü belirterek [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)çağırın.
 
-Azure Bilişsel Arama 'de desteklenen bir metin Çözümleyicisi sağlayan [LexicalAnalyzerName](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername) türünü belirterek [LexicalAnalyzer](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer)çağırın.
+Özel çözümleyiciler, alan tanımında benzer şekilde belirtilmiştir, ancak bunun çalışması için, sonraki bölümde açıklandığı gibi, Dizin tanımında çözümleyici belirtmeniz gerekir.
 
 ```csharp
     public partial class Hotel
     {
        . . . 
-
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
-        [JsonProperty("description")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.EnLucene)]
         public string Description { get; set; }
 
-        [IsSearchable]
-        [Analyzer(AnalyzerName.AsString.FrLucene)]
-        [JsonProperty("description_fr")]
+        [SearchableField(AnalyzerName = LexicalAnalyzerName.Values.FrLucene)]
+        [JsonPropertyName("Description_fr")]
         public string DescriptionFr { get; set; }
 
+        [SearchableField(AnalyzerName = "url-analyze")]
+        public string Url { get; set; }
       . . .
     }
 ```
+
 <a name="Define-a-custom-analyzer"></a>
 
 ### <a name="define-a-custom-analyzer"></a>Özel çözümleyici tanımlama
 
-Özelleştirme veya yapılandırma gerektiğinde, bir dizine çözümleyici yapısı eklemeniz gerekir. Bunu tanımladıktan sonra, bir önceki örnekte gösterildiği gibi alan tanımını ekleyebilirsiniz.
+Özelleştirme veya yapılandırma gerektiğinde, bir dizine çözümleyici yapısı ekleyin. Bunu tanımladıktan sonra, bir önceki örnekte gösterildiği gibi alan tanımını ekleyebilirsiniz.
 
-Bir [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) nesnesi oluşturun. Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
+Bir [CustomAnalyzer](/dotnet/api/azure.search.documents.indexes.models.customanalyzer) nesnesi oluşturun. Özel çözümleyici, bilinen bir Simgeleştirici, sıfır veya daha fazla belirteç filtresinin ve sıfır ya da daha fazla karakter filtresi adının Kullanıcı tanımlı birleşimidir:
+
++ [CustomAnalyzer. Tokenizer](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer)
++ [CustomAnalyzer. TokenFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenfilters)
++ [CustomAnalyzer. CharFilters](/dotnet/api/microsoft.azure.search.models.customanalyzer.charfilters)
+
+Aşağıdaki örnek, [uax_url_email belirteç ayırıcı](/dotnet/api/microsoft.azure.search.models.customanalyzer.tokenizer) ve [küçük harfli belirteç filtresi](/dotnet/api/microsoft.azure.search.models.tokenfiltername.lowercase)kullanan "URL-çözümle" adlı özel bir çözümleyici oluşturur.
 
 ```csharp
+private static void CreateIndex(string indexName, SearchIndexClient adminClient)
 {
-   var definition = new Index()
+   FieldBuilder fieldBuilder = new FieldBuilder();
+   var searchFields = fieldBuilder.Build(typeof(Hotel));
+
+   var analyzer = new CustomAnalyzer("url-analyze", "uax_url_email")
    {
-         Name = "hotels",
-         Fields = FieldBuilder.BuildForType<Hotel>(),
-         Analyzers = new[]
-            {
-               new CustomAnalyzer()
-               {
-                     Name = "url-analyze",
-                     Tokenizer = TokenizerName.UaxUrlEmail,
-                     TokenFilters = new[] { TokenFilterName.Lowercase }
-               }
-            },
+         TokenFilters = { TokenFilterName.Lowercase }
    };
 
-   serviceClient.Indexes.Create(definition);
+   var definition = new SearchIndex(indexName, searchFields);
+
+   definition.Analyzers.Add(analyzer);
+
+   adminClient.CreateOrUpdateIndex(definition);
+}
 ```
+
+Daha fazla örnek için bkz. [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Microsoft.Azure.Search/tests/Tests/CustomAnalyzerTests.cs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

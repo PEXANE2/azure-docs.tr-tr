@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: e1b29d901630156471bbb9cb8b939bb4bb29c836
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96842722"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724242"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Dosyaları dağıtımı planlama
 [Azure dosyaları](storage-files-introduction.md) , iki ana şekilde dağıtılabilir: doğrudan sunucusuz Azure dosya paylaşımlarını bağlayarak veya Azure dosya eşitleme kullanarak şirket içi Azure dosya paylaşımlarını önbelleğe alarak. Seçtiğiniz dağıtım seçeneği, dağıtımınız için planlarken göz önünde bulundurmanız gereken şeyleri değiştirir. 
@@ -114,56 +114,6 @@ Daha fazla bilgi için bkz. [Azure depolama Için Gelişmiş tehdit koruması](.
 
 ## <a name="storage-tiers"></a>Depolama katmanları
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-### <a name="understanding-provisioning-for-premium-file-shares"></a>Premium dosya paylaşımları için sağlamayı anlama
-Premium dosya paylaşımları, sabit bir GiB/ıOPS/verimlilik oranına göre sağlanır. Tüm paylaşım boyutları en düşük taban/aktarım hızı olarak sunulur ve patlama için izin verilir. Sağlanan her GiB için, paylaşıma en düşük ıOPS/aktarım hızı ve bir ıOPS ve 0,1 MIB/sn aktarım hızı, her bir paylaşıma göre en fazla sınırlara çıkarılır. İzin verilen minimum sağlama, minimum ıOPS/aktarım hızı ile 100 GiB 'dir. 
-
-Tüm Premium paylaşımlar, en iyi çaba temelinde ücretsiz olarak sunulur. Tüm paylaşım boyutları 4.000 ıOPS 'ye kadar veya sağlanan GiB başına en fazla üç ıOPS 'yi, yani paylaşıma daha büyük bir patlama ıOPS sağlar. Tüm paylaşımlar, en yüksek bir patlama sınırında 60 dakikalık en uzun süre boyunca patlaşmasını destekler. Yeni paylaşımlar, sağlanan kapasiteye göre tam patlama kredisi ile başlar.
-
-Paylaşımlar 1 GiB artışlarla sağlanmalıdır. Minimum boyut 100 GiB, sonraki boyut 101 GiB 'dir ve bu şekilde devam eder.
-
-> [!TIP]
-> Taban çizgisi ıOPS = 400 + 1 * sağlanan GiB. (En fazla 100.000 ıOPS).
->
-> Patlama sınırı = MAX (4.000, 3 * temel ıOPS). (sınır en fazla 100.000 ıOPS).
->
-> çıkış oranı = 60 MIB/s + 0,06 * sağlanan GiB
->
-> Giriş oranı = 40 MIB/s + 0,04 * sağlanan GiB
-
-Sağlanan paylaşma boyutu, paylaşma kotası ile belirtilir. Paylaşılan kota herhangi bir zamanda artırılabilir, ancak son artışdan bu yana yalnızca 24 saat sonra azaltılabilir. Kota artışı olmadan 24 saat bekledikten sonra, yeniden artırana kadar, paylaşma kotasını istediğiniz kadar azaltabilirsiniz. IOPS/verimlilik ölçeği değişiklikleri, boyut değişikliğinden sonra birkaç dakika içinde geçerli olacaktır.
-
-Kullandığınız paylaşımın boyutunu, kullanılan GiB 'nizin altında azaltmak mümkündür. Bunu yaparsanız, verileri kaybetmezsiniz, ancak kullanılan boyutun performansını (temel ıOPS, aktarım hızı ve veri bloğu ıOPS) elde edersiniz ve bu boyut kullanılır.
-
-Aşağıdaki tabloda sağlanan paylaşma boyutları için bu formüle birkaç örnek gösterilmektedir:
-
-|Kapasite (GiB) | Temel ıOPS | Veri bloğu ıOPS | Çıkış (MIB/s) | Giriş (MIB/s) |
-|---------|---------|---------|---------|---------|
-|100         | 500     | 4.000 kadar     | 66   | 44   |
-|500         | 900     | 4.000 kadar  | 90   | 60   |
-|1.024       | 1.424   | 4.000 kadar   | 122   | 81   |
-|5.120       | 5.520   | 15.360 kadar  | 368   | 245   |
-|10.240      | 10.640  | 30.720 kadar  | 675   | 450   |
-|33.792      | 34.192  | 100.000 kadar | 2.088 | 1.392   |
-|51.200      | 51.600  | 100.000 kadar | 3.132 | 2.088   |
-|102.400     | 100.000 | 100.000 kadar | 6.204 | 4.136   |
-
-Etkin dosya paylaşımları performansının, diğer birçok etken arasında makine ağ sınırlarına, kullanılabilir ağ bant genişliğine, GÇ boyutlarına ve paralellik 'e tabi olduğunu unutmayın. Örneğin, 8 kıb okuma/yazma GÇ boyutlarına sahip iç teste bağlı olarak, SMB üzerinden çok kanallı etkin olmayan tek bir Windows sanal makinesi, SMB üzerinden Premium dosya paylaşımıyla bağlantılı *standart F16s_v2*, 20K Okuma IOPS ve 15K Yazma IOPS elde edebilirler. 512 MIB okuma/yazma GÇ boyutları ile aynı VM, 1,1 GiB/sn çıkış ve 370 MIB/s giriş aktarım hızını elde edebilirler. Aynı istemci, \~ Premium paylaşımlardaki çok KANALLı SMB etkinse 3x performansını elde edebilir. En yüksek performans ölçeğini elde etmek için, çok [KANALLı SMB 'yi etkinleştirin](storage-files-enable-smb-multichannel.md) ve yükü birden fazla VM arasında yayılır. Bazı yaygın performans sorunları ve geçici çözümler için lütfen çok [kanallı SMB performansı](storage-files-smb-multichannel-performance.md) ve [sorun giderme kılavuzuna](storage-troubleshooting-files-performance.md) bakın.
-
-#### <a name="bursting"></a>Patlaması
-İş yükünüz en yüksek talebi karşılamak için ek performansa ihtiyaç duyuyorsa, paylaşımınız, isteğe uyması için ihtiyaç duyması gereken paylaşma performansını sunmak üzere, bir yük çizgisi ıOPS sınırını paylaşmak için patlama kredilerini kullanabilir. Premium dosya paylaşımları, ıOPS 'yi 4.000 ' e kadar veya üç etmene kadar (hangisi daha yüksek bir değere) alabilir. Burdıya otomatik ve bir kredi sistemine göre çalışır. Patlama en iyi çaba temelinde çalışır ve veri bloğu sınırı bir garanti değildir; dosya paylaşımları 60 dakikalık en uzun süre sınırına kadar bir süre *kadar* sürebilir.
-
-Krediler, dosya paylaşımınız için trafik temel ıOPS 'nin altında olduğunda bir patlama demetini biriktir. Örneğin, 100 GiB paylaşımında 500 temel ıOPS vardır. Paylaşımdaki gerçek trafik belirli bir 1 saniyelik Aralık için 100 ıOPS ise 400, kullanılmayan ıOPS, bir patlama demetine alacaklandırılır. Benzer şekilde, boş bir 1 TiB paylaşma, 1.424 ıOPS 'de patlama kredisi. Bu krediler daha sonra, işlemler temel ıOPS 'yi aştığında kullanılacaktır.
-
-Bir paylaşımın temel ıOPS 'yi aşması ve bir patlama demeti içinde krediler varsa, izin verilen en yüksek patlama oranı üzerinden patlama olur. Bu paylaşımlar, kredilerin en fazla 60 dakikalık süreye kadar sürebileceği ancak bu, tahakkuk eden patlama kredilerinin sayısına göre, yük devretmeye devam edebilir. Taban çizgisi ıOPS 'nin ötesindeki her GÇ bir kredi kullanır ve tüm krediler tüketildikten sonra, paylaşımın taban çizgisi ıOPS 'ye dönüşmesi gerekir.
-
-Paylaşılan kredilerin üç durumu vardır:
-
-- Dosya paylaşımının taban çizgisi ıOPS 'den az kullanıldığı durumlarda tahakkuk edin.
-- Dosya paylaşımının taban çizgisi ıOPS 'den fazla ve patlama modunda ne zaman kullanıldığı reddediliyor.
-- Sabitte, dosya paylaşımının tam olarak taban ıOPS kullanıldığı, hiçbir kredinin tahakkuk et, yoksa kullanıldığı.
-
-Yeni dosya paylaşımları, veri bloğu demetini içinde tam kredi sayısı ile başlar. Sunucu tarafından azaltma nedeniyle, paylaşılan ıOPS, temel ıOPS 'nin altında olursa patlama kredileri tahakkuk ettirilmeyecektir.
 
 ### <a name="enable-standard-file-shares-to-span-up-to-100-tib"></a>Standart dosya paylaşımlarının 100 TiB 'ye kadar yayılmasını sağlar
 [!INCLUDE [storage-files-tiers-enable-large-shares](../../../includes/storage-files-tiers-enable-large-shares.md)]

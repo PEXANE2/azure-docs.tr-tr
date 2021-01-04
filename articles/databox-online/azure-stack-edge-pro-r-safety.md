@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac3f2cc1c68ea552b2858d932217a28055fee0fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96468009"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709460"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R güvenlik yönergeleri
 
@@ -86,6 +86,7 @@ Azure Stack Edge Pro R Edge cihazınızı ayarlarken ve çalıştırırken aşa�
   * Elektrik cihazları tarafından üretilen güçlü elektromanyetik alanlardan yalıtılmıştır.
   * Doğru şekilde topraklanmış olarak sunulur.
   * Güç kaynağı kablosunu, ürünün ana güç bağlantısı kesildiğinde sundukları için yeterli alanla birlikte sunulur.
+* Ürünle birlikte Ethernet kabloları sağlanmaz. Elektromanyetik paraziti azaltmak için, Cat 6 korumalı çift çifti (STP) kablolarının kullanılması önerilir.
 * Ekipman etrafında yeterli hava dolaşımını sağlayan bir iş alanında ekipman ayarlama; Cihaz çalışırken ön ve arka kapakların tamamen kaldırıldığından emin olun.
 * Ekipmanları, uçak açısından en azımların ücretsiz olarak, sıcaklığın yanı sıra ekipman genelinde sorunsuz bir şekilde dolaşıma izin verecek şekilde yükler.
 * Donatımları, sıvı ve fazla sayıda insandaki ortamların kaynaklarından koruyun.
@@ -115,6 +116,11 @@ Azure Stack Edge Pro R Edge cihazınızı ayarlarken ve çalıştırırken aşa�
   * Cihaz bırakılmış ve cihazın büyük küçük harfleri hasarlı.
   * Cihazın hizmet veya onarım ihtiyacı olduğunu şüpheli.
 * Birimi Taşımadan önce kalıcı olarak çıkarın veya herhangi bir şekilde hasar gördüğünü düşünün.
+* Yüksek sızıntı durumunu engellemek için, tek bir aktarma durumunda birden fazla kesintisiz güç kaynağı (UPS) olduğunda, her bir KGK 'nın bağımsız bir dal devresine bağlanması önerilir. Bununla birlikte, her bir UPS 'nin güvenlik tarafında PDU 'nun tek bir besleyiciyi temel alan bir güç dağıtım birimi (PDU) veya başka bir cihazın kullanıldığı durumlarda, her bir UPS 'in içindeki grounding terminali de ek bir bina kasasının kullanılması gerekir.
+
+  > [!NOTE]
+  > Zaten ek bir ek yönetmen olan bir PDU kullanılıyorsa, KGK üzerinde ek grounding terminali kullanılması gerekli değildir.
+
 * Aşağıdaki güç belirtimlerini karşılamak için elektrik aşırı yüklemesi koruması ile uygun bir güç kaynağı sağlayın:
 
   * Voltaj: 100-240 volt AC
@@ -157,7 +163,7 @@ Cihaz, aşağıdaki ortamlarda çalışacak şekilde tasarlanmıştır:
 |:--- |:--- |
 |Sıcaklık belirtimleri | <ul><li>Depolama sıcaklığı: – 33 &deg; c – 63 &deg; c (– 28 &deg; f-145 &deg; F) </li><li>Sürekli işlem: 5 &deg; C – 43 &deg; C (41 &deg; f – 110 &deg; F)</li><li>Maksimum Sıcaklık gradyanı (işletim ve depolama): 20 &deg; C/h (68 &deg; F/h)</li></ul> |
 |Bağıl nem belirtimleri | <ul><li>Depolama: 33 C (91 F) ile 95% RH ile %5 arasındaki &deg; &deg; en fazla Dew noktası. Atmosphere her zaman yoğunlaşmayan olmalıdır.</li><li>Çalışma: %5 %85, 29 &deg; C (84,2 &deg; F) ile ilgili arasındaki nem</li></ul> |
-| En fazla yükseklik belirtimleri | <ul><li>İşletim (UPS olmadan): 15.000 ft (4.572 ölçü)</li><li>İşletim (UPS Ile): 6,561 ft (2.000 ölçü)</li><li>Depolama alanı: 40.000 ft (12.192 ölçü)</li></ul> |
+| En fazla yükseklik belirtimleri | <ul><li>İşletim (UPS olmadan): 15.000 ft (4.572 ölçü)</li><li>İşletim (UPS Ile): 10.000 ft (3.048 ölçü)</li><li>Depolama alanı: 40.000 ft (12.192 ölçü)</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |

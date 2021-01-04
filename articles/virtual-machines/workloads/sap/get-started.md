@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/12/2020
+ms.date: 12/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75ea3eec50516c9ba08504dd149d4bd08f8abbb6
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97371944"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722904"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -48,7 +48,8 @@ Belirli sorularınız varsa, başlangıç sayfasının bu bölümündeki belirli
 - Windows ve Paceyapıcısı 'nin desteklenme yanı sıra üçüncü taraf HA çerçevesi çalışıyor mu? [Sap destek notunun](https://launchpad.support.sap.com/#/notes/1928533) alt kısmına bakın #1928533
 - Senaryoum için en iyi Azure depolama alanı nedir? [SAP iş yükü Için Azure depolama türlerini](./planning-guide-storage.md) okuyun
 - , SAP tarafından desteklenen Oracle Enterprise Linux 'taki Red Hat çekirdeği midir? SAP [sap destek dekontunu okuyun #1565179](https://launchpad.support.sap.com/#/notes/1565179)
-- Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) 'lar sanal makine aileleri neden SAP HANA için sertifikalı değil? Azure das/EAS VM aileleri, AMD işlemci tabanlı donanımı temel alır. SAP HANA, sanallaştırılmış senaryolarda bile olmayan AMD işlemcileri desteklemez.
+- Azure [da (s) v4](https://docs.microsoft.com/azure/virtual-machines/dav4-dasv4-series) / [EA](https://docs.microsoft.com/azure/virtual-machines/eav4-easv4-series) 'lar sanal makine aileleri neden SAP HANA için sertifikalı değil? Azure das/EAS VM aileleri, AMD işlemci tabanlı donanımı temel alır. SAP HANA, sanallaştırılmış senaryolarda bile olmayan AMD işlemcileri desteklemez
+- Şu iletiyi almaya devam ediyorum: ' RDTSCP yönergesi için CPU bayrakları veya constant_tsc ya da nonstop_tsc için CPU bayrakları ayarlı değil veya current_clocksource ve available_clocksource doğru şekilde SAP HANA yapılandırılmamış, ancak en son Linux kernels 'i çalıştırdığımı belirten bir olay. Yanıt için [sap destek notuna bakın #2791572](https://launchpad.support.sap.com/#/notes/2791572) 
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure’da SAP HANA (Büyük Örnekler)
@@ -82,6 +83,7 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 12/21/2020: [HLI Için kullanılabilir SKU](./hana-available-skus.md) 'Larda Hana büyük örnek SKU 'larına yeni sertifikalar ekleyin
 - 12/12/2020: SAP [, Azure dağıtımları için desteklenen SAP YAZıLıMıNı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) SAP 'ye göre Oracle Enterprise Linux desteğiyle ilgili ayrıntıları açıklığa kavuşturan SAP notuna yönelik işaretçi eklendi
 - 11/26/2020: [SAP iş yükü için](./planning-guide-storage.md) Azure [sanal makine depolama yapılandırmalarının](./hana-vm-operations-storage.md) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın
 - 11/05/2020: [Azure sanal makine depolama yapılandırmalarında SAP HANA](./hana-vm-operations-storage.md) desteklenen dosya sistemi türleri hakkında yeni SAP notuna yönelik bağlantıyı değiştirme 
@@ -179,9 +181,3 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 - 10 Ocak 2020: [Azure VM 'lerinde SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse-netapp-files.md) , SAP uygulamaları için Azure NetApp Files ve Azure sanal makinelerinde Azure NetApp Files NFSv4 birimleri bağlama hakkında yönergeler eklemek üzere SAP uygulamaları için [Azure NetApp Files ile yüksek kullanılabilirlik](./high-availability-guide-rhel-netapp-files.md) sağlar.
 - 23 Aralık 2019: [SLES Multi-SID kılavuzundaki Azure VM 'LERINDE SAP NetWeaver Için yüksek kullanılabilirlik](./high-availability-guide-suse-multi-sid.md) yayını
 - 18 Aralık 2019: [RHEL üzerinde Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle SAP HANA genişleme](./sap-hana-scale-out-standby-netapp-files-rhel.md) sürümü
-- 21 Kasım 2019: NFS KIMLIĞI eşleme yapılandırmasını basitleştirmek ve yönlendirmeyi kolaylaştırmak için önerilen birincil ağ arabirimini değiştirmek üzere [SUSE Linux Enterprise Server Azure NetApp Files Ile Azure VM 'lerinde bekleme düğümüyle SAP HANA ölçek](./sap-hana-scale-out-standby-netapp-files-suse.md) genişletme içindeki değişiklikler.
-- 15 Kasım 2019: SAP [NetWeaver Için yüksek kullanılabilirliğe sahip SUSE Linux Enterprise Server](high-availability-guide-suse-netapp-files.md) , SAP uygulamaları için Azure NetApp Files ve SAP [NetWeaver için yüksek kullanılabilirlik ile Azure NetApp Files Red Hat Enterprise Linux SAP uygulamaları](high-availability-guide-rhel-netapp-files.md) için, yalnızca NFSv3 sürümü desteklenen bir bildirim ve kaldırma ifadesini açıklığa kavuşturacak.
-- 12 Kasım 2019: [Windows 'ta Azure NetApp Files (SMB) Ile SAP NetWeaver Için yüksek kullanılabilirlik](high-availability-guide-windows-netapp-files-smb.md) yayını
-- 8 Kasım 2019: [SUSE Linux Enterprise Server Azure VM 'Lerinde yüksek kullanılabilirlik SAP HANA](sap-hana-high-availability.md)değişiklikler, [Azure sanal makinelerinde (VM) SAP HANA sistem çoğaltması ayarlama](sap-hana-high-availability-rhel.md), Azure [sanal makineler for SAP NETWEAVER için yüksek kullanılabilirlik, SAP uygulamaları için SUSE Linux Enterprise Server](high-availability-guide-suse.md)Azure [sanal makineler SUSE Linux Enterprise Server on Azure NetApp Files ile SAP NetWeaver için yüksek kullanılabilirlik](high-availability-guide-suse-netapp-files.md), [Azure sanal makineler for SAP NetWeaver for Red Hat ENTERPRISE LINUX](high-availability-guide-rhel.md), Azure [sanal makineleri Azure NetApp Files Ile Red Hat Enterprise Linux üzerinde SAP NetWeaver için](high-availability-guide-rhel-netapp-files.md)yüksek [kullanılabilirlik, Azure](high-availability-guide-suse-nfs.md)sanal makineler SUSE Linux Enterprise Server [için Red Hat Enterprise Linux](high-availability-guide-rhel-glusterfs.md)  
-- 8 Kasım 2019: şifreleme önerisini netleştirmek için [SAP iş yükü planlama ve dağıtım denetim listesi](sap-deployment-checklist.md) değişiklikleri  
-- 4 Kasım 2019: [Azure 'daki SUSE Linux Enterprise Server Paceyapıcısı ayarlama](high-availability-guide-suse-pacemaker.md) içindeki değişiklikler, tek noktaya yayın yapılandırmasıyla doğrudan küme oluşturmak için

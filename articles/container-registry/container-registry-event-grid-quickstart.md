@@ -4,12 +4,12 @@ description: Bu hızlı başlangıçta, kapsayıcı kayıt defteriniz için Even
 ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 6058fceb873e2b26da2d30dadba456e2a625f3f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 2d13dd0ec5e50086e674b215d93917d6173d5af9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074225"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694403"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Hızlı başlangıç: özel kapsayıcı kayıt defterinden olayları Event Grid gönder
 
@@ -78,7 +78,7 @@ Bu bölümde, önceden oluşturulmuş örnek bir Web uygulamasını Azure App Se
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
 
-az group deployment create \
+az deployment group create \
     --resource-group $RESOURCE_GROUP_NAME \
     --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/master/azuredeploy.json" \
     --parameters siteName=$SITE_NAME hostingPlanName=$SITE_NAME-plan
@@ -206,7 +206,7 @@ Tebrikler! `ImagePushed`Ve `ImageDeleted` olaylarını görürseniz, kayıt deft
 
 Bu hızlı başlangıçta oluşturduğunuz kaynaklarla işiniz bittiğinde, bunları aşağıdaki Azure CLı komutuyla silebilirsiniz. Bir kaynak grubunu sildiğinizde, içerdiği tüm kaynaklar kalıcı olarak silinir.
 
-**Uyarı** : Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
+**Uyarı**: Bu işlem geri alınamaz. Komutu çalıştırmadan önce gruptaki herhangi bir kaynağa artık ihtiyacınız olmadığından emin olun.
 
 ```azurecli-interactive
 az group delete --name $RESOURCE_GROUP_NAME

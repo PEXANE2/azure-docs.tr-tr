@@ -1,107 +1,89 @@
 ---
 title: Kaynaklar için dağıtım sırasını ayarla
-description: Kaynakların doğru sırada dağıtılmasını sağlamak için dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar.
+description: Dağıtım sırasında bir kaynağı başka bir kaynağa bağımlı olarak nasıl ayarlayabileceğinizi açıklar. Bağımlılıklar kaynakların doğru sırada dağıtılmasını güvence altına alınır.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 933764f1930bd6c9e21d4ccffbde1bb93bbc9613
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672823"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722020"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>ARM şablonlarında kaynak dağıtma sırasını tanımlayın
 
-Bir kaynağı dağıtırken, dağıtılmadan önce diğer kaynakların mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek tanımlarsınız. Dependency **DSON** öğesiyle bir bağımlılık tanımlar veya **başvuru** işlevini kullanarak.
+Kaynakları dağıttığınızda, bazı kaynakların diğer kaynaklardan önce mevcut olduğundan emin olmanız gerekebilir. Örneğin, bir veritabanını dağıtmaya başlamadan önce mantıksal bir SQL Server gerekir. Bu ilişkiyi, bir kaynağı diğer kaynağa bağımlı olarak işaretleyerek kurarsınız. Açık bir bağımlılık tanımlamak için **Bağımlıdson** öğesini kullanın. Örtük bir bağımlılık tanımlamak için **başvuru** veya **liste** işlevlerini kullanın.
 
 Resource Manager, kaynaklar arasındaki bağımlılıkları değerlendirir ve bunları bağımlılık sırasına göre dağıtır. Resource Manager, birbirine bağımlı olmayan kaynakları paralel olarak dağıtır. Yalnızca aynı şablonda dağıtılan kaynaklar için bağımlılıklar tanımlamanız gerekir.
 
 ## <a name="dependson"></a>dependsOn
 
-Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı olan dizelerin bir JSON dizisidir. Dizi, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
+Şablonunuzda, Bağımlıdson öğesi bir kaynağı bir veya daha fazla kaynağa bağımlı olarak tanımlamanızı sağlar. Değeri, her biri bir kaynak adı veya KIMLIĞI olan dizelerin JSON dizisidir. Dizi, [koşullu olarak dağıtılan](conditional-resource-deployment.md)kaynakları içerebilir. Koşullu bir kaynak dağıtıldığında Azure Resource Manager, gerekli bağımlılıklardan otomatik olarak kaldırır.
 
-Aşağıdaki örnek, bir yük dengeleyiciye, sanal ağa ve birden çok depolama hesabı oluşturan bir döngüye bağlı olan bir sanal makine ölçek kümesini gösterir. Bu diğer kaynaklar aşağıdaki örnekte gösterilmez, ancak şablonda başka bir yerde bulunması gerekir.
+Aşağıdaki örnek, bir sanal ağa, ağ güvenlik grubuna ve genel IP adresine bağlı olan bir ağ arabirimini gösterir. Tam şablon için bkz. [bir Linux sanal makinesi için hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json).
 
 ```json
 {
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "apiVersion": "2016-03-30",
-  "name": "[variables('namingInfix')]",
-  "location": "[variables('location')]",
-  "tags": {
-    "displayName": "VMScaleSet"
-  },
-  "dependsOn": [
-    "[variables('loadBalancerName')]",
-    "[variables('virtualNetworkName')]",
-    "storageLoop",
-  ],
-  ...
+    "type": "Microsoft.Network/networkInterfaces",
+    "apiVersion": "2020-06-01",
+    "name": "[variables('networkInterfaceName')]",
+    "location": "[parameters('location')]",
+    "dependsOn": [
+      "[resourceId('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
+      "[resourceId('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
+      "[resourceId('Microsoft.Network/publicIpAddresses/', variables('publicIpAddressName'))]"
+    ],
+    ...
 }
 ```
 
-Yukarıdaki örnekte, **Storageloop** adlı bir kopya döngüsüyle oluşturulan kaynaklara bir bağımlılık dahildir. Bir örnek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-
-Bağımlılıkları tanımlarken, belirsizlik olmaması için kaynak sağlayıcısı ad alanını ve kaynak türünü dahil edebilirsiniz. Örneğin, diğer kaynaklarla aynı ada sahip olabilecek bir yük dengeleyiciyi ve sanal ağı netleştirmek için aşağıdaki biçimi kullanın:
-
-```json
-"dependsOn": [
-  "[resourceId('Microsoft.Network/loadBalancers', variables('loadBalancerName'))]",
-  "[resourceId('Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]"
-]
-```
-
-Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Bağımlılıkların kullanıldığı paralel iki kaynak olarak Kaynak Yöneticisi dağıtmadığından, bağımlılar kullanarak dağıtım süresini etkilersiniz.
+Kaynaklarınız arasındaki ilişkileri eşlemek için Bağımlılıson ' u kullanmaya da ihtiyacınız olsa da, bunu neden yaptığınızı anlamak önemlidir. Örneğin, kaynakların nasıl birbirine bağlı olduğunu belgelemek için, Bağımlıdson doğru yaklaşım değildir. Dağıtımdan sonra Bağımlıdson öğesinde tanımlanan kaynakları sorgulayamaz. Gereksiz bağımlılıkların ayarlanması dağıtım süresini yavaşlatır çünkü Kaynak Yöneticisi bu kaynakları paralel olarak dağıtabuyor.
 
 ## <a name="child-resources"></a>Alt kaynaklar
 
-Resources özelliği, tanımlanmakta olan kaynakla ilgili alt kaynakları belirtmenize olanak tanır. Alt kaynaklar yalnızca beş düzey derinlikli tanımlanmış olabilir. Bir alt kaynak ve üst kaynak arasında örtük bir dağıtım bağımlılığının oluşturulmadığını göz önünde bulundurulmamak önemlidir. Alt kaynağın ana kaynaktan sonra dağıtılması gerekiyorsa, bu bağımlılığı Bağımlıdson özelliği ile açıkça sağlamalısınız.
-
-Her üst kaynak, alt kaynaklar olarak yalnızca belirli kaynak türlerini kabul eder. Kabul edilen kaynak türleri, üst kaynağın [şablon şemasında](https://github.com/Azure/azure-resource-manager-schemas) belirtilir. Alt kaynak türünün adı, **Microsoft. Web**/ **Sites/config** ve **Microsoft. Web/Sites/Extensions** gibi üst kaynak türünün adını içerir.
+Bir [alt kaynak](child-resource-name-type.md) ve üst kaynak arasında örtük bir dağıtım bağımlılığı otomatik olarak oluşturulmaz. Alt kaynağı üst kaynaktan sonra dağıtmanız gerekiyorsa, Bağımlıdson özelliğini ayarlayın.
 
 Aşağıdaki örnekte, bir mantıksal SQL Server ve veritabanı gösterilmektedir. Veritabanı sunucusunun bir alt öğesi olsa da, veritabanı ve sunucu arasında açık bir bağımlılık tanımlandığına dikkat edin.
 
 ```json
 "resources": [
   {
-    "name": "[variables('sqlserverName')]",
-    "apiVersion": "2014-04-01-preview",
     "type": "Microsoft.Sql/servers",
-    "location": "[resourceGroup().location]",
-    "tags": {
-      "displayName": "SqlServer"
-    },
+    "apiVersion": "2020-02-02-preview",
+    "name": "[parameters('serverName')]",
+    "location": "[parameters('location')]",
     "properties": {
       "administratorLogin": "[parameters('administratorLogin')]",
       "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
     },
     "resources": [
       {
-        "name": "[parameters('databaseName')]",
-        "apiVersion": "2014-04-01-preview",
         "type": "databases",
-        "location": "[resourceGroup().location]",
+        "apiVersion": "2020-08-01-preview",
+        "name": "[parameters('sqlDBName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+          },
         "dependsOn": [
-          "[variables('sqlserverName')]"
-        ],
-        "tags": {
-          "displayName": "Database"
-        },
-        "properties": {
-          "edition": "[parameters('edition')]",
-          "collation": "[parameters('collation')]",
-          "maxSizeBytes": "[parameters('maxSizeBytes')]",
-          "requestedServiceObjectiveName": "[parameters('requestedServiceObjectiveName')]"
-        }
+          "[resourceId('Microsoft.Sql/servers', concat(parameters('serverName')))]"
+        ]
       }
     ]
   }
 ]
 ```
 
+Tam şablon için bkz. [Azure SQL veritabanı için hızlı başlangıç şablonu](https://github.com/Azure/azure-quickstart-templates/blob/master/101-sql-database/azuredeploy.json).
+
 ## <a name="reference-and-list-functions"></a>Başvuru ve liste işlevleri
 
-[Başvuru işlevi](template-functions-resource.md#reference) , bir ifadenin DEĞERINI diğer JSON adından ve değer çiftlerinden veya çalışma zamanı kaynaklarından türemesini sağlar. [Liste * işlevleri](template-functions-resource.md#list) bir kaynak için bir liste işleminden değerler döndürür.  Başvuru ve liste ifadeleri, başvurulan kaynak aynı şablonda dağıtıldığında ve adı (kaynak KIMLIĞI değil) tarafından başvurulduğu zaman, bir kaynağın başka bir kaynağa bağlı olduğunu dolaylı olarak bildirir. Kaynak KIMLIĞINI başvuru veya liste işlevlerine geçirirseniz, örtük bir başvuru oluşturulmaz.
+[Başvuru işlevi](template-functions-resource.md#reference) , bir ifadenin DEĞERINI diğer JSON adından ve değer çiftlerinden veya çalışma zamanı kaynaklarından türemesini sağlar. [Liste * işlevleri](template-functions-resource.md#list) bir kaynak için bir liste işleminden değerler döndürür.
+
+Başvuru ve liste ifadeleri, bir kaynağın diğerine bağlı olduğunu dolaylı olarak bildirir. Mümkün olduğunda, gereksiz bir bağımlılık eklemekten kaçınmak için örtük bir başvuru kullanın.
+
+Örtülü bağımlılığı zorlamak için kaynağa kaynak KIMLIĞI değil, ada göre başvurun. Kaynak KIMLIĞINI başvuru veya liste işlevlerine geçirirseniz, örtük bir başvuru oluşturulmaz.
 
 Başvuru işlevinin genel biçimi:
 
@@ -132,13 +114,95 @@ Aşağıdaki örnekte, bir CDN uç noktası açıkça CDN profiline bağımlıd�
     }
 ```
 
-Bağımlılıkları belirtmek için bu öğeyi ya da Bağımlıdson öğesini kullanabilirsiniz, ancak aynı bağımlı kaynak için her ikisini de kullanmanız gerekmez. Mümkün olduğunda, gereksiz bir bağımlılık eklemekten kaçınmak için örtük bir başvuru kullanın.
-
 Daha fazla bilgi için bkz. [başvuru işlevi](template-functions-resource.md#reference).
+
+## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
+
+Bir [kopyalama döngüsünde](copy-resources.md)kaynaklara bağlı kaynakları dağıtmak için iki seçeneğiniz vardır. Döngüde veya bütün döngüde tek tek kaynaklar için bir bağımlılık ayarlayabilirsiniz.
+
+> [!NOTE]
+> Çoğu senaryoda, kopyalama döngüsünde tek tek kaynaklardaki bağımlılığı ayarlamanız gerekir. Bir sonraki kaynağı oluşturmadan önce döngüdeki tüm kaynakların var olması gerektiğinde tüm döngüye bağımlıdır. Tüm döngüde bağımlılığı ayarlandığında, özellikle bu döngüsel kaynaklar diğer kaynaklara bağımlıysa bağımlılıklar grafiğinin önemli ölçüde genişlemesine neden olur. Genişletilmiş bağımlılıklar, dağıtımın etkili bir şekilde tamamlanmasını zorlaştırır.
+
+Aşağıdaki örnek, birden çok sanal makinenin nasıl dağıtılacağını göstermektedir. Şablon aynı sayıda ağ arabirimi oluşturur. Her sanal makine, tüm döngü yerine bir ağ arabirimine bağımlıdır.
+
+```json
+{
+  "type": "Microsoft.Network/networkInterfaces",
+  "apiVersion": "2020-05-01",
+  "name": "[concat(variables('nicPrefix'),'-',copyIndex())]",
+  "location": "[parameters('location')]",
+  "copy": {
+    "name": "nicCopy",
+    "count": "[parameters('vmCount')]"
+  },
+  ...
+},
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2020-06-01",
+  "name": "[concat(variables('vmPrefix'),copyIndex())]",
+  "location": "[parameters('location')]",
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('nicPrefix'),'-',copyIndex()))]"
+  ],
+  "copy": {
+    "name": "vmCopy",
+    "count": "[parameters('vmCount')]"
+  },
+  "properties": {
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "[resourceId('Microsoft.Network/networkInterfaces',concat(variables('nicPrefix'),'-',copyIndex()))]",
+          "properties": {
+            "primary": "true"
+          }
+        }
+      ]
+    },
+    ...
+  }
+}
+```
+
+Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Kopyalama öğesinin adı olarak ayarlanmış olduğuna `storagecopy` ve sanal makine Için Bağımlıdson öğesinin de olarak ayarlandığından emin olun `storagecopy` .
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "Storage",
+      "copy": {
+        "name": "storagecopy",
+        "count": 3
+      },
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
+      "dependsOn": ["storagecopy"],
+      ...
+    }
+  ],
+  "outputs": {}
+}
+```
 
 ## <a name="circular-dependencies"></a>Döngüsel bağımlılıklar
 
-Kaynak Yöneticisi, şablon doğrulaması sırasında dairesel bağımlılıkları belirler. Döngüsel bağımlılığın olduğunu belirten bir hata alırsanız, herhangi bir bağımlılığın gerekli olup olmadığını ve kaldırılamadığını görmek için şablonunuzu değerlendirin. Bağımlılıkları kaldırmak işe yaramazsa, bazı dağıtım işlemlerini, döngüsel bağımlılığı olan kaynaklardan sonra dağıtılan alt kaynaklara taşıyarak dairesel bağımlılıklardan kaçınabilirsiniz. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
+Kaynak Yöneticisi, şablon doğrulaması sırasında dairesel bağımlılıkları belirler. Döngüsel bağımlılık için bir hata alırsanız, herhangi bir bağımlılıkların kaldırılabileceği olup olmadığını görmek için şablonunuzu değerlendirin. Bağımlılıkları kaldırmak işe yaramazsa, bazı dağıtım işlemlerini alt kaynaklara taşıyarak dairesel bağımlılıklardan kaçınabilirsiniz. Döngüsel bağımlılığı olan kaynaklardan sonra alt kaynakları dağıtın. Örneğin, iki sanal makine dağıttığını, ancak birbirlerine başvuran her bir üzerinde Özellikler ayarlamanız gerektiğini varsayalım. Bunları aşağıdaki sırayla dağıtabilirsiniz:
 
 1. vm1
 2. VM2
