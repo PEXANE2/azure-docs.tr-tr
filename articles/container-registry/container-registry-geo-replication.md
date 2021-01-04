@@ -5,12 +5,12 @@ author: stevelas
 ms.topic: article
 ms.date: 07/21/2020
 ms.author: stevelas
-ms.openlocfilehash: 636896edf8180052508f366bcc548efe13dec1e2
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e5f0fe76b599874afe8d64c293f3d914da5dd243
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95810059"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705175"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry coğrafi çoğaltma
 
@@ -59,6 +59,8 @@ Azure Container Registry coğrafi çoğaltma özelliğini kullanarak bu avantajl
 * Tüm bölgeler aynı görüntü URL 'sini kullandığı için tek bir görüntü dağıtımı yapılandırmasını yönetin: `contoso.azurecr.io/public/products/web:1.2`
 * Tek bir kayıt defterine göndererek ACR, Coğrafi çoğaltmayı yönetir. ACR yalnızca benzersiz katmanları çoğaltır, bölgeler arasında veri aktarımını azaltır. 
 * Belirli çoğaltmalarda olayları bilgilendirmek için bölgesel [Web kancalarını](container-registry-webhook.md) yapılandırın.
+
+Azure Container Registry Ayrıca, Azure bölgesinde dayanıklı ve yüksek oranda kullanılabilir bir Azure Container Registry oluşturmak için [kullanılabilirlik bölgelerini](zone-redundancy.md) destekler. Bölge içindeki artıklık için kullanılabilirlik bölgelerinin birleşimi ve birden çok bölgede coğrafi çoğaltma, bir kayıt defterinin güvenilirliğini ve performansını geliştirir.
 
 ## <a name="configure-geo-replication"></a>Coğrafi çoğaltmayı yapılandırma
 

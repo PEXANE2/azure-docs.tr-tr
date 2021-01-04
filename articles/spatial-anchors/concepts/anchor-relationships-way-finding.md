@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8c321eae9451715077aa50d163b62b51ec88ce1a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ce79fe88b33659241a226af7bbb7a966ede41abb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95496894"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696162"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Azure uzamsal bağlayıcılarını ve bağlama ilişkilerini ve yolunu bulma
 
@@ -64,7 +64,7 @@ Uzamsal Tutturucuların birden çok oturum üzerinden bağlanmasını sağlayabi
 
 Birden çok oturumun bağlayıcılarını bağlamak için:
 
-1. Uygulama bir CloudSpatialAnchorSession içinde bazı bağlantılar oluşturur.
+1. Uygulama bir CloudSpatialAnchorSession içinde bazı bağlantılar (A ve B bağlantıları) oluşturur.
 2. Farklı bir zamanda uygulama, yeni bir CloudSpatialAnchorSession kullanarak bu bağlayıcıların birini (örneğin, A bağlantısı) bulur.
 3. Yeni bir konuma kılavuzluk edin. Temel karma gerçeklik veya genişletilmiş gerçeklik platformu, taşımayı izler.
 4. Aynı CloudSpatialAnchorSession kullanarak bir bağlayıcı oluşturun. A, B ve C bağlantıları artık bağlı. Uzamsal bağlayıcı hizmeti bu ilişkiyi tutar.

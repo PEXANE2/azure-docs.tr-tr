@@ -3,25 +3,37 @@ title: Azure Key Vault kurtarmaya genel bakış | Microsoft Docs
 description: Key Vault kurtarma özellikleri, anahtar kasalarınızın, anahtar kasasının içinde depolanan gizli dizileri, anahtarları ve sertifikaları yanlışlıkla veya kötü amaçlı olarak silmenin önlenmesi için tasarlanmıştır.
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
-author: ShaneBala-keyvault
-ms.author: sudbalas
-manager: ravijan
-ms.date: 12/15/2020
-ms.openlocfilehash: 485da2230de80150c9a5d13b262d1857c8c172fc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.topic: how-to
+ms.author: mbaldwin
+author: msmbaldwin
+manager: rkarlin
+ms.date: 09/30/2020
+ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587120"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704223"
 ---
-# <a name="how-to-enable-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme korumasını etkinleştirme
+# <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
 
 Bu makalede Azure Key Vault, geçici silme ve Temizleme korumasının iki kurtarma özelliği ele alınmaktadır. Bu belge, bu özelliklere genel bir bakış sağlar ve bunları Azure portal, Azure CLı ve Azure PowerShell aracılığıyla nasıl yönetebileceğinizi gösterir.
 
+Key Vault hakkında daha fazla bilgi için bkz.
+- [Anahtar Kasasına genel bakış](overview.md)
+- [Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış](about-keys-secrets-certificates.md)
+
+## <a name="prerequisites"></a>Önkoşullar
+
+* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
+* [PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [Azure CLI](/cli/azure/install-azure-cli)
+* Key Vault- [Azure clı](../general/quick-create-cli.md) [Azure Portal](../general/quick-create-portal.md) veya [Azure PowerShell](../general/quick-create-powershell.md) kullanarak bir tane oluşturabilirsiniz.
+
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması nedir?
 
-Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özellikleridir.
+[Geçici silme](soft-delete-overview.md) ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özellikleridir.
+
 > [!IMPORTANT]
 > Geçici silme özelliğini açmak, anahtar kasalarınızın ve kimlik bilgilerinizin yanlışlıkla silinmeye karşı korunmasını sağlamak açısından önemlidir. Ancak, geçici silme özelliğini açmak, Uygulama mantığınızı değiştirmenizi veya hizmet sorumlularınız için ek izinler sağlamanızı gerektirebileceğinden, bir son değişiklik olarak değerlendirilir. Aşağıdaki yönergeleri kullanarak geçici silme özelliğini açmadan önce, lütfen uygulamanızın bu belgeyi kullanarak değişiklik ile uyumlu olduğundan emin olun [ .](soft-delete-change.md)
 
@@ -34,7 +46,9 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
 > [!NOTE]
 > Temizleme koruması, hiçbir yönetici rolü veya izninin, temizleme korumasını geçersiz kılabilir, devre dışı bırakamaz veya atlatmak için tasarlanmıştır. **Temizleme koruması etkinleştirildikten sonra, Microsoft dahil herkes tarafından devre dışı bırakılamaz veya geçersiz kılınamaz.** Bu, silinen bir anahtar kasasını kurtarmanız veya Anahtar Kasası adını yeniden kullanmadan önce bekletme süresinin geçmesini beklemeniz gerektiği anlamına gelir.
 
-# <a name="azure-portal"></a>[Azure portalı](#tab/azure-portal)
+Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici genel bakış](soft-delete-overview.md)
+
+# <a name="azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 ## <a name="verify-if-soft-delete-is-enabled-on-a-key-vault-and-enable-soft-delete"></a>Bir anahtar kasasında geçici silmenin etkinleştirilip etkinleştirilmediğini ve geçici silme özelliğini etkinleştirip etkinleştirmediğinizi doğrulayın
 
@@ -370,3 +384,14 @@ Geçici silme ve Temizleme koruması iki farklı Anahtar Kasası kurtarma özell
   ```powershell
   Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
+---
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Azure Key Vault PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/module/az.keyvault)
+- [Azure CLı komutlarını Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [Azure Key Vault yedekleme](backup.md)
+- [Key Vault günlüğü etkinleştirme](howto-logging.md)
+- [Anahtar kasasına güvenli erişim](secure-your-key-vault.md)
+- [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
+- [Anahtar Kasası kullanmak için en iyi uygulamalar](best-practices.md)

@@ -6,12 +6,12 @@ ms.service: virtual-machines
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: cynthn
-ms.openlocfilehash: ef0c8d53d885f11acdcf578db155de3d7848887e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: dcb5a3c664386e65e676f5559c47236126fefe87
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97360076"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704937"
 ---
 # <a name="deploy-to-dedicated-hosts-using-the-azure-cli"></a>Azure CLı kullanarak adanmış konaklara dağıtma
  
@@ -263,10 +263,10 @@ az group export --name myDHResourceGroup > myDHResourceGroup.json
 
 Bu komut, `myDHResourceGroup.json` geçerli çalışma dizininizde dosyayı oluşturur. Bu şablondan bir ortam oluşturduğunuzda, sizden tüm kaynak adları istenir. Komutuna parametresini ekleyerek, bu adları şablon dosyanızda doldurabilirsiniz `--include-parameter-default-value` `az group export` . Kaynak adlarını belirtmek için JSON şablonunuzu düzenleyin veya kaynak adlarını belirten bir dosya parameters.jsoluşturun.
  
-Şablonunuzda bir ortam oluşturmak için [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create)kullanın.
+Şablonunuzda bir ortam oluşturmak için [az Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create)kullanın.
 
 ```azurecli-interactive
-az group deployment create \ 
+az deployment group create \ 
     --resource-group myNewResourceGroup \ 
     --template-file myDHResourceGroup.json 
 ```

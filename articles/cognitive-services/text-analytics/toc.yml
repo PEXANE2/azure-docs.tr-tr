@@ -80,7 +80,8 @@
         - name: Kapsayıcıları yapılandırma
           href: text-analytics-resource-container-config.md
         - name: Kapsayıcı örnekleri kullanma
-          href: how-tos/text-analytics-how-to-use-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Kubernetes hizmetini kullanma (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
         - name: Bilişsel Hizmetler kapsayıcıları belgeleri

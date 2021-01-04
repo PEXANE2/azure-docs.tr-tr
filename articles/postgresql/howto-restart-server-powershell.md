@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 99fc29071086a5c9271b8b2dec00976833a36352
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2d37de4a1861cb78b4a76c8ca7bc8c3643245b32
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489787"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706975"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-powershell"></a>PowerShell kullanarak PostgreSQL için Azure veritabanı sunucusunu yeniden başlatma
 
@@ -20,7 +20,8 @@ Bu konuda, PostgreSQL için Azure veritabanı sunucusunu nasıl yeniden başlata
 
 Hizmet meşgulse sunucu yeniden başlatması engellenir. Örneğin, hizmet, sanal çekirdekleri ölçeklendirirken daha önce istenen bir işlemi işliyor olabilir.
 
-Yeniden başlatmayı tamamlaması için gereken süre, PostgreSQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz.
+> [!NOTE] 
+> Yeniden başlatmayı tamamlaması için gereken süre, PostgreSQL kurtarma işlemine bağlıdır. Yeniden başlatma süresini azaltmak için, yeniden başlatmadan önce sunucuda gerçekleşen etkinlik miktarını en aza indirmenizi öneririz. Ayrıca, kontrol noktası sıklığını artırmak isteyebilirsiniz. Ayrıca dahil olmak üzere denetim noktası ilişkili parametre değerlerini de ayarlayabilirsiniz `max_wal_size` . Ayrıca `CHECKPOINT` , sunucuyu yeniden başlatmadan önce komutunu çalıştırmanız önerilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

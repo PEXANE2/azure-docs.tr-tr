@@ -10,18 +10,18 @@ ms.custom: how-to, automl
 ms.author: mithigpe
 author: minthigpen
 ms.date: 07/09/2020
-ms.openlocfilehash: cf1eb1c72cc93fcb72862b15f3884969915c24dd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce13e0431827bb2c72a03ca33a1ecaefc53d4970
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360658"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702536"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Yorumlanabilirlik: otomatik makine öğrenmesinde model açıklamaları (önizleme)
 
 
 
-Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (ML) açıklamalarını alma hakkında bilgi edineceksiniz. Otomatikleştirilmiş ML, uygulanan özellik önemini anlamanıza yardımcı olur. 
+Bu makalede, Azure Machine Learning ' de otomatik makine öğrenimi (Otomatikml) açıklamalarını alma hakkında bilgi edineceksiniz. Oto ml, oluşturulan modellerin Özellik önemini anlamanıza yardımcı olur. 
 
 1.0.85 sonrasında tüm SDK sürümleri `model_explainability=True` Varsayılan olarak ayarlanır. SDK sürüm 1.0.85 ve önceki sürümlerinde, kullanıcıların `model_explainability=True` `AutoMLConfig` model yorumlenebilirliğini kullanabilmesi için nesnesine ayarlanması gerekir. 
 
@@ -34,15 +34,18 @@ Bu makalede şunları öğreneceksiniz:
 ## <a name="prerequisites"></a>Önkoşullar
 
 - Yorumlenebilirlik özellikleri. `pip install azureml-interpret`Gerekli paketi almak için ' i çalıştırın.
-- Otomatik ML denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya [Otomatik ml denemeleri](how-to-configure-auto-train.md)'yi nasıl yapılandıracağınızı öğrenin.
+- Oto ml denemeleri oluşturma hakkında bilgi. Azure Machine Learning SDK 'sını kullanma hakkında daha fazla bilgi için, bu [regresyon modeli öğreticisini](tutorial-auto-train-models.md) doldurun veya bkz. [oto ml denemeleri 'ı yapılandırma](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>En iyi model için eğitim sırasında yorumlenebilirlik
 
-Tarafından `best_run` uygulanan özelliklerin açıklamalarını içeren öğesinden açıklamayı alın.
+`best_run`Hem ham hem de mühendislik uygulanmış özelliklerin açıklamalarını içeren öğesinden açıklamayı alın.
 
 > [!Warning]
 > Yorumlenebilirlik, en iyi model açıklaması, aşağıdaki algoritmaların en iyi model olarak kullanılması için otomatik ML tahmin denemeleri için kullanılamaz: 
-> * Forekaletcn
+> * TCNForecaster
+> * Oto ARIMA
+> * Üs Alaltı yumuşatma
+> * Prophet
 > * Ortalama 
 > * Naive
 > * Mevsimlik ortalama 
@@ -62,7 +65,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Herhangi bir model için eğitim sırasında yorumlenebilirlik 
 
-Model açıklamalarını hesaplarken ve bunları görselleştirebileceğiniz zaman, bir otomatik ML modeli için mevcut model açıklaması ile sınırlı değilsiniz. Ayrıca, farklı test verileriyle modelinize yönelik bir açıklama alabilirsiniz. Bu bölümdeki adımlarda, test verilerinize göre uygulanan özellik önemini nasıl hesaplabileceğiniz ve görselleştirebileceğiniz gösterilmektedir.
+Model açıklamalarını hesaplarken ve bunları görselleştirerek, bir oto modeli için mevcut bir model açıklaması ile sınırlı değilsiniz. Ayrıca, farklı test verileriyle modelinize yönelik bir açıklama alabilirsiniz. Bu bölümdeki adımlarda, test verilerinize göre uygulanan özellik önemini nasıl hesaplabileceğiniz ve görselleştirebileceğiniz gösterilmektedir.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Eğitimin diğer tüm oto modellerini al
 
@@ -94,7 +97,7 @@ Oto ml modelleriyle ilgili bir açıklama oluşturmak için `MimicWrapper` sın�
 
 - Açıklama Kurulum nesnesi
 - Çalışma alanınız
-- Otomatikleştirilmiş ML modelini açıklamak için bir yedek modeli `fitted_model`
+- Oto ml modelini açıklamak için bir yedek modeli `fitted_model`
 
 Mımısarmalayıcı, uygulanan açıklamalarının `automl_run` karşıya yükleneceği nesneyi de alır.
 
@@ -113,7 +116,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator,
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Uygulanan özellik önemini hesaplamak ve görselleştirmek için MimicExplainer kullanın
 
-`explain()`Oluşturulan mühendislik özelliklerine ilişkin özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte Msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, `ExplanationDashboard` üretilen mühendislik özelliklerinin özellik önem değerlerinin Pano görselleştirmesini OTOMATIK ml özelliklerine göre görüntülemek için ' i de kullanabilirsiniz.
+`explain()`Oluşturulan mühendislik özelliklerine ilişkin özellik önemini elde etmek için, dönüştürülmüş test örnekleriyle birlikte Msarmalayıcı içindeki yöntemi çağırabilirsiniz. Ayrıca, `ExplanationDashboard` oluşturulan özelliklerin özellik önem değerlerinin Pano görselleştirmesini, oto ml featurlarına göre görüntülemek için ' i de kullanabilirsiniz.
 
 ```python
 engineered_explanations = explainer.explain(['local', 'global'], eval_dataset=automl_explainer_setup_obj.X_test_transform)
@@ -122,7 +125,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-inference"></a>Çıkarım sırasında yorumlenebilirlik
 
-Bu bölümde, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile otomatik bir ML modeli oluşturmayı öğreneceksiniz.
+Bu bölümde, bir oto ml modelini, önceki bölümde yer alan açıklamaları hesaplamak için kullanılan açıklama ile nasıl gerçekleştireceğinizi öğreneceksiniz.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Modeli ve Puanlama açıklama kaydetme
 
@@ -200,7 +203,7 @@ service.wait_for_deployment(show_output=True)
 
 ### <a name="inference-with-test-data"></a>Test verileriyle çıkarım
 
-Otomatikleştirilmiş ML modelinden tahmin edilen değeri görmek için bazı test verileriyle çıkarım. Öngörülen değer için uygulanan özellik önem derecesini görüntüleyin.
+Şu anda yalnızca Azure Machine Learning SDK 'sında desteklenen, oto ml modelinden tahmin edilen değeri görmek için bazı test verileriyle çıkarım. Tahmin edilen bir değer için katkıda bulunan özelliği görüntüleyin. 
 
 ```python
 if service.state == 'Healthy':
@@ -217,9 +220,11 @@ if service.state == 'Healthy':
 
 ### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Eğitim sırasında veri ve açıklamaları desenlerdeki desenleri keşfetmeyi görselleştirin
 
-Özellik önem grafiğini [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda görselleştirebilirsiniz. Otomatik ML çalıştırıldıktan sonra, belirli bir çalışmayı görüntülemek için **model ayrıntılarını görüntüle** ' yi seçin. Açıklama görselleştirme panosunu görmek için **açıklamalar** sekmesini seçin.
+Özellik önem grafiğini [Azure Machine Learning Studio](https://ml.azure.com)'daki çalışma alanınızda görselleştirebilirsiniz. Oto ml çalıştırmanız tamamlandıktan sonra, belirli bir çalışmayı görüntülemek için **model ayrıntılarını görüntüle** ' yi seçin. Açıklama görselleştirme panosunu görmek için **açıklamalar** sekmesini seçin.
 
-[![Machine Learning Yorumlenebilirlik mimarisi](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png)](./media/how-to-machine-learning-interpretability-automl/automl-explainability.png#lightbox)
+[![Machine Learning Yorumlenebilirlik mimarisi](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png)](./media/how-to-machine-learning-interpretability-automl/automl-explanation.png#lightbox)
+
+Açıklama panosu görselleştirmeleri ve belirli çizimler hakkında daha fazla bilgi için lütfen bkz. [nasıl yapılır belgesi yorumda](how-to-machine-learning-interpretability-aml.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

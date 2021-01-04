@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 8fabf8169270c3162604b6535a6cf2fb07cd9a9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: dc19b95e891235ac35c703adef50a23a9f70fbdb
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422153"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706805"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda çoğaltmaları okuma-tek sunucu
 
@@ -71,6 +71,8 @@ Her çoğaltma, depolama [otomatik büyüme](concepts-pricing-tiers.md#storage-a
 Okuma çoğaltması özelliği, mantıksal çoğaltma değil PostgreSQL fiziksel çoğaltmasını kullanır. Çoğaltma yuvaları kullanılarak akış çoğaltma varsayılan işlem modudur. Gerektiğinde, günlük aktarma işlemi yakalamak için kullanılır.
 
 [Azure Portal bir okuma çoğaltması oluşturmayı](howto-read-replicas-portal.md)öğrenin.
+
+Kaynak PostgreSQL sunucunuz, müşteri tarafından yönetilen anahtarlarla şifrelenirse, daha fazla dikkat edilmesi için lütfen [belgelere](concepts-data-encryption-postgresql.md) bakın.
 
 ## <a name="connect-to-a-replica"></a>Bir çoğaltmaya bağlanma
 Bir çoğaltma oluşturduğunuzda, birincil sunucunun güvenlik duvarı kuralları veya VNet hizmeti uç noktası aktarılmaz. Bu kuralların çoğaltma için bağımsız olarak ayarlanması gerekir.
@@ -144,7 +146,7 @@ Kullanılabilirlik bölge düzeyi veya bölgesel hata gibi önemli bir olağanü
 
 Bu bölümde çoğaltma oku özelliği hakkında dikkat edilecek noktalar özetlenmektedir.
 
-### <a name="prerequisites"></a>Ön koşullar
+### <a name="prerequisites"></a>Önkoşullar
 Okuma çoğaltmaları ve [mantıksal kod çözme](concepts-logical.md) , bilgi Için doğrudan Postgres yazma günlüğüne (Wal) bağlıdır. Bu iki özellik, Postgres 'den farklı günlük düzeylerine sahip olmalıdır. Mantıksal kod çözme, okuma Çoğaltmalarından daha yüksek bir günlüğe kaydetme düzeyine sahip olmalıdır.
 
 Doğru günlük kaydını yapılandırmak için Azure çoğaltma desteği parametresini kullanın. Azure çoğaltma desteğinin üç ayar seçeneği vardır:
@@ -166,8 +168,8 @@ Bir okuma çoğaltması, PostgreSQL için yeni bir Azure veritabanı sunucusu ol
 Sanal çekirdekleri ölçeklendirin veya Genel Amaçlı ile bellek için Iyileştirilmiş:
 * PostgreSQL, `max_connections` ikincil bir sunucudaki ayarın [birincil üzerindeki ayardan büyük veya ona eşit](https://www.postgresql.org/docs/current/hot-standby.html)olmasını gerektirir, aksi takdirde ikincil başlatılmaz.
 * PostgreSQL için Azure veritabanı 'nda, bağlantılar bellek kullandığından, her bir sunucu için izin verilen en yüksek bağlantı, işlem SKU 'suna sabitlenmiştir. [Max_connections ve işlem SKU 'ları arasındaki eşleme](concepts-limits.md)hakkında daha fazla bilgi edinebilirsiniz.
-* Ölçeği **artırma** : ilk olarak bir çoğaltmanın işlem ölçeğini ölçeklendirin, sonra birincili ölçeği ölçeklendirin. Bu sipariş, hataların gereksinimi ihlal etmelerini engeller `max_connections` .
-* Ölçeği **azaltma** : ilk olarak birincil işlemin işlem ölçeğini azaltın, sonra çoğaltmanın ölçeğini azaltın. Çoğaltmayı Birincilden daha düşük ölçeklendirmeye çalışırsanız, bu, gereksinimi ihlal ettiğinden bir hata olur `max_connections` .
+* Ölçeği **artırma**: ilk olarak bir çoğaltmanın işlem ölçeğini ölçeklendirin, sonra birincili ölçeği ölçeklendirin. Bu sipariş, hataların gereksinimi ihlal etmelerini engeller `max_connections` .
+* Ölçeği **azaltma**: ilk olarak birincil işlemin işlem ölçeğini azaltın, sonra çoğaltmanın ölçeğini azaltın. Çoğaltmayı Birincilden daha düşük ölçeklendirmeye çalışırsanız, bu, gereksinimi ihlal ettiğinden bir hata olur `max_connections` .
 
 Depolama alanı ölçeklendiriliyor:
 * Depolama-tam çoğaltmasından çoğaltma sorunlarını engellemek için tüm çoğaltmaların depolama otomatik büyümesi etkinleştirilmiş olarak etkinleştirilir. Bu ayar devre dışı bırakılamaz.

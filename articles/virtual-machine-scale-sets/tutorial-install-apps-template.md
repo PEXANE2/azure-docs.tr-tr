@@ -9,12 +9,12 @@ ms.subservice: template
 ms.date: 03/27/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 2d748f787b40bb26e9faebb028d71c6c3e30ee55
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: d5eba5486e7d26e62379e0112cd4b95322e6dae1
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516569"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705243"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümelerine uygulama yükleme
 Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalıştırmak için önce uygulama bileşenlerini ve gerekli dosyaları yüklemeniz gerekir. Önceki bir öğreticide, sanal makine örneklerinizi dağıtmak için nasıl özel sanal makine görüntüsü oluşturulacağını ve kullanılacağını öğrendiniz. Bu özel görüntüde, el ile uygulama yüklemeleri ve yapılandırmaları yer alıyordu. Her sanal makine örneği dağıtıldıktan sonra bir ölçek kümesine uygulamaların yüklenmesini otomatikleştirebilir veya önceden ölçek kümesinde çalıştırılan bir uygulamayı güncelleştirebilirsiniz. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -40,7 +40,7 @@ Bir ölçek kümesindeki sanal makine (VM) örneklerinde uygulamaları çalışt
 
 
 ## <a name="create-custom-script-extension-definition"></a>Özel Betik Uzantısı tanımı oluşturma
-Azure şablonu ile bir sanal makine ölçek kümesi tanımladığınızda *Microsoft.Compute/virtualMachineScaleSets* kaynak sağlayıcısı, uzantılara bir bölüm ekleyebilir. *extensionsProfile* , bir ölçek kümesindeki sanal makine örneklerine nelerin uygulanacağını açıklar. Özel Betik Uzantısı’nı kullanmak için *Microsoft.Azure.Extensions* yayımcısını ve *CustomScript* türünü belirtirsiniz.
+Azure şablonu ile bir sanal makine ölçek kümesi tanımladığınızda *Microsoft.Compute/virtualMachineScaleSets* kaynak sağlayıcısı, uzantılara bir bölüm ekleyebilir. *extensionsProfile*, bir ölçek kümesindeki sanal makine örneklerine nelerin uygulanacağını açıklar. Özel Betik Uzantısı’nı kullanmak için *Microsoft.Azure.Extensions* yayımcısını ve *CustomScript* türünü belirtirsiniz.
 
 Kaynak yükleme betiklerini veya paketlerini tanımlamak için *fileUris* özelliği kullanılır. Yükleme işlemini başlatmak için gereken betikler, *commandToExecute* komutunda tanımlanır. Aşağıdaki örnek, NGINX web sunucusunu yükleyip yapılandıran GitHub’daki bir örnek betiği tanımlar:
 
@@ -76,10 +76,10 @@ Bir ölçek kümesi ve özel Betik uzantısı dağıtan bir Azure şablonuna ili
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az group deployment create](/cli/azure/group/deployment) komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı ve parolanızı sağlayın:
+Şimdi [az Deployment Group Create](/cli/azure/deployment/group)komutuyla bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı ve parolanızı sağlayın:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy.json
 ```
@@ -134,10 +134,10 @@ Bir ölçek kümesinin yaşam döngüsü boyunca, uygulamanızın güncelleştir
 }
 ```
 
-[az group deployment create](/cli/azure/group/deployment) komutunu kullanarak ölçek kümenizdeki sanal makine örneklerine Özel Betik Uzantısı yapılandırmasını tekrar uygulayın. Uygulamanın güncelleştirilmiş sürümünü uygulamak için bu *azuredeployv2.json* şablonu kullanılır. Uygulamada, önceki bölümde gösterildiği gibi güncelleştirilmiş yükleme betiğine başvurmak için mevcut *azuredeploy.json* şablonunu düzenleyin. İstendiğinde, ölçek kümesini ilk oluşturduğunuzda kullanıldığı haliyle aynı kullanıcı adı ve parola bilgilerini girin:
+Özel Betik uzantısı yapılandırmasını, daha [az dağıtım grubu oluştur](/cli/azure/deployment/group)seçeneğiyle yeniden ölçek kümesindeki sanal makine örneklerine uygulayın. Uygulamanın güncelleştirilmiş sürümünü uygulamak için bu *azuredeployv2.json* şablonu kullanılır. Uygulamada, önceki bölümde gösterildiği gibi güncelleştirilmiş yükleme betiğine başvurmak için mevcut *azuredeploy.json* şablonunu düzenleyin. İstendiğinde, ölçek kümesini ilk oluşturduğunuzda kullanıldığı haliyle aynı kullanıcı adı ve parola bilgilerini girin:
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/azuredeploy_v2.json
 ```

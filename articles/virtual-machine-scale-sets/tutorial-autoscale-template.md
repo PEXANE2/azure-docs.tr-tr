@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 7e727d06670c9d07ec1aa18b92504433f6c519d6
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 88cec878ca5d3ccab3a232888ff3a3c0b0faa1db
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518303"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705260"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Öğretici: Azure şablonu ile sanal makine ölçek kümesini otomatik olarak ölçeklendirme
 Ölçek kümesi oluşturduğunuzda, çalıştırmak istediğiniz VM örneği sayısını tanımlarsınız. Uygulamanızın talebi değiştikçe, sanal makine örneklerinin sayısını otomatik olarak artırabilir veya azaltabilirsiniz. Otomatik ölçeklendirme özelliği, uygulamanızın yaşam döngüsü boyunca uygulama performansındaki değişikliklere veya müşteri taleplerine ayak uydurmanıza olanak tanır. Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
@@ -33,7 +33,7 @@ ms.locfileid: "94518303"
 
 
 ## <a name="define-an-autoscale-profile"></a>Otomatik ölçeklendirme profilini tanımlama
-*Microsoft.insights/autoscalesettings* kaynak sağlayıcısı ile bir Azure şablonunda otomatik ölçeklendirme profili tanımlayın. *Profil* , ölçek kümesinin ve tüm ilişkili kuralların kapasitesini açıklar. Aşağıdaki örnek, *CPU kullanımına dayalı yüzdeye göre otomatik ölçeklendir* adlı bir profili tanımlar ve varsayılan değeri, minimum değeri, *2* sanal makine örneği kapasitesini ve maksimum *10* değerini ayarlar:
+*Microsoft.insights/autoscalesettings* kaynak sağlayıcısı ile bir Azure şablonunda otomatik ölçeklendirme profili tanımlayın. *Profil*, ölçek kümesinin ve tüm ilişkili kuralların kapasitesini açıklar. Aşağıdaki örnek, *CPU kullanımına dayalı yüzdeye göre otomatik ölçeklendir* adlı bir profili tanımlar ve varsayılan değeri, minimum değeri, *2* sanal makine örneği kapasitesini ve maksimum *10* değerini ayarlar:
 
 ```json
 {
@@ -143,10 +143,10 @@ Aşağıdaki örnek, ortalama CPU yükü 5 dakikadan uzun bir süre boyunca %30�
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az group deployment create](/cli/azure/group/deployment) komutunu kullanarak bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı (örn. *azureuser* ) ve parolanızı sağlayın.
+Şimdi [az Deployment Group Create](/cli/azure/deployment/group)komutuyla bir sanal makine ölçek kümesi oluşturun. İstendiğinde, her bir sanal makine örneği için kimlik bilgileri olarak kullanılan kendi kullanıcı adınızı (örn. *azureuser*) ve parolanızı sağlayın.
 
 ```azurecli-interactive
-az group deployment create \
+az deployment group create \
   --resource-group myResourceGroup \
   --template-uri https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json
 ```
@@ -188,7 +188,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-**stress** , *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+**stress**, *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 **stress** yardımcı programının CPU yükü oluşturduğunu onaylamak için, **top** yardımcı programını kullanarak etkin sistem yükünü inceleyin:
 
@@ -216,7 +216,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Tekrar **stress** , *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
+Tekrar **stress**, *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* benzeri bir çıktı gösterdiğinde, isteme geri dönmek için *Enter* tuşuna basın.
 
 İkinci sanal makine örneğiyle bağlantınızı kapatın. **stress** yardımcı programı, sanal makine örneğinde çalışmaya devam eder.
 

@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucular aracısındaki yenilikler
-description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için ek ayrıntıların bağlantıları vardır.
+description: Bu makalede, Azure Arc etkin sunucular aracısına yönelik sürüm notları bulunur. Özetlenen birçok sorun için daha fazla ayrıntı bağlantısı vardır.
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 3a01113d0d6416fb050f5c66191d5c420b7ac137
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 12/21/2020
+ms.openlocfilehash: 4b7fd97d5b7e1cddc1d78e0d24205890e74c45c1
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505656"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722530"
 ---
 # <a name="whats-new-with-azure-arc-enabled-servers-agent"></a>Azure Arc etkin sunucular aracısındaki yenilikler
 
@@ -20,6 +20,8 @@ Azure Arc etkin sunucular bağlı makine Aracısı, iyileştirmeleri sürekli ol
 
 ## <a name="december-2020"></a>Aralık 2020
 
+Sürüm: 1,3
+
 ### <a name="new-feature"></a>Yeni Özellik
 
 Windows Server 2008 R2 için destek eklendi
@@ -30,11 +32,15 @@ Windows Server 2008 R2 için destek eklendi
 
 ## <a name="november-2020"></a>Kasım 2020
 
+Sürüm: 1,2
+
 ### <a name="fixed"></a>Sabit
 
 RPM tabanlı dağıtımlarla yükseltildikten sonra ara sunucu yapılandırmasının kaybedilme sorunu çözüldü.
 
 ## <a name="october-2020"></a>Ekim 2020
+
+Sürüm: 1.1
 
 ### <a name="fixed"></a>Sabit
 
@@ -61,7 +67,7 @@ Sürüm: 1,0 (genel kullanılabilirlik)
 - `azcmagent show --json`, Kolayca ayrılabilir biçimdeki çıkış Aracısı durumuna eklenen seçenek.
 - `azcmagent show`Sunucunun Azure 'da barındırılan bir sanal makinede olup olmadığını göstermek için çıkışa bayrak eklendi.
 - `azcmagent disconnect --force-local-only`Azure hizmetine ulaşılamadığından yerel aracı durumunun sıfırlanmasına izin verme seçeneği eklendi.
-- `azcmagent connect --cloud`Ek bulutları desteklemek için seçeneği eklendi. Bu sürümde, aracı sürümü sırasında yalnızca Azure hizmeti desteklenir.
+- `azcmagent connect --cloud`Diğer bulutları destekleme seçeneği eklendi. Bu sürümde, aracı sürümü sırasında yalnızca Azure hizmeti desteklenir.
 - Aracı, Azure tarafından desteklenen dillerde yerelleştirildi.
 
 ### <a name="fixed"></a>Sabit

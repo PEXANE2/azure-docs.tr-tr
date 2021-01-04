@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 72d7a40c38f3629a70260f223074b456dff9ce38
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ae3e12c11f194b3efcc149382dc952bd74d38b5
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182844"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704325"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure kanıtlama sorun giderme kılavuzu
 
@@ -280,7 +280,7 @@ PowerShell Galerisi etkileşim kurmaya devam etmek için Install-Module komutlar
 Kullanıcı uygun rollerle atandı. Ancak PowerShell aracılığıyla kanıtlama ilkelerini yönetirken karşılıklı yetkilendirme sorunları.
 
 ### <a name="error"></a>Hata
-Nesne kimliği olan istemci, <object Id>  Microsoft. Authorization/roleatamalar/' subcriçen/ResourceGroups/secure_enclave_poc/Providers/Microsoft.Authorization/roleassignments/' kapsamının üzerinde yazma işlemini gerçekleştirme yetkisine sahip değil <subscriptionId> <role assignmentId> veya kapsam geçersiz. Erişim yakın zamanda verildiyse, lütfen kimlik bilgilerinizi yenileyin
+Nesne kimliği &lt; nesne kimliğine sahip istemci, &gt;  ' subcrisettings/ &lt; SubscriptionID &gt; ResourceGroups/secure_enclave_poc/Providers/Microsoft.Authorization/roleassignments/ &lt; rol atamaadı &gt; ' veya kapsam geçersiz olarak Microsoft. Authorization/roleatamalar/Write eylemini gerçekleştirmeye yönelik yetkiye sahip değil. Erişim yakın zamanda verildiyse, lütfen kimlik bilgilerinizi yenileyin
 
 ### <a name="troubleshooting-steps"></a>Sorun giderme adımları
 

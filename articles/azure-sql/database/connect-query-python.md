@@ -11,26 +11,28 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: a87c08d81724a6639fce6b6673b139b3ef94e410
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 12/19/2020
+ms.openlocfilehash: 8fb6d319cacf85630b2c400cd18d14487725f925
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680046"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703982"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için Python kullanma
+# <a name="quickstart-use-python-to-query-a-database"></a>Hızlı başlangıç: bir veritabanını sorgulamak için Python kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu hızlı başlangıçta Python kullanarak Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanır ve T-SQL deyimlerini kullanarak verileri sorgulayın.
+Bu hızlı başlangıçta Python kullanarak Azure SQL veritabanı, Azure SQL yönetilen örneği veya SYNAPSE SQL veritabanı 'na bağlanın ve verileri sorgulamak için T-SQL deyimlerini kullanın.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
+- Sorgu çalıştıracağınız bir veritabanı.
+
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 - [Python](https://python.org/downloads) 3 ve ilgili yazılımlar
 
@@ -57,27 +59,11 @@ Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır
 ---
 Python ve Azure SQL veritabanı 'nda veritabanını daha fazla incelemek için bkz. [Python Için Azure SQL veritabanı kitaplıkları](/python/api/overview/azure/sql), [pyodbc deposu](https://github.com/mkleehammer/pyodbc/wiki/)ve bir [pyodbc örneği](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
-## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
-
-Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
-
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
-
-3. **Genel bakış** sayfasında, Azure SQL veritabanı 'nda veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya Azure SQL yönetilen örneği için **konak** ' ın YANıNDAKI tam sunucu adını (veya IP adresini) veya Azure VM 'de SQL Server ' yi gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
-
-> [!NOTE]
-> Azure VM 'de SQL Server yönelik bağlantı bilgileri için bkz. [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
 ## <a name="create-code-to-query-your-database"></a>Veritabanınızı sorgulamak için kod oluşturma 
 
 1. Bir metin düzenleyicisinde, *SQLtest.py* adlı yeni bir dosya oluşturun.  
    
-1. Aşağıdaki kodu ekleyin. ,, Ve için kendi değerlerinizi yerine koyun \<server> \<database> \<username> \<password> .
-   
-   >[!IMPORTANT]
-   >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
+1. Aşağıdaki kodu ekleyin. Önkoşullar bölümünden bağlantı bilgilerini alın ve,, ve için kendi değerlerinizi yerine koyun \<server> \<database> \<username> \<password> .
    
    ```python
    import pyodbc
@@ -105,7 +91,7 @@ Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bil
    python sqltest.py
    ```
 
-1. İlk 20 kategori/ürün satırlarının döndürüldüğünden emin olun ve ardından komut penceresini kapatın.
+1. Veritabanlarının ve harmanlamaları döndürüldüğünden emin olun ve ardından komut penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: iot-edge
 author: kgremban
 ms.service: iot-edge
@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/10/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: c1e5027b192f32b50af10a2bdfbadfeb123b39ce
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99dcfa46280c6fc00b27fa43fd6079c4ac32bd3a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67188487"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704695"
 ---
 ### <a name="delete-azure-resources"></a>Azure kaynaklarını silme 
 
-Azure kaynaklarını ve kaynak gruplarını silme işlemi geri alınamaz. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT hub'ını tutmak istediğiniz kaynakların bulunduğu mevcut bir kaynak grubu içinde oluşturduysanız, kaynak grubunu silmek yerine IoT hub kaynağını silin.
+Azure kaynaklarını ve kaynak gruplarını silme işlemi geri alınamaz. Yanlış kaynak grubunu veya kaynakları yanlışlıkla silmediğinizden emin olun. IoT Hub 'ı tutmak istediğiniz kaynakları içeren mevcut bir kaynak grubu içinde oluşturduysanız, kaynak grubunu değil yalnızca IoT Hub kaynağını silin.
 
 Kaynakları silmek için:
 
-1. [Azure portalda](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
 2. IoT Edge test kaynaklarınızı içeren kaynak grubunun adını seçin. 
 

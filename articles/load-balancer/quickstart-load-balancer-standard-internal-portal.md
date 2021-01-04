@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a6739d092c2fe4594ae558414ccb882dd6f821bf
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 14203021846e97a53f59c3bc24a1586774613dec
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630692"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704342"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Hızlı başlangıç: Azure portal kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
-İç yük dengeleyici ve iki sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
+İç yük dengeleyici ve üç sanal makine oluşturmak için Azure portal kullanarak Azure Load Balancer kullanmaya başlayın.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -112,7 +112,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
-    | Name                   | **Myloadbalancer** girin                                   |
+    | Ad                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Standart** seçin |
@@ -210,12 +210,12 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
 
 Bu bölümde şunları yapacaksınız:
 
-* Yük dengeleyicinin arka uç havuzu için iki sanal makine oluşturun.
+* Yük dengeleyicinin arka uç havuzu için üç sanal makine oluşturun.
 * Yük dengeleyiciyi test etmek için sanal makinelere IIS yükleyin.
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-Bu bölümde, iki VM oluşturacaksınız (**myVM1** ve **myVM2**).
+Bu bölümde üç VM (**myVM1**, **myVM2** ve **myVM3**) oluşturacaksınız.
 
 Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna eklenir.
 
@@ -264,13 +264,13 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
   
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
-7. Aşağıdaki değerleri ve **myVM1** ile aynı diğer tüm ayarları içeren BIR ek VM oluşturmak için 1 ile 8 arasındaki adımları uygulayın:
+7. Aşağıdaki değerleri ve **myVM1** ile aynı diğer tüm ayarları Içeren iki VM oluşturmak için 1 ile 8 arasındaki adımları uygulayın:
 
-    | Ayar | VM 2|
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | Kullanılabilirlik alanı | **2** |
-    | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin|
+    | Ayar | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Ad |  **myVM2** | **myVM3** |
+    | Kullanılabilirlik alanı | **2** | **3** |
+    | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin| Mevcut **Mynsg** 'yi seçin |
 
 
 # <a name="basic-sku"></a>[**Temel SKU**](#tab/option-1-create-internal-load-balancer-basic)
@@ -349,7 +349,7 @@ Bu bölümde, bir sanal ağ ve alt ağ oluşturacaksınız.
     | ---                     | ---                                                |
     | Abonelik               | Aboneliğinizi seçin.    |    
     | Kaynak grubu         | Önceki adımda oluşturulan **Createıntlbqs-RG** öğesini seçin.|
-    | Name                   | **Myloadbalancer** girin                                   |
+    | Ad                   | **Myloadbalancer** girin                                   |
     | Bölge         | **Batı Avrupa**'yı seçin.                                        |
     | Tür          | **Dahili**' ı seçin.                                        |
     | SKU           | **Temel** seçin |
@@ -389,7 +389,7 @@ Yük Dengeleme internet trafiği için sanal makineleri dahil etmek üzere **Myb
     | Sanal ağ | **Myvnet**' i seçin. |
     | İlişkili olduğu öğe | **Sanal makineleri** seçin |
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle**’yi seçin.
 
 ### <a name="create-a-health-probe"></a>Durum araştırması oluşturma
 
@@ -449,13 +449,13 @@ Bu bölümde, bir yük dengeleyici kuralı oluşturacaksınız:
 
 Bu bölümde şunları yapacaksınız:
 
-* Yük dengeleyicinin arka uç havuzu için iki sanal makine oluşturun.
+* Yük dengeleyicinin arka uç havuzu için üç sanal makine oluşturun.
 * Sanal makineler için bir kullanılabilirlik kümesi oluşturun.
 * Yük dengeleyiciyi test etmek için sanal makinelere IIS yükleyin.
 
 ### <a name="create-virtual-machines"></a>Sanal makineler oluşturma
 
-Bu bölümde, iki VM oluşturacaksınız (**myVM1** ve **myVM2**).
+Bu bölümde üç VM oluşturacaksınız (**myVM1**, **myVM2**, **myVM3**).
 
 İki VM, **myAvailabilitySet** adlı bir kullanılabilirlik kümesine eklenecektir.
 
@@ -502,13 +502,13 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
   
 6. Ayarları gözden geçirin ve ardından **Oluştur**' u seçin.
 
-7. Aşağıdaki değerleri ve **myVM1** ile aynı diğer tüm ayarları içeren BIR ek VM oluşturmak için 1 ile 8 arasındaki adımları uygulayın:
+7. Aşağıdaki değerleri ve **myVM1** ile aynı diğer tüm ayarları Içeren iki VM oluşturmak için 1 ile 8 arasındaki adımları uygulayın:
 
-    | Ayar | VM 2 |
-    | ------- | ----- |
-    | Name |  **myVM2** |
-    | Kullanılabilirlik kümesi| **MyAvailabilitySet** seçin |
-    | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin|
+    | Ayar | VM 2 | VM 3 |
+    | ------- | ----- | ---- |
+    | Ad |  **myVM2** | **myVM3** |
+    | Kullanılabilirlik kümesi | **MyAvailabilitySet** seçin | **MyAvailabilitySet** seçin |
+    | Ağ güvenlik grubu | Mevcut **Mynsg** 'yi seçin | Mevcut **Mynsg** 'yi seçin |
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Arka uç havuzuna sanal makineler ekleme
 
@@ -522,9 +522,9 @@ Bu VM 'Ler, daha önce oluşturulmuş yük dengeleyicinin arka uç havuzuna ekle
 
 4. **Sanal makineler** bölümünde **+ Ekle**' yi seçin.
 
-5. **MyVM1** ve **myVM2**' nin yanındaki kutuları seçin.
+5. **MyVM1**, **myVM2** ve **myVM3**' nin yanındaki kutuları seçin.
 
-6. **Add (Ekle)** seçeneğini belirleyin.
+6. **Ekle**’yi seçin.
 
 7. **Kaydet**’i seçin.
 ---
@@ -602,7 +602,7 @@ Bu bölümde, **Mytestvm** adlı bir sanal makine oluşturacaksınız.  Bu VM, y
    ```
 8. **MyVM1** ile savunma oturumunu kapatın.
 
-9. IIS’yi ve **myVM2**’deki güncelleştirilmiş iisstart.htm dosyasını yüklemek için 1 ile 6 arasındaki adımları tekrarlayın.
+9. IIS’yi ve **myVM2** ve **myVM3**’teki güncelleştirilmiş iisstart.htm dosyasını yüklemek için 1 ile 6 arasındaki adımları tekrarlayın.
 
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
@@ -634,7 +634,7 @@ Artık gerekli olmadığında kaynak grubunu, yük dengeleyiciyi ve tüm ilgili 
 Bu hızlı başlangıçta:
 
 * Bir Azure Standard veya temel iç yük dengeleyici oluşturuldu
-* Yük dengeleyicisine 2 sanal makine eklendi.
+* Yük dengeleyicisine 3 VM eklenmiş.
 * Yük dengeleyici trafik kuralını, sistem durumu araştırmasını ve sonra yük dengeleyiciyi test edin. 
 
 Azure Load Balancer hakkında daha fazla bilgi edinmek için devam edin:

@@ -11,16 +11,19 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8560acd9c5a11004c5144441d395863c8b85edba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461394"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705073"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Azure Machine Learning için bir güvenlik duvarının arkasındaki çalışma alanını kullan
 
-Bu makalede, Azure Güvenlik Duvarı 'nı Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek üzere nasıl yapılandıracağınızı öğrenin. Azure Machine Learning güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning Için kuruluş güvenliği](concept-enterprise-security.md)
+Bu makalede, Azure Güvenlik Duvarı 'nı Azure Machine Learning çalışma alanınıza ve genel İnternet 'e erişimi denetlemek üzere nasıl yapılandıracağınızı öğrenin. Azure Machine Learning güvenliğini sağlama hakkında daha fazla bilgi için bkz. [Azure Machine Learning Için kuruluş güvenliği](concept-enterprise-security.md).
+
+> [!WARNING]
+> Bir güvenlik duvarının arkasındaki veri depolamaya erişim yalnızca kod ilk deneyimlerinde desteklenir. Bir güvenlik duvarının arkasındaki verilere erişmek için [Azure Machine Learning Studio](overview-what-is-machine-learning-studio.md) kullanılması desteklenmez. Studio ile özel bir ağda veri depolama ile çalışmak için, önce [bir sanal ağ ayarlamanız](../virtual-network/quick-create-portal.md) ve [Studio 'nun bir sanal ağın içinde depolanan verilere erişmesini sağlamanız](how-to-enable-studio-virtual-network.md)gerekir.
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
 
@@ -111,7 +114,7 @@ Bu bölümdeki konaklar Microsoft 'a aittir ve çalışma alanınızın düzgün
 | **Şunun için gerekli:** | **Azure genel** | **Azure Devlet Kurumları** | **Azure China 21Vianet** |
 | ----- | ----- | ----- | ----- |
 | Azure Active Directory | login.microsoftonline.com | login.microsoftonline.us | login.chinacloudapi.cn |
-| Azure portalı | management.azure.com | management.azure.us | management.azure.cn |
+| Azure portal | management.azure.com | management.azure.us | management.azure.cn |
 
 **Azure Machine Learning Konakları**
 

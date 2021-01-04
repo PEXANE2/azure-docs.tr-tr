@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/3/2019
+ms.date: 12/18/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7de97fd775853f64803ab62ac397e754d065e4df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 353c349ebe348addac60c5f9f7b1bf0fbb1fc425
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509334"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703338"
 ---
 # <a name="admin-consent-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda yönetici onayı
 
@@ -50,10 +50,9 @@ https://graph.microsoft.com/mail.send
 | `client_id` | Gerekli | [Azure Portal – uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminin uygulamanıza atandığı **uygulama (istemci) kimliği** . |
 | `redirect_uri` | Gerekli |Uygulamanızın işlenmesi için yanıtın gönderilmesini istediğiniz yeniden yönlendirme URI 'SI. Uygulama kayıt portalı 'nda kaydettiğiniz yeniden yönlendirme URI 'lerinden biriyle tam olarak eşleşmesi gerekir. |
 | `state` | Önerilen | İsteğin belirteç yanıtında de döndürülecek bir değer. İstediğiniz herhangi bir içerik dizesi olabilir. Kullanıcının uygulamadaki durumuyla ilgili bilgileri, uygulamanın bulunduğu sayfa veya görünüm gibi kimlik doğrulama isteği olmadan önce kodlamak için bu durumu kullanın. |
-|`scope` | Gerekli | Uygulama tarafından istenen izin kümesini tanımlar. Bu, statik (//varsayılan kullanılarak) veya dinamik kapsamlar olabilir. Bu, OıDC kapsamlarını ( `openid` , `profile` ,) içerebilir `email` . |
+|`scope` | Gerekli | Uygulama tarafından istenen izin kümesini tanımlar. Bu statik (kullanılarak `/.default` ) ya da dinamik kapsamlar olabilir. Bu, OıDC kapsamlarını ( `openid` , `profile` ,) içerebilir `email` . |
 
-
-Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, parametresinde istediğiniz tüm izinleri onaylaması istenir `scope` .  Statik ( `/.default` ) değeri kullandıysanız, bu, uygulama için gerekli izinlerde bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır.
+Bu noktada, Azure AD 'nin isteği tamamlaması için bir kiracı yöneticisinin oturum açması gerekir. Yöneticinin, parametresinde istediğiniz tüm izinleri onaylaması istenir `scope` .  Statik ( `/.default` ) değeri kullandıysanız, bu, gerekli izinlerde (hem Kullanıcı hem de uygulama) bulunan tüm kapsamlar için v 1.0 Yönetici onay uç noktası ve istek onayı gibi çalışır. Uygulama izinleri istemek için değeri kullanmanız gerekir `/.default` . Yöneticilerin yönetici onayı ekranında verilen bir izni her seferinde görmesini istemiyorsanız `/.default` , en iyi yöntem, izinleri gerekli izinler bölümüne yerleştirmemelidir. Bunun yerine, çalışma zamanında olmasını istediğiniz izinleri kullanmak yerine ekleme ekranında eklemek için dinamik izin kullanabilirsiniz `/.default` .
 
 ### <a name="successful-response"></a>Başarılı yanıt
 

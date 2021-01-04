@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: e67376e2ef79f9711f54ce54d0d91623593ca8ea
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9a35c0dc8a3b994b015d7a8d64f76f7e10d95a00
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853297"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722411"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Azure SQL Yönetilen Örneği için bağlantı mimarisi
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -111,7 +111,7 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu gelen güvenlik kuralları
 
-| Name       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası                        |Protokol|Kaynak           |Hedef|Eylem|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |yönetim  |9000, 9003, 1438, 1440, 1452|TCP     |SqlManagement    |Mı ALT AĞı  |İzin Ver |
 |            |9000, 9003                  |TCP     |Corpnetgördünüz       |Mı ALT AĞı  |İzin Ver |
@@ -121,14 +121,14 @@ SQL yönetilen örneğini sanal ağın içindeki ayrılmış bir alt ağda dağ�
 
 ### <a name="mandatory-outbound-security-rules-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırması ile zorunlu giden güvenlik kuralları
 
-| Name       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
+| Ad       |Bağlantı noktası          |Protokol|Kaynak           |Hedef|Eylem|
 |------------|--------------|--------|-----------------|-----------|------|
 |yönetim  |443, 12000    |TCP     |Mı ALT AĞı        |AzureCloud |İzin Ver |
 |mi_subnet   |Herhangi biri           |Herhangi biri     |Mı ALT AĞı        |Mı ALT AĞı  |İzin Ver |
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Hizmet destekli alt ağ yapılandırmasıyla Kullanıcı tanımlı rotalar
 
-|Name|Adres ön eki|Sonraki atlama|
+|Ad|Adres ön eki|Sonraki atlama|
 |----|--------------|-------|
 |alt ağdan vnetlocal|Mı ALT AĞı|Sanal ağ|
 |mi-13-64-11-sonrakii-Internet|13.64.0.0/11|İnternet|
@@ -311,12 +311,13 @@ Sanal ağ özel bir DNS içeriyorsa, özel DNS sunucusunun ortak DNS kayıtları
 
 **TLS 1,2, giden bağlantılarda zorlanır**: Microsoft 2020 ' de, tüm Azure hizmetlerinde hizmet içi trafik için MICROSOFT için TLS 1,2. Azure SQL yönetilen örneği için, bu, SQL Server ile çoğaltma ve bağlı sunucu bağlantıları için kullanılan giden bağlantılarda TLS 1,2 ile sonuçlandı. SQL yönetilen örneği ile 2016 'den eski SQL Server sürümlerini kullanıyorsanız, lütfen [TLS 1,2 özgü güncelleştirmelerin](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) uygulandığından emin olun.
 
-Şu sanal ağ özellikleri şu anda SQL yönetilen örneği ile desteklenmiyor:
+Şu sanal ağ özellikleri şu anda SQL yönetilen örneği ile *desteklenmiyor* :
 
 - **Microsoft eşlemesi**: ExpressRoute bağlantı hatları üzerinde [Microsoft EŞLEMESINI](../../expressroute/expressroute-faqs.md#microsoft-peering) etkinleştirme, SQL yönetilen örneğinin bulunduğu bir sanal ağ ile doğrudan veya geçişli bir şekilde etkinleştiriliyor, sanal ağ içindeki SQL yönetilen örnek bileşenleri ve bağlı olduğu hizmetler arasındaki trafik akışını etkiler ve kullanılabilirlik sorunlarına neden olur. Microsoft eşlemesi zaten etkinleştirilmiş olan sanal ağa SQL yönetilen örnek dağıtımları başarısız olması beklenir.
 - **Küresel sanal ağ eşlemesi**: Azure bölgelerinde [sanal ağ eşlemesi](../../virtual-network/virtual-network-peering-overview.md) bağlantısı, 9/22/2020 ' dan önce oluşturulan alt ağlara yerleştirilmiş SQL yönetilen örnekleri için çalışmaz.
 - **AzurePlatformDNS**: platform DNS çözümlemesini engellemek için AzurePlatformDNS [HIZMETI etiketinin](../../virtual-network/service-tags-overview.md) kullanılması SQL yönetilen örneği kullanılamıyor olarak işleyebilir. SQL yönetilen örneği, altyapı içinde DNS çözümlemesi için müşteri tanımlı DNS 'i desteklese de platform için platform DNS işlemleri için bir bağımlılık vardır.
 - **NAT ağ geçidi**: belirli BIR genel IP adresiyle giden bağlantıyı denetlemek Için [Azure sanal ağ NAT](../../virtual-network/nat-overview.md) kullanmak, SQL yönetilen örneği kullanılamaz hale gelirse. SQL yönetilen örnek hizmeti şu anda, sanal ağ NAT ile gelen ve giden akışların birlikte bulunmasını sağlamayan temel yük dengeleyicinin kullanımıyla sınırlıdır.
+- **Azure sanal ağ Için IPv6**: [çift yığın IPv4/ıPV6 sanal ağlarına](../../virtual-network/ipv6-overview.md) SQL yönetilen örneği dağıtmanın başarısız olması beklenir. IPv6 adresi öneklerini içeren ağ güvenlik grubu (NSG) veya yol tablosu (UDR) SQL yönetilen örnek alt ağına ilişkilendirirken veya zaten yönetilen örnek alt ağıyla ilişkilendirilmiş olan NSG 'ye veya UDR 'ye IPv6 adres öneklerini eklemek, SQL yönetilen örneği kullanılamaz hale gelirse. NSG ve UDR içeren bir alt ağa yönelik SQL yönetilen örnek dağıtımları, zaten IPv6 ön eklerinin başarısız olması beklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

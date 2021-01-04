@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault gizli dizileri hakkında-Azure Key Vault
-description: Gizli dizi Azure Key Vault REST arabirimine ve geliştirici ayrıntılarına genel bakış.
+description: Azure Key Vault Gizlilike genel bakış.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82930480"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705277"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault gizli dizileri hakkında
 
-Key Vault parolalar ve veritabanı bağlantı dizeleri gibi güvenli parolaların depolanmasını sağlar.
+[Key Vault](../general/overview.md) , parolalar ve veritabanı bağlantı dizeleri gibi genel gizliliklerin güvenli bir şekilde depolanmasını sağlar.
 
 Geliştirici perspektifinden Key Vault API 'Leri, gizli değerleri dizeler olarak kabul eder ve döndürür. Dahili olarak Key Vault, gizli dizileri, her biri en fazla 25k bayt boyutunda olan sekizlik (8 bit bayt) dizileri olarak depolar ve yönetir. Key Vault hizmeti gizli dizileri için semantik bir sağlamaz. Yalnızca verileri kabul eder, şifreler, kaydeder ve gizli bir tanımlayıcı ("kimlik") döndürür. Tanımlayıcı, daha sonraki bir zamanda gizli dizi almak için kullanılabilir.  
 
@@ -35,14 +35,16 @@ Key Vault tüm gizli dizileri şifreli olarak depolanır. Bu şifreleme saydamd�
 
 Gizli verilerin yanı sıra, aşağıdaki öznitelikler de belirtilebilir:  
 
-- *Exp*: intdate, isteðe baðlý, Default, **sonsuza**kadar. *Exp* (sona erme saati) özniteliği, [belirli durumlar](#date-time-controlled-operations)dışında, gizli verilerin alınmayabileceği veya sonrasında sona erme süresini belirler. Bu alan yalnızca, Anahtar Kasası Hizmeti kullanıcılarına belirli bir parolanın kullanılamayacağını bildiren **bilgilendirme** amaçlıdır. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR.   
+- *Exp*: intdate, isteðe baðlý, Default, **sonsuza** kadar. *Exp* (sona erme saati) özniteliği, [belirli durumlar](#date-time-controlled-operations)dışında, gizli verilerin alınmayabileceği veya sonrasında sona erme süresini belirler. Bu alan yalnızca, Anahtar Kasası Hizmeti kullanıcılarına belirli bir parolanın kullanılamayacağını bildiren **bilgilendirme** amaçlıdır. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR.   
 - *NBF*: intdate, isteðe baðlý, Default **artık**. *NBF* (before) özniteliği, [belirli durumlar](#date-time-controlled-operations)dışında gizli verilerin alınamadığı süreyi tanımlar. Bu alan yalnızca **bilgilendirme** amaçlıdır. Değeri, bir IntDate değeri içeren bir sayı OLMALıDıR. 
-- *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. Bu öznitelik, gizli verilerin alınıp alınamayacağını belirtir. Enabled özniteliği *, NBF ve* *Exp*arasında bir işlem olduğunda, *NBF* *ve exp* ile birlikte kullanıldığında, yalnızca Enabled **değeri true**olarak ayarlandığında izin verilir. [Belirli durumlar](#date-time-controlled-operations)dışında, *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
+- *etkin*: Boolean, isteğe bağlı, varsayılan değer **true**'dur. Bu öznitelik, gizli verilerin alınıp alınamayacağını belirtir. Enabled özniteliği *, NBF ve* *Exp* arasında bir işlem olduğunda, *NBF* *ve exp* ile birlikte kullanıldığında, yalnızca Enabled **değeri true** olarak ayarlandığında izin verilir. [Belirli durumlar](#date-time-controlled-operations)dışında, *NBF* ve *Exp* penceresinin dışındaki işlemlere otomatik olarak izin verilmez.  
 
 Gizli öznitelikler içeren herhangi bir yanıta dahil olan ek salt okuma öznitelikleri vardır:  
 
 - *oluşturma*: Int32 Tarih, isteğe bağlı. Oluşturulan öznitelik, bu gizli anahtar sürümünün ne zaman oluşturulduğunu gösterir. Bu değer, bu özniteliğin eklenmesinden önce oluşturulan gizli diziler için null. Değeri, bir IntDate değeri içeren bir sayı olmalıdır.  
 - *güncelleştirildi*: Int32 tarihi, isteğe bağlı. Updated özniteliği, gizli anahtar sürümünün ne zaman güncelleştirildiğini gösterir. Bu değer, bu özniteliğin eklenmesinden önce son güncellenen gizli diziler için null. Değeri, bir IntDate değeri içeren bir sayı olmalıdır.
+
+Her bir Anahtar Kasası nesne türü için ortak öznitelikler hakkında daha fazla bilgi için bkz. [Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış](../general/about-keys-secrets-certificates.md)
 
 ### <a name="date-time-controlled-operations"></a>Tarih-saat denetimli işlemler
 
@@ -68,6 +70,12 @@ Aşağıdaki izinler, her bir kasada, bir kasadaki gizli dizi erişim denetimi g
 
 Gizli dizileri ile çalışma hakkında daha fazla bilgi için, [Key Vault REST API başvurusunda gizli işlemler](/rest/api/keyvault)bölümüne bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
+Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
+- [CLı kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-cli.md)
+- [PowerShell kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-powershell.md)
+- [Azure portal kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-portal.md)
+- [Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
+
 ## <a name="secret-tags"></a>Gizli Etiketler  
 Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key Vault, her birinin 256 karakter adı ve 256 karakter değeri olabilen en fazla 15 etiketi destekler.  
 
@@ -76,14 +84,17 @@ Etiketler biçiminde uygulamaya özgü ek meta verileri belirtebilirsiniz. Key V
 
 ## <a name="azure-storage-account-key-management"></a>Azure depolama hesabı anahtar yönetimi
 
-Key Vault, Azure depolama hesabı anahtarlarını yönetebilir:
+Key Vault, [Azure depolama hesabı](https://docs.microsoft.com/azure/storage/common/storage-account-overview) anahtarlarını yönetebilir:
 
 - Dahili olarak, Key Vault anahtarları Azure Storage hesabıyla listeleyebilir (eşitleyebilir). 
 - Anahtarları düzenli aralıklarla yeniden üretir Key Vault (döndürür).
 - Anahtar değerleri, çağırana yanıt olarak hiçbir şekilde döndürülmez.
 - Key Vault hem depolama hesaplarının hem de klasik depolama hesaplarının anahtarlarını yönetir.
 
-Daha fazla bilgi için bkz. [Azure Key Vault depolama hesabı anahtarları](../secrets/overview-storage-keys.md))
+Daha fazla bilgi için bkz:
+- [Depolama hesabı erişim anahtarları](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Azure Key Vault) depolama hesabı anahtarları yönetimi](../secrets/overview-storage-keys.md)
+
 
 ## <a name="storage-account-access-control"></a>Depolama hesabı erişim denetimi
 
@@ -109,11 +120,18 @@ Bir kullanıcı veya uygulama sorumlusu yönetilen bir depolama hesabında işle
 
 Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki depolama hesabı işlemlerine](/rest/api/keyvault)bakın. İzinleri oluşturma hakkında bilgi için bkz. [kasa-oluşturma veya güncelleştirme](/rest/api/keyvault/vaults/createorupdate) ve [kasa-güncelleştirme erişim ilkesi](/rest/api/keyvault/vaults/updateaccesspolicy).
 
+Key Vault erişimi denetlemek için nasıl yapılır kılavuzlarından:
+- [CLı kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-cli.md)
+- [PowerShell kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-powershell.md)
+- [Azure portal kullanarak Key Vault erişim ilkesi atama](../general/assign-access-policy-portal.md)
+- [Azure rol tabanlı erişim denetimi (Önizleme) ile Key Vault anahtarlarına, sertifikalara ve gizli anahtarlara erişim sağlama](../general/rbac-guide.md)
+
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Key Vault Hakkında](../general/overview.md)
 - [Anahtarlar, gizli diziler ve sertifikalar hakkında](../general/about-keys-secrets-certificates.md)
 - [Anahtarlar hakkında](../keys/about-keys.md)
 - [Sertifikalar hakkında](../certificates/about-certificates.md)
-- [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)
+- [Anahtar kasasına güvenli erişim](../general/secure-your-key-vault.md)
 - [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)

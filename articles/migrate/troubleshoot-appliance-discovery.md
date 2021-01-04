@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 647e07fe32beedbd54ca6c5bb95c1de9564df2fd
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 810ea58c5d88dec53463b9a2b04750169c70e137
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654022"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704036"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure geçişi Gereç ve bulma sorunlarını giderme
 
@@ -42,12 +42,6 @@ Gereç makinesi bir proxy 'nin arkasındaysa bu durum oluşabilir.
 - Giden bağlantıyı denetlemek için URL tabanlı bir güvenlik duvarı proxy 'si kullanıyorsanız, [Bu URL 'leri](migrate-appliance.md#url-access) izin verilenler listesine ekleyin.
 - İnternet 'e bağlanmak için bir kesintiye uğratan ara sunucu kullanıyorsanız, [Bu adımları](./migrate-appliance.md)kullanarak proxy SERTIFIKASıNı gereç sanal makinesine aktarın.
 
-
-## <a name="clicking-on-login-button-opens-a-new-tab-with-no-device-code"></a>' Login' düğmesine tıklanması, cihaz kodu olmadan yeni bir sekme açar
-
-Gereç yapılandırma yöneticisinde ' Login' düğmesine tıkladıktan sonra, kod olmadan yeni bir sekme açılır, Gereç Yapılandırma Yöneticisi sekmesine geri dönün ve aşağıdaki ekran görüntüsünde gösterildiği gibi ' Login' düğmesinin altında bulunan kalın yazı tipinde Cihaz kodunu bulabilirsiniz. Kodu kopyalayın ve Azure ile kimlik doğrulamak için oturum açma sekmesine yapıştırın.
-
-![Cihaz kodu](./media/troubleshoot-appliance-discovery/code.png)
 
 ## <a name="cant-sign-into-azure-from-the-appliance-web-app"></a>Azure 'da gereç Web uygulamasından oturum açılamıyor
 

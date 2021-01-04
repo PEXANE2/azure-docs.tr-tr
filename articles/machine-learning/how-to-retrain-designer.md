@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme
+title: Tasarımcıda modelleri yeniden eğitme işlem hattı parametrelerini kullanma
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatları ile makine öğrenimi modellerini yeniden eğitme hakkında bilgi edinin.
+description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatları ve işlem hattı parametreleriyle modelleri yeniden eğitme.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: likebupt
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: d754674fe3aa65fa9fd8540b05083979ce96aff8
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6efb0f095f8a157f723a3b7c0c2b229546ebb36b
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437125"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708475"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme
+# <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>Tasarımcıda modelleri yeniden eğitme işlem hattı parametrelerini kullanma
 
 
-Bu nasıl yapılır makalesinde, bir makine öğrenimi modelini yeniden eğitmek için Azure Machine Learning tasarımcısını kullanmayı öğreneceksiniz. İş akışınızı otomatikleştirmek için yayımlanmış işlem hatlarını kullanacaksınız ve modelinizi yeni verilerde eğtirecek parametreleri ayarlayacaksınız. 
+Bu nasıl yapılır makalesinde, işlem hattı parametrelerini kullanarak makine öğrenimi modelini yeniden eğitme Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğreneceksiniz. İş akışınızı otomatikleştirmek için yayımlanmış işlem hatlarını kullanacaksınız ve modelinizi yeni verilerde eğtirecek parametreleri ayarlayacaksınız. İşlem hattı parametreleri, farklı işler için mevcut işlem hatlarını yeniden kullanmanıza olanak sağlar.  
 
 Bu makalede şunları öğreneceksiniz:
 

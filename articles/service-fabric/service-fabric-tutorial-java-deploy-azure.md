@@ -4,12 +4,12 @@ description: Bu öğreticide, Java Service Fabric uygulamasının bir Azure Serv
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 89c49ae530b7a4716bc6e8bf0ea6ccb011847eb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c2e2b2883bfa01d3a36de5d58425449f6f973010
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738913"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702166"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Öğretici: Azure’da bir Service Fabric kümesine Java uygulamasını dağıtma
 
@@ -30,7 +30,7 @@ Bu öğretici dizisinde şunların nasıl yapıldığını öğrenirsiniz:
 > * [Uygulama için izleme ve tanılamayı ayarlama](service-fabric-tutorial-java-elk.md)
 > * [CI/CD ayarlama](service-fabric-tutorial-java-jenkins.md)
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu öğreticiye başlamadan önce:
 
@@ -114,10 +114,10 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
 10. Aşağıdaki komutu kullanarak bir Event Hubs kaynağı oluşturun. namespaceName, eventHubName, consumerGroupName, sendAuthorizationRule ve receiveAuthorizationRule ayrıntılarını girmek için istemleri izleyin.
 
     ```azurecli
-    az group deployment create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
+    az deployment group create -g [RESOURCE-GROUP-NAME] --template-file eventhubsdeploy.json
 
     Example:
-    az group deployment create -g testeventhubsrg --template-file eventhubsdeploy.json
+    az deployment group create -g testeventhubsrg --template-file eventhubsdeploy.json
     Please provide string value for 'namespaceName' (? for help): testeventhubnamespace
     Please provide string value for 'eventHubName' (? for help): testeventhub
     Please provide string value for 'consumerGroupName' (? for help): testeventhubconsumergroup
@@ -177,7 +177,7 @@ Aşağıdaki adımlar, bir Service Fabric kümesinde uygulamanızı dağıtmak i
     ```
 
 13. **sfdeploy.parameters.json** dosyasını açın. Aşağıdaki parametreleri değiştirin ve dosyayı kaydedin.
-    - **clusterName** . Yalnızca küçük harf ve sayısal değer kullanın.
+    - **clusterName**. Yalnızca küçük harf ve sayısal değer kullanın.
     - **adminUserName** (boş olmayan bir değer)
     - **adminPassword** (boş olmayan bir değer)
 

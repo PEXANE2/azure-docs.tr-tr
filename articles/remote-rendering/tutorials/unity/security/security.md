@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 200d23f390c9c22af90099e1e136c832287aa10d
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d8a7bb620b7fcc9c878986d3575e22bb6f0f77bc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207538"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724130"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Öğretici: Azure uzaktan Işleme ve model depolamanın güvenliğini sağlama
 
@@ -167,7 +167,7 @@ var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelAsy
 
 1. Değerlerinizi **Remoterenderingcoordinator** bileşenine ekleyin. [Model dönüştürme Için hızlı başlangıç](../../../quickstarts/convert-model.md)sonrasında değerlerinizin şu olması gerekir:
 
-    * Depolama hesabı **adı**: depolama hesabınız için seçtiğiniz genel benzersiz ad depolama hesabı adıdır. Bu hızlı başlangıçta *arrtutorialstorage*idi, sizin değer farklı olacaktır.
+    * Depolama hesabı **adı**: depolama hesabınız için seçtiğiniz genel benzersiz ad depolama hesabı adıdır. Bu hızlı başlangıçta *arrtutorialstorage* idi, sizin değer farklı olacaktır.
     * **BLOB kapsayıcısı adı**: arroutput, BLOB depolama kapsayıcısı
     * **Model yolu**: dosyada *arrconfig.js* tanımlanan "Outputfolderpath" ve "outputAssetFileName" birleşimi. Hızlı başlangıçta "outputFolderPath" idi: "dönüştürülmüş/robot", "outputAssetFileName": "robot. arrAsset". Bu, "dönüştürülmüş/robot/robot. arrAsset" model yolu değeriyle sonuçlanır, ancak değer farklı olacaktır.
 
@@ -190,7 +190,7 @@ Yerel uygulamadan kaldırmak için, daha önce bir "parola", AccountKey. Bu, Azu
 
 AAD kimlik doğrulaması, ARR 'yi daha denetimli bir şekilde hangi bireylerin veya grupların kullandığını belirlemenizi sağlar. ARR, hesap anahtarı kullanmak yerine [erişim belirteçlerini](../../../../active-directory/develop/access-tokens.md) kabul etmek için yerleşik desteğe sahiptir. Erişim belirteçlerini, zaman sınırlı, kullanıcıya özgü bir anahtar olarak düşünebilirsiniz. Bu, yalnızca istediği belirli kaynakların belirli bölümlerinin kilidini açabilir.
 
-**Remoterenderingcoordinator** betiği, uzak oturum yönetimini yapılandırmak için kullanılan bir **Azurefrontendaccountınfo** nesnesi döndüren bir yöntemi tutan **ARRCredentialGetter**adlı bir temsilciye sahiptir. **ARRCredentialGetter**'e farklı bir yöntem atayabiliriz. Azure erişim belirteci Içeren bir **Azurefrontendaccountınfo** nesnesi oluşturarak Azure oturum açma akışı kullanmamızı sağlar. Bu erişim belirteci, oturum açan kullanıcıya özgü olur.
+**Remoterenderingcoordinator** betiği, uzak oturum yönetimini yapılandırmak için kullanılan bir **Azurefrontendaccountınfo** nesnesi döndüren bir yöntemi tutan **ARRCredentialGetter** adlı bir temsilciye sahiptir. **ARRCredentialGetter**'e farklı bir yöntem atayabiliriz. Azure erişim belirteci Içeren bir **Azurefrontendaccountınfo** nesnesi oluşturarak Azure oturum açma akışı kullanmamızı sağlar. Bu erişim belirteci, oturum açan kullanıcıya özgü olur.
 
 1. [Nasıl yapılır: dağıtılan uygulamalar için kimlik doğrulama-kimlik doğrulamasını yapılandırma](../../../how-tos/authentication.md#authentication-for-deployed-applications), özellikle Azure uzamsal bağlayıcılarında listelenen YÖNERGELERI [Azure AD Kullanıcı kimlik doğrulaması](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication)' nda takip edersiniz. Bu, yeni bir Azure Active Directory uygulamasının kaydolmasını ve ARR örneğinizin erişimini yapılandırmayı içerir.
 1. Yeni AAD uygulamasını yapılandırdıktan sonra AAD uygulamanızın aşağıdaki görüntüler gibi göründüğünü denetleyin:
@@ -204,9 +204,9 @@ AAD kimlik doğrulaması, ARR 'yi daha denetimli bir şekilde hangi bireylerin v
     **AAR-> AccessControl (IAM)** ![ ARR rolü](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > *Sahip* rolü, istemci uygulaması aracılığıyla oturumları yönetmek için yeterli değildir. Oturumları yönetme olanağı vermek istediğiniz her kullanıcı için, rol **Uzaktan Işleme istemcisi**sağlamalısınız. Oturumları yönetmek ve modelleri dönüştürmek istediğiniz her kullanıcı için, rol **Uzaktan Işleme Yöneticisi**sağlamanız gerekir.
+    > *Sahip* rolü, istemci uygulaması aracılığıyla oturumları yönetmek için yeterli değildir. Oturumları yönetme olanağı vermek istediğiniz her kullanıcı için, rol **Uzaktan Işleme istemcisi** sağlamalısınız. Oturumları yönetmek ve modelleri dönüştürmek istediğiniz her kullanıcı için, rol **Uzaktan Işleme Yöneticisi** sağlamanız gerekir.
 
-Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandığını değiştirmeniz gerekir. Bunu, yeni bir **Azurefrontendaccountınfo** nesnesi döndürecek bir **BaseARRAuthentication**örneğini uygulayarak yapacağız. Bu durumda, hesap bilgileri Azure erişim belirteciyle yapılandırılır.
+Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandığını değiştirmeniz gerekir. Bunu, yeni bir **Azurefrontendaccountınfo** nesnesi döndürecek bir **BaseARRAuthentication** örneğini uygulayarak yapacağız. Bu durumda, hesap bilgileri Azure erişim belirteciyle yapılandırılır.
 
 1. **Aadauthentication** adlı yeni bir betik oluşturun ve kodunu aşağıdaki kodla değiştirin:
 
@@ -255,6 +255,14 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
             get => azureRemoteRenderingAccountID.Trim();
             set => azureRemoteRenderingAccountID = value;
         }
+    
+        [SerializeField]
+        private string azureRemoteRenderingAccountAuthenticationDomain;
+        public string AzureRemoteRenderingAccountAuthenticationDomain
+        {
+            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
+            set => azureRemoteRenderingAccountAuthenticationDomain = value;
+        }
 
         public override event Action<string> AuthenticationInstructions;
 
@@ -262,7 +270,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
 
-        string[] scopes => new string[] { "https://sts.mixedreality.azure.com/mixedreality.signin" };
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
 
         public void OnEnable()
         {
@@ -279,7 +287,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 
                 var AD_Token = result.AccessToken;
 
-                return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+                return await Task.FromResult(new AzureFrontendAccountInfo(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -359,7 +367,7 @@ Azure 'un her şeyi sunduğumuz için, kodunuzun AAR hizmetine nasıl bağlandı
 >[!NOTE]
 > Bu kod, hayır anlamına gelir ve ticari bir uygulama için henüz hazırlanmaz. Örneğin, en azından, muhtemelen oturumu kapatma olanağını da eklemek isteyeceksiniz. Bu, `Task RemoveAsync(IAccount account)` istemci uygulaması tarafından sunulan yöntemi kullanılarak yapılabilir. Bu kod yalnızca öğretici kullanımına yöneliktir, uygulamanız uygulamanıza özgüdür.
 
-Kod önce **AquireTokenSilent**kullanarak belirteci sessizce almaya çalışır. Bu, Kullanıcı daha önce bu uygulamayı doğrulamışsa bu başarılı olur. Başarılı olmazsa, daha fazla kullanıcı ile ilgili stratejiye geçin.
+Kod önce **AquireTokenSilent** kullanarak belirteci sessizce almaya çalışır. Bu, Kullanıcı daha önce bu uygulamayı doğrulamışsa bu başarılı olur. Başarılı olmazsa, daha fazla kullanıcı ile ilgili stratejiye geçin.
 
 Bu kod için, bir erişim belirteci almak üzere [cihaz kod akışını](../../../../active-directory/develop/v2-oauth2-device-code.md) kullanıyoruz. Bu akış, kullanıcının bir bilgisayar veya mobil cihazda Azure hesabında oturum açmasını ve elde edilen belirtecin HoloLens uygulamasına geri gönderilmesini sağlar.
 
@@ -369,7 +377,7 @@ Bu sınıfın bir ARR perspektifinden en önemli bölümü bu satırdır:
 return await Task.FromResult(new AzureFrontendAccountInfo(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Burada hesap etki alanını, hesap KIMLIĞINI ve erişim belirtecini kullanarak yeni bir **Azurefrontendaccountınfo** nesnesi oluşturacağız. Bu belirteç daha sonra, Kullanıcı daha önce yapılandırılan rol tabanlı izinlere göre yetkilendirildiği sürece, uzak işleme oturumlarını sorgulamak, oluşturmak ve birleştirmek için ARR hizmeti tarafından kullanılır.
+Burada hesap etki alanını, hesap KIMLIĞINI, hesap kimlik doğrulama etki alanını ve erişim belirtecini kullanarak yeni bir **Azurefrontendaccountınfo** nesnesi oluşturacağız. Bu belirteç daha sonra, Kullanıcı daha önce yapılandırılan rol tabanlı izinlere göre yetkilendirildiği sürece, uzak işleme oturumlarını sorgulamak, oluşturmak ve birleştirmek için ARR hizmeti tarafından kullanılır.
 
 Bu değişiklik ile uygulamanın geçerli durumu ve Azure kaynaklarınıza erişimi şöyle görünür:
 
@@ -390,7 +398,8 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
     * **Hesap etki alanı** , **Remoterenderingcoordinator**'ın hesap etki alanında kullandığınız etki alanıdır.
     * **Active Directory Uygulama ISTEMCI kimliği** , AAD uygulamanızın kaydında bulunan *uygulama (istemci) kimliğidir* (aşağıdaki resme bakın).
     * **Azure KIRACı kimliği** , AAD uygulama kaydınızda bulunan *Dizin (kiracı) kimliğidir* (aşağıdaki resme bakın).
-    * **Azure uzaktan Işleme hesap kimliği** , **Remoterenderingcoordinator**IÇIN kullanmakta olduğunuz **Hesap kimliğidir** .
+    * **Azure uzaktan Işleme hesap kimliği** , **Remoterenderingcoordinator** IÇIN kullanmakta olduğunuz **Hesap kimliğidir** .
+    * **Hesap kimlik doğrulama etki alanı** , **Remoterenderingcoordinator**'Da kullanmakta olduğunuz **Hesap kimlik doğrulama etki alanıdır** .
 
     ![Uygulama (istemci) KIMLIĞINI ve dizin (kiracı) KIMLIĞINI vurgulayan ekran görüntüsü.](./media/app-overview-data.png)
 
@@ -403,7 +412,7 @@ Unity düzenleyicisinde, AAD kimlik doğrulaması etkin olduğunda, uygulamayı 
 
 ## <a name="build-to-device"></a>Cihaza oluştur
 
-MSAL to Device kullanarak bir uygulama oluşturuyorsanız projenizin **varlıklar** klasörüne bir dosya eklemeniz gerekir. Bu, derleyicinin **öğretici varlıklarına**dahil olan *Microsoft.Identity.Client.dll* kullanarak uygulamayı doğru şekilde oluşturmasına yardımcı olur.
+MSAL to Device kullanarak bir uygulama oluşturuyorsanız projenizin **varlıklar** klasörüne bir dosya eklemeniz gerekir. Bu, derleyicinin **öğretici varlıklarına** dahil olan *Microsoft.Identity.Client.dll* kullanarak uygulamayı doğru şekilde oluşturmasına yardımcı olur.
 
 1. **link.xml** adlı **varlıklara** yeni bir dosya ekleyin
 1. Dosyasına aşağıdakileri ekleyin:
@@ -418,7 +427,7 @@ MSAL to Device kullanarak bir uygulama oluşturuyorsanız projenizin **varlıkla
     </linker>
     ```
 
-1. Değişiklikleri Kaydet
+1. Değişiklikleri kaydedin
 
 Hızlı Başlangıç bölümünde bulunan adımları izleyin: HoloLens 'te [Unity örneği dağıtma-](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)HoloLens 'e derlemek Için örnek projeyi derleyin.
 

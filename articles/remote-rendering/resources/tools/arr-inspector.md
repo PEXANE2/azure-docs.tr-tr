@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204750"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723835"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>ArrInspector inceleme aracı
 
@@ -25,13 +25,13 @@ ARR sunucunuzun ana bilgisayar adını (bitiş `mixedreality.azure.com` ) edindi
 Çağıran uygulama `ConnectToArrInspectorAsync` zaten BIR bilgisayarda çalışıyorsa:
 
 * Unity tümleştirmesi kullanıyorsanız, sizin için otomatik olarak başlatılabilir.
-* Aksi takdirde, dosyayı *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici*bölümünde bulabilirsiniz.
+* Aksi takdirde, dosyayı *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici* bölümünde bulabilirsiniz.
 
 Uygulama bir HoloLens üzerinde çalışıyorsa:
 
 1. [Windows cihaz portalını](/windows/mixed-reality/using-the-windows-device-portal)kullanarak HoloLens 'e erişin.
 1. *System > dosya Gezgini*' ne gidin.
-1. *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici*öğesine gidin.
+1. *Kullanıcı klasörleri \\ LocalAppData \\ [your_app] \\ AC \\ geçici* öğesine gidin.
 1. *StartArrInspector.html* 'yi bilgisayarınıza kaydedin.
 1. Oturumun ArrInspector yüklemek için *StartArrInspector.html* 'yi açın.
 
@@ -108,17 +108,3 @@ Sağ üst köşede, bir anahtar, panellerin canlı güncelleştirmesini duraklat
 ![Duraklatma modu](./media/pause-mode.png)
 
 Canlı güncelleştirme yeniden etkinleştirildiğinde tüm paneller sıfırlanır.
-
-## <a name="host-configuration"></a>Konak yapılandırması
-
-Araç varsayılan olarak, ArrInspector hizmet veren ana bilgisayarda çalışan ARR sunucusuna bağlanır. Ancak, araç noktası açık olan bir ARR örneği çalıştırdığı varsayıldığında, başka bir sunucuyu incelemek üzere yapılandırabilirsiniz.
-
-Bunu yapmak için, üst bilgi çubuğunun solundaki ana menüye erişin ve *konak yapılandırması*' nı seçin. **Yeni konak Ekle**' ye tıklayın ve adı ve ana bilgisayar adını girin. *Ana bilgisayar* adı için yalnızca içinde biten ana bilgisayar adını kullanın `.mixedreality.azure.com` , `http://` bir bağlantı noktası eklemeyin.
-
-![Konak Yapılandırması](./media/host-configuration.png)
-
-Bir konaktan diğerine hızlıca geçiş yapmak için sağ üst köşedeki açılan eklentiyi kullanın.
-
-![Konak açılan kutusu](./media/host-switch-combo.png)
-
-Konak listesi tarayıcı yerel deposunda depolanır, bu nedenle aynı tarayıcı yeniden kullanılırken korunur.

@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/2/2020
-ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 12/18/2020
+ms.openlocfilehash: e7f5b3ae0a4dc7faa67a361b210b1d014e1f1b93
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533629"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722139"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics aramalar için başvuru verilerini kullanma
 
@@ -137,6 +137,18 @@ INTO    output
 FROM    Step1
 JOIN    refData2 ON refData2.Desc = Step1.Desc 
 ``` 
+
+## <a name="iot-edge-jobs"></a>IoT Edge işleri
+
+Stream Analytics Edge işleri için yalnızca yerel başvuru verileri desteklenir. IoT Edge cihaza bir iş dağıtıldığında, Kullanıcı tanımlı dosya yolundan başvuru verilerini yükler. Cihaza bir başvuru veri dosyası hazırlayın. Bir Windows kapsayıcısı için, başvuru veri dosyasını yerel sürücüye yerleştirin ve yerel sürücüyü Docker kapsayıcısı ile paylaşabilirsiniz. Bir Linux kapsayıcısı için, bir Docker birimi oluşturun ve veri dosyasını birime doldurun.
+
+IoT Edge güncelleştirmedeki başvuru verileri bir dağıtım tarafından tetiklenir. Tetiklendikten sonra Stream Analytics modülü, çalışan işi durdurmadan güncelleştirilmiş verileri seçer.
+
+Başvuru verilerini güncelleştirmenin iki yolu vardır:
+
+* Azure portal Stream Analytics işinizdeki başvuru verileri yolunu güncelleştirin.
+
+* IoT Edge dağıtımını güncelleştirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

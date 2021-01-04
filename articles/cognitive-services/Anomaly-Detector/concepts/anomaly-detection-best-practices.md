@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b02ccea396fc65f9ecfe1d59e953da7440e87951
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363659"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705158"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomali algılayıcı API 'sini kullanmaya yönelik en iyi uygulamalar
 
@@ -50,7 +50,7 @@ Batch anomali algılama kullanılarak aynı veri kümesi aşağıda verilmiştir
 
 ![Batch metodunu kullanarak anomali algılamayı gösteren resim](../media/entire.png)
 
-## <a name="data-preparation"></a>Veri hazırlama
+## <a name="data-preparation"></a>Verileri hazırlama
 
 Anomali algılayıcı API 'SI, bir JSON istek nesnesi halinde biçimlendirilen zaman serisi verilerini kabul eder. Zaman serisi, zaman içinde sıralı olarak kaydedilmiş herhangi bir sayısal veri olabilir. API 'nin performansını geliştirmek için zaman serisi verilerinizin pencerelerini anomali algılayıcı API uç noktasına gönderebilirsiniz. Gönderebilmeniz gereken en az veri noktası sayısı 12, üst sınır 8640 puntodur. [Ayrıntı düzeyi](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) , verilerinizin örneklendiği hız olarak tanımlanmıştır. 
 
@@ -104,4 +104,4 @@ Akış verileriniz kısa bir aralıkta (örneğin, saniyeler veya dakikalar) ör
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Anomali Algılayıcısı API'si nedir?](../overview.md)
-* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar saptama](../quickstarts/client-libraries.md)

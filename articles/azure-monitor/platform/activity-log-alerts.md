@@ -4,12 +4,12 @@ description: Etkinlik günlüğünde belirli olaylar meydana geldiğinde SMS, We
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 836fc20b6c3d46766801dce0e2aeda83a217d6a3
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536090"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708441"
 ---
 # <a name="alerts-on-activity-log"></a>Etkinlik günlüğü uyarıları
 
@@ -18,7 +18,8 @@ ms.locfileid: "95536090"
 Etkinlik günlüğü uyarıları, uyarıda belirtilen koşullara uyan yeni bir [etkinlik günlüğü olayı](activity-log-schema.md) gerçekleştiğinde etkinleştiği uyarılardır. [Azure etkinlik günlüğüne](platform-logs-overview.md)kaydedilen olayların sırasına ve hacmine bağlı olarak, uyarı kuralı başlatılır. Etkinlik günlüğü uyarı kuralları, Azure kaynaklarıdır, bu nedenle bir Azure Resource Manager şablonu kullanılarak oluşturulabilirler. Ayrıca, Azure portal oluşturulabilir, güncelleştirilemeyebilir veya silinebilirler. Bu makalede, etkinlik günlüğü uyarılarının arkasındaki kavramlar tanıtılmaktadır. Etkinlik günlüğü uyarı kurallarının oluşturulması veya kullanımı hakkında daha fazla bilgi için bkz. [etkinlik günlüğü uyarıları oluşturma ve yönetme](alerts-activity-log.md).
 
 > [!NOTE]
-> Etkinlik günlüğü uyarı kategorisinde olaylar **için uyarılar oluşturulamıyor** .
+> * Etkinlik günlüğü uyarı kategorisinde olaylar **için uyarılar oluşturulamıyor** .
+> * Güvenlik kategorisi ile etkinlik günlüğü uyarıları, [Yeni yükseltilen bir akışta](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) 'da da tanımlanabilir
 
 Genellikle, şu durumlarda bildirim almak için etkinlik günlüğü uyarıları oluşturursunuz:
 

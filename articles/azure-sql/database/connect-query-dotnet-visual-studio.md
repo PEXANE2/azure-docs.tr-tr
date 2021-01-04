@@ -12,76 +12,47 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: a864b2b3e0379a8b0a1d67c97a63b3d5c52f9e58
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669718"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705218"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak ve veritabanını sorgulamak için Visual Studio 'Da .NET ve C# kullanın
-[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>Hızlı başlangıç: bir veritabanına bağlanmak ve veritabanını sorgulamak için Visual Studio 'Da .NET ve C# kullanın
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Bu hızlı başlangıçta, Azure SQL veritabanı 'nda Transact-SQL deyimleriyle bir veritabanını sorgulamak için Visual Studio 'da [.NET Framework](https://www.microsoft.com/net/) ve C# kodunun nasıl kullanılacağı gösterilmektedir.
+Bu hızlı başlangıçta, Azure SQL veya SYNAPSE SQL ile Transact-SQL deyimleriyle bir veritabanını sorgulamak için Visual Studio 'da [.NET Framework](https://www.microsoft.com/net/) ve C# kodunun nasıl kullanılacağı gösterilmektedir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure SQL veritabanı 'nda bir veritabanı. Azure SQL veritabanı 'nda bir veritabanı oluşturmak ve yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
-
-  | Eylem | SQL Veritabanı | SQL Yönetilen Örnek | Azure VM’lerde SQL Server |
-  |:--- |:--- |:---|:---|
-  | Oluştur| [Portal](single-database-create-quickstart.md) | [Portal](../managed-instance/instance-create-quickstart.md) | [Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  || [CLI](scripts/create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
-  | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](firewall-create-server-level-portal-quickstart.md)| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server’a bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
-  |Veri yükleme|Hızlı başlangıç başına yüklenen Adventure Works|[Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) | [Geniş dünyada içeri aktarıcılar geri yükleme](../managed-instance/restore-sample-database-quickstart.md) |
-  |||[GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma| [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) 'Dan bir [bacpac](database-import.md) dosyasından Adventure Works 'ü geri yükleme veya içeri aktarma|
-  |||
-
-  > [!IMPORTANT]
-  > Bu makaledeki betikler, Adventure Works veritabanını kullanmak için yazılmıştır. SQL yönetilen örneği ile, Adventure Works veritabanını bir örnek veritabanına aktarmanız veya bu makaledeki betikleri Wide World Importers veritabanını kullanacak şekilde değiştirmeniz gerekir.
-
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Community, Professional veya Enterprise Edition.
+- Sorgu çalıştırabileceğiniz bir veritabanı.
 
-## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
-
-Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
-
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
-
-3. **Genel bakış** sayfasında, Azure SQL veritabanı 'ndaki bir veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya Azure SQL yönetilen örneği için **konak** ' ın YANıNDAKI tam sunucu adını (veya IP adresini) veya Azure VM 'de SQL Server ' yi gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
-
-> [!NOTE]
-> Azure VM 'de SQL Server yönelik bağlantı bilgileri için bkz. [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Azure SQL veritabanı 'nda veritabanını sorgulamak için kod oluşturma
 
 1. Visual Studio 'da yeni bir proje oluşturun. 
    
-1. **Yeni proje** iletişim kutusunda, **Visual C#** , **konsol uygulaması (.NET Framework)** seçeneğini belirleyin.
+1. **Yeni proje** iletişim kutusunda, **Visual C#**, **konsol uygulaması (.NET Framework)** seçeneğini belirleyin.
    
-1. Proje adı için *SQLtest* girin ve ardından **Tamam** ' ı seçin. Yeni proje oluşturulur. 
+1. Proje adı için *SQLtest* girin ve ardından **Tamam**' ı seçin. Yeni proje oluşturulur. 
    
-1. **Proje**  >  **NuGet Paketlerini Yönet** ' i seçin. 
+1. **Proje**  >  **NuGet Paketlerini Yönet**' i seçin. 
    
-1. **NuGet Paket Yöneticisi** ' nde, **Gözden** geçirme sekmesini seçin, sonra **Microsoft. Data. SqlClient** ' ı arayın ve seçin.
+1. **NuGet Paket Yöneticisi**' nde, **Gözden** geçirme sekmesini seçin, sonra **Microsoft. Data. SqlClient**' ı arayın ve seçin.
    
-1. **Microsoft. Data. SqlClient** sayfasında, **Install** ' ı seçin. 
+1. **Microsoft. Data. SqlClient** sayfasında, **Install**' ı seçin. 
    - İstenirse, yüklemeye devam etmek için **Tamam** ' ı seçin. 
-   - Bir **Lisans kabul** penceresi görüntülenirse **kabul ediyorum** ' u seçin.
+   - Bir **Lisans kabul** penceresi görüntülenirse **kabul ediyorum**' u seçin.
    
 1. Yüklemesi tamamlandığında, **NuGet Paket Yöneticisi 'ni** kapatabilirsiniz. 
    
 1. Kod Düzenleyicisi 'nde, **program.cs** içeriğini aşağıdaki kodla değiştirin. ,, Ve için değerlerinizi değiştirin `<your_server>` `<your_username>` `<your_password>` `<your_database>` .
-   
-   >[!IMPORTANT]
-   >Bu örnekteki kod, veritabanınızı oluştururken kaynak olarak seçebileceğiniz örnek AdventureWorksLT verilerini kullanır. Veritabanınızda farklı veriler varsa, SELECT sorgusunda kendi veritabanınızdaki tabloları kullanın. 
    
    ```csharp
    using System;
@@ -107,12 +78,7 @@ Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan y
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       StringBuilder sb = new StringBuilder();
-                       sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
-                       sb.Append("FROM [SalesLT].[ProductCategory] pc ");
-                       sb.Append("JOIN [SalesLT].[Product] p ");
-                       sb.Append("ON pc.productcategoryid = p.productcategoryid;");
-                       String sql = sb.ToString();
+                       String sql = "SELECT name, collation_name FROM sys.databases";
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
@@ -140,7 +106,7 @@ Veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan y
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
 1. Uygulamayı çalıştırmak için **hata**  >  **ayıklamayı Başlat hata** Ayıkla ' yı seçin ya da araç çubuğundan **Başlat** ' ı seçin veya **F5** tuşuna basın.
-1. Veritabanınızdaki ilk 20 kategori/ürün satırı döndürüldüğünden emin olun ve ardından uygulama penceresini kapatın.
+1. Veritabanı adlarının ve harmanlamaların döndürüldüğünden emin olun ve ardından uygulama penceresini kapatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

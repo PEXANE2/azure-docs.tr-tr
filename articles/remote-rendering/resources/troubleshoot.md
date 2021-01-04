@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 50abfec19295f80fa79864fedb31eadd31dd4d69
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203679"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722241"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -18,12 +18,12 @@ Bu sayfada, Azure uzaktan Işleme ile müdahale eden genel sorunlar ve bunları 
 
 ## <a name="cant-link-storage-account-to-arr-account"></a>Depolama hesabı ARR hesabına bağlanamıyor
 
-Bazen [bir depolama hesabının bağlanması](../how-tos/create-an-account.md#link-storage-accounts) sırasında uzaktan işleme hesabı listelenmez. Bu sorunu onarmak için Azure portal ARR hesabına gidin ve soldaki **Ayarlar** grubunda bulunan **kimlik** ' i seçin. **Durumun** **Açık**olarak ayarlandığından emin olun.
+Bazen [bir depolama hesabının bağlanması](../how-tos/create-an-account.md#link-storage-accounts) sırasında uzaktan işleme hesabı listelenmez. Bu sorunu onarmak için Azure portal ARR hesabına gidin ve soldaki **Ayarlar** grubunda bulunan **kimlik** ' i seçin. **Durumun** **Açık** olarak ayarlandığından emin olun.
 ![Unity çerçevesi hata ayıklayıcısı](./media/troubleshoot-portal-identity.png)
 
 ## <a name="client-cant-connect-to-server"></a>İstemci sunucuya bağlanamıyor
 
-Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) [sistem gereksinimlerinde](../overview/system-requirements.md#network-ports)belirtilen bağlantı noktalarını engellemediğinden emin olun.
+Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) [sistem gereksinimlerinde](../overview/system-requirements.md#network-firewall)belirtilen bağlantı noktalarını engellemediğinden emin olun.
 
 ## <a name="error-disconnected-videoformatnotavailable"></a>Hata ' `Disconnected: VideoFormatNotAvailable` '
 
@@ -33,7 +33,7 @@ GPU 'nun donanım video kodunu çözmeyi destekleyip desteklemediğini denetleyi
 
 ## <a name="retrieve-sessionconversion-status-fails"></a>Oturum/dönüştürme durumunu alma başarısız
 
-REST API komutlarının çok sık gönderilmesi sunucunun başarısız olmasına ve sonunda hata döndürmesine neden olur. Daraltma çalışmasının http durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+REST API komutlarının çok sık gönderilmesi sunucunun başarısız olmasına ve sonunda hata döndürmesine neden olur. Daraltma çalışmasının http durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik** bir gecikme olmalıdır.
 
 Not Bu sınır yalnızca doğrudan çağrıldığında, ancak, ya da gibi C#/C + + ortaklarınıza REST API çağrıları etkilemez `Session.GetPropertiesAsync` `Session.RenewAsync` `Frontend.GetAssetConversionStatusAsync` .
 
@@ -165,7 +165,7 @@ Bu sorunun nedenleri MSAA, HDR veya post işlemini etkinleştirme olabilir. Dü�
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Unity Düzenleyicisi için derlerken hata ayıklamayı kullan
 
-Unity çözümünün *derleme türünü* **hata ayıklaması**için değiştirin. Unity düzenleyicisinde ARR testi yaparken, tanımlama `UNITY_EDITOR` yalnızca ' Debug ' yapılarında kullanılabilir. Bu, [dağıtılan uygulamalar](../quickstarts/deploy-to-hololens.md)için kullanılan yapı türü ile ilgili değildir ve burada ' Release ' derlemelerini tercih etmelisiniz.
+Unity çözümünün *derleme türünü* **hata ayıklaması** için değiştirin. Unity düzenleyicisinde ARR testi yaparken, tanımlama `UNITY_EDITOR` yalnızca ' Debug ' yapılarında kullanılabilir. Bu, [dağıtılan uygulamalar](../quickstarts/deploy-to-hololens.md)için kullanılan yapı türü ile ilgili değildir ve burada ' Release ' derlemelerini tercih etmelisiniz.
 
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>HoloLens 2 için Unity örnekleri derlenirken derleme sorunları
 
@@ -247,7 +247,7 @@ Coplanar yüzeylerinin çeşitli nedenleri olabilir:
 
 ## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Yerel C++ uygulamalarında çok geçişli stereo işleme kullanan grafik yapıtları
 
-Bazı durumlarda, yerel içerik (sol ve sağ gözle ayrı geçişlerde işleme) için çok taramalı bir stereo işleme modu kullanan özel yerel C++ [**uygulamaları, bir**](../concepts/graphics-bindings.md#render-remote-image) sürücü hatasını tetikleyebilir. Hata belirleyici olmayan rasterleştirme görünmelere neden olur, tek tek üçgenler veya yerel içeriğin üçgeninin bölümlerinin rastgele kaybolması. Performans nedenleriyle, örneğin **SV_RenderTargetArrayIndex**kullanarak, daha modern bir tek geçişli stereo işleme tekniğinden yerel içerik işlemek de önerilir.
+Bazı durumlarda, yerel içerik (sol ve sağ gözle ayrı geçişlerde işleme) için çok taramalı bir stereo işleme modu kullanan özel yerel C++ [**uygulamaları, bir**](../concepts/graphics-bindings.md#render-remote-image) sürücü hatasını tetikleyebilir. Hata belirleyici olmayan rasterleştirme görünmelere neden olur, tek tek üçgenler veya yerel içeriğin üçgeninin bölümlerinin rastgele kaybolması. Performans nedenleriyle, örneğin **SV_RenderTargetArrayIndex** kullanarak, daha modern bir tek geçişli stereo işleme tekniğinden yerel içerik işlemek de önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

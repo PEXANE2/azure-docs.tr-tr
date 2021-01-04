@@ -12,14 +12,6 @@
       items:
         - name: Anomali Algılayıcısı istemci kitaplıkları
           href: ./quickstarts/client-libraries.md
-    - name: REST API
-      items:
-        - name: C# kullanma
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Java'yı kullanma
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Python’u kullanma
-          href: quickstarts/detect-data-anomalies-python.md
 - name: Öğreticiler
   items:
     - name: Power BI kullanarak anomalileri toplu olarak görselleştirme

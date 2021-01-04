@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 09/17/2020
-ms.openlocfilehash: f88c242ab6f7ddabe17c9363aa1e6bb7f617c800
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4ffe5acce831435d3771a2eb48a90b16f584c92a
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845125"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704019"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-azure-cli"></a>Azure CLı kullanarak Data Lake Storage 2. bir küme oluşturma
 
 Depolama için Data Lake Storage 2. kullanan bir HDInsight kümesi oluşturmak için aşağıdaki adımları izleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure Data Lake Storage 2. [hakkında bilgi sahibi değilseniz genel bakış bölümüne](hdinsight-hadoop-use-data-lake-storage-gen2.md)bakın. 
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
@@ -77,7 +77,7 @@ Sonra portalda oturum açın. Depolama hesabındaki **Depolama Blobu veri katıl
  > Depolama hesabınızın, **Depolama Blobu veri katılımcısı** rolü izinleriyle Kullanıcı tarafından atanan kimliğe sahip olduğundan emin olun, aksi takdirde küme oluşturma başarısız olur.
 
 ```azurecli
-az group deployment create --name HDInsightADLSGen2Deployment \
+az deployment group create --name HDInsightADLSGen2Deployment \
     --resource-group <RESOURCEGROUPNAME> \
     --template-file hdinsight-adls-gen2-template.json \
     --parameters parameters.json

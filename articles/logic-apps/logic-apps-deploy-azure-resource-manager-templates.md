@@ -7,18 +7,18 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 81fad94dc02bd57f839d7ab8653bec7074e41800
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89076349"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705345"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps için Azure Resource Manager şablonu oluşturma
 
 Mantıksal uygulamanız için bir Azure Resource Manager şablonu oluşturduktan sonra, şablonunuzu şu yollarla dağıtabilirsiniz:
 
-* [Azure portalındaki](#portal)
+* [Azure Portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
@@ -57,7 +57,7 @@ Visual Studio kullanarak oluşturduğunuz bir Azure Kaynak grubu projesinden bir
 
 ## <a name="deploy-with-azure-powershell"></a>Azure PowerShell ile dağıtma
 
-Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
+Belirli bir *Azure Kaynak grubuna* dağıtmak için aşağıdaki komutu kullanın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -72,16 +72,16 @@ Daha fazla bilgi için şu konulara bakın:
 
 ## <a name="deploy-with-azure-cli"></a>Azure CLI ile dağıtma
 
-Belirli bir *Azure Kaynak grubuna*dağıtmak için aşağıdaki komutu kullanın:
+Belirli bir *Azure Kaynak grubuna* dağıtmak için aşağıdaki komutu kullanın:
 
 ```azurecli
-az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
 Daha fazla bilgi için şu konulara bakın:
 
 * [Kaynakları Resource Manager şablonları ve Azure CLI ile dağıtma](../azure-resource-manager/templates/deploy-cli.md)
-* [`az group deployment create`](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment group create`](/cli/azure/deployment/group#az_deployment_group_create)
 
 <a name="azure-pipelines"></a>
 

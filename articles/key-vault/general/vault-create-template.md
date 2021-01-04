@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d6f3d2051790ba02f5e4ea1687830ccbdf6dcf21
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285130"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704529"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
 
@@ -176,14 +176,14 @@ Daha fazla Key Vault şablonu buradan bulabilirsiniz: [Key Vault Kaynak Yönetic
 
 Yukarıdaki şablonları, burada açıklandığı gibi **Düzenleyici 'de kendi şablonunuzu oluşturma** seçeneğini kullanarak dağıtmak için Azure Portal kullanabilirsiniz: [kaynakları özel bir şablondan dağıtma](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
-Ayrıca, önceki şablonları dosyalara kaydedebilir ve şu komutları kullanabilirsiniz:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az Group Deployment Create](/cli/azure/group/deployment#az-group-deployment-create):
+Ayrıca, önceki şablonları dosyalara kaydedebilir ve şu komutları kullanabilirsiniz:  [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) ve [az Deployment Group Create](/cli/azure/deployment/group#az_deployment_group_create):
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile key-vault-template.json
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file key-vault-template.json
+az deployment group create --resource-group ExampleGroup --template-file key-vault-template.json
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

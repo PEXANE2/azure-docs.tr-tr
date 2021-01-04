@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: roygalMS
 ms.author: roygal
 ms.date: 11/03/2020
-ms.openlocfilehash: d903d1bb16ba3576d0092979f1cc6b82fac1c0be
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6fa181a35c46ed16e4e8c1884e66c54984c418ca
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507584"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703458"
 ---
 # <a name="integrate-log-analytics-and-excel"></a>Log Analytics ve Excel 'i tümleştirin
 
-M sorgusunu ve Log Analytics API 'sini kullanarak Azure Izleyici Log Analytics ve Microsoft Excel 'i tümleştirebilirsiniz.  Bu tümleştirme, Excel 'e 500.000 kayıtları göndermenizi sağlar.
+M sorgusunu ve Log Analytics API 'sini kullanarak Azure Izleyici Log Analytics ve Microsoft Excel 'i tümleştirebilirsiniz. Bu tümleştirme, sonuçların toplam hacmi 61MiB aşmadığı sürece Excel 'e en fazla 500.000 kayıt göndermenizi sağlar.
 
 > [!NOTE]
 > Excel bir yerel istemci uygulaması olduğundan, yerel donanım ve yazılım sınırlamaları, büyük veri kümelerini işleyebilme performansını ve yeteneğini etkiler.
@@ -80,11 +80,11 @@ in AnalyticsQuery
 Sorguyu içeri aktarmak için. 
 
 1. Microsoft Excel’i açın. 
-1. Şeritte, **veri** menüsüne gidin. **Veri al** ' ı seçin. **Diğer kaynaklardan** **boş sorgu** ' yı seçin:
+1. Şeritte, **veri** menüsüne gidin. **Veri al**' ı seçin. **Diğer kaynaklardan** **boş sorgu**' yı seçin:
  
    :::image type="content" source="media/log-excel/excel-import-blank-query.png" alt-text="Excel 'de boş içeri aktarma seçeneği" border="true":::
 
-1. Power Query penceresinde **Gelişmiş Düzenleyici** ' yi seçin:
+1. Power Query penceresinde **Gelişmiş Düzenleyici**' yi seçin:
 
    :::image type="content" source="media/log-excel/advanced-editor.png" alt-text="Excel Gelişmiş sorgu Düzenleyicisi" border="true":::
 
@@ -93,10 +93,13 @@ Sorguyu içeri aktarmak için.
 
    :::image type="content" source="media/log-excel/advanced-editor-2.png" alt-text="Boş bir sorgu oluşturma" border="true":::
  
-1. **Bitti** ' yi ve ardından **Yükle ve Kapat** ' ı seçin. Excel, Log Analytics API 'sini kullanarak sorguyu yürütür ve ardından gösterilen sonuç kümesi.
+1. **Bitti**' yi ve ardından **Yükle ve Kapat**' ı seçin. Excel, Log Analytics API 'sini kullanarak sorguyu yürütür ve ardından gösterilen sonuç kümesi.
  
 
    :::image type="content" source="media/log-excel/excel-query-result.png" alt-text="Excel 'de sorgu sonuçları" border="true":::
+
+> [!Note]
+> Kayıt sayısı beklenenden küçükse, sonuçların hacmi 61MiB sınırını aşmayabilir. `project` `project-away` Sütunları, gerek duyduğunuz bir ile sınırlamak için sorgunuzu kullanmayı deneyin.
 
 ##  <a name="refreshing--data"></a>Veriler yenileniyor
 

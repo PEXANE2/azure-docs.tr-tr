@@ -12,14 +12,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: c1443dcefb12a063a287e89f1c292ba39bd38dc6
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680351"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705226"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Hızlı başlangıç: Azure SQL veritabanı veya Azure SQL yönetilen örneği 'nde bir veritabanını sorgulamak için .NET Core (C#) kullanma
+# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Hızlı başlangıç: bir veritabanını sorgulamak için .NET Core (C#) kullanma
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Bu hızlı başlangıçta, bir veritabanına bağlanmak için [.NET Core](https://www.microsoft.com/net/) ve C# Code 'u kullanacaksınız. Daha sonra verileri sorgulamak için bir Transact-SQL ifadesini çalıştıracaksınız.
@@ -27,39 +27,15 @@ Bu hızlı başlangıçta, bir veritabanına bağlanmak için [.NET Core](https:
 > [!TIP]
 > Aşağıdaki Microsoft Learn modülü, [Azure SQL veritabanında bir veritabanını sorgulayan bir ASP.NET uygulamasının nasıl geliştirileceği ve yapılandırılacağı](/learn/modules/develop-app-that-queries-azure-sql/) hakkında bilgi edinmenize yardımcı olur
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu hızlı başlangıcı tamamlamak için aşağıdakilere ihtiyacınız vardır:
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [İşletim sisteminiz için .NET Core](https://www.microsoft.com/net/core) yüklendi.
 - Sorgunuzu çalıştırabileceğiniz bir veritabanı. 
 
-[!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
-
-- [İşletim sisteminiz için .NET Core](https://www.microsoft.com/net/core) yüklendi.
-
-## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
-
-Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
-
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
-
-2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
-
-3. **Genel bakış** sayfasında, Azure SQL veritabanı 'nda veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya Azure SQL yönetilen örneği için **konak** ' ın YANıNDAKI tam sunucu adını (veya IP adresini) veya Azure VM 'de SQL Server ' yi gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
-
-> [!NOTE]
-> Azure VM 'de SQL Server yönelik bağlantı bilgileri için bkz. [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
-
-## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET bağlantı bilgilerini al (isteğe bağlı-yalnızca SQL veritabanı)
-
-1. Azure portal veritabanı dikey penceresine gidin ve **Ayarlar** altında **bağlantı dizeleri**' ni seçin.
-
-2. Tam **ADO.NET** bağlantı dizesini gözden geçirin.
-
-    ![ADO.NET bağlantı dizesi](./media/connect-query-dotnet-core/adonet-connection-string2.png)
-
-3. Kullanmak istiyorsanız **ADO.net** bağlantı dizesini kopyalayın.
+  [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
   
 ## <a name="create-a-new-net-core-project"></a>Yeni bir .NET Core projesi oluştur
 

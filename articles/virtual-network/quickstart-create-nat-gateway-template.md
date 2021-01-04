@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: allensu
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 95856db9288e5860dfab47dce506d1e7d6de1ffc
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 68e08b0f029e6297beee85135b4af1e4575d5470
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913339"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703798"
 ---
 # <a name="quickstart-create-a-nat-gateway---arm-template"></a>Hızlı başlangıç: NAT Gateway-ARM şablonu oluşturma
 
@@ -53,15 +53,15 @@ Ubuntu VM, NAT ağ geçidi kaynağıyla ilişkili bir alt ağa dağıtılır.
 
 Şablonda dokuz Azure kaynağı tanımlanmıştır:
 
-* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)** : bir ağ güvenlik grubu oluşturur.
-* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)** : bir güvenlik kuralı oluşturur.
-* **[Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses)** : genel bir IP adresi oluşturur.
-* **[Microsoft. Network/Publicıpprefix](/azure/templates/microsoft.network/publicipprefixes)** : genel bir IP öneki oluşturur.
-* **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)** : bir sanal makine oluşturur.
-* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)** : bir sanal ağ oluşturur.
-* **[Microsoft. Network/natgateway](/azure/templates/microsoft.network/natgateways)** : bir NAT ağ geçidi kaynağı oluşturur.
-* **[Microsoft. Network/virtualNetworks/alt ağları](/azure/templates/microsoft.network/virtualnetworks/subnets)** : bir sanal ağ alt ağı oluşturur.
-* **[Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces)** : bir ağ arabirimi oluşturur.
+* **[Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)**: bir ağ güvenlik grubu oluşturur.
+* **[Microsoft. Network/networkSecurityGroups/securityRules](/azure/templates/microsoft.network/networksecuritygroups/securityrules)**: bir güvenlik kuralı oluşturur.
+* **[Microsoft. Network/Publicıpaddresses](/azure/templates/microsoft.network/publicipaddresses)**: genel bir IP adresi oluşturur.
+* **[Microsoft. Network/Publicıpprefix](/azure/templates/microsoft.network/publicipprefixes)**: genel bir IP öneki oluşturur.
+* **[Microsoft. COMPUTE/virtualMachines](/azure/templates/Microsoft.Compute/virtualMachines)**: bir sanal makine oluşturur.
+* **[Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)**: bir sanal ağ oluşturur.
+* **[Microsoft. Network/natgateway](/azure/templates/microsoft.network/natgateways)**: bir NAT ağ geçidi kaynağı oluşturur.
+* **[Microsoft. Network/virtualNetworks/alt ağları](/azure/templates/microsoft.network/virtualnetworks/subnets)**: bir sanal ağ alt ağı oluşturur.
+* **[Microsoft. Network/NetworkInterfaces](/azure/templates/microsoft.network/networkinterfaces)**: bir ağ arabirimi oluşturur.
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -76,7 +76,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -99,7 +99,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com) oturum açın.
 
 1. Sol bölmeden **kaynak grupları** ' nı seçin.
 
@@ -130,7 +130,7 @@ Remove-AzResourceGroup -Name myResourceGroupNAT
 
 **Azure Portal**
 
-Artık gerekli olmadığında kaynak grubunu, NAT ağ geçidini ve tüm ilgili kaynakları silin. NAT ağ geçidini içeren **Myresourcegroupnat** kaynak grubunu seçin ve **Sil** ' i seçin.
+Artık gerekli olmadığında kaynak grubunu, NAT ağ geçidini ve tüm ilgili kaynakları silin. NAT ağ geçidini içeren **Myresourcegroupnat** kaynak grubunu seçin ve **Sil**' i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

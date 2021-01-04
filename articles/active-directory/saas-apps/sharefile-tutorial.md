@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/04/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: e0cabcbaaf8e84ac1bdfd13c0ef4ab14f326fcf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182300"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Öğretici: Citrix ShareFile ile tümleştirme Azure Active Directory
 
@@ -27,7 +27,7 @@ Citrix ShareFile 'ı Azure AD ile tümleştirmek aşağıdaki avantajları sağl
 * Kullanıcılarınızın Azure AD hesaplarıyla Citrix ShareFile (çoklu oturum açma) ile otomatik olarak oturum açmasını sağlayabilirsiniz.
 * Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Azure AD tümleştirmesini Citrix ShareFile ile yapılandırmak için aşağıdaki öğeler gereklidir:
 
@@ -51,7 +51,7 @@ Citrix ShareFile 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için Gal
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Citrix ShareFile** yazın.
 1. Sonuçlar panelinden **Citrix ShareFile** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-citrix-sharefile"></a>Citrix ShareFile için Azure AD SSO 'yu yapılandırma ve test etme
 
 Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon** adlı bir test kullanıcısına göre Citrix ShareFile ile yapılandırıp test edersiniz.
 Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ve Citrix ShareFile içindeki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
@@ -60,10 +60,10 @@ Azure AD çoklu oturum açmayı Citrix ShareFile ile yapılandırmak ve test etm
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
 2. **[Citrix ShareFile SSO 'Yu yapılandırma](#configure-citrix-sharefile-sso)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-    * Citrix **[ShareFile test kullanıcısı oluşturun](#create-citrix-sharefile-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Citrix ShareFile 'Da Britta Simon 'a sahip olmalıdır.
+    1. Citrix **[ShareFile test kullanıcısı oluşturun](#create-citrix-sharefile-test-user)** ; bu, kullanıcının Azure AD gösterimine bağlı olan Citrix ShareFile 'Da Britta Simon 'a sahip olmalıdır.
 3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
@@ -131,7 +131,15 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
 
 ## <a name="configure-citrix-sharefile-sso"></a>Citrix ShareFile SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, **Citrix ShareFile** şirket sitenizde yönetici olarak oturum açın.
+1. **Citrix ShareFile** içindeki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra **Citrix ShareFile ayarla** ' ya tıkladığınızda sizi Citrix ShareFile uygulamasına yönlendirirsiniz. Buradan Citrix ShareFile oturumu açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Citrix ShareFile öğesini el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde Citrix ShareFile şirket sitenizde yönetici olarak oturum açın.
 
 1. **Panoda**, **Ayarlar** ' a tıklayın ve **yönetici ayarları** ' nı seçin.
 
@@ -184,13 +192,13 @@ Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır l
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-1. Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir. 
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir.
 
-2. Doğrudan Citrix ShareFile oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
+* Doğrudan Citrix ShareFile oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-3. Microsoft Access panel ' i kullanabilirsiniz. Erişim panelinde Citrix ShareFile kutucuğuna tıkladığınızda bu işlem Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Citrix ShareFile kutucuğuna tıkladığınızda bu, Citrix ShareFile oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

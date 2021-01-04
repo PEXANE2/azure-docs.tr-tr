@@ -12,12 +12,12 @@ ms.date: 11/23/2020
 ms.author: mbullwin
 keywords: anomali algılama, makine öğrenimi, algoritmalar
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 1a13b962a000e6e3b2143dc23f94b63c122bd963
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d8698a17db8be6a3d5b26d764ef86702320ebfa4
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999118"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705090"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomali Algılayıcısı API'si nedir?
 
@@ -97,6 +97,6 @@ Microsoft 'un geliştirdiği SR-CNN algoritmaları hakkında daha fazla bilgi ed
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](quickstarts/detect-data-anomalies-csharp.md)
+* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar saptama](quickstarts/client-libraries.md)
 * Anomali algılayıcı API 'SI [çevrimiçi tanıtımı](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
 * Anomali algılayıcısı [REST API başvurusu](https://aka.ms/anomaly-detector-rest-api-ref)

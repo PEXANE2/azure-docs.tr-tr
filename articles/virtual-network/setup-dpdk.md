@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2020
 ms.author: labattul
-ms.openlocfilehash: 622b7e629a7f5fea77afc18ec5121fe3466716ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba7c2a37d58f20ac4ff1f49a46a406d1b1f70106
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387566"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704427"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Bir Linux sanal makinesinde DPDK 'yi ayarlama
 
@@ -50,7 +50,7 @@ Azure Marketi 'nden aşağıdaki dağıtımlar desteklenir:
 
 **Özel çekirdek desteği**
 
-Listelenmeyen tüm Linux çekirdek sürümleri için bkz. [Azure 'da ayarlanmış bir Linux çekirdeği oluşturmaya yönelik düzeltme ekleri](https://github.com/microsoft/azure-linux-kernel). Daha fazla bilgi için, ile de iletişim sağlayabilirsiniz [azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) . 
+Listelenmeyen tüm Linux çekirdek sürümleri için bkz. [Azure 'da ayarlanmış bir Linux çekirdeği oluşturmaya yönelik düzeltme ekleri](https://github.com/microsoft/azure-linux-kernel). Daha fazla bilgi için, ile de iletişim sağlayabilirsiniz [aznetdpdk@microsoft.com](mailto:aznetdpdk@microsoft.com) . 
 
 ## <a name="region-support"></a>Bölge desteği
 
@@ -136,8 +136,8 @@ Yeniden başlattıktan sonra, aşağıdaki komutları bir kez çalıştırın:
 
 3. PCI adresleri
 
-   * `ethtool -i <vf interface name>` *VF*için hangi PCI adresinin kullanılacağını bulmak için kullanın.
-   * *Eth0* hızlandırılmış ağ etkinse, testpmd 'nin *eth0*için *VF* PCI cihazını yanlışlıkla devralmadığınızdan emin olun. DPDK uygulaması yanlışlıkla yönetim ağ arabirimini ele alırsa ve SSH bağlantınızı kaybetmenize neden oluyorsa, DPDK uygulamasını durdurmak için seri konsolu 'nu kullanın. Ayrıca, sanal makineyi durdurmak veya başlatmak için seri konsolunu da kullanabilirsiniz.
+   * `ethtool -i <vf interface name>` *VF* için hangi PCI adresinin kullanılacağını bulmak için kullanın.
+   * *Eth0* hızlandırılmış ağ etkinse, testpmd 'nin *eth0* için *VF* PCI cihazını yanlışlıkla devralmadığınızdan emin olun. DPDK uygulaması yanlışlıkla yönetim ağ arabirimini ele alırsa ve SSH bağlantınızı kaybetmenize neden oluyorsa, DPDK uygulamasını durdurmak için seri konsolu 'nu kullanın. Ayrıca, sanal makineyi durdurmak veya başlatmak için seri konsolunu da kullanabilirsiniz.
 
 4. Her yeniden başlatmada *ıbuverbs* 'ı yükleyin `modprobe -a ib_uverbs` . Yalnızca SLES 15 için ile *mlx4_ib* de yükleyin `modprobe -a mlx4_ib` .
 
@@ -174,7 +174,7 @@ Testpmd 'yi kök modda çalıştırmak için `sudo` *testpmd* komutundan önce k
 
    Testpmd 'yi ikiden fazla NIC ile çalıştırıyorsanız, `--vdev` bağımsız değişken şu düzene uyar: `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` .
 
-3.  Başlatıldıktan sonra `show port info all` bağlantı noktası bilgilerini denetlemek için öğesini çalıştırın. Net_failsafe ( *net_mlx4*değil) bir veya iki DPDK bağlantı noktası görmeniz gerekir.
+3.  Başlatıldıktan sonra `show port info all` bağlantı noktası bilgilerini denetlemek için öğesini çalıştırın. Net_failsafe ( *net_mlx4* değil) bir veya iki DPDK bağlantı noktası görmeniz gerekir.
 4.  `start <port> /stop <port>`Trafiği başlatmak için kullanın.
 
 Önceki komutlar *testpmd* ' yi etkileşimli modda başlatır, bu da testpmd komutlarının denemesi için önerilir.

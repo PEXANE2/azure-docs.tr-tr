@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
-ms.openlocfilehash: 0c60fdfda0c18f5a8feb11c3d9c5a386025670cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fab8f88a39730411503af273902a53f169e3fe57
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368158"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703747"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Azure 'da OpenShift kapsayıcı platformu 3,11 dağıtma
 
@@ -32,11 +32,11 @@ Geçerli bir Red Hat abonelik Yöneticisi (RHSM) Kullanıcı adı, parola ve hav
 
 ### <a name="private-clusters"></a>Özel kümeler
 
-Özel OpenShift kümelerini dağıtmak, ana yük dengeleyici (Web Konsolu) veya Infra yük dengeleyici (yönlendirici) ile ilişkilendirilmiş genel bir IP 'yi kullanmaktan daha fazlasını gerektirir.  Özel bir küme genellikle özel bir DNS sunucusu (varsayılan Azure DNS değil), özel bir etki alanı adı (örneğin, contoso.com) ve önceden tanımlanmış sanal ağlar kullanır.  Özel kümeler için, Sanal ağınızı, uygun tüm alt ağlar ve DNS sunucusu ayarları önceden ile yapılandırmanız gerekir.  Ardından, küme tarafından kullanılacak mevcut alt ağı belirtmek için **Existingmastersubnetreference**, **existingInfraSubnetReference**, **Existingcnssubnetreference**ve **existingnodesubnetreference** kullanın.
+Özel OpenShift kümelerini dağıtmak, ana yük dengeleyici (Web Konsolu) veya Infra yük dengeleyici (yönlendirici) ile ilişkilendirilmiş genel bir IP 'yi kullanmaktan daha fazlasını gerektirir.  Özel bir küme genellikle özel bir DNS sunucusu (varsayılan Azure DNS değil), özel bir etki alanı adı (örneğin, contoso.com) ve önceden tanımlanmış sanal ağlar kullanır.  Özel kümeler için, Sanal ağınızı, uygun tüm alt ağlar ve DNS sunucusu ayarları önceden ile yapılandırmanız gerekir.  Ardından, küme tarafından kullanılacak mevcut alt ağı belirtmek için **Existingmastersubnetreference**, **existingInfraSubnetReference**, **Existingcnssubnetreference** ve **existingnodesubnetreference** kullanın.
 
-Özel ana öğe seçilirse (**Masterclustertype**= Private), **masterprivateclusterıp**IÇIN statik bir özel IP belirtilmelidir.  Bu IP, ana yük dengeleyicinin ön ucuna atanacak.  IP, ana alt ağ için CıDR içinde olmalı ve kullanımda olmalıdır.  **Masterclusterdnstype** , "Custom" olarak ayarlanmalıdır ve **masterclusterdns**için ana DNS adı belirtilmelidir.  DNS adı statik özel IP ile eşlenmelidir ve ana düğümlerde konsola erişmek için kullanılacaktır.
+Özel ana öğe seçilirse (**Masterclustertype**= Private), **masterprivateclusterıp** IÇIN statik bir özel IP belirtilmelidir.  Bu IP, ana yük dengeleyicinin ön ucuna atanacak.  IP, ana alt ağ için CıDR içinde olmalı ve kullanımda olmalıdır.  **Masterclusterdnstype** , "Custom" olarak ayarlanmalıdır ve **masterclusterdns** için ana DNS adı belirtilmelidir.  DNS adı statik özel IP ile eşlenmelidir ve ana düğümlerde konsola erişmek için kullanılacaktır.
 
-Özel yönlendirici seçilmişse (**Routerclustertype**= Private), **routerprivateclusterıp**IÇIN statik bir özel IP belirtilmelidir.  Bu IP, Infra yük dengeleyicinin ön ucuna atanır.  IP, Infra alt ağı için CIDR içinde olmalı ve kullanımda olmalıdır.  **Routingsubdomaintype** , "Custom" olarak ve **yönlendirme IÇIN joker**karakter DNS adı belirtilmelidir.  
+Özel yönlendirici seçilmişse (**Routerclustertype**= Private), **routerprivateclusterıp** IÇIN statik bir özel IP belirtilmelidir.  Bu IP, Infra yük dengeleyicinin ön ucuna atanır.  IP, Infra alt ağı için CIDR içinde olmalı ve kullanımda olmalıdır.  **Routingsubdomaintype** , "Custom" olarak ve **yönlendirme IÇIN joker** karakter DNS adı belirtilmelidir.  
 
 Özel ana bilgisayarlar ve özel yönlendirici seçilirse, özel etki alanı adının de **domainName** için girilmesi gerekir
 
@@ -312,7 +312,7 @@ Farklı yayınlar farklı parametrelere sahip olabilir, bu nedenle kullandığı
 Aşağıdaki örnek, OpenShift kümesini ve tüm ilgili kaynakları openkaydırıcı adlı bir kaynak grubunda myOpenShiftCluster dağıtım adı ile dağıtır. Şablona doğrudan GitHub deposundan başvurulur ve dosyada azuredeploy.parameters.jsadlı bir yerel parametre dosyası kullanılır.
 
 ```azurecli 
-az group deployment create -g openshiftrg --name myOpenShiftCluster \
+az deployment group create -g openshiftrg --name myOpenShiftCluster \
       --template-uri https://raw.githubusercontent.com/Microsoft/openshift-container-platform/master/azuredeploy.json \
       --parameters @./azuredeploy.parameters.json
 ```

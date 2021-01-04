@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/23/2018
-ms.openlocfilehash: 4babd015b05527cb03d2747b1c9b9a34941634ab
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d620df0b55b024cd5d7c25ea17d9b09c5c5da8ff
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657014"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722887"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>Otomatikleştirilmiş betiği kullanarak Service Manager Web uygulaması oluşturma
 
-Service Manager örneğiniz için Web uygulaması oluşturmak üzere aşağıdaki betiği kullanın. Service Manager bağlantısı hakkında daha fazla bilgi şu şekildedir: [Service Manager Web uygulaması](./itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
+Service Manager örneğiniz için Web uygulaması oluşturmak üzere aşağıdaki betiği kullanın. Service Manager bağlantısı hakkında daha fazla bilgi şu şekildedir: [Service Manager Web uygulaması](./itsmc-connections-scsm.md)
 
 Aşağıdaki gerekli ayrıntıları sağlayarak betiği çalıştırın:
 
@@ -29,9 +29,6 @@ Aşağıdaki gerekli ayrıntıları sağlayarak betiği çalıştırın:
 Betik, belirttiğiniz adı kullanarak Web uygulamasını oluşturur (benzersiz hale getirmek için birkaç ek dize ile birlikte). **Web uygulaması URL 'sini**, **istemci kimliğini** ve **istemci gizli** anahtarını oluşturur.
 
 Bu değerleri kaydedin, BT Hizmet Yönetimi Bağlayıcısı bir bağlantı oluşturduğunuzda bu değerlere ihtiyacınız olur.
-
-> [!NOTE]
-> Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -321,5 +318,5 @@ if(!$err)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Karma bağlantıyı yapılandırın](./itsmc-connections.md#configure-the-hybrid-connection).
+[Karma bağlantıyı yapılandırın](./itsmc-connections-scsm.md#configure-the-hybrid-connection).
 

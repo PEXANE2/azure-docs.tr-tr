@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: e2838b759a611cb55b9fd3fadf834c84eb74210d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a61d6ba1f908a7dae56db066bfae329fc26f1c5c
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91533647"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696124"
 ---
 # <a name="register-for-azure-netapp-files"></a>Azure NetApp Files için kaydolma
 
@@ -30,7 +30,8 @@ Bu makalede, hizmeti kullanmaya başlayabilmeniz için Azure NetApp Files nasıl
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Hizmete erişmek için bir eklenebileceğinizi isteği gönder
 
-1. [Azure NetApp Files eklenebileceğinizi gönderim sayfası](https://aka.ms/azurenetappfiles)aracılığıyla Azure NetApp Files hizmetine erişmek için bir eklenebileceğinizi isteği gönderir. 
+1. Aşağıdaki sayfaya gidin ve Azure NetApp Files hizmetine erişmek için bir eklenebileceğinizi isteği gönder:  
+    [**Azure NetApp Files eklenebileceğinizi gönderim sayfası**](https://aka.ms/azurenetappfiles) 
 
     Waitlist kayıt hizmeti, anında hizmet erişimini garanti etmez. 
 

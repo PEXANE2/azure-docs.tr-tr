@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011906"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704903"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -241,23 +241,6 @@ Performansla ilgili hatalar her zaman gerçekleşmez ve yeniden oluşturulması 
 3. OMı 'yi yeniden Başlat: <br/>
 `sudo scxadmin -restart`
 
-## <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Sorun: Azure portal herhangi bir veri görmüyorsunuz
-
-### <a name="probable-causes"></a>Olası nedenler
-
-- Azure Izleyici 'ye ekleme başarısız oldu
-- Azure Izleyici bağlantısı engellendi
-- Linux verileri için Log Analytics Aracısı yedeklenir
-
-### <a name="resolution"></a>Çözüm
-1. Aşağıdaki dosyanın mevcut olup olmadığını denetleyerek, ekleme Azure Izleyici 'nin başarılı olup olmadığını denetleyin: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
-2. `omsadmin.sh`Komut satırı yönergelerini kullanarak yeniden ekleme
-3. Proxy kullanılıyorsa, daha önce sağlanmış olan proxy çözümleme adımlarına bakın.
-4. Bazı durumlarda, Linux için Log Analytics Aracısı hizmetle iletişim kuramadığınızda, aracıdaki veriler, 50 MB olan tam arabellek boyutuna göre sıraya alınır. Aracı şu komut çalıştırılarak yeniden başlatılmalıdır: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` . 
-
-    >[!NOTE]
-    >Bu sorun, aracı sürümü 1.1.0-28 ve üzeri sürümlerde düzeltilmiştir.
-
 
 ## <a name="issue-you-are-not-seeing-forwarded-syslog-messages"></a>Sorun: iletilen syslog iletilerini görmüyorsunuz 
 
@@ -335,6 +318,7 @@ Bu hata, Linux Tanılama uzantısının (LAD) Log Analytics Linux VM uzantısıy
 * Azure Izleyici bağlantısı engellendi
 * Sanal makine yeniden başlatıldı
 * OMı paketi, Linux paketi için Log Analytics Aracısı tarafından yüklenmiş olana kıyasla daha yeni bir sürüme el ile yükseltildi
+* OMı dondurulmuş, OMS aracısını engelliyor
 * DSC kaynak günlükleri *sınıfı* günlük dosyasında bulunamadı hatası `omsconfig.log`
 * Verilerin Log Analytics Aracısı yedeklendi
 * DSC günlükleri *geçerli yapılandırması yok. Bir yapılandırma dosyası belirtmek ve önce geçerli bir yapılandırma oluşturmak için-Path parametresiyle birlikte Start-DscConfiguration komutunu yürütün.* `omsconfig.log`günlük dosyasında, ancak işlemler hakkında bir günlük iletisi yok `PerformRequiredConfigurationChecks` .
@@ -345,6 +329,7 @@ Bu hata, Linux Tanılama uzantısının (LAD) Log Analytics Linux VM uzantısıy
 4. Proxy kullanılıyorsa, yukarıdaki proxy sorun giderme adımlarını kontrol edin.
 5. Bazı Azure dağıtım sistemlerinde OMID OMı sunucu arka plan programı, sanal makine yeniden başlatıldıktan sonra başlatılmaz. Bu, denetim, ChangeTracking veya UpdateManagement çözümüyle ilgili verileri görmeyecektir. Geçici çözüm, çalıştırarak OMI sunucusunu el ile başlatsın `sudo /opt/omi/bin/service_control restart` .
 6. OMı paketi daha yeni bir sürüme el ile yükseltildikten sonra, Log Analytics aracısının çalışmaya devam etmesi için el ile yeniden başlatılması gerekir. Bu adım, OMı sunucusunun yükseltildikten sonra otomatik olarak başlamadığından dolayı bazı kaldırmalar için gereklidir. `sudo /opt/omi/bin/service_control restart`OMI 'yi yeniden başlatmak için çalıştırın.
+* Bazı durumlarda OMı dondurulmuş hale gelebilir. OMS Aracısı, OMı için bekleyen bir engellenen durum girebilir ve tüm veri toplamayı engelliyor olabilir. OMS Aracı işlemi çalışacak ancak hiçbir etkinlik olmayacak, ' de yeni günlük satırı (örneğin, gönderilen sinyal) tarafından önlenebilir `omsagent.log` . Aracıyı kurtarmak için OMı ile yeniden başlatın `sudo /opt/omi/bin/service_control restart` .
 7. Omsconfig. log dosyasında DSC kaynak *sınıfı bulunamadı* hatası görürseniz, öğesini çalıştırın `sudo /opt/omi/bin/service_control restart` .
 8. Bazı durumlarda, Linux için Log Analytics Aracısı Azure Izleyici ile iletişim kuramadığı zaman aracıdaki veriler tam arabellek boyutuna yedeklenir: 50 MB. Aşağıdaki komut çalıştırılarak aracının yeniden başlatılması gerekir `/opt/microsoft/omsagent/bin/service_control restart` .
 

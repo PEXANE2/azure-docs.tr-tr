@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos veritabanını tarama (SQL API)
 description: Bu kılavuzda, Azure Cosmos veritabanını (SQL API) tarama ayrıntıları açıklanmaktadır.
-author: viseshag
-ms.author: viseshag
+author: djpmsft
+ms.author: daperlov
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/9/2020
-ms.openlocfilehash: e1d2035b787380d9b93943b92fbe81c09fc6a527
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1aaeed1973ebd15af312b722ab61938aa4271947
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555494"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696244"
 ---
 # <a name="register-and-scan-azure-cosmos-database-sql-api"></a>Azure Cosmos veritabanını kaydetme ve tarama (SQL API)
 
@@ -22,7 +22,7 @@ Bu makalede, Azure 'da bir Azure Cosmos veritabanı (SQL API) hesabının nasıl
 
 Azure Cosmos veritabanı (SQL API), meta verileri ve şemayı yakalamak için tam ve artımlı taramaları destekler. Taramalar Ayrıca verileri sistem ve özel sınıflandırma kurallarına göre otomatik olarak sınıflandırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Veri kaynaklarını kaydetmeden önce bir Azure purview hesabı oluşturun. Bir purview hesabı oluşturma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure purview hesabı oluşturma](create-catalog-portal.md).
 - Azure purview veri kaynağı Yöneticisi olmanız gerekir

@@ -8,12 +8,12 @@ ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 57db06d5d17793d87500e3fedd5fc9c682ce34eb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 706432c039bc38e9799828ae752d6ad0c92ffde3
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89077560"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704614"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak konuyla ve abonelikle Service Bus bir ad alanı oluşturma
 
@@ -31,7 +31,7 @@ Tüm şablon için, [konu başlığı ve abonelik şablonuyla Service Bus ad ala
 > * [Kuyruk ve yetkilendirme kuralıyla Service Bus ad alanı oluşturma](service-bus-resource-manager-namespace-auth-rule.md)
 > * [Konu, abonelik ve kuralla Service Bus ad alanı oluşturma](service-bus-resource-manager-namespace-topic-with-rule.md)
 > 
-> En son şablonları denetlemek için [Azure hızlı başlangıç şablonları][Azure Quickstart Templates] Galerisi ' ni ziyaret edin ve **Service Bus**arayın.
+> En son şablonları denetlemek için [Azure hızlı başlangıç şablonları][Azure Quickstart Templates] Galerisi ' ni ziyaret edin ve **Service Bus** arayın.
 
 ## <a name="what-do-you-deploy"></a>Ne dağıtırsınız?
 
@@ -94,7 +94,7 @@ Service Bus ad alanında oluşturulan aboneliğin adı.
 
 ## <a name="resources-to-deploy"></a>Dağıtılacak kaynaklar
 
-**İleti**türünde, konu ve abonelikle bir standart Service Bus ad alanı oluşturur.
+**İleti** türünde, konu ve abonelikle bir standart Service Bus ad alanı oluşturur.
 
 ```json
 "resources": [{
@@ -144,7 +144,7 @@ New-AzureResourceGroupDeployment -Name \<deployment-name\> -ResourceGroupName \<
 ## <a name="azure-cli"></a>Azure CLI
 
 ```azurecli-interactive
-az group deployment create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
+az deployment group create \<my-resource-group\> --name \<my-deployment-name\> --template-uri <https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-servicebus-create-topic-and-subscription/azuredeploy.json>
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

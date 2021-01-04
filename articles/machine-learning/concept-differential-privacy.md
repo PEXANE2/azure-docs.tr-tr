@@ -1,29 +1,26 @@
 ---
-title: Whitenoıse paketiyle değişiklik gizliliği uygulama (Önizleme)
+title: Akıllı gürültü paketiyle değişiklik gizliliği uygulama (Önizleme)
 titleSuffix: Azure Machine Learning
-description: Değişiklik gizliliğinin ne olduğunu ve duman paketinin, veri gizliliğini koruyan fark özel sistemlerini uygulamanıza nasıl yardımcı olabileceğini öğrenin.
+description: Değişiklik gizliliğinin ne olduğunu ve Smartgürültü paketinin, veri gizliliğini koruyan fark özel sistemlerini uygulamanıza nasıl yardımcı olabileceğini öğrenin.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 07/09/2020
+ms.date: 12/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 307786c0df744751122487b8c931d0e9572d5f22
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86199792"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723499"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Değişiklik gizliliği ve Whitenoıse paketini (Önizleme) kullanarak veri gizliliğini koruma
+# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Değişiklik gizliliği ve SmartNoise paketini (Önizleme) kullanarak veri gizliliğini koruma
 
-Değişiklik gizliliğinin ne olduğunu ve duman paketinin farklı bir özel sistem uygulamanıza nasıl yardımcı olabileceğini öğrenin.
+Değişiklik gizliliğinin ne olduğunu ve Smartgürültü paketinin farklı bir özel sistem uygulamanıza nasıl yardımcı olabileceğini öğrenin.
 
 Kuruluşun analizler için topladığı ve kullandığı veri miktarı arttıkça, gizlilik ve güvenlikle ilgili endişeler de vardır. Çözümlemeler için veri gerekir. Genellikle, modelleri eğitmek için kullanılan veriler daha doğru olur. Bu çözümlemeler için kişisel bilgiler kullanıldığında, verilerin kullanımı boyunca özel olarak kalması özellikle önemlidir.
-
-> [!NOTE]
-> Araç takımını yeniden adlandırdığımızda, gelecek haftalarda yeni adı tanıtılacağını lütfen unutmayın. 
 
 ## <a name="how-differential-privacy-works"></a>Değişiklik gizliliği nasıl kullanılır?
 
@@ -34,7 +31,7 @@ Değişiklik gizliliği, kişilerin verilerinin güvende ve özel olmasını sa�
 
 Geleneksel senaryolarda, ham veriler dosya ve veritabanlarında depolanır. Kullanıcılar verileri çözümlerse genellikle ham verileri kullanır. Bu sorun, bir kişinin gizliliğine infringe olabileceğinden bir kaygıdır. Değişiklik gizliliği, kullanıcıların herhangi bir veri noktasını tanımlayamaması için verilere "gürültü" veya rasgelelik ekleyerek bu sorunla başa geçmeye çalışır. En azından, bu tür bir sistem, plausıble deniability sağlar.
 
-Farklı şekilde özel sistemlerde, veriler **sorgu**olarak adlandırılan istekler aracılığıyla paylaşılır. Bir Kullanıcı veriler için bir sorgu gönderdiğinde, **Gizlilik mekanizmaları** olarak bilinen işlemler istenen verilere gürültü ekler. Gizlilik mekanizmaları ham veriler yerine *verilerin yaklaşık bir kısmını* döndürür. Bu Gizlilik-koruma sonucu bir **raporda**görüntülenir. Raporlar, hesaplanan gerçek veriler ve verilerin nasıl oluşturulduğuna ilişkin bir açıklama olmak üzere iki bölümden oluşur.
+Farklı şekilde özel sistemlerde, veriler **sorgu** olarak adlandırılan istekler aracılığıyla paylaşılır. Bir Kullanıcı veriler için bir sorgu gönderdiğinde, **Gizlilik mekanizmaları** olarak bilinen işlemler istenen verilere gürültü ekler. Gizlilik mekanizmaları ham veriler yerine *verilerin yaklaşık bir kısmını* döndürür. Bu Gizlilik-koruma sonucu bir **raporda** görüntülenir. Raporlar, hesaplanan gerçek veriler ve verilerin nasıl oluşturulduğuna ilişkin bir açıklama olmak üzere iki bölümden oluşur.
 
 ## <a name="differential-privacy-metrics"></a>Değişiklik gizlilik ölçümleri
 
@@ -46,7 +43,7 @@ Daha doğrudan Epsilon ile bağıntılı bir değer **Delta**. Delta, raporun ta
 
 ## <a name="privacy-budget"></a>Gizlilik bütçesi
 
-Birden çok sorguya izin verilen sistemlerde gizliliği sağlamak için, değişiklik gizliliği bir hız sınırı tanımlar. Bu sınır **Gizlilik bütçesi**olarak bilinir. Gizlilik bütçelerine, yeniden tanımlama riskini sınırlamak için genellikle 1 ile 3 arasında bir Epsilon miktarı ayrılır. Raporlar oluşturulduğunda, gizlilik bütçeleri tek tek raporların Epsilon değerini ve tüm raporların toplamasını izler. Bir gizlilik bütçesi harcandıktan veya boşaldığında, kullanıcılar artık verilere erişemez.  
+Birden çok sorguya izin verilen sistemlerde gizliliği sağlamak için, değişiklik gizliliği bir hız sınırı tanımlar. Bu sınır **Gizlilik bütçesi** olarak bilinir. Gizlilik bütçelerine, yeniden tanımlama riskini sınırlamak için genellikle 1 ile 3 arasında bir Epsilon miktarı ayrılır. Raporlar oluşturulduğunda, gizlilik bütçeleri tek tek raporların Epsilon değerini ve tüm raporların toplamasını izler. Bir gizlilik bütçesi harcandıktan veya boşaldığında, kullanıcılar artık verilere erişemez.  
 
 ## <a name="reliability-of-data"></a>Verilerin güvenilirliği
 
@@ -54,10 +51,10 @@ Gizlilik Koruması hedef olmalıdır, ancak verilerin kullanılabilirliği ve g�
 
 ## <a name="implementing-differentially-private-systems"></a>Farklı, özel sistemleri uygulama
 
-Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. Aşağıdaki en üst düzey bileşenlerden biri oluşmuştur:
+Farklı şekilde özel sistemlerin uygulanması zordur. SmartNoise, küresel farklı özel sistemler oluşturmak için farklı bileşenler içeren açık kaynaklı bir projem. SmartNoise, aşağıdaki üst düzey bileşenlerden oluşur:
 
 - Çekirdek
-- Sistem
+- SDK
 
 ### <a name="core"></a>Çekirdek
 
@@ -68,9 +65,9 @@ Farklı şekilde özel sistemlerin uygulanması zordur. Whitenoıse, küresel fa
 |Analiz     | Rastgele hesaplamaların grafik açıklaması. |
 |Doğrulayıcı     | Bir çözümlemenin farklı bir şekilde özel olması için gerekli koşulları denetlemeye ve türetmede kullanılabilecek bir araç kümesi içeren bir Rust kitaplığı.          |
 |Çalışma Zamanı     | Çözümlemenin yürütüleceği ortam. Başvuru çalışma zamanı Rust dilinde yazılmıştır, ancak çalışma zamanları, veri gereksinimlerinize bağlı olarak SQL ve Spark gibi herhangi bir hesaplama çerçevesi kullanılarak yazılabilir.        |
-|Bağlamalar     | Analizler oluşturmak için dil bağlamaları ve yardımcı kitaplıkları. Şu anda, Python bağlamaları sağlıyor. |
+|Bağlamalar     | Analizler oluşturmak için dil bağlamaları ve yardımcı kitaplıkları. Şu anda akıllı gürültü, Python bağlamaları sunuyor. |
 
-### <a name="system"></a>Sistem
+### <a name="sdk"></a>SDK
 
 Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşağıdaki araçları ve hizmetleri sağlar:
 
@@ -84,4 +81,4 @@ Sistem kitaplığı, tablolu ve ilişkisel verilerle çalışmaya yönelik aşa�
 
 Azure Machine Learning [veri gizliliğini koruyun](how-to-differential-privacy.md) .
 
-İzin alma bileşenleri hakkında daha fazla bilgi edinmek için, bir [Çekirdek paketi](https://github.com/opendifferentialprivacy/whitenoise-core)olan GitHub depolarına göz atın, [Sistem paketi](https://github.com/opendifferentialprivacy/whitenoise-system) ve whitenoıse [örnekleri](https://github.com/opendifferentialprivacy/whitenoise-samples).
+Smartgürültü bileşenleri hakkında daha fazla bilgi edinmek için, [Smartnoise Core paketi](https://github.com/opendifferentialprivacy/smartnoise-core), [smartgürültü SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk)ve [smartnoise örnekleri](https://github.com/opendifferentialprivacy/smartnoise-samples)için GitHub depolarına göz atın.

@@ -1,18 +1,18 @@
 ---
 title: Power BI kiracı kaydetme ve tarama (Önizleme)
 description: Power BI kiracıyı kaydetmek ve taramak için Azure purview portalını nasıl kullanacağınızı öğrenin.
-author: viseshag
-ms.author: viseshag
+author: chanuengg
+ms.author: csugunan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3813d58d894d87051b1bcf8b512c848d527a52bb
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97615857"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696233"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI kiracı kaydetme ve tarama (Önizleme)
 
@@ -72,8 +72,6 @@ Artık Power BI kiracınızın yönetim API 'sine bağlanmak için katalog izinl
 
 İlk olarak, purview URL 'nize özel bir özellik bayrağı ekleyin 
 
-1. Aşağıdaki dizeyi, purview örneğinizin URI 'sinin sonuna ekleyin: `?feature.ext.catalog={"pbi":"true"}` . Bu, kataloğunuzda Power BI kayıt seçeneğini sunar.
-
 1. **Yönetim Merkezi** simgesini seçin.
 
     :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="Yönetim Merkezi simgesi.":::
@@ -112,6 +110,5 @@ Artık Power BI kiracınızın yönetim API 'sine bağlanmak için katalog izinl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Power BI kiracıyı kaydetmek ve taramak için PowerShell cmdlet 'lerinin nasıl kullanılacağını öğrenmek için, bkz.:
-  
-- [Power BI kaydetmek ve taramak için PowerShell 'i kullanma](powershell-register-scan-power-bi.md)
+- [Azure purview veri kataloğuna gözatın](how-to-browse-catalog.md)
+- [Azure purview Veri Kataloğu 'Nda arama](how-to-search-catalog.md)

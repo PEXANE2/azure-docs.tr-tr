@@ -1,6 +1,6 @@
 ---
 title: Azure SQL Edge için sürüm notları
-description: Azure SQL Edge görüntülerinde nelerin yeni olduğunu veya değiştiğini açıklayan sürüm notları
+description: Azure SQL Edge görüntülerinde nelerin yeni olduğunu veya değiştiğini açıklayan sürüm notları.
 keywords: sürüm notları SQL Edge
 services: sql-edge
 ms.service: sql-edge
@@ -10,182 +10,164 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 11/24/2020
-ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c18cb1cef9b46b4b3cd2f614945f98abf9de7c58
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95808617"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704359"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge sürüm notları 
 
 Bu makalede, yenilikler ve her yeni Azure SQL Edge derlemesi ile nelerin değiştiğini açıklanmaktadır.
 
-## <a name="azure-sql-edge---101"></a>Azure SQL Edge-1.0.1
+## <a name="azure-sql-edge-101"></a>Azure SQL Edge 1.0.1
 
-### <a name="sql-engine-build-number---15020001553"></a>SQL altyapısı derleme numarası-15.0.2000.1553
+SQL Engine derleme 15.0.2000.1553
 
 ### <a name="whats-new"></a>Yenilikler
 
-- Hesaplanan sütunlarda Datebucket ifadesi tanımlı izin ver
+- Hesaplanan sütunlarda tanımlanmış Date_Bucket ifadelerine izin verin.
 
 ### <a name="fixes"></a>Düzeltmeler
 
-- Saklama ilkesi sınırsız zaman aşımı ile etkin olarak tablo bırakma için bekletme Ilkesi onarımı
-- Akış ve bekletme Ilkesi özellikleri için DacFx dağıtımında destek 
-- SAS URL 'sindeki iç içe geçmiş klasörden dağıtımı etkinleştirmek için DacFx dağıtım onarımı 
+- Sonsuz bir zaman aşımı ile etkin bir bekletme ilkesi olan bir tabloyu bırakma için bekletme ilkesi düzeltilmesi
+- Akış özellikleri ve bekletme-ilke özellikleri için DacFx dağıtım desteği 
+- Bir SAS URL 'sindeki iç içe bir klasörden dağıtımı etkinleştirmek için DacFx dağıtım onarımı 
 - Hata iletilerinde uzun sütun adlarını desteklemek için düzeltilmesi tahmın eder
 
-## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge-1.0.0 (RTM)
+## <a name="azure-sql-edge-100-rtm"></a>Azure SQL Edge 1.0.0 (RTM)
 
-### <a name="sql-engine-build-number---15020001552"></a>SQL altyapısı derleme numarası-15.0.2000.1552
+SQL Engine derleme 15.0.2000.1552
 
 ### <a name="whats-new"></a>Yenilikler
-1. Ubuntu 18,04 tabanlı kapsayıcı görüntüleri. 
-2. Ve `IGNORE NULL` `RESPECT NULL` işlevleri ile ilgili ve sözdizimi desteği `LAST_VALUE()` `FIRST_VALUE()` . 
-3. ONNX ile tahmın için güvenilirlik iyileştirmeleri.
-4. Veri bekletme ilkesi tabanlı temizleme desteği.
-   - Sorun giderme için bekletme temizleme görevi için halka arabelleği desteği.
-5. Yeni özellik desteği 
+- Ubuntu 18,04 tabanlı kapsayıcı görüntüleri 
+- Ve `IGNORE NULL` işlevleri ile ilgili ve `RESPECT NULL` sözdizimi desteği `LAST_VALUE()` `FIRST_VALUE()` 
+- ONNX ile tahmın için güvenilirlik iyileştirmeleri
+- Veri bekletme ilkesine göre temizleme desteği:
+   - Sorun giderme için bir bekletme temizleme görevi için halka arabelleği desteği
+- Yeni özellik desteği: 
    - Hızlı kurtarma
-   - Sorguların otomatik olarak ayarlanması
-   - Paralel yürütme senaryolarını etkinleştir
-6. Düşük güç modu için güç tasarrufu iyileştirmeleri
-7. Akış yeni özellik desteği 
-   - [Snapshot Windows](/stream-analytics-query/snapshot-window-azure-stream-analytics) : yeni pencere türü, tam olarak aynı anda ulaşan olaylara göre gruplandırmanızı sağlar. 
-   - [TopOne](/stream-analytics-query/topone-azure-stream-analytics) ve [collecttop](/stream-analytics-query/collecttop-azure-stream-analytics) ' ı analitik Işlevi olarak etkinleştirin; bu, bir pencerenin parçası olmadan tercih ettiğiniz sütun tarafından sıralanan kayıtları döndürmeye izin verecektir. 
+   - Sorguları otomatik olarak ayarlama
+   - Paralel yürütme senaryoları
+- Düşük güç modu için güç tasarrufu iyileştirmeleri
+- Akış yeni özellik desteği: 
+   - [Anlık görüntü pencereleri](/stream-analytics-query/snapshot-window-azure-stream-analytics): yeni bir pencere türü, aynı anda gelen olaylara göre gruplandırma yapmanıza olanak sağlar.
+   - [TopOne](/stream-analytics-query/topone-azure-stream-analytics) ve [collecttop](/stream-analytics-query/collecttop-azure-stream-analytics) , analitik işlevler olarak etkinleştirilebilir. Seçtiğiniz sütuna göre sıralanmış kayıtları döndürebilirsiniz. Pencerenin bir parçası olması gerekmez. 
    - [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics)geliştirmeleri. 
 
 ### <a name="fixes"></a>Düzeltmeler
-1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
-2. Pil ömrünü boşta modda korumanıza yönelik geliştirmeler. 
-3. TSQL akış altyapısı düzeltmeleri: 
-   - Durdurulan akış işi için Temizleme 
-   - Yerelleştirme ve Unicode işleme iyileştirmeleri için düzeltmeler
-   - Edge TSQL-streaming için hata ayıklama işlemini geliştirebilirsiniz, kullanıcıların get_streaming_job iş hatası hatalarını sorgulamasına izin verin.
-4. Veri bekletme ilkesi tabanlı Temizleme
-   - Bekletme ilkesi oluşturma ve Temizleme senaryolarına yönelik düzeltmeler.
-5. Düşük güç modundaki güç tasarrufunu artırmak için arka plan Zamanlayıcı görevlerine yönelik düzeltmeler.
+- T-SQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntıları 
+- Boşta modunda pil ömrünü koruma geliştirmeleri 
+- T-SQL streaming Engine düzeltmeleri: 
+   - Durdurulan akış işleri için Temizleme 
+   - Yerelleştirme düzeltmeleri 
+   - Gelişmiş Unicode işleme 
+   - SQL Edge T-SQL akışı için geliştirilmiş hata ayıklama, kullanıcıların get_streaming_job iş hatası hatalarını sorgulayabilmesine izin verir
+- Veri bekletme ilkesine göre Temizleme: 
+    - Bekletme-ilke oluşturma ve Temizleme senaryoları için düzeltmeler
+- Düşük güç modundaki güç tasarrufunu artırmak için arka plan Zamanlayıcı görevlerine yönelik düzeltmeler
 
-### <a name="known-issues"></a>Bilinen Sorunlar 
-1. Date_Bucket T-SQL Işlevi, hesaplanan bir sütunda kullanılamaz.
+### <a name="known-issues"></a>Bilinen sorunlar 
+- Date_Bucket T-SQL işlevi, hesaplanan bir sütunda kullanılamaz.
 
 
 ## <a name="ctp-23"></a>CTP 2,3
-### <a name="sql-engine-build-number---15020001549"></a>SQL altyapısı derleme numarası-15.0.2000.1549
+SQL Engine derleme 15.0.2000.1549
 ### <a name="whats-new"></a>Yenilikler
-1. Date_Bucket () işlevindeki özel kaynakları destekler. 
-2. SQL dağıtımının bir parçası olarak BacPac dosyaları için destek.
-3. Veri bekletme ilkesi tabanlı temizleme desteği.      
+- Date_Bucket () işlevindeki özel kaynakları destekleme 
+- SQL dağıtımının bir parçası olarak BACPAC dosyaları desteği
+- Veri bekletme ilkesine göre temizleme desteği:      
    - Bekletme ilkesini etkinleştirmek için DDL desteği 
-   - Saklı yordamları Temizleme ve arka planda temizleme görevi
+   - Saklı yordamlar ve arka plan temizleme görevi için Temizleme
    - Temizleme görevlerini izlemek için genişletilmiş olaylar
 
 ### <a name="fixes"></a>Düzeltmeler
-1. TSQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntılar. 
-2. Pil ömrünü boşta modda korumanıza yönelik geliştirmeler. 
-3. TSQL akış altyapısı düzeltmeleri: 
-   - Alt akışlı atlamalı penceresiyle takılı olmayan filigran sorununu giderme 
-   - Kullanıcı eylem yapılabilir hatası olarak toplandığından emin olmak için Framework özel durum işlemesini onarın
+- T-SQL akış işlemlerinde sorun gidermeye yönelik ek hata iletileri ve ayrıntıları 
+- Boşta modunda pil ömrünü koruma geliştirmeleri 
+- T-SQL streaming Engine: 
+   - Alt akışlı atlamalı penceresinde takılı filigran için çözüm 
+   - Kullanıcı tarafından işlem yapılabilir bir hata olarak toplandığından emin olmak için Framework özel durum işleme için çözüm
 
 
 ## <a name="ctp-22"></a>CTP 2,2
-### <a name="sql-engine-build-number---15020001546"></a>SQL altyapısı derleme numarası-15.0.2000.1546
+SQL Engine derleme 15.0.2000.1546
 ### <a name="whats-new"></a>Yenilikler
-1. Kök olmayan kapsayıcılar için destek 
-2. Kullanım ve tanılama veri toplama desteği 
-3. T-SQL akış güncelleştirmeleri
+- Kök olmayan kapsayıcılar için destek 
+- Kullanım ve tanılama veri toplama desteği 
+- T-SQL akış güncelleştirmeleri:
    - Stream nesne adları için Unicode karakterler desteği
 
 ### <a name="fixes"></a>Düzeltmeler
-1. T-SQL akış güncelleştirmeleri
+- T-SQL akış güncelleştirmeleri:
    - İşlem Temizleme iyileştirmeleri
    - Günlüğe kaydetme ve tanılama geliştirmeleri
-2. Veri alımı için performans iyileştirmesi
+- Veri alımı için performans iyileştirmesi
 
 ## <a name="ctp-21"></a>CTP 2,1 
-### <a name="sql-engine-build-number---15020001545"></a>SQL altyapısı derleme numarası-15.0.2000.1545
+SQL Engine derleme 15.0.2000.1545
 ### <a name="fixes"></a>Düzeltmeler
-1. ARM 'de CPUıD sorununu işlemek için ONNX modelleriyle tahmın etme 
-2. TSQL akışının başlangıcında hata yolunun işlenmesini geliştirmek için onarma 
-3. Veri olmadığında iş ölçümlerinde hatalı eşik gecikmesi değerini onarın. 
-4. Bağdaştırıcı, toplu işler arasında değişken şemasına sahip olduğunda çıkış bağdaştırıcısındaki sorunu düzeltir.  
+- ARM 'de bir CPUıD sorununu işlemek için önceden yapılan-ONNX modelleriyle izin verildi 
+- T-SQL akışı başladığında hata yolunun işlenmesi geliştirildi
+- Veri olmadığında iş ölçümlerinde eşik gecikmesi değeri düzeltildi.
+- Bağdaştırıcının toplu işler arasında bir değişken şeması olduğunda çıkış bağdaştırıcısında sorun giderme  
 
 ## <a name="ctp-20"></a>CTP 2,0 
-### <a name="sql-engine-build-number---15020001401"></a>SQL altyapısı derleme numarası-15.0.2000.1401
+SQL Engine derleme 15.0.2000.1401
 ### <a name="whats-new"></a>Yenilikler
-1.  Ürün adı ' Azure SQL Edge ' olarak güncelleştirildi
-1.  Date_bucket işlevi
-
-    i.  Tarih, saat, tarih saat türü desteği
-3.  ONNX ile tahmın edin
-    
-    i.  ONNX için çalışma zamanı parametresi gereklidir 
-    
-4.  TSQL akış desteği (sınırlı Önizleme) 
+-   Ürün adı *Azure SQL Edge* 'e güncelleştirildi
+-  Date_Bucket işlevi:
+    - Tarih, saat ve tarih saat türleri için destek
+- ONNX ile tahmın edin:
+    - ÇALıŞMA zamanı parametresi için ONNX gereksinimi  
+- T-SQL akış desteği (sınırlı Önizleme) 
  
-### <a name="known-issues"></a>Bilinen Sorunlar
+### <a name="known-issues"></a>Bilinen sorunlar
 
-1. <b>Sorun:</b> Zamanlama sorunu nedeniyle başlatmada dacpac uygulama ile ilgili olası sorunlar.
+- Sorun: bir zamanlama sorunu nedeniyle başlatma sırasında DACPAC uygulama ile ilgili olası sorunlar.
+- Geçici çözüm: SQL Server yeniden başlatın. Aksi takdirde, kapsayıcı DACPAC 'yi uygulamayı yeniden dener.
 
-    <b>Geçici çözüm:</b> SQL Server veya kapsayıcının yeniden başlatılması, dacpac 'yi uygulamayı yeniden deneyecek ve sorunu çözmelidir
 ### <a name="request-support"></a>Destek iste
-1. Destek [sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)destek isteyebilirsiniz.
+Destek [sayfasında](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)destek isteyebilirsiniz. Aşağıdaki alanları seçin: 
+- **Sorun türü**: *Teknik* 
+- **Hizmet**: *IoT Edge*
+- **Sorun türü**: *sorunum IoT Edge modülüyle ilişkili*
+- **Sorun alt türü**: *Azure SQL Edge*
 
-4. Aşağıdaki alanların seçildiğinden emin olun: 
-    * Sorun türü-Teknik 
-    * Hizmet-IoT Edge
-    * Sorun türü-sorunum bir IoT Edge modülüyle ilişkili
-    * Sorun alt türü-Azure SQL Edge
-
-   ![Örnek destek bileti](media/get-support/support-ticket.png)
+:::image type="content" source="media/get-support/support-ticket.png" alt-text="Örnek bir destek bileti gösteren ekran görüntüsü.":::
 
 ## <a name="ctp-15"></a>CTP 1,5
-### <a name="sql-engine-build-number---15020001331"></a>SQL altyapısı derleme numarası-15.0.2000.1331
+SQL Engine derleme 15.0.2000.1331
 ### <a name="whats-new"></a>Yenilikler
-1. Date_bucket işlevi
-    
-    i. DateTimeOffset türü desteği
-2. ONNX modelleriyle tahmın edin
-
-    i. nvarchar desteği
+- Date_Bucket işlevi:
+    - DateTimeOffset türü için destek
+- ONNX modelleriyle tahmın edin:
+  - NVARCHAR desteği
  
 ## <a name="ctp-14"></a>CTP 1,4
-### <a name="sql-engine-build-number---15020001247"></a>SQL altyapısı derleme numarası-15.0.2000.1247
+SQL Engine derleme 15.0.2000.1247
 ### <a name="whats-new"></a>Yenilikler
-1.  ONNX modelleriyle tahmın edin
- 
-    i.  Varchar desteği
-    
-    ii. ONNX çalışma zamanı 1,0 sürümüne geçiş 
-2.  Özellik desteği-aşağıdaki özellikler etkinleştirilmiştir:
+-   ONNX modelleriyle tahmın edin:
+    - VARCHAR desteği
+    - ONNX çalışma zamanı 1,0 sürümüne geçiş 
 
-    i.   CDC desteği
-
-    ii.  Sıkıştırma içeren geçmiş tablosu
-
-    iii. Günlük okuma için daha yüksek ölçek faktörü
-
-    IV.  Batch modu, aşağı doğru filtrele
-
-    v.   İleriye yönelik iyileştirmeleri okuyun
+- Aşağıdaki özellikler etkinleştirilmiştir:
+  - CDC desteği
+  - Sıkıştırma içeren geçmiş tablosu
+  - Günlük okuma için daha yüksek ölçekli bir faktör
+  - Batch modu, aşağı doğru filtrele
+  - İleriye okuma iyileştirmeleri
  
 ## <a name="ctp-13"></a>CTP 1,3
-### <a name="sql-engine-build-number---15020001147"></a>SQL altyapısı derleme numarası-15.0.2000.1147
+SQL Engine derleme 15.0.2000.1147
 ### <a name="whats-new"></a>Yenilikler
-1. Azure ıOT Portal dağıtımı 
-
-    i.   AMD64 ve ARM görüntülerini dağıtma desteği
-
-    ii.  Akış işi oluşturma desteği
-
-    iii. Dacpac dağıtımı
-2. ONNX modelleriyle tahmın edin
-
-    i. Sayısal tür desteği
-3. Özellik desteği-aşağıdaki özellikler etkinleştirilmiştir:
-
-    i.  Toplam sütun deposu taramasına aşağı itme
-
-    ii. Mutlu-go-yuvarlak taramalar
-4. Ayak izi ve bellek tüketimi azaltma işi
+- Azure IoT Portal dağıtımı: 
+    - AMD64 ve ARM görüntülerini dağıtma desteği
+    - Akış işi oluşturma desteği
+    - DACPAC dağıtımı
+- ONNX modelleriyle tahmın edin:
+    - Sayısal tür desteği
+- Aşağıdaki özellikler etkinleştirilmiştir:
+    - Toplam sütun deposu taramasına aşağı itme
+    - Mutlu-go-yuvarlak taramalar
+- Ayak izi ve bellek-tüketim azaltma işi

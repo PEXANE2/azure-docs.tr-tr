@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 282e1ef98a3c0d6e152b56a180a639c86d004af9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82dc9aa9615ef86c878fb75df6650dcc1f904a8f
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493109"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702628"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure 'a bağlı bir Video Indexer hesabı oluşturun
 
@@ -107,9 +107,14 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 
 1. [Hesap oluşturma](../previous/media-services-portal-create-account.md)bölümünde açıklandığı gibi bir Azure Media Services hesabı oluşturmak için [Azure](https://portal.azure.com/) portalını kullanın.
 
+     Media Services hesabının klasik API 'lerle oluşturulduğundan emin olun. 
+ 
+    ![Media Services klasik API](./media/create-account/enable-classic-api.png)
+
+
     Media Services hesabınız için bir depolama hesabı oluştururken, çoğaltma alanları için hesap türü ve coğrafi olarak **yedekli** (GRS) için **StorageV2** öğesini seçin.
 
-    ![Yeni AMS hesabı](./media/create-account/create-ams-account1.png)
+    ![Yeni AMS hesabı](./media/create-account/create-new-ams-account.png)
 
     > [!NOTE]
     > Media Services kaynak ve hesap adlarını yazdığınızdan emin olun. Sonraki bölümde yer aldığı adımlarda bunlara ihtiyacınız olacak.
@@ -120,7 +125,7 @@ Azure bağlantısı başarısız olduysa, el ile bağlanarak sorunu gidermeyi de
 
     Yeni Media Services hesabında, **akış uç noktaları**' nı seçin. Ardından akış uç noktasını seçip Başlat ' a basın.
 
-    ![Akış uç noktaları](./media/create-account/create-ams-account2.png)
+    ![Akış uç noktaları](./media/create-account/create-ams-account-se.png)
 4. Media Services API 'SI ile kimlik doğrulaması yapmak Video Indexer için, bir AD uygulamasının oluşturulması gerekir. Aşağıdaki adımlar, [Azure Portal kullanarak Azure AD kimlik doğrulaması ile çalışmaya başlama](../previous/media-services-portal-get-started-with-aad.md)bölümünde AÇıKLANAN Azure AD kimlik doğrulaması sürecinde size kılavuzluk ediyor:
 
     1. Yeni Media Services hesabında **API erişimi**' ni seçin.
@@ -171,7 +176,9 @@ Hesap, 90 gün içinde kalıcı olarak silinir.
 
 Aşağıdaki Azure Media Services ilgili konular geçerlidir:
 
-* Otomatik olarak bağlanıyorsanız, Azure aboneliğinizde yeni bir kaynak grubu, Media Services hesabı ve bir depolama hesabı görürsünüz.
+* Mevcut bir Media Services hesabına bağlanmayı planlıyorsanız, Media Services hesabının klasik API 'lerle oluşturulduğundan emin olun. 
+ 
+    ![Media Services klasik API](./media/create-account/enable-classic-api.png)
 * Mevcut bir Media Services hesabına bağlanırsanız, Video Indexer var olan medya **ayrılmış birimleri** yapılandırmasını değiştirmez.
 
    Planlı yüklerinize göre medya ayrılmış birimlerinin türünü ve sayısını ayarlamanız gerekebilir. Yük yüksekse ve yeterli miktarda birim veya hız yoksa, video işleme zaman aşımı hatalarıyla sonuçlanabilir.

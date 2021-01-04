@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
-ms.openlocfilehash: 0858d448cf768dbe6ea48f07247725fac30da860
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/20/2020
+ms.openlocfilehash: ed5e4d05a693ff9b0bf8823ba31de17d000d0fb6
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758922"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706890"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Log Analytics çalışma alanını silme ve kurtarma
 
@@ -19,7 +19,7 @@ Bu makalede, Azure Log Analytics çalışma alanı geçici silme kavramı ve sil
 
 ## <a name="considerations-when-deleting-a-workspace"></a>Çalışma alanı silinirken dikkat edilecek noktalar
 
-Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz – verileri kalıcı olarak silinmek üzere kuyruğa alınır ve 30 gün içinde tamamen temizlenir. Çalışma alanı adı ' yayımlandı ' ve bunu yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
+Bir Log Analytics çalışma alanını sildiğinizde, silme işleminin yanlışlıkla mi yoksa bilerek mi olduğunu, veri ve bağlı aracılarını 14 gün içinde içeren çalışma alanının kurtarılmasına izin veren bir geçici silme işlemi yapılır. Geçici silme süresinden sonra, çalışma alanı kaynağı ve verileri kurtarılamaz ve 30 gün içinde tamamen temizlenmek üzere sıraya alınır. Çalışma alanı adı ' yayımlandı ' ve bunu yeni bir çalışma alanı oluşturmak için kullanabilirsiniz.
 
 > [!NOTE]
 > Geçici silme davranışını geçersiz kılmak ve çalışma alanınızı kalıcı olarak silmek istiyorsanız, [kalıcı çalışma alanı silme](#permanent-workspace-delete)bölümündeki adımları uygulayın.
@@ -76,12 +76,15 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 ## <a name="recover-workspace"></a>Çalışma alanını kurtar
 Bir Log Analytics çalışma alanını yanlışlıkla veya isteyerek sildiğinizde, hizmet, çalışma alanını herhangi bir işlem için erişilebilir hale getiren bir geçici silme durumuna koyar. Silinen çalışma alanının adı, geçici silme dönemi sırasında korunur ve yeni bir çalışma alanı oluşturmak için kullanılamaz. Geçici silme süresinden sonra, çalışma alanı kurtarılamaz, kalıcı silme için zamanlanır ve yeni bir çalışma alanı oluşturmak için kullanılabilir.
 
-Veri, yapılandırma ve bağlı aracılar dahil olmak üzere geçici silme döneminde çalışma alanınızı kurtarabilirsiniz. Çalışma alanının geçici silme işleminden önce bulunduğu abonelik ve kaynak grubu için katkıda bulunan izinlerine sahip olmanız gerekir. Çalışma alanı kurtarma işlemi, silinen çalışma alanının ayrıntılarıyla birlikte bir Log Analytics çalışma alanı oluşturularak gerçekleştirilir:
+Veri, yapılandırma ve bağlı aracılar dahil olmak üzere geçici silme döneminde çalışma alanınızı kurtarabilirsiniz. Çalışma alanının geçici silme işleminden önce bulunduğu abonelik ve kaynak grubu için katkıda bulunan izinlerine sahip olmanız gerekir. Çalışma alanı kurtarma işlemi, Log Analytics çalışma alanını, silinen çalışma alanının ayrıntılarıyla birlikte yeniden oluşturularak gerçekleştirilir:
 
 - Abonelik Kimliği
 - Kaynak grubu adı
 - Çalışma alanı adı
-- Region
+- Bölge
+
+> [!IMPORTANT]
+> Çalışma alanınız kaynak grubu silme işleminin bir parçası olarak silinmişse, önce kaynak grubunu yeniden oluşturmanız gerekir.
 
 ### <a name="azure-portal"></a>Azure portal
 
@@ -104,20 +107,19 @@ PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-nam
 
 Çalışma alanı ve tüm verileri kurtarma işleminden sonra geri getirilir. Çözüm ve bağlı hizmetler silindiği zaman çalışma alanından kalıcı olarak kaldırılmıştır ve çalışma alanını daha önce yapılandırılmış durumuna getirmek için yeniden yapılandırılması gerekir. İlişkili çözümler yeniden yüklenene ve şemaları çalışma alanına eklenene kadar, bazı veriler, çalışma alanı kurtarmasından sonra sorgu için kullanılamayabilir.
 
-> [!NOTE]
-> * Geçici silme dönemi sırasında çalışma alanının yeniden oluşturulması, bu çalışma alanı adının zaten kullanımda olduğunu belirten bir bildirim sağlar. 
- 
 ## <a name="troubleshooting"></a>Sorun giderme
 
 Bir çalışma alanını silmek için en az *Log Analytics katkıda bulunan* izinlerinizin olması gerekir.
 
-* Silinen çalışma alanının geçici silme durumunda olduğundan ve kurtarılabileceğinden emin değilseniz, abonelik başına geçici olarak silinen çalışma alanlarının listesini görmek için *Log Analytics çalışma alanları* sayfasında [kurtar](#recover-workspace) ' a tıklayın. Kalıcı olarak silinen çalışma alanları listeye dahil edilmez.
+* Silinen çalışma alanının geçici silme durumunda olduğundan ve kurtarılabileceği emin değilseniz, abonelik başına geçici olarak silinen çalışma alanlarının listesini görmek için *Log Analytics çalışma alanları* sayfasında [geri dönüşüm kutusunu aç](#recover-workspace) ' a tıklayın. Kalıcı olarak silinen çalışma alanları listeye dahil edilmez.
 * Bir hata iletisi alırsanız, *Bu çalışma alanı adı zaten kullanımda* veya bir çalışma alanı oluştururken *çakışıyor* olabilir:
   * Çalışma alanı adı, kuruluşunuzdaki birisi veya diğer müşteri tarafından kullanılabilir değil.
-  * Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için şu adımları izleyin:<br>
+  * Çalışma alanı son 14 gün içinde silindi ve bu ad, geçici silme dönemi için ayrılmış olarak tutuldu. Geçici silme işlemini geçersiz kılmak ve aynı ada sahip yeni bir çalışma alanı oluşturmak için çalışma alanınızı kalıcı olarak silmek üzere, önce çalışma alanını kurtarmak için aşağıdaki adımları izleyin ve sonra kalıcı silme gerçekleştirin:<br>
     1. Çalışma alanınızı [kurtarın](#recover-workspace) .
     2. Çalışma alanınızı [kalıcı olarak silin](#permanent-workspace-delete) .
     3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
-* *Kaynak bulunamadığını* gösteren bir 204 yanıt kodu görürseniz, neden çalışma alanını silme işlemini kullanmayı ardışık olarak deniyor olabilir. 204 boş bir yanıt olduğundan, genellikle kaynağın bulunmadığı anlamına gelir; bu nedenle silme işlemi hiçbir şey yapılmadan tamamlanır.
-  Silme çağrısı arka uçta başarıyla tamamlandıktan sonra, çalışma alanını geri yükleyebilir ve daha önce önerilen yöntemlerden birindeki kalıcı silme işlemini tamamlayabilirsiniz.
+ 
+      Silme çağrısı arka uçta başarıyla tamamlandıktan sonra, çalışma alanını geri yükleyebilir ve daha önce önerilen yöntemlerden birindeki kalıcı silme işlemini tamamlayabilirsiniz.
 
+* Bir çalışma alanı silinirken *kaynak bulunamadı* 204 yanıt kodu alırsanız, ardışık yeniden deneme işlemleri meydana gelebilir. 204 boş bir yanıt olduğundan, genellikle kaynağın bulunmadığı anlamına gelir; bu nedenle silme işlemi hiçbir şey yapılmadan tamamlanır.
+* Kaynak grubunuzu ve çalışma alanınızı silerseniz, [geri dönüşüm kutusu 'Nu aç](#recover-workspace) sayfasında silinen çalışma alanını görebilirsiniz. ancak, kaynak grubu mevcut olmadığından kurtarma işlemi 404 hata koduyla başarısız olur; kaynak grubunuzu yeniden oluşturun ve kurtarmayı yeniden deneyin.

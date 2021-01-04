@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: e2c71e028225c22ab0355ff4cda77dacadf94095
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512054"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705413"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Soru-Cevap Oluşturma için Azure kaynakları
 
@@ -240,7 +240,7 @@ API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
 
 |Ad|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
 |Sorgu uç noktası anahtarı|[Soru-Cevap Oluşturma portalı](https://www.qnamaker.ai)|Bu anahtarlar, bir Kullanıcı sorusu için yanıt almak üzere yayımlanmış bilgi tabanı uç noktasını sorgulamak için kullanılır. Bu sorgu uç noktasını genellikle sohbet bot 'inizdeki veya Soru-Cevap Oluşturma hizmetine bağlanan istemci uygulama kodunda kullanırsınız. Bu anahtarlar Soru-Cevap Oluşturma bilgi bankasını yayımladığınızda oluşturulur.<br><br>Bu anahtarları **hizmet ayarları** sayfasında bulabilirsiniz. Bu sayfayı, açılan menüdeki sayfanın sağ üst kısmındaki kullanıcının menüsünden bulabilirsiniz.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları
@@ -268,8 +268,10 @@ Azure portal oluştur penceresi, Soru-Cevap Oluşturma yönetilen (Önizleme) ka
 
 > [!div class="mx-imgBorder"]
 > ![Soru-Cevap Oluşturma yönetilen Azure portal kaynak listesinin ekran görüntüsü (Önizleme)](../media/qnamaker-how-to-setup-service/resources-created-v2.png)
+
 > [!TIP]
 > Bir Soru-Cevap Oluşturma kaynağı oluşturduğunuzda yeni bir kaynak grubu oluşturun. Bu, kaynak grubuna göre arama yaparken Soru-Cevap Oluşturma yönetilen (Önizleme) kaynağıyla ilişkili tüm kaynakları görmenizi sağlar.
+
 > [!TIP]
 > Kaynak veya kaynak grubu adı içindeki fiyatlandırma katmanlarını göstermek için bir adlandırma kuralı kullanın. Yeni bir Bilgi Bankası oluşturma veya yeni belgeler ekleme hakkında hata aldığınızda, Bilişsel Arama fiyatlandırma katmanı sınırı yaygın bir sorundur.
 
@@ -317,8 +319,8 @@ API aracılığıyla hizmete istek yaparken bu anahtarları kullanın.
 
 |Ad|Konum|Amaç|
 |--|--|--|
-|Yazma anahtarı|[Azure portalı](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
-|Azure Bilişsel Arama yönetici anahtarı|[Azure portalı](../../../search/search-security-api-keys.md)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
+|Yazma anahtarı|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|Bu anahtarlar [soru-cevap oluşturma Management Service API 'lerine](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)erişmek için kullanılır. Bu API 'Ler, bilgi bankasındaki soruları ve yanıtları düzenlemenize ve bilgi tabanınızı yayımlamanıza olanak sağlar. Yeni bir Soru-Cevap Oluşturma hizmeti oluşturduğunuzda bu anahtarlar oluşturulur.<br><br>Bu anahtarları **anahtarlar** sayfasındaki bilişsel **Hizmetler** kaynağında bulabilirsiniz.|
+|Azure Bilişsel Arama yönetici anahtarı|[Azure Portal](../../../search/search-security-api-keys.md)|Bu anahtarlar, kullanıcının Azure aboneliğinde dağıtılan Azure bilişsel arama hizmeti ile iletişim kurmak için kullanılır. Soru-Cevap Oluşturma yönetilen (Önizleme) hizmeti ile bir Azure bilişsel aramayı ilişkilendirdiğinizde, yönetici anahtarı otomatik olarak Soru-Cevap Oluşturma hizmetine geçirilir. <br><br>Bu anahtarları **anahtarlar** sayfasında **Azure bilişsel arama** kaynağında bulabilirsiniz.|
 
 ### <a name="subscription-keys"></a>Abonelik anahtarları
 

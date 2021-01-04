@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.date: 08/15/2020
 ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: b2bf406dcab626b3ac08caf1a21ffea9332d3ca2
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 70ec9248db002823e969fa5f4fba8bf1074a9af7
+ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672653"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97706941"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure İşlevleri'nde bağımlılık eklemeyi kullanma
 
@@ -30,7 +30,7 @@ Bağımlılık ekleme 'yi kullanabilmeniz için aşağıdaki NuGet paketlerini y
 
 - [Microsoft. net. SDK. Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) paket sürümü 1.0.28 veya üzeri
 
-- [Microsoft. Extenstions. Dependencyınjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (Şu anda yalnızca sürüm 3. x ve daha önceki sürümleri desteklenir)
+- [Microsoft. Extensions. Dependencyınjection](https://www.nuget.org/packages/Microsoft.Extensions.DependencyInjection/) (Şu anda yalnızca sürüm 3. x ve daha önceki sürümleri desteklenir)
 
 ## <a name="register-services"></a>Hizmetleri Kaydet
 
@@ -190,7 +190,7 @@ Günlük düzeyleri hakkında daha fazla bilgi için bkz. [günlük düzeylerini
 
 İşlev Konağı birçok hizmeti kaydeder. Aşağıdaki hizmetler uygulamanızda bir bağımlılık olarak ele alınır:
 
-|Hizmet Türü|Ömür|Description|
+|Hizmet Türü|Ömür|Açıklama|
 |--|--|--|
 |`Microsoft.Extensions.Configuration.IConfiguration`|Adet|Çalışma zamanı yapılandırması|
 |`Microsoft.Azure.WebJobs.Host.Executors.IHostIdProvider`|Adet|Konak örneğinin KIMLIĞINI sağlamaktan sorumlu|

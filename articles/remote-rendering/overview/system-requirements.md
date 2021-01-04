@@ -1,18 +1,19 @@
 ---
-title: Sistem gereksinimleri
+title: Sistem Gereksinimleri
 description: Azure uzaktan Işleme için sistem gereksinimlerini listeler
 author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 536f5e7d2fa12d1f9a9f09a31b463d2096dcad37
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.custom: references_regions
+ms.openlocfilehash: 4380f14610fb0775c82aa79ec7cda9dc70cf0715
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207419"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97722700"
 ---
-# <a name="system-requirements"></a>Sistem gereksinimleri
+# <a name="system-requirements"></a>Sistem Gereksinimleri
 
 > [!IMPORTANT]
 > **Azure uzaktan işleme** Şu anda genel önizleme aşamasındadır.
@@ -49,11 +50,11 @@ Azure uzaktan Işleme Şu anda yalnızca bir hedef cihaz olarak **HoloLens 2** v
 
 Daha yeni sürümlerde gecikme süresi bakımından önemli iyileştirmeler olduğu için en son HEVC codec bileşeni kullanılması önemlidir. Cihazınızda hangi sürümün yüklü olduğunu denetlemek için:
 
-1. **Microsoft Store**başlatın.
+1. **Microsoft Store** başlatın.
 1. Sağ üst köşedeki **"..."** düğmesine tıklayın.
 1. **İndirmeler ve Güncelleştirmeler '** i seçin.
-1. **Cihaz üreticisinden HEVC video uzantıları**listesinde arama yapın. Bu öğe güncelleştirmeler altında listelenmiyorsa, en son sürüm zaten yüklüdür.
-1. Listelenen codec bileşeninin en az sürüm **1.0.21821.0**olduğundan emin olun.
+1. **Cihaz üreticisinden HEVC video uzantıları** listesinde arama yapın. Bu öğe güncelleştirmeler altında listelenmiyorsa, en son sürüm zaten yüklüdür.
+1. Listelenen codec bileşeninin en az sürüm **1.0.21821.0** olduğundan emin olun.
 1. **Güncelleştirmeleri al** düğmesine tıklayın ve yüklemesinin tamamlanmasını bekleyin.
 
 ## <a name="network"></a>Ağ
@@ -64,7 +65,32 @@ Bkz. [ağ gereksinimleri](../reference/network-requirements.md)için adanmış b
 
 Ağ sorunlarını gidermek için [sorun giderme kılavuzuna](../resources/troubleshoot.md#unstable-holograms)bakın.
 
-### <a name="network-ports"></a>Ağ bağlantı noktaları
+### <a name="network-firewall"></a>Ağ güvenlik duvarı
+
+### <a name="sdk-version--0176"></a>SDK sürümü >= 0.1.76
+
+Uzaktan Işleme sanal makineleri aşağıdaki IP aralıklarından Paylaşılan IP adreslerini kullanır:
+
+| Ad             | Bölge         | IP öneki         |
+|------------------|:---------------|:------------------|
+| Doğu Avustralya   | australiaeast  | 20.53.44.240/28   |
+| Doğu ABD          | eastus         | 20.62.129.224/28  |
+| Doğu ABD 2        | eastus2        | 20.49.103.240/28  |
+| Doğu Japonya       | japaneast      | 20.191.165.112/28 |
+| Kuzey Avrupa     | northeurope    | 52.146.133.64/28  |
+| Orta Güney ABD | southcentralus | 20.65.132.80/28   |
+| Güneydoğu Asya   | southeastasia  | 20.195.64.224/28  |
+| Güney Birleşik Krallık         | uksouth        | 51.143.209.144/28 |
+| West Europe      | westeurope     | 20.61.99.112/28   |
+| Batı ABD 2        | westus2        | 20.51.9.64/28     |
+
+Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) bu IP aralıklarını ve aşağıdaki bağlantı noktası aralıklarını engellemediğinden emin olun:
+
+| Bağlantı noktası              | Protokol  | İzin Ver    |
+|-------------------|---------- |----------|
+| 49152-65534       | TCP/UDP | Tarafına |
+
+#### <a name="sdk-version--0176"></a>SDK sürümü < 0.1.76
 
 Güvenlik duvarlarınızın (cihazda, yönlendiricilerin içinde, vb.) aşağıdaki bağlantı noktalarını engellemediğinden emin olun:
 

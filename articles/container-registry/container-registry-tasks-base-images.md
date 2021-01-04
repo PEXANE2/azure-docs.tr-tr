@@ -3,12 +3,12 @@ title: Temel görüntü güncelleştirmeleri-görevler
 description: Uygulama kapsayıcısı görüntülerinin temel görüntüleri ve temel görüntü güncelleştirmesinin Azure Container Registry görevi nasıl tetikleyebileceğinizi öğrenin.
 ms.topic: article
 ms.date: 01/22/2019
-ms.openlocfilehash: 74e5fb81e3ef6f75b5ee2872ee44b99aae096fd8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df33096830cd7b34a288c38c105aff3610315337
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009832"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707495"
 ---
 # <a name="about-base-image-updates-for-acr-tasks"></a>ACR görevleri için temel görüntü güncelleştirmeleri hakkında
 
@@ -57,7 +57,7 @@ Temel görüntünün güncelleştirildiği zaman ve bağımlı görevin tetiklen
 * **Varsayılan olarak etkindir** - [az ACR Task Create][az-acr-task-create] komutuyla bir ACR görevi oluşturduğunuzda, varsayılan olarak görev bir temel görüntü güncelleştirmesi *tarafından tetiklenir.* Diğer bir deyişle, `base-image-trigger-enabled` özelliği true olarak ayarlanır. Bir görevde bu davranışı devre dışı bırakmak istiyorsanız, özelliği false olarak güncelleştirin. Örneğin, şu [az ACR Task Update][az-acr-task-update] komutunu çalıştırın:
 
   ```azurecli
-  az acr task update --myregistry --name mytask --base-image-trigger-enabled False
+  az acr task update --registry myregistry --name mytask --base-image-trigger-enabled False
   ```
 
 * **Bağımlılıkları izlemek Için Tetikle** -BIR ACR görevinin, kendi temel görüntüsünü içeren bir kapsayıcı görüntüsünün bağımlılıklarını belirlemesine ve izlemesine olanak tanımak için, önce görevi görüntüyü **en az bir kez** oluşturmak üzere tetiklemeniz gerekir. Örneğin, [az ACR Task Run][az-acr-task-run] komutunu kullanarak görevi el ile tetikleyin.

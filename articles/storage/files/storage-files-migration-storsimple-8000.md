@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: daa7c657a47414b01197bed3644caefeda98af1c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512180"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723987"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 ve 8600 Azure Dosya Eşitleme 'e geçiş
 
@@ -56,7 +56,7 @@ Azure dosya paylaşımları, öznitelikler, izinler ve zaman damgaları gibi dep
 
 Bu makalede geçiş adımları ele alınmaktadır. Geçirmeden önce Azure Dosya Eşitleme hakkında daha fazla bilgi edinmek istiyorsanız, aşağıdaki makalelere bakın:
 
-* [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md "Genel bakış")
+* [Azure Dosya Eşitleme genel bakış](./storage-sync-files-planning.md "Genel Bakış")
 * [Azure Dosya Eşitleme dağıtım kılavuzu](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple hizmeti veri şifreleme anahtarı
@@ -160,7 +160,7 @@ Azure dosya paylaşımları veya standart depolama için Premium Depolama (SSD) 
 
 Hala emin değil misiniz?
 
-* [Premium Azure dosya paylaşımının performansına](storage-files-planning.md#understanding-provisioning-for-premium-file-shares)ihtiyacınız varsa Premium Depolama ' yı seçin.
+* [Premium Azure dosya paylaşımının performansına](understanding-billing.md#provisioned-billing)ihtiyacınız varsa Premium Depolama ' yı seçin.
 * Sık erişimli veri ve arşiv verilerini içeren genel amaçlı dosya sunucusu iş yükleri için standart depolama ' yı seçin. Ayrıca, buluttaki paylaşımdaki tek iş yükünün Azure Dosya Eşitleme olması durumunda standart depolamayı da seçin.
 
 #### <a name="account-kind"></a>Hesap türü
@@ -413,7 +413,7 @@ Bu geçiş yaklaşımı, kullanıcılarınız ve uygulamalarınız için bazı k
 
 Bir Azure dosya paylaşımında Azure Dosya Eşitleme kullandığınızda, herhangi bir yerel RoboCopy başlamadan *önce* tüm ad alanınızı sunucuya indirmeyi tamamladığımıza dikkat etmeniz önemlidir. Ad alanınızı indirmek için gereken süre, Azure dosya paylaşımınızda bulunan öğelerin sayısına bağlıdır. Ad alanınızı sunucuda tam olarak ulaşıp ulaşmadığını belirlemek için iki yöntem vardır.
 
-#### <a name="azure-portal"></a>Azure portalı
+#### <a name="azure-portal"></a>Azure portal
 
 Ad alanınız ne zaman tam olarak geldiğini görmek için Azure portal kullanabilirsiniz.
 
@@ -430,7 +430,7 @@ Ayrıca, ad alanının tam olarak ulaştığını söylemek için Windows Server
 1. Tamamlanan bir eşitleme oturumuna karşılık gelen en son **olay 9102**' i arayın.
 1. **Ayrıntılar**' ı seçin ve **Syncdirection** değerinin **indirileceği** bir olaya baktığınızdan emin olun.
 1. Ad uzayının sunucuya indirmesi tamamlandığında, **senaryoya** sahip tek bir olay, **FullGhostedSync** değeri ve **HRESULT**  =  **0** olur.
-1. Bu olayı kaçırırsanız, **syncdirection** **9102 events**  =  **indirmesi** ve **Scenario**  =  **"RegularSync"** senaryosuyla diğer 9102 olaylarına de bakabilirsiniz. Bu olaylardan birini bulmak için aynı zamanda, ad alanının, eşitleme için ilerlemedi ve eşitleme tamamlandı.
+1. Bu olayı kaçırırsanız, **syncdirection**   =  **indirmesi** ve   =  **"RegularSync"** senaryosuyla diğer 9102 olaylarına de bakabilirsiniz. Bu olaylardan birini bulmak için aynı zamanda, ad alanının, eşitleme için ilerlemedi ve eşitleme tamamlandı.
 
 ### <a name="a-final-robocopy"></a>Son RoboCopy
 

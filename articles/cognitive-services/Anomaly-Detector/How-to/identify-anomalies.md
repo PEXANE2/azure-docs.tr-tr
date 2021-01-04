@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: b2cd5e32503953de874ab470ca3f9413d2b37d59
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 74f891ba7f5b400b5782565e670539167f4e2464
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92014656"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703441"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Nasıl yapılır: zaman serisi verilerinizde anomali algılayıcısı API 'sini kullanma  
 
@@ -71,4 +71,4 @@ Aşağıdaki örneklerde farklı sensitivities bir anomali algılayıcı API son
 ## <a name="next-steps"></a>Sonraki Adımlar
 
 * [Anomali Algılayıcısı API'si nedir?](../overview.md)
-* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar Algıla REST API](../quickstarts/detect-data-anomalies-csharp.md)
+* [Hızlı başlangıç: anomali algılayıcısının kullanıldığı zaman serisi verilerinizde bozukluklar saptama](../quickstarts/client-libraries.md)
