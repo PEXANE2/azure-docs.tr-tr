@@ -4,12 +4,12 @@ description: Azure Kubernetes hizmeti (AKS) kümesini aboneliğinizde zaten dağ
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 9f3b9240bc10f4eaa4c9967d8c7bbb956eeab4e1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 547c22e4d82aa728009a2fdb42f2c3b481b7a625
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735140"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695650"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Azure Kubernetes Service (AKS) kümesinin izlenmesini etkinleştirme zaten dağıtıldı
 
@@ -24,7 +24,7 @@ Desteklenen yöntemlerden birini kullanarak zaten dağıtılmış bir AKS kümes
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com)’ında oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="enable-using-azure-cli"></a>Azure CLI’yı kullanarak etkinleştirme
 
@@ -105,13 +105,13 @@ Mevcut bir çalışma alanıyla tümleştirileceğini tercih ediyorsanız, param
 
 Azure Izleyici Azure portal AKS kümenizi izlemeyi etkinleştirmek için aşağıdakileri yapın:
 
-1. Azure portal, **İzle** ' yi seçin.
+1. Azure portal, **İzle**' yi seçin.
 
 2. Listeden **kapsayıcılar** ' ı seçin.
 
-3. **İzleme kapsayıcıları** sayfasında, **izlenmeyen kümeler** ' ı seçin.
+3. **İzleme kapsayıcıları** sayfasında, **izlenmeyen kümeler**' ı seçin.
 
-4. İzlenmeyen kümeler listesinden, listeden kapsayıcıyı bulun ve **Etkinleştir** ' e tıklayın.
+4. İzlenmeyen kümeler listesinden, listeden kapsayıcıyı bulun ve **Etkinleştir**' e tıklayın.
 
 5. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte mevcut bir Log Analytics çalışma alanınız varsa, bu seçeneği, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
@@ -127,15 +127,15 @@ Azure Izleyici Azure portal AKS kümenizi izlemeyi etkinleştirmek için aşağ�
 
 Azure portal doğrudan AKS kümelerinizin birinden izlemeyi etkinleştirmek için aşağıdakileri yapın:
 
-1. Azure portal, **tüm hizmetler** ' i seçin.
+1. Azure portal, **tüm hizmetler**' i seçin.
 
 2. Kaynak listesinde **kapsayıcılar** yazmaya başlayın.  Liste, girişinizi temel alarak filtreler.
 
-3. **Kubernetes Hizmetleri** ' ni seçin.
+3. **Kubernetes Hizmetleri**' ni seçin.
     
 4. Kubernetes hizmetleri listesinde bir hizmet seçin.
 
-5. Kubernetes hizmetine genel bakış sayfasında, **izleme-Öngörüler** ' i seçin.
+5. Kubernetes hizmetine genel bakış sayfasında, **izleme-Öngörüler**' i seçin.
 
 6. **Kapsayıcılar Için Azure Izleyicisine ekleme** sayfasında, kümeyle aynı abonelikte var olan bir Log Analytics çalışma alanınız varsa, açılan listeden seçin.
     Liste, varsayılan çalışma alanını ve AKS kapsayıcısının abonelikte dağıtıldığı konumu önceden seçer.
@@ -280,7 +280,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
        ```azurecli
        az login
        az account set --subscription "Subscription Name"
-       az group deployment create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
+       az deployment group create --resource-group <ResourceGroupName> --template-file ./existingClusterOnboarding.json --parameters @./existingClusterParam.json
        ```
 
        Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Bu tamamlandığında, aşağıdakine benzer bir ileti görüntülenir ve sonuç şunu içerir:

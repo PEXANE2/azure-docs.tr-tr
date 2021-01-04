@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 4b2769139e74289c4760b5c398c80380afea351f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 90c827774f38f07b9791a6399a53b0304bbe28c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921898"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695197"
 ---
 # <a name="tutorial-create-a-classification-model-with-automated-ml-in-azure-machine-learning"></a>Öğretici: Azure Machine Learning otomatik ML ile sınıflandırma modeli oluşturma
 
@@ -100,11 +100,9 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| Tüm dosyaların aynı üst bilgileri var
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
 
-    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnek için **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu deneme için dahil edilmez. **İleri**’yi seçin.
-
-        ![Önizleme sekmesi yapılandırması](./media/tutorial-first-experiment-automated-ml/schema-tab-config.gif)
+    1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. Bu örnekte, hiçbir seçim yapmayız. **İleri**’yi seçin.
 
     1. **Ayrıntıları Onayla** formunda, bilgilerin daha önce **temel bilgiler, veri deposu ve dosya seçimi** ve **Ayarlar ve önizleme** formlarında doldurulduğu ile eşleştiğini doğrulayın.
     
@@ -112,32 +110,44 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
     
     1. Listede göründükten sonra veri kümenizi seçin.
     
-    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve **Tamam**' ı seçin.
+    1. **Day_of_week** dahil etmediğinizden emin olmak için **veri önizlemeyi** gözden geçirin ve ardından **Kapat**' ı seçin.
 
     1. **İleri ' yi** seçin.
 
-## <a name="configure-experiment-run"></a>Deneme çalıştırmasını Yapılandır
+## <a name="configure-run"></a>Çalıştırmayı Yapılandır
 
 Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabilirsiniz. Bu kurulum, işlem ortamınızın boyutunu seçme ve tahmin etmek istediğiniz sütunu belirtme gibi tasarım görevlerini içerir. 
+
+1. Yeni radyo **Oluştur** düğmesini seçin.
 
 1. **Yapılandırma çalıştırması** formunu aşağıdaki gibi doldurun:
     1. Bu deneme adını girin: `my-1st-automl-experiment`
 
     1. Hedef sütun olarak **y** ' yi, ne tahmin etmek istediğinizi seçin. Bu sütun, istemcinin yatırma bir terime abone olup olmadığını gösterir.
     
-    1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. İşlem hedefi, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
+    1. **+ Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. İşlem hedefi, eğitim betiğinizi çalıştırmak veya hizmet dağıtımınızı barındırmak için kullanılan yerel veya bulut tabanlı bir kaynak ortamıdır. Bu deneme için bulut tabanlı bir işlem kullanıyoruz. 
+        1. İşlem ortamınızı ayarlamak için **sanal makine** formunu doldurun.
 
-        Alan | Açıklama | Öğretici için değer
-        ----|---|---
-        İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Oto ml-işlem
-        Sanal &nbsp; makine &nbsp; türü| İşlem için sanal makine türünü seçin.|CPU (Merkezi Işlem birimi)
-        Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
-        En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
-        Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
-        Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Yok
-        1. İşlem hedefini almak için **Oluştur** ' u seçin. 
+            Alan | Açıklama | Öğretici için değer
+            ----|---|---
+            Sanal &nbsp; makine &nbsp; önceliği |Denemenizin hangi önceliğe sahip olması gerektiğini seçin| Ayrılmış
+            Sanal &nbsp; makine &nbsp; türü| İşlem için sanal makine türünü seçin.|CPU (Merkezi Işlem birimi)
+            Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin. Önerilen boyutların listesi verilerinize ve deneme türüne göre belirlenir. |Standard_DS12_V2
+        
+        1. **Yapılandırma ayarları formunu** doldurmak için **İleri ' yi** seçin.
+        
+            Alan | Açıklama | Öğretici için değer
+            ----|---|---
+            İşlem adı |  İşlem bağlamını tanımlayan benzersiz bir ad. | Oto ml-işlem
+            En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
+            Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
+            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Hiçbiri               
+
+        1. İşlem hedefini oluşturmak için **Oluştur** ' u seçin. 
 
             **Bu, tamamlanacak birkaç dakika sürer.** 
+
+             ![Ayarlar sayfası](./media/tutorial-first-experiment-automated-ml/compute-settings.png)
 
         1. Oluşturulduktan sonra, açılan listeden yeni işlem hedefini seçin.
 
@@ -153,20 +163,24 @@ Verilerinizi yükleyip yapılandırdıktan sonra, denemenizin kurulumunu yapabil
         ------|---------|---
         Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|AUC_weighted
         En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
-        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Yok
+        Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Hiçbiri
         Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 1 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
         Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 2
         Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 5
         
         **Kaydet**’i seçin.
+    
+    1. **Görünüm özelliği ayarları**' nı seçin. Bu örnekte, **day_of_week** özelliği için geçiş anahtarını seçin. bu nedenle, bu denemede uygun hale getirme için dahil edilmez.
 
-1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır.
+        ![Korleştirme seçimi](./media/tutorial-first-experiment-automated-ml/featurization-setting-config.gif)   
+ 
+        **Kaydet**’i seçin.
+
+1. Denemeyi çalıştırmak için **son** ' u seçin. **Çalışma ayrıntısı** ekranı, deneme hazırlığı başladığında en üstteki **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir. Deneme larınızın durumunu bilgilendirmek için Ayrıca, Studio 'nun sağ üst köşesinde bildirimler görüntülenir.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
-> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.  
-> Deneme ilerledikçe çalıştırmanın durumunu görmek için düzenli aralıklarla **Yenile** ' yi seçin.
->
+> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.  <br> <br>
 > Üretimde, büyük olasılıkla biraz daha fazla yol göstereceğiz. Ancak bu öğreticide, diğer kullanıcılar çalışmaya devam ederken, **modeller** sekmesinde sınanan algoritmaları keşfetmeye başlayacağız. 
 
 ##  <a name="explore-models"></a>Modelleri keşfet
@@ -238,7 +252,7 @@ Dağıtım dosyaları veri ve deneme dosyalarından daha büyüktür, bu nedenle
 Bu otomatik makine öğrenimi öğreticisinde, bir sınıflandırma modeli oluşturmak ve dağıtmak için Azure Machine Learning otomatik ML arabirimini kullandınız. Daha fazla bilgi ve sonraki adımlar için aşağıdaki makalelere bakın:
 
 > [!div class="nextstepaction"]
-> [Bir web hizmetini kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Bir web hizmetini kullanma](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md) makalesi.

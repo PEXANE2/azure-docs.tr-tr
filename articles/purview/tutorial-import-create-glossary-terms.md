@@ -1,18 +1,18 @@
 ---
 title: "Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)"
 description: Bu öğreticide, Sözlük terimleri oluşturma, bir varlığa Sözlük terimleri ekleme ve sözlük koşullarını içeri aktarma açıklanır.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 4dc8dd84c22d094c87c82f5a920015f886780df2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 0ea6fcaff1ec699431da8b67adee68735a8611a8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399817"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696080"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>Öğretici: Azure purview 'da Sözlük terimleri oluşturma ve içeri aktarma (Önizleme)
 
@@ -23,7 +23,7 @@ Sözlük, kataloğunuzu sürdürmek ve düzenlemek için önemli bir araçtır. 
 
 Bu öğretici, Azure purview kullanarak bir veri yönetiminde veri yönetimini yönetme temellerini öğrentiğinizde *beş bölümlü bir öğretici serisinin 5. bölümüdür* . Bu öğretici, [5. Bölüm: Azure purview (Önizleme) içinde kaynak kümelerini, ayrıntıları, şemaları ve sınıflandırmaları keşfetmeye](tutorial-schemas-and-classifications.md)yönelik bu öğreticide oluşturulur.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -37,7 +37,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure portalda](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-glossary-terms"></a>Sözlük terimleri oluşturma
 

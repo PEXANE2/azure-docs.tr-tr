@@ -3,12 +3,12 @@ title: Bir sanal makinenin Azure Resource Manager şablonunu görüntüleyin ve 
 description: Diğer VM 'Ler oluşturmak için bir sanal makineden Azure Resource Manager şablonunu nasıl kullanacağınızı öğrenin
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7f969abe1ca903a226e73c5c70781dce512c2926
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb7cb38dfb2c1664017f0e342fefecdd464df45f
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91282519"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696017"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak sanal makineler oluşturma 
 
@@ -25,7 +25,7 @@ Kaynak Yöneticisi şablonu kullanarak DevTest Labs 'de sanal makine oluşturman
 
    ![Sanal makinelerin listesini DevTest Labs sanal makineler listesinde tek öğe olarak gösteren ekran görüntüsü.](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Bu tür Kaynak Yöneticisi şablonu, **New-AzResourceGroupDeployment** Azure PowerShell komutu ya da **az Group Deployment Create**Azure CLI komutu aracılığıyla sağlanabilir. Yönetici izinleri gerektirir, bu nedenle bir DevTest Labs kullanıcı rolüyle atanan kullanıcılar dağıtımı gerçekleştiremez. 
+   Bu tür Kaynak Yöneticisi şablonu, **New-AzResourceGroupDeployment** Azure PowerShell komutuyla veya Azure CLI komutu **az dağıtım grubu oluştur** aracılığıyla sağlanabilir. Yönetici izinleri gerektirir, bu nedenle bir DevTest Labs kullanıcı rolüyle atanan kullanıcılar dağıtımı gerçekleştiremez. 
 
 - Microsoft. COMPUTE/virtualmachines kaynak türü kullanan Kaynak Yöneticisi şablonlar, DevTest Labs sanal makineler listesinde tek bir ortam olarak birden çok VM sağlayabilir:
 

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a8dbadd3af9dc21ced54af151e4de705f854e011
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186788"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696062"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Izleyici 'yi kullanarak günlük uyarıları oluşturma, görüntüleme ve yönetme
 
@@ -55,7 +55,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Günlük uyarıları, iki [**Ölçü**](alerts-unified-log.md#measure)türüne göre olabilir:
     1. **Sonuç sayısı** -sorgu tarafından döndürülen kayıt sayısı.
-    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örneğin:
+    1. **Ölçüm ölçümü**  -  Seçilen ifade ve [bin ()](/azure/kusto/query/binfunction) seçimine göre gruplanmış özetleme kullanılarak hesaplanan *Toplam değer* . Örnek:
 
     ```Kusto
     // Reported errors
@@ -79,7 +79,7 @@ Uyarılar için sorgular yazmaya başlama adımları burada verilmiştir:
 
 1. Ayrıca, isteğe bağlı olarak, **Toplam veya ardışık ihlaller** kullanarak [bir uyarının tetiklenmesi için ihlallerin sayısını](alerts-unified-log.md#number-of-violations-to-trigger-alert) ayarlayabilirsiniz.
 
-1. **Bitti**'yi seçin. 
+1. **Bitti**’yi seçin. 
 
 1. **Uyarı kuralı adını**, **açıklamasını** tanımlayın ve uyarı **önem derecesini** seçin. Bu ayrıntılar tüm uyarı eylemlerinde kullanılır. Ayrıca, oluşturma **sırasında kuralı etkinleştir**' i seçerek, oluşturma sırasında uyarı kuralını etkinleştirememenizi de seçebilirsiniz.
 
@@ -312,7 +312,7 @@ Azure Resource Manager CLı 'yi [şablon](./alerts-log-create-templates.md) dosy
 ```azurecli
 az login
 
-az group deployment create \
+az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file mylogalerttemplate.json \

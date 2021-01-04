@@ -1,18 +1,18 @@
 ---
 title: "Öğretici: Azure purview 'da kaynak kümelerini, ayrıntıları, şemaları ve sınıflandırmaları araştırma (Önizleme)"
 description: Bu öğreticide kaynak kümelerinin, varlık ayrıntılarının, şemaların ve sınıflandırmaların nasıl kullanılacağı açıklanmaktadır.
-author: viseshag
-ms.author: viseshag
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: c39ed746630c646b0ce305a9535ae6d610f5161c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c74324ebeeefeed361c0557c45a280a411effa22
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96555799"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693321"
 ---
 # <a name="tutorial-explore-resource-sets-details-schemas-and-classifications-in-azure-purview-preview"></a>Öğretici: Azure purview 'da kaynak kümelerini, ayrıntıları, şemaları ve sınıflandırmaları araştırma (Önizleme)
 
@@ -23,7 +23,7 @@ Bu öğreticide, Katalog: kaynak kümeleri, varlık ayrıntıları, şemalar ve 
 
 Bu öğretici, Azure purview kullanarak bir veri yönetiminde veri yönetimini yönetme temellerini öğrentiğinizde *beş bölümlü bir öğretici serisinin 4. parçasıdır* . Bu öğretici, [3. Bölüm: Azure 'daki varlıklara (Önizleme) gözatıp kökenini görüntüleyin](tutorial-browse-and-view-lineage.md).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Varlık ayrıntılarını görüntüleyin.
 > * Şemayı düzenleyin ve sınıflandırmalar ekleyin.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Tüm [öğretici: Azure purview (Önizleme) içindeki varlıklara gözatıp kökenini görüntüleyin](tutorial-browse-and-view-lineage.md).
 

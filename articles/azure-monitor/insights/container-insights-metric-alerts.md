@@ -3,12 +3,12 @@ title: Kapsayıcılar için Azure Izleyici 'den ölçüm uyarıları
 description: Bu makalede, Azure Izleyici 'de genel önizlemede bulunan kapsayıcılar için sunulan önerilen ölçüm uyarıları incelenir.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 16995246578dc8d3c009253d8384c6d7ff3911d3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a81dfb3fab57b378a56bfa8ac8102d723a50dbbc
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186890"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695953"
 ---
 # <a name="recommended-metric-alerts-preview-from-azure-monitor-for-containers"></a>Kapsayıcılar için Azure Izleyici 'den önerilen ölçüm uyarıları (Önizleme)
 
@@ -18,7 +18,7 @@ Bu makale, deneyimi inceler ve bu uyarı kurallarını yapılandırma ve yönetm
 
 Azure Izleyici uyarılarını bilmiyorsanız, başlamadan önce bkz. [Microsoft Azure uyarılara genel bakış](../platform/alerts-overview.md) . Ölçüm uyarıları hakkında daha fazla bilgi edinmek için bkz. [Azure izleyici 'de ölçüm uyarıları](../platform/alerts-metric-overview.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamadan önce, aşağıdakileri onaylayın:
 
@@ -39,7 +39,7 @@ Başlamadan önce, aşağıdakileri onaylayın:
 
 Önemli şeyler hakkında uyarı almak için, kapsayıcılar için Azure Izleyici, AKS ve Azure Arc etkin Kubernetes kümelerine yönelik aşağıdaki ölçüm uyarılarını içerir:
 
-|Adı| Açıklama |Varsayılan eşik |
+|Ad| Açıklama |Varsayılan eşik |
 |----|-------------|------------------|
 |Ortalama kapsayıcı CPU 'SU yüzdesi |Kapsayıcı başına kullanılan ortalama CPU 'YU hesaplar.|Kapsayıcı başına ortalama CPU kullanımı %95 ' den büyük olduğunda.| 
 |Ortalama kapsayıcı çalışma kümesi belleği yüzdesi |Kapsayıcı başına kullanılan ortalama çalışma kümesi belleğini hesaplar.|Kapsayıcı başına ortalama çalışma kümesi bellek kullanımı %95 ' den büyük olduğunda. |
@@ -110,7 +110,7 @@ Azure portal Azure Izleyici 'de ölçüm uyarılarını etkinleştirmek için bu
 
 Bu bölümde, Azure portal kapsayıcılar ölçüm Uyarısı (Önizleme) için Azure Izleyici 'nin etkinleştirilmesi gösterilmektedir.
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 2. Kapsayıcılar için Azure Izleyici ölçümleri Uyarısı (Önizleme) özelliğine erişim, Azure portal sol bölmeden **Öngörüler** ' i seçerek doğrudan bir aks kümesinden edinilebilir.
 
@@ -186,7 +186,7 @@ Temel adımlar aşağıdaki gibidir:
     ```azurecli
     az login
 
-    az group deployment create \
+    az deployment group create \
     --name AlertDeployment \
     --resource-group ResourceGroupofTargetResource \
     --template-file templateFileName.json \

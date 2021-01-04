@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 89a9a1b762e02237a8ee08dca5d6eedefabaafbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cee7072f9bc844fb1f89168de3547dc726472b67
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87328359"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695907"
 ---
 # <a name="enable-azure-monitor-for-vms-using-resource-manager-templates"></a>Kaynak Yöneticisi şablonları kullanarak VM'ler için Azure İzleyici etkinleştirme
 Bu makalede, Kaynak Yöneticisi şablonları kullanarak bir sanal makine veya sanal makine ölçek kümesi için VM'ler için Azure İzleyici nasıl etkinleştirileceği açıklanır. Bu yordam aşağıdakiler için kullanılabilir:
@@ -44,7 +44,7 @@ Azure Resource Manager şablonları, GitHub deponuzdan [indirebileceğiniz](http
 - **Configureworkspace** şablonu, Linux ve Windows işletim sistemi performans sayaçlarının çözümlerini ve toplanmasını etkinleştirerek Log Analytics çalışma alanınızı VM'ler için Azure izleyici destekleyecek şekilde yapılandırır.
 
 >[!NOTE]
->Sanal Makine Ölçek Kümeleri zaten varsa ve yükseltme ilkesi **el ile**olarak ayarlandıysa, **ExistingVmssOnboarding** Azure Resource Manager şablonu çalıştırıldıktan sonra örnekler için VM'ler için Azure izleyici varsayılan olarak etkinleştirilmez. Örnekleri el ile yükseltmeniz gerekir.
+>Sanal Makine Ölçek Kümeleri zaten varsa ve yükseltme ilkesi **el ile** olarak ayarlandıysa, **ExistingVmssOnboarding** Azure Resource Manager şablonu çalıştırıldıktan sonra örnekler için VM'ler için Azure izleyici varsayılan olarak etkinleştirilmez. Örnekleri el ile yükseltmeniz gerekir.
 
 ## <a name="deploy-templates"></a>Şablon dağıtma
 Şablonlar, PowerShell ve CLı kullanarak aşağıdaki örnekleri içeren [Kaynak Yöneticisi şablonları için herhangi bir dağıtım yöntemi](../../azure-resource-manager/templates/deploy-powershell.md) kullanılarak dağıtılabilir.
@@ -55,7 +55,7 @@ New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceG
 
 
 ```azurecli
-az group deployment create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
+az deployment group create --resource-group <ResourceGroupName> --template-file <Template.json> --parameters <Parameters.json>
 ```
 
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 07/10/2020
+ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 8b354abb98c56a572badf2421b0d7dbbd25f7a63
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921860"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695430"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Öğretici: otomatik makine öğrenimi ile talep tahmini
 
@@ -82,7 +82,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
         Sınırlayıcı|&nbsp;Düz metin veya diğer veri akışlarında ayrı, bağımsız bölgeler arasındaki sınırı belirtmek için bir veya daha fazla karakter. |Virgül
         Encoding|Veri kümenizi okumak için kullanılacak bit karakter şeması tablosunu belirler.| UTF-8
         Sütun başlıkları| Veri kümesinin üst bilgilerinin (varsa) nasıl değerlendirileceğini gösterir.| İlk dosyadaki üst bilgileri kullan
-        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Yok
+        Satırları atla | Veri kümesinde kaç tane, ne varsa satırların atlandığını gösterir.| Hiçbiri
 
     1. **Şema** formu, bu deneme için verilerinizin daha fazla yapılandırılmasını sağlar. 
     
@@ -100,7 +100,7 @@ Denemenizi yapılandırmadan önce, veri dosyanızı Azure Machine Learning veri
 
     1. **İleri ' yi** seçin.
 
-## <a name="configure-experiment-run"></a>Deneme çalıştırmasını Yapılandır
+## <a name="configure-run"></a>Çalıştırmayı Yapılandır
 
 Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarlayın ve verilerinizde tahmin etmek istediğiniz sütunu seçin.
 
@@ -111,14 +111,22 @@ Verilerinizi yükleyip yapılandırdıktan sonra, uzaktan işlem hedefini ayarla
 
     1. **Yeni Işlem oluştur** ' u seçin ve işlem hedefini yapılandırın. Otomatikleştirilmiş ML yalnızca Azure Machine Learning işlem destekler. 
 
-        Alan | Açıklama | Öğretici için değer
-        ----|---|---
-        İşlem adı |İşlem bağlamını tanımlayan benzersiz bir ad.|Bisiklet-işlem
-        Sanal &nbsp; makine &nbsp; türü|İşlem için sanal makine türünü seçin.|CPU (Merkezi Işlem birimi)
-        Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin.|Standard_DS12_V2
-        En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
-        Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
-        Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Yok
+        1. İşlem ortamınızı ayarlamak için **sanal makine** formunu doldurun.
+
+            Alan | Açıklama | Öğretici için değer
+            ----|---|---
+            Sanal &nbsp; makine &nbsp; önceliği |Denemenizin hangi önceliğe sahip olması gerektiğini seçin| Ayrılmış
+            Sanal &nbsp; makine &nbsp; türü| İşlem için sanal makine türünü seçin.|CPU (Merkezi Işlem birimi)
+            Sanal &nbsp; makine &nbsp; boyutu| İşlem için sanal makine boyutunu seçin. Önerilen boyutların listesi verilerinize ve deneme türüne göre belirlenir. |Standard_DS12_V2
+        
+        1. **Yapılandırma ayarları formunu** doldurmak için **İleri ' yi** seçin.
+        
+             Alan | Açıklama | Öğretici için değer
+            ----|---|---
+            İşlem adı |  İşlem bağlamını tanımlayan benzersiz bir ad. | Bisiklet-işlem
+            En az/en fazla düğüm| Veri profili için, 1 veya daha fazla düğüm belirtmeniz gerekir.|En az düğümler: 1<br>En fazla düğüm: 6
+            Ölçeği ölçeklendirmeye başlamadan önce boşta geçen Saniyeler | Küme otomatik olarak en düşük düğüm sayısına ölçeklendirildiğinde boşta geçen süre.|120 (varsayılan)
+            Gelişmiş ayarlar | Denemeniz için bir sanal ağ yapılandırma ve yetkilendirme ayarları.| Hiçbiri 
   
         1. İşlem hedefini almak için **Oluştur** ' u seçin. 
 
@@ -145,7 +153,7 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
     Birincil ölçüm| Makine öğrenimi algoritmasının ölçülecek değerlendirme ölçümü.|Normalleştirilmiş kök ortalama kare hatası
     En iyi modeli açıkla| Otomatik ML tarafından oluşturulan en iyi modelde explainability 'yi otomatik olarak gösterir.| Etkinleştir
     Engellenen algoritmalar | Eğitim işinden dışlamak istediğiniz algoritmalar| Aşırı rastgele ağaçlar
-    Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur <br><br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam* gibi özelliklerin oluşturulacağı pencere sayısını belirtir. | <br><br>Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
+    Ek tahmin ayarları| Bu ayarlar, modelinizin doğruluğunu artırmaya yardımcı olur. <br><br> _**Tahmin hedefi lags:**_ hedef değişkenin lags 'ı ne kadar geri oluşturmak istiyorsunuz <br> _**Hedef sıralı pencere**_: *maksimum, en düşük* ve *Toplam* gibi özelliklerin oluşturulacağı pencere sayısını belirtir. | <br><br>Tahmin &nbsp; hedefi &nbsp; lags: None <br> Hedef &nbsp; hareketli &nbsp; pencere &nbsp; boyutu: yok
     Çıkış ölçütü| Bir kriterle karşılanırsa eğitim işi durdurulur. |Eğitim &nbsp; işi &nbsp; süresi (saat): 3 <br> Ölçüm &nbsp; puan &nbsp; eşiği: yok
     Doğrulama | Çapraz doğrulama türü ve test sayısı seçin.|Doğrulama türü:<br>&nbsp;&nbsp;çapraz doğrulamayı yana kesme <br> <br> Doğrulama sayısı: 5
     Eşzamanlılık| Yineleme başına yürütülen en fazla paralel yineleme sayısı| En fazla &nbsp; eşzamanlı &nbsp; yineleme: 6
@@ -154,11 +162,11 @@ Machine Learning görev türünü ve yapılandırma ayarlarını belirterek otom
 
 ## <a name="run-experiment"></a>Deneme Çalıştır
 
-Denemenizi çalıştırmak için **son**' u seçin. Çalıştırma **ayrıntıları**  ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir.
+Denemenizi çalıştırmak için **son**' u seçin. Çalıştırma **ayrıntıları**  ekranı, çalışma numarasının yanında bulunan **çalıştırma durumuyla** birlikte açılır. Deneme ilerledikçe bu durum güncellenir. Deneme larınızın durumunu bilgilendirmek için Ayrıca, Studio 'nun sağ üst köşesinde bildirimler görüntülenir.
 
 >[!IMPORTANT]
 > Hazırlık, deneme çalıştırmasının hazırlanmasına **10-15 dakika** sürer.
-> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.  <br> <br>
+> Çalışmaya başladıktan sonra, **her yinelemede 2-3 dakika daha** sürer.<br> <br>
 > Üretimde, bu işlem zaman alacağından biraz daha fazla ilerleyelim. Beklerken, tüm **modeller** sekmesinde, sınanan algoritmaları keşfetmeye başlayacağız. 
 
 ##  <a name="explore-models"></a>Modelleri keşfet
@@ -169,7 +177,7 @@ Deneme modellerinin tümünün bitmesini beklerken, performans ayrıntılarını
 
 Aşağıdaki örnek, seçili modelin özelliklerini, ölçümlerini ve performans grafiklerini görüntülemek için **Ayrıntılar** ve **ölçümler** sekmelerinde gezinir. 
 
-![Ayrıntıları Çalıştır](./media/tutorial-automated-ml-forecast/explore-models-ui.gif)
+![Ayrıntıları Çalıştır](./media/tutorial-automated-ml-forecast/explore-models.gif)
 
 ## <a name="deploy-the-model"></a>Modeli dağıtma
 
@@ -232,7 +240,7 @@ Bu öğreticide, Bisiklet payını tahmin eden bir zaman serisi tahmin modeli ol
 Yeni dağıtılan Web hizmetinizin tüketimini kolaylaştırmak için Power BI desteklenen bir şema oluşturma adımları için bu makaleye bakın.
 
 > [!div class="nextstepaction"]
-> [Bir web hizmetini kullanma](how-to-consume-web-service.md#consume-the-service-from-power-bi)
+> [Bir web hizmetini kullanma](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
 
 + [Otomatik makine öğrenimi](concept-automated-ml.md)hakkında daha fazla bilgi edinin.
 + Sınıflandırma ölçümleri ve grafikler hakkında daha fazla bilgi için bkz. [otomatik makine öğrenimi sonuçlarını anlama](how-to-understand-automated-ml.md) makalesi.

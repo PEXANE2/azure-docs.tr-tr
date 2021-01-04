@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/11/2019
+ms.date: 12/17/2020
 ms.author: alkohli
-ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91743310"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97696034"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Azure Stack Edge Pro ve Azure Data Box Gateway için bir destek bileti açın
 
@@ -24,35 +24,35 @@ Bu makale, Azure Stack Edge Pro/Azure Data Box Gateway hizmeti tarafından yöne
 
 ## <a name="create-a-support-request"></a>Destek isteği oluşturma
 
-Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
+Bir destek isteği oluşturmak için aşağıdaki adımları uygulayın:
 
 1. Azure Stack Edge Pro veya Data Box Gateway sıraya gidin. **Destek + sorun giderme** Bölümü ' ne gidin ve **Yeni destek isteği**' ni seçin.
 
 2. **Yeni destek isteğinde**, **temel bilgiler** sekmesinde aşağıdaki adımları uygulayın:
 
     1. **Sorun türü** açılan listesinden **Teknik**' i seçin.
-    2. **Aboneliğinizi**seçin.
-    3. **Hizmet**altında **hizmetlerimi**denetleyin. Açılan listeden **Azure Stack Edge Pro ve Data Box Gateway**öğesini seçin.
+    2. **Aboneliğinizi** seçin.
+    3. **Hizmet** altında **hizmetlerimi** denetleyin. Açılan listeden **Azure Stack Edge Pro ve Data Box Gateway** öğesini seçin.
     4. Kaynağınızı seçin **.** Bu, siparişinizin adına karşılık gelir.
-    5. Yaşadığınız sorunun kısa bir **özetini** sağlar. 
-    6. **Sorun türünü**seçin.
-    7. Seçtiğiniz sorun türüne göre ilgili bir **sorun alt türünü**seçin.
+    5. Yaşadığınız sorunun kısa bir **özetini** sunun. 
+    6. **Sorun türünü** seçin.
+    7. Seçtiğiniz sorun türüne göre ilgili bir **sorun alt türünü** seçin.
     8. **İleri ' yi seçin: çözümler >>**.
 
-        ![Temel Bilgiler](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Temel bilgiler](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. **Ayrıntılar** sekmesinde aşağıdaki adımları uygulayın:
 
     1. Sorunun başlangıç tarihini ve saatini belirtin.
     2. Sorununuz için bir **Açıklama** sağlayın.
-    3. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme**bölümünde klasör simgesini seçin.
-    4. **Paylaşma tanılama bilgilerini**denetleyin.
+    3. Karşıya yüklemek istediğiniz diğer dosyalara gözatabilmeniz için **karşıya dosya yükleme** bölümünde klasör simgesini seçin.
+    4. **Paylaşma tanılama bilgilerini** denetleyin.
     5. Aboneliğiniz temelinde, bir **destek planı** otomatik olarak doldurulur.
     6. Açılan listeden **önem derecesi**' ni seçin.
-    7. **Tercih edilen bir iletişim yöntemi**belirtin.
+    7. **Tercih edilen bir iletişim yöntemi** belirtin.
     8. **Yanıt saatleri** , abonelik planınıza göre otomatik olarak seçilir.
     9. Destek için tercih ettiğiniz dili sağlayın.
-    10. **İletişim bilgilerinde**adınızı, e-postanızı, telefonunuzu, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. Microsoft Desteği, bu bilgileri daha fazla bilgi, tanılama ve çözümleme için size ulaşmak üzere kullanır. 
+    10. **İletişim bilgilerinde** adınızı, e-postanızı, telefonunuzu, isteğe bağlı iletişim, ülke/bölge ' yi belirtin. Microsoft Desteği, bu bilgileri daha fazla bilgi, tanılama ve çözümleme için size ulaşmak üzere kullanır. 
     11. **İleri ' yi seçin: gözden geçir + oluştur >>**.
 
         ![Sorun](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-2.png)
@@ -67,18 +67,18 @@ Bir destek isteği oluşturmak için aşağıdaki adımları gerçekleştirin:
 
 Bu bilgiler yalnızca Azure Stack cihaz için geçerlidir. Donanım sorunlarını bildirme işlemi aşağıdaki gibidir:
 
-1. Bir donanım sorunu için Azure portal bir destek bileti açın. **Sorun türü**altında **donanım Azure Stack**' yi seçin. **Sorun alt türünü** **donanım hatası**olarak seçin.
+1. Bir donanım sorunu için Azure portal bir destek bileti açın. **Sorun türü** altında **donanım Azure Stack**' yi seçin. **Sorun alt türünü** **donanım hatası** olarak seçin.
 
     ![Donanım sorunu](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
     Destek bileti oluşturduktan sonra bir destek mühendisi, isteğinize devam etmek için en kısa sürede sizinle iletişim kuracaktır.
 
-2. Microsoft Desteği bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemden biri oluşur:
+2. Microsoft Desteği bunun bir donanım sorunu olduğunu belirlerse, aşağıdaki eylemlerden biri oluşur:
 
-    * Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimleri ve sabit sürücüler desteklenen tek FRU 'lardır.
+    * Başarısız donanım bölümü için bir alan değiştirme birimi (FRU) gönderilir. Şu anda, güç kaynağı birimleri ve katı hal sürücüleri desteklenen tek FRU 'lardır.
     * Yalnızca FRU 'lar bir sonraki iş günü içinde değiştirilmiştir, başka her şey için bir tam sistem değişikliği (FSR) gerekir.
 
-3. Bir destek bileti 4:30 PM yerel saatinden (Pazartesi 'Den Cuma 'ya) önce ortaya çıktığında, bir FRU teknisyen, bir FRU veya tam cihaz değişikliği gerçekleştirmek için bir sonraki iş günü yerine konumunuza gönderilir.
+3. Bir destek bileti, 4:30 PM yerel saatinden (Pazartesi 'Den Cuma 'ya) önce ortaya çıktığında, bir FRU değişikliği yapmak için işyerindeki bir sonraki iş günü, konumunuza karşı bir süredir gönderilir. Tüm sistem değişikliği genellikle çok daha uzun sürer, çünkü parçalar fabrikamızda gönderilir ve nakliye ve gümrük gecikmelerine tabi olabilir.
 
 ## <a name="manage-a-support-request"></a>Destek isteğini yönetme
 
@@ -90,7 +90,7 @@ Bir destek bileti oluşturduktan sonra portal üzerinden bu biletin yaşam döng
 
     ![Destek isteklerini yönetme](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
-2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek**bölümünde görüntülenir.
+2. **Son destek isteklerinin** tablolu bir listesi **Yardım + Destek** bölümünde görüntülenir.
 
     <!--[Manage support requests](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)--> 
 
