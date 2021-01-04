@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: 3eaabc6c1e7d34bb5d9433d742581f39bdfbf98e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 315de18539bf083515658b40fa70f3c214d7c909
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97669542"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739748"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Tümleştirme hizmeti ortamı (ıSE) kullanarak Azure Logic Apps Azure sanal ağlarına bağlanma
 
@@ -44,24 +44,14 @@ Ayrıca, [örnek Azure Resource Manager hızlı başlangıç şablonunu](https:/
   > [!IMPORTANT]
   > Logic Apps, yerleşik Tetikleyiciler, yerleşik Eylemler ve ıSE 'de çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. Fiyatlandırma ve faturalandırma işinin nasıl sesleri olduğunu öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma fiyatları için bkz. [Logic Apps fiyatlandırması](../logic-apps/logic-apps-pricing.md).
 
-* Bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md). Sanal ağınızın, ortamınızda kaynak oluşturup dağıtmak ve bu iç ve gizli bileşenler tarafından kullanılması için gereken dört *boş* alt ağı olmalıdır:
+* Her yerde kaynak oluşturup dağıtmak için gereken ve bu iç ve gizli bileşenler tarafından kullanılan dört *boş* alt ağa sahip bir [Azure sanal ağı](../virtual-network/virtual-networks-overview.md) :
 
   * Logic Apps Işlem
   * İç App Service Ortamı (bağlayıcılar)
   * İç API Management (bağlayıcılar)
   * Önbelleğe alma ve performans için iç redin
   
-  Alt ağları önceden oluşturabilir veya aynı anda alt ağlar oluşturabilmeniz için ıSE oluşturmanız bitinceye kadar bekleyebilirsiniz. Ancak, alt ağlarınızı oluşturmadan önce [alt ağ gereksinimlerini](#create-subnet)gözden geçirin.
-
-  > [!IMPORTANT]
-  >
-  > Azure Logic Apps tarafından çözümlenemediğinden, sanal ağınız veya alt ağlarınız için aşağıdaki IP adresi alanlarını kullanmayın:<p>
-  > 
-  > * 0.0.0.0/8
-  > * 100.64.0.0/10
-  > * 127.0.0.0/8
-  > * 168.63.129.16/32
-  > * 169.254.169.254/32
+  Alt ağları önceden oluşturabilirsiniz, böylece alt ağları aynı anda oluşturabilmeniz için ıSE 'yi oluşturun. Ancak, alt ağlarınızı oluşturmadan önce, [alt ağ gereksinimlerini](#create-subnet)gözden geçirdiğinizden emin olun.
 
   * Sanal ağınızın, ıSE 'nin doğru çalışabilmesi ve erişilebilir kalabilmesi [IÇIN Ise için erişim sağladığından](#enable-access) emin olun.
 
@@ -170,14 +160,14 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
 * Hizmet uç noktaları
 
-  Bu hizmetlere bir güvenlik duvarı üzerinden trafik gönderemediğinden Azure SQL, depolama, Service Bus ve Event Hubs için hizmet uç noktalarını etkinleştirmeniz gerekir.
+  Bu hizmetlere bir güvenlik duvarı üzerinden trafik gönderemediğinden Azure SQL, Storage, Service Bus, Keykasası ve Event Hubs için hizmet uç noktalarını etkinleştirmeniz gerekir.
 
 *  Diğer gelen ve giden bağımlılıklar
 
    Güvenlik duvarınız aşağıdaki gelen ve giden bağımlılıklara izin *vermelidir* :
    
    * [Azure App Service bağımlılıklar](../app-service/environment/firewall-integration.md#deploying-your-ase-behind-a-firewall)
-   * [Azure önbellek hizmeti bağımlılıkları](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-vnets)
+   * [Azure önbellek hizmeti bağımlılıkları](../azure-cache-for-redis/cache-how-to-premium-vnet.md#what-are-some-common-misconfiguration-issues-with-azure-cache-for-redis-and-virtual-networks)
    * [Azure API Management bağımlılıkları](../api-management/api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 <a name="create-environment"></a>
@@ -219,7 +209,7 @@ Bu bağımlılıklar için erişime izin vermezseniz, ıSE dağıtımınız baş
 
    * Alfabetik bir karakter veya alt çizgi (sayı yok) ile başlayan bir ad kullanır ve şu karakterleri kullanmaz: `<` , `>` ,, `%` `&` , `\\` , `?` , `/` .
 
-   * [Sınıfsız Inter-Domain yönlendirme (CIDR) biçimini](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) ve B Sınıfı adres alanını kullanır.
+   * [Sınıfsız Inter-Domain yönlendirme (CIDR) biçimini](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)kullanır.
    
      > [!IMPORTANT]
      >

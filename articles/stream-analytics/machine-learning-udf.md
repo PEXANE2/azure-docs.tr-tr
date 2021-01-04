@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 12/21/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14f7462aec65d2a13eb36b291331c347b995d281
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 01c85311c9ea49be3543edee405cdd66a0659797
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130689"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733014"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Azure Stream Analytics Azure Machine Learning ile tümleştirme (Önizleme)
 
@@ -47,17 +47,17 @@ Stream Analytics işinize doğrudan Azure portal veya Visual Studio Code Azure M
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-1. Stream Analytics projenizi Visual Studio Code açın ve **işlevler** klasörüne sağ tıklayın. Sonra **Işlev Ekle** ' yi seçin. Açılan listeden **MACHINE LEARNING UDF** ' i seçin.
+1. Stream Analytics projenizi Visual Studio Code açın ve **işlevler** klasörüne sağ tıklayın. Sonra **Işlev Ekle**' yi seçin. Açılan listeden **MACHINE LEARNING UDF** ' i seçin.
 
    :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function.png" alt-text="VS Code UDF ekleme":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code UDF ekleme":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-add-function-2.png" alt-text="VS Code Azure Machine Learning UDF ekleyin":::
 
 2. İşlev adını girin ve CodeLens 'teki **aboneliklerinizden Seç** ' i kullanarak yapılandırma dosyasındaki ayarları doldurabilirsiniz.
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code UDF ekleme":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-function-name.png" alt-text="VS Code Azure Machine Learning UDF seçin":::
 
-   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code UDF ekleme":::
+   :::image type="content" source="media/machine-learning-udf/visual-studio-code-machine-learning-udf-configure-settings.png" alt-text="VS Code Azure Machine Learning UDF yapılandırma":::
 
 Aşağıdaki tabloda, Stream Analytics Azure Machine Learning hizmet işlevlerinin her bir özelliği açıklanmaktadır.
 
@@ -83,7 +83,7 @@ INTO output
 FROM input
 ```
 
-Stream Analytics, yalnızca Azure Machine Learning işlevleri için bir parametre geçirmeyi destekler. Machine Learning UDF 'ye giriş olarak geçirmeden önce verilerinizi hazırlamanız gerekebilir.
+Stream Analytics, yalnızca Azure Machine Learning işlevleri için bir parametre geçirmeyi destekler. Machine Learning UDF 'ye giriş olarak geçirmeden önce verilerinizi hazırlamanız gerekebilir. Null girişler işin başarısız olmasına neden olacağı için ML UDF girişinin null olmadığından emin olmanız gerekir.
 
 ## <a name="pass-multiple-input-parameters-to-the-udf"></a>UDF 'ye birden çok giriş parametresi geçirme
 
@@ -104,11 +104,18 @@ function createArray(vendorid, weekday, pickuphour, passenger, distance) {
 İşinize JavaScript UDF 'sini ekledikten sonra, aşağıdaki sorguyu kullanarak Azure Machine Learning UDF 'nizi çağırabilirsiniz:
 
 ```SQL
-SELECT udf.score(
-udf.createArray(vendorid, weekday, pickuphour, passenger, distance)
-)
-INTO output
+WITH 
+ModelInput AS (
+#use JavaScript UDF to construct array that will be used as input to ML UDF
+SELECT udf.createArray(vendorid, weekday, pickuphour, passenger, distance) as inputArray
 FROM input
+)
+
+SELECT udf.score(inputArray)
+INTO output
+FROM ModelInput
+#validate inputArray is not null before passing it to ML UDF to prevent job from failing
+WHERE inputArray is not null
 ```
 
 Aşağıdaki JSON bir örnek istedir:

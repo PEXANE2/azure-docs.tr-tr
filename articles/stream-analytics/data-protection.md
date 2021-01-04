@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 4436289d544de057acef132117346ac53c20b5a7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 76218003a40c02def3dc62ea8480022d9647938d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576527"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723346"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Azure Stream Analytics veri koruma 
 
@@ -56,11 +56,11 @@ Tüm düzenlenmiş sektörlerde veya ortamlarda uyumluluk yükümlülüklerinizi
 
 Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşağıdaki adımları kullanın. Bu yapılandırma, depolama hesabınızdan değil, Stream Analytics işinden yapılır.
 
-1. [Azure portalda](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 
 1. Azure portalının sol üst köşesinde bulunan **Kaynak oluştur** öğesini seçin. 
 
-1.  **Analytics**   > Sonuçlar listesinden analiz **Stream Analytics işi**' ni seçin   . 
+1.  ****   > Sonuçlar listesinden analiz **Stream Analytics işi**' ni seçin   . 
 
 1. Stream Analytics işi sayfasını, ad, bölge ve ölçek gibi gerekli ayrıntılarla doldurun. 
 
@@ -72,7 +72,7 @@ Depolama hesabınızı özel veri varlıkları için yapılandırmak üzere aşa
 
    ![Özel veri depolama hesabı ayarları](./media/data-protection/storage-account-create.png)
 
-1. Yönetilen kimlik (Önizleme) ile kimlik doğrulaması yapmak için kimlik doğrulama modu açılan menüsünden **yönetilen kimlik** ' i seçin. Yönetilen kimlik ' i seçerseniz, Stream Analytics işinizi depolama hesabının erişim denetim listesine eklemeniz gerekir. İş erişiminiz yoksa, iş herhangi bir işlem gerçekleştiremez. Erişim verme hakkında daha fazla bilgi için bkz. [Azure RBAC kullanarak başka bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
+1. Yönetilen kimlik (Önizleme) ile kimlik doğrulaması yapmak için kimlik doğrulama modu açılan menüsünden **yönetilen kimlik** ' i seçin. Yönetilen kimlik ' i seçerseniz, depolama alanı *veri katılımcısı* rolüyle Stream Analytics işinizi depolama hesabının erişim denetim listesine eklemeniz gerekir. İş erişiminiz yoksa, iş herhangi bir işlem gerçekleştiremez. Erişim verme hakkında daha fazla bilgi için bkz. [Azure RBAC kullanarak başka bir kaynağa yönetilen kimlik erişimi atama](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md#use-azure-rbac-to-assign-a-managed-identity-access-to-another-resource).
 
    :::image type="content" source="media/data-protection/storage-account-create-msi.png" alt-text="Yönetilen kimlik kimlik doğrulamasıyla özel veri depolama hesabı ayarları":::
 

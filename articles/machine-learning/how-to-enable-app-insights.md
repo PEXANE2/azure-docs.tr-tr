@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 09/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 5d49a88b89f9e2f4e2c2e6fa8ef18a01c803e3f7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 13b99fe129191b89b5bb2d7f5473e910fa619ce7
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536600"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739850"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML web hizmet uç noktalarından verileri izleme ve toplama
 
@@ -32,7 +32,7 @@ Bu makalede, Azure Kubernetes Service (AKS) veya Azure Container Instances (acı
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]
  
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure aboneliği- [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 
@@ -144,7 +144,7 @@ Azure Application Insights Azure Machine Learning Studio 'dan da etkinleştirebi
 
 1. Konumundaki Studio 'da oturum açın https://ml.azure.com .
 1. **Modeller** ' e gidin ve dağıtmak istediğiniz modeli seçin.
-1. **+ Dağıt** ' ı seçin.
+1. **+ Dağıt**' ı seçin.
 1. **Dağıtım modeli** formunu doldurun.
 1. **Gelişmiş** menüsünü genişletin.
 
@@ -157,14 +157,24 @@ Azure Application Insights Azure Machine Learning Studio 'dan da etkinleştirebi
 
 ### <a name="query-logs-for-deployed-models"></a>Dağıtılan modeller için sorgu günlükleri
 
-`get_logs()`Daha önce dağıtılan bir Web hizmetinden günlükleri almak için işlevini kullanabilirsiniz. Günlükler, dağıtım sırasında oluşan hatalar hakkında ayrıntılı bilgiler içerebilir.
+Gerçek zamanlı uç noktaların günlükleri müşteri verileri. `get_logs()`Daha önce dağıtılan bir Web hizmetinden günlükleri almak için işlevini kullanabilirsiniz. Günlükler, dağıtım sırasında oluşan hatalar hakkında ayrıntılı bilgiler içerebilir.
 
 ```python
+from azureml.core import Workspace
 from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
 
 # load existing web service
 service = Webservice(name="service-name", workspace=ws)
 logs = service.get_logs()
+```
+
+Birden çok kiracıya sahipseniz, önce aşağıdaki kimlik doğrulama kodunu eklemeniz gerekebilir `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ### <a name="view-logs-in-the-studio"></a>Günlükleri Studio 'da görüntüleme
@@ -178,7 +188,7 @@ Azure Application Insights, hizmet günlüklerinizi Azure Machine Learning çal�
 
     [![Application Insights URL 'sini bul](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. Application Insights, **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__ ' i seçin.
+1. Application Insights, **genel bakış** sekmesinde veya __izleme__ bölümünde __Günlükler__' i seçin.
 
     [![İzlemenin Genel Bakış sekmesi](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

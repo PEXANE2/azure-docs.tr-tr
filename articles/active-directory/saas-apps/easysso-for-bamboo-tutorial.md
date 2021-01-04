@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0eb7f4c8daf74c629e7b83ce05e6ac17719755ba
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: fec95dc033eb5eacaf79f5bbd2b6b294628667b9
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454431"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725106"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Öğretici: Bamboo için Easyswith ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, Bamboo için EasySSO Azure Active Directory (Azure AD) ile nas�
 * Kullanıcılarınızın Azure AD hesaplarıyla Bamboo otomatik olarak oturum açmalarına olanak tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,13 +39,12 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Bamboo için EasySSO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Bamboo için EasySSO **, yalnızca zaman** Kullanıcı sağlamasını destekler
-* Bamboo için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-easysso-for-bamboo-from-the-gallery"></a>Galeriden Bamboo için EasySSO ekleniyor
 
 EasysBamboo 'in Azure AD 'ye tümleştirilmesine yönelik olarak yapılandırmak için, Galeriden Bamboo için EasySSO 'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -55,11 +52,11 @@ EasysBamboo 'in Azure AD 'ye tümleştirilmesine yönelik olarak yapılandırmak
 1. Sonuçlar panelinden **Bamboo Için Easysso** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>Bamboo için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bamboo"></a>Bamboo için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Bamboo IÇIN Azure AD SSO 'yu yapılandırıp test edin. SSO 'nun çalışması için, Bamboo için bir Azure AD kullanıcısı ve Easysile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Bamboo IÇIN Azure AD SSO 'yu yapılandırıp test edin. SSO 'nun çalışması için, Bamboo için bir Azure AD kullanıcısı ve Easysile ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Bamboo için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Bamboo için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -72,7 +69,7 @@ Bamboo için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki y
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), Bamboo uygulama tümleştirmesi **Için Easysso** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, Bamboo uygulama tümleştirmesi **Için Easysso** sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -97,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki Bamboo uygulaması için EasySSO, daha fazla özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name | Kaynak özniteliği |
+    | Ad | Kaynak özniteliği |
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. UserPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
@@ -123,7 +120,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -133,19 +130,25 @@ Bu bölümde, Bamboo için Easys'e erişim vererek Azure çoklu oturum açma öz
 1. Uygulamalar listesinde, **Bamboo Için Easysso**' yı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>Bamboo SSO için EasySSO yapılandırma
 
-1. AtlasBamboo örneğiniz üzerinde yönetici ayrıcalıklarıyla oturum açın ve **Uygulamaları Yönet** bölümüne gidin. 
+1. Yakınlaştırma sırasında yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **ayarı** Yakınlaştır ' a tıklayarak sizi yakınlaştırma uygulamasına yönlendirebilirsiniz. Buradan, yakınlaştırma sırasında oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-10 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Farklı bir Web tarayıcısı penceresinde yakınlaştırmayı el ile ayarlamak istiyorsanız, yakınlaştırma şirket sitenizde yönetici olarak oturum açın.
+
+1. **Uygulamaları Yönet** bölümüne gidin. 
 
     ![Uygulamaları Yönetme](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
@@ -175,7 +178,7 @@ Bu bölümde, Bamboo için Easys'e erişim vererek Azure çoklu oturum açma öz
  
 6. Sayfanın alt kısmındaki **Kaydet** düğmesine tıklayın. Meta verilerin içeriğini veya sertifika dosyalarını yapılandırma alanlarına ayrıştırmış olursunuz. Bamboo yapılandırması için EasySSO tamamlanmıştır.
 
-7. En iyi test deneyimi için, **&** Me sekmesine gidin ve üzerinde **SAML oturum açma düğmesi** seçeneğini işaretleyin. Bu, özellikle Azure AD SAML tümleştirme uçtan uca test etmek için Bamboo oturum açma ekranında ayrı bir düğmeyi etkinleştirir. Bu düğmeyi açık bırakabilir ve üretim modu için yerleşimini, renk ve çevirisini de yapılandırabilirsiniz.
+7. En iyi test deneyimi için, **&** Me sekmesine gidin ve üzerinde **SAML oturum açma düğmesi** seçeneğini işaretleyin. Bu, özellikle Azure AD SAML tümleştirme uçtan uca test etmek için Bamboo oturum açma ekranında ayrı bir düğmeyi etkinleştirir. Bu düğmeyi açabilir ve üretim modu için yerleşimini, rengini ve çevirisini de yapılandırabilirsiniz.
 
     ![& göz atın](./media/easysso-for-bamboo-tutorial/bamboo-admin-5.png)
 
@@ -194,9 +197,9 @@ Ancak, Kullanıcı ilk oturum açmada otomatik Kullanıcı sağlamayı etkinleş
 
 ### <a name="idp-initiated-workflow"></a>IDP tarafından başlatılan iş akışı
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, uygulamalarımı kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Bamboo için EasySSO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Bamboo örneğinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Uygulamalarım için EasySSO for Bamboo kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Bamboo örneğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ### <a name="sp-initiated-workflow"></a>SP tarafından başlatılan iş akışı
 
@@ -214,16 +217,6 @@ Bu durumda, **Atlassian-Bamboo. log** dosyasına erişim sağlamak için [Bu say
 
 Günlük iletilerini geri almaya yönelik herhangi bir sorununuz olması gerekir, lütfen [Easysso destek ekibine](mailto:support@techtime.co.nz)başvurun.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile Bamboo için EasySSO kullanmayı deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle Bamboo için EasySSO 'ı koruma](/cloud-app-security/proxy-intro-aad)
+Bamboo için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

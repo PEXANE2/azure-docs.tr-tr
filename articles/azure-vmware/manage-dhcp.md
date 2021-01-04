@@ -2,13 +2,14 @@
 title: Azure VMware çözümü için DHCP 'yi yönetme
 description: Azure VMware çözümünüz özel bulutunuz için DHCP oluşturmayı ve yönetmeyi öğrenin.
 ms.topic: how-to
+ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
-ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335997"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708560"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>Azure VMware çözümü için DHCP 'yi yönetme
 
@@ -26,13 +27,13 @@ ms.locfileid: "94335997"
 
 DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunucusu oluşturacaksınız. Daha sonra bir ağ kesimi ekler ve DHCP IP adresi aralığını belirtebilirsiniz.
 
-1. NSX-T Yöneticisi ' nde **ağ**  >  **DHCP** ' yi seçin ve ardından **Sunucu Ekle** ' yi seçin.
+1. NSX-T Yöneticisi ' nde **ağ**  >  **DHCP**' yi seçin ve ardından **Sunucu Ekle**' yi seçin.
 
-1. **Sunucu türü** için **DHCP** ' yi seçin, sunucu adını ve IP adresini girip **Kaydet** ' i seçin.
+1. **Sunucu türü** için **DHCP** ' yi seçin, sunucu adını ve IP adresini girip **Kaydet**' i seçin.
 
    :::image type="content" source="./media/manage-dhcp/dhcp-server-settings.png" alt-text="DHCP sunucusu Ekle" border="true":::
 
-1. **Katman 1 ağ geçitleri** ' ni seçin, katman 1 ağ geçidinde dikey üç noktayı seçin ve ardından **Düzenle** ' yi seçin.
+1. **Katman 1 ağ geçitleri**' ni seçin, katman 1 ağ geçidinde dikey üç noktayı seçin ve ardından **Düzenle**' yi seçin.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway.png" alt-text="kullanılacak ağ geçidini seçin" border="true":::
 
@@ -40,11 +41,11 @@ DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunu
 
    :::image type="content" source="./media/manage-dhcp/add-subnet.png" alt-text="alt ağ ekleme" border="true":::
 
-1. **Tür** Için **DHCP yerel sunucusu** ' nu seçin. 
+1. **Tür** Için **DHCP yerel sunucusu**' nu seçin. 
    
-1. **DHCP sunucusu** IÇIN **varsayılan DHCP** ' yi seçin ve ardından **Kaydet** ' i seçin.
+1. **DHCP sunucusu** IÇIN **varsayılan DHCP**' yi seçin ve ardından **Kaydet**' i seçin.
 
-1. Yeniden **Kaydet** ' i seçin ve ardından **düzenlemeleri kapat** ' ı seçin.
+1. Yeniden **Kaydet** ' i seçin ve ardından **düzenlemeleri kapat**' ı seçin.
 
 ### <a name="add-a-network-segment"></a>Ağ kesimi ekleme
 
@@ -55,13 +56,13 @@ DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunu
 
 Üçüncü taraf bir dış DHCP sunucusu kullanmak istiyorsanız, bir DHCP geçiş hizmeti oluşturmanız gerekir. Ayrıca, NSX-T Manager 'da DHCP IP adresi aralığını da belirtirsiniz. 
 
-1. NSX-T Yöneticisi ' nde **ağ**  >  **DHCP** ' yi seçin ve ardından **Sunucu Ekle** ' yi seçin.
+1. NSX-T Yöneticisi ' nde **ağ**  >  **DHCP**' yi seçin ve ardından **Sunucu Ekle**' yi seçin.
 
-1. **Sunucu türü** Için **DHCP geçişi** ' ni seçin, sunucu adını ve IP adresini girip **Kaydet** ' i seçin.
+1. **Sunucu türü** Için **DHCP geçişi** ' ni seçin, sunucu adını ve IP adresini girip **Kaydet**' i seçin.
 
    :::image type="content" source="./media/manage-dhcp/create-dhcp-relay.png" alt-text="DHCP geçiş hizmeti oluştur" border="true":::
 
-1. **Katman 1 ağ geçitleri** ' ni seçin, katman 1 ağ geçidinde dikey üç noktayı seçin ve ardından **Düzenle** ' yi seçin.
+1. **Katman 1 ağ geçitleri**' ni seçin, katman 1 ağ geçidinde dikey üç noktayı seçin ve ardından **Düzenle**' yi seçin.
 
    :::image type="content" source="./media/manage-dhcp/edit-tier-1-gateway-relay.png" alt-text="Katman 1 ağ geçidini Düzenle" border="true":::
 
@@ -69,18 +70,18 @@ DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunu
 
    :::image type="content" source="./media/manage-dhcp/edit-ip-address-allocation.png" alt-text="IP adresi ayırmayı Düzenle" border="true":::
 
-1. **Tür** Için **DHCP sunucusu** ' nu seçin. 
+1. **Tür** Için **DHCP sunucusu**' nu seçin. 
    
-1. **DHCP sunucusu** Için **DHCP geçişi** ' ni seçin ve ardından **Kaydet** ' i seçin.
+1. **DHCP sunucusu** Için **DHCP geçişi**' ni seçin ve ardından **Kaydet**' i seçin.
 
-1. Yeniden **Kaydet** ' i seçin ve ardından **düzenlemeleri kapat** ' ı seçin.
+1. Yeniden **Kaydet** ' i seçin ve ardından **düzenlemeleri kapat**' ı seçin.
 
 
 ## <a name="specify-the-dhcp-ip-address-range"></a>DHCP IP adresi aralığını belirtin
 
-1. NSX-T Yöneticisi 'nde **ağ**  >  **kesimleri** ' ni seçin. 
+1. NSX-T Yöneticisi 'nde **ağ**  >  **kesimleri**' ni seçin. 
    
-1. Segment adında dikey üç nokta simgesini seçin ve **Düzenle** ' yi seçin.
+1. Segment adında dikey üç nokta simgesini seçin ve **Düzenle**' yi seçin.
    
 1. Alt ağ için DHCP IP adresini belirtmek üzere **alt ağları ayarla** ' yı seçin. 
    
@@ -90,7 +91,7 @@ DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunu
       
    :::image type="content" source="./media/manage-dhcp/edit-subnet.png" alt-text="alt ağları Düzenle" border="true":::
       
-1. **Uygula** ' yı ve ardından **Kaydet** ' i seçin. Segmente bir DHCP sunucu havuzu atanır.
+1. **Uygula**' yı ve ardından **Kaydet**' i seçin. Segmente bir DHCP sunucu havuzu atanır.
       
    :::image type="content" source="./media/manage-dhcp/assigned-to-segment.png" alt-text="Segmente atanan DHCP sunucusu havuzu" border="true":::
 
@@ -99,7 +100,7 @@ DHCP sunucunuzu barındırmak için NSX-T kullanmak istiyorsanız, bir DHCP sunu
 
 L2 genişletilmiş segmentindeki Azure VMware Çözüm VM 'lerinden, şirket içi DHCP sunucusuna DHCP istekleri göndermek istiyorsanız, bir güvenlik segmenti profili oluşturacaksınız. 
 
-1. Şirket içi vCenter oturumunuzu açın ve **giriş** bölümünde **HCX** ' i seçin.
+1. Şirket içi vCenter oturumunuzu açın ve **giriş** bölümünde **HCX**' i seçin.
 
 1. **Hizmetler** altında **ağ uzantısı** ' nı seçin.
 
@@ -109,9 +110,9 @@ L2 genişletilmiş segmentindeki Azure VMware Çözüm VM 'lerinden, şirket iç
 
    :::image type="content" source="media/manage-dhcp/hcx-find-destination-network.png" alt-text="VMware vSphere Istemcisinde bir ağ uzantısının ekran görüntüsü" lightbox="media/manage-dhcp/hcx-find-destination-network.png":::
 
-1. Azure VMware çözümü NSX-T Yöneticisi ' nde **ağ**  >  **kesimleri**  >  **segment profilleri** ' ni seçin. 
+1. Azure VMware çözümü NSX-T Yöneticisi ' nde **ağ**  >  **kesimleri**  >  **segment profilleri**' ni seçin. 
 
-1. **Segment profili Ekle** ' yi ve ardından **segmenti güvenlik** ' i seçin.
+1. **Segment profili Ekle** ' yi ve ardından **segmenti güvenlik**' i seçin.
 
    :::image type="content" source="media/manage-dhcp/add-segment-profile.png" alt-text="NSX-T ' e bir segment profili ekleme ekran görüntüsü" lightbox="media/manage-dhcp/add-segment-profile.png":::
 
@@ -119,7 +120,7 @@ L2 genişletilmiş segmentindeki Azure VMware Çözüm VM 'lerinden, şirket iç
 
    :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png" alt-text="BPDU filtresi açık ve DHCP 'nin devre dışı olduğu gösteren ekran görüntüsü" lightbox="media/manage-dhcp/add-segment-profile-bpdu-filter-dhcp-options.png":::
 
-1. Varsa, **BPDU filtresi Izin verilenler listesinin** altındakı tüm MAC adreslerini kaldırın.  Sonra **Kaydet** 'i seçin.
+1. Varsa, **BPDU filtresi Izin verilenler listesinin** altındakı tüm MAC adreslerini kaldırın.  Sonra **Kaydet**'i seçin.
 
    :::image type="content" source="media/manage-dhcp/add-segment-profile-bpdu-filter-allow-list.png" alt-text="BPDU filtresi Izin verilenler listesindeki MAC adreslerini gösteren ekran görüntüsü":::
 
@@ -127,7 +128,7 @@ L2 genişletilmiş segmentindeki Azure VMware Çözüm VM 'lerinden, şirket iç
 
    :::image type="content" source="media/manage-dhcp/networking-segments-search.png" alt-text="Ağ > segmentleri filtre alanının ekran görüntüsü":::
 
-1. Segment adında dikey üç nokta simgesini seçin ve **Düzenle** ' yi seçin.
+1. Segment adında dikey üç nokta simgesini seçin ve **Düzenle**' yi seçin.
 
    :::image type="content" source="media/manage-dhcp/edit-network-segment.png" alt-text="Segment için düzenleme düğmesinin ekran görüntüsü" lightbox="media/manage-dhcp/edit-network-segment.png":::
 

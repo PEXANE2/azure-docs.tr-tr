@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565917"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740513"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Azure Machine Learning stüdyo nedir?
 
@@ -25,6 +25,11 @@ Bu makalede şunları öğreneceksiniz:
 > - Studio 'da [varlıkları ve kaynakları yönetme](#manage-assets-and-resources) .
 > - [Azure Machine Learning Studio ile ml Studio arasındaki farklar (klasik)](#ml-studio-classic-vs-azure-machine-learning-studio).
 
+İşletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
+  * Microsoft Edge (yeni Microsoft Edge, en son sürüm. Microsoft Edge eski değil)
+  * Safari (en so sürüm, yalnızca Mac)
+  * Chrome (en son sürüm)
+  * Firefox (en son sürüm)
 
 ## <a name="author-machine-learning-projects"></a>Machine Learning projelerini yaz
 
@@ -33,6 +38,8 @@ Studio, tür projesine ve kullanıcı deneyiminin düzeyine bağlı olarak birde
 + **Notebooks**
 
   Doğrudan Studio 'da tümleştirilmiş olan yönetilen [Jupyter Notebook sunucularında](how-to-run-jupyter-notebooks.md) kendi kodunuzu yazın ve çalıştırın. 
+
+:::image type="content" source="media/overview-what-is-azure-ml-studio/notebooks.gif" alt-text="Ekran görüntüsü: kodu bir not defterine yazma ve çalıştırma":::
 
 + **Azure Machine Learning tasarımcısı**
 
@@ -61,7 +68,7 @@ Makine öğrenimi varlıklarınızı doğrudan tarayıcınızda yönetin. Varlı
 - Notebooks
 - Denemeler
 - Günlükleri Çalıştır
-- Pipelines 
+- İşlem hatları 
 - Ardışık düzen uç noktaları
 
 Deneyimli bir geliştirici olsanız bile, Studio çalışma alanı kaynaklarını nasıl yönetebileceğinizi kolaylaştırabilir.
@@ -80,7 +87,7 @@ Yeni kullanıcıların, en son veri bilimi araçları aralığı için ML Studio
 
 Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki önemli farklılıkları özetler.
 
-| Öne çıkan özelliği | ML Studio (klasik) | Azure Machine Learning |
+| Özellik | ML Studio (klasik) | Azure Machine Learning |
 |---| --- | --- |
 | Sürükle ve bırak arabirimi | Klasik deneyim | Güncelleştirilmiş deneyim- [Azure Machine Learning Tasarımcısı](concept-designer.md)| 
 | Kod SDK 'Ları | Desteklenmeyen | [Azure Machine Learning Python](/python/api/overview/azure/ml/) ve [R](tutorial-1st-r-experiment.md) SDK 'leriyle tamamen tümleşik |
@@ -94,6 +101,9 @@ Aşağıdaki tablo ML Studio (klasik) ve Azure Machine Learning arasındaki öne
 | Veri drması algılama | Desteklenmez | [Desteklenir](how-to-monitor-datasets.md) |
 | Veri etiketleme projeleri | Desteklenmez | [Desteklenir](how-to-create-labeling-projects.md) |
 
+## <a name="troubleshooting"></a>Sorun giderme
+
+* **Studio 'Da eksik kullanıcı arabirimi öğeleri** Azure rol tabanlı erişim denetimi, Azure Machine Learning gerçekleştirebileceğiniz eylemleri kısıtlamak için kullanılabilir. Bu kısıtlamalar, Kullanıcı arabirimi öğelerinin Azure Machine Learning Studio 'da görünmesini engelleyebilir. Örneğin, bir işlem örneği oluşturmayan bir rol atanırsa, işlem örneği oluşturma seçeneği Studio 'da görünmez. Daha fazla bilgi için bkz. [kullanıcıları ve rolleri yönetme](how-to-assign-roles.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

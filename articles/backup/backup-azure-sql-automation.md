@@ -4,12 +4,12 @@ description: Azure Backup ve PowerShell kullanarak Azure VM 'lerinde SQL veritab
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 0b3b943a53c1da0f6f1e938b5b234dc82541b46d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a3467ffa3a67ac9ad593748948cea8da59e3e6b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901665"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734547"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerinde SQL veritabanlarını yedekleme ve geri yükleme
 
@@ -172,7 +172,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 > [!IMPORTANT]
 > Başlangıç saatini yalnızca 30 dakikalık katları olarak sağlamanız gerekir. Yukarıdaki örnekte, yalnızca "01:00:00" veya "02:30:00" olabilir. Başlangıç saati "01:15:00" olamaz.
 
-Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Daha sonra bu değişkenleri yeni bir ilke ( **Newsqlpolicy** ) için parametre olarak kullanır. **Newsqlpolicy** günlük "Full" yedeklemesi alır, 180 gün boyunca saklar ve 2 saatte bir günlük yedeklemesi alır
+Aşağıdaki örnek, zaman çizelgesi ilkesini ve bekletme ilkesini değişkenler halinde depolar. Daha sonra bu değişkenleri yeni bir ilke (**Newsqlpolicy**) için parametre olarak kullanır. **Newsqlpolicy** günlük "Full" yedeklemesi alır, 180 gün boyunca saklar ve 2 saatte bir günlük yedeklemesi alır
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "MSSQL"
@@ -268,7 +268,7 @@ Azure Backup, Azure VM 'lerinde çalışan SQL Server veritabanlarını şu şek
 * İşlem günlüğü yedeklerini kullanarak belirli bir tarih veya saate (ikinci olarak) geri yükleyin. Azure Backup, uygun tam değişiklik yedeklemesini ve seçilen saate göre geri yüklemek için gereken günlük yedeklemeleri zincirini otomatik olarak belirler.
 * Belirli bir kurtarma noktasına geri yüklemek için belirli bir tam veya değişiklik yedeklemesini geri yükleyin.
 
-SQL DBs 'yi geri yüklemeden önce [burada](restore-sql-database-azure-vm.md#prerequisites) bahsedilen önkoşulları denetleyin.
+SQL DBs 'yi geri yüklemeden önce [burada](restore-sql-database-azure-vm.md#restore-prerequisites) bahsedilen önkoşulları denetleyin.
 
 İlk olarak [Get-Azrecoveryservicesbackupıtem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) PowerShell cmdlet 'ini kullanarak ılgılı yedeklenen SQL DB 'yi getirin.
 
@@ -499,7 +499,7 @@ MSSQLSERVER/m... Backup               InProgress           3/18/2019 8:41:27 PM 
 
 ### <a name="change-policy-for-backup-items"></a>Yedekleme öğeleri için ilkeyi değiştirme
 
-Yedeklenen öğenin ilkesini *Policy1* ' den *Policy2* ' ye değiştirebilirsiniz. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) komutunu kullanın.
+Yedeklenen öğenin ilkesini *Policy1* ' den *Policy2*' ye değiştirebilirsiniz. Yedeklenen bir öğeye yönelik ilkeleri değiştirmek için ilgili ilkeyi ve yedekleme öğesini getirin ve parametresi olarak Backup öğesiyle [Enable-AzRecoveryServices](/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection) komutunu kullanın.
 
 ```powershell
 $TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>

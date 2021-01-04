@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 6bc6776df889c5c8ccc6acfe5764549ccf7354a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91320209"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739714"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Öğretici: Azure DevOps Services ve Azure Pipelines kullanarak uygulamanızı Azure 'da Linux sanal makinelerine dağıtın
 
@@ -100,11 +100,11 @@ Zaten NGINX ile bir Linux sanal makinesi yoksa, [Bu örnekteki](./quick-create-c
 
 Sanal makineler, [ortamlar](/azure/devops/pipelines/process/environments) içinde kaynak olarak eklenebilir ve çok makineli dağıtımlar için hedeflenebilir. Ortamında dağıtım geçmişi görünümleri VM 'den işlem hattına ve sonra işlemeye izlenebilirlik sağlar.
 
-"**Ortamlar**" hub 'ında "işlem**hatları**" bölümünün içinde bir ortam oluşturabilirsiniz.
+"**Ortamlar**" hub 'ında "işlem **hatları**" bölümünün içinde bir ortam oluşturabilirsiniz.
 1.  Azure DevOps kuruluşunuzda oturum açın ve projenize gidin.
-2.  Projenizde, işlem **hatları** sayfasına gidin. Ardından **ortamlar** ' ı seçin ve **Ortam Oluştur**' a tıklayın. Ortam için bir **ad** (gerekli) ve bir **Açıklama**belirtin.
+2.  Projenizde, işlem **hatları** sayfasına gidin. Ardından **ortamlar** ' ı seçin ve **Ortam Oluştur**' a tıklayın. Ortam için bir **ad** (gerekli) ve bir **Açıklama** belirtin.
 3.  Ortama eklenecek **kaynak** olarak **sanal makineler** ' i seçin ve **İleri**' ye tıklayın.
-4.  Işletim sistemi (Windows/Linux) ve **kopya PS kayıt betiğini**seçin. 
+4.  Işletim sistemi (Windows/Linux) ve **kopya PS kayıt betiğini** seçin. 
 5.  Şimdi bu ortama kaydedilecek hedef VM 'lerde bir yönetici PowerShell komut isteminden kopyalanmış betiği çalıştırın.
     > [!NOTE]
     > - Oturum açmış kullanıcının kişisel erişim belirteci, kopyalanmış betiğin kullanılamamasına neden olan bir gün içinde süresi dolan betiğe önceden eklenir.
@@ -118,7 +118,7 @@ Sanal makineler, [ortamlar](/azure/devops/pipelines/process/environments) içind
 
     ![VMresource_view](media/tutorial-deploy-vms-azure-pipelines/vm-resourceview.png)
 
-9. Etkileşimli PS kayıt betiğinin (veya) bir parçası olarak sanal makineye Etiketler ekleyebilirsiniz. Ayrıca, kaynaklar görünümündeki her bir VM kaynağının sonundaki üç noktaya tıklayarak kaynak görünümünden aynı şekilde ekleme/kaldırma yapabilirsiniz.
+9. Etkileşimli PowerShell kayıt betiğinin (veya) bir parçası olarak sanal makineye Etiketler ekleyebilirsiniz. Ayrıca, kaynaklar görünümündeki her bir VM kaynağının sonundaki üç noktaya tıklayarak kaynak görünümünden aynı şekilde ekleme/kaldırma yapabilirsiniz.
 
    Atadığınız Etiketler, ortam bir dağıtım işinde kullanıldığında dağıtımı belirli sanal makinelere sınırlamanıza izin verir. Etiketler 256 karakterle sınırlıdır, ancak kullanabileceğiniz etiket sayısı için bir sınır yoktur.
 
@@ -224,7 +224,7 @@ Daha fazla bilgi için, [Gulp ile Node.js uygulamanızı oluşturma](/azure/devo
 2. Ortamdaki her bir sanal makine için tanımladığınız **etiketleri** belirterek dağıtımı almak için ortamdan belirli sanal makine kümelerini seçebilirsiniz.
 Dağıtım işi için tüm YAML şeması [aşağıda](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) verilmiştir.
 
-3. Idthor `runOnce` veya `rolling` dağıtım stratejisi olarak belirtebilirsiniz. 
+3. Dağıtım stratejisi ya da `runOnce` `rolling` olarak belirtebilirsiniz. 
 
    `runOnce` , ve gibi tüm yaşam döngüsü `preDeploy` `deploy` `routeTraffic` `postRouteTraffic` kancalarının bir kez yürütüldüğü en basit dağıtım stratejisidir. Ardından, ya da `on:` `success` `on:` `failure` yürütülür.
 

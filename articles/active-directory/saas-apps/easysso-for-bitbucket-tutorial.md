@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 0433c0fdc1584ce209eb0409b0e8f5cbfc2719ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 21e5da3884cce6e3a7beff297e40fdc48a3ac761
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454414"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724366"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Öğretici: BitBucket için EasySSO ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile BitBucket için EasySSO '
 * Kullanıcılarınızın Azure AD hesaplarıyla BitBucket için otomatik olarak oturum açabilmesi için bu ayarı etkinleştirin.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için şunlar gerekir:
 
@@ -41,13 +39,12 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * BitBucket için EasySSO, SP tarafından başlatılan ve IDP tarafından başlatılan SSO 'yu destekler.
 * BitBucket için EasySSO, "Just-In-Time" Kullanıcı sağlamasını destekler.
-* BitBucket için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verilerin zaman beslenme korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-easysso-for-bitbucket-from-the-gallery"></a>Galeriden BitBucket için EasySSO ekleyin
 
 BitBucket için easysto 'un Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden BitBucket için EasySSO 'yı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak Azure portal oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -55,11 +52,11 @@ BitBucket için easysto 'un Azure AD 'ye tümleştirilmesini yapılandırmak iç
 1. Sonuçlardan **BitBucket Için Easysso** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bitbucket"></a>BitBucket için EasySSO için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-bitbucket"></a>BitBucket için Easysiçin Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Bitbucket Için EasySSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında BitBucket için bağlantılı bir ilişki kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Bitbucket Için EasySSO Ile Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında BitBucket için bağlantılı bir ilişki kurmanız gerekir.
 
-BitBucket için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları izleyin:
+BitBucket için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
     1. B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için [bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user) .
@@ -72,7 +69,7 @@ BitBucket için Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdak
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Bitbucket Için easysso** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
+1. Azure portal, **BitBucket Için Easysso** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma** seçeneğini belirleyin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
 
@@ -97,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. BitBucket uygulaması için EasySSO, SAML yanıtına daha fazla özniteliğin geri geçirilmesini de bekler. Aşağıdaki tabloda bunlar gösterilmektedir. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
     
-    | Name | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. UserPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
@@ -111,17 +108,17 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     ![Yükleme bağlantıları vurgulanmış şekilde SAML Imzalama sertifikası bölümünün ekran görüntüsü](./media/easysso-for-bitbucket-tutorial/certificate.png)
     
-    Bir sertifikayla BitBucket için EasySSO yapılandırmayı planlıyorsanız, **oturum açma URL 'sini** ve **Azure ad tanımlayıcısını**kopyalamanız ve bilgisayarınıza kaydetmeniz gerekir.
+    Bir sertifikayla BitBucket için EasySSO yapılandırmayı planlıyorsanız, **oturum açma URL 'sini** ve **Azure ad tanımlayıcısını** kopyalamanız ve bilgisayarınıza kaydetmeniz gerekir.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
 Bu bölümde, Azure portal bir test kullanıcısı olan B. Simon oluşturacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
-   1. **Ad**için girin `B.Simon` .  
-   1. **Kullanıcı adı**için öğesini girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Ad** için girin `B.Simon` .
+   1. **Kullanıcı adı** için öğesini girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından parolayı yazın.
    1. **Oluştur**’u seçin.
 
@@ -130,25 +127,31 @@ Bu bölümde, Azure portal bir test kullanıcısı olan B. Simon oluşturacaksı
 Bu bölümde, BitBucket için Easysa erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure Portal **Kurumsal uygulamalar**  >  **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **BitBucket Için Easysso**öğesini seçin.
+1. Uygulamalar listesinde **BitBucket Için Easysso** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
 1. **Kullanıcı ekle**'yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kullanıcılar ve gruplar sayfasının ekran görüntüsü, Kullanıcı Ekle vurgulanmış olarak](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, **Kullanıcılar** listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmında **Seç** ' i seçin.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ## <a name="configure-easysso-for-bitbucket-sso"></a>BitBucket SSO için EasySSO yapılandırma
 
-1. Atlasder BitBucket Örneğinizde yönetici ayrıcalıklarıyla oturum açın ve **Yönetim** bölümüne gidin. 
+1. Yakınlaştırma sırasında yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **ayarı** Yakınlaştır ' a tıklayarak sizi yakınlaştırma uygulamasına yönlendirebilirsiniz. Buradan, yakınlaştırma sırasında oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-10 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Farklı bir Web tarayıcısı penceresinde yakınlaştırmayı el ile ayarlamak istiyorsanız, yakınlaştırma şirket sitenizde yönetici olarak oturum açın.
+
+1. **Yönetim** bölümüne gidin.
 
     ![Dişli simgesi vurgulanmış şekilde BitBucket örneğinin ekran görüntüsü](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-1.png)
-1. **Easysso**öğesini bulun ve seçin.
+1. **Easysso** öğesini bulun ve seçin.
 
     ![Kolay SSO seçeneğinin ekran görüntüsü](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-2.png)
 
@@ -170,7 +173,7 @@ Bu bölümde, BitBucket için Easysa erişimi vererek Azure çoklu oturum açma 
  
 1. Sayfanın alt kısmındaki **Kaydet** ' i seçin. Meta veri veya sertifika dosyalarının içeriğinin yapılandırma alanlarıyla ayrıştırıldığına bakabilirsiniz. BitBucket yapılandırması için EasySSO işlemi tamamlanmıştır.
 
-1. Yapılandırmayı test etmek için **& göz atın** sekmesine gidin ve **SAML oturum açma düğmesini**seçin. Bu, özellikle Azure AD SAML tümleştirmenizi uçtan uca test etmek için BitBucket oturum açma ekranında ayrı bir düğme sağlar. Bu düğmeyi açık bırakabilir ve üretim modu için yerleşimini, rengini ve çevirisini de yapılandırabilirsiniz.
+1. Yapılandırmayı test etmek için **& göz atın** sekmesine gidin ve **SAML oturum açma düğmesini** seçin. Bu, özellikle Azure AD SAML tümleştirmenizi uçtan uca test etmek için BitBucket oturum açma ekranında ayrı bir düğme sağlar. Bu düğmeyi açık bırakabilir ve üretim modu için yerleşimini, rengini ve çevirisini de yapılandırabilirsiniz.
 
     ![SAML oturum açma düğmesi vurgulanmış şekilde SAML sayfasının ekran görüntüsü & Me sekmesi](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-5.png)
     > [!NOTE]
@@ -186,38 +189,20 @@ Ancak, Kullanıcı ilk kez oturum açtığında otomatik Kullanıcı sağlamayı
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-### <a name="idp-initiated-workflow"></a>IDP tarafından başlatılan iş akışı
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Bu bölümde, erişim paneli ' ni kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-BitBucket kutucuğu için EasySSO seçtiğinizde, SSO 'yu ayarladığınız BitBucket örneğinde otomatik olarak oturum açmış olmanız gerekir. Daha fazla bilgi için bkz. [uygulamalarım portalından oturum açma ve uygulamaları başlatma](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum akışını başlatabileceğiniz BitBucket oturum açma URL 'SI için EasySSO 'a yönlendirilir.
 
-### <a name="sp-initiated-workflow"></a>SP tarafından başlatılan iş akışı
+* BitBucket oturum açma URL 'SI için doğrudan Easysna gidin ve oturum akışını buradan başlatın.
 
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı BitBucket **SAML oturum açma** düğmesini kullanarak test edersiniz.
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-![SAML oturumu vurgulanmış şekilde, oturum açma ekranının ekran görüntüsü](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-7.png)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız Bitbucket Için EasySSO 'da otomatik olarak oturum açmış olmanız gerekir
 
-Bu senaryo, BitBucket EasySSO yapılandırma sayfanızın **&** Me sekmesinde **SAML oturum açma düğmesini** etkinleştirmiş olursunuz. Mevcut oturumlarınızda herhangi bir girişimden kaçınmak için, BitBucket oturum açma URL 'nizi tarayıcıda bir şekilde açın. **SAML oturum açma**' yı seçin ve Azure AD Kullanıcı kimlik doğrulama akışına yönlendirilirsiniz. Bu başarılı bir şekilde tamamlandıktan sonra, SAML aracılığıyla kimliği doğrulanmış bir kullanıcı olarak BitBucket örneğinizi geri yönlendirilirsiniz.
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım için EasySSO kutucuğunda tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız BitBucket için EasySSO 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Azure AD 'den geri yönlendirildikten sonra aşağıdaki ekranla karşılaşabilirsiniz:
+## <a name="next-steps"></a>Sonraki adımlar
 
-![Başvuru numarası vurgulanmış şekilde EasySSO hata ekranının ekran görüntüsü](./media/easysso-for-bitbucket-tutorial/bitbucket-admin-8.png)
-
-Bunu yaparsanız, **Atlassian-Bitbucket. log** dosyasına erişim sağlamak için [Bu sayfadaki yönergeleri](https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) izleyin. Hatanın ayrıntıları EasySSO hata sayfasında bulunan başvuru Kımlığı tarafından kullanılabilir olacaktır.
-
-Herhangi bir sorununuz varsa, [Easysso destek ekibine](mailto:support@techtime.co.nz)başvurun.
-
-## <a name="additional-resources"></a>Ek kaynaklar
-
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](./tutorial-list.md)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile BitBucket için EasySSO 'yi deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle BitBucket için EasySSO korumasını koruyun](/cloud-app-security/proxy-intro-aad)
+BitBucket için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verilerin bir listesini koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

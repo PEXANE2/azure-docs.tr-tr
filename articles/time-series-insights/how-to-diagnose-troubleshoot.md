@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3d26a0ef86ab96940f3d5bb96d87340b77f1faca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016845"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740547"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Azure Time Series Insights Gen2 ortamını tanılama ve sorun giderme
 
@@ -124,14 +124,6 @@ Zaman damgası özelliği açıkça belirtilmemişse, varsayılan zaman damgası
 Ortamınızda tanımlı bir zaman serisi model hiyerarşisi yoksa bu sorun oluşabilir. Daha fazla bilgi için [zaman serisi modelleriyle çalışma](./time-series-insights-overview.md)hakkında bilgi edinin.
 
   [![Üst öğe olmayan örnekler bir uyarı görüntüler.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
-
-## <a name="problem-power-bi-connector-shows-unable-to-connect"></a>Sorun: Power BI Bağlayıcısı "bağlanamıyor" olarak gösteriliyor
-
-Power BI Desktop içinde Power BI bağlayıcısının en son sürümünü kullanmıyorsanız bu sorun oluşabilir.
-
-[![Ekran görüntüsünde bağlantı kurulamadı iletişim kutusu gösterilir.](media/preview-troubleshoot/power-bi-unable-to-connect.png)](media/preview-troubleshoot/power-bi-unable-to-connect.png#lightbox)
-
-- Power BI Desktop sürümünü denetleyin ve Temmuz 2020 sürümünü kullandığınızdan emin olun. Aksi takdirde, Power BI Desktop güncelleştirip bağlayıcıyı yeniden çalıştırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

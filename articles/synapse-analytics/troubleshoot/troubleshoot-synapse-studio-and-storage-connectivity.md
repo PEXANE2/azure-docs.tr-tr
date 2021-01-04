@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: cee6d030a9639a7203a32a3c0957733cecb1f8b6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8cf440a517c1a3496b3df438fdd0d2534609908f
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445315"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733120"
 ---
 # <a name="troubleshoot-connectivity-between-azure-synapse-analytics-synapse-studio-and-storage"></a>Azure Synapse Analytics Synapse Studio ile depolama alanı arasındaki bağlantı sorunlarını giderme
 
@@ -24,7 +24,11 @@ Depolama hesabınız uygun izinlere sahip değilse, SYNAPSE Studio 'da "Data"-->
 
 Ayrıntılı hata iletisi değişebilir, ancak hata iletisinin genel anlamı şu şekilde olabilir: "Bu istek bu işlemi gerçekleştirmek için yetkilendirilmemiş.".
 
-![Depolama bağlantısı sorunu 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.1.png)
+Bağlantılı depolama düğümünde:  
+![Depolama bağlantısı sorunu 1](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1.png)
+
+Depolama kapsayıcısı düğümünde:  
+![Depolama bağlantı sorunu 1a](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-1a.png)
 
 **Çözüm**: hesabınızı uygun role atamak için bkz [. blob ve kuyruk verilerine erişim için Azure rolü atamak üzere Azure Portal kullanma](../../storage/common/storage-auth-aad-rbac-portal.md)
 
@@ -33,7 +37,11 @@ Ayrıntılı hata iletisi değişebilir, ancak hata iletisinin genel anlamı şu
 
 "Data" (SYNAPSE Studio 'daki "Linked" > depolama yapısını genişletmek için oku seçerken, "REQUEST_SEND_ERROR" sorununu sol bölmede görebilirsiniz. Aşağıdaki sorun belirti ekran görüntüsüne bakın:
 
-![Depolama bağlantısı sorunu 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue.2.png)
+Bağlantılı depolama düğümünde:  
+![Depolama bağlantısı sorunu 2](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2.png)
+
+Depolama kapsayıcısı düğümünde:  
+![Depolama bağlantı sorunu 2A](media/troubleshoot-synapse-studio-and-storage-connectivity/storage-connectivity-issue-2a.png)
 
 Bu sorunun arkasında birkaç olası neden olabilir:
 
@@ -51,6 +59,7 @@ Bu sorunun arkasında birkaç olası neden olabilir:
 
 * Eriştiğiniz depolama kaynağı Azure Data Lake Storage 2. ve aynı anda bir güvenlik duvarı ve vNet 'in arkasında (depolama özel uç noktası yapılandırılmış).
 * Eriştiğiniz kapsayıcı kaynağı silinmiş veya yok.
+* Kesişen kiracı: kullanıcının oturum açmak için kullandığı çalışma alanı kiracısı, depolama hesabının kiracısıyla aynı değil. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

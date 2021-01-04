@@ -4,12 +4,12 @@ description: Azure Backup hizmeti ile Azure VM 'lerinde SQL Server yedeklenirken
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
-ms.openlocfilehash: b189eceb6b5a7f2e508387c0b91b238ff5fcb088
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 78436981c515b95ccda763d8ac916738b4364953
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92174052"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734802"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Azure VM 'lerinde SQL Server yedekleme için destek matrisi
 
@@ -36,10 +36,10 @@ Azure Backup, Microsoft Azure bulut platformunda barındırılan Azure VM 'lerin
 >[!NOTE]
 > VM kaynakları, bant genişliği ve yedekleme ilkesi temel alınarak sunucu başına önerilen korumalı veritabanlarının yaklaşık sayısını hesaplamak için [ayrıntılı kaynak planlayıcısı](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) ' nı indirin.
 
-* SQL Server yedekleme Azure portal veya **PowerShell**içinde yapılandırılabilir. CLı desteklenmez.
+* SQL Server yedekleme Azure portal veya **PowerShell** içinde yapılandırılabilir. CLı desteklenmez.
 * Çözüm her iki tür [dağıtım](../azure-resource-manager/management/deployment-models.md) için de desteklenir-Azure Resource Manager VM 'ler ve klasik VM 'ler.
 * Tüm yedekleme türleri (tam/fark/günlük) ve kurtarma modelleri (basit/tam/toplu günlüğe kaydedilir) desteklenir.
-* Tam ve kopya- **salt okuma** veritabanları için yalnızca tam yedekleme türleri desteklenir.
+* **Salt okuma** veritabanları için: tam ve salt kopya tam yedeklemeler yalnızca desteklenen yedekleme türleridir.
 * Yedekleme ilkesinde Kullanıcı tarafından açıkça etkinleştirildiyse SQL yerel sıkıştırması desteklenir. Azure Backup, Kullanıcı tarafından ayarlandığı şekilde bu denetimin değerine bağlı olarak, örnek düzeyi varsayılan değerlerini COMPRESSION/NO_COMPRESSION yan tümcesiyle geçersiz kılar.
 * TDE etkin veritabanı yedeklemesi desteklenir. Bir TDE şifreli veritabanını başka bir SQL Server geri yüklemek için öncelikle [sertifikayı hedef sunucuya geri yüklemeniz](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)gerekir. SQL Server 2016 ve daha yeni sürümler için TDE özellikli veritabanları için yedekleme sıkıştırması, [burada](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593)açıklandığı gibi daha düşük aktarım boyutunda mevcuttur.
 * Yansıtma veritabanları ve veritabanı anlık görüntüleri için yedekleme ve geri yükleme işlemleri desteklenmez.

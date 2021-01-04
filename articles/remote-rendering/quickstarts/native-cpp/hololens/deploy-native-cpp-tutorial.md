@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: 4513a1997dc2955e1c5488a4a3740afa88f51623
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: d35d6e75b45c2ea263c2e986c5fc6f414cad16e4
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207283"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724978"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Hızlı başlangıç: HoloLens 'e yerel C++ örneği dağıtma
 
@@ -39,7 +39,7 @@ Aşağıdaki yazılım yüklü olmalıdır:
 
 ## <a name="clone-the-arr-samples-repository"></a>ARR örnekleri deposunu kopyalama
 
-İlk adım olarak, genel Azure uzaktan Işleme örneklerinin barındırıldığı Git deposunu kopyaladık. Bir komut istemi açın ( `cmd` Windows Başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine geçin.
+İlk adım olarak, Global Azure uzaktan Işleme örneklerinin barındırıldığı Git deposunu kopyaladık. Bir komut istemi açın ( `cmd` Windows Başlat menüsünde yazın) ve ARR örnek projesini depolamak istediğiniz bir dizine geçin.
 
 Aşağıdaki komutları çalıştırın:
 
@@ -51,13 +51,13 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 Son komut, Azure uzaktan Işleme için çeşitli örnek projelerini içeren ARR dizininde bir alt dizin oluşturur.
 
-C++ HoloLens öğreticisi, *Nativecpp/HoloLens*alt dizininde bulunabilir.
+C++ HoloLens öğreticisi, *Nativecpp/HoloLens* alt dizininde bulunabilir.
 
 ## <a name="build-the-project"></a>Projeyi derleme
 
 Visual Studio 2019 ile *Nativecpp/HoloLens* alt dizininde bulunan *holographicapp. sln* çözüm dosyasını açın.
 
-Derleme yapılandırmasını *hata ayıklama* (veya *Release*) ve *ARM64*olarak değiştirin. Ayrıca, hata ayıklayıcı modunun *Uzak makinenin*aksine *cihaz* olarak ayarlandığından emin olun:
+Derleme yapılandırmasını *hata ayıklama* (veya *Release*) ve *ARM64* olarak değiştirin. Ayrıca, hata ayıklayıcı modunun *Uzak makinenin* aksine *cihaz* olarak ayarlandığından emin olun:
 
 ![Visual Studio yapılandırması](media/vs-config-native-cpp-tutorial.png)
 
@@ -70,7 +70,8 @@ Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunlar�
     RR::AzureFrontendAccountInfo init;
     init.AccountId = "00000000-0000-0000-0000-000000000000";
     init.AccountKey = "<account key>";
-    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to your region>
+    init.AccountDomain = "westus2.mixedreality.azure.com"; // <change to the region that the rendering session should be created in>
+    init.AccountAuthenticationDomain = "westus2.mixedreality.azure.com"; // <change to the region the account was created in>
     m_modelURI = "builtin://Engine";
     m_sessionOverride = ""; // If there is a valid session ID to re-use, put it here. Otherwise a new one is created
     m_frontEnd = RR::ApiHandle(RR::AzureFrontend(init));
@@ -78,8 +79,8 @@ Hesap kimlik bilgileri öğreticinin kaynak kodunda kodlandığı için, bunlar�
 ```
 
 Özellikle, aşağıdaki değerleri değiştirin:
-* `init.AccountId` ve `init.AccountKey` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
-* Örneğin `init.AccountDomain` , diğer bölgelere ait dizenin bölge bölümü `westus2``"westeurope.mixedreality.azure.com"`
+* `init.AccountId`, `init.AccountKey` ve, `init.AccountAuthenticationDomain` Hesap verilerinizi kullanmak için. [Hesap bilgilerini alma](../../../how-tos/create-an-account.md#retrieve-the-account-information)hakkında paragrafa bakın.
+* Örneğin `init.AccountDomain` , örneğin, diğer bölgelere ait dizenin bölge bölümünü değiştirerek uzaktan işleme oturumunun nerede oluşturulacağını belirtin `westus2` `"westeurope.mixedreality.azure.com"` .
 * Ayrıca, `m_sessionOverride` var olan bir oturum kimliği ile değiştirilebilir. Oturumlar, örneğin [PowerShell betiği](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) kullanılarak veya [oturum REST API](../../../how-tos/session-rest-api.md#create-a-session) doğrudan kullanılarak bu örneğin dışında oluşturulabilir.
 Örnek dışında bir oturum oluşturmak, örneğin örnek birden çok kez çalıştırılması önerilir. Hiçbir oturum geçirilmemişse, örnek her başlatma sırasında yeni bir oturum oluşturur ve bu işlem birkaç dakika sürebilir.
 
@@ -97,7 +98,7 @@ Artık uygulama derlenebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıç, tüm uzaktan Işleme ilgili parçaları bir stok *holographic uygulamasıyla*tümleştirmeyi açıklayan bir öğreticinin sonucunu temel alır. Hangi adımların gerekli olduğunu öğrenmek için bu öğreticiyi izleyin:
+Bu hızlı başlangıç, tüm uzaktan Işleme ilgili parçaları bir stok *holographic uygulamasıyla* tümleştirmeyi açıklayan bir öğreticinin sonucunu temel alır. Hangi adımların gerekli olduğunu öğrenmek için bu öğreticiyi izleyin:
 
 > [!div class="nextstepaction"]
 > [Öğretici: uzaktan Işlemeyi bir HoloLens holographic uygulamasına tümleştirme](../../../tutorials/native-cpp/hololens/integrate-remote-rendering-into-holographic-app.md)

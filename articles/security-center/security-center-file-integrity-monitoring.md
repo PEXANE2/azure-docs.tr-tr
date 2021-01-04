@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 1773e1345e9410f54a0364b586c3afca5b648b4c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ab173f47ed09dbe77c12cad844d8a1f3654f4a9b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341541"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734768"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme
 Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izleme (FIM) yapılandırma hakkında bilgi edinin.
@@ -31,7 +31,7 @@ Bu yönergeyi kullanarak Azure Güvenlik Merkezi 'nde dosya bütünlüğü izlem
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md)gerektirir.<br>FIM Log Analytics çalışma alanına veri yükler. Veri ücretleri, karşıya yüklediğiniz veri miktarına bağlı olarak uygulanır. Daha fazla bilgi için bkz. [Log Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/log-analytics/) .|
 |Gerekli roller ve izinler:|**Çalışma alanı sahıbı** FIM 'yi etkinleştirebilir/devre dışı bırakabilir (daha fazla bilgi için bkz. [Log Analytics için Azure rolleri](/services-hub/health/azure-roles#azure-roles)).<br>**Okuyucu** , sonuçları görüntüleyebilir.|
-|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) US gov<br>![](./media/icons/no-icon.png)Çin gov, diğer gov yok<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking/overview.md).|
+|Larının|![Evet ](./media/icons/yes-icon.png) ticari bulutlar<br>![Evet ](./media/icons/yes-icon.png) Ulusal/Sogeign (US gov, Çin gov, diğer gov)<br>Yalnızca Azure Otomasyonu 'nun değişiklik izleme çözümünün kullanılabildiği bölgelerde desteklenir.<br>Bkz. [bağlantılı Log Analytics çalışma alanı Için desteklenen bölgeler](../automation/how-to/region-mappings.md).<br>[Değişiklik izleme hakkında daha fazla bilgi edinin](../automation/change-tracking/overview.md).|
 |||
 
 ## <a name="what-is-fim-in-security-center"></a>Güvenlik Merkezi 'nde FIM nedir?
@@ -56,7 +56,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 Önceki tarama sırasında, bu öğelerin geçerli durumu ile aynı durum karşılaştırılırken FIM, şüpheli değişiklikler yapılırsa sizi uyarır.
 
-FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü izleme etkinleştirildiğinde, **çözüm**türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntıları için [değişiklik izleme veri toplama ayrıntılarını](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)inceleyin.
+FIM, ortamınızdaki değişiklikleri izlemek ve tanımlamak için Azure Değişiklik İzleme çözümünü kullanır. Dosya bütünlüğü izleme etkinleştirildiğinde, **çözüm** türünde bir **değişiklik izleme** kaynağınız olur. Veri toplama sıklığı ayrıntıları için [değişiklik izleme veri toplama ayrıntılarını](../automation/change-tracking/overview.md#change-tracking-and-inventory-data-collection)inceleyin.
 
 > [!NOTE]
 > **Değişiklik izleme** kaynağını kaldırırsanız, güvenlik merkezi 'nde de dosya bütünlüğü izleme özelliğini devre dışı bırakacaksınız.
@@ -124,7 +124,7 @@ FIM yalnızca Azure portal Güvenlik Merkezi sayfalarından kullanılabilir. Şu
 
     - ![Simgeyi etkinleştir][3] Çalışma alanındaki tüm makinelerde FIM 'yi etkinleştirin ve FIM seçeneklerini yapılandırın. Bu simge, FIM 'in çalışma alanı için etkinleştirilmediğini belirtir.
 
-        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="FIM başlatılıyor":::
+        :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-list-fim.png" alt-text="Belirli bir çalışma alanı için FIM etkinleştiriliyor":::
 
 
     > [!TIP]
@@ -133,9 +133,9 @@ FIM yalnızca Azure portal Güvenlik Merkezi sayfalarından kullanılabilir. Şu
 
 1. **Etkinleştir**' i seçin. Çalışma alanının altındaki Windows ve Linux makinelerin sayısı dahil, çalışma alanının ayrıntıları gösterilir.
 
-    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM başlatılıyor":::
+    :::image type="content" source="./media/security-center-file-integrity-monitoring/workspace-fim-status.png" alt-text="FIM çalışma alanı ayrıntıları sayfası":::
 
-   Windows ve Linux için önerilen ayarlar da listelenir.  Önerilen öğelerin tam listesini görmek için **Windows dosyaları**, **kayıt defteri**ve **Linux dosyalarını** genişletin.
+   Windows ve Linux için önerilen ayarlar da listelenir.  Önerilen öğelerin tam listesini görmek için **Windows dosyaları**, **kayıt defteri** ve **Linux dosyalarını** genişletin.
 
 1. FIM tarafından izlenmesini istemediğiniz önerilen varlıkların onay kutularını temizleyin.
 
@@ -150,7 +150,7 @@ FIM yalnızca Azure portal Güvenlik Merkezi sayfalarından kullanılabilir. Şu
 
 **Dosya bütünlüğü izleme** panosu FIM 'nin etkinleştirildiği çalışma alanlarını görüntüler. FIM panosu, bir çalışma alanında FIM 'yi etkinleştirdikten sonra veya zaten FIM 'nin etkinleştirildiği **Dosya bütünlüğü izleme** penceresinde bir çalışma alanı seçtiğinizde açılır.
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM başlatılıyor":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/fim-dashboard.png" alt-text="FIM panosu ve çeşitli bilgilendirme panoları":::
 
 Bir çalışma alanı için FIM Panosu aşağıdaki ayrıntıları görüntüler:
 
@@ -161,7 +161,7 @@ Bir çalışma alanı için FIM Panosu aşağıdaki ayrıntıları görüntüler
 
 Değişikliklerin gösterildiği zaman aralığını değiştirmek için panonun en üstünde bulunan **filtre** ' yi seçin.
 
-:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM başlatılıyor":::
+:::image type="content" source="./media/security-center-file-integrity-monitoring/dashboard-filter.png" alt-text="FIM panosu için zaman aralığı Filtresi":::
 
 **Sunucular** sekmesi, bu çalışma alanına rapor veren makineleri listeler. Her makine için Pano şunları listeler:
 
@@ -191,7 +191,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![Ayarlar][11]
 
-   **Çalışma alanı yapılandırması** üç sekme görüntülemeyi açar: **Windows kayıt defteri**, **Windows dosyaları**ve **Linux dosyaları**. Her sekme, bu kategoride düzenleyebileceğiniz varlıkları listeler. Listelenen her varlık için, güvenlik merkezi FIM 'nin etkinleştirilip etkinleştirilmediğini (true) veya etkinleştirilmediğini (false) belirler.  Varlığı düzenlediğinizde FIM 'yi etkinleştirmenizi veya devre dışı bırakmanızı sağlayabilirsiniz.
+   **Çalışma alanı yapılandırması** üç sekme görüntülemeyi açar: **Windows kayıt defteri**, **Windows dosyaları** ve **Linux dosyaları**. Her sekme, bu kategoride düzenleyebileceğiniz varlıkları listeler. Listelenen her varlık için, güvenlik merkezi FIM 'nin etkinleştirilip etkinleştirilmediğini (true) veya etkinleştirilmediğini (false) belirler.  Varlığı düzenlediğinizde FIM 'yi etkinleştirmenizi veya devre dışı bırakmanızı sağlayabilirsiniz.
 
    ![Çalışma alanı yapılandırması][12]
 
@@ -208,7 +208,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
 ## <a name="add-a-new-entity-to-monitor"></a>İzlenecek yeni bir varlık ekleyin
 1. **Dosya bütünlüğü izleme panosuna** dönün ve en üstteki **Ayarlar** ' ı seçin. **Çalışma alanı yapılandırması** açılır.
-2. **Çalışma alanı yapılandırması**altında, eklemek istediğiniz varlık türünün sekmesini seçin: Windows kayıt defteri, Windows dosyaları veya Linux dosyaları. Bu örnekte, **Linux dosyalarını**seçtik.
+2. **Çalışma alanı yapılandırması** altında, eklemek istediğiniz varlık türünün sekmesini seçin: Windows kayıt defteri, Windows dosyaları veya Linux dosyaları. Bu örnekte, **Linux dosyalarını** seçtik.
 
    ![İzlenecek yeni bir öğe ekleyin][14]
 
@@ -228,7 +228,7 @@ Değişiklik **ayrıntıları** , arama alanına bir değişiklik girdiğinizde 
 
    ![Ayarlar'ı seçin][17]
 
-4. **Çalışma alanı yapılandırması**altında, **etkin** ' in true olarak ayarlandığı bir grup seçin.
+4. **Çalışma alanı yapılandırması** altında, **etkin** ' in true olarak ayarlandığı bir grup seçin.
 
    ![Çalışma alanı yapılandırması][18]
 
@@ -251,7 +251,7 @@ FIM 'yi devre dışı bırakabilirsiniz. FIM, ortamınızdaki değişiklikleri i
 
 1. FIM 'yi devre dışı bırakmak için **Dosya bütünlüğü izleme** panosuna dönün.
 2. Bir çalışma alanı seçin.
-3. **Dosya bütünlüğü izleme**altında **devre dışı bırak**' ı seçin.
+3. **Dosya bütünlüğü izleme** altında **devre dışı bırak**' ı seçin.
 
    ![FIM 'yi devre dışı bırak][20]
 

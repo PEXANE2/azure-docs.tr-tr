@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0d8960ddd8f617c59d6ac025fafe413256bc5b94
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 6ca96f76287482a445d8a9a1cdc441333b36efbd
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107615"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739612"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Şirket içi veri ağ geçidi ile şirket içi veri kaynaklarına bağlanma
 
@@ -46,7 +46,7 @@ Güvenlik duvarınızdaki veri bölgenizin IP adreslerini eklemeniz gerekebilir.
 
 Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiştir.
 
-| Etki alanı adları | Giden bağlantı noktaları | Description |
+| Etki alanı adları | Giden bağlantı noktaları | Açıklama |
 | --- | --- | --- |
 | *.powerbi.com |80 |Yükleyiciyi indirmek için kullanılan HTTP. |
 | *.powerbi.com |443 |HTTPS |
@@ -57,7 +57,7 @@ Ağ Geçidi tarafından kullanılan tam etki alanı adları aşağıda verilmiş
 | *.frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *.msftncsi.com |443 |Power BI hizmeti tarafından ağ geçidine erişilemiyorsa İnternet bağlantısını test etmek için kullanılır. |
+| *.msftncsi.com |80 |Power BI hizmeti tarafından ağ geçidine erişilemiyorsa İnternet bağlantısını test etmek için kullanılır. |
 | *.microsoftonline-p.com |443 |Yapılandırmaya bağlı olarak kimlik doğrulaması için kullanılır. |
 | dc.services.visualstudio.com    |443 |Appınsights tarafından telemetri toplamak için kullanılır. |
 

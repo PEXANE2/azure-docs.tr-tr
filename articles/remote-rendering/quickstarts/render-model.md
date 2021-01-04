@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 74bad563de60abc0c1eb7623a81c83fea03f5ee6
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 6258365ab00ab538f3f3502682078d29a391578c
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92207232"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724943"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>Hızlı başlangıç: Unity ile model Işleme
 
@@ -56,7 +56,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 Son komut, Azure uzaktan Işleme için çeşitli örnek projelerini içeren ARR dizininde bir alt dizin oluşturur.
 
-Unity için hızlı başlangıç örnek uygulaması *Unity/hızlı başlangıç*alt dizininde bulunur.
+Unity için hızlı başlangıç örnek uygulaması *Unity/hızlı başlangıç* alt dizininde bulunur.
 
 ## <a name="rendering-a-model-with-the-unity-sample-project"></a>Unity örnek projesiyle model işleme
 
@@ -74,8 +74,8 @@ Projeyi açın. Gerekirse, Unity 'nin projeyi yüklü sürüme yükseltmesine iz
 ![ARR hesap bilgileri](./media/arr-sample-account-info.png)
 
 > [!IMPORTANT]
-> Azure portalı, hesabınızın etki alanını yalnızca *mixedreality.Azure.com*olarak görüntüler. Bu, başarıyla bağlanmak için yeterli değil.
-> **Accountdomain** öğesini olarak ayarlayın `<region>.mixedreality.azure.com` ; burada, `<region>` [size yakın olan kullanılabilir bölgelerden biridir](../reference/regions.md).
+> **Accountdomain** öğesini olarak ayarlayın `<region>.mixedreality.azure.com` ; burada, `<region>` [size yakın olan bölgelerin biri](../reference/regions.md)bulunur. \
+> **Accountauthenticationdomain öğesini** Azure portalında gösterildiği gibi [hesap etki alanı](../how-tos/create-an-account.md#retrieve-the-account-information) olarak ayarlayın.
 
 Daha sonra bu projeyi bir HoloLens 'e dağıtmak ve bu cihazdan uzaktan Işleme hizmetine bağlanmak istiyoruz. Cihazdaki kimlik bilgilerini girmek için kolay bir yol olmadığı için hızlı başlangıç örneği, **kimlik bilgilerini Unity sahnede kaydeder**.
 
@@ -92,9 +92,7 @@ Tebrikler! Artık uzaktan işlenmiş bir modeli görüntülüyorsunuz!
 
 ## <a name="inspecting-the-scene"></a>Sahneyi İnceleme
 
-Uzaktan işleme bağlantısı çalışmaya başladıktan sonra Denetçi paneli ek durum bilgileriyle güncelleştirilir:
-
-![Unity örnek oynama](./media/arr-sample-configure-session-running.png)
+Uzaktan işleme bağlantısı çalışmaya başladıktan sonra Denetçi paneli ek durum bilgileriyle güncelleştirilir: ![ Unity örnek oynama](./media/arr-sample-configure-session-running.png)
 
 Artık yeni düğümü seçip Inspector 'da **alt öğeleri göster** ' i tıklatarak sahne grafiğini inceleyebilirsiniz.
 

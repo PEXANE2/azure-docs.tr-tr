@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: f0d0742994b14f692c2aea9130edc73d779cff52
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 2ff97dd30d9b993385f52ea531653a89197f8756
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92544775"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734632"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Redsıs için Azure önbelleğini yapılandırma
 Bu konuda, Redsıs örnekleri için Azure önbelleğiniz için kullanılabilen yapılandırma açıklanmaktadır. Bu konu, Redsıs örnekleri için Azure önbelleği için varsayılan Redsıs sunucu yapılandırmasını da içerir.
@@ -33,7 +33,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü** kullanılarak **r
 * [Genel Bakış](#overview)
 * [Etkinlik günlüğü](#activity-log)
 * [Erişim denetimi (IAM)](#access-control-iam)
-* [Etiketler](#tags)
+* [Lerimi](#tags)
 * [Sorunları tanılama ve çözme](#diagnose-and-solve-problems)
 * [Ayarlar](#settings)
     * [Erişim tuşları](#access-keys)
@@ -50,7 +50,7 @@ Redsıs ayarları için Azure önbelleği, **Kaynak menüsü** kullanılarak **r
     * [Kilitler](#locks)
     * [Otomasyon betiği](#automation-script)
 * Yönetim
-    * [Veri içeri aktarma](#importexport)
+    * [Verileri içeri aktar](#importexport)
     * [Verileri dışarı aktarma](#importexport)
     * [Yeniden başlatma](#reboot)
 * [İzleme](#monitoring)
@@ -117,7 +117,7 @@ Aşağıdaki ayarlar **Gelişmiş ayarlar** dikey penceresinde yapılandırılı
 * [Keyspace bildirimleri (Gelişmiş ayarlar)](#keyspace-notifications-advanced-settings)
 
 #### <a name="access-ports"></a>Erişim bağlantı noktaları
-Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dışıdır. TLS olmayan bağlantı noktasını etkinleştirmek için, **Gelişmiş ayarlar** dikey PENCERESINDE **yalnızca SSL aracılığıyla erişime izin ver** ' **e tıklayın ve** ardından **Kaydet** ' e tıklayın.
+Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dışıdır. TLS olmayan bağlantı noktasını etkinleştirmek için, **Gelişmiş ayarlar** dikey PENCERESINDE **yalnızca SSL aracılığıyla erişime izin ver** ' **e tıklayın ve** ardından **Kaydet**' e tıklayın.
 
 > [!NOTE]
 > Redu için Azure önbelleğine TLS erişimi şu anda TLS 1,0, 1,1 ve 1,2 destekler, ancak 1,0 ve 1,1 sürümleri yakında kullanımdan kaldırılıyor.  Daha fazla bilgi için lütfen [TLS 1,0 ve 1,1 ' i kaldırın sayfasını](cache-remove-tls-10-11.md) okuyun.
@@ -126,7 +126,7 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 <a name="maxmemory-policy-and-maxmemory-reserved"></a>
 #### <a name="memory-policies"></a>Bellek ilkeleri
-**Gelişmiş ayarlar** dikey penceresinde **MaxMemory ilkesi** , **MaxMemory-ayrılmış** ve **maxfragmentationmemory-ayrılmış** ayarları, önbelleğin bellek ilkelerini yapılandırır.
+**Gelişmiş ayarlar** dikey penceresinde **MaxMemory ilkesi**, **MaxMemory-ayrılmış** ve **maxfragmentationmemory-ayrılmış** ayarları, önbelleğin bellek ilkelerini yapılandırır.
 
 ![Redsıs MaxMemory Ilkesi için Azure önbelleği](./media/cache-configure/redis-cache-maxmemory-policy.png)
 
@@ -145,7 +145,7 @@ Varsayılan olarak, yeni önbellekler için TLS olmayan/SSL erişimi devre dış
 
 **Maxfragmentationmemory-ayrılmış** ayarı, bellek parçalanması için ayrılan bellek miktarını, bir kümedeki örnek başına MB cinsinden yapılandırır. Bu değeri ayarlamak, önbellek dolduğunda veya dolduğunda, parçalanma oranı yüksek olduğunda daha tutarlı bir Redsıs sunucu deneyimine sahip olmasını sağlar. Bellek bu gibi işlemler için ayrıldığınızda, önbelleğe alınmış verilerin depolanması için kullanılamaz.
 
-Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey ( **MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve** ), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
+Yeni bir bellek ayırma değeri seçerken göz önünde bulundurmanız gereken tek şey (**MaxMemory-Reserve** veya **maxfragmentationmemory-Reserve**), bu değişikliğin zaten büyük miktarda verilerle çalışan bir önbelleği nasıl etkileyebileceğini gösterebilir. Örneğin, 49 GB veri içeren bir 53 GB önbelleğiniz varsa, ayırma değerini 8 GB olarak değiştirirseniz bu değişiklik, sistem için kullanılabilir en yüksek belleği 45 GB 'a düşürülecektir. Geçerli `used_memory` ya da `used_memory_rss` değerlerinizin boyutu 45 GB 'ın üzerine fazlaysa, sistem verileri her ikisi de `used_memory` 45 GB 'ın altında olacak şekilde çıkarmak zorunda kalır `used_memory_rss` . Çıkarma, sunucu yükü ve bellek parçalanmasını artırabilir. Ve gibi önbellek ölçümleri hakkında daha fazla bilgi `used_memory` için `used_memory_rss` bkz. [kullanılabilir ölçümler ve raporlama aralıkları](cache-how-to-monitor.md#available-metrics-and-reporting-intervals).
 
 > [!IMPORTANT]
 > **MaxMemory-ayrýlmýþ** ve **maxfragmentationmemory-ayrýlmýþ** ayarları yalnızca standart ve Premium önbellekler için kullanılabilir.
@@ -234,7 +234,7 @@ Daha fazla bilgi için bkz. [redsıs Için Premium Azure önbelleği için kalı
 
 ![Güncelleştirmeleri zamanlama](./media/cache-configure/redis-schedule-updates.png)
 
-Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam** ' a tıklayın. Bakım penceresi saati UTC 'dir.
+Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün için bakım penceresi başlangıç saatini belirtip **Tamam**' a tıklayın. Bakım penceresi saati UTC 'dir.
 
 > [!IMPORTANT]
 > **Güncelleştirmeleri zamanla** Işlevi yalnızca Premium katman önbellekleri için kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-zamanlama güncelleştirmeleri](cache-administration.md#schedule-updates).
@@ -258,13 +258,13 @@ Bir bakım penceresi belirtmek için, istenen günleri denetleyin ve her gün i�
 >
 >
 
-### <a name="firewall"></a>Güvenlik duvarı
+### <a name="firewall"></a>Güvenlik Duvarı
 
 Güvenlik duvarı kuralları yapılandırması, Redsıs katmanlarında tüm Azure önbelleği için kullanılabilir.
 
 Önbellek güvenlik duvarı kurallarını görüntülemek ve yapılandırmak için **güvenlik duvarı** ' na tıklayın.
 
-![Güvenlik duvarı](./media/cache-configure/redis-firewall-rules.png)
+![Güvenlik Duvarı](./media/cache-configure/redis-firewall-rules.png)
 
 Bir başlangıç ve bitiş IP adresi aralığı ile güvenlik duvarı kuralları belirtebilirsiniz. Güvenlik duvarı kuralları yapılandırıldığında, yalnızca belirtilen IP adresi aralıklarından gelen istemci bağlantıları önbelleğe bağlanabilir. Bir güvenlik duvarı kuralı kaydedildiğinde, kural yürürlüğe girmeden önce kısa bir gecikme olur. Bu gecikme genellikle bir dakikadan azdır.
 
@@ -290,7 +290,7 @@ Gelecekteki dağıtımlar için dağıtılan kaynaklarınızın bir şablonunu d
 
 ![Yönetim](./media/cache-configure/redis-cache-administration.png)
 
-* [Veri içeri aktarma](#importexport)
+* [Verileri içeri aktar](#importexport)
 * [Verileri dışarı aktarma](#importexport)
 * [Yeniden başlatma](#reboot)
 
@@ -316,7 +316,7 @@ Kümelemenin etkinleştirildiği Premium bir önbelleğiniz varsa, önbelleğin 
 
 ![Önbelleğin hangi parçaların yeniden başlatılması gerektiğini gösteren ekran görüntüsü.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
-Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat** ' a tıklayın. Kümelendirmeyi etkin bir Premium önbelleğiniz varsa, yeniden başlatılacak olan parça (ler) i seçin ve ardından **Yeniden Başlat** ' a tıklayın. Birkaç dakika sonra, seçilen düğüm (ler) i yeniden başlatılır ve birkaç dakika sonra yeniden çevrimiçi olacak.
+Önbelleğinizin bir veya daha fazla düğümünü yeniden başlatmak için, istenen düğümleri seçin ve **Yeniden Başlat**' a tıklayın. Kümelendirmeyi etkin bir Premium önbelleğiniz varsa, yeniden başlatılacak olan parça (ler) i seçin ve ardından **Yeniden Başlat**' a tıklayın. Birkaç dakika sonra, seçilen düğüm (ler) i yeniden başlatılır ve birkaç dakika sonra yeniden çevrimiçi olacak.
 
 > [!IMPORTANT]
 > Yeniden başlatma artık tüm fiyatlandırma katmanlarında kullanılabilir. Daha fazla bilgi ve yönergeler için bkz. [redsıs yönetimi Için Azure önbelleği-yeniden başlatma](cache-administration.md#reboot).
@@ -363,7 +363,7 @@ Varsayılan olarak, Azure Izleyici 'deki önbellek ölçümleri [30 gün boyunca
 **Kaynak sistem durumu** , kaynağınızı izler ve beklendiği gibi çalışıp çalışmadığını bildirir. Azure Kaynak sistem durumu hizmeti hakkında daha fazla bilgi için bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).
 
 > [!NOTE]
-> Kaynak sistem durumu şu anda bir sanal ağda barındırılan Redsıs örnekleri için Azure önbelleğinin sistem durumunu bildiremedi. Daha fazla bilgi için bkz. [BIR VNET 'te önbellek barındırırken tüm önbellek özelliklerini çalışma](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-hosting-a-cache-in-a-vnet)
+> Kaynak sistem durumu şu anda bir sanal ağda barındırılan Redsıs örnekleri için Azure önbelleğinin sistem durumunu bildiremedi. Daha fazla bilgi için bkz. [BIR VNET 'te önbellek barındırırken tüm önbellek özelliklerini çalışma](cache-how-to-premium-vnet.md#do-all-cache-features-work-when-a-cache-is-hosted-in-a-virtual-network)
 >
 >
 
@@ -498,7 +498,7 @@ shard1>get myKey
 
 
 ## <a name="move-your-cache-to-a-new-subscription"></a>Önbelleğinizi yeni bir aboneliğe taşıma
-**Taşı** ' ya tıklayarak önbelleğinizi yeni bir aboneliğe taşıyabilirsiniz.
+**Taşı**' ya tıklayarak önbelleğinizi yeni bir aboneliğe taşıyabilirsiniz.
 
 ![Redsıs için Azure önbelleğini taşıma](./media/cache-configure/redis-cache-move.png)
 

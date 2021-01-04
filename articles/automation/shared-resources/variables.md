@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5be0d45843eed8c7c0d7d9b6dc4655de01e914c3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d064eb0b748c361b76139b1a21d25cec8996e818
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461461"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734785"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Azure Otomasyonu 'nda değişkenleri yönetme
 
@@ -80,11 +80,11 @@ $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
 ```
 
-## <a name="python-2-functions-to-access-variables"></a>Değişkenlere erişmek için Python 2 işlevleri
+## <a name="python-functions-to-access-variables"></a>Değişkenlere erişmek için Python işlevleri
 
-Aşağıdaki tablodaki işlevler, Python 2 runbook 'daki değişkenlere erişmek için kullanılır.
+Aşağıdaki tablodaki işlevler, Python 2 ve 3 runbook 'ta değişkenlere erişmek için kullanılır. Python 3 runbook 'ları Şu anda önizleme aşamasındadır.
 
-|Python 2 Işlevleri|Açıklama|
+|Python Işlevleri|Açıklama|
 |:---|:---|
 |`automationassets.get_automation_variable`|Mevcut bir değişkenin değerini alır. |
 |`automationassets.set_automation_variable`|Mevcut bir değişken için değeri ayarlar. |
@@ -135,9 +135,10 @@ $vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 $vmName = $vmValue.Name
 $vmExtensions = $vmValue.Extensions
 ```
+
 ## <a name="textual-runbook-examples"></a>Metinsel runbook örnekleri
 
-### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Bir değişkenden basit bir değer alma ve ayarlama
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Aşağıdaki örnek, metinsel bir runbook 'ta nasıl değişken ayarlanacağını ve alınacağını gösterir. Bu örnekte, `NumberOfIterations` ve adlı `NumberOfRunnings` bir dize değişkeni olarak adlandırılan tamsayı değişkenlerinin oluşturulması varsayılır `SampleMessage` .
 
@@ -154,7 +155,7 @@ for ($i = 1; $i -le $NumberOfIterations; $i++) {
 Set-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 ```
 
-### <a name="retrieve-and-set-a-variable-in-a-python-2-runbook"></a>Python 2 runbook 'unda bir değişken alma ve ayarlama
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
 Aşağıdaki örnek, bir değişken alma, değişken ayarlama ve Python 2 runbook 'ta varolmayan bir değişken için özel durum işleme işlemlerinin nasıl yapılacağını gösterir.
 
@@ -177,6 +178,32 @@ try:
 except AutomationAssetNotFound:
     print "variable not found"
 ```
+
+# <a name="python-3"></a>[Python 3 karşılaştırması](#tab/python3)
+
+Aşağıdaki örnek, bir değişken alma, değişken ayarlama ve Python 3 runbook (Önizleme) içinde varolmayan bir değişken için özel durum işleme işlemlerinin nasıl yapılacağını gösterir.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a variable
+value = automationassets.get_automation_variable("test-variable")
+print value
+
+# set a variable (value can be int/bool/string)
+automationassets.set_automation_variable("test-variable", True)
+automationassets.set_automation_variable("test-variable", 4)
+automationassets.set_automation_variable("test-variable", "test-string")
+
+# handle a non-existent variable exception
+try:
+    value = automationassets.get_automation_variable("nonexisting variable")
+except AutomationAssetNotFound:
+    print ("variable not found")
+```
+
+---
 
 ## <a name="graphical-runbook-examples"></a>Grafik runbook örnekleri
 

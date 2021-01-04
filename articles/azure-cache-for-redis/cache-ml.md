@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: d9731455edf0afbe4c0768ae40a51316ac71ad94
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537584"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734241"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Redsıs için Azure önbelleği ile bir makine öğrenimi modelini Azure Işlevlerine dağıtma 
 
@@ -41,9 +41,9 @@ Redsıs için Azure önbelleği son derece performans ve ölçeklenebilir bir Az
 ## <a name="create-an-azure-cache-for-redis-instance"></a>Redsıs örneği için Azure önbelleği oluşturma 
 Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevlerine bir makine öğrenimi modeli dağıtabileceksiniz. Bir önbellek örneği oluşturmak için aşağıdaki adımları izleyin.  
 
-1. Azure portal giriş sayfasına gidin veya kenar çubuğu menüsünü açın ve ardından **kaynak oluştur** ' u seçin. 
+1. Azure portal giriş sayfasına gidin veya kenar çubuğu menüsünü açın ve ardından **kaynak oluştur**' u seçin. 
    
-1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği** ' ni seçin.
+1. **Yeni** sayfada **veritabanları** ' nı seçin ve ardından **redsıs için Azure önbelleği**' ni seçin.
 
     :::image type="content" source="media/cache-private-link/2-select-cache.png" alt-text="Redsıs için Azure önbelleği ' ni seçin.":::
    
@@ -71,9 +71,9 @@ Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevleri
 
 1. İsteğe bağlı olarak, **Etiketler** sekmesinde, kaynağı sınıflandırmak istiyorsanız ad ve değeri girin. 
 
-1. **Gözden geçir + oluştur** ’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
+1. **Gözden geçir ve oluştur**’u seçin. Azure 'un yapılandırmanızı doğruladığı, gözden geçir + Oluştur sekmesine götürülürsünüz.
 
-1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur** ' u seçin.
+1. Yeşil doğrulama başarılı iletisi göründüğünde **Oluştur**' u seçin.
 
 Önbelleğin oluşturulması biraz zaman alır. Redsıs **genel bakış** sayfasında ilerlemeyi izleyebilirsiniz. **Durum** **çalışıyor** olarak görüntülendiğinde, önbellek kullanıma hazırdır. 
 
@@ -81,7 +81,7 @@ Herhangi bir temel, standart veya Premium önbellek örneğiyle Azure Işlevleri
 
 Dağıtılmadan önce, modeli bir Web hizmeti olarak çalıştırmak için gerekenleri tanımlamanız gerekir. Aşağıdaki liste, bir dağıtım için gereken temel öğeleri açıklar:
 
-* Bir __giriş betiği__ . Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
+* Bir __giriş betiği__. Bu betik istekleri kabul eder, modeli kullanarak isteği puan eder ve sonuçları döndürür.
 
     > [!IMPORTANT]
     > Giriş betiği modelinize özeldir; gelen istek verilerinin biçimini, modelinizde beklenen verilerin biçimini ve istemcilere döndürülen verilerin biçimini anlamalıdır.
@@ -151,7 +151,7 @@ Ortamlar hakkında daha fazla bilgi için bkz. [eğitim ve dağıtım için orta
 > [!IMPORTANT]
 > IŞLEVLERE dağıtım yaparken, bir __dağıtım yapılandırması__ oluşturmanız gerekmez.
 
-## <a name="install-the-sdk-preview-package-for-functions-support"></a>İşlevler desteği için SDK önizleme paketini yükler
+## <a name="install-the-sdk-preview-package-for-functions-support"></a>Işlevler desteği için SDK önizleme paketini yükler
 
 Azure Işlevlerine yönelik paketler oluşturmak için SDK önizleme paketini yüklemelisiniz.
 
@@ -178,7 +178,7 @@ print(model_package.location)
 Ne zaman `show_output=True` , Docker Build işleminin çıktısı gösterilir. İşlem tamamlandıktan sonra görüntü, çalışma alanınızın Azure Container Registry oluşturulur. Görüntü derlendikten sonra Azure Container Registry konum görüntülenir. Döndürülen konum biçimindedir `<acrinstance>.azurecr.io/package@sha256:<imagename>` .
 
 > [!NOTE]
-> İşlevlerin paketlenmesi Şu anda HTTP tetikleyicilerini, blob Tetikleyicileri ve Service Bus tetikleyicilerini desteklemektedir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Azure işlevleri bağlamaları](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns).
+> Işlevlerin paketlenmesi Şu anda HTTP tetikleyicilerini, blob Tetikleyicileri ve Service Bus tetikleyicilerini desteklemektedir. Tetikleyiciler hakkında daha fazla bilgi için bkz. [Azure işlevleri bağlamaları](../azure-functions/functions-bindings-storage-blob-trigger.md#blob-name-patterns).
 
 > [!IMPORTANT]
 > Görüntü dağıtımında kullanılan konum bilgilerini kaydedin.
@@ -283,14 +283,14 @@ Bu noktada, işlev uygulaması görüntüyü yüklemeye başlar.
 > [!IMPORTANT]
 > Görüntünün yüklenmesi birkaç dakika sürebilir. Azure portal kullanarak ilerlemeyi izleyebilirsiniz.
 
-## <a name="test-azure-function-http-trigger"></a>Test Azure Işlevi HTTP tetikleyicisi 
+## <a name="test-azure-functions-http-trigger"></a>Azure Işlevleri HTTP tetikleyicisini test et 
 
-Şimdi Azure Işlevi HTTP tetikleyicimizi çalıştırıp test edeceğiz.
+Şimdi Azure Işlevleri HTTP tetikleyicimizi çalıştırıp test edeceğiz.
 
-1. Azure portal Azure Işlev uygulamanıza gidin.
-1. Geliştirici altında **kod + test** ' i seçin. 
+1. Azure portal işlev uygulamanıza gidin.
+1. Geliştirici altında **kod + test**' i seçin. 
 1. Sağ taraftaki **giriş** sekmesini seçin. 
-1. **Çalıştır** düğmesine tıklayarak Azure işlevi http tetikleyicisini test edin. 
+1. **Çalıştır** düğmesine tıklayarak Azure işlevleri http tetikleyicisini test edin. 
 
 Bir modeli, Redsıs örneği için Azure önbelleğini kullanarak bir işlev uygulaması olarak Azure Machine Learning başarıyla dağıttınız. Aşağıdaki bölümdeki bağlantılara giderek Red. için Azure önbelleği hakkında daha fazla bilgi edinin.
 
@@ -305,17 +305,17 @@ Aksi takdirde, hızlı başlangıç ile işiniz bittiğinde, ücretlerden kaçı
 
 ### <a name="to-delete-a-resource-group"></a>Kaynak grubunu silmek için
 
-1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları** ’nı seçin.
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kaynak grupları**’nı seçin.
 
-2. **Ada göre filtrele...** kutusuna kaynak grubunuzun adını girin. Sonuç listesindeki kaynak grubunuzda **...** düğmesini ve sonra **Kaynak grubunu sil** ’i seçin.
+2. **Ada göre filtrele...** kutusuna kaynak grubunuzun adını girin. Sonuç listesindeki kaynak grubunuzda **...** düğmesini ve sonra **Kaynak grubunu sil**’i seçin.
 
-Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve ardından **Sil** ’i seçin.
+Kaynak grubunun silinmesini onaylamanız istenir. Onaylamak için kaynak grubunuzun adını yazın ve ardından **Sil**’i seçin.
 
 Birkaç dakika sonra kaynak grubu ve bu gruptaki kaynakların tümü silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar 
 
 * [Redsıs Için Azure önbelleği](./cache-overview.md) hakkında daha fazla bilgi edinin
-* [İşlevler belgelerindeki](../azure-functions/functions-create-function-linux-custom-image.md) işlevlerinizi uygulamanızı yapılandırma hakkında bilgi edinin.
+* [İşlevler](../azure-functions/functions-create-function-linux-custom-image.md) belgelerinde işlev uygulamanızı yapılandırmayı öğrenin.
 * [API Başvurusu](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
 * [Redsıs Için Azure önbelleği kullanan bir Python uygulaması](./cache-python-get-started.md) oluşturma

@@ -6,12 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: references_regions
+ms.openlocfilehash: 78ce082c6e90cfc9c67ddcfa00926d292b9ed7ea
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444769"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740479"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Konuk sistem durumunu VM'ler için Azure İzleyici etkinleştirme (Önizleme)
 VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örneklendiği bir dizi performans ölçümlerine göre tanımlanan bir sanal makinenin durumunu görüntülemenizi sağlar. Bu makalede, aboneliğinizde bu özelliğin nasıl etkinleştirileceği ve her sanal makine için konuk izlemenin nasıl etkinleştirileceği açıklanır.
@@ -20,31 +21,51 @@ VM'ler için Azure İzleyici Konuk sistem durumu, düzenli aralıklarla örnekle
 VM'ler için Azure İzleyici Konuk sistem durumu, genel önizlemede aşağıdaki sınırlamalara sahiptir:
 
 - Şu anda yalnızca Azure sanal makineleri desteklenmektedir. Sunucular için Azure Arc Şu anda desteklenmiyor.
-- Sanal makinenin aşağıdaki işletim sistemlerinden birini çalıştırması gerekir: 
+
+
+## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
+Sanal makinenin aşağıdaki işletim sistemlerinden birini çalıştırması gerekir: 
+
   - Ubuntu 16,04 LTS, Ubuntu 18,04 LTS
   - Windows Server 2012 veya üzeri
-- Sanal makinenin aşağıdaki bölgelerden birinde bulunması gerekir:
-  - Doğu Avustralya
-  - Avustralya Güneydoğu
-  - Orta Hindistan
-  - Central US
-  - Doğu ABD
-  - Doğu ABD 2
-  - EUAP Doğu ABD 2
-  - Almanya Orta Batı
-  - Doğu Japonya
-  - Orta Kuzey ABD
-  - Kuzey Avrupa
-  - Orta Güney ABD
-  - Güneydoğu Asya
-  - Güney Birleşik Krallık
-  - West Europe
-  - Batı ABD
-  - Batı ABD 2
-- Log Analytics çalışma alanı aşağıdaki bölgelerden birinde bulunmalıdır:
-  - Doğu ABD
-  - EUAP Doğu ABD 2
-  - Batı Avrupa Bölgesi
+
+## <a name="supported-regions"></a>Desteklenen bölgeler
+
+Sanal makinenin aşağıdaki bölgelerden birinde bulunması gerekir:
+
+- Orta Avustralya
+- Doğu Avustralya
+- Güneydoğu Avustralya
+- Orta Hindistan
+- Orta ABD
+- Doğu Asya
+- Doğu ABD
+- Doğu ABD 2
+- EUAP Doğu ABD 2
+- Almanya Orta Batı
+- Doğu Japonya
+- Orta Kuzey ABD
+- Kuzey Avrupa
+- Orta Güney ABD
+- Güneydoğu Asya
+- Güney Birleşik Krallık
+- Orta Batı ABD
+- West Europe
+- Batı ABD
+- Batı ABD 2
+
+
+Log Analytics çalışma alanı aşağıdaki bölgelerden birinde bulunmalıdır:
+
+- Central US
+- Doğu ABD
+- Doğu ABD 2
+- EUAP Doğu ABD 2
+- Kuzey Avrupa
+- Güneydoğu Asya
+- Güney Birleşik Krallık
+- Batı Avrupa Bölgesi
+- Batı ABD 2
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -52,9 +73,8 @@ VM'ler için Azure İzleyici Konuk sistem durumu, genel önizlemede aşağıdaki
 - Ekleme adımlarının yürütüldüğü kullanıcının, sanal makine ve veri toplama kuralının bulunduğu aboneliğe en az katkıda bulunan düzeyinde erişimi olmalıdır.
 - Gerekli Azure Kaynak sağlayıcılarının aşağıdaki bölümde açıklandığı gibi kayıtlı olması gerekir.
 
-
 ## <a name="register-required-azure-resource-providers"></a>Gerekli Azure Kaynak sağlayıcılarını kaydetme
-Aşağıdaki Azure Kaynak sağlayıcılarının, VM'ler için Azure İzleyici Konuk sistem durumunu etkinleştirmek üzere aboneliğiniz için kayıtlı olması gerekir. 
+Aşağıdaki Azure kaynak sağlayıcıları, VM'ler için Azure İzleyici Konuk sistem durumunu etkinleştirmek üzere aboneliğiniz için kaydedilir. 
 
 - Microsoft. WorkloadMonitor
 - Microsoft. Insights

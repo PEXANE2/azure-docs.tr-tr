@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c9ee57baf63867e4dca4236d484321586cfb3b17
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 14d15f54befba162b071b40e06e589f980708fd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862352"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740496"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Python 'da (Önizleme), ML modellerini & öngörülerini açıklamak için yorumlamalar paketini kullanın
 
@@ -296,41 +296,7 @@ Aşağıdaki örnek, `ExplanationClient` uzak çalıştırmalar için model yoru
 
 ## <a name="visualizations"></a>Görsel öğeler
 
-Yerel Jupyter Notebook açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz.
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>Tüm model davranışını anlama (genel açıklama) 
-
-Aşağıdaki çizimler, eğitilen modelin, tahminlerinin ve açıklamalarıyla birlikte genel görünümünü sağlar.
-
-|ZF|Description|
-|----|-----------|
-|Veri araştırması| Tahmin değerleriyle birlikte veri kümesine genel bir bakış görüntüler.|
-|Küresel önem derecesi|, Modelin genel üst K (yapılandırılabilir K) önemli özelliklerini göstermek için tek tek veri noktalarının Özellik önem değerlerini toplar. Temel alınan modelin genel davranışının anlaşılmasına yardımcı olur.|
-|Açıklama araştırması|Bir özelliğin modelin tahmin değerlerinde bir değişikliği nasıl etkilediğini veya tahmin değerlerinin olasılığını gösterir. Özellik etkileşiminin etkisini gösterir.|
-|Özet önem derecesi|Her bir özelliğin tahmin değeri üzerindeki etkisinin dağıtımını göstermek için tüm veri noktalarında bireysel Özellik önem değerlerini kullanır. Bu diyagramı kullanarak, özellik değerlerinin tahmin değerlerini etkilediği yönü inceleyebilirsiniz.
-|
-
-[![Görselleştirme panosu genel](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>Ayrı tahminleri anlama (yerel açıklama) 
-
-Tüm veri noktaları için tek tek özellik önem kümesini, genel çizbir veri noktasına tıklayarak yükleyebilirsiniz.
-
-|ZF|Description|
-|----|-----------|
-|Yerel önem derecesi|Tek bir tahmin için en üstteki K (yapılandırılabilir K) önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
-|Perturbation Araştırması (Analize)|Seçili veri noktasının özellik değerlerinde değişikliklere izin verir ve sonuç olarak tahmini değişiklikleri gözlemleyin.|
-|Bireysel koşullu beklenti (buz)| Özellik değeri değişikliklerinin en küçük değerden en büyük değere değiştirilmesine izin verir. Bir özellik değiştiğinde veri noktasının öngörme şeklini göstermeye yardımcı olur.|
-
-[![Görselleştirme Panosu yerel özellik önemi](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![Görselleştirme panosu özelliği Perturbation](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![Görselleştirme panosu buz çizimleri](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-Görselleştirme panosunu yüklemek için aşağıdaki kodu kullanın.
+Yerel Jupyter Notebook açıklamaları indirdikten sonra, modelinizi anlamak ve yorumlamak için görselleştirme panosunu kullanabilirsiniz. Jupyter Notebook görselleştirme panosu pencere öğesini yüklemek için aşağıdaki kodu kullanın:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -338,11 +304,58 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
+Görselleştirme, hem mühendislik uygulanan hem de ham özelliklerde açıklamaları destekler. Ham açıklamalar orijinal veri kümesindeki özellikleri temel alır ve uygulanan açıklamalar, özellik Mühendisliği uygulanmış olan veri kümesindeki özelliklere dayanır.
+
+Özgün veri kümesiyle ilgili bir modeli yorumlamaya çalışırken, her bir özellik önem derecesi özgün veri kümesindeki bir sütuna karşılık geldiği için ham açıklamaları kullanmanız önerilir. Bir kategorik özellikten tek tek kategorilerin etkisini incelerken, uygulanan açıklamaları yararlı olabilecek bir senaryo. Kategorik bir özelliğe tek yönlü bir kodlama uygulanmışsa, sonuçta elde edilen mühendislik uygulanan açıklamalar kategori başına farklı bir önem derecesi, tek başına mühendislik uygulanan bir özellik için de içerecektir. Bu, veri kümesinin hangi bölümünün modele en çok bilgilendirici olduğunu daraltdığınızda yararlı olabilir.
+
+> [!NOTE]
+> Uygulanan ve ham açıklamalar sırayla hesaplanır. İlk olarak, uygulanan bir açıklama model ve korleştirme işlem hattı temel alınarak oluşturulur. Daha sonra ham açıklama, aynı RAW özelliğinden gelen mühendislik uygulanmış özelliklerin önemini toplayarak, bu uygulanan açıklamaya göre oluşturulur.
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>Veri kümesi katmanları oluşturma, düzenleme ve görüntüleme
+
+En üstteki şeritte, modelinizdeki ve verilerinizde genel istatistikler gösterilmektedir. Bu tanımlı alt gruplar genelinde modelinizin performansını ve açıklamalarını araştırmak veya karşılaştırmak için verilerinizi veri kümesi işbirliği veya alt gruplar halinde dilimleyebilir ve bu verilere aktarabilirsiniz. Veri kümesi istatistiklerinizi ve açıklamalarını bu alt gruplar genelinde karşılaştırarak, bir grupta neden olası hataların meydana gelmediğini bir fikir edinebilirsiniz.
+
+[![Veri kümesi bozar oluşturma, düzenlememe ve görüntüleme](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>Tüm model davranışını anlama (genel açıklama) 
+
+Açıklama panosunun ilk üç sekmesi, öngörülerinin ve açıklamalarıyla birlikte eğitilen modelin genel analizini sağlar.
+
+#### <a name="model-performance"></a>Model performansı
+Tahmin değerlerinizin dağıtımını ve model performans ölçümlerinizin değerlerini inceleyerek modelinizin performansını değerlendirin. Ayrıca, veri kümenizin farklı alt grupları veya alt gruplarının bir karşılaştırılma analizine bakarak modelinize daha fazla araştırma yapabilirsiniz. Farklı boyutlarda kesmek için y değeri ve x değeri boyunca filtreler seçin. Doğruluk, duyarlık, geri çekme, yanlış pozitif ücret (FPR) ve yanlış negatif oran (FNR) gibi ölçümleri görüntüleyin.
+
+[![Açıklama görselleştirmesinde model performansı sekmesi](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>Veri kümesi Gezgini
+Verilerinizi farklı boyutlarda dilimlemek için X, Y ve renk eksenleri üzerinde farklı filtreler seçerek veri kümesi istatistiklerinizi keşfedebilirsiniz. Tahmin edilen sonuç, veri kümesi özellikleri ve hata grupları gibi filtrelerle veri kümesi istatistiklerini çözümlemek için yukarıdaki veri kümesi katmanları oluşturun. Grafik türlerini değiştirmek için grafiğin sağ üst köşesindeki dişli simgesini kullanın.
+
+[![Açıklama görselleştirmesinde veri kümesi Gezgini sekmesi](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>Toplu özellik önemi
+Genel model tahminlerinizi etkileyen (genel açıklama olarak da bilinir) en önemli özellikleri bulun. Azalan Özellik önem değerlerini göstermek için kaydırıcıyı kullanın. Özellik önem değerlerini yan yana görmek için en fazla üç Kohortlar seçin. Seçili özelliğin değerlerinin aşağıdaki bağımlılık çiziminde nasıl çalıştığını görmek için grafikteki Özellik çubuklarının herhangi birine tıklayın.
+
+[![Açıklama görselleştirmesinde Birleşik Özellik önemi sekmesi](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>Ayrı tahminleri anlama (yerel açıklama) 
+
+Açıklama sekmesinin dördüncü sekmesi, bireysel bir DataPoint ve bireysel özellikler için detaya gitmenizi sağlar. Ana dağılım çiziminde her bir veri noktasına tıklayarak veya sağdaki panel sihirbazında belirli bir DataPoint seçerek herhangi bir veri noktası için bireysel Özellik önem çizimi ' ni yükleyebilirsiniz.
+
+|ZF|Açıklama|
+|----|-----------|
+|Bireysel Özellik önemi|Tek bir tahmine yönelik üst k önemli özellikleri gösterir. Belirli bir veri noktasındaki temeldeki modelin yerel davranışını göstermeye yardımcı olur.|
+|What-If Analizi|Seçili gerçek veri noktasının özellik değerlerinde değişikliklere izin verir ve yeni özellik değerleriyle kuramsal bir DataPoint oluşturarak tahmin değerindeki sonuç değişikliklerini gözlemleyin.|
+|Bireysel koşullu beklenti (buz)|Özellik değeri değişikliklerinin en küçük değerden en büyük değere değiştirilmesine izin verir. Bir özellik değiştiğinde veri noktasının öngörme şeklini göstermeye yardımcı olur.|
+
+[![Açıklama panosundaki bireysel Özellik önem ve durum sekmesi](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> Bunlar, birçok yaklaştırma göre açıklamaları sağlar ve tahmine dayalı olarak "Neden" değildir. Causal çıkarımı için kesin matematik sağlamlığı olmadan, kullanıcıların What-If aracının Özellik perturuna göre gerçek yaşam kararları almasını tavsiye ettik. Bu araç öncelikle modelinizi ve hata ayıklamayı anlamak içindir.
+
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio 'da görselleştirme
 
-[Uzaktan YORUMSİZ](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) adımları tamamlarınız (üretilen açıklama Azure Machine Learning çalıştırma geçmişine yüklenirken), görselleştirme panosunu [Azure Machine Learning Studio](https://ml.azure.com)'da görüntüleyebilirsiniz. Bu Pano, yukarıda açıklanan görselleştirme panosunun daha basit bir sürümüdür (.net 'te gerçek zamanlı hesaplamalar gerçekleştirebilecek bir etkin işlem olmadığından, açıklama araştırması ve buz çizimleri devre dışı bırakılır).
+[Uzaktan YORUMSİZ](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) adımları tamamlarınız (üretilen açıklama Azure Machine Learning çalıştırma geçmişine yüklenirken), görselleştirme panosunu [Azure Machine Learning Studio](https://ml.azure.com)'da görüntüleyebilirsiniz. Bu Pano, yukarıda açıklanan görselleştirme panosunun daha basit bir sürümüdür. Azure Machine Learning Studio 'da gerçek zamanlı hesaplamalar gerçekleştirebilen etkin bir işlem olmadığından What-If DataPoint oluşturma ve buz çizimleri devre dışı bırakılmıştır.
 
-Veri kümesi, genel ve yerel açıklamalar kullanılabiliyorsa, veriler sekmelerin tamamını (Perturbation araştırması ve buz hariç) doldurur. Yalnızca genel bir açıklama varsa, Özet önem derecesi sekmesi ve tüm yerel açıklama sekmeleri devre dışıdır.
+Veri kümesi, genel ve yerel açıklamalar varsa, veriler sekmelerin tümünü doldurur. Yalnızca genel bir açıklama varsa, bireysel Özellik önem düzeyi sekmesi devre dışı bırakılır.
 
 Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu yollardan birini izleyin:
 
@@ -351,7 +364,7 @@ Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu 
   1. Bu deneyteki tüm çalıştırmaları görüntülemek için belirli bir deneme seçin.
   1. Bir çalıştırma seçin ve ardından **açıklamalar** sekmesini açıklama görselleştirme panosu ' na tıklayın.
 
-   [![Görselleştirme Panosu yerel özellik önem derecesi denemeleri içinde AzureML](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![Denemeleri içinde AzureML Studio 'daki toplu özellik önem derecesine sahip görselleştirme panosu](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * **Modeller** bölmesi
   1. [Azure Machine Learning ile modelleri dağıtma](./how-to-deploy-and-where.md)bölümündeki adımları izleyerek orijinal modelinizi kaydettiniz, görüntülemek için sol bölmedeki **modeller** ' ı seçebilirsiniz.
@@ -359,7 +372,7 @@ Azure Machine Learning Studio 'daki görselleştirme panosuna erişmek için bu 
 
 ## <a name="interpretability-at-inference-time"></a>Çıkarımı zamanında yorumlenebilirlik
 
-Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bireysel Özellik önem değerlerini (yerel açıklama) sağlamak üzere çıkarımı zaman içinde kullanabilirsiniz. Ayrıca, çıkarım performansını artırmak için daha hafif Puanlama explainers sunuyoruz. Daha hafif bir Puanlama açıklama dağıtma işlemi, model dağıtmaya benzer ve aşağıdaki adımları içerir:
+Açıklama 'yi özgün modelle birlikte dağıtabilir ve tüm yeni DataPoint için bireysel Özellik önem değerlerini (yerel açıklama) sağlamak üzere çıkarımı zaman içinde kullanabilirsiniz. Ayrıca, şu anda yalnızca Azure Machine Learning SDK sürümünde desteklenen, çıkarım performansını artırmak için daha fazla ağırlık Puanlama explainers sunuyoruz. Daha hafif bir Puanlama açıklama dağıtma işlemi, model dağıtmaya benzer ve aşağıdaki adımları içerir:
 
 1. Bir açıklama nesnesi oluşturun. Örneğin, şunu kullanabilirsiniz `TabularExplainer` :
 
@@ -547,6 +560,17 @@ Açıklama 'yi özgün modelle birlikte dağıtabilir ve yeni DataPoint için bi
 1. Temizleyin.
 
    Dağıtılmış bir Web hizmetini silmek için kullanın `service.delete()` .
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+* **Seyrek veriler desteklenmez**: model açıklama panosu çok sayıda özellik ile önemli ölçüde yavaşlar/yavaşlar, bu nedenle şu anda seyrek veri biçimini desteklemiyoruz. Ayrıca, genel bellek sorunları büyük veri kümeleri ve çok sayıda özellik ile ortaya çıkar. 
+
+* **Model açıklamaları ile desteklenmeyen tahmin modelleri**: Bcnforecaster, oto ARIMA, Prophet, üs Alyumuşatma, ortalama, Naive, mevsimlik ve mevsimlik, en iyi model olarak aşağıdaki algoritmaları önermek için, denemeleri, en iyi model açıklaması. Oto ve tahmin için açıklamaları destekleyen regresyon modelleri vardır. Ancak, açıklama panosunda "tekil Özellik önemi" sekmesi, veri işlem hatlarında karmaşıklık nedeniyle tahmin için desteklenmez.
+
+* **Veri dizini Için yerel açıklama**: Açıklama panosu, Pano verileri rasgele şekilde örnekleyecek şekilde, bu veri kümesi 5000 veri noktasından büyükse, yerel önem değerlerinin orijinal doğrulama veri kümesinden bir satır tanımlayıcısıyla ilişkilendirilmesi desteklenmez. Ancak, panoda her bir DataPoint için ham veri kümesi özellik değerleri, her bir özellik önem derecesi sekmesinde görüntülenir. Kullanıcılar, ham veri kümesi özellik değerleriyle eşleşen yerel kaynakları özgün veri kümesine geri eşleyebilir. Doğrulama veri kümesi boyutu 5000 örnek ise, `index` AzureML Studio 'daki Özellik doğrulama veri kümesindeki dizine karşılık gelir.
+
+* **Studio 'Da ne durum/buz çizimleri desteklenmez**: What-If ve tek koşullu beklentiler (buz) çizimleri, karşıya yüklenen açıklamanın tahmine dayalı özelliklerin ve olasılıkların yeniden hesaplanması için etkin bir işlem gerektirdiğinden, açıklamalar sekmesinin altında Azure Machine Learning Studio 'da desteklenmez. SDK kullanılarak pencere öğesi olarak çalıştırıldığında jupi not defterlerinde Şu anda desteklenmektedir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

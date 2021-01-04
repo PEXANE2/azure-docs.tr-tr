@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 572c657dd44db73b1401c72f0750fe8e000985ac
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 8d0d4726763e36bd889c2f564d116d454b2f62b9
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734363"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740615"
 ---
 # <a name="connect-your-non-azure-machines-to-security-center"></a>Azure dışı makinelerinizi Güvenlik Merkezi 'ne bağlama
 
@@ -139,4 +139,4 @@ Tebrikler! Artık Azure ve Azure dışı makinelerinizi tek bir yerde görebilir
 
 Bu sayfada Azure dışı makinelerinizi Azure Güvenlik Merkezi 'ne nasıl ekleyeceğiniz gösterilmektedir. Durumlarını izlemek için aşağıdaki sayfada açıklandığı gibi envanter araçlarını kullanın:
 
-- [Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin](asset-inventory.md)
+- [Varlık envanteriyle kaynaklarınızı bulun ve yönetin](asset-inventory.md)

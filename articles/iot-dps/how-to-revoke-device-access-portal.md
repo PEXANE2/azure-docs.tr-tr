@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 120446472038076e34f62b47ba79348e5de8b972
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c75fcd1fd20e41df5018fcaa07fe83051d7e5f1a
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010937"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740377"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz kaydetme
 
@@ -26,7 +26,7 @@ Cihaz sağlama hizmeti 'nde kayıt, bir cihazın [sağlanmasını](about-iot-dps
 
 ## <a name="disallow-devices-by-using-an-individual-enrollment-entry"></a>Bireysel kayıt girişi kullanarak cihazlara izin verme
 
-Bireysel kayıtlar tek bir cihaza uygulanır ve kanıtlama mekanizması olarak X. 509.440 sertifikalarını veya SAS belirteçlerini (gerçek ya da sanal TPM 'de) kullanabilir. (Bu, kanıtlama mekanizması olarak SAS belirteçleri kullanan cihazlar yalnızca tek bir kayıt üzerinden sağlanabilir.) Bireysel kaydına sahip bir cihaza izin vermek için kayıt girişini devre dışı bırakabilir veya silebilirsiniz. 
+Bireysel kayıtlar tek bir cihaza uygulanır ve X. 509.952 sertifikalarını, TPM onay anahtarlarını (gerçek veya sanal TPM) veya kanıtlama mekanizması olarak SAS belirteçlerini kullanabilir. Bireysel kaydına sahip bir cihaza izin vermek için kayıt girişini devre dışı bırakabilir veya silebilirsiniz. 
 
 Kayıt girişini devre dışı bırakarak cihaza geçici olarak izin vermek için: 
 

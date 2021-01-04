@@ -5,18 +5,18 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 0af9d6906e038a4b9285a2c302fc0c98345fdbd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d957c5d6521010c7393e2297be16cd7bef41c35f
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90023763"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724077"
 ---
 # <a name="use-the-session-management-rest-api"></a>Oturum yönetimi REST API’yi kullanma
 
-Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum*oluşturmanız gerekir. Her oturum, Azure 'da ayrılan bir sanal makineye (VM) karşılık gelir ve bir istemci cihazının bağlanmasını bekliyor. Bir cihaz bağlandığı zaman, VM istenen verileri işler ve sonucu bir video akışı olarak sunar. Oturum oluşturma sırasında, hangi tür sunucuyu çalıştırmak istediğinizi tercih edersiniz ve bu da fiyatlandırmayı belirler. Oturum artık gerekmiyorsa, durdurulmalıdır. El ile durdurulmamışsa, oturumun *kira süresi* sona erdiğinde otomatik olarak kapatılır.
+Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum* oluşturmanız gerekir. Her oturum, Azure 'da ayrılan bir sanal makineye (VM) karşılık gelir ve bir istemci cihazının bağlanmasını bekliyor. Bir cihaz bağlandığı zaman, VM istenen verileri işler ve sonucu bir video akışı olarak sunar. Oturum oluşturma sırasında, hangi tür sunucuyu çalıştırmak istediğinizi tercih edersiniz ve bu da fiyatlandırmayı belirler. Oturum artık gerekmiyorsa, durdurulmalıdır. El ile durdurulmamışsa, oturumun *kira süresi* sona erdiğinde otomatik olarak kapatılır.
 
-*RenderingSession.ps1*adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
+*RenderingSession.ps1* adlı *betikler* klasöründeki [ARR örnekleri deposunda](https://github.com/Azure/azure-remote-rendering) , hizmetimizin kullanımını gösteren bir PowerShell betiği sağlıyoruz. Betik ve yapılandırması burada açıklanmıştır: [örnek PowerShell betikleri](../samples/powershell-example-scripts.md)
 
 > [!TIP]
 > Bu sayfada listelenen PowerShell komutları birbirini tamamlamak için tasarlanmıştır. Tüm komut dosyalarını aynı PowerShell komut isteminde sırayla çalıştırırsanız, bunların üzerine inşa edilir.
@@ -25,7 +25,7 @@ Azure uzaktan Işleme işlevselliğini kullanmak için bir *oturum*oluşturmanı
 
 İsteklerin gönderileceği temel URL 'Ler için [kullanılabilir bölgelerin listesine](../reference/regions.md) bakın.
 
-Aşağıdaki örnek betikler için *westus2*bölgesini seçtik.
+Aşağıdaki örnek betikler için *westus2* bölgesini seçtik.
 
 ### <a name="example-script-choose-an-endpoint"></a>Örnek betik: bir uç nokta seçin
 
@@ -35,13 +35,16 @@ $endPoint = "https://remoterendering.westus2.mixedreality.azure.com"
 
 ## <a name="accounts"></a>Hesaplar
 
-Uzaktan Işleme hesabınız yoksa, [bir tane oluşturun](create-an-account.md). Her kaynak, oturum API 'Leri boyunca kullanılan bir *AccountID*tarafından tanımlanır.
+Uzaktan Işleme hesabınız yoksa, [bir tane oluşturun](create-an-account.md). Her kaynak, oturum API 'Leri boyunca kullanılan bir *AccountID* tarafından tanımlanır.
 
-### <a name="example-script-set-accountid-and-accountkey"></a>Örnek betik: AccountID ve accountKey ayarla
+### <a name="example-script-set-accountid-accountkey-and-account-domain"></a>Örnek betik: hesap kimliği, accountKey ve hesap etki alanını ayarla
+
+Hesap etki alanı, uzaktan işleme hesabının konumudur. Bu örnekte, hesabın konumu bölge *eastus*' dir.
 
 ```PowerShell
 $accountId = "********-****-****-****-************"
 $accountKey = "*******************************************="
+$accountDomain = "eastus.mixedreality.azure.com"
 ```
 
 ## <a name="common-request-headers"></a>Ortak istek üstbilgileri
@@ -52,7 +55,7 @@ $accountKey = "*******************************************="
 
 ```PowerShell
 [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-$webResponse = Invoke-WebRequest -Uri "https://sts.mixedreality.azure.com/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
+$webResponse = Invoke-WebRequest -Uri "https://sts.$accountDomain/accounts/$accountId/token" -Method Get -ContentType "application/json" -Headers @{ Authorization = "Bearer ${accountId}:$accountKey" }
 $response = ConvertFrom-Json -InputObject $webResponse.Content
 $token = $response.AccessToken;
 ```
@@ -111,7 +114,7 @@ RawContentLength  : 52
 
 ### <a name="example-script-store-sessionid"></a>Örnek betik: Store SessionID
 
-Yukarıdaki istekten gelen yanıt, tüm izleme istekleri için gereken bir **SessionID**içerir.
+Yukarıdaki istekten gelen yanıt, tüm izleme istekleri için gereken bir **SessionID** içerir.
 
 ```PowerShell
 $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
@@ -122,7 +125,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 Mevcut oturumların parametrelerini sorgulamak veya değiştirmek için birkaç komut vardır.
 
 > [!CAUTION]
-> Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. Bu örnekte durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik**bir gecikme olmalıdır.
+> Tüm REST çağrılarında olduğu gibi, bu komutların çok sık gönderilmesi sunucunun bu hatayı kısıtlayacak ve geri döndürmesine neden olur. Bu örnekte durum kodu 429 ' dir ("çok fazla istek"). Thumb kuralı olarak, **sonraki çağrılar arasında 5-10 saniyelik** bir gecikme olmalıdır.
 
 ### <a name="update-session-parameters"></a>Oturum parametrelerini güncelleştirme
 

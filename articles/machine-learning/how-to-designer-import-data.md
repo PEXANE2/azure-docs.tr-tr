@@ -10,12 +10,12 @@ ms.author: keli19
 ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 5569b625b8f0c4ba890c0cd5b1700ca6fe83d968
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591997"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739867"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısına veri aktarma
 
@@ -38,7 +38,7 @@ Ayrıca, herhangi bir tasarımcı modülünün çıkışını bir veri kümesi o
 
 1. Kaydetmek istediğiniz verilerin çıkışı olan modülü seçin.
 
-1. Özellikler bölmesinde, **çıktılar + Günlükler**  >  **kayıt veri kümesi** ' ni seçin.
+1. Özellikler bölmesinde, **çıktılar + Günlükler**  >  **kayıt veri kümesi**' ni seçin.
 
     ![Register DataSet seçeneğine nasıl gidebileceğiniz gösteren ekran görüntüsü](media/how-to-designer-import-data/register-dataset-designer.png)
 
@@ -47,8 +47,7 @@ Modül çıkış verileri tablosal biçimindeyse, çıktıyı bir **dosya veri k
  - **Dosya veri kümesi** , modülün çıkış klasörünü dosya veri kümesi olarak kaydeder. Çıktı klasörü, tasarımcı 'nın dahili olarak kullandığı bir veri dosyası ve meta dosyaları içerir. Tasarımcıda kayıtlı veri kümesini kullanmaya devam etmek istiyorsanız bu seçeneği belirleyin. 
 
  - **Tablo veri kümesi** , yalnızca modülün çıkış veri dosyasını tablo veri kümesi olarak kaydeder. Bu biçim, örneğin otomatikleştirilmiş Machine Learning veya Python SDK 'Sı gibi diğer araçlarla kolayca tüketilebilir. Kayıtlı veri kümesini Tasarımcı dışında kullanmayı planlıyorsanız bu seçeneği belirleyin.  
-
-
+ 
 
 ### <a name="use-a-dataset"></a>Veri kümesi kullanma
 
@@ -62,6 +61,14 @@ Bir dosya veri kümesini kaydettiğinizde, veri kümesinin çıkış bağlantı 
 > [!NOTE]
 > Tasarımcı [veri kümesi sürümü oluşturmayı](how-to-version-track-datasets.md)destekler. Veri kümesi modülünün Özellik panelinde veri kümesi sürümünü belirtin.
 
+### <a name="limitations"></a>Sınırlamalar 
+
+- Şu anda tasarımcıda tablo veri kümesini görselleştirebilirsiniz. Tasarımcı dışında bir dosya veri kümesi kaydettiğinizde, tasarımcı tuvalinde görselleştirilemez.
+- Veri kümeniz sanal ağ (VNet) içinde depolanır. Görselleştirmek istiyorsanız, veri deposundaki çalışma alanı yönetilen kimliğini etkinleştirmeniz gerekir.
+    1. İlgili veri deposuna gidin ve **kimlik bilgilerini güncelleştir** 
+     :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="güncelleştirme kimlik bilgilerini"::: seçin
+    1. Çalışma alanı yönetilen kimliğini etkinleştirmek için **Evet** ' i seçin.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Çalışma alanı yönetilen kimliğini etkinleştir":::
 
 ## <a name="import-data-using-the-import-data-module"></a>Verileri Içeri aktarma modülünü kullanarak içeri aktarma
 

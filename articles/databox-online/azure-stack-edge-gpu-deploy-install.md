@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 12/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 52f0bcbb332b5d5e47440accff9d9895dcef7056
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 830e0a8733d3f5a49cede09b331dc0298ee1ce4d
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449366"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734721"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Öğretici: GPU ile Azure Stack Edge Pro 'Yu yükler
 
@@ -22,7 +22,7 @@ Bu öğreticide, GPU ile Azure Stack Edge Pro fiziksel cihazının nasıl yükle
 
 Yüklemenin tamamlanması iki saat sürebilir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Cihazı kutusundan çıkarma
@@ -159,14 +159,14 @@ Demiryolu Kit derlemesini yüklemek için bileşenleri bulun:
 
 Kabloları yönlendirin ve sonra cihazınızı bağlayın. Aşağıdaki yordamlarda Azure Stack Edge Pro cihazınızın güç ve ağ için nasıl kablo yapılacağı açıklanmaktadır.
 
-Cihazınızı kablolamayı başlatmaya başlamadan önce şunlar gerekir:
+Cihazınızı kablolamayı başlatmaya başlamadan önce aşağıdaki işlemleri yapmanız gerekir:
 
 - Azure Stack Edge Pro fiziksel cihazınız, paketten çıkarılan ve takılabilir.
 - İki güç kablosu.
 - Yönetim arabirimine bağlamak için en az bir 1-GbE RJ-45 ağ kablosu. Cihazda biri yönetim ve diğeri veri olmak üzere iki 1-GbE ağ arabirimi vardır.
 - Yapılandırılacak her veri ağı arabirimi için bir 25-GbE SFP+ bakır kablo. Bağlantı noktası 2, bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 arasındaki en az bir veri ağı arabiriminin Internet 'e bağlanması gerekir (Azure bağlantısı ile).  
 - İki güç dağıtımı birimine erişim (önerilir).
-- En az 1 1-GbE ağ anahtarı, veri için bir 1-GbE ağ arabirimini Internet 'e bağlamak için. Bağlı anahtar en az 1-GbE değilse, yerel Web Kullanıcı arabirimine erişilemeyecektir. Veriler için 25/10 GbE arabirimini kullanıyorsanız, 25 GbE veya 10-GbE bir anahtara ihtiyacınız olacaktır. 
+- En az 1 1-GbE ağ anahtarı, veri için bir 1-GbE ağ arabirimini Internet 'e bağlamak için. Bağlı anahtar en az 1 GbE değilse, yerel Web Kullanıcı arabirimine erişilemeyecektir. Veriler için 25/10-GbE arabirimi kullanılıyorsa, 25-GbE veya 10-GbE anahtarına ihtiyacınız olacaktır.
 
 > [!NOTE]
 > - Yalnızca bir veri ağı arabirimi bağlıyorsanız, Azure 'a veri göndermek için bağlantı noktası 3, bağlantı noktası 4, bağlantı noktası 5 veya bağlantı noktası 6 gibi bir 25/10-GbE ağ arabirimi kullanmanızı öneririz. 
@@ -186,14 +186,14 @@ Azure Stack Edge Pro cihazınızda:
     - 10 Gbps arabirim olarak da kullanılabilen 4 25 Gbps arabirim.
     - Bir temel kart yönetim denetleyicisi (BMC).
 
-- Arka düzlemi 6 bağlantı noktasına karşılık gelen iki ağ kartına sahiptir:
+- Arka düzlemi altı bağlantı noktasına karşılık gelen iki ağ kartına sahiptir:
 
-    - **Özel Microsoft Qlogic Cavium 25G NDC bağdaştırıcısı** -bağlantı noktası 4 ile bağlantı noktası 1.
+    - **Özel Microsoft `Qlogic` Cavium 25G NDC bağdaştırıcısı** -bağlantı noktası 1 ile bağlantı noktası 4.
     - **Mellanox Dual Port 25G ConnectX-4 kanal ağ bağdaştırıcısı** -bağlantı noktası 5 ve bağlantı noktası 6.
 
 Bu ağ kartlarında desteklenen kabloların, anahtarların ve alıcı sayısının tam listesi için şuraya gidin:
 
-- [Qlogic Cavium 25G NDC bağdaştırıcısı birlikte çalışabilirlik matrisi](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
+- [ `Qlogic` Cavium 25G NDC bağdaştırıcısı birlikte çalışabilirlik matrisi](https://www.marvell.com/documents/xalflardzafh32cfvi0z/).
 - [Mellanox Dual Port 25G ConnectX-4 kanal ağ bağdaştırıcısına uyumlu ürünler](https://docs.mellanox.com/display/ConnectX4LxFirmwarev14271016/Firmware+Compatible+Products).  
 
  
@@ -201,15 +201,15 @@ Cihazınızı güç ve ağ için kablolu yapmak üzere aşağıdaki adımları u
 
 1. Cihazınızın arka düzlemine ait çeşitli bağlantı noktalarını belirler. Cihazınızdaki GPU sayısına bağlı olarak, fabrikandan aşağıdaki cihazlardan birini almış olabilirsiniz.
 
-    - 2 çevresel bileşen bağlantısı (PCI) yuvası ve bir GPU içeren cihaz
+    - İki çevresel bileşen bağlantısı (PCI) yuvası ve bir GPU içeren cihaz
 
         ![Kablolu cihazın arka düzlemi](./media/azure-stack-edge-gpu-deploy-install/ase-two-pci-slots.png)
 
-    - 3 PCI yuvası ve bir GPU içeren cihaz
+    - Üç adet PCI yuvası ve bir GPU içeren cihaz
 
         ![Kablolu cihazın arka düzlemi 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
-    - 3 PCI yuvası ve iki GPU içeren cihaz
+    - Üç adet PCI yuvası ve iki GPU içeren cihaz
 
         ![Kablolu cihazın arka düzlemi 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 

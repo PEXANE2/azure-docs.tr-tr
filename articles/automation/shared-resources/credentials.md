@@ -3,14 +3,14 @@ title: Azure Otomasyonu'nda kimlik bilgilerini yönetme
 description: Bu makalede, kimlik bilgileri varlıklarının nasıl oluşturulduğu ve bir runbook veya DSC yapılandırmasında nasıl kullanılacağı açıklanır.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 12/03/2020
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ec35653f67c46a7032e834020d8e2ca4ab3125c8
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: caaeb0e40d277ef5e356c0f385a818b831326d6e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558853"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734836"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>Azure Otomasyonu'nda kimlik bilgilerini yönetme
 
@@ -51,9 +51,9 @@ Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 > [!NOTE]
 > Parametresindeki değişkenleri kullanmaktan kaçının `Name` `Get-AutomationPSCredential` . Kullanımları runbook 'lar ya da DSC yapılandırması ile kimlik bilgisi varlıkları arasındaki bağımlılıkları tasarım zamanında karmaşıklaştırabilir.
 
-## <a name="python-2-functions-that-access-credentials"></a>Kimlik bilgilerine erişen Python 2 işlevleri
+## <a name="python-functions-that-access-credentials"></a>Kimlik bilgilerine erişen Python işlevleri
 
-Aşağıdaki tablodaki işlev, bir Python 2 runbook 'unda kimlik bilgilerine erişmek için kullanılır.
+Aşağıdaki tablodaki işlev, Python 2 ve 3 runbook 'daki kimlik bilgilerine erişmek için kullanılır. Python 3 runbook 'ları Şu anda önizleme aşamasındadır.
 
 | İşlev | Açıklama |
 |:---|:---|
@@ -104,6 +104,8 @@ Alternatif olarak, bir parolanın güvenli olmayan bir sürümünü temsil eden 
 
 ### <a name="textual-runbook-example"></a>Metinsel runbook örneği
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Aşağıdaki örnek, bir runbook 'ta PowerShell kimlik bilgisinin nasıl kullanılacağını göstermektedir. Kimlik bilgisini alır ve Kullanıcı adını ve parolasını değişkenlere atar.
 
 ```powershell
@@ -126,6 +128,36 @@ $myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$sec
 Connect-AzAccount -Credential $myPsCred
 ```
 
+# <a name="python-2"></a>[Python 2](#tab/python2)
+
+Aşağıdaki örnekte, Python 2 runbook 'larında kimlik bilgilerine erişme örneği gösterilmektedir.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print cred["username"]
+print cred["password"]
+```
+
+# <a name="python-3"></a>[Python 3 karşılaştırması](#tab/python3)
+
+Aşağıdaki örnekte, Python 3 runbook 'larında (Önizleme) kimlik bilgilerine erişme örneği gösterilmektedir.
+
+```python
+import automationassets
+from automationassets import AutomationAssetNotFound
+
+# get a credential
+cred = automationassets.get_automation_credential("credtest")
+print (cred["username"])
+print (cred["password"])
+```
+
+---
+
 ### <a name="graphical-runbook-example"></a>Grafik runbook örneği
 
 Grafik `Get-AutomationPSCredential` Düzenleyicinin Kitaplık bölmesinde kimlik bilgisine sağ tıklayıp **tuvale Ekle**' yi seçerek bir grafik runbook 'una iç cmdlet için bir etkinlik ekleyebilirsiniz.
@@ -139,20 +171,6 @@ Aşağıdaki görüntüde bir grafik runbook 'unda kimlik bilgisi kullanmanın b
 ## <a name="use-credentials-in-a-dsc-configuration"></a>DSC yapılandırmasında kimlik bilgilerini kullanma
 
 Azure Otomasyonu 'ndaki DSC yapılandırması, kullanarak kimlik bilgisi varlıkları ile çalışabileceği sürece `Get-AutomationPSCredential` , kimlik bilgisi varlıklarını parametreler aracılığıyla da geçirebilir. Daha fazla bilgi için bkz. [Azure Automation DSC yapılandırma derleme](../automation-dsc-compile.md#credential-assets).
-
-## <a name="use-credentials-in-a-python-2-runbook"></a>Python 2 runbook 'unda kimlik bilgilerini kullanma
-
-Aşağıdaki örnekte, Python 2 runbook 'larında kimlik bilgilerine erişme örneği gösterilmektedir.
-
-```python
-import automationassets
-from automationassets import AutomationAssetNotFound
-
-# get a credential
-cred = automationassets.get_automation_credential("credtest")
-print cred["username"]
-print cred["password"]
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

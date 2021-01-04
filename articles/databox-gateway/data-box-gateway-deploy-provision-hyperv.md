@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 03/25/2019
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 9d1d22d57464266239aea96f427020351eb749d5
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96583635"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740666"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Öğretici: Hyper-V ' d a Azure Data Box Gateway sağlama
 
@@ -23,7 +23,7 @@ Bu öğreticide Data Box Gateway'i Windows Server 2016, Windows Server 2012 R2 v
 
 Sanal cihaz sağlamak ve yapılandırmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 >
@@ -57,7 +57,7 @@ Cihazı dağıtmadan önce şunlardan emin olun:
   * En az 4 çekirdek.
   * En az 8 GB RAM.
   * Bir ağ arabirimi.
-  * 250 GB işletim sistemi diski.
+  * Bir 250 GB işletim sistemi diski.
   * Veriler için 2 TB sanal disk.
 
 ### <a name="for-the-network-in-the-datacenter"></a>Veri merkezindeki ağ için
@@ -78,7 +78,7 @@ Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
   * En az 4 sanal işlemci.
   * En az 8 GB RAM.
   * İnternet trafiği için ağa bağlı bir ağ arabirimi.
-  * 250 GB işletim sistemi diski.
+  * Bir 250 GB işletim sistemi diski.
   * Sistem verileri için 2 TB sanal disk.
 
 ## <a name="bitlocker-considerations"></a>BitLocker konuları
@@ -92,10 +92,11 @@ Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
 Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleştirin.
 
 1. Windows Server ana bilgisayarınızda sanal cihaz görüntüsünü yerel sürücüye kopyalayın. Bu VHDX görüntüsünü Azure portaldan indirmiştiniz. Bu görüntüyü yordamın ilerleyen bölümlerinde kullanacağınız için kopyaladığınız konumu not edin.
+
 2. **Sunucu Yöneticisi**'ni açın. Sağ üst köşede **Araçlar** ' a tıklayın ve **Hyper-V Yöneticisi**' ni seçin.
 
-    ![Sunucu Yöneticisi 'de Hyper-V Yöneticisi 'Ni seçin](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
-  
+    ![Sunucu Yöneticisi 'de Hyper-V Yöneticisi 'Ni seçin](./media/data-box-gateway-deploy-provision-hyperv/image1.png)
+
 3. **Hyper-V Yöneticisi**'nin kapsam bölmesinde sistem düğümünüze sağ tıklayarak bağlam menüsünü açın ve **Yeni** > **Sanal Makine**'ye tıklayın.
 
    ![Hyper-V Yöneticisi 'nde yeni sanal makine oluştur](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
@@ -118,13 +119,13 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 10. **Özet** sayfasını gözden geçirin ve **Son**'a tıklayarak sanal makineyi oluşturun.
 
     ![Yeni sanal makine Sihirbazı sayfası Tamamlanıyor](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
-11. En düşük gereksinimleri karşılamak için 4 sanal işlemciye ihtiyacınız vardır. 4 sanal işlemci eklemek için **Hyper-V Yöneticisi** penceresinde ana bilgisayar sisteminizi seçin. Sağ tarafta, **Sanal Makineler** listesinin altında bulunan bölmede az önce oluşturduğunuz sanal makineyi bulun. Makine adına sağ tıklayın ve **Ayarlar**'ı seçin.
+11. En düşük gereksinimleri karşılamak için dört sanal işlemciye ihtiyacınız vardır. Dört sanal işlemci eklemek için, **Hyper-V Yöneticisi** penceresinde ana bilgisayar sisteminizi seçin. Sağ tarafta, **Sanal Makineler** listesinin altında bulunan bölmede az önce oluşturduğunuz sanal makineyi bulun. Makine adına sağ tıklayın ve **Ayarlar**'ı seçin.
 
     ![Sanal makine ayarları](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
 12. **Ayarlar** sayfasında sol taraftaki bölmeden **İşlemci**'yi seçin. Sağ taraftaki bölmede **sanal işlemci sayısını** 4 (veya üzeri) olarak ayarlayın. **Uygula**’ya tıklayın.
 
     ![Ayarlar sayfasındaki sanal işlemcilerin sayısını ayarla](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
-13. Minimum gereksinimleri karşılamak için 2 TB boyutunda sanal veri diski de eklemeniz gerekir. **Ayarlar** sayfasında:
+13. En düşük gereksinimleri karşılamak için 2 TB 'lık bir sanal veri diski de eklemeniz gerekir. **Ayarlar** sayfasında:
 
     1. Sol taraftaki bölmede **SCSI Denetleyicisi**'ni seçin.
     2. Sağ taraftaki bölmede **Sabit Sürücü**'yü seçin ve **Ekle**'ye tıklayın.
@@ -138,12 +139,12 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 17. **Disk Türünü Seç** sayfasında sanal sabit disk türünü **Dinamik olarak genişletilen** (önerilen) olarak ayarlayın. **Sabit boyutlu** diski de seçebilirsiniz ancak daha uzun süre beklemeniz gerekebilir. **Fark kayıt** seçeneğini kullanmamanızı öneririz. **İleri**’ye tıklayın.
 
     ![Disk türü seçin sayfası](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
-18. **Ad ve Konum Belirtin** sayfasında veri diski için bir **ad** ve **konum** (göz atabilirsiniz) belirtin. **İleri**’ye tıklayın.
+18. **Ad ve konum belirtin** sayfasında, veri diski için bir **ad** ve **konum** (birine gidebilirsiniz) sağlayın. **İleri**’ye tıklayın.
 
     ![Ad ve konum sayfasını belirtin](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
-19. **Diski Yapılandır** sayfasında **Yeni boş sanal sabit disk oluştur** seçeneğini belirleyin ve **2 TB** (veya üzeri) boyutunu seçin.
+19. **Diski Yapılandır** sayfasında, **Yeni boş bir sanal sabit disk oluştur** seçeneğini BELIRLEYIN ve boyutu **2 TB** (veya daha fazla) olarak belirtin.
 
-    2 TB minimum gereksinimdir ancak isterseniz daha büyük bir disk de sağlayabilirsiniz. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Diskin küçültülmeye çalışılması, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. Veri diskinin genişletilmesi desteklenmiyor. **İleri**’ye tıklayın.
+    2 TB minimum gereksinimdir ancak isterseniz daha büyük bir disk de sağlayabilirsiniz. Sağlandıktan sonra diski daraltamazsınız. Diskin küçültülmeye çalışılması, cihazdaki tüm yerel verilerin kaybedilmesine neden olur. Veri diskinin genişletilmesi desteklenmiyor. **İleri**’ye tıklayın.
 
     ![Disk sayfasını yapılandırma](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
 20. **Özet** sayfasında sanal veri diskinizin ayrıntılarını gözden geçirin ve her şey yolunda görünüyorsa **Son**'a tıklayarak diski oluşturun. Sihirbaz kapanır ve makinenize bir sanal sabit disk eklenir.
@@ -152,6 +153,11 @@ Hiper yöneticinizde cihaz sağlamak için aşağıdaki adımları gerçekleşti
 21. **Ayarlar** sayfasına geri dönün. **Tamam**'a tıklayarak **Ayarlar** sayfasını kapatın ve Hyper-V Yöneticisi penceresine dönün.
 
     ![Ayarlar sayfası](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+Sanal makineniz artık tam olarak yapılandırılmıştır.
+
+> [!NOTE]
+> Yapılandırılmış VHD 'nizi kopyalayarak yeni bir Data Box Gateway sağlayamazsınız. Her yeni Data Box Gateway sanal cihazın, Azure portal indirilen Hyper-V için bir sanal cihaz görüntüsünden sağlanması gerekir.
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Sanal cihazı başlatma ve IP adresini alma
 

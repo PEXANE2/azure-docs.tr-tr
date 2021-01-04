@@ -3,14 +3,14 @@ title: Azure Otomasyonu runbook türleri
 description: Bu makalede, Azure Otomasyonu 'nda kullanabileceğiniz runbook 'ların türleri ve hangi türün kullanılacağını belirleme konuları açıklanmaktadır.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/05/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 24d0123eecc56b56573e94d831283d8d360cd16e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a0c12297f19d30bf13ffbe594e0433c83914a8e
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185934"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733969"
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Otomasyonu runbook türleri
 
@@ -33,9 +33,9 @@ Belirli bir runbook için kullanılacak türü belirlerken aşağıdaki noktalar
 
 Azure portal grafik düzenleyicisini kullanarak grafik ve grafik PowerShell Iş akışı runbook 'ları oluşturup düzenleyebilirsiniz. Ancak, başka bir araçla bu tür bir runbook oluşturamaz veya düzenleyemezsiniz. Grafik runbook 'ların ana özellikleri:
 
-* Otomasyon hesabınızdaki dosyalara aktarılabilir ve daha sonra başka bir Otomasyon hesabına aktarılabilir. 
-* PowerShell kodu oluştur. 
-* İçeri aktarma sırasında grafik PowerShell Iş akışı runbook 'larına veya öğesinden dönüştürülebilir. 
+* Otomasyon hesabınızdaki dosyalara aktarılır ve sonra başka bir Otomasyon hesabına içeri aktarılır.
+* PowerShell kodu oluştur.
+* İçeri aktarma sırasında grafik PowerShell Iş akışı runbook 'larına veya sürümünden dönüştürüldü.
 
 ### <a name="advantages"></a>Avantajlar
 
@@ -59,7 +59,7 @@ PowerShell runbook 'ları Windows PowerShell 'i temel alır. Azure portal metin 
 
 ### <a name="advantages"></a>Avantajlar
 
-* PowerShell Iş akışı ek karmaşıklıklarını olmadan tüm karmaşık mantığı PowerShell koduyla birlikte uygulayın.
+* PowerShell Iş akışı ile ilgili diğer karmaşıklıklar olmadan tüm karmaşık mantığı PowerShell kodu ile uygulayın.
 * Çalıştırmadan önce derlenmesi gerekmediğinden, PowerShell Iş akışı runbook 'lardan daha hızlı bir başlangıç yapın.
 * Hem Windows hem de Linux için Azure 'da ve karma runbook çalışanlarında çalıştırın.
 
@@ -68,7 +68,7 @@ PowerShell runbook 'ları Windows PowerShell 'i temel alır. Azure portal metin 
 * PowerShell betiği hakkında bilgi sahibi olmanız gerekir.
 * Runbook 'lar paralel olarak birden çok eylem yürütmek için [paralel işleme](automation-powershell-workflow.md#use-parallel-processing) kullanamaz.
 * Runbook 'lar bir hata oluşursa runbook 'u yeniden başlatmak için [denetim noktaları](automation-powershell-workflow.md#use-checkpoints-in-a-workflow) kullanamaz.
-* Yeni bir iş oluşturan [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.7.0) cmdlet 'ini kullanarak yalnızca PowerShell iş akışı runbook 'larını ve grafik runbook 'larını alt runbook 'lar olarak ekleyebilirsiniz.
+* Yeni bir iş oluşturan [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) cmdlet 'ini kullanarak yalnızca PowerShell iş akışı runbook 'larını ve grafik runbook 'larını alt runbook 'lar olarak ekleyebilirsiniz.
 
 ### <a name="known-issues"></a>Bilinen sorunlar
 
@@ -76,7 +76,7 @@ PowerShell runbook 'larında şu andaki bilinen sorunlar şunlardır:
 
 * PowerShell runbook 'ları null değeri olan şifrelenmemiş bir [değişken varlığı](./shared-resources/variables.md) alamıyor.
 * PowerShell runbook 'ları, adında bir değişken varlık alamıyor `*~*` .
-* Bir PowerShell runbook 'unda döngüdeki bir [Get-Process](/powershell/module/microsoft.powershell.management/get-process?view=powershell-7) işlemi, 80 yinelemeden sonra çökebilir.
+* Bir PowerShell runbook 'unda döngüdeki bir [Get-Process](/powershell/module/microsoft.powershell.management/get-process) işlemi, 80 yinelemeden sonra çökebilir.
 * Bir PowerShell runbook 'u aynı anda çıkış akışına büyük miktarda veri yazmayı denediğinde başarısız olabilir. Genellikle bu soruna geçici bir çözüm olarak, runbook 'un büyük nesnelerle çalışması için gereken bilgileri vermesini sağlayabilirsiniz. Örneğin, hiçbir kısıtlama olmadan kullanmak yerine `Get-Process` cmdlet 'in yalnızca ' de olduğu gibi gerekli parametreleri çıkışına sahip olabilirsiniz `Get-Process | Select ProcessName, CPU` .
 
 ## <a name="powershell-workflow-runbooks"></a>PowerShell Iş akışı runbook 'ları
@@ -100,18 +100,29 @@ PowerShell Iş akışı runbook 'ları [Windows PowerShell Iş akışını](auto
 
 ## <a name="python-runbooks"></a>Python runbook 'ları
 
-Python runbook 'ları Python 2 altında derlenir. Azure portal metin düzenleyicisini kullanarak runbook 'un kodunu doğrudan düzenleyebilirsiniz. Ayrıca, çevrimdışı bir metin Düzenleyicisi kullanabilir ve [runbook 'U](manage-runbooks.md) Azure Otomasyonu 'na aktarabilirsiniz.
+Python runbook 'ları Python 2 ve Python 3 altında derlenir. Python 3 runbook 'ları Şu anda önizleme aşamasındadır. Azure portal metin düzenleyicisini kullanarak runbook 'un kodunu doğrudan düzenleyebilirsiniz. Ayrıca, çevrimdışı bir metin Düzenleyicisi kullanabilir ve [runbook 'U](manage-runbooks.md) Azure Otomasyonu 'na aktarabilirsiniz.
 
 ### <a name="advantages"></a>Avantajlar
 
 * Sağlam Python kitaplıklarını kullanın.
-* , Azure 'da veya Linux karma runbook çalışanları üzerinde çalışabilir. Windows karma runbook çalışanları, [Python 2.7](https://www.python.org/downloads/release/latest/python2) yüklü olarak desteklenir.
+* , Azure 'da veya karma runbook çalışanları üzerinde çalışabilir.
+* Python 2 için Windows karma runbook çalışanları, [python 2,7](https://www.python.org/downloads/release/latest/python2) yüklü olarak desteklenir.
+* Python 3 bulut Işleri için Python 3,8 sürümü desteklenir. Kod farklı sürümler arasında uyumluysa 3. x sürümünden oluşan betikler ve paketler çalışabilir.  
+* Windows makinelerde Python 3 karma işleri için kullanmak isteyebileceğiniz herhangi bir 3. x sürümünü yüklemeyi tercih edebilirsiniz.  
+* Linux makinelerinde Python 3 karma işleri için, DSC OMSConfig ve Linux hibrit Worker 'ı çalıştırmak için makinede yüklü Python 3 sürümüne bağımlıdır. Linux makinelerine 3,6 yüklemenizi öneririz. Ancak, Python 3 ' ün sürümleri arasındaki yöntem imzalarında veya sözleşmelerinde hiçbir değişiklik yoksa farklı sürümler de çalışır.
 
 ### <a name="limitations"></a>Sınırlamalar
 
 * Python betiği hakkında bilgi sahibi olmanız gerekir.
-* Şu anda yalnızca Python 2 desteklenir. Python 3 ' ü özel işlevler başarısız olur.
 * Üçüncü taraf kitaplıklarını kullanmak için paketleri Otomasyon hesabına [aktarmanız](python-packages.md) gerekir.
+*    Bir Python 3 runbook 'unu (Önizleme) başlatmak Için PowerShell/PowerShell iş akışında start-automationrunbook cmdlet 'ini kullanma çalışmaz. Bu sınırlamaya geçici bir çözüm için Azurerd. Automation modülünden az. Automation modülünden veya **Start-AzureRmAutomationRunbook** cmdlet 'inden **Start-azautomationrunbook** cmdlet 'ini kullanabilirsiniz.  
+* Python 3 runbook 'ları (Önizleme) ve paketleri PowerShell ile çalışmaz.
+* Python runbook 'u başlatmak için Web kancası kullanılması desteklenmez.
+* Azure Otomasyonu, **sys. stderr** desteklemez.
+
+### <a name="known-issues"></a>Bilinen sorunlar
+
+Python 3 işleri bazen özel durum iletisiyle başarısız oldu *yorumlayıcı yürütülebilir yolu*. Bir iş gecikirse, 10 dakikadan uzun bir süre sonra veya **Start-automationrunbook** kullanarak Python 3 runbook 'ları başlatmak için bu özel durumu görebilirsiniz. İş gecikirse, runbook 'un yeniden başlatılması yeterli olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

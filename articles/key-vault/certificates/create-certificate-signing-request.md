@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: 6d66648680aa14baa53372732df52a6c247a0117
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 42f649f9dd206b34f0fac8513ba742febed2dbcb
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483772"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724638"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Key Vault 'de CSR oluşturma ve birleştirme
 
@@ -38,7 +38,34 @@ Sertifika oluşturmayı basitleştirmek için aşağıdaki iki sertifika yetkili
 Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden bir sertifika oluşturmanıza yardımcı olur (örneğin, GoDaddy güvenilen bir Anahtar Kasası CA 'sı değildir) 
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
+2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
+3.  **Oluştur/Içeri aktar** sekmesini seçin.
+4.  **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
+    - **Sertifika oluşturma yöntemi:** Üretecek.
+    - **Sertifika adı:** ContosoManualCSRCertificate.
+    - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
+    - **Konu:**`"CN=www.contosoHRApp.com"`
+    - İstediğiniz diğer değerleri seçin. **Oluştur**'a tıklayın.
+
+    ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)  
+
+
+6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
+7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir**' i seçin.
+
+   ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
+ 
+8.  İmzalanacak istek için. CSR dosyasını CA 'ya alın.
+9.  İstek CA tarafından imzalandıktan sonra, **imzalanmış isteği** aynı sertifika işlemi ekranında birleştirmek için sertifika dosyasını geri getirin.
+
+Sertifika isteği artık başarıyla birleştirildi.
+
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 
 
@@ -68,36 +95,11 @@ Aşağıdaki adımlar, Key Vault iş ortağı olmayan sertifika yetkililerinden 
     ```
 
     Sertifika isteği artık başarıyla birleştirildi.
-
-### <a name="azure-portal"></a>Azure portalı
-
-1.  Tercih ettiğiniz CA için CSR oluşturmak üzere, sertifikayı eklemek istediğiniz anahtar kasasına gidin.
-2.  Key Vault Özellikler sayfalarında, **Sertifikalar**' ı seçin.
-3.  **Oluştur/Içeri aktar** sekmesini seçin.
-4.  **Sertifika oluştur** ekranında aşağıdaki değerleri seçin:
-    - **Sertifika oluşturma yöntemi:** Üretecek.
-    - **Sertifika adı:** ContosoManualCSRCertificate.
-    - **Sertifika yetkilisinin (CA) türü:** Tümleşik olmayan bir CA tarafından verilen sertifika
-    - **Konu:**`"CN=www.contosoHRApp.com"`
-    - İstediğiniz diğer değerleri seçin. **Oluştur**'a tıklayın.
-
-    ![Sertifika Özellikleri](../media/certificates/create-csr-merge-csr/create-certificate.png)  
-
-
-6.  Sertifikanın artık sertifikalar listesine eklendiğini görürsünüz. Az önce oluşturduğunuz yeni sertifikayı seçin. Sertifikanın geçerli durumu henüz CA tarafından verilmediğinden ' devre dışı ' olur.
-7. **Sertifika işlemi** sekmesine tıklayın ve CSR 'yi **İndir**' i seçin.
-
-   ![CSR 'yi Indir düğmesini vurgulayan ekran görüntüsü.](../media/certificates/create-csr-merge-csr/download-csr.png)
- 
-8.  İmzalanacak istek için. CSR dosyasını CA 'ya alın.
-9.  İstek CA tarafından imzalandıktan sonra, **imzalanmış isteği** aynı sertifika işlemi ekranında birleştirmek için sertifika dosyasını geri getirin.
-
-Sertifika isteği artık başarıyla birleştirildi.
+---
 
 > [!NOTE]
 > RDN değerlerinizin virgül değeri varsa, değerleri adım 4 ' te gösterildiği gibi çift tırnaklı şekilde çevreleyerek **Konu** alanına da ekleyebilirsiniz.
 > "Subject" için örnek giriş: `DC=Contoso,OU="Docs,Contoso",CN=www.contosoHRApp.com` Bu örnekte, RDN `OU` adında virgül olan bir değer içerir. İçin elde edilen çıktı `OU` **docs, contoso**.
-
 
 ## <a name="adding-more-information-to-csr"></a>CSR 'ye daha fazla bilgi ekleme
 
@@ -105,7 +107,7 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
     - Ülke:
     - Şehir/yerleşim yeri:
     - Eyalet/bölge:
-    - Kuruluş
+    - Kuruluşunuzun
     - Kuruluş birimi: Bu bilgileri subjectName ' de tanımlayarak bir CSR oluştururken ekleyebilirsiniz.
 
 Örnek
@@ -118,6 +120,8 @@ CSR oluştururken daha fazla bilgi eklemek istiyorsanız, örneğin-
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
+- Sertifika isteği yanıtını izlemek veya yönetmek için [buradan](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-scenarios) daha fazla bilgi edinin
+
 - **Hata türü ' belirtilen X ile son varlık sertifikasının ortak anahtarı. 509.440 sertifika içeriği belirtilen özel anahtarın ortak bölümüyle eşleşmiyor. Lütfen sertifikanın geçerli olup olmadığını denetleyin** . CSR 'yi aynı CSR isteği ile birleştirdiğimde bu hata oluşabilir. CRS her oluşturulduğunda, imzalanmış isteği birleştirirken eşleştirilmesi gereken bir özel anahtar oluşturur.
     
 - CSR birleştirildiğinde, tüm zinciri birleştiriyordu mi?
@@ -129,6 +133,7 @@ Daha fazla bilgi için [Key Vault REST API başvurusu Içindeki sertifika işlem
 
 - **Hata türü ' belirtilen konu adı geçerli bir X500 adı değil '** Bu hata, SubjectName değerlerinde "özel karakterler" eklediyseniz ortaya çıkabilir. Sırasıyla Azure portal ve PowerShell yönergelerindeki notlara bakın. 
 
+---
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Kimlik doğrulama, istekler ve yanıtlar](../general/authentication-requests-and-responses.md)

@@ -4,19 +4,19 @@ description: Azure Active Directory ve Concur seyahat ve harcama arasında çokl
 services: active-directory
 author: jeevansd
 manager: CelesteDG
-ms.reviewer: celested
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/10/2019
+ms.date: 12/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 525c70c18354e35998e564680c68a975bdb3ec54
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ee38a00367bd5fc3239ca53824d75397fb35e88d
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92455451"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Öğretici: Concur seyahat ve harcama ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Concur seyahat ve masrafın Azure Active Directory (Azure AD) i
 * Azure AD 'de, Concur seyahat ve gideri erişimine sahip olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla gezecek ve ücrettabileceği şekilde otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -50,18 +48,18 @@ Bu öğreticide, Azure AD SSO 'yu yapılandırıp test edersiniz.
 
 Concur seyahat ve masrafın tümleştirmesini Azure AD 'ye göre yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize Concur seyahat ve harcama eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Concur seyahat ve harcama** yazın.
 1. Sonuçlar panelinden **Concur seyahat ve harcama** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-concur-travel-and-expense"></a>Concur seyahat ve gideri için Azure AD çoklu oturum açma yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-concur-travel-and-expense"></a>Concur seyahat ve gideri için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Concur seyahat ve harcama ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Concur seyahat ve gider arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Concur seyahat ve harcama ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Concur seyahat ve gider arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Concur seyahat ve masrafıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Concur seyahat ve masrafına göre yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -74,7 +72,7 @@ Azure AD SSO 'yu Concur seyahat ve masrafıyla yapılandırmak ve test etmek iç
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Concur seyahat ve harcama** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Concur seyahat ve harcama** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -85,7 +83,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     > [!NOTE]
     > Tanımlayıcı (varlık KIMLIĞI) ve yanıt URL 'SI (onaylama tüketici hizmeti URL 'SI) bölgeye özeldir. Lütfen Concur varlığınızın veri merkezine göre ' yi seçin. Concur varlığınızın veri merkezini görmüyorsanız lütfen Concur desteğiyle iletişime geçin. 
 
-5. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek Için **Kullanıcı özniteliği** için Düzenle/kalem simgesine tıklayın. Benzersiz kullanıcı tanımlayıcısının, Concur User login_id ile eşleşmesi gerekir. Genellikle **User. UserPrincipalName** öğesini **User. Mail**olarak değiştirmelisiniz.
+5. **SAML Ile tek Sign-On ayarlama** sayfasında, ayarları düzenlemek Için **Kullanıcı özniteliği** için Düzenle/kalem simgesine tıklayın. Benzersiz kullanıcı tanımlayıcısının, Concur User login_id ile eşleşmesi gerekir. Genellikle **User. UserPrincipalName** öğesini **User. Mail** olarak değiştirmelisiniz.
 
     ![Kullanıcı özniteliğini Düzenle](common/edit-attribute.png)
 
@@ -103,7 +101,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -113,19 +111,23 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Concur seyahat 
 1. Uygulamalar listesinde, **Concur seyahat ve harcama**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>Concur seyahat ve harcama SSO 'SU yapılandırma
 
-1. **Concur seyahat ve gider** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'sini [Concur SSO Self-Service aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin) yüklemeniz ve "Şirket Yöneticisi" rolüne sahip bir hesapla oturum açmanız gerekir. 
+1. Uygulamayı yarışma ve harcama dahilinde otomatik hale getirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarımın güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **yarışmayı ayarla** ' ya tıklayın ve gider, sizi Concur seyahat ve gider uygulamasına yönlendirir. Buradan, yarışmayı ve harcamayı açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Farklı bir Web tarayıcısı penceresinde el ile seyahat ve gider ayarlamak istiyorsanız, indirilen **Federasyon meta VERI XML** 'Sini [concur SSO Self-Service aracına](https://www.concursolutions.com/nui/authadmin/ssoadmin) yüklemeniz ve yönetici olarak Concur seyahat ve harcama şirketi sitenizde oturum açmanız gerekir.
 
 1. **Ekle**'ye tıklayın.
 1. IDP 'niz için "Azure AD (US)" gibi özel bir ad girin. 
@@ -142,7 +144,7 @@ Bu bölümde, Concur seyahat ve harcama için B. Simon adlı bir Kullanıcı olu
 > B. Simon 'ın Concur oturum açma kimliği, Azure AD 'de B. Simon 'ın benzersiz tanımlayıcısı ile eşleşmelidir. Örneğin, B. Simon 'un Azure AD benzersiz tanımlayıcı, `B.Simon@contoso.com` . B. Simon 'ın Concur oturum açma kimliği de olmalıdır `B.Simon@contoso.com` . 
 
 ## <a name="configure-concur-mobile-sso"></a>Concur Mobile SSO 'yu yapılandırma
-Concur Mobile SSO 'yu etkinleştirmek için, Concur destek ekibi **Kullanıcı erişim URL 'si**sağlamanız gerekir. Azure AD 'den **Kullanıcı erişimi URL 'si** almak için aşağıdaki adımları izleyin:
+Concur Mobile SSO 'yu etkinleştirmek için, Concur destek ekibi **Kullanıcı erişim URL 'si** sağlamanız gerekir. Azure AD 'den **Kullanıcı erişimi URL 'si** almak için aşağıdaki adımları izleyin:
 1. **Kurumsal uygulamalara** git
 1. **Concur seyahat ve gideri** ' ne tıklayın
 1. **Özellikler** 'e tıklayın
@@ -153,16 +155,20 @@ Concur Mobile SSO 'yu etkinleştirmek için, Concur destek ekibi **Kullanıcı e
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde Concur seyahat ve harcama kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız yarışmak ve harcamayı otomatik olarak açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz bir yarışmayı ve gider oturum açma URL 'sini yönlendirecektir.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Concur seyahat ve gider oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız yarışmayı ve gideri otomatik olarak açmanız gerekir
 
-- [Azure AD ile yarışmayı ve gideri deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamalarım ile ilgili seyahat ve gider kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız yarışma ve harcama için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Concur seyahat ve harcamayı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

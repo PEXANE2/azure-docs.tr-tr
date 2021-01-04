@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0d1cbb8efe0882f48a345d44a650eb711a44d570
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832696"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739195"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Azure Machine Learning işlem kümesi oluşturma
 
@@ -30,7 +30,7 @@ Bu makalede şunları yapmayı öğreneceksiniz:
 * İşlem kümesi maliyetinizi düşürün
 * Küme için [yönetilen bir kimlik](../active-directory/managed-identities-azure-resources/overview.md) ayarlama
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Azure Machine Learning çalışma alanı. Daha fazla bilgi için bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md).
 
@@ -52,13 +52,13 @@ Azure Machine Learning işlem kümesi, kolayca tek veya çok düğümlü bir iş
 
 * Azure Machine Learning Işlem, ayrılabilen çekirdek sayısı gibi varsayılan sınırlara sahiptir. Daha fazla bilgi için bkz. [Azure kaynakları için kotaları yönetme ve isteme](how-to-manage-quotas.md).
 
-* Azure, kaynakları, silinememesi veya salt okunurdur. _locks_ __Kaynak kilitlerini, çalışma alanınızı içeren kaynak grubuna uygulamayın__. Çalışma alanınızı içeren kaynak grubuna bir kilit uygulandığında, Azure ML işlem kümelerinin ölçeklendirme işlemleri engellenir. Kaynakları kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
+* Azure, kaynakları, silinememesi veya salt okunurdur.  __Kaynak kilitlerini, çalışma alanınızı içeren kaynak grubuna uygulamayın__. Çalışma alanınızı içeren kaynak grubuna bir kilit uygulandığında, Azure ML işlem kümelerinin ölçeklendirme işlemleri engellenir. Kaynakları kilitleme hakkında daha fazla bilgi için, bkz. [beklenmeyen değişiklikleri engellemek için kaynakları kilitleme](../azure-resource-manager/management/lock-resources.md).
 
 > [!TIP]
 > Gereken çekirdek sayısı için yeterli kotanın olması koşuluyla, kümeler genellikle 100 düğüme kadar ölçeklendirebilir. Varsayılan olarak kümeler, MPı işlerini desteklemek üzere küme düğümleri arasında etkinleştirilen düğümler arası iletişim ile ayarlanır. Ancak, [bir destek bileti](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)oluşturarak ve abonelik veya çalışma alanınızı ya da düğümler arası iletişimi devre dışı bırakmaya yönelik belirli bir kümeyi listelemek istiyorsanız kümelerinizi 1000 ' e ölçeklendirebilirsiniz. 
 
 
-## <a name="create"></a>Oluşturma
+## <a name="create"></a>Oluştur
 
 **Tahmini süre**: yaklaşık 5 dakika.
 
@@ -211,6 +211,14 @@ Bkz. [Studio 'da yönetilen kimliği ayarlama](how-to-create-attach-compute-stud
 ### <a name="managed-identity-usage"></a>Yönetilen kimlik kullanımı
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-managed-identity-default.md)]
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+Azure Machine Learning çalışma alanını, GA sürümünden önce Azure portal oluşturan bazı kullanıcıların bu çalışma alanında AmlCompute oluşturmayabilir. Hizmette bir destek isteği oluşturabilir veya portal veya SDK aracılığıyla hemen engelini kaldırmak için yeni bir çalışma alanı oluşturabilirsiniz.
+
+Azure Machine Learning işlem kümeniz düğüm durumu için yeniden boyutlandırılırken (0-> 0) takılmış görünüyorsa, bunun nedeni Azure kaynak kilitleri olabilir.
+
+[!INCLUDE [resource locks](../../includes/machine-learning-resource-lock.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

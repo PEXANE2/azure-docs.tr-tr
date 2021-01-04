@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: 4a7f21410bb97db0a7974870efb812c9954ac241
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503565"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734190"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Şablonlarda dağıtım betikleri için geliştirme ortamını yapılandırma
 
@@ -155,7 +155,10 @@ Aşağıdaki ARM şablonu bir kapsayıcı örneği ve bir dosya paylaşma oluşt
 ```
 Bağlama yolu için varsayılan değer **Deploymentscript**' dir.  Bu, kapsayıcı örneğindeki yoldur ve dosya paylaşımında bağlanır.
 
-Şablonda belirtilen varsayılan kapsayıcı görüntüsü **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3 "** dir.  Desteklenen Azure PowerShell sürümlerinin ve Azure CLı sürümlerinin listesi için bkz. [Azure PowerShell veya Azure CLI](./deployment-script-template.md#prerequisites).
+Şablonda belirtilen varsayılan kapsayıcı görüntüsü **MCR.Microsoft.com/azuredeploymentscripts-PowerShell:AZ4.3 "** dir.   [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
+
+  >[!IMPORTANT]
+  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisi desteklenen sürümleri listeler.
 
 Şablon, 1800 saniye kapsayıcı örneğini askıya alır. Kapsayıcı örneği Terminal durumuna geçmeden önce 30 dakika, oturum sona erer.
 
@@ -200,7 +203,7 @@ Ayrıca, Azure portal ve Azure CLı kullanarak dosyayı karşıya yükleyebilirs
 1. **Bağlan**' ı seçin ve ardından **Bağlan**' ı seçin. Kapsayıcı örneğine bağlanamıyorsanız, kapsayıcı grubunu yeniden başlatın ve yeniden deneyin.
 1. Konsol bölmesinde aşağıdaki komutları çalıştırın:
 
-    ```
+    ```console
     cd deploymentScript
     ls
     pwsh ./hello.ps1 "John Dole"
@@ -209,6 +212,14 @@ Ayrıca, Azure portal ve Azure CLı kullanarak dosyayı karşıya yükleyebilirs
     Çıkış **Merhaba John Dole**.
 
     ![Dağıtım betiği kapsayıcısı örnek testi](./media/deployment-script-template-configure-dev/deployment-script-container-instance-test.png)
+
+1. AZ CLı kapsayıcı görüntüsünü kullanıyorsanız şu kodu çalıştırın:
+
+   ```console
+   cd /mnt/azscripts/azscriptinput
+   ls
+   ./userscript.sh
+   ```
 
 ## <a name="use-docker"></a>Docker kullanma
 

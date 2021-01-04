@@ -3,12 +3,12 @@ title: SQL Server veritabanı yedeklemesi sorunlarını giderme
 description: Azure Backup ile Azure VM 'lerde çalışan SQL Server veritabanlarının yedeklenmesi için sorun giderme bilgileri.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: f215b848bedae333979f0fed8eb7f216fb6e25f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91332789"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97733952"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Azure Backup kullanarak SQL Server veritabanı yedeklemesi sorunlarını giderme
 
@@ -18,7 +18,7 @@ Yedekleme işlemi ve sınırlamaları hakkında daha fazla bilgi için bkz. [Azu
 
 ## <a name="sql-server-permissions"></a>SQL Server izinleri
 
-Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için, **AzureBackupWindowsWorkload** uzantısını bu sanal makineye yüklemelisiniz. **Usererrorsqlnosysadminmembership**hatasını alırsanız, SQL Server Örneğiniz gereken yedekleme izinlerine sahip olmadığı anlamına gelir. Bu hatayı onarmak için [VM Izinlerini ayarlama](backup-azure-sql-database.md#set-vm-permissions)bölümündeki adımları izleyin.
+Bir sanal makinede SQL Server veritabanının korumasını yapılandırmak için, **AzureBackupWindowsWorkload** uzantısını bu sanal makineye yüklemelisiniz. **Usererrorsqlnosysadminmembership** hatasını alırsanız, SQL Server Örneğiniz gereken yedekleme izinlerine sahip olmadığı anlamına gelir. Bu hatayı onarmak için [VM Izinlerini ayarlama](backup-azure-sql-database.md#set-vm-permissions)bölümündeki adımları izleyin.
 
 ## <a name="troubleshoot-discover-and-configure-issues"></a>Bulma ve yapılandırma sorunlarını giderme
 
@@ -56,13 +56,47 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 1. SQL, virüsten koruma programlarıyla çalışmak üzere bazı yönergeler de sunmaktadır. Ayrıntılar için [Bu makaleye](https://support.microsoft.com/help/309422/choosing-antivirus-software-for-computers-that-run-sql-server) bakın.
 
+## <a name="faulty-instance-in-a-vm-with-multiple-sql-server-instances"></a>Birden çok SQL Server örneğine sahip bir VM 'de hatalı örnek
+
+Yalnızca VM içinde çalışan tüm SQL örnekleri sağlıklı olarak raporlandıysanız bir SQL VM 'ye geri yükleyebilirsiniz. Bir veya daha fazla örnek "hatalı" ise, VM geri yükleme hedefi olarak görünmez. Bu nedenle, geri yükleme işlemi sırasında "sunucu" açılan menüsünde çok örnekli bir VM 'nin neden görünmemesinin olası bir nedeni olabilir.
+
+VM 'deki tüm SQL örneklerinin "yedekleme hazırlığı" ni, **yedeklemeyi Yapılandır** altında doğrulayabilirsiniz.
+
+![Yedeklemenin hazır olduğunu doğrulama](./media/backup-sql-server-azure-troubleshoot/backup-readiness.png)
+
+Sağlıklı SQL örneklerinde geri yükleme tetiklemek isterseniz, aşağıdaki adımları uygulayın:
+
+1. SQL VM 'de oturum açın ve adresine gidin `C:\Program Files\Azure Workload Backup\bin` .
+1. Adlı bir JSON dosyası oluşturun `ExtensionSettingsOverrides.json` (zaten mevcut değilse). Bu dosya VM 'de zaten mevcutsa, uygulamayı kullanmaya devam edin.
+1. Aşağıdaki içeriği JSON dosyasına ekleyin ve dosyayı kaydedin:
+
+    ```json
+    {
+                  "<ExistingKey1>":"<ExistingValue1>",
+                    …………………………………………………… ,
+              "whitelistedInstancesForInquiry": "FaultyInstance_1,FaultyInstance_2"
+            }
+            
+            Sample content:        
+            { 
+              "whitelistedInstancesForInquiry": "CRPPA,CRPPB "
+            }
+
+    ```
+
+1. Etkilenen sunucuda bulunan **DB 'Leri yeniden bul** işlemini Azure Portal tetikleyin (yedekleme hazırlığında görünebileceği konum). VM, geri yükleme işlemleri için hedef olarak görünmeye başlayacaktır.
+
+    ![DB 'Leri yeniden keşfet](./media/backup-sql-server-azure-troubleshoot/rediscover-dbs.png)
+
+1. Geri yükleme işlemi tamamlandıktan sonra, bu dosyadaki ExtensionSettingsOverrides.js *beyaz Listedınstancesforsorgulama* girişini kaldırın.
+
 ## <a name="error-messages"></a>Hata iletileri
 
 ### <a name="backup-type-unsupported"></a>Yedekleme türü desteklenmiyor
 
 | Önem Derecesi | Açıklama | Olası nedenler | Önerilen eylem |
 |---|---|---|---|
-| Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedekleme ve işlem günlüğü yedeklemesi mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | Veritabanı ayarları SP 'yi değiştirme ilkedeki tüm yedekleme türleri desteklenir. Ya da geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya isteğe bağlı yedekleme için yedekleme işi başarısız olur.
+| Uyarı | Bu veritabanının geçerli ayarları, ilişkili ilkede mevcut olan bazı yedekleme türlerini desteklemiyor. | <li>Ana veritabanında yalnızca tam bir veritabanı yedekleme işlemi yapılabilir. Değişiklik yedekleme ve işlem günlüğü yedeklemesi mümkün değildir. </li> <li>Basit kurtarma modelindeki tüm veritabanları, işlem günlüklerinin yedeklenme izin vermez.</li> | İlkedeki tüm yedekleme türlerinin desteklenmesi için veritabanı ayarlarını değiştirin. Ya da geçerli ilkeyi yalnızca desteklenen Yedekleme türlerini içerecek şekilde değiştirin. Aksi takdirde, desteklenmeyen yedekleme türleri zamanlanmış yedekleme sırasında atlanır veya isteğe bağlı yedekleme için yedekleme işi başarısız olur.
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 
@@ -75,7 +109,7 @@ Her zaman, yedekleme ve geri yükleme işlemlerinde rastgele sorunlar oluşabili
 
 | Hata iletisi | Olası nedenler | Önerilen eylem |
 |---|---|---|
-| SQL veritabanı yok. | Veritabanı silinmiş ya da yeniden adlandırıldı. | Veritabanının yanlışlıkla silinip silinmediğini veya yeniden adlandırılmadığını denetleyin.<br/><br/> Veritabanı yanlışlıkla silinmişse, yedeklemelere devam etmek için veritabanını özgün konuma geri yükleyin.<br/><br/> Veritabanını silmiş ve gelecekteki yedeklemelere ihtiyacınız yoksa, kurtarma hizmetleri kasasında yedekleme **verilerini koruma** veya **yedekleme verilerini silme**ile **Yedeklemeyi Durdur** ' u seçin. Daha fazla bilgi için bkz. [yedeklenen SQL Server veritabanlarını yönetme ve izleme](manage-monitor-sql-database-backup.md).
+| SQL veritabanı yok. | Veritabanı silinmiş ya da yeniden adlandırıldı. | Veritabanının yanlışlıkla silinip silinmediğini veya yeniden adlandırılmadığını denetleyin.<br/><br/> Veritabanı yanlışlıkla silinmişse, yedeklemelere devam etmek için veritabanını özgün konuma geri yükleyin.<br/><br/> Veritabanını silmiş ve gelecekteki yedeklemelere ihtiyacınız yoksa, kurtarma hizmetleri kasasında yedekleme **verilerini koruma** veya **yedekleme verilerini silme** ile **Yedeklemeyi Durdur** ' u seçin. Daha fazla bilgi için bkz. [yedeklenen SQL Server veritabanlarını yönetme ve izleme](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 
@@ -179,7 +213,7 @@ VM, internet bağlantısı sorunları nedeniyle Azure Backup hizmetine başvuram
 Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir veya daha fazlasını denetleyin:
 
 - Tüm işlemler (yedekleme, geri yükleme ve yapılandırma gibi) VM 'de şu hata kodlarından biriyle başarısız oluyor: **Workloadextensionnoterişilebilen**, **usererrorworkloadextensionnotyüklü**, **workloadextensionnotsun,** **workloadextensiondidntdequeuemsg**.
-- Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil**olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
+- Yedekleme öğesi için **yedekleme durum** alanı **erişilebilir değil** olarak gösteriyorsa, aynı durum oluşmasına neden olabilecek diğer tüm nedenleri inceleyin:
 
   - VM 'de yedeklemeyle ilgili işlemler gerçekleştirme izninin bulunmaması.
   - Sanal makineyi kapatıp yedeklemeler gerçekleşmiyor.
@@ -192,7 +226,7 @@ Yeniden kaydetme işlemini tetiklemeniz için aşağıdaki belirtilerden bir vey
 Bu belirtiler aşağıdaki nedenlerden biri veya birkaçı olabilir:
 
 - Bir uzantı silinmiş veya portaldan kaldırılmış.
-- Bir uzantıyı **kaldırma veya program değiştirme**altındaki VM 'Deki **denetim masasından** bir uzantı kaldırıldı.
+- Bir uzantıyı **kaldırma veya program değiştirme** altındaki VM 'Deki **denetim masasından** bir uzantı kaldırıldı.
 - VM, yerinde disk geri yüklemesi sırasında geri yüklendi.
 - VM, genişletilmiş bir süre için kapatıldı, bu nedenle uzantı yapılandırması süresi dolmadı.
 - VM silindi ve silinen VM ile aynı kaynak grubunda ve aynı ada sahip başka bir VM oluşturuldu.
@@ -216,7 +250,7 @@ SELECT mf.name AS LogicalName, Physical_Name AS Location FROM sys.master_files m
 [{"path":"<Location>","logicalName":"<LogicalName>","isDir":false},{"path":"<Location>","logicalName":"<LogicalName>","isDir":false}]}
 ```
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ```json
 [{"path":"F:\\Data\\TestDB12.mdf","logicalName":"TestDB12","isDir":false},{"path":"F:\\Log\\TestDB12_log.ldf","logicalName":"TestDB12_log","isDir":false}]}
@@ -245,7 +279,7 @@ Dosyanın içeriği şu biçimde olmalıdır:
 ]
 ```
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ```json
 [

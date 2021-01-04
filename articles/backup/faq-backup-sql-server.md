@@ -4,12 +4,12 @@ description: Azure Backup ile Azure VM 'lerinde SQL Server veritabanlarının ye
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 89316770dc137bff031e6268db5ece156edd4f25
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172376"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734122"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM yedeklemesi üzerinde çalışan SQL Server veritabanları hakkında SSS
 
@@ -32,16 +32,16 @@ Bazı durumlarda Azure Backup hizmeti düzeltme yedeklemelerini tetikler. Otomat
 
 Otomatik olarak, bir özellik olarak tüm kullanıcılar için varsayılan olarak etkindir. Ancak, devre dışı bırakmak isterseniz aşağıdaki adımları gerçekleştirin:
 
-- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya ** üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
+- SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya **üzerindeExtensionSettingsOverrides.js** oluşturun veya düzenleyin.
 - **ExtensionSettingsOverrides.js**, *{"EnableAutoHealer": false}* olarak ayarlayın.
 - Değişikliklerinizi kaydedin ve dosyayı kapatın.
 - SQL Server örneğinde, **Görevi Yönet** ' i açın ve sonra **AzureWLBackupCoordinatorSvc** hizmetini yeniden başlatın.
 
-## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server 'da kaç tane eş zamanlı yedeklemenin çalıştırıldığını denetleyebilir miyim?
+## <a name="can-i-control-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL Server üzerinde eş zamanlı olarak kaç yedekleme işlemi çalıştırılacağını denetleyebilir miyim?
 
 Evet. Bir SQL Server örneğindeki etkiyi en aza indirmek için yedekleme ilkesinin çalışma hızını azallendirebilirsiniz. Ayarı değiştirmek için:
 
-1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya * üzerindeExtensionSettingsOverrides.js* oluşturun.
+1. SQL Server örneğinde, *C:\Program Files\Azure Iş yükü Backup\bin* klasöründe, dosya *üzerindeExtensionSettingsOverrides.js* oluşturun.
 2. *ExtensionSettingsOverrides.js* dosyadaki **Defaultbackuptasksthreshold** ayarını daha düşük bir değere (örneğin, 5) değiştirin. <br>
   `{"DefaultBackupTasksThreshold": 5}`
 <br>
@@ -62,7 +62,7 @@ SQL kısıtlamalarına göre, Ikincil çoğaltmada yalnızca tam yedeklemeyi Kop
 
 Hayır. Azure 'da çalışan SQL Server veritabanlarını Azure Backup korur. Bir kullanılabilirlik grubu (AG) Azure ile şirket içi makineler arasında yayılaysa, ağ yalnızca birincil çoğaltma Azure 'da çalışıyorsa korunabilir. Ayrıca, Azure Backup yalnızca kurtarma hizmetleri kasasıyla aynı Azure bölgesinde çalışan düğümleri korur.
 
-## <a name="can-i-protect-availability-groups-across-regions"></a>Kullanılabilirlik gruplarını bölgeler arasında koruyabilir miyim?
+## <a name="can-i-protect-availability-groups-across-regions"></a>Bölge genelindeki kullanılabilirlik gruplarını koruyabilir miyim?
 
 Azure Backup kurtarma hizmetleri Kasası, kasala aynı bölgedeki tüm düğümleri algılayabilir ve koruyabilir. SQL Server Always on kullanılabilirlik grubunuz birden çok Azure bölgesine yayılmışsa, birincil düğümü olan bölgeden Yedeklemeyi ayarlayın. Azure Backup, yedekleme tercihlerinize göre kullanılabilirlik grubundaki tüm veritabanlarını algılayabilir ve koruyabilir. Yedekleme tercihiniz karşılanmazsa yedeklemeler başarısız olur ve hata uyarısını alırsınız.
 
@@ -78,7 +78,7 @@ Hayır. Başarılı yedekleme işleri uyarı oluşturmaz. Uyarılar yalnızca ba
 
 Evet, bu özelliği [otomatik koruma](backup-sql-server-database-azure-vms.md#enable-auto-protection)ile elde edebilirsiniz.  
 
-## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?
+## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Otomatik korumalı bir örnekten veritabanı silersem yedeklemelere ne olur?
 
 Bir veritabanı, bir yeniden korunan örnekten bırakılırsa, veritabanı yedeklemeleri hala denenir. Bu, silinen veritabanının **yedekleme öğeleri** altında sağlıksız olarak gösterilmeye başladığı ve hala korunduğu anlamına gelir.
 
@@ -86,7 +86,7 @@ Bu veritabanını korumayı durdurmak için doğru yol, bu veritabanındaki **si
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?
 
-**Verileri koruma ile yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmez ve var olan kurtarma noktaları değişmeden kalır. Veritabanı hala korumalı olarak kabul edilir ve **yedekleme öğeleri**altında gösterilir.
+**Verileri koruma ile yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmez ve var olan kurtarma noktaları değişmeden kalır. Veritabanı hala korumalı olarak kabul edilir ve **yedekleme öğeleri** altında gösterilir.
 
 **Silme verileriyle yedeklemeyi durdurursanız**, gelecekteki yedeklemeler gerçekleşmeyecektir ve var olan kurtarma noktaları da silinir. Veritabanı korunmuyor olarak değerlendirilir ve yapılandırma Yedeklemedeki örnek altında gösterilir. Bununla birlikte, el ile seçilemeyen veya bu veritabanı tarafından korunabilen diğer, korunan veritabanlarının aksine, bu veritabanı gri görünür ve seçilemez. Bu veritabanını yeniden korumanın tek yolu, örnekte otomatik korumayı devre dışı bırakmanız. Artık bu veritabanını seçebilir ve korumayı yapılandırabilir veya örnekte otomatik korumayı yeniden etkinleştirebilirsiniz.
 
@@ -104,7 +104,12 @@ Yeniden adlandırılmış bir veritabanı yeni bir veritabanı olarak değerlend
   
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>TDE (Saydam Veri Şifrelemesi) açık olan veritabanlarını koruyabilir ve veritabanı tüm yedekleme işlemi boyunca şifreli olarak kalır mi?
 
-Evet, Azure Backup SQL Server veritabanlarının veya TDE 'ın etkinleştirildiği sunucunun yedeklenmesini destekler. Yedekleme, Azure tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (BYOK) birlikte [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017) 'yı destekler.  Yedekleme, yedekleme işleminin bir parçası olarak herhangi bir SQL şifrelemesi gerçekleştirmez, bu sayede veritabanı yedeklendiğinde şifreli olarak kalır.
+Evet, Azure Backup SQL Server veritabanlarının veya TDE 'ın etkinleştirildiği sunucunun yedeklenmesini destekler. Yedekleme, Azure tarafından yönetilen anahtarlarla veya müşteri tarafından yönetilen anahtarlarla (BYOK) birlikte [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) 'yı destekler.  Yedekleme, yedekleme işleminin bir parçası olarak herhangi bir SQL şifrelemesi gerçekleştirmez, bu sayede veritabanı yedeklendiğinde şifreli olarak kalır.
+
+## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Veri akışında bir sağlama toplamı işlemi mi Azure Backup?
+
+Veri akışında bir sağlama toplamı işlemi gerçekleştiririz. Ancak bu, [SQL sağlama toplamıyla](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)karıştırılmamalıdır.
+Azure iş yükü yedeklemesi, veri akışındaki sağlama toplamını hesaplar ve yedekleme işlemi sırasında açıkça depolar. Bu sağlama toplamı akışı daha sonra bir başvuru olarak alınır ve verilerin tutarlı olduğundan emin olmak için geri yükleme işlemi sırasında veri akışının sağlaması sırasında çapraz doğrulanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

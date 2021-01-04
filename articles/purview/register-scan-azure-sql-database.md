@@ -1,18 +1,18 @@
 ---
 title: Azure SQL veritabanını kaydetme ve tarama
 description: Bu öğreticide Azure SQL veritabanı 'nın nasıl taranması açıklanmaktadır
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1fbeedd8643a777b29ebe4993eed7b664240621c
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920276"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739799"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL veritabanını kaydetme ve tarama
 
@@ -28,7 +28,7 @@ Azure SQL veritabanı veri kaynağı aşağıdaki işlevleri destekler:
 
 ### <a name="known-limitations"></a>Bilinen sınırlamalar
 
-Azure purview, Azure SQL veritabanı 'nda [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) taranmasını desteklemez. 
+Azure purview, Azure SQL veritabanı 'nda [görünümlerin](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) taranmasını desteklemez. 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -89,7 +89,7 @@ Hizmet sorumlusu kullanmak için mevcut bir tane kullanabilir veya yeni bir tane
 Hizmet sorumlusu veya yönetilen kimliğin veritabanı, şemalar ve tablolar için meta verileri almak için izni olmalıdır. Ayrıca sınıflandırmanın örneklemesine yönelik tabloları sorgulayabilmelidir.
 
 - [Azure SQL ile Azure AD kimlik doğrulamasını yapılandırma ve yönetme](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Yönetilen kimlik kullanıyorsanız, purview hesabınızın kendi yönetilen kimliği vardır ve bu, temel olarak sizin oluşturduğunuz zaman sizin oluşturduğunuz bir addır. Azure SQL veritabanı ['nda hizmet sorumlusu kullanıcısı oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)öğreticisini IZLEYEREK Azure SQL veritabanı 'Nda BIR Azure AD kullanıcısını tam olarak takip ettiğiniz yönetilen kimlik veya kendi hizmet sorumlusu ile oluşturmanız gerekir. `db_owner`Kimliğe (**Önerilen**) izin atamanız gerekir. Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
+- Yönetilen kimlik kullanıyorsanız, purview hesabınızın kendi yönetilen kimliği vardır ve bu, temel olarak sizin oluşturduğunuz zaman sizin oluşturduğunuz bir addır. Azure SQL veritabanı ['nda hizmet sorumlusu kullanıcısı oluşturma](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database)öğreticisini IZLEYEREK Azure SQL veritabanı 'Nda BIR Azure AD kullanıcısını tam olarak takip ettiğiniz yönetilen kimlik veya kendi hizmet sorumlusu ile oluşturmanız gerekir. Kimliğe doğru izinleri (örn. `db_owner` veya) atamanız gerekir `db_datareader` . Kullanıcı oluşturmak ve izin vermek için örnek SQL söz dizimi:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER
@@ -100,7 +100,7 @@ Hizmet sorumlusu veya yönetilen kimliğin veritabanı, şemalar ve tablolar iç
     ```
 
     > [!Note]
-    > `Username`Kendi hizmet sorumlunuz veya purview 'ın yönetilen kimliği
+    > `Username`Kendi hizmet sorumlusu veya takip görünümü tarafından yönetilen kimlik. [Sabit veritabanı rolleri ve özellikleri](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)hakkında daha fazla bilgi edinebilirsiniz.
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Ana kasaya hizmet sorumlusu ve takip görünümü kimlik bilgileri ekleyin
 

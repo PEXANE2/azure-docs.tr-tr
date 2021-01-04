@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0682115727068c928418d97fbf92ed32897c39d4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0793547c4eafcad256664546240a07c1bcb0e628
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656760"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709026"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Bir ağ cihazı kayıt hizmeti (NDES) sunucusu üzerinde Azure AD Uygulama Ara Sunucusu ile tümleştirme
 
@@ -81,7 +81,7 @@ Azure AD Uygulama Ara Sunucusu, Azure üzerinde oluşturulmuştur. Bu, dağıtı
 
 1. Uygulamanızı kaydetmek için **+ Ekle** ' yi seçin.
 
-1. Adım 10 ' da kopyaladığınız bağlantıyı bir tarayıcıya yapıştırarak Azure AD uygulama proxy 'si aracılığıyla NDES sunucunuza erişip erişemeyeceğinizi test edin. Varsayılan bir IIS karşılama sayfası görmeniz gerekir.
+1. Adım 15 ' te kopyaladığınız bağlantıyı bir tarayıcıya yapıştırarak Azure AD uygulama proxy 'si aracılığıyla NDES sunucunuza erişip erişemeyeceğinizi test edin. Varsayılan bir IIS karşılama sayfası görmeniz gerekir.
 
 1. Son bir test olarak, önceki adımda yapıştırdığınız mevcut URL 'ye *mscep.dll* yolunu ekleyin:
 

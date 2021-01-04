@@ -1,108 +1,91 @@
 ---
 title: Ortamınızı Power BI Azure Time Series Insights bağlama | Microsoft Docs
 description: Kuruluşunuz genelinde verileri paylaşmak, grafik ve görüntüleme Power BI Azure Time Series Insights nasıl bağlayacağınızı öğrenin.
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: shreyasharmamsft
+ms.author: shresha
+manager: dpalled
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 680b3c5a9548fa06d0139bd441b5583c27427a77
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/14/2020
+ms.openlocfilehash: 07e79dbde142400677901ee02903144f9a42cd6b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020785"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740773"
 ---
 # <a name="visualize-data-from-azure-time-series-insights-in-power-bi"></a>Power BI Azure Time Series Insights verileri görselleştirme
 
-Azure Time Series Insights, bulutta zaman serisi verilerini depolamak, yönetmek, sorgulamak ve görselleştirmek için bir platformdur. [Power BI](https://powerbi.microsoft.com) , kuruluşunuz genelinde Öngörüler ve sonuçlar paylaşmanıza olanak sağlayan zengin görselleştirme özelliklerine sahip bir iş analizi aracıdır. Her iki hizmet de Azure Time Series Insights ' devralınan görselleştirme özellikleri ve Power BI da en iyi şekilde yararlanmak üzere tümleştirilebilir.
+Azure Time Series Insights, bulutta zaman serisi verilerini depolamak, yönetmek, sorgulamak ve görselleştirmek için bir platformdur. [Power BI](https://powerbi.microsoft.com) , kuruluşunuz genelinde Öngörüler ve sonuçlar paylaşmanıza olanak sağlayan zengin görselleştirme özelliklerine sahip bir iş analizi aracıdır. Her iki hizmet de güçlü veri görselleştirme ve Power BI kolay paylaşım özellikleri ile Azure Time Series Insights güçlü analizine sahip olabilirsiniz.
 
 Şunları öğrenirsiniz:
 
-* Bulut bağlayıcısını kullanarak Power BI Azure Time Series Insights bağlama
-* Power BI verileriniz ile görseller oluşturun
+* Yerel Azure Time Series Insights bağlayıcısını kullanarak Power BI Azure Time Series Insights bağlama
+* Power BI zaman serisi verileriniz ile görseller oluşturun
 * Power BI için raporu yayımlayın ve kuruluşunuzun geri kalanıyla paylaşabilirsiniz
 
-Son olarak, Azure Time Series Insights aracılığıyla zaman serisi verileri görselleştirmeyi ve Power BI güçlü veri görselleştirmesi ve kolay paylaşım yeteneklerini nasıl geliştirebileceğinizi öğreneceksiniz.
-
-Henüz yoksa, [ücretsiz bir Azure aboneliğine](https://azure.microsoft.com/free/) kaydolduğunuzdan emin olun.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
+* Henüz yoksa ücretsiz bir [Azure aboneliğine](https://azure.microsoft.com/free/) kaydolun.
 * [Power BI Desktop](https://powerbi.microsoft.com/downloads/) en son sürümünü indirin ve yükleyin
 * [Azure Time Series Insights Gen2 ortamı](./how-to-provision-manage.md) oluşturun veya oluşturun
 
+Lütfen [ortam erişim ilkelerini](./concepts-access-policies.md) gözden geçirin ve Azure Time Series Insights Gen2 ortamına doğrudan erişim veya Konuk erişiminiz olduğundan emin olun. 
+
 > [!IMPORTANT]
->
-> * Bağlayıcı şu an için **yalnızca ısınma depolarıyla** yapılandırılmış Azure Time Series Insights Gen2 ortamlarında desteklenir.
-> * Başka bir Azure AD Kiracısından Azure Time Series Insights Gen2 ortamına Konuk erişiminiz varsa, bağlayıcıya erişemeyeceksiniz. [Ortam erişim ilkeleri](./concepts-access-policies.md)hakkında bilgi edinin.
+> * [Power BI Desktop](https://powerbi.microsoft.com/downloads/)en son sürümünü indirip yükleyin. Bu makaledeki adımlarla birlikte takip etmek için, Power BI Desktop yüklü olan en azından Aralık 2020 (2.88.321.0) sürümüne sahip olduğunuzdan emin olun. 
 
 ## <a name="connect-data-from-azure-time-series-insights-to-power-bi"></a>Azure Time Series Insights verileri Power BI 'ye bağlama
 
-Azure Time Series Insights ortamınızı Power BI bağlamak için şu adımları izleyin:
-
-1. Azure Time Series Insights Gezginini aç
-1. Verileri sorgu veya ham veri olarak dışarı aktarma
-1. Power BI Desktop'ı açma
-1. Özel sorgudan yükle
-
-### <a name="export-data-into-power-bi-desktop"></a>Power BI Desktop 'a veri aktarma
+### <a name="1-export-data-into-power-bi-desktop"></a>1. verileri Power BI masaüstüne aktarın
 
 Başlamak için:
 
-1. Azure Time Series Insights Gezginini açın ve verilerinizi seçin.
+1. Azure Time Series Insights Gen2 Gezginini açın ve verilerinizi seçin. Power BI içine aktarılacak veriler budur.
 1. Memnun olduğunuz bir görünümü oluşturduktan sonra, **diğer eylemler** açılan menüsüne gidin ve **Power BI Bağlan**' ı seçin.
 
-    [![Gezgin dışarı aktarma Azure Time Series Insights](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
+    [![Azure Time Series Insights Gen2 Explorer dışarı aktarma](media/how-to-connect-power-bi/export-from-explorer.jpg)](media/how-to-connect-power-bi/export-from-explorer.jpg#lightbox)
 
-1. Parametrelerinizi bu sekmenin içinde ayarlayın:
+1. Dışarı aktarma için parametrelerinizi ayarlayın:
 
-   1. Görüntülenecek göreli zaman dilimini belirtin. Mevcut görünümümüz varsa, bunu **var olan zaman dilimi** olarak bırakın.
-
-   1. **Toplanan** ve **Ham olaylar** arasında seçim yapın.
+   * **Veri biçimi**: Power BI **Toplam verileri** veya **Ham olayları** dışarı aktarmak isteyip istemediğinizi seçin. 
 
        > [!NOTE]
-       > Verilerinizi Power BI daha sonra istediğiniz zaman toplayabilirsiniz, ancak toplandıktan sonra ham verilere dönemezsiniz.
+       > * Ham olayları dışa aktardığınızda, bu verileri daha sonra Power BI içinde toplayabilirsiniz. Ancak, toplu verileri dışa aktardığınızda Power BI ham verilere döndüremezsiniz. 
+       > * Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
 
-       > [!NOTE]
-       > Ham olay düzeyi verileri için 250.000 olay sayısı sınırı vardır.
+   * **Zaman aralığı**: Power BI ' de **sabit** bir zaman aralığı veya **en son** verileri görmek isteyip istemediğinizi seçin. Sabit zaman aralığının seçilmesi, yaptığınız arama alanındaki verilerin Power BI aktarılacağı anlamına gelir. En son zaman aralığını seçmek, Power BI seçtiğiniz arama kapsamı için en son verileri alacak anlamına gelir (örneğin, 1 saatlik veri Grafikleriniz ve "en son" ayarını seçerseniz Power BI bağlayıcı her zaman en son 1 saatlik veri için sorgular yapar.)
+  
+   * **Mağaza türü**: seçtiğiniz sorguyu **yarı depoya** veya **soğuk depoya** karşı çalıştırmak isteyip istemediğinizi seçin. 
 
-       [![Bağlan](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
+    > [!TIP]
+    > * Azure Time Series Insights gezgin, dışarı aktarmayı seçtiğiniz verilere bağlı olarak önerilen parametreleri otomatik olarak seçer. 
 
-   1. Azure Time Series Insights ortamınızı **Isınma deposu** ile yapılandırmadıysanız bir uyarı alırsınız.
+1. Ayarlarınızı yapılandırdıktan sonra **sorguyu panoya kopyala**' yı seçin.
 
-       [![Sıcak mağaza uyarısı](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+    [![Azure Time Series Insights Explorer 'ın kalıcı olarak dışarı aktarılması](media/how-to-connect-power-bi/choose-explorer-parameters.jpg)](media/how-to-connect-power-bi/choose-explorer-parameters.jpg#lightbox)
 
-       > [!TIP]
-       > Var olan örneğinizi Azure portal **yarı bir depolama** için yapılandırabilirsiniz.
+2. Power BI Desktop'ı başlatın.
+   
+3. **Giriş** sekmesinde Power BI Desktop ' de, sol üst köşedeki **verileri al** ' ı seçin ve daha sonra **daha fazlasını** yapın.
 
-1. **Sorguyu panoya kopyala**' yı seçin.
-1. Şimdi Power BI Desktop başlatın.
-1. **Giriş** sekmesinde Power BI Desktop ' de, sol üst köşedeki **verileri al** ' ı seçin ve daha sonra **daha fazlasını** yapın.
+    [![Power BI’da verileri alma](media/how-to-connect-power-bi/get-data-power-bi.jpg)](media/how-to-connect-power-bi/get-data-power-bi.jpg#lightbox)
 
-    [![Giriş açılan kutusu](media/how-to-connect-power-bi/power-bi-home-drop-down.png)](media/how-to-connect-power-bi/power-bi-home-drop-down.png#lightbox)
+4. **Azure Time Series Insights** arayın, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlanın**.
 
-1. **Azure Time Series Insights** arayın, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlanın**.
-
-    [![Power BI Azure Time Series Insights bağlama](media/how-to-connect-power-bi/connect-to-time-series-insights.png)](media/how-to-connect-power-bi/connect-to-time-series-insights.png#lightbox)
+    [![Power BI Azure Time Series Insights bağlama](media/how-to-connect-power-bi/select-tsi-connector.jpg)](media/how-to-connect-power-bi/select-tsi-connector.jpg#lightbox)
 
     Alternatif olarak, **Azure** sekmesine gidin, **Azure Time Series Insights (Beta)** öğesini seçin ve sonra **bağlantısını** yapın.
 
-1. Üçüncü taraf kaynaklarına bağlanmak için izin isteyen bir ileti iletişim kutusu görüntülenir. **Devam**' ı seçin.
+5. Azure Time Series Insights Gezgini ' nden kopyaladığınız sorguyu **özel sorgu** alanına yapıştırın ve sonra **Tamam**' a basın.
 
-    [![Özel sorgu oluştur ' a tıklayın](media/how-to-connect-power-bi/confirm-the-connection.png)](media/how-to-connect-power-bi/confirm-the-connection.png#lightbox)
+    [![Özel sorguyu yapıştırın ve Tamam ' ı seçin.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
 
-1. **Veri kaynağı** altındaki açılan menüde **özel sorgu oluştur**' u seçin. Panodan, aşağıdaki isteğe bağlı **özel sorgu (isteğe bağlı)** alanına yapıştırın ve sonra **Tamam**' a basın.
+6.  Veri tablosu şimdi yüklenir. Power BI yüklemek için **Yükle** ' ye basın. Verilerde herhangi bir dönüştürme yapmak istiyorsanız, **verileri Dönüştür**' e tıklayarak bunu şimdi yapabilirsiniz. Ayrıca, yükledikten sonra verilerinizi dönüştürebilirsiniz.
 
-    [![Özel sorguyu geçirin ve Tamam ' ı seçin.](media/how-to-connect-power-bi/custom-query-load.png)](media/how-to-connect-power-bi/custom-query-load.png#lightbox)  
-
-1. Veri tablosu şimdi yüklenir. Power BI yüklemek için **Yükle** ' ye basın.
-
-    [![Tablodaki yüklenen verileri gözden geçirin ve Yükle ' yi seçin.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
-
-Bu adımları tamamladıysanız bir sonraki bölüme atlayın.
+    [![Tablodaki verileri gözden geçirin ve Yükle ' yi seçin.](media/how-to-connect-power-bi/review-the-loaded-data-table.png)](media/how-to-connect-power-bi/review-the-loaded-data-table.png#lightbox)  
 
 ## <a name="create-a-report-with-visuals"></a>Görsel içeren rapor oluşturma
 
@@ -114,38 +97,25 @@ Verileri Power BI 'e aktardığınıza göre, görsellerin bulunduğu bir rapor 
 
 1. **Görsel öğeler** sütununda, istediğiniz görseli seçin. Örneğin, **çizgi grafik**' i seçin. Bu, Tuvalinize boş bir çizgi grafik ekler.
 
-1. **Alanlar** listesinde **_Timestamp** seçin ve öğeleri X ekseni üzerinde göstermek için **eksen** alanına sürükleyin. **Eksenin** değeri olarak **_Timestamp** ' ye geçdiğinizden emin olun (varsayılan **Tarih hiyerarşisi**).
+1.  **Alanlar** listesinde **_Timestamp** seçin ve X ekseninde saati göstermek için **eksen** alanına sürükleyin. **Eksenin** değeri olarak **_Timestamp** ' ye geçdiğinizden emin olun (varsayılan **Tarih hiyerarşisi**).
 
-    [![Ekran görüntüsü seçili _Timestamp zaman damgası menüsünü gösterir.](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
+    [![_Timestamp seçin](media/how-to-connect-power-bi/select-timestamp.png)](media/how-to-connect-power-bi/select-timestamp.png#lightbox)
 
-1. Yine, **alanlar** listesinde **Timeseriesıd** öğesini seçin ve öğeleri Y ekseni üzerinde göstermek için **değerler** alanına sürükleyin.
+1.  Yine **alanlar** listesinde, çizmek istediğiniz değişkeni seçin ve değerleri Y ekseni üzerinde göstermek için **değerler** alanına sürükleyin. Zaman serisi KIMLIK değerini seçin ve grafikte birden çok satır oluşturmak için, her zaman seri KIMLIĞI için bir tane olmak üzere **gösterge** alanına sürükleyin. Bu, Azure Time Series Insights Gezgini tarafından sağlananlara benzer bir görünüm işler! 
 
-    [![Çizgi grafik oluşturma](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
+    [![Temel çizgi grafik oluşturma](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
 1. Tuvalinize başka bir grafik eklemek için, çizgi grafik dışında tuval üzerinde herhangi bir yeri seçin ve bu işlemi tekrarlayın.
 
     [![Paylaşılacak ek grafikler oluşturma](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
-Raporunuzu oluşturduktan sonra, Power BI Reporting Services 'a yayımlayabilirsiniz.
+Raporunuzu oluşturduktan sonra, Power BI Reporting Services 'e yayımlayabilir ve kuruluşunuzdaki diğer kişilerle paylaşabilirsiniz.
 
 ## <a name="advanced-editing"></a>Gelişmiş Düzenle
-
-Power BI bir veri kümesini zaten yüklediyseniz ancak sorguyu değiştirmek istiyorsanız (Tarih/saat veya ortam KIMLIĞI parametreleri gibi), bunu Power BI Gelişmiş Düzenleyici işlevleri aracılığıyla yapabilirsiniz. Daha fazla bilgi edinmek için [Power BI belgelerine](/power-bi/desktop-query-overview) bakın.
-
-Genel bakış olarak:
-
-1. Power BI Desktop, **sorguları Düzenle**' yi seçin.
-1. **Gelişmiş Düzenleyici** tuşuna basın.
-
-    [![Gelişmiş Düzenleyici sorguları düzenleme](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png)](media/how-to-connect-power-bi/power-bi-advanced-query-editing.png#lightbox)
-
-1. JSON yükünü istediğiniz gibi değiştirin.
-1. **Bitti** ' yi seçin ve ardından & **Power Query Düzenleyicisi penceresinde** Uygula ' yı **kapatın** .
-
-Arabirim artık uyguladığınız istenen değişiklikleri yansıtır.  
+Power BI bir veri kümesini zaten yüklediyseniz ancak sorguyu değiştirmek istiyorsanız (Tarih/saat veya ortam KIMLIĞI parametreleri gibi), bunu Power BI Gelişmiş Düzenleyici işlevleri aracılığıyla yapabilirsiniz. **Power Query düzenleyicisini** kullanarak nasıl değişiklik yapılacağı hakkında daha fazla bilgi edinmek için [Power BI belgelerine](https://docs.microsoft.com/power-bi/desktop-query-overview) bakın. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Azure Time Series Insights için [Power BI bağlayıcı kavramlarını](/power-bi/desktop-query-overview) okuyun.
+* [Power BI Masaüstü](https://docs.microsoft.com/power-bi/desktop-query-overview)hakkında daha fazla bilgi edinin.
 
-* [Power BI Masaüstü](/power-bi/desktop-query-overview)hakkında daha fazla bilgi edinin.
+* Azure Time Series Insights Gen2 ' deki [verileri sorgulama](concepts-query-overview.md) hakkında bilgi edinin.

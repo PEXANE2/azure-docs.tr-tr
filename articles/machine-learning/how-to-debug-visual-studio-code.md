@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: a9d20732c3ae08718c400faff44137000e98fffd
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e572f1f6a9452ccab9deddb62a5e219a81df5d47
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629482"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740003"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code ile etkileşimli hata ayıklama
 
@@ -536,4 +536,10 @@ docker stop debug
 
 VS Code uzak olarak ayarladığınıza göre, kodunuzda etkileşimli olarak hata ayıklamak için VS Code uzaktan işlem olarak bir işlem örneği kullanabilirsiniz. 
 
-[Öğretici: Ilk ml modelinize eğitme](tutorial-1st-experiment-sdk-train.md) bir işlem örneğinin tümleşik bir not defteriyle nasıl kullanılacağını gösterir.
+Sorun giderme hakkında daha fazla bilgi edinin:
+
+* [Yerel model dağıtımı](how-to-troubleshoot-deployment-local.md)
+* [Uzak model dağıtımı](how-to-troubleshoot-deployment.md)
+* [Makine öğrenmesi işlem hatları](how-to-debug-pipelines.md)
+* [ParallelRunStep](how-to-debug-parallel-run-step.md)
+

@@ -3,17 +3,17 @@ title: Azure Kubernetes Service (AKS) kümesini yükseltme
 description: En son özellikleri ve güvenlik güncelleştirmelerini almak için bir Azure Kubernetes hizmeti (AKS) kümesini nasıl yükselteceğinizi öğrenin.
 services: container-service
 ms.topic: article
-ms.date: 11/17/2020
-ms.openlocfilehash: c5de1a02a077ccb5f46b685572c6c43f5951b224
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.date: 12/17/2020
+ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751504"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734361"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) kümesini yükseltme
 
-AKS kümesinin yaşam döngüsünün bir parçası olarak genellikle en son Kubernetes sürümüne yükseltmeniz gerekir. En son Kubernetes güvenlik sürümlerini uygulamanız veya en son özellikleri almak için yükseltmeniz önemlidir. Bu makalede, bir AKS kümesindeki ana bileşenlerin veya tek bir varsayılan düğüm havuzunun nasıl yükseltileceğini gösterir.
+AKS kümesi yaşam döngüsünün bir parçası, en son Kubernetes sürümüne düzenli güncelleştirmeler gerçekleştirmeyi içerir. En son güvenlik sürümlerini uygulamanız veya en son özellikleri almak için yükseltmeniz önemlidir. Bu makalede, bir AKS kümesindeki ana bileşenlerin veya tek bir varsayılan düğüm havuzunun nasıl yükseltileceğini gösterir.
 
 Birden çok düğüm havuzu veya Windows Server düğümü kullanan AKS kümelerinde bkz. [aks 'de düğüm havuzunu yükseltme][nodepool-upgrade].
 
@@ -22,31 +22,30 @@ Birden çok düğüm havuzu veya Windows Server düğümü kullanan AKS kümeler
 Bu makalede, Azure CLı sürüm 2.0.65 veya üstünü çalıştırıyor olmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli-install].
 
 > [!WARNING]
-> AKS kümesi yükseltmesi, düğümlerinizin bir eş ve drenajı tetikler. Kullanılabilir düşük bir işlem kotası varsa, yükseltme başarısız olabilir. Daha fazla bilgi için bkz. [kotaları artırma](../azure-portal/supportability/resource-manager-core-quotas-request.md) .
+> AKS kümesi yükseltmesi, düğümlerinizin bir eş ve drenajı tetikler. Kullanılabilir düşük bir işlem kotası varsa, yükseltme başarısız olabilir. Daha fazla bilgi için bkz. [kotaları artırma](../azure-portal/supportability/resource-manager-core-quotas-request.md)
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Kullanılabilir AKS kümesi yükseltmelerini denetle
 
-Kümeniz için hangi Kubernetes sürümlerinin kullanılabilir olduğunu denetlemek için [az aks Get-yükseltmeler][az-aks-get-upgrades] komutunu kullanın. Aşağıdaki örnek, *Myresourcegroup* adlı kaynak grubunda *Myakscluster* adlı kümede kullanılabilir yükseltmeleri denetler:
+Kümeniz için hangi Kubernetes sürümlerinin kullanılabilir olduğunu denetlemek için [az aks Get-yükseltmeler][az-aks-get-upgrades] komutunu kullanın. Aşağıdaki örnek *Myresourcegroup* Içinde *Myakscluster* için kullanılabilir yükseltmeleri denetler:
 
 ```azurecli-interactive
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 > [!NOTE]
-> Desteklenen bir AKS kümesini yükselttiğinizde, Kubernetes ikincil sürümleri atlanamaz. Örneğin, *1.12. x*  ->  *1.13. x* veya *1.13. x*  ->  *1.14. x* arasındaki yükseltmelere izin verilir, ancak *1.12. x*  ->  *1.14. x* değildir.
->
-> Yükseltmek için, *1.12. x*  ->  *1.14. x* sürümünden önce *1.12. x*  ->  *1.13. x* sürümünden yükseltme yapın ve ardından *1.13. x*  ->  *1.14. x*'den yükseltme yapın.
->
-> Birden çok sürüm atlanması yalnızca desteklenmeyen bir sürümden desteklenen bir sürüme yükseltilirken yapılabilir. Örneğin, desteklenmeyen bir *1,10. x* sürümünden yükseltme > desteklenen bir *1.15. x* tamamlanabilir.
+> Desteklenen bir AKS kümesini yükselttiğinizde, Kubernetes ikincil sürümleri atlanamaz. Tüm yükseltmelerin ana sürüm numarasına göre sıralı olarak gerçekleştirilmesi gerekir. Örneğin, *1.14. x*  ->  *1.15. x* veya *1.15. x*  ->  *1.16. x* arasındaki yükseltmelere izin verilir, ancak *1.14. x*  ->  *1.16. x* buna izin verilmez. 
+> > Birden çok sürüm atlanması, yalnızca _Desteklenmeyen bir sürümden_ _desteklenen bir sürüme_ yükseltilirken yapılabilir. Örneğin, desteklenmeyen bir *1,10. x* --> desteklenen bir *1.15. x* için bir yükseltme tamamlanabilir.
 
-Aşağıdaki örnek çıktı, kümenin *1.13.9* ve *1.13.10* sürümlerine yükseltileceğini gösterir:
+Aşağıdaki örnek çıktı, kümenin *1.19.1* ve *1.19.3* sürümlerine yükseltileceğini gösterir:
 
 ```console
-Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
--------  ----------------  ---------------  -----------------  ---------------
-default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
+Name     ResourceGroup    MasterVersion    Upgrades
+-------  ---------------  ---------------  --------------
+default  myResourceGroup  1.18.10          1.19.1, 1.19.3
 ```
-Kullanılabilir bir yükseltme yoksa şunları alacaksınız:
+
+Kullanılabilir bir yükseltme yoksa şu iletiyi alırsınız:
+
 ```console
 ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
 ```
@@ -58,23 +57,13 @@ ERROR: Table output unavailable. Use the --query option to specify an appropriat
 >
 > Azure CNı kullanıyorsanız, alt ağda kullanılabilir IP 'Lerin yanı sıra [Azure CNI 'nin IP gereksinimlerini karşılayacak](configure-azure-cni.md)şekilde doğrulayın.
 
-Varsayılan olarak, AKS, bir ek düğüm ile aşırı gerilim yükseltmeleri yapılandırır. En fazla aşırı gerilim ayarı için bir varsayılan değeri, bir önceki sürümlü düğümü değiştirmek için mevcut uygulamaların eşinden önce ek bir düğüm oluşturarak iş yükü kesintisini en aza indirmenize olanak sağlar. Yükseltme hızı ve yükseltme kesintisi arasında bir denge sağlamak için, en fazla dalgalanma değeri düğüm havuzu başına özelleştirilebilir. En fazla dalgalanma değeri arttırılarak, yükseltme işlemi daha hızlı tamamlanır, ancak en fazla aşırı gerilim için büyük bir değer ayarlamak yükseltme işlemi sırasında kesintiler oluşmasına neden olabilir. 
+Varsayılan olarak, AKS, bir ek düğüm ile aşırı gerilim yükseltmeleri yapılandırır. En fazla aşırı gerilim ayarları için bir varsayılan değeri, eski bir sürümlü düğümü değiştirmek üzere mevcut uygulamaların eşinden önce ek bir düğüm oluşturarak iş yükü kesintisini en aza indirmek için AKS 'i etkinleştirir. Yükseltme hızı ve yükseltme kesintisi arasında bir denge sağlamak için, en fazla dalgalanma değeri düğüm havuzu başına özelleştirilebilir. En fazla dalgalanma değeri arttırılarak, yükseltme işlemi daha hızlı tamamlanır, ancak en fazla aşırı gerilim için büyük bir değer ayarlamak yükseltme işlemi sırasında kesintiler oluşmasına neden olabilir. 
 
 Örneğin, en fazla %100 bir dalgalanma değeri, olası en hızlı yükseltme işlemini (düğüm sayısı katlama) sağlar, ancak düğüm havuzundaki tüm düğümlerin aynı anda bırakılmasına neden olur. Ortamları test etmek için bu gibi daha yüksek bir değer kullanmak isteyebilirsiniz. Üretim düğüm havuzları için %33 max_surge bir ayar önerilir.
 
 AKS, en fazla dalgalanma için hem tamsayı değerlerini hem de yüzde değerini kabul eder. "5" gibi bir tamsayı, aşırı yapılacak beş ek düğümü gösterir. "%50" değeri, havuzdaki geçerli düğüm sayısının yarısını bir dalgalanma değerini gösterir. En fazla dalgalanma yüzdesi değeri en az %1, en fazla %100 olabilir. Yüzde değeri en yakın düğüm sayısına yuvarlanır. En fazla dalgalanma değeri, yükseltme sırasında geçerli düğüm sayısından düşükse, en fazla dalgalanma değeri için geçerli düğüm sayısı kullanılır.
 
 Yükseltme sırasında, en fazla dalgalanma değeri en az 1, düğüm havuzunuzdaki düğüm sayısına eşit bir en büyük değer olabilir. Daha büyük değerler ayarlayabilirsiniz, ancak en fazla dalgalanma için kullanılan en fazla düğüm sayısı, yükseltme sırasında havuzdaki düğüm sayısından daha yüksek olmayacaktır.
-
-CLı sürümü 2.16.0 'e kadar, en fazla aşırı gerilim kullanmak için *aks-Preview* CLI uzantısına ihtiyacınız olacaktır. [Az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeler olup olmadığını denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 > [!Important]
 > Düğüm havuzundaki en fazla aşırı gerilim ayarı kalıcıdır.  Sonraki Kubernetes yükseltmeleri veya düğüm sürümü yükseltmeleri, bu ayarı kullanır. Düğüm havuzlarınızın en fazla dalgalanma değerini istediğiniz zaman değiştirebilirsiniz. Üretim düğüm havuzları için %33 olan en fazla% ayarını öneririz.
@@ -93,7 +82,12 @@ az aks nodepool update -n mynodepool -g MyResourceGroup --cluster-name MyManaged
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS kümesini yükseltme
 
-AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında AKS, belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir arabellek düğümü (veya [en fazla aşırı gerilim](#customize-node-surge-upgrade)olarak yapılandırılan sayıda düğüm) ekler. Böylece, çalışan uygulamaların kesintiye uğramasını en aza indirmek için eski [düğümlerden birini eşit][kubernetes-drain] hale gelir (en fazla gerilim kullanıyorsanız, belirtilen arabellek düğümlerinin sayısıyla aynı anda çok sayıda düğüm [olarak çalışır)][kubernetes-drain] . Eski düğüm tamamen boşaltılırsa, yeni sürümü alacak şekilde yeniden görüntülenir ve aşağıdaki düğümün yükseltilmesi için arabellek düğümü olur. Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir. İşlemin sonunda, son arabellek düğümü silinecek, mevcut Aracı düğüm sayısı ve bölge bakiyesi korunacaktır.
+AKS kümeniz için kullanılabilir sürümlerin bir listesi ile yükseltmek için [az aks Upgrade][az-aks-upgrade] komutunu kullanın. Yükseltme işlemi sırasında AKS 'ler şunları yapar: 
+- Belirtilen Kubernetes sürümünü çalıştıran kümeye yeni bir arabellek düğümü (veya [en fazla dalgalanma](#customize-node-surge-upgrade)göre yapılandırılan düğüm sayısı) ekleyin. 
+- çalışan uygulamalar için kesintiyi en aza indirmek için eski düğümlerden birini [beğenin][kubernetes-drain] (en fazla dalgalanma kullanıyorsanız, belirtilen arabellek düğümleri sayısıyla aynı anda [çok sayıda düğüm olarak çalışır)][kubernetes-drain] . 
+- Eski düğüm tamamen boşaltılırsa, yeni sürümü alacak şekilde yeniden görüntülenir ve aşağıdaki düğümün yükseltilmesi için arabellek düğümü olur. 
+- Bu işlem, kümedeki tüm düğümler yükseltilene kadar yinelenir. 
+- İşlemin sonunda, son arabellek düğümü silinecek, mevcut Aracı düğüm sayısı ve bölge bakiyesi korunacaktır.
 
 ```azurecli-interactive
 az aks upgrade \
@@ -118,18 +112,20 @@ Aşağıdaki örnek çıktıda, kümenin artık *1.13.10* çalıştığını gö
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.18.10              Succeeded            myakscluster-dns-379cbbb9.hcp.eastus.azmk8s.io
 ```
 
-## <a name="set-auto-upgrade-channel-preview"></a>Otomatik yükseltme kanalını ayarla (Önizleme)
+## <a name="set-auto-upgrade-channel"></a>Otomatik yükseltme kanalını ayarla
 
 Bir kümeyi el ile yükseltmenin yanı sıra, kümenizde bir otomatik yükseltme kanalı da ayarlayabilirsiniz. Aşağıdaki yükseltme kanalları kullanılabilir:
 
-* *hiçbiri*, Otomatik yükseltmeleri devre dışı bırakan ve kümeyi geçerli Kubernetes sürümünde tutan yok. Bu varsayılandır ve hiçbir seçenek belirtilmemişse kullanılır.
-* ikincil sürümü aynı tutarken, kümeyi desteklenen en son düzeltme eki sürümüne otomatik olarak yükseltecek olan *Düzeltme Eki*. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.17.9* olarak yükseltilir.
-* *kararlı*, kümeyi alt sürüm *N-1*' deki desteklenen en son düzeltme eki sürümüne otomatik olarak yükseltecek, burada *n* desteklenen en son alt sürümdür. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.18.6* olarak yükseltilir.
-* *hızlı*, kümeyi en son desteklenen alt sürümde bulunan en son desteklenen yama sürümüne otomatik olarak yükseltecek. Kümenin en son desteklenen alt sürüm olduğu *n-2* alt *sürümünde yer alan* Kubernetes 'nin bir sürümünde olduğu durumlarda, küme ilk olarak *n-1* alt sürümünde desteklenen en son düzeltme eki sürümüne yükseltir. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz önce *1.18.6* olarak yükseltilir, sonra *1.19.1* olarak yükseltilir.
+|Kanal| Eylem | Örnek
+|---|---|---|
+| `none`| Otomatik yükseltmeleri devre dışı bırakır ve kümeyi geçerli Kubernetes sürümünde tutar| Değiştirilmemiş olarak bırakılırsa varsayılan ayar|
+| `patch`| ikincil sürümü aynı tutarken, kullanılabilir hale geldiğinde kümeyi desteklenen son düzeltme eki sürümüne otomatik olarak yükseltin.| Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.17.9* olarak yükseltilir.|
+| `stable`| kümeyi, alt sürüm *n-1*' deki en son desteklenen yama sürümüne otomatik olarak yükseltin, burada *N* desteklenen en son alt sürümdür.| Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz *1.18.6* olarak yükseltilir.
+| `rapid`| kümeyi desteklenen en son alt sürümde bulunan en son desteklenen yama sürümüne otomatik olarak yükseltin.| Kümenin en son desteklenen alt sürüm olduğu *n-2* alt *sürümünde yer alan* Kubernetes 'nin bir sürümünde olduğu durumlarda, küme ilk olarak *n-1* alt sürümünde desteklenen en son düzeltme eki sürümüne yükseltir. Örneğin, bir küme sürüm *1.17.7* çalıştırıyorsa ve *1.17.9*, *1.18.4*, *1.18.6* ve *1.19.1* sürümleri kullanılabiliyorsa, kümeniz önce *1.18.6* olarak yükseltilir, sonra *1.19.1* olarak yükseltilir.
 
 > [!NOTE]
 > Küme otomatik yükseltme yalnızca Kubernetes 'in GA sürümlerine güncelleştirmeler sağlar ve önizleme sürümleri için güncelleştirmeyecektir.
@@ -156,16 +152,6 @@ Hazırlandığınızda, [az Provider Register][az-provider-register] komutunu ku
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
-```
-
-*Aks-Preview* uzantısını yüklemek için [az Extension Add][az-extension-add] komutunu kullanın ve [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
 ```
 
 Bir küme oluştururken otomatik yükseltme kanalını ayarlamak için, aşağıdaki örneğe benzer şekilde *otomatik yükseltme kanalı* parametresini kullanın.

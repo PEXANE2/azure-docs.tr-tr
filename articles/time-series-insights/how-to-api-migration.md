@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: shresha
-ms.openlocfilehash: 3aedbef079ba62f42ea79afdcd9995d7ee23d9fa
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 15f1a814b302611029cf6459b8d2df93a32a2d36
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020734"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740564"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>Yeni Azure Time Series Insights Gen2 API sürümlerine geçiş
 
@@ -76,7 +76,7 @@ Power BI bağlayıcısını kullanarak sorgular oluşturduysanız, önizleme API
 Sorguları yeni API sürümünü ve yeni zaman serisi Ifade sözdizimini kullanacak şekilde güncelleştirmek için, sorguların Gezginden yeniden oluşturulması gerekir. [Power BI bağlayıcısını kullanarak sorgu oluşturma](./how-to-connect-power-bi.md)hakkında daha fazla bilgi edinin.
 
 > [!NOTE]
-> Power BI Desktop Temmuz 2020 sürümünü kullanıyor olmanız gerekir. Aksi takdirde, [geçersiz bir sorgu yük sürümü hatası](./how-to-diagnose-troubleshoot.md#problem-power-bi-connector-shows-unable-to-connect)görebilirsiniz.
+> En azından Power BI Desktop Temmuz 2020 sürümünü kullanıyor olmanız gerekir. Bunu yapmazsanız, "geçersiz sorgu yük sürümü" hatası görebilirsiniz.
 
 ## <a name="migrate-custom-applications"></a>Özel uygulamaları geçirme
 
