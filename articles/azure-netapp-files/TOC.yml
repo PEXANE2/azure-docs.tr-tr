@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Azure NetApp Files hakkında SSS
       href: azure-netapp-files-faqs.md
+    - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı nedir?
+      href: azacsnap-introduction.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure NetApp Files için kaydolma
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager şablonu
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Azure Uygulamayla Tutarlı Anlık Görüntü Aracı (AzAcSnap)
+      items:
+        - name: AzAcSnap aracını kullanmaya başlama
+          href: azacsnap-get-started.md
+        - name: AzAcSnap aracını yükleme
+          href: azacsnap-installation.md
+        - name: AzAcSnap kullanarak olağanüstü durum kurtarma
+          href: azacsnap-disaster-recovery.md
+        - name: AzAcSnap kullanmaya yönelik ipuçları ve püf noktaları
+          href: azacsnap-tips.md
+        - name: AzAcSnap sorunlarını giderme
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap komut başvurusu
+          items:
+            - name: AzAcSnap aracını yapılandırma
+              href: azacsnap-cmd-ref-configure.md
+            - name: AzAcSnap aracını test etme
+              href: azacsnap-cmd-ref-test.md
+            - name: AzAcSnap kullanarak yedekleme
+              href: azacsnap-cmd-ref-backup.md
+            - name: AzAcSnap kullanarak ayrıntıları alma
+              href: azacsnap-cmd-ref-details.md
+            - name: AzAcSnap kullanarak silme
+              href: azacsnap-cmd-ref-delete.md
+            - name: AzAcSnap kullanarak geri yükleme
+              href: azacsnap-cmd-ref-restore.md
 - name: Kaynaklar
   items:
     - name: Fiyatlandırma

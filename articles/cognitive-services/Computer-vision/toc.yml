@@ -59,7 +59,7 @@
               href: /legal/cognitive-services/computer-vision/disclosure-design?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
             - name: Araştırma içgörüleri
               href: /legal/cognitive-services/computer-vision/research-insights?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
-        - name: 'Uyumluluk, gizlilik ve güvenlik'
+        - name: 'Veriler, gizlilik ve güvenlik'
           href: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
 - name: Kapsayıcılar
   items:
@@ -103,7 +103,7 @@
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
     - name: Azure PowerShell
       href: /powershell/module/azurerm.cognitiveservices/

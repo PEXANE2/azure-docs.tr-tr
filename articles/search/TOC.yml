@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Özel uç noktalar üzerinden erişim
               href: search-indexer-howto-access-private.md
-        - name: Kimlik tabanlı erişim
+        - name: Belge düzeyi güvenlik
           items:
             - name: Güvenlik filtreleri
               href: search-security-trimming-for-azure-search.md
@@ -408,7 +408,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Geliştirici kursu (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: İş ortağı çözümleri
+      href: resource-partners-knowledge-mining.md
     - name: SSS
       href: search-faq-frequently-asked-questions.md
     - name: Fiyatlandırma

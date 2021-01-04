@@ -290,6 +290,8 @@
         - name: Dağıtım Yöneticisi’nde sistem durumu denetimini kullanma
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: Şablonlar hakkında Microsoft Learn yolu
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: Kavramlar
   items:
     - name: Şablon en iyi uygulamalar

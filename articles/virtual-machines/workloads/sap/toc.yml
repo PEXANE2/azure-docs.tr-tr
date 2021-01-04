@@ -72,6 +72,8 @@
       items:
         - name: Azure portalı üzerinden Azure HANA Büyük Örnekler denetimi
           href: hana-li-portal.md
+        - name: BareMetal Örnekleri Azure portal aracılığıyla yönetme
+          href: baremetal-infrastructure-portal.md
         - name: STONITH ile HA Kurulumu
           href: ha-setup-with-stonith.md
         - name: Type II SKU'ları için İşletim Sistemi Yedeklemesi
