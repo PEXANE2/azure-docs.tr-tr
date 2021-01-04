@@ -3,12 +3,12 @@ title: Azure DevTest Labs Uzak Masaüstü Ağ Geçidi kullanmak için laboratuva
 description: RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar VM 'lerine güvenli erişim sağlamak için Azure DevTest Labs bir laboratuvarı Uzak Masaüstü ağ geçidiyle nasıl yapılandıracağınızı öğrenin.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b48a0709deb21ca0f8a27d1cf953c7d8d4ba2cc8
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: dcf5191dea64c3d7bf28b9ce1c616d3d2defb73e
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144695"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695687"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs ' de laboratuvarınızı Uzak Masaüstü Ağ geçidini kullanacak şekilde yapılandırma
 Azure DevTest Labs, laboratuvarınız için bir Uzak Masaüstü Ağ Geçidi yapılandırarak, RDP bağlantı noktasını açığa çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM 'Ler) güvenli erişim sağlayabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişimi olan tüm sanal makineleri görüntülemesi ve bunlara bağlanabilmesi için merkezi bir yer sağlar. **Sanal makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için AÇABILECEĞINIZ makineye özel bir RDP dosyası oluşturur. Laboratuvarınızı Uzak Masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve koruyabilirsiniz. 
@@ -67,7 +67,7 @@ Aşağıdaki adımları kullanarak Laboratuvarı, belirteç kimlik doğrulaması
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 1. **Tüm hizmetler**' i seçin ve ardından listeden **DevTest Labs** ' i seçin.
-1. Laboratuvarlar listesinden **laboratuvarınızı**seçin.
+1. Laboratuvarlar listesinden **laboratuvarınızı** seçin.
 1. Laboratuvarın sayfasında **yapılandırma ve ilkeler**' i seçin.
 1. Sol taraftaki menüde, **Ayarlar** bölümünde **Laboratuvar ayarları**' nı seçin.
 1. **Uzak Masaüstü** bölümünde, **ağ geçidi ana bilgisayar** adı alanı için Uzak Masaüstü Hizmetleri ağ geçidi makinesi veya grubu için tam etkı alanı adını (FQDN) veya IP adresini girin. Bu değer, ağ geçidi makinelerinde kullanılan TLS/SSL sertifikasının FQDN 'siyle aynı olmalıdır.
@@ -135,7 +135,7 @@ Uzak Masaüstü Ağ Geçidi grubuna yönelik örnek bir çözüm kurmak için a�
     Şablon, aşağıdaki komutu kullanarak Azure CLı kullanılarak dağıtılabilir:
 
     ```azurecli
-    az group deployment create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
+    az deployment group create --resource-group {resource-group} --template-file azuredeploy.json --parameters @azuredeploy.parameters.json -–parameters _artifactsLocation="{storage-account-endpoint}/{container-name}" -–parameters _artifactsLocationSasToken = "?{sas-token}"
     ```
 
     Parametrelerin açıklamaları aşağıda verilmiştir:

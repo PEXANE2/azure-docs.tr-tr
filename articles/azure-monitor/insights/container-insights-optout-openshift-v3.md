@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma | Microsoft Docs
 description: Bu makalede, Azure Red Hat OpenShift kümenizi kapsayıcılar için Azure Izleyici ile izlemeyi nasıl durdurulabileceğinizi açıklanmaktadır.
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6c21b17fd9faed7b133cd8ecad767ae7bd4aa868
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 7e6ab46940ed29a98b3988c00c92d6c691d6e0f0
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216547"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695623"
 ---
 # <a name="how-to-stop-monitoring-your-azure-red-hat-openshift-v3-cluster"></a>Azure Red Hat OpenShift v3 kümenizi izlemeyi durdurma
 
@@ -108,7 +108,7 @@ Azure CLı 'yı kullanmayı seçerseniz, önce CLı 'yi yerel olarak yüklemeniz
 ```azurecli
 az login   
 az account set --subscription "Subscription Name"
-az group deployment create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
+az deployment group create --resource-group <ResourceGroupName> --template-file ./OptOutTemplate.json --parameters @./OptOutParam.json  
 ```
 
 Yapılandırma değişikliğinin tamamlanması birkaç dakika sürebilir. Tamamlandığında, sonucu içeren aşağıdakine benzer bir ileti döndürülür:

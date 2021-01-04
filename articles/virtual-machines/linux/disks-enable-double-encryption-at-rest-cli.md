@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 55a49c5f8d066cd6893c46ef9942462bb7911307
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7fabf5afa60590e92f7c0ca10197c436c1c0b8a0
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360624"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97702268"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Yönetilen diskler için REST 'te çift şifrelemeyi etkinleştirmek üzere Azure CLı 'yi kullanma
 
@@ -23,7 +23,7 @@ Azure Disk Depolama, yönetilen diskler için REST 'de çift şifrelemeyi destek
 
 En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip, [az Login](/cli/azure/reference-index)ile bir Azure hesabında oturum açın.
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 1. Azure Key Vault ve şifreleme anahtarının bir örneğini oluşturun.
 
@@ -49,7 +49,7 @@ En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip, [az Login](/cli/a
 1.    EncryptionType EncryptionAtRestWithPlatformAndCustomerKeys olarak ayarlanmış bir DiskEncryptionSet oluşturun. Azure Resource Manager (ARM) şablonunda API sürüm **2020-05-01** ' yı kullanın. 
     
         ```azurecli
-        az group deployment create -g $rgName \
+        az deployment group create -g $rgName \
        --template-uri "https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/DoubleEncryption/CreateDiskEncryptionSetForDoubleEncryption.json" \
         --parameters "diskEncryptionSetName=$diskEncryptionSetName" "encryptionType=EncryptionAtRestWithPlatformAndCustomerKeys" "keyVaultId=$keyVaultId" "keyVaultKeyUrl=$keyVaultKeyUrl" "region=$location"
         ```

@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/12/2020
-ms.openlocfilehash: 7f92b4327b53b38cc83493c65ad573523546ee58
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095143"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695177"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Azure Data Factory kullanarak Azure SYNAPSE Analytics 'te veri kopyalama ve dönüştürme
 
@@ -68,8 +68,8 @@ Aşağıdaki özellikler bir Azure SYNAPSE Analytics bağlı hizmeti için deste
 | Serviceprincipalıd  | Uygulamanın istemci KIMLIĞINI belirtin.                         | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Servicesprincipalkey | Uygulamanın anahtarını belirtin. Data Factory güvenli bir şekilde depolamak için bu alanı SecureString olarak işaretleyin veya [Azure Key Vault depolanan bir gizli dizi başvurusu](store-credentials-in-key-vault.md)yapın. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
 | Kiracı              | Uygulamanızın altında bulunduğu kiracı bilgilerini (etki alanı adı veya kiracı KIMLIĞI) belirtin. Fareyi, Azure portal sağ üst köşesine getirerek alabilirsiniz. | Evet, Azure AD kimlik doğrulamasını bir hizmet sorumlusu ile kullandığınızda. |
-| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment** ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | No |
-| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | No                                                           |
+| Azurecses türü | Hizmet sorumlusu kimlik doğrulaması için, Azure AD uygulamanızın kaydedildiği Azure bulut ortamının türünü belirtin. <br/> İzin verilen değerler **Azucumhuriyeti**, **AzureChina**, **AzureUsGovernment** ve **AzureGermany**. Varsayılan olarak, Data Factory 'nin bulut ortamı kullanılır. | Hayır |
+| connectVia          | Veri deposuna bağlanmak için kullanılacak [tümleştirme çalışma zamanı](concepts-integration-runtime.md) . Azure Integration Runtime veya şirket içinde barındırılan tümleştirme çalışma zamanını (veri depolubir özel ağda bulunuyorsa) kullanabilirsiniz. Belirtilmemişse, varsayılan Azure Integration Runtime kullanır. | Hayır                                                           |
 
 Farklı kimlik doğrulama türleri için sırasıyla Önkoşullar ve JSON örnekleri hakkında aşağıdaki bölümlere bakın:
 
@@ -264,16 +264,20 @@ Azure SYNAPSE Analytics 'ten veri kopyalamak için kopyalama etkinliği kaynağ�
 | Özellik                     | Açıklama                                                  | Gerekli |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | tür                         | Kopyalama etkinliği kaynağının **Type** özelliği **sqldwsource** olarak ayarlanmalıdır. | Yes      |
-| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | No       |
-| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | No       |
-| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | No       |
-| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](/dotnet/api/system.data.isolationlevel) başvurun. | No |
-| partitionOptions | Azure SYNAPSE Analytics 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None` ), Azure SYNAPSE Analytics 'ten eş zamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | No |
-| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | No |
+| sqlReaderQuery               | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `select * from MyTable`. | Hayır       |
+| sqlReaderStoredProcedureName | Kaynak tablodaki verileri okuyan saklı yordamın adı. Son SQL ifadesinin saklı yordamda bir SELECT ifadesinin olması gerekir. | Hayır       |
+| storedProcedureParameters    | Saklı yordamın parametreleri.<br/>İzin verilen değerler ad veya değer çiftleridir. Parametrelerin adları ve büyük harfleri, saklı yordam parametrelerinin adlarıyla ve büyük küçük harfleriyle aynı olmalıdır. | Hayır       |
+| 'Sinden | SQL kaynağı için işlem kilitleme davranışını belirtir. İzin verilen değerler: **ReadCommitted**, **READUNCOMMITTED**, **RepeatableRead**, **Serializable**, **Snapshot**. Belirtilmemişse, veritabanının varsayılan yalıtım düzeyi kullanılır. Daha fazla ayrıntı için [Bu belgeye](/dotnet/api/system.data.isolationlevel) başvurun. | Hayır |
+| partitionOptions | Azure SYNAPSE Analytics 'ten veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler: **none** (default), **Physicalpartitionsoftable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None` ), Azure SYNAPSE Analytics 'ten eş zamanlı olarak veri yükleme derecesi, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) kopyalama etkinliğindeki ayar tarafından denetlenir. | Hayır |
+| partitionSettings | Veri bölümleme için ayarların grubunu belirtin. <br>Bölüm seçeneği olmadığında uygulayın `None` . | Hayır |
 | **_Altında `partitionSettings` :_* _ | | |
-| partitionColumnName |  `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` `datetimeoffset` Paralel kopya için Aralık bölümleme tarafından kullanılacak tamsayı veya tarih/DateTime türünde * (,,,,,,, veya) kaynak sütununun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
-| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
-| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | No |
+| partitionColumnName |  `int` `smallint` `bigint` `date` `smalldatetime` `datetime` `datetime2` `datetimeoffset` Paralel kopya için Aralık bölümleme tarafından kullanılacak tamsayı veya tarih/DateTime türünde * (,,,,,,, veya) kaynak sütununun adını belirtin. Belirtilmemişse, tablonun dizini veya birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Kaynak verileri almak için bir sorgu kullanırsanız,  `?AdfDynamicRangePartitionCondition ` WHERE yan tümcesinde kanca. Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | Hayır |
+| Partitionüstsınırı | Bölüm aralığı bölme için bölüm sütununun en büyük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.  <br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | Hayır |
+| Partitionalme sınırı | Bölüm aralığı bölme için bölüm sütununun en küçük değeri. Bu değer, tablodaki satırları filtrelemeye yönelik değil, bölümün ilerlemesine karar vermek için kullanılır. Tablodaki veya sorgu sonucundaki tüm satırlar bölümlenecek ve kopyalanabilir. Belirtilmemişse, kopyalama etkinliği değeri otomatik olarak algılar.<br>Bölüm seçeneği olduğunda uygulayın `DynamicRange` . Örnek için, [SQL veritabanı 'Ndan paralel kopyalama](#parallel-copy-from-azure-synapse-analytics) bölümüne bakın. | Hayır |
+
+**Aşağıdaki noktaya göz önünde edin:**
+
+- Verileri almak için kaynakta saklı yordam kullanırken, saklı yordamınız farklı bir parametre değeri geçirildiğinde farklı bir şema döndürüyor olarak tasarlanmışsa, hata ile karşılaşabilirsiniz veya kullanıcı arabiriminden şemayı içeri aktarırken ya da otomatik tablo oluşturma ile verileri SQL veritabanına kopyalarken beklenmedik sonucu görebilirsiniz.
 
 **Örnek: SQL sorgusu kullanma**
 
@@ -385,8 +389,8 @@ Verileri Azure SYNAPSE Analytics 'e kopyalamak için kopyalama etkinliğindeki h
 | copyCommandSettings | Özelliği TRUE olarak ayarlandığında belirtilenebilir bir özellik grubu `allowCopyCommand` . | Hayır.<br/>KOPYALAMA kullanırken uygulayın. |
 | writeBatchSize    | **Toplu iş BAŞıNA** SQL tablosuna eklenecek satır sayısı.<br/><br/>İzin verilen değer **Integer** (satır sayısı). Varsayılan olarak, Data Factory satır boyutuna göre uygun toplu iş boyutunu dinamik olarak belirler. | Hayır.<br/>Toplu ekleme kullanırken uygulayın.     |
 | writeBatchTimeout | Toplu ekleme işleminin, zaman aşımına uğramadan önce tamamlaması için bekleme süresi.<br/><br/>İzin verilen değer **TimeSpan** değeridir. Örnek: "00:30:00" (30 dakika). | Hayır.<br/>Toplu ekleme kullanırken uygulayın.        |
-| Ön Copyscrıpt     | Her çalıştırmada Azure SYNAPSE Analytics 'e veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | No                                            |
-| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |No |
+| Ön Copyscrıpt     | Her çalıştırmada Azure SYNAPSE Analytics 'e veri yazmadan önce çalıştırılacak bir SQL sorgusu belirtin. Önceden yüklenmiş verileri temizlemek için bu özelliği kullanın. | Hayır                                            |
+| tableOption | Kaynak şemasına göre yoksa [Havuz tablosunun otomatik olarak oluşturulup](copy-activity-overview.md#auto-create-sink-tables) oluşturulmayacağını belirtir. İzin verilen değerler: `none` (varsayılan), `autoCreate` . |Hayır |
 | disableMetricsCollection | Data Factory, performansı en iyi duruma getirme ve öneriler için Azure SYNAPSE Analytics DWUs gibi ölçümleri toplar. Bu davranışla ilgileniyorlarsa, `true` devre dışı bırakmak için belirtin. | Hayır (varsayılan değer `false` ) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Azure SYNAPSE Analytics havuz örneği
@@ -484,10 +488,10 @@ Kopyalama etkinliğinde aşağıdaki PolyBase ayarları desteklenir `polyBaseSet
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | No                                            |
-| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde** değeridir. | No                                            |
+| rejectValue       | Sorgu başarısız olmadan önce reddedilecek satırların sayısını veya yüzdesini belirtir.<br/><br/>[Dış tablo oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql)öğesinin bağımsız değişkenler bölümünde PolyBase 'in reddetme seçenekleri hakkında daha fazla bilgi edinin. <br/><br/>İzin verilen değerler 0 (varsayılan), 1, 2, vb. olabilir. | Hayır                                            |
+| rejectType        | **RejectValue** seçeneğinin sabit değer veya yüzde değeri olup olmadığını belirtir.<br/><br/>İzin verilen değerler **değer** (varsayılan) ve **yüzde** değeridir. | Hayır                                            |
 | rejectSampleValue | PolyBase reddedilen satırların yüzdesini yeniden hesaplamadan önce alınacak satır sayısını belirler.<br/><br/>İzin verilen değerler 1, 2, vb. olabilir. | Evet, **rejectType** **ise.** |
-| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | No                                            |
+| useTypeDefault    | PolyBase metin dosyasından verileri aldığında, sınırlandırılmış metin dosyalarında eksik değerlerin nasıl işleneceğini belirtir.<br/><br/>[Dış dosya biçimi oluşturma (Transact-SQL)](/sql/t-sql/statements/create-external-file-format-transact-sql)Içindeki bağımsız değişkenler bölümünden bu özellik hakkında daha fazla bilgi edinin.<br/><br/>İzin verilen değerler **true** ve **false** (varsayılan) şeklindedir.<br><br> | Hayır                                            |
 
 ### <a name="direct-copy-by-using-polybase"></a>PolyBase kullanarak doğrudan kopyalama
 
@@ -712,8 +716,8 @@ Kopyalama etkinliğinde aşağıdaki COPY deyimin ayarları desteklenir `allowCo
 
 | Özellik          | Açıklama                                                  | Gerekli                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
-| defaultValues | Azure SYNAPSE Analytics 'te her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | No |
-| additionalOptions | [Copy deyimindeki](/sql/t-sql/statements/copy-into-transact-sql)"with" yan tümcesinde doğrudan bir Azure SYNAPSE Analytics Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | No |
+| defaultValues | Azure SYNAPSE Analytics 'te her bir hedef sütun için varsayılan değerleri belirtir.  Özelliğindeki varsayılan değerler, veri ambarında ayarlanan varsayılan kısıtlamanın üzerine yazılır ve kimlik sütunu varsayılan değere sahip olamaz. | Hayır |
+| additionalOptions | [Copy deyimindeki](/sql/t-sql/statements/copy-into-transact-sql)"with" yan tümcesinde doğrudan bir Azure SYNAPSE Analytics Copy ifadesine geçirilecek ek seçenekler. COPY deyimlerine göre hizalamak için değeri gereken şekilde tırnak içine edin. | Hayır |
 
 ```json
 "activities":[

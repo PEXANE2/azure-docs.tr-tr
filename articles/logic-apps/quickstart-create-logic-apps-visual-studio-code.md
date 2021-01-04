@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 170a919ca184c959800e62cb0d8ede8659c96df4
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922893"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709000"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı Başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
 
@@ -101,7 +101,7 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
 1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#access-azure).
 
-1. Visual Studio Code ' un altında, **Logic Apps** altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur**' u seçin.
+1. Visual Studio Code ' de, **Logic Apps** altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur**' u seçin.
 
    ![Abonelik menüsünden "mantıksal uygulama oluştur" u seçin](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/09/2020
-ms.openlocfilehash: 1a384eed542d0c09a973e0e68288f9fc1660cc96
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b3dca3617e2fb7ccdff870041374e9158498c9d1
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380919"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708949"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Bilgi tabanı sınırlarını ve sınırlarını Soru-Cevap Oluşturma
 
@@ -56,7 +56,7 @@ Ayıklanabilen en fazla dosya sayısı ve en büyük dosya boyutu, **[soru-cevap
 
 ### <a name="maximum-number-of-deep-links-from-url"></a>URL 'den en fazla derin bağlantı sayısı
 
-Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlantı sayısı **20** ' dir.
+Bir URL sayfasından QnAs ayıklanmasıyla gezinilebilen en fazla derin bağlantı sayısı **20**' dir.
 
 ## <a name="metadata-limits"></a>Meta veri sınırları
 
@@ -82,10 +82,10 @@ Meta veri adı ve değeri için uzunluk ve kabul edilebilir karakterler aşağı
 
 ## <a name="knowledge-base-content-limits"></a>Bilgi Bankası içerik limitleri
 Bilgi bankasındaki içeriğe ilişkin genel sınırlamalar:
-* Yanıt metninin uzunluğu: 25.000
-* Soru metninin uzunluğu: 1.000
-* Meta veri anahtar metninin uzunluğu: 100
-* Meta veri değeri metninin uzunluğu: 500
+* Yanıt metninin uzunluğu: 25.000 karakter
+* Soru metninin uzunluğu: 1.000 karakter
+* Meta veri anahtar metninin uzunluğu: 100 karakter
+* Meta veri değeri metninin uzunluğu: 500 karakter
 * Meta veri adı için desteklenen karakterler: harfler, rakamlar ve `_`
 * Meta veri değeri için desteklenen karakterler: tümü `:` ve dışında `|`
 * Dosya adı uzunluğu: 200
