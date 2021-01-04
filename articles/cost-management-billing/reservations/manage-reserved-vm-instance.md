@@ -6,20 +6,20 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 12/08/2020
 ms.author: banders
-ms.openlocfilehash: 050984d58137ec03996572d2de41115073e4ab2b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2cd0611d5701f5ca407afd6d4e3b1b0ae22b6c12
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338172"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562982"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Azure kaynakları için Rezervasyonları yönetme
 
 Azure rezervasyonu satın aldıktan sonra rezervasyonu farklı bir aboneliğe uygulamanız, rezervasyonu yönetebilecek kullanıcıları değiştirmeniz veya rezervasyon kapsamını düzenlemeniz gerekebilir. Ayrıca bir rezervasyonu iki rezervasyona ayırarak satın aldığınız örneklerin bazılarını başka bir aboneliğe uygulayabilirsiniz.
 
-Azure Ayrılmış Sanal Makine Örnekleri satın aldıysanız rezervasyon için iyileştirme ayarını değiştirebilirsiniz. Rezervasyon indirimi aynı serideki VM'lere uygulanabilir veya veri merkezi kapasitesini belirli bir VM boyutu için ayırabilirsiniz. Ayrıca tamamen kullanılmalarını sağlamak için rezervasyonları iyileştirmeyi denemelisiniz.
+Azure Ayrılmış Sanal Makine Örnekleri satın aldıysanız rezervasyon için iyileştirme ayarını değiştirebilirsiniz. Rezervasyon indirimi aynı serideki VM'lere uygulanabilir veya veri merkezi kapasitesini belirli bir VM boyutu için ayırabilirsiniz. Rezervasyonları tam olarak kullanılacak şekilde iyileştirmeyi denemelisiniz.
 
 *Bir rezervasyonu yönetmek için gereken izin, abonelik izninden farklıdır.*
 
@@ -31,7 +31,7 @@ Rezervasyon satın aldığınızda iki nesne oluşturulur: **Rezervasyon Sipari�
 
 Satın alma sırasında Rezervasyon Siparişinin altında tek bir Rezervasyon vardır. Bölme, birleştirme, kısmi para iadesi veya değiştirme gibi eylemler **Rezervasyon Siparişi**'nin altında yeni rezervasyonlar oluşturur.
 
-Rezervasyon Siparişini görüntülemek için **Rezervasyonlar**'a gidin > rezervasyonu seçin ve ardından **Rezervasyon sipariş kimliği**'ne tıklayın.
+Bir Rezervasyon Siparişini görüntülemek için, **Rezervasyonlar**’a gidip rezervasyonu belirleyin ve ardından **Rezervasyon siparişi kimliğini** seçin.
 
 ![Rezervasyon sipariş kimliğinin gösterildiği rezervasyon sipariş ayrıntıları örneği ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
@@ -49,31 +49,44 @@ Rezervasyon kapsamını güncelleştirmek için:
 4. **Ayarlar** > **Yapılandırma**'yı seçin.
 5. Kapsamı değiştirin.
 
-Paylaşılan kapsamdan tek kapsama geçerseniz yalnızca sahibi olduğunuz rezervasyon abonelikleri seçebilirsiniz. Yalnızca rezervasyonla aynı fatura bağlamında bulunan abonelikleri seçebilirsiniz.
+Paylaşılan kapsamdan tek kapsama geçerseniz yalnızca sahibi olduğunuz rezervasyon abonelikleri seçebilirsiniz. Yalnızca rezervasyonla aynı faturalandırma bağlamındaki abonelikler seçilebilir.
 
 Kapsam yalnızca kullandıkça öde fiyatının geçerliği olduğu tek tek abonelikler (MS-AZR-0003P veya MS-AZR-0023P teklifi), MS-AZR-0017P veya MS-AZR-0148P kodlu Kurumsal teklif ya da CSP abonelikleri için geçerlidir.
 
-## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Rezervasyonu yönetebilecek kullanıcıları ekleme veya değiştirme
+## <a name="who-can-manage-a-reservation-by-default"></a>Bir rezervasyonu varsayılan olarak kim yönetebilir?
 
-Rezervasyon siparişindeki veya rezervasyondaki rollere kullanıcı ekleyerek bir rezervasyonun yönetimi için temsilciler belirleyebilirsiniz. Varsayılan olarak rezervasyonu sipariş eden kişi ve hesap yöneticisi, rezervasyon siparişinde ve rezervasyonda Sahip rolüne atanır.
+Varsayılan olarak, aşağıdaki kullanıcılar rezervasyonları görüntüleyebilir ve yönetebilir:
 
-Rezervasyon siparişlerine ve rezervasyonlara erişimi, rezervasyon indirimini alan *aboneliklerden bağımsız olarak* yönetebilirsiniz. Birine rezervasyon siparişini veya rezervasyonu yönetme izinleri verdiğinizde, ona aboneliği yönetme izni vermiş olmazsınız. Benzer biçimde birine rezervasyon kapsamında aboneliği yönetme izinleri verirseniz, o kişi rezervasyon siparişini veya rezervasyonu yönetme hakları almış olmaz.
+- Rezervasyonu satın alan kişi ve rezervasyonu satın almak için kullanılan faturalama aboneliğinin hesap yöneticisi rezervasyon siparişine eklenir.
+- Kurumsal Anlaşma ve Microsoft Müşteri Anlaşması faturalandırma yöneticileri.
 
-Değiştirme veya para iadesi yapmak için kullanıcının rezervasyon siparişine erişimi olmalıdır. Birine izinler verirken, rezervasyona değer rezervasyon siparişine izinler vermek daha iyi olabilir.
+Diğer kişilerin rezervasyonları yönetmesine izin vermek için iki seçeneğiniz vardır:
 
-Rezervasyona yönetim erişimi temsilcisi atamak için:
+- Bireysel bir rezervasyon siparişi için erişim yönetimi temsilcisi atama:
+    1. [Azure Portal](https://portal.azure.com) oturum açın.
+    1. **Tüm Hizmetler** > **Rezervasyon**'u seçerek erişim sahibi olduğunuz rezervasyonları listeleyin.
+    1. Diğer kullanıcılara erişim vermek istediğiniz rezervasyonu seçin.
+    1. Rezervasyon ayrıntılarından rezervasyon siparişini seçin.
+    1. **Erişim denetimi (IAM)** öğesini seçin.
+    1. **Rol ataması ekle** > **Rol** > **Sahip**'i seçin. Sınırlı erişim vermek istiyorsanız farklı bir rol seçin.
+    1. Sahip olarak eklemek istediğiniz kullanıcının e-posta adresini yazın.
+    1. Kullanıcıyı ve ardından **Kaydet**'i seçin.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. **Tüm Hizmetler** > **Rezervasyon**'u seçerek erişim sahibi olduğunuz rezervasyonları listeleyin.
-3. Diğer kullanıcılara erişim vermek istediğiniz rezervasyonu seçin.
-4. **Erişim denetimi (IAM)** öğesini seçin.
-5. **Rol ataması ekle** > **Rol** > **Sahip**'i seçin. Sınırlı erişim vermek istiyorsanız farklı bir rol seçebilirsiniz.
-6. Sahip olarak eklemek istediğiniz kullanıcının e-posta adresini yazın.
-7. Kullanıcıyı ve ardından **Kaydet**'i seçin.
+- Bir Kullanıcıyı bir Kurumsal Anlaşma veya bir Microsoft Müşteri Anlaşmasına faturalandırma yöneticisi olarak ekleme:
+    - Kurumsal Anlaşma için, Kurumsal Anlaşma uygulanan tüm rezervasyon siparişlerini görüntülemek ve yönetmek üzere _Kuruluş Yöneticisi_  rolüne sahip kullanıcıları ekleyin. _Kuruluş Yöneticisi (salt okuma) rolü olan kullanıcılar_  yalnızca rezervasyonu görüntüleyebilir. Bölüm yöneticileri ve hesap sahipleri, erişim denetimi (IAM) kullanılarak bunlara açıkça eklenmedikleri _takdirde ayırmaları_ görüntüleyemez. Daha fazla bilgi için bkz. [Azure Enterprise rollerini yönetme](../manage/understand-ea-roles.md).
+
+        _Kurumsal Yöneticiler, bir rezervasyon siparişinin sahipliğini alabilir ve erişim denetimi (IAM) kullanarak bir rezervasyona başka kullanıcılar ekleyebilirler._
+    - Bir Microsoft Müşteri Anlaşması için, faturalandırma profili sahibi veya faturalandırma profili katılımcısı rolüne sahip kullanıcılar, faturalandırma profilini kullanarak yapılan tüm rezervasyon satın almalarını yönetebilir. Faturalandırma profili okuyucuları ve fatura yöneticileri, faturalandırma profiliyle ilgili ödenen tüm rezervasyonları görüntüleyebilir. Ancak, rezervasyonlar üzerinde değişiklik yapamaz.
+    Daha fazla bilgi için bkz. [Faturalandırma profili rolleri ve görevleri](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
+
+### <a name="how-billing-administrators-view-or-manage-reservations"></a>Faturalandırma yöneticileri rezervasyonları nasıl görüntüler veya yönetir
+
+1. **Maliyet Yönetimi + Faturalandırma** sayfasına gidin ve ardından sayfanın sol tarafında **Rezervasyon İşlemleri**’ni seçin.
+2. Gerekli faturalandırma izinlerine sahipseniz, rezervasyonları görüntüleyebilir ve yönetebilirsiniz. Herhangi bir rezervasyon görmüyorsanız, rezervasyonların oluşturulduğu Azure AD kiracısı ile oturum açtığınızdan emin olun.
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Tek rezervasyonu iki rezervasyona bölme
 
- Bir rezervasyon içinde birden fazla kaynak örneği satın aldıktan sonra o rezervasyon içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Varsayılan olarak tüm örneklerin kapsamı (tek abonelik, kaynak grubu veya paylaşılan) vardır. 10 VM örneği için rezervasyon satın aldığınızı ve kapsam olarak A aboneliğini belirttiğinizi varsayalım. Şimdi 7 VM örneğinin kapsamını A aboneliği ve kalan üçünün B aboneliği olacak şekilde değişiklik yapmak istiyorsunuz. Rezervasyonun bölerek bunu yapabilirsiniz. Rezervasyonu böldükten sonra, özgün ReservationID iptal edilir ve iki yeni rezervasyon oluşturulur. Bölme işlemi rezervasyon sırasını etkilemez. Bölme içeren yeni bir ticari işlem yoktur ve yeni rezervasyonlar bölünmüş olan rezervasyonla aynı bitiş tarihine sahiptir.
+ Bir rezervasyon içinde birden fazla kaynak örneği satın aldıktan sonra o rezervasyon içindeki örnekleri farklı aboneliklere atamak isteyebilirsiniz. Varsayılan olarak tüm örneklerin kapsamı (tek abonelik, kaynak grubu veya paylaşılan) vardır. 10 VM örneği için rezervasyon satın aldığınızı ve kapsam olarak A aboneliğini belirttiğinizi varsayalım. Yedi VM örneğinin kapsamını A aboneliği ve kalan üçünün B aboneliği olacak şekilde değiştirmek istediğinizi düşünelim. Rezervasyonu bölerek bunu yapabilirsiniz. Rezervasyonu böldükten sonra, özgün ReservationID iptal edilir ve iki yeni rezervasyon oluşturulur. Bölme işlemi rezervasyon siparişini etkilemez. Bölünmüş yeni bir ticari işlem yoktur ve yeni rezervasyonlar bölünmüş olan rezervasyonla aynı bitiş tarihine sahiptir.
 
  Rezervasyonu PowerShell, CLI veya API aracılığıyla iki rezervasyona bölebilirsiniz.
 
@@ -110,7 +123,7 @@ Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya 
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Ayrılmış VM Örnekleri için iyileştirme ayarını değiştirme
 
- Ayrılmış VM Örneği satın aldığınızda örnek boyutu esnekliğini veya kapasite önceliğini seçersiniz. VM örneği esnekliği aynı [VM boyutu grubundaki](../../virtual-machines/reserved-vm-instance-size-flexibility.md) diğer VM'lere rezervasyon indirimini uygular. Kapasite önceliği dağıtımlarınızda veri merkezi kapasitesine öncelik verir. Bu seçenek ihtiyacınız olduğunda VM örneklerini başlatabileceğinize daha fazla güvenmenizi sağlar.
+ Ayrılmış VM Örneği satın aldığınızda örnek boyutu esnekliğini veya kapasite önceliğini seçersiniz. VM örneği esnekliği aynı [VM boyutu grubundaki](../../virtual-machines/reserved-vm-instance-size-flexibility.md) diğer VM'lere rezervasyon indirimini uygular. Kapasite önceliği, dağıtımlarınız için en önemli veri merkezinin kapasitesini belirler. Bu seçenek ihtiyacınız olduğunda VM örneklerini başlatabileceğinize daha fazla güvenmenizi sağlar.
 
 Varsayılan olarak rezervasyonun kapsamı paylaşılan olduğunda örnek boyutu esnekliği açıktır. VM dağıtımlarında veri merkezi kapasitesine öncelik verilmez.
 
@@ -121,9 +134,9 @@ Rezervasyonun iyileştirme ayarını güncelleştirmek için:
 1. [Azure Portal](https://portal.azure.com) oturum açın.
 2. **Tüm Hizmetler** > **Rezervasyonlar**'ı seçin.
 3. Rezervasyonu seçin.
-4. **Ayarlar** > **Yapılandırma**'yı seçin.  
+4. **Ayarlar** > **Yapılandırma**'yı seçin.
   ![Yapılandırma öğesini gösteren örnek](./media/manage-reserved-vm-instance/add-product03.png)
-5. **En iyi duruma getir** ayarını değiştirin.  
+5. **En iyi duruma getir** ayarını değiştirin.
   ![En iyi duruma getir ayarını gösteren örnek](./media/manage-reserved-vm-instance/instance-size-flexibility-option.png)
 
 ## <a name="optimize-reservation-use"></a>Rezervasyon kullanımını iyileştirme
@@ -138,7 +151,7 @@ Rezervasyon kullanımını görüntülemenin bir yolu bunu Azure portalında yap
 2. **Tüm hizmetler** > [**Rezervasyonlar**](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)'ı seçin ve rezervasyonu **Kullanım (%)** değerini not alın.  
   ![Rezervasyon listesini gösteren resim](./media/manage-reserved-vm-instance/reservation-list.png)
 3. Bir rezervasyon seçin.
-4. Zaman içinde rezervasyonun kullanım eğilimini gözden geçirin.  
+4. Zaman içinde rezervasyonun kullanım eğilimini gözden geçirin.
   ![Rezervasyon kullanımını gösteren resim ](./media/manage-reserved-vm-instance/reservation-utilization-trend.png)
 
 ### <a name="view-reservation-use-with-api"></a>API'yle rezervasyon kullanımını görüntüleme

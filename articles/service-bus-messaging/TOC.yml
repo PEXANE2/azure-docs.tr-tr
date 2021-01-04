@@ -15,7 +15,7 @@
       items:
         - name: Service Bus kuyruğu oluşturma
           items:
-            - name: Azure portalı
+            - name: Azure portal
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Performansı iyileştirme
       href: service-bus-performance-improvements.md
+    - name: Federasyon
+      items:
+        - name: İleti çoğaltma ve bölgeler arası federasyon
+          href: service-bus-federation-overview.md
+        - name: İleti çoğaltma görevleri ve uygulamaları
+          href: service-bus-federation-replicator-functions.md
+        - name: İleti çoğaltma görevi desenleri
+          href: service-bus-federation-patterns.md
+        - name: Yapılandırılmış çoğaltma görevleri
+          href: service-bus-federation-configuration.md
+        - name: Service Bus varlıkları arasında olayları çoğaltma
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Event Hubs’a iletileri çoğaltma
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Event Hubs'dan iletileri alma
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Coğrafi olağanüstü durum kurtarma ve coğrafi çoğaltma
       href: service-bus-geo-dr.md
     - name: Zaman uyumsuz mesajlaşma ve yüksek kullanılabilirlik

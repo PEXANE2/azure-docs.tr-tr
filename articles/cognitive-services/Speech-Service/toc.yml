@@ -367,21 +367,9 @@
                   href: quickstart-custom-commands-application.md
             - name: Nasıl yapılır kılavuzları
               items:
-                - name: Geliştirme
-                  items:
-                    - name: Basit komutlarla uygulama oluşturma
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: Komutlara parametre ekleme
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: Komut parametrelerine yapılandırma ekleme
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: Etkileşim kuralları ekleme
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: Konuşma yanıtları için dil oluşturma şablonları ekleme
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: Özel Ses kullanma
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: Tümleştirme
+                - name: Özel Komutlar uygulamalarını geliştirme ve özelleştirme
+                  href: how-to-develop-custom-commands-application.md
+                - name: İstemci uygulamalarıyla tümleştirme
                   items:
                     - name: Konuşma SDK’sını kullanarak bir istemci uygulamasıyla tümleştirme
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: Web uç noktasından bir komutu güncelleştirme
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: Dağıtma
-                  items:
-                    - name: Azure DevOps ile Sürekli Dağıtım
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: Test etme
-                  items:
-                    - name: Özel Komutlar uygulamanızı test etme
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: Hata ayıklama
-                  items:
-                    - name: Uygulamayı yazarken hata ayıklama
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: Uygulamayı çalıştırırken hata ayıklama
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: Başvurular
-                  items:
-                    - name: Özel Komutlar kavramları
-                      href: custom-commands-references.md
+                - name: Azure DevOps ile Sürekli Dağıtım
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: Özel Komutlar uygulamalarını test etme
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: Uygulamayı yazarken hata ayıklama
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Uygulamayı çalıştırırken hata ayıklama
+                  href: how-to-custom-commands-debug-runtime.md
             - name: Kaynaklar
               items:
+                - name: Özel Komutlar kavramları
+                  href: custom-commands-references.md
                 - name: Özel Komutlar Örnekleri (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: Ses Yardımcıları Örnekleri (GitHub)

@@ -165,6 +165,8 @@
       href: concept-model-management-and-deployment.md
     - name: Model taşınabilirliği (ONNX)
       href: concept-onnx.md
+    - name: Açık kaynak tümleştirmeleri
+      href: concept-open-source.md
     - name: ML işlem hatları
       href: concept-ml-pipelines.md
     - name: Güvenlik
@@ -370,6 +372,8 @@
           href: how-to-train-pytorch.md
         - name: Özel Docker görüntüsüyle eğitme
           href: how-to-train-with-custom-image.md
+        - name: Tahmin Araçlarından ScriptRunConfig'e geçirme
+          href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Eğitim takibi ve izleme
           items:
             - name: 'Çalıştırmaları başlatma, izleme ve iptal etme'
@@ -513,8 +517,6 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML işlem hattı dağıtma (Python)
           href: how-to-deploy-pipelines.md
-        - name: İşlem hattını zamanlama (Python)
-          href: how-to-schedule-pipelines.md
         - name: İşlem hattını tetikleme
           href: how-to-trigger-published-pipeline.md
         - name: Tasarımcı (sürükle ve bırak)

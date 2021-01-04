@@ -57,8 +57,6 @@
   items:
     - name: IoT gezginini yükleme ve kullanma
       href: howto-use-iot-explorer.md
-    - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
-      href: howto-use-iot-pnp-bridge.md
     - name: DTDL yazma araçlarını yükleme ve kullanma
       href: howto-use-dtdl-authoring-tools.md
     - name: Ekli C kullanma
@@ -67,6 +65,10 @@
       href: howto-manage-digital-twin.md
     - name: Cihazı sertifikalama
       href: howto-certify-device.md
+    - name: IoT Tak Çalıştır köprüsünü yükleme ve kullanma
+      href: howto-use-iot-pnp-bridge.md
+    - name: 'IoT Tak Çalıştır köprüsünü oluşturma, dağıtma ve genişletme'
+      href: howto-build-deploy-extend-pnp-bridge.md
 - name: Başvuru
   items:
     - name: Kitaplıklar ve SDK’lar

@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Ölçeklenebilirlik
       href: event-hubs-scalability.md
+    - name: Federasyon
+      items:
+        - name: Çok siteli ve çok bölgeli federasyon
+          href: event-hubs-federation-overview.md
+        - name: Olay çoğaltma görevleri ve uygulamaları
+          href: event-hubs-federation-replicator-functions.md
+        - name: Olay çoğaltma görevi desenleri
+          href: event-hubs-federation-patterns.md
+        - name: Yapılandırılmış çoğaltma görevleri
+          href: event-hubs-federation-configuration.md
+        - name: Olay Hub'ları arasında olayları çoğaltma
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Olayları Azure Service Bus'a gönderme
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Azure Service Bus'tan olayları alma
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Coğrafi olağanüstü durum kurtarma
       items:
         - name: Coğrafi olağanüstü durum kurtarma ve Coğrafi çoğaltma
