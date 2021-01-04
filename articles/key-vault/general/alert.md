@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ff3daded48612fd308396420dca65cd81d9fafc
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018129"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724706"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault için izleme ve uyarma
 
@@ -40,7 +40,7 @@ ms.locfileid: "96018129"
 
 **Kasa doygunluğu** : bir anahtar kasasının, saniye başına kullanılabileceği istek sayısı, gerçekleştirilen işlem türüne bağlıdır. Bazı kasa işlemlerinde, saniye başına daha düşük bir istek vardır. Bu ölçüm, geçerli Anahtar Kasası kullanımınızı gösteren bir yüzde değeri ile birlikte olmak üzere tüm işlem türlerinde anahtar kasaınızın toplam kullanımını toplar. Anahtar Kasası hizmeti limitlerinin tam listesi için aşağıdaki belgeye bakın. [Azure Key Vault Hizmet Sınırları](service-limits.md)
 
-**Hizmet API 'Si gecikmesi** -Bu ölçüm, bir Anahtar Kasası çağrısının ortalama gecikme süresini gösterir. Anahtar kasanızın hizmet sınırları dahilinde olmasına karşın, anahtar kasasının yüksek kullanımı, uygulamaların aşağı akış başarısız olmasına neden olan gecikme süresini ortaya çıkarabilir. 
+**Hizmet API 'Si gecikmesi** -Bu ölçüm, hizmette ölçülen Anahtar Kasası çağrılarının ortalama gecikme süresini gösterir. İstemci veya istemci ile hizmet arasında ağ tarafından tüketilen zamanı içermez.
 
 **Toplam API isabet** sayısı-bu ölçüm, anahtar kasanıza yapılan tüm çağrıları gösterir. Bu, anahtar kasanızı hangi uygulamaların çağırıyor olduğunu belirlemenize yardımcı olur. 
 

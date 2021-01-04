@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 04/15/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: 1d6471e1443e02592e86ea0708ac173a7afff3e1
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ae2cd72bfde3eb7fdc6b135cbb22d04535a2f251
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97665138"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97731972"
 ---
 Bu hızlı başlangıçta, konuşma SDK 'sını kullanarak metinden konuşmaya senşlerini kullanmaya yönelik yaygın tasarım düzenlerini öğrenirsiniz. Temel yapılandırma ve birleştirme işlemleri gerçekleştirerek başlar ve aşağıdakiler de dahil olmak üzere özel uygulama geliştirme için daha gelişmiş örneklere geçin:
 
@@ -204,7 +204,7 @@ Ses biçimini değiştirmek için `speechSynthesisOutputFormat` nesnesi üzerind
 Gereksinimlerinize bağlı olarak farklı dosya türleri için çeşitli seçenekler vardır. Tanımına göre, gibi ham biçimlerin `Raw24Khz16BitMonoPcm` Ses üst bilgilerini içermediğini unutmayın. Ham biçimleri yalnızca aşağı akış uygulamanızın bir ham Bitstream kodunu çözemediğini veya bit derinliğine, örnek hızına, kanal sayısına ve vb. göre el ile üstbilgileri oluşturmayı planlıyorsanız kullanın.
 
 > [!NOTE]
-> Sesler **en-US-AriaRUS** ve **en-US-guyrus** `Riff24Khz16BitMonoPcm` örnek oranı destekler.
+> Sesler **en-US-AriaRUS** ve **en-US-guyru** , örnek fiyata kodlanan örneklerden oluşturulmuştur `Riff24Khz16BitMonoPcm` .
 
 Bu örnekte, `Riff24Khz16BitMonoPcm` nesnesi üzerinde ayarını yaparak Yüksek uygunluğa sahip bir biçim belirtirsiniz `speechSynthesisOutputFormat` `SpeechConfig` . Önceki bölümdeki örneğe benzer şekilde, ses `ArrayBuffer` verilerini alın ve onunla etkileşime geçin.
 

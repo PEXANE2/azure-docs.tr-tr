@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: e25469e23358ade32e050bed0818338dc290e71f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451395"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693477"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL veritabanı ve Azure SQL yönetilen örnek Connect ve sorgu makaleleri
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,6 +43,29 @@ Aşağıdaki belge, Azure SQL veritabanı ve Azure SQL yönetilen örneği ile b
 |[R](connect-query-r.md)|Bu hızlı başlangıçta, Azure SQL veritabanı 'nda bir veritabanına bağlanmak üzere bir program oluşturmak ve verileri sorgulamak için Transact-SQL deyimlerini kullanmak üzere Azure SQL veritabanı ile R 'yi kullanma Machine Learning Services gösterilmektedir.|
 |||
 
+## <a name="get-server-connection-information"></a>Sunucu bağlantı bilgilerini al
+
+Azure SQL veritabanı 'nda veritabanına bağlanmak için gereken bağlantı bilgilerini alın. Yaklaşan yordamlar için tam sunucu adı veya ana bilgisayar adı, veritabanı adı ve oturum açma bilgileri gerekir.
+
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
+
+2. **SQL veritabanları** veya **SQL yönetilen örnekler** sayfasına gidin.
+
+3. **Genel bakış** sayfasında, Azure SQL veritabanı 'nda veritabanı için **sunucu adı** ' nın yanında tam sunucu adını veya Azure SQL yönetilen örneği için **konak** ' ın YANıNDAKI tam sunucu adını (veya IP adresini) veya Azure VM 'de SQL Server ' yi gözden geçirin. Sunucu adını veya ana bilgisayar adını kopyalamak için üzerine gelin ve **Kopyala** simgesini seçin.
+
+> [!NOTE]
+> Azure VM 'de SQL Server yönelik bağlantı bilgileri için bkz. [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
+
+## <a name="get-adonet-connection-information-optional---sql-database-only"></a>ADO.NET bağlantı bilgilerini al (isteğe bağlı-yalnızca SQL veritabanı)
+
+1. Azure portal veritabanı dikey penceresine gidin ve **Ayarlar** altında **bağlantı dizeleri**' ni seçin.
+
+2. Tam **ADO.NET** bağlantı dizesini gözden geçirin.
+
+    ![ADO.NET bağlantı dizesi](./media/connect-query-dotnet-core/adonet-connection-string2.png)
+
+3. Kullanmak istiyorsanız **ADO.net** bağlantı dizesini kopyalayın.
+
 ## <a name="tls-considerations-for-database-connectivity"></a>Veritabanı bağlantısı için TLS konuları
 
 Aktarım Katmanı Güvenliği (TLS), Microsoft 'un Azure SQL veritabanı veya Azure SQL yönetilen örneğindeki veritabanlarına bağlanmak için sağladığı veya desteklediği tüm sürücüler tarafından kullanılır. Özel yapılandırma gerekli değildir. Bir SQL Server örneğine, Azure SQL veritabanı 'na veya Azure SQL yönetilen örneği örneğine yönelik tüm bağlantılar için, tüm uygulamaların aşağıdaki konfigürasyonları veya bunların eşdeğerleri ayarlaması önerilir:
@@ -62,7 +85,7 @@ Azure SQL veritabanı veya Azure SQL yönetilen örneği 'ne bağlanmak için ç
 
 Aşağıdaki tabloda, istemci uygulamalarının şirket içinde veya bulutta çalışan SQL Server bağlanmak ve kullanmak için çeşitli dillerden kullanabileceği bağlantı kitaplıkları veya *sürücüler* listelenmiştir. Bunları Linux, Windows veya Docker üzerinde kullanabilir ve Azure SQL veritabanı, Azure SQL yönetilen örneği ve Azure SYNAPSE Analytics 'e bağlanmak için kullanabilirsiniz.
 
-| Dil | Platform | Ek kaynaklar | İndir | Kullanmaya başlayın |
+| Dil | Platform | Ek kaynaklar | İndir | başlarken |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [SQL Server için Microsoft ADO.NET](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [İndir](https://www.microsoft.com/net/download/) | [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
 | Java | Windows, Linux, macOS | [SQL Server için Microsoft JDBC sürücüsü](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [İndir](https://go.microsoft.com/fwlink/?linkid=852460) |  [Kullanmaya başlama](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)

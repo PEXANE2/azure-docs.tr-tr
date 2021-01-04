@@ -1,14 +1,14 @@
 ---
 title: Azure Arc etkin sunucular Aracısı 'nı yönetme
 description: Bu makalede, Azure Arc etkin sunucular bağlı makine aracısının yaşam döngüsü boyunca genellikle gerçekleştirdiğiniz farklı yönetim görevleri açıklanır.
-ms.date: 10/30/2020
+ms.date: 12/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107201"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724383"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı makine aracısını yönetme ve sürdürme
 
@@ -61,7 +61,7 @@ Windows için bağlı makine aracısının güncelleştirme paketi şuradan edin
 
 * Microsoft Indirme merkezi 'nden [Windows agent Windows Installer paketi](https://aka.ms/AzureConnectedMachineAgent) .
 
-Aracı, yazılım güncelleştirme yönetimi işleminizi desteklemek üzere çeşitli yöntemler izleyerek yükseltilebilir. Microsoft Update 'tan alma dışında, komut Isteminden, komut Isteminden veya diğer otomasyon çözümünden veya yürüterek kullanıcı arabirimi sihirbazından el ile indirebilirsiniz ve çalıştırabilirsiniz `AzureConnectedMachine.msi` .
+Aracı, yazılım güncelleştirme yönetimi işleminizi desteklemek için çeşitli yöntemler için yükseltilebilir. Microsoft Update 'tan alma dışında, komut Isteminden, komut Isteminden veya diğer otomasyon çözümünden veya yürüterek kullanıcı arabirimi sihirbazından el ile indirebilirsiniz ve çalıştırabilirsiniz `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Aracıyı yükseltmek için *yönetici* izinlerinizin olması gerekir.
@@ -169,7 +169,7 @@ Etkileşimli olarak oturum açtığınızda bir **bağlantı** ve **bağlantı k
 >[!NOTE]
 >**Azcmagent** çalıştırmak için Linux makinelerde *kök* erişim izinlerine sahip olmanız gerekir.
 
-### <a name="connect"></a>Bağlanma
+### <a name="connect"></a>Bağlan
 
 Bu parametre, makinenin Azure 'da oluşturulduğunu temsil eden Azure Resource Manager bir kaynak belirtir. Kaynak, belirtilen abonelikte ve kaynak grubunda bulunur ve makineyle ilgili veriler, bu ayar tarafından belirtilen Azure bölgesinde saklanır `--location` . Varsayılan kaynak adı, belirtilmemişse makinenin ana bilgisayar adıdır.
 
@@ -189,7 +189,7 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlanmak içi
 
 ### <a name="disconnect"></a>Bağlantıyı kes
 
-Bu parametre, Azure 'da makinenin silindiğini temsil eden Azure Resource Manager bir kaynak belirtir. Aracıyı makineden silmez, bu işlem ayrı bir adım olarak yapılmalıdır. Makinenin bağlantısı kesildikten sonra, Azure Arc etkin sunucularıyla yeniden kaydetmek istiyorsanız, `azcmagent connect` Azure 'da bunun için yeni bir kaynak oluşturulmasını kullanın.
+Bu parametre, Azure 'da makinenin silindiğini temsil eden Azure Resource Manager bir kaynak belirtir. Aracıyı makineden kaldırmaz, aracıyı ayrı olarak kaldırırsınız. Makinenin bağlantısı kesildikten sonra, Azure Arc etkin sunucularıyla yeniden kaydetmek istiyorsanız, `azcmagent connect` Azure 'da bunun için yeni bir kaynak oluşturulmasını kullanın.
 
 > [!NOTE]
 > Arc etkin sunucunuza bir veya daha fazla Azure VM Uzantısı dağıttıysanız ve kaydını Azure 'da sildiğinizde, uzantılar hala yüklüdür. Yüklü uzantıya bağlı olarak, kendi işlevini etkin bir şekilde gerçekleştiriyor olduğunu anlamak önemlidir. Devre dışı bırakılması veya artık Arc etkin sunucularla yönetilmemesi amaçlanan makineler, Azure 'dan kayıt kaldırılmadan önce uzantıları kaldırmalıdır.
@@ -208,7 +208,7 @@ Yükseltilmiş oturum açma kimlik bilgilerinizle (etkileşimli) bağlantıyı k
 
 ## <a name="remove-the-agent"></a>Aracıyı Kaldırma
 
-Windows veya Linux bağlı makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracının kaldırılması, sanal makinenin Arc özellikli sunucularla kaydını kaldırmaz veya yüklü Azure VM uzantılarını kaldırmaz. Bu adımları, artık Azure 'da makineyi yönetmeniz gerekmiyorsa ayrı olarak gerçekleştirmeniz gerekir ve aracı kaldırılmadan önce bunların tamamlanması gerekir.
+Windows veya Linux bağlı makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracının kaldırılması, sanal makinenin Arc özellikli sunucularla kaydını kaldırmaz veya yüklü Azure VM uzantılarını kaldırmaz. Makinenin kaydını silin ve artık Azure 'da makineyi yönetmeniz gerekmiyorsa yüklü VM uzantılarını ayrı olarak kaldırın ve aracı kaldırılmadan önce bu adımların tamamlanması gerekir.
 
 ### <a name="windows-agent"></a>Windows aracısı
 
@@ -286,6 +286,10 @@ Makinenin Azure 'da destekleyici hizmetler ile yönetilmesini durdurmayı planl�
 ## <a name="update-or-remove-proxy-settings"></a>Proxy ayarlarını Güncelleştir veya Kaldır
 
 Aracıyı bir ara sunucu aracılığıyla hizmetle iletişim kuracak şekilde yapılandırmak veya dağıtımdan sonra bu yapılandırmayı kaldırmak için ya da bu görevi gerçekleştirmek için aşağıdaki yöntemlerden birini kullanın.
+
+> [!NOTE]
+> Yay özellikli sunucular, bağlı makine Aracısı için proxy olarak [Log Analytics ağ geçidi](../../azure-monitor/platform/gateway.md) kullanmayı desteklemez.
+>
 
 ### <a name="windows"></a>Windows
 

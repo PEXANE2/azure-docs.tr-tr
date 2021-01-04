@@ -2,21 +2,21 @@
 title: Kasayı farklı bir aboneliğe taşımak Azure Key Vault | Microsoft Docs
 description: Anahtar kasasını farklı bir aboneliğe taşıma Kılavuzu.
 services: key-vault
-author: ShaneBala-keyvault
-manager: ravijan
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
-ms.author: sudbalas
+ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: e0cd4cad74257dbf83ec8d30405eacca341a8d31
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289526"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724774"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault başka bir aboneliğe taşıma
 
@@ -29,11 +29,16 @@ ms.locfileid: "93289526"
 > Bu değişikliğin etkisini anladığınızdan emin olun ve anahtar kasasını yeni bir aboneliğe taşımaya karar vermeden önce bu makaledeki yönergeleri dikkatle izleyin.
 > Yönetilen hizmet kimlikleri (MSI) kullanıyorsanız lütfen belgenin sonundaki taşıma sonrası yönergeleri okuyun. 
 
-Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneliğin varsayılan Azure Active Directory kiracı KIMLIĞINE bağlanır. Tüm erişim ilkesi girdileri de bu kiracı kimliğine bağlanır. Azure aboneliğinizi A kiracısından B kiracısına taşıdığınızda mevcut anahtar kasalarınız, B kiracısındaki hizmet sorumluları (kullanıcılar ve uygulamalar) tarafından erişilemez olur. Bu sorunu onarmak için şunları yapmanız gerekir:
+[Azure Key Vault](overview.md) , oluşturulduğu aboneliğin varsayılan [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) kiracı kimliğine otomatik olarak bağlanır. Bu [Kılavuzu](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)izleyerek, aboneliğinizle ILIŞKILI Kiracı kimliğini bulabilirsiniz. Tüm erişim ilkesi girişleri ve rol atamaları Bu kiracı KIMLIĞINE de bağlıdır.  Azure aboneliğinizi A kiracısından B kiracısına taşıdığınızda mevcut anahtar kasalarınız, B kiracısındaki hizmet sorumluları (kullanıcılar ve uygulamalar) tarafından erişilemez olur. Bu sorunu onarmak için şunları yapmanız gerekir:
 
 * Abonelikte var olan tüm anahtar kasalarıyla ilişkili kiracı KIMLIĞINI B kiracısı ile değiştirin.
 * Mevcut tüm erişim ilkesi girdilerini kaldırın.
 * B kiracısı ile ilişkili yeni erişim ilkesi girdileri ekleme.
+
+Azure Key Vault ve Azure Active Directory hakkında daha fazla bilgi için bkz.
+- [Azure Key Vault hakkında](overview.md)
+- [Azure Active Directory nedir?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
+- [Kiracı kimliğini bulma](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
 
 ## <a name="limitations"></a>Sınırlamalar
 
@@ -42,40 +47,31 @@ Bir Anahtar Kasası oluşturduğunuzda, otomatik olarak oluşturulduğu aboneli�
 
 Bazı hizmet sorumluları (kullanıcılar ve uygulamalar) belirli bir kiracıya bağlanır. Anahtar kasanızı başka bir Kiracıdaki bir aboneliğe taşırsanız, belirli bir hizmet sorumlusuna erişimi geri yükleyemeyeceksiniz. Anahtar kasanızı taşıdığınız kiracıda tüm gerekli hizmet sorumlularının mevcut olduğundan emin olun.
 
-## <a name="design-considerations"></a>Tasarım konusunda dikkat edilmesi gerekenler
-
-Kuruluşunuz, abonelik düzeyinde uygulama veya dışlamaları olan Azure Ilkesi uygulamış olabilir. Abonelikte, anahtar kasanızın Şu anda bulunduğu ve anahtar kasanızı taşıdığınız aboneliğin farklı bir ilke atamaları kümesi olabilir. İlke gereksinimlerinde bir çakışma, uygulamalarınızı bozma potansiyelini içerir.
-
-### <a name="example"></a>Örnek
-
-İki yıl geçerli olan sertifikaları oluşturan anahtar kasasına bağlı bir uygulamanız var. Anahtar kasanızı taşımaya çalıştığınız abonelik, bir yıldan daha uzun bir süre geçerli olan sertifikaların oluşturulmasını engelleyen bir ilke atamasına sahip. Anahtar kasanızı yeni aboneliğe taşıdıktan sonra, iki yıl için geçerli olan bir sertifika oluşturma işlemi bir Azure ilke ataması tarafından engellenir.
-
-### <a name="solution"></a>Çözüm
-
-Azure portal Azure Ilke sayfasına gitdiğinizden emin olun ve geçerli aboneliğiniz için ilke atamalarından ve taşıdığınız aboneliğin yanı sıra uyuşmazlıkların bulunmadığından emin olun.
-
 ## <a name="prerequisites"></a>Önkoşullar
 
-* Katılımcı düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği.
-* Katılımcı düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek.
-* Yeni abonelikte bir kaynak grubu.
+* [Katılımcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) düzeyinde, anahtar kasanızın bulunduğu geçerli aboneliğe erişimi veya daha yükseği. [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)veya [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)kullanarak rol atayabilirsiniz.
+* [Katılımcı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) düzeyi, anahtar kasanızı taşımak istediğiniz aboneliğe erişim veya daha yüksek. [Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)veya [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)kullanarak rol atayabilirsiniz.
+* Yeni abonelikte bir kaynak grubu. [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal), [POWERSHELL](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell)veya [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli)kullanarak bir tane oluşturabilirsiniz.
 
-## <a name="procedure"></a>Yordam
+[Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal), [POWERSHELL](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli)veya [REST API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest)kullanarak mevcut rolleri kontrol edebilirsiniz.
 
-### <a name="moving-key-vault-to-a-new-subscription-within-the-same-tenant"></a>Key Vault aynı kiracı içinde yeni bir aboneliğe taşıma
 
-1. Azure portalında oturum açma
-2. Anahtar kasanıza gidin
+## <a name="moving-a-key-vault-to-a-new-subscription"></a>Anahtar kasasını yeni bir aboneliğe taşıma
+
+1. https://portal.azure.com adresinden Azure portalında oturum açın.
+2. [Anahtar kasanıza](overview.md) gidin
 3. "Genel bakış" sekmesine tıklayın
 4. "Taşı" düğmesini seçin
 5. Açılan menüden "başka aboneliğe geçme" seçeneğini belirleyin
 6. Anahtar kasanızı taşımak istediğiniz kaynak grubunu seçin
 7. Kaynakları taşıma hakkında uyarı bildirimi
-8. "Tamam" ı seçin
+8. "Tamam"ı seçin
 
-### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>Anahtar kasasını yeni bir Kiracıdaki bir aboneliğe taşıdıysanız ek adımlar
+## <a name="additional-steps-when-subscription-is-in-a-new-tenant"></a>Abonelik yeni bir kiracıda olduğunda ek adımlar
 
-Anahtar kasanızı yeni bir Kiracıdaki bir aboneliğe taşıdıysanız, kiracı KIMLIĞINI el ile güncelleştirmeniz ve eski erişim ilkelerini kaldırmanız gerekir. PowerShell ve Azure CLı 'deki bu adımlarla ilgili öğreticiler aşağıda verilmiştir. PowerShell kullanıyorsanız, geçerli seçili kapsamınız dışında kaynakları görmenizi sağlamak için aşağıda belgelenen Clear-AzContext komutunu çalıştırmanız gerekebilir. 
+Anahtar kasanızı yeni bir Kiracıdaki bir aboneliğe taşıdıysanız, kiracı KIMLIĞINI el ile güncelleştirmeniz ve eski erişim ilkelerini ve rol atamalarını kaldırmanız gerekir. PowerShell ve Azure CLı 'deki bu adımlarla ilgili öğreticiler aşağıda verilmiştir. PowerShell kullanıyorsanız, geçerli seçili kapsamınız dışında kaynakları görmenizi sağlamak için aşağıda belgelenen Clear-AzContext komutunu çalıştırmanız gerekebilir. 
+
+### <a name="update-tenant-id-in-a-key-vault"></a>Anahtar kasasında kiracı KIMLIĞINI güncelleştirme
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription
@@ -97,12 +93,37 @@ tenantId=$(az account show --query tenantId)                               # Get
 az keyvault update -n myvault --remove Properties.accessPolicies           # Remove the access policies
 az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Update the key vault tenantId
 ```
+### <a name="update-access-policies-and-role-assignments"></a>Erişim ilkelerini ve rol atamalarını güncelleştirme
 
-Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri kaldırıldığına göre, Azure PowerShell [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy) cmdlet 'ı veya Azure CLI [az keykasası Set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutunu kullanarak yeni erişim ilkesi girdileri ayarlayın.
+> [!NOTE]
+> Key Vault [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) izin modeli kullanıyorsa. Anahtar Kasası rol atamalarını da kaldırmanız gerekir. Rol atamalarını [Azure portalı](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)veya [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)kullanarak kaldırabilirsiniz. 
 
-Azure kaynakları için yönetilen bir kimlik kullanıyorsanız, bunu yeni Azure Active Directory kiracısında da güncelleştirmeniz gerekecektir. Yönetilen kimlikler hakkında daha fazla bilgi için, [yönetilen kimliğe genel bakış](../../active-directory/managed-identities-azure-resources/overview.md).
+Artık kasanız doğru kiracı KIMLIĞIYLE ilişkilendirildiğinden ve eski erişim ilkesi girdileri ya da rol atamaları kaldırıldıktan sonra, yeni erişim ilkesi girişleri veya rol atamaları ayarlayın.
+
+İlke atamak için bkz.:
+- [Portal kullanarak erişim ilkesi atama](assign-access-policy-portal.md)
+- [Azure CLı kullanarak bir erişim ilkesi atama](assign-access-policy-cli.md)
+- [PowerShell kullanarak bir erişim ilkesi atama](assign-access-policy-powershell.md)
+
+Rol atamaları eklemek için bkz.:
+- [Portal kullanarak rol ataması ekleme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+- [Azure CLı kullanarak rol ataması ekleme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
+- [PowerShell kullanarak rol ataması ekleme](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+
+
+### <a name="update-managed-identities"></a>Yönetilen kimlikleri Güncelleştir
+
+Tüm aboneliği aktarıyorsanız ve Azure kaynakları için yönetilen bir kimlik kullanıyorsanız, bunu yeni Azure Active Directory kiracısında da güncelleştirmeniz gerekecektir. Yönetilen kimlikler hakkında daha fazla bilgi için, [yönetilen kimliğe genel bakış](../../active-directory/managed-identities-azure-resources/overview.md).
 
 Yönetilen kimlik kullanıyorsanız, eski kimlik artık doğru Azure Active Directory kiracısında yer lamadığından kimliği de güncelleştirmeniz gerekir. Bu sorunu gidermeye yardımcı olması için aşağıdaki belgelere bakın. 
 
 * [MSI güncelleştiriliyor](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)
 * [Aboneliği yeni dizine aktar](../../role-based-access-control/transfer-subscription.md)
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- [Anahtarlar, gizli diziler ve sertifikalar](about-keys-secrets-certificates.md) hakkında daha fazla bilgi edinin
+- Key Vault günlüklerinin nasıl yorumlanacağı dahil olmak üzere kavramsal bilgiler için bkz. [Key Vault günlüğe kaydetme](logging.md)
+- [Key Vault Geliştirici Kılavuzu](../general/developers-guide.md)
+- [Anahtar kasanızın güvenliğini sağlama](secure-your-key-vault.md)
+- [Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma](network-security.md)

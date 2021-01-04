@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131505"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693612"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Power BI uygulaması teklifi oluşturma
 
@@ -23,8 +23,8 @@ Başlamadan önce, henüz yapmadıysanız [Iş Ortağı Merkezi 'nde bir ticari 
 ## <a name="create-a-new-offer"></a>Yeni teklif oluşturma
 
 1. [Iş Ortağı Merkezi](https://partner.microsoft.com/dashboard/home)' nde oturum açın.
-2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış** ' ı seçin.
-3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması** ' nı seçin.
+2. Sol gezinti menüsünde **ticari Market**  >  **genel bakış**' ı seçin.
+3. Genel Bakış sayfasında **+ yeni teklif**  >  **Power BI hizmet uygulaması**' nı seçin.
 
    ![Sol gezinti menüsünü gösterir.](./media/new-offer-power-bi-app.png)
 
@@ -40,12 +40,12 @@ Bir **TEKLIF kimliği** girin. Bu, hesabınızdaki her teklif için benzersiz bi
 
 - Bu KIMLIK, varsa Market teklifi ve Azure Resource Manager şablonları için Web adresinde müşteriler tarafından görülebilir.
 - Yalnızca küçük harfleri ve rakamları kullanın. Kısa çizgi ve alt çizgi içerebilir, ancak boşluk içeremez ve 50 karakterle sınırlıdır. Örneğin, burada **Test-teklif-1** girerseniz, teklif Web adresi olacaktır `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
-- Teklif KIMLIĞI, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Teklif KIMLIĞI, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Bir **teklif diğer adı** girin. Bu, Iş Ortağı Merkezi 'nde teklif için kullanılan addır.
 
 - Bu ad Market 'te kullanılmıyor ve teklif adından ve müşterilere gösterilen diğer değerlerden farklı.
-- Teklif diğer adı, **Oluştur** ' u seçtikten sonra değiştirilemez.
+- Teklif diğer adı, **Oluştur**' u seçtikten sonra değiştirilemez.
 
 Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
@@ -53,7 +53,7 @@ Teklifi oluşturmak için **Oluştur** ' u seçin ve devam edin.
 
 Bu sayfa, bu teklifi yayımlamak için gereken adımların görsel bir gösterimini gösterir (hem tamamlandı hem de yaklaşan) ve her adımın tamamlanması gereken süre.
 
-Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örneğin:
+Bu teklif üzerinde yaptığınız seçime bağlı olarak işlem gerçekleştirme bağlantılarını içerir. Örnek:
 
 - Teklif bir taslak-silme taslağı tekliftir
 - Teklif canlı ise, [teklifi satmaya](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -81,7 +81,7 @@ Teklifinizi Iş Ortağı Merkezi ile Market 'te yayımlarken, Müşteri Ilişkil
 
 Bazı ek müşteri yönetimi kaynakları aşağıda verilmiştir:
 
-- [Ticari Market teklifinizin müşteri adayları](commercial-marketplace-get-customer-leads.md)
+- [Ticari market teklifinizden elde edilen potansiyel müşteriler](commercial-marketplace-get-customer-leads.md)
 - [Müşteri adayı yönetimi hakkında sık sorulan sorular](../lead-management-faq.md#common-questions-about-lead-management)
 - [Müşteri adayı yapılandırma hatalarını giderme](../lead-management-faq.md#publishing-config-errors)
 - [Müşteri adayı yönetimine genel bakış](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (açılır pencere engelleyicinizin kapalı olduğundan emin olun).
@@ -97,7 +97,7 @@ Bu sayfa, teklifinizi Market 'te, uygulama sürümünüzde ve teklifinizi destek
 Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve alt kategoriler ' i seçin. Teklifinizin teklif açıklamasında bu kategorileri nasıl desteklediğini açıkladığınızdan emin olun. Seçin:
 
 - Birincil ve ikincil kategori dahil olmak üzere en az bir ve en fazla iki kategori (isteğe bağlı).
-- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil** ' i seçin.
+- Her birincil ve/veya ikincil kategori için en fazla iki alt kategori. Teklifiniz için geçerli bir alt kategori yoksa, **geçerli değil**' i seçin.
 
 [Teklif listesi En Iyi uygulamalarında](../gtm-offer-listing-best-practices.md)kategorilerin ve alt kategorilerin tam listesini görebilirsiniz.
 
@@ -109,9 +109,7 @@ Teklifinizi uygun Market arama alanlarında yerleştirmek için kategoriler ve a
 
 #### <a name="terms-and-conditions"></a>hüküm ve koşullar
 
-Kendi özel hüküm ve koşullarınızı sağlamak için **hüküm ve koşullar** kutusuna en fazla 10.000 karakter girin. Hüküm ve koşullarınız daha uzun bir açıklama gerektiriyorsa, bulundukları yere tek bir Web bağlantısı girin. Bu, müşterilere etkin bir bağlantı olarak görüntülenecektir.
-
-Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
+Kendi özel hüküm ve koşullarınızı sağlamak için **hüküm ve koşullar** kutusuna en fazla 10.000 karakter girin. Müşterilerinizin teklifinizi deneyebilmeleri için önce bu koşulları kabul etmesi gerekir.
 
 Bir sonraki bölüme devam etmeden önce **Taslağı kaydet** ' i seçin, teklif listesi.
 
@@ -248,7 +246,7 @@ Sağlamamıza yardımcı olması için teklifiniz hakkında ek bilgiler sağlay�
 
 Teklifin tüm gerekli bölümlerini tamamladıktan sonra, teklifinizi gözden geçirme ve yayımlama için gönderebilirsiniz.
 
-Portalın sağ üst köşesinde, **gözden geçir ve Yayımla** ' yı seçin.
+Portalın sağ üst köşesinde, **gözden geçir ve Yayımla**' yı seçin.
 
 İnceleme sayfasında şunları yapabilirsiniz:
 
@@ -258,6 +256,6 @@ Portalın sağ üst köşesinde, **gözden geçir ve Yayımla** ' yı seçin.
   - **Tamamlandı** -bölümde tüm gerekli veriler var ve hata yok. Teklifi gönderebilmeniz için teklifin tüm bölümlerinin tamamlanmış olması gerekir.
 - Uygulamanızın doğru şekilde test edilmesini sağlamak için sertifika ekibine test yönergeleri sağlayın. Ayrıca, teklifinizi anlamak için yararlı olan tüm ek notları sağlayın.
 
-Teklifi yayımlamaya göndermek için **Yayımla** ' yı seçin.
+Teklifi yayımlamaya göndermek için **Yayımla**' yı seçin.
 
-Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live** ' ı seçin.
+Teklifin bir önizleme sürümünün gözden geçirilmesi ve onaylanmak üzere kullanılabilir olduğunu size bildirmek için size bir e-posta göndereceğiz. Teklifinizi herkese açık bir şekilde yayımlamak için Iş Ortağı Merkezi 'ne gidin ve **Git-Live**' ı seçin.

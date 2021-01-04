@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage 1. performans ayarı
 description: Olabildiğince fazla okuma ve yazma işlemi gerçekleştirerek, en iyi performansı elde etmek için Azure Data Lake Storage 1. 'teki tüm kullanılabilir üretilen işi kullanmanın ne kadar önemli olduğunu öğrenin.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332527"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724689"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Performans için Azure Data Lake Storage 1. ayarlama
 
@@ -65,7 +65,7 @@ Bazen veri işlem hatları, çok sayıda küçük dosya içeren ham veriler üze
 
 Hive ve ADLA iş yükleri için, zaman serisi verilerinin bölümlenmesi, bazı sorguların verilerin yalnızca bir alt kümesini okumasına yardımcı olabilir ve bu da performansı geliştirir.
 
-Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için yapılandırılmış bir adlandırma ile yerleştirir. Aşağıda, Date: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. tsv*tarafından yapılandırılan veriler için görtiğimiz yaygın bir örnek verilmiştir.
+Zaman serisi verileri alan işlem hatları, genellikle dosyalarını dosya ve klasörler için yapılandırılmış bir adlandırma ile yerleştirir. Aşağıda, Date: *\dataset\yyyy\mm\dd\ datafile_YYYY_MM_DD. tsv* tarafından yapılandırılan veriler için görtiğimiz yaygın bir örnek verilmiştir.
 
 Tarih saat bilgilerinin hem klasör hem de dosya adında göründüğünü unutmayın.
 

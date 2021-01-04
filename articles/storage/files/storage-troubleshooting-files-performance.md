@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 960b3c29f97c43e1247018a60f6c6310c7cf02de
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512078"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724672"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure dosya paylaşımları performans sorunlarını giderme
 
@@ -46,7 +46,7 @@ Paylaşımınızın kısıtlanıp kısıtlanmadığını doğrulamak için porta
 ### <a name="solution"></a>Çözüm
 
 - Standart bir dosya paylaşımı kullanıyorsanız, depolama hesabınızda [büyük dosya paylaşımlarını](./storage-files-how-to-create-large-file-share.md?tabs=azure-portal) etkinleştirin. Büyük dosya paylaşımları, paylaşım başına 10.000 ıOPS 'ye kadar destekler.
-- Premium dosya paylaşma kullanıyorsanız, ıOPS sınırını artırmak için sağlanan dosya paylaşımının boyutunu artırın. Daha fazla bilgi edinmek için, [Azure dosyaları Planlama Kılavuzu](./storage-files-planning.md#understanding-provisioning-for-premium-file-shares)'ndaki "Premium dosya paylaşımları Için sağlamayı anlama" bölümüne bakın.
+- Premium dosya paylaşma kullanıyorsanız, ıOPS sınırını artırmak için sağlanan dosya paylaşımının boyutunu artırın. Daha fazla bilgi edinmek için [Premium dosya paylaşımları için sağlamayı anlama](./understanding-billing.md#provisioned-billing)bölümüne bakın.
 
 ### <a name="cause-2-metadata-or-namespace-heavy-workload"></a>Neden 2: meta veri veya ad alanı ağır iş yükü
 
@@ -225,7 +225,7 @@ Doğrulamak için, portalda Azure ölçümlerini kullanabilirsiniz.
 1. Koşul eklemek için **Koşul Seç** ' i seçin.
 1. Depolama hesabı için desteklenen sinyaller listesinde, **işlem** ölçümünü seçin.
 1. **Sinyal mantığını Yapılandır** bölmesindeki **Boyut adı** açılır listesinde **yanıt türü**' nü seçin.
-1. **Boyut değerleri** aşağı açılan listesinde, başarılı olarak daraltma (SMB için) veya **Clientazaltlgerror** (REST için) öğesini seçin. **SuccessWithThrottling**
+1. **Boyut değerleri** aşağı açılan listesinde, başarılı olarak daraltma (SMB için) veya **Clientazaltlgerror** (REST için) öğesini seçin. 
 
    > [!NOTE]
    > Ne başarılı bir şekilde **daraltma** ne de **Clientazaltıgerror** değeri listelenmiyorsa bu, kaynağın kısıtlanmadığını gösterir. Boyut değerini eklemek için, **boyut değerleri** aşağı açılan listesinin yanındaki **özel değer Ekle**' yi seçin, **başarılı bir kısıtlama** veya **Clientkısıtıngerror** yazın, **Tamam**' ı seçin ve 7. adımı yineleyin.

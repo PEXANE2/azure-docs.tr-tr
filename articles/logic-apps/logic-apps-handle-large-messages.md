@@ -3,16 +3,14 @@ title: Öbek kullanarak büyük iletileri işleme
 description: Azure Logic Apps ile oluşturduğunuz otomatikleştirilmiş görevler ve iş akışlarında parçalama kullanarak büyük ileti boyutlarını nasıl işleyeceğinizi öğrenin
 services: logic-apps
 ms.suite: integration
-author: DavidCBerry13
-ms.author: daberry
 ms.topic: article
-ms.date: 12/03/2019
-ms.openlocfilehash: 1b23c92ec70b80a6cd08fc42a05ffec1e5b43b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 12/18/2020
+ms.openlocfilehash: de4af34182fc1a95968e95d322a6ec35101a3dc9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656776"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695881"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps parçalama ile büyük iletileri işleme
 
@@ -40,8 +38,57 @@ Logic Apps ile iletişim kuran hizmetler kendi ileti boyutu sınırlarına sahip
 
 Parçalama desteği sunan bağlayıcılar için, temel alınan Parçalama Protokolü son kullanıcılara görünmez. Ancak, tüm bağlayıcılar öbek oluşturmayı desteklemez, bu nedenle bu bağlayıcılar, gelen iletiler bağlayıcıların boyut sınırlarını aştığında çalışma zamanı hataları oluşturur.
 
-> [!NOTE]
-> Öbek kullanan eylemler için, tetikleyici gövdesini geçiremezseniz veya bu eylemlerde olduğu gibi ifadeleri kullanamazsınız `@triggerBody()?['Content']` . Bunun yerine, metin veya JSON dosya içeriği için, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action) kullanmayı deneyebilir veya bu içeriği işlemek için [bir değişken oluşturabilirsiniz](../logic-apps/logic-apps-create-variables-store-values.md) . Tetikleyici gövdesi, medya dosyaları gibi diğer içerik türlerini içeriyorsa, bu içeriği işlemek için diğer adımları gerçekleştirmeniz gerekir.
+
+' Yi destekleyen ve parçalama için etkinleştirilen eylemler için, `@triggerBody()?['Content']` Bu girişlerin herhangi birini kullanmak parçalama işleminin oluşmasını önlediği için tetikleyici gövdelerini, değişkenleri ve ifadeleri kullanamazsınız. Bunun yerine, [ **oluşturma** eylemini](../logic-apps/logic-apps-perform-data-operations.md#compose-action)kullanın. Özellikle, `body` tetikleyici gövdesinden, değişkenine, ifadeden vb. veri çıktısını depolamak Için **oluşturma** eylemini kullanarak bir alan oluşturmanız gerekir, örneğin:
+
+```json
+"Compose": {
+    "inputs": {
+        "body": "@variables('myVar1')"
+    },
+    "runAfter": {
+        "Until": [
+            "Succeeded"
+        ]
+    },
+    "type": "Compose"
+},
+```
+Ardından, verilere başvurmak için, parçalama eyleminde öğesini kullanın `@body('Compose')` .
+
+```json
+"Create_file": {
+    "inputs": {
+        "body": "@body('Compose')",
+        "headers": {
+            "ReadFileMetadataFromServer": true
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['sftpwithssh_1']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/datasets/default/files",
+        "queries": {
+            "folderPath": "/c:/test1/test1sub",
+            "name": "tt.txt",
+            "queryParametersSingleEncoded": true
+        }
+    },
+    "runAfter": {
+        "Compose": [
+            "Succeeded"
+        ]
+    },
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    },
+    "type": "ApiConnection"
+},
+```
 
 <a name="set-up-chunking"></a>
 
@@ -113,7 +160,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
 1. Mantıksal uygulamanız, boş bir ileti gövdesine sahip bir ilk HTTP POST veya PUT isteği gönderir. İstek üst bilgisi, mantıksal uygulamanızın parçalara yüklemek istediği içerikle ilgili şu bilgileri içerir:
 
-   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
+   | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
    |---------------------------------|-------|------|-------------|
    | **x-MS-Transfer-Mode** | öbekli | Dize | İçeriğin öbeklerde karşıya yüklendiğini belirtir |
    | **x-MS-Content-Length** | <*içerik uzunluğu*> | Tamsayı | Parçalama öncesinde tüm içerik boyutu bayt cinsinden |
@@ -123,7 +170,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
-   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
+   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    | **Konum** | Dize | Yes | HTTP PATCH iletilerinin gönderileceği URL konumu |
    ||||
 
@@ -133,7 +180,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
 
    * Bu üst bilgi, her bir düzeltme eki iletisinde gönderilen içerik öbeği hakkındaki ayrıntıları:
 
-     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Description |
+     | Logic Apps istek üst bilgisi alanı | Değer | Tür | Açıklama |
      |---------------------------------|-------|------|-------------|
      | **İçerik aralığı** | <*aralığı*> | Dize | Başlangıç değeri, bitiş değeri ve toplam içerik boyutu dahil olmak üzere geçerli içerik öbeği için bayt aralığı, örneğin: "bytes = 0-1023/10100" |
      | **İçerik türü** | <*içerik türü*> | Dize | Öbekli içerik türü |
@@ -145,7 +192,7 @@ Bu adımlarda, mantıksal uygulamanızdan bir uç noktaya öbekli içerik yükle
    | Uç nokta yanıt üst bilgisi alanı | Tür | Gerekli | Açıklama |
    |--------------------------------|------|----------|-------------|
    | **Aralık** | Dize | Yes | Uç nokta tarafından alınan içerik için bayt aralığı, örneğin: "bytes = 0-1023" |   
-   | **x-MS-öbek boyutu** | Tamsayı | No | Önerilen öbek boyutu (bayt) |
+   | **x-MS-öbek boyutu** | Tamsayı | Hayır | Önerilen öbek boyutu (bayt) |
    ||||
 
 Örneğin, bu eylem tanımı, bir uç noktaya öbekli içerik yüklemek için bir HTTP POST isteği gösterir. Eylemin `runTimeConfiguration` özelliğinde, `contentTransfer` özelliği şu `transferMode` şekilde ayarlanır `chunked` :

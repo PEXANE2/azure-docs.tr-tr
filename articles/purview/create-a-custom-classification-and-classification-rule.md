@@ -1,18 +1,18 @@
 ---
 title: Özel sınıflandırma ve sınıflandırma kuralı oluşturma (Önizleme)
 description: Bu makalede, kuruluşunuzda benzersiz olan verilerinizde veri türlerini tanımlamak için nasıl özel sınıflandırmalar oluşturabileceğiniz açıklanır. Ayrıca, verilerinizin tamamında belirtilen verileri bulmanıza olanak sağlayan özel sınıflandırma kurallarının oluşturulmasını açıklar.
-author: chandrakavya
-ms.author: kchandra
+author: animukherjee
+ms.author: anmuk
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/1/2020
-ms.openlocfilehash: 16a714cff506117c5d6f7fd4921fbd5346bfda39
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 53c71eec4c913c606669b7d36ca9a71ac8f3e2f1
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96553923"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693464"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure purview 'da özel sınıflandırmalar 
 
