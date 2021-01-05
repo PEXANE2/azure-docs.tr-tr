@@ -2,22 +2,31 @@
 title: Azure Service Bus coğrafi olağanüstü durum kurtarma | Microsoft Docs
 description: Azure Service Bus için coğrafi bölgeleri kullanarak yük devretme ve olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372532"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862359"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus coğrafi olağanüstü durum kurtarma
 
-Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı kalma süresi, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam edebilmesi için kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* , tüm kuruluşlar için önemli bir özelliktir. Azure Service Bus, ad alanı düzeyinde coğrafi olağanüstü durum kurtarmayı destekler.
+Esnekliği, veri işleme kaynaklarının felaket kesintilerine karşı, birçok kurum ve bazı durumlarda sektör düzenlemeleri için gereken bir gereksinimdir. 
 
-Coğrafi olağanüstü durum kurtarma özelliği Service Bus Premium SKU için genel kullanıma sunulmuştur. 
+Azure Service Bus, tek tek makinelerin zararlı arızalarının veya bir veri merkezindeki birden çok hata etki alanına yayılan kümeler genelinde tam rafların riskini zaten yayar ve bu nedenle, hizmetin garanti edilen hizmet düzeylerinde çalışmaya devam etmesi ve genellikle bu tür hatalardan oluşan önemli kesintiler olmadan, saydam hata algılama ve yük devretme mekanizmaları uygular. [Kullanılabilirlik alanları](../availability-zones/az-overview.md)için etkin seçeneğiyle bir Service Bus ad alanı oluşturulduysa, risk kesinti riski üç fiziksel olarak ayrılmış tesislere göre daha fazla yayılır ve hizmette, tüm tesis için eksiksiz ve çok zararlı bir kayıp olmadan anında ve daha fazla kapasite ayırmalar vardır. 
 
->[!NOTE]
-> Geo-Disaster kurtarma şu anda yalnızca meta verilerin (kuyruklar, konular, abonelikler, filtreler), eşleştirildiği zaman birincil ad alanından ikincil ad alanına kopyalanmasını sağlar.
+Kullanılabilirlik alanı desteği olan tüm etkin Azure Service Bus kümesi modeli, aksan, donanım arızalarına ve hatta tüm veri merkezi tesislerinin çok fazla kaybına karşı dayanıklılık açısından her türlü şirket içi ileti Aracısı ürününe bağlıdır. Yine de, yaygın fiziksel yok etme ile ilgili ölçüler, bu ölçülerin yeterince savunmasına karşı bir durum olabilir. 
+
+Service Bus coğrafi olağanüstü durum kurtarma özelliği, bu büyüklükte bir olağanüstü durumdan kurtulmasını kolaylaştırmak ve başarısız bir Azure bölgesini iyi ve uygulama yapılandırmalarınızı değiştirmek zorunda kalmadan daha kolay hale getirmek için tasarlanmıştır. Bir Azure bölgesinin terk olması genellikle birkaç hizmeti ve bu özelliği öncelikle bileşik uygulama yapılandırmasının bütünlüğünü korumaya yardımcı olmaya yönelik olarak daha fazla hizmet içerir. Özelliği, Service Bus Premium SKU 'SU için genel kullanıma sunulmuştur. 
+
+Geo-Disaster kurtarma özelliği, bir ad alanının tamamının (kuyruklar, konular, abonelikler, filtreler) bir birincil ad alanından eşleştirildiği zaman bir ikincil ad alanına çoğaltılmasını sağlar ve yalnızca bir kez yük devretme işlemini dilediğiniz zaman birincil sunucudan ikinciye taşıyın. Yük devretme taşıma, ad alanı için seçilen diğer adı ikincil ad alanına yeniden işaret eder ve ardından eşleştirmeyi keser. Yük devretme işlemi başlatıldıktan sonra neredeyse anında gerçekleşir. 
+
+> [!IMPORTANT]
+> Özelliği, aynı yapılandırmaya sahip işlemlerin anında devamlılığını mümkün, ancak **kuyruklarda veya konu aboneliklerinde veya atılacak ileti sıralarında tutulan iletileri çoğaltmaz**. Sıra semantiğini korumak için, bu çoğaltma yalnızca ileti verilerinin çoğaltılmasını gerektirmez, ancak aracıdaki her durum değişikliğine gerek kalmaz. Çoğu Service Bus ad alanı için, gerekli çoğaltma trafiği uygulama trafiğini ve yüksek performanslı kuyruklarla daha fazla aşılacağından, çoğu ileti hala Birincilden silindiklerinde ikinciye çoğaltılır ve çok fazla trafiğe neden olur. Coğrafi olağanüstü durum kurtarma için tercih ettiğiniz çok sayıda eşleştirmede geçerli olan yüksek gecikmeli çoğaltma yolları için, kilitlenme süresi uzadığında kısıtlama etkileri nedeniyle, devam eden çoğaltma trafiğinin uygulama trafiğiyle birlikte tutulması de mümkün olmayabilir.
+ 
+> [!TIP]
+> Kuyrukların ve konu aboneliklerinin içeriğini ve etkin/etkin yapılandırmalarda karşılık gelen ad alanlarını kesintileri ve olağanüstü durumlar ile Cope 'a çoğaltmak için, bu coğrafi olağanüstü durum kurtarma özelliği kümesini iyice yapmayın, ancak [çoğaltma kılavuzunu](service-bus-federation-overview.md)izleyin.  
 
 ## <a name="outages-and-disasters"></a>Kesintiler ve olağanüstü durumlar
 
@@ -51,14 +60,14 @@ Aşağıdaki bölüm, ad alanları arasında eşleştirmeye kurulum için bir ge
 
 Kurulum işlemi aşağıdaki gibidir-
 
-1. ***Birincil*** Service Bus Premium ad alanı sağlayın.
+1. ***Birincil** _ Service Bus Premium ad alanı sağlayın.
 
-2. *Birincil ad alanının sağlandığı farklı*bir bölgede ***Ikincil*** Service Bus Premium ad alanı sağlayın. Bu, farklı veri merkezi bölgelerinde hata yalıtımına izin verir.
+2. Birincil ad alanının sağlandığı bir bölgede _different _*_ikincil_*_ Service Bus Premium ad alanı sağlayın *. Bu, farklı veri merkezi bölgelerinde hata yalıtımına izin verir.
 
-3. ***Diğer adı***almak için birincil ad alanı ve ikincil ad alanı arasında eşleştirme oluşturun.
+3. ***Alias** _ öğesini elde etmek için birincil ad alanı ve ikincil ad alanı arasında eşleştirme oluşturun.
 
     >[!NOTE] 
-    > [Azure Service Bus standart ad alanınızı Azure Service Bus Premium 'a geçirdiyseniz](service-bus-migrate-standard-premium.md), **PS/CLI** veya **REST API**aracılığıyla olağanüstü durum kurtarma yapılandırması oluşturmak için önceden mevcut diğer adı (yani Service Bus standart ad alanı bağlantı dizeniz) kullanmanız gerekir.
+    > [Azure Service Bus standart ad alanınızı Azure Service Bus Premium 'a geçirdiyseniz](service-bus-migrate-standard-premium.md), _ *PS/clı** veya **REST API** aracılığıyla olağanüstü durum kurtarma yapılandırması oluşturmak için önceden mevcut diğer adı (yani Service Bus standart ad alanı bağlantı dizeniz) kullanmanız gerekir.
     >
     >
     > Bunun nedeni, geçiş sırasında Azure Service Bus standart ad alanı bağlantı dizesinin/DNS adınızın, Azure Service Bus Premium ad alanınız için bir diğer ad haline geldiği bir addır.
@@ -68,7 +77,7 @@ Kurulum işlemi aşağıdaki gibidir-
     > Olağanüstü durum kurtarma yapılandırmasını kurmak için portalını kullanıyorsanız, Portal bu desteklenmediği uyarısıyla sizin için Özet olur.
 
 
-4. İstemci uygulamalarınızı coğrafi DR özellikli birincil ad alanına bağlamak için adım 3 ' te elde edilen ***diğer adı*** kullanın. Başlangıçta, diğer ad birincil ad alanını işaret eder.
+4. İstemci uygulamalarınızı coğrafi olarak etkinleştirilmiş birincil ad alanına bağlamak için adım 3 ' te alınan **_Alias_* _ ' i kullanın. Başlangıçta, diğer ad birincil ad alanını işaret eder.
 
 5. Seçim Yük devretme gerekli olup olmadığını algılamak için bazı izleme ekleyin.
 
@@ -80,7 +89,7 @@ Yük devretme, müşteri tarafından el ile tetiklenir (bir komutla veya komutu 
 
 Yük devretme tetiklendikten sonra-
 
-1. ***Diğer ad*** bağlantı dizesi, ikincil Premium ad alanını işaret etmek üzere güncelleştirilir.
+1. _*_Diğer ad_*_ bağlantı dizesi, ikincil Premium ad alanını işaret etmek üzere güncelleştirilir.
 
 2. İstemciler (Gönderenler ve alıcılar) Ikincil ad alanına otomatik olarak bağlanır.
 
@@ -170,7 +179,7 @@ Uygulamanız ve Service Bus için bir olağanüstü durum kurtarma yapılandırm
 
 Bu yaklaşımın avantajı, yük devretmenin uygulama katmanında Service Bus ad alanından bağımsız olmasını sağlayabilmektedir. Aşağıdaki senaryoları göz önünde bulundurun: 
 
-**Yalnızca uygulama yük devretmesi:** Burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
+_ *Yalnızca uygulama yük devretmesi:** burada uygulama VNET-1 ' de mevcut olmayacaktır, ancak VNET-2 ' ye geçmeyecektir. Hem birincil hem de ikincil ad alanları için hem VNET-1 hem de VNET-2 üzerinde hem özel uç noktalar yapılandırıldığından, uygulama çalışacaktır. 
 
 **Yalnızca ad alanı yük devretme Service Bus**: her iki özel uç nokta hem birincil hem de ikincil ad alanları için her iki sanal ağda de yapılandırıldığı için, uygulama çalışacaktır. 
 

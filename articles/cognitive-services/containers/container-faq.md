@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
-ms.openlocfilehash: 188a348b497a485be0a8091b50a3f2c11b6493c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 71b57eae1a66e6966f61123e638c4790410ef445
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960759"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862537"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure bilişsel hizmetler kapsayıcıları sık sorulan sorular (SSS)
 
@@ -22,7 +22,7 @@ ms.locfileid: "94960759"
 
 **S: kullanılabilir nedir?**
 
-Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek bir geçişli önizleme olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) ' nde bulabilirsiniz. Kapsayıcıları [Docker Hub 'ında](https://hub.docker.com/_/microsoft-azure-cognitive-services)da görüntüleyebilirsiniz.
+Y **:** Azure bilişsel hizmetler kapsayıcıları, geliştiricilerin Azure 'da kullanılabilen akıllı API 'Leri kullanmasına izin verir, ancak kapsayıcıların [avantajlarından](../cognitive-services-container-support.md#features-and-benefits) yararlanabilir. Bazı kapsayıcılar, bir uygulamanın erişimini gerektirebilecek bir geçişli önizleme olarak kullanılabilir. Diğer kapsayıcılar, geçişli olmayan önizleme olarak genel kullanıma sunulmuştur veya genel kullanıma sunulmuştur. Kapsayıcıların tam listesini ve bunların kullanılabilirliğini Azure bilişsel [Hizmetler makalesinde kapsayıcı desteği](../cognitive-services-container-support.md) ' nde bulabilirsiniz. Kapsayıcıları [Docker Hub 'ında](https://hub.docker.com/_/microsoft-azure-cognitive-services)da görüntüleyebilirsiniz.
 
 **S: bilişsel hizmetler bulutu ve kapsayıcılar arasında herhangi bir fark var mı?**
 
@@ -54,7 +54,7 @@ Y **:** Herkes "sogeign Cloud" terimiyle tanıdık değildir, bu nedenle tanım�
 
 Ne yazık ki *bilişsel* hizmetler kapsayıcıları, sogeign bulutlarında yerel olarak desteklenmez. Kapsayıcılar bu bulutlarda çalıştırılabilir, ancak genel buluttan çekilir ve kullanım verilerinin genel uç noktaya gönderilmesi gerekir.
 
-### <a name="versioning"></a>Sürüm Oluşturma
+### <a name="versioning"></a>Sürüm oluşturma
 
 **S: kapsayıcılar en son sürüme nasıl güncelleştirilir?**
 
@@ -164,7 +164,7 @@ Y **:** Bilişsel hizmetler kapsayıcıları Linux kapsayıcılarıdır, ancak W
  
 **S: kapsayıcıları keşfet Nasıl yaparım??**
 
-Y **:** Bilişsel hizmetler kapsayıcıları Azure portal, Docker Hub ve Azure Container Registry gibi çeşitli konumlarda mevcuttur. En son kapsayıcı konumları için, [kapsayıcı depoları ve görüntüleri](../cognitive-services-container-support.md#container-repositories-and-images)öğesine bakın.
+Y **:** Bilişsel hizmetler kapsayıcıları Azure portal, Docker Hub ve Azure Container Registry gibi çeşitli konumlarda mevcuttur. En son kapsayıcı konumları için [kapsayıcı görüntülerine](container-image-tags.md)bakın.
 
 **S: bilişsel hizmetler kapsayıcıları AWS ve Google teklifleriyle nasıl karşılaştırılmaktadır?**
 

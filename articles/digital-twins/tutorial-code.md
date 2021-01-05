@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 96533c1742e8ad5fde9796ea2073f6e402ac8dcf
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011311"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862369"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Öğretici: Azure dijital TWINS API 'Leri ile kodlama
 
@@ -57,9 +57,12 @@ Bu, kodunuzun büyük bir kısmını yazacağınız bir *program.cs* dahil olmak
 
 Öğreticinin tamamında kullanmaya devam edebileceksiniz, komut penceresini açık tutun.
 
-Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . Aşağıdaki bağlantıları kullanarak, her birinin en son sürümünü projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabileceğiniz NuGet üzerindeki paketlere gidebilirsiniz.
-* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. 
-* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
+Ardından, projenize Azure dijital TWINS ile çalışmak için gerekli olacak **iki bağımlılık ekleyin** . NuGet üzerindeki paketlere gitmek için aşağıdaki bağlantıları kullanabilirsiniz. buradan, her birini projenize eklemek için konsol komutlarının (.NET CLı için de dahil olmak üzere) bulabilirsiniz.
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. En son sürümü ekleyin.
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar. Sürüm 1.2.2 ekleyin.
+
+>[!NOTE]
+> Şu anda bu öğreticiyle Azure. Identity Version 1.3.0 kullanma özelliğini etkileyen [bilinen bir sorun](troubleshoot-known-issues.md#issue-with-default-azure-credential-authentication-on-azureidentity-130) var. Lütfen bu sorun devam ederken sürüm 1.2.2 kullanın.
 
 ## <a name="get-started-with-project-code"></a>Proje kodu ile çalışmaya başlama
 

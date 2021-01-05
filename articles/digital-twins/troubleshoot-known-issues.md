@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: a9735e355244d51464c66c10e02f97f03d2e67cd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d0c26255e6d9d35d51390ed2b432b9c5dc9ab2be
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673483"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862462"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure dijital TWINS 'de bilinen sorunlar
 
@@ -37,13 +37,21 @@ Bu makalede, Azure dijital TWINS ile ilişkili bilinen sorunlar hakkında bilgi 
 | --- | --- | --- |
 | Rol atamalarınızın betiği çalıştırdıktan sonra başarıyla ayarlandığını anlamak için, kurulum makalesinin [*Kullanıcı rolü atamasını doğrula*](how-to-set-up-instance-scripted.md#verify-user-role-assignment) bölümüne ait yönergeleri izleyin. Kullanıcılarınız bu rolle gösterilmezse, bu sorun sizi etkiler. | Kişisel bir [Microsoft hesabı (MSA)](https://account.microsoft.com/account)ile oturum açan kullanıcılar için, kullanıcının oturum açma e-postalarından sizin gibi komutları TANıMLAYAN asıl kimliğiniz, kullanıcının rolü doğru şekilde atamak için bulmasını ve kullanmasını zorlaştırıyor. | Çözümlemek için, [CLI yönergelerini](how-to-set-up-instance-cli.md#set-up-user-access-permissions) veya [Azure Portal yönergelerini](how-to-set-up-instance-portal.md#set-up-user-access-permissions)kullanarak rol atamasını el ile ayarlayabilirsiniz. |
 
-## <a name="issue-with-interactive-browser-authentication"></a>Etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun
+## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure 'da etkileşimli tarayıcı kimlik doğrulamasıyla ilgili sorun. Identity 1.2.0
 
 **Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.2.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken [ınteractivebrowsercredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, bir tarayıcı penceresinde kimlik doğrulamaya çalışırken "Azure. Identity. AuthenticationFailedException" hata yanıtı olarak sunulur. Tarayıcı penceresi tamamen başlayamayabilir veya kullanıcının kimlik doğrulamasını başarıyla başarabilirken, istemci uygulaması yine de hata vererek başarısız olabilir.
 
 | Bu, beni etkiler mi? | Nedeni | Çözüm |
 | --- | --- | --- |
-| &nbsp;Etkilenen &nbsp; Yöntem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; aşağıdaki makalelerde kullanılır:<br><br>[*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)<br><br>[*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)<br><br>[*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md) | Bazı kullanıcılar, kitaplığın sürüm **1.2.0** Bu soruna sahipti `Azure.Identity` . | Çözümlemek için uygulamalarınızı [en son sürümünü](https://www.nuget.org/packages/Azure.Identity) kullanacak şekilde güncelleştirin `Azure.Identity` . Kitaplık sürümünü güncelleştirdikten sonra, tarayıcı yüklenmesi ve beklendiği gibi kimlik doğrulaması yapılmalıdır. |
+| &nbsp;Etkilenen &nbsp; Yöntem &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; aşağıdaki makalelerde kullanılır:<br><br>[*Öğretici: istemci uygulamasını kodlayın*](tutorial-code.md)<br><br>[*Nasıl yapılır: uygulama kimlik doğrulama kodunu yazma*](how-to-authenticate-client.md)<br><br>[*Nasıl yapılır: Azure dijital TWINS API 'Leri ve SDK 'Larını kullanma*](how-to-use-apis-sdks.md) | Bazı kullanıcılar, kitaplığın sürüm **1.2.0** Bu soruna sahipti `Azure.Identity` . | Çözümlemek için uygulamalarınızı [daha sonraki bir sürümünü](https://www.nuget.org/packages/Azure.Identity) kullanacak şekilde güncelleştirin `Azure.Identity` . Kitaplık sürümünü güncelleştirdikten sonra, tarayıcı yüklenmesi ve beklendiği gibi kimlik doğrulaması yapılmalıdır. |
+
+## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure 'da varsayılan Azure kimlik bilgisi kimlik doğrulamasıyla sorun. Identity 1.3.0
+
+**Sorun açıklaması:** Azure **[. Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) kitaplığı**'Nın **1.3.0** sürümünü kullanarak Azure dijital TWINS uygulamalarınıza kimlik doğrulama kodu yazarken, bu docs genelinde birçok örnekte kullanılan [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) yöntemiyle ilgili sorunlarla karşılaşabilirsiniz. Bu, kod kimlik doğrulamaya çalıştığında "Azure. Identity. AuthenticationFailedException: SharedTokenCacheCredential kimlik doğrulaması başarısız oldu" hata yanıtı olarak sunulur.
+
+| Bu, beni etkiler mi? | Nedeni | Çözüm |
+| --- | --- | --- |
+| DefaultAzureCredential, kimlik doğrulaması içeren birçok belge örneği için kullanılır. DefaultAzureCredential kullanarak kimlik doğrulama kodu yazıyorsanız ve kitaplığın 1.3.0 sürümünü kullanıyorsanız `Azure.Identity` , bu durum sizi etkileyebilir. | Bu sorun, kitaplığın sürüm **1.3.0** ile DefaultAzureCredential kullanılırken size sunulur `Azure.Identity` . | Bu sorunu çözmek için uygulamanızı [1.2.2 sürümünü](https://www.nuget.org/packages/Azure.Identity/1.2.2) kullanacak şekilde değiştirin `Azure.Identity` . Kitaplık sürümünü değiştirdikten sonra, kimlik doğrulamasının beklenen şekilde başarılı olması gerekir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 12/28/2020
 ms.author: memildin
-ms.openlocfilehash: 484a8c7c230863f230719ddaf4e98a6248512bcc
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: f0015177332aa07ed65f9d0345a11bfdad170104
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560262"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862622"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Güvenlik Merkezi 'ndeki yenilikler nelerdir?
 
@@ -40,6 +40,12 @@ Aralık ayında güncelleştirmeler şunlardır:
 - [Genel Yöneticiler, artık kendi kiracı düzeyinde izinler verebilir](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [İki yeni Azure Defender planı: DNS için Azure Defender ve Kaynak Yöneticisi için Azure Defender (önizlemede)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
 - [Azure portal yeni güvenlik uyarıları sayfası (Önizleme)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [Azure SQL veritabanı & SQL yönetilen örneği 'nde yeniden kullanıma alınmış güvenlik merkezi deneyimi](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
+- [Varlık envanter araçları ve filtreleri güncelleştirildi](#asset-inventory-tools-and-filters-updated)
+- [SSL sertifikaları isteyen web uygulamaları hakkında öneri artık güvenli puanın bir parçası değil](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
+- [Öneriler sayfasında ortam, önem derecesi ve kullanılabilir yanıtlar için yeni filtreler bulunur](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [Sürekli dışa aktarma yeni veri türlerini ve geliştirilmiş deployıfnotexist ilkelerini alır](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
+
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Makinelerde SQL Server 'lar için Azure Defender genel kullanıma sunuldu
 
@@ -114,6 +120,87 @@ Yeni deneyimle erişmek için, güvenlik uyarıları sayfasının en üstündeki
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Yeni önizleme uyarıları deneyimine bağlantı içeren başlık":::
 
 Yeni uyarılar deneyiminden örnek uyarılar oluşturmak için bkz. [örnek Azure Defender uyarıları](security-center-alert-validation.md#generate-sample-azure-defender-alerts)oluşturma.
+
+
+### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Azure SQL veritabanı & SQL yönetilen örneği 'nde yeniden kullanıma alınmış güvenlik merkezi deneyimi 
+
+SQL 'deki güvenlik merkezi deneyimi, aşağıdaki güvenlik merkezi ve SQL için Azure Defender özelliklerine erişim sağlar:
+
+- **Güvenlik önerileri** : Güvenlik Merkezi, olası güvenlik yapılandırmalarını belirlemek üzere tüm bağlı Azure kaynaklarının güvenlik durumunu düzenli aralıklarla analiz eder. Daha sonra bu güvenlik açıklarını düzeltme ve kuruluşların güvenlik duruşunu geliştirme hakkında öneriler sağlar.
+- **Güvenlik uyarıları** : SQL ekleme, deneme yanılma saldırıları ve ayrıcalık kötüye kullanımı gibi tehditler IÇIN Azure SQL etkinliklerini sürekli olarak izleyen bir algılama hizmeti. Bu hizmet, güvenlik merkezi 'nde ayrıntılı ve eyleme dayalı güvenlik uyarılarını tetikler ve Microsoft 'un Azure-Native SıEM çözümü olan Azure Sentinel ile araştırmalar devam ettirme seçeneklerini sunar.
+- **Bulmalar** : Azure SQL yapılandırmasını sürekli olarak izleyen ve güvenlik açıklarını düzeltmeye yardımcı olan bir güvenlik açığı değerlendirme hizmeti. Değerlendirme taramaları, ayrıntılı güvenlik bulguları ile birlikte Azure SQL güvenlik durumlarına genel bir bakış sağlar.     
+
+:::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Güvenlik Merkezi 'nin SQL için güvenlik özellikleri Azure SQL içinden kullanılabilir":::
+
+
+### <a name="asset-inventory-tools-and-filters-updated"></a>Varlık envanter araçları ve filtreleri güncelleştirildi
+
+Azure Güvenlik Merkezi 'ndeki envanter sayfası aşağıdaki değişikliklerle yenilendi:
+
+- Araç çubuğuna **Kılavuzlar ve geri bildirimler** eklendi. Bu, ilgili bilgi ve araçların bağlantılarını içeren bir bölme açar. 
+- Kaynaklarınız için kullanılabilen varsayılan filtrelere **Abonelik filtresi** eklendi.
+- Geçerli filtre seçeneklerini bir Azure Kaynak Grafiği sorgusu olarak **açmak için sorgu bağlantısını açın** (eski adıyla "kaynak grafik Gezgininde görünüm" olarak adlandırılır).
+- Her filtrenin **işleç seçenekleri** . Artık ' = ' dışında ek mantıksal işleçler arasından seçim yapabilirsiniz. Örneğin, başlıkları ' Encrypt ' dizesini içeren etkin önerilere sahip tüm kaynakları bulmak isteyebilirsiniz. 
+
+    :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Varlık envanterinin filtrelerinde operatör seçeneğinin denetimleri":::
+
+Envanter hakkında daha fazla bilgi edinmek için [varlık envanteriyle kaynaklarınızı bulun ve yönetin](asset-inventory.md).
+
+
+### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>SSL sertifikaları isteyen web uygulamaları hakkında öneri artık güvenli puanın bir parçası değil
+
+"Web Apps tüm gelen istekler için bir SSL sertifikası istemelidir" önerisi güvenlik denetiminden, en **iyi güvenlik uygulamalarını** (yani, hiçbir noktaya değer olmaksızın) uygulama **erişimi ve izinleri yönetme** (en fazla 4 Pts değeri). 
+
+Web uygulamalarınızın bir sertifika istemesini sağlamak, bunları kesinlikle daha güvenli hale getirir. Ancak, herkese açık Web uygulamaları için önemli değildir. Sitenize HTTPS değil, HTTP üzerinden eriştiğinizde hiçbir istemci sertifikası almazsınız. Bu nedenle, uygulamanız için istemci sertifikaları gerekiyorsa, HTTP üzerinden uygulamanıza yönelik isteklere izin vermeniz gerekir. [Azure App Service IÇIN TLS karşılıklı kimlik doğrulamasını yapılandırma](../app-service/app-service-web-configure-tls-mutual-auth.md)bölümünde daha fazla bilgi edinin.
+
+Bu değişiklik ile, öneri artık puanınızı etkilemeyecek önerilen en iyi uygulamadır. 
+
+[Güvenlik denetimlerinde ve bunların önerilerinde](secure-score-security-controls.md#security-controls-and-their-recommendations)her güvenlik denetiminde hangi önerilerin olduğunu öğrenin.
+
+
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>Öneriler sayfasında ortam, önem derecesi ve kullanılabilir yanıtlar için yeni filtreler bulunur
+
+Azure Güvenlik Merkezi, tüm bağlı kaynakları izler ve güvenlik önerileri oluşturur. Karma bulut durunuzu güçlendirin ve kuruluşunuz, sektör ve ülkeniz ile ilgili ilkeler ve standartlarla uyumluluğu izleyin.
+
+Güvenlik Merkezi, kapsamını ve özelliklerini genişletmeye devam ettiğinden, güvenlik önerilerinin listesi her ay büyüyordur. Örneğin, [Azure Güvenlik kıyaslamasının kapsamını artırmak için bkz. 29 Preview önerileri eklendi](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark).
+
+Büyüyen liste ile en fazla ilgilendiğiniz önerilere filtre uygulamanız gerekir. Kasım ayında öneriler sayfasına filtreler ekledik (bkz. [öneriler listesi şimdi filtreler içeriyor](#recommendations-list-now-includes-filters)).
+
+Bu ay eklenen filtreler şunlara göre öneriler listesini iyileştirmek için seçenekler sağlar:
+
+- **Ortam** -AWS, GCP veya Azure kaynaklarınız (veya herhangi bir bileşim) için öneriler görüntüleyin
+- **Önem derecesi** -Güvenlik Merkezi tarafından ayarlanan önem derecesine göre önerileri görüntüleme
+- **Yanıt eylemleri** -Güvenlik Merkezi yanıt seçeneklerinin kullanılabilirliğine göre önerileri görüntüleyin: hızlı düzeltme, reddetme ve zorlama
+
+    > [!TIP]
+    > Yanıt eylemleri filtresi, **kullanılabilir hızlı düzeltilmesi (Evet/Hayır)** filtresinin yerini alır. 
+    > 
+    > Bu yanıt seçeneklerinin her biri hakkında daha fazla bilgi edinin:
+    > - [Hızlı düzeltme düzeltme](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [Zorlama/Reddetme önerileriyle yanlış yapılandırmaları önleme](prevent-misconfigurations.md)
+
+:::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="Güvenlik denetimine göre gruplanmış öneriler" lightbox="./media/release-notes/added-recommendations-filters.png":::
+
+### <a name="continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies"></a>Sürekli dışa aktarma yeni veri türlerini ve geliştirilmiş deployıfnotexist ilkelerini alır
+
+Azure Güvenlik Merkezi 'nin sürekli dışa aktarma araçları, ortamınızdaki diğer izleme araçlarıyla kullanılmak üzere güvenlik merkezi 'nin önerilerini ve uyarılarını dışa aktarmanız sağlar.
+
+Sürekli dışarı aktarma, nelerin dışa aktarılacağını ve nerede gidebileceklerini tamamen özelleştirmenizi sağlar. Tüm ayrıntılar için bkz.  [Güvenlik Merkezi verilerini sürekli dışa aktarma](continuous-export.md).
+
+Bu araçlar geliştirilmiştir ve aşağıdaki yollarla genişletilmiştir:
+
+- **Sürekli dışa aktarma 'nın deployıfnotexist ilkeleri geliştirildi**. İlkeler şimdi:
+
+    - **Yapılandırmanın etkinleştirilip etkinleştirilmediğini denetleyin.** Değilse, ilke uyumlu değil olarak görünür ve uyumlu bir kaynak oluşturur. [Bir sürekli dışarı aktarma ayarlama](continuous-export.md#set-up-a-continuous-export)bölümünde "Azure ilke sekmesi ile, ölçeklendirmeye dağıtım" bölümünde sağlanan Azure ilke şablonları hakkında daha fazla bilgi edinin.
+
+    - **Güvenlik bulgularını dışarı aktarma desteği.** Azure Ilke şablonlarını kullanırken, sürekli dışarı aktarmayı bulguları içerecek şekilde yapılandırabilirsiniz. Bu, güvenlik açığı değerlendirme tarayıcılarından bulguları veya ' Ana ' öneri "sistem güncelleştirmeleri" makinelerinizde yüklü olmalıdır "gibi ' Sub ' önerilerine sahip olan önerileri dışarı aktarırken geçerlidir.
+    
+    - **Güvenli puanı verileri dışarı aktarma desteği.**
+
+- **Mevzuat uyumluluk değerlendirmesi verileri eklendi (önizlemede).** Artık bir Log Analytics çalışma alanına veya Olay Hub 'ına tüm özel girişimler dahil olmak üzere yasal uyumluluk değerlendirmelerine yönelik güncelleştirmeleri sürekli dışa aktarabilirsiniz. Bu özellik Ulusal/bağımsız bulutlarda kullanılamaz.
+
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="Sürekli dışa aktarma verilerinize mevzuat uyumlu değerlendirme bilgilerini ekleme seçenekleri.":::
+
 
 ## <a name="november-2020"></a>Kasım 2020
 
@@ -464,7 +551,7 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için Azure kaynak
 
 Herhangi bir kaynakta bekleyen öneriler olduğunda, bu değişiklikler envanterde görüntülenir.
 
-[Varlık envanteri ve yönetim araçlarıyla kaynaklarınızın araştırıp yönetiminde](asset-inventory.md)daha fazla bilgi edinin.
+[Varlık envanteriyle kaynaklarınızı araştırıp yönetme](asset-inventory.md)hakkında daha fazla bilgi edinin.
 
 
 

@@ -1,14 +1,14 @@
 ---
 title: Sanal makinelerin içeriğini denetleme hakkında bilgi edinin
-description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma aracısını nasıl kullandığını öğrenin.
+description: Azure Ilkesi 'nin sanal makineler içindeki ayarları denetlemek için konuk yapılandırma istemcisini nasıl kullandığını öğrenin.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7d7aa14038c834747240d17441c61d000ac6bb74
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 58fe1c630de4abfb2fe04ddedb45b360cfebd423
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347889"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862331"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure İlkesi’nin Konuk Yapılandırmasını anlama
 
@@ -58,7 +58,7 @@ Konuk yapılandırması istemcisi, her 5 dakikada bir yeni içerik denetler. Kon
 
 ## <a name="supported-client-types"></a>Desteklenen istemci türleri
 
-Konuk yapılandırma ilkesi tanımları yeni sürümlere dahildir. Konuk yapılandırma Aracısı uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur. Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
+Konuk yapılandırma ilkesi tanımları yeni sürümlere dahildir. Konuk yapılandırma istemcisi uyumlu değilse, Azure Marketi 'nde kullanılabilen işletim sistemlerinin daha eski sürümleri hariç tutulur. Aşağıdaki tabloda, Azure görüntülerinde desteklenen işletim sistemlerinin bir listesi gösterilmektedir:
 
 |Publisher|Ad|Sürümler|
 |-|-|-|
@@ -150,9 +150,9 @@ Konuk yapılandırma ilkesi tanımları, Ilke ataması farklı parametreler kull
 
 Konuk yapılandırma uzantısı, günlük dosyalarını aşağıdaki konumlara Yazar:
 
-Pencerelerin `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
+Windows: `C:\ProgramData\GuestConfig\gc_agent_logs\gc_agent.log`
 
-'Un `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
+Linux: `/var/lib/GuestConfig/gc_agent_logs/gc_agent.log`
 
 `<version>`, Geçerli sürüm numarasını belirtir.
 

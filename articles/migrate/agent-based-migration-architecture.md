@@ -6,12 +6,12 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 1389b03d87beb24cba50fec0a782de8b7f935557
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: c605c21307cda874f34ae5ea9f4e4959e5e6c183
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753901"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861945"
 ---
 # <a name="agent-based-migration-architecture"></a>Aracı tabanlı geçiş mimarisi
 
@@ -92,14 +92,14 @@ VMware VM 'lerini çoğaltırken, günlük veri değişim oranı ve ihtiyacını
 
 Dağıtımınızda ek bir işlem sunucusu gerekip gerekmediğini anlamak için bu tablodaki değerleri kullanın.
 
-- Günlük değişiklik tarifeniz (karmaşıklık oranı) 2 TB 'den fazla ise, ek bir işlem sunucusu dağıtın.
+- Günlük değişiklik hızı (karmaşıklık oranı) 2 TB 'den fazla ise, ek bir işlem sunucusu dağıtın.
 - 200 'den fazla makine çoğaltıyorsanız, ek bir çoğaltma gereci dağıtın.
 
 **CPU** | **Bellek** | **Boş alan-veri önbelleğe alma** | **Karmaşıklık oranı** | **Çoğaltma sınırları**
 --- | --- | --- | --- | ---
 8 vCPU (2 yuva * 4 çekirdek \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB veya daha az | < 100 makine 
 12 vCPU (2 yuva * 6 çekirdek \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB ila 1 TB | 100-150 makine.
-16 vCPU (2 yuva * 8 çekirdek \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB-2 TB | 151-200 makine.
+16 vCPU (2 yuva * 8 çekirdek \@ 2,5 GHz) | 32 GB |  1 TB | 1 TB-2 TB | 151-200 makine.
 
 ### <a name="sizing-scale-out-process-servers"></a>Genişleme işlem sunucularını boyutlandırma
 
@@ -108,7 +108,7 @@ Genişleme işlem sunucusu dağıtmanız gerekiyorsa, sunucu boyutunu anlamak i�
 **İşlem sunucusu** | **Veri önbelleğe alma için boş alan** | **Karmaşıklık oranı** | **Çoğaltma sınırları**
 --- | --- | --- | --- 
 4 vCPU (2 yuva * 2 çekirdek \@ 2,5 GHz), 8 GB bellek | 300 GB | 250 GB veya daha az | 85 adede kadar makine 
-8 vCPU (2 yuva * 4 çekirdek \@ 2,5 GHz), 12 GB bellek | 600 GB | 251 GB ila 1 TB    | 86-150 makine.
+8 vCPU (2 yuva * 4 çekirdek \@ 2,5 GHz), 12 GB bellek | 600 GB | 251 GB ila 1 TB | 86-150 makine.
 12 vCPU (2 yuva * 6 çekirdek \@ 2,5 GHz), 24 GB bellek | 1 TB | 1-2 TB | 151-225 makine.
 
 ## <a name="throttle-upload-bandwidth"></a>Karşıya yükleme bant genişliğini azaltma.

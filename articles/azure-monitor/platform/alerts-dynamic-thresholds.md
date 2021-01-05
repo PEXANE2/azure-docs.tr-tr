@@ -4,13 +4,13 @@ description: Makine öğrenimi tabanlı dinamik eşiklerle uyarı oluşturma
 author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
-ms.date: 02/16/2020
-ms.openlocfilehash: 110d4a3219b4898fa6f138e29f1112d7134f674c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/04/2021
+ms.openlocfilehash: 92fafc9357ca08cd31c9ba7badbf7f6433f44f86
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012348"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862586"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Azure Izleyici 'de dinamik eşiklerle ölçüm uyarıları
 
@@ -39,7 +39,7 @@ Dinamik eşikler, Ölçüm serisinin verilerini sürekli öğrenir ve bir dizi a
 Eşikler, bu eşiklerden bir sapmanın ölçüm davranışında bir anomali olduğunu gösterdiği şekilde seçilir.
 
 > [!NOTE]
-> Mevsimsel desenler algılama bir saat, gün veya hafta aralığına ayarlanır. Bu, bısaatlik desen veya semiweekly gibi diğer desenlerinin algılanmadığını gösterir.
+> Dinamik eşikler saatlik, günlük veya haftalık desenler için mevsimsellik algılayabilir. İki saatlik veya yarı haftalık mevsimsellik gibi diğer desenler algılanmayabilir. Haftalık mevsimsellik düzeyini algılamak için, geçmiş verilerin en az üç haftası gereklidir. 
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Dinamik Eşikteki ' duyarlılık ' ayarı ne anlama geliyor?
 
