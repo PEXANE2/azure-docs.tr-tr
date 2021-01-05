@@ -8,18 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: ce854c8f2d1d317c3660aaab9c0a6569aae0bb36
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169146"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895980"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Öğretici: kullanıcılarda oturum açın ve Blazor WebAssembly uygulamasından korunan API 'yi çağırın
 
-Bu öğreticide, kullanıcıları oturum açan ve Microsoft Identity platformunu kullanarak Microsoft Graph verileri alan ve uygulamanızı Azure Active Directory (Azure AD) kaydeden bir Blazor WebAssembly uygulaması oluşturacaksınız.
-
-Ayrıca [Blazor Server için bir öğretici](tutorial-blazor-server.md)sunuyoruz. 
+Bu öğreticide, kullanıcıları oturum açan ve Microsoft Identity platformunu kullanarak Microsoft Graph verileri alan ve uygulamanızı Azure Active Directory (Azure AD) kaydeden bir Blazor WebAssembly uygulaması oluşturacaksınız. 
 
 Bu öğreticide:
 
@@ -28,7 +26,11 @@ Bu öğreticide:
 > * Microsoft Identity platformunu kullanarak [kimlik doğrulaması ve yetkilendirme](authentication-vs-authorization.md) için Azure Active Directory (Azure AD) kullanmak üzere yapılandırılmış yeni bir Blazor WebAssembly uygulaması oluşturun
 > * Bu durumda korumalı bir Web API 'sinden veri alma [Microsoft Graph](/graph/overview)
 
-## <a name="prerequisites"></a>Ön koşullar
+Bu öğretici .NET Core 3,1 kullanır. .NET belgeleri, ASP.NET Core 5,0 kullanarak [bir Blazor WebAssembly uygulamasının güvenliğini sağlamaya yönelik](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api) yönergeler içerir. 
+
+Ayrıca [Blazor Server için bir öğretici](tutorial-blazor-server.md)sunuyoruz. 
+
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core 3,1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1)
 * Bir uygulamayı kaydedebileceğiniz bir Azure AD kiracısı. Bir Azure AD kiracısına erişiminiz yoksa, [Microsoft 365 Geliştirici programına](https://developer.microsoft.com/microsoft-365/dev-program) kaydolarak veya [ücretsiz Azure hesabı](https://azure.microsoft.com/free)oluşturarak bir tane edinebilirsiniz.
@@ -74,9 +76,11 @@ Tarayıcınızda `https://localhost:5001` , ' a gidin ve Azure AD Kullanıcı he
 
 Bu şablonun Microsoft Identity platformunu kullanarak Azure AD ile oturum açmaları etkinleştiren bileşenleri, [Bu konudaki ASP.net doc](/aspnet/core/blazor/security/webassembly/standalone-with-azure-active-directory#authentication-package)bölümünde açıklanmaktadır.
 
-## <a name="retrieving-data-from-microsoft-graph"></a>Microsoft Graph verileri alma
+## <a name="retrieving-data-from-a-protected-api-microsoft-graph"></a>Korumalı bir API 'den veri alma (Microsoft Graph)
 
-[Microsoft Graph](/graph/overview) , kiracınızdaki kullanıcıların Microsoft 365 verilerine erişim sağlayan bir dizi API sunar. Microsoft Identity platformunu uygulamanızın kimlik sağlayıcısı olarak kullanarak Microsoft Identity platform tarafından verilen belirteçleri Microsoft Graph doğrudan desteklediğinden bu bilgilere daha kolay erişebilirsiniz. Bu bölümde kod eklemek, oturum açan kullanıcının e-postalarını uygulamanın "verileri getir" sayfasında görüntüleyebilir.
+[Microsoft Graph](/graph/overview) , kullanıcılarınız için Microsoft 365 verilere erişim sağlayan API 'leri Içerir ve Microsoft Identity platformu tarafından verilen belirteçleri destekler, bu da bir örnek olarak kullanılmak üzere iyi BIR korumalı API sağlar. Bu bölümde, Microsoft Graph çağırmak ve kullanıcının e-postalarını uygulamanın "verileri getirme" sayfasında göstermek için kod eklersiniz.
+
+Bu bölüm, adlandırılmış bir istemci kullanarak korunan API 'yi çağırmak için ortak bir yaklaşım kullanılarak yazılmıştır. Aynı yöntem, çağırmak istediğiniz diğer korumalı API 'Ler için de kullanılabilir. Ancak, uygulamanızdan Microsoft Graph çağırmayı planlıyorsanız, demirbaş 'ı azaltmak için Graf SDK 'sını kullanabilirsiniz. .NET belgeleri, [Graph SDK 'nın nasıl kullanılacağına](https://docs.microsoft.com/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)ilişkin yönergeler içerir.
 
 Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygulamanızı oturumunuzu kapatıp geçerli belirteciniz çalışmayacak. Henüz yapmadıysanız, aşağıdaki kodu güncelleştirmeden önce uygulamanızı yeniden çalıştırın ve **Oturumu Kapat** ' ı seçin.
 
@@ -86,7 +90,7 @@ Başlamadan önce, gerekli izinlerde değişiklikler yaptığınız için uygula
 
 1. Azure portal, **uygulama kayıtları**' de Uygulamanızı seçin.
 1. **Yönet** altında **API izinleri**' ni seçin.
-1. Microsoft Graph **izin Ekle**' yi seçin  >  **Microsoft Graph**.
+1. Microsoft Graph **izin Ekle**' yi seçin  >  .
 1. **Temsilci izinleri**' ni seçin, sonra **posta. Read** iznini arayıp seçin.
 1. **Izin Ekle**' yi seçin.
 

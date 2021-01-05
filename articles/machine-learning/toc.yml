@@ -297,6 +297,9 @@
         - name: Git ile tümleştirme
           displayName: github gitlab
           href: concept-train-model-git-integration.md
+        - name: Ortam sorunlarını giderme
+          displayName: 'troubleshoot, envrionment, debug, image'
+          href: how-to-troubleshoot-environments.md
     - name: Verilerle çalışma
       items:
         - name: Verileri etiketleme
@@ -354,14 +357,6 @@
         - name: Hiperparametreleri ayarlama
           displayName: 'parameter, hyperparameter, hyperdrive'
           href: how-to-tune-hyperparameters.md
-        - name: MLflow ile çalışma
-          items:
-            - name: MLflow ile denemeleri izleme
-              displayName: 'log, monitor, deploy, metrics,  model registry, register'
-              href: how-to-use-mlflow.md
-            - name: MLflow ile Azure Databricks çalıştırmalarını izleme
-              displayName: 'log, monitor, deploy, metrics, databricks'
-              href: how-to-use-mlflow-azure-databricks.md
         - name: Scikit-learn
           href: how-to-train-scikit-learn.md
         - name: TensorFlow
@@ -404,6 +399,17 @@
           href: how-to-use-secrets-in-runs.md
         - name: Pekiştirmeye dayalı öğrenme
           href: how-to-use-reinforcement-learning.md
+    - name: MLflow ile çalışma
+      items:
+        - name: MLflow ile denemeleri izleme
+          displayName: 'log, monitor, metrics, model registry, register'
+          href: how-to-use-mlflow.md
+        - name: MLflow ile Azure Databricks çalıştırmalarını izleme
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-use-mlflow-azure-databricks.md
+        - name: MLflow modelleri dağıtma
+          displayName: 'log, monitor, deploy, metrics, databricks'
+          href: how-to-deploy-models-with-mlflow.md
     - name: Otomatik makine öğrenimi
       displayName: 'automl, auto ml'
       items:
@@ -468,9 +474,9 @@
               href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA çıkarımı
               href: how-to-deploy-fpga-web-service.md
-        - name: Sorun giderme ve hata ayıklama
+        - name: Dağıtım sorunlarını giderme
           href: how-to-troubleshoot-deployment.md
-        - name: Sorun giderme ve hata ayıklama (yerel)
+        - name: Dağıtım sorunlarını giderme (yerel)
           href: how-to-troubleshoot-deployment-local.md
         - name: Web hizmetini kullanma
           displayName: create client consume request response synchronous
@@ -536,12 +542,12 @@
             - name: Python kodu yürütme
               displayName: 'feature extraction, feature engineering'
               href: how-to-designer-python.md
-        - name: İşlem hatlarında hata ayıklama ve sorun giderme
+        - name: İşlem hatlarında sorun giderme
           displayName: designer
           href: how-to-debug-pipelines.md
         - name: İşlem hattı verilerine yönelik günlükleri Application Insights’a kaydetme
           href: how-to-log-pipelines-application-insights.md
-        - name: Paralel çalıştırma adımında hata ayıklama ve sorun giderme
+        - name: ParallelRunStep sorunlarını giderme
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
     - name: CI/CD için Azure Pipelines
@@ -601,11 +607,10 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Fiyatlandırma
       href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
+    - name: Hizmet sınırlamaları
+      href: resource-limits-quotas-capacity.md
     - name: Bölgesel kullanılabilirlik
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: Bilinen sorunlar
-      displayName: 'bugs, errors, troubleshoot'
-      href: resource-known-issues.md
     - name: Kullanıcı forumu
       href: 'https://docs.microsoft.com/answers/topics/azure-machine-learning.html'
     - name: Stack Overflow

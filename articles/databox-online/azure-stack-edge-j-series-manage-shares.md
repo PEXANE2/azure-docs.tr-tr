@@ -6,20 +6,20 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 413a93a145ae063a3aab4066ed62365e154d744a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1ff10290e0059295f14b55e90ed05e9690c9f5c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454101"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896831"
 ---
 # <a name="use-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal kullanma
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Bu makalede Azure Stack Edge Pro 'daki paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
+Bu makalede Azure Stack Edge Pro 'daki paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın. Bu makale Azure Stack Edge Pro GPU, Azure Stack Edge Pro R ve Azure Stack Edge Mini R cihazları için geçerlidir.
 
 ## <a name="about-shares"></a>Paylaşımlar hakkında
 
@@ -33,7 +33,7 @@ Azure 'a veri aktarmak için Azure Stack Edge Pro 'unuzda paylaşımlar oluştur
 
 Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
     ![Paylaşma Ekle seçeneğini belirleyin](media/azure-stack-edge-j-series-manage-shares/add-share-1.png)
 
@@ -63,7 +63,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 ## <a name="add-a-local-share"></a>Yerel bir paylaşma ekleyin
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
     ![Paylaşma Ekle 2 ' yi seçin](media/azure-stack-edge-j-series-manage-shares/add-local-share-1.png)
 
@@ -99,7 +99,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma oluşturduysanız, bu paylaşıma bağlamanız gerekir. Bir paylaşma bağlamak için aşağıdaki adımları uygulayın.
 
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
 
     ![Paylaşımı seçme](media/azure-stack-edge-j-series-manage-shares/mount-share-1.png)
 
@@ -123,11 +123,11 @@ Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma 
 
 Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden, çıkarmak istediğiniz paylaşımı seçin. Çıkardık paylaşımın herhangi bir modül tarafından kullanılmadığından emin olmak istiyorsunuz. Paylaşma bir modül tarafından kullanılıyorsa, ilgili modülle ilgili sorunları görürsünüz.
 
     ![Paylaşma 2 ' yi seçin](media/azure-stack-edge-j-series-manage-shares/unmount-share-1.png)
 
-2. Paylaşımlar listesinden, çıkarmak istediğiniz paylaşımı seçin. Çıkardık paylaşımın herhangi bir modül tarafından kullanılmadığından emin olmak istiyorsunuz. Paylaşma bir modül tarafından kullanılıyorsa, ilgili modülle ilgili sorunları görürsünüz. Çıkar ' **ı seçin.**
+2.  Çıkar ' **ı seçin.**
 
     ![Çıkarma seçin](media/azure-stack-edge-j-series-manage-shares/unmount-share-2.png)
 

@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: fa4db97e2aefe48e792f7d43dbb782e7a0967716
-  ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+  ms.openlocfilehash: 17113e3a2564ed56ecbcf8e34de27c4fe398ce03
+  ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96905273"
+  ms.lasthandoff: 12/18/2020
+  ms.locfileid: "97680669"
 landingContent:
 - title: Azure Haritalar hakkında
   linkLists:
@@ -40,6 +40,8 @@ landingContent:
     links:
     - text: Azure Haritalar'ı kullanarak web uygulaması oluşturma
       url: quick-demo-map-app.md
+    - text: Azure Haritalar’ı kullanarak Android uygulaması oluşturma
+      url: quick-android-map.md
   - linkListType: concept
     links:
     - text: Haritalar hesabı için doğru fiyatlandırma katmanını seçme
@@ -130,12 +132,26 @@ landingContent:
       url: /javascript/api/azure-maps-spatial-io/
 - title: Android SDK ile geliştirme
   linkLists:
+  - linkListType: tutorial
+    links:
+    - text: GeoJSON verilerini haritaya yükleme
+      url: tutorial-load-geojson-file-android.md
   - linkListType: how-to-guide
     links:
     - text: Android harita denetimini kullanmaya başlama
       url: how-to-use-android-map-control-library.md
-    - text: Özellik için meta veri bilgilerini görüntüleme
-      url: display-feature-information-android.md
+    - text: Veri kaynağı oluşturma
+      url: create-data-source-android-sdk.md
+    - text: Baloncuk katmanı ekleme
+      url: map-add-bubble-layer-android.md
+    - text: Sembol katmanı ekleme
+      url: how-to-add-symbol-to-android-map.md
+    - text: Çizgi katmanı ekleme
+      url: android-map-add-line-layer.md
+    - text: Çokgen katmanı ekleme
+      url: how-to-add-shapes-to-android-map.md
+    - text: Veri temelli stil ifadeleri kullanma
+      url: data-driven-style-expressions-android-sdk.md
     - text: Haritaya kutucuk katmanı ekleme
       url: how-to-add-tile-layer-android-map.md
     - text: Haritaya şekil ekleme

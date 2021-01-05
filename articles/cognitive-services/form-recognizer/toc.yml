@@ -7,45 +7,13 @@
       href: overview.md
     - name: Yenilikler
       href: whats-new.md
-- name: Hızlı Başlangıçlar
+- name: Form Tanıma ile çalışmaya başlama
   expaned: true
   items:
-    - name: İstemci kitaplığını kullanma
+    - name: İstemci kitaplığını veya REST API'sini kullanma
       href: quickstarts/client-library.md
     - name: Örnek etiketleme aracını kullanma
-      items:
-        - name: Özel modeli etiketlerle eğitme
-          href: quickstarts/label-tool.md
-    - name: REST API’sini kullanma
-      items:
-        - name: Özel modeli etiketler olmadan eğitme ve kullanma
-          items:
-            - name: cURL
-              href: quickstarts/curl-train-extract.md
-            - name: Python
-              href: quickstarts/python-train-extract.md
-        - name: Özel modeli etiketlerle eğitme ve kullanma
-          items:
-            - name: Python
-              href: quickstarts/python-labeled-data.md
-        - name: Önceden oluşturulmuş makbuz modelini kullanma
-          items:
-            - name: cURL
-              href: quickstarts/curl-receipts.md
-            - name: Python
-              href: quickstarts/python-receipts.md
-        - name: Önceden oluşturulmuş kartvizit modelini kullanma
-          items:
-            - name: Python
-              href: quickstarts/python-business-cards.md
-        - name: Önceden oluşturulmuş fatura modeli kullanma
-          items:
-            - name: Python
-              href: quickstarts/python-invoices.md
-        - name: Metin düzeni bilgilerini alma
-          items:
-            - name: Python
-              href: quickstarts/python-layout.md
+      href: quickstarts/label-tool.md
 - name: Öğreticiler
   items:
     - name: Bilişsel Arama ile Form Tanıma
@@ -77,7 +45,8 @@
           href: form-recognizer-container-configuration.md
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Kapsayıcı örnekleri kullanma
-          href: deploy-form-recognizer-on-container-instances.md
+          maintainContext: true
+          href: ../containers/azure-container-instance-recipe.md
         - name: Bilişsel Hizmetler kapsayıcıları belgeleri
           href: ../containers/index.yml
     - name: Modelleri yedekleme ve kurtarma

@@ -4,12 +4,12 @@ description: Python ile işlev geliştirmeyi anlama
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167854"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895419"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Işlevleri Python Geliştirici Kılavuzu
 
@@ -17,7 +17,7 @@ Bu makale, Python kullanarak Azure Işlevleri geliştirmeye giriş niteliğinded
 
 Python geliştiricisi olarak, aşağıdaki makalelerden biriyle de ilgileniyor olabilirsiniz:
 
-| Başlarken | Kavramlar| Senaryolar/örnekler |
+| Kullanmaya başlama | Kavramlar| Senaryolar/örnekler |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio Code kullanarak Python işlevi](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Terminal/komut istemiyle Python işlevi](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Geliştirici kılavuzu](functions-reference.md)</li><li>[Barındırma seçenekleri](functions-scale.md)</li><li>[Performans &nbsp; konuları](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch ile görüntü sınıflandırması](machine-learning-pytorch.md)</li><li>[Azure Otomasyonu örneği](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow ile Machine Learning](functions-machine-learning-tensorflow.md)</li><li>[Python örneklerine gözatamıyorum](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
@@ -123,7 +123,7 @@ from . import example #(relative)
 ```
 
 > [!NOTE]
->  *shared_code/* \_ \_ \_ \_ Mutlak içeri aktarma söz dizimi kullanılırken, shared_code/klasörü bir Python paketi olarak işaretlemek için bir init. Kopyala dosyası içermelidir.
+>   \_ \_ \_ \_ Mutlak içeri aktarma söz dizimi kullanılırken, shared_code/klasörü bir Python paketi olarak işaretlemek için bir init. Kopyala dosyası içermelidir.
 
 Aşağıdaki \_ \_ uygulama \_ \_ içeri aktarma ve üst düzey göreli içe aktarmanın ötesinde, bu, statik tür denetleyicisi tarafından desteklenmediğinden ve Python test çerçeveleri tarafından desteklenmediğinden kullanım dışı bırakılmıştır:
 
@@ -299,87 +299,7 @@ Benzer şekilde, `status_code` `headers` döndürülen [HttpResponse] nesnesinde
 
 ## <a name="scaling-and-performance"></a>Ölçeklendirme ve performans
 
-İşlevlerinizin nasıl çalıştığını ve bu performansın, işlev uygulamanızın nasıl ölçeklendirileceğini anlamak önemlidir. Yüksek performanslı uygulamalar tasarlarken bu özellikle önemlidir. Aşağıda, işlevler uygulamalarınızı tasarlarken, yazarken ve yapılandırırken göz önünde bulundurmanız gereken birkaç etken verilmiştir.
-
-### <a name="horizontal-scaling"></a>Yatay ölçeklendirme
-Varsayılan olarak, Azure Işlevleri uygulamanızdaki yükü otomatik olarak izler ve gerektiğinde Python için ek konak örnekleri oluşturur. İşlevler, iletilerin yaşı ve QueueTrigger için sıra boyutu gibi örneklerin ne zaman ekleneceğini belirlemek için farklı tetikleyici türleri için yerleşik eşikleri kullanır. Bu eşikler Kullanıcı tarafından yapılandırılabilir değildir. Daha fazla bilgi için bkz. [Tüketim ve Premium planların nasıl çalıştığı](functions-scale.md#how-the-consumption-and-premium-plans-work).
-
-### <a name="improving-throughput-performance"></a>Verimlilik performansını artırma
-
-Performansı iyileştirmeye yönelik bir anahtar, uygulamanızın kaynakları nasıl kullandığını ve işlev uygulamanızı uygun şekilde nasıl yapılandırabileceğini anlayacaktır.
-
-#### <a name="understanding-your-workload"></a>İş yükünüzü anlama
-
-Varsayılan yapılandırma, Azure Işlevleri uygulamalarının çoğu için uygundur. Ancak, iş yükü profilinize göre yapılandırma uygulayarak uygulamalarınızın aktarım hızı performansını artırabilirsiniz. İlk adım, çalıştırdığınız iş yükünün türünü anlamaktır.
-
-| | G/ç bağlantılı iş yükü | CPU ile bağlantılı iş yükü |
-|--| -- | -- |
-|**İşlev uygulaması özellikleri**| <ul><li>Uygulamanın birçok eşzamanlı çağırma işlemesi gerekiyor.</li> <li> Uygulama, ağ çağrıları ve disk okuma/yazma gibi çok sayıda g/ç olayını işler.</li> </ul>| <ul><li>Uygulama, görüntü yeniden boyutlandırma gibi uzun süre çalışan hesaplamalar yapar.</li> <li>Uygulama veri dönüşümünü yapar.</li> </ul> |
-|**Örnekler**| <ul><li>Web API'leri</li><ul> | <ul><li>Veri işleme</li><li> Makine öğrenimi çıkarımı</li><ul>|
-
-
-> [!NOTE]
->  Gerçek dünya işlevleri iş yükü çoğunlukla g/ç ve CPU sınırının bir karışımından büyük olduğundan, iş yükünün gerçekçi üretim yükleri altında profilini oluşturmanızı öneririz.
-
-
-#### <a name="performance-specific-configurations"></a>Performansa özgü yapılandırma
-
-İşlev uygulamanızın iş yükü profilini öğrendikten sonra, işlevlerinizin aktarım hızını artırmak için kullanabileceğiniz yapılandırma işlemleri aşağıda verilmiştir.
-
-##### <a name="async"></a>Zaman Uyumsuz
-
-[Python tek iş parçacıklı bir çalışma zamanı](https://wiki.python.org/moin/GlobalInterpreterLock)olduğundan, Python için bir konak örneği bir seferde yalnızca bir işlev çağrısını işleyebilir. Çok sayıda g/ç olayını işleyen ve/veya g/ç bağlantılı uygulamalar için, işlevleri zaman uyumsuz olarak çalıştırarak performansı önemli ölçüde artırabilirsiniz.
-
-Bir işlevi zaman uyumsuz olarak çalıştırmak için, `async def` işlevi zaman uyumsuz [CIO](https://docs.python.org/3/library/asyncio.html) ile doğrudan çalıştıran ifadesini kullanın:
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-[Aiohttp](https://pypi.org/project/aiohttp/) http ISTEMCISINI kullanan http tetikleyicisine sahip bir işleve örnek aşağıda verilmiştir:
-
-```python
-import aiohttp
-
-import azure.functions as func
-
-async def main(req: func.HttpRequest) -> func.HttpResponse:
-    async with aiohttp.ClientSession() as client:
-        async with client.get("PUT_YOUR_URL_HERE") as response:
-            return func.HttpResponse(await response.text())
-
-    return func.HttpResponse(body='NotFound', status_code=404)
-```
-
-
-Anahtar sözcüğü olmayan bir işlev, `async` zaman uyumsuz CIO iş parçacığı havuzunda otomatik olarak çalıştırılır:
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-İşlevleri zaman uyumsuz olarak çalıştırmanın tam avantajlarından yararlanmak için, kodunuzda kullanılan g/ç işlemi/kitaplığı, zaman uyumsuz olarak uygulanmanız gerekir. Zaman uyumsuz olarak tanımlanan işlevlerde zaman uyumlu g/ç işlemlerinin kullanılması genel **performansı düşürebilir.**
-
-Zaman uyumsuz model uygulayan istemci kitaplıklarına birkaç örnek aşağıda verilmiştir:
-- [aiohttp](https://pypi.org/project/aiohttp/) -zaman uyumsuz CIO için http istemcisi/sunucusu 
-- Ağ bağlantısıyla çalışmak için API-üst düzey zaman uyumsuz/await-Ready basit temelleri [akışlar](https://docs.python.org/3/library/asyncio-stream.html)
-- [Inus kuyruğu](https://pypi.org/project/janus/) -iş parçacığı için güvenli zaman uyumsuz CIO-Python kuyruğu
-- [pyzmq](https://pypi.org/project/pyzmq/) -ZeroMQ için Python bağlamaları
- 
-
-##### <a name="use-multiple-language-worker-processes"></a>Birden çok dil çalışan işlemi kullanma
-
-Varsayılan olarak, her Işlev ana bilgisayar örneği tek bir dil çalışan işlemine sahiptir. [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) uygulama ayarını kullanarak konak başına çalışan işlem sayısını (10 ' a kadar) artırabilirsiniz. Azure Işlevleri daha sonra bu çalışanlar genelinde aynı anda eşzamanlı işlev etkinleştirmeleri dağıtmaya çalışır.
-
-CPU 'ya bağlanan uygulamalar için, dil çalışanı sayısını, işlev uygulaması başına kullanılabilir çekirdek sayısıyla aynı veya ondan daha yüksek olacak şekilde ayarlamanız gerekir. Daha fazla bilgi edinmek için bkz. [kullanılabilir örnek SKU 'ları](functions-premium-plan.md#available-instance-skus). 
-
-G/ç bağlantılı uygulamalar, kullanılabilir çekirdek sayısının ötesinde çalışan işlem sayısını arttırmadan da yararlanabilir. Çalışan sayısını çok yüksek olarak ayarlamanın, gereken bağlam anahtarlarının sayısı arttığı için genel performansı etkilediğini aklınızda bulundurun. 
-
-FUNCTIONS_WORKER_PROCESS_COUNT, uygulamanızın talebi karşılamak üzere ölçeklenmesi sırasında oluşturduğu her bir konak için geçerlidir.
-
+Python işlev uygulamalarına yönelik ölçekleme ve performans için en iyi uygulamalar için lütfen [Python ölçek ve performans makalesine](python-scale-performance-reference.md)başvurun.
 
 ## <a name="context"></a>Bağlam
 
@@ -446,7 +366,7 @@ Azure Işlevleri aşağıdaki Python sürümlerini destekler:
 
 | İşlevler sürümü | Python <sup>*</sup> sürümleri |
 | ----- | ----- |
-| 3.x | 3,8<br/>3.7<br/>3.6 |
+| 3.x | 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>Resmi Cpyıthon dağıtımları
@@ -695,7 +615,7 @@ Python çalışan Docker görüntülerinde önceden yüklenmiş sistem kitaplık
 |  İşlevler çalışma zamanı  | Deni sürümü | Python sürümleri |
 |------------|------------|------------|
 | Sürüm 2. x | Uzat  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| Sürüm 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| Sürüm 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>Çıkış noktaları arası kaynak paylaşma
 

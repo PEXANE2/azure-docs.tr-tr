@@ -8,17 +8,17 @@ ms.custom: references_regions
 ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
-ms.date: 09/02/2020
-ms.openlocfilehash: fd33ebebf35e0407f7ce39c609ee372a7d1d4a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/04/2021
+ms.openlocfilehash: 48a0c3484b6cbeac4d71d3fbf383bb1c14466a9d
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250513"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897340"
 ---
 # <a name="supported-publisher-countries-and-regions"></a>Desteklenen yayımcı ülkeleri ve bölgeleri
 
-Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkelerden veya bölgelerden birine sahip olmanız gerekir.
+Microsoft Commercial Market 'e bir teklif yayımlamak için şirketiniz şu ülkelerden veya bölgelerden birinde yasal olarak yer almalıdır:
 
 - Afganistan
 - Bir i Adaları
@@ -134,7 +134,6 @@ Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkel
 - Kazakistan
 - Kenya
 - Kiribati
-- Güney Kore
 - Kosova
 - Kuveyt
 - Kırgızistan
@@ -202,7 +201,7 @@ Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkel
 - Ruanda
 - Reunion
 - Saba
-- Saint Barthélimy
+- Saint Barthelemy
 - Saint Kitts ve Nevis
 - Saint Lucia
 - Saint Martin
@@ -224,6 +223,7 @@ Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkel
 - Somali
 - Güney Afrika
 - Güney Georgia ve Güney Sandwich Adaları
+- Güney Kore (Kore Cumhuriyeti)
 - Güney Sudan
 - İspanya
 - Sri Lanka
@@ -248,7 +248,7 @@ Microsoft Commercial Market 'e bir teklif yayımlamak için, aşağıdaki ülkel
 - Türkmenistan
 - Turks ve Caicos Adaları
 - Tuvalu
-- ABD Küçük Harici Adaları
+- ABD harici Adaları
 - ABD Virgin Adaları
 - Uganda
 - Ukrayna

@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-CloudSimple özel bulutu oluşturma
 description: İşlem esnekliği ve sürekliliği ile VMware iş yüklerini buluta genişletmek için CloudSimple özel bulutu oluşturmayı açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4f700ac34b6c6e2a651366bee7dd1785c608064f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024798"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896286"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple özel bulutu oluşturma
 
@@ -47,17 +47,17 @@ ms.locfileid: "77024798"
 
 ## <a name="create-a-new-private-cloud"></a>Yeni bir özel bulut oluşturun
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple Hizmetleri**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple Hizmetleri** için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
-4. **Özel bulut oluştur** **' a tıklayarak**cloudsimple portalı için yeni bir tarayıcı sekmesi açın. İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.
+4. **Özel bulut oluştur** **' a tıklayarak** cloudsimple portalı için yeni bir tarayıcı sekmesi açın. İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.
 
     ![Azure 'dan özel bulut oluşturma](media/create-private-cloud-from-azure.png)
 
 5. CloudSimple portalında, özel bulutunuz için bir ad sağlayın.
 6. Özel bulutunuzun **konumunu** seçin.
-7. Azure 'da sağladığınız verilerle tutarlı bir **düğüm türü**seçin.
-8. **Düğüm sayısını**belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir.
+7. Azure 'da sağladığınız verilerle tutarlı bir **düğüm türü** seçin.
+8. **Düğüm sayısını** belirtin.  Özel bir bulut oluşturmak için en az üç düğüm gerekir.
 
     ![Özel bulut oluşturma-temel bilgi](media/create-private-cloud-basic-info.png)
 

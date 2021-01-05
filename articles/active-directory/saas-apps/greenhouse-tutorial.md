@@ -9,37 +9,36 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/18/2019
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 2206f0e1cfbe9e362937c6299c65eee2ebbb6253
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0eb64ebe5e55bc054b6a280ac249cf451bb027db
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448070"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Öğretici: Çevhouse ile tümleştirme Azure Active Directory
 
-Bu öğreticide,, Azure Active Directory (Azure AD) ile bir Çevhouse tümleştirme hakkında bilgi edineceksiniz.
-Azure AD ile bir Azure AD ile tümleştirmek aşağıdaki avantajları sağlar:
+Bu öğreticide, Azure Active Directory (Azure AD) ile bir doğa ile tümleşmeyi öğreneceksiniz. Azure AD ile doğa tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Çevhouse 'a erişimi olan bir denetim yapabilirsiniz.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak bir doğa (çoklu oturum açma) ile oturum açmasını sağlayabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz-Azure portal.
+* Azure AD 'de, Çevhouse 'a erişimi olan denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak yerleşik olarak oturum açmalarına olanak sağlayın.
+* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek istiyorsanız, bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Önkoşullar
 
-## <a name="prerequisites"></a>Ön koşullar
+Başlamak için aşağıdaki öğeler gereklidir:
 
-Azure AD tümleştirmesini Çevhouse ile yapılandırmak için aşağıdaki öğeler gereklidir:
+* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Doğa Merkezi çoklu oturum açma (SSO) etkin aboneliği.
 
-* Bir Azure AD aboneliği. Bir Azure AD ortamınız yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/) bir aylık deneme sürümü edinebilirsiniz
-* Doğa çoklu oturum açma etkin aboneliği
+> [!NOTE] 
+> Bu tümleştirme Ayrıca Azure AD ABD kamu bulut ortamından kullanılabilir. Bu uygulamayı Azure AD ABD kamu bulutu uygulama galerisinde bulabilir ve bunu ortak buluttan yaptığınız şekilde yapılandırabilirsiniz. 
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Çevhouse, **SP** tarafından başlatılan SSO 'yu destekler
 
@@ -47,59 +46,38 @@ Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandı
 
 Çevhouse 'un Azure AD ile tümleştirilmesini yapılandırmak için, galerinizden yönetilen SaaS uygulamaları listenize bir Çevhouse eklemeniz gerekir.
 
-**Galeriden Çevhouse eklemek için aşağıdaki adımları uygulayın:**
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
+1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna bir **çevhouse** yazın.
+1. Sonuçlar panelinden **Çevhouse** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-sso-for-greenhouse"></a>Doğa için Azure AD SSO 'yu yapılandırma ve test etme
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu, bir Kullanıcı adı ile birlikte yapılandırın ve sınayın. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Çevhouse 'da ilgili Kullanıcı arasında bağlantı ilişkisi oluşturmanız gerekir.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+Azure AD SSO 'yu bir doğa ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
+2. Tek Sign-On ayarlarını uygulama tarafında yapılandırmak için, **[doğa ve SSO 'Yu yapılandırın](#configure-greenhouse-sso)** .
+    1. Kullanıcı Azure AD gösterimi ile bağlantılı olan bir Köperon 'da, bir köperon ile ilgili bir en yüksek Kölükli **[test kullanıcısı oluşturun](#create-greenhouse-test-user)** .
+3. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-    ![Yeni uygulama düğmesi](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-4. Ara kutusuna, **bir tür seçin, bir**sonuç panelinden **doğa House** ' ı seçin ve ardından **Ekle** düğmesine tıklayarak uygulamayı ekleyin.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-     ![Sonuç listesinde çevhouse](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
-
-Bu bölümde, Azure AD çoklu oturum açmayı, **Britta Simon**adlı bir test kullanıcısına bağlı olarak, köperle yapılandırıp test edersiniz.
-Çoklu oturum açma 'nın çalışması için, bir Azure AD kullanıcısı ile ilişkili kullanıcı arasındaki bir bağlantı ilişkisinin oluşturulması gerekir.
-
-Azure AD çoklu oturum açmayı yapılandırmak ve test etmek için aşağıdaki yapı taşlarını gerçekleştirmeniz gerekir:
-
-1. **[Azure AD çoklu oturum açma özelliğini yapılandırarak](#configure-azure-ad-single-sign-on)** kullanıcılarınızın bu özelliği kullanmasına olanak sağlayın.
-2. Çoklu **[oturum açmayı yapılandırma](#configure-greenhouse-single-sign-on)** -uygulama tarafında tek Sign-On ayarlarını yapılandırmak için.
-3. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -Britta Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-4. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanarak Britta Simon 'u etkinleştirin.
-5. Kullanıcı Azure AD gösterimi ile bağlantılı olan bir Köperon 'da, bir köperon ile ilgili bir en yüksek Kölükli **[test kullanıcısı oluşturun](#create-greenhouse-test-user)** .
-6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[Çoklu oturum açmayı sınayın](#test-single-sign-on)** .
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
-
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
-
-Azure AD çoklu oturum açmayı, Çevhouse ile yapılandırmak için aşağıdaki adımları uygulayın:
-
-1. [Azure Portal](https://portal.azure.com/), **çevhouse** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
-
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Azure portal, **Çevhouse** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
     ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Doğa etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<companyname>.greenhouse.io`
 
@@ -116,66 +94,57 @@ Azure AD çoklu oturum açmayı, Çevhouse ile yapılandırmak için aşağıdak
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
 
-    b. Azure AD tanımlayıcısı
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-    c. Oturum kapatma URL 'SI
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-### <a name="configure-greenhouse-single-sign-on"></a>Doğa tek Sign-On yapılandırma
-
-**Çevhouse** tarafında çoklu oturum açma 'yı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'leri Azure Portal ' den, üst düzey [Destek ekibine](https://www.greenhouse.io/contact)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
-
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
-
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, BrittaSimon@contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Çevbriya erişim izni vererek Britta Simon 'u etkinleştirin.
+Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak, Çevhouse 'a erişim vererek B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra da **çevhouse**' u seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde, **Çevhouse**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+## <a name="configure-greenhouse-sso"></a>Doğa bir SSO 'yu yapılandırma
 
-2. Uygulamalar listesinde, **Çevhouse**' ı seçin.
+1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak bir Çevhouse Web sitesinde oturum açın.
 
-    ![Uygulamalar listesindeki Çevhouse bağlantısı](common/all-applications.png)
+1. **> Geliştirici merkezi > çoklu oturum açma '** ya gidin.
 
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
+    ![SSO sayfası ekran görüntüsü](./media/greenhouse-tutorial/configure.png)
 
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
+1. Tek Sign-On sayfasında aşağıdaki adımları gerçekleştirin.
 
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+    ![SSO yapılandırma sayfası için ekran görüntüsü](./media/greenhouse-tutorial/sso-page.png)
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    a. **SSO onaylama tüketici URL 'si** değerini kopyalayın, bu değeri Azure Portal **temel SAML yapılandırması** bölümündeki **yanıt URL 'si** metin kutusuna yapıştırın.
 
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+    b. **VARLıK kimliği/veren** metin kutusunda, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcı** değerini yapıştırın.
 
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+    c. **Tek Sign-On URL** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
 
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+    d. İndirilen **Federasyon meta VERI XML** dosyasını Azure Portal Notepad 'e açın ve Içeriği **IDP sertifika parmak izi** metin kutusuna yapıştırın.
+
+    e. Açılan listeden **ad tanımlayıcı biçim** değerini seçin.
+
+    f. **Teste başla**' ya tıklayın.
+
+    >[!NOTE]
+    >Alternatif olarak, **Dosya Seç** seçeneğine tıklayarak **Federasyon meta veri XML** dosyasını da karşıya yükleyebilirsiniz.
 
 ### <a name="create-greenhouse-test-user"></a>Doğa test kullanıcısı oluşturma
 
@@ -188,17 +157,13 @@ Azure AD kullanıcılarının, Çevhouse 'da oturum açmasını sağlamak için,
 
 1. **Çevhouse** şirket sitenizde yönetici olarak oturum açın.
 
-2. Üstteki menüde, **Yapılandır**' a ve ardından **Kullanıcılar**' a tıklayın.
+2. **Yeni kullanıcılar > yapılandırma > kullanıcılara** git
    
-    ![Kullanıcılar](./media/greenhouse-tutorial/ic790791.png "Kullanıcılar")
-
-3. **Yeni kullanıcılar**' a tıklayın.
-   
-    ![Yeni Kullanıcı](./media/greenhouse-tutorial/ic790792.png "Yeni Kullanıcı")
+    ![Kullanıcılar](./media/greenhouse-tutorial/create-user-1.png "Kullanıcılar")
 
 4. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
    
-    ![Yeni Kullanıcı Ekle](./media/greenhouse-tutorial/ic790793.png "Yeni Kullanıcı Ekle")
+    ![Yeni Kullanıcı Ekle](./media/greenhouse-tutorial/create-user-2.png "Yeni Kullanıcı Ekle")
 
     a. **Kullanıcı e-postalarını girin** metin kutusuna, sağlamak istediğiniz geçerli bir Azure Active Directory hesabının e-posta adresini yazın.
 
@@ -207,16 +172,17 @@ Azure AD kullanıcılarının, Çevhouse 'da oturum açmasını sağlamak için,
       >[!NOTE]
       >Azure Active Directory hesap sahipleri, hesabı etkin hale gelmeden önce onaylama bağlantısı içeren bir e-posta alır.
 
-### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
+### <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Çevhouse kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Çevhouse 'da otomatik olarak oturum açmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu işlem, oturum açma akışını başlatabileceğiniz bir Şhouse oturum açma URL 'sine yönlendirecektir. 
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Doğrudan sağ taraf oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Çevhouse kutucuğuna tıkladığınızda bu işlem, bu URL 'yi sağ taraf oturum açma URL 'sine yönlendirir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
+
+Orevyi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

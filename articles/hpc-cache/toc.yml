@@ -42,8 +42,14 @@
       href: hpc-cache-mount.md
     - name: Önbelleği yönetme
       href: hpc-cache-manage.md
-    - name: İsteğe bağlı ayarları yapılandırma
-      href: configuration.md
+    - name: İsteğe bağlı ayarları kullanma
+      items:
+        - name: İsteğe bağlı ayarları yapılandırma
+          href: configuration.md
+        - name: Erişim ilkelerini özelleştirme
+          href: access-policies.md
+        - name: Dizin hizmetleri ayarlama
+          href: directory-services.md
 - name: Başvuru
   items:
     - name: Azure CLI

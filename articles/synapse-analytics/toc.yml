@@ -502,7 +502,7 @@
               items:
                 - name: Azure Stream Analytics işi ekleme
                   href: ./sql-data-warehouse/sql-data-warehouse-integrate-azure-stream-analytics.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: Synapse çalışma alanlarına bağlanma araçları
+        - name: Araç ve uygulamalarla bağlanma
           items:
             - name: Genel Bakış
               href: sql/connect-overview.md
@@ -510,14 +510,20 @@
               href: sql/get-started-azure-data-studio.md
             - name: Bağlantı dizeleri
               href: sql/connection-strings.md
-            - name: sqlcmd ile sorgulama
-              href: sql/get-started-connect-sqlcmd.md
             - name: SSMS ile Sorgulama
               href: sql/get-started-ssms.md
-            - name: Visual Studio ile Sorgulama
-              href: sql/get-started-visual-studio.md
             - name: Power BI Desktop’a bağlanma
               href: sql/get-started-power-bi-professional.md
+            - name: Visual Studio SSDT ile sorgulama
+              href: sql/get-started-visual-studio.md
+            - name: .NET Core kullanarak sorgulama
+              href: ../azure-sql/database/connect-query-dotnet-core.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Visual Studio .NET kullanarak sorgulama
+              href: ../azure-sql/database/connect-query-dotnet-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Python kullanarak sorgulama
+              href: ../azure-sql/database/connect-query-python.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: sqlcmd ile sorgulama
+              href: sql/get-started-connect-sqlcmd.md
 - name: Apache Spark
   items:
     - name: Genel Bakış
@@ -1107,6 +1113,10 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Azure Synapse için Bilişsel Hizmetler’i yapılandırma
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Nasıl yapılır
+  items:
+    - name: Maliyetleri planlama ve yönetme
+      href: plan-manage-costs.md
 - name: Başvuru
   items:
     - name: Azure CLI

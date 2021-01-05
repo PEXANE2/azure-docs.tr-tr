@@ -1,19 +1,19 @@
 ---
 title: CloudSimple-Portal tarafından Azure VMware çözümüne erişin
 description: Azure portalından CloudSimple portalıyla VMware Çözümüne nasıl erişileceği açıklanır
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ea178655646f7f130476acaffc35c60181968ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0aa7a9a1f19a9d4fb2c555b08753e0b57c657974
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058705"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895164"
 ---
 # <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal CloudSimple Portal tarafından kullanılan VMware çözümüne erişin
 
@@ -38,13 +38,13 @@ Microsoft.VMwareCloudSimple/dedicatedCloudServices/*/write
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm hizmetler**’i seçin.
+1. **Tüm Hizmetler**’i seçin.
 
-2. **Cloudsimple Hizmetleri**için arama yapın.
+2. **Cloudsimple Hizmetleri** için arama yapın.
 
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 
-4. **Genel bakış** sayfasında **Cloudsimple portalına git ' e**tıklayın.  CloudSimple portalına ilk kez Azure portal erişiyorsanız, [Cloudsimple hizmet Yetkilendirme](#consent-to-cloudsimple-service-authorization-application) uygulamasına yetki vermeniz istenir. 
+4. **Genel bakış** sayfasında **Cloudsimple portalına git ' e** tıklayın.  CloudSimple portalına ilk kez Azure portal erişiyorsanız, [Cloudsimple hizmet Yetkilendirme](#consent-to-cloudsimple-service-authorization-application) uygulamasına yetki vermeniz istenir. 
 
     ![CloudSimple portalını Başlat](media/launch-cloudsimple-portal.png)
 

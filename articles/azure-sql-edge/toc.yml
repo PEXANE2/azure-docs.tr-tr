@@ -28,14 +28,6 @@
       href: tutorial-sync-data-factory.md
     - name: SQL Data Sync ile verileri eşitleme
       href: tutorial-sync-data-sync.md
-    - name: SQL Edge ile uçtan uca IoT çözümü oluşturma
-      items:
-        - name: Azure kaynakları ayarlama
-          href: tutorial-deploy-azure-resources.md
-        - name: IoT Edge Modülleri ayarlama
-          href: tutorial-set-up-iot-edge-modules.md
-        - name: SQL Edge’e model dağıtma
-          href: tutorial-run-ml-model-on-sql-edge.md
 - name: Kavramlar
   items:
     - name: Dağıtma
@@ -138,6 +130,18 @@
       href: create-stream-analytics-job.md
     - name: Dağıtım sorunlarını giderme
       href: troubleshoot.md
+- name: Örnekler
+  items:
+    - name: Demir Silika tahmini
+      items:
+        - name: Azure kaynakları ayarlama
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge Modülleri ayarlama
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: SQL Edge’e model dağıtma
+          href: tutorial-run-ml-model-on-sql-edge.md
+    - name: Yenilenebilir enerji - rüzgar türbini analizi
+      href: tutorial-renewable-energy-demo.md
 - name: Başvuru
   items:
     - name: Transact-SQL (T-SQL) Başvurusu

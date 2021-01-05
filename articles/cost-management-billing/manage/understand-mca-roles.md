@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 12/17/2020
 ms.author: banders
-ms.openlocfilehash: f0ace05d6a4df65282bd56cca8e7895b0dc24edf
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686556"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673840"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure’daki Microsoft Müşteri Sözleşmesi yönetici rollerini anlama
 
@@ -32,7 +32,7 @@ Aşağıdaki tabloda ödeme hesabınızı, faturalama profillerinizi ve fatura b
 |Faturalama profili sahibi|Faturalama profili için her şeyi yönetme|
 |Faturalama profili katkıda bulunanı|Faturalandırma profilindeki izinler dışında her şeyi yönetme|
 |Faturalama profili okuyucusu|Faturalandırma profilindeki her şeyin salt okunur görünümü|
-|Fatura yöneticisi|Faturalandırma profili için faturaları görüntüleme ve ödeme|
+|Fatura yöneticisi|Faturalama profili için faturaları görüntüleme|
 |Fatura bölümü sahibi|Fatura bölümündeki her şeyi yönetme|
 |Fatura bölümü katkıda bulunanı|Fatura bölümündeki izinler dışında her şeyi yönetme|
 |Fatura bölümü okuyucusu|Fatura bölümündeki her şeyin salt okunur görünümü|

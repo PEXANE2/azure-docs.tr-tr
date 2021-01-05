@@ -24,12 +24,15 @@
     - name: Azure Market’teki Yönetilen Hizmet teklifleri
       displayName: 'azure marketplace, marketplace, managed service, private, plan'
       href: ./concepts/managed-services-offers.md
-    - name: Bulut Çözüm Sağlayıcısı programı hakkında önemli noktalar
+    - name: Bulut Çözümü Sağlayıcısı programı
       displayName: 'csp, aobo, partner'
       href: ./concepts/cloud-solution-provider.md
-    - name: Kurumsal senaryolarda Azure Lighthouse
+    - name: Kurumsal senaryolar
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: ISV senaryoları
+      displayName: 'independent, software, vendor, saas'
+      href: ./concepts/isv-scenarios.md
     - name: Azure Lighthouse ve Azure yönetilen uygulamaları
       displayName: 'managed apps, ama'
       href: ./concepts/managed-applications.md

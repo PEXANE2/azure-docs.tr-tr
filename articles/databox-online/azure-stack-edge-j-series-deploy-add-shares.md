@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/22/2020
+ms.date: 01/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 845eef6e119823af789c9a263bfb750845d55bc0
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740921"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897654"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>Öğretici: Azure Stack Edge Pro GPU 'SU ile paylaşımlar aracılığıyla veri aktarımı
 
@@ -43,7 +43,7 @@ Azure Stack Edge Pro 'ya paylaşımlar eklemeden önce şunları yaptığınızd
 
 Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
 
-1. [Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağını seçin ve **genel bakış**' a gidin. Cihazınızın çevrimiçi olması gerekir.
+1. [Azure Portal](https://portal.azure.com/), Azure Stack Edge kaynağını seçin ve **genel bakış**' a gidin. Cihazınızın çevrimiçi olması gerekir. **Bulut depolama ağ geçidi**' ni seçin.
 
    ![Cihaz çevrimiçi](./media/azure-stack-edge-j-series-deploy-add-shares/device-online-1.png)
 
@@ -51,7 +51,7 @@ Bir paylaşma oluşturmak için aşağıdaki yordamı uygulayın:
 
    ![Paylaşım ekleme](./media/azure-stack-edge-j-series-deploy-add-shares/select-add-share-1.png)
 
-3. **Paylaşma Ekle** bölmesinde aşağıdaki yordamı uygulayın:
+3. **Paylaşma Ekle** bölmesinde şu adımları izleyin:
 
     a. **Ad** kutusunda, paylaşımınız için benzersiz bir ad sağlayın.  
     Paylaşma adı yalnızca harf, rakam ve kısa çizgi içerebilir. 3 ila 63 karakter arasında olmalıdır ve bir harf veya rakam ile başlamalıdır. Kısa çizgilerden önce ve ardından bir harf ya da rakam gelmelidir.

@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: a54c77844498beb4fd052153cbcf8cbe498cdb75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132219"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897867"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy 'i yapılandırma, iyileştirme ve sorun giderme
 
@@ -28,13 +28,13 @@ AzCopy, bir depolama hesabına iki yönlü blob veya dosya kopyalama işlemi ger
 
 ## <a name="configure-proxy-settings"></a>Ara sunucu ayarlarını yapılandırma
 
-AzCopy ara sunucu ayarlarını yapılandırmak için `https_proxy` ortam değişkenini ayarlayın. AZCopy’yi Windows’da çalıştırıyorsanız AzCopy ara sunucu ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows’da kullanmanız gerekmez. Bu ayarı Windows’da kullanmayı seçerseniz otomatik algılama geçersiz kılınır.
+AzCopy ara sunucu ayarlarını yapılandırmak için `HTTPS_PROXY` ortam değişkenini ayarlayın. AZCopy’yi Windows’da çalıştırıyorsanız AzCopy ara sunucu ayarlarını otomatik olarak algılar, bu nedenle bu ayarı Windows’da kullanmanız gerekmez. Bu ayarı Windows’da kullanmayı seçerseniz otomatik algılama geçersiz kılınır.
 
 | İşletim sistemi | Komut  |
 |--------|-----------|
-| **Windows** | Komut isteminde şunu kullanın: `set https_proxy=<proxy IP>:<proxy port>`<br> PowerShell kullanımı: `$env:https_proxy="<proxy IP>:<proxy port>"`|
-| **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **Windows** | Komut isteminde şunu kullanın: `set HTTPS_PROXY=<proxy IP>:<proxy port>`<br> PowerShell kullanımı: `$env:HTTPS_PROXY="<proxy IP>:<proxy port>"`|
+| **Linux** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
+| **macOS** | `export HTTPS_PROXY=<proxy IP>:<proxy port>` |
 
 Şu anda AzCopy, NTLM veya Kerberos ile kimlik doğrulaması gerektiren proxy 'leri desteklemiyor.
 

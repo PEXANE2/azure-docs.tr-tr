@@ -12,7 +12,7 @@
       href: az-overview.md
     - name: Kullanılabilirlik Alanları Belgeleri
       items:
-        - name: Kullanılabilirlik Alanlarını destekleyen bölgeler
+        - name: Kullanılabilirlik Alanlarını destekleyen Azure Hizmetleri
           href: az-region.md
         - name: Sanal makineler
           items:

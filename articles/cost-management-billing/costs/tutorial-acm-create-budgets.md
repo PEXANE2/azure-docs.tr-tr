@@ -3,24 +3,24 @@ title: 'Öğretici: Azure bütçesi oluşturma ve yönetme'
 description: Bu öğretici, kullandığınız Azure hizmetlerinin maliyetleriyle ilgili plan yapmanıza yardımcı olmaktadır.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/20/2020
+ms.date: 12/16/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 48cf5aea60f66fa8b24fd09e7304be0077f2fdcf
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: c8b0265a72911688f08e0f8c4a39fa657f034472
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132814"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97630148"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Öğretici: Azure bütçesi oluşturma ve yönetme
 
 Maliyet Yönetimi hizmetindeki bütçe işlevi, kuruluşunuzda sorumluluk kültürünü planlamanıza ve güçlendirmenize yardımcı olur. Bütçeleri kullanarak belirli bir dönem içinde kullandığınız veya abone olduğunuz Azure hizmetlerini takip edebilirsiniz. Bütçeler, maliyetleri önceden yönetmek için diğer kullanıcıları harcamaları konusunda bilgilendirmenize ve zaman içindeki harcamayı izlemenize yardımcı olur. Oluşturduğunuz bütçe eşikleri aşıldığında yalnızca bildirimler tetiklenir. Kaynaklarınızın hiçbiri etkilenmez ve tüketiminiz durdurulmaz. Bütçeleri kullanarak maliyet analizi sırasında harcamaları karşılaştırabilir ve izleyebilirsiniz.
 
-Maliyet ve kullanım verileri genellikle 8-24 saat içinde kullanıma sunulur ve bütçeler 12-14 saatte bir bu maliyetlere göre değerlendirilir. [Maliyet ve kullanım verileri güncelleştirmelerinin](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) özelliklerini öğrendiğinizden emin olun. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
+Maliyet ve kullanım verileri genellikle 8-24 saat içinde kullanıma sunulur ve bütçeler 24 saatte bir bu maliyetlere göre değerlendirilir. [Maliyet ve kullanım verileri güncelleştirmelerinin](./understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention) özelliklerini öğrendiğinizden emin olun. Bir bütçe eşiği karşılandığında e-posta bildirimleri genellikle değerlendirmeyi izleyen bir saat içinde gönderilir.
 
 Gelecekte bir son kullanma tarihi seçtiğinizde bütçeler, dönem sonunda (ay, üç ay veya yıl) otomatik olarak aynı bütçe tutarına geri döner. Aynı bütçe tutarına geri döndükleri için bütçedeki para birimlerinin ilerleyen dönemlerde farklı olması halinde ayrı bütçeler oluşturmanız gerekir.
 

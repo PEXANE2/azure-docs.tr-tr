@@ -30,16 +30,17 @@
           href: create-cluster.md
 - name: Öğreticiler
   items:
-    - name: 1 - İş oluşturma / yönetme
-      href: stream-analytics-manage-job.md
-    - name: 2 - Azure İşlevleri çalıştırma
+    - name: Sahte aramaları Power BI’da görselleştirme
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Azure İşlevleri’ni çalıştırma
       href: stream-analytics-with-azure-functions.md
-    - name: 3 - Azure Pipelines’ta CI/CD ile dağıtma
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
-    - name: 4 - C# UDF çalıştırma
+    - name: C# UDF çalıştırma
       href: stream-analytics-edge-csharp-udf.md
-    - name: 5 - Özel .NET seri durumdan çıkarıcı oluşturma
+    - name: Özel .NET seri durumdan çıkarıcı oluşturma
       href: custom-deserializer.md
+    - name: IoT Edge işi oluşturma
+      href: /azure/iot-edge/tutorial-deploy-stream-analytics?view=iotedge-2018-06
+      maintainContext: true
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -56,6 +57,8 @@
       href: develop-locally.md
     - name: Güvenlik
       items:
+        - name: İşleri Azure Sanal Ağ’a (VNet) bağlama
+          href: connect-job-to-vnet.md
         - name: Azure İlkesi’ne göre güvenlik denetimleri
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -129,6 +132,8 @@
           href: repartition.md
         - name: İşinizin aktarım hızını artırma
           href: stream-analytics-scale-jobs.md
+    - name: IoT Edge
+      href: stream-analytics-edge.md
     - name: İşin durumları
       href: job-states.md
     - name: Pencere işlevleri
@@ -181,35 +186,31 @@
           href: stream-analytics-job-reliability.md
         - name: SQL başvuru verisi kullanma
           href: sql-reference-data.md
-        - name: Yönetilen kimlikle kimlik doğrulaması
-          items:
-            - name: ADLS 1. Nesil
-              href: stream-analytics-managed-identities-adls.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Blob depolama
-              href: blob-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Event Hubs
-              href: event-hubs-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Power BI
-              href: powerbi-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
-            - name: Azure SQL ve Azure Synapse
-              href: sql-database-output-managed-identity.md
-              displayName: 'managed identity, identities, authenticate'
         - name: Verilerinizi şifreleme
           href: data-protection.md
         - name: Coğrafi yedeklilik
           href: geo-redundancy.md
+    - name: Yönetilen kimlikle kimlik doğrulaması
+      items:
+        - name: ADLS 1. Nesil
+          href: stream-analytics-managed-identities-adls.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Blob depolama
+          href: blob-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Event Hubs
+          href: event-hubs-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Power BI
+          href: powerbi-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
+        - name: Azure SQL ve Azure Synapse
+          href: sql-database-output-managed-identity.md
+          displayName: 'managed identity, identities, authenticate'
     - name: Çözüm oluşturma
       items:
         - name: Twitter yaklaşım analizi
           href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Gerçek zamanlı sahtekarlık algılama
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: IoT Edge üzerinde iş çalıştırma
-          href: stream-analytics-edge.md
         - name: Azure Stack üzerinde iş çalıştırma
           href: on-azure-stack.md
         - name: Ücretli geçiş algılayıcısı veri analizi
@@ -287,6 +288,8 @@
           href: debug-locally-using-job-diagram-vs-code.md
         - name: İşleri keşfetme
           href: visual-studio-code-explore-jobs.md
+        - name: .NET özel seri durumdan çıkarıcı oluşturma ve hatalarını ayıklama
+          href: visual-studio-code-custom-deserializer.md
         - name: JobConfig.json alanları
           href: job-config-json.md
     - name: Sorun giderme

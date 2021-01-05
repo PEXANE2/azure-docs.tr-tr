@@ -1,19 +1,19 @@
 ---
 title: Azure Application Gateway ile VMware sanal makinelerini kullanma
 description: VMware sanal makinelerinde çalışan Web sunucuları için gelen Web trafiğini yönetmek üzere Azure Application Gateway 'in nasıl kullanılacağını açıklar CloudSimple özel bulut ortamını Win
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7dce0181987b7e61b243a7eb0e13b7ed687eb08
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d14fdc4e2b2b1dfca8194077acc0453808611946
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82185702"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897952"
 ---
 # <a name="use-azure-application-gateway-with-vmware-virtual-machines-in-the-cloudsimple-private-cloud-environment"></a>CloudSimple özel bulut ortamındaki VMware sanal makineleri ile Azure Application Gateway kullanma
 
@@ -71,7 +71,7 @@ Bu için ayrıntılı yönergeler, [Azure Portal kullanarak yol tabanlı yönlen
 
 1. Aboneliğinizde ve kaynak grubunuzda bir sanal ağ oluşturun.
 2. Sanal ağınızda (adanmış alt ağ olarak kullanılmak üzere) bir alt ağ oluşturun.
-3. Standart Application Gateway oluştur (isteğe bağlı olarak WAF 'yi etkinleştir): Azure Portal giriş sayfasından, **Resource**  >  **Networking**  >  sayfanın sol üst tarafındaki kaynak ağı**Application Gateway** ' na tıklayın. Standart SKU 'YU ve boyutu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ile uygulama ağ geçidi için ayrılmış alt ağ hakkında ayrıntılı bilgi sağlayın.
+3. Standart Application Gateway oluştur (isteğe bağlı olarak WAF 'yi etkinleştir): Azure Portal giriş sayfasından,   >    >  sayfanın sol üst tarafındaki kaynak ağı **Application Gateway** ' na tıklayın. Standart SKU 'YU ve boyutu seçin ve Azure aboneliği, kaynak grubu ve konum bilgilerini sağlayın. Gerekirse, bu uygulama ağ geçidi için yeni bir genel IP oluşturun ve sanal ağ ile uygulama ağ geçidi için ayrılmış alt ağ hakkında ayrıntılı bilgi sağlayın.
 4. Sanal makineler içeren bir arka uç havuzu ekleyin ve uygulama ağ geçidinize ekleyin.
 
 ## <a name="4-create-and-configure-a-web-server-vm-pool-in-your-private-cloud"></a>4. özel bulutunuzda bir Web sunucusu VM havuzu oluşturun ve yapılandırın

@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: fa8f9ad2d15730d2a0a2c1a722aa3970bbc8f173
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e80b1446142786cbd77245a2b6696cac1bb9272
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033995"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897102"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware geçişi için destek matrisi
 
@@ -59,7 +59,7 @@ Tablo, VMware VM 'Leri için aracısız geçiş gereksinimlerini özetler.
 **Azure 'da Linux VM 'Leri** | Bazı VM 'Ler, Azure 'da çalışabilecek şekilde değişiklik gerektirebilir.<br/><br/> Linux için Azure geçişi, değişiklikleri bu işletim sistemleri için otomatik olarak yapar:<br/> -Red Hat Enterprise Linux 7,8, 7,7, 7,6, 7,5, 7,4, 7,0, 6. x<br/> -Sent OS 7,7, 7,6, 7,5, 7,4, 6. x</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -SUSE Linux Enterprise Server 15 SP1 <br/>-Ubuntu 19,04, 19,10, 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Detem 7, 8 <br/> Oracle Linux 7,7, 7,7-CI<br/> Diğer işletim sistemleri için [gerekli değişiklikleri](prepare-for-migration.md#verify-required-changes-before-migrating) el ile yaparsınız.
 **Linux önyüklemesi** | /Boot ayrılmış bir bölümse, işletim sistemi diskinde bulunmalı ve birden çok diske yayılmamalıdır.<br/> /Boot kök (/) bölümünün parçasıysa, '/' bölümünün işletim sistemi diskinde olması ve diğer disklere yayılmamamakta olması gerekir.
 **UEFı önyüklemesi** | Destekleniyor. UEFı tabanlı VM 'Ler, Azure 2. nesil VM 'lerine geçirilir. 
-**Disk boyutu** | 2 TB işletim sistemi diski (BIOS önyüklemesi); 4 TB işletim sistemi diski (UEFı önyüklemesi); veri diskleri için 32 TB.
+**Disk boyutu** | 2 TB işletim sistemi diski;  veri diskleri için 32 TB.
 **Disk sınırları** |  VM başına en fazla 60 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
 **Paylaşılan disk kümesi** | Desteklenmez.
@@ -122,7 +122,7 @@ Tablo, aracı tabanlı geçiş kullanarak geçirmek istediğiniz VMware VM 'Leri
 **UEFı önyüklemesi** | Destekleniyor. UEFı tabanlı VM 'Ler, Azure 2. nesil VM 'lerine geçirilir. 
 **UEFı-güvenli önyükleme**         | Geçiş için desteklenmez.
 **Hedef disk** | VM 'Ler, yalnızca Azure 'da yönetilen disklere (Standart HDD, standart SSD, Premium SSD) geçirilebilir.
-**Disk boyutu** | 2 TB işletim sistemi diski (BIOS önyüklemesi); 4 TB işletim sistemi diski (UEFı önyüklemesi); veri diskleri için 8 TB.
+**Disk boyutu** | 2 TB işletim sistemi diski; veri diskleri için 32 TB.
 **Disk sınırları** |  VM başına en fazla 63 disk.
 **Şifrelenmiş diskler/birimler** | Şifrelenmiş disklere/birimlere sahip VM 'Ler geçiş için desteklenmez.
 **Paylaşılan disk kümesi** | Desteklenmez.

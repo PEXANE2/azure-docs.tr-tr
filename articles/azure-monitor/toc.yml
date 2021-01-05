@@ -544,18 +544,40 @@
           href: platform/alerts-resource-move.md
         - name: BT Hizmet Yönetimi
           items:
-            - name: BT Hizmet Yönetimi Bağlayıcısı
+            - name: ITSM Bağlayıcısına Genel Bakış
               href: platform/itsmc-overview.md
-            - name: BT Hizmet Yönetimi Bağlantıları
-              href: platform/itsmc-connections.md
-            - name: BT Hizmet Yönetimi Bağlayıcısı’nın Açıklaması
+            - name: ITSM Bağlayıcısı İş Ortağı Kurulumu
+              items:
+                - name: Genel Bakış
+                  href: platform/itsmc-connections.md
+                - name: ServiceNow
+                  href: platform/itsmc-connections-servicenow.md
+                - name: System Center Service Manager
+                  items:
+                    - name: Kurulum
+                      href: platform/itsmc-connections-scsm.md
+                    - name: Service Manager web uygulaması oluşturma
+                      href: platform/itsmc-service-manager-script.md
+                - name: Cherwell
+                  href: platform/itsmc-connections-cherwell.md
+                - name: Provance
+                  href: platform/itsmc-connections-provance.md
+            - name: ITSM Bağlayıcısı Azure Yapılandırması
               href: platform/itsmc-definition.md
-            - name: Service Manager web uygulaması oluşturma
-              href: platform/itsmc-service-manager-script.md
+            - name: ITSM Ürününüzden Eşitlenen Veriler
+              href: platform/itsmc-synced-data.md
             - name: ITSM Bağlayıcısındaki sorunları giderme
               href: platform/itsmc-resync-servicenow.md
             - name: Güvenli Dışarı Aktarma ile tümleştirme
-              href: platform/it-service-management-connector-secure-webhook-connections.md
+              items:
+                - name: Genel Bakış
+                  href: platform/it-service-management-connector-secure-webhook-connections.md
+                - name: Azure Yapılandırmasını Güvenli Dışarı Aktarma
+                  href: platform/itsm-connector-secure-webhook-connections-azure-configuration.md
+                - name: BMC
+                  href: platform/itsmc-secure-webhook-connections-bmc.md
+                - name: ServiceNow
+                  href: platform/itsmc-secure-webhook-connections-servicenow.md
         - name: Klasik uyarı kurallarını geçirme
           items:
             - name: Klasik uyarılar hakkında
@@ -790,6 +812,8 @@
               href: app/snapshot-debugger.md
             - name: App Service için Snapshot Debugger'ı etkinleştirme
               href: app/snapshot-debugger-appservice.md
+            - name: İşlev Uygulaması için Snapshot Debugger’ı etkinleştirme
+              href: app/snapshot-debugger-function-app.md
             - name: Diğer ortamlar için Snapshot Debugger'ı etkinleştirme
               href: app/snapshot-debugger-vm.md
             - name: Snapshot Debugger'ı yükseltme

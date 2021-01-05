@@ -1,19 +1,19 @@
 ---
 title: SSS-CloudSimple 'a göre Azure VMware çözümü
 description: CloudSimple ile bağlantı, ağ, güvenlik, depolama, Azure tümleştirmesi ve diğerleri tarafından Azure VMware çözümü için bu sık sorulan sorular.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0db8c13a7467ed864c0845319b37f958f60fa4d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3551327f9aa07fe218d3b05f73057e36f92abcad
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140896"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895572"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple ile VMware çözümü hakkında sık sorulan sorular
 
@@ -131,7 +131,7 @@ CloudSimple, özel bulutun tüm donanım bileşenlerini sürekli olarak izler.  
 
 **Şirket içinden uygulamalar ve veriler için büyük ölçekli karşıya yükleme veya geçiş Nasıl yaparım? istiyor musunuz?**
 
-CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Seçeneklere şunlar dahildir:
+CloudSimple, yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları, özel bulutunuz ile kullanılabilir.  Seçenekler arasında şunlar bulunur:
 
 * Verilerin toplu geçirilmesi için VMware HCX.
 * Şirket içinden CloudSimple 'a Depolama vMotion kullanılarak verilerin soğuk geçirilmesi.
@@ -150,7 +150,7 @@ CloudSimple, özel bulutta yüklü uygulamaların yükseltmelerini veya güncell
 
 **Hangi Azure hizmetleri destekleniyor?**
 
-CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örneklere şunlar dahildir:
+CloudSimple, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler özel bulutunuzun bağlanmasına izin verebilir.  Örnekler arasında şunlar yer almaktadır:
 
 * CloudSimple vCenter için bir kimlik kaynağı olarak **Azure Active Directory** .
 * Özel bulutunuzun yedeklerini, görüntülerini ve diğer verilerini depolamak için **Azure depolama** .

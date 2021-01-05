@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c9b624a1efc72bebec8547e8ecf9f3bf9fc99863
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 0558513d88eb5ffb03484e9d3bd8e37b2c9a0dcf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680662"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895028"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux için sanal makine uzantısı Key Vault
 
@@ -38,6 +38,21 @@ Key Vault VM Uzantısı şu Linux dağıtımlarını destekler:
   - Sertifikayı içeren Key Vault örneği. Bkz. [Key Vault oluşturma](../../key-vault/general/quick-create-portal.md)
   - VM/VMSS 'nin [yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md) atanmış olması gerekir
   - Key Vault erişim Ilkesi, parolaların `get` `list` sertifikanın bir bölümünü almak için VM/VMSS yönetilen kimlik ile gizli dizi ve izinle ayarlanmalıdır. [Key Vault Için kimlik doğrulama](../../key-vault/general/authentication.md) ve [Key Vault erişim ilkesi atama](../../key-vault/general/assign-access-policy-cli.md)konusuna bakın.
+  -  VMSS 'nin aşağıdaki kimlik ayarı olmalıdır: ` 
+  "identity": {
+  "type": "UserAssigned",
+  "userAssignedIdentities": {
+  "[parameters('userAssignedIdentityResourceId')]": {}
+  }
+  }
+  `
+  
+ - AKV uzantısında Bu ayar olmalıdır: `
+                 "authenticationSettings": {
+                    "msiEndpoint": "[parameters('userAssignedIdentityEndpoint')]",
+                    "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
+                  }
+   `
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
@@ -86,7 +101,7 @@ Aşağıdaki JSON Key Vault VM uzantısının şemasını gösterir. Uzantı kor
 
 ### <a name="property-values"></a>Özellik değerleri
 
-| Name | Değer/örnek | Veri Türü |
+| Ad | Değer/örnek | Veri Türü |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
 | yayımcı | Microsoft.Azure.KeyVault | string |
@@ -138,6 +153,17 @@ Bir sanal makine uzantısının JSON yapılandırması, şablonun sanal makine k
     }
 ```
 
+### <a name="extension-dependency-ordering"></a>Uzantı bağımlılığı sıralaması
+Key Vault VM Uzantısı yapılandırıldıysa uzantı sıralamasını destekler. Varsayılan olarak, uzantı yoklamaya başladığı anda başarıyla başlatıldığını bildirir. Ancak, başarılı bir başlangıç raporlanmadan önce sertifikaların tüm listesini başarıyla indirene kadar bekleyecek şekilde yapılandırılabilir. Diğer uzantılar, başlamadan önce tam sertifika kümesine sahip olmaya bağımlıysa, bu ayarın etkinleştirilmesi, bu uzantının Key Vault uzantısında bir bağımlılık tanımlamasına olanak tanır. Bu, bağımlı oldukları tüm sertifikaların yüklenene kadar bu uzantıların başlamasını engeller. Uzantı ilk indirmeyi süresiz olarak yeniden dener ve bir `Transitioning` durumda kalır.
+
+Bunu açmak için aşağıdakileri ayarlayın:
+```
+"secretsManagementSettings": {
+    "requireInitialSync": true,
+    ...
+}
+```
+> Notun Bu özelliğin kullanılması, sistem tarafından atanan bir kimlik oluşturan ve bu kimlikle Key Vault erişim ilkesini güncelleştiren bir ARM şablonuyla uyumlu değildir. Bunun yapılması, tüm uzantılar başlatılana kadar kasa erişimi ilkesi güncelleştirilene kadar kilitlenmeyle sonuçlanır. Bunun yerine, dağıtımını yapmadan önce *tek bir kullanıcı tarafından atanmış BIR MSI kimliği* ve bu kimlikle kasalar IÇIN bir ACL ön eki kullanmanız gerekir.
 
 ## <a name="azure-powershell-deployment"></a>Azure PowerShell dağıtımı
 > [!WARNING]

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: cf64deb17bea508637debb5612231d355d523fbb
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 57b350c7772d42e5dbd89c1d03c89f905a26398b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95315592"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895538"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a>Azure Izleyici aracısına genel bakış (Önizleme)
 Azure Izleyici Aracısı (AMA), sanal makinelerin Konuk işletim sisteminden izleme verilerini toplar ve Azure Izleyici 'ye gönderir. Bu makaleler, Azure Izleyici aracısına nasıl yükleneceğine ve veri toplamayı nasıl yapılandıracağınızı içeren bir genel bakış sağlar.
@@ -54,7 +54,7 @@ Azure Izleyici aracısının genel önizlemesi sırasında aşağıdaki sınırl
 
 - Azure Izleyici Aracısı, VM'ler için Azure İzleyici ve Azure Güvenlik Merkezi gibi çözümleri ve öngörüleri desteklemez. Şu anda desteklenen tek senaryo, yapılandırdığınız veri toplama kurallarını kullanarak veri topluyor. 
 - Veri toplama kurallarının, hedef olarak kullanılan Log Analytics çalışma alanıyla aynı bölgede oluşturulması gerekir.
-- Azure sanal makineleri ve Azure yay özellikli sunucular Şu anda desteklenmektedir. Sanal Makine Ölçek Kümeleri, Azure Kubernetes hizmeti ve diğer bilgi işlem kaynağı türleri şu anda desteklenmemektedir.
+- Azure sanal makineleri, sanal makine ölçek kümeleri ve Azure Arc etkin sunucuları şu anda desteklenmektedir. Azure Kubernetes hizmeti ve diğer işlem kaynağı türleri şu anda desteklenmemektedir.
 - Sanal makinenin aşağıdaki HTTPS uç noktalarına erişimi olmalıdır:
   - *.ods.opinsights.azure.com
   - *. ingest.monitor.azure.com
@@ -76,7 +76,7 @@ Aşağıdaki tabloda, veri toplama kurallarını kullanarak şu anda Azure Izley
 
 Azure Izleyici Aracısı verileri Azure Izleyici ölçümleri 'ne veya Azure Izleyici günlüklerini destekleyen bir Log Analytics çalışma alanına gönderir.
 
-| Veri Kaynağı | Hedefler | Description |
+| Veri Kaynağı | Hedefler | Açıklama |
 |:---|:---|:---|
 | Performans        | Azure İzleyici Ölçümleri<br>Log Analytics çalışma alanı | Sayısal değerler, işletim sistemi ve iş yüklerinin farklı yönlerinin performansını ölçerek. |
 | Windows olay günlükleri | Log Analytics çalışma alanı | Windows olay günlüğü sistemine gönderilen bilgiler. |

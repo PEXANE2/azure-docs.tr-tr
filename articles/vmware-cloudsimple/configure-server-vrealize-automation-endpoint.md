@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-Vfarkında otomasyonu için özel bulutta vCenter ayarla
 description: VMware Vfarkında otomasyonu için bir uç nokta olarak CloudSimple özel bulutunuzda bir VMware vCenter Server ayarlamayı açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df73acfc469a8b7b5329b61095aefdbd73baafd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b6c6a320e6299808a91214476c8c0460f9f53d9
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77024849"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895062"
 ---
 # <a name="set-up-vcenter-on-your-private-cloud-for-vmware-vrealize-automation"></a>VMware Vfarkında otomasyonu için özel bulutunuzda vCenter 'ı ayarlama
 
@@ -48,7 +48,7 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
 2. Vanautomation uç noktası için bir vSphere Aracısı dağıtın.
     1. Https://*vra-URL*: 5480/Installer adresine gidin; burada *vra-URL* , VANAUTOMATION yönetim Kullanıcı ARABIRIMINE erişmek için kullandığınız URL 'dir.
     2. Yükleyiciyi indirmek için **IaaS yükleyicisi** ' ne tıklayın.<br>
-    Yükleyici dosyasının adlandırma kuralı setup_*vra-URL*'dir @5480.exe .
+    Yükleyici dosyasının adlandırma kuralı setup_ *vra-URL*'dir @5480.exe .
     3. Yükleyiciyi çalıştırın. Hoş Geldiniz ekranında **İleri**’ye tıklayın.
     4. EULA 'Yı kabul edin ve **İleri**' ye tıklayın.
     5. Oturum açma bilgilerini girin, **sertifikayı kabul et**' e ve ardından **İleri**' ye tıklayın.
@@ -57,7 +57,7 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
     ![vRA yüklemesi türü](media/configure-vra-endpoint-install-type.png)
     7. IaaS sunucusu oturum açma bilgilerini girin ve **İleri**' ye tıklayın. Active Directory kullanıyorsanız, Kullanıcı adını **etkialanı \ Kullanıcı** biçiminde girin. Aksi takdirde, **user@domain** biçimini kullanın.
     ![vRA oturum açma bilgileri](media/configure-vra-endpoint-account.png)
-    8. Ara sunucu ayarları için, **Aracı türü**Için **vSphere** girin. Aracı için bir ad girin.
+    8. Ara sunucu ayarları için, **Aracı türü** Için **vSphere** girin. Aracı için bir ad girin.
     9. **Yönetim hizmeti ana** bilgisayarına ve **model Yöneticisi Web hizmeti ana bilgisayar** ALANLARıNA IaaS sunucu FQDN 'sini girin. Her FQDN değeri bağlantısını test etmek için **Test** ' e tıklayın. Test başarısız olursa, IaaS sunucusu ana bilgisayar adının çözümlenmesi için DNS ayarlarınızı değiştirin.
     10. Özel bulut için vCenter Server uç noktası için bir ad girin. Yapılandırma sürecinde daha sonra kullanmak için adı kaydedin.
 
@@ -68,11 +68,11 @@ VCenter sunucusunu yapılandırmadan önce bu görevleri doldurun:
 
 ## <a name="configure-the-vsphere-agent"></a>VSphere aracısını yapılandırma
 
-1. Https://*vra-URL*/vcac adresine gidin ve **configurationadmin**olarak oturum açın.
-2. **Altyapı**  >  **uç noktaları**  >  **uç noktalarını**seçin.
-3. **Yeni**  >  **sanal**  >  **vSphere**öğesini seçin.
+1. Https://*vra-URL*/vcac adresine gidin ve **configurationadmin** olarak oturum açın.
+2. **Altyapı**  >  **uç noktaları**  >  **uç noktalarını** seçin.
+3. **Yeni**  >  **sanal**  >  **vSphere** öğesini seçin.
 4. Önceki yordamda belirttiğiniz vSphere uç nokta adını girin.
-5. **Adres**Için, özel bulut vCenter Server URL 'sini https://*vCenter-FQDN*/SDK biçiminde girin; burada *vCenter-FQDN* , vCenter sunucusunun adıdır.
+5. **Adres** Için, özel bulut vCenter Server URL 'sini https://*vCenter-FQDN*/SDK biçiminde girin; burada *vCenter-FQDN* , vCenter sunucusunun adıdır.
 6. Sanal bir Otomasyon IaaS yönetim kullanıcısına yönelik kimlik bilgilerini, CloudSimple desteğinin sizin için oluşturulduğunu girin.
 7. Kullanıcı kimlik bilgilerini doğrulamak için **Bağlantıyı Sına** ' ya tıklayın. Test başarısız olursa, URL, hesap bilgileri ve [uç nokta adı](#verify-the-endpoint-name) ve test ' i doğrulayın.
 8. Başarılı bir testten sonra, vSphere uç noktasını oluşturmak için **Tamam** ' ı tıklatın.

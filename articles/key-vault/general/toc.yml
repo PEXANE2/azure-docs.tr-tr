@@ -25,7 +25,7 @@
           href: tutorial-python-virtual-machine.md
     - name: Azure App Service
       items:
-        - name: .NET’teki bir web uygulamasıyla Azure Key Vault’u kullanma
+        - name: .NET’te bir Web Uygulaması ile Azure Key Vault kullanma
           href: tutorial-net-create-vault-azure-web-app.md
     - name: Azure Kubernetes Service
       items:
@@ -86,7 +86,7 @@
       href: overview-vnet-service-endpoints.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Kimlik doğrulaması
+    - name: Kimlik Doğrulaması ve Yetkilendirme
       items:
         - name: Key Vault’a yönelik kimlik doğrulaması
           href: authentication.md
@@ -104,10 +104,6 @@
           href: rbac-migration.md
         - name: Erişim sorunlarını giderme
           href: troubleshooting-access-issues.md
-    - name: Geçici silmeyi ve temizleme korumasını etkinleştirme
-      href: key-vault-recovery.md
-    - name: Günlü kaydını etkinleştir
-      href: howto-logging.md
     - name: Geliştirme
       items:
         - name: Azure Key Vault Geliştirici Kılavuzu
@@ -118,21 +114,31 @@
           href: vs-key-vault-add-connected-service.md
     - name: İzleme ve yönetme
       items:
-        - name: Azure Key Vault için izleme ve uyarı yapılandırma
+        - name: Event Grid Bildirimleri
+          items:
+            - name: Logic Apps aracılığıyla bildirim alma
+              href: event-grid-logicapps.md
+            - name: Azure Otomasyonu aracılığıyla bildirim alma
+              href: event-grid-tutorial.md
+        - name: Günlü kaydını etkinleştir
+          href: howto-logging.md
+        - name: Azure İzleyici ile Azure Key Vault için izleme ve uyarı yapılandırma
           href: alert.md
+        - name: Geçici silme ve temizleme koruması ile kurtarma yönetimi
+          href: key-vault-recovery.md
         - name: Azure Key Vault’u Azure İlkesiyle tümleştirme
           href: azure-policy.md
-        - name: Azure Event Grid ve Logic Apps aracılığıyla bildirim alma
-          href: event-grid-logicapps.md
-        - name: Azure Event Grid ve Azure Otomasyonu aracılığıyla bildirim alma
-          href: event-grid-tutorial.md
         - name: Tek tek Key Vault Nesnelerini yedekleme
           href: backup.md
     - name: Güvenlik
       items:
-        - name: Azure Özel Bağlantı Hizmeti ile tümleştirme
-          href: private-link-service.md
-        - name: Güvenlik duvarının ardında Anahtar Kasası’na erişme - Azure Key Vault
+        - name: Azure Özel Bağlantı
+          items:
+            - name: Azure Özel Bağlantı Hizmeti ile tümleştirme
+              href: private-link-service.md
+            - name: Özel Bağlantı Yapılandırma Sorunlarını Tanılama
+              href: private-link-diagnostics.md
+        - name: Bir güvenlik duvarının arkasındaki Key Vault’a erişme
           href: access-behind-firewall.md
     - name: Key Vault’u Taşıma
       items:
@@ -142,10 +148,6 @@
           href: move-subscription.md
         - name: Key Vault’u Başka Bir Bölgeye Taşıma
           href: move-region.md
-    - name: Ağ
-      items:
-        - name: Özel Bağlantı Yapılandırma Sorunlarını Tanılama
-          href: private-link-diagnostics.md
 - name: Başvuru
   items:
     - name: Yenilikler

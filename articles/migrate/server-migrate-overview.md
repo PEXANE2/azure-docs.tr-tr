@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 075f113975e5f340493fe33584d8072190be77c8
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753612"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896490"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware geçiş seçeneği seçin
 
@@ -43,7 +43,7 @@ Sınırlamaları inceledikten sonra, her bir çözümü dağıtmaya ilişkin ad�
 **Görev** | **Ayrıntılar** |**Aracısız** | **Aracı tabanlı**
 --- | --- | --- | ---
 **Azure Geçişi aletini dağıtma** | VMware VM üzerinde çalışan bir basit gereç.<br/><br/> Gereç, makineleri saptamak ve değerlendirmek ve aracısız geçiş kullanarak makineleri geçirmek için kullanılır. | Gereklidir.<br/><br/> Gereci zaten değerlendirme için ayarladıysanız, aracısız geçiş için aynı gereci kullanabilirsiniz. | Gerekli değildir.<br/><br/> Değerlendirme için bir gereç ayarladıysanız bu uygulamayı yerinde bırakabilir veya değerlendirme ile işiniz bittiğinde kaldırabilirsiniz.
-**Sunucu değerlendirmesi aracını kullanma** | Azure geçişi: Sunucu değerlendirmesi aracı ile makineleri değerlendirin. | Makineleri geçirmeden önce değerlendirebilirsiniz, ancak şunları yapmanız gerekmez. | Değerlendirme isteğe bağlıdır | Değerlendirme isteğe bağlıdır.
+**Sunucu değerlendirmesi aracını kullanma** | Azure geçişi: Sunucu değerlendirmesi aracı ile makineleri değerlendirin. | Makineleri geçirmeden önce değerlendirebilirsiniz, ancak şunları yapmanız gerekmez. | Değerlendirme isteğe bağlıdır.
 **Sunucu geçiş aracını kullanma** | Azure geçişi projesine Azure geçiş sunucusu geçiş aracı 'nı ekleyin. | Gerekli | Gerekli
 **VMware 'yi geçişe hazırlama** | VMware sunucularında ve VM 'lerde ayarları yapılandırın. | Gerekli | Gerekli
 **VM 'Lere Mobility hizmetini yükler** | Mobility hizmeti, çoğaltmak istediğiniz her VM üzerinde çalışır | Gerekli değil | Gerekli

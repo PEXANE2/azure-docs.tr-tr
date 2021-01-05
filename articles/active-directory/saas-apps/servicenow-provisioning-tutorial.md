@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 5894a57e6495ca02002c8f32b893e696c7f5679b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5c21efc9cb082d915fd87e9ae01606fce18016bc
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350713"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897321"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı hazırlama için ServiceNow 'ı yapılandırma
 
@@ -50,7 +50,7 @@ Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu
 
 1. ServiceNow örnek adınızı belirler. Örnek adını ServiceNow 'e erişmek için kullandığınız URL 'de bulabilirsiniz. Aşağıdaki örnekte, örnek adı dev35214 ' dir.
 
-   ![ServiceNow örneği](media/servicenow-provisioning-tutorial/servicenow_instance.png)
+   ![ServiceNow örneği](media/servicenow-provisioning-tutorial/servicenow-instance.png)
 
 2. ServiceNow 'da yönetici için kimlik bilgilerini alın. ServiceNow içindeki kullanıcı profiline gidin ve kullanıcının yönetici rolüne sahip olduğunu doğrulayın. 
 
@@ -94,7 +94,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 5. **Yönetici kimlik bilgileri** bölümünde ServiceNow yönetici kimlik bilgilerinizi ve Kullanıcı adınızı girin. Azure AD 'nin ServiceNow 'a bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, ServiceNow hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Ekran görüntüsü, yönetici kimlik bilgilerini girebileceğiniz hizmet sağlama sayfasını gösterir.](./media/servicenow-provisioning-tutorial/provisioning.png)
+    ![Ekran görüntüsü, yönetici kimlik bilgilerini girebileceğiniz hizmet sağlama sayfasını gösterir.](./media/servicenow-provisioning-tutorial/servicenow-provisioning.png)
 
 6. **Bildirim E-postası** alanına hazırlama hatası bildirimlerinin gönderilmesini istediğiniz kişinin veya grubun e-posta adresini yazıp **Hata oluştuğunda e-posta bildirimi gönder** onay kutusunu seçin.
 
@@ -142,11 +142,16 @@ Hazırlama ayarlarını yapılandırdıktan sonra dağıtımınızı izlemek iç
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   Bu hata ServiceNow örneğiyle iletişim kuran bir sorunu gösterir. ServiceNow 'da aşağıdaki ayarların *devre dışı bırakıldığından* emin olmak için iki kez kontrol edin:
+   Bu hata ServiceNow örneğiyle iletişim kuran bir sorunu gösterir. 
+   
+   Test bağlantı sorunlarıyla karşılaşıyorsanız, ServiceNow 'da aşağıdaki ayarları **devre dışı** olarak yapmayı deneyin:
    
    1. **Sistem güvenliği**  >  **yüksek güvenlik ayarları**' nı seçin,  >  **gelen şema istekleri için temel kimlik doğrulaması gerektirir**.
    2. **Sistem özelliklerini** seçin  >  **Web Hizmetleri**  >  **gelen SOAP istekleri için temel yetkilendirme gerektir**.
 
+   ![SOAP isteğini yetkilendirme](media/servicenow-provisioning-tutorial/servicenow-webservice.png)
+
+   Sorunlarınızı giderirse ServiceNow desteğiyle iletişime geçin ve sorun gidermeye yardımcı olması için SOAP hata ayıklamayı etkinleştirmesini isteyin. 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
 * [Kurumsal Uygulamalar için kullanıcı hesabı hazırlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)

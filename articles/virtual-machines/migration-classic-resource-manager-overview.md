@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: e7d013775861f290d532e0d7c132896ebeff8ae8
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 137670715af8b90d8a867459fa50249cd9be8e70
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680206"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97897125"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Linux 'ta IaaS kaynaklarının klasik 'ten Azure Resource Manager geçişi desteklenir
 
@@ -23,6 +23,8 @@ ms.locfileid: "97680206"
 
 
 Bu makalede, Azure Service Manager (asm) diğer adıyla Classic 'ten Kaynak Yöneticisi (ARM) dağıtım modelleriyle kaynakları geçirme ve sanal ağ siteden siteye ağ geçitleri kullanılarak aboneliğinizde bulunan iki dağıtım modelinden kaynakları bağlama hakkında genel bakış sunulmaktadır. [Azure Resource Manager özellikleri ve avantajları](../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinebilirsiniz. 
+
+ASM iki farklı işlem ürününü destekler, Azure sanal makineleri (klasik) diğer adıyla IaaS VM 'leri, [Azure Cloud Services (klasik)](https://docs.microsoft.com/azure/cloud-services/) diğer adıyla PaaS VM 'leri veya Web/çalışan rolleri &. Bu belge yalnızca Azure sanal makinelerini (klasik) geçirme hakkında konuşur.
 
 ## <a name="goal-for-migration"></a>Geçiş için hedef
 Kaynak Yöneticisi, şablonlar aracılığıyla karmaşık uygulamaların dağıtılmasını, sanal makineleri VM uzantıları kullanarak yapılandırmayı ve erişim yönetimi ve etiketleme özelliklerini içerir. Azure Resource Manager, sanal makineler için kullanılabilirlik kümelerine ölçeklenebilir, paralel dağıtım içerir. Yeni dağıtım modeli ayrıca işlem, ağ ve depolamanın yaşam döngüsü yönetimini bağımsız olarak sağlar. Son olarak, bir sanal ağ içindeki sanal makinelerin zorlanması ile varsayılan olarak güvenliği etkinleştirmeye odaklanılmıştır.

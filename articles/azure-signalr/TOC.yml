@@ -54,6 +54,22 @@
           href: ../azure-functions/functions-bindings-signalr-service.md
         - name: Yukarı akış ayarları
           href: concept-upstream.md
+    - name: Kullanılabilirlik
+      items:
+        - name: Uygulama sunucunuzu dikkatlice kapatma.
+          href: server-graceful-shutdown.md
+    - name: Güvenlik
+      items:
+        - name: Yetkilendirme
+          items:
+            - name: Azure Active Directory'ye erişimi yetkilendirme
+              href: authorize-access-azure-active-directory.md
+        - name: Kimlik doğrulaması
+          items:
+            - name: Uygulamadan kimlik doğrulaması yapma
+              href: authenticate-application.md
+            - name: Yönetilen kimlikle kimlik doğrulaması
+              href: authenticate-managed-identity.md
     - name: Yüksek kullanılabilirlik
       items:
         - name: Dayanıklılık ve olağanüstü durum kurtarma

@@ -1,19 +1,19 @@
 ---
 title: Azure VMware çözümünü CloudSimple özel bulutuna göre yönetme
 description: CloudSimple özel bulut kaynaklarınızı ve etkinliğinizi yönetmek için kullanılabilen özellikleri açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 06/10/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b0aff8298ac2335e5216252eb2cbd5a393cc37d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4f2f66c2e1e2e8aa596393d4c69a757138ab5a91
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86525005"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895215"
 ---
 # <a name="manage-private-cloud-resources-and-activity"></a>Özel bulut kaynaklarını ve etkinliğini yönetme
 
@@ -47,7 +47,7 @@ Seçilen özel bulutun kapsamlı bir özetini görüntüleyin.  Özet sayfası, 
 * [Düğümleri satın alın](create-nodes.md). Bu özel buluta düğüm ekleyin.
 * [Öğesini genişletin](expand-private-cloud.md). Bu özel buluta düğüm ekleyin.
 * **Yenile**. Bu sayfadaki bilgileri güncelleştirin.
-* **Silin**. Özel bulutu dilediğiniz zaman silebilirsiniz. **Silmeden önce tüm sistemleri ve verileri yedeklediğinizden emin olun.** Özel bir bulutu silmek, tüm VM 'Leri, vCenter yapılandırmasını ve verileri siler. Seçili özel bulutun Özet bölümünde **Sil** ' e tıklayın. Silme sonrasında, tüm özel bulut verileri güvenli ve yüksek oranda uyumlu bir işlem sürecinde silinir.
+* **Silme**. Özel bulutu dilediğiniz zaman silebilirsiniz. **Silmeden önce tüm sistemleri ve verileri yedeklediğinizden emin olun.** Özel bir bulutu silmek, tüm VM 'Leri, vCenter yapılandırmasını ve verileri siler. Seçili özel bulutun Özet bölümünde **Sil** ' e tıklayın. Silme sonrasında, tüm özel bulut verileri güvenli ve yüksek oranda uyumlu bir işlem sürecinde silinir.
 * [VSphere ayrıcalıklarını değiştirin](escalate-private-cloud-privileges.md).  Bu özel bulutta ayrıcalıklarınızı ilerletin.
 
 ## <a name="private-cloud-vlanssubnets"></a>Özel bulut VLAN 'LARı/alt ağları

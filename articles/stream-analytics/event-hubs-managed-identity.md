@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 11/30/2020
-ms.openlocfilehash: c65833e5bf581c6326bf9362c7e5fc00a985d301
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 01/04/2021
+ms.openlocfilehash: ca27df7188c5edd1da94fc41707f6c25eb4034bf
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355110"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895147"
 ---
 # <a name="use-managed-identities-to-access-event-hubfrom-an-azure-stream-analytics-job-preview"></a>Azure Stream Analytics işinden Olay Hub 'ına erişmek için Yönetilen kimlikler kullanma (Önizleme)
 
@@ -21,13 +21,16 @@ Yönetilen kimlik, belirli bir Stream Analytics işini temsil eden Azure Active 
 
 Bu makalede Azure portal aracılığıyla bir Stream Analytics işinin Event Hubs girişi veya çıktısı için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.Yönetilen kimliği etkinleştirmeden önce, önce bir Stream Analytics işi ve Olay Hub kaynağınız olması gerekir.
 
+### <a name="limitation"></a>Sınırlama
+Önizleme sırasında, yönetilen kimlik doğrulama modu kullanılırken Azure portal Event Hubs örnekleme girişi çalışmaz.
+
 ## <a name="create-a-managedidentity"></a>Yönetilen kimlik oluşturma  
 
 İlk olarak, Azure Stream Analytics işiniz için yönetilen bir kimlik oluşturursunuz.  
 
 1. Azure portal, Azure Stream Analytics işinizi açın.  
 
-1. Sol gezinti menüsünde, Yapılandır altında bulunan **yönetilen kimlik**' i seçin   . *Configure* Sonra, **sistem tarafından atanan yönetilen kimliği kullan**' ın yanındaki kutuyu Işaretleyin   ve **Kaydet**' i seçin.
+1. Sol gezinti menüsünde, Yapılandır altında bulunan **yönetilen kimlik**' i seçin   . ** Sonra, **sistem tarafından atanan yönetilen kimliği kullan**' ın yanındaki kutuyu Işaretleyin   ve **Kaydet**' i seçin.
 
    :::image type="content" source="media/event-hubs-managed-identity/system-assigned-managed-identity.png" alt-text="Sistem tarafından atanan yönetilen kimlik":::  
 
@@ -53,7 +56,7 @@ Stream Analytics işinin, yönetilen kimlik kullanarak Olay Hub 'ınıza erişme
    |---------|-----|
    |Rol|Azure Event Hubs veri sahibi|
    |Şunlara erişim ata:|Kullanıcı, Grup veya hizmet sorumlusu|
-   |Şunu seçin:|Stream Analytics işinizin adını girin|
+   |Seç|Stream Analytics işinizin adını girin|
 
    :::image type="content" source="media/event-hubs-managed-identity/add-role-assignment.png" alt-text="Rol ataması ekle":::
 

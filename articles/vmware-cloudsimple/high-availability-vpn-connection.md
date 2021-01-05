@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirlik yapılandırın
 description: Şirket içi ortamınızdaki yüksek kullanılabilirliğe sahip bir bağlantının yüksek kullanılabilirlik için etkin bir CloudSimple VPN Gateway 'e nasıl yapılandırılacağını açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 80805aaa172518c40c7ad123ca24361ee0f15e69
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77025274"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895708"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Şirket içinden CloudSimple VPN Gateway 'e yüksek kullanılabilirliğe sahip bir bağlantı yapılandırın
 
@@ -198,7 +198,7 @@ VPN tünelinin her bir ucunda bulunan eşler arasında iletişim kurmak için ı
 Genel sekmesi:
 
 * Ada. Birincil CloudSimple VPN eşi ile birlikte kullanılacak olan ıKE ağ geçidinin adını girin.
-* Sürüm. **Yalnızca IKEv1 modunu**seçin.
+* Sürüm. **Yalnızca IKEv1 modunu** seçin.
 * Adres türü. **IPv4** seçin.
 * Arayüz. Herkese açık veya dış arabirimi seçin.
 * Yerel IP adresi. Varsayılan olarak bırakın.
@@ -216,7 +216,7 @@ Gelişmiş Seçenekler sekmesi:
 
 IKEv1
 
-* Exchange modu. **Ana**öğesini seçin.
+* Exchange modu. **Ana** öğesini seçin.
 * IKE şifre profili. Daha önce oluşturduğunuz ıKE şifre profilini seçin. Parçalanmayı etkinleştir kutusunu işaretlenmemiş olarak bırakın.
 * Kullanılmayan eş algılama. Kutuyu işaretlenmemiş olarak bırakın.
 
@@ -242,8 +242,8 @@ IKEv1
 
 * Ada. Hata için öngörülü yeniden işlem için tünel izlemesi için kullanılacak Izleyici profilinin adını girin.
 * Ön. **Yük devret**' i seçin.
-* Aralığında. **3**değerini girin.
-* Eşiği. **7**değerini girin.
+* Aralığında. **3** değerini girin.
+* Eşiği. **7** değerini girin.
 
 ### <a name="7-set-up-primary-and-secondary-ipsec-tunnels"></a>7. birincil ve ikincil IPSec tünellerini ayarlayın.
 
@@ -268,7 +268,7 @@ Proxy kimlikleri sekmesi: **IPv4**  >  **Ekle** ' ye tıklayın ve aşağıdakil
 * Proxy KIMLIĞI. İlginç trafik için herhangi bir ad girin. Tek bir IPSec tünelinde yürütülen birden çok proxy kimliği olabilir.
 * Yerel. Siteden siteye VPN üzerinden özel bulut alt ağları ile iletişim kurmasına izin verilen şirket içi yerel alt ağları belirtin.
 * Uzak. Yerel alt ağlarla iletişim kurmasına izin verilen özel bulut uzak alt ağlarını belirtin.
-* Protocol. **Herhangi birini**seçin.
+* Protocol. **Herhangi birini** seçin.
 
 İkincil CloudSimple VPN eşi için kullanılmak üzere başka bir IPSec tüneli oluşturmak için önceki adımları tekrarlayın.
 

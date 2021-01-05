@@ -13,7 +13,7 @@
       items:
         - name: Web portalını kullanma
           href: getting-started-build-a-classifier.md
-        - name: Özel Görüntü İşleme SDK’sını kullanma
+        - name: REST API için Özel Görüntü İşleme SDK’sını kullanma
           href: quickstarts/image-classification.md
     - name: Nesne algılayıcısı oluşturma
       items:

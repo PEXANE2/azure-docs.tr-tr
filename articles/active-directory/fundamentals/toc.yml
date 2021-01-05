@@ -25,6 +25,28 @@
   items:
     - name: Güvenlik
       items:
+        - name: Kaynaklara dış erişimi güvenli hale getirme
+          items:
+            - name: Dış erişimi güvenli hale getirmeye genel bakış
+              href: secure-external-access-resources.md
+            - name: 1 Güvenlik duruşunuzu belirleme
+              href: 1-secure-access-posture.md
+            - name: 2 Mevcut durumunuzu belirleme
+              href: 2-secure-access-current-state.md
+            - name: 3 Güvenlik planı oluşturma
+              href: 3-secure-access-plan.md
+            - name: 4 Gruplarla güvenli erişim
+              href: 4-secure-access-groups.md
+            - name: 5 B2B işbirliğiyle güvenli erişim
+              href: 5-secure-access-b2b.md
+            - name: 6 Yetkilendirme Yönetimi ile güvenli erişim
+              href: 6-secure-access-entitlement-managment.md
+            - name: 7 Koşullu erişim ile güvenli erişim
+              href: 7-secure-access-conditional-access.md
+            - name: 8 Duyarlılık etiketleriyle güvenli erişim
+              href: 8-secure-access-sensitivity-labels.md
+            - name: '9 Teams, SharePoint ve OneDrive’a güvenli erişim'
+              href: 9-secure-access-teams-sharepoint.md
         - name: MFA’yı etkinleştirme
           href: concept-fundamentals-mfa-get-started.md
         - name: Güvenlik varsayılanları

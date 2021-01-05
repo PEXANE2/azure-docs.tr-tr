@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-CloudSimple hizmeti oluşturma
 description: Azure portal CloudSimple hizmeti oluşturmayı öğrenin. Başlamadan önce gerekli yapılandırmayı gözden geçirin.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2a196e717dd6e02570e4bdf830a24ce342b47ece
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88140556"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896303"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>CloudSimple hizmeti tarafından Azure VMware çözümünü oluşturma
 
@@ -29,8 +29,8 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın. CloudSimple hizmeti ba
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple Hizmetleri**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple Hizmetleri** için arama yapın.
     ![CloudSimple hizmeti ara](media/create-cloudsimple-service-search.png)
 3. **Cloudsimple Hizmetleri**' ni seçin.
 4. Yeni bir hizmet oluşturmak için **Ekle** ' ye tıklayın.
@@ -41,7 +41,7 @@ Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın. CloudSimple hizmeti ba
 8. Hizmet ağ geçidi için CıDR girin. Şirket içi alt ağlarınızın, Azure alt ağlarının veya planlı CloudSimple alt ağlarının hiçbiriyle çakışmayacak bir/28 alt ağı belirtin. Hizmet oluşturulduktan sonra CıDR 'yi değiştiremezsiniz.
 
     ![CloudSimple hizmeti oluşturma](media/create-cloudsimple-service.png)
-9. **Tamam**'a tıklayın.
+9. **Tamam**’a tıklayın.
 
 Hizmet oluşturulur ve hizmetler listesine eklenir.
 

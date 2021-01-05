@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2020
+ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 2da675f0836dbb10ce5227e7e93e98d706cc5c64
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95544811"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896371"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Öğretici: Azure portalını kullanarak iki sanal makine arasındaki ağ iletişimini izleme
 
@@ -78,10 +78,10 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 |Adım|Ayar|Değer|
 |---|---|---|
 | 1 | **Ubuntu Server** sürümü seçin |                                                                         |
-| 3 | Name                                  | myVm2                                                                   |
+| 3 | Ad                                  | myVm2                                                                   |
 | 3 | Kimlik doğrulaması türü                   | SSH genel anahtarınızı yapıştırın veya **Parola**’yı seçin bir parola girin. |
 | 3 | Kaynak grubu                        | **Mevcut olanı kullan**’ı seçin ve **myResourceGroup** seçeneğini belirleyin.                 |
-| 6 | Uzantılar                            | **Linux için ağ Izleyicisi Aracısı**                                             |
+| 6 | Uzantıları                            | **Linux için ağ Izleyicisi Aracısı**                                             |
 
 Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etmeden önce sanal makinenin dağıtımı tamamlamasını bekleyin.
 
@@ -92,7 +92,7 @@ Sanal makinenin dağıtılması birkaç dakika sürer. Kalan adımlara devam etm
 1. Portalın sol tarafından **Tüm hizmetler**’i seçin.
 2. **Filtre** kutusuna *ağ izleyicisi* yazmaya başlayın. **Ağ İzleyicisi**, arama sonuçlarında görüntülendiğinde seçin.
 3. **İZLEME** bölümünde **Bağlantı izleyicisi**’ni seçin.
-4. **+ Ekle** öğesini seçin.
+4. **+ Ekle**'yi seçin.
 5. İzlemek istediğiniz bağlantı için bilgileri girin veya seçin ve sonra **Ekle**’yi seçin. Aşağıdaki resimde gösterilen örnekte izlenen bağlantı, 22 numaralı bağlantı noktası üzerinden *myVm1* sanal makinesinden *myVm2* sanal makinesine doğrudur:
 
     | Ayar                  | Değer               |

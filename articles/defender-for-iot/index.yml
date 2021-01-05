@@ -11,48 +11,58 @@ metadata:
   author: mlottner
   ms.author: mlottner
   ms.date: 09/07/2020
-  ms.openlocfilehash: 18f3f2f14d4e04c523a355f699eaf24b8c93bb81
-  ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+  ms.openlocfilehash: 00cef8a146a84c4261dde46785f2ea9bb1c03173
+  ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 10/15/2020
-  ms.locfileid: "92090021"
+  ms.lasthandoff: 12/31/2020
+  ms.locfileid: "97832344"
 landingContent:
-- title: IoT için Azure Defender hakkında
+- title: IoT için Azure Defender’ı Kullanmaya Başlama
   linkLists:
   - linkListType: overview
     links:
     - text: IoT için Azure Defender nedir?
       url: overview.md
-    - text: Azure RTOS için Güvenlik Modülü
-      url: iot-security-azure-rtos.md
-    - text: Çözümünüzü planlama
-      url: service-prerequisites.md
-  - linkListType: architecture
-    links:
-    - text: IoT için Azure Defender mimarisini anlama
+    - text: Çözüm Mimarisi
       url: architecture.md
-    - text: IoT için Azure Defender Aracıları
-      url: security-agent-architecture.md
+    - text: Kuruluma Genel Bakış
+      url: getting-started.md
+- title: Kurulum ve Ekleme - Aracısız çözüm
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ağınızı kurma
+      url: how-to-set-up-your-network.md
+    - text: Gerekli gereçlerini tanımlama
+      url: how-to-identify-required-appliances.md
+    - text: Yazılımı yükleme
+      url: how-to-install-software.md
+- title: Ağınızı İzleme - Aracısız çözüm
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bağlı Cihazları Görüntüleme
+      url: how-to-work-with-the-sensor-device-map.md
+    - text: Cihaz Envanterlerini Görüntüleme
+      url: how-to-investigate-sensor-detections-in-a-device-inventory.md
+    - text: Uyarıları Araştırma
+      url: how-to-work-with-alerts-on-your-sensor.md
+    - text: Rapor Oluşturma
+      url: how-to-generate-reports.md
+    - text: Hangi Trafiğin Algılanacağını Denetleme
+      url: how-to-control-what-traffic-is-monitored.md
+    - text: Azure Sentinel’e bağlanma
+      url: how-to-configure-with-sentinel.md
+- title: IoT için Azure Defender - Aracı tabanlı çözüm
+  linkLists:
+  - linkListType: overview
+    links:
     - text: Microsoft Edge güvenlik modülü
       url: security-edge-architecture.md
-- title: IoT için Azure Defender’ı IoT Hub'a ekleme
-  linkLists:
-  - linkListType: get-started
-    links:
-    - text: IoT için Azure Defender’ı kullanmaya başlama
-      url: getting-started.md
-    - text: IoT Hub
-      url: iot-hub-integration.md
-    - text: Azure RTOS için Güvenlik Modülü’nü kullanmaya başlama
-      url: concept-rtos-security-module.md
-    - text: Güvenlik aracıları
-      url: security-agents.md
-- title: Çözümünüzü yapılandırma
-  linkLists:
   - linkListType: quickstart
     links:
-    - text: IoT için Azure Defender’ı IoT Hub'da etkinleştirme
+    - text: IoT Hub’ı etkinleştirme - Aracı tabanlı çözümler
       url: quickstart-onboard-iot-hub.md
     - text: IoT güvenlik çözümünüzü yapılandırma
       url: quickstart-configure-your-solution.md
@@ -64,40 +74,6 @@ landingContent:
       url: quickstart-create-custom-alerts.md
     - text: Güvenlik uyarılarını araştırma
       url: quickstart-investigate-security-alerts.md
-- title: Çözümünüzü özelleştirme
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Azure RTOS için Güvenlik Modülü’nü özelleştirme
-      url: how-to-azure-rtos-security-module.md
-    - text: Aracı seçme
-      url: how-to-deploy-agent.md
-    - text: Windows’a yönelik olarak IoT için Azure Defender C# tabanlı güvenlik aracısı dağıtma
-      url: how-to-deploy-windows-cs.md
-    - text: Linux’a yönelik olarak IoT için Azure Defender C# tabanlı güvenlik aracısı dağıtma
-      url: how-to-deploy-linux-cs.md
-    - text: Linux’a yönelik olarak IoT için Azure Defender C tabanlı güvenlik aracısı dağıtma
-      url: how-to-deploy-linux-c.md
-    - text: Microsoft Edge güvenlik modülünü dağıtma
-      url: how-to-deploy-edge.md
-    - text: Güvenlik aracılarını yapılandırma
-      url: how-to-agent-configuration.md
-    - text: Kendi güvenlik iletilerinizi gönderme
-      url: how-to-send-security-messages.md
-    - text: Ham güvenlik verilerine erişme
-      url: how-to-security-data-access.md
-    - text: Cihazı araştırma
-      url: how-to-investigate-device.md
-- title: Güvenlik aracısında sorun giderme
-  linkLists:
-  - linkListType: tutorial
-    links:
-    - text: Güvenlik aracısı sorun giderme kılavuzu (Linux)
-      url: troubleshoot-agent.md
-    - text: LocalConfiguration.json dosyasını anlama - C aracısı
-      url: azure-iot-security-local-configuration-c.md
-    - text: Yerel yapılandırma dosyasını anlama - C# aracısı
-      url: azure-iot-security-local-configuration-csharp.md
 - title: IoT için Azure Defender çözümü kaynakları
   linkLists:
   - linkListType: video

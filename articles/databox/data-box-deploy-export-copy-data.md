@@ -6,17 +6,17 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 07/10/2020
+ms.date: 12/18/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: ecc6e1e1a543f3190e9f73512ca0b9ae45cc3fe9
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 495b4427fb7e456c60a489b9ce3d19c2a44bd918
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335222"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680893"
 ---
-# <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Öğretici: SMB aracılığıyla Azure Data Box’tan veri kopyalama (Önizleme)
+# <a name="tutorial-copy-data-from-azure-data-box-via-smb"></a>Öğretici: SMB aracılığıyla Azure Data Box’tan veri kopyalama
 
 Bu öğreticide yerel web arabirimini kullanarak bağlantı kurma ve Data Box’ınızdan şirket için sunucuya veri kopyalama işlemi anlatılmaktadır. Data Box cihazı, Azure Depolama hesabınızdan dışarı aktarılan verileri içerir.
 
@@ -27,8 +27,6 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Ön koşullar
 > * Data Box'a bağlanma
 > * Data Box’tan veri kopyalama
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -48,15 +46,15 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için aşağıdaki adımları izleyin.
 
-1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala** 'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al** ’ı seçin. 
+1. İlk adım kimlik doğrulamasından geçmek ve oturum başlatmaktır. **Bağlan ve kopyala**'ya gidin. Depolama hesabınızla ilişkilendirilmiş paylaşımların erişim kimlik bilgilerini almak için **Kimlik bilgilerini al**’ı seçin. 
 
     ![Paylaşım kimlik bilgilerini alma](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
-2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam** ’ı seçin.
+2. Paylaşıma erişme ve veri kopyalama iletişim kutusunda paylaşıma karşılık gelen **Kullanıcı adı** ve **Parola** değerlerini kopyalayın. **Tamam**’ı seçin.
     
     ![Paylaşım kimlik bilgilerini alma, verilere erişme bunları paylaşma ve kopyalama](media/data-box-deploy-export-copy-data/get-share-credentials-2.png)
 
-3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *exportbvtdataset2* ) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
+3. Ana bilgisayarınızdan depolama hesabınızla (aşağıdaki örnekte *exportbvtdataset2*) ilişkili paylaşımlara erişmek için bir komut penceresi açın. Komut istemine şunları yazın:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -73,7 +71,7 @@ Windows Server ana bilgisayarı kullanıyorsanız Data Box'a bağlanmak için a�
     The command completed successfully.
     ```
 
-5. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam** ’ı seçin.
+5. Windows + R tuşlarına basın. **Çalıştır** penceresinde `\\<device IP address>` değerini belirtin. Dosya Gezgini’ni açmak için **Tamam**’ı seçin.
     
     ![Dosya Gezgini aracılığıyla paylaşıma bağlanma, cihaz IP’si girme](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
@@ -100,7 +98,7 @@ Data Box paylaşımlarına bağlandıktan sonra veri kopyalamaya başlayabilirsi
 
 Robocopy komutu hakkında daha fazla bilgi için bkz. [Robocopy ve birkaç örnek](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx).
 
-Kopyalama tamamlandıktan sonra **Pano** ’ya giderek cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
+Kopyalama tamamlandıktan sonra **Pano**’ya giderek cihazınızdaki kullanılan alanı ve boş alanı doğrulayın.
 
 Şimdi işleme devam edip Data Box’ınızı Microsoft’a gönderebilirsiniz.
 

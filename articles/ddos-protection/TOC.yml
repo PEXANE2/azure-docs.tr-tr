@@ -15,9 +15,11 @@
 - name: Öğreticiler
   items:
     - name: DDoS konuma telemetrisini görüntüleme ve yapılandırma
-      href: telemetry-monitoring-alerting.md
-    - name: DDoS saldırı azaltma raporları ve akış günlükleri
-      href: reports-and-flow-logs.md
+      href: telemetry.md
+    - name: DDoS tanılama günlüğünü görüntüleme ve yapılandırma
+      href: diagnostic-logging.md
+    - name: DDoS konuma uyarılarını görüntüleme ve yapılandırma
+      href: alerts.md
 - name: Kavramlar
   items:
     - name: Saldırı türleri
@@ -44,7 +46,7 @@
       href: ddos-protection-partner-onboarding.md
 - name: Başvuru
   items:
-    - name: Azure CLI’si
+    - name: Azure CLI
       href: /cli/azure/network/ddos-protection?view=azure-cli-latest
     - name: Azure PowerShell
       href: /powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0

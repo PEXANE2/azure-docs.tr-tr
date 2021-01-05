@@ -213,14 +213,20 @@
               href: azure-stack-edge-gpu-deploy-virtual-machine-portal.md
             - name: VM'leri dağıtma - Şablonlar
               href: azure-stack-edge-gpu-deploy-virtual-machine-templates.md
+            - name: VM’leri dağıtma - GPU
+              href: azure-stack-edge-gpu-deploy-gpu-virtual-machine.md
             - name: VM'leri dağıtma - Azure PowerShell cmdlet'leri
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell.md
             - name: VM'leri dağıtma - Azure PowerShell betiği
-              href: azure-stack-edge-j-series-deploy-virtual-machine-powershell-script.md
+              href: azure-stack-edge-gpu-deploy-virtual-machine-powershell-script.md
             - name: VM'leri dağıtma - Azure CLI/Python
               href: azure-stack-edge-j-series-deploy-virtual-machine-cli-python.md
+            - name: VM’lerde Özel Betik Uzantısı dağıtma
+              href: azure-stack-edge-gpu-deploy-virtual-machine-custom-script-extension.md
             - name: VM görüntüsü oluşturma
-              href: azure-stack-edge-j-series-create-virtual-machine-image.md
+              href: azure-stack-edge-gpu-create-virtual-machine-image.md
+            - name: 'Desteklenen VM boyutları, türleri'
+              href: azure-stack-edge-gpu-virtual-machine-sizes.md
         - name: Sertifikaları yönetme
           items:
             - name: Gereksinimler
@@ -293,8 +299,6 @@
           href: azure-stack-edge-gpu-2008-release-notes.md
     - name: Paylaşılan başvuru
       items:
-        - name: 'API, SDK, PowerShell aracılığıyla IoT Edge rolü'
-          href: azure-stack-edge-gpu-iot-edge-api-update.md
         - name: Azure PowerShell
           href: /powershell/module/az.stackedge/?view=azps-4.4.0#stack_edge
         - name: REST API
@@ -389,6 +393,10 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
+- name: Güvenlik
+  items:
+    - name: Güvenlik temeli
+      href: security-baseline.md
 - name: Kaynaklar
   items:
     - name: Azure Stack Edge Pro C# modülü örnekleri (.NET)

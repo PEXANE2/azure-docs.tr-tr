@@ -9,6 +9,8 @@
   items:
     - name: Web uygulaması oluşturma
       href: quick-demo-map-app.md
+    - name: Android uygulaması oluşturma
+      href: quick-android-map.md
 - name: Öğreticiler
   items:
     - name: Web SDK Öğreticileri
@@ -21,6 +23,10 @@
           href: tutorial-prioritized-routes.md
         - name: Depo bulucu oluşturma
           href: tutorial-create-store-locator.md
+    - name: Android SDK Öğreticileri
+      items:
+        - name: GeoJSON verilerini haritaya yükleme
+          href: tutorial-load-geojson-file-android.md
     - name: REST API Öğreticileri
       items:
         - name: İç mekan haritası oluşturma
@@ -238,16 +244,28 @@
           href: how-to-use-android-map-control-library.md
         - name: Haritanın stilini değiştirme
           href: set-android-map-styles.md
+        - name: Veri kaynağı oluşturma
+          href: create-data-source-android-sdk.md
         - name: Sembol katmanı ekleme
           href: how-to-add-symbol-to-android-map.md
+        - name: Baloncuk katmanı ekleme
+          href: map-add-bubble-layer-android.md
         - name: Şekil ekleme
           href: how-to-add-shapes-to-android-map.md
+        - name: Isı haritası katmanı ekleme
+          href: map-add-heat-map-layer-android.md
+        - name: Çizgi katmanı ekleme
+          href: android-map-add-line-layer.md
         - name: Özellik bilgilerini görüntüleme
           href: display-feature-information-android.md
         - name: Kutucuk katmanı ekleme
           href: how-to-add-tile-layer-android-map.md
         - name: Trafik verilerini gösterme
           href: how-to-show-traffic-android.md
+        - name: Veri temelli ifadeleri kullanma
+          href: data-driven-style-expressions-android-sdk.md
+        - name: Olaylara tepki verme
+          href: android-map-events.md
     - name: Power BI'da Azure Haritalar'ı kullanma
       items:
         - name: Başlarken

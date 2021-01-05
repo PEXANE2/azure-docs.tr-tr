@@ -5,135 +5,233 @@
   items:
     - name: Çözüm mimarisi
       href: architecture.md
-    - name: Azure RTOS için Güvenlik Modülü
-      href: iot-security-azure-rtos.md
-    - name: Güvenlik aracıları
-      href: security-agent-architecture.md
-    - name: Microsoft Edge güvenlik modülü
-      href: security-edge-architecture.md
-    - name: Hizmet önkoşulları
-      href: service-prerequisites.md
-    - name: IoT için Azure Defender’ı kullanmaya başlama
-      href: getting-started.md
-      items:
-        - name: IoT Hub
-          href: iot-hub-integration.md
-        - name: Güvenlik aracıları
-          href: security-agents.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
-    - name: Ağınızı hazırlama
-      href: quickstart-prepare-network-for-defender-for-iot.md
-    - name: Algılayıcı ekleme
-      href: quickstart-onboard-sensors.md
-    - name: Azure RTOS için Güvenlik Modülü’nü yapılandırma
-      href: quickstart-azure-rtos-security-module.md
-    - name: IoT için Azure Defender’ı IoT Hub’a ekleme
-      href: quickstart-onboard-iot-hub.md
-    - name: Çözümünüzü yapılandırma
-      href: quickstart-configure-your-solution.md
-    - name: IoT için Azure Defender’ın modül ikizini oluşturma
-      href: quickstart-create-security-twin.md
-    - name: Güvenlik önerilerini araştırma
-      href: quickstart-investigate-security-recommendations.md
-    - name: Özel güvenlik uyarıları oluşturma
-      href: quickstart-create-custom-alerts.md
-    - name: Güvenlik uyarılarını araştırma
-      href: quickstart-investigate-security-alerts.md
+    - name: Kuruluşlar için Aracısız Çözüm
+      items:
+        - name: Sistem önkoşulları
+          href: quickstart-system-prerequisites.md
+        - name: IoT için Azure Defender’ı kullanmaya başlama
+          href: getting-started.md
+    - name: Cihaz Oluşturucular için aracı tabanlı çözüm
+      items:
+        - name: Azure RTOS için Güvenlik Modülü’nü yapılandırma
+          href: quickstart-azure-rtos-security-module.md
+        - name: IoT Hub
+          href: quickstart-iot-hub-integration.md
+        - name: IoT için Azure Defender’ı IoT Hub’a ekleme
+          href: quickstart-onboard-iot-hub.md
+        - name: Güvenlik aracıları
+          href: security-agent-architecture.md
+        - name: Çözümünüzü yapılandırma
+          href: quickstart-configure-your-solution.md
+        - name: IoT için Azure Defender’ın modül ikizini oluşturma
+          href: quickstart-create-security-twin.md
+        - name: Güvenlik önerilerini araştırma
+          href: quickstart-investigate-security-recommendations.md
+        - name: Özel güvenlik uyarıları oluşturma
+          href: quickstart-create-custom-alerts.md
+        - name: Güvenlik uyarılarını araştırma
+          href: quickstart-investigate-security-alerts.md
 - name: Kavramlar
   items:
-    - name: Azure RTOS için Güvenlik Modülü
+    - name: Kuruluşlar için Aracısız Çözüm
       items:
-        - name: Azure RTOS için Güvenlik Modülü’nü anlama
-          href: concept-rtos-security-module.md
-        - name: Azure RTOS için Güvenlik Modülü uyarıları ve önerileri
-          href: concept-rtos-security-alerts-recommendations.md
-    - name: Güvenlik aracısında kimlik doğrulaması
-      href: concept-security-agent-authentication-methods.md
-    - name: Güvenlik modülü
-      href: concept-security-module.md
-    - name: Güvenlik uyarıları
-      href: concept-security-alerts.md
-    - name: Özelleştirilebilir güvenlik uyarıları
-      href: concept-customizable-security-alerts.md
-    - name: Güvenlik
+        - name: Önemli kavramlar
+          href: concept-key-concepts.md
+    - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
-        - name: Güvenlik önerileri
-          href: concept-recommendations.md
-        - name: Güvenlik temeli
-          href: security-baseline.md
-    - name: Taban çizgisi
-      href: concept-baseline.md
-    - name: Olay toplama
-      href: event-aggregation.md
-    - name: Fiyatlandırma ve ilişkili maliyetler
-      href: concept-pricing.md
+        - name: Azure RTOS için Güvenlik Modülü
+          href: iot-security-azure-rtos.md
+          items:
+            - name: Azure RTOS için Güvenlik Modülü’nü anlama
+              href: concept-rtos-security-module.md
+            - name: Azure RTOS için Güvenlik Modülü uyarıları ve önerileri
+              href: concept-rtos-security-alerts-recommendations.md
+        - name: Microsoft Edge güvenlik modülü
+          href: security-edge-architecture.md
+        - name: Güvenlik aracıları
+          href: overview-security-agents.md
+        - name: Güvenlik aracısında kimlik doğrulaması
+          href: concept-security-agent-authentication-methods.md
+        - name: Güvenlik modülü
+          href: concept-security-module.md
+        - name: Güvenlik uyarıları
+          href: concept-security-alerts.md
+        - name: Özelleştirilebilir güvenlik uyarıları
+          href: concept-customizable-security-alerts.md
+        - name: Güvenlik
+          items:
+            - name: Güvenlik önerileri
+              href: concept-recommendations.md
+            - name: Güvenlik temeli
+              href: security-baseline.md
+        - name: Taban çizgisi
+          href: concept-baseline.md
+        - name: Olay toplama
+          href: event-aggregation.md
+        - name: Fiyatlandırma ve ilişkili maliyetler
+          href: concept-pricing.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Algılayıcıları görüntüleme ve yönetme
-      href: how-to-deploy-view-sensors.md
-    - name: Şirket içi yönetim konsolunu dağıtma
-      href: how-to-deploy-management-console-appliance.md
-    - name: Azure RTOS için Güvenlik Modülü ile çalışma
-      href: how-to-azure-rtos-security-module.md
-    - name: Hangi aracıyı dağıtmalıyım?
+    - name: Kuruluşlar için Aracısız Çözüm
       items:
-        - name: Dağıtılacak aracıyı seçme
-          href: how-to-deploy-agent.md
-        - name: Windows cihazında C# tabanlı güvenlik aracısı dağıtma
-          href: how-to-deploy-windows-cs.md
-        - name: Linux cihazında C# tabanlı güvenlik aracısı dağıtma
-          href: how-to-deploy-linux-cs.md
-        - name: Linux cihazında C tabanlı güvenlik aracısı dağıtma
-          href: how-to-deploy-linux-c.md
-    - name: Güvenlik aracısında sorun giderme
+        - name: Ağınızı hazırlama
+          items:
+            - name: Gerekli gereçlerini tanımlama
+              href: how-to-identify-required-appliances.md
+            - name: Yazılımı yükleme
+              href: how-to-install-software.md
+            - name: Ağınızı kurma
+              href: how-to-set-up-your-network.md
+        - name: Algılayıcılarınızı hazırlama
+          items:
+            - name: Algılayıcı ekleme
+              href: how-to-manage-sensors-on-the-cloud.md
+            - name: Algılayıcınızı etkinleştirme ve ayarlama
+              href: how-to-activate-and-set-up-your-sensor.md
+        - name: Şirket içi yönetim konsolunuzu hazırlama
+          items:
+            - name: Şirket içi yönetim konsolunuzu etkinleştirme ve ayarlama
+              href: how-to-activate-and-set-up-your-on-premises-management-console.md
+            - name: Yüksek kullanılabilirliği ayarlama
+              href: how-to-set-up-high-availability.md
+        - name: Kullanıcıları ve kullanıcı erişimini yönetme
+          items:
+            - name: Kullanıcıları oluşturma ve yönetme
+              href: how-to-create-and-manage-users.md
+            - name: Global kullanıcı erişim denetimini tanımlama
+              href: how-to-define-global-user-access-control.md
+        - name: Hangi trafiğin izleneceğini denetleme
+          href: how-to-control-what-traffic-is-monitored.md
+        - name: Algılayıcıları şirket içi yönetim konsolundan yönetme
+          href: how-to-manage-sensors-from-the-on-premises-management-console.md
+        - name: Algılayıcıları ayrı ayrı yönetme
+          href: how-to-manage-individual-sensors.md
+        - name: Bulutta algılayıcıları yönetme
+          href: how-to-manage-sensors-on-the-cloud.md
+        - name: Şirket içi yönetim konsolunu yönetme
+          href: how-to-manage-the-on-premises-management-console.md
+        - name: Tehdit analizi paketleriyle çalışma
+          href: how-to-work-with-threat-intelligence-packages.md
+        - name: Cihaz envanter bilgileriyle çalışma
+          items:
+            - name: Bir cihaz envanterinde tüm kurumsal algılayıcı algılamalarını araştırma
+              href: how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md
+            - name: Bir cihaz envanterinde algılayıcı algılamalarını araştırma
+              href: how-to-investigate-sensor-detections-in-a-device-inventory.md
+        - name: Algılayıcı cihaz eşlemesiyle çalışma
+          href: how-to-work-with-the-sensor-device-map.md
+        - name: Bir algılayıcı tarafından algılanan uyarılarla çalışma
+          items:
+            - name: Algılayıcınızda uyarıyla çalışma
+              href: how-to-work-with-alerts-on-your-sensor.md
+            - name: Uyarıları görüntüleme
+              href: how-to-view-alerts.md
+            - name: Uyarlarda verilen bilgileri görüntüleme
+              href: how-to-view-information-provided-in-alerts.md
+            - name: Uyarı olayını yönetme
+              href: how-to-manage-the-alert-event.md
+            - name: Uyarı olayı yanıtını hızlandırma
+              href: how-to-accelerate-alert-incident-response.md
+            - name: Uyarı bilgilerini iletme
+              href: how-to-forward-alert-information-to-partners.md
+        - name: 'Küresel, bölgesel ve yerel tehditlere yönelik içgörü elde etme'
+          href: how-to-gain-insight-into-global-regional-and-local-threats.md
+        - name: Şirket içi yönetim konsolunda uyarılarla çalışma
+          href: how-to-work-with-alerts-on-premises-management-console.md
+        - name: Cihaz bilgilerini zenginleştirme
+          items:
+            - name: Cihaz bildirimleri ile çalışma
+              href: how-to-work-with-device-notifications.md
+            - name: Bağlantı noktası ve VLAN ad çözümlemesini geliştirme
+              href: how-to-enhance-port-and-vlan-name-resolution.md
+            - name: Cihaz bilgilerini içeri aktarma
+              href: how-to-import-device-information.md
+        - name: Algılayıcı etkinliğini izleme
+          href: how-to-track-sensor-activity.md
+        - name: Rapor oluştur
+          href: how-to-generate-reports.md
+        - name: Algılayıcı ve şirket içi yönetim konsolunda sorun giderme
+          href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
+        - name: SNMP MIB izlemesini ayarlama
+          href: how-to-set-up-snmp-mib-monitoring.md
+    - name: Cihaz Oluşturucular için aracı tabanlı çözüm
       items:
-        - name: IoT için Azure Defender Linux güvenlik aracısında sorun giderme
-          href: troubleshoot-agent.md
-        - name: Yerel yapılandırma C
-          href: azure-iot-security-local-configuration-c.md
-        - name: Yerel yapılandırma C#
-          href: azure-iot-security-local-configuration-csharp.md
-    - name: Microsoft Edge güvenlik modülünü dağıtma
-      href: how-to-deploy-edge.md
-    - name: Güvenlik aracılarını yapılandırma
-      href: how-to-agent-configuration.md
-    - name: Kendi güvenlik iletilerinizi gönderme
-      href: how-to-send-security-messages.md
-    - name: Ham güvenlik verilerine erişme
-      href: how-to-security-data-access.md
-    - name: Cihazı araştırma
-      href: how-to-investigate-device.md
-    - name: Azure Sentinel’e bağlanma
-      href: how-to-configure-with-sentinel.md
-    - name: Aracınızı özelleştirme
-      href: how-to-customize-solution.md
+        - name: Azure RTOS için Güvenlik Modülü ile çalışma
+          href: how-to-azure-rtos-security-module.md
+        - name: Hangi aracıyı dağıtmalıyım?
+          items:
+            - name: Dağıtılacak aracıyı seçme
+              href: how-to-deploy-agent.md
+            - name: Windows cihazında C# tabanlı güvenlik aracısı dağıtma
+              href: how-to-deploy-windows-cs.md
+            - name: Linux cihazında C# tabanlı güvenlik aracısı dağıtma
+              href: how-to-deploy-linux-cs.md
+            - name: Linux cihazında C tabanlı güvenlik aracısı dağıtma
+              href: how-to-deploy-linux-c.md
+        - name: Güvenlik aracısında sorun giderme
+          items:
+            - name: IoT için Azure Defender Linux güvenlik aracısında sorun giderme
+              href: troubleshoot-agent.md
+            - name: Yerel yapılandırma C
+              href: azure-iot-security-local-configuration-c.md
+            - name: Yerel yapılandırma C#
+              href: azure-iot-security-local-configuration-csharp.md
+        - name: Microsoft Edge güvenlik modülünü dağıtma
+          href: how-to-deploy-edge.md
+        - name: Güvenlik aracılarını yapılandırma
+          href: how-to-agent-configuration.md
+        - name: Kendi güvenlik iletilerinizi gönderme
+          href: how-to-send-security-messages.md
+        - name: Ham güvenlik verilerine erişme
+          href: how-to-security-data-access.md
+        - name: Cihazı araştırma
+          href: how-to-investigate-device.md
+        - name: Azure Sentinel’e bağlanma
+          href: how-to-configure-with-sentinel.md
+        - name: Aracınızı özelleştirme
+          href: how-to-customize-solution.md
 - name: Başvurular
   items:
-    - name: Azure RTOS için Güvenlik Modülü API’si
-      href: azure-rtos-security-module-api.md
-    - name: Sık sorulan sorular - hizmet
-      href: resources-frequently-asked-questions.md
-    - name: Sık sorulan sorular - aracı
-      href: resources-agent-frequently-asked-questions.md
-    - name: Azure Yol Haritası
-      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Kuruluşlar için Aracısız Çözüm
+      items:
+        - name: IoT API’leri için Defender ile çalışma
+          href: references-work-with-defender-for-iot-apis.md
+        - name: IoT CLI komutları için Defender ile çalışma
+          href: references-work-with-defender-for-iot-cli-commands.md
+        - name: Özel protokolleri yönetme (Horizon)
+          href: resources-manage-proprietary-protocols.md
+        - name: IoT için Defender sözlüğü
+          href: references-defender-for-iot-glossary.md
+    - name: Cihaz Oluşturucular için aracı tabanlı çözüm
+      items:
+        - name: Azure RTOS için Güvenlik Modülü API’si
+          href: azure-rtos-security-module-api.md
+        - name: Sık sorulan sorular - hizmet
+          href: resources-frequently-asked-questions.md
+        - name: Sık sorulan sorular - aracı
+          href: resources-agent-frequently-asked-questions.md
+        - name: Azure Yol Haritası
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
 - name: Kaynaklar
   items:
-    - name: Microsoft Learn ile güvenlik becerilerinizi geliştirme
-      href: /learn/browse/?term=securityS&terms=securityS
-    - name: Azure Güvenlik Merkezi belgeleri
-      href: ../security-center/index.yml
-    - name: Azure güvenlik belgeleri
-      href: ../security/index.yml
-    - name: Stack Overflow’da Azure RTOS güvenlik modülü
-      href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
-    - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'
-      href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
-    - name: Bölgesel kullanılabilirlik
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Fiyatlandırma
-      href: 'https://azure.microsoft.com/pricing/details/security-center/'
-    - name: Videolar
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'
+    - name: Cihaz oluşturucular için aracı tabanlı çözüm
+      items:
+        - name: Microsoft Learn ile güvenlik becerilerinizi geliştirme
+          href: /learn/browse/?term=securityS&terms=securityS
+        - name: Azure Güvenlik Merkezi belgeleri
+          href: ../security-center/
+        - name: Azure güvenlik belgeleri
+          href: 'https://docs.microsoft.com/azure/security/'
+        - name: Stack Overflow’da Azure RTOS güvenlik modülü
+          href: 'https://stackoverflow.com/questions/tagged/azure-rtos+azure-iot-security-module'
+        - name: 'Azure IoT Güvenlik, Gizlilik ve Uyumluluk blogu'
+          href: 'https://techcommunity.microsoft.com/t5/iot-security/bd-p/IoTSecurity'
+        - name: Bölgesel kullanılabilirlik
+          href: 'https://azure.microsoft.com/regions/services/'
+        - name: Fiyatlandırma
+          href: 'https://azure.microsoft.com/pricing/details/security-center/'
+        - name: Videolar
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=security-center&service=internet-of-things&page=1&sort=newest'

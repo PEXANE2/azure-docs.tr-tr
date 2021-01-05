@@ -95,6 +95,10 @@
           href: diagnostic-services.md
         - name: Günlüklerin gerçek zamanlı akışı
           href: spring-cloud-howto-log-streaming.md
+        - name: Java Süreç Aracısını kullanarak Application Insights
+          href: spring-cloud-howto-application-insights.md
+        - name: Resilience4J Devre Kesici Ölçümleri
+          href: spring-cloud-howto-circuit-breaker-metrics.md
     - name: Güvenlik
       items:
         - name: Sistem tarafından atanan yönetilen kimliği etkinleştirme
