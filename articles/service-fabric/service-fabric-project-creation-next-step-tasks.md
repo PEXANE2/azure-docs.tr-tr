@@ -2,16 +2,23 @@
 title: Proje oluşturma sonraki adımları Service Fabric
 description: Visual Studio 'da yeni oluşturduğunuz uygulama projesi hakkında bilgi edinin.  Öğreticileri kullanarak hizmetler oluşturmayı ve Service Fabric için hizmet geliştirme hakkında daha fazla bilgi edinin.
 ms.topic: conceptual
-ms.date: 12/07/2017
-ms.openlocfilehash: 01a69016e0c299fba0365fab5332b572fd2ca87a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 12/21/2020
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314465"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760444"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric uygulamanız ve sonraki adımlar
-Azure Service Fabric uygulamanız oluşturuldu. Bu makalede, deneyebileceğiniz bazı öğreticiler, projenizin makeof, ilgilendiğiniz daha fazla bilgi ve olası sonraki adımlar açıklanmaktadır.
+Azure Service Fabric uygulamanız oluşturuldu. Bu makalede, bir dizi kaynak, ilgilendiğiniz daha fazla bilgi ve olası [sonraki adımlar](#next-steps)yer alır.
+
+Yeni kullanıcılar [öğreticiler, izlenecek yollar ve örneklere](#get-started-with-tutorials-walk-throughs-and-samples) yardımcı olabilir. [Oluşturulan uygulama projesinin yapısını](#the-application-project)incelemek de faydalı olabilir. Ayrıca, Service Fabric [programlama modelleri](#learn-more-about-the-programming-models), [hizmet iletişimi](#learn-about-service-communication), [uygulama güvenliği](#learn-about-configuring-application-security)ve [uygulama yaşam döngüsünün](#learn-about-the-application-lifecycle)açıklamalarıdır.
+
+Daha deneyimli kullanıcılar Service Fabric en [iyi uygulamalar](#learn-about-best-practices) bölümünü, en yüksek göre etkinliğine sahip platform ve yapı uygulamalarından nasıl yararlanalabileceğinizi öğrenmek için yararlı olabilir.
+
+Sorularınız veya geri bildirimde bulunmak ya da bir sorunu raporlamak isteyen kişiler için [ilgili bölüme](#have-questions-or-feedback--need-to-report-an-issue)bakın.
 
 ## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Öğreticiler, yürüme-kılavuzlarına ve örnekler ile çalışmaya başlama
 Başlamaya hazır mısınız?  
@@ -26,11 +33,6 @@ Ya da aşağıdaki ilerm-kılavuzlarına birini deneyin ve ilk kez oluşturun...
 
 Ayrıca, [örnek uygulamalarımızı](/samples/browse/?products=azure)de denemeyebilirsiniz.
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Sorularınız veya geri bildiriminiz mi var?  Bir sorun bildirmek mı gerekiyor?
-[Yaygın soruları](service-fabric-common-questions.md) okuyun ve Service Fabric neler yapabileceğini ve nasıl kullanılacağını öğrenin.
-
-[Destek seçenekleri](service-fabric-support.md) , sorularınızı bildirmek, destek almak ve ürün geri bildirimleri göndermek için STACKOVERFLOW ve MSDN 'deki forumları listeler.
-
 ## <a name="the-application-project"></a>Uygulama Projesi
 Her yeni uygulama bir uygulama projesi içerir. Seçilen hizmet türüne bağlı olarak bir veya iki ek proje olabilir.
 
@@ -41,8 +43,6 @@ Uygulama Projesi şunlardan oluşur:
 * Bir hizmet için oluşturulacak bölüm sayısı gibi, ortama özgü uygulama yapılandırmalarının bakımını yapmak için kullanabileceğiniz üç uygulama parametresi dosyası (yukarıdaki ile aynı). [Uygulamanızı birden çok ortam için nasıl yapılandıracağınızı](service-fabric-manage-multiple-environment-app-configuration.md)öğrenin.
 * Uygulamanızı komut satırından veya otomatik bir sürekli tümleştirme ve dağıtım işlem hattının parçası olarak dağıtmak için kullanabileceğiniz bir dağıtım betiği. [PowerShell kullanarak uygulama dağıtma](service-fabric-deploy-remove-applications.md)hakkında daha fazla bilgi edinin.
 * Uygulamayı açıklayan uygulama bildirimi. Bildirimi ApplicationPackageRoot klasörü altında bulabilirsiniz. [Uygulama ve hizmet bildirimleri](service-fabric-application-model.md)hakkında daha fazla bilgi edinin.
-
-
 
 ## <a name="learn-more-about-the-programming-models"></a>Programlama modelleri hakkında daha fazla bilgi edinin
 Service Fabric hizmetlerinizi yazmak ve yönetmek için birçok yol sunar.  Burada [durum bilgisiz ve durum bilgisi olmayan Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [kapsayıcılar](service-fabric-containers-overview.md), [Konuk yürütülebilir dosyalar](service-fabric-guest-executables-introduction.md)ve durum [bilgisiz ve durum bilgisi olan ASP.NET Core hizmetleriyle](service-fabric-reliable-services-communication-aspnetcore.md)ilgili genel bilgiler ve
@@ -57,6 +57,26 @@ Uygulamanız, depolama bağlantı dizeleri, parolalar veya düz metin olarak iş
 
 ## <a name="learn-about-the-application-lifecycle"></a>Uygulama yaşam döngüsü hakkında bilgi edinin
 Diğer platformlarda olduğu gibi, bir Service Fabric uygulama genellikle şu aşamalardan geçer: tasarım, geliştirme, test, dağıtım, yükseltme, bakım ve kaldırma. [Bu makalede](service-fabric-application-lifecycle.md) , API 'lerin yanı sıra Service Fabric uygulama yaşam döngüsünün aşamaları boyunca farklı roller tarafından nasıl kullanıldıkları hakkında genel bakış sunulmaktadır.
+
+## <a name="learn-about-best-practices"></a>En iyi yöntemler hakkında bilgi edinin
+Service Fabric [en iyi yöntemleri](./service-fabric-best-practices-overview.md)açıklayan birçok makaleye sahiptir. Kümenizin ve uygulamanızın çalışmasını ve mümkün olduğunca emin olmak için bu bilgilerden yararlanın.
+Kapsanan konular şunları içerir:
+* [Güvenlik](./service-fabric-best-practices-security.md)
+* [Ağ](./service-fabric-best-practices-networking.md)
+* [İşlem planlama ve ölçeklendirme](./service-fabric-best-practices-capacity-scaling.md)
+* [Kod olarak altyapı](./service-fabric-best-practices-infrastructure-as-code.md)
+* [İzleme ve tanılama](./service-fabric-best-practices-monitoring.md)
+* [Uygulama tasarımı](./service-fabric-best-practices-applications.md)
+
+Ayrıca, en iyi yöntem bilgilerini kullanımı kolay bir biçimde tümleştiren bir [Üretim hazırlığı denetim listesi](./service-fabric-production-readiness-checklist.md) de mevcuttur.
+
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Sorularınız veya geri bildiriminiz mi var?  Bir sorun bildirmek mı gerekiyor?
+[Yaygın soruları](service-fabric-common-questions.md) okuyun ve Service Fabric neler yapabileceğini ve nasıl kullanılacağını öğrenin.
+
+[Sorun giderme kılavuzlarında](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides) , Service Fabric kümelerinde yaygın sorunları tanılamaya ve çözmeye yardımcı olmak için yararlı olabilir.
+
+[Destek seçenekleri](service-fabric-support.md) , sorularınızı bildirmek, destek almak ve ürün geri bildirimleri göndermek için STACKOVERFLOW ve MSDN 'deki forumları listeler.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure 'da bir Windows kümesi oluşturun](service-fabric-tutorial-create-vnet-and-windows-cluster.md).

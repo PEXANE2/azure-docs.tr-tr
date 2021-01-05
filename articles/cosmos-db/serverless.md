@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: cabc243c6ba74217873b5b0a5fa51a7cb410512e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: c5086eee805ffbcdf0741eae4db405b1bcbe8692
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170846"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760387"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB sunucusuz (Önizleme)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,7 +19,7 @@ ms.locfileid: "96170846"
 > [!IMPORTANT]
 > Azure Cosmos DB sunucusuz Şu anda önizleme aşamasındadır. Bu önizleme sürümü bir Hizmet Düzeyi Sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Azure Cosmos DB sunucusuz, Azure Cosmos hesabınızı, yalnızca veritabanı işlemleriniz tarafından tüketilen Istek birimleri ve verileriniz tarafından tüketilen depolama alanı için ücretlendirilebilen tüketim tabanlı bir biçimde kullanmanıza olanak sağlar. Azure Cosmos DB sunucusuz modda kullanırken en düşük ücret söz konusu değildir.
+Azure Cosmos DB sunucusuz, Azure Cosmos hesabınızı, yalnızca veritabanı işlemleriniz tarafından tüketilen Istek birimleri ve verileriniz tarafından tüketilen depolama alanı için ücretlendirilebilen tüketim tabanlı bir biçimde kullanmanıza olanak sağlar. Sunucusuz kapsayıcılar, saniyede minimum ücret ödemeden ve kapasite planlaması gerekmeden binlerce istek sunabilir.
 
 > [!IMPORTANT] 
 > Sunucusuz hakkında geri bildiriminiz var mı? Duymak istiyoruz! Azure Cosmos DB sunucusuz ekibe bir ileti bırakmayı ücretsiz olarak hissetmekten çekinmeyin: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) .
@@ -36,13 +36,12 @@ Azure Cosmos DB kullanırken, her veritabanı işleminin, [Istek birimlerinde](r
 - **Düşük, aralıklı ve öngörülemeyen trafik**: Bu gibi durumlarda sağlama kapasitesi gerekli değildir ve maliyet probisel olabilir
 - **Orta performans**: sunucusuz kapsayıcılar [belirli performans özelliklerine](#performance) sahip olduğundan
 
-Bu nedenlerden dolayı sunucusuz Azure Cosmos DB aşağıdaki iş yükü türleri için göz önünde bulundurulmalıdır:
+Bu nedenlerden dolayı sunucusuz Azure Cosmos DB aşağıdaki durumlarda göz önünde bulundurulmalıdır:
 
-- Geliştirme
-- Test Etme
-- Prototip oluşturma
-- Kavram kanıtı
-- Hafif trafik içeren kritik olmayan uygulama
+- Azure Cosmos DB kullanmaya başlama
+- Geliştirme, test etme ve yeni uygulamaların prototipini oluşturma
+- Tahmin etmek zor aralıklı trafik sayesinde küçük ve orta ölçekli uygulamalar çalıştırma
+- [Azure işlevleri](../azure-functions/functions-overview.md) gibi sunucusuz işlem hizmetleriyle tümleştirme
 
 Kullanım örneğine en uygun teklifi seçme hakkında daha fazla bilgi için bkz. [sağlanan verimlilik ve sunucusuz](throughput-serverless.md) makale arasından seçim yapma.
 

@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 124f747a1e7c7925efc2519ee826d62034e69cc5
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302691"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755982"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -382,7 +382,7 @@ Topluluk çözümleri, etiket [Guestconfiguration](https://www.powershellgallery
 > [!Note]
 > Konuk yapılandırma genişletilebilirliği "kendi lisansını getir" senaryosudur. Kullanmadan önce herhangi bir üçüncü taraf aracının hüküm ve koşullarını karşıladığınızı doğrulayın.
 
-Geliştirme ortamında DSC kaynağı yüklendikten sonra, **FilesToInclude** `New-GuestConfigurationPackage` içerik yapıtının üçüncü taraf platformu için Içerik eklemek Için filestoınclude parametresini kullanın.
+Geliştirme ortamında DSC kaynağı yüklendikten sonra,  `New-GuestConfigurationPackage` içerik yapıtının üçüncü taraf platformu için Içerik eklemek Için filestoınclude parametresini kullanın.
 
 ### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>Adım adım, üçüncü taraf araçları kullanan bir içerik yapıtı oluşturma
 
@@ -491,10 +491,15 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>İlke yaşam döngüsü
 
-İlkeye bir güncelleştirme yayınlamak istiyorsanız, dikkat gerektiren üç alan vardır.
+İlkede bir güncelleştirme yayınlamak isterseniz, hem Konuk yapılandırma paketi hem de Azure Ilke tanımı ayrıntıları için değişikliği yapın.
 
 > [!NOTE]
 > `version`Konuk yapılandırma atamasının özelliği yalnızca Microsoft tarafından barındırılan etkiler. Özel içerik sürümü oluşturma için en iyi yöntem, dosyanın dosya adına dahil edileceğini içerir.
+
+İlk olarak, çalışırken `New-GuestConfigurationPackage` , paket için önceki sürümlerden benzersiz olan bir ad belirtin. Adında bir sürüm numarası dahil edebilirsiniz `PackageName_1.0.0` .
+Bu örnekteki sayı yalnızca paketin benzersiz olması için kullanılır, paketin diğer paketlerden daha yeni veya daha eski olarak değerlendirilmesi gerektiğini belirtmemelidir.
+
+İkinci olarak, `New-GuestConfigurationPolicy` aşağıdaki açıklamaları izleyerek cmdlet ile birlikte kullanılan parametreleri güncelleştirin.
 
 - **Sürüm**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, şu anda yayımlanmış olandan daha büyük bir sürüm numarası belirtmeniz gerekir.
 - **contentUri**: `New-GuestConfigurationPolicy` cmdlet 'ini çalıştırdığınızda, PAKETIN konumuna bir URI belirtmeniz gerekir. Dosya adında bir paket sürümü de dahil olmak üzere, bu özelliğin değeri her sürümde değişir.

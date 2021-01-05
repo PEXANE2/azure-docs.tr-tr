@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
-ms.translationtype: MT
+ms.openlocfilehash: edb1d419900147b586ba1ff257d4307b237be537
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400684"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746737"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu için depolama hesabı erişimini denetleme
 
@@ -49,7 +49,7 @@ Sunucusuz SQL havuzunda oturum açan bir kullanıcının, dosyalar herkese açı
 **Azure portal > depolama hesabı-> paylaşılan erişim imzası-> Izinleri yapılandırma-> SAS ve bağlantı dizesi oluşturma '** ya gıderek bir SAS belirteci alabilirsiniz.
 
 > [!IMPORTANT]
-> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örneğin:
+> Bir SAS belirteci oluşturulduğunda, belirtecin başlangıcında bir soru işareti ('? ') içerir. Belirteci sunucusuz SQL havuzunda kullanmak için, bir kimlik bilgisi oluştururken soru işaretini ('? ') kaldırmanız gerekir. Örnek:
 >
 > SAS belirteci:? ZF = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = https&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 
@@ -89,9 +89,67 @@ Aşağıdaki yetkilendirme ve Azure Depolama türleri birleşimlerini kullanabil
 
 \* SAS belirteci ve Azure AD kimliği, güvenlik duvarıyla korunmayan depolamaya erişmek için kullanılabilir.
 
-> [!IMPORTANT]
-> Güvenlik duvarıyla korunan depolamaya erişirken yalnızca yönetilen kimlik kullanılabilir. [Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir Azure rolünü](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
->
+
+### <a name="querying-firewall-protected-storage"></a>Güvenlik Duvarı korumalı depolamayı sorgulama
+
+Güvenlik duvarıyla korunan depolamaya erişirken **Kullanıcı kimliğini** veya **yönetilen kimlik**' i kullanabilirsiniz.
+
+#### <a name="user-identity"></a>Kullanıcı kimliği
+
+Kullanıcı kimliği aracılığıyla güvenlik duvarıyla korunan depolamaya erişmek için az. Storage PowerShell modülünü kullanabilirsiniz.
+#### <a name="configuration-via-powershell"></a>PowerShell aracılığıyla yapılandırma
+
+Depolama hesabı güvenlik duvarını yapılandırmak ve SYNAPSE çalışma alanı için bir özel durum eklemek için aşağıdaki adımları izleyin.
+
+1. PowerShell 'i açın veya [PowerShell 'i yükleyip](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7.1&preserve-view=true )
+2. Güncelleştirilmiş az. Depolama modülü: 
+    ```powershell
+    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    ```
+    > [!IMPORTANT]
+    > Sürüm 3.0.1 veya daha yeni bir sürümünü kullandığınızdan emin olun. Şu komutu çalıştırarak az. Storage sürümünüzü kontrol edebilirsiniz:  
+    > ```powershell 
+    > Get-Module -ListAvailable -Name  Az.Storage | select Version
+    > ```
+    > 
+
+3. Azure Kiracınıza bağlanın: 
+    ```powershell
+    Connect-AzAccount
+    ```
+4. PowerShell 'de değişkenleri tanımlama: 
+    - Kaynak grubu adı-bu Azure portal, SYNAPSE çalışma alanına genel bakış bölümünde bulabilirsiniz.
+    - Hesap adı-güvenlik duvarı kuralları tarafından korunan depolama hesabının adı.
+    - Kiracı KIMLIĞI-bunu, kiracı bilgilerinde Azure Active Directory Azure portal bulabilirsiniz.
+    - Kaynak KIMLIĞI-bu Azure portal, SYNAPSE çalışma alanına genel bakış bölümünde bulabilirsiniz.
+
+    ```powershell
+        $resourceGroupName = "<resource group name>"
+        $accountName = "<storage account name>"
+        $tenantId = "<tenant id>"
+        $resourceId = "<Synapse workspace resource id>"
+    ```
+    > [!IMPORTANT]
+    > Kaynak kimliğinin Bu şablonla eşleştiğinden emin olun.
+    >
+    > Daha küçük bir durumda **ResourceGroups** yazmak önemlidir.
+    > Bir kaynak kimliği örneği: 
+    > ```
+    > /subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Synapse/workspaces/{name-of-workspace}
+    > ```
+    > 
+5. Depolama ağı kuralı ekle: 
+    ```powershell
+        Add-AzStorageAccountNetworkRule -ResourceGroupName $resourceGroupName -Name $accountName -TenantId $tenantId -ResourceId $resourceId
+    ```
+6. Kuralın depolama hesabınıza uygulandığını doğrulayın: 
+    ```powershell
+        $rule = Get-AzStorageAccountNetworkRuleSet -ResourceGroupName $resourceGroupName -Name $accountName
+        $rule.ResourceAccessRules
+    ```
+
+#### <a name="managed-identity"></a>Yönetilen Kimlik
+[Güvenilen Microsoft hizmetlerine Izin vermeniz gerekiyor... ](../../storage/common/storage-network-security.md#trusted-microsoft-services)bu kaynak örneği için [sistem tarafından atanan yönetilen kimliğe](../../active-directory/managed-identities-azure-resources/overview.md) [bir Azure rolünü](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights) ayarlama ve açıkça atama. Bu durumda, örnek için erişim kapsamı yönetilen kimliğe atanan Azure rolüne karşılık gelir.
 
 ## <a name="credentials"></a>Kimlik bilgileri
 

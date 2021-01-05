@@ -1,22 +1,22 @@
 ---
 title: Dağıtım için şablonları bağlama
-description: Modüler şablon çözümü oluşturmak için Azure Resource Manager şablonda bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
+description: Modüler şablon çözümü oluşturmak için bir Azure Resource Manager şablonunda (ARM şablonu) bağlantılı şablonların nasıl kullanılacağını açıklar. Parametre değerlerinin nasıl geçirileceğini, bir parametre dosyası ve dinamik olarak oluşturulan URL 'Leri gösterir.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 1e2ccc57b42f8072c9aa28612d534507b9a674ed
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852107"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760631"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure kaynaklarını dağıtırken bağlı ve iç içe şablonları kullanma
 
-Karmaşık çözümleri dağıtmak için şablonunuzu birçok ilgili şablona bölebilir ve ardından bunları bir ana şablon aracılığıyla dağıtabilirsiniz. İlgili şablonlar, ana şablon içine katıştırılmış ayrı dosyalar veya şablon söz dizimi olabilir. Bu makalede, ana şablondan bir bağlantı aracılığıyla başvurulan ayrı bir şablon dosyasına başvurmak için **bağlantılı şablon** terimi kullanılmaktadır. Ana şablon içindeki katıştırılmış şablon söz dizimini ifade etmek için **iç içe geçmiş şablon** terimini kullanır.
+Karmaşık çözümleri dağıtmak için Azure Resource Manager şablonunuzu (ARM şablonu) birçok ilgili şablona bölebilir ve ardından bunları ana şablon aracılığıyla birlikte dağıtabilirsiniz. İlgili şablonlar, ana şablon içine katıştırılmış ayrı dosyalar veya şablon söz dizimi olabilir. Bu makalede, ana şablondan bir bağlantı aracılığıyla başvurulan ayrı bir şablon dosyasına başvurmak için **bağlantılı şablon** terimi kullanılmaktadır. Ana şablon içindeki katıştırılmış şablon söz dizimini ifade etmek için **iç içe geçmiş şablon** terimini kullanır.
 
 Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve bakımının yapılması daha kolay olacaktır. Tüm kaynakları ve değerleri tek bir dosyada görebilirsiniz. Gelişmiş senaryolarda bağlantılı şablonlar çözümü hedeflenen bileşenlere ayırmanıza sağlar. Bu şablonları diğer senaryolar için kolayca yeniden kullanabilirsiniz.
 
-Öğretici için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](./deployment-tutorial-linked-template.md).
+Öğretici için bkz. [öğretici: bağlı şablon dağıtma](./deployment-tutorial-linked-template.md).
 
 > [!NOTE]
 > Bağlı veya iç içe şablonlar için, Dağıtım modunu yalnızca [artımlı](deployment-modes.md)olarak ayarlayabilirsiniz. Ancak, ana şablon, tamamlanmış modda dağıtılabilir. Ana şablonu tüm modda dağıtırsanız, bağlantılı veya iç içe yerleştirilmiş şablon aynı kaynak grubunu hedefliyorsa, bağlantılı veya iç içe yerleştirilmiş şablonda dağıtılan kaynaklar, tamamlanmış mod dağıtımı değerlendirmesine dahil edilir. Ana şablonda dağıtılan kaynakların birleştirilmiş koleksiyonu ve bağlantılı veya iç içe yerleştirilmiş şablonlar kaynak grubundaki mevcut kaynaklarla karşılaştırılır. Bu Birleşik koleksiyonda bulunmayan kaynaklar silinir.
@@ -26,7 +26,7 @@ Küçük ve orta ölçekli çözümler için tek bir şablonun anlaşılması ve
 
 ## <a name="nested-template"></a>İç içe yerleştirilmiş şablon
 
-Bir şablonu iç içe aktarmak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. **Şablon** özelliğinde, Şablon sözdizimini belirtin.
+Bir şablonu iç içe aktarmak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. `template`Özelliğinde, Şablon sözdizimini belirtin.
 
 ```json
 {
@@ -283,7 +283,7 @@ Aşağıdaki örnek, bir SQL Server dağıtır ve parola için kullanılacak bir
 
 ## <a name="linked-template"></a>Bağlantılı şablon
 
-Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. **Templatelink** özelliğinde, dahil edılecek şablonun URI 'sini belirtin. Aşağıdaki örnek, bir depolama hesabındaki bir şablona bağlantı sağlar.
+Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azure/templates/microsoft.resources/deployments) ekleyin. `templateLink`Özelliğinde, dahil edilecek ŞABLONUN URI 'sini belirtin. Aşağıdaki örnek, bir depolama hesabındaki bir şablona bağlantı sağlar.
 
 ```json
 {
@@ -310,9 +310,9 @@ Bir şablonu bağlamak için ana şablonunuza bir [dağıtımlar kaynağı](/azu
 }
 ```
 
-Bağlı bir şablona başvururken, değeri `uri` yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olamaz. Azure Resource Manager şablona erişebilmelidir. **Http** veya **https** olarak indirilebilir bir URI değeri sağlayın. 
+Bağlı bir şablona başvururken, değeri `uri` yerel bir dosya veya yalnızca yerel ağınızda bulunan bir dosya olamaz. Azure Resource Manager şablona erişebilmelidir. HTTP veya HTTPS olarak indirilebilir bir URI değeri sağlayın.
 
-**Http** veya **https** içeren parametreleri kullanarak şablonlara başvurabilirsiniz. Örneğin, ortak bir model, `_artifactsLocation` parametresini kullanmaktır. Bağlantılı şablonu şöyle bir ifadeyle ayarlayabilirsiniz:
+HTTP veya HTTPS içeren parametreleri kullanarak şablonlara başvurabilirsiniz. Örneğin, ortak bir model, `_artifactsLocation` parametresini kullanmaktır. Bağlantılı şablonu şöyle bir ifadeyle ayarlayabilirsiniz:
 
 ```json
 "uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
@@ -324,47 +324,49 @@ GitHub 'daki bir şablona bağlanıyorsanız ham URL 'YI kullanın. Bağlantı �
 
 ### <a name="parameters-for-linked-template"></a>Bağlantılı şablon parametreleri
 
-Bağlı şablonunuz için parametreleri bir dış dosyada ya da satır içi olarak sağlayabilirsiniz. Bir dış parametre dosyası sağlarken, **Parameterslink** özelliğini kullanın:
+Bağlı şablonunuz için parametreleri bir dış dosyada ya da satır içi olarak sağlayabilirsiniz. Dış parametre dosyası sağlarken, `parametersLink` özelliğini kullanın:
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "linkedTemplate",
-  "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-    },
-    "parametersLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
-      "contentVersion":"1.0.0.0"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parametersLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.parameters.json",
+        "contentVersion": "1.0.0.0"
+      }
     }
-  }
   }
 ]
 ```
 
-Parametre değerlerini satır içi olarak geçirmek için **Parameters** özelliğini kullanın.
+Parametre değerlerini satır içi olarak geçirmek için `parameters` özelliğini kullanın.
 
 ```json
 "resources": [
   {
-   "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2019-10-01",
-   "name": "linkedTemplate",
-   "properties": {
-     "mode": "Incremental",
-     "templateLink": {
-      "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
-      "contentVersion":"1.0.0.0"
-     },
-     "parameters": {
-      "storageAccountName":{"value": "[parameters('storageAccountName')]"}
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "linkedTemplate",
+    "properties": {
+      "mode": "Incremental",
+      "templateLink": {
+        "uri": "https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "parameters": {
+        "storageAccountName": {
+          "value": "[parameters('storageAccountName')]"
+        }
+      }
     }
-   }
   }
 ]
 ```
@@ -394,7 +396,7 @@ Diğer kaynak türlerinde olduğu gibi, bağlantılı şablonlar arasında bağ�
 
 Önceki örneklerde, şablon bağlantıları için sabit kodlanmış URL değerleri gösteriliyordu. Bu yaklaşım basit bir şablon için çalışabilir, ancak büyük bir modüler şablonlar kümesi için iyi çalışmaz. Bunun yerine, ana şablon için temel URL 'YI depolayan bir statik değişken oluşturabilir ve ardından bu temel URL 'den bağlantılı şablonlar için dinamik olarak URL 'Ler oluşturabilirsiniz. Bu yaklaşımın avantajı, yalnızca ana şablondaki statik değişkeni değiştirmeniz gerektiği için şablonu kolayca taşıyabilir veya çataldan taşıyabilirsiniz. Ana şablon, ayrıştırılmış şablonun tamamında doğru URI 'Leri geçirir.
 
-Aşağıdaki örnek, bağlantılı şablonlar (**Sharedtemplateurl** ve **vmtemplate**) için iki URL oluşturmak üzere temel URL 'yi nasıl kullanacağınızı gösterir.
+Aşağıdaki örnek, bağlantılı şablonlar (ve) için iki URL oluşturmak üzere temel URL 'YI nasıl kullanacağınızı `sharedTemplateUrl` gösterir `vmTemplateUrl` .
 
 ```json
 "variables": {
@@ -404,7 +406,7 @@ Aşağıdaki örnek, bağlantılı şablonlar (**Sharedtemplateurl** ve **vmtemp
 }
 ```
 
-Ayrıca, geçerli şablonun temel URL 'sini almak için [Deployment ()](template-functions-deployment.md#deployment) kullanabilirsiniz ve bunu, aynı konumdaki DIĞER şablonların URL 'sini almak için kullanabilirsiniz. Bu yaklaşım, şablon konumunuz değişirse veya şablon dosyasında sabit kodlama URL 'Lerinin oluşmasını önlemek istediğinizde yararlıdır. TemplateLink özelliği yalnızca bir URL ile uzak şablona bağlanılırken döndürülür. Yerel bir şablon kullanıyorsanız, bu özellik kullanılamaz.
+Ayrıca, geçerli şablonun temel URL 'sini almak için [Deployment ()](template-functions-deployment.md#deployment) kullanabilirsiniz ve bunu, aynı konumdaki DIĞER şablonların URL 'sini almak için kullanabilirsiniz. Bu yaklaşım, şablon konumunuz değişirse veya şablon dosyasında sabit kodlama URL 'Lerinin oluşmasını önlemek istediğinizde yararlıdır. `templateLink`Özelliği yalnızca BIR URL ile uzak şablona bağlanılırken döndürülür. Yerel bir şablon kullanıyorsanız, bu özellik kullanılamaz.
 
 ```json
 "variables": {
@@ -423,49 +425,49 @@ Sonuç olarak, değişkenini `uri` bir özelliğin özelliğinde kullanırsını
 
 ## <a name="using-copy"></a>Kopyayı kullanma
 
-İç içe geçmiş şablonla bir kaynağın birden çok örneğini oluşturmak için, **Microsoft. resources/dağıtımlar** kaynağı düzeyinde kopyalama öğesini ekleyin. Ya da kapsam iç ise, iç içe geçmiş şablon içinde kopyayı ekleyebilirsiniz.
+İç içe şablon içeren bir kaynağın birden çok örneğini oluşturmak için, `copy` öğesini kaynak düzeyine ekleyin `Microsoft.Resources/deployments` . Ya da kapsam ise, `inner` kopyayı iç içe yerleştirilmiş şablon içine ekleyebilirsiniz.
 
-Aşağıdaki örnek şablon, kopyalamanın iç içe geçmiş bir şablonla nasıl kullanılacağını göstermektedir.
+Aşağıdaki örnek şablon, `copy` iç içe geçmiş bir şablonla nasıl kullanılacağını göstermektedir.
 
 ```json
 "resources": [
   {
-  "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2019-10-01",
-  "name": "[concat('nestedTemplate', copyIndex())]",
-  // yes, copy works here
-  "copy":{
-    "name": "storagecopy",
-    "count": 2
-  },
-  "properties": {
-    "mode": "Incremental",
-    "expressionEvaluationOptions": {
-    "scope": "inner"
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2019-10-01",
+    "name": "[concat('nestedTemplate', copyIndex())]",
+    // yes, copy works here
+    "copy": {
+      "name": "storagecopy",
+      "count": 2
     },
-    "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "resources": [
-      {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(variables('storageName'), copyIndex())]",
-      "location": "West US",
-      "sku": {
-        "name": "Standard_LRS"
+    "properties": {
+      "mode": "Incremental",
+      "expressionEvaluationOptions": {
+        "scope": "inner"
       },
-      "kind": "StorageV2"
-      // Copy works here when scope is inner
-      // But, when scope is default or outer, you get an error
-      //"copy":{
-      //  "name": "storagecopy",
-      //  "count": 2
-      //}
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "resources": [
+          {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2019-04-01",
+            "name": "[concat(variables('storageName'), copyIndex())]",
+            "location": "West US",
+            "sku": {
+              "name": "Standard_LRS"
+            },
+            "kind": "StorageV2"
+            // Copy works here when scope is inner
+            // But, when scope is default or outer, you get an error
+            //"copy":{
+            //  "name": "storagecopy",
+            //  "count": 2
+            //}
+          }
+        ]
       }
-    ]
     }
-  }
   }
 ]
 ```
@@ -476,7 +478,7 @@ Bağlı bir şablondan çıkış değeri almak için, özellik değerini şu şe
 
 Bağlantılı şablondan çıkış özelliği alınırken, özellik adı bir tire içermemelidir.
 
-Aşağıdaki örneklerde, bağlantılı bir şablona nasıl başvurulacağını ve bir çıkış değerinin nasıl alınacağını gösterilmektedir. Bağlantılı şablon basit bir ileti döndürür.  İlk olarak, bağlantılı şablon:
+Aşağıdaki örneklerde, bağlantılı bir şablona nasıl başvurulacağını ve bir çıkış değerinin nasıl alınacağını gösterilmektedir. Bağlantılı şablon basit bir ileti döndürür. İlk olarak, bağlantılı şablon:
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/linkedtemplates/helloworld.json":::
 
@@ -613,28 +615,28 @@ Aşağıdaki örnek, bir şablona bağlanırken bir SAS belirtecinin nasıl geç
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-  "containerSasToken": { "type": "securestring" }
+    "containerSasToken": { "type": "securestring" }
   },
   "resources": [
-  {
-    "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2019-10-01",
-    "name": "linkedTemplate",
-    "properties": {
-    "mode": "Incremental",
-    "templateLink": {
-      "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
-      "contentVersion": "1.0.0.0"
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "name": "linkedTemplate",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
+          "contentVersion": "1.0.0.0"
+        }
+      }
     }
-    }
-  }
   ],
   "outputs": {
   }
 }
 ```
 
-PowerShell 'de, kapsayıcı için bir belirteç alır ve aşağıdaki komutlarla şablonları dağıtırsınız. **Containersastoken** parametresinin şablonda tanımlandığından emin olun. **New-AzResourceGroupDeployment** komutunda bir parametre değildir.
+PowerShell 'de, kapsayıcı için bir belirteç alır ve aşağıdaki komutlarla şablonları dağıtırsınız. `containerSasToken`Parametrenin şablonda tanımlandığından emin olun. Komutta bir parametre değildir `New-AzResourceGroupDeployment` .
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
@@ -674,13 +676,13 @@ Aşağıdaki örneklerde, bağlantılı şablonların yaygın kullanımları gö
 
 |Ana şablon  |Bağlantılı şablon |Açıklama  |
 |---------|---------| ---------|
-|[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
+|[Merhaba Dünya](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Bağlantılı şablondan dize döndürür. |
 |[Genel IP adresi ile Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Bağlı şablondan ortak IP adresini döndürür ve yük dengeleyicide bu değeri ayarlar. |
 |[Birden çok IP adresi](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip-parent.json) | [bağlantılı şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/static-public-ip.json) |Bağlı şablonda birkaç genel IP adresi oluşturur.  |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Öğreticiye gitmek için bkz. [öğretici: bağlı Azure Resource Manager şablonları oluşturma](./deployment-tutorial-linked-template.md).
-* Kaynaklarınızın dağıtım sırasını tanımlama hakkında bilgi edinmek için bkz. [Azure Resource Manager şablonlarda bağımlılıkları tanımlama](define-resource-dependency.md).
-* Tek bir kaynağı tanımlama ve birçok örneğini oluşturma hakkında bilgi edinmek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-* Bir depolama hesabında bir şablon ayarlama ve SAS belirteci oluşturma adımları için bkz. [Kaynak Yöneticisi şablonları ile kaynak dağıtma ve Azure PowerShell](deploy-powershell.md) [Kaynak Yöneticisi ŞABLONLARı ve Azure CLI ile kaynak dağıtma](deploy-cli.md).
+* Öğreticiye gitmek için bkz. [öğretici: bağlı şablon dağıtma](./deployment-tutorial-linked-template.md).
+* Kaynaklarınızın dağıtım sırasını tanımlama hakkında bilgi edinmek için bkz. [ARM şablonlarındaki kaynakları dağıtma sırasını tanımlama](define-resource-dependency.md).
+* Tek bir kaynağı tanımlama ve birçok örneğini oluşturma hakkında bilgi edinmek için bkz. [ARM şablonlarındaki kaynak yinelemesi](copy-resources.md).
+* Bir depolama hesabında bir şablon ayarlama ve SAS belirteci oluşturma adımları için bkz. [ARM şablonlarıyla kaynak dağıtma ve Azure PowerShell](deploy-powershell.md) veya [kaynak ARM ŞABLONLARı ve Azure CLI ile dağıtım](deploy-cli.md).

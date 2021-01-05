@@ -8,17 +8,17 @@ ms.author: shipatel
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.date: 09/08/2020
+ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 33ee8944aec043bf2b103ac3958a923b9876b749
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660143"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760478"
 ---
-# <a name="track-experiment-runs-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Deneme çalışmalarını izleyin ve ML modellerini MLflow ve Azure Machine Learning (Önizleme) ile dağıtın
+# <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile ML modellerini eğitme ve izleme
 
 Bu makalede, mlflow [izleme](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api)olarak bilinen MLFLOW izleme URI 'sini ve günlüğe kaydetme API 'sini etkinleştirmeyi ve Azure Machine Learning mlflow denemeleri 'ın arka ucu olarak nasıl bağlanacağınızı öğrenin. 
 
@@ -26,11 +26,9 @@ Desteklenen yetenekler şunlardır:
 
 + [Azure Machine Learning çalışma](./concept-azure-machine-learning-architecture.md#workspace)alanınızdaki deneme ölçümlerini ve yapıtları izleyin ve günlüğe kaydedin. Denemeleri için MLflow Izlemeyi zaten kullanıyorsanız, çalışma alanı eğitim ölçümlerini ve modellerini depolamak için merkezi, güvenli ve ölçeklenebilir bir konum sağlar.
 
-+ Azure Machine Learning arka uç desteğiyle (Önizleme) MLflow projeleriyle eğitim işleri gönderebilirsiniz. İşleri Azure Machine Learning izlemeye yerel olarak gönderebilir veya yürütmeleri [Azure Machine Learning bir işlem](./how-to-create-attach-compute-cluster.md)aracılığıyla buluta geçirebilirsiniz.
++ Azure Machine Learning arka uç desteğiyle (Önizleme) [Mlflow projeleriyle](https://www.mlflow.org/docs/latest/projects.html) eğitim işleri gönderebilirsiniz. İşleri Azure Machine Learning izlemeye yerel olarak gönderebilir veya yürütmeleri [Azure Machine Learning bir işlem](./how-to-create-attach-compute-cluster.md)aracılığıyla buluta geçirebilirsiniz.
 
 + MLflow ve Azure Machine Learning modeli kayıt defterindeki modelleri izleyin ve yönetin.
-
-+ MLflow denemeleri 'nizi Azure Machine Learning Web hizmeti olarak dağıtın. Web hizmeti olarak dağıtarak, Azure Machine Learning izleme ve veri DRI algılama işlevlerini üretim modellerinize uygulayabilirsiniz. 
 
 [Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. MLFlow Izleme, bir MLflow bileşeni olan ve denemenizin ortamınız tarafından, uzak bir işlem hedefinde, bir sanal makinede veya [Azure Databricks kümesinde](how-to-use-mlflow-azure-databricks.md)yerel olarak, kendi ortamınızda olduğu gibi, eğitim çalıştırma ölçümleri ve model yapıtlarını kaydeder ve izler. 
 
@@ -140,7 +138,7 @@ run = exp.submit(src)
 
 Bu örnek, Azure Machine Learning izleme ile MLflow projelerinin yerel olarak nasıl gönderileceği gösterilmektedir.
 
-`azureml-mlflow`Denemeleri yerel bilgisayarınızda Azure Machine Learning Ile MLflow izlemeyi kullanmak için paketini yükler. Denemeleri, bir Jupyter Not defteri veya kod Düzenleyicisi aracılığıyla çalıştırılabilir.
+`azureml-mlflow`Denemeleri yerel bilgisayarınızda Azure Machine Learning Ile MLflow izlemeyi kullanmak için paketini yükler. Denemeleri, bir Jupyter Notebook veya kod Düzenleyicisi aracılığıyla çalıştırılabilir.
 
 ```shell
 pip install azureml-mlflow
@@ -210,9 +208,9 @@ run.get_metrics()
 
 ## <a name="manage-models"></a>Modelleri yönetme 
 
-MLflow modeli kayıt defterini destekleyen [Azure Machine Learning modeli kayıt defteriyle](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) modellerinizi kaydedin ve izleyin. Azure Machine Learning modeller, bu modelleri farklı iş akışlarıyla dışarı ve içeri aktarmayı kolaylaştıran MLflow model şeması ile hizalanır. Çalıştırma kimliği gibi MLflow ile ilgili meta veriler de izlenebilirlik için kayıtlı modelle etiketlenir. Kullanıcılar, MLflow çalıştırmalarından üretilen eğitim çalıştırmaları, kayıt ve dağıtım modellerini gönderebilir. 
+MLflow modeli kayıt defterini destekleyen [Azure Machine Learning modeli kayıt defteriyle](concept-model-management-and-deployment.md#register-package-and-deploy-models-from-anywhere) modellerinizi kaydedin ve izleyin. Azure Machine Learning modeller, bu modelleri farklı iş akışlarıyla dışarı ve içeri aktarmayı kolaylaştıran MLflow model şeması ile hizalanır. Çalıştırma KIMLIĞI gibi MLflow ile ilgili meta veriler de izlenebilirlik için kayıtlı modelle etiketlenir. Kullanıcılar, MLflow çalıştırmalarından üretilen eğitim çalıştırmaları, kayıt ve dağıtım modellerini gönderebilir. 
 
-Üretime yönelik modeli tek bir adımda dağıtmak ve kaydettirmek istiyorsanız bkz. [MLflow modellerini dağıtma ve kaydetme](#deploy-and-register-mlflow-models).
+Üretime yönelik modeli tek bir adımda dağıtmak ve kaydettirmek istiyorsanız bkz. [MLflow modellerini dağıtma ve kaydetme](how-to-deploy-models-with-mlflow.md).
 
 Bir çalışma kaynağından bir modeli kaydetmek ve görüntülemek için aşağıdaki adımları kullanın:
 
@@ -238,110 +236,6 @@ Bir çalışma kaynağından bir modeli kaydetmek ve görüntülemek için aşa�
     ![MLmodel-şema](./media/how-to-use-mlflow/mlmodel-view.png)
 
 
-
-## <a name="deploy-and-register-mlflow-models"></a>MLflow modellerini dağıtma ve kaydetme 
-
-MLflow denemeleri 'i Azure Machine Learning Web hizmeti olarak dağıtmak, üretim modellerinize Azure Machine Learning model yönetimi ve veri Drın algılama özelliklerini kullanmanıza ve uygulamanıza olanak tanır.
-
-Bunu yapmak için, şunu yapmanız gerekir
-
-1. Modelinizi kaydedin.
-1. Senaryolarınız için kullanmak istediğiniz dağıtım yapılandırmasını saptayın.
-
-    1. [Azure Container Instance (acı)](#deploy-to-aci) , hızlı bir geliştirme ve test dağıtımı için uygun bir seçimdir.
-    1. [Azure Kubernetes hizmeti (AKS)](#deploy-to-aks) , ölçeklenebilir üretim dağıtımları için uygundur.
-
-Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modellerinizi bir Azure Machine Learning Web hizmeti olarak dağıtabileceğiniz, çerçeveler--PyTorch, TensorFlow, scikit-öğren, ONNX, vb. ve çalışma alanınızdaki üretim modellerinizi yönetme gibi işlemler gösterilmektedir.
-
-![ Azure Machine Learning ile mlflow modellerini dağıtma](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
-
-
-### <a name="deploy-to-aci"></a>ACI'ye dağıtma
-
-[Deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
-
-```python
-from azureml.core.webservice import AciWebservice, Webservice
-
-# Set the model path to the model folder created by your run
-model_path = "model"
-
-# Configure 
-aci_config = AciWebservice.deploy_configuration(cpu_cores=1, 
-                                                memory_gb=1, 
-                                                tags={'method' : 'sklearn'}, 
-                                                description='Diabetes model',
-                                                location='eastus2')
-```
-
-Ardından, Azure Machine Learning SDK [Deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) yöntemiyle modeli tek bir adımda kaydedin ve dağıtın. 
-
-```python
-(webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='diabetes-model-1', 
-                      deployment_config=aci_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
-
-webservice.wait_for_deployment(show_output=True)
-```
-
-### <a name="deploy-to-aks"></a>AKS’ye dağıtma
-
-AKS 'e dağıtmak için önce bir AKS kümesi oluşturun. [ComputeTarget. Create ()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) yöntemini kullanarak bir aks kümesi oluşturun. Yeni bir küme oluşturmak 20-25 dakika sürebilir.
-
-```python
-from azureml.core.compute import AksCompute, ComputeTarget
-
-# Use the default configuration (can also provide parameters to customize)
-prov_config = AksCompute.provisioning_configuration()
-
-aks_name = 'aks-mlflow'
-
-# Create the cluster
-aks_target = ComputeTarget.create(workspace=ws, 
-                                  name=aks_name, 
-                                  provisioning_configuration=prov_config)
-
-aks_target.wait_for_completion(show_output = True)
-
-print(aks_target.provisioning_state)
-print(aks_target.provisioning_errors)
-```
-[Deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) yöntemiyle dağıtım yapılandırmanızı ayarlayın. Web hizmetinizi izlemeye yardımcı olmak için Etiketler ve açıklamalar da ekleyebilirsiniz.
-
-```python
-from azureml.core.webservice import Webservice, AksWebservice
-
-# Set the web service configuration (using default here with app insights)
-aks_config = AksWebservice.deploy_configuration(enable_app_insights=True, compute_target_name='aks-mlflow')
-
-```
-
-Ardından, modeli Azure Machine Learning SDK [Deploy ()] ile tek bir adımda kaydedip dağıtın (sonra, modeli Azure Machine Learning SDK [Deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) metodunu kullanarak kaydedin ve dağıtın. 
-
-```python
-
-# Webservice creation using single command
-from azureml.core.webservice import AksWebservice, Webservice
-
-# set the model path 
-model_path = "model"
-
-(webservice, model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
-                      workspace=ws,
-                      model_name='sklearn-model', 
-                      service_name='my-aks', 
-                      deployment_config=aks_config, 
-                      tags=None, mlflow_home=None, synchronous=True)
-
-
-webservice.wait_for_deployment()
-```
-
-Hizmet dağıtımı birkaç dakika sürebilir.
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Çalışma alanınızda günlüğe kaydedilen ölçümleri ve yapıtları kullanmayı planlamıyorsanız, bunları tek tek silme özelliği şu anda kullanılamaz. Bunun yerine, depolama hesabı ve çalışma alanını içeren kaynak grubunu silip herhangi bir ücret ödemeniz gerekmez:
@@ -365,6 +259,7 @@ Hizmet dağıtımı birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Modellerinizi yönetin](concept-model-management-and-deployment.md).
+* [MLflow ile modeller dağıtın](how-to-deploy-models-with-mlflow.md).
 * [Veri kayması](./how-to-enable-data-collection.md)için üretim modellerinizi izleyin.
 * [MLflow ile Azure Databricks çalıştırmalarını izleyin](how-to-use-mlflow-azure-databricks.md).
+* [Modellerinizi yönetin](concept-model-management-and-deployment.md).

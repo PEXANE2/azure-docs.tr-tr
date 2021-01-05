@@ -4,14 +4,14 @@ description: Azure HPC Cache ile arka uç depolaması için istemciye yönelik y
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 12/22/2020
 ms.author: v-erkel
-ms.openlocfilehash: e525fc0705dffcd4765e6a1f6c5235bdef260fcd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5549670dbd1f302bdb17b8b94cbd1fb5c4c1a1d9
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339685"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760549"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Toplanan ad alanını ayarlama
 
@@ -21,13 +21,13 @@ Bu özellik hakkında daha fazla bilgi edinmek için [toplanan ad alanı planın
 
 Azure portal **ad alanı** sayfasında, istemcilerin, önbellekteki verilerinize erişmek için kullandığı yollar gösterilir. Ad alanı yollarını oluşturmak, kaldırmak veya değiştirmek için bu sayfayı kullanın. Azure CLı kullanarak ad alanı yollarını da yapılandırabilirsiniz.
 
-Tüm mevcut istemciye yönelik yollar **ad alanı** sayfasında listelenir. Bir depolama hedefinde hiçbir yol yoksa, tabloda görünmez.
+Bu önbellek için tanımlanan tüm istemciye yönelik yollar **ad alanı** sayfasında listelenir. Tanımlı bir ad alanı yoluna sahip olmayan depolama hedefleri, tabloda görünmemiştir.
 
-Oklara tıklayıp önbelleğinizin toplanmış ad alanını daha iyi anlayabilmeniz için tablo sütunlarını sıralayabilirsiniz.
+Önbelleğinizi toplanmış ad alanını daha iyi anlamak için tablo sütunlarını sıralayabilirsiniz. Yolları sıralamak için sütun başlıklarındaki oklara tıklayın.
 
-![bir tabloda iki yol içeren Portal ad alanı sayfasının ekran görüntüsü. Sütun başlıkları: ad alanı yolu, depolama hedefi, dışarı aktarma yolu ve dışarı aktarma alt dizini. İlk sütundaki öğeler tıklatılabilir bağlantılardır. Üst düğmeler: ad alanı yolu Ekle, Yenile, Sil](media/namespace-page.png)
+[![bir tabloda iki yol içeren Portal ad alanı sayfasının ekran görüntüsü. Sütun başlıkları: ad alanı yolu, depolama hedefi, dışa aktarma yolu ve dışarı aktarma alt dizini ve Istemci erişim ilkesi. İlk sütundaki yol adları tıklatılabilir bağlantılardır. Üst düğmeler: ad alanı yolu Ekle, Yenile, Sil ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
-## <a name="add-or-edit-client-facing-namespace-paths"></a>İstemciye yönelik ad alanı yollarını ekleme veya düzenleme
+## <a name="add-or-edit-namespace-paths"></a>Ad alanı yolları ekleme veya düzenleme
 
 İstemcilerin depolama hedefine erişebilmesi için en az bir ad alanı yolu oluşturmanız gerekir. (İstemci erişimi hakkında daha fazla bilgi için [Azure HPC önbelleğini bağlama](hpc-cache-mount.md) konusunu okuyun.)
 
@@ -43,15 +43,17 @@ Azure portal, **ad alanı** ayarları sayfasını yükleyin. Bu sayfadan ad alan
 
 * **Yeni bir yol ekleyin:** Üstteki **+ Ekle** düğmesine tıklayın ve düzenleme panelinde bilgileri girin.
 
-  * Açılan listeden depolama hedefini seçin. (Bu ekran görüntüsünde, zaten bir ad alanı yolu bulunduğundan BLOB depolama hedefi seçilemez.)
+  ![Bir BLOB depolama hedefi seçili olan ad alanı Ekle Düzenle alanlarının ekran görüntüsü. Dışarı aktarma ve alt dizin yolları düzenlenemez olarak ayarlanır.](media/namespace-add-blob.png)
 
-    ![Yeni ad alanının ekran görüntüsü depolama hedefi seçicisiyle kullanıma sunulan alanları Düzenle](media/namespace-select-storage-target.png)
+  * İstemcilerin bu depolama hedefine erişmek için kullanacağı yolu girin.
+
+  * Bu yol için kullanılacak erişim ilkesini seçin. İstemci erişim [Ilkelerini kullan](access-policies.md)bölümünde istemci erişimini özelleştirme hakkında daha fazla bilgi edinin.
+
+  * Açılan listeden depolama hedefini seçin. BLOB depolama hedefinin zaten bir ad alanı yolu varsa, bu seçilemez.
 
   * Azure Blob depolama hedefi için, dışa aktarma ve alt dizin yolları otomatik olarak olarak ayarlanır ``/`` .
 
-* **Mevcut bir yolu değiştirin:** Ad alanı yoluna tıklayın. Düzenleme paneli açılır ve yolu değiştirebilirsiniz.
-
-  ![Blob ad alanı yoluna tıkladıktan sonra ad alanı sayfasının ekran görüntüsü-düzenleme alanları sağdaki bir bölmede görüntülenir](media/edit-namespace-blob.png)
+* **Mevcut bir yolu değiştirin:** Ad alanı yoluna tıklayın. Düzenleme paneli açılır. Yolu ve erişim ilkesini değiştirebilirsiniz, ancak farklı bir depolama hedefine geçiş yapamazsınız.
 
 * **Ad alanı yolunu silme:** Yolun solundaki onay kutusunu seçin ve **Sil** düğmesine tıklayın.
 
@@ -81,7 +83,7 @@ Bu liste, yapılandırma başına en fazla ad alanı yolu sayısını gösterir.
 
   * 3 TB önbellek-10 ad alanı yolu
   * 6 TB önbellek-10 ad alanı yolu
-  * 23 TB önbellek-20 ad alanı yolu
+  * 12 TB önbellek-20 ad alanı yolu
 
 * 4 GB/sn aktarım hızı:
 
@@ -109,13 +111,15 @@ Her ad alanı yolu için bu değerleri girin:
 
 * **Ad alanı yolu** -istemciye yönelik dosya yolu.
 
+* **İstemci erişim ilkesi** -bu yol için kullanılacak erişim ilkesini seçin. İstemci erişim [Ilkelerini kullan](access-policies.md)bölümünde istemci erişimini özelleştirme hakkında daha fazla bilgi edinin.
+
 * **Depolama hedefi** -yeni bir ad alanı yolu oluşturuyorsanız, açılan menüden bir depolama hedefi seçin.
 
 * **Dışarı aktarma yolu** -NFS dışarı aktarmanın yolunu girin. Dışarı aktarma adını doğru yazdığınızdan emin olun; Portal bu alanın sözdizimini doğrular ancak değişikliği yapana kadar dışarı aktarmayı denetlemez.
 
 * **Alt dizini dışarı aktar** -bu yolun, dışarı aktarmanın belirli bir alt dizinini takmasına istiyorsanız buraya girin. Aksi takdirde, bu alanı boş bırakın.
 
-![sağ tarafta Güncelleştirme sayfası açık olan Portal ad alanı sayfasının ekran görüntüsü](media/update-namespace-nfs.png)
+![sağ tarafta düzenleme sayfası açık olan Portal ad alanı sayfasının ekran görüntüsü. Düzenleme formu, NFS depolama hedefi ad alanı yolunun ayarlarını gösterir](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

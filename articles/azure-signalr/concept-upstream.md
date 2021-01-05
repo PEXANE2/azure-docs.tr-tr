@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: chenyl
-ms.openlocfilehash: 1d51f5e8d2fac1e2b180a608c840d0a322e76271
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 33df4410b9dd82fd0b1c732eb03ab5e0e77e9869
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92143233"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763124"
 ---
 # <a name="upstream-settings"></a>Yukarı akış ayarları
 
@@ -34,7 +34,7 @@ Belirtilen olay gerçekleştiğinde, bir öğenin kuralları sırayla tek tek de
 
 Farklı desenleri desteklemek için URL 'YI parametreleştirebilirsiniz. Önceden tanımlanmış üç parametre vardır:
 
-|Önceden tanımlanmış parametre|Description|
+|Önceden tanımlanmış parametre|Açıklama|
 |---------|---------|
 |Hub| Hub, Azure SignalR hizmeti kavramıdır. Hub bir yalıtım birimidir. Kullanıcıların ve ileti tesliminin kapsamı bir hub ile kısıtlanır.|
 |alan| Bir kategori aşağıdaki değerlerden biri olabilir: <ul><li>**Bağlantılar**: bağlantı ömrü olayları. İstemci bağlantısı bağlandığında veya bağlantısı kesildiğinde tetiklenir. Bağlı ve bağlantısı kesilmiş olayları içerir.</li><li>**mesajlar**: istemciler bir hub yöntemi çağıryüklerken tetiklenir. **Bağlantılar** kategorisinden hariç olmak üzere diğer tüm olayları içerir.</li></ul>|
@@ -53,16 +53,29 @@ http://host.com/chat/api/connections/connected
 http://host.com/chat/api/messages/broadcast
 ```
 
+### <a name="key-vault-secret-reference-in-url-template-settings"></a>URL şablonu ayarlarında gizli başvuru Key Vault
+
+Yukarı akış URL 'SI, bekleyen şifreleme değildir. Hassas bilgileriniz varsa, bunları kaydetmek için Key Vault kullanmanız önerilir. Temel olarak, Azure SignalR hizmeti 'nin yönetilen kimliğini etkinleştirebilir ve sonra bir Key Vault örneği üzerinde okuma izni verebilir ve yukarı akış URL 'SI düzeninde düz metin yerine Key Vault başvurusu kullanabilirsiniz.
+
+1. Sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik ekleyin. Bkz. [Azure portalında yönetilen kimlik ekleme](./howto-use-managed-identity.md#add-a-system-assigned-identity)
+
+2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+3. Hassas metninizi, `{@Microsoft.KeyVault(SecretUri=<secret-identity>)}` yukarı akış URL 'Si deseninin sözdizimi ile değiştirin.
+
+> [!NOTE]
+> Yalnızca yukarı akış ayarlarını değiştirdiğinizde veya yönetilen kimliği değiştirdiğinizde gizli içerik rereads. Key Vault gizli dizi başvurusunu kullanmadan önce yönetilen kimlik için gizli okuma izni verildiğinden emin olun.
+
 ### <a name="rule-settings"></a>Kural ayarları
 
-*Hub kuralları*, *Kategori kuralları*ve *olay kuralları* için kurallar oluşturabilirsiniz. Eşleşen kural üç biçimi destekler. Olay kurallarını örnek olarak alın:
+*Hub kuralları*, *Kategori kuralları* ve *olay kuralları* için kurallar oluşturabilirsiniz. Eşleşen kural üç biçimi destekler. Olay kurallarını örnek olarak alın:
 - Herhangi bir olayla eşleştirmek için yıldız işareti (*) kullanın.
 - Birden çok olayı birleştirmek için virgül (,) kullanın. Örneğin, `connected, disconnected` bağlı ve bağlantısı kesilmiş olaylarla eşleşir.
 - Olayı eşleştirmek için tam olay adını kullanın. Örneğin, `connected` bağlantılı olayla eşleşir.
 
 > [!NOTE]
-> Azure Işlevleri ve [SignalR tetikleyicisi](../azure-functions/functions-bindings-signalr-service-trigger.md)kullanıyorsanız, SignalR tetikleyicisi aşağıdaki biçimde tek bir uç noktayı kullanıma sunar: `https://<APP_NAME>.azurewebsites.net/runtime/webhooks/signalr?code=<API_KEY>` .
-> URL şablonunu bu URL 'ye yalnızca yapılandırabilirsiniz.
+> Azure Işlevleri ve [SignalR tetikleyicisi](../azure-functions/functions-bindings-signalr-service-trigger.md)kullanıyorsanız, SignalR tetikleyicisi aşağıdaki biçimde tek bir uç noktayı kullanıma sunar: `<Function_App_URL>/runtime/webhooks/signalr?code=<API_KEY>` .
+> **URL şablonu ayarlarını** bu URL 'ye yapılandırabilir ve **Kural ayarlarının** varsayılan kalmasını sağlayabilirsiniz. Ve bulma hakkında ayrıntılı bilgi için bkz. [SignalR hizmeti tümleştirmesi](../azure-functions/functions-bindings-signalr-service-trigger.md#signalr-service-integration) `<Function_App_URL>` `<API_KEY>` .
 
 ### <a name="authentication-settings"></a>Kimlik doğrulaması ayarları
 
@@ -75,16 +88,16 @@ Seçeneğini belirlediğinizde `ManagedIdentity` , Azure SignalR hizmetinde yön
 ## <a name="create-upstream-settings-via-the-azure-portal"></a>Azure portal aracılığıyla yukarı akış ayarları oluşturma
 
 1. Azure SignalR Service 'e gidin.
-2. **Ayarlar** ' ı ve **hizmet modunu** **sunucusuz**olarak değiştir ' i seçin. Yukarı akış ayarları şu şekilde görünür:
+2. **Ayarlar** ' ı ve **hizmet modunu** **sunucusuz** olarak değiştir ' i seçin. Yukarı akış ayarları şu şekilde görünür:
 
     :::image type="content" source="media/concept-upstream/upstream-portal.png" alt-text="Yukarı akış ayarları":::
 
-3. **Yukarı akış URL 'Si deseninin**altında URL 'ler ekleyin. Ardından, **hub kuralları** gibi ayarlar varsayılan değeri gösterir.
-4. **Hub kuralları**, **olay kuralları**, **Kategori kuralları**ve **yukarı akış kimlik doğrulaması**ayarlarını belirlemek için **hub kuralları**değerini seçin. Ayarları düzenlemenizi sağlayan bir sayfa görüntülenir:
+3. **Yukarı akış URL 'Si deseninin** altında URL 'ler ekleyin. Ardından, **hub kuralları** gibi ayarlar varsayılan değeri gösterir.
+4. **Hub kuralları**, **olay kuralları**, **Kategori kuralları** ve **yukarı akış kimlik doğrulaması** ayarlarını belirlemek için **hub kuralları** değerini seçin. Ayarları düzenlemenizi sağlayan bir sayfa görüntülenir:
 
-    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Yukarı akış ayarları":::
+    :::image type="content" source="media/concept-upstream/upstream-detail-portal.png" alt-text="Yukarı akış ayarı ayrıntıları":::
 
-5. **Yukarı akış kimlik doğrulamasını**ayarlamak için, önce yönetilen bir kimliği etkinleştirdiğinizden emin olun. Ardından **yönetilen kimliği kullan**' ı seçin. Gereksinimlerinize göre, **kimlik doğrulama kaynak kimliği**altında herhangi bir seçeneği belirleyebilirsiniz. Ayrıntılar için bkz. [Azure SignalR hizmeti Için Yönetilen kimlikler](howto-use-managed-identity.md) .
+5. **Yukarı akış kimlik doğrulamasını** ayarlamak için, önce yönetilen bir kimliği etkinleştirdiğinizden emin olun. Ardından **yönetilen kimliği kullan**' ı seçin. Gereksinimlerinize göre, **kimlik doğrulama kaynak kimliği** altında herhangi bir seçeneği belirleyebilirsiniz. Ayrıntılar için bkz. [Azure SignalR hizmeti Için Yönetilen kimlikler](howto-use-managed-identity.md) .
 
 ## <a name="create-upstream-settings-via-resource-manager-template"></a>Kaynak Yöneticisi şablonu aracılığıyla yukarı akış ayarları oluşturma
 
@@ -115,7 +128,7 @@ Seçeneğini belirlediğinizde `ManagedIdentity` , Azure SignalR hizmetinde yön
 
 ## <a name="serverless-protocols"></a>Sunucusuz protokoller
 
-Azure SignalR hizmeti, aşağıdaki protokolleri izleyen uç noktalara iletiler gönderir.
+Azure SignalR hizmeti, aşağıdaki protokolleri izleyen uç noktalara iletiler gönderir. [SignalR Service Trigger bağlamasını](../azure-functions/functions-bindings-signalr-service-trigger.md) , sizin için bu protokolleri işleyen işlev uygulaması ile birlikte kullanabilirsiniz.
 
 ### <a name="method"></a>Yöntem
 
@@ -133,7 +146,7 @@ POST
 |X-ASRS-Kullanıcı talepleri |İstemci bağlantısının talep grubu.|
 |X-ASRS-Kullanıcı kimliği |İletiyi gönderen istemcinin kullanıcı kimliği.|
 |X-ASRS-Client-Query |İstemciler hizmete bağlandıklarında isteğin sorgusu.|
-|Kimlik Doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
+|Kimlik doğrulaması |Kullanırken isteğe bağlı bir belirteç `ManagedIdentity` . |
 
 ### <a name="request-body"></a>İstek gövdesi
 
@@ -145,18 +158,18 @@ Content-Type: Application/JSON
 
 İçerik türü: `application/json`
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|Hata |dize |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
+|Hata |string |Kapalı bir bağlantının hata iletisi. Bağlantılar hata olmadan kapatıldığında boştur.|
 
 #### <a name="invocation-message"></a>Çağırma iletisi
 
 İçerik türü: `application/json` veya `application/x-msgpack`
 
-|Ad  |Tür  |Description  |
+|Ad  |Tür  |Açıklama  |
 |---------|---------|---------|
-|Invocationıd |dize | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
-|Hedef |dize | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
+|Invocationıd |string | Bir çağrı iletisini temsil eden isteğe bağlı bir dize. [Etkinleştirmeleri](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocations)içindeki ayrıntıları bulun.|
+|Hedef |string | Olay ile aynı ve bir [çağırma iletisindeki](https://github.com/dotnet/aspnetcore/blob/master/src/SignalR/docs/specs/HubProtocol.md#invocation-message-encoding)hedefle aynı. |
 |Arguments |Nesne dizisi |İçinde başvurulan yönteme uygulanacak bağımsız değişkenleri içeren bir dizi `Target` . |
 
 ### <a name="signature"></a>İmza
@@ -170,3 +183,5 @@ Hex_encoded(HMAC_SHA256(accessKey, connection-id))
 
 - [Azure SignalR hizmeti için Yönetilen kimlikler](howto-use-managed-identity.md)
 - [Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma](signalr-concept-serverless-development-config.md)
+- [SignalR hizmetinden iletileri işleme (tetikleyici bağlama)](../azure-functions/functions-bindings-signalr-service-trigger.md)
+- [SignalR hizmeti tetikleyici bağlama örneği](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BidirectionChat)

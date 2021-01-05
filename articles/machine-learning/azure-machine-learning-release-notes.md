@@ -9,18 +9,16 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 4998469fa353fef9e8a91d078349150d9f739ac2
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779422"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760121"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
-
-Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen sorunlar listesine](resource-known-issues.md) bakın.
 
 ## <a name="2020-12-07"></a>2020-12-07
 
@@ -107,7 +105,7 @@ Bilinen hatalar ve geçici çözümler hakkında bilgi edinmek için [bilinen so
     + `OutputDatasetConfig.register_on_complete`Adı zaten mevcut olduğunda ne olacağı hakkında davranışı eklemek için geliştirilmiş belgeler.
     + Ortak ortam değişkenleriyle çakışabilecek potansiyel veri kümesi girişi ve çıkış adlarını belirtme, şimdi bir uyarı oluşmasına neden olur
     + `grant_workspace_access`Veri depoları kaydedilirken yeniden parametre yeniden `True`Machine Learning Studio sanal ağın arkasındaki verilere erişecek şekilde ayarlayın.
-      [Daha fazla bilgi edinin](./how-to-enable-studio-virtual-network.md)
+      [Daha fazla bilgi](./how-to-enable-studio-virtual-network.md)
     + Bağlı hizmet API 'SI iyileştiriliyor. Kaynak kimliği sağlamak yerine, yapılandırmada tanımlı 3 ayrı parametre sub_id, RG ve adı vardır.
     + Müşterilerin belirteç bozulması sorunlarını kendi kendine çözümlemesine olanak tanımak için, çalışma alanı belirteci eşitlemesini ortak bir yöntem olacak şekilde etkinleştirin.
     + Bu değişiklik, boş bir dizenin bir script_param değer olarak kullanılmasına izin verir
@@ -2198,7 +2196,7 @@ Python v 1.0.30 için SDK Azure Machine Learning.
 
 ### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Python v 1.0.18 için SDK Azure Machine Learning
 
- + **Değişiklikler**
+ + **Değişikliklerine**
    + Azureml-tensorboard paketi, azureml-contrib-tensorboard yerini alır.
    + Bu sürümle birlikte, yönetilen işlem kümenizde (amlcompute), oluştururken bir kullanıcı hesabı ayarlayabilirsiniz. Bu, sağlama yapılandırmasında bu özellikler geçirerek yapılabilir. Daha fazla ayrıntı için [SDK başvuru belgelerine](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#provisioning-configuration-vm-size-----vm-priority--dedicated---min-nodes-0--max-nodes-none--idle-seconds-before-scaledown-none--admin-username-none--admin-user-password-none--admin-user-ssh-key-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--tags-none--description-none--remote-login-port-public-access--notspecified--)ulaşabilirsiniz.
 

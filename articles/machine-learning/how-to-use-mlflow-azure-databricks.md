@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e72784dbdcf08d672a8498609ca3a5bbd11e632d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 72079cc399eea249bce4d285e2c3c4fbf9304708
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319020"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760614"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning ile Azure Databricks ML denemeleri izleme (Önizleme)
 
@@ -72,7 +72,7 @@ ADB kümeniz kurulduktan sonra,
 1. Sol gezinti bölmesindeki **çalışma alanları** ' nı seçin. 
 1. Çalışma alanları açılan menüsünü genişletin ve **Içeri aktar** ' ı seçin.
 1. ADB çalışma alanınızı içeri aktarmak için, deneme Not defterinize sürükleyip bırakın veya bulun.
-1. **İçeri aktar** 'ı seçin. Deneme Not defteriniz otomatik olarak açılır.
+1. **İçeri aktar**'ı seçin. Deneme Not defteriniz otomatik olarak açılır.
 1. Sol üstteki Not defteri başlığı altında, deneme Not defterinize eklemek istediğiniz kümeyi seçin. 
 
 ## <a name="connect-your-azure-databricks-and-azure-machine-learning-workspaces"></a>Azure Databricks ve Azure Machine Learning çalışma alanlarınızı bağlama
@@ -156,9 +156,9 @@ Modeliniz eğitilirken, modellerinizi günlüğe kaydedebilir ve yöntemi ile ar
 
 Arka uç izleme sunucusu, varsayılan olarak Azure Databricks çalışma alanıdır; [MLflow izlemesini yalnızca Azure Machine Learning çalışma alanınızda izlemek üzere ayarlamayı](#set-mlflow-tracking-to-only-track-in-your-azure-machine-learning-workspace)seçmediğiniz takdirde, arka uç izleme sunucusu Azure Machine Learning çalışma alanıdır.   
 
-* **Ada sahip kayıtlı bir model yoksa** , yöntemi yeni bir model kaydeder, sürüm 1 oluşturur ve bir Modelversion mlflow nesnesi döndürüyor. 
+* **Ada sahip kayıtlı bir model yoksa**, yöntemi yeni bir model kaydeder, sürüm 1 oluşturur ve bir Modelversion mlflow nesnesi döndürüyor. 
 
-* **Ada sahip kayıtlı bir model zaten varsa** , yöntemi yeni bir model sürümü oluşturur ve sürüm nesnesini döndürür. 
+* **Ada sahip kayıtlı bir model zaten varsa**, yöntemi yeni bir model sürümü oluşturur ve sürüm nesnesini döndürür. 
 
 ```python
 mlflow.spark.log_model(model, artifact_path = "model", 
@@ -180,8 +180,8 @@ ML modelleriniz için bir uç nokta oluşturmaya hazırsanız. Dağıtım yapabi
 Azure Machine Learning çalışma alanınıza bir model dağıtmak için [mlflow. azureml. deploy](https://www.mlflow.org/docs/latest/python_api/mlflow.azureml.html#mlflow.azureml.deploy) API 'sinden yararlanabilirsiniz. Modeli, [MLflow ile kaydet](#register-models-with-mlflow) bölümünde açıklandığı gibi Azure Databricks çalışma alanına kaydettirdiğiniz takdirde, `model_name` modelin Azure Machine Learning çalışma alanına kaydedileceği parametreyi belirtin. 
 
 Azure Databricks çalıştırmaları aşağıdaki uç noktalara dağıtılabilir. 
-* [Azure Container Örneği](how-to-use-mlflow.md#deploy-to-aci)
-* [Azure Kubernetes Service](how-to-use-mlflow.md#deploy-to-aks)
+* [Azure Container örneği](how-to-deploy-models-with-mlflow.md#deploy-to-aci)
+* [Azure Kubernetes Service](how-to-deploy-models-with-mlflow.md#deploy-to-aks)
 
 ### <a name="deploy-models-to-adb-endpoints-for-batch-scoring"></a>Toplu Puanlama için ADB uç noktalarına modeller dağıtın 
 
@@ -222,9 +222,9 @@ display(preds)
 
 1. Listeden oluşturduğunuz kaynak grubunu seçin.
 
-1. **Kaynak grubunu sil** 'i seçin.
+1. **Kaynak grubunu sil**'i seçin.
 
-1. Kaynak grubu adını girin. Ardından **Sil** ’i seçin.
+1. Kaynak grubu adını girin. Ardından **Sil**’i seçin.
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
 

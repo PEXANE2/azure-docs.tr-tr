@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: c12935a4b0b9cbbf088ba7b9c5ea804be0ce85a1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447366"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762936"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Azure CLı ve Python kullanarak Azure Stack Edge Pro GPU cihazınızda sanal makineler dağıtma
 
@@ -27,7 +27,7 @@ Bu öğreticide, Azure komut satırı arabirimi (CLı) ve Python kullanarak Azur
 
 Dağıtım iş akışı aşağıdaki diyagramda gösterilmiştir.
 
-![VM dağıtımı iş akışı](media/azure-stack-edge-j-series-deploy-virtual-machine-powershell/vm-workflow_r.svg)
+![VM dağıtımı iş akışı](media/azure-stack-edge-gpu-deploy-virtual-machine-powershell/vm-workflow-r.svg)
 
 Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 
@@ -43,7 +43,7 @@ Dağıtım iş akışının üst düzey özeti aşağıdaki gibidir:
 10. Sanal ağ oluşturma
 11. VNet alt ağ KIMLIĞINI kullanarak bir VNıC oluşturma
 
-İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda VM dağıtma](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
+İş akışı diyagramının ayrıntılı açıklaması için, bkz. [Azure PowerShell kullanarak Azure Stack Edge Pro cihazınızda VM dağıtma](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md). Azure Resource Manager bağlanma hakkında daha fazla bilgi için bkz. [Azure PowerShell kullanarak Azure Resource Manager bağlanma](azure-stack-edge-j-series-connect-resource-manager.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 

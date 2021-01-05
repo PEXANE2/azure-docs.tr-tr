@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 22cef5919e597d4cd83ad80f5758a0427c52e2bb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e1031df9f305015048de7f708123a51875776e1b
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92219743"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760597"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>IoT Edge'de Azure Blob Depolama ile verileri kenarda depolama
 
@@ -71,7 +71,7 @@ Azure'da standart katman [IoT Hub'ı](../iot-hub/iot-hub-create-through-portal.m
 
 ## <a name="devicetocloudupload-and-deviceautodelete-properties"></a>deviceToCloudUpload ve Deviceoto Delete özellikleri
 
-**Devicetoclouduploadproperties** ve **deviceoto deleteproperties**ayarlamak için modülün istenen özelliklerini kullanın. İstenen özellikler dağıtım sırasında ayarlanabilir veya daha sonra yeniden dağıtmak zorunda kalmadan modül ikizi düzenlenerek değiştirilebilir. `reported configuration` `configurationValidation` Değerlerinin doğru şekilde yayıldığından emin olmak için, Için "Module ikizi" olup olmadığını kontrol etmenizi öneririz.
+**Devicetoclouduploadproperties** ve **deviceoto deleteproperties** ayarlamak için modülün istenen özelliklerini kullanın. İstenen özellikler dağıtım sırasında ayarlanabilir veya daha sonra yeniden dağıtmak zorunda kalmadan modül ikizi düzenlenerek değiştirilebilir. `reported configuration` `configurationValidation` Değerlerinin doğru şekilde yayıldığından emin olmak için, Için "Module ikizi" olup olmadığını kontrol etmenizi öneririz.
 
 ### <a name="devicetoclouduploadproperties"></a>deviceToCloudUploadProperties
 
@@ -81,7 +81,7 @@ Bu ayarın adı `deviceToCloudUploadProperties` . IoT Edge simülatör kullanıy
 | ----- | ----- | ---- |
 | uploadOn | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Özelliği etkinleştirmek istiyorsanız, bu alanı olarak ayarlayın `true` . <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__uploadOn={false,true}` |
 | uploadOrder | NewestFirst, OldestFirst | Verilerin Azure 'a kopyalandığı sırayı seçmenizi sağlar. `OldestFirst`Varsayılan olarak olarak ayarlayın. Sıra, blob 'un son değiştirilme zamanına göre belirlenir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__uploadOrder={NewestFirst,OldestFirst}` |
-| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` , verilerinizin karşıya yüklenmesini istediğiniz depolama hesabını belirtmenizi sağlayan bir bağlantı dizesidir. `Azure Storage Account Name`, `Azure Storage Account Key` ,, Belirtin `End point suffix` . Verilerin karşıya yükleneceği Azure 'un uygun EndpointSuffix öğesini ekleyin; küresel Azure, kamu Azure ve Microsoft Azure Stack değişir. <br><br> Burada Azure Storage SAS bağlantı dizesini belirtmeyi seçebilirsiniz. Ancak bu özelliği süresi dolmuşsa güncelleştirmeniz gerekir. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
+| cloudStorageConnectionString |  | `"DefaultEndpointsProtocol=https;AccountName=<your Azure Storage Account Name>;AccountKey=<your Azure Storage Account Key>;EndpointSuffix=<your end point suffix>"` , verilerinizin karşıya yüklenmesini istediğiniz depolama hesabını belirtmenizi sağlayan bir bağlantı dizesidir. `Azure Storage Account Name`, `Azure Storage Account Key` ,, Belirtin `End point suffix` . Verilerin karşıya yükleneceği Azure 'un uygun EndpointSuffix öğesini ekleyin; küresel Azure, kamu Azure ve Microsoft Azure Stack değişir. <br><br> Burada Azure Storage SAS bağlantı dizesini belirtmeyi seçebilirsiniz. Ancak bu özelliği süresi dolmuşsa güncelleştirmeniz gerekir. SAS izinleri, kapsayıcılar için erişim oluşturma, blob 'lar oluşturma, yazma ve erişim ekleme içerebilir.  <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__cloudStorageConnectionString=<connection string>` |
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Azure 'a yüklemek istediğiniz kapsayıcı adlarını belirtmenize olanak tanır. Bu modül hem kaynak hem de hedef kapsayıcı adlarını belirtmenize olanak tanır. Hedef kapsayıcı adını belirtmezseniz, kapsayıcı adını otomatik olarak olarak atayacaktır `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>` . Hedef kapsayıcı adı için şablon dizeleri oluşturabilir, olası değerler sütununa bakabilirsiniz. <br>*% h-> IoT Hub adı (3-50 karakter). <br>*% d-> IoT Edge cihaz KIMLIĞI (1-129 karakter). <br>*% d-> modül adı (1-64 karakter). <br>*% c-> kaynak kapsayıcısı adı (3 ile 63 karakter arasında). <br><br>Kapsayıcı adının en büyük boyutu 63 karakterdir, çünkü kapsayıcının boyutu 63 karakteri aşarsa, her bir bölümü (IoTHubName, ıotedgedeviceıd, ModuleName, SourceContainerName) 15 karaktere kırpacaktır. <br><br> Ortam değişkeni: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | doğru, yanlış | `false`Varsayılan olarak olarak ayarlayın. Olarak ayarlandığında `true` , bulut depolamaya yükleme tamamlandığında verileri otomatik olarak siler. <br><br> **Dikkat**: ekleme bloblarını kullanıyorsanız, bu ayar başarılı bir karşıya yükleme işleminden sonra ekleme bloblarını yerel depolamadan siler ve gelecekte bu bloblara yapılan tüm ekleme engelleme işlemleri başarısız olur. Bu ayarı dikkatli bir şekilde kullanın, uygulamanız sık sık ekleme işlemleri yaparsanız veya sürekli ekleme işlemlerini desteklemiyorsa bunu etkinleştirmeyin.<br><br> Ortam değişkeni: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}` . |
 
@@ -121,13 +121,13 @@ Bu komut, uzak SMB sunucusunda kimlik doğrulamak için kimlik bilgilerini kulla
 
 IoT cihazındaki kullanıcının uzak SMB paylaşımında okuma/yazma yapaabilmesini sağlayın.
 
-Dağıtımınız için değeri `<storage mount>` **G:/Containerdata: C:/BlobRoot**olabilir.
+Dağıtımınız için değeri `<storage mount>` **G:/Containerdata: C:/BlobRoot** olabilir.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Linux 'ta kapsayıcı kullanıcısına dizin erişimi verme
 
 Linux kapsayıcıları için oluşturma seçeneklerinizde depolama için [birim bağlama](https://docs.docker.com/storage/volumes/) kullandıysanız, ek adımlar yapmanız gerekmez, ancak [bağlama bağlama](https://docs.docker.com/storage/bind-mounts/) kullandıysanız, hizmeti doğru bir şekilde çalıştırmak için bu adımlar gereklidir.
 
-Kullanıcıların, çalışmalarını gerçekleştirmesi gereken minimum izinleri en düşük izinlerle sınırlamak için en az ayrıcalık ilkesinin ardından, bu modül bir Kullanıcı (ad: absıl, ID: 11000) ve bir Kullanıcı grubu (ad: Abe, KIMLIK: 11000) içerir. Kapsayıcı **kök** olarak başlatılırsa (varsayılan kullanıcı **kök**ise) hizmetimiz **düşük ayrıcalıklı bir** Kullanıcı olarak başlatılır.
+Kullanıcıların, çalışmalarını gerçekleştirmesi gereken minimum izinleri en düşük izinlerle sınırlamak için en az ayrıcalık ilkesinin ardından, bu modül bir Kullanıcı (ad: absıl, ID: 11000) ve bir Kullanıcı grubu (ad: Abe, KIMLIK: 11000) içerir. Kapsayıcı **kök** olarak başlatılırsa (varsayılan kullanıcı **kök** ise) hizmetimiz **düşük ayrıcalıklı bir** Kullanıcı olarak başlatılır.
 
 Bu davranış, hizmetin düzgün çalışması için konak yolu izinlerin yapılandırılmasını sağlar, aksi takdirde hizmet erişim reddedildi hatalarıyla çöker. Dizin bağlamasında kullanılan yolun kapsayıcı kullanıcı tarafından erişilebilir olması gerekir (örnek: absı1 11000). Konakta aşağıdaki komutları yürüterek kapsayıcı kullanıcıya dizin erişimi verebilirsiniz:
 
@@ -143,7 +143,7 @@ sudo chown -R 11000:11000 /srv/containerdata
 sudo chmod -R 700 /srv/containerdata
 ```
 
-Hizmeti, bir kullanıcı olarak bir kullanıcı olarak çalıştırmanız **gerekiyorsa, dağıtım**bildiriminizde "Kullanıcı" özelliği altındaki createOptions içinde özel kullanıcı kimliğinizi belirtebilirsiniz. Bu durumda, varsayılan veya kök Grup KIMLIĞI kullanmanız gerekir `0` .
+Hizmeti, bir kullanıcı olarak bir kullanıcı olarak çalıştırmanız **gerekiyorsa, dağıtım** bildiriminizde "Kullanıcı" özelliği altındaki createOptions içinde özel kullanıcı kimliğinizi belirtebilirsiniz. Bu durumda, varsayılan veya kök Grup KIMLIĞI kullanmanız gerekir `0` .
 
 ```json
 "createOptions": {
@@ -175,7 +175,7 @@ IoT Edge cihazınızı, üzerinde yaptığınız herhangi bir depolama isteği i
   * `http://<fully qualified domain name>:11002/<account name>`
  
  > [!IMPORTANT]
- > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlı Azure IoT Edge ve depolama SDK 'Sı varsayılan olarak küçük harfe duyarlıdır. [Azure Marketi](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) 'ndeki modülün adı **AzureBlobStorageonIoTEdge**olsa da, adın küçük harfe değiştirilmesi IoT Edge modüldeki Azure Blob depolama ile olan bağlantılarınızın kesilmemesini sağlamaya yardımcı olur.
+ > Modüller için çağrılar yaptığınızda büyük/küçük harfe duyarlı Azure IoT Edge ve depolama SDK 'Sı varsayılan olarak küçük harfe duyarlıdır. [Azure Marketi](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) 'ndeki modülün adı **AzureBlobStorageonIoTEdge** olsa da, adın küçük harfe değiştirilmesi IoT Edge modüldeki Azure Blob depolama ile olan bağlantılarınızın kesilmemesini sağlamaya yardımcı olur.
  
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob depolama hızlı başlangıç örnekleri
 

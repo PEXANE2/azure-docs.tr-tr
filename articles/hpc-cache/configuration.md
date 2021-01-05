@@ -4,14 +4,14 @@ description: MTU ve kök sıkıştırma gibi önbellek için ek ayarların nası
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 12/21/2020
 ms.author: v-erkel
-ms.openlocfilehash: b01c4d896d5ec600e0fe22e3ca7b7816141776a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 02bf862cdc3b20ef3e5fdb024f474267efa0c70d
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86497211"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760512"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Ek Azure HPC önbellek ayarlarını yapılandırma
 
@@ -29,7 +29,7 @@ Ayarları görmek için, önbelleğin **yapılandırma** sayfasını Azure Porta
 ## <a name="adjust-mtu-value"></a>MTU değerini ayarla
 <!-- linked from troubleshoot-nas article -->
 
-**MTU boyutu**etiketli açılan menüyü kullanarak önbelleğin en büyük iletim birimi boyutunu seçebilirsiniz.
+**MTU boyutu** etiketli açılan menüyü kullanarak önbelleğin en büyük iletim birimi boyutunu seçebilirsiniz.
 
 Varsayılan değer 1500 bayttır, ancak bunu 1400 olarak değiştirebilirsiniz.
 
@@ -43,7 +43,7 @@ Diğer sistem bileşenlerinde MTU ayarlarını değiştirmek istemiyorsanız, ö
 Azure [VM 'leri Için TCP/IP performans ayarlamayı](../virtual-network/virtual-network-tcpip-performance-tuning.md)okuyarak Azure sanal ağlarında MTU ayarları hakkında daha fazla bilgi edinin.
 
 ## <a name="configure-root-squash"></a>Kök sıkıştırarak 'i yapılandırma
-<!-- linked from troubleshoot -->
+<!-- linked from troubleshoot and from access policies -->
 
 Kök sıkıştırma ayarını **Etkinleştir** ayarı, Azure HPC önbelleğinin istemci makinelerdeki kök kullanıcıdan gelen istekleri nasıl ele aldığını denetler.
 
@@ -53,7 +53,10 @@ Kök sıkıştırarak devre dışıysa, istemci kök kullanıcısı (UID 0) iste
 
 Önbellek üzerinde kök sıkıştırma ayarlama, ``no_root_squash`` depolama hedefleri olarak kullanılan NAS sistemlerinde gerekli ayar için telafi sağlanmasına yardımcı olabilir. ( [NFS depolama hedefi önkoşulları](hpc-cache-prerequisites.md#nfs-storage-requirements)hakkında daha fazla bilgi edinin.) Ayrıca, Azure Blob depolama hedefleri ile birlikte kullanıldığında güvenliği de iyileştirebilir.
 
-Varsayılan ayar **Evet**' tir. (Nisan 2020 ' den önce oluşturulan önbellekler varsayılan ayar **No**olabilir.)
+Varsayılan ayar **Evet**' tir. (Nisan 2020 ' den önce oluşturulan önbellekler varsayılan ayar **No** olabilir.)
+
+> [!TIP]
+> Ayrıca, [istemci erişim ilkelerini](access-policies.md#root-squash)özelleştirerek belirli depolama dışarı aktarmaları için kök sıkıştırarak 'i ayarlayabilirsiniz.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB depolama hedeflerinin anlık görüntülerini görüntüleme
 

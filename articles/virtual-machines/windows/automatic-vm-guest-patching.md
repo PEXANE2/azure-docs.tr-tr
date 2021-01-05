@@ -5,14 +5,14 @@ author: mayanknayar
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 12/23/2020
 ms.author: manayar
-ms.openlocfilehash: 8c7574daced9cec078b6e98e378212ce30d6f4f6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e22e8b81382614c2930c72a8150606f859be501d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744727"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762988"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Önizleme: Azure'da Windows VM'leri için Otomatik VM konuk düzeltme eki uygulama
 
@@ -34,11 +34,11 @@ Otomatik VM Konuk düzeltme eki uygulama aşağıdaki özelliklere sahiptir:
 
 VM 'de otomatik VM Konuk düzeltme eki uygulama etkinse, kullanılabilir *kritik* ve *GÜVENLIK* düzeltme ekleri VM 'de otomatik olarak indirilir ve uygulanır. Bu işlem, Windows Update aracılığıyla yeni düzeltme noktaları bırakıldığında her ay otomatik olarak kapatılır. Düzeltme Eki değerlendirmesi ve yükleme otomatiktir ve işlem VM 'nin gerektiği şekilde yeniden başlatılmasını içerir.
 
-VM, bu VM için ilgili düzeltme eklerini belirlemede düzenli olarak değerlendirilir. Düzeltme ekleri, sanal makine için yoğun olmayan saatlerde sanal makineye herhangi bir gün yüklenebilir. Bu otomatik değerlendirme, eksik olan tüm düzeltme eklerinin olası en erken fırsatta bulunmasını sağlar.
+VM, bu VM 'ye yönelik uygun düzeltme eklerini tespit etmek için her birkaç günde bir ve her 30 günlük dönemde birden çok kez değerlendirilir. Düzeltme ekleri, sanal makine için yoğun olmayan saatlerde sanal makineye herhangi bir gün yüklenebilir. Bu otomatik değerlendirme, eksik olan tüm düzeltme eklerinin olası en erken fırsatta bulunmasını sağlar.
 
-Düzeltme ekleri, aşağıda açıklanan kullanılabilirlik ilk Orchestration sonrasında aylık Windows Update sürümünün 30 gün içinde yüklenir. Düzeltme ekleri, VM 'nin saat dilimine bağlı olarak VM için yalnızca yoğun olmayan saatlerde yüklenir. Yamaların otomatik olarak yüklenmesi için sanal makinenin yoğun olmayan saatlerde çalışıyor olması gerekir. Bir sanal makine düzenli bir değerlendirme sırasında kapatılmışsa, sanal makine otomatik olarak değerlendirilir ve geçerli düzeltme ekleri, sanal makine açıldığında sonraki dönemsel değerlendirme sırasında otomatik olarak yüklenir.
+Düzeltme ekleri, aşağıda açıklanan kullanılabilirlik ilk Orchestration sonrasında aylık Windows Update sürümünün 30 gün içinde yüklenir. Düzeltme ekleri, VM 'nin saat dilimine bağlı olarak VM için yalnızca yoğun olmayan saatlerde yüklenir. Yamaların otomatik olarak yüklenmesi için sanal makinenin yoğun olmayan saatlerde çalışıyor olması gerekir. Bir sanal makine düzenli bir değerlendirme sırasında kapatılmışsa, sanal makine otomatik olarak değerlendirilir ve uygun düzeltme ekleri, sanal makinenin gücü açık olan bir sonraki dönemsel değerlendirme sırasında (genellikle birkaç gün içinde) otomatik olarak yüklenir.
 
-Diğer düzeltme eki sınıflandırmaları ile düzeltme eklerini yüklemek veya kendi özel bakım pencerenizde düzeltme eki yüklemeyi zamanlamak için [güncelleştirme yönetimi](tutorial-config-management.md#manage-windows-updates)kullanabilirsiniz.
+Tanım güncelleştirmeleri ve *kritik* veya *güvenlik* olarak sınıflandırılmayan DIĞER düzeltme ekleri otomatik VM Konuk düzeltme eki uygulama aracılığıyla yüklenmez. Diğer düzeltme eki sınıflandırmaları ile düzeltme eklerini yüklemek veya kendi özel bakım pencerenizde düzeltme eki yüklemeyi zamanlamak için [güncelleştirme yönetimi](tutorial-config-management.md#manage-windows-updates)kullanabilirsiniz.
 
 ### <a name="availability-first-patching"></a>Kullanılabilirlik-ilk düzeltme eki uygulama
 
@@ -69,11 +69,11 @@ Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düze
 
 | Publisher               | İşletim sistemi teklifi      |  Sku               |
 |-------------------------|---------------|--------------------|
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-veri merkezi    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Server-Core |
-| Microsoft Corporation   | WindowsServer | 2019-veri merkezi |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-veri merkezi    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Server-Core |
+| MicrosoftWindowsServer  | WindowsServer | 2019-veri merkezi |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Core |
 
 ## <a name="patch-orchestration-modes"></a>Düzeltme Eki düzenleme modları
 Azure 'da Windows VM 'Leri artık aşağıdaki düzeltme eki düzenleme modlarını desteklemektedir:
@@ -83,7 +83,7 @@ Azure 'da Windows VM 'Leri artık aşağıdaki düzeltme eki düzenleme modları
 - Bu mod, kullanılabilirlik için ilk düzeltme eki uygulama için gereklidir.
 - Bu modun ayarlanması ayrıca çoğaltmayı önlemek için Windows sanal makinesinde yerel otomatik güncelleştirmeleri devre dışı bırakır.
 - Bu mod yalnızca yukarıda desteklenen işletim sistemi platformu görüntüleri kullanılarak oluşturulan VM 'Ler için desteklenir.
-- Bu modu kullanmak için, özelliğini ayarlayın `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ve  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatfom` VM şablonundaki özelliği ayarlayın.
+- Bu modu kullanmak için, özelliğini ayarlayın `osProfile.windowsConfiguration.enableAutomaticUpdates=true` ve  `osProfile.windowsConfiguration.patchSettings.patchMode=AutomaticByPlatform` VM şablonundaki özelliği ayarlayın.
 
 **Otomatik olarak:**
 - Bu mod, Windows sanal makinesinde otomatik güncelleştirme yapılmasını ve Otomatik Güncelleştirmeler aracılığıyla sanal makineye düzeltme ekleri yüklenmesini mümkün.
@@ -107,7 +107,7 @@ Azure 'da Windows VM 'Leri artık aşağıdaki düzeltme eki düzenleme modları
 - Sanal makine Windows Update uç noktalarına erişebilmelidir. Sanal makineniz Windows Server Update Services (WSUS) kullanacak şekilde yapılandırıldıysa, ilgili WSUS sunucusu uç noktalarına erişilebilir olması gerekir.
 - Işlem API 'SI sürüm 2020-06-01 veya üstünü kullanın.
 
-Önizleme işlevselliğinin etkinleştirilmesi, aşağıda açıklandığı gibi, abonelik başına *InGuestAutoPatchVMPreview* özelliği için tek seferlik bir kabul gerektirir.
+Önizleme işlevselliğinin etkinleştirilmesi, aşağıda açıklandığı gibi, abonelik başına **InGuestAutoPatchVMPreview** özelliği için tek seferlik bir kabul gerektirir.
 
 ### <a name="rest-api"></a>REST API
 Aşağıdaki örnekte, aboneliğiniz için önizlemenin nasıl etkinleştirileceği açıklanmaktadır:
@@ -254,10 +254,10 @@ VM 'niz için düzeltme eki yükleme sonuçları, bölümünde incelenebilir `la
 ## <a name="on-demand-patch-assessment"></a>İsteğe bağlı düzeltme eki değerlendirmesi
 VM 'niz için otomatik VM Konuk düzeltme eki uygulama özelliği zaten etkinse, VM 'de sanal makinenin yoğun olmayan saatlerde düzenli aralıklarla bir düzeltme eki değerlendirmesi yapılır. Bu işlem otomatiktir ve en son değerlendirmenin sonuçları, bu belgede daha önce açıklandığı gibi VM 'nin örnek görünümü aracılığıyla incelenebilir. Ayrıca, istediğiniz zaman VM 'niz için isteğe bağlı bir yama değerlendirmesi tetikleyebilirsiniz. Düzeltme Eki değerlendirmesi işleminin tamamlanması birkaç dakika sürebilir ve en son değerlendirmenin durumu VM 'nin örnek görünümünde güncelleştirilir.
 
-Önizleme işlevselliğinin etkinleştirilmesi, abonelik başına *InGuestPatchVMPreview* özelliği için tek seferlik bir kabul gerektirir. İsteğe bağlı düzeltme eki değerlendirmesi için özellik önizlemesi, daha önce otomatik VM Konuk düzeltme eki uygulama için açıklanan [Önizleme etkinleştirme işleminden](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) sonra etkinleştirilebilir.
+Önizleme işlevselliğinin etkinleştirilmesi, abonelik başına **InGuestPatchVMPreview** özelliği için tek seferlik bir kabul gerektirir. Bu özellik önizlemesi, **InGuestAutoPatchVMPreview** için daha önce gerçekleştirilen otomatik sanal makine konuk düzeltme eki uygulama özelliği kaydından farklıdır. Ek özellik önizlemesini etkinleştirmek ayrı ve ek bir gereksinimdir. İsteğe bağlı düzeltme eki değerlendirmesi için özellik önizlemesi, daha önce otomatik VM Konuk düzeltme eki uygulama için açıklanan [Önizleme etkinleştirme işleminden](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) sonra etkinleştirilebilir.
 
 > [!NOTE]
->İsteğe bağlı yama değerlendirmesi, düzeltme eki yüklemesini otomatik olarak tetiklemez. VM için değerlendirilen ve geçerli düzeltme ekleri, bu belgede daha önce açıklanan kullanılabilirlik için ilk düzeltme eki uygulama işleminin ardından VM 'nin yoğun olmayan saatlerde yüklenecektir.
+>İsteğe bağlı yama değerlendirmesi, düzeltme eki yüklemesini otomatik olarak tetiklemez. Otomatik VM Konuk düzeltme eki uygulamayı etkinleştirdiyseniz, sanal makine için değerlendirilen ve uygulanabilir düzeltme ekleri, bu belgede daha önce açıklanan kullanılabilirlik için ilk düzeltme eki uygulama işlemi sonrasında VM 'nin yoğun olmayan saatlerde yüklenir.
 
 ### <a name="rest-api"></a>REST API
 ```

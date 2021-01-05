@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: e9a2259f1e15a94ad1f2a9eabf7d3a2f3ed419f1
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 16f903e34c64214d54fc01fa621f561f1786de08
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387811"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755999"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>SQL için Azure Defender 'a giriş
 
@@ -53,7 +53,9 @@ Bu iki plan, olası veritabanı güvenlik açıklarını belirleme ve azaltıcı
 
 - [Güvenlik açığı değerlendirmesi](../azure-sql/database/sql-vulnerability-assessment.md) -olası veritabanı güvenlik açıklarını düzeltmenize, izlemeye ve yardımcı olmaya yönelik tarama hizmeti. Değerlendirme taramaları, SQL makinelerinizin güvenlik durumuna genel bir bakış ve güvenlik bulgularının ayrıntılarını sağlar.
 
-- [Gelişmiş tehdit koruması](../azure-sql/database/threat-detection-overview.md) -SQL Server 'ınızı SQL ekleme, deneme yanılma saldırıları ve ayrıcalık kötüye kullanımı gibi tehditler için sürekli olarak izleyen algılama hizmeti. Bu hizmet, Azure Güvenlik Merkezi 'nde şüpheli etkinliğin ayrıntıları, tehditleri hafifletmeye yönelik yönergeler ve Azure Sentinel ile araştırmalarınıza devam etme seçeneklerini içeren eyleme dayalı güvenlik uyarıları sağlar.
+- [Gelişmiş tehdit koruması](../azure-sql/database/threat-detection-overview.md) -SQL Server 'ınızı SQL ekleme, deneme yanılma saldırıları ve ayrıcalık kötüye kullanımı gibi tehditler için sürekli olarak izleyen algılama hizmeti. Bu hizmet, Azure Güvenlik Merkezi 'nde şüpheli etkinliğin ayrıntıları, tehditleri hafifletmeye yönelik yönergeler ve Azure Sentinel ile araştırmalarınıza devam etme seçeneklerini içeren eyleme dayalı güvenlik uyarıları sağlar. 
+    > [!TIP]
+    > [Uyarı başvurusu SAYFASıNDA](alerts-reference.md#alerts-sql-db-and-warehouse)SQL sunucuları için güvenlik uyarıları listesini görüntüleyin.
 
 
 ## <a name="what-kind-of-alerts-does-azure-defender-for-sql-provide"></a>SQL için Azure Defender ne tür uyarılar sağlar?
@@ -74,8 +76,3 @@ Bu makalede, SQL için Azure Defender hakkında bilgi edindiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Defender ile SQL Server 'larınızı güvenlik açıklarına karşı tarayın](defender-for-sql-usage.md)
-
-İlgili malzemeler için aşağıdaki makalelere bakın: 
-
-- [SQL veritabanı sunucuları için Azure Defender 'ı etkinleştirme](../azure-sql/database/azure-defender-for-sql.md)
-- [SQL sunucuları için güvenlik uyarıları listesi](alerts-reference.md#alerts-sql-db-and-warehouse)

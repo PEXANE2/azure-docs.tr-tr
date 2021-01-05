@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/25/2020
-ms.openlocfilehash: 1943aae3a2b01490dca687bcdea99d76da238d51
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/23/2020
+ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187264"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760343"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Sağlanan aktarım hızı ve sunucusuz arasından seçim yapma
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,7 +25,7 @@ Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarı
 | Ölçütler | Sağlanan aktarım hızı | Sunucusuz |
 | --- | --- | --- |
 | Durum | Genel kullanıma sunuldu | Önizlemede |
-| En uygun | Tahmin edilebilir performans gerektiren görev açısından kritik iş yükleri | Hafif ve aralıklı trafik ile küçük ve orta ölçekli kritik olmayan iş yükleri |
+| En uygun | Tahmin edilebilir performans gerektiren görev açısından kritik iş yükleri | Tahmine dayalı hafif ve aralıklı trafik içeren küçük ve orta ölçekli iş yükleri |
 | Nasıl çalışır? | Kapsayıcılarınızın her biri için, saniye başına [Istek birimi](request-units.md) cinsinden ifade edilen bazı üretilen iş miktarı sağlayabilirsiniz. Her saniye, veritabanı işlemleriniz için bu Istek birimi miktarı kullanılabilir. Sağlanan üretilen iş, el ile veya otomatik [ölçeklendirme](provision-throughput-autoscale.md)ile ayarlanabilir. | Veritabanı işlemlerinizi herhangi bir kapasite sağlamak zorunda kalmadan kapsayıcılarınıza karşı çalıştırırsınız. |
 | Coğrafi dağıtım | Kullanılabilir (sınırsız sayıda Azure bölgesi) | Kullanılamıyor (sunucusuz hesaplar yalnızca 1 Azure bölgesinde çalışabilir) |
 | Kapsayıcı başına en fazla depolama alanı | Sınırsız | 50 GB |
@@ -33,7 +33,7 @@ Azure Cosmos DB iki farklı kapasite modunda kullanılabilir: [sağlanan aktarı
 | Faturalama modeli | Faturalandırma, ne kadar RUs tüketildiğine bakılmaksızın, sağlanan RU/s için saat başına yapılır. | Faturalama, veritabanı işlemlerinizin kullandığı RUs miktarı için saatlik olarak gerçekleştirilir. |
 
 > [!IMPORTANT]
-> Sunucusuz kısıtlamaların bazıları sunucusuz genel kullanıma sunulduğunda kaldırılabilir veya kaldırılabilir. **your feedback** Bize ulaşın ve sunucusuz deneyiminiz hakkında daha fazla bilgi verin: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) .
+> Sunucusuz kısıtlamaların bazıları sunucusuz genel kullanıma sunulduğunda kaldırılabilir veya kaldırılabilir.  Bize ulaşın ve sunucusuz deneyiminiz hakkında daha fazla bilgi verin: [azurecosmosdbserverless@service.microsoft.com](mailto:azurecosmosdbserverless@service.microsoft.com) .
 
 ## <a name="estimating-your-expected-consumption"></a>Beklenen tüketiminizi tahmin etme
 

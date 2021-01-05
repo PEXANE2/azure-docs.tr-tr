@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 1b73b018432e5fb9a8af90fc141d009d1bb7b799
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: d0cb9dc3c54f409c3bdd71fbb57c823e15abc22d
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617060"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762971"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Konuşma hizmeti için dil ve ses desteği
 
@@ -137,6 +137,11 @@ Hem Microsoft konuşma SDK 'Sı hem de REST API 'Leri, her biri yerel ayar ile t
 Sinir metin okuma, derin sinir ağlarla desteklenen yeni bir konuşma türü türüdür. Bir sinir sesi kullanırken, sentezlenmiş konuşma, insan kayıtlarından neredeyse ayırt edilemez.
 
 Sinir sesleri, chatbots ve ses yardımcılarıyla daha doğal ve etkileyici bir şekilde etkileşim kurmak, e-kitaplar gibi dijital metinleri audiobooks 'a dönüştürmek ve oto içi gezinti sistemlerini geliştirmek için kullanılabilir. İnsan benzeri doğal Prosody ve sözcüklerin bir kısmını temizleyerek, sinir seslerde kullanıcılar AI sistemleriyle etkileşim kurarken büyük ölçüde dinleme performansını önemli ölçüde azaltır.
+
+> [!NOTE]
+> Sinir sesleri, 24 kHz örnek bir hız kullanan örneklerden oluşturulur.
+> Tüm sesler, birleştirme sırasında diğer örnek hızlara eşit veya daha fazla örnek alabilir.
+
 
 | Dil | Yerel Ayar | Cinsiyet | Ses adı | Stil desteği |
 |---|---|---|---|---|
@@ -294,6 +299,11 @@ Konuşma stilleri gibi sinir seslerini nasıl yapılandıracağınızı ve ayarl
 
 75 ' den fazla standart ses, daha fazla 45 dilde ve yerel ayarlarda bulunabilir ve bu da metni sentezleştirilmiş konuşmaya dönüştürmenize olanak tanır. Bölgesel kullanılabilirlik hakkında daha fazla bilgi için bkz. [bölgeler](regions.md#standard-and-neural-voices).
 
+> [!NOTE]
+> İki özel durum ile, 16 kHz örnek oranı kullanan örneklerden standart sesler oluşturulur.
+> **En-US-AriaRUS** ve **en-US-Guyrus** sesleriniz, 24 kHz örnek bir hız kullanan örneklerden de oluşturulmuştur.
+> Tüm sesler, birleştirme sırasında diğer örnek hızlara eşit veya daha fazla örnek alabilir.
+
 | Dil | Yerel ayar (BCP-47) | Cinsiyet | Ses adı |
 |--|--|--|--|
 | Arapça (Arapça) | `ar-EG` | Kadın | `ar-EG-Hoda`|
@@ -325,7 +335,7 @@ Konuşma stilleri gibi sinir seslerini nasıl yapılandıracağınızı ve ayarl
 | İngilizce (İngiltere) | `en-GB` | Kadın | `en-GB-Susan`|
 | İngilizce (ABD) | `en-US` | Erkek | `en-US-BenjaminRUS`|
 | İngilizce (ABD) | `en-US` | Erkek | `en-US-GuyRUS`|
-| İngilizce (ABD) | `en-US` | Kadın | `en-US-JessaRUS`|
+| İngilizce (ABD) | `en-US` | Kadın | `en-US-AriaRUS`|
 | İngilizce (ABD) | `en-US` | Kadın | `en-US-ZiraRUS`|
 | Fince (Finlandiya) | `fi-FI` | Kadın | `fi-FI-HeidiRUS`|
 | Fransızca (Kanada) | `fr-CA` | Kadın | `fr-CA-Caroline`|

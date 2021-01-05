@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: d969b1639dbb39b920c985964abe1239f068d740
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 81d2804d99896200ea6f68592ea168112e172c20
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185442"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97762629"
 ---
 **Oluştur**' u seçin. Açılan bölmede, Xcode projesinin dışarı aktarılacağı klasörü seçin.
 
@@ -30,9 +30,9 @@ open ./Unity-iPhone.xcodeproj
 
 Proje ayarlarını görüntülemek için kök **Unity-iPhone** düğümünü seçin ve ardından **genel** sekmesini seçin.
 
-**İmza**' ın altında, **imzalamayı otomatik olarak Yönet** ' in etkinleştirildiğinden emin olun. Aksi takdirde, etkinleştirin ve ardından açılan bölmedeki **Otomatik Etkinleştir** ' i seçerek yapı ayarlarını sıfırlayın.
+**Dağıtım bilgileri** altında dağıtım hedefinin **iOS 11,0** olarak ayarlandığından emin olun.
 
-**Dağıtım bilgileri** altında **dağıtım hedefinin** **11,0** olarak ayarlandığından emin olun.
+**İmzalama & özellikleri** sekmesini seçin ve **imzalamayı otomatik olarak Yönet** ' in etkinleştirildiğinden emin olun. Aksi takdirde, etkinleştirin ve ardından açılan bölmedeki **Otomatik Etkinleştir** ' i seçerek yapı ayarlarını sıfırlayın.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS cihazınıza dağıtma
 

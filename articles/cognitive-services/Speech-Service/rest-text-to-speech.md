@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 77a8321ba8bac0ecaf577bce6c3c05d10508128e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions
+ms.openlocfilehash: bfdea5f2e2bd20a35ee948e99b3be9bf55038b13
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020173"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760665"
 ---
 # <a name="text-to-speech-rest-api"></a>Metin okuma REST API'si
 
@@ -34,7 +35,7 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 * Metin okuma REST API bir yetkilendirme üst bilgisi gerektirir. Bu, hizmete erişmek için bir belirteç değişimini doldurmanız gerektiği anlamına gelir. Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication).
 
 > [!TIP]
-> Kamu Bulutu (FairFax) uç noktaları için Azure Kamu [belgelerini](../../azure-government/compare-azure-government-global-azure.md) inceleyin.
+> Kamu Bulutu (FairFax) uç noktaları için [Azure Kamu belgelerini](/azure/azure-government/compare-azure-government-global-azure) inceleyin.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -44,10 +45,10 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 
 ### <a name="regions-and-endpoints"></a>Bölgeler ve uç noktalar
 
-| Region | Uç Nokta |
+| Bölge | Uç Nokta |
 |--------|----------|
 | Doğu Avustralya | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Brezilya Güney | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Güney Brezilya | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta Kanada | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Orta ABD | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Doğu Asya | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -66,11 +67,14 @@ Bu API 'yi kullanmadan önce şunları anlayın:
 | Batı ABD | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Batı ABD 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
+> [!TIP]
+> [Önizlemede bulunan sesler](language-support.md#neural-voices-in-preview) yalnızca şu 3 bölgede kullanılabilir: Doğu ABD, Batı Avrupa ve Güneydoğu Asya.
+
 ### <a name="request-headers"></a>İstek üst bilgileri
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Description | Gerekli/Isteğe bağlı |
+| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 
@@ -98,46 +102,78 @@ Bu yanıt, bir yanıtın yapısını göstermek için kesildi.
 
 ```json
 [
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+    "DisplayName": "Hoda",
+    "LocalName": "هدى",
+    "ShortName": "ar-EG-Hoda",
+    "Gender": "Female",
+    "Locale": "ar-EG",
+    "SampleRateHertz": "16000",
+    "VoiceType": "Standard",
+    "Status": "GA"
+  },
+
+...
+      
     {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
-        "ShortName": "ar-EG-Hoda",
-        "Gender": "Female",
-        "Locale": "ar-EG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
-        "ShortName": "ar-SA-Naayf",
-        "Gender": "Male",
-        "Locale": "ar-SA",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
-        "ShortName": "bg-BG-Ivan",
-        "Gender": "Male",
-        "Locale": "bg-BG",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
-        "ShortName": "ca-ES-HerenaRUS",
-        "Gender": "Female",
-        "Locale": "ca-ES",
-        "SampleRateHertz": "16000",
-        "VoiceType": "Standard"
-    },
-    {
-        "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
-        "ShortName": "zh-CN-XiaoxiaoNeural",
-        "Gender": "Female",
-        "Locale": "zh-CN",
-        "SampleRateHertz": "24000",
-        "VoiceType": "Neural"
-    },
+    "Name": "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)",
+    "DisplayName": "Aria",
+    "LocalName": "Aria",
+    "ShortName": "en-US-AriaNeural",
+    "Gender": "Female",
+    "Locale": "en-US",
+    "StyleList": [
+      "chat",
+      "customerservice",
+      "newscast-casual",
+      "newscast-formal",
+      "cheerful",
+      "empathetic"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "GA"
+  },
+  
+  ...
+    
+     {
+    "Name": "Microsoft Server Speech Text to Speech Voice (ga-IE, OrlaNeural)",
+    "DisplayName": "Orla",
+    "LocalName": "Orla",
+    "ShortName": "ga-IE-OrlaNeural",
+    "Gender": "Female",
+    "Locale": "ga-IE",
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
+  
+  ...
+    
+   {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "DisplayName": "Yunxi",
+    "LocalName": "云希",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "StyleList": [
+      "Calm",
+      "Fearful",
+      "Cheerful",
+      "Disgruntled",
+      "Serious",
+      "Angry",
+      "Sad",
+      "Depressed",
+      "Embarrassed"
+    ],
+    "SampleRateHertz": "24000",
+    "VoiceType": "Neural",
+    "Status": "Preview"
+  },
 
     ...
 ]
@@ -170,7 +206,7 @@ Bu bölgeler REST API kullanarak metinden konuşmaya için desteklenir. Abonelik
 
 Bu tabloda, metinden konuşmaya istekleri için gerekli ve isteğe bağlı üstbilgiler listelenmektedir.
 
-| Üst bilgi | Description | Gerekli/Isteğe bağlı |
+| Üst bilgi | Açıklama | Gerekli/Isteğe bağlı |
 |--------|-------------|---------------------|
 | `Authorization` | Bir yetkilendirme belirteci öncesinde kelimedir `Bearer` . Daha fazla bilgi için bkz. [Kimlik doğrulaması](#authentication). | Gerekli |
 | `Content-Type` | Belirtilen metin için içerik türünü belirtir. Kabul edilen değer: `application/ssml+xml` . | Gerekli |
@@ -208,23 +244,17 @@ Bu HTTP isteği, sesi ve dili belirtmek için SSML 'yi kullanır. Gövde uzunlu�
 ```http
 POST /cognitiveservices/v1 HTTP/1.1
 
-X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+X-Microsoft-OutputFormat: raw-24khz-16bit-mono-pcm
 Content-Type: application/ssml+xml
 Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
 <speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
-    name='en-US-AriaRUS'>
+    name='en-US-AriaNeural'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
 ```
-
-Dile özgü örnekler için hızlı başlangıçlarımıza bakın:
-
-* [.NET Core, C #](./get-started-text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)
-* [Python](./get-started-text-to-speech.md?pivots=programming-language-python)
-* [Node.js](./get-started-text-to-speech.md)
 
 ### <a name="http-status-codes"></a>HTTP durum kodu
 
@@ -235,7 +265,6 @@ Her yanıt için HTTP durum kodu başarı veya genel hataları gösterir.
 | 200 | Tamam | İstek başarılı oldu; yanıt gövdesi bir ses dosyasıdır. |
 | 400 | Hatalı İstek | Gerekli bir parametre eksik, boş veya null. Ya da gerekli veya isteğe bağlı bir parametreye geçirilen değer geçersiz. Yaygın bir sorun çok uzun bir üst bilgi. |
 | 401 | Yetkisiz | İstek yetkili değil. Abonelik anahtarınızın veya belirtecinizin geçerli olduğundan ve doğru bölgede bulunduğundan emin olun. |
-| 413 | İstek varlığı çok büyük | SSML girişi 1024 karakterden daha uzun. |
 | 415 | Desteklenmeyen medya türü | Yanlış `Content-Type` sağlanmış olabilir. `Content-Type` olarak ayarlanmalıdır `application/ssml+xml` . |
 | 429 | Çok fazla Istek | Aboneliğiniz için izin verilen kotayı veya isteklerin oranını aştınız. |
 | 502 | Hatalı ağ geçidi    | Ağ veya sunucu tarafı sorunu. Geçersiz üst bilgileri de gösterebilir. |
@@ -245,5 +274,5 @@ HTTP durumu ise `200 OK` , yanıt gövdesi istenen biçimde bir ses dosyası iç
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Ücretsiz bir Azure hesabı oluşturma](https://azure.microsoft.com/free/cognitive-services/)
-- [Uzun biçimli ses için zaman uyumsuz sensıs](./long-audio-api.md)
+- [Uzun biçimli ses için zaman uyumsuz sensıs](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
 - [Özel Ses’i kullanmaya başlama](how-to-custom-voice.md)

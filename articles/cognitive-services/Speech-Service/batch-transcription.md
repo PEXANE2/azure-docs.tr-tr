@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/03/2020
+ms.date: 12/23/2020
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 426cf78f6b87acf1d8c7551b0b0a6172a30167b1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 68a129f38e9a94a7e381d11ffa3c3d02791b025b
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621104"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755778"
 ---
 # <a name="how-to-use-batch-transcription"></a>Toplu iş dökümünü kullanma
 
-Batch dökümü, depolamada büyük miktarda ses eklemenizi sağlayan bir REST API işlemleri kümesidir. Tipik bir URI veya paylaşılan erişim imzası (SAS) URI 'SI kullanarak ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarını alabilirsiniz. V 3.0 API 'SI ile bir veya daha fazla ses dosyası verebilir veya bir depolama kapsayıcısını tamamen işleyebilirsiniz.
+Batch dökümü, depolamada büyük miktarda ses eklemenizi sağlayan bir REST API işlemleri kümesidir. Tipik bir URI veya [paylaşılan erişim imzası (SAS)](../../storage/common/storage-sas-overview.md) URI 'si kullanarak ses dosyalarını işaret edebilir ve zaman uyumsuz olarak alma sonuçlarını alabilirsiniz. V 3.0 API 'SI ile bir veya daha fazla ses dosyası verebilir veya bir depolama kapsayıcısını tamamen işleyebilirsiniz.
 
 Aşağıdaki yöntemleri çağırmak için Batch transcripts REST API 'Lerini kullanabilirsiniz:
 
@@ -66,7 +66,7 @@ Sıralı bir son döküm oluşturmak için, utterance başına oluşturulan zama
 
 ### <a name="configuration"></a>Yapılandırma
 
-Yapılandırma parametreleri JSON olarak sağlanır.
+Yapılandırma parametreleri JSON olarak sağlanır. 
 
 **Tek bir veya daha fazla dosyayı bir veya daha fazla dosyaya dönüştürme.** Daha fazla bilgi almak için birden fazla dosyanız varsa, tek bir istekte birden çok dosya gönderilmesini öneririz. Aşağıdaki örnekte üç dosya kullanılıyor:
 
@@ -85,7 +85,7 @@ Yapılandırma parametreleri JSON olarak sağlanır.
 }
 ```
 
-**Tüm depolama kapsayıcısını işleme:**
+**Tüm depolama kapsayıcısı işleniyor.** Kapsayıcı [SAS](../../storage/common/storage-sas-overview.md) `r` (okuma) ve `l` (liste) izinlerini içermelidir:
 
 ```json
 {
@@ -177,7 +177,7 @@ Dökümü yapılandırmak için bu isteğe bağlı özellikleri kullanın:
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 'da yazılabilir bir kapsayıcıya [hizmet GEÇICI SAS](../../storage/common/storage-sas-overview.md) 'si ile isteğe bağlı URL. Sonuç bu kapsayıcıda saklanır. Depolanan erişim ilkesiyle **SAS desteklenmez.** Belirtilmediğinde Microsoft, sonuçları Microsoft tarafından yönetilen bir depolama kapsayıcısında depolar. Döküm, [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)işlemi çağırarak silindiğinde, sonuç verileri de silinir.
+      Azure 'da yazılabilir bir kapsayıcıya, [GEÇICI SAS](../../storage/common/storage-sas-overview.md) ile Isteğe bağlı URL. Sonuç bu kapsayıcıda saklanır. Depolanan erişim ilkesiyle **SAS desteklenmez.** Belirtilmediğinde Microsoft, sonuçları Microsoft tarafından yönetilen bir depolama kapsayıcısında depolar. Döküm, [silme](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)işlemi çağırarak silindiğinde, sonuç verileri de silinir.
 :::row-end:::
 
 ### <a name="storage"></a>Depolama

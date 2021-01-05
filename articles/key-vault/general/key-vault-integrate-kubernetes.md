@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: c628ba780ae64fceb32322fdb2004d69e2ebf24b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2645842130b83fe7b4cfb33b9389b19a1306506d
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452748"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756033"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Öğretici: Kubernetes 'te gizli dizi için Azure Key Vault sağlayıcıyı yapılandırma ve çalıştırma
 
@@ -21,7 +21,7 @@ ms.locfileid: "96452748"
 
 Bu öğreticide, gizli dizileri Kubernetes pods 'ye bağlamak için gizli dizi kapsayıcısı depolama arabirimi (CSı) sürücüsünü kullanarak Azure anahtar kasanızdan gizli dizi ve gizli dizi bilgileri alabilirsiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Hizmet sorumlusu oluşturun veya yönetilen kimlikleri kullanın.
@@ -81,7 +81,7 @@ Azure Cloud Shell kullanmanız gerekmez. Azure CLı yüklü olan komut isteminiz
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Oluşturduğunuz AKS kümesinin meta verilerini göstermek için aşağıdaki komutu kullanın. Daha sonra kullanmak üzere **PrincipalId**, **ClientID**, **SubscriptionID** ve **noderesourcegroup** 'u kopyalayın. ASK kümesi, Yönetilen kimlikler etkinleştirilmiş olarak oluşturulmadıysa, **PrincipalId** ve **ClientID** null olur. 
+1. Oluşturduğunuz AKS kümesinin meta verilerini göstermek için aşağıdaki komutu kullanın. Daha sonra kullanmak üzere **PrincipalId**, **ClientID**, **SubscriptionID** ve **noderesourcegroup** 'u kopyalayın. AKS kümesi, Yönetilen kimlikler etkinleştirilmiş olarak oluşturulmadıysa, **PrincipalId** ve **ClientID** null olacaktır. 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup

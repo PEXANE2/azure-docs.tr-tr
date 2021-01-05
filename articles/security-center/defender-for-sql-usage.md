@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/30/2020
+ms.date: 12/23/2020
 ms.author: memildin
-ms.openlocfilehash: 07a94685fb3655aa5aa21a8658b9d975c764daff
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 3899b00038f3c12add4dbf49a7f05e07141d8606
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512287"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97755863"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Makinelerdeki SQL sunucuları için Azure Defender 
 
@@ -33,7 +33,7 @@ Bu Azure Defender planı, veritabanlarına erişmek veya veritabanına yararlanm
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|**MAKINELERDEKI SQL Server 'lar Için Azure Defender** , [fiyatlandırma sayfasında](security-center-pricing.md) gösterildiği gibi faturalandırılır|
 |Korumalı SQL sürümleri:|Azure SQL Server (Microsoft desteği kapsamında tüm sürümler)|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov|
 |||
 
 ## <a name="set-up-azure-defender-for-sql-servers-on-machines"></a>Makinelerde SQL Server 'lar için Azure Defender 'ı ayarlama
@@ -108,7 +108,7 @@ Güvenlik açığı değerlendirme sonuçlarını doğrudan güvenlik merkezi 'n
     Her görünümde güvenlik denetimleri **önem derecesine** göre sıralanır. Bir **Açıklama** içeren ayrıntı bölmesini, bunu nasıl **düzeltebileceğiniz** ve **etki** veya **kıyaslama** gibi diğer ilgili bilgileri görmek için belirli bir güvenlik denetimine tıklayın.
 
 ## <a name="azure-defender-for-sql-alerts"></a>SQL için Azure Defender uyarıları
-Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, [Uyarı başvurusu SAYFASıNıN SQL veritabanı ve Azure SYNAPSE Analytics Uyarıları bölümünde](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirler.
+Uyarılar, SQL makinelerine erişmek veya bu makinelere yararlanmak için olağandışı ve olası zararlı saldırılara göre oluşturulur. Bu olaylar, [Uyarılar başvurusu sayfasında](alerts-reference.md#alerts-sql-db-and-warehouse)gösterilen uyarıları tetikleyebilirsiniz.
 
 ## <a name="explore-and-investigate-security-alerts"></a>Güvenlik uyarılarını araştır ve araştır
 
@@ -131,4 +131,3 @@ SQL uyarıları için Azure Defender, güvenlik merkezi 'nin Uyarılar sayfasın
 - [SQL veritabanı ve Azure SYNAPSE Analytics için güvenlik uyarıları](alerts-reference.md#alerts-sql-db-and-warehouse)
 - [Güvenlik uyarıları için e-posta bildirimlerini ayarlama](security-center-provide-security-contact-details.md)
 - [Azure Sentinel hakkında daha fazla bilgi edinin](../sentinel/index.yml)
-- [Azure Güvenlik Merkezi 'nin veri güvenliği paketi](../azure-sql/database/azure-defender-for-sql.md)

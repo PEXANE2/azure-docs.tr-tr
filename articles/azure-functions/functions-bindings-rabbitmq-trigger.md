@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: 5930219486de8704c777496bcaf293411c5fb7b1
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4ba19fdf700790d89fe04867985fb803c3b0a2fc
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673996"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760410"
 ---
 # <a name="rabbitmq-trigger-for-azure-functions-overview"></a>Azure Işlevlerine genel bakış için Kbbitmq tetikleyicisi
 
 > [!NOTE]
-> Kbbitmq bağlamaları yalnızca **Windows Premium ve adanmış** planlarda tam olarak desteklenmektedir. Tüketim ve Linux Şu anda desteklenmiyor.
+> Kbbitmq bağlamaları **Premium ve adanmış** planlarda yalnızca tam olarak desteklenir. Tüketim desteklenmez.
 
 Bir Kbıbitmq kuyruğundan iletilere yanıt vermek için Kbbitmq tetikleyicisini kullanın.
 
@@ -43,18 +43,23 @@ public static void RabbitMQTrigger_BasicDeliverEventArgs(
 Aşağıdaki örnek, bir POCO olarak iletinin nasıl okunacağını gösterir.
 
 ```cs
-public class TestClass
+namespace Company.Function
 {
-    public string x { get; set; }
-}
+    public class TestClass
+    {
+        public string x { get; set; }
+    }
 
-[FunctionName("RabbitMQTriggerCSharp")]
-public static void RabbitMQTrigger_BasicDeliverEventArgs(
-    [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
-    ILogger logger
-    )
-{
-    logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {Encoding.UTF8.GetString(pocObj)}");
+    public class RabbitMQTriggerCSharp{
+        [FunctionName("RabbitMQTriggerCSharp")]
+        public static void RabbitMQTrigger_BasicDeliverEventArgs(
+            [RabbitMQTrigger("queue", ConnectionStringSetting = "rabbitMQConnectionAppSetting")] TestClass pocObj,
+            ILogger logger
+            )
+        {
+            logger.LogInformation($"C# RabbitMQ queue trigger function processed message: {pocObj}");
+        }
+    }
 }
 ```
 
@@ -82,7 +87,7 @@ Dosyadaki *function.js* bağlama verileri aşağıda verilmiştir:
 
 C# betik kodu aşağıda verilmiştir:
 
-```csx
+```C#
 using System;
 
 public static void Run(string myQueueItem, ILogger log)
@@ -206,7 +211,7 @@ Daha fazla ayrıntı için bkz. tetikleyici [örneği](#example) .
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `RabbitMQTrigger` .
 
-|function.jsözelliği | Öznitelik özelliği |Description|
+|function.jsözelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
 |**türüyle** | yok | "Oybbitmqtrigger" olarak ayarlanmalıdır.|
 |**Görünüm** | yok | "In" olarak ayarlanmalıdır.|
@@ -216,7 +221,7 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 |**userNameSetting**|**UserNameSetting**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için Kullanıcı adını içeren uygulama ayarının adı. Örn. UserNameSetting: "% < UserNameFromSettings >%"|
 |**passwordSetting**|**PasswordSetting**|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parolayı içeren uygulama ayarının adı. Örn. PasswordSetting: "% < PasswordFromSettings >%"|
 |**connectionStringSetting**|**ConnectionStringSetting**|Kbbitmq ileti kuyruğu bağlantı dizesini içeren uygulama ayarının adı. Bağlantı dizesini doğrudan belirtirseniz ve local.settings.jsüzerinde bir uygulama ayarı aracılığıyla değil, tetikleyicinin çalışmadığına lütfen emin olun. (Örn: *function.js*: connectionStringSetting: "Kbbitmqconnection" <br> *local.settings.json*: "Oybbitmqconnection": "< actualconnectionstring >")|
-|**bağ**|**Bağlantı noktası**|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
+|**bağ**|**Bağlantı noktası**|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değeri, kbbitmq istemcisinin varsayılan bağlantı noktası ayarına işaret eden 0 ' dır: 5672.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -275,12 +280,12 @@ Bu bölümde, 2. x ve üzeri sürümlerde bu bağlama için kullanılabilen gene
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
 |prefetchCount|30|İleti alıcısının eşzamanlı olarak istek aldığı ve önbelleğe alındığı ileti sayısını alır veya ayarlar.|
 |Adı|yok| İletilerin alınacağı kuyruğun adı.|
 |Dizisi|yok|Kbıbitmq ileti sırası bağlantı dizesi. Bağlantı dizesinin bir uygulama ayarı aracılığıyla değil, burada doğrudan belirtildiğine lütfen emin olun.|
-|port|0|(ConnectionStringSetting kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değer 0 ' dır.|
+|port|0|(connectionString kullanılıyorsa yok sayılır) Kullanılan bağlantı noktasını alır veya ayarlar. Varsayılan değeri, kbbitmq istemcisinin varsayılan bağlantı noktası ayarına işaret eden 0 ' dır: 5672.|
 
 ## <a name="local-testing"></a>Yerel ortamda test etme
 
@@ -303,11 +308,26 @@ Bir bağlantı dizesi olmadan yerel olarak test ediyorsanız, "ana bilgisayar ad
 }
 ```
 
-|Özellik  |Varsayılan | Description |
+|Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
-|Konak|yok|(ConnectStringSetting kullanılıyorsa yoksayıldı) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
-|userName|yok|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişen ad |
-|password|yok|(ConnectionStringSetting kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parola|
+|Konak|yok|(connectionString kullanılıyorsa yok sayılır) <br>Kuyruğun ana bilgisayar adı (örn: 10.26.45.210)|
+|userName|yok|(connectionString kullanılıyorsa yok sayılır) <br>Kuyruğa erişen ad |
+|password|yok|(connectionString kullanılıyorsa yok sayılır) <br>Kuyruğa erişmek için parola|
+
+
+## <a name="enable-runtime-scaling"></a>Çalışma zamanı ölçeklendirmeyi etkinleştir
+
+Kbbitmq tetikleyicisinin birden çok örneğe ölçeklendirilmesi için **çalışma zamanı ölçek izleme** ayarının etkinleştirilmesi gerekir. 
+
+Portalda, bu ayar,   >  işlev uygulamanız için yapılandırma **işlevi çalışma zamanı ayarları** altında bulunabilir.
+
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
+
+CLı 'de, aşağıdaki komutu kullanarak **çalışma zamanı ölçek izlemeyi** etkinleştirebilirsiniz:
+
+```azurecli-interactive
+az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
+```
 
 ## <a name="monitoring-rabbitmq-endpoint"></a>Kbıbitmq uç noktasını izleme
 Belirli bir Kbbitmq uç noktası için kuyrukları ve alışverlerinizi izlemek için:

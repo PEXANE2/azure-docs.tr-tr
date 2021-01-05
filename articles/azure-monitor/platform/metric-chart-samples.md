@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9b2ab664f319de07fd70bd1a22b1ba6d64ac208f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05dadfe88ed64aea8066b02298ba158a44a03c6f
+ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87320264"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97760192"
 ---
 # <a name="metric-chart-examples"></a>Ölçüm grafiği örnekleri 
 
@@ -24,7 +24,7 @@ Harika grafik örneklerinizi dünya ile paylaşmak ister misiniz? GitHub 'da bu 
 
 Bu grafik, bir App Service için CPU 'nun kabul edilebilir aralık dahilinde olup olmadığını gösterir ve yükün doğru bir şekilde dağıtılıp dağıtılmadığını anlamak için örneğe göre böler. Uygulamanın 6 ' dan önce tek bir sunucu örneğinde çalıştığını ve sonra başka bir örnek ekleyerek ölçeği artırılacağını görebilirsiniz.
 
-![Sunucu örneğine göre ortalama CPU yüzdesi satır grafiği](./media/metric-chart-samples/cpu-by-instance.png)
+![Sunucu örneğine göre ortalama CPU yüzdesi satır grafiği](./media/metrics-charts/cpu-by-instance.png)
 
 ### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
@@ -34,21 +34,21 @@ App Service kaynağını seçin ve **CPU yüzdesi** ölçüsünü bulun. Ardınd
 
 Hangi coğrafi konumların sorun yaşadığını belirlemek için uygulamanızın bölgeye göre kullanılabilirliğini görüntüleyin. Bu grafik Application Insights kullanılabilirlik ölçümünü gösterir. İzlenen uygulamanın Doğu ABD veri merkezinde kullanılabilirliğiyle ilgili bir sorun olmadığını görebilirsiniz, ancak Batı ABD ve Doğu Asya kısmi bir kullanılabilirlik sorunu yaşar.
 
-![Konumlara göre ortalama kullanılabilirlik grafiği](./media/metric-chart-samples/availability-run-location.png)
+![Konumlara göre ortalama kullanılabilirlik grafiği](./media/metrics-charts/availability-by-location.png)
 
 ### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
 Önce Web siteniz için [Application Insights kullanılabilirlik](../app/monitor-web-app-availability.md) izlemeyi açmanız gerekir. Bundan sonra Application Insights kaynağını seçin ve kullanılabilirlik ölçümünü seçin. **Çalışma konumu** boyutunda bölme uygulayın.
 
-## <a name="volume-of-storage-account-transactions-by-api-name"></a>API adına göre depolama hesabı işlemleri hacmi
+## <a name="volume-of-failed-storage-account-transactions-by-api-name"></a>API adına göre başarısız depolama hesabı işlemleri hacmi
 
-Depolama hesabı kaynağınız fazla miktarda işlem hacimde yaşıyor. Fazla yükün hangi API 'nin sorumlu olduğunu belirlemek için işlem ölçümünü kullanabilirsiniz. Aşağıdaki grafiğin filtrelemede aynı boyut (API adı) ile yapılandırıldığını ve görünümü yalnızca ilgilendiğiniz API çağrılarına daraltmak için böltiğine dikkat edin:
+Depolama hesabı kaynağınız, başarısız olan fazla işlem hacmi yaşıyor. Fazla hata nedeniyle hangi API 'nin sorumlu olduğunu belirlemek için işlem ölçümünü kullanabilirsiniz. Aşağıdaki grafiğin, başarısız yanıt türüne göre bölme ve filtreleme sırasında aynı boyut (API adı) ile yapılandırıldığına dikkat edin:
 
-![API işlemlerinin çubuk grafiği](./media/metric-chart-samples/transactions-by-api.png)
+![API işlemlerinin çubuk grafiği](./media/metrics-charts/split-and-filter-example.png)
 
 ### <a name="how-to-configure-this-chart"></a>Bu grafik nasıl yapılandırılır?
 
-Ölçüm seçicide depolama hesabınızı ve **işlem** ölçümünü seçin. Grafik türünü **çubuk grafik**olarak değiştirin. **Bölmeyi Uygula** ' ya tıklayın ve boyut **API 'si adını**seçin. Sonra **Filtre Ekle** ' ye tıklayın ve **API adı** boyutunu bir kez daha seçin. Filtre iletişim kutusunda, grafiğe çizmek istediğiniz API 'Leri seçin.
+Ölçüm seçicide depolama hesabınızı ve **işlem** ölçümünü seçin. Grafik türünü **çubuk grafik** olarak değiştirin. **Bölmeyi Uygula** ' ya tıklayın ve boyut **API 'si adını** seçin. Sonra **Filtre Ekle** ' ye tıklayın ve **API adı** boyutunu bir kez daha seçin. Filtre iletişim kutusunda, grafiğe çizmek istediğiniz API 'Leri seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

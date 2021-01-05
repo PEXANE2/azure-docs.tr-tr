@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 0dd5f6a48175bad35b37155c8ff881e352922ca7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ea96e1056e6157cfddbdc2f0b6451ed55a74d1de
+ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674485"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97756067"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>ML çalıştırma günlüklerini ve ölçümlerini izleme ve görüntüleme
 
@@ -121,11 +121,11 @@ Günlük dosyaları, Azure ML iş yüklerinde hata ayıklamak için gereken öne
 Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosyalarının içerikleri gösterilmektedir.
 
 > [!NOTE]
-> Kullanıcı, Skımingolsa bile her çalıştırma için her dosyayı görmeyecektir. Örneğin, 20_image_build_log *. txt yalnızca yeni bir görüntü oluşturulduğunda görüntülenir (örneğin, ortamınızı değiştirdiğinizde).
+> Her çalıştırma için her dosyayı görmeyecektir. Örneğin, 20_image_build_log *. txt yalnızca yeni bir görüntü oluşturulduğunda görüntülenir (örneğin, ortamınızı değiştirdiğinizde).
 
 #### <a name="azureml-logs-folder"></a>`azureml-logs` klasörde
 
-|Dosya  |Description  |
+|Dosya  |Açıklama  |
 |---------|---------|
 |20_image_build_log.txt     | Eğitim ortamı için Docker görüntü oluşturma günlüğü, her çalıştırma için isteğe bağlı. Yalnızca ortamınız güncelleştirilirken geçerlidir. Aksi takdirde AML, önbelleğe alınmış görüntüyü yeniden kullanır. Başarılı olursa, ilgili görüntü için görüntü kayıt defteri ayrıntılarını içerir.         |
 |55_azureml yürütme-<node_id # C1.txt     | düğüm başına bir tane olmak üzere konak aracının stdout/stderr günlüğü. İşlem hedefine görüntü çeker. Bu günlük, işlem kaynaklarını güvenli hale getirildikten sonra yalnızca bir kez görünür.         |
@@ -138,7 +138,7 @@ Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosy
 
 #### <a name="logs--azureml-folder"></a>`logs > azureml` klasörde
 
-|Dosya  |Description  |
+|Dosya  |Açıklama  |
 |---------|---------|
 |110_azureml. log      |         |
 |job_prep_azureml. log     |   iş hazırlığı için sistem günlüğü        |
@@ -148,7 +148,7 @@ Aşağıdaki tablolarda, bu bölümde göreceğiniz klasörlerdeki günlük dosy
 
 Sepet etkinleştirildiğinde, iş hazırlığı ve iş sürümü betikleri, sepet kapsayıcısı içinde çalıştırılır.  Her düğüm için bir klasör vardır. 
 
-|Dosya  |Description  |
+|Dosya  |Açıklama  |
 |---------|---------|
 |start_cms.txt     |  Sepet kapsayıcısı başladığında başlayan işlem günlüğü       |
 |prep_cmd.txt      |   Çalıştırıldığında girilen Contextyöneticileri için günlük kaydı `job_prep.py` (bir kısmı bu şekilde akışa alınacaktır `azureml-logs/65-job_prep` )       |
