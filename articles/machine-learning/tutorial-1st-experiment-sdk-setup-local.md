@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 62a1f43fb73f0eda77ebb8f62f64c95ff4ad37a1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 5df8b478c550522d4602398afd208c1e001c96a2
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734207"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883308"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Öğretici: geliştirme ortamınızda Azure Machine Learning kullanmaya başlayın (Bölüm 1/4)
 
@@ -67,8 +67,10 @@ tutorial
 - `.azureml`: Azure Machine Learning yapılandırma dosyalarını depolamak için gizli alt dizin.
 
 > [!TIP]
-> Mac kullanıyorsanız, bir bulucu penceresinde **komutu + SHIFT + kullanın.** bir noktayla başlayan dizinleri görme ve oluşturma özelliğini değiştirmek için.  Ya da dizini oluşturmak için komut terminalini kullanın.
-
+> Gizli. azureml alt dizinini bir Terminal penceresinde oluşturabilirsiniz.  Veya aşağıdakileri kullanın:
+> * Mac Finder penceresinde, **Command + SHIFT + kullanın.** bir noktayla başlayan dizinleri görme ve oluşturma özelliğini değiştirmek için.  
+> * Windows 10 ' da bkz. [Gizli dosya ve klasörleri görüntüleme](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-10-97fbc472-c603-9d90-91d0-1166d1d9f4b5). 
+> * Linux grafik arabiriminde, **CTRL + h** veya **Görünüm** menüsünü kullanın ve **gizli dosyaları göstermek** için kutuyu işaretleyin.
 
 > [!div class="nextstepaction"]
 > [Bir sorunla karşılaşdığım](https://www.research.net/r/7C8Z3DN?issue=create-dir) [bir dizin](?success=create-dir#workspace) oluşturdum

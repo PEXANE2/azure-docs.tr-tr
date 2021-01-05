@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/18/2020
+ms.date: 01/04/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c075e19422341ad7ccfd3ad951517876ab26a495
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1b0771687aa7ccf9b749c107a6b1c507cb3ba08d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858425"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881948"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Hesaplar ve izinler
 
@@ -44,7 +44,7 @@ Azure AD Connect çalıştırmak için kullanılan bu üç hesaba ek olarak, Azu
 
 - **AD DS Kurumsal Yönetici hesabı**: isteğe bağlı olarak, yukarıdaki "AD DS bağlayıcı hesabı" oluşturmak için kullanılır.
 
-- **Azure AD Genel yönetici hesabı**: Azure ad bağlayıcı hesabı oluşturmak ve Azure AD 'yi yapılandırmak için kullanılır.
+- **Azure AD Genel yönetici hesabı**: Azure ad bağlayıcı hesabı oluşturmak ve Azure AD 'yi yapılandırmak için kullanılır.  Azure portalında genel yönetici hesaplarını görüntüleyebilirsiniz.  Bkz. [rolleri görüntüleme](../../active-directory/roles/manage-roles-portal.md#view-all-roles).
 
 - **SQL SA hesabı (isteğe bağlı)**: SQL Server tam sürümü kullanılırken ADSync veritabanını oluşturmak için kullanılır.  Bu SQL Server, Azure AD Connect yüklemesinde yerel veya uzak olabilir.  Bu hesap, kuruluş yöneticisiyle aynı hesap olabilir.  Veritabanının sağlanması artık SQL Yöneticisi tarafından bant dışında gerçekleştirilebilir ve ardından veritabanı sahibi haklarıyla Azure AD Connect Yöneticisi tarafından yüklenebilir.  Bu bilgi için bkz. [SQL yönetici temsilcisi izinlerini kullanarak Azure AD Connect yüklemesi](how-to-connect-install-sql-delegation.md)
 

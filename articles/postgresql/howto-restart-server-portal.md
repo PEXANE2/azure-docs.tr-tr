@@ -1,17 +1,17 @@
 ---
 title: Sunucuyu yeniden Başlat-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
 description: Bu makalede, Azure portal kullanarak bir PostgreSQL için Azure veritabanı 'nı nasıl yeniden başlatabileceğinizi açıklar.
-author: ajlam
-ms.author: andrela
+author: lfittl-msft
+ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 12/20/2020
-ms.openlocfilehash: d3dc01ee163b941f450eeac98adfdf1ea0e91190
-ms.sourcegitcommit: 0830e02635d2f240aae2667b947487db01f5fdef
+ms.openlocfilehash: faa61ff477f44347755890dc59ebf4b917afda6f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97706907"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882951"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>PostgreSQL için Azure veritabanı 'nı yeniden başlatın-Azure portal kullanarak tek bir sunucu
 Bu konuda, PostgreSQL için Azure veritabanı sunucusunu nasıl yeniden başlatabileceğinizi açıklar. Sunucu işlemi gerçekleştirdiğinden kısa süreli bir kesinti oluşmasına neden olan bakım nedenleriyle sunucunuzu yeniden başlatmanız gerekebilir.

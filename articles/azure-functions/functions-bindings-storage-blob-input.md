@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 1a46c272ee2f7aa2d6621e3dc2db81605ba0363f
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 6ac3a492c5544a4a782871ff50cda9a248fe50f4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833121"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882390"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama girişi bağlama
 
@@ -85,117 +85,6 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-<!--Same example for input and output. -->
-
-Aşağıdaki örnek, dosya ve bağlamaları kullanan [JavaScript kodundaki](functions-reference-node.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
-
-Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "myInputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "myOutputBlob",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
-
-JavaScript kodu aşağıda verilmiştir:
-
-```javascript
-module.exports = function(context) {
-    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
-    context.bindings.myOutputBlob = context.bindings.myInputBlob;
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-<!--Same example for input and output. -->
-
-Aşağıdaki örnek, dosya ve bağlamaları kullanan [Python kodundaki](functions-reference-python.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
-
-Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "queuemsg",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "inputblob",
-      "type": "blob",
-      "dataType": "binary",
-      "path": "samples-workitems/{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    },
-    {
-      "name": "$return",
-      "type": "blob",
-      "path": "samples-workitems/{queueTrigger}-Copy",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "out"
-    }
-  ],
-  "disabled": false,
-  "scriptFile": "__init__.py"
-}
-```
-
-[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
-
-`dataType`Özelliği hangi bağlamanın kullanıldığını belirler. Farklı bağlama stratejilerini desteklemek için aşağıdaki değerler mevcuttur:
-
-| Bağlama değeri | Varsayılan | Açıklama | Örnek |
-| --- | --- | --- | --- |
-| `undefined` | Y | Zengin bağlamayı kullanır | `def main(input: func.InputStream)` |
-| `string` | N | Genel bağlamayı kullanır ve giriş türünü `string` | `def main(input: str)` |
-| `binary` | N | Genel bağlamayı kullanır ve giriş blobunu `bytes` Python nesnesi olarak yayınlar | `def main(input: bytes)` |
-
-
-Python kodu aşağıda verilmiştir:
-
-```python
-import logging
-import azure.functions as func
-
-
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
-    return inputblob
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Bu bölüm aşağıdaki örnekleri içerir:
@@ -252,6 +141,145 @@ Bu bölüm aşağıdaki örnekleri içerir:
 
 [Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, `@BlobInput` değeri bir Blobun geldiği parametrelerde ek açıklamayı kullanın.  Bu ek açıklama, kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir `Optional<T>` .
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+<!--Same example for input and output. -->
+
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [JavaScript kodundaki](functions-reference-node.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
+
+Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "myInputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "myOutputBlob",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+JavaScript kodu aşağıda verilmiştir:
+
+```javascript
+module.exports = function(context) {
+    context.log('Node.js Queue trigger function processed', context.bindings.myQueueItem);
+    context.bindings.myOutputBlob = context.bindings.myInputBlob;
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, gelen blob verilerini [PowerShell](functions-reference-powershell.md) işlevi için kullanılabilir hale getiren dosyasında _function.js_ tanımlanan bir blob giriş bağlamasını gösterir.
+
+JSON yapılandırması şu şekildedir:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
+
+İşlev kodu aşağıda verilmiştir:
+
+```powershell
+# Input bindings are passed in via param block.
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+<!--Same example for input and output. -->
+
+Aşağıdaki örnek, dosya ve bağlamaları kullanan [Python kodundaki](functions-reference-python.md) *function.js* blob giriş ve çıkış bağlamalarını gösterir. İşlevi bir Blobun kopyasını oluşturur. İşlev, kopyalanacak Blobun adını içeren bir kuyruk iletisi tarafından tetiklenir. Yeni blob *{originalblobname}-Copy* olarak adlandırılmıştır.
+
+Dosyadaki *function.js* , `queueTrigger` özelliklerde blob adını belirtmek için meta veri özelliği kullanılır `path` :
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "queuemsg",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "inputblob",
+      "type": "blob",
+      "dataType": "binary",
+      "path": "samples-workitems/{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    },
+    {
+      "name": "$return",
+      "type": "blob",
+      "path": "samples-workitems/{queueTrigger}-Copy",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "out"
+    }
+  ],
+  "disabled": false,
+  "scriptFile": "__init__.py"
+}
+```
+
+[Yapılandırma](#configuration) bölümünde bu özellikler açıklanmaktadır.
+
+`dataType`Özelliği hangi bağlamanın kullanıldığını belirler. Farklı bağlama stratejilerini desteklemek için aşağıdaki değerler mevcuttur:
+
+| Bağlama değeri | Varsayılan | Açıklama | Örnek |
+| --- | --- | --- | --- |
+| `undefined` | Y | Zengin bağlamayı kullanır | `def main(input: func.InputStream)` |
+| `string` | N | Genel bağlamayı kullanır ve giriş türünü `string` | `def main(input: str)` |
+| `binary` | N | Genel bağlamayı kullanır ve giriş blobunu `bytes` Python nesnesi olarak yayınlar | `def main(input: bytes)` |
+
+Python kodu aşağıda verilmiştir:
+
+```python
+import logging
+import azure.functions as func
+
+
+def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.InputStream:
+    logging.info('Python Queue trigger function processed %s', inputblob.name)
+    return inputblob
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -293,17 +321,21 @@ public static void Run(
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
 
 ---
 
@@ -311,7 +343,7 @@ public static void Run(
 
 Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır `Blob` .
 
-|function.jsözelliği | Öznitelik özelliği |Açıklama|
+|function.jsözelliği | Öznitelik özelliği |Description|
 |---------|---------|----------------------|
 |**türüyle** | yok | Olarak ayarlanmalıdır `blob` . |
 |**Görünüm** | yok | Olarak ayarlanmalıdır `in` . [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
@@ -333,17 +365,21 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 [!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js* tanımlanan değerle eşleşen blob verilerine erişin.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Blob verilerine, dosyanın _function.js_ , bağlamanın Name parametresiyle belirtilen adla eşleşen bir parametre aracılığıyla erişin.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Blob verilerine [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)olarak yazılan parametre aracılığıyla erişin. Ayrıntılar için [giriş örneğine](#example) bakın.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobInput`Özniteliği, işlevi tetikleyen bloba erişmenizi sağlar. Özniteliği ile bir bayt dizisi kullanırsanız, `dataType` olarak ayarlayın `binary` . Ayrıntılar için [giriş örneğine](#example) bakın.
+Blob verilerine [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)olarak yazılan parametre aracılığıyla erişin. Ayrıntılar için [giriş örneğine](#example) bakın.
 
 ---
 

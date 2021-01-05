@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 4ddb02bbcf284566550517f8fa343a728e2275a9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 895b4529a8b99ecc66e3566b4696a0e61c337153
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483636"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881931"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -38,16 +38,23 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 >
 > Ayrıntılar için bkz.: [Media Services v3 için Azure Portal sınırlamaları](frequently-asked-questions.md#what-are-the-azure-portal-limitations-for-media-services-v3).
 
+## <a name="december-2020"></a>Aralık 2020
+
+### <a name="regional-availability"></a>Bölgesel kullanılabilirlik
+
+Azure Media Services artık Azure portal Norveç Doğu bölgesinde kullanılabilir.  Bu bölgede restV2 yok.
+
 ## <a name="october-2020"></a>Ekim 2020
 
 ### <a name="basic-audio-analysis"></a>Temel ses analizi
+
 Ses analizi önceden ayarı artık temel mod fiyatlandırma katmanını içerir. Yeni temel ses Çözümleyicisi modu, konuşma dökümünü ayıklamak ve çıkış başlıklarını ve alt yazıları biçimlendirmek için düşük maliyetli bir seçenek sağlar. Bu mod, bir VTT alt başlık/resim yazısı dosyası için konuşmayı metne dönüştürme ve oluşturma işlemi gerçekleştirir. Bu modun çıktısı yalnızca anahtar sözcükler, döküm ve zamanlama bilgileri dahil olmak üzere bir Öngörüler JSON dosyası içerir. Bu modda otomatik dil algılama ve konuşmacı seçme dahil değildir. [Desteklenen dillerin](analyzing-video-audio-files-concept.md#built-in-presets) listesine bakın.
 
 Dizin Oluşturucu v1 ve Dizin Oluşturucu v2 kullanan müşteriler temel ses analizi hazır ayarı 'na geçiş yapılmalıdır.
 
 Temel ses Çözümleyicisi modu hakkında daha fazla bilgi için bkz. [video ve ses dosyalarını çözümleme](analyzing-video-audio-files-concept.md).  Temel ses çözümleyici modunu REST API kullanmayı öğrenmek için bkz. [temel ses dönüşümü oluşturma](how-to-create-basic-audio-transform.md).
 
-## <a name="live-events"></a>Canlı Etkinlikler
+### <a name="live-events"></a>Canlı Etkinlikler
 
 Canlı olaylar durdurulduğunda çoğu özelliğe yönelik güncelleştirmelere artık izin verilir. Ayrıca, kullanıcıların canlı etkinliğin giriş ve önizleme URL 'Leri için statik ana bilgisayar adı için bir önek belirtmesinin izni vardır. VanityUrl artık `useStaticHostName` özelliğin amacını daha iyi yansıtacak şekilde çağırılır.
 
@@ -57,7 +64,7 @@ Canlı bir olay, çeşitli giriş en boy oranlarını almayı destekler. Esnetme
 
 Canlı kodlama artık 0,5 ile 20 saniye arasında sabit anahtar kare aralığı parçalarının çıktısını almak için özellik ekler.
 
-## <a name="accounts"></a>Hesaplar
+### <a name="accounts"></a>Hesaplar
 
 > [!WARNING]
 > 2020-05-01 API sürümüyle Media Services bir hesap oluşturursanız, RESTv2 ile çalışmaz 
@@ -242,7 +249,7 @@ Media Services artık Kore Orta ve Kore Güney bölgelerinde kullanılabilir.
 
 Daha fazla bilgi için bkz. [Media Services v3 'nin bulunduğu bulutlar ve bölgeler](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Performans iyileştirmeleri
+### <a name="performance-improvements"></a>Performans geliştirmeleri
 
 Media Services performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 

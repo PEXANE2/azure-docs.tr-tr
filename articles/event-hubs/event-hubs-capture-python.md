@@ -2,13 +2,13 @@
 title: Python uygulamasından Azure Event Hubs yakalanan verileri okuma (en son)
 description: Bu makalede, bir olay hub 'ına gönderilen verileri yakalamak ve bir Azure depolama hesabından yakalanan olay verilerini okumak için Python kodu yazma yöntemi gösterilmektedir.
 ms.topic: quickstart
-ms.date: 06/23/2020
-ms.openlocfilehash: f513b35e300141f16ee4c4880bc54aaf37945d65
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.date: 01/04/2021
+ms.openlocfilehash: acc2ce04add5fd837e9edc789e9616a9f04fb4b9
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109921"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883206"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub"></a>Azure depolama 'da Event Hubs verileri yakalayın ve Python kullanarak okuyun (Azure-eventhub)
 
@@ -27,7 +27,11 @@ Bu hızlı başlangıçta:
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- PıP yüklü ve güncelleştirilmiş Python 2,7 ve 3,5 ya da üzeri.  
+- PıP ve aşağıdaki paketler yüklü Python. Bu makaledeki kod, bu sürümlere karşı test edilmiştir. 
+    - Python 3.7
+    - Azure-eventhub 5.2.0
+    - Azure-Storage-blob 12.6.0
+    - avro-python3 1.10.1
 - Azure aboneliği. Bir tane yoksa, başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/) .  
 - Etkin bir Event Hubs ad alanı ve Olay Hub 'ı.
 [Ad alanında bir Event Hubs ad alanı ve bir olay hub 'ı oluşturun](event-hubs-create.md). Event Hubs ad alanının adını, Olay Hub 'ının adını ve ad alanı için birincil erişim anahtarını kaydedin. Erişim anahtarını almak için bkz. [Event Hubs bağlantı dizesi edinme](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Varsayılan anahtar adı *RootManageSharedAccessKey*' dir. Bu hızlı başlangıçta yalnızca birincil anahtar gereklidir. Bağlantı dizesine ihtiyacınız yoktur.  
@@ -155,6 +159,13 @@ Bu örnekte yakalanan veriler Azure Blob depolama alanında depolanır. Bu böl�
    pip install azure-eventhub
    pip install avro-python3
    ```
+
+    > [!NOTE]
+    > Bu makaledeki kod, bu sürümlere karşı test edilmiştir. 
+    > - Python 3.7
+    > - Azure-eventhub 5.2.0
+    > - Azure-Storage-blob 12.6.0
+    > - avro-python3 1.10.1
 2. Dizininizi *Sender.py* ve *capturereader.py* kaydettiğiniz dizinle değiştirin ve şu komutu çalıştırın:
    
    ```

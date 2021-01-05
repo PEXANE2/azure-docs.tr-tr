@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: e3d657f5f666caf159a082d121d551b839699158
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808343"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883002"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik doğrulaması kümesine sahip kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -222,8 +222,15 @@ Anahtarın `value` anahtar kasasındaki gizli anahtarla aynı olduğuna dikkat e
 
 ## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>İki kimlik bilgileri kümesi için döndürme işlevlerini Key Vault
 
-- [Depolama hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
-- [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
+İki kimlik bilgileri kümesi ve birkaç kullanım işlevi için döndürme işlevleri şablonu:
+
+- [PowerShell 'de işlev şablonu](https://github.com/Azure/KeyVault-Secrets-Rotation-Template-PowerShell)
+- [Redis Cache](https://github.com/Azure/KeyVault-Secrets-Rotation-Redis-PowerShell)
+- [Depolama hesabı](https://github.com/Azure/KeyVault-Secrets-Rotation-StorageAccount-PowerShell)
+- [Cosmos DB](https://github.com/Azure/KeyVault-Secrets-Rotation-CosmosDB-PowerShell)
+
+> [!NOTE]
+> Yukarıdaki döndürme işlevleri, Microsoft tarafından değil, topluluğun bir üyesi tarafından oluşturulur. Topluluk Azure Işlevleri, herhangi bir Microsoft destek programı veya hizmeti kapsamında desteklenmez ve herhangi bir garanti olmaksızın olduğu gıbı kullanılabilir hale getirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

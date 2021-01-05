@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 12/21/2020
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9e842e4d2a4dbd118840498587696df085b07700
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: d56ed0cdae9046cb7d76f7d74545309ee6292ecd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722904"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883104"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>SAP iş yükü senaryolarını barındırmak ve çalıştırmak için Azure kullanın
 
@@ -83,6 +83,8 @@ Bu bölümde, Microsoft Power BI tümleştirme hakkındaki belgeleri SAP veri ka
 
 ## <a name="change-log"></a>Değişiklik Günlüğü
 
+- 01/04/2021: Azure 'da SAP HANA, HLI tarafından desteklenen yeni Azure bölgelerini ekleme [(büyük örnekler)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- 12/29/2020: [Azure kullanılabilirlik alanları Ile SAP iş yükü yapılandırmalarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) belirli Azure bölgeleri için mimari önerileri ekleyin
 - 12/21/2020: [HLI Için kullanılabilir SKU](./hana-available-skus.md) 'Larda Hana büyük örnek SKU 'larına yeni sertifikalar ekleyin
 - 12/12/2020: SAP [, Azure dağıtımları için desteklenen SAP YAZıLıMıNı](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-supported-product-on-azure#oracle-dbms-support) SAP 'ye göre Oracle Enterprise Linux desteğiyle ilgili ayrıntıları açıklığa kavuşturan SAP notuna yönelik işaretçi eklendi
 - 11/26/2020: [SAP iş yükü için](./planning-guide-storage.md) Azure [sanal makine depolama yapılandırmalarının](./hana-vm-operations-storage.md) ve Azure depolama türlerini tek [VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) 'larını değiştirdi SAP HANA uyarlayın

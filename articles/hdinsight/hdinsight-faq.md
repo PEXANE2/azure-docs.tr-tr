@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 0240510a2232bd12a94d5cdd59672270289e5e8f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011838"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882407"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -178,7 +178,7 @@ VM 'Leri bir etki alanına katmak için bir etki alanı denetleyiciniz olması g
 
 ### <a name="can-i-use-a-self-signed-certificate-in-an-aad-ds-secure-ldap-setup-and-provision-an-esp-cluster"></a>AAD-DS Güvenli LDAP kurulumunda kendinden imzalı bir sertifika kullanabilir ve bir ESP kümesi sağlayabilir miyim?
 
-Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması önerilir. Ancak, otomatik olarak imzalanan bir sertifika kullanmak, ESP üzerinde de desteklenir. Daha fazla bilgi için bkz.
+Sertifika yetkilisi tarafından verilen bir sertifikanın kullanılması önerilir. Ancak, otomatik olarak imzalanan bir sertifika kullanmak, ESP üzerinde de desteklenir. Daha fazla bilgi için bkz:
 
 - [Azure Active Directory Domain Services’ı etkinleştirme](domain-joined/apache-domain-joined-configure-using-azure-adds.md#enable-azure-ad-ds)
 
@@ -198,7 +198,7 @@ Zamanlamayı kontrol etmeniz gereken senaryolarda aşağıdaki adımları kullan
 
 1. Aşağıdaki komutu kullanarak otomatik yürütmeyi devre dışı bırakın:
    
-   `/usr/local/vbin/azsecd config -s clamav -d Disabled`
+  sudo `usr/local/bin/azsecd config -s clamav -d Disabled` sudo hizmeti azsecd yeniden başlatma 
    
 1. Kök olarak aşağıdaki komutu çalıştıran bir cron işi ekleyin:
    
@@ -255,7 +255,7 @@ done
 
 Şu anda, BLOB depolama ve Azure Data Lake Storage 1. veya Gen2 için Ranger eklentisi yok. ESP kümeleri için Azure Data Lake Storage kullanmanız gerekir. En azından, dosya sistemi düzeyinde,,,,,,,,,,,,,,,,, Ayrıca, Azure Data Lake Storage kullanırken, ESP kümeleri, bazı dosya sistemi erişim denetimini küme düzeyinde Azure Active Directory kullanarak yapacaktır. 
 
-Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz.
+Azure Depolama Gezgini kullanarak kullanıcılarınızın güvenlik gruplarına veri erişim ilkeleri atayabilirsiniz. Daha fazla bilgi için bkz:
 
 - [Nasıl yaparım?, Azure AD kullanıcılarının Hive veya diğer hizmetleri kullanarak Data Lake Storage 2. verileri sorgulaması için izinleri ayarlamak ister misiniz?](hdinsight-hadoop-use-data-lake-storage-gen2.md#how-do-i-set-permissions-for-azure-ad-users-to-query-data-in-data-lake-storage-gen2-by-using-hive-or-other-services)
 - [Azure Data Lake Storage 2. ile Azure Depolama Gezgini kullanarak dosya ve Dizin düzeyi izinleri ayarlama](../storage/blobs/data-lake-storage-explorer.md)

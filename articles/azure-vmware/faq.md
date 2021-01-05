@@ -2,13 +2,13 @@
 title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
-ms.date: 12/22/2020
-ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/4/2020
+ms.openlocfilehash: d0228739a6ee4eac20d2fa04e47cf86b6fddb84e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835202"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881234"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
@@ -201,7 +201,7 @@ Azure sanal WAN, iki bağlı ExpressRoute bağlantı hattı ve sanal WAN Express
 
 #### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>Şirket içi iletişimler için vWAN ile birlikte VPN S2S kullanılırken HCX aracılığıyla genel Internet iletişimlerini desteklenemeyen bir geçici çözüm olarak kullanabilir miyim?
 
-Şu anda, HCX için desteklenen tek yöntem ExpressRoute ' dır.
+Şu anda, VMware HCX için desteklenen tek yöntem ExpressRoute 'u.
 
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar
 

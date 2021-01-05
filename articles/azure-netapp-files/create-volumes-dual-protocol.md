@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 12/15/2020
+ms.date: 01/04/2020
 ms.author: b-juche
-ms.openlocfilehash: ceaf0209dd14c8d97088d7f8e8e6990429607089
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e74b729f837c8e6ebe86514a01b6c8bdddc616e4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591831"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881098"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için bir çift protokol (NFSv3 ve SMB) birimi oluşturun
 
@@ -39,7 +39,7 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
 * DNS sunucusunda bir geriye doğru arama bölgesi oluşturun ve ardından bu geriye doğru arama bölgesine AD ana makinesi için bir işaretçi (PTR) kaydı ekleyin. Aksi halde, çift protokol birimi oluşturma işlemi başarısız olur.
 * NFS istemcisinin güncel olduğundan ve işletim sistemi için en son güncelleştirmeleri çalıştırdığından emin olun.
 * AD üzerinde Active Directory (AD) LDAP sunucusunun açık ve çalışıyor olduğundan emin olun. Bunu, AD makinesine [Active Directory Basit Dizin Hizmetleri (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) rolünü yükleyip yapılandırarak yapabilirsiniz.
-* Otomatik olarak imzalanan kök CA sertifikasını oluşturmak ve dışarı aktarmak için [Active Directory Sertifika Hizmetleri (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) rolünü kullanarak ad üzerinde bir sertifika YETKILISININ (CA) oluşturulduğundan emin olun.   
+* Otomatik olarak imzalanan kök CA sertifikasını oluşturmak ve dışarı aktarmak için [Active Directory Sertifika Hizmetleri (AD CS)](/windows-server/networking/core-network-guide/cncg/server-certs/install-the-certification-authority) rolünü kullanarak ad için bir sertifika YETKILISININ (CA) oluşturulduğundan emin olun.   
 * Çift protokol birimleri Şu anda Azure Active Directory Domain Services desteklemez (AEKLEMELERI).  
 * Bir çift protokol birimi tarafından kullanılan NFS sürümü NFSv3 ' dir. Bu nedenle, aşağıdaki önemli noktalar geçerlidir:
     * İkili protokol, NFS istemcilerinden gelen Windows ACL genişletilmiş özniteliklerini desteklemez `set/get` .
@@ -132,7 +132,8 @@ Azure NetApp Files, NFS (NFSv3 ve NFSv 4.1), SMB3 veya Dual Protocol kullanarak 
     * Etki alanına katılmış ve kök sertifikası yüklü olan Windows tabanlı bir istemci 
     * Kök sertifikayı içeren etki alanındaki başka bir makine  
 
-3. Kök sertifikayı dışarı aktarın.  
+3. Kök CA sertifikasını dışarı aktarın.  
+    Kök CA sertifikaları, kişisel veya güvenilen kök sertifika yetkililerinden aktarılabilir.   
     Sertifikanın Base-64 ile kodlanmış X. 509.440 (. CER) biçimi: 
 
     ![Sertifika Dışarı Aktarma Sihirbazı](../media/azure-netapp-files/certificate-export-wizard.png)

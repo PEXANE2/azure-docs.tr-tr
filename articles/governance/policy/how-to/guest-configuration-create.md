@@ -3,12 +3,12 @@ title: Windows için Konuk Yapılandırma ilkeleri oluşturma
 description: Windows için Azure Ilke Konuk yapılandırma ilkesi oluşturmayı öğrenin.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: d01f4fff28debc3fabcfb32b32b02c5029ce7323
-ms.sourcegitcommit: 90caa05809d85382c5a50a6804b9a4d8b39ee31e
+ms.openlocfilehash: 85ffda54d58db0544858ca8ab61335b61f18299e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97755982"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881795"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows için Konuk Yapılandırma ilkeleri oluşturma
 
@@ -138,9 +138,32 @@ class ResourceName : OMI_BaseResource
 };
 ```
 
+Kaynak gerekli özelliklere sahipse, bu, ayrıca `Get-TargetResource` sınıfıyla paralel olarak gelmelidir `reasons` . `reasons`Dahil edilmemişse, hizmet, girdi değerlerini ve tarafından döndürülen değerleri karşılaştıran bir "catch-all" davranışı içerir `Get-TargetResource` `Get-TargetResource` ve olarak ayrıntılı bir karşılaştırma sağlar `reasons` .
+
 ### <a name="configuration-requirements"></a>Yapılandırma gereksinimleri
 
 Özel yapılandırmanın adı her yerde tutarlı olmalıdır. İçerik paketi için. zip dosyasının adı, MOF dosyasındaki yapılandırma adı ve Azure Resource Manager şablonundaki (ARM şablonu) Konuk atama adı aynı olmalıdır.
+
+### <a name="policy-requirements"></a>İlke gereksinimleri
+
+Konuk yapılandırma `metadata` atamalarının sağlanması ve raporlanmasını otomatikleştirmek için, ilke tanımı bölümünde Konuk yapılandırma hizmeti 'nin iki özelliği bulunmalıdır. `category`Özelliği "Konuk yapılandırması" olarak ayarlanmalıdır ve adlı bir bölüm `Guest Configuration` , Konuk yapılandırma ataması hakkında bilgi içermelidir. `New-GuestConfigurationPolicy`Cmdlet bu metni otomatik olarak oluşturur.
+Bu sayfada adım adım yönergelere bakın.
+
+Aşağıdaki örnek `metadata` bölümünü gösterir.
+
+```json
+    "metadata": {
+      "category": "Guest Configuration",
+      "guestConfiguration": {
+        "name": "test",
+        "version": "1.0.0",
+        "contentType": "Custom",
+        "contentUri": "CUSTOM-URI-HERE",
+        "contentHash": "CUSTOM-HASH-VALUE-HERE",
+        "configurationParameter": {}
+      }
+    },
+```
 
 ### <a name="scaffolding-a-guest-configuration-project"></a>Konuk yapılandırma projesi yapı iskelesi
 

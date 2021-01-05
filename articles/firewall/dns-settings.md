@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/04/2021
 ms.author: victorh
-ms.openlocfilehash: 197d48a2f5368111ec194a18f86aedf5ad78e1b2
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 855c06b610fb8166f6f2dfcf37af34efb3713ffe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565628"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883235"
 ---
 # <a name="azure-firewall-dns-settings"></a>Azure Güvenlik duvarı DNS ayarları
 
@@ -27,9 +27,9 @@ DNS sunucusu, etki alanı adlarını IP adreslerine tutar ve çözümler. Azure 
 
 ### <a name="configure-custom-dns-servers---azure-portal"></a>Özel DNS sunucularını Yapılandırma-Azure portal
 
-1. Azure Güvenlik Duvarı **ayarları** altında **DNS ayarları** ' nı seçin.
+1. Azure Güvenlik Duvarı **ayarları** altında **DNS ayarları**' nı seçin.
 2. **DNS sunucuları** altında, sanal ağınızda daha önce BELIRTILEN mevcut DNS sunucularını yazabilir veya ekleyebilirsiniz.
-3. **Kaydet** ’i seçin.
+3. **Kaydet**’i seçin.
 
 Güvenlik duvarı artık DNS trafiğini ad çözümlemesi için belirtilen DNS sunucularına yönlendirir.
 
@@ -65,13 +65,16 @@ $azFw | Set-AzFirewall
 
 Azure Güvenlik duvarını, DNS proxy 'si olarak davranacak şekilde yapılandırabilirsiniz. DNS proxy, istemci sanal makinelerinden bir DNS sunucusuna olan DNS isteklerine yönelik bir ara sunucu olur. Özel bir DNS sunucusu yapılandırırsanız DNS çözümleme uyuşmazlığını önlemek için DNS proxy 'yi etkinleştirin ve ağ kurallarında FQDN (tam etki alanı adı) filtrelemesini etkinleştirin.
 
+:::image type="content" source="media/dns-settings/dns-proxy-2.png" alt-text="D N S proxy yapılandırması özel D N S sunucusunu kullanarak.":::
+
+
 DNS proxy 'yi etkinleştirmezseniz, istemciden gelen DNS istekleri farklı bir zamanda bir DNS sunucusuna seyahat edebilir veya güvenlik duvarından karşılaştırıldığında farklı bir yanıt döndürebilir. DNS proxy, tutarsızlığın önüne geçmek için Azure Güvenlik duvarını istemci isteklerinin yoluna koyar.
 
 Azure Güvenlik Duvarı bir DNS proxy 'si olduğunda, iki önbelleğe alma işlevi türü mümkündür:
 
-- **Olumlu önbellek** : DNS çözümlemesi başarılı. Güvenlik Duvarı, paketin veya nesnenin TTL 'sini (yaşam süresi) kullanır. 
+- **Olumlu önbellek**: DNS çözümlemesi başarılı. Güvenlik Duvarı, paketin veya nesnenin TTL 'sini (yaşam süresi) kullanır. 
 
-- **Negatif önbellek** : DNS çözümlemesi yanıt vermez veya hiçbir çözüm vermez. Güvenlik Duvarı bu bilgileri bir saat boyunca önbelleğe alır.
+- **Negatif önbellek**: DNS çözümlemesi yanıt vermez veya hiçbir çözüm vermez. Güvenlik Duvarı bu bilgileri bir saat boyunca önbelleğe alır.
 
 DNS proxy, tüm çözümlenen IP adreslerini ağ kurallarında FQDN 'lerden depolar. En iyi uygulama olarak, bir IP adresine çözümleyecek FQDN 'leri kullanın.  
 
@@ -84,24 +87,24 @@ DNS proxy yapılandırması üç adım gerektirir:
 
 #### <a name="configure-dns-proxy---azure-portal"></a>DNS proxy 'yi Yapılandırma-Azure portal
 
-DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı güvenlik duvarı özel IP adresini kullanacak şekilde yapılandırmanız gerekir. Ardından, Azure Güvenlik Duvarı **DNS ayarları** ' nda DNS proxy 'yi etkinleştirin.
+DNS proxy 'yi yapılandırmak için, sanal ağ DNS sunucularınız ayarınızı güvenlik duvarı özel IP adresini kullanacak şekilde yapılandırmanız gerekir. Ardından, Azure Güvenlik Duvarı **DNS ayarları**' nda DNS proxy 'yi etkinleştirin.
 
 ##### <a name="configure-virtual-network-dns-servers"></a>Sanal ağ DNS sunucularını yapılandırma 
 
 1. DNS trafiğinin Azure Güvenlik Duvarı örneği aracılığıyla yönlendirileceği sanal ağı seçin.
-2. **Ayarlar** altında, **DNS sunucuları** ' nı seçin.
-3. **DNS sunucuları** altında **özel** ' i seçin.
+2. **Ayarlar** altında, **DNS sunucuları**' nı seçin.
+3. **DNS sunucuları** altında **özel**' i seçin.
 4. Güvenlik duvarının özel IP adresini girin.
-5. **Kaydet** ’i seçin.
+5. **Kaydet**’i seçin.
 6. Sanal ağa bağlı VM 'Leri yeniden başlatarak yeni DNS sunucusu ayarları atanır. VM 'Ler yeniden başlatılana kadar geçerli DNS ayarlarını kullanmaya devam eder.
 
 ##### <a name="enable-dns-proxy"></a>DNS proxy 'yi etkinleştir
 
 1. Azure Güvenlik Duvarı örneğinizi seçin.
-2. **Ayarlar** altında **DNS ayarları** ' nı seçin.
+2. **Ayarlar** altında **DNS ayarları**' nı seçin.
 3. **DNS proxy** varsayılan olarak devre dışıdır. Bu ayar etkinleştirildiğinde, güvenlik duvarı bağlantı noktası 53 ' i dinler ve DNS isteklerini yapılandırılmış DNS sunucularına iletir.
 4. Ayarların ortamınıza uygun olduğundan emin olmak için **DNS sunucularının** yapılandırmasını gözden geçirin.
-5. **Kaydet** ’i seçin.
+5. **Kaydet**’i seçin.
 
 :::image type="content" source="media/dns-settings/dns-proxy.png" alt-text="D N S proxy 'sinin ayarlarını gösteren ekran görüntüsü.":::
 

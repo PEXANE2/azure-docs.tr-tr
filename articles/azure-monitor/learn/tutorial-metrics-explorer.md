@@ -6,17 +6,17 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 6ce9183fad50c43ea7070f5fa09e0d445caf89df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451254"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881302"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Öğretici: Azure Izleyici 'de ölçüm grafiği oluşturma
 Ölçüm değerleri, ölçüm değerlerinden grafikler oluşturmanıza, eğilimleri görsel olarak ilişkilendirmenize ve ölçüm değerlerinde ani artışları ve DIP 'leri araştırmanıza olanak tanıyan Azure portal Azure Izleyici 'nin bir özelliğidir. Azure kaynaklarınızın sistem durumunu ve kullanımını araştırmak veya özel ölçülerden grafikler çizmek için ölçüm gezginini kullanın. 
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Grafik çizmek istediğiniz bir ölçüm seçin
@@ -40,7 +40,7 @@ Bu öğreticiyi tamamlayabilmeniz için izlemeniz gereken bir Azure kaynağını
 
 1. **Azure izleyici** menüsünde veya bir kaynağın menüsünün **izleme** bölümünden **ölçümler** ' i seçin.
 
-1. Ölçümlerini görmek istediğiniz kaynak olan **kapsamı** seçin. Ölçüm Gezginini bir kaynağın menüsünden açtıysanız kapsam zaten doldurulmuştur.
+1. Ölçümlerini görmek istediğiniz kaynak olan **kapsamı** seçin. Ölçüm Gezginini bir kaynağın menüsünden açtıysanız kapsam zaten doldurulmuştur. Kaynak kapsamı seçicisinin çeşitli özellikleri hakkında daha fazla bilgi edinmek için [Bu makaleyi](../platform/metrics-charts.md#resource-scope-picker)ziyaret edin.
 
     ![Kapsam seçin](media/tutorial-metrics-explorer/scope-picker.png)
 

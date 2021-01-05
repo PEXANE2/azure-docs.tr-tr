@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2018
+ms.date: 01/04/2021
 ms.author: genli
-ms.openlocfilehash: 0a69df8a20c4e1502de151c38c60b54667c2d4dc
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: e1e7e78cab1f3a240737b5e25e0dff28c420add8
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814491"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883121"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-problems-in-azure"></a>Azure 'da giden SMTP bağlantısı sorunlarını giderme
 
@@ -76,10 +76,6 @@ Azure kaynaklarını bir bulut çözümü sağlayıcısı aracılığıyla kulla
 Azure VM 'lerinden doğrudan dış e-posta sağlayıcılarına (kimliği doğrulanmış SMTP geçişi kullanmadan) e-posta gönderebilmek istiyorsanız, aşağıdaki sorun türünü kullanarak bir destek talebi açarak bir istek yapabilirsiniz: **Teknik**  >  **sanal ağ**  >  **bağlantısı**  >  **e-posta gönderemez (SMTP/bağlantı noktası 25)**. Dağıtımınızın, kimliği doğrulanmış bir geçiş kullanmak yerine doğrudan posta sağlayıcılarına e-posta göndermek zorunda olduğuna ilişkin ayrıntıları eklediğinizden emin olun. İstekler, Microsoft 'un yanı sıra incelenip onaylanacaktır. İstekler, yalnızca ek antılanrat denetimleri tamamlandıktan sonra verilecek. 
 
 Bir abonelik dışlandıktan ve VM 'Ler Azure portal durdurulduğunda ve yeniden başlatıldıktan sonra, Bu abonelikteki tüm VM 'Ler ileride tutulur. Muafiyet yalnızca, istenen abonelik ve yalnızca doğrudan internet 'e yönlendirilen VM trafiği için geçerlidir.
-
-## <a name="restrictions-and-limitations"></a>Kısıtlamalar ve sınırlamalar
-
-[Azure Güvenlik Duvarı](https://azure.microsoft.com/services/azure-firewall/) gibi Azure PaaS hizmetleri aracılığıyla yönlendirme bağlantı noktası 25 trafiği desteklenmez.
 
 ## <a name="need-help-contact-support"></a>Yardıma mı ihtiyacınız var? Desteğe başvurun
 

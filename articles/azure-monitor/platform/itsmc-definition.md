@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 20c59e5ecc24dfe5c9eadb05899bf37d39ce09e7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809488"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882295"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>BT Hizmet Yönetimi Bağlayıcısı kullanarak Azure 'ı ıTSM araçlarına bağlama
 
@@ -129,7 +129,22 @@ Eylem grupları oluşturmak için aşağıdaki yordamı kullanın:
 
 9. **Her yapılandırma öğesi için bireysel çalışma öğeleri oluştur**' u seçerseniz, her yapılandırma öğesinin kendi iş öğesi olur. Bir yapılandırma öğesi başına bir iş öğesi olacağı anlamına gelir.
 
-    * İş öğesi açılan kutusu "olay" veya "uyarı" bölümünde seçtiğiniz bir durumda: **her bir yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu temizlerseniz, her uyarı yeni bir iş öğesi oluşturur. Yapılandırma öğesi başına birden fazla uyarı olabilir.
+    * İş öğesi açılan kutusunda "olay" veya "uyarı" olarak seçtiğiniz bir durumda: 
+        * **Her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu işaretleyin, her uyarı yeni bir iş öğesi oluşturur. ITSM sisteminde yapılandırma öğesi başına birden fazla iş öğesi olabilir.
+
+            Örnek:
+            1) 3 yapılandırma öğesiyle uyarı 1: A, B, C 3 iş öğesi oluşturacak.
+            2) 1 yapılandırma öğesiyle uyarı 2: D, 1 iş öğesi oluşturacak.
+
+                **Bu akışın sonuna kadar 4 uyarı olacaktır**
+        * **Her yapılandırma öğesi için bireysel çalışma öğeleri oluştur** onay kutusunu temizlerseniz, yeni bir iş öğesi oluşturmayacak uyarılar olacaktır. iş öğeleri, uyarı kuralına göre birleştirilir.
+
+            Örnek:
+            1) 3 yapılandırma öğesiyle uyarı 1: A, B, C 1 iş öğesi oluşturacak.
+            2) 1 yapılandırma öğesiyle 1. aşama ile aynı uyarı kuralı için uyarı 2-1. aşama içindeki iş öğesiyle birleştirilir.
+            3) 1 yapılandırma öğesiyle farklı bir uyarı kuralı için uyarı 3: E 1 çalışma öğesi oluşturacak.
+
+                **Bu akışın sonuna kadar 2 uyarı olacaktır**
 
        ![ITSM olay penceresini gösteren ekran görüntüsü.](media/itsmc-overview/itsm-action-configuration.png)
 

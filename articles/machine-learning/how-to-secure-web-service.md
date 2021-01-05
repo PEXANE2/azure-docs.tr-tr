@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
-ms.date: 11/18/2020
+ms.date: 01/04/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 14e4fda6ef36dd8fc57529046473d8afa916ef2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830879"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880979"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -168,7 +168,7 @@ TLS/SSL sertifikalarının kullanım süreleri ve yenilenmesi gerekiyor. Genelli
 
 ### <a name="update-a-microsoft-generated-certificate"></a>Microsoft tarafından oluşturulan bir sertifikayı güncelleştirme
 
-Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanılırken), sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
+Sertifika ilk olarak Microsoft tarafından oluşturulduysa (hizmeti oluşturmak için *leaf_domain_label* kullanıldığında), gerektiğinde **otomatik olarak yenileyeceğiz** . El ile yenilemek isterseniz, sertifikayı güncelleştirmek için aşağıdaki örneklerden birini kullanın:
 
 > [!IMPORTANT]
 > * Mevcut sertifika hala geçerliyse, `renew=True` yapılandırmayı yenilemeye zorlamak için (SDK) veya `--ssl-renew` (CLI) kullanın. Örneğin, var olan sertifika 10 gün boyunca hala geçerliyse ve kullanmıyorsanız `renew=True` , sertifika yenilenmeyebilir.

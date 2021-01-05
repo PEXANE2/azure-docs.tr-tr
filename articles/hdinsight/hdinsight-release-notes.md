@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032567"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883359"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight sürüm notları
 
@@ -41,7 +41,7 @@ HDInsight artık kümeyi sağlamak için Azure sanal makinelerini kullanır. Bu 
 
 ## <a name="deprecation"></a>Kullanımdan kaldırma
 ### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>HDInsight 3,6 ML Hizmetleri kümesinin kullanımdan kaldırılması
-HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturmaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
+HDInsight 3,6 ML Hizmetleri küme türü 31 2020 Aralık 'Ta destek bitişi olacak. Müşteriler, 31 2020 Aralık 'tan sonra yeni 3,6 ML Hizmetleri kümeleri oluşturamayacak. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. HDInsight sürümleri için destek süre sonunu ve [küme türlerini kontrol](./hdinsight-component-versioning.md#available-versions)edin.
 
 ### <a name="disabled-vm-sizes"></a>Devre dışı VM boyutları
 HDInsight, 16 2020 Kasım 'dan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak kümeler oluşturan yeni müşterileri engelleyecek. Son üç ay içinde bu VM boyutlarını kullanmış olan mevcut müşteriler etkilenmez. HDInsight, 9 2021 Ocak 'Tan başlayarak standand_A8, standand_A9, standand_A10 ve standand_A11 VM boyutlarını kullanarak küme oluşturan tüm müşterileri engelleyecek. Mevcut kümeler olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.
@@ -53,8 +53,14 @@ HDInsight, ölçeklendirme işlemiyle ağ güvenlik grupları (NSG 'ler) ve Kull
 ## <a name="upcoming-changes"></a>Yaklaşan değişiklikler
 Gelecek sürümlerde aşağıdaki değişiklikler olur.
 
+### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Varsayılan küme VM boyutu Ev3 Family olarak değiştirilecek
+Sonraki sürümden (Ocak sonunda) başlayarak, varsayılan küme VM boyutları D ailesinden iken Ev3 Family olarak değiştirilecektir. Bu değişiklik, baş düğümler ve çalışan düğümleri için geçerlidir. Bu değişikliği önlemek için ARM şablonunda kullanmak istediğiniz VM boyutlarını belirtin.
+
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Varsayılan küme sürümü 4,0 olarak değiştirilecek
 2021 Şubat tarihinden itibaren, HDInsight kümesinin varsayılan sürümü 3,6 ' den 4,0 ' ye değiştirilecek. Kullanılabilir sürümler hakkında daha fazla bilgi için bkz. [kullanılabilir sürümler](./hdinsight-component-versioning.md#available-versions). [Hdınsight 4,0](./hdinsight-version-release.md) ' deki yenilikler hakkında daha fazla bilgi edinin
+
+### <a name="os-version-upgrade"></a>İşletim sistemi sürümü yükseltme
+HDInsight, işletim sistemi sürümünü 16,04 ' den 18,04 ' e yükseltiyor. Yükseltme, Nisan 2021 tarihinden önce tamamlanır.
 
 ### <a name="hdinsight-36-end-of-support-on-june-30-2021"></a>HDInsight 3,6 30 2021 Haziran 'da destek bitişi
 HDInsight 3,6, destek sonu olacaktır. Form Haziran 30 2021 ' den itibaren, müşteriler yeni HDInsight 3,6 kümeleri oluşturamaz. Mevcut kümeler, Microsoft desteği olmadan olduğu gibi çalışır. Olası sistem/destek kesintilerini önlemek için HDInsight 4,0 ' ye geçmeyi düşünün.

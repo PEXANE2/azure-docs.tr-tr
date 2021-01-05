@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/24/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a3a4c7a51f0d75b67465a83a2fbbf3ae8a141c4c
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 45f02850797582f97220e91d1582b04b3be711c0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97671174"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882492"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure İzleyici Günlükleri ile kullanımı ve maliyetleri yönetme    
 
@@ -132,9 +132,9 @@ Eski fiyatlandırma katmanlarının hiçbirinde bölgesel tabanlı fiyatlandırm
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
-Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar süreyle saklanacağını nasıl yapılandıracağınız açıklanır. Veri saklama, eski ücretsiz fiyatlandırma katmanını kullanmadıkça tüm çalışma alanları için 30 ila 730 gün (2 yıl) yapılandırılabilir. Daha uzun veri saklama fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . 
+Aşağıdaki adımlarda, çalışma alanınızda günlük verilerinin ne kadar süreyle saklanacağını nasıl yapılandıracağınız açıklanır. Çalışma alanı düzeyinde veri saklama, eski ücretsiz fiyatlandırma katmanını kullanmadıkça tüm çalışma alanları için 30 ila 730 güne (2 yıl) yapılandırılabilir. Daha uzun veri saklama fiyatlandırması hakkında [daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/monitor/) . Bireysel veri türleri için saklama, 4 gün kadar düşük ayarlanabilir. 
 
-### <a name="default-retention"></a>Varsayılan saklama
+### <a name="workspace-level-default-retention"></a>Çalışma alanı düzeyi varsayılan saklama
 
 Çalışma alanınız için varsayılan saklama alanını ayarlamak için 
  
@@ -158,7 +158,7 @@ Log Analytics [temizleme API'sinin](/rest/api/loganalytics/workspacepurge/purge)
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
 
-Ayrıca, 30 ila 730 güne (eski ücretsiz fiyatlandırma katmanındaki çalışma alanları hariç) bireysel veri türleri için farklı bekletme ayarları belirtebilirsiniz. Her veri türü, çalışma alanının alt kaynağıdır. Örneğin, SecurityEvent tablosu [Azure Resource Manager](../../azure-resource-manager/management/overview.md) şöyle çözülebilir:
+Ayrıca, çalışma alanı düzeyi varsayılan saklama alanını geçersiz kılan 4 ile 730 gün (eski ücretsiz fiyatlandırma katmanındaki çalışma alanları hariç) için farklı bekletme ayarları belirtebilirsiniz. Her veri türü, çalışma alanının alt kaynağıdır. Örneğin, SecurityEvent tablosu [Azure Resource Manager](../../azure-resource-manager/management/overview.md) şöyle çözülebilir:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -350,7 +350,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution 
+| render columnchart
 ```
 
 Yan tümcesi `TimeGenerated` yalnızca Azure Portal içindeki sorgu deneyiminin varsayılan 24 saatin ötesine geri baktığından emin olur. Kullanım verileri türünü kullanırken `StartTime` ve `EndTime` sonuçların sunulduğu zaman demetlerini temsil eder. 
@@ -364,7 +365,8 @@ Usage
 | where TimeGenerated > ago(32d)
 | where StartTime >= startofday(ago(31d)) and EndTime < startofday(now())
 | where IsBillable == true
-| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType | render barchart
+| summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), DataType 
+| render columnchart
 ```
 
 Ya da bir tabloyu çözüm ve son ayın türüne göre görmek için
@@ -661,4 +663,5 @@ Bazıları Log Analytics fiyatlandırma katmanına bağlı olan bazı ek Log Ana
 - Etkin bir olay toplama ilkesini yapılandırmak için [Azure Güvenlik Merkezi filtreleme ilkesini](../../security-center/security-center-enable-data-collection.md)gözden geçirin.
 - [Performans sayacı yapılandırmasını](data-sources-performance-counters.md) değiştirin.
 - Olay toplama ayarlarınızda değişiklik yapmak için, [olay günlüğü yapılandırması](data-sources-windows-events.md) konusunu gözden geçirin.
+- Syslog koleksiyonu ayarlarınızda değişiklik yapmak için, [syslog yapılandırması](data-sources-syslog.md) konusunu gözden geçirin.
 - Syslog koleksiyonu ayarlarınızda değişiklik yapmak için, [syslog yapılandırması](data-sources-syslog.md) konusunu gözden geçirin.

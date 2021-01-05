@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b1f7b115c5a8198b53e36672a891903a41a9511b
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: d900659f3ca8a8688c1b1d3a66cd888f37521fc6
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704138"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883393"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault günlüğü
 
@@ -59,7 +59,7 @@ Tek tek bloblar JSON blobu olarak biçimlendirilip metin olarak depolanır. Bir 
 
 Aşağıdaki tabloda alan adları ve açıklamaları listelenmektedir:
 
-| Alan adı | Açıklama |
+| Alan adı | Description |
 | --- | --- |
 | **ışınızda** |UTC olarak tarih ve saat. |
 | **RESOURCEID** |Azure Resource Manager kaynak KIMLIĞI. Key Vault günlükleri için, her zaman Key Vault kaynak KIMLIĞI olur. |
@@ -150,9 +150,38 @@ Aşağıdaki tabloda, **OperationName** değerleri ve karşılık gelen REST API
 
 | operationName | REST API komutu |
 | --- | --- |
-
-| **Certificateget**  | [Bir sertifika hakkında bilgi alın](/rest/api/keyvault/getcertificate) | | **Sertifikaoluştur**  | [Sertifika oluşturma](/rest/api/keyvault/createcertificate) | | **Certificateımport**  | Bir [sertifikayı kasaya aktarma](/rest/api/keyvault/importcertificate) | | **Certificateupdate**  | [Sertifikayı güncelleştirme](/rest/api/keyvault/updatecertificate) | | Sertifika **listesi**  | [Bir kasadaki sertifikaları listeleme](/rest/api/keyvault/getcertificates) | | **Certificatelistversions**  | [Bir sertifikanın sürümlerini listeleyin](/rest/api/keyvault/getcertificateversions) | | **Certificatedelete**  | [Sertifika silme](/rest/api/keyvault/deletecertificate) | | **Sertifikatemizleme**  | [Bir sertifikayı Temizleme](/rest/api/keyvault/purgedeletedcertificate) | | **Certificatebackup**  | [Sertifika yedekleme](/rest/api/keyvault/backupcertificate) | | **CertificateRestore**  | [Sertifikayı geri yükleme](/rest/api/keyvault/restorecertificate) | | **Sertifika Aterecover**  | [Sertifikayı kurtarma](/rest/api/keyvault/recoverdeletedcertificate) | | **Certificategetdeleted**  | [Silinen sertifikayı al](/rest/api/keyvault/getdeletedcertificate) | | **Certificatelistdeleted**  | [Bir kasada silinen sertifikaları listeleme](/rest/api/keyvault/getdeletedcertificates) | | **Certificatepolicyget**  | [Sertifika Ilkesini al](/rest/api/keyvault/getcertificatepolicy) | | **Certificatepolicyupdate**  | [Sertifika Ilkesini güncelleştirme](/rest/api/keyvault/updatecertificatepolicy) | | **Certificatepolicyset**  | [Sertifika Ilkesi oluşturma](/rest/api/keyvault/createcertificate) | | **Certificatecontactsget**  | [Sertifika kişilerini al](/rest/api/keyvault/getcertificatecontacts) | | **Certificatecontactsset**  | [Sertifika kişilerini ayarla](/rest/api/keyvault/setcertificatecontacts) | | **Certificatecontactsdelete**  | [Sertifika kişilerini silme](/rest/api/keyvault/deletecertificatecontacts) | | **Certificateıssuerget**  | [Sertifika vereni al](/rest/api/keyvault/getcertificateissuer) | | **Certificateıssuerset**  | [Sertifika vereni ayarla](/rest/api/keyvault/setcertificateissuer) | | **Certificateıssuerupdate**  | [Sertifikayı vereni Güncelleştir](/rest/api/keyvault/updatecertificateissuer) | | **Certificateıssuerdelete**  | [Sertifikayı vereni Sil](/rest/api/keyvault/deletecertificateissuer) | | **Certificateıssuerslistesi**  | [Sertifika verenler listeleyin](/rest/api/keyvault/getcertificateissuers) | | **Sertifikakaydı** | Sertifika kaydetme | | **CertificateRenew** | Sertifikayı yenileme | | **CertificatePendingGet** | Bekleyen sertifikayı alma | | **CertificatePendingMerge** | Sertifika birleştirmesi bekleniyor | | **CertificatePendingUpdate** | Sertifika güncelleştirmesi bekleniyor | | **CertificatePendingDelete** | Bekleyen sertifikayı silme | | **Certificatenearexpıryeventgridnotification** | Süre sonu olayı yayımlanan sertifika |
-<a name="-certificateexpiredeventgridnotification-certificate-expired-event-published-"></a>|**CertificateExpiredEventGridNotification** | Sertifikanın süre dolduğunda etkinlik yayınlandı |
+| **CertificateGet** |[Bir sertifika hakkında bilgi edinme](/rest/api/keyvault/getcertificate) |
+| **Sertifikaoluştur** |[Sertifika oluşturma](/rest/api/keyvault/createcertificate) |
+| **Certificateımport** |[Bir sertifikayı kasaya aktarma](/rest/api/keyvault/importcertificate) |
+| **CertificateUpdate** |[Sertifikayı güncelleştirme](/rest/api/keyvault/updatecertificate) |
+| **Sertifika listesi** |[Bir kasadaki sertifikaları listeleme](/rest/api/keyvault/getcertificates) |
+| **CertificateListVersions** |[Bir sertifikanın sürümlerini listeleyin](/rest/api/keyvault/getcertificateversions) |
+| **CertificateDelete** |[Sertifikayı silme](/rest/api/keyvault/deletecertificate) |
+| **Sertifikatemizleme** |[Bir sertifikayı Temizleme](/rest/api/keyvault/purgedeletedcertificate) |
+| **CertificateBackup** |[Sertifika yedekleme](/rest/api/keyvault/backupcertificate) |
+| **CertificateRestore** |[Sertifikayı geri yükleme](/rest/api/keyvault/restorecertificate) |
+| **Sertifika Aterecover** |[Sertifikayı kurtarma](/rest/api/keyvault/recoverdeletedcertificate) |
+| **CertificateGetDeleted** |[Silinen sertifikayı al](/rest/api/keyvault/getdeletedcertificate) |
+| **CertificateListDeleted** |[Bir kasada silinen sertifikaları listeleme](/rest/api/keyvault/getdeletedcertificates) |
+| **CertificatePolicyGet** |[Sertifika ilkesini al](/rest/api/keyvault/getcertificatepolicy) |
+| **CertificatePolicyUpdate** |[Sertifika ilkesini Güncelleştir](/rest/api/keyvault/updatecertificatepolicy) |
+| **CertificatePolicySet** |[Sertifika İlkesi Oluştur](/rest/api/keyvault/createcertificate) |
+| **CertificateContactsGet** |[Sertifika kişilerini al](/rest/api/keyvault/getcertificatecontacts) |
+| **CertificateContactsSet** |[Sertifika kişilerini ayarla](/rest/api/keyvault/setcertificatecontacts) |
+| **CertificateContactsDelete** |[Sertifika kişilerini silme](/rest/api/keyvault/deletecertificatecontacts) |
+| **Certificateıssuerget** |[Sertifika vereni al](/rest/api/keyvault/getcertificateissuer) |
+| **Certificateıssuerset** |[Sertifikayı vereni ayarla](/rest/api/keyvault/setcertificateissuer) |
+| **Certificateıssuerupdate** |[Sertifikayı vereni Güncelleştir](/rest/api/keyvault/updatecertificateissuer) |
+| **Certificateıssuerdelete** |[Sertifikayı vereni Sil](/rest/api/keyvault/deletecertificateissuer) |
+| **Certificateıssuerslistesi** |[Sertifika verenler listeleyin](/rest/api/keyvault/getcertificateissuers) |
+| **Sertifikakaydı** |Sertifika kaydetme |
+| **CertificateRenew** |Sertifikayı yenileme |
+| **CertificatePendingGet** |Bekleyen sertifikayı al |
+| **CertificatePendingMerge** |Sertifika birleştirmesi bekleniyor |
+| **CertificatePendingUpdate** |Sertifika güncelleştirmesi bekleniyor |
+| **CertificatePendingDelete** |Bekleyen sertifikayı Sil |
+| **CertificateNearExpiryEventGridNotification** |Süre sonu olayı yayımlanan sertifika |
+| **CertificateExpiredEventGridNotification** |Sertifikanın zaman aşımına uğradığı olay yayımlandı |
 ---
 
 ## <a name="use-azure-monitor-logs"></a>Azure İzleyici günlüklerini kullanma

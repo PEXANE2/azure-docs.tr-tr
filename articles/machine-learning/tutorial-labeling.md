@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5aec3d6bb2afeadda64ac19563f8334a6aef3b77
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 238801171d19191bcac505f0c95395320f96d75c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347515"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882475"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>Öğretici: çok sınıflı görüntü sınıflandırması için etiketleme projesi oluşturma 
 
@@ -104,7 +104,8 @@ Etiketlenmesini istediğiniz verilere erişiminiz olduğuna göre etiketleme pro
 1. Veri **deposundan Create DataSet** form için aşağıdaki girişi kullanın:
 
     1. **Temel bilgi** formunda bir ad ekleyin, burada **öğreticiyi görüntüler**.  İsterseniz bir açıklama ekleyin.  Sonra **İleri**’yi seçin.
-    1. **Veri deposu seçim** formunda, **daha önce oluşturduğunuz veri deposunu** seçmek için açılan listeyi kullanın (örneğin, **tutorial_images (Azure Blob depolama)**
+    1. **Veri deposu seçim** formunda, **önceden oluşturulmuş veri deposu**' nu seçin, ardından veri deposu adına tıklayın ve **veri deposunu Seç**' i seçin.
+    1. Sonraki sayfada, seçili olan veri deposunun doğru olduğunu doğrulayın. Aksi takdirde, **önceden oluşturulmuş veri deposu** ' nu seçin ve önceki adımı tekrarlayın.
     1. Bundan sonra, **veri deposu seçim** formunda, git ' i seçin ve **birden çok Lass-DogsCats**' **yi seçin.**  Yol olarak **/birden çok Lass-DogsCats** kullanmak için **Kaydet** ' i seçin.
     1. Ayrıntıları onaylamak için **İleri** ' yi, sonra da **Oluştur** ' u seçerek veri kümesini oluşturun.
     1. Listedeki veri kümesi adının yanındaki daireyi seçin (örneğin, **eğitim için görüntüler**).

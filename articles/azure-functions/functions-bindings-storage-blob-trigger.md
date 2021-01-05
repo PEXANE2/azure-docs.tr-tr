@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: fd33ca4c5d637e31230d8c124fdb9ec7c71d2ba7
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094854"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882033"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -114,6 +114,24 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Bu işlev, kapsayıcıda bir blob eklendiğinde veya güncelleştirilirken bir günlük yazar `myblob` .
+
+```java
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, bir *function.js* dosya ve bağlamayı kullanan [JavaScript kodundaki](functions-reference-node.md) bir blob tetikleyicisi bağlamasını gösterir. Kapsayıcıda bir blob eklendiğinde veya güncelleştirilirse, işlev bir günlük yazar `samples-workitems` .
@@ -146,6 +164,34 @@ module.exports = function(context) {
     context.log('Node.js Blob trigger function processed', context.bindings.myBlob);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Aşağıdaki örnek, BLOB depolama kapsayıcısına bir dosya eklendiğinde çalışan bir işlevin nasıl oluşturulacağını göstermektedir `source` .
+
+İşlev yapılandırma dosyası (_function.js_), öğesinin öğesine sahip bir bağlama içerir `type` `blobTrigger` ve ' a `direction` ayarlanır `in` .
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputBlob",
+      "type": "blobTrigger",
+      "direction": "in",
+      "path": "source/{name}",
+      "connection": "MyStorageAccountConnectionString"
+    }
+  ]
+}
+```
+
+_run.ps1_ dosyanın ilişkili kodu aşağıda verilmiştir.
+
+```powershell
+param([byte[]] $InputBlob, $TriggerMetadata)
+
+Write-Host "PowerShell Blob trigger: Name: $($TriggerMetadata.Name) Size: $($InputBlob.Length) bytes"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -185,24 +231,6 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Bu işlev, kapsayıcıda bir blob eklendiğinde veya güncelleştirilirken bir günlük yazar `myblob` .
-
-```java
-@FunctionName("blobprocessor")
-public void run(
-  @BlobTrigger(name = "file",
-               dataType = "binary",
-               path = "myblob/{name}",
-               connection = "MyStorageAccountAppSetting") byte[] content,
-  @BindingName("name") String filename,
-  final ExecutionContext context
-) {
-  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
-}
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
@@ -213,7 +241,7 @@ public void run(
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Özniteliğin Oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [BLOB adı modelini](#blob-name-patterns)gösteren bir yol dizesi alır. Aşağıda bir örnek verilmiştir:
+  Özniteliğin Oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [BLOB adı modelini](#blob-name-patterns)gösteren bir yol dizesi alır. İşte bir örnek:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -267,17 +295,21 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 Öznitelikler C# betiği tarafından desteklenmez.
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`Özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Öznitelikler PowerShell tarafından desteklenmez.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`Özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
 
 ---
 
@@ -305,17 +337,21 @@ Aşağıdaki tabloda, dosyasında ve özniteliğinde *function.js* ayarladığı
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+`@BlobTrigger`Özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<NAME>` `<NAME>` *Üzerindefunction.js* tanımlanan değerle eşleşen blob verilerine erişin.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Blob verilerine, dosyanın _function.js_ , bağlamanın Name parametresiyle belirtilen adla eşleşen bir parametre aracılığıyla erişin.
+
 # <a name="python"></a>[Python](#tab/python)
 
-Blob verilerine [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)olarak yazılan parametre aracılığıyla erişin. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
-
-# <a name="java"></a>[Java](#tab/java)
-
-`@BlobTrigger`Özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+Blob verilerine [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python&preserve-view=true)olarak yazılan parametre aracılığıyla erişin. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
 
 ---
 
@@ -374,6 +410,10 @@ Blob *{20140101}-soundfile.mp3* adlandırılmışsa, `name` işlev kodundaki de�
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
+# <a name="java"></a>[Java](#tab/java)
+
+Java 'da meta veriler kullanılamıyor.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
@@ -383,13 +423,13 @@ module.exports = function (context, myBlob) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Meta veriler parametresi aracılığıyla kullanılabilir `$TriggerMetadata` .
+
 # <a name="python"></a>[Python](#tab/python)
 
 Meta veriler Python 'da kullanılamıyor.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Java 'da meta veriler kullanılamıyor.
 
 ---
 
@@ -399,11 +439,11 @@ Azure Işlevleri çalışma zamanı, aynı yeni veya güncelleştirilmiş blob i
 
 Azure Işlevleri, blob bilgilerini, işlev uygulamanız için Azure depolama hesabındaki *Azure-WebJobs-Konakları* adlı bir kapsayıcıda depolar (uygulama ayarı tarafından tanımlanır `AzureWebJobsStorage` ). Blob alındı bilgisi aşağıdaki bilgilere sahiptir:
 
-* Tetiklenen işlev ("*&lt; işlev uygulaması adı>*. Lerdir. *&lt; işlev adı>*", örneğin:" myfunctionapp. Functions. copyblob ")
+* Tetiklenen işlev ( `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` Örneğin: `MyFunctionApp.Functions.CopyBlob` )
 * Kapsayıcı adı
-* Blob türü ("BlockBlob" veya "PageBlob")
+* Blob türü ( `BlockBlob` veya `PageBlob` )
 * Blob adı
-* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcısı, örneğin: `0x8D1DC6E70A277EF` )
 
 Bir Blobun yeniden işlenmesini zorlamak için, bu Blobun blob alındığını *Azure-WebJobs-hosts* kapsayıcısından el ile silin. Yeniden işleme hemen gerçekleşmeyebilir, daha sonraki bir noktada gerçekleşmesi garanti edilir. Hemen tekrar işlemek için, *Azure-WebJobs-hosts/blobscanınfo* 'daki *scanınfo* blobu güncelleştirilebilen bulunabilir. Özellikten sonra son değiştirilen zaman damgasına sahip tüm Bloblar `LatestScan` yeniden taranır.
 
@@ -413,11 +453,11 @@ Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure
 
 5 ' in tamamı başarısız olursa, Azure Işlevleri *WebJobs-blobtrigger-zeadlı* bir depolama kuyruğuna bir ileti ekler. En fazla yeniden deneme sayısı yapılandırılabilir. Aynı MaxDequeueCount ayarı, zarar blobu işleme ve zarar sırası ileti işleme için kullanılır. Zarar Blobları için kuyruk iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
 
-* FunctionID ( *&lt; app name işlev işlevi>*. Lerdir. *&lt; işlev adı>*)
-* BlobType ("BlockBlob" veya "PageBlob")
+* FunctionID (biçimde `<FUNCTION_APP_NAME>.Functions.<FUNCTION_NAME>` )
+* BlobType ( `BlockBlob` veya `PageBlob` )
 * ContainerName
 * BlobName
-* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcısı, örneğin: `0x8D1DC6E70A277EF` )
 
 ## <a name="concurrency-and-memory-usage"></a>Eşzamanlılık ve bellek kullanımı
 

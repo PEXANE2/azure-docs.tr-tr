@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561945"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882968"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU 'SU üzerinde Redis, Arc etkin Kubernetes kümesine sahip bir PHP Konuk defteri olmayan uygulaması dağıtma
 
@@ -27,6 +27,8 @@ Dağıtım, Azure Stack Edge Pro cihazınızdan yay etkinleştirilmiş Kubernete
 
 Bu yordam, [Azure Stack Edge Pro cihazındaki Kubernetes iş yüklerini](azure-stack-edge-gpu-kubernetes-workload-management.md) gözden geçirdiklere yöneliktir ve [Azure Arc etkinleştirilmiş Kubernetes (Önizleme)](../azure-arc/kubernetes/overview.md)kavramlarını öğrenir.
 
+> [!NOTE]
+> Bu makale, Microsoft 'un artık kullandığı bir terim olan bağımlı dönem başvuruları içerir. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -108,7 +110,6 @@ Azure yay kaynağını, Azure portal bir Gilar yapılandırması dağıtmak üze
 1. Dağıtım birkaç dakika sürer. Dağıtım tamamlandığında, **işleç durumu** **yüklü** olarak gösterilir.
 
     ![Ekran görüntüsü, Azure Arc etkin Kubernetes kümesini yüklü durumda gösterir.](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
-
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 

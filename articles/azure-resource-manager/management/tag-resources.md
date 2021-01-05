@@ -2,14 +2,14 @@
 title: Mantıksal kuruluş için kaynakları, kaynak grupları ve abonelikleri etiketleme
 description: Azure kaynaklarını faturalandırma ve yönetmeye göre düzenlemek için etiketlerin nasıl uygulanacağını gösterir.
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 3d1161eb99e1145c7a003326310db1922ec3d55c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558156"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881757"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanma
 
@@ -438,9 +438,12 @@ Etiket adlarınız veya değerleriniz boşluk içeriyorsa, bunları çift tırna
 az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
-## <a name="templates"></a>Şablonlar
+## <a name="arm-templates"></a>ARM şablonları
 
-Dağıtım sırasında kaynakları, kaynak grupları ve abonelikleri bir Kaynak Yöneticisi şablonuyla etiketlendirebilirsiniz.
+Dağıtım sırasında kaynakları, kaynak grupları ve abonelikleri bir Azure Resource Manager şablonuyla etiketleyebilir (ARM şablonu).
+
+> [!NOTE]
+> ARM şablonu aracılığıyla uyguladığınız Etiketler varolan etiketlerin üzerine yazar.
 
 ### <a name="apply-values"></a>Değerleri Uygula
 
@@ -448,7 +451,7 @@ Aşağıdaki örnek, üç etiketli bir depolama hesabı dağıtır. Etiketlerin 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcShort": {
@@ -487,7 +490,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -525,7 +528,7 @@ Birkaç etiketi depolayan bir nesne parametresi tanımlayabilir ve bu nesneyi et
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
@@ -558,7 +561,7 @@ Kaynak grubundan bir kaynağa etiket uygulamak için [resourceGroup ()](../templ
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {

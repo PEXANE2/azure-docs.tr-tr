@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 10/15/2020
-ms.openlocfilehash: fb4746972f78dc40a3ec264d2e1964e8d4e99b3d
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097601"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882339"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Sanal çekirdek satın alma modelini kullanarak elastik havuzlar için kaynak sınırları
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|1|2|3|4|5|6|
 |Bellek (GB)|7|14|21|28|35|42|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|200|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|512|756|1536|1536|1536|2048|
 |En yüksek günlük boyutu|154|227|461|461|461|614|
@@ -78,7 +78,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|7|8|9|10|16|24|
 |Bellek (GB)|49|56|63|70|112|159,5|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|2048|2048|2048|2048|3584|4096|
 |En fazla günlük boyutu (GB)|614|614|614|614|1075|1229|
@@ -112,7 +112,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|2|4|6|8|10|12|14|
 |Bellek (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|200|500|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|512|756|1536|1536|1536|2048|2048|
 |En fazla günlük boyutu (GB)|154|227|461|461|461|614|614|
@@ -126,7 +126,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Çoğaltma sayısı|1|1|1|1|1|1|1|
-|Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
+|Çoklu-AZ|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
@@ -142,9 +142,9 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|16|18|20|24|32|40|80|
-|Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
+|Bellek (GB)|83|93.4|103.8|124,6|166,1|207,6|415,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|2048|3072|3072|3072|4096|4096|4096|
 |En fazla günlük boyutu (GB)|614|922|922|922|1229|1229|1229|
@@ -158,7 +158,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Çoğaltma sayısı|1|1|1|1|1|1|1|
-|Çoklu-AZ|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
+|Çoklu-AZ|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|[Önizlemede kullanılabilir](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview)|
 |Okuma Amaçlı Ölçeği Genişletme|Yok|Yok|Yok|Yok|Yok|Yok|Yok|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
@@ -176,9 +176,9 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |:---| ---:|---:|---:|---:|---:|
 |İşlem oluşturma|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|
 |Sanal çekirdek|8|10|12|14|16|
-|Bellek (GB)|15,1|18,9|22.7|26,5|30,2|
+|Bellek (GB)|15,1|18.9|22.7|26.5|30,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1536|
 |En fazla günlük boyutu (GB)|336|336|336|336|512|
@@ -209,9 +209,9 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |:---| ---:|---:|---:|---:|---:|---:|
 |İşlem oluşturma|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|Fsv2 serisi|
 |Sanal çekirdek|18|20|24|32|36|72|
-|Bellek (GB)|34,0|37,8|45,4|60,5|68,0|136,0|
+|Bellek (GB)|34.0|37,8|45,4|60,5|68.0|136,0|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|500|500|500|500|500|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|Yok|Yok|Yok|Yok|Yok|Yok|
 |En fazla veri boyutu (GB)|1536|1536|1536|3072|3072|4096|
 |En fazla günlük boyutu (GB)|512|512|512|1024|1024|1024|
@@ -248,7 +248,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|2|3|4|5|6|
 |Bellek (GB)|14|21|28|35|42|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|50|100|100|100|100|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|2|3|4|5|6|
 |Depolama türü|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|Yerel SSD|
 |En fazla veri boyutu (GB)|1024|1024|1024|1024|1024|
@@ -262,8 +262,8 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Çoğaltma sayısı|4|4|4|4|4|
-|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|
+|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -294,8 +294,8 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
+|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -314,7 +314,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|4|6|8|10|12|14|
 |Bellek (GB)|20,8|31,1|41,5|51,9|62,3|72,7|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|50|100|100|100|100|100|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|3,14|4,71|6,28|8,65|11,02|13,39|
 |En fazla veri boyutu (GB)|1024|1536|1536|1536|3072|3072|
 |En fazla günlük boyutu (GB)|307|307|461|461|922|922|
@@ -328,8 +328,8 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Çoğaltma sayısı|4|4|4|4|4|4|
-|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
+|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -344,9 +344,9 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |İşlem oluşturma|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|5. nesil|
 |Sanal çekirdek|16|18|20|24|32|40|80|
-|Bellek (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
+|Bellek (GB)|83|93.4|103.8|124,6|166,1|207,6|415,2|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|100|100|100|100|100|100|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|15,77|18,14|20,51|25,25|37,94|52,23|131,68|
 |En fazla veri boyutu (GB)|3072|3072|3072|4096|4096|4096|4096|
 |En fazla günlük boyutu (GB)|922|922|922|1229|1229|1229|1229|
@@ -360,8 +360,8 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Maks. eş zamanlı oturum|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 20, 24, 32, 40|0, 0,25, 0,5, 1... 20, 24, 32, 40, 80|
 |Çoğaltma sayısı|4|4|4|4|4|4|4|
-|Çoklu-AZ|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|Evet|
+|Çoklu-AZ|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -380,7 +380,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Sanal çekirdek|8|10|12|14|16|18|
 |Bellek (GB)|235,4|294,3|353,2|412,0|470,9|529,7|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|100|100|100|100|100|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|64|80|96|112|128|150|
 |En fazla veri boyutu (GB)|512|640|768|896|1024|1152|
 |En fazla günlük boyutu (GB)|171|213|256|299|341|384|
@@ -395,7 +395,7 @@ Hizmet katmanını, işlem boyutunu (hizmet hedefi) ve depolama miktarını [Azu
 |Veritabanı başına en az/en fazla elastik havuz sanal çekirdek seçimi|0-8|0-10|0-12|0-14|0-16|0-18|
 |Çoğaltma sayısı|4|4|4|4|4|4|
 |Çoklu-AZ|Hayır|Hayır|Hayır|Hayır|Hayır|Hayır|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.
@@ -416,7 +416,7 @@ Elastik havuzun tüm sanal çekirdekleri meşgulse, havuzdaki her veritabanı, s
 |Sanal çekirdek|20|24|32|64|128|
 |Bellek (GB)|588,6|706,3|941,8|1883,5|3767,0|
 |Havuz başına en fazla veritabanı sayısı <sup>1</sup>|100|100|100|100|100|100|
-|Columnstore desteği|Evet|Evet|Evet|Evet|Evet|
+|Columnstore desteği|Yes|Yes|Yes|Yes|Yes|
 |Bellek içi OLTP depolaması (GB)|172|216|304|704|1768|
 |En fazla veri boyutu (GB)|1280|1536|2048|4096|4096|
 |En fazla günlük boyutu (GB)|427|512|683|1024|1024|
@@ -430,7 +430,7 @@ Elastik havuzun tüm sanal çekirdekleri meşgulse, havuzdaki her veritabanı, s
 |Maks. eş zamanlı oturum|30000|30000|30000|30000|30000|
 |Çoğaltma sayısı|4|4|4|4|4|
 |Çoklu-AZ|Hayır|Hayır|Hayır|Hayır|Hayır|
-|Okuma Amaçlı Ölçeği Genişletme|Evet|Evet|Evet|Evet|Evet|
+|Okuma Amaçlı Ölçeği Genişletme|Yes|Yes|Yes|Yes|Yes|
 |Dahil edilen yedekleme depolaması|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|1X DB boyutu|
 
 <sup>1</sup> daha fazla dikkat edilmesi için [yoğun esnek havuzlarda kaynak yönetimine](elastic-pool-resource-management.md) bakın.

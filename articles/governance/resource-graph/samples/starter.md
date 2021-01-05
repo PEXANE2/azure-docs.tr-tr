@@ -3,12 +3,12 @@ title: Başlangıç sorgu örnekleri
 description: Kaynakları sayma, kaynakları sıralama veya belirli bir etiket gibi bazı başlangıç sorgularını çalıştırmak için Azure Kaynak Grafiği ' ni kullanın.
 ms.date: 10/14/2020
 ms.topic: sample
-ms.openlocfilehash: 013e865f543f966d88132d2dc6aca6102d52d20c
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 287de47fff8c76bf05aeacd9ddfca0c48e55f5a0
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057119"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882934"
 ---
 # <a name="starter-resource-graph-query-samples"></a>Başlatıcı kaynak grafiği sorgu örnekleri
 
@@ -27,8 +27,6 @@ Aşağıdaki başlangıç sorgularını inceleyeceğiz:
 - [Aboneliğe göre yapılandırılmış IP adreslerine sahip kaynakları sayma](#count-resources-by-ip)
 - [Belirli bir etiket değerine sahip kaynakları listeleyin](#list-tag)
 - [Belirli bir etiket değerine sahip tüm depolama hesaplarını Listele](#list-specific-tag)
-- [Bir sanal makine kaynağı için diğer adları göster](#show-aliases)
-- [Belirli bir diğer ad için farklı değerleri göster](#distinct-alias-values)
 - [İlişkilendirilmemiş ağ güvenlik gruplarını göster](#unassociated-nsgs)
 - [Azure Advisor 'dan maliyet tasarrufu Özeti alın](#advisor-savings)
 - [Konuk yapılandırma ilkelerinin kapsamındaki makineleri say](#count-gcmachines)
@@ -302,7 +300,7 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 
 Önceki sorguya benzer şekilde, **publicIPAddresses** sözcüğünü içeren bir tür olan her şeyi bulun.
 Bu sorgu yalnızca **Properties. IPAddress**' in yalnızca Properties. IPAddress 
- `isnotempty` ve **properties.ipAddress** `limit` en üstteki sonuçları geri döndürecek sonuçları dahil etmek için bu modele genişletilir.
+ `isnotempty` ve  `limit` en üstteki sonuçları geri döndürecek sonuçları dahil etmek için bu modele genişletilir.
 100. Seçtiğiniz kabuğa bağlı olarak tırnak işaretlerinin dışına çıkmanız gerekebilir.
 
 ```kusto
@@ -462,72 +460,6 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 > [!NOTE]
 > Bu örnek, eşleştirme için `=~` koşullu yerine `==` kullanır. `==` büyük küçük harfe duyarlı bir eşleşmedir.
-
-## <a name="show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases"></a>Bir sanal makine kaynağı için diğer adları göster
-
-Azure [ilkesi diğer adları](../../policy/concepts/definition-structure.md#aliases) , Azure ilkesi tarafından kaynak uyumluluğunu yönetmek için kullanılır. Azure Kaynak Grafiği, bir kaynak türünün _diğer adlarını_ döndürebilir. Bu değerler, özel bir ilke tanımı oluştururken diğer adların geçerli değerlerini karşılaştırmak için yararlıdır. _Diğer adlar_ dizisi, bir sorgunun sonuçlarında varsayılan olarak sağlanmaz. `project aliases`Bunu sonuçlara açıkça eklemek için kullanın.
-
-```kusto
-Resources
-| where type =~ 'Microsoft.Compute/virtualMachines'
-| limit 1
-| project aliases
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases"
-```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachines' | limit 1 | project aliases" | ConvertTo-Json
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-:::image type="icon" source="../media/resource-graph-small.png"::: Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
-
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20limit%201%0D%0A%7C%20project%20aliases" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20limit%201%0D%0A%7C%20project%20aliases" target="_blank">Portal.Azure.us <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-- Azure Çin 21Vianet Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%20%3D~%20%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20limit%201%0D%0A%7C%20project%20aliases" target="_blank">Portal.Azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-
----
-
-## <a name="show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values"></a>Belirli bir diğer ad için farklı değerleri göster
-
-Diğer adların değerini tek bir kaynakta görmek faydalı olur, ancak abonelikler arasında sorgulama yapmak için Azure Kaynak grafiğinin kullanıldığı doğru değeri göstermez. Bu örnek, belirli bir diğer adın tüm değerlerine bakar ve ayrı değerleri döndürür.
-
-```kusto
-Resources
-| where type=~'Microsoft.Compute/virtualMachines'
-| extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType']
-| distinct tostring(alias)
-```
-
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
-```
-
-# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachines' | extend alias = aliases['Microsoft.Compute/virtualMachines/storageProfile.osDisk.managedDisk.storageAccountType'] | distinct tostring(alias)"
-```
-
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-
-:::image type="icon" source="../media/resource-graph-small.png"::: Azure Kaynak Grafiği Gezgini 'nde bu sorguyu deneyin:
-
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20extend%20alias%20%3D%20aliases%5B%27Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType%27%5D%0D%0A%7C%20distinct%20tostring%28alias%29" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-- Azure Kamu Portalı: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20extend%20alias%20%3D%20aliases%5B%27Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType%27%5D%0D%0A%7C%20distinct%20tostring%28alias%29" target="_blank">Portal.Azure.us <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-- Azure Çin 21Vianet Portalı: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%0D%0A%7C%20where%20type%3D~%27Microsoft.Compute%2FvirtualMachines%27%0D%0A%7C%20extend%20alias%20%3D%20aliases%5B%27Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType%27%5D%0D%0A%7C%20distinct%20tostring%28alias%29" target="_blank">Portal.Azure.cn <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
-
----
 
 ## <a name="show-unassociated-network-security-groups"></a><a name="unassociated-nsgs"></a>İlişkilendirilmemiş ağ güvenlik gruplarını göster
 

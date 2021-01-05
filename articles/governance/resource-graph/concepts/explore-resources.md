@@ -3,12 +3,12 @@ title: Azure kaynaklarınızı inceleme
 description: Kaynak grafik sorgu dilini kullanarak kaynaklarınızı keşfetme ve bunların nasıl bağlandığını bulma hakkında bilgi edinin.
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2b0ef3935d865618a9d4dda2825f7d4383baf772
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 01f9c0c574d8a8d6d4b5f06fc1398313649cfb8d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056251"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882917"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Kaynak Grafiği ile Azure kaynaklarınızı keşfedin
 
@@ -147,7 +147,7 @@ Artık her bir Azure bölgesinde kaç tane sanal makine olduğunu görebiliriz.
 
 ### <a name="virtual-machines-by-sku"></a>SKU 'ya göre sanal makineler
 
-Özgün sanal makine özelliklerine geri dönerek, **STANDARD_B2S**SKU boyutu olan tüm sanal makineleri bulmayı deneyelim. Döndürülen JSON 'a bakarak **Properties. HardwareProfile. VMSize**yolunda depolandığını görüyoruz. Bu boyutla eşleşen tüm VM 'Leri bulmak ve yalnızca VM ve bölgenin adını döndürmek için sorguyu güncelleştireceğiz.
+Özgün sanal makine özelliklerine geri dönerek, **STANDARD_B2S** SKU boyutu olan tüm sanal makineleri bulmayı deneyelim. Döndürülen JSON 'a bakarak **Properties. HardwareProfile. VMSize** yolunda depolandığını görüyoruz. Bu boyutla eşleşen tüm VM 'Leri bulmak ve yalnızca VM ve bölgenin adını döndürmek için sorguyu güncelleştireceğiz.
 
 ```kusto
 Resources
@@ -174,9 +174,6 @@ Resources
 | where disk.storageAccountType == 'Premium_LRS'
 | project disk.id
 ```
-
-> [!NOTE]
-> SKU 'YU almanın başka bir yolu da **Microsoft. COMPUTE/virtualMachines/SKU. Name** **diğer** ad özelliği kullanılarak yapılır. [Diğer adları göster](../samples/starter.md#show-aliases) ve [farklı diğer ad değerlerini göster](../samples/starter.md#distinct-alias-values) örneklerine bakın.
 
 ```azurecli-interactive
 az graph query -q "Resources | where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -207,7 +204,7 @@ Resources
 | where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Sorguyu çalıştırmadan önce, **türü** Şu anda **Microsoft. COMPUTE/Disks**olarak biliyoruz? Tam KIMLIĞE bakarsanız dizenin bir parçası olarak **/providers/Microsoft.COMPUTE/Disks/** görürsünüz.
+Sorguyu çalıştırmadan önce, **türü** Şu anda **Microsoft. COMPUTE/Disks** olarak biliyoruz? Tam KIMLIĞE bakarsanız dizenin bir parçası olarak **/providers/Microsoft.COMPUTE/Disks/** görürsünüz.
 Bu dize parçası, arama yapılacak tür için bir ipucu sağlar. Farklı bir yöntem, sınırı türe göre kaldırmak ve bunun yerine yalnızca KIMLIK alanına göre aramak olacaktır. KIMLIK benzersiz olduğundan, yalnızca bir kayıt döndürülür ve üzerinde **tür** özelliği bu ayrıntıyı sağlar.
 
 > [!NOTE]

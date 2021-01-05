@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14a65b83195bff48934668ff029f925e13884bad
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 8789015c239aae58ec25f0f644d4c497da477c2b
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743709"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881251"
 ---
 # <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication için yeniden kimlik doğrulama istemlerini iyileştirin ve oturum ömrünü anlayın
 
@@ -108,7 +108,7 @@ Farklı ayarların nasıl çalıştığını ve önerilen yapılandırmayı anla
 1. **Şirket markasını** seçin ve ardından her yerel ayar için, **oturum açmış olarak kalmak için seçeneği göster**' i seçin.
 1. *Evet*' i seçin, sonra **Kaydet**' i seçin.
 
-Multi-Factor Authentication ayarlarını hatırlamak için aşağıdaki adımları izleyin:
+Güvenilen cihazlarda Multi-Factor Authentication ayarlarını hatırlamak için aşağıdaki adımları izleyin:
 
 1. Azure AD portalında *Azure Active Directory* arayın ve öğesini seçin.
 1. **Güvenlik** ve **MFA**' yı seçin.

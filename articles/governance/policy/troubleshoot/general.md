@@ -3,12 +3,12 @@ title: Sık karşılaşılan hataları giderme
 description: İlke tanımları, çeşitli SDK ve Kubernetes için eklenti oluşturma sorunlarını giderme hakkında bilgi edinin.
 ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: b88d00575adb571c59b562d25067c4a1716fb50f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511007"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882985"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Azure Ilkesini kullanarak hatalarda sorun giderme
 
@@ -36,7 +36,7 @@ Azure Ilkesi Azure Resource Manager özellikleriyle eşlemek için [takma adlar]
 
 #### <a name="resolution"></a>Çözüm
 
-İlk olarak, Kaynak Yöneticisi özelliğinin bir diğer adı olduğunu doğrulayın. Kullanılabilir diğer adları aramak için Visual Studio Code, [Azure Kaynak Grafiği](../../resource-graph/samples/starter.md#distinct-alias-values)veya SDK [için Azure ilke uzantısı](../how-to/extension-for-vscode.md)'nı kullanın. Bir Kaynak Yöneticisi özelliği için diğer ad yoksa, bir destek bileti oluşturun.
+İlk olarak, Kaynak Yöneticisi özelliğinin bir diğer adı olduğunu doğrulayın. Kullanılabilir diğer adları aramak için Visual Studio Code veya SDK [Için Azure ilke uzantısı](../how-to/extension-for-vscode.md) 'nı kullanın. Bir Kaynak Yöneticisi özelliği için diğer ad yoksa, bir destek bileti oluşturun.
 
 ### <a name="scenario-evaluation-details-not-up-to-date"></a>Senaryo: değerlendirme ayrıntıları güncel değil
 

@@ -3,12 +3,12 @@ title: IoT Edge cihazında canlı video analizi dağıtma-Azure
 description: Bu makalede, IoT Edge cihazınızda canlı video analizlerini dağıtmanıza yardımcı olacak adımlar listelenmektedir. Örneğin, yerel bir Linux makinesine erişiminiz varsa ve/veya daha önce bir Azure Media Services hesabı oluşturduysanız, bunu yapabilirsiniz.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 4fa4a9643976ba513b025706cacec26b2a50afb5
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498328"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883325"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge cihazda canlı video analizi dağıtma
 
@@ -108,7 +108,7 @@ Dağıtım bildirimi, hangi modüllerin dağıtılacağını, modüller arasınd
     Örnekler:
     
     * **IoT Edge modül adı**: lvaedge
-    * **Görüntü URI 'si**: MCR.Microsoft.com/Media/Live-video-Analytics:1.0    
+    * **Görüntü URI 'si**: MCR.Microsoft.com/Media/Live-video-Analytics:2.0    
     
     ![Ekran görüntüsü modül ayarları sekmesini gösterir.](./media/deploy-iot-edge-device/add.png)
     

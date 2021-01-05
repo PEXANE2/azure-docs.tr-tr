@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6978afc802bddd536c56fcb4e06a40ccc58867fe
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172658"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881200"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure AD B2C özel ilkesinde bir kerelik parola teknik profili tanımlama
 
@@ -24,7 +24,7 @@ ms.locfileid: "92172658"
 
 Azure Active Directory B2C (Azure AD B2C), tek seferlik bir parolanın oluşturulmasını ve doğrulanmasını yönetmek için destek sağlar. Bir kod oluşturmak için teknik profil kullanın ve ardından kodu daha sonra doğrulayın.
 
-Bir kerelik parola teknik profili, kod doğrulama sırasında de bir hata mesajı döndürebilir. Bir **doğrulama teknik profili**kullanarak bir kerelik parolayla tümleştirmeyi tasarlayın. Bir doğrulama teknik profili, bir kodu doğrulamak için bir kerelik parola teknik profilini çağırır. Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan sayfada bir hata iletisi görüntülenir.
+Bir kerelik parola teknik profili, kod doğrulama sırasında de bir hata mesajı döndürebilir. Bir **doğrulama teknik profili** kullanarak bir kerelik parolayla tümleştirmeyi tasarlayın. Bir doğrulama teknik profili, bir kodu doğrulamak için bir kerelik parola teknik profilini çağırır. Doğrulama teknik profili, Kullanıcı yolculuğu devam etmeden önce Kullanıcı tarafından belirtilen verileri doğrular. Doğrulama teknik profiliyle, otomatik olarak onaylanan sayfada bir hata iletisi görüntülenir.
 
 ## <a name="protocol"></a>Protokol
 
@@ -45,7 +45,7 @@ Aşağıdaki örnekte bir kerelik parola teknik profili gösterilmektedir:
 
 ## <a name="generate-code"></a>Kod oluşturma
 
-Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir.
+Bu teknik profilin ilk modu bir kod oluşturmak. Bu mod için yapılandırılabilecek seçenekler aşağıda verilmiştir. Oluşturulan kodlar ve denemeler oturum içinde izlenir. 
 
 ### <a name="input-claims"></a>Giriş talepleri
 
@@ -73,13 +73,13 @@ Kod oluşturma modunu yapılandırmak için aşağıdaki ayarlar kullanılabilir
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . Bir kod sağlandığı her seferinde ( `ReuseSameCode` veya yeni bir kod kullanılarak aynı kod), kod süre sonu genişletilir.  |
-| Kod uzunluğu | Hayır | Kodun uzunluğu. Varsayılan değer: `6`. |
-| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. Varsayılan değer: `0-9`. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
-| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. Varsayılan değer: `5`. |
+| Codeexpirationınseconds | Hayır | Süre sonuna kadar saniye cinsinden süre. En az: `60` ; En fazla: `1200` ; Varsayılan: `600` . Bir kod sağlandığı her seferinde ( `ReuseSameCode` veya yeni bir kod kullanılarak aynı kod), kod süre sonu genişletilir. Bu zaman, yeniden deneme zaman aşımını ayarlamak için de kullanılır (en fazla denemeye ulaşıldığında, Kullanıcı bu süre sona erene kadar yeni kodlar almaya çalışırken kilitlenir) |
+| Kod uzunluğu | Hayır | Kodun uzunluğu. `6` varsayılan değerdir. |
+| CharacterSet | Hayır | Bir normal ifadede kullanılmak üzere biçimlendirilen kodun karakter kümesi. Örneğin, `a-z0-9A-Z`. `0-9` varsayılan değerdir. Karakter kümesi belirtilen küme içinde en az 10 farklı karakter içermelidir. |
+| NumRetryAttempts | Hayır | Kod geçersiz kabul edilmeden önce yapılan doğrulama denemesi sayısı. `5` varsayılan değerdir. |
 | Numcodegenerationdenemeler | Hayır | Tanımlayıcı başına maksimum kod oluşturma denemesi sayısı. Belirtilmemişse, varsayılan değer 10 ' dur. |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
-| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerli olduğunda, yeni bir kod oluşturmak yerine aynı kodun verilmesi gerekip gerekmediğini belirtir. Varsayılan değer: `false`.  |
+| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `GenerateCode` . |
+| ReuseSameCode | Hayır | Verilen kodun süresi dolmamışsa ve hala geçerli olduğunda, yeni bir kod oluşturmak yerine aynı kodun verilmesi gerekip gerekmediğini belirtir. `false` varsayılan değerdir.  |
 
 
 
@@ -136,7 +136,7 @@ Aşağıdaki ayarlar, doğrulama modunu kod için kullanılabilir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| İşlem | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
+| Çalışma | Yes | Gerçekleştirilecek işlem. Olası değer: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b40171d87ccffa7c5c4fb72d2e79af015b1d16f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a78cf9b7d78078030ac0db8bd2f0fddb93a8dda4
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859972"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881405"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory Microsoft 365 gruplara duyarlılık etiketleri atama
 
@@ -48,7 +48,7 @@ Yayınlanmış etiketleri gruplara uygulamak için, önce özelliği etkinleşti
     ```
 
     > [!NOTE]
-    > Bu Azure AD kuruluşu için Grup ayarları oluşturulmadıysa, önce ayarları oluşturmanız gerekir. Bu Azure AD kuruluşunun grup ayarlarını oluşturmak için [Grup ayarlarını yapılandırmak üzere Azure Active Directory cmdlet 'lerinde](../enterprise-users/groups-settings-cmdlets.md) adımları izleyin.
+    > Bu Azure AD kuruluşu için hiçbir Grup ayarı oluşturulmadıysa, yukarıdaki cmdlet 'te "bağımsız değişken null olduğu için ' ID ' parametresine bağlanamaz" hatasını okuyan bir hata alırsınız. Bu durumda, önce ayarları oluşturmanız gerekir. Bu Azure AD kuruluşunun grup ayarlarını oluşturmak için [Grup ayarlarını yapılandırmak üzere Azure Active Directory cmdlet 'lerinde](../enterprise-users/groups-settings-cmdlets.md) adımları izleyin.
 
 1. Sonra, geçerli grup ayarlarını görüntüleyin.
 

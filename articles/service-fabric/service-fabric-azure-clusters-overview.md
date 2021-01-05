@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 25e6854491f35dd0aa46b5de218d312f57854760
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018928"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882220"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 'da Service Fabric kümelerine genel bakış
 Service Fabric küme, mikro hizmetlerinizin dağıtıldığı ve yönetildiği, ağa bağlı bir sanal veya fiziksel makine kümesidir. Bir kümenin parçası olan makineye veya VM 'ye küme düğümü denir. Kümeler, binlerce düğüme ölçeklendirebilir. Kümeye yeni düğümler eklerseniz, hizmet bölümü çoğaltmaları ve örneklerinin artan düğüm sayısı genelinde yeniden dengelenmesi Service Fabric. Genel uygulama performansı, bellek düşüşlerine erişim için gelişir ve çekişmeyi geliştirir. Kümedeki düğümler verimli bir şekilde kullanılmıyorsa, kümedeki düğümlerin sayısını azaltabilirsiniz. Service Fabric, her düğümdeki donanımın daha iyi kullanılmasını sağlamak için bölüm çoğaltmalarını ve örnekleri, azaltılmış düğüm sayısı genelinde yeniden dengeler.
@@ -86,7 +86,7 @@ Uygulama taleplerine zaman içinde değişiklik yapılır. Daha fazla uygulama i
 
 Daha fazla bilgi için bkz. [Azure kümelerini ölçeklendirme](service-fabric-cluster-scaling.md).
 
-## <a name="upgrading"></a>Yükseltmenin
+## <a name="upgrading"></a>Yükseltme
 Azure Service Fabric kümesi, sahip olduğunuz ancak kısmen Microsoft tarafından yönetilen bir kaynaktır. Microsoft, temel alınan işletim sistemine düzeltme eki uygulama ve kümenizde Service Fabric çalışma zamanı yükseltmeleri gerçekleştirmekten sorumludur. Kümenizi otomatik çalışma zamanı yükseltmeleri alacak şekilde ayarlayabilir, Microsoft yeni bir sürüm yayınlar veya istediğiniz desteklenen bir çalışma zamanı sürümünü seçmenizi sağlar. Çalışma zamanı yükseltmelerine ek olarak, sertifikalar veya uygulama bağlantı noktaları gibi küme yapılandırmasını da güncelleştirebilirsiniz.
 
 Daha fazla bilgi için, [kümeleri yükseltme](service-fabric-cluster-upgrade.md)makalesini okuyun.
@@ -94,16 +94,17 @@ Daha fazla bilgi için, [kümeleri yükseltme](service-fabric-cluster-upgrade.md
 ## <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 Bu işletim sistemlerini çalıştıran sanal makinelerde kümeler oluşturabilirsiniz:
 
-| İşletim sistemi | Desteklenen en erken Service Fabric sürümü |
-| --- | --- |
-| Windows Server 2012 R2 | Tüm sürümler |
-| Windows Server 2016 | Tüm sürümler |
-| Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
-| Windows Server 1809 | 6.4.654.9590 |
-| Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
-| Linux Ubuntu 18,04 | 7.1 |
+| İşletim sistemi | Desteklenen en erken Service Fabric sürümü | Son desteklenen Service Fabric sürümü |
+| --- | --- | --- | 
+| Windows Server 2019 | 6.4.654.9590 | Yok |
+| Windows Server 2016 | Tüm sürümler | Yok |
+| Windows Server 20H2 | 7.2.445.9590 | Yok |
+| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
+| Windows Server 1803 | 6.4 | 7.2.445.9590 |
+| Windows Server 1709 | 6.0 | 7.2.445.9590 |
+| Windows Server 2012 | Tüm sürümler | Yok | 
+| Linux Ubuntu 16,04 | 6.0 | Yok |
+| Linux Ubuntu 18,04 | 7.1 | Yok |
 
 Daha fazla bilgi için bkz. [Azure 'Da desteklenen küme sürümleri](./service-fabric-versions.md#supported-operating-systems)
 

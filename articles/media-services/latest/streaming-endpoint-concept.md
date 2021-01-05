@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9f17e8a09715ce9ff51715f17a449ec0a5b3f770
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7307b95912a982bb36efbf2ce18668bd88e1195
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297204"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882883"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Media Services akış uç noktaları (başlangıç)
 
 Microsoft Azure Media Services, bir [akış uç noktası](/rest/api/media/streamingendpoints) , canlı ve isteğe bağlı içeriğinizi ortak akış medya protokollerinden (HLS veya Dash) birini kullanarak doğrudan bir istemci oynatıcı uygulamasına teslim edebilen dinamik (tam zamanında) paketleme ve kaynak hizmetini temsil eder. Ayrıca, **akış uç noktası** sektör lideri drms için dinamik (tam zamanında) şifreleme sağlar. 
 
-Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. **Varsayılan** akış uç noktasını silemezsiniz. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md)).
+Media Services bir hesap oluşturduğunuzda, bir durdurulmuş durumda sizin için **varsayılan** bir akış uç noktası oluşturulur. Hesap altında daha fazla akış uç noktası oluşturulabilir (bkz. [Kotalar ve sınırlar](limits-quotas-constraints.md)).
 
 > [!NOTE]
 > Video akışını başlatmak için videoyu akışını istediğiniz **akış uç noktasını** başlatmanız gerekir.
@@ -51,7 +51,7 @@ En fazla akış birimi sınırı genellikle 10 ' dur. Hesabınız için limiti y
 
 Türler aşağıdaki tabloda açıklanmıştır:
 
-|Tür|Ölçek birimleri|Açıklama|
+|Tür|Ölçek birimleri|Description|
 |--------|--------|--------|  
 |**Standart**|0|Varsayılan akış uç noktası **Standart** bir türdür — ayarlanarak Premium türüne değiştirilebilir `scaleUnits` .|
 |**Premium**|>0|**Premium** Akış uç noktaları, gelişmiş iş yükleri için uygundur ve adanmış ve ölçeklenebilir bant genişliği kapasitesi sağlar. Bir **Premium** türüne `scaleUnits` (akış birimleri) ayarlayarak geçiş yapabilirsiniz. `scaleUnits` 200 Mbps 'lik artışlarla satın alınabilecek özel çıkış kapasitesi sağlar. **Premium** türü kullanılırken, etkinleştirilen her birim, uygulamaya ek bant genişliği kapasitesi sağlar. |
@@ -68,11 +68,11 @@ SLA bilgileri için bkz. [fiyatlandırma ve SLA](https://azure.microsoft.com/pri
 Aktarım hızı |600 Mbps 'e kadar, bir CDN kullanıldığında çok daha yüksek bir verimlilik sağlar.|akış birimi başına 200 Mbps (SU). , Bir CDN kullanıldığında daha yüksek etkili bir verimlilik sağlayabilir.
 CDN|Azure CDN, üçüncü taraf CDN veya CDN yok.|Azure CDN, üçüncü taraf CDN veya CDN yok.
 Faturalandırma eşit olarak dağıtılır| Günlük|Günlük
-Dinamik şifreleme|Evet|Evet
-Dinamik paketleme|Evet|Evet
+Dinamik şifreleme|Yes|Yes
+Dinamik paketleme|Yes|Yes
 Ölçek|Hedeflenen işleme kadar otomatik olarak ölçeklendirin.|Ek SUs
-IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Evet|Evet
-Aşamalı indirme|Evet|Evet
+IP filtreleme/G20/özel ana bilgisayar <sup>1</sup>|Yes|Yes
+Aşamalı indirme|Yes|Yes
 Önerilen kullanım |Akış senaryolarının çoğunluğu için önerilir.|Profesyonel kullanım.
 
 <sup>1</sup> yalnızca CDN uç noktasında etkin olmadığında doğrudan akış uç noktasında kullanılır.<br/>

@@ -9,17 +9,29 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: b11b0b46e57247d09e576795079e20c679e519d5
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 695702c04e2eeb74ee27b7d4276a3be94d9d1cf7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760121"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881829"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning sürüm notları
 
 Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK başvuru içeriği için Azure Machine Learning [**Python başvurusu için ana SDK**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) sayfasına gidin.
 
+## <a name="2020-12-31"></a>2020-12-31
+### <a name="azure-machine-learning-studio-notebooks-experience-december-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Aralık güncelleştirmesi)
++ **Yeni özellikler**
+  + Kullanıcı dosya adı araması. Kullanıcılar artık bir çalışma alanında kaydedilen tüm dosyaları arayabilir.
+  + Not defteri hücresi başına markın tarafı desteği. Bir not defteri hücresinde, kullanıcılar artık işlenmiş markaşağı ve Marku sözdizimini yan yana görüntüleme seçeneğine sahip olabilir.
+  + Hücre durum çubuğu. Durum çubuğu, bir kod hücresinin hangi durumda olduğunu, bir hücre çalıştırmasının başarılı olup olmadığını ve ne kadar sürdüğünü gösterir. 
+   
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Geliştirilmiş sayfa yükleme süreleri
+  + Geliştirilmiş performans 
+  + Gelişmiş hız ve çekirdek güvenilirliği
+  
 ## <a name="2020-12-07"></a>2020-12-07
 
 ### <a name="azure-machine-learning-sdk-for-python-v1190"></a>Python v 1.19.0 için SDK Azure Machine Learning
@@ -83,7 +95,19 @@ Bu makalede Azure Machine Learning sürümleri hakkında bilgi edinin.  Tam SDK 
     + ScriptRunConfig ile PyTorchConfiguration kullanmak yerine, Estimator sınıfları için geçerli bir giriş türü olarak Nccl ve gloo 'un kullanımını kullanımdan kaldırılmıştır. 
     + ScriptRunConfig ile Mpiconation kullanımı için, Estimator sınıfları için geçerli bir giriş türü olarak MPI kullanımı kullanım dışı bırakıldı.
 
+## <a name="2020-11-30"></a>2020-11-30
+### <a name="azure-machine-learning-studio-notebooks-experience-november-update"></a>Azure Machine Learning Studio Not defteri deneyimi (Kasım güncelleştirmesi)
++ **Yeni özellikler**
+   + Yerel Terminal. Kullanıcılar artık tümleşik Terminal aracılığıyla bir tümleşik terminale ve git işlemine erişime sahip olur [.](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#terminal)
+  + Yinelenen klasör 
+  + Işlem açılan için maliyetlendirme 
+  + Çevrimdışı Işlem Pyi 
 
++ **Hata düzeltmeleri ve geliştirmeleri**
+  + Geliştirilmiş sayfa yükleme süreleri
+  + Geliştirilmiş performans 
+  + Gelişmiş hız ve çekirdek güvenilirliği
+  + Büyük dosya yükleme. Artık dosyayı karşıya yükleyebilirsiniz >95mb
 
 ## <a name="2020-11-09"></a>2020-11-09
 
@@ -852,7 +876,7 @@ Artık Azure Machine Learning doğrudan stüdyo Web deneyiminin içinde Machine 
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
     
-| Web tabanlı araç  |     Açıklama  |
+| Web tabanlı araç  |     Description  |
 |---|---|
 | Azure ML Studio Not defterleri   |     Not defteri dosyaları için birinci sınıf yazma ve Azure ML Python SDK 'da bulunan tüm işlemleri destekleme. | 
 
@@ -1364,7 +1388,7 @@ Studio 'dan veri kümeleri, işlem hatları, modeller, uç noktaları ve daha fa
 
 Studio 'dan aşağıdaki Web tabanlı yazma araçlarına erişin:
 
-| Web tabanlı araç | Açıklama | 
+| Web tabanlı araç | Description | 
 |-|-|-|
 | Not defteri VM (Önizleme) | Tam olarak yönetilen bulut tabanlı iş istasyonu | 
 | [Otomatik makine öğrenimi](tutorial-first-experiment-automated-ml.md) (Önizleme) | Machine Learning modeli geliştirmeyi otomatikleştirmek için kod deneyimi yok | 

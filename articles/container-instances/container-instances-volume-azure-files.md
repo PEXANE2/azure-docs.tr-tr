@@ -4,12 +4,12 @@ description: Azure Container Instances ile devam etmek için bir Azure dosyalar�
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 5ca619ac3ae93ee238d019b64ecccc975b7c8e3b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746865"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881812"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances'ta Azure dosya paylaşımı bağlama
 
@@ -20,6 +20,9 @@ Azure Container Instances varsayılan olarak durum bilgilerini saklamaz. Kapsay�
 >
 > Bir Azure dosya paylaşımının bir kapsayıcı örneğine bağlanması, Docker [bind bağlama](https://docs.docker.com/storage/bind-mounts/)ile benzerdir. Dosya veya dizinlerin bulunduğu bir kapsayıcı dizinine bir paylaşımın bağladığınızda, bu dosya veya dizinlerin bağlama tarafından gizlenerek ve kapsayıcının çalıştırıldığı sırada erişilebilir olmadığı farkında olun.
 >
+
+> [!IMPORTANT]
+> Kapsayıcı gruplarını bir Azure sanal ağına dağıtıyorsanız, Azure depolama hesabınıza bir [hizmet uç noktası](../virtual-network/virtual-network-service-endpoints-overview.md) eklemeniz gerekir.
 
 ## <a name="create-an-azure-file-share"></a>Azure dosya paylaşımı oluşturma
 
@@ -256,7 +259,7 @@ Bir kapsayıcı örneğinde birden fazla birimi bağlamak için, bir [Azure Reso
 }]
 ```
 
-Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2* .
+Sonra, kapsayıcı grubundaki birimleri bağlamak istediğiniz her bir kapsayıcı için, `volumeMounts` diziyi `properties` kapsayıcı tanımının bölümünde doldurun. Örneğin, bu iki birimi bağlar, daha önce tanımlanan *myvolume1* ve *myvolume2*.
 
 ```JSON
 "volumeMounts": [{

@@ -7,12 +7,12 @@ ms.subservice: imaging
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: danis
-ms.openlocfilehash: 6785bb1f5ebde4f746dc8aa1ea9f586f406f8431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3aed65b0319f9a80c5ebc45428ff0c380c33fc3d
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87373683"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883274"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Mevcut bir Linux Azure VM görüntüsünü Cloud-init ile kullanmak üzere hazırlama
 Bu makalede, var olan bir Azure sanal makinesini nasıl ele alacak ve onu yeniden dağıtılması ve Cloud-init kullanmaya başlamaya hazırlanma gösterilmektedir. Elde edilen görüntü, yeni bir sanal makine veya sanal makine ölçek kümeleri dağıtmak için kullanılabilir; bunlardan biri daha sonra dağıtım zamanında Cloud-init tarafından daha da özelleştirilebilir.  Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
@@ -26,7 +26,7 @@ Cloud-init ' i yüklemek için Linux sanal makinenize SSH oluşturmanız ve aşa
 ```bash
 sudo yum makecache fast
 sudo yum install -y gdisk cloud-utils-growpart
-sudo yum install - y cloud-init 
+sudo yum install -y cloud-init 
 ```
 
 `cloud_init_modules`İçindeki bölümünü `/etc/cloud/cloud.cfg` aşağıdaki modülleri içerecek şekilde güncelleştirin:

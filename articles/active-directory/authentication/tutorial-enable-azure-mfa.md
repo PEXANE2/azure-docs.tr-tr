@@ -10,18 +10,18 @@ ms.author: justinha
 author: justinha
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32228e90e3cfc064cd5be9cd0655f321ab3e2809
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2e8bf2ccbf7a53563013c7ba653a6f6e8905337
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741159"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881319"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-ad-multi-factor-authentication"></a>Öğretici: Azure AD Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
 
 Multi-Factor Authentication (MFA), bir kullanıcının ek tanımlama biçimleri için oturum açma olayı sırasında istendiği bir işlemdir. Bu istem, cep telefonlarına bir kod girmek veya bir parmak izi taraması sağlamak olabilir. İkinci bir kimlik doğrulaması formu gerektirdiğinde, bu ek faktörün bir saldırganın alması veya yinelemesi kolay olmadığı için güvenlik artar.
 
-Azure AD Multi-Factor Authentication ve koşullu erişim ilkeleri, belirli oturum açma olayları sırasında kullanıcılara MFA 'yı etkinleştirme esnekliği sunar.
+Azure AD Multi-Factor Authentication ve koşullu erişim ilkeleri, belirli oturum açma olayları sırasında kullanıcılara MFA 'yı etkinleştirme esnekliği sunar. [Kiracınızda Multi-Factor Authentication 'ı yapılandırma ve](https://www.youtube.com/watch?v=qNndxl7gqVM) uygulama konusunda bir video aşağıda verilmiştir (**önerilir**)
 
 > [!IMPORTANT]
 > Bu öğreticide, Azure AD Multi-Factor Authentication nasıl etkinleştirileceği bir yönetici gösterilmektedir.

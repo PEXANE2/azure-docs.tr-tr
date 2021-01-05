@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a093fe330ccbecc33cd8dac03d6425655e90366d
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 085ba4d9d4e78acec4505ddb0e9e89d4e0b5c4a3
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760478"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881489"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow ve Azure Machine Learning (Önizleme) ile ML modellerini eğitme ve izleme
 
@@ -65,6 +65,7 @@ Aşağıdaki diyagramda, MLflow Izlemenin yanı sıra, Azure Machine Learning ç
 * `azureml-mlflow` paketini yükleyin. 
     * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
 * [Azure Machine Learning çalışma alanı oluşturun](how-to-manage-workspace.md).
+    * [MLflow işlemlerinizi çalışma alanınız ile gerçekleştirmek için hangi erişim izinlerine ihtiyacınız](how-to-assign-roles.md#mlflow-operations)olduğunu görün.
 
 ## <a name="track-local-runs"></a>Yerel çalıştırmaları izle
 

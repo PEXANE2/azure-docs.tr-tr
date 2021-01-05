@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 814158ad68e63760c1f2a1bce3eeff812de3c13e
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938741"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882373"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Azure hizmetlerini ağ yalıtımı için sanal ağlarla tümleştirme
 
 Azure hizmeti için sanal ağ (VNet) tümleştirmesi, hizmete erişiminizi yalnızca sanal ağ altyapınızla kilitlemenizi sağlar. VNet altyapısı, eşlenmiş sanal ağları ve şirket içi ağları da içerir.
 
 VNet tümleştirmesi, Azure hizmetlerine ağ yalıtımının avantajlarını sağlar ve aşağıdaki yöntemlerden birini veya daha fazlasını gerçekleştirebilir:
-- [Hizmetin adanmış örneklerini bir sanal ağa dağıtma](virtual-network-service-endpoints-overview.md). Daha sonra hizmetlere sanal ağ ve şirket içi ağlardan özel olarak erişilebilir.
+- [Hizmetin adanmış örneklerini bir sanal ağa dağıtma](virtual-network-for-azure-services.md). Daha sonra hizmetlere sanal ağ ve şirket içi ağlardan özel olarak erişilebilir.
 - [Azure özel bağlantısı](../private-link/private-link-overview.md)tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan [Özel uç nokta](../private-link/private-endpoint-overview.md) kullanımı. Özel uç nokta, VNet 'iniz tarafından sanal ağınıza etkin bir şekilde hizmet getiren özel bir IP adresi kullanır.
 - Hizmet [uç noktaları](virtual-network-service-endpoints-overview.md)aracılığıyla bir sanal ağı hizmete genişleterek genel uç noktaları kullanarak hizmete erişme. Hizmet uç noktaları, hizmet kaynaklarının sanal ağla güvenliğini sağlar.
 - Azure kaynaklarınıza giden ve genel IP uç noktalarına giden trafiğe izin vermek veya reddetmek için [hizmet etiketlerini](service-tags-overview.md) kullanma.

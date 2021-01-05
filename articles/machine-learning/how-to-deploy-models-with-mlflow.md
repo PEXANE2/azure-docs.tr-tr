@@ -11,27 +11,27 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 1159a6cfda6b877f04573c85fa437ce3bff81af1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: b905b050752e2a6b7acd11e82420c0b0203dfcd1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97761805"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882203"
 ---
 # <a name="deploy-mlflow-models-with-azure-machine-learning-preview"></a>Azure Machine Learning ile MLflow modellerini dağıtma (Önizleme)
 
-Bu makalede, MLflow modelinizi bir Azure Machine Learning Web hizmeti olarak dağıtmayı öğrenirsiniz. böylece, üretim modellerinize Azure Machine Learning model yönetimi ve veri DRI algılama yeteneklerini kullanabilir ve uygulayabilirsiniz.
+Bu makalede, [Mlflow](https://www.mlflow.org) modelinizi bir Azure Machine Learning Web hizmeti olarak dağıtmayı öğrenirsiniz. böylece, üretim modellerinize Azure Machine Learning model yönetimi ve veri DRI algılama yeteneklerini kullanabilir ve uygulayabilirsiniz.
 
 Azure Machine Learning için dağıtım yapılandırması sunar:
 * Hızlı geliştirme ve test dağıtımı için uygun bir seçim olan Azure Container Instance (acı).
 * Ölçeklenebilir üretim dağıtımları için önerilen Azure Kubernetes hizmeti (AKS).
 
-[Mlflow](https://www.mlflow.org) , Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. Azure Machine Learning ile tümleştirmesi, bu yönetimi model eğitimi aşamasının ötesine, Üretim modelinizin dağıtım aşamasına genişletmenizi sağlar.
+MLflow, Machine Learning denemeleri 'in yaşam döngüsünü yönetmeye yönelik açık kaynaklı bir kitaplıktır. Azure Machine Learning tümleştirmesi, bu yönetimi model eğitim aşamasından daha fazla üretim modelinizin dağıtım aşamasına genişletmenizi sağlar.
 
 >[!NOTE]
 > Açık kaynak kitaplığı olarak MLflow sık sık değişir. Bu nedenle, Azure Machine Learning ve MLflow tümleştirmesiyle sunulan işlevlerin Microsoft tarafından tam olarak desteklenmeden bir önizleme olarak değerlendirilmesi gerekir.
 
-Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modelinizi bir Azure Machine Learning Web hizmeti olarak dağıtabileceğiniz, çerçeveler--PyTorch, TensorFlow, scikit-öğren, ONNX, vb. ve çalışma alanınızdaki üretim modellerinizi yönetme gibi işlemler gösterilmektedir.
+Aşağıdaki diyagramda, MLflow dağıtım API 'SI ve Azure Machine Learning ile birlikte, bilinen çerçevelerle oluşturulmuş modelleri (PyTorch, TensorFlow, scikit-öğren, vb. gibi), Azure Machine Learning Web Hizmetleri olarak ve çalışma alanınızda yönetebileceğiniz bir şekilde dağıtabilirsiniz. 
 
 ![ Azure Machine Learning ile mlflow modellerini dağıtma](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
@@ -40,9 +40,11 @@ Aşağıdaki diyagramda, MLflow dağıtım API 'SI ile, var olan MLflow modelini
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* [Azure Machine Learning bağlanmak Için MLflow Izleme URI 'Sini ayarlayın](how-to-use-mlflow.md).
+* Machine Learning modeli. Eğitilen bir modeliniz yoksa, [Bu](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) depodaki işlem senaryonuza en uygun olan Not defteri örneğini bulun ve talimatlarını izleyin. 
+* [Azure Machine Learning bağlanmak Için MLflow Izleme URI 'Sini ayarlayın](how-to-use-mlflow.md#track-local-runs).
 * `azureml-mlflow` paketini yükleyin. 
     * Bu paket `azureml-core` , çalışma alanınıza erişmek Için MLflow bağlantısını sağlayan [Azure Machine Learning Python SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)otomatik olarak getirir.
+* [MLflow işlemlerinizi çalışma alanınız ile gerçekleştirmek için hangi erişim izinlerine ihtiyacınız](how-to-assign-roles.md#mlflow-operations)olduğunu görün. 
 
 ## <a name="deploy-to-aci"></a>ACI'ye dağıtma
 
@@ -140,7 +142,7 @@ Dağıtılmış Web hizmetinizi kullanmayı planlamıyorsanız, `service.delete(
 
 ## <a name="example-notebooks"></a>Örnek not defterleri
 
-[Azure ML Not defterleri Ile Mlflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/track-and-monitor-experiments/using-mlflow) , bu makalede sunulan kavramları gösterir ve genişletir.
+[Azure Machine Learning Not defterlerindeki Mlflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow) , bu makalede sunulan kavramları gösterir ve genişletir.
 
 > [!NOTE]
 > Mlflow kullanarak bir topluluk odaklı örnek deposu şurada bulunabilir: https://github.com/Azure/azureml-examples .
@@ -150,3 +152,4 @@ Dağıtılmış Web hizmetinizi kullanmayı planlamıyorsanız, `service.delete(
 * [Modellerinizi yönetin](concept-model-management-and-deployment.md).
 * [Veri kayması](./how-to-enable-data-collection.md)için üretim modellerinizi izleyin.
 * [MLflow ile Azure Databricks çalıştırmalarını izleyin](how-to-use-mlflow-azure-databricks.md).
+

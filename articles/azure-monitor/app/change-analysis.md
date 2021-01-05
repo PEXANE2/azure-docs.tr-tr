@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/04/2020
-ms.openlocfilehash: 36e73ceddaa5e3f9cbbf4a41f76a4ba6d70eed0f
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 50e199d2d56016086bb409f8690e9828f1d19984
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979972"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881518"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Izleyici 'de uygulama değişikliği analizini (Önizleme) kullanma
 
@@ -183,7 +183,6 @@ Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçm
     ```
 
 - **Microsoft. ChangeAnalysis kaynak sağlayıcısı kaydettirilemedi**. Bu ileti, kaynak sağlayıcısını kaydetmek için Kullanıcı arabirimi gönderme isteği olarak hemen başarısız olan bir şeydir ve izin sorunuyla ilgili değildir. Büyük olasılıkla, geçici bir internet bağlantısı sorunu olabilir. Sayfayı yenilemeyi ve internet bağlantınızı kontrol etmeyi deneyin. Hata devam ederse, iletişime geçin changeanalysishelp@microsoft.com
-- **Microsoft. ChangeAnalysis kaynak sağlayıcısı ile sorgulama başarısız oldu** *, Azure Use aboneliği desteklenmiyor, değişiklikler yalnızca aboneliğin ana kiracısında kullanılabilir*. Değişiklik Analizi kaynak sağlayıcısı 'nın, ev kiracısında olmayan kullanıcılar için Azure ışıklı kullanım aboneliği aracılığıyla kaydedilmesi için bir sınırlama vardır. Yakın gelecekte bu sınırlamanın giderilmesi beklenir. Sizin için bir engelleyici sorun varsa, hizmet sorumlusu oluşturmayı ve erişime izin vermek üzere rolü açıkça atamayı içeren bir geçici çözüm vardır.  changeanalysishelp@microsoft.comHakkında daha fazla bilgi edinmek için iletişim kurun.
 
 - **Bu, beklenenden uzun sürüyor**. Bu ileti, kaydın 2 dakikadan uzun sürmesi anlamına gelir. Bu olağan dışı bir şeydir, ancak yanlış bir sorun olduğu anlamına gelmez. Abonelikler 'e gidebilirsiniz **|** **Microsoft. changeanalysis** kaynak sağlayıcısı kayıt durumunu denetlemek için kaynak sağlayıcısı. Kullanıcı arabirimini kullanarak, yardımcı olup olmadığını görmek için kaydını silip yeniden kaydedin veya yenileyin. Sorun devam ederse destek 'e başvurun changeanalysishelp@microsoft.com .
     ![RP kaydı çok uzun sürüyor sorunlarını giderme](./media/change-analysis/troubleshoot-registration-taking-too-long.png)
@@ -191,6 +190,10 @@ Uygulama değişikliği analizi ile tümleştirmesinden sonra değişiklik geçm
 ![Sorun giderme araçları seçiliyken bir sanal makine için sorunları Tanıla ve çöz aracının ekran görüntüsü.](./media/change-analysis/vm-dnsp-troubleshootingtools.png)
 
 ![Bir sanal makine için son değişiklikleri çözümle sorun giderme aracının kutucuğunun ekran görüntüsü.](./media/change-analysis/analyze-recent-changes.png)
+
+### <a name="azure-lighthouse-subscription-is-not-supported"></a>Azure Aydınlathouse aboneliği desteklenmiyor
+
+- **Microsoft. ChangeAnalysis kaynak sağlayıcısı ile sorgulama başarısız oldu** *, Azure Use aboneliği desteklenmiyor, değişiklikler yalnızca aboneliğin ana kiracısında kullanılabilir*. Değişiklik Analizi kaynak sağlayıcısı 'nın, ev kiracısında olmayan kullanıcılar için Azure ışıklı kullanım aboneliği aracılığıyla kaydedilmesi için bir sınırlama vardır. Yakın gelecekte bu sınırlamanın giderilmesi beklenir. Sizin için bir engelleyici sorun varsa, hizmet sorumlusu oluşturmayı ve erişime izin vermek üzere rolü açıkça atamayı içeren bir geçici çözüm vardır.  changeanalysishelp@microsoft.comHakkında daha fazla bilgi edinmek için iletişim kurun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

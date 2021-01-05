@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure Ilke tanımlarının uyumluluğun nasıl yönetildiğini ve raporlanmadığını belirten çeşitli etkileri vardır.
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 19811eca33be7dff4d9bee5b8bd89dd38f185a57
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: e72e94766dce2660409e729bc43eb107fb9ab39a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91873957"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883087"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Ilke efektlerini anlama
 
@@ -43,7 +43,9 @@ Kaynak oluşturma veya güncelleştirme istekleri önce Azure Ilkesi tarafından
 
 Kaynak sağlayıcı Kaynak Yöneticisi modundaki bir istek için bir başarı kodu döndürdüğünde, **Auditınotexists** ve **deployifnotexists** , ek uyumluluk günlüğü veya eylemi gerekip gerekmediğini belirlemeyi değerlendirir.
 
-## <a name="append"></a>Ekleme
+Ayrıca, `PATCH` yalnızca ilgili alanları değiştiren istekler, `tags` ilke değerlendirmesini ilgili alanları denetleyen koşulları içeren ilkelerle kısıtlar `tags` .
+
+## <a name="append"></a>Ekle
 
 Ekleme veya güncelleştirme sırasında istenen kaynağa ek alanlar eklemek için ekleme kullanılır. Ortak bir örnek, bir depolama kaynağı için izin verilen IP 'Leri belirtmektir.
 
@@ -62,7 +64,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 
 ### <a name="append-examples"></a>Ekleme örnekleri
 
-Örnek 1: **field/value** **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan [diğer ad](definition-structure.md#aliases) olmayan tek alan/değer çifti. **\[\*\]** Diğer ad olmayan bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
+Örnek 1:  **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir dizi **değeri** olan [diğer ad](definition-structure.md#aliases) olmayan tek alan/değer çifti. **\[\*\]** Diğer ad olmayan bir dizi ise, efekt **değeri** tüm dizi olarak ekler. Dizi zaten varsa, çakışmadan bir reddetme olayı oluşur.
 
 ```json
 "then": {
@@ -77,7 +79,7 @@ Append efektinin yalnızca bir **ayrıntı** dizisi vardır ve bu gereklidir. **
 }
 ```
 
-Örnek 2: **field/value** **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir Array **değeri** olan bir [diğer ad](definition-structure.md#aliases) kullanan tek alan/değer çifti. **\[\*\]** Diğer ad kullanıldığında, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
+Örnek 2:  **\[\*\]** BIR depolama hesabında IP kuralları ayarlamak için bir Array **değeri** olan bir [diğer ad](definition-structure.md#aliases) kullanan tek alan/değer çifti. **\[\*\]** Diğer ad kullanıldığında, efekt **değeri** önceden var olabilecek bir diziye ekler. Dizi henüz yoksa, oluşturulur.
 
 ```json
 "then": {
@@ -104,7 +106,7 @@ Denetim, bir kaynağın oluşturulması veya güncelleştirilmesi sırasında Az
 
 Kaynak Yöneticisi modu için, denetim efektinin, ilke tanımının **bundan sonra** koşulundaki ek özellikleri yoktur.
 
-Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , denetim efektinin aşağıdaki ek alt özellikleri **ayrıntılı**olarak vardır.
+Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , denetim efektinin aşağıdaki ek alt özellikleri **ayrıntılı** olarak vardır.
 
 - **constraintTemplate** (gerekli)
   - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
@@ -166,8 +168,8 @@ Auditınotexists etkilerinin **Details** özelliği, eşleştirilecek ilgili kay
   - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
   - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
+  - _ResourceGroup_ Için, **resourcegroupname** içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
+  - _Abonelik_ için, ilgili kaynak için tüm aboneliği sorgular.
   - Varsayılan _kaynak grubu_.
 - **ExistenceCondition** (isteğe bağlı)
   - Belirtilmemişse, **türdeki** ilgili kaynaklar etkiyi karşılar ve denetimi tetiklemez.
@@ -220,7 +222,7 @@ Mevcut kaynakların değerlendirmesi sırasında, bir reddetme ilke tanımıyla 
 
 Kaynak Yöneticisi modu için, reddetme efekti, ilke tanımının **daha sonra** koşulundaki ek özelliklere sahip olmaz.
 
-Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , reddetme efekti aşağıdaki ek özellikler alt özelliklerine sahiptir. **details**
+Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , reddetme efekti aşağıdaki ek özellikler alt özelliklerine sahiptir. 
 
 - **constraintTemplate** (gerekli)
   - Yeni kısıtlamaları tanımlayan CustomResourceDefinition (CRD) kısıtlama şablonu. Şablon rego mantığını, kısıtlama şemasını ve Azure Ilkesinden **değerler** aracılığıyla geçirilen kısıtlama parametrelerini tanımlar.
@@ -260,7 +262,7 @@ Kaynak sağlayıcısı modu için `Microsoft.Kubernetes.Data` , reddetme efekti 
 Bir DeployIfNotExists öğesine benzer şekilde, bir DeployIfNotExists ilke tanımı, koşul karşılandığında bir şablon dağıtımı yürütür.
 
 > [!NOTE]
-> [Iç içe şablonlar](../../../azure-resource-manager/templates/linked-templates.md#nested-template) **Deployifnotexists**ile desteklenir, ancak [bağlantılı şablonlar](../../../azure-resource-manager/templates/linked-templates.md#linked-template) Şu anda desteklenmiyor.
+> [Iç içe şablonlar](../../../azure-resource-manager/templates/linked-templates.md#nested-template) **Deployifnotexists** ile desteklenir, ancak [bağlantılı şablonlar](../../../azure-resource-manager/templates/linked-templates.md#linked-template) Şu anda desteklenmiyor.
 
 ### <a name="deployifnotexists-evaluation"></a>DeployIfNotExists değerlendirmesi
 
@@ -288,8 +290,8 @@ DeployIfNotExists efektinin **Details** özelliği, eşleştirilecek ilgili kayn
   - İzin verilen değerler, _abonelik_ ve _ResourceGroup_.
   - İle eşleşecek ilgili kaynağı nereden getirecek yerin kapsamını ayarlar.
   - **Tür** , **IF** koşulu kaynağı altında olacak bir kaynak ise uygulanmaz.
-  - _ResourceGroup_Için, **resourcegroupname**içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
-  - _Abonelik_için, ilgili kaynak için tüm aboneliği sorgular.
+  - _ResourceGroup_ Için, **resourcegroupname** içinde belirtilen **IF** koşulu kaynağının kaynak grubu veya kaynak grubu ile sınırlı olur.
+  - _Abonelik_ için, ilgili kaynak için tüm aboneliği sorgular.
   - Varsayılan _kaynak grubu_.
 - **ExistenceCondition** (isteğe bağlı)
   - Belirtilmemişse, **türü** ilgili herhangi bir kaynak etkiyi karşılar ve dağıtımı tetiklemez.
@@ -503,7 +505,7 @@ Bir diğer ad belirtildiğinde, değiştirme işleminin istek içeriğini kaynak
 - Diğer adın eşlendiği özelliği isteğin API sürümünde ' değiştirilebilir ' olarak işaretlenir.
 - Değiştirme işlemindeki belirteç türü, isteğin API sürümündeki özelliğin beklenen belirteç türüyle eşleşiyor.
 
-Bu denetimlerden biri başarısız olursa, ilke değerlendirmesi belirtilen **conflictEffect**geri döner.
+Bu denetimlerden biri başarısız olursa, ilke değerlendirmesi belirtilen **conflictEffect** geri döner.
 
 > [!IMPORTANT]
 > Diğer adları içeren tanımların değiştirilmesi, eşlenen özelliğin ' değiştirilebilir ' olmadığı API sürümlerini kullanarak başarısız istekleri önlemek için _Denetim_ **Çakışma efektini** kullanır. Aynı diğer ad API sürümleri arasında farklı davrandığı takdirde, koşullu değiştirme işlemleri her bir API sürümü için kullanılan değiştirme işlemini tespit etmek için kullanılabilir.
@@ -519,8 +521,8 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
   - Tanımlanan rol, [katkıda bulunan](../../../role-based-access-control/built-in-roles.md#contributor) rolüne verilen tüm işlemleri içermelidir.
 - **conflictEffect** (isteğe bağlı)
   - Hangi ilke tanımının birden fazla ilke tanımının aynı özelliği değiştirdiğine veya belirtilen diğer ad üzerinde değişiklik işleminin çalışmadığını belirler.
-    - Yeni veya güncelleştirilmiş kaynaklar için, _reddetme_ ile ilke tanımı öncelik kazanır. _Denetim_ tüm **işlemleri**atlayarak ilke tanımları. Birden fazla ilke tanımı _reddederse_, istek çakışma olarak reddedilir. Tüm ilke tanımlarında _Denetim_varsa, çakışan ilke tanımlarının **işlemlerinden** hiçbiri işlenir.
-    - Mevcut kaynaklar için, birden fazla ilke tanımı _reddederse_, uyumluluk durumu _Çakışma_olur. Bir veya daha az ilke tanımı _reddederse_, her atama _uyumlu olmayan_bir uyumluluk durumu döndürür.
+    - Yeni veya güncelleştirilmiş kaynaklar için, _reddetme_ ile ilke tanımı öncelik kazanır. _Denetim_ tüm **işlemleri** atlayarak ilke tanımları. Birden fazla ilke tanımı _reddederse_, istek çakışma olarak reddedilir. Tüm ilke tanımlarında _Denetim_ varsa, çakışan ilke tanımlarının **işlemlerinden** hiçbiri işlenir.
+    - Mevcut kaynaklar için, birden fazla ilke tanımı _reddederse_, uyumluluk durumu _Çakışma_ olur. Bir veya daha az ilke tanımı _reddederse_, her atama _uyumlu olmayan_ bir uyumluluk durumu döndürür.
   - Kullanılabilir değerler: _Denetim_, _reddetme_, _devre dışı_.
   - Varsayılan değer _reddedildi_.
 - **işlemler** (gerekli)
@@ -532,14 +534,14 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
       - Eklenecek, değiştirilecek veya kaldırılacak etiket. Etiket adları diğer [alanlar](./definition-structure.md#fields)için aynı adlandırma kuralına uymalıdır.
     - **değer** (isteğe bağlı)
       - Etiketi ayarlanacak değer.
-      - **Işlem** _addorreplace_ veya _Add_ise bu özellik gereklidir.
+      - **Işlem** _addorreplace_ veya _Add_ ise bu özellik gereklidir.
     - **koşul** (isteğe bağlı)
-      - _Doğru_ veya _yanlış_olarak değerlendirilen [ilke işlevleriyle](./definition-structure.md#policy-functions) bir Azure ilke dili ifadesi içeren bir dize.
+      - _Doğru_ veya _yanlış_ olarak değerlendirilen [ilke işlevleriyle](./definition-structure.md#policy-functions) bir Azure ilke dili ifadesi içeren bir dize.
       - Aşağıdaki Ilke işlevlerini desteklemez: `field()` , `resourceGroup()` , `subscription()` .
 
 ### <a name="modify-operations"></a>İşlemleri değiştirme
 
-**Operations** özelliği dizisi, birkaç etiketi tek bir ilke tanımından farklı şekillerde değiştirmeyi mümkün kılar. Her işlem, **işlem**, **alan**ve **değer** özelliklerinden oluşur. İşlem düzeltme görevinin etiketlere ne yaptığını belirler, alan hangi etiketin değiştirilmekte olduğunu belirler ve değer bu etiketin yeni ayarını tanımlar. Aşağıdaki örnekte aşağıdaki etiket değişiklikleri yapılır:
+**Operations** özelliği dizisi, birkaç etiketi tek bir ilke tanımından farklı şekillerde değiştirmeyi mümkün kılar. Her işlem, **işlem**, **alan** ve **değer** özelliklerinden oluşur. İşlem düzeltme görevinin etiketlere ne yaptığını belirler, alan hangi etiketin değiştirilmekte olduğunu belirler ve değer bu etiketin yeni ayarını tanımlar. Aşağıdaki örnekte aşağıdaki etiket değişiklikleri yapılır:
 
 - `environment`Etiketi, farklı bir değerle zaten mevcut olsa bile "test" olarak ayarlar.
 - Etiketi kaldırır `TempResource` .
@@ -569,7 +571,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 **Operation** özelliği aşağıdaki seçeneklere sahiptir:
 
-|İşlem |Açıklama |
+|Çalışma |Description |
 |-|-|
 |addOrReplace |Özellik veya etiket farklı bir değerle zaten var olsa bile, tanımlı özelliği veya etiketi ve değeri kaynağa ekler. |
 |Ekle |Kaynağa tanımlı özelliği veya etiketi ve değeri ekler. |
@@ -646,7 +648,7 @@ Değişiklik efektinin **Ayrıntılar** özelliği, düzeltme için gereken izin
 
 ## <a name="layering-policy-definitions"></a>İlke tanımlarını katmanlama
 
-Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örneğin:
+Bir kaynak, birkaç atamadan etkilenebilir. Bu atamalar aynı kapsamda veya farklı kapsamlardadır olabilir. Bu atamaların her biri de tanımlı farklı bir etkiye sahip olabilir. Her ilke için koşul ve efekt bağımsız olarak değerlendirilir. Örnek:
 
 - İlke 1
   - Kaynak konumunu ' westus ' olarak kısıtlar
@@ -671,7 +673,7 @@ Bu kurulum aşağıdaki sonuca neden olur:
 - ' Westus ' içinde olmayan abonelikte bulunan yeni kaynaklar ilke 1 tarafından reddedildi
 - A aboneliğinin B kaynak grubundaki tüm yeni kaynaklar reddedildi
 
-Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farklılıklar arasından bir boşluk ile bir kaynak için bir fırsat yoktur. Katman ilkesi tanımlarının net sonucu, **en çok kısıtlayıcı**olarak kabul edilir. Örnek olarak, hem ilke 1 hem de 2 bir reddetme efektine sahipse, çakışan ve çakışan ilke tanımları tarafından bir kaynak engellenir. Hala hedef kapsamda oluşturulacak kaynak gerekiyorsa, doğru ilke atamalarının doğru kapsamları etkilediğini doğrulamak için her atamadaki dışlamaları gözden geçirin.
+Her atama tek tek değerlendirilir. Bu nedenle, bir kaynağın kapsamdaki farklılıklar arasından bir boşluk ile bir kaynak için bir fırsat yoktur. Katman ilkesi tanımlarının net sonucu, **en çok kısıtlayıcı** olarak kabul edilir. Örnek olarak, hem ilke 1 hem de 2 bir reddetme efektine sahipse, çakışan ve çakışan ilke tanımları tarafından bir kaynak engellenir. Hala hedef kapsamda oluşturulacak kaynak gerekiyorsa, doğru ilke atamalarının doğru kapsamları etkilediğini doğrulamak için her atamadaki dışlamaları gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

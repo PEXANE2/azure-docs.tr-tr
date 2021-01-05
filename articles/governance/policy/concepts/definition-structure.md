@@ -3,12 +3,12 @@ title: İlke tanımı yapısının ayrıntıları
 description: Kuruluşunuzda Azure kaynakları için kural oluşturmak üzere ilke tanımlarının nasıl kullanıldığını açıklar.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5f9a110247d4ec93c8f3fb95fc9ed61eb6806787
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305151"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883257"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure İlkesi tanım yapısı
 
@@ -75,7 +75,7 @@ Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samp
 **DisplayName** ve **Description** kullanarak ilke tanımını tanımlayabilir ve ne zaman kullanılacağı için bağlam sağlayabilirsiniz. **DisplayName** , en fazla _128_ karakter uzunluğunda ve en fazla _512_ karakter uzunluğunda bir **Açıklama** içeriyor.
 
 > [!NOTE]
-> Bir ilke tanımı, **kimliği** , **türü** ve **ADıNıN** oluşturulması veya güncelleştirilmesi sırasında JSON harici özellikleri tarafından tanımlanır ve json dosyasında gerekli değildir. İlke tanımını SDK aracılığıyla getirmek, JSON 'ın bir parçası olarak **kimliği** , **türü** ve **ad** özelliklerini döndürür, ancak her biri ilke tanımıyla ilgili salt okunurdur.
+> Bir ilke tanımı, **kimliği**, **türü** ve **ADıNıN** oluşturulması veya güncelleştirilmesi sırasında JSON harici özellikleri tarafından tanımlanır ve json dosyasında gerekli değildir. İlke tanımını SDK aracılığıyla getirmek, JSON 'ın bir parçası olarak **kimliği**, **türü** ve **ad** özelliklerini döndürür, ancak her biri ilke tanımıyla ilgili salt okunurdur.
 
 ## <a name="type"></a>Tür
 
@@ -106,7 +106,7 @@ Azure Ilkesi yerleşik bileşenleri ve desenleri [Azure ilke örnekleri](../samp
 
 Aşağıdaki kaynak sağlayıcısı modu tam olarak desteklenmektedir:
 
-- `Microsoft.Kubernetes.Data` Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımlar, etkileri _Denetim_ , _reddetme_ ve _devre dışı_ bırakma kullanır. [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektinin kullanımı _kullanım dışıdır_.
+- `Microsoft.Kubernetes.Data` Kubernetes kümelerinizi Azure üzerinde veya kapalı olarak yönetmek için. Bu kaynak sağlayıcısı modunu kullanan tanımlar, etkileri _Denetim_, _reddetme_ ve _devre dışı_ bırakma kullanır. [Enforceopaconstraint](./effects.md#enforceopaconstraint) efektinin kullanımı _kullanım dışıdır_.
 
 Aşağıdaki kaynak sağlayıcısı modları Şu anda **Önizleme** olarak desteklenmektedir:
 
@@ -143,7 +143,7 @@ Parametreler, ilke oluştururken de aynı şekilde çalışır. Bir ilke tanım�
 Bir parametre, ilke tanımında kullanılan aşağıdaki özelliklere sahiptir:
 
 - `name`: Parametresinin adı. `parameters`İlke kuralı içindeki dağıtım işlevi tarafından kullanılır. Daha fazla bilgi için bkz. [parametre değeri kullanma](#using-a-parameter-value).
-- `type`: Parametrenin **dize** , **dizi** , **nesne** , **Boole** , **tamsayı** , **float** veya **TarihSaat** olduğunu belirler.
+- `type`: Parametrenin **dize**, **dizi**, **nesne**, **Boole**, **tamsayı**, **float** veya **TarihSaat** olduğunu belirler.
 - `metadata`: Kullanıcı dostu bilgileri göstermek için öncelikle Azure portal tarafından kullanılan alt özellikleri tanımlar:
   - `description`: Parametresinin hangi amaçla kullanıldığına ilişkin açıklama. , Kabul edilebilir değer örnekleri sağlamak için kullanılabilir.
   - `displayName`: Parametre için portalda gösterilen kolay ad.
@@ -284,12 +284,12 @@ Bir koşul, bir **alanın** veya **değer** erişimcisinin belirli ölçütlere 
   `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
-**Daha az** , **lessotalals** , **büyüktür** ve **greaterOrEquals** için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak yapılır `InvariantCultureIgnoreCase` .
+**Daha az**, **lessotalals**, **büyüktür** ve **greaterOrEquals** için, özellik türü koşul türüyle eşleşmiyorsa bir hata oluşur. Dize karşılaştırmaları kullanılarak yapılır `InvariantCultureIgnoreCase` .
 
 **LIKE** ve **NOTLIKE** koşullarını kullanırken, değerinde bir joker karakter sağlarsınız `*` .
 Değer birden fazla joker karakter içermelidir `*` .
 
-**Match** ve **notmatch** koşullarını kullanırken, bir `#` harf için, bir `?` harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Match** ve **notmatch** büyük/küçük harfe duyarlı olsa da, bir _StringValue_ 'yi değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively** ' de mevcuttur.
+**Match** ve **notmatch** koşullarını kullanırken, bir `#` harf için, bir `?` harf için, herhangi bir karakterle eşleşecek `.` şekilde ve diğer karakteri bu gerçek karakterle eşleşecek şekilde eşleştirin. **Match** ve **notmatch** büyük/küçük harfe duyarlı olsa da, bir _StringValue_ 'yi değerlendiren diğer tüm koşullar büyük/küçük harfe duyarlıdır. Büyük/küçük harf duyarsız alternatifler **matchInsensitively** ve **notMatchInsensitively**' de mevcuttur.
 
 **\[ \* \] Diğer ad** dizi alanı değerinde dizideki her öğe mantıksal **ve** öğe arasında ayrı ayrı değerlendirilir. Daha fazla bilgi için bkz. [dizi kaynağı özelliklerine başvurma](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
@@ -362,7 +362,7 @@ Koşullar, **değer** kullanılarak da oluşturulabilir. **değer** [parametrele
 
 #### <a name="value-examples"></a>Değer örnekleri
 
-Bu ilke kuralı örneği, **value** `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre karşılaştırmak için değeri kullanır `*netrg` . Kural, `Microsoft.Network/*` adı içinde sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder `*netrg` .
+Bu ilke kuralı örneği,  `resourceGroup()` işlevin sonucunu ve döndürülen **ad** özelliğini **benzer** bir koşula göre karşılaştırmak için değeri kullanır `*netrg` . Kural, `Microsoft.Network/*` adı içinde sonlanan herhangi bir kaynak grubundaki **türden** olmayan tüm kaynakları reddeder `*netrg` .
 
 ```json
 {
@@ -569,13 +569,13 @@ Azure Ilkesinde dizi özellikleriyle çalışma hakkında daha fazla bilgi için
 
 Azure Ilkesi aşağıdaki efekt türlerini destekler:
 
-- **Append** : isteğe tanımlı alan kümesini isteğe ekler
-- **Denetim** : etkinlik günlüğünde bir uyarı olayı oluşturur, ancak bu istek başarısız olmaz
-- **Auditınotexists** : ilgili bir kaynak yoksa, etkinlik günlüğünde bir uyarı olayı oluşturur
-- **Reddet** : etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
-- **Deployifnotexists** : zaten yoksa ilgili bir kaynak dağıtır
-- **Devre dışı** : kaynakları ilke kuralına uyum için değerlendirmez
-- **Değiştir** : bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
+- **Append**: isteğe tanımlı alan kümesini isteğe ekler
+- **Denetim**: etkinlik günlüğünde bir uyarı olayı oluşturur, ancak bu istek başarısız olmaz
+- **Auditınotexists**: ilgili bir kaynak yoksa, etkinlik günlüğünde bir uyarı olayı oluşturur
+- **Reddet**: etkinlik günlüğünde bir olay oluşturur ve istekte başarısız olur
+- **Deployifnotexists**: zaten yoksa ilgili bir kaynak dağıtır
+- **Devre dışı**: kaynakları ilke kuralına uyum için değerlendirmez
+- **Değiştir**: bir kaynaktaki tanımlı etiketleri ekler, güncelleştirir veya kaldırır
 - **Enforceopaconstraint** (kullanım dışı): Azure 'da kendi kendine yönetilen Kubernetes kümeleri için, açık ilke aracısı sayede denetleyicisini Gatekeeper v3 ile yapılandırır
 - **Enforceregopolicy** (kullanım dışı): Azure Kubernetes hizmetinde Gatekeeper v2 ile açık ilke aracısı sayede denetleyiciyi yapılandırır
 
@@ -606,10 +606,10 @@ Aşağıdaki işlev bir ilke kuralında kullanılabilir, ancak bir Azure Resourc
 Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
 - `addDays(dateTime, numberOfDaysToAdd)`
-  - **DateTime** : [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. FFFFFFFZ'
-  - **Numberofdaystoadd** : [gerekli] tamsayı-eklenecek gün sayısı
+  - **DateTime**: [Required] Universal ISO 8601 DateTime biçiminde dize dizesi ' yyyy-mm-ddTHH: mm: ss. FFFFFFFZ'
+  - **Numberofdaystoadd**: [gerekli] tamsayı-eklenecek gün sayısı
 - `field(fieldName)`
-  - **Alanadı** : [gerekli] dize-alınacak [alanın](#fields) adı
+  - **Alanadı**: [gerekli] dize-alınacak [alanın](#fields) adı
   - If koşulu tarafından değerlendirilen kaynaktaki bu alanın değerini döndürür.
   - `field` Öncelikle, değerlendirilen kaynaktaki alanlara başvurmak için **Auditınotexists** ve **deployifnotexists** ile birlikte kullanılır. Bu kullanım örneği, [Deployifnotexists örneğinde](effects.md#deployifnotexists-example)görülebilir.
 - `requestContext().apiVersion`
@@ -629,8 +629,8 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
 
 - `ipRangeContains(range, targetRange)`
-    - **Aralık** : [gerekli] dize-bir IP adresi aralığı belirten dize.
-    - **targetRange** : [gerekli] dize-bir IP adresi aralığı belirten dize.
+    - **Aralık**: [gerekli] dize-bir IP adresi aralığı belirten dize.
+    - **targetRange**: [gerekli] dize-bir IP adresi aralığı belirten dize.
 
     Verilen IP adresi aralığının hedef IP adresi aralığını içerip içermediğini döndürür. Boş aralıklar veya IP aileleri arasında karıştırma yapılmasına izin verilmez ve değerlendirme hatasına neden olur.
 
@@ -642,7 +642,7 @@ Aşağıdaki işlevler yalnızca ilke kurallarında kullanılabilir:
 
 #### <a name="policy-function-example"></a>İlke işlevi örneği
 
-Bu ilke kuralı örneği, kaynak `resourceGroup` **name** `concat` `like` adını kaynak grubu adıyla başlatmak üzere zorlayan bir koşul oluşturmak için, ad özelliğini almak üzere Array ve Object işleviyle birlikte, kaynak işlevini kullanır.
+Bu ilke kuralı örneği, kaynak `resourceGroup`  `concat` `like` adını kaynak grubu adıyla başlatmak üzere zorlayan bir koşul oluşturmak için, ad özelliğini almak üzere Array ve Object işleviyle birlikte, kaynak işlevini kullanır.
 
 ```json
 {
@@ -669,25 +669,6 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
   Kaynak özelliklerinin diğer adlarını görüntülemek ve saptamak için [Visual Studio Code Için Azure ilke uzantısını](../how-to/extension-for-vscode.md) kullanın.
 
   :::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Visual Studio Code için Azure Ilke uzantısının, diğer ad adlarını görüntüleyecek bir özelliği bir ekran görüntüsü." border="false":::
-
-- Azure Kaynak Grafiği
-
-  `project`Bir kaynağın **diğer adını** göstermek için işlecini kullanın.
-
-  ```kusto
-  Resources
-  | where type=~'microsoft.storage/storageaccounts'
-  | limit 1
-  | project aliases
-  ```
-  
-  ```azurecli-interactive
-  az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
-  
-  ```azurepowershell-interactive
-  Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-  ```
 
 - Azure PowerShell
 
@@ -728,14 +709,14 @@ Diğer adların listesi her zaman büyüyordur. Şu anda Azure Ilkesi tarafında
 
 ### <a name="understanding-the--alias"></a>[*] Diğer adını anlama
 
-Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örneğin:
+Kullanılabilir diğer adların birkaçı, ' normal ' ad olarak görünen bir sürüme ve ona eklenmiş bir sürümüne sahiptir **\[\*\]** . Örnek:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 ' Normal ' diğer ad, alanı tek bir değer olarak temsil eder. Bu alan, tüm değer kümesinin tam olarak tanımlanmış olması, daha fazla olmaması ve daha az olmaması durumunda tam eşleşme karşılaştırma senaryolarına yöneliktir.
 
-**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örneğin:
+**\[\*\]** Diğer ad, bir Array Resource özelliğinin öğelerinden seçilen bir değer koleksiyonunu temsil eder. Örnek:
 
 | Diğer ad | Seçili değerler |
 |:---|:---|

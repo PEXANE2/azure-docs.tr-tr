@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3ceead297ea726e256d806c08c22810b39296793
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 15a878eb863b71a4519e75def2598f013152dfb7
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917180"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881642"
 ---
 # <a name="how-to-use-azuresearchdocuments-in-a-c-net-application"></a>C# .NET uygulamasında Azure.Search.Documtaları kullanma
 
@@ -31,7 +31,7 @@ Bu makalede, C# ve [**Azure.Search.Documstalar**](/dotnet/api/overview/azure/sea
 + Dizinde arama belgelerini yükleme ve yönetme
 + HTTP ve JSON ayrıntıları ile uğraşmak zorunda kalmadan sorguları yürütün
 
-Kitaplık, bir arama hizmetine programlı erişim için kullanılan tüm API 'Leri içeren tek bir [Azure.Search.Document NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents/)olarak dağıtılır.
+Kitaplık, bir arama hizmetine programlı erişim için kullanılan tüm API 'Leri içeren tek bir [Azure.Search.DocUmstak NuGet paketi](https://www.nuget.org/packages/Azure.Search.Documents/)olarak dağıtılır.
 
 İstemci kitaplığı, ve gibi işlemleri ve ve sınıfları gibi sınıfları tanımlar `SearchIndex` `SearchField` `SearchDocument` `SearchIndexClient.CreateIndex` `SearchClient.Search` `SearchIndexClient` `SearchClient` . Bu sınıflar aşağıdaki ad alanları halinde düzenlenmiştir:
 
@@ -54,7 +54,7 @@ Azure.Search.Docmestalar (sürüm 11) [ `2020-06-30` Azure bilişsel arama REST 
 
 + Kendi Azure Bilişsel Arama hizmetiniz. SDK 'yı kullanmak için hizmetinizin adı ve bir veya daha fazla API anahtarı gerekir. [Portalda bir hizmet oluşturun](search-create-service-portal.md) .
 
-+ **Araçlar** NuGet Paket Yöneticisi, Visual Studio 'da çözüm için NuGet Paketlerini Yönet ' i kullanarak [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents) indirin  >  **NuGet Package Manager**  >  **Manage NuGet Packages for Solution** . Paket adını arayın `Azure.Search.Documents` .
++ **Araçlar** NuGet Paket Yöneticisi, Visual Studio 'da çözüm için NuGet Paketlerini Yönet ' i kullanarak [Azure.Search.Documstaları paketini](https://www.nuget.org/packages/Azure.Search.Documents) indirin  >    >   . Paket adını arayın `Azure.Search.Documents` .
 
 .NET için Azure SDK, en düşük gereksinimleri .NET Framework 4.6.1 ve .NET Core 2,0 anlamına gelen [.NET Standard 2,0](/dotnet/standard/net-standard#net-implementation-support)' a uyar.
 

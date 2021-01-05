@@ -3,12 +3,12 @@ title: 'Öğretici: özel bir ilke tanımı oluşturma'
 description: Bu öğreticide, Azure kaynaklarınız için özel iş kurallarını zorlamak üzere Azure Ilkesi için özel bir ilke tanımı oluşturursunuz.
 ms.date: 10/05/2020
 ms.topic: tutorial
-ms.openlocfilehash: 24058a2c8428d306c5e53a73393b0d98785831cf
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876303"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882900"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Öğretici: özel bir ilke tanımı oluşturma
 
@@ -71,7 +71,7 @@ Yönetmek istediğiniz özelliği içeren bir [ARM](../../../azure-resource-mana
 #### <a name="existing-resource-in-the-portal"></a>Portalda mevcut kaynak
 
 Özellikleri bulmanın en kolay yolu, aynı türdeki mevcut bir kaynağa bakmanız. Zorlamak istediğiniz ayarla önceden yapılandırılmış kaynaklar, karşılaştırılacak değeri de sağlar.
-Söz konusu kaynak için Azure portal **şablonu dışarı aktar** sayfasına ( **Ayarlar**altında) bakın.
+Söz konusu kaynak için Azure portal **şablonu dışarı aktar** sayfasına ( **Ayarlar** altında) bakın.
 
 > [!WARNING]
 > Azure portal tarafından dışarıya alınan ARM şablonu, `deployment` bir [Deployifnotexists](../concepts/effects.md#deployifnotexists) Ilke tanımındaki bir ARM şablonunun özelliğine doğrudan takılıdır.
@@ -122,13 +122,13 @@ Bunu bir depolama hesabı için yapmak, bu örneğe benzer bir şablonu ortaya �
 ...
 ```
 
-**Özellikler** altında, **supportsHttpsTrafficOnly** adlı bir değer **false**olarak ayarlanır. Bu özellik, aradığınız özellik gibi görünüyor. Ayrıca, kaynağın **türü** **Microsoft. Storage/storageaccounts**olur. Tür, ilkeyi yalnızca bu türdeki kaynaklarla sınırlandırmamızı sağlar.
+**Özellikler** altında, **supportsHttpsTrafficOnly** adlı bir değer **false** olarak ayarlanır. Bu özellik, aradığınız özellik gibi görünüyor. Ayrıca, kaynağın **türü** **Microsoft. Storage/storageaccounts** olur. Tür, ilkeyi yalnızca bu türdeki kaynaklarla sınırlandırmamızı sağlar.
 
 #### <a name="create-a-resource-in-the-portal"></a>Portalda kaynak oluşturma
 
-Portal aracılığıyla başka bir yöntem de kaynak oluşturma deneyimidir. Portal aracılığıyla bir depolama hesabı oluştururken, **Gelişmiş** sekmesinde **güvenlik aktarımı gerekli**değildir. Bu özellik _devre dışı_ ve _etkin_ seçeneklere sahiptir. Bilgi simgesi, bu seçeneği doğrulayan ek metnin büyük olasılıkla istediğiniz özelliği olduğunu onaylar. Ancak, Portal bu ekrandaki özellik adını bize söylemez.
+Portal aracılığıyla başka bir yöntem de kaynak oluşturma deneyimidir. Portal aracılığıyla bir depolama hesabı oluştururken, **Gelişmiş** sekmesinde **güvenlik aktarımı gerekli** değildir. Bu özellik _devre dışı_ ve _etkin_ seçeneklere sahiptir. Bilgi simgesi, bu seçeneği doğrulayan ek metnin büyük olasılıkla istediğiniz özelliği olduğunu onaylar. Ancak, Portal bu ekrandaki özellik adını bize söylemez.
 
-**Gözden geçir + oluştur** sekmelerinde, **Otomasyon Için bir şablon indirmek**için sayfanın alt kısmında bir bağlantı bulunur. Bağlantıyı seçmek, yapılandırdığımız kaynağı oluşturan şablonu açar. Bu durumda, iki temel bilgi parçası görüyoruz:
+**Gözden geçir + oluştur** sekmelerinde, **Otomasyon Için bir şablon indirmek** için sayfanın alt kısmında bir bağlantı bulunur. Bağlantıyı seçmek, yapılandırdığımız kaynağı oluşturan şablonu açar. Bu durumda, iki temel bilgi parçası görüyoruz:
 
 ```json
 ...
@@ -168,7 +168,6 @@ Bir Azure kaynağı için diğer adları belirlemenin birkaç yolu vardır. Bu �
 - VS Code için Azure İlkesi uzantısı
 - Azure CLI
 - Azure PowerShell
-- Azure Kaynak Grafiği
 
 ### <a name="get-aliases-in-vs-code-extension"></a>VS Code uzantılı diğer adları al
 
@@ -188,7 +187,7 @@ Azure CLı 'da, `az provider` komut grubu kaynak diğer adlarını aramak için 
 az provider show --namespace Microsoft.Storage --expand "resourceTypes/aliases" --query "resourceTypes[].aliases[].name"
 ```
 
-Sonuçlarda, **supportsHttpsTrafficOnly**adlı depolama hesapları tarafından desteklenen bir diğer ad görüyoruz. Bu diğer adın varlığı, iş gereksinimlerinizi zorlayabilmemiz için ilkeyi yazabildiğimiz anlamına gelir!
+Sonuçlarda, **supportsHttpsTrafficOnly** adlı depolama hesapları tarafından desteklenen bir diğer ad görüyoruz. Bu diğer adın varlığı, iş gereksinimlerinizi zorlayabilmemiz için ilkeyi yazabildiğimiz anlamına gelir!
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -201,126 +200,7 @@ Azure PowerShell, cmdlet, `Get-AzPolicyAlias` kaynak diğer adlarını aramak i�
 (Get-AzPolicyAlias -NamespaceMatch 'Microsoft.Storage').Aliases
 ```
 
-Azure CLı gibi sonuçlar, **supportsHttpsTrafficOnly**adlı depolama hesapları tarafından desteklenen bir diğer ad gösterir.
-
-### <a name="azure-resource-graph"></a>Azure Kaynak Grafiği
-
-[Azure Kaynak Grafiği](../../resource-graph/overview.md) , Azure kaynaklarının özelliklerini bulmak için başka bir yöntem sağlayan bir hizmettir. Kaynak grafiğine sahip tek bir depolama hesabına bakmak için örnek bir sorgu aşağıda verilmiştir:
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1"
-```
-
-Sonuçlar, ARM şablonlarında görtiğimiz ve Azure Kaynak Gezgini aracılığıyla benzer şekilde görünür. Bununla birlikte, Azure Kaynak Grafiği sonuçları, diğer _adlar_ dizisinin _yansıtılasında_ [diğer ad](../concepts/definition-structure.md#aliases) ayrıntıları da içerebilir:
-
-```kusto
-Resources
-| where type=~'microsoft.storage/storageaccounts'
-| limit 1
-| project aliases
-```
-
-```azurecli-interactive
-az graph query -q "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-```azurepowershell-interactive
-Search-AzGraph -Query "Resources | where type=~'microsoft.storage/storageaccounts' | limit 1 | project aliases"
-```
-
-Diğer adlar için bir depolama hesabından örnek çıktı aşağıda verilmiştir:
-
-```json
-"aliases": {
-    "Microsoft.Storage/storageAccounts/accessTier": null,
-    "Microsoft.Storage/storageAccounts/accountType": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/enableBlobEncryption": true,
-    "Microsoft.Storage/storageAccounts/enableFileEncryption": true,
-    "Microsoft.Storage/storageAccounts/encryption": {
-        "keySource": "Microsoft.Storage",
-        "services": {
-            "blob": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            },
-            "file": {
-                "enabled": true,
-                "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-            }
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.keySource": "Microsoft.Storage",
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyname": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyvaulturi": null,
-    "Microsoft.Storage/storageAccounts/encryption.keyvaultproperties.keyversion": null,
-    "Microsoft.Storage/storageAccounts/encryption.services": {
-        "blob": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        },
-        "file": {
-            "enabled": true,
-            "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-        }
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled": true,
-    "Microsoft.Storage/storageAccounts/encryption.services.file": {
-        "enabled": true,
-        "lastEnabledTime": "2018-06-04T17:59:14.4970000Z"
-    },
-    "Microsoft.Storage/storageAccounts/encryption.services.file.enabled": true,
-    "Microsoft.Storage/storageAccounts/networkAcls": {
-        "bypass": "AzureServices",
-        "defaultAction": "Allow",
-        "ipRules": [],
-        "virtualNetworkRules": []
-    },
-    "Microsoft.Storage/storageAccounts/networkAcls.bypass": "AzureServices",
-    "Microsoft.Storage/storageAccounts/networkAcls.defaultAction": "Allow",
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*]": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].action": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id": [],
-    "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].state": [],
-    "Microsoft.Storage/storageAccounts/primaryEndpoints": {
-        "blob": "https://mystorageaccount.blob.core.windows.net/",
-        "file": "https://mystorageaccount.file.core.windows.net/",
-        "queue": "https://mystorageaccount.queue.core.windows.net/",
-        "table": "https://mystorageaccount.table.core.windows.net/"
-    },
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.blob": "https://mystorageaccount.blob.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.file": "https://mystorageaccount.file.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.queue": "https://mystorageaccount.queue.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.table": "https://mystorageaccount.table.core.windows.net/",
-    "Microsoft.Storage/storageAccounts/primaryEndpoints.web": null,
-    "Microsoft.Storage/storageAccounts/primaryLocation": "eastus2",
-    "Microsoft.Storage/storageAccounts/provisioningState": "Succeeded",
-    "Microsoft.Storage/storageAccounts/sku.name": "Standard_LRS",
-    "Microsoft.Storage/storageAccounts/sku.tier": "Standard",
-    "Microsoft.Storage/storageAccounts/statusOfPrimary": "available",
-    "Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly": false
-}
-```
-
-Azure Kaynak Grafiği [Cloud Shell](https://shell.azure.com)aracılığıyla kullanılabilir, bu sayede kaynaklarınızın özelliklerini keşfetmeye yönelik hızlı ve kolay bir yol haline gelir.
+Azure CLı gibi sonuçlar, **supportsHttpsTrafficOnly** adlı depolama hesapları tarafından desteklenen bir diğer ad gösterir.
 
 ## <a name="determine-the-effect-to-use"></a>Kullanılacak etkiyi belirleme
 
@@ -353,9 +233,9 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 }
 ```
 
-### <a name="metadata"></a>Meta veri
+### <a name="metadata"></a>Meta Veriler
 
-İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod**için _Tüm_ değeri kullanacağız.
+İlk üç bileşen ilke meta verilersidir. Bu bileşenlerin, için kural oluşturduğumuz öğrendiğimiz için değerleri sağlaması kolaydır. [Mod](../concepts/definition-structure.md#mode) öncelikli olarak Etiketler ve kaynak konumu ile ilgilidir. Etiketleri destekleyen kaynaklarla değerlendirmeyi sınırlandırmaya gerek olmadığı için, **mod** için _Tüm_ değeri kullanacağız.
 
 ```json
 "displayName": "Deny storage accounts not using only HTTPS",
@@ -365,7 +245,7 @@ Artık, yönetmeyi planladığımız özellikler için özellik ayrıntıları v
 
 ### <a name="parameters"></a>Parametreler
 
-Değerlendirmeyi değiştirmek için bir parametre kullanmadığımızda, sorun giderme için **etkiyi** değiştirmeye izin vermek üzere bir parametre kullanmak istiyoruz. **Bir bir** bir bir bir bir bir bir bir bir bir bir bir **Deny** parametre tanımlayacağız **Disabled** Bu iki seçenek iş gereksinimlerimizle eşleşir. Tamamlanan parametreler bloğu Şu örneğe benzer şekilde görünür:
+Değerlendirmeyi değiştirmek için bir parametre kullanmadığımızda, sorun giderme için **etkiyi** değiştirmeye izin vermek üzere bir parametre kullanmak istiyoruz. **Bir bir** bir bir bir bir bir bir bir bir bir bir bir  parametre tanımlayacağız  Bu iki seçenek iş gereksinimlerimizle eşleşir. Tamamlanan parametreler bloğu Şu örneğe benzer şekilde görünür:
 
 ```json
 "parameters": {

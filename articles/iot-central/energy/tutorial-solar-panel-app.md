@@ -1,5 +1,5 @@
 ---
-title: 'Öğretici: IoT Central ile bir Solar paneli izleme uygulaması oluşturma'
+title: 'Öğretici: Azure IoT Central bir Solar paneli izleme uygulaması oluşturma'
 description: 'Öğretici: Azure IoT Central uygulama şablonlarını kullanarak Solar Panel uygulaması oluşturmayı öğrenin.'
 author: op-ravi
 ms.author: omravi
@@ -8,104 +8,102 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d006bae8290c1f6ea564f9985727f4d6ff70bb04
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 9ea1db982a6944bd12b458624545b3888881508f
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516761"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97881928"
 ---
-# <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonunu oluşturun ve ilerleyin 
+# <a name="tutorial-create-and-explore-the-solar-panel-monitoring-app-template"></a>Öğretici: güneş paneli izleme uygulama şablonu oluşturma ve araştırma 
 
-Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren Solar paneli izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide şunları öğreneceksiniz:
+Bu öğretici, sanal verileri içeren örnek bir cihaz modeli içeren bir güneş panel izleme uygulaması oluşturma sürecinde size rehberlik eder. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 
 > [!div class="checklist"]
-> * Güneş paneli uygulamasını ücretsiz oluşturun
-> * Uygulama izlenecek yol
+> * Bir güneş panel uygulamasını ücretsiz oluşturun
+> * Uygulamayı gözden geçir
 > * Kaynakları temizleme
 
 
-Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free)
+Aboneliğiniz yoksa [ücretsiz bir deneme hesabı oluşturun](https://azure.microsoft.com/free).
 
 ## <a name="prerequisites"></a>Önkoşullar
-* Hiçbiri
-* Azure aboneliği önerilir, ancak denemek için gerekli değildir
+
+Bu öğreticiyi tamamlamak için herhangi bir önkoşul yoktur. Azure aboneliği önerilir, ancak gerekli değildir.
 
 
 ## <a name="create-a-solar-panel-monitoring-app"></a>Güneş paneli izleme uygulaması oluşturma 
 
 Bu uygulamayı üç basit adımda oluşturabilirsiniz:
 
-1. [Azure IoT Central giriş sayfasını](https://apps.azureiotcentral.com) açın ve yeni bir uygulama oluşturmak için **Oluştur** ' a tıklayın. 
+1. [Azure IoT Central](https://apps.azureiotcentral.com)'ye gidin. Yeni bir uygulama oluşturmak **için Oluştur ' u seçin.** 
 
-1. **Enerji** sekmesini seçin ve sonra da **güneş paneli izleme** uygulaması kutucuğunda **uygulama oluştur** ' a tıklayın. 
+1. **Enerji** sekmesini seçin. **Güneş paneli izleme** altında **uygulama oluştur**' u seçin. 
 
     > [!div class="mx-imgBorder"]
-    > ![Uygulama oluştur](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
+    > ![Azure IoT Central derleme seçeneklerinin ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-build.png)
   
-1. **Uygulama oluştur** **Yeni uygulama** formunu açar. İstenen ayrıntıları aşağıdaki şekilde gösterildiği gibi girin:
-    * **Uygulama adı**: IoT Central uygulamanız için bir ad seçin. 
-    * **URL**: bir IoT Central URL 'si seçin, platform benzersiz olduğunu doğrular.
-    * **7 günlük ücretsiz deneme**: zaten bir Azure aboneliğiniz varsa varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
+1. **Yeni uygulama** iletişim kutusunda, istenen ayrıntıları girin ve ardından **Oluştur**' u seçin.
+    * **Uygulama adı**: Azure IoT Central uygulamanız için bir ad seçin. 
+    * **URL**: bir Azure IoT Central URL 'si seçin. Platform, benzersizliği doğrular.
+    * **Fiyatlandırma planı**: zaten bir Azure aboneliğiniz varsa, varsayılan ayar önerilir. Azure aboneliğiniz yoksa ücretsiz deneme sürümü ile başlayın.
     * **Faturalandırma bilgisi**: uygulamanın kendisi ücretsizdir. Uygulamanıza yönelik kaynakları sağlamak için dizin, Azure aboneliği ve bölge ayrıntıları gereklidir.
-    * Sayfanın alt kısmındaki **Oluştur** düğmesine tıklayın, uygulamanız bir dakika içinde oluşturulur.
-        ![Yeni uygulama formu](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
+        ![Yeni uygulamanın ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-create-app.png)
         
-        ![Yeni uygulama formu faturalandırma bilgileri](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
+        ![Faturalama bilgilerinin ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-create-app-billinginfo.png)
 
 
 ### <a name="verify-the-application-and-simulated-data"></a>Uygulamayı ve sanal verileri doğrulama
 
-Yeni oluşturulan Solar paneli uygulaması, uygulamanız ve dilediğiniz zaman değiştirebilirsiniz. Bu uygulamayı değiştirmeden önce uygulamanın dağıtıldığından ve beklendiği gibi çalıştığından emin olalım.
+Yeni güneş paneli uygulamanızı dilediğiniz zaman değiştirebilirsiniz. Şimdilik, uygulamayı değiştirmeden önce uygulamanın dağıtıldığından ve beklendiği gibi çalıştığından emin olun.
 
-Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya** gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir, bu nedenle 1-2 dakika bekleyin. 
+Uygulama oluşturma ve veri benzetimini doğrulamak için **panoya** gidin. Kutucukları bazı verilerle birlikte görebiliyorsanız, uygulama dağıtımınız başarılı olmuştur. Veri simülasyonu, verileri oluşturmak birkaç dakika sürebilir. 
 
 ## <a name="application-walk-through"></a>Uygulama izlenecek yol
-Uygulama şablonunu başarıyla dağıttıktan sonra, örnek akıllı ölçüm cihazı, cihaz modeli ve Pano ile birlikte gelir.
+Uygulama şablonunu başarıyla dağıttıktan sonra, uygulamayı biraz daha incelemek isteyeceksiniz. Örnek akıllı ölçüm cihazı, cihaz modeli ve Pano ile birlikte geldiğinden emin olun.
 
-Adatum, Solar bölmelerini izleyen ve yöneten kurgusal bir enerji şirketidir. Solar paneli izleme panosunda, güneş paneli özellikleri, verileri ve örnek komutları görürsünüz. Operatörlerin ve destek ekiplerinin destek olaylarına geçmeden önce aşağıdaki etkinlikleri proaktif olarak gerçekleştirmesini sağlar:
-* En son panel bilgilerini ve haritadaki yüklü konumunu gözden geçirin
-* Panel durumunu ve bağlantı durumunu proaktif olarak denetleme
-* Anormal desenleri yakalamak için enerji oluşturma ve sıcaklık eğilimlerini gözden geçirin
-* Planlama ve faturalandırma amaçlarıyla toplam enerji üretimini izleyin
-* Etkinleştirme paneli ve bellenim sürümünü güncelleştirme gibi komut ve denetim işlemleri. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermez.
+Adatum, Solar panellerini izleyen ve yöneten kurgusal bir enerji şirketidir. Solar paneli izleme panosunda, güneş paneli özellikleri, verileri ve örnek komutları görürsünüz. Bu Pano, size veya destek ekibinize aşağıdaki etkinlikleri önceden gerçekleştirmenize olanak tanır ve herhangi bir sorun için ek destek gerekir:
+* En son panel bilgilerini ve haritadaki yüklü konumunu gözden geçirin.
+* Panel durumunu ve bağlantı durumunu kontrol edin.
+* Anormal desenleri yakalamak için enerji oluşturma ve sıcaklık eğilimlerini gözden geçirin.
+* Planlama ve faturalandırma amaçlarıyla toplam enerji üretimini izleyin.
+* Bir paneli etkinleştirin ve gerekirse bellenim sürümünü güncelleştirin. Şablonda, komut düğmeleri olası işlevleri gösterir ve gerçek komutları göndermez.
 
 > [!div class="mx-imgBorder"]
-> ![Solar paneli izleme panosu](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
+> ![Solar paneli Izleme şablonu panosunun ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-dashboard.png)
 
 ### <a name="devices"></a>Cihazlar
-Uygulama bir örnek Solar Panel aygıtıyla birlikte gelir. **Cihazlar** sekmesine tıklayarak cihaz ayrıntılarını görebilirsiniz.
+Uygulama bir örnek Solar Panel aygıtıyla birlikte gelir. Cihaz ayrıntılarını görmek için **cihazlar**' ı seçin.
 
 > [!div class="mx-imgBorder"]
-> ![Güneş paneli cihazları](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
+> ![Güneş paneli Izleme şablonu cihazlarının ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-device.png)
 
-
-Cihaz ayrıntılarını görmek için örnek cihaz **SP0123456789** bağlantısına tıklayın. **Güncelleştirme özellikleri** sayfasında, cihazın yazılabilir özelliklerini güncelleştirebilir ve panoda güncelleştirilmiş değerleri görselleştirebilirsiniz. 
+**SP0123456789** örnek cihazını seçin. **Güncelleştirme özellikleri** sekmesinden, cihazın yazılabilir özelliklerini güncelleştirebilir ve panoda güncelleştirilmiş değerlerin görselini görebilirsiniz. 
 
 > [!div class="mx-imgBorder"]
-> ![Güneş paneli özellikleri](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
+> ![Solar paneli Izleme şablonu güncelleştirme özellikleri sekmesinin ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-device-properties.png)
 
 
 ### <a name="device-template"></a>Cihaz şablonu
-Güneş paneli cihaz modelini görmek için **cihaz şablonları** sekmesine tıklayın. Modelde veriler, özellikler, komutlar ve görünümler için önceden tanımlama arabirimi bulunur.
+Güneş paneli cihaz modelini görmek için **cihaz şablonları** sekmesini seçin. Modelde veriler, özellikler, komutlar ve görünümler için önceden tanımlanmış arabirimler vardır.
 
 > [!div class="mx-imgBorder"]
-> ![Solar Panel cihazları şablonu](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
+> ![Solar paneli Izleme şablonu cihaz şablonlarının ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-device-templates.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağıdaki adımları izleyerek uygulamanızı silin:
+Bu uygulamayı kullanmaya devam etmeyi istemediğinize karar verirseniz, aşağıdaki adımlarla uygulamanızı silin:
 
-1. Sol bölmeden Yönetim sekmesini açın
-1. Uygulama ayarları ' nı seçin ve sayfanın altındaki Sil düğmesine tıklayın. 
+1. Sol bölmeden **Yönetim**' i seçin.
+1. **Uygulama ayarlarını**  >  **Sil**' i seçin. 
 
     > [!div class="mx-imgBorder"]
-    > ![Uygulamayı Sil](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
+    > ![Güneş paneli Izleme şablonu yönetiminin ekran görüntüsü.](media/tutorial-iot-central-solar-panel/solar-panel-delete-app.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Güneş paneli uygulama mimarisi hakkında bilgi edinin 
+ 
 > [!div class="nextstepaction"]
-> [kavram makalesi](./concept-iot-central-solar-panel-app.md)
-* Ücretsiz paneli için uygulama şablonları oluşturun: [güneş paneli](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) uygulaması
-* IoT Central hakkında daha fazla bilgi için bkz. [IoT Central genel bakış](../index.yml)
+> [Azure IoT Central-Solar paneli uygulama mimarisi](./concept-iot-central-solar-panel-app.md)
+* [Güneş paneli uygulama şablonlarını ücretsiz oluşturun](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring)
+* [Azure IoT Central genel bakış](../index.yml)

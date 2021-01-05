@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 12/21/2020
+ms.date: 1/4/2021
 ms.author: yohaddad
-ms.openlocfilehash: 5e61dcb5a329916ed2c95646282bbdccad3b5767
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 429e343a61e61b01fa07c37a6c2b702f6ef633d1
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708509"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882356"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Konuk işletim sistemi sürümleri ve SDK uyumluluk matrisi
 Cloud Services için en son Azure Konuk işletim sistemi sürümleri hakkında güncel bilgiler sağlar. Bu bilgiler, Konuk işletim sistemi devre dışı bırakmadan önce yükseltme yolunuzu planlamanızı sağlar. Rollerinizi [Azure Konuk işletim sistemi güncelleştirme ayarlarında][Azure Guest OS Update Settings]açıklandığı şekilde *Otomatik* Konuk işletim sistemi güncelleştirmelerini kullanacak şekilde yapılandırırsanız, bu sayfayı okumanız çok önemli değildir.
@@ -187,7 +187,7 @@ Eylül Konuk işletim sistemi serbest bırakıldı.
 
 | Yapılandırma dizesi | Sürüm tarihi | Tarihi devre dışı bırak |
 | --- | --- | --- |
-|  WA-GUEST-OS-5.49 _202011-02  |  19 Aralık 2020  |  5,51 sonrası  | 
+|  WA-GUEST-OS-5.49 _202011-01  |  19 Aralık 2020  |  5,51 sonrası  | 
 |  WA-GUEST-OS-5.48 _202010-02  |  17 Kasım 2020  |  5,50 sonrası  | 
 |~~WA-GUEST-OS-5.47 _202009-01~~|  10 Ekim 2020  |  19 Aralık 2020  | 
 |~~WA-GUEST-OS-5.46 _202008-02~~|  5 Eylül 2020  |  17 Kasım 2020  |  

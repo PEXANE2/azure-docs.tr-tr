@@ -8,12 +8,12 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 153ffd699b22a6379758bf66b896a2b37a19fdf3
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858408"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883291"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
@@ -22,7 +22,8 @@ ms.locfileid: "97858408"
 Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale serisini okumadan önce [planlama kılavuzumuzu](storage-files-planning.md) okumanızı öneririz.
 
 > [!NOTE]
-> Azure dosyaları, Azure AD DS RC4-HMAC ve AES 256 şifrelemesi ile Kerberos kimlik doğrulamasını destekler. Azure dosyaları Azure AD ile tam eşitlemeyle Azure AD DS kimlik doğrulamasını destekler. Azure AD 'de yalnızca sınırlı bir kimlik kümesini eşitleyen Azure AD DS kapsamlı eşitlemeyi etkinleştirdiyseniz, kimlik doğrulama ve yetkilendirme desteklenmez.
+> Azure dosyaları, Azure AD DS yalnızca RC4-HMAC ile Kerberos kimlik doğrulamasını destekler. AES Kerberos şifrelemesi henüz desteklenmiyor.
+> Azure dosyaları Azure AD ile tam eşitlemeyle Azure AD DS kimlik doğrulamasını destekler. Azure AD 'de yalnızca sınırlı bir kimlik kümesini eşitleyen Azure AD DS kapsamlı eşitlemeyi etkinleştirdiyseniz, kimlik doğrulama ve yetkilendirme desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

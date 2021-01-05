@@ -11,15 +11,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/04/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0144c57549e374404d3dde0fe997ba41adc8606b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: c06988bf9c3558f5ef82862bdbcd821dc42ca28a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967603"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97880996"
 ---
 #  <a name="what-is-sap-hana-on-azure-large-instances"></a>Azure üzerinde SAP HANA (Büyük Örnekler) nedir?
 
@@ -35,12 +35,14 @@ Altyapı damgası içindeki müşteri yalıtımı, kiracılar içinde gerçekle�
 
 Bu çıplak sunucu birimleri yalnızca SAP HANA çalıştırmak için desteklenir. SAP uygulama katmanı veya iş yükü orta-Ware katmanı sanal makinelerde çalışır. Azure 'da SAP HANA çalıştıran altyapı damgaları (büyük örnekler), Azure ağ hizmetleri geri kemikleri 'ne bağlıdır. Bu şekilde, Azure 'daki SAP HANA (büyük örnekler) birimler ve sanal makineler arasında düşük gecikmeli bağlantı sağlanır.
 
-2019 Temmuz itibariyle, HANA büyük örnek damgalarının ve dağıtımların konumunun iki farklı düzeltmesi arasında ayrım yaptık:
+2021 Ocak itibariyle, HANA büyük örnek damgalarının ve dağıtımların konumunun iki farklı düzeltmesi arasında ayrım yaptık:
 
 - "Düzeltme 3" (Rev 3): müşterinin, 2019 Temmuz 'dan önce dağıtılması için kullanılabilir hale getirilen damgalar
 - "Düzeltme 4" (Rev 4): Azure VM konaklarına yakın bir yerde dağıtılan ve şimdiye kadar Azure bölgelerinde yayınlanan yeni damga tasarımı:
     -  Batı ABD 2 
-    -  Doğu ABD 
+    -  Doğu ABD
+    -  Doğu ABD2 (iki Kullanılabilirlik Alanları arasında)
+    -  Orta Güney ABD (iki Kullanılabilirlik Alanları arasında)
     -  West Europe
     -  Kuzey Avrupa
 

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488077"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882237"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure Active Directory Uygulama Ara Sunucusu ile Uzak Masaüstünü yayımlama
 
@@ -42,18 +42,13 @@ Bir RDS dağıtımında, RD Web rolü ve RD Ağ Geçidi rolü Internet 'e yönel
 ## <a name="requirements"></a>Gereksinimler
 
 - Hem RD Web hem de RD Ağ Geçidi uç noktaları aynı makinede ve ortak bir köke yerleştirilmelidir. RD Web ve RD Ağ Geçidi, uygulama proxy 'Si ile tek bir uygulama olarak yayımlanır, böylece iki uygulama arasında çoklu oturum açma deneyimine sahip olabilirsiniz.
-
-- Zaten [RDS 'yi dağıtmış](/windows-server/remote/remote-desktop-services/rds-in-azure)ve [uygulama proxy 'si etkinleştirmiş](application-proxy-add-on-premises-application.md)olmanız gerekir.
-
+- Zaten [RDS 'yi dağıtmış](/windows-server/remote/remote-desktop-services/rds-in-azure)ve [uygulama proxy 'si etkinleştirmiş](application-proxy-add-on-premises-application.md)olmanız gerekir. Bağlayıcı yükleme, gerekli bağlantı noktalarını ve URL 'LERI açma ve sunucuda TLS 1,2 'yi etkinleştirme gibi uygulama ara sunucusunu etkinleştirmek için önkoşulları karşılatığınızdan emin olun.
 - Son kullanıcılarınızın RD Web 'e veya RD Web istemcisine bağlanmak için uyumlu bir tarayıcı kullanması gerekir. Daha fazla ayrıntı için bkz. [istemci yapılandırmalarına yönelik destek](#support-for-other-client-configurations).
-
 - RD Web 'i yayımlarken, aynı iç ve dış FQDN 'nin kullanılması önerilir. İç ve dış FQDN 'Ler farklıysa, istemcinin geçersiz bağlantılar almasını önlemek için Istek üst bilgisi çevirisini devre dışı bırakmanız gerekir.
-
 - Internet Explorer 'da RD Web kullanıyorsanız, RDS ActiveX eklentisini etkinleştirmeniz gerekir.
-
 - RD Web istemcisini kullanıyorsanız, uygulama proxy [Bağlayıcısı Sürüm 1.5.1975 veya üstünü](./application-proxy-release-version-history.md)kullanmanız gerekir.
-
 - Azure AD ön kimlik doğrulama akışı için, kullanıcılar yalnızca **RemoteApp ve masaüstleri** bölmesinde yayımlanmış kaynaklara bağlanabilir. Kullanıcılar, **uzak bilgisayara bağlan** bölmesine kullanarak bir masaüstüne bağlanamaz.
+- Windows Server 2019 kullanıyorsanız, HTTP2 protokolünü devre dışı bırakmanız gerekebilir. Daha fazla bilgi için bkz. [öğretici: Azure Active Directory Içindeki uygulama proxy 'si aracılığıyla uzaktan erişim için şirket içi uygulama ekleme](application-proxy-add-on-premises-application.md).
 
 ## <a name="deploy-the-joint-rds-and-application-proxy-scenario"></a>Birleşik RDS ve uygulama proxy 'Si senaryosunu dağıtma
 

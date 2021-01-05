@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu aracılığıyla desteklenen kaynak türleri | Micros
 description: Azure Kaynak durumu aracılığıyla desteklenen kaynak türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f979b55366d29ca8cf22a1e65ebdcc557ef594
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1b0958732a96786b2fb86b2b145f5cb8d36c0c5a
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899500"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97883376"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Kaynak durumu 'nda kaynak türleri ve durum denetimleri
 Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm denetimlerin listesi aşağıda verilmiştir.
@@ -168,6 +168,11 @@ Kaynak türlerine göre kaynak sistem durumu aracılığıyla yürütülen tüm 
 |Yürütülen denetimler|
 |---|
 |<ul><li>Application Gateway performansı düşürülmüş mi?</li><li>Application Gateway kullanılabilir mi?</li></ul>|
+
+## <a name="microsoftnetworkbastionhosts"></a>Microsoft. Network/bastionhosts
+|Yürütülen denetimler|
+|---|
+|<ul><li>Savunma ana makinesi çalışıyor mu?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 |Yürütülen denetimler|

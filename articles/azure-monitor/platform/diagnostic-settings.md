@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 950fcdc5cd6a5bbf3fa61ebd5e23be89691c4370
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 29e50a5c9b306d0e4491852fd08ecdf73026ebc2
+ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535801"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97882254"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Platform günlüklerini ve ölçümlerini farklı hedeflere göndermek için tanılama ayarlarını oluşturma
 Azure etkinlik günlüğü ve kaynak günlükleri dahil olmak üzere Azure 'daki [Platform günlükleri](platform-logs-overview.md) , Azure kaynakları ve bağımlı oldukları Azure platformu için ayrıntılı tanılama ve denetim bilgileri sağlar. [Platform ölçümleri](data-platform-metrics.md) varsayılan olarak toplanır ve genellikle Azure izleyici ölçümleri veritabanında depolanır. Bu makalede, farklı hedeflere platform ölçümleri ve platform günlükleri göndermek için tanılama ayarlarını oluşturma ve yapılandırma hakkında ayrıntılı bilgi verilmektedir.
@@ -34,7 +34,7 @@ Aşağıdaki videoda, platform günlüklerine tanılama ayarlarıyla yönlendirm
 > [Platform ölçümleri](metrics-supported.md) , [Azure izleyici ölçümlerine](data-platform-metrics.md)otomatik olarak gönderilir. Tanılama ayarları belirli Azure hizmetleri için Azure Izleyici günlüklerine yönelik ölçümleri, belirli sınırlamalara sahip [günlük sorgularını](../log-query/log-query-overview.md) kullanarak diğer izleme verileriyle analiz edilmek üzere göndermek için kullanılabilir. 
 >  
 >  
-> Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır. *Örneğin*: bir blok zincirindeki ' ıoreadbytes ' ölçümü, düğüm düzeyinde araştırılabilir ve bu şekilde grafiklenebilir. Ancak, Tanılama ayarları aracılığıyla verildiğinde, tüm düğümler için tüm okuma baytları temsil eder. Ayrıca, iç sınırlamalar nedeniyle tüm ölçümler Azure Izleyici günlüklerine/Log Analytics dışa aktarılabilir. Daha fazla bilgi için bkz. [dışa aktarılabilir ölçümler listesi](metrics-supported-export-diagnostic-settings.md). 
+> Çok boyutlu ölçümlerin tanılama ayarları aracılığıyla gönderilmesi şu anda desteklenmemektedir. Boyutlu ölçümler, boyut değerlerinin toplamı alınarak düzleştirilmiş tek yönlü ölçümler olarak dışarı aktarılır. *Örneğin*: blok zincirindeki ' ıoreadbytes ' ölçümü, düğüm düzeyinde araştırılabilir ve bu şekilde grafiklenebilir. Ancak, Tanılama ayarları aracılığıyla verildiğinde, tüm düğümler için tüm okuma baytları temsil eder. Ayrıca, iç sınırlamalar nedeniyle tüm ölçümler Azure Izleyici günlüklerine/Log Analytics dışa aktarılabilir. Daha fazla bilgi için bkz. [dışa aktarılabilir ölçümler listesi](metrics-supported-export-diagnostic-settings.md). 
 >  
 >  
 > Belirli ölçümler için bu sınırlamaları ortadan kaldırmak amacıyla, [ölçüm REST API](/rest/api/monitor/metrics/list) kullanarak bunları el ile ayıklamanızı ve [Azure IZLEYICI veri toplayıcı API](data-collector-api.md)'Sini kullanarak bunları Azure izleyici günlüklerine almanızı öneririz.  
