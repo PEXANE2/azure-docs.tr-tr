@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-özel bulutta vCenter Identity kaynaklarını ayarlama
 description: VMware yöneticilerinin vCenter 'a erişmesi için Active Directory kimlik doğrulaması için özel bulut vCenter ' ın nasıl ayarlanacağını açıklar.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 60090dec56a177fac6ddad946d97142b484355af
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: a76fecb942c5c6da926e37149245e82dcbc4661b
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425749"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899159"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Kullanılacak vCenter Identity kaynaklarını ayarlayın Active Directory
 
@@ -33,7 +33,7 @@ Bu kılavuzda, şirket içinde veya aboneliklerinizde sanal makineler çalışt�
 [Bir kimlik kaynağı eklemeden](#add-an-identity-source-on-vcenter)önce [vCenter ayrıcalıklarınızı geçici olarak ilerletin](escalate-private-cloud-privileges.md).
 
 > [!CAUTION]
-> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu*için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.   
+> Yeni kullanıcılar yalnızca *bulut sahibi grubu*, *bulut-genel-küme-yönetici-grubu*, *bulut-genel-depolama-yönetici-grubu*, bulut-genel- *Ağ-Yönetici-Grup* veya *bulut-genel-VM-yönetici grubu* için eklenmelidir.  *Yöneticiler* grubuna eklenen kullanıcılar otomatik olarak kaldırılacaktır.  Yalnızca hizmet hesaplarının *Yöneticiler* grubuna eklenmesi gerekir ve hizmet hesapları vSphere Web Kullanıcı arabiriminde oturum açmak için kullanılmamalıdır.   
 
 
 ## <a name="identity-source-options"></a>Kimlik kaynağı seçenekleri
@@ -117,7 +117,7 @@ Ağ bağlantısı kurulduktan sonra, kimlik kaynağı olarak eklemek için [Şir
 
     ![Yönetim](media/OnPremAD01.png)
 
-4. **Yapılandırma > çoklu oturum açma**seçeneğini belirleyin.
+4. **Yapılandırma > çoklu oturum açma** seçeneğini belirleyin.
 
     ![Çoklu Oturum Açma](media/OnPremAD02.png)
 

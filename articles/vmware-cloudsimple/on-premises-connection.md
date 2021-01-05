@@ -1,19 +1,19 @@
 ---
 title: ExpressRoute kullanarak CloudSimple-on-şirket içi bağlantı tarafından Azure VMware çözümü
 description: CloudSimple bölgesi ağından ExpressRoute kullanarak şirket içi bir bağlantının nasıl isteneceğini açıklar.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0dd5ede110255b6e53bbc397e683e66b3beffc65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019630"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899244"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute kullanarak şirket içinden CloudSimple 'a bağlanma
 
@@ -49,7 +49,7 @@ ExpressRoute bağlantısı kurmak için ExpressRoute bağlantı hattınızı bir
 
 1. Azure Portal’da oturum açın.
 
-2. Üst arama çubuğundan **ExpressRoute** bağlantı hattını arayın ve **Hizmetler**altında **ExpressRoute devreleri** ' na tıklayın.
+2. Üst arama çubuğundan **ExpressRoute** bağlantı hattını arayın ve **Hizmetler** altında **ExpressRoute devreleri** ' na tıklayın.
     [![ExpressRoute devreleri](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
 
 3. CloudSimple ağınıza bağlanmayı düşündüğünüz ExpressRoute bağlantı hattını seçin.

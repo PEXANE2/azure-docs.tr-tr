@@ -1,19 +1,19 @@
 ---
 title: Cloudby CloudSimple tarafından Azure VMware çözümü-şirket içi bir katman 2 ağını özel buluta uzat
 description: CloudSimple özel bulutu ve şirket içi tek başına NSX Edge istemcisinde NSX-T arasında bir katman 2 VPN ayarlamayı açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f524bf6af66d44bc13b7c0957de7977968cbef28
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 06446b6c36e36466fe891d7327d8151603cdecd2
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427260"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899380"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Katman 2 esnetilmiş ağlarını kullanarak iş yüklerini geçirme
 
@@ -57,8 +57,8 @@ Aşağıdaki tabloda desteklenen vSphere sürümleri ve ağ bağdaştırıcısı
 
 | vSphere sürümü | Kaynak vSwitch türü | Sanal NIC sürücüsü | Hedef vSwitch türü | Destekleniyor mu? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Yes |
-| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Yes |
+| Tümü | BÖLGENIZDE | Tümü | BÖLGENIZDE | Evet |
+| vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | VMXNET3 | N-VDS | Evet |
 | vSphere 6.7 Kullanıcı arabirimi veya üzeri, 6.5 P03 veya üzeri | BÖLGENIZDE | E1000 | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI veya 6.5 P03, NSX-V veya NSX-T 2.2, 6.5 P03 veya üzeri sürümlerindeki sürümler | Tümü | Tümü | N-VDS | [, Her bir](https://kb.vmware.com/s/article/56991) |
 
@@ -108,11 +108,11 @@ Daha fazla bilgi için bkz. VMware belgelerindeki [sanal özel ağlar](https://d
 
 Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yönlendirici örneğinin mantıksal yönlendirici KIMLIĞINI nasıl getirileceği gösterilmektedir. L2VPN uygularken mantıksal yönlendirici KIMLIĞI daha sonra gerekir.
 
-1. NSX-T Yöneticisi ' nde oturum açın `https://*nsx-t-manager-ip-address*` ve **ağ**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu**Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
+1. NSX-T Yöneticisi ' nde oturum açın `https://*nsx-t-manager-ip-address*` ve **ağ**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **genel bakış**' ı seçin. **Yüksek kullanılabilirlik modu** Için **Etkin bekleme**' yı seçin. Bu eylem, Tier0 yönlendiricisinin etkin olduğu uç VM 'yi gösteren bir açılır pencere açar.
 
     ![Etkin bekleme seçin](media/l2vpn-fetch01.png)
 
-2. **Doku**  >  **düğümleri**  >  **kenarlarını**seçin. Önceki adımda tanımlanan etkin uç VM 'nin (Edge VM1) yönetim IP adresini bir yere göz önüne alın.
+2. **Doku**  >  **düğümleri**  >  **kenarlarını** seçin. Önceki adımda tanımlanan etkin uç VM 'nin (Edge VM1) yönetim IP adresini bir yere göz önüne alın.
 
     ![Note yönetim IP 'si](media/l2vpn-fetch02.png)
 
@@ -137,7 +137,7 @@ Aşağıdaki adımlarda, IPSec ve L2VPN Hizmetleri için Tier0 DR mantıksal yö
 ## <a name="fetch-the-logical-switch-id-needed-for-l2vpn"></a>L2VPN için gereken mantıksal anahtar KIMLIĞINI getir
 
 1. NSX-T Manager 'da () oturum açın `https://nsx-t-manager-ip-address` .
-2. **Ağ**  >  **anahtarlama**  >  **anahtarları**  >  **< \mantıksal anahtara \> **  >  **Genel Bakış ' ı**seçin.
+2. **Ağ**  >  **anahtarlama**  >  **anahtarları**  >  **< \mantıksal anahtara \>**  >  **Genel Bakış ' ı** seçin.
 3. L2VPN yapılandırılırken gerekli olan Esnetme mantıksal anahtarının UUID 'sini bir yere unutmayın.
 
     ![mantıksal yönlendirici çıkışı al](media/l2vpn-fetch-switch01.png)
@@ -154,20 +154,20 @@ NSX-T Tier0 yönlendiricisi ve tek başına NSX Edge istemcisi arasında IPSec r
 
 ### <a name="advertise-the-loopback-interface-ip-to-the-underlay-network"></a>Geri döngü arabirimi IP 'sini düşük düzenleme ağına bildirme
 
-1. Geri döngü arabirimi ağı için bir boş yol oluşturun. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **statik yolları**' nı seçin. **Ekle**'ye tıklayın. **Ağ**için geri döngü arabirimi IP adresini girin. **Sonraki atlamalar**Için, **Ekle**' ye tıklayın, sonraki atlama için ' null ' belirtin ve varsayılan 1 ' i yönetici uzaklığı olarak tutun.
+1. Geri döngü arabirimi ağı için bir boş yol oluşturun. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **statik yolları**' nı seçin. **Ekle**'ye tıklayın. **Ağ** için geri döngü arabirimi IP adresini girin. **Sonraki atlamalar** Için, **Ekle**' ye tıklayın, sonraki atlama için ' null ' belirtin ve varsayılan 1 ' i yönetici uzaklığı olarak tutun.
 
     ![Statik yol Ekle](media/l2vpn-routing-security01.png)
 
-2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **IP öneki listeleri**' ni seçin. **Ekle**'ye tıklayın. Listeyi tanımlamak için bir ad girin. **Ön**ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem**için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
+2. Bir IP ön eki listesi oluşturun. NSX-T Yöneticisi ' nde oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **IP öneki listeleri**' ni seçin. **Ekle**'ye tıklayın. Listeyi tanımlamak için bir ad girin. **Ön** ekler için Iki kez **Ekle** ' ye tıklayın. İlk satırda, **ağ** için ' 0.0.0.0/0 ' ve **eylem** için ' Reddet ' girin. İkinci satırda, **ağ** ve **eyleme** **izin ver** ' **i seçin.**
 3. IP öneki listesini hem BGP komşuları 'na (TOR) ekleyin. IP öneki listesini BGP komşusuyla eklemek, varsayılan yolun BGP 'de TOR anahtarlarına tanıtılmasını önler. Ancak, null yolu içeren diğer tüm yollar TOR anahtarlarına geri döngü arabirimi IP adresini duyuracaktır.
 
     ![IP ön eki listesi oluştur](media/l2vpn-routing-security02.png)
 
-4. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **BGP**  >  **komşuları**' nı seçin. İlk komşuyu seçin. **Edit**  >  **Adres ailelerini**Düzenle ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet**’e tıklayın. İkinci komşu için bu adımı tekrarlayın.
+4. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme**  >  **BGP**  >  **komşuları**' nı seçin. İlk komşuyu seçin.   >  **Adres ailelerini** Düzenle ' ye tıklayın. IPv4 ailesi için, **Çıkış filtresi** sütununu düzenleyin ve oluşturduğunuz IP öneki listesini seçin. **Kaydet**’e tıklayın. İkinci komşu için bu adımı tekrarlayın.
 
     ![IP ön ek listesi ekle 1 ](media/l2vpn-routing-security03.png) ![ IP ön eki listesi 2](media/l2vpn-routing-security04.png)
 
-5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme yönlendirmesi**yeniden  >  **dağıtım**  >  **komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
+5. Null statik yolu BGP 'ye yeniden dağıtın. Geri döngü arabirimi yolunu alt tabloya tanıtmak için null statik yolunu BGP 'ye yeniden dağıtmanız gerekir. NSX-T Manager 'da oturum açın ve **ağ**  >  **yönlendirme**  >  **yönlendiricileri**  >  **sağlayıcısı-LR**  >  **yönlendirme yönlendirmesi** yeniden  >  **dağıtım**  >  **komşuları**' nı seçin. **Sağlayıcı-LR-Route_Redistribution** seçin ve **Düzenle**' ye tıklayın. **Statik** onay kutusunu seçin ve **Kaydet**' e tıklayın.
 
     ![Null statik yolu BGP 'ye yeniden Dağıt](media/l2vpn-routing-security05.png)
 

@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-şirket içi ve özel bulut arasında VPN yapılandırma
 description: Şirket içi ağınız ile CloudSimple özel bulutunuz arasında siteden siteye veya Noktadan siteye VPN bağlantısının nasıl yapılandırılacağını açıklar.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5cd08ce938a25e3311358892c9afa9eefd6c6dbf
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424674"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899227"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple özel bulutunuz için bir VPN bağlantısı yapılandırma
 
@@ -35,7 +35,7 @@ Noktadan siteye VPN ağ geçidi oluşturmak için bkz. [noktadan sıteye VPN ağ
 VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  MacOS ve OS X için Windows veya [viscosity](https://www.sparklabs.com/viscosity/download/) Için [OpenVPN istemcisini](https://openvpn.net/community-downloads/) indirin.
 
 1. CloudSimple portalını başlatın ve **ağ**' ı seçin.
-2. **VPN Gateway**seçin.
+2. **VPN Gateway** seçin.
 3. VPN ağ geçitleri listesinden Noktadan siteye VPN Gateway ' e tıklayın.
 4. **Kullanıcılar**’ı seçin.
 5. **VPN yapılandırması 'Nı indir** 'e tıklayın
@@ -49,7 +49,7 @@ VPN istemcisi, bilgisayarınızdan CloudSimple 'a bağlanmak için gereklidir.  
 
 7. CloudSimple VPN Gateway 'e bağlanın.
 
-Aşağıdaki örnekte, **viscosity istemcisi**kullanılarak bağlantı içeri aktarma gösterilmektedir.
+Aşağıdaki örnekte, **viscosity istemcisi** kullanılarak bağlantı içeri aktarma gösterilmektedir.
 
 #### <a name="import-connection-on-viscosity-client"></a>Viscosity istemcisinde bağlantı içeri aktar
 
@@ -57,7 +57,7 @@ Aşağıdaki örnekte, **viscosity istemcisi**kullanılarak bağlantı içeri ak
 
 2. Bilgisayarınızda viscosity 'yi açın.
 
-3. Simgeye tıklayın **+** ve bağlantıyı dosyadan **içeri aktar**' ı seçin  >  **From File**.
+3. Simgeye tıklayın **+** ve bağlantıyı dosyadan **içeri aktar**' ı seçin  >  .
 
     ![VPN yapılandırmasını dosyadan içeri aktar](media/import-p2s-vpn-config.png)
 
@@ -81,7 +81,7 @@ Noktadan siteye VPN bağlantısı, oluşturduğunuz ilk özel bulutun DNS adlar�
 
 2. **Kaynaklar**  >  **özel bulutları** ' na gidin ve bağlanmak istediğiniz özel bulutu seçin.
 
-3. Özel bulutun **Özet** sayfasında, **temel bilgi**altında özel bulut DNS sunucusu IP adresini kopyalayın.
+3. Özel bulutun **Özet** sayfasında, **temel bilgi** altında özel bulut DNS sunucusu IP adresini kopyalayın.
 
     ![Özel bulut DNS sunucuları](media/private-cloud-dns-server.png)
 

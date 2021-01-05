@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-VPN Gateway ayarlama
 description: Noktadan siteye VPN ağ geçidini ve siteden siteye VPN ağ geçidini ayarlamayı ve şirket içi ağınız ile CloudSimple özel bulutunuz arasında bağlantı oluşturmayı açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78f78bfbf885cbae7708a75cb54ce2d41e7b526c
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91872009"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899108"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>CloudSimple ağında VPN ağ geçitlerini ayarlama
 
@@ -39,12 +39,12 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
 ## <a name="set-up-a-site-to-site-vpn-gateway"></a>Siteden siteye VPN ağ geçidi ayarlama
 
 1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve **ağ**' ı seçin.
-2. **VPN Gateway**seçin.
+2. **VPN Gateway** seçin.
 3. **Yeni VPN Gateway**' ye tıklayın.
 
     ![VPN ağ geçidi oluşturma](media/create-vpn-gateway.png)
 
-4. **Ağ geçidi yapılandırması**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
+4. **Ağ geçidi yapılandırması** için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
     * Ağ Geçidi türü olarak **siteden sıteye VPN** ' yi seçin.
     * Ağ geçidini tanımlamak için bir ad girin.
@@ -62,7 +62,7 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
     * Eş IP 'si için, şirket içi VPN ağ geçidinizin genel IP adresini girin.
     * Şirket içi VPN ağ geçidinizin eş tanımlayıcısını girin.  Eş tanımlayıcısı genellikle şirket içi VPN ağ geçidinizin genel IP adresidir.  Ağ geçidinizdeki belirli bir tanımlayıcıyı yapılandırdıysanız tanımlayıcıyı girin.
     * Şirket içi VPN ağ Geçidinizden bağlantı için kullanılacak paylaşılan anahtarı kopyalayın.  Varsayılan paylaşılan anahtarı değiştirmek ve yeni bir anahtar belirtmek için Düzenle simgesine tıklayın.
-    * Şirket **Içi ön ekler**Için, cloudsimple ağına erişecek ŞIRKET içi CIDR öneklerini girin.  Bağlantıyı oluştururken birden fazla CıDR ön eki ekleyebilirsiniz.
+    * Şirket **Içi ön ekler** Için, cloudsimple ağına erişecek ŞIRKET içi CIDR öneklerini girin.  Bağlantıyı oluştururken birden fazla CıDR ön eki ekleyebilirsiniz.
 
     ![Siteden siteye VPN Ağ Geçidi bağlantısı oluşturma](media/create-vpn-gateway-s2s-connection.png)
 
@@ -70,7 +70,7 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
 
     * Bir yönetim VLAN/subnet eklemek için **özel bulutların yönetim VLAN 'ları/alt ağları Ekle**' yi etkinleştirin.  VMotion ve vSAN alt ağları için yönetim alt ağı gereklidir.
     * VMotion alt ağları eklemek için, **özel bulutlar Için vMotion ağı ekleme**' yi etkinleştirin.
-    * VSAN alt ağları eklemek için **özel bulutların vSAN alt ağını eklemeyi**etkinleştirin.
+    * VSAN alt ağları eklemek için **özel bulutların vSAN alt ağını eklemeyi** etkinleştirin.
     * Belirli VLAN 'Ları seçin veya seçimini kaldırın.
 
     ![Bağlantı oluşturma](media/create-vpn-gateway-s2s-connection-vlans.png)
@@ -82,19 +82,19 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
 ## <a name="create-point-to-site-vpn-gateway"></a>Noktadan siteye VPN ağ geçidi oluşturma
 
 1. [CloudSimple portalına erişin](access-cloudsimple-portal.md) ve **ağ**' ı seçin.
-2. **VPN Gateway**seçin.
+2. **VPN Gateway** seçin.
 3. **Yeni VPN Gateway**' ye tıklayın.
 
     ![VPN ağ geçidi oluşturma](media/create-vpn-gateway.png)
 
-4. **Ağ geçidi yapılandırması**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
+4. **Ağ geçidi yapılandırması** için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
     * Ağ Geçidi türü olarak **noktadan sıteye VPN ' yi** seçin.
     * Ağ geçidini tanımlamak için bir ad girin.
     * CloudSimple hizmetinizin dağıtıldığı Azure konumunu seçin.
     * Noktadan siteye ağ geçidi için istemci alt ağını belirtin.  Bağlandığınızda, istemci alt ağından DHCP adresleri verilecek.
 
-5. **Bağlantı/Kullanıcı**için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
+5. **Bağlantı/Kullanıcı** için aşağıdaki ayarları belirtin ve **İleri**' ye tıklayın.
 
     * Tüm geçerli ve gelecekteki kullanıcıların, Noktadan siteye ağ geçidi aracılığıyla özel buluta erişmesine otomatik olarak izin vermek için **tüm kullanıcıları otomatik olarak ekle**' yi seçin. Seçeneğini belirlediğinizde, Kullanıcı listesindeki tüm kullanıcılar otomatik olarak seçilir. Listedeki bireysel kullanıcıların seçimini kaldırarak otomatik seçeneği geçersiz kılabilirsiniz.
     * Bireysel kullanıcıları seçmek için Kullanıcı listesindeki onay kutularına tıklayın.
@@ -104,7 +104,7 @@ Noktadan siteye VPN ağ geçidi, yeni kullanıcılar için Otomatik Ekleme ilkes
     * **Otomatik olarak ekle** seçeneği, ağ geçidinin genel ilkesini ayarlar. Ayarlar geçerli ağ geçidi için geçerlidir. Ayarlar **seçim** alanında geçersiz kılınabilir.
     * **Özel bulutların yönetim VLAN 'ları/alt ağlarını Ekle**' yi seçin. 
     * Kullanıcı tanımlı tüm VLAN 'Ları/alt ağları eklemek için  **Kullanıcı tanımlı VLAN 'lar/alt ağlar Ekle**' ye tıklayın.
-    * **Seçim** ayarları **otomatik olarak ekle**altındaki genel ayarları geçersiz kılar.
+    * **Seçim** ayarları **otomatik olarak ekle** altındaki genel ayarları geçersiz kılar.
 
 7. Ayarları gözden geçirmek için **İleri** 'ye tıklayın. Herhangi bir değişiklik yapmak için düzenleme simgeleri ' ne tıklayın.
 8. VPN ağ geçidini oluşturmak için **Oluştur** ' a tıklayın.

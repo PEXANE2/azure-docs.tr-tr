@@ -3,7 +3,7 @@ title: 'Öğretici: Postgres ile Python Docgo uygulaması dağıtma'
 description: PostgreSQL veritabanı ile bir Python web uygulaması oluşturun ve Azure 'a dağıtın. Öğretici Docgo çerçevesini kullanır ve uygulama Linux üzerinde Azure App Service barındırılır.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 11/02/2020
+ms.date: 01/04/2021
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: b106b403022f3407a3838b7f65222baf41cbfff5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: ffde74a0567661d6b9f77e45a80bfd585e5c7212
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852974"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898598"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Öğretici: Azure App Service içindeki PostgreSQL ile Docgo Web uygulaması dağıtma
 
@@ -236,14 +236,11 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
 1. SSH oturumunda aşağıdaki komutları çalıştırın ( **CTRL** + **SHIFT** + **V** kullanarak komutları yapıştırabilirsiniz):
 
     ```bash
-    # Change to the folder where the app code is deployed
-    cd site/wwwroot
+    # Change to the app folder
+    cd $APP_PATH
     
-    # Activate default virtual environment in App Service container
+    # Activate the venv (requirements.txt is installed automatically)
     source /antenv/bin/activate
-
-    # Install packages
-    pip install -r requirements.txt
 
     # Run database migrations
     python manage.py migrate
@@ -251,6 +248,8 @@ Docgo veritabanı geçişleri, Azure veritabanı 'ndaki PostgreSQL içindeki şe
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
+
+    Veritabanına bağlanma ile ilgili herhangi bir hatayla karşılaşırsanız, önceki bölümde oluşturulan uygulama ayarlarının değerlerini denetleyin.
 
 1. Bu `createsuperuser` komut sizden süper kullanıcı kimlik bilgilerini ister. Bu öğreticinin amaçları doğrultusunda, varsayılan kullanıcı adını kullanın `root` , e-posta adresi Için **ENTER** tuşuna basarak boş bırakın ve `Pollsdb1` parola girin.
 
@@ -260,13 +259,13 @@ Sorun mu yaşıyorsunuz? İlk olarak [sorun giderme kılavuzuna](configure-langu
     
 ### <a name="44-create-a-poll-question-in-the-app"></a>4,4 uygulamada bir yoklama sorusu oluşturma
 
-1. Bir tarayıcıda URL 'YI açın `http://<app-name>.azurewebsites.net` . Veritabanında henüz belirli bir yoklama olmadığından, uygulamanın "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
+1. Bir tarayıcıda URL 'YI açın `http://<app-name>.azurewebsites.net` . Veritabanında henüz belirli bir yoklamalar bulunmadığından, uygulamanın "uygulamayı yokladığı" ve "hiçbir yoklama yok" iletisini görüntülemesi gerekir.
 
     "Uygulama hatası" görürseniz, önceki adımda gerekli ayarları oluşturmadınız, [veritabanı bağlamak için ortam değişkenlerini yapılandırmadan](#42-configure-environment-variables-to-connect-the-database)veya bu değerde hata içereceksinizdir olabilir. `az webapp config appsettings list`Ayarları denetlemek için komutunu çalıştırın. Uygulama başlatma sırasında belirli hataları görmek için [tanılama günlüklerini de denetleyebilirsiniz](#6-stream-diagnostic-logs) . Örneğin, ayarları oluşturmadıysanız günlüklerde hata gösterilir `KeyError: 'DBNAME'` .
 
     Hataları düzeltmek için ayarları güncelleştirdikten sonra, uygulamayı yeniden başlatmak için bir dakika verin ve ardından Tarayıcıyı yenileyin.
 
-1. `http://<app-name>.azurewebsites.net/admin` adresine gidin. Önceki bölümde bulunan Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar** altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
+1. `http://<app-name>.azurewebsites.net/admin` adresine gidin. Önceki bölümde docgo Süper Kullanıcı kimlik bilgilerini kullanarak oturum açın ( `root` ve `Pollsdb1` ). **Yoklamalar** altında, **sorular** ' ın yanındaki **Ekle** ' yi seçin ve bazı seçeneklerle bir yoklama sorusu oluşturun.
 
 1. `http://<app-name>.azurewebsites.net`Soruların artık kullanıcıya sunulduğunu onaylamak için tekrar gidin. Bu soruları yanıtlayın, ancak veritabanında bazı veriler oluşturmak istersiniz.
 
@@ -292,7 +291,7 @@ Bir terminal penceresinde aşağıdaki komutları çalıştırın. Süper Kullan
 python3 -m venv venv
 source venv/bin/activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -310,7 +309,7 @@ py -3 -m venv venv
 Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
 venv\scripts\activate
 
-# Install packages
+# Install dependencies
 pip install -r requirements.txt
 # Run Django migrations
 python manage.py migrate
@@ -327,7 +326,7 @@ python manage.py runserver
 py -3 -m venv venv
 venv\scripts\activate
 
-:: Install packages
+:: Install dependencies
 pip install -r requirements.txt
 :: Run Django migrations
 python manage.py migrate
@@ -350,7 +349,7 @@ Uygulamayı aşağıdaki adımlarla yerel olarak test edin:
 
 1. *Http: \/ /localhost: 8000* ' e gidin ve uygulamayı test etmek için soruyu yanıtlayın. 
 
-1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + **C**.
+1. **CTRL** C tuşlarına basarak Docgo sunucusunu durdurun + .
 
 Yerel olarak çalıştırılırken, uygulama yerel bir SQLite3 veritabanı kullanıyor ve üretim veritabanınızı engellemez. İsterseniz üretim ortamınızın benzetimini yapmak için bir yerel PostgreSQL veritabanı da kullanabilirsiniz.
 
@@ -397,11 +396,8 @@ Veri modelinde değişiklikler yaptığınız için, App Service veritabanı ge�
 ' A giderek tarayıcıda bir SSH oturumu açın `https://<app-name>.scm.azurewebsites.net/webssh/host` . Sonra aşağıdaki komutları çalıştırın:
 
 ```
-cd site/wwwroot
-
-# Activate default virtual environment in App Service container
+cd $APP_PATH
 source /antenv/bin/activate
-# Run database migrations
 python manage.py migrate
 ```
 

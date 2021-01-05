@@ -1,27 +1,27 @@
 ---
-title: Azure Stack Edge Pro Share Management | Microsoft Docs
-description: Azure Stack Edge Pro 'unuzdaki paylaşımları yönetmek için Azure portal nasıl kullanılacağını açıklar.
+title: Azure Stack Edge Pro-FPGA Share Management | Microsoft Docs
+description: Azure Stack Edge Pro-FPGA 'de paylaşımları yönetmek için Azure portal nasıl kullanılacağını açıklar.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/25/2019
+ms.date: 01/04/2021
 ms.author: alkohli
-ms.openlocfilehash: 4d43b70c8f958ad37b6ac2d0ee043d5f07d11da9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7fbb5ca43d2877e2e14914b71df7cc1bcdf27f88
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444597"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898386"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>Azure Stack Edge Pro paylaşımlarını yönetmek için Azure portal kullanma
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro-fpga"></a>Azure Stack Edge Pro FPGA üzerinde paylaşımları yönetmek için Azure portal kullanma 
 
-Bu makalede Azure Stack Edge Pro 'daki paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro 'Yu Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
+Bu makalede Azure Stack Edge Pro FPGA cihazınızda paylaşımların nasıl yönetileceği açıklanır. Azure Stack Edge Pro FPGA cihazını Azure portal veya yerel Web Kullanıcı arabirimi aracılığıyla yönetebilirsiniz. Paylaşımlar ile ilişkili depolama hesabı için, paylaşımları eklemek, silmek, yenilemek veya eşitleme depolama anahtarını kullanmak için Azure portal kullanın.
 
 ## <a name="about-shares"></a>Paylaşımlar hakkında
 
-Azure 'a veri aktarmak için Azure Stack Edge Pro 'unuzda paylaşımlar oluşturmanız gerekir. Azure Stack Edge Pro cihazına eklediğiniz paylaşımlar yerel paylaşımlar olabilir veya verileri buluta ititeden paylaşabilirsiniz.
+Azure 'a veri aktarmak için Azure Stack Edge Pro FPGA 'de paylaşımlar oluşturmanız gerekir. Azure Stack Edge Pro cihazına eklediğiniz paylaşımlar yerel paylaşımlar olabilir veya verileri buluta ititeden paylaşabilirsiniz.
 
  - **Yerel paylaşımlar**: verilerin cihazda yerel olarak işlenmesini istiyorsanız bu paylaşımları kullanın.
  - **Paylaşımlar**: cihaz verilerinin buluttaki depolama hesabınıza otomatik olarak iletilmesini istediğinizde bu paylaşımları kullanın. **Yenileme** ve **eşitleme depolama anahtarları** gibi tüm bulut işlevleri paylaşımlar için geçerlidir.
@@ -39,7 +39,7 @@ Bu makalede şunları öğreneceksiniz:
 
 Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağına gidin ve ardından **bulut depolama ağ geçidi**' ne gidin. **Paylaşımlar** ' a gidin ve ardından komut çubuğunda **+ Paylaşım Ekle** ' yi seçin.
 
     ![Paylaşma Ekle seçeneğini belirleyin](media/azure-stack-edge-manage-shares/add-share-1.png)
 
@@ -72,7 +72,7 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
 ## <a name="add-a-local-share"></a>Yerel bir paylaşma ekleyin
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Komut çubuğunda **+ paylaşma Ekle** ' yi seçin.
 
    ![Paylaşma Ekle 2 ' yi seçin](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
@@ -96,15 +96,13 @@ Paylaşım oluşturmak için Azure portalda aşağıdaki adımları gerçekleşt
 
    ![Güncelleştirme paylaşımları dikey penceresini görüntüle](media/azure-stack-edge-manage-shares/add-local-share-3.png)
     
-    Bu paylaşımın uç işlem modülleri için yerel bağlama noktasını görüntülemek üzere paylaşıma seçin.
 
-   ![Yerel paylaşma ayrıntılarını görüntüle](media/azure-stack-edge-manage-shares/add-local-share-4.png)
 
 ## <a name="mount-a-share"></a>Bir paylaşma bağlama
 
 Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma oluşturduysanız, bu paylaşıma bağlamanız gerekir. Bir paylaşma bağlamak için aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Paylaşımlar listesinden bağlamak istediğiniz paylaşımı seçin. **İşlem Için kullanılan** sütunu, seçili paylaşımın durumunu **devre dışı** olarak gösterir.
 
    ![Paylaşma 3 ' ü seçin](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
@@ -122,13 +120,13 @@ Azure Stack Edge Pro cihazınızda işlem yapılandırmadan önce bir paylaşma 
 
 5. Paylaşıma ait yerel bağlama noktasını görüntülemek için yeniden paylaşma ' yı seçin. Edge işlem modülü, bu yerel bağlama noktasını paylaşıma kullanır.
 
-   ![Paylaşımın yerel bağlama noktası](media/azure-stack-edge-manage-shares/share-mountpoint.png)
+   ![Paylaşımın yerel bağlama noktası](media/azure-stack-edge-manage-shares/share-mountpoint.png) 
 
 ## <a name="unmount-a-share"></a>Bir paylaşımın bağlantısını kaldırma
 
 Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adımları uygulayın.
 
-1. Azure portal, Azure Stack Edge kaynağına gidin ve **ağ geçidi > paylaşımları**' na gidin.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin.
 
    ![Paylaşma 4 seçin](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
@@ -148,13 +146,13 @@ Bir paylaşımın bağlantısını kesmek için Azure portal aşağıdaki adıml
 
 Paylaşımı silmek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Paylaşım listesinde silmek istediğiniz paylaşımı seçin ve üzerine tıklayın.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Paylaşım listesinde silmek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
    ![Paylaşma 5 ' i seçin](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
-2. **Sil**'e tıklayın.
+2. **Sil**’i seçin.
 
-   ![Sil'e tıklayın](media/azure-stack-edge-manage-shares/delete-share-2.png)
+   ![Sil ' i seçin](media/azure-stack-edge-manage-shares/delete-share-2.png)
 
 3. Onayınız istendiğinde **Evet**’e tıklayın.
 
@@ -173,15 +171,15 @@ Yenile özelliği, bir paylaşımın içeriğini yenilekullanmanıza olanak sağ
 
 Paylaşımı yenilemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Azure portalda **Paylaşımlar** sayfasına gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Yenilemek istediğiniz paylaşımı seçin ve üzerine tıklayın.
 
    ![Paylaşma Seç 6](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
-2. **Yenile**'ye tıklayın.
+2. **Verileri Yenile**' yi seçin.
 
-   ![Yenile'ye tıklayın](media/azure-stack-edge-manage-shares/refresh-share-2.png)
+   ![Yenile 'yi seçin](media/azure-stack-edge-manage-shares/refresh-share-2.png)
  
-3. Onayınız istendiğinde **Evet**’e tıklayın. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır.
+3. Onay istendiğinde **Evet**' i seçin. Şirket içi paylaşımın içeriğinin yenilenmesi için bir iş başlatılır.
 
    ![Yenilemeyi onaylama](media/azure-stack-edge-manage-shares/refresh-share-3.png)
 
@@ -199,7 +197,7 @@ Depolama anahtarlarınız değiştirildiyse eşitlemeniz gerekir. Eşitleme, cih
 
 Depolama erişim anahtarınızı eşitlemek için Azure portalda aşağıdaki adımları gerçekleştirin.
 
-1. Kaynağınızın **Genel bakış** sayfasına gidin. Paylaşım listesinden eşitlemek istediğiniz depolama hesabıyla ilişkilendirilmiş olan bir paylaşımı seçin ve üzerine tıklayın.
+1. Azure portal, Azure Stack Edge kaynağınız ' ne gidin ve ardından **bulut depolama ağ geçidi > paylaşımları**' na gidin. Paylaşım listesinden eşitlemek istediğiniz depolama hesabıyla ilişkilendirilmiş olan bir paylaşımı seçin ve üzerine tıklayın.
 
     ![İlgili depolama hesabı ile paylaşma seçin](media/azure-stack-edge-manage-shares/sync-storage-key-1.png)
 

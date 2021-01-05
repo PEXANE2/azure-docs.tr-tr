@@ -1,19 +1,19 @@
 ---
 title: Cloudead kullanarak özel bulutta iş yükü sanal makinelerini CloudSimple ile Azure VMware çözümü
 description: Veeam B&R 9,5 kullanarak Azure tabanlı CloudSimple özel bulutu 'nda çalışan sanal makinelerinizi nasıl yedekleyebileceğinizi açıklar.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: cb883b70d1ae9f2894c7679633a586586922aa18
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7be606b3e23a594e67acf3f169d88353403d8577
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92419937"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899346"
 ---
 # <a name="back-up-workload-vms-on-cloudsimple-private-cloud-using-veeam-br"></a>Jeam B&R kullanarak CloudSimple özel bulutunda iş yükü VM 'lerini yedekleme
 
@@ -136,7 +136,7 @@ Veead tarafından kullanılan bağlantı noktalarında ağ trafiğine izin verme
 
 Aşağıdaki tabloda bir bağlantı noktası listesi verilmiştir.
 
-| Simge | Description | Simge | Description |
+| Simge | Açıklama | Simge | Açıklama |
 | ------------ | ------------- | ------------ | ------------- |
 | Yedekleme sunucusu  | vCenter  | HTTPS/TCP  | 443 |
 | Yedekleme sunucusu <br> *Veead yedeklemesini dağıtmak için gerekli & çoğaltma bileşenleri* | Yedekleme proxy 'Si  | TCP/UDP  | 135, 137-139 ve 445 |
@@ -240,7 +240,7 @@ Veead konsolunu kullanarak Veead yedekleme ve kurtarma yazılımlarını yapıla
     * Bağlama sunucusunun konumunu yedekleme sunucusu olacak şekilde ayarlayın.
     * Veead sunucusu için yapılandırma yedekleme konumunu uzak depoya değiştirin.
 
-3. **Ana> yapılandırma yedekleme ayarlarını**kullanarak yapılandırma yedeklemesi şifrelemesini etkinleştirin.
+3. **Ana> yapılandırma yedekleme ayarlarını** kullanarak yapılandırma yedeklemesi şifrelemesini etkinleştirin.
 
 4. VMware ortamı için proxy sunucusu olarak bir Windows Server VM 'si ekleyin. Bir ara sunucu için ' trafik kuralları ' ' nı kullanarak, yedekleme verilerini kablo üzerinden şifreleyin.
 

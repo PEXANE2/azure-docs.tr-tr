@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure Işlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2b71bee620ab7d5b1ef98b60013d1978f49d127f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 3d7292999fc4b53fed06822461857185127dc793
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505895"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898734"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -185,6 +185,14 @@ Varsayılan değeri olan en fazla dil çalışan işlemi sayısını belirtir `1
 |Anahtar|Örnek değer|
 |---|------------|
 |Işlev \_ çalışan \_ işlem \_ sayısı|2|
+
+## <a name="python_threadpool_thread_count"></a>PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı
+
+Python dili çalışanının, Python sürümü için varsayılan bir değer ile işlev etkinleştirmeleri yürütmek için kullanacağı en fazla iş parçacığı sayısını belirtir `1` `3.8` . Python sürümü `3.9` ve üstü için değer olarak ayarlanır `None` . Bu ayarın yürütmeler sırasında ayarlanacak iş parçacığı sayısını garanti vermediğini unutmayın. Ayar, Python 'un belirtilen değere iş parçacığı sayısını genişletmesine izin verir. Bu ayar yalnızca Python işlevleri uygulamaları için geçerlidir. Ek olarak, bu ayar, eş zamanlı işlevlere yönelik değil, çağrı için de geçerlidir.
+
+|Anahtar|Örnek değer|En yüksek değer|
+|---|------------|---------|
+|PYTHON \_ THREADPOOL \_ iş parçacığı \_ sayısı|2|32|
 
 
 ## <a name="functions_worker_runtime"></a>IŞLEVLER \_ Worker \_ çalışma zamanı

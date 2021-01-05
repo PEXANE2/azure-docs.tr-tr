@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-Oracle RAC için CloudSimple özel bulutunuzu Iyileştirin
 description: Yeni bir kümenin nasıl dağıtılacağını ve Oracle gerçek uygulama kümeleri (RAC) yüklemesi ve yapılandırması için bir VM 'yi iyileştirme işlemini açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 980ba86a9916e13dd2ac7639bd06d3ab8546d2f1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424686"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899278"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Oracle RAC 'yi yüklemek için CloudSimple özel bulutunuzu iyileştirin
 
@@ -46,14 +46,14 @@ Aşağıdaki örnek aşağıdaki tabloda tanımlanan diskleri kullanır.
 
 | Disk                                      | Amaç                                       | Paylaşılan Disk |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| İşletim Sistemi                                        | İşletim sistemi diski                         | No          |
-| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | No          |
-| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | No          |
-| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | No          |
-| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Yes         |
-| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Yes         |
-| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Yes         |
-| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Yes         |
+| İşletim Sistemi                                        | İşletim sistemi diski                         | Hayır          |
+| ÇIZGISI                                      | Oracle Grid yazılımının yükleneceği konum     | Hayır          |
+| VERITABANıNıZı                                  | Oracle veritabanı yazılımının konumunu yükler | Hayır          |
+| ORAHOME                                   | Oracle veritabanı ikilileri için temel konum    | Hayır          |
+| VERI1, VERI2, DATA3, DATA4                | Oracle veritabanı dosyalarının depolandığı disk   | Evet         |
+| REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Günlük disklerini Yinele                                | Evet         |
+| OCR1, OCR2, OCR3, OCR4, OCR5              | Oylama diskleri                                  | Evet         |
+| FRA1, FRA2                                | Hızlı kurtarma alanı diskleri                      | Evet         |
 
 ![Oracle sanal makine diski yapılandırması](media/oracle-vmdk.png)
 
@@ -74,9 +74,9 @@ Her Oracle sanal makinesi konak işletim sistemi, takas, yazılım yüklemesi ve
     * İşletim Sistemi Diski
     * Oracle Grid dosya yükleme dosyalarını depolamak için disk
     * Oracle veritabanı yüklemesi dosyalarını depolamaya yönelik disk
-* Diskler **ölçülü kaynak sağlanmış**olarak yapılandırılabilir.
+* Diskler **ölçülü kaynak sağlanmış** olarak yapılandırılabilir.
 * Her disk ilk SCSI denetleyicisine (SCSI0) bağlanır.  
-* Paylaşım, **paylaşım yok**olarak ayarlanır.
+* Paylaşım, **paylaşım yok** olarak ayarlanır.
 * Yedeklilik, depolama üzerinde vSAN ilkeleri kullanılarak tanımlanır.  
 
 ![Oracle RAC işletim sistemi disk fiziksel yapılandırmasını gösteren diyagram.](media/oracle-vm-os-disks.png)
@@ -87,8 +87,8 @@ Veri diskleri, birincil olarak veritabanı dosyalarını depolamak için kullan�
 
 * Dört disk, sanal diskler olarak yapılandırılır ve tüm Oracle RAC sanal makinelerine bağlanır.
 * Her disk, farklı bir SCSI denetleyicisine bağlanır.
-* Her sanal disk, **kalın sağlama Eager sıfırlandı**olarak yapılandırılır.  
-* Paylaşım **birden çok yazıcı**olarak ayarlanmıştır.  
+* Her sanal disk, **kalın sağlama Eager sıfırlandı** olarak yapılandırılır.  
+* Paylaşım **birden çok yazıcı** olarak ayarlanmıştır.  
 * Diskler otomatik depolama yönetimi (ASM) disk grubu olarak yapılandırılmalıdır.  
 * Yedeklilik, depolama üzerinde vSAN ilkeleri kullanılarak tanımlanır.  
 * ASM artıklığı **dış** artıklık olarak ayarlanmıştır.
@@ -102,8 +102,8 @@ Yineleme günlük dosyaları, veritabanına yapılan değişikliklerin bir kopya
 * Yineleme günlüğü disklerinin birden çok disk grubu olarak yapılandırılması gerekir.  
 * Altı disk oluşturulur ve tüm Oracle RAC sanal makinelerinde bağlanır.
 * Diskler farklı SCSI denetleyicilerine bağlanır
-* Her sanal disk, **kalın sağlama Eager sıfırlandı**olarak yapılandırılır.
-* Paylaşım **birden çok yazıcı**olarak ayarlanmıştır.  
+* Her sanal disk, **kalın sağlama Eager sıfırlandı** olarak yapılandırılır.
+* Paylaşım **birden çok yazıcı** olarak ayarlanmıştır.  
 * Diskler iki ASM disk grubu olarak yapılandırılmış olmalıdır.
 * Her ASM disk grubu, farklı SCSI denetleyicilerindeki üç disk içerir.  
 * ASM artıklığı **normal** artıklık olarak ayarlanmıştır.
@@ -130,8 +130,8 @@ Oylama diskleri, herhangi bir bölünmüş beyana durumu önlemek için ek bir i
 
 * Tüm Oracle RAC sanal makinelerinde beş disk oluşturulup bağlanır.
 * Diskler bir SCSI denetleyicisine bağlanır
-* Her sanal disk, **kalın sağlama Eager sıfırlandı**olarak yapılandırılır.
-* Paylaşım **birden çok yazıcı**olarak ayarlanmıştır.  
+* Her sanal disk, **kalın sağlama Eager sıfırlandı** olarak yapılandırılır.
+* Paylaşım **birden çok yazıcı** olarak ayarlanmıştır.  
 * Diskler bir ASM disk grubu olarak yapılandırılmalıdır.  
 * ASM artıklığı **yüksek** artıklık olarak ayarlanmıştır.
 
@@ -143,8 +143,8 @@ Hızlı kurtarma alanı (FRA), Oracle ASM disk grubu tarafından yönetilen dosy
 
 * Tüm Oracle RAC sanal makinelerinde iki disk oluşturulup bağlanır.
 * Diskler farklı bir SCSI denetleyicisine bağlandı
-* Her sanal disk, **kalın sağlama Eager sıfırlandı**olarak yapılandırılır.
-* Paylaşım **birden çok yazıcı**olarak ayarlanmıştır.  
+* Her sanal disk, **kalın sağlama Eager sıfırlandı** olarak yapılandırılır.
+* Paylaşım **birden çok yazıcı** olarak ayarlanmıştır.  
 * Diskler bir ASM disk grubu olarak yapılandırılmalıdır.  
 * ASM artıklığı **dış** artıklık olarak ayarlanmıştır.
 
@@ -217,7 +217,7 @@ Oracle, verileri depolamak için paylaşılan disk kullanır, günlüğü günl�
 6. VM depolama ilkesini, daha önce tanımladığınız vSAN depolama ilkesi olacak şekilde belirtin.
 7. VSAN veri deposundaki bir klasör olarak konumu seçin. Konum, tarama ve diskleri ikinci bir VM 'ye ekleme konusunda yardımcı olur.
 8. Disk sağlama için, **kalın sağlama Eager sıfırlandı**' ı seçin.
-9. Paylaşım için **birden çok yazıcı**belirtin.
+9. Paylaşım için **birden çok yazıcı** belirtin.
 10. Sanal cihaz düğümü için adım 2 ' de oluşturulan yeni SCSI denetleyicisini seçin.
 
     ![İlk VM 'de disk oluşturmak için gereken alanları vurgulayan ekran görüntüsü.](media/oracle-rac-new-hard-disk.png)
@@ -232,7 +232,7 @@ Oracle verileri, günlükleri ve yineleme günlük dosyaları için gereken tüm
 4. İlk VM için diskin oluşturulduğu konuma gidin ve VMDK dosyasını seçin.
 5. VM depolama ilkesini, daha önce tanımladığınız vSAN depolama ilkesi olacak şekilde belirtin.
 6. Disk sağlama için, **kalın sağlama Eager sıfırlandı**' ı seçin.
-7. Paylaşım için **birden çok yazıcı**belirtin.
+7. Paylaşım için **birden çok yazıcı** belirtin.
 8. Sanal cihaz düğümü için adım 2 ' de oluşturulan yeni SCSI denetleyicisini seçin.
 
     ![İlk VM 'de disk oluşturma](media/oracle-rac-existing-hard-disk.png)

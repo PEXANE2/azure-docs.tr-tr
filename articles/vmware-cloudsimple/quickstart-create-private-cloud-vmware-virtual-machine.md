@@ -1,19 +1,19 @@
 ---
 title: Hızlı başlangıç-CloudSimple ile özel bulut-Azure VMware çözümü üzerinde Azure VMware VM oluşturma
 description: CloudSimple özel bulutu 'nda bir VMware sanal makinesi oluşturmayı öğrenin. Azure portal CloudSimple portalına erişin.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fd67a5a7f1bf665333e06c66f73c7f18727a3e12
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c741f01ccc3e34ec991aa77fc850fd9f60c4d8aa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427775"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899295"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Özel bulutunuzda VMware sanal makineleri oluşturma
 
@@ -25,8 +25,8 @@ ms.locfileid: "92427775"
 
 ## <a name="access-the-cloudsimple-portal"></a>CloudSimple portalına erişim
 
-1. **Tüm hizmetler**’i seçin.
-2. **Cloudsimple Hizmetleri**için arama yapın.
+1. **Tüm Hizmetler**’i seçin.
+2. **Cloudsimple Hizmetleri** için arama yapın.
 3. Özel bulutunuzu oluşturmak istediğiniz CloudSimple hizmetini seçin.
 4. **Genel bakış** sayfasından **Cloudsimple portalına git** ' e tıklayarak cloudsimple Portal için yeni bir tarayıcı sekmesi açın.  İstenirse, Azure oturum açma kimlik bilgilerinizle oturum açın.  
 
@@ -36,7 +36,7 @@ ms.locfileid: "92427775"
 
 Artık sanal makineleri ve ilkeleri ayarlamak için vCenter 'ı başlatabilirsiniz.
 
-VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasında, **ortak görevler**altında, **vSphere istemcisini Başlat**' a tıklayın.  Özel bulutu seçin ve ardından özel bulutta **vSphere Istemcisini Başlat** ' a tıklayın.
+VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasında, **ortak görevler** altında, **vSphere istemcisini Başlat**' a tıklayın.  Özel bulutu seçin ve ardından özel bulutta **vSphere Istemcisini Başlat** ' a tıklayın.
 
    ![VSphere Istemcisini Başlat](media/launch-vcenter-from-cloudsimple-portal.png)
 
@@ -78,7 +78,7 @@ VCenter 'a erişmek için CloudSimple portalından başlatın. Giriş sayfasınd
 8. Oluşturmakta olduğunuz VM için ISO Konuk işletim sistemini seçin ve **İleri**' ye tıklayın.
     ![VM için ISO 'nun GUESE işletim sisteminin nasıl seçdiğinin gösterildiği ekran görüntüsü.](media/vcvm07.png)
 
-9. Sabit disk ve ağ seçeneklerini belirleyin. Yeni CD/DVD sürücüsü için, **veri deposu ISO dosyası**' nı seçin.  Genel IP adresinden bu VM 'ye giden trafiğe izin vermek istiyorsanız, ağı **VM-1**olarak seçin.
+9. Sabit disk ve ağ seçeneklerini belirleyin. Yeni CD/DVD sürücüsü için, **veri deposu ISO dosyası**' nı seçin.  Genel IP adresinden bu VM 'ye giden trafiğe izin vermek istiyorsanız, ağı **VM-1** olarak seçin.
     ![Veri deposu ISO dosyasını seçtiğinizde vurguların bulunduğu ekran görüntüsü.](media/vcvm08.png)
 
 10. Bir seçim penceresi açılır. Daha önce ISOs ve Şablonlar klasörüne yüklediğiniz dosyayı seçin ve **Tamam**' a tıklayın.
@@ -102,7 +102,7 @@ CloudSimple, Kullanıcı adı ile varsayılan bir vCenter Kullanıcı hesabı at
 
 Özel bir bulut ortamında çalışan uygulamalar ve iş yükleri, arama ve IP adresi ataması için ad çözümlemesi ve DHCP hizmetleri gerektirir. Bu hizmetleri sağlamak için uygun bir DHCP ve DNS altyapısı gereklidir. Özel bulut ortamınızda bu hizmetleri sağlamak için vCenter 'da bir sanal makine yapılandırabilirsiniz.
 
-Ön koşullar
+Önkoşullar
 
 * VLAN yapılandırılmış bir dağıtılmış bağlantı noktası grubu
 

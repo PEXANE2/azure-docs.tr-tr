@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-özel bulut için vSAN şifrelemesini yapılandırma
 description: CloudSimple özel bulutunuzun Azure sanal ağınızda çalışan bir anahtar yönetim sunucusu ile çalışabilmesi için vSAN yazılım şifreleme özelliğinin nasıl yapılandırılacağını açıklar.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5da05c7f3c6878b0804799360e512676b9002d3
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77020650"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899057"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>CloudSimple özel bulutu için vSAN şifrelemesini yapılandırma
 
@@ -83,7 +83,7 @@ Sanal ağınızdaki Azure Resource Manager bir HyTrust KeyControl kümesi dağı
 
 ### <a name="hytrust-webui-configure-the-kmip-server"></a>HyTrust WebUI: KMıP sunucusunu yapılandırma
 
-Https://*genel-IP*adresine gidin; burada *genel IP* , keycontrol düğüm sanal makinesinin genel IP adresidir. [Hytrust belgelerindeki](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)adımları izleyin.
+Https://*genel-IP* adresine gidin; burada *genel IP* , keycontrol düğüm sanal makinesinin genel IP adresidir. [Hytrust belgelerindeki](https://docs.hytrust.com/DataControl/Admin_Guide-4.0/Default.htm#OLH-Files/Azure.htm%3FTocPath%3DHyTrust%2520DataControl%2520and%2520Microsoft%2520Azure%7C_____0)adımları izleyin.
 
 1. [Bir KMıP sunucusunu yapılandırma](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/configuring-kmip-server.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____2)
 2. [VMware şifrelemesi için bir sertifika paketi oluşturma](https://docs.hytrust.com/DataControl/4.2/Admin_Guide-4.2/index.htm#Books/VMware-vSphere-VSAN-Encryption/creating-user-for-vmcrypt.htm%3FTocPath%3DHyTrust%2520KeyControl%2520with%2520VSAN%25C2%25A0and%2520VMware%2520vSphere%2520VM%2520Encryption%7C_____3)

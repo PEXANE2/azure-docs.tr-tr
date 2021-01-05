@@ -2,19 +2,19 @@
 title: Özel bulut etkinliğini izle
 titleSuffix: Azure VMware Solution by CloudSimple
 description: Azure VMware çözümünde, uyarılar, olaylar, görevler ve denetim dahil olmak üzere CloudSimple ortamı tarafından kullanılabilen bilgiler açıklanmaktadır.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/13/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1228f3a54e02d4fe7a5133e2bfba55c38e34718a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fb597cc71d228a1daaaa4e52d76b301764ff9292
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77019681"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899312"
 ---
 # <a name="monitor-vmware-solution-by-cloudsimple-activity"></a>CloudSimple etkinliğine göre VMware çözümünü izleme
 
@@ -49,15 +49,15 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Uyarı türü | Uyarı kategorisi.|
-| Süre | Uyarının gerçekleştiği zaman. |
-| Önem Derecesi | Uyarının önemi.|
+| Saat | Uyarının gerçekleştiği zaman. |
+| Önem derecesi | Uyarının önemi.|
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Kaynak kimliği | Kaynağın tanımlayıcısı. |
 | Açıklama | Uyarının tetiklendiği açıklama. |
 | Onaylandı | Uyarının kabul edilip edilmeyeceğini belirtir. |
 
-## <a name="events"></a>Olaylar
+## <a name="events"></a>Ekinlikler
 
 Olaylar CloudSimple portalında Kullanıcı ve sistem etkinliğini gösterir. Olaylar sayfası, belirli bir kaynakla ilişkili etkinliği ve etkinin önem derecesini listeler.
 
@@ -65,9 +65,9 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Süre | Olayın gerçekleştiği tarih ve saat. |
+| Saat | Olayın gerçekleştiği tarih ve saat. |
 | Olay Türü | Olayı tanımlayan sayısal kod. |
-| Önem Derecesi | Olay önem derecesi.|
+| Önem derecesi | Olay önem derecesi.|
 | Kaynak Adı | Kaynağa atanan, özel bulut adı gibi ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
 | Açıklama | Uyarının tetiklendiği açıklama. |
@@ -81,7 +81,7 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 | Sütun | Açıklama |
 ------------ | ------------- |
 | Görev Kimliği | Görevin benzersiz tanımlayıcısı. |
-| İşlem | Görevin gerçekleştirdiği eylem. |
+| Çalışma | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Görevi tamamlamaya yönelik Kullanıcı atandı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |
@@ -100,8 +100,8 @@ Aşağıdaki bilgi sütunları uyarılar için kullanılabilir. **Sütunları D�
 
 | Sütun | Açıklama |
 ------------ | ------------- |
-| Süre | Denetim girişinin saati. |
-| İşlem | Görevin gerçekleştirdiği eylem. |
+| Saat | Denetim girişinin saati. |
+| Çalışma | Görevin gerçekleştirdiği eylem. |
 | Kullanıcı | Göreve atanan kullanıcı. |
 | Kaynak Adı | Kaynağa atanan ad. |
 | Kaynak Türü | Kaynak kategorisi: özel bulut, bulut rafı. |

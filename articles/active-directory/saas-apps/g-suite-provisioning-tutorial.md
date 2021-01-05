@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 552322b9452d380dd5507fb579d7cc44e1a456fe
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763971"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899028"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için G Suite 'i yapılandırma
 
@@ -63,15 +63,15 @@ Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan ö
 
 1. [G Suite yönetici konsolunda](https://admin.google.com/) Yönetici hesabınızla oturum açın ve ardından **güvenlik**' i seçin. Bağlantıyı görmüyorsanız, ekranın alt kısmındaki **daha fazla denetim** menüsünde gizli olabilir.
 
-    ![G Suite güvenliği](./media/google-apps-provisioning-tutorial/gapps-security.png)
+    ![G Suite güvenliği](./media/g-suite-provisioning-tutorial/gapps-security.png)
 
 2. **Güvenlik** sayfasında **API başvurusu**' nu seçin.
 
-    ![G Suite API 'SI](./media/google-apps-provisioning-tutorial/gapps-api.png)
+    ![G Suite API 'SI](./media/g-suite-provisioning-tutorial/gapps-api.png)
 
 3. **API erişimini etkinleştir**' i seçin.
 
-    ![G Suite API 'SI etkin](./media/google-apps-provisioning-tutorial/gapps-api-enabled.png)
+    ![G Suite API 'SI etkin](./media/g-suite-provisioning-tutorial/gapps-api-enabled.png)
 
     > [!IMPORTANT]
    > G Suite 'e sağlamayı planladığınız her kullanıcı için, Azure AD 'deki Kullanıcı adları özel bir etki alanına bağlı **olmalıdır** . Örneğin, gibi görünen Kullanıcı adları bob@contoso.onmicrosoft.com G Suite tarafından kabul edilmez. Öte yandan bob@contoso.com kabul edilir. Mevcut bir kullanıcının etki alanını [buradaki](../fundamentals/add-custom-domain.md)yönergeleri izleyerek değiştirebilirsiniz.
@@ -80,15 +80,15 @@ Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan ö
 
     a. [G Suite yönetici konsolunda](https://admin.google.com/) **etki alanları**' nı seçin.
 
-    ![G Suite etki alanları](./media/google-apps-provisioning-tutorial/gapps-domains.png)
+    ![G Suite etki alanları](./media/g-suite-provisioning-tutorial/gapps-domains.png)
 
     b. **Etki alanı veya etki alanı diğer adı Ekle**' yi seçin.
 
-    ![G Suite etki alanı Ekle](./media/google-apps-provisioning-tutorial/gapps-add-domain.png)
+    ![G Suite etki alanı Ekle](./media/g-suite-provisioning-tutorial/gapps-add-domain.png)
 
     c. **Başka bir etki alanı Ekle**' yi seçin ve sonra eklemek istediğiniz etki alanının adını yazın.
 
-    ![G Suite başka bir Ekle](./media/google-apps-provisioning-tutorial/gapps-add-another.png)
+    ![G Suite başka bir Ekle](./media/g-suite-provisioning-tutorial/gapps-add-another.png)
 
     d. **Devam ' ı seçin ve etki alanı sahipliğini doğrulayın**. Ardından, etki alanı adının sahip olduğunuzu doğrulamak için adımları izleyin. Google ile etki alanınızı doğrulamaya yönelik kapsamlı yönergeler için bkz. [sitenizin sahipliğini doğrulama](https://support.google.com/webmasters/answer/35179).
 
@@ -96,11 +96,11 @@ Azure AD ile otomatik Kullanıcı sağlama için G Suite 'i yapılandırmadan ö
 
 5. Sonra, G Suite 'de Kullanıcı sağlamayı yönetmek için kullanmak istediğiniz yönetici hesabı ' nı saptayın. **Yönetici rolleri**' ne gidin.
 
-    ![G Suite Yöneticisi](./media/google-apps-provisioning-tutorial/gapps-admin.png)
+    ![G Suite Yöneticisi](./media/g-suite-provisioning-tutorial/gapps-admin.png)
 
 6. Bu hesabın **yönetici rolü** için, bu rolün **ayrıcalıklarını** düzenleyin. Bu hesabın sağlanması için kullanılabilmesi için tüm **yönetıcı API ayrıcalıklarını** etkinleştirdiğinizden emin olun.
 
-    ![G Suite yönetici ayrıcalıkları](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
+    ![G Suite yönetici ayrıcalıkları](./media/g-suite-provisioning-tutorial/gapps-admin-privileges.png)
 
 ## <a name="step-3-add-g-suite-from-the-azure-ad-application-gallery"></a>3. Adım Azure AD uygulama galerisinden G Suite ekleme
 
@@ -126,9 +126,9 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 1. [Azure Portal](https://portal.azure.com) oturum açın. **Kurumsal Uygulamalar**'ı ve ardından **Tüm uygulamalar**'ı seçin. Kullanıcıların portal.azure.com 'de oturum açması ve aad.portal.azure.com kullanamayacak şekilde,
 
-    ![Kurumsal uygulamalar dikey penceresi](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
+    ![Kurumsal uygulamalar dikey penceresi](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 
-    ![Tüm uygulamalar dikey penceresi](./media/google-apps-provisioning-tutorial/all-applications.png)
+    ![Tüm uygulamalar dikey penceresi](./media/g-suite-provisioning-tutorial/all-applications.png)
 
 2. Uygulamalar listesinde, **G Suite**' i seçin.
 
@@ -138,7 +138,7 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
     ![Sağlama seçeneğinin kullanıma aldığı yönetim seçeneklerinin ekran görüntüsü.](common/provisioning.png)
 
-      ![Kullanmaya başlama dikey penceresi](./media/google-apps-provisioning-tutorial/get-started.png)
+      ![Kullanmaya başlama dikey penceresi](./media/g-suite-provisioning-tutorial/get-started.png)
 
 4. **Hazırlama Modu**'nu **Otomatik** olarak ayarlayın.
 
@@ -146,11 +146,11 @@ Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak TestApp içindeki kullan�
 
 5. **Yönetici kimlik bilgileri** bölümünde **Yetkilendir**' e tıklayın. Yeni bir tarayıcı penceresinde bir Google yetkilendirmesi iletişim kutusuna yönlendirilirsiniz.
 
-      ![G Suite yetkilendirme](./media/google-apps-provisioning-tutorial/authorize-1.png)
+      ![G Suite yetkilendirme](./media/g-suite-provisioning-tutorial/authorize-1.png)
 
 6. G Suite kiracınızda değişiklik yapmak için Azure AD izinleri vermek istediğinizi onaylayın. **Kabul Et**’i seçin.
 
-     ![G Suite Kiracı kimlik doğrulaması](./media/google-apps-provisioning-tutorial/gapps-auth.png)
+     ![G Suite Kiracı kimlik doğrulaması](./media/g-suite-provisioning-tutorial/gapps-auth.png)
 
 7. Azure portal, Azure AD 'nin G Suite 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, G Suite hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin. Sonra **Yetkilendir** adımını yeniden deneyin.
 

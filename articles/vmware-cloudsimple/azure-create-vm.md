@@ -1,19 +1,19 @@
 ---
 title: CloudSimple tarafından Azure VMware çözümü-VM şablonlarıyla Azure 'da sanal makine oluşturma
 description: CloudSimple özel bulutunuz için VMware altyapısında VM şablonları kullanarak Azure 'da sanal makinelerin nasıl oluşturulacağını açıklar
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee3029de9826aee17dc76d0e69f08b3c1068423b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b01afe60a78a746eb0dc5f03cc7b45989f8cf81e
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014510"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898768"
 ---
 # <a name="create-a-virtual-machine-in-azure-using-vm-templates-on-the-vmware-infrastructure"></a>VMware altyapısında VM şablonları kullanarak Azure 'da sanal makine oluşturma
 
@@ -44,7 +44,7 @@ CloudSimple yöneticinizin aboneliğiniz için etkinleştirildiği VMware altyap
     | ------------ | ------------- |
     | Abonelik | Özel bulutunuz ile ilişkili Azure aboneliği.  |
     | Kaynak Grubu | VM 'nin atanacağı kaynak grubu. Var olan bir grubu seçebilir veya yeni bir grup oluşturabilirsiniz. |
-    | Name | VM 'yi tanımlayacak ad.  |
+    | Ad | VM 'yi tanımlayacak ad.  |
     | Konum | Bu VM 'nin barındırıldığı Azure bölgesi.  |
     | Özel Bulut | Sanal makineyi oluşturmak istediğiniz CloudSimple özel bulutu. |
     | Kaynak Havuzu | VM için eşlenen kaynak havuzu. Kullanılabilir kaynak havuzlarından seçin. |

@@ -6,14 +6,14 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/23/2020
+ms.date: 01/04/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: a2d26689a3036f05d7c8e7f417fbbb447402aedc
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: f140384ee2c78b38982c99dab5912bc451584a42
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762871"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97898156"
 ---
 # <a name="connect-stream-analytics-jobs-to-resources-in-an-azure-virtual-network-vnet"></a>Stream Analytics işlerini bir Azure sanal ağındaki (VNet) kaynaklara bağlama
 
@@ -41,7 +41,7 @@ Bazı Azure Hizmetleri, etkin olduğunda **güvenilir Microsoft Hizmetleri ağla
 1. [BLOB depolama veya Azure Data Lake Storage 2.](https://docs.microsoft.com/azure/stream-analytics/blob-output-managed-identity) -işinizin depolama hesabı, akış girişi veya çıkışı olabilir.
 2. [Azure Event Hubs](https://docs.microsoft.com/azure/stream-analytics/event-hubs-managed-identity) -işinizin akış girişi veya çıkışı olabilir.
 
-İşlerinizin diğer giriş veya çıkış türlerine bağlanması gerekiyorsa, tek seçenek Stream Analytics kümelerinde özel uç noktaları kullanmaktır.
+İşlerinizin diğer giriş veya çıkış türlerine bağlanması gerekiyorsa, önce Stream Analytics ve ardından Azure Işlevleri 'ni kullanarak tercih ettiğiniz herhangi bir hedefe Event Hubs yazabilirsiniz. Stream Analytics 'ten VNet veya güvenlik duvarında güvenliği sağlanmış diğer çıkış türlerine doğrudan yazmak isterseniz, tek seçenek Stream Analytics kümelerinde özel uç noktaları kullanmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
