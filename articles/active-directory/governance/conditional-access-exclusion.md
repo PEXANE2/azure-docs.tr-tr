@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4a18ad04064ef8356e21d106843d6c946f50741
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362731"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746261"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Koşullu erişim ilkelerinden dışlanan kullanıcıları yönetmek için Azure AD erişim incelemelerini kullanın
 
@@ -71,7 +71,7 @@ Yeni bir Azure AD grubu ve bu gruba uygulanmayan bir koşullu erişim ilkesi olu
 
 4. **Grup türü** listesinde **güvenlik**' i seçin. Bir ad ve açıklama belirtin.
 
-5. **Üyelik** türünü **atanmış**olarak ayarladığınızdan emin olun.
+5. **Üyelik** türünü **atanmış** olarak ayarladığınızdan emin olun.
 
 6. Bu dışlama grubunun parçası olması gereken kullanıcıları seçin ve ardından **Oluştur**' a tıklayın.
 

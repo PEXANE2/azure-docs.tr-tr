@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906274"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746193"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel 'de gelişmiş çok aşamalı saldırı algılama
 
 
 > [!IMPORTANT]
 > Azure Sentinel 'teki bazı Fusion özellikleri şu anda **genel önizlemededir**.
-> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu özellikler, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure Sentinel, makine öğrenimine göre Fusion teknolojisini kullanarak çok aşamalı saldırıları otomatik olarak algılayabilir ve bu arada, sonlandırma zincirinin çeşitli aşamalarında gözlemlenen anormal davranışların ve şüpheli etkinliklerin birleşimlerini tanımlayarak otomatik olarak kullanılabilir. Bu bulmalar temelinde, Azure Sentinel, aksi takdirde yakalamak zor olan olaylar oluşturur. Bu olaylar iki veya daha fazla uyarıyı veya etkinliği kapsar. Tasarım yaparak, bu olaylar düşük hacimse, yüksek uygunlukta ve yüksek öneme sahiptir.
 
@@ -49,7 +49,7 @@ Bu algılama, Azure Sentinel 'de varsayılan olarak etkinleştirilmiştir. Durum
  **Fusion** kural türü değiştirilemeyen tek bir kural içerdiğinden, kural şablonları bu kural türü için geçerli değildir.
 
 > [!NOTE]
-> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel**   \>  **yapılandırma**   \>  **Analizi \> etkin kurallar \> Gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
+> Azure Sentinel, makine öğrenimi sistemlerini eğitmek için şu anda 30 günlük geçmiş veri kullanmaktadır. Bu veriler, makine öğrenimi ardışık düzeninde geçerken Microsoft 'un anahtarları kullanılarak her zaman şifrelenir. Ancak, Azure Sentinel çalışma alanınızda CMK 'yı etkinleştirdiyseniz eğitim verileri, [müşteri tarafından yönetilen anahtarlar (CMK)](customer-managed-keys.md) kullanılarak şifrelenmez. Fusion 'un devre dışı bırakılması için **Azure Sentinel** \> **yapılandırma** \> **Analizi \> etkin kurallar \> Gelişmiş çok aşamalı saldırı algılama** ' ya gidin ve **durum** sütununda **devre dışı bırak** ' ı seçin.
 
 ## <a name="attack-detection-scenarios"></a>Saldırı algılama senaryoları
 
@@ -84,6 +84,70 @@ Bu senaryo şu anda **genel önizlemededir**.
 - **Anonim bir IP adresinden birden çok VM oluşturma etkinliğine kadar bir oturum açma olayı**
 
 - **Sızdırılan kimlik bilgilerine sahip ve birden çok VM oluşturma etkinliğine sahip olan kullanıcının oturum açma olayı**
+
+## <a name="credential-harvesting-new-threat-classification"></a>Kimlik bilgisi zor (yeni tehdit sınıflandırması)
+
+### <a name="malicious-credential-theft-tool-execution-following-suspicious-sign-in"></a>Şüpheli oturum açma sonrasında kötü amaçlı kimlik bilgisi hırsızlığı Aracı yürütme
+
+**Mitre ATT&CK tactika:** İlk erişim, kimlik bilgisi erişimi
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), işletim sistemi kimlik bilgileri dökümü (T1003)
+
+**Veri Bağlayıcısı kaynakları:** Azure Active Directory Kimlik Koruması, uç nokta için Microsoft Defender
+
+**Açıklama:** Bu türün Fusion olayları, bilinen bir kimlik bilgisi hırsızlığı aracının şüpheli bir Azure AD oturum açma işlemi sonrasında yürütüldüğünü belirtir. Bu, uyarı açıklamasında belirtilen kullanıcı hesabının güvenliğinin aşıldığını ve anahtarlar, düz metin parolaları ve/veya sistemden parola karmaları gibi bir aracı, **Mpikatz** gibi bir aracı başarıyla kullanmış olabileceğini belirten, yüksek güvenilirlikli bir gösterge sağlar. En zor kimlik bilgileri, bir saldırganın hassas verilere erişmesine, ayrıcalıklara ve/veya geçici olarak ağ üzerinden taşınmasına izin verebilir. Kötü amaçlı kimlik bilgileri hırsızlığı aracı uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:
+
+- **Kötü amaçlı kimlik bilgileri hırsızlığı aracı yürütmesi için önde gelen konumlara imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan kötü amaçlı kimlik bilgisi hırsızlığı aracının yürütülmesine kadar bir oturum açma etkinliği**
+
+- **Virüslü bir cihazdan kötü amaçlı kimlik bilgisi hırsızlığı aracının yürütülmesine kadar bir oturum açma olayı**
+
+- **Anonim bir IP adresinden lider, kötü amaçlı kimlik bilgisi hırsızlığı aracı yürütmeye yönelik oturum açma etkinliği**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından kötü amaçlı kimlik bilgileri hırsızlığı aracı yürütmesi ile oturum açma etkinliği**
+
+### <a name="suspected-credential-theft-activity-following-suspicious-sign-in"></a>Şüpheli oturum açma sonrasında şüphelenilen kimlik bilgisi hırsızlığı etkinliği
+
+**Mitre ATT&CK tactika:** İlk erişim, kimlik bilgisi erişimi
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), parola depolarındaki kimlik bilgileri (T1555), işletim sistemi kimlik bilgileri dökümü (T1003)
+
+**Veri Bağlayıcısı kaynakları:** Azure Active Directory Kimlik Koruması, uç nokta için Microsoft Defender
+
+**Açıklama:** Bu türün Fusion olayları, şüpheli bir Azure AD oturum açma sonrasında kimlik bilgisi hırsızlığı deseniyle ilişkili etkinliğin oluştuğunu belirtir. Bu, uyarı açıklamasında belirtilen kullanıcı hesabının güvenliğinin aşıldığını ve anahtarlar, düz metin parolaları, parola karmaları vb. gibi kimlik bilgilerini çalmak için kullanıldığını yüksek güvenilirlikli bir gösterge sağlar. Çalınmış kimlik bilgileri, bir saldırganın hassas verilere erişmesine, ayrıcalıkların ilerletebilir ve/veya geçici olarak ağ üzerinden taşınmasına izin verebilir. Kimlik bilgisi hırsızlığı etkinlik uyarısına sahip şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:
+
+- **Şüpheli kimlik bilgisi hırsızlığı etkinliğine karşı önde gelen konumlara imkansız seyahat**
+
+- **Bilinmeyen bir konumdan gelen oturum açma olayı, şüpheli kimlik bilgisi hırsızlığı etkinliğine**
+
+- **Virüslü bir cihazdan gelen oturum açma olayı, şüphelenilen kimlik bilgisi hırsızlığı etkinliğine**
+
+- **Anonim IP adresinden gelen oturum açma olayı, şüpheli kimlik bilgisi hırsızlığı etkinliğine**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli kimlik bilgisi hırsızlığı etkinliğine**
+
+## <a name="crypto-mining-new-threat-classification"></a>Şifre araştırma (yeni tehdit sınıflandırması)
+
+### <a name="crypto-mining-activity-following-suspicious-sign-in"></a>Şüpheli oturum açma sonrasında şifre araştırma etkinliği
+
+**Mitre ATT&CK tactika:** İlk erişim, kimlik bilgisi erişimi
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), kaynak ele geçirme (T1496)
+
+**Veri Bağlayıcısı kaynakları:** Azure Active Directory Kimlik Koruması, Azure Defender (Azure Güvenlik Merkezi)
+
+**Açıklama:** Bu türün Fusion olayları, bir Azure AD hesabında şüpheli bir oturum açma işlemiyle ilişkili şifre araştırma etkinliğini gösterir. Bu, uyarı açıklamasında belirtilen kullanıcı hesabının güvenliğinin aşıldığını ve ortamınızdaki kaynakları şifreleme-para birimine eklemek için kullanılan yüksek güvenilirlikli bir gösterge sağlar. Bu, bilgi işlem gücü ve/veya daha yüksek bir beklenen bulut kullanım reçetelerine neden olabilir. Şifre araştırma etkinlik uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:  
+
+- **Şifre araştırma etkinliğine yönelik olarak önde gelen konumlara imkansız seyahat**
+
+- **Bilinmeyen bir konumdan şifre araştırma etkinliğine kadar bir oturum açma etkinliği**
+
+- **Virüslü bir cihazdan şifre araştırma etkinliğine kadar bir oturum açma etkinliği**
+
+- **Anonim bir IP adresinden şifre araştırma etkinliğine kadar bir oturum açma etkinliği**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcı tarafından şifre araştırma etkinliğine yönelik oturum açma etkinliği**
 
 ## <a name="data-exfiltration"></a>Veri sızdırma
 
@@ -368,6 +432,26 @@ Bu senaryo şu anda **genel önizlemededir**.
 **Veri Bağlayıcısı kaynakları:** Uç nokta (eskiden MDADTP) için Microsoft Defender, Palo Alto Networks 
 
 **Açıklama:** Bu türün Fusion olayları, Windows Yönetim Arabirimi (WMI) komutlarının bir sistemde uzaktan yürütüldüğünü ve bu, Palo Alto Networks güvenlik duvarı tarafından şüpheli gelen etkinliğin algılandığını gösterir. Bu, bir saldırganın ağınıza erişim kazandığını ve geçici olarak taşımaya, ayrıcalıkların ilerleme ve/veya kötü amaçlı yükleri yürütmesine olanak sağladığını belirten bir bildirim sağlar. Tüm "Land kapalı" saldırılarıyla birlikte bu etkinlik, WMI 'nin meşru bir kullanımı olabilir. Ancak, şüpheli gelen güvenlik duvarı etkinliğinin ardından uzak WMI komut yürütmesi, WMI 'nın kötü amaçlı olarak kullanıldığı ve daha fazla Araştırılması gereken güveni artırır. Palo Alto günlüklerinde, Azure Sentinel [tehdit günlüklerine](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)odaklanır ve tehditlere izin verildiğinde trafik şüpheli olarak değerlendirilir (şüpheli veriler, dosyalar, floods, paketler, taramalar, casus yazılım, URL 'ler, virüsler, güvenlik açıkları, yavalar, yavalar, yavalar). Ayrıca, ek uyarı ayrıntıları için Fusion olay açıklamasında listelenen [tehdit/Içerik türüne](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html) karşılık gelen Palo Alto tehdit günlüğüne başvurun.
+
+### <a name="suspicious-powershell-command-line-following-suspicious-sign-in"></a>Şüpheli oturum açma sonrasında şüpheli PowerShell komut satırı
+
+**Mitre ATT&CK tactika:** İlk erişim, yürütme
+
+**Mitre ATT&CK teknikleri:** Geçerli hesap (T1078), komut ve komut dosyası yorumlayıcısı (T1059)
+
+**Veri Bağlayıcısı kaynakları:** Azure Active Directory Kimlik Koruması, uç nokta için Microsoft Defender (eski adıyla MDADTP)
+
+**Açıklama:** Bu türün Fusion olayları, bir kullanıcının bir Azure AD hesabında şüpheli bir oturum açma sonrasında potansiyel olabilecek kötü amaçlı PowerShell komutlarını yürütüldüğünü belirtir. Bu, uyarı açıklamasında belirtilen hesabın güvenliğinin aşıldığını ve diğer kötü amaçlı eylemlerin alındığını, yüksek güvenilirlikli bir gösterge sağlar. Saldırganlar, virüs tarayıcıları gibi disk tabanlı güvenlik mekanizmalarına engel olmak için genellikle PowerShell 'den, diskteki yapıtlardan çıkmadan kötü amaçlı yükleri yürütmek için yararlanır. Şüpheli PowerShell komut uyarısıyla şüpheli Azure AD oturum açma uyarılarının permütasyonları şunlardır:
+
+- **Şüpheli PowerShell komut satırına önde gelen konumlara imkansız seyahat**
+
+- **Bilmediğiniz bir konumdan, şüpheli PowerShell komut satırına lider olarak oturum açma olayı**
+
+- **Virüslü bir cihazdan şüpheli PowerShell komut satırına lider olarak oturum açma olayı**
+
+- **Anonim bir IP adresinden, şüpheli PowerShell komut satırına ilk olarak oturum açma olayı**
+
+- **Sızdırılan kimlik bilgilerine sahip kullanıcıdan gelen oturum açma olayı, şüpheli PowerShell komut satırı ile**
 
 ## <a name="malware-c2-or-download"></a>Kötü amaçlı yazılım C2 veya indirme
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ba90724f75635ea9fd5f72f75de6a46d7b6d288
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bca78195d4fb7bb265c4a7fd8d78ea49a35335b6
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91447000"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746720"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi sorunlarını giderme
 
@@ -77,7 +77,7 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -85,7 +85,7 @@ Bu makalede, Azure Active Directory (Azure AD) yetkilendirme yönetimi sorunlar�
 
 1. Görüntülemek istediğiniz isteği seçin.
 
-    İstekte herhangi bir teslim hatası varsa, istek durumu **teslim** edilmemiş veya **kısmen teslim**edilir.
+    İstekte herhangi bir teslim hatası varsa, istek durumu **teslim** edilmemiş veya **kısmen teslim** edilir.
 
     Herhangi bir teslim hatası varsa, isteğin ayrıntı bölmesinde teslim hatalarının sayısı görüntülenir.
 
@@ -99,13 +99,13 @@ Yalnızca **teslim durumu başarısız** veya **kısmen teslim** edildi olan bir
 
 ![Düğme gri renkte yeniden işleme](./media/entitlement-management-troubleshoot/cancel-reprocess-grayedout.png)
 
-- Deneme süresi boyunca hata düzeltildiğinde, istek durumu **teslim**olarak değişir. İstek, kullanıcıdan ek eylem olmadan yeniden işlenecek.
+- Deneme süresi boyunca hata düzeltildiğinde, istek durumu **teslim** olarak değişir. İstek, kullanıcıdan ek eylem olmadan yeniden işlenecek.
 
-- Deneme süresi boyunca hata düzeltilmediyse, istek durumu **teslim başarısız** veya **kısmen teslim edilmiş**olabilir. Sonra **yeniden işle** düğmesini kullanabilirsiniz. İsteği yeniden işlemek için yedi gününüz olacak.
+- Deneme süresi boyunca hata düzeltilmediyse, istek durumu **teslim başarısız** veya **kısmen teslim edilmiş** olabilir. Sonra **yeniden işle** düğmesini kullanabilirsiniz. İsteği yeniden işlemek için yedi gününüz olacak.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 
@@ -123,7 +123,7 @@ Yalnızca teslim edilmemiş veya teslimi başarısız olan bekleyen bir isteği 
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi, Katalog sahibi, Paket Yöneticisi veya erişim paketi atama Yöneticisi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol menüde, **erişim paketleri** ' ne tıklayın ve ardından erişim paketini açın.
 

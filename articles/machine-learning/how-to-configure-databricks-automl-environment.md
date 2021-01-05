@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ef8ee7718aabb443fda6cd7b276ee53472261913
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 878e6f11645a6478c0d536e9d6d6dac4518c5349
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424546"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740972"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning içinde Azure Databricks ve oto ml ile bir geliştirme ortamı ayarlama 
 
@@ -57,7 +57,7 @@ Azure Databricks kullanabilirsiniz:
 | Python sürümü |Her| 3 |
 | Çalışan türü <br>(en fazla eşzamanlı yineleme sayısını belirler) |Otomatikleştirilmiş ML<br>yalnızca| Bellek için iyileştirilmiş VM tercih edilen |
 | Çalışanlarınız |Her| 2 veya üzeri |
-| Otomatik ölçeklendirmeyi etkinleştir |Otomatikleştirilmiş ML<br>yalnızca| Kutunun |
+| Otomatik ölçeklendirmeyi etkinleştir |Otomatikleştirilmiş ML<br>yalnızca| İşaretsiz |
 
 Devam etmeden önce küme çalışmaya kadar bekleyin.
 
@@ -68,7 +68,7 @@ Küme çalışmaya başladıktan sonra uygun Azure Machine Learning SDK paketini
 Otomatik ML 'yi kullanmak için, [Otomatik ml Ile Azure ML SDK 'Sı ekleme](#add-the-azure-ml-sdk-with-automl-to-databricks)' yi atlayın.
 
 
-1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. Kitaplık **Oluştur** ' u seçin  >  **Library**.
+1. Kitaplığı depolamak istediğiniz geçerli çalışma alanı klasörüne sağ tıklayın. Kitaplık **Oluştur**' u seçin  >  .
     
     > [!TIP]
     > Eski bir SDK sürümünüz varsa, kümenin yüklü kitaplıklarından seçimini kaldırın ve çöp kutusuna geçiş yapın. Yeni SDK sürümünü yükleyip kümeyi yeniden başlatın. Yeniden başlatmadan sonra bir sorun varsa, kümenizi ayırın ve yeniden bağlayın.
@@ -82,15 +82,15 @@ Otomatik ML 'yi kullanmak için, [Otomatik ml Ile Azure ML SDK 'Sı ekleme](#add
    > [!WARNING]
    > Başka SDK ek özellikleri yüklenemez. Yalnızca [ `databricks` ] seçeneğini belirleyin.
 
-   * **Tüm kümelere otomatik olarak ekle** ' yi seçmeyin.
+   * **Tüm kümelere otomatik olarak ekle**' yi seçmeyin.
    * Küme adınızın yanındaki  **Ekle** ' yi seçin.
 
 1. Durum **iliştirilene** kadar, bu işlem birkaç dakika sürebilir.  Bu adım başarısız olursa:
 
    Kümenizi şu şekilde yeniden başlatmayı deneyin:
-   1. Sol bölmede **kümeler** ' ı seçin.
+   1. Sol bölmede **kümeler**' ı seçin.
    1. Tabloda, küme adınızı seçin.
-   1. **Kitaplıklar** sekmesinde **Yeniden Başlat** ' ı seçin.
+   1. **Kitaplıklar** sekmesinde **Yeniden Başlat**' ı seçin.
 
    Başarılı bir yüklemesi aşağıdaki gibi görünür: 
 
@@ -120,6 +120,44 @@ Deneyin:
  ![ bölmesini seçin](./media/how-to-configure-environment/azure-db-import.png)
 
 + [Eğitim işlemi olarak Databricks ile bir işlem hattı oluşturmayı](how-to-create-your-first-pipeline.md)öğrenin.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+* **Paketler yüklenirken hata oluştu**
+
+    Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks başarısız olur. Gibi bazı paketler `psutil` çakışmalara neden olabilir. Yükleme hatalarını önlemek için, kitaplık sürümünü dondurarak paketleri yükleme. Bu sorun, Azure Machine Learning SDK 'Sı değil Databricks ile ilgilidir. Bu sorunla diğer kitaplıklarla de karşılaşabilirsiniz. Örnek:
+    
+    ```python
+    psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+    ```
+
+    Alternatif olarak, Python kitaplıklarıyla ilgili sorunları gidermek için Init betiklerini kullanabilirsiniz. Bu yaklaşım resmi olarak desteklenmez. Daha fazla bilgi için bkz. [küme kapsamlı init betikleri](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+* **Içeri aktarma hatası: adı `Timedelta` `pandas._libs.tslibs` öğesinden içeri** aktarılamıyor: otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz, Not defterinizde aşağıdaki iki satırı çalıştırın:
+    ```
+    %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
+    %sh /databricks/python/bin/pip install pandas==0.23.4
+    ```
+
+* **Içeri aktarma hatası: ' Pandas. Core. Indexes ' adlı modül yok**: otomatik makine öğrenimi kullandığınızda bu hatayı görürseniz:
+
+    1. Azure Databricks kümenize iki paket yüklemek için şu komutu çalıştırın:
+    
+       ```bash
+       scikit-learn==0.19.1
+       pandas==0.22.0
+       ```
+    
+    1. Kümeyi ayırın ve Not defterinize yeniden bağlayın.
+    
+    Bu adımlar sorunu çözmezse, kümeyi yeniden başlatmayı deneyin.
+
+* **Failtosendgeçiş yumuşatma**: `FailToSendFeather` Azure Databricks kümesindeki verileri okurken bir hata görürseniz, aşağıdaki çözümlere başvurun:
+    
+    * `azureml-sdk[automl]`Paketi en son sürüme yükseltin.
+    * `azureml-dataprep`Sürüm 1.1.8 veya üstünü ekleyin.
+    * `pyarrow`Sürüm 0,11 veya üstünü ekleyin.
+  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

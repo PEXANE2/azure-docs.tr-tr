@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/22/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75965fc9719c9ba16ee7fe24a23dfd4693f8afe0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 2cf3784cc5f6014b04b4668517faf3f319ce55d5
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362561"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746686"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde yetkilendirme ve roller
 
@@ -76,7 +76,7 @@ Temsilcinin ardından, pazarlama departmanı aşağıdaki tabloya benzer rollere
 
 Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki rolleri vardır.
 
-| Yetkilendirme Yönetimi rolü | Description |
+| Yetkilendirme Yönetimi rolü | Açıklama |
 | --- | --- |
 | Katalog Oluşturucu | Kataloglar oluşturun ve yönetin. Genellikle genel yönetici olmayan bir BT Yöneticisi veya bir kaynak koleksiyonu için kaynak sahibi. Katalog oluşturan kişi otomatik olarak kataloğun ilk katalog sahibi olur ve ek Katalog sahipleri ekleyebilir. Bir katalog Oluşturucu yönetmez veya sahip olmadıkları katalogları göremez ve bir kataloğa ait olmadıkları kaynakları ekleyemez. Katalog oluşturucunun başka bir kataloğu yönetmesi veya sahip olmadıkları kaynakları eklemesi gerekiyorsa, o kataloğun veya kaynağın ortak sahibi olmasını isteyebilir. |
 | Katalog sahibi | Mevcut katalogları düzenleyin ve yönetin. Genellikle bir BT Yöneticisi veya kaynak sahipleri veya kataloğun sahibi tarafından atanan bir kullanıcı. |
@@ -85,7 +85,7 @@ Yetkilendirme yönetiminin, yetkilendirme yönetimine özgü aşağıdaki roller
 
 Ayrıca, atanan bir onaylayan ve bir erişim paketinin istek sahibi de haklara sahiptir, ancak bu roller rol değildir.
 
-| Sağ | Description |
+| Sağ | Açıklama |
 | --- | --- |
 | Kişi | Erişim paketi tanımlarını değiştiremese de, paketlere erişim isteklerini onaylamak veya reddetmek için bir ilke tarafından yetkilendirilmiştir. |
 | Requestor | Erişim paketi istemek için bir erişim paketi ilkesi tarafından yetkilendirilir. |
@@ -125,7 +125,7 @@ Genel yönetici veya Kullanıcı Yöneticisi olmayan bir kullanıcı için bir k
 | Azure AD dizin rolü | Yetkilendirme Yönetimi rolü | Güvenlik grubu eklenebilir | Microsoft 365 grubu eklenebilir | Uygulama eklenebilir | SharePoint Online sitesi eklenebilir |
 | --- | :---: | :---: | :---: | :---: | :---: |
 | [Genel yönetici](../roles/permissions-reference.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| [Kullanıcı Yöneticisi](../roles/permissions-reference.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
+| [Kullanıcı yöneticisi](../roles/permissions-reference.md) | yok |  :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  |
 | [Intune yöneticisi](../roles/permissions-reference.md) | Katalog sahibi | :heavy_check_mark: | :heavy_check_mark: |  |  |
 | [Exchange yöneticisi](../roles/permissions-reference.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |
 | [Takımlar Hizmet Yöneticisi](../roles/permissions-reference.md) | Katalog sahibi |  | :heavy_check_mark: |  |  |

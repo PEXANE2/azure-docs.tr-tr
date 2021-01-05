@@ -7,17 +7,17 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: a38015d9f7560930d77d5d50ac70dca5bcdde6a6
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 2a480f25821f5022295b18ca24abfd2c0fb8a50c
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672517"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746533"
 ---
 # <a name="rabbitmq-bindings-for-azure-functions-overview"></a>Azure Işlevlerine yönelik Kbbitmq bağlamaları genel bakış
 
 > [!NOTE]
-> Kbbitmq bağlamaları yalnızca **Windows Premium ve adanmış** planlarda tam olarak desteklenmektedir. Tüketim ve Linux Şu anda desteklenmiyor.
+> Kbbitmq bağlamaları **Premium ve adanmış** planlarda yalnızca tam olarak desteklenir. Tüketim desteklenmez.
 
 Azure Işlevleri [, Tetikleyiciler ve bağlamalar](./functions-triggers-bindings.md)aracılığıyla [Kbbitmq](https://www.rabbitmq.com/) ile tümleşir. Azure Işlevleri kbbitmq uzantısı, Işlevleri ile kbbitmq API 'sini kullanarak ileti göndermenizi ve almanızı sağlar.
 
@@ -34,7 +34,7 @@ Bu uzantıyla geliştirmeye başlamak için önce [bir Kbbitmq uç noktası ayar
 
 Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
 
-| Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
+| Dil                                        | Ekleme ölçütü...                                   | Açıklamalar
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet paketi]yükleniyor, sürüm 4. x | |
 | C# betiği, Java, JavaScript, Python, PowerShell | [Uzantı paketi] kaydediliyor          | [Azure Araçları uzantısının] Visual Studio Code ile kullanılması önerilir. |

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf6e02ebad2ac5150be4775ad0ff6069fe3db89f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b87fdd7c73d089c46d456491c02d49cb6f8883d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980051"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97745972"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde kaynakların kataloğunu oluşturma ve yönetme
 
@@ -31,7 +31,7 @@ Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakla
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog Oluşturucu
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar**' a tıklayın.
 
@@ -43,9 +43,9 @@ Katalog, kaynak ve erişim paketlerinin bir kapsayıcısıdır. İlgili kaynakla
 
     Kullanıcılar bu bilgileri bir erişim paketinin ayrıntılarında görür.
 
-1. Bu katalogdaki erişim paketlerinin kullanıcıların, oluşturulduktan hemen sonra istemesi için kullanılabilir olmasını istiyorsanız, **etkin** ' i **Evet**olarak ayarlayın.
+1. Bu katalogdaki erişim paketlerinin kullanıcıların, oluşturulduktan hemen sonra istemesi için kullanılabilir olmasını istiyorsanız, **etkin** ' i **Evet** olarak ayarlayın.
 
-1. Seçili dış dizinlerde bulunan kullanıcıların bu katalogda erişim paketleri isteyebilmesini sağlamak istiyorsanız, **dış kullanıcılar Için etkin** ayarını **Evet**olarak belirleyin.
+1. Seçili dış dizinlerde bulunan kullanıcıların bu katalogda erişim paketleri isteyebilmesini sağlamak istiyorsanız, **dış kullanıcılar Için etkin** ayarını **Evet** olarak belirleyin.
 
     ![Yeni Katalog bölmesi](./media/entitlement-management-shared/new-catalog.png)
 
@@ -61,7 +61,7 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 
 **Önkoşul rolü:** [Kataloğa kaynak eklemek Için gerekli rollere](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) bakın
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından kaynak eklemek istediğiniz kataloğu açın.
 
@@ -69,7 +69,7 @@ Kaynakları bir erişim paketine dahil etmek için, kaynakların bir katalogda m
 
 1. **Kaynak Ekle**' ye tıklayın.
 
-1. Kaynak türüne tıklayın: **gruplar ve takımlar**, **uygulamalar**veya **SharePoint siteleri**.
+1. Kaynak türüne tıklayın: **gruplar ve takımlar**, **uygulamalar** veya **SharePoint siteleri**.
 
     Eklemek istediğiniz bir kaynağı görmüyorsanız veya kaynak ekleyemezseniz, gerekli Azure AD dizin rolüne ve Yetkilendirme Yönetimi rolüne sahip olduğunuzdan emin olun. Gerekli rollere sahip bir kişiye kaynağı kataloğunuza eklemeniz gerekebilir. Daha fazla bilgi için bkz. [bir kataloğa kaynak eklemek Için gerekli roller](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
@@ -91,7 +91,7 @@ Bir katalogdan kaynakları kaldırabilirsiniz. Bir kaynak, kataloğun erişim pa
 
 **Önkoşul rolü:** [Kataloğa kaynak eklemek Için gerekli rollere](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog) bakın
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve kaynakları kaldırmak istediğiniz kataloğu açın.
 
@@ -110,7 +110,7 @@ Bir kullanıcıyı Katalog sahibi rolüne atamak için aşağıdaki adımları i
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından Yöneticiler eklemek istediğiniz kataloğu açın.
 
@@ -128,7 +128,7 @@ Bir kataloğun adını ve açıklamasını düzenleyebilirsiniz. Kullanıcılar 
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından düzenlemek istediğiniz kataloğu açın.
 
@@ -146,11 +146,11 @@ Bir kataloğu yalnızca herhangi bir erişim paketi yoksa silebilirsiniz.
 
 **Önkoşul rolü:** Genel yönetici, Kullanıcı Yöneticisi veya katalog sahibi
 
-1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. Azure portal, **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **kataloglar** ' a tıklayın ve ardından silmek istediğiniz kataloğu açın.
 
-1. Kataloğun **genel bakış**sayfasında **Sil**' e tıklayın.
+1. Kataloğun **genel bakış** sayfasında **Sil**' e tıklayın.
 
 1. Görüntülenen ileti kutusunda **Evet**' e tıklayın.
 

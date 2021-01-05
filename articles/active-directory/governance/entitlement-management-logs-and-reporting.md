@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d6379f3fa41036836288ed5c75fbdaad0031da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: af9921510ba11ab1bd7d0664b2c4c19e042864d3
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88783833"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746652"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Izleyici 'de Azure AD yetkilendirme yönetiminde arşiv günlükleri ve raporları
 
@@ -54,7 +54,7 @@ Azure AD denetim günlüklerini arşivleme, bir Azure aboneliğinde Azure Izleyi
     
     1. **Azure Active Directory** sonra **çalışma kitapları**' nı seçin. 
     
-    1. **Sorun giderme Azure Active Directory**bölümünü genişletin ve **arşivlenmiş günlük tarih aralığı**' na tıklayın. 
+    1. **Sorun giderme Azure Active Directory** bölümünü genişletin ve **arşivlenmiş günlük tarih aralığı**' na tıklayın. 
 
 
 ## <a name="view-events-for-an-access-package"></a>Erişim paketi için olayları görüntüleme  
@@ -73,7 +73,7 @@ Olayları görüntülemek için aşağıdaki yordamı kullanın:
 
 1. Birden çok aboneliğiniz varsa, çalışma alanını içeren aboneliği seçin.  
 
-1. *Erişim paketi etkinliği*adlı çalışma kitabını seçin. 
+1. *Erişim paketi etkinliği* adlı çalışma kitabını seçin. 
 
 1. Bu çalışma kitabında, bir zaman aralığı seçin (emin değil **tümüne** değiştirin) ve bu zaman aralığı boyunca etkinliği olan tüm erişim paketlerinin açılan listesinden bir erişim paketi kimliği seçin. Seçilen zaman aralığı boyunca oluşan erişim paketiyle ilgili olaylar görüntülenir.  
 
@@ -128,7 +128,7 @@ Rol atamasını ayarlamak ve bir sorgu oluşturmak için aşağıdaki adımları
 
     ![Rol ataması ekleyin](./media/entitlement-management-logs-and-reporting/workspace-set-role-assignment.png)
 
-### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü Install
+### <a name="install-azure-powershell-module"></a>Azure PowerShell modülünü yükleme
 
 Uygun rol atamasını aldıktan sonra PowerShell 'i başlatın ve [Azure PowerShell modülünü](/powershell/azure/install-az-ps?view=azps-3.3.0) (henüz yapmadıysanız), şunu yazarak yükleyebilirsiniz:
 

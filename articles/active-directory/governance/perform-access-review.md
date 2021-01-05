@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/17/2020
+ms.date: 12/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e03ba5e7a4a24ee3114946230f78a64ea3d42cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b5cd7a5737b2d13e63eabbbddd076cfc7aff83ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91265690"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746805"
 ---
 # <a name="review-access-to-groups-and-applications-in-azure-ad-access-reviews"></a>Azure AD erişim gözden geçirmeleriyle gruplara ve uygulamalara erişimi gözden geçirme
 
@@ -41,7 +41,7 @@ Erişim gözden geçirme işlemini bildirim e-postalarından başlatabilir veya 
 
 1. Erişim gözden geçirmesini açmak için **Incelemeye başla** bağlantısına tıklayın.
 
-- **E-postanız**yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
+- **E-postanız** yoksa, bekleyen erişim incelemelerinizi aşağıdaki adımları izleyerek bulabilirsiniz.
 
     1. Konumundaki uygulamalarım portalında oturum açın [https://myapps.microsoft.com](https://myapps.microsoft.com) .
 
@@ -138,7 +138,7 @@ Erişimimde güncelleştirilmiş Kullanıcı arabirimiyle ilgili yeni gözden ge
    2. Erişim gözden geçirmesini açmak için **Incelemeye başla** bağlantısına tıklayın.
 
 >[!NOTE]
->Başlat İnceleme ' ye tıkladığınızda **uygulamalarım** , uygulamalar **portalından**yukarıdaki bölümde listelenen adımları izleyin.
+>Başlat İnceleme ' ye tıkladığınızda **uygulamalarım** , uygulamalar **portalından** yukarıdaki bölümde listelenen adımları izleyin.
 
 ### <a name="navigate-to-my-access-directly"></a>Erişimime doğrudan git
 

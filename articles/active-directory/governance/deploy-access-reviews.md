@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 08/14/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f3e825f908ffe475b05a5e6748d9505e7283b50
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362708"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746312"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Azure Active Directory erişim gözden geçirmeleri dağıtımını planlama
 
@@ -244,9 +244,9 @@ Bir erişim gözden geçirme ilkesi oluşturmak için aşağıdaki bilgilere sah
 | Bileşen| Değer |
 | - | - |
 | **Gözden geçirilecek kaynaklar**| Microsoft Dynamics 'e erişim |
-| **İnceleme sıklığı**| Aylık |
+| **İnceleme sıklığı**| Aylık olarak |
 | **Kim tarafından incelenmektedir**| Dynamics iş grubu program yöneticileri |
-| **Bildirim**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
+| **Uyarıyı**| Diğer ada gözden geçirmesinden önce 24 saat e-posta Dynamics-Pms<p>Teşvik özel iletisini, satın allarını güvenli hale getirmek için gözden geçirenlere ekleyin |
 | **Zaman çizelgesi**| bildirimden 48 saat |
 |**Otomatik eylemler**| Kullanıcıları güvenlik grubundan Dynamics-Access ' ten kaldırarak 90 gün içinde etkileşimli oturum açma olmayan herhangi bir hesaptan erişimi kaldırın. <p>*Zaman çizelgesi içinde incelenmeyen eylemler gerçekleştirin.* |
 | **El ile gerçekleştirilen eylemler**| Gözden geçirenler, istenirse otomatik eylem öncesinde kaldırma onayı gerçekleştirebilir. |
@@ -419,7 +419,7 @@ Bir strateji ve Azure AD ile tümleştirilmiş kaynaklara erişimi gözden geçi
 
 Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin atamaları olan kullanıcıların düzenli olarak incelemelerine olanak sağlayabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | - |
 | [Erişim Incelemeleri oluşturma](entitlement-management-access-reviews-create.md)| Erişim paketi incelemelerini etkinleştirin. |
 | [Erişim gözden geçirmeleri gerçekleştirin](entitlement-management-access-reviews-review-access.md)| Erişim paketine atanan diğer kullanıcılar için erişim gözden geçirmeleri gerçekleştirin. |
@@ -433,7 +433,7 @@ Yöneticiler, eski erişim riskini azaltmak için bir erişim paketine etkin ata
 
 Çalışanlar ve konuklar için gruplara ve uygulamalara erişim ihtiyacı büyük olasılıkla zaman içinde değişir. Yöneticiler, eski erişim atamalarıyla ilişkili riski azaltmak için Grup üyeleri veya uygulama erişimi için erişim İncelemeleri oluşturabilir. Aşağıdaki bağlantıdaki yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | - |
 | [Erişim Incelemeleri oluşturma](create-access-review.md)| Grup üyeleri veya uygulama erişimi için bir veya daha fazla erişim incelemesi oluşturun. |
 | [Erişim gözden geçirmeleri gerçekleştirin](perform-access-review.md)| Bir grubun veya bir uygulamaya erişimi olan kullanıcıların üyeleri için erişim gözden geçirmesi gerçekleştirin. |
@@ -450,7 +450,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure AD r
 
 Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri | Description |
+| Nasıl yapılır makaleleri | Açıklama |
 | - | - |
  [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure AD rolleri için erişim incelemeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |
@@ -465,7 +465,7 @@ Eski rol atamalarıyla ilişkili riski azaltmak için, ayrıcalıklı Azure Kayn
 
 Aşağıdaki bağlantılarda yer alan yönergeleri izleyin:
 
-| Nasıl yapılır makaleleri| Description |
+| Nasıl yapılır makaleleri| Açıklama |
 | - | -|
 | [Erişim Incelemeleri oluşturma](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| PıM 'de ayrıcalıklı Azure Kaynak rolleri için erişim gözden geçirmeleri oluşturma |
 | [Erişiminizi kendi kendinize gözden geçirin](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| Bir Yönetim rolüne atandıysanız, rolünüze erişimi onaylayın veya reddedin |

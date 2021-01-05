@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 302f1a081ca44cf6436f2c318b03e227f6640489
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001975"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746618"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Visual Studio Code için Spark & Hive araçlarını kullanma
 
@@ -35,7 +35,7 @@ Bu makaledeki adımları tamamlamak için aşağıdaki öğeler gereklidir:
 
 Önkoşulları karşıladıktan sonra, aşağıdaki adımları izleyerek Visual Studio Code için Spark & Hive araçları 'nı yükleyebilirsiniz:
 
-1. Visual Studio Code'u açın.
+1. Visual Studio Code’u açın.
 
 2. Menü çubuğundan **Görünüm**  >  **uzantıları**' na gidin.
 
@@ -211,29 +211,31 @@ Sorguları göndermek için PySpark etkileşimli komutunu kullanarak şu adımla
 
    ![pyspark başarıyla yüklendi](./media/hdinsight-for-vscode/pyspark-kernel-installed-successfully.png)
 
-7. Menü çubuğundan **görüntüle**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Python: Select yorumlayıcı ' yı seçerek Jupyter sunucusunu başlatın**.
+7. Lütfen komut satırını kullanarak **PIP yükleme sayısal tuş takımı 'nı çalıştırın y = = 1.19.3** ve ardından vscode penceresini yeniden yükleyin.
+
+8. Menü çubuğundan **görüntüle**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Python: Select yorumlayıcı ' yı seçerek Jupyter sunucusunu başlatın**.
 
    ![jupyıter sunucusunu başlatmak için yorumlayıcı 'yı seçin](./media/hdinsight-for-vscode/select-interpreter-to-start-jupyter-server.png)
 
-8. Aşağıdaki Python seçeneğini belirleyin.
+9. Aşağıdaki Python seçeneğini belirleyin.
 
    ![aşağıdaki seçeneği seçin](./media/hdinsight-for-vscode/choose-the-below-option.png)
     
-9. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini** girin.
+10. Menü çubuğundan **Görünüm**  >  **komut paleti...** ' ya gidin veya **SHIFT + CTRL + P** klavye kısayolunu kullanın ve **Geliştirici: yeniden yükle penceresini** girin.
 
-   ![pencereyi yeniden yükle](./media/hdinsight-for-vscode/reload-window.png)
+    ![pencereyi yeniden yükle](./media/hdinsight-for-vscode/reload-window.png)
 
-10. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
+11. Azure hesabınıza [bağlanın](#connect-to-an-azure-account) veya henüz yapmadıysanız bir kümeyi bağlayın.
 
-11. Tüm kodu seçin, komut dosyası düzenleyicisine sağ tıklayın ve **Spark: PySpark Interactive/SYNAPSE: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. 
+12. Tüm kodu seçin, komut dosyası düzenleyicisine sağ tıklayın ve **Spark: PySpark Interactive/SYNAPSE: Pyspark Interactive** ' i seçerek sorguyu gönderebilirsiniz. 
 
     ![pyspark etkileşimli bağlam menüsü](./media/hdinsight-for-vscode/pyspark-interactive-right-click.png)
 
-12. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği **pyspark/SYNAPSE Pyspark** olarak değiştirin ve kod başarıyla çalıştırılır. SYNAPSE Pyspark çekirdeğine geçmek istiyorsanız, Azure portal otomatik ayarların devre dışı bırakılması önerilir. Aksi takdirde, kümeyi uyandırması ve ilk kez kullanılmak üzere SYNAPSE çekirdeğini ayarlamanız uzun sürebilir. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize izin verir:
+13. Varsayılan bir küme belirtmediyse kümeyi seçin. Birkaç dakika sonra **Python etkileşimli** sonuçları yeni bir sekmede görüntülenir. PySpark 'a tıklayarak çekirdeği **pyspark/SYNAPSE Pyspark** olarak değiştirin ve kod başarıyla çalıştırılır. SYNAPSE Pyspark çekirdeğine geçmek istiyorsanız, Azure portal otomatik ayarların devre dışı bırakılması önerilir. Aksi takdirde, kümeyi uyandırması ve ilk kez kullanılmak üzere SYNAPSE çekirdeğini ayarlamanız uzun sürebilir. Araçlar ayrıca bağlam menüsünü kullanarak tüm betik dosyası yerine bir kod bloğu göndermenize izin verir:
 
     ![pyspark etkileşimli Python etkileşimli penceresi](./media/hdinsight-for-vscode/pyspark-interactive-python-interactive-window.png)
 
-13. **%% Info** girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
+14. **%% Info** girin ve sonra iş bilgilerini görüntülemek için SHIFT + enter tuşlarına basın (isteğe bağlı):
 
     ![pyspark etkileşimli görüntüleme işi bilgileri](./media/hdinsight-for-vscode/pyspark-interactive-view-job-information.png)
 
@@ -266,7 +268,8 @@ Araç **Spark SQL** sorgusunu da destekler:
 
 
 > [!NOTE]
-> MS-Python >= 2020.5.78807 sürümü bu extentıon üzerinde desteklenmiyor, [bilinen bir sorundur](#known-issues).
+>
+> ["MS-python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor"](#issues-changed) çözümlendi. Şimdilik en son MS-Python sürümü kullanılabilir.
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark Batch işini gönder
 
@@ -486,13 +489,10 @@ Data Lake Storage 2. kullanarak bir HDInsight kümesine iş gönderme. Azure hes
 
 Menü çubuğundan **Görünüm**  >  **komut paleti**' ne gidin ve **Azure: oturumu Kapat**' ı girin.
 
-## <a name="known-issues"></a>Bilinen Sorunlar
+## <a name="issues-changed"></a>Değiştirilen sorunlar
 
-### <a name="ms-python-2020578807-version-is-not-supported-on-this-extention"></a>MS-Python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmiyor 
+Bu sorun için "MS-Python >= 2020.5.78807 sürümü bu uzantı üzerinde desteklenmez" çözümlenmişse, şimdilik **en son MS-Python sürümü** kullanılabilir.
 
-"Jupyter not defteriyle bağlantı kurulamadı." Python sürümü >= 2020.5.78807 için bilinen bir sorundur. Bu sorundan kaçınmak için kullanıcıların MS-Python **[2020.4.76186](https://github.com/microsoft/vscode-python/releases/download/2020.4.76186/ms-python-release.vsix)** sürümünü kullanması önerilir.
-
-![bilinen sorunlar](./media/hdinsight-for-vscode/known-issue.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 06/18/2020
+ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86f2d5202a9b5439fcacca549659e4e181ffeca4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6eb44c1efd683b6febe9a355ef72c80cc6f2e40d
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85078139"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746635"
 ---
 # <a name="view-reports-and-logs-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde raporları ve günlükleri görüntüleme
 
@@ -37,11 +37,11 @@ Bu rapor, bir kullanıcının isteyebilmesini ve kullanıcıya şu anda atanmı�
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **raporlar**' a tıklayın.
 
-1. **Bir Kullanıcı Için erişim paketlerine**tıklayın.
+1. **Bir Kullanıcı Için erişim paketlerine** tıklayın.
 
 1. Kullanıcıları Seç bölmesini açmak için **Kullanıcıları Seç** ' e tıklayın.
 
@@ -61,7 +61,7 @@ Bu rapor, Yetkilendirme Yönetimi 'nde bir kullanıcıya şu anda atanmış olan
 
 **Önkoşul rolü:** Genel yönetici veya Kullanıcı Yöneticisi
 
-1. **Azure Active Directory** ' a ve ardından **kimlik**Yönetimi ' ne tıklayın.
+1. **Azure Active Directory** ' a ve ardından **kimlik** Yönetimi ' ne tıklayın.
 
 1. Sol taraftaki menüden **raporlar**' a tıklayın.
 
@@ -83,13 +83,13 @@ Bir kullanıcının erişim paketine erişim isteği ve erişimi alma hakkında 
 
 1. **Azure Active Directory** ' a ve sonra **Denetim günlükleri**' ne tıklayın.
 
-1. En üstte, **Category** `EntitlementManagement` `UserManagement` Aradığınız denetim kaydına bağlı olarak kategoriyi veya ya da olarak değiştirin.  
+1. En üstte,  `EntitlementManagement` `UserManagement` Aradığınız denetim kaydına bağlı olarak kategoriyi veya ya da olarak değiştirin.  
 
 1. **Uygula**’ya tıklayın.
 
 1. Günlükleri indirmek için **İndir**' e tıklayın.
 
-Azure AD yeni bir istek aldığında, **kategorinin** olduğu `EntitlementManagement` ve **etkinliğin** genellikle olduğu bir denetim kaydı yazar `User requests access package assignment` .  Azure portal doğrudan atama durumunda, denetim kaydının **etkinlik** alanı olur `Administrator directly assigns user to access package` ve atamayı gerçekleştiren kullanıcı **actoruserprincipalname**tarafından tanımlanır.
+Azure AD yeni bir istek aldığında, **kategorinin** olduğu `EntitlementManagement` ve **etkinliğin** genellikle olduğu bir denetim kaydı yazar `User requests access package assignment` .  Azure portal doğrudan atama durumunda, denetim kaydının **etkinlik** alanı olur `Administrator directly assigns user to access package` ve atamayı gerçekleştiren kullanıcı **actoruserprincipalname** tarafından tanımlanır.
 
 Azure AD, istek sürerken aşağıdakiler de dahil olmak üzere ek denetim kayıtları yazacak:
 

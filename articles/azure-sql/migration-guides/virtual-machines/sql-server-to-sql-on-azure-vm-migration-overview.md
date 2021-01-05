@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 4979902853602073e6230ef7387d6c6596fe77da
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: d08cb2761a8d8010c455ff959d6c247e8b64ef20
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325936"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746584"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Geçişe genel bakış: Azure VM 'lerinde SQL Server SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -127,6 +127,20 @@ Bu hizmetler arasında şunlar bulunur:
 
 SQL Server veritabanlarını Azure VM 'lerinde SQL Server geçirmeye hazırlanırken, desteklenen SQL Server sürümlerini göz önünde bulundurduğunuzdan emin olun. Azure VM 'lerinde desteklenen geçerli SQL Server sürümlerinin bir listesi için lütfen bkz. [Azure VM 'lerinde SQL Server](../../virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
+## <a name="migration-assets"></a>Geçiş varlıkları 
+
+Ek Yardım için, gerçek dünya geçiş projeleri için geliştirilen aşağıdaki kaynaklara bakın.
+
+|Varlık  |Açıklama  |
+|---------|---------|
+|[Veri iş yükü değerlendirmesi modeli ve aracı](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Data%20Workload%20Assessment%20Model%20and%20Tool)| Bu araç, belirli bir iş yükü için önerilen "en uygun" hedef platformları, bulut hazırlığı ve uygulama/veritabanı düzeltme düzeyini sağlar. Basit ve tek tıklamayla bir hesaplama ve rapor oluşturma olanağı sunarak, ve otomatikleştirilmiş ve Tekdüzen hedef platformu karar süreci sağlayarak büyük Emlak değerlendirmelerini hızlandırmaya yardımcı olur.|
+|[Logman kullanarak PerfMon veri toplama Otomasyonu](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Perfmon%20Data%20Collection%20Automation%20Using%20Logman)|Geçiş hedefi önerisine yardımcı olan temel performansı anlamak için veri gerçekleştirme önerilerini toplayan bir araç. Bu araç, uzak bir SQL Server ayarlanan performans sayaçlarını oluşturacak, başlatacak, durdurmayacak ve silecek komutu oluşturmak için logman.exe kullanır.|
+|[Azure 'da SQL Server dağıtımı](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/SQL%20Server%20Deployment%20in%20Azure%20.pdf)|Bu kılavuz teknik incelemesi, SQL Server iş yüklerinizi Azure 'a taşımak için özellik karşılaştırması, yüksek kullanılabilirlik ve yedekleme/depolama konuları gibi çeşitli seçenekleri gözden geçirmeye yardımcı olur. |
+|[Azure sanal makinesine şirket Içi SQL Server](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/OnPremise%20SQL%20Server%20to%20Azure%20VM.pdf)|Bu Teknik İnceleme, örnek betikler kullanılarak veritabanlarını şirket içi SQL Server SQL Server Azure sanal makinesine yedekleme ve geri yükleme adımlarını özetler.|
+|[Birden çok-SQL-VM-VNet-ıLB](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/ARM%20Templates/Multiple-SQL-VM-VNet-ILB)|Bu teknik incelemede, SQL Server her zaman açık kullanılabilirlik grubu yapılandırmasında birden çok Azure sanal makinesi kurma adımları özetlenmektedir.|
+|[Bölge başına Ultra SSD destekleyen Azure sanal makineleri](https://github.com/microsoft/DataMigrationTeam/tree/master/IP%20and%20Scripts/Find%20Azure%20VMs%20supporting%20Ultra%20SSD)|Bu PowerShell betikleri, Ultra SSD 'leri destekleyen Azure sanal makinelerini destekleyen bölgelerin listesini almak için programlı bir seçenek sağlar.|
+
+Bu kaynaklar, Azure veri grubu Mühendisliği ekibi tarafından sponsorlu Data SQL Dokja programının bir parçası olarak geliştirilmiştir. Data SQL Dokja programının temel kreter, Microsoft 'un Azure veri platformuna yönelik karmaşık modernleştirme ve rekabet veri platformu geçiş fırsatlarını engellemeyi ve hızlandırmanızı sağlar. Kuruluşunuzun Data SQL Dokja programına katılım ile ilgilenmesini düşünüyorsanız, lütfen hesap ekibinize başvurarak bir aday göndermesini isteyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

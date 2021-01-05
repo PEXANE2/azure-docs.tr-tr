@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR hizmeti için sorun giderme yöntemi
 description: Bağlantı ve ileti teslimi sorunlarını giderme hakkında bilgi edinin
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 2e22777b747ae24c3e643cbd43bfdb0604d453a2
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183966"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707665"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Bağlantı ve ileti teslimi sorunlarını giderme
 
@@ -28,6 +28,8 @@ Bu kılavuzda, kök nedeni doğrudan bulmak veya sorunu daraltmak için kendi ke
 * `Classic`Mod için [Klasik mod sorun giderme](#classic_mode_tsg) bölümüne bakın
 
 <a name="default_mode_tsg"></a>
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="default-mode-troubleshooting"></a>Varsayılan mod sorunlarını giderme
 
@@ -73,6 +75,7 @@ SignalR *Server* *sunucu ve* *hizmet* arasında *sunucu bağlantısını* korur.
 
 Sunucu tarafı ağ izlemesini görüntüleyerek, durum kodunu ve *sunucu bağlantısının* neden hizmet tarafından reddedildiğini veya *hizmetten* kaynaklandığını öğrenmek Için hata ayrıntılarını ve [sorun giderme kılavuzu](./signalr-howto-troubleshoot-guide.md)içinde kök nedeni arayın.
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ### <a name="how-to-add-logs"></a>Günlükleri ekleme
 
@@ -166,6 +169,8 @@ Ayrıca, Azure SignalR hizmeti için [tanılama günlüklerini etkinleştirebili
 
 <a name="serverless_mode_tsg"></a>
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="serverless-mode-troubleshooting"></a>Sunucusuz mod sorunlarını giderme
 
 **ASRS** *sunucusuz* moddayken yalnızca **ASP.NET Core signalr** `Serverless` modunu **destekler** ve **ASP.NET SignalR** bu modu desteklemez.
@@ -174,11 +179,15 @@ Bağlantı sorunlarını modunda tanılamak için `Serverless` , en basit iletme
 
 <a name="classic_mode_tsg"></a>
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="classic-mode-troubleshooting"></a>Klasik mod sorunlarını giderme
 
 `Classic` modun kullanım dışı bırakılmış ve kullanılması önerilir. Bu modda, Azure SignalR hizmeti, geçerli hizmetin modda mı yoksa modda mı olduğunu anlamak için bağlı *sunucu bağlantılarını* kullanır `default` `serverless` . Bu, bazı ara istemci bağlantı sorunlarına yol açabilir, çünkü Örneğin, ağ kararsızlık *nedeniyle, Azure* SignalR, artık moda geçmekte `serverless` ve bu süre boyunca bağlanan istemciler hiçbir zaman barındırılan uygulama sunucusuna yönlendirilmeyecektir. [Hizmet tarafı günlüklerini](#add_logs_server) etkinleştirin ve `ServerlessModeEntered` App Server 'ı barındırdıysanız, ancak bazı istemcilerin App Server tarafına hiç ulaşmadığını denetleyin. Varsa, [Bu istemci bağlantılarını iptal](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md#API) edin ve istemcilerin yeniden başlatılmasına izin verin.
 
 Sorun giderme `classic` modu bağlantısı ve ileti teslimi sorunları, [varsayılan mod sorunlarını gidermeye](#default_mode_tsg)benzer.
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="service-health"></a>Hizmet durumu
 
@@ -195,6 +204,8 @@ Hizmet durumu için sistem sağlığı API 'sini kontrol edebilirsiniz.
     * Yukarıdaki tüm seçenekler çalışmazsa, Azure portal yeni destek isteği ekleyerek bizimle iletişim kurun.
 
 [Olağanüstü durum kurtarma](./signalr-concept-disaster-recovery.md)hakkında daha fazla bilgi.
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

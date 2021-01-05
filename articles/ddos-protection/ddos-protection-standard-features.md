@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 104c9dcd3b7fd931e4f54841c9de9d17cfd72353
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 602bb98f2cdc8a96874eba8dadfa33f3267d19ac
+ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937330"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97746567"
 ---
 # <a name="azure-ddos-protection-standard-features"></a>Azure DDoS Koruması Standart'ın özellikleri
 
@@ -24,23 +24,23 @@ Aşağıdaki bölümlerde, Azure DDoS koruması standart hizmetinin temel özell
 
 ## <a name="always-on-traffic-monitoring"></a>Her zaman açık trafik izleme
 
-DDoS koruması standart gerçek trafik kullanımını izler ve DDoS Ilkesinde tanımlanan eşiklere göre sürekli olarak karşılaştırır. Trafik eşiği aşıldığında, DDoS risk azaltma otomatik olarak başlatılır. Trafik eşiğin altına döndüğünde, risk azaltma kaldırılır.
+DDoS koruması standart gerçek trafik kullanımını izler ve DDoS Ilkesinde tanımlanan eşiklere göre sürekli olarak karşılaştırır. Trafik eşiği aşıldığında, DDoS risk azaltma otomatik olarak başlatılır. Trafik eşiklerin altına döndüğünde, risk azaltma durdurulur.
 
 ![Azure DDoS koruması standart risk azaltma](./media/ddos-protection-overview/mitigation.png)
 
-Risk azaltma sırasında, korunan kaynağa gönderilen trafik DDoS koruma hizmeti tarafından yeniden yönlendirilir ve aşağıdaki denetimler gibi çeşitli denetimler gerçekleştirilir:
+Risk azaltma sırasında, korunan kaynağa gönderilen trafik DDoS koruma hizmeti tarafından yeniden yönlendirilir ve şu gibi çeşitli denetimler gerçekleştirilir:
 
 - Paketlerin internet belirtimlerine uyduğundan ve hatalı biçimlendirilmiş olmadığından emin olun.
 - Trafiğin potansiyel olarak sahte bir paket olup olmadığını (ör: SYN auth veya SYN tanımlama bilgisi) ve yeniden aktarmak için kaynak için bir paket bırakarak istemciyle etkileşime geçin.
 - Başka bir zorlama yöntemi gerçekleştirilmeyen hız limiti paketleri.
 
-DDoS koruması saldırı trafiğini engeller ve kalan trafiği amaçlanan hedefe gönderir. Saldırı tespit edildikten itibaren birkaç dakika içinde Azure İzleyici ölçümleriyle bilgilendirme yapılır. DDoS koruması standart telemetrisinde günlüğe kaydetmeyi yapılandırarak, gelecekteki analizler için günlükleri kullanılabilir seçeneklere yazabilirsiniz. DDoS koruma standardı için Azure Izleyici 'de ölçüm verileri 30 gün boyunca tutulur.
+DDoS koruması, saldırı trafiğini bırakır ve kalan trafiği amaçlanan hedefine iletir. Saldırının algılanmasından itibaren birkaç dakika içinde Azure İzleyici ölçümleriyle bilgilendirme yapılır. DDoS koruması standart telemetrisinde günlüğe kaydetmeyi yapılandırarak, gelecekteki analizler için günlükleri kullanılabilir seçeneklere yazabilirsiniz. DDoS koruma standardı için Azure Izleyici 'de ölçüm verileri 30 gün boyunca tutulur.
 
 ## <a name="adaptive-real-time-tuning"></a>Uyarlamalı gerçek zamanlı ayarlama
 
-Azure DDoS koruması temel hizmeti, müşterileri korumanıza ve diğer müşterilerin etkilerini önlemeye yardımcı olur. Örneğin, altyapı genelindeki DDoS koruma ilkesinin *tetikleme hızından* daha küçük olan bir hizmetin tipik bir birimi için sağlanması halinde, müşterinin kaynaklarına yönelik bir DDoS saldırısı fark etmeyebilir. Daha genel olarak, son saldırıların karmaşıklığı (örneğin, çok vektör DDoS) ve kiracıların uygulamaya özgü davranışları, müşteri başına, özelleştirilmiş koruma ilkeleri için çağrı. Hizmet, bu özelleştirmeyi iki öngörü kullanarak gerçekleştirir:
+Azure DDoS koruması temel hizmeti, müşterileri korumanıza ve diğer müşterilerin etkilerini önlemeye yardımcı olur. Örneğin, altyapı genelindeki DDoS koruma ilkesinin *tetikleme hızından* daha küçük olan bir hizmetin tipik bir birimi için sağlanması halinde, müşterinin kaynaklarına yönelik bir DDoS saldırısı fark etmeyebilir. Daha genel olarak, son saldırıların karmaşıklığı (örneğin, çok vektör DDoS) ve kiracıların uygulamaya özgü davranışları, müşteri başına, özel koruma ilkeleri için çağrı. Hizmet bunu iki öngörü kullanarak gerçekleştirir:
 
-- Katman 3 ve 4 için müşteri başına (IP başına) trafik desenlerini otomatik öğrenme.
+- Katman 3 ve 4 için müşteri başına (genel IP başına) trafik desenlerini otomatik öğrenme.
 
 - Azure 'un ölçeğinin önemli miktarda trafiğe artışlarını devralarak izin verdiğinden emin olmak için hatalı pozitif sonuçları en aza indirir.
 
@@ -48,7 +48,7 @@ Azure DDoS koruması temel hizmeti, müşterileri korumanıza ve diğer müşter
 
 ## <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>DDoS koruması telemetrisi, izleme ve uyarı
 
-DDoS koruma standardı, DDoS saldırısı süresince [Azure izleyici](../azure-monitor/overview.md) aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
+DDoS koruma standardı, [Azure izleyici](../azure-monitor/overview.md)aracılığıyla zengin telemetri sunar. DDoS korumasının kullandığı Azure Izleyici ölçümlerinden herhangi biri için uyarıları yapılandırabilirsiniz. Azure Izleyici tanılama arabirimi aracılığıyla, gelişmiş analiz için Azure depolama ile splunk (Azure Event Hubs), Azure Izleyici günlükleri ve Azure Storage ile günlüğe kaydetmeyi tümleştirebilir.
 
 ### <a name="ddos-mitigation-policies"></a>DDoS risk azaltma ilkeleri
 
