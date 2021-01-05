@@ -15,12 +15,12 @@ ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad3bd938355d138e660958e34d046d7af03e75c7
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: edb602e3d55ae07f49d5448283ae0d2b6da4b0cb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97371200"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694138"
 ---
 # <a name="manage-agent-registry-options"></a>Aracı kayıt defteri seçeneklerini yönetme
 
@@ -63,6 +63,30 @@ Başvuru işlemesini açmak için aşağıdaki adımları kullanın:
     > ![Başvuru izleme](media/how-to-manage-registry-options/referral-chasing.png)
 1. Azure AD Connect sağlama hizmetini *Hizmetler* konsolundan yeniden başlatın.
 1. Birden çok sağlama Aracısı dağıttıysanız, bu kayıt defteri değişikliğini tutarlılık için tüm aracılara uygulayın.
+
+## <a name="skip-gmsa-configuration"></a>GMSA yapılandırmasını atla
+Aracı sürümü 1.1.281.0 + ile, varsayılan olarak, aracı yapılandırma sihirbazını çalıştırdığınızda, [Grup yönetilen hizmet hesabı (GMSA)](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)kurulumunu yapmanız istenir. Sihirbaza göre GMSA kurulumu, tüm eşitleme ve sağlama işlemleri için çalışma zamanında kullanılır. 
+
+Aracının önceki bir sürümünden yükseltiyorsanız ve Active Directory topolojinize özgü bir OU düzeyi izinlere sahip özel bir hizmet hesabı ayarladıysanız, GMSA yapılandırmasını atlamak/ertelemeyi ve bu değişikliği planlamak isteyebilirsiniz. 
+
+> [!NOTE]
+> Bu kılavuz, 1.1.281.0 ' den önceki Aracı sürümleri ile gelen sağlama (Workday/başarılı faktörleri) ve aracı işlemleri için bir özel hizmet hesabı kurulumuna sahip olan müşteriler için özellikle geçerlidir. Uzun çalıştırmada, en iyi uygulama olarak GMSA 'ya geçiş yapmanızı öneririz.  
+
+Bu senaryoda, hala aracı ikililerini yükseltebilir ve aşağıdaki adımları kullanarak GMSA yapılandırmasını atlayabilirsiniz: 
+
+1. Azure AD Connect sağlama aracısını çalıştıran Windows Server 'da yönetici olarak oturum açın.
+1. Yeni Aracı ikili dosyalarını yüklemek için Aracı yükleyicisini çalıştırın. Yükleme başarılı olduktan sonra otomatik olarak açılan aracı yapılandırma sihirbazını kapatın. 
+1. *Çalıştır* menü öğesini kullanarak kayıt defteri düzenleyicisini açın (regedit.exe) 
+1. Anahtar klasörünü bulun **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure AD Connect Agents\Azure AD Connect Provisioning Agent**
+1. Sağ tıklayın ve "New-> DWORD value" öğesini seçin
+1. Adı girin: `UseCredentials`
+1. **Değer adına** çift tıklayın ve değer verisini olarak girin `1` .  
+    > [!div class="mx-imgBorder"]
+    > ![Kimlik bilgilerini kullan](media/how-to-manage-registry-options/use-credentials.png)
+1. Azure AD Connect sağlama hizmetini *Hizmetler* konsolundan yeniden başlatın.
+1. Birden çok sağlama Aracısı dağıttıysanız, bu kayıt defteri değişikliğini tutarlılık için tüm aracılara uygulayın.
+1. Masaüstü kısa kesme 'den Aracı Yapılandırma Sihirbazı 'nı çalıştırın. Sihirbaz GMSA yapılandırmasını atlayacak. 
+
 
 > [!NOTE]
 > [Ayrıntılı günlük kaydını](how-to-troubleshoot.md#log-files)etkinleştirerek kayıt defteri seçeneklerinin ayarlandığını doğrulayabilirsiniz. Aracı başlatma sırasında yayınlanan Günlükler, kayıt defterinden çekilen yapılandırma değerlerini görüntüler. 

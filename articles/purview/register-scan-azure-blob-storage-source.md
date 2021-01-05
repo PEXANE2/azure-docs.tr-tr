@@ -1,18 +1,18 @@
 ---
 title: Azure Storage blob 'unu tarama
 description: Azure takip görünümü veri kataloğunuzda Azure Blob depolamayı taramayı öğrenin.
-author: hophanms
-ms.author: hophan
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1bcd8390a298d7fc46f9c04633f610eb4492d33d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9fc5c115486c7cbf84fc0bd98ff7996c674f2e24
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400718"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694826"
 ---
 # <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Depolamayı kaydetme ve tarama
 

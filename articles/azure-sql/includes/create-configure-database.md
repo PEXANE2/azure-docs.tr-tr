@@ -5,12 +5,12 @@ ms.subservice: operations
 ms.topic: include
 ms.date: 12/17/2020
 ms.author: jovanpop
-ms.openlocfilehash: a898b56e3f99d10a0a78ca9e075ba0c6e3788bbc
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: d1422d029bc2c5d41330e4ac2d21ff14e4fa82ab
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674282"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703981"
 ---
   Bir veritabanı oluşturup yapılandırmak için bu hızlı başlangıçlardan birini kullanabilirsiniz:
 
@@ -22,4 +22,5 @@ ms.locfileid: "97674282"
   || | | [Dağıtım şablonu](../virtual-machines/windows/create-sql-vm-resource-manager-template.md) | [Dağıtım şablonu](../../synapse-analytics/quickstart-deployment-template-workspaces.md) | 
   | Yapılandırma | [Sunucu düzeyi IP güvenlik duvarı kuralı](../database/firewall-create-server-level-portal-quickstart.md)| [Bir VM 'den bağlantı](../managed-instance/connect-vm-instance-configure.md)| |
   |||[Şirket içinden bağlantı](../managed-instance/point-to-site-p2s-configure.md) | [SQL Server örneğine bağlanma](../virtual-machines/windows/sql-vm-create-portal-quickstart.md) |
-  ||||
+  | Bağlantı bilgilerini alma | [Azure SQL](../database/connect-query-content-reference-guide.md#get-server-connection-information)|[Azure SQL](../database/connect-query-content-reference-guide.md#get-server-connection-information)| [SQL VM](../virtual-machines/windows/sql-vm-create-portal-quickstart.md?#connect-to-sql-server)| [Synapse SQL](../../synapse-analytics/sql/connect-overview.md#find-your-server-name)|
+  |||||

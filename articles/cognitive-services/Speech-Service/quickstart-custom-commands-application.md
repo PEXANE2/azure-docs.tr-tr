@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: d89f9330947d1c5d0146b8531f265d86d0fd5160
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.custom: references_regions
+ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92329160"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694198"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Özel Komutlar kullanarak ses yardımcısı oluşturma
 
@@ -27,14 +28,14 @@ Bu hızlı başlangıçta, konuşma Studio 'Yu kullanarak temel bir özel komut 
 * Batı ABD 2
 * Doğu ABD
 * Doğu ABD 2
+* Orta Batı ABD
 * Kuzey Avrupa
 * West Europe
-* Orta Batı ABD
-* Orta Hindistan
 * Doğu Asya
 * Güneydoğu Asya
+* Orta Hindistan
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 > [!div class="checklist"]
 > * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Özel komutları destekleyen bir bölgede Azure konuşma kaynağı oluşturun.<span class="docon docon-navigate-external x-hidden-focus"></span></a> Desteklenen bölgelerin listesi için yukarıdaki **bölge kullanılabilirliği** bölümüne bakın.
@@ -120,8 +121,8 @@ Alternatif olarak, **Ayarlar**  >  **genel** bölümünü seçerek de bu değerl
 ### <a name="access-application-from-client"></a>İstemciden uygulamaya erişim
 
 Bu makalenin kapsamında, önkoşulların bir parçası olarak indirdiğiniz Windows Voice Yardımcısı istemcisini kullanacağız. Klasörün sıkıştırmasını açın.
-1. **VoiceAssistantClient.exe**başlatın.
-1. Yeni bir yayımlama profili oluşturun ve **bağlantı profili**için değer girin. **Genel ayarlar** bölümünde değerler **abonelik anahtarı** (Bu, uygulamayı yayımlarken kaydettiğiniz **konuşma kaynak anahtarı** değeri ile aynıdır), **ABONELIK anahtar bölgesi** ve **özel komutlar uygulama kimliği**girin.
+1. **VoiceAssistantClient.exe** başlatın.
+1. Yeni bir yayımlama profili oluşturun ve **bağlantı profili** için değer girin. **Genel ayarlar** bölümünde değerler **abonelik anahtarı** (Bu, uygulamayı yayımlarken kaydettiğiniz **konuşma kaynak anahtarı** değeri ile aynıdır), **ABONELIK anahtar bölgesi** ve **özel komutlar uygulama kimliği** girin.
     > [!div class="mx-imgBorder"]
     > ![WVAC profili oluşturmaya yönelik genel ayarlar bölümünü vurgulayan ekran görüntüsü.](media/custom-commands/create-profile.png)
 1. **Kaydet ve profili Uygula '** yı seçin.

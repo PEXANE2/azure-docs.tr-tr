@@ -4,12 +4,12 @@ description: Azure 'da kaynak Web uygulamanızı, bulut hizmetinizi, sanal makin
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: bf0194e82acde0406cfeb57af027831f92a90c92
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: ee36db3f657365036bb68f641be53fd434f1b64b
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938316"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694914"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Azure'da otomatik ölçeklendirmeyi kullanmaya başlama
 Bu makalede, Microsoft Azure portal kaynağınız için otomatik ölçeklendirme ayarlarınızı nasıl ayarlayabileceğinizi açıklar.
@@ -121,7 +121,7 @@ Birden çok örneğe ölçeklendirilen zaman, App Service yalnızca sağlıklı 
 
 ### <a name="health-check-path"></a>Sistem durumu denetim yolu
 
-Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 302 yeniden yönlendirmeleri izlemez. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleştirilir, bu güvenlik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
+Yol, 200 ve 299 (dahil) arasında bir durum kodu ile bir dakika içinde yanıt vermelidir. Yol bir dakika içinde yanıt vermezse veya aralığın dışında bir durum kodu döndürürse, örnek "sağlıksız" olarak değerlendirilir. App Service sistem durumu denetim yolundaki 30 kata (301, 302, 307, vb.) yeniden yönlendirmeleri takip etmez, bu durum kodları **sağlıksız** olarak kabul edilir. Sistem durumu denetimi, App Service kimlik doğrulaması ve yetkilendirme özellikleriyle tümleştirilir, bu güvenlik özellikleri etkin olsa bile sistem uç noktaya ulaşacaktır. Kendi kimlik doğrulama sisteminizi kullanıyorsanız, sistem durumu denetimi yolu anonim erişime izin vermelidir. Site yalnızca HTTP **s** etkinse, healthcheck Isteği http **s** aracılığıyla gönderilir.
 
 Sistem durumu denetim yolu, uygulamanızın kritik bileşenlerini denetlemelidir. Örneğin, uygulamanız bir veritabanına ve bir mesajlaşma sistemine bağımlıysa, sistem durumu denetimi uç noktasının bu bileşenlere bağlanması gerekir. Uygulama kritik bir bileşene bağlanamıyorsa, uygulamanın sağlıksız olduğunu göstermek için yol 500 düzeyinde bir yanıt kodu döndürmelidir.
 

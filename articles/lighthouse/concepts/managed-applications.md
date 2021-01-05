@@ -1,14 +1,14 @@
 ---
 title: Azure Lighthouse ve Azure yönetilen uygulamaları
-description: Azure 'un birlikte kullanımı ve Azure tarafından yönetilen uygulamaların farklı senaryolara nasıl yardımcı olduğunu ve bunların birlikte nasıl kullanılabileceğini anlayın.
-ms.date: 08/12/2020
+description: Azure 'un birlikte kullanımı ve Azure yönetilen uygulamalarının birlikte nasıl kullanılabileceğini anlayın.
+ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3d6c83a50f1da006f2618f7f4ff59759dac2555
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 5c30c3234a57e25ceaa521ad485f58d4d663ebe9
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436530"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693970"
 ---
 # <a name="azure-lighthouse-and-azure-managed-applications"></a>Azure Lighthouse ve Azure yönetilen uygulamaları
 
@@ -18,6 +18,16 @@ Azure yönetilen uygulamaları ve Azure açık uygulaması, bir hizmet sağlayı
 > Bu konudaki hizmet sağlayıcılarına ve müşterilere başvurduğumuz halde, [birden çok kiracıyı yöneten kuruluşlar](enterprise.md) aynı işlem ve araçları kullanabilir.
 
 ## <a name="comparing-azure-lighthouse-and-azure-managed-applications"></a>Azure hafif kullanımı ve Azure yönetilen uygulamaları karşılaştırması
+
+Bu tabloda, Azure Use veya Azure yönetilen uygulamaları kullanmayı tercih edemeyeceğinizi etkileyebilecek bazı üst düzey farklılıklar gösterilmektedir. Aşağıda belirtildiği gibi, bunları birlikte kullanan bir çözüm de tasarlayabilirler.
+
+|Değerlendirme  |Azure Lighthouse  |Azure tarafından yönetilen uygulamalar  |
+|---------|---------|---------|
+|Tipik Kullanıcı     |Birden çok kiracıyı yöneten hizmet sağlayıcıları veya kuruluşlar         |Bağımsız yazılım satıcıları (ISV)         |
+|Çapraz kiracı erişimi kapsamı     |Abonelik (ler) veya kaynak grupları         |Kaynak grubu (tek bir uygulama kapsamına alındı)         |
+|Azure Market 'te satın alınabilir alınırken     |Hayır (teklifler Azure Marketi 'Nde yayımlanabilir, ancak müşteriler ayrı olarak faturalandırılır)        |Yes         |
+|IP koruması     |Evet (IP hizmet sağlayıcının kiracısında kalabilir)        |Evet (tasarıma göre kaynak grubu müşterilere kilitlidir)         |
+|Reddetme atamaları     |Hayır         |Yes        |
 
 ### <a name="azure-lighthouse"></a>Azure Lighthouse
 
@@ -51,3 +61,4 @@ Müşteriler ayrıca birden çok hizmet sağlayıcısından yönetilen uygulamal
 
 - [Azure yönetilen uygulamalar](../../azure-resource-manager/managed-applications/overview.md)hakkında bilgi edinin.
 - [Azure açık Thouse aboneliği ekleme](../how-to/onboard-customer.md)hakkında bilgi edinin.
+- [Azure Use Ile ISV senaryoları](isv-scenarios.md)hakkında bilgi edinin.

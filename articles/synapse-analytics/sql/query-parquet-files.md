@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 20bfbaeea48711a680877e4d5d8f618e84eb12d7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cce4c6aff986c2e8c3d879d962714e13f6b2e7ae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462572"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97694686"
 ---
 # <a name="query-parquet-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure SYNAPSE Analytics 'te sunucusuz SQL havuzu kullanarak Parquet dosyalarını sorgulama
 
@@ -38,9 +38,9 @@ from openrowset(
 Bu dosyaya erişebildiğinizden emin olun. Dosyanız SAS anahtarı veya özel Azure kimliğiyle korunuyorsa [SQL oturum açma için sunucu düzeyi kimlik bilgilerini](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)oluşturmanız gerekir.
 
 > [!IMPORTANT]
-> `Latin1_General_100_CI_AS_SC_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
+> `Latin1_General_100_BIN2_UTF8`PARQUET dosyalarındaki dize DEĞERLERI UTF-8 kodlaması kullanılarak kodlandığından, UTF-8 veritabanı harmanlaması (örneğin) kullandığınızdan emin olun.
 > PARQUET dosyasındaki metin kodlaması arasında uyuşmazlık var ve harmanlama beklenmeyen dönüştürme hatalarına neden olabilir.
-> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_BIN2_UTF8`
 
 ### <a name="data-source-usage"></a>Veri kaynağı kullanımı
 
@@ -74,10 +74,10 @@ from openrowset(
 ```
 
 > [!IMPORTANT]
-> `Latin1_General_100_CI_AS_SC_UTF8`Yan tümce içindeki tüm dize sütunları için BIR UTF-8 harmanlaması (örneğin) `WITH` veya veritabanı DÜZEYINDE bir UTF-8 harmanlamasını belirtdiğinizden emin olun.
+> `Latin1_General_100_BIN2_UTF8`Yan tümce içindeki tüm dize sütunları için BIR UTF-8 harmanlaması (örneğin) `WITH` veya veritabanı DÜZEYINDE bir UTF-8 harmanlamasını belirtdiğinizden emin olun.
 > Dosya ve dize sütunu harmanlamasında metin kodlama arasında uyuşmazlık beklenmeyen dönüştürme hatalarına neden olabilir.
-> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`
-> Aşağıdaki tanımı kullanarak Sütu türlerinde harmanlamayı kolayca ayarlayabilirsiniz: `geo_id varchar(6) collate Latin1_General_100_CI_AI_SC_UTF8`
+> Aşağıdaki T-SQL ifadesini kullanarak geçerli veritabanının varsayılan harmanlamasını kolayca değiştirebilirsiniz: `alter database current collate Latin1_General_100_BIN2_UTF8`
+> Aşağıdaki tanımı kullanarak Sütu türlerinde harmanlamayı kolayca ayarlayabilirsiniz: `geo_id varchar(6) collate Latin1_General_100_BIN2_UTF8`
 
 Aşağıdaki bölümlerde, çeşitli türlerdeki PARQUET dosyalarını sorgulama hakkında bilgi alabilirsiniz.
 

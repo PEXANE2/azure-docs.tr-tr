@@ -65,6 +65,8 @@
           href: ./security-controls-policy.md
         - name: Güvenlik temeli
           href: security-baseline.md
+        - name: En iyi güvenlik uygulamaları
+          href: security-best-practices.md
     - name: Batch hizmeti iş akışı ve kaynakları
       displayName: developer features
       href: batch-service-workflow-features.md

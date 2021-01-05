@@ -1,7 +1,7 @@
 ---
-title: Oto ml denemeleri 'de korturlama
+title: Otomatik makine öğrenimi ile korturlama
 titleSuffix: Azure Machine Learning
-description: Ne kadar uygun Azure Machine Learning teklifleri ve özellik Mühendisliği 'nın otomatikleştirilmiş ML denemeleri 'de nasıl desteklendiğini öğrenin.
+description: Azure Machine Learning ' deki veri özelliği ayarlarını ve bu özellikleri otomatikleştirilmiş ML denemeleri için nasıl özelleştireceğinizi öğrenin.
 author: nibaccam
 ms.author: nibaccam
 ms.reviewer: nibaccam
@@ -9,25 +9,24 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, automl
-ms.date: 05/28/2020
-ms.openlocfilehash: 658db1604895515525e5a4826a43c0b21d9698b1
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.custom: how-to,automl,contperf-fy21q2
+ms.date: 12/18/2020
+ms.openlocfilehash: 526afe758063ce6c5f6bd86f8192f56d5f844a85
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359638"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693996"
 ---
-# <a name="featurization-in-automated-machine-learning"></a>Otomatik makine öğrenmesinde özellik geliştirme
+# <a name="data-featurization-in-automated-machine-learning"></a>Otomatik makine öğreniminde veri korleştirme
 
 
 
-Bu kılavuzda şunları öğrenirsiniz:
+Azure Machine Learning ' deki veri özelliği belirleme ayarları ve bu özellikleri [OTOMATIKLEŞTIRILMIŞ ml denemeleri](concept-automated-ml.md)için özelleştirme hakkında bilgi edinin.
 
-- Ne kadar uygun ayar Azure Machine Learning sunar.
-- [Otomatik makine öğrenimi denemeleri](concept-automated-ml.md)için bu özellikleri özelleştirme.
+## <a name="feature-engineering-and-featurization"></a>Özellik Mühendisliği ve korleştirme
 
-*Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml* , denemeleri içinde *korleştirme* olarak adlandırılır.
+*Özellik Mühendisliği* , makine öğrenimi (ml) algoritmalarının daha iyi öğrenilmesine yardımcı olan özellikler oluşturmak için verilerin etki alanı bilgisini kullanma işlemidir. Azure Machine Learning, özellik Mühendisliği kolaylaştırmak için veri ölçekleme ve normalleştirme teknikleri uygulanır. Toplu olarak, bu teknikler ve bu özellik Mühendisliği otomatik makine öğrenimi veya *Otomatik ml*, denemeleri içinde *korleştirme* olarak adlandırılır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -38,7 +37,7 @@ Bu makalede, bir oto ml denemesinin nasıl yapılandırılacağı zaten bildiği
 
 ## <a name="configure-featurization"></a>Korleştirme yapılandırma
 
-Her otomatik makine öğrenimi denemesinde, [Otomatik ölçeklendirme ve normalleştirme teknikleri](#featurization) verilerinize varsayılan olarak uygulanır. Bu teknikler, farklı ölçeklerde özelliklerle hassas olan *belirli* algoritmalara yardımcı olan, uygun olmayan türlerdir. Ancak, *eksik değerler imputation* , *kodlama* ve *dönüşümler* gibi ek özellikler de etkinleştirebilirsiniz.
+Her otomatik makine öğrenimi denemesinde, [Otomatik ölçeklendirme ve normalleştirme teknikleri](#featurization) verilerinize varsayılan olarak uygulanır. Bu teknikler, farklı ölçeklerde özelliklerle hassas olan *belirli* algoritmalara yardımcı olan, uygun olmayan türlerdir. *Eksik değerler imputation*, *kodlama* ve *dönüşümler* gibi daha fazla özelliği etkinleştirebilirsiniz.
 
 > [!NOTE]
 > Otomatik makine öğrenimi için adımlar (özellik normalleştirme, eksik verileri işleme veya metni sayısal olarak dönüştürme gibi), temel alınan modelin bir parçası haline gelir. Tahmin için model kullandığınızda, eğitim sırasında uygulanan aynı özellik adımları, giriş verilerinize otomatik olarak uygulanır.
@@ -49,7 +48,7 @@ Aşağıdaki tabloda, `featurization` [oto mlconfig sınıfında](/python/api/az
 
 |Korleştirme yapılandırması | Açıklama|
 ------------- | ------------- |
-|`"featurization": 'auto'`| Ön işleme kapsamında, [veri guardı ve korleştirme adımlarının](#featurization) otomatik olarak yapılacağını belirtir. Bu varsayılan ayardır.|
+|`"featurization": 'auto'`| Ön işleme kapsamında, [veri guardı](#data-guardrails) ve [korleştirme adımlarının](#featurization) otomatik olarak yapılacağını belirtir. Bu varsayılan ayardır.|
 |`"featurization": 'off'`| Korturlama adımlarının otomatik olarak yapılmadığından emin olun.|
 |`"featurization":`&nbsp;`'FeaturizationConfig'`| Özelleştirilmiş özellik adımlarının kullanılacağını belirtir. [Korleştirme özelleştirmeyi öğrenin](#customize-featurization).|
 
@@ -66,7 +65,7 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 | ------------- | ------------- |
 |**Yüksek kardinalite bırakma veya varyans özellikleri yok** _ |Bu özellikleri eğitim ve doğrulama kümelerinden bırakın. Tüm satırlarda veya yüksek kardinalite (örneğin, karmaları, kimlikler veya GUID 'Ler) ile aynı değere sahip tüm değerleri eksik olan özellikler için geçerlidir.|
 |_*Impute eksik değerler**_ |Sayısal özellikler için, sütundaki değerlerin ortalaması ile ımpute.<br/><br/>Kategorik özellikler için en sık kullanılan değer ile ımpute.|
-|_*Ek özellikler oluştur**_ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12 saatlik)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
+|_*Daha fazla özellik Oluştur**_ |Tarih saat özellikleri için: yıl, ay, gün, haftanın günü, yılın günü, üç aylık dönem, yılın haftası, saat, dakika, saniye.<br><br> Görevleri tahmin _For, * bu ek tarih saat özellikleri oluşturulur: ISO yılı, yarı yarı yıl, gün olarak Takvim, hafta, hafta günü, haftanın günü, haftanın günü, yıl günü, yıl/saat (0), saat, günün saati (12-SA tabanlı)<br/><br/>Metin özellikleri için: tek tek gram, bigram ve trigram temelinde Dönem sıklığı. [BERT ile bunun nasıl yapılacağı](#bert-integration) hakkında daha fazla bilgi edinin.|
 |**Dönüştür ve kodla** _|Çok sayıda benzersiz değere sahip sayısal özellikleri kategorik Özellikler halinde dönüştürün.<br/><br/>Tek yönlü kodlama, düşük önemlilik kategorik özellikleri için kullanılır. Yüksek kardinalite kategorik özellikler için tek bir Hot-Hash kodlaması kullanılır.|
 |_ *Sözcük katıştırlamaları**|Bir metin kullanımı, metin belirteçlerinin vektörlerini, önceden eğitilen bir model kullanarak tümce vektörlerine dönüştürür. Belgedeki her bir sözcüğün katıştırma vektörü, bir belge özelliği vektörü oluşturmak için geri kalan ile toplanır.|
 |**Hedef kodlamalar**|Kategorik özellikler için, bu adım her bir kategoriyi gerileme sorunları için Ortalama bir hedef değerle ve sınıflandırma sorunları için her sınıf için sınıf olasılığa eşler. Sıklık tabanlı ağırlığa ve k katlamalı çapraz doğrulama, seyrek veri kategorilerinin neden olduğu eşlemenin ve gürültü üzerine fazla sığdırmayı azaltmak için uygulanır.|
@@ -80,8 +79,8 @@ Aşağıdaki tabloda verilerinize otomatik olarak uygulanan teknikler özetlenme
 
 Data guardrayları uygulandı:
 
-- **SDK denemeleri için** : parametreler `"featurization": 'auto'` veya `validation=auto` `AutoMLConfig` nesneniz belirtildiğinde.
-- **Studio denemeleri için** : otomatik hale getirme etkinleştirildiğinde.
+- **SDK denemeleri için**: parametreler `"featurization": 'auto'` veya `validation=auto` `AutoMLConfig` nesneniz belirtildiğinde.
+- **Studio denemeleri için**: otomatik hale getirme etkinleştirildiğinde.
 
 Denemeniz için veri guardları 'nı gözden geçirebilirsiniz:
 
@@ -123,7 +122,7 @@ Desteklenen özelleştirmeler şunlardır:
 |Özelleştirme|Tanım|
 |--|--|
 |**Sütun amacı güncelleştirmesi**|Belirtilen sütun için, oto algılanan Özellik türünü geçersiz kılın.|
-|**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder* 'ı desteklemektedir.|
+|**Transformatör parametresi güncelleştirmesi** |Belirtilen transformatör için parametreleri güncelleştirin. Şu anda *ımputer* (ortalama, en sık ve ortanca) ve *Hashonehotencoder*'ı desteklemektedir.|
 |**Bırakma sütunları** |Bir şekilde bırakılacak sütunları belirler.|
 |**Blok dönüştürücüler**| Korleştirme işleminde kullanılacak blok dönüştürücüler belirtir.|
 
@@ -182,7 +181,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```
 
-Çıkış
+Çıktı
 
   ```
   [{'RawFeatureName': 'A',
@@ -207,7 +206,7 @@ Bu liste, uygulanan tüm özellik adlarını içerir.
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Çıkış|Tanım|
+   |Çıktı|Tanım|
    |----|--------|
    |RawFeatureName|Girilen veri kümesindeki giriş özelliği/sütun adı.|
    |Typedetesiyonu|Giriş özelliğinin veri türü algılandı.|
@@ -303,16 +302,18 @@ class_prob = fitted_model.predict_proba(X_test)
 
 Temeldeki model `predict_proba()` işlevi desteklemiyorsa veya biçim yanlış ise, model sınıfına özgü özel durum oluşturulur. Bu işlevin farklı model türleri için nasıl uygulandığı hakkında örnekler için bkz. [Randomforestsınıflandırıcı](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) ve [xgboost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) başvuru belgeleri.
 
-## <a name="bert-integration"></a>BERT tümleştirmesi
+<a name="bert-integration"></a>
+
+## <a name="bert-integration-in-automated-ml"></a>Otomatik ML 'de BERT tümleştirmesi
 
 [Bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) , oto ml 'nin korleştirme katmanında kullanılır. Bu katmanda, bir sütun, zaman damgaları veya basit sayılar gibi boş metin veya diğer veri türleri içeriyorsa, uygun şekilde uygulanır.
 
 BERT için model ince ayarlanır ve Kullanıcı tarafından sağlanmış Etiketler kullanılarak eğitilmiş olur. Buradan, belge katıştırılır, zaman damgası tabanlı özellikler, haftanın günü gibi diğer özelliklerle birlikte çıktı olarak oluşur. 
 
 
-### <a name="bert-steps"></a>BERT adımları
+### <a name="steps-to-invoke-bert"></a>BERT çağırma adımları
 
-BERT 'yi çağırmak için  `enable_dnn: True` automl_settings ayarlamanız ve bır GPU işlem (örn. `vm_size = "STANDARD_NC6"` veya daha yüksek bir GPU) kullanmanız gerekir. Bir CPU işlemi kullanılıyorsa, BERT 'in yerine, JML 'nin, bilmi DNN featurizer 'ı kullanmasına izin verilir.
+BERT 'yi çağırmak için  `enable_dnn: True` automl_settings ayarlayın ve GPU işlem ( `vm_size = "STANDARD_NC6"` veya daha yüksek bir GPU) kullanın. Bir CPU işlemi kullanılıyorsa, BERT 'in yerine, JML 'nin, bilmi DNN featurizer 'ı kullanmasına izin verilir.
 
 Oto ml, BERT için aşağıdaki adımları alır. 
 
@@ -327,7 +328,8 @@ Oto ml, BERT için aşağıdaki adımları alır.
 BERT genellikle diğer korbinlardan daha uzun çalışır. Daha iyi performans için, RDMA özellikleri için "STANDARD_NC24r" veya "STANDARD_NC24rs_V3" kullanmanızı öneririz. 
 
 Oto, varsa, BERT eğitimini birden çok düğüm arasında dağıtır (en fazla sekiz düğüm). Bu `AutoMLConfig` , `max_concurrent_iterations` parametreyi 1 ' den yüksek olacak şekilde ayarlayarak nesneniz üzerinde yapılabilir. 
-### <a name="supported-languages"></a>Desteklenen diller
+
+## <a name="supported-languages-for-bert-in-automl"></a>Oto ml 'de BERT için desteklenen diller 
 
 JML Şu anda 100 dil etrafında destek ve veri kümesinin diline bağlı olarak, oto ml uygun BERT modelini seçer. Almanya verileri için Almanca BERT modelini kullanıyoruz. Ingilizce için, Ingilizce BERT modelini kullanıyoruz. Diğer tüm diller için, çok dilli BERT modelini kullanırız.
 

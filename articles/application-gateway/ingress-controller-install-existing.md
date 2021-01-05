@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 2f585dd80219afac7c67eebabd72cb41dce0b673
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2d64766c754c0ea104ae83fde799a514e9da6d68
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018707"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693740"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Mevcut bir Application Gateway kullanarak bir Application Gateway Ingcontroller (AGıC) yüklemesi
 
@@ -323,7 +323,7 @@ Helk ile `appgw.shared=true` ve varsayılan `prohibit-all-targets` blokları hi�
     ```
 
 ### <a name="enable-for-an-existing-agic-installation"></a>Mevcut bir AGIC yüklemesi için etkinleştirme
-Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. İçin bir giriş yaptık `prod.contosor.com` ve AKS 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway eklemek istiyoruz `staging.contoso.com` , ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Var olan Application Gateway yeniden kullanacağız ve için bir dinleyici ve arka uç havuzlarını el ile yapılandıracağız `staging.contoso.com` . Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
+Zaten bir çalışan AKS, Application Gateway ve kümizdeki AGIC 'ler olduğunu varsayalım. İçin bir giriş yaptık `prod.contoso.com` ve AKS 'ten gelen trafiğe başarıyla hizmet veriyor. Mevcut Application Gateway eklemek istiyoruz `staging.contoso.com` , ancak bunu bir [VM](https://azure.microsoft.com/services/virtual-machines/)'de barındırmamız gerekiyor. Var olan Application Gateway yeniden kullanacağız ve için bir dinleyici ve arka uç havuzlarını el ile yapılandıracağız `staging.contoso.com` . Ancak Application Gateway config ( [Portal](https://portal.azure.com), [ARM API 'leri](/rest/api/resources/) veya [terkform](https://www.terraform.io/)aracılığıyla) için el ile davaklik, tam sahiplik varsayımlarıyla çakışır. Değişiklikler uygulandıktan sonra, AGIC onları üzerine yazar veya siler.
 
 AGC 'nin bir yapılandırma alt kümesinde değişiklik yapmasını yasaklayabiliriz.
 
