@@ -8,18 +8,18 @@ ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: bb2ff066089e3348c40f5a22bd73ea376ecef6de
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 20e45454284af230da74896d5b3f5e9da676dbb4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341408"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831712"
 ---
 # <a name="quickstart-use-ruby-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Hızlı başlangıç: PostgreSQL için Azure veritabanı 'na bağlanmak ve veri sorgulamak için Ruby kullanma-tek sunucu
 
 Bu hızlı başlangıçta, [Ruby](https://www.ruby-lang.org) uygulaması kullanılarak PostgreSQL için Azure Veritabanı’na nasıl bağlanılacağı gösterilmiştir. Ayrıca veritabanında veri sorgulamak, eklemek, güncelleştirmek ve silmek için SQL deyimlerini nasıl kullanacağınız da gösterilmiştir. Bu makaledeki adımlarda, Ruby kullanarak geliştirmeyle ilgili bilgi sahibi olduğunuz ve PostgreSQL için Azure Veritabanı ile çalışmaya yeni başladığınız varsayılır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 Bu hızlı başlangıçta, başlangıç noktası olarak şu kılavuzlardan birinde oluşturulan kaynaklar kullanılmaktadır:
 - [DB Oluşturma - Portal](quickstart-create-server-database-portal.md)
 - [DB Oluşturma - Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -32,9 +32,9 @@ Ayrıca yüklü olması gerekir:
 PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgilerini alın. Tam sunucu adına ve oturum açma kimlik bilgilerine ihtiyacınız vardır.
 
 1. [Azure Portal](https://portal.azure.com/)oturum açın.
-2. Azure portalında sol taraftaki menüden **Tüm kaynaklar** 'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver** ) arayın.
+2. Azure portalında sol taraftaki menüden **Tüm kaynaklar**'a tıklayın ve oluşturduğunuz sunucuyu (örneğin, **mydemoserver**) arayın.
 3. Sunucunun adına tıklayın.
-4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı** ’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
+4. Sunucunun **Genel Bakış** panelinden **Sunucu adı** ile **Sunucu yöneticisi oturum açma adı**’nı not alın. Parolanızı unutursanız, bu panelden parolayı da sıfırlayabilirsiniz.
  :::image type="content" source="./media/connect-ruby/1-connection-string.png" alt-text="PostgreSQL için Azure Veritabanı sunucu adı":::
 
 > [!NOTE]
@@ -43,7 +43,7 @@ PostgreSQL için Azure Veritabanı'na bağlanmak üzere gereken bağlantı bilgi
 ## <a name="connect-and-create-a-table"></a>Bağlanma ve tablo oluşturma
 **CREATE TABLE** SQL deyimini kullanarak bir tabloyu bağlamak ve oluşturmak ve ardından **INSERT INTO** SQL deyimlerini kullanarak tabloya satırlar eklemek için aşağıdaki kodu kullanın.
 
-Kod, ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Ardından ```exec()``` Drop, create table ve INSERT INTO komutlarını çalıştırmak için yöntemini çağırır. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. [Ruby pg Reference belgeleri](https://www.rubydoc.info/gems/pg/PG) .
+Kod, ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Ardından ```exec()``` Drop, create table ve INSERT INTO komutlarını çalıştırmak için yöntemini çağırır. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. Ruby pg Reference belgeleri.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
@@ -87,7 +87,7 @@ end
 ## <a name="read-data"></a>Verileri okuma
 Bağlanmak ve **SELECT** SQL deyimi kullanarak verileri okumak için aşağıdaki kodu kullanın.
 
-Kod,  ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Ardından ```exec()``` , SELECT komutunu çalıştırmak için yöntemini çağırır ve sonuçları bir sonuç kümesinde tutun. Sonuç kümesi koleksiyonu, `resultSet.each do` döngüsü kullanılarak ve geçerli satır değerleri `row` değişkeninde tutularak yinelenir. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. [Ruby pg Reference belgeleri](https://www.rubydoc.info/gems/pg/PG) .
+Kod,  ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Ardından ```exec()``` , SELECT komutunu çalıştırmak için yöntemini çağırır ve sonuçları bir sonuç kümesinde tutun. Sonuç kümesi koleksiyonu, `resultSet.each do` döngüsü kullanılarak ve geçerli satır değerleri `row` değişkeninde tutularak yinelenir. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. Ruby pg Reference belgeleri.
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
@@ -121,7 +121,7 @@ end
 ## <a name="update-data"></a>Verileri güncelleştirme
 **UPDATE** SQL deyimini kullanarak bağlanmak ve verileri güncelleştirmek için aşağıdaki kodu kullanın.
 
-Kod,  ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Sonra ```exec()``` Update komutunu çalıştırmak için yöntemini çağırır. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. [Ruby pg Reference belgeleri](https://www.rubydoc.info/gems/pg/PG) .
+Kod,  ```PG::Connection``` ```new``` PostgreSQL Için Azure veritabanı 'na bağlanmak için Oluşturucu içeren bir nesne kullanır. Sonra ```exec()``` Update komutunu çalıştırmak için yöntemini çağırır. Kod, sınıfını kullanarak hata olup olmadığını denetler ```PG::Error``` . Ardından, ```close()``` sonlandırmadan önce bağlantıyı kapatmak için yöntemini çağırır. Bu sınıflar ve yöntemler hakkında daha fazla bilgi için bkz. [Ruby pg Reference belgeleri](https://rubygems.org/gems/pg) .
 
 `host`, `database`, `user` ve `password` dizelerini kendi değerlerinizle değiştirin.
 
@@ -200,4 +200,4 @@ az group delete \
 > [!div class="nextstepaction"]
 > [Dışarı Aktarma ve İçeri Aktarma seçeneğini kullanarak veritabanınızı geçirme](./howto-migrate-using-export-and-import.md) <br/>
 > [!div class="nextstepaction"]
-> [Ruby pg başvuru belgeleri](https://www.rubydoc.info/gems/pg/PG)
+> [Ruby pg başvuru belgeleri](https://rubygems.org/gems/pg)

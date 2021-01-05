@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/10/2020
 ms.author: duau
-ms.openlocfilehash: cc844059d14a182db11e18f95e676b38762f6a0d
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: dab480012ced3a8fc50fd5f4295272c0eccc4307
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561656"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831865"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute bağlantı iş ortakları ve eşleme konumları
 
@@ -52,7 +52,7 @@ Aşağıdaki tablo, coğrafi bölge içindeki Azure bölgeler ile ExpressRoute k
 | **Güney Kore** | Güney Kore - Orta, Güney Kore - Güney |Busan, Seul|
 | **BAE** | BAE Orta, BAE Kuzey | Dubai, Dubai2 |
 | **Güney Afrika** | Güney Afrika Batı, Güney Afrika Kuzey |Cape Town, Johannesburg |
-| **Güney Amerika** | Brezilya Güney |Bogota, Sao Paulo |
+| **Güney Amerika** | Güney Brezilya |Bogota, Sao Paulo |
 
 
 ## <a name="regions-and-geopolitical-boundaries-for-national-clouds"></a>Ulusal bulutlar için bölgeler ve coğrafi sınırlar
@@ -134,7 +134,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Desteklenir |Desteklenir |Amsterdam, Atlanta, Auckland, Chicago, Dallas, Denver, Dubai2, Dublin, Frankfurt, Genfiliz, Hong Kong ÖIB, Las Vegas, Londra, London2, Los Angeles, Melbourne, Miamı, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon Valley, Singapur, Singapur2, Stavanger, Stockholm, Sidney, Sydney2, Tokyo, Tokyo2 Toron, Washington DC, Washington DC2, Zurich |
 | **[MTN](https://www.mtnbusiness.co.za/en/Cloud-Solutions/Pages/microsoft-express-route.aspx)** |Desteklenir |Desteklenir |Londra |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Desteklenir |Desteklenir |Dallas, Los Angeles, MIAMI, Sao Paulo, Washington DC |
-| **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Desteklenir |Desteklenir |Newport(Galler) |
+| **[Next Generation Data](https://vantage-dc-cardiff.co.uk/)** |Desteklenir |Desteklenir |Newport(Galler) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Desteklenir |Desteklenir |Melbourne, Perth, Sidney, Sydney2 |
 | **[ALANıNDA](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Desteklenir |Desteklenir |Amsterdam2 |
 | **[NTT Iletişimleri](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Desteklenir |Desteklenir |Amsterdam, Hong Kong ÖIB, Londra, Los Angeles, Osaka, Singapur, Sidney, Tokyo, Washington DC |
@@ -147,7 +147,7 @@ Aşağıdaki tabloda hizmet sağlayıcısına göre konumlar gösterilmektedir. 
 | **[Cumxcom](https://www.orixcom.com/cloud-solutions/)** | Desteklenir | Desteklenir | Dubai2 |
 | **[PacketFabric](https://www.packetfabric.com/cloud-connectivity/microsoft-azure)** |Desteklenir |Desteklenir |Chicago, Las Vegas, Silicon Valley, Washington DC |
 | **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |Desteklenir |Desteklenir |Chicago, Hong Kong, Hong Kong2, Londra, Singapur2 |
-| **[Yeniden temellendirme](https://www.retelit.it/en/services/enterprises-and-public-sector/data-center-e-cloud/cloud-services/direct-cloud-4-azure-expressroute.aspx)** | Desteklenir | Desteklenir | Milano | 
+| **[Yeniden temellendirme](https://www.retelit.it/EN/Home.aspx)** | Desteklenir | Desteklenir | Milano | 
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |Desteklenir |Desteklenir |Seul |
 | **[IR](https://www.ses.com/networks/signature-solutions/signature-cloud/ses-and-azure-expressroute)** | Desteklenir |Desteklenir | London2, Washington DC |
 | **[SıFY](http://telecom.sify.com/azure-expressroute.html)** |Desteklenir |Desteklenir |Madras, Bombay2 |

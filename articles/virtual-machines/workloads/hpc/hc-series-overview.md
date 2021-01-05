@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 672175d5bb92c8ab6dc347ece5ad6b14d8232ef4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b9fe978da9accd28ea0e538f458325f10c9c5d8d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96024087"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831899"
 ---
 # <a name="hc-series-virtual-machine-overview"></a>HC Serisi sanal makineye genel bakış
 
@@ -58,6 +58,6 @@ Aşağıdaki diyagramda, Azure Hiper Yöneticisi ve HC Serisi VM için ayrılan 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Intel Xeon SP mimarisi](https://bit.ly/2RCYkiE)hakkında daha fazla bilgi edinin.
+- [Intel Xeon SP mimarisi](https://software.intel.com/content/www/us/en/develop/articles/intel-xeon-processor-scalable-family-technical-overview.html)hakkında daha fazla bilgi edinin.
 - En son duyurular ve bazı HPC örnekleri hakkında bilgi edinin ve [Azure Işlem teknik topluluk bloglarında](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)bu sonuçları elde edin.
 - Çalıştırılan HPC iş yüklerinin daha yüksek düzey mimari görünümü için bkz. [Azure 'Da yüksek performanslı bilgi işlem (HPC)](/azure/architecture/topics/high-performance-computing/).

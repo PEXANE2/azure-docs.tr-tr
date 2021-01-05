@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/03/2020
 ms.author: mlottner
-ms.openlocfilehash: 7f7575697706363c082a4e6374b3df7a49e65cdf
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c823f0034db7d5fbe1f6b46f6af74e9fa374a6de
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548860"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832378"
 ---
 # <a name="defender-for-iot-event-aggregation"></a>IoT olay toplama için Defender
 
@@ -97,6 +97,6 @@ IoT dağıtımı için Defender 'ı kullanmaya devam etmek için aşağıdaki ma
 
 - [Güvenlik Aracısı kimlik doğrulama yöntemlerini](concept-security-agent-authentication-methods.md) anlama
 - [Güvenlik aracısını](how-to-deploy-agent.md) seçme ve dağıtma
-- IoT [hizmeti önkoşulları](service-prerequisites.md) Için Defender 'ı gözden geçirin
+- IoT [Sistem önkoşulları](quickstart-system-prerequisites.md) Için Defender 'ı gözden geçirin
 - [IoT Hub Için Defender 'ı nasıl etkinleştirebileceğinizi](quickstart-onboard-iot-hub.md) öğrenin
 - [IoT Için Defender](resources-frequently-asked-questions.md) aracılığıyla hizmet hakkında daha fazla bilgi edinin

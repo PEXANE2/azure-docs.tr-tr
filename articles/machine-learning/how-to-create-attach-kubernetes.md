@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e773c2db9c7849dd9680f8ae0c600405f422d7e1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6400d3f3c721619551ba3989a2e5799b72ff9f38
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463195"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831933"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma ve iliştirme
 
@@ -281,6 +281,78 @@ Portala AKS kümesi ekleme hakkında daha fazla bilgi için, bkz. [Azure Machine
 
 ---
 
+## <a name="create-or-attach-an-aks-cluster-with-tls-termination"></a>TLS sonlandırmasıyla bir AKS kümesi oluşturma veya iliştirme
+[BIR AKS kümesi oluşturduğunuzda veya iliştirmeye](how-to-create-attach-kubernetes.md)çalıştığınızda **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** ve **[AKSCOMPUTE.ATTACH_CONFIGURATION ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** yapılandırma nesneleriyle TLS sonlandırmasını etkinleştirebilirsiniz. Her iki yöntem de **Enable_ssl** yöntemine sahip bir yapılandırma nesnesi döndürür ve TLS 'yi etkinleştirmek için **Enable_ssl** metodunu kullanabilirsiniz.
+
+Aşağıdaki örnek, Microsoft sertifikası ile birlikte kullanıldığında otomatik TLS sertifikası oluşturma ve yapılandırma ile TLS sonlandırmasını nasıl etkinleştireceğinizi gösterir.
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # Enable TLS termination when you create an AKS cluster by using provisioning_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+   
+   # Enable TLS termination when you attach an AKS cluster by using attach_config object enable_ssl method
+
+   # Leaf domain label generates a name using the formula
+   # "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+   # where "######" is a random series of characters
+   attach_config.enable_ssl(leaf_domain_label = "contoso")
+
+
+```
+Aşağıdaki örnekte, özel sertifika ve özel etki alanı adıyla TLS sonlandırmasının nasıl etkinleştirileceği gösterilmektedir. Özel etki alanı ve sertifikayla, DNS kaydınızı Puanlama uç noktasının IP adresini gösterecek şekilde güncelleştirmeniz gerekir, lütfen bkz. [DNS 'Nizi güncelleştirme](how-to-secure-web-service.md#update-your-dns)
+
+```python
+   from azureml.core.compute import AksCompute, ComputeTarget
+
+   # Enable TLS termination with custom certificate and custom domain when creating an AKS cluster
+   
+   provisioning_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+    
+   # Enable TLS termination with custom certificate and custom domain when attaching an AKS cluster
+
+   attach_config.enable_ssl(ssl_cert_pem_file="cert.pem",
+                                        ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
+
+
+```
+>[!NOTE]
+> AKS kümesinde model dağıtımının güvenliğini sağlama hakkında daha fazla bilgi için lütfen bkz. [Azure Machine Learning aracılığıyla bir Web hizmetini güvenli hale getirmek IÇIN TLS kullanma](how-to-secure-web-service.md)
+
+## <a name="create-or-attach-an-aks-cluster-to-use-internal-load-balancer-with-private-ip"></a>Özel IP ile Iç Load Balancer kullanmak için bir AKS kümesi oluşturma veya iliştirme
+Bir AKS kümesi oluşturduğunuzda veya iliştirmeye çalıştığınızda, kümeyi dahili bir Load Balancer kullanacak şekilde yapılandırabilirsiniz. Iç Load Balancer, AKS dağıtımlarınız için Puanlama uç noktaları, sanal ağ içinde özel bir IP kullanır. Aşağıdaki kod parçacıkları, bir AKS kümesi için dahili Load Balancer yapılandırmayı gösterir.
+```python
+   
+   from azureml.core.compute.aks import AksUpdateConfiguration
+   from azureml.core.compute import AksCompute, ComputeTarget
+   
+   # When you create an AKS cluster, you can specify Internal Load Balancer to be created with provisioning_config object
+   provisioning_config = AksCompute.provisioning_configuration(load_balancer_type = 'InternalLoadBalancer')
+
+   # when you attach an AKS cluster, you can update the cluster to use internal load balancer after attach
+   aks_target = AksCompute(ws,"myaks")
+
+   # Change to the name of the subnet that contains AKS
+   subnet_name = "default"
+   # Update AKS configuration to use an internal load balancer
+   update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", subnet_name)
+   aks_target.update(update_config)
+   # Wait for the operation to complete
+   aks_target.wait_for_completion(show_output = True)
+   
+   
+```
+>[!IMPORTANT]
+> Azure Machine Learning Iç Load Balancer TLS sonlandırmasını desteklemez. İç Load Balancer özel bir IP 'si vardır ve bu özel IP başka bir ağda olabilir ve sertifika yeniden kullanılabilir. 
+
+>[!NOTE]
+> İkinci dereceden sınırlama ortamının güvenliğini sağlama hakkında daha fazla bilgi için lütfen bkz. [Azure Machine Learning](how-to-secure-inferencing-vnet.md)
+
 ## <a name="detach-an-aks-cluster"></a>AKS kümesini ayırma
 
 Bir kümeyi çalışma alanınızdan ayırmak için aşağıdaki yöntemlerden birini kullanın:
@@ -305,6 +377,52 @@ az ml computetarget detach -n myaks -g myresourcegroup -w myworkspace
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Azure Machine Learning Studio 'da __işlem__, __çıkarım kümeleri__ ve kaldırmak istediğiniz kümeyi seçin. Kümeyi ayırmak için __ayırma__ bağlantısını kullanın.
+
+---
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+### <a name="update-the-cluster"></a>Kümeyi güncelleştirme
+
+Azure Kubernetes hizmet kümesinde yüklü Azure Machine Learning bileşenlere yapılan güncelleştirmeler el ile uygulanmalıdır. 
+
+Kümeyi Azure Machine Learning çalışma alanından ayırarak ve sonra kümeyi çalışma alanına yeniden açarak bu güncelleştirmeleri uygulayabilirsiniz. Kümede TLS etkinse, kümeyi yeniden eklerken TLS/SSL sertifikasını ve özel anahtarı sağlamanız gerekir. 
+
+```python
+compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
+compute_target.detach()
+compute_target.wait_for_completion(show_output=True)
+
+attach_config = AksCompute.attach_configuration(resource_group=resourceGroup, cluster_name=kubernetesClusterName)
+
+## If SSL is enabled.
+attach_config.enable_ssl(
+    ssl_cert_pem_file="cert.pem",
+    ssl_key_pem_file="key.pem",
+    ssl_cname=sslCname)
+
+attach_config.validate_configuration()
+
+compute_target = ComputeTarget.attach(workspace=ws, name=args.clusterWorkspaceName, attach_configuration=attach_config)
+compute_target.wait_for_completion(show_output=True)
+```
+
+Artık TLS/SSL sertifikasına ve özel anahtara sahip değilseniz veya Azure Machine Learning tarafından oluşturulan bir sertifika kullanıyorsanız, küme kullanımdan çıkarmadan önce, gizli anahtarı kullanarak kümeye bağlanarak dosyaları alabilirsiniz `kubectl` `azuremlfessl` .
+
+```bash
+kubectl get secret/azuremlfessl -o yaml
+```
+
+>[!Note]
+>Kubernetes gizli dizileri temel-64 kodlu biçimde depolar. Ana 64 'nin ve içindeki parolaların bileşenlerinin kodunu vermeden önce kodu çözmelisiniz `cert.pem` `key.pem` `attach_config.enable_ssl` . 
+
+### <a name="webservice-failures"></a>Web hizmeti sorunları
+
+AKS 'teki birçok Web hizmeti hatası, kullanılarak kümeye bağlanarak hata ayıklanabilir `kubectl` . `kubeconfig.json`BIR AKS kümesi için şunu çalıştırarak edinebilirsiniz
+
+```azurecli-interactive
+az aks get-credentials -g <rg> -n <aks cluster name>
+```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

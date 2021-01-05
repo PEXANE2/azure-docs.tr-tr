@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, deploy, devx-track-azurecli
+ms.custom: how-to, contperf-fy21q1, deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: d7540066ccc0d3a62dbd4012eee100d8e8aea98f
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 7ba01139e365b2f0023ef0784b6ed83e7bde609a
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505095"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831745"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine model dağıtma
 
@@ -91,6 +91,55 @@ Gelen çıkarım isteklerini dağıtılan hizmetlere yönlendiren ön uç bileş
 Azureml-Fe, daha fazla çekirdekler kullanmak için hem yukarı (dikey) hem de (yatay olarak) daha fazla yer kullanır. Ölçeği artırma kararı verirken, gelen çıkarım isteklerini yönlendirmek için gereken süre kullanılır. Bu süre eşiği aşarsa, bir ölçek oluşur. Gelen istekleri yönlendirme süresi eşiği aşmaya devam ederse, bir genişleme meydana gelir.
 
 Ölçeği, ve içinde ölçeklendirirken CPU kullanımı kullanılır. CPU kullanım eşiği karşılanıyorsa ön uç öncelikle aşağı ölçeklendirilir. CPU kullanımı, ölçek genişletme eşiğine düşerse, bir ölçeklendirme işlemi gerçekleşir. Ölçeği artırma ve genişletme yalnızca yeterli kullanılabilir küme kaynağı varsa oluşur.
+
+## <a name="understand-connectivity-requirements-for-aks-inferencing-cluster"></a>AKS ınele sınırlama kümesi için bağlantı gereksinimlerini anlayın
+
+Azure Machine Learning bir AKS kümesi oluşturduğunda veya iliştirince, AKS kümesi aşağıdaki iki ağ modelinden biriyle dağıtılır:
+* Kubenet Networking-ağ kaynakları genellikle AKS kümesi dağıtıldığında oluşturulur ve yapılandırılır.
+* Azure Container Networking Interface (CNI) ağı: AKS kümesi, var olan sanal ağ kaynaklarına ve yapılandırmalarına bağlanır.
+
+İlk ağ modu için ağ oluşturma ve Azure Machine Learning hizmeti için düzgün şekilde yapılandırılır. İkinci ağ modu için, küme var olan sanal ağa bağlı olduğundan, özellikle var olan sanal ağ için özel DNS kullanıldığında, müşterinin AKS ınele geçiş kümesi için bağlantı gereksinimlerine fazladan dikkat etmeniz ve AKS kele için DNS çözünürlüğü ve giden bağlantı sağlaması gerekir.
+
+Aşağıdaki diyagram, AKS ınele için tüm bağlantı gereksinimlerini yakalar. Siyah oklar gerçek iletişimi temsil eder ve mavi oklar, müşteri denetimli DNS 'in çözümlenmesi gereken etki alanı adlarını temsil eder.
+
+ ![AKS ınele için bağlantı gereksinimleri](./media/how-to-deploy-aks/aks-network.png)
+
+### <a name="overall-dns-resolution-requirements"></a>Genel DNS çözümleme gereksinimleri
+Mevcut VNET 'teki DNS çözümlemesi, müşterinin denetimi altındadır. Aşağıdaki DNS girişleri çözümlenebilmelidir:
+* . HCP biçiminde AKS API sunucusu \<cluster\> . \<region\> . azmk8s.io
+* Microsoft Container Registry (MCR): mcr.microsoft.com
+* . Azurecr.io biçiminde müşterinin Azure Container Registry (yay) \<ACR name\>
+* \<account\>. Table.Core.Windows.net ve. blob.Core.Windows.net biçiminde Azure Storage hesabı \<account\>
+* Seçim AAD kimlik doğrulaması için: api.azureml.ms
+* Azure ML ya da özel etki alanı adı tarafından otomatik oluşturulan Puanlama uç noktası etki alanı adı. Otomatik olarak oluşturulan etki alanı adı şöyle görünür: \<leaf-domain-label \+ auto-generated suffix\> . \<region\> . cloudapp.azure.com
+
+### <a name="connectivity-requirements-in-chronological-order-from-cluster-creation-to-model-deployment"></a>Kronolojik düzende bağlantı gereksinimleri: Küme oluşturulduktan model dağıtımına
+
+AKS oluşturma veya iliştirme sürecinde, Azure ML yönlendiricisi (azureml-Fe) AKS kümesine dağıtılır. Azure ML yönlendiricisini dağıtmak için AKS düğümünün şunları yapabilmesi gerekir:
+* AKS API sunucusu için DNS 'i çözümleme
+* Azure ML yönlendirici için Docker görüntülerini indirmek üzere MCR için DNS 'i çözümleme
+* Giden bağlantının gerekli olduğu MCR 'den görüntüleri indirin
+
+Azureml-Fe dağıtıldıktan hemen sonra, başlatılmaya çalışılır ve şunları gerektirir:
+* AKS API sunucusu için DNS 'i çözümleme
+* AKS API sunucusunu, kendi diğer örneklerini (bir çoklu Pod hizmeti) bulacak şekilde sorgula
+* Diğer kendi örneklerine Bağlan
+
+Azureml-Fe başlatıldıktan sonra, düzgün çalışmak için ek bağlantı gerektirir:
+* Dinamik yapılandırmayı indirmek için Azure depolama 'ya bağlanma
+* AAD kimlik doğrulaması sunucusu api.azureml.ms için DNS 'i çözümleyin ve dağıtılan hizmet AAD kimlik doğrulamasını kullandığında onunla iletişim kurun.
+* Dağıtılan modelleri saptamak için AKS API sunucusunu sorgula
+* Dağıtılan model PODs ile iletişim kurma
+
+Model dağıtım zamanında, başarılı bir model dağıtımı için AKS düğümü şunları yapabilmelidir: 
+* Müşterinin ACR için DNS 'i çözümleme
+* Müşterinin ACR 'den görüntüleri indirin
+* Modelin depolandığı Azure Blob 'Ları için DNS 'i çözümleyin
+* Azure Bloblarından modelleri indirin
+
+Model dağıtıldıktan ve hizmet başladıktan sonra, azureml-Fe, AKS API 'sini kullanarak otomatik olarak keşfeder ve isteği kendisine yönlendirmeye hazırlanacaktır. Model PODs ile iletişim kurabilmesi gerekir.
+>[!Note]
+>Dağıtılan model herhangi bir bağlantı gerektiriyorsa (örneğin, dış veritabanı veya diğer REST hizmetini sorgulama, bir BLOG indirme vb.), bu hizmetler için hem DNS çözümlemesi hem de giden iletişim etkinleştirilmelidir.
 
 ## <a name="deploy-to-aks"></a>AKS’ye dağıtma
 

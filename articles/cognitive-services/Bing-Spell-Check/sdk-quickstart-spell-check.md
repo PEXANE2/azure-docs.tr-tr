@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2f39dbd22372342786eacbccd31a10fc927c0892
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bc0caaf30db0384da3fa9c5abea6360206a3fb8e
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352635"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97831984"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-sdk-for-c"></a>Hızlı başlangıç: C için Bing Yazım Denetimi SDK ile yazım denetimi #
 
@@ -32,7 +32,7 @@ C# için Bing Yazım Denetimi SDK ile yazım denetimi başlatmak için bu hızl�
 * Herhangi bir [Visual Studio 2017 veya üzeri](https://visualstudio.microsoft.com/downloads/)sürümü.
 * Bing Yazım Denetimi [NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.SpellCheck)
 
-Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gezgini **NuGet Paketlerini Yönet** ' **Solution Explorer** i seçin. `Microsoft.Azure.CognitiveServices.Language.SpellCheck` paketini ekleyin. Paket de aşağıdaki bağımlılıkları da yüklüyor:
+Projenize Bing Yazım Denetimi SDK eklemek için, Visual Studio 'da Çözüm Gezgini **NuGet Paketlerini Yönet** '  i seçin. `Microsoft.Azure.CognitiveServices.Language.SpellCheck` paketini ekleyin. Paket de aşağıdaki bağımlılıkları da yüklüyor:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
@@ -110,4 +110,4 @@ Projenizi derleyin ve çalıştırın. Visual Studio kullanıyorsanız, dosyada 
 > [Tek sayfalı web uygulaması oluşturma](tutorials/spellcheck.md)
 
 - [Bing Yazım Denetimi API’si nedir?](overview.md)
-- [Bing Yazım Denetimi C# SDK başvuru kılavuzu](/dotnet/api/overview/azure/cognitiveservices/client/bingspellcheck?view=azure-dotnet)
+- [Bing Yazım Denetimi C# SDK başvuru kılavuzu](/dotnet/api/overview/azure/cognitiveservices/bing-spell-check-readme?view=azure-dotnet)
