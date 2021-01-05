@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 76e19c36f0fa4096966c5dd23d2384b6b30f2271
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95498869"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845614"
 ---
 # <a name="business-card-concepts"></a>Kartvizit kavramları
 
@@ -374,7 +374,7 @@ Başarılı bir JSON yanıtı örneğine bakın: "readResults" düğümü, tanı
 }
 ```
 
-Python ve REST API kullanarak iş kartı verilerinin ayıklanmasını uygulamak için [iş kartı verilerini](./QuickStarts/python-business-cards.md) ayıklama hızlı başlangıcını izleyin.
+Python ve REST API kullanarak iş kartı verilerinin ayıklanmasını uygulamak için [hızlı](./QuickStarts/client-library.md) başlangıç hızlı başlangıcı ' nı izleyin.
 
 ## <a name="customer-scenarios"></a>Müşteri senaryoları  
 
@@ -385,11 +385,11 @@ Iş kartı API 'siyle ayıklanan veriler, çeşitli görevleri gerçekleştirmek
 * Satış fırsatlarını takip edin.  
 * Mevcut iş kartı görüntülerinden toplu olarak kişi bilgilerini ayıklayın. 
 
-Iş kartı API 'SI de [Aibuilder Iş kartı işleme özelliğini](/ai-builder/prebuilt-business-card)güçlendirir.
+Iş kartı API 'SI aynı zamanda [AI Oluşturucu Iş kartı işleme özelliğini](/ai-builder/prebuilt-business-card)de güçlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- İş kartlarını tanımayı kullanmaya başlamak için [Iş KARTLARı API Python hızlı](./quickstarts/python-business-cards.md) başlangıcını izleyin.
+- İş kartlarını tanımayı kullanmaya başlamak için [hızlı](./quickstarts/client-library.md) başlangıcı izleyin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

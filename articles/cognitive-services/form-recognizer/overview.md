@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Otomatik veri işleme, belge işleme, otomatik veri girişi, form işleme
-ms.openlocfilehash: 39243f4428d055ee5d4491c3e87b4b91213f63f1
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353689"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845519"
 ---
 # <a name="what-is-form-recognizer"></a>Form Tanıma nedir?
 
@@ -104,27 +104,25 @@ Iş kartları modeli, kişinin adı, iş unvanı, adres, e-posta, şirket ve tel
 :::image type="content" source="./media/overview-business-card.jpg" alt-text="örnek iş kartı" lightbox="./media/overview-business-card.jpg":::
 
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 Formlarınızın verileri çıkarmaya başlamak için [örnek form tanıyıcı aracını](https://fott.azurewebsites.net/) kullanın veya bir hızlı başlangıcı izleyin. Teknolojiyi öğrenirken ücretsiz hizmeti kullanmanızı öneririz. Ücretsiz sayfa sayısının ayda 500 ile sınırlı olduğunu unutmayın.
 
-* [İstemci kitaplığı hızlı başlangıç](./quickstarts/client-library.md) (tüm diller, birden çok senaryo)
+* [İstemci kitaplığı/REST API hızlı başlangıç](./quickstarts/client-library.md) (tüm diller, birden çok senaryo)
 * Web UI hızlı başlangıçlarını
   * [Etiketlerle eğitme-örnek etiketleme aracı](quickstarts/label-tool.md)
-* REST hızlı başlangıç
+* REST örnekleri (GitHub)
  * Belgelerden metin, seçim işaretleri ve tablo yapısını Ayıkla
-    * [Düzen verilerini ayıklama-Python](quickstarts/python-layout.md)
+    * [Düzen verilerini ayıklama-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-layout.md)
   * Özel modeller eğitme ve form verilerini ayıklama
-    * [Etiketler olmadan eğitme](quickstarts/curl-train-extract.md)
-    * [Etiketler olmadan eğitme-Python](quickstarts/python-train-extract.md)
-    * [Etiketlerle eğitme-Python](quickstarts/python-labeled-data.md)
+    * [Etiketler olmadan eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-train-extract.md)
+    * [Etiketlerle eğitme-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
   * Faturalardan verileri Ayıkla
-    * [Fatura verilerini Ayıkla-Python](quickstarts/python-invoices.md)
+    * [Fatura verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-invoices.md)
   * Satış makbuzlarından veri ayıklama
-    * [Alma verilerini ayıklama-kıvrımlı](quickstarts/curl-receipts.md)
-    * [Alma verilerini Ayıkla-Python](quickstarts/python-receipts.md)
+    * [Alma verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-receipts.md)
   * Kartvizitlerden veri ayıklama
-    * [İş kartı verilerini Ayıkla-Python](quickstarts/python-business-cards.md)
+    * [İş kartı verilerini Ayıkla-Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-business-cards.md)
 
 ### <a name="review-the-rest-apis"></a>REST API 'Leri gözden geçirme
 
@@ -162,4 +160,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, form tanıyıcı hizmetini kullanan gel
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Form tanıyıcı ile bir form işleme uygulamasını tercih ettiğiniz dilde yazmaya başlamak için bir [istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+Form tanıyıcıyla seçtiğiniz dilde bir form işleme uygulaması yazmaya başlamak için [hızlı](quickstarts/client-library.md) başlangıcı doldurun.

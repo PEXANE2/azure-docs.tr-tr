@@ -2,17 +2,17 @@
 title: Apache Kafka MirrorMaker 'ı kullanın-Azure Event Hubs | Microsoft Docs
 description: Bu makalede, AzureEvent hub 'Larda bir Kafka kümesini yansıtmak için Kafka MirrorMaker 'ın nasıl kullanılacağı hakkında bilgi verilmektedir.
 ms.topic: how-to
-ms.date: 06/23/2020
-ms.openlocfilehash: f2e7ac6951c84adfd8fc313995724021640ee0ab
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.date: 01/04/2021
+ms.openlocfilehash: 654e9e19dfde0d0c58d00e41cf8ab0ba8e1484d7
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503208"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861000"
 ---
-# <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Kafka MirrorMaker 'ı kullanma
+# <a name="use-apache-kafka-mirrormaker-with-event-hubs"></a>Event Hubs ile Apache Kafka MirrorMaker kullanma
 
-Bu öğreticide, Kafka MirrorMaker kullanarak bir olay hub 'ında Kafka aracısının nasıl yansıtılması gösterilmektedir.
+Bu öğreticide, Kafka MirrorMaker kullanarak bir Kafka aracısının Azure Olay Hub 'ına nasıl yansıtılması gösterilmektedir. CNCF Strimzi işlecini kullanarak Kubernetes üzerinde Apache Kafka barındırıyorsanız, Kafka 'i Strimzi ve yansıtma Oluşturucu 2 ile ayarlamayı öğrenmek için [Bu blog gönderisindeki](https://strimzi.io/blog/2020/06/09/mirror-maker-2-eventhub/) öğreticiye başvurabilirsiniz. 
 
    ![Event Hubs ile Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -22,7 +22,7 @@ Bu öğreticide, Kafka MirrorMaker kullanarak bir olay hub 'ında Kafka aracıs�
 > [!NOTE]
 > Bu makalede, Microsoft tarafından kullanılmayan bir terim olan *beyaz liste* teriminin başvuruları yer almaktadır. Terim yazılımlardan kaldırıldığında, bu makaleden kaldıracağız.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Event Hubs ad alanı oluşturma
 > * Örnek projeyi kopyalama
@@ -31,9 +31,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Kafka MirrorMaker 'ı Çalıştır
 
 ## <a name="introduction"></a>Giriş
-Modern bulut ölçekli uygulamalar için önemli bir göz önünde bulundurun, hizmet kesintiye uğramadan altyapıyı güncelleştirebilir, geliştirebilirsiniz ve değiştirebilirsiniz. Bu öğreticide, bir olay hub 'ı ve Kafka MirrorMaker 'ın mevcut bir Kafka işlem hattını, Event Hubs hizmetindeki Kafka giriş akışını "yansıtarak" bir Azure 'a nasıl tümleştirebileceğinizi gösterir. 
+Bu öğreticide, bir olay hub 'ı ve Kafka MirrorMaker 'ın mevcut bir Kafka işlem hattını Event Hubs Azure 'da nasıl tümleştirebileceği gösterilmektedir. Bu, çeşitli [Federasyon desenleri](event-hubs-federation-overview.md)kullanılarak Apache Kafka akışlarının tümleştirilmesine olanak tanır. 
 
-Azure Event Hubs Kafka uç noktası, Azure Event Hubs 'a Kafka protokolünü (yani, Kafka istemcileri) kullanarak bağlanmanızı sağlar. Bir Kafka uygulamasında en az değişiklik yaparak Azure Event Hubs bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Event Hubs Şu anda Kafka sürümleri 1,0 ve üstünü desteklemektedir.
+Azure Event Hubs Kafka uç noktası, Azure Event Hubs 'a Kafka protokolünü (yani, Kafka istemcileri) kullanarak bağlanmanızı sağlar. Bir Kafka uygulamasında en az değişiklik yaparak Azure Event Hubs bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Event Hubs Şu anda 1,0 ve üzeri Apache Kafka sürümlerinin protokolünü desteklemektedir.
+
+Apache Kafka MirrorMaker 1 Tekli biçimde Apache Kafka Event Hubs için kullanabilirsiniz. MirrorMaker 2 her iki yönde de kullanılabilir, ancak [ `MirrorCheckpointConnector` `MirrorHeartbeatConnector` mirrormaker 2 ' de yapılandırılabilir olan ve](https://cwiki.apache.org/confluence/display/KAFKA/KIP-382%3A+MirrorMaker+2.0) Apache Kafka aracısına işaret eden ve Event Hubs için yapılandırılmış olmalıdır. Bu öğreticide, MirrorMaker 1 yapılandırması gösterilmektedir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 

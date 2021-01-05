@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f788c9e78790e6872870869e2bc153e1b1451e51
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 64e648cf6ae3c763d3e9ab1a6970f48c84331bad
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566546"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845629"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Öğretici: uçtan uca bir çözüm oluşturma
 
@@ -40,7 +40,7 @@ Bu öğreticide kullanılan örnek proje, bir kat, Oda ve bir termostat cihazı 
 
 Tam senaryoyu temsil eden bir diyagram aşağıda verilmiştir. 
 
-Önce Azure dijital TWINS örneğini (diyagram içinde **bölüm** ) oluşturun, ardından telemetri veri akışını dijital TWINS ( **ok B** ) ile ayarlayın, sonra da Ikizi Graf ( **ok C** ) aracılığıyla veri yaymayı ayarlayın.
+Önce Azure dijital TWINS örneğini (diyagram içinde **bölüm** ) oluşturun, ardından telemetri veri akışını dijital TWINS (**ok B**) ile ayarlayın, sonra da Ikizi Graf (**ok C**) aracılığıyla veri yaymayı ayarlayın.
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario.png" alt-text="Tam bina senaryosunun grafiği. Bir cihazdan bir Azure işlevi (ok B) aracılığıyla bir Azure dijital TWINS örneğine (Bölüm A) kadar bir cihazdan veri akışı IoT Hub, ardından işleme için başka bir Azure işlevine Event Grid kadar (ok C)":::
 
@@ -53,11 +53,9 @@ Yapı senaryosu *AdtSampleApp* örnek uygulaması tarafından uygulanan bileşen
 * *Sampleclientapp* -örnek bir Azure dijital TWINS çözümü
 * *Samplefunctionsapp* -Azure dijital TWINS grafınızı IoT Hub ve Azure dijital TWINS etkinliklerindeki telemetri sonucu olarak güncelleştiren bir Azure işlevleri uygulaması
 
-Örnek Proje ayrıca etkileşimli bir yetkilendirme bileşeni içerir. Projeyi her başlattığınızda, bir tarayıcı penceresi açılır ve Azure hesabınızla oturum açmanız istenir.
-
 ### <a name="instantiate-the-pre-created-twin-graph"></a>Önceden oluşturulmuş ikizi grafiğini oluşturma
 
-İlk olarak, örnek projeden *AdtSampleApp* çözümünü kullanarak uçtan uca senaryonun Azure dijital TWINS parçasını ( **Bölüm A** ) oluşturursunuz:
+İlk olarak, örnek projeden *AdtSampleApp* çözümünü kullanarak uçtan uca senaryonun Azure dijital TWINS parçasını (**Bölüm A**) oluşturursunuz:
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="Azure dijital TWINS örneği olan, tam yapı senaryosu grafik vurgulama bölümünden bir alıntı":::
 
@@ -101,8 +99,8 @@ Bundan sonra projeyi çalıştırmayı durdurabilirsiniz. Visual Studio 'da çö
 ## <a name="set-up-the-sample-function-app"></a>Örnek işlev uygulamasını ayarlama
 
 Sonraki adımda, bu öğreticide verileri işlemek için kullanılacak bir [Azure işlevleri uygulaması](../azure-functions/functions-overview.md) ayarlanıyor. *Samplefunctionsapp* işlev uygulaması iki işlev içerir:
-* *ProcessHubToDTEvents* : gelen IoT Hub verilerini Işler ve Azure dijital TWINS 'i buna göre güncelleştirir
-* *Processdtkabteddata* : dijital TWINS 'ten gelen verileri Işler ve Azure dijital TWINS 'de üst TWINS 'i uygun şekilde güncelleştirir
+* *ProcessHubToDTEvents*: gelen IoT Hub verilerini Işler ve Azure dijital TWINS 'i buna göre güncelleştirir
+* *Processdtkabteddata*: dijital TWINS 'ten gelen verileri Işler ve Azure dijital TWINS 'de üst TWINS 'i uygun şekilde güncelleştirir
 
 Bu bölümde, önceden yazılmış işlev uygulamasını yayımlayacaksınız ve işlev uygulamasının bir Azure Active Directory (Azure AD) kimliği atayarak Azure dijital TWINS 'e erişebildiğinden emin olursunuz. Bu adımları tamamlamak, öğreticinin geri kalanının işlev uygulaması içindeki işlevleri kullanmasına izin verir. 
 
@@ -112,29 +110,29 @@ _**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri dön
 
 Uygulamayı yayımlamadan önce, tüm dahil edilen paketlerin en son sürümüne sahip olduğunuzdan emin olmak için bağımlılıklarınızın güncel olduğundan emin olmanız iyi bir fikirdir.
 
-*Çözüm Gezgini* bölmesinde *Samplefunctionsapp > bağımlılıklar* ' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
+*Çözüm Gezgini* bölmesinde *Samplefunctionsapp > bağımlılıklar*' ı genişletin. *Paketler* ' i sağ seçin ve *NuGet Paketlerini Yönet...* seçeneğini belirleyin.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp projesi için NuGet paketlerini yönetme" border="false":::
 
-Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve güncelleştirme yapılacak herhangi bir paket varsa, *tüm paketleri seçmek* için kutuyu işaretleyin. Ardından *Güncelleştir* ' i ziyaret edin.
+Bu, NuGet Paket Yöneticisi 'Ni açar. *Güncelleştirmeler* sekmesini seçin ve güncelleştirme yapılacak herhangi bir paket varsa, *tüm paketleri seçmek* için kutuyu işaretleyin. Ardından *Güncelleştir*' i ziyaret edin.
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio: NuGet paket yöneticisinde tüm paketleri güncelleştirmek için seçme":::
 
 ### <a name="publish-the-app"></a>Uygulamayı yayımlama
 
-_**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, *Çözüm Gezgini* bölmesinden _**samplefunctionsapp**_ proje dosyasını sağ seçin ve **Yayınla** ' yı tıklayın.
+_**AdtE2ESample**_ projesinin açık olduğu Visual Studio pencerenizi geri döndüğünüzde, *Çözüm Gezgini* bölmesinden _**samplefunctionsapp**_ proje dosyasını sağ seçin ve **Yayınla**' yı tıklayın.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: projeyi Yayımla":::
 
-Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri* ' yi ziyaret edin. 
+Aşağıdaki *Yayımla* sayfasında, **Azure** varsayılan hedef seçimini bırakın ve *İleri*' yi ziyaret edin. 
 
-Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri* ' yi tıklayın.
+Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin ve *İleri*' yi tıklayın.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: belirli hedef":::
 
 *İşlevler örneği* sayfasında, aboneliğinizi seçin. Bu, aboneliğinizdeki *kaynak gruplarıyla* bir kutu doldurmalıdır.
 
-Örneğinizin kaynak grubunu seçin ve *+ Yeni bir Azure Işlevi oluştur...* seçeneğini tıklayın.
+Örneğinizin kaynak grubunu seçin ve *+* Yeni bir Azure işlevi oluşturmak için isabet edin.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından önce)":::
 
@@ -148,13 +146,13 @@ Belirli bir hedef için **Azure işlev uygulaması (Windows)** öğesini seçin 
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: İşlev Uygulaması (Windows)-yeni oluştur":::
 
-Ardından **Oluştur** ’u seçin.
+Ardından **Oluştur**’u seçin.
 
 Bu, yeni işlev uygulamanızın artık kaynak grubunuzun altında göründüğünden, bunu *işlevler örneği* sayfasına geri getirmelidir. İsabet *sonu*.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: Işlevler örneği (işlev uygulamasından sonra)":::
 
-Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgilerin doğru göründüğünden emin olun ve **Yayımla** ' yı seçin.
+Ana Visual Studio penceresinde geri açılan *Yayımla* bölmesinde tüm bilgilerin doğru göründüğünden emin olun ve **Yayımla**' yı seçin.
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Visual Studio 'da Azure işlevini yayımlama: yayımlama":::
 
@@ -198,7 +196,7 @@ Azure dijital TWINS grafiğinin, gerçek cihazlardan telemetri tarafından kulla
 
 Bu adımda, [IoT Hub](../iot-hub/about-iot-hub.md) kayıtlı bir sanal bir termostat cihazını Azure dijital TWINS 'te temsil eden dijital ikizi bağlayacaksınız. Sanal cihaz Telemetriyi yayar, veriler, dijital ikizi 'de karşılık gelen bir güncelleştirmeyi tetikleyen *ProcessHubToDTEvents* Azure işlevi aracılığıyla yönlendirilir. Bu şekilde, dijital ikizi gerçek cihazın verileriyle güncel kalır. Azure dijital TWINS 'de, olay verilerini bir konumdan diğerine yönlendiren işlem [**yönlendirme olayları**](concepts-route-events.md)olarak adlandırılır.
 
-Bu, uçtan uca senaryonun bu bölümünde gerçekleşir ( **ok B** ):
+Bu, uçtan uca senaryonun bu bölümünde gerçekleşir (**ok B**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-b.png" alt-text="Tam bina senaryosu grafik vurgulama oku B, Azure dijital TWINS 'den önceki öğeler: cihaz, IoT Hub ve ilk Azure işlevi":::
 
@@ -229,7 +227,7 @@ IoT Hub daha sonra, Azure Digital TWINS ' i güncelleştiren, IoT Hub 'ınızı 
 
 Bunu yapmak için, Azure işleviyle bir uç nokta olarak IoT Hub bir **olay aboneliği** oluşturacaksınız. Bu, işlevi IoT Hub oluşan olaylara abone olur.
 
-[Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak yeni oluşturduğunuz IoT Hub 'ınıza gidin. Hub menüsünden *olay* ' ı seçin ve *+ olay aboneliği* ' ni seçin.
+[Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak yeni oluşturduğunuz IoT Hub 'ınıza gidin. Hub menüsünden *olay* ' ı seçin ve *+ olay aboneliği*' ni seçin.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1.png" alt-text="Azure portal: IoT Hub olay aboneliği":::
 
@@ -238,15 +236,15 @@ Bu işlem *olay aboneliği oluştur* sayfasını getirir.
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-2.png" alt-text="Azure portal: olay aboneliği oluştur":::
 
 Alanları aşağıda gösterildiği gibi (varsayılan olarak doldurulan alanlar bahsedilmez) girin:
-* *olay ABONELIĞI ayrıntıları*  >  **Ad** : olay aboneliğinize bir ad verin.
-* *konu ayrıntıları*  >  **Sistem konu adı** : sistem konusu için kullanılacak bir ad verin. 
-* *olay türleri*  >  **Olay türlerine filtrele** : menü seçeneklerinden *cihaz telemetrisi* ' ni seçin.
-* *uç nokta ayrıntıları*  >  **Uç nokta türü** : menü seçeneklerinden *Azure işlevi* ' ni seçin.
-* *uç nokta ayrıntıları*  >  **Uç nokta** : *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="olay aboneliği Azure Portal: Azure işlevi seçin" border="false":::
-    - **Aboneliğiniz** , **kaynak grubunuz** , **işlev uygulaması** ve **işlevinizi** ( *ProcessHubToDTEvents* ) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
-    - **Seçimi Onayla** ' ya basın.
+* *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
+* *konu ayrıntıları*  >  **Sistem konu adı**: sistem konusu için kullanılacak bir ad verin. 
+* *olay türleri*  >  **Olay türlerine filtrele**: menü seçeneklerinden *cihaz telemetrisi* ' ni seçin.
+* *uç nokta ayrıntıları*  >  **Uç nokta türü**: menü seçeneklerinden *Azure işlevi* ' ni seçin.
+* *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar: :::image type="content" source="media/tutorial-end-to-end/event-subscription-3.png" alt-text="olay aboneliği Azure Portal: Azure işlevi seçin" border="false":::
+    - **Aboneliğiniz**, **kaynak grubunuz**, **işlev uygulaması** ve **işlevinizi** (*ProcessHubToDTEvents*) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
+    - **Seçimi Onayla**' ya basın.
 
-*Olay aboneliği oluştur* sayfasına dönün ve **Oluştur** ' a basın.
+*Olay aboneliği oluştur* sayfasına dönün ve **Oluştur**' a basın.
 
 ### <a name="register-the-simulated-device-with-iot-hub"></a>Sanal cihazı IoT Hub Kaydet 
 
@@ -278,12 +276,12 @@ az iot hub device-identity connection-string show --device-id thermostat67 --hub
 
 Simülatörü bu IoT Hub 'ına ve IoT Hub cihazına bağlamak için bu değerleri yerel projenizdeki cihaz simülatör koduna bağlayacaksınız.
 
-Yeni bir Visual Studio penceresinde (indirilen çözüm klasöründen) _cihaz simülatörü > **devicesimülatör. sln**_ ' yi açın.
+Yeni bir Visual Studio penceresinde (indirilen çözüm klasöründen) _cihaz simülatörü > **devicesimülatör. sln**_' yi açın.
 
 >[!NOTE]
 > Artık, biri _**Devicesimülatör. sln**_ ve _**AdtE2ESample. sln**_ ile bir tane olmak üzere iki Visual Studio sürümüne sahip olmanız gerekir.
 
-Bu yeni Visual Studio penceresindeki *Çözüm Gezgini* bölmesinde, Düzen _simülatör/ **AzureIoTHub.cs**_ öğesini seçerek dosyayı Düzenle penceresinde açın. Aşağıdaki bağlantı dizesi değerlerini yukarıda topladığınız değerlerle değiştirin:
+Bu yeni Visual Studio penceresindeki *Çözüm Gezgini* bölmesinde, Düzen _simülatör/**AzureIoTHub.cs**_ öğesini seçerek dosyayı Düzenle penceresinde açın. Aşağıdaki bağlantı dizesi değerlerini yukarıda topladığınız değerlerle değiştirin:
 
 ```csharp
 iotHubConnectionString = <your-hub-connection-string>
@@ -324,7 +322,7 @@ Bu işlemi başarıyla çalıştığını doğruladıktan sonra, her iki projeni
 
 Bu öğreticide, Azure Digital TWINS 'in dış cihaz verilerinden nasıl güncelleştirileceğini gördünüz. Daha sonra, bir dijital ikizi yapılan değişikliklerin Azure dijital TWINS grafından nasıl yayabileğinden (diğer bir deyişle, hizmet dahili verilerden TWINS 'i güncelleştirme) göreceksiniz.
 
-Bunu yapmak için, bağlı *termostat* ikizi güncelleştirildiği zaman bir *Oda* Ikizi güncellemek üzere *processdtkabteddata* Azure işlevini kullanacaksınız. Bu, uçtan uca senaryonun bu bölümünde gerçekleşir ( **ok C** ):
+Bunu yapmak için, bağlı *termostat* ikizi güncelleştirildiği zaman bir *Oda* Ikizi güncellemek üzere *processdtkabteddata* Azure işlevini kullanacaksınız. Bu, uçtan uca senaryonun bu bölümünde gerçekleşir (**ok C**):
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-c.png" alt-text="Tam bina senaryosu grafik vurgulama ok C, Azure dijital TWINS 'den sonraki öğeler: Event Grid ve ikinci Azure işlevi":::
 
@@ -393,20 +391,20 @@ Daha önce, *Processdtkabteddata* Azure işlevini daha önce oluşturduğunuz ol
 
 Bunu yapmak için, olay kılavuzunuzda, *Processdtkabteddata* Azure işlevinizde bir uç nokta olarak **Event Grid bir abonelik** oluşturacaksınız.
 
-[Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak olay kılavuzunuza gidin. *+ Olay Aboneliği* 'ni seçin.
+[Azure Portal](https://portal.azure.com/), en üstteki arama çubuğunda adını arayarak olay kılavuzunuza gidin. *+ Olay Aboneliği*'ni seçin.
 
 :::image type="content" source="media/tutorial-end-to-end/event-subscription-1b.png" alt-text="Azure portal: Event Grid olay aboneliği":::
 
 Bu olay aboneliğini oluşturma adımları, bu öğreticide daha önce IoT Hub ilk Azure işlevine abone olduğunuz zamana benzer. Bu kez, dinlenecek olay türü olarak *cihaz telemetrisini* belirtmeniz gerekmez ve farklı bir Azure işlevine bağlanırsınız.
 
 *Olay aboneliği oluştur* sayfasında, alanları aşağıdaki gibi girin (varsayılan olarak doldurulmuş alanlar verilmez):
-* *olay ABONELIĞI ayrıntıları*  >  **Ad** : olay aboneliğinize bir ad verin.
-* *uç nokta ayrıntıları*  >  **Uç nokta türü** : menü seçeneklerinden *Azure işlevi* ' ni seçin.
-* *uç nokta ayrıntıları*  >  **Uç nokta** : *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar:
-    - **Aboneliğiniz** , **kaynak grubunuz** , **işlev uygulaması** ve **işlevinizi** ( *processdtkabteddata* ) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
-    - **Seçimi Onayla** ' ya basın.
+* *olay ABONELIĞI ayrıntıları*  >  **Ad**: olay aboneliğinize bir ad verin.
+* *uç nokta ayrıntıları*  >  **Uç nokta türü**: menü seçeneklerinden *Azure işlevi* ' ni seçin.
+* *uç nokta ayrıntıları*  >  **Uç nokta**: *uç nokta seçin* bağlantısına tıklayın. Bu işlem bir *Azure Işlevi Seç* penceresi açar:
+    - **Aboneliğiniz**, **kaynak grubunuz**, **işlev uygulaması** ve **işlevinizi** (*processdtkabteddata*) girin. Bunlardan bazıları abonelik seçildikten sonra otomatik olarak doldurulabilir.
+    - **Seçimi Onayla**' ya basın.
 
-*Olay aboneliği oluştur* sayfasına dönün ve **Oluştur** ' a basın.
+*Olay aboneliği oluştur* sayfasına dönün ve **Oluştur**' a basın.
 
 ### <a name="run-the-simulation-and-see-the-results"></a>Benzetimi çalıştırın ve sonuçları görüntüleyin
 

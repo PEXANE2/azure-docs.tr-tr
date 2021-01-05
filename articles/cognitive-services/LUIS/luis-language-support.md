@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
-ms.openlocfilehash: 1da43d0ef208d61ced6c8ca8dbc7603e0ef51155
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 9363a2dacd91d3868e69e47381eea528e358935c
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021580"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845459"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUSıS için dil ve bölge desteği
 
@@ -30,12 +30,12 @@ LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 
 | Dil |Yerel Ayar  |  Önceden oluşturulmuş etki alanı | Önceden oluşturulmuş varlık | Tümcecik listesi önerileri | **[Metin Analizi](../text-analytics/language-support.md)<br>(Yaklaşım ve<br>Lerimi|
 |--|--|:--:|:--:|:--:|:--:|
-| İngilizce (ABD) |`en-US` | ✔ | ✔  |✔|✔|
 | Arapça (Önizleme-modern Standart Arapça) |`ar-AR`|-|-|-|-|
 | *[Çince](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
 | Felemenkçe |`nl-NL` |✔|-|-|✔|
-| Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
+| İngilizce (ABD) |`en-US` | ✔ | ✔  |✔|✔|
 | Fransızca (Kanada) |`fr-CA` |-|-|-|✔|
+| Fransızca (Fransa) |`fr-FR` |✔| ✔ |✔ |✔|
 | Almanca |`de-DE` |✔| ✔ |✔ |✔|
 | Gucerat dili | `gu-IN`|-|-|-|-|
 | Hintçe | `hi-IN`|-|✔|-|-|
@@ -44,8 +44,8 @@ LUBU, aşağıdaki dillerdeki söyliği anlamıştır:
 | Korece |`ko-KR` |✔|-|-|Yalnızca anahtar tümceciği|
 | Marathi | `mr-IN`|-|-|-|-|
 | Portekizce (Brezilya) |`pt-BR` |✔| ✔ |✔ |tüm alt kültürler değil|
-| İspanyolca (İspanya) |`es-ES` |✔| ✔ |✔|✔|
 | İspanyolca (Meksika)|`es-MX` |-|-|✔|✔|
+| İspanyolca (İspanya) |`es-ES` |✔| ✔ |✔|✔|
 | Tamil dili | `ta-IN`|-|-|-|-|
 | Telugu dili | `te-IN`|-|-|-|-|
 | Türkçe | `tr-TR` |✔|✔|-|Yalnızca yaklaşım|

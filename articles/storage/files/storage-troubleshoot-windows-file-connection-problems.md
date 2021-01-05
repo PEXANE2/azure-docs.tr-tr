@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492055"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858697"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Windows 'da Azure dosyaları sorunlarını giderme (SMB)
 
@@ -203,7 +203,7 @@ Dosya tanıtıcısı, bir dosyanın/dizinin değiştirilmesini veya silinmesini 
 
 Tüm SMB istemcileri bir dosya/dizinde açık tutamaçlarını kapatmışsa ve sorun oluşmaya devam ederse, bir dosya tanıtıcısını kapatmaya zorlayabilirsiniz.
 
-### <a name="solution-1"></a>1\. Çözüm
+### <a name="solution-1"></a>Çözüm 1
 Bir dosya tanıtıcısının kapatılmasını zorlamak için, [Close-AzStorageFileHandle](/powershell/module/az.storage/close-azstoragefilehandle) PowerShell cmdlet 'ini kullanın. 
 
 > [!Note]  
@@ -244,7 +244,7 @@ LeaseState            : Leased
 LeaseStatus           : Locked
 ```
 
-### <a name="solution-2"></a>2\. Çözüm
+### <a name="solution-2"></a>Çözüm 2
 Bir dosyadan kira kaldırmak için kirayı serbest bırakabilir veya kirayı kesebilirsiniz. Kirayı serbest bırakmak için kirayı oluştururken ayarladığınız kiralamanın leaseID 'Si gerekir. Kiralamanın kesilmesini için leaseID gerekli değildir.
 
 Aşağıdaki örnek, neden 2 ' de gösterilen dosyanın kira süresinin nasıl kesilmesini gösterir (Bu örnek, neden 2 ' den PowerShell değişkenlerine devam eder):
@@ -406,6 +406,8 @@ Cmdlet bu denetimleri sırayla gerçekleştirir ve hatalara yönelik rehberlik s
 5. Checksıdhasaaduser: oturum açan AD kullanıcısının Azure AD ile eşitlendiğinden emin olun. Belirli bir AD kullanıcısının Azure AD ile eşitlenip eşitlenmediğini aramak isterseniz, giriş parametrelerinde-UserName ve-Domain öğesini belirtebilirsiniz. 
 6. CheckGetKerberosTicket: depolama hesabına bağlanmak için bir Kerberos bileti almayı deneyin. Geçerli bir Kerberos belirteci yoksa, Klist Get CIFS/Storage-Account-Name. File. Core. Windows. net cmdlet 'ini çalıştırın ve hata kodunu, bilet alma hatasının köke neden olacak şekilde inceleyin.
 7. Checkstorageaccountdomainkatılmış: AD kimlik doğrulamasının etkinleştirilip etkinleştirilmediğini ve hesabın AD özelliklerinin doldurulup doldurulmadığını denetleyin. Aksi takdirde, Azure dosyalarında AD DS kimlik doğrulamasını etkinleştirmek için [buradaki](./storage-files-identity-ad-ds-enable.md) yönergeye başvurun. 
+8. CheckUserRbacAssignment: Azure dosyalarına erişim izni vermek için AD kullanıcısının uygun RBAC rol atamasına sahip olup olmadığını denetleyin. Aksi takdirde, paylaşma düzeyi iznini yapılandırmak için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
+9. CheckUserFileAccess: Azure dosyalarına erişmek için AD kullanıcısının doğru dizin/dosya iznine (Windows ACL 'Ler) sahip olup olmadığını denetleyin. Aksi takdirde, dizin/dosya düzeyi iznini yapılandırmak için [buradaki](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions) yönergeye başvurun. (AzFilesHybrid v 0.2.3 + sürümünde desteklenir)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows Dosya Gezgini ile dizin/dosya düzeyi izinleri (Windows ACL 'Leri) yapılandırılamıyor
 

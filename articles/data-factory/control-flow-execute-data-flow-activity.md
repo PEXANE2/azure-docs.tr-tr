@@ -8,13 +8,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 11/24/2020
-ms.openlocfilehash: 1c0ed7cf38cc01623169216ec45e88d198ede3d2
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.date: 01/03/2021
+ms.openlocfilehash: 3eff23a42a6ac5f5360bdebfcc692e13acb3e8b0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095092"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858794"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory 'de veri akışı etkinliği
 
@@ -38,6 +38,8 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
          "computeType": "General"
       },
       "traceLevel": "Fine",
+      "runConcurrently": true,
+      "continueOnError": true,      
       "staging": {
           "linkedService": {
               "referenceName": "MyStagingLinkedService",
@@ -58,12 +60,12 @@ Veri akışı etkinliğini, veri akışları eşleme yoluyla dönüştürmek ve 
 Özellik | Açıklama | İzin verilen değerler | Gerekli
 -------- | ----------- | -------------- | --------
 veri akışı | Yürütülen veri akışının başvurusu | DataFlowReference | Yes
-ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | No
-compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | No
-compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | No
+ıntegrationruntime | Veri akışının çalıştığı işlem ortamı. Belirtilmemişse, Otomatik Çözümle Azure tümleştirme çalışma zamanı kullanılacaktır. | IntegrationRuntimeReference | Hayır
+compute. coreCount | Spark kümesinde kullanılan çekirdek sayısı. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | 8, 16, 32, 48, 80, 144, 272 | Hayır
+compute. computeType | Spark kümesinde kullanılan işlem türü. Yalnızca Azure tümleştirme çalışma zamanı otomatik çözümle kullanılıyorsa belirtilebilir | "Genel", "ComputeOptimized", "Memoryoptimlanmış" | Hayır
 hazırlama. linkedService | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan depolama hesabını belirtin.<br/><br/>Azure depolama alanı VNet hizmet uç noktası ile yapılandırıldıysa, depolama hesabında "Güvenilen Microsoft hizmeti 'ne izin ver" özelliği etkinleştirilmiş olarak yönetilen kimlik kimlik doğrulamasını kullanmanız gerekir. [Azure depolama Ile VNET hizmet uç noktaları kullanmanın etkileri](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage). Ayrıca, [Azure Blob](connector-azure-blob-storage.md#managed-identity) için gerekli konfigürasyonları ve [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md#managed-identity) de öğrenin.<br/> | LinkedServiceReference | Yalnızca veri akışı bir Azure SYNAPSE analizlerini okuduğunda veya yazıyorsa
 hazırlama. folderPath | Azure SYNAPSE Analytics kaynağı veya havuzu kullanıyorsanız, PolyBase hazırlama için kullanılan BLOB depolama hesabındaki klasör yolu | Dize | Yalnızca veri akışı Azure SYNAPSE Analytics 'i okuduğunda veya yazıyorsa
-traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | No
+traceLevel | Veri akışı etkinlik yürütmesinin günlüğe kaydetme düzeyini ayarlama | İnce, kalın, hiçbiri | Hayır
 
 ![Veri akışı yürütme](media/data-flow/activity-data-flow.png "Veri akışı yürütme")
 
@@ -95,6 +97,14 @@ Bir Azure SYNAPSE analizinizi havuz veya kaynak olarak kullanıyorsanız, PolyBa
 Veri akışı etkinliklerinizin her işlem hattı yürütmesinin tüm ayrıntılı telemetri günlüklerini tam olarak günlüğe yazmasına gerek yoksa, isteğe bağlı olarak günlük düzeyini "temel" veya "hiçbiri" olarak ayarlayabilirsiniz. Veri akışlarınızı "ayrıntılı" modda yürütürken (varsayılan), veri dönüşümünüzün her bir bölüm düzeyinde, ADF 'yi tam olarak günlüğe kaydetmek için istek yapabilirsiniz. Bu, pahalı bir işlem olabilir, bu nedenle yalnızca sorun giderme sırasında ayrıntılandırma, genel veri akışınızı ve işlem hattı performansınızı iyileştirecek şekilde etkinleştiriliyor. "Temel" modu yalnızca bir süre Özeti sağlamaları durumunda yalnızca dönüştürme sürelerini günlüğe kaydeder.
 
 ![Günlük kaydı düzeyi](media/data-flow/logging.png "Günlüğe kaydetme düzeyini ayarla")
+
+## <a name="sink-properties"></a>Havuz özellikleri
+
+Veri akışlardaki gruplandırma özelliği, her ikisinin de aynı grup numarasını kullanarak gruplarınızın yürütülme sırasını ve grup havuzlarını ayarlamanıza olanak sağlar. Grupları yönetmeye yardımcı olmak için, ADF 'nin aynı grupta, paralel olarak havuz çalıştırmasını isteyebilirsiniz. Ayrıca, havuzdan biri bir hatayla karşılaştığında bile havuz grubunu devam edecek şekilde ayarlayabilirsiniz.
+
+Veri akışı havuzlarının varsayılan davranışı, her bir havuzun ardışık olarak, seri bir biçimde yürütülmesi ve havuzda bir hata ile karşılaşıldığında veri akışının başarısız olması olabilir. Ayrıca, veri akışı özelliklerine gitmediğiniz ve havuzlar için farklı öncelikler ayarlamadığınız müddetçe Tüm havuzlar aynı gruba varsayılan olarak ayarlanır.
+
+![Havuz özellikleri](media/data-flow/sink-properties.png "Havuz özelliklerini ayarla")
 
 ## <a name="parameterizing-data-flows"></a>Veri akışlarını parametrize etme
 

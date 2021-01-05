@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: a153f832fdfc075cdde03241f7dae19faa2334ce
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: ba7081c877f3c3adae6e678280592c9445a95d1b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631374"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858816"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure Hibrit Avantajı Linux sanal makineleri için nasıl uygulanır
 
@@ -172,7 +172,7 @@ Red Hat abonelik uyumluluğu, yazılım güncelleştirmeleri ve Azure Hibrit Ava
 
 ### <a name="suse"></a>SUSE
 
-SLES sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için, önce [SUSE genel bulut programına](https://www.suse.com/media/guide/suse_public_cloud_service_provider_program_overview.pdf)kaydolmalısınız. SUSE abonelikleri satın aldıktan sonra, bu abonelikleri kullanan sanal makinelerinizi kendi güncelleştirme kaynağınıza kaydetmeniz gerekir. Bu kayıt için SUSE müşteri merkezini, abonelik Yönetim Aracı sunucusunu veya SUSE Manager 'ı kullanın.
+SLES sanal makinelerinize yönelik Azure Hibrit Avantajı kullanmak için ve SLES PAYG 'lerden KCG 'ye geçme veya SLES BYOS 'den PAYG 'ye geçme hakkında bilgi için bkz. [SUSE Linux Enterprise ve Azure hibrit avantajı](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/). 
 
 ## <a name="frequently-asked-questions"></a>Sık sorulan sorular
 *S: bir lisans türünü `RHEL_BYOS` BIR SLES görüntüsü ile kullanabilir miyim veya bunun tersini yapabilir miyim?*
@@ -210,6 +210,10 @@ Y: Hayır, bunu yapamazsınız. Ayrılmış örnekler şu anda RHEL ve SLES içi
 *S: RHEL görüntülerinde SQL Server için dağıtılan bir sanal makinede Azure Hibrit Avantajı kullanabilir miyim?*
 
 Y: Hayır, bunu yapamazsınız. Bu sanal makineleri desteklemeye yönelik bir plan yoktur.
+
+*S: RHEL sanal veri merkezi Aboneliğimde Azure Hibrit Avantajı kullanabilir miyim?*
+
+Y: Hayır, oluşturamazsınız. VDC, Azure 'da AHB dahil olmak üzere desteklenmez.  
  
 
 ## <a name="common-problems"></a>Sık karşılaşılan sorunlar

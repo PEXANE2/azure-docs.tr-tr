@@ -4,14 +4,14 @@ description: Azure Izleyici ölçüm uyarıları ve olası çözümlerle ilgili 
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 11/25/2020
+ms.date: 01/03/2021
 ms.subservice: alerts
-ms.openlocfilehash: fc54d2ba3ca4e7a150a1602c671b99f58197bc44
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657303"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857350"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure İzleyici ölçüm uyarılarındaki sorunları giderme 
 
@@ -265,6 +265,23 @@ Aşağıdaki durumlarda, eklenen zaman serisinin ilk değerlendirmesinin oluşma
 -   Birden çok boyutu izleyen ölçüm uyarısı kuralı – yeni bir boyut değer birleşimi eklendiğinde
 -   Birden çok kaynağı izleyen ölçüm uyarısı kuralı: kapsama yeni bir kaynak eklendiğinde
 -   Sürekli olarak (seyrek ölçüm) yayınlanmayan bir ölçüyü izleyen ölçüm uyarısı kuralı: ölçüm, kendisine yayılmadığı 24 saatten daha uzun bir süre sonra yayınlandığında
+
+## <a name="the-dynamic-thresholds-borders-dont-seem-to-fit-the-data"></a>Dinamik eşiklerin kenarlıkları verilere uygun görünmüyor
+
+Bir ölçümün davranışı yakın zamanda değiştirilmişse, değişiklikler, son 10 günden alınan ölçüm verilerine göre hesaplanarak dinamik eşik kenarlıklarında (büyük ve küçük sınırlara) yansıtılmalıdır. Belirli bir ölçüm için dinamik eşik kenarlıklarını görüntülerken, son hafta içinde ölçüm eğilimi ' ne baktığınızdan ve yalnızca son saatler veya günler için değil.
+
+## <a name="why-is-weekly-seasonality-not-detected-by-dynamic-thresholds"></a>Dinamik eşiklere neden haftalık mevsimsellik algılanmadı?
+
+Haftalık mevsimsellik belirlemek için dinamik eşik modeli en az üç haftalık geçmiş veri gerektirir. Yeterli geçmiş veri kullanılabilir olduğunda, ölçüm verilerinde bulunan haftalık mevsimsellik tanımlanacaktır ve model uygun şekilde ayarlanır. 
+
+## <a name="dynamic-thresholds-shows-a-negative-lower-bound-for-a-metric-even-though-the-metric-always-has-positive-values"></a>Ölçüm her zaman pozitif değerlere sahip olsa da dinamik eşikler bir ölçüm için negatif bir alt sınır gösterir
+
+Bir metrik büyük bir dalgalanma yol gösteriyorsa dinamik eşikler ölçüm değerleri etrafında daha geniş bir model oluşturur ve bu da alt kenarlığın sıfırdan daha düşük olmasını sağlayabilir. Özellikle, bu durum aşağıdaki durumlarda oluşabilir:
+1. Duyarlılık düşük olarak ayarlanmıştır 
+2. Ortanca değerleri sıfıra yakın
+3. Ölçüm yüksek varyans ile düzensiz bir davranış sergiler (veride ani artışlar veya DIB 'ler vardır)
+
+Alt sınır negatif bir değere sahip olduğunda, bu, ölçümün ölçüsünün düzensiz davranış için sıfır değere ulaşması anlamına gelir. Modeli daha az hassas hale getirmek için daha yüksek bir duyarlılık veya daha büyük bir *toplama ayrıntı düzeyi (nokta)* veya modeli oluşturmak için kullanılan geçmiş verilerden en son bir ırreği hariç tutmak Için *verileri yoksay* seçeneğini kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

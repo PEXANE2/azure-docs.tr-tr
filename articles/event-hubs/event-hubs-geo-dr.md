@@ -3,18 +3,27 @@ title: Coğrafi olağanüstü durum kurtarma-Azure Event Hubs | Microsoft Docs
 description: Coğrafi bölgeleri kullanarak yük devretme ve Azure Event Hubs olağanüstü durum kurtarma gerçekleştirme
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 6dd2385a6f6e61136a1284171532aedd70a9cc96
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608359"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861483"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs-coğrafi olağanüstü durum kurtarma 
-Tüm Azure bölgelerinin veya veri merkezlerinin (hiçbir [kullanılabilirlik](../availability-zones/az-overview.md) alanı kullanılmıyorsa) çalışma süresi kapalı olursa, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi kritik öneme sahiptir. Bu nedenle, *coğrafi olağanüstü durum kurtarma* ve *coğrafi çoğaltma* , herhangi bir kuruluş için önemli özelliklerdir. Azure Event Hubs, ad alanı düzeyinde hem coğrafi olağanüstü durum kurtarmayı hem de Coğrafi çoğaltmayı destekler. 
 
-> [!NOTE]
-> Coğrafi olağanüstü durum kurtarma özelliği yalnızca [Standart ve adanmış SKU 'lar](https://azure.microsoft.com/pricing/details/event-hubs/)için kullanılabilir.  
+Esnekliği, veri işleme kaynaklarının felaket kesintilerine karşı, birçok kurum ve bazı durumlarda sektör düzenlemeleri için gereken bir gereksinimdir. 
+
+Azure Event Hubs, tek tek makinelerin zararlı arızalarının veya bir veri merkezindeki birden çok hata etki alanına yayılan kümeler genelinde tam rafların riskini zaten yayar ve bu nedenle, hizmetin garanti edilen hizmet düzeylerinde çalışmaya devam etmesi ve genellikle bu tür arızalarda dikkat çekici kesintiler olmadan, saydam hata algılama ve yük devretme mekanizmaları uygular. [Kullanılabilirlik alanları](../availability-zones/az-overview.md)için etkin seçeneğiyle bir Event Hubs ad alanı oluşturulduysa, risk kesinti riski üç fiziksel olarak ayrılmış tesislere göre daha fazla yayılır ve hizmette, tüm tesis için eksiksiz ve çok zararlı bir kayıp olmadan anında ve daha fazla kapasite ayırmalar vardır. 
+
+Kullanılabilirlik alanı desteği olan tüm etkin Azure Event Hubs kümesi modeli, aksan, donanım arızalarına karşı dayanıklılık ve hatta tüm veri merkezi tesislerinin zarar kaybı sağlar. Yine de, yaygın fiziksel yok etme ile ilgili ölçüler, bu ölçülerin yeterince savunmasına karşı bir durum olabilir. 
+
+Event Hubs coğrafi olağanüstü durum kurtarma özelliği, bu büyüklükte bir olağanüstü durumdan kurtulmasını kolaylaştırmak ve başarısız bir Azure bölgesini iyi ve uygulama yapılandırmalarınızı değiştirmek zorunda kalmadan daha kolay hale getirmek için tasarlanmıştır. Bir Azure bölgesinin terk olması genellikle birkaç hizmeti ve bu özelliği öncelikle bileşik uygulama yapılandırmasının bütünlüğünü korumaya yardımcı olmaya yönelik olarak daha fazla hizmet içerir.  
+
+Geo-Disaster kurtarma özelliği, bir ad alanının tamamının (Event Hubs, tüketici grupları ve ayarları), eşleştirildiği zaman bir birincil ad alanından bir ikincil ad alanına sürekli olarak çoğaltılmasının yanı sıra bir kez yalnızca bir yük devretme işlemi için herhangi bir zamanda birinciden ikinciye geçiş yapılmasını sağlar. Yük devretme taşıma, ad alanı için seçilen diğer adı ikincil ad alanına yeniden işaret eder ve ardından eşleştirmeyi keser. Yük devretme işlemi başlatıldıktan sonra neredeyse anında gerçekleşir. 
+
+> [!IMPORTANT]
+> Özelliği, aynı yapılandırmaya sahip işlemlerin anında devamlılığını mümkün olsa da, **olay verilerini çoğaltmaz**. Olağanüstü durum tüm bölgelerin kaybedilmesine neden olmadığı takdirde, yük devretme işleminden sonra olay verileri birincil olay hub 'ında korunur ve erişim geri yüklendikten sonra, geçmiş olayları elde edilebilir. Etkin/etkin yapılandırmalarda, olay verilerini ve işlem ile ilgili ad alanlarını, kesintiler ve olağanüstü durumlar ile bir şekilde çoğaltmak için, bu coğrafi olağanüstü durum kurtarma özelliği kümesini iyice yapmayın, ancak [çoğaltma kılavuzunu](event-hubs-federation-overview.md)izleyin.  
 
 ## <a name="outages-and-disasters"></a>Kesintiler ve olağanüstü durumlar
 
@@ -45,9 +54,9 @@ Aşağıdaki birincil ve ikincil ad alanları birleşimleri desteklenir:
 
 | Birincil ad alanı | İkincil ad alanı | Desteklenir | 
 | ----------------- | -------------------- | ---------- |
-| Standart | Standart | Evet | 
-| Standart | Ayrılmış | Evet | 
-| Ayrılmış | Ayrılmış | Evet | 
+| Standart | Standart | Yes | 
+| Standart | Ayrılmış | Yes | 
+| Ayrılmış | Ayrılmış | Yes | 
 | Ayrılmış | Standart | Hayır | 
 
 > [!NOTE]

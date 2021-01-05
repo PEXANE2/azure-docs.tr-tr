@@ -3,12 +3,12 @@ title: Olay çoğaltma görev desenleri-Azure Event Hubs | Microsoft Docs
 description: Bu makale, belirli olay çoğaltma görevi desenlerini uygulamaya yönelik ayrıntılı kılavuz sağlar
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 7702b1987faabfce8d97e7b5c9b18766df72caad
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 494de442b636d535fa1ed6fdeeeda28db9783952
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803995"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861370"
 ---
 # <a name="event-replication-tasks-patterns"></a>Olay çoğaltma görevleri desenleri
 
@@ -20,7 +20,7 @@ Bu makalede genel bakış bölümünde vurgulanan desenlerin birkaçı için uyg
 
 Çoğaltma deseninin olayları bir olay hub 'ından sonrakine veya bir olay hub 'ından Service Bus kuyruğu gibi başka bir hedefe kopyalar. Olaylar, olay yükünde herhangi bir değişiklik yapılmadan iletilir.
 
-Bu düzenin uygulanması, [Event Hubs ve Service Bus örnekleri arasındaki Event Hubs ve olay çoğaltması](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) [arasındaki olay çoğaltmasının](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) kapsamına alınmıştır.
+Bu düzenin uygulanması, [Event Hubs ve Service Bus örnekleri arasındaki Event Hubs ve olay çoğaltması](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus) [arasında olay çoğaltma](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy) ve Event Hubs bir aracıdan Apache Kafka ' a veri çoğaltmanın belirli bir durumu için Event Hubs [öğreticisiyle birlikte Apache Kafka mirrormaker](event-hubs-kafka-mirror-maker-tutorial.md) 'ın kapsamına giren bir durumdur.
 
 ### <a name="streams-and-order-preservation"></a>Akışlar ve sipariş koruması
 

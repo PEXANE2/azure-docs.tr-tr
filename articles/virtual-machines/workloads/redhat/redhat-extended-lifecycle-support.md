@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: 1f31cc982e5e7f92cfe7e8adf588dd96628f2c6f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: fd36d365eb02819352bc14caf9d8e258a8663c70
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744050"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861383"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Red Hat Enterprise Linux (RHEL) genişletilmiş yaşam döngüsü desteği
 Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döngüsü desteği hakkında bilgi sağlar:
@@ -30,7 +30,7 @@ Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döng�
 > [!Note]
 > Kuruluşunuzun dışındaki kişilerle RHEL ile birlikte ekleme ile ilgili adımları paylaşmayın. AzureRedHatELS@microsoft.comDestek almak veya diğer sorular için uygulamasına ulaşın.
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 #### <a name="im-running-red-hat-enterprise-linux-6-and-cant-migrate-to-a-later-version-at-this-time-what-options-do-i-have"></a>Red Hat Enterprise Linux 6 kullanıyorum ve şu anda sonraki bir sürüme geçirilemez. Hangi seçeneklere sahip mıyım?
 * Red Hat Enterprise Linux 6 ' yı çalıştırmaya devam edin ve sınırlı yazılım bakımı ve teknik destek almaya devam etmek için Uzatılmış yaşam döngüsü desteği (PIKSEL) Add-On depoları satın alın (bkz. yükseltmeye yönelik işlem ve fiyatlandırma ayrıntıları).
@@ -38,6 +38,12 @@ Bu makale, Red Hat Enterprise görüntüleri için genişletilmiş yaşam döng�
 
 #### <a name="what-is-the-additional-charge-for-using-red-hat-enterprise-linux-extended-life-cycle-support-els-add-on"></a>Red Hat Enterprise Linux genişletilmiş yaşam döngüsü desteği (PIKSEL) eklentisi kullanımı için ek ücret nedir?
 Genişletilmiş yaşam döngüsü desteğiyle ilgili maliyetler, katılmış [biçimde](https://aka.ms/els-form) bulunabilir
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-how-can-i-add-extended-lifecycle-support-to-this-vm"></a>Özel görüntü kullanarak bir VM dağıttım. Bu VM 'ye nasıl genişletilmiş yaşam döngüsü desteği ekleyebilirim?
+Doğrudan Red Hat ile iletişim kurmanız ve doğrudan bunlardan destek almanız gerekir.
+
+#### <a name="ive-deployed-a-vm-by-using-custom-image-can-i-convert-this-vm-to-a-payg-vm"></a>Özel görüntü kullanarak bir VM dağıttım. Bu VM 'yi bir PAYG VM 'sine dönüştürebilir miyim?
+Hayır, şu yapılamıyor. Dönüştürme Şu anda Azure 'da desteklenmiyor.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

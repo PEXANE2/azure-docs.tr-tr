@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 99ed7d3ad81202ab6fe67bf52888bbdbf0b28d2a
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: b7bd04790c7ac124afe3e9b503803f27118ae959
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387097"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861871"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -52,7 +52,7 @@ Tüm teknik profil türleri aynı kavramı paylaşır. Giriş talepleri gönderi
 ![Teknik profil akışını gösteren diyagram](./media/technical-profiles/technical-profile-flow.png)
 
 1. **Çoklu oturum açma (SSO) oturum yönetimi** - [SSO oturumu yönetimi](custom-policy-reference-sso.md)kullanarak teknik profilin oturum durumunu geri yükler.
-1. **Giriş talepleri dönüştürmesi** -teknik profil başlatılmadan önce, Azure AD B2C girişi [talep dönüştürme] çalıştırır. (claimstransformations.md).
+1. **Giriş talepleri dönüştürmesi** -teknik profil başlatılmadan önce, Azure AD B2C giriş [talep dönüşümünü](claimstransformations.md)çalıştırır.
 1. **Giriş talepleri** -talepler, teknik profil için kullanılan talep çantasından alınır.
 1. **Teknik profil yürütme** -teknik profil, talepleri, yapılandırılan tarafla birlikte değiş tokuş eder. Örnek:
     - Oturum açma işleminin tamamlanabilmesi için kullanıcıyı kimlik sağlayıcısına yönlendirin. Başarılı oturum açma işleminden sonra Kullanıcı geri döner ve teknik profil yürütme devam eder.

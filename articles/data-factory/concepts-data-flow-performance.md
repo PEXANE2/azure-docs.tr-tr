@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: cc06f12317f5e30721452e07bd4dc5f50dfdb7ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/18/2020
+ms.openlocfilehash: d23b2f65f25b704beaee12c53e47706653dcc208
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022369"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858595"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve ayarlama Kılavuzu
 
@@ -169,7 +169,7 @@ Azure SQL veritabanı 'ndan bir tablo veya SQL sorgusu kullanarak okuma yapabili
 
 ### <a name="azure-synapse-analytics-sources"></a>Azure SYNAPSE Analytics kaynakları
 
-Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin ```Polybase``` , okuma performansını büyük ölçüde artıran SYNAPSE kullanarak okumasına olanak tanır. Etkinleştirme ```Polybase``` , veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmenizi gerektirir.
+Azure SYNAPSE Analytics kullanılırken, kaynak seçeneklerinde **hazırlama hazırlama** adlı bir ayar bulunur. Bu, ADF 'nin ```Staging``` , okuma performansını büyük ölçüde artıran SYNAPSE kullanarak okumasına olanak tanır. Etkinleştirme ```Staging``` , veri akışı etkinlik ayarlarında bir Azure Blob depolama alanı veya Azure Data Lake Storage Gen2 hazırlama konumu belirtmenizi gerektirir.
 
 ![Hazırlamayı etkinleştirme](media/data-flow/enable-staging.png "Hazırlamayı etkinleştirme")
 
@@ -216,9 +216,9 @@ Bunlar her ikisi de Azure SQL VERITABANı veya SYNAPSE havuzu içindeki SQL önc
 
 ### <a name="azure-synapse-analytics-sinks"></a>Azure SYNAPSE Analytics havuzları
 
-Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi, verileri toplu olarak etkin bir şekilde yükleyen [PolyBase](/sql/relational-databases/polybase/polybase-guide) kullanarak yazmasını sağlar. PolyBase kullanırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
+Azure SYNAPSE Analytics 'e yazarken, **hazırlama etkinleştirmeyi etkinleştir** ' in true olarak ayarlandığından emin olun. Bu, ADF 'yi toplu olarak verileri etkin bir şekilde yükleyen [SQL copy komutunu](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql) kullanarak yazmasını sağlar. Hazırlama kullanılırken verileri hazırlamak için bir Azure Data Lake Storage Gen2 veya Azure Blob depolama hesabına başvurmanız gerekir.
 
-PolyBase dışında, Azure SYNAPSE Analytics için Azure SQL veritabanı olarak aynı en iyi uygulamalar geçerlidir.
+Hazırlama dışında, Azure SYNAPSE Analytics için Azure SQL veritabanı olarak aynı en iyi uygulamalar geçerlidir.
 
 ### <a name="file-based-sinks"></a>Dosya tabanlı havuzlar 
 
@@ -309,6 +309,14 @@ Veri akışı etkinliklerinizi sırayla çalıştırırsanız, Azure IR yapılan
 ### <a name="overloading-a-single-data-flow"></a>Tek bir veri akışını aşırı yükleme
 
 Tüm mantığınızı tek bir veri akışının içine yerleştirirseniz, ADF tüm işi tek bir Spark örneği üzerinde yürütür. Bu, maliyetleri azaltmanın bir yolu gibi görünse de, farklı mantıksal akışlar birlikte karıştırıyor ve izlenmesi ve hata ayıklaması zor olabilir. Bir bileşen başarısız olursa, işin diğer tüm bölümleri de başarısız olur. Azure Data Factory ekibi, veri akışlarını bağımsız iş mantığı akışlarıyla düzenlemeyi öneriyor. Veri akışınız çok büyük hale gelirse, bileşenleri ayırmak için bölmek, izleme ve hata ayıklama işlemlerini kolaylaştırır. Bir veri akışındaki dönüştürme sayısında sabit sınır olmadığından, çok fazla olması işi karmaşık hale getirir.
+
+### <a name="execute-sinks-in-parallel"></a>Havuzları paralel olarak Yürüt
+
+Veri akışı havuzlarının varsayılan davranışı, her bir havuzun ardışık olarak, seri bir biçimde yürütülmesi ve havuzda bir hata ile karşılaşıldığında veri akışının başarısız olması olabilir. Ayrıca, veri akışı özelliklerine gitmediğiniz ve havuzlar için farklı öncelikler ayarlamadığınız müddetçe Tüm havuzlar aynı gruba varsayılan olarak ayarlanır.
+
+Veri akışları, Kullanıcı arabirimi Tasarımcısı ' nda veri akışı özellikleri sekmesinden, havuzları gruplar halinde gruplandırmanızı sağlar. Aynı grup numarasını kullanarak aynı zamanda, gruplarınızın yürütülme sırasını ve grup havuzlarını de gruplandırabilirsiniz. Grupları yönetmeye yardımcı olmak için, ADF 'nin paralel olarak çalışması için aynı grupta havuzları çalıştırmasını isteyebilirsiniz.
+
+Ardışık düzen veri akışını Yürüt "havuz özellikleri" bölümünde, paralel havuz yüklemeyi açma seçeneği vardır. "Paralel olarak çalıştır" seçeneğini etkinleştirdiğinizde, veri akışlarının, sıralı bir şekilde değil, aynı zamanda bağlı havuza yazdığına yol gösterilir. Paralel seçenekten yararlanmak için, havuz birlikte gruplandırmalı ve yeni bir dal veya koşullu bölme aracılığıyla aynı akışa bağlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 79f442c5ab7db92e69f5396f3f9205212bdf4d4d
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d6b916ce03c6850f78217f1aac0b63048a6aff3b
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399257"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858510"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Ağ güvenlik grupları için akış günlük kaydına giriş
 
@@ -309,7 +309,7 @@ Devamlılık _C_ ve bitiş _E_ akışı durumları için bayt ve paket sayılar�
 
 Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgili bağlantıyı kullanın.
 
-- [Azure portalı](./network-watcher-nsg-flow-logging-portal.md)
+- [Azure Portal](./network-watcher-nsg-flow-logging-portal.md)
 - [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
 - [CLI](./network-watcher-nsg-flow-logging-cli.md)
 - [REST](./network-watcher-nsg-flow-logging-rest.md)
@@ -317,7 +317,7 @@ Akış günlüklerini etkinleştirme yönergeleri için aşağıda yer alan ilgi
 
 ## <a name="updating-parameters"></a>Parametreleri güncelleştirme
 
-**Azure portalı**
+**Azure Portal**
 
 Azure portal, ağ Izleyicisi 'nde NSG akış günlükleri bölümüne gidin. Sonra NSG adına tıklayın. Bu işlem, akış günlüğü için ayarlar bölmesini getirir. İstediğiniz parametreleri değiştirin ve değişiklikleri dağıtmak için **Kaydet** 'e basın.
 
@@ -353,6 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Depolama hesabı konuları**: 
 
 - Konum: kullanılan depolama hesabı NSG ile aynı bölgede olmalıdır.
+- Performans katmanı: Şu anda yalnızca Standart katman depolama hesapları desteklenmektedir.
 - Kendi kendine Yönetim anahtar döndürme: erişim anahtarlarını depolama hesabınıza değiştirirseniz/döndürdüğünüzde NSG akış günlükleri çalışmayı durdurur. Bu sorunu onarmak için NSG akış günlüklerini devre dışı bırakıp yeniden etkinleştirmeniz gerekir.
 
 **Akış günlüğü maliyetleri**: NSG akış günlüğü, üretilen günlüklerin hacminde faturalandırılır. Yüksek trafik hacmi, büyük akış günlüğü hacmine ve ilişkili maliyetlere yol açabilir. NSG akış günlüğü fiyatlandırması, depolamanın temel maliyetlerini içermez. NSG akış günlüğü ile bekletme ilkesi özelliğinin kullanılması, uzun süreli depolama maliyetlerinin gerçek zamanlı olarak ayrılması anlamına gelir. Bekletme İlkesi özelliği gerektirmiyorsa, bu değeri 0 olarak ayarlamanızı öneririz. Daha fazla bilgi için bkz. [ağ Izleyicisi fiyatlandırması](https://azure.microsoft.com/pricing/details/network-watcher/) ve [Azure Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) ek ayrıntılar için.
@@ -374,7 +375,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **Bir kaynağa bağlı olan tüm NSG 'ler için NSG akış günlüğünü etkinleştirme**: NSG kaynağında Azure 'da akış günlüğü yapılandırılır. Akış yalnızca bir NSG kuralıyla ilişkilendirilecektir. Birden çok NSG 'nin kullanıldığı senaryolarda, tüm trafiğin kaydedildiğinden emin olmak için kaynağın alt ağında veya ağ arabiriminde uygulanan NSG akış günlüklerinin etkinleştirilmesini öneririz. Daha fazla bilgi için bkz. trafiğin ağ güvenlik gruplarında [nasıl değerlendirildiği](../virtual-network/network-security-group-how-it-works.md) . 
 
 Birkaç yaygın senaryo:
-1. **BIR NIC 'de birden çok NSG**: bir NIC 'ye birden fazla NSG bağlı olması durumunda, akış günlüğü 'nün tümünde etkinleştirilmesi gerekir
+1. **BIR VM 'de birden çok NIC**: bir sanal makineye birden çok NIC bağlı olması durumunda, akış günlüğü 'nün tümünde etkinleştirilmesi gerekir
 1. **Hem NIC hem de alt ağ düzeyinde NSG 'ye sahip olma**: NSG 'nin NIC 'de ve alt ağ düzeyinde yapılandırılması durumunda, akış günlüğü 'nün her ikisinde de her iki durumda da etkin olması gerekir. 
 
 **Depolama sağlama**: depolama alanı beklenen akış günlüğü birimi ile ayarlama sırasında sağlanmalıdır.

@@ -3,15 +3,15 @@ title: Windows sanal masaüstü FSLogix profil kapsayıcıları dosyaları-Azure
 description: Bu makalede, Windows sanal masaüstü ve Azure dosyaları içindeki FSLogix profil kapsayıcıları açıklanmaktadır.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 01/04/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: ef7f19d835f4fef1a911da01015321b2dda67682
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797205"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861886"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -70,7 +70,7 @@ S2D kümeleri, güvenli bir durumda düzeltme eki uygulanmış, güncelleştiril
 19 Kasım 2018 ' de, [Microsoft FSLogix aldı](https://blogs.microsoft.com/blog/2018/11/19/microsoft-acquires-fslogix-to-enhance-the-office-365-virtualization-experience/). FSLogix, birçok profil kapsayıcısı sorunlarını giderir. Aralarında anahtar şunlardır:
 
 - **Performans:** [Fslogix profil kapsayıcıları](/fslogix/configure-profile-container-tutorial/) yüksek performansdadır ve geçmişte engellenmiş önbelleğe alınmış Exchange moduna sahip performans sorunlarını çözer.
-- **OneDrive:** FSLogix profil kapsayıcıları olmadan, OneDrive Iş kalıcı olmayan RDSH veya VDı ortamlarında desteklenmez. [OneDrive iş ve FSLogix en iyi uygulamaları,](/fslogix/overview/) nasıl etkileşime gireceğini açıklar. Daha fazla bilgi için bkz. [sanal masaüstlerinde eşitleme Istemcisini kullanma](/deployoffice/rds-onedrive-business-vdi/).
+- **OneDrive:** FSLogix profil kapsayıcıları olmadan, OneDrive Iş kalıcı olmayan RDSH veya VDı ortamlarında desteklenmez. [ONEDRIVE VDI destek sayfasında](/onedrive/sync-vdi-support) nasıl etkileşime gireceğini söylülecektir. Daha fazla bilgi için bkz. [sanal masaüstlerinde eşitleme Istemcisini kullanma](/deployoffice/rds-onedrive-business-vdi/).
 - **Ek klasörler:** FSLogix, Kullanıcı profillerini ek klasörler içerecek şekilde genişletebilme olanağı sağlar.
 
 Alma işlemi, Microsoft, FSLogix profil kapsayıcılarıyla UPD gibi mevcut kullanıcı profili çözümlerini değiştirmeye başladı.

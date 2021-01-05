@@ -172,12 +172,12 @@
           href: how-to-migrate.md
         - name: Makineleri geçişe hazırlama
           href: prepare-for-migration.md
+        - name: Windows 2003 sunucularını geçişe hazırlama
+          href: prepare-windows-server-2003-migration.md
         - name: VMware VM’leri geçirme
           items:
             - name: VMware VM’lerini şifrelenmiş Azure VM’lerine geçirme
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
-            - name: Windows 2003 sunucularını geçişe hazırlama
-              href: prepare-windows-server-2003-migration.md
         - name: Geçişi ölçeklendirme
           items:
             - name: Çok büyük sayıda VM'nin geçişini otomatikleştirme

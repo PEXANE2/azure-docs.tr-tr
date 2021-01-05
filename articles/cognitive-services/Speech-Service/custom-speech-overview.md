@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: be01309fee3454fbd4be78130f9826b493e7bf7a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 51f9ad4fea1c139cee5974ecd81645c9a904feb4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033774"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854902"
 ---
 # <a name="what-is-custom-speech"></a>Özel Konuşma Tanıma nedir?
 
@@ -43,6 +43,23 @@ Bu diyagramda [özel konuşma tanıma portalını](https://aka.ms/customspeech)o
 ## <a name="set-up-your-azure-account"></a>Azure hesabınızı ayarlama
 
 Özel bir model oluşturmak için [özel konuşma tanıma portalını](https://speech.microsoft.com/customspeech) kullanabilmeniz için önce bir Azure hesabı ve konuşma hizmeti aboneliğine sahip olmanız gerekir. Hesabınız ve aboneliğiniz yoksa [konuşma hizmetini ücretsiz deneyin](overview.md#try-the-speech-service-for-free).
+
+Ses verileri içeren özel bir modeli eğitemeniz planlandıysanız, uygun donanıma sahip olan, eğitim için kullanılabilir olan aşağıdaki bölgelerden birini seçin. Bu, bir modeli eğitmek için geçen süreyi azaltır.
+
+* Doğu Avustralya
+* Orta Kanada
+* Orta Hindistan
+* Doğu ABD
+* Doğu ABD 2
+* Orta Kuzey ABD
+* Kuzey Avrupa
+* Orta Güney ABD
+* Güneydoğu Asya
+* Güney Birleşik Krallık
+* US Gov Arizona
+* US Gov Virginia
+* West Europe
+* Batı ABD 2
 
 > [!NOTE]
 > Lütfen standart (S0) bir abonelik oluşturmayı unutmayın. Ücretsiz (F0) abonelikler desteklenmez.

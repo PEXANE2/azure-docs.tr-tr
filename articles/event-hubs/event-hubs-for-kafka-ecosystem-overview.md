@@ -3,12 +3,12 @@ title: Apache Kafka App 'ten Olay Hub 'ı kullanma-Azure Event Hubs | Microsoft 
 description: Bu makalede, Azure Event Hubs tarafından Apache Kafka desteği hakkında bilgi sağlanır.
 ms.topic: article
 ms.date: 09/25/2020
-ms.openlocfilehash: d9aa8af30d5ef5e1a985e4d73a9d4a8921ac7d45
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b0f0da76bba68f8a66695700d530e871cbd35e3c
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369599"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861343"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>Apache Kafka uygulamalardan Azure Event Hubs kullanma
 Event Hubs, kendi Apache Kafka kümenizi çalıştırmaya alternatif olarak, mevcut Apache Kafka istemci uygulamaları tarafından kullanılabilen Apache Kafka® üretici ve tüketici API 'Leri ile uyumlu bir uç nokta sağlar. Event Hubs, sürüm 1,0 ve üzeri sürümlerde Apache Kafka üreticisi ve tüketici API 'Lerini destekler.
@@ -118,9 +118,7 @@ Herhangi bir olay hub 'ı olayının yükü bir bayt akışıdır ve içerik, se
 
 ### <a name="log-compaction"></a>Günlük düzenleme
 
-Apache Kafka günlük sıkıştırma, bir bölümden her bir anahtarın son kaydının hariç olmasına izin veren bir özelliktir. Bu özellik, bir Apache Kafka konusunu son değer eklenen bir öncekini geçersiz kılarsa anahtar-değer deposuna etkin bir şekilde döndürür. Anahtar-değer depolama alanı, sık sık güncelleştirmelerle birlikte [Azure Cosmos DB](../cosmos-db/introduction.md)gibi veritabanı Hizmetleri tarafından en iyi şekilde desteklenmektedir.
-
-Günlük sıkıştırma özelliği, Kafka Connect ve Kafka Streams istemci çerçeveleri tarafından kullanılır.
+Apache Kafka günlük sıkıştırma, bir bölümden her bir anahtarın son kaydının hariç olmasına izin veren bir özelliktir. Bu özellik, bir Apache Kafka konusunu son değer eklenen bir öncekini geçersiz kılarsa anahtar-değer deposuna etkin bir şekilde döndürür. Bu özellik şu anda Azure Event Hubs tarafından uygulanmıyor. Anahtar-değer depolama alanı, sık sık güncelleştirmelerle birlikte [Azure Cosmos DB](../cosmos-db/introduction.md)gibi veritabanı Hizmetleri tarafından en iyi şekilde desteklenmektedir. Daha fazla ayrıntı için lütfen Event Hubs Federasyon kılavuzundaki [günlük projeksiyonu](event-hubs-federation-overview.md#log-projections) konusuna bakın. 
 
 ### <a name="kafka-streams"></a>Kafka akışlar
 

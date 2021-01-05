@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a63f910b3a939e33b8c71d8f22d15f6d610a12cc
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353706"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845561"
 ---
 # <a name="form-recognizer-layout-service"></a>Form tanıyıcı düzen hizmeti
 
@@ -89,8 +89,7 @@ Düzen Ayrıca belgelerden seçim işaretlerini de ayıklar. Ayıklanan seçim i
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Bir [Biçim tanıyıcı örnek kullanıcı arabirimini kullanarak kendi düzen ayıklayıcınızı](https://fott-preview.azurewebsites.net/) deneyin
-- Seçtiğiniz dilde düzenleri çıkarmaya başlamak için [form tanıyıcı istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
-- Ya da Python ve REST API kullanarak düzen verilerinin ayıklanmasını uygulamak için [düzen verilerini](./QuickStarts/python-layout.md) ayıklama hızlı başlangıcını izleyin.
+- Seçtiğiniz dilde düzenleri çıkarmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

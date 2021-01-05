@@ -1,15 +1,15 @@
 ---
 title: Azure 'da BareMetal altyapı önizlemesine genel bakış
-description: Azure 'da BareMetal altyapısının nasıl dağıtılacağı konusuna genel bakış.
+description: Azure 'da BareMetal altyapısına genel bakış.
 ms.custom: references_regions
 ms.topic: conceptual
-ms.date: 12/31/2020
-ms.openlocfilehash: db974d9260344d1f6050235bb2a9fbaa0420659b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: eb4dc129719dc410f7101598e3d72e68f17809c1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829265"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860982"
 ---
 #  <a name="what-is-baremetal-infrastructure-preview-on-azure"></a>Azure 'da BareMetal altyapı önizlemesi nedir?
 
@@ -25,7 +25,7 @@ BareMetal altyapısı, mevcut yatırımlarınızı ve mimarinizi koruyarak altya
 - Orta Güney ABD
 
 >[!NOTE]
->**Rev 4,2** , var olan Rev 4 mimarisini kullanan en son yeniden markalanmış BareMetal altyapısıdır.  Rev 4, Azure sanal makinesi (VM) konaklarına daha yakından yakınlık sağlar ve Azure VM 'Leri ile BareMetal örnek birimleri arasındaki gecikmeyi azaltır. BareMetal örneklerinizi Azure portal aracılığıyla erişebilir ve yönetebilirsiniz. 
+>**Rev 4,2** , var olan Rev 4 mimarisini kullanan en son yeniden markalı BareMetal altyapısıdır.  Rev 4, Azure sanal makinesi (VM) konaklarına daha yakın bir yakınlık sağlar. Bu, Azure VM 'Ler ile karemetal örnek birimleri arasında, Rev 4 Damgalarında veya satırlarda dağıtılan ağ gecikmesi açısından önemli geliştirmeler sunar.  BareMetal örneklerinizi Azure portal aracılığıyla erişebilir ve yönetebilirsiniz. 
 
 ## <a name="support"></a>Destek
 BareMetal altyapısı ISO 27001, ISO 27017, SOC 1 ve SOC 2 uyumludur.  Ayrıca, kendi lisansını getir (KLG) modelini kullanır: işletim sistemi, özel iş yükü ve üçüncü taraf uygulamalar.  
@@ -35,13 +35,13 @@ Kök erişim ve tam denetim elde edersiniz almaz, şu şekilde sorumluluk alacak
 - İşletim sistemi ve üçüncü taraf yazılım için lisanslama, güvenlik ve destek
 
 Microsoft 'un sorumluluğundadır:
-- Özel iş yükleri için sertifikalı donanım sağlama 
+- Özel iş yükleri için donanım sağlama 
 - İşletim sistemini sağlama
 
 :::image type="content" source="media/baremetal-support-model.png" alt-text="BareMetal altyapı destek modeli" border="false":::
 
 ## <a name="compute"></a>İşlem
-BareMetal altyapısı, özel iş yükleri için sertifikalı birden çok SKU sunar. Kullanılabilir SKU 'Lar, daha küçük iki soketli sistemden 24 soketli sisteme kadar kullanılabilir. Özel iş yükünüz için iş yüküne özgü sertifikalı SKU 'Ları kullanın.
+BareMetal altyapısı, özelleştirilmiş iş yükleri için birden çok SKU sunar. Kullanılabilir SKU 'Lar, daha küçük iki soketli sistemden 24 soketli sisteme kadar kullanılabilir. Özel iş yükünüz için iş yüküne özgü SKU 'Ları kullanın.
 
 BareMetal örnek damgası, aşağıdaki bileşenleri birleştirir:
 
@@ -72,10 +72,10 @@ Kullanılabilir Linux işletim sistemi sürümleri şunlardır:
    - SLES 15 SP1
 
 ## <a name="storage"></a>Depolama
-Belirli SKU türüne göre BareMetal örnekleri, belirli iş yükü türüne bağlı olarak önceden tanımlanmış NFS depolaması ile gelir. BareMetal sağladığınızda, destek isteği göndererek tahmini büyümenize göre ek depolama alanı sağlayabilirsiniz. Tüm depolama NFSv3 ve NFSv4 desteğiyle düzeltme 4,2 ' de bir All-Flash diski ile gelir. Daha yeni düzeltme 4,5 NVMe SSD kullanıma sunulacaktır. Depolama boyutlandırma hakkında daha fazla bilgi için [Baremetal iş yükü türü](../../../virtual-machines/workloads/sap/get-started.md) bölümüne bakın.
+Belirli SKU türüne göre BareMetal örnekleri, belirli iş yükü türü için önceden tanımlanmış NFS depolama ile gelir. BareMetal sağladığınızda, destek isteği göndererek tahmini büyümenize göre daha fazla depolama sağlayabilirsiniz. Tüm depolama NFSv3 ve NFSv4 desteğiyle düzeltme 4,2 ' de bir All-Flash diski ile gelir. Daha yeni düzeltme 4,5 NVMe SSD kullanıma sunulacaktır. Depolama boyutlandırma hakkında daha fazla bilgi için [Baremetal iş yükü türü](../../../virtual-machines/workloads/sap/get-started.md) bölümüne bakın.
 
 >[!NOTE]
->BareMetal için kullanılan depolama, varsayılan olarak bekleyen şifreleme sunarak FIPS 140-2 güvenlik gereksinimlerini karşılar. Veriler, disklerde güvenli bir şekilde depolanır.
+>BareMetal için kullanılan depolama, varsayılan olarak bekleyen şifreleme sağlayan [Federal bilgi Işleme standardı (FIPS) yayın 140-2](/microsoft-365/compliance/offering-fips-140-2) gereksinimlerini karşılar. Veriler, disklerde güvenli bir şekilde depolanır.
 
 ## <a name="networking"></a>Ağ
 Azure ağ hizmetleri 'nin mimarisi, BareMetal örneklerinde özelleştirilmiş iş yüklerinin başarılı bir şekilde dağıtılması için önemli bir bileşendir. Bu, tüm BT sistemleri Azure 'da zaten yer alıyor olabilir. Azure, Azure 'u şirket içi yazılım dağıtımlarınıza bir sanal veri merkezi gibi görünür hale getirmek için size ağ teknolojisi sunar. BareMetal örnekleri için gereken Azure ağ işlevselliği:
@@ -91,10 +91,10 @@ BareMetal örnekleri, Azure VNET sunucunuzun IP adresi aralığınızı içinde 
 :::image type="content" source="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" alt-text="Azure BareMetal altyapı diyagramı" lightbox="media/baremetal-infrastructure-portal/baremetal-infrastructure-diagram.png" border="false":::
 
 Gösterilen mimari üç bölüme ayrılmıştır:
-- **Sol:** Farklı uygulamaları çalıştıran, iş ortağı veya Equinx gibi yerel uç yönlendiriciyle bağlanan müşteri şirket içi altyapısını gösterir. Daha fazla bilgi için bkz. [bağlantı sağlayıcıları ve konumlar: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
-- **Ortala:** Azure Edge ağına bağlantısı sunan Azure aboneliğiniz kullanılarak sağlanan [ExpressRoute](../../../expressroute/expressroute-introduction.md) 'ı gösterir.
+- **Sol:** farklı uygulamalar çalıştıran, iş ortağı veya Equinx gibi yerel uç yönlendiriciyle bağlantı kurarak müşteri şirket içi altyapısını gösterir. Daha fazla bilgi için bkz. [bağlantı sağlayıcıları ve konumlar: Azure ExpressRoute](../../../expressroute/expressroute-locations.md).
+- **Center:** Azure Edge ağına bağlantı sunan Azure aboneliğiniz kullanılarak sağlanan [ExpressRoute](../../../expressroute/expressroute-introduction.md) 'ı gösterir.
 - **Sağ:** Azure IaaS ' i gösterir ve bu durumda VM 'lerin Azure sanal ağınızda sağlanan uygulamalarınızı barındırmak için kullanılması gerekir.
-- **Alt:** Düşük gecikme süresine sahip BareMetal bağlantısı için ExpressRoute [FastPath](../../../expressroute/about-fastpath.md) Ile etkinleştirilen ExpressRoute ağ geçidinizin kullanımını gösterir.   
+- **Alt:** Karemetal bağlantı için düşük gecikme süresine sahip ExpressRoute [FastPath](../../../expressroute/about-fastpath.md) Ile etkin ExpressRoute ağ geçidinizin kullanımını gösterir.   
    >[!TIP]
    >Bunu desteklemek için, ExpressRoute ağ geçidinizin UltraPerformance olmalıdır.  Daha fazla bilgi için bkz. [ExpressRoute sanal ağ geçitleri hakkında](../../../expressroute/expressroute-about-virtual-network-gateways.md).
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353774"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857333"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Konuşmayı metne sık sorulan sorular
 
@@ -25,7 +25,7 @@ Bu SSS 'de sorularınıza yanıt bulamazsanız, [diğer destek seçeneklerine](.
 
 **S: bir taban çizgisi modeliyle özel bir konuşma ve metin modeli arasındaki fark nedir?**
 
-Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir ve bulutta zaten dağıtılır. Bir modeli, belirli çevresel gürültü veya dile sahip belirli bir ortama daha iyi uyacak şekilde uyarlamak için özel bir model kullanabilirsiniz. Fabrika zeminleri, otomobiller veya gürültülü Streets bir uyarlanan model gerektirir. Bioloji, fizik, radiolojisi, ürün adları ve özel kısaltmalar gibi konular, bir uyarlanan dil modeli gerektirir.
+Y **: temel bir model**, Microsoft 'a ait veriler kullanılarak eğitilmiştir ve bulutta zaten dağıtılır. Bir modeli, belirli çevresel gürültü veya dile sahip belirli bir ortama daha iyi uyacak şekilde uyarlamak için özel bir model kullanabilirsiniz. Fabrika zeminleri, otomobiller veya gürültülü Streets bir uyarlanan model gerektirir. Bioloji, fizik, radiolojisi, ürün adları ve özel kısaltmalar gibi konular, bir uyarlanan dil modeli gerektirir. Özel bir model eğitemeniz durumunda, özel hüküm ve tümceciklerin tanınmasını geliştirmek için ilgili metinle başlamanız gerekir.
 
 **S: bir temel modeli kullanmak istersem nereden başlayabilirim?**
 
@@ -43,15 +43,21 @@ Y **: Şu** anda, tablodaki modelin veya veri kümesinin durumu bilinmenin tek y
 
 **S: birden fazla model oluşturabilir miyim?**
 
-**A** Y: koleksiyonunuzda sahip olduğunuz model sayısında sınır yoktur.
+Y: koleksiyonunuzda sahip olduğunuz model sayısında sınır yoktur.
 
 **S: bir hata yaptık. Nasıl yaparım? veri içeri aktarma veya model oluşturma işlemini iptal ediyor mu?**
 
 Y **: Şu anda, bir akustik** veya dil uyarlama işlemini geri alamazsınız. İçeri aktarılan verileri ve modelleri, Terminal durumundayken silebilirsiniz.
 
-**S: arama ve dikte modeliyle konuşma modeli arasındaki fark nedir?**
+**S: ayrıntılı çıkış biçimiyle her bir tümcecik için birkaç sonuç alıyorum. Hangi birini kullanmalıyım?**
 
-Y **: konuşma** hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Konuşma modeli, konuşma stilinde konuşulan konuşmayı tanımayı yararlı olur. Bu model, bu telefon görüşmeleri için idealdir. Arama ve dikte modeli, sesli tetiklenen uygulamalar için idealdir. Evrensel model, her iki senaryoyu ele almak için amaçlar 'in yeni bir modelidir. Evrensel model şu anda çoğu yerel olarak konuşma modelinin kalite düzeyinin üzerinde veya üzerinde.
+**A**: başka bir sonuç ("N-en iyi") daha yüksek bir güven değerine sahip olsa bile her zaman ilk sonucu alın. Konuşma hizmeti ilk sonucu en iyi şekilde değerlendirir. Konuşma tanınmazsa boş bir dize de olabilir.
+
+Diğer sonuçlar büyük olasılıkla daha kötüdir ve tam büyük harfe ve noktalama uygulanmış olabilir. Bu sonuçlar, kullanıcılara bir listeden düzeltmeler çekme veya yanlış tanınan komutları işleme seçeneğini verme gibi özel senaryolarda faydalıdır.
+
+**S: neden farklı temel modeller var?**
+
+Y **: konuşma** hizmetinde birden fazla temel model arasından seçim yapabilirsiniz. Her model adı, eklendiği tarihi içerir. Özel bir model eğitimi başlattığınızda en iyi doğruluğu elde etmek için en son modeli kullanın. Yeni bir model kullanılabilir hale geldiğinde, daha eski temel modeller hala bir süre için kullanılabilir. Devre dışı bırakılana kadar çalıştığınız modeli kullanmaya devam edebilirsiniz (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)). Daha iyi doğruluk için en son temel modele geçmeniz hala önerilir.
 
 **S: var olan modelmi güncelleştirebilir (model yığınlama)?**
 
@@ -59,19 +65,27 @@ Y **: varolan** bir modeli güncelleştiremezsiniz. Bir çözüm olarak, eski ve
 
 Eski veri kümesi ve yeni veri kümesi tek bir. zip dosyasında (akustik veriler için) veya bir. txt dosyasında (dil verileri için) birleştirilmelidir. Uyarlama tamamlandığında yeni, güncelleştirilmiş modelin yeni bir uç nokta almak için yeniden dağıtılması gerekir
 
-**S: bir taban çizgisinin yeni bir sürümü kullanılabilir olduğunda, dağıtımım otomatik olarak güncelleştirilir mi?**
+**S: bir temel modelin yeni bir sürümü kullanılabilir olduğunda, dağıtımım otomatik olarak güncelleştirilir mi?**
 
 **A**: dağıtımlar otomatik olarak güncellenmeyecektir.
 
-Temel V 1.0 içeren bir model uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Müşteriler, dağıtılan modelin yetkisini alabilir, ana hat 'in daha yeni bir sürümünü kullanarak readapt ve yeniden dağıtın.
+Bir modeli uyardıysanız ve dağıttıysanız, bu dağıtım olduğu gibi kalır. Dağıtılmış modelin yetkisini alabilir ve temel modelin daha yeni sürümünü kullanarak readapt ve daha iyi doğruluk için yeniden dağıtabilirsiniz.
+
+Temel modeller ve özel modeller bir süre sonra kullanımdan kaldırılacaktır (bkz. [model yaşam döngüsü](custom-speech-overview.md#model-lifecycle)).
 
 **S: modelimi indirebilir ve yerel olarak çalıştırabilir miyim?**
 
-Y **: modeller** yerel olarak indirilemez ve yürütülemez.
+Y **: özel bir modeli bir** [Docker kapsayıcısında](speech-container-howto.md?tabs=cstt)yerel olarak çalıştırabilirsiniz.
+
+**S: veri kümelerimi, modellerimi ve dağıtımlarımı başka bir bölgeye veya aboneliğe kopyalayabilir veya taşıyabilir miyim?**
+
+Y **: özel bir modeli** başka bir bölgeye veya aboneliğe kopyalamak için [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) kullanabilirsiniz. Veri kümeleri veya dağıtımlar kopyalanamıyor. Bir veri kümesini başka bir abonelikte içeri aktarabilir ve model kopyalarını kullanarak uç noktalar oluşturabilirsiniz.
 
 **S: isteklerim günlüğe kaydediliyor mi?**
 
-**A**: varsayılan olarak istekler günlüğe kaydedilmez (ses veya döküm değil). Gerekirse, izlemeyi etkinleştirmek için [özel bir uç nokta oluşturduğunuzda](./how-to-custom-speech-train-model.md) , *Bu uç nokta seçeneğinde günlük içeriği* ' ni seçebilirsiniz. Ardından istekler, güvenli depolama alanında Azure 'da günlüğe kaydedilir.
+**A**: varsayılan olarak istekler günlüğe kaydedilmez (ses veya döküm değil). Gerekirse, [özel bir uç nokta oluşturduğunuzda](./how-to-custom-speech-train-model.md) *Bu uç nokta seçeneğinde günlük içeriği* ' ni seçebilirsiniz. Ayrıca, özel bir uç nokta oluşturmadan, [konuşma SDK 'sında](speech-sdk.md) istek başına temelinde ses günlüğünü de etkinleştirebilirsiniz. Her iki durumda da isteklerin ses ve tanıma sonuçları, güvenli depolama alanında depolanır. Microsoft 'a ait depolama kullanan abonelikler için, bunlar 30 gün boyunca kullanılabilir olacaktır.
+
+*Bu uç noktanın etkin olan günlük içeriğiyle* özel bir uç nokta kullanırsanız, konuşma Studio 'daki dağıtım sayfasında günlüğe kaydedilen dosyaları dışarı aktarabilirsiniz. Ses günlüğü 'nün SDK aracılığıyla etkinleştirilmesi durumunda dosyalara erişmek için [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) 'yi çağırın.
 
 **S: isteklerim kısıtlandı mı?**
 
@@ -92,7 +106,7 @@ Bkz. [konuşma Hizmetleri kotaları ve sınırları](speech-services-quotas-and-
 
 **S: bir veri kümesinin boyutuyla ilgili sınır nedir ve neden sınırla?**
 
-Y **: sınır**, http karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır. Gerçek sınır için [konuşma Hizmetleri kotaları ve limitlerini](speech-services-quotas-and-limits.md) inceleyin.
+Y **: sınır**, http karşıya yüklemesi için bir dosyanın boyutu kısıtlamasından kaynaklanır. Gerçek sınır için [konuşma Hizmetleri kotaları ve limitlerini](speech-services-quotas-and-limits.md) inceleyin. Verilerinizi birden çok veri kümesine bölebilir ve tüm bunları seçerek modeli eğitebilirsiniz.
 
 **S: daha büyük bir metin dosyasını karşıya yükleyebilmem için metin dosyalarımı ZIP yapabilir miyim?**
 
@@ -118,21 +132,19 @@ Y **: tek başına bir veri** toplama uygulaması oluşturabilir veya raf dış�
 
 **S: verileri kendi kendinize uyarlama konusunda bir işlem yapmam gerekir mi?**
 
-Y **: Evet**! Kendiniz düzenleyebilir veya profesyonel bir döküm hizmeti kullanabilirsiniz. Bazı kullanıcılar profesyonel onayları tercih eder ve diğerleri bu kişilerin kendi kendilerini kullanmasını ister.
+Y **: Evet**. Kendiniz düzenleyebilir veya profesyonel bir döküm hizmeti kullanabilirsiniz. Bazı kullanıcılar profesyonel onayları tercih eder ve diğerleri bu kişilerin kendi kendilerini kullanmasını ister.
+
+**S: özel bir model ses verilerini eğmek için ne kadar sürer?**
+
+Y: bir modeli ses verileriyle eğitmek **uzun bir işlemdir**. Veri miktarına bağlı olarak, özel bir model oluşturmak birkaç gün sürebilir. Bir hafta içinde bitirilemez servis, eğitim işlemini durdurabilir ve modeli başarısız olarak rapor edebilir. Daha hızlı sonuçlar için, Özel donanımın eğitim için kullanılabildiği [bölgelerden](custom-speech-overview.md#set-up-your-azure-account) birini kullanın. [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)kullanarak, tamamen eğitilen modeli başka bir bölgeye kopyalayabilirsiniz. Yalnızca metin ile eğitim çok daha hızlıdır ve genellikle dakikalar içinde tamamlanır.
+
+Bazı temel modeller ses verileriyle özelleştirilemez. Bunlar için hizmet, eğitimin metnini yalnızca eğitim için kullanır ve ses verilerini atar. Daha sonra eğitim daha hızlı tamamlanır ve sonuçlar yalnızca metin ile eğitimle aynı olacaktır.
 
 ## <a name="accuracy-testing"></a>Doğruluk testi
 
-**S: özel bir dil modeli kullanarak özel akustik modelmin çevrimdışı testini yapabilir miyim?**
-
-Y **: Evet**, çevrimdışı testi ayarlarken açılan menüden özel dil modelini seçmeniz yeterlidir.
-
-**S: özel bir akustik model kullanarak özel dil modelimin çevrimdışı testini yapabilir miyim?**
-
-Y **: Evet**, çevrimdışı testi ayarlarken açılan menüden özel akustik modeli seçmeniz yeterlidir.
-
 **S: sözcük hata oranı nedir (WER) ve nasıl hesaplanır?**
 
-Y **: wer**, konuşma tanıma için değerlendirme ölçümdür. WER, ekleme, silme ve değiştirmeler içeren toplam hata sayısı olarak sayılır, bu da başvuru dökümünde toplam sözcük sayısına bölünür. Daha fazla bilgi için bkz. [sözcük hata oranı](https://en.wikipedia.org/wiki/Word_error_rate).
+Y **: wer**, konuşma tanıma için değerlendirme ölçümdür. WER, ekleme, silme ve değiştirmeler içeren toplam hata sayısı olarak sayılır, bu da başvuru dökümünde toplam sözcük sayısına bölünür. Daha fazla bilgi için bkz. [doğruluğu değerlendirme özel konuşma tanıma](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy).
 
 **S: doğruluk testinin sonuçlarının iyi olup olmadığını Nasıl yaparım?.**
 

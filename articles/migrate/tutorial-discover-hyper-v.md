@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: e7b4a1b2e1d737dad0054cbdf08443436ac2c181
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 90532a88e145507b09de9d36f704bc5c88899e95
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705566"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861897"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Öğretici: Sunucu değerlendirmesi ile Hyper-V VM 'lerini bulma
 
@@ -42,7 +42,7 @@ Bu öğreticiye başlamadan önce, bu önkoşulların yerinde olup olmadığın�
 **Gereksinim** | **Ayrıntılar**
 --- | ---
 **Hyper-V konağı** | VM 'Lerin bulunduğu Hyper-V konakları tek başına veya bir kümede olabilir.<br/><br/> Konağın Windows Server 2019, Windows Server 2016 veya Windows Server 2012 R2 çalıştırması gerekir.<br/><br/> BT 'nin Genel Bilgi Modeli (CıM) oturumu kullanarak çekme VM meta verileri ve performans verilerine bağlanabilmesi için WinRM bağlantı noktası 5985 ' de (HTTP) gelen bağlantılara izin verildiğini doğrulayın.
-**Gereç dağıtımı** | Hyper-v konağının, Gereç için bir VM ayırması gereken kaynaklara ihtiyacı vardır:<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> -Sekiz vCPU<br/><br/> -Yaklaşık 80 GB disk depolaması.<br/><br/> -Dış sanal anahtar.<br/><br/> -VM için doğrudan veya bir ara sunucu üzerinden Internet erişimi.
+**Gereç dağıtımı** | Hyper-V konağının, Gereç için bir VM ayırması gereken kaynaklara ihtiyacı vardır:<br/><br/> - Windows Server 2016<br/><br/> -16 GB RAM<br/><br/> -Sekiz vCPU<br/><br/> -Yaklaşık 80 GB disk depolaması.<br/><br/> -Dış sanal anahtar.<br/><br/> -VM için doğrudan veya bir ara sunucu üzerinden Internet erişimi.
 **VM’ler** | VM 'Ler herhangi bir Windows veya Linux işletim sistemi çalıştırıyor olabilir. 
 
 Başlamadan önce, gerecin bulma sırasında topladığı [verileri gözden](migrate-appliance.md#collected-data---hyper-v) geçirebilirsiniz.
@@ -88,7 +88,7 @@ Hyper-V konaklarında yönetici erişimi olan bir hesap ayarlayın. Gereç bu he
 
 ## <a name="set-up-a-project"></a>Proje ayarlama
 
-Yeni bir Azure geçişi projesi kurun.
+Yeni bir Azure geçişi projesi ayarlayın.
 
 1. Azure portalı > **Tüm hizmetler** bölümünde **Azure Geçişi**’ni arayın.
 2. **Hizmetler** altında **Azure Geçişi**’ni seçin.

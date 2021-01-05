@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 7d07dda7741aa075b8d853a8d06d3d3218ca901a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: fafa4c1e8c12ce26a90cfdf9df940823abf5ff25
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94563826"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857452"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning işlem örneği nedir?
 
@@ -32,7 +32,7 @@ Makine öğrenimi için bulutta tam olarak yapılandırılmış ve yönetilen ge
 
 İşlem örneği, Machine Learning geliştirme ortamınız için iyileştirilmiş, tam olarak yönetilen bulut tabanlı bir iş istasyonudur. Aşağıdaki avantajları sağlar:
 
-|Önemli avantajlar|Description|
+|Önemli avantajlar|Açıklama|
 |----|----|
 |Üretkenlik|Tümleşik not defterlerini ve Azure Machine Learning Studio 'daki aşağıdaki araçları kullanarak modeller oluşturabilir ve dağıtabilirsiniz:<br/>-Jupyıter<br/>-Jupyıterlab<br/>-RStudio (Önizleme)<br/>İşlem örneği, Azure Machine Learning çalışma alanı ve Studio ile tamamen tümleşiktir. Çalışma alanındaki diğer veri bilimcileri ile not defterlerini ve verileri paylaşabilirsiniz.<br/> İşlem örnekleri ile [vs Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) de kullanabilirsiniz.
 |Yönetilen & güvenli|Güvenlik ayak izini azaltın ve kurumsal güvenlik gereksinimleriyle uyumluluk ekleyin. İşlem örnekleri, güçlü yönetim ilkeleri ve güvenli ağ yapılandırmalarının yanı sıra şunları sağlar:<br/><br/>-Kaynak Yöneticisi şablonlarından veya Azure Machine Learning SDK 'dan oto sağlama<br/>- [Azure rol tabanlı erişim denetimi (Azure RBAC)](../role-based-access-control/overview.md)<br/>- [Sanal ağ desteği](./how-to-secure-training-vnet.md#compute-instance)<br/>-SSH erişimini etkinleştirmek/devre dışı bırakmak için SSH ilkesi<br/>TLS 1,2 etkin |
@@ -59,7 +59,7 @@ Aşağıdaki araçlar ve ortamlar, işlem örneğinde zaten yüklüdür:
 |----|:----:|
 |Sürücüler|`CUDA`</br>`cuDNN`</br>`NVIDIA`</br>`Blob FUSE` |
 |Intel MPı kitaplığı||
-|Azure CLI’si ||
+|Azure CLI ||
 |Azure Machine Learning örnekleri ||
 |Docker||
 |Nginx||
@@ -102,7 +102,7 @@ Küçük dosyaların yazılması, ağ sürücülerinde, işlem örneği yerel di
 
 ## <a name="managing-a-compute-instance"></a>İşlem örneğini yönetme
 
-Azure Machine Learning Studio 'daki çalışma alanınızda **işlem** ' ı seçin ve ardından en üstteki **işlem örneği** ' ni seçin.
+Azure Machine Learning Studio 'daki çalışma alanınızda **işlem**' ı seçin ve ardından en üstteki **işlem örneği** ' ni seçin.
 
 ![İşlem örneğini yönetme](./media/concept-compute-instance/manage-compute-instance.png)
 
@@ -129,6 +129,11 @@ Bu eylemler, Azure RBAC tarafından denetlenebilir:
 * *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/Başlat/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/durdur/eylem*
 * *Microsoft. MachineLearningServices/Workspaces/hesaplar/yeniden Başlat/eylem*
+
+Lütfen bir işlem örneği oluşturmak için kullanıcının aşağıdaki eylemler için izinlere sahip olması gerektiğini unutmayın:
+* *Microsoft. MachineLearningServices/çalışma alanları/hesaplar/yaz*
+* *Microsoft. MachineLearningServices/Workspaces/Checkcomputenameavaılabılıty/Action*
+
 
 ### <a name="create-a-compute-instance"></a><a name="create"></a>İşlem örneği oluşturma
 

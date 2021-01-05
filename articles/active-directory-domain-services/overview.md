@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 12/03/2020
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 99a207810f51949b0da0e78b1cb0e0a7f8bc95e3
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027348"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861516"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services nedir?
 
@@ -41,7 +41,7 @@ Yönetilen bir etki alanı, merkezi bir grup kullanıcıya, gruba ve kimlik bilg
 
 ![AD Connect kullanarak Azure AD ve şirket içi AD DS Azure AD Domain Services eşitleme](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-Azure AD DS kimlik bilgilerini Azure AD 'den çoğalttığından, bu nedenle yalnızca bulutta bulunan veya şirket içi (AD DS ortamıyla eşitlenmiş Azure AD kiracılarıyla birlikte çalışarak). Her iki ortam için aynı Azure AD DS özellikleri kümesi vardır.
+Azure AD DS, Azure AD 'den kimlik bilgilerini çoğalttığından, bu nedenle yalnızca bulutta bulunan veya şirket içi AD DS ortamıyla eşitlenmiş Azure AD kiracılarıyla birlikte çalışmaktadır. Her iki ortam için aynı Azure AD DS özellikleri kümesi vardır.
 
 * Mevcut bir şirket içi AD DS ortamınız varsa, kullanıcılar için tutarlı bir kimlik sağlamak üzere Kullanıcı hesabı bilgilerini eşzamanlı hale getirebilirsiniz. Daha fazla bilgi edinmek için bkz. [nesneleri ve kimlik bilgilerini yönetilen bir etki alanında eşitleme][synchronization].
 * Yalnızca bulut ortamlarında, Azure AD DS merkezi kimlik hizmetlerini kullanmak için geleneksel bir şirket içi AD DS ortamına ihtiyacınız yoktur.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: acb85a04b8a1ca491058702510079a36b93fc657
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3d69b72012819e3d9099e447b9048fe07aea86d3
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151038"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858714"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure SignalR Hizmeti ile Azure İşlevleri geliştirme ve yapılandırma
 
@@ -24,7 +24,7 @@ Bu makalede, SignalR hizmeti ile tümleştirilmiş bir Azure Işlev uygulaması 
 
 Azure SignalR hizmeti, farklı modlarda yapılandırılabilir. Azure Işlevleri ile kullanıldığında hizmetin *sunucusuz* modda yapılandırılması gerekir.
 
-Azure portal, SignalR hizmeti kaynağınızın *Ayarlar* sayfasını bulun. *Hizmet modunu* *sunucusuz*olarak ayarlayın.
+Azure portal, SignalR hizmeti kaynağınızın *Ayarlar* sayfasını bulun. *Hizmet modunu* *sunucusuz* olarak ayarlayın.
 
 ![SignalR hizmeti modu](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -49,11 +49,11 @@ Kimliği doğrulanmış bir belirteç oluşturma hakkında bilgi edinmek için [
 
 ### <a name="handle-messages-sent-from-signalr-service"></a>SignalR hizmetinden gönderilen iletileri işle
 
-SignalR hizmetinden gönderilen iletileri işlemek için *SignalR tetikleme* bağlamasını kullanın. İstemciler ileti gönderir veya istemcileri bağlandığında veya bağlantısı kesildiğinde tetiklenebilir.
+SignalR hizmetinden gönderilen iletileri işlemek için *SignalR tetikleme* bağlamasını kullanın. İstemciler ileti gönderirken veya istemcileri bağlandığında veya bağlantıyı kestikten sonra bildirim alabilirsiniz.
 
 Daha fazla bilgi için bkz. [ *SignalR tetikleyicisi* bağlama başvurusu](../azure-functions/functions-bindings-signalr-service-trigger.md).
 
-Ayrıca, hizmetin istemciden gelen iletiyi tetikleyeceği şekilde işlev uç noktanızı bir yukarı akış olarak yapılandırmanız gerekir. Yukarı akışı yapılandırma hakkında daha fazla bilgi için lütfen bu [belgeye](concept-upstream.md)başvurun.
+Ayrıca, hizmetin istemciden ileti olduğunda işlevi tetikleyeceği şekilde işlev uç noktanızı bir yukarı akış olarak yapılandırmanız gerekir. Yukarı akışı yapılandırma hakkında daha fazla bilgi için lütfen bu [belgeye](concept-upstream.md)başvurun.
 
 ### <a name="sending-messages-and-managing-group-membership"></a>İleti gönderme ve grup üyeliğini yönetme
 
@@ -111,7 +111,7 @@ Sınıf tabanlı modelden yararlanmak isteyen tüm işlevlerin **Serverlesshub**
 
 ### <a name="define-hub-method"></a>Hub yöntemini tanımla
 
-Tüm Hub yöntemlerinin bir **must** bağımsız değişkeni `InvocationContext` olarak düzenlenmiş `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması gerekir. Sonra **Yöntem adı** parametre **olayı**olarak değerlendirilir.
+Tüm Hub yöntemlerinin bir  bağımsız değişkeni `InvocationContext` olarak düzenlenmiş `[SignalRTrigger]` ve parametresiz Oluşturucu kullanması gerekir. Sonra **Yöntem adı** parametre **olayı** olarak değerlendirilir.
 
 Varsayılan olarak, `category=messages` Yöntem adı dışında aşağıdaki adlardan biridir:
 

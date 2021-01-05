@@ -3,12 +3,12 @@ title: Azure VM 'de SQL Server veritabanlarını yönetme ve izleme
 description: Bu makalede, bir Azure VM üzerinde çalışan SQL Server veritabanlarının nasıl yönetileceği ve izleneceği açıklanır.
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: b0df22002521c8148cac1200e79aeb0ae5a60546
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37e6fc211b34b7e427b66db374a705faafd25f9
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021512"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858747"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Yedeklenmiş SQL Server veritabanlarını yönetme ve izleme
 
@@ -20,7 +20,7 @@ SQL Server veritabanınız için henüz yedeklemeleri yapılandırmadıysanız b
 
 Azure Backup, Portal 'daki **yedekleme işleri** altında tüm zamanlanmış ve isteğe bağlı işlemleri, çok sık olabileceğinizden bu yana zamanlanan günlük yedeklemeleri hariç gösterir. Bu portalda gördüğünüz işler veritabanı bulma ve kayıt, yedeklemeyi yapılandırma ve yedekleme ve geri yükleme işlemlerini içerir.
 
-![Yedekleme işleri portalı](./media/backup-azure-sql-database/jobs-list.png)
+![Yedekleme işleri portalı](./media/backup-azure-sql-database/sql-backup-jobs-list.png)
 
 Izleme senaryoları hakkında daha fazla bilgi için [Azure izleyici kullanarak](backup-azure-monitoring-use-azuremonitor.md)Azure Portal ve izleme ' [de izleme](backup-azure-monitoring-built-in-monitor.md) ' ye gidin.  
 
@@ -36,13 +36,9 @@ Veritabanı yedekleme uyarılarını izlemek için:
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
 
-2. Kasa panosunda **Uyarılar ve olaylar**' ı seçin.
+2. Kasa panosunda **yedekleme uyarıları**' nı seçin.
 
-   ![Uyarıları ve olayları seçin](./media/backup-azure-sql-database/vault-menu-alerts-events.png)
-
-3. **Uyarılar ve olaylar**' da **yedekleme uyarıları**' nı seçin.
-
-   ![Yedekleme uyarılarını seçin](./media/backup-azure-sql-database/backup-alerts-dashboard.png)
+   ![Yedekleme uyarılarını seçin](./media/backup-azure-sql-database/sql-backup-alerts-list.png)
 
 ## <a name="stop-protection-for-a-sql-server-database"></a>SQL Server veritabanı korumasını durdurma
 
@@ -83,7 +79,7 @@ Bir veritabanının korumasını durdurmak için:
 >
 >Verileri Sil seçeneği hakkında daha fazla bilgi için aşağıdaki SSS bölümüne bakın:
 >
->- [Bir veritabanını bir yeniden korunan örnekten silersem, yedeklemelere ne olur?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Otomatik korumalı bir örnekten veritabanı silersem yedeklemelere ne olur?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
 >- [Otomatik korumalı bir veritabanının yedekleme işlemini durdurdum, davranışı ne olur?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
@@ -120,7 +116,7 @@ Yedekleme sıklığını veya bekletme aralığını değiştirmek için ilkeyi 
 > [!NOTE]
 > Saklama döneminde yapılan herhangi bir değişiklik, yeni olanlar da içinde olmak üzere daha eski kurtarma noktalarına daha geriye dönük olarak uygulanır.
 
-Kasa panosunda, yedekleme ilkelerini **Yönet**' e gidin  >  **Backup Policies** ve düzenlemek istediğiniz ilkeyi seçin.
+Kasa panosunda, yedekleme ilkelerini **Yönet**' e gidin  >   ve düzenlemek istediğiniz ilkeyi seçin.
 
   ![Yedekleme ilkesini Yönet](./media/backup-azure-sql-database/modify-backup-policy.png)
 
@@ -154,7 +150,7 @@ Korumayı devre dışı bıraktıktan sonra ancak kasayı silmeden önce bir SQL
 
 4. Korumalı sunucuya sağ tıklayın ve **kayıt kaldır**' ı seçin.
 
-   ![Sil’i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
+   ![Sil ' i seçin](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM uzantıyı yeniden Kaydet
 

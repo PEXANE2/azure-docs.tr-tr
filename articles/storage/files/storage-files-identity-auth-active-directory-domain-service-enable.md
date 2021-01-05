@@ -4,16 +4,16 @@ description: Azure Active Directory Domain Services aracılığıyla Azure dosya
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: deed7c3dce2d7da1940a8a4871efac7453e2cf60
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 340455450cd6a18adfd8d0843fee423f82f10a45
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033689"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858408"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure dosyalarında Azure Active Directory Domain Services kimlik doğrulamasını etkinleştirme
 
@@ -22,8 +22,7 @@ ms.locfileid: "97033689"
 Azure dosya paylaşımlarından yeni bir deneyiminiz varsa, aşağıdaki makale serisini okumadan önce [planlama kılavuzumuzu](storage-files-planning.md) okumanızı öneririz.
 
 > [!NOTE]
-> Azure dosyaları, RC4-HMAC şifrelemesi ile Azure AD DS Kerberos kimlik doğrulamasını destekler. AES Kerberos şifrelemesi henüz desteklenmiyor.
-> Azure dosyaları Azure AD ile tam eşitlemeyle Azure AD DS kimlik doğrulamasını destekler. Azure AD 'de yalnızca sınırlı bir kimlik kümesini eşitleyen Azure AD DS kapsamlı eşitlemeyi etkinleştirdiyseniz, kimlik doğrulama ve yetkilendirme desteklenmez.
+> Azure dosyaları, Azure AD DS RC4-HMAC ve AES 256 şifrelemesi ile Kerberos kimlik doğrulamasını destekler. Azure dosyaları Azure AD ile tam eşitlemeyle Azure AD DS kimlik doğrulamasını destekler. Azure AD 'de yalnızca sınırlı bir kimlik kümesini eşitleyen Azure AD DS kapsamlı eşitlemeyi etkinleştirdiyseniz, kimlik doğrulama ve yetkilendirme desteklenmez.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -59,7 +58,7 @@ Azure dosya paylaşımları için SMB üzerinden Azure AD 'yi etkinleştirmeden 
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Azure AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure ortak ve gov bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
+Azure AD DS ile Azure dosyaları kimlik doğrulaması, [tüm Azure genel, gov ve Çin bölgelerinde](https://azure.microsoft.com/global-infrastructure/locations/)kullanılabilir.
 
 ## <a name="overview-of-the-workflow"></a>İş akışına genel bakış
 

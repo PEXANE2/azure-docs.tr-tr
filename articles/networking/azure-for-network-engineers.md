@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: 4f513da4e7883cd273098039c9c4a4645d849f0f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85516343"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861407"
 ---
 # <a name="azure-for-network-engineers"></a>Ağ mühendisleri için Azure
 Altyapı oluşturmak için yönlendiriciler, anahtarlar, kablolar ve güvenlik duvarları gibi fiziksel varlıklarla ilgilenmeniz için geleneksel bir ağ mühendisi olarak. Sanal LAN (VLAN), kapsayıcı ağacı Protokolü (STP), yönlendirme protokolleri (RIP, OSPF, BGP) yapılandırdığınız bir mantıksal katmanda. Ağınızı yönetim araçları ve CLı kullanarak yönetilecektir. Bulutta ağ, ağ uç noktalarının mantıksal olduğu ve yönlendirme protokollerinin kullanımı en az olduğunda farklıdır. Azure 'da varlıkları yapılandırmak ve yönetmek için Azure Resource Manager API, Azure CLı ve PowerShell ile çalışacaksınız. Azure ağ iletişimi 'nin temel kiracılarını anlamak için ağ yolculuğuna buluta başlayacaksınız. 

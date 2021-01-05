@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 5645a2e0449a1929421f9444bf645f08ad0525e9
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 10fa47a8f613218b1331259040be77df867ade95
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296820"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854851"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Güvenlik Merkezi 'nin tümleşik EDR çözümü ile uç noktalarınızı koruyun: uç nokta için Microsoft Defender
 
@@ -42,10 +42,10 @@ Uç nokta için Microsoft Defender, bütünsel, bulut tarafından sunulan bir u�
 |---------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Yayın durumu:                  | Genel olarak kullanılabilir (GA)                                                                                                                                                                                                                                                                                      |
 | Fiyat                        | [Sunucular Için Azure Defender](security-center-pricing.md) gerekir                                                                                                                                                                                                                                             |
-| Desteklenen platformlar:            | ![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure makineleri<br>![Evet](./media/icons/yes-icon.png) Windows çalıştıran Azure Arc makineleri|
-| Desteklenen Windows sürümleri:  | Uç nokta için Defender, Windows 10 1703 (ve üzeri) ve Windows Server 2019 ' de yerleşik olarak bulunur.<br>Güvenlik Merkezi, Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler.<br>Bu tümleştirme kullanılarak sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakıldı. |
-| Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**                         |
-| Larının                         | ![Evet](./media/icons/yes-icon.png) Ticari bulutlar.<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri<br>![Evet](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov                                                        |
+| Desteklenen platformlar:            | Windows çalıştıran Azure makineleri<br>Windows çalıştıran Azure Arc makineleri|
+| Desteklenen Windows sürümleri:  |  • Güvenlik Merkezi Windows Server 2016, 2012 R2 ve 2008 R2 SP1 'de algılamayı destekler<br> • Bu tümleştirmeyi kullanan sunucu uç noktası izleme Office 365 GCC müşterileri için devre dışı bırakılmıştır<br> • Windows Server 2019, Windows 10 1703 (ve daha yeni) veya Linux desteği yoktur|
+| Gerekli roller ve izinler: | Tümleştirmeyi etkinleştirmek/devre dışı bırakmak için: **Güvenlik Yöneticisi** veya **sahibi**<br>Güvenlik Merkezi 'nde MDADTP uyarılarını görüntülemek için: **güvenlik okuyucu**, **okuyucu**, **kaynak grubu katılımcısı**, **kaynak grubu sahibi**, **Güvenlik Yöneticisi**, **abonelik sahibi** veya **abonelik katılımcısı**|
+| Larının                         | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![Hayır](./media/icons/no-icon.png) Çin gov, diğer gov<br>![Hayır](./media/icons/no-icon.png) Küresel Azure bulutlarında iş yüklerini çalıştıran GCC müşterileri                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
 
 

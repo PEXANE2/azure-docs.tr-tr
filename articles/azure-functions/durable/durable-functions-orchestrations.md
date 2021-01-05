@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5eec15871279f3ca38c726fcd1ef1b21d0d38699
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ba314963058389e171601407ff00411049eecd45
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88750194"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845426"
 ---
 # <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
 
@@ -25,7 +25,7 @@ Bu makale, Orchestrator işlevlerine genel bakış ve bunların çeşitli uygula
 
 ## <a name="orchestration-identity"></a>Düzenleme kimliği
 
-Bir Orchestration 'un her *örneğinin* bir örnek tanımlayıcısı vardır ( *örnek kimliği*olarak da bilinir). Varsayılan olarak, her örnek KIMLIĞI bir otomatik oluşturulan GUID 'dir. Ancak, örnek kimlikleri Kullanıcı tarafından oluşturulan herhangi bir dize değeri de olabilir. Her orchestration örneği KIMLIĞI, bir [Görev Merkezi](durable-functions-task-hubs.md)içinde benzersiz olmalıdır.
+Bir Orchestration 'un her *örneğinin* bir örnek tanımlayıcısı vardır ( *örnek kimliği* olarak da bilinir). Varsayılan olarak, her örnek KIMLIĞI bir otomatik oluşturulan GUID 'dir. Ancak, örnek kimlikleri Kullanıcı tarafından oluşturulan herhangi bir dize değeri de olabilir. Her orchestration örneği KIMLIĞI, bir [Görev Merkezi](durable-functions-task-hubs.md)içinde benzersiz olmalıdır.
 
 Örnek kimlikleri hakkında bazı kurallar aşağıda verilmiştir:
 
@@ -48,7 +48,7 @@ Dayanıklı İşlevler, saydam olarak olay kaynağını kullanır. Arka planda, 
 Bir Orchestration işlevine daha fazla iş verildiğinde (örneğin, bir yanıt iletisi alındığında veya dayanıklı Zamanlayıcı sona erdiğinde), Orchestrator başlatılır ve yerel durumu yeniden derlemek için başlangıçtan itibaren tüm işlevi yeniden yürütür. Yeniden yürütme sırasında, kod bir işlevi çağırmaya çalışırsa (veya başka bir zaman uyumsuz çalışma yaparsanız), dayanıklı görev çerçevesi geçerli düzenleme 'nin yürütme geçmişini çağırır. [Etkinlik işlevinin](durable-functions-types-features-overview.md#activity-functions) zaten yürütüldüğünü ve bir sonuç verdiğini belirlerse, bu işlevin sonucunu yeniden yürütür ve Orchestrator kodu çalışmaya devam eder. Yeniden yürütme, işlev kodu tamamlanana kadar veya yeni zaman uyumsuz çalışmayı zamanlana kadar devam eder.
 
 > [!NOTE]
-> Yeniden yürütme deseninin doğru ve güvenilir bir şekilde çalışması için Orchestrator işlev kodu *belirleyici*olmalıdır. Orchestrator işlevlerine yönelik kod kısıtlamaları hakkında daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) konusu.
+> Yeniden yürütme deseninin doğru ve güvenilir bir şekilde çalışması için Orchestrator işlev kodu *belirleyici* olmalıdır. Orchestrator işlevlerine yönelik kod kısıtlamaları hakkında daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) konusu.
 
 > [!NOTE]
 > Orchestrator işlevi günlük iletilerini yayar, yeniden yürütme davranışı yinelenen günlük iletilerinin oluşturulmasına neden olabilir. Bu davranışın neden oluştuğu ve geçici olarak nasıl çalışılacağı hakkında daha fazla bilgi edinmek için [günlüğe kaydetme](durable-functions-diagnostics.md#app-logging) konusuna bakın.
@@ -107,7 +107,7 @@ main = df.Orchestrator.create(orchestrator_function)
 ```
 ---
 
-Her `await` (C#) veya `yield` (JavaScript/Python) bildiriminde, dayanıklı görev çerçevesi, işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi*olarak adlandırılan şeydir.
+Her `await` (C#) veya `yield` (JavaScript/Python) bildiriminde, dayanıklı görev çerçevesi, işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi* olarak adlandırılan şeydir.
 
 ### <a name="history-table"></a>Geçmiş tablosu
 
@@ -124,7 +124,7 @@ Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha 
 
 Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
 
-| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Name             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Olay türü             | Timestamp               | Giriş | Ad             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
@@ -293,7 +293,7 @@ Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değ
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-.NET ' te, [Valuetuples](/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)Ile eklenen [Valuetuples](/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
+.NET ' te, [Valuetuple](/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [C# 7](/dotnet/csharp/whats-new/csharp-7#tuples)Ile eklenen [Valuetuple](/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]

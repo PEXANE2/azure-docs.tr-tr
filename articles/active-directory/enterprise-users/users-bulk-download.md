@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: daveba
-ms.date: 12/02/2020
+ms.date: 01/04/2021
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: enterprise-users
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042139a39c28ee4944a7f3f766fc61b163629843
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 57e3a059a5dd846250ba162513ef118e084c4b87
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574403"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861597"
 ---
 # <a name="download-a-list-of-users-in-azure-active-directory-portal"></a>Azure Active Directory portalındaki kullanıcıların listesini indirme
 
@@ -26,27 +26,27 @@ Azure Active Directory (Azure AD) toplu Kullanıcı içeri aktarma (oluşturma) 
 
 ## <a name="required-permissions"></a>Gerekli izinler
 
-Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de kuruluş düzeyindeki bir veya daha fazla yönetici rolüne (Kullanıcı Yöneticisi gereken en düşük rol) atanmış bir kullanıcı ile oturum açmanız gerekir. Konuk davetci ve uygulama geliştiricisi yönetici rolleri olarak değerlendirilmez.
+Azure AD yönetim merkezinden kullanıcı listesini indirmek için, Azure AD'de kuruluş düzeyindeki bir veya daha fazla yönetici rolüne (gerekli en düşük rol düzeyi Kullanıcı Yöneticisidir) atanmış bir kullanıcı ile oturum açmanız gerekir. Konuk davet eden ve uygulama geliştiricisi, yönetici rolü kabul edilmez.
 
 ## <a name="to-download-a-list-of-users"></a>Kullanıcı listesini indirmek için
 
 1. Kuruluştaki bir Kullanıcı Yöneticisi hesabıyla [Azure AD kuruluşunuzda oturum açın](https://aad.portal.azure.com) .
-2. Azure Active Directory > kullanıcılara gidin. Ardından, her kullanıcının yanındaki sol sütundaki kutuyu seçerek karşıdan yüklemeye dahil etmek istediğiniz kullanıcıları seçin. Note: Şu anda, dışarı aktarma için tüm kullanıcıları seçmenin bir yolu yoktur. Her birinin tek tek seçilmiş olması gerekir.
+2. Azure Active Directory > Kullanıcılar'a gidin. Ardından, indirmek istediğiniz her kullanıcıyı sol tarafındaki sütunda bulunan kutuyu işaretleyerek seçin. Not: Şu anda, dışarı aktarmak için tüm kullanıcıları seçebileceğiniz bir yöntem yoktur. Kullanıcıların tek tek seçilmesi gereklidir.
 3. Azure AD **'de kullanıcılar**  >  **kullanıcıları indirir**' ı seçin.
-4. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hatalar varsa, sonuçlar dosyasını toplu işlem sonuçları sayfasında indirebilir ve görüntüleyebilirsiniz. Dosya her hatanın nedenini içerir.
+4. **Kullanıcıları indir** sayfasında, Kullanıcı profili özelliklerini listelemek üzere bir CSV dosyası almak için **Başlat** ' ı seçin. Hata varsa sonuç dosyasını Toplu işlem sonuçları sayfasından indirip görüntüleyebilirsiniz. Bu dosyada her hatanın nedeni belirtilir.
 
    ![Listeden indirmek istediğiniz kullanıcıları seçin](./media/users-bulk-download/bulk-download.png)
 
-   İndirme dosyası, filtrelenmiş Kullanıcı listesini içerecektir.
+   İndirilen dosyada kullanıcıların filtrelenmiş listesi bulunur.
 
-   Aşağıdaki Kullanıcı öznitelikleri dahil edilmiştir:
+   Bu listeye aşağıdaki kullanıcı öznitelikleri dahil edilir:
 
    - userPrincipalName
    - displayName
    - surname
    - posta
    - givenName
-   - Uzantının
+   - objectId
    - userType
    - jobTitle
    - bölüm
@@ -58,15 +58,14 @@ Azure AD Yönetim merkezinden Kullanıcı listesini indirmek için Azure AD 'de 
    - physicalDeliveryOfficeName
    - city
    - postalCode
-   - telephoneNumber 'dır
+   - telephoneNumber
    - mobil
-   - authenticationPhoneNumber
    - authenticationAlternativePhoneNumber
    - authenticationEmail
-   - Alternateemaadresi
+   - alternateEmailAddress
    - ageGroup
    - consentProvidedForMinor
-   - Ligalagegroupclassification
+   - legalAgeGroupClassification
 
 ## <a name="check-status"></a>Durumu kontrol etme
 

@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.custom: seodec18
-ms.openlocfilehash: 7b872340c50c800ebe4d4d6c7ca56b3b327bf162
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: seodec18,references_regions
+ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972662"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854868"
 ---
 # <a name="speech-service-supported-regions"></a>Konuşma hizmeti tarafından desteklenen bölgeler
 
@@ -44,11 +44,13 @@ Konuşma hizmeti, **konuşma tanıma**, **metinden konuşmaya** ve **çeviri** i
 
 [Konuşma SDK 'sını](speech-sdk.md)kullanıyorsanız, bölgeler **bölge tanımlayıcısı** tarafından belirtilir (örneğin, öğesine parametresi olarak `SpeechConfig.FromSubscription` ). Bölgenin aboneliğinizin bölgesiyle aynı olduğundan emin olun.
 
+Özel bir modeli ses verileriyle eğitme planlıyorsanız, daha hızlı eğitim için [adanmış donanım olan bölgelerden](custom-speech-overview.md#set-up-your-azure-account) birini kullanın. Tam eğitilen modeli daha sonra başka bir bölgeye kopyalamak için [REST API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) kullanabilirsiniz.
+
 ### <a name="intent-recognition"></a>Amaç tanıma
 
 Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölgeler şunlardır:
 
-| Genel bölge | Region           | Bölge tanımlayıcısı |
+| Genel bölge | Bölge           | Bölge tanımlayıcısı |
 | ------------- | ---------------- | -------------------- |
 | Asya          | Doğu Asya        | `eastasia`           |
 | Asya          | Güneydoğu Asya   | `southeastasia`      |
@@ -61,23 +63,27 @@ Konuşma SDK 'Sı aracılığıyla **Amaç tanıma** için kullanılabilir bölg
 | Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
 | Kuzey Amerika | Batı ABD          | `westus`             |
 | Kuzey Amerika | Batı ABD 2        | `westus2`            |
-| Güney Amerika | Brezilya Güney     | `brazilsouth`        |
+| Güney Amerika | Güney Brezilya     | `brazilsouth`        |
 
 Bu, [Language Understanding hizmeti (Luo)](../luis/luis-reference-regions.md)tarafından desteklenen yayımlama bölgelerinin bir alt kümesidir.
 
 ### <a name="voice-assistants"></a>Ses yardımcıları
 
-[Konuşma SDK 'sı](speech-sdk.md) bu bölgelerde **sesli yardımcı** yeteneklerini destekler:
+[Konuşma SDK 'sı](speech-sdk.md) , bu bölgelerde [doğrudan hat konuşmayı](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) kullanarak **sesli yardımcı** yeteneklerini destekler:
 
-| Region         | Bölge tanımlayıcısı |
-| -------------- | -------------------- |
-| Batı ABD        | `westus`             |
-| Batı ABD 2      | `westus2`            |
-| Doğu ABD        | `eastus`             |
-| Doğu ABD 2      | `eastus2`            |
-| West Europe    | `westeurope`         |
-| Kuzey Avrupa   | `northeurope`        |
-| Güneydoğu Asya | `southeastasia`      |
+| Genel bölge | Bölge           | Bölge tanımlayıcısı    |
+| ------------- | ---------------- | -------------------- |
+| Kuzey Amerika | Batı ABD          | `westus`             |
+| Kuzey Amerika | Batı ABD 2        | `westus2`            |
+| Kuzey Amerika | Doğu ABD          | `eastus`             |
+| Kuzey Amerika | Doğu ABD 2        | `eastus2`            |
+| Kuzey Amerika | Orta Batı ABD  | `westcentralus`      |
+| Kuzey Amerika | Orta Güney ABD | `southcentralus`     |
+| Avrupa        | West Europe      | `westeurope`         |
+| Avrupa        | Kuzey Avrupa     | `northeurope`        |
+| Asya          | Doğu Asya        | `eastasia`           |
+| Asya          | Güneydoğu Asya   | `southeastasia`      |
+| Hindistan         | Orta Hindistan    | `centralindia`       |
 
 ### <a name="speaker-recognition"></a>Konuşmacı Tanıma
 

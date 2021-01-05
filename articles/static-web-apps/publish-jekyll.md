@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: cshoe
-ms.openlocfilehash: e3bad12362358620d0f2dc105bb2820dfb691d00
-ms.sourcegitcommit: 090ea6e8811663941827d1104b4593e29774fa19
+ms.openlocfilehash: 673852f8f9aa81c838a7c1db68681bb9ee0b7e0b
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "92000218"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97862018"
 ---
 # <a name="tutorial-publish-a-jekyll-site-to-azure-static-web-apps-preview"></a>Öğretici: bir Jekyll sitesini Azure statik Web Apps önizleme 'ye yayımlama
 
@@ -28,7 +28,7 @@ Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - [Jekyıll](https://jekyllrb.com/docs/installation/) 'yi yükler
   - Linux için Windows alt sistemini kullanabilir ve gerekirse Ubuntu yönergelerini izleyebilirsiniz.
@@ -68,7 +68,7 @@ Jekyll komut satırı arabirimini (CLı) kullanarak bir Jekyll uygulaması oluş
 
 Azure statik Web Apps, Web sitenizi yayımlamak için GitHub 'ı kullanır. Aşağıdaki adımlarda bir GitHub deposunun nasıl oluşturulacağı gösterilmektedir.
 
-1. [https://github.com/new](https://github.com/new) **Jekyıll-Azure-static**adlı dosyadan boş bir GITHUB deposu (Benioku dosyası oluşturmayın) oluşturun.
+1. [https://github.com/new](https://github.com/new) **Jekyıll-Azure-static** adlı dosyadan boş bir GITHUB deposu (Benioku dosyası oluşturmayın) oluşturun.
 
 1. GitHub deposunu yerel depoya uzak olarak ekleyin. Aşağıdaki komutta yer tutucu yerine GitHub Kullanıcı adınızı eklediğinizden emin olun `<YOUR_USER_NAME>` .
 
@@ -90,23 +90,23 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. [Azure Portal](https://portal.azure.com)gidin.
 
-1. **Kaynak oluştur ' a**tıklayın.
+1. **Kaynak oluştur ' a** tıklayın.
 
-1. **Statik Web Apps**arayın.
+1. **Statik Web Apps** arayın.
 
 1. **Statik Web Apps (Önizleme)** seçeneğine tıklayın.
 
-1. **Oluştur**’a tıklayın.
+1. **Oluştur**'a tıklayın.
 
-1. **Abonelik**için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
+1. **Abonelik** için, listelenen aboneliği kabul edin veya açılan listeden yeni bir tane seçin.
 
-1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_alanına **jekyıll-static-App** girin ve **Tamam**' ı seçin.
+1. _Kaynak grubu_' nda **Yeni**' yi seçin. _Yeni kaynak grubu adı_ alanına **jekyıll-static-App** girin ve **Tamam**' ı seçin.
 
 1. Ardından, _ad_ kutusuna uygulamanız için bir ad girin. Geçerli karakterler `a-z` ,, `A-Z` ve `0-9` içerir `-` .
 
-1. _Bölge_için bir kullanılabilir bölge seçin.
+1. _Bölge_ için bir kullanılabilir bölge seçin.
 
-1. _SKU_için **ücretsiz**' i seçin.
+1. _SKU_ için **ücretsiz**' i seçin.
 
     :::image type="content" source="./media/publish-jekyll/basic-app-details.png" alt-text="Ayrıntılar dolduruldu":::
 
@@ -114,11 +114,11 @@ Aşağıdaki adımlarda, yeni bir statik site uygulamasının nasıl oluşturula
 
 1. Depoyu oluşturduğunuz **kuruluşu** seçin.
 
-1. _Depo_olarak **jekyıll-static-App** ' i seçin.
+1. _Depo_ olarak **jekyıll-static-App** ' i seçin.
 
-1. _Dal_ için **ana öğe**seçin.
+1. _Dal_ için **ana öğe** seçin.
 
-    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Ayrıntılar dolduruldu":::
+    :::image type="content" source="./media/publish-jekyll/completed-github-info.png" alt-text="Tamamlanan GitHub bilgileri":::
 
 ### <a name="build"></a>Yapı
 
@@ -126,7 +126,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Derleme yapılandırmasını düzenlemek için **İleri: oluştur >** düğmesine tıklayın.
 
-1. _Uygulama konumunu_ **/_Site**olarak ayarlayın.
+1. _Uygulama konumunu_ **/_Site** olarak ayarlayın.
 
 1. _Uygulama yapıtı konumunu_ boş bırakın.
 
@@ -150,7 +150,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
     ```yml
     - name: Set up Ruby
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
+      uses: ruby/setup-ruby@v1.59.1
       with:
         ruby-version: 2.6
     - name: Install dependencies
@@ -171,7 +171,7 @@ Daha sonra, yapı işleminin uygulamanızı derlemek için kullandığı yapıla
 
 1. Azure portal _genel bakış_ penceresinde, dağıtılan uygulamanızı açmak için _URL_ bağlantısına tıklayın.
 
-   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Ayrıntılar dolduruldu":::
+   :::image type="content" source="./media/publish-jekyll/deployed-app.png" alt-text="Dağıtılan uygulama":::
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

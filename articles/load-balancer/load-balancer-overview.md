@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: 96c0242414c67d97fc324977b1259f63c27c3a26
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696821"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97860932"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
@@ -66,7 +66,7 @@ Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar
 
 ### <a name="secure-by-default"></a><a name="securebydefault"></a>Varsayılan olarak güvenli
 
-Standart Load Balancer, temel alınarak sıfır güvenli ağ güvenlik modelinde oluşturulmuştur. Varsayılan olarak güvenli Standart Load Balancer ve sanal ağınızın bir parçasıdır. Sanal ağ özel ve yalıtılmış bir ağ.  Bu, ağ güvenlik grupları tarafından açılmadığı müddetçe standart yük dengeleyiciler ve standart genel IP adreslerinin gelen akışlara kapalı olması anlamına gelir. NSG 'ler, izin verilen trafiğe açıkça izin vermek için kullanılır.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez. NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
+Standart Load Balancer, temel alınarak sıfır güvenli ağ güvenlik modelinde oluşturulmuştur. Standart Load Balancer, varsayılan olarak ve sanal ağınızın bir parçası olarak güvenlidir. Sanal ağ özel ve yalıtılmış bir ağ.  Bu, ağ güvenlik grupları tarafından açılmadığı müddetçe standart yük dengeleyiciler ve standart genel IP adreslerinin gelen akışlara kapalı olması anlamına gelir. NSG 'ler, izin verilen trafiğe açıkça izin vermek için kullanılır.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez. NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/network-security-groups-overview.md).
 Temel Load Balancer varsayılan olarak Internet 'e açıktır. Ayrıca, Load Balancer müşteri verilerini depolamaz.
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA

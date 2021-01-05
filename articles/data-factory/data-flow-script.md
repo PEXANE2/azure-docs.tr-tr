@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/03/2020
-ms.openlocfilehash: 69b2713e928707479945df0bb242ac2fbc001c32
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 12/23/2020
+ms.openlocfilehash: 3f5a6171ba81b858d649f381ed316be0637a2571
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600668"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858663"
 ---
 # <a name="data-flow-script-dfs"></a>Veri akışı betiği (DFS)
 
@@ -245,6 +245,18 @@ derive(each(match(type=='string'), $$ = 'string'),
     each(match(type=='timestamp'), $$ = 'timestamp'),
     each(match(type=='boolean'), $$ = 'boolean'),
     each(match(type=='double'), $$ = 'double')) ~> DerivedColumn1
+```
+
+### <a name="fill-down"></a>Aşağı Doldur
+NULL değerleri dizideki önceki NULL olmayan değerden değeri ile değiştirmek istediğinizde, veri kümeleriyle ortak "doldur" sorununun nasıl uygulanacağı aşağıda verilmiştir. Tüm veri kümesi genelinde bir "kukla" kategori değeri ile yapay bir pencere oluşturmanız gerektiğinden, bu işlemin olumsuz performans etkilerine sahip olabileceğini unutmayın. Ayrıca, önceki NULL olmayan değeri bulmak için uygun veri sırasını oluşturmak üzere bir değere göre sıralama yapmanız gerekir. Aşağıdaki kod parçacığı yapay kategoriyi "kukla" olarak oluşturur ve bir yedek anahtara göre sıralar. Vekil anahtarı kaldırabilir ve kendi verilerinize özgü sıralama anahtarınızı kullanabilirsiniz. Bu kod parçacığı, zaten adlı bir kaynak dönüşümünü eklediğinizi varsayar ```source1```
+
+```
+source1 derive(dummy = 1) ~> DerivedColumn
+DerivedColumn keyGenerate(output(sk as long),
+    startAt: 1L) ~> SurrogateKey
+SurrogateKey window(over(dummy),
+    asc(sk, true),
+    Rating2 = coalesce(Rating, last(Rating, true()))) ~> Window1
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

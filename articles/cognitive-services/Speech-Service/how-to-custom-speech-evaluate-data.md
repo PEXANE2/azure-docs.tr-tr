@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: b8b3a0aa6d9790dbb5900eac2d79074f44a749d2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 54a54dccd82e4f6cfd72a1cc8a71b51f9fd4ed95
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025659"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857367"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Özel Konuşma Tanıma’nın doğruluğunu değerlendime ve iyileştirme
 
@@ -23,7 +23,7 @@ Bu makalede, Microsoft 'un konuşma-metin modellerinin veya kendi özel modeller
 
 ## <a name="evaluate-custom-speech-accuracy"></a>Özel Konuşma doğruluğunu değerlendirme
 
-Model doğruluğunu ölçmek için sektör standardı, *sözcük hata oranı* (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan tarafından etiketlenmiş döküm betiğine (aşağıda N olarak gösterilmiştir) verilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
+Model doğruluğunu ölçmek için sektör standardı, [sözcük hata oranı](https://en.wikipedia.org/wiki/Word_error_rate) (WER). WER, tanıma sırasında tanımlanan yanlış sözcüklerin sayısını sayar ve sonra, insan tarafından etiketlenmiş döküm betiğine (aşağıda N olarak gösterilmiştir) verilen toplam sözcük sayısına böler. Son olarak, bu sayı WER 'i hesaplamak için %100 ile çarpılır.
 
 ![WER formülü](./media/custom-speech/custom-speech-wer-formula.png)
 
@@ -33,9 +33,11 @@ Yanlış tanımlanmış kelimeler üç kategoride yer almalıdır:
 * Silme (D): varsayım dökümü 'nde algılanmayan sözcükler
 * Değiştirme (ler): başvuru ve varsayım arasında değiştirilen kelimeler
 
-Aşağıda bir örnek verilmiştir:
+İşte bir örnek:
 
 ![Yanlış tanımlanmış sözcüklerin örneği](./media/custom-speech/custom-speech-dis-words.png)
+
+WER ölçümlerini yerel olarak çoğaltmak isterseniz [Sctk](https://github.com/usnistgov/SCTK)'den sclite kullanabilirsiniz.
 
 ## <a name="resolve-errors-and-improve-wer"></a>Hataları çözün ve WER 'i geliştirebilirsiniz
 
@@ -96,7 +98,7 @@ Aşağıdaki bölümlerde her bir ek eğitim verisinin hata düzeyini nasıl aza
 
 ### <a name="add-related-text-sentences"></a>İlgili metin cümleleri ekleyin
 
-Ek ilgili metin cümleleri öncelikle, ortak sözcüklerin ve etki alanına özgü sözcüklerin yanlış tanınmasına ilişkin değiştirme hatalarını, bunları bağlamında göstererek azaltabilirsiniz. Etki alanına özgü sözcükler seyrek olabilir veya bir sözcük oluşturabilir, ancak telaffuz tanınmak için basit olmalıdır.
+Yeni bir özel modeli eğitedığınızda, etki alanına özgü sözcüklerin ve deyimlerin tanınmasını geliştirmek için ilgili metni ekleyerek ' ı başlatın. İlgili metin cümleleri öncelikle, ortak sözcüklerin ve etki alanına özgü sözcüklerin yanlış tanınmasına ilişkin değiştirme hatalarını bağlamda göstererek azaltabilirsiniz. Etki alanına özgü sözcükler seyrek olabilir veya bir sözcük oluşturabilir, ancak telaffuz tanınmak için basit olmalıdır.
 
 > [!NOTE]
 > Tanınmayan karakterler veya sözcükler gibi gürültü içeren ilgili metin cümlelerini önleyin.
@@ -111,6 +113,12 @@ Bu ayrıntıları göz önünde bulundurun:
 * Döküm hataları içeren örneklerden kaçının, ancak ses kalitesi çeşitliliğe sahiptir.
 * Sorun etki alanınız ile ilgili olmayan cümlelerden kaçının. İlişkisiz cümleler modelinize zarar verebilir.
 * Döküm kalitesi farklılık gösterir, ağırlığın artması için, hariç tutulan ve çok iyi cümleler (anahtar tümceleri içeren harika döküm gibi) çoğaltabilirsiniz.
+* Konuşma hizmeti, ilgili metin olarak eklendikleri gibi, etki alanına özgü sözcüklerin ve tümceciklerin tanınmasını geliştirmek için otomatik olarak dökümünü kullanacaktır.
+* Ses ile eğitim sayesinde ses, insanların anlaşılması zor olursa en avantajlara sahip olur. Çoğu durumda, yalnızca ilgili metni kullanarak eğitime başlamanız gerekir.
+* Eğitim işleminin tamamlanması birkaç gün sürebilir. Eğitimin hızını artırmak için konuşma hizmeti aboneliğinizi eğitim için [adanmış donanıma sahip bir bölgede](custom-speech-overview.md#set-up-your-azure-account) oluşturmayı unutmayın.
+
+> [!NOTE]
+> Tüm temel modeller ses ile eğitimi desteklemez. Bir temel model bunu desteklemiyorsa, konuşma hizmeti bu metni yalnızca dökümleri 'ten kullanır ve sesi yoksayar.
 
 ### <a name="add-new-words-with-pronunciation"></a>Telaffuz ile yeni sözcükler ekleme
 

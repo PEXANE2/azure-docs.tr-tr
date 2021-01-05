@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 764e0262c8a26511c55740aa1797b5ec9b59cc8e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999476"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854953"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Uygulamanızı bir Azure sanal ağı ile tümleştirme
 
@@ -118,7 +118,7 @@ Ağ Geçidi için gerekli VNet tümleştirmesini eşleme ile kullanırsanız, bi
 
 1. Uygulamanızın bağlandığı VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını eklediğinizde **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **ağ geçidi aktarımına izin verin**.
 1. Bağlı olduğunuz VNet 'e eşlenmekte olan VNet 'e bir eşleme bağlantısı ekleyin. Eşleme bağlantısını hedef VNet 'e eklediğinizde, **sanal ağ erişimine Izin ver** ' i etkinleştirin ve **Iletilen trafiğe izin ver** ' i seçin ve **uzak ağ geçitlerine izin** verin.
-1. **App Service plan**  >  Portalda **ağ**  >  **VNET tümleştirmesi** Kullanıcı arabirimine App Service plan bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
+1.   >  Portalda **ağ**  >  **VNET tümleştirmesi** Kullanıcı arabirimine App Service plan bölümüne gidin. Uygulamanızın bağlandığı sanal ağı seçin. Yönlendirme bölümünde, uygulamanızın bağlı olduğu VNet ile ilişkilendirilen VNet 'in adres aralığını ekleyin.
 
 ## <a name="manage-vnet-integration"></a>Sanal Ağ Tümleştirmesini Yönetme
 
@@ -152,6 +152,7 @@ Ağ Geçidi gerekli VNet tümleştirme özelliğinin kullanımıyla ilgili üç 
 
 > [!NOTE]
 > VNET tümleştirmesi, App Service Docker Compose senaryolar için desteklenmez.
+> Azure Işlevleri erişim kısıtlamaları özel bir uç nokta varsa yoksayılır.
 >
 
 [!INCLUDE [app-service-web-vnet-troubleshooting](../../includes/app-service-web-vnet-troubleshooting.md)]

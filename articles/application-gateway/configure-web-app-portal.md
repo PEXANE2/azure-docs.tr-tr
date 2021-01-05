@@ -6,18 +6,18 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 01/02/2021
 ms.author: victorh
-ms.openlocfilehash: a72f0106088d26eb2ff53456840c598c3d9619a7
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397561"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854919"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway ile App Service yapılandırma
 
-App Service, bir dizi dağıtım yerine çok kiracılı bir hizmet olduğundan, isteği doğru App Service uç noktasına çözümlemek için gelen istekte ana bilgisayar üst bilgisini kullanır. Genellikle uygulamanın DNS adı, App Service 'i kapsayan uygulama ağ geçidi ile ilişkili DNS adıdır, arka uç App Service 'in etki alanı adından farklıdır. Bu nedenle, uygulama ağ geçidi tarafından alınan özgün istekteki ana bilgisayar üst bilgisi, arka uç hizmetinin ana bilgisayar adıyla aynı değildir. Bu nedenle, uygulama ağ geçidindeki istekteki ana bilgisayar üst bilgisi arka uç hizmetinin ana bilgisayar adına değiştirilmediği için, çok kiracılı arka uçlar isteği doğru uç noktaya çözemeyebilir.
+Uygulama hizmeti, ayrılmış bir dağıtım yerine çok kiracılı bir hizmet olduğundan, doğru uygulama hizmet uç noktasına yapılan isteği çözümlemek için gelen istekteki ana bilgisayar üst bilgisini kullanır. Genellikle uygulamanın DNS adı, App Service 'i kapsayan uygulama ağ geçidi ile ilişkili DNS adıdır, arka uç App Service 'in etki alanı adından farklıdır. Bu nedenle, uygulama ağ geçidi tarafından alınan özgün istekteki ana bilgisayar üst bilgisi, arka uç hizmetinin ana bilgisayar adıyla aynı değildir. Bu nedenle, uygulama ağ geçidindeki istekteki ana bilgisayar üst bilgisi arka uç hizmetinin ana bilgisayar adına değiştirilmediği için, çok kiracılı arka uçlar isteği doğru uç noktaya çözemeyebilir.
 
 Application Gateway, istek `Pick host name from backend target` Application Gateway arka uca yönlendirilmesinde isteğin ana bilgisayar adıyla birlikte istekteki konak üstbilgisini geçersiz kılan bir anahtar sağlar. Bu özellik, Azure App Service ve API Management gibi çok kiracılı arka uçlar için destek sunar. 
 
@@ -26,7 +26,7 @@ Bu makalede şunları öğreneceksiniz:
 - Bir arka uç havuzunu düzenleyin ve buna bir App Service ekleyin
 - ' Seçim konak adı ' anahtarı etkin HTTP ayarlarını Düzenle
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Application Gateway: arka uç havuzu hedefi olmadan bir uygulama ağ geçidi oluşturun. Daha fazla bilgi için bkz [. hızlı başlangıç: Azure Application Gateway doğrudan web trafiği-Azure Portal](quick-create-portal.md)
 
@@ -38,7 +38,7 @@ Bu makalede şunları öğreneceksiniz:
 
 2. **Arka uç havuzları** altında arka uç havuzunu seçin.
 
-4. **Hedef türü** altında **uygulama hizmetleri** ' ni seçin.
+4. **Hedef türü** altında **uygulama hizmetleri**' ni seçin.
 
 5. **Hedef** altında App Service seçin.
 
@@ -46,15 +46,15 @@ Bu makalede şunları öğreneceksiniz:
    
    > [!NOTE]
    > Açılan liste yalnızca Application Gateway aynı abonelikte olan uygulama hizmetlerini doldurur. Application Gateway olduğu sunucudan farklı bir abonelikte bulunan bir App Service kullanmak istiyorsanız, **hedefler** açılan menüsünde **uygulama hizmetleri** ' ni seçmek yerine, **IP adresi veya ana bilgisayar adı** seçeneğini belirleyin ve ana bilgisayar adını (örneğin,) girin. azurewebsites.net).
-1. **Kaydet** ’i seçin.
+1. **Kaydet**’i seçin.
 
 ## <a name="edit-http-settings-for-app-service"></a>App Service için HTTP ayarlarını Düzenle
 
 1. **Http ayarları** altında var olan http ayarını seçin.
 
-2. **Yeni ana bilgisayar adı Ile geçersiz kıl** altında **Evet** ' i seçin.
+2. **Yeni ana bilgisayar adı Ile geçersiz kıl** altında **Evet**' i seçin.
 3. **Konak adı geçersiz kılma** altında, **arka uç hedefinden konak adı** Seç ' i seçin.
-4. **Kaydet** ’i seçin.
+4. **Kaydet**’i seçin.
 
    :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Arka uç http ayarlarından konak adı Seç":::
 

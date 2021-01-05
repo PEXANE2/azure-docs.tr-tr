@@ -2,20 +2,22 @@
 title: Azure 'da BareMetal örnek birimleri
 description: Azure portal aracılığıyla BareMetal örnek birimlerinin nasıl tanımlanacağına ve etkileşime gireceğini öğrenin.
 ms.topic: how-to
-ms.date: 12/31/2020
-ms.openlocfilehash: 927baa79519781ef74920b17bc9fcd858f0f6c6f
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.date: 1/4/2021
+ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97829254"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861036"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>BareMetal Örnekleri Azure portal aracılığıyla yönetme
  
 Bu makalede, [Azure Portal](https://portal.azure.com/) [Baremetal örnekleri](baremetal-overview-architecture.md)nasıl görüntüleyeceği gösterilmektedir. Bu makale ayrıca, dağıtılan BareMetal örnek birimlerinizle Azure portal yapabileceğiniz etkinlikleri gösterir. 
  
 ## <a name="register-the-resource-provider"></a>Kaynak sağlayıcısını kaydetme
-BareMetal örnekleri için bir Azure Kaynak sağlayıcısı, şu anda genel önizlemede olan Azure portal örneklerin görünürlüğünü sağlar. Varsayılan olarak, BareMetal örnek dağıtımları için kullandığınız Azure aboneliği *BareMetalInfrastructure* kaynak sağlayıcısını kaydeder. Dağıtılan BareMetal örnek birimlerinizi görmüyorsanız, kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir. BareMetal örnek kaynak sağlayıcısını kaydetmek için iki yol vardır:
+BareMetal örnekleri için bir Azure Kaynak sağlayıcısı, şu anda genel önizlemede olan Azure portal örneklerin görünürlüğünü sağlar. Varsayılan olarak, BareMetal örnek dağıtımları için kullandığınız Azure aboneliği *BareMetalInfrastructure* kaynak sağlayıcısını kaydeder. Dağıtılan BareMetal örnek birimlerinizi görmüyorsanız, kaynak sağlayıcısını aboneliğinize kaydetmeniz gerekir. 
+
+BareMetal örnek kaynak sağlayıcısını kaydetmek için iki yol vardır:
  
 * [Azure CLI](#azure-cli)
  
@@ -85,15 +87,15 @@ Görüntüdeki öznitelikler Azure sanal makine (VM) özniteliklerinden çok far
 Sağ tarafta, birim adı, işletim sistemi (OS), IP adresi ve CPU iş parçacığı sayısını ve bellek sayısını gösteren SKU 'YU görürsünüz. Ayrıca güç durumu ve donanım sürümünü (BareMetal örnek damgasının düzeltmesi) görürsünüz. Güç durumu, donanım biriminin açık veya kapalı olduğunu gösterir. Ancak işletim sistemi ayrıntıları, çalışıp çalışmadığını göstermez.
  
 Olası donanım düzeltmeleri şunlardır:
+
+* Düzeltme 3 (Rev 3)
+
+* Düzeltme 4 (Rev 4)
  
-* Düzeltme 3
- 
-* Düzeltme 4
- 
-* Düzeltme 4,2
+* Düzeltme 4,2 (Rev 4,2)
  
 >[!NOTE]
->Düzeltme 4,2, düzeltme 4 mimarisi kullanılarak en son yeniden markalı BareMetal altyapısıdır. Bu, düzeltme 4 Damgalarında veya satırlarda dağıtılan Azure VM 'Ler ile BareMetal örnek birimleri arasındaki ağ gecikmesi açısından önemli geliştirmelere sahiptir. Farklı düzeltmeler hakkında daha fazla bilgi için bkz. [Azure 'Da Baremetal altyapısı](baremetal-overview-architecture.md).
+>Rev 4,2, var olan Rev 4 mimarisini kullanan en son yeniden markalı BareMetal altyapısıdır. Rev 4, Azure sanal makinesi (VM) konaklarına daha yakın bir yakınlık sağlar. Bu, Azure VM 'Ler ile karemetal örnek birimleri arasında, Rev 4 Damgalarında veya satırlarda dağıtılan ağ gecikmesi açısından önemli geliştirmeler sunar. BareMetal örneklerinizi Azure portal aracılığıyla erişebilir ve yönetebilirsiniz. Daha fazla bilgi için bkz. [Azure 'Da Baremetal altyapısı](baremetal-overview-architecture.md).
  
 Ayrıca, sağ tarafta, dağıtılan her BareMetal örnek birimi için otomatik olarak oluşturulan [Azure yakınlık yerleşimi grubunun](../../../virtual-machines/linux/co-location.md) adını bulacaksınız. Uygulama katmanını barındıran Azure VM 'lerini dağıtırken yakınlık yerleşimi grubuna başvurun. BareMetal örnek birimiyle ilişkili yakınlık yerleşimi grubunu kullandığınızda Azure VM 'lerinin BareMetal örnek birimine yakın bir şekilde dağıtılmasını sağlayabilirsiniz.
  

@@ -5,14 +5,14 @@ author: rahulg1190
 ms.author: rahugup
 ms.manager: bsiva
 ms.topic: tutorial
-ms.date: 04/15/2020
+ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: af1c321e5c537fbd3af770cb392c538e6056e075
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bd560a6ef4a3b4ab5eb4632e7741c764f6e314e1
+ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752881"
+ms.lasthandoff: 01/03/2021
+ms.locfileid: "97854936"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Makineleri fiziksel sunucu olarak Azure 'a geçirme
 
@@ -25,7 +25,7 @@ Bu makalede, Azure geçişi: sunucu geçiş aracını kullanarak makineleri fizi
 - Amazon Web Services (AWS) veya Google Cloud Platform (GCP) gibi genel bulutlarda çalışan VM 'Leri geçirin.
 
 
-Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğretici, fiziksel sunucuların Azure 'a nasıl değerlendirileceğini ve geçirileceğini gösteren bir serideki üçüncü bir seridir. Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Azure geçişi ile Azure 'u kullanmaya hazırlanma: sunucu geçişi.
@@ -109,7 +109,7 @@ Gereç dağıtımı için aşağıdaki gibi hazırlanın:
 - Çoğaltma gerecini barındırmak için bir makine hazırlarsınız. Makine gereksinimlerini [gözden geçirin](migrate-replication-appliance.md#appliance-requirements) .
 - Çoğaltma gereci MySQL kullanır. Gereçte MySQL yükleme [seçeneklerini](migrate-replication-appliance.md#mysql-installation) gözden geçirin.
 - Çoğaltma gerecinin [ortak](migrate-replication-appliance.md#url-access) ve [kamu](migrate-replication-appliance.md#azure-government-url-access) bulutları 'Na erişmesi Için gereken Azure URL 'lerini gözden geçirin.
-- Çoğaltma gereci için [port] (Migrate-Replication-gereci. MD # Port-Access) erişim gereksinimlerini gözden geçirin.
+- Çoğaltma gereci için [bağlantı noktası](migrate-replication-appliance.md#port-access) erişim gereksinimlerini gözden geçirin.
 
 > [!NOTE]
 > Çoğaltma gereci, çoğaltmak istediğiniz bir kaynak makineye veya daha önce yüklemiş olduğunuz Azure geçişi bulma ve değerlendirme gerecine yüklenmelidir.
@@ -259,7 +259,7 @@ Geçirmek istediğiniz makinelerde, Mobility hizmeti aracısını yüklemeniz ge
 14. **Çoğaltmayı gözden geçir ve başlat** bölümünde ayarları gözden geçirin ve sunuculara yönelik ilk çoğaltmayı başlatmak için **Çoğalt** üzerine tıklayın.
 
 > [!NOTE]
-> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz, **Manage**  >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
+> Çoğaltma ayarlarını, çoğaltma başlamadan önce dilediğiniz zaman güncelleştirebilirsiniz,   >  **çoğaltılan makineleri** yönetin. Çoğaltma başladıktan sonra ayarlar değiştirilemez.
 
 
 
@@ -312,7 +312,7 @@ Test geçişinin beklendiği gibi çalışıp çalışmadığını doğruladıkt
     ![Sunucuları çoğaltma](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
 2. **Makineleri çoğaltma** bölümünde VM > **Geçir** üzerine sağ tıklayın.
-3. **Migrate**  >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
+3.   >  **Sanal makineleri Kapat ' a geçiş yapın ve veri kaybı olmadan planlı bir geçiş gerçekleştirin**, **Evet**  >  **Tamam**' ı seçin.
     - VM’yi kapatmak istemiyorsanız, **Hayır** seçeneğini belirleyin
     
     Note: fiziksel sunucu geçişi Için, uygulamayı geçiş penceresinin parçası olarak aşağı getirmek (uygulamaların herhangi bir bağlantıyı kabul etmesine izin vermez) ve ardından geçişi başlatmaları (sunucunun çalışır durumda tutulması gerekir, bu nedenle kalan değişiklikler eşitlenebilir) geçiş tamamlanmadan önce yapılır.

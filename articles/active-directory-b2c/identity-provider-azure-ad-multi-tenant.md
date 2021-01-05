@@ -8,34 +8,35 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/04/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 71e3bf429c7b8d3f4f8fe205c05b0701732fdef9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9ac92f836e1d0c1210bb16b5c1d6e232fd5c22e
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653818"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858476"
 ---
 # <a name="set-up-sign-in-for-multi-tenant-azure-active-directory-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C içindeki özel ilkeleri kullanarak çok kiracılı Azure Active Directory için oturum açma ayarlayın
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-::: zone pivot="b2c-custom-policy"
+::: zone pivot="b2c-user-flow"
 
-[!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
 
 ::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Bu makalede, Azure Active Directory (Azure AD) için çoklu kiracı uç noktasını kullanan kullanıcılar için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir. Bu, birden çok Azure AD kiracısından kullanıcıların her kiracı için bir kimlik sağlayıcısı yapılandırmaya gerek kalmadan Azure AD B2C kullanarak oturum açmasına olanak tanır. Ancak, bu kiracılardan herhangi birinde bulunan konuk üyeleri **oturum açamaz.** Bu şekilde, [her bir kiracıyı tek tek yapılandırmanız](identity-provider-azure-ad-single-tenant.md)gerekir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
-
-Bu makalede, Azure Active Directory (Azure AD) için çoklu kiracı uç noktasını kullanan kullanıcılar için oturum açma 'nın nasıl etkinleştirileceği gösterilmektedir. Bu, birden çok Azure AD kiracısından kullanıcıların her kiracı için bir kimlik sağlayıcısı yapılandırmaya gerek kalmadan Azure AD B2C kullanarak oturum açmasına olanak tanır. Ancak, bu kiracılardan herhangi birinde bulunan konuk üyeleri **oturum açamaz.** Bu şekilde, [her bir kiracıyı tek tek yapılandırmanız](identity-provider-azure-ad-single-tenant.md)gerekir.
-
 
 ## <a name="register-an-application"></a>Uygulamaları kaydetme
 
@@ -71,41 +72,6 @@ Kullanıcıların belirli bir Azure AD kuruluştan oturum açmasını etkinleşt
 1. **Belirteç türü** için **kimlik**' i seçin.
 1. Eklemek için isteğe bağlı talepler ' i `family_name` seçin `given_name` .
 1. **Ekle**'ye tıklayın.
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD 'yi kimlik sağlayıcısı olarak yapılandırma
-
-1. Azure AD B2C kiracı içeren dizini kullandığınızdan emin olun. Üstteki menüden **Dizin + abonelik** filtresini seçin ve Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Yeni OpenID Connect sağlayıcısı**' nı seçin.
-1. Bir **ad** girin. Örneğin, *contoso Azure AD* yazın.
-1. **Meta veri URL 'si** Için, `{tenant}` Azure AD kiracınızın etki alanı adıyla birlikte aşağıdaki URL 'yi girin:
-
-    ```
-    https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
-    ```
-
-    Örneğin, `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Örneğin, `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
-
-1. **ISTEMCI kimliği** için, daha önce KAYDETTIĞINIZ uygulama kimliğini girin.
-1. **İstemci parolası** için, daha önce kaydettiğiniz istemci gizli anahtarını girin.
-1. **Kapsam** için, girin `openid profile` .
-1. **Yanıt türü**, **Yanıt modu** ve **etki alanı ipucu** için varsayılan değerleri bırakın.
-1. **Kimlik sağlayıcısı talep eşlemesi** altında aşağıdaki talepleri seçin:
-
-    - **Kullanıcı kimliği**: *OID*
-    - **Görünen ad**: *ad*
-    - **Verilen ad**: *given_name*
-    - **Soyadı**: *family_name*
-    - **E-posta**: *preferred_username*
-
-1. **Kaydet**’i seçin.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="create-a-policy-key"></a>İlke anahtarı oluşturma
 
@@ -243,24 +209,6 @@ Artık bir düğmeye sahip olduğunuza göre, bunu bir eyleme bağlamanız gerek
     **TechnicalProfileReferenceId** değerini daha önce oluşturduğunuz teknik profilin **kimliğiyle** güncelleştirin. Örneğin, `Common-AAD`.
 
 3. *TrustFrameworkExtensions.xml* dosyasını kaydedin ve doğrulama için yeniden yükleyin.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Azure AD kimlik sağlayıcısını bir Kullanıcı akışına ekleme 
-
-1. Azure AD B2C kiracınızda **Kullanıcı akışları**' nı seçin.
-1. Azure AD kimlik sağlayıcısına istediğiniz kullanıcı akışına tıklayın.
-1. **Sosyal kimlik sağlayıcıları** altında **contoso Azure AD**' yi seçin.
-1. **Kaydet**’i seçin.
-1. İlkenizi test etmek için **Kullanıcı akışını Çalıştır**' ı seçin.
-1. **Uygulama** için, daha önce kaydettiğiniz *testapp1* adlı Web uygulamasını seçin. **Yanıt URL 'si** gösterilmesi gerekir `https://jwt.ms` .
-1. **Kullanıcı akışını Çalıştır** 'a tıklayın
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
 
 ## <a name="update-and-test-the-relying-party-file"></a>Bağlı olan taraf dosyasını güncelleştirme ve test etme
 

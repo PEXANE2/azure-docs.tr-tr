@@ -4,15 +4,15 @@ description: IoT gereçlerinde Azure Defender ile çalışacak şekilde ağını
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97843191"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861969"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>IoT Ağ kurulumu için Azure Defender hakkında
 
@@ -54,7 +54,7 @@ Site bilgilerini aşağıda gösterildiği gibi kaydedin:
 
 - Yapılandırma iş istasyonu.
 
-- SSL sertifikaları (isteğe bağlı).
+- SSL sertifikaları (isteğe bağlı ancak önerilir).
 
 - SMTP kimlik doğrulaması (isteğe bağlı). SMTP sunucusunu kimlik doğrulamasıyla kullanmak için sunucunuz için gereken kimlik bilgilerini hazırlayın.
 
@@ -569,7 +569,7 @@ Endüstriyel ağ diyagramına genel bir bakış için, bir Defender for IoT dona
     > [!NOTE]
     > IoT gereci için Defender, anahtardaki bağlantı noktaları arasındaki trafiği gösteren alt düzey bir anahtara bağlanmalıdır.  
 
-2. Ağlarda yaklaşık cihaz sayısını sağlayın (isteğe bağlı).
+2. İzlenecek yaklaşık ağ aygıtı sayısını belirtin. Bu bilgilere IoT portalı için Azure Defender aboneliğinizi eklerken ihtiyacınız olacak. Ekleme işlemi sırasında cihaz sayısını 1000 artışlarla girmeniz istenir.
 
 3. Üretim ağları ve açıklama (isteğe bağlı) için bir alt ağ listesi sağlayın. 
 

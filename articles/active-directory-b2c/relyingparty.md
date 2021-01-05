@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9c50bd71f4e2e5bbe12518f5a5d1cd486af9723a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509760"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858443"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -231,6 +231,7 @@ Protokol olduğunda `SAML` , meta veri öğesi aşağıdaki öğeleri içerir.
 | KeyEncryptionMethod| Hayır | Azure AD B2C, verileri şifrelemek için kullanılan anahtarın kopyasını şifrelemek için kullandığı yöntemi gösterir. Meta veri,  `<EncryptedKey>` SAML yanıtında öğesinin değerini denetler. Olası değerler: ` Rsa15` (varsayılan)-RSA ortak anahtar şifreleme standardı (PKCS) sürüm 1,5 algoritması, ` RsaOaep` -RSA En Iyi asimetrik şifreleme doldurma (OAEP) şifreleme algoritması. |
 | UseDetachedKeys | Hayır |  Olası değerler: `true` , veya `false` (varsayılan). Değer olarak ayarlandığında `true` Azure AD B2C şifrelenmiş onayların biçimini değiştirir. Ayrılmış anahtarların kullanılması, şifreli onaylama listesini Encryptedrytedassertion 'nin bir alt öğesi olarak, EncryptedData yerine ekler. |
 | Wantssignedyanıtları| Hayır | SAML yanıtının bölümünü Azure AD B2C işaretetmeyeceğini belirtir `Response` . Olası değerler: `true` (varsayılan) veya `false` .  |
+| Removemilimetre Secondsfromdatetime| Hayır | Millisconds 'nin SAML yanıtı içindeki tarih saat değerlerinden kaldırılıp kaldırılamayacağını belirtir (Bu, IssueInstant, NotBefore, NotOnOrAfter ve Authnınstant). Olası değerler: `false` (varsayılan) veya `true` .  |
 
 ### <a name="outputclaims"></a>Outputclaim
 

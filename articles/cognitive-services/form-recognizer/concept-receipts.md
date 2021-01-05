@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 769dea079339af2c6307d9230e047a654dc3d5dd
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95492219"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845483"
 ---
 # <a name="receipt-concepts"></a>Makbuz kavramları
 
@@ -456,12 +456,11 @@ Makbuz çıktısı, iş veya kişisel kullanım için genel muhasebe tutulması 
 
 Alındılar, tüketici davranışını ve alışveriş eğilimlerini çözümlemek için kullanabileceğiniz faydalı verileri içerir.
 
-Makbuz API 'SI, [Aibuilder alma işlemi özelliğini](/ai-builder/prebuilt-receipt-processing)de güçlendirir.
+Makbuz API 'SI Ayrıca [AI Oluşturucu alma işlemi özelliğini](/ai-builder/prebuilt-receipt-processing)de güçlendirir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Form tanıyıcı ile seçtiğiniz dilde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
-- Ya da REST API kullanarak alındıları tanımak için [API Python hızlı](./quickstarts/python-receipts.md) başlangıcını izleyin.
+- Form tanıyıcı ile seçtiğiniz dilde bir makbuz işleme uygulaması yazmaya başlamak için [form tanıyıcı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

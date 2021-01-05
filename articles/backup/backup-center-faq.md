@@ -3,12 +3,12 @@ title: Yedekleme merkezi-SSS
 description: Bu makalede yedekleme merkezi hakkında sık sorulan sorular yanıtlanmaktadır
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: c5b23a32b60f651cd3ff91819155d83a7465491a
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5befa39411c22253bfccc689d8b5c5967a8cd759
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173818"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858629"
 ---
 # <a name="backup-center---frequently-asked-questions"></a>Yedekleme merkezi-sık sorulan sorular
 
@@ -34,7 +34,9 @@ Hayır. Yedekleme merkezi kullanıma hazır hale gelir. Bununla birlikte, yedekl
 
 ### <a name="do-i-need-to-have-any-special-permissions-to-use-backup-center"></a>Yedekleme merkezi 'ni kullanmak için özel izinlere sahip olmam gerekiyor mu?
 
-Yedekleme merkezi 'nin bu şekilde herhangi bir yeni izin gerekmez. Yönettiğiniz kaynaklara yönelik doğru Azure RBAC erişiminizin düzeyine sahip olduğunuz sürece bu kaynaklar için yedekleme merkezi 'ni kullanabilirsiniz. Örneğin, yedeklemeleriniz hakkındaki bilgileri görüntülemek için kasalarınıza **okuyucu** erişimine sahip olmanız gerekir. Yedeklemeyi yapılandırmak ve yedeklemeyle ilgili diğer eylemleri gerçekleştirmek için **yedek katkıda bulunan** veya **yedekleme işletmeni** rollerinin olması gerekir. [Azure Backup Için Azure rolleri](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin.
+Yedekleme merkezi 'nin bu şekilde herhangi bir yeni izin gerekmez. Yönettiğiniz kaynaklara yönelik doğru Azure RBAC erişiminizin düzeyine sahip olduğunuz sürece bu kaynaklar için yedekleme merkezi 'ni kullanabilirsiniz. Örneğin, yedeklemeleriniz hakkındaki bilgileri görüntülemek için kasalarınıza **okuyucu** erişimine sahip olmanız gerekir. Yedeklemeyi yapılandırmak ve yedeklemeyle ilgili diğer eylemleri gerçekleştirmek için **yedek katkıda bulunan** veya **yedekleme işletmeni** rollerinin olması gerekir. [Azure Backup Için Azure rolleri](./backup-rbac-rs-vault.md)hakkında daha fazla bilgi edinin. 
+
+Yedekleme merkezi altında [yedekleme raporları](./configure-reports.md) kullanıyorsanız, bu kasaların raporlarını görüntülemek için kasalarınızın veri gönderdiği Log Analytics çalışma alanına erişmeniz gerekir.
 
 ## <a name="pricing"></a>Fiyatlandırma
 

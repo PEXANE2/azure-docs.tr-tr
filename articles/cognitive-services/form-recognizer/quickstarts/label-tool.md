@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Belge işleme
-ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009339"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845535"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Örnek etiketleme aracını kullanarak form tanıyıcı modelini etiketlerle eğitme
 
@@ -106,7 +106,7 @@ Form tanıyıcı hizmetini denemek için bir Azure aboneliğine ([ücretsiz olar
    Bu komut, örnek etiketleme aracını bir Web tarayıcısı üzerinden kullanılabilir hale getirir. `http://localhost:3000` öğesine gidin.
 
 > [!NOTE]
-> Ayrıca, REST API form tanıyıcı kullanarak belgeleri etiketleyebilir ve modellerle eğitebilirsiniz. REST API eğitme ve analiz etmek için bkz. [REST API ve Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
+> Ayrıca, REST API form tanıyıcı kullanarak belgeleri etiketleyebilir ve modellerle eğitebilirsiniz. REST API eğitme ve analiz etmek için bkz. [REST API ve Python kullanarak etiketlerle eğitme](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="set-up-input-data"></a>Giriş verilerini ayarlama
 
@@ -137,12 +137,14 @@ Alanları aşağıdaki değerlerle girin:
 
 * **Görünen ad** -bağlantı görünen adı.
 * **Açıklama** -proje tanımlarınız.
-* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. SAS URL 'sini almak için, Microsoft Azure Depolama Gezgini açın, kapsayıcınıza sağ tıklayın ve **paylaşılan erişim Imzasını al**' ı seçin. Sona erme süresini hizmeti kullandıktan sonraki bir zamana ayarlayın. **Okuma**, **yazma**, **silme** ve **Listeleme** izinlerinin işaretli olduğundan emin olun ve **Oluştur**' a tıklayın. Sonra **URL** bölümündeki değeri kopyalayın. Şu biçimde olmalıdır: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* **SAS URL 'si** -Azure Blob depolama kapsayıcının paylaşılan erişim IMZASı (SAS) URL 'si. [!INCLUDE [get SAS URL](../includes/sas-instructions.md)]
+
+   :::image type="content" source="../media/quickstarts/get-sas-url.png" alt-text="SAS URL 'SI alımı":::
 
 :::image type="content" source="../media/label-tool/connections.png" alt-text="Örnek etiketleme aracının bağlantı ayarları.":::
 
 
-## <a name="create-a-new-project"></a>Yeni bir proje oluşturma
+## <a name="create-a-new-project"></a>Yeni proje oluşturma
 
 Örnek etiketleme aracında, projeler yapılandırma ve ayarlarınızı depolar. Yeni bir proje oluşturun ve alanları aşağıdaki değerlerle girin:
 
@@ -223,7 +225,7 @@ Formlarınızın en az beş kısmını etiketlemek için yukarıdaki adımları 
 
 ### <a name="specify-tag-value-types"></a>Etiket değer türlerini belirtin
 
-İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağ tarafındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu iyileştirecek bazı varsayımlar yapmasına olanak sağlar. Ayrıca, algılanan değerlerin son JSON çıkışında standartlaştırılmış bir biçimde döndürülmesini de sağlar. 
+İsteğe bağlı olarak, her etiket için beklenen veri türünü ayarlayabilirsiniz. Etiketin sağ tarafındaki bağlam menüsünü açın ve menüden bir tür seçin. Bu özellik, algılama algoritmasının metin algılama doğruluğunu iyileştirecek bazı varsayımlar yapmasına olanak sağlar. Ayrıca, algılanan değerlerin son JSON çıkışında standartlaştırılmış bir biçimde döndürülmesini de sağlar. Değer türü bilgileri etiket dosyalarınızda aynı yoldaki *fields.js* dosyasına kaydedilir.
 
 > [!div class="mx-imgBorder"]
 > ![Örnek etiketleme aracıyla değer türü seçimi](../media/whats-new/formre-value-type.png)
@@ -266,7 +268,7 @@ Aşağıdaki değer türleri ve Çeşitlemeler Şu anda destekleniyor:
 
 Sağ bölmedeki eğit simgesine tıklayarak Eğitim sayfasını açın. Ardından, modele eğitime başlamak için **eğitme** düğmesine tıklayın. Eğitim işlemi tamamlandıktan sonra, aşağıdaki bilgileri görürsünüz:
 
-* **Model kimliği** -oluşturulan ve EĞITILEN modelin kimliği. Her eğitim çağrısı kendi KIMLIĞINE sahip yeni bir model oluşturur. Bu dizeyi güvenli bir konuma kopyalayın; [REST API](./curl-train-extract.md) veya [istemci kitaplığı](./client-library.md)aracılığıyla tahmin görüşmeleri yapmak istiyorsanız buna ihtiyacınız olur.
+* **Model kimliği** -oluşturulan ve EĞITILEN modelin kimliği. Her eğitim çağrısı kendi KIMLIĞINE sahip yeni bir model oluşturur. Bu dizeyi güvenli bir konuma kopyalayın; [REST API](./client-library.md?pivots=programming-language-rest-api) veya [istemci kitaplığı](./client-library.md)aracılığıyla tahmin görüşmeleri yapmak istiyorsanız buna ihtiyacınız olur.
 * **Ortalama doğruluk** -modelin ortalama doğruluğu. Yeni bir model oluşturmak için ek formları ve eğitimi yeniden etiketleyerek model doğruluğunu artırabilirsiniz. Beş formu etiketleyerek ve gerektiğinde daha fazla form ekleyerek başlamasını öneririz.
 * Etiketlerin listesi ve etiket başına tahmini doğruluk.
 
@@ -276,7 +278,7 @@ Sağ bölmedeki eğit simgesine tıklayarak Eğitim sayfasını açın. Ardında
 Eğitim bittikten sonra, **Ortalama doğruluk** değerini inceleyin. Düşükse, daha fazla giriş belgesi eklemeli ve yukarıdaki adımları tekrarlamalısınız. Daha önce etiketlediğiniz belgeler proje dizininde kalacak.
 
 > [!TIP]
-> Eğitim sürecini bir REST API çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
+> Eğitim sürecini bir REST API çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="compose-trained-models"></a>Eğitilen modeller oluşturma
 
@@ -299,7 +301,7 @@ Model Oluşturma özelliği sayesinde tek bir model kimliği altında 100 adede 
 Modelinizi test etmek için sol taraftaki tahmin (ampul) simgesine tıklayın. Eğitim sürecinde kullanmadığınız bir form belgesini karşıya yükleyin. Ardından, form için anahtar/değer tahminleri elde etmek için sağdaki **tahmin** düğmesine tıklayın. Araç etiketleri sınırlayıcı kutulara uygular ve her bir etiketin güvenirliği rapor eder.
 
 > [!TIP]
-> Çözümle API 'sini bir REST çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](./python-labeled-data.md).
+> Çözümle API 'sini bir REST çağrısıyla de çalıştırabilirsiniz. Bunun nasıl yapılacağını öğrenmek için bkz. [Python kullanarak etiketlerle eğitme](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md).
 
 ## <a name="improve-results"></a>Sonuçları geliştirme
 
@@ -326,7 +328,7 @@ Son olarak ana sayfaya (kuruluş simgesi) gidin ve bulut projesini aç ' a tıkl
 Bu hızlı başlangıçta, el ile etiketlenmiş verilerle bir modeli eğtirecek şekilde form tanıyıcı örnek etiketleme aracının nasıl kullanılacağını öğrendiniz. Eğitim verilerini etiketlemek için kendi yardımcı programını derlemek isterseniz, etiketli veri eğitimi ile ilgilenen REST API 'Lerini kullanın.
 
 > [!div class="nextstepaction"]
-> [Python kullanarak etiketlerle eğitme](./python-labeled-data.md)
+> [Python kullanarak etiketlerle eğitme](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Form Tanıma nedir?](../overview.md)
-* [Form tanıyıcı istemci kitaplığı hızlı başlangıçlarını Başlat](client-library.md)
+* [Form tanıyıcı hızlı başlangıç](client-library.md)

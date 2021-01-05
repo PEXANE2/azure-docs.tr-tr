@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: 513d98ae274c668197b066c742119055248f37f9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 661b0bbf1aa389dc76567d95ad917548255a1b35
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911724"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845591"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Özel model için eğitim veri kümesi oluşturma
 
@@ -72,11 +72,8 @@ Varsayılan olarak, [özel model eğitme](https://westus2.dev.cognitive.microsof
 
 Eğitim veri kümesi oluşturmayı öğrendiğinize göre, özel bir form tanıyıcı modelini eğtirecek ve formlarınızda kullanmaya başlamak için hızlı başlangıç izleyin.
 
-* [İstemci kitaplığını kullanarak bir modeli eğitme ve form verilerini ayıklama](./quickstarts/client-library.md)
-* [Bir modeli eğitme ve kıvrımlı kullanarak form verilerini ayıklama](./quickstarts/curl-train-extract.md)
-* [REST API ve Python kullanarak bir modeli eğitme ve form verilerini ayıklama](./quickstarts/python-train-extract.md)
+* [İstemci kitaplığı veya REST API kullanarak bir modeli eğitme ve form verilerini ayıklama](./quickstarts/client-library.md)
 * [Örnek etiketleme aracını kullanarak etiketlerle eğitme](./quickstarts/label-tool.md)
-* [REST API ve Python kullanarak etiketlerle eğitme](./quickstarts/python-labeled-data.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

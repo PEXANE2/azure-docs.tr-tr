@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97842001"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861442"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Şirket içi yönetim konsolunu yönetme
 
@@ -298,6 +298,26 @@ Parolanızı sıfırlamak için:
 
 > [!NOTE]
 > Algılayıcı, ilk olarak bağlandığı aboneliğe bağlanır. Parolayı yalnızca, eklendiği abonelik ile kurtarabilirsiniz.
+
+## <a name="update-the-software-version"></a>Yazılım sürümünü güncelleştirme
+
+Aşağıdaki yordamda, şirket içi yönetim konsolu yazılımının sürümünün nasıl güncelleştirileceğini açıklanmaktadır. Güncelleştirme işlemi yaklaşık 30 dakika sürer.
+
+1. [Azure portalına](https://portal.azure.com/) gidin.
+
+1. IoT için Defender 'a gidin.
+
+1. **Güncelleştirmeler** sayfasına gidin.
+
+1. Şirket içi yönetim konsolu bölümünden bir sürüm seçin.
+
+1. **İndir** ve dosyayı Kaydet ' i seçin.
+
+1. Şirket içi yönetim konsolunda oturum açın ve Yan menüden **sistem ayarları** ' nı seçin.
+
+1. **Sürüm güncelleştirmesi** bölmesinde **Güncelleştir**' i seçin.
+
+1. IoT **güncelleştirmeleri** için Defender sayfasından indirdiğiniz dosyayı seçin.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

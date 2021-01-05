@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: f27cb217b60c23f3cf89f48effb933837269000e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960334"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858646"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure ağ Izleyicisi 'nde kaynak sorunlarını gidermeye giriş
 
@@ -54,9 +54,9 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | PlannedMaintenance |  Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir. | Hayır |
 | VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
-| PlatformInActive | Platform ile ilgili bir sorun var. | No|
-| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | No|
-| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| No|
+| PlatformInActive | Platform ile ilgili bir sorun var. | Hayır|
+| ServiceNotRunning | Temel alınan hizmet çalışmıyor. | Hayır|
+| Noconnectionsdökümforgateway | Ağ geçidinde bağlantı yok. Bu hata yalnızca bir uyarıdır.| Hayır|
 | ConnectionsNotConnected | Bağlantılar bağlı değil. Bu hata yalnızca bir uyarıdır.| Yes|
 | Gatewaycpuusageaşıldı | Geçerli ağ geçidi CPU kullanımı %95 >. | Yes |
 
@@ -68,12 +68,12 @@ Aşağıdaki tablolarda, kullanılabilir olan farklı hata türleri (önceki lis
 | GatewayNotFound | Ağ Geçidi bulunamıyor veya ağ geçidi sağlanmadı |Hayır|
 | PlannedMaintenance | Ağ Geçidi örneği bakımda  |Hayır|
 | UserDrivenUpdate | Bu hata bir kullanıcı güncelleştirmesi devam ederken oluşur. Güncelleştirme bir yeniden boyutlandırma işlemi olabilir.  | Hayır |
-| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | No |
-| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | No |
-| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |No|
+| VipUnResponsive | Bu hata, ağ geçidinin birincil örneğine bir sistem durumu yoklama hatası nedeniyle ulaşılamadığında oluşur. | Hayır |
+| ConnectionEntityNotFound | Bağlantı yapılandırması eksik | Hayır |
+| Connectionımarkedconnected | Bağlantı "bağlantısı kesildi" olarak işaretlendi |Hayır|
 | ConnectionNotConfiguredOnGateway | Temeldeki hizmette bağlantı yapılandırılmamış. | Yes |
 | ConnectionMarkedStandby | Temel alınan hizmet bekleme olarak işaretlendi.| Yes|
-| Kimlik Doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
+| Kimlik doğrulaması | Önceden paylaşılmış anahtar uyumsuzluğu | Yes|
 | Peerulaşılabilirlik | Eş ağ geçidine erişilemiyor. | Yes|
 | Ikepolicyuyuşmazlığıdır | Eş ağ geçidinde Azure tarafından desteklenmeyen ıKE ilkeleri vardır. | Yes|
 | WfpParse hatası | WFP günlüğü ayrıştırılırken bir hata oluştu. |Yes|
@@ -207,6 +207,9 @@ Elapsed Time            330 sec
 |         6    ikeext               ike_sa_management_c3162  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
+
+## <a name="considerations"></a>Dikkat edilmesi gerekenler 
+* CLı hatası: komutu çalıştırmak için Azure CLı kullanıyorsanız, VPN Gateway ve depolama hesabının aynı kaynak grubunda olması gerekir. Farklı kaynak gruplarındaki kaynaklara sahip müşteriler, bunun yerine PowerShell veya Azure portal kullanabilir.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

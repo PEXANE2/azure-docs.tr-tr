@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: aahi
 keywords: Şirket içi, Docker, kapsayıcı, tanımla
-ms.openlocfilehash: 0f6807f771510f85c5a20cfb2a160cfe1e8726a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 64169069bc0a1ccd126d1b79ee89a5666e1caeb1
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000564"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861048"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Yüz kapsayıcıları (Önizleme) yükleyip çalıştırma
 
@@ -77,7 +77,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 Kapsayıcı [ana bilgisayar](#the-host-computer)üzerinde olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run) gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
+1. [Kapsayıcıyı](#run-the-container-with-docker-run) gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint). 
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı Docker Run ile çalıştırma
@@ -101,7 +101,7 @@ ApiKey={API_KEY}
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sahte TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir. 
 
-Komuta [examples](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
+Komuta [](./face-resource-container-config.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir. 
 
 > [!IMPORTANT]
 > `Eula` `Billing` `ApiKey` Kapsayıcıyı çalıştırmak için,, ve seçenekleri belirtilmelidir, aksi olarak kapsayıcı başlamamalıdır. Daha fazla bilgi için bkz. [faturalandırma](#billing).
@@ -137,10 +137,6 @@ Yüz hizmet kapsayıcıları, Azure hesabınızdaki bir yüz kaynağı kullanara
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Bu seçenekler hakkında daha fazla bilgi için bkz. [kapsayıcıları yapılandırma](./face-resource-container-config.md).
-
-<!--blogs/samples/video coures -->
-
-[!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
 ## <a name="summary"></a>Özet
 

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2020
+ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: bb9b0da609169288521d21ee6d5e412a786c7549
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4b106ebc5606c4e5a290e12728d4e2011e80f6a2
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574121"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861831"
 ---
 ## <a name="azure-cognitive-services-container-security"></a>Azure bilişsel hizmetler kapsayıcı güvenliği
 
@@ -44,7 +44,7 @@ Ana bilgisayar, liste **bağlantı noktası 443** ve aşağıdaki etki alanları
 
 #### <a name="disable-deep-packet-inspection"></a>Derin paket incelemesini devre dışı bırak
 
-> [Derin paket incelemesi](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI), bir bilgisayar ağı üzerinden gönderilen verilerin ayrıntılarını inceleyerek ve genellikle işlem gerçekleştirerek, yeniden yönlendirerek veya uygun şekilde kaydederek işlem yapması gereken veri işleme türüdür.
+[Derin paket incelemesi](https://en.wikipedia.org/wiki/Deep_packet_inspection) (DPI), bir bilgisayar ağı üzerinden gönderilen verilerin ayrıntılarını inceleyerek ve genellikle işlem gerçekleştirerek, yeniden yönlendirerek veya uygun şekilde kaydederek işlem yapması gereken veri işleme türüdür.
 
 Bilişsel hizmetler kapsayıcılarının Microsoft sunucuları 'nda oluşturmakta olduğu güvenli kanallarda DPı 'yi devre dışı bırakın. Bunun başarısız olması, kapsayıcının düzgün çalışmasını engeller.
 

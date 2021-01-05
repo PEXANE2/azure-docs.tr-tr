@@ -4,12 +4,12 @@ description: Azure’daki kaynakların dağıtımı, yönetimi ve erişim deneti
 ms.topic: overview
 ms.date: 09/01/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: f3b3ebce3dd34637a787895e7724736adfc186fb
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fad49db94195bbd2f9e5e32f8596f33fab586752
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032261"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858527"
 ---
 # <a name="what-is-azure-resource-manager"></a>Azure Resource Manager nedir?
 
@@ -33,7 +33,7 @@ Azure Resource Manager’ı kullanmaya yeni başladıysanız bilmiyor olabilece�
 
 * **kaynak** -Azure aracılığıyla kullanılabilen yönetilebilir bir öğe. Sanal makineler, depolama hesapları, web uygulamaları, veritabanları ve sanal ağlar kaynaklara örnek olarak verilebilir. Kaynak grupları, abonelikler, yönetim grupları ve Etiketler Ayrıca kaynaklara örnektir.
 * **kaynak grubu** -bir Azure çözümü için ilgili kaynakları tutan bir kapsayıcı. Kaynak grubu, grup olarak yönetmek istediğiniz kaynakları içerir. Kuruluşunuz açısından en mantıklı duruma göre hangi kaynakların bir kaynak grubuna ait olduğuna siz karar verirsiniz. Bkz. [kaynak grupları](#resource-groups).
-* **kaynak sağlayıcısı** -Azure kaynakları sağlayan bir hizmet. Örneğin, ortak bir kaynak sağlayıcısı, sanal makine kaynağını sağlayan Microsoft. COMPUTE ' dir. Microsoft. Storage, başka bir ortak kaynak sağlayıcıdır. Bkz. [kaynak sağlayıcıları ve türleri](resource-providers-and-types.md).
+* **kaynak sağlayıcısı** -Azure kaynakları sağlayan bir hizmet. Örneğin, bir ortak kaynak sağlayıcısı `Microsoft.Compute` , sanal makine kaynağını temin eder. `Microsoft.Storage` başka bir ortak kaynak sağlayıcısıdır. Bkz. [kaynak sağlayıcıları ve türleri](resource-providers-and-types.md).
 * **Kaynak Yöneticisi Template** -bir kaynak grubuna, aboneliğe, yönetim grubuna veya kiracıya dağıtılacak bir veya daha fazla kaynağı tanımlayan bir JAVASCRIPT nesne GÖSTERIMI (JSON) dosyası. Şablon, kaynakları tutarlı ve sürekli olarak dağıtmak için kullanılabilir. [Şablon dağıtımı genel bakış](../templates/overview.md)bölümüne bakın.
 * **bildirim temelli söz dizimi** - Oluşturmaya yönelik programlama komutları dizisini yazmak zorunda kalmadan "Oluşturmak istediğiniz şeyi" belirtmenize imkan tanıyan söz dizimi. Resource Manager şablonu, bildirim temelli söz diziminin bir örneğidir. Dosya içinde Azure’a dağıtılacak altyapının özelliklerini tanımlarsınız.  [Şablon dağıtımı genel bakış](../templates/overview.md)bölümüne bakın.
 
@@ -61,7 +61,7 @@ Azure dört kapsam düzeyi sağlar: [Yönetim grupları](../../governance/manage
 
 ![Yönetim düzeyleri](./media/overview/scope-levels.png)
 
-Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiğiniz düzey, ayarın ne kadar yaygın olarak uygulanacağını belirler. Düşük düzeyler, yüksek düzeylerdeki ayarları devralır. Örneğin, aboneliğe bir [ilke](../../governance/policy/overview.md) uyguladığınızda, ilke aboneliğinizdeki tüm kaynak gruplarına ve kaynaklara uygulanır. Kaynak grubuna bir ilke uyguladığınızda, bu ilke kaynak grubu ve tüm kaynakları uygulanır. Ancak, başka bir kaynak grubu Bu ilke atamasına sahip değildir.
+Yönetim ayarlarını bu kapsam düzeylerinden birinde uygularsınız. Seçtiğiniz düzey, ayarın ne kadar yaygın olarak uygulanacağını belirler. Düşük düzeyler, yüksek düzeylerdeki ayarları devralır. Örneğin, aboneliğe bir [ilke](../../governance/policy/overview.md) uyguladığınızda, ilke aboneliğinizdeki tüm kaynak gruplarına ve kaynaklara uygulanır. Kaynak grubunda bir ilke uyguladığınızda, bu ilke kaynak grubuna ve tüm kaynaklarına uygulanır. Ancak, başka bir kaynak grubu Bu ilke atamasına sahip değildir.
 
 Şablonları kiracılara, yönetim gruplarına, aboneliklere veya kaynak gruplarına dağıtabilirsiniz.
 
@@ -99,11 +99,11 @@ Kaynak gruplarınızı tanımlarken göz önüne almanız gereken bazı önemli 
 
 ## <a name="resiliency-of-azure-resource-manager"></a>Azure Resource Manager esnekliği
 
-Azure Resource Manager hizmeti dayanıklılık ve sürekli kullanılabilirlik için tasarlanmıştır. REST API Kaynak Yöneticisi ve denetim düzlemi işlemleri (management.azure.com 'e gönderilen istekler):
+Azure Resource Manager hizmeti dayanıklılık ve sürekli kullanılabilirlik için tasarlanmıştır. REST API Kaynak Yöneticisi ve denetim düzlemi işlemleri (gönderilen istekler `management.azure.com` ):
 
 * Bölgeler arasında dağıtılır. Bazı hizmetler bölgesel olarak verilebilir.
 
-* Birden çok Kullanılabilirlik Alanları sahip konumlarda Kullanılabilirlik Alanları (Ayrıca bölge) üzerinden dağıtılır.
+* Birden çok Kullanılabilirlik Alanları sahip konumlarda Kullanılabilirlik Alanları (ve bölgelerin yanı sıra) arasında dağıtılır.
 
 * Tek bir mantıksal veri merkezine bağımlı değildir.
 

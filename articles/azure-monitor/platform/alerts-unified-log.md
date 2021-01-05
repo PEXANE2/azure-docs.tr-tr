@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: 9f8004b41e8048dfc97fb61bb67a634963c0c575
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: a913bc0ae01507cb26c1650d63918a8319eeacf4
+ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317563"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97857435"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Izleyici 'de günlük uyarıları
 
@@ -64,7 +64,7 @@ Log Analytics 'te olduğu gibi, zaman aralığı sorgu verilerini belirtilen ara
 
 Örneğin, bir sorgu, zaman aralığı 60 dakika olduğunda ve metin **önce (1D)** olsa bile, bir sorgu 60 dakika tarar. Zaman aralığı ve sorgu zaman filtrelemenin eşleşmesi gerekir. Örnek örnekte, **Dönem**  /  **geçersiz kılma sorgu zaman aralığını** bir güne değiştirmek beklenen şekilde çalışır.
 
-### <a name="measure"></a>Measure
+### <a name="measure"></a>Ölçü
 
 Günlük uyarıları, değerlendirilen sayısal değerlere oturum açma günlüğü kaydeder. İki farklı şeyi ölçebilirsiniz:
 
@@ -102,7 +102,7 @@ Ardından, 500 hata kodu ile biten istekler için uyarı kuralları izleyicileri
 
 ### <a name="aggregation-type"></a>Toplama türü
 
-Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örneğin:
+Birden çok kayıt üzerinde gerçekleştirilen ve bunları tek bir sayısal değere toplayan hesaplama. Örnek:
 - **Sayı** sorgudaki kayıt sayısını döndürür
 - **Average** , tanımlanan ölçü sütun [**toplama ayrıntı**](#aggregation-granularity) düzeyinin ortalamasını döndürür.
 
@@ -120,6 +120,8 @@ Birden çok kaydı tek bir sayısal değere toplamak için kullanılan aralığ�
 ### <a name="split-by-alert-dimensions"></a>Uyarı boyutlarına göre Böl
 
 Uyarıları sayı veya dize sütunlarına göre, benzersiz kombinasyonlara gruplandırarak ayrı uyarılarda ayırın. Ölçekte (abonelik veya kaynak grubu kapsamı) kaynak merkezli uyarılar oluştururken Azure Kaynak KIMLIĞI sütununa göre ayırabilirsiniz. Azure Kaynak KIMLIĞI sütununu bölmek, uyarının hedefini belirtilen kaynakla değiştirecek.
+
+Azure Kaynak KIMLIĞI sütununa göre bölme işlemi, birden fazla Azure kaynağında aynı koşulu izlemek istediğinizde önerilir. Örneğin, %80 üzerinde CPU kullanımı için tüm sanal makineleri izleme. Ayrıca, kapsamdaki birden fazla kaynak üzerinde bir koşul istediğinizde, kaynak grubu kapsamındaki en az beş makinenin %80 ' unun üzerinde CPU kullanımına sahip olduğunu izleme gibi bir koşulu istediğiniz zaman bölmemeye karar verebilirsiniz.
 
 Çalışma alanlarında ve Application Insights, yalnızca **ölçüm ölçümü** ölçü türünde desteklenir. Alanı **toplama** olarak adlandırılır. Üç sütun ile sınırlıdır. Sorgudaki sütunlara göre üçten fazla grup bulunması beklenmeyen sonuçlara yol açabilir. Diğer tüm kaynak türlerinde, koşulun **boyutlara göre Böl** bölümüne (altı bölme ile sınırlıdır) göre yapılandırılmıştır.
 
