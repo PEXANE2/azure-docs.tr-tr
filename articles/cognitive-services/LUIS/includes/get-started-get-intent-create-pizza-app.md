@@ -1,21 +1,22 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: cognitive-services
-author: roy-har
-manager: diberry
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
-ms.date: 06/03/2020
+ms.date: 12/29/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
-ms.author: roy-har
-ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.author: aahi
+ms.reviewer: roy-har
+ms.openlocfilehash: 7aa2fba6ef551a745ccaf5b00f36021b9d8680ce
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84418076"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820750"
 ---
 1. Dosya için GitHub sayfasını açmak üzere [pizza-app-for-luis-v6.json '](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) u seçin `pizza-app-for-luis.json` .
 1. **Ham** düğmesine sağ tıklayın veya uzun dokunduktan sonra **Bağlantıyı farklı kaydet** ' i seçerek bilgisayarınıza kaydedin `pizza-app-for-luis.json` .
@@ -29,7 +30,7 @@ ms.locfileid: "84418076"
 
 Uygulama içeri aktarılacak.
 
-**Etkin BIR Luo uygulaması oluşturma**iletişim kutusunu görürseniz, iletişim kutusunu kapatın.
+**Etkin BIR Luo uygulaması oluşturma** iletişim kutusunu görürseniz, iletişim kutusunu kapatın.
 
 ## <a name="train-and-publish-the-pizza-app"></a>Pizza uygulamasını eğitme ve yayımlama
 
@@ -48,7 +49,7 @@ Yeni pizza uygulamanızı kullanmak için, pizza uygulamanızın uygulama KIMLI�
 Bu değerleri bulmak için:
 
 1. **Amaçlar** sayfasından **Yönet**' i seçin.
-1. **Uygulama ayarları** sayfasında, **uygulama kimliğini**kaydedin.
+1. **Uygulama ayarları** sayfasında, **uygulama kimliğini** kaydedin.
 1. **Azure Kaynakları**’nı seçin.
-1. **Azure kaynakları** sayfasından **birincil anahtarı**kaydedin. Bu değer, tahmin anahtarınıza göre yapılır.
-1. **Uç nokta URL 'sini**kaydedin. Bu değer, tahmin uç noktanıza ait.
+1. **Azure kaynakları** sayfasından **birincil anahtarı** kaydedin. Bu değer, tahmin anahtarınıza göre yapılır.
+1. **Uç nokta URL 'sini** kaydedin. Bu değer, tahmin uç noktanıza ait.

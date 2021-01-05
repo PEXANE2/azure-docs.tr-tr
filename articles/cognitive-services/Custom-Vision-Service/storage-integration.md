@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: f4d9cc4c02ab062c73e9dbd977d9ea9e6ccdb60d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43cd03e8f4a66d18adc33c943481002ff7b326d3
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90532789"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813216"
 ---
 # <a name="integrate-azure-storage-for-notifications-and-backup"></a>Bildirimler ve yedekleme için Azure Storage 'ı tümleştirme
 
@@ -25,7 +25,7 @@ Bu kılavuz, bu REST API 'Lerini kıvrımlı ile nasıl kullanacağınızı gös
 > [!NOTE]
 > Anında iletme bildirimleri **CreateProject** API 'sindeki Isteğe bağlı _notificationqueueuri_ parametresine bağlıdır ve model yedeklemeleri de Isteğe bağlı _exportmodelcontaineruri_ parametresini kullanmanızı gerektirir. Bu kılavuz, her ikisini de tüm özellikler kümesi için kullanır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 - Azure 'da bir Özel Görüntü İşleme kaynağı. Bir tane yoksa, Azure portal gidin ve [Yeni bir özel görüntü işleme kaynağı oluşturun](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true). Bu özellik şu anda bilişsel hizmet kaynağını (hepsi bir anahtarda) desteklememektedir.
 - Blob kapsayıcısı olan bir Azure depolama hesabı. Bu adımla ilgili yardıma ihtiyacınız varsa [Azure Storage laboratuvarının 1. alıştırmaını](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) izleyin.
@@ -62,7 +62,7 @@ Artık tümleştirme URL 'Lerine sahip olduğunuza göre, Azure depolama özelli
 
 ### <a name="create-new-project"></a>Yeni proje oluşturma
 
-[CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae) API 'sini çağırdığınızda, _exportmodelcontaineruri_ ve _notificationqueueuri_isteğe bağlı parametrelerini ekleyin. Önceki bölümde aldığınız URL değerlerini atayın. 
+[CreateProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeae) API 'sini çağırdığınızda, _exportmodelcontaineruri_ ve _notificationqueueuri_ isteğe bağlı parametrelerini ekleyin. Önceki bölümde aldığınız URL değerlerini atayın. 
 
 ```curl
 curl -v -X POST "{endpoint}/customvision/v3.3/Training/projects?exportModelContainerUri={inputUri}&notificationQueueUri={inputUri}&name={inputName}"
@@ -110,7 +110,7 @@ curl -v -X PATCH "{endpoint}/customvision/v3.3/Training/projects/{projectId}"
 --data-ascii "{body}" 
 ```
 
-İstek gövdesini (), `body` _Exportmodelcontaineruri_ ve _notificationqueueuri_IÇIN uygun değerleri doldurarak şu JSON biçimine ayarlayın:
+İstek gövdesini (), `body` _Exportmodelcontaineruri_ ve _notificationqueueuri_ IÇIN uygun değerleri doldurarak şu JSON biçimine ayarlayın:
 
 ```json
 {
@@ -206,4 +206,5 @@ Ayrıca, dışa aktarma tamamlandığında kuyruğunuza bir bildirim alırsını
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu kılavuzda, bir projeyi Özel Görüntü İşleme kaynakları arasında kopyalamayı ve taşımayı öğrendiniz. Daha sonra, Özel Görüntü İşleme ile yapabileceklerinizi görmek için API başvuru belgelerini inceleyin.
-* [REST API başvuru belgeleri](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API başvuru belgeleri (eğitim)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)
+* [REST API başvuru belgeleri (tahmin)](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.1/operations/5eb37d24548b571998fde5f3)

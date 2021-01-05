@@ -6,30 +6,34 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: ae2bc6e87f0b694e949057280233c19e0b98132c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 74135c0b36f533ebfbba6422bc79af47825a1a3b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92892239"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813233"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Bir Kmebook üzerinde Uzak Masaüstü Protokolü kullanarak bir VM 'ye bağlanma
+
 Bu bölümde, bir öğrencinin RDP kullanarak bir Kmebook 'tan bir derslik laboratuvar VM 'sine nasıl bağlanabildiği gösterilmektedir.
 
 ## <a name="install-microsoft-remote-desktop-on-a-chromebook"></a>Bir Kmebook 'a Microsoft Uzak Masaüstü yüklemesi
+
 1. Kmebook 'inizdeki uygulama mağazasını açın ve **Microsoft Uzak Masaüstü** arayın.
 
     ![Microsoft Uzak Masaüstü](./media/how-to-use-classroom-lab/install-ms-remote-desktop-chromebook.png)
+    
 1. En son Microsoft Uzak Masaüstü sürümünü yükler. 
 
 ## <a name="access-the-vm-from-your-chromebook-using-rdp"></a>RDP kullanarak Kmebook 'ınızdan VM 'ye erişme
+
 1. **Microsoft Uzak Masaüstü** yüklü olan bilgisayarınızda indirilen **RDP** dosyasını açın. VM 'ye bağlanmaya başlamalıdır. 
 
     ![VM’ye bağlanma](./media/how-to-use-classroom-lab/connect-vm-chromebook.png)
 
 1. İstendiğinde parolanızı girin.
-    ![Kullanıcı adınızı ve parolanızı girdiğiniz oturum açma ekranını gösteren ekran görüntüsü.](./media/how-to-use-classroom-lab/password-chromebook.png)
 
+    ![Kullanıcı adınızı ve parolanızı girdiğiniz oturum açma ekranını gösteren ekran görüntüsü.](./media/how-to-use-classroom-lab/password-chromebook.png)
 
 1. Aşağıdaki uyarıyı alırsanız **devam** ' ı seçin. 
 
@@ -38,6 +42,6 @@ Bu bölümde, bir öğrencinin RDP kullanarak bir Kmebook 'tan bir derslik labor
 1. Bağlanmakta olduğunuz VM 'nin masaüstünü görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Linux VM 'lerine bağlanma hakkında daha fazla bilgi edinmek için bkz. [Linux sanal makinelerine bağlanma](how-to-use-remote-desktop-linux-student.md)
 
+Linux VM 'lerine bağlanma hakkında daha fazla bilgi edinmek için bkz. [Linux sanal makinelerine bağlanma](how-to-use-remote-desktop-linux-student.md)
 

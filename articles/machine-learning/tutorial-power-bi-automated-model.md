@@ -1,7 +1,7 @@
 ---
 title: "Öğretici: otomatik ML 'yi kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)"
 titleSuffix: Azure Machine Learning
-description: Microsoft Power BI sonuçları tahmin etmek için en iyi modeli kullanabilmeniz için otomatik ML modelleri oluşturmayı ve dağıtmayı öğrenin.
+description: Microsoft Power BI sonuçları tahmin etmek için en iyi modeli kullanabilmeniz için otomatik makine öğrenimi modelleri derleyip dağıtmayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,130 +10,130 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 897f493edf6ccdebb25c201e8e4f9babfb0754c5
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 6dc99d58f15653e9d3f991622de3bb3388690459
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370351"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814814"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-using-automated-machine-learning-part-1-of-2"></a>Öğretici: Power BI tümleştirme-otomatik makine öğrenimini kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-automated-machine-learning-part-1-of-2"></a>Öğretici: Power BI tümleştirme-otomatik makine öğrenimi kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)
 
-Bu öğreticinin ilk bölümünde, Azure Machine Learning Studio 'da otomatik makine öğrenimini kullanarak tahmine dayalı bir makine öğrenimi modeli eğitin ve dağıtırsınız.  2. Bölüm 'de, Microsoft Power BI sonuçları tahmin etmek için en iyi gerçekleştiriliyor modelini kullanacaksınız.
+Bu öğreticinin 1. bölümünde, tahmine dayalı bir makine öğrenimi modeli eğitin ve dağıtırsınız. Azure Machine Learning Studio içinde otomatik makine öğrenimi (ML) kullanıyorsunuz.  2. bölümde, Microsoft Power BI sonuçları tahmin etmek için en iyi performanslı modeli kullanacaksınız.
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Azure Machine Learning işlem kümesi oluşturma
-> * Veri kümesi oluşturma
-> * Otomatik ML çalıştırması oluşturma
-> * En iyi modeli gerçek zamanlı bir Puanlama uç noktasına dağıtın
+> * Azure Machine Learning işlem kümesi oluşturun.
+> * Bir veri kümesi oluşturun.
+> * Otomatik makine öğrenimi çalıştırması oluşturun.
+> * En iyi modeli gerçek zamanlı bir Puanlama uç noktasına dağıtın.
 
 
-Power BI ' de kullanacağınız modeli oluşturmanın ve dağıtmanın üç farklı yolu vardır.  Bu makale, Studio 'daki otomatikleştirilmiş ML 'yi kullanarak modelleri eğitme ve dağıtma seçeneğini içerir.  Bu seçenek, veri hazırlama ve model eğitimini tamamen otomatikleştiren kod içermeyen bir yazma deneyimi gösterir. 
+Power BI ' de kullanacağınız modeli oluşturmanın ve dağıtmanın üç yolu vardır.  Bu makalede, "seçenek C: Studio 'da otomatik makine öğrenimi kullanarak modelleri eğitme ve dağıtma" seçeneği ele alınmaktadır.  Bu seçenek, kod içermeyen bir yazma deneyimidir. Veri hazırlama ve model eğitimini tamamen otomatikleştirir. 
 
-Bunun yerine şunları kullanabilirsiniz:
+Ancak bunun yerine diğer seçeneklerden birini de kullanabilirsiniz:
 
-* [Seçenek A: not defterlerini kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-custom-model.md) -Azure Machine Learning Studio 'Da barındırılan Jupyter not defterlerini kullanan kod ilk yazma deneyimi.
-* Seçenek B: tasarımcı kullanarak (bir sürükle ve bırak Kullanıcı arabirimi) düşük kodlu bir yazma deneyimi [kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-designer-model.md).
+* [Seçenek A: Jupyter not defterlerini kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-custom-model.md). Bu kod ilk yazma deneyimi Azure Machine Learning Studio barındırılan Jupyıter not defterlerini kullanır.
+* [Seçenek B: Azure Machine Learning tasarımcısını kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-designer-model.md). Bu düşük kod yazma deneyimi bir sürükle ve bırak Kullanıcı arabirimi kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure aboneliği ([ücretsiz deneme sürümü mevcuttur](https://aka.ms/AMLFree)). 
-- Azure Machine Learning çalışma alanı. Zaten bir çalışma alanınız yoksa [Azure Machine Learning çalışma alanı oluşturma](./how-to-manage-workspace.md#create-a-workspace)' yı izleyin.
+- Azure aboneliği. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://aka.ms/AMLFree)kullanabilirsiniz. 
+- Azure Machine Learning çalışma alanı. Zaten bir çalışma alanınız yoksa, bkz. [Azure Machine Learning çalışma alanları oluşturma ve yönetme](./how-to-manage-workspace.md#create-a-workspace).
 
-## <a name="create-compute-cluster"></a>İşlem kümesi oluştur
+## <a name="create-a-compute-cluster"></a>İşlem kümesi oluşturma
 
-Otomatik ML, "en iyi" algoritmayı ve parametreleri bulmak için farklı makine öğrenimi modellerini otomatik olarak ister. Azure Machine Learning, model eğitiminin bir işlem kümesi üzerinden yürütülmesini paralelleştirme.
+Otomatik makine öğrenimi, "en iyi" algoritmayı ve parametreleri bulmak için birçok makine öğrenimi modeli sağlar. Azure Machine Learning, model eğitiminin bir işlem kümesi üzerinde çalışmasını paralelleştirme.
 
-[Azure Machine Learning Studio](https://ml.azure.com), sol taraftaki menüden, ardından **Işlem kümeleri** sekmesinden **işlem** ' i seçin. **Yeni**' yi seçin:
+Başlamak için, [Azure Machine Learning Studio](https://ml.azure.com)' de, sol taraftaki menüde **işlem**' i seçin. **İşlem kümeleri** sekmesini açın. Ardından **Yeni**' yi seçin:
 
-:::image type="content" source="media/tutorial-power-bi/create-compute-cluster.png" alt-text="İşlem kümesi oluşturmayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/create-compute-cluster.png" alt-text="Hesaplama kümesi oluşturmayı gösteren ekran görüntüsü.":::
 
-**İşlem kümesi oluştur** ekranında:
+**İşlem kümesi oluştur** sayfasında:
 
-1. Bir VM boyutu seçin (Bu öğreticinin bir `Standard_D11_v2` makineye ince olması için).
-1. **İleri**’yi seçin
-1. Geçerli bir işlem adı sağlayın
-1. **En az düğüm sayısını** 0 ' da tut
-1. **En fazla düğüm sayısını** 4 olarak değiştirin
-1. **Oluştur**’u seçin
+1. VM boyutunu seçin. Bu öğretici için bir **Standard_D11_v2** makine iyidir.
+1. **İleri**’yi seçin.
+1. Geçerli bir işlem adı belirtin.
+1. **En az düğüm sayısını** şurada tut `0` .
+1. **En fazla düğüm sayısını** ile değiştirin `4` .
+1. **Oluştur**’u seçin.
 
-Kümenizin durumunun **oluşturma** olarak değiştiğini görebilirsiniz.
+Kümenizin **oluşturulmasına** yönelik durumu değişir.
 
 >[!NOTE]
-> Küme oluşturulduğunda, hiçbir işlem maliyeti tahakkuk etmediği anlamına gelen 0 düğüme sahip olur. Yalnızca otomatikleştirilmiş ML işi çalıştırıldığında ücretlendirilirsiniz. Küme, boşta kalma süresi 120 saniye sonra otomatik olarak 0 olarak ölçeklenir.
+> Yeni kümede 0 düğüm bulunur, bu nedenle hiçbir işlem maliyeti tahakkuk ettirilmiştir. Yalnızca otomatik makine öğrenimi işi çalıştırıldığında maliyetleriniz vardır. Küme, boşta kalma süresi 120 saniye sonra otomatik olarak 0 olarak ölçeklendirilir.
 
 
-## <a name="create-dataset"></a>Veri kümesi oluşturma
+## <a name="create-a-dataset"></a>Veri kümesi oluşturma
 
-Bu öğreticide, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/)kullanılabilir hale getirilen [diabetes veri kümesini](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)kullanırsınız.
+Bu öğreticide [diabetes veri kümesini](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)kullanırsınız. Bu veri kümesi, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/)kullanılabilir.
 
-Veri kümesini oluşturmak **için veri kümesi sol menüsünü** ve ardından **veri kümesi oluştur** ' u seçin. aşağıdaki seçenekleri görürsünüz:
+Veri kümesini oluşturmak için sol taraftaki menüden **veri kümeleri**' ni seçin. Ardından **veri kümesi oluştur**' u seçin. Aşağıdaki seçenekleri görürsünüz:
 
-:::image type="content" source="media/tutorial-power-bi/create-dataset.png" alt-text="Yeni bir veri kümesi oluşturmayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/create-dataset.png" alt-text="Yeni bir veri kümesi oluşturmayı gösteren ekran görüntüsü.":::
 
-**Açık veri kümeleri ' nden** seçim yapın ve sonra **açık veri kümelerinde veri kümesi oluştur** ekranında:
+**Açık veri kümeleri arasından** seçim yapın. Ardından, **veri kümesinden veri kümesi oluştur** sayfasından şunu yapın:
 
-1. Arama çubuğunu kullanarak *diabtes* arama
-1. **Örnek seçin: Diabetes**
-1. **İleri**’yi seçin
-1. Veri kümeniz için bir ad sağlayın- *diabetes*
-1. **Oluştur**’u seçin
+1. *Diabetes* bulmak için arama çubuğunu kullanın.
+1. **Örnek: Diabetes** seçin.
+1. **İleri**’yi seçin.
+1. Veri kümesi *diagklarınızı* adlandırın.
+1. **Oluştur**’u seçin.
 
-Veri kümesini ve ardından **keşfet**' i seçerek verileri keşfedebilirsiniz:
+Verileri araştırmak için veri kümesini seçin ve ardından **keşfet**' i seçin:
 
-:::image type="content" source="media/tutorial-power-bi/explore-dataset.png" alt-text="Veri kümesinin nasıl araştıralınacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/explore-dataset.png" alt-text="Bir veri kümesinin nasıl araştıralınacağını gösteren ekran görüntüsü.":::
 
-Veriler 10 temel giriş değişkenine sahiptir (yaş, Sex, gövde yığın dizini, ortalama kan basıncı ve altı kan serum ölçümleri gibi) ve **Y** adlı bir hedef değişken (taban çizgisinden sonra bir yılda bir yıl ilerleme durumu ölçüsü).
+Veride yaş, Sex, gövde yığın dizini, ortalama kan basıncı ve altı kan serum ölçümleri gibi 10 temel giriş değişkeni vardır. Ayrıca, **Y** adlı bir hedef değişkeni de vardır. Bu hedef değişken, taban çizgisinden sonraki bir yıl ilerleme durumu için bir nicel ölçüdür.
 
-## <a name="create-automated-ml-run"></a>Otomatik ML çalıştırması oluştur
+## <a name="create-an-automated-machine-learning-run"></a>Otomatik makine öğrenimi çalıştırması oluşturma
 
-[Azure Machine Learning Studio](https://ml.azure.com) sol taraftaki menüden **Otomatik ml** ' yi ve ardından **Yeni otomatik ml Çalıştır**' ı seçin:
+[Azure Machine Learning Studio](https://ml.azure.com)' de, sol taraftaki menüde **Otomatik ml**' yi seçin. Ardından **Yeni OTOMATIK ml çalıştırması**' nı seçin:
 
-:::image type="content" source="media/tutorial-power-bi/create-new-run.png" alt-text="Yeni bir otomatik ML çalıştırması oluşturmayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/create-new-run.png" alt-text="Yeni bir otomatik makine öğrenimi çalıştırmasının nasıl oluşturulacağını gösteren ekran görüntüsü.":::
 
-Ardından, daha önce oluşturduğunuz **diabetes** veri kümesini seçin ve **İleri**' yi seçin:
+Ardından, daha önce oluşturduğunuz **diabetes** veri kümesini seçin. Ardından **İleri**' yi seçin:
 
-:::image type="content" source="media/tutorial-power-bi/select-dataset.png" alt-text="Veri kümesinin nasıl seçileceğini gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/select-dataset.png" alt-text="Veri kümesinin nasıl seçileceğini gösteren ekran görüntüsü.":::
  
-**Çalıştırmayı Yapılandır** ekranında:
+**Çalıştırma Yapılandır** sayfasında:
 
-1. Deneme adı altında **Yeni oluştur** **' u** seçin.
-1. Bir deneme adı girin
-1. Hedef sütun alanında **Y** ' yi seçin.
-1. **Hesaplama kümesi seçin** alanında, daha önce oluşturduğunuz işlem kümesini seçin. 
+1. **Deneme adı** altında **Yeni oluştur**' u seçin.
+1. Denemeyi adlandırın.
+1. **Hedef sütun** alanında **Y**' yi seçin.
+1. **İşlem kümesi Seç** alanında, daha önce oluşturduğunuz bilgi işlem kümesini seçin. 
 
-Tamamlanan formunuz şuna benzemelidir:
+Tamamlanan formunuz şöyle görünmelidir:
 
-:::image type="content" source="media/tutorial-power-bi/configure-automated.png" alt-text="Otomatik ML 'nin nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/configure-automated.png" alt-text="Otomatik makine öğrenimini yapılandırmayı gösteren ekran görüntüsü.":::
 
-Son olarak, gerçekleştirilecek makine öğrenimi görevini seçmeniz gerekir, bu da **gerileme**:
+Son olarak, bir makine öğrenimi görevi seçin. Bu durumda, görev **gerileme**:
 
-:::image type="content" source="media/tutorial-power-bi/configure-task.png" alt-text="Görevin nasıl yapılandırılacağını gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/configure-task.png" alt-text="Bir görevin nasıl yapılandırılacağını gösteren ekran görüntüsü.":::
 
 **Son**'u seçin.
 
 > [!IMPORTANT]
-> Otomatik ML 'nin 100 farklı modellere eğitim tamamlaması için 30 dakika sürer.
+> Otomatik makine öğrenimi, 100 modellerinin eğitiminin tamamlanmasıyla yaklaşık 30 dakika sürer.
 
 ## <a name="deploy-the-best-model"></a>En iyi modeli dağıtma
 
-Otomatik ML çalıştırması tamamlandıktan sonra **modeller** sekmesini seçerek çalıştık tüm farklı makine öğrenimi modellerinin listesini görebilirsiniz. Modeller performans sırasına göre sıralanır. en iyi şekilde uygulanan model ilk olarak gösterilir. En iyi modeli seçtiğinizde **Dağıt** düğmesi etkinleştirilir:
+Otomatik makine öğrenimi tamamlandığında **modeller** sekmesini seçerek çalıştık tüm makine öğrenimi modellerini görebilirsiniz. Modeller performansa göre sıralanır; en iyi performanslı model ilk olarak gösterilir. En iyi modeli seçtikten sonra **Dağıt** düğmesi etkinleştirilir:
 
-:::image type="content" source="media/tutorial-power-bi/list-models.png" alt-text="Modellerin listesini gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/list-models.png" alt-text="Modellerin listesini gösteren ekran görüntüsü.":::
 
-**Dağıt**' ı seçtiğinizde **model dağıt** ekranı bulunur:
+Bir **model dağıt** penceresi açmak için **Dağıt** ' ı seçin:
 
-1. Model hizmetiniz için bir ad sağlayın- **diabetes-model** kullanın
-1. **Azure Container Service** seçin
-1. **Dağıt** 'ı seçin
+1. Model hizmeti *diabetes modellerinizi* adlandırın.
+1. **Azure Container Service** seçin.
+1. **Dağıt**'ı seçin.
 
 Modelin başarıyla dağıtıldığını belirten bir ileti görmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, otomatik ML kullanarak makine öğrenimi modelinin nasıl eğilmesi ve dağıtılması gerektiğini gördünüz. Sonraki öğreticide bu modelin Power BI nasıl kullanılacağına (puan) gösterilirsiniz.
+Bu öğreticide, otomatik makine öğrenimi kullanarak makine öğrenimi modelinin nasıl eğilmesi ve dağıtılması gerektiğini gördünüz. Sonraki öğreticide bu modeli Power BI kullanmayı (puan) öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Power BI modeli kullanın](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Öğretici: Power BI model kullanma](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

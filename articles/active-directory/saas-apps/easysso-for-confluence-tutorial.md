@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/28/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: f37c036e144cf20a1ff217cb1bfb626ddff1b59e
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e5477b0ce45b1e888e472ebf7582607034c55800
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454380"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813471"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>Öğretici: Confluence için Easyswith ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile bir sorun olması için E
 * Kullanıcılarınızın Azure AD hesaplarıyla karışabilmesi için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,13 +39,12 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Confluence için EasySSO **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
 * Confluence için EasySSO **, tam zamanında** Kullanıcı sağlamayı destekliyor
-* Bu nedenle, Confluence için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bir şekilde korunmasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-easysso-for-confluence-from-the-gallery"></a>Galeri 'den Confluence için EasySSO ekleniyor
 
 EasySSO 'nun Azure AD 'ye yönelik tümleştirmesini yapılandırmak için, galerinin yönetilen SaaS uygulamaları listenize yönelik olarak EasySSO eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -55,11 +52,11 @@ EasySSO 'nun Azure AD 'ye yönelik tümleştirmesini yapılandırmak için, gale
 1. Sonuçlar panelinden **Confluence Için Easysso** ' yı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-confluence"></a>Yapılandırma için Azure AD çoklu oturum açmayı yapılandırın ve test edin
+## <a name="configure-and-test-azure-ad-sso-for-easysso-for-confluence"></a>Yapılandırma için Azure AD SSO 'yu yapılandırın ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak yapılandırma IÇIN Azure AD SSO 'Yu EasySSO ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Confluence için bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak yapılandırma IÇIN Azure AD SSO 'Yu EasySSO ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında, Confluence için bir bağlantı ilişkisi kurmanız gerekir.
 
-Bu nedenle, Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Yapılandırma için Azure AD SSO 'yu yapılandırmak ve test etmek için, aşağıdaki adımları uygulayın:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -72,7 +69,7 @@ Bu nedenle, Azure AD SSO 'yu yapılandırmak ve test etmek için aşağıdaki ya
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Confluence Için easysso** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Confluence Için Easysso** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -97,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Daha fazlasına ek olarak, Confluence uygulaması için EasySSO aşağıda gösterilen SAML yanıtında birkaç özniteliğin daha fazla özniteliğe geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
     
-    | Name | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. UserPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | Kullanıcı. Mail |
@@ -123,29 +120,33 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Confluence için Easysa erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Confluence Için Easysso**öğesini seçin.
+1. Uygulamalar listesinde, **Confluence Için Easysso** öğesini seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-easysso-for-confluence-sso"></a>Confluence SSO için EasySSO yapılandırma
 
-1. Atlasder Confluence örneğinizi yönetici ayrıcalıklarıyla oturum açın ve **Uygulamaları Yönet** bölümüne gidin. 
+1. Yapılandırma için Easysde yapılandırmayı otomatik hale getirmek amacıyla, **uzantıyı yüklemek** Için **uygulamalarım güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, **Confluence için** , yapılandırmacıya tıklayın ve bu nedenle, Confluence uygulaması Için sizi easyssize yönlendirir. Buradan, bu nedenle, bir yönetici kimlik bilgilerini, Confluence için Easysde oturum açmak üzere belirtin. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-9 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+1. El ile yapılandırmalarınız için Easysu 'yi kurmak istiyorsanız, Atlasder Confluence Örneğinizde yönetici ayrıcalıklarıyla oturum açın ve **Uygulamaları Yönet** bölümüne gidin. 
 
     ![Uygulamaları Yönetme](./media/easysso-for-confluence-tutorial/confluence-admin-1.png)
 
@@ -194,9 +195,9 @@ Ancak, Kullanıcı ilk oturum açmada otomatik Kullanıcı sağlamayı etkinleş
 
 ### <a name="idp-initiated-workflow"></a>IDP tarafından başlatılan iş akışı
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, uygulamalarımı kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
 
-Erişim panelinde Confluence için EasySSO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Confluence örneğinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+Uygulamalarım için EasySSO kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Confluence örneğinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ### <a name="sp-initiated-workflow"></a>SP tarafından başlatılan iş akışı
 
@@ -214,16 +215,6 @@ Bu durumda, **Atlassian-Confluence. log** dosyasına erişim sağlamak için [Bu
 
 Günlük iletilerini geri almaya yönelik herhangi bir sorununuz olması gerekir, lütfen [Easysso destek ekibine](mailto:support@techtime.co.nz)başvurun.
 
-## <a name="additional-resources"></a>Ek kaynaklar
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
-
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile Confluence için EasySSO 'yi deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-
-- [Gelişmiş görünürlük ve denetimlerle ilgili bir sorun olması için Easysto koruma](/cloud-app-security/proxy-intro-aad)
+Bu nedenle, Confluence için EasySSO 'yı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

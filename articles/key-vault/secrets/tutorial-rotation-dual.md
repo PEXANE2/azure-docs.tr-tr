@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 097b5c7d71076c11cdc30fce618f3a4ac4ef67a1
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c2496959f851b55f8cc66c0e793b641cdafb003a
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655467"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808343"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>İki kimlik doğrulama kimlik doğrulaması kümesine sahip kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -39,14 +39,15 @@ Bu çözümde Azure Key Vault, depolama hesabı ayrı erişim anahtarlarını ay
 
 ## <a name="prerequisites"></a>Önkoşullar
 * Azure aboneliği. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure [Cloud Shell](https://shell.azure.com/). Bu öğretici, PowerShell env ile portal Cloud Shell kullanıyor
 * Azure Key Vault.
 * İki Azure depolama hesabı.
 
 Mevcut bir anahtar kasası ve mevcut depolama hesaplarınız yoksa, bu dağıtım bağlantısını kullanabilirsiniz:
 
-[![Azure 'a etiketlenmiş bir dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+[![Azure 'a etiketlenmiş bir dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. **Kaynak grubu** altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü** olarak adlandırın ve ardından **Tamam**' ı seçin.
+1. **Kaynak grubu** altında **Yeni oluştur**' u seçin. Gruba **vatasyon** adını ve ardından **Tamam**' ı seçin.
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
@@ -55,7 +56,7 @@ Mevcut bir anahtar kasası ve mevcut depolama hesaplarınız yoksa, bu dağıtı
 Artık bir anahtar kasası ve iki depolama hesabınız olacak. Şu komutu çalıştırarak bu kurulumu Azure CLı 'da doğrulayabilirsiniz:
 
 ```azurecli
-az resource list -o table -g akvrotation
+az resource list -o table -g vaultrotation
 ```
 
 Sonuç şu çıkışa benzer şekilde görünecektir:
@@ -63,9 +64,9 @@ Sonuç şu çıkışa benzer şekilde görünecektir:
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-akvrotation-kv         akvrotation      eastus      Microsoft.KeyVault/vaults
-akvrotationstorage     akvrotation      eastus      Microsoft.Storage/storageAccounts
-akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAccounts
+vaultrotation-kv         vaultrotation      westus      Microsoft.KeyVault/vaults
+vaultrotationstorage     vaultrotation      westus      Microsoft.Storage/storageAccounts
+vaultrotationstorage2    vaultrotation      westus      Microsoft.Storage/storageAccounts
 ```
 
 ## <a name="create-and-deploy-the-key-rotation-function"></a>Anahtar döndürme işlevini oluşturma ve dağıtma
@@ -82,70 +83,79 @@ Daha sonra, sistem tarafından yönetilen kimliğe sahip bir işlev uygulamasın
 
 1. Azure şablonu dağıtım bağlantısını seçin: 
 
-   [![Azure şablonu dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+   [![Azure şablonu dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
-1. **Kaynak grubu** listesinde, **akvdönüşü**' ni seçin.
+1. **Kaynak grubu** listesinde, **vaultrotation**' ı seçin.
 1. **Depolama HESABı RG** kutusunda, depolama hesabınızın bulunduğu kaynak grubunun adını girin. Depolama hesabınız, anahtar döndürme işlevini dağıtacağınız kaynak grubunda zaten bulunuyorsa, **[resourceGroup (). Name]** varsayılan değerini koruyun.
-1. **Depolama hesabı adı** kutusuna, döndürülecek erişim anahtarlarını içeren depolama hesabının adını girin.
+1. **Depolama hesabı adı** kutusuna, döndürülecek erişim anahtarlarını içeren depolama hesabının adını girin. [Ön](#prerequisites)koşullarda oluşturulan depolama hesabı kullanıyorsanız, varsayılan değeri **[Concat (resourceGroup (). Name, ' Storage ')]** tutun.
 1. **Key Vault RG** kutusuna anahtar kasanızın bulunduğu kaynak grubunun adını girin. Anahtar kasanızın anahtar döndürme işlevini dağıtacağınız kaynak grubunda zaten mevcut olması durumunda **[resourceGroup (). Name]** varsayılan değerini koruyun.
-1. **Key Vault adı** kutusuna anahtar kasasının adını girin.
+1. **Key Vault adı** kutusuna anahtar kasasının adını girin. [Ön](#prerequisites)koşullarda oluşturulmuş Anahtar Kasası kullanıyorsanız, varsayılan değeri **[Concat (resourceGroup (). Name, '-kV ')]** tutun.
+1. **App Service plan türü** kutusunda barındırma planı ' nı seçin. **Premium planı** yalnızca anahtar kasanızın güvenlik duvarının arkasında olduğu durumlarda gereklidir.
 1. **İşlev uygulaması adı** kutusuna, işlev uygulamasının adını girin.
 1. Gizli dizi **adı** kutusuna, erişim anahtarlarını depoladığınız parolanın adını girin.
-1. **Depo URL 'si** kutusuna, Işlev kodunun GitHub konumunu girin: **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
+1. **Depo URL 'si** kutusuna, Işlev kodunun GitHub konumunu girin. Bu öğreticide ' i kullanabilirsiniz **https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell.git** .
 1. **Gözden geçir ve oluştur**’u seçin.
 1. **Oluştur**’u seçin.
 
-   ![İlk depolama hesabının nasıl oluşturulacağını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-2.png)
+   ![İşlevin nasıl oluşturulacağını ve dağıtılacağını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-2.png)
 
-Yukarıdaki adımları tamamladıktan sonra bir depolama hesabınız, bir sunucu grubu, bir işlev uygulaması ve Application Insights olacaktır. Dağıtım tamamlandığında, bu sayfayı görürsünüz: ![ dağıtımınızın tamamlanmış sayfasını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-3.png)
+Yukarıdaki adımları tamamladıktan sonra bir depolama hesabınız, bir sunucu grubu, bir işlev uygulaması ve Application Insights olacaktır. Dağıtım tamamlandığında şu sayfayı görürsünüz:
+
+   ![Dağıtımınızın tamamlanmış sayfasını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-3.png)
 > [!NOTE]
 > Bir hatayla karşılaşırsanız, bileşenlerin dağıtımını sona bırakmak için yeniden **Dağıt** ' ı seçebilirsiniz.
 
 
-[GitHub](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)üzerinde döndürme işlevi için dağıtım şablonlarını ve kodu bulabilirsiniz.
+[Azure örnekleri](https://github.com/Azure-Samples/KeyVault-Rotation-StorageAccountKey-PowerShell)'nde döndürme işlevi için dağıtım şablonlarını ve kodu bulabilirsiniz.
 
 ## <a name="add-the-storage-account-access-keys-to-key-vault"></a>Depolama hesabı erişim anahtarlarını Key Vault ekleyin
 
-İlk olarak, erişim ilkenizi kullanıcılara gizli dizi **yönetme** izinleri vermek için ayarlayın:
+İlk olarak, Kullanıcı sorumlunuz için **gizli dizi yönetme** izinleri vermek üzere erişim ilkenizi ayarlayın:
 
 ```azurecli
-az keyvault set-policy --upn <email-address-of-user> --name akvrotation-kv --secret-permissions set delete get list
+az keyvault set-policy --upn <email-address-of-user> --name vaultrotation-kv --secret-permissions set delete get list
 ```
 
 Artık değeri olarak depolama hesabı erişim anahtarı ile yeni bir gizli dizi oluşturabilirsiniz. Ayrıca, döndürme işlevinin depolama hesabındaki anahtarı yeniden oluşturabilmesi için, depolama hesabı kaynak KIMLIĞI, gizli geçerlilik süresi ve anahtar KIMLIĞI ' ne ihtiyacınız olacak.
 
 Depolama hesabı kaynak KIMLIĞINI belirleme. Bu değeri `id` özelliğinde bulabilirsiniz.
+
 ```azurecli
-az storage account show -n akvrotationstorage
+az storage account show -n vaultrotationstorage
 ```
 
 Anahtar değerlerini alabilmeniz için depolama hesabı erişim anahtarlarını listeleyin:
 
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
 
-Ve için elde edilen değerleri kullanarak bu komutu çalıştırın `key1Value` `storageAccountResourceId` :
+Süre sonu tarihi yarın, 60 gün ve depolama hesabı kaynak kimliği için geçerlilik süresi olan Anahtar Kasası 'na gizli dizi ekleyin. Ve için elde edilen değerleri kullanarak bu komutu çalıştırın `key1Value` `storageAccountResourceId` :
 
 ```azurecli
 $tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
-az keyvault secret set --name storageKey --vault-name akvrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
+az keyvault secret set --name storageKey --vault-name vaultrotation-kv --value <key1Value> --tags "CredentialId=key1" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
-Kısa süre sonu tarihiyle bir gizli dizi oluşturursanız, bir `SecretNearExpiry` olay birkaç dakika içinde yayımlanacak. Bu olay, gizli anahtarı döndürmek için işlevi tetikler.
+Yukarıdaki Gizlilik, `SecretNearExpiry` birkaç dakika içinde olayı tetikler. Bu olay, sona erme tarihi 60 gün olarak ayarlanan gizli anahtarı döndürmek için işlevi tetikler. Bu yapılandırmada, ' Secretbir süre sonu ' olayı 30 günde bir tetiklenecek (süre sonu 30 gün) ve döndürme işlevi KEY1 ile key2 arasında bir döndürme işlemi olacaktır.
 
 Depolama hesabı anahtarını ve Key Vault gizliliğini alarak ve bunları karşılaştırarak erişim anahtarlarının yeniden oluşturulduğunu doğrulayabilirsiniz.
 
 Gizli bilgileri almak için bu komutu kullanın:
 ```azurecli
-az keyvault secret show --vault-name akvrotation-kv --name storageKey
+az keyvault secret show --vault-name vaultrotation-kv --name storageKey
 ```
-`CredentialId`Alternatif olarak güncelleştirilmiş ve yeniden oluşturulan `keyName` bir uyarı `value` : ![ ilk depolama hesabı için z keykasası gizli göster komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-4.png)
+
+`CredentialId`Alternatif olarak güncelleştirilmiş ve yeniden oluşturulan dikkat edin `keyName` `value` :
+
+![İlk depolama hesabı için z keykasası gizli gösterme komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-4.png)
 
 Değerleri karşılaştırmak için erişim tuşlarını alın:
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
+Anahtarın `value` anahtar kasasındaki gizli anahtarla aynı olduğuna dikkat edin:
+
 ![İlk depolama hesabı için z depolama hesabı anahtarları listesi komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-5.png)
 
 ## <a name="add-storage-accounts-for-rotation"></a>Döndürme için depolama hesapları ekleme
@@ -158,10 +168,12 @@ Döndürme için mevcut bir işleve depolama hesabı anahtarları eklemek için 
 
 1. Azure şablonu dağıtım bağlantısını seçin: 
 
-   [![Azure şablonu dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
+   [![Azure şablonu dağıtım bağlantısı.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2FARM-Templates%2FAdd-Event-Subscriptions%2Fazuredeploy.json)
 
-1. **Kaynak grubu** listesinde, **akvdönüşü**' ni seçin.
+1. **Kaynak grubu** listesinde, **vaultrotation**' ı seçin.
+1. **Depolama HESABı RG** kutusunda, depolama hesabınızın bulunduğu kaynak grubunun adını girin. Depolama hesabınız, anahtar döndürme işlevini dağıtacağınız kaynak grubunda zaten bulunuyorsa, **[resourceGroup (). Name]** varsayılan değerini koruyun.
 1. **Depolama hesabı adı** kutusuna, döndürülecek erişim anahtarlarını içeren depolama hesabının adını girin.
+1. **Key Vault RG** kutusuna anahtar kasanızın bulunduğu kaynak grubunun adını girin. Anahtar kasanızın anahtar döndürme işlevini dağıtacağınız kaynak grubunda zaten mevcut olması durumunda **[resourceGroup (). Name]** varsayılan değerini koruyun.
 1. **Key Vault adı** kutusuna anahtar kasasının adını girin.
 1. **İşlev uygulaması adı** kutusuna, işlev uygulamasının adını girin.
 1. Gizli dizi **adı** kutusuna, erişim anahtarlarını depoladığınız parolanın adını girin.
@@ -174,40 +186,48 @@ Döndürme için mevcut bir işleve depolama hesabı anahtarları eklemek için 
 
 Depolama hesabı kaynak KIMLIĞINI belirleme. Bu değeri `id` özelliğinde bulabilirsiniz.
 ```azurecli
-az storage account show -n akvrotationstorage2
+az storage account show -n vaultrotationstorage2
 ```
 
 Depolama hesabı erişim anahtarlarını, key2 değerini alabilmeniz için listeleyin:
 
 ```azurecli
-az storage account keys list -n akvrotationstorage2 
+az storage account keys list -n vaultrotationstorage2 
 ```
 
-Ve için elde edilen değerleri kullanarak bu komutu çalıştırın `key2Value` `storageAccountResourceId` :
+Süre sonu tarihi yarın, 60 gün ve depolama hesabı kaynak kimliği için geçerlilik süresi olan Anahtar Kasası 'na gizli dizi ekleyin. Ve için elde edilen değerleri kullanarak bu komutu çalıştırın `key2Value` `storageAccountResourceId` :
 
 ```azurecli
-tomorrowDate=`date -d tomorrow -Iseconds -u | awk -F'+' '{print $1"Z"}'`
-az keyvault secret set --name storageKey2 --vault-name akvrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
+$tomorrowDate = (get-date).AddDays(+1).ToString("yyy-MM-ddTHH:mm:ssZ")
+az keyvault secret set --name storageKey2 --vault-name vaultrotation-kv --value <key2Value> --tags "CredentialId=key2" "ProviderAddress=<storageAccountResourceId>" "ValidityPeriodDays=60" --expires $tomorrowDate
 ```
 
 Gizli bilgileri almak için bu komutu kullanın:
 ```azurecli
-az keyvault secret show --vault-name akvrotation-kv --name storageKey2
+az keyvault secret show --vault-name vaultrotation-kv --name storageKey2
 ```
-`CredentialId`Alternatif olarak güncelleştirilmiş `keyName` ve yeniden oluşturulan `value` bir uyarı: ![ ikinci depolama hesabı için z keykasası gizli göster komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-8.png)
+
+`CredentialId`Alternatif olarak güncelleştirilmiş ve yeniden oluşturulan dikkat edin `keyName` `value` :
+
+![İkinci depolama hesabı için z keykasası gizli gösterme komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-8.png)
 
 Değerleri karşılaştırmak için erişim tuşlarını alın:
 ```azurecli
-az storage account keys list -n akvrotationstorage 
+az storage account keys list -n vaultrotationstorage 
 ```
+
+Anahtarın `value` anahtar kasasındaki gizli anahtarla aynı olduğuna dikkat edin:
+
 ![İkinci depolama hesabı için z depolama hesabı anahtarları listesi komutunun çıkışını gösteren ekran görüntüsü.](../media/secrets/rotation-dual/dual-rotation-9.png)
 
-## <a name="key-vault-dual-credential-rotation-functions"></a>Key Vault çift kimlik bilgisi döndürme işlevleri
+## <a name="key-vault-rotation-functions-for-two-sets-of-credentials"></a>İki kimlik bilgileri kümesi için döndürme işlevlerini Key Vault
 
 - [Depolama hesabı](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
+- Öğretici: [bir kimlik bilgileri kümesi Için gizli dizi döndürme](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
 - Genel Bakış: [Azure Event Grid Key Vault izleme](../general/event-grid-overview.md)
 - Nasıl yapılır: [Azure Portal ilk işlevinizi oluşturma](../../azure-functions/functions-create-first-azure-function.md)
 - Nasıl yapılır: [Key Vault gizli dizi değiştiğinde e-posta alma](../general/event-grid-logicapps.md)

@@ -8,12 +8,12 @@ mms.devlang: na
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
-ms.openlocfilehash: 4cc0fd970f9adc26f5fdb024f501dcb0edf77bde
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 962f6bcf7747a82749e7ccab95de34f7834a8372
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992429"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814219"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı ile ortaklık
 Bu makalede, Azure DDoS koruma standardı tarafından etkinleştirilen iş ortaklığı olanakları açıklanmaktadır. Bu makale, ürün yöneticilerinin ve iş geliştirme rollerinin yatırım yollarını anlamasına yardımcı olmak ve ortaklık değeri propositions hakkında Öngörüler sağlaması için tasarlanmıştır.
@@ -40,8 +40,8 @@ Her korumalı uygulama için, Azure DDoS koruma standardı, uygulamanın trafik 
 Azure DDoS koruması, herhangi bir kullanıcı müdahalesi olmadan DDoS saldırılarını tanımlar ve azaltır.
 
 - Korunan kaynak Azure Güvenlik Merkezi kapsamında yer alıyorsa, DDoS koruma standardı otomatik olarak güvenlik merkezi 'ne bir uyarı gönderir.
-- Alternatif olarak, korumalı bir genel IP için etkin bir risk azaltma olduğunda bildirim almak için DDoS saldırısı kapsamındaki ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics) .
-- Ayrıca diğer DDoS ölçümleri için uyarı oluşturmayı ve saldırı ölçeğini, bırakılan trafiği, saldırı vektörlerini, en çok katılımcıları ve diğer ayrıntıları anlamak üzere [saldırı analizlerini yapılandırmayı](telemetry-monitoring-alerting.md) seçebilirsiniz.
+- Alternatif olarak, korumalı bir genel IP için etkin bir risk azaltma olduğunda bildirim almak için DDoS saldırısı kapsamındaki ölçüm üzerinde [bir uyarı yapılandırabilirsiniz](alerts.md) .
+- Ayrıca, diğer DDoS ölçümleri için uyarı oluşturmayı ve saldırı ölçeğini, bırakılan trafiği, saldırı vektörlerini, en çok katılımcıları ve diğer ayrıntıları anlamak üzere [saldırı telemetrisini yapılandırmayı](telemetry.md) seçebilirsiniz.
 
 ![DDoS ölçümleri](./media/ddos-protection-partner-onboarding/ddos-metrics.png)
 
@@ -71,7 +71,7 @@ Azure DDoS koruması Standart ortaklık fırsatları Azure portal, API 'Ler ve C
 3. İlk adımda oluşturulan DDoS koruma planını kullanan ortak uç noktalara sahip hizmetin sanal ağında Azure DDoS koruma standardını etkinleştirin. Stpe adım yönergeler için bkz. [DDoS standart koruma planını etkinleştirme](manage-ddos-protection.md#enable-ddos-protection-for-an-existing-virtual-network)
    > [!IMPORTANT] 
    > Azure DDoS koruması standardı bir sanal ağ üzerinde etkinleştirildikten sonra, bu sanal ağ içindeki tüm genel IP 'Ler otomatik olarak korunur. Bu genel IP 'lerin kaynağı Azure 'da (istemci aboneliği) veya Azure dışında olabilir. 
-4. İsteğe bağlı olarak, uygulamaya özgü müşterilere yönelik panonuzda Azure DDoS koruması standart telemetri ve saldırı analizlerini tümleştirin. Telemetriyi kullanma hakkında daha fazla bilgi için bkz. [DDoS koruması telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md). 
+4. İsteğe bağlı olarak, uygulamaya özgü müşterilere yönelik panonuzda Azure DDoS koruması standart telemetri ve saldırı analizlerini tümleştirin. Telemetriyi kullanma hakkında daha fazla bilgi için bkz. [DDoS koruması telemetrisini görüntüleme ve yapılandırma](telemetry.md). 
 
 ### <a name="onboarding-guides-and-technical-documentation"></a>Ekleme kılavuzlarını ve teknik belgeler
 

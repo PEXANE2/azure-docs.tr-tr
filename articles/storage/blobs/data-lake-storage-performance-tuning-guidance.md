@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 834672274ade1f8551e86e7c636c4625368d997c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f0f64d910d03e42008c5fe6fef28a5b9c0917abd
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652203"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814474"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Performans için Azure Data Lake Storage 2. iyileştirin
 
@@ -21,11 +21,11 @@ Azure Data Lake Storage 2., g/ç yoğun analiz ve veri hareketi için yüksek ak
 
 ![Data Lake Storage 2. performans](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage 2., tüm analiz senaryosu için gerekli aktarım hızını sağlamak üzere ölçeklendirebilir. Varsayılan olarak, Data Lake Storage 2. bir hesap, geniş bir kullanım durumu kategorisinin ihtiyaçlarını karşılamak için otomatik olarak yeterli aktarım hızı sağlar. Müşterilerin varsayılan limite çalıştığı durumlar için Data Lake Storage 2. hesabı, [Azure desteği](https://azure.microsoft.com/support/faq/)ile iletişime geçerek daha fazla verimlilik sunacak şekilde yapılandırılabilir.
+Data Lake Storage 2., tüm analiz senaryoları için gerekli aktarım hızını sağlamak üzere ölçeklendirebilir. Varsayılan olarak, bir Data Lake Storage 2. hesabı, genel yapılandırmasında çok sayıda kullanım durumlarının ihtiyaçlarını karşılamak için yeterli aktarım hızı sağlar. Müşterilerin varsayılan limite çalıştığı durumlar için Data Lake Storage 2. hesabı, [Azure desteği](https://azure.microsoft.com/support/faq/)ile iletişime geçerek daha fazla verimlilik sunacak şekilde yapılandırılabilir.
 
 ## <a name="data-ingestion"></a>Veri alımı
 
-Kaynak sistemden Data Lake Storage 2. verileri alırken, kaynak donanımın, kaynak ağ donanımının ve Data Lake Storage 2. ağ bağlantısının performans sorunu olduğunu göz önünde bulundurmanız önemlidir.  
+Kaynak sistemden Data Lake Storage 2. verileri alırken, kaynak donanımın, kaynak ağ donanımının veya ağ bağlantısının Data Lake Storage 2. performans sorunu olduğunu göz önünde bulundurmanız önemlidir.  
 
 ![Kaynak sistemden Data Lake Storage 2. verileri alırken dikkate alınması gereken faktörleri gösteren diyagram.](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
@@ -37,7 +37,7 @@ Azure 'da şirket içi makineleri veya VM 'Leri kullanıp kullanmayacağınızı
 
 ### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Data Lake Storage 2. ağ bağlantısı
 
-Kaynak verileriniz ve Data Lake Storage 2. arasındaki ağ bağlantısı bazen performans sorunlarına neden olabilir. Kaynak verileriniz şirket Içinde olduğunda [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) ile adanmış bir bağlantı kullanmayı göz önünde bulundurun. Kaynak verileriniz Azure 'da ise, veriler Data Lake Storage 2. hesabıyla aynı Azure bölgesinde olduğunda performans en iyi sonucu verir.
+Kaynak verileriniz ve Data Lake Storage 2. arasındaki ağ bağlantısı bazen performans sorunlarına neden olabilir. Kaynak verileriniz şirket Içinde olduğunda [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)ile adanmış bir bağlantı kullanmayı göz önünde bulundurun. Kaynak verileriniz Azure 'da ise, veriler Data Lake Storage 2. hesabıyla aynı Azure bölgesinde olduğunda performans en iyi sonucu verir.
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>En yüksek paralelleştirme için veri alma araçlarını yapılandırın
 
@@ -45,9 +45,9 @@ Yukarıdaki kaynak donanım ve ağ bağlantısı sorunlarını giderdikten sonra
 
 | Araç               | Ayarlar | Daha fazla ayrıntı                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -a (Eşleyici)   | [Bağlantısının](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| Paralellkopyalar    | [Bağlantısının](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantısının](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| DistCp            | -a (Eşleyici)   | [Bağlantı](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| Paralellkopyalar    | [Bağlantı](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | FS. Azure. Block. size,-ı (Mapper)    |   [Bağlantı](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Veri kümesini yapı
 

@@ -2,13 +2,13 @@
 title: Kaynak adlandırma kısıtlamaları
 description: Azure kaynaklarını adlandırmayla ilgili kuralları ve kısıtlamaları gösterir.
 ms.topic: conceptual
-ms.date: 12/04/2020
-ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.date: 12/29/2020
+ms.openlocfilehash: edcf3f09b57ed7628611c482effddb210ef8e456
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608325"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814389"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure kaynaklarına yönelik adlandırma kuralları ve kısıtlamaları
 
@@ -107,7 +107,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > [!div class="mx-tableFixed"]
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
-> | batchAccounts | Region | 3-24 | Küçük harfler ve rakamlar. |
+> | batchAccounts | Bölge | 3-24 | Küçük harfler ve rakamlar. |
 > | batchAccounts/uygulamalar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/sertifikalar | Batch hesabı | 5-45 | Alfasayısal, alt çizgi ve kısa çizgi. |
 > | batchAccounts/havuzlar | Batch hesabı | 1-64 | Alfasayısal, alt çizgi ve kısa çizgi. |
@@ -170,7 +170,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Galeriler | kaynak grubu | 1-80 | Alfasayısal ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/uygulamalar | galeri | 1-80 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/uygulamalar/sürümler | uygulama | 32 bit tamsayı | Sayılar ve dönemler. |
-> | Galeriler/görüntüler | galeri | 1-80 | Alfasayısal karakterler, kısa çizgiler ve dönemler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | Galeriler/görüntüler | galeri | 1-80 | Alfasayısal, alt çizgi, kısa çizgi ve nokta.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 > | Galeriler/resimler/sürümler | image | 32 bit tamsayı | Sayılar ve dönemler. |
 > | images | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
 > | anlık görüntüler | kaynak grubu | 1-80 | Alfasayısal, alt çizgi, nokta ve kısa çizgi.<br><br>Alfasayısal olarak başlayın. Alfasayısal veya alt çizgi ile biter. |
@@ -537,7 +537,7 @@ Aşağıdaki tablolarda, alfasayısal terimi şu şekilde ifade eder:
 > | Varlık | Kapsam | Uzunluk | Geçersiz Karakterler |
 > | --- | --- | --- | --- |
 > | leriniz | kaynak grubu | 4-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
-> | çalışma alanı | kaynak grubu | 4-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
+> | çalışma alanı | global | 4-63 | Alfasayısal karakterler ve kısa çizgiler.<br><br>Alfasayısal olarak başlatın ve sonlandırın. |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 

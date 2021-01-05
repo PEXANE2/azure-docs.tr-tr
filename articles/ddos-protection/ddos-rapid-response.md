@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 3655b117b641a6179bd6539aaf3f75af07f21a1a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 8de95a56f3da928997a97ff216b13d522c82afca
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992378"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814202"
 ---
 # <a name="azure-ddos-rapid-response"></a>Azure DDoS hızlı yanıt
 
-Etkin erişim sırasında, Azure DDoS koruması standart müşterileri DDoS hızlı yanıt (DRR) takımına erişebilir. Bu, saldırı sırasında saldırı sonrası analizler ve saldırı sırasında saldırı konusunda yardımcı olabilir.
+Etkin erişim sırasında, Azure DDoS koruması standart müşterileri, bir saldırı ve saldırı sonrası analizler sırasında saldırı araştırmasına yardımcı olabilecek DDoS hızlı yanıt (DRR) ekibine erişebilir.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -56,5 +56,5 @@ Daha fazla bilgi edinmek için [DDoS koruması standart belgelerini](./ddos-prot
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Benzetimler üzerinden test](test-through-simulations.md)yapmayı öğrenin.
-- [DDoS koruması telemetrisini görüntülemeyi ve yapılandırmayı](telemetry-monitoring-alerting.md)öğrenin.
-- [DDoS saldırı risk azaltma raporlarının ve akış günlüklerinin nasıl yapılandırılacağını](reports-and-flow-logs.md)öğrenin.
+- [DDoS koruması telemetrisini görüntülemeyi ve yapılandırmayı](telemetry.md)öğrenin.
+- [DDoS tanılama günlüğünü görüntülemeyi ve yapılandırmayı](diagnostic-logging.md)öğrenin.

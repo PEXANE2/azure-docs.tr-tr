@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6a08fc25083ecd6917f658f27cb954391228adf7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 063ef6b76e031277d93297512e16d30a86aae45c
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188709"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808530"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Desteklenen sistemleri Azure IoT Edge
 
@@ -60,7 +60,7 @@ Ana bilgisayar işletim sistemi ailesi her zaman bir modülün kapsayıcısı i�
 
 Aşağıdaki tabloda listelenen sistemler Microsoft tarafından desteklenir, genel olarak kullanılabilir ya da genel önizleme aşamasındadır ve her yeni sürümle test edilmiştir. 
 
-| İşletim Sistemi | 'TÜR | ARM32v7 | ARM64 |
+| Operating System | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | Raspberry PI OS Esnetme |  | ![Raspberry PI OS Esneti + ARM32v7](./media/tutorial-c-module/green-check.png) |  |
 | [Ubuntu Server 16.04](https://wiki.ubuntu.com/XenialXerus/ReleaseNotes) | ![Ubuntu Server 16,04 + AMD64](./media/tutorial-c-module/green-check.png) |  | Genel Önizleme  |
@@ -76,7 +76,7 @@ Yukarıda listelenen Windows işletim sistemleri, üretim için desteklenen tek 
 
 Aşağıdaki tabloda listelenen sistemler Azure IoT Edge uyumlu olarak değerlendirilir, ancak Microsoft tarafından etkin bir şekilde sınanmamıştır veya korunmaz.
 
-| İşletim Sistemi | 'TÜR | ARM32v7 | ARM64 |
+| Operating System | 'TÜR | ARM32v7 | ARM64 |
 | ---------------- | ----- | ------- | ----- |
 | [CentOS 7.5](https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1804) | ![CentOS + AMD64](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM32v7](./media/tutorial-c-module/green-check.png) | ![CentOS + ARM64](./media/tutorial-c-module/green-check.png) |
 | [Debian 8](https://www.debian.org/releases/jessie/) | ![Desek8 + AMD64](./media/tutorial-c-module/green-check.png) | ![Desek8 + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Desek8 + ARM64](./media/tutorial-c-module/green-check.png) |
@@ -95,7 +95,7 @@ Aşağıdaki tabloda listelenen sistemler Azure IoT Edge uyumlu olarak değerlen
 Raspberry PI OS Buster dahil olmak üzere <sup>1</sup> dekon IoT Edge sistemi, tarafından desteklenen bir OpenSSL sürümü kullanır. IoT Edge yüklemeden önce önceki bir sürümü yüklemek için aşağıdaki komutu kullanın:
 
 ```bash
-sudo apt-get install libssl1.0.2
+sudo apt-get install libssl1.1
 ```
 
 <sup>2</sup> [Azure IoT Edge sürümlerinin](https://github.com/Azure/azure-iotedge/releases) depolarından çıkan 9 paket, Ubuntu 20,04 ile kutudan çıkmalıdır.

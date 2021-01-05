@@ -3,16 +3,16 @@ title: AWS hesabınızı Azure Güvenlik Merkezi 'ne bağlama
 description: AWS kaynaklarınızı Azure Güvenlik Merkezi 'nden izleme
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 12/29/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 23609613cace2f9be90ad5c88d4d51bb1c2f1a9b
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573519"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814321"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS hesaplarınızı Azure Güvenlik Merkezi 'ne bağlama
 
@@ -41,8 +41,8 @@ Aşağıdaki ekran görüntüsünde, güvenlik merkezi 'nin genel bakış panosu
 |----|:----|
 |Yayın durumu:|Önizleme<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Fiyat|[Sunucular Için Azure Defender](defender-for-servers-introduction.md) gerekir|
-|Gerekli roller ve izinler:|İlgili Azure aboneliğinde **sahip** veya **katkıda** bulunan|
-|Larının|![Evet](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Gerekli roller ve izinler:|İlgili Azure aboneliğindeki **sahibi**<br>Bir sahip hizmet sorumlusu ayrıntılarını sağlıyorsa **katkıda bulunan** bir AWS hesabı da bağlanabilir|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Hayır](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 

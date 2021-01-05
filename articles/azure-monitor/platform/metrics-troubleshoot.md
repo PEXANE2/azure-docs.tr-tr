@@ -7,28 +7,16 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 1a9286ff15834fafe4a69907836ce1abd17abca6
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168078"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814270"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Ölçüm grafikleriyle ilgili sorunları giderme
 
 Azure Ölçüm Gezgini 'nde grafik oluşturma, özelleştirme veya yorumlama ile ilgili sorunlar yaşıyorsanız bu makaleyi kullanın. Ölçümlerle ilgili yeni [başladıysanız](metrics-getting-started.md) Ölçüm Gezgini ' [nin ve gelişmiş özellikler](metrics-charts.md)' i kullanmaya başlama hakkında bilgi edinin. Ayrıca, yapılandırılmış ölçüm grafiklerinin [örneklerini](metric-chart-samples.md) de görebilirsiniz.
-
-## <a name="cant-find-your-resource-to-select-it"></a>Kaynağı seçmek için bulunamıyor
-
-**Kaynak seç** düğmesine tıkladınız ama kaynak seçici iletişim kutusunda kaynağı görmüyorsunuz.
-
-**Çözüm:** Ölçüm Gezgini kullanılabilir kaynakları listelemesi için önce abonelikleri ve kaynak gruplarını seçmenizi gerektirir. Kaynağınızı göremiyorsanız:
-
-1. **Abonelik** açılan listesinde doğru aboneliği seçtiğinizden emin olun. Aboneliğiniz listelenmiyorsa **Dizin + Abonelik ayarları**'na tıklayın ve kaynağınızla bir abonelik ekleyin.
-
-1. Doğru kaynak grubunu seçtiğinizden emin olun.
-    > [!WARNING]
-    > En iyi performansı elde etmek için, ölçüm gezginini ilk açtığınızda **Kaynak grubu** açılan listesinde önceden seçilmiş kaynak grubu yoktur. Herhangi bir kaynak görmek için önce en az bir grup seçmelisiniz.
 
 ## <a name="chart-shows-no-data"></a>Grafik veri göstermez
 
@@ -72,23 +60,23 @@ Bazı kaynaklar ölçümlerini sürekli göstermez. Örneğin Azure durdurulan s
 
 ## <a name="error-retrieving-data-message-on-dashboard"></a>Panoda "verileri alma hatası" iletisi
 
-Panonuz daha sonra kullanım dışı bırakılan ve Azure'dan kaldırılan bir ölçümle oluşturulduğunda bu hata oluşabilir. Durumun bu olduğunu doğrulamak için kaynağınızın **Ölçümler** sekmesini açın ve ölçüm seçicide kullanılabilir ölçümleri gözden geçirin. Ölçüm gösterilmiyorsa Azure'dan kaldırılmış demektir. Genellikle bir ölçüm kullanım dışı bırakıldığında kaynak durumuyla ilgili benzer bir perspektif sağlayan yeni ve daha iyi bir ölçüm vardır.
+Panonuz daha sonra kullanım dışı bırakılan ve Azure'dan kaldırılan bir ölçümle oluşturulduğunda bu hata oluşabilir. Durum olduğunu doğrulamak için kaynağınızın **ölçümler** sekmesini açın ve ölçüm seçicideki kullanılabilir ölçümleri denetleyin. Ölçüm gösterilmiyorsa Azure'dan kaldırılmış demektir. Genellikle bir ölçüm kullanım dışı bırakıldığında kaynak durumuyla ilgili benzer bir perspektif sağlayan yeni ve daha iyi bir ölçüm vardır.
 
 **Çözüm:** Panodaki grafik için alternatif bir ölçüm seçerek başarısız kutucuğu güncelleştirin. [Azure hizmetleri için kullanılabilir ölçümlerin listesini gözden geçirebilirsiniz](metrics-supported.md).
 
-## <a name="chart-shows-dashed-line"></a>Grafik kesikli çizgiyi gösterir
+## <a name="chart-shows-dashed-line"></a>Grafik kesikli çizgi gösteriyor
 
 Azure ölçüm grafikleri, iki bilinen zaman çizgisi veri noktası arasında eksik bir değer ("null değer" olarak da bilinir) olduğunu göstermek için kesikli çizgi stilini kullanır. Örneğin, "1 dakikalık" zaman ayrıntı düzeyi olarak seçtiğiniz zaman seçici, ancak ölçüm 07:26, 07:27, 07:29 ve 07:30 (ikinci ve üçüncü veri noktaları arasında bir dakika boşluğu) ile bildirilmişse, kesikli bir çizgi, 07:27 ve 07:29 bağlanır ve düz bir çizgi diğer tüm veri noktalarını birbirine bağlayacaktır. Ölçüm **sayı** ve **Toplam** toplama kullandığında kesikli çizgi sıfıra düşer. **Ortalama**, **En düşük** veya **en büyük** toplamalar için, kesikli çizgi en yakın bilinen iki veri noktasını bağlar. Ayrıca grafiğin en sağ veya en sol ucunda veri eksik olduğunda, kesikli çizgi eksik veri noktasının yönünde genişletilir.
-  ![Grafiğin sağ veya sol tarafında verilerin eksik olduğunu gösteren ekran görüntüsü, kesikli çizgi, eksik veri noktasının yönüne genişletilir.](./media/metrics-troubleshoot/missing-data-point-line-chart.png)
+  ![Grafiğin sağ veya sol tarafında verilerin eksik olduğunu gösteren ekran görüntüsü, kesikli çizgi, eksik veri noktasının yönüne genişletilir.](./media/metrics-troubleshoot/dashed-line.png)
 
-**Çözüm:** Bu davranış tasarıma göre yapılır. Eksik veri noktalarını belirlemek için kullanışlıdır. Çizgi grafik, yüksek yoğunluklu ölçümlerin eğilimlerini görselleştirmeye yönelik bir üst seçimdir, ancak özellikle de zaman dilimi ile birlikte bulunan değerler önemli olduğunda, seyrek değerlerle ölçümleri yorumlamak zor olabilir. Kesikli çizgi bu grafiklerin okunmasını kolaylaştırabilir ama grafiğiniz yine de belirsiz görünüyorsa ölçümlerinizi farklı bir grafik türünde görüntülemeyi göz önünde bulundurun. Örneğin, aynı ölçüm için dağınık bir çizim grafiği, yalnızca bir değer olduğunda bir noktayı görselleştirerek ve değer eksik olduğunda veri noktasını tamamen atlayarak her seferinde her zaman Grey gösterir: ![ dağılım grafiği menü seçeneğini vurgulayan ekran görüntüsü.](./media/metrics-troubleshoot/missing-data-point-scatter-chart.png)
+**Çözüm:** Bu davranış tasarıma göre yapılır. Eksik veri noktalarını belirlemek için kullanışlıdır. Çizgi grafik, yüksek yoğunluklu ölçümlerin eğilimlerini görselleştirmeye yönelik bir üst seçimdir, ancak özellikle de zaman dilimi ile birlikte bulunan değerler önemli olduğunda, seyrek değerlerle ölçümleri yorumlamak zor olabilir. Kesikli çizgi bu grafiklerin okunmasını kolaylaştırabilir ama grafiğiniz yine de belirsiz görünüyorsa ölçümlerinizi farklı bir grafik türünde görüntülemeyi göz önünde bulundurun. Örneğin, aynı ölçüm için dağınık bir çizim grafiği, yalnızca bir değer olduğunda bir noktayı görselleştirerek ve değer eksik olduğunda veri noktasını tamamen atlayarak her seferinde her zaman Grey gösterir: ![ dağılım grafiği menü seçeneğini vurgulayan ekran görüntüsü.](./media/metrics-troubleshoot/scatter-plot.png)
 
    > [!NOTE]
    > Ölçümünüz için yine de çizgi grafiği tercih ediyorsanız, fareyi grafiğin üzerinde hareket ettirmek zaman dilimini değerlendirmenize yardımcı olabilir çünkü fare işaretçisinin bulunduğu konumdaki veri noktası vurgulanır.
 
-## <a name="chart-shows-unexpected-drop-in-values"></a>Grafik, beklenmeyen değerleri gösterir
+## <a name="chart-shows-unexpected-drop-in-values"></a>Grafik değerlerde beklenmedik bir düşüş olduğunu gösteriyor
 
-Çoğu durumda ölçüm değerlerinde algılanan düşüş grafikte gösterilen verilerin yanlış anlaşılmasından kaynaklanır. Son ölçüm verileri Azure tarafından henüz alınmadığı veya işlenmediği için grafikte en yakın dakikalar gösterildiğinde toplamlardaki veya sayılardaki bir düşüş sizi yanıltabilir. Hizmete bağlı olarak ölçümlerin işlenmesindeki gecikme süresi birkaç dakikalık bir süre olabilir. 1 veya 5 dakikalık ayrıntı düzeyi içeren son zaman aralığını gösteren grafiklerde, son birkaç dakika içinde değerin bir tanesi daha belirgin hale gelir: ![ son birkaç dakika içinde değerin bir bölümünü gösteren ekran görüntüsü.](./media/metrics-troubleshoot/drop-in-values.png)
+Çoğu durumda ölçüm değerlerinde algılanan düşüş grafikte gösterilen verilerin yanlış anlaşılmasından kaynaklanır. Son ölçüm verileri Azure tarafından henüz alınmadığı veya işlenmediği için grafikte en yakın dakikalar gösterildiğinde toplamlardaki veya sayılardaki bir düşüş sizi yanıltabilir. Hizmete bağlı olarak ölçümlerin işlenmesindeki gecikme süresi birkaç dakikalık bir süre olabilir. 1 veya 5 dakikalık ayrıntı düzeyi içeren son zaman aralığını gösteren grafiklerde, son birkaç dakika içinde değerin bir tanesi daha belirgin hale gelir: ![ son birkaç dakika içinde değerin bir bölümünü gösteren ekran görüntüsü.](./media/metrics-troubleshoot/unexpected-dip.png)
 
 **Çözüm:** Bu davranış tasarıma göre yapılır. Veriler *kısmi* veya *eksik* bile olsa, verileri aldığımız anda göstermenin yararlı olduğuna inanıyoruz. Bu sayede önemli sonuçlara daha çabuk varabilir ve araştırmayı hemen başlatabilirsiniz. Örneğin, hata sayısını gösteren bir ölçüm için kısmı X değerinin gösterilmesi, belirli bir dakikada en az X hata olduğunu anlamanızı sağlar. Söz konusu dakikada gerçekleşen tam hata sayısını (üstelik bu sayı o kadar da önemli olmayabilir) görmek için beklemek yerine sorunu araştırmaya hemen başlayabilirsiniz. Veri kümesinin tamamını aldığımızda grafik güncelleştirilir ama o zaman da daha yakın dakikalarda elde edilen yeni eksik veri noktaları gösterilebilir.
 
@@ -98,7 +86,7 @@ Sanal makinelerin ve sanal makine ölçek kümelerinin ölçümleri iki kategori
 
 Varsayılan olarak Konuk İşletim Sistemi ölçümleri, kaynağınızın **Tanılama ayarları** sekmesinde seçtiğiniz Azure Depolama hesabında depolanır. Konuk İşletim Sistemi ölçümleri toplanmıyorsa veya ölçüm gezgini bunlara erişemiyorsa yalnızca **Sanal Makine Konağı** ölçüm ad alanını görürsünüz:
 
-![ölçüm resmi](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
+![ölçüm resmi](./media/metrics-troubleshoot/vm.png)
 
 **Çözüm:** Bir **Konuk işletim sistemi (klasik)** ad alanını ve Ölçüm Gezgini 'nde ölçümleri görmüyorsanız:
 

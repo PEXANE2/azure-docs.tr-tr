@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
-ms.openlocfilehash: d8b6a852ff0aeb287b12d63bfa689a38a56d418f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 00ae812536e73f432b9bddb93fc1b4a958b379f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485068"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97812877"
 ---
 # <a name="what-is-azure-data-factory"></a>Azure Data Factory nedir?
 
@@ -56,14 +56,13 @@ Veriler buluttaki merkezi bir veri deposunda mevcut olduktan sonra, toplanan ver
 Dönüştürmeleri el ile kodlayarak, ADF, HDInsight Hadoop, Spark, Data Lake Analytics ve Machine Learning gibi işlem hizmetlerinde dönüşümlerinizi yürütmek için dış etkinlikleri destekler.
 
 ### <a name="cicd-and-publish"></a>CI/CD ve yayımlama
-Data Factory, Azure DevOps ve GitHub kullanarak veri işlem hatlarınızın CI/CD 'si için tam destek sunar. Bu, tamamlanmış ürünü yayımlamadan önce ETL işlemlerinizi artımlı olarak geliştirmenize ve sunmanıza olanak tanır. Ham veriler iş için kullanılabilir biçime getirildikten sonra, verileri Azure Veri Ambarı, Azure SQL Veritabanı, Azure CosmosDB'ye veya şirket kullanıcılarınızın iş zekası araçlarından işaret edebildiği herhangi bir analiz altyapısına yükleyebilirsiniz.
-
+Data Factory, Azure DevOps ve GitHub kullanarak veri işlem hatlarınızın [CI/CD 'si için tam destek sunar](continuous-integration-deployment.md) . Bu, tamamlanmış ürünü yayımlamadan önce ETL işlemlerinizi artımlı olarak geliştirmenize ve sunmanıza olanak tanır. Ham veriler iş için kullanılabilir biçime getirildikten sonra, verileri Azure Veri Ambarı, Azure SQL Veritabanı, Azure CosmosDB'ye veya şirket kullanıcılarınızın iş zekası araçlarından işaret edebildiği herhangi bir analiz altyapısına yükleyebilirsiniz.
 ### <a name="monitor"></a>İzleme
 Veri tümleştirme işlem hattınızı başarıyla oluşturup dağıtarak iyileştirilmiş verilerden iş değeri elde ettikten sonra, başarı ve hata oranları için zamanlanmış etkinlikleri ve işlem hatlarını izleyin. Azure Data Factory, Azure Izleyici, API, PowerShell, Azure Izleyici günlükleri ve Azure portal sistem durumu bölmeleri aracılığıyla işlem hattı izleme için yerleşik desteğe sahiptir.
 
 ## <a name="top-level-concepts"></a>Üst düzey kavramlar
 Azure aboneliğinin bir veya birden çok Azure Data Factory örneği (veya veri fabrikası) olabilir. Azure Data Factory, aşağıdaki anahtar bileşenlerinden oluşur.
-- Pipelines
+- İşlem hatları
 - Etkinlikler
 - Veri kümeleri
 - Bağlı hizmetler

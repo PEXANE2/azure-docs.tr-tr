@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 49fa0c849a6b2eab0647922a711c50b4fe762584
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 69f9b5a74566879ecf8f15f23e689ebb731da45a
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095688"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814151"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-powershell"></a>Hızlı başlangıç: Azure PowerShell kullanarak Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -114,4 +114,4 @@ DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkile
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry.md)

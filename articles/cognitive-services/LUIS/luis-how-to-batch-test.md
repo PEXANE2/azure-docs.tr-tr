@@ -8,68 +8,141 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: 8b34005f2796403e32b41a93e4163c7da16d40bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 12/29/2020
+ms.openlocfilehash: 2668f969076fd2b9960995fec44350d61b405740
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540957"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809433"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Bir dizi örnek ile toplu test
 
- Toplu işlem testi, geçerli eğitilen modelinize ait, LUSıS 'deki performansını ölçecek kapsamlı bir sınamadır. Toplu iş testi için kullanılan veri kümeleri, tahmin çalışma zamanı uç noktasından alınan amaçlar veya deterlerden örnek olarak yer almamalıdır.
+Toplu işlem testi, etkin eğitilen sürümünüzü tahmin doğruluğunu ölçecek şekilde doğrular. Batch testi, etkin sürümünüzde her bir amaç ve varlığın doğruluğunu görüntülemenize yardımcı olur. Uygulamanızın bir amaca göre doğru amacı belirleyemediği veya etiketlenmesini sağlamak için bir amaca daha fazla örnek ekleme gibi bir amaca yönelik daha fazla örnek ekleme gibi işlem testi sonuçlarını gözden geçirin.
+
+## <a name="group-data-for-batch-test"></a>Batch testi için grup verileri
+
+Toplu test için kullanılan utterslar, LUIN için yeni bir öneme sahiptir. Bir dizi veri kümesi varsa, bu noktaları üç küme içine ayırın: bir amaca eklenen örnek, yayımlanan uç noktasından alınan utterler ve eğitilen işlem testi için kullanılan utterslar.
+
+Kullandığınız Batch JSON dosyası, başlangıç ve bitiş konumu dahil olmak üzere en üst düzey makine öğrenimi varlıklarıyla birlikte yer almalıdır. Söyleyler uygulamada zaten bulunan örneklerin bir parçası olmamalıdır. Bu, amaç ve varlıklar için olumlu tahmin etmek istediğiniz söyler olmalıdır.
+
+Testleri amaç ve/veya varlığa göre ayırabilir veya aynı dosyadaki tüm testlere (1000 ' e kadar) sahip olabilirsiniz. 
+
+### <a name="common-errors-importing-a-batch"></a>Toplu iş içeri aktarma yaygın hataları
+
+Toplu iş dosyanızı LUO 'ya yükleme hatalarıyla karşılaşırsanız, aşağıdaki yaygın sorunları kontrol edin:
+
+* Toplu iş dosyasında 1.000 ' den fazla Aralık
+* Bir varlık özelliği olmayan bir söylenişi JSON nesnesi. Özelliği boş bir dizi olabilir.
+* Birden çok varlıkta etiketlenmiş sözcük (ler)
+* Bir alana başlayan veya biten varlık etiketleri.
+
+## <a name="fixing-batch-errors"></a>Toplu iş hatalarını düzeltme
+
+Toplu iş testinde hatalar varsa, bir amaca daha fazla bilgi ekleyebilir ve/veya, LUTO 'lar arasında ayırt edici hale getirmenize yardımcı olmak için varlıkla birlikte daha fazla bilgi etiketi ekleyebilirsiniz. Uttersları eklediyseniz ve bunları etiketlendirmeye devam ediyorsa ve toplu iş testinde tahmin hataları almaya devam ediyorsanız, LUL 'nın daha hızlı öğrendiğine yardımcı olması için alana özgü sözlük içeren bir [ifade listesi](luis-concept-feature.md) özelliği eklemeyi göz önünde bulundurun.
+
 
 <a name="batch-testing"></a>
 
-## <a name="import-a-dataset-file-for-batch-testing"></a>Batch testi için bir veri kümesi dosyasını içeri aktarma
+## <a name="batch-testing-using-the-luis-portal"></a>Lua portalını kullanarak Batch test etme 
 
-1. Üstteki çubukta **Test** ' i seçin ve ardından **Batch test paneli**' ni seçin.
+### <a name="import-and-train-an-example-app"></a>Örnek bir uygulamayı içeri aktarma ve eğitme
+
+Gibi bir pizza sırası alan bir uygulamayı içeri aktarın `1 pepperoni pizza on thin crust` .
+
+1.  [Uygulama JSON dosyasını](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true) indirip kaydedin.
+
+1. [Luo portalında](https://www.luis.ai)oturum açın ve bu yazma kaynağına atanmış uygulamaları görmek için **aboneliğinizi** ve **yazma kaynağını** seçin.
+1. **Yeni uygulama** ' nın yanındaki oku SEÇIN ve JSON 'ı yeni bir uygulamaya aktarmak için **JSON olarak içeri aktar** ' a tıklayın. Uygulamayı adlandırın `Pizza app` .
+
+
+1. Uygulamayı eğitebilmeniz için, gezinmede sağ üst köşedeki **eğitme** ' yi seçin.
+
+
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+
+### <a name="batch-test-file"></a>Toplu işlem test dosyası
+
+JSON örneği, bir test dosyasının nasıl göründüğünü göstermek için etiketlenmiş bir varlığa sahip bir söylenişi içerir. Kendi testlerinizde, etiketli doğru amaç ve makine öğrenimi varlığı ile birçok söyleyün olması gerekir.
+
+1. `pizza-with-machine-learned-entity-test.json`Bir metin düzenleyicisinde oluşturun veya [indirin](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/batch-tests/pizza-with-machine-learned-entity-test.json?raw=true) .
+
+2. JSON biçimli toplu iş dosyasında, testte tahmin etmek istediğiniz **amacı** içeren bir söylenişi ekleyin.
+
+   [!code-json[Add the intents to the batch test file](~/samples-cognitive-services-data-files/luis/batch-tests/pizza-with-machine-learned-entity-test.json "Add the intent to the batch test file")]
+
+## <a name="run-the-batch"></a>Batch 'i çalıştırma
+
+1. Üst gezinti çubuğunda **Test** ' i seçin.
+
+2. Sağ taraftaki panelde **Batch test paneli** ' ni seçin.
 
     ![Batch test bağlantısı](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. **Veri kümesini Içeri aktar**seçeneğini belirleyin. **Yeni veri kümesini Içeri aktar** iletişim kutusu görünür. **Dosya Seç** ' i seçin ve test etmek için *1.000 ' den fazla* yer içermeyen doğru [JSON biçimine](luis-concept-batch-test.md#batch-file-format) sahip bir JSON dosyası bulun.
+3. **İçeri aktar**'ı seçin. Görüntülenen iletişim kutusunda **Dosya Seç** ' i seçin ve test etmek için *1.000 ' den fazla* yer içermeyen doğru JSON biçimine sahip bir JSON dosyası bulun.
 
-    İçeri aktarma hataları tarayıcının üst kısmındaki kırmızı bir bildirim çubuğunda raporlanır. İçeri aktarma hataları olduğunda, hiçbir veri kümesi oluşturulmaz. Daha fazla bilgi için bkz. [genel hatalar](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    İçeri aktarma hataları tarayıcının üst kısmındaki kırmızı bir bildirim çubuğunda raporlanır. İçeri aktarma hataları olduğunda, hiçbir veri kümesi oluşturulmaz. Daha fazla bilgi için bkz. [genel hatalar](#common-errors-importing-a-batch).
 
-3. **Veri kümesi adı** alanına veri kümesi dosyanız için bir ad girin. Veri kümesi dosyası *etiketli amaç* ve *varlıklar*da dahil olmak üzere bir **dizi** yer içerir. Sözdizimi için [örnek toplu iş dosyasını](luis-concept-batch-test.md#batch-file-format) gözden geçirin.
+4. Dosyanın dosya konumunu seçin `pizza-with-machine-learned-entity-test.json` .
 
-4. **Bitti** seçeneğini belirleyin. Veri kümesi dosyası eklenir.
+5. Veri kümesini adlandırın `pizza test` ve **bitti**' yi seçin.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Veri kümesini çalıştırma, yeniden adlandırma, dışarı aktarma veya silme
+6. **Çalıştır** düğmesini seçin. Batch testi çalıştıktan sonra **sonuçları göster**' i seçin. 
 
-Veri kümesini çalıştırmak, yeniden adlandırmak, dışarı aktarmak veya silmek için veri kümesi satırının sonundaki üç nokta (***...***) düğmesini kullanın.
-
-> [!div class="mx-imgBorder"]
-> ![Seçenekler içeren Batch testleri listesinin ekran görüntüsü](./media/luis-how-to-batch-test/batch-testing-options.png)
-
-## <a name="run-a-batch-test-on-your-trained-app"></a>Eğitilen uygulamanızda Batch testi çalıştırma
-
-Testi çalıştırmak için veri kümesi adını seçin, sonra bağlamsal araç çubuğundan **Çalıştır** ' ı seçin. Test tamamlandığında, bu satır veri kümesinin test sonucunu görüntüler.
-
-İndirilebilir veri kümesi, toplu test için karşıya yüklenen dosyadır.
-
-|Durum|Anlamı|
-|--|--|
-|![Başarılı test yeşil daire simgesi](./media/luis-how-to-batch-test/batch-test-result-green.png)|Tüm söyleymalar başarılı.|
-|![Kırmızı x simgesi başarısız test](./media/luis-how-to-batch-test/batch-test-result-red.png)|En az bir söylenişi hedefi tahmine uymuyor.|
-|![Teste hazırlanma simgesi](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test çalıştırılmaya hazırlanıyor.|
+    > [!TIP]
+    > * **Karşıdan yükleme** ' nin seçilmesi, karşıya yüklediğiniz aynı dosyayı indirir.
+    > * Batch test başarısız olursa, en az bir söylenişi hedefi tahmine uymuyor.
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>Batch test sonuçlarını görüntüle
+### <a name="review-batch-results-for-intents"></a>Amaçlar için Batch sonuçlarını gözden geçirme
 
-Batch test sonuçlarını gözden geçirmek için **sonuçları göster**' i seçin.
+Batch test sonuçlarını gözden geçirmek için **sonuçları göster**' i seçin. Test sonuçları, test dıksları 'nın etkin sürüme göre nasıl tahmin edildiği hakkında grafiksel olarak gösterilir.
+
+Batch grafiğinde dört çeyrek daire görüntülenir. Grafiğin sağında bir filtre vardır. Filtre, amaçları ve varlıkları içerir. Grafiğin bir [bölümünü](luis-concept-batch-test.md#batch-test-results) veya grafik içindeki bir noktayı seçtiğinizde, ilişkili söyleyler grafiğin altında görüntülenir.
+
+Grafiğin üzerine gelindiğinde fare tekerleği grafikteki görüntüyü büyütebilir veya azaltabilir. Bu, grafikte sıkı bir şekilde kümelenmiş çok sayıda noktaya sahip olduğunda faydalıdır.
+
+Grafik, kırmızı renkte iki bölümden oluşan dört Quadrants içinde yer alır.
+
+1. Filtre listesinden **Modifyorder** hedefini seçin. Söylenişi, toplu iş dosyasında listelenen pozitif tahmine başarıyla eşleşeceğinden, **gerçek bir pozitif** anlamı olarak tahmin edilir.
+
+    > [!div class="mx-imgBorder"]
+    > ![Utterance, pozitif tahminiyle başarıyla eşleşti](./media/luis-tutorial-batch-testing/intent-predicted-true-positive.png)
+
+    Filtreler listesindeki yeşil onay işaretleri de her bir amaç için testin başarısını gösterir. Diğer tüm amaçlar, toplu iş testinde listelenmeyen herhangi bir amaç için negatif bir test olarak her bir amaca karşı test edildiğinden, tüm diğer amaçlar 1/1 pozitif bir puana göre listelenir.
+
+1. **Onay** hedefini seçin. Bu amaç Batch testinde listelenmez, bu nedenle Batch testinde listelenen söylenişi 'in negatif bir testi olur.
+
+    > [!div class="mx-imgBorder"]
+    > ![Toplu iş dosyasında listelenmemiş amaç için utterance başarıyla negatif olarak tahmin edildi](./media/luis-tutorial-batch-testing/true-negative-intent.png)
+
+    Negatif test, filtredeki yeşil metin ve kılavuz ile belirtilen şekilde başarılı oldu.
+
+### <a name="review-batch-test-results-for-entities"></a>Varlıklar için Batch test sonuçlarını gözden geçirme
+
+ModifyOrder varlığı, alt varlıklara sahip bir makine varlığı olarak, üst düzey varlığın eşleştiğini ve alt varlıkların nasıl tahmin edilir olduğunu gösterir.
+
+1. Filtre listesinden **Modifyorder** varlığını seçin ve ardından kılavuzdaki daireyi seçin.
+
+1. Varlık tahmini grafiğin altında görüntülenir. Ekranda, beklenmeler ile eşleşmeyen tahminler için beklenmeler ve noktalı çizgiler ile eşleşen tahminler için düz çizgiler bulunur.
+
+    > [!div class="mx-imgBorder"]
+    > ![Varlık üst öğesi toplu iş dosyasında başarıyla tahmin edildi](./media/luis-tutorial-batch-testing/labeled-entity-prediction.png)
 
 <a name="filter-chart-results-by-intent-or-entity"></a>
 
-## <a name="filter-chart-results"></a>Grafik sonuçlarını filtrele
+#### <a name="filter-chart-results"></a>Grafik sonuçlarını filtrele
 
 Grafiği belirli bir amaç veya varlığa göre filtrelemek için, sağ taraftaki filtreleme panelinde amacı veya varlığı seçin. Veri noktaları ve kendi dağıtım güncelleştirmeleri seçiminize göre grafiğe göre yapılır.
 
 ![Görselleştirilen Batch test sonucu](./media/luis-how-to-batch-test/filter-by-entity.png)
 
-## <a name="view-single-point-utterance-data"></a>Tek noktalı söylenişi verilerini görüntüle
+### <a name="chart-result-examples"></a>Grafik sonucu örnekleri
+
+LUSıS portalındaki grafik, aşağıdaki işlemleri gerçekleştirebilirsiniz:
+ 
+#### <a name="view-single-point-utterance-data"></a>Tek noktalı söylenişi verilerini görüntüle
 
 Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktasının üzerine gelin. Sayfanın alt kısmındaki utterlik listesine karşılık gelen utterlik listesini almak için bir veri noktası seçin.
 
@@ -79,7 +152,7 @@ Grafikte, tahminiyle ilgili belirsizlik Puanını görmek için bir veri noktas�
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 
-## <a name="view-section-data"></a>Bölüm verilerini görüntüle
+#### <a name="view-section-data"></a>Bölüm verilerini görüntüle
 
 Dört bölümden oluşan grafikte, grafiğin sağ üst köşesinde **yanlış pozitif** gibi bölüm adını seçin. Grafiğin altında, bu bölümdeki tüm söyleymalar bir listede grafiğin altında görüntülenir.
 
@@ -91,7 +164,100 @@ Grafiğin kırmızı renkte iki bölümü, beklenen tahminiyle eşleşmeyen utte
 
 Yeşil renkte grafiğin iki bölümü beklenen tahminiyle eşleşiyor.
 
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+## <a name="batch-testing-using-the-rest-api"></a>REST API kullanarak toplu işlem testi 
+
+LUSıS, Lu, portalını ve REST API kullanarak toplu test yapmanızı sağlar. REST API uç noktaları aşağıda listelenmiştir. LUU portalını kullanarak Batch test hakkında bilgi için bkz. [öğretici: Batch test veri kümeleri](luis-tutorial-batch-testing.md). Yer tutucu değerlerini kendi LUSıS tahmin anahtarınızla ve uç noktanızla değiştirerek aşağıdaki URL 'Leri kullanın. 
+
+Üst bilgide HALSıS anahtarınızı eklemeyi `Apim-Subscription-Id` ve öğesini olarak ayarlamayı unutmayın `Content-Type` `application/json` .
+
+### <a name="start-a-batch-test"></a>Batch testi başlatma
+
+Bir uygulama sürümü KIMLIĞINI veya bir yayımlama yuvasını kullanarak bir Batch testi başlatın. Aşağıdaki uç nokta biçimlerinden birine bir **Post** isteği gönderin. Batch dosyanızı isteğin gövdesine ekleyin.
+
+Yayımlama yuvası
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
+
+Uygulama sürümü KIMLIĞI
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
+
+Bu uç noktalar, durumu denetlemek için kullanacağınız bir işlem KIMLIĞI döndürür ve sonuçları elde eder. 
+
+
+### <a name="get-the-status-of-an-ongoing-batch-test"></a>Devam eden toplu iş testinin durumunu al
+
+Aşağıdaki uç nokta biçimlerinden durumunu almak için başlattığınız Batch testinde işlem KIMLIĞI ' ni kullanın: 
+
+Yayımlama yuvası
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+
+Uygulama sürümü KIMLIĞI
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+
+### <a name="get-the-results-from-a-batch-test"></a>Toplu iş testinizden sonuçları al
+
+Aşağıdaki uç nokta biçimlerinden sonuçlarını almak için başlattığınız Batch testinde işlem KIMLIĞI ' ni kullanın: 
+
+Yayımlama yuvası
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+
+Uygulama sürümü KIMLIĞI
+* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+
+
+### <a name="batch-file-of-utterances"></a>Utterslar toplu iş dosyası
+
+Toplu işlem testi için *veri kümesi* olarak bilinen uttersünlerdeki toplu iş dosyasını gönder. Veri kümesi, en fazla 1.000 etiketli bir JSON biçimli dosyadır. Bir uygulamada en fazla 10 veri kümesi test edebilirsiniz. Daha fazla test etmeniz gerekiyorsa, bir veri kümesini silip yeni bir tane ekleyin. Toplu iş dosyası verilerinde karşılık gelen bir varlık olmasa bile, modeldeki tüm özel varlıklar, Batch test varlıkları filtresinde görüntülenir.
+
+Toplu iş dosyası, utbotlardan oluşur. Her bir söylemeye, algılanmak üzere bekleyen [makine öğrenimi varlıklarıyla](luis-concept-entity-types.md#types-of-entities) birlikte beklenen bir amaç tahmini olmalıdır.
+
+### <a name="batch-syntax-template-for-intents-with-entities"></a>Varlıklar içeren amaçlar için Batch sözdizimi şablonu
+
+Batch dosyanızı başlatmak için aşağıdaki şablonu kullanın:
+
+```JSON
+{
+    "LabeledTestSetUtterances": [
+        {
+            "text": "play a song",
+            "intent": "play_music",
+            "entities": [
+                {
+                    "entity": "song_parent",
+                    "startPos": 0,
+                    "endPos": 15,
+                    "children": [
+                        {
+                            "entity": "pre_song",
+                            "startPos": 0,
+                            "endPos": 3
+                        },
+                        {
+                            "entity": "song_info",
+                            "startPos": 5,
+                            "endPos": 15
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+```
+
+Toplu iş dosyası, bir varlığın başlangıcını ve sonunu not etmek için **startPos** ve **endPos** özelliklerini kullanır. Değerler sıfır tabanlıdır ve bir boşluk üzerinde başlamamalı veya bitmemelidir. Bu, startIndex ve endIndex özelliklerini kullanan sorgu günlüklerinden farklıdır.
+
+Varlıkları test etmek istemiyorsanız, `entities` özelliği ekleyin ve değeri boş bir dizi olarak ayarlayın `[]` .
+
+### <a name="rest-api-batch-test-results"></a>REST API Batch test sonuçları
+
+API tarafından döndürülen birkaç nesne vardır:
+
+* Kesinlik, geri çekme ve F puanı gibi amaçlar ve varlık modelleriyle ilgili bilgiler.
+* Her varlık için duyarlık, geri çekme ve F puanı gibi varlık modelleriyle ilgili bilgiler 
+  * Bayrağını kullanarak, `verbose` ve gibi varlık hakkında daha fazla bilgi edinebilirsiniz `entityTextFScore` `entityTypeFScore` .
+* Öngörülen ve etiketli amaç adlarıyla birlikte sunulan bildirimler
+* Yanlış pozitif varlıkların listesi ve yanlış negatif varlıkların listesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

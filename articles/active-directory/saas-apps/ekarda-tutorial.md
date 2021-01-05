@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 06/15/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 7bb74732074482c12d3bc760e259bb014ccf006f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d9e118620cb38e94cfc18d01d31888ac0a444bb7
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179349"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813437"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Öğretici: ekarda ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,9 +26,7 @@ Bu öğreticide, ekarda 'i Azure Active Directory (Azure AD) ile tümleştirmeyi
 * Kullanıcılarınızın Azure AD hesaplarını kullanarak ekarda ' de otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Çoklu oturum açma (SSO) nedir?](../manage-apps/what-is-single-sign-on.md).
-
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -41,13 +39,12 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * ekarda, SP tarafından başlatılan ve ıDP tarafından başlatılan SSO 'yu destekler.
 * ekarda, tam zamanında Kullanıcı sağlamayı destekler.
-* Ekarda yapılandırdıktan sonra, oturum denetimini zorunlu kılabilirsiniz. Bu önlem, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanma ve savunma sürecinde koruma sağlar. Oturum denetimi Koşullu Erişim Uygulama Denetimi genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="add-ekarda-from-the-gallery"></a>Galeriden ekarda ekleme
 
 Ekarda tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki ekarda 'i yönetilen SaaS uygulamaları listenize ekleyin:
 
-1. İş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. İş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak Azure portal oturum açın.
 
 1. Sol bölmede **Azure Active Directory** hizmeti seçin.
 1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
@@ -55,11 +52,11 @@ Ekarda tümleştirmesini Azure AD 'ye göre yapılandırmak için galerideki eka
 1. **Galeriden Ekle** bölümünde, arama kutusuna **ekarda** yazın.
 1. Sonuçlar panelinden **ekarda** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-ekarda"></a>Ekarda için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-ekarda"></a>Ekarda için Azure AD SSO 'yu yapılandırma ve test etme
 
 **B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu ekarda ile yapılandırın ve test edin. SSO 'nun çalışması için, ekarda içinde bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bağlı bir ilişki kurmanız gerekir.
 
-Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki adımları izleyin:
+Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için [Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso) .
 
@@ -73,7 +70,7 @@ Azure AD SSO 'yu ekarda ile yapılandırmak ve test etmek için aşağıdaki ad�
 
 Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. Azure Portal’da oturum açın.
 1. **Ekarda** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırma** ayarlarını düzenlemek için kurşun kalem simgesini seçin.
@@ -95,7 +92,7 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
 
 1. Uygulamayı SP tarafından başlatılan modda yapılandırmak istiyorsanız **ek URL 'Ler ayarla** ' yı seçin ve bunu yapın:
 
-    * **Oturum açma URL 'si** metin kutusuna, bu kalıbı IZLEYEN bir URL yazın:`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
+    **Oturum açma URL 'si** metin kutusuna, bu kalıbı IZLEYEN bir URL yazın:`https://my.ekarda.com/users/saml_sso/<COMPANY_ID>`
 
     > [!NOTE]
     > Yukarıdaki iki adımda yer almayan değerler gerçek değildir. Bunları gerçek tanımlayıcı, yanıt URL 'SI ve oturum açma URL 'SI değerleriyle güncelleştirin. Bu değerleri almak için [Ekarda istemci destek ekibine](mailto:contact@ekarda.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -112,7 +109,7 @@ Azure AD SSO 'yu etkinleştirmek için Azure portal aşağıdaki adımları izle
 
 Bu bölümde, B. Simon adlı bir test kullanıcısı oluşturmak için Azure portal kullanacaksınız.
 
-1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >  **Users**  >  **tüm kullanıcılar**' ı seçin.
+1. Azure Portal sol bölmeden, kullanıcılar **Azure Active Directory**  >    >  **tüm kullanıcılar**' ı seçin.
 
 1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
 1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
@@ -129,19 +126,24 @@ Bu bölümde, ekarda 'e erişim vererek Azure çoklu oturum açma özelliğini k
 1. Uygulamalar listesinde **ekarda**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü.](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin ve sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcılar ve gruplar bölümünün, Kullanıcı Ekle vurgulanarak ekran görüntüsü.](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, Kullanıcı listesinden **B. Simon** öğesini seçin. Ardından, ekranın alt kısmında **Seç** ' i seçin.
-1. SAML onaylama 'da herhangi bir rol değeri bekleliyorsanız, **Rol Seç** iletişim kutusundaki listeden Kullanıcı için uygun rolü seçin. Ardından, ekranın alt kısmında **Seç** ' i seçin.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
 
 ## <a name="configure-ekarda-sso"></a>Ekarda SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, ekarda şirket sitenizde yönetici olarak oturum açın.
+1. Yapılandırmayı ekarda içinde otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **set up ekarda** öğesine tıkladığınızda sizi ekarda uygulamasına yönlendirirsiniz. Buradan, ekarda 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Ekarda 'yi el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, ekarda şirket sitenizde yönetici olarak oturum açın.
+
 1. **Yönetici**  >  **Hesabım**' ı seçin.
 
     ![Yönetici menüsünde Hesabım vurgulanarak ekarda site Kullanıcı arabiriminin ekran görüntüsü.](./media/ekarda-tutorial/ekarda.png)
@@ -166,16 +168,20 @@ Bu bölümde, ekarda içinde B. Simon adlı bir Kullanıcı oluşturulur. ekarda
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı My Apps portalını kullanarak test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Uygulamalarım portalındaki ekarda kutucuğunu seçtiğinizde, SSO 'yu ayarladığınız ekarda sitesinde otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım portalı hakkında daha fazla bilgi için bkz. [My Apps portalına giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz ekarda oturum açma URL 'sine yeniden yönlendirilir.
 
-* [SaaS uygulamalarını Azure Active Directory tümleştirme öğreticilerinin listesi](./tutorial-list.md)
-* [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
-* [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
-* [Azure AD ile ekarda deneyin](https://aad.portal.azure.com/)
-* Şirket logonuzu birlikte kullanarak, istemcilerine ve iş arkadaşlarınıza her türlü personelinizin gönderilmesini sağlamak için [ekarda 'in kurumsal eCard çözümünü](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise) kullanın. [SSO çözümü olarak ekarda sağlama](https://support.ekarda.com/#SSO-Implementation)hakkında daha fazla bilgi edinin.
-* [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
-* [Gelişmiş görünürlük ve denetimlerle ekarda koruma](/cloud-app-security/proxy-intro-aad)
+* Doğrudan ekarda oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
+
+#### <a name="idp-initiated"></a>IDP başlatıldı:
+
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'yu ayarladığınız ekarda otomatik olarak oturum açmış olmanız gerekir
+
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda ekarda kutucuğuna tıkladığınızda, SP modunda yapılandırıldıysa oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız ekarda için otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+Ekarda yapılandırdıktan sonra, oturum denetimini zorunlu kılabilirsiniz. Bu önlem, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanma ve savunma sürecinde koruma sağlar. Oturum denetimi Koşullu Erişim Uygulama Denetimi genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

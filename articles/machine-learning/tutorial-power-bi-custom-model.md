@@ -1,7 +1,7 @@
 ---
-title: 'Öğretici: bir not defteri ile tahmine dayalı model oluşturma (Bölüm 1/2)'
+title: 'Öğretici: bir not defteri kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)'
 titleSuffix: Azure Machine Learning
-description: Jupyter Notebook kod kullanarak makine öğrenimi modeli oluşturmayı ve dağıtmayı öğrenin ve bu sayede Microsoft Power BI sonuçları tahmin etmek için kullanabilirsiniz.
+description: Jupyter Notebook kod kullanarak makine öğrenimi modeli oluşturmayı ve dağıtmayı öğrenin. Microsoft Power BI sonuçları tahmin etmek için modeli kullanabilirsiniz.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,69 +10,70 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: f8209c0d26cf8c572d10666696231b0468cfcbc6
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97370330"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814780"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-notebook-part-1-of-2"></a>Öğretici: Power BI tümleştirme-bir not defteri ile tahmine dayalı model oluşturma (Bölüm 1/2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Öğretici: Power BI tümleştirme-Jupyter Notebook kullanarak tahmine dayalı model oluşturma (Bölüm 1/2)
 
-Bu öğreticinin ilk bölümünde, bir Jupyter Notebook kod kullanarak tahmine dayalı bir makine öğrenme modeli eğitecaksınız ve dağıtırsınız. 2. bölümde, Microsoft Power BI sonuçları tahmin etmek için modeli kullanacaksınız.
+Bu öğreticinin 1. bölümünde, tahmine dayalı bir makine öğrenimi modelini bir Jupyter Notebook kod kullanarak eğitecaksınız ve dağıtırsınız. 2. bölümde, Microsoft Power BI sonuçları tahmin etmek için modeli kullanacaksınız.
 
 Bu öğreticide şunları yaptınız:
 
 > [!div class="checklist"]
-> * Jupyter Notebook oluşturma
-> * Azure Machine Learning işlem örneği oluşturma
-> * Scikit-öğrenme kullanarak regresyon modeli eğitme
-> * Modeli gerçek zamanlı bir Puanlama uç noktasına dağıtma
+> * Jupyter Notebook oluşturma.
+> * Azure Machine Learning işlem örneği oluşturun.
+> * Scikit-öğrenme kullanarak regresyon modeli eğitme.
+> * Modeli gerçek zamanlı bir Puanlama uç noktasına dağıtın.
 
-Power BI ' de kullanacağınız modeli oluşturmanın ve dağıtmanın üç farklı yolu vardır.  Bu makalede bir seçenek yer almaktadır: not defterlerini kullanarak modelleri eğitme ve dağıtma.  Bu seçenek, Azure Machine Learning Studio 'da barındırılan Jupyıter not defterlerini kullanan kod ilk yazma deneyimini gösterir. 
+Power BI ' de kullanacağınız modeli oluşturmanın ve dağıtmanın üç yolu vardır.  Bu makalede "seçenek A:" not defterlerini kullanarak modelleri eğitme ve dağıtma "konuları ele alınmaktadır.  Bu seçenek, kod ilk yazma deneyimidir. Azure Machine Learning Studio barındırılan JUPITER not defterlerini kullanır. 
 
-Bunun yerine şunları kullanabilirsiniz:
+Ancak bunun yerine diğer seçeneklerden birini de kullanabilirsiniz:
 
-* Seçenek B: tasarımcı kullanarak (bir sürükle ve bırak Kullanıcı arabirimi) düşük kodlu bir yazma deneyimi [kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-designer-model.md).
-* [Seçenek C: OTOMATIK ml kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-automated-model.md) -kod içermeyen bir yazma deneyimi, veri hazırlama ve model eğitimini tamamen otomatikleştirir.
+* [Seçenek B: Azure Machine Learning tasarımcısını kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-designer-model.md). Bu düşük kod yazma deneyimi bir sürükle ve bırak Kullanıcı arabirimi kullanır.
+* [Seçenek C: otomatik makine öğrenimini kullanarak modelleri eğitme ve dağıtma](tutorial-power-bi-automated-model.md). Bu kod içermeyen yazma deneyimi, veri hazırlama ve model eğitimini tamamen otomatikleştirir.
 
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-- Bir Azure aboneliği ([ücretsiz deneme sürümü mevcuttur](https://aka.ms/AMLFree)). 
-- Azure Machine Learning çalışma alanı. Zaten bir çalışma alanınız yoksa [Azure Machine Learning çalışma alanı oluşturma](./how-to-manage-workspace.md#create-a-workspace)' yı izleyin.
+- Azure aboneliği. Aboneliğiniz yoksa [ücretsiz deneme sürümü](https://aka.ms/AMLFree)kullanabilirsiniz. 
+- Azure Machine Learning çalışma alanı. Zaten bir çalışma alanınız yoksa, bkz. [Azure Machine Learning çalışma alanları oluşturma ve yönetme](./how-to-manage-workspace.md#create-a-workspace).
 - Python dili ve makine öğrenimi iş akışlarının giriş bilgisi.
 
 ## <a name="create-a-notebook-and-compute"></a>Not defteri ve işlem oluşturma
 
-[Azure Machine Learning Studio](https://ml.azure.com) giriş sayfasında **Yeni oluştur** ve **Not defteri**' ni seçin:
+[**Azure Machine Learning Studio**](https://ml.azure.com) giriş sayfasında **Yeni**  >  **Not defteri** oluştur ' u seçin:
 
-:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Bir not defteri oluşturmayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/create-new-notebook.png" alt-text="Bir not defteri oluşturmayı gösteren ekran görüntüsü.":::
  
-**Yeni bir dosya oluşturmak** için bir iletişim kutusu gösterilir:
+**Yeni dosya oluştur** sayfasında:
 
-1. Not defteriniz için bir dosya adı (örneğin `my_model_notebook` )
-1. **Dosya türünü** **Not defteri** olarak değiştirme
+1. Not defterinizi adlandırın (örneğin, *my_model_notebook*).
+1. **Dosya türünü** **Not defteri** olarak değiştirin.
+1. **Oluştur**’u seçin. 
+ 
+Ardından, kod hücrelerini çalıştırmak için bir işlem örneği oluşturun ve Not defterinize ekleyin. Not defterinin en üstünde artı simgesini seçerek başlayın:
 
-**Oluştur**’u seçin. Daha sonra, kod hücrelerini çalıştırmak için bir işlem oluşturmanız ve Not defterinize eklemeniz gerekir. Bunu yapmak için, Not defterinin en üstündeki artı simgesini seçin:
+:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="İşlem örneğinin nasıl oluşturulacağını gösteren ekran görüntüsü.":::
 
-:::image type="content" source="media/tutorial-power-bi/create-compute.png" alt-text="İşlem örneğinin nasıl oluşturulacağını gösteren ekran görüntüsü":::
+**İşlem örneği oluştur** sayfasında:
 
-Sonra, **işlem örneği oluştur** sayfasında:
-
-1. Bir CPU sanal makine boyutu seçin-Bu öğreticinin amaçları doğrultusunda bir **Standard_D11_v2** (iki çekirdek, 14 GB RAM) iyi olacaktır.
+1. Bir CPU sanal makine boyutu seçin. Bu öğreticide, 2 çekirdek ve 14 GB RAM içeren bir **Standard_D11_v2** seçebilirsiniz.
 1. **İleri**’yi seçin. 
-1. **Ayarları Yapılandır** sayfasında geçerli bir **işlem adı** sağlayın (geçerli karakterler büyük ve küçük harf, rakam ve-karakter) sağlar.
+1. **Ayarları Yapılandır** sayfasında, geçerli bir **işlem adı** belirtin. Geçerli karakterler büyük ve küçük harfler, rakamlar ve kısa çizgilerden (-) oluşur.
 1. **Oluştur**’u seçin.
 
-Not defteri üzerinde, **işlem** örneğinin oluşturulduğunu belirten, işlemin yanında bulunan dairenin Camgöbeği olduğunu fark edebilirsiniz:
+Not defterinde, **işlem** kapalı Camgöbeği ' ın yanındaki daireyi fark edebilirsiniz. Bu renk değişikliği, işlem örneğinin oluşturulduğunu belirtir:
 
-:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Oluşturulan işlem gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/creating.png" alt-text="Oluşturulmakta olan bir işlem gösteren ekran görüntüsü.":::
 
 > [!NOTE]
-> İşlemin sağlanması yaklaşık 2-4 dakika sürebilir.
+> İşlem örneğinin sağlanması 2 ila 4 dakika sürebilir.
 
-İşlem sağlandıktan sonra kod hücrelerini yürütmek için Not defterini kullanabilirsiniz. Örneğin, hücresine yazın:
+İşlem sağlandıktan sonra kod hücrelerini çalıştırmak için Not defterini kullanabilirsiniz. Örneğin, hücresinde aşağıdaki kodu yazabilirsiniz:
 
 ```python
 import numpy as np
@@ -80,20 +81,20 @@ import numpy as np
 np.sin(3)
 ```
 
-Ardından **SHIFT tuşuna basın** (veya **Denetim-** hücrenin yanındaki Oynat düğmesini girin veya seçin). Aşağıdaki çıkışı görmeniz gerekir:
+Ardından SHIFT + enter ' ı seçin (ya da CTRL + ENTER ' u seçin ya da hücrenin yanındaki **oynat** düğmesini seçin). Aşağıdaki çıkışı görmeniz gerekir:
 
-:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Hücre yürütmeyi gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/simple-sin.png" alt-text="Bir hücrenin çıkışını gösteren ekran görüntüsü.":::
 
-Artık bir Machine Learning modeli oluşturmaya hazırsınız!
+Artık bir makine öğrenimi modeli oluşturmaya hazır olursunuz.
 
-## <a name="build-a-model-using-scikit-learn"></a>Scikit-öğrenme kullanarak model oluşturma
+## <a name="build-a-model-by-using-scikit-learn"></a>Scikit-öğrenme kullanarak model oluşturma
 
-Bu öğreticide, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/)kullanılabilir hale getirilen [diabetes veri kümesini](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)kullanırsınız. 
+Bu öğreticide [diabetes veri kümesini](https://www4.stat.ncsu.edu/~boos/var.select/diabetes.html)kullanırsınız. Bu veri kümesi, [Azure açık veri kümelerinde](https://azure.microsoft.com/services/open-datasets/)kullanılabilir.
 
 
 ### <a name="import-data"></a>Veri içeri aktarma
 
-Verilerinizi içeri aktarmak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir **kod hücresine** yapıştırın:
+Verilerinizi içeri aktarmak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın.
 
 ```python
 from azureml.opendatasets import Diabetes
@@ -106,11 +107,11 @@ y_df = y.to_pandas_dataframe()
 X_df.info()
 ```
 
-`X_df`Pandas veri çerçevesi, 10 temel giriş değişkenleri (yaş, Sex, gövde yığın dizini, ortalama kan basıncı ve altı kan serum ölçümleri) içerir. `y_df`Pandas veri çerçevesi, temel bir yılda bir yıllık bir nicelik ölçüsünün bir nicel ölçüsünü içeren hedef değişkenidir. Toplam 442 kayıt vardır.
+`X_df`Pandas veri çerçevesi 10 temel giriş değişkeni içerir. Bu değişkenler Age, Sex, Body kütle dizini, ortalama kan basıncı ve altı kan serum ölçümlerini içerir. `y_df`Pandas veri çerçevesi hedef değişkendir. Taban çizgisinden sonraki bir yılda bir yıllık bir nicelik ölçüsünün nicelik ölçüsünü içerir. Veri çerçevesi 442 kayıt içerir.
 
-### <a name="train-model"></a>Modeli eğitme
+### <a name="train-the-model"></a>Modeli eğitme
 
-Not defterinizde yeni bir **kod hücresi** oluşturun ve aşağıdaki kod parçacığını kopyalayıp yapıştırın. Bu, bir Ridge regresyon modeli oluşturur ve Python 'un Pickle biçimini kullanarak modeli seri hale getirir:
+Not defterinizde yeni bir *kod hücresi* oluşturun. Ardından aşağıdaki kodu kopyalayın ve hücreye yapıştırın. Bu kod parçacığı, bir Ridge regresyon modeli oluşturur ve Python Pickle biçimini kullanarak modeli seri hale getirir.
 
 ```python
 import joblib
@@ -122,9 +123,11 @@ joblib.dump(model, 'sklearn_regression_model.pkl')
 
 ### <a name="register-the-model"></a>Modeli Kaydet
 
-Model dosyasının içeriğinin yanı sıra, kayıtlı modeliniz model meta veri modeli açıklaması, Etiketler ve çerçeve bilgilerini de depolar; bu, çalışma alanınızdaki modelleri yönetirken ve dağıtmada yararlı olacaktır. Örneğin, etiketleri kullanarak modellerinizi kategorilere ayırabilirsiniz ve çalışma alanınızdaki modelleri listelerken filtre uygulayabilirsiniz. Ayrıca, bu modeli scikit-öğren çerçevesiyle işaretlemek, daha sonra göreceğiniz gibi Web hizmeti olarak dağıtımı basitleştirir.
+Model dosyasının içeriğinin yanı sıra, kayıtlı modeliniz meta verileri de depolar. Meta veriler model açıklaması, Etiketler ve çerçeve bilgilerini içerir. 
 
-Aşağıdaki kodu kopyalayıp Not defterinize yeni bir **kod hücresine** yapıştırın:
+Meta veriler, çalışma alanınızda modelleri yönetirken ve dağıttığınızda yararlıdır. Örneğin, etiketleri kullanarak, çalışma alanınızdaki modelleri listelediğinde modellerinizi kategorilere ayırabilirsiniz ve filtre uygulayabilirsiniz. Ayrıca, bu modeli scikit-öğren çerçevesi ile işaretlerseniz, Web hizmeti olarak dağıtmak kolaylaşır.
+
+Aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın.
 
 ```python
 import sklearn
@@ -150,21 +153,21 @@ print('Name:', model.name)
 print('Version:', model.version)
 ```
 
-Ayrıca, sol taraftaki menüdeki **uç noktalara** giderek modeli Azure Machine Learning Studio de görüntüleyebilirsiniz:
+Ayrıca modeli Azure Machine Learning Studio de görüntüleyebilirsiniz. Soldaki menüde **modeller**' i seçin:
 
-:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Modeli gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Bir modelin nasıl görüntüleneceğini gösteren ekran görüntüsü.":::
 
 ### <a name="define-the-scoring-script"></a>Puanlama betiğini tanımlama
 
-Bir modeli Microsoft Power BI ile tümleştirilecek şekilde dağıttığınızda, bir Python *Puanlama betiği* ve özel ortam tanımlamanız gerekir. Puanlama betiği iki işlev içerir:
+Power BI ile tümleştirilebilen bir model dağıttığınızda, bir Python *Puanlama betiği* ve özel ortam tanımlamanız gerekir. Puanlama betiği iki işlev içerir:
 
-- `init()` -Bu işlev, hizmet başladıktan sonra yürütülür. Bu işlev modeli yükler (modelin model kayıt defterinden otomatik olarak indirildiğini unutmayın) ve onu serileştirir.
-- `run(data)` -Bu işlev, hizmete Puanlama gerektiren bazı giriş verileriyle bir çağrı yapıldığında yürütülür. 
+- `init()`İşlev, hizmet başladığında çalışır. Modeli yükler (model kayıt defterinden otomatik olarak indirilir) ve onu yeniden serileştirir.
+- `run(data)`İşlevi, hizmet çağrısı puanlanması gereken giriş verilerini içerdiğinde çalışır. 
 
 >[!NOTE]
-> Microsoft Power BI tümleştirmesinin çalışması için önemli olan giriş ve çıkış verilerinin şemasını tanımlamak için Python dekoratlarını kullanırız.
+> Bu makale, giriş ve çıkış verilerinin şemasını tanımlamak için Python dekoratlarını kullanır. Bu kurulum Power BI tümleştirme için önemlidir.
 
-Aşağıdaki kodu kopyalayıp Not defterinize yeni bir **kod hücresine** yapıştırın. Aşağıdaki kod parçacığında, kodu score.py adlı bir dosyalana yazılacak bir hücre Magic vardır.
+Aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın. Aşağıdaki kod parçacığında, kodu *Score.py* adlı bir dosyaya yazan bir hücre Magic vardır.
 
 ```python
 %%writefile score.py
@@ -219,7 +222,7 @@ def run(data):
         result = model.predict(data)
         print("result.....")
         print(result)
-    # You can return any data type, as long as it is JSON serializable.
+    # You can return any data type, as long as it can be serialized by JSON.
         return result.tolist()
     except Exception as e:
         error = str(e)
@@ -228,9 +231,9 @@ def run(data):
 
 ### <a name="define-the-custom-environment"></a>Özel ortamı tanımlama
 
-Daha sonra, modeli puanlamaya yönelik ortamı tanımlamanız gerekir. bu ortamda, Pandas, scikit-öğren, vb. için tanımlanan Puanlama betiği (score.py) için gerekli olan Python paketlerini tanımlamanız gerekir.
+Ardından, modeli skor ortamını tanımlayın. Ortamında, Puanlama betiğinin (*Score.py*) gerektirdiği Pandas ve scikit-öğren gibi Python paketlerini tanımlayın.
 
-Ortamı tanımlamak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir **kod hücresine** yapıştırın:
+Ortamı tanımlamak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın.
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -252,7 +255,7 @@ inference_config = InferenceConfig(entry_script='./score.py',environment=environ
 
 ### <a name="deploy-the-model"></a>Modeli dağıtma
 
-Modeli dağıtmak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir **kod hücresine** yapıştırın:
+Modeli dağıtmak için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın:
 
 ```python
 service_name = 'my-diabetes-model'
@@ -262,9 +265,9 @@ service.wait_for_deployment(show_output=True)
 ```
 
 >[!NOTE]
-> Hizmetin dağıtılması 2-4 dakika sürebilir.
+> Hizmetin dağıtılması 2 ila 4 dakika sürebilir.
 
-Başarıyla dağıtılan bir hizmetin aşağıdaki çıktısını görmeniz gerekir:
+Hizmet başarıyla dağıtıyor, aşağıdaki çıktıyı görmeniz gerekir:
 
 ```txt
 Tips: You can try get_logs(): https://aka.ms/debugimage#dockerlog or local deployment: https://aka.ms/debugimage#debug-locally to debug if deployment takes longer than 10 minutes.
@@ -273,11 +276,11 @@ Succeeded
 ACI service creation operation finished, operation "Succeeded"
 ```
 
-Ayrıca, sol taraftaki menüde **uç noktalar** ' a giderek hizmeti Azure Machine Learning Studio de görebilirsiniz:
+Ayrıca, hizmeti Azure Machine Learning Studio da görüntüleyebilirsiniz. Soldaki menüde **uç noktalar**' ı seçin:
 
-:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Uç noktayı gösteren ekran görüntüsü":::
+:::image type="content" source="media/tutorial-power-bi/endpoint.png" alt-text="Hizmetin nasıl görüntüleneceğini gösteren ekran görüntüsü.":::
 
-Web hizmeti 'nin beklendiği gibi çalıştığından emin olmak için test etmeniz önerilir. Azure Machine Learning Studio sol taraftaki menüden **Not defterleri** ' ni seçerek not defterinize geri gidin. Hizmeti test etmek için aşağıdaki kodu kopyalayıp Not defterinize yeni bir **kod hücresine** yapıştırın:
+Web hizmetini, beklendiği gibi çalıştığından emin olmak için test etmenizi öneririz. Not defterinizi döndürmek için, sol taraftaki menüde, Azure Machine Learning Studio ' de, **Not defterleri**' ni seçin. Ardından, hizmeti test etmek için aşağıdaki kodu kopyalayın ve Not defterinize yeni bir *kod hücresine* yapıştırın.
 
 ```python
 import json
@@ -293,11 +296,11 @@ output = service.run(input_payload)
 print(output)
 ```
 
-Çıktı aşağıdaki JSON yapısına benzer olmalıdır: `{'predict': [[205.59], [68.84]]}` .
+Çıktı şu JSON yapısına benzer olmalıdır: `{'predict': [[205.59], [68.84]]}` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir modeli Microsoft Power BI tarafından tüketilebilen şekilde nasıl oluşturup dağıtacağınızı gördünüz. Bir sonraki bölümde, bu modeli bir Power BI raporundan kullanmayı öğreneceksiniz.
+Bu öğreticide, Power BI tarafından tüketilebilmesi için bir modeli nasıl derleyip dağıtacağınızı gördünüz. Bir sonraki bölümde, bu modeli bir Power BI raporunda kullanmayı öğreneceksiniz.
 
 > [!div class="nextstepaction"]
-> [Öğretici: Power BI modeli kullanın](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Öğretici: Power BI model kullanma](/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)

@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 747ceb0106f437f9e2442c2b8c68c0b73a9107a6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359821"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97808274"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Form tanıyıcı modellerinizi yedekleme ve kurtarma
 
-Azure portal bir form tanıyıcı kaynağı oluşturduğunuzda bir bölge belirlersiniz. Bundan sonra, kaynağınız ve tüm işlemleri söz konusu Azure Server bölgesiyle ilişkili kalır. Tüm bölgeyi ziyaret eden bir ağ sorunuyla karşılaşmanız mümkün değildir ancak imkansız değildir. Çözümünüzün her zaman kullanılabilir olması gerekiyorsa, bunu başka bir bölgeye devretmek veya iki ya da daha fazla bölge arasında iş yükünü bölmek için tasarlamanız gerekir. Her iki yaklaşım da farklı bölgelerde en az iki form tanıyıcı kaynağı ve bölgeler arasında [özel modelleri](./quickstarts/curl-train-extract.md) eşitleme imkanını gerektirir.
+Azure portal bir form tanıyıcı kaynağı oluşturduğunuzda bir bölge belirlersiniz. Bundan sonra, kaynağınız ve tüm işlemleri söz konusu Azure Server bölgesiyle ilişkili kalır. Tüm bölgeyi ziyaret eden bir ağ sorunuyla karşılaşmanız mümkün değildir ancak imkansız değildir. Çözümünüzün her zaman kullanılabilir olması gerekiyorsa, bunu başka bir bölgeye devretmek veya iki ya da daha fazla bölge arasında iş yükünü bölmek için tasarlamanız gerekir. Her iki yaklaşım da farklı bölgelerde en az iki form tanıyıcı kaynağı ve bölgeler arasında özel modelleri eşitleme imkanını gerektirir.
 
 Copy API 'SI, bir form tanıyıcı hesabından veya diğer kullanıcılara, desteklenen herhangi bir coğrafi bölgede bulunan özel modeller kopyalamanızı sağlayarak bu senaryoyu sağlar. Bu kılavuzda, kopyalama REST API kıvrımlı ile nasıl kullanılacağı gösterilmektedir. İstekleri vermek için Postman gibi bir HTTP isteği hizmeti de kullanabilirsiniz.
 

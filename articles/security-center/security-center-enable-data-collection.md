@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: be8123d3c8a4acc684610aeaa9ee263c5defa17d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96490066"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813624"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Azure Güvenlik Merkezi 'nden aracıları ve uzantıları otomatik sağlama
 
@@ -30,6 +30,17 @@ Eksik güncelleştirmelere görünürlük sağlamak için veri toplama gerekir, 
 > Güvenlik Merkezi artmıştır, izlenebilecek kaynak türleri de artmıştır. Uzantı sayısı da artmıştır. Otomatik sağlama, Azure Ilkesinin yeteneklerini kullanarak ek kaynak türlerini desteklemek için genişletilmiştir.
 
 :::image type="content" source="./media/security-center-enable-data-collection/auto-provisioning-options.png" alt-text="Güvenlik Merkezi 'nin otomatik sağlama ayarları sayfası":::
+
+
+## <a name="availability"></a>Kullanılabilirlik
+
+| Görünüş                  | Ayrıntılar                                                                                                                                                                                                                      |
+|-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Yayın durumu:          | **Özellik**: otomatik sağlama genel kullanıma sunuldu (GA)<br>**Aracı ve uzantılar**: Azure VM 'ler için log ANALYTICS Aracısı GA, Microsoft bağımlılık Aracısı önizleme aşamasındadır, Kubernetes Için Ilke eklentisi GA                |
+| Fiyat                | Ücretsiz                                                                                                                                                                                                                         |
+| Desteklenen hedefler: | ![Yes](./media/icons/yes-icon.png) Azure makineleri<br>![Hayır](./media/icons/no-icon.png) Azure yay makineleri<br>![Hayır](./media/icons/no-icon.png) Kubernetes düğümleri<br>![Hayır](./media/icons/no-icon.png) Sanal Makine Ölçek Kümeleri |
+| Larının                 | ![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) US Gov, Çin gov, diğer gov                                                                                                      |
+|                         |                                                                                                                                                                                                                              |
 
 
 ## <a name="why-use-auto-provisioning"></a>Otomatik sağlama neden kullanılmalıdır?
@@ -120,7 +131,7 @@ Log Analytics Aracısı dışında bir uzantının otomatik sağlanmasını etki
 
 1. **Kaydet**’i seçin. Azure ilkesi atanır ve bir düzeltme görevi oluşturulur.
 
-    |Uzantı  |İlke  |
+    |Dahili numara  |İlke  |
     |---------|---------|
     |Kubernetes için ilke eklentisi|[Azure Kubernetes hizmet kümelerine Azure Ilkesi eklentisi dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fa8eff44f-8c92-45c3-a3fb-9880802d67a7)|
     |Microsoft bağımlılık Aracısı (Önizleme) (Windows VM 'Ler)|[Windows sanal makineleri için bağımlılık aracısını dağıtma](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f1c210e94-a481-4beb-95fa-1571b434fb04)         |

@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: 93b92da999c15255f543abca346fc2bf8840006c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0b93111357cf0d6e57eeb5495d50bd18a15dca77
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999474"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97812760"
 ---
 * Yalıtılmış haricinde fiyatlandırma planlarının tam aralığını destekleyen çok kiracılı sistemler.
 * Sanal ağınıza dağıtan ve yalıtılmış fiyatlandırma planı uygulamalarını destekleyen App Service Ortamı.
@@ -33,7 +33,7 @@ VNet tümleştirmesinin desteklemediği bazı şeyler vardır, örneğin:
 * Active Directory tümleştirme.
 * Tanımlaya.
 
-Ağ Geçidi gerekli VNet tümleştirmesi, yalnızca hedef VNet 'te veya eşleme ya da VPN 'Ler ile hedef VNet 'e bağlı ağlarda bulunan kaynaklara erişim sağlar. Ağ Geçidi gerekli VNet tümleştirmesi, Azure ExpressRoute bağlantılarında bulunan kaynaklara erişimi etkinleştirmez veya hizmet uç noktaları ile birlikte kullanılabilir.
+Ağ Geçidi gerekli VNet tümleştirmesi, yalnızca hedef VNet 'te veya eşleme ya da VPN 'Ler ile hedef VNet 'e bağlı ağlarda bulunan kaynaklara erişim sağlar. Ağ Geçidi gerekli VNet tümleştirmesi, Azure ExpressRoute bağlantılarında kullanılabilen kaynaklara erişimi etkinleştirmez veya hizmet uç noktaları ile birlikte çalışabilir.
 
 VNet tümleştirmesi, kullanılan sürümden bağımsız olarak uygulamanızın VNet 'teki kaynaklara erişmesini sağlar, ancak sanal ağdan uygulamanıza gelen özel erişim vermez. Özel site erişimi, uygulamanızı Azure VNet içindeki gibi özel bir ağdan erişilebilir hale getirme anlamına gelir. VNet tümleştirmesi yalnızca uygulamanızdan VNet 'e giden çağrılar yapmak içindir.
 

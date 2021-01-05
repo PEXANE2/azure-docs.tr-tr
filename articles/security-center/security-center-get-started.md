@@ -12,22 +12,29 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/30/2020
 ms.author: memildin
-ms.openlocfilehash: bd8c5c31579ac22cd6c77dffd31103680e393f69
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d3ed064547b1202aa562fffdfde85a28cbe8514e
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187179"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809556"
 ---
-# <a name="quickstart-setting-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
+# <a name="quickstart-set-up-azure-security-center"></a>Hızlı başlangıç: Azure Güvenlik Merkezi 'Ni ayarlama
 
 Azure Güvenlik Merkezi, hibrit bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Ücretsiz özellikler yalnızca Azure kaynaklarınız için sınırlı güvenlik sunarak Azure Defender 'ın bu özellikleri şirket içi ve diğer bulutlara genişletmelerini sağlar. Azure Defender, güvenlik açıklarını bulmanıza ve düzeltmenize, kötü amaçlı etkinlikleri engellemek, analiz ve zekası kullanarak tehditleri tespit etmek ve saldırı altında hızla yanıt vermek için erişim ve uygulama denetimleri uygulamanıza yardımcı olur. Azure Defender 'ı ücretsiz olarak deneyebilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
-Bu makalede, güvenlik açıklarını ve tehditleri izlemek için, ek güvenlik için Azure Defender 'a yükseltirsiniz ve makinelerinize Log Analytics aracısını yüklersiniz.
+Bu hızlı başlangıç, güvenlik açıklarını ve tehditleri izlemek için, ek güvenlik için Azure Defender 'ı etkinleştirme ve makinelerinize Log Analytics aracısını yükleme konusunda size kılavuzluk eder.
 
-## <a name="prerequisites"></a>Ön koşullar
+Aşağıdaki adımları uygulayın:
+
+> [!div class="checklist"]
+> * Azure aboneliğinizde Güvenlik Merkezi 'ni etkinleştirme
+> * Azure aboneliğinizdeki Azure Defender 'ı etkinleştirin
+> * Otomatik veri toplamayı etkinleştir
+
+## <a name="prerequisites"></a>Önkoşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
 Azure Defender 'ı bir abonelikte etkinleştirmek için abonelik sahibi, abonelik katılımcısı veya güvenlik yöneticisi rolüne sahip olmanız gerekir.

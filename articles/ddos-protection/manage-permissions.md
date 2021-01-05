@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: dec2c845780b62e9a595c73504037142c511c0e6
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 08ab78171376f702aecb1f49571dda583eae5d82
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989420"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813879"
 ---
 # <a name="manage-ddos-protection-plans-permissions-and-restrictions"></a>DDoS koruma planlarını yönetme: izinler ve kısıtlamalar
 
@@ -30,7 +30,7 @@ DDoS koruma planı bölgeler ve abonelikler arasında çalışmaktadır. Aynı p
 
 DDoS koruma planlarıyla çalışmak için, hesabınız [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolüne veya aşağıdaki tabloda listelenen uygun eylemlere atanmış [özel](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bir role atanmalıdır:
 
-| Eylem                                            | Name                                     |
+| Eylem                                            | Ad                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/Ddosprotectionplanlar/okuma        | DDoS koruma planını okuyun              |
 | Microsoft. Network/Ddosprotectionplanlar/yazma       | DDoS koruma planı oluşturma veya güncelleştirme  |
@@ -51,4 +51,4 @@ Bir sanal ağ için DDoS korumasını etkinleştirmek üzere hesabınıza [sanal
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry.md)

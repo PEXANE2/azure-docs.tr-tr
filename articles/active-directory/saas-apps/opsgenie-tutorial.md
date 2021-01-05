@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/19/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: a71c29032730e0724213f9f5ef17f7336c188741
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 622ead38a62e593e304f49da9a9d3f652a868bde
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516690"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-opsgenie"></a>Öğretici: OpsGenie ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, OpsGenie 'yi Azure Active Directory (Azure AD) ile tümleştirm
 * Azure AD 'de OpsGenie erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla OpsGenie 'ye otomatik olarak kaydolmalarına imkan tanıyın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,37 +38,36 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * OpsGenie, **IDP** tarafından başlatılan SSO 'yu destekler
-* OpsGenie 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve geri alımını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-opsgenie-from-the-gallery"></a>Galeriden OpsGenie ekleme
 
 OpsGenie tümleştirmesini Azure AD 'ye göre yapılandırmak için, galerideki OpsGenie 'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **OpsGenie** yazın.
 1. Sonuçlar panelinden **OpsGenie** ' yi seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-opsgenie"></a>OpsGenie için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-opsgenie"></a>OpsGenie için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu OpsGenie ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve OpsGenie içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu OpsGenie ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve OpsGenie içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu OpsGenie ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu OpsGenie ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[OpsGenie SSO 'Yu yapılandırın](#configure-opsgenie-sso)** .
-    * **[OpsGenie test kullanıcısı oluşturun](#create-opsgenie-test-user)** -kullanıcının Azure AD gösterimine bağlı olan OpsGenie 'de B. Simon 'a karşılık gelen bir karşılığı vardır.
+    1. **[OpsGenie test kullanıcısı oluşturun](#create-opsgenie-test-user)** -kullanıcının Azure AD gösterimine bağlı olan OpsGenie 'de B. Simon 'a karşılık gelen bir karşılığı vardır.
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **OpsGenie** uygulama tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **OpsGenie** uygulama tümleştirme sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -103,7 +100,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -113,19 +110,23 @@ Bu bölümde, OpsGenie erişimi vererek Azure çoklu oturum açma özelliğini k
 1. Uygulamalar listesinde, **OpsGenie**' yi seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-opsgenie-sso"></a>OpsGenie SSO 'yu yapılandırma
 
-1. Başka bir tarayıcı örneği açın ve ardından yönetici olarak OpsGenie oturumunu açın.
+1. OpsGenie içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemeniz**' ne tıklayarak **uygulamalarım güvenli oturum açma tarayıcı uzantısını** yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, kurulum **OpsGenie** ' ye tıklayarak sizi OpsGenie uygulamasına yönlendirirsiniz. Buradan, OpsGenie 'de oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. OpsGenie 'yi el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, OpsGenie şirket sitenizde yönetici olarak oturum açın.
 
 2. **Ayarlar**' a ve ardından **Çoklu oturum açma** sekmesine tıklayın.
    
@@ -147,7 +148,7 @@ Bu bölümde, OpsGenie erişimi vererek Azure çoklu oturum açma özelliğini k
 
     a. **Yanıt URL 'si** değerini kopyalayın ve Azure Portal **temel SAML YAPıLANDıRMASı** bölümünde **yanıt URL** metin kutusuna yapıştırın.
 
-    a. **SAML 2,0 uç nokta** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si**değerini yapıştırın.
+    a. **SAML 2,0 uç nokta** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
     
     b. **Meta veri URL 'si:** metin kutusunda, Azure Portal kopyaladığınız **uygulama Federasyon meta veri URL 'si** değerini yapıştırın.
     
@@ -173,7 +174,7 @@ Bu bölümün amacı, OpsGenie 'de B. Simon adlı bir Kullanıcı oluşturmaktı
    
     a. **E-posta** metin kutusuna, Azure Active Directory adreslenen B. Simon e-posta adresini yazın.
    
-    b. **Tam ad** metin kutusuna **B. Simon**yazın.
+    b. **Tam ad** metin kutusuna **B. Simon** yazın.
    
     c. **Kaydet**’e tıklayın. 
 
@@ -182,18 +183,12 @@ Bu bölümün amacı, OpsGenie 'de B. Simon adlı bir Kullanıcı oluşturmaktı
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde OpsGenie kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız OpsGenie ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal bu uygulamayı test et ' e tıklayın ve SSO 'yu ayarladığınız OpsGenie 'ye otomatik olarak oturum açmış olmanız gerekir
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki OpsGenie kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız OpsGenie ' de otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
-
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Azure AD ile OpsGenie 'yi deneyin](https://aad.portal.azure.com/)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+* OpsGenie 'yi yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve geri alımını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).

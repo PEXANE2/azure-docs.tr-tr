@@ -36,8 +36,6 @@
       items:
         - name: Emin olunmayan tahminleri düzeltme
           href: luis-tutorial-review-endpoint-utterances.md
-        - name: Veri kümelerini toplu olarak sınama
-          href: luis-tutorial-batch-testing.md
         - name: Tahminleri geliştirmek için desenler ekleme
           href: luis-tutorial-pattern.md
     - name: Bot ile kullanma
@@ -93,8 +91,6 @@
       items:
         - name: Etkileşimli test
           href: luis-concept-test.md
-        - name: Toplu işe testi
-          href: luis-concept-batch-test.md
     - name: Veri yönetimi
       items:
         - name: Verileri değiştirme
@@ -229,7 +225,7 @@
         - name: Kapsayıcıları yapılandırma
           href: luis-container-configuration.md
         - name: Kapsayıcı örnekleri kullanma
-          href: deploy-luis-on-container-instances.md
+          href: ../containers/azure-container-instance-recipe.md
         - name: Kapsayıcı sınırlamaları
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'

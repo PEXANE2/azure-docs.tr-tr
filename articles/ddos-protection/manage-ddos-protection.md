@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: fc60ca462a2891cc022847e056e32239f2675f70
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fd154ec40ed4d1650e44a67fd5d362a2bc0c519d
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094583"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813947"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard"></a>Hızlı başlangıç: Azure DDoS koruma standardı oluşturma ve yapılandırma
 
@@ -39,8 +39,8 @@ Bu hızlı başlangıçta bir DDoS koruma planı oluşturacak ve bunu bir sanal 
 
 1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
 2. *DDoS* terimini arayın. Ara sonuçlarda **DDoS koruma planı** göründüğünde, bunu seçin.
-3. **Oluştur** ’u seçin.
-4. Aşağıdaki değerleri girin veya seçin ve ardından **Oluştur** ' u seçin:
+3. **Oluştur**’u seçin.
+4. Aşağıdaki değerleri girin veya seçin ve ardından **Oluştur**' u seçin:
 
     |Ayar        |Değer                                              |
     |---------      |---------                                          |
@@ -54,16 +54,16 @@ Bu hızlı başlangıçta bir DDoS koruma planı oluşturacak ve bunu bir sanal 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>Yeni bir sanal ağ için DDoS korumasını etkinleştir
 
 1. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
-2. **Ağ** ’ı ve sonra **Sanal ağ** ’ı seçin.
-3. Aşağıdaki değerleri girin veya seçin, kalan Varsayılanları kabul edin ve **Oluştur** ' u seçin:
+2. **Ağ**’ı ve sonra **Sanal ağ**’ı seçin.
+3. Aşağıdaki değerleri girin veya seçin, kalan Varsayılanları kabul edin ve **Oluştur**' u seçin:
 
     | Ayar         | Değer                                           |
     | ---------       | ---------                                       |
     | Ad            | _Myvnet_ girin.                                 |
     | Abonelik    | Aboneliğinizi seçin.                                    |
-    | Kaynak grubu  | **Mevcut olanı kullan** ' ı seçin ve ardından **myresourcegroup** öğesini seçin. |
+    | Kaynak grubu  | **Mevcut olanı kullan**' ı seçin ve ardından **myresourcegroup** öğesini seçin. |
     | Konum        | _Doğu ABD_ girin                                                    |
-    | DDoS Koruması Standart | **Etkinleştir** ’i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
+    | DDoS Koruması Standart | **Etkinleştir**’i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.|
 
 Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bir kaynak grubuna veya aboneliğe taşıyamazsınız. DDoS standart özellikli bir sanal ağı taşımanız gerekiyorsa, önce DDoS standardını devre dışı bırakın, sanal ağı taşıyın ve ardından DDoS standardını etkinleştirin. Taşıma işleminden sonra, sanal ağ içindeki tüm korumalı genel IP adresleri için otomatik olarak ayarlanan ilke eşikleri sıfırlanır.
 
@@ -72,8 +72,12 @@ Sanal ağ için DDoS standardı etkinleştirildiğinde bir sanal ağı başka bi
 1. DDoS koruma planı [oluşturma](#create-a-ddos-protection-plan)bölümündeki adımları tamamlayarak bir DDoS koruma planı oluşturun.
 2. Azure portal sol üst köşesinde **kaynak oluştur** ' u seçin.
 3. Portalın üst kısmındaki **kaynakları, hizmetleri ve belgeleri ara kutusuna** Için DDoS koruması standardını etkinleştirmek istediğiniz sanal ağın adını girin. Arama sonuçlarında sanal ağın adı göründüğünde seçin.
-4. **Ayarlar** altında **DDoS koruması** ' nı seçin.
-5. **Standart** ' ı seçin. **DDoS koruma planı** altında var olan bir DDoS koruma planı veya 1. adımda oluşturduğunuz planı seçin ve ardından **Kaydet** ' i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.
+4. **Ayarlar** altında **DDoS koruması**' nı seçin.
+5. **Standart**' ı seçin. **DDoS koruma planı** altında var olan bir DDoS koruma planı veya 1. adımda oluşturduğunuz planı seçin ve ardından **Kaydet**' i seçin. Seçtiğiniz plan, sanal ağdan aynı veya farklı bir abonelikte olabilir, ancak her iki aboneliğin de aynı Azure Active Directory kiracısıyla ilişkilendirilmesi gerekir.
+
+### <a name="enable-ddos-protection-for-all-virtual-networks"></a>Tüm sanal ağlar için DDoS korumasını etkinleştir
+
+Bu [ilke](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Policy%20-%20Virtual%20Networks%20should%20be%20associated%20with%20an%20Azure%20DDoS%20Protection%20Standard%20plan) , DDoS koruma standardı etkin olmayan tanımlanmış bir kapsamdaki tüm sanal ağları algılayacak ve isteğe bağlı olarak VNET 'i korumak için ilişkilendirmeyi oluşturacak bir düzeltme görevi oluşturmaya çalışır. Bu ilkeyi dağıtma hakkında ayrıntılı adım adım yönergeler için bkz https://aka.ms/ddosvnetpolicy-techcommunity ..
 
 ## <a name="validate-and-test"></a>Doğrula ve test et
 
@@ -96,14 +100,14 @@ Kaynaklarınızın bir sonraki öğreticide kalmasını sağlayabilirsiniz. Art�
 
 2. _Myresourcegroup_ kaynak grubunu bulmak için filtre uygulayın veya aşağı kaydırın.
 
-3. Kaynak grubunu seçin ve **kaynak grubunu sil** ' i seçin.
+3. Kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
 
-4. Doğrulanacak kaynak grubu adını yazın ve ardından **Sil** ' i seçin.
+4. Doğrulanacak kaynak grubu adını yazın ve ardından **Sil**' i seçin.
 
 Bir sanal ağ için DDoS korumasını devre dışı bırakmak için: 
 
 1. Portalın üst kısmındaki **kaynakları, hizmetleri ve belgeleri arayın kutusuna** Için DDoS koruması standardını devre dışı bırakmak istediğiniz sanal ağın adını girin. Arama sonuçlarında sanal ağın adı göründüğünde seçin.
-2. **DDoS koruma standardı altında** seçin, **devre dışı bırak** ' ı seçin.
+2. **DDoS koruma standardı altında** seçin, **devre dışı bırak**' ı seçin.
 
 DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkilendirmesini kaldırmanız gerekir. 
 
@@ -112,4 +116,4 @@ DDoS koruma planını silmek istiyorsanız, önce tüm sanal ağların ilişkile
 DDoS koruma planınız için telemetri görüntüleme ve yapılandırma hakkında bilgi edinmek için öğreticilere devam edin.
 
 > [!div class="nextstepaction"]
-> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry-monitoring-alerting.md)
+> [DDoS konuma telemetrisini görüntüleme ve yapılandırma](telemetry.md)

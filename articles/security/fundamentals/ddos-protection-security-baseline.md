@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492259"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814508"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS koruma standardı için Azure Güvenlik temeli
 
@@ -38,7 +38,7 @@ Bu güvenlik temeli [Azure Güvenlik kıyaslayıcılarından](../benchmarks/over
 
 Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına, Azure Olay Hub 'ına veya Arşiv için Azure depolama hesabına gönderin. Etkinlik günlükleri, denetim düzlemi düzeyinde Redsıs örnekleri için Azure önbelleğiniz üzerinde gerçekleştirilen işlemlere ilişkin öngörüler sağlar. Azure etkinlik günlüğü verilerini kullanarak, Azure DDoS koruma örnekleriniz için denetim düzlemi düzeyinde gerçekleştirilen herhangi bir yazma işlemi (PUT, POST, DELETE) için "ne, kim ve ne zaman" seçeneğini belirleyebilirsiniz.
 
-- [DDoS koruma ölçümleri için uyarıları yapılandırma](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS tanılama günlüğünü görüntüleyin ve yapılandırın](../../ddos-protection/diagnostic-logging.md)
 
 - [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri
 
 **Kılavuz**: Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Terimleri aramak, eğilimleri belirlemek, desenleri analiz etmek ve kurtarma hizmetleri kasaları için toplanabilecek etkinlik günlüğü verilerine göre birçok diğer öngörü sağlamak için Log Analytics sorguları gerçekleştirin.
 
-- [DDoS koruma standart hizmeti için telemetri, Günlükler ve saldırı Analizi 'ne erişme hakkında bilgi](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS koruma standart hizmeti için telemetri, Günlükler ve saldırı Analizi 'ne erişme hakkında bilgi](../../ddos-protection/telemetry.md)
 
 - [Azure etkinlik günlüğü için tanılama ayarlarını etkinleştirme](../../azure-monitor/platform/activity-log.md)
 
@@ -76,7 +76,7 @@ Azure etkinlik günlüğü tanılama ayarlarını etkinleştirin ve günlükleri
 
 Bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağladığından Azure Sentinel 'e bir Log Analytics çalışma alanı ekleyin. Bu, güvenlik sorunlarını gidermek için PlayBook 'ları (otomatikleştirilmiş çözümlerin) oluşturulmasına ve kullanılmasına olanak tanır. Ayrıca, Azure Izleyici 'yi kullanarak Log Analytics çalışma alanınızda özel günlük uyarıları da oluşturabilirsiniz.
 
-- [DDoS ölçümleri için uyarıları yapılandırma](https://azure.microsoft.com/blog/holiday-season-is-ddos-season/)
+- [DDoS ölçümleri için uyarıları yapılandırma](../../ddos-protection/alerts.md)
 
 - [Azure Sentinel 'i ekleme](../../sentinel/quickstart-onboard.md)
 
@@ -142,7 +142,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 - [Azure AD ile istemci uygulamanızı (hizmet sorumlusu) kaydetme](/rest/api/azure/#register-your-client-application-with-azure-ad)
 
-- [Azure DDos koruması API 'SI bilgileri](/rest/api/virtual-network/)
+- [Azure DDoS koruması API 'SI bilgileri](/rest/api/virtual-network/)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -166,7 +166,7 @@ Ayrıca, özel yönetim hesaplarını izlemenize yardımcı olmak için Azure G�
 
 - [Güvenli, Azure tarafından yönetilen bir iş istasyonu dağıtma](../../active-directory/devices/howto-azure-managed-workstation.md)
 
-- [Bulut tabanlı bir Azure AD Multi-Factor Authentication dağıtımı planlama](../../active-directory/authentication/howto-mfa-getstarted.md)
+- [Bulut tabanlı Azure AD Multi-Factor Authentication dağıtımı planlama](../../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Güvenlik Merkezi ile izleme**: Uygulanamaz
 
@@ -524,7 +524,7 @@ DDoS saldırısının benzetimini yapmak için uygulamalarınıza karşı trafik
 
 Azure Izleyici uyarı yapılandırması kullanılarak saldırı sırasında etkin bir risk azaltma olduğunda sizi uyarmak için kullanılabilir DDoS koruma ölçümlerinden birini seçin. Koşullar karşılandığında, belirtilen adres bir uyarı e-postası alır
 
-- [DDoS koruma ölçümleri için uyarıları yapılandırma](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
+- [DDoS koruma ölçümleri için uyarıları yapılandırma](../../ddos-protection/alerts.md)
 
 - [Sürekli dışarı aktarmayı yapılandırma](../../security-center/continuous-export.md)
 

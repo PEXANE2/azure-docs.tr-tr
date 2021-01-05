@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: fbbccfb21f136d926ac0e3e701ad686d2a42e715
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674234"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809726"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM şablonlarında dağıtım betikleri kullanma
 
@@ -39,51 +39,45 @@ Dağıtım betiği kaynağı yalnızca Azure Container Instance 'ın kullanılab
 
 > [!IMPORTANT]
 > DeploymentScripts kaynak API sürümü 2020-10-01, [OnBehalfofTokens (OBO)](../../active-directory/develop/v2-oauth2-on-behalf-of-flow.md)destekler. Dağıtım betiği hizmeti, OBO 'yı kullanarak dağıtım betikleri çalıştırmak için Azure Container Instance, Azure depolama hesabı ve yönetilen kimlik için rol atamalarını içeren temel kaynakları oluşturmak üzere dağıtım sorumlusunun belirtecini kullanır. Daha eski API sürümünde, bu kaynakları oluşturmak için yönetilen kimlik kullanılır.
-> Azure oturum açma için yeniden deneme mantığı artık sarmalayıcı betikte yerleşik olarak bulunur. Dağıtım betikleri çalıştırdığınız şablonda izin verirseniz.  Dağıtım betiği hizmeti, yönetilen kimlik rolü ataması çoğaltılana kadar 10 dakikalık bir aralıkla oturum açmayı yeniden dener.
+> Azure oturum açma için yeniden deneme mantığı artık sarmalayıcı betikte yerleşik olarak bulunur. Dağıtım betikleri çalıştırdığınız şablonda izin verirseniz. Dağıtım betiği hizmeti, yönetilen kimlik rolü ataması çoğaltılana kadar 10 dakikalık bir aralıkla oturum açmayı yeniden dener.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="configure-the-minimum-permissions"></a>Minimum izinleri yapılandırma
 
-- **(Isteğe bağlı) komut dosyasındaki işlemleri gerçekleştirmek için gerekli izinlere sahip bir kullanıcı tarafından atanan yönetilen kimlik**. Dağıtım betiği API sürüm 2020-10-01 veya üzeri için, dağıtım sorumlusu temel alınan kaynakları oluşturmak için kullanılır. Betiğin Azure 'da kimlik doğrulaması yapması ve Azure 'a özel eylemler gerçekleştirmesi gerekiyorsa, komut dosyasını Kullanıcı tarafından atanan bir yönetilen kimlikle yapmanızı öneririz. Komut dosyasındaki işlemi tamamlaması için yönetilen kimliğin hedef kaynak grubunda gerekli erişime sahip olması gerekir. Dağıtım betiğine Azure 'da da oturum açabilirsiniz. İşlemleri kaynak grubu dışında gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız kimliği abonelik düzeyine atayın. 
+Dağıtım betiği API sürüm 2020-10-01 veya üzeri için dağıtım sorumlusu, dağıtım betiği kaynağı için gereken temel kaynakları (depolama hesabı ve Azure Container Instance) oluşturmak için kullanılır. Betiğin Azure 'da kimlik doğrulaması yapması ve Azure 'a özel eylemler gerçekleştirmesi gerekiyorsa, komut dosyasını Kullanıcı tarafından atanan bir yönetilen kimlikle yapmanızı öneririz. Yönetilen kimliğin komut dosyasındaki işlemi tamamlaması için gereken erişimi olması gerekir.
 
-  Bir kimlik oluşturmak için, bkz. Azure portal kullanarak veya [Azure CLI kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)ya da [Azure PowerShell kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) [Kullanıcı tarafından atanan yönetilen kimlik oluşturma](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md). Şablonu dağıtırken kimlik KIMLIĞININ olması gerekir. Kimliğin biçimi:
+En düşük ayrıcalıklı izinleri yapılandırmak için şunlar gerekir:
+
+- Dağıtım sorumlusuna aşağıdaki özelliklerle özel bir rol atayın:
 
   ```json
-  /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>
+  {
+    "roleName": "deployment-script-minimum-privilege-for-deployment-principal",
+    "description": "Configure least privilege for the deployment principal in deployment script",
+    "type": "customRole",
+    "IsCustom": true,
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/storageAccounts/*",
+          "Microsoft.ContainerInstance/containerGroups/*",
+          "Microsoft.Resources/deployments/*",
+          "Microsoft.Resources/deploymentScripts/*"
+        ],
+      }
+    ],
+    "assignableScopes": [
+      "[subscription().id]"
+    ]
+  }
   ```
 
-  Kaynak grubu adını ve kimlik adını sağlayarak KIMLIĞI almak için aşağıdaki CLı veya PowerShell betiğini kullanın.
+  Azure depolama ve Azure Container Instance kaynak sağlayıcıları kayıtlı değilse, ve de eklemeniz gerekir `Microsoft.Storage/register/action` `Microsoft.ContainerInstance/register/action` .
 
-  # <a name="cli"></a>[CLI](#tab/CLI)
-
-  ```azurecli-interactive
-  echo "Enter the Resource Group name:" &&
-  read resourceGroupName &&
-  echo "Enter the managed identity name:" &&
-  read idName &&
-  az identity show -g $resourceGroupName -n $idName --query id
-  ```
-
-  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
-
-  ```azurepowershell-interactive
-  $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
-  $idName = Read-Host -Prompt "Enter the name of the managed identity"
-
-  (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name $idName).Id
-  ```
-
-  ---
-
-- **Azure PowerShell** veya **Azure CLI**. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
-
-    >[!IMPORTANT]
-    > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisi desteklenen sürümleri listeler.
-
-    Bu sürümlere şablon dağıtmak için ihtiyacınız yoktur. Ancak bu sürümler Dağıtım betiklerini yerel olarak test etmek için gereklidir. Bkz. [Azure PowerShell modülünü Install](/powershell/azure/install-az-ps). Önceden yapılandırılmış bir Docker görüntüsü kullanabilirsiniz.  Bkz. [geliştirme ortamını yapılandırma](#configure-development-environment).
+- Yönetilen bir kimlik kullanılıyorsa, dağıtım sorumlusu yönetilen kimlik kaynağına atanmış **yönetilen kimlik işleci** rolüne (yerleşik bir rol) ihtiyaç duyuyor.
 
 ## <a name="sample-templates"></a>Örnek şablonlar
 
-Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templates/microsoft.resources/deploymentscripts)bulunabilir.
+Aşağıdaki JSON bir örnektir. Daha fazla bilgi için bkz. en son [şablon şeması](/azure/templates/microsoft.resources/deploymentscripts).
 
 ```json
 {
@@ -99,7 +93,7 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
     }
   },
   "properties": {
-    "forceUpdateTag": 1,
+    "forceUpdateTag": "1",
     "containerSettings": {
       "containerGroupName": "mycustomaci"
     },
@@ -111,13 +105,17 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
     "arguments": "-name \\\"John Dole\\\"",
     "environmentVariables": [
       {
-        "name": "someSecret",
-        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+        "name": "UserName",
+        "value": "jdole"
+      },
+      {
+        "name": "Password",
+        "secureValue": "jDolePassword"
       }
     ],
     "scriptContent": "
       param([string] $name)
-      $output = 'Hello {0}' -f $name
+      $output = 'Hello {0}. The username is {1}, the password is {2}.' -f $name,${Env:UserName},${Env:Password}
       Write-Output $output
       $DeploymentScriptOutputs = @{}
       $DeploymentScriptOutputs['text'] = $output
@@ -131,37 +129,44 @@ Aşağıdaki JSON bir örnektir.  En son şablon şeması [burada](/azure/templa
 ```
 
 > [!NOTE]
-> Örnek, tanıtım amaçlı amaçlıdır.  **Scriptcontent** ve **Primaryscripturi** bir şablonda birlikte bulunamaz.
+> Örnek, tanıtım amaçlıdır. Özellikler `scriptContent` ve `primaryScriptUri` bir şablonda birlikte bulunamaz.
 
 Özellik değeri ayrıntıları:
 
-- **Kimlik**: DAĞıTıM betiği apı sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
-- **tür**: betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
-- **Forceupdatetag**: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. NewGuid () veya utcNow () işlevini kullanırsanız, her iki işlev de bir parametre için yalnızca varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
-- **Containersettings**: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  **Containergroupname** kapsayıcı grubu adını belirtmektir.  Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
-- **Storageaccountsettings**: mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
-- **Azpowershellversion** / **Azcliversion**: kullanılacak modül sürümünü belirtin. Desteklenen PowerShell ve CLı sürümlerinin listesi için bkz. [Önkoşullar](#prerequisites).
-- **bağımsız değişkenler**: parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
+- `identity`: Dağıtım betiği API 'SI sürüm 2020-10-01 veya üzeri için, betikte herhangi bir Azure 'a özgü eylem gerçekleştirmeniz gerekmedikçe Kullanıcı tarafından atanan yönetilen kimlik isteğe bağlıdır.  API sürümü 2019-10-01-önizleme için dağıtım betiği hizmeti tarafından betikleri yürütmek üzere kullandığı için yönetilen bir kimlik gerekir. Şu anda yalnızca Kullanıcı tarafından atanan yönetilen kimlik desteklenir.
+- `kind`: Betiğin türünü belirtin. Şu anda, Azure PowerShell ve Azure CLı betikleri desteklenir. Değerler **AzurePowerShell** ve **azurecli**' dir.
+- `forceUpdateTag`: Bu değerin, şablon dağıtımları arasında değiştirilmesi dağıtım betiğini yeniden yürütmeye zorlar. `newGuid()`Veya `utcNow()` işlevlerini kullanırsanız, her iki işlev yalnızca bir parametre için varsayılan değerde kullanılabilir. Daha fazla bilgi için bkz. [betiği birden çok kez çalıştırma](#run-script-more-than-once).
+- `containerSettings`: Azure Container Instance 'ı özelleştirmek için ayarları belirtin.  `containerGroupName` kapsayıcı grubu adını belirtmektir. Belirtilmemişse, Grup adı otomatik olarak oluşturulur.
+- `storageAccountSettings`: Mevcut bir depolama hesabını kullanmak için ayarları belirtin. Belirtilmemişse, otomatik olarak bir depolama hesabı oluşturulur. Bkz. [var olan bir depolama hesabını kullanma](#use-existing-storage-account).
+- `azPowerShellVersion`/`azCliVersion`: Kullanılacak modül sürümünü belirtin. [Desteklenen Azure PowerShell sürümlerinin](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)listesini görüntüleyin. [Desteklenen Azure CLI sürümlerinin](https://mcr.microsoft.com/v2/azure-cli/tags/list)listesini görüntüleyin.
 
-    Dağıtım betikleri, [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) sistem çağrısını çağırarak bağımsız değişkenleri dizeler dizisine böler. Bağımsız değişkenler bir [komut özelliği](/rest/api/container-instances/containergroups/createorupdate#containerexec) olarak Azure Container Instance 'a geçirildiğinden ve komut özelliği bir dize dizisi olduğundan, bu adım gereklidir.
+  >[!IMPORTANT]
+  > Dağıtım betiği, Microsoft Container Registry (MCR) ' deki kullanılabilir CLı görüntülerini kullanır. Dağıtım betiği için bir CLı görüntüsünü onaylamak üzere bir ay sürer. 30 gün içinde Yayınlanan CLı sürümlerini kullanmayın. Görüntülerin yayın tarihlerini bulmak için bkz. [Azure CLI sürüm notları](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Desteklenmeyen bir sürüm kullanılırsa, hata iletisinde desteklenen sürümler listelenir.
 
-    Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonda bağımsız değişken **\\ "John Dole \\ "** olur.  Kaçan dize **-adı \\ \\ \\ "John Dole \\ \\ \\ "** dir.
+- `arguments`: Parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
 
-    Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra herhangi bir **\\ "** into **\\ \\ \\ "** öğesini değiştirmek için [Replace ()](./template-functions-string.md#replace) işlevini kullanın. Örnek:
+  Dağıtım betikleri, [CommandLineToArgvW ](/windows/win32/api/shellapi/nf-shellapi-commandlinetoargvw) sistem çağrısını çağırarak bağımsız değişkenleri dizeler dizisine böler. Bağımsız değişkenler bir [komut özelliği](/rest/api/container-instances/containergroups/createorupdate#containerexec) olarak Azure Container Instance 'a geçirildiğinden ve komut özelliği bir dize dizisi olduğundan, bu adım gereklidir.
 
-    ```json
-    replace(string(parameters('tables')), '\"', '\\\"')
-    ```
+  Bağımsız değişkenler kaçış karakterleri içeriyorsa, karakterleri çift kaçış için [Jsonescaper](https://www.jsonescaper.com/) ' ı kullanın. Özgün atlanan dizeyi araca yapıştırın ve ardından **kaçış**' ı seçin.  Araç, Çift kaçan bir dize verir. Örneğin, önceki örnek şablonunda bağımsız değişken olur `-name \"John Dole\"` . Kaçan dize `-name \\\"John Dole\\\"` .
 
-    Örnek bir şablonu görmek için [burada](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json)öğesini seçin.
+  Object türünde bir ARM şablon parametresini bir bağımsız değişken olarak geçirmek için, [String ()](./template-functions-string.md#string) işlevini kullanarak nesneyi bir dizeye dönüştürün ve sonra replace [()](./template-functions-string.md#replace) işlevini kullanarak herhangi bir öğesini değiştirin `\"` `\\\"` . Örnek:
 
-- **EnvironmentVariables**: betiğe geçirilecek ortam değişkenlerini belirtin. Daha fazla bilgi için bkz. [dağıtım betikleri geliştirme](#develop-deployment-scripts).
-- **scriptcontent**: betik içeriğini belirtin. Bir dış betik çalıştırmak için `primaryScriptUri` bunun yerine kullanın. Örnekler için bkz. [satır içi betiği kullanma](#use-inline-scripts) ve [dış betiği kullanma](#use-external-scripts).
-- **Primaryscripturi**: desteklenen dosya uzantılarına sahip birincil dağıtım betiğine genel olarak erişilebilen bir URL belirtin.
-- **Supportingscriptursıs**: ya da ' de çağrılan dosyaları desteklemek için genel olarak erişilebilen bir URL dizisi belirtin `ScriptContent` `PrimaryScriptUri` .
-- **zaman aşımı**: [ISO 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen izin verilen en büyük betik yürütme süresini belirtin. Varsayılan değer **P1D**' dir.
-- **Cleanuppreference**. Komut dosyası yürütmesi bir terminal durumunda olduğunda dağıtım kaynaklarını Temizleme tercihini belirtin. Varsayılan ayar **her zaman**, bu, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen kaynakları silmenin anlamına gelir. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
-- **retentionInterval**: dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Saklama aralığı 1 ile 26 saat arasında (PT26H). CleanupPreference *Onexpiration* olarak ayarlandığında bu özellik kullanılır. *Onexpiration* özelliği şu anda etkin değil. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
+  ```json
+  replace(string(parameters('tables')), '\"', '\\\"')
+  ```
+
+  Daha fazla bilgi için bkz. [örnek şablon](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-jsonEscape.json).
+
+- `environmentVariables`: Betiğe geçirilecek ortam değişkenlerini belirtin. Daha fazla bilgi için bkz. [dağıtım betikleri geliştirme](#develop-deployment-scripts).
+- `scriptContent`: Betik içeriğini belirtin. Bir dış betik çalıştırmak için `primaryScriptUri` bunun yerine kullanın. Örnekler için bkz. [satır içi betiği kullanma](#use-inline-scripts) ve [dış betiği kullanma](#use-external-scripts).
+  > [!NOTE]
+  > Azure portal birden çok satır içeren bir dağıtım betiğini ayrıştıramıyor. Azure portal dağıtım betiği içeren bir şablonu dağıtmak için, bir satırda noktalı virgül kullanarak PowerShell komutlarını zincirleyebilir ya da `primaryScriptUri` özelliği bir dış betik dosyası ile kullanabilirsiniz.
+
+- `primaryScriptUri`: Birincil dağıtım betiğinin desteklenen dosya uzantılarına sahip genel olarak erişilebilen bir URL belirtin.
+- `supportingScriptUris`: Ya da ' de çağrılan dosyaları desteklemek için genel olarak erişilebilen bir URL dizisi belirtin `scriptContent` `primaryScriptUri` .
+- `timeout`: [Iso 8601 biçiminde](https://en.wikipedia.org/wiki/ISO_8601)belirtilen izin verilen en fazla betik yürütme süresini belirtin. Varsayılan değer **P1D**' dir.
+- `cleanupPreference`. Komut dosyası yürütmesi bir terminal durumunda olduğunda dağıtım kaynaklarını Temizleme tercihini belirtin. Varsayılan ayar **her zaman**, bu, Terminal durumuna (başarılı, başarısız, iptal edildi) rağmen kaynakları silmenin anlamına gelir. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
+- `retentionInterval`: Dağıtım betiği yürütmesi bir Terminal durumuna ulaştıktan sonra hizmetin dağıtım betiği kaynaklarını koruduğunu belirten aralığı belirtin. Bu süre sona erdiğinde dağıtım betiği kaynakları silinir. Süre, [ıso 8601 düzenine](https://en.wikipedia.org/wiki/ISO_8601)göre belirlenir. Saklama aralığı 1 ile 26 saat arasında (PT26H). Bu özellik `cleanupPreference` **onexpiration** olarak ayarlandığında kullanılır. **Onexpiration** özelliği şu anda etkin değil. Daha fazla bilgi için bkz. [dağıtım betiği kaynaklarını Temizleme](#clean-up-deployment-script-resources).
 
 ### <a name="additional-samples"></a>Ek örnekler
 
@@ -176,9 +181,9 @@ Aşağıdaki şablonda, türüyle tanımlanmış bir kaynak vardır `Microsoft.R
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-helloworld.json" range="1-44" highlight="24-30":::
 
 > [!NOTE]
-> Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin bir **&#92;** kullanılarak veya tek tırnak içine alınmış olması gerekir. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz.
+> Satır içi dağıtım betikleri çift tırnak içine alındığından, dağıtım betiklerinin içindeki dizelerin bir ters eğik çizgi (**&#92;**) kullanılarak veya tek tırnak içine alınmış olması gerekir. Ayrıca, önceki JSON örneğinde gösterildiği üzere dize değiştirme kullanmayı da düşünebilirsiniz.
 
-Betik bir parametre alır ve parametre değerini çıktı. **Deploymentscriptoutkoyar** , çıktıları depolamak için kullanılır.  Çıktılar bölümünde, **değer** satırı depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıkış dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [Dağıtım betiklerini izleme ve sorun giderme](#monitor-and-troubleshoot-deployment-scripts).  Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
+Betik bir parametre alır ve parametre değerini çıktı. `DeploymentScriptOutputs` çıkışları depolamak için kullanılır. Çıktılar bölümünde, `value` satır depolanan değerlere nasıl erişegösterdiğini gösterir. `Write-Output` hata ayıklama amacıyla kullanılır. Çıkış dosyasına nasıl erişebileceğinizi öğrenmek için bkz. [Dağıtım betiklerini izleme ve sorun giderme](#monitor-and-troubleshoot-deployment-scripts). Özellik açıklamaları için bkz. [örnek şablonlar](#sample-templates).
 
 Betiği çalıştırmak için **dene** ' yi seçerek Cloud Shell açın ve ardından aşağıdaki kodu kabuk bölmesine yapıştırın.
 
@@ -199,17 +204,17 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="use-external-scripts"></a>Dış betikler kullanın
 
-Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca **ps1** dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
+Satır içi betiklerin yanı sıra dış betik dosyalarını da kullanabilirsiniz. Yalnızca _ps1_ dosya uzantısına sahip birincil PowerShell betikleri desteklenir. CLı betikleri için, betikler geçerli Bash betikleri olduğu sürece, birincil betiklerin uzantıları (veya uzantısı olmadan) olabilir. Dış betik dosyalarını kullanmak için ile değiştirin `scriptContent` `primaryScriptUri` . Örnek:
 
 ```json
-"primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
+"primaryScriptUri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
 ```
 
-Bir örnek görmek için [burada](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json)öğesini seçin.
+Daha fazla bilgi için bkz. [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/deployment-script/deploymentscript-helloworld-primaryscripturi.json).
 
-Dış betik dosyalarına erişilebilir olmalıdır.  Azure depolama hesaplarında depolanan betik dosyalarınızın güvenliğini sağlamak için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](./secure-template-with-sas-token.md).
+Dış betik dosyalarına erişilebilir olmalıdır. Azure depolama hesaplarında depolanan betik dosyalarınızın güvenliğini sağlamak için bkz. [özel ARM ŞABLONUNU SAS belirteci Ile dağıtma](./secure-template-with-sas-token.md).
 
-**Primaryscripturi** veya **supportingscripturan** dağıtım betiği tarafından başvurulan betiklerin bütünlüğünü sağlamaktan siz sorumlusunuz.  Yalnızca güvendiğiniz betiklerin başvurusu.
+Ya da dağıtım betiği tarafından başvurulan betiklerin bütünlüğünü sağlamaktan siz sorumlusunuz `primaryScriptUri` `supportingScriptUris` . Yalnızca güvendiğiniz betiklerin başvurusu.
 
 ## <a name="use-supporting-scripts"></a>Destekleyici betikleri kullanma
 
@@ -233,11 +238,11 @@ Destekleyici dosyalar çalışma zamanında öğesine kopyalanır `azscripts/azs
 
 ## <a name="work-with-outputs-from-powershell-script"></a>PowerShell betiğinin çıktılarla çalışma
 
-Aşağıdaki şablonda, iki deploymentScripts kaynağı arasında değerlerin nasıl geçirileceğini gösterilmektedir:
+Aşağıdaki şablonda değerlerin iki kaynak arasında nasıl geçirileceğini gösterilmektedir `deploymentScripts` :
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic.json" range="1-68" highlight="30-31,50":::
 
-İlk kaynakta, **$DeploymentScriptOutputs** adlı bir değişken tanımlarsınız ve bunu çıkış değerlerini depolamak için kullanabilirsiniz. Şablon içindeki başka bir kaynaktan çıkış değerine erişmek için şunu kullanın:
+İlk kaynakta, adlı bir değişken tanımlarsınız `$DeploymentScriptOutputs` ve bunu çıkış değerlerini depolamak için kullanabilirsiniz. Şablon içindeki başka bir kaynaktan çıkış değerine erişmek için şunu kullanın:
 
 ```json
 reference('<ResourceName>').output.text
@@ -245,9 +250,9 @@ reference('<ResourceName>').output.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLı betiğinin çıktılarla çalışma
 
-PowerShell dağıtım betiğinden farklı olarak, CLı/Bash desteği betik çıkışlarını depolamak için ortak bir değişken sunmaz, bunun yerine betik çıkışları dosyasının bulunduğu konumu depolayan **AZ_SCRIPTS_OUTPUT_PATH** adlı bir ortam değişkeni vardır. Bir dağıtım betiği Kaynak Yöneticisi şablondan çalışıyorsa, bu ortam değişkeni bash kabuğu tarafından sizin için otomatik olarak ayarlanır.
+PowerShell dağıtım betiğinden farklı olarak, CLı/Bash desteği betik çıkışlarını depolamak için ortak bir değişken sunmaz, bunun yerine `AZ_SCRIPTS_OUTPUT_PATH` betik çıkışları dosyasının bulunduğu konumu depolayan bir ortam değişkeni vardır. Bir dağıtım betiği Kaynak Yöneticisi şablondan çalışıyorsa, bu ortam değişkeni bash kabuğu tarafından sizin için otomatik olarak ayarlanır.
 
-Dağıtım betiği çıkışları AZ_SCRIPTS_OUTPUT_PATH konumuna kaydedilmelidir ve çıktılar geçerli bir JSON dize nesnesi olmalıdır. Dosyanın içeriğinin anahtar-değer çifti olarak kaydedilmesi gerekir. Örneğin, dizeler dizisi {"MyResult": ["foo", "Bar"]} olarak depolanır.  Yalnızca dizi sonuçlarının depolanması, örneğin ["foo", "Bar"] geçersiz.
+Dağıtım betiği çıktılarının konuma kaydedilmesi gerekir `AZ_SCRIPTS_OUTPUT_PATH` ve çıktılar geçerli BIR JSON dize nesnesi olmalıdır. Dosyanın içeriğinin anahtar-değer çifti olarak kaydedilmesi gerekir. Örneğin, bir dize dizisi olarak depolanır `{ "MyResult": [ "foo", "bar"] }` .  Yalnızca dizi sonuçlarının depolanması, örneğin `[ "foo", "bar" ]` , geçersiz.
 
 :::code language="json" source="~/resourcemanager-templates/deployment-script/deploymentscript-basic-cli.json" range="1-44" highlight="32":::
 
@@ -270,7 +275,8 @@ Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örne
     | Standard_RAGZRS | StorageV2          |
     | Standard_ZRS    | StorageV2          |
 
-    Bu birleşimler dosya payını destekler.  Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
+    Bu birleşimler dosya paylaşımlarını destekler. Daha fazla bilgi için bkz. [Azure dosya paylaşma](../../storage/files/storage-how-to-create-file-share.md) ve [depolama hesabı türleri](../../storage/common/storage-account-overview.md)oluşturma.
+
 - Depolama hesabı güvenlik duvarı kuralları henüz desteklenmiyor. Daha fazla bilgi için bkz. [Azure Depolama güvenlik duvarlarını ve sanal ağları yapılandırma](../../storage/common/storage-network-security.md).
 - Dağıtım sorumlusu, okuma, oluşturma, dosya paylaşımlarını silme dahil olmak üzere depolama hesabını yönetme izinlerine sahip olmalıdır.
 
@@ -283,8 +289,8 @@ Mevcut bir depolama hesabını belirtmek için aşağıdaki JSON öğesini öğe
 },
 ```
 
-- **storageAccountName**: depolama hesabının adını belirtin.
-- **Storageaccountkey "**: depolama hesabı anahtarlarından birini belirtin. [`listKeys()`](./template-functions-resource.md#listkeys)Anahtarı almak için işlevini kullanabilirsiniz. Örnek:
+- `storageAccountName`: depolama hesabının adını belirtin.
+- `storageAccountKey`: depolama hesabı anahtarlarından birini belirtin. Anahtarı almak için [ListKeys ()](./template-functions-resource.md#listkeys) işlevini kullanabilirsiniz. Örnek:
 
     ```json
     "storageAccountSettings": {
@@ -301,9 +307,9 @@ Mevcut bir depolama hesabı kullanıldığında, betik hizmeti benzersiz bir ada
 
 ### <a name="handle-non-terminating-errors"></a>Sonlandırma olmayan hataları işle
 
-Dağıtım betiğinizdeki **$ErrorActionPreference** değişkenini kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini kontrol edebilirsiniz. Dağıtım betiğimizde değişken ayarlanmamışsa, komut dosyası hizmeti **devam et** varsayılan değerini kullanır.
+Dağıtım betiğinizdeki değişkeni kullanarak, PowerShell 'in sonlandırmasız hatalara nasıl yanıt vereceğini denetleyebilirsiniz `$ErrorActionPreference` . Dağıtım betiğimizde değişken ayarlanmamışsa, komut dosyası hizmeti **devam et** varsayılan değerini kullanır.
 
-Betik hizmeti, $ErrorActionPreference ayarına rağmen bir hatayla karşılaştığında, kaynak sağlama durumunu **başarısız** olarak ayarlar.
+Betik hizmeti, ayarlarına rağmen bir hatayla karşılaştığında, kaynak sağlama durumunu **başarısız** olarak ayarlar `$ErrorActionPreference` .
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım betiğine geçir
 
@@ -319,17 +325,17 @@ Betik hizmeti bir [depolama hesabı](../../storage/common/storage-account-overvi
 
 Kullanıcı betiği, yürütme sonuçları ve STDOUT dosyası depolama hesabının dosya paylaşımlarında depolanır. Adlı bir klasör vardır `azscripts` . Klasöründe, giriş ve çıkış dosyaları için iki klasör daha vardır: `azscriptinput` ve `azscriptoutput` .
 
-Çıkış klasörü, üzerinde bir **executionresult.js** ve betik çıkış dosyası içerir. Betik yürütme hata iletisini **üzerindeexecutionresult.js** görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
+Çıkış klasörü, üzerinde bir _executionresult.js_ ve betik çıkış dosyası içerir. Betik yürütme hata iletisini _üzerindeexecutionresult.js_ görebilirsiniz. Çıkış dosyası yalnızca komut dosyası başarıyla yürütüldüğünde oluşturulur. Giriş klasörü bir sistem PowerShell betik dosyası ve kullanıcı dağıtımı komut dosyalarını içerir. Kullanıcı dağıtımı betik dosyasını düzeltilmiş bir kodla değiştirebilir ve dağıtım betiğini Azure Container Instance ' dan yeniden çalıştırabilirsiniz.
 
 ### <a name="use-the-azure-portal"></a>Azure portalını kullanma
 
-Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının genel bakış sayfası gösterilmektedir:
+Dağıtım komut dosyası kaynağını dağıttıktan sonra, kaynak Azure portal kaynak grubunun altında listelenir. Aşağıdaki ekran görüntüsünde, bir dağıtım betiği kaynağının **genel bakış** sayfası gösterilmektedir:
 
 ![Kaynak Yöneticisi şablonu dağıtım betiği portalına genel bakış](./media/deployment-script-template/resource-manager-deployment-script-portal.png)
 
 Genel Bakış sayfası kaynağı **sağlama durumu**, **depolama hesabı**, **kapsayıcı örneği** ve **Günlükler** gibi bazı önemli bilgileri görüntüler.
 
-Sol taraftaki menüden dağıtım betiği içeriğini, Betiğe geçirilen bağımsız değişkenleri ve çıktıyı görüntüleyebilirsiniz.  Dağıtım betiği için dağıtım betiği de dahil olmak üzere bir şablonu dışa aktarabilirsiniz.
+Sol taraftaki menüden dağıtım betiği içeriğini, Betiğe geçirilen bağımsız değişkenleri ve çıktıyı görüntüleyebilirsiniz. Dağıtım betiği için dağıtım betiği de dahil olmak üzere bir şablonu dışa aktarabilirsiniz.
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 
@@ -340,7 +346,7 @@ Azure PowerShell kullanarak, Dağıtım betiklerini abonelik veya kaynak grubu k
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): bir dağıtım betiğini ve ilişkili kaynaklarını kaldırır.
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): bir dağıtım betiği yürütmenin günlüğünü diske kaydeder.
 
-Get-AzDeploymentScript çıktısı şuna benzerdir:
+`Get-AzDeploymentScript`Çıktı şuna benzerdir:
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -525,29 +531,29 @@ Betik yürütme ve sorun giderme için bir depolama hesabı ve kapsayıcı örne
 
 Bu kaynakların yaşam döngüsü, şablondaki aşağıdaki özelliklerle denetlenir:
 
-- **cleanuppreference**: betik yürütme bir terminal durumunda olduğunda temizle tercihi. Desteklenen değerler şunlardır:
+- `cleanupPreference`: Betik yürütme bir terminal durumunda olduğunda temizle tercihi. Desteklenen değerler şunlardır:
 
-  - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. Kaynak temizlenmeden sonra deploymentScripts kaynağı yine de mevcut olabileceğinden, komut dosyası yürütme sonuçları, örneğin stdout, çıktılar, dönüş değeri, vb. kaynakları silinmeden önce devam edebilir.
+  - **Her zaman**: betik yürütme bir Terminal durumuna ulaştıktan sonra otomatik olarak oluşturulan kaynakları silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti depolama hesabında oluşturulan dosya paylaşımından siler. `deploymentScripts`Kaynaklar temizlendikten sonra kaynak hala mevcut olabileceğinden, betik hizmeti komut dosyası yürütme sonuçlarını (örneğin, stdout, çıktılar ve kaynak silinmeden önce dönüş değeri) devam ettirir.
   - **OnSuccess**: otomatik olarak oluşturulan kaynakları yalnızca betik yürütme başarılı olduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti yalnızca betik yürütme başarılı olduğunda dosya paylaşımının kaldırılmasına neden olur. Hata ayıklama bilgilerini bulmak için kaynaklara erişmeye devam edebilirsiniz.
-  - **Onexpiration**: otomatik olarak oluşturulan kaynakları yalnızca **retentionInterval** ayarının süresi dolduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korur.
+  - **Onexpiration**: otomatik olarak oluşturulan kaynakları yalnızca `retentionInterval` ayarın süresi dolduğunda silin. Mevcut bir depolama hesabı kullanılıyorsa, betik hizmeti dosya paylaşımından kaldırır, ancak depolama hesabını korur.
 
-- **retentionInterval**: bir betik kaynağının saklanacağı zaman aralığını ve sonra süresi dolacak ve silinecek süreyi belirtin.
+- `retentionInterval`: Bir betik kaynağının saklanacağı zaman aralığını ve sonra süresi dolacak ve silinecek süreyi belirtin.
 
 > [!NOTE]
 > Başka amaçlar için betik hizmeti tarafından oluşturulan depolama hesabı ve kapsayıcı örneği kullanılması önerilmez. İki kaynak, betik yaşam döngüsüne bağlı olarak kaldırılabilir.
 
-Kapsayıcı örneği ve depolama hesabı **Cleanuppreference** öğesine göre silinir. Ancak, komut dosyası başarısız olursa ve **Cleanuppreference** **her zaman** olarak ayarlanmamışsa, dağıtım işlemi kapsayıcıyı bir saat boyunca otomatik olarak çalışır halde tutar. Komut dosyası sorunlarını gidermek için bu saati kullanabilirsiniz. Başarılı dağıtımlar sonrasında kapsayıcıyı çalıştırmaya devam etmek istiyorsanız, betiğe bir uyku adımı ekleyin. Örneğin, betiğinizin sonuna [Başlangıç Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ekleyin. Uyku adımını eklememeniz durumunda kapsayıcı bir Terminal durumuna ayarlanır ve henüz silinmemiş olsa bile erişilemez.
+Kapsayıcı örneği ve depolama hesabı öğesine göre silinir `cleanupPreference` . Ancak, komut dosyası başarısız olursa ve `cleanupPreference` **her zaman** olarak ayarlanmamışsa, dağıtım işlemi kapsayıcıyı bir saat için otomatik olarak çalışır halde tutar. Komut dosyası sorunlarını gidermek için bu saati kullanabilirsiniz. Başarılı dağıtımlar sonrasında kapsayıcıyı çalıştırmaya devam etmek istiyorsanız, betiğe bir uyku adımı ekleyin. Örneğin, betiğinizin sonuna [Başlangıç Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) ekleyin. Uyku adımını eklememeniz durumunda kapsayıcı bir Terminal durumuna ayarlanır ve henüz silinmemiş olsa bile erişilemez.
 
 ## <a name="run-script-more-than-once"></a>Betiği birden çok kez çalıştır
 
-Dağıtım betiği yürütmesi bir ıdempotent işlemidir. DeploymentScripts kaynak özelliklerinden hiçbiri (satır içi betik dahil) değişmezse, şablonu yeniden dağıtırken komut dosyası yürütülmez. Dağıtım betiği hizmeti şablondaki kaynak adlarını aynı kaynak grubundaki mevcut kaynaklarla karşılaştırır. Aynı dağıtım betiğini birden çok kez yürütmek istiyorsanız iki seçenek vardır:
+Dağıtım betiği yürütmesi bir ıdempotent işlemidir. `deploymentScripts`Kaynak özelliklerinden hiçbiri (satır içi betik dahil) değişmezse, şablonu yeniden dağıtırken komut dosyası yürütülmez. Dağıtım betiği hizmeti şablondaki kaynak adlarını aynı kaynak grubundaki mevcut kaynaklarla karşılaştırır. Aynı dağıtım betiğini birden çok kez yürütmek istiyorsanız iki seçenek vardır:
 
-- DeploymentScripts kaynağınızın adını değiştirin. Örneğin, kaynak adı veya kaynak adının bir parçası olarak [UtcNow](./template-functions-date.md#utcnow) şablon işlevini kullanın. Kaynak adını değiştirmek yeni bir deploymentScripts kaynağı oluşturur. Betik yürütme geçmişini tutmak iyi olur.
+- Kaynağınızın adını değiştirin `deploymentScripts` . Örneğin, kaynak adı veya kaynak adının bir parçası olarak [UtcNow](./template-functions-date.md#utcnow) şablon işlevini kullanın. Kaynak adını değiştirmek yeni bir kaynak oluşturur `deploymentScripts` . Betik yürütme geçmişini tutmak iyi olur.
 
     > [!NOTE]
-    > UtcNow işlevi yalnızca bir parametre için varsayılan değerde kullanılabilir.
+    > `utcNow`İşlev yalnızca bir parametre için varsayılan değerde kullanılabilir.
 
-- Şablon özelliğinde farklı bir değer belirtin `forceUpdateTag` .  Örneğin, değer olarak utcNow kullanın.
+- Şablon özelliğinde farklı bir değer belirtin `forceUpdateTag` . Örneğin, `utcNow` değer olarak kullanın.
 
 > [!NOTE]
 > Idempotent olan Dağıtım betiklerini yazın. Bu, yanlışlıkla yeniden çalıştıklarında sistem değişikliklerine neden olmaz. Örneğin, dağıtım betiği bir Azure kaynağı oluşturmak için kullanılıyorsa, oluşturmadan önce kaynağın mevcut olmadığını doğrulayın, bu nedenle betik başarılı olur veya kaynağı tekrar oluşturmazsınız.
@@ -560,7 +566,7 @@ Betiği başarıyla test edildikten sonra, şablonlarınızı şablonlarda bir d
 
 ## <a name="deployment-script-error-codes"></a>Dağıtım betiği hata kodları
 
-| Hata kodu | Description |
+| Hata kodu | Açıklama |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Şablondaki dağıtım betiği kaynak tanımı geçersiz özellik adları içeriyor. |
 | DeploymentScriptResourceConflict | Terminal dışı durumda olan bir dağıtım betiği kaynağı silinemez ve yürütme 1 saati aşmadı. Ya da aynı dağıtım betiğini aynı kaynak tanımlayıcısıyla (aynı abonelik, kaynak grubu adı ve kaynak adı), aynı anda farklı betik gövdesi içeriğiyle yeniden çalıştıramıyorum. |
@@ -595,4 +601,3 @@ Bu makalede dağıtım betiklerini nasıl kullanacağınızı öğrendiniz. Bir 
 
 > [!div class="nextstepaction"]
 > [Modül öğren: dağıtım betikleri kullanarak ARM şablonlarını genişletme](/learn/modules/extend-resource-manager-template-deployment-scripts/)
-

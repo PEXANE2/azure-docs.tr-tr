@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/11/2020
+ms.date: 12/29/2020
 ms.author: jeedes
-ms.openlocfilehash: 3a53a5b7e60ef214a3db58d9e280e9dee8fec609
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 11aac69816714611c168cd05c2828dd1ae85786e
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355979"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813658"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Öğretici: AWS ClientVPN ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -89,7 +89,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     |
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin. Bu değerleri almak için [AWS ClientVPN istemci destek ekibine](https://aws.amazon.com/contact-us/) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir.  Bu değerleri, gerçek oturum açma URL 'SI ve yanıt URL 'SI ile güncelleştirin.  Oturum açma URL 'SI ve yanıt URL 'SI aynı değere sahip olabilir ( http://127.0.0.1:35001) .  Ayrıntılar için [AWS ISTEMCISI VPN belgelerine](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/client-authentication.html#ad) başvurun.   Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz. Tüm yapılandırma sorunları için [AWS ClientVPN destek ekibine](https://aws.amazon.com/contact-us/) başvurun. 
 
 1. Azure Active Directory hizmetinde **uygulama kayıtları** ' a gidin ve **tüm uygulamalar**' ı seçin.
 
@@ -126,7 +126,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 

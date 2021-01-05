@@ -7,18 +7,21 @@ ms.service: storage
 ms.subservice: blobs
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 11/07/2017
+ms.date: 12/29/2020
 ms.author: fryu
-ms.openlocfilehash: 2d921a968f50f64788ccbd7637bc04c8492a3f90
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: dfc338844e310102447e2498ee9cce8f28a79b9f
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96010903"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809573"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Bir blob kapsayıcısının toplam fatura boyutunu hesaplama
 
 Bu betik, Azure Blob depolama alanındaki bir kapsayıcının boyutunu faturalandırma maliyetlerini tahmin etmek amacıyla hesaplar. Betik, kapsayıcıdaki Blobların boyutunu toplar.
+
+> [!IMPORTANT]
+> Bu makalede belirtilen örnek betik, blob anlık görüntüleri için faturalandırma boyutunu doğru şekilde hesaplayamayabilir.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
@@ -44,6 +47,7 @@ For-Each Signed Identifier[512 bytes]
 ```
 
 Döküm aşağıda verilmiştir:
+
 * her kapsayıcı için 48 bayt ek yük, son değiştirilme zamanı, Izinler, genel ayarlar ve bazı sistem meta verileri içerir.
 
 * Kapsayıcı adı Unicode olarak depolanır, bu nedenle karakterlerin sayısını ve çarpmasını ikiye ayırarak yapın.

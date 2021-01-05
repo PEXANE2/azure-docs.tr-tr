@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 015b8e400e9d386fff8f35756a77139e61bbaff1
+ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74666384"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97809301"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Trafik Analizi şema ve veri toplama
 
@@ -39,11 +39,11 @@ Trafik Analizi, bulut ağlarında Kullanıcı ve uygulama etkinliğine görünü
 5. FlowStartTime_t alan, "FlowIntervalStartTime_t" ve "FlowIntervalEndTime_t" arasındaki akış günlüğü işleme aralığına bu tür toplanmış akışın (aynı dört demet) ilk oluşumunu gösterir.
 6. TA 'daki herhangi bir kaynak için, Kullanıcı ARABIRIMINDE gösterilen akışlar NSG tarafından görülen toplam akışlardır, ancak Log Analytics Kullanıcı yalnızca tek, azaltılan kaydı görür. Tüm akışları görmek için, depolama alanından başvurulabilen blob_id alanını kullanın. Bu kayıt için toplam akış sayısı, blob 'da görülen bireysel akışlarla eşleşmeyecektir.
 
-Aşağıdaki sorgu, son 30 gün içinde Şirket içindeki tüm akış günlüklerine bakmanıza yardımcı olur.
+Aşağıdaki sorgu, son 30 gün içinde Azure olmayan genel IP 'Ler ile etkileşimde bulunan tüm alt ağlara bakmanıza yardımcı olur.
 ```
 AzureNetworkAnalytics_CL
 | where SubType_s == "FlowLog" and FlowStartTime_t >= ago(30d) and FlowType_s == "ExternalPublic"
-| project Subnet_s  
+| project Subnet1_s, Subnet2_s  
 ```
 Yukarıdaki belirtilen sorgudaki akışlara ait blob yolunu görüntülemek için aşağıdaki sorguyu kullanın:
 

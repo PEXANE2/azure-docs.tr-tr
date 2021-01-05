@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/11/2020
+ms.date: 12/29/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 300b9b6279231079807f8c923570bddab657ff56
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 93bcbab9445d83bf17b37b6affc1d2bc70703bbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92095917"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814338"
 ---
 # <a name="initiate-a-storage-account-failover"></a>Depolama hesabı yük devretmesini başlatma
 
@@ -29,7 +29,7 @@ Bu makalede, Azure portal, PowerShell veya Azure CLı kullanarak depolama hesab�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Depolama hesabınızda hesap yük devretmesi gerçekleştirebilmeniz için, depolama hesabınızın coğrafi çoğaltma için yapılandırıldığından emin olun. Depolama Hesabınız aşağıdaki artıklık seçeneklerinden herhangi birini kullanabilir:
 
@@ -37,6 +37,13 @@ Depolama hesabınızda hesap yük devretmesi gerçekleştirebilmeniz için, depo
 - Coğrafi bölge yedekli depolama (GZRS) veya Okuma Erişimli Coğrafi bölge yedekli depolama (RA-GZRS)
 
 Azure depolama artıklığı hakkında daha fazla bilgi için bkz. [Azure Storage yedekliği](storage-redundancy.md).
+
+Hesap yük devretmesi için aşağıdaki özelliklerin ve hizmetlerin desteklenmediğini aklınızda bulundurun:
+
+- Azure Dosya Eşitleme, depolama hesabı yük devretmesini desteklemez. Azure Dosya Eşitleme'de bulut uç noktaları olarak kullanılan Azure dosya paylaşımlarının bulunduğu depolama hesapları yük devretmemelidir. Bunun yapılması eşitlemenin çalışmayı durdurmasına neden olur ve yeni katmanlanmış dosyalar söz konusu olduğunda beklenmedik veri kaybına da yol açabilir.
+- ADLS 2. depolama hesapları (hiyerarşik ad alanı etkin olan hesaplar) Şu anda desteklenmiyor.
+- Premium blok bloblarını içeren bir depolama hesabı yük devredilemez. Premium blok bloblarını destekleyen depolama hesapları Şu anda coğrafi artıklığı desteklemez.
+- [Solucan ve kullanılabilirlik ilkesi](../blobs/storage-blob-immutable-storage.md) etkinleştirilmiş kapsayıcıları içeren bir depolama hesabı yük devredilemez. Kilitlemeli/kilitlenmiş zamana dayalı saklama veya yasal saklama ilkeleri, uyumluluk sağlamak için yük devretmeyi önler.
 
 ## <a name="initiate-the-failover"></a>Yük devretmeyi Başlat
 
@@ -54,7 +61,7 @@ Azure portal hesap yük devretmesini başlatmak için aşağıdaki adımları iz
 1. **Yük devretme için hazırlan**'ı seçin.
 1. Onay iletişim kutusunu inceleyin. Hazırsanız, yük devretmeyi onaylamak ve başlatmak için **Evet** girin.
 
-    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Coğrafi çoğaltma ve yük devretme durumunu gösteren ekran görüntüsü":::
+    :::image type="content" source="media/storage-initiate-account-failover/portal-failover-confirm.png" alt-text="Hesap yük devretmesi için onay iletişim kutusunu gösteren ekran görüntüsü":::
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -62,7 +69,7 @@ Hesap yük devretme özelliği genel kullanıma sunulmuştur, ancak yine de Powe
 
 1. Azure PowerShell önceki tüm yüklemelerini kaldırın:
 
-    - **Ayarlar**altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
+    - **Ayarlar** altındaki **uygulamalar & Özellikler** ayarını kullanarak Windows 'un önceki Azure PowerShell yüklemelerini kaldırın.
     - Tüm **Azure** modüllerini ' den kaldırın `%Program Files%\WindowsPowerShell\Modules` .
 
 1. PowerShellGet 'in en son sürümüne sahip olduğunuzdan emin olun. Bir Windows PowerShell penceresi açın ve en son sürümü yüklemek için aşağıdaki komutu çalıştırın:

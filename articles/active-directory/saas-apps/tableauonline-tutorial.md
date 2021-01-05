@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 7841f09b113b4bdf7eacddbbfc5f054bf69b1750
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d6b1fad722fa0a2f44c7e415f208f7e29a272a70
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517829"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813964"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-online"></a>Öğretici: Tableau Online ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Tableau online 'ı Azure Active Directory (Azure AD) ile tümle
 * Azure AD 'de Tableau online 'a erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla çevrimiçi Tableau için otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,25 +38,24 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
 
 * Tableau Online, **SP** tarafından başlatılan SSO 'yu destekler
-* Tableau online 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-tableau-online-from-the-gallery"></a>Galeriden çevrimiçi Tableau ekleme
 
 Tableau online 'ın tümleştirmesini Azure AD ile yapılandırmak için, galerideki Tableau online 'ı yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Tableau online** yazın.
 1. Sonuçlar panelinden **Tableau online** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-tableau-online"></a>Tableau Online için Azure AD SSO 'yu yapılandırın ve test edin
 
-Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Tableau online Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
+Bu bölümde, **Britta Simon** adlı bir test kullanıcısına göre Tableau online Ile Azure AD çoklu oturum açmayı yapılandırıp test edersiniz.
 Çoklu oturum açma için, bir Azure AD kullanıcısı ve Tableau online 'daki ilgili Kullanıcı arasındaki bağlantı ilişkisinin kurulması gerekir.
 
-Azure AD SSO 'yu Tableau Online ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Tableau Online ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -69,25 +66,15 @@ Azure AD SSO 'yu Tableau Online ile yapılandırmak ve test etmek için aşağı
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Bu bölümde, Azure portal Azure AD çoklu oturum açma özelliğini etkinleştirirsiniz.
+Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-Azure AD çoklu oturum açmayı Tableau Online ile yapılandırmak için aşağıdaki adımları uygulayın:
+1. Azure portal, **Tableau çevrimiçi** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
-1. [Azure Portal](https://portal.azure.com/), **Tableau çevrimiçi** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
-
-2. Çoklu oturum **açma yöntemi seç** iletişim kutusunda, çoklu oturum açmayı etkinleştirmek için **SAML/WS-Besme** modunu seçin.
-
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
-
-3. **SAML Ile tek Sign-On ayarlama** sayfasında, **temel SAML yapılandırması** Iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
-
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
-
-4. **Temel SAML yapılandırması** bölümünde aşağıdaki adımları gerçekleştirin:
-
-    ![Tableau çevrimiçi etki alanı ve URL 'Ler çoklu oturum açma bilgileri](common/sp-identifier.png)
+1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusuna URL 'yi yazın:`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
@@ -104,66 +91,45 @@ Azure AD çoklu oturum açmayı Tableau Online ile yapılandırmak için aşağ�
 
     ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL’si
-
-    b. Azure AD tanımlayıcısı
-
-    c. Oturum kapatma URL 'SI
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Azure portal Britta Simon adlı bir test kullanıcısı oluşturmaktır.
+Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
 
-1. Azure portal, sol bölmedeki **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
-
-2. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
-
-3. Kullanıcı Özellikleri ' nde aşağıdaki adımları gerçekleştirin.
-
-    ![Kullanıcı iletişim kutusu](common/user-properties.png)
-
-    a. **Ad** alanına **Brittasıon**girin.
-  
-    b. **Kullanıcı adı** alanına ** \@ bricompansıon yourcompanydomain. Extension** yazın  
-    Örneğin, Brittasıon \@ contoso.com
-
-    c. **Parolayı göster** onay kutusunu seçin ve ardından parola kutusunda görüntülenen değeri yazın.
-
-    d. **Oluştur**’a tıklayın.
+1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
+1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
+1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+   1. **Ad** alanına `B.Simon` girin.  
+   1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için Britta Simon 'u etkinleştirin.
+Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra **Tableau online**' ı seçin.
+1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. Uygulamalar listesinde **Tableau online**' ı seçin.
+1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-2. Uygulamalar listesinde **Tableau online**' ı seçin.
-
-    ![Uygulamalar listesindeki Tableau online bağlantısı](common/all-applications.png)
-
-3. Soldaki menüde **Kullanıcılar ve gruplar**' ı seçin.
-
-    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
-4. **Kullanıcı Ekle** düğmesine tıklayın, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
-
-5. **Kullanıcılar ve gruplar** Iletişim kutusunda kullanıcılar listesinde **Britta Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-6. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, listeden Kullanıcı için uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-
-7. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
+1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-tableau-online-sso"></a>Tableau online SSO 'yu yapılandırma
 
-1. Farklı bir tarayıcı penceresinde, Tableau çevrimiçi uygulamanızda oturum açın. **Ayarlar** ' a ve ardından **kimlik doğrulaması**' na gidin.
+1. Tableau online 'daki yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya Uzantı eklendikten sonra, **set up Tableau online** 'a tıkladığınızda sizi Tableau Online uygulamasına yönlendirirsiniz. Buradan, Tableau çevrimiçi oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-7 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Tableau online 'ı el ile ayarlamak istiyorsanız, farklı bir Web tarayıcısı penceresinde, Tableau Online şirket sitenizde yönetici olarak oturum açın.
+
+1. **Ayarlar** ' a ve ardından **kimlik doğrulaması**' na gidin.
 
     ![Ekran görüntüsü ayarlar menüsünden seçilen kimlik doğrulamasını gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_09.png)
 
@@ -175,7 +141,7 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
    ![Ekran görüntüsü, meta veri dosyasını içeri aktarabileceğiniz bölümü gösterir.](./media/tableauonline-tutorial/tutorial_tableauonline_13.png)
 
-4. **Onayları Eşleştir** bölümünde **e-posta adresi**, **adı**ve **Soyadı**için karşılık gelen kimlik sağlayıcısı onaylama adını ekleyin. Bu bilgileri Azure AD 'den almak için: 
+4. **Onayları Eşleştir** bölümünde **e-posta adresi**, **adı** ve **Soyadı** için karşılık gelen kimlik sağlayıcısı onaylama adını ekleyin. Bu bilgileri Azure AD 'den almak için: 
   
     a. Azure portal, **Tableau çevrimiçi** uygulama tümleştirme sayfasına gidin.
 
@@ -209,7 +175,7 @@ Bu bölümde, Tableau çevrimiçi erişim izni vererek Azure çoklu oturum açma
 
 Bu bölümde, Tableau online 'da Britta Simon adlı bir Kullanıcı oluşturacaksınız.
 
-1. **Tableau online**'da **Ayarlar** ' a ve ardından **kimlik doğrulama** Bölümü ' ne tıklayın. **Kullanıcıları Yönet** bölümünde aşağı kaydırın. **Kullanıcı Ekle** ' ye ve ardından **e-posta adreslerini girin ' e**tıklayın
+1. **Tableau online**'da **Ayarlar** ' a ve ardından **kimlik doğrulama** Bölümü ' ne tıklayın. **Kullanıcıları Yönet** bölümünde aşağı kaydırın. **Kullanıcı Ekle** ' ye ve ardından **e-posta adreslerini girin ' e** tıklayın
   
     ![Ekran görüntüsü kullanıcıları Yönet bölümünü gösterir ve buradan Kullanıcı Ekle seçeneğini belirleyebilirsiniz.](./media/tableauonline-tutorial/tutorial_tableauonline_15.png)
 
@@ -221,16 +187,14 @@ Bu bölümde, Tableau online 'da Britta Simon adlı bir Kullanıcı oluşturacak
 
 ### <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde Tableau çevrimiçi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Tableau online 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Tableau çevrimiçi oturum açma URL 'sine yeniden yönlendirilir.
 
-## <a name="additional-resources"></a>Ek Kaynaklar
+* Doğrudan Tableau çevrimiçi oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarımın Tableau çevrimiçi kutucuğuna tıkladığınızda bu, Tableau Online oturum açma URL 'sine yeniden yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Active Directory Koşullu erişim nedir?](../conditional-access/overview.md)
-
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+Tableau online 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)

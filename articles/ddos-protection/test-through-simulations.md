@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: eff738e24b3abce52e80291c55a3ae64c3c8c853
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 55692122461ef1b22b43b0def43e826ac7aeae30
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92905672"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97813794"
 ---
-# <a name="test-through-simulations"></a>Benzetimler üzerinden test
+# <a name="test-through-simulations"></a>Simülasyonlar aracılığıyla test etme
 
 Düzenli benzetimler sunarak hizmetlerinizin bir saldırıya nasıl yanıt vereceğini gösteren varsayımları test etmek iyi bir uygulamadır. Sınama sırasında, hizmetlerinizin veya uygulamalarınızın beklenen şekilde çalışmaya devam etmesini ve kullanıcı deneyiminin kesintiye uğramaması gerektiğini doğrulayın. Hem teknoloji hem de süreç açısından boşlukları belirleyip DDoS yanıt stratejisinden dahil edin. Üretim ortamına etkisini en aza indirmek için, hazırlama ortamlarında veya yoğun olmayan saatlerde bu tür testleri gerçekleştirmenizi öneririz.
 
@@ -36,7 +36,7 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
 
 ## <a name="configure-a-ddos-test-attack"></a>DDoS test saldırısı yapılandırma
 
-1. Aşağıdaki değerleri girin veya seçin ve ardından **Testi Başlat** ' ı seçin:
+1. Aşağıdaki değerleri girin veya seçin ve ardından **Testi Başlat**' ı seçin:
 
     |Ayar        |Değer                                              |
     |---------      |---------                                          |
@@ -54,15 +54,19 @@ Azure müşterilerinin benzetimler için DDoS koruması etkinleştirilmiş ortak
 
 1. ' Da oturum açın https://portal.azure.com ve aboneliğinize gidin.
 1. Saldırıyı sınadığınız genel IP adresini seçin.
-1. **İzleme** seçeneğinin altından **Ölçümler** ’i seçin.
+1. **İzleme** seçeneğinin altından **Ölçümler**’i seçin.
 1. **Ölçüm** Için _DDoS saldırısı altında_ öğesini seçin.
 
-Kaynak saldırıya ulaştıktan sonra, aşağıdaki resimde olduğu gibi değerin **0** ' dan **1** ' e değiştiği görmeniz gerekir:
+Kaynak saldırıya ulaştıktan sonra, aşağıdaki resimde olduğu gibi değerin **0** ' dan **1**' e değiştiği görmeniz gerekir:
 
 ![DDoS saldırı simülasyonu örneği: Portal](./media/ddos-attack-simulation/ddos-attack-simulation-example-2.png)
 
+### <a name="breakingpoint-cloud-api-script"></a>BreakingPoint bulutu API betiği
+
+Bu [API betiği](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Breaking%20Point%20SDK) , bir kez çalıştırılarak veya sıradan testleri zamanlamak için cron kullanarak DDoS testini otomatikleştirmek için kullanılabilir. Bu, günlüğün düzgün yapılandırıldığını ve algılama ve yanıt yordamlarının etkin olduğunu doğrulamak için kullanışlıdır. Betikler bir Linux işletim sistemi (Ubuntu 18,04 LTS ile test edilmiştir) ve Python 3 gerektirir. Dahil edilen betiği kullanarak veya [BreakingPoint Cloud](http://breakingpoint.cloud/) Web sitesindeki belgeleri kullanarak ÖNKOŞULLARı ve API istemcisini yükler.
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [DDoS koruması telemetrisini görüntülemeyi ve yapılandırmayı](telemetry-monitoring-alerting.md)öğrenin.
-- [DDoS saldırı risk azaltma raporlarının ve akış günlüklerinin nasıl yapılandırılacağını](reports-and-flow-logs.md)öğrenin.
+- [DDoS koruması telemetrisini görüntülemeyi ve yapılandırmayı](telemetry.md)öğrenin.
+- [DDoS tanılama günlüğünü görüntülemeyi ve yapılandırmayı](diagnostic-logging.md)öğrenin.
 - [DDoS hızlı yanıt verme](ddos-rapid-response.md)hakkında bilgi edinin.

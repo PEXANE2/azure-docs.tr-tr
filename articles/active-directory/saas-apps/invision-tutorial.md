@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/09/2020
+ms.date: 12/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 1be5a46afbaa248232ff113cbfb45a8798af77c1
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 1767730fdd2ca714f4041afcf956d0b367c3e42b
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459875"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Öğretici: Invision ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -25,8 +25,6 @@ Bu öğreticide, Azure Active Directory (Azure AD) ile Içvizyon tümleştirme h
 * Azure AD 'de, InVision erişimi olan denetim.
 * Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açabilmesi için izin sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
-
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -40,37 +38,36 @@ Başlamak için aşağıdaki öğeler gereklidir:
 Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
 
 * Invision **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
-* Anvision 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve bu verileri korumayı koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
 
 ## <a name="adding-invision-from-the-gallery"></a>Galeriden Invision ekleme
 
 Invision 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize bir vizyon eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna **Invision** yazın.
 1. Sonuçlar panelinden **Invision** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-invision"></a>Azure AD çoklu oturum açmayı, Invision için yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-invision"></a>Azure AD SSO 'yu Invision için yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Invision ile yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Invision ile yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu MVision ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Invision ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    * Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    * Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
+    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
+    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
 1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Invision SSO 'Yu yapılandırın](#configure-invision-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan MVision 'da B. Simon 'a karşılık gelen bir **[Invision test kullanıcısı oluşturun](#create-invision-test-user)** .
+    1. Kullanıcının Azure AD gösterimine bağlı olan MVision 'da B. Simon 'a karşılık gelen bir **[Invision test kullanıcısı oluşturun](#create-invision-test-user)** .
 1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **görsel** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **görsel** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
 
@@ -107,7 +104,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -117,19 +114,23 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 1. Uygulamalar listesinde, **Invision**' ı seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
 
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Kullanıcılara bir rolün atanmasını bekliyorsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz. Bu uygulama için ayarlanmış bir rol yoksa, "varsayılan erişim" rolü seçili olduğunu görürsünüz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-invision-sso"></a>Invision SSO 'yu yapılandırma
 
-1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak Invision sitesinde oturum açın.
+1. Yapılandırma sırasında yapılandırmayı otomatik hale getirmek için, **uzantıyı yüklemek** üzere **uygulamalar güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+
+    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+
+2. Tarayıcıya uzantı ekledikten sonra, ayarlamayı **ayarlama ' ya** tıklayarak sizi içvizyon uygulamasına yönlendirebilirsiniz. Buradan, oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+
+    ![Kurulum yapılandırması](common/setup-sso.png)
+
+3. Farklı bir Web tarayıcısı penceresinde el ile ayarlama yapmak istiyorsanız, Invision şirket sitenizde yönetici olarak oturum açın.
 
 1. **Ekip** ' e tıklayın ve **Ayarlar**' ı seçin.
 
@@ -143,7 +144,7 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 
     ![Ekran görüntüsü, bu adımdaki değerleri girebileceğiniz çoklu oturum açma sayfasını gösterir.](./media/invision-tutorial/config4.png)
 
-    a. Değişiklik **, < hesap adının her üyesinin açık >IÇIN SSO gerektirir** . **On**
+    a. Değişiklik **, < hesap adının her üyesinin açık >IÇIN SSO gerektirir** . 
 
     b. **Ad** metin kutusuna örneğin adını girin `azureadsso` .
 
@@ -153,11 +154,11 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 
     e. **SAML sertifikası** metin kutusunda, indirilen **sertifikayı (base64)** Not defteri 'nde açın, Içeriği kopyalayın ve SAML sertifikası metin kutusuna yapıştırın.
 
-    f. **Ad kimliği biçimi** metin kutusunda `Unspecified` **ad kimliği biçimi**için kullanın.
+    f. **Ad kimliği biçimi** metin kutusunda `Unspecified` **ad kimliği biçimi** için kullanın.
 
-    örneğin: **Karma algoritma**için açılan listeden **SHA-256** ' ı seçin.
+    örneğin: **Karma algoritma** için açılan listeden **SHA-256** ' ı seçin.
 
-    h. **SSO düğme etiketi**için uygun adı girin.
+    h. **SSO düğme etiketi** için uygun adı girin.
 
     i. **Tam zamanında sağlama yapmaya Izin verin** .
 
@@ -185,20 +186,20 @@ Bu bölümde, Azure çoklu oturum açma özelliğini kullanarak Invision 'a eri�
 
 ## <a name="test-sso"></a>Test SSO 'SU
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz.
 
-Erişim panelinde bakış kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız MVision 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP başlatıldı:
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Invision oturum açma URL 'sine yönlendirecektir.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Doğrudan oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP başlatıldı:
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+* Azure portal **Bu uygulamayı test et** ' e tıklayın ve SSO 'Yu ayarladığınız test için otomatik olarak oturum açmış olmanız gerekir
 
-- [Azure AD ile sorun açmayı deneyin](https://aad.portal.azure.com/)
+Uygulamayı dilediğiniz modda test etmek için Microsoft My Apps ' i de kullanabilirsiniz. Uygulamamda, SP modunda yapılandırıldıysa, oturum açma akışını başlatmak için uygulama oturum açma sayfasına yönlendirilirsiniz ve ıDP modunda yapılandırıldıysa, SSO 'yu ayarladığınız Mavision 'da otomatik olarak oturum açmış olmanız gerekir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Microsoft Cloud App Security oturum denetimi nedir?](/cloud-app-security/proxy-intro-aad)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Gelişmiş görünürlük ve denetimler ile Içvizyon nasıl korunur](/cloud-app-security/proxy-intro-aad)
+Anvision 'ı yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-any-app).
