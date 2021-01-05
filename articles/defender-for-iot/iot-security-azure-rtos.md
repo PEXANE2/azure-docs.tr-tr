@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/07/2020
 ms.author: mlottner
-ms.openlocfilehash: ec314a729914fee26d30165c9df1644bde3845aa
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 9950f3727aac365205e979d9590edacebd32f1fc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995502"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832752"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>Genel Bakış: Azure RTOS için IoT güvenlik modülü için Defender (Önizleme)
 
 IoT için Azure Defender güvenlik modülü, Azure RTOS kullanan cihazlar için kapsamlı bir güvenlik çözümü sağlar. Ortak tehditler ve gerçek zamanlı işletim sistemi (RTOS) cihazlarındaki olası kötü amaçlı etkinlikler için kapsam sağlar. Azure RTOS, içinde yerleşik olarak bulunan Azure IoT güvenlik modülü ile birlikte kullanıma sunulmuştur.
 
-![IoT Azure RTOS için Defender görselleştirme.](./media/architecture/azure-rtos-security-monitoring.png)
+:::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="IoT Azure RTOS için Defender görselleştirme.":::
 
 
 Azure RTOS için güvenlik modülü aşağıdaki özellikleri sunar:

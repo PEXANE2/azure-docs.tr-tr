@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/31/2019
+ms.date: 12/31/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02b08e6fcdd6714886f8afea1c0a461eb6128fe4
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180549"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832650"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Uzak kullanıcılar için şirket içi uygulamalar yayımlamak üzere Azure AD Uygulama Ara Sunucusu kullanma
 
@@ -80,7 +80,7 @@ Oturum açtıktan sonra dış kullanıcılar, masaüstü veya iOS/MAC cihazları
 
 ![Azure AD Uygulama Ara Sunucusu mimarisi](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
 Bir uygulamayı çoklu oturum açma için yapılandırmanın birkaç yolu vardır ve seçtiğiniz yöntem uygulamanızın kullandığı kimlik doğrulamasına bağlıdır. Uygulama proxy 'Si aşağıdaki uygulama türlerini destekler:
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/27/2019
+ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 7edb7b498450625faf90f0601e19745ad632635a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 209760b51e0f3ab931fa43ef88406f15c75ac079
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835671"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832548"
 ---
 # <a name="plan-an-azure-active-directory-my-apps-deployment"></a>Azure Active Directory uygulamalarımın dağıtımını planlayın
 
@@ -74,8 +74,8 @@ Aşağıdaki tabloda, uygulamalar dağıtımı için anahtar kullanım durumlar�
 
 | Alan| Açıklama |
 | - | - |
-| Access| Şirket ağı içindeki şirket ve kişisel cihazlardan uygulama portalından erişilebilir. |
-|Access | Uygulama portalından şirket ağı dışındaki şirket aygıtlarından erişilebilir. |
+| Erişim| Şirket ağı içindeki şirket ve kişisel cihazlardan uygulama portalından erişilebilir. |
+|Erişim | Uygulama portalından şirket ağı dışındaki şirket aygıtlarından erişilebilir. |
 | Denetim| Kullanım verileri en az 29 günde bir şirket sistemine indirilir. |
 | İdare| Azure AD bağlantılı uygulamalar ve gruplar için Kullanıcı atamalarının yaşam döngüsü tanımlanmıştır ve izlenir. |
 | Güvenlik| Kaynaklara erişim, Kullanıcı ve Grup atamaları aracılığıyla denetlenir. Yalnızca yetkili kullanıcılar, kaynak erişimini yönetebilir. |
@@ -172,7 +172,7 @@ SaaS uygulamalarınızı dağıtma ve yapılandırma hakkında daha fazla bilgi 
 
 Kullanıcılar parola tabanlı SSO uygulamalarında oturum açtıklarında, uygulamaların güvenli oturum açma uzantısını yükleyip kullanmaları gerekir. Uzantı, parolayı uygulamanın oturum açma formuna ileten bir betiği yürütür. Kullanıcılardan, parola tabanlı SSO uygulamasını ilk kez başlattığında uzantıyı yüklemeleri istenir. Bu belgede uzantı hakkında daha fazla bilgi, [uygulamalarımı tarayıcı uzantısından yükleme]()konusunda bulunabilir.
 
-Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](../user-help/my-apps-portal-end-user-access.md)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçeneklere şunlar dahildir:
+Parola tabanlı SSO uygulamalarını tümleştirmeniz gerekiyorsa, uzantıyı [desteklenen tarayıcılarla](../user-help/my-apps-portal-end-user-access.md)bir ölçekte dağıtmak için bir mekanizma tanımlamanız gerekir. Seçenekler arasında şunlar bulunur:
 
 * [Internet Explorer için grup ilkesi]()
 * [Internet Explorer için Configuration Manager](/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
@@ -303,11 +303,11 @@ Azure Active Directory içinde gerekli bir görevi gerçekleştirmek için en az
 
 | Kişilikler| Roller| Azure AD rolü  |
 | - | -| -|
-| Yardım Masası Yöneticisi| Katman 1 desteği| Yok |
+| Yardım Masası Yöneticisi| Katman 1 desteği| Hiçbiri |
 | Kimlik Yöneticisi| Sorunları Azure AD ' i etkileyen yapılandırma ve hata ayıklama| Genel yönetici |
-| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
+| Uygulama Yöneticisi| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 | Altyapı Yöneticileri| Sertifika aktarma sahibi| Genel yönetici |
-| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Yok |
+| İşletme sahibi/paydaş| Uygulamada Kullanıcı kanıtlaması, izinleri olan kullanıcılar üzerinde yapılandırma| Hiçbiri |
 
 Dizin izinleri olan kullanıcılar için ek denetim, denetim ve erişim incelemesi sağlamak üzere rollerinizi yönetmek için [Privileged Identity Management](../privileged-identity-management/pim-configure.md) kullanabilirsiniz.
 

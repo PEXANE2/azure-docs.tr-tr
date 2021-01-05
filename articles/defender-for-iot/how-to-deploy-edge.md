@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: 75a9d1267a8824801e3c24fc25c687f29a808187
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339940"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832786"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge cihazınızda bir güvenlik modülü dağıtma
 
@@ -53,7 +53,7 @@ IoT Edge için bir Defender for IoT güvenlik modülünü dağıtmak üzere aşa
 
 1. **Nesnelerin interneti** seçip **IoT için Defender** araması yapın ve seçin.
 
-   ![IoT için Defender 'ı seçin](media/howto/edge-onboarding-8.png)
+   :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="IoT için Defender 'ı seçin":::
 
 1. Dağıtımı yapılandırmak için **Oluştur** ' a tıklayın.
 
@@ -175,7 +175,7 @@ Bir sorunla karşılaşırsanız, kapsayıcı günlükleri IoT Edge bir güvenli
 
 1. Aşağıdaki kapsayıcıların çalıştığını doğrulayın:
 
-   | Name | GÖRÜNTÜ |
+   | Ad | GÖRÜNTÜ |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.2 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |

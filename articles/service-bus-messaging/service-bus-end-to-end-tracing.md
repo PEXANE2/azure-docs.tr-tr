@@ -4,12 +4,12 @@ description: İstemci tanılama ve uçtan uca izlemeye (işleme dahil olan tüm 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b46f85e16370d15e3a8def98cdcdf8b3878208d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bc7dab21fc01b624e8ab122fe883be89ea8633f6
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021638"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832701"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Service Bus mesajlaşma aracılığıyla dağıtılmış izleme ve bağıntı
 
@@ -136,7 +136,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Bu örnekte, dinleyici günlük süre, sonuç, benzersiz tanımlayıcı ve her Service Bus işlemi için başlangıç zamanı.
 
-#### <a name="events"></a>Olaylar
+#### <a name="events"></a>Ekinlikler
 
 Her işlem için, iki olay gönderilir: ' Başlat ' ve ' Durdur '. Büyük olasılıkla, yalnızca ' Durdur ' olayları ile ilgileniyorsunuz. İşlem sonucunu ve etkinlik özellikleri olarak başlangıç saatini ve süresini sağlarlar.
 
@@ -193,7 +193,7 @@ TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
 var tagsList = new StringBuilder();
 foreach (var tags in currentActivity.Tags)
 {
-    tagsList.Append($", "{tags.Key}={tags.Value}");
+    tagsList.Append($", {tags.Key}={tags.Value}");
 }
 
 serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");

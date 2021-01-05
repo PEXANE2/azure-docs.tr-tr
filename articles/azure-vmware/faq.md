@@ -2,24 +2,23 @@
 title: Sık sorulan sorular
 description: Azure VMware çözümüyle ilgili bazı yaygın soruların yanıtlarını sağlar.
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.author: dikamath
-ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/22/2020
+ms.openlocfilehash: 941708003558dda601aa43459bc83133788687fd
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861417"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835202"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Azure VMware çözümü hakkında sık sorulan sorular
 
-Bu makalede, Azure VMware çözümü hakkında sık sorulan sorular yanıtlanmaktadır.
+Bu makalede, Azure VMware çözümü hakkında sık sorulan soruları yanıtlarız.
 
 ## <a name="general"></a>Genel
 
 #### <a name="what-is-azure-vmware-solution"></a>Azure VMware Çözümü nedir?
 
-Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. Azure VMware çözümü, VMware 'nin Software-Defined veri merkezi (SDDC) yazılımını Microsoft Azure küresel bulut hizmeti ekosistemi ile birleştirir. Azure VMware çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
+Kuruluşlar, iş çevikliği geliştirmek, maliyetleri azaltmak ve yeniliklerini hızlandırmak için strateji yaparken, hibrit bulut platformları, müşterilerin dijital dönüşümünde önemli etkinleştiriciler olarak ortaya çıktı. Azure VMware çözümü, VMware 'nin Software-Defined veri merkezi (SDDC) yazılımını Microsoft 'un Azure küresel bulut hizmeti ekosistemi ile birleştirir. Azure VMware çözümü, performans, kullanılabilirlik, güvenlik ve uyumluluk gereksinimlerini karşılayacak şekilde yönetilir.
 
 ## <a name="azure-vmware-solution-service"></a>Azure VMware çözüm hizmeti
 
@@ -59,13 +58,11 @@ Hizmette yapılan güncelleştirmelerin kendisi Microsoft Azure Standart değiş
 
 Yeni Azure VMware çözümüyle, Microsoft ve VMware 'nin doğrudan bir bulut sağlayıcısı ortaklığı vardır. Yeni çözüm, Microsoft tarafından tamamen tasarlanır, oluşturulmuştur ve desteklenir, VMware tarafından onaylanmıştır. Mimari türsel olarak, çözümler, VMware teknoloji yığınının adanmış bir Azure altyapısında çalışıyor olması bakımından tutarlıdır.
 
-
-
 #### <a name="can-azure-vmware-solution-vms-be-managed-by-vmrc"></a>Azure VMware Çözüm VM 'Leri VMRC tarafından yönetiliyor mu?
-Evet, üzerinde yüklü olduğu sistem özel bulut vCenter 'a erişebilir ve ESXi ana bilgisayar adlarını çözümlemek için ortak DNS kullanıyor olabilir.
+Evet. Üzerinde yüklü olan sistem, özel bulut vCenter 'a erişebilir ve ESXi ana bilgisayar adlarını çözümlemek için ortak DNS kullanıyor olabilir.
 
 #### <a name="are-there-special-instructions-for-installing-and-using-vmrc-with-azure-vmware-solution-vms"></a>Azure VMware Çözüm VM 'Leri ile VMRC 'yi yüklemek ve kullanmak için özel yönergeler var mı?
-Hayır. Bu yönergelerde belirtilen VM önkoşullarını karşılamak için [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html) kullanın. 
+Hayır. VM önkoşullarını karşılamak için [VMware tarafından sunulan yönergeleri](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-89E7E8F0-DB2B-437F-8F70-BA34C505053F.html)izleyin. 
 
 #### <a name="is-vmware-hcx-supported-on-vpns"></a>Şu VPN 'lerde VMware HCX destekleniyor mu?
 Bant genişliği ve gecikme süresi gereksinimleri nedeniyle Hayır.
@@ -77,7 +74,7 @@ Azure 'da, Azure VMware çözümünün Internet 'e sunulmasını engellemek içi
 Hayır. Azure Load Balancer iç-yalnızca Azure IaaS VM 'lerini destekler. Azure Load Balancer, IP tabanlı arka uç havuzlarını desteklemez; Azure VMware Çözüm VM 'lerinin Azure nesneleri olmayan yalnızca Azure VM 'Leri veya sanal makine ölçek kümesi nesneleri.
 
 #### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidi kullanılabilir mi?
-Evet, sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanabilirsiniz.  Bununla birlikte, ExpressRoute aracılığıyla şirket içi Azure VMware çözümüne erişmek için ExpressRoute Global Reach sahip olmanız gerekir. Bu, ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamamalıdır.
+Evet. Sanal ağ başına dört ExpressRoute bağlantı hattı sınırını aşmadığı sürece Azure VMware çözümüne bağlanmak için mevcut bir ExpressRoute ağ geçidini kullanın. Azure VMware çözümüne ExpressRoute aracılığıyla Şirket içinden erişmek için ExpressRoute ağ geçidi, bağlı olan devreler arasında geçişli yönlendirme sağlamadığından ExpressRoute Global Reach sahip olmalısınız.
 
 ## <a name="compute-network-storage-and-backup"></a>İşlem, ağ, depolama ve yedekleme
 
@@ -105,9 +102,9 @@ Azure VMware çözümünde her ESXi Konağı 4 25-Gbps NIC, ESXi sistem trafiği
 
 Evet, tüm vSAN verileri, Azure Key Vault depolanan anahtarlar kullanılarak varsayılan olarak şifrelenir.
 
-#### <a name="you-document-that-commvault-veritas-and-veeam-have-extended-their-backup-solutions-to-work-with-azure-vmware-solution-what-about-other-independent-software-vendors-isvs-backup-solutions"></a>Commkasasının, VERITAS ve Veead 'nin Azure VMware çözümüyle birlikte çalışmak için yedekleme çözümlerini genişletmiş olursunuz. Diğer bağımsız yazılım satıcıları (ISV) yedekleme çözümleri hakkında ne olacak?
+####  <a name="what-independent-software-vendors-isvs-backup-solutions-work-with-azure-vmware-solution"></a>Hangi bağımsız yazılım satıcıları (ISV) yedekleme çözümleri Azure VMware çözümüyle birlikte çalışıyor?
 
-Öğrendiğimiz kadar, HotAdd taşıma moduyla VMware VADP kullanan tüm yedekleme çözümlerinin Azure VMware çözümünde kutudan hemen çalışması gerekir.
+Commkasası, VERITAS ve Veead, Azure VMware çözümü ile çalışmak için yedekleme çözümlerini genişletti.  Ancak, HotAdd taşıma moduyla VMware VADP kullanan herhangi bir yedekleme çözümü, Azure VMware çözümünde bu kutudan hemen çalışır.
 
 #### <a name="what-about-support-for-isv-backup-solutions"></a>ISV yedekleme çözümleri için destek nedir?
 
@@ -127,7 +124,7 @@ Hayır.
 
 Hayır, özel bulut konakları ve kümeleri ayrılmış ve kullanılmadan önce ve güvenli bir şekilde silinir.
 
-#### <a name="what-are-the-minimum-and-the-maximum-number-of-hosts-per-cluster"></a>Küme başına en düşük ve en yüksek ana bilgisayar sayısı nedir?
+#### <a name="what-are-the-minimum-and-maximum-number-of-hosts-per-cluster"></a>Küme başına en düşük ve en yüksek ana bilgisayar sayısı nelerdir?
 
 Kümeler 3 ila 16 ESXi konakları arasında ölçeklendirebilir. Deneme kümeleri üç ana bilgisayar ile sınırlıdır.
 
@@ -147,7 +144,8 @@ Hayır. Yüksek kaliteli ESXi Konakları üretim kümelerinde kullanılmak üzer
 
 #### <a name="what-versions-of-vmware-software-is-used-in-private-clouds"></a>Özel bulutlarda VMware yazılımının hangi sürümleri kullanılıyor?
 
-Özel bulutlar vSphere 6,7 U3, vSAN 6,7 U3, VMware HCX ve NSX-T 2,5 kullanır.  Daha fazla bilgi için bkz. [VMware yazılım sürümü gereksinimleri](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html).
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 #### <a name="do-private-clouds-use-vmware-nsx"></a>Özel bulutlar VMware NSX kullanıyor mu?
 
@@ -188,11 +186,11 @@ Azure portal bir özel bulut için internet bağlantısını etkinleştirin. NSX
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>İnternet 'ten özel bir buluttaki mantıksal ağlardaki VM 'lere erişimi kısıtlayacağım mi?
 
-Hayır. Internet 'ten doğrudan özel bulutlara gelen ağ trafiğine varsayılan olarak izin verilmez.  Ancak, Azure VMware çözümü özel bulutu için Azure portal Azure VMware Çözüm VM 'lerini [genel IP](public-ip-usage.md) seçeneği aracılığıyla Internet 'te kullanıma sunabileceksiniz.
+Hayır. İnternet 'ten doğrudan özel bulutlara gelen ağ trafiğine varsayılan olarak izin verilmez.  Ancak, Azure VMware Çözüm özel bulutunuz için Azure portal [genel IP](public-ip-usage.md) seçeneği aracılığıyla Azure VMware Çözüm VM 'lerini Internet 'te kullanıma sunabileceksiniz.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Mantıksal ağlardaki VM 'lerden internet 'e erişimi kısıtlam gerekir mi?
 
-Evet. İnternet 'e yönelik VM erişimini kısıtlayan bir güvenlik duvarı oluşturmak için NSX-T Yöneticisi ' ni kullanmanız gerekir.
+Evet. İnternet 'e yönelik VM erişimini kısıtlamak için bir güvenlik duvarı oluşturmak üzere NSX-T Yöneticisi ' ni kullanmanız gerekir.
 
 
 #### <a name="can-azure-vmware-solution-use-azure-virtual-wan-hosted-expressroute-gateways"></a>Azure VMware çözümü, Azure sanal WAN barındırılan ExpressRoute ağ geçitlerini kullanabilir mi?
@@ -201,6 +199,9 @@ Evet.
 #### <a name="can-transit-connectivity-be-established-between-on-premises-and-azure-vmware-solution-through-azure-virtual-wan-over-expressroute-global-reach"></a>ExpressRoute Global Reach üzerinden Azure sanal WAN aracılığıyla şirket içi ve Azure VMware çözümü arasında geçiş bağlantısı kurulabilir mi?
 Azure sanal WAN, iki bağlı ExpressRoute bağlantı hattı ve sanal WAN ExpressRoute ağ geçidi arasında geçişli yönlendirme sağlamaz. ExpressRoute Global Reach kullanmak şirket içi ve Azure VMware çözümü arasında bağlantıya izin verir, ancak sanal WAN hub 'ı yerine Microsoft 'un küresel ağı üzerinden gider.
 
+#### <a name="could-i-use-hcx-through-public-internet-communications-as-a-workaround-for-the-non-supportability-of-hcx-when-using-vpn-s2s-with-vwan-for-on-premises-communications"></a>Şirket içi iletişimler için vWAN ile birlikte VPN S2S kullanılırken HCX aracılığıyla genel Internet iletişimlerini desteklenemeyen bir geçici çözüm olarak kullanabilir miyim?
+
+Şu anda, HCX için desteklenen tek yöntem ExpressRoute ' dır.
 
 ## <a name="accounts-and-privileges"></a>Hesaplar ve ayrıcalıklar
 
@@ -294,11 +295,11 @@ Azure VMware Çözüm kaynağınızı oluşturabilmeniz için önce, konakların
    az provider register -n Microsoft.AVS --subscription <your subscription ID>
    ```
 
-   Kaynak sağlayıcısını kaydetmek için ek yollar için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md). 
+   Kaynak sağlayıcısını kaydetme hakkında daha fazla yol için bkz. [Azure kaynak sağlayıcıları ve türleri](../azure-resource-manager/management/resource-providers-and-types.md). 
 
 #### <a name="are-reserved-instances-available-for-purchasing-through-the-cloud-solution-provider-csp-program"></a>Ayrılmış örnekler, bulut çözümü sağlayıcısı (CSP) programı aracılığıyla satın alınabilir mi?
 
-Evet. CSP, müşterileri için ayrılmış örnekler satın alabilir. Daha fazla bilgi için bkz. [ayrılmış örnek ile maliyetleri kaydetme](reserved-instance.md) makalesi. 
+Evet. CSP, müşterileri için ayrılmış örnekler satın alabilir. Daha fazla bilgi için bkz. [ayrılmış örnekle maliyetleri kaydetme](reserved-instance.md). 
 
 #### <a name="does-azure-vmware-solution-offer-multi-tenancy-for-hosting-csp-partners"></a>Azure VMware çözümü, CSP iş ortaklarını barındırmak için çok kiracılı bir teklif sunuyor mu?
 

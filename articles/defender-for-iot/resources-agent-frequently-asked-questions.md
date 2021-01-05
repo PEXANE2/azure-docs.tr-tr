@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 9862519a2003eb373c43fef1b660986a8d830327
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: f584f11603e41b63f3c96749ed6c720eb5ce07a8
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094566"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835066"
 ---
 # <a name="azure-defender-for-iot-agent-frequently-asked-questions"></a>IoT Aracısı için Azure Defender sık sorulan sorular
 
 Bu makalede, IoT aracısına yönelik Defender ile ilgili sık sorulan soruların ve yanıtların bir listesi sunulmaktadır.
-
 
 ## <a name="do-i-have-to-install-an-embedded-security-agent"></a>Ekli bir güvenlik Aracısı yüklemem gerekir mi?
 
@@ -41,7 +40,6 @@ IoT için Defender 'ı etkinleştirmek üzere IoT cihazlarınızdaki aracı yük
 IoT Aracısı için Defender, cihaz yapılandırması, davranış ve erişim (yapılandırmayı tarayarak) için cihaz düzeyinde tehdit kapsamı sağlar, & bağlantısını işler. IoT güvenlik Aracısı için Defender, işle ilgili verileri veya etkinliği taramaz.
 
 IoT güvenlik Aracısı için Defender, 32 bit ve 64 bit Windows ve Linux sürümlerindeki GitHub 'da açık kaynaktır ve kullanılabilir: https://github.com/Azure/Azure-IoT-Security .
-
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Aracının bağımlılıkları ve önkoşulları nelerdir?
 
@@ -87,13 +85,11 @@ Aracı kapatılamadı.
 
 Aracı iletişimi durduruyor veya güvenlik iletilerini gönderemezse, bir **Cihaz sessiz** uyarı oluşturulur.
 
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT için Defender 'ı kullanmaya başlama hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - IoT için Defender 'ı okuyun [genel bakış](overview.md)
-- [Hizmet önkoşullarını](service-prerequisites.md) doğrulama
-- [Kullanmaya başlama](getting-started.md) hakkında daha fazla bilgi edinin
+- [Sistem önkoşullarını](quickstart-system-prerequisites.md) doğrulama
+- [IoT Için Defender 'ı](getting-started.md) kullanmaya başlama hakkında daha fazla bilgi edinin
 - [IoT güvenlik uyarıları Için Defender 'ı](concept-security-alerts.md) anlama

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2020
 ms.author: mlottner
-ms.openlocfilehash: 786fcd1a0c6d7df2c38a086a830a63f7179d7d40
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e3768ef233c60f1687bc804778c3dabf32666e1d
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352516"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835168"
 ---
 # <a name="quickstart-onboard-azure-defender-for-iot-service-in-iot-hub"></a>Hızlı başlangıç: IoT Hub 'da IoT hizmeti için Azure Defender 'ı ekleme
 
@@ -33,7 +33,7 @@ Bu makalede, mevcut IoT Hub IoT hizmeti için Defender 'ın nasıl etkinleştiri
   - İki tür bilgi, IoT için Defender tarafından Log Analytics çalışma alanınızda varsayılan olarak saklanır; **güvenlik uyarıları** ve **önerileri**.
   - Ek bilgi türü, **Ham olaylar** için depolama alanını eklemeyi seçebilirsiniz. **Ham olayların** Log Analytics daha fazla depolama maliyeti taşıdığına göz önünde unutmayın.
 - IoT Hub (Standart katman)
-- Tüm [hizmet önkoşullarını](service-prerequisites.md) karşılayın
+- Tüm [sistem önkoşullarını](quickstart-system-prerequisites.md)karşılayın.
 
 ## <a name="enable-defender-for-iot-on-your-iot-hub"></a>IoT Hub IoT için Defender 'ı etkinleştirin
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/07/2020
 ms.author: rkarlin
-ms.openlocfilehash: 5e7eabd44ea8c56fbb102f9e48812745a31de62a
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 0c303adb4ee7c7551c6b389ec169d92a661a63bc
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92089205"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97835032"
 ---
 # <a name="azure-defender-for-iot-frequently-asked-questions"></a>IoT için Azure Defender hakkında sık sorulan sorular
 
@@ -79,15 +79,11 @@ Evet. IP adresi ve açık bağlantı noktaları gibi, önceden belirlenmiş davr
 
 Algılayıcılar ve aracılar, cihaz çalıştığı sürece verileri çalıştırmaya ve depolamaya devam eder. Veriler, boyut yapılandırmasına göre güvenlik iletisi önbelleğinde depolanır. Cihazın bağlantısı yapıldığında, güvenlik iletileri göndermeye sürdürülür.
 
-
-
-
-
 ## <a name="next-steps"></a>Sonraki adımlar
 
 IoT için Defender 'ı kullanmaya başlama hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
 - IoT için Defender 'ı okuyun [genel bakış](overview.md)
-- [Hizmet önkoşullarını](service-prerequisites.md) doğrulama
-- [Kullanmaya başlama](getting-started.md) hakkında daha fazla bilgi edinin
+- [Sistem önkoşullarını](quickstart-system-prerequisites.md) doğrulama
+- [IoT Için Defender 'ı](getting-started.md) kullanmaya başlama hakkında daha fazla bilgi edinin
 - [IoT güvenlik uyarıları Için Defender 'ı](concept-security-alerts.md) anlama

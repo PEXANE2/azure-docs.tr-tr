@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862471"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832718"
 ---
 # <a name="continuously-export-security-center-data"></a>Güvenlik Merkezi verilerini sürekli dışa aktarma
 
@@ -24,6 +24,7 @@ Azure Güvenlik Merkezi, ayrıntılı güvenlik uyarıları ve önerileri oluşt
 - Tüm yüksek önem derecesi uyarıları bir Azure Olay Hub 'ına gönderilir
 - SQL sunucularınızın güvenlik açığı değerlendirme taramalarının tüm Orta veya yüksek önem dereceleri, belirli bir Log Analytics çalışma alanına gönderilir
 - Belirli öneriler, her oluşturulduğunda bir olay hub 'ına veya Log Analytics çalışma alanına teslim edilir 
+- Bir denetimin puanı 0,01 veya daha fazla değişiklik yaptığı zaman bir aboneliğin güvenli puanı Log Analytics bir çalışma alanına gönderilir 
 
 Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli dışarı aktarmanın nasıl yapılandırılacağı açıklanır.
 
@@ -45,8 +46,18 @@ Bu makalede Log Analytics çalışma alanlarına veya Azure Event Hubs sürekli 
 |||
 
 
+## <a name="what-data-types-can-be-exported"></a>Hangi veri türleri verilebilirler?
 
+Sürekli dışarı aktarma, her değiştiğinde aşağıdaki veri türlerini dışarı aktarabilir:
 
+- Güvenlik uyarıları
+- Güvenlik önerileri 
+- Güvenlik açığı değerlendirme tarayıcılarından veya belirli sistem güncelleştirmelerinden bulguları gibi ' Sub ' önerileri olarak düşünülebilir. Bunları "Ana güncelleştirmeler" makinelerinizde yüklü olmalıdır "gibi ' üst ' önerilerine dahil etmek için seçeneğini belirleyebilirsiniz.
+- Güvenli puan (abonelik başına veya denetim başına)
+- Mevzuat uyumluluk verileri
+
+> [!NOTE]
+> Güvenli puan ve mevzuat uyumluluk verilerinin dışarı aktarılması bir önizleme özelliğidir ve kamu bulutlarında kullanılamaz. 
 
 ## <a name="set-up-a-continuous-export"></a>Sürekli dışarı aktarma ayarlama 
 
@@ -67,7 +78,7 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
     Burada dışa aktarma seçeneklerini görürsünüz. Kullanılabilir her dışa aktarma hedefi için bir sekme vardır. 
 
 1. Dışarı aktarmak istediğiniz veri türünü seçin ve her bir türdeki filtrelerden birini seçin (örneğin, yalnızca yüksek önem derecesine sahip uyarıları dışarı aktarın).
-1. İsteğe bağlı olarak, seçiminiz bu dört önerinden birini içeriyorsa, güvenlik açığı değerlendirmesi bulgularını bunlarla birlikte dahil edebilirsiniz:
+1. İsteğe bağlı olarak, seçiminiz Bu önerilerden birini içeriyorsa, güvenlik açığı değerlendirmesi bulgularını bunlarla birlikte dahil edebilirsiniz:
     - SQL veritabanlarındaki güvenlik açığı değerlendirmesi bulguları düzeltildi
     - Makinelerdeki SQL sunucularınızda bulunan güvenlik açığı değerlendirmesi (Önizleme) düzeltilmelidir.
     - Azure Container Registry görüntülerdeki güvenlik açıkları düzeltilmelidir (Qualys tarafından desteklenir)
@@ -81,7 +92,7 @@ Aşağıdaki adımlar Log Analytics çalışma alanına veya Azure Event Hubs s�
 1. "Dışarı aktarma hedefi" alanından, verilerin kaydedilmesini istediğiniz yeri seçin. Veriler farklı bir abonelikteki hedefe kaydedilebilir (örneğin, merkezi bir olay hub 'ı örneği veya merkezi bir Log Analytics çalışma alanı).
 1. **Kaydet**’i seçin.
 
-### <a name="use-the-rest-api"></a>[**REST API kullanma**](#tab/rest-api)
+### <a name="use-the-rest-api"></a>[**REST API’sini kullanma**](#tab/rest-api)
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>REST API kullanarak sürekli dışarı aktarmayı yapılandırma
 
@@ -216,6 +227,9 @@ Hayır. Sürekli dışarı aktarma, **olayların** akışı için oluşturulmuş
 
 - Dışarı aktarma işlemi etkinleştirilmeden önce alınan **Uyarılar** dışarı aktarılmaz.
 - Bir kaynağın uyumluluk durumu her değiştiğinde **öneriler** gönderilir. Örneğin, bir kaynak sağlıklı durumundan sağlıksız duruma döndüğünde. Bu nedenle, uyarılarda olduğu gibi, dışa aktarma işlemini etkinleştirdikten sonra durum değiştirmeyen kaynaklara yönelik öneriler dışarı aktarılmayacaktır.
+- Güvenlik denetimi veya daha fazla 0,01 veya daha fazla bir güvenlik denetiminin puanı değiştiğinde **güvenli puan (Önizleme)** güvenlik denetimi veya abonelik için gönderilir. 
+- Kaynak uyumluluğun durumu değiştiğinde **mevzuat uyumluluk durumu (Önizleme)** gönderilir.
+
 
 
 ### <a name="why-are-recommendations-sent-at-different-intervals"></a>Neden öneriler farklı aralıklarda gönderiliyor?
