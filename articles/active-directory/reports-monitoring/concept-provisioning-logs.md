@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/07/2020
+ms.date: 12/28/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2408db2d91740350405f11e2a1250ab9b3a4fe31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181212"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803536"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory portalında raporları sağlama (Önizleme)
 
@@ -39,11 +39,12 @@ Azure Active Directory (Azure AD) içindeki raporlama mimarisi aşağıdaki bile
 
 Bu konu, sağlama raporuna genel bir bakış sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 ### <a name="who-can-access-the-data"></a>Verilere kimler erişebilir?
 * Uygulama sahipleri, sahip oldukları uygulamalar için günlükleri görüntüleyebilir
 * Güvenlik Yöneticisi, güvenlik okuyucu, rapor okuyucu, uygulama Yöneticisi ve bulut uygulaması yönetici rolleri kullanıcıları
+* [Provisioninglogs iznine](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions) sahip özel bir roldeki kullanıcılar
 * Genel Yöneticiler
 
 
@@ -56,7 +57,7 @@ Tüm sağlama etkinliği raporunu görmek için kiracınızın kendisiyle ilişk
 Sağlama günlükleri aşağıdaki soruların yanıtlarını sağlar:
 
 * ServiceNow 'da hangi gruplar başarıyla oluşturuldu?
-* Amazon Web Services hangi roller içeri aktarıldı?
+* Hangi kullanıcılar Adobe 'dan başarıyla kaldırıldı?
 * DropBox 'ta başarısız olan kullanıcılar nelerdir?
 
 Sağlama günlüklerine, [Azure portal](https://portal.azure.com) **Azure Active Directory** dikey penceresinin **izleme** bölümünde **sağlama günlükleri** ' ni seçerek erişebilirsiniz. Bazı sağlama kayıtlarının portalda gösterilmesi iki saate kadar sürebilir.
@@ -129,7 +130,7 @@ Olası değerler şunlardır:
 **Eylem** filtresi aşağıdakileri filtrelemenizi sağlar:
 
 - Oluştur 
-- Güncelleştir
+- Güncelleştirme
 - Sil
 - Devre Dışı Bırak
 - Diğer
@@ -219,7 +220,9 @@ Ayrıntılar aşağıdaki kategorilere göre gruplandırılır:
 
 - Kapsamda olmayan kullanıcılar için Atlanan olayları görebilirsiniz. Özellikle eşitleme kapsamı tüm kullanıcılar ve gruplar olarak ayarlandığında bu beklenmektedir. Hizmetimiz, Kiracıdaki tüm nesneleri, kapsam dışı olsalar da değerlendirmeyecektir. 
 
-- Sağlama günlükleri Şu anda kamu bulutu 'nda kullanılamıyor. Sağlama günlüklerine erişemedik, lütfen geçici bir geçici çözüm olarak denetim günlüklerini kullanın.  
+- Sağlama günlükleri Şu anda kamu bulutu 'nda kullanılamıyor. Sağlama günlüklerine erişemedik, lütfen geçici bir geçici çözüm olarak denetim günlüklerini kullanın. 
+
+- Sağlama günlükleri rol içeri aktarmaları göstermez (AWS, SalesForce ve ZenDesk için geçerlidir). Rol içeri aktarmaları için Günlükler denetim günlüklerinde bulunabilir. 
 
 ## <a name="error-codes"></a>Hata Kodları
 

@@ -13,12 +13,12 @@ ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-js
-ms.openlocfilehash: 1d6a51e2e9c052be0c59435b287c5fdde459f55d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c96f674b64401250d45542d0f59f13654cf37caa
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91334200"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802533"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry PI 'yi Azure 'a bağlama IoT Hub (Node.js)
 
@@ -81,7 +81,7 @@ Aşağıdaki öğeler isteğe bağlıdır:
 > [!NOTE]
 > İsteğe bağlı öğeleriniz yoksa, sanal algılayıcı verilerini kullanabilirsiniz.
 
-## <a name="create-an-iot-hub"></a>IoT hub’ı oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -97,7 +97,7 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
 1. Raspbian indirin.
 
-   a. [Masaüstü Ile Raspbian Buster](https://www.raspberrypi.org/downloads/raspbian/) (. zip dosyası).
+   a. [Masaüstü Ile Raspbian Buster](https://www.raspberrypi.org/software/) (. zip dosyası).
 
    b. Raspbian görüntüsünü bilgisayarınızdaki bir klasöre ayıklayın.
 
@@ -125,7 +125,7 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
    ![Raspbian Tercihler menüsü](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
-4. **Arabirimler** sekmesinde, **I2C** ve **SSH** 'Yi **etkinleştirmek**için ayarlayın ve ardından **Tamam**' a tıklayın. Fiziksel sensörler yoksa ve sanal algılayıcı verileri kullanmak istiyorsanız, bu adım isteğe bağlıdır.
+4. **Arabirimler** sekmesinde, **I2C** ve **SSH** 'Yi **etkinleştirmek** için ayarlayın ve ardından **Tamam**' a tıklayın. Fiziksel sensörler yoksa ve sanal algılayıcı verileri kullanmak istiyorsanız, bu adım isteğe bağlıdır.
 
    ![Raspberry PI üzerinde ı2C ve SSH 'yi etkinleştirme](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
@@ -230,7 +230,7 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
 
    Bu dosyada yapılandırabileceğiniz iki öğe vardır. Birincisi, `interval` buluta gönderilen iletiler arasındaki zaman aralığını (milisaniye olarak) tanımlayan bir değer. İkinci bir `simulatedData` değer, sanal algılayıcı verilerinin kullanılıp kullanılmayacağını belirten bir Boole değeridir.
 
-   **Sensöre sahip**değilseniz, `simulatedData` `true` örnek uygulamanın benzetimli algılayıcı verileri oluşturması ve kullanması için değerini olarak ayarlayın.
+   **Sensöre sahip** değilseniz, `simulatedData` `true` örnek uygulamanın benzetimli algılayıcı verileri oluşturması ve kullanması için değerini olarak ayarlayın.
 
    *Note: Bu öğreticide kullanılan I2C adresi varsayılan olarak 0x77 ' dir. Yapılandırmanıza bağlı olarak, 0x76 de olabilir: bir I2C hatasıyla karşılaşırsanız, değeri 118 olarak değiştirmeyi deneyin ve bunun daha iyi çalışıp çalışmadığını görüntüleyin. Sensörizin tarafından kullanılan adresi görmek için `sudo i2cdetect -y 1` Raspberry Pi üzerinde bir kabukta çalıştırın*
 

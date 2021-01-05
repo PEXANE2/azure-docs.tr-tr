@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: d73bfd19a4135d09e9e19fcbcfedd50dbc1f7067
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632814"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803196"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Azure uygulaması tutarlı anlık görüntü aracı 'nı (Önizleme) kullanmaya yönelik ipuçları ve püf noktaları
 
@@ -132,7 +132,7 @@ Bir depolama birimi anlık görüntüsü, yeni bir birime () geri yüklenebilir 
 
 Bir anlık görüntü, SAP HANA veri alanına geri kopyalanabilir, ancak bir kopya () yapıldığında SAP HANA çalışmıyor olmalıdır `cp /hana/data/H80/mnt00001/.snapshot/hana_hourly.2020-06-17T113043.1586971Z/*` .
 
-Azure büyük örnek için, mevcut kullanılabilir anlık görüntülerden istenen bir anlık görüntüyü geri yüklemek üzere bir hizmet isteği açarak Microsoft Operasyon ekibine başvurabilirsiniz. Azure portal bir hizmet isteği açabilirsiniz: <https://portal.azure.com.>
+Azure büyük örnek için, mevcut kullanılabilir anlık görüntülerden istenen bir anlık görüntüyü geri yüklemek üzere bir hizmet isteği açarak Microsoft Operasyon ekibine başvurabilirsiniz. Azure portal bir hizmet isteği açabilirsiniz: <https://portal.azure.com>
 
 Olağanüstü durum kurtarma yük devretmesini gerçekleştirmeye karar verirseniz, `azacsnap -c restore --restore revertvolume` Dr sitesindeki komut, `/hana/data` SAP HANA kurtarmaya izin vermek için en son (ve `/hana/logbackups` ) birim anlık görüntülerini otomatik olarak kullanılabilir hale getirir. Üretim ve DR siteleri arasında çoğaltmayı kesdiğinden bu komutu dikkatli kullanın.
 
@@ -249,7 +249,7 @@ Bazı durumlarda, müşterilerin SAP HANA koruma araçları zaten vardır ve yal
 
 1. Müşterinin sunucuyu kapatması gerekir.
 1. Sunucu kapatıldıktan sonra, müşterinin geri yüklenecek makine KIMLIĞINI ve anlık görüntüsünü içeren bir hizmet isteği açması gerekir.
-    > Müşteriler Azure portal bir hizmet isteği açabilir: <https://portal.azure.com.>
+    > Müşteriler Azure portal bir hizmet isteği açabilir: <https://portal.azure.com>
 1. Microsoft, belirtilen makine KIMLIĞINI ve anlık görüntüsünü kullanarak Işletim sistemi LUN 'unu geri yükleyecek ve ardından sunucuyu önyükleyecek.
 1. Daha sonra müşterinin sunucu önyüklendiğini ve sağlıklı olduğunu doğrulamamalıdır.
 

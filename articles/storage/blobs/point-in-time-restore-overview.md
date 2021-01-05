@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ca09e41e6d5b83f14d2dfee4107135585b7e945a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908804"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803876"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>Blok Blobları için noktadan noktaya geri yükleme
 
@@ -43,7 +43,7 @@ Tek seferde bir depolama hesabında yalnızca bir geri yükleme işlemi çalış
 > Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
 
 > [!CAUTION]
-> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcıyı silmek istiyorsanız, bir kapsayıcıyı silmek için tek tek Blobları silin.
+> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcının tamamını silmek yerine, daha sonra geri yüklemek istiyorsanız ayrı Blobları silin.
 
 ### <a name="prerequisites-for-point-in-time-restore"></a>Zaman içinde nokta geri yükleme önkoşulları
 
@@ -57,9 +57,12 @@ Zaman içinde geri yükleme, zaman içinde nokta geri yüklemeyi etkinleştirebi
 
 Bir depolama hesabı için noktadan noktaya geri yüklemeyi etkinleştirdiğinizde bir bekletme dönemi belirtirsiniz. Depolama hesabınızdaki blok Blobları Bekletme dönemi sırasında geri yüklenebilir.
 
-Bekletme süresi, zaman içinde geri yüklemeyi etkinleştirdiğinizde başlar. Blob 'ları bekletme döneminin başlangıcından önceki bir duruma geri yükleyemezsiniz. Örneğin, 1 Mayıs 'ta 30 günlük bir bekletme tarihi ile bir süre sonra geri yükleme etkinleştirdiyseniz, 15 Mayıs 'ta en fazla 15 güne geri yükleme yapabilirsiniz. 1 Haziran 'da verileri 1 ila 30 gün içinde geri yükleyebilirsiniz.
+Süre sonu geri yüklemeyi etkinleştirdikten sonra Bekletme dönemi birkaç dakika sonra başlar. Blob 'ları bekletme döneminin başlangıcından önceki bir duruma geri yükleyemezsiniz. Örneğin, 1 Mayıs 'ta 30 günlük bir bekletme tarihi ile bir süre sonra geri yükleme etkinleştirdiyseniz, 15 Mayıs 'ta en fazla 15 güne geri yükleme yapabilirsiniz. 1 Haziran 'da verileri 1 ila 30 gün içinde geri yükleyebilirsiniz.
 
 Belirli bir noktaya geri yükleme için bekletme süresi, geçici silme için belirtilen saklama süresinden en az bir gün daha az olmalıdır. Örneğin, geçici silme Bekletme dönemi 7 gün olarak ayarlandıysa, zaman içinde geri yükleme saklama süresi 1 ile 6 gün arasında olabilir.
+
+> [!IMPORTANT]
+> Bir veri kümesini geri yüklemek için geçen süre, geri yükleme döneminde yapılan yazma ve silme işlemlerinin sayısına bağlıdır. Örneğin, 1.000.000 nesne başına 3.000 nesne ve gün başına silinen 1.000 olan bir hesap, geçmişte 30 günlük bir noktaya geri yüklemek için yaklaşık iki saat gerektirir. Geçmişte 90 günden fazla bir bekletme dönemi ve geri yükleme bu değişiklik oranına sahip bir hesap için önerilmez.
 
 ### <a name="permissions-for-point-in-time-restore"></a>Noktadan noktaya geri yükleme izinleri
 

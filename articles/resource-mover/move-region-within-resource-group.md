@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: raynew
-ms.openlocfilehash: 34064fe3fe88a34b0dd2430d7adec3ebcb17ebcc
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 79224c14fc5182df7a699864af3d78c9be36259f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95528236"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797290"
 ---
 # <a name="move-resources-across-regions-from-resource-group"></a>Kaynakları bölgeler arasında taşıma (kaynak grubundan)
 
@@ -58,9 +58,12 @@ Bu makalede, belirli bir kaynak grubundaki kaynakları farklı bir Azure bölges
 
 Taşımak istediğiniz kaynakları seçin. Kaynakları kaynak bölgesi aboneliğindeki bir hedef bölgeye taşırsınız. Aboneliği değiştirmek istiyorsanız, kaynaklar taşındıktan sonra bunu yapabilirsiniz.
 
+> [!NOTE]
+>  İlişkili diskleri seçmeyin veya işlem başarısız olur. İlişkili diskler, sanal makine taşımasına otomatik olarak eklenir.
+
 1. Azure portal ilgili kaynak grubunu açın.
 2. Kaynak grubu sayfasında, taşımak istediğiniz kaynakları seçin.
-3. Taşımayı **Move**  >  **başka bir bölgeye** taşı ' yı seçin.
+3. Taşımayı   >  **başka bir bölgeye** taşı ' yı seçin.
 
     ![Kaynakları farklı bir bölgeye taşımak için seçim](./media/move-region-within-resource-group/select-move-region.png)
     

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 3e836873219bde3836f2863e328b0b6f5b89addc
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507294"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803808"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>ITSM Bağlayıcısındaki sorunları giderme
 
@@ -23,7 +23,7 @@ ITSM, uyarıları ServiceNow gibi dış bilet oluşturma sistemine gönderme se�
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Olay ve değişiklik isteği verilerini görselleştirin ve çözümleyin
 
-Bir bağlantı ayarlarken yapılandırmanıza bağlı olarak, ıSMC, 120 güne kadar olay ve değişiklik isteği verilerini eşitleyebilir. Bu veriler için günlük kaydı şeması, bu makalenin [ek bilgiler bölümünde](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-overview#additional-information) verilmiştir.
+Bir bağlantı ayarlarken yapılandırmanıza bağlı olarak, ıSMC, 120 güne kadar olay ve değişiklik isteği verilerini eşitleyebilir. Bu veriler için günlük kaydı şeması, bu makalenin [ek bilgiler bölümünde](./itsmc-overview.md) verilmiştir.
 
 ISMC panosunu kullanarak olay ve değişiklik isteği verilerini görselleştirebilirsiniz:
 
@@ -39,7 +39,27 @@ Hizmet Eşlemesi kullanıyorsanız, ıTSM çözümlerinde oluşturulan hizmet Ma
 
 ![Log Analytics ekranını gösteren ekran görüntüsü.](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="how-to-manually-fix-servicenow-sync-problems"></a>ServiceNow eşitleme sorunlarını el ile çözme
+## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
+
+- Bağlantı ıTSM sistemine bağlanamazsa ve **bağlantı iletisini kaydederken bir hata** alırsanız, aşağıdaki adımları uygulayın:
+   - ServiceNow, Cherwell ve Provance bağlantıları için:  
+     - Bağlantıların her biri için Kullanıcı adını, parolayı, istemci KIMLIĞINI ve istemci gizli anahtarını doğru girdiğinizden emin olun.  
+     - Bağlantıyı yapmak için karşılık gelen ıTSM ürününde yeterli ayrıcalıklara sahip olduğunuzdan emin olun.  
+   - Service Manager bağlantıları için:  
+     - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager bilgisayarla başarıyla yapıldığını doğrulamak için [karma bağlantı](./itsmc-connections-scsm.md#configure-the-hybrid-connection)oluşturma belgelerinde açıklandığı gibi Web uygulaması URL 'sine gidin.  
+
+- ServiceNow 'daki veriler Log Analytics ile eşitlenmemişse ServiceNow örneğinin uyuma olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Bu durum oluşmuyorsa, sorunu bildirin.
+- Log Analytics uyarılar harekete geçmemişse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa, yapılandırma öğeleri iş öğelerine oluşturulmaz/bağlanmadıysa veya diğer bilgiler için şu kaynaklara bakın:
+   -  ISMC: çözüm, bağlantıların, iş öğelerinin, bilgisayarların ve daha fazlasını bir Özet gösterir. **Bağlayıcı durumu** etiketine sahip kutucuğu seçin. Bunu yapmak ilgili sorguyla **aramayı günlüğe kaydetmek** için yönlendirir. `LogType_S`Daha fazla bilgi için ' a sahip günlük kayıtlarına bakın `ERROR` .
+   - **Günlük arama** sayfası: doğrudan sorgu kullanarak hataları ve Ilgili bilgileri görüntüleyin `*ServiceDeskLog_CL*` .
+
+### <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
+
+-   Web uygulaması dağıtımıyla ilgili sorun yaşıyorsanız, abonelikte kaynak oluşturma/dağıtma izinlerinizin olduğundan emin olun.
+-   Bir **nesne başvurusunu alırsanız bir nesne hatası örneğine ayarlı değilse** , [komut dosyasını](itsmc-service-manager-script.md)çalıştırdığınızda, **Kullanıcı Yapılandırması** bölümüne geçerli değerler girdiğinizden emin olun.
+-   Service Bus geçişi ad alanını oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı](./itsmc-connections-scsm.md#configure-the-hybrid-connection) Azure Portal oluşturduğunuzda da oluşturabilirsiniz.
+
+### <a name="how-to-manually-fix-sync-problems"></a>Eşitleme sorunlarını el ile çözme
 
 Azure Izleyici, üçüncü taraf BT hizmet yönetimi (ıSM) sağlayıcılarına bağlanabilir. ServiceNow, bu sağlayıcılardan biridir.
 
@@ -74,28 +94,4 @@ Bağlantıyı yeniden etkinleştirmek ve belirteci yenilemek için aşağıdaki 
 
         ![Yeni bağlantı](media/itsmc-resync-servicenow/save-8bit.png)
 
-f.    İşlemin başarılı ile bitmediğini görmek için bildirimleri gözden geçirin
-
-## <a name="troubleshoot-itsm-connections"></a>ITSM bağlantılarında sorun giderme
-
-- Bağlantı bağlanılan kaynağın kullanıcı arabiriminden başarısız olursa ve **bağlantı iletisini kaydederken bir hata** alırsanız, aşağıdaki adımları uygulayın:
-   - ServiceNow, Cherwell ve Provance bağlantıları için:  
-     - Bağlantıların her biri için Kullanıcı adını, parolayı, istemci KIMLIĞINI ve istemci gizli anahtarını doğru girdiğinizden emin olun.  
-     - Bağlantıyı yapmak için karşılık gelen ıTSM ürününde yeterli ayrıcalıklara sahip olduğunuzdan emin olun.  
-   - Service Manager bağlantıları için:  
-     - Web uygulamasının başarıyla dağıtıldığından ve karma bağlantının oluşturulduğundan emin olun. Bağlantının şirket içi Service Manager bilgisayarla başarıyla yapıldığını doğrulamak için [karma bağlantı](./itsmc-connections.md#configure-the-hybrid-connection)oluşturma belgelerinde açıklandığı gibi Web uygulaması URL 'sine gidin.  
-
-- ServiceNow 'daki veriler Log Analytics ile eşitlenmemişse ServiceNow örneğinin uyuma olmadığından emin olun. ServiceNow dev örnekleri bazen uzun bir süre boşta kaldığında uyku moduna geçebilir. Bu durum oluşmuyorsa, sorunu bildirin.
-- Log Analytics uyarılar harekete geçmemişse ancak ıTSM ürününde iş öğeleri oluşturulmadıysa, yapılandırma öğeleri iş öğelerine oluşturulmaz/bağlanmadıysa veya diğer bilgiler için şu kaynaklara bakın:
-   -  ISMC: çözüm, bağlantıların, iş öğelerinin, bilgisayarların ve daha fazlasını bir Özet gösterir. **Bağlayıcı durumu** etiketine sahip kutucuğu seçin. Bunu yapmak ilgili sorguyla **aramayı günlüğe kaydetmek** için yönlendirir. `LogType_S`Daha fazla bilgi için ' a sahip günlük kayıtlarına bakın `ERROR` .
-   - **Günlük arama** sayfası: doğrudan sorgu kullanarak hataları ve Ilgili bilgileri görüntüleyin `*ServiceDeskLog_CL*` .
-
-## <a name="troubleshoot-service-manager-web-app-deployment"></a>Web uygulaması dağıtımı Service Manager sorunlarını giderme
-
--   Web uygulaması dağıtımıyla ilgili sorun yaşıyorsanız, abonelikte kaynak oluşturma/dağıtma izinlerinizin olduğundan emin olun.
--   Bir **nesne başvurusunu alırsanız bir nesne hatası örneğine ayarlı değilse** , [komut dosyasını](itsmc-service-manager-script.md)çalıştırdığınızda, **Kullanıcı Yapılandırması** bölümüne geçerli değerler girdiğinizden emin olun.
--   Service Bus geçişi ad alanını oluşturmadıysanız, gerekli kaynak sağlayıcının abonelikte kayıtlı olduğundan emin olun. Kayıtlı değilse, Service Bus geçişi ad alanını Azure portal el ile oluşturun. [Karma bağlantıyı](./itsmc-connections.md#configure-the-hybrid-connection) Azure Portal oluşturduğunuzda da oluşturabilirsiniz.
-
-## <a name="next-steps"></a>Sonraki Adımlar
-
-[BT hizmet yönetimi bağlantıları](itsmc-connections.md) hakkında daha fazla bilgi edinin
+f.    İşlemin başlayıp başlamadığına bakmak için bildirimleri gözden geçirin.

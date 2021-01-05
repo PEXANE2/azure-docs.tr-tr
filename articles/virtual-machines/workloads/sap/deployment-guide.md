@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: ed30c271e4c2458a33784cbcfc682001b542f2b6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d57512d631685f1f8da7dcd22181bf4d4223937f
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964958"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807578"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver için Azure sanal makineler dağıtımı
 
@@ -325,7 +325,7 @@ Azure sanal makineleri, işlem ve depolama kaynakları, en kısa sürede ve uzun
 
 Bu makalede, farklı dağıtım seçenekleri ve sorun giderme dahil olmak üzere Azure 'daki sanal makinelerde (VM) SAP uygulamaları dağıtma adımları ele alınmaktadır. Bu makalede, [SAP NetWeaver için planlama ve uygulama Için Azure sanal makineler][planning-guide]'de bilgi oluşturulur. Ayrıca SAP yazılım yükleme ve dağıtmaya yönelik birincil kaynaklar olan SAP yükleme belgelerini ve SAP notlarını da tamamlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -856,7 +856,7 @@ Windows 'da proxy 'yi yapılandırmak için gerçekleştirmeniz gereken adımlar
 Yerel sistem hesabının Internet 'e erişmesi için proxy ayarlarının doğru ayarlanmış olması gerekir. Proxy ayarlarınız grup ilkesi tarafından ayarlanmamışsa, yerel sistem hesabı için ayarları yapılandırabilirsiniz.
 
 1. **Başlat**' a gidin, **gpedit. msc** yazın ve ardından **ENTER**' u seçin.
-1. **Computer Configuration**  >  **Administrative Templates**  >  **Windows bileşenleri**  >  **Internet Explorer** Yönetim Şablonları bilgisayar yapılandırması ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
+1.   >    >  **Windows bileşenleri**  >  **Internet Explorer** Yönetim Şablonları bilgisayar yapılandırması ' nı seçin. **Proxy ayarlarını makine başına (Kullanıcı başına değil)** ayarla ayarının devre dışı veya yapılandırılmamış olduğundan emin olun.
 1. **Denetim Masası**' nda **Ağ ve Paylaşım Merkezi**  >  **Internet seçenekleri**' ne gidin.
 1. **Bağlantılar** sekmesinde, **LAN ayarları** düğmesini seçin.
 1. **Ayarları otomatik olarak algıla** onay kutusunu temizleyin.
@@ -1070,8 +1070,14 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
     Örnek:
 
     ```azurecli
+    # Azure CLI on Linux
     spID=$(az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines)
     rgId=$(az group show -g <resource-group-name> --query id --out tsv)
+    az role assignment create --assignee $spID --role 'Reader' --scope $rgId
+
+    # Azure CLI on Windows/PowerShell
+    $spID=az resource show -g <resource-group-name> -n <vm name> --query identity.principalId --out tsv --resource-type Microsoft.Compute/virtualMachines
+    $rgId=az group show -g <resource-group-name> --query id --out tsv
     az role assignment create --assignee $spID --role 'Reader' --scope $rgId
     ```
 
@@ -1079,11 +1085,19 @@ SAP için yeni VM uzantısı, VM 'nin izleme ve yapılandırma verilerine erişm
     Uzantı şu anda yalnızca Azurecyüksek 'te destekleniyor. Azure Çin 21Vianet, Azure Kamu veya diğer özel ortamların hiçbiri henüz desteklenmiyor.
 
     ```azurecli
-    # For Linux machines
+    # Azure CLI on Linux
+    ## For Linux machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
 
-    #For Windows machines
+    ## For Windows machines
     az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{"system":"SAP"}'
+
+    # Azure CLI on Windows/PowerShell
+    ## For Linux machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Linux --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
+
+    ## For Windows machines
+    az vm extension set --publisher Microsoft.AzureCAT.AzureEnhancedMonitoring --name MonitorX64Windows --version 1.0 -g <resource-group-name> --vm-name <vm name> --settings '{\"system\":\"SAP\"}'
     ```
 
 ## <a name="checks-and-troubleshooting"></a><a name="564adb4f-5c95-4041-9616-6635e83a810b"></a>Denetimler ve sorun giderme
@@ -1496,7 +1510,7 @@ Uzantıyı yeniden yüklemek için bu kılavuzdaki [SAP Için Azure uzantısın�
 
 Hatalar kaybdeğilse, [desteğe başvurun][deployment-guide-contact-support].
 
-#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Destek birimine başvurma
+#### <a name="contact-support"></a><a name="3ba34cfc-c9bb-4648-9c3c-88e8b9130ca2"></a>Desteğe başvurun
 
 Beklenmeyen bir hata veya bilinen bir çözüm yok. C:\Packages\Plugins\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler \\ \<version\> \Drop (Windows) veya/var/log/Azure/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux (Linux) klasöründe bulunan AzureEnhancedMonitoring_service. log dosyasını toplayın ve daha fazla yardım için sap desteği ile iletişime geçin.
 

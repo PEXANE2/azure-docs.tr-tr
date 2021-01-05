@@ -10,12 +10,12 @@ ms.date: 02/14/2019
 ms.author: wesmc
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: b21b161a03be7a37fe1d3e872e10d4de437670db
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145860"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804063"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry PI 'yi Azure 'a bağlama IoT Hub (C)
 
@@ -99,7 +99,7 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
 1. Raspbian indirin.
 
-   1. Desktop (. zip dosyası) [Ile Raspbian Esnetme indirin](https://www.raspberrypi.org/downloads/raspbian/) .
+   1. Desktop (. zip dosyası) [Ile Raspbian Esnetme indirin](https://www.raspberrypi.org/software/) .
 
    2. Raspbian görüntüsünü bilgisayarınızdaki bir klasöre ayıklayın.
 
@@ -125,7 +125,7 @@ Raspbian görüntüsünü yüklemek için mikro SD kartını hazırlayın.
 
    ![Raspbian Tercihler menüsü](./media/iot-hub-raspberry-pi-kit-c-get-started/1-raspbian-preferences-menu.png)
 
-3. **Arabirimler** sekmesinde, **SPI** ve **SSH** 'Yi **etkinleştirmek**için ayarlayın ve ardından **Tamam**' a tıklayın. Fiziksel sensörler yoksa ve sanal algılayıcı verileri kullanmak istiyorsanız, bu adım isteğe bağlıdır.
+3. **Arabirimler** sekmesinde, **SPI** ve **SSH** 'Yi **etkinleştirmek** için ayarlayın ve ardından **Tamam**' a tıklayın. Fiziksel sensörler yoksa ve sanal algılayıcı verileri kullanmak istiyorsanız, bu adım isteğe bağlıdır.
 
    ![Raspberry PI üzerinde SPI ve SSH 'yi etkinleştirme](./media/iot-hub-raspberry-pi-kit-c-get-started/2-enable-spi-ssh-on-raspberry-pi.png)
 
@@ -203,7 +203,7 @@ Mikro USB kablosunu ve güç kaynağını kullanarak PI 'yi açın. PI 'yi kablo
    ```
 
    > [!NOTE] 
-   > **Fiziksel BIR BME280**yoksa, sıcaklık&nem verilerinin benzetimini yapmak için komut satırı parametresi olarak '--benzetimli-Data ' kullanabilirsiniz. `sudo ./setup.sh --simulated-data`
+   > **Fiziksel BIR BME280** yoksa, sıcaklık&nem verilerinin benzetimini yapmak için komut satırı parametresi olarak '--benzetimli-Data ' kullanabilirsiniz. `sudo ./setup.sh --simulated-data`
    >
 
 ### <a name="build-and-run-the-sample-application"></a>Örnek uygulamayı derleme ve çalıştırma

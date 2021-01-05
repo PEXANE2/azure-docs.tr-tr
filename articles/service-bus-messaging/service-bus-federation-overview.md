@@ -3,14 +3,14 @@ title: İleti çoğaltma ve çapraz bölge Federasyonu-Azure Service Bus | Micro
 description: Bu makalede, Azure Service Bus ile olay çoğaltmaya ve çapraz bölge federasyona genel bakış sunulmaktadır.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: 32d8c9112eeb2f71e7f2c8dcd6f8f73da2dc1ca9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657600"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803281"
 ---
-# <a name="message-replication-and-cross-region-federation"></a>İleti çoğaltma ve çapraz bölge Federasyonu
+# <a name="message-replication-and-cross-region-federation"></a>İleti çoğaltma ve bölgeler arası federasyon
 
 Ad alanları içinde Azure Service Bus, çeşitli yönlendirme desenlerinin uygulanmasına izin vermek için, [oto iletme kullanarak zincirleme sıra ve konu abonelikleri topolojilerini oluşturmayı](service-bus-auto-forwarding.md) destekler. Örneğin, kendi gönderme veya alma izinlerine sahip oldukları ve gerektiğinde geçici olarak askıya alınılabilecek ve bunları uygulamaya özel diğer varlıklara bağlamak için adanmış kuyruklar içeren iş ortakları sağlayabilirsiniz. Ayrıca, karmaşık çok aşamalı yönlendirme topolojileri oluşturabilir ya da, konuların kuyruk benzeri aboneliklerini boşaltacak ve abone başına daha fazla depolama kapasitesine izin veren posta kutusu stili kuyruklar oluşturabilirsiniz. 
 
@@ -150,7 +150,7 @@ Azure Işlevleri, çoğaltma görevlerinin yanı sıra gizli dizileri yönetmek 
 
 Azure Işlevleri ayrıca çoğaltma görevlerinin tüm Azure mesajlaşma hizmetleri için Azure sanal ağları ve [hizmet uç](../virtual-network/virtual-network-service-endpoints-overview.md) noktalarıyla doğrudan tümleştirilmesine olanak tanır ve [Azure izleyici](../azure-monitor/overview.md)ile kolayca tümleşiktir.
 
-En önemlisi Azure Işlevleri, Azure [Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)ve [Azure kuyruk depolaması](/azure-functions/functions-bindings-storage-queue.md)için önceden oluşturulmuş, ölçeklenebilir Tetikleyiciler ve çıkış bağlamaları, [kbbitmq](https://github.com/azure/azure-functions-rabbitmq-extension)için özel uzantıları ve [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). Birçok tetikleyici, belgeli ölçümlere göre aynı anda yürütülen örneklerin sayısını ölçeklendirerek dinamik olarak işleme gereksinimlerine uyum sağlar. 
+En önemlisi Azure Işlevleri, Azure [Event Hubs](../azure-functions/functions-bindings-service-bus.md), [azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md)ve [Azure kuyruk depolaması](/azure/azure-functions/functions-bindings-storage-queue)için önceden oluşturulmuş, ölçeklenebilir Tetikleyiciler ve çıkış bağlamaları, [kbbitmq](https://github.com/azure/azure-functions-rabbitmq-extension)için özel uzantıları ve [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension). Birçok tetikleyici, belgeli ölçümlere göre aynı anda yürütülen örneklerin sayısını ölçeklendirerek dinamik olarak işleme gereksinimlerine uyum sağlar. 
 
 Azure Işlevleri tüketim planı sayesinde, önceden oluşturulmuş Tetikleyiciler, çoğaltma için kullanılabilir bir ileti olmadığında bile sıfıra ölçeklendirebilir, bu da yapılandırmanın ölçeklendirmeye hazır tutulması için hiçbir ücret ödemenize neden olur. Tüketim planı kullanmanın alt tarafında, bu durumdan "uyandırma" çoğaltma görevlerinin gecikmesi, altyapının çalıştığı barındırma planlarından önemli ölçüde daha yüksek bir durumdur.  
 
@@ -165,6 +165,6 @@ Daha sonra, Azure Işlevleri ile bir Replicator uygulamasını nasıl ayarlayaca
 - [Azure Işlevleri 'nde çoğaltma uygulamaları](service-bus-federation-replicator-functions.md)
 - [Service Bus varlıkları arasında olayları çoğaltma](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy)
 - [Olayları Azure Event Hubs yönlendirme](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
-- [Azure Event Hubs olay alma](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubsCopyToServiceBus)
+- [Azure Event Hubs olay alma](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif 

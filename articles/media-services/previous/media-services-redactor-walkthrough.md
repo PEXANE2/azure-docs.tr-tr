@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 1a106874277f64a006584f9deb98fb9729263b1b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 048635a33c3d84416dae00b731b386572aa3f89d
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040714"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802584"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics izlenecek yüzü redaksiyonu
 
@@ -133,6 +133,6 @@ JSON ek açıklama verilerini ayrıştırmaya çalışan bir geliştiricisiyseni
 ## <a name="related-links"></a>İlgili bağlantılar
 [Azure Media Services Analytics genel bakışı](./legacy-components.md)
 
-[Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics gösterileri](http://amslabs.azurewebsites.net/demos/Analytics.html)
 
 [Azure Media Analytics için yüz redaksiyon duyurusu](https://azure.microsoft.com/blog/azure-media-redactor/)

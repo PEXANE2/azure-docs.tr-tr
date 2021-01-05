@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/01/2020
+ms.date: 12/28/2020
 ms.author: kenwith
-ms.openlocfilehash: 677c9c0123c174fdf2cf8e94f9c8110656d21306
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e2b8bd47f7d124562a38413d36b849d1f7efacee
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94649407"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802771"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>Hızlı başlangıç: Azure Active Directory (Azure AD) kiracınızdan bir uygulamayı silme
 
@@ -53,6 +53,6 @@ Bu hızlı başlangıç serisini tamamladığınızda, test kiracınızı temizl
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hızlı başlangıç serisini tamamladınız! Sonraki adım olarak, uygulama yönetiminde en iyi yöntemler hakkında bilgi edinin.
+Hızlı başlangıç serisini tamamladınız! Sonra, tek Sign-On (SSO) hakkında bilgi edinin, bkz. [SSO nedir?](what-is-single-sign-on.md) Ya da uygulama yönetiminde en iyi yöntemler hakkında bilgi edinin.
 > [!div class="nextstepaction"]
 > [Uygulama yönetimi en iyi uygulamaları](application-management-fundamentals.md)

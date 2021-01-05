@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989488"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797222"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Otomatik veritabanı yedeklemeleri kullanarak kurtarma-SQL yönetilen örnek & Azure SQL veritabanı
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -95,7 +95,7 @@ Yönetilen bir örnek veritabanını Azure portal kullanarak bir noktaya kurtarm
   ![SQL yönetilen örneği için veritabanı geri yükleme seçeneklerinin ekran görüntüsü.](./media/recovery-using-backups/pitr-backup-managed-instance-annotated.png)
 
 > [!TIP]
-> Bir veritabanını bir yedekten program aracılığıyla geri yüklemek için, bkz. [Otomatik yedeklemeleri kullanarak kurtarma gerçekleştirme](recovery-using-backups.md).
+> Bir veritabanını bir yedekten program aracılığıyla geri yüklemek için, bkz. [Otomatik yedeklemeleri kullanarak programlı kurtarma](recovery-using-backups.md).
 
 ## <a name="deleted-database-restore"></a>Veritabanı geri yükleme silindi
 
@@ -157,7 +157,7 @@ Azure portal, yeni bir tek veya yönetilen örnek veritabanı oluşturup kullan�
 
 Seçtiğiniz bölgedeki ve sunucudaki Azure portal tek bir veritabanını coğrafi olarak geri yüklemek için şu adımları izleyin:
 
-1. **Panodan** **Add**  >  **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
+1. **Panodan**   >  **SQL veritabanı oluştur**' u seçin. **Temel bilgiler** sekmesinde, gerekli bilgileri girin.
 2. **Ek ayarlar**' ı seçin.
 3. **Mevcut verileri kullan** için **Yedekle**' yi seçin.
 4. **Yedekleme** için, kullanılabilir coğrafi geri yükleme yedeklemeleri listesinden bir yedekleme seçin.
@@ -243,7 +243,7 @@ REST API kullanarak bir veritabanını geri yüklemek için:
 | [REST (createMode = kurtarma)](/rest/api/sql/databases) |Bir veritabanını geri yükler. |
 | [Veritabanı oluşturma veya güncelleştirme durumunu al](/rest/api/sql/operations) |Geri yükleme işlemi sırasında durumu döndürür. |
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 #### <a name="sql-database"></a>SQL Veritabanı
 

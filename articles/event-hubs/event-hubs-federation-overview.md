@@ -4,14 +4,14 @@ description: Bu makalede, Azure Event Hubs ile çok siteli ve çok bölgeli fede
 ms.topic: article
 ms.date: 12/12/2020
 ms.author: spelluru
-ms.openlocfilehash: 02057d505308902d780e20e095bc248d1eaa1a74
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7deb6fe04241225f1f97a204cc62b4aefad9f440
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657581"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804046"
 ---
-# <a name="multi-site-and-multi-region-federation"></a>Çok siteli ve çok bölgeli Federasyon
+# <a name="multi-site-and-multi-region-federation"></a>Çok siteli ve çok bölgeli federasyon
 
 Birçok gelişmiş çözüm, aynı olay akışlarının birden fazla konumda tüketimine yönelik olarak kullanılabilmesini gerektirir veya olay akışlarının birden fazla konumda toplanmasını ve daha sonra tüketim için belirli bir konuma birleştirilmesini gerektirir. Ayrıca, tek bir bölge ve çözüm içinde de olmak üzere olay akışlarını zenginleştirme veya azaltmanın yanı sıra olay biçim dönüştürmeleri de yapmanız gerekir.
 
@@ -148,9 +148,9 @@ Yukarıdaki desenleri uygulamak, yapılandırmak ve çalıştırmak istediğiniz
 
 Olaylar arasındaki ilişkileri göz önünde bulundurmanız gereken, bileşik olaylar oluşturma, olayları zenginleştirme veya olayları azaltma, veri toplamaları oluşturma ve olay yüklerini dönüştürme, en iyi uygulama seçeneği [Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) .
 
-Azure Stream Analytics, [girişleri](../stream-analytics/stream-analytics-add-inputs.md) ve [çıkışları](../stream-analytics/stream-analytics-define-outputs.md) tümleştiren ve bu verileri, çıkışlardan daha sonra kullanılabilir hale getirilen [sorgular](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) aracılığıyla girişlerle tümleştiren [işler oluşturursunuz](../stream-analytics/stream-analytics-quick-create-portal.md) .
+Azure Stream Analytics, [girişleri](../stream-analytics/stream-analytics-add-inputs.md) ve [çıkışları](../stream-analytics/stream-analytics-define-outputs.md) tümleştiren ve bu verileri, çıkışlardan daha sonra kullanılabilir hale getirilen [sorgular](/stream-analytics-query/stream-analytics-query-language-reference) aracılığıyla girişlerle tümleştiren [işler oluşturursunuz](../stream-analytics/stream-analytics-quick-create-portal.md) .
 
-Sorgular [SQL sorgu diline](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference.md) dayalıdır ve akış verilerini kolayca filtrelemek, sıralamak, toplamak ve bir süre içinde birleştirmek için kullanılabilir. [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) ve [C# Kullanıcı tanımlı işlevlerle (UDF 'ler)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)bu SQL dilini de genişletebilirsiniz. Basit dil yapıları ve/veya yapılandırmalarında toplama işlemleri gerçekleştirirken olay sıralama seçeneklerini ve zaman pencerelerinin süresini kolayca ayarlayabilirsiniz.
+Sorgular [SQL sorgu diline](/stream-analytics-query/stream-analytics-query-language-reference) dayalıdır ve akış verilerini kolayca filtrelemek, sıralamak, toplamak ve bir süre içinde birleştirmek için kullanılabilir. [JavaScript](../stream-analytics/stream-analytics-javascript-user-defined-functions.md) ve [C# Kullanıcı tanımlı işlevlerle (UDF 'ler)](../stream-analytics/stream-analytics-edge-csharp-udf-methods.md)bu SQL dilini de genişletebilirsiniz. Basit dil yapıları ve/veya yapılandırmalarında toplama işlemleri gerçekleştirirken olay sıralama seçeneklerini ve zaman pencerelerinin süresini kolayca ayarlayabilirsiniz.
 
 Her işin dönüştürülmüş veriler için bir veya birkaç çıkışı vardır ve analiz ettiğiniz bilgilere yanıt olarak neler olduğunu denetleyebilirsiniz. Örneğin, şunları yapabilirsiniz:
 
@@ -191,7 +191,7 @@ Bu makalede, Azure 'daki olay ve mesajlaşma çoğaltma çalışma zamanı gibi 
 
 Daha sonra, Azure Stream Analytics veya Azure Işlevleri ile bir Replicator uygulaması ayarlamayı ve ardından Event Hubs ile çeşitli diğer olay ve mesajlaşma sistemleri arasında olay akışlarını nasıl çoğaltacağınızı okumak isteyebilirsiniz:
 
-- [Olay çoğaltma görev desenleri][10]
+- [Olay çoğaltma görevi desenleri][10]
 - [Azure Stream Analytics verileri işleme][9]
 - [Azure Işlevlerinde olay çoğaltıcı uygulamaları][1]
 - [Olayları Event Hubs arasında çoğaltma][2]

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: f861f9efa6ecc1886647ed6c460b6718ff97e8a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 90831c0e8d5ab73f65dc801319a357d59799cbc6
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522339"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807561"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Azure Özel Uç Nokta bağlantı sorunlarını giderme
 
@@ -100,8 +100,24 @@ Tüm olağan yapılandırmaların, Özel uç nokta kurulumlarınızla bağlantı
     
        ![NSG giden kuralları](./media/private-endpoint-tsg/nsg-outbound-rules.png)
 
+1. Kaynak sanal makine, NIC etkin rotalarındaki ınterfaceendpoints olarak bir sonraki atlamanın özel uç nokta IP 'si yoluna sahip olmalıdır. 
+
+    a. Kaynak VM 'de özel uç nokta yolunu göremiyorsanız, şunu denetleyin: 
+     - Kaynak VM ve özel uç nokta aynı VNET 'e aittir. Yanıt Evet ise, desteğe ihtiyacınız vardır. 
+     - Kaynak VM ve özel uç nokta farklı sanal ağların bir parçasıdır ve sanal ağlar arasındaki IP bağlantısını kontrol edin. IP bağlantısı varsa ve yine de yolu göremiyorsanız, desteğe katılın. 
+
 1. Bağlantıda sonuçlar doğrulandıktan sonra bağlantı sorunu, uygulama katmanındaki gizli diziler, belirteçler ve parolalar gibi diğer yönlerle ilgili olabilir.
-   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. Daha fazla bilgi için bkz. [Azure özel bağlantısı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md).
+   - Bu durumda, Özel uç noktayla ilişkili özel bağlantı kaynağının yapılandırmasını gözden geçirin. Daha fazla bilgi için bkz. [Azure özel bağlantısı sorun giderme kılavuzu](troubleshoot-private-link-connectivity.md)
+   
+1. Destek biletini oluşturmadan önce daraltmak her zaman iyidir. 
+
+    a. Kaynak şirket Içi Azure 'da özel bir uç noktaya bağlanarak sorun yaşıyor, bağlanmayı deneyin 
+      - Şirket içinden başka bir sanal makineye ve şirket Içi sanal ağa IP bağlantısı olup olmadığınızı kontrol edin. 
+      - Sanal ağdaki bir sanal makineden özel uç noktaya.
+      
+    b. Kaynak Azure ise ve özel uç nokta farklı bir sanal ağda ise, bağlanmayı deneyin 
+      - Farklı bir kaynaktan özel uç noktaya. Bunu yaparak, sanal makineye özgü sorunları ayırabilirsiniz. 
+      - Özel uç noktadan aynı sanal ağın parçası olan herhangi bir sanal makineye.  
 
 1. Sorununuz hala çözülmedi ve bir bağlantı sorunu hala varsa [Azure destek](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) ekibine başvurun.
 

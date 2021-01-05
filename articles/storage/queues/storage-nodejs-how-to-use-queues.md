@@ -4,17 +4,17 @@ description: Kuyrukları oluşturmak ve silmek için Azure kuyruk depolama alan�
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-september2019, devx-track-js
-ms.openlocfilehash: ebae3c8850947f3b6cbde6f2ebd8bfbd45b2fbb4
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 12ae05e10cdf0fa9a5f0725acaa1784eedc3612c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592186"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803705"
 ---
 # <a name="how-to-use-azure-queue-storage-from-nodejs"></a>Node.js Azure kuyruk depolamayı kullanma
 
@@ -350,4 +350,4 @@ Bir kuyruktan silmeden tüm iletileri temizlemek için çağırın `clearMessage
 Sıra depolamanın temellerini öğrendiğinize göre, daha karmaşık depolama görevleri hakkında bilgi edinmek için bu bağlantıları izleyin.
 
 - Yenilikleri öğrenmek için [Azure depolama ekibi blogu](https://techcommunity.Microsoft.com/t5/Azure-storage/bg-p/azurestorageblog) ' nu ziyaret edin
-- GitHub 'da [JavaScript deposu Için Azure depolama istemci kitaplığı](https://github.com/Azure/Azure-SDK-for-js/tree/master/SDK/storage#Azure-storage-client-library-for-JavaScript) ' nı ziyaret edin
+- GitHub 'da [JavaScript deposu Için Azure depolama istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage#Azure-storage-client-library-for-JavaScript) ' nı ziyaret edin

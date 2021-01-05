@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/23/2020
+ms.date: 12/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 2350177373bc99907c437d814d8f01193f18f3fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895732"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803927"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Blok Blobu verilerinde bir zaman içinde geri yükleme gerçekleştirin
 
@@ -23,7 +23,7 @@ Blok bloblarının bir veya daha fazla kümesini önceki bir duruma geri yüklem
 Noktadan noktaya geri yükleme hakkında daha fazla bilgi edinmek için bkz. [blok Blobları Için noktadan noktaya geri yükleme](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcıyı silmek istiyorsanız, bir kapsayıcıyı silmek için tek tek Blobları silin.
+> Zaman içinde geri yükleme, yalnızca blok Bloblarındaki işlemleri geri yüklemeyi destekler. Kapsayıcılardaki işlemler geri yüklenemez. [Kapsayıcıyı silme](/rest/api/storageservices/delete-container) işlemini çağırarak depolama hesabından bir kapsayıcıyı silerseniz, o kapsayıcı geri yükleme işlemiyle geri yüklenemez. Bir kapsayıcının tamamını silmek yerine, daha sonra geri yüklemek istiyorsanız ayrı Blobları silin.
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Zaman içinde nokta geri yüklemeyi etkinleştirme ve yapılandırma
 
@@ -107,6 +107,8 @@ Yalnızca blok Blobları geri yüklenir. Sayfa Blobları ve ekleme Blobları ger
 > Geri yükleme işlemi gerçekleştirdiğinizde, Azure depolama, işlem süresince geri yüklenen aralıklardaki bloblarda veri işlemlerini engeller. Birincil konumda okuma, yazma ve silme işlemleri engellenir. Bu nedenle, Azure portal kapsayıcıları gibi işlemler geri yükleme işlemi devam ederken beklendiği gibi gerçekleştirilemeyebilir.
 >
 > Depolama hesabı coğrafi olarak çoğaltılırsa, ikincil konumdaki okuma işlemleri geri yükleme işlemi sırasında devam edebilir.
+>
+> Bir veri kümesini geri yüklemek için geçen süre, geri yükleme döneminde yapılan yazma ve silme işlemlerinin sayısına bağlıdır. Örneğin, 1.000.000 nesne başına 3.000 nesne ve gün başına silinen 1.000 olan bir hesap, geçmişte 30 günlük bir noktaya geri yüklemek için yaklaşık iki saat gerektirir. Geçmişte 90 günden fazla bir bekletme dönemi ve geri yükleme bu değişiklik oranına sahip bir hesap için önerilmez.
 
 ### <a name="restore-all-containers-in-the-account"></a>Hesaptaki tüm kapsayıcıları geri yükle
 

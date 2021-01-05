@@ -3,12 +3,12 @@ title: Azure İlkesine Genel Bakış
 description: Azure İlkesi, Azure ortamında ilke tanımlarınızı oluşturmak, atamak ve yönetmek için kullandığınız bir Azure hizmetidir.
 ms.date: 10/05/2020
 ms.topic: overview
-ms.openlocfilehash: 8a32e32afb544588bb033cc64ede5ecbe6e2bac2
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92097397"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803961"
 ---
 # <a name="what-is-azure-policy"></a>Azure İlkesi nedir?
 
@@ -20,7 +20,7 @@ Tüm Azure Ilke verileri ve nesneleri bekleyen olarak şifrelenir. Daha fazla bi
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure Ilkesi, Azure 'daki kaynakları, bu kaynakların özelliklerini iş kurallarıyla karşılaştırarak değerlendirir. [JSON biçiminde](./concepts/definition-structure.md)açıklanan bu iş kuralları [ilke tanımları](#policy-definition)olarak bilinir. Yönetimi basitleştirmek için, bir [ilke girişimi](#initiative-definition) (bazen _policyset_olarak adlandırılır) oluşturmak üzere çeşitli iş kuralları birlikte gruplandırılabilir. İş kurallarınız oluşturulduktan sonra, [Yönetim grupları](../management-groups/overview.md), abonelikler, [kaynak grupları](../../azure-resource-manager/management/overview.md#resource-groups)veya tek tek kaynaklar gibi Azure tarafından desteklenen herhangi bir kaynak kapsamına ilke tanımı veya girişimi [atanır](#assignments) . Atama, bu atamanın [Kaynak Yöneticisi kapsamındaki](../../azure-resource-manager/management/overview.md#understand-scope) tüm kaynaklar için geçerlidir. Gerekirse alt kapsamlar dışarıda bırakılabilirler. Daha fazla bilgi için bkz. [Azure Ilkesinde kapsam](./concepts/scope.md).
+Azure Ilkesi, Azure 'daki kaynakları, bu kaynakların özelliklerini iş kurallarıyla karşılaştırarak değerlendirir. [JSON biçiminde](./concepts/definition-structure.md)açıklanan bu iş kuralları [ilke tanımları](#policy-definition)olarak bilinir. Yönetimi basitleştirmek için, bir [ilke girişimi](#initiative-definition) (bazen _policyset_ olarak adlandırılır) oluşturmak üzere çeşitli iş kuralları birlikte gruplandırılabilir. İş kurallarınız oluşturulduktan sonra, [Yönetim grupları](../management-groups/overview.md), abonelikler, [kaynak grupları](../../azure-resource-manager/management/overview.md#resource-groups)veya tek tek kaynaklar gibi Azure tarafından desteklenen herhangi bir kaynak kapsamına ilke tanımı veya girişimi [atanır](#assignments) . Atama, bu atamanın [Kaynak Yöneticisi kapsamındaki](../../azure-resource-manager/management/overview.md#understand-scope) tüm kaynaklar için geçerlidir. Gerekirse alt kapsamlar dışarıda bırakılabilirler. Daha fazla bilgi için bkz. [Azure Ilkesinde kapsam](./concepts/scope.md).
 
 Azure Ilkesi, değerlendirmenin bir kaynağın uyumlu olup olmadığını belirlemede kullandığı mantığı oluşturmak için bir [JSON biçimi](./concepts/definition-structure.md) kullanır. Tanımlar meta veriler ve ilke kuralı içerir. Tanımlı kural, tam olarak istediğiniz senaryoyu eşleştirmek için işlevleri, parametreleri, mantıksal işleçleri, koşulları ve özellik [diğer adlarını](./concepts/definition-structure.md#aliases) kullanabilir. İlke kuralı, atama kapsamındaki hangi kaynakların değerlendirildiğini belirler.
 
@@ -37,7 +37,7 @@ Kaynaklar, kaynak yaşam döngüsü, ilke atama yaşam döngüsü ve düzenli ol
 
 ### <a name="control-the-response-to-an-evaluation"></a>Bir değerlendirmenin yanıtını denetleme
 
-Uyumlu olmayan kaynakları işlemeye yönelik iş kuralları kuruluşlar arasında farklılık gösterir. Bir kuruluşun, bir platformun bir bit olmayan kaynağa yanıt vermesini nasıl istediğini gösteren örnekler şunlardır:
+Uyumlu olmayan kaynakları işlemeye yönelik iş kuralları kuruluşlar arasında farklılık gösterir. Kuruluşun uyumlu olmayan bir kaynağa yanıt vermesini nasıl istediğini gösteren örnekler şunlardır:
 
 - Kaynak değişikliğini reddetme
 - Değişikliği kaynağa Kaydet
@@ -57,11 +57,11 @@ Aşağıdaki Azure İlkesi genel bakış videosu Build 2018 etkinliğinde kayded
 
 > [!VIDEO https://www.youtube.com/embed/dxMaYF2GB7o]
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya başlama
 
 ### <a name="azure-policy-and-azure-rbac"></a>Azure Ilkesi ve Azure RBAC
 
-Azure Ilkesi ile Azure rol tabanlı erişim denetimi (Azure RBAC) arasında bazı önemli farklılıklar vardır. Azure Ilkesi, bazı kaynak sağlayıcılarının Kaynak Yöneticisi ve özelliklerinde temsil edilen kaynaklardaki özellikleri inceleyerek durumu değerlendirir. Azure Ilkesi eylemleri kısıtlayamaz ( _işlemler_olarak da adlandırılır). Azure Ilkesi, değişiklik yapan veya değişiklik yapma iznine sahip olan bir sorun olmadan kaynak durumunun iş kurallarınız ile uyumlu olmasını sağlar.
+Azure Ilkesi ile Azure rol tabanlı erişim denetimi (Azure RBAC) arasında bazı önemli farklılıklar vardır. Azure Ilkesi, bazı kaynak sağlayıcılarının Kaynak Yöneticisi ve özelliklerinde temsil edilen kaynaklardaki özellikleri inceleyerek durumu değerlendirir. Azure Ilkesi eylemleri kısıtlayamaz ( _işlemler_ olarak da adlandırılır). Azure Ilkesi, değişiklik yapan veya değişiklik yapma iznine sahip olan bir sorun olmadan kaynak durumunun iş kurallarınız ile uyumlu olmasını sağlar.
 
 Azure RBAC, farklı kapsamlardaki Kullanıcı [eylemlerinin](../../role-based-access-control/resource-provider-operations.md) yönetimine odaklanır. Bir eylemin denetimi gerekiyorsa, Azure RBAC kullanılacak doğru araçtır. Bir bireyin bir eylem gerçekleştirmek için erişime sahip olsa bile, sonuç uyumlu olmayan bir kaynaktır, Azure Ilkesi hala oluştur veya Güncelleştir ' i engeller.
 
@@ -94,7 +94,7 @@ Göz önünde bulundurmanız gereken birkaç işaretçi ve ipucu aşağıda veri
 - Tanımlar ve atamalar oluştururken kuruluş hiyerarşilerini göz önünde bulundurun. Yönetim grubu veya abonelik düzeyi gibi daha yüksek düzeylerde tanımlar oluşturmanızı öneririz. Ardından, bir sonraki alt düzeyde atama oluşturun. Bir yönetim grubunda bir tanım oluşturursanız, atama söz konusu yönetim grubu içindeki bir abonelik veya kaynak grubu için kapsamı değiştirilebilir.
 
 - Tek bir ilke tanımı için bile girişim tanımlarının oluşturulmasını ve atanmasını öneririz.
-  Örneğin, ilke tanımı _policyDefA_ ve bunu girişim tanımı _initiativeDefC_altında oluşturabilirsiniz. _Policydefb_ için daha sonra _policyDefA_benzeri hedefleri olan bir Ilke tanımı oluşturursanız, _initiativeDefC_ altına ekleyebilir ve bunları birlikte izleyebilirsiniz.
+  Örneğin, ilke tanımı _policyDefA_ ve bunu girişim tanımı _initiativeDefC_ altında oluşturabilirsiniz. _Policydefb_ için daha sonra _policyDefA_ benzeri hedefleri olan bir Ilke tanımı oluşturursanız, _initiativeDefC_ altına ekleyebilir ve bunları birlikte izleyebilirsiniz.
 
 - Bir girişim ataması oluşturduktan sonra, girişim öğesine eklenen ilke tanımları da bu girişim atamalarının bir parçası haline gelir.
 
@@ -148,12 +148,12 @@ Bu girişimin altında sahip olabileceğiniz ilke tanımlarından bazıları şu
 | İlke | Parametrenin adı |Parametrenin türü  |Not |
 |---|---|---|---|
 | policyA | allowedLocations | array  |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için dizilerin bulunduğu bir liste bekler |
-| policyB | allowedSingleLocation |dize |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için bir sözcük bekler |
+| policyB | allowedSingleLocation |string |Parametre türü “array” olarak tanımlandığından bu parametre, bir değer için bir sözcük bekler |
 
 Bu senaryoda **initiativeC** için girişim parametreleri tanımlanırken üç seçeneğiniz vardır:
 
 - Bu girişim dahilinde ilke tanımlarının parametrelerini kullanın: Bu örnekte, _allowedLocations_ ve _allowedSingleLocation_, **initiativeC** için girişim parametreleri olur.
-- Bu girişim tanımındaki ilke tanımlarının parametrelerine değerler sağlayın. Bu örnekte, **Policya**'ın parametresi – **Allowedlocations** ve **Policyb**'nin parametresi – **allowedsinglelocation**için konumların bir listesini sağlayabilirsiniz. Bu girişimin atamasını yaparken değerleri de sağlayabilirsiniz.
+- Bu girişim tanımındaki ilke tanımlarının parametrelerine değerler sağlayın. Bu örnekte, **Policya**'ın parametresi – **Allowedlocations** ve **Policyb**'nin parametresi – **allowedsinglelocation** için konumların bir listesini sağlayabilirsiniz. Bu girişimin atamasını yaparken değerleri de sağlayabilirsiniz.
 - Bu girişimin atamasını yaparken kullanılabilecek bir _değer_ seçenekleri listesi sağlayın. Bu girişimi atadığınızda, girişim dahilindeki ilke tanımlarından alınan parametreler yalnızca bu sağlanan listedeki değerleri alabilir.
 
 Bir girişim tanımında değer seçenekleri oluştururken, girişim ataması sırasında, listenin bir parçası olmadığından farklı bir değer girmeyebilir.

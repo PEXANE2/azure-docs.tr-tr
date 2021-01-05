@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: abhishgu
 ms.reviewer: abhishgu
-ms.openlocfilehash: a233845e8f19cc44cd9d00a0392b1341db297fd6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25972ba2bb30c39838c4822a42af292e8d8b1dba
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97633073"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803638"
 ---
 # <a name="ingest-data-from-apache-kafka-into-azure-cosmos-db-cassandra-api-using-kafka-connect"></a>Kafka Connect kullanarak Apache Kafka Azure Cosmos DB Cassandra API verileri alma
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -22,7 +22,7 @@ Mevcut Cassandra uygulamaları, [CQLv4 sürücü uyumluluğuna](https://cassandr
 
 Apache Kafka veriler (konular) yalnızca diğer uygulamalar tarafından tüketilmekte veya diğer sistemlere verildiğinde yararlıdır. [Tercih ettiğiniz dil ve istemci SDK 'sını kullanarak](https://cwiki.apache.org/confluence/display/KAFKA/Clients) [Kafka Producer/Consumer](https://kafka.apache.org/documentation/#api) API 'lerini kullanarak bir çözüm oluşturmak mümkündür. Kafka Connect alternatif bir çözüm sağlar. Apache Kafka ve diğer sistemler arasında ölçeklenebilir ve güvenilir bir şekilde veri akışı için bir platformdur. Kafka Connect, Cassandra 'yi içeren raf bağlayıcılarını desteklediğinden, Kafka Azure Cosmos DB Cassandra API bütünleştirmek için özel kod yazmanıza gerek yoktur. 
 
-Bu makalede, bir Kafka konusundan bir veya daha fazla Cassandra tablosunun satırlarına kayıtları almak için Kafka Connect Framework üzerinde çalışır olan açık kaynaklı [DataStax Apache Kafka bağlayıcısını](https://docs.datastax.com/kafka/doc/kafka/kafkaIntro.html)kullanacağız. Örnek, Docker Compose kullanarak yeniden kullanılabilir bir kurulum sağlar. Bu, tüm gerekli bileşenleri tek bir komutla önyüklemenizi sağladığından oldukça kullanışlıdır. Bu bileşenler Kafka, Zookeeper, Kafka Connect worker ve örnek veri Oluşturucu uygulamasını içerir.
+Bu makalede, bir Kafka konusundan bir veya daha fazla Cassandra tablosunun satırlarına kayıtları almak için Kafka Connect Framework üzerinde çalışır olan açık kaynaklı [DataStax Apache Kafka bağlayıcısını](https://docs.datastax.com/en/kafka/doc/kafka/kafkaIntro.html)kullanacağız. Örnek, Docker Compose kullanarak yeniden kullanılabilir bir kurulum sağlar. Bu, tüm gerekli bileşenleri tek bir komutla önyüklemenizi sağladığından oldukça kullanışlıdır. Bu bileşenler Kafka, Zookeeper, Kafka Connect worker ve örnek veri Oluşturucu uygulamasını içerir.
 
 Bileşenler ve hizmet tanımlarının bir dökümü aşağıda verilmiştir `docker-compose` . [GitHub](https://github.com/Azure-Samples/cosmosdb-cassandra-kafka/blob/main/docker-compose.yaml)deposunda tam dosyaya başvurabilirsiniz.
 

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 968ca6fa293e7bcc01bae6f48164c48c19b8267b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db3eaef240e1f76e4c61a454e104336806666a7c
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501728"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803910"
 ---
 # <a name="understand-roles-in-azure-active-directory"></a>Azure Active Directory rolleri anlama
 
@@ -44,7 +44,7 @@ Rol tabanlı erişim denetimi sistemi ayrı olarak söyliyoruz. rol tanımların
 
 ## <a name="why-some-azure-ad-roles-are-for-other-services"></a>Bazı Azure AD rollerinin diğer hizmetler için nedenleri
 
-Microsoft 365, her biri kendi hizmet portalı ile zaman içinde ayrı olarak geliştirilen rol tabanlı bir dizi erişim denetimi sistemine sahiptir. Azure AD portalından Microsoft 365 kimliği arasında kimlik yönetmenizi kolaylaştırmak için, her biri bir Microsoft 365 hizmetine yönetim erişimi veren, hizmete özgü bazı yerleşik roller ekledik. Bu ek bir örnek olarak, Azure AD 'de Exchange yönetici rolü bulunur. Bu rol, Exchange rol tabanlı erişim denetimi sisteminde [Kuruluş Yönetimi rol grubuna](/exchange/organization-management-exchange-2013-help) eşdeğerdir ve Exchange 'in tüm yönlerini yönetebilir. Benzer şekilde, Intune yönetici rolünü, takımlar yöneticisini, SharePoint yöneticisini ve benzerlerini ekledik. Sunucuya özgü roller, aşağıdaki bölümde yer alan Azure AD yerleşik rollerinin bir kategorisidir.
+Microsoft 365, her biri kendi hizmet portalı ile zaman içinde ayrı olarak geliştirilen rol tabanlı bir dizi erişim denetimi sistemine sahiptir. Azure AD portalından Microsoft 365 kimliği arasında kimlik yönetmenizi kolaylaştırmak için, her biri bir Microsoft 365 hizmetine yönetim erişimi veren, hizmete özgü bazı yerleşik roller ekledik. Bu ek bir örnek olarak, Azure AD 'de Exchange yönetici rolü bulunur. Bu rol, Exchange rol tabanlı erişim denetimi sisteminde [Kuruluş Yönetimi rol grubuna](/exchange/organization-management-exchange-2013-help) eşdeğerdir ve Exchange 'in tüm yönlerini yönetebilir. Benzer şekilde, Intune yönetici rolünü, takımlar yöneticisini, SharePoint yöneticisini ve benzerlerini ekledik. Hizmete özgü roller, aşağıdaki bölümde yer alan Azure AD yerleşik rollerinin bir kategorisidir.
 
 ## <a name="categories-of-azure-ad-roles"></a>Azure AD rollerinin kategorileri
 
@@ -58,7 +58,7 @@ Azure AD yerleşik rolleri, aşağıdaki üç geniş kategoriye giren yerlerde f
 
 Aşağıdaki tablo, bu rol kategorilerini anlamak için bir yardım olarak sunulmuştur. Kategoriler rastgele olarak adlandırılır ve [belgelenen rol izinlerinin](permissions-reference.md)ötesinde başka herhangi bir özelliği belirlemede tasarlanmamıştır.
 
-Category | Role
+Kategori | Rol
 ---- | ----
 Azure AD 'ye özgü roller | Uygulama Yöneticisi<br>Uygulama Geliştirici<br>Kimlik doğrulama Yöneticisi<br>B2C ıEF anahtar kümesi Yöneticisi<br>B2C ıEF Ilke Yöneticisi<br>Bulut Uygulaması Yöneticisi<br>Bulut Cihaz Yöneticisi<br>Koşullu Erişim Yöneticisi<br>Cihaz Yöneticileri<br>Dizin okuyucuları<br>Dizin eşitleme hesapları<br>Dizin yazarları<br>Dış KIMLIK Kullanıcı akış Yöneticisi<br>Dış KIMLIK Kullanıcı akışı öznitelik Yöneticisi<br>Dış kimlik sağlayıcısı Yöneticisi<br>Grup Yöneticisi<br>Konuk davetci<br>Yardım Masası Yöneticisi<br>Karma kimlik yöneticisi<br>Lisans Yöneticisi<br>Partner Katman1 desteği<br>Partner Katman2 desteği<br>Parola Yöneticisi<br>Ayrıcalıklı kimlik doğrulama Yöneticisi<br>Ayrıcalıklı rol yöneticisi<br>Rapor okuyucu<br>Kullanıcı hesabı Yöneticisi
 Çapraz hizmet rolleri | Şirket Yöneticisi<br>Uyumluluk Yöneticisi<br>Uyumluluk verileri Yöneticisi<br>Genel okuyucu<br>Güvenlik Yöneticisi<br>Güvenlik operatörü<br>Güvenlik Okuyucusu<br>Hizmet desteği Yöneticisi

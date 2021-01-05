@@ -1,6 +1,6 @@
 ---
-title: dosya dahil etme
-description: dosya dahil etme
+title: include dosyası
+description: include dosyası
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87103069"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805624"
 ---
 ## <a name="common-scenarios"></a>Genel senaryolar
 Aşağıdaki senaryolar büyük ölçüde patlanabilir:
@@ -47,7 +47,7 @@ Aşağıdaki örneklerde, birden fazla sanal makine ve disk birleşimleriyle bir
     - Sağlanan MB/s: 25
     - En fazla patlama MB/s: 170 
 - 2 P10 veri diski 
-    - Sağlanan MB/s: 25
+    - Sağlanan MB/s: 100
     - En fazla patlama MB/s: 170
 
  VM önyüklendiğinde, işletim sistemi diskinden veri alır. İşletim sistemi diski, başlangıç yapan bir sanal makinenin parçası olduğundan, işletim sistemi diski, ani kredilerin sonuna kadar olacaktır. Bu krediler, aşağıda görüldüğü gibi, işletim sistemi diskinin başlatılmasını 170 MB/s saniye sonra da sağlar:

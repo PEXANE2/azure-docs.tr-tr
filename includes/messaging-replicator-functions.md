@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc6b7553d240de05404d24f828a5f7db14772f93
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 279a00a6146d756e6a518dbf86b88f471d170b3a
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657597"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805601"
 ---
 ## <a name="what-is-a-replication-task"></a>Çoğaltma görevi nedir?
 
@@ -22,11 +22,11 @@ ms.locfileid: "97657597"
 
 Çoğaltma görevleri genellikle durumsuz, yani bir görevin sıralı veya paralel yürütmeleri arasında durum veya diğer yan etkileri paylaşmazlar. Bu, her ikisi de bir akışın mevcut durumunun üstüne uygulanabilecek toplu işlem ve zincirleme için de geçerlidir. 
 
-Bu, çoğaltma görevlerinin genellikle durum bilgisi olan toplama görevlerinden farklı olmasını sağlar ve [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction.md)gibi analiz çerçeveleri ve Hizmetleri etki alanıdır.
+Bu, çoğaltma görevlerinin genellikle durum bilgisi olan toplama görevlerinden farklı olmasını sağlar ve [Azure Stream Analytics](/azure/stream-analytics/stream-analytics-introduction)gibi analiz çerçeveleri ve Hizmetleri etki alanıdır.
 
 ## <a name="replication-applications-and-tasks-in-azure-functions"></a>Azure Işlevleri 'nde çoğaltma uygulamaları ve görevler
 
-Azure Işlevleri 'nde, bir çoğaltma görevi, yapılandırılmış bir kaynaktan bir veya daha fazla giriş iletisini alan bir [tetikleyici](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md) kullanılarak uygulanır ve kaynaktan yapılandırılan bir hedefe kopyalanmış iletileri ileten bir [Çıkış bağlamadır](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings.md#binding-direction) . 
+Azure Işlevleri 'nde, bir çoğaltma görevi, yapılandırılmış bir kaynaktan bir veya daha fazla giriş iletisini alan bir [tetikleyici](/azure/azure-functions/functions-triggers-bindings) kullanılarak uygulanır ve kaynaktan yapılandırılan bir hedefe kopyalanmış iletileri ileten bir [Çıkış bağlamadır](/azure/azure-functions/functions-triggers-bindings#binding-direction) . 
 
 | Tetikleyici  | Çıktı |
 |----------|--------|
@@ -57,17 +57,17 @@ Event Hubs ile Service Bus arasında ileti oluşturan basit çoğaltma görevler
 
 ### <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
-Bir çoğaltma işlevinin her iki tarafında da kullanılabilirlik olayı sırasında veri kaybını önlemek için yeniden deneme ilkesini sağlam olacak şekilde yapılandırmanız gerekir. Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) bakın. 
+Bir çoğaltma işlevinin her iki tarafında da kullanılabilirlik olayı sırasında veri kaybını önlemek için yeniden deneme ilkesini sağlam olacak şekilde yapılandırmanız gerekir. Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](/azure/azure-functions/functions-bindings-error-pages) bakın. 
 
 [Örnek depodaki](https://github.com/Azure-Samples/azure-messaging-replication-dotnet) örnek projeler için seçilen ilke ayarları, yeniden deneme aralıklarıyla 5 saniyeden 15 dakikaya kadar olan ve veri kaybını önlemek için sonsuz yeniden denemeler içeren bir üstel geri alma stratejisi yapılandırır. 
 
-Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
+Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
 
 ### <a name="setting-up-a-replication-application-host"></a>Çoğaltma uygulama konağını ayarlama
 
 Bir çoğaltma uygulaması, bir veya daha fazla çoğaltma görevi için bir yürütme konağından biridir. 
 
-Bu, bir Azure Işlevleri Premium planında tüketim planında veya (önerilen) çalışacak şekilde yapılandırılmış bir Azure Işlevleri uygulamasıdır. Tüm çoğaltma uygulamalarının, [sistem veya Kullanıcı tarafından atanan yönetilen kimlik](https://docs.microsoft.com/azure/app-service/overview-managed-identity.md)altında çalışması gerekir. 
+Bu, bir Azure Işlevleri Premium planında tüketim planında veya (önerilen) çalışacak şekilde yapılandırılmış bir Azure Işlevleri uygulamasıdır. Tüm çoğaltma uygulamalarının, [sistem veya Kullanıcı tarafından atanan yönetilen kimlik](/azure/app-service/overview-managed-identity)altında çalışması gerekir. 
 
 Bağlı Azure Resource Manager (ARM) şablonları, ile bir çoğaltma uygulaması oluşturur ve yapılandırır:
 
@@ -80,9 +80,9 @@ Bir Azure sanal ağına (VNet) bağlanan Event Hubs erişmesi gereken çoğaltma
 
 |       | Dağıtma | Görselleştirme  
 |-------|------------------|--------------|---------------|
-| **Azure Işlevleri tüketim planı** | [![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2FAconsumption%2Fazuredeploy.json)|[![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
-| **Azure Işlevleri Premium planı** |[![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
-| **VNet ile Azure Işlevleri Premium planı** | [![Azure 'A dağıtma](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)
+| **Azure Işlevleri tüketim planı** | [![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2FAconsumption%2Fazuredeploy.json)|[![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fconsumption%2Fazuredeploy.json)
+| **Azure Işlevleri Premium planı** |[![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json) | [![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium%2Fazuredeploy.json)
+| **VNet ile Azure Işlevleri Premium planı** | [![Azure'a Dağıt](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)|[![Görselleştirme](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/visualizebutton.svg?sanitize=true)](http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-messaging-replication-dotnet%2Fmain%2Ftemplates%2Fpremium-vnet%2Fazuredeploy.json)
 
 
 ### <a name="examples"></a>Örnekler
@@ -137,7 +137,7 @@ Anında tanılama öngörüleri için, günlük ayrıntılarının düşük geci
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Işlevleri dağıtımları](https://docs.microsoft.com/azure/azure-functions/functions-deployment-technologies.md)
-* [Azure Işlevleri tanılaması](https://docs.microsoft.com/azure/azure-functions/functions-diagnostics.md)
-* [Azure Işlevleri ağ seçenekleri](https://docs.microsoft.com/azure/azure-functions/functions-networking-options.md)
-* [Azure Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview.md)
+* [Azure Işlevleri dağıtımları](/azure/azure-functions/functions-deployment-technologies)
+* [Azure Işlevleri tanılaması](/azure/azure-functions/functions-diagnostics)
+* [Azure Işlevleri ağ seçenekleri](/azure/azure-functions/functions-networking-options)
+* [Azure Application Insights](/azure/azure-monitor/app/app-insights-overview)

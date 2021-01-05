@@ -10,12 +10,13 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 3c5a04bd14bdcbf250908db78c622b963f191d91
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+adobe-target: true
+ms.openlocfilehash: b54df350e3f59720a92d7c1e74e28d9fcafddf94
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333112"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802499"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Hızlı başlangıç: Azure App Service Java uygulaması oluşturma
 
@@ -66,7 +67,7 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Maven eklentisini yapılandırma
 
-Azure App Service dağıtım işlemi, Azure CLı 'daki Azure kimlik bilgilerinizi otomatik olarak kullanacaktır. Azure CLı yerel olarak yüklü değilse, Maven eklentisi OAuth veya cihaz oturum açma bilgileriyle kimlik doğrulaması yapılır. Daha fazla bilgi için bkz. [Maven eklentileri ile kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
+Azure App Service’e dağıtma sürecinde, otomatik olarak Azure CLI’den alınan Azure kimlikleriniz kullanılacaktır. Azure CLı yerel olarak yüklü değilse, Maven eklentisi OAuth veya cihaz oturum açma bilgileriyle kimlik doğrulaması yapılır. Daha fazla bilgi için bkz. [Maven eklentileri ile kimlik doğrulama](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication).
 
 Dağıtımı yapılandırmak için aşağıdaki Maven komutunu çalıştırın. Bu komut, App Service işletim sistemini, Java sürümünü ve Tomcat sürümünü ayarlamanıza yardımcı olur.
 
@@ -78,12 +79,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
 1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `3` .
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
-1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. Son olarak, seçimlerinizi onaylamak için son istemde Enter tuşuna basın.
 
     Özet çıktınızı aşağıda gösterilen kod parçacığına benzer şekilde görünecektir.
 
@@ -110,13 +111,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 # <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
 1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, girerek **Windows** ' u seçin `3` .
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
 1. ENTER tuşuna basarak, **Tomcat 8,5** varsayılan Web kapsayıcısını kullanın.
-1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. Son olarak, seçimlerinizi onaylamak için son istemde Enter tuşuna basın.
 
     Özet çıktınızı aşağıda gösterilen kod parçacığına benzer şekilde görünecektir.
 
@@ -148,12 +149,12 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="java-se"></a>[Java SE](#tab/javase)
 
-1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
 1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
-1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. Son olarak, seçimlerinizi onaylamak için son istemde Enter tuşuna basın.
 
     ```
     Please confirm webapp properties
@@ -177,13 +178,13 @@ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.12.0:config
 
 ### <a name="tomcat"></a>[Tomcat](#tab/tomcat)
 
-1. **Abonelik** seçeneği ile sorulduğunda, `Subscription` satır başından başlayarak Yazdır numarasını girerek uygun seçeneği belirleyin.
+1. **Abonelik** seçeneğiyle istendiğinde, satır başındaki numarayı girerek uygun `Subscription` öğesini seçin.
 1. **Web uygulaması** seçeneğinde sorulduğunda, `<create>` ENTER tuşuna basarak veya var olan bir uygulamayı seçerek, defalt seçeneğini kabul edin.
 1. **Işletim sistemi** seçeneğinde sorulduğunda, ENTER tuşuna basarak **Linux** ' u seçin.
 1. **Fiyatlandırma katmanı** seçeneği ile sorulduğunda, girerek **B2** ' ı seçin `2` .
 1. ENTER tuşuna basarak Java **8** varsayılan Java sürümünü kullanın.
 1. ENTER tuşuna basarak, **Tomcat 8,5** varsayılan Web kapsayıcısını kullanın.
-1. Son olarak, Seçimlerinizi onaylamak için son sorulduğunda ENTER tuşuna basın.
+1. Son olarak, seçimlerinizi onaylamak için son istemde Enter tuşuna basın.
 
     ```
     Please confirm webapp properties
@@ -217,8 +218,8 @@ Gerekirse, App Service yapılandırmasını doğrudan ' de değiştirebilirsiniz
 `<subscriptionId>` | yanlış | Abonelik kimliğini belirtin. | 0.1.0 +
 `<resourceGroup>` | true | Web uygulamanız için Azure Kaynak grubu. | 0.1.0 +
 `<appName>` | true | Web uygulamanızın adı. | 0.1.0 +
-`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope** ' dir. [Desteklenen bölgelerde](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) tüm geçerli bölgeler bölümü. | 0.1.0 +
-`<pricingTier>` | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer, üretim iş yükü için **P1V2** , **B2** ise Java geliştirme ve test için önerilen en düşük gereksinimdir. [Daha fazla bilgi edinin](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
+`<region>` | true | Web uygulamanızın barındırılacak bölgeyi belirtir; Varsayılan değer **westeurope**' dir. [Desteklenen bölgelerde](https://github.com/microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) tüm geçerli bölgeler bölümü. | 0.1.0 +
+`<pricingTier>` | yanlış | Web uygulamanız için fiyatlandırma katmanı. Varsayılan değer, üretim iş yükü için **P1V2** , **B2** ise Java geliştirme ve test için önerilen en düşük gereksinimdir. [Daha fazla bilgi](https://azure.microsoft.com/pricing/details/app-service/linux/)| 0.1.0 +
 `<runtime>` | true | Çalışma zamanı ortamı yapılandırması, [burada](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)ayrıntıları görebilirsiniz. | 0.1.0 +
 `<deployment>` | true | Dağıtım yapılandırması, ayrıntıları [burada](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Web-App:-Configuration-Details)görebilirsiniz. | 0.1.0 +
 
@@ -241,7 +242,7 @@ Ardından, aşağıdaki komutu kullanarak Java uygulamanızı Azure 'a dağıtab
 mvn package azure-webapp:deploy
 ```
 
-Dağıtım tamamlandıktan sonra uygulamanız ' `http://<appName>.azurewebsites.net/` `http://helloworld-1590394316693.azurewebsites.net` de (tanıtımda) hazırlanacaktır. Yerel Web tarayıcınızla URL 'yi açın, şunu görmeniz gerekir:
+Dağıtım tamamlandığında, uygulamanız `http://<appName>.azurewebsites.net/` sayfasında (tanıtımda `http://helloworld-1590394316693.azurewebsites.net` sayfasında) kullanıma hazır olur. Yerel Web tarayıcınızla URL 'yi açın, şunu görmeniz gerekir:
 
 ![Azure App Service 'de çalışan örnek uygulama](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -252,7 +253,7 @@ Dağıtım tamamlandıktan sonra uygulamanız ' `http://<appName>.azurewebsites.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, kaynak grubunu portaldan silin veya Cloud Shell aşağıdaki komutu çalıştırın:
+Önceki adımlarda, bir kaynak grubunda Azure kaynakları oluşturdunuz. Bu kaynaklara gelecekte ihtiyaç duymayacağınızı düşünüyorsanız kaynak grubunu portaldan veya Cloud Shell’de şu komutu çalıştırarak silin:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes

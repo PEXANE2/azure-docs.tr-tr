@@ -1,6 +1,6 @@
 ---
 title: Azure Güvenlik Merkezi 'ndeki önerileri düzeltin | Microsoft Docs
-description: Bu makalede, Azure Güvenlik Merkezi 'ndeki kaynaklarınızın korunması ve güvenlik ilkeleriyle uyumlu olması için önerilerin nasıl düzeltileceği açıklanır.
+description: Bu makalede, Azure Güvenlik Merkezi 'nde kaynaklarınızın korunması ve güvenlik ilkelerini karşılamak için önerilerin nasıl yanıtlanacağı açıklanır.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/08/2020
 ms.author: memildin
-ms.openlocfilehash: 3d4b968d0d5e091d72cf718d58b11ade68ddf8c6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: dabd7e9e2c3c74225efc4611c7ad3523a6c76ba5
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94637097"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807999"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde düzeltme önerileri
 
@@ -26,44 +26,44 @@ ms.locfileid: "94637097"
 
 ## <a name="remediation-steps"></a>Düzeltme adımları <a name="remediation-steps"></a>
 
-Tüm önerileri inceledikten sonra, hangisi önce düzeltileceğine karar verin. Öncelikle ne yapacaklarınızı önceliklendirmeye yardımcı olması için [güvenli puan etkisini](security-center-recommendations.md#monitor-recommendations) kullanmanızı öneririz.
+Tüm önerileri inceledikten sonra, hangisi önce düzeltileceğine karar verin. Güvenli puanınızı artırmak için en yüksek olabilecek güvenlik denetimlerini önceliklendirmenizi öneririz.
 
-1. Listeden öneri ' e tıklayın.
+1. Listeden bir öneri seçin.
 
 1. **Düzeltme adımları** bölümündeki yönergeleri izleyin. Her öneri kendi yönerge kümesine sahiptir. Aşağıdaki ekran görüntüsünde, uygulamaları yalnızca HTTPS üzerinden trafiğe izin verecek şekilde yapılandırmaya yönelik düzeltme adımları gösterilmektedir.
 
-    ![Öneri ayrıntıları](./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png)
+    :::image type="content" source="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png" alt-text="Öneri için el ile düzeltme adımları" lightbox="./media/security-center-remediate-recommendations/security-center-remediate-recommendation.png":::
 
-1. Tamamlandıktan sonra, düzeltme başarılı olursa bildirim görüntülenir.
+1. Tamamlandıktan sonra, sorunun çözümlenip çözümlenmediğini bildiren bir bildirim görüntülenir.
 
-## <a name="quick-fix-remediation"></a>Hızlı düzeltme düzeltme<a name="one-click"></a>
+## <a name="quick-fix-remediation"></a>Hızlı düzeltme düzeltme
 
-Hızlı düzeltme, düzeltmeyi basitleştirir ve ortamınızın güvenliğini iyileştirmek için güvenli puanınızı hızla artırmanıza olanak sağlar.
+Düzeltmeyi basitleştirmek ve ortamınızın güvenliğini artırmak (ve güvenli puanınızı artırmak) için birçok öneri, hızlı bir düzeltme seçeneği içerir.
 
-Hızlı düzeltme, birden fazla kaynak üzerinde bir öneriyi hızlıca düzeltmenizi sağlar. 
+Hızlı düzeltme, birden fazla kaynak üzerinde bir öneriyi hızlıca düzeltmenize yardımcı olur.
 
 > [!TIP]
-> Hızlı düzelme yalnızca belirli öneriler için kullanılabilir. Hızlı düzelme seçeneğine sahip önerileri bulmak için öneriler listesinin en üstünde adanmış filtreyi kullanın:
+> Hızlı düzelme çözümleri yalnızca belirli öneriler için kullanılabilir. Kullanılabilir bir hızlı düzelme sahip önerileri bulmak için, öneriler listesi için **Yanıt eylemleri** filtresini kullanın:
 > 
 > :::image type="content" source="media/security-center-remediate-recommendations/quick-fix-filter.png" alt-text="Hızlı düzelme seçeneğine sahip önerileri bulmak için öneriler listesinin üzerindeki filtreleri kullanın":::
 
-Hızlı düzeltme düzeltmesini uygulamak için:
+Hızlı bir çözüm uygulamak için:
 
-1. **Hızlı düzelme** sahip öneriler listesinden! etiket ' e tıklayın.
+1. **Hızlı düzelme** sahip öneriler listesinden! etiket, bir öneri seçin.
 
-    [![Hızlı düzelme 'yi seçin!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
+    [![Hızlı düzelme 'yi seçin!](media/security-center-remediate-recommendations/security-center-quick-fix-select.png)](media/security-center-remediate-recommendations/security-center-quick-fix-select.png#lightbox)
 
-1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt** ' e tıklayın.
+1. **Sağlıksız kaynaklar** sekmesinden, öneriyi uygulamak istediğiniz kaynakları seçin ve **Düzelt**' i seçin.
 
     > [!NOTE]
     > Listelenen bazı kaynaklar devre dışı bırakılabilir, çünkü bunları değiştirmek için uygun izinlere sahip değilsiniz.
 
 1. Onay kutusunda düzeltme ayrıntılarını ve etkilerini okuyun.
 
-    ![Hızlı çözüm](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
+    ![Hızlı çözüm](./media/security-center-remediate-recommendations/security-center-quick-fix-view.png)
 
     > [!NOTE]
-    > Bu etkiler, **Düzelt** ' i tıkladıktan sonra açılan **kaynakları Düzelt** penceresindeki gri kutusunda listelenir. Hızlı düzeltme düzeltmesine devam eden değişikliklerin ne olduğunu listeler.
+    > Bu etkiler, **Düzelt**' i tıkladıktan sonra açılan **kaynakları Düzelt** penceresindeki gri kutusunda listelenir. Hızlı düzeltme düzeltmesine devam eden değişikliklerin ne olduğunu listeler.
 
 1. Gerekirse ilgili parametreleri ekleyin ve düzeltmeyi onaylayın.
 
@@ -79,7 +79,7 @@ Düzeltme işlemi, kaynak üzerinde yapılandırmayı uygulamak için bir şablo
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede, güvenlik merkezi 'nde önerilerin nasıl düzeltileceği gösterildi. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki konulara bakın:
+Bu belgede, güvenlik merkezi 'nde önerilerin nasıl düzeltileceği gösterildi. Güvenlik Merkezi hakkında daha fazla bilgi edinmek için aşağıdaki sayfalara bakın:
 
 * [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md) -Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini yapılandırma hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi 'Nde güvenlik durumu izleme](security-center-monitoring.md) -Azure kaynaklarınızın sistem durumunu izlemeyi öğrenin.

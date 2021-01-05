@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.custom: mvc, devx-track-azurecli
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 1b17729437b238b98f60e2cd97664fa6aafcccd4
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b3ba007f03b3aa4883d9455dc43b2bc19676da59
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462449"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803978"
 ---
 # <a name="how-to-certify-iot-plug-and-play-devices"></a>IoT Tak Çalıştır cihazlarına sertifika verme
 
@@ -41,7 +41,7 @@ Sertifika gereksinimlerini karşılamak için cihazınızın şunları yapmanız
 - [DPS](../iot-dps/about-iot-dps.md)kullanarak Azure IoT Hub 'e bağlanır.
 - IoT Tak ve Kullan kuralını takip eden telemetri, özellik veya komutların uygulanması.
 - [Dtdl v2](https://aka.ms/dtdl) modeliyle cihaz etkileşimlerini açıklama.
-- [Azure IoT ortak model deposundaki](https://devicemodels.azureiotsolutions.com/) modeli ve gerekli tüm arabirimleri yayımlayın
+- Azure IoT ortak model deposundaki modeli ve gerekli tüm arabirimleri yayımlayın
 - DPS sağlama yükünde, [DPS kaydı](./concepts-developer-guide-device.md#dps-payload) SıRASıNDA model kimliğini gönderin.
 - [MQTT bağlantısı](./concepts-developer-guide-device.md#model-id-announcement)SıRASıNDA model kimliğini duyurur.
 - Tüm cihaz modelleri [Azure IoT Central](../iot-central/core/overview-iot-central-developer.md)uyumlu olmalıdır.
@@ -174,7 +174,7 @@ Aşağıdaki adımlarda, [Azure Sertifikalı cihaz portalı](https://aka.ms/acdp
 
 [Sertifika portalını](https://aka.ms/acdp)kullanmak için iş veya okul kiracınızdan bir Azure Active Directory kullanmanız gerekir.
 
-Modelleri Azure IoT ortak modeli deposuna yayımlamak için hesabınızın [Microsoft iş ortağı ağı](https://partner.microsoft.com)bir üyesi olması gerekir. Sistem, Microsoft İş Ortağı Ağı KIMLIĞININ mevcut olduğunu ve hesabın cihaz kataloğuna yayımlamadan önce tam olarak güvenilir olup olmadığını denetler.
+Modelleri [Azure IoT ortak modeli deposuna](https://github.com/Azure/iot-plugandplay-models)yayımlamak için hesabınızın [Microsoft iş ortağı ağı](https://partner.microsoft.com)bir üyesi olması gerekir. Sistem, Microsoft İş Ortağı Ağı KIMLIĞININ mevcut olduğunu ve hesabın cihaz kataloğuna yayımlamadan önce tam olarak güvenilir olup olmadığını denetler.
 
 ### <a name="company-profile"></a>Şirket profili
 

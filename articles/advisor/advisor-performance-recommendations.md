@@ -3,12 +3,12 @@ title: Danışman ile Azure uygulamalarının performansını geliştirme
 description: İş açısından kritik uygulamalarınızın hızını ve yanıt hızını artırmak için Azure Danışmanı 'nda performans önerilerini kullanın.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 59de7ee14a3af2f8740d63a3cae19571469afd7f
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630352"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802550"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor 'ı kullanarak Azure uygulamalarının performansını geliştirme
 
@@ -163,10 +163,10 @@ Bu koşullar, kümenizin yüksek yazma gecikme sürelerine sahip olduğunu göst
 Bu öneri, yapılandırılmış olan önbelleğe alma süresinden (ilke) daha ötesine bakan çok sayıda sorguya sahip olan Azure Veri Gezgini tablolarını gösterir (Önbellek dışındaki verilere erişen sorgu yüzdesine göre sıralanmış ilk 10 tablo görüntülenir). Kümenin performansını geliştirmek için önerilen eylem: Bu tablodaki sorguları gereken en düşük zaman aralığıyla (tanımlanan ilke içinde) sınırlayın. Alternatif olarak tüm zaman aralığındaki veriler gerekliyse önbellek süresini önerilen değere yükseltin.
 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL geçici tablo boyutlandırmasını iyileştirerek performansı artırma
-Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi edinin](https://aka.ms/azure_mysql_tmp_table)
+Advisor Analysis, MySQL sunucunuzun düşük geçici tablo parametresi ayarları nedeniyle gereksiz g/ç yükünü ortadan kaldırır. Bu, gereksiz disk tabanlı işlemlere ve düşük performansa neden olabilir. Disk tabanlı işlemlerin sayısını azaltmak için 'tmp_table_size' ve 'max_heap_table_size' parametre değerlerini artırmanızı öneririz. [Daha fazla bilgi](https://aka.ms/azure_mysql_tmp_table)
 
 ## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>Düğümler arasında iş yükünü dağıtmak için sunucu grubundaki verileri dağıtma
-Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi edinin](https://go.microsoft.com/fwlink/?linkid=2135201) 
+Danışman, verilerin dağıtılmayan ancak düzenleyici üzerinde kalan sunucu gruplarını tanımlar. Bu, danışman, tam Hyperscale (Citus) avantajlarının sunucu gruplarınız için çalışan düğümlerine veri dağıtmasını önerir. Bu, sunucu grubundaki her bir düğümün kaynağını kullanarak sorgu performansını geliştirir. [Daha fazla bilgi](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="improve-user-experience-and-connectivity-by-deploying-vms-closer-to-windows-virtual-desktop-deployment-location"></a>VM 'Leri Windows Sanal Masaüstü Dağıtım konumuna daha yakın bir şekilde dağıtarak Kullanıcı deneyimini ve bağlantısını geliştirme
 Sanal makinelerinizin, kullanıcılarınızın Windows Sanal Masaüstü (WVD) kullanarak bağlandığı bölgeden farklı veya fazla uzak bir bölgede bulunduğunu belirledik. Bu durum bağlantı sürelerinin uzamasına yol açabilir ve genel olarak WVD'de kullanıcının deneyimini etkiler. Konak havuzlarınız için sanal makine oluştururken kullanıcıya daha yakın bir bölge kullanmaya çalışmalısınız. Yakında bulunmak WVD hizmetinden memnuniyetin devam etmesini ve genel olarak daha iyi bir deneyim kalitesi elde edilmesini sağlar. [Bağlantı gecikme süresi hakkında daha fazla bilgi edinin](../virtual-desktop/connection-latency.md).
@@ -179,7 +179,7 @@ Bu abonelik kapsamındaki kaynakların güncel olmayan Tam Ekran Okuyucu SDK’s
 
 Danışman, yük dengeleme algoritması olarak ilk ayarlanan derinliği olan bir konak havuzunuzun olduğunu ve ana bilgisayar havuzunun en fazla oturum sınırı 99999 ' den büyük veya buna eşit olduğunu algılar. Derinlik öncelikli yük dengeleme, tek bir oturum konağında eşzamanlı oturum açabilecek kullanıcı sayısı üst sınırını saptamak için en yüksek oturum sınırını kullanır. Maksimum oturum sınırı çok yüksekse, tüm Kullanıcı oturumları aynı oturum ana bilgisayarına yönlendirilir ve bu, performans ve güvenilirlik sorunlarına neden olur. Bu nedenle, bir konak havuzunu derinlemesine ilk yük dengelemeye sahip olacak şekilde ayarlarken, sanal makinelerinizin ve kapasitenizin yapılandırmasına göre uygun bir en fazla oturum sınırı ayarlamanız gerekir. 
 
-Windows sanal masaüstü 'nde yük dengeleme hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü yük dengeleme yöntemini yapılandırma](/virtual-desktop/troubleshoot-set-up-overview.md).
+Windows sanal masaüstü 'nde yük dengeleme hakkında daha fazla bilgi için bkz. [Windows sanal masaüstü yük dengeleme yöntemini yapılandırma](/azure/virtual-desktop/troubleshoot-set-up-overview).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Danışman 'de performans önerilerine erişme
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 12/01/2020
 ms.author: thvankra
-ms.openlocfilehash: f5f2cb5ac8c354df38310cdcb47b98e1da5b6cfa
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: c969e4fac3ae30088cfe47a7b0edff22c578cb8b
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97521843"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97802380"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API genel sorunları giderme
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ Bu makalede, Azure Cosmos DB Cassandra API kullanan uygulamalar için sık karş
 | OverloadedException (Java) | Tüketilen istek birimlerinin toplam sayısı, anahtar alanı veya tablo üzerinde sağlanan istek birimlerinden daha fazla. Bu nedenle istekler kısıtlanıyor. | Azure Portal bir anahtar alanı veya tabloya atanan üretilen işi ölçeklendirmeyi düşünün (Cassandra API ölçeklendirme işlemleri için [buraya](manage-scale-cassandra.md) bakın) veya bir yeniden deneme ilkesi uygulayabilirsiniz. Java için bkz. [v3. x sürücüsü](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample) ve [v4. x sürücüsü](https://github.com/Azure-Samples/azure-cosmos-cassandra-java-retry-sample-v4)için yeniden deneme örnekleri. Ayrıca bkz. [Java Için Azure Cosmos Cassandra uzantıları](https://github.com/Azure/azure-cosmos-cassandra-extensions) |
 | OverloadedException (Java) yeterli aktarım hızına sahip | İstek hacmi ve/veya tüketilen istek birimi maliyeti için yeterli işleme sağlanmakta olmasına rağmen sistem daraltma istekleri gibi görünüyor  | Cassandra API şema düzeyindeki işlemler (CREATE TABLE, ALTER TABLE, DROP TABLE) için sistem üretilen iş bütçesini uygular. Bu bütçe, bir üretim sistemindeki şema işlemleri için yeterince olmalıdır. Ancak, çok sayıda şema düzeyi işlem yaptıysanız, bu sınırı aşmanız mümkündür. Bu bütçe kullanıcı denetimli olmadığından, çalıştırılan şema işlemlerinin sayısını azaltmayı göz önünde bulundurmanız gerekir. Bu eylemi gerçekleştirmek sorunu çözmezse veya iş yükünüz için uygun değilse, [bir Azure destek isteği oluşturun](../azure-portal/supportability/how-to-create-azure-support-request.md).|
 | ClosedConnectionException (Java) | Başarılı bağlantıları izleyen bir boşta kalma süresi dolduktan sonra uygulama bağlanamıyor| Bu hata, 4 dakika olan Azure LoadBalancers 'in boşta kalma zaman aşımından kaynaklanıyor olabilir. Etkin tut ayarını sürücüde tut (aşağıya bakın) ve işletim sisteminde etkin tutma ayarlarını artırın veya [Azure Load Balancer boşta kalma zaman aşımını ayarlayın](../load-balancer/load-balancer-tcp-idle-timeout.md?tabs=tcp-reset-idle-portal). |
-| Diğer aralıklı bağlantı hataları (Java) | Bağlantı, beklenmedik şekilde düşerek veya zaman aşımına uğrar | Java için Apache Cassandra sürücüleri iki yerel yeniden bağlantı ilkesi sağlar: `ExponentialReconnectionPolicy` ve `ConstantReconnectionPolicy` . Varsayılan değer: `ExponentialReconnectionPolicy`. Ancak, Azure Cosmos DB Cassandra API için `ConstantReconnectionPolicy` 2 saniyelik bir gecikmeyle önerilir. Java v4. x sürücüsü için [sürücü belgelerine](https://docs.datastax.com/developer/java-driver/4.9/manual/core/reconnection/)  ve [burada](https://docs.datastax.com/developer/java-driver/3.7/manual/reconnection/) Java 3. x Kılavuzu için (aşağıdaki örneklere bakın) bakın.|
+| Diğer aralıklı bağlantı hataları (Java) | Bağlantı, beklenmedik şekilde düşerek veya zaman aşımına uğrar | Java için Apache Cassandra sürücüleri iki yerel yeniden bağlantı ilkesi sağlar: `ExponentialReconnectionPolicy` ve `ConstantReconnectionPolicy` . Varsayılan değer: `ExponentialReconnectionPolicy`. Ancak, Azure Cosmos DB Cassandra API için `ConstantReconnectionPolicy` 2 saniyelik bir gecikmeyle önerilir. Java v4. x sürücüsü için [sürücü belgelerine](https://docs.datastax.com/en/developer/java-driver/4.9/manual/core/reconnection/)  ve [burada](https://docs.datastax.com/en/developer/java-driver/3.7/manual/reconnection/) Java 3. x Kılavuzu için (aşağıdaki örneklere bakın) bakın.|
 
 Hata bilgileriniz yukarıda listelenmiyorsa ve [Cassandra API desteklenen bir işlemi](cassandra-support.md)yürütürken bir hata yaşıyorsanız, *Yerel Apache Cassandra kullanırken hatanın mevcut olmadığı* durumlarda [bir Azure destek isteği oluşturun](../azure-portal/supportability/how-to-create-azure-support-request.md)
 

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 671ca73cfa898be532521599d1211d2a8081eb4b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
+ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563271"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97807918"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure SYNAPSE Analytics hakkında sık sorulan sorular
 
@@ -71,7 +71,7 @@ A: Apache Spark için SYNAPSE bağlantısı GA 'dir. Sunucusuz SQL havuzu için 
 
 Y: Evet! Tüm işlem hattı yapıtları, Not defterleri, SQL betikleri ve Spark iş tanımları git içinde yer alır. Tüm havuz tanımları, git 'te ARM şablonları olarak depolanır. Adanmış SQL havuzu nesneleri (şemalar, tablolar, görünümler, vb.), CI/CD desteğiyle veritabanı projeleriyle yönetilir.
 
-## <a name="pipelines"></a>Pipelines
+## <a name="pipelines"></a>İşlem hatları
 
 ### <a name="q-how-do-i-ensure-i-know-what-credential-is-being-used-to-run-a-pipeline"></a>S: bir ardışık düzen çalıştırmak için hangi kimlik bilgilerinin kullanıldığını Nasıl yaparım? emin olun. 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 6f2c15518a12a99ca1390284165ad2d48156e06a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968681"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97803825"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Azure 'da kendi aboneliğinizi getir Gold görüntülerini Red Hat Enterprise Linux
 
@@ -216,4 +216,4 @@ Azure disk şifrelemesi uygulama adımları için bkz. [Linux VM 'Lerinde Azure 
 - Red Hat güncelleştirme altyapısı hakkında daha fazla bilgi edinmek için bkz. [Azure Red Hat güncelleştirme altyapısı](./redhat-rhui.md).
 - Azure 'daki tüm Red Hat görüntüleri hakkında daha fazla bilgi edinmek için [Belgeler sayfasına](./redhat-images.md)bakın.
 - Tüm RHEL sürümleri için Red Hat destek ilkeleri hakkında daha fazla bilgi için [Red Hat Enterprise Linux yaşam döngüsü](https://access.redhat.com/support/policy/updates/errata) sayfasına bakın.
-- RHEL Gold görüntüleri hakkında ek belgeler için [Red Hat belgelerine](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure)bakın.
+- RHEL Gold görüntüleri hakkında ek belgeler için [Red Hat belgelerine](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access)bakın.

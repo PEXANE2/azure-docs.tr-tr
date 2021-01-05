@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: f82adad5273f1c5559cbeb1924f59e57c863f6b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48e954eab9da5dfc638f93a7c4e55c675c4f2ac9
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91303463"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797256"
 ---
 # <a name="how-to-manage-model-and-learning-settings"></a>Model ve öğrenme ayarlarını yönetme
 
@@ -18,7 +18,7 @@ Makine tarafından öğrenilen model ve öğrenme ayarları, yedekleme için ken
 
 ## <a name="export-the-personalizer-model"></a>Kişiselleştirici modelini dışarı aktarma
 
-**Model ve öğrenme ayarları**için kaynak yönetiminin bölümünde, model oluşturma ve son güncelleme tarihi ' ni gözden geçirin ve geçerli modeli dışarı aktarın. Arşiv amaçlarıyla bir model dosyasını dışarı aktarmak için Azure portal veya kişiselleştirici API 'Leri kullanabilirsiniz.
+**Model ve öğrenme ayarları** için kaynak yönetiminin bölümünde, model oluşturma ve son güncelleme tarihi ' ni gözden geçirin ve geçerli modeli dışarı aktarın. Arşiv amaçlarıyla bir model dosyasını dışarı aktarmak için Azure portal veya kişiselleştirici API 'Leri kullanabilirsiniz.
 
 ![Geçerli kişiselleştirici modelini dışarı aktar](media/settings/export-current-personalizer-model.png)
 
@@ -55,4 +55,4 @@ Makine tarafından öğrenilen model ve öğrenme ayarları, yedekleme için ken
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir öğrenme ilkesini yönetmeyi öğrenin](how-to-manage-model.md)
+[Çevrimdışı değerlendirmede öğrenme döngünüzü çözümleyin](how-to-offline-evaluation.md)

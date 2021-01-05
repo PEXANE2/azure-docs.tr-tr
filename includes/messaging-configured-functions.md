@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 5070d1dc19995b635ebff6b98fec07e2b7d9fc70
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9cc19548f0b969421974afe3e274fc5334590cb0
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97663713"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97805651"
 ---
 Azure Işlevleri önceden oluşturulmuş bir giriş noktasında yalın olan yalnızca yapılandırma çoğaltma görevlerinin oluşturulmasına olanak sağlar. [Azure işlevleri için yapılandırma tabanlı çoğaltma örnekleri](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) , kendi kodunuzda [önceden oluşturulmuş yardımcıları](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) nasıl kullanacağınızı veya kodun tamamen işlenmesini ve yalnızca yapılandırmayı kullanmayı gösterir.
 
@@ -218,9 +218,9 @@ Aşağıdaki tabloda kaynak ve hedeflerin birleşimleri için doğru değerler v
 
 ### <a name="retry-policy"></a>Yeniden Deneme ilkesi
 
-Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md) bakın. Bu depodaki projeler genelinde seçilen ilke ayarları, yeniden deneme aralıklarıyla 5 saniyeden 5 dakikaya kadar olan ve veri kaybını önlemek için sonsuz yeniden denemeler içeren bir üstel geri alma stratejisi yapılandırır.
+Yeniden deneme ilkesini yapılandırmak için [yeniden denemeler hakkında Azure işlevleri belgelerine](/azure/azure-functions/functions-bindings-error-pages) bakın. Bu depodaki projeler genelinde seçilen ilke ayarları, yeniden deneme aralıklarıyla 5 saniyeden 5 dakikaya kadar olan ve veri kaybını önlemek için sonsuz yeniden denemeler içeren bir üstel geri alma stratejisi yapılandırır.
 
-Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](https://docs.microsoft.com/azure/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
+Service Bus için, tetikleyicilerin etkileşimini ve sıra için tanımlanan maksimum teslim sayısını anlamak için ["tetikleyici esnekliği üzerinde yeniden deneme desteği kullanma"](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience) bölümünü gözden geçirin.
 
 ### <a name="build-deploy-and-configure"></a>Oluşturma, dağıtma ve yapılandırma
 

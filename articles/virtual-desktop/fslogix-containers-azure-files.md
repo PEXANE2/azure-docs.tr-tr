@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e3bd667bc7fce8f9fb10b852cae7a6c4ad198d75
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002396"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797205"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix profil kapsayıcıları ve Azure dosyaları
 
@@ -47,17 +47,17 @@ Aşağıdaki tabloda önceki Kullanıcı profili teknolojilerinin avantajları v
 
 | Teknoloji | Modern ayarlar | Win32 ayarları | İşletim sistemi ayarları | Kullanıcı verileri | Sunucu SKU 'sunda destekleniyor | Azure 'da arka uç depolama | Şirket içinde arka uç depolama | Sürüm desteği | Sonraki oturum açma zamanı |Notlar|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Kullanıcı profili diskleri (UPD)** | Evet | Evet | Evet | Evet | Evet | Hayır | Evet | Win 7 + | Evet | |
-| **Gezici Kullanıcı profili (RUP), bakım modu** | Hayır | Evet | Evet | Evet | Evet| Hayır | Evet | Win 7 + | Hayır | |
-| **Enterprise State Roaming (ESR)** | Evet | Hayır | Evet | Hayır | Notlara bakın | Evet | Hayır | Win 10 | Hayır | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
-| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Evet | Evet | Evet | Hayır | Evet | Hayır | Evet | Win 7 + | Hayır |  |
-| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Evet | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | Hayır | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
+| **Kullanıcı profili diskleri (UPD)** | Yes | Yes | Yes | Yes | Yes | Hayır | Yes | Win 7 + | Yes | |
+| **Gezici Kullanıcı profili (RUP), bakım modu** | Hayır | Yes | Yes | Yes | Yes| Hayır | Yes | Win 7 + | Hayır | |
+| **Enterprise State Roaming (ESR)** | Yes | Hayır | Yes | Hayır | Notlara bakın | Yes | Hayır | Win 10 | Hayır | Sunucu SKU 'sunda işlevler ancak destekleyici Kullanıcı arabirimi yok |
+| **Kullanıcı deneyimi sanallaştırma (UE-V)** | Yes | Yes | Yes | Hayır | Yes | Hayır | Yes | Win 7 + | Hayır |  |
+| **OneDrive bulut dosyaları** | Hayır | Hayır | Hayır | Yes | Notlara bakın | Notlara bakın  | Notlara bakın | Win 10 RS3 | Hayır | Sunucu SKU 'sunda sınanmamıştır. Azure üzerinde arka uç depolama, eşitleme istemcisine bağlıdır. Arka uç depolamada şirket içi depolama için bir eşitleme istemcisi gerekir. |
 
 #### <a name="performance"></a>Performans
 
 UPD, performans gereksinimlerini karşılamak için [depolama alanları doğrudan (S2D)](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/) gerektirir. UPD, sunucu Ileti bloğu (SMB) protokolünü kullanır. Profili, kullanıcının günlüğe kaydedildiği VM 'ye kopyalar. S2D ile UPD, Windows sanal masaüstü için önerdiğimiz çözümdür.
 
-#### <a name="cost"></a>Maliyet
+#### <a name="cost"></a>Cost
 
 S2D kümeleri gerekli performansa ulaşsa da, kurumsal müşterilere yönelik maliyet pahalıdır, ancak küçük ve orta ölçekli iş (SMB) müşterileri için özellikle pahalıdır. Bu çözüm için, işletmeler depolama diskleri için, bir paylaşımın disklerini kullanan VM 'Lerin maliyetiyle birlikte ödeme yapar.
 
@@ -87,7 +87,7 @@ Windows sanal masaüstü ortamınızın en iyi yöntemleri takip edin:
 
 - Azure dosyaları depolama hesabı, oturum ana bilgisayar VM 'Leri ile aynı bölgede olmalıdır.
 - Azure dosyaları izinleri, [gereksinimler profil kapsayıcılarında](/fslogix/fslogix-storage-config-ht)açıklanan izinlerle eşleşmelidir.
-- Her konak havuzunun aynı ana görüntüye göre aynı tür ve boyut VM 'si oluşturulması gerekir.
+- Her konak havuzu sanal makinesi aynı ana görüntüye göre aynı tür ve boyut VM 'nin oluşturulması gerekir.
 - Yönetim, ölçeklendirme ve güncelleştirme yardımcı olması için her bir konak havuzu sanal makinesi aynı kaynak grubunda olmalıdır.
 - En iyi performans için, depolama çözümü ve FSLogix profili kapsayıcısı aynı veri merkezi konumunda olmalıdır.
 - Ana görüntünün bulunduğu depolama hesabı, VM 'Lerin sağlandığı aynı bölgede ve abonelikte olmalıdır.
