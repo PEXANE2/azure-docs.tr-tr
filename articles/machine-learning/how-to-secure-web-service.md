@@ -10,13 +10,13 @@ ms.author: aashishb
 author: aashishb
 ms.date: 11/18/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 872958f87e7d75427d5939aed73314920cfaf3ea
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.custom: how-to
+ms.openlocfilehash: 86cd5a5cbbb17dc3d3e4d56e4267be2718f6081d
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631100"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830879"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS kullanarak Azure Machine Learning aracılığıyla web hizmetinin güvenliğini sağlama
 
@@ -73,14 +73,17 @@ Bir sertifika istediğinizde, Web hizmeti için kullanmayı planladığınız ad
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> TLS ve dağıtımı etkinleştirme
 
-Hizmeti TLS etkin olarak dağıtmak (veya yeniden dağıtmak) için, *ssl_enabled* parametresini uygun olduğunda "true" olarak ayarlayın. *Ssl_certificate* parametresini *sertifika* dosyasının değerine ayarlayın. *Ssl_key* *anahtar* dosyasının değerine ayarlayın.
+**Aks dağıtımı için** AML çalışma alanında [bir aks kümesi OLUŞTURDUĞUNUZDA veya](how-to-create-attach-kubernetes.md) bağladığınızda TLS sonlandırmasını etkinleştirebilirsiniz. AKS modeli dağıtım zamanında, dağıtım yapılandırma nesnesiyle TLS sonlandırmayı devre dışı bırakabilirsiniz; Aksi takdirde, varsayılan olarak tüm AKS model dağıtımı, AKS kümesi oluşturma veya iliştirme süresi içinde TLS sonlandırmasını etkinleştirilir.
+
+ACı dağıtımı için, dağıtım yapılandırma nesnesiyle model dağıtım zamanında TLS sonlandırmasını etkinleştirebilirsiniz.
+
 
 ### <a name="deploy-on-azure-kubernetes-service"></a>Azure Kubernetes hizmetinde dağıtma
 
   > [!NOTE]
   > Bu bölümdeki bilgiler, tasarımcı için güvenli bir Web hizmeti dağıttığınızda de geçerlidir. Python SDK 'yı kullanmayı bilmiyorsanız bkz. [Python için Azure MACHINE LEARNING SDK nedir?](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
-Hem **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** hem de **[AksCompute.attach_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** **Enable_ssl** yöntemine sahıp bir yapılandırma nesnesi döndürür ve TLS 'i etkinleştirmek için **Enable_ssl** metodunu kullanabilirsiniz.
+AML çalışma alanında [BIR AKS kümesi oluşturduğunuzda veya](how-to-create-attach-kubernetes.md) eklediğinizde, **[AksCompute.provisioning_configuration ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** ve **[AKSCOMPUTE.ATTACH_CONFIGURATION ()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** yapılandırma nesneleriyle TLS sonlandırmayı etkinleştirebilirsiniz. Her iki yöntem de **Enable_ssl** yöntemine sahip bir yapılandırma nesnesi döndürür ve TLS 'yi etkinleştirmek için **Enable_ssl** metodunu kullanabilirsiniz.
 
 Microsoft sertifikası veya CA 'dan satın alınan özel bir sertifika ile TLS 'yi etkinleştirebilirsiniz. 
 

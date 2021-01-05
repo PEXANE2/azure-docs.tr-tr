@@ -6,13 +6,13 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 86d0569d95df18924ed47682b75d7491c71d4483
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.custom: seodec18
+ms.openlocfilehash: e4653419d974db2e597111487c64682c75ffc40b
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021036"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826014"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -36,7 +36,7 @@ Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeExternalASE]bölü
 
 AS 'de bir uygulama oluşturmak için:
 
-1. **Create a resource**  >  **Web + Mobile**  >  **Web uygulaması** Web ve mobil kaynak oluştur ' u seçin.
+1.   >    >  **Web uygulaması** Web ve mobil kaynak oluştur ' u seçin.
 
 1. Uygulama için bir ad girin. Ao 'da zaten bir App Service planı seçtiyseniz, uygulamanın etki alanı adı Ao 'nun etki alanı adını yansıtır:
 

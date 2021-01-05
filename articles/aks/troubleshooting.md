@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) kullanırken karşılaşılan yaygı
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d157dd6b3347c8fbfd8712fa20d52cedb425f47f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02ff1581bafe62a092be87d16df51c7ca8c020b4
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751487"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830947"
 ---
 # <a name="aks-troubleshooting"></a>AKS sorunlarını giderme
 
@@ -439,7 +439,7 @@ Bu hata, bir yukarı akış kümesi otomatik Scaler yarış durumu nedeniyle olu
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Kubernetes 1,16 yükseltmesi, kubernetes.io ön ekiyle düğüm etiketleri kullanılırken başarısız olur
 
-Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) itibariyle, [Kubernetes.io ön ekine sahip etiketlerin yalnızca tanımlı bir alt kümesi](https://github.com/kubernetes/enhancements/blob/master/keps/sig-auth/0000-20170814-bounding-self-labeling-kubelets.md#proposal) , kubelet 'in düğümlere uygulanabilir. AKS, etkilenen iş yükleri için kapalı kalma süresine neden olabileceğinden, sizin adınıza etkin etiketleri kaldıramaz.
+Kubernetes [1,16](https://v1-16.docs.kubernetes.io/docs/setup/release/notes/) itibariyle, [Kubernetes.io ön ekine sahip etiketlerin yalnızca tanımlı bir alt kümesi](https://v1-18.docs.kubernetes.io/docs/concepts/overview/working-with-objects/labels/) , kubelet 'in düğümlere uygulanabilir. AKS, etkilenen iş yükleri için kapalı kalma süresine neden olabileceğinden, sizin adınıza etkin etiketleri kaldıramaz.
 
 Sonuç olarak, bu sorunu azaltmak için şunları yapabilirsiniz:
 

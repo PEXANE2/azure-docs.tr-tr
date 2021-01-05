@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6aa54f65b504e61a5e74ed584c5dad51e49eb087
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031462"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827436"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 
@@ -151,7 +151,7 @@ Bazı örnekler:
    ```
 
 
-1. Tahmin görevleri ek kurulum gerektirir, daha fazla ayrıntı için [zaman serisi tahmin modelini otomatik eğitme](how-to-auto-train-forecast.md) makalesine bakın. 
+1. Tahmin görevleri ek kurulum gerektirir, daha fazla ayrıntı için [zaman serisi tahmin modelini oto eğitme](how-to-auto-train-forecast.md) makalesine bakın. 
 
     ```python
     time_series_settings = {
@@ -220,7 +220,7 @@ Her otomatik makine öğrenimi denemesinde, verileriniz, farklı ölçeklerde bu
 
 Denemeleri 'nizi yapılandırırken `AutoMLConfig` , ayarı etkinleştirebilir/devre dışı bırakabilirsiniz `featurization` . Aşağıdaki tabloda, [oto Mlconfig nesnesinde](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)fealeştirme için kabul edilen ayarlar gösterilmektedir. 
 
-|Korleştirme yapılandırması | Description |
+|Korleştirme yapılandırması | Açıklama |
 | ------------- | ------------- |
 |`"featurization": 'auto'`| Ön işleme 'nin bir parçası olarak, [veri guardı ve korleştirme adımlarının](how-to-configure-auto-features.md#featurization) otomatik olarak gerçekleştirileceğini belirtir. **Varsayılan ayar**.|
 |`"featurization": 'off'`| Korleştirme adımının otomatik olarak yapılmaması gerektiğini gösterir.|
@@ -321,7 +321,7 @@ from azureml.core.experiment import Experiment
 ws = Workspace.from_config()
 
 # Choose a name for the experiment and specify the project folder.
-experiment_name = 'automl-classification'
+experiment_name = 'Tutorial-automl'
 project_folder = './sample_projects/automl-classification'
 
 experiment = Experiment(ws, experiment_name)
@@ -374,6 +374,109 @@ Model açıklamalarının ve özelliklerinin önem derecesine ilişkin genel bil
 
 > [!NOTE]
 > Forekaletcn modeli şu anda açıklama Istemcisi tarafından desteklenmiyor. Bu model, en iyi model olarak döndürülürse bir açıklama panosu döndürmez ve isteğe bağlı açıklama çalıştırmalarını desteklemez.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+* **`AutoML` Bağımlılıkların yeni sürümlere son yükseltilmesi uyumluluk** olacaktır: SDK 'nın sürüm 1.13.0 itibariyle, önceki paketlerimize sabitlediğimiz eski sürümler arasında uyumsuzluk ve şimdi PIN yaptığımız yeni sürümler arasındaki uyumsuzluk nedeniyle daha eski SDK 'larda modeller yüklenmeyecek. Şöyle bir hata görürsünüz:
+  * Modül bulunamadı: ex. `No module named 'sklearn.decomposition._truncated_svd` ,
+  * İçeri aktarma hataları: ex. `ImportError: cannot import name 'RollingOriginValidator'` ,
+  * Öznitelik hataları: ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
+  
+  Bu sorunu geçici olarak çözmek için SDK Eğitim sürümüne bağlı olarak aşağıdaki iki adımdan birini gerçekleştirin `AutoML` :
+    * `AutoML`SDK eğitim sürümünüz 1.13.0 büyükse, `pandas == 0.25.1` ve gereklidir `sckit-learn==0.22.1` . Sürüm uyuşmazlığı varsa, aşağıda gösterildiği gibi aşağıdaki sürüme yükselterek scikit-bilgi edinin ve/veya Pandas 'ı yükseltin:
+      
+      ```bash
+         pip install --upgrade pandas==0.25.1
+         pip install --upgrade scikit-learn==0.22.1
+      ```
+      
+    * `AutoML`SDK eğitim sürümünüz 1.12.0 değerinden küçük veya bu değere eşitse, `pandas == 0.23.4` ve gereklidir `sckit-learn==0.20.3` . Sürüm uyuşmazlığı varsa, scikit-aşağıda gösterildiği gibi doğru sürümü öğrenmek ve/veya Pandas 'yi indirgemeniz gerekir:
+  
+      ```bash
+        pip install --upgrade pandas==0.23.4
+        pip install --upgrade scikit-learn==0.20.3
+      ```
+
+* **Dağıtım başarısız oldu**: SDK 'nın <= 1.18.0 sürümleri için, dağıtım için oluşturulan temel görüntü şu hatayla başarısız olabilir: "ımporterror: adı öğesinden içeri aktarılamıyor `cached_property` `werkzeug` ". 
+
+  Aşağıdaki adımlar soruna geçici bir çözüm olarak çalışabilir:
+  1. Model paketini indirin
+  2. Paketi unzip
+  3. Daraltılmış varlıkları kullanarak dağıtma
+
+* **Tahmin R2 puanı her zaman sıfırdır**: belirtilen eğitim verileri, son `n_cv_splits`  +  veri noktaları için aynı değeri içeren zaman serisine sahipse bu sorun ortaya çıkar `forecasting_horizon` . Zaman seriniz içinde bu kalıp bekleniyorsa, birincil ölçümünüzün normalleştirilmiş kök ortalama kare hatasına geçiş yapabilirsiniz.
+ 
+* **TensorFlow**: SDK 'nın sürüm 1.5.0 itibariyle, otomatik makine öğrenimi, varsayılan olarak TensorFlow modellerini yüklemez. TensorFlow 'u yüklemek ve otomatik ML denemeleri ile kullanmak için, Conerbağımlılar aracılığıyla TensorFlow = = 1.12.0 ' yi kurun. 
+ 
+   ```python
+   from azureml.core.runconfig import RunConfiguration
+   from azureml.core.conda_dependencies import CondaDependencies
+   run_config = RunConfiguration()
+   run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
+  ```
+
+* **Deneme grafikleri**: otomatik ml denemesi yinelemeleriyle gösterilen ikili sınıflandırma grafikleri (duyarlık-HATıRLA, Roc, kazanç eğrisi vb.), 4/12 ' den beri Kullanıcı arabiriminde doğru işlenmemektedir. Grafik çizimleri Şu anda daha iyi şekilde uygulanan modellerin daha düşük sonuçlarla gösterildiği ters sonuçları gösteriyor. Bir çözüm, araştırma aşamasındadır.
+
+* **Databricks otomatik makine öğrenimi çalıştırmayı iptal et**: Azure Databricks ' de otomatik makine öğrenimi özellikleri kullandığınızda, çalıştırmayı iptal etmek ve yeni bir deneme çalıştırması başlatmak için Azure Databricks kümenizi yeniden başlatın.
+
+* **Databricks otomatik makine öğrenimi için 10 yineleme >**: otomatik makine öğrenimi ayarları 'nda 10 ' dan fazla yineleme sahipseniz, `show_output` `False` çalıştırmayı gönderdiğinizde olarak ayarlayın.
+
+* **Azure MACHINE LEARNING SDK ve otomatik makine öğrenimi Için Databricks pencere öğesi**: Not defterleri HTML pencere öğelerini ayrıştıramadığından, bir databricks not DEFTERINDE Azure Machine Learning SDK pencere öğesi desteklenmez. Azure Databricks Not defteri hücresinizdeki bu python kodunu kullanarak portalda pencere öğesini görüntüleyebilirsiniz:
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
+* **automl_setup başarısız olur**: 
+    * Windows üzerinde automl_setup bir Anaconda Isteminden çalıştırın. [Miniconda 'ı yüklemek](https://docs.conda.io/en/latest/miniconda.html)için bu bağlantıyı kullanın.
+    * Komutunu çalıştırarak Conda 64 bit 'ın, 32 bit yerine, yüklü olduğundan emin olun `conda info` . `platform` `win-64` Windows veya Mac için olmalıdır `osx-64` .
+    * Conda 4.4.10 veya üzeri sürümünün yüklü olduğundan emin olun. Komutu ile sürümü kontrol edebilirsiniz `conda -V` . Önceki bir sürümü yüklüyse, şu komutu kullanarak güncelleştirebilirsiniz: `conda update conda` .
+    * 'Un `gcc: error trying to exec 'cc1plus'`
+      *  `gcc: error trying to exec 'cc1plus': execvp: No such file or directory`Hatayla karşılaşılırsa, komutunu kullanarak derleme Essentials 'ı yüklersiniz `sudo apt-get install build-essential` .
+      * Yeni bir Conda ortamı oluşturmak için automl_setup ilk parametre olarak yeni bir ad geçirin. Kullanarak mevcut Conda ortamlarını görüntüleyin `conda env list` ve ile kaldırın `conda env remove -n <environmentname>` .
+      
+* **automl_setup_linux. sh başarısız**: automl_setup_linus. sh şu hatayla başarısız Ubuntu Linux olur: `unable to execute 'gcc': No such file or directory`-
+  1. 53 ve 80 giden bağlantı noktalarının etkinleştirildiğinden emin olun. Azure VM 'de bunu, VM 'yi seçip Ağ ' a tıklayarak Azure portal yapabilirsiniz.
+  2. Şu komutu çalıştırın: `sudo apt-get update`
+  3. Şu komutu çalıştırın: `sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`Yeniden çalıştır
+
+* **Configuration. ipynb başarısız olur**:
+  * Yerel Conda 'nın automl_setup başarıyla çalıştığından emin olun.
+  * Subscription_id doğru olduğundan emin olun. Tüm hizmet ve abonelikler ' i seçerek Azure portal subscription_id bulun. "<" ve ">" karakterlerinin subscription_id değere dahil edilmemelidir. Örneğin, `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` geçerli biçimi vardır.
+  * Aboneliğe katkıda bulunan veya sahip erişiminin olduğundan emin olun.
+  * Bölgenin desteklenen bölgelerden biri olup olmadığını denetleyin: `eastus2` , `eastus` ,, `westcentralus` `southeastasia` , `westeurope` , `australiaeast` , `westus2` , `southcentralus` .
+  * Azure portal kullanarak bölgeye erişim sağlayın.
+  
+* **`import AutoMLConfig` başarısız**: otomatik makine öğrenimi sürüm 1.0.76 ' de, yeni sürüme güncelleştirmeden önce önceki sürümün kaldırılmasını gerektiren paket değişiklikleri vardı. `ImportError: cannot import name AutoMLConfig`V 1.0.76 'den v 1.0.76 veya üzeri BIR SDK sürümünden yükseltmeden sonra bu hatayla karşılaşırsanız, şunu çalıştırarak hatayı çözün: `pip uninstall azureml-train automl` ve sonra `pip install azureml-train-auotml` . Automl_setup. cmd betiği bunu otomatik olarak yapar. 
+
+* **Workspace.from_config başarısız**: ws = Workspace.from_config () ' çağrıları başarısız olursa-
+  1. Configuration. ipynb Not defterinin başarıyla çalıştığından emin olun.
+  2. Not defteri, çalıştığı klasör altında olmayan bir klasörden çalıştırıldıysa `configuration.ipynb` , aml_config klasörü ve dosyanın içerdiği config.jsdosyayı yeni klasöre kopyalayın. Workspace.from_config, Not defteri klasörü veya onun üst klasörü için config.jsokur.
+  3. Yeni bir abonelik, kaynak grubu, çalışma alanı veya bölge kullanılıyorsa, `configuration.ipynb` Not defterini yeniden çalıştırdığınızdan emin olun. config.jsdoğrudan üzerinde değiştirmek, yalnızca belirtilen abonelik altındaki belirtilen kaynak grubunda çalışma alanı zaten mevcutsa çalışır.
+  4. Bölgeyi değiştirmek istiyorsanız, çalışma alanını, kaynak grubunu veya aboneliği değiştirin. `Workspace.create` , belirtilen bölge farklı olsa da, zaten varsa, bir çalışma alanı oluşturmaz veya güncelleştirmeyecektir.
+  
+* **Örnek Not defteri başarısız oldu**: örnek bir not defteri, özelliğin, yöntemin veya kitaplığın bulunmadığı bir hata ile başarısız oluyor:
+  * Jupyter Notebook doğru çekirdeğin seçildiğinden emin olun. Çekirdek, Not Defteri sayfasının sağ üst kısmında görüntülenir. Varsayılan değer azure_automl. Çekirdek, Not defterinin bir parçası olarak kaydedilir. Bu nedenle, yeni bir Conda ortamına geçerseniz, not defterinde yeni çekirdeği seçmeniz gerekir.
+      * Azure Notebooks, Python 3,6 olmalıdır. 
+      * Yerel Conda ortamları için, automl_setup ' de belirttiğiniz Conda ortam adı olmalıdır.
+  * Not defterinin kullandığınız SDK sürümü için olduğundan emin olun. Jupyter Notebook bir hücrede yürüterek SDK sürümünü denetleyebilirsiniz `azureml.core.VERSION` . `Branch`Düğmeye tıklayarak `Tags` ve ardından sürümü seçerek örnek Not defterlerinin önceki sürümünü GitHub 'dan indirebilirsiniz.
+
+* **`import numpy` Windows 'da başarısız oldu**: bazı Windows ortamlarında, en son Python sürümü 3.6.8 ile bir sayısal tuş takımı yükleme hatası görüntülenir. Bu sorunu görürseniz Python sürüm 3.6.7 ile deneyin.
+
+* **`import numpy` başarısız oldu**: otomatik ml Conda ortamındaki TensorFlow sürümünü denetleyin. Desteklenen sürümler < 1,13 ' dir. Sürüm >= 1,13 ise, TensorFlow ortamdan kaldırın. TensorFlow sürümünü ve kaldırma işlemini aşağıdaki şekilde kontrol edebilirsiniz.
+  1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
+  2. `pip freeze` `tensorflow` Bulunursa, listelenen sürüm < 1,13 olmalıdır.
+  3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall tensorflow` komut kabuğu 'nda, onay için y girin.
+  
+ * **Çalıştırma başarısız `jwt.exceptions.DecodeError`**: tam hata iletisi: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()` . 
+ 
+    En son oto ml SDK sürümüne yükseltmeyi göz önünde bulundurun: `pip install -U azureml-sdk[automl]` . 
+    
+    Bu önemli değilse, PyJWT sürümünü denetleyin. Desteklenen sürümler < 2.0.0. Sürüm >= 2.0.0 olduğunda PyJWT öğesini ortamdan kaldırın. PyJWT sürümünü denetleyebilir, doğru sürümü aşağıdaki şekilde kaldırıp yükleyebilirsiniz:
+    1. Bir komut kabuğu başlatın, otomatik ml paketlerinin yüklendiği Conda ortamını etkinleştirin.
+    2. `pip freeze` `PyJWT` Bulunursa, listelenen sürümün < 2.0.0 olması gerektiğini belirtin
+    3. Listelenen sürüm desteklenen bir sürüm değilse, `pip uninstall PyJWT` komut kabuğu 'nda, onay için y girin.
+    4. Uygulamasını kullanarak `pip install 'PyJWT<2.0.0'` .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

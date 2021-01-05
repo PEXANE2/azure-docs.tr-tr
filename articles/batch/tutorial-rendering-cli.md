@@ -1,34 +1,34 @@
 ---
 title: Öğretici-bulutta bir sahneyi Işleme
-description: Öğretici - Batch Renderin Hizmetini ve Azure Komut Satırı Arabirimini kullanarak Autodesk 3ds Max sahnesini Arnold ile işleme
+description: Toplu Işleme hizmeti ve Azure Command-Line arabirimini kullanarak bir Autodesk 3ds Max sahnesini Arnold ile nasıl işleneceğini öğrenin
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 12/30/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e0858e838ba73862ef7f15040915c5f5cd3c751b
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 3518e074589284e6d6cd7432dc77ba8bdd457045
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106351"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827538"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Öğretici: Azure Batch ile sahne işleme
 
 Azure Batch, kullanım başına ödeme temelinde bulut ölçekli işleme özellikleri sağlar. Azure Batch; Autodesk Maya, 3ds Max, Arnold ve V-Ray gibi işleme uygulamalarını destekler. Bu öğreticide, Azure Komut Satırı Arabirimi kullanılarak Batch ile küçük bir sahneyi işleme adımları gösterilir. Aşağıdakileri nasıl yapacağınızı öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Azure depolamasına sahne yükleme
-> * İşleme için Batch havuzu oluşturma
-> * Tek kareli bir sahneyi işleme
-> * Havuzu ölçeklendirme ve çok kareli bir sahneyi işleme
-> * İşlenmiş çıkışı indirme
+> - Azure depolamasına sahne yükleme
+> - İşleme için Batch havuzu oluşturma
+> - Tek kareli bir sahneyi işleme
+> - Havuzu ölçeklendirme ve çok kareli bir sahneyi işleme
+> - İşlenmiş çıkışı indirme
 
 Bu öğreticide, ışın izleme işleyicisi [Arnold](https://www.autodesk.com/products/arnold/overview)'ı kullanarak Batch ile bir 3ds Max sahnesini işleyeceksiniz. Batch havuzu, önceden yüklenen grafikler ve kullandığın kadar öde lisansı sağlayan işleme uygulamalar içeren bir Azure Marketi resmi kullanır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
- - Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
+- Batch’teki işleme uygulamalarını kullandığın kadar öde esasıyla kullanmak için bir kullandıkça öde aboneliğine veya diğer Azure satın alma seçeneğine ihtiyacınız vardır. **Para kredi sağlayan ücretsiz bir Azure teklifi kullanıyorsanız, kullandığın kadar öde lisansı desteklenmez.**
 
- - Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif hakkı &copy; Autodesk, Inc.)
+- Bu öğretici için örnek 3ds Max sahnesi, bir örnek Batch betiği ve JSON yapılandırma dosyalarıyla birlikte [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene)'dadır. 3ds Max sahnesi, [Autodesk 3ds Max örnek dosyalarından](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe) alınmıştır. (Autodesk 3ds Max örnek dosyaları, Creative Commons Attribution-NonCommercial-Share Alike lisansı kapsamında sağlanır. Telif hakkı &copy; Autodesk, Inc.)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -36,13 +36,14 @@ Bu öğreticide, ışın izleme işleyicisi [Arnold](https://www.autodesk.com/pr
 
 > [!TIP]
 > [Arnold iş şablonlarını](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) Azure Batch uzantı şablonları GitHub deposunda görüntüleyebilirsiniz.
+
 ## <a name="create-a-batch-account"></a>Batch hesabı oluşturma
 
-Henüz yapmadıysanız, aboneliğinizde bir kaynak grubu, Batch hesabı ve bağlı depolama hesabı oluşturun. 
+Henüz yapmadıysanız, aboneliğinizde bir kaynak grubu, Batch hesabı ve bağlı depolama hesabı oluşturun.
 
 [az group create](/cli/azure/group#az-group-create) komutuyla bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus2* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
     --name myResourceGroup \
     --location eastus2
@@ -57,9 +58,10 @@ az storage account create \
     --location eastus2 \
     --sku Standard_LRS
 ```
+
 [az batch account create](/cli/azure/batch/account#az-batch-account-create) komutuyla bir Batch hesabı oluşturun. Aşağıdaki örnek, *myResourceGroup* kaynak grubu içinde *mybatchaccount* adlı bir Batch hesabı oluşturur ve oluşturduğunuz depolama hesabını bağlar.  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
@@ -69,12 +71,13 @@ az batch account create \
 
 İşlem havuzlarını ve işlerini oluşturmak ve yönetmek için, Batch ile kimlik doğrulaması yapmalısınız. [az batch account login](/cli/azure/batch/account#az-batch-account-login) komutuyla hesapta oturum açın. Oturumunuz açıldıktan sonra, `az batch` komutlarınız bu hesabın bağlamını kullanır. Aşağıdaki örnekte, Batch hesabı adı ve anahtarı temelinde paylaşılan anahtar kimlik doğrulaması kullanılır. Batch ayrıca bireysel kullanıcıların ya da katılımsız bir uygulamanın kimlik doğrulamasını yapmak için [Azure Active Directory](batch-aad-auth.md) aracılığıyla kimlik doğrulamayı destekler.
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
     --resource-group myResourceGroup \
     --shared-key-auth
 ```
+
 ## <a name="upload-a-scene-to-storage"></a>Depolamaya sahne yükleme
 
 Giriş sahnesini depolama alanına yüklemek için, önce depolama hesabına erişmeli ve bloblar için bir hedef kapsayıcı oluşturmalısınız. Azure depolama hesabına erişmek için, `AZURE_STORAGE_KEY` ve `AZURE_STORAGE_ACCOUNT` ortam değişkenlerini dışarı aktarın. İlk Bash kabuk komutu, ilk hesap anahtarını almak için [az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) komutunu kullanır. Bu ortam değişkenlerini ayarladıktan sonra, depolama komutlarınız bu hesabın bağlamını kullanır.
@@ -93,7 +96,7 @@ az storage container create \
     --name scenefiles
 ```
 
-`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örneğin:
+`MotionBlur-Dragon-Flying.max` sahnesini [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max)'dan yerel çalışma dizinine indirin. Örnek:
 
 ```azurecli-interactive
 wget -O MotionBlur-DragonFlying.max https://github.com/Azure/azure-docs-cli-python-samples/raw/master/batch/render-scene/MotionBlur-DragonFlying.max
@@ -135,16 +138,18 @@ az storage blob upload-batch \
   "enableInterNodeCommunication": false 
 }
 ```
-Batch, adanmış düğümleri ve [düşük öncelikli](batch-low-pri-vms.md) düğümleri destekler ve Havuzlarınızda birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir. 
+
+Batch, adanmış düğümleri ve [düşük öncelikli](batch-low-pri-vms.md) düğümleri destekler ve Havuzlarınızda birini ya da her ikisini birden kullanabilirsiniz. Adanmış düğümler, havuzunuz için ayrılmıştır. Düşük öncelikli düğümler ise Azure’daki fazlalık VM kapasitesinden indirimli bir fiyat karşılığında sunulur. Azure’da yeterli kapasite yoksa düşük öncelikli düğümler kullanılamaz duruma gelir.
 
 Belirtilen havuz Batch Rendering hizmetinin yazılımıyla birlikte bir Windows Server görüntüsü çalıştıran tek bir düşük öncelikli düğüm içerir. Bu havuz, 3ds Max ve Arnold ile işlenmek üzere lisanslanmıştır. Sonraki adımlardan birinde, havuzu daha fazla düğüm sayısıyla ölçeklendireceksiniz.
 
-JSON dosyasını `az batch pool create` komutuna geçirerek havuzu oluşturun:
+Batch hesabınızda henüz oturum açmadıysanız, bunu yapmak için [az Batch Account Login](/cli/azure/batch/account#az-batch-account-login) komutunu kullanın. Ardından JSON dosyasını komutuna geçirerek havuzu oluşturun `az batch pool create` :
 
 ```azurecli-interactive
 az batch pool create \
     --json-file mypool.json
-``` 
+```
+
 Havuzun hazırlanması birkaç dakika sürer. Havuzun durumunu görmek için [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) komutunu çalıştırın. Aşağıdaki komut havuzun ayırma durumunu alır:
 
 ```azurecli-interactive
@@ -157,7 +162,7 @@ Havuzun durumu değişirken iş ve görevleri oluşturmak için aşağıdaki ad�
 
 ## <a name="create-a-blob-container-for-output"></a>Çıkış için blob kapsayıcısı oluşturma
 
-Bu öğreticideki örneklerde, işleme işi kapsamındaki her görev bir çıkış dosyası oluşturur. İşi zamanlamadan önce, depolama hesabınızda çıkış dosyalarının hedefi olarak bir blob kapsayıcısı oluşturun. Aşağıdaki örnekte, genel okuma erişimiyle *job-myrenderjob* kapsayıcısını oluşturmak için [az storage container create](/cli/azure/storage/container#az-storage-container-create) komutu kullanılır. 
+Bu öğreticideki örneklerde, işleme işi kapsamındaki her görev bir çıkış dosyası oluşturur. İşi zamanlamadan önce, depolama hesabınızda çıkış dosyalarının hedefi olarak bir blob kapsayıcısı oluşturun. Aşağıdaki örnekte, genel okuma erişimiyle *job-myrenderjob* kapsayıcısını oluşturmak için [az storage container create](/cli/azure/storage/container#az-storage-container-create) komutu kullanılır.
 
 ```azurecli-interactive
 az storage container create \
@@ -165,27 +170,25 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-Çıkış dosyalarını kapsayıcıya yazmak için, Batch'in Paylaşılan Erişim İmzası (SAS) belirteci kullanması gerekir. [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) komutuyla belirteci oluşturun. Bu örnekte, hesaptaki herhangi bir blob kapsayıcısına yazmak için bir belirteç oluşturulur ve 15 Kasım 2020 ' de belirtecin süresi dolar:
+Çıkış dosyalarını kapsayıcıya yazmak için, Batch'in Paylaşılan Erişim İmzası (SAS) belirteci kullanması gerekir. [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) komutuyla belirteci oluşturun. Bu örnekte, hesaptaki herhangi bir blob kapsayıcısına yazmak için bir belirteç oluşturulur ve 15 Kasım 2021 ' de belirtecin süresi dolar:
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2020-11-15
+    --expiry 2021-11-15
 ```
 
-Komut tarafından döndürülen belirteci not alın; aşağıdakine benzer olacaktır. Sonraki bir adımda bu belirteci kullanacaksınız.
+Komut tarafından döndürülen belirteci not alın; aşağıdakine benzer olacaktır. Daha sonraki bir adımda bu belirteci kullanacaksınız.
 
-```
-se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+`se=2021-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ## <a name="render-a-single-frame-scene"></a>Tek kareli bir sahneyi işleme
 
 ### <a name="create-a-job"></a>İş oluşturma
 
-[az batch job create](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak havuzda çalıştırılacak bir işleme işi oluşturun. Başlangıçta iş hiçbir görev içermez.
+[az batch job create](/cli/azure/batch/job#az-batch-job-create) komutunu kullanarak havuzda çalıştırılacak bir işleme işi oluşturun. Başlangıçta, işin hiç görevi yok.
 
 ```azurecli-interactive
 az batch job create \
@@ -202,11 +205,7 @@ Görev, *MotionBlur-DragonFlying.max* sahnesinin tek bir karesini işlemek için
 JSON dosyasındaki `blobSource` ve `containerURL` öğelerini, depolama hesabınızın adını ve SAS belirtecinizi içerecek şekilde değiştirin. 
 
 > [!TIP]
-> `containerURL` değeriniz SAS belirtecinizle biter ve şuna benzer:
-> 
-> ```
-> https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-> ```
+> `containerURL`SAS belirtecinizle biter ve şuna benzerdir:`https://mystorageaccount.blob.core.windows.net/job-myrenderjob/$TaskOutput?se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`
 
 ```json
 {
@@ -250,7 +249,6 @@ az batch task create \
 
 Batch görevin zamanlamasını yapar ve havuzdaki bir düğüm kullanılabilir duruma geldiği anda görev çalıştırılır.
 
-
 ### <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
 Görevin çalıştırılması birkaç dakika sürer. Görev hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın.
@@ -275,7 +273,6 @@ Bilgisayarınızda *dragon.jpg* dosyasını açın. İşlenmiş resim aşağıda
 
 ![İşlenmiş ejderha karesi 1](./media/tutorial-rendering-cli/dragon-frame.png) 
 
-
 ## <a name="scale-the-pool"></a>Havuzu ölçeklendirme
 
 Şimdi, birden çok karesi olan daha büyük bir işleme işine hazırlanmak için havuzu değiştirin. Batch, işlem kaynaklarını ölçeklendirmek için bir dizi yol sağlar ve görev değişiklik talep ettiğinde düğümleri ekleyen ve kaldıran [otomatik ölçeklendirme](batch-automatic-scaling.md) de bu yollardan biridir. Bu temel örnek için, [az batch pool resize](/cli/azure/batch/pool#az-batch-pool-resize) komutunu kullanarak havuzdaki düşük öncelikli düğümlerin sayısını *6*'ya çıkarın:
@@ -298,7 +295,7 @@ az batch task create --job-id myrenderjob --json-file myrendertask_multi.json
 
 ### <a name="view-task-output"></a>Görev çıktısını görüntüleme
 
-Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örneğin:
+Görevin çalıştırılması birkaç dakika sürer. Görevlerin durumunu görüntülemek için [az batch task list](/cli/azure/batch/task#az-batch-task-list) komutunu kullanın. Örnek:
 
 ```azurecli-interactive
 az batch task list \
@@ -306,15 +303,15 @@ az batch task list \
     --output table
 ```
 
-Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örneğin:
+Tek tek görevler hakkındaki ayrıntıları görüntülemek için [az batch task show](/cli/azure/batch/task#az-batch-task-show) komutunu kullanın. Örnek:
 
 ```azurecli-interactive
 az batch task show \
     --job-id myrenderjob \
     --task-id mymultitask1
 ```
- 
-Görevler, işlem düğümlerinde *dragon0002.jpg* dragon0007.jpgadlı çıktı dosyaları oluşturur  -   ve bunları Depolama hesabınızdaki *iş-myrenderjob* kapsayıcısına yükler. Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örneğin:
+
+Görevler, işlem düğümlerinde *dragon0002.jpg* dragon0007.jpgadlı çıktı dosyaları oluşturur  -   ve bunları Depolama hesabınızdaki *iş-myrenderjob* kapsayıcısına yükler. Çıkışı görüntülemek için, [az storage blob download-batch](/cli/azure/storage/blob) komutunu kullanarak dosyaları yerel bilgisayarınızdaki bir klasöre indirin. Örnek:
 
 ```azurecli-interactive
 az storage blob download-batch \
@@ -326,12 +323,11 @@ Bilgisayarınızda dosyalardan birini açın. İşlenmiş 6. kare aşağıdakine
 
 ![İşlenmiş ejderha karesi 6](./media/tutorial-rendering-cli/dragon-frame6.png) 
 
-
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
 Artık gerekli değilse, [az group delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu, Batch hesabını, havuzları ve tüm ilgili kaynakları kaldırabilirsiniz. Kaynakları aşağıda gösterildiği gibi silin:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 
@@ -340,11 +336,11 @@ az group delete --name myResourceGroup
 Bu öğreticide, şunlar hakkında bilgi edindiniz:
 
 > [!div class="checklist"]
-> * Sahneleri Azure depolamaya yükleme
-> * İşleme için Batch havuzu oluşturma
-> * Arnold ile tek kareli bir sahneyi işleme
-> * Havuzu ölçeklendirme ve çok kareli bir sahneyi işleme
-> * İşlenmiş çıkışı indirme
+> - Sahneleri Azure depolamaya yükleme
+> - İşleme için Batch havuzu oluşturma
+> - Arnold ile tek kareli bir sahneyi işleme
+> - Havuzu ölçeklendirme ve çok kareli bir sahneyi işleme
+> - İşlenmiş çıkışı indirme
 
 Bulut ölçekli işleme hakkında daha fazla bilgi edinmek için toplu işleme belgelerine bakın.
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/05/2020
-ms.openlocfilehash: 783431c4888a68e24cf3d2603c541c4797ea65d8
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 12/29/2020
+ms.openlocfilehash: 34a5dfb44ee78245b56c1774701f48b3b8a494df
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741108"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827487"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API'sini kullanarak tümleştirme hizmeti ortamı (ISE) oluşturma
 
@@ -69,9 +69,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
 
 İstek gövdesinde, Ise 'de etkinleştirmek istediğiniz ek yetenekler hakkında bilgiler de dahil olmak üzere ıSE 'yi oluşturmak için kullanılacak kaynak tanımını sağlayın, örneğin:
 
-* Konumda yüklü olan otomatik olarak imzalanan bir sertifikanın kullanılmasına izin veren bir ıSE oluşturmak için `TrustedRoot` , `certificates` `properties` Bu makalede daha sonra açıklanan şekilde, o zaman Ise tanımının bölümünün içine nesnesini ekleyin.
-
-  Mevcut bir ıSE üzerinde bu özelliği etkinleştirmek için, yalnızca nesnesi için bir yama isteği gönderebilirsiniz `certificates` . Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests).
+* Otomatik olarak imzalanan bir sertifika ve bu konumda yüklü olan kurumsal sertifika yetkilisi tarafından verilen sertifikayı kullanmaya izin veren bir ıSE oluşturmak için `TrustedRoot` , `certificates` `properties` Bu makalede daha sonra açıklanan şekilde, o zaman Ise tanımının bölümünün içine nesnesini ekleyin.
 
 * Sistem tarafından atanan veya Kullanıcı tarafından atanan yönetilen kimlik kullanan bir ıSE oluşturmak için, `identity` Bu makalede daha sonra açıklandığı gibi, yönetilen kimlik türüne sahip ve Ise tanımında gereken diğer bilgileri içeren bir nesne ekleyin.
 
@@ -123,7 +121,7 @@ Dağıtımın tamamlanabilmesi için genellikle iki saat içinde sürer. Bazen d
             }
          ]
       },
-      // Include `certificates` object to enable self-signed certificate support
+      // Include `certificates` object to enable self-signed certiificate and certificate issued by Enterprise Certificate Authority
       "certificates": {
          "testCertificate": {
             "publicCertificate": "{base64-encoded-certificate}",
@@ -183,6 +181,45 @@ Bu örnek istek gövdesinde örnek değerler gösterilmektedir:
             "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
             "kind": "TrustedRoot"
          }
+      }
+   }
+}
+```
+## <a name="add-custom-root-certificates"></a>Özel kök sertifikaları Ekle
+
+Genellikle sanal ağınızdaki veya Şirket içindeki özel hizmetlere bağlanmak için bir ıSE kullanırsınız. Bu özel hizmetler genellikle kurumsal sertifika yetkilisi veya otomatik olarak imzalanan sertifika gibi özel kök sertifika yetkilisi tarafından verilen bir sertifika tarafından korunur. Otomatik olarak imzalanan sertifikaları kullanma hakkında daha fazla bilgi için bkz. [diğer hizmetlere ve sistemlere giden çağrılar Için güvenli erişim ve veri erişimi](../logic-apps/logic-apps-securing-a-logic-app.md#secure-outbound-requests). Bu hizmetlere Aktarım Katmanı Güvenliği (TLS) üzerinden başarıyla bağlanmak için, ıSE 'nin bu kök sertifikalara erişmesi gerekir. ISE 'nizi özel bir güvenilen kök sertifikayla güncelleştirmek için şu HTTPS isteğini yapın `PATCH` :
+
+`PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationServiceEnvironments/{integrationServiceEnvironmentName}?api-version=2019-05-01`
+
+Bu işlemi gerçekleştirmeden önce şu hususları gözden geçirin:
+
+* Kök sertifikayı *ve* tüm ara sertifikaları karşıya yüklediğinizden emin olun. En fazla sertifika sayısı 20 ' dir.
+
+* Kök sertifikaları karşıya yüklemek, en son karşıya yükleme işleminin önceki karşıya yüklemelerinin üzerine yazmasıdır. Örneğin, bir sertifika yükleyen bir istek gönderirseniz ve başka bir sertifikayı karşıya yüklemek için başka bir istek gönderirseniz, ıSE 'niz yalnızca ikinci sertifikayı kullanır. Her iki sertifikayı da kullanmanız gerekiyorsa, bunları aynı istekte toplayın.  
+
+* Kök sertifikaları karşıya yüklemek biraz zaman alabilir bir zaman uyumsuz bir işlemdir. Durumu veya sonucu denetlemek için `GET` aynı URI 'yi kullanarak bir istek gönderebilirsiniz. Yanıt iletisi, `provisioningState` `InProgress` karşıya yükleme işlemi çalışmaya devam ettiği zaman değeri döndüren bir alana sahiptir. `provisioningState`Değer olduğunda `Succeeded` , karşıya yükleme işlemi tamamlanmıştır.
+
+#### <a name="request-body-syntax-for-adding-custom-root-certificates"></a>Özel kök sertifikaları eklemek için istek gövdesi sözdizimi
+
+Kök sertifika eklerken kullanılacak özellikleri açıklayan istek gövdesi sözdizimi aşağıda verilmiştir:
+
+```json
+{
+   "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Logic/integrationServiceEnvironments/{ISE-name}",
+   "name": "{ISE-name}",
+   "type": "Microsoft.Logic/integrationServiceEnvironments",
+   "location": "{Azure-region}",
+   "properties": {
+      "certificates": {
+         "testCertificate1": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         },
+         "testCertificate2": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
+      }
    }
 }
 ```

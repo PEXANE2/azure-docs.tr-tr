@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a657f43ef2d889cad1608d34e9235b1d5e7cb576
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 85534d1f64b273e42a2ea063e67286ee7bb4a90a
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894159"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827164"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Konuşma hizmeti kapsayıcıları hakkında sık sorulan sorular (SSS)
 
@@ -169,7 +169,7 @@ StatusCode: InvalidArgument,
 Details: Voice does not match.
 ```
 
-**Yanıt 2:** İstek için büyük/küçük harfe duyarlı doğru bir ses adı sağlamanız gerekir. Tam hizmet adı eşleme bölümüne bakın. `en-US-JessaRUS` `en-US-JessaNeural` Artık metin okuma kapsayıcısının kapsayıcı sürümünde kullanılabilir olmadığından, kullanmanız gerekir.
+**Yanıt 2:** İstek için büyük/küçük harfe duyarlı doğru bir ses adı sağlamanız gerekir. Tam hizmet adı eşleme bölümüne bakın.
 
 **Hata 3:**
 
@@ -309,6 +309,8 @@ Geçici çözüm kodunuzda sürekli tanıma özelliğini kullanmaya geçiş yapa
 Kodunuz için, uç noktasını/Speech/Recognition/interactive/cognitiveservices/v1 olarak ayarlayın. `host:port`
 
 Çeşitli modlar için bkz. konuşma modları-aşağıya bakın:
+
+## <a name="speech-modes---interactive-conversation-dictation"></a>Konuşma modları-etkileşimli, konuşma, dikte
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 
@@ -558,6 +560,8 @@ auto result = synthesizer->SpeakTextAsync("{{{text2}}}").get();
 </summary>
 
 **Cevap:** Farklı kullanımlar için konuşma kapsayıcısında üç uç nokta bulunur ve bunlar konuşma modları olarak tanımlanır: aşağıya bakın:
+
+## <a name="speech-modes"></a>Konuşma modları
 
 [!INCLUDE [speech-modes](includes/speech-modes.md)]
 

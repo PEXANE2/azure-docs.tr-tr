@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 16de95e177f6be1b5bb2517b5ae3ca595cfb5766
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96939205"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827181"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>SAML ve OıDC/OAuth ile Microsoft Identity platform belirteci değişim senaryoları
 
@@ -33,4 +33,4 @@ Genel strateji, OıDC/OAuth yığınını uygulamanıza eklemektir. Her iki stan
 > OıDC/OAuth davranışı eklemek için önerilen kitaplık, Microsoft kimlik doğrulama Kitaplığı ' dır (MSAL). MSAL hakkında daha fazla bilgi için bkz. [Microsoft kimlik doğrulama kitaplığı 'Na genel bakış (msal)](msal-overview.md). Önceki kitaplığa Active Directory Authentication Library (ADAL) çağrılmıştı, ancak MSAL bunun yerine kullanılması önerilmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md)
+- [Kimlik doğrulama akışları ve uygulama senaryoları](authentication-flows-app-scenarios.md)

@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2020
+ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aae822665702300064e82e80d74b5c2256423ea1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
+ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957291"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97827232"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>SAP uygulamalarıyla en iyi ağ gecikmesi için Azure yakınlık yerleştirme grupları
 SAP NetWeaver veya SAP S/4HANA mimarisine dayanan SAP uygulamaları, SAP uygulama katmanı ve SAP veritabanı katmanı arasındaki ağ gecikmesinden duyarlıdır. Bu duyarlılık, uygulama katmanında çalışan iş mantığının büyük bir sonucudur. SAP uygulama katmanı iş mantığını çalıştırdığı için, bir saniyede binlerce veya onlarca binlerce veya on binde bir hızda veritabanı katmanına sorgu verir. Çoğu durumda, bu sorguların doğası basittir. Bunlar, genellikle 500 mikrosaniye veya daha az bir veritabanı katmanında çalıştırılabilir.
@@ -42,6 +42,8 @@ Ağ gecikmesini en uygun hale getirmenize olanak tanımak için Azure, [yakınl�
 > - Yalnızca gerekli olduğunda
 > - Yalnızca tek bir SAP sisteminin ayrıntı düzeyi üzerinde değil, tüm sistem yatay veya tam bir SAP yatay
 > - Farklı VM türlerini ve bir yakınlık yerleşimi grubundaki VM sayısını en az bir olacak şekilde korumak için
+
+Kullanılabilirlik Alanları belirterek VM 'Ler dağıtırsanız ve aynı Kullanılabilirlik Alanları seçtiğinizde, bu VM 'Ler arasındaki ağ gecikmesi SAP NetWeaver ve S/4HANA sistemlerini karşılayan performans ve verimlilik ile işletmek için yeterli olmalıdır. Bu varsayım, belirli bir bölgenin bir veri merkezinde veya birden çok veri merkezinden oluşturulup oluşturulmayacağı olgunun bağımsızdır. Bölgesel dağıtımlarında yakınlık yerleşimi gruplarının kullanılması için tek neden olan Azure kullanılabilirlik kümesi dağıtılan VM 'leri, bölgesel dağıtılan VM 'lerle birlikte ayırmak istediğiniz durumdur.
 
 
 ## <a name="what-are-proximity-placement-groups"></a>Yakınlık yerleşimi grupları nelerdir? 

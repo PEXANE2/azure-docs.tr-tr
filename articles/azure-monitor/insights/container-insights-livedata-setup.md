@@ -4,12 +4,12 @@ description: Bu makalede, kapsayıcılar için Azure Izleyici ile kubectl kullan
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: references_regions
-ms.openlocfilehash: 45ed931f734e874e81af837fff5c4a326349cb21
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 62bc7613995296504dfba551cdb631ac3386aa75
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530191"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830794"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Canlı veriler (Önizleme) özelliğini ayarlama
 
@@ -48,7 +48,7 @@ Azure portal, bir Azure Active Directory kümesi için oturum açma kimlik bilgi
 
 Kubernetes [RBAC yetkilendirmesini etkinleştirdikten](#configure-kubernetes-rbac-authorization) sonra Kubernetes Kullanıcı rolünün **Kümekullanıcısına** canlı veriler (Önizleme) özelliğine bağlanmasına izin vermek için ek yapılandırma değişiklikleri uygulama gereksinimini ortadan kaldırmak için, aks, **clustermonitoringuser** adlı yeni bir Kubernetes kümesi rol bağlaması eklemiştir. Bu küme rolü bağlamasında, Kubernetes API 'sine ve Canlı veriler (Önizleme) özelliğinin kullanılmasıyla ilgili uç noktalara erişmek için gerekli tüm izinler bulunur.
 
-Bu yeni kullanıcıyla canlı veriler (Önizleme) özelliğini kullanmak için AKS küme kaynağında [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Etkin olduğunda kapsayıcılar için Azure Izleyici, varsayılan olarak bu kullanıcı kullanılarak kimlik doğrulaması yapacak şekilde yapılandırılmıştır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır.
+Bu yeni kullanıcıyla canlı veri (Önizleme) özelliğini kullanabilmeniz için AKS küme kaynağında [Azure Kubernetes hizmet kümesi kullanıcısı](../../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) veya [katkıda bulunan](../../role-based-access-control/built-in-roles.md#contributor) rolünün bir üyesi olmanız gerekir. Devre dışı bırakıldığında, kapsayıcı için Azure Izleyici varsayılan olarak clusterMonitoringUser kullanarak kimlik doğrulaması yapacak şekilde yapılandırılmıştır. ClusterMonitoringUser rolü bağlama bir kümede yoksa, **clusteruser** bunun yerine kimlik doğrulaması için kullanılır. Katkıda bulunan, clusterMonitoringUser 'a (varsa) erişmenizi sağlar ve Azure Kuberenetes hizmet kümesi kullanıcısı, Kümekullanıcısına erişmenizi sağlar. Bu iki rolden herhangi biri, bu özelliği kullanmak için yeterli erişim sağlar.
 
 AKS, bu yeni rol bağlamasını Ocak 2020 ' de yayımlamıştır, bu yüzden Ocak 2020 ' den önce oluşturulan kümeler buna sahip değildir. Ocak 2020 tarihinden önce oluşturulmuş bir kümeniz varsa, yeni **Clustermonitoringuser** , küme ÜZERINDE bir put işlemi gerçekleştirerek veya kümede, küme sürümünü güncelleştirme gıbı bir put işlemi gerçekleştiren başka bir işlem gerçekleştirerek mevcut bir kümeye eklenebilir.
 

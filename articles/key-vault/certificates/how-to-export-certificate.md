@@ -7,15 +7,15 @@ tags: azure-key-vault
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: how-to
-ms.custom: mvc, devx-track-azurecli
+ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: 4339e8217702e9f25877bc8c250b5363e2c59a42
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0925b51ed960b8007d2df86115ea7e5cf627fe7e
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483704"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97826132"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Sertifikaları Azure Key Vault dışarı aktarma
 
@@ -25,7 +25,7 @@ Azure Key Vault sertifikaların nasıl dışarı aktarılacağını öğrenin. S
 
 Azure Key Vault ağınız için dijital sertifikaları kolayca sağlamanıza, yönetmenize ve dağıtmanıza olanak tanır. Ayrıca, uygulamalar için güvenli iletişimler da sunar. Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları](./about-certificates.md) .
 
-### <a name="composition-of-a-certificate"></a>Sertifika oluşturma
+### <a name="composition-of-a-certificate"></a>Sertifikanın birleşimi
 
 Bir Key Vault sertifikası oluşturulduğunda, aynı ada sahip bir adreslenebilir *anahtar* ve *gizli* dizi oluşturulur. Key Vault anahtar, anahtar işlemlerine izin verir. Key Vault parolası, sertifika değerinin gizli olarak alınmasına izin verir. Bir Key Vault sertifikası ortak x509 sertifika meta verilerini de içerir. Daha fazla bilgi için [bir sertifikanın kompozisyonunu](./about-certificates.md#composition-of-a-certificate) ziyaret edin.
 
@@ -42,7 +42,7 @@ Daha fazla bilgi için bkz. [Azure Key Vault sertifikaları hakkında](./about-c
 
 ## <a name="export-stored-certificates"></a>Depolanan sertifikaları dışarı aktar
 
-Azure CLı, Azure PowerShell veya Azure portal kullanarak depolanan sertifikaları Azure Key Vault dışa aktarabilirsiniz.
+Depolanan sertifikaları Azure CLI, Azure PowerShell veya Azure portal kullanarak Azure Key Vault'a aktarabilirsiniz.
 
 > [!NOTE]
 > Sertifikayı anahtar kasasında içeri aktardığınızda yalnızca bir sertifika parolası gerektir. Key Vault ilişkili parolayı kaydetmez. Sertifikayı dışa aktardığınızda parola boştur.

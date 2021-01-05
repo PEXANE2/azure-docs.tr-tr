@@ -8,14 +8,14 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 8a4df7bf-be49-4198-800e-db381cda98f5
 ms.date: 10/30/2020
-ms.openlocfilehash: bab84b12c871c621b5a317ba8b47f9b18c91bff3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: bd6ff46807c22309679ba7e8518685bb05cc77e2
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500198"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830726"
 ---
-# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 'de Jpatron EAP ile Kurumsal Java uygulamalarını Azure 'a dağıtma
+# <a name="deploy-enterprise-java-applications-to-azure-with-jboss-eap-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux’da JBoss EAP ile Azure’a kurumsal Java uygulamalarını dağıtma
 
 Bu makaledeki Azure hızlı başlangıç şablonları [Red Hat Enterprise Linux (RHEL)](https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux) Ile [Jpatron kurumsal uygulama platformunu (EAP)](https://www.redhat.com/en/technologies/jboss-middleware/application-platform) Azure sanal makinelerine (VM 'ler) ve sanal makine ölçek kümelerine nasıl dağıtacağınızı gösterir. Dağıtımı doğrulamak için örnek bir Java uygulaması kullanacaksınız. 
 
@@ -152,7 +152,7 @@ PAYG VM fiyatlandırmasıyla ilgili ayrıntılar için bkz. [Red Hat Enterprise 
 RHEL işletim sistemi için KCG 'yi kullanmak için Azure 'da RHEL OS kullanma yetkilendirmelerine sahip geçerli bir Red Hat aboneliğine sahip olmanız gerekir. KCG modeliyle RHEL işletim sistemini dağıtmadan önce aşağıdaki önkoşulları doldurun:
 
 1. Red Hat aboneliğinize bağlı RHEL OS ve Jpatron EAP yetkilendirmelerine sahip olduğunuzdan emin olun.
-2. RHEL BYOS görüntülerini kullanmak için Azure abonelik KIMLIĞINIZI yetkilendirin. Aşağıdaki adımları içeren işlemi gerçekleştirmek için [Red Hat abonelik yönetimi belgelerini](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs) izleyin:
+2. RHEL BYOS görüntülerini kullanmak için Azure abonelik KIMLIĞINIZI yetkilendirin. Aşağıdaki adımları içeren işlemi gerçekleştirmek için [Red Hat abonelik yönetimi belgelerini](https://access.redhat.com/documentation/red_hat_subscription_management/1/) izleyin:
 
    1. Red Hat bulut erişim panonuzda bir sağlayıcı olarak Microsoft Azure etkinleştirin.
 
@@ -160,7 +160,7 @@ RHEL işletim sistemi için KCG 'yi kullanmak için Azure 'da RHEL OS kullanma y
 
    1. Microsoft Azure bulut erişimi için yeni ürünleri etkinleştirin.
     
-   1. Azure aboneliğiniz için Red Hat Gold görüntülerini etkinleştirin. Daha fazla bilgi için bkz. [Microsoft Azure Red Hat Gold görüntüleri](https://access.redhat.com/documentation/en/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).
+   1. Azure aboneliğiniz için Red Hat Gold görüntülerini etkinleştirin. Daha fazla bilgi için bkz. [Microsoft Azure Red Hat Gold görüntüleri](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/cloud-access-gold-images_cloud-access#proc_using-gold-images-azure_cloud-access).
 
    1. Azure aboneliğinizde Red Hat Gold görüntülerinin kullanılabilir olmasını bekleyin. Bu görüntüler genellikle üç saatlik gönderim dahilinde kullanılabilir.
     
@@ -212,7 +212,7 @@ Jpatron EAP yalnızca KCG modeli aracılığıyla Azure 'da kullanılabilir. Bu 
   ```
 
   ```
-  az group deployment create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
+  az deployment group create --resource-group <my-resource-group> --template-uri <raw link to the template which can be obtained from github>
   ```
 
   Azure CLı 'yi yükleme ve yapılandırma hakkında ayrıntılı bilgi için bkz. [CLI 'Yı yükleme](/cli/azure/install-azure-cli).

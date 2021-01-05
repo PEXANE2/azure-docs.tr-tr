@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 3e4a770a33f5cdb3c3b2de09cbcb8431b2fc3fbb
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 09612ff3d86c669801f9e824d367a2b9a5bb10ac
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968664"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97830658"
 ---
 # <a name="red-hat-workloads-on-azure"></a>Azure 'da Red hat iş yükleri
 
@@ -36,7 +36,7 @@ Uygun abonelik sayısı için ayrı olarak ödeme yapmak istemiyorsanız, Kullan
 ### <a name="red-hat-gold-images"></a>Red Hat Gold resimleri
 
 Azure ayrıca Red Hat Gold görüntüleri ( `rhel-byos` ) sağlar. Bu görüntüler, var olan Red Hat aboneliklerine sahip müşteriler için yararlı olabilir ve bunları Azure 'da kullanmak isteyebilir. Mevcut Red Hat aboneliklerinizi Azure 'da kullanabilmeniz için Red Hat bulut erişimi için etkinleştirmeniz gerekir. Red Hat abonelikleriniz bulut erişimi için etkinleştirildiğinde ve uygunluk gereksinimlerini karşılarken bu görüntülere erişim otomatik olarak verilir. Bu görüntülerin kullanılması, bir müşterinin, Kullandıkça Öde görüntülerinin kullanılmasıyla ilgili bir Double faturalandırma yapmasına engel olabilir.
-* [Azure Ile bulut erişimi Için Red Hat aboneliklerinizi nasıl etkinleştireceğinizi](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/con-enable-subs)öğrenin.
+* [Azure Ile bulut erişimi Için Red Hat aboneliklerinizi nasıl etkinleştireceğinizi](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/enabling-and-maintaining-subs_cloud-access)öğrenin.
 * [Azure Portal, Azure CLI veya PowerShell cmdlet 'Inde Red Hat altın görüntülerini bulmayı](./byos.md)öğrenin.
 
 > [!NOTE]
