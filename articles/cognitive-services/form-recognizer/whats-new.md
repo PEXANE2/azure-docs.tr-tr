@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7539e896d810a2f0fbf3c07f389f25e2d3c31fe1
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563169"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845002"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Form Tanıma'daki yenilikler
 
@@ -209,7 +209,7 @@ Tüm API çağrılarına yönelik JSON yanıtlarının yeni biçimleri vardır. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Form tanıyıcı ile bir form işleme uygulamasını tercih ettiğiniz dilde yazmaya başlamak için bir [istemci kitaplığı hızlı](quickstarts/client-library.md) başlangıcını doldurun.
+Form tanıyıcıyla seçtiğiniz dilde bir form işleme uygulaması yazmaya başlamak için [hızlı](quickstarts/client-library.md) başlangıcı doldurun.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

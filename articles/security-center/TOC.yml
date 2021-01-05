@@ -3,14 +3,14 @@
 - name: Genel Bakış
   expanded: true
   items:
-    - name: Güvenlik Merkezi hakkında
+    - name: Azure Güvenlik Merkezi nedir?
+      href: security-center-introduction.md
+    - name: Kullanılabilirlik
       items:
-        - name: Azure Güvenlik Merkezi nedir?
-          href: security-center-introduction.md
         - name: Desteklenen platformlar
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: VM’ler için özellik kapsamı
+        - name: 'İşletim sistemi, makine türü ve buluta göre kapsam'
           href: security-center-services.md
         - name: Azure PaaS kaynakları için özellik kapsamı
           href: features-paas.md
@@ -110,6 +110,8 @@
       href: tutorial-security-incident.md
     - name: Mevzuat uyumluluğunuzu artırma
       href: security-center-compliance-dashboard.md
+    - name: Güvenlik ilkelerini yönetin
+      href: tutorial-security-policy.md
 - name: Kavramlar
   items:
     - name: Bulut Güvenlik Duruşu Yönetimi
@@ -120,11 +122,6 @@
           href: secure-score-security-controls.md
         - name: Güvenlik önerilerine genel bakış
           href: security-center-recommendations.md
-        - name: Güvenlik ilkelerine genel bakış
-          href: tutorial-security-policy.md
-        - name: Yerleşik güvenlik ilkeleri
-          displayName: 'samples, policy'
-          href: ./policy-reference.md
         - name: Güvenliği artırmak için önerileri kullanın
           href: security-center-using-recommendations.md
         - name: Güvenlik temeli
@@ -224,14 +221,9 @@
         - name: Docker konaklarınızı sağlamlaştırma
           displayName: containers
           href: harden-docker-hosts.md
-    - name: SQL için Azure Defender’ı kullanma
-      items:
-        - name: Azure VM’lerinde SQL için Azure Defender’ı yapılandırma
+        - name: SQL için Azure Defender’ı kullanma
           href: defender-for-sql-usage.md
           displayName: 'hybrid, arc'
-        - name: SQL bilgilerinizi koruma ilkesini özelleştirme
-          displayName: 'sql, database, data discovery'
-          href: security-center-info-protection-policy.md
     - name: Kapsayıcı kayıt defterleri için Azure Defender’ı kullanma
       items:
         - name: Kayıt defteri görüntülerinizi güvenlik açıkları için tarama
@@ -281,6 +273,9 @@
       href: security-center-investigation-user-data.md
     - name: Kiracı genelinde görünürlük elde etme
       href: security-center-management-groups.md
+    - name: SQL bilgilerinizi koruma ilkesini özelleştirme
+      displayName: 'sql, database, data discovery'
+      href: security-center-info-protection-policy.md
 - name: Başvuru
   items:
     - name: REST API'leri
@@ -297,6 +292,9 @@
           href: faq-vms.md
         - name: Mevcut Azure Log Analytics kullanıcıları
           href: faq-azure-monitor-logs.md
+    - name: Yerleşik güvenlik ilkeleri
+      displayName: 'samples, policy'
+      href: policy-reference.md
     - name: Azure yol haritası blogu
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Uç nokta koruma değerlendirmesi ve önerileri

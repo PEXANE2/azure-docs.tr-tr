@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: be3d3f11e90c17bd8c4792418500da651039e480
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: a80eaecc02fa3c8c6618341c02e22241f0dc7faf
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562812"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97845021"
 ---
 # <a name="advanced-features-of-azure-metrics-explorer"></a>Azure Ölçüm Gezgini’nin gelişmiş özellikleri
 
@@ -22,6 +22,35 @@ ms.locfileid: "97562812"
 ## <a name="metrics-in-azure"></a>Azure 'da ölçümler
 
 [Azure izleyici 'de ölçümler](data-platform-metrics.md) , zaman içinde toplanan ve depolanan ölçülen değer ve sayı serisidir. Standart (veya "Platform") ölçümleri ve özel ölçümler vardır. Standart ölçümler size Azure platformunun kendisi tarafından sunulur. Standart ölçümler, Azure kaynaklarınızın sistem durumunu ve kullanım istatistiklerini yansıtır. Özel ölçümler, [özel olaylar ve ölçümler](../app/api-custom-events-metrics.md),  [Windows Azure tanılama (wad) uzantısı](./diagnostics-extension-overview.md)ya da [Azure izleyici REST API](./metrics-store-custom-rest-api.md)tarafından Application Insights API 'sini kullanarak, uygulamalarınız tarafından Azure 'a gönderilir.
+
+## <a name="resource-scope-picker"></a>Kaynak kapsamı seçici
+Kaynak kapsamı seçici, tek ve birden çok kaynak arasında ölçümleri görüntülemenize izin verir. Kaynak kapsamı seçicisinin kullanımıyla ilgili yönergeler aşağıda verilmiştir. 
+
+### <a name="selecting-a-single-resource"></a>Tek bir kaynak seçme
+**Azure izleyici** menüsünde veya bir kaynağın menüsünün **izleme** bölümünden **ölçümler** ' i seçin. Kapsam seçiciyi açmak için "kapsam seçin" düğmesine tıklayın. Bu işlem, ölçümlerini görmek istediğiniz kaynakları seçmenizi sağlar. Bu, ölçüm Gezginini bir kaynağın menüsünden açtıysanız zaten doldurulmalıdır. 
+
+![Kaynak kapsamı seçicisinin ekran görüntüsü](./media/metrics-charts/scope-picker.png)
+
+Belirli kaynaklar için aynı anda yalnızca tek bir kaynağın ölçümlerini görüntüleyebilirsiniz. Bu kaynaklar kaynak türleri açılan menüsünde "tüm kaynak türleri" bölümünde bulunur.
+
+![Tek kaynağın ekran görüntüsü](./media/metrics-charts/single-resource-scope.png)
+
+İstediğiniz kaynağa tıkladıktan sonra, bu kaynağı içeren tüm abonelikleri ve kaynak gruplarını görürsünüz.
+
+![Kullanılabilir kaynakların ekran görüntüsü](./media/metrics-charts/available-single-resource.png)
+
+> [!TIP]
+> Aynı anda birden fazla kaynağın ölçümlerini veya bir abonelik ya da kaynak grubundaki ölçümleri görüntülemek istiyorsanız, yukarı oy düğmesine tıklayın.
+
+Seçiminizden memnun kaldıktan sonra "Uygula" düğmesine tıklayın.
+
+### <a name="viewing-metrics-across-multiple-resources"></a>Birden çok kaynak genelinde ölçümleri görüntüleme
+Bazı kaynak türleri, aynı abonelik ve konum dahilinde oldukları sürece birden fazla kaynak üzerinde ölçümleri sorgulama özelliğini etkinleştirdi. Bu kaynak türleri "kaynak türleri" açılan listesinin en üstünde bulunabilir. Birden çok kaynak genelinde ölçümleri görüntüleme hakkında daha fazla bilgi edinmek için [Bu belgeyi](metrics-dynamic-scope.md#selecting-multiple-resources)görüntüleyin.
+
+![Çapraz kaynak türlerinin ekran görüntüsü](./media/metrics-charts/multi-resource-scope.png)
+
+Çoklu kaynak uyumlu türler için bir abonelik veya birden çok kaynak grubu genelinde ölçümleri de sorgulayabilirsiniz. Bunu nasıl yapacağınızı öğrenmek için [Bu makaleyi](metrics-dynamic-scope.md#selecting-a-resource-group-or-subscription) görüntüleyin
+
 
 ## <a name="create-views-with-multiple-metrics-and-charts"></a>Birden çok ölçüm ve grafik içeren görünümler oluşturma
 
@@ -61,11 +90,25 @@ Bir grafiğe ölçüm eklediğinizde, Ölçüm Gezgini varsayılan toplamayı ot
 
 Ölçüm Gezgininde beş temel istatistik toplama türü mevcuttur: **Sum**, **Count**, **Min**, **Max** ve **Average**. Toplam **toplama bazen** **Toplam** toplama olarak adlandırılır. Birçok ölçüm için, Ölçüm Gezgini tamamen ilgisiz olan ve kullanılamayan toplamaları gizleyecek.
 
-- **Sum** : toplama aralığı boyunca yakalanan tüm değerlerin toplamı
-- **Count** : toplama aralığı boyunca yakalanan ölçüm sayısı. Bu **sayı** , ölçümün her zaman 1 değeriyle yakalanması durumunda **toplamın toplamına** eşit olacağını unutmayın. Bu, ölçüm ayrı olayların sayısını izliyorsa ve her ölçüm bir olayı temsil ettiğinde (yani, her yeni istek geldiğinde kod ölçüm kaydını kapattığında), bu yaygın bir şekilde yapılır.
-- **Average** : toplama aralığı boyunca yakalanan ölçüm değerlerinin ortalaması
-- **Min** : toplama aralığı boyunca yakalanan en küçük değer
-- **Max** : toplama aralığı boyunca yakalanan en büyük değer
+**Sum** : toplama aralığı boyunca yakalanan tüm değerlerin toplamı
+
+![İstek toplamının ekran görüntüsü](./media/metrics-charts/request-sum.png)
+
+**Count** : toplama aralığı boyunca yakalanan ölçüm sayısı. Bu **sayı** , ölçümün her zaman 1 değeriyle yakalanması durumunda **toplamın toplamına** eşit olacağını unutmayın. Bu, ölçüm ayrı olayların sayısını izliyorsa ve her ölçüm bir olayı temsil ettiğinde (yani, her yeni istek geldiğinde kod ölçüm kaydını kapattığında), bu yaygın bir şekilde yapılır.
+
+![İstek sayısının ekran görüntüsü](./media/metrics-charts/request-count.png)
+
+**Average** : toplama aralığı boyunca yakalanan ölçüm değerlerinin ortalaması
+
+![Ortalama istek ekran görüntüsü](./media/metrics-charts/request-avg.png)
+
+**Min** : toplama aralığı boyunca yakalanan en küçük değer
+
+![En düşük istek ekran görüntüsü](./media/metrics-charts/request-min.png)
+
+**Max** : toplama aralığı boyunca yakalanan en büyük değer
+
+![Maksimum isteğin ekran görüntüsü](./media/metrics-charts/request-max.png)
 
 ## <a name="apply-filters-to-charts"></a>Grafiklere filtre uygulama
 

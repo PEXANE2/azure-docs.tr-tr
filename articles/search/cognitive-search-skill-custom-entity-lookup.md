@@ -8,17 +8,17 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 5511551f240fe4fdd2f2aa3bc8a3a2615505f35f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88936121"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844946"
 ---
 #     <a name="custom-entity-lookup-cognitive-skill-preview"></a>Özel varlık arama Bilişsel Beceri (Önizleme)
 
 > [!IMPORTANT] 
-> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
+> Bu yetenek Şu anda genel önizlemededir. Önizleme işlevselliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Şu anda portal veya .NET SDK desteği yok.
 
 **Özel varlık arama** becerisi, özel, Kullanıcı tanımlı bir sözcük ve tümcecik listesinden metin arar. Bu listeyi kullanarak tüm belgeleri eşleşen varlıklarla Etiketler. Bu beceri, benzer ancak tam olmayan eşleşmeleri bulmak için uygulanabilecek belirsiz eşleştirmeyi de destekler.  
 
@@ -41,7 +41,9 @@ Parametreler büyük/küçük harfe duyarlıdır.
 | `entitiesDefinitionUri`    | Eşleştirilecek tüm hedef metinleri içeren bir JSON veya CSV dosyasının yolu. Bu varlık tanımı, Dizin Oluşturucu çalıştırmasının başlangıcında okundu. Bu dosya için her türlü güncelleştirme, sonraki Çalışmayana kadar gerçekleştirilmeyecek. Bu yapılandırmaya HTTPS üzerinden erişilebilir olması gerekir. Beklenen CSV veya JSON şeması için aşağıda " [özel varlık tanımı](#custom-entity-definition-format) biçimi" başlığına bakın.|
 |`inlineEntitiesDefinition` | Satır içi JSON varlık tanımları. Bu parametre, varsa entitiesDefinitionUri parametresinin yerini alır. En fazla 10 KB 'lik yapılandırma satır içi olarak sağlanmayabilir. Beklenen JSON şeması için aşağıdaki [özel varlık tanımına](#custom-entity-definition-format) bakın. |
 |`defaultLanguageCode` |    Seçim Giriş metnini simgeleştirme ve ayırma için kullanılan giriş metninin dil kodu. Aşağıdaki diller desteklenir: `da, de, en, es, fi, fr, it, ko, pt` . Varsayılan değer English () ' dir `en` . LanguageCode-CountryCode biçimi geçirirseniz, yalnızca biçimin languageCode kısmı kullanılır.  |
-
+|`globalDefaultCaseSensitive` | Seçim Beceri için varsayılan büyük/küçük harfe duyarlı değer. `defaultCaseSensitive`Bir varlığın değeri belirtilmemişse, bu değer bu `defaultCaseSensitive` varlık için değer olacaktır. |
+|`globalDefaultAccentSensitive` | Seçim Beceri için varsayılan aksan duyarlı değer. `defaultAccentSensitive`Bir varlığın değeri belirtilmemişse, bu değer bu `defaultAccentSensitive` varlık için değer olacaktır. |
+|`globalDefaultFuzzyEditDistance` | Seçim Beceri için varsayılan, benzer bir değer düzenleme uzaklığı değeri. `defaultFuzzyEditDistance`Bir varlığın değeri belirtilmemişse, bu değer bu `defaultFuzzyEditDistance` varlık için değer olacaktır. |
 
 ## <a name="skill-inputs"></a>Beceri girişleri
 
@@ -103,7 +105,7 @@ En temel JSON özel varlık listesi tanımı, eşleştirilecek varlıkların bir
 ]
 ```
 
-JSON tanımının daha karmaşık bir örneği, isteğe bağlı olarak her bir varlığın kimliğini, açıklamasını, türünü ve alt türünü ve diğer *diğer adları*sağlayabilir. Bir diğer ad terimi eşleşirse, varlık de döndürülür:
+JSON tanımının daha karmaşık bir örneği, isteğe bağlı olarak her bir varlığın kimliğini, açıklamasını, türünü ve alt türünü ve diğer *diğer adları* sağlayabilir. Bir diğer ad terimi eşleşirse, varlık de döndürülür:
 
 ```json
 [ 
@@ -151,8 +153,10 @@ Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabile
 | `subtype` | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
 | `id` | Seçim Bu alan, eşleşen metinler hakkında özel meta veriler için bir PASSTHROUGH olarak kullanılabilir. Bu alanın değeri, yetenek çıkışında varlığıyla her eşleşimiyle birlikte görüntülenir. |
 | `caseSensitive` | Seçim Varsayılan değer false şeklindedir. Varlık adıyla karşılaştırmaların karakter büyük küçük harfe duyarlı olup olmadığını belirten Boole değeri. "Microsoft" örnek büyük/küçük harf duyarsız eşleşmeleri: Microsoft, microSoft, MICROSOFT |
+| `accentSensitive` | Seçim Varsayılan değer false şeklindedir. ' É ' ve ' e ' gibi aksanlı ve vurgusuz harflerin aynı olup olmadığını belirten Boole değeri. |
 | `fuzzyEditDistance` | Seçim Varsayılan değer 0 ' dır. En büyük 5 değeri. Varlık adıyla bir eşleşme oluşturulmasına neden olacak kabul edilebilir sayıda sabit karakter belirtir. Verilen herhangi bir eşleşme için mümkün olan en küçük belirsizlik döndürülür.  Örneğin, düzenleme uzaklığı 3 olarak ayarlandıysa, "Windows 10" yine "Windows", "Windows10" ve "Windows 7" ile eşleşir. <br/> Büyük/küçük harf duyarlılığı yanlış olarak ayarlandığında, büyük/küçük harf farkları belirsizlik toleransına doğru sayılmaz, aksi takdirde bunu yapın. |
-| `defaultCaseSensitive` | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılır. |
+| `defaultCaseSensitive` | Seçim Bu varlık için varsayılan büyük/küçük harf duyarlılığı değerini değiştirir. Tüm diğer ad caseSensitive değerlerinin varsayılan değerini değiştirmek için kullanılabilir. |
+| `defaultAccentSensitive` | Seçim Bu varlık için varsayılan vurgu duyarlılığı değerini değiştirir. Tüm diğer ad, Accenthassas değerlerinin varsayılan değerini değiştirmek için kullanılabilir.|
 | `defaultFuzzyEditDistance` | Seçim Bu varlık için varsayılan benzer düzenleme uzaklığı değerini değiştirir. Tüm diğer adların belirsizlik değerlerini varsayılan değerini değiştirmek için kullanılabilir. |
 | `aliases` | Seçim Kök varlık adının alternatif yazılarını veya eşanlamlı türlerini belirtmek için kullanılabilecek karmaşık nesneler dizisi. |
 
@@ -160,6 +164,7 @@ Aşağıdaki tablolarda, eşleştirilecek varlıkları tanımlarken ayarlayabile
 |------------------|-------------|
 | `text`  | Bir hedef varlık adının alternatif yazımı veya temsili.  |
 | `caseSensitive` | Seçim Yukarıdaki kök varlık "caseSensitive" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
+| `accentSensitive` | Seçim , Yukarıdaki kök varlık "Accentduyarlıdır" parametresiyle aynı şekilde davranır, ancak yalnızca bu diğer ad için geçerlidir. |
 | `fuzzyEditDistance` | Seçim Yukarıdaki "belirsizlik Zyeditdistance" parametresi ile aynı şekilde davranır, ancak yalnızca bu bir diğer ad için geçerlidir. |
 
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
-ms.openlocfilehash: b3a633c1eff6adf2a33b4f3bfc818eb51ff5ee85
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 180de56e3c158802460d2ff995041e8572d4dcd7
+ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653104"
+ms.lasthandoff: 01/01/2021
+ms.locfileid: "97844959"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Metin Analizi API'si v3 dil desteği 
 
@@ -61,9 +61,9 @@ ms.locfileid: "97653104"
 | Dil               | Dil kodu | v 2.1 desteği | v3 desteği | V3 modeli sürümünden itibaren: |       Notlar        |
 |:-----------------------|:-------------:|:----------:|:----------:|:-------------------------------:|:------------------:|
 | Arapça                |     `ar`      |     ✓      |            |                                 |                    |
-| Çekçe                 |     `cs`      |     ✓      |            |                                 |                    |
 | Basitleştirilmiş Çince     |   `zh-hans`   |     ✓      |            |                                 | `zh` Ayrıca kabul edildi |
 | Geleneksel Çince   |   `zh-hant`   |     ✓      |            |                                 |                    |
+| Çekçe                 |     `cs`      |     ✓      |            |                                 |                    |
 | Danca                |     `da`      |     ✓      |            |                                 |                    |
 | Felemenkçe                 |     `nl`      |     ✓      |            |                                 |                    |
 | İngilizce                |     `en`      |     ✓      |     ✓      |           2019-10-01            |                    |
@@ -77,14 +77,14 @@ ms.locfileid: "97653104"
 | Korece                |     `ko`      |     ✓      |            |                                 |                    |
 | Norveççe (Bokmål)   |     `no`      |     ✓      |            |                                 | `nb` Ayrıca kabul edildi |
 | Lehçe                |     `pl`      |     ✓      |            |                                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt` Ayrıca kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |            |                                 |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |            |                                 | `pt` Ayrıca kabul edildi |
 | Rusça              |     `ru`      |     ✓      |            |                                 |                    |
 | İspanyolca               |     `es`      |     ✓      |     ✓       |              2020-04-01                   |                    |
 | İsveççe               |     `sv`      |     ✓      |            |                                 |                    |
 | Türkçe               |     `tr`      |     ✓      |            |                                 |                    |
 
-#### <a name="key-phrase-extraction"></a>[Anahtar ifade ayıklama](#tab/key-phrase-extraction)
+#### <a name="key-phrase-extraction"></a>[Anahtar tümceciği ayıklama](#tab/key-phrase-extraction)
 
 > [!NOTE]
 > 2020-07-01 ' den önceki Anahtar İfade Ayıklama model sürümlerinin 64 karakter sınırı vardır. Bu sınır sonraki model sürümlerinde yok.
@@ -101,8 +101,8 @@ ms.locfileid: "97653104"
 | Korece                |     `ko`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | Norveççe (Bokmål)   |     `no`      |     ✓      |     ✓      |                2019-10-01                 | `nb` Ayrıca kabul edildi |
 | Lehçe                |     `pl`      |     ✓      |     ✓      |                2019-10-01                 |                    |
-| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
 | Portekizce (Brezilya)   |    `pt-BR`    |     ✓      |     ✓      |                2019-10-01                 |                    |
+| Portekizce (Portekiz) |    `pt-PT`    |     ✓      |     ✓      |                2019-10-01                 | `pt` Ayrıca kabul edildi |
 | Rusça               |     `ru`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | İspanyolca               |     `es`      |     ✓      |     ✓      |                2019-10-01                 |                    |
 | İsveççe               |     `sv`      |     ✓      |     ✓      |                2019-10-01                 |                    |
