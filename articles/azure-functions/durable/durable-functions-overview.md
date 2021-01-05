@@ -3,15 +3,15 @@ title: Dayanıklı İşlevler genel bakış-Azure
 description: Azure Işlevleri için Dayanıklı İşlevler uzantısına giriş.
 author: cgillum
 ms.topic: overview
-ms.date: 03/12/2020
+ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 28c494bf2867ec5d2d3ee99ef7ee45f8181cfd90
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89669252"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763583"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -23,9 +23,11 @@ Dayanıklı İşlevler Şu anda aşağıdaki dilleri desteklemektedir:
 
 * **C#**: hem [önceden derlenmiş sınıf kitaplıkları](../functions-dotnet-class-library.md) hem de [C# betiği](../functions-reference-csharp.md).
 * **JavaScript**: yalnızca Azure işlevleri çalışma zamanının 2. x sürümü için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.7.0 gerektirir. 
-* **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 1.8.5 gerektirir. Dayanıklı İşlevler desteği şu anda genel önizlemededir.
+* **Python**: dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 2.3.1 gerektirir. Dayanıklı İşlevler desteği şu anda genel önizlemededir.
 * **F #**: önceden derlenmiş sınıf kitaplıkları ve F # betiği. F # betiği yalnızca Azure Işlevleri çalışma zamanının sürüm 1. x 'i için desteklenir.
 * **PowerShell**: dayanıklı işlevler desteği şu anda genel önizlemededir. Yalnızca Azure Işlevleri çalışma zamanı ve PowerShell 7 sürümü 3. x için desteklenir. Dayanıklı İşlevler uzantısının veya sonraki bir sürümün sürüm 2.2.2 gerektirir. Şu anda yalnızca şu desenler destekleniyor: [işlev zinciri](#chaining), [fan-çıkış/fan](#fan-in-out), [zaman uyumsuz HTTP API 'leri](#async-http).
+
+En son özelliklere ve güncelleştirmelere erişmek için, Dayanıklı İşlevler uzantısının ve dile özgü Dayanıklı İşlevler kitaplıklarının en son sürümlerini kullanmanız önerilir. [Dayanıklı işlevler sürümleri](durable-functions-versions.md)hakkında daha fazla bilgi edinin.
 
 Dayanıklı İşlevler tüm [Azure işlevleri dillerini](../supported-languages.md)destekleme amacını içerir. Ek dilleri desteklemek için işin en son durumunun [dayanıklı işlevler sorunlar listesine](https://github.com/Azure/azure-functions-durable-extension/issues) bakın.
 
@@ -556,7 +558,7 @@ async def main(client: str):
 
 ### <a name="pattern-6-aggregator-stateful-entities"></a><a name="aggregator"></a>#6 Model: toplayıcı (durum bilgisi olan varlıklar)
 
-Altıncı model, olay verilerini bir süre içinde tek bir adreslenebilir *varlığa*toplamak üzere kullanılır. Bu düzende, toplanan veriler birden çok kaynaktan gelebilir, toplu olarak teslim edilebilir veya uzun sürelerle dağılmış olabilir. Toplayıcı, ulaşan olay verileri üzerinde işlem yapması gerekebilir ve dış istemcilerin toplanan verileri sorgulaması gerekebilir.
+Altıncı model, olay verilerini bir süre içinde tek bir adreslenebilir *varlığa* toplamak üzere kullanılır. Bu düzende, toplanan veriler birden çok kaynaktan gelebilir, toplu olarak teslim edilebilir veya uzun sürelerle dağılmış olabilir. Toplayıcı, ulaşan olay verileri üzerinde işlem yapması gerekebilir ve dış istemcilerin toplanan verileri sorgulaması gerekebilir.
 
 ![Toplayıcı diyagramı](./media/durable-functions-concepts/aggregator.png)
 

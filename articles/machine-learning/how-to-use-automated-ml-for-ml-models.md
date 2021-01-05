@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: nibaccam
 author: aniththa
 ms.reviewer: nibaccam
-ms.date: 07/10/2020
+ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 7cd704dad3d0ede55e4df4d9e222ff83fd7ae350
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4539936007de0b45ab33dbd391baacc8f7d2ce2a
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919650"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796066"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 
@@ -35,7 +35,7 @@ Python kod tabanlı bir deneyim için [otomatik makine öğrenimi denemeleri](ho
 
 * Azure Machine Learning çalışma alanı. Bkz. [Azure Machine Learning çalışma alanı oluşturma](how-to-manage-workspace.md). 
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 1. Azure Machine Learning için oturum açın https://ml.azure.com . 
 
@@ -91,7 +91,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
         **İleri**’yi seçin.
 1. Yeni oluşturduğunuz veri kümenizi göründüğünde seçin. Ayrıca, veri kümesinin ve örnek istatistiklerin önizlemesini de görüntüleyebilirsiniz. 
 
-1. **Çalıştırma yapılandırması** formunda, benzersiz bir deneme adı girin.
+1. **Çalışmayı Yapılandır** formunda, **Yeni oluştur** ' u seçin ve deneme adı için **öğretici-oto ml-dağıtma** girin.
 
 1. Hedef sütun seçin; Bu, tahminlerde yapmak istediğiniz sütundur.
 
@@ -132,7 +132,7 @@ Aksi takdirde, SDK ile oluşturulanlar da dahil olmak üzere, son otomatik makin
 
 1. Seçim Ek yapılandırma ayarlarını görüntüle: eğitim işini daha iyi denetleyebilmeniz için kullanabileceğiniz ek ayarlar. Aksi takdirde, denemeler seçimine ve verilerine göre varsayılan ayarlar uygulanır. 
 
-    Ek yapılandırmalar|Description
+    Ek yapılandırmalar|Açıklama
     ------|------
     Birincil ölçüm| Modelinize Puanlama için kullanılan ana ölçüm. [Model ölçümleri hakkında daha fazla bilgi edinin](how-to-configure-auto-train.md#primary-metric).
     En iyi modeli açıkla | Önerilen en iyi modelin açıklamalarını göstermek için etkinleştirmek veya devre dışı bırakmak için seçin. <br> Bu işlev, [belirli tahmin algoritmaları](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)için şu anda kullanılamıyor. 
@@ -164,7 +164,7 @@ Impute with| Verilerinizde hangi değerin eksik olduğunu belirlemek için değe
 Denemenizi çalıştırmak için **son** ' u seçin. Denemeyi hazırlama işlemi 10 dakika kadar sürebilir. Eğitim işlerinde her işlem hattının çalıştırılmasını tamamlamak fazladan 2-3 dakika daha sürebilir.
 
 > [!NOTE]
-> Otomatik ML algoritmaları, önerilen modellerde, doğruluk gibi son ölçüm puanına hafif değişimler oluşmasına neden olabilecek, rastgele bir şekilde sahiptir. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
+> Otomatik ML algoritmaları, önerilen bir modelin nihai ölçüm puanından, doğruluk gibi hafif çeşitçine neden olabilecek, rastgele bir açıklık elde ediyor. Otomatikleştirilmiş ML, gerektiğinde tren-test Split, tren-doğrulama bölme veya çapraz doğrulama gibi veriler üzerinde işlemler de gerçekleştirir. Bu nedenle, aynı yapılandırma ayarları ve birincil ölçüm ile bir denemeyi birden çok kez çalıştırırsanız, bu faktörlere bağlı olarak her bir denemeleri son ölçüm puanı için çeşitleme görürsünüz. 
 
 ### <a name="view-experiment-details"></a>Deneme ayrıntılarını görüntüleme
 
@@ -172,7 +172,7 @@ Denemenizi çalıştırmak için **son** ' u seçin. Denemeyi hazırlama işlemi
 
 **Modeller** sekmesi oluşturulan ve ölçüm puanına göre sıralanan model listesini içerir. Varsayılan olarak, seçilen ölçüme göre en yüksek puana sahip olan model listenin en üstünde yer alır. Eğitim işi daha fazla model denedikçe, bu modeller listeye eklenir. Bunu kullanarak, şimdiye kadar oluşturulan modeller için ölçümlerin hızlı bir karşılaştırmasını elde edebilirsiniz.
 
-[![Çalışma ayrıntıları panosu](media/how-to-use-automated-ml-for-ml-models/run-details.png)](media/how-to-use-automated-ml-for-ml-models/run-details-expanded.png#lightbox)
+![Ayrıntıları Çalıştır](./media/how-to-use-automated-ml-for-ml-models/explore-models.gif)
 
 ### <a name="view-training-run-details"></a>Eğitim çalışma ayrıntılarını görüntüle
 
@@ -202,7 +202,7 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
     Alan| Değer
     ----|----
     Ad| Dağıtımınız için benzersiz bir ad girin.
-    Description| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
+    Açıklama| Bu dağıtımın ne için olduğunu daha iyi tanımlamak için bir açıklama girin.
     İşlem türü| Dağıtmak istediğiniz uç nokta türünü seçin: *Azure Kubernetes hizmeti (AKS)* veya *Azure Container Instance (acı)*.
     İşlem adı| *Yalnızca AKS Için geçerlidir:* Dağıtmak istediğiniz AKS kümesinin adını seçin.
     Kimlik doğrulamayı etkinleştir | Belirteç tabanlı veya anahtar tabanlı kimlik doğrulamasına izin vermek için seçin.
@@ -216,10 +216,10 @@ Otomatik ML, modeli kod yazmadan dağıtmanıza yardımcı olur:
 1. **Dağıt**'ı seçin. Dağıtımın tamamlanması yaklaşık 20 dakika sürer.
     Dağıtım başladıktan sonra **Model özeti** sekmesi görüntülenir. Dağıtımın ilerleme durumunu **Dağıtım durumu** bölümünde görebilirsiniz. 
 
-Artık tahminde bulunmak için kullanabileceğiniz çalışan bir web hizmetiniz var! Hizmeti [Power BI'ın yerleşik Azure Machine Learning desteği](how-to-consume-web-service.md#consume-the-service-from-power-bi) ile sorgulayarak tahminleri test edebilirsiniz.
+Artık tahminde bulunmak için kullanabileceğiniz çalışan bir web hizmetiniz var! Hizmeti [Power BI'ın yerleşik Azure Machine Learning desteği](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context) ile sorgulayarak tahminleri test edebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Bir Web hizmetini kullanmayı öğrenin](./how-to-consume-web-service.md).
+* [Bir Web hizmetini kullanmayı öğrenin](how-to-consume-web-service.md).
 * [Otomatik makine öğrenimi sonuçlarını anlayın](how-to-understand-automated-ml.md).
 * [Otomatik makine öğrenimi ve Azure Machine Learning hakkında daha fazla bilgi edinin](concept-automated-ml.md) .

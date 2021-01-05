@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/17/2020
+ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: b3671a57b8371c47b1690b4bf6be008d695d1ca0
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: f5d6d6255b48192a5943159599531fac18ebeb26
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654753"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797001"
 ---
 # <a name="feature-coverage-for-machines"></a>Makineler için özellik kapsamı
 
@@ -45,9 +45,9 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
 
 
 ### <a name="linux-machines"></a>[**Linux makineleri**](#tab/features-linux)
@@ -68,10 +68,10 @@ Aşağıdaki iki sekmede, Azure Güvenlik Merkezi 'nin Windows ve Linux sanal ma
 |Docker ile barındırılan IaaS kapsayıcıları üzerinde öneriler ve tehdit koruması|✔|✔|✔|Yes|
 |Eksik işletim sistemi düzeltme ekleri değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
 |Güvenlik yapılandırması hataları değerlendirmesi|✔|✔|✔|Azure: Hayır<br><br>Yay etkin: Evet|
-|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|No|
-|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|No|
-|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|No|
-|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|No|
+|[Endpoint Protection değerlendirmesi](security-center-services.md#supported-endpoint-protection-solutions-)|-|-|-|Hayır|
+|Disk şifrelemesi değerlendirmesi|✔</br>( [desteklenen senaryolar](../virtual-machines/windows/disk-encryption-windows.md#unsupported-scenarios)için)|✔|-|Hayır|
+|Üçüncü taraf güvenlik açığı değerlendirmesi|✔|-|✔|Hayır|
+|[Ağ güvenlik değerlendirmesi](security-center-network-recommendations.md)|✔|✔|-|Hayır|
 
 --- 
 
@@ -96,8 +96,8 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Trend Micro – derin güvenlik | Windows Server Ailesi  | Hayır | Yes |
 | Symantec v12.1.1100+| Windows Server Ailesi  | Hayır | Yes |
 | McAfee v10+ | Windows Server Ailesi  | Hayır | Yes |
-| McAfee v10+ | Linux sunucu ailesi  | No | Evet * *\** _ |
-| Sophos v9 +| Linux sunucu ailesi  | No | Yes  _*\**_  |
+| McAfee v10+ | Linux sunucu ailesi  | Hayır | Evet * *\** _ |
+| Sophos v9 +| Linux sunucu ailesi  | Hayır | Yes  _*\**_  |
 
  _*\**_ Kapsam durumu ve destekleyici veriler şu anda yalnızca korunan aboneliklerinizle ilişkili olan Log Analytics çalışma alanında kullanılabilir. Azure Güvenlik Merkezi portalında yansıtılmaz.
 
@@ -111,7 +111,7 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 | Hizmet/Özellik | US Gov | Çin gov |
 |------|:----:|:----:|
 |[Tam ZAMANıNDA VM erişimi](security-center-just-in-time.md) (1)|✔|✔|
-|[Dosya bütünlüğü izleme](security-center-file-integrity-monitoring.md) (1)|✔|-|
+|[Dosya bütünlüğü izleme](security-center-file-integrity-monitoring.md) (1)|✔|✔|
 |[Uyarlamalı uygulama denetimleri](security-center-adaptive-application.md) (1)|✔|✔|
 |[Uyarlamalı ağ sağlamlaştırma](security-center-adaptive-network-hardening.md) (1)|-|-|
 |[Docker ana bilgisayar sağlamlaştırma](harden-docker-hosts.md) (1)|✔|✔|
@@ -119,12 +119,12 @@ Bu korumaların her biri için önerilerin ne zaman oluşturulduğu hakkında bi
 |[Uç nokta Için Microsoft Defender](harden-docker-hosts.md) (1)|✔|-|
 |[AWS hesabına Bağlan](quickstart-onboard-aws.md) (1)|-|-|
 |[GCP hesabını bağlama](quickstart-onboard-gcp.md) (1)|-|-|
-|[Sürekli dışarı aktarma](continuous-export.md)|✔|✔|
+|[Sürekli dışarı aktarma](continuous-export.md)|✔|✔ (2)|
 |[İş akışı Otomasyonu](workflow-automation.md)|✔|✔|
 |[Öneri muafiyet kuralları](exempt-resource.md)|-|-|
 |[Uyarı engelleme kuralları](alerts-suppression-rules.md)|✔|✔|
 |[Güvenlik uyarıları için e-posta bildirimleri](security-center-provide-security-contact-details.md)|✔|✔|
-|[Varlık envanteri](asset-inventory.md)|-|-|
+|[Varlık envanteri](asset-inventory.md)|✔|✔|
 |[App Service için Azure Defender](defender-for-app-service-introduction.md)|-|-|
 |[Depolama için Azure Defender](defender-for-storage-introduction.md)|✔|-|
 |[SQL için Azure Defender](defender-for-sql-introduction.md)|✔|✔ (2)|

@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cb8e71d9f94441f79dd7ce2fd5ee6458987563c3
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012896"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795929"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Özel bir Docker görüntüsü kullanarak bir modeli eğitme
 
@@ -29,7 +29,7 @@ Kodu şu ortamlardan birinde çalıştırın:
 
 * Azure Machine Learning işlem örneği (İndirilenler veya yükleme gerekmez):
   * SDK ve örnek depoyla önceden yüklenmiş adanmış bir not defteri sunucusu oluşturmak için [ortamı ve çalışma alanı](tutorial-1st-experiment-sdk-setup.md) Oluşturma öğreticisini doldurun.
-  * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples), **notebooks**  >  **fastai**  >  **eğitme-pets-resnet34. ipynb** dizinine giderek tamamlanan bir not defteri bulun. 
+  * Azure Machine Learning [örnekleri deposunda](https://github.com/Azure/azureml-examples),   >  **fastai**  >  **eğitme-pets-resnet34. ipynb** dizinine giderek tamamlanan bir not defteri bulun. 
 * Kendi Jupyter Notebook sunucunuz:
   * Bir [çalışma alanı yapılandırma dosyası](how-to-configure-environment.md#workspace)oluşturun.
   * [Azure Machine Learning SDK 'sını](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)yükler. 
@@ -158,7 +158,7 @@ Bir nesne kullanarak bir eğitim çalıştırması gönderdiğinizde `ScriptRunC
 ```python
 from azureml.core import Experiment
 
-run = Experiment(ws,'fastai-custom-image').submit(src)
+run = Experiment(ws,'Tutorial-fastai').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 

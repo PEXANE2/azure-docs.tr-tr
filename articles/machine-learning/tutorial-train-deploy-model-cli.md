@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 119f1eaa838b404a3dbdc22f692f559816810dde
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 55221fa529688fbae1698a094ea31f6a3f765100
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578697"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796253"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Öğretici: CLı 'dan model eğitme ve dağıtma
 
@@ -307,10 +307,10 @@ Yapılandırma dosyalarını Çalıştır hakkında daha fazla bilgi için bkz. 
 İşlem hedefi üzerinde bir eğitim çalıştırmak için `cpu-cluster` aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
-az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
+az ml run submit-script -c mnist -e tutorial-cli --source-directory scripts -t runoutput.json
 ```
 
-Bu komut, deneme () için bir ad belirtir `myexperiment` . Deneme, çalışma alanında bu çalıştırma hakkındaki bilgileri depolar.
+Bu komut, deneme () için bir ad belirtir `tutorial-cli` . Deneme, çalışma alanında bu çalıştırma hakkındaki bilgileri depolar.
 
 `-c mnist`Parametresi, dosyasını belirtir `.azureml/mnist.runconfig` .
 
@@ -327,7 +327,7 @@ Bu metin eğitim betiğiyle günlüğe kaydedilir ve modelin doğruluğunu gör�
 
 Eğitim betiğini inceleyebileceğiniz zaman da eğitilen modeli depoladığında Alfa değerini de kullandığını fark edeceksiniz `outputs/sklearn_mnist_model.pkl` .
 
-Model, `./outputs` eğitilen işlem hedefinde dizine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, `./outputs` eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden dizinin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır ( `myexperiment` Bu örnekte).
+Model, `./outputs` eğitilen işlem hedefinde dizine kaydedildi. Bu durumda, Azure bulutu 'nda Azure Machine Learning Işlem örneği. Eğitim süreci, `./outputs` eğitim Azure Machine Learning çalışma alanınıza gerçekleştiği işlem hedefinden dizinin içeriğini otomatik olarak yükler. Bu, denemenin bir parçası olarak depolanır ( `tutorial-cli` Bu örnekte).
 
 ## <a name="register-the-model"></a>Modeli Kaydet
 
@@ -345,13 +345,13 @@ Bu komutun çıktısı aşağıdaki JSON 'a benzerdir:
 {
   "createdTime": "2019-09-19T15:25:32.411572+00:00",
   "description": "",
-  "experimentName": "myexperiment",
+  "experimentName": "tutorial-cli",
   "framework": "Custom",
   "frameworkVersion": null,
   "id": "mymodel:1",
   "name": "mymodel",
   "properties": "",
-  "runId": "myexperiment_1568906070_5874522d",
+  "runId": "tutorial-cli_1568906070_5874522d",
   "tags": "",
   "version": 1
 }

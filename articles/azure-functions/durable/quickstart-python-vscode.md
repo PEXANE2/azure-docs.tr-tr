@@ -3,14 +3,14 @@ title: Python kullanarak Azure 'da ilk dayanıklı işlevinizi oluşturma
 description: Visual Studio Code kullanarak Python 'da Azure dayanıklı Işlevi oluşturun ve yayımlayın.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 04/04/2020
+ms.date: 12/23/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 5d624027259212d804ced26a6daaffb853984a98
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0cc321563de645aeb1d204b67b0ab72053d79c7e
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012638"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763566"
 ---
 # <a name="create-your-first-durable-function-in-python"></a>Python 'da ilk dayanıklı işlevinizi oluşturma
 
@@ -40,9 +40,9 @@ Bu öğreticiyi tamamlamak için:
 
 Bu bölümde, yerel bir Azure Işlevleri projesi oluşturmak için Visual Studio Code kullanırsınız. 
 
-1. Visual Studio Code, komut paletini açmak için F1 (veya Ctrl/Cmd + SHIFT + P) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...` .
+1. Visual Studio Code, komut paletini açmak için F1 (veya <kbd>Ctrl/Cmd + SHIFT + P</kbd>) tuşuna basın. Komut paletinde, araması yapın ve seçin `Azure Functions: Create New Project...` .
 
-    ![İşlev oluşturma](media/quickstart-python-vscode/functions-create-project.png)
+    ![Create işlevi](media/quickstart-python-vscode/functions-create-project.png)
 
 1. Projeniz için boş bir klasör konumu seçin ve **Seç**' i seçin.
 
@@ -60,18 +60,33 @@ Gerekirse Azure Functions Core Tools Visual Studio Code yüklenir. Ayrıca, bir 
 
 Kök klasörde bir requirements.txt dosyası da oluşturulur. İşlev uygulamanızı çalıştırmak için gereken Python paketlerini belirtir.
 
+## <a name="update-azure-functions-extension-bundles-version"></a>Azure Işlevleri uzantı demeti sürümünü Güncelleştir
+
+Python Azure Işlevleri, [Azure işlevleri uzantı paketleri](../functions-bindings-register.md#access-extensions-in-non-net-languages)sürüm 2. x gerektirir. Uzantı paketleri *host.jsüzerinde* yapılandırılır.
+
+1. Projede *host.js* açın. Uzantı paketini olarak güncelleştirin `version` `[2.*, 3.0.0)` . Bu, 2,0 değerinden büyük veya buna eşit ve 3,0 ' den az olan bir sürüm aralığı belirtir.
+
+    ```json
+    "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[2.*, 3.0.0)"
+    }
+    ```
+
+1. Güncelleştirilmiş Uzantı paketi sürümü yansıtılmadan önce VS Code yeniden yüklenmelidir. Komut paletinde, *Geliştirici: pencereyi yeniden yükle* komutunu çalıştırın ve çalıştırın.
+
 ## <a name="install-azure-functions-durable-from-pypi"></a>Pypı 'den Azure işlevleri 'ni dayanıklı bir şekilde yükler
 
 Projeyi oluşturduğunuzda Azure Işlevleri VS Code uzantısı, seçtiğiniz Python sürümüne sahip bir sanal ortam otomatik olarak oluşturulur. Sanal ortamı bir terminalde etkinleştireceğinize ve Azure Işlevleri ve Dayanıklı İşlevler gereken bazı bağımlılıkları yükleyeceksiniz.
 
-1. `requirements.txt`Düzenleyicide açın ve içeriğini aşağıdaki şekilde değiştirin:
+1. Düzenleyicide *requirements.txt* açın ve içeriğini aşağıdaki şekilde değiştirin:
 
     ```
     azure-functions
-    azure-functions-durable>=1.0.0b6
+    azure-functions-durable>=1.0.0b12
     ```
 
-1. Düzenleyicinin tümleşik terminalini geçerli klasörde ( `` Ctrl-Shift-` `` ) açın.
+1. Düzenleyicinin tümleşik terminalini geçerli klasörde açın (<kbd>Ctrl + Shift + '</kbd>).
 
 1. Tümleşik terminalde, geçerli klasörde sanal ortamı etkinleştirin:
 
@@ -203,7 +218,7 @@ Azure İşlevleri Temel Araçları, Azure İşlevleri projenizi yerel geliştirm
     }
     ```
 
-1. Hata ayıklamayı durdurmak için VS Code **Shift + F5** tuşlarına basın.
+1. Hata ayıklamayı durdurmak için VS Code <kbd>Shift + F5</kbd> tuşlarına basın.
 
 İşlevin yerel bilgisayarınızda düzgün çalıştığını doğruladıktan sonra, projeyi Azure'da yayımlamanın zamanı gelmiştir.
 

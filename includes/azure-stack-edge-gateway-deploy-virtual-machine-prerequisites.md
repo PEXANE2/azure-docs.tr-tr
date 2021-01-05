@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 08/31/2020
+ms.date: 12/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a17e73c66c2296cc36b24e3b0a8abfcab00e46a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89419426"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763446"
 ---
 Azure Stack Edge cihazınızda VM 'Leri dağıtabilmeniz için önce, istemcinizi Azure PowerShell üzerinden Azure Resource Manager aracılığıyla cihaza bağlanacak şekilde yapılandırmanız gerekir. Ayrıntılı adımlar için [Azure Stack Edge cihazınızda Azure Resource Manager bağlanma](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md)bölümüne gidin.
 
@@ -34,13 +34,15 @@ Azure Stack Edge cihazınızda VM 'Leri dağıtabilmeniz için önce, istemciniz
 
     Ağ arabiriminde işlem etkinleştirin. Azure Stack Edge, bu ağ arabirimine karşılık gelen bir sanal anahtar oluşturur ve yönetir. Şu anda Kubernetes için belirli IP 'Leri girmeyin. İşlem, işlemin etkinleştirilmesi birkaç dakika sürebilir.
 
-    <!--If you decide to use another network interface for compute, make sure that you:
-    
-    - Delete all the VMs that you have deployed using Azure Resource Manager.
-    
-    - Delete all virtual network interfaces and the virtual network associated with this network interface. 
-    
-    - You can now enable another network interface for compute.-->
+    > [!NOTE]
+    > GPU VM 'Leri oluşturuyorsanız, Internet 'e bağlı bir ağ arabirimi seçin. Bu, cihazınıza GPU uzantısı yüklemenizi sağlar.
 
-<!--1. You may also need to configure TLS 1.2 on your client machine if running older versions of AzCopy.--> 
 
+1. Azure portal VM rolünü etkinleştirin. Bu adım, cihazınızın yerel API 'Leri aracılığıyla VM oluşturmak için kullanılan, cihazınız için benzersiz bir abonelik oluşturur. 
+
+    1. VM rolünü etkinleştirmek için, Azure portal, Azure Stack Edge cihazınız için Azure Stack Edge kaynağına gidin. **Uç işlem > sanal makinelere** gidin.
+
+        ![VM görüntüsü Ekle 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
+
+    1. **Genel bakış** sayfasına gitmek Için **sanal makineleri** seçin. Sanal makine bulutu yönetimini **etkinleştirin** .
+        ![VM görüntüsü Ekle 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 9a5cb1e589481bb424507d08879da8cc1b14ff1c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 0dd66e246e5e172ad359f5e6e953b360e6e74ebd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448206"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796984"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Öğretici: Google Cloud (G Suite) Bağlayıcısı ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, Google Cloud (G Suite) bağlayıcısını Azure Active Director
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -37,14 +37,14 @@ Başlamak için aşağıdaki öğeler gereklidir:
 - Bir Google Apps aboneliği veya Google Cloud Platform aboneliği.
 
 > [!NOTE]
-> Bu öğreticideki adımları test etmek için, üretim ortamının kullanılmasını önermiyoruz. Bu belge Yeni Kullanıcı çoklu oturum açma deneyimi kullanılarak oluşturulmuştur. Hala eskisini kullanıyorsanız, kurulum farklı görünür. Yeni deneyimi G-Suite uygulamasının çoklu oturum açma ayarlarındaki etkin bir şekilde etkinleştirebilirsiniz. **Azure AD, kurumsal uygulamalar**' a gidin, **Google Cloud (G Suite) bağlayıcısını**seçin, **Çoklu oturum açma** ' yı seçin ve ardından **Yeni deneyimimizi dene**' ye tıklayın.
+> Bu öğreticideki adımları test etmek için, üretim ortamının kullanılmasını önermiyoruz. Bu belge Yeni Kullanıcı çoklu oturum açma deneyimi kullanılarak oluşturulmuştur. Hala eskisini kullanıyorsanız, kurulum farklı görünür. Yeni deneyimi G-Suite uygulamasının çoklu oturum açma ayarlarındaki etkin bir şekilde etkinleştirebilirsiniz. **Azure AD, kurumsal uygulamalar**' a gidin, **Google Cloud (G Suite) bağlayıcısını** seçin, **Çoklu oturum açma** ' yı seçin ve ardından **Yeni deneyimimizi dene**' ye tıklayın.
 
 Bu öğreticideki adımları test etmek için aşağıdaki önerileri izlemeniz gerekir:
 
 - Gerekli olmadığı takdirde üretim ortamınızı kullanmayın.
 - Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
 
-## <a name="frequently-asked-questions"></a>Sık Sorulan Sorular
+## <a name="frequently-asked-questions"></a>Sıkça Sorulan Sorular
 
 1. **S: Bu tümleştirme, Azure AD ile SSO tümleştirmesi Google Cloud Platform destekliyor mu?**
 
@@ -82,7 +82,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Google Cloud (G Suite) Bağlayıcısı **SP** tarafından başlatılan SSO 'yu destekler
 
-* Google Cloud (G Suite) Bağlayıcısı [ **Otomatik** Kullanıcı sağlamayı destekler](./google-apps-provisioning-tutorial.md)
+* Google Cloud (G Suite) Bağlayıcısı [ **Otomatik** Kullanıcı sağlamayı destekler](g-suite-provisioning-tutorial.md)
 * Google Cloud (G Suite) bağlayıcısını yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin bir kısmını gerçek zamanlı olarak koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletilir. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-google-cloud-g-suite-connector-from-the-gallery"></a>Galeriden Google Cloud (G Suite) bağlayıcısını ekleme
@@ -98,7 +98,7 @@ Google Cloud (G Suite) bağlayıcısının tümleştirmesini Azure AD 'ye göre 
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-google-cloud-g-suite-connector"></a>Google Cloud (G Suite) Bağlayıcısı için Azure AD çoklu oturum açmayı yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Google Cloud (G Suite) bağlayıcısıyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Google Cloud (G Suite) bağlayıcısında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Google Cloud (G Suite) bağlayıcısıyla Azure AD SSO 'yu yapılandırın ve test edin. SSO 'nun çalışması için, Google Cloud (G Suite) bağlayıcısında bir Azure AD kullanıcısı ve ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
 Azure AD SSO 'yu Google Cloud (G Suite) bağlayıcısıyla yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
 
@@ -185,14 +185,14 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. **Oluştur**'a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
 
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde **Google Cloud (G Suite) bağlayıcısını**seçin.
+1. Uygulamalar listesinde **Google Cloud (G Suite) bağlayıcısını** seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
@@ -230,7 +230,7 @@ Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azur
     > [!NOTE]
     > Google Cloud (G Suite), SAML oturum kapatma protokolünü temel alır. Bu nedenle, **oturum kapatma sayfası URL 'si** alanında, aynı değer olarak oturum açma URL 'SI olan SAML Logout URL 'sini kullanmanız gerekir.
 
-    d. Google Cloud (G Suite) Bağlayıcısı ' nda, **doğrulama sertifikası**için Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.   
+    d. Google Cloud (G Suite) Bağlayıcısı ' nda, **doğrulama sertifikası** için Azure Portal indirdiğiniz sertifikayı karşıya yükleyin.   
 
     e. Azure AD 'deki Yukarıdaki **temel SAML yapılandırması** bölümünde bahsedilen nota göre, **etki alanına özgü sertifikayı kullanma** seçeneğini işaretleyin/işaretini kaldırın.
 
@@ -242,7 +242,7 @@ Bu bölümde, Google Cloud (G Suite) bağlayıcısına erişim izni vererek Azur
 
 Bu bölümün amacı, [Google Cloud (G Suite) Bağlayıcısı 'Nda](https://support.google.com/a/answer/33310?hl=en) B. Simon adlı bir Kullanıcı oluşturmaktır. Kullanıcı Google Cloud (G Suite) Bağlayıcısı 'nda el ile oluşturulduktan sonra, Kullanıcı Microsoft 365 oturum açma kimlik bilgilerini kullanarak oturum açabilir.
 
-Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Google Cloud (G Suite) bağlayıcısını otomatik Kullanıcı sağlaması için yapılandırmanız](./google-apps-provisioning-tutorial.md)gerekir.
+Google Cloud (G Suite) Bağlayıcısı otomatik Kullanıcı sağlamayı da destekler. Otomatik Kullanıcı sağlamayı yapılandırmak için, önce [Google Cloud (G Suite) bağlayıcısını otomatik Kullanıcı sağlaması için yapılandırmanız](g-suite-provisioning-tutorial.md)gerekir.
 
 > [!NOTE]
 > Azure AD 'de sağlama, çoklu oturum açmayı test etmeden önce açık bırakılmadığından, kullanıcılarınızın Google Cloud (G Suite) bağlayıcısında zaten mevcut olduğundan emin olun.
@@ -264,7 +264,7 @@ Erişim panelinde Google Cloud (G Suite) bağlayıcı kutucuğuna tıkladığın
 
 - [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
 
-- [Kullanıcı sağlamayı yapılandırma](./google-apps-provisioning-tutorial.md)
+- [Kullanıcı sağlamayı yapılandırma](g-suite-provisioning-tutorial.md)
 
 - [Azure AD ile Google Cloud (G Suite) bağlayıcısını deneyin](https://aad.portal.azure.com/)
 

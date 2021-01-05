@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 12/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: eec53570c542ceb60c937072135fcb70b59e80a6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: e3bf77406df302c4ba83cb7a8f1a30fba9f6339e
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631049"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795946"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch modellerini Azure Machine Learning ölçeklendirerek eğitme
 
@@ -206,7 +206,7 @@ ScriptRunConfig ile işleri yapılandırma hakkında daha fazla bilgi için bkz.
 [Run nesnesi](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) , iş çalışırken ve tamamlandıktan sonra çalışma geçmişi için arabirim sağlar.
 
 ```Python
-run = Experiment(ws, name='pytorch-birds').submit(src)
+run = Experiment(ws, name='Tutorial-pytorch-birds').submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
@@ -314,6 +314,10 @@ src = ScriptRunConfig(source_directory=project_folder,
 Bunun yerine, dağıtılmış eğitim için gloo arka ucunu kullanmak istiyorsanız, `communication_backend='Gloo'` bunun yerine belirtin. Dağıtılmış CPU eğitimi için gloo arka ucu önerilir.
 
 Azure ML 'de dağıtılmış PyTorch çalıştırmaya ilişkin tam bir öğretici için bkz. [DistributedDataParallel Ile dağıtılmış pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/pytorch/distributed-pytorch-with-nccl-gloo).
+
+### <a name="troubleshooting"></a>Sorun giderme
+
+* **Horovod kapatılmış**: çoğu durumda, "AbortedError: Horovod kapatılmış" olarak karşılaşırsanız, Horovod 'nin kapatılmasına neden olan işlemlerden birinde temel alınan bir özel durum vardı. MPI işindeki her derecelendirmeye Azure ML'de özel bir günlük dosyası ayrılır. Bu günlükler `70_driver_logs` olarak adlandırılır. Dağıtılmış eğitim söz konusu olduğunda, günlüklerin ayırt edilmesini kolaylaştırmak için günlük adlarında `_rank` soneki kullanılır. Horovod 'nin kapatılmasına neden olan hatayı tam olarak bulmak için, tüm günlük dosyalarını `Traceback` inceleyin ve driver_log dosyalarının sonundaki bölümüne bakın. Bu dosyalardan biri size gerçek temel özel durumu verecektir. 
 
 ## <a name="export-to-onnx"></a>ONNX 'e aktar
 

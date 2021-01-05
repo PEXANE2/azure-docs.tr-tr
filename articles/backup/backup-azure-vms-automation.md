@@ -3,12 +3,12 @@ title: PowerShell ile Azure VM 'lerini yedekleme ve kurtarma
 description: PowerShell ile Azure Backup kullanarak Azure VM 'lerinin nasıl yedekleneceği ve kurtarılacağı açıklanmaktadır
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ded2bc8a71bf564e31f40ca9f0d6c8049188768b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 610049ec14243abb296aef431eb37533c6169817
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978378"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797069"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>PowerShell ile Azure VM 'lerini yedekleme ve geri yükleme
 
@@ -259,6 +259,8 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Azure Kamu Bulutu kullanıyorsanız, `ff281ffe-705c-4f53-9f37-a40e6f2c68f3` [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet 'inde **servicePrincipalName** parametresinin değerini kullanın.
 >
 
+Birkaç diski seçmeli olarak yedeklemek ve diğerlerini [Bu senaryolarda](selective-disk-backup-restore.md#scenarios)bahsedildiğinde dışlamak istiyorsanız, korumayı yapılandırabilir ve [burada](selective-disk-backup-restore.md#enable-backup-with-powershell)belirtildiği gibi yalnızca ilgili diskleri yedekleyebilirsiniz.
+
 ## <a name="monitoring-a-backup-job"></a>Bir yedekleme işini izleme
 
 Yedekleme işleri gibi uzun süre çalışan işlemleri Azure portal kullanmadan izleyebilirsiniz. Sürmekte olan bir işin durumunu almak için [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet 'ini kullanın. Bu cmdlet belirli bir kasa için yedekleme işlerini alır ve bu kasa kasa bağlamında belirtilir. Aşağıdaki örnek, bir işlem sürüyor işinin durumunu bir dizi olarak alır ve durumu $joblist değişkeninde depolar.
@@ -338,6 +340,10 @@ $bkpPol.AzureBackupRGName="Contosto_"
 $bkpPol.AzureBackupRGNameSuffix="ForVMs"
 Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
+
+### <a name="exclude-disks-for-a-protected-vm"></a>Korunan bir VM için diskleri hariç tut
+
+Azure VM yedeklemesi, [Bu senaryolarda](selective-disk-backup-restore.md#scenarios)yararlı olan diskleri seçmeli olarak hariç tutmak veya dahil etmek için bir yetenek sağlar. Sanal makine zaten Azure VM yedeklemesi tarafından korunuyorsa ve tüm diskler yedekleniyorsa, korumayı [burada](selective-disk-backup-restore.md#modify-protection-for-already-backed-up-vms-with-powershell)belirtildiği gibi seçmeli olarak dahil etmek veya hariç tutmak için korumayı değiştirebilirsiniz.
 
 ### <a name="trigger-a-backup"></a>Bir yedekleme tetikleyin
 
@@ -511,6 +517,13 @@ Geri yükleme işi tamamlandıktan sonra, geri yükleme işleminin ayrıntılar�
 $restorejob = Get-AzRecoveryServicesBackupJob -Job $restorejob -VaultId $targetVault.ID
 $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $targetVault.ID
 ```
+
+#### <a name="restore-selective-disks"></a>Seçmeli diskleri geri yükleme
+
+Bir Kullanıcı, yedeklenen kümenin tamamı yerine birkaç diski seçmeli şekilde geri yükleyebilir. [Burada](selective-disk-backup-restore.md#restore-selective-disks-with-powershell)belgelenen tüm küme yerine yalnızca onları geri yüklemek için gerekli disk LUN 'larını parametre olarak sağlayın.
+
+> [!IMPORTANT]
+> Bunlardan biri seçmeli olarak disklere geri yüklemek için diskleri seçmeli olarak yedekleyecek. Daha fazla ayrıntı [burada](selective-disk-backup-restore.md#selective-disk-restore)verilmiştir.
 
 Diskleri geri yükledikten sonra, VM 'yi oluşturmak için sonraki bölüme gidin.
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 11/16/2020
-ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.date: 12/26/2020
+ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94988553"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792509"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Birden çok veritabanının saydam ve koordine edilmiş yük devretmesini etkinleştirmek için otomatik yük devretme gruplarını kullanın
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Bunlara ek olarak, otomatik yük devretme grupları, yük devretme sırasında d
 
 Otomatik yük devretme grupları otomatik yük devretme ilkesiyle kullanılırken, bir sunucu veya yönetilen örnek üzerinde veritabanlarını etkileyen herhangi bir kesinti otomatik yük devretmeye neden olur. Şunu kullanarak otomatik yük devretme grubunu yönetebilirsiniz:
 
-- [Azure portalı](geo-distributed-application-configure-tutorial.md)
+- [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLı: yük devretme grubu](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: yük devretme grubu](scripts/add-database-to-failover-group-powershell.md)
 - [REST API: yük devretme grubu](/rest/api/sql/failovergroups).
@@ -229,7 +229,7 @@ Uygulamanız veri katmanı olarak SQL yönetilen örneği kullanıyorsa, iş sü
 
 ### <a name="creating-the-secondary-instance"></a>İkincil örnek oluşturma
 
-Yük devretmeden sonra birincil SQL yönetilen örneğine kesintiye uğramayan bağlantıyı sağlamak için hem birincil hem de ikincil örneklerin aynı DNS bölgesinde olması gerekir. Aynı çoklu etki alanı (SAN) sertifikasının, yük devretme grubundaki iki örneklerden birine yönelik istemci bağlantılarının kimliğini doğrulamak için kullanılabilir olmasını garanti eder. Uygulamanız üretim dağıtımı için hazırsanız, farklı bir bölgede ikincil bir SQL yönetilen örneği oluşturun ve DNS bölgesini birincil SQL yönetilen örneğiyle paylaştığından emin olun. `DNS Zone Partner`Azure Portal, PowerShell veya REST API kullanarak isteğe bağlı parametreyi belirterek bunu yapabilirsiniz.
+Yük devretmeden sonra birincil SQL yönetilen örneğine kesintiye uğramayan bağlantıyı sağlamak için hem birincil hem de ikincil örneklerin aynı DNS bölgesinde olması gerekir. Aynı çoklu etki alanı (SAN) sertifikasının, yük devretme grubundaki iki örneklerden birine yönelik istemci bağlantılarının kimliğini doğrulamak için kullanılabilir olmasını garanti eder. Uygulamanız üretim dağıtımı için hazırsanız, farklı bir bölgede ikincil bir SQL yönetilen örneği oluşturun ve DNS bölgesini birincil SQL yönetilen örneğiyle paylaştığından emin olun. Oluşturma sırasında isteğe bağlı parametreyi belirterek bunu yapabilirsiniz. PowerShell veya REST API kullanıyorsanız, isteğe bağlı parametresinin adı `DNS Zone Partner` ve Azure Portal ilgili isteğe bağlı alanın adı birincil yönetilen örneğidir.
 
 > [!IMPORTANT]
 > Alt ağda oluşturulan ilk yönetilen örnek, aynı alt ağdaki sonraki tüm örnekler için DNS bölgesini belirler. Diğer bir deyişle, aynı alt ağdaki iki örnek farklı DNS bölgelerine ait olamaz.

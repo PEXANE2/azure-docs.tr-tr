@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: f8b555c4022fcf2532a7350839d2357c96562f4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 18d36e37554a5d2b37488b7a1525f8290dc03da0
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791860"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763277"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage izleme, tanılama ve sorun giderme
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -120,11 +120,10 @@ Dünyanın dört bir yanındaki tüm Azure bölgelerindeki depolama hizmeti (ve 
 
 [Azure Portal](https://portal.azure.com) , çeşitli Azure hizmetlerini etkileyen olayların bildirimlerini de verebilir.
 Note: Bu bilgiler, [Azure hizmet panosundaki](https://status.azure.com)geçmiş verilerle birlikte daha önce sunulmuştur.
-
-[Azure Portal](https://portal.azure.com) , Azure veri merkezlerinin içinden (iç izleme) sistem durumu bilgileri toplarken, Azure 'da barındırılan Web uygulamanıza düzenli olarak birden çok konumdan erişen yapay işlemler oluşturmak için bir dış yaklaşımı benimsemeye de göz önünde bulundurmanız gerekir. Azure DevOps için [dynaTrace](https://www.dynatrace.com/en/synthetic-monitoring) ve Application Insights tarafından sunulan hizmetler bu yaklaşımın örnekleridir. Azure DevOps için Application Insights hakkında daha fazla bilgi için bkz. ek "[ek 5: Azure DevOps için Application Insights Ile izleme](#appendix-5)."
+Azure DevOps için Application Insights hakkında daha fazla bilgi için bkz. ek "[ek 5: Azure DevOps için Application Insights Ile izleme](#appendix-5)."
 
 ### <a name="monitoring-capacity"></a><a name="monitoring-capacity"></a>İzleme kapasitesi
-Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depolar çünkü Bloblar genellikle depolanan verilerin en büyük oranını tutar (yazma sırasında, tablolarınızın ve kuyrukların kapasitesini izlemek için depolama ölçümlerini kullanmak mümkün değildir). Blob hizmeti için izlemeyi etkinleştirdiyseniz, bu verileri **$MetricsCapacityBlob** tablosunda bulabilirsiniz. Depolama ölçümleri, bu verileri günde bir kez kaydeder ve satırın kullanıcı verileriyle (değer **verileri** ) veya analiz verileriyle (değer **Analizi** ) ilişkili bir varlık Içerip Içermediğini anlamak için **rowkey** değerini kullanabilirsiniz. Depolanan her varlık, depolama hesabında kullanılan depolama alanı (bayt cinsinden ölçülen **Kapasite** ) ve geçerli kapsayıcı sayısı ( **containercount** ) ve Blobların ( **objectCount** ) hakkında bilgiler içerir. **$MetricsCapacityBlob** tablosunda depolanan kapasite ölçümleri hakkında daha fazla bilgi için, bkz. [depolama Analizi ölçüm tablosu şeması](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
+Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depolar çünkü Bloblar genellikle depolanan verilerin en büyük oranını tutar (yazma sırasında, tablolarınızın ve kuyrukların kapasitesini izlemek için depolama ölçümlerini kullanmak mümkün değildir). Blob hizmeti için izlemeyi etkinleştirdiyseniz, bu verileri **$MetricsCapacityBlob** tablosunda bulabilirsiniz. Depolama ölçümleri, bu verileri günde bir kez kaydeder ve satırın kullanıcı verileriyle (değer **verileri**) veya analiz verileriyle (değer **Analizi**) ilişkili bir varlık Içerip Içermediğini anlamak için **rowkey** değerini kullanabilirsiniz. Depolanan her varlık, depolama hesabında kullanılan depolama alanı (bayt cinsinden ölçülen **Kapasite** ) ve geçerli kapsayıcı sayısı (**containercount**) ve Blobların (**objectCount**) hakkında bilgiler içerir. **$MetricsCapacityBlob** tablosunda depolanan kapasite ölçümleri hakkında daha fazla bilgi için, bkz. [depolama Analizi ölçüm tablosu şeması](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema).
 
 > [!NOTE]
 > Depolama hesabınızın kapasite sınırlarına yaklaştığı erken bir uyarı için bu değerleri izlemeniz gerekir. Azure portal, toplu depolama kullanımı belirttiğiniz eşikleri aşarsa veya altına düşerse size bildirimde bulunan uyarı kuralları ekleyebilirsiniz.
@@ -134,7 +133,7 @@ Depolama ölçümleri yalnızca blob hizmeti için kapasite ölçümlerini depol
 Blob 'lar gibi çeşitli depolama nesnelerinin boyutunu tahmin etmeye yönelik yardım için bkz. [Azure depolama faturalandırmasını anlama – bant genişliği, işlemler ve kapasite](/archive/blogs/patrick_butler_monterde/azure-storage-understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity).
 
 ### <a name="monitoring-availability"></a><a name="monitoring-availability"></a>Kullanılabilirliği izleme
-Saatlik veya dakikalık ölçüm tablolarında ( **$MetricsHourPrimaryTransactionsBlob** , **$MetricsHourPrimaryTransactionsTable** , **$MetricsHourPrimaryTransactionsQueue** , **$MetricsMinutePrimaryTransactionsBlob** , **$MetricsMinutePrimaryTransactionsTable** , **$MetricsMinutePrimaryTransactionsQueue** , **$MetricsCapacityBlob** **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri Içerir ( **rowkey** , satırın bir bütün olarak veya belirli bir API işlemi olarak hizmet için ölçümler içerip içermediğini gösterir).
+Saatlik veya dakikalık ölçüm tablolarında ( **$MetricsHourPrimaryTransactionsBlob**, **$MetricsHourPrimaryTransactionsTable**, **$MetricsHourPrimaryTransactionsQueue**, **$MetricsMinutePrimaryTransactionsBlob**, **$MetricsMinutePrimaryTransactionsTable**, **$MetricsMinutePrimaryTransactionsQueue**, **$MetricsCapacityBlob** **kullanılabilirlik** sütunundaki değeri izleyerek Depolama hesabınızdaki depolama hizmetlerinin kullanılabilirliğini izlemeniz gerekir. **Kullanılabilirlik** sütunu, hizmetin veya satır tarafından temsıl edilen API işleminin kullanılabilirliğini gösteren bir yüzde değeri Içerir ( **rowkey** , satırın bir bütün olarak veya belirli bir API işlemi olarak hizmet için ölçümler içerip içermediğini gösterir).
 
 %100 ' den küçük bir değer, bazı depolama isteklerinin başarısız olduğunu gösterir. Ölçüm verilerinde, **Servertimeouterror** gibi farklı hata türleriyle isteklerin sayısını gösteren diğer sütunları inceleyerek neden başarısız olduğunu görebilirsiniz. Hizmetin bölümleri daha iyi yük dengeleme isteğine taşıdığı sırada geçici sunucu zaman aşımları gibi nedenlerle **kullanılabilirliği** geçici 100 olarak görmeniz beklenir; istemci uygulamanızdaki yeniden deneme mantığı, bu tür aralıklı koşulları işlemelidir. [Günlüğe kaydedilen işlemler ve durum iletileri depolama Analizi](/rest/api/storageservices/Storage-Analytics-Logged-Operations-and-Status-Messages) makale, depolama ölçümlerinin **kullanılabilirlik** hesaplamasına dahil edilen işlem türlerini listeler.
 
@@ -183,7 +182,7 @@ Bir uygulamanın performansı, özellikle kullanıcının bakış açısıyla, �
 Bu kılavuzun devamındaki "[sorun giderme kılavuzu]" bölümünde karşılaşabileceğiniz bazı yaygın performansla ilgili sorunlar hakkında daha fazla bilgi verilmektedir.
 
 ### <a name="diagnosing-errors"></a><a name="diagnosing-errors"></a>Hataları tanılama
-Uygulamanızın kullanıcıları, istemci uygulaması tarafından bildirilen hataları bilgilendirebilir. Depolama ölçümleri Ayrıca, **networkerror** , **clienttimeouterror** veya **authorizationerror** gibi depolama hizmetlerinizin farklı hata türleri sayılarını kaydeder. Depolama ölçümleri yalnızca farklı hata türlerinin sayısını kaydetirken, sunucu tarafı, istemci tarafı ve ağ günlüklerini inceleyerek tek tek istekler hakkında daha fazla ayrıntı elde edebilirsiniz. Genellikle, depolama hizmeti tarafından döndürülen HTTP durum kodu, isteğin neden başarısız olduğuna dair bir gösterge verecektir.
+Uygulamanızın kullanıcıları, istemci uygulaması tarafından bildirilen hataları bilgilendirebilir. Depolama ölçümleri Ayrıca, **networkerror**, **clienttimeouterror** veya **authorizationerror** gibi depolama hizmetlerinizin farklı hata türleri sayılarını kaydeder. Depolama ölçümleri yalnızca farklı hata türlerinin sayısını kaydetirken, sunucu tarafı, istemci tarafı ve ağ günlüklerini inceleyerek tek tek istekler hakkında daha fazla ayrıntı elde edebilirsiniz. Genellikle, depolama hizmeti tarafından döndürülen HTTP durum kodu, isteğin neden başarısız olduğuna dair bir gösterge verecektir.
 
 > [!NOTE]
 > Bazı aralıklı hataları görmeyi beklemeniz gerektiğini unutmayın: Örneğin, geçici ağ koşullarından veya uygulama hatalarından kaynaklanan hatalar.
@@ -348,11 +347,11 @@ Sorununuz, depolama hizmetlerinden birinin kullanılabilirliğiyle bağlantılı
 
 ---
 ### <a name="metrics-show-high-averagee2elatency-and-low-averageserverlatency"></a><a name="metrics-show-high-AverageE2ELatency-and-low-AverageServerLatency"></a>Ölçümler yüksek AverageE2ELatency ve düşük AverageServerLatency gösteriyor
-[Azure Portal](https://portal.azure.com) izleme aracından aşağıdaki çizimde, **AverageE2ELatency** 'in **averageserverlatency** 'ın önemli ölçüde yüksek olduğu bir örnek gösterilir.
+[Azure Portal](https://portal.azure.com) izleme aracından aşağıdaki çizimde, **AverageE2ELatency** 'in **averageserverlatency**'ın önemli ölçüde yüksek olduğu bir örnek gösterilir.
 
 ![Azure portal, AverageE2ELatency 'in AverageServerLatency 'den önemli ölçüde daha yüksek olduğu bir örnek gösteren bir örnektir.][4]
 
-Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** ölçüsünü hesaplar ve **averageserverlatency** 'ın aksine istemcinin, verileri göndermek ve depolama hizmetinden onay almak için geçen süreyi de içerir. Bu nedenle, **AverageE2ELatency** ve **averageserverlatency** arasındaki fark, istemci uygulamanın yavaş yanıt vermesi ya da ağdaki koşullar nedeniyle olabilir.
+Depolama hizmeti yalnızca başarılı istekler için **AverageE2ELatency** ölçüsünü hesaplar ve **averageserverlatency**'ın aksine istemcinin, verileri göndermek ve depolama hizmetinden onay almak için geçen süreyi de içerir. Bu nedenle, **AverageE2ELatency** ve **averageserverlatency** arasındaki fark, istemci uygulamanın yavaş yanıt vermesi ya da ağdaki koşullar nedeniyle olabilir.
 
 > [!NOTE]
 > Depolama günlüğü günlük verilerinde ayrı depolama işlemleri için **E2ELatency** ve **serverlatency** ' i de görüntüleyebilirsiniz.
@@ -459,14 +458,14 @@ Verimsiz sorgu tasarımı, tablo bölümlerinin ölçeklenebilirlik sınırları
 >
 >
 
-**Percenttimeouterror** ölçümü, şu ölçümlerin bir toplamadır: **clienttimeouterror** , **anonymousclienttimeouterror** , **sasclienttimeouterror** , **Servertimeouterror** , **anonymousservertimeouterror** ve **sasservertimeouterror** .
+**Percenttimeouterror** ölçümü, şu ölçümlerin bir toplamadır: **clienttimeouterror**, **anonymousclienttimeouterror**, **sasclienttimeouterror**, **Servertimeouterror**, **anonymousservertimeouterror** ve **sasservertimeouterror**.
 
 Sunucu zaman aşımları sunucuda bir hata nedeniyle oluşur. Sunucu üzerindeki bir işlem istemci tarafından belirtilen zaman aşımını aştığından istemci zaman aşımları meydana gelir; Örneğin, depolama Istemci kitaplığını kullanan bir istemci, **Queuerequestoptions** sınıfının **servertimeout** özelliğini kullanarak bir işlem için zaman aşımı ayarlayabilir.
 
 Sunucu zaman aşımları, daha fazla araştırma gerektiren depolama hizmetiyle ilgili bir sorun olduğunu gösterir. Hizmet için ölçeklenebilirlik limitlerini vurarak, bu soruna neden olabilecek trafikte herhangi bir ani artışlar belirlemek için ölçümleri kullanabilirsiniz. Sorun kesintili ise, hizmette yük dengeleme etkinliği olabilir. Sorun kalıcıdır ve uygulamanız hizmetin ölçeklenebilirlik sınırlarına ulaşmasından kaynaklanmadığında, bir destek sorunu oluşturmalısınız. İstemci zaman aşımları için, zaman aşımının istemcide uygun bir değere ayarlanmış olup olmadığını ve istemcide ayarlanan zaman aşımı değerini değiştirip, örneğin tablo sorgularınızı en iyi duruma getirerek veya İletilerinizin boyutunu azaltarak depolama hizmetindeki işlemlerin performansını nasıl geliştirebileceğinizi araştırmanız gerekir.
 
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>Ölçümler PercentNetworkError’da artış gösteriyor
-Ölçümleriniz, depolama hizmetlerinizin biri için **Percentnetworkerror** 'da artış gösterir. **Percentnetworkerror** ölçümü, şu ölçümlerin bir toplamadır: **networkerror** , **anonymousnetworkerror** ve **sasnetworkerror** . Bu durum, istemci bir depolama isteği yaptığında depolama hizmeti bir ağ hatası algıladığında meydana gelir.
+Ölçümleriniz, depolama hizmetlerinizin biri için **Percentnetworkerror** 'da artış gösterir. **Percentnetworkerror** ölçümü, şu ölçümlerin bir toplamadır: **networkerror**, **anonymousnetworkerror** ve **sasnetworkerror**. Bu durum, istemci bir depolama isteği yaptığında depolama hizmeti bir ağ hatası algıladığında meydana gelir.
 
 Bu hatanın en yaygın nedeni, depolama hizmetindeki zaman aşımı süresi dolmadan önce bir istemci bağlantısının kesilmesi olur. İstemcinin depolama hizmetinden ne zaman ve ne zaman bağlantısını kesmediğini anlamak için, istemcinizdeki kodu araştırın. Ayrıca, Wireshark veya Tcping kullanarak istemciden gelen ağ bağlantısı sorunlarını araştırabilirsiniz. Bu araçlar, [Appendıces]' de açıklanmıştır.
 
@@ -489,7 +488,7 @@ Bu senaryoda, istemci belirteci sunucuya göndermeden önce SAS belirtecinin ne 
 
 * Genellikle bir istemcinin hemen kullanması için SAS oluştururken başlangıç zamanı ayarlamamalısınız. Geçerli zamanı kullanarak SAS belirtecini oluşturan konak ile depolama hizmeti arasında küçük saat farklılıkları varsa depolama hizmeti henüz geçerli olmayan bir SAS alabilir.
 * Bir SAS belirtecinin sona erme süresini çık kısa ayarlamayın. Ayrıca, SAS belirtecini oluşturan konakla depolama hizmeti arasındaki küçük saat farklılıkları, bir SAS belirtecinin süresinin beklenenden erken dolmuş gibi görünmesine de neden olabilir.
-* SAS anahtarındaki sürüm parametresi (örneğin, **ZF = 2015-04-05** ), kullanmakta olduğunuz depolama istemci kitaplığının sürümüyle eşleşiyor mu? Her zaman [depolama Istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage/)'nın en son sürümünü kullanmanızı öneririz.
+* SAS anahtarındaki sürüm parametresi (örneğin, **ZF = 2015-04-05**), kullanmakta olduğunuz depolama istemci kitaplığının sürümüyle eşleşiyor mu? Her zaman [depolama Istemci kitaplığı](https://www.nuget.org/packages/WindowsAzure.Storage/)'nın en son sürümünü kullanmanızı öneririz.
 * Depolama erişim anahtarlarınızı yeniden oluşturursanız mevcut SAS belirteçleri geçerliliğini kaybedebilir. İstemci uygulamalarının önbelleğe alması için sona erme süresi uzun olan SAS belirteçleri oluşturursanız bu sorunla karşılaşabilirsiniz.
 
 SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kullanıyorsanız geçerli bir belirteç oluşturmak kolaydır. Ancak, depolama REST API kullanıyorsanız ve SAS belirteçlerini el ile oluşturuyorsanız, bkz. [paylaşılan erişim Imzasıyla erişim yetkisi verme](/rest/api/storageservices/delegate-access-with-shared-access-signature).
@@ -511,7 +510,7 @@ SAS belirteçleri oluşturmak için Depolama İstemcisi Kitaplığı’nı kulla
 
 Depolama Istemci kitaplığı tarafından oluşturulan aşağıdaki istemci tarafı günlüğü, istemci oluşturduğu blob için kapsayıcıyı bulamadığında sorun olduğunu gösterir. Bu günlük aşağıdaki depolama işlemlerinin ayrıntılarını içerir:
 
-| Request ID | İşlem |
+| Request ID | Çalışma |
 | --- | --- |
 | 07b26a5d-... |Blob kapsayıcısını silmek için **Deleteifexists** yöntemi. Bu işlemin kapsayıcının varlığını denetlemek için bir **Head** isteği içerdiğine unutmayın. |
 | e2d06d78... |Blob kapsayıcısını oluşturmak için **Createifnotexists** yöntemi. Bu işlemin kapsayıcının varlığını denetleyen bir **baş** isteği içerdiğine unutmayın. **Baş** bir 404 iletisi döndürür, ancak devam eder. |
@@ -637,10 +636,10 @@ Bu senaryonun en olası nedeni, istemcinin tablo hizmetine varlık için bir sil
 
 Bu sorun sık sık oluşuyorsa, istemcinin tablo hizmetinden gelen bildirimleri almamasının neden başarısız olduğunu araştırmanız gerekir. Sorun kesintili ise, "HTTP (404) bulunamadı" hatasını yakalayıp istemcide günlüğe kaydedin, ancak istemcinin devam etmesine izin verin.
 
-### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (Çakışma) iletileri alıyor
+### <a name="the-client-is-receiving-http-409-conflict-messages"></a><a name="the-client-is-receiving-409-messages"></a>İstemci HTTP 409 (çakışma) iletilerini alıyor
 Aşağıdaki tabloda iki istemci işlemi için sunucu tarafı günlüğünden ayıklama gösterilmektedir: **Deleteifexists** , aynı blob kapsayıcısı adı kullanılarak **Createifnotexists** tarafından hemen izlenir. Her istemci işlemi, sunucuya iki istekle gönderilir, ilk olarak bir **Getcontainerproperties** , kapsayıcının var olup olmadığını kontrol etmek için, ardından **DeleteContainer** veya **CreateContainer** isteği ile sonuçlanır.
 
-| Zaman damgası | Çalışma | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
+| Timestamp | Çalışma | Sonuç | Kapsayıcı adı | İstemci istek kimliği |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-... |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-... |
@@ -733,7 +732,7 @@ Bu ek, Fiddler 'ın, Fiddler 'i yüklediğiniz yerel makine ile Azure depolama h
 Fiddler 'ı başlattıktan sonra, yerel makinenizde HTTP ve HTTPS trafiği yakalamaya başlayacaktır. Aşağıda, Fiddler 'ın denetlenmesi için bazı yararlı komutlar verilmiştir:
 
 * Durdur ve trafiği yakalamaya başla. Ana menüde, **Dosya** ' ya gidin ve sonra yakalamayı açıp kapatmak Için **trafiği yakala** ' ya tıklayın.
-* Yakalanan trafik verilerini kaydedin. Ana menüde **Dosya** ' ya gidin, **Kaydet** ' e tıklayın ve ardından **tüm oturumlar** ' a tıklayın. Bu, trafiği bir oturum Arşivi dosyasına kaydetmenizi sağlar. Daha sonra analiz için bir oturum arşivi yeniden yükleyebilir veya Microsoft desteği 'ne istenirse gönderebilirsiniz.
+* Yakalanan trafik verilerini kaydedin. Ana menüde **Dosya**' ya gidin, **Kaydet**' e tıklayın ve ardından **tüm oturumlar**' a tıklayın. Bu, trafiği bir oturum Arşivi dosyasına kaydetmenizi sağlar. Daha sonra analiz için bir oturum arşivi yeniden yükleyebilir veya Microsoft desteği 'ne istenirse gönderebilirsiniz.
 
 Fiddler 'in yakaladığı trafik miktarını sınırlamak için **Filtreler** sekmesinde yapılandırdığınız filtreleri kullanabilirsiniz. Aşağıdaki ekran görüntüsünde, yalnızca **contosoemaildist.Table.Core.Windows.net** depolama uç noktasına gönderilen trafiği yakalayan bir filtre gösterilmektedir:
 
@@ -746,19 +745,19 @@ Aşağıdaki yordamda, Azure Depolama hesabınızdaki tablo hizmetine Wireshark 
 
 1. Yerel makinenizde Wireshark başlatın.
 2. **Başlat** bölümünde, internet 'e bağlı olan yerel ağ arabirimini veya arabirimlerini seçin.
-3. **Yakalama seçenekleri** ' ne tıklayın.
+3. **Yakalama seçenekleri**' ne tıklayın.
 4. **Yakalama filtresi** metin kutusuna bir filtre ekleyin. Örneğin, **host contosoemaildist.Table.Core.Windows.net** , Wireshark ' yi yalnızca **contosoemaildist** depolama hesabındaki tablo hizmeti uç noktasına veya sunucudan gönderilen paketleri yakalamaya alacak şekilde yapılandırır. [Yakalama filtrelerinin tüm listesini](https://wiki.wireshark.org/CaptureFilters)inceleyin.
 
    ![Yakalama filtresi metin kutusuna bir filtrenin nasıl ekleneceğini gösteren ekran görüntüsü.][6]
-5. **Başlat** 'a tıklayın. Wireshark şimdi, yerel makinenizde istemci uygulamanızı kullanırken tablo hizmeti uç noktasına gönderilen tüm paketleri yakalar.
-6. İşiniz bittiğinde, ana menüden **yakala** ' ya ve ardından **Durdur** ' a tıklayın.
-7. Yakalanan verileri bir Wireshark yakalama dosyasına kaydetmek için, ana menüdeki **Dosya** ' ya ve ardından **Kaydet** ' e tıklayın.
+5. **Başlat**'a tıklayın. Wireshark şimdi, yerel makinenizde istemci uygulamanızı kullanırken tablo hizmeti uç noktasına gönderilen tüm paketleri yakalar.
+6. İşiniz bittiğinde, ana menüden **yakala** ' ya ve ardından **Durdur**' a tıklayın.
+7. Yakalanan verileri bir Wireshark yakalama dosyasına kaydetmek için, ana menüdeki **Dosya** ' ya ve ardından **Kaydet**' e tıklayın.
 
-WireShark, **packetlist** penceresinde var olan tüm hataları vurgulayacaktır. Ayrıca, hataların ve uyarıların özetini görüntülemek için **uzman bilgisi** penceresini ( **Çözümle** ve ardından **uzman bilgileri** ' ne tıklayın) kullanabilirsiniz.
+WireShark, **packetlist** penceresinde var olan tüm hataları vurgulayacaktır. Ayrıca, hataların ve uyarıların özetini görüntülemek için **uzman bilgisi** penceresini ( **Çözümle** ve ardından **uzman bilgileri**' ne tıklayın) kullanabilirsiniz.
 
 ![Hataların ve uyarıların özetini görüntüleyebileceğiniz uzman bilgisi penceresini gösteren ekran görüntüsü.][7]
 
-Ayrıca, TCP verilerini, TCP verilerine sağ tıklayıp **TCP akışını izle** ' yi seçerek Inceleyerek, TCP verilerini görüntülemeyi tercih edebilirsiniz. Bu, döküm dosyanızı yakalama filtresi olmadan yakaladıysanız yararlı olur. Daha fazla bilgi için bkz. [TCP akışları](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
+Ayrıca, TCP verilerini, TCP verilerine sağ tıklayıp **TCP akışını izle**' yi seçerek Inceleyerek, TCP verilerini görüntülemeyi tercih edebilirsiniz. Bu, döküm dosyanızı yakalama filtresi olmadan yakaladıysanız yararlı olur. Daha fazla bilgi için bkz. [TCP akışları](https://www.wireshark.org/docs/wsug_html_chunked/ChAdvFollowTCPSection.html).
 
 ![Uygulama katmanı tarafından görülen TCP verilerinin nasıl görüntüleneceğini gösteren ekran görüntüsü.][8]
 
@@ -772,11 +771,11 @@ Birçok araç, Azure Tablo depolamadan depolama ölçümleri verilerini, görün
 
 Depolama günlüğü verilerinizi blob depolamadan indirdikten sonra Excel 'e aktarmak için:
 
-* **Veri** menüsünde, **metin** ' e tıklayın.
-* Görüntülemek istediğiniz günlük dosyasına gidin ve **Içeri aktar** ' a tıklayın.
-* **Metin Içeri aktarma Sihirbazı** 'nın 1. adımında, **sınırlandırılmış** ' ı seçin.
+* **Veri** menüsünde, **metin**' e tıklayın.
+* Görüntülemek istediğiniz günlük dosyasına gidin ve **Içeri aktar**' a tıklayın.
+* **Metin Içeri aktarma Sihirbazı**'nın 1. adımında, **sınırlandırılmış**' ı seçin.
 
-**Metin Içeri aktarma Sihirbazı** 'nın 1. adımında, tek sınırlayıcı olarak **noktalı virgül** ' i seçin ve **metin niteleyicisi** olarak çift tırnak işareti seçin. Ardından **son** ' a tıklayın ve verilerin çalışma kitabınıza yerleştirileceği yeri seçin.
+**Metin Içeri aktarma Sihirbazı**'nın 1. adımında, tek sınırlayıcı olarak **noktalı virgül** ' i seçin ve **metin niteleyicisi** olarak çift tırnak işareti seçin. Ardından **son** ' a tıklayın ve verilerin çalışma kitabınıza yerleştirileceği yeri seçin.
 
 ### <a name="appendix-5-monitoring-with-application-insights-for-azure-devops"></a><a name="appendix-5"></a>Ek 5: Azure DevOps için Application Insights ile Izleme
 Ayrıca, performans ve kullanılabilirlik izlemenin bir parçası olarak Azure DevOps için Application Insights özelliğini de kullanabilirsiniz. Bu araç şunları yapabilir:

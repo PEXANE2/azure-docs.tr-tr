@@ -3,17 +3,17 @@ title: Azure IoT Central’da kural ve eylem yapılandırma | Microsoft Docs
 description: Bu nasıl yapılır makalesi, Azure IoT Central uygulamanızda telemetri tabanlı kuralları ve eylemleri nasıl yapılandıracağınızı bir Oluşturucu olarak gösterir.
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8391202e991c240b03bd79b947c1c3c6dcc9afd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362546"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796797"
 ---
 # <a name="configure-rules"></a>Kuralları yapılandırma
 
@@ -39,7 +39,7 @@ Aşağıdaki ekran görüntüsünde koşullar, sıcaklığın 70 F 'den büyük 
 
 Koşul için **değer** alanındaki cihaz şablonundan bir bulut özelliğine başvurabilirsiniz. Bulut özelliği ve telemetri değeri benzer türlere sahip olmalıdır. Örneğin, **sıcaklık** bir Double Ise, **değer** açılan kutusunda yalnızca Double olarak göster türündeki bulut özellikleri.
 
-Bir olay türü telemetri değeri seçerseniz, **değer açılır değeri** **herhangi bir**seçeneği içerir. **Any** seçeneği, uygulamanız bu türden bir olay aldığında yükün ne zaman tetiklendiği anlamına gelir.
+Bir olay türü telemetri değeri seçerseniz, **değer açılır değeri** **herhangi bir** seçeneği içerir. **Any** seçeneği, uygulamanız bu türden bir olay aldığında yükün ne zaman tetiklendiği anlamına gelir.
 
 ## <a name="use-aggregate-windowing"></a>Birleşik Pencereleme kullan
 

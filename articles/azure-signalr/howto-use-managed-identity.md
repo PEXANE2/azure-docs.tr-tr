@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
-ms.openlocfilehash: 9b6141e6009cb868d63429836f8c8f050c792ee5
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4f70cbacf686210c1188cb0a87e6116af8ed4b01
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152296"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763187"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Azure SignalR hizmeti için Yönetilen kimlikler
 
@@ -26,9 +26,9 @@ Azure portal yönetilen bir kimlik ayarlamak için öncelikle bir Azure SignalR 
 
 1. Portalda normalde yaptığınız gibi bir Azure SignalR hizmeti örneği oluşturun. Portalda buna gidin.
 
-2. **Kimlik**seçin.
+2. **Kimlik** seçin.
 
-4. **Sistem atandı** sekmesinde **durumu** **Açık**olarak değiştirin. **Kaydet**’i seçin.
+4. **Sistem atandı** sekmesinde **durumu** **Açık** olarak değiştirin. **Kaydet**’i seçin.
 
     :::image type="content" source="media/signalr-howto-use-managed-identity/system-identity-portal.png" alt-text="Portala sistem tarafından atanan bir kimlik ekleme":::
 
@@ -40,13 +40,13 @@ Kullanıcı tarafından atanan bir kimlikle Azure SignalR hizmeti örneği oluş
 
 2. Portalda normalde yaptığınız gibi bir Azure SignalR hizmeti örneği oluşturun. Portalda buna gidin.
 
-3. **Kimlik**seçin.
+3. **Kimlik** seçin.
 
 4. **Kullanıcı atandı** sekmesinde **Ekle**' yi seçin.
 
 5. Daha önce oluşturduğunuz kimliği arayın ve seçin. **Ekle**’yi seçin.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Portala sistem tarafından atanan bir kimlik ekleme":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Portalda Kullanıcı tarafından atanan bir kimlik ekleme":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Sunucusuz senaryolarda yönetilen bir kimlik kullanma
 
@@ -56,9 +56,12 @@ Azure SignalR hizmeti, tam olarak yönetilen bir hizmettir, bu nedenle belirteç
 
 1. Sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik ekleyin.
 
-2. Yukarı akış ayarlarını yapılandırın ve **kimlik doğrulama** ayarları olarak **managedıdentity** kullanın. Kimlik doğrulamasıyla yukarı akış ayarları oluşturmayı öğrenmek için bkz. [yukarı akış ayarları](concept-upstream.md).
+2. Bir yukarı akış ayarı ekleyin ve aşağıda gösterildiği gibi ayrıntılı bir sayfaya ulaşmak için herhangi bir yıldız işaretine tıklayın.
+    :::image type="content" source="media/signalr-howto-use-managed-identity/pre-msi-settings.png" alt-text="MSI öncesi ayar":::
+    
+    :::image type="content" source="media/signalr-howto-use-managed-identity/msi-settings.png" alt-text="MSI ayarı":::
 
-3. Yönetilen kimlik kimlik doğrulama ayarları ' nda, **kaynak**için hedef kaynağı belirtebilirsiniz. Kaynak, `aud` yukarı akış uç noktalarında doğrulamanın bir parçası olarak kullanılabilecek, alınan erişim belirtecinde bir talep olacaktır. Kaynak aşağıdakilerden biri olabilir:
+3. Yönetilen kimlik kimlik doğrulama ayarları ' nda, **kaynak** için hedef kaynağı belirtebilirsiniz. Kaynak, `aud` yukarı akış uç noktalarında doğrulamanın bir parçası olarak kullanılabilecek, alınan erişim belirtecinde bir talep olacaktır. Kaynak aşağıdakilerden biri olabilir:
     - Olmamalıdır
     - Hizmet sorumlusunun uygulama (istemci) KIMLIĞI
     - Hizmet sorumlusunun uygulama KIMLIĞI URI 'SI
@@ -76,6 +79,37 @@ Erişim belirteçlerini doğrulamak için uygulamanızın izleyiciyi ve imza bel
 Azure Active Directory (Azure AD) ara yazılımı, erişim belirteçlerini doğrulamaya yönelik yerleşik yeteneklere sahiptir. Seçtiğiniz dilde bir tane bulmak için [örneklerimize](../active-directory/develop/sample-v2-code.md) göz atabilirsiniz.
 
 Belirteç doğrulamanın nasıl işleneceğini gösteren kitaplıklar ve kod örnekleri sağlıyoruz. JSON Web Token (JWT) doğrulaması için kullanılabilen çeşitli açık kaynak iş ortağı kitaplıkları da vardır. Neredeyse her platform ve dil için en az bir seçenek vardır. Azure AD kimlik doğrulama kitaplıkları ve kod örnekleri hakkında daha fazla bilgi için bkz. [Microsoft Identity platform kimlik doğrulama kitaplıkları](../active-directory/develop/reference-v2-libraries.md).
+
+#### <a name="authentication-in-function-app"></a>İşlev Uygulaması kimlik doğrulaması
+
+İşlev Uygulaması erişim belirteci doğrulamanın ayarlanması, kod çalışması olmadan kolay ve verimlidir.
+
+1. **Kimlik doğrulama/yetkilendirme** sayfasında, **App Service kimlik doğrulamasını** **Açık** olarak değiştirin.
+
+2. **İsteğin kimliği doğrulanmamış olduğunda** yapılacak **Azure Active Directory için oturum aç** ' ı seçin.
+
+3. Kimlik doğrulama sağlayıcısında **Azure Active Directory** ' ye tıklayın.
+
+4. Yeni sayfada. **Express** ' i seçin ve **Yeni ad uygulaması oluşturun** ve ardından **Tamam** :::image type="content" source="media/signalr-howto-use-managed-identity/function-aad.png" alt-text="işlev AAD"::: ' ye tıklayın
+
+5. SignalR hizmetine gidin ve sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik eklemek için [adımları](howto-use-managed-identity.md#add-a-system-assigned-identity) izleyin.
+
+6. SignalR hizmetinde **yukarı akış ayarlarına** ulaşın ve **yönetilen kimliği kullan** ' ı seçin ve **mevcut uygulamalardan seçin**. Daha önce oluşturduğunuz uygulamayı seçin.
+
+Bu ayarlardan sonra İşlev Uygulaması, üst bilgide erişim belirteci olmayan istekleri reddeder.
+
+## <a name="use-a-managed-identity-for-key-vault-reference"></a>Key Vault başvurusu için yönetilen bir kimlik kullan
+
+SignalR hizmeti, yönetilen kimliği kullanarak gizli dizi almak için Key Vault erişebilir.
+
+1. Azure SignalR hizmeti için sistem tarafından atanan bir kimlik veya Kullanıcı tarafından atanan kimlik ekleme.
+
+2. Key Vault erişim ilkelerinde yönetilen kimlik için gizli okuma izni verin. Bkz [. Azure Portal kullanarak Key Vault erişim Ilkesi atama](https://docs.microsoft.com/azure/key-vault/general/assign-access-policy-portal)
+
+Şu anda bu özellik aşağıdaki senaryolarda kullanılabilir:
+
+- [Yukarı akış URL 'SI düzeninde başvuru gizli dizisi](./concept-upstream.md#key-vault-secret-reference-in-url-template-settings)
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

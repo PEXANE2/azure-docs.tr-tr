@@ -3,17 +3,17 @@ title: Azure IoT Central cihaz şablonları nelerdir | Microsoft Docs
 description: Azure IoT Central cihaz şablonları, uygulamanıza bağlı cihazların davranışını belirtmenizi sağlar. Cihaz şablonu, cihazın uygulaması gereken telemetri, Özellikler ve komutları belirtir. Bir cihaz şablonu Ayrıca, bir işlecin kullandığı formlar ve panolar gibi IoT Central cihaz için Kullanıcı arabirimini tanımlar.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/05/2020
+ms.date: 12/19/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 04c2330ffee396f5fc30b85640e992df77c08263
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750705"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795437"
 ---
 # <a name="what-are-device-templates"></a>Cihaz şablonları nedir?
 

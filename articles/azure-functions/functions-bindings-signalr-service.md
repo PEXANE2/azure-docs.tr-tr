@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 1446808b77e5eea78a9912db4c7a8e2dd783f33a
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 9e60fd9a20720d75f96a0b78ee783bd5509a8f90
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104385"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763498"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
@@ -18,6 +18,7 @@ Bu makale kümesi, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanıl
 
 | Eylem | Tür |
 |---------|---------|
+| SignalR hizmetinden iletileri işle | [Bağlamayı Tetikle](./functions-bindings-signalr-service-trigger.md) |
 | Hizmet uç noktası URL 'sini ve erişim belirtecini döndür | [Giriş bağlama](./functions-bindings-signalr-service-input.md) |
 | SignalR hizmeti iletilerini gönder |[Çıkış bağlama](./functions-bindings-signalr-service-output.md) |
 
@@ -55,5 +56,6 @@ Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, *Azure
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+- [SignalR hizmetinden iletileri işleme (tetikleyici bağlama)](./functions-bindings-signalr-service-trigger.md)
 - [Hizmet uç noktası URL 'sini ve erişim belirtecini (giriş bağlaması) döndürün](./functions-bindings-signalr-service-input.md)
 - [SignalR hizmet iletileri gönderme (çıkış bağlama)](./functions-bindings-signalr-service-output.md)

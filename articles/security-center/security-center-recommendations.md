@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 12/25/2020
 ms.author: memildin
-ms.openlocfilehash: c0952e0f267f9c2511a2e80fa7106958d8dd0ee5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791894"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97795997"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde güvenlik önerileri 
 Bu konu başlığı altında, Azure Güvenlik Merkezi 'nde Azure kaynaklarınızı korumanıza yardımcı olan önerilerin nasıl görüntüleneceği ve anlayabileceği açıklanmaktadır.
@@ -42,7 +42,11 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
 
 1. Ortamınız için geçerli olan önerileri görmek için Güvenlik Merkezi 'nin menüsünde **öneriler** sayfasını açın. Öneriler, güvenlik denetimleri halinde gruplandırılır.
 
-      ![Güvenlik denetimine göre gruplanmış öneriler](./media/security-center-recommendations/view-recommendations.png)
+    :::image type="content" source="./media/security-center-recommendations/view-recommendations.png" alt-text="Güvenlik denetimine göre gruplanmış öneriler" lightbox="./media/security-center-recommendations/view-recommendations.png":::
+
+1. Kaynak türüne, önem derecesine, ortama veya sizin için önemli olan diğer ölçütlere özgü önerileri bulmak için, öneriler listesinin üzerindeki isteğe bağlı filtreleri kullanın.
+
+    :::image type="content" source="media/security-center-recommendations/recommendation-list-filters.png" alt-text="Azure Güvenlik Merkezi önerileri listesini iyileştirme filtreleri":::
 
 1. Bir denetimi genişletin ve öneri ayrıntıları sayfasını görüntülemek için belirli bir öneri seçin.
 
@@ -60,7 +64,7 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
         - **Sağlıksız kaynaklar** – hala belirtilen sorundan etkilenen kaynaklar.
         - **Geçerli olmayan kaynaklar** – önerinin kesin yanıt veremediğinde kaynaklar. Uygulanamaz sekmesi her bir kaynağın nedenlerini de içerir. 
 
-            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Öneri ayrıntıları sayfası.":::
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="Nedenlerden dolayı geçerli olmayan kaynaklar değildir.":::
     1. Öneriyi düzeltecek veya bir mantıksal uygulamayı tetikleyen eylem düğmeleri.
 
 ## <a name="preview-recommendations"></a>Önizleme önerileri
@@ -71,7 +75,7 @@ Güvenlik Merkezi, olası güvenlik açıklarını belirlemek için kaynakların
 
 Önizleme önerisi örneği:
 
-:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Öneri ayrıntıları sayfası.":::
+:::image type="content" source="./media/secure-score-security-controls/example-of-preview-recommendation.png" alt-text="Önizleme bayrağıyla ilgili öneri":::
  
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 09/28/2020
 ms.custom: designer
-ms.openlocfilehash: ca812fc7548e3c70f1faa1e1ed6a34afda3872af
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 2e46da1657a7473d3ff8cdf4ac43e5341b143455
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575984"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796117"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer"></a>Öğretici: Tasarımcıyla otomobil fiyatını tahmin etme
 
@@ -71,7 +71,7 @@ Tasarımcıyı kullanmak için bir Azure Machine Learning çalışma alanı gere
 
 Her modülün varsayılan olarak aynı işlem hedefini kullanmasını söyleyecek tüm işlem hattı için **varsayılan bir işlem hedefi** ayarlayabilirsiniz. Ancak, işlem hedeflerini modül başına temelinde belirtebilirsiniz.
 
-1. İşlem hattı adının yanında, **Gear icon** ![ tuval simgesinin en üstündeki dişli simgesi ekran görüntüsünü seçerek ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) **Ayarlar** bölmesini açın.
+1. İşlem hattı adının yanında,  ![ tuval simgesinin en üstündeki dişli simgesi ekran görüntüsünü seçerek ](./media/tutorial-designer-automobile-price-train-score/gear-icon.png) **Ayarlar** bölmesini açın.
 
 1. Tuvalin sağındaki **Ayarlar** bölmesinde, **işlem hedefini seç**' i seçin.
 
@@ -168,7 +168,7 @@ Bir modeli eğitedığınızda, eksik olan veriler hakkında bir şey yapmanız 
 
 1. Görüntülenen **sütunlar** penceresinde, **Ekle**' nin yanındaki açılan menüyü genişletin. Seç, **tüm sütunlar**
 
-1. **Kaydet**’i seçin
+1. **Kaydet**'i seçin
 
 1. Tuvalin sağ tarafındaki modül ayrıntıları bölmesinde, **temizleme modu**' nun altındaki **tüm satırı Kaldır** ' ı seçin.
 
@@ -272,7 +272,7 @@ Modelinizin test veri kümesini ne kadar iyi puanlaleceğini değerlendirmek iç
     > [!NOTE]
     > Denemeleri Group benzer işlem hattı birlikte çalışır. Birden çok kez işlem hattı çalıştırırsanız, art arda çalıştırmalar için aynı denemeyi seçebilirsiniz.
 
-    1. **Yeni deneme adı** için açıklayıcı bir ad girin.
+    1. **Yeni deneme adı** için **öğretici-carfiyatlar** girin.
 
     1. **Gönder**’i seçin.
     

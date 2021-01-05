@@ -1,18 +1,18 @@
 ---
 title: Şablon sözdizimi ve ifadeleri
-description: Azure Resource Manager şablonları için bildirim temelli JSON sözdizimini açıklar.
+description: Azure Resource Manager şablonları için bildirim temelli JSON sözdizimini açıklar (ARM şablonları).
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 44a386ed849771dfba717c8d1414e64422d0c7bd
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82203837"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797052"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarındaki söz dizimi ve ifadeler
+# <a name="syntax-and-expressions-in-arm-templates"></a>ARM şablonlarındaki sözdizimi ve ifadeler
 
-Şablonun temel sözdizimi JSON ' dır. Ancak, şablon içinde kullanılabilir olan JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler köşeli ayraçla başlayıp biter: `[` ve `]`. İfadenin değeri, şablon dağıtıldığında değerlendirilir. İfade dize, tamsayı, boole, dizi veya nesne döndürebilir.
+Azure Resource Manager şablonunun (ARM şablonu) temel sözdizimi JavaScript Nesne Gösterimi (JSON). Ancak, şablon içinde kullanılabilir olan JSON değerlerini genişletmek için ifadeleri kullanabilirsiniz.  İfadeler köşeli ayraçla başlayıp biter: `[` ve `]`. İfadenin değeri, şablon dağıtıldığında değerlendirilir. İfade dize, tamsayı, boole, dizi veya nesne döndürebilir.
 
 Şablon ifadesi 24.576 karakterden uzun olamaz.
 
@@ -31,7 +31,7 @@ Azure Resource Manager, bir şablonda kullanabileceğiniz [işlevleri](template-
 
 İfade içinde sözdizimi, `resourceGroup()` Kaynak Yöneticisi bir şablon içinde kullanmak için sağladığı işlevlerden birini çağırır. Bu durumda, [resourceGroup](template-functions-resource.md#resourcegroup) işlevi. JavaScript içinde olduğu gibi, işlev çağrıları olarak biçimlendirilir `functionName(arg1,arg2,arg3)` . Söz dizimi, `.location` Bu işlev tarafından döndürülen nesneden bir özelliği alır.
 
-Şablon işlevleri ve parametreleri büyük/küçük harfe duyarlıdır. Örneğin, Kaynak Yöneticisi **değişkenleri (' var1 ')** ve **DEĞIŞKENLERI (' var1 ')** aynı şekilde çözümler. Değerlendirildiğinde, işlev açıkça büyük/küçük harf (toUpper veya toLower gibi) değiştirmediği sürece işlev, büyük/küçük harf durumunu korur. Belirli kaynak türlerinde, işlevlerin nasıl değerlendirildiğinden ayrı olarak durum gereksinimleri olabilir.
+Şablon işlevleri ve parametreleri büyük/küçük harfe duyarlıdır. Örneğin, Kaynak Yöneticisi `variables('var1')` `VARIABLES('VAR1')` , ve aynı şekilde çözümlenir. Değerlendirildiğinde, işlev açıkça durumu (veya gibi) değiştirmediği sürece `toUpper` `toLower` işlev, büyük/küçük harf durumunu korur. Belirli kaynak türlerinde, işlevlerin nasıl değerlendirildiğinden ayrı olarak durum gereksinimleri olabilir.
 
 Bir parametreye parametre olarak bir dize değeri geçirmek için tek tırnak kullanın.
 
@@ -123,7 +123,7 @@ Bir parametre dosyasından değerleri geçirirken aynı biçimlendirme geçerlid
 
 ## <a name="null-values"></a>Null değerler
 
-Bir özelliği null olarak ayarlamak için **null** veya **[JSON (' null ')]** kullanabilirsiniz. [JSON işlevi](template-functions-object.md#json) , parametre olarak sağladığınızda boş bir nesne döndürür `null` . Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
+Bir özelliği null olarak ayarlamak için `null` veya `[json('null')]` kullanabilirsiniz. [JSON işlevi](template-functions-object.md#json) , parametre olarak sağladığınızda boş bir nesne döndürür `null` . Her iki durumda da Kaynak Yöneticisi şablonlar, özelliği mevcut olmadığı gibi kabul eder.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Bir özelliği null olarak ayarlamak için **null** veya **[JSON (' null ')]** k
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablon işlevlerinin tam listesi için bkz. [Azure Resource Manager şablon işlevleri](template-functions.md).
-* Şablon dosyaları hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+* Şablon işlevlerinin tam listesi için bkz. [ARM şablon işlevleri](template-functions.md).
+* Şablon dosyaları hakkında daha fazla bilgi için bkz. [ARM şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).

@@ -4,15 +4,15 @@ description: Cihazlarınızdan buluta dosya yükleme işlemlerini yapılandırma
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 08/06/2020
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: d6fbf84ec3822195f62970dbf08115059ffb7e4a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: ed2eff4d6ccbb9f85dfaf7049fa3cc18711bae0f
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122611"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796916"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Cihazlarınızdan buluta dosya yükleme
 

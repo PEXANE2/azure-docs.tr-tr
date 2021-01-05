@@ -3,15 +3,15 @@ title: Azure IoT Central panonuza yapılandırma | Microsoft Docs
 description: Oluşturucu olarak, varsayılan Azure IoT Central uygulama panosunu kutucuklar ile yapılandırmayı öğrenin.
 author: TheJasonAndrew
 ms.author: v-anjaso
-ms.date: 11/06/2020
+ms.date: 12/19/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 2ea2dd18cd5816c7c1406ac201421a2983e431a3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 73c78f514f974b97eb178177f12dc4ceff7ede63
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94492045"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97797018"
 ---
 # <a name="configure-the-application-dashboard"></a>Uygulama panosunu yapılandırma
 
@@ -22,7 +22,7 @@ ms.locfileid: "94492045"
 
 ## <a name="add-tiles"></a>Kutucuk ekle
 
-Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşturulan bir uygulamada gösterilmektedir. Geçerli panoyu özelleştirmek için **Düzenle** ' yi seçin, özel bir kişisel veya paylaşılan Pano eklemek için **Yeni** ' yi seçin:
+Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşturulan bir uygulamada gösterilmektedir. Geçerli panoyu özelleştirmek için **Düzenle**' yi seçin, özel bir kişisel veya paylaşılan Pano eklemek için **Yeni**' yi seçin:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/dashboard-sample-contoso.png" alt-text="Özel uygulama şablonunu temel alan uygulamalar için Pano":::
 
@@ -30,7 +30,7 @@ Aşağıdaki ekran görüntüsünde, Pano **özel uygulama** şablonundan oluşt
 
 1. Bir **cihaz grubu** seçin ve ardından kutucukta göstermek için cihazlar **açılan menüsünde cihazlarınızı seçin** . Artık cihazlarda kullanılabilir telemetri, Özellikler ve komutları görürsünüz.
 
-1. Gerekirse, kutucukta gösterilecek bir telemetri değeri seçmek için açılan menüyü kullanın. Bir kutucuğa **+ telemetri** , **+ özellik** veya **+ bulut özelliği** seçerek daha fazla öğe ekleyebilirsiniz.
+1. Gerekirse, kutucukta gösterilecek bir telemetri değeri seçmek için açılan menüyü kullanın. Bir kutucuğa **+ telemetri**, **+ özellik** veya **+ bulut özelliği** seçerek daha fazla öğe ekleyebilirsiniz.
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Panoya bir sıcaklık telemetri kutucuğu ekleme":::
 
@@ -87,7 +87,7 @@ Dize özelliklerini veya telemetri değerlerini gösteren kutucuklar için metni
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Bir kutucukta bir dizenin nasıl görüntüleneceğini değiştirme":::
 
-Sayısal **KPI** , **bilinen son değer** ve **özellik** kutucukları için, geçerli değerine göre kutucuğun rengini özelleştirmek üzere koşullu biçimlendirme kullanabilirsiniz. Koşullu biçimlendirme eklemek için kutucukta **Yapılandır** ' ı seçin ve ardından özelleştireceğiniz değerin yanındaki **koşullu biçimlendirme** simgesini seçin:
+Sayısal **KPI**, **bilinen son değer** ve **özellik** kutucukları için, geçerli değerine göre kutucuğun rengini özelleştirmek üzere koşullu biçimlendirme kullanabilirsiniz. Koşullu biçimlendirme eklemek için kutucukta **Yapılandır** ' ı seçin ve ardından özelleştireceğiniz değerin yanındaki **koşullu biçimlendirme** simgesini seçin:
 
 :::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Bir kutucuk için yapılandırma seçeneğinin nasıl bulunacağını ve sonra koşullu biçimlendirme simgesini gösteren ekran görüntüsü":::
 

@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 9effac182acdea6fcb41ed26faf6c2f6535a5cbf
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906174"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763396"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Portal ve API ile animasyonlu karakter algılamayı (Önizleme) kullanma 
 
@@ -26,9 +26,7 @@ Bu makalede, Azure portal ve Video Indexer API 'SI ile animasyonlu karakter alg�
 
 ## <a name="use-the-animated-character-detection-with-portal"></a>Portal ile animasyonlu karakter algılamayı kullanma 
 
-Bu bölümde, animasyonlu karakter algılama modelini kullanmaya başlamak için gerçekleştirmeniz gereken adımlar açıklanmaktadır. 
-
-Özel Görüntü İşleme tümleştirme, deneme hesaplarında Video Indexer tarafından yönetildiğinden, animasyonlu karakterler modelini oluşturmaya ve kullanmaya başlayabilir ve aşağıdaki bölümü atlayabilirsiniz ("Özel Görüntü İşleme hesabınızı bağlama").
+Deneme hesaplarında Özel Görüntü İşleme tümleştirme Video Indexer tarafından yönetilir, animasyonlu karakterler modelini oluşturmaya ve kullanmaya başlayabilirsiniz. Deneme hesabı kullanılıyorsa, aşağıdaki ("Özel Görüntü İşleme hesabınızı bağlama") bölümünü atlayabilirsiniz.
 
 ### <a name="connect-your-custom-vision-account-paid-accounts-only"></a>Özel Görüntü İşleme hesabınızı bağlama (yalnızca ücretli hesaplar)
 
@@ -37,20 +35,23 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 > [!NOTE]
 > Her iki hesabın de aynı bölgede olması gerekir. Özel Görüntü İşleme tümleştirme Şu anda Japonya bölgesinde desteklenmiyor.
 
+Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin. 
+
+Model eğitiminin, Özel Görüntü İşleme Web sitesi aracılığıyla değil, yalnızca Video Indexer ile yapılması gerektiğini unutmayın. 
+
 #### <a name="connect-a-custom-vision-account-with-api"></a>Özel Görüntü İşleme bir hesabı API ile bağlama 
 
 Özel Görüntü İşleme hesabınızı Video Indexer bağlamak veya şu anda Video Indexer 'e bağlı olan Özel Görüntü İşleme hesabı değiştirmek için aşağıdaki adımları izleyin:
 
 1. [Www.customvision.ai](https://www.customvision.ai) ve oturum açma bilgilerine gidin.
-1. Aşağıdaki anahtarları kopyalayın: 
+1. Eğitim ve tahmin kaynakları için anahtarları kopyalayın:
 
-    * Eğitim anahtarı (eğitim kaynağı için)
-    * Tahmin anahtarı (tahmin kaynağı için)
-    * Uç Nokta 
-    * Tahmin kaynak KIMLIĞI
-    
     > [!NOTE]
     > Tek bir eğitim ve diğeri tahmin için Özel Görüntü İşleme iki ayrı kaynağa sahip olmanız için ihtiyacınız olan tüm anahtarları sağlamak için.
+1. Diğer bilgileri girin:
+
+    * Uç Nokta 
+    * Tahmin kaynak KIMLIĞI
 1. [Video Indexer](https://vi.microsoft.com/)gidin ve oturum açın.
 1. Sayfanın sağ üst köşesindeki soru işaretine tıklayın ve **API başvurusu**' nu seçin.
 1. **Ürünler** sekmesi ' ne tıklayarak API Management abone olduğunuzdan emin olun. Bir API bağlantısı varsa, bir sonraki adıma devam edebilir, aksi takdirde abone olabilirsiniz. 
@@ -63,7 +64,7 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. Bağlantınızı doğrulamak için [video Indexer](https://vi.microsoft.com/)) portalına gidin:
 1. Sağ üst köşedeki **içerik modeli özelleştirmesi** düğmesine tıklayın.
 1. **Animasyonlu karakterler** sekmesine gidin.
-1. "* * Özel Görüntü İşleme modelleri Yönet ' e tıkladığınızda, yeni bağladığınız Özel Görüntü İşleme hesabına aktarılacaktır.
+1. Özel Görüntü İşleme modelleri Yönet ' e tıkladığınızda, yeni bağladığınız Özel Görüntü İşleme hesabına aktarılacaktır.
 
 > [!NOTE]
 > Şu anda yalnızca Video Indexer aracılığıyla oluşturulan modeller desteklenir. Özel Görüntü İşleme üzerinden oluşturulan modeller kullanılamayacak. Ayrıca, Özel Görüntü İşleme aracılığıyla yapılan değişiklikler istenmeden sonuçlara neden olabileceğinden, Video Indexer aracılığıyla oluşturulan modelleri yalnızca Video Indexer platformu aracılığıyla düzenlemek en iyi uygulamadır.
@@ -71,9 +72,10 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 ### <a name="create-an-animated-characters-model"></a>Animasyonlu karakterler modeli oluşturma
 
 1. [Video Indexer](https://vi.microsoft.com/) web sitesine gidip oturum açın.
-1. Sayfanın sağ üst köşesindeki içerik modeli özelleştirmesi düğmesine tıklayın.
+1. Hesabınızdaki bir modeli özelleştirmek için sayfanın solundaki **içerik modeli özelleştirmesi** düğmesini seçin.
 
-    ![Sağ üst köşede "içerik modeli özelleştirmesi" düğmesinin seçili olduğu "Video Indexer" sayfasını gösteren ekran görüntüsü.](./media/animated-characters-recognition/content-model-customization.png)
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/content-model-customization/content-model-customization.png" alt-text="Video Indexer içerik modelini özelleştirme":::
 1. Model özelleştirme bölümündeki **animasyonlu karakterler** sekmesine gidin.
 1. **Model Ekle**' ye tıklayın.
 1. Modelleyin ve adı kaydetmek için ENTER 'a tıklayın.
@@ -83,7 +85,9 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
 ### <a name="index-a-video-with-an-animated-model"></a>Animasyonlu modelle video dizini oluşturma
 
-1. Üstteki menüden **karşıya yükle** düğmesine tıklayın.
+İlk eğitim için en az iki videoyu karşıya yükleyin. İyi bir tanıma modeli beklemeden önce her birinin tercihen 15 dakikadan daha uzun olması gerekir. Daha kısa bir bölüm varsa, eğitimden önce en az 30 dakikalık video içeriğini karşıya yüklemeniz önerilir. Bu, farklı sahneler ve arka planlardan aynı karaktere ait olan grupları birleştirmenizi sağlar ve bu nedenle, Dizin oluşturduğunuz aşağıdaki bölümleri belirten karakteri algılamama olasılığını artırırsınız. Birden çok videoda (bölüm) bir modeli eğitme, bunları aynı animasyon modeliyle dizinlemek için gerekir. 
+
+1. **Karşıya yükle** düğmesine tıklayın.
 1. Karşıya yüklenecek bir video seçin (bir dosyadan veya URL 'den).
 1. **Gelişmiş Seçenekler**' e tıklayın.
 1. **Kişiler/animasyonlu karakterler** altında **animasyon modeller**' ı seçin.
@@ -91,27 +95,39 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 1. Karşıya yükle ' ye tıklayın.
 1. Videonun dizini oluşturulduktan sonra, **Öngörüler** bölmesindeki **animasyonlu karakterler** bölümünde Algılanan karakterleri görürsünüz.
 
-> [!NOTE] 
-> Modeli etiketleyerek ve eğitimi yapmadan önce tüm animasyonlu karakterler "bilinmeyen #X" olarak adlandırılır. Modeli eğdikten sonra da tanınacaktır.
+Modeli etiketleyerek ve eğitimi yapmadan önce tüm animasyonlu karakterler "bilinmeyen #X" olarak adlandırılır. Modeli eğdikten sonra da tanınacaktır.
 
 ### <a name="customize-the-animated-characters-models"></a>Animasyonlu karakterler modellerini özelleştirme
 
-1. Modeli etiketleyin ve eğitme.
+1. Video Indexer karakterleri adlandırın.
 
-    1. Algılanan karakteri, adını düzenleyerek etiketleyin. Bir karakter modele eğitilirken, bu modelle birlikte dizine alınmış bir sonraki video tanınacaktır. 
-    1. Videonuzdaki bir animasyonlu karakteri etiketlemek için **Öngörüler** sekmesine gidin ve pencerenin sağ üst köşesindeki **Düzenle** düğmesine tıklayın.
-    1. **Öngörüler** bölmesinde, algılanan animasyonlu karakterlerden herhangi birine tıklayın ve adlarını "bilinmeyen #X" (veya daha önce karaktere atanmış olan ad) olarak değiştirin.
-    1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı modelde Video Indexer kaydeder.
-    1. İstediğiniz tüm adları düzenledikten sonra modeli eğmeniz gerekir.
+    1. Modelin karakter grubu oluşturulduktan sonra, bu grupları Özel Görüntü İşleme gözden geçirmeniz önerilir. 
+    1. Videonuzdaki bir animasyonlu karakteri etiketlemek için **Öngörüler**   sekmesine gidin ve ****   pencerenin sağ üst köşesindeki Düzenle düğmesine tıklayın. 
+    1.  **Öngörüler**   bölmesinde, algılanan animasyonlu karakterlerden herhangi birine tıklayın ve adlarını "bilinmeyen #X" olarak geçici bir ada (veya daha önce karaktere atanmış olan ada) değiştirin. 
+    1. Yeni adı yazdıktan sonra, yeni adın yanındaki onay simgesine tıklayın. Bu, yeni adı modelde Video Indexer kaydeder. 
+1. Yalnızca ücretli hesaplar: Özel Görüntü İşleme grupları gözden geçirin 
 
-        Özelleştirme sayfasını açın ve **animasyon karakterleri** sekmesine tıklayın ve ardından modelinizi eğitebilmeniz Için **eğitme** düğmesine tıklayın.
-         
-        Ücretli bir hesabınız varsa, **Müşteri vizyonlarındaki modelleri Yönet** bağlantısını (aşağıda gösterildiği gibi) tıklayabilirsiniz. Daha sonra **özel görüntü işleme** modelin sayfasına iletilecektir.
- 
-        ![İçerik modeli özelleştirmesi](./media/animated-characters-recognition/content-model-customization-tab.png)
+    > [!NOTE]
+    > Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir.  [Özel görüntü işleme sınıflandırıcınızı iyileştirme](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier)hakkında daha fazla bilgi edinin. Modelin eğitiminin, Özel Görüntü İşleme Web sitesi aracılığıyla değil, yalnızca Video Indexer (Bu topıd 'de açıklandığı gibi) ile yapılması gerektiğine dikkat edin. 
 
-     1. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
-    Özel Görüntü İşleme hesabına erişimi olan ücretli hesaplar, modelleri ve etiketli görüntüleri burada görebilir. [Özel görüntü işleme sınıflandırıcınızı iyileştirme](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md)hakkında daha fazla bilgi edinin.
+    1. Video Indexer **özel modeller** sayfasına gidin ve **animasyonlu karakterler** sekmesini seçin. 
+    1. Özel Görüntü İşleme içinde yönetmek için üzerinde çalıştığınız modelin Düzenle düğmesine tıklayın. 
+    1. Her karakter grubunu gözden geçirin: 
+
+        * Grupta ilişkisiz görüntüler varsa, bunları Özel Görüntü İşleme Web sitesinde silmeniz önerilir. 
+        * Farklı bir karaktere ait olan görüntüler varsa, resme tıklayarak, sağ etiketi ekleyerek ve yanlış etiketi silerek bu belirli görüntülerde etiketi değiştirin. 
+        * Grup doğru değilse, genellikle karakter olmayan görüntüleri veya birden çok karakterden oluşan resimleri içeriyorsa, Özel Görüntü İşleme Web sitesinde veya Video Indexer öngörülerinde silebilirsiniz. 
+        * Gruplama algoritması bazen karakterlerinizi farklı gruplara bölecektir. Bu nedenle, aynı karaktere ait olan tüm grupların aynı ada (Video Indexer içgörüler) sahip olması önerilir, bu da bu grupların tümünün Özel Görüntü İşleme Web sitesinde açık olarak görünmesine neden olur. 
+    1. Grup iyileştirildikten sonra, etiketlediğiniz ilk adın gruptaki karakteri yansıttığından emin olun. 
+1. Modeli eğitme 
+
+    1. İstediğiniz tüm adları düzenledikten sonra modeli eğmeniz gerekir. 
+    1. Bir karakter modele eğitilirken, bu modelle birlikte dizine alınmış bir sonraki video tanınacaktır. 
+    1. Özelleştirme sayfasını açın ve **animasyon karakterleri**   sekmesine tıklayın ve ardından modelinizi eğitebilmeniz için **eğitme** düğmesine tıklayın. Video ile bağlantıyı korumak için 
+    
+Dizin Oluşturucu ve model, Özel Görüntü İşleme Web sitesinde modeli eğmeyin (ücretli hesapların Özel Görüntü İşleme Web sitesine erişimi vardır), yalnızca Video Indexer. Eğitim olduktan sonra, bu modelle Dizinlenecek veya yeniden Dizinlenecek tüm videolar eğitilen karakterleri tanır. 
+
+## <a name="delete-an-animated-character-and-the-model"></a>Bir animasyonlu karakteri ve modeli silme
 
 1. Animasyonlu bir karakteri silin.
 
@@ -120,7 +136,6 @@ Video Indexer ücretli bir hesabınız varsa, önce bir Özel Görüntü İşlem
 
     > [!NOTE]
     > Bu, bu videodan öngörüyü siler, ancak modeli etkilemez.
-
 1. Bir modeli silin.
 
     1. Üstteki menüdeki **içerik modeli özelleştirmesi** düğmesine tıklayın ve **animasyonlu karakterler** sekmesine gidin.

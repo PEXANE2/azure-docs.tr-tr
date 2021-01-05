@@ -4,12 +4,12 @@ description: Birden çok ileti aracıları kullanarak Service Bus kuyrukların v
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8fd845ba24fd96ad6de566a7f55b25bd7129074d
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930441"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796644"
 ---
 # <a name="partitioned-queues-and-topics"></a>Bölümlenmiş kuyruklar ve konular
 
@@ -29,8 +29,9 @@ Bölümlenmiş her sıra veya konu, birden çok bölümden oluşur. Her bölüm 
 Bölümlendirilmemiş bir varlıktaki göz atma işlemi her zaman en eski iletiyi döndürür, ancak bölümlenmiş bir varlıkta değil. Bunun yerine, ileti aracısının ilk yanıtı olan bölümlerden birindeki en eski iletiyi döndürür. Döndürülen iletinin tüm bölümlerde en eski bir değer olduğu garantisi yoktur. 
 
 Bölümlenmiş bir kuyruk veya konuyla bir ileti gönderilirken veya ileti alırken ek bir maliyet yoktur.
->[!NOTE]
-> Göz atma işlemi, SequenceNumber temel alınarak, en eski iletiyi geri döndürür. Parlanan varlıklar için sıra numarası bölüme göre verilir. Daha fazla bilgi için bkz. [ileti sıralaması ve zaman damgaları](../service-bus-messaging/message-sequencing.md).
+
+> [!NOTE]
+> Göz atma işlemi, sıra numarasına göre bölümden en eski iletiyi döndürür. Bölümlenmiş varlıklar için sıra numarası bölüme göre verilir. Daha fazla bilgi için bkz. [ileti sıralaması ve zaman damgaları](../service-bus-messaging/message-sequencing.md).
 
 ## <a name="enable-partitioning"></a>Bölümlemeyi etkinleştir
 

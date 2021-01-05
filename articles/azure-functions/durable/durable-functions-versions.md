@@ -3,14 +3,14 @@ title: Dayanıklı İşlevler sürümlere genel bakış-Azure Işlevleri
 description: Dayanıklı İşlevler sürümleri hakkında bilgi edinin.
 author: cgillum
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 12/23/2020
 ms.author: azfuncdf
-ms.openlocfilehash: d6662259494bba5747e01c4574186e9030112247
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c4d10bab06428295bbc8c5319bd47787d7b1fb34
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88719419"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763379"
 ---
 # <a name="durable-functions-versions-overview"></a>Dayanıklı İşlevler sürümlere genel bakış
 
@@ -24,7 +24,7 @@ Bu bölümde, sürüm 2. x ' de eklenen Dayanıklı İşlevler özellikleri aç�
 
 Dayanıklı İşlevler 2. x ' de yeni bir [varlık işlevleri](durable-functions-entities.md) kavramı sunuyoruz.
 
-Varlık işlevleri, *dayanıklı varlıklar*olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi*olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
+Varlık işlevleri, *dayanıklı varlıklar* olarak bilinen küçük durum parçalarını okumak ve güncelleştirmek için işlemleri tanımlar. Orchestrator işlevleri gibi, varlık işlevleri de özel tetikleyici türü, *varlık tetikleyicisi* olan işlevlerdir. Orchestrator işlevlerinin aksine, varlık işlevlerinin belirli kod kısıtlamaları yoktur. Varlık işlevleri, durumu denetim akışı aracılığıyla örtük olarak temsil etmek yerine, durumu açıkça da yönetir.
 
 Daha fazla bilgi için bkz. [dayanıklı varlıklar](durable-functions-entities.md) makalesi.
 
@@ -50,6 +50,8 @@ Dayanıklı İşlevler bağlamaları uzantısının en son 2. x sürümünü pro
 
 Dayanıklı İşlevler 2. x [Azure işlevleri Uzantı paketi](../functions-bindings-register.md#extension-bundles)'nin 2. x sürümünde kullanılabilir.
 
+Dayanıklı İşlevler 'de Python desteği için Dayanıklı İşlevler 2. x gerekir.
+
 Projenizdeki Uzantı paketi sürümünü güncelleştirmek için üzerinde host.jsaçın ve `extensionBundle` bölümü 2. x () kullanacak şekilde güncelleştirin `[2.*, 3.0.0)` .
 
 ```json
@@ -61,6 +63,9 @@ Projenizdeki Uzantı paketi sürümünü güncelleştirmek için üzerinde host.
     }
 }
 ```
+
+> [!NOTE]
+> Uzantı paketi sürümünü değiştirdikten sonra doğru şablonlar görüntülenmiyorsa Visual Studio Code, *Geliştirici: pencereyi yeniden yükle* komutunu çalıştırarak pencereyi yeniden yükleyin (Windows ve Linux 'ta <kbd>CTRL + r</kbd> , MacOS 'ta <kbd>Command + r</kbd> ).
 
 #### <a name="net"></a>.NET
 

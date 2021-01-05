@@ -3,16 +3,16 @@ title: Azure IoT Central sık sorulan sorular | Microsoft Docs
 description: Azure IoT Central sık sorulan sorular (SSS) ve yanıtlar
 author: dominicbetts
 ms.author: dobett
-ms.date: 09/23/2020
+ms.date: 12/20/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: cbe0dbe55f903c25556698a5d510bf9e67b408be
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: acabaf843f8acfe7bc0b5e9456dee09bde74bef7
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126729"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796049"
 ---
 # <a name="frequently-asked-questions-for-iot-central"></a>IoT Central için sık sorulan sorular
 
@@ -38,15 +38,15 @@ Bir operatör bir cihazı engellerse, durum önceki değerine döner, **kaydedil
 
 Cihaz durumu **cihazlar** sayfasında **onay bekliyor** ise, **otomatik onaylama** seçeneğinin devre dışı olduğu anlamına gelir:
 
-:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Engellenen cihazı gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-faq/auto-approve.png" alt-text="Otomatik onaylama seçeneği devre dışı olarak uygulamayı gösteren ekran görüntüsü.":::
 
-Bir işlecin, verileri göndermeye başlamadan önce açıkça bir cihaz onaylaması gerekir. **Cihazlar sayfasında el** ile kayıtlı değil, ancak geçerli kimlik bilgileriyle bağlantılı olarak cihaz durumu **onay bekliyor**olacaktır. İşleçler **onay** düğmesini kullanarak bu cihazları **aygıtlar** sayfasından onaylayabilir:
+Bir işlecin, verileri göndermeye başlamadan önce açıkça bir cihaz onaylaması gerekir. **Cihazlar sayfasında el** ile kayıtlı değil, ancak geçerli kimlik bilgileriyle bağlantılı olarak cihaz durumu **onay bekliyor** olacaktır. İşleçler **onay** düğmesini kullanarak bu cihazları **aygıtlar** sayfasından onaylayabilir:
 
-:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Engellenen cihazı gösteren ekran görüntüsü":::
+:::image type="content" source="media/howto-faq/approve-device.png" alt-text="Bir cihazın nasıl onaylanacağını gösteren ekran görüntüsü":::
 
 **Nasıl yaparım? cihazı bir cihaz şablonuyla ilişkilendirsin mi?**
 
-Cihaz durumu **ilişkilendirilmemiş**ise, IoT Central bağlanan cihazın ilişkili bir cihaz şablonu olmadığı anlamına gelir. Bu durum genellikle aşağıdaki senaryolarda meydana gelir:
+Cihaz durumu **ilişkilendirilmemiş** ise, IoT Central bağlanan cihazın ilişkili bir cihaz şablonu olmadığı anlamına gelir. Bu durum genellikle aşağıdaki senaryolarda meydana gelir:
 
 - Cihaz şablonunu belirtmeden **cihazlar** sayfasında **içeri aktar** kullanılarak bir cihaz kümesi eklenir.
 - Cihaz şablonunu belirtmeden **cihazlar** sayfasında el ile bir cihaz kaydedildi. Ardından cihaz geçerli kimlik bilgileriyle bağlanır.  

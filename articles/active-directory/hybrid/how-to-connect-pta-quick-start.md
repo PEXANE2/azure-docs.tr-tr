@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31bdfc7e3eca2a2678b75b80973a1680448737d1
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
+ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507685"
+ms.lasthandoff: 12/27/2020
+ms.locfileid: "97792441"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory geçişli kimlik doğrulaması: hızlı başlangıç
 
@@ -51,7 +51,7 @@ Aşağıdaki önkoşulların yerinde olduğundan emin olun.
 
 ### <a name="in-your-on-premises-environment"></a>Şirket içi ortamınızda
 
-1. Azure AD Connect çalıştırmak için Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu belirler. Henüz etkinleştirilmemişse, [sunucuda TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)' ı etkinleştirin. Parolasını doğrulamanız gereken kullanıcılarla aynı Active Directory ormanına ekleyin.
+1. Azure AD Connect çalıştırmak için Windows Server 2012 R2 veya üstünü çalıştıran bir sunucu belirler. Henüz etkinleştirilmemişse, [sunucuda TLS 1,2](./how-to-connect-install-prerequisites.md#enable-tls-12-for-azure-ad-connect)' ı etkinleştirin. Parolasını doğrulamanız gereken kullanıcılarla aynı Active Directory ormanına ekleyin. Windows Server Core sürümlerine Pass-Through kimlik doğrulama Aracısı yüklemesinin desteklenmediğini not edilmelidir. 
 2. Önceki adımda tanımlanan sunucuya [Azure AD Connect en son sürümünü](https://www.microsoft.com/download/details.aspx?id=47594) yükler. Zaten Azure AD Connect çalışıyorsa, sürümün 1.1.750.0 veya üzeri olduğundan emin olun.
 
     >[!NOTE]

@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 334e0c745257354d9548a6f9c8cee4d43fa8da6d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
+ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744746"
+ms.lasthandoff: 12/24/2020
+ms.locfileid: "97763549"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure sanal makine ölçek kümesi otomatik işletim sistemi görüntüsü yükseltmeleri
 
@@ -45,6 +45,9 @@ Yükseltme işlemi aşağıdaki gibi kullanılabilir:
 
 Ölçek kümesi işletim sistemi yükseltme Orchestrator, her toplu işi yükseltmeden önce tüm ölçek kümesi sistem durumunu denetler. Toplu işi yükseltirken, ölçek kümesi örneklerinizin sistem durumunu etkileyebilecek diğer eşzamanlı planlı veya planlanmamış bakım etkinlikleri olabilir. Bu gibi durumlarda, ölçek kümesinin örneklerinin %20 ' si sağlıksız hale gelirse, ölçek kümesi yükseltmesi geçerli toplu işin sonunda duraklar.
 
+> [!NOTE]
+>Otomatik işletim sistemi yükseltmesi, ölçek kümesindeki başvuru görüntüsü SKU 'sunu yükseltmez. SKU 'Yu (Ubuntu 16,04-LTS ile 18,04-LTS) değiştirmek için, [Ölçek kümesi modelini](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) doğrudan Istenen görüntü SKU 'su ile güncelleştirmeniz gerekir. Görüntü yayımcısı ve teklif, var olan bir ölçek kümesi için değiştirilemez.  
+
 ## <a name="supported-os-images"></a>Desteklenen işletim sistemi görüntüleri
 Şu anda yalnızca belirli işletim sistemi platformu görüntüleri destekleniyor. Ölçek kümesi, [paylaşılan görüntü Galerisi](shared-image-galleries.md)aracılığıyla özel görüntüler kullanıyorsa, özel görüntüler [desteklenir](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images) .
 
@@ -54,16 +57,15 @@ Aşağıdaki platform SKU 'Ları Şu anda desteklenmektedir (ve daha fazla düze
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18,04-LTS          |
-| Standart dışı dalga (OpenLogic)  | CentOS        | 7,5                |
-| CoreOS                  | CoreOS        | Dengeli             |
-| Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-veri merkezi    |
-| Microsoft Corporation   | WindowsServer | 2016-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2016-veri merkezi-kapsayıcılar |
-| Microsoft Corporation   | WindowsServer | 2019-veri merkezi |
-| Microsoft Corporation   | WindowsServer | 2019-Datacenter-Smalldisk |
-| Microsoft Corporation   | WindowsServer | 2019-veri merkezi-kapsayıcılar |
-| Microsoft Corporation   | WindowsServer | Datacenter-Core-1903--containers-smalldisk |
+| OpenLogic               | CentOS        | 7,5                |
+| MicrosoftWindowsServer  | WindowsServer | 2012-R2-Datacenter |
+| MicrosoftWindowsServer  | WindowsServer | 2016-veri merkezi    |
+| MicrosoftWindowsServer  | WindowsServer | 2016-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2016-veri merkezi-kapsayıcılar |
+| MicrosoftWindowsServer  | WindowsServer | 2019-veri merkezi |
+| MicrosoftWindowsServer  | WindowsServer | 2019-Datacenter-Smalldisk |
+| MicrosoftWindowsServer  | WindowsServer | 2019-veri merkezi-kapsayıcılar |
+| MicrosoftWindowsServer  | WindowsServer | Datacenter-Core-1903--containers-smalldisk |
 
 
 ## <a name="requirements-for-configuring-automatic-os-image-upgrade"></a>Otomatik işletim sistemi görüntüsünü yükseltmeyi yapılandırma gereksinimleri

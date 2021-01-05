@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 9a96da607ceea5a6d5cb6ef02df5a9a4db24562e
+ms.sourcegitcommit: e8bd58dbcfe0eae45979d86e071778b9aec40b6c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400582"
+ms.lasthandoff: 12/25/2020
+ms.locfileid: "97770970"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Yönetilen Örneği kaynak sınırlarına genel bakış
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,7 +84,7 @@ SQL yönetilen örneği iki hizmet katmanına sahiptir: [genel amaçlı](../data
 | En fazla oturum sayısı | 30000 | 30000 |
 | Maksimum eş zamanlı çalışan (istek) | 4\. Nesil: 210 * sanal çekirdek sayısı + 800<br>5\. Nesil: 105 * sanal çekirdek sayısı + 800 | 4\. Nesil: 210 * sanal çekirdek sayısı + 800<br>5\. Nesil: 105 * sanal çekirdek sayısı + 800 |
 | [Salt okuma çoğaltmaları](../database/read-scale-out.md) | 0 | 1 (fiyata dahildir) |
-| İşlem yalıtımı | 5. nesil<br/>-80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|5. nesil<br/>-60, 64, 80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|
+| İşlem yalıtımı | Genel Amaçlı örnekleri diğer örneklerle fiziksel donanımı paylaşaolabileceğinden 5. nesil desteklenmez<br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|5. nesil<br/>-40, 64, 80 sanal çekirdekler için desteklenir<br/>-diğer boyutlar için desteklenmez<br/><br/>Kullanımdan kaldırılması nedeniyle 4. nesil desteklenmiyor|
 
 
 Birkaç ek dikkat edin: 
@@ -150,7 +150,7 @@ Aşağıdaki tabloda desteklenen Abonelik türleri için **varsayılan bölgesel
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional ve MSDN Platformları|2|32|
 
-\* Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek birimi. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına** eşit veya daha düşük olmalıdır.
+\* Dağıtımları planlama bölümünde, lütfen İş Açısından Kritik (BC) hizmet katmanının dört (4) kat daha fazla sanal çekirdek kapasitesi Genel Amaçlı (GP) hizmet katmanından gerektirdiğini göz önünde bulundurun. Örneğin: 1 GP vCore = 1 sanal çekirdek birim ve 1 BC sanal çekirdek = 4 sanal çekirdek. Tüketim analizinizi varsayılan sınırlara karşı basitleştirmek için, SQL yönetilen örneğinin dağıtıldığı bölgedeki tüm alt ağlarda vCore birimlerini özetleyin ve sonuçları abonelik türü için örnek birim sınırlarıyla karşılaştırın. Bir bölgedeki her abonelik için **en fazla vCore birimi** sınırı geçerlidir. Birden çok alt ağ arasında dağıtılan tüm sanal çekirdekler toplamı, **en fazla sanal çekirdek birimi sayısına** eşit veya daha düşük olmalıdır.
 
 \*\* Daha büyük alt ağ ve sanal çekirdek limitleri şu bölgelerde kullanılabilir: Avustralya Doğu, Doğu ABD, Doğu ABD 2, Kuzey Avrupa, Orta Güney ABD, Güneydoğu Asya, UK Güney, Batı Avrupa, Batı ABD 2.
 
