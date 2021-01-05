@@ -2,13 +2,13 @@
 title: Birden çok kaynak örneğini dağıtma
 description: Kaynak türünü birçok kez dağıtmak için bir Azure Resource Manager şablonunda kopyalama işlemi ve dizileri (ARM şablonu) kullanın.
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: 7a894ee6a31a43dd8da3d84d88276824c6bbc9f7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 12/21/2020
+ms.openlocfilehash: c9bcb22ec53129520fd9574d0eb58b1e5777531e
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672840"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724502"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>ARM şablonlarındaki kaynak yinelemesi
 
@@ -189,43 +189,6 @@ Değeri, `batchSize` `count` Copy öğesindeki değerini aşamaz.
 
 `mode`Özelliği, varsayılan değer olan **paralel** olarak da kabul eder.
 
-## <a name="depend-on-resources-in-a-loop"></a>Bir döngüdeki kaynaklara bağlıdır
-
-Bir kaynağın, öğesini kullanarak başka bir kaynaktan sonra dağıtıldığını belirtirsiniz `dependsOn` . Bir döngüde kaynak koleksiyonuna bağlı olan bir kaynağı dağıtmak için, Bağımlıdson öğesinde kopyalama döngüsünün adını sağlayın. Aşağıdaki örnek, sanal makineyi dağıtmadan önce üç depolama hesabının nasıl dağıtılacağını göstermektedir. Tam sanal makine tanımı gösterilmez. Kopyalama öğesinin adı olarak ayarlanmış olduğuna `storagecopy` ve sanal makine Için Bağımlıdson öğesinin de olarak ayarlandığından emin olun `storagecopy` .
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2019-04-01",
-      "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
-      "location": "[resourceGroup().location]",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "copy": {
-        "name": "storagecopy",
-        "count": 3
-      },
-      "properties": {}
-    },
-    {
-      "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2015-06-15",
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
-      "dependsOn": ["storagecopy"],
-      ...
-    }
-  ],
-  "outputs": {}
-}
-```
-
 ## <a name="iteration-for-a-child-resource"></a>Alt kaynak için yineleme
 
 Alt kaynak için bir kopyalama döngüsü kullanamazsınız. Genellikle başka bir kaynak içinde iç içe olarak tanımladığınız bir kaynağın birden fazla örneğini oluşturmak için, bunun yerine o kaynağı en üst düzey kaynak olarak oluşturmanız gerekir. Üst kaynakla ilişkiyi tür ve ad özellikleri aracılığıyla tanımlarsınız.
@@ -281,16 +244,15 @@ Aşağıdaki örnek, uygulamayı göstermektedir:
 
 Aşağıdaki örneklerde bir kaynak veya özelliğin birden fazla örneğini oluşturmak için yaygın senaryolar gösterilmektedir.
 
-|Şablon  |Description  |
+|Şablon  |Açıklama  |
 |---------|---------|
 |[Depolama alanını Kopyala](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Adında Dizin numarası olan birden fazla depolama hesabı dağıtır. |
 |[Seri kopyalama depolaması](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Birden çok depolama hesabını zamanında dağıtır. Ad, Dizin numarasını içerir. |
 |[Depolamayı dizi ile kopyalama](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Birkaç depolama hesabı dağıtır. Ad, diziden bir değer içerir. |
-|[Değişken sayıda veri diskine sahip VM dağıtımı](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Bir sanal makine ile birden fazla veri diski dağıtır. |
-|[Çoklu güvenlik kuralları](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Bir ağ güvenlik grubuna birkaç güvenlik kuralı dağıtır. Bir parametreden güvenlik kuralları oluşturur. Parametresi için bkz. [birden çok NSG parametre dosyası](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
+* Bir kopyalama döngüsünde oluşturulan kaynaklardaki bağımlılıkları ayarlamak için bkz. [ARM şablonlarındaki kaynakları dağıtma sırasını tanımlama](define-resource-dependency.md).
 * Öğreticiye gitmek için bkz. [öğretici: ARM şablonlarıyla birden çok kaynak örneği oluşturma](template-tutorial-create-multiple-instances.md).
 * Kaynak kopyasını içeren Microsoft Learn bir modül için bkz. [GELIŞMIŞ ARM şablon özelliklerini kullanarak karmaşık bulut dağıtımlarını yönetme](/learn/modules/manage-deployments-advanced-arm-template-features/).
 * Copy öğesinin diğer kullanımları için bkz.:

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b6ec9d7035194efc471fc06befad9822c8684a5d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685588"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740683"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Azure Machine Learning veri kümeleriyle eğitme
 
@@ -26,7 +26,7 @@ Bu makalede, eğitim denemeleri [Azure Machine Learning veri kümeleriyle](/pyth
 
 Azure Machine Learning veri kümeleri, [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [hyperdrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) ve [Azure Machine Learning işlem hatları](how-to-create-your-first-pipeline.md)gibi Azure Machine Learning eğitim işlevleriyle sorunsuz bir tümleştirme sağlar.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Veri kümeleri oluşturup eğitmeniz için şunlar gerekir:
 
@@ -220,6 +220,7 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+
 ## <a name="directly-access-datasets-in-your-script"></a>Betikinizdeki veri kümelerine doğrudan erişin
 
 Kayıtlı veri kümelerine, Azure Machine Learning işlem gibi işlem kümelerinde hem yerel olarak hem de uzaktan erişilebilir. Kayıtlı veri kümenize denemeleri üzerinden erişmek için aşağıdaki kodu kullanarak çalışma alanınıza ve kayıtlı veri kümesine ad ile erişin. Varsayılan olarak, [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) sınıfındaki yöntemi, `Dataset` çalışma alanına kayıtlı veri kümesinin en son sürümünü döndürür.
@@ -255,7 +256,34 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 ## <a name="notebook-examples"></a>Not defteri örnekleri
 
 + [Veri kümesi Not defterleri](https://aka.ms/dataset-tutorial) bu makaledeki kavramları gösterir ve genişletir.
-+ Bkz. ML işlem hatlarında [parametize veri kümelerini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)öğrenin.
++ Bkz. ML işlem hatlarında [parametrize veri kümelerini](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)öğrenin.
+
+## <a name="troubleshooting"></a>Sorun giderme
+
+* **DataSet başlatılamadı: bağlama noktasının hazır olması beklenirken zaman aşımı oluştu**: 
+  * Herhangi bir giden [ağ güvenlik grubu](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) kuralına sahip değilseniz ve `azureml-sdk>=1.12.0` `azureml-dataset-runtime` onun bağımlılıklarını, belirli bir alt sürüm için en son olacak şekilde güncelleştirebilir veya bir çalıştırmada kullanıyorsanız, bu düzeltme ile en son düzeltme ekine sahip olması için ortamınızı yeniden oluşturun. 
+  * Kullanıyorsanız `azureml-sdk<1.12.0` , en son sürüme yükseltin.
+  * Giden NSG kurallarınız varsa, hizmet etiketi için tüm trafiğe izin veren bir giden kuralı olduğundan emin olun `AzureResourceMonitor` .
+
+### <a name="overloaded-azurefile-storage"></a>Aşırı yüklenmiş AzureFile depolama
+
+Bir hata alırsanız `Unable to upload project files to working directory in AzureFile because the storage is overloaded` , aşağıdaki geçici çözümleri uygulayın.
+
+Veri aktarımı gibi diğer iş yükleri için dosya paylaşma 'yı kullanıyorsanız, dosya paylaşımının çalıştırmaları için kullanılabilmesi için blob 'ları kullanmak, bu nedenle söz konusu çalışma. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.
+
+### <a name="passing-data-as-input"></a>Verileri giriş olarak geçirme
+
+*  **TypeError: Fılenotfound: böyle bir dosya veya dizin yok**: sağladığınız dosya yolu dosyanın bulunduğu yere değilse bu hata oluşur. Dosyaya başvurduğunuzdan emin olmanız gerekir. bu şekilde, veri kümenizi işlem Hedefinizdeki bağladığınız konum ile tutarlıdır. Belirleyici bir durum sağlamak için, bir veri kümesini bir işlem hedefine bağlamak için soyut yolun kullanılmasını öneririz. Örneğin, aşağıdaki kodda, veri kümesini işlem hedefinin FileSystem kökünün altına bağlamamız gerekir `/tmp` . 
+    
+    ```python
+    # Note the leading / in '/tmp/dataset'
+    script_params = {
+        '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+    } 
+    ```
+
+    Önde gelen eğik çizgi '/' dahil değilseniz, `/mnt/batch/.../tmp/dataset` veri kümesinin bağlanmasını istediğiniz yeri belirtmek için işlem hedefi üzerinde çalışma dizinini (.) ön eki uygulamanız gerekir.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447325"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739595"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning çalışma alanları oluşturma ve yönetme 
 
@@ -31,6 +31,8 @@ Gereksinimleriniz değiştikçe veya Otomasyon artışı için gereksinimler de�
 ## <a name="limitations"></a>Sınırlamalar
 
 [!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
+Varsayılan olarak, bir çalışma alanı oluşturmak Azure Container Registry (ACR) de oluşturur.  ACR Şu anda kaynak grubu adlarında Unicode karakterleri desteklemediğinden, bu karakterleri içermeyen bir kaynak grubu kullanın.
 
 ## <a name="create-a-workspace"></a>Çalışma alanı oluşturma
 
@@ -138,7 +140,7 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
    | Depolama hesabı | Çalışma alanı için varsayılan depolama hesabı. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Key Vault | Çalışma alanı tarafından kullanılan Azure Key Vault. Varsayılan olarak, yeni bir tane oluşturulur. |
    | Application Insights | Çalışma alanı için Application Insights örneği. Varsayılan olarak, yeni bir tane oluşturulur. |
-   | Container Registry | Çalışma alanı için Azure Container Registry. Varsayılan olarak, çalışma alanı _için başlangıçta yeni bir tane oluşturulmaz._ Bunun yerine, eğitim veya dağıtım sırasında bir Docker görüntüsü oluştururken ihtiyacınız olduğunda oluşturulur. |
+   | Container Kayıt Defteri | Çalışma alanı için Azure Container Registry. Varsayılan olarak, çalışma alanı _için başlangıçta yeni bir tane oluşturulmaz._ Bunun yerine, eğitim veya dağıtım sırasında bir Docker görüntüsü oluştururken ihtiyacınız olduğunda oluşturulur. |
 
    :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Çalışma alanınızı yapılandırın.":::
 
@@ -154,6 +156,8 @@ Aboneliğinize erişim konusunda sorun yaşıyorsanız, bkz. [Azure Machine Lear
  1. Yeni çalışma alanını görüntülemek için **Kaynağa Git**' i seçin.
  
 ---
+
+
 
 ### <a name="networking"></a>Ağ  
 
@@ -368,6 +372,16 @@ Varsayılan eylem, çalışma alanı, yani kapsayıcı kayıt defteri, depolama 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
 ## <a name="troubleshooting"></a>Sorun giderme
+
+* **Azure Machine Learning Studio 'Da desteklenen tarayıcılar**: işletim sisteminizle uyumlu en güncel tarayıcıyı kullanmanızı öneririz. Aşağıdaki tarayıcılar desteklenir:
+  * Microsoft Edge (yeni Microsoft Edge, en son sürüm. Microsoft Edge eski değil)
+  * Safari (en so sürüm, yalnızca Mac)
+  * Chrome (en son sürüm)
+  * Firefox (en son sürüm)
+
+* **Azure Portal**: 
+  * SDK 'dan veya Azure portal bir Share bağlantısından çalışma alanınıza doğrudan giderseniz, içindeki abonelik bilgilerine sahip standart **genel bakış** sayfasını görüntüleyemezsiniz. Bu senaryoda, başka bir çalışma alanına geçiş yapamazsınız. Başka bir çalışma alanını görüntülemek için doğrudan [Azure Machine Learning Studio](https://ml.azure.com) 'ya gidin ve çalışma alanı adını arayın.
+  * Tüm varlıklar (veri kümeleri, denemeleri, hesaplar vb.) yalnızca [Azure Machine Learning Studio](https://ml.azure.com)'da kullanılabilir. Azure portal mevcut *değildir* .
 
 ### <a name="resource-provider-errors"></a>Kaynak sağlayıcısı hataları
 

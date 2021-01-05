@@ -1,23 +1,23 @@
 ---
 title: Azure Data Lake Storage 1. ile performans ayarlama-fırtınası
 description: Yaygın sorunları giderme dahil olmak üzere bir Azure fırtınası topolojisinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
-ms.author: stewu
-ms.openlocfilehash: 68f30079d85e2064b92718c65b38dbb5069d810b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.author: twooley
+ms.openlocfilehash: 95619c75d332ec1bf68af97fc3dddbc67b6706ed
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92101656"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725046"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight ve Azure Data Lake Storage 1. için performans ayarlama Kılavuzu
 
 Azure fırtınası topolojisinin performansını ayarladığınızda göz önünde bulundurmanız gereken faktörleri anlayın. Örneğin, Spog 'ler ve cıvatalar tarafından gerçekleştirilen işin özelliklerinin anlaşılması önemlidir (çalışmanın g/ç veya bellek yoğun olup olmadığı). Bu makalede, yaygın sorunları giderme dahil olmak üzere bir dizi performans ayarlama Kılavuzu ele alınmaktadır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md).
@@ -126,7 +126,7 @@ Data Lake Storage 1. tarafından belirtilen bant genişliği sınırlarına ula�
 
 Kısıtlanıyor olup olmadığınızı denetlemek için istemci tarafında hata ayıklama günlüğünü etkinleştirin:
 
-1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de ** &lt; kök düzeyi = "info" &gt; ** öğesini ** &lt; root Level = "Debug" &gt; **olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
+1. **Ambarı**  >  **fırtınası**  >  **yapılandırması**  >  **Gelişmiş fırtınası-çalışan-Log4J**' de **&lt; kök düzeyi = "info" &gt;** öğesini **&lt; root Level = "Debug" &gt;** olarak değiştirin. Yapılandırmanın etkili olması için tüm düğümleri/hizmeti yeniden başlatın.
 2. Data Lake Storage 1. azaltma özel durumları için çalışan düğümlerdeki fırtınası topolojisi günlüklerini (/var/log/Storm/Worker-Artifacts/ &lt; topologyıname &gt; / &lt; Port &gt; /Worker.log altında) izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar

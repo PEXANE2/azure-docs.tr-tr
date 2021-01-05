@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 12/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: f273902aee47a22bcf29bdf507f617efe242f5a4
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: dd7a336df5ff187b874876db32abb45915e00f3b
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505146"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739391"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 
@@ -314,11 +314,11 @@ Model dağıtımı sırasında hizmet durumu değişikliğini tam olarak dağıt
 
 Aşağıdaki tabloda farklı hizmet durumları açıklanmaktadır:
 
-| Web hizmeti durumu | Description | Son durum?
+| Web hizmeti durumu | Açıklama | Son durum?
 | ----- | ----- | ----- |
-| Kta | Hizmet, dağıtım sürecinde. | No |
-| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | No |
-| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | No |
+| Kta | Hizmet, dağıtım sürecinde. | Hayır |
+| Uygun Değil | Hizmet dağıtıldı, ancak şu anda ulaşılamaz durumda.  | Hayır |
+| Unschedulable | Kaynak eksikliği nedeniyle hizmet şu anda dağıtılamıyor. | Hayır |
 | Başarısız | Hizmet bir hata veya kilitlenme nedeniyle dağıtılamadı. | Yes |
 | Sağlam | Hizmet sağlıklı ve uç nokta kullanılabilir. | Yes |
 
@@ -349,7 +349,6 @@ Kayıtlı bir modeli silmek için kullanın `model.delete()` .
 Daha fazla bilgi için bkz. [WebService. Delete ()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) ve [model. Delete ()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--)belgeleri.
 
 ---
-
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

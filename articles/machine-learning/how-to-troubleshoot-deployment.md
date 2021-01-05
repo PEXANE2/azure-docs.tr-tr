@@ -1,7 +1,7 @@
 ---
-title: Uzak Web hizmeti dağıtımı sorunlarını giderme
+title: Uzak model dağıtımı sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Azure Kubernetes hizmeti ve Azure Container Instances ile ilgili genel Docker dağıtım hatalarını çözmenin, çözme ve sorunlarını giderme hakkında bilgi edinin.
+description: Azure Kubernetes hizmeti ve Azure Container Instances ile ilgili bazı yaygın Docker dağıtım hatalarını çözmenin, çözme ve sorunlarını giderme hakkında bilgi edinin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.reviewer: jmartens
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: contperf-fy20q4, devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 92cd70e864ae0490ce3f9e7435d9518241f93c8e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 4224e301d6410fc97da1f98cd0dd9577c6341cd3
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031513"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740632"
 ---
-# <a name="troubleshoot-model-deployment"></a>Model dağıtımı sorunlarını giderme
+# <a name="troubleshooting-remote-model-deployment"></a>Uzak model dağıtımı sorunlarını giderme 
 
-Azure Machine Learning kullanarak Azure Container Instances (ACI) ve Azure Kubernetes hizmeti (AKS) ile genel uzak Docker dağıtım hatalarını nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+Azure Machine Learning kullanarak bir modeli Azure Container Instances (ACI) ve Azure Kubernetes hizmeti 'ne (AKS) dağıttığınızda karşılaşabileceğiniz yaygın hataları nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -107,7 +107,7 @@ Günlüğe kaydetme düzeyinin hata ayıklama olarak ayarlanması ek bilgilerin 
 
 ## <a name="function-fails-runinput_data"></a>İşlev başarısız: çalıştırma (input_data)
 
-Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örneğin:
+Hizmet başarıyla dağıtılırsa ancak Puanlama uç noktasına veri gönderdiğinizde çöktüğünde, `run(input_data)` bunun yerine ayrıntılı hata mesajı döndürmesi için işlevinize hata yakalama ifadesini ekleyebilirsiniz. Örnek:
 
 ```python
 def run(input_data):
@@ -177,6 +177,16 @@ Azure Kubernetes hizmet dağıtımları otomatik ölçeklendirmeyi destekler, bu
 504 durum kodu, isteğin zaman aşımına uğradığını gösterir. Varsayılan zaman aşımı 1 dakikadır.
 
 Gereksiz çağrıları kaldırmak için score.py değiştirerek, zaman aşımını artırabilir veya hizmeti hızlandırmayı deneyebilirsiniz. Bu eylemler sorunu düzeltmez, score.py dosyasında hata ayıklamak için bu makaledeki bilgileri kullanın. Kod, yanıt vermeyen bir durumda veya sonsuz bir döngüde olabilir.
+
+## <a name="other-error-messages"></a>Diğer hata iletileri
+
+Aşağıdaki hatalar için bu eylemleri gerçekleştirin:
+
+|Hata  | Çözüm  |
+|---------|---------|
+|Web hizmeti dağıtımında görüntü oluşturma hatası     |  Görüntü yapılandırması için Conda dosyasına bir zar bağımlılığı olarak "pynacl = = 1.2.1" ekleyin       |
+|`['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`     |   Dağıtımınızda kullanılan VM 'Ler için SKU 'YU daha fazla belleğe sahip olan bir şekilde değiştirin. |
+|FPGA hatası     |  FPGA kotası istenene ve onaylanana kadar, Fpg' de modeller dağıtacaksınız. Erişim istemek için kota isteği formunu doldurun: https://aka.ms/aml-real-time-ai       |
 
 ## <a name="advanced-debugging"></a>Gelişmiş hata ayıklama
 

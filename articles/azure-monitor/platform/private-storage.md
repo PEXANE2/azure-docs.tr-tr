@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 0a2439f0ed18cf93691a1d0389e049b1b7993d93
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095313"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732075"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Izleyici 'de müşteri tarafından yönetilen depolama hesaplarını kullanma Log Analytics
 
@@ -32,11 +32,11 @@ Desteklenen veri türleri:
 * IIS Günlükleri
 
 ## <a name="using-private-links"></a>Özel bağlantıları kullanma
-Azure Izleyici kaynaklarına bağlanmak için özel bağlantılar kullanıldığında, müşteri tarafından yönetilen depolama hesapları bazı kullanım durumlarında gereklidir. Bu tür bir durum, özel günlüklerin veya IIS günlüklerinin alımı olur. Bu veri türleri önce bir ara Azure depolama hesabına Bloblar olarak yüklenir ve ardından bir çalışma alanına alınır. Benzer şekilde, bazı Azure Izleyici çözümleri, Azure Güvenlik Merkezi çözümü tarafından kullanılan Watson döküm dosyaları gibi büyük dosyaları depolamak için depolama hesaplarını kullanabilir. 
+Azure Izleyici kaynaklarına bağlanmak için özel bağlantılar kullanıldığında, müşteri tarafından yönetilen depolama hesapları bazı kullanım durumlarında gereklidir. Bu tür bir durum, özel günlüklerin veya IIS günlüklerinin alımı olur. Bu veri türleri önce bir ara Azure depolama hesabına Bloblar olarak yüklenir ve ardından bir çalışma alanına alınır. Benzer şekilde, bazı Azure Izleyici çözümleri, dosyaları karşıya yüklemek gerekebilecek Azure Güvenlik Merkezi (ASC) gibi büyük dosyaları depolamak için depolama hesaplarını kullanabilir. 
 
 ##### <a name="private-link-scenarios-that-require-a-customer-managed-storage"></a>Müşteri tarafından yönetilen depolama gerektiren özel bağlantı senaryoları
 * Özel günlüklerin ve IIS günlüklerinin alımı
-* ASC çözümünün Watson döküm dosyalarını toplamasına izin verme
+* ASC çözümünün dosyaları karşıya yüklemesine izin verme
 
 ### <a name="how-to-use-a-customer-managed-storage-account-over-a-private-link"></a>Özel bir bağlantı üzerinden müşteri tarafından yönetilen depolama hesabı kullanma
 ##### <a name="workspace-requirements"></a>Çalışma alanı gereksinimleri
@@ -45,13 +45,14 @@ Azure Izleyici 'ye bir özel bağlantı üzerinden bağlanılırken, Log Analyti
 Depolama hesabının özel bağlantısına başarıyla bağlanması için şunları yapmanız gerekir:
 * VNet 'iniz veya eşlenmiş bir ağ üzerinde yer alır ve özel bir bağlantı üzerinden sanal ağınıza bağlı olun. Bu, VNet 'teki aracıların depolama hesabına Günlükler göndermesini sağlar.
 * Bağlandığı çalışma alanıyla aynı bölgede yer alır.
-* Azure Izleyici 'nin depolama hesabına erişmesine izin verin. Yalnızca belirli ağların depolama hesabınıza erişmesine izin vermeyi seçtiyseniz, bu özel duruma de izin vermeniz gerekir: "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine izin ver". Bu, Log Analytics bu depolama hesabına alınan günlükleri okumasına olanak tanır.
+* Azure Izleyici 'nin depolama hesabına erişmesine izin verin. Depolama hesabınıza yalnızca ağ seçme erişimine izin vermeyi seçtiyseniz, "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver" özel durumunu seçmeniz gerekir.
+![Depolama hesabı güveni MS Services resmi](./media/private-storage/storage-trust.png)
 * Çalışma alanınız diğer ağlardan gelen trafiği de işlediğinde, depolama hesabını ilgili ağlardan/Internet 'ten gelen trafiğe izin verecek şekilde yapılandırmanız gerekir.
 
 ##### <a name="link-your-storage-account-to-a-log-analytics-workspace"></a>Depolama hesabınızı bir Log Analytics çalışma alanına bağlama
 [Azure CLI](/cli/azure/monitor/log-analytics/workspace/linked-storage) veya [REST API](/rest/api/loganalytics/linkedstorageaccounts)aracılığıyla depolama hesabınızı çalışma alanına bağlayabilirsiniz. Uygulanabilir dataSourceType değerleri:
 * CustomLogs: alma sırasında özel Günlükler ve IIS günlükleri için depolamayı kullanmak için.
-* AzureWatson – ASC (Azure Güvenlik Merkezi) çözümü tarafından karşıya yüklenen Watson döküm dosyalarını depolamayı kullanın. Saklama Yönetimi, bağlı bir depolama hesabını değiştirme ve depolama hesabı etkinliğinizi izleme hakkında daha fazla bilgi için bkz. [bağlı depolama hesaplarını yönetme](#managing-linked-storage-accounts). 
+* AzureWatson – ASC (Azure Güvenlik Merkezi) çözümü tarafından karşıya yüklenen dosyalar için depolamayı kullanın. Saklama Yönetimi, bağlı bir depolama hesabını değiştirme ve depolama hesabı etkinliğinizi izleme hakkında daha fazla bilgi için bkz. [bağlı depolama hesaplarını yönetme](#managing-linked-storage-accounts). 
 
 ## <a name="encrypting-data-with-cmk"></a>CMK ile verileri şifreleme
 Azure depolama, bir depolama hesabındaki bekleyen tüm verileri şifreler. Varsayılan olarak, verileri Microsoft tarafından yönetilen anahtarlarla (MMK) şifreler. Ancak Azure depolama, Azure Anahtar Kasası 'ndan, depolama verilerinizi şifrelemek için müşteri tarafından yönetilen bir anahtar (CMK) kullanmanıza olanak tanır. Kendi anahtarlarınızı Azure Key Vault içeri aktarabilir ya da anahtar oluşturmak için Azure Key Vault API 'Lerini kullanabilirsiniz.

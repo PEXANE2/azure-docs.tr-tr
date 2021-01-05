@@ -5,16 +5,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/22/2020
 ms.author: trbye
-ms.openlocfilehash: d97a1bf00d722414bedda4be79adc0c26d02c751
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc569050b78a5797808f2e2e000019ba516ba22e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81422158"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739251"
 ---
-## <a name="speech-modes"></a>Konuşma modları
-
-**LiDE**
+**Etkileşimli**
 - Komut ve denetim senaryolarına yöneliktir.
 - , Bir segment zaman aşımı değeri X ' i içerir.
 - Tanınan bir zaman sonunda hizmet, bu istek KIMLIĞINDEN ses işlemeyi durduruyor ve sonra da sona erecektir. Bağlantı kapalı değil.
@@ -34,4 +32,4 @@ ms.locfileid: "81422158"
 **Etme**
 - Kullanıcıların konuşmayı konuşarak noktalama işaretleri belirlemesine izin verir.
 - `EnableDictation` `SpeechConfig` TANıMAYı Başlatan API çağrısından bağımsız olarak nesne üzerinde belirtilerek bilgi olarak çağrılır.
-- 1<sup>St</sup> taraf kümesi `speech.fragment` , 3. taraf ileti döndüren ara sonuçlara yönelik<sup>rd</sup> iletileri döndürür `speech.hypothesis` .
+- 1<sup>St</sup> taraf kümesi `speech.fragment` , 3. taraf ileti döndüren ara sonuçlara yönelik<sup></sup> iletileri döndürür `speech.hypothesis` .

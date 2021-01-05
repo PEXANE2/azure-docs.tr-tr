@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: c304354f378708c43c25ef8b92b7b80b37ac03af
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 19370eee9d9fa524de9beeaa85a15521580bd8e6
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563118"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707699"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ izleme çözümleri
 
@@ -104,6 +104,21 @@ Application Insights 'a Application Gateway kaynağınız içindeki içgörüler
 
 [![Application Gateway çalışma kitabının ekran görüntüsü](media/azure-networking-analytics/azure-appgw-workbook.png)](media/azure-networking-analytics/application-gateway-workbook.png#lightbox)
 
+### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Izleyici Network Insights çalışma kitabıyla yeni yetenekler
+
+> [!NOTE]
+> Azure Monitor Insights çalışma kitabıyla ilişkili ek maliyet yoktur. Log Analytics çalışma alanı kullanım başına faturalandırılmaya devam edecektir.
+
+Network Insights çalışma kitabı, Azure Izleyici 'nin en son özelliklerini ve aşağıdakileri de içeren Log Analytics yararlanmanızı sağlar:
+
+* Hem [ölçüm](../insights/network-insights-overview.md#resource-health-and-metrics) hem de günlük verileri ile izleme ve sorun giderme için merkezi konsol.
+
+* Özel zengin [görselleştirmeler](../platform/workbooks-overview.md#visualizations)oluşturmayı desteklemek için esnek tuval.
+
+* [Çalışma kitabı şablonlarını](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) daha geniş bir topluluk ile kullanabilme ve paylaşma özelliği.
+
+Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi edinmek için kullanıma alma [çalışma kitapları-genel bakış](../platform/workbooks-overview.md)
+
 ## <a name="migrating-from-azure-gateway-analytics-solution-to-azure-monitor-workbooks"></a>Azure ağ geçidi Analizi çözümünden Azure Izleyici çalışma kitaplarına geçiş
 
 > [!NOTE]
@@ -119,21 +134,6 @@ Application Insights 'a Application Gateway kaynağınız içindeki içgörüler
 3. Tüm ölçüm ve günlük öngörülerinizi görebildikten sonra, çalışma alanınızdan Azure Gateway Analytics çözümünü temizlemek için çözüm kaynağı sayfasından çözümü silebilirsiniz.
 
 [![Azure Application Gateway Analytics çözümü için silme seçeneğinin ekran görüntüsü.](media/azure-networking-analytics/azure-appgw-analytics-delete.png)](media/azure-networking-analytics/application-gateway-analytics-delete.png#lightbox)
-
-### <a name="new-capabilities-with-azure-monitor-network-insights-workbook"></a>Azure Izleyici Network Insights çalışma kitabıyla yeni yetenekler
-
-> [!NOTE]
-> Azure Monitor Insights çalışma kitabıyla ilişkili ek maliyet yoktur. Log Analytics çalışma alanı kullanım başına faturalandırılmaya devam edecektir.
-
-Network Insights çalışma kitabı, Azure Izleyici 'nin en son özelliklerini ve aşağıdakileri de içeren Log Analytics yararlanmanızı sağlar:
-
-* Hem [ölçüm](../insights/network-insights-overview.md#resource-health-and-metrics) hem de günlük verileri ile izleme ve sorun giderme için merkezi konsol.
-
-* Özel zengin [görselleştirmeler](../platform/workbooks-overview.md#visualizations)oluşturmayı desteklemek için esnek tuval.
-
-* [Çalışma kitabı şablonlarını](../platform/workbooks-overview.md#workbooks-versus-workbook-templates) daha geniş bir topluluk ile kullanabilme ve paylaşma özelliği.
-
-Yeni çalışma kitabı çözümünün özellikleri hakkında daha fazla bilgi edinmek için kullanıma alma [çalışma kitapları-genel bakış](../platform/workbooks-overview.md)
 
 ## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Azure Izleyici 'de Azure ağ güvenlik grubu analizi çözümü
 

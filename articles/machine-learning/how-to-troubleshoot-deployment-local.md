@@ -1,7 +1,7 @@
 ---
-title: Web hizmeti dağıtımının yerel olarak sorunlarını giderme
+title: Yerel model dağıtımı sorunlarını giderme
 titleSuffix: Azure Machine Learning
-description: Ortak Azure Machine Learning Docker dağıtım hatalarını yerel olarak nasıl giderebileceğinizi, çözeceğinizi ve sorun gidermeyi öğrenin.
+description: Model dağıtım hatalarında sorun giderme sırasında bir yerel model dağıtımını ilk adım olarak deneyin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 01a5f600acf9542c5adabcdf2523a42ca44233af
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: a879a81ae2bcb4e659c69a801f7c299c10ab3d77
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680499"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740649"
 ---
-# <a name="troubleshoot-model-deployment-locally"></a>Model dağıtımının yerel olarak sorunlarını giderme
+# <a name="troubleshooting-with-a-local-model-deployment"></a>Yerel model dağıtımıyla ilgili sorunları giderme
 
-Ortak Azure Machine Learning Docker Web hizmeti dağıtım hatalarını yerel olarak nasıl giderebileceğinizi ve çözeceğinizi öğrenin.
+Azure Container Instances (ACI) veya Azure Kubernetes hizmeti (AKS) dağıtımı sorunlarını gidermeye yönelik bir ilk adım olarak yerel bir model dağıtımı deneyin.  Yerel bir Web hizmetinin kullanılması, yaygın Azure Machine Learning Docker Web hizmeti dağıtım hatalarını belirlemeyi ve düzeltmesini kolaylaştırır.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir **Azure aboneliği**. [Azure Machine Learning ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree)deneyin.
 * [Azure MACHINE LEARNING SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
@@ -33,8 +33,6 @@ Ortak Azure Machine Learning Docker Web hizmeti dağıtım hatalarını yerel ol
     Docker yüklemenizi doğrulamak için, `docker run hello-world` bir Terminal veya komut isteminden komutunu kullanın. Docker 'ı yükleme veya Docker hataları sorunlarını giderme hakkında bilgi için bkz. [Docker belgeleri](https://docs.docker.com/).
 
 ## <a name="debug-locally"></a>Yerel olarak hata ayıkla
-
-Bir modeli ACI veya AKS 'e dağıtırken sorun yaşıyorsanız, yerel bir Web hizmeti olarak dağıtın. Yerel web hizmetinin kullanılması sorunları gidermeyi kolaylaştırır.
 
 Bir çalıştırılabilir örnek bulmak için [Machinelearningnotebook](https://github.com/Azure/MachineLearningNotebooks) deposunda örnek bir [Yerel dağıtım Not defteri](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local.ipynb) bulabilirsiniz.
 

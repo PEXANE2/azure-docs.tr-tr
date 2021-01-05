@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: a85619b4947808ba1c13df3c1543102eea7273fd
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: e8d0dcae81944d5799841c22093585b942934b79
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96853939"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732113"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Ağları Azure İzleyici'ye güvenle bağlamak için Azure Özel Bağlantı'yı kullanma
 
@@ -155,7 +155,7 @@ Azure Izleyici kaynaklarını (Log Analytics çalışma alanları ve Application
  
    d.    Doğrulama geçişine izin verin. 
  
-   e.    **Oluştur**’a tıklayın. 
+   e.    **Oluştur**'a tıklayın. 
 
     ![Create Private Endpoint2 Select ekran görüntüsü](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -188,9 +188,9 @@ Log Analytics aracısının çözüm paketlerini indirmesini sağlamak için, uy
 
 | Bulut ortamı | Aracı Kaynağı | Bağlantı noktaları | Yön |
 |:--|:--|:--|:--|
-|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Outbound
-|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Outbound
-|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Outbound
+|Azure Genel     | scadvisorcontent.blob.core.windows.net         | 443 | Giden
+|Azure Kamu | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Giden
+|Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Giden
 
 ## <a name="configure-application-insights"></a>Application Insights Yapılandır
 
@@ -215,9 +215,9 @@ Erişimin bu şekilde kısıtlanması yalnızca Application Insights kaynaktaki 
 
 ## <a name="use-apis-and-command-line"></a>API 'Leri ve komut satırını kullanma
 
-Azure Resource Manager şablonları ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
+Azure Resource Manager şablonları, REST ve komut satırı arabirimlerini kullanarak daha önce açıklanan işlemi otomatikleştirebilirsiniz.
 
-Özel bağlantı kapsamları oluşturup yönetmek için [az Monitor Private-link-Scope](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın. Bu komutu kullanarak kapsamlar oluşturabilir, Log Analytics çalışma alanlarını ve Application Insights bileşenlerini ilişkilendirebilir, Özel uç noktaları ekleyebilir/kaldırabilir/onaylayabilirsiniz.
+Özel bağlantı kapsamları oluşturup yönetmek için [REST API](https://docs.microsoft.com/rest/api/monitor/private%20link%20scopes%20(preview)) veya [Azure CLI (az Monitor Private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest)kullanın.
 
 Ağ erişimini yönetmek için, bayraklarını `[--ingestion-access {Disabled, Enabled}]` ve `[--query-access {Disabled, Enabled}]` [Log Analytics çalışma alanlarını](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) veya [Application Insights bileşenlerini](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest)kullanın.
 
@@ -252,7 +252,7 @@ Application Insights ve Log Analytics gibi Azure Izleyici portalı deneyimlerini
 
 ### <a name="programmatic-access"></a>Programlı erişim
 
-REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın **AzureResourceManager** içine ekleyin.  
+REST API, [CLI](/cli/azure/monitor?view=azure-cli-latest) veya PowerShell 'i özel ağlarda Azure izleyici ile kullanmak için,**AzureActiveDirectory** ve AzureResourceManager [hizmet etiketlerini](../../virtual-network/service-tags-overview.md)güvenlik duvarınızın  içine ekleyin.  
 
 Bu etiketlerin eklenmesi, Log Analytics çalışma alanlarını ve AI bileşenlerini sorgulama, oluşturma ve yönetme gibi eylemleri gerçekleştirmenize olanak tanır.
 

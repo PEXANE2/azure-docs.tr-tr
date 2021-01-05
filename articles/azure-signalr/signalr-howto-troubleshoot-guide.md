@@ -1,17 +1,17 @@
 ---
 title: Azure SignalR Hizmeti için sorun giderme kılavuzu
 description: Sık karşılaşılan sorunları nasıl giderebileceğinizi öğrenin
-author: YanJin
+author: yjin81
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 55ad9c90129a5d732f377ac1b6c905c14de319dc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 505176758e1dbba1d6bf262554568edd8a197a4d
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607434"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707682"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR hizmeti yaygın sorunları için sorun giderme kılavuzu
 
@@ -63,6 +63,8 @@ services.MapAzureSignalR(GetType().FullName, options =>
             });
 ```
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="tls-12-required"></a>TLS 1,2 gerekiyor
 
 ### <a name="possible-errors"></a>Olası hatalar:
@@ -104,11 +106,15 @@ Aşağıdaki kodu, başlangıç uygulamanıza ekleyin:
 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 ```
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="400-bad-request-returned-for-client-requests"></a>400 istemci istekleri için hatalı Istek döndürüldü
 
 ### <a name="root-cause"></a>Kök neden
 
 İstemci isteğinizin birden çok sorgu dizesine sahip olup olmadığını denetleyin `hub` . `hub` korunan bir sorgu parametresi olur ve hizmet sorguda birden fazla algıladığında, 400 oluşturur `hub` .
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="401-unauthorized-returned-for-client-requests"></a>İstemci istekleri için 401 Yetkisiz hatası döndürüldü
 
@@ -128,6 +134,8 @@ Güvenlik sorunları için genişletme TTL 'si önerilir. Bu 401 gerçekleştiğ
 
 İstemci bağlantılarını yeniden başlatma hakkında [buraya](#restart_connection) bakın.
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-client-requests"></a>İstemci istekleri için 404 döndürüldü
 
 Bir SignalR kalıcı bağlantısı için, önce `/negotiate` Azure SignalR hizmeti ' ne ve ardından Azure SignalR hizmetine gerçek bağlantı kurar.
@@ -138,9 +146,13 @@ Bir SignalR kalıcı bağlantısı için, önce `/negotiate` Azure SignalR hizme
 * 404 oluştuğunda isteğin URL 'sini kontrol edin. URL, Web uygulamanıza hedefleniyorsa ve buna benzer şekilde `{your_web_app}/hubs/{hubName}` , istemcinin olup olmadığını kontrol edin `SkipNegotiation` `true` . Azure SignalR kullanırken istemci, uygulama sunucusuna ilk kez odaklandığınızda yeniden yönlendirme URL 'sini alır. İstemci, Azure SignalR kullanırken **anlaşmayı atmamalıdır** .
 * Başka bir 404, bağlantı isteği çağrıldıktan sonra **5** saniyeden daha uzun süre işlendiği zaman oluşabilir `/negotiate` . İstemci isteğinin zaman damgasını denetleyin ve hizmete yönelik istekte yavaş bir yanıt varsa bize bir sorun açın.
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="404-returned-for-aspnet-signalrs-reconnect-request"></a>ASP.NET SignalR 'nin reconnect isteği için 404 döndürüldü
 
 ASP.NET SignalR için, [istemci bağlantısı düşerse](#client_connection_drop) `connectionId` bağlantıyı durdurmadan önce onu üç kez kullanarak yeniden bağlanır. `/reconnect` kalıcı bağlantıyı başarıyla yeniden kurmasına neden olan ağ aralıklı sorunları nedeniyle bağlantının bırakılmadığı konusunda yardımcı olabilir `/reconnect` . Diğer koşullarda, örneğin, yönlendirilmiş sunucu bağlantısı bırakılmadığı için istemci bağlantısı bırakılır veya SignalR hizmeti örnek yeniden başlatma/yük devretme/dağıtım gibi bazı iç hatalara sahip olduğundan bağlantı artık mevcut değildir, bu nedenle `/reconnect` geri döner `404` . Bu, üç kez için beklenen `/reconnect` ve daha sonra bağlantı duraklarının yeniden denenme davranışıdır. Bağlantı durdurulduğunda [bağlantı yeniden başlatma](#restart_connection) mantığını öneririz.
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="429-too-many-requests-returned-for-client-requests"></a>istemci istekleri için 429 (çok fazla Istek) döndürüldü
 
@@ -155,6 +167,8 @@ Bağlantılar hem istemci hem de sunucu bağlantılarını içerir. bağlantıla
 ### <a name="too-many-negotiate-requests-at-the-same-time"></a>Aynı anda çok fazla anlaşma isteği.
 
 Yeniden bağlanmadan önce rastgele bir gecikme önermesi önerilir, lütfen yeniden deneme örnekleri için [buraya](#restart_connection) bakın.
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>500: Azure SignalR hizmeti henüz bağlı değil, lütfen daha sonra yeniden deneyin.
 
@@ -215,6 +229,8 @@ SDK sürümü >= kullanırken `1.0.0` , aşağıdakileri öğesine ekleyerek izl
 
 <a name="client_connection_drop"></a>
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="client-connection-drops"></a>İstemci bağlantısı düşme
 
 İstemci Azure SignalR 'ye bağlıyken, istemci ve Azure SignalR arasındaki kalıcı bağlantı bazen farklı nedenlerle ortaya çıkabilir. Bu bölümde, böyle bir bağlantı bırakmaya neden olan çeşitli olanaklar açıklanmakta ve kök nedenin nasıl tanımlanacağına ilişkin yönergeler sunulmaktadır.
@@ -240,6 +256,7 @@ SDK sürümü >= kullanırken `1.0.0` , aşağıdakileri öğesine ekleyerek izl
 2. App Server 'ın yeniden başlatılıp başlatılmayacağını görmek için uygulama sunucusu tarafında olay günlüğünü denetleyin
 3. Bize zaman çerçevesini sağlamaktan bir sorun oluşturun ve kaynak adını bize e-posta ile gönderin
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="client-connection-increases-constantly"></a>İstemci bağlantısı sürekli artar
 
@@ -295,6 +312,8 @@ Bu sorun genellikle, birisi Işlev sınıfınıza statik üye yapmak yerine Azur
 
 <a name="server_connection_drop"></a>
 
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
+
 ## <a name="server-connection-drops"></a>Sunucu bağlantısı düşme
 
 Uygulama sunucusu başlatıldığında, arka planda Azure SDK, uzak Azure SignalR 'ye yönelik sunucu bağlantılarını başlatır. Azure SignalR [hizmeti 'Nin Iç yapıları](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md)bölümünde açıklandığı gibi, Azure SignalR gelen istemci traffics bu sunucu bağlantılarına yönlendirir. Sunucu bağlantısı bırakıldıktan sonra, hizmet verdiği tüm istemci bağlantıları da kapatılır.
@@ -320,6 +339,8 @@ Sunucu-hizmet bağlantısı **ASRS****(** zure **s** ıgnal **R** **s**) tarafı
 1. Her şeyin olağan dışı olup olmadığını görmek için uygulama sunucusu tarafı günlüğünü açın
 2. App Server 'ın yeniden başlatılıp başlatılmayacağını görmek için uygulama sunucusu tarafında olay günlüğünü denetleyin
 3. Bize zaman çerçevesini sağlamaktan bir sorun oluşturun ve kaynak adını bize e-posta ile gönderin
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="tips"></a>İpuçları
 
@@ -352,6 +373,8 @@ ASP.NET Core bir örnek alın (ASP.NET One benzerdir):
     * [ASP.NET C# istemcisi](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.CSharpClient/Program.cs#L78)
 
     * [ASP.NET JavaScript Istemcisi](https://github.com/Azure/azure-signalr/tree/dev/samples/AspNet.ChatSample/AspNet.ChatSample.JavaScriptClient/wwwroot/index.html#L71)
+
+[Sorun giderme hakkında sorunlar veya geri bildirimler mi var? Bize bilgi verin.](https://aka.ms/asrs/survey/troubleshooting)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

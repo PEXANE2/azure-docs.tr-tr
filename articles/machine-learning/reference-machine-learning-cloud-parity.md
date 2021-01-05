@@ -9,14 +9,14 @@ ms.topic: reference
 ms.reviewer: larryfr
 ms.author: andzha
 author: Anurzeuii
-ms.date: 08/24/2020
+ms.date: 12/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 88240f9b46997d11f1e7c2d93fa880b004615a11
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305750"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97725029"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Azure Machine Learning sogeign bulut eşliği
 
@@ -92,7 +92,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | ML yardımlı etiketleme (görüntü sınıflandırması ve nesne algılama)           | Genel Önizleme       | EVET                | EVET         |
 | **Sorumlu makine öğrenmesi** |   | | |
 | Kullanıcı arabiriminde Explainability                                                       | Genel Önizleme       | NO                 | NO          |
-| Değişiklik gizliliği araç seti                                    | OSS                  | NO                 | NO          |
+| Değişiklik gizliliği Smartgürültü araç seti                                    | OSS                  | NO                 | NO          |
 | veri sayfalarını uygulamak için Azure Machine Learning özel Etiketler              | GA                   | NO                 | NO          |
 | Eşitliği AzureML tümleştirmesi                                               | Genel Önizleme       | NO                 | NO          |
 | Yorumlenebilirlik SDK 'Sı                                                      | GA                   | EVET                | EVET         |
@@ -205,7 +205,7 @@ Genel bulutumuz ve bağımsız Bölgelerimiz arasında maksimum eşlik sağlamam
 | ML yardımlı etiketleme (görüntü sınıflandırması ve nesne algılama)           | Genel Önizleme   | EVET       | Yok        |
 | **Sorumlu makine öğrenmesi** |    | | |
 | Kullanıcı arabiriminde Explainability                                                       | Genel Önizleme   | NO        | Yok        |
-| Değişiklik gizliliği araç seti                                    | OSS              | NO        | Yok        |
+| Değişiklik gizliliği Smartgürültü araç seti                                    | OSS              | NO        | Yok        |
 | veri sayfalarını uygulamak için Azure Machine Learning özel Etiketler              | GA               | NO        | Yok        |
 | Eşitliği AzureML tümleştirmesi                                               | Genel Önizleme   | NO        | Yok        |
 | Yorumlenebilirlik SDK 'Sı                                                      | GA               | EVET       | Yok        |

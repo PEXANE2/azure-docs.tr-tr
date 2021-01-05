@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: c82fb9764b29119092bf313b2c10f00c983e8c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cdb575d7b3884370e1a53f79f1184d40cd15d270
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710796"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732402"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft &reg; kesintisiz akış Istemci taşıma kiti lisanslama
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
  
 ## <a name="overview"></a>Genel Bakış
-Microsoft Kesintisiz Akış Client taşıma kiti (Short için**Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
+Microsoft Kesintisiz Akış Client taşıma kiti (Short için **Sspk** ), yerleşik cihaz üreticilerine, kablolu ve mobil işleçlere, içerik hizmeti sağlayıcılarına, ahize üreticilerine, bağımsız yazılım satıcılarına (ISV) ve kesintisiz akış biçimde Uyarlamalı içerik akışı için ürün ve hizmet oluşturmaya yönelik çözüm sağlayıcılarına yardımcı olmak üzere iyileştirilmiş bir kesintisiz akış istemci uygulamasıdır. SSPK, lisans tarafından herhangi bir cihaza ve platforma bir cihaz tarafından aşılenebilir Kesintisiz Akış istemcisinin platformdan bağımsız bir uygulamasıdır. 
 
 Aşağıda yer alan üst düzey bir mimari ve IIS Kesintisiz Akış taşıma paketi kutusu, Microsoft tarafından sağlanan Kesintisiz Akış Istemci uygulamasıdır ve Kesintisiz Akış içeriğinin kayıttan yürütülmesi için tüm çekirdek mantığını içerir. Daha sonra bu içerik, uygun arabirimleri uygulayarak belirli bir cihaz veya platformun iş ortakları tarafından yer verilir. 
 
@@ -133,6 +133,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 * KDDı Corporation
 * Mega Fame Elektronik Co. Limited
 * IRC elektroniği sınırlı
+* MOKA ULUSLARARASı SıNıRLı
 * Ni do Co., Ltd.
 * ONEPLUS ELEKTRONIĞI (SHENZHEN) CO., LTD.
 * Panasonic Corporation
@@ -153,6 +154,7 @@ Ara ve nihai SSPK lisanslamamaları, konusunda teknik sorular gönderebilir [smo
 * Teknisyen teslim teknolojileri, SAS
 * En popüler zafer yatırımları, Ltd.
 * UMC Polonya Sp. z. o.o.
+* Vizio, Inc.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları

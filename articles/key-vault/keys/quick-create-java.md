@@ -1,29 +1,29 @@
 ---
-title: Hızlı başlangıç-Java için gizli Azure Key Vault istemci kitaplığı
-description: Java için Azure Key Vault gizli istemci kitaplığı için hızlı başlangıç sağlar.
+title: Hızlı başlangıç-Java için sertifika istemci kitaplığı Azure Key Vault
+description: Java için Azure Key Vault sertifika istemci kitaplığı için hızlı başlangıç sağlar.
 author: msmbaldwin
 ms.custom: devx-track-java, devx-track-azurecli
 ms.author: mbaldwin
-ms.date: 10/20/2019
+ms.date: 12/18/2020
 ms.service: key-vault
-ms.subservice: secrets
+ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 35133b32360f65d70aa1931b31fac6886fd00b02
+ms.openlocfilehash: 1890c2a3d4043d43dd890f06942dbe704e3f7689
 ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732963"
+ms.locfileid: "97733517"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault gizli istemci kitaplığı
-Java için Azure Key Vault gizli istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-java"></a>Hızlı başlangıç: Java için Azure Key Vault sertifika istemci kitaplığı
+Java için Azure Key Vault sertifika istemci kitaplığı ile çalışmaya başlayın. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere aşağıdaki adımları izleyin.
 
 Ek kaynaklar:
 
-* [Kaynak kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets)
+* [Kaynak kod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates)
 * [API başvuru belgeleri](https://azure.github.io/azure-sdk-for-java/keyvault.html)
 * [Ürün belgeleri](index.yml)
-* [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
+* [Örnekler](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-certificates/src/samples/java/com/azure/security/keyvault/certificates)
 
 ## <a name="prerequisites"></a>Önkoşullar
 - Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -50,11 +50,11 @@ Bu hızlı başlangıçta, Azure 'da kullanıcının kimliğini doğrulamak içi
 2. Tarayıcıda hesabınızın kimlik bilgileriyle oturum açın.
 
 ### <a name="create-a-new-java-console-app"></a>Yeni bir Java konsol uygulaması oluşturma
-Konsol penceresinde, `mvn` adıyla yeni bir Java konsol uygulaması oluşturmak için komutunu kullanın `akv-secrets-java` .
+Konsol penceresinde, `mvn` adıyla yeni bir Java konsol uygulaması oluşturmak için komutunu kullanın `akv-certificates-java` .
 
 ```console
-mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
-                       -DartifactId=akv-secrets-java
+mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
+                       -DartifactId=akv-certificates-java
                        -DarchetypeArtifactId=maven-archetype-quickstart
                        -DarchetypeVersion=1.4
                        -DinteractiveMode=false
@@ -66,16 +66,16 @@ Projenin üretilme çıktısı şuna benzer şekilde görünür:
 [INFO] ----------------------------------------------------------------------------
 [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
 [INFO] ----------------------------------------------------------------------------
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
 [INFO] Parameter: packageInPathFormat, Value: com/keyvault/quickstart
-[INFO] Parameter: package, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: groupId, Value: com.keyvault.secrets.quickstart
-[INFO] Parameter: artifactId, Value: akv-secrets-java
+[INFO] Parameter: package, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: groupId, Value: com.keyvault.certificates.quickstart
+[INFO] Parameter: artifactId, Value: akv-certificates-java
 [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-secrets-java
+[INFO] Project created from Archetype in dir: /home/user/quickstarts/akv-certificates-java
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ Projenin üretilme çıktısı şuna benzer şekilde görünür:
 [INFO] ------------------------------------------------------------------------
 ```
 
-Dizininizi yeni oluşturulan `akv-secrets-java/` klasöre değiştirin.
+Dizininizi yeni oluşturulan `akv-certificates-java/` klasöre değiştirin.
 
 ```console
-cd akv-secrets-java
+cd akv-certificates-java
 ```
 
 ### <a name="install-the-package"></a>Paketi yükler
@@ -96,8 +96,8 @@ cd akv-secrets-java
 ```xml
     <dependency>
       <groupId>com.azure</groupId>
-      <artifactId>azure-security-keyvault-secrets</artifactId>
-      <version>4.2.3</version>
+      <artifactId>azure-security-keyvault-certificates</artifactId>
+      <version>4.1.3</version>
     </dependency>
 
     <dependency>
@@ -111,10 +111,10 @@ cd akv-secrets-java
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Anahtar kasanıza erişim izni verin
-Anahtar kasanız için Kullanıcı hesabınıza gizli izinler veren bir erişim ilkesi oluşturun.
+Anahtar kasanız için Kullanıcı hesabınıza sertifika izinleri veren bir erişim ilkesi oluşturun.
 
 ```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --secret-permissions delete get list set purge
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Ortam değişkenlerini belirleme
@@ -135,7 +135,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
 ## <a name="object-model"></a>Nesne modeli
-Java için Azure Key Vault gizli istemci kitaplığı, gizli dizileri yönetmenizi sağlar. [Kod örnekleri](#code-examples) bölümünde, bir istemci oluşturma, gizli anahtar ayarlama, gizli anahtar alma ve gizli dizi silme işlemlerinin nasıl yapılacağı gösterilir.
+Java için Azure Key Vault sertifikası istemci kitaplığı, sertifikaları yönetmenizi sağlar. [Kod örnekleri](#code-examples) bölümünde, bir istemci oluşturma, sertifika oluşturma, sertifika alma ve sertifikayı silme işlemlerinin nasıl yapılacağı gösterilir.
 
 Konsol uygulamasının tamamı [aşağıda](#sample-code)verilmiştir.
 
@@ -147,10 +147,13 @@ Aşağıdaki yönergeleri kodunuzun en üstüne ekleyin:
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 ```
 
 ### <a name="authenticate-and-create-a-client"></a>İstemci kimliğini doğrulama ve oluşturma
@@ -162,48 +165,44 @@ Aşağıdaki örnekte, anahtar kasanızın adı, "https://. vault.azure.net" bi�
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
 String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-SecretClient secretClient = new SecretClientBuilder()
+CertificateClient certificateClient = new CertificateClientBuilder()
     .vaultUrl(keyVaultUri)
     .credential(new DefaultAzureCredentialBuilder().build())
     .buildClient();
 ```
 
 ### <a name="save-a-secret"></a>Gizli dizi Kaydet
-Uygulamanızın kimliği doğrulandığına göre, yöntemi kullanarak anahtar kasanıza gizli dizi ekleyebilirsiniz `secretClient.setSecret` . Bu, gizli dizi için bir ad gerektirir `secretName` . Bu örnekteki değişkene "mySecret" değeri atandık.
+Uygulamanızın kimliği doğrulandığına göre, yöntemi kullanarak anahtar kasanızda bir sertifika oluşturabilirsiniz `certificateClient.beginCreateCertificate` . Bu, sertifika ve sertifika ilkesi için bir ad gerektirir; "myCertificate" değerini `certificateName` Bu örnekteki değişkene atadık ve varsayılan bir ilke kullanacak.
+
+Sertifika oluşturma uzun süren bir işlemdir. Bu, ilerleme durumunu yoklayabilmeniz veya tamamlanmasını beklemeniz için bekleyebilir.
 
 ```java
-secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+    certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+certificatePoller.waitForCompletion();
 ```
 
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) komutuyla ayarlandığını doğrulayabilirsiniz:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
-```
-
-### <a name="retrieve-a-secret"></a>Gizli dizi alma
-Artık, yöntemiyle daha önce ayarlanmış gizli dizi alabilirsiniz `secretClient.getSecret` .
+Oluşturma işlemi aşağıdaki çağrı aracılığıyla tamamlandığında sertifikayı elde edebilirsiniz:
 
 ```java
-KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
+KeyVaultCertificate createdCertificate = certificatePoller.getFinalResult();
+```
+
+### <a name="retrieve-a-certificate"></a>Sertifika alma
+Artık, yöntemi ile önceden oluşturulan sertifikayı alabilirsiniz `certificateClient.getCertificate` .
+
+```java
+KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
  ```
 
-Artık alınan gizli dizi değerine ile erişebilirsiniz `retrievedSecret.getValue()` .
+Artık alınan sertifikanın ayrıntılarına, vb. gibi işlemler de erişebilirsiniz `retrievedCertificate.getName` `retrievedCertificate.getProperties` . Ya da içeriği `retrievedCertificate.getCer` .
 
-### <a name="delete-a-secret"></a>Gizli anahtarı silme
-Son olarak, yöntemi ile anahtar kasaınızdan parolayı silelim `secretClient.beginDeleteSecret` .
-
-Gizli dizi silme işleminin ilerleme durumunu yoklayabilmeniz veya tamamlanmasını beklemeniz için uzun süredir çalışan bir işlemdir.
+### <a name="delete-a-certificate"></a>Sertifikayı silme
+Son olarak, anahtar kasanızdan sertifikayı, `certificateClient.beginDeleteCertificate` Ayrıca uzun süren bir işlem olan yöntemiyle silerdelim.
 
 ```java
-SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
 deletionPoller.waitForCompletion();
-```
-
-Parolanın [az keykasası Secret Show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) komutuyla silindiğini doğrulayabilirsiniz:
-
-```azurecli
-az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
@@ -219,65 +218,57 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="sample-code"></a>Örnek kod
 ```java
-package com.keyvault.secrets.quickstart;
-
-import java.io.Console;
+package com.keyvault.certificates.quickstart;
 
 import com.azure.core.util.polling.SyncPoller;
 import com.azure.identity.DefaultAzureCredentialBuilder;
 
-import com.azure.security.keyvault.secrets.SecretClient;
-import com.azure.security.keyvault.secrets.SecretClientBuilder;
-import com.azure.security.keyvault.secrets.models.DeletedSecret;
-import com.azure.security.keyvault.secrets.models.KeyVaultSecret
+import com.azure.security.keyvault.certificates.CertificateClient;
+import com.azure.security.keyvault.certificates.CertificateClientBuilder;
+import com.azure.security.keyvault.certificates.models.CertificateOperation;
+import com.azure.security.keyvault.certificates.models.CertificatePolicy;
+import com.azure.security.keyvault.certificates.models.DeletedCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificate;
+import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPolicy;
 
 public class App {
     public static void main(String[] args) throws InterruptedException, IllegalArgumentException {
         String keyVaultName = System.getenv("KEY_VAULT_NAME");
         String keyVaultUri = "https://" + keyVaultName + ".vault.azure.net";
 
-        System.out.printf("key vault name = %s and key vault URI = %s \n", keyVaultName, keyVaultUri);
+        System.out.printf("key vault name = %s and kv uri = %s \n", keyVaultName, keyVaultUri);
 
-        SecretClient secretClient = new SecretClientBuilder()
-            .vaultUrl(keyVaultUri)
-            .credential(new DefaultAzureCredentialBuilder().build())
-            .buildClient();
+        CertificateClient certificateClient = new CertificateClientBuilder()
+                .vaultUrl(keyVaultUri)
+                .credential(new DefaultAzureCredentialBuilder().build())
+                .buildClient();
 
-        Console con = System.console();  
+        String certificateName = "myCertificate";
 
-        String secretName = "mySecret";
+        System.out.print("Creating a certificate in " + keyVaultName + " called '" + certificateName + " ... ");
 
-        System.out.println("Please provide the value of your secret > ");
-        
-        String secretValue = con.readLine();
+        SyncPoller<CertificateOperation, KeyVaultCertificateWithPolicy> certificatePoller =
+                certificateClient.beginCreateCertificate(certificateName, CertificatePolicy.getDefault());
+        certificatePoller.waitForCompletion();
 
-        System.out.print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with value '" + secretValue + "` ... ");
+        System.out.print("done.");
+        System.out.println("Retrieving certificate from " + keyVaultName + ".");
 
-        secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
+        KeyVaultCertificate retrievedCertificate = certificateClient.getCertificate(certificateName);
 
-        System.out.println("done.");
-        System.out.println("Forgetting your secret.");
-        
-        secretValue = "";
-        System.out.println("Your secret's value is '" + secretValue + "'.");
+        System.out.println("Your certificate's ID is '" + retrievedCertificate.getId() + "'.");
+        System.out.println("Deleting your certificate from " + keyVaultName + " ... ");
 
-        System.out.println("Retrieving your secret from " + keyVaultName + ".");
-
-        KeyVaultSecret retrievedSecret = secretClient.getSecret(secretName);
-
-        System.out.println("Your secret's value is '" + retrievedSecret.getValue() + "'.");
-        System.out.print("Deleting your secret from " + keyVaultName + " ... ");
-
-        SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(secretName);
+        SyncPoller<DeletedCertificate, Void> deletionPoller = certificateClient.beginDeleteCertificate(certificateName);
         deletionPoller.waitForCompletion();
 
-        System.out.println("done.");
+        System.out.print("done.");
     }
 }
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir gizli dizi depolanıyor, geri alınmış ve sonra silmiş olursunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
+Bu hızlı başlangıçta bir Anahtar Kasası oluşturdunuz, bir sertifika oluşturdunuz, alındı ve sonra silmiş olursunuz. Key Vault ve uygulamalarınızla tümleştirme hakkında daha fazla bilgi edinmek için aşağıdaki makalelere ilerleyin.
 
 - [Azure Key Vault genel bakışını](../general/overview.md) okuyun
 - [Azure Key Vault geliştirici kılavuzuna](../general/developers-guide.md) bakın

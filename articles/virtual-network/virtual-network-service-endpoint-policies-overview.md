@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 14ecb30af11bf750c90e45c3fb6b443d861a1445
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400764"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97739306"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Azure Depolama için sanal ağ hizmet uç noktası ilkeleri
 
@@ -100,12 +100,12 @@ Hizmet uç noktası ilkelerinde hiçbir merkezi günlük sağlanmaz. Hizmet kayn
 - Uç nokta ilkelerinde listelenen hesaplar için erişim reddedildi
   - Ağ güvenlik grupları veya güvenlik duvarı filtrelemesi erişimi engelliyor olabilir
   - İlkenin kaldırılması/yeniden uygulanması bağlantı kaybına yol açıyorsa:
-    - Azure hizmetinin uç noktalar üzerinden sanal ağdan erişime izin verecek şekilde yapılandırılıp yapılandırılmadığını veya kaynak için varsayılan ilkenin *tümüne Izin ver*olarak ayarlanmış olup olmadığını doğrulayın.
+    - Azure hizmetinin uç noktalar üzerinden sanal ağdan erişime izin verecek şekilde yapılandırılıp yapılandırılmadığını veya kaynak için varsayılan ilkenin *tümüne Izin ver* olarak ayarlanmış olup olmadığını doğrulayın.
     - Hizmet tanılamalarında uç noktalar üzerinden trafiğin gösterildiğini doğrulayın.
     - Ağ güvenlik grubu akış günlüklerinde erişimin gösterilip gösterilmediğini ve depolama günlüklerinde beklendiği gibi hizmet uç noktaları üzerinden erişimin gösterilip gösterilmediğini denetleyin.
     - Azure desteğine başvurun.
 - Hizmet uç noktası ilkelerinde listelenmeyen hesaplar için erişim reddedildi
-  - Azure Storage 'ın uç noktalar üzerinden sanal ağdan erişime izin verecek şekilde yapılandırılıp yapılandırılmadığını veya kaynak için varsayılan ilkenin *tümüne Izin ver*olarak ayarlanmış olup olmadığını doğrulayın.
+  - Azure Storage 'ın uç noktalar üzerinden sanal ağdan erişime izin verecek şekilde yapılandırılıp yapılandırılmadığını veya kaynak için varsayılan ilkenin *tümüne Izin ver* olarak ayarlanmış olup olmadığını doğrulayın.
   - Hesapların alt ağdaki hizmet uç noktası ilkelerine sahip **Klasik depolama hesapları** olmadığından emin olun.
 - Yönetilen bir Azure hizmeti, alt ağ üzerinden bir hizmet uç noktası Ilkesi uygulandıktan sonra çalışmayı durdurdu
   - Yönetilen hizmetler şu anda hizmet uç noktası ilkeleriyle desteklenmez. *Güncelleştirmeler için bu alanı izleyin*.
@@ -122,7 +122,7 @@ Sanal ağlar ve Azure depolama hesapları aynı veya farklı aboneliklerde veya 
 - Sanal ağların hizmet uç noktası ilkesiyle aynı bölgede bulunması gerekir.
 - Hizmet uç noktası ilkesini bir alt ağa uygulayabilmeniz için, ilkede listelenen Azure hizmetleri için hizmet uç noktalarının yapılandırılmış olması gerekir.
 - Şirket içi ağınızdan Azure hizmetlerine yönelik trafik için hizmet uç noktası ilkelerini kullanamazsınız.
-- Azure yönetilen hizmetler şu anda uç nokta ilkelerini desteklemez. Bu, paylaşılan alt ağlara dağıtılan yönetilen Hizmetleri (örn. *Azure HDInsight, Azure Batch, Azure ekleme, azure Application Gateway, azure VPN Gateway, Azure Güvenlik Duvarı*) ya da ayrılmış alt ağlara (örn. *Azure App Service ortamı, Azure Redis Cache, Azure API Management, Azure SQL mı, klasik yönetilen hizmetler*) içerir.
+- Azure yönetilen hizmetler şu anda uç nokta ilkelerini desteklemez. Bu, paylaşılan alt ağlara dağıtılan yönetilen Hizmetleri (örn. *Azure Batch, Azure ekleme, azure Application Gateway, azure VPN Gateway, Azure Güvenlik Duvarı*) veya ayrılmış alt ağlara (örn. *Azure App Service ortamı, Azure Redis Cache, Azure API Management, Azure SQL mı, klasik yönetilen hizmetler*) dahil olmak üzere.
 
  > [!WARNING]
  > Sanal ağınıza dağıtılan Azure HDInsight gibi Azure hizmetleri, altyapı gereksinimlerinden dolayı Azure Depolama gibi diğer Azure hizmetlerine erişir. Uç nokta ilkesini belirli kaynaklarla kısıtlamak, sanal ağınızda dağıtılan Azure hizmetleri için bu altyapı kaynaklarına erişimi kesebilir.

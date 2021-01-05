@@ -1,7 +1,7 @@
 ---
-title: Zscaler ile Azure Active Directory B2C yapılandırma öğreticisi
+title: Öğretici-Zscaler ile Azure Active Directory B2C yapılandırma
 titleSuffix: Azure AD B2C
-description: Azure AD B2C kimlik doğrulamasını Zscaler ile tümleştirmeyi öğrenin
+description: Azure AD B2C kimlik doğrulamasını Zscaler ile tümleştirmeyi öğrenin.
 services: active-directory-b2c
 author: gargi-sinha
 manager: martinco
@@ -11,156 +11,145 @@ ms.topic: how-to
 ms.date: 12/09/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 223f8acd6aad7aaf4c37e0b2eae2df882ed2ad1d
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 254f8da74a187e88cfb973da7100fe5654c84bb6
+ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629383"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97732455"
 ---
-# <a name="tutorial-to-configure-zscaler-private-access-with-azure-active-directory-b2c-for-secure-hybrid-access"></a>Güvenli karma erişim için Azure Active Directory B2C Zscaler özel erişimini yapılandırma öğreticisi
+# <a name="tutorial-configure-zscaler-private-access-with-azure-active-directory-b2c"></a>Öğretici: Azure Active Directory B2C ile Zscaler özel erişimini yapılandırma
 
-Bu öğreticide, Azure AD B2C kimlik doğrulamasını [Zscaler özel erişimi (ZPA)](https://www.zscaler.com/products/zscaler-private-access)ile tümleştirmeyi öğrenin. ZPA, bir sanal özel ağın (VPN) maliyet, sorun veya güvenlik riskleri olmadan özel uygulamalara ve varlıklara ilke tabanlı, güvenli erişim sağlar. Zscaler 'un güvenli karma erişim teklifi, Azure AD B2C ile birleştirildiğinde tüketiciye yönelik uygulamalar için sıfır saldırı yüzeyi sunar.
+Bu öğreticide, Azure Active Directory B2C (Azure AD B2C) kimlik doğrulamasını [Zscaler özel erişimi (ZPA)](https://www.zscaler.com/products/zscaler-private-access)ile tümleştirmeyi öğreneceksiniz. ZPA, bir sanal özel ağın (VPN) maliyet, sorun veya güvenlik riskleri olmadan özel uygulamalara ve varlıklara ilke tabanlı, güvenli erişim sağlar. Zscaler güvenli karma erişim teklifi, Azure AD B2C ile birleştirildiğinde tüketiciye yönelik uygulamalar için sıfır saldırı yüzeyi sunar.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-Başlamak için şunlar gerekir:
+Başlamadan önce şunları yapmanız gerekir:
 
-- Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-
-- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .
-
-- [ZPA aboneliği](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview)
+- Azure aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.  
+- Azure aboneliğinize bağlı [bir Azure AD B2C kiracısı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant) .  
+- [ZPA aboneliği](https://azuremarketplace.microsoft.com/marketplace/apps/aad.zscalerprivateaccess?tab=Overview).
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
 ZPA tümleştirmesi aşağıdaki bileşenleri içerir:
 
-- Azure AD B2C-kullanıcının kimlik bilgilerini doğrulamaktan sorumlu kimlik sağlayıcısı (IDP). Yeni bir kullanıcının kaydolmasından de sorumludur.
-
-- ZPA-bir Web uygulamasının güvenliğini sağlamaya yönelik olarak, [sıfır-Trust erişimini](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.)zorunlu hale getirerek sorumlu hizmet.
-
-- Web uygulaması-kullanıcının erişmeye çalıştığı hizmeti barındırır.
+- **Azure AD B2C**: kullanıcının kimlik bilgilerini doğrulamaktan sorumlu kimlik sağlayıcısı (IDP). Yeni bir kullanıcının kaydolmasından de sorumludur.  
+- **ZPA**: [sıfır güvenine erişimi](https://www.microsoft.com/security/blog/2018/12/17/zero-trust-part-1-identity-and-access-management/#:~:text=Azure%20Active%20Directory%20%28Azure%20AD%29%20provides%20the%20strong%2C,to%20express%20their%20access%20requirements%20in%20simple%20terms.)zorunlu tutarak Web uygulamasını güvenli hale getirmekten sorumlu olan hizmet.  
+- **Web uygulaması**: kullanıcının erişmeye çalıştığı hizmeti barındırır.
 
 Aşağıdaki diyagramda ZPA 'nin Azure AD B2C ile tümleştirilme şekli gösterilmektedir.
 
-![Resim, Zscaler mimari diyagramını gösterir](media/partner-zscaler/zscaler-architecture-diagram.png)
+![Zscaler mimarisinin diyagramı, ZPA 'nın Azure AD B2C ile nasıl tümleştirildiğini gösterir.](media/partner-zscaler/zscaler-architecture-diagram.png)
 
-|Adım | Description |
-|:-----| :-----------|
-| 1. | Kullanıcı bir ZPA Kullanıcı portalına veya ZPA tarayıcı erişimi uygulamasına ulaşır.
-| 2. | ZPA, kullanıcının Web uygulamasına erişmesine izin verip vermeyeceğine karar vermeden önce Kullanıcı bağlamı bilgilerini gerektirir. ZPA kullanıcının kimliğini doğrulamak için Azure AD B2C oturum açma sayfasına bir SAML yönlendirmesi uygular.  
-| 3. | Kullanıcı Azure AB B2C oturum açma sayfasına ulaştı. Yeni bir kullanıcı ise, Kullanıcı yeni bir hesap oluşturmak üzere kaydolur. Mevcut bir Kullanıcı mevcut kimlik bilgilerini kullanarak oturum açacaktı. Azure AD B2C kullanıcının kimliğini doğrular.
-| 4. | Başarılı kimlik doğrulamasından sonra, Azure AD B2C, kullanıcıyı SAML onaylama işlemi ile birlikte ZPA 'ye yeniden yönlendirir. ZPA SAML onaylama işlemi doğrular ve kullanıcı bağlamını ayarlar.
-| 5. | ZPA Kullanıcı için erişim ilkelerini değerlendirir. Kullanıcının Web uygulamasına erişmesine izin veriliyorsa, bağlantının geçmesine izin verilir.
+Sıra, aşağıdaki tabloda açıklanmıştır:
+
+|Adım | Açıklama |
+| :-----:| :-----------|
+| 1 | Kullanıcı bir ZPA Kullanıcı portalına veya ZPA tarayıcı erişimi uygulamasına ulaşır.
+| 2 | ZPA, kullanıcının Web uygulamasına erişmesine izin verip vermeyeceğine karar vermeden önce Kullanıcı bağlamı bilgileri gerektirir. ZPA kullanıcının kimliğini doğrulamak için Azure AD B2C oturum açma sayfasına bir SAML yönlendirmesi uygular.  
+| 3 | Kullanıcı Azure AB B2C oturum açma sayfasına ulaşır. Yeni kullanıcılar hesap oluşturmak için kaydolun ve mevcut kullanıcılar mevcut kimlik bilgileriyle oturum açın. Azure AD B2C kullanıcının kimliğini doğrular.
+| 4 | Başarılı kimlik doğrulamasından sonra, Azure AD B2C, kullanıcıyı SAML onaylama işlemi ile birlikte ZPA 'ye yeniden yönlendirir. ZPA SAML onaylama işlemi doğrular ve kullanıcı bağlamını ayarlar.
+| 5 | ZPA Kullanıcı için erişim ilkelerini değerlendirir. Kullanıcının Web uygulamasına erişmesine izin veriliyorsa, bağlantının geçmesine izin verilir.
 
 ## <a name="onboard-to-zpa"></a>ZPA 'ya ekleme
 
-Bu öğreticide, ZPA 'nin çalışır durumdaki bir kurulumuna sahip olduğunuz varsayılır. ZPA 'yi kullanmaya başladıysanız, [ZPA için adım adım yapılandırma kılavuzu](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)' na bakın.
+Bu öğreticide, zaten çalışan bir ZPA kurulumu olduğunu varsaymaktadır. ZPA 'yi kullanmaya başladıysanız, [ZPA için adım adım yapılandırma kılavuzu](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)' na bakın.
 
-## <a name="integrate-with-azure-ad-b2c"></a>Azure AD B2C ile tümleştirme
+## <a name="integrate-zpa-with-azure-ad-b2c"></a>ZPA 'yi Azure AD B2C ile tümleştirin
 
-### <a name="part-1---configure-azure-ad-b2c-as-an-idp-on-zpa"></a>Bölüm 1-ZPA üzerinde bir IDP olarak Azure AD B2C yapılandırma
+### <a name="step-1-configure-azure-ad-b2c-as-an-idp-on-zpa"></a>1. Adım: ZPA 'de Azure AD B2C IDP olarak yapılandırma
 
-Azure AD B2C, [ZPA üzerinde kimlik sağlayıcısı (IDP)](https://help.zscaler.com/zpa/configuring-idp-single-sign)olarak yapılandırmak için:
+Azure AD B2C, [ZPA üzerinde bir IDP](https://help.zscaler.com/zpa/configuring-idp-single-sign)olarak yapılandırmak için aşağıdakileri yapın:
 
-1. [ZPA yönetim portalında](https://admin.private.zscaler.com) oturum açın
+1. [ZPA yönetim portalında](https://admin.private.zscaler.com)oturum açın.
 
-2. **Yönetim**  >  **IDP yapılandırmasına** git
+1. **Yönetim**  >  **IDP yapılandırmasına** gidin.
 
-3. **IDP Yapılandırması Ekle** 'yi seçin
+1. **IDP Yapılandırması Ekle**' yi seçin.
 
-4. **1 IDP bilgileri** için aşağıdakileri girin:
+   **IDP yapılandırma Ekle** bölmesi açılır.
 
-   a. **Ad**: Azure AD B2C
+   !["IDP Yapılandırması Ekle" bölmesindeki "IDP Information" sekmesinin ekran görüntüsü.](media/partner-zscaler/add-idp-configuration.png)
 
-   b. **Çoklu oturum açma**: Kullanıcı Seç
+1. **IDP bilgileri** sekmesini seçin ve ardından aşağıdakileri yapın:
 
-   c. **Etki alanları**: Bu IDP ile ilişkilendirmek istediğiniz kimlik doğrulama etki alanlarını seçin ve **bitti** ' yi seçin.
+   a. **Ad** kutusuna **Azure AD B2C** girin.  
+   b. **Çoklu oturum açma** altında **Kullanıcı**' yı seçin.  
+   c. **Etki alanları** açılan listesinde, bu IDP ile ilişkilendirmek istediğiniz kimlik doğrulama etki alanlarını seçin.
 
-   ![Görüntü IDP bilgilerini gösterir](media/partner-zscaler/add-idp-configuration.png)
+1. **İleri**’yi seçin.
 
-5. **İleri**’yi seçin
+1. **SP meta verileri** sekmesini seçin ve ardından aşağıdakileri yapın:
 
-6. **2 SP meta verileri** için:
+   a. **Hizmet sağlayıcı URL 'si** altında daha sonra kullanmak için değeri kopyalayın veya aklınızda olması gerekir.  
+   b. **Hizmet sağlayıcısı VARLıK kimliği** altında daha sonra kullanmak için değeri kopyalayın veya aklınızda olması gerekir.
 
-   a. Hizmet sağlayıcı URL 'sini kopyalayın ve daha sonra kullanmak üzere buraya göz önünde edin.
+   !["IDP Yapılandırması Ekle" bölmesindeki "SP meta verileri" sekmesinin ekran görüntüsü.](media/partner-zscaler/sp-metadata.png)
 
-   b. Hizmet sağlayıcısı varlık KIMLIĞINI kopyalayın ve daha sonra kullanmak üzere notun.
+1. **Duraklat**' ı seçin.
 
-   ![Görüntü, SP meta veri bilgilerini gösterir](media/partner-zscaler/sp-metadata.png)
+Azure AD B2C yapılandırdıktan sonra, IDP yapılandırmasının geri kalanı devam eder.
 
-7. **Duraklat** 'ı seçin
-
-IDP yapılandırmasının geri kalanı Azure AD B2C yapılandırıldıktan sonra sürdürülecek.
-
-### <a name="part-2---configure-custom-policy-in-azure-ad-b2c"></a>Bölüm 2-Azure AD B2C özel ilke yapılandırma
+### <a name="step-2-configure-custom-policies-in-azure-ad-b2c"></a>2. Adım: Azure AD B2C özel ilkeleri yapılandırma
 
 >[!Note]
->Bu adım yalnızca özel ilkeleriniz yoksa gereklidir. Zaten bir veya daha fazla özel ilkeleriniz varsa, bu adımı atlayabilirsiniz.
+>Bu adım yalnızca özel ilkeleri henüz yapılandırmadıysanız gereklidir. Zaten bir veya daha fazla özel ilkeleriniz varsa, bu adımı atlayabilirsiniz.
 
-[Azure Active Directory B2C özel ilkelerle çalışmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) makalesi, Azure AD B2C kiracınızda özel ilkelerin nasıl yapılandırılacağı hakkında yönergeler sağlar.
+Azure AD B2C kiracınızda özel ilkeleri yapılandırmak için, bkz. [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started).
 
-### <a name="part-3---register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. kısım-ZPA 'yi Azure AD B2C SAML uygulaması olarak kaydetme
+### <a name="step-3-register-zpa-as-a-saml-application-in-azure-ad-b2c"></a>3. Adım: ZPA 'yi bir SAML uygulaması olarak kaydetme Azure AD B2C
 
-[Azure AD B2C BIR SAML uygulaması kaydetme](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers) makalesi, Azure AD B2C bir SAML uygulamasının nasıl yapılandırılacağı hakkında yönergeler sağlar. [Adım 3,2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)' de, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'si ile birlikte sağlanacaktır. Daha sonra kullanmak üzere buna ihtiyacınız olacak.
+Azure AD B2C bir SAML uygulaması yapılandırmak için, bkz. [Azure AD B2C BIR SAML uygulaması kaydetme](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers). 
 
-[Adım 4,2](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)' ye kadar olan yönergeleri izleyin. Yönergenin adım 4,2 ' de, uygulama bildirimini güncelleştirmeniz gerekir. Özellikleri aşağıdaki gibi güncelleştirin:
+["3,2 ilke meta verilerini karşıya yükleme ve test etme"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#32-upload-and-test-your-policy-metadata)adımında, Azure AD B2C tarafından kullanılan ıDP SAML meta veri URL 'sini kopyalayın veya unutmayın. Buna daha sonra ihtiyacınız olacak.
 
-- **ıdentifieruris**: **1. adım 6a**'Da BELIRTILEN hizmet sağlayıcısı varlık kimliğini kullanın.
+["4,2 uygulama bildirimini güncelleştirme"](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers#42-update-the-app-manifest)adımındaki yönergeleri izleyin. Adım 4,2 ' de, uygulama bildirimi özelliklerini aşağıdaki şekilde güncelleştirin:
 
-- **Samlmetadataurl**: ZPA bir SAML meta veri URL 'si barındırmazsa bu özelliği atlayın.
-
-- **Replyurlswithtype**: **1. adım 6b**'da belirtilen hizmet sağlayıcı URL 'sini kullanın.
-
-- **LogoutURL**: ZPA bir oturum kapatma URL 'sini desteklemediğinden bu özelliği atlayın.
+- **Identifieruris** için: daha önce "Adım 1.6. b" içinde kopyaladığınız veya not ettiğiniz hizmet sağlayıcısı varlık kimliğini kullanın.  
+- **Samlmetadataurl** IÇIN: ZPA bir SAML meta veri URL 'si barındırmadığından bu özelliği atlayın.  
+- **Replyurlswithtype** için: daha önce "Adım 1.6. a" içinde kopyaladığınız veya not ettiğiniz hizmet sağlayıcı URL 'sini kullanın.  
+- **LogoutURL** IÇIN: ZPA bir oturum kapatma URL 'sini desteklemediğinden bu özelliği atlayın.
 
 Adımların geri kalanı bu öğreticiyle ilgili değildir.
 
-### <a name="part-4---extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>4. Bölüm-IDP SAML meta verilerini Azure AD B2C Ayıkla
+### <a name="step-4-extract-the-idp-saml-metadata-from-azure-ad-b2c"></a>4. Adım: IDP SAML meta verilerini Azure AD B2C Ayıkla
 
-Önceki adımdan, aşağıdaki biçimde bir SAML meta veri URL 'SI edinmeniz gerekir:
+Ardından, aşağıdaki biçimde bir SAML meta veri URL 'SI edinmeniz gerekir:
 
 ```https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/Samlp/metadata```
 
-Burada `<tenant-name>` Azure AD B2C kiracınızın adıdır ve `<policy-name>` son adımda oluşturduğunuz özel SAML ilkesinin adıdır.
+`<tenant-name>`Azure AD B2C kiracınızın adı olduğunu ve `<policy-name>` önceki adımda oluşturduğunuz özel SAML ilkesinin adı olduğunu unutmayın.
 
-Örneğin, " https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata "
+Örneğin, URL olabilir `https://safemarch.b2clogin.com/safemarch.onmicrosoft.com/B2C_1A_signup_signin_saml//Samlp/metadata` .
 
-Bir Web tarayıcısı açın ve SAML meta veri URL 'sine gidin. Sayfa yüklendiğinde, sayfada herhangi bir yere sağ tıklayın. **Sayfayı farklı kaydet** ' i seçin ve dosyayı bilgisayarınıza kaydedin; Bunu bir sonraki bölümde kullanacaksınız.
+Bir Web tarayıcısı açın ve SAML meta veri URL 'sine gidin. Sayfada herhangi bir yere sağ tıklayın, **farklı kaydet**' i seçin ve ardından bir sonraki adımda kullanmak üzere dosyayı bilgisayarınıza kaydedin.
 
-### <a name="part-5---complete-idp-configuration-on-zpa"></a>5. Bölüm-ZPA 'de IDP yapılandırmasını tamamlanma
+### <a name="step-5-complete-the-idp-configuration-on-zpa"></a>5. Adım: ZPA 'de IDP yapılandırmasını doldurun
 
-[ZPA yönetim portalında](https://help.zscaler.com/zpa/configuring-idp-single-sign) , 1. bölümde kısmen yapılandırılmış IDP yapılandırmasını doldurun:
+Daha önce "1. Adım: Azure AD B2C NZPA 'de IDP olarak yapılandırma" bölümünde kısmen yapılandırdığınız [ZPA yönetim portalındaki IDP yapılandırmasını](https://help.zscaler.com/zpa/configuring-idp-single-sign) doldurun.
 
-1. [ZPA yönetim portalında](https://admin.private.zscaler.com) oturum açın
+1. [ZPA yönetim portalında](https://admin.private.zscaler.com) **Yönetim**  >  **IDP yapılandırması**' na gidin.
 
-2. **Yönetim**  >  **IDP yapılandırmasına** gidin.
+1. "Adım 1" içinde yapılandırdığınız IDP **'yi seçin ve** sonra da yeniden göster ' i seçin.
 
-3. 1. Bölüm ' de yapılandırılan IDP 'yi seçin ve sonra da **özgeçmişi** seçin.
+1. **IDP Yapılandırması Ekle** bölmesinde, **IDP oluştur** sekmesini seçin ve ardından aşağıdakileri yapın:
 
-4. **3 Için IDP oluşturma**
-
-   a. **IDP meta veri dosyasına** gidin  >  **Dosya** ' yı seçin ve Bölüm 4 ' te kaydettiğiniz meta veri dosyasını karşıya yükleyin.
-
-   b. IDP **yapılandırması 'Nın** **etkin** olduğunu doğrulayın.
-
+   a. **IDP meta veri dosyası** altında, daha önce kaydettiğiniz meta veri dosyasını "Adım 4: ıDP SAML meta verilerini ayıklama Azure AD B2C" içinde karşıya yükleyin.  
+   b. IDP yapılandırması **durumunun** **etkin** olduğunu doğrulayın.  
    c. **Kaydet**’i seçin.
 
-      ![Görüntü IDP bilgilerini oluşturma](media/partner-zscaler/create-idp.png)
+   !["IDP Yapılandırması Ekle" bölmesinde "IDP oluşturma" sekmesinin ekran görüntüsü.](media/partner-zscaler/create-idp.png)
 
 ## <a name="test-the-solution"></a>Çözümü test etme
 
-Bir ZPA Kullanıcı portalına veya tarayıcı erişim uygulamasına gidin ve kaydolma veya oturum açma sürecini test edin. Bu, başarılı bir SAML kimlik doğrulamasına neden olmalıdır.
+Bir ZPA Kullanıcı portalına veya tarayıcı erişimi uygulamasına gidin ve kaydolma veya oturum açma sürecini test edin. Test, başarılı bir SAML kimlik doğrulamasına neden olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Daha fazla bilgi için aşağıdaki makaleleri gözden geçirin:
 
-- [Azure Active Directory B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-
+- [Azure AD B2C özel ilkeleri kullanmaya başlama](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
 - [Azure AD B2C bir SAML uygulaması kaydetme](https://docs.microsoft.com/azure/active-directory-b2c/connect-with-saml-service-providers)
-
 - [ZPA için adım adım yapılandırma kılavuzu](https://help.zscaler.com/zpa/step-step-configuration-guide-zpa)
-
-- [IDP 'Yi çoklu oturum açma için yapılandırma](https://help.zscaler.com/zpa/configuring-idp-single-sign)
+- [Bir IDP 'yi çoklu oturum açma için yapılandırma](https://help.zscaler.com/zpa/configuring-idp-single-sign)

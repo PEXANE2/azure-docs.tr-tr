@@ -5,17 +5,17 @@ author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 09/22/2020
+ms.date: 12/22/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: d15d73b0f2b87b8e6f66c7bd4e7fb34f6b06e1a0
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: d5820af1efd91efd79fb2a860d6aad8d2eeed80d
+ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341932"
+ms.lasthandoff: 12/23/2020
+ms.locfileid: "97740887"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory-and-management-tools"></a>Varlık envanteri ve yönetim araçlarıyla kaynaklarınızı bulun ve yönetin
+# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Varlık envanteriyle kaynaklarınızı bulun ve yönetin
 
 Azure Güvenlik Merkezi 'nin varlık Envanteri sayfası, güvenlik merkezi 'ne bağladığınız kaynakların güvenlik duruşunu görüntülemek için tek bir sayfa sağlar. 
 
@@ -43,7 +43,7 @@ Bu aracın varlık yönetimi olanakları önemli ölçüde artar ve büyümeye d
 |Yayın durumu:|Genel olarak kullanılabilir (GA)|
 |Fiyat|Ücretsiz|
 |Gerekli roller ve izinler:|Tüm kullanıcılar|
-|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![No](./media/icons/no-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
+|Larının|![Yes](./media/icons/yes-icon.png) Ticari bulutlar<br>![Yes](./media/icons/yes-icon.png) Ulusal/Sogeign (US Gov, Çin gov, diğer gov)|
 |||
 
 
@@ -59,16 +59,16 @@ Envanter sayfası aşağıdaki araçları sağlar:
 
 - **Filtreler** -sayfanın en üstündeki birden çok filtre, yanıtlamaya çalıştığınız soruya göre kaynak listesini hızlı bir şekilde iyileştirmek için bir yol sağlar. Örneğin, *' Production ' etiketiyle makinelerimin Log Analytics Aracısı eksik* olduğu sorusuna yanıt vermek istiyorsanız, aşağıdaki küçük resimde gösterildiği gibi, **Aracı izleme** filtresini **Etiketler** filtresiyle birleştirebilirsiniz:
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="İzlenmeyen üretim kaynaklarına filtreleme":::
 
     Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
 
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
+- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, kusto sorgu dili (KQL) sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
 
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
+    :::image type="content" source="./media/asset-inventory/inventory-export-options.png" alt-text="Stokun dışarı aktarma seçenekleri":::
 
     > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
+    > KQL belgeleri, dil için "fikir" almak için bazı basit sorgularla birlikte bazı örnek verilerle birlikte bir veritabanı sağlar. [Bu KQL öğreticisinde daha fazla bilgi edinin](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
 - **Varlık yönetimi seçenekleri** -envanter, karmaşık bulma sorguları gerçekleştirmenize olanak tanır. Sorgularınızla eşleşen kaynakları bulduğunuz stok, şu gibi işlemler için kısayollar sağlar:
 
@@ -94,16 +94,7 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](/azure/data-explorer/kusto/query/)
 
 1. Yapmak istediğiniz belirli bir sorguyu oluşturmak için filtrelerdeki ilgili seçenekleri seçin.
 
-    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
-
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
-
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
-
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
-
-    > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir" lightbox="./media/asset-inventory/inventory-filters.png":::
+    :::image type="content" source="./media/asset-inventory/inventory-filters.png" alt-text="Stokun filtreleme seçenekleri" lightbox="./media/asset-inventory/inventory-filters.png":::
 
     Varsayılan olarak, kaynaklar etkin güvenlik önerisi sayısına göre sıralanır.
 
@@ -123,40 +114,22 @@ Varlık envanteri, [kusto sorgu dilini (KQL)](/azure/data-explorer/kusto/query/)
 
     - **Kapalı** -bir Azure Defender planıyla korunmayan kaynaklar. Bunlardan birine sağ tıklayıp yükseltebilirsiniz:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Sağ tıklama ile bir kaynağı Azure Defender 'a yükseltme" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
-
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
-
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
-
-    > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
-
-    - **On** Azure Defender planı tarafından korunan kaynaklar
+    -  Azure Defender planı tarafından korunan kaynaklar
     - **Kısmi** -bu, bazı Azure Defender planlarının devre dışı bırakılmayan **abonelikler** için geçerlidir. Örneğin, aşağıdaki abonelikte beş Azure Defender planı devre dışı bırakıldı. 
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
-
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
-
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
-
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
-
-    > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Azure Defender 'da kısmen abonelik":::
 
 1. Sorgunuzun sonuçlarını daha ayrıntılı incelemek için ilgilendiğiniz kaynakları seçin.
 
-1. Seçili geçerli filtre seçeneklerini kaynak grafik Gezgini 'nde bir sorgu olarak görüntülemek için **kaynak grafik Gezgini 'Nde görünüm**' ü seçin.
+1. Seçili geçerli filtre seçeneklerini kaynak grafik Gezgini 'nde bir sorgu olarak görüntülemek için **sorguyu aç**' ı seçin.
 
     ![Bağımsız değişken içinde envanter sorgusu](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
 1. Önceden tanımlanmış bir mantıksal uygulamayı ile çalıştırmak için 
 
-1. Bazı filtreler tanımladıysanız ve sayfayı açık bıraktıysanız, Güvenlik Merkezi, sonuçları otomatik olarak güncelleştirmez. Sayfayı el ile yeniden yüklemediğiniz veya **Yenile**seçeneğini belirleyemediğiniz takdirde kaynaklardaki değişiklikler, görüntülenecek sonuçları etkilemez.
+1. Bazı filtreler tanımladıysanız ve sayfayı açık bıraktıysanız, Güvenlik Merkezi, sonuçları otomatik olarak güncelleştirmez. Sayfayı el ile yeniden yüklemediğiniz veya **Yenile** seçeneğini belirleyemediğiniz takdirde kaynaklardaki değişiklikler, görüntülenecek sonuçları etkilemez.
 
 
 ## <a name="faq---inventory"></a>SSS-envanter
@@ -167,16 +140,7 @@ Envanter görünümü, bir bulut güvenlik sonrası yönetimi (CSPM) perspektifi
 
 Örneğin, aşağıdaki ekran görüntüsünde 38 aboneliğine erişimi olan bir kullanıcı gösterilir, ancak şu anda yalnızca 10 öneri vardır. Bu nedenle, **kaynak türü = abonelikler**'e göre filtrelerse yalnızca envanterde etkin önerilere sahip olan 10 abonelik görünür:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
-
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
-
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
-
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
-
-    > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Etkin öneri olmadığında tüm alt öğeleri döndürülmedi":::
 
 ### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Kaynaklarım neden Azure Defender veya aracı izleme sütunlarında boş değerler gösteriyor?
 
@@ -184,16 +148,7 @@ Güvenlik Merkezi tarafından izlenen tüm kaynakların aracıları yoktur. Örn
 
 Fiyatlandırma veya aracı izleme bir kaynak için uygun olmadığında, bu envanter sütunlarında hiçbir şey gösterilmez.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="İzlenmeyen üretim kaynaklarına filtreleme&quot;:::
-
-    Filtreleri uyguladıktan hemen sonra Özet değerleri sorgu sonuçlarıyla ilişkilendirilecek şekilde güncelleştirilir. 
-
-- **Dışarı aktarma seçenekleri** -Inventory Seçili filtre seçeneklerinizin SONUÇLARıNı bir CSV dosyasına aktarma seçeneği sağlar. Ayrıca, KQL sorgusunu daha da belirginleştirmek, kaydetmek veya değiştirmek için sorgunun kendisini Azure Kaynak grafik Gezgini ' ne dışarı aktarabilirsiniz.
-
-    ![Stokun dışarı aktarma seçenekleri](./media/asset-inventory/inventory-export-options.png)
-
-    > [!TIP]
-    > KQL belgeleri, dil için &quot;fikir":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Bazı kaynaklar, aracı izleme veya Azure Defender sütunlarında boş bilgi gösterir":::
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -6,18 +6,18 @@ author: su-jie
 ms.author: sujie
 ms.date: 11/10/2019
 ms.topic: how-to
-ms.openlocfilehash: 0122e67714efb201584a52f1cb763528dbb0b925
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbd83fb3ef3225fc19c48bb4c5962d6559cf32f8
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903785"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708458"
 ---
 # <a name="test-stream-analytics-queries-locally-with-sample-data-using-visual-studio-code"></a>Visual Studio Code kullanarak örnek verilerle yerel olarak Stream Analytics sorguları test edin
 
 Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek verilerle Stream Analytics işlerinizi yerel olarak test edebilirsiniz. Sorgu sonuçlarını projenizin **Localrunçıktılar** klasöründe JSON dosyalarında bulabilirsiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [.NET Core SDK 'sını](https://dotnet.microsoft.com/download) yükleyip Visual Studio Code yeniden başlatın.
 
@@ -45,11 +45,11 @@ Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek ve
 
 2. **Yerel giriş**' i seçin.
 
-    ![Visual Studio Code 'a ASA yerel girişi ekleme](./media/vscode-local-run/add-local-input.png)
+    ![Visual Studio Code ASA yerel girişi ekleme](./media/vscode-local-run/add-local-input.png)
 
 3. **+ Yeni yerel giriş**' i seçin.
 
-    ![Visual Studio Code 'da yeni bir ASA yerel girişi ekleme](./media/vscode-local-run/add-new-local-input.png)
+    ![Visual Studio Code yeni bir ASA yerel girişi ekleme](./media/vscode-local-run/add-new-local-input.png)
 
 4. Sorgunuzda kullandığınız giriş diğer adını girin.
 
@@ -59,11 +59,11 @@ Visual Studio Code için Azure Stream Analytics araçları kullanarak, örnek ve
 
     ![Visual Studio 'da yerel dosya yolunu girin](./media/vscode-local-run/local-file-path.png)
 
-6. Giriş verilerinin önizlemesini görüntülemek için **Verileri Önizle** ' yi seçin. Verileriniz için serileştirme türü, JSON veya CSV olursa otomatik olarak algılanır. Verilerinizi **tablo** veya **Ham** biçimde görüntülemek için seçiciyi kullanın. Aşağıdaki tablo, **tablo biçimindeki**verilerin bir örneğidir:
+6. Giriş verilerinin önizlemesini görüntülemek için **Verileri Önizle** ' yi seçin. Verileriniz için serileştirme türü, JSON veya CSV olursa otomatik olarak algılanır. Verilerinizi **tablo** veya **Ham** biçimde görüntülemek için seçiciyi kullanın. Aşağıdaki tablo, **tablo biçimindeki** verilerin bir örneğidir:
 
      ![Tablo biçiminde yerel verileri Önizle](./media/vscode-local-run/local-file-preview-table.png)
 
-    Aşağıdaki tablo, **Ham biçimdeki**verilerin bir örneğidir:
+    Aşağıdaki tablo, **Ham biçimdeki** verilerin bir örneğidir:
 
     ![Yerel verileri ham biçimde Önizle](./media/vscode-local-run/local-file-preview-raw.png)
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
-ms.openlocfilehash: db24fa4721e2e502c5098b415c4cf06da80f697d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 504d3a834760605149c93c0beea84bbe1b59e263
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175687"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707563"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Hızlı başlangıç: komut satırından Azure 'da Java işlevi oluşturma
 
@@ -73,7 +73,7 @@ Azure Işlevlerinde bir işlev projesi, her birinin belirli bir tetikleyiciye ya
     ---
 
     > [!IMPORTANT]
-    > + `-DjavaVersion=11`Işlevlerinizi Java 11 ' de çalıştırmak istiyorsanız kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
+    > + `-DjavaVersion=11`İşlevlerinizin Java 11 ' de çalışmasını istiyorsanız kullanın. Daha fazla bilgi için bkz. [Java sürümleri](functions-reference-java.md#java-versions). 
     > + `JAVA_HOME`Bu makaleyi tamamlayabilmeniz için ortam değişkeni, JDK 'nin doğru sürümünün yükleneceği konum olarak ayarlanmalıdır.
 
 1. Maven, dağıtımda projenin oluşturulmasını tamamlaması için gereken değerleri ister.   
@@ -146,7 +146,7 @@ Ayrıca, bu, işleviniz için bir birim testi de oluşturur. Bağlama eklemek ve
     </pre>
     
     > [!NOTE]  
-    > HttpExample aşağıda gösterildiği gibi görünmezse, büyük olasılıkla ana bilgisayarı projenin kök klasörü dışından başlatmış olursunuz. Bu durumda, **Ctrl** + Konağı durdurmak için CTRL **C** 'yi kullanın, projenin kök klasörüne gidin ve önceki komutu yeniden çalıştırın.
+    > HttpExample yukarıda gösterildiği gibi görünmezse, büyük olasılıkla ana bilgisayarı projenin kök klasörü dışından başlatmış olursunuz. Bu durumda,  + Konağı durdurmak için CTRL **C** 'yi kullanın, projenin kök klasörüne gidin ve önceki komutu yeniden çalıştırın.
 
 1. `HttpExample`İşlevinizin URL 'sini bu çıktıdan tarayıcıya kopyalayın ve sorgu dizesini ekleyerek `?name=<YOUR_NAME>` tam URL 'yi yapın `http://localhost:7071/api/HttpExample?name=Functions` . Tarayıcı şöyle bir ileti görüntülemelidir `Hello Functions` :
 

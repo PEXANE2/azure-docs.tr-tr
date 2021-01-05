@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 12/16/2020
 ms.custom: generated
-ms.openlocfilehash: c9638ce3509ba181e9f716b3bb427128e50c80ac
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 9318ea9d811f2fd490ed6e796b9719c5c482d513
+ms.sourcegitcommit: 17e9cb8d05edaac9addcd6e0f2c230f71573422c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97652900"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97707648"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure Kaynak sağlayıcısı işlemleri
 
@@ -88,7 +88,7 @@ Bu bölümde, yerleşik rollerde kullanılan Azure Kaynak sağlayıcılarının 
 | [Microsoft. Biliveservices](#microsoftcognitiveservices) |
 | [Microsoft. Machinöğrenim](#microsoftmachinelearning) |
 | [Microsoft.MachineLearningServices](#microsoftmachinelearningservices) |
-| **Nesnelerin interneti** |
+| **Nesnelerin İnterneti** |
 | [Microsoft.Devices](#microsoftdevices) |
 | [Microsoft. ıotcentral](#microsoftiotcentral) |
 | [Microsoft. Notificationhub 'Lar](#microsoftnotificationhubs) |
@@ -4651,13 +4651,13 @@ Azure hizmeti: [Power BI Embedded](/azure/power-bi-embedded/)
 > | Eylem | Açıklama |
 > | --- | --- |
 > | Microsoft. Powerbiadanmış/yazmaç/eylem | Adanmış Power BI kaynak sağlayıcısını kaydeder. |
-> | Microsoft. Powerbiadanmış/kapasiteler/okuma | Belirtilen Power BI adanmış kapasitenin bilgilerini alır. |
-> | Microsoft. Powerbiadanmış/kapasiteler/Write | Belirtilen Power BI adanmış kapasiteyi oluşturur veya güncelleştirir. |
-> | Microsoft. Powerbiadanmış/kapasiteler/silme | Adanmış Power BI kapasitesini siler. |
+> | Microsoft. Powerbiadanmış/kapasiteler/okuma | Belirtilen Power BI kapasitesinin bilgilerini alır. |
+> | Microsoft. Powerbiadanmış/kapasiteler/Write | Belirtilen Power BI kapasitesini oluşturur veya güncelleştirir. |
+> | Microsoft. Powerbiadanmış/kapasiteler/silme | Power BI kapasitesini siler. |
 > | Microsoft. Powerbiadanmış/kapasiteler/beklet/eylem | Kapasiteyi askıya alır. |
 > | Microsoft. Powerbiadanmış/kapasiteler/özgeçmişi/eylem | Kapasiteyi sürdürür. |
 > | Microsoft. Powerbiadanmış/kapasiteler/SKU/okuma | Kapasite için kullanılabilir SKU bilgilerini alın |
-> | Microsoft. Powerbiadanmış/konumlar/Checknameavaılabılıty/Action | Verilen Power BI adanmış kapasite adının geçerli olduğunu ve kullanımda olup olmadığını denetler. |
+> | Microsoft. Powerbiadanmış/konumlar/Checknameavaılabılıty/Action | Verilen Power BI kapasitesi adının geçerli ve kullanımda olup olmadığını denetler. |
 > | Microsoft. Powerbiadanmış/konumlar/operationresults/Read | Belirtilen işlem sonucu bilgilerini alır. |
 > | Microsoft. Powerbiadanmış/konumlar/operationdurumlar/okuma | Belirtilen işlem durumu bilgilerini alır. |
 > | Microsoft. Powerbiadanmış/işlemler/okuma | İşlem bilgilerini alır |
