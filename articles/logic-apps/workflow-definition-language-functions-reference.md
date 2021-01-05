@@ -3,15 +3,15 @@ title: Deyimlerdeki işlevler için başvuru kılavuzu
 description: Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevlere yönelik başvuru kılavuzu
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: a4646263eeb93a33a03e32107b46bb6dc104ce06
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5c03d9b64f957f6ef8450197477f185dc8d15b2d
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326310"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825859"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps ve güç otomatikleştirme için ifadelerde işlevleri kullanmaya yönelik başvuru kılavuzu
 
@@ -128,7 +128,7 @@ Koşullara göre çalışmak, değerleri ve ifade sonuçlarını karşılaştır
 | Mantıksal karşılaştırma işlevi | Görev |
 | --------------------------- | ---- |
 | [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Tüm ifadelerin doğru olup olmadığını denetleyin. |
-| [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
+| [eşittir](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Her iki değerin de eşdeğer olup olmadığını denetleyin. |
 | [büyüktür](../logic-apps/workflow-definition-language-functions-reference.md#greater) | İlk değerin ikinci değerden büyük olup olmadığını kontrol edin. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | İlk değerin ikinci değere eşit veya ondan büyük olup olmadığını kontrol edin. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | İfadenin true veya false olduğunu denetleyin. Sonuca göre belirtilen değeri döndürün. |
@@ -153,7 +153,7 @@ Bir değerin türünü veya biçimini değiştirmek için bu dönüştürme işl
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Bir dize için Base64 kodlamalı sürüm döndürün. |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Base64 ile kodlanmış bir dize için ikili sürümü döndürün. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Base64 ile kodlanmış bir dize için dize sürümünü döndürün. |
-| [ikili](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
+| [ý](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Bir giriş değeri için ikili sürümü döndürün. |
 | [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Bir giriş değeri için Boole sürümü döndürün. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Birden çok girişe bir dizi döndürün. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Giriş değeri için veri URI 'sini döndürün. |
@@ -682,7 +682,7 @@ addProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
 | <*özelliði*> | Evet | Dize | Eklenecek özelliğin adı |
-| <*deeri*> | Yes | Herhangi biri | Özelliğin değeri |
+| <*deeri*> | Yes | Herhangi bir | Özelliğin değeri |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -701,7 +701,7 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | <*nesne*> | Yes | Nesne | Özellik eklemek istediğiniz JSON nesnesi |
 | <*Parent-Property*> | Evet | Dize | Alt özellik eklemek istediğiniz üst özelliğin adı |
 | <*alt özellik*> | Evet | Dize | Eklenecek alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -1129,7 +1129,7 @@ bool(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi biri | Boole değerine dönüştürülecek değer. |
+| <*deeri*> | Yes | Herhangi bir | Boole değerine dönüştürülecek değer. |
 |||||
 
 `bool()`Bir nesneyle kullanıyorsanız, nesnesinin değeri Boolean 'a dönüştürülebileceği bir dize veya tamsayı olmalıdır.
@@ -1169,7 +1169,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*ilk-null olmayan öğe*> | Herhangi biri | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
+| <*ilk-null olmayan öğe*> | Herhangi bir | Null olmayan ilk öğe veya değer. Tüm parametreler null ise, bu işlev null değerini döndürür. |
 ||||
 
 *Örnek*
@@ -1678,7 +1678,7 @@ decodeUriComponent('<value>')
 Bu örnek, bu dizedeki kaçış karakterlerinin kodunu kodu çözülmüş sürümleriyle değiştirir:
 
 ```
-decodeUriComponent('http%3A%2F%2Fcontoso.com')
+decodeUriComponent('https%3A%2F%2Fcontoso.com')
 ```
 
 Ve şu sonucu döndürür: `"https://contoso.com"`
@@ -1753,7 +1753,7 @@ Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 encodeUriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
+Ve şu sonucu döndürür: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="empty"></a>
 
@@ -1887,7 +1887,7 @@ first([<collection>])
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Birinci koleksiyon-öğe*> | Herhangi biri | Koleksiyondaki ilk öğe |
+| <*Birinci koleksiyon-öğe*> | Herhangi bir | Koleksiyondaki ilk öğe |
 ||||
 
 *Örnek*
@@ -2294,13 +2294,13 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
 | <*ifadesini*> | Yes | Boole | Denetlenecek ifade |
-| <*valueIfTrue*> | Yes | Herhangi biri | İfade true olduğunda döndürülecek değer |
-| <*valueIfFalse*> | Yes | Herhangi biri | İfade false olduğunda döndürülecek değer |
+| <*valueIfTrue*> | Yes | Herhangi bir | İfade true olduğunda döndürülecek değer |
+| <*valueIfFalse*> | Yes | Herhangi bir | İfade false olduğunda döndürülecek değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*Belirtilen-Return-Value*> | Herhangi biri | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
+| <*Belirtilen-Return-Value*> | Herhangi bir | İfadenin true veya false olup olmadığına göre döndürülen belirtilen değer |
 ||||
 
 *Örnek*
@@ -2387,7 +2387,7 @@ item()
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*geçerli dizi öğesi*> | Herhangi biri | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
+| <*geçerli dizi öğesi*> | Herhangi bir | Eylemin geçerli yinelemesi için dizideki geçerli öğe |
 ||||
 
 *Örnek*
@@ -2416,7 +2416,7 @@ items('<loopName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*maddesinin*> | Herhangi biri | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
+| <*maddesinin*> | Herhangi bir | Belirtilen for-each döngüsünde geçerli döngüdeki öğe |
 ||||
 
 *Örnek*
@@ -3203,7 +3203,7 @@ parameters('<parameterName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*parametre-değer*> | Herhangi biri | Belirtilen parametrenin değeri |
+| <*parametre-değer*> | Herhangi bir | Belirtilen parametrenin değeri |
 ||||
 
 *Örnek*
@@ -3550,7 +3550,7 @@ setProperty(<object>, '<property>', <value>)
 | --------- | -------- | ---- | ----------- |
 | <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
 | <*özelliði*> | Evet | Dize | Ayarlanacak mevcut veya yeni özelliğin adı |
-| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 Alt nesne içindeki alt özelliği ayarlamak için, bunun yerine iç içe geçmiş bir `setProperty()` çağrı kullanın. Aksi takdirde, işlev yalnızca çıkış olarak alt nesneyi döndürür.
@@ -3564,7 +3564,7 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | <*nesne*> | Yes | Nesne | Özelliğini ayarlamak istediğiniz JSON nesnesi |
 | <*Parent-Property*> | Evet | Dize | Ayarlamak istediğiniz alt özelliği olan üst özelliğin adı |
 | <*alt özellik*> | Evet | Dize | Ayarlanacak alt özelliğin adı |
-| <*deeri*> | Yes | Herhangi biri | Belirtilen özellik için ayarlanacak değer |
+| <*deeri*> | Yes | Herhangi bir | Belirtilen özellik için ayarlanacak değer |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -3848,7 +3848,7 @@ string(<value>)
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*deeri*> | Yes | Herhangi biri | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
+| <*deeri*> | Yes | Herhangi bir | Dönüştürülecek değer. Bu değer null ise veya null olarak değerlendirilirse, değer boş bir String ( `""` ) değerine dönüştürülür. <p><p>Örneğin, işleç ile erişebileceğiniz, varolmayan bir özelliğe bir dize değişkeni atarsanız, `?` null değeri boş bir dizeye dönüştürülür. Ancak, null bir değeri karşılaştırmak boş bir dizeyi karşılaştırmadan aynı değildir. |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
@@ -4174,7 +4174,7 @@ Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "fee
 triggerFormDataMultiValues('feedUrl')
 ```
 
-Ve bu diziyi örnek bir sonuç olarak döndürür: `["http://feeds.reuters.com/reuters/topNews"]`
+Ve bu diziyi örnek bir sonuç olarak döndürür: `["https://feeds.a.dj.com/rss/RSSMarketsMain.xml"]`
 
 <a name="triggerFormDataValue"></a>
 
@@ -4205,7 +4205,7 @@ Bu örnek bir RSS tetikleyicisinin form verileri veya form kodlu çıktıda "fee
 triggerFormDataValue('feedUrl')
 ```
 
-Ve bu dizeyi örnek sonuç olarak döndürür: `"http://feeds.reuters.com/reuters/topNews"`
+Ve bu dizeyi örnek sonuç olarak döndürür: `"https://feeds.a.dj.com/rss/RSSMarketsMain.xml"`
 
 <a name="triggerMultipartBody"></a>
 
@@ -4336,7 +4336,7 @@ Bu örnek, bu dize için URI kodlu bir sürüm oluşturur:
 uriComponent('https://contoso.com')
 ```
 
-Ve şu sonucu döndürür: `"http%3A%2F%2Fcontoso.com"`
+Ve şu sonucu döndürür: `"https%3A%2F%2Fcontoso.com"`
 
 <a name="uriComponentToBinary"></a>
 
@@ -4363,7 +4363,7 @@ uriComponentToBinary('<value>')
 Bu örnek, URI kodlamalı bu dize için ikili sürüm oluşturur:
 
 ```
-uriComponentToBinary('http%3A%2F%2Fcontoso.com')
+uriComponentToBinary('https%3A%2F%2Fcontoso.com')
 ```
 
 Ve şu sonucu döndürür:
@@ -4398,7 +4398,7 @@ uriComponentToString('<value>')
 Bu örnek, bu URI kodlu dize için kodu çözülmüş dize sürümünü oluşturur:
 
 ```
-uriComponentToString('http%3A%2F%2Fcontoso.com')
+uriComponentToString('https%3A%2F%2Fcontoso.com')
 ```
 
 Ve şu sonucu döndürür: `"https://contoso.com"`
@@ -4458,7 +4458,7 @@ uriPath('<uri>')
 Bu örnek, `path` Bu URI için değeri bulur:
 
 ```
-uriPath('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPath('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Ve şu sonucu döndürür: `"/catalog/shownew.htm"`
@@ -4488,7 +4488,7 @@ uriPathAndQuery('<uri>')
 Bu örnek, `path` `query` Bu URI için ve değerlerini bulur:
 
 ```
-uriPathAndQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriPathAndQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Ve şu sonucu döndürür: `"/catalog/shownew.htm?date=today"`
@@ -4518,7 +4518,7 @@ uriPort('<uri>')
 Bu örnek, `port` Bu URI için değeri döndürür:
 
 ```
-uriPort('http://www.localhost:8080')
+uriPort('https://www.localhost:8080')
 ```
 
 Ve şu sonucu döndürür: `8080`
@@ -4548,7 +4548,7 @@ uriQuery('<uri>')
 Bu örnek, `query` Bu URI için değeri döndürür:
 
 ```
-uriQuery('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriQuery('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Ve şu sonucu döndürür: `"?date=today"`
@@ -4578,7 +4578,7 @@ uriScheme('<uri>')
 Bu örnek, `scheme` Bu URI için değeri döndürür:
 
 ```
-uriScheme('http://www.contoso.com/catalog/shownew.htm?date=today')
+uriScheme('https://www.contoso.com/catalog/shownew.htm?date=today')
 ```
 
 Ve şu sonucu döndürür: `"http"`
@@ -4645,7 +4645,7 @@ variables('<variableName>')
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
-| <*değişken değer*> | Herhangi biri | Belirtilen değişkenin değeri |
+| <*değişken değer*> | Herhangi bir | Belirtilen değişkenin değeri |
 ||||
 
 *Örnek*
@@ -4752,14 +4752,14 @@ xpath('<xml>', '<xpath>')
 
 | Parametre | Gerekli | Tür | Açıklama |
 | --------- | -------- | ---- | ----------- |
-| <*'sini*> | Yes | Herhangi biri | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
-| <*XPath*> | Yes | Herhangi biri | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
+| <*'sini*> | Yes | Herhangi bir | Bir XPath ifadesi değeriyle eşleşen düğümleri veya değerleri aramak için XML dizesi |
+| <*XPath*> | Yes | Herhangi bir | Eşleşen XML düğümlerini veya değerlerini bulmak için kullanılan XPath ifadesi |
 |||||
 
 | Döndürülen değer | Tür | Açıklama |
 | ------------ | ---- | ----------- |
 | <*XML düğümü*> | XML | Belirtilen XPath ifadesiyle yalnızca tek bir düğüm eşleştiğinde bir XML düğümü |
-| <*deeri*> | Herhangi biri | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
+| <*deeri*> | Herhangi bir | Belirtilen XPath ifadesiyle yalnızca tek bir değer eşleştiğinde bir XML düğümündeki değer |
 | [<*XML-düğüm1*>, <*xml-Düğüm2*>,...] </br>-veya- </br>[<*değer1*>, <*değer2*>,...] | Dizi | XML düğümleri veya belirtilen XPath ifadesiyle eşleşen değerler içeren bir dizi |
 ||||
 
@@ -4918,16 +4918,16 @@ Sonuç şöyledir: `30`
 
 *Örnek 8*
 
-Bu örnekte, XML belgesi ad alanını içeren bu XML dizesine sahip olduğunuzu varsayalım `xmlns="http://contoso.com"` :
+Bu örnekte, XML belgesi ad alanını içeren bu XML dizesine sahip olduğunuzu varsayalım `xmlns="https://contoso.com"` :
 
 ```xml
-<?xml version="1.0"?><file xmlns="http://contoso.com"><location>Paris</location></file>
+<?xml version="1.0"?><file xmlns="https://contoso.com"><location>Paris</location></file>
 ```
 
-Bu ifadeler, `/*[name()="file"]/*[name()="location"]` `/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]` düğüm ile eşleşen düğümleri bulmak için ya da XPath ifadesi ya da kullanır `<location></location>` . Bu örneklerde, mantıksal uygulama tasarımcısında veya ifade düzenleyicisinde kullandığınız sözdizimi gösterilmektedir:
+Bu ifadeler, `/*[name()="file"]/*[name()="location"]` `/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]` düğüm ile eşleşen düğümleri bulmak için ya da XPath ifadesi ya da kullanır `<location></location>` . Bu örneklerde, mantıksal uygulama tasarımcısında veya ifade düzenleyicisinde kullandığınız sözdizimi gösterilmektedir:
 
 * `xpath(xml(body('Http')), '/*[name()="file"]/*[name()="location"]')`
-* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="http://contoso.com"]/*[local-name()="location"]')`
+* `xpath(xml(body('Http')), '/*[local-name()="file" and namespace-uri()="https://contoso.com"]/*[local-name()="location"]')`
 
 Düğüm ile eşleşen sonuç düğümü aşağıdadır `<location></location>` : 
 

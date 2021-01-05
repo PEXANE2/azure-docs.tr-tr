@@ -8,12 +8,12 @@ ms.date: 10/16/2020
 ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: feabac62564729338e41bf30eaf8d9f5a6317126
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 56505c95e65911cafbaaa403cd09332695439d97
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148997"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825664"
 ---
 # <a name="quickstart-create-an-azure-app-configuration-store-by-using-an-arm-template"></a>Hızlı başlangıç: ARM şablonu kullanarak Azure uygulama yapılandırma deposu oluşturma
 
@@ -46,10 +46,10 @@ Hızlı başlangıç, `copy` anahtar-değer kaynağının birden çok örneğini
 
 Şablonda iki Azure kaynağı tanımlanmıştır:
 
-- [Microsoft. AppConfiguration/Configurationmağazaların](/azure/templates/microsoft.appconfiguration/2020-06-01/configurationstores): bir uygulama yapılandırma deposu oluşturun.
-- Microsoft. AppConfiguration/Configurationmağazaları/keyValues: uygulama yapılandırma deposu içinde bir anahtar değeri oluşturun.
+- [Microsoft. AppConfiguration/Configurationmağazaların](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores): bir uygulama yapılandırma deposu oluşturun.
+- [Microsoft. appconfiguration/Configurationmağazaları/keyValues](/azure/templates/microsoft.appconfiguration/2020-07-01-preview/configurationstores/keyvalues): uygulama yapılandırma deposu içinde bir anahtar değeri oluşturun.
 
-> [!NOTE]
+> [!TIP]
 > `keyValues`Kaynağın adı, anahtar ve etiketin bir birleşimidir. Anahtar ve etiket `$` sınırlayıcıyla birleştirilir. Etiket isteğe bağlıdır. Yukarıdaki örnekte, `keyValues` adı olan kaynak, `myKey` etiket olmadan bir anahtar değeri oluşturur.
 >
 > URL kodlaması olarak da bilinen yüzde Encoding, anahtar veya etiketlerin ARM şablon kaynak adlarında izin verilmeyen karakterler içermesini sağlar. `%` , izin verilen bir karakter değil, `~` onun yerinde kullanılır. Bir adı doğru bir şekilde kodlamak için aşağıdaki adımları izleyin:
@@ -59,6 +59,13 @@ Hızlı başlangıç, `copy` anahtar-değer kaynağının birden çok örneğini
 > 3. Değiştir `%``~`
 >
 > Örneğin, anahtar adı ve etiket adı ile bir anahtar-değer çifti oluşturmak için `AppName:DbEndpoint` `Test` , kaynak adı olmalıdır `AppName~3ADbEndpoint$Test` .
+
+> [!NOTE]
+> Uygulama yapılandırması, sanal ağınızdan [özel bir bağlantı](concept-private-endpoint.md) üzerinden anahtar değer veri erişimine izin verir. Varsayılan olarak, özellik etkinleştirildiğinde, genel ağ üzerinden uygulama yapılandırma verilerinize yönelik tüm istekler reddedilir. ARM şablonu sanal ağınızın dışında çalıştığından, ARM şablonundan veri erişimine izin verilmez. Özel bir bağlantı kullanıldığında ARM şablonundan veri erişimine izin vermek için aşağıdaki Azure CLı komutunu kullanarak ortak ağ erişimini etkinleştirebilirsiniz. Bu senaryoda ortak ağ erişimini etkinleştirmenin güvenlik etkilerine yönelik etkileri göz önünde bulundurmanız önemlidir.
+>
+> ```azurecli-interactive
+> az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
+> ```
 
 ## <a name="deploy-the-template"></a>Şablonu dağıtma
 
@@ -84,9 +91,9 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 ## <a name="review-deployed-resources"></a>Dağıtılan kaynakları gözden geçirme
 
 1. [Azure portalında](https://portal.azure.com) oturum açın.
-1. Azure portal arama kutusuna **uygulama yapılandırması**yazın. Listeden **uygulama yapılandırması** ' nı seçin.
+1. Azure portal arama kutusuna **uygulama yapılandırması** yazın. Listeden **uygulama yapılandırması** ' nı seçin.
 1. Yeni oluşturulan uygulama yapılandırma kaynağını seçin.
-1. **İşlemler**altında **yapılandırma Gezgini**' ne tıklayın.
+1. **İşlemler** altında **yapılandırma Gezgini**' ne tıklayın.
 1. İki anahtar değerinin mevcut olduğunu doğrulayın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

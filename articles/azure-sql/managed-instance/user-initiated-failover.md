@@ -3,19 +3,19 @@ title: SQL yönetilen örneği üzerinde el ile yük devretme başlatma
 description: Azure SQL yönetilen örneği 'nde birincil ve ikincil çoğaltmaların el ile yük devretmesini öğrenin.
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
+ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 7f30ff70e0219a803051b0f8e1208740c359863a
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605403"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825931"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Yönetilen Örneği'nde kullanıcı tarafından başlatılan el ile yük devretme
 

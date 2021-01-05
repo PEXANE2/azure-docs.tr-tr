@@ -11,13 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: Technical Support'
-- devx-track-azurecli
-ms.openlocfilehash: bdd9d5fd878094326331e60fc1a639eef08b7ea3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9487fc562fa099d2650aabc8d15fc1449c7fcb5c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792472"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825180"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Cihaz akışlarını IoT Hub (Önizleme)
 
@@ -129,9 +128,9 @@ Azure Izleyici 'yi, IoT Hub tarafından yayılan [cihaz akışları için kaynak
 
 Azure Izleyici günlüklerine IoT Hub cihaz akışları günlüklerini göndermek üzere bir tanılama ayarı oluşturmak için aşağıdaki adımları izleyin:
 
-1. Azure portal, IoT Hub 'ınıza gidin. Sol bölmedeki **izleme** altında **Tanılama ayarları** ' nı seçin. Ardından **Tanılama ayarı Ekle** ' yi seçin.
+1. Azure portal, IoT Hub 'ınıza gidin. Sol bölmedeki **izleme** altında **Tanılama ayarları**' nı seçin. Ardından **Tanılama ayarı Ekle**' yi seçin.
 
-2. Tanılama ayarınız için bir ad girin ve Günlükler listesinden **Devicestreams** ' ı seçin. Sonra **Log Analytics gönder** ' i seçin. Mevcut bir Log Analytics çalışma alanını seçmek veya yeni bir tane oluşturmak için size kılavuzluk edilecek.
+2. Tanılama ayarınız için bir ad girin ve Günlükler listesinden **Devicestreams** ' ı seçin. Sonra **Log Analytics gönder**' i seçin. Mevcut bir Log Analytics çalışma alanını seçmek veya yeni bir tane oluşturmak için size kılavuzluk edilecek.
 
     :::image type="content" source="media/iot-hub-device-streams-overview/device-streams-configure-diagnostics.png" alt-text="Cihaz akışları günlüklerini etkinleştir":::
 
@@ -183,7 +182,7 @@ Yerel proxy örneği, var olan bir uygulamanın, bir istemci ile sunucu program�
 
 Bu bölümde, kullanıcının cihaz akışları üzerinden bir cihaza SSH kullanmasını sağlamak için cihaz akışlarının kullanımı açıklanmaktadır (RDP veya diğer istemci/sunucu uygulaması için protokolün karşılık gelen bağlantı noktası kullanılarak benzerdir).
 
-Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programını kullanır; bu şekilde *cihaz yerel proxy* ve *hizmet yerel ara sunucu* . Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışması](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu YUVALARıNı kullanarak SSH ISTEMCISI ve ssh daemon ile etkileşimde bulunmaktan sorumludur.
+Kurulum, aşağıdaki şekilde gösterilen iki *yerel proxy* programını kullanır; bu şekilde *cihaz yerel proxy* ve *hizmet yerel ara sunucu*. Yerel proxy programları, IoT Hub ile [cihaz akışı başlatma el sıkışması](#device-stream-creation-flow) gerçekleştirmekten ve normal istemci/sunucu YUVALARıNı kullanarak SSH ISTEMCISI ve ssh daemon ile etkileşimde bulunmaktan sorumludur.
 
 !["SSH/RDP için cihaz akışı proxy kurulumu"](./media/iot-hub-device-streams-overview/iot-hub-device-streams-ssh.png)
 

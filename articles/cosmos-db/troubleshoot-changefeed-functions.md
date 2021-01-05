@@ -4,16 +4,16 @@ description: Cosmos DB için Azure Işlevleri tetikleyicisi kullanılırken yayg
 author: ealsur
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 03/13/2020
+ms.date: 12/29/2020
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 9fc5da214a50cb000d2154d08bb9b6f6f98ac5ec
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1b7b82ea07b7e00d281739011c9c9f83ab4dff73
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340541"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825621"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisi 'ni kullanırken sorunları tanılayın ve sorun giderin
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -85,16 +85,18 @@ Bir "değişiklik" kavramı belge üzerinde bir işlemdir. Aynı belge için ola
 
 ### <a name="some-changes-are-missing-in-my-trigger"></a>Tetikleyicimde bazı değişiklikler yok
 
-Azure Cosmos kapsayıcıda gerçekleşen bazı değişikliklerin Azure Işlevi tarafından çekilmediğini fark ederseniz, gerçekleşmesi gereken bir ilk araştırma adımı vardır.
+Azure Cosmos kapsayıcıınızda gerçekleşen bazı değişikliklerin Azure Işlevi tarafından çekilmediğini veya kopyalama sırasında hedefte bazı değişikliklerin eksik olduğunu fark ederseniz, lütfen aşağıdaki adımları izleyin.
 
 Azure Işleviniz değişiklikleri aldığında, genellikle bunları işler ve isteğe bağlı olarak başka bir hedefe gönderebilirsiniz. Eksik değişiklikleri araştırırken, hedef üzerinde değil, alma noktasında (Azure Işlevi başladığında) **hangi değişikliklerin alındığını ölçdiğinizden** emin olun.
 
 Hedefte bazı değişiklikler eksikse, bu, değişiklikler alındıktan sonra Azure Işlev yürütmesi sırasında bazı hatalar meydana geliyor olabilir.
 
-Bu senaryoda, en iyi işlem `try/catch` konusu, kodunuzun içindeki blokları ve değişiklikleri işleyebilecek döngüleri eklemek, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek (daha fazla analiz veya yeniden denemek için başka bir depolama alanına göndermek). 
+Bu senaryoda, en iyi işlem `try/catch` konusu, kodunuzun içindeki blokları ve değişiklikleri işleyebilecek döngüleri eklemek, belirli bir öğe alt kümesi için herhangi bir hatayı tespit etmek ve bunları buna göre işlemek (daha fazla analiz veya yeniden denemek için başka bir depolama alanına göndermek).
 
 > [!NOTE]
 > Cosmos DB için Azure İşlevleri tetikleyicisi, kod yürütmeniz sırasında işlenmemiş bir özel durum oluştuğunda varsayılan olarak bir toplu değişiklik grubunu yeniden denemeyecektir. Bu, değişikliklerin hedefe ulaşamamasının nedeni, bunları İşleyemeyeceğiniz anlamına gelir.
+
+Hedef başka bir Cosmos kapsayıcısıdır ve öğeleri kopyalamak için büyük işlemler uyguluyorsanız, **hem izlenen hem de hedef kapsayıcıdaki bölüm anahtarı tanımının aynı olduğunu doğrulayın**. Bu yapılandırma farkı nedeniyle, üst öğe, birden fazla kaynak öğesini hedefte tek bir kayıt halinde kaydediuyor.
 
 Tetikleyicinizin tümünde bazı değişiklikler alınmadığından, en yaygın senaryo, **çalışan başka bir Azure işlevi** olduğundan emin olur. Bu, Azure 'da dağıtılan başka bir Azure Işlevi veya bir geliştirici makinesinde yerel olarak **aynı yapılandırmaya** (aynı izlenen ve kira kapsayıcıları) sahip olan bir Azure işlevi olabilir ve bu Azure Işlevi, Azure işlevinizin işlemesini beklediğiniz değişikliklerin bir alt kümesini çalmaya çalışır.
 

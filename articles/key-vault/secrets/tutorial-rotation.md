@@ -10,13 +10,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 0da0a56a64aa9b4500d36da2f6c86fc4c07f4c0f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 5e61510965693e123c724d7b40d2fa6071fdd94c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786063"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824806"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Bir kimlik doğrulama kimlik bilgileri kümesi kullanan kaynaklar için gizli dizi döndürmeyi otomatikleştirin
 
@@ -24,7 +24,8 @@ Azure hizmetlerinde kimlik doğrulaması yapmanın en iyi yolu [yönetilen bir k
 
 Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan veritabanları ve hizmetler için düzenli aralıklarla yapılan gizli dizi döndürmenin nasıl otomatikleştirdiği gösterilmektedir. Özellikle, bu öğretici Azure Event Grid bildirimi tarafından tetiklenen bir işlev kullanılarak Azure Key Vault depolanan SQL Server parolalarını döndürür:
 
-![Döndürme çözümünün diyagramı](../media/rotate-1.png)
+
+:::image type="content" source="../media/rotate-1.png" alt-text="Döndürme çözümünün diyagramı":::
 
 1. Bir parolanın süre sonu tarihinden otuz gün önce, Key Vault Event Grid "sona erme" olayını yayınlar.
 1. Event Grid olay aboneliklerini denetler ve olaya abone olan işlev uygulama uç noktasını çağırmak için HTTP POST kullanır.
@@ -34,7 +35,7 @@ Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan ver
 > [!NOTE]
 > 3 ve 4. adımlar arasında bir gecikme olabilir. Bu süre boyunca Key Vault gizli dizi SQL Server kimlik doğrulaması yapamaz. Adımların hiçbirinde hata olması durumunda iki saat boyunca yeniden denemeler Event Grid.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * Bir Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Azure Key Vault
@@ -42,19 +43,19 @@ Bu öğreticide, tek bir kimlik doğrulama kimlik bilgileri kümesi kullanan ver
 
 Mevcut Key Vault ve SQL Server yoksa dağıtım bağlantısı aşağıdaki şekilde kullanılabilir:
 
-[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FInitial-Setup%2Fazuredeploy.json)
+[!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. **Kaynak grubu** altında **Yeni oluştur** ' u seçin. Grubu **akvdönüşü** olarak adlandırın.
+1. **Kaynak grubu** altında **Yeni oluştur**' u seçin. Grubu **akvdönüşü** olarak adlandırın.
 1. **SQL Yöneticisi oturum açma** bölümünde SQL yönetici oturum açma adı yazın. 
-1. **Gözden geçir ve oluştur** ’u seçin.
-1. **Oluştur** ’u seçin
+1. **Gözden geçir ve oluştur**’u seçin.
+1. **Oluştur**’u seçin
 
-    ![Kaynak grubu oluşturma](../media/rotate-2.png)
+:::image type="content" source="../media/rotate-2.png" alt-text="Kaynak grubu oluşturma":::
 
 Artık Key Vault ve SQL Server bir örnek vardır. Aşağıdaki komutu çalıştırarak bu kurulumu Azure CLı 'da doğrulayabilirsiniz:
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 Sonuç aşağıdaki çıktıyı görür:
@@ -62,9 +63,11 @@ Sonuç aşağıdaki çıktıyı görür:
 ```console
 Name                     ResourceGroup         Location    Type                               Status
 -----------------------  --------------------  ----------  ---------------------------------  --------
-akvrotation-kv          akvrotation      eastus      Microsoft.KeyVault/vaults
-akvrotation-sql         akvrotation      eastus      Microsoft.Sql/servers
-akvrotation-sql/master  akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-kv           akvrotation      eastus      Microsoft.KeyVault/vaults
+akvrotation-sql          akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql/master   akvrotation      eastus      Microsoft.Sql/servers/databases
+akvrotation-sql2         akvrotation      eastus      Microsoft.Sql/servers
+akvrotation-sql2/master  akvrotation      eastus      Microsoft.Sql/servers/databases
 ```
 
 ## <a name="create-and-deploy-sql-server-password-rotation-function"></a>SQL Server parola döndürme işlevi oluşturma ve dağıtma
@@ -82,23 +85,24 @@ Sonra, sistem tarafından yönetilen kimliğe sahip bir işlev uygulaması oluş
 
 1. Azure şablonu dağıtım bağlantısını seçin: 
 
-   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FFunction%2Fazuredeploy.json)
 
-1. **Kaynak grubu** listesinde, **akvdönüşü** ' ni seçin.
-1. **SQL Server adı** ' nda, döndürmek için parola Ile SQL Server adını yazın
-1. **Key Vault adına** , Anahtar Kasası adını yazın
-1. **İşlev uygulaması adına** , işlev uygulama adını yazın
+1. **Kaynak grubu** listesinde, **akvdönüşü**' ni seçin.
+1. **SQL Server adı**' nda, döndürmek için parola Ile SQL Server adını yazın
+1. **Key Vault adına**, Anahtar Kasası adını yazın
+1. **İşlev uygulaması adına**, işlev uygulama adını yazın
 1. Gizli dizi **adında** parolanın depolanacağı gizli adı yazın
-1. **Depo URL 'si** içinde, Işlev kodu GitHub Location () yazın **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp.git**
-1. **Gözden geçir ve oluştur** ’u seçin.
-1. **Oluştur** ’u seçin.
+1. **Depo URL 'si** içinde, Işlev kodu GitHub Location () yazın **https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp.git**
+1. **Gözden geçir ve oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
-   ![Gözden geçir + oluştur ' u seçin](../media/rotate-3.png)
+:::image type="content" source="../media/rotate-3.png" alt-text="Gözden geçir + oluştur ' u seçin":::
+  
 
 Yukarıdaki adımları tamamladıktan sonra bir depolama hesabınız, sunucu grubunuz ve bir işlev uygulamanız olacaktır. Aşağıdaki komutu çalıştırarak bu kurulumu Azure CLı 'da doğrulayabilirsiniz:
 
 ```azurecli
-az resource list -o table
+az resource list -o table -g akvrotation
 ```
 
 Sonuç aşağıdaki çıktıya benzer bir şekilde görünecektir:
@@ -187,7 +191,7 @@ Bu döndürme yöntemi, gizli dizi veritabanı bilgilerini okur, gizliliğin yen
         }
 }
 ```
-Tüm kodu [GitHub](https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp)' da bulabilirsiniz.
+Tüm kodu [GitHub](https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp)' da bulabilirsiniz.
 
 ## <a name="add-the-secret-to-key-vault"></a>Gizli dizi Key Vault ekleyin
 Kullanıcılara *gizli dizi yönetme* izinleri vermek için erişim ilkenizi ayarlayın:
@@ -209,11 +213,11 @@ Kısa süre sonu tarihi ile bir gizli dizi oluşturmak `SecretNearExpiry` , 15 d
 
 Gizli dizinin döndürülmeyeceğini doğrulamak için **Key Vault**  >  **gizli** dizi sayfasına gidin:
 
-![Gizli anahtarlara git](../media/rotate-8.png)
+:::image type="content" source="../media/rotate-8.png" alt-text="Gizli anahtarlara git":::
 
 **SQLPassword** gizli anahtarını açın ve özgün ve döndürülmüş sürümleri görüntüleyin:
 
-![SQLUSER parolasını açın](../media/rotate-9.png)
+:::image type="content" source="../media/rotate-9.png" alt-text="Gizli anahtarlara git":::
 
 ### <a name="create-a-web-app"></a>Web uygulaması oluşturma
 
@@ -225,15 +229,15 @@ Web uygulaması şu bileşenleri gerektirir:
 
 1. Azure şablonu dağıtım bağlantısını seçin: 
 
-   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmaster%2Farm-templates%2FWeb-App%2Fazuredeploy.json)
+   [!["Azure 'a dağıt" etiketli bir düğmeyi gösteren resim.](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp-WebApp%2Fmain%2FARM-Templates%2FWeb-App%2Fazuredeploy.json)
 
 1. **Akvrotation** kaynak grubunu seçin.
-1. **SQL Server adı** ' nda, döndürmek için parola Ile SQL Server adını yazın
-1. **Key Vault adına** , Anahtar Kasası adını yazın
+1. **SQL Server adı**' nda, döndürmek için parola Ile SQL Server adını yazın
+1. **Key Vault adına**, Anahtar Kasası adını yazın
 1. Gizli dizi **adında** parolanın depolandığı gizli adı yazın
-1. **Depo URL** 'sinde, Web uygulaması kodu GitHub konumu ( **https://github.com/jlichwa/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ) yazın
-1. **Gözden geçir ve oluştur** ’u seçin.
-1. **Oluştur** ’u seçin.
+1. **Depo URL**'sinde, Web uygulaması kodu GitHub konumu ( **https://github.com/Azure-Samples/KeyVault-Rotation-SQLPassword-Csharp-WebApp.git** ) yazın
+1. **Gözden geçir ve oluştur**’u seçin.
+1. **Oluştur**’u seçin.
 
 
 ### <a name="open-the-web-app"></a>Web uygulamasını açın
@@ -244,7 +248,7 @@ https://akvrotation-app.azurewebsites.net/
 
 Uygulama tarayıcıda açıldığında, **oluşturulan gizli değeri** ve bir **veritabanı bağlı** değeri *true* olarak görürsünüz.
 
-## <a name="learn-more"></a>Daha fazlasını öğrenin
+## <a name="learn-more"></a>Daha fazla bilgi edinin
 
 - Öğretici: [iki kimlik bilgileri kümesi olan kaynaklar Için döndürme](tutorial-rotation-dual.md)
 - Genel Bakış: [Azure Event Grid Key Vault izleme](../general/event-grid-overview.md)

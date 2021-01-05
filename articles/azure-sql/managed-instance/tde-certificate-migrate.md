@@ -4,19 +4,19 @@ description: Azure SQL yönetilen örneği Saydam Veri Şifrelemesi bir veritaba
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: security
-ms.custom: sqldbrb=1, devx-track-azurecli
+ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein, jovanpop
 ms.date: 07/21/2020
-ms.openlocfilehash: 80ff16156348db9c3a209757b48b7d54615d9104
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c465da3d5d812ea7e811cbe59318122700c6e786
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790704"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824665"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>TDE korumalı bir veritabanının sertifikasını Azure SQL yönetilen örneği 'ne geçirme
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -34,7 +34,7 @@ Hem TDE korumalı bir veritabanının hem de karşılık gelen sertifikanın sor
 > [!IMPORTANT]
 > Geçirilen bir sertifika yalnızca TDE korumalı veritabanının geri yüklenmesi için kullanılır. Geri yükleme yapıldıktan kısa süre sonra, geçirilen sertifika, örnek üzerinde ayarlamış olduğunuz TDE türüne bağlı olarak, hizmet tarafından yönetilen bir sertifika veya anahtar kasasından asimetrik bir anahtarla değiştirilmiştir.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 Bu makaledeki adımları tamamlayabilmeniz için şu önkoşullar gereklidir:
 
@@ -125,7 +125,7 @@ Sertifika SQL Server yerel makine sertifika deposunda tutuluyorsa, bu, aşağıd
 
 2. Sertifikalar MMC ek bileşeninde, sertifikaların listesini görmek için kişisel > sertifikaları yolunu genişletin.
 
-3. Sertifikaya sağ tıklayın ve **dışarı aktar** ' a tıklayın.
+3. Sertifikaya sağ tıklayın ve **dışarı aktar**' a tıklayın.
 
 4. Sertifikayı ve özel anahtarı bir. pfx biçimine aktarmak için Sihirbazı izleyin.
 

@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdinsightactive, devx-track-azurecli
+ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dca248d217f4fb90d41c0a98a42b5eda4783913f
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007163"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825211"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight 'ta özel Apache Hadoop uygulamaları yüklemeyi
 
@@ -83,7 +83,7 @@ Uygulama yüklemesini doğrulamak için Azure portalında uygulama durumunu dene
 1. Özellikleri görüntülemek için listeden **ton** ' ı seçin.  
 1. Web sitesini doğrulamak için Web sayfası bağlantısını seçin.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 `CLUSTERNAME`Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve ardından aşağıdaki komutları girin:
 
@@ -131,7 +131,7 @@ Uygulama yüklemesi başarısız olursa, üç konumdan hata iletilerini ve hata 
 1. Kaldırmak istediğiniz uygulamaya sağ tıklayın ve ardından **Sil**' i seçin.
 1. Onaylamak için **Evet**’i seçin.
 
-### <a name="azure-cli"></a>Azure CLI’si
+### <a name="azure-cli"></a>Azure CLI
 
 `NAME`, `CLUSTERNAME` Ve `RESOURCEGROUP` değerlerini ilgili değerlerle değiştirin ve aşağıdaki komutu girin:
 

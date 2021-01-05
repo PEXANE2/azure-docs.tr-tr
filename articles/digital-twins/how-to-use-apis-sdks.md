@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1627db2f1f19c393d4f40892ca65141f26424ac9
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: c9f9cc53c62ed19fa5fbd1e78c840a8a34b6fb84
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656946"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97824643"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins API’lerini ve SDK’larını kullanma
 
@@ -81,15 +81,9 @@ Azure Digital Twins .NET (C#) SDK 'Sı, .NET için Azure SDK 'sının bir parça
 > [!NOTE]
 > SDK tasarımı hakkında daha fazla bilgi için bkz. [Azure SDK 'ları için genel tasarım ilkeleri](https://azure.github.io/azure-sdk/general_introduction.html) ve belirli [.net tasarım yönergeleri](https://azure.github.io/azure-sdk/dotnet_introduction.html).
 
-SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** paketinin en son sürümüne de ihtiyacınız olacaktır.
-
-* Visual Studio 'da, NuGet Paket Yöneticisi ( *araçlar > NuGet Paket Yöneticisi aracılığıyla erişilir > çözüm Için NuGet Paketlerini Yönet*) ile paket ekleyebilirsiniz. 
-* .NET komut satırı aracını kullanarak şunları gerçekleştirebilirsiniz:
-
-    ```cmd/sh
-    dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-    dotnet add package Azure.identity
-    ```
+SDK 'yı kullanmak için, projenize **Azure. DigitalTwins. Core** NuGet paketini ekleyin. Ayrıca, **Azure. Identity** paketinin en son sürümüne de ihtiyacınız olacaktır. Visual Studio 'da, NuGet Paket Yöneticisi 'Ni ( *araçlar > NuGet Paket Yöneticisi aracılığıyla erişilir > çözüm Için NuGet Paketlerini Yönet*) kullanarak bu paketleri ekleyebilirsiniz. Alternatif olarak, aşağıdaki NuGet paketi bağlantılarında bulunan komutlarla birlikte .NET komut satırı aracını kullanarak bunları projenize ekleyebilirsiniz:
+* [**Azure. DigitalTwins. Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Bu paket, [.net Için Azure Digital TWINS SDK 'sına](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)yöneliktir. 
+* [**Azure. Identity**](https://www.nuget.org/packages/Azure.Identity). Bu kitaplık, Azure 'da kimlik doğrulamaya yardımcı olacak araçlar sağlar.
 
 API 'Leri uygulamada kullanma hakkında ayrıntılı bilgi için bkz. [*öğretici: istemci uygulaması kodu*](tutorial-code.md). 
 

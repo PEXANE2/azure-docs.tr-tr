@@ -3,13 +3,13 @@ title: Azure Işlevleri için izlemeyi yapılandırma
 description: İzleme için işlev uygulamanızı Application Insights bağlama ve veri toplamayı yapılandırma hakkında bilgi edinin.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 5c4e9795109a9b4b5a6e9ceeec6b22e0168eb28f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 77cc87e44990f471ef38871c0225835660779a3c
+ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027637"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97825758"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Azure Işlevleri için izlemeyi yapılandırma
 
@@ -143,7 +143,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-the-aggregator"></a>Toplayıcısı yapılandırma
 
-Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
+Önceki bölümde belirtildiği gibi, çalışma zamanı bir süre boyunca işlev yürütmeleri hakkındaki verileri toplar. Varsayılan süre 30 saniye veya 1.000 çalışma olur ve hangisi önce gelir. Bu ayarı, [host.jsdosya üzerinde] yapılandırabilirsiniz.  İşte bir örnek:
 
 ```json
 {
@@ -156,7 +156,7 @@ Aşağıdaki örnek, günlüğü aşağıdaki kurallara göre tanımlar:
 
 ## <a name="configure-sampling"></a>Örnekleme yapılandırma
 
-Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  Aşağıda bir örnek verilmiştir:
+Application Insights, yoğun yük saatlerinde tamamlanan yürütmeler üzerinde çok fazla telemetri verisi üretmenin bir [örnekleme](../azure-monitor/app/sampling.md) özelliğine sahiptir. Gelen yürütmeler oranı belirtilen eşiği aştığında Application Insights, gelen yürütmelerin bazılarını rastgele yok saymaya başlar. Saniyedeki en fazla yürütme sayısı için varsayılan ayar 20 ' dir (sürüm 1. x içinde beş). [Üzerindehost.js](./functions-host-json.md#applicationinsights)örnekleme yapılandırabilirsiniz.  İşte bir örnek:
 
 # <a name="v2x"></a>[v2. x +](#tab/v2)
 
