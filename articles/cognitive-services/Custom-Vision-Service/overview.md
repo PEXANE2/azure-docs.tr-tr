@@ -12,12 +12,12 @@ ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: görüntü tanıma, görüntü tanımlayıcı, görüntü tanıma uygulaması, Özel Vizyon
-ms.openlocfilehash: 7274fed961c4bbac8841e1c741f54031614cea5c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 12877f2d43f9b8f864871e5a5ab050aa0eeb61e2
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562999"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814610"
 ---
 # <a name="what-is-custom-vision"></a>Özel Görüntü İşleme nedir?
 
@@ -51,4 +51,4 @@ Tüm bilişsel hizmetlerde olduğu gibi, Özel Görüntü İşleme hizmetini kul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Web portalında Özel Görüntü İşleme kullanmaya başlamak için [sınıflandırıcının derleme](getting-started-build-a-classifier.md) kılavuzunu izleyin veya temel senaryoları kodda uygulamak için bir [istemci kitaplığı hızlı](quickstarts/image-classification.md) başlangıcını tamamlayın.
+Web portalında Özel Görüntü İşleme kullanmaya başlamak için [sınıflandırıcının derleme](getting-started-build-a-classifier.md) kılavuzunu izleyin veya temel senaryoları kodda uygulamak için [hızlı](quickstarts/image-classification.md) başlangıcı tamamlayın.

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621612"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821494"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Ticari Market için SaaS teklifi planlaması
 
@@ -113,10 +113,10 @@ SaaS teklifiniz hem BT çözümü (Azure Marketi) hem *de* bir iş çözümü (a
 
 | Ölçülen faturalandırma | Ortak plan | Özel plan | Kullanılabilir: |
 |---|---|---|---|
-| Evet             | Evet         | Hayır           | Azure Marketi ve Azure portal |
-| Evet             | Evet         | Evet          | Azure Marketi ve Azure portal * |
-| Evet             | Hayır          | Evet          | Yalnızca Azure portal |
-| Hayır              | Hayır          | Evet          | Yalnızca Azure portal |
+| Yes             | Yes         | Hayır           | Azure Marketi ve Azure portal |
+| Yes             | Yes         | Yes          | Azure Marketi ve Azure portal * |
+| Yes             | Hayır          | Yes          | Yalnızca Azure portal |
+| Hayır              | Hayır          | Yes          | Yalnızca Azure portal |
 |||||
 
 &#42; teklifin özel planı yalnızca Azure portal ile kullanılabilir
@@ -250,7 +250,7 @@ Aşağıdaki örnek, acentelerde bir örnek dökümünü ve kurumlar modelini g�
 | Microsoft, lisans maliyetinizi %80 oranında ödetir<br>`*` Microsoft, tam SaaS uygulamaları için lisans maliyetlerinizin %90 ' ını öder| $80,00/ay<br>``*`` $90,00/ay |
 |||
 
-**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, ay için en az Market servis ücretini almak üzere her bir takvim ayının sonundan önce en az beş (5) iş gününe ulaşılmalıdır. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
+**`*` Daha az Market servis ücreti** – Microsoft 'un ticari Market 'te yayımladığı belirli SaaS teklifleri için, Microsoft 'un Market hizmet ücretini %20 ' den (Microsoft Publisher anlaşmasında açıklandığı gibi) %10 ' a azaltacak. Tekliflerinizin uygun olmasını sağlamak için teklifinizin Microsoft tarafından Azure IP ortak satışı incentivized olarak belirlenmiş olması gerekir. Uygunluk, en az beş (5) iş günü boyunca her bir takvim ayının sonundan önce, daha düşük Market servis ücretini alacak şekilde sağlanmalıdır. Uygunluk karşılandıktan sonra, sınırlı hizmet ücreti, aşağıdaki ayın ilk gününde geçerli olan tüm işlemlere uygulanır ve Azure IP ortak satışı incentivized durumu kaybolana kadar uygulamaya devam edecektir. IP ortak satışı uygunluğu hakkında daha fazla bilgi için bkz. [ortak satış durumu gereksinimleri](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status). Daha düşük Market hizmet ücreti, Azure IP ortak satış incentivized VM 'Leri, yönetilen uygulamalar ve ticari Market aracılığıyla sunulan diğer tüm nitelikli transactable IaaS teklifleri için de geçerlidir.
 
 ## <a name="additional-sales-opportunities"></a>Ek satış fırsatları
 

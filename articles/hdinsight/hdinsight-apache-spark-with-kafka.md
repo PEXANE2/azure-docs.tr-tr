@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka ile akış Apache Spark-Azure HDInsight
-description: DStreams kullanarak Apache Kafka veri akışını veya bu verileri dışarı aktarmak için Apache Spark nasıl kullanacağınızı öğrenin. Bu örnekte, HDInsight üzerinde Spark’tan bir Jupyter not defterini kullanarak verilerinizi akışla aktaracaksınız.
+description: DStreams kullanarak Apache Kafka veri akışını veya bu verileri dışarı aktarmak için Apache Spark nasıl kullanacağınızı öğrenin. Bu örnekte, HDInsight üzerinde Spark 'tan bir Jupyter Notebook kullanarak veri akışı oluşturursunuz.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: e2f4bbe6157e1affa4975f6dcee2ad0f1d98a71b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88a62b2d1ebee3bf933729ab82bc9e37a3db066b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86086101"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821188"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight üzerinde Apache Kafka Apache Spark streaming (DStream) örneği
 
@@ -55,7 +55,7 @@ Azure sanal ağını, Kafka ve Spark kümelerini el ile oluşturabileceğiniz gi
     |---|---|
     |Kaynak grubu|Bir grup oluşturun veya var olan bir grubu seçin.|
     |Konum|Coğrafi olarak size yakın bir konum seçin.|
-    |Taban küme adı|Bu değer Spark ve Kafka kümelerinin temel adı olarak kullanılır. Örneğin, **hdistreaKafka** , __Spark-Hdistreate__ adlı bir Spark kümesi ve **Kafka-Hdisantadlı**bir kümesi oluşturur.|
+    |Taban küme adı|Bu değer Spark ve Kafka kümelerinin temel adı olarak kullanılır. Örneğin, **hdistreaKafka** , __Spark-Hdistreate__ adlı bir Spark kümesi ve **Kafka-Hdisantadlı** bir kümesi oluşturur.|
     |Küme Oturum Açma Kullanıcı Adı|Spark ve Kafka kümeleri için Yönetici Kullanıcı adı.|
     |Küme Oturum Açma Parolası|Spark ve Kafka kümeleri için Yönetici Kullanıcı parolası.|
     |SSH Kullanıcı Adı|Spark ve Kafka kümeleri için oluşturulacak SSH kullanıcısı.|
@@ -72,7 +72,7 @@ Kaynaklar oluşturulduktan sonra bir Özet sayfası görünür.
 ![VNET ve kümeler için kaynak grubu Özeti](./media/hdinsight-apache-spark-with-kafka/hdinsight-group-blade.png)
 
 > [!IMPORTANT]  
-> HDInsight kümelerinin adlarının **Spark-BASENAME** ve **Kafka-BASENAME**olduğunu ve burada BASENAME, şablona verdiğiniz addır dikkat edin. Bu adları, kümelere bağlanırken sonraki adımlarda kullanırsınız.
+> HDInsight kümelerinin adlarının **Spark-BASENAME** ve **Kafka-BASENAME** olduğunu ve burada BASENAME, şablona verdiğiniz addır dikkat edin. Bu adları, kümelere bağlanırken sonraki adımlarda kullanırsınız.
 
 ## <a name="use-the-notebooks"></a>Not defterlerini kullanma
 

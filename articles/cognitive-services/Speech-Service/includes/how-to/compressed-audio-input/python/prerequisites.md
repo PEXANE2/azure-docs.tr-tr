@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: amishu
-ms.openlocfilehash: a715d0ece88cf2caf1cb3d20d703f550353094c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b8dda0347e5713ef35705425b54f29a110803488
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87282762"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821528"
 ---
-Sıkıştırılmış ses işleme kullanılarak uygulanır [`GStreamer`](https://gstreamer.freedesktop.org) . Lisanslama nedenleri için `GStreamer` ikili dosyalar derlenmez ve konuşma SDK 'sı ile bağlantılı değildir. Geliştiricilerin birkaç bağımlılık ve eklenti yüklemesi gerekir, bkz. [Windows 'A yükleme](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c). `GStreamer` konuşma SDK 'sının çalışma zamanında ikilileri yükleyebilmesi için ikililerin sistem yolunda olması gerekir. Konuşma SDK 'Sı `libgstreamer-1.0-0.dll` çalışma zamanı sırasında bulabiliyor ise, ikililerin sistem yolunda olduğu anlamına gelir.
+Sıkıştırılmış ses işleme, [GStreamer](https://gstreamer.freedesktop.org)kullanılarak uygulanır. Lisanslama nedeniyle, GStreamer ikili dosyaları derlenmez ve konuşma SDK 'Sı ile bağlantılı değildir. Geliştiricilerin çeşitli bağımlılıklar ve eklentiler yüklemeleri, bkz. [Windows 'A yükleme](https://gstreamer.freedesktop.org/documentation/installing/on-windows.html?gi-language=c) veya [Linux 'a yükleme](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c). Konuşma SDK 'sının çalışma zamanında ikilileri yükleyebilmesi için GStreamer ikililerinin sistem yolunda olması gerekir. Örneğin, Windows 'ta konuşma SDK 'Sı `libgstreamer-1.0-0.dll` çalışma zamanı sırasında bulabiliyor ise, GStreamer ikilileri sistem yolunda yer alır.
 

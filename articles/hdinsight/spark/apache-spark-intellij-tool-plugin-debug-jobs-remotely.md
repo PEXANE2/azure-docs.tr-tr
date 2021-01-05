@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: afe92351fe82a4e07665789c2ed4d4631be8731f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547461"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822361"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>VPN aracılığıyla HDInsight 'ta Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma
 
@@ -29,13 +29,13 @@ Bu makalede, HDInsight Spark kümesinde bir Spark işi göndermek ve sonra masa�
 
 ## <a name="prerequisites"></a>Önkoşullar
 
-* **Bir Azure aboneliği** . Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
-* **HDInsight 'Ta bir Apache Spark kümesi** . Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
-* **Oracle Java geliştirme seti** . [Oracle Web sitesinden](/azure/developer/java/fundamentals/java-jdk-long-term-support)yükleyebilirsiniz.
-* **IntelliJ fikri** . Bu makalede 2017,1 sürümü kullanılmaktadır. Bunu, [JetBrains Web sitesinden](https://www.jetbrains.com/idea/download/)yükleyebilirsiniz.
-* **Azure Toolkit for IntelliJ 'de HDInsight araçları** . IntelliJ için HDInsight araçları Azure Toolkit for IntelliJ bir parçası olarak kullanılabilir. Azure araç seti 'nin nasıl yükleneceğine ilişkin yönergeler için bkz. [ınstall Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation).
-* **IntelliJ fikrinden Azure aboneliğinizde oturum açın** . [HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanın](apache-spark-intellij-tool-plugin.md)' daki yönergeleri izleyin.
-* **Özel durum geçici çözümü** . Windows bilgisayarda uzaktan hata ayıklama için Spark Scala uygulamasını çalıştırırken bir özel durum alabilirsiniz. Bu özel durum [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ' de açıklanmaktadır ve Windows 'da eksik bir WinUtils.exe dosyası nedeniyle oluşur. Bu hatayı geçici olarak çözmek için [Winutils.exe](https://github.com/steveloughran/winutils) **C:\Win, \ bin** gibi bir konuma indirmeniz gerekir. **HADOOP_HOME** ortam değişkeni ekleyin ve sonra değişkenin değerini **C\winutils** olarak ayarlayın.
+* **Bir Azure aboneliği**. Daha fazla bilgi için bkz. [ücretsiz Azure deneme](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)sürümü.
+* **HDInsight 'Ta bir Apache Spark kümesi**. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
+* **Oracle Java geliştirme seti**. [Oracle Web sitesinden](/azure/developer/java/fundamentals/java-jdk-long-term-support)yükleyebilirsiniz.
+* **IntelliJ fikri**. Bu makalede 2017,1 sürümü kullanılmaktadır. Bunu, [JetBrains Web sitesinden](https://www.jetbrains.com/idea/download/)yükleyebilirsiniz.
+* **Azure Toolkit for IntelliJ 'de HDInsight araçları**. IntelliJ için HDInsight araçları Azure Toolkit for IntelliJ bir parçası olarak kullanılabilir. Azure araç seti 'nin nasıl yükleneceğine ilişkin yönergeler için bkz. [ınstall Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-installation).
+* **IntelliJ fikrinden Azure aboneliğinizde oturum açın**. [HDInsight kümesi için Apache Spark uygulamalar oluşturmak üzere Azure Toolkit for IntelliJ kullanın](apache-spark-intellij-tool-plugin.md)' daki yönergeleri izleyin.
+* **Özel durum geçici çözümü**. Windows bilgisayarda uzaktan hata ayıklama için Spark Scala uygulamasını çalıştırırken bir özel durum alabilirsiniz. Bu özel durum [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) ' de açıklanmaktadır ve Windows 'da eksik bir WinUtils.exe dosyası nedeniyle oluşur. Bu hatayı geçici olarak çözmek için [Winutils.exe](https://github.com/steveloughran/winutils) **C:\Win, \ bin** gibi bir konuma indirmeniz gerekir. **HADOOP_HOME** ortam değişkeni ekleyin ve sonra değişkenin değerini **C\winutils** olarak ayarlayın.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>1. Adım: Azure sanal ağı oluşturma
 
@@ -51,11 +51,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 ## <a name="step-3-verify-the-connectivity-between-the-cluster-head-node-and-your-desktop"></a>3. Adım: küme baş düğümü ve masaüstünüz arasındaki bağlantıyı doğrulama
 
-1. Baş düğümün IP adresini alın. Küme için ambarı Kullanıcı arabirimini açın. Küme dikey penceresinde **Pano** ' yı seçin.
+1. Baş düğümün IP adresini alın. Küme için ambarı Kullanıcı arabirimini açın. Küme dikey penceresinde **Pano**' yı seçin.
 
     ![Apache ambarı 'nda Pano seçme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/launch-apache-ambari.png)
 
-1. Ambarı kullanıcı arabiriminden, **konaklar** ' ı seçin.
+1. Ambarı kullanıcı arabiriminden, **konaklar**' ı seçin.
 
     ![Apache ambarı 'nda Konakları seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
@@ -63,13 +63,13 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![Apache ambarı 'nda baş düğümü bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
-1. Açılan sayfanın alt kısmındaki _ *Özet* * bölmesinden baş düğüm ve **ana bilgisayar adının** **IP adresini** kopyalayın.
+1. Açılan sayfanın alt kısmındaki _ *Özet** bölmesinden baş düğüm ve **ana bilgisayar adının** **IP adresini** kopyalayın.
 
     ![Apache ambarı 'nda IP adresini bulma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address1.png)
 
 1. Ana düğümün IP adresini ve ana bilgisayar adını, çalıştırmak istediğiniz bilgisayardaki **konaklar** dosyasına ekleyin ve Spark işinde uzaktan hata ayıklayın. Bu, ana bilgisayar adının yanı sıra IP adresini kullanarak baş düğümle iletişim kurmanızı sağlar.
 
-   a. Yükseltilmiş izinlere sahip bir not defteri dosyası açın. **Dosya** menüsünde **Aç** ' ı seçin ve ardından Hosts dosyasının konumunu bulun. Bir Windows bilgisayarında, konum **C:\Windows\system32\drivers\etc\hosts** şeklindedir.
+   a. Yükseltilmiş izinlere sahip bir not defteri dosyası açın. **Dosya** menüsünde **Aç**' ı seçin ve ardından Hosts dosyasının konumunu bulun. Bir Windows bilgisayarında, konum **C:\Windows\system32\drivers\etc\hosts** şeklindedir.
 
    b. Aşağıdaki bilgileri **Hosts** dosyasına ekleyin:
 
@@ -98,14 +98,14 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
     ![IntelliJ FIKRNDE yeni proje şablonunu seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. **HDInsight**  >  **HDInsight 'ta HDInsight Spark (Scala)** seçeneğini belirleyin.
+    a.   >  **HDInsight 'ta HDInsight Spark (Scala)** seçeneğini belirleyin.
 
-    b. **İleri** ’yi seçin.
-1. Sonraki **Yeni proje** iletişim kutusunda, aşağıdakileri yapın ve ardından **son** ' u seçin:
+    b. **İleri**’yi seçin.
+1. Sonraki **Yeni proje** iletişim kutusunda, aşağıdakileri yapın ve ardından **son**' u seçin:
 
     - Bir proje adı ve konum girin.
 
-    - **Proje SDK’sı** açılır listesinde, Spark 2.x kümesi için **Java 1.8** ’i seçin veya Spark 1.x kümesi için **Java 1.7** ’yi seçin.
+    - **Proje SDK’sı** açılır listesinde, Spark 2.x kümesi için **Java 1.8**’i seçin veya Spark 1.x kümesi için **Java 1.7**’yi seçin.
 
     - **Spark sürümü** açılan listesinde, Scala proje oluşturma SIHIRBAZı Spark SDK ve Scala SDK için uygun sürümü tümleştirir. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek, **Spark 2.0.2 (Scala 2.11.8)** kullanır.
   
@@ -113,7 +113,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
   
 1. Spark projesi sizin için otomatik olarak bir yapı oluşturur. Yapıtı görüntülemek için aşağıdakileri yapın:
 
-    a. **Dosya** menüsünden **Proje Yapısı** ’nı seçin.
+    a. **Dosya** menüsünden **Proje Yapısı**’nı seçin.
 
     b. **Proje yapısı** iletişim kutusunda, oluşturulan varsayılan yapıtı görüntülemek Için **yapıtlar** ' ı seçin. Ayrıca, artı işaretini () seçerek kendi yapıtlarınızı oluşturabilirsiniz **+** .
 
@@ -121,9 +121,9 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 1. Projenize kitaplık ekleyin. Bir kitaplık eklemek için aşağıdakileri yapın:
 
-    a. Proje ağacındaki proje adına sağ tıklayın ve ardından **Modül ayarlarını aç** ' ı seçin.
+    a. Proje ağacındaki proje adına sağ tıklayın ve ardından **Modül ayarlarını aç**' ı seçin.
 
-    b. **Proje yapısı** Iletişim kutusunda **Kitaplıklar** ' ı seçin, ( **+** ) sembolünü seçin ve **Maven** ' ı seçin.
+    b. **Proje yapısı** Iletişim kutusunda **Kitaplıklar**' ı seçin, ( **+** ) sembolünü seçin ve **Maven**' ı seçin.
 
     ![IntelliJ fıkır yükleme kitaplığı](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-add-library.png)
 
@@ -179,11 +179,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
    c. Dosyayı kaydedin.
 
-1. Uygulamanız için ana sınıf ekleyin. **Proje Gezgini** 'nde **src** öğesine sağ tıklayın, **Yeni** ' nin üzerine gelin ve ardından **Scala sınıfı** ' nı seçin.
+1. Uygulamanız için ana sınıf ekleyin. **Proje Gezgini**'nde **src** öğesine sağ tıklayın, **Yeni**' nin üzerine gelin ve ardından **Scala sınıfı**' nı seçin.
 
     ![IntelliJ fıkır ana sınıfı seçin](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code.png)
 
-1. **Yeni Scala sınıfı oluştur** iletişim kutusunda bir ad belirtin, **tür** kutusundan **nesne** ' yi seçin ve ardından **Tamam** ' ı seçin.
+1. **Yeni Scala sınıfı oluştur** iletişim kutusunda bir ad belirtin, **tür** kutusundan **nesne** ' yi seçin ve ardından **Tamam**' ı seçin.
 
     ![IntelliJ fıkır yeni Scala sınıfı oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/hdi-spark-scala-code-object.png)
 
@@ -255,11 +255,11 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
       * İçin `.set("spark.yarn.jar", "wasb:///hdp/apps/2.4.2.0-258/spark-assembly-1.6.1.2.4.2.0-258-hadoop2.7.1.2.4.2.0-258.jar")` , Spark DERLEMESI jar 'in belirtilen yoldaki küme depolama alanı üzerinde kullanılabilir olduğundan emin olun.
       * İçin `setJars` , YAPıT jar 'in oluşturulduğu konumu belirtin. Genellikle, bu `<Your IntelliJ project directory>\out\<project name>_DefaultArtifact\default_artifact.jar` .
 
-1. Sınıfında, `*RemoteClusterDebugging` `test` anahtar sözcüğünü sağ tıklatın ve ardından **Remoteclusterdebugging yapılandırması oluştur** ' u seçin.
+1. Sınıfında, `*RemoteClusterDebugging` `test` anahtar sözcüğünü sağ tıklatın ve ardından **Remoteclusterdebugging yapılandırması oluştur**' u seçin.
 
     ![IntelliJ fıkır uzak yapılandırma oluşturma](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-remote-config.png)
 
-1. **RemoteClusterDebugging yapılandırması oluştur** iletişim kutusunda yapılandırma için bir ad girin **ve test** **türü olarak test türü** ' nü seçin. Diğer tüm değerleri varsayılan ayarlar olarak bırakın. **Uygula** ’yı ve sonra **Tamam** ’ı seçin.
+1. **RemoteClusterDebugging yapılandırması oluştur** iletişim kutusunda yapılandırma için bir ad girin **ve test** **türü olarak test türü** ' nü seçin. Diğer tüm değerleri varsayılan ayarlar olarak bırakın. **Uygula**’yı ve sonra **Tamam**’ı seçin.
 
     ![RemoteClusterDebugging yapılandırması oluştur](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/provide-config-value.png)
 
@@ -269,7 +269,7 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 
 ## <a name="step-5-run-the-application-in-debug-mode"></a>5. Adım: uygulamayı hata ayıklama modunda çalıştırma
 
-1. IntelliJ fıkır projenizde, ' nin `SparkSample.scala` yanında bir kesme noktası açın ve oluşturun `val rdd1` . Açılır menü **Için kesme noktası oluştur** menüsünde, **executejob işlevinde satır** ' ı seçin.
+1. IntelliJ fıkır projenizde, ' nin `SparkSample.scala` yanında bir kesme noktası açın ve oluşturun `val rdd1` . Açılır menü **Için kesme noktası oluştur** menüsünde, **executejob işlevinde satır**' ı seçin.
 
     ![IntelliJ fıkır kesme noktası ekleme](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/intellij-create-breakpoint.png)
 
@@ -326,8 +326,8 @@ Azure HDInsight 'ta oluşturduğunuz Azure sanal ağının bir parçası olan bi
 * [Azure Toolkit for IntelliJ kullanarak Apache Spark uygulamalarda SSH aracılığıyla uzaktan hata ayıklayın](apache-spark-intellij-tool-debug-remotely-through-ssh.md)
 * [Apache Spark uygulamalar oluşturmak için Azure Toolkit for Eclipse HDInsight araçlarını kullanma](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesinde Jupyter Not defteri için kullanılabilir çekirdekler](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

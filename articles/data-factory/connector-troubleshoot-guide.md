@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/09/2020
+ms.date: 12/30/2020
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7a81a742922d45be965c7f73e3cb910d0ef989a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109304"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821477"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory bağlayıcı sorunlarını giderme
 
@@ -24,7 +24,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
   
 ## <a name="azure-blob-storage"></a>Azure Blob Depolama
 
-### <a name="error-code--azurebloboperationfailed"></a>Hata kodu: AzureBlobOperationFailed
+### <a name="error-code-azurebloboperationfailed"></a>Hata kodu: AzureBlobOperationFailed
 
 - **İleti**: `Blob operation Failed. ContainerName: %containerName;, path: %path;.`
 
@@ -33,24 +33,9 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Öneri**: ayrıntıdaki hatayı denetleyin. Blob yardım belgesine başvurun: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Yardım gerekirse depolama ekibine başvurun.
 
 
-### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Hata kodu: AzureBlobServiceNotReturnExpectedDataLength
-
-- **İleti**: `Error occurred when trying to fetch the blob '%name;'. This could be a transient issue and you may rerun the job. If it fails again continuously, contact customer support.`
-
-
-### <a name="error-code--azureblobnotsupportmultiplefilesintosingleblob"></a>Hata kodu: AzureBlobNotSupportMultipleFilesIntoSingleBlob
-
-- **İleti**: `Transferring multiple files into a single Blob is not supported. Currently only single file source is supported.`
-
-
-### <a name="error-code--azurestorageoperationfailedconcurrentwrite"></a>Hata kodu: AzureStorageOperationFailedConcurrentWrite
-
-- **İleti**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
-
-
 ### <a name="invalid-property-during-copy-activity"></a>Kopyalama etkinliği sırasında geçersiz özellik
 
-- **İleti**:  `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
+- **İleti**: `Copy activity <Activity Name> has an invalid "source" property. The source type is not compatible with the dataset <Dataset Name> and its linked service <Linked Service Name>. Please verify your input against.`
 
 - **Neden**: veri kümesinde tanımlanan tür, kopyalama etkinliğinde tanımlanan kaynak/havuz türüyle tutarsız.
 
@@ -79,7 +64,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: olası iki neden vardır:
 
     - **Insert** as Write davranışını kullanırsanız, bu hata kaynak VERILERDE aynı kimliğe sahip satırlar/nesneler olduğu anlamına gelir.
-
     - Yazma davranışı olarak **upsert** kullanırsanız ve kapsayıcıya başka bir benzersiz anahtar ayarlarsanız, bu hata kaynak verilerde farklı kimliklere sahip satırlar/nesneler ve tanımlanan benzersiz anahtar için aynı değere sahip olduğunuz anlamına gelir.
 
 - **Çözüm**: 
@@ -100,9 +84,8 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Çözüm**: iki çözüm vardır:
 
-    1. Cosmos DB, kopyalama etkinliği performansını iyileştirecek, ancak Cosmos DB daha fazla ücret ödemesine neden olacak şekilde, 1. kapsayıcıyı daha büyük bir değere **yükseltin** . 
-
-    2. **Writebatchsize** değerini daha küçük bir değere (1000 gibi) düşürün ve **parallelcopy** değerlerini 1 gibi daha küçük bir değere ayarlayın. Bu, kopya çalıştırma performansının geçerli olmasını sağlar ancak Cosmos DB daha fazla ücret vermez.
+    - Cosmos DB, kopyalama etkinliği performansını iyileştirecek, ancak Cosmos DB daha fazla ücret ödemesine neden olacak şekilde, 1. kapsayıcıyı daha büyük bir değere **yükseltin** . 
+    - **Writebatchsize** değerini daha küçük bir değere (1000 gibi) düşürün ve **parallelcopy** değerlerini 1 gibi daha küçük bir değere ayarlayın. Bu, kopya çalıştırma performansının geçerli olmasını sağlar ancak Cosmos DB daha fazla ücret vermez.
 
 ### <a name="column-missing-in-column-mapping"></a>Sütun eşlemesinde sütun eksik
 
@@ -130,70 +113,15 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Çözüm**: MongoDB bağlantı dizesinde "**uuidRepresentation = Standard**" seçeneğini ekleyin. Daha fazla bilgi için bkz. [MongoDB bağlantı dizesi](connector-mongodb.md#linked-service-properties).
             
+## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL API)
 
-## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+### <a name="error-code--cosmosdbsqlapioperationfailed"></a>Hata kodu: CosmosDbSqlApiOperationFailed
 
-### <a name="error-code--adlsgen2operationfailed"></a>Hata kodu: AdlsGen2OperationFailed
+- **İleti**: `CosmosDbSqlApi operation Failed. ErrorMessage: %msg;.`
 
-- **İleti**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+- **Neden**: CosmosDbSqlApi işlemi isabet sorunu.
 
-- **Neden**: ADLS 2. işlem başarısız olduğunu gösteren hatayı oluşturur.
-
-- **Öneri**: ADLS 2. tarafından oluşturulan ayrıntılı hata iletisini denetleyin. Geçici bir hata nedeniyle, lütfen yeniden deneyin. Daha fazla yardıma ihtiyacınız varsa lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
-
-- **Neden**: hata Iletisi ' yasak ' içerdiğinde, kullandığınız hizmet sorumlusu veya yönetilen kimlik ADLS 2. erişmek için yeterli izne sahip olmayabilir.
-
-- **Öneri**: yardım belgesine bakın: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
-
-- **Neden**: hata Iletisi ' ınternalservererror ' içerdiğinde hata ADLS 2. tarafından döndürülür.
-
-- **Öneri**: geçici bir hatadan kaynaklanıyor olabilir, lütfen yeniden deneyin. Sorun devam ederse lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
-
-
-### <a name="error-code--adlsgen2invalidurl"></a>Hata kodu: AdlsGen2InvalidUrl
-
-- **İleti**: `Invalid url '%url;' provided, expecting http[s]://<accountname>.dfs.core.windows.net.`
-
-
-### <a name="error-code--adlsgen2invalidfolderpath"></a>Hata kodu: AdlsGen2InvalidFolderPath
-
-- **İleti**: `The folder path is not specified. Cannot locate the file '%name;' under the ADLS Gen2 account directly. Please specify the folder path instead.`
-
-
-### <a name="error-code--adlsgen2operationfailedconcurrentwrite"></a>Hata kodu: AdlsGen2OperationFailedConcurrentWrite
-
-- **İleti**: `Error occurred when trying to upload a file. It's possible because you have multiple concurrent copy activities runs writing to the same file '%name;'. Check your ADF configuration.`
-
-
-### <a name="error-code-adlsgen2timeouterror"></a>Hata kodu: AdlsGen2TimeoutError
-
-- **İleti**: `Request to ADLS Gen2 account '%account;' met timeout error. It is mostly caused by the poor network between the Self-hosted IR machine and the ADLS Gen2 account. Check the network to resolve such error.`
-
-
-### <a name="request-to-adls-gen2-account-met-timeout-error"></a>ADLS 2. hesabı için istek zaman aşımı hatası oluştu
-
-- **İleti**: hata kodu = `UserErrorFailedBlobFSOperation` , hata iletisi = `BlobFS operation failed for: A task was canceled` .
-
-- **Neden**: sorun, genellikle şirket IÇINDE barındırılan IR makinesinde gerçekleşen ADLS 2. havuz zaman aşımı hatası nedeniyle oluşur.
-
-- **Öneri**: 
-
-    1. Şirket içinde barındırılan IR makinenizi ve hedef ADLS 2. hesabınızı mümkünse aynı bölgeye yerleştirin. Bu, rastgele zaman aşımı hatasından kaçınmanıza ve daha iyi performans sağlayabilir.
-
-    1. ExpressRoute gibi özel bir ağ ayarı olup olmadığını denetleyin ve ağın yeterli bant genişliğine sahip olduğundan emin olun. Genel bant genişliği düşük olduğunda şirket içinde barındırılan IR eş zamanlı işleri ayarının daha az olması önerilir, bu da birden çok eş zamanlı iş genelinde ağ kaynağı yarışmasını önleyebilir.
-
-    1. Dosya boyutu orta veya küçük olduğunda bu zaman aşımı hatasını azaltmak için ikili olmayan kopya için daha küçük blok boyutu kullanın. Lütfen [BLOB depolama yerleştirme bloğuna](https://docs.microsoft.com/rest/api/storageservices/put-block)bakın.
-
-       Özel blok boyutunu belirtmek için,. JSON düzenleyicisinde özelliği düzenleyebilirsiniz:
-    ```
-    "sink": {
-        "type": "DelimitedTextSink",
-        "storeSettings": {
-            "type": "AzureBlobFSWriteSettings",
-            "blockSizeInMB": 8
-        }
-    }
-    ```
+- **Öneri**: ayrıntıdaki hatayı denetleyin. [Cosmosdb yardım belgesi](https://docs.microsoft.com/azure/cosmos-db/troubleshoot-dot-net-sdk)' ne bakın. Yardım gerekirse CosmosDb ekibine başvurun.
 
 
 ## <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
@@ -203,7 +131,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Belirtiler**: kopyalama etkinliği aşağıdaki hatayla başarısız olur: 
 
     ```
-    Message: Failure happened on 'Sink' side. ErrorCode=UserErrorFailedFileOperation,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Upload file failed at path STAGING/PLANT/INDIARENEWABLE/LiveData/2020/01/14\\20200114-0701-oem_gibtvl_mannur_data_10min.csv.,Source=Microsoft.DataTransfer.ClientLibrary,''Type=System.Net.WebException,Message=The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.,Source=System,''Type=System.Security.Authentication.AuthenticationException,Message=The remote certificate is invalid according to the validation procedure.,Source=System,'.
+    Message: ErrorCode = `UserErrorFailedFileOperation`, Error Message = `The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel`.
     ```
 
 - **Neden**: TLS el sıkışması sırasında sertifika doğrulaması başarısız oldu.
@@ -238,7 +166,62 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: Azure Active Directory sahip olduğu hizmet belirteci sunucusu (STS) kullanılamıyor, yani istekleri işlemek için çok meşgul OLMADıĞıNDA, HTTP hatası 503 döndürür. 
 
 - **Çözüm**: birkaç dakika sonra kopyalama etkinliğini yeniden çalıştırın.
+
+
+## <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+
+### <a name="error-code-adlsgen2operationfailed"></a>Hata kodu: ADLSGen2OperationFailed
+
+- **İleti**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
+
+- **Neden**: ADLS 2. işlem başarısız olduğunu gösteren hatayı oluşturur.
+
+- **Öneri**: ADLS 2. tarafından oluşturulan ayrıntılı hata iletisini denetleyin. Geçici bir hata nedeniyle, lütfen yeniden deneyin. Daha fazla yardıma ihtiyacınız varsa lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+
+- **Neden**: hata Iletisi ' yasak ' içerdiğinde, kullandığınız hizmet sorumlusu veya yönetilen kimlik ADLS 2. erişmek için yeterli izne sahip olmayabilir.
+
+- **Öneri**: yardım belgesine bakın: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
+
+- **Neden**: hata Iletisi ' ınternalservererror ' içerdiğinde hata ADLS 2. tarafından döndürülür.
+
+- **Öneri**: geçici bir hatadan kaynaklanıyor olabilir, lütfen yeniden deneyin. Sorun devam ederse lütfen Azure depolama desteği 'ne başvurun ve istek KIMLIĞINI hata iletisinde belirtin.
+
+### <a name="request-to-adls-gen2-account-met-timeout-error"></a>ADLS 2. hesabı için istek zaman aşımı hatası oluştu
+
+- **İleti**: hata kodu = `UserErrorFailedBlobFSOperation` , hata iletisi = `BlobFS operation failed for: A task was canceled` .
+
+- **Neden**: sorun, genellikle şirket IÇINDE barındırılan IR makinesinde gerçekleşen ADLS 2. havuz zaman aşımı hatası nedeniyle oluşur.
+
+- **Öneri**: 
+
+    - Şirket içinde barındırılan IR makinenizi ve hedef ADLS 2. hesabınızı mümkünse aynı bölgeye yerleştirin. Bu, rastgele zaman aşımı hatasından kaçınmanıza ve daha iyi performans sağlayabilir.
+
+    - ExpressRoute gibi özel bir ağ ayarı olup olmadığını denetleyin ve ağın yeterli bant genişliğine sahip olduğundan emin olun. Genel bant genişliği düşük olduğunda şirket içinde barındırılan IR eş zamanlı işleri ayarının daha az olması önerilir, bu da birden çok eş zamanlı iş genelinde ağ kaynağı yarışmasını önleyebilir.
+
+    - Dosya boyutu orta veya küçük olduğunda bu zaman aşımı hatasını azaltmak için ikili olmayan kopya için daha küçük blok boyutu kullanın. [BLOB depolama yerleştirme bloğuna](https://docs.microsoft.com/rest/api/storageservices/put-block)bakın.
+
+       Özel blok boyutunu belirtmek için,. JSON düzenleyicisinde özelliği düzenleyebilirsiniz:
+        ```
+        "sink": {
+            "type": "DelimitedTextSink",
+            "storeSettings": {
+                "type": "AzureBlobFSWriteSettings",
+                "blockSizeInMB": 8
+            }
+        }
+        ```
+
                   
+## <a name="azure-file-storage"></a>Azure Dosya Depolama
+
+### <a name="error-code--azurefileoperationfailed"></a>Hata kodu: AzureFileOperationFailed
+
+- **İleti**: `Azure File operation Failed. Path: %path;. ErrorMessage: %msg;.`
+
+- **Neden**: Azure dosya depolama işlemi isabet sorunu.
+
+- **Öneri**: ayrıntıdaki hatayı denetleyin. Azure dosya yardım belgesine başvurun: https://docs.microsoft.com/rest/api/storageservices/file-service-error-codes . Yardıma ihtiyacınız varsa depolama ekibine başvurun.
+
 
 ## <a name="azure-synapse-analyticsazure-sql-databasesql-server"></a>Azure SYNAPSE Analytics/Azure SQL veritabanı/SQL Server
 
@@ -246,13 +229,29 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **İleti**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
 
+- **Neden**: Azure SQL: hata Iletisinde "SqlErrorNumber = 47073" varsa, bağlantı ayarında genel ağ erişiminin reddedildiği anlamına gelir.
+
+- **Öneri**: Azure SQL güvenlik duvarında "ortak ağ erişimini reddet" seçeneğini "Hayır" olarak ayarlayın. Daha fazla bilgi edinin https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access .
+
+- **Neden**: Azure SQL: hata Iletisi "SqlErrorNumber = [ErrorCode]" gibi SQL hata kodu içeriyorsa, lütfen Azure SQL sorun giderme kılavuzu 'na bakın.
+
+- **Öneri**: hakkında daha fazla bilgi edinin https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues .
+
+- **Neden**: 1433 bağlantı noktasının güvenlik duvarı izin verilenler listesinde olup olmadığını denetleyin.
+
+- **Öneri**: Bu referans belge: ile izleyin https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by- .
+
 - **Neden**: hata Iletisinde "SqlException" varsa, SQL veritabanı belirli bir işlemi başarısız olduğunu belirten bir hata oluşturur.
 
 - **Öneri**: daha fazla ayrıntı için bu başvuru BELGESI içindeki SQL hata kodu ile ara: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Daha fazla yardıma ihtiyacınız varsa Azure SQL desteği ile iletişime geçin.
 
+- **Neden**: Bu geçici bir sorundur (örn., Instable ağ bağlantısı), azaltmak için lütfen etkinlik ilkesini yeniden dene 'yi ekleyin.
+
+- **Öneri**: Bu başvuru belgesini izleyin: https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy .
+
 - **Neden**: hata ILETISI "IP adresi olan istemci '... ' içeriyorsa) sunucusuna erişim izni verilmez "ve Azure SQL veritabanı 'na bağlanmaya çalışıyorsunuz, genellikle Azure SQL veritabanı güvenlik duvarı sorunu nedeniyle oluşur.
 
-- **Öneri**: mantıksal SQL Server güvenlik duvarı yapılandırması ' nda, "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine izin ver" seçeneğini etkinleştirin. Başvuru belgesi: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
+- **Öneri**: Azure SQL Server güvenlik duvarı yapılandırması 'nda, "Azure hizmetleri ve kaynaklarının bu sunucuya erişmesine izin ver" seçeneğini etkinleştirin. Başvuru belgesi: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Hata kodu: SqlOperationFailed
@@ -272,7 +271,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: hata Iletisi "InvalidOperationException" içeriyorsa, genellikle geçersiz giriş verileri oluşur.
 
 - **Öneri**: sorunla ilgili hangi satırın olduğunu belirlemek için kopyalama etkinliğinde hata toleransı özelliğini etkinleştirin. Bu, daha fazla araştırma için sorunlu satırları depolamaya yeniden yönlendirebilir. Başvuru belgesi: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
-
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Hata kodu: SqlUnauthorizedAccess
@@ -342,11 +340,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Öneri**: sorgudaki sütunu, veri kümesindeki ' Structure ' öğesini ve etkinlik içindeki ' eşlemeler ' doğrulamasını doğrulayın.
 
 
-### <a name="error-code--sqlcolumnnamemismatchbycasesensitive"></a>Hata kodu: SqlColumnNameMismatchByCaseSensitive
-
-- **İleti**: `Column '%column;' in DataSet '%dataSetName;' cannot be found in physical SQL Database. Column matching is case-sensitive. Column '%columnInTable;' appears similar. Check the DataSet(s) configuration to proceed further.`
-
-
 ### <a name="error-code--sqlbatchwritetimeout"></a>Hata kodu: SqlBatchWriteTimeout
 
 - **İleti**: `Timeouts in SQL write operation.`
@@ -385,11 +378,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: yüksek eşzamanlı çalıştırma ve sunucu bağlantısı sona erdiğinde SQL bağlantısı SQL veritabanı tarafından kapalıdır.
 
 - **Öneri**: uzak sunucu SQL bağlantısını kapattı. Retry. Sorun yeniden üretme varsa Azure SQL desteği 'ne başvurun.
-
-
-### <a name="error-code--sqlcreatetablefailedunsupportedtype"></a>Hata kodu: SqlCreateTableFailedUnsupportedType
-
-- **İleti**: `Type '%type;' in source side cannot be mapped to a type that supported by sink side(column name:'%name;') in autocreate table.`
 
 
 ### <a name="error-message-conversion-failed-when-converting-from-a-character-string-to-uniqueidentifier"></a>Hata iletisi: bir karakter dizesinden uniqueidentifier öğesine dönüştürülürken dönüştürme başarısız oldu
@@ -454,9 +442,9 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     - Zaman-> 12 bayt
     - Tinyint-> 1 bayt
 
-- **Çözüm**: sütun GENIŞLIĞINI 1 MB 'tan küçük olacak şekilde azalt
-
-- Veya PolyBase 'i devre dışı bırakarak toplu ekleme yaklaşımını kullanın
+- **Çözüm**: 
+    - Sütun genişliğini 1 MB 'tan küçük olacak şekilde küçültün.
+    - Alternatif olarak Polybase'i devre dışı bırakarak toplu ekleme yaklaşımını kullanabilirsiniz.
 
 
 ### <a name="error-message-the-condition-specified-using-http-conditional-headers-is-not-met"></a>Hata iletisi: HTTP koşullu üst bilgi (ler) i kullanılarak belirtilen koşul karşılanmadı
@@ -478,17 +466,17 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: sorunun kök nedeni çoğunlukla Azure SQL tarafında performans sorunu tetikleniyor. Olası bazı nedenler şunlardır:
 
-    1. Azure DB katmanı yeterince yüksek değil.
+    - Azure DB katmanı yeterince yüksek değil.
 
-    1. Azure DB DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ve DB katmanını yükseltmeyi göz önünde bulundurun.
+    - Azure DB DTU kullanımı %100 ' e yakın. [Performansı izleyebilir](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) ve DB katmanını yükseltmeyi göz önünde bulundurun.
 
-    1. Dizinler düzgün ayarlanmadı. Lütfen veri yüklemeden önce tüm dizinleri kaldırın ve yükleme tamamlandıktan sonra yeniden oluşturun.
+    - Dizinler düzgün ayarlanmadı. Veri yüklemeden önce tüm dizinleri kaldırın ve yükleme tamamlandıktan sonra yeniden oluşturun.
 
-    1. WriteBatchSize, şema satır boyutuna sığacak kadar büyük değil. Lütfen sorunun özelliğini genişletmenize çalışın.
+    - WriteBatchSize, şema satır boyutuna sığacak kadar büyük değil. Sorunun özelliğini genişletmenize çalışın.
 
-    1. Toplu iç içe değil, saklı yordam kullanılıyor, bu da daha kötü performansa sahip olması beklenir. 
+    - Toplu iç içe değil, saklı yordam kullanılıyor, bu da daha kötü performansa sahip olması beklenir. 
 
-- **Çözüm**: [kopyalama etkinliği performansı](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) için lütfen TSG 'ye başvurun
+- **Çözüm**: [kopyalama etkinliği performansı](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting) için TSG 'ye başvurun
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Performans katmanı düşük ve kopyalamanın başarısız olmasına yol açar
@@ -497,7 +485,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: Azure SQL S1 kullanılıyor, bu durum bu durumda GÇ sınırlarına ulaştı.
 
-- **Çözüm**: sorunu çözmek Için lütfen Azure SQL performans katmanını yükseltin. 
+- **Çözüm**: sorunu çözmek IÇIN Azure SQL performans katmanını yükseltin. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>SQL tablosu bulunamıyor 
@@ -506,22 +494,47 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Neden**: geçerli SQL hesabının .net SqlBulkCopy. WriteToServer tarafından verilen istekleri yürütmek için yeterli izni yok.
 
-- **Çözüm**: lütfen daha AYRıCALıKLı bir SQL hesabına geçin.
+- **Çözüm**: daha AYRıCALıKLı bir SQL hesabına geçiş yapın.
 
 
-### <a name="string-or-binary-data-would-be-truncated"></a>Dize veya ikili veriler kesilecek
+### <a name="error-message-string-or-binary-data-would-be-truncated"></a>Hata iletisi: dize veya ikili veriler kesilecek
 
 - **Belirtiler**: veriler şirket Içi/Azure SQL Server tablosuna kopyalanırken hata oluştu: 
 
 - **Neden**: CX SQL tablo şeması tanımında beklentiden daha az uzunluğa sahip bir veya daha fazla sütun vardır.
 
-- **Çözüm**: sorunu çözmek için lütfen aşağıdaki adımları deneyin:
+- **Çözüm**: sorunu çözmek için aşağıdaki adımları deneyin:
 
-    1. Hangi satırlardaki soruna sahip olan sorunları gidermek için, özellikle "Redirectıncompatiblerowsettings" [hata toleransını](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)uygulayın.
+    1. Hangi satırların soruna sahip olduğunu gidermek için, özellikle "Redirectıncompatiblerowsettings" SQL havuzu [hata toleransı](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance)uygulayın.
 
-    1. Hangi sütunların güncelleştirileceğini görmek için SQL tablo şeması sütun uzunluğu ile yeniden yönlendirilen verileri iki kez kontrol edin.
+        > [!NOTE]
+        > Lütfen hata toleransı ek yürütme süresi ortaya çıkarabilir ve bu da daha yüksek maliyetli olabilir.
 
-    1. Tablo şemasını buna göre güncelleştirin.
+    2. Hangi sütunların güncelleştirileceğini görmek için SQL tablo şeması sütun uzunluğu ile yeniden yönlendirilen verileri iki kez kontrol edin.
+
+    3. Tablo şemasını buna göre güncelleştirin.
+
+
+## <a name="azure-table-storage"></a>Azure Table Storage
+
+### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>Hata kodu: AzureTableDuplicateColumnsFromSource
+
+- **İleti**: `Duplicate columns with same name '%name;' are detected from source. This is NOT supported by Azure Table Storage sink`
+
+- **Neden**: JOIN veya yapılandırılmamış CSV dosyaları SQL sorgusu için ortak olabilir
+
+- **Öneri**: kaynak sütunları iki kez kontrol edin ve uygun şekilde onarın.
+
+
+## <a name="db2"></a>DB2
+
+### <a name="error-code--db2driverrunfailed"></a>Hata kodu: DB2DriverRunFailed
+
+- **İleti**: `Error thrown from driver. Sql code: '%code;'`
+
+- **Neden**: hata ILETISI "SQLSTATE = 51002 SQLCODE =-805" içeriyorsa, lütfen bu belgedeki ipucuna başvurun: https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties
+
+- **Öneri**: "packageCollection" özelliğindeki "nullıd" ayarlamayı deneyin
 
 
 ## <a name="delimited-text-format"></a>Sınırlandırılmış metin biçimi
@@ -537,7 +550,7 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Hata kodu: Delimitedtextmorecolumnsıısdefined tanımlandı
 
-- **İleti**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %columnCount;.`
+- **İleti**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %expectedColumnCount;.`
 
 - **Neden**: sorunlu satırın sütun sayısı, ilk satırın sütun sayısından daha büyük. Bu durum, veri sorunu ya da yanlış sütun sınırlayıcısı/quote char ayarlarından kaynaklanıyor olabilir.
 
@@ -550,22 +563,6 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Neden**: kaynağınız bir klasörysa, belirtilen klasörde bulunan dosyaların farklı bir şeması olması mümkündür.
 
 - **Öneri**: belirtilen klasörde bulunan dosyaların aynı şemaya sahip olduğundan emin olun.
-
-
-### <a name="error-code--delimitedtextincorrectrowdelimiter"></a>Hata kodu: DelimitedTextIncorrectRowDelimiter
-
-- **İleti**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
-
-
-### <a name="error-code--delimitedtexttoolargecolumncount"></a>Hata kodu: DelimitedTextTooLargeColumnCount
-
-- **İleti**: `Column count reaches limitation when deserializing csv file. Maximum size is '%size;'. Check the column delimiter and row delimiter provided. (Column delimiter: '%columnDelimiter;', Row delimiter: '%rowDelimiter;')`
-
-
-### <a name="error-code--delimitedtextinvalidsettings"></a>Hata kodu: DelimitedTextInvalidSettings
-
-- **İleti**: `%settingIssues;`
-
 
 
 ## <a name="dynamics-365common-data-servicedynamics-crm"></a>Dynamics 365/Common Data Service/Dynamics CRM
@@ -583,9 +580,45 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Belirtiler**: şemayı içeri aktarırken veya verileri önizlerken bazı sütunlardan bazıları eksik olur. Hata iletisi: `The valid structure information (column name and type) are required for Dynamics source.`
 
-- **Neden**: ADF, ilk 10 kayıtta hiçbir değere sahip olmayan sütunları gösteremediğinden bu sorun temel olarak tasarıma göre yapılır. Lütfen eklediğiniz sütunların doğru biçimde olduğundan emin olun. 
+- **Neden**: ADF, ilk 10 kayıtta hiçbir değere sahip olmayan sütunları gösteremediğinden bu sorun temel olarak tasarıma göre yapılır. Eklediğiniz sütunların doğru biçimde olduğundan emin olun. 
 
 - **Öneri**: eşleme sekmesine sütunları el ile ekleyin.
+
+
+### <a name="error-code--dynamicsmissingtargetformultitargetlookupfield"></a>Hata kodu: DynamicsMissingTargetForMultiTargetLookupField
+
+- **İleti**: `Cannot find the target column for multi-target lookup field: '%fieldName;'.`
+
+- **Neden**: hedef sütun kaynakta veya sütun eşlemesinde yok.
+
+- **Öneri**: 1. Kaynağın hedef sütununu içerdiğinden emin olun. 2. Sütun eşlemesinde Target sütununu ekleyin. Havuz sütununun "{fieldName}" düzeninde olduğundan emin olun @EntityReference .
+
+
+### <a name="error-code--dynamicsinvalidtargetformultitargetlookupfield"></a>Hata kodu: DynamicsInvalidTargetForMultiTargetLookupField
+
+- **İleti**: `The provided target: '%targetName;' is not a valid target of field: '%fieldName;'. Valid targets are: '%validTargetNames;"`
+
+- **Neden**: bir çok hedef arama alanının hedef varlığı olarak yanlış bir varlık adı belirtildi.
+
+- **Öneri**: çoklu hedef arama alanı için geçerli bir varlık adı belirtin.
+
+
+### <a name="error-code--dynamicsinvalidtypeformultitargetlookupfield"></a>Hata kodu: DynamicsInvalidTypeForMultiTargetLookupField
+
+- **İleti**: `The provided target type is not a valid string. Field: '%fieldName;'.`
+
+- **Neden**: Target sütunundaki değer bir dize değil
+
+- **Öneri**: çoklu hedef arama hedefi sütununda geçerli bir dize belirtin.
+
+
+### <a name="error-code--dynamicsfailedtorequetserver"></a>Hata kodu: Dynamicsfailedtobir Etserver
+
+- **İleti**: `The dynamics server or the network is experiencing issues. Check network connectivity or check dynamics server log for more details.`
+
+- **Neden**: Dynamics sunucusu kararlı değil veya erişilemez durumda veya ağda sorun yaşanıyor.
+
+- **Öneri**: daha fazla ayrıntı için ağ bağlantısını denetleyin veya Dynamics Server günlüğünü kontrol edin. Daha fazla yardım için Dynamics desteği ile iletişime geçin.
 
 
 ## <a name="excel-format"></a>Excel biçimi
@@ -594,73 +627,45 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Belirtiler**:
 
-    1. Excel veri kümesi oluşturduğunuzda ve şemayı bağlantı/depolama alanından içeri aktardığınızda, verileri Önizle, çalışma sayfalarını Listele veya Yenile, Excel dosyası boyutta büyükse zaman aşımı hatası ile karşılaşabilirsiniz.
+    - Excel veri kümesi oluşturduğunuzda ve şemayı bağlantı/depolama alanından içeri aktardığınızda, verileri Önizle, Listele veya Yenile, Excel dosyası boyutta büyükse zaman aşımı hatası ile karşılaşabilirsiniz.
 
-    1. Büyük Excel dosyasından (>= 100MB) verileri başka veri deposuna kopyalamak için kopyalama etkinliğini kullandığınızda, yavaş performans veya OOM sorunu yaşayabilirsiniz.
+    - Büyük Excel dosyasından (>= 100 MB) verileri başka veri deposuna kopyalamak için kopyalama etkinliğini kullandığınızda, yavaş performans veya OOM sorunu yaşayabilirsiniz.
 
 - **Neden**: 
 
-    1. Excel veri kümesindeki şemayı içeri aktarma, verileri görüntüleme ve çalışma sayfalarını listeleme gibi işlemler için zaman aşımı, 100s ve statiktir. Büyük Excel dosyası için, bu işlemler zaman aşımı değeri içinde bitmeyebilir.
+    - Excel veri kümesindeki şemayı içeri aktarma, verileri önizleme ve çalışma sayfalarını listeleme gibi işlemler için zaman aşımı 100 s ve statiktir. Büyük Excel dosyası için, bu işlemler zaman aşımı değeri içinde bitmeyebilir.
 
-    2. ADF kopyalama etkinliği tüm Excel dosyasını belleğe okur ve verileri okumak için belirtilen çalışma sayfasını ve hücreleri bulur. Bu davranış, temel alınan ADF tarafından kullanılan SDK 'nın kullanımından kaynaklanır.
+    - ADF kopyalama etkinliği tüm Excel dosyasını belleğe okur ve verileri okumak için belirtilen çalışma sayfasını ve hücreleri bulur. Bu davranış, temel alınan ADF tarafından kullanılan SDK 'nın kullanımından kaynaklanır.
 
 - **Çözüm**: 
 
-    1. Şemayı içeri aktarmak için, özgün dosyanın bir alt kümesi olan daha küçük bir örnek dosya oluşturabilir ve "şemayı bağlantı/depodan içeri aktar" yerine "örnek dosyadan şemayı içeri aktar" seçeneğini belirleyebilirsiniz.
+    - Şemayı içeri aktarmak için, özgün dosyanın bir alt kümesi olan daha küçük bir örnek dosya oluşturabilir ve "şemayı bağlantı/depodan içeri aktar" yerine "örnek dosyadan şemayı içeri aktar" seçeneğini belirleyebilirsiniz.
 
-    2. Çalışma sayfası listesinde, çalışma sayfası açılan menüsünde "Düzenle" düğmesine tıklayabilir ve bunun yerine sayfa adını/dizinini girebilirsiniz.
+    - Çalışma sayfası listesinde, çalışma sayfası açılan menüsünde "Düzenle" düğmesine tıklayabilir ve bunun yerine sayfa adını/dizinini girebilirsiniz.
 
-    3. Büyük Excel dosyasını (>100MB) başka bir depoya kopyalamak için, spor akışı okuma ve daha iyi şekilde gerçekleştirdiğiniz veri akışı Excel kaynağını kullanabilirsiniz.
+    - Büyük Excel dosyasını (>100 MB) başka bir depoya kopyalamak için, spor akışı okuma ve daha iyi bir şekilde gerçekleştirdiğiniz veri akışı Excel kaynağını kullanabilirsiniz.
+    
 
+## <a name="ftp"></a>FTP
 
-## <a name="hdinsight"></a>HDInsight
+### <a name="error-code--ftpfailedtoconnecttoftpserver"></a>Hata kodu: FtpFailedToConnectToFtpServer
 
-### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP kümesi kullanılarak ADF bağlantılı hizmet sırasında SSL hatası
+- **İleti**: `Failed to connect to FTP server. Please make sure the provided server informantion is correct, and try again.`
 
-- **İleti**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+- **Neden**: bir FTP sunucusuna bağlanmak için SFTP bağlı hizmeti 'ni kullanma gıbı, FTP sunucusu için yanlış bağlı hizmet türü kullanılıyor olabilir.
 
-- **Neden**: sorun büyük olasılıkla sistem güven deposuyla ilgilidir.
-
-- **Çözüm**: ayarı değiştirmek Için **Microsoft Integration Runtime\4.0\Shared\ODBC DRIVERS\MICROSOFT Hive ODBC driver\lib** yoluna gidebilir ve DriverConfiguration64.exe açabilirsiniz.
-
-    ![Sistem güven deposunun kullan işaretini kaldır](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+- **Öneri**: hedef sunucunun bağlantı noktasını denetleyin. Varsayılan olarak FTP bağlantı noktası 21 ' i kullanır.
 
 
-## <a name="json-format"></a>JSON biçimi
+## <a name="http"></a>Http
 
-### <a name="error-code--jsoninvalidarraypathdefinition"></a>Hata kodu: Jsonınvalidarraypathdefinition
+### <a name="error-code--httpfilefailedtoread"></a>Hata kodu: HttpFileFailedToRead
 
-- **İleti**: `Error occurred when deserializing source JSON data. Check whether the JsonPath in JsonNodeReference and JsonPathDefintion is valid.`
+- **İleti**: `Failed to read data from http server. Check the error from http server：%message;`
 
+- **Neden**: Bu hata http sunucusuyla iletişim Azure Data Factory, ancak http isteği işlemi başarısız olduğunda meydana gelir.
 
-### <a name="error-code--jsonemptyjobjectdata"></a>Hata kodu: JsonEmptyJObjectData
-
-- **İleti**: `The specified row delimiter %rowDelimiter; is incorrect. Cannot detect a row after parse %size; MB data.`
-
-
-### <a name="error-code--jsonnullvalueinpathdefinition"></a>Hata kodu: Jsonnullvalueınpathdefinition
-
-- **İleti**: `Null JSONPath detected in JsonPathDefinition.`
-
-
-### <a name="error-code--jsonunsupportedhierarchicalcomplexvalue"></a>Hata kodu: JsonUnsupportedHierarchicalComplexValue
-
-- **İleti**: `The retrieved type of data %data; with value %value; is not supported yet. Please either remove the targeted column '%name;' or enable skip incompatible row to skip the issue rows.`
-
-
-### <a name="error-code--jsonconflictpartitiondiscoveryschema"></a>Hata kodu: JsonConflictPartitionDiscoverySchema
-
-- **İleti**: `Conflicting partition column names detected.'%schema;', '%partitionDiscoverySchema;'`
-
-
-### <a name="error-code--jsoninvaliddataformat"></a>Hata kodu: Jsonınvaliddataformat
-
-- **İleti**: `Error occurred when deserializing source JSON file '%fileName;'. Check if the data is in valid JSON object format.`
-
-
-### <a name="error-code--jsoninvaliddatamixedarrayandobject"></a>Hata kodu: Jsonınvaliddatamixedarrayandobject
-
-- **İleti**: `Error occurred when deserializing source JSON file '%fileName;'. The JSON format doesn't allow mixed arrays and objects.`
+- **Öneri**: hata iletisinde http durum kodu \ iletisini denetleyin ve uzak sunucu sorununu onarın.
 
 
 ## <a name="oracle"></a>Oracle
@@ -673,9 +678,44 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Öneri**: 
 
-    `select dump(<column name>)`Oracle 'daki DEĞERIN ADF 'nin aralığında olup olmadığını kontrol etmek için lütfen öğesini çalıştırın. 
+    `select dump(<column name>)`Oracle 'daki DEĞERIN ADF 'nin aralığında olup olmadığını denetlemek için öğesini çalıştırın. 
 
     Sonuç olarak bayt sırasını biliyorsanız lütfen kontrol edin https://stackoverflow.com/questions/13568193/how-are-dates-stored-in-oracle .
+
+
+## <a name="orc-format"></a>Orc biçimi
+
+### <a name="error-code--orcjavainvocationexception"></a>Hata kodu: Orcjavaınvocationexception
+
+- **İleti**: `An error occurred when invoking java, message: %javaException;.`
+
+- **Neden**: hata iletisi ' Java. lang. OutOfMemory ', ' Java yığın alanı ' ve ' doublecapacity ' içerdiğinde, genellikle tümleştirme çalışma zamanının eski sürümünde bir bellek yönetimi sorunudur.
+
+- **Öneri**: şirket içinde barındırılan Integration Runtime kullanıyorsanız, en son sürüme yükseltmeyi önerin.
+
+- **Neden**: hata iletisi ' Java. lang. OutOfMemory ' içerdiğinde, tümleştirme çalışma zamanı dosyaları işlemek için yeterli kaynağa sahip değil.
+
+- **Öneri**: Tümleştirme çalışma zamanında eşzamanlı çalıştırmaları sınırlayın. Şirket içinde barındırılan Integration Runtime için, 8 GB 'a eşit veya daha büyük belleği olan güçlü bir makineye kadar ölçeklendirin.
+
+- **Neden**: hata Iletisi ' NullPointerReference ' içerdiğinde, geçici bir hata olabilir.
+
+- **Öneri**: yeniden dene. Sorun devam ederse lütfen desteğe başvurun.
+
+- **Neden**: hata Iletisi ' bufferoverflowexception ' içerdiğinde, geçici bir hata olabilir.
+
+- **Öneri**: yeniden dene. Sorun devam ederse lütfen desteğe başvurun.
+
+- **Neden**: hata iletisi "Java. lang. ClassCastException:org. Apache. Hadoop. Hive. serde2. IO. Hivecharyazılabilir" org. Apache. Hadoop. IO. Text "öğesine atanamaz, bu da Java çalışma zamanı içinde tür dönüştürme sorunudur. Genellikle, kaynak verilerin neden Java çalışma zamanı 'nda iyi işlenemeyebilir.
+
+- **Öneri**: Bu veri sorunudur. Orc biçim verilerinde char/varchar yerine dize kullanmayı deneyin.
+
+### <a name="error-code--orcdatetimeexceedlimit"></a>Hata kodu: OrcDateTimeExceedLimit
+
+- **İleti**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
+
+- **Neden**: DateTime değeri ' 0001-01-01 00:00:00 ' Ise, Jülyen takvimi Ile Gregoryen takvimi arasındaki fark neden olabilir. https://en.wikipedia.org/wiki/Proleptic_Gregorian_calendar#Difference_between_Julian_and_proleptic_Gregorian_calendar_dates.
+
+- **Öneri**: ticks değerini denetleyin ve ' 0001-01-01 00:00:00 ' Tarih saat değerini kullanmaktan kaçının.
 
 
 ## <a name="parquet-format"></a>Parquet biçimi
@@ -828,14 +868,22 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 - **Çözüm**: 
 
-    1. Havuz sütun adında boşluk olup olmadığını iki kez denetleyin.
+    - Havuz sütun adında boşluk olup olmadığını iki kez denetleyin.
 
-    1. Boşluk içeren ilk satırın sütun adı olarak kullanıldığını iki kez işaretleyin.
+    - Boşluk içeren ilk satırın sütun adı olarak kullanıldığını iki kez işaretleyin.
 
-    1. OriginalType türünün desteklenip desteklenmediğini iki kez denetleyin. Bu özel simgelerden kaçınmaya çalışın `,;{}()\n\t=` . 
+    - OriginalType türünün desteklenip desteklenmediğini iki kez denetleyin. Bu özel simgelerden kaçınmaya çalışın `,;{}()\n\t=` . 
 
 
 ## <a name="rest"></a>REST
+
+### <a name="error-code--restsinkcallfailed"></a>Hata kodu: RestSinkCallFailed
+
+- **İleti**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
+
+- **Neden**: Azure Data Factory http protokolü üzerinden REST uç noktasıyla iletişim kuramadığında bu hata oluşur ve istek işlemi başarısız olur.
+
+- **Öneri**: hata iletisinde http durum kodu \ iletisini denetleyin ve uzak sunucu sorununu onarın.
 
 ### <a name="unexpected-network-response-from-rest-connector"></a>REST bağlayıcısından beklenmeyen ağ yanıtı
 
@@ -861,75 +909,76 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 
 ## <a name="sftp"></a>SFTP
 
-### <a name="invalid-sftp-credential-provided-for-sshpublickey-authentication-type"></a>' SSHPublicKey ' kimlik doğrulama türü için geçersiz SFTP kimlik bilgisi belirtildi
+#### <a name="error-code--sftpoperationfail"></a>Hata kodu: SftpOperationFail
 
-- **Belirtiler**: ' sshpublickey ' kimlik doğrulama türü için geçersiz SFTP kimlik bilgisi sağlandığı için SSH ortak anahtar kimlik doğrulaması kullanılıyor.
+- **İleti**: `Failed to '%operation;'. Check detailed error from SFTP.`
 
-- **Neden**: Bu hata üç olası nedenden kaynaklanabilir:
+- **Neden**: SFTP işlemi isabet sorunu.
 
-    1. Özel anahtar içeriği AKV/SDK 'dan getirilir, ancak doğru kodlanmamış.
-
-    1. Yanlış anahtar içerik biçimi seçildi.
-
-    1. Geçersiz kimlik bilgisi veya özel anahtar içeriği.
-
-- **Çözüm**: 
-
-    1. **Nedeni 1**:
-
-       Özel anahtar içeriği AKV 'den ise ve müşteri, SFTP bağlantılı hizmetine doğrudan yükleme yaparken özgün anahtar dosyası işinize
-
-       https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authenticationBkz. PrivateKey Içeriği Base64 KODLAMALı SSH özel anahtar içeridir.
-
-       Lütfen **özgün özel anahtar dosyasının tüm içeriğini** Base64 kodlaması ile kodlayın ve kodlanmış dizeyi Akv 'ye depolayın. Özgün özel anahtar dosyası, dosyadan karşıya yükle ' ye tıkladığınızda SFTP bağlantılı hizmetinde çalışabileceğiniz bir dosyadır.
-
-       Dizeyi oluşturmak için kullanılan bazı örnekler şunlardır:
-
-       - C# kodu kullan:
-       ```
-       byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
-       string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
-       ```
-
-       - Python kodu kullan:
-       ```
-       import base64
-       rfd = open(r'{Private Key Path}', 'rb')
-       keyContent = rfd.read()
-       rfd.close()
-       print base64.b64encode(Key Content)
-       ```
-
-       - Üçüncü taraf Base64 dönüştürme aracını kullanma
-
-         Gibi Araçlar https://www.base64encode.org/ önerilir.
-
-    1. **Nedeni 2**:
-
-       PKCS # 8 biçiminde SSH özel anahtarı kullanılıyorsa
-
-       PKCS # 8 biçimlendirme SSH özel anahtarı ("-----ŞIFRELENMIŞ özel anahtar-----" ile başlar) Şu anda ADF 'de SFTP sunucusuna erişmek için desteklenmiyor. 
-
-       Anahtarı geleneksel SSH anahtar biçimine dönüştürmek için aşağıdaki komutları çalıştırın ("-----BEGIN RSA özel anahtarı-----" ile başlayın):
-
-       ```
-       openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
-       chmod 600 traditional_format_key_file
-       ssh-keygen -f traditional_format_key_file -p
-       ```
-    1. **Nedeni 3**:
-
-       Anahtar dosyanızın veya parolanızın doğru olup olmadığını görmek için lütfen WinSCP gibi araçlarla çift kontrol edin.
+- **Öneri**: SFTP 'den ayrıntılı hata olup olmadığını denetleyin.
 
 
-### <a name="incorrect-linked-service-type-is-used"></a>Yanlış bağlı hizmet türü kullanıldı
+### <a name="error-code--sftprenameoperationfail"></a>Hata kodu: SftpRenameOperationFail
 
-- **Belirtiler**: FTP/SFTP sunucusuna ulaşılamıyor.
+- **İleti**: `Failed to rename the temp file. Your SFTP server doesn't support renaming temp file, please set "useTempFileRename" as false in copy sink to disable uploading to temp file.`
 
-- **Neden**: FTP veya SFTP sunucusu için yanlış bağlantılı hizmet türü, BIR SFTP sunucusuna bağlanmak için veya ters bir bağlantı kurmak Için FTP bağlantılı hizmetini kullanma gibi kullanılır.
+- **Neden**: SFTP sunucunuz geçici dosyayı yeniden adlandırmayı desteklemiyor.
 
-- **Çözüm**: Lütfen hedef sunucunun bağlantı noktasını denetleyin. FTP varsayılan olarak 21 numaralı bağlantı noktasını kullanır ve SFTP bağlantı noktası 22 kullanır.
+- **Öneri**: Temp dosyasına karşıya yüklemeyi devre dışı bırakmak için kopya havuzunda "useTempFileRename" değerini false olarak ayarlayın.
 
+
+### <a name="error-code--sftpinvalidsftpcredential"></a>Hata kodu: Sftpınvalidsftpcredential
+
+- **İleti**: `Invalid Sftp credential provided for '%type;' authentication type.`
+
+- **Neden**: özel anahtar içeriği Akv/SDK 'dan getirildi ancak doğru kodlanmamış.
+
+- **Öneri**:  
+
+    Özel anahtar içeriği AKV 'den ise ve müşteri, SFTP bağlantılı hizmetine doğrudan yükleme yaparken özgün anahtar dosyası işinize
+
+    https://docs.microsoft.com/azure/data-factory/connector-sftp#using-ssh-public-key-authenticationBkz. PrivateKey Içeriği Base64 KODLAMALı SSH özel anahtar içeridir.
+
+    Lütfen **özgün özel anahtar dosyasının tüm içeriğini** Base64 kodlaması ile kodlayın ve kodlanmış dizeyi Akv 'ye depolayın. Özgün özel anahtar dosyası, dosyadan karşıya yükle ' ye tıkladığınızda SFTP bağlantılı hizmetinde çalışabileceğiniz bir dosyadır.
+
+    Dizeyi oluşturmak için kullanılan bazı örnekler şunlardır:
+
+    - C# kodu kullan:
+    ```
+    byte[] keyContentBytes = File.ReadAllBytes(Private Key Path);
+    string keyContent = Convert.ToBase64String(keyContentBytes, Base64FormattingOptions.None);
+    ```
+
+    - Python kodu kullan:
+    ```
+    import base64
+    rfd = open(r'{Private Key Path}', 'rb')
+    keyContent = rfd.read()
+    rfd.close()
+    print base64.b64encode(Key Content)
+    ```
+
+    - Üçüncü taraf Base64 dönüştürme aracını kullanma
+
+        Gibi Araçlar https://www.base64encode.org/ önerilir.
+
+- **Neden**: yanlış anahtar içerik biçimi seçildi
+
+- **Öneri**:  
+
+    PKCS # 8 biçimlendirme SSH özel anahtarı ("-----ŞIFRELENMIŞ özel anahtar-----" ile başlar) Şu anda ADF 'de SFTP sunucusuna erişmek için desteklenmiyor. 
+
+    Anahtarı geleneksel SSH anahtar biçimine dönüştürmek için aşağıdaki komutları çalıştırın ("-----BEGIN RSA özel anahtarı-----" ile başlayın):
+
+    ```
+    openssl pkcs8 -in pkcs8_format_key_file -out traditional_format_key_file
+    chmod 600 traditional_format_key_file
+    ssh-keygen -f traditional_format_key_file -p
+    ```
+
+- **Neden**: geçersiz kimlik bilgisi veya özel anahtar içeriği
+
+- **Öneri**: anahtar dosyanızın veya parolanızın doğru olup olmadığını görmek Için WinSCP gibi araçlarla çift kontrol edin.
 
 ### <a name="sftp-copy-activity-failed"></a>SFTP kopyalama etkinliği başarısız oldu
 
@@ -940,15 +989,19 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Çözüm**: Bu tür "AccMngr" sütununun olup olmadığını doğrulamak için veri kümesinin hedef veri kümesi sütununu eşleyerek nasıl yapılandırıldığını iki kez denetleyin.
 
 
-### <a name="sftp-server-connection-throttling"></a>SFTP sunucusu bağlantısını daraltma
+### <a name="error-code--sftpfailedtoconnecttosftpserver"></a>Hata kodu: SftpFailedToConnectToSftpServer
 
-- **Belirtiler**: Sunucu yanıtı SSH protokol kimliğini içermez ve kopyalanamadı.
+- **İleti**: `Failed to connect to Sftp server '%server;'.`
 
-- Neden: ADF, SFTP sunucusundan paralel olarak indirilecek birden çok bağlantı oluşturacak ve bazen SFTP sunucusu **azaltmasına yol açacaktır**. Pratikte, farklı sunucu, vuruş azaltma sırasında farklı bir hata döndürür.
+- **Neden**: hata Iletisinde ' yuva okuma işlemi 30000 milisaniyelik sonra zaman aşımına uğradı ' içeriyorsa, olası bir neden, SFTP sunucusu için yanlış bağlı hizmet türünün bir SFTP sunucusuna bağlanmak Için FTP bağlantılı hizmetini kullanma gibi, yanlış bağlantılı hizmet türünde kullanılması olabilir.
 
-- **Çözüm**: 
+- **Öneri**: hedef sunucunun bağlantı noktasını denetleyin. Varsayılan olarak, SFTP bağlantı noktası 22 ' i kullanır.
 
-    Lütfen SFTP veri kümesinin en fazla eşzamanlı bağlantısını 1 olarak belirtin ve kopyayı yeniden çalıştırın. Başarılı olursa, azaltma işleminin nedeni olduğundan emin olabilirsiniz.
+- **Neden**: hata Iletisinde ' sunucu yanıtı SSH protokol kimliği içermez ' hatası varsa, olası bir neden, SFTP sunucusunun bağlantıyı kısıtlamasının olması olabilir. ADF, SFTP sunucusundan paralel olarak indirilecek birden çok bağlantı oluşturacak ve bazen SFTP sunucusu azaltmasına ulaşacaktır. Pratikte, farklı sunucu, vuruş azaltma sırasında farklı bir hata döndürür.
+
+- **Öneri**:  
+
+    SFTP veri kümesinin en fazla eş zamanlı bağlantısını 1 olarak belirtin ve kopyayı yeniden çalıştırın. Başarılı olursa, azaltma işleminin nedeni olduğundan emin olabilirsiniz.
 
     Düşük aktarım hızını yükseltmek istiyorsanız, lütfen eş zamanlı bağlantı sayısı sınırını artırmak için SFTP yöneticisiyle iletişime geçin veya aşağıdaki IP 'yi izin verilenler listesine ekleyin:
 
@@ -958,13 +1011,53 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
     - Şirket içinde barındırılan IR kullanıyorsanız, lütfen Shar 'ın yüklü olduğu makine IP 'sini izin verilenler listesine ekleyin.
 
 
-### <a name="error-code-sftprenameoperationfail"></a>Hata kodu: SftpRenameOperationFail
+## <a name="sharepoint-online-list"></a>SharePoint Online Listesi
 
-- **Belirtiler**: işlem hattı, blob 'DAN SFTP 'ye veri kopyalayamadı ve şu hatayla başarısız oldu: `Operation on target Copy_5xe failed: Failure happened on 'Sink' side. ErrorCode=SftpRenameOperationFail,Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException` .
+### <a name="error-code--sharepointonlineauthfailed"></a>Hata kodu: SharePointOnlineAuthFailed
 
-- **Neden**: useTempFileRename seçeneği, verileri kopyalarken doğru olarak ayarlandı. Bu işlem, işlemin geçici dosyaları kullanmasına izin verir. Tüm veriler kopyalanmadan önce bir veya daha fazla geçici dosya silinirse hata tetiklenir.
+- **İleti**: `The access token generated failed, status code: %code;, error message: %message;.`
 
-- **Çözüm**: useTempFileName seçeneğini false olarak ayarlayın.
+- **Neden**: hızmet sorumlusu kimliği ve anahtarı doğru şekilde ayarlanmayabilir.
+
+- **Öneri**: kayıtlı uygulamanızı (HIZMET sorumlusu kimliği) ve anahtarın doğru şekilde ayarlanmış olup olmadığını denetleyin.
+
+
+## <a name="xml-format"></a>XML biçimi
+
+### <a name="error-code--xmlsinknotsupported"></a>Hata kodu: Xmlsinde Tsupported
+
+- **İleti**: `Write data in xml format is not supported yet, please choose a different format!`
+
+- **Neden**: kopyalama etkinliğinizdeki havuz veri kümesi olarak bir XML veri kümesi kullanıldı
+
+- **Öneri**: bir veri kümesini kopya havuzu olarak farklı biçimde kullanın.
+
+
+### <a name="error-code--xmlattributecolumnnameconflict"></a>Hata kodu: XmlAttributeColumnNameConflict
+
+- **İleti**: `Column names %attrNames;' for attributes of element '%element;' conflict with that for corresponding child elements, and the attribute prefix used is '%prefix;'.`
+
+- **Neden**: çakışmaya neden olan bir öznitelik öneki kullanıldı.
+
+- **Öneri**: "attributeprefix" özelliğinin farklı bir değerini ayarlayın.
+
+
+### <a name="error-code--xmlvaluecolumnnameconflict"></a>Hata kodu: XmlValueColumnNameConflict
+
+- **İleti**: `Column name for the value of element '%element;' is '%columnName;' and it conflicts with the child element having the same name.`
+
+- **Neden**: öğe değerinin sütun adı olarak alt öğe adlarından biri kullanılır.
+
+- **Öneri**: "valueColumn" özelliğinin farklı bir değerini ayarlayın.
+
+
+### <a name="error-code--xmlinvalid"></a>Hata kodu: XmlInvalid
+
+- **İleti**: `Input XML file '%file;' is invalid with parsing error '%error;'.`
+
+- **Neden**: giriş XML dosyası düzgün biçimlendirilmemiş.
+
+- **Öneri**: iyi biçimlendirilmiş olması için XML dosyasını düzeltin.
 
 
 ## <a name="general-copy-activity-error"></a>Genel kopyalama etkinliği hatası
@@ -987,24 +1080,23 @@ Bu makalede Azure Data Factory içindeki bağlayıcılar için genel sorun gider
 - **Öneri**: havuz veri kümesini denetleyin ve Joker değer olmadan yolu düzeltir.
 
 
-### <a name="error-code--mappinginvalidpropertywithemptyvalue"></a>Hata kodu: MappingInvalidPropertyWithEmptyValue
+### <a name="fips-issue"></a>FIPS sorunu
 
-- **İleti**: `One or more '%sourceOrSink;' in copy activity mapping doesn't point to any data. Choose one of the three properties 'name', 'path' and 'ordinal' to reference columns/fields.`
+- **Belirtiler**: kopyalama ETKINLIĞI, FIPS özellikli, kendiliğinden konak Integration Runtime makinesinde hata iletisiyle başarısız olur `This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms.` . Bu durum, Azure blob, SFTP vb. gibi bağlayıcılarla veri kopyalanırken meydana gelebilir.
 
+- **Neden**: FIPS (Federal bilgi işleme standartları), kullanılmasına izin verilen belirli bir şifreleme algoritmaları kümesini tanımlar. Makinede FIPS modu etkin olduğunda, kopyalama etkinliğinin bağımlı olduğu bazı şifreleme sınıfları bazı senaryolarda engellenir.
 
-### <a name="error-code--mappinginvalidpropertywithnamepathandordinal"></a>Hata kodu: Mappingınvalidpropertywithnamepathandordinal
+- **Çözüm**: [Bu MAKALEDEN](https://techcommunity.microsoft.com/t5/microsoft-security-baselines/why-we-8217-re-not-recommending-8220-fips-mode-8221-anymore/ba-p/701037)Windows 'da FIPS modunun geçerli durumu hakkında bilgi alabilir ve şirket IÇINDE barındırılan Integration Runtime makinesinde FIPS 'yi devre dışı bırakabileceğinizi değerlendirin.
 
-- **İleti**: `Mixed properties are used to reference '%sourceOrSink;' columns/fields in copy activity mapping. Please only choose one of the three properties 'name', 'path' and 'ordinal'. The problematic mapping setting is 'name': '%name;', 'path': '%path;','ordinal': '%ordinal;'.`
+    Öte yandan, Azure Data Factory FIPS 'yi atlamak ve etkinliğin başarılı olmasını sağlamak istiyorsanız aşağıdaki adımları izleyebilirsiniz:
 
+    1. Şirket içinde barındırılan Integration Runtime yüklendiği klasörü açın, genellikle altında `C:\Program Files\Microsoft Integration Runtime\<IR version>\Shared` .
 
-### <a name="error-code--mappingduplicatedordinal"></a>Hata kodu: MappingDuplicatedOrdinal
+    2. "diawp.exe.config" öğesini açın, `<enforceFIPSPolicy enabled="false"/>` `<runtime>` aşağıdaki gibi bölümüne ekleyin.
 
-- **İleti**: `Copy activity 'mappings' has duplicated ordinal value "%Ordinal;". Fix the setting in 'mappings'.`
+        ![FIPS’yi devre dışı bırakma](./media/connector-troubleshoot-guide/disable-fips-policy.png)
 
-
-### <a name="error-code--mappinginvalidordinalforsinkcolumn"></a>Hata kodu: MappingInvalidOrdinalForSinkColumn
-
-- **İleti**: `Invalid 'ordinal' property for sink column under 'mappings' property. Ordinal: %Ordinal;.`
+    3. Şirket içinde barındırılan Integration Runtime makinesini yeniden başlatın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

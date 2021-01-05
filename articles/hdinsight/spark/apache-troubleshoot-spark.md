@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e60903aaa61cae63d406d459937d33317eee394
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4cfcc860e40415403952efeda13bac513a2c6347
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022260"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822157"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Spark sorunlarını giderme
 
@@ -37,7 +37,7 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
 1. Değeri önerilen ayarı olarak ayarlayın. Bu ayar için **2048m** değeri önerilir.
 
-1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**'i seçin.
+1. Değeri kaydedin ve sonra yapılandırmayı kaydedin. **Kaydet**’i seçin.
 
     ![Değeri 20 48m olarak değiştir](./media/apache-troubleshoot-spark/apache-spark-ambari-config6a.png)
 
@@ -75,9 +75,9 @@ Spark yapılandırma değerleri, Apache Spark bir uygulama özel durumuyla karş
 
 Bu değişiklikler küme genelinde olmakla kalmaz, Spark işini gönderdiğinizde geçersiz kılınabilir.
 
-## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Kümeler üzerinde Jupyter notebook kullanarak bir Apache Spark uygulamasını nasıl yapılandırabilirim?
+## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Kümeler üzerinde bir Jupyter Notebook kullanarak Apache Spark uygulamasını yapılandırmak Nasıl yaparım??
 
-Jupyter Not defterinin ilk hücresinde, **%% Configure** direktifinden sonra Spark YAPıLANDıRMALARıNıN geçerli JSON biçiminde belirtilmesi gerekir. Gerçek değerleri gerektiği gibi değiştirin:
+Jupyter Notebook ilk hücresinde, **%% Configure** direktifinden sonra Spark YAPıLANDıRMALARıNıN geçerli JSON biçiminde belirtilmesi gerekir. Gerçek değerleri gerektiği gibi değiştirin:
 
 ![Yapılandırma ekleme](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 

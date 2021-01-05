@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97c326bd1d2f61ba3fb9d6e381f5a8711bd0ca1d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023985"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821205"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Azure SQL veritabanı 'na veri okumak ve yazmak için HDInsight Spark kümesi kullanma
 
@@ -36,20 +36,20 @@ Azure SQL veritabanı ile Azure HDInsight 'ta bir Apache Spark kümesini bağlam
 Spark kümesiyle ilişkili bir Jupyter Notebook oluşturarak başlayın. Bu makalede kullanılan kod parçacıklarını çalıştırmak için bu not defterini kullanırsınız.
 
 1. [Azure Portal](https://portal.azure.com/), kümenizi açın.
-1. Sağ taraftaki **küme panoları** altında **Jupyter Not defteri** ' ni seçin.  **Küme panoları** görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
+1. Sağ tarafta **küme panoları** altında **Jupyter Notebook** seçin.  **Küme panoları** görmüyorsanız, sol menüden **genel bakış** ' ı seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Apache Spark Jupyter Not defteri](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Not defteri")
+    ![Apache Spark Jupyter Notebook](./media/apache-spark-connect-to-sql-database/hdinsight-spark-cluster-dashboard-jupyter-notebook.png "Spark üzerinde Jupyter Notebook")
 
    > [!NOTE]  
-   > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesinde Jupyter not defterine erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
+   > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesindeki Jupyter Notebook de erişebilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-1. Jupyter not defterinde, sağ üst köşeden **Yeni**' ye ve ardından **Spark** ' a tıklayarak bir Scala Not defteri oluşturun. HDInsight Spark kümesindeki jupi Not defterleri, Python2 uygulamaları için **Pyspark** çekirdeği ve Python3 uygulamaları için **PySpark3** çekirdeğini de sağlar. Bu makalede bir Scala Not defteri oluşturacağız.
+1. Jupyter Notebook, sağ üst köşedeki **Yeni**' ye ve ardından **Spark** ' a tıklayarak bir Scala Not defteri oluşturun. HDInsight Spark kümesindeki jupi Not defterleri, Python2 uygulamaları için **Pyspark** çekirdeği ve Python3 uygulamaları için **PySpark3** çekirdeğini de sağlar. Bu makalede bir Scala Not defteri oluşturacağız.
 
-    ![Spark 'ta Jupyter Not defteri için kernels](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark 'ta Jupyter Not defteri için kernels")
+    ![Spark üzerinde Jupyter Notebook için kernels](./media/apache-spark-connect-to-sql-database/kernel-jupyter-notebook-on-spark.png "Spark üzerinde Jupyter Notebook için kernels")
 
-    Çekirdekler hakkında daha fazla bilgi için bkz. [HDInsight’ta Apache Spark kümeleri ile Jupyter not defterleri kullanma](apache-spark-jupyter-notebook-kernels.md).
+    Çekirdekler hakkında daha fazla bilgi için bkz. [HDInsight 'ta Apache Spark kümeleriyle Jupyter Notebook çekirdekler kullanma](apache-spark-jupyter-notebook-kernels.md).
 
    > [!NOTE]  
    > Bu makalede Spark (Scala) çekirdeği kullanıyoruz çünkü Spark 'tan SQL veritabanı 'na veri akışı yalnızca Scala ve Java 'da desteklenmektedir. SQL 'e okuma ve yazma işlemi, bu makalede tutarlılık için Python kullanılarak yapılabilir, ancak üç işlem için de Scala kullanırız.
@@ -64,7 +64,7 @@ Artık uygulamanızı oluşturmaya başlayabilirsiniz.
 
 Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **SalesLT. Address**) verileri okuyabilirsiniz.
 
-1. Yeni bir Jupyter not defterinde, bir kod hücresinde, aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini veritabanınızın değerleriyle değiştirin.
+1. Yeni bir Jupyter Notebook, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini veritabanınızın değerleriyle değiştirin.
 
     ```scala
     // Declare the values for your database
@@ -121,7 +121,7 @@ Bu bölümde, AdventureWorks veritabanında bulunan bir tablodan (örneğin, **S
 
 Bu bölümde, veritabanında bir tablo oluşturmak ve verileri veriyle doldurmak için kümede bulunan örnek bir CSV dosyası kullanıyoruz. Örnek CSV dosyası (**HVAC.csv**), adresindeki tüm HDInsight kümelerinde kullanılabilir `HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv` .
 
-1. Yeni bir Jupyter not defterinde, bir kod hücresinde, aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini veritabanınızın değerleriyle değiştirin.
+1. Yeni bir Jupyter Notebook, bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve yer tutucu değerlerini veritabanınızın değerleriyle değiştirin.
 
     ```scala
     // Declare the values for your database
@@ -192,7 +192,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz içine veri akışı yaptık `h
     TRUNCATE TABLE [dbo].[hvactable]
     ```
 
-1. HDInsight Spark kümesinde yeni bir Jupyter Not defteri oluşturun. Bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve ardından **SHIFT + enter** tuşlarına basın:
+1. HDInsight Spark kümesinde yeni bir Jupyter Notebook oluşturun. Bir kod hücresinde aşağıdaki kod parçacığını yapıştırın ve ardından **SHIFT + enter** tuşlarına basın:
 
     ```scala
     import org.apache.spark.sql._

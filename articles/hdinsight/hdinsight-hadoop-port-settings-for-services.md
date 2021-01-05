@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e3e2ca2eca0d258a14365edc97b98d0c827b0b6f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546067"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821868"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları
 
@@ -55,7 +55,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | Storm |443 |HTTPS |Storm |Fırtınası Web Kullanıcı arabirimi. Bkz. [HDInsight 'ta Apache Storm topolojilerini dağıtma ve yönetme](storm/apache-storm-deploy-monitor-topology-linux.md) |
 | Kafka Rest proxy |443 |HTTPS |Kafka |Kafka REST API. Bkz. [rest proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma](kafka/rest-proxy.md) |
 
-### <a name="authentication"></a>Kimlik Doğrulama
+### <a name="authentication"></a>Kimlik doğrulaması
 
 İnternet 'te genel olarak kullanıma sunulan tüm hizmetlerin kimliği doğrulanmalıdır:
 
@@ -166,7 +166,7 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift sunucuları |Baş düğümler |10002 |Thrift | &nbsp; | Spark SQL 'e bağlanma hizmeti (Thrift/JDBC) |
 | Livy sunucusu | Baş düğümler | 8998 | HTTP | &nbsp; | Deyimleri, işleri ve uygulamaları çalıştırmak için hizmet |
-| Jupyter Not defteri | Baş düğümler | 8001 | HTTP | &nbsp; | Jupyter Not defteri Web sitesi |
+| Jupyter Notebook | Baş düğümler | 8001 | HTTP | &nbsp; | Jupyter Notebook Web sitesi |
 
 Örnekler:
 

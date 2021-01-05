@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: bd61c6812d794d30e28f087dabf58db51e9c3296
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6407f7c3b1e8570cdc6b36dceec79fba58689c7
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89230424"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822191"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Machine Learning uygulaması derlemek ve bir veri kümesini çözümlemek için Apache Spark MLlib kullanın
 
@@ -32,21 +32,21 @@ MLlib, makine öğrenimi görevleri için yararlı birçok yardımcı program sa
 
 Popüler bir makine öğrenimi görevi *sınıflandırması*, giriş verilerini kategorilere sıralama işlemidir. Bu, sağladığınız giriş verilerine "etiketleri" atamayı anlamak için bir sınıflandırma algoritmasının işleridir. Örneğin, stok bilgilerini girdi olarak kabul eden bir makine öğrenimi algoritması düşünebilirsiniz. Ardından, stoku iki kategoriye böler: satmanız gereken ve saklamanız gereken hisse senetleri.
 
-Lojistik regresyon, sınıflandırma için kullandığınız algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada*veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
+Lojistik regresyon, sınıflandırma için kullandığınız algoritmadır. Spark 'un lojistik regresyon API 'SI, *ikili sınıflandırmada* veya giriş verilerinin iki gruptan birinde sınıflandırılmasına yardımcı olur. Lojistik gerilemeleri hakkında daha fazla bilgi için bkz. [Vikipedi](https://en.wikipedia.org/wiki/Logistic_regression).
 
-Özet olarak, lojistik regresyon işlemi bir *lojistik işlevi*üretir. Bir giriş vektörünün bir grup veya diğer bir grupta ait olma olasılığını tahmin etmek için işlevini kullanın.  
+Özet olarak, lojistik regresyon işlemi bir *lojistik işlevi* üretir. Bir giriş vektörünün bir grup veya diğer bir grupta ait olma olasılığını tahmin etmek için işlevini kullanın.  
 
 ## <a name="predictive-analysis-example-on-food-inspection-data"></a>Yiyecek İnceleme verilerinde tahmine dayalı analiz örneği
 
-Bu örnekte, yemek İnceleme verileri (**Food_Inspections1.csv**) üzerinde bazı tahmine dayalı analiz yapmak için Spark 'ı kullanırsınız. [Chicago veri portalının şehri](https://data.cityofchicago.org/)aracılığıyla elde edilen veriler. Bu veri kümesi, Chicago 'da yürütülen yiyecek kurma incelemeleri hakkında bilgiler içerir. Her bir oluşturma hakkında bilgi, (varsa) ve inceleme sonuçları dahil olmak üzere. CSV veri dosyası, **/Hdisamples/hdisamples/es\dinspectiondata/Food_Inspections1.csv**konumundaki kümeyle ilişkili depolama hesabında zaten kullanılabilir.
+Bu örnekte, yemek İnceleme verileri (**Food_Inspections1.csv**) üzerinde bazı tahmine dayalı analiz yapmak için Spark 'ı kullanırsınız. [Chicago veri portalının şehri](https://data.cityofchicago.org/)aracılığıyla elde edilen veriler. Bu veri kümesi, Chicago 'da yürütülen yiyecek kurma incelemeleri hakkında bilgiler içerir. Her bir oluşturma hakkında bilgi, (varsa) ve inceleme sonuçları dahil olmak üzere. CSV veri dosyası, **/Hdisamples/hdisamples/es\dinspectiondata/Food_Inspections1.csv** konumundaki kümeyle ilişkili depolama hesabında zaten kullanılabilir.
 
 Aşağıdaki adımlarda, bir yiyecek incelemesini geçirmek veya başarısız kılmak için ne olduğunu görmek üzere bir model geliştirirsiniz.
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib makine öğrenimi uygulaması oluşturma
 
-1. PySpark çekirdeği kullanarak bir Jupyter not defteri oluşturun. Yönergeler için bkz. [Jupyter Not defteri dosyası oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
+1. PySpark çekirdeğini kullanarak bir Jupyter Notebook oluşturun. Yönergeler için bkz. [Jupyter Notebook dosyası oluşturma](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file).
 
-2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve ardından **SHIFT + enter**tuşlarına basın.
+2. Bu uygulama için gereken türleri içeri aktarın. Aşağıdaki kodu kopyalayıp boş bir hücreye yapıştırın ve ardından **SHIFT + enter** tuşlarına basın.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -121,7 +121,7 @@ Ham CSV verilerini belleğe yapılandırılmamış metin olarak çekmek için Sp
     df.registerTempTable('CountResults')
     ```
 
-    Veri çerçevesindeki ilgilendiğiniz dört sütun **kimlik**, **ad**, **sonuçlar**ve **ihlallerdir**.
+    Veri çerçevesindeki ilgilendiğiniz dört sütun **kimlik**, **ad**, **sonuçlar** ve **ihlallerdir**.
 
 4. Verilerin küçük bir örneğini almak için aşağıdaki kodu çalıştırın:
 
@@ -174,7 +174,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    `%%sql`Sonra da Magic, `-o countResultsdf` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Countresultsdf**adlı bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır. `%%sql`MAGIC ve PySpark çekirdekle sunulan diğer mıknatık hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
+    `%%sql`Sonra da Magic, `-o countResultsdf` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Countresultsdf** adlı bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır. `%%sql`MAGIC ve PySpark çekirdekle sunulan diğer mıknatık hakkında daha fazla bilgi için, [Apache Spark HDInsight kümeleri Ile Jupyter not defterlerinde kullanılabilen çekirdekler](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)bölümüne bakın.
 
     Çıkış şöyle olur:
 
@@ -196,8 +196,8 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
     Yiyecek denetimi sonucunu tahmin etmek için ihlallere göre bir model geliştirmeniz gerekir. Lojistik regresyon bir ikili sınıflandırma yöntemi olduğundan, sonuç verilerini iki kategoride gruplamak mantıklı olur: **başarısız** ve **Pass**:
 
-   - Aktar
-       - Aktar
+   - Başarılı
+       - Başarılı
        - W/koşullarını geçir
    - Başarısız
        - Başarısız
@@ -235,7 +235,7 @@ Veri kümesinin neleri içerdiğini bir fikir almaya başlayalım.
 
 ## <a name="create-a-logistic-regression-model-from-the-input-dataframe"></a>Giriş veri çerçevesinden bir lojistik regresyon modeli oluşturma
 
-Son görev, etiketlenmiş verileri dönüştürmelidir. Verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürün. Bir lojistik regresyon algoritmasına giriş, bir *etiket özelliği vektör çiftleri*kümesine ihtiyaç duyuyor. "Özellik vektörü", giriş noktasını temsil eden sayıların bir vektörüdür. Bu nedenle, yarı yapılandırılmış olan ve serbest metinli çok sayıda yorum içeren "ihlalleri" sütununu dönüştürmeniz gerekir. Sütunu, bir makinenin kolayca anlayabilmesi için bir gerçek sayı dizisine dönüştürün.
+Son görev, etiketlenmiş verileri dönüştürmelidir. Verileri Lojistik gerileme tarafından çözümlenebilecek bir biçime dönüştürün. Bir lojistik regresyon algoritmasına giriş, bir *etiket özelliği vektör çiftleri* kümesine ihtiyaç duyuyor. "Özellik vektörü", giriş noktasını temsil eden sayıların bir vektörüdür. Bu nedenle, yarı yapılandırılmış olan ve serbest metinli çok sayıda yorum içeren "ihlalleri" sütununu dönüştürmeniz gerekir. Sütunu, bir makinenin kolayca anlayabilmesi için bir gerçek sayı dizisine dönüştürün.
 
 Doğal dili işlemeye yönelik bir standart makine öğrenimi yaklaşımı, her bir ayrı sözcüğü bir "Dizin" olarak atayacaktır. Ardından makine öğrenimi algoritmasına bir vektör geçirin. Her dizinin değeri, metin dizesindeki sözcüğün göreli sıklığını içerir.
 
@@ -252,7 +252,7 @@ model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-using-another-dataset"></a>Başka bir veri kümesi kullanarak modeli değerlendirme
 
-Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının nasıl olacağını *tahmin* edebilirsiniz. Tahminler, gözlemlenen ihlallere göre yapılır. Bu modeli, veri kümesinde **Food_Inspections1.csv**eğitildi. Yeni verilerde bu modelin gücünü *değerlendirmek* için, **Food_Inspections2.csv**ikinci bir veri kümesi kullanabilirsiniz. Bu ikinci veri kümesi (**Food_Inspections2.csv**), kümeyle ilişkili varsayılan depolama kapsayıcısıdır.
+Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının nasıl olacağını *tahmin* edebilirsiniz. Tahminler, gözlemlenen ihlallere göre yapılır. Bu modeli, veri kümesinde **Food_Inspections1.csv** eğitildi. Yeni verilerde bu modelin gücünü *değerlendirmek* için, **Food_Inspections2.csv** ikinci bir veri kümesi kullanabilirsiniz. Bu ikinci veri kümesi (**Food_Inspections2.csv**), kümeyle ilişkili varsayılan depolama kapsayıcısıdır.
 
 1. Model tarafından oluşturulan tahmini içeren **predictionsDf** yeni bir veri çerçevesi oluşturmak için aşağıdaki kodu çalıştırın. Kod parçacığı Ayrıca veri çerçevesini temel alan **tahminler** adlı geçici bir tablo oluşturur.
 
@@ -313,7 +313,7 @@ Daha önce oluşturduğunuz modeli kullanarak yeni İncelemeleri sonuçlarının
 
 Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme oluşturabilirsiniz.
 
-1. Daha önce oluşturulan tahmine **dayalı geçici tablodaki farklı tahminleri ve** sonuçları çıkartarak başlayabilirsiniz. Aşağıdaki sorgular çıktıyı *true_positive*, *false_positive*, *true_negative*ve *false_negative*olarak ayırır. Aşağıdaki sorgularda, kullanarak görselleştirmeyi devre dışı bırakır `-q` ve ayrıca (kullanarak) çıktıyı, `-o` daha sonra Magic ile kullanılabilecek dataframes olarak kaydeder `%%local` .
+1. Daha önce oluşturulan tahmine **dayalı geçici tablodaki farklı tahminleri ve** sonuçları çıkartarak başlayabilirsiniz. Aşağıdaki sorgular çıktıyı *true_positive*, *false_positive*, *true_negative* ve *false_negative* olarak ayırır. Aşağıdaki sorgularda, kullanarak görselleştirmeyi devre dışı bırakır `-q` ve ayrıca (kullanarak) çıktıyı, `-o` daha sonra Magic ile kullanılabilecek dataframes olarak kaydeder `%%local` .
 
     ```PySpark
     %%sql -q -o true_positive
@@ -335,7 +335,7 @@ Artık bu testin sonuçları hakkında neden olacak bir son görselleştirme olu
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. Son olarak, **Matplotlib**kullanarak çizim oluşturmak için aşağıdaki kod parçacığını kullanın.
+1. Son olarak, **Matplotlib** kullanarak çizim oluşturmak için aşağıdaki kod parçacığını kullanın.
 
     ```PySpark
     %%local

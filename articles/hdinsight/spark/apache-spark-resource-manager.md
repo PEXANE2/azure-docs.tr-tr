@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 5427077a4b07917c8852d0a63c815195e776b9de
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017041"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821426"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümesi için kaynakları yönetme
 
@@ -56,9 +56,9 @@ Uygulama gereksinimlerine bağlı olarak Spark yapılandırması için kullanıl
 
     ![Hizmetleri yeniden Başlat](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
-### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Not defteri 'nde çalışan bir uygulamanın parametrelerini değiştirme
+### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook çalıştıran bir uygulamanın parametrelerini değiştirme
 
-Jupyter not defterinde çalışan uygulamalar için, `%%configure` yapılandırma değişikliğini yapmak için Magic 'i kullanabilirsiniz. İdeal olarak, ilk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Bunun yapılması, yapılandırmanın, oluşturulduğu zaman, uygun bir oturuma uygulanmasını sağlar. Uygulamada sonraki bir aşamada yapılandırmayı değiştirmek istiyorsanız parametresini kullanmanız gerekir `-f` . Ancak bunu yaparak uygulamadaki tüm ilerleme durumu kaybedilir.
+Jupyter Notebook çalışan uygulamalar için, `%%configure` yapılandırma değişikliklerini yapmak için Magic ' i kullanabilirsiniz. İdeal olarak, ilk kod hücresini çalıştırmadan önce bu değişiklikleri uygulamanın başlangıcında yapmanız gerekir. Bunun yapılması, yapılandırmanın, oluşturulduğu zaman, uygun bir oturuma uygulanmasını sağlar. Uygulamada sonraki bir aşamada yapılandırmayı değiştirmek istiyorsanız parametresini kullanmanız gerekir `-f` . Ancak bunu yaparak uygulamadaki tüm ilerleme durumu kaybedilir.
 
 Aşağıdaki kod parçacığında, Jupyıter 'da çalışan bir uygulama için yapılandırmanın nasıl değiştirileceği gösterilmektedir.
 
@@ -164,6 +164,6 @@ Makalenin başlangıcında gösterildiği gibi Yarn Kullanıcı arabirimini baş
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)

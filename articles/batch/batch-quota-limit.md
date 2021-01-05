@@ -2,14 +2,14 @@
 title: Hizmet kotaları ve limitleri
 description: Varsayılan Azure Batch kotaları, sınırları ve kısıtlamaları hakkında bilgi edinin ve kota artışlarının nasıl isteneceğini öğrenin
 ms.topic: conceptual
-ms.date: 12/16/2020
+ms.date: 12/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f529d388cb883f635b6225801af5ce41b8c997a
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 11c9ad1e916ad7e64b59cc13c0967d2b9daed4aa
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614529"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814644"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch hizmet kotaları ve limitleri
 
@@ -33,7 +33,7 @@ Ayrıca kotaların garantili değerler olmadığına de unutmayın. Kotalar, Bat
 
 ### <a name="cores-quotas-in-batch-service-mode"></a>Batch hizmeti modundaki çekirdek kotaları
 
-Adanmış çekirdek kotaları zorlaması, aşamalı olarak kullanılabilir hale getirilmekte olan değişiklikler, Aralık 2020 sonuna kadar tüm Batch hesapları için tamamlanarak geliştirilmiştir.
+Adanmış çekirdek kotaları zorlaması, aşamalar halinde kullanılabilir hale getirilmekte olan değişiklikler ve tüm Batch hesapları için 2021 Ocak 'un sonuna kadar tamamlanarak geliştirilmiştir.
 
 Toplu Işlem tarafından desteklenen her bir VM Serisi için çekirdek kotalar bulunur ve portalda **Kotalar** sayfasında görüntülenir. VM Serisi kota sınırları, aşağıda açıklandığı gibi bir destek isteğiyle de yapılandırılabilir.
 
@@ -70,7 +70,7 @@ düğüm içi iletişim olmayan havuzlar için <sup>1</sup> .
 
 ## <a name="other-limits"></a>Diğer sınırlar
 
-Batch hizmeti tarafından ayarlanan ek sınırlar. [Kaynak kotalarından](#resource-quotas)farklı olarak, bu değerler değiştirilemez.
+Bu ek sınırlar Batch hizmeti tarafından ayarlanır. [Kaynak kotalarından](#resource-quotas)farklı olarak, bu değerler değiştirilemez.
 
 | **Kaynak** | **Maksimum sınır** |
 | --- | --- |
@@ -80,6 +80,7 @@ Batch hizmeti tarafından ayarlanan ek sınırlar. [Kaynak kotalarından](#resou
 | Havuz başına uygulama paketleri | 10 |
 | En fazla görev ömrü | 180 gün<sup>1</sup> |
 | İşlem düğümü başına [bağlama](virtual-file-mount.md) | 10 |
+| Havuz başına sertifika sayısı | 12 |
 
 <sup>1</sup> bir görevin, ne zaman tamamlandığında işe eklendiği zaman, 180 gün olur. Tamamlanan görevler yedi gün boyunca devam ederse; Maksimum yaşam süresi içinde tamamlanmayan görevlere yönelik verilere erişilemiyor.
 
@@ -91,7 +92,7 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
 1. Batch hesabının menüsünde **Kotalar** ' ı seçin.
 1. Batch hesabına uygulanmış olan kotaları görüntüleyin.
 
-:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Batch hesabı kotaları":::
+:::image type="content" source="./media/batch-quota-limit/account-quota-portal.png" alt-text="Azure portal Batch hesabı kotalarını gösteren ekran görüntüsü.":::
 
 ## <a name="increase-a-quota"></a>Kotayı artırma
 
@@ -100,26 +101,26 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
 1. Portal panonuzda **Yardım + Destek** kutucuğunu veya portalın sağ üst köşesindeki soru işaretini (**?**) seçin.
 1. **Yeni destek isteği**  >  **temelleri**' ni seçin.
 1. **Temel bilgiler**:
-   
+
     1. **Sorun türü**  >  **Hizmet ve abonelik limitleri (kotalar)**
-   
+
     1. Aboneliğinizi seçin.
-   
+
     1. **Kota türü**  >  **Batch**
-      
+
        **İleri**’yi seçin.
-    
+
 1. **Ayrıntılar** bölümünde:
-      
+
     1. **Ayrıntıları sağla** bölümünde konumu, kota türünü ve Batch hesabını belirtin.
-    
-       ![Toplu kota artışı][quota_increase]
+
+       :::image type="content" source="media/batch-quota-limit/quota-increase.png" alt-text="Kota artışı isteği istenirken kota ayrıntıları ekranının ekran görüntüsü.":::
 
        Kota türleri şunlardır:
 
        * **Batch hesabı başına**  
          Adanmış ve düşük öncelikli çekirdekler ve iş ve havuz sayısı dahil olmak üzere tek bir Batch hesabına özgü değerler.
-        
+
        * **Bölge başına**  
          Bir bölgedeki tüm Batch hesaplarına uygulanan ve abonelik başına bölge başına toplu Işlem hesaplarının sayısını içeren değerler.
 
@@ -130,11 +131,11 @@ Batch hesabı kotalarınızı [Azure Portal](https://portal.azure.com)görüntü
        **İleri**’yi seçin.
 
 1. **İletişim bilgileri**:
-   
+
     1. **Tercih edilen bir iletişim yöntemi** seçin.
-   
+
     1. Gerekli iletişim ayrıntılarını doğrulayın ve girin.
-   
+
        Destek isteğini göndermek için **Oluştur** ' u seçin.
 
 Destek isteğinizi gönderdikten sonra, Azure desteği sizinle iletişim kuracaktır. Kota istekleri, birkaç dakika veya en fazla iki iş günü içinde tamamlanabilir.

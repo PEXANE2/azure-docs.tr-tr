@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/22/2019
-ms.openlocfilehash: 772b136c00dc9c20f8bc35d7ebb324175a56e885
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82c61fe77e7bffea6a20e47c71561ab6dc86d12b
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90061725"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822259"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight 'ta Apache Spark kümelerinde jupi Not defterleri ile dış paketleri kullanma
 
@@ -21,9 +21,9 @@ HDInsight 'ta Apache Spark kümesindeki bir [Jupyter Notebook](https://jupyter.o
 
 [Maven deposunda](https://search.maven.org/) kullanılabilen paketlerin tüm listesini arayabilirsiniz. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, topluluk tarafından katkıda bulunulan paketlerin tam bir listesi [Spark paketlerinde](https://spark-packages.org/)bulunabilir.
 
-Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketini nasıl kullanacağınızı öğreneceksiniz.
+Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketini Jupyter Notebook ile kullanmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
@@ -31,13 +31,13 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
 * Kümelerinizin birincil depolama alanı için [URI şeması](../hdinsight-hadoop-linux-information.md#URI-and-scheme) . Bu `wasb://` , `abfs://` Azure Data Lake Storage 2. veya Azure Data Lake Storage 1. Için Azure depolama için olacaktır `adl://` . Azure depolama veya Data Lake Storage 2. için güvenli aktarım etkinleştirilirse, URI `wasbs://` veya `abfss://` Ayrıca, [Güvenli aktarım](../../storage/common/storage-require-secure-transfer.md)' ı da görürsünüz.
 
-## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyter not defterleri ile dış paketleri kullanma
+## <a name="use-external-packages-with-jupyter-notebooks"></a>Jupyıter Not defterleri ile dış paketleri kullanma
 
 1. `https://CLUSTERNAME.azurehdinsight.net/jupyter` `CLUSTERNAME` Spark Kümenizin adı olduğu yere gidin.
 
 1. Yeni bir not defteri oluşturun. **Yeni**' yi ve ardından **Spark**' ı seçin.
 
-    ![Yeni bir Spark Jupyter Not defteri oluşturun](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni bir Jupyter not defteri oluşturma")
+    ![Yeni bir Spark Jupyter Notebook oluşturma](./media/apache-spark-jupyter-notebook-use-external-packages/hdinsight-spark-create-notebook.png "Yeni bir Jupyter Notebook oluştur")
 
 1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki Not defteri adını seçin ve kolay bir ad girin.
 
@@ -57,9 +57,9 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
     a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://mvnrepository.com/artifact/com.databricks/spark-csv)kullanırız.
 
-    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. `scala.util.Properties.versionString`Spark Jupyıter çekirdeği üzerinde veya Spark göndermesi üzerinde çalıştırarak, kümenizde Scala sürümünü bulabilirsiniz. `sc.version`Jupi Not defterleri üzerinde çalıştırarak Spark sürümünü kümenizde bulabilirsiniz.
+    b. Deposundan **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın. Toplamakta olduğunuz değerlerin kümenize eşleştiğinden emin olun. Bu durumda, bir Scala 2,11 ve Spark 1.5.0 paketi kullanıyoruz, ancak kümenizdeki uygun Scala veya Spark sürümü için farklı sürümler seçmeniz gerekebilir. `scala.util.Properties.versionString`Spark Jupyıter çekirdeği üzerinde veya Spark göndermesi üzerinde çalıştırarak, kümenizde Scala sürümünü bulabilirsiniz. `sc.version`Jupi Not defterleri üzerinde çalıştırarak Spark sürümünü kümenizde bulabilirsiniz.
 
-    ![Jupyter Not defteri ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Not defteri ile dış paketleri kullanma")
+    ![Jupyter Notebook ile dış paketleri kullanma](./media/apache-spark-jupyter-notebook-use-external-packages/use-external-packages-with-jupyter.png "Jupyter Notebook ile dış paketleri kullanma")
 
     c. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
@@ -115,7 +115,7 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

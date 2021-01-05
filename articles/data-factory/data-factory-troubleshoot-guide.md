@@ -5,17 +5,18 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/16/2020
+ms.date: 12/30/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 922ec6c4b579a657e7ee5e872148f8126ce175e2
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654601"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822293"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory sorunlarını giderme
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Bu makalede Azure Data Factory içindeki dış denetim etkinlikleri için genel sorun giderme yöntemleri incelenmektedir.
@@ -546,7 +547,6 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Öneri**: sağlanan abonelikte HDInsight kümesi oluşturma ve yeniden deneme izinlerine sahip bir hizmet sorumlusu sağlamayı düşünün. [Manage kimliklerinin doğru şekilde ayarlandığını](../hdinsight/hdinsight-managed-identities.md)doğrulayın.
 
-
 ### <a name="error-code-2300"></a>Hata kodu: 2300
 
 - **İleti**: `Failed to submit the job '%jobId;' to the cluster '%cluster;'. Error: %errorMessage;.`
@@ -586,7 +586,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
     1. Active baş düğümünüz için, SSH kullanarak etkin baş düğümde bulunan bir ambarı sunucusu olarak bağlanın. 
     1. Etkin baş düğümü yeniden başlatın.
 
-       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örneğin:
+       Daha fazla bilgi için Azure HDInsight sorun giderme belgelerine bakın. Örnek:
 
        * [Ambari kullanıcı arabirimi 502 hatası](https://hdinsight.github.io/ambari/ambari-ui-502-error.html)
        * [Apache Spark Thrift Server için RpcTimeoutException](../hdinsight/spark/apache-spark-troubleshoot-rpctimeoutexception.md)
@@ -952,6 +952,16 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 - **Öneri**: Azure Blob Depolama hesabını, HDInsight isteğe bağlı hizmeti için ek depolama alanı olarak sağlayın.
 
+### <a name="ssl-error-when-adf-linked-service-using-hdinsight-esp-cluster"></a>HDInsight ESP kümesi kullanılarak ADF bağlantılı hizmet sırasında SSL hatası
+
+- **İleti**: `Failed to connect to HDInsight cluster: 'ERROR [HY000] [Microsoft][DriverSupport] (1100) SSL certificate verification failed because the certificate is missing or incorrect.`
+
+- **Neden**: sorun büyük olasılıkla sistem güven deposuyla ilgilidir.
+
+- **Çözüm**: ayarı değiştirmek Için **Microsoft Integration Runtime\4.0\Shared\ODBC DRIVERS\MICROSOFT Hive ODBC driver\lib** yoluna gidebilir ve DriverConfiguration64.exe açabilirsiniz.
+
+    ![Sistem güven deposunun kullan işaretini kaldır](./media/connector-troubleshoot-guide/system-trust-store-setting.png)
+
 ## <a name="web-activity"></a>Web Etkinliği
 
 ### <a name="error-code-2128"></a>Hata kodu: 2128
@@ -1001,7 +1011,7 @@ Aşağıdaki tablo Azure Batch için geçerlidir.
 
 1. Trafiği yeniden yakalamayı açın ve sayfada sorunlu işlemi doldurun.
 
-1. Git: **Dosya**  >  **Save**  >  **tüm oturumları** Kaydet.
+1. Git: **Dosya**  >    >  **tüm oturumları** Kaydet.
 
 Daha fazla bilgi için bkz. [Fiddler ile çalışmaya](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler)başlama.
 
@@ -1015,9 +1025,9 @@ Etkinliğin normal çalışmalarından çok daha uzun süre sürdiğini gözleml
 
 **Hata iletisi:**`The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
 
-**Neden:** Her etkinlik için yük, etkinlik yapılandırmasını, ilişkili veri kümelerini ve bağlı hizmet yapılandırmalarını ve etkinlik türü başına oluşturulan sistem özelliklerinin küçük bir bölümünü içerir. Bu tür yük boyutu sınırı, [Data Factory sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) bölümünde belirtildiği gibi 896KB 'dir.
+**Neden:** Her bir etkinlik için yük, etkinlik yapılandırması, ilişkili veri kümeleri ve varsa bağlı hizmet yapılandırmalarını ve etkinlik türü başına oluşturulan sistem özelliklerinin küçük bir bölümünü içerir. Bu tür yük boyutu sınırı, [Data Factory sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) bölümünde belirtildiği gıbı 896 KB 'dir.
 
-**Öneri:** Özellikle de gerçek verileri denetim akışındaki etkinliklerde geçirirseniz, bu sınıra büyük bir veya daha fazla büyük parametre değeri geçirin. Lütfen büyük parametre değerlerinin boyutunu azaltabilir veya işlem hattı mantığınızı, bu tür değerleri etkinliklerde geçirmeden ve bunun yerine etkinliğin içinde işleyecek şekilde ayarlayabilirsiniz.
+**Öneri:** Özellikle de gerçek verileri denetim akışındaki etkinliklerde geçirirseniz, bu sınıra büyük bir veya daha fazla büyük parametre değeri geçirin. Büyük parametre değerlerinin boyutunu azaltabilir veya işlem hattı mantığınızı, bu tür değerleri etkinliklerde geçirmeden ve bunun yerine etkinliğin içinde işleyecek şekilde ayarlayabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

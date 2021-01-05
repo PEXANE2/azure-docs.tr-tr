@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta Spark kümelerinde Jupyter Not defteri için kernels
-description: Azure HDInsight 'ta Spark kümeleriyle kullanılabilen Jupyter Not defteri için pyspark, PySpark3 ve Spark çekirdekler hakkında bilgi edinin.
+title: Azure HDInsight 'ta Spark kümelerinde Jupyter Notebook kernels
+description: Azure HDInsight 'ta Spark kümeleri ile kullanılabilen Jupyter Notebook pyspark, PySpark3 ve Spark çekirdekler hakkında bilgi edinin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 8c3993d8208a9a9e2ab54be44d88de0b20a2e586
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b1139ce2358d5e5b3b52376892524e7ee0dd5611
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084724"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822242"
 ---
-# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Not defteri için kernels
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Spark kümelerinde Jupyter Notebook kernels
 
-HDInsight Spark kümeleri, uygulamalarınızı test etmek için [Apache Spark](./apache-spark-overview.md) üzerinde Jupyter Not defteri ile kullanabileceğiniz çekirdekler 'leri sağlar. Çekirdek, kodunuzu çalıştıran ve yorumlayan bir programdır. Üç keresi şunlardır:
+HDInsight Spark kümeleri, uygulamalarınızı test etmek için [Apache Spark](./apache-spark-overview.md) Jupyter Notebook birlikte kullanabileceğiniz çekirdekler 'leri sağlar. Çekirdek, kodunuzu çalıştıran ve yorumlayan bir programdır. Üç keresi şunlardır:
 
 - **Pyspark** -Python2 dilinde yazılmış uygulamalar için.
 - **PySpark3** -Python3 dilinde yazılmış uygulamalar için.
@@ -29,30 +29,30 @@ Bu makalede, bu çekirdekleri kullanmayı ve bunların nasıl kullanıldığın�
 
 HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
-## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight 'ta Jupyter Not defteri oluşturma
+## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight üzerinde Jupyter Notebook oluşturma
 
 1. [Azure Portal](https://portal.azure.com/)Spark kümenizi seçin.  Yönergeler için bkz. [liste ve kümeleri gösterme](../hdinsight-administer-use-portal-linux.md#showClusters) . **Genel bakış** görünümü açılır.
 
-2. **Genel bakış** görünümünden **küme panoları** kutusunda **Jupyter Not defteri**' ni seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
+2. **Genel bakış** görünümünden **küme panoları** kutusunda **Jupyter Notebook**' yi seçin. İstenirse, küme için yönetici kimlik bilgilerini girin.
 
-    ![Apache Spark Jupyter Not defteri](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark üzerinde Jupyter Not defteri")
+    ![Apache Spark Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark üzerinde Jupyter Notebook")
   
    > [!NOTE]  
-   > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesinde Jupyter Not defteri 'ne ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
+   > Ayrıca, tarayıcınızda aşağıdaki URL 'YI açarak Spark kümesindeki Jupyter Notebook de ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. **Yeni**' yi seçin ve ardından bir not defteri oluşturmak Için **pyspark**, **PySpark3**veya **Spark** ' ı seçin. Scala uygulamaları için Spark çekirdeğini, Python2 uygulamaları için PySpark çekirdeği ve Python3 uygulamaları için PySpark3 çekirdeğini kullanın.
+3. **Yeni**' yi seçin ve ardından bir not defteri oluşturmak Için **pyspark**, **PySpark3** veya **Spark** ' ı seçin. Scala uygulamaları için Spark çekirdeğini, Python2 uygulamaları için PySpark çekirdeği ve Python3 uygulamaları için PySpark3 çekirdeğini kullanın.
 
-    ![Spark 'ta Jupyter Not defteri için kernels](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 'ta Jupyter Not defteri için kernels")
+    ![Spark üzerinde Jupyter Notebook için kernels](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark üzerinde Jupyter Notebook için kernels")
 
 4. Seçtiğiniz çekirdekle bir not defteri açılır.
 
 ## <a name="benefits-of-using-the-kernels"></a>Çekirdekler kullanmanın avantajları
 
-İşte, Spark HDInsight kümelerinde Jupyter Not defteri ile yeni çekirdekler 'ları kullanmanın bazı avantajları aşağıda verilmiştir.
+Spark HDInsight kümelerinde Jupyter Notebook yeni çekirdekler kullanmanın bazı avantajları aşağıda verilmiştir.
 
-- **Önceden ayarlanmış bağlamlar**. **Pyspark**, **PySpark3**veya **Spark** kernels Ile, uygulamalarınızla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bu bağlamlar varsayılan olarak kullanılabilir. Bu bağlamlar şunlardır:
+- **Önceden ayarlanmış bağlamlar**. **Pyspark**, **PySpark3** veya **Spark** kernels Ile, uygulamalarınızla çalışmaya başlamadan önce Spark veya Hive bağlamlarını açıkça ayarlamanız gerekmez. Bu bağlamlar varsayılan olarak kullanılabilir. Bu bağlamlar şunlardır:
 
   - **sc** -Spark bağlamı için
   - **SqlContext** -Hive bağlamı için
@@ -94,9 +94,9 @@ HDInsight 'ta bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |Sorgunun sonucunu%% yerel Python bağlamında [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcı hale getirmek için bu parametreyi kullanın. Dataframe değişkeninin adı belirttiğiniz değişken adıdır. |
 | -q |`-q` |Hücrenin görselleştirmeleri devre dışı bırakmak için bu parametreyi kullanın. Bir hücrenin içeriğini görselleştirmeyi ve yalnızca bir veri çerçevesi olarak yakalamak istemiyorsanız, öğesini kullanın `-q -o <VARIABLE>` . Sonuçları yakalamadan görselleştirmeleri devre dışı bırakmak istiyorsanız (örneğin, bir SQL sorgusunu bir ifade gibi çalıştırmak için `CREATE TABLE` ), `-q` bir `-o` bağımsız değişken belirtmeden kullanın. |
-| -a |`-m <METHOD>` |Burada **yöntemi** **Al** veya **Sample** (varsayılan olarak **Al**). Yöntemi ise **`take`** , çekirdek MAXROWS tarafından belirtilen sonuç veri kümesinin üst kısmından (Bu tabloda daha sonra açıklanmıştır) öğeleri seçer. Yöntem **örnek**ise, çekirdek, `-r` Bu tablonun yanında açıklanan parametreye göre veri kümesi öğelerini rasgele örnekler. |
+| -a |`-m <METHOD>` |Burada **yöntemi** **Al** veya **Sample** (varsayılan olarak **Al**). Yöntemi ise **`take`** , çekirdek MAXROWS tarafından belirtilen sonuç veri kümesinin üst kısmından (Bu tabloda daha sonra açıklanmıştır) öğeleri seçer. Yöntem **örnek** ise, çekirdek, `-r` Bu tablonun yanında açıklanan parametreye göre veri kümesi öğelerini rasgele örnekler. |
 | -r |`-r <FRACTION>` |Burada **kesir** , 0,0 ile 1,0 arasında bir kayan noktalı sayıdır. SQL sorgusu için örnek yöntem ise `sample` , çekirdek, sizin için sonuç kümesi öğelerinin belirtilen kesirini rastgele olarak örnekler. Örneğin, bağımsız değişkenlerle bir SQL sorgusu çalıştırırsanız `-m sample -r 0.01` , sonuç satırlarının %1 ' i rastgele örneklenir. |
-| -n |`-n <MAXROWS>` |**MaxRows** bir tamsayı değeridir. Çekirdek, çıkış satırı sayısını **MaxRows**olarak sınırlandırır. **MaxRows** , **-1**gibi negatif bir sayı ise, sonuç kümesindeki satır sayısı sınırlı değildir. |
+| -n |`-n <MAXROWS>` |**MaxRows** bir tamsayı değeridir. Çekirdek, çıkış satırı sayısını **MaxRows** olarak sınırlandırır. **MaxRows** , **-1** gibi negatif bir sayı ise, sonuç kümesindeki satır sayısı sınırlı değildir. |
 
 **Örnek:**
 
@@ -107,10 +107,10 @@ SELECT * FROM hivesampletable
 
 Yukarıdaki ifade aşağıdaki eylemleri yapar:
 
-- **Hivesampletable**içindeki tüm kayıtları seçer.
+- **Hivesampletable** içindeki tüm kayıtları seçer.
 - -Q ' ı kullandığımızda, oto görselleştirmeyi devre dışı bırakır.
 - Kullandığımızda `-m sample -r 0.1 -n 500` , hivesampletable içindeki satırların %10 ' u rastgele örnekliyoruz ve sonuç kümesinin boyutunu 500 satır olarak sınırlandırır.
-- Son olarak, bunu kullandığımızda `-o query2` çıktıyı **query2**adlı bir veri çerçevesine de kaydeder.
+- Son olarak, bunu kullandığımızda `-o query2` çıktıyı **query2** adlı bir veri çerçevesine de kaydeder.
 
 ## <a name="considerations-while-using-the-new-kernels"></a>Yeni çekirdekler kullanırken dikkat edilecek noktalar
 
@@ -118,7 +118,7 @@ Hangi çekirdeğin kullanıldığı, çalışan not defterlerini çalıştıran 
 
 ## <a name="where-are-the-notebooks-stored"></a>Not defterleri nerede depolanır?
 
-Kümeniz varsayılan depolama hesabı olarak Azure Storage kullanıyorsa, jupi Not defterleri **/HdiNotebooks** klasörünün altında depolama hesabına kaydedilir.  Jupi içinden oluşturduğunuz Not defterleri, metin dosyaları ve klasörlere depolama hesabından erişilebilir.  Örneğin, Jupyter kullanarak bir klasör **`myfolder`** ve **myFolder/mynot defteri. ipynb**oluşturmak için bu not defterine `/HdiNotebooks/myfolder/mynotebook.ipynb` depolama hesabı dahilinde erişebilirsiniz.  Tersi de geçerlidir, yani bir not defterini doğrudan depolama hesabınıza yüklerseniz `/HdiNotebooks/mynotebook1.ipynb` , Not defteri Jupyter 'dan da görünür.  Not defterleri, küme silindikten sonra bile depolama hesabında kalır.
+Kümeniz varsayılan depolama hesabı olarak Azure Storage kullanıyorsa, jupi Not defterleri **/HdiNotebooks** klasörünün altında depolama hesabına kaydedilir.  Jupi içinden oluşturduğunuz Not defterleri, metin dosyaları ve klasörlere depolama hesabından erişilebilir.  Örneğin, Jupyter kullanarak bir klasör **`myfolder`** ve **myFolder/mynot defteri. ipynb** oluşturmak için bu not defterine `/HdiNotebooks/myfolder/mynotebook.ipynb` depolama hesabı dahilinde erişebilirsiniz.  Tersi de geçerlidir, yani bir not defterini doğrudan depolama hesabınıza yüklerseniz `/HdiNotebooks/mynotebook1.ipynb` , Not defteri Jupyter 'dan da görünür.  Not defterleri, küme silindikten sonra bile depolama hesabında kalır.
 
 > [!NOTE]  
 > Varsayılan depolama alanı olarak Azure Data Lake Storage HDInsight kümeleri, not defterlerini ilişkili depolamada depolamaz.
@@ -145,5 +145,5 @@ Yeni kerler gelişen aşamada ve zaman içinde yer alacak. Bu nedenle, API 'Ler 
 
 - [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
 - [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-- [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+- [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 - [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 00b9568d03260a9d1ac0b6916e09f3d9ef4da34d
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084537"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822174"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma
 
@@ -26,7 +26,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin Not defteri başlatma
 
-1. Spark kümesine **genel bakış**bölümünde, **küme panolarından** **Zeppelin Not defteri** ' ni seçin. Küme için yönetici kimlik bilgilerini girin.  
+1. Spark kümesine **genel bakış** bölümünde, **küme panolarından** **Zeppelin Not defteri** ' ni seçin. Küme için yönetici kimlik bilgilerini girin.  
 
    > [!NOTE]  
    > Aşağıdaki URL 'YI tarayıcınızda açarak kümeniz için Zeppelin not defterine de ulaşabilirsiniz. **CLUSTERNAME** değerini kümenizin adıyla değiştirin:
@@ -80,7 +80,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
     > [!NOTE]  
     > % spark2 yorumlayıcı tüm HDInsight sürümlerindeki Zeppelin not defterlerinde desteklenmez ve% sh yorumlayıcı HDInsight 4,0 ' den itibaren desteklenmeyecektir.
 
-5. Artık Spark SQL deyimlerini `hvac` tabloda çalıştırabilirsiniz. Aşağıdaki sorguyu yeni bir paragrafa yapıştırın. Sorgu, bina KIMLIĞINI alır. Ayrıca, belirli bir tarihteki her bina için hedef ve gerçek sıcaklıklar arasındaki fark. **SHIFT + enter**tuşlarına basın.
+5. Artık Spark SQL deyimlerini `hvac` tabloda çalıştırabilirsiniz. Aşağıdaki sorguyu yeni bir paragrafa yapıştırın. Sorgu, bina KIMLIĞINI alır. Ayrıca, belirli bir tarihteki her bina için hedef ve gerçek sıcaklıklar arasındaki fark. **SHIFT + enter** tuşlarına basın.
 
     ```sql
     %sql
@@ -89,7 +89,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
     Başındaki **% SQL** deyimleri, not defterine Livy Scala yorumlayıcısını kullanmasını söyler.
 
-6. Ekranı değiştirmek için **çubuk grafik** simgesini seçin.  **Ayarlar**, **çubuk grafik**seçildikten sonra görünür, **anahtarlar**ve **değerler**seçmenize olanak sağlar.  Aşağıdaki ekran görüntüsünde çıkış gösterilmektedir.
+6. Ekranı değiştirmek için **çubuk grafik** simgesini seçin.  **Ayarlar**, **çubuk grafik** seçildikten sonra görünür, **anahtarlar** ve **değerler** seçmenize olanak sağlar.  Aşağıdaki ekran görüntüsünde çıkış gösterilmektedir.
 
     ![Notebook1 kullanarak Spark SQL ifadesini çalıştırma](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Notebook1 kullanarak Spark SQL ifadesini çalıştırma")
 
@@ -100,12 +100,12 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    Bu kod parçacığını yeni bir paragrafa yapıştırın ve **SHIFT + enter**tuşlarına basın. Ardından **geçici** açılan listeden **65** ' ı seçin.
+    Bu kod parçacığını yeni bir paragrafa yapıştırın ve **SHIFT + enter** tuşlarına basın. Ardından **geçici** açılan listeden **65** ' ı seçin.
 
 8. Ekranı değiştirmek için **çubuk grafik** simgesini seçin.  Ardından **Ayarlar** ' ı seçin ve aşağıdaki değişiklikleri yapın:
 
-   * **Gruplar:**  **Targettemp**ekleyin.  
-   * **Değerler:** 1. **Tarihi**kaldırın.  2. **Temp_diff**ekleyin.  3.  Toplayıcıyı **Sum** 'dan **Ortalama**olarak değiştirin.  
+   * **Gruplar:**  **Targettemp** ekleyin.  
+   * **Değerler:** 1. **Tarihi** kaldırın.  2. **Temp_diff** ekleyin.  3.  Toplayıcıyı **Sum** 'dan **Ortalama** olarak değiştirin.  
 
      Aşağıdaki ekran görüntüsünde çıkış gösterilmektedir.
 
@@ -115,7 +115,7 @@ HDInsight Spark kümeleri [Apache Zeppelin](https://zeppelin.apache.org/) not de
 
 HDInsight üzerinde Apache Spark kümesindeki Zeppelin Not defteri, kümeye dahil olmayan harici, topluluk tarafından katkıda bulunulan paketleri kullanabilir. Kullanıma sunulan paketlerin tüm listesi için [Maven deposunda](https://search.maven.org/) arama yapın. Ayrıca, diğer kaynaklardan kullanılabilir paketlerin bir listesini alabilirsiniz. Örneğin, topluluk tarafından katkıda bulunulan paketlerin tam bir listesi [Spark paketlerinde](https://spark-packages.org/)bulunabilir.
 
-Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketini nasıl kullanacağınızı göreceksiniz.
+Bu makalede, [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) paketini Jupyter Notebook ile nasıl kullanacağınızı göreceksiniz.
 
 1. Yorumlayıcı ayarlarını açın. Sağ üst köşeden oturum açmış kullanıcı adını seçip **yorumlayıcı**' yı seçin.
 
@@ -135,9 +135,9 @@ Bu makalede, Jupyter Not defteri ile [Spark-CSV](https://search.maven.org/#artif
 
     a. Maven deposundaki paketi bulun. Bu makalede [Spark-CSV](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar)kullandık.
 
-    b. Deposundan **GroupID**, **ArtifactId**ve **Version**değerlerini toplayın.
+    b. Deposundan **GroupID**, **ArtifactId** ve **Version** değerlerini toplayın.
 
-    ![Jupyter Not defteri ile dış paketleri kullanma](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Jupyter Not defteri ile dış paketleri kullanma")
+    ![Jupyter Notebook ile dış paketleri kullanma](./media/apache-spark-zeppelin-notebook/use-external-packages-with-jupyter.png "Jupyter Notebook ile dış paketleri kullanma")
 
     c. İki nokta üst üste (**:**) ayırarak üç değeri birleştirir.
 
@@ -216,7 +216,7 @@ Hizmeti bir komut satırından ve SSH 'den baş düğüme doğrulamak için. Kul
 
 1. `https://CLUSTERNAME.azurehdinsight.net/#/main/services/ZEPPELIN/summary`Clustername öğesinin Kümenizin adı olduğu yere gidin.
 
-1. **Configs**  >  **Gelişmiş Zeppelin-Log4J-Properties**  >  **log4j_properties_content**gidin.
+1. **Configs**  >  **Gelişmiş Zeppelin-Log4J-Properties**  >  **log4j_properties_content** gidin.
 
 1. Öğesini `log4j.appender.dailyfile.Threshold = INFO` olarak değiştirin `log4j.appender.dailyfile.Threshold = DEBUG` .
 
@@ -227,5 +227,5 @@ Hizmeti bir komut satırından ve SSH 'den baş düğüme doğrulamak için. Kul
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
-ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3397c57f793c6994847786ff8247e5ccfa453ec0
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86087496"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821256"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight 'ta Apache Spark otomatik makine öğrenimi ile Azure Machine Learning iş yüklerini çalıştırma
 
@@ -24,7 +24,7 @@ Otomatik makine öğrenimi hakkında genel öğreticiler için bkz. [öğretici:
 Tüm yeni HDInsight-Spark kümeleri AzureML-AutoML SDK ile önceden yüklenmiş olarak gelir.
 
 > [!Note]
-> Azure Machine Learning paketleri Python3 Conda ortamına yüklenir. Yüklü Jupyter Not defteri, PySpark3 çekirdeği kullanılarak çalıştırılmalıdır.
+> Azure Machine Learning paketleri Python3 Conda ortamına yüklenir. Yüklü Jupyter Notebook PySpark3 çekirdeği kullanılarak çalıştırılmalıdır.
 
 Zeppelin not defterlerini kullanarak, oto ml 'yi de kullanabilirsiniz.
 
@@ -35,7 +35,7 @@ Zeppelin not defterlerini kullanarak, oto ml 'yi de kullanabilirsiniz.
 
 Çalışma alanı oluşturma ve deneme gönderimi bir kimlik doğrulama belirteci gerektirir. Bu belirteç, bir [Azure AD uygulaması](../../active-directory/develop/app-objects-and-service-principals.md)kullanılarak oluşturulabilir. Hesapta Multi-Factor Authentication etkinleştirilmemişse, gerekli kimlik doğrulama belirtecini oluşturmak için bir [Azure AD kullanıcısı](/azure/python/python-sdk-azure-authenticate) da kullanılabilir.  
 
-Aşağıdaki kod parçacığı, bir **Azure AD uygulaması**kullanarak bir kimlik doğrulama belirteci oluşturur.
+Aşağıdaki kod parçacığı, bir **Azure AD uygulaması** kullanarak bir kimlik doğrulama belirteci oluşturur.
 
 ```python
 from azureml.core.authentication import ServicePrincipalAuthentication
@@ -46,7 +46,7 @@ auth_sp = ServicePrincipalAuthentication(
 )
 ```
 
-Aşağıdaki kod parçacığı, bir **Azure AD kullanıcısı**kullanarak bir kimlik doğrulama belirteci oluşturur.
+Aşağıdaki kod parçacığı, bir **Azure AD kullanıcısı** kullanarak bir kimlik doğrulama belirteci oluşturur.
 
 ```python
 from azure.common.credentials import UserPassCredentials
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>Veri kümesi yükleniyor
 
-Spark üzerinde otomatik makine öğrenimi, geç değerlendirilen, veriler üzerinde sabit işlemler olan veri **akışlarını**kullanır.  Veri akışı, bir Blobun genel okuma erişimine sahip bir veri kümesini ya da SAS belirtecine sahip blob URL 'sini yükleyebilir.
+Spark üzerinde otomatik makine öğrenimi, geç değerlendirilen, veriler üzerinde sabit işlemler olan veri **akışlarını** kullanır.  Veri akışı, bir Blobun genel okuma erişimine sahip bir veri kümesini ya da SAS belirtecine sahip blob URL 'sini yükleyebilir.
 
 ```python
 import azureml.dataprep as dprep

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 65163225853037ac4cb97a02c0bdaf554b509fb1
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86084651"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822208"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesi için bilinen sorunlar
 
@@ -81,7 +81,7 @@ Jupi Not defterleri ile ilgili bazı bilinen sorunlar aşağıda verilmiştir.
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Dosya adlarında ASCII olmayan karakterler içeren Not defterleri
 
-Jupyter Not defteri dosya adlarında ASCII olmayan karakterler kullanmayın. ASCII olmayan bir dosya adına sahip Jupyter kullanıcı arabiriminden bir dosya yüklemeye çalışırsanız, hata iletisi olmadan başarısız olur. Jupyter dosyayı karşıya yüklemeye izin vermez, ancak görünür bir hata oluşturmaz.
+Jupyter Notebook dosya adlarında ASCII olmayan karakterler kullanmayın. ASCII olmayan bir dosya adına sahip Jupyter kullanıcı arabiriminden bir dosya yüklemeye çalışırsanız, hata iletisi olmadan başarısız olur. Jupyter dosyayı karşıya yüklemeye izin vermez, ancak görünür bir hata oluşturmaz.
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Daha büyük boyutlarda Not defterleri yüklenirken hata oluştu
 
@@ -100,15 +100,15 @@ Bu hatanın gelecekte oluşmasını engellemek için bazı en iyi yöntemleri iz
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Not defteri ilk başlatması beklenenden uzun sürüyor
 
-Spark Magic kullanan Jupyter Not defteri 'ndeki ilk kod açıklaması bir dakikadan fazla sürebilir.  
+Spark Magic kullanarak Jupyter Notebook ilk kod açıklaması bir dakikadan uzun sürebilir.  
 
 **Açıklamalarla**
 
 Bu, ilk kod hücresi çalıştırıldığında meydana gelir. Arka planda bu, oturum yapılandırma ve Spark, SQL ve Hive bağlamlarının ayarlandığı bir şekilde başlatılır. Bu bağlamlar ayarlandıktan sonra, ilk ifade çalıştırılır ve bu, deyimin tamamlanması uzun zaman aldığı izlenimi verir.
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Oturum oluşturma sırasında Jupyter Not defteri zaman aşımı
+### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Oturum oluşturma sırasında zaman aşımı Jupyter Notebook
 
-Spark kümesi kaynak dışı olduğunda, Jupyter Not defteri 'ndeki Spark ve PySpark kernebleri oturumu oluşturmaya çalışırken zaman aşımına uğrar.
+Spark kümesi kaynak dışında olduğunda, Jupyter Notebook Spark ve pyspark çekirdekler oturumlarını oluşturmaya çalışırken zaman aşımına uğrar.
 
 **Karşı**
 
@@ -140,8 +140,8 @@ Spark kümesi kaynak dışı olduğunda, Jupyter Not defteri 'ndeki Spark ve PyS
 * [Spark Scala uygulamaları oluşturmak ve göndermek amacıyla IntelliJ IDEA için HDInsight Araçları Eklentisini kullanma](apache-spark-intellij-tool-plugin.md)
 * [Apache Spark uygulamalarında uzaktan hata ayıklama için IntelliJ fıkır için HDInsight Araçları eklentisini kullanın](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

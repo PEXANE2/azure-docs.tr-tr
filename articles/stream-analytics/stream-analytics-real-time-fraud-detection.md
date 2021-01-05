@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: contperf-fy21q2
 ms.date: 12/17/2020
-ms.openlocfilehash: 8e7a484ff968454f3c5b31422b87123dcee03726
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: b8744d86300287403ca390d93c70b25215bcac4f
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683038"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822140"
 ---
 # <a name="tutorial-analyze-fraudulent-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Öğretici: Power BI panoda Stream Analytics sahte çağrı verilerini analiz edin ve sonuçları görselleştirin
 
@@ -38,7 +38,7 @@ Başlamadan önce, aşağıdaki adımları tamamladığınızdan emin olun:
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[Azure Portal](https://portal.azure.com) oturum açın.
+[Azure portalında](https://portal.azure.com) oturum açın.
 
 ## <a name="create-an-azure-event-hub"></a>Azure Olay Hub’ı oluşturma
 
@@ -46,7 +46,7 @@ Stream Analytics’in sahte arama veri akışını analiz edebilmesi için veril
 
 Bir olay hub'ı oluşturmak ve arama verilerini bu olay hub'ına göndermek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Azure portalında](https://portal.azure.com/) oturum açın.
 2. Event Hubs **nesnelerin interneti kaynak oluştur**' u seçin  >    >  .
 
    ![Portalda bir Azure Olay Hub 'ı oluşturma](media/stream-analytics-real-time-fraud-detection/find-event-hub-resource.png)
@@ -283,17 +283,14 @@ Akış verileriyle birleştirme kullandığınızda, birleştirme, eşleşen sat
 1. Aşağıdaki sorguyu sorgu düzenleyicisine yapıştırın:
 
     ```SQL
-    SELECT  System.Timestamp as Time, 
-        CS1.CallingIMSI, 
-        CS1.CallingNum as CallingNum1, 
-        CS2.CallingNum as CallingNum2, 
-        CS1.SwitchNum as Switch1, 
-        CS2.SwitchNum as Switch2 
-    FROM CallStream CS1 TIMESTAMP BY CallRecTime 
-        JOIN CallStream CS2 TIMESTAMP BY CallRecTime 
-        ON CS1.CallingIMSI = CS2.CallingIMSI 
-        AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5 
+    SELECT System.Timestamp AS WindowEnd, COUNT(*) AS FraudulentCalls
+    INTO "MyPBIoutput"
+    FROM "CallStream" CS1 TIMESTAMP BY CallRecTime
+    JOIN "CallStream" CS2 TIMESTAMP BY CallRecTime
+    ON CS1.CallingIMSI = CS2.CallingIMSI
+    AND DATEDIFF(ss, CS1, CS2) BETWEEN 1 AND 5
     WHERE CS1.SwitchNum != CS2.SwitchNum
+    GROUP BY TumblingWindow(Duration(second, 1))
     ```
 
     Bu sorgu, birleşimdeki işlev haricinde herhangi bir SQL JOIN gibi olur `DATEDIFF` . Bu sürümü, Stream `DATEDIFF` Analytics 'e özeldir ve `ON...BETWEEN` yan tümcesinde görünmelidir. Parametreler bir zaman birimidir (Bu örnekteki saniyeler) ve JOIN için iki kaynağın diğer adları. Bu, standart SQL `DATEDIFF` işlevinden farklıdır.

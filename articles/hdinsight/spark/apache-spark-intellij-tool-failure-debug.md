@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: ebed7d87ba538b2f886155527bb89c1ffd2bcf58
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c8ce1a66d6dbf215c3d49740f2aec47ab01f7591
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545710"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822327"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ Spark iş hata ayıklaması başarısız oldu (Önizleme)
 
@@ -44,7 +44,7 @@ Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belged
 
      ![IntelliJ hata ayıklama projesi oluşturma](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. **İleri** ’yi seçin.
+   c. **İleri**’yi seçin.
 
 2. **Yeni proje** penceresinde aşağıdaki adımları uygulayın:
 
@@ -56,9 +56,9 @@ Hata ayıklamaya devam etmek için bir Spark 2.3.2 projesi oluşturun, bu belged
 
    c. **Spark sürümü** açılan listesinde **Spark 2.3.2 (Scala 2.11.8)** öğesini seçin.
 
-   d. **Son** ’u seçin.
+   d. **Son**'u seçin.
 
-3. **src**  >  **main**  >  Kodunuzu projede açmak için src Main **Scala** ' yı seçin. Bu örnek **AgeMean_Div ()** betiğini kullanır.
+3.   >    >  Kodunuzu projede açmak için src Main **Scala** ' yı seçin. Bu örnek **AgeMean_Div ()** betiğini kullanır.
 
 ## <a name="run-a-spark-scalajava-application-on-an-hdinsight-cluster"></a>HDInsight kümesinde Spark Scala/Java uygulaması çalıştırma
 
@@ -72,11 +72,11 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 
    ![IntelliJ yeni yapılandırma Ekle](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Küme sekmesinde **Uzaktan Çalıştır '** a geçiş yapın. **Ad** , **Spark kümesi** ve **ana sınıf adı** bilgilerini girin. Araçlarımız **Yürüticiler** ile hata ayıklamayı destekler. **Numexectors** , varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
+3. Küme sekmesinde **Uzaktan Çalıştır '** a geçiş yapın. **Ad**, **Spark kümesi** ve **ana sınıf adı** bilgilerini girin. Araçlarımız **Yürüticiler** ile hata ayıklamayı destekler. **Numexectors**, varsayılan değer 5 ' tir ve 3 ' ten daha yüksek bir değere ayarlanmamalıdır. Çalışma süresini azaltmak için **spark. yarn. maxAppAttempts** 'Yi **iş yapılandırmalarına** ekleyebilir ve değeri 1 olarak ayarlayabilirsiniz. Yapılandırmayı kaydetmek için **Tamam** düğmesine tıklayın.
 
    ![IntelliJ hata ayıklama yapılandırmasını yeni Çalıştır](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 
-4. Yapılandırma artık verdiğiniz adla birlikte kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için, **konfigürasyonları Düzenle** ' yi seçin.
+4. Yapılandırma artık verdiğiniz adla birlikte kaydedilir. Yapılandırma ayrıntılarını görüntülemek için yapılandırma adını seçin. Değişiklik yapmak için, **konfigürasyonları Düzenle**' yi seçin.
 
 5. Yapılandırma ayarlarını tamamladıktan sonra, projeyi uzak kümede çalıştırabilirsiniz.
 
@@ -142,8 +142,8 @@ Bir Spark Scala/Java uygulaması oluşturun ve ardından aşağıdaki adımları
 * [Hortonçalışmalar korumalı alanı ile IntelliJ için HDInsight araçlarını kullanma](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)
 * [Apache Spark uygulamalar oluşturmak için Azure Toolkit for Eclipse HDInsight araçlarını kullanma](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

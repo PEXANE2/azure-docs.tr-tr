@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f56bb5e3ed8c953b67f1e88fc16846accaed995
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82195120"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821290"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Öğretici: HDInsight 'ta Power BI kullanarak Apache Spark verileri çözümleme
 
 Bu öğreticide, Azure HDInsight 'ta bir Apache Spark kümesindeki verileri görselleştirmek için Microsoft Power BI kullanmayı öğreneceksiniz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide aşağıdakilerin nasıl yapılacağını öğreneceksiniz:
 > [!div class="checklist"]
 > * Power BI kullanarak Spark verilerini görselleştirme
 
 Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
-## <a name="prerequisites"></a>Ön koşullar
+## <a name="prerequisites"></a>Önkoşullar
 
 * [Öğretici: Azure HDInsight içindeki bir Apache Spark kümesinde veri yükleme ve sorgu çalıştırma](./apache-spark-load-data-run-query.md) makalesini tamamlayın.
 
@@ -37,7 +37,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [Önceki öğreticide](apache-spark-load-data-run-query.md) oluşturduğunuz [Jupyter Notebook](https://jupyter.org/) tablo oluşturmak için kod içerir `hvac` . Bu tablo, konumundaki tüm HDInsight Spark kümelerinde kullanılabilen CSV dosyasını temel alır `\HdiSamples\HdiSamples\SensorSampleData\hvac\hvac.csv` . Verileri doğrulamak için aşağıdaki yordamı kullanın.
 
-1. Jupyter not defterinden aşağıdaki kodu yapıştırın ve sonra **SHIFT + ENTER** tuşuna basın. Kod, tabloların varlığını doğrular.
+1. Jupyter Notebook, aşağıdaki kodu yapıştırın ve ardından **SHIFT + enter** tuşlarına basın. Kod, tabloların varlığını doğrular.
 
     ```PySpark
     %%sql
@@ -77,13 +77,13 @@ Spark ile çalışmanın ilk adımları, Power BI Desktop’ta kümeye bağlanma
 
     ![HDInsight 'tan Power BI Desktop veri alın Apache Spark](./media/apache-spark-use-bi-tools/hdinsight-spark-power-bi-desktop-get-data.png "Apache Spark bı 'dan Power BI veri al")
 
-3. `Spark`Arama kutusuna girin, **Azure HDInsight Spark**öğesini seçin ve ardından **Bağlan**' ı seçin.
+3. `Spark`Arama kutusuna girin, **Azure HDInsight Spark** öğesini seçin ve ardından **Bağlan**' ı seçin.
 
     ![Apache Spark bı 'dan Power BI veri al](./media/apache-spark-use-bi-tools/apache-spark-bi-import-data-power-bi.png "Apache Spark bı 'dan Power BI veri al")
 
 4. `mysparkcluster.azurehdinsight.net` **Sunucu** metın kutusuna küme URL 'nizi (biçimde) girin.
 
-5. **Veri bağlantısı modu**altında **DirectQuery**' yi seçin. Ardından **Tamam**'ı seçin.
+5. **Veri bağlantısı modu** altında **DirectQuery**' yi seçin. Ardından **Tamam**’ı seçin.
 
     Spark ile herhangi bir veri bağlantısı modunu kullanabilirsiniz. DirectQuery kullanırsanız, değişiklikler tüm veri kümesi yenilenmeden raporlara yansıtılır. Verileri içeri aktarırsanız, değişiklikleri görmek için veri kümesini yenilemeniz gerekir. DirectQuery’nin nasıl ve ne zaman kullanılacağı hakkında daha fazla bilgi için bkz. [Power BI’da DirectQuery kullanma](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/01/2020
-ms.openlocfilehash: ffc8fcf734877f55210507310849a5746a280c3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13dd960cc7c900882acbcb9b17a5b8a1f32f956c
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504358"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821511"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Derin ve gelişmiş analiz
 
@@ -48,7 +48,7 @@ En iyi sığdırma algoritmasını seçerken birlikte, eğitim için veri sağla
 | Kümeleme | Örnek kümesini hogenou gruplarına bölme | Denetimsiz | K-kümelemenin anlamı |
 | Model algılama | Verilerdeki sık kullanılan ilişkilendirmeleri tanımla | Denetimsiz | İlişkilendirme kuralları |
 | Regresyon | Sayısal sonuçları tahmin etme | Denetimli | Doğrusal regresyon, sinir Networks |
-| Pekiştirmeye dayalı | Robots için en iyi davranışı belirleme | Pekiştirmeye dayalı | Monte Carlo benzetimleri, ayrıntılı fikir |
+| Pekiştirme | Robots için en iyi davranışı belirleme | Pekiştirme | Monte Carlo benzetimleri, ayrıntılı fikir |
 
 ## <a name="machine-learning-on-hdinsight"></a>HDInsight 'ta makine öğrenimi
 
@@ -91,7 +91,7 @@ Bu gelişmiş analiz senaryosunda üç temel görev vardır:
 
 1. Apache Spark 2.1.0 dağıtımına sahip bir Azure HDInsight Hadoop kümesi oluşturun.
 2. Bir Azure HDInsight Spark kümesinin tüm düğümlerine Microsoft Cognitive Toolkit yüklemek için özel bir komut dosyası çalıştırın.
-3. Spark Python API 'sini (PySpark) kullanarak bir Azure Blob depolama hesabındaki dosyalara eğitilen Microsoft Cognitive Toolkit derin bir öğrenme modeli uygulamak için önceden oluşturulmuş bir Jupyter Not defterini HDInsight Spark kümenize yükleyin.
+3. Spark Python API 'sini (PySpark) kullanarak bir Azure Blob depolama hesabındaki dosyalara eğitim Microsoft Cognitive Toolkit derinlemesine bir öğrenme modeli uygulamak için önceden oluşturulmuş bir Jupyter Notebook HDInsight Spark kümenize yükleyin.
 
 Bu örnek, Alex Kronizhevsky, Vinod nair ve Geoffey Hinton tarafından derlenen ve dağıtılan CIFAR-10 görüntü kümesini kullanır. CIFAR-10 veri kümesi, birbirini dışlayan 10 sınıfa ait 60.000 32 × 32 renk görüntüsünü içerir:
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: c2e2daf6d8c9afa6ffef03b088ec9a7dc144cf47
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: f74307cc7f074788ac12712b3722dc0ad7fa71b6
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504942"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97821154"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark ayarlarını yapılandırma
 
@@ -130,7 +130,7 @@ HDInsight 'ta Spark kümeleri, varsayılan olarak bir dizi bileşen içerir. Bu 
 |Spark çekirdeği|Spark Core, Spark SQL, Spark streaming API 'Leri, GraphX ve Apache Spark MLlib.|
 |Anaconda|Python Paket Yöneticisi.|
 |Apache Livy|Apache Spark REST API, uzak işleri bir HDInsight Spark kümesine göndermek için kullanılır.|
-|Jupyter ve Apache Zeppelin Not defterleri|Spark kümeniz ile etkileşimde bulunmak için etkileşimli tarayıcı tabanlı kullanıcı arabirimi.|
+|Jupyter Not defterleri ve Apache Zeppelin Not defterleri|Spark kümeniz ile etkileşimde bulunmak için etkileşimli tarayıcı tabanlı kullanıcı arabirimi.|
 |ODBC sürücüsü|HDInsight 'ta Spark kümelerini Microsoft Power BI ve Tableau gibi iş zekası (BI) araçlarına bağlar.|
 
 Jupyter Notebook çalıştıran uygulamalar için, `%%configure` komut defteri içinden yapılandırma değişikliği yapmak için komutunu kullanın. Bu yapılandırma değişiklikleri, Not defteri örneğinden çalıştırılan Spark işlerine uygulanır. İlk kod hücresini çalıştırmadan önce, uygulamanın başlangıcında bu değişiklikleri yapın. Değiştirilen yapılandırma, oluşturulması sırasında, Livy oturumuna uygulanır.

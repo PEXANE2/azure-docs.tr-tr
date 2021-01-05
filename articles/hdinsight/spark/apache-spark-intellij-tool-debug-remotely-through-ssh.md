@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a2044e9bb0110eda666d12e29a715547381e2be
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995344"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822344"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Bir HDInsight kümesindeki Apache Spark uygulamalarda SSH aracılığıyla Azure Toolkit for IntelliJ hata ayıklama
 
@@ -63,7 +63,7 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
    ![IntelliJ yeni proje Spark sürümü Seç](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-new-project.png)
 
-1. **Son**’u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir. İlerleme için sağ alt köşeyi izleyin.
+1. **Son**'u seçin. Projenin kullanılabilir hale gelmesi birkaç dakika sürebilir. İlerleme için sağ alt köşeyi izleyin.
 
 1. Projenizi genişletin ve **src**  >  **Main**  >  **Scala**  >  **örneğine** gidin. **SparkCore_WasbIOTest** çift tıklayın.
 
@@ -93,7 +93,7 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 
 ## <a name="perform-remote-run"></a>Uzaktan çalıştırma gerçekleştir
 
-1. **Run**  >  **Yapılandırma yapılandırması Çalıştır...**' a gidin. Bu menüden, uzaktan hata ayıklama için yapılandırma oluşturabilir veya düzenleyebilirsiniz.
+1.   >  **Yapılandırma yapılandırması Çalıştır...**' a gidin. Bu menüden, uzaktan hata ayıklama için yapılandırma oluşturabilir veya düzenleyebilirsiniz.
 
 1. **Çalıştır/hata ayıkla yapılandırma** iletişim kutusunda artı işaretini ( **+** ) seçin. Sonra **HDInsight üzerinde Apache Spark** seçeneğini belirleyin.
 
@@ -178,8 +178,8 @@ Bu makalede, HDInsight kümesindeki uygulamalarda hata ayıklamak için [Azure T
 * [VPN aracılığıyla Apache Spark uygulamalarında uzaktan hata ayıklamak için Azure Toolkit for IntelliJ kullanma](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Apache Spark uygulamalar oluşturmak için Azure Toolkit for Eclipse HDInsight araçlarını kullanma](./apache-spark-eclipse-tool-plugin.md)
 * [HDInsight 'ta Apache Spark kümesiyle Apache Zeppelin not defterlerini kullanma](apache-spark-zeppelin-notebook.md)
-* [HDInsight için Apache Spark kümesindeki Jupyter Not defteri için kullanılabilir kernels](apache-spark-jupyter-notebook-kernels.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [HDInsight için Apache Spark kümesinde Jupyter Notebook için kullanılabilir olan kernels](apache-spark-jupyter-notebook-kernels.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Kaynakları yönetme

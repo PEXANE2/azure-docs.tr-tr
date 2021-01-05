@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
-ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61ec2db1799919eb395996b56d08b77e3be7ff5a
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86083806"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822378"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight üzerinde Apache Spark kümesiyle özel bir Python kitaplığı kullanarak Web sitesi günlüklerini çözümleme
 
-Bu not defteri, HDInsight üzerinde Apache Spark olan özel bir kitaplık kullanarak günlük verilerinin nasıl çözümlendiğini gösterir. Kullandığımız özel kitaplık, **iislogparser.py**adlı bir Python kitaplığıdır.
+Bu not defteri, HDInsight üzerinde Apache Spark olan özel bir kitaplık kullanarak günlük verilerinin nasıl çözümlendiğini gösterir. Kullandığımız özel kitaplık, **iislogparser.py** adlı bir Python kitaplığıdır.
 
 ## <a name="prerequisites"></a>Önkoşullar
 
@@ -31,15 +31,15 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
 
 1. Bir Web tarayıcısından, `https://CLUSTERNAME.azurehdinsight.net/jupyter` , `CLUSTERNAME` Kümenizin adı olan ' a gidin.
 
-1. Yeni bir not defteri oluşturun. **Yeni**ve ardından **pyspark**' ı seçin.
+1. Yeni bir not defteri oluşturun. **Yeni** ve ardından **pyspark**' ı seçin.
 
-    ![Yeni bir Apache Jupyter Not defteri oluşturma](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Yeni bir Jupyter not defteri oluşturma")
+    ![Yeni bir Apache Jupyter Notebook oluştur](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "Yeni bir Jupyter Notebook oluştur")
 
 1. Yeni bir not defteri oluşturulur ve Untitled.pynb adı ile açılır. Üstteki Not defteri adını seçin ve kolay bir ad girin.
 
     ![Not defteri adını belirtme](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Not defteri adını belirtme")
 
-1. PySpark çekirdeği kullanarak bir not defteri oluşturduğunuz için, açıkça herhangi bir bağlam oluşturmanız gerekmez. Birinci kod hücresini çalıştırdığınızda Spark ve Hive bağlamları sizin için otomatik olarak oluşturulur. Bu senaryo için gerekli olan türleri içeri aktararak başlayabilirsiniz. Aşağıdaki kod parçacığını boş bir hücreye yapıştırın ve ardından **SHIFT + enter**tuşlarına basın.
+1. PySpark çekirdeği kullanarak bir not defteri oluşturduğunuz için, açıkça herhangi bir bağlam oluşturmanız gerekmez. Birinci kod hücresini çalıştırdığınızda Spark ve Hive bağlamları sizin için otomatik olarak oluşturulur. Bu senaryo için gerekli olan türleri içeri aktararak başlayabilirsiniz. Aşağıdaki kod parçacığını boş bir hücreye yapıştırın ve ardından **SHIFT + enter** tuşlarına basın.
 
     ```pyspark
     from pyspark.sql import Row
@@ -154,7 +154,7 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
     (u'/blogposts/mvc4/step1.png', 98.0)]
     ```
 
-1. Bu bilgileri, çizim biçiminde de sunabilirsiniz. Bir çizim oluşturmak için ilk adım olarak, ilk olarak bir geçici tablo **Ortalamasaati**oluşturalım. Tablo, belirli bir zamanda olağan dışı gecikme süreleri olup olmadığını görmek için günlükleri zamana göre gruplandırır.
+1. Bu bilgileri, çizim biçiminde de sunabilirsiniz. Bir çizim oluşturmak için ilk adım olarak, ilk olarak bir geçici tablo **Ortalamasaati** oluşturalım. Tablo, belirli bir zamanda olağan dışı gecikme süreleri olup olmadığını görmek için günlükleri zamana göre gruplandırır.
 
     ```pyspark
     avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
@@ -172,7 +172,7 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
     SELECT * FROM AverageTime
     ```
 
-   `%%sql`Sonra da Magic, `-o averagetime` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Ortalama**ada sahip bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır.
+   `%%sql`Sonra da Magic, `-o averagetime` sorgunun çıkışının jupi sunucusunda (genellikle kümenin baş düğümüne) kalıcı olarak kalıcı olmasını sağlar. Çıktı, belirtilen **Ortalama** ada sahip bir [Pandas](https://pandas.pydata.org/) dataframe olarak kalıcıdır.
 
    Aşağıdaki görüntüde olduğu gibi bir çıktı görmeniz gerekir:
 
@@ -203,5 +203,5 @@ Verileriniz bir Apache Hive tablo olarak kaydedildikten sonra, sonraki bölümde
 Aşağıdaki makaleleri keşfet:
 
 * [Genel Bakış: Azure HDInsight’ta Apache Spark](apache-spark-overview.md)
-* [Jupyter not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jupyıter Not defterleri ile dış paketleri kullanma](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Jupyter’i bilgisayarınıza yükleme ve bir HDInsight Spark kümesine bağlanma](apache-spark-jupyter-notebook-install-locally.md)

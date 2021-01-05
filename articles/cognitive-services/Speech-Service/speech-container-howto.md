@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Şirket içi, Docker, kapsayıcı
-ms.openlocfilehash: 9ca5229200b39f0a3c68da152f4d89f842d021ca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2123098aafb414495f55d557ac1546819c25fdad
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95996458"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97822072"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Konuşma hizmeti API 'Leri için Docker Kapsayıcıları yükleyip çalıştırın 
 
@@ -68,7 +68,7 @@ Konuşma kapsayıcılarını kullanmadan önce aşağıdaki Önkoşullar:
 
 ### <a name="advanced-vector-extension-support"></a>Gelişmiş vektör uzantısı desteği
 
-**Konak** , Docker kapsayıcısını çalıştıran bilgisayardır. Ana bilgisayar *must support* [Gelişmiş vektör uzantılarını](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) desteklemelidir (AVX2). Aşağıdaki komutla Linux konaklarda AVX2 desteğini denetleyebilirsiniz:
+**Konak** , Docker kapsayıcısını çalıştıran bilgisayardır. Ana bilgisayar  [Gelişmiş vektör uzantılarını](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions#CPUs_with_AVX2) desteklemelidir (AVX2). Aşağıdaki komutla Linux konaklarda AVX2 desteğini denetleyebilirsiniz:
 
 ```console
 grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detected
@@ -287,7 +287,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/speechservices/language-d
 
 Kapsayıcı [ana bilgisayardan](#the-host-computer)olduktan sonra, kapsayıcında çalışmak için aşağıdaki işlemi kullanın.
 
-1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [examples](speech-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
+1. [Kapsayıcıyı](#run-the-container-with-docker-run)gerekli faturalandırma ayarlarıyla çalıştırın. Komuta [](speech-container-configuration.md#example-docker-run-commands) daha fazla örnek `docker run` kullanılabilir.
 1. [Kapsayıcının tahmin uç noktasını sorgulayın](#query-the-containers-prediction-endpoint).
 
 ## <a name="run-the-container-with-docker-run"></a>Kapsayıcıyı ile çalıştırma `docker run`
@@ -312,6 +312,10 @@ ApiKey={API_KEY}
 * 4 CPU çekirdeği ve 4 gigabayt (GB) bellek ayırır.
 * TCP bağlantı noktası 5000 ' i gösterir ve kapsayıcı için bir sözde TTY ayırır.
 * Kapsayıcıyı çıktıktan sonra otomatik olarak kaldırır. Kapsayıcı görüntüsü hala ana bilgisayarda kullanılabilir.
+
+> [!NOTE]
+> Kapsayıcılar, GStreamer kullanarak konuşma SDK 'sına sıkıştırılmış ses girişini destekler.
+> Bir kapsayıcıya GStreamer yüklemek için, GStreamer için Linux yönergelerini izleyin [konuşma SDK 'sı ile codec sıkıştırılmış ses girişini kullanın](how-to-use-codec-compressed-audio-input-streams.md).
 
 
 #### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Konuşmayı metne dönüştürme sırasında yaklaşımı çözümleme 
