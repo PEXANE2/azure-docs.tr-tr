@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/5/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1ab382ec10d932b94961c73b7d7ac9082125a88c
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: e19277aa3639031371e0e8dd28f4dd849efd4597
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704529"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933940"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Azure Anahtar Kasası ve kasa erişim ilkesi oluşturma
 
@@ -23,7 +23,7 @@ ms.locfileid: "97704529"
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu makaledeki adımları gerçekleştirmek için:
 
@@ -213,7 +213,7 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault genel bakışını](../general/overview.md)okuyun.
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md)hakkında daha fazla bilgi edinin.
-- [En iyi Azure Key Vault uygulamaları](../general/best-practices.md)inceleyin.
+- [Azure Key Vault güvenliğine genel bakış](security-overview.md) konusunu gözden geçirin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

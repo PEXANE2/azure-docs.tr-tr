@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 258d100276b20ea2437ebffb1473492a247657e8
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: a9a783333d8edd40556b7744eb7cf7dfb52953a7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704223"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933991"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Geçici silme ve Temizleme koruması ile kurtarma yönetimi Azure Key Vault
 
@@ -23,7 +23,7 @@ Key Vault hakkında daha fazla bilgi için bkz.
 - [Anahtar Kasasına genel bakış](overview.md)
 - [Azure Key Vault anahtarlar, gizlilikler ve sertifikalara genel bakış](about-keys-secrets-certificates.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/dotnet)
 * [PowerShell modülü](https://docs.microsoft.com/powershell/azure/install-az-ps).
@@ -394,4 +394,4 @@ Geçici silme hakkında daha fazla bilgi için bkz. [Azure Key Vault geçici gen
 - [Key Vault günlüğü etkinleştirme](howto-logging.md)
 - [Anahtar kasasına güvenli erişim](secure-your-key-vault.md)
 - [Geliştirici Kılavuzu Azure Key Vault](developers-guide.md)
-- [Anahtar Kasası kullanmak için en iyi uygulamalar](best-practices.md)
+- [Anahtar Kasası kullanmak için en iyi uygulamalar](security-overview.md)

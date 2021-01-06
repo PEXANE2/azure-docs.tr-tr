@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086480"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932920"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB için Azure Işlevleri tetikleyicisiyle günlüğe kaydetme ve bağlantı yapılandırma
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -57,7 +57,7 @@ traces
 
 ### <a name="changing-the-connection-mode-and-protocol"></a>Bağlantı modunu ve protokolünü değiştirme
 
-İstemci bağlantı ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: **bağlantı modu** ve **bağlantı protokolü** . Cosmos DB için Azure Işlevleri tetikleyicisi tarafından kullanılan varsayılan bağlantı modunu ve protokolünü ve tüm [Azure Cosmos DB bağlamalarını](../azure-functions/functions-bindings-cosmosdb-v2-output.md)değiştirebilirsiniz. Varsayılan ayarları değiştirmek için `host.json` Azure işlevleri projenizde veya Azure Işlevleri uygulamanızda dosyayı bulmanız ve aşağıdaki [ek ayarı](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)eklemeniz gerekir:
+İstemci bağlantı ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: **bağlantı modu** ve **bağlantı protokolü**. Cosmos DB için Azure Işlevleri tetikleyicisi tarafından kullanılan varsayılan bağlantı modunu ve protokolünü ve tüm [Azure Cosmos DB bağlamalarını](../azure-functions/functions-bindings-cosmosdb-v2-output.md)değiştirebilirsiniz. Varsayılan ayarları değiştirmek için `host.json` Azure işlevleri projenizde veya Azure Işlevleri uygulamanızda dosyayı bulmanız ve aşağıdaki [ek ayarı](../azure-functions/functions-bindings-cosmosdb-v2-output.md#hostjson-settings)eklemeniz gerekir:
 
 ```js
 {
@@ -82,7 +82,7 @@ Azure Işlevleri projeniz Azure Işlevleri v1 çalışma zamanı ile çalışıy
 ```
 
 > [!NOTE]
-> Azure Işlevleri tüketim planı barındırma planı ile çalışırken her örnek, sürdüreme soket bağlantısı miktarına göre bir sınıra sahiptir. Doğrudan/TCP moduyla çalışırken, Tasarım yaparak daha fazla bağlantı oluşturulur ve [Tüketim planı sınırına](../azure-functions/manage-connections.md#connection-limit)ulaşarak, ağ geçidi modunu kullanabilir veya Azure işlevlerinizi [App Service modunda](../azure-functions/functions-scale.md#app-service-plan)çalıştırabilirsiniz.
+> İşlev uygulamanızı bir tüketim planında barındırırken, her örnek, sürdürebilmesine yönelik soket bağlantısı miktarına göre bir sınıra sahiptir. Doğrudan/TCP moduyla çalışırken, Tasarım yaparak daha fazla bağlantı oluşturulur ve [Tüketim planı sınırına](../azure-functions/manage-connections.md#connection-limit)ulaşarak, ağ geçidi modunu kullanabilir veya Işlev uygulamanızı [Premium bir planda](../azure-functions/functions-premium-plan.md) ya da [adanmış (App Service)](../azure-functions/dedicated-plan.md)bir planda barındırabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

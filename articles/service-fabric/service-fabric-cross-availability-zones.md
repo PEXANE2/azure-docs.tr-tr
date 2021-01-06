@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 1217ecba7a5fcb3c0fc95f505e7ca07fc76129b2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401738"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930829"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Kullanılabilirlik Alanları arasında bir Azure Service Fabric kümesi dağıtma
 Azure 'daki Kullanılabilirlik Alanları, uygulamalarınızı ve verilerinizi veri merkezi hatalarından koruyan yüksek kullanılabilirliğe sahip bir tekliftir. Bir kullanılabilirlik alanı, bir Azure bölgesi içinde bağımsız güç, soğutma ve ağ ile donatılmış benzersiz bir fiziksel konumdur.
@@ -35,7 +35,7 @@ Birincil düğüm türü için önerilen topoloji, aşağıda özetlenen kaynakl
 >[!NOTE]
 > Service Fabric alanları kapsayan tek bir sanal makine ölçek kümesini desteklemediğinden, sanal makine ölçek kümesi tek yerleşim grubu özelliği true olarak ayarlanmalıdır.
 
- ![Azure Service Fabric kullanılabilirlik alanı mimarisi][sf-architecture]
+ ![Azure Service Fabric kullanılabilirlik alanı mimarisini gösteren diyagram.][sf-architecture]
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
 ### <a name="public-ip-and-load-balancer-resource"></a>Genel IP ve Load Balancer kaynağı

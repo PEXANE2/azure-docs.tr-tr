@@ -3,12 +3,12 @@ title: Azure Resource Manager dağıtma ve yükseltme
 description: Azure Resource Manager şablonu kullanarak bir Service Fabric kümesine uygulamalar ve hizmetler dağıtmayı öğrenin.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681678"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930846"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Uygulamaları ve Hizmetleri Azure Resource Manager kaynak olarak yönetme
 
@@ -50,13 +50,12 @@ Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen f
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Kaynak Yöneticisi şablonunuza yeni bir uygulama ekleme
 
 1. Kümenizin Kaynak Yöneticisi şablonunu dağıtım için hazırlayın. Hakkında daha fazla bilgi için bkz. [Azure Resource Manager kullanarak Service Fabric kümesi oluşturma](service-fabric-cluster-creation-via-arm.md) .
 2. Kümede dağıtımı planladığınız bazı uygulamaları düşünün. Diğer uygulamaların bağımlılığı olabilecek her zaman çalışacak mı? Tüm küme idare veya kurulum uygulamalarını dağıtmaya mi planlıyorsunuz? Bu tür uygulamalar yukarıda anlatıldığı gibi Kaynak Yöneticisi şablonu aracılığıyla en iyi şekilde yönetilir. 
-3. Bu şekilde hangi uygulamaları dağıtacağınızı iletişime, uygulamaların paketlenmesi, sıkıştırılması ve bir dosya paylaşımında bulunması gerekir. Dağıtım sırasında kullanmak üzere Azure Resource Manager için bir REST uç noktası aracılığıyla paylaşıma erişilebilir olması gerekir.
-4. Kaynak Yöneticisi şablonunuzda, küme bildirimenizle, her uygulamanın özelliklerini betimleyen. Bu özellikler, çoğaltma veya örnek sayısını ve kaynaklar (diğer uygulamalar veya hizmetler) arasında herhangi bir bağımlılık zincirlerini içerir. Kapsamlı özelliklerin listesi için bkz. [Swagger Spec REST API](https://aka.ms/sfrpswaggerspec). Bunun uygulama veya hizmet bildirimlerinin yerini almaz, ancak bunun yerine, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak bunların bazı özellikleri açıklanmıştır. Aşağıda, Service1 bir parçası olarak durum bilgisi olmayan bir Service *Service1* ve durum bilgisi olan bir Service *Service2* dağıtmanın bir örnek şablonu *verilmiştir:*
+3. Bu şekilde hangi uygulamaları dağıtacağınızı iletişime, uygulamaların paketlenmesi, sıkıştırılması ve bir depolama paylaşımında yerleştirilmesi gerekir. Dağıtım sırasında kullanmak üzere Azure Resource Manager için bir REST uç noktası aracılığıyla paylaşıma erişilebilir olması gerekir. Ayrıntılar için bkz. [depolama hesabı oluşturma](service-fabric-concept-resource-model.md#create-a-storage-account) .
+4. Kaynak Yöneticisi şablonunuzda, küme bildirimenizle, her uygulamanın özelliklerini betimleyen. Bu özellikler, çoğaltma veya örnek sayısını ve kaynaklar (diğer uygulamalar veya hizmetler) arasında herhangi bir bağımlılık zincirlerini içerir. Bunun uygulama veya hizmet bildirimlerinin yerini almaz, ancak bunun yerine, kümenin Kaynak Yöneticisi şablonunun bir parçası olarak bunların bazı özellikleri açıklanmıştır. Aşağıda, Service1 bir parçası olarak durum bilgisi olmayan bir Service  ve durum bilgisi olan bir Service *Service2* dağıtmanın bir örnek şablonu *verilmiştir:*
 
    ```json
    {
@@ -244,7 +243,7 @@ Aşağıdaki kod parçacığında, bir şablon aracılığıyla yönetilebilen f
    ```
 
    > [!NOTE] 
-   > *Apiversion* , olarak ayarlanmalıdır `"2019-03-01"` . Bu şablon, küme zaten dağıtıldığı sürece kümeden bağımsız olarak da dağıtılabilir.
+   > Tek tek şablon özellikleriyle ilgili kullanımı ve ayrıntıları bulmak için Service Fabric [Azure Resource Manager başvurusuna](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) bakın.
 
 5. Dağıtımı! 
 

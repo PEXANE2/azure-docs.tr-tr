@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 3725970c982c2d060685bf0b99d12a8fc998f20a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763583"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931730"
 ---
 # <a name="what-are-durable-functions"></a>Dayanıklı İşlevler nedir?
 
@@ -697,7 +697,7 @@ Güvenilir ve uzun süreli yürütme garantisi sağlamak için, Orchestrator iş
 
 ## <a name="billing"></a>Faturalandırma
 
-Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../functions-scale.md#consumption-plan)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
+Dayanıklı İşlevler Azure Işlevleri ile aynı faturalandırılır. Daha fazla bilgi için bkz. [Azure işlevleri fiyatlandırması](https://azure.microsoft.com/pricing/details/functions/). Azure Işlevleri [Tüketim planında](../consumption-plan.md)Orchestrator işlevleri çalıştırıldığında, bazı fatura davranışları göz önünde bulundurulmalıdır. Bu davranışlar hakkında daha fazla bilgi için [dayanıklı işlevler faturalandırma](durable-functions-billing.md) makalesine bakın.
 
 ## <a name="jump-right-in"></a>Hemen geç
 
@@ -710,7 +710,7 @@ Bu dile özgü hızlı başlangıç öğreticilerden birini tamamlayarak 10 daki
 
 Bu hızlı başlangıçlarda, "Hello World" dayanıklı işlevini yerel olarak oluşturup test edersiniz. Ardından işlev kodunu Azure’da yayımlayacaksınız. Oluşturduğunuz işlev, diğer işlevlere yapılan çağrıları düzenler ve birbirine zincirler.
 
-## <a name="learn-more"></a>Daha fazla bilgi edinin
+## <a name="learn-more"></a>Daha fazlasını öğrenin
 
 Aşağıdaki videoda Dayanıklı İşlevler avantajları vurgulanmıştır:
 

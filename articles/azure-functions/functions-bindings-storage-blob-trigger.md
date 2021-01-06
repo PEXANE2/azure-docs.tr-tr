@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 3213df378bc3b8403ebd11f899d722106de67a65
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882033"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930897"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
 
@@ -241,7 +241,7 @@ def main(myblob: func.InputStream):
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Özniteliğin Oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [BLOB adı modelini](#blob-name-patterns)gösteren bir yol dizesi alır. İşte bir örnek:
+  Özniteliğin Oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [BLOB adı modelini](#blob-name-patterns)gösteren bir yol dizesi alır. Aşağıda bir örnek verilmiştir:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -463,7 +463,7 @@ Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure
 
 Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle eşzamanlı işlev çağırma sayısı üst sınırı, [host.jsüzerinde bulunan kuyruklar yapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılık, 24 çağırma ile sınırlıdır. Bu sınır, blob tetikleyicisi kullanan her bir işleve ayrı olarak uygulanır.
 
-[Tüketim planı](functions-scale.md#how-the-consumption-and-premium-plans-work) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
+[Tüketim planı](event-driven-scaling.md) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
 
 JavaScript ve Java işlevleri tüm Blobun belleğe yüklenmesini sağlar ve C# işlevleri `string` , veya ' a bağlarsanız, veya `Byte[]` .
 

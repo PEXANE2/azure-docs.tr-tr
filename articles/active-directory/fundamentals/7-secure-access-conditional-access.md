@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744095"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933141"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Koşullu erişim ilkeleriyle dış erişimi yönetme 
 
-[Koşullu erişim](../conditional-access/overview.md) , Azure AD 'nin sinyalleri bir araya getirmek, ilkeleri zorlamak ve bir kullanıcının kaynaklara erişmesine izin verilip verilmeyeceğini tespit etmek için kullandığı araçtır. Koşullu erişim ilkeleri (CA ilkeleri) oluşturma ve kullanma hakkında ayrıntılı bilgi için bkz. [koşullu erişim dağıtımı planı](../conditional-access/plan-conditional-access.md). 
+[Koşullu erişim](../conditional-access/overview.md) , Azure AD 'nin sinyalleri bir araya getirmek, ilkeleri zorlamak ve bir kullanıcının kaynaklara erişmesine izin verilip verilmeyeceğini tespit etmek için kullandığı araçtır. Koşullu erişim ilkeleri oluşturma ve kullanma hakkında ayrıntılı bilgi için bkz. [bir koşullu erişim dağıtımı planlaması](../conditional-access/plan-conditional-access.md). 
 
 ![Koşullu erişim sinyallerinin ve kararların diyagramı](media/secure-external-access//7-conditional-access-signals.png)
 
 
 
-Bu makale, CA ilkelerinin dış kullanıcılara uygulanmasını ve [Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) işlevlerine erişiminiz olduğunu varsaymaktadır. CA ilkeleri, Yetkilendirme Yönetimi ile birlikte kullanılabilir ve kullanılabilir.
+Bu makalede, dış kullanıcılara koşullu erişim ilkelerinin uygulanması ve [Yetkilendirme Yönetimi](../governance/entitlement-management-overview.md) işlevlerine erişiminiz olmadığı varsayılır. Koşullu erişim ilkeleri, Yetkilendirme Yönetimi ile birlikte kullanılabilir ve kullanılabilir.
 
 Bu belge kümesinde daha önce özetlenen [bir güvenlik planı oluşturdunuz](3-secure-access-plan.md) :
 
@@ -36,27 +36,27 @@ Bu belge kümesinde daha önce özetlenen [bir güvenlik planı oluşturdunuz](3
 
 * Dış kullanıcılar için oturum açma gereksinimleri.
 
-Bu planı, dış erişim için CA ilkelerinizi oluşturmak üzere kullanacaksınız. 
+Bu planı, dış erişim için koşullu erişim ilkelerinizi oluşturmak üzere kullanacaksınız. 
 
 > [!IMPORTANT]
 > Tüm dış kullanıcılara uygulamadan önce oluşturduğunuz ilkeleri test edebilmeniz için birkaç dış Kullanıcı test hesabı oluşturun.
 
 ## <a name="conditional-access-policies-for-external-access"></a>Dış erişim için koşullu erişim ilkeleri
 
-CA ilkeleriyle dış erişimi yöneten en iyi yöntemler aşağıda verilmiştir.
+Koşullu erişim ilkeleriyle dış erişimi yöneten en iyi yöntemler aşağıda verilmiştir.
 
-* Yetkilendirme yönetiminde bağlı kuruluşları kullanmadıysanız, birlikte çalıştığınız her iş ortağı kuruluşu için bir Azure AD güvenlik grubu veya Microsoft 365 grubu oluşturun. Bu iş ortağından tüm kullanıcıları gruba atayın. Daha sonra bu grupları CA ilkelerinde kullanabilirsiniz.
+* Yetkilendirme yönetiminde bağlı kuruluşları kullanmadıysanız, birlikte çalıştığınız her iş ortağı kuruluşu için bir Azure AD güvenlik grubu veya Microsoft 365 grubu oluşturun. Bu iş ortağından tüm kullanıcıları gruba atayın. Bu grupları, koşullu erişim ilkelerinde kullanabilirsiniz.
 
-* Mümkün olduğunca az sayıda CA ilkesi oluşturun. Aynı erişim gereksinimlerine sahip uygulamalar için, tümünü aynı ilkeye ekleyin.  
+* Mümkün olduğunca az sayıda koşullu erişim ilkesi oluşturun. Aynı erişim gereksinimlerine sahip uygulamalar için, tümünü aynı ilkeye ekleyin.  
 ‎ 
    > [!NOTE]
-   > CA ilkeleri, en fazla 250 uygulama için uygulanabilir. 250 ' den fazla uygulama aynı erişim ihtiyaçlarına sahip ise, yinelenen ilkeler oluşturun. A ilkesi uygulamalar 1-250 ' e uygulanır, ilke B, uygulamalar 251-500, vb. için de geçerlidir.
+   > Koşullu erişim ilkeleri, en fazla 250 uygulama için uygulanabilir. 250 ' den fazla uygulama aynı erişim ihtiyaçlarına sahip ise, yinelenen ilkeler oluşturun. A ilkesi uygulamalar 1-250 ' e uygulanır, ilke B, uygulamalar 251-500, vb. için de geçerlidir.
 
 * Bir adlandırma kuralına sahip dış erişime özel olarak ilkeleri açıkça adlandırın. Tek bir adlandırma kuralı *ExternalAccess_actiontaken_AppGroup*. Örneğin ExternalAccess_Block_FinanceApps.
 
 ## <a name="block-all-external-users-from-resources"></a>Tüm dış kullanıcıları kaynaklardan engelle
 
-Dış kullanıcıların, CA ilkeleriyle belirli kaynak kümelerine erişmesini engelleyebilirsiniz. Erişimini engellemek istediğiniz kaynak kümesini belirledikten sonra bir ilke oluşturun.
+Dış kullanıcıların, koşullu erişim ilkeleriyle belirli kaynak kümelerine erişmesini engelleyebilirsiniz. Erişimini engellemek istediğiniz kaynak kümesini belirledikten sonra bir ilke oluşturun.
 
 Dış kullanıcıların bir dizi uygulamaya erişimini engelleyen bir ilke oluşturmak için:
 

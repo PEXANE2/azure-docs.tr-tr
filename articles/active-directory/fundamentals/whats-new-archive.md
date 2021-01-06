@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862446"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932427"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory yenilikler için arşiv var mı?
 
@@ -3733,7 +3733,7 @@ Uygulamanızı Azure AD uygulama galerisinde listeleme hakkında daha fazla bilg
 
 **Şunu yazın:** Yeni özellik **hizmeti kategorisi:** diğer **ürün yeteneği:** Dizin
 
-Self servis parola sıfırlama (SSPR), çoklu oturum açma (SSO), koşullu erişim (CA), uygulama proxy 'si, Kullanıcı sağlama, Active Directory Federasyon Hizmetleri (AD FS) (ADFS) ve parola karması eşitleme 'ye (PHS) dahil olmak üzere Azure Active Directory (Azure AD) dağıtma hakkında yeni, adım adım yönergeler.
+Self servis parola sıfırlama (SSPR), çoklu oturum açma (SSO), koşullu erişim, uygulama proxy 'si, Kullanıcı sağlama, Active Directory Federasyon Hizmetleri (AD FS) (ADFS) ve parola karması eşitleme (PHS) gibi Azure Active Directory (Azure AD) dağıtma hakkında yeni ve adım adım yönergeler.
 
 Dağıtım kılavuzlarını görüntülemek için GitHub 'daki [kimlik dağıtım kılavuzlarını](./active-directory-deployment-plans.md) depoya gidin. Dağıtım kılavuzlarıyla ilgili geri bildirim sağlamak için [dağıtım planı geri bildirim formunu](https://aka.ms/deploymentplanfeedback)kullanın. Dağıtım kılavuzlarıyla ilgili sorularınız varsa, [IDGitDeploy](mailto:idgitdeploy@microsoft.com)adresinden bizimle iletişime geçin.
 

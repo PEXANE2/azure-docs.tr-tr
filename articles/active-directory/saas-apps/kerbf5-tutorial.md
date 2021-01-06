@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 161348f7566ff64858d563f34ad8f3f4c7511adf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 16fff00f04c4cd57ad46759cceb50134e58d5e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009169"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933124"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Öğretici: F5 ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -28,7 +28,7 @@ Bu öğreticide, F5 'i Azure Active Directory (Azure AD) ile tümleştirmeyi ö�
 
 Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Başlamak için aşağıdaki öğeler gereklidir:
 
@@ -174,7 +174,7 @@ Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaks�
    1. **Ad** alanına `B.Simon` girin.  
    1. **Kullanıcı adı** alanına, girin username@companydomain.extension . Örneğin, `B.Simon@contoso.com`.
    1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. **Oluştur**’a tıklayın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
@@ -195,7 +195,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 1. **Koşullu erişim** ' e tıklayın.
 1. **Yeni ilke**' ye tıklayın.
-1. Artık F5 uygulamanızı CA Ilkesi için bir kaynak olarak görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil tüm koşullu erişimi uygulayabilirsiniz.
+1. Şimdi, koşullu erişim ilkesi için bir kaynak olarak F5 uygulamanızı görebilir ve çok faktörlü auth, cihaz tabanlı erişim denetimi veya kimlik koruma Ilkesi dahil herhangi bir koşullu erişim uygulayabilirsiniz.
 
 ## <a name="configure-f5-sso"></a>F5 SSO 'yu Yapılandır
 
@@ -247,7 +247,7 @@ Bu bölümde, F5 'e erişim vererek Azure çoklu oturum açma özelliğini kulla
  
     !["IP adresi/düğüm adı" ve "bağlantı noktası" metin kutuları vurgulanmış ve "& sonrakini Kaydet" düğmesi seçili olan "havuz özellikleri" sayfasını gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure08.png)
 
-1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. **Seçili tek Sign-On türü** altında **Kerberos**' u seçin. Username. **SAML. Last. Identity** ' i **session.saml.last.attr.name.Identity** (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) **Kullanıcı adı kaynak** (Bu değişken). **Gelişmiş ayarı göster**' i seçin. **Kerberos bölgesi** altında etki alanı adını yazın. **Hesap adı/hesap parolası** altında APM temsili hesabı ve parolasını belirtin. **KDC** alanında etki alanı denetleyicisi IP 'sini belirtin. **İleri & kaydet**' e tıklayın.
+1. Tek Sign-On ayarları ekranında **Çoklu oturum açmayı etkinleştir**' i seçin. **Seçili tek Sign-On türü** altında **Kerberos**' u seçin. Username. **SAML. Last. Identity** ' i  (Azure AD 'de talep eşlemesi kullanarak ayarlanan bu değişken) **Kullanıcı adı kaynak** (Bu değişken). **Gelişmiş ayarı göster**' i seçin. **Kerberos bölgesi** altında etki alanı adını yazın. **Hesap adı/hesap parolası** altında APM temsili hesabı ve parolasını belirtin. **KDC** alanında etki alanı denetleyicisi IP 'sini belirtin. **İleri & kaydet**' e tıklayın.
 
     ![Metin kutuları vurgulanmış ve "& Ileri Kaydet" düğmesinin seçili olduğu "tek Sign-On ayarları" gösteren ekran görüntüsü.](./media/kerbf5-tutorial/configure09.png)   
 
@@ -279,7 +279,7 @@ Access Policy Manager 'da (APM), kullanıcıların kimliğini doğrulamak için 
 
 1. Ana sekmede, **> aaa sunucuları > Active Directory erişim ilkesi**' ne tıklayın. Active Directory sunucuları listesi ekranı açılır.
 
-2. **Oluştur**'a tıklayın. Yeni sunucu özellikleri ekranı açılır.
+2. **Oluştur**’a tıklayın. Yeni sunucu özellikleri ekranı açılır.
 
 3. **Ad** alanına, kimlik doğrulama sunucusu için benzersiz bir ad yazın.
 

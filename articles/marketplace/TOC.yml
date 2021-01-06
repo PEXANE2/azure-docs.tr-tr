@@ -205,8 +205,16 @@
           href: partner-center-portal/create-iot-edge-module-asset.md
     - name: Yönetilen Hizmet teklifleri
       items:
+        - name: Yönetilen Hizmet teklifi planlama
+          href: plan-managed-service-offer.md
         - name: Yönetilen Hizmet teklifi oluşturma
-          href: partner-center-portal/create-new-managed-service-offer.md
+          href: create-managed-service-offer.md
+        - name: Yönetilen hizmet listelemesini yapılandırma
+          href: create-managed-service-offer-listing.md
+        - name: Önizleme hedef kitlesi ekleme
+          href: create-managed-service-offer-preview.md
+        - name: Plan oluşturma
+          href: create-managed-service-offer-plans.md
     - name: Power BI uygulama teklifleri
       items:
         - name: Power BI uygulama teklifi planlama

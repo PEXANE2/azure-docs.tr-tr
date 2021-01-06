@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f34ca47d5ff6c809eef40f89ee0049285cfd7d42
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: aa6726bb5c60dceab0a58632da99c04361183246
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97355402"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932699"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>Kullanıcı akışına API Bağlayıcısı ekleme
 
@@ -249,8 +249,8 @@ Content-type: application/json
 
 | Parametre                                          | Tür              | Gerekli | Açıklama                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| sürüm                                            | Dize            | Evet      | API sürümü.                                                                                                                                                                                                                                                                |
-| eylem                                             | Dize            | Evet      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
+| sürüm                                            | Dize            | Yes      | API sürümü.                                                                                                                                                                                                                                                                |
+| eylem                                             | Dize            | Yes      | Değer olmalıdır `Continue` .                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | Hayır       | API Bağlayıcısı yapılandırmasında ve bir Kullanıcı akışı için **Kullanıcı özniteliklerinde** bir _ *talebi* olarak seçilirse değerler dizinde depolanabilir. Bir **uygulama talebi** olarak seçilirse, belirteçte değerler döndürülür.                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | Hayır       | Döndürülen talebin içermesi gerekmez `_<extensions-app-id>_` . Bir Kullanıcı akışı için API Bağlayıcısı yapılandırmasında ve **Kullanıcı özniteliğinde** **alma talebi** olarak seçilirse değerler dizinde depolanır. Özel öznitelikler belirtece geri gönderilemez. |
 
@@ -271,9 +271,9 @@ Content-type: application/json
 
 | Parametre   | Tür   | Gerekli | Açıklama                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize | Evet      | API sürümü.                                                    |
-| eylem      | Dize | Evet      | Değer olmalıdır `ShowBlockPage`                                              |
-| userMessage | Dize | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize | Yes      | API sürümü.                                                    |
+| eylem      | Dize | Yes      | Değer olmalıdır `ShowBlockPage`                                              |
+| userMessage | Dize | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Engelleyici bir Yanıt ile son kullanıcı deneyimi**
@@ -297,10 +297,10 @@ Content-type: application/json
 
 | Parametre   | Tür    | Gerekli | Açıklama                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| sürüm     | Dize  | Evet      | API sürümü.                                                    |
-| eylem      | Dize  | Evet      | Değer olmalıdır `ValidationError` .                                           |
-| durum      | Tamsayı | Evet      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
-| userMessage | Dize  | Evet      | Kullanıcıya görüntülenecek ileti.                                            |
+| sürüm     | Dize  | Yes      | API sürümü.                                                    |
+| eylem      | Dize  | Yes      | Değer olmalıdır `ValidationError` .                                           |
+| durum      | Tamsayı | Yes      | `400`Bir ValidationError yanıtı için değer olmalıdır.                        |
+| userMessage | Dize  | Yes      | Kullanıcıya görüntülenecek ileti.                                            |
 | kod        | Dize  | Hayır       | Hata kodu. Hata ayıklama amacıyla kullanılabilir. Kullanıcıya gösterilmez. |
 
 **Doğrulama hatası yanıtıyla Son Kullanıcı deneyimi**
@@ -319,7 +319,7 @@ Aşağıdakileri doğrulayın:
 * API bağlayıcısının **uç nokta URL 'si** doğru API uç noktasını işaret eder.
 * API 'niz alınan taleplerin null değerlerini açıkça denetler.
 * Akıcı bir kullanıcı deneyimi sağlamak için API 'niz mümkün olduğunca çabuk yanıt verir.
-    * Sunucusuz bir işlev veya ölçeklenebilir Web hizmeti kullanıyorsanız, API 'YI "uyanık" veya "normal" olarak tutan bir barındırma planı kullanın. Azure Işlevleri için [Premium planı](../../azure-functions/functions-scale.md#premium-plan)kullanmanız önerilir. 
+    * Sunucusuz bir işlev veya ölçeklenebilir Web hizmeti kullanıyorsanız, API 'YI "uyanık" veya "normal" olarak tutan bir barındırma planı kullanın. Azure Işlevleri için [Premium planı](../../azure-functions/functions-premium-plan.md)kullanmanız önerilir. 
 
 
 ### <a name="use-logging"></a>Günlüğe kaydetmeyi kullanma

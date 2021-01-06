@@ -4,12 +4,12 @@ description: Azure CLı kullanarak sunucusuz bir Python işlev uygulaması oluş
 ms.topic: sample
 ms.date: 03/01/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bdcaeaca7c063f0532167077bba63f7e52a3d491
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 89cf1422c70a49497a1bc43e42248612e0c8dd83
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565067"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930914"
 ---
 # <a name="mount-a-file-share-to-a-python-function-app-using-azure-cli"></a>Azure CLı kullanarak bir Python işlev uygulamasına bir dosya paylaşma bağlama
 
@@ -26,7 +26,7 @@ Bu Azure Işlevleri örnek betiği, bir işlev uygulaması oluşturur ve Azure d
 
 ## <a name="sample-script"></a>Örnek betik
 
-Bu betik, [Tüketim planını](../functions-scale.md#consumption-plan)kullanarak bir Azure işlev uygulaması oluşturur.
+Bu betik, [Tüketim planını](../consumption-plan.md)kullanarak bir Azure işlev uygulaması oluşturur.
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/functions-cli-mount-files-storage-linux/functions-cli-mount-files-storage-linux.sh "Create an Azure Function on a Consumption plan")]
 

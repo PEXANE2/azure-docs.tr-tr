@@ -1113,6 +1113,16 @@
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
         - name: Azure Synapse için Bilişsel Hizmetler’i yapılandırma
           href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
+- name: Veri Kataloğu ve İdare
+  items:
+    - name: Hızlı Başlangıçlar
+      items:
+        - name: Azure Purview Hesabı bağlama
+          href: ./catalog-and-governance/quickstart-connect-azure-purview.md
+    - name: Nasıl yapılır kılavuzları
+      items:
+        - name: 'Azure Purview’ı kullanarak Synapse’te verileri keşfedin, bağlayın ve inceleyin'
+          href: ./catalog-and-governance/how-to-discover-connect-analyze-azure-purview.md
 - name: Nasıl yapılır
   items:
     - name: Maliyetleri planlama ve yönetme

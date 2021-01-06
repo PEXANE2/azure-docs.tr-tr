@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: b9fc465b5e5f132264fd36e004fa3ee7623b87a5
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c94218248f1122cdb60ab8124bc9d9365fe8947b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854997"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97931747"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Dayanıklı İşlevler'de pe ve ölçek (Azure İşlevleri)
 
@@ -51,7 +51,7 @@ Dayanıklı görev uzantısı, depolama işlem maliyetlerinde boşta sıra yokla
 En fazla yoklama gecikmesi `maxQueuePollingInterval` [ dosyadakihost.js](../functions-host-json.md#durabletask)özelliği aracılığıyla yapılandırılabilir. Bu özelliğin daha yüksek bir değere ayarlanması, daha yüksek ileti işleme gecikmeleri oluşmasına neden olabilir. Daha yüksek gecikme süreleri yalnızca işlem yapılmadan sonra beklenmelidir. Bu özelliğin daha düşük bir değere ayarlanması, daha yüksek depolama işlemleri nedeniyle depolama maliyetlerinin artmasına neden olabilir.
 
 > [!NOTE]
-> Azure işlevleri tüketim ve Premium planlarında çalışırken, [Azure Işlevleri ölçek denetleyicisi](../functions-scale.md#how-the-consumption-and-premium-plans-work) her bir denetimi ve iş öğesi kuyruğunu her 10 saniyede bir yoklamaya çalışır. Bu ek yoklama, işlev uygulaması örneklerinin ne zaman etkinleştireceğinize karar vermek ve ölçek kararları almak için gereklidir. Yazma sırasında, bu 10 saniyelik Aralık sabittir ve yapılandırılamaz.
+> Azure işlevleri tüketim ve Premium planlarında çalışırken, [Azure Işlevleri ölçek denetleyicisi](../event-driven-scaling.md) her bir denetimi ve iş öğesi kuyruğunu her 10 saniyede bir yoklamaya çalışır. Bu ek yoklama, işlev uygulaması örneklerinin ne zaman etkinleştireceğinize karar vermek ve ölçek kararları almak için gereklidir. Yazma sırasında, bu 10 saniyelik Aralık sabittir ve yapılandırılamaz.
 
 ### <a name="orchestration-start-delays"></a>Orchestration başlangıç gecikmeleri
 Düzenleme örnekleri `ExecutionStarted` , görev merkezinin denetim kuyruklarından birine bir ileti yerleştirerek başlatılır. Belirli koşullar altında, bir Orchestration 'un çalışmak üzere zamanlandığı zaman ve gerçekten çalışmaya başladığı durumlar arasında çok saniyelik gecikmeler gözlemleyebilirsiniz. Bu zaman aralığı boyunca düzenleme örneği `Pending` durumunda kalır. Bu gecikmenin iki olası nedeni vardır:
@@ -138,7 +138,7 @@ Genellikle, Orchestrator işlevlerinin hafif olması amaçlanmıştır ve büyü
 
 ## <a name="auto-scale"></a>Otomatik ölçeklendirme
 
-Tüketim ve elastik Premium planlarında çalışan tüm Azure Işlevlerinde olduğu gibi, Dayanıklı İşlevler [Azure işlevleri ölçek denetleyicisi](../functions-scale.md#runtime-scaling)aracılığıyla otomatik ölçeklendirmeyi destekler. Ölçek denetleyicisi, düzenli aralıklarla _göz atma_ komutları vererek tüm kuyrukların gecikmesini izler. Atılamıyor iletilerinin gecikme sürelerini temel alarak, ölçek denetleyicisi VM ekleme veya kaldırma konusunda karar verir.
+Tüketim ve elastik Premium planlarında çalışan tüm Azure Işlevlerinde olduğu gibi, Dayanıklı İşlevler [Azure işlevleri ölçek denetleyicisi](../event-driven-scaling.md#runtime-scaling)aracılığıyla otomatik ölçeklendirmeyi destekler. Ölçek denetleyicisi, düzenli aralıklarla _göz atma_ komutları vererek tüm kuyrukların gecikmesini izler. Atılamıyor iletilerinin gecikme sürelerini temel alarak, ölçek denetleyicisi VM ekleme veya kaldırma konusunda karar verir.
 
 Ölçek denetleyicisi denetim sırası ileti gecikmelerinin çok yüksek olduğunu belirlerse, ileti gecikmesi kabul edilebilir bir düzeye düşene veya denetim sırası bölüm sayısına ulaştığı sürece VM örnekleri eklenir. Benzer şekilde, Bölüm sayımından bağımsız olarak iş öğesi kuyruğu gecikme süresi yüksekse, ölçek denetleyicisi sürekli olarak VM örnekleri ekler.
 

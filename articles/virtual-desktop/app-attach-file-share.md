@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97425974"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930795"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>MSIX uygulama iliştirme (Önizleme) için bir dosya paylaşma ayarlama
 
@@ -64,6 +64,12 @@ Aşağıda, MSIX uygulama iliştirme performansını iyileştirmek için yapman�
 MSIX uygulama iliştirme dosya paylaşımı için kurulum işlemi, büyük ölçüde [FSLogix profil dosya paylaşımları için kurulum sürecidir](create-host-pools-user-profile.md). Ancak kullanıcılara farklı izinler atamanız gerekir. MSIX uygulama iliştirme dosya paylaşımında erişim için salt okuma izinleri gerektirir.
 
 MSIX uygulamalarınızı Azure dosyalarında depoluyorsanız, oturum ana bilgisayarları için, her oturum ana bilgisayar VM 'lerini, hem depolama hesabı rol tabanlı erişim denetimi (RBAC) hem de dosya paylaşma yeni teknoloji dosya sistemi (NTFS) izinleri için atamanız gerekir.
+
+| Azure nesnesi                      | Gerekli rol                                     | Rol işlevi                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| Oturum Ana Bilgisayarı (VM bilgisayar nesneleri)| Depolama Dosyası Verileri SMB Paylaşımı Katkıda Bulunanı          | Klasör içeriğini okuma ve yürütme, okuma, listeleme  |
+| Dosya paylaşımındaki Yöneticiler              | Depolama Dosyası Verileri SMB Paylaşımı Yükseltilmiş Katkıda Bulunanı | Tam denetim                                  |
+| Dosya paylaşımındaki kullanıcılar               | Depolama Dosyası Verileri SMB Paylaşımı Katkıda Bulunanı          | Klasör içeriğini okuma ve yürütme, okuma, listeleme  |
 
 Depolama hesabı ve dosya paylaşımında oturum ana bilgisayar VM 'Leri atamak için:
 

@@ -93,6 +93,8 @@
       href: manage.md
     - name: Sanal makine ölçek kümeleri
       items:
+        - name: Sanal Makine Ölçek Kümesi tarafından kullanılan mevcut Azure Load Balancer’ı güncelleştirme veya silme
+          href: update-load-balancer-with-vm-scale-set.md
         - name: Mevcut bir Azure Load Balancer ile kullanma - Portal
           href: configure-vm-scale-set-portal.md
         - name: Mevcut bir Azure Load Balancer ile kullanma - PowerShell

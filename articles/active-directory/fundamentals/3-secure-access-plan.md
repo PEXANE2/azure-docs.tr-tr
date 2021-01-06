@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97744202"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932529"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. dış erişim için bir güvenlik planı oluşturun 
 
@@ -134,7 +134,7 @@ Kaynaklara erişimi gözden geçirmeniz gerektiğinde ve dış kullanıcılar i�
 
 * **Grupları Microsoft 365**. Dış kullanıcıların davet ettiği Microsoft 365 Gruplar için bir [Grup süre sonu ilkesi](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) ayarlayın. 
 
-* **Diğer seçenekler**. Dış kullanıcıların, yetkilendirme yönetim erişimi paketleri veya Microsoft 365 gruplarının dışında erişimi varsa, hesapların ne zaman etkin hale getirilmeli veya silinmeleri gerektiğini gözden geçirmek için iş sürecini ayarlayın. Örnek:
+* **Diğer seçenekler**. Dış kullanıcıların, yetkilendirme yönetim erişimi paketleri veya Microsoft 365 gruplarının dışında erişimi varsa, hesapların ne zaman etkin hale getirilmeli veya silinmeleri gerektiğini gözden geçirmek için iş sürecini ayarlayın. Örneğin:
 
    * 90 gün boyunca oturum açmamış herhangi bir hesap için oturum açma yeteneğini kaldırın.
 
@@ -175,7 +175,7 @@ Azure AD P2 ve Microsoft 365 E5, güvenlik ve idare araçlarının eksiksiz pake
 | Yetkilendirme Yönetimi| **Atama veya self servis erişimi aracılığıyla Kullanıcı ekleme**| **Erişim paketleri**| **Erişim paketleri**|  |
 | Office 365 Grubu| | Gruba eklenen siteler (ve ilişkili içerik) erişimi| Gruba dahil olan takımlara (ve ilişkili içeriğe) erişim|  |
 | Duyarlılık etiketleri| | **El ile ve erişimi otomatik olarak sınıflandırma ve kısıtlama**| **El ile ve erişimi otomatik olarak sınıflandırma ve kısıtlama**| **El ile ve erişimi otomatik olarak sınıflandırma ve kısıtlama** |
-| Azure AD güvenlik grupları| **Erişim paketlerine dahil olan erişim için CA ilkeleri**| | |  |
+| Azure AD güvenlik grupları| **Erişim paketlerine dahil olan erişim için koşullu erişim ilkeleri**| | |  |
 
 
 ### <a name="entitlement-management"></a>Yetkilendirme Yönetimi 
@@ -195,7 +195,7 @@ Azure AD P1 ve Microsoft 365 E3 ile güçlü idare elde edebilirsiniz
 | Azure AD B2B Işbirliği| **E-posta, OTP, self servis aracılığıyla davet edin**| Doğrudan B2B Federasyonu| **İş ortağı başına Dönemsel gözden geçirme**| Hesabı kaldır<br>Oturum açmayı kısıtla |
 | Microsoft veya Office 365 grupları| | | | Grup sonu veya silme.<br>Gruptan kaldırma. |
 | Güvenlik grupları| | **Dış kullanıcıları güvenlik gruplarına ekleme (kuruluş, takım, proje vb.)**| |  |
-| Koşullu erişim ilkeleri| | **Dış kullanıcılar için oturum açma CA ilkeleri**| |  |
+| Koşullu Erişim ilkeleri| | **Dış kullanıcılar için oturum açma koşullu erişim ilkeleri**| |  |
 
 
  ### <a name="access-to-resources"></a>Kaynaklara erişim.
@@ -204,7 +204,7 @@ Azure AD P1 ve Microsoft 365 E3 ile güçlü idare elde edebilirsiniz
 | - |-|-|-|-|
 | Microsoft veya Office 365 grupları| | **Gruba (ve ilişkili içeriğe) dahil edilen site (ler) e erişim**|**Microsoft 365 grubuna (ve ilişkili içeriğe) dahil olan takımlara erişim**|  |
 | Duyarlılık etiketleri| | Erişimi el ile sınıflandırma ve kısıtlama| Erişimi el ile sınıflandırın ve kısıtlayın.| Kısıtlamak ve şifrelemek için el ile sınıflandır |
-| Koşullu erişim Ilkeleri| Erişim denetimi için CA ilkeleri| | |  |
+| Koşullu erişim Ilkeleri| Erişim denetimi için koşullu erişim ilkeleri| | |  |
 | Ek Yöntemler| | SharePoint site erişimini güvenlik gruplarıyla sınırlandırın.<br>Doğrudan paylaşıma izin vermeyin.| **Ekipler içinden dış davetleri kısıtlama**|  |
 
 

@@ -10,16 +10,16 @@ ms.topic: reference
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
-ms.openlocfilehash: 132c4b223b99f7110cd4553bb0dd93f1e58f4cdd
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733391"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930812"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Azure Machine Learning hizmet limitleri
 
-Bu bölümde Azure Machine Learning içindeki temel kotalar ve azaltma eşikleri listelenmektedir.
+Bu bölümde Azure Machine Learning içindeki temel kotalar ve azaltma eşikleri listelenmektedir. Kaynak kotalarını artırma hakkında bilgi edinmek için bkz. ["kaynaklar için kotaları yönetme ve artırma"](how-to-manage-quotas.md)
 
 ## <a name="workspaces"></a>Çalışma alanları
 | Sınır | Değer |
@@ -33,7 +33,7 @@ Bu bölümde Azure Machine Learning içindeki temel kotalar ve azaltma eşikleri
 | RunId/ParentRunId | 256 karakter |
 | Veri Containerıd | 261 karakter |
 | DisplayName |256 karakter|
-| Açıklama |5.000 karakter|
+| Description |5.000 karakter|
 | Özellik sayısı |50 |
 | Özellik anahtarının uzunluğu |100 karakter |
 | Özellik değerinin uzunluğu |1.000 karakter |
@@ -73,3 +73,5 @@ Bazı sınırlar, [Destek ile iletişim](https://ms.portal.azure.com/#blade/Micr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure Machine Learning ortamınızı yapılandırma](how-to-configure-environment.md)
+- ["Kaynaklar için kotaları yönetme ve artırma"](how-to-manage-quotas.md)bölümünde kaynak kotalarını artırma hakkında bilgi edinin.
+

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: a74244cc45e1a3d2116f98ac73290d184f4affc0
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: be8d00d795c19399d494db21578e9a7ba8dd9711
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632069"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934025"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Azure Logic Apps (Önizleme) uzantısıyla Visual Studio Code durum bilgisiz ve durum bilgisi olmayan iş akışları oluşturma
 
@@ -47,7 +47,7 @@ Bu makalede, Azure Logic Apps (Önizleme) uzantısını kullanarak ve bu üst d�
 > [!NOTE]
 > Bilinen güncel sorunlar hakkında daha fazla bilgi için [GitHub 'Daki bilinen sorunlar Logic Apps Genel Önizleme sayfasını](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)gözden geçirin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 ### <a name="access-and-connectivity"></a>Erişim ve bağlantı
 
@@ -421,7 +421,7 @@ Bu örnekteki iş akışı bu tetikleyiciyi ve bu eylemleri kullanır:
 
    | Özellik | Gerekli | Değer | Açıklama |
    |----------|----------|-------|-------------|
-   | **Hedef** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
+   | **Amaç** | Yes | <*e-posta adresiniz*> | E-posta alıcısı, test amacıyla e-posta adresiniz olabilir. Bu örnek, kurgusal e-postayı kullanır `sophiaowen@fabrikam.com` . |
    | **Konu** | Yes | `An email from your example workflow` | E-posta konusu |
    | **Gövde** | Yes | `Hello from your example workflow!` | E-posta gövdesi içeriği |
    ||||
@@ -742,7 +742,7 @@ Mantıksal uygulamanızı, [işlev uygulaması gereksinimlerine benzer şekilde,
 
       !["Azure: Logic Apps (Önizleme)" bölmesinin ve oluşturulacak yeni mantıksal uygulama için bir ad sağlamak üzere bir istem gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Plan veya [**Premium**](../azure-functions/functions-scale.md#premium-plan) [**App Service**](../azure-functions/functions-scale.md#app-service-plan) yeni mantıksal uygulamanız için bir barındırma planı seçin. Bu örnek **App Service planını** seçer.
+   1. Plan veya [**Premium**](../azure-functions/functions-premium-plan.md) [**App Service**](../azure-functions/dedicated-plan.md) yeni mantıksal uygulamanız için bir barındırma planı seçin. Bu örnek **App Service planını** seçer.
 
       !["Azure: Logic Apps (Önizleme)" bölmesinin ve "App Service planı" veya "Premium" seçilecek bir istem gösteren ekran görüntüsü.](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 

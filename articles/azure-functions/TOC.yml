@@ -417,6 +417,8 @@
           href: functions-recover-storage-account.md
         - name: Python işlevleriyle ilgili sorunları giderme
           href: recover-python-functions.md
+        - name: Python işlevleri için ölçek ve performans
+          href: python-scale-performance-reference.md
 - name: Başvuru
   items:
     - name: API başvuruları

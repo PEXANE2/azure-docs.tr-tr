@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Azure İşlevleri belgeleri
-summary: Azure İşlevleri, açıkça sağlamak veya altyapıyı yönetmek zorunda kalmadan olay tarafından tetiklenen kod çalıştırmanıza olanak sağlayan bir sunucusuz işlem hizmetidir. "İsteğe bağlı işlem" özellikleri basit tümleştirme ve benzersiz destekleyici işlevsellik sağlar. Ayrıca web API'leri sağlamak, veritabanı değişikliklerine yanıt vermek, IoT veri akışlarını işlemek ve ileti kuyruklarını yönetmek için de kullanabilirsiniz.
+summary: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder. Web API'leri oluşturmak, veritabanı değişikliklerine yanıt vermek, IoT akışlarını işlemek, ileti kuyruklarını yönetmek gibi birçok işlem için Azure İşlevleri’ni kullanabilirsiniz.
 metadata:
   title: Azure İşlevleri belgeleri
-  description: Azure İşlevleri, açıkça sağlamak veya altyapıyı yönetmek zorunda kalmadan olay tarafından tetiklenen kod çalıştırmanıza olanak sağlayan bir sunucusuz işlem hizmetidir. "İsteğe bağlı işlem" özellikleri basit tümleştirme ve benzersiz destekleyici işlevsellik sağlar. Ayrıca web API'leri sağlamak, veritabanı değişikliklerine yanıt vermek, IoT veri akışlarını işlemek ve ileti kuyruklarını yönetmek için de kullanabilirsiniz.
+  description: Azure İşlevleri, uygulamalarınızı çalıştırmak için gereken sürekli güncelleştirilmiş altyapı ve kaynakların tümünü sağlayan, isteğe bağlı olarak kullanılan bir bulut hizmetidir. Siz en çok önem verdiğiniz kod parçalarına odaklanırken Azure İşlevleri gerisini halleder. Web API'leri oluşturmak, veritabanı değişikliklerine yanıt vermek, IoT akışlarını işlemek, ileti kuyruklarını yönetmek gibi birçok işlem için Azure İşlevleri’ni kullanabilirsiniz.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
-  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+  ms.openlocfilehash: 74acabf21252acfd79520d7f24ff79503734a235
+  ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 12/15/2020
-  ms.locfileid: "97505299"
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97901530"
 landingContent:
 - title: Azure İşlevleri hakkında
   linkLists:

@@ -13,12 +13,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 60d789c4297c400b812cd6c5c19c8c6148cb347d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f43cb80a148f5dadb409f506f237cb1210a2000a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575988"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934008"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Hızlı Başlangıç: Kiracıyı ayarlama
 
@@ -28,7 +28,7 @@ Kiracı, bir kuruluşu temsil eden birimdir. Kuruluş veya uygulama geliştirici
 
 Her Azure AD kiracısı ayrıdır ve diğer Azure AD kiracılarından ayrılmıştır. Kendi iş ve okul kimlikleri, tüketici kimlikleri (bir Azure AD B2C kiracısıysa) ve uygulama kayıtları gösterimi vardır. Kiracınızın içinde yapılan bir uygulama kaydı, yalnızca kiracınızın veya tüm kiracıların içinden hesapların kimlik doğrulaması yapmasına izin verebilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -55,7 +55,7 @@ Birçok geliştiricinin, Azure AD kiracılarına bağlı hizmetler veya abonelik
 > [!TIP]
 > Kiracı kimliğini bulmanız gerekiyorsa şunları yapabilirsiniz:
 > * Dizin / kiracı kimliği değerini almak için hesap adınızın üzerine gelin, veya
-> * Azure portalında **Azure Active Directory > Özellikler > Dizin Kimliği**'ni seçin
+> * **Azure Active Directory > özellikler > KIRACı kimliği** Azure Portal arama ve seçme
 
 Hesabınızla ilişkilendirilmiş bir kiracınız yoksa, hesap adınızın altında bir GUID görürsünüz ve sonraki bölümde verilen adımları izleyene kadar uygulamaları kaydetme gibi eylemler gerçekleştiremezsiniz.
 
