@@ -139,7 +139,7 @@
         - name: Görüntü işleme uygulamasını inceleme
           href: Tutorials/CSharpTutorial.md
         - name: Diğer Görüntü İşleme örnekleri
-          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision'
+          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
     - name: SSS
       href: FAQ.md
     - name: Kategori sınıflandırma

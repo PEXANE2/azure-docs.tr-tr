@@ -75,7 +75,7 @@
         - name: SSS-Kurtarma Hizmetleri kasası
           href: backup-azure-backup-faq.md
         - name: SSS-Yedekleme Merkezi
-          href: backup-center-faq.md
+          href: backup-center-faq.yml
         - name: SSS-Azure VM yedeklemesi
           href: backup-azure-vm-backup-faq.md
         - name: SSS-MARS aracısı
