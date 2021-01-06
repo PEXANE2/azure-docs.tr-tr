@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 09c306b85c910e8ec2021abf15013935c44b0df3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91e74668224d1cdbbc462bf6c2c0a22c4f0a9837
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707719"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916584"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services ölçümlerini izleme
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Bu özelliğin ayrıntılı açıklaması ve Azure Media Services ölçümleri ve tanılama günlüklerini nasıl kullanmak istediğinizi görmek için bkz. [izleme Media Services ölçümleri ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md).
+[Azure izleyici](../../azure-monitor/overview.md) , uygulamalarınızın nasıl çalıştığını anlamanıza yardımcı olan ölçümleri ve tanılama günlüklerini izlemenize olanak sağlar. Bu özelliğin ayrıntılı bir açıklaması için ve Azure Media Services ölçümleri ve tanılama günlüklerini nasıl kullanmanız gerektiğini anlamak için bkz. [izleme Media Services ölçümleri ve tanılama günlükleri](media-services-metrics-diagnostic-logs.md).
 
 Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluşturma, REST API aracılığıyla erişme veya Azure CLı kullanarak sorgulama gibi çeşitli yollar sağlar. Bu makalede Azure portal grafikleri ve Azure CLı ile ölçümlerin nasıl izleneceği gösterilmektedir.
 
@@ -38,24 +38,21 @@ Azure Izleyici, ölçümlerle etkileşimde bulunmak için, portalda grafik oluş
 
 1. https://portal.azure.com adresinden Azure portalında oturum açın.
 1. Azure Media Services hesabınıza gidin ve **ölçümler**' i seçin.
-1. **Kaynak** kutusuna tıklayın ve ölçümlerini izlemek istediğiniz kaynağı seçin.
+1. **Kapsam** kutusuna tıklayın ve izlemek istediğiniz kaynağı seçin.
 
-    **Kaynak Seç** penceresi, sağda kullanabileceğiniz kaynakların listesiyle birlikte görünür. Bu durumda şunları görürsünüz:
+    **Kapsam seçin** penceresi, sağda kullanabileceğiniz kaynakların listesiyle birlikte görünür. Bu durumda şunları görürsünüz:
 
     * &lt;Media Services hesap adı&gt;
     * &lt;Media Services hesap adı &gt; / &lt; akış uç noktası adı&gt;
     * &lt;depolama hesabı adı&gt;
 
-    Kaynağı seçin ve **Uygula**' ya basın. Desteklenen kaynaklar ve ölçümler hakkında daha fazla bilgi için bkz. [izleme Media Services ölçümleri](media-services-metrics-diagnostic-logs.md).
-
-    ![Seçilen kaynağı gösteren ve Uygula düğmesini vurgulayan ekran görüntüsü.](media/media-services-metrics/metrics02.png)
+    Ardından, kaynağı seçin ve **Uygula**' ya basın. Desteklenen kaynaklar ve ölçümler hakkında daha fazla bilgi için bkz. [izleme Media Services ölçümleri](media-services-metrics-diagnostic-logs.md).
 
     > [!NOTE]
-    > Ölçümleri izlemek istediğiniz kaynaklar arasında geçiş yapmak için **kaynak** kutusuna yeniden tıklayın ve bu adımı tekrarlayın.
-1. (İsteğe bağlı olarak) grafiğinize bir ad verin (üstteki kurşun kaleme basarak adı düzenleyin).
-1. Görüntülemek istediğiniz ölçümleri ekleyin.
+    > İzlemek istediğiniz kaynaklar arasında geçiş yapmak için, **kaynak** kutusuna yeniden tıklayın ve bu adımı tekrarlayın.
 
-    ![Ölçümler](media/media-services-metrics/metrics03.png)
+1. İsteğe bağlı: grafiğinize bir ad verin (üstteki kurşun kaleme basarak adı düzenleyin).
+1. Görüntülemek istediğiniz ölçümleri ekleyin.
 1. Grafiğinizi panonuza sabitleyebilir.
 
 ## <a name="view-metrics-with-azure-cli"></a>Azure CLı ile ölçümleri görüntüleme
@@ -72,8 +69,8 @@ Diğer ölçümleri almak için ilgilendiğiniz ölçüm adına "çıkış" koyu
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-* [Azure Izleyici ölçümleri](../../azure-monitor/platform/data-platform.md)
-* [Azure izleyici 'yi kullanarak ölçüm uyarıları oluşturun, görüntüleyin ve yönetin](../../azure-monitor/platform/alerts-metric.md).
+- [Azure İzleyici Ölçümleri](../../azure-monitor/platform/data-platform.md)
+- [Azure izleyici 'yi kullanarak ölçüm uyarıları oluşturun, görüntüleyin ve yönetin](../../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

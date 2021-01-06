@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 288d1740c1c4c67dd8756de5fc0652966ae89488
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: e914bcece9a30270d12d5c2cc09d3fd1014783c6
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620983"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916516"
 ---
 # <a name="azure-file-share-protocols"></a>Azure dosya paylaşma protokolleri
 
@@ -24,7 +24,7 @@ Azure dosyaları, Azure dosya paylaşımlarınızı bağlamaya ve bağlamaya yö
 |Özellik  |NFS (Önizleme)  |SMB  |
 |---------|---------|---------|
 |Erişim protokolleri     |NFS 4,1         |SMB 2,1, SMB 3,0         |
-|Desteklenen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
+|Önerilen işletim sistemi     |Linux çekirdek sürümü 4.3 +         |Windows 2008 R2 +, Linux çekirdek sürümü 4.11 +         |
 |[Kullanılabilir katmanlar](storage-files-planning.md#storage-tiers)     |Premium depolama         |Premium Depolama, işlem için iyileştirilmiş, sık erişimli ve seyrek erişimli         |
 |[Yedeklilik](storage-files-planning.md#redundancy)     |LRS, ZRS         |LRS, ZRS, GRS         |
 |Kimlik Doğrulaması     |Yalnızca ana bilgisayar tabanlı kimlik doğrulaması        |Kimlik tabanlı kimlik doğrulaması, Kullanıcı tabanlı kimlik doğrulaması         |

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 43447d98cf4af6887e66dd0811464e34fc1ac717
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: a00087d557e4244a6551b84623e2c34461623eb3
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457920"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916550"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-monitor"></a>Öğretici: AppNeta performans Izleyicisi ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,6 @@ Bu öğreticide, AppNeta performans Izleyicisini Azure Active Directory (Azure A
 * Kullanıcılarınızın Azure AD hesaplarıyla AppNeta performans Izleyicisine otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,7 +40,6 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * AppNeta performans Izleyicisi **SP** tarafından başlatılan SSO 'yu destekler
 
-
 * AppNeta performans Izleyicisi **tam zamanında** Kullanıcı sağlamayı destekliyor
 
 > [!NOTE]
@@ -52,7 +50,7 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 AppNeta performans Izleyicisi 'ni Azure AD 'ye tümleştirmeyi yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize AppNeta performans Izleyicisi eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -60,11 +58,11 @@ AppNeta performans Izleyicisi 'ni Azure AD 'ye tümleştirmeyi yapılandırmak i
 1. Sonuçlar panelinden **Appneta performans izleyicisi** ' ni seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-appneta-performance-monitor"></a>AppNeta performans Izleyicisi için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-appneta-performance-monitor"></a>AppNeta performans Izleyicisi için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu AppNeta performans izleyicisinde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve AppNeta performans Izleyicisinde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu AppNeta performans izleyicisinde yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve AppNeta performans Izleyicisinde ilgili Kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu AppNeta performans Izleyicisi ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu AppNeta performans Izleyicisi ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -77,17 +75,15 @@ Azure AD SSO 'yu AppNeta performans Izleyicisi ile yapılandırmak ve test etmek
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Appneta performans izleyicisi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Appneta performans izleyicisi** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
 1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
 
     a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın:`https://<subdomain>.pm.appneta.com`
-
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusuna bir değer yazın:`PingConnect`
 
     > [!NOTE]
     > Oturum açma URL 'SI değeri gerçek değil. Bu değeri gerçek Sign-On URL 'siyle güncelleştirin. Bu değeri almak için [Appneta performans Izleyicisi istemci destek ekibine](mailto:support@appneta.com) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
@@ -98,7 +94,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
 1. Yukarıdaki ' a ek olarak, AppNeta performans Izleyicisi uygulaması, daha az sayıda özniteliğin aşağıda gösterilen SAML yanıtına geri geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksiniminize göre bunları gözden geçirebilirsiniz.
 
-    | Name | Kaynak özniteliği|
+    | Ad | Kaynak özniteliği|
     | --------| ----------------|
     | firstName| Kullanıcı.|
     | lastName| User. soyadı|
@@ -110,7 +106,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | | |
 
     > [!NOTE]
-    > **gruplar** , Azure AD 'Deki bir **rolle** eşlenen appneta içindeki güvenlik grubunu ifade eder. Lütfen Azure AD 'de özel roller oluşturmayı açıklayan [Bu](../develop/active-directory-enterprise-app-role-management.md) belgeye başvurun.
+    > **gruplar** , Azure AD 'Deki bir **rolle** eşlenen appneta içindeki güvenlik grubunu ifade eder. Lütfen Azure AD 'de özel roller oluşturmayı açıklayan [Bu](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui) belgeye başvurun.
 
     1. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **yeni talep Ekle** ' ye tıklayın.
 
@@ -118,7 +114,7 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
     1. **Ad alanını** boş bırakın.
 
-    1. **Öznitelik**olarak kaynak seçin.
+    1. **Öznitelik** olarak kaynak seçin.
 
     1. **Kaynak özniteliği** listesinde, bu satır için gösterilen öznitelik değerini yazın.
 
@@ -153,17 +149,10 @@ Bu bölümde, AppNeta performans Izleyicisi 'ne erişim izni vererek Azure çokl
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Appneta performans izleyicisi**' ni seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Rolleri yukarıda açıklanan şekilde ayarlarsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
-
 ## <a name="configure-appneta-performance-monitor-sso"></a>AppNeta performans Izleyicisi SSO 'SU yapılandırma
 
 **Appneta performans izleyicisi** tarafında çoklu oturum açmayı yapılandırmak için, Indirilen **Federasyon meta veri XML** 'Sini ve uygun kopyalanmış URL 'Leri Azure Portal ' den [appneta performans izleyicisi destek ekibine](mailto:support@appneta.com)göndermeniz gerekir. Bu ayar, SAML SSO bağlantısının her iki tarafında da düzgün bir şekilde ayarlanmasını sağlamak üzere ayarlanmıştır.
@@ -177,16 +166,15 @@ Bu bölümde, AppNeta performans Izleyicisinde Britta Simon adlı bir Kullanıc�
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde AppNeta performans Izleyicisi kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız AppNeta performans Izleyicisinde otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz AppNeta performans Izleyicisi oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* AppNeta performans Izleyicisi oturum açma URL 'sine doğrudan gidin ve oturum akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki AppNeta performans Izleyicisi kutucuğuna tıkladığınızda bu işlem AppNeta performans Izleyicisi oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile AppNeta performans Izleyicisini deneyin](https://aad.portal.azure.com/)
+AppNeta performans Izleyicisini yapılandırdıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

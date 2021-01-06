@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f44751feca67fdd4473dd3f427fcf2b9d1bbe717
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093579"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916499"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Cosmos DB için Azure Synapse Link'i yapılandırma ve kullanma
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -32,7 +32,7 @@ Azure SYNAPSE link, Azure Cosmos DB SQL API kapsayıcıları veya Mongo DB kolek
 
 ### <a name="azure-portal"></a>Azure portal
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın.
+1. [Azure portal](https://portal.azure.com/) oturum açın.
 
 1. [Yeni bir Azure hesabı oluşturun](create-sql-api-dotnet.md#create-account)veya mevcut bir Azure Cosmos DB hesabı seçin.
 
@@ -227,7 +227,7 @@ Azure Cosmos DB için SYNAPSE link üzerinden sunucusuz bir SQL havuzu veritaban
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Azure Synpao bağlantısı ile çalışmaya başlama-örnekler
 
-[GitHub](https://aka.ms/cosmosdb-synapselink-samples)'Da Azure SYNAPSE bağlantısı ile çalışmaya başlama örneklerini bulabilirsiniz. Bu, IoT ve perakende senaryolarıyla uçtan uca çözümler sergileme. MongoDB için Azure Cosmos DB API 'sine karşılık gelen örnekleri [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) klasörü altındaki aynı depoda da bulabilirsiniz. 
+[GitHub](https://aka.ms/cosmosdb-synapselink-samples)'Da Azure SYNAPSE bağlantısı ile çalışmaya başlama örneklerini bulabilirsiniz. Bu, IoT ve perakende senaryolarıyla uçtan uca çözümler sergileme. MongoDB için Azure Cosmos DB API 'sine karşılık gelen örnekleri [MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) klasörü altındaki aynı depoda da bulabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

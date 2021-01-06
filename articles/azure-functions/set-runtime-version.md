@@ -3,20 +3,24 @@ title: Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 description: Azure Işlevleri, çalışma zamanının birden çok sürümünü destekler. Azure 'da barındırılan bir işlev uygulamasının çalışma zamanı sürümünü belirtmeyi öğrenin.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: a7d86ef26d50d60389ae09bf3245ed97fea2c3e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bf7849888033b2bbb7e9b9669ee3eae4de10e9
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88926584"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916533"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Işlevleri çalışma zamanı sürümlerini hedefleme
 
 Bir işlev uygulaması, Azure Işlevleri çalışma zamanının belirli bir sürümünde çalışır. Üç ana sürüm vardır: [1. x, 2. x ve 3. x](functions-versions.md). Varsayılan olarak, işlev uygulamaları çalışma zamanının sürüm 3. x ' de oluşturulur. Bu makalede, Azure 'da bir işlev uygulamasının seçtiğiniz sürümde çalışacak şekilde nasıl yapılandırılacağı açıklanmaktadır. Belirli bir sürüm için yerel bir geliştirme ortamının nasıl yapılandırılacağı hakkında bilgi için bkz. [Code ve Azure işlevlerini yerel olarak test](functions-run-local.md)etme.
 
+Belirli bir sürümü el ile hedeflediğiniz şekilde, Windows veya Linux 'u çalıştırıp çalıştırdığınıza bağlı olarak değişir.
+
 ## <a name="automatic-and-manual-version-updates"></a>Otomatik ve el ile sürüm güncelleştirmeleri
 
-Azure Işlevleri, bir işlev uygulamasındaki uygulama ayarını kullanarak çalışma zamanının belirli bir sürümünü hedeflemenizi sağlar `FUNCTIONS_EXTENSION_VERSION` . İşlev uygulaması, açıkça yeni bir sürüme taşımayı seçinceye kadar belirtilen ana sürümde tutulur. Yalnızca ana sürümü belirtirseniz, işlev uygulaması kullanılabilir hale geldiğinde çalışma zamanının yeni ikincil sürümlerine otomatik olarak güncelleştirilir. Yeni ikincil sürümler, son değişiklikleri sunmamalıdır. 
+_Bu bölüm, [Linux üzerinde](#manual-version-updates-on-linux)işlev uygulamanızı çalıştırırken uygulanmaz._
+
+Azure Işlevleri, bir işlev uygulamasındaki uygulama ayarını kullanarak Windows çalışma zamanının belirli bir sürümünü hedeflemenizi sağlar `FUNCTIONS_EXTENSION_VERSION` . İşlev uygulaması, açıkça yeni bir sürüme taşımayı seçinceye kadar belirtilen ana sürümde tutulur. Yalnızca ana sürümü belirtirseniz, işlev uygulaması kullanılabilir hale geldiğinde çalışma zamanının yeni ikincil sürümlerine otomatik olarak güncelleştirilir. Yeni ikincil sürümler, son değişiklikleri sunmamalıdır. 
 
 Küçük bir sürüm belirtirseniz (örneğin, "2.0.12345"), işlev uygulaması, açıkça değiştirene kadar bu belirli sürüme sabitlenmiştir. Eski küçük sürümler düzenli olarak üretim ortamından kaldırılır. Bu durum oluştuktan sonra, işlev uygulamanız içinde ayarlanan sürüm yerine en son sürümde çalışır `FUNCTIONS_EXTENSION_VERSION` . Bu nedenle, önemli sürümü hedeflemesini sağlamak için, belirli bir alt sürüm gerektiren işlev uygulamanızla ilgili tüm sorunları hızlıca çözmeniz gerekir. Küçük sürüm kaldırma işlemleri [App Service bildirilerinde](https://github.com/Azure/app-service-announcements/issues)duyurulur.
 
@@ -36,6 +40,8 @@ Aşağıdaki tabloda, `FUNCTIONS_EXTENSION_VERSION` otomatik güncelleştirmeler
 Çalışma zamanı sürümünde yapılan bir değişiklik, bir işlev uygulamasının yeniden başlatılmasına neden olur.
 
 ## <a name="view-and-update-the-current-runtime-version"></a>Geçerli çalışma zamanı sürümünü görüntüle ve Güncelleştir
+
+_Bu bölüm, [Linux üzerinde](#manual-version-updates-on-linux)işlev uygulamanızı çalıştırırken uygulanmaz._
 
 İşlev uygulamanız tarafından kullanılan çalışma zamanı sürümünü değiştirebilirsiniz. Son değişiklikler nedeniyle, işlev uygulamanızda herhangi bir işlev oluşturmadan önce çalışma zamanı sürümünü değiştirebilirsiniz. 
 
@@ -120,6 +126,65 @@ Daha önce olduğu gibi, `<FUNCTION_APP>` işlev uygulamanızın adıyla ve `<RE
 ---
 
 İşlev uygulaması, uygulama ayarında değişiklik yapıldıktan sonra yeniden başlatılır.
+
+## <a name="manual-version-updates-on-linux"></a>Linux üzerinde el ile sürüm güncelleştirmeleri
+
+Bir Linux işlev uygulamasını belirli bir ana bilgisayar sürümüne sabitlemek için, görüntü URL 'sini site yapılandırması içindeki ' LinuxFxVersion ' alanında belirtirsiniz. Örneğin: bir düğüm 10 işlev uygulamasını söyleyin ana bilgisayar sürümü 3.0.13142 'e sabitlemek istiyoruz
+
+**Linux App Service/elastik Premium uygulamaları** için- `LinuxFxVersion` olarak ayarlayın `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` .
+
+**Linux tüketim uygulamaları** için- `LinuxFxVersion` olarak ayarlayın `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` .
+
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azurecli-linux)
+
+Azure CLı 'dan ' i görüntüleyebilir ve ayarlayabilirsiniz `LinuxFxVersion` .  
+
+Azure CLı 'yı kullanarak, [az functionapp config Show](/cli/azure/functionapp/config) komutuyla geçerli çalışma zamanı sürümünü görüntüleyin.
+
+```azurecli-interactive
+az functionapp config show --name <function_app> \
+--resource-group <my_resource_group>
+```
+
+Bu kodda, öğesini `<function_app>` işlev uygulamanızın adıyla değiştirin. Ayrıca `<my_resource_group>` , işlev uygulamanız için kaynak grubunun adıyla değiştirin. 
+
+`linuxFxVersion`Netme için kesilmiş olan aşağıdaki çıktıda görürsünüz:
+
+```output
+{
+  ...
+
+  "kind": null,
+  "limits": null,
+  "linuxFxVersion": <LINUX_FX_VERSION>,
+  "loadBalancing": "LeastRequests",
+  "localMySqlEnabled": false,
+  "location": "West US",
+  "logsDirectorySizeLimit": 35,
+   ...
+}
+```
+
+`linuxFxVersion`İşlev uygulamasındaki ayarı [az functionapp config Set](/cli/azure/functionapp/config) komutuyla güncelleştirebilirsiniz.
+
+```azurecli-interactive
+az functionapp config set --name <FUNCTION_APP> \
+--resource-group <RESOURCE_GROUP> \
+--linux-fx-version <LINUX_FX_VERSION>
+```
+
+`<FUNCTION_APP>`İşlev uygulamanızın adıyla değiştirin. Ayrıca `<RESOURCE_GROUP>` , işlev uygulamanız için kaynak grubunun adıyla değiştirin. Ayrıca, `<LINUX_FX_VERSION>` yukarıda açıklanan değerlerle değiştirin.
+
+Yukarıdaki kod örneğinde **deneyin** ' i seçerek bu komutu [Azure Cloud Shell](../cloud-shell/overview.md) çalıştırabilirsiniz. Ayrıca, oturum açmak için [az Login](/cli/azure/reference-index#az-login) komutunu çalıştırdıktan sonra bu komutu yürütmek IÇIN [Azure CLI 'yı yerel olarak](/cli/azure/install-azure-cli) da kullanabilirsiniz.
+
+
+Benzer şekilde, işlev yapılandırması, site yapılandırmasında değişiklik yapıldıktan sonra yeniden başlatılır.
+
+> [!NOTE]
+> `LinuxFxVersion`Tüketim uygulamaları için doğrudan görüntü URL 'si ayarının, bunları yer tutucuları ve diğer soğuk başlatma iyileştirmelerinden sonra kabul ettiğine unutmayın.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

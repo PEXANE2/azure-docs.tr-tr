@@ -4,12 +4,12 @@ description: Bir etkinlik günlüğü uyarısı etkinleşdiğinde bir Web kancas
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
-ms.openlocfilehash: a73ab12d1729acba132aeffd4104ca7846ecb9e8
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: b48f094b460a2871b502c72b39b849ed68b9c085
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901445"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916651"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure etkinlik günlüğü uyarıları için Web kancaları
 Bir eylem grubu tanımının bir parçası olarak, Web kancası uç noktalarını etkinlik günlüğü uyarı bildirimlerini alacak şekilde yapılandırabilirsiniz. Web kancaları ile bu bildirimleri, işlem sonrası veya özel eylemler için diğer sistemlere yönlendirebilirsiniz. Bu makalede, bir Web kancası için HTTP POST yükünün nasıl göründüğü gösterilmektedir.
@@ -40,6 +40,7 @@ POST işleminde yer alan JSON yükü, yükün Data. Context. activityLog. eventS
 > koşulunuz (eylem kurallarınız, Web kancaları, mantıksal uygulama veya diğer yapılandırmalarda) Şu anda etkinlik günlüğü uyarıları için **"Açıklama"** özelliğini temel alıyorsa, bunun yerine **"etkinlik günlüğü olay açıklaması"** özelliğine dayalı olarak değiştirmeniz gerekebilir.
 >
 > Yeni **"Description"** özelliğini dolduracak şekilde, uyarı kuralı tanımına bir açıklama ekleyebilirsiniz.
+> ![Tetiklenen etkinlik günlüğü uyarıları](media/activity-log-alerts-webhook/activity-log-alert-fired.png)
 
 ### <a name="common"></a>Common
 

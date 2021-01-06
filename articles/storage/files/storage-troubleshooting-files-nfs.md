@@ -8,16 +8,32 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90709099"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916465"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Azure NFS dosya paylaşımlarında sorun giderme
 
 Bu makalede, Azure NFS dosya paylaşımları ile ilgili bazı yaygın sorunlar listelenmektedir. Bu sorunlarla karşılaşıldığında olası nedenleri ve geçici çözümleri sağlar.
+
+## <a name="chgrp-filename-failed-invalid-argument-22"></a>chgrp "filename" başarısız oldu: geçersiz bağımsız değişken (22)
+
+### <a name="cause-1-idmapping-is-not-disabled"></a>Neden 1: ıdmapping devre dışı değil
+Azure dosyaları alfasayısal UID/GID 'ye izin vermez. Bu nedenle ıdmapping devre dışı bırakılmalıdır. 
+
+### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Neden 2: ıdmapping devre dışı bırakıldı, ancak hatalı dosya/dizin adıyla karşılaşduktan sonra yeniden etkinleştirildi
+Idmapping doğru şekilde devre dışı bırakılsa bile, bazı durumlarda ıdmapping 'i devre dışı bırakma ayarları geçersiz kılınır. Örneğin, Azure dosyaları hatalı bir dosya adıyla karşılaştığında bir hata geri gönderir. Bu özel hata kodunu gördükten sonra, NFS v 4,1 Linux istemcisi ıdmapping 'i yeniden etkinleştirmeye karar verir ve gelecekteki istekler alfasayısal UID/GID ile yeniden gönderilir. Azure dosyalarında desteklenmeyen karakterlerin bir listesi için, bu [makaleye](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length)bakın. İki nokta üst üste, desteklenmeyen karakterlerden biridir. 
+
+### <a name="workaround"></a>Geçici çözüm
+Idmapping 'in devre dışı bırakılıp bırakılmadığını denetleyin ve hiçbir şey yeniden etkinleştirin ve ardından aşağıdakileri yapın:
+
+- Paylaşımın bağlantısını kaldır
+- # Echo Y >/sys/Module/NFS/Parameters/nfs4_disable_idmapping ile kimlik eşlemeyi devre dışı bırak
+- Paylaşımdan geri bağlama
+- Rsync çalıştırıyorsa, herhangi bir hatalı dizin/dosya adına sahip olmayan dizinden "— numeric-IDS" bağımsız değişkeniyle rsync ' i çalıştırın.
 
 ## <a name="unable-to-create-an-nfs-share"></a>NFS paylaşma oluşturulamıyor
 
@@ -52,7 +68,7 @@ NFS yalnızca aşağıdaki yapılandırmaya sahip depolama hesaplarında kullan�
 - Katman-Premium
 - Hesap türü-dosya depolaması
 - Artıklık-LRS
-- Bölgeler-Doğu ABD, Doğu ABD 2, UK Güney, Güneydoğu Asya
+- Bölgeler- [desteklenen bölgelerin listesi](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Çözüm
 
@@ -90,7 +106,7 @@ Aşağıdaki diyagramda genel uç noktalar kullanılarak bağlantı gösterilmek
     - Özel uç noktada barındırılan sanal ağlarla sanal ağ eşlemesi, NFS 'nin eşlenmiş sanal ağlardaki istemcilere erişimini sağlar.
     - Özel uç noktalar ExpressRoute, Noktadan siteye ve siteden siteye VPN 'Ler ile kullanılabilir.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Genel uç nokta bağlantısının diyagramı." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="Özel uç nokta bağlantısının diyagramı." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>Neden 2: güvenli aktarım gereklidir
 
@@ -100,7 +116,7 @@ Aşağıdaki diyagramda genel uç noktalar kullanılarak bağlantı gösterilmek
 
 Depolama hesabınızın yapılandırma dikey penceresinde gerekli olan güvenli aktarımı devre dışı bırakın.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Genel uç nokta bağlantısının diyagramı.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Depolama hesabı yapılandırma dikey penceresinin ekran görüntüsü, güvenli aktarım devre dışı bırakılıyor.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Neden 3: NFS-ortak paket yüklü değil
 Mount komutunu çalıştırmadan önce aşağıdan belirli bir komutu çalıştırarak paketi yüklemelisiniz.

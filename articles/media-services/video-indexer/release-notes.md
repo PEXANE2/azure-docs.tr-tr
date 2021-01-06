@@ -12,12 +12,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: juliako
-ms.openlocfilehash: 7ce0807fa4cd068cfdd09ac9f78c5415da7e6437
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895351"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916669"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer sürüm notları
 
@@ -30,7 +30,7 @@ En son gelişmelerden haberdar olmak için, bu makalede hakkında bilgi verilmek
 * Hata düzeltmeleri
 * Kullanım dışı işlevsellik
 
-##  <a name="december-2020"></a>Aralık 2020? 
+##  <a name="december-2020"></a>Aralık 2020
 
 ### <a name="video-indexer-deployed-in-the-switzerland-west-and-switzerland-north"></a>İsviçre Batı ve İsviçre Kuzey Video Indexer dağıtılır
 

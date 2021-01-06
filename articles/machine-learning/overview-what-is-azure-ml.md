@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 53e6d6e67a90cd1f39aed7f9cd7c2368282b2d1f
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620486"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916601"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning nedir?
 
@@ -118,7 +118,7 @@ Azure Machine Learning Azure platformunda diğer hizmetlerle çalışır ve ayr�
 + __Azure sanal ağları__. Daha fazla bilgi için bkz. [sanal ağ yalıtımı ve gizliliğe genel bakış](how-to-network-security-overview.md).
 + __Azure Pipelines__. Daha fazla bilgi için bkz. [makine öğrenimi modellerini eğitme ve dağıtma](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git deposu günlükleri__. Daha fazla bilgi için bkz. [Git tümleştirmesi](concept-train-model-git-integration.md).
-+ __Mlflow__. Daha fazla bilgi için bkz. [ölçümleri izlemek ve modelleri dağıtmak Için Mlflow](how-to-use-mlflow.md) 
++ __Mlflow__. Daha fazla bilgi için bkz. ölçümleri izlemek ve [mlflow modellerini bir Web hizmeti olarak dağıtmak](how-to-deploy-mlflow-models.md) [için mlflow](how-to-use-mlflow.md) 
 + __Kubeflow__. Daha fazla bilgi için bkz. [uçtan uca iş akışı işlem hatları oluşturma](https://www.kubeflow.org/docs/azure/).
 
 ### <a name="secure-communications"></a>Güvenli iletişim

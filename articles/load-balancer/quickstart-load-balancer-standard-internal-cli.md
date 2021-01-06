@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: fd85021da36d0e5ef32ce3f42c72b83016d38749
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 15060a367bba2d50d7054730321f7f20d4c25e46
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901360"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916686"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak VM 'Lerin yükünü dengelemek için iç yük dengeleyici oluşturma
 
@@ -54,6 +54,8 @@ Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'Lar hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
 
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal.png" alt-text="Hızlı başlangıç için oluşturulan Standart yük dengeleyici kaynakları." border="false":::
+
 ## <a name="configure-virtual-network---standard"></a>Sanal ağ yapılandırma-standart
 
 VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sanal ağ kaynaklarını oluşturun.
@@ -84,7 +86,7 @@ VM 'Leri dağıtmadan ve yük dengeleyiciyi dağıtmadan önce destekleyici sana
 Savunma konağı için genel bir IP adresi oluşturmak için [az Network public-ip Create](/cli/azure/network/public-ip#az-network-public-ip-create) kullanın:
 
 * **Mybastionıp** adlı standart bölge YEDEKLI genel IP adresi oluşturun.
-* * * Ccreateıntlbqs-RG * * içinde.
+* **Createıntlbqs-RG** içinde.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -99,7 +101,7 @@ Bir savunma alt ağı oluşturmak için [az Network VNET subnet Create](/cli/azu
 * **AzureBastionSubnet** adlı.
 * **10.1.1.0/24** adres ön eki.
 * Sanal ağ **\** sanal ağı 'nda.
-* Kaynak grubu * * Createıntlbqs-RG * *.
+* **Createıntlbqs-RG** kaynak grubunda.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -114,7 +116,7 @@ az network vnet subnet create \
 Bir savunma konağı oluşturmak için [az Network savunma Create](/cli/azure/network/bastion#az-network-bastion-create) kullanın:
 
 * Adlandırılmış **Mybastionhost**.
-* * * Createıntlbqs-RG * * içinde.
+* **Createıntlbqs-RG** içinde.
 * Genel IP **Mybastionıp** ile ilişkilendirildi.
 * Sanal ağ **Myvnet** ile ilişkilendirildi.
 * **Eastus** konumunda.
@@ -348,6 +350,8 @@ Yük dengeleyici kuralı şunları tanımlar:
 
 >[!NOTE]
 >Standart SKU yük dengeleyici, üretim iş yükleri için önerilir. SKU 'LAR hakkında daha fazla bilgi için bkz. **[Azure Load Balancer SKU 'lar](skus.md)**.
+
+:::image type="content" source="./media/quickstart-load-balancer-standard-internal-portal/resources-diagram-internal-basic.png" alt-text="Hızlı başlangıçta oluşturulan temel yük dengeleyici kaynakları." border="false":::
 
 ## <a name="configure-virtual-network---basic"></a>Sanal ağı yapılandırma-temel
 

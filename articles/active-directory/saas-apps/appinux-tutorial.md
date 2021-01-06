@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/06/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 42fafd8aa23f95dcb2f556531acd891da1299393
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 57001d45ec7557e300034447313a3925a97e4742
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457937"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97916618"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appinux"></a>Öğretici: Appınux ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
 
@@ -26,7 +26,6 @@ Bu öğreticide, Appınux 'i Azure Active Directory (Azure AD) ile tümleştirme
 * Kullanıcılarınızın Azure AD hesaplarıyla Appınux 'e otomatik olarak oturum açmalarına olanak sağlayın.
 * Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -41,15 +40,13 @@ Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test eders
 
 * Appınux **SP** tarafından başlatılan SSO 'yu destekler
 
-
 * Appınux **, tam zamanında** Kullanıcı sağlamasını destekler
-
 
 ## <a name="adding-appinux-from-the-gallery"></a>Galeriden Appınux ekleme
 
 Appınux 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden yönetilen SaaS uygulamaları listenize Appınux eklemeniz gerekir.
 
-1. [Azure Portal](https://portal.azure.com) iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
+1. Azure portal iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak oturum açın.
 1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
 1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
 1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
@@ -57,11 +54,11 @@ Appınux 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden 
 1. Sonuçlar panelinden **Appınux** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-appinux"></a>Appınux için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-sso-for-appinux"></a>Appınux için Azure AD SSO 'yu yapılandırma ve test etme
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Appınux ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Appınux içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B. Simon** adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Appınux ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Appınux içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
 
-Azure AD SSO 'yu Appınux ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO 'yu Appınux ile yapılandırmak ve test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
     1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
@@ -74,9 +71,9 @@ Azure AD SSO 'yu Appınux ile yapılandırmak ve test etmek için aşağıdaki y
 
 Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **appınux** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
+1. Azure portal, **Appınux** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
 1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesine tıklayın.
 
    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
 
@@ -108,6 +105,9 @@ Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
     | `wanshort` | `http://appinux.com/windowsaccountname2` | `extractmailprefix([userprincipalname])` |
     | `nameidentifier` | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` | `user.employeeid` |
 
+    > [!NOTE]
+    > Appınux, uygulamaya atanan kullanıcılar için roller bekliyor. Kullanıcılara uygun roller atanabilmeleri için lütfen bu rolleri Azure AD 'de ayarlayın. Azure AD 'de rolleri nasıl yapılandıracağınızı anlamak için [buraya](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps#app-roles-ui)bakın.
+
 1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
@@ -135,15 +135,9 @@ Bu bölümde, Appınux 'e erişim vererek Azure çoklu oturum açma özelliğini
 1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
 1. Uygulamalar listesinde **Appınux**' i seçin.
 1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
-
-   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
-
 1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
-
-    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
-
 1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
+1. Rolleri yukarıda açıklanan şekilde ayarlarsanız, **Rol Seç** açılır listesinden bunu seçebilirsiniz.
 1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
 
 ## <a name="configure-appinux-sso"></a>Appınux SSO 'yu yapılandırma
@@ -159,16 +153,15 @@ Bu bölümde, Appınux içinde Britta Simon adlı bir Kullanıcı oluşturulur. 
 
 ## <a name="test-sso"></a>Test SSO 'SU 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Azure AD çoklu oturum açma yapılandırmanızı aşağıdaki seçeneklerle test edersiniz. 
 
-Erişim panelinde Appınux kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Appınux ' de otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](../user-help/my-apps-portal-end-user-access.md).
+* Azure portal içinde **Bu uygulamayı test et** ' e tıklayın. Bu, oturum açma akışını başlatabileceğiniz Appınux oturum açma URL 'sine yeniden yönlendirilir. 
 
-## <a name="additional-resources"></a>Ek kaynaklar
+* Doğrudan Appınux oturum açma URL 'sine gidin ve oturum açma akışını buradan başlatın.
 
-- [ SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi ](./tutorial-list.md)
+* Microsoft My Apps ' i kullanabilirsiniz. Uygulamalarım içindeki Appınux kutucuğuna tıkladığınızda bu işlem Appınux oturum açma URL 'sine yönlendirilir. Uygulamalarım hakkında daha fazla bilgi için bkz. [uygulamalarıma giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir? ](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory'de koşullu erişim nedir?](../conditional-access/overview.md)
+## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure AD ile Appınux 'i deneyin](https://aad.portal.azure.com/)
+Appınux yapılandırıldıktan sonra, kuruluşunuzun hassas verilerinin gerçek zamanlı olarak ayıklanmasını ve zaman korumasını koruyan oturum denetimini zorunlu kılabilirsiniz. Oturum denetimi koşullu erişimden genişletiliyor. [Microsoft Cloud App Security ile oturum denetimini nasıl zorlayacağınızı öğrenin](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
