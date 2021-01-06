@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 624409be4d7e2cfba37dbe16e083904766ae1389
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c0cb4527349b09ed8e794cc55dee6f9e54f8a7d4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309656"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937374"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Uyarılar ve hata ayıklama için Application Insights makine öğrenimi ardışık düzen günlük dosyalarını toplayın
 
@@ -24,7 +24,7 @@ ms.locfileid: "93309656"
 
 Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geçmişini sağlar. Application Insights Azure uyarıları ile tümleştirilebildiğinden, Application Insights sorgularını temel alan uyarılar da oluşturabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * [Azure Machine Learning](./how-to-manage-workspace.md) çalışma alanı oluşturma ve [ilk işlem hattınızı oluşturma](./how-to-create-your-first-pipeline.md) adımlarını izleyin
 * Azure Machine Learning SDK 'Yı yüklemek için [geliştirme ortamınızı yapılandırın](./how-to-configure-environment.md) .
@@ -34,7 +34,7 @@ Günlüklerinizin bir yerde olması, özel durumların ve hata iletilerinin geç
   ```
 * Bir [Application Insights örneği](../azure-monitor/app/opencensus-python.md) oluşturun (Bu belge, kaynak için bağlantı dizesini alma hakkında bilgi de içerir)
 
-## <a name="getting-started"></a>Başlarken
+## <a name="getting-started"></a>Kullanmaya Başlama
 
 Bu bölüm, Azure Machine Learning bir işlem hattından OpenCensus kullanımına özgü bir giriş niteliğindedir. Ayrıntılı bir öğretici için bkz. [Opencensus Azure Izleyici Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)
 
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>OpenCensus Python günlüğe kaydetme konuları

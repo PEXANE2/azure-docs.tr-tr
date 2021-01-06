@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 1b43a1ceb1f9e098e4932b405553ae8f33e27262
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034046"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97937357"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning olan kaynaklar için kotaları yönetme ve artırma
 
@@ -29,7 +29,7 @@ Azure, sahtekarlık ve Azure kapasite kısıtlamalarını dikkate almak için li
 > + İstenen kota artışı.
 > + Özel uç nokta ve DNS kotaları.
 
-Kotaları yönetme ile birlikte [Azure Machine Learning maliyetlerini nasıl planlayacağınızı ve yöneteceğinizi](concept-plan-manage-cost.md)öğrenebilirsiniz.
+Kotaları yönetme ile birlikte, [Azure Machine Learning maliyetlerini nasıl planlayacağınızı ve yöneteceğinizi](concept-plan-manage-cost.md) öğrenin veya [Azure Machine Learning hizmet sınırlarını](resource-limits-quotas-capacity.md)öğrenin.
 
 ## <a name="special-considerations"></a>Özel Konular
 
@@ -53,7 +53,9 @@ Bu bölümde, aşağıdaki kaynaklar için varsayılan ve en yüksek kota sını
 + Azure Storage
 
 > [!IMPORTANT]
-> Sınırlar değişikliğe tabidir. En son bilgiler için bkz. Azure [aboneliği ve hizmet limitleri, Kotalar ve](../azure-resource-manager/management/azure-subscription-service-limits.md) tüm Azure için kısıtlamalar.
+> Sınırlar değişikliğe tabidir. En son bilgiler için  [Azure Machine Learning hizmet sınırlarına](resource-limits-quotas-capacity.md)bakın.
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure Machine Learning varlıklar
 Varlıklar için aşağıdaki sınırlar her çalışma alanı temelinde geçerlidir. 
@@ -104,7 +106,7 @@ Aşağıdaki tabloda, platformda ek sınırlamalar gösterilmektedir. Lütfen bi
 #### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning işlem hatları
 [Azure Machine Learning işlem hatları](concept-ml-pipelines.md) Aşağıdaki sınırlara sahiptir.
 
-| **Kaynak** | **Sınır** |
+| **Kaynak** | **Sınırlı** |
 | --- | --- |
 | İşlem hattı adımları | 30.000 |
 | Her kaynak grubu için çalışma alanı | 800 |
@@ -210,3 +212,4 @@ Bu senaryolar için bir kesinti istemek üzere aşağıdaki adımları kullanın
 ## <a name="next-steps"></a>Sonraki adımlar
 
 + [Azure Machine Learning maliyetlerini planlayın ve yönetin](concept-plan-manage-cost.md)
++ [Azure Machine Learning hizmet limitleri](resource-limits-quotas-capacity.md)
